@@ -1,0 +1,435 @@
+/***   Main Container : Gosi Acad ****/
+/* Main Container : Gosi Acad */
+.ssam .tx-color {
+    color: #0c5dc0;
+}
+.ssam .Menu .menu-List li.Acad a {
+    color: #0c5dc0;
+}
+.ssam .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+/*상단 메뉴*/
+.Menu .menu-List li.willbesedu > a {
+    font-size: 16px;
+    color: #0c5dc0;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.Menu .menu-List li.willbesedu > a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+.dropdown .list-drop-Box-ic {
+    top: 38px;
+    left: 50%;
+    margin-left: -159px;
+    width: 510px;
+    padding: 20px;
+    text-align: left;
+    z-index: 100;
+}
+.dropdown .list-drop-Box-ic ul {display:inline; float:left; width:50%}
+.dropdown .list-drop-Box-ic .Tit {margin-top:10px !important}
+.dropdown .list-drop-Box-ic li:first-child {margin:0 !important}
+.dropdown .list-drop-Box-ic span {display: inline-block; width:90px}
+.dropdown .list-drop-Box-ic li a {display: inline-block; padding-right:10px}
+.dropdown .list-drop-Box-ic:after {content:""; display:block; clear:both}
+
+.ssam .MainVisual {
+    width: 100%;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 550px;
+    overflow: hidden;
+    position: relative;
+    margin:0 auto;
+    text-align: center;
+}
+
+.ssam .MaintabBox {
+    position: absolute;
+    top:0;
+    left:50%;
+    margin-left:-1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 500px; 
+    overflow: hidden;
+}
+
+.ssam .MaintabList {
+    position: absolute;
+    top:500px;
+    left:50%;
+    margin-left:-560px;
+    width:1120px;
+    height: 40px;
+    z-index: 99;
+}
+.ssam .VisualBox .Maintab li {
+    display: inline-block; 
+    float:left;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;    
+    width: 20%;
+}
+.ssam .VisualBox .Maintab li a {border-bottom: 2px solid #cce1fc; color:#666}
+.ssam .VisualBox .Maintab:after {content:""; display:block; clear:both}
+.ssam .VisualBox .MaintabList.three ul li {
+    width: 209px;
+}
+.ssam .VisualBox .MaintabList.four ul li {
+    width: 156px;
+}
+.ssam .VisualBox .MaintabList.five ul li {
+    width: 188px;
+}
+.ssam .VisualBox .MaintabList ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.ssam .VisualBox .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.ssam .VisualBox .Maintab li a:hover,
+.ssam .VisualBox .Maintab li a.active { color:#0c5dc0; border-bottom: 2px solid #0c5dc0;}
+
+
+/* slider : 페이징 버튼 => bSlider */
+.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #b7b7b7;
+}
+.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #0c5dc0;
+}
+
+/* slider : 페이징 버튼 => bSlider */
+.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #ccc;
+    width: 9px;
+    height: 9px;
+}
+.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #313131;
+}
+
+/* Main Container : campus : */
+.ssam .campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.ssam .campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.ssam .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #0c5dc0;
+    text-align: center;
+    border: 1px solid #0c5dc0;    
+}
+.ssam .campus_info .btn a img {
+    vertical-align: middle;
+}
+
+/*학원둘러보기*/
+.ssam .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
+.ssam .acadview .avslider {height:180px; overflow: hidden;}
+.ssam .acadview .avslider li {display:inline; float:left; width: 25%;}
+.ssam .acadview .avslider li a {display:block;} 
+.ssam .acadview .avslider:after {content: ""; display: block; clear:both}
+.ssam .acadview p {position:absolute; top:40%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.ssam .acadview p.leftBtn {left:-22px}
+.ssam .acadview p.rightBtn {right:-22px}
+
+
+/* Main Container : Notice : noticeTabs */
+.ssam .noticeTabs:first-child {
+    width:calc(50% - 20px);
+    float:left; margin-right:20px;
+}
+.ssam .noticeTabs:last-child {
+    width:calc(50% - 20px); 
+    float:right; margin-left:20px;
+}
+.ssam .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.ssam .tabBox.noticeBox .List-Table {
+    width: 100%;    
+    border-top:2px solid #000;
+    padding:0;
+    margin-top:-10px;
+}
+.ssam .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.ssam .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.ssam .tabBox.noticeBox .List-Table li a span {
+    background: #0c5dc0;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.ssam .willbesNumber ul li {
+    margin-left: 40px;
+    vertical-align: top;
+}
+
+/*학원 오시는 길*/
+.Section4_ic {
+    width: 1120px !important;
+    margin: auto;
+}
+.Section4_ic .will-acadTit {border-bottom:2px solid #000; margin-bottom:20px}
+.Section4_ic .noticeTabs {
+    width: 100% !important;
+}
+.Section4_ic .map_img {
+    position: relative;
+    float: left !important;
+    width: 698px;
+    height: 328px;
+    overflow: hidden;
+}
+.Section4_ic .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.Section4_ic .campus_info {
+    position: relative;
+    float: right !important;
+    width: 320px;
+    height: 328px;
+}
+.Section4_ic .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.Section4_ic .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
+}
+.Section4_ic .campus_info .btn a {
+    display: inline-block; 
+    font-size: 17px; 
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    width: 168px;
+    margin-right: 5px;
+    color: #000;
+    text-align: center;
+    border: 1px solid #000;    
+}
+
+/* Main Container : QuickMenu : iccheon 
+.ssam .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.ssam .MainQuickMenu ul {
+    padding:0 8px !important;
+    background: #ececec;
+    width:100%;
+}
+.ssam .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.ssam .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.ssam .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.ssam .MainQuickMenu li a {
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+}
+.ssam .MainQuickMenu li a:hover {
+    color:#00acec; 
+}
+.ssam .MainQuickMenu li:nth-child(1) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
+}
+.ssam .MainQuickMenu li:nth-child(2) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
+}
+.ssam .MainQuickMenu li:nth-child(3) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
+}
+.ssam .MainQuickMenu li:nth-child(4) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
+}
+.ssam .MainQuickMenu li:nth-child(5) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
+}
+.ssam .MainQuickMenu li:nth-child(6) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
+}
+.ssam .MainQuickMenu li:nth-child(7) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
+}
+.ssam .MainQuickMenu li:nth-child(8) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
+}*/
+
+/* Main Container : QuickMenu*/ 
+.ssam .MainQuickMenu {
+    position: fixed;
+    top: 180px;
+    right: 10px;
+    width: 164px;
+    height: auto;
+    z-index: 100;
+}
+.ssam .MainQuickMenu ul li {
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.ssam .MainQuickMenu .sliderNum {
+    width: 164px;
+    min-height: 238px;
+    overflow: hidden;
+}
+.ssam .MainQuickMenu .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.ssam .MainQuickMenu .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.ssam .MainQuickMenu .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 54px;
+    height: 14px;
+    margin: 0 auto;
+}
+.ssam .MainQuickMenu .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.ssam .MainQuickMenu .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+.ssam .MainQuickMenu .gobtn {
+    padding:0 8px !important;
+    background: #ececec;
+    width:100%;
+    margin-bottom:8px;
+}
+.ssam .MainQuickMenu .gobtn li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.ssam .MainQuickMenu .gobtn li:first-child {
+    border-top:0;
+}
+.ssam .MainQuickMenu .gobtn li:last-child {
+    border-bottom:0;
+}
+.ssam .MainQuickMenu .gobtn li a {
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+}
+.ssam .MainQuickMenu .gobtn li a:hover {
+    color:#00acec; 
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(1) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(2) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(3) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(4) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(5) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(6) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(7) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
+}
+.ssam .MainQuickMenu .gobtn li:nth-child(8) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
+}

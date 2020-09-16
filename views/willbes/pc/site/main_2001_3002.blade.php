@@ -155,7 +155,7 @@
         #Popup200916 {position:fixed; top:100px; left:50%; width:700px; height:555px; margin-left:-350px; display: block;}
     </style>
     <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
-        <div class="Layer-Cont">
+        <div class="Layer-Cont" id="youtube_box">
             <iframe width="700" height="555" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <ul class="btnWrapbt popbtn mt10">
@@ -211,44 +211,50 @@
         });
 
         //유튜브 모달팝업 close 버튼 클릭
+        var youtube_html;
         $(document).ready(function() {                
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
-                    var popup_idx = $(this).data('popup-idx');
-                    var hide_days = $(this).data('popup-hide-days');
+                youtube_html = $('#youtube_box');
+                $('#youtube_box').html('');
 
-                    // 팝업 close
-                    $(this).parents('.PopupWrap').fadeOut();
+                var popup_idx = $(this).data('popup-idx');
+                var hide_days = $(this).data('popup-hide-days');
 
-                    //하루 보지않기
-                    if (hide_days !== '') {
-                        var domains = location.hostname.split('.');
-                        var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+                // 팝업 close
+                $(this).parents('.PopupWrap').fadeOut();
 
-                        $.cookie('_wb_client_popup_' + popup_idx, 'done', {
-                            domain: domain,
-                            path: '/',
-                            expires: hide_days
-                        });
-                    }
+                //하루 보지않기
+                if (hide_days !== '') {
+                    var domains = location.hostname.split('.');
+                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
 
-                    // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 
-                    if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
-                        $('#PopupBackWrap').fadeOut();
-                    }
-                });            
-
-                // 백그라운드 클릭 --}}
-                $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
-                    $('.PopupWrap.modal').fadeOut();
-                    $(this).fadeOut();
-                });
-
-                // 팝업 오늘하루안보기 하드코딩
-                if($.cookie('_wb_client_popup_860') !== 'done') {
-                    $('#Popup').show();
-                    $('.PopupWrap').fadeIn();
-                    $('#PopupBackWrap').fadeIn();
+                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
+                        domain: domain,
+                        path: '/',
+                        expires: hide_days
+                    });
                 }
+
+                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리
+                if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                    $('#PopupBackWrap').fadeOut();
+                }
+            });
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                youtube_html = $('#youtube_box');
+                $('#youtube_box').html('');
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
+            });
+
+            // 팝업 오늘하루안보기 하드코딩
+            if($.cookie('_wb_client_popup_860') !== 'done') {
+                $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
+            }
         });
     </script>
 

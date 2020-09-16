@@ -66,6 +66,11 @@
                                     <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                                         <a href="{{front_url($default_path.'/index?'.$get_params)}}">목록</a>
                                     </div>
+                                    @if(empty($arr_swich['mod_btn']) === false && $data['RegMemIdx'] == sess_data('mem_idx'))
+                                        <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_left">
+                                            <a href="{{front_url($default_path.'/create?'.$get_params.'&board_idx='.$board_idx)}}">수정</a>
+                                        </div>
+                                    @endif
                                 </div>
 
                                 @if($data['IsBest'] != '1')

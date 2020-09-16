@@ -151,11 +151,11 @@
 
     {{--//유튜브 모달팝업--}}
     <style type="text/css">
-        #Popup200916 {position:fixed; top:100px; left:50%; width:700px; height:555px; margin-left:-350px; display: block;}
+        #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
     </style>
     <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
         <div class="Layer-Cont" id="youtube_box">
-            <iframe width="700" height="555" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="850" height="482" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <ul class="btnWrapbt popbtn mt10">
             <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
@@ -211,7 +211,7 @@
 
         //유튜브 모달팝업 close 버튼 클릭
         var youtube_html;
-        $(document).ready(function() {
+        $(document).ready(function() {                
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 youtube_html = $('#youtube_box');
                 $('#youtube_box').html('');

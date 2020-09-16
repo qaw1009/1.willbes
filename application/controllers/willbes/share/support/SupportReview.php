@@ -26,7 +26,7 @@ class SupportReview extends BaseSupport
             'subject' => 'show',                // 과목 노출여부
             'name' => 'show',                   // 작성자 노출여부
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
-            'arr_table_width' => [65,120,'',60,90,100,90]
+            'arr_table_width' => [65,120,'',60,90,100,90],
         ]
     ];
 
@@ -237,6 +237,12 @@ class SupportReview extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        // 프론트 ui
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+            $arr_swich = null;
+        }
+
         $method = 'POST';
         $data = null;
 
@@ -290,6 +296,7 @@ class SupportReview extends BaseSupport
             'board_idx' => $board_idx,
             'reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt,
+            'arr_swich' => $arr_swich,
         ]);
     }
 

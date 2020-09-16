@@ -104,8 +104,8 @@
                                 @foreach($list as $row)
                                     <tr>
                                         <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                        @if(empty($arr_base['subject']) === false && empty($arr_swich['subject']) === false)
-                                            <td>{{ empty($row['SubjectIdx']) === false ? $arr_base['subject'][$row['SubjectIdx']] : '' }}</td>
+                                        @if(empty($arr_swich['subject']) === false)
+                                            <td>{{ (empty($row['SubjectIdx']) === false && empty($arr_base['subject']) === false) ? $arr_base['subject'][$row['SubjectIdx']] : '' }}</td>
                                         @endif
                                         @if($__cfg['CampusCcdArr'] != 'N')<td class="{{$arr_swich['campus'] or ''}}"><span class="oBox campus_{{$row['CampusCcd']}} NSK">{{$row['CampusCcd_Name']}}</span></td>@endif
                                         <td class="w-list tx-left pl20">

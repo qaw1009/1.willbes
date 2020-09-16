@@ -23,6 +23,7 @@ class LectureRoomRegistModel extends WB_Model
     public $_arr_seat_status_ccd = [
         'N' => '727001',    //좌석상태(미사용)
         'Y' => '727002',    //좌석상태(사용중)
+        'H' => '727003'     //좌석상태(홀드)
     ];
 
     //등록파일 rule 설정
@@ -340,13 +341,35 @@ class LectureRoomRegistModel extends WB_Model
                 throw new \Exception($result['ret_msg']);
             }
 
-            //좌석추가
-            if (empty($this->_add_seat_count) === false) {
-                if ($this->_modifyLectureRoomUnitSeat($lr_unit_code) !== true) {
-                    throw new \Exception('강의실 좌석정보 추가 실패했습니다.');
+            //좌석수가 줄어들 경우
+            if ($data['UseQty'] > element('use_qty', $form_data)) {
+                //좌석현황조회
+                $arr_condition = [
+                    'EQ' => [
+                        'lrsr.LrUnitCode' => $lr_unit_code
+                    ]
+                ];
+                $getUnitSeatData = $this->lectureRoomIssueModel->findSeatRegister('lrsr.LrsrIdx', $arr_condition);
+                if (empty($getUnitSeatData) === false) {
+                    throw new \Exception('좌석회원신청 내역이 있습니다. 좌석을 줄일 수 없습니다. [001]');
+                }
+
+                //좌석 정보 삭제
+                if ($this->deleteLectureRoomUnitSeat($lr_unit_code) !== true) {
+                    throw new \Exception('강의실 좌석정보 수정 실패했습니다. [002]');
+                }
+                //좌석 재셋팅
+                if ($this->_addLectureRoomUnitSeat($form_data, $lr_unit_code, 'modify') !== true) {
+                    throw new \Exception('강의실 좌석정보 수정 실패했습니다. [003]');
+                }
+            } else {
+                //좌석추가
+                if (empty($this->_add_seat_count) === false) {
+                    if ($this->_modifyLectureRoomUnitSeat($lr_unit_code) !== true) {
+                        throw new \Exception('강의실 좌석정보 추가 실패했습니다.');
+                    }
                 }
             }
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -670,15 +693,15 @@ class LectureRoomRegistModel extends WB_Model
 
     /**
      * 강의실 좌석정보 등록
-     * @param array $form_data
+     * @param $form_data
      * @param $lr_unit_code
      * @return bool
      */
-    private function _addLectureRoomUnitSeat($form_data = [], $lr_unit_code)
+    private function _addLectureRoomUnitSeat($form_data, $lr_unit_code, $method = 'add')
     {
         try {
             $input_data = [];
-            $no = $form_data['start_no'];
+            $no = ($method == 'add') ? $form_data['start_no'] : $form_data['modify_start_no'];
             for($i=0; $i<$form_data['use_qty']; $i++) {
                 $input_data[] = [
                     'LrUnitCode' => $lr_unit_code,
@@ -710,11 +733,6 @@ class LectureRoomRegistModel extends WB_Model
     private function _modifyLectureRoomUnit($form_data, $data)
     {
         try {
-            //넘어온 좌석수가 기존보다 많은 값일 경우 좌석 추가
-            if ($data['UseQty'] > element('use_qty', $form_data)) {
-                throw new \Exception('좌석수는 기존 좌석주보다 많아야 합니다.');
-            }
-
             $uploaded = [];
             $upload_dir = '';
             if ($_FILES['map_file']['size'] > 0) {
@@ -743,6 +761,8 @@ class LectureRoomRegistModel extends WB_Model
 
             $input_data = [
                 'UnitName' => element('unit_name',$form_data),
+                'UseQty' => element('use_qty',$form_data),
+                'EndNo' => element('end_no',$form_data),
                 'TransverseNum' => element('transverse_num',$form_data),
                 'SeatChoiceStartDate' => element('seat_choice_start_date',$form_data),
                 'SeatChoiceEndDate' => element('seat_choice_end_date',$form_data),
@@ -761,8 +781,7 @@ class LectureRoomRegistModel extends WB_Model
             }
 
             if ($data['UseQty'] < element('use_qty', $form_data)) {
-                $input_data['UseQty'] = element('use_qty', $form_data);
-                $input_data['EndNo'] = element('end_no', $form_data);
+
             }
 
             $this->_conn->set($input_data)->where('LrUnitCode', element('lr_unit_code',$form_data));
@@ -821,6 +840,19 @@ class LectureRoomRegistModel extends WB_Model
             return error_result($e);
         }
 
+        return true;
+    }
+
+    private function deleteLectureRoomUnitSeat($lr_unit_code)
+    {
+        try {
+            $where = ['LrUnitCode' => $lr_unit_code];
+            if($this->_conn->delete($this->_table['lectureroom_r_unit_r_seat'], $where) === false) {
+                throw new \Exception('좌석 정보 삭제에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
         return true;
     }
 

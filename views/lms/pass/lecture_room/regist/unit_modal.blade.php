@@ -11,6 +11,7 @@
         {!! method_field($method) !!}
         <input type="hidden" name="lr_code" value="{{ $lr_code }}" title="강의실코드">
         <input type="hidden" name="lr_unit_code" value="{{ $lr_unit_code }}" title="강의실회차코드">
+        <input type="hidden" name="modify_start_no" value="{{ $data['StartNo'] }}" title="좌석시작번호">
 @endsection
 
 @section('layer_content')
@@ -177,7 +178,7 @@
 
             //파일다운로드
             $('.file-download').click(function() {
-                var _url = '{{ site_url("/pass/lectureRoom/regist/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
+                var _url = '{{ site_url("/pass/lectureRoom/regist/download") }}/' + '?path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
                 window.open(_url, '_blank');
             });
 

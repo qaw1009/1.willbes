@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Free extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'sys/site', 'board/board','product/base/subject');
     protected $helpers = array('download','file');
 
     private $board_name = 'free';
@@ -21,8 +21,10 @@ class Free extends BaseBoard
     ];
     private $_on_off_swich = [
         '91' => [                                       // bm_idx 합격수기관리 -> 합격수기
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'create' => [                               // 등록 항목 설정
-                'product_subject' => ['2017','2018']    // 임용 사이트 과목 적용
+                'subject' => 'show',            // 과목 적용
+                'mem_name' => 'show',            // 회원명 과목 적용
             ],
         ]
     ];
@@ -194,7 +196,9 @@ class Free extends BaseBoard
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType, LB.SubjectIdx,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName,
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -224,11 +228,13 @@ class Free extends BaseBoard
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
         }
 
+        //과목조회
+        $arr_subject = $this->_getSubjectArray();
+
         // 과목 조회
-        $arr_create_swich = element($this->bm_idx,$this->_on_off_swich);
-        if(empty($arr_create_swich) === false && in_array($site_code,$arr_create_swich['create']['product_subject']) === true){
-            $arr_swich = $arr_create_swich['create'];
-            $product_subject = $this->boardModel->listSiteProductSubject($arr_swich['product_subject']);
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
+            $arr_swich = null;
         }
 
         $this->load->view("board/{$this->board_name}/create", [
@@ -242,7 +248,7 @@ class Free extends BaseBoard
             'arr_reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'arr_swich' => $arr_swich,
-            'product_subject' => $product_subject
+            'arr_subject' => $arr_subject
         ]);
     }
 
@@ -268,6 +274,15 @@ class Free extends BaseBoard
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
         ];
+
+        // 임용 추가
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_reqP('site_code'),$arr_swich['site_code']) === true)){
+            $rules = array_merge($rules, [
+                ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
+                ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
+            ]);
+        }
 
         if ($this->validate($rules) === false) {
             return;
@@ -413,7 +428,8 @@ class Free extends BaseBoard
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'SettingReadCnt' => element('setting_readCnt', $input),
-                'SubjectIdx' => element('product_subject', $input),
+                'SubjectIdx' => element('subject_idx', $input),
+                'RegMemName' => element('reg_mem_name', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('cate_code', $input)

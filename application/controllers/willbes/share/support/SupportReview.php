@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportReview extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/subject',);
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping',);
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');
@@ -25,8 +25,8 @@ class SupportReview extends BaseSupport
             'campus' => 'd_none',               // 캠퍼스 노출여부
             'subject' => 'show',                // 과목 노출여부
             'name' => 'show',                   // 작성자 노출여부
-            'site_code' => ['2017','2018','2002'],     // 적용 사이트 [임용]
-            'arr_table_width' => [65,120,'',60,90,100,90]
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+            'arr_table_width' => [65,120,'',60,90,100,90],
         ]
     ];
 
@@ -47,6 +47,7 @@ class SupportReview extends BaseSupport
 
         $s_site_code = element('s_site_code',$arr_input);
         $s_cate_code = element('s_cate_code',$arr_input);
+        $s_subject = element('s_subject',$arr_input);
         $s_campus = element('s_campus',$arr_input);
         $s_consult_type = element('s_consult_type',$arr_input);
         $s_keyword = element('s_keyword',$arr_input);
@@ -58,18 +59,26 @@ class SupportReview extends BaseSupport
         $view_type = element('view_type',$arr_input);
         $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
         $get_page_params = 's_keyword='.urlencode($s_keyword);
-        $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type;
+        $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code.'&s_consult_type='.$s_consult_type.'&s_subject='.$s_subject;
         $get_page_params .= '&s_campus='.$s_campus;
         $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_page_params .= '&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
 
         //사이트목록 (과정)
-        $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
-        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
+        //$arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
+        /*unset($arr_base['site_list'][config_item('app_intg_site_code')]);*/
 
         //과목
-        $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
+        if(empty($s_cate_code) === false){
+            $arr_base['subject'] = $arr_subject_idx = $this->sortMappingModel->listSubjectMapping('', $this->_site_code, $s_cate_code);
+        }
+
+        // 프론트 ui
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+            $arr_swich = null;
+        }
 
         // 카테고리 조회
         if ($this->_site_code == config_item('app_intg_site_code')) {
@@ -140,12 +149,6 @@ class SupportReview extends BaseSupport
                     'b.RegType' => '0'
                 ]);
             }
-        }
-
-        // 프론트 ui 셋팅
-        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
-            $arr_swich = null;
         }
 
         $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
@@ -234,6 +237,12 @@ class SupportReview extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        // 프론트 ui
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+            $arr_swich = null;
+        }
+
         $method = 'POST';
         $data = null;
 
@@ -287,6 +296,7 @@ class SupportReview extends BaseSupport
             'board_idx' => $board_idx,
             'reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt,
+            'arr_swich' => $arr_swich,
         ]);
     }
 

@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">카테고리정보 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline">
+                    <div class="col-md-4 form-inline">
                         <button type="button" id="btn_category_search" class="btn btn-sm btn-primary">카테고리검색</button>
                         <span id="selected_category" class="pl-10">
                             @if(isset($data['CateCodes']) === true)
@@ -62,6 +62,15 @@
                             @endif
                         </span>
                     </div>
+                    @if(empty($arr_swich['product_subject']) === false)
+                        <div class="product_subject_wrap hide">
+                            <label class="control-label col-md-1-1 d-line" for="product_subject">과목<span class="required">*</span></label>
+                            <div class="col-md-4 ml-12-dot item form-inline">
+                                <select class="form-control" id="product_subject" name="product_subject" required="required" title="과목">
+                                </select>
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="form-group">
@@ -161,11 +170,17 @@
             // site-code에 매핑되는 select box 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
 
+            // 과목 리스트 조회(임용)
+            fn_product_subject($("#site_code option:selected").val());
+
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
+
+                var obj_val = $(this).val();
+                fn_product_subject(obj_val);
             });
 
             // 카테고리 검색
@@ -254,5 +269,30 @@
             });
 
         });
+
+        // 과목 리스트 조회(임용)
+        function fn_product_subject(obj_val){
+            $("#product_subject").html('');
+            $(".product_subject_wrap").addClass('hide');
+
+            @if(empty($product_subject) === false)
+                var json_data = {!! json_encode($product_subject) !!};
+
+                if (typeof json_data[obj_val] === 'undefined') {
+                    return;
+                }
+
+                var subject_idx = "{{ $data['SubjectIdx'] or ''}}";
+                var html = "<option value=''>과목</option>";
+                $.each(json_data[obj_val], function(key, data) {
+                    var selected = "";
+                    if(data.SubjectIdx == subject_idx) selected = "selected";
+                    html += "<option value='" + data.SubjectIdx + "' " + selected + ">" + data.SubjectName + "</option>";
+                });
+
+                $("#product_subject").html(html);
+                $(".product_subject_wrap").removeClass('hide');
+            @endif
+        }
     </script>
 @stop

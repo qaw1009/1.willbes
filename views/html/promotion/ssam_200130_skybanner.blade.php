@@ -28,12 +28,12 @@
     <li><a href='ssam_191212_wsam05'>전공수학 <strong>김철홍</strong></a></li>
     <li><a href='ssam_190924_wsam45'>수학교육론 <strong>박태영</strong></a></li>
     <li><a href='ssam_191212_wsamkcy'>전공생물 <strong>강치욱</strong></a></li>
-    <li><a href='#none'>생물교육론 <strong>양혜정</strong></a></li>
-    <li><a href='#none'>도덕윤리 <strong>김병찬</strong></a></li>
-    <li><a href='#none'>전공음악 <strong>다이애나</strong></a></li>
-    <li><a href='#none'>전기전자통신 <strong>최우영</strong></a></li>
-    <li><a href='#none'>정보컴퓨터 <strong>송광진</strong></a></li>
-    <li><a href='#none'>정컴교육론 <strong>장순선</strong></a></li>
-    <li><a href='#none'>전공중국어 <strong>정경미</strong></a></li>
+    <li><a href='ssam_200130_wsamyhj'>생물교육론 <strong>양혜정</strong></a></li>
+    <li><a href='ssam_191212_wsamkbc'>도덕윤리 <strong>김병찬</strong></a></li>
+    <li><a href='ssam_200130_wsamDiana'>전공음악 <strong>다이애나</strong></a></li>
+    <li><a href='ssam_191212_wsamcwy'>전기전자통신 <strong>최우영</strong></a></li>
+    <li><a href='ssam_191212_wsamskj'>정보컴퓨터 <strong>송광진</strong></a></li>
+    <li><a href='ssam_200130_ssamjss'>정컴교육론 <strong>장순선</strong></a></li>
+    <li><a href='ssam_190924_wsamjkm'>전공중국어 <strong>정경미</strong></a></li>
     <li><a href="#">TOP ↑</a></li>
 </ul>

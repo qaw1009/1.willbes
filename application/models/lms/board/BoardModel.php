@@ -1819,4 +1819,30 @@ class BoardModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 사이트별 과목 조회
+     * @param array $arr_site_code
+     * @return array
+     */
+    public function listSiteProductSubject($arr_site_code = [])
+    {
+        $column = 'SubjectIdx, SiteCode, SubjectName';
+        $arr_condition = [
+            'EQ' => ['IsStatus' => 'Y', 'IsUse' => 'Y'],
+            'IN' => ['SiteCode' => array_values($arr_site_code)]
+        ];
+
+        $result = $this->_conn->getListResult($this->_table_product_subject, $column, $arr_condition, null, null, [
+            'OrderNum'=>'ASC','SubjectIdx'=>'ASC'
+        ]);
+
+        $data = [];
+        foreach ($result as $key => $val){
+            $data[$val['SiteCode']][] = $val;
+        }
+
+        return $data;
+    }
+
 }

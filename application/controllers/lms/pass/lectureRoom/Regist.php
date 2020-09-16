@@ -216,7 +216,8 @@ class Regist extends \app\controllers\BaseController
         if (empty($this->_reqP('lr_unit_code')) === false) {
             $method = 'modify';
             $rules = array_merge($rules, [
-                ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer']
+                ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+                ['field' => 'modify_start_no', 'label' => '좌석시작번호', 'rules' => 'trim|required|integer']
             ]);
         } else {
             $rules = array_merge($rules, [

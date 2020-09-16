@@ -82,7 +82,10 @@
             <input type="hidden" id="seat_num" name="seat_num" value="" title="강의실회차좌석번호">
 
             <div class="PASSZONE-Lec-Section mt25">
-                <div class="btnAuto164 mt20 tx-white tx14 strong"><a href="javascript:show_map('{{ $lec_data['LrUnitCode'] }}');" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>
+                {{--<div class="btnAuto164 mt20 tx-white tx14 strong"><a href="javascript:show_map('{{ $lec_data['LrUnitCode'] }}');" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a></div>--}}
+                <div class="btnAuto164 mt20 tx-white tx14 strong">
+                    <a href="{{front_url('/classroom/off/seatMapDownload/'.$lec_data['LrUnitCode'])}}" class="bBox blackBox widthAutoFull">좌석배치도 보기 ></a>
+                </div>
                 <div class="strong mt25 tx-gray h22">
                     · 좌석선택 주의사항: <br>
                     하단 좌석 선택란의 좌석 위치는 실제 좌석 배치와 다르니, 첨부된 [좌석배치도]의 실제 좌석 위치 확인 후 해당하는 좌석 번호를 선택해 주시기 바랍니다.

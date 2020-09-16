@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Off extends \app\controllers\FrontController
 {
     protected $models = array('classroomF');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
 
@@ -516,7 +516,7 @@ class Off extends \app\controllers\FrontController
     }
 
     /**
-     * 좌석배치도 팝업창
+     * 좌석배치도 팝업창 (사용안함)
      * @param array $param
      * @return CI_Output|object|string
      */
@@ -526,9 +526,34 @@ class Off extends \app\controllers\FrontController
             return $this->json_error('잘못된 접근 입니다.', _HTTP_NOT_FOUND);
         }
         $seat_map_info = $this->classroomFModel->getLectureRoomSeatForMap($param[0]);
+
         return $this->load->view('/classroom/off/layer/seat_map_popup',[
             'seat_map_info' => $seat_map_info
         ]);
+    }
+
+    /**
+     * 강의실회차 좌석배치도 첨부파일 다운로드
+     * @param array $param
+     * @return CI_Output
+     */
+    public function seatMapDownload($param = [])
+    {
+        if (empty($param) === true) {
+            return $this->json_error('잘못된 접근 입니다.', _HTTP_NOT_FOUND);
+        }
+        $lr_unit_code = $param[0];
+        $seat_map_info = $this->classroomFModel->getLectureRoomSeatForMap($lr_unit_code);
+        if (empty($seat_map_info) === true) {
+            show_alert('등록된 파일을 찾지 못했습니다.','close','');
+        }
+        $this->classroomFModel->seatMapDownloadLog($lr_unit_code);
+
+        $file_path = $seat_map_info['SeatMapFileRoute'];
+        $file_name = $seat_map_info['SeatMapFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 
     /**

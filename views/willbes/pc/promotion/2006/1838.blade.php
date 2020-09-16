@@ -64,7 +64,7 @@
 		.evtInfoBox ul {margin-bottom:30px}
 		.evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
 
-        /************************************************************/      
+        /************************************************************/       
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">

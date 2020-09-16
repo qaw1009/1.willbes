@@ -20,11 +20,11 @@ class Free extends BaseBoard
         'reply' => 1        //본문 답변글첨부
     ];
     private $_on_off_swich = [
-        '91' => [                                       // bm_idx 합격수기관리 -> 합격수기
+        '91' => [                               // bm_idx 합격수기관리 -> 합격수기
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
-            'create' => [                               // 등록 항목 설정
+            'create' => [                       // 등록 항목 설정
                 'subject' => 'show',            // 과목 적용
-                'mem_name' => 'show',            // 회원명 과목 적용
+                'mem_name' => 'show',           // 회원명 과목 적용
             ],
         ]
     ];
@@ -231,7 +231,7 @@ class Free extends BaseBoard
         //과목조회
         $arr_subject = $this->_getSubjectArray();
 
-        // 과목 조회
+        // 항목 설정 (임용)
         $arr_swich = element($this->bm_idx,$this->_on_off_swich);
         if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
             $arr_swich = null;
@@ -277,7 +277,7 @@ class Free extends BaseBoard
 
         // 임용 추가
         $arr_swich = element($this->bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_reqP('site_code'),$arr_swich['site_code']) === true)){
+        if(empty($arr_swich) === false && in_array($this->_reqP('site_code'),$arr_swich['site_code']) === true){
             $rules = array_merge($rules, [
                 ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
                 ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],

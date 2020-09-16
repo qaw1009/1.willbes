@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportReview extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/subject',);
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store');
@@ -21,12 +21,12 @@ class SupportReview extends BaseSupport
         'reply_status_ccd_complete' => '621004'  //답변등록상태 (답변완료)
     ];
     private $_on_off_swich = [
-        '115' => [                              // bm_idx=115
-            'site' => 'd_none',                 // 과정 노출여부
-            'cate' => 'd_none',                 // 카테고리 노출여부
-            'consult_type' => 'd_none',         // 상담유형 노출여부
-            'default_consult_type' => '622006', // 상담유형 디폴트 선택
-            'arr_table_width' => [65,555,100,120,100]
+        '91' => [                               // bm_idx 수강평/합격수기관리 -> 합격수기
+            'campus' => 'd_none',               // 캠퍼스 노출여부
+            'subject' => 'show',                // 과목 노출여부
+            'name' => 'show',                   // 작성자 노출여부
+            'site_code' => ['2017','2018','2002'],     // 적용 사이트 [임용]
+            'arr_table_width' => [65,120,'',60,90,100,90]
         ]
     ];
 
@@ -65,8 +65,11 @@ class SupportReview extends BaseSupport
         $get_page_params .= '&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
 
         //사이트목록 (과정)
-        //$arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
-        /*unset($arr_base['site_list'][config_item('app_intg_site_code')]);*/
+        $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
+        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
+
+        //과목
+        $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
 
         // 카테고리 조회
         if ($this->_site_code == config_item('app_intg_site_code')) {
@@ -139,6 +142,12 @@ class SupportReview extends BaseSupport
             }
         }
 
+        // 프론트 ui 셋팅
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+            $arr_swich = null;
+        }
+
         $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName';
         $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
         $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
@@ -176,6 +185,7 @@ class SupportReview extends BaseSupport
             'list'=>$list,
             'paging' => $paging,
             'get_params' => $get_params,
+            'arr_swich' => $arr_swich,
         ]);
     }
 

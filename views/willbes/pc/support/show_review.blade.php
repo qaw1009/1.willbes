@@ -24,22 +24,27 @@
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                     <colgroup>
-                                        <col style="width: 640px;">
-                                        <col style="width: 150px;">
+                                        <col>
+                                        <col style="width: 90px;">
+                                        <col style="width: 180px;">
                                         <col style="width: 150px;">
                                     </colgroup>
                                     <thead>
                                     <tr>
-                                        <th colspan="3" class="w-list tx-left pl20">
+                                        <th colspan="4" class="w-list tx-left pl20">
                                             @if($data['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}" style="marign-right: 5px;">@endif
                                             <strong>{{$data['Title']}}</strong>
                                         </th>
                                     </tr>
                                     <tr>
                                         <td class="w-acad tx-left pl20">
-                                            <span class="oBox onlineBox NSK">{{$data['SiteGroupName']}}</span>
-                                            <span class="w-lec pl5"><span class="oBox campus_{{$data['CampusCcd']}} NSK">{{$data['CampusCcd_Name'] or ''}}</span></span>
+                                            <dl>
+                                                <dt>{{$data['SiteGroupName']}}<span class="row-line">|</span></dt>
+                                                <dt>{{$arr_base['subject'][$data['SubjectIdx']] or ''}}</dt>
+                                            </dl>
+                                            <span class="row-line">|</span>
                                         </td>
+                                        <td>{!! $data['RegMemIdx'] == sess_data('mem_idx') ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>
@@ -66,7 +71,7 @@
                                     <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
                                         <a href="{{front_url($default_path.'/index?'.$get_params)}}">목록</a>
                                     </div>
-                                    @if(empty($arr_swich['mod_btn']) === false && $data['RegMemIdx'] == sess_data('mem_idx'))
+                                    @if(empty($arr_swich['mod_btn']) === false && empty(sess_data('mem_idx')) === false && $data['RegMemIdx'] == sess_data('mem_idx'))
                                         <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_left">
                                             <a href="{{front_url($default_path.'/create?'.$get_params.'&board_idx='.$board_idx)}}">수정</a>
                                         </div>

@@ -22,12 +22,12 @@ class SupportReview extends BaseSupport
     ];
     private $_on_off_swich = [
         '91' => [                               // bm_idx 수강평/합격수기관리 -> 합격수기
+            'site_code' => ['2017','2018','2002'],     // 적용 사이트 [임용]
             'campus' => 'd_none',               // 캠퍼스 노출여부
             'subject' => 'show',                // 과목 노출여부
             'name' => 'show',                   // 작성자 노출여부
-            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+            'mod_btn' => 'show',                // 수정버튼
             'arr_table_width' => [65,120,'',60,90,100,90],
-            'mod_btn' => 'show'     // 수정버튼
         ]
     ];
 
@@ -196,6 +196,10 @@ class SupportReview extends BaseSupport
 
     public function create()
     {
+        if(empty($this->session->userdata('mem_idx')) === true){
+            show_alert('로그인 후 이용해주세요.');
+        }
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);
@@ -269,7 +273,7 @@ class SupportReview extends BaseSupport
             if (empty($data)) {
                 show_alert('게시글이 존재하지 않습니다.', 'back');
             }
-            if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
                 show_alert('잘못된 접근 입니다.', 'back');
             }
             $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
@@ -324,6 +328,9 @@ class SupportReview extends BaseSupport
             $arr_swich = null;
         }
 
+        //과목조회
+        $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
+
         $arr_condition = [
             'EQ' => [
                 'BmIdx' => $this->_bm_idx,
@@ -336,7 +343,7 @@ class SupportReview extends BaseSupport
         }
 
         $column = '
-            BoardIdx, b.SiteCode, MdCateCode, CampusCcd
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd, SubjectIdx
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
@@ -345,7 +352,7 @@ class SupportReview extends BaseSupport
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(RegType=1, RegMemName, RegMemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName, Category_String
             , AttachData

@@ -22,7 +22,7 @@ class SupportReview extends BaseSupport
     ];
     private $_on_off_swich = [
         '91' => [                               // bm_idx 수강평/합격수기관리 -> 합격수기
-            'site_code' => ['2017','2018','2002'],     // 적용 사이트 [임용]
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'campus' => 'd_none',               // 캠퍼스 노출여부
             'subject' => 'show',                // 과목 노출여부
             'name' => 'show',                   // 작성자 노출여부

@@ -20,8 +20,10 @@ class Free extends BaseBoard
         'reply' => 1        //본문 답변글첨부
     ];
     private $_on_off_swich = [
-        'create' => [                           // 적용 페이지
-            'product_subject' => ['2017','2018'] // 적용 사이트코드
+        '91' => [                                       // bm_idx 합격수기관리 -> 합격수기
+            'create' => [                               // 등록 항목 설정
+                'product_subject' => ['2017','2018']    // 임용 사이트 과목 적용
+            ],
         ]
     ];
 
@@ -223,8 +225,9 @@ class Free extends BaseBoard
         }
 
         // 과목 조회
-        if(in_array($site_code,$this->_on_off_swich['create']['product_subject']) === true){
-            $arr_swich = $this->_on_off_swich['create'];
+        $arr_create_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(empty($arr_create_swich) === false && in_array($site_code,$arr_create_swich['create']['product_subject']) === true){
+            $arr_swich = $arr_create_swich['create'];
             $product_subject = $this->boardModel->listSiteProductSubject($arr_swich['product_subject']);
         }
 

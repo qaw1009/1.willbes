@@ -38,19 +38,19 @@
         </div>
 
         <div class="evtCtnsBox evt_top">  
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_top.jpg" alt="형사법 무료특강">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_top.jpg" alt="형법 무료특강">            
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_01.jpg" alt="형사법">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_01.jpg" alt="형법">
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/bPPX2qZgSBg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1004&course_idx=1072" target="_blank">형사법 무료특강 온라인강의 바로가기  ></a>
+            <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1004&course_idx=1072" target="_blank">형법 무료특강 온라인강의 바로가기  ></a>
         </div>  
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_02.jpg" alt="형사법 무료특강" usemap="#Map1801_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_02.jpg" alt="형법 무료특강" usemap="#Map1801_01">
             <map name="Map1801_01">
               <area shape="rect" coords="130,403,245,443" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/167023" target="_blank">
               <area shape="rect" coords="379,405,495,442" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/167489" target="_blank">
@@ -63,7 +63,7 @@
         </div>  
         
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_03.jpg" alt="형사법 질문하기">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_03.jpg" alt="형법 질문하기">            
         </div>
         {{--댓글url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

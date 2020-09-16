@@ -35,6 +35,7 @@ class ClassroomFModel extends WB_Model
         'lectureroom_seat_register' => 'lms_lectureroom_seat_register',
         'lectureroom_r_unit_r_seat' => 'lms_lectureroom_r_unit_r_seat',
         'lectureroom_log' => 'lms_lectureroom_log',
+        'lectureroom_unit_download_log' => 'lms_lectureroom_unit_download_log',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
         'member' => 'lms_member',
@@ -1551,6 +1552,41 @@ class ClassroomFModel extends WB_Model
     }
 
     /**
+     * 강의실회차 좌석배치도 첨부파일 다운로드 로그
+     * @param null $idx
+     * @return array|bool
+     */
+    public function seatMapDownloadLog($idx=null)
+    {
+        try {
+            if (empty($idx) === false) {
+                $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
+                $refer_domain = parse_url($refer_info, PHP_URL_HOST);
+                $this->__userAgent($agent_short, $agent, $platform);
+                $input_data = [
+                    'LrUnitCode' => $idx,
+                    'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
+                    'ReferDomain' => (empty($refer_domain) ? null : $refer_domain),
+                    'ReferPath' => (empty($refer_info) ? null : $refer_info),
+                    'ReferQuery' => urldecode($_SERVER['QUERY_STRING']),
+                    'UserPlatform' => $platform,
+                    'UserAgent' => substr($agent, 0, 199),
+                    'RegIp' => $this->input->ip_address()
+                ];
+
+                if ($this->_conn->set($input_data)->insert($this->_table['lectureroom_unit_download_log']) === false) {
+                    //echo $this->_conn->last_query();
+                    throw new \Exception('저장에 실패했습니다.');
+                }
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 강의실 회차 정보 유효성 검사
      * @param $lr_code
      * @param $lr_unit_code
@@ -2071,5 +2107,30 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
+    }
+
+    private function __userAgent(&$agent_short, &$agent, &$platform)
+    {
+        $this->load->library('user_agent');
+
+        if ($this->agent->is_browser())
+        {
+            $agent_short = $this->agent->browser().' '.$this->agent->version();
+        }
+        elseif ($this->agent->is_robot())
+        {
+            $agent_short = $this->agent->robot();
+        }
+        elseif ($this->agent->is_mobile())
+        {
+            $agent_short = $this->agent->mobile();
+        }
+        else
+        {
+            $agent_short = 'Unidentified User Agent';
+        }
+
+        $agent = $this->agent->agent_string();
+        $platform = $this->agent->platform();
     }
 }

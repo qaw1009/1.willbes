@@ -21,6 +21,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:250px; right:10px; z-index:1;}
+        .sky ul li {padding-bottom:15px;}
+
         .wb_top_banner {background:#0A0A0A;}    
         .wb_top {background:#63553B url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
 
@@ -51,6 +54,12 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">
+            
+        <div class="sky">
+            <ul>          
+                <li><a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_sky.png" title="집중소 인증하기" /></a></li>
+            </ul>
+        </div>
 
         <div class="evtCtnsBox wb_top_banner">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/zipzongso.jpg"  alt=""  />

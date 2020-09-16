@@ -46,10 +46,10 @@
                                     </select>
                                 @endif
                                 @if(empty($arr_base['subject']) === false)
-                                    <select id="s_subject" name="s_subject" title="과목" class="seleLecA {{$arr_swich['subject'] or 'd_none'}}" onchange="goUrl('s_subject',this.value)">
+                                    <select id="subject_idx" name="subject_idx" title="과목" class="seleLecA {{$arr_swich['subject'] or 'd_none'}}" onchange="goUrl('subject_idx',this.value)" @if(empty(element('s_cate_code', $arr_input)) === true) disabled @endif>
                                         <option value="">과목</option>
                                         @foreach($arr_base['subject'] as $key => $val)
-                                            <option value="{{$val['SubjectIdx']}}" @if(element('s_subject', $arr_input) == $val['SubjectIdx'])selected="selected"@endif>{{$val['SubjectName']}}</option>
+                                            <option value="{{$key}}" @if(element('subject_idx', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                                         @endforeach
                                     </select>
                                 @endif

@@ -25,7 +25,7 @@ class SupportReview extends BaseSupport
             'campus' => 'd_none',               // 캠퍼스 노출여부
             'subject' => 'show',                // 과목 노출여부
             'name' => 'show',                   // 작성자 노출여부
-            'site_code' => ['2017','2018','2002'],     // 적용 사이트 [임용]
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'arr_table_width' => [65,120,'',60,90,100,90],
             'mod_btn' => 'show'     // 수정버튼
         ]

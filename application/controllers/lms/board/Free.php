@@ -23,8 +23,8 @@ class Free extends BaseBoard
         '91' => [                               // bm_idx 합격수기관리 -> 합격수기
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'create' => [                       // 등록 항목 설정
-                'subject' => 'show',            // 과목 적용
-                'mem_name' => 'show',           // 회원명 과목 적용
+                'subject' => 'show',            // 과목
+                'mem_name' => 'show',           // 회원명
             ],
         ]
     ];

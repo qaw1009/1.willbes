@@ -90,7 +90,7 @@
                 <div class="sliderBest cSliderH">
                     <div class="best-tit">이 시기 BEST 강좌</div>
                     <div class="sliderControlsHover">
-                        @foreach($best_product as $idx => $row)
+                        @foreach(element('BestProduct', $data, []) as $idx => $row)
                             <div class="lec-profile p_re">
                                 <div class="w-tit">
                                     {{-- 상품상세 링크 --}}
@@ -201,7 +201,7 @@
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
-                <ul class="tabWrap tabDepthProf tabDepthProf_{{$data['tabUseCount']}}">
+                <ul class="tabWrap tabDepthProf tabDepthProf_{{ element('tabUseCount', $data, 0) }}">
                     <li><a href="#none" id="hover_home" onclick="goTabUrl('tab', 'home');">{{$data['AppellationCcdName']}} 홈</a></li>
                     <li><a href="#none" id="hover_open_lecture" onclick="goTabUrl('tab', 'open_lecture');">개설강좌</a></li>
                     <li><a href="#none" id="hover_free_lecture" onclick="goTabUrl('tab', 'free_lecture');">무료강좌</a></li>

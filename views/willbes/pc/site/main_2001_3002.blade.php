@@ -150,21 +150,23 @@
     </div>
     <!-- End Container -->
 
-    {{--//유튜브 모달팝업--}}
-    <style type="text/css">
-        #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
-    </style>
-    <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
-        <div class="Layer-Cont" id="youtube_box">
-            <iframe width="850" height="482" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    @if (date('YmdHi') <= '202009191159')
+        {{--//유튜브 모달팝업--}}
+        <style type="text/css">
+            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+        </style>
+        <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
+            <div class="Layer-Cont" id="youtube_box">
+                <iframe width="850" height="482" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <ul class="btnWrapbt popbtn mt10">
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+            </ul>
         </div>
-        <ul class="btnWrapbt popbtn mt10">
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
-        </ul>
-    </div>
-    <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-    {{--유튜브 모달팝업//--}}
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        {{--유튜브 모달팝업//--}}
+    @endif
 
     <script type="text/javascript">
         $(document).ready(function() {

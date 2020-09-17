@@ -118,7 +118,7 @@
                                                 <img src="{{ img_url('prof/icon_file.gif') }}">
                                             @endif
                                         </td>
-                                        <td class="{{$arr_swich['name'] or 'd_none'}}">{!! $row['RegMemIdx'] == sess_data('mem_idx') ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}</td>
+                                        <td class="{{$arr_swich['name'] or 'd_none'}}">{!! (empty(sess_data('mem_idx')) === false && $row['RegMemIdx'] == sess_data('mem_idx')) ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}</td>
                                         <td class="w-date">{{$row['RegDatm']}}</td>
                                         <td class="w-click">{{$row['TotalReadCnt']}}</td>
                                     </tr>

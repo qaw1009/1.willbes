@@ -44,20 +44,20 @@
                                             </dl>
                                             <span class="row-line">|</span>
                                         </td>
-                                        <td>{!! $data['RegMemIdx'] == sess_data('mem_idx') ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>
+                                        <td>{!! (empty(sess_data('mem_idx')) === false && $data['RegMemIdx'] == sess_data('mem_idx')) ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td id="board_content" class="w-txt tx-left" colspan="3">
+                                        <td id="board_content" class="w-txt tx-left" colspan="4">
                                             {!! $data['Content'] !!}
                                         </td>
                                     </tr>
                                     @if(empty($data['AttachData']) === false)
                                         <tr>
-                                            <td class="w-file tx-left" colspan="3">
+                                            <td class="w-file tx-left" colspan="4">
                                                 @foreach($data['AttachData'] as $row)
                                                     <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>

@@ -23,9 +23,9 @@ class SupportReview extends BaseSupport
     private $_on_off_swich = [
         '91' => [                               // bm_idx 수강평/합격수기관리 -> 합격수기
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
-            'campus' => 'd_none',               // 캠퍼스 노출여부
-            'subject' => 'show',                // 과목 노출여부
-            'name' => 'show',                   // 작성자 노출여부
+            'campus' => 'd_none',               // 캠퍼스
+            'subject' => 'show',                // 과목
+            'name' => 'show',                   // 작성자
             'mod_btn' => 'show',                // 수정버튼
             'arr_table_width' => [65,120,'',60,90,100,90],
         ]
@@ -352,7 +352,7 @@ class SupportReview extends BaseSupport
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
             , VocCcd_Name, MdCateCode_Name, SubJectName
-            , IF(RegType=1, RegMemName, RegMemName) AS RegName
+            , IF(RegType=1, \'\', RegMemName) AS RegName
             , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
             , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName, Category_String
             , AttachData

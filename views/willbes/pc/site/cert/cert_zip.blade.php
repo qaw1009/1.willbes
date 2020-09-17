@@ -70,17 +70,16 @@ select option:before {height:20px}
     </div>    
     <div class="popCts">
         <h3>◎ 인증파일 등록</h3>
-        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate="">                
-            <input type="hidden" name="_csrf_token" value="704b3d6dd0cda8a184bec9866fd219e6">                            
-            <input type="hidden" name="_method" value="POST">
-            <input type="hidden" name="CertIdx" id="CertIdx" value="21">
-            <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="684003">
+        <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate="">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="CertIdx" id="CertIdx" value="{{$cert_idx}}">
+            <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$data['CertTypeCcd']}}">
             <div class="file">
                 <ul>
                     <li>
-                        <input type="hidden" name="WorkType" value="경찰공무원">
-                        <label for="Affiliation">지점</label> <input type="text" id="Affiliation" name="Affiliation" class="iptNm" maxlength="30">
-                        <label for="Affiliation">준비 직렬</label> <input type="text" id="Position" name="Position" class="iptNm" maxlength="30"> 예) 일반, 경행, 승진, 해경
+                        <label for="Affiliation">지점</label> <input type="text" id="TakeArea" name="TakeArea" class="iptNm" maxlength="30">
+                        <label for="Affiliation">준비 직렬</label> <input type="text" id="TakeKind" name="TakeKind" class="iptNm" maxlength="30"> 예) 일반, 경행, 승진, 해경
                     </li>
                     <li>
                         <ul class="attach">
@@ -105,5 +104,54 @@ select option:before {height:20px}
     </div>
     <!--popCts//-->            
 </div>
+
+<script src="/public/js/willbes/product_util.js"></script>
+<script type="text/javascript">
+    var $regi_form = $('#regi_form');
+
+    $(document).ready(function() {
+
+        $("#btn_cert_check").click(function () {
+
+            @if($data["IsCertAble"] !== 'Y')
+            alert("인증 신청을 할 수 없습니다.");return;
+            @endif
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            @if($data['ApprovalStatus'] == 'A' )
+            alert("신청하신 내역이 존재하며 '미승인' 상태입니다. ");return;
+            @elseif($data['ApprovalStatus'] == 'Y' )
+            alert("이미 '승인'된 인증입니다.");return;
+            @endif
+
+            if ($('#TakeArea').val() == '') {
+                alert('지점을 입력해 주세요.');
+                $('#Affiliation').focus();
+                return;
+            }
+            if ($('#TakeKind').val() == '') {
+                alert('준비 직렬을 입력해 주세요.');
+                $('#Position').focus();
+                return;
+            }
+            if ($('#attachfile').val() == '') {
+                alert('인증파일을 등록해 주세요.');
+                return;
+            }
+            var _url = '{!! front_url('CertApply/store/') !!}';
+            if (!confirm('저장하시겠습니까?')) { return true; }
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert('인증 신청이 완료되었습니다.');
+                    opener.location.reload();
+                    self.close();
+                }
+            }, showValidateError, null, false, 'alert');
+
+        });
+    });
+
+</script>
 
 @stop

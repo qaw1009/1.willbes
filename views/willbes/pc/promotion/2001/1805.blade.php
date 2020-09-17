@@ -57,7 +57,7 @@
             
         <div class="sky">
             <ul>          
-                <li><a href="javascript:certOpen();"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_sky.png" title="집중소 인증하기" /></a></li>
+                <li><a href="#none" onclick="javascript:certOpen()"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_sky.png" title="집중소 인증하기" /></a></li>
             </ul>
         </div>
 
@@ -174,7 +174,18 @@
              
     </div>
     <!-- End Container -->
-    <script type="text/javascript">    
+    <script type="text/javascript">
+        function certOpen() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($cert_apply) === false)
+            alert("이미 인증이 완료된 상태입니다.");return;
+            @endif
+            @if(empty($arr_promotion_params) === false)
+            var url = '{{ site_url('/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
+            window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+            @endif
+        }
+
         $(document).ready(function() {
             var BxBook = $('.slidesbenefit').bxSlider({
                 slideWidth: 170,

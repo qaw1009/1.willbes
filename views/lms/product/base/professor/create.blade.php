@@ -224,19 +224,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group form-control-static">
+                <div class="form-group">
                     <label class="control-label col-md-2">단강좌 노출형태 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
                         <div class="radio">
-                            @foreach($onlec_view_ccd as $key => $val)
+                            @foreach($arr_onlec_view_ccd as $key => $val)
                                 <input type="radio" id="onlec_view_ccd_{{$key}}" name="onlec_view_ccd" value="{{$key}}" class="flat" @if($data['OnLecViewCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> <label for="onlec_view_ccd_{{$key}}" class="input-label">{{$val}}</label>
                             @endforeach
                             <span class="pl-20"># 사용자단 교수소개 영역내 단강좌 노출형태를 설정합니다.</span>
                         </div>
                     </div>
                 </div>
-                <div class="form-group form-control-static">
+                <div class="form-group">
                     <label class="control-label col-md-2">수강후기 노출여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
@@ -246,7 +246,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group form-control-static">
+                <div class="form-group">
+                    <label class="control-label col-md-2">출력호칭 선택 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10">
+                        <div class="radio">
+                            @foreach($arr_appellation_ccd as $key => $val)
+                                <input type="radio" id="appellation_ccd_{{$key}}" name="appellation_ccd" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1)) checked="checked" @endif> <label for="appellation_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2">교수진소개 사용여부 <span class="required">*</span>
                     </label>
                     <div class="col-md-10">
@@ -256,38 +267,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group form-control-static">
-                    <label class="control-label col-md-2">출력호칭 선택 <span class="required">*</span>
+                @if(empty($arr_intro_def_tab_ccd) === false)
+                    <div class="form-group">
+                        <label class="control-label col-md-2">교수진소개 디폴트탭 선택 (임용)
+                        </label>
+                        <div class="col-md-10">
+                            <div class="radio">
+                                @foreach($arr_intro_def_tab_ccd as $key => $val)
+                                    <input type="radio" id="intro_def_tab_ccd_{{$key}}" name="intro_def_tab_ccd" value="{{$key}}" class="flat" @if($data['IntroDefTabCcd'] == $key) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_def_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <div class="form-group">
+                    <label class="control-label col-md-2">교수 커뮤니티
                     </label>
                     <div class="col-md-10">
-                        <div class="radio">
-                            @foreach($appellation_ccd as $key => $val)
-                                <input type="radio" id="appellation_ccd_{{$key}}" name="appellation_ccd" value="{{$key}}" class="flat" @if($data['AppellationCcd'] == $key || ($method == 'POST' && $loop->index === 1))checked="checked"@endif> <label for="appellation_ccd_{{$key}}" class="input-label">{{$val}}</label>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="is_cafe_use">교수카페정보
-                    </label>
-                    <div class="col-md-9">
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="radio item">
-                                    <span class="pr-10">[사용유무]</span>
-                                    <input type="radio" id="is_cafe_use_y" name="is_cafe_use" class="flat" value="Y" required="required" title="사용여부" @if(empty($data['cafe_url']) === false) checked="checked" @endif/> <label for="is_cafe_use_y" class="input-label">사용</label>
-                                    <input type="radio" id="is_cafe_use_n" name="is_cafe_use" class="flat" value="N" @if($method == 'POST' || empty($data['cafe_url']) === true) checked="checked" @endif/> <label for="is_cafe_use_n" class="input-label">미사용</label>
-                                </div>
-                            </div>
-                            <div class="control-label col-md-1">[카페 URL]</div>
+                            <div class="control-label col-md-1-1">[홈페이지 URL]</div>
                             <div class="col-md-6 item">
-                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" required="required_if:is_cafe_use,Y" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}" disabled="disabled">
+                                <input type="text" id="homep_url" name="homep_url" class="form-control" pattern="url" title="홈페이지 URL" value="{{ $data['homep_url'] or '' }}">
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="control-label col-md-1-1">[카페 URL]</div>
+                            <div class="col-md-6 item">
+                                <input type="text" id="cafe_url" name="cafe_url" class="form-control" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}">
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="control-label col-md-1-1">[블로그 URL]</div>
+                            <div class="col-md-6 item">
+                                <input type="text" id="blog_url" name="blog_url" class="form-control" pattern="url" title="블로그 URL" value="{{ $data['blog_url'] or '' }}">
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 {{-- 강사료 정산 계약정보 --}}
                 @foreach($arr_calc_target as $on_off_type => $rows)
                     <div class="form-group">
@@ -413,7 +429,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2" for="prof_index_img">교수영역 이미지 (jpg, png)
+                    <label class="control-label col-md-2" for="prof_index_img">교수영역 이미지<br/>(jpg, png)
                     </label>
                     <div class="col-md-9">
                         <div class="row">
@@ -491,7 +507,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">교수영역 이벤트 배너<br/>(188X206, jpg, png)
+                    <label class="control-label col-md-2">교수영역 이벤트 배너<br/>(jpg, png)
                     </label>
                     <div class="col-md-9">
                         <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
@@ -523,7 +539,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-2">교수영역 이벤트 배너2<br/>(188X206, jpg, png)
+                    <label class="control-label col-md-2">교수영역 이벤트 배너2<br/>(jpg, png)
                     </label>
                     <div class="col-md-9">
                         <p class="form-control-static bold"># 배너 2개 이상 등록 시 자동 롤링됨</p>
@@ -696,10 +712,18 @@
                 $('#wprof_profile').html('');
                 $('#wbook_content').html('');
                 $('#selected_professor').html('');
+
                 // 카테고리 검색 초기화
                 $regi_form.find('input[name="subject_mapping_code[]"]').remove();
                 $regi_form.find('input[name="del_prof_calc_idx[]"]').remove();
                 $('#selected_subject_mapping').html('');
+
+                // 교수진소개 디폴트탭 선택 초기화
+                if ($(this).val().length > 0 && '{{ implode(',', $arr_intro_def_tab_use_site) }}'.indexOf($(this).val()) > -1) {
+                    $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('enable');
+                } else {
+                    $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('disable');
+                }
             });
 
             // 교수 검색 or 카테고리 + 과목 맵핑 검색
@@ -778,16 +802,6 @@
                 }
 
                 fnPlayerProf($regi_form.find('input[name="idx"]').val(), $(this).data('view-type'));
-            });
-
-            // 교수카페정보
-            $regi_form.on('ifChanged ifCreated', 'input[name="is_cafe_use"]:checked', function() {
-                var $cafe_url = $regi_form.find('input[name="cafe_url"]');
-                if($(this).val() === 'Y') {
-                    $cafe_url.prop('disabled', false);
-                } else {
-                    $cafe_url.prop('disabled', true);
-                }
             });
 
             // 교수영역 이미지 삭제

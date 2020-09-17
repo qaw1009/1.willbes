@@ -14,8 +14,24 @@
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20">
-        @if($__cfg['IsPassSite'] === false)
-        {{-- 온라인사이트만 노출 --}}
+        <form id="url_form" name="url_form" method="GET">
+            @foreach($arr_input as $key => $val)
+                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
+            @endforeach
+        </form>
+        @if(isset($arr_base['category']) === true)
+            <div class="curriWrap c_both">
+                {{-- 카테고리 --}}
+                <ul class="curriTabs c_both mb20">
+                    @foreach($arr_base['category'] as $idx => $row)
+                        <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if($def_cate_code == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if($__cfg['IsPassSite'] === false && $view_type == 'v1')
+        {{-- 온라인 사이트 && v1 뷰 타입만 노출 --}}
         <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460">
@@ -32,24 +48,8 @@
         <!-- willbes-NoticeWrap -->
         @endif
 
-        <form id="url_form" name="url_form" method="GET">
-            @foreach($arr_input as $key => $val)
-                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
-            @endforeach
-        </form>
-        @if(isset($arr_base['category']) === true)
-        <div class="curriWrap c_both">
-            {{-- 카테고리 --}}
-            <ul class="curriTabs c_both mb20">
-                @foreach($arr_base['category'] as $idx => $row)
-                    <li><a href="#none" onclick="goUrl('cate_code', '{{ $row['CateCode'] }}');" class="@if($def_cate_code == $row['CateCode']) on @endif">{{ $row['CateName'] }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-
-        @if($__cfg['IsPassSite'] === false)
-        {{-- 온라인사이트만 노출 --}}
+        @if($__cfg['IsPassSite'] === false && $view_type == 'v1')
+        {{-- 온라인 사이트 && v1 뷰 타입만 노출 --}}
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
@@ -133,7 +133,7 @@
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
                     @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '/?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '/?cate_code=' . $def_cate_code . '&';
+                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&';
                         $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name);
                     @endphp
                     <a class="profBox" href="{{ front_url($show_url) }}">

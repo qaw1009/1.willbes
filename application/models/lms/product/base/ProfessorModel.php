@@ -19,7 +19,7 @@ class ProfessorModel extends WB_Model
         'board' => 'lms_board'
     ];
     private $_refer_type = [
-        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'cafe_url', 'yt_url1', 'yt_url2', 'yt_url3'],
+        'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'homep_url', 'cafe_url', 'blog_url', 'yt_url1', 'yt_url2', 'yt_url3'],
         'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img']
     ];
     private $_refer_opt_code = ['sample_url1_opt_code', 'sample_url2_opt_code', 'sample_url3_opt_code', 'yt_url1_opt_code', 'yt_url2_opt_code', 'yt_url3_opt_code'];
@@ -466,7 +466,7 @@ class ProfessorModel extends WB_Model
     {
         $column = '
             P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.ProfContent, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
-                , P.AppellationCcd, P.IsOpenStudyComment, P.IsDispIntro
+                , P.AppellationCcd, P.IntroDefTabCcd, P.IsOpenStudyComment, P.IsDispIntro
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -514,6 +514,7 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
+                'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -622,6 +623,7 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
+                'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

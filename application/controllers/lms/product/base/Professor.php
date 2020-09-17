@@ -65,7 +65,8 @@ class Professor extends \app\controllers\BaseController
         $idx = null;
         $data = null;
         $arr_subject_idx = [];
-        $codes = $this->codeModel->getCcdInArray(['719','724']);
+        $codes = $this->codeModel->getCcdInArray(['719', '724', '732']);    // 단강좌노출형태, 호칭, 교수진소개디폴트탭
+        $arr_intro_def_tab_use_site = ['2017', '2018'];  // 교수진소개 디폴트탭 사용 사이트 코드 (임용)
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
@@ -98,6 +99,11 @@ class Professor extends \app\controllers\BaseController
 
             // 교수 게시판 데이터 조회
             $data['BoardInfo'] = $this->professorModel->listProfessorBoardInfo($idx);
+
+            // 교수진소개 디폴트탭 사용 사이트 이외에는 공통코드 초기화
+            if (in_array($data['SiteCode'], $arr_intro_def_tab_use_site) === false) {
+                $codes['732'] = null;
+            }
         }
 
         $this->load->view('product/base/professor/create', [
@@ -108,8 +114,10 @@ class Professor extends \app\controllers\BaseController
             'arr_calc_target' => $this->professorModel->listProfessorCalcRateTarget(),
             'arr_subject_idx' => $arr_subject_idx,
             'arr_send_callback_ccd' => $this->codeModel->getCcd(706, 'CcdValue'),
-            'onlec_view_ccd' => $codes['719'],
-            'appellation_ccd' => $codes['724']
+            'arr_onlec_view_ccd' => $codes['719'],
+            'arr_appellation_ccd' => $codes['724'],
+            'arr_intro_def_tab_ccd' => $codes['732'],
+            'arr_intro_def_tab_use_site' => $arr_intro_def_tab_use_site
         ]);
     }
 

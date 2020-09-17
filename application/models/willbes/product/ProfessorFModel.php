@@ -52,14 +52,15 @@ class ProfessorFModel extends WB_Model
             }
 
             $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.ProfContent
-                , PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent, Pf.AppellationCcd, Pf.IsOpenStudyComment 
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '") as IsTpassBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '") as IsTccBoard
-                , json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '") as IsAnonymousBoard
-                , (Select Sc.CcdName From '. $this->_table['code'].' as Sc Where Sc.Ccd = Pf.AppellationCcd And Sc.IsStatus=\'Y\' And Sc.IsUse=\'Y\') As AppellationCcdName
+                , PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent, PF.AppellationCcd, PF.IntroDefTabCcd, PF.IsOpenStudyComment 
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '"), "N") as IsNoticeBoard
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '"), "N") as IsQnaBoard
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '"), "N") as IsDataBoard
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tpass'] . '"), "N") as IsTpassBoard
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '"), "N") as IsTccBoard
+                , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '"), "N") as IsAnonymousBoard
+                , (select SCA.CcdName from '. $this->_table['code'].' as SCA where SCA.Ccd = PF.AppellationCcd and SCA.IsStatus = "Y" and SCA.IsUse = "Y") as AppellationCcdName
+                , if(PF.IntroDefTabCcd is null, "", (select SCI.CcdValue from '. $this->_table['code'].' as SCI where SCI.Ccd = PF.IntroDefTabCcd and SCI.IsStatus = "Y" and SCI.IsUse = "Y")) as IntroDefTabId
                 ' . $add_column;
         }
 

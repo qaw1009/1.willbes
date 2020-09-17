@@ -426,7 +426,7 @@ class OrderListModel extends BaseOrderModel
                 $from .= '
                     left join ' . $this->_table['product_r_lectureroom'] . ' as PLR
                         on OP.ProdCode = PLR.ProdCode and PLR.IsStatus = "Y"';
-                $column .= ', if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-"), "") as LectureRoomSeatNo';
+                $column .= ', if(PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-"), "") as LectureRoomSeatNo';
                 $excel_column .= '';
             }
         }
@@ -1184,7 +1184,13 @@ class OrderListModel extends BaseOrderModel
             , (select SubjectName from ' . $this->_table['subject'] . ' where SubjectIdx = PL.SubjectIdx and IsStatus = "Y") as SubjectName
             , substring_index(fn_product_professor_name(P.ProdCode), ",", 1) as ProfName
             , fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
-            , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" and PLR.LrCode is not null, replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-"), "") as LectureRoomSeatNo';
+            , (case 
+                when PLR.LrCode is not null
+                    then replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, OP.ProdCode), "::", "-")
+                when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '"
+                    then replace(fn_order_lectureroom_seat_data(O.OrderIdx, OP.OrderProdIdx, OP.ProdCode, null), "::", "-")
+                else ""
+              end) as LectureRoomSeatNo';
 
         $from = '
             from ' . $this->_table['order'] . ' as O

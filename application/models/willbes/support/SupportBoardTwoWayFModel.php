@@ -1041,4 +1041,27 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('SELECT ' . $column . $from . $where)->result_array();
     }
+
+    /**
+     * 등록 게시글의 회원명 조회
+     * @param integer $board_idx
+     * @return array
+     */
+    public function getBoardForMemberInfo($board_idx=null)
+    {
+        $column = 'RegMemName as RegName';
+        $from = "
+            from {$this->_table['twoway_board_2']}
+        ";
+        $arr_condition = [
+            'EQ' => [
+                'BoardIdx' => $board_idx,
+                'IsUse' => 'Y'
+            ]
+        ];
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' .$column .$from .$where)->row_array();
+    }
+
 }

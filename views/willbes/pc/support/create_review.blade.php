@@ -89,12 +89,17 @@
                                 <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
                                 <td class="w-file answer tx-left" colspan="4">
                                     <ul class="attach">
-                                        @for($i = 0; $i < $attach_file_cnt; $i++)
+                                        @for($i = 0; $i < 2; $i++)
                                             <li>
                                                 <!--div class="filetype"-->
                                                 <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"-->
+                                                @if($i == 0)
+                                                    <span>합격인증</span>
+                                                @elseif($i == 1)
+                                                    <span>파일첨부</span>
+                                                @endif
                                                 <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
                                                 <!--/span>
                                                 <input class="file-reset NSK" type="button" value="X" /-->
@@ -102,7 +107,7 @@
                                                     <p class="">[ {{ $data['AttachData'][$i]['RealName'] }} ]
                                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx']  }}">파일삭제</a>
                                                     </p>
-                                            @endif
+                                                @endif
                                             <!--/div-->
                                             </li>
                                         @endfor
@@ -162,6 +167,26 @@
         </div>
         {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+
+    <style>
+        .w-file ul li span {
+            display: inline-block;
+            width: 116px;
+            height: 26px;
+            line-height: 26px;
+            margin-right: 4px;
+            text-align: center;
+            border: 2px solid #b8b8b8;
+            background: #fff;
+            vertical-align: middle;
+        }
+        .w-file ul li .input-file {
+            width: 50%;
+            height: 25px;
+            color: #494a4d;
+            vertical-align: middle;
+        }
+    </style>
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
@@ -248,7 +273,42 @@
 
                 return true;
             }
+
+            // 카테고리 선택
+            $regi_form.on('change', 'select[name="s_cate_code"]', function() {
+                $('#subject_idx').html('');
+
+                var obj_val = $(this).val();
+                fn_cate_subject(obj_val);
+            });
+
+            fn_cate_subject($("#s_cate_code option:selected").val());
         });
+
+        // 과목 리스트 조회
+        function fn_cate_subject(obj_val){
+            $("#subject_idx").html('');
+
+            @if(empty($arr_cate_subject) === false)
+            var json_data = {!! json_encode($arr_cate_subject) !!};
+
+            if (typeof json_data[obj_val] === 'undefined') {
+                return;
+            }
+            console.log(json_data[obj_val]);
+
+            var subject_idx = "{{ $data['SubjectIdx'] or ''}}";
+            var html = "<option value=''>과목</option>";
+            $.each(json_data[obj_val], function(key, val) {
+                var selected = "";
+                if(key == subject_idx) selected = "selected";
+                html += "<option value='" + key + "' " + selected + ">" + val + "</option>";
+            });
+
+            $("#subject_idx").html(html);
+            @endif
+        }
+
     </script>
     <!-- End Container -->
 @stop

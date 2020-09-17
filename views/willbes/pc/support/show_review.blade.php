@@ -38,10 +38,20 @@
                                     </tr>
                                     <tr>
                                         <td class="w-acad tx-left pl20">
-                                            <dl>
-                                                <dt>{{$data['SiteGroupName']}}<span class="row-line">|</span></dt>
-                                                <dt>{{$arr_base['subject'][$data['SubjectIdx']] or ''}}</dt>
-                                            </dl>
+                                            @if(empty($arr_swich['subject']) === false)
+                                                <dl>
+                                                    <dt>
+                                                        @foreach($arr_base['category'] as $row)
+                                                            @if($data['Category_String'] == $row['CateCode']){{$row['CateName']}}@endif
+                                                        @endforeach
+                                                        <span class="row-line">|</span>
+                                                    </dt>
+                                                    <dt>{{$arr_base['subject'][$data['SubjectIdx']] or ''}}</dt>
+                                                </dl>
+                                            @else
+                                                <span class="oBox onlineBox NSK">{{$data['SiteGroupName']}}</span>
+                                                @if(empty($data['CampusCcd_Name']) === false)<span class="oBox nyBox NSK">{{$data['CampusCcd_Name']}}</span>@endif
+                                            @endif
                                             <span class="row-line">|</span>
                                         </td>
                                         <td>{!! (empty(sess_data('mem_idx')) === false && $data['RegMemIdx'] == sess_data('mem_idx')) ? $data['RegName'] : hpSubString($data['RegName'],0,2,'*') !!}<span class="row-line">|</span></td>

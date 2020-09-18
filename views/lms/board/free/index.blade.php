@@ -130,6 +130,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-link mr-10"></i> 프론트 게시판 이동', className: 'btn-sm btn-secondary border-radius-reset mr-20 btn-front-link' },
+
                     { text: '<i class="fa fa-copy mr-10"></i> BEST/사용 적용', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-is-best' },
 
                     { text: '<i class="fa fa-copy mr-10"></i> 복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy' },
@@ -216,6 +218,37 @@
             $list_table.on('click', '.btn-read', function() {
                 location.href='{{ site_url("/board/{$boardName}/read") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}&site_code=' + $("#tabs_site_code .active a").data('site-code');
             });
+
+            // 프론트 게시판 이동
+            $('.btn-front-link').on('click', function() {
+                var site_code = $("#tabs_site_code .active a").data('site-code');
+                var site_host = {!! json_encode($arr_site_host) !!};
+                var sub_domain = {!! json_encode($arr_wbs_sub_domain) !!};
+                var bm_idx = '{{$bm_idx}}';
+
+                location.href = front_board_url(site_code,site_host,sub_domain,bm_idx);
+            });
+
+            function front_board_url($site_code, $site_host, $sub_domain, $bm_idx){
+                var $base_domain = '.willbes.net';
+
+                if($site_code == '' || $site_code == '2000'){
+                    alert('온라인 혹은 학원을 선택해주세요.');
+                    return;
+                }
+
+                if ($site_host === null || typeof $site_host[$site_code] === 'undefined') {
+                    alert('사이트 코드 오류 입니다.')
+                    return;
+                }
+
+                if ($sub_domain === null || typeof $sub_domain[$bm_idx] == 'N') {
+                    alert('사용하지 않는 게시판입니다.')
+                    return;
+                }
+
+                 return (location.protocol + '//' + $site_host[$site_code] + $base_domain + $sub_domain[$bm_idx]);
+            }
 
             // Best 적용
             $('.btn-is-best').on('click', function() {

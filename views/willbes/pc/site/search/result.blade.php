@@ -249,19 +249,25 @@
                                                             </dl>
                                                         </td>
                                                         <td class="w-notice p_re">
-                                                            @if($row['FreeLecTypeCcd'] == '652002')
-                                                                @if(empty($row['FreeLecPasswd']))
-                                                                    <div class="w-sp">
-                                                                        <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
-                                                                        <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');">보강동영상 보기</a>
-                                                                    </div>
-                                                                @else
-                                                                    <div class="w-sp100">
-                                                                        보강동영상 비밀번호 입력
-                                                                        <div>
-                                                                            <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20" data-chk>
-                                                                            <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');"><span>확인</span></button>
+                                                            @if($row['FreeLecTypeCcd'] == '652002' || $row['FreeLecTypeCcd'] == '652003')
+                                                                @if($row['FreeLecTypeCcd'] == '652002')
+                                                                    @if(empty($row['FreeLecPasswd']))
+                                                                        <div class="w-sp">
+                                                                            <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
+                                                                            <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');">보강동영상 보기</a>
                                                                         </div>
+                                                                    @else
+                                                                        <div class="w-sp100">
+                                                                            보강동영상 비밀번호 입력
+                                                                            <div>
+                                                                                <input type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20" data-chk>
+                                                                                <button type="button" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');"><span>확인</span></button>
+                                                                            </div>
+                                                                        </div>
+                                                                    @endif
+                                                                @else
+                                                                    <div class="w-sp">
+                                                                        <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}');">무료강의 보기</a>
                                                                     </div>
                                                                 @endif
                                                             @else

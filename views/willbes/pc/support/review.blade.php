@@ -62,9 +62,11 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="f_right">
-                                <div class="subBtn blue NSK f_right"><a href="{{front_url($default_path.'/create?'.$get_params)}}">등록하기 ></a></div>
-                            </div>
+                            @if(empty($arr_swich['create_btn']) === false)
+                                <div class="f_right">
+                                    <div class="subBtn blue NSK f_right"><a href="{{front_url($default_path.'/create?'.$get_params)}}">등록하기 ></a></div>
+                                </div>
+                            @endif
                         </div>
                         <div class="LeclistTable">
                             <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">

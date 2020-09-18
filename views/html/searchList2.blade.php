@@ -252,6 +252,90 @@
                         </div>
                         <!-- willbes-Lec-Table -->
 
+                        <div class="willbes-Lec-Table">               
+                            <table cellspacing="0" cellpadding="0" class="lecTable">
+                            <colgroup>
+                                    <col style="width: 100px;">
+                                    <col style="width: 100px;">
+                                    <col width="*">
+                                    <col style="width: 250px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-list">문제풀이</td>
+                                        <td class="w-name">국어<br/><span class="tx-blue">정채영</span></td>
+                                        <td class="w-data tx-left pl20">
+                                            <div class="OTclass">일반경찰</div>
+                                            <div class="w-tit">
+                                                <a href="{{ site_url('/home/html/listsub') }}">2018 [지방직/서울시] 정채영 국어 [문학집중강의]137작품을 알려주마!(4-6월)</a>
+                                            </div>
+                                            <dl class="w-info">
+                                                <dt>학원실강의 : 2020년 1월</dt>
+                                                <dt><span class="row-line">|</span></dt>                                    
+                                                <dt>강의수 : <span class="tx-blue">70강</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>수강기간 : <span class="tx-blue">50일</span></dt>
+                                                <dt class="NSK ml15">
+                                                    <span class="nBox n1">2배수</span>
+                                                    <span class="nBox n3">예정</span>
+                                                </dt>
+                                                <br>
+                                                <dt class="mr10">
+                                                    <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
+                                                        <strong>강좌상세정보</strong>
+                                                    </a>
+                                                </dt>
+                                            </dl>
+                                            <div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                                        </td>
+                                        <td class="w-notice p_re">
+                                            <div class="w-sp"><a href="#none" class="bg-gray-purple tx-white bd-none">무료강의 보기</a></div>
+                                            <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecTable -->
+
+                            <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl100">
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">수강생 교재</span> 
+                                                <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">30,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">주교재</span> 
+                                                <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">20,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">부교재</span> 
+                                                <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">0원</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub">
+                                                <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecInfoTable -->
+                        </div>
+                        <!-- willbes-Lec-Table -->
+
                         <div class="willbes-Lec-Table">
                             <table cellspacing="0" cellpadding="0" class="lecTable">
                             <colgroup>

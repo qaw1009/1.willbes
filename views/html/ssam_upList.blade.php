@@ -35,7 +35,9 @@
     </div>
     <div class="Content p_re">
         <div class="willbes-AcadInfo c_both">
-            <div class="Acad_info">
+            <div class="willbes-Lec-Tit NG bd-none tx-black pt-zero">· 강의 업데이트</div>
+
+            <div class="Acad_info mt40">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray c_both mt-zero mb-zero">

@@ -797,7 +797,7 @@ class Professor extends \app\controllers\FrontController
         }
 
         if ($learn_pattern == 'on_free_lecture') {
-            // 보강동영상 제외
+            // 일반동영상만 추출
             $arr_condition['EQ']['FreeLecTypeCcd'] = $this->lectureFModel->_free_lec_type_ccd['normal'];
         }
 

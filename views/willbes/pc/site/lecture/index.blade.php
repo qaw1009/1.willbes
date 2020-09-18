@@ -317,7 +317,7 @@
                                                 @endif
                                             @else
                                                 <div class="w-sp">
-                                                    <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
+                                                    <a href="javascript:;" class="bg-gray-purple tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
                                                 </div>
                                             @endif
                                         @else

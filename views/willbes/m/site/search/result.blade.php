@@ -151,7 +151,7 @@
                                                                 @endif
                                                             @else
                                                                 <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="o">
-                                                                <a href="javascript:;" class="bg-black tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}/m');">무료강의 보기</a>
+                                                                <a href="javascript:;" class="view bg-gray-purple" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'free', '{{app_to_env_url($row['SiteUrl'])}}/m');">무료강의 보기</a>
                                                             @endif
                                                         </div>
                                                     @else

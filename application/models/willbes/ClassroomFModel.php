@@ -482,7 +482,7 @@ class ClassroomFModel extends WB_Model
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);
 
-        $query .= " ORDER BY wOrderNum ASC ";
+        $query .= " ORDER BY wOrderNum ASC, wUnitIdx ASC ";
 
         $result = $this->_conn->query($query);
 

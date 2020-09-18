@@ -3,6 +3,7 @@
 .ssam .tx-color {
     color: #0c5dc0;
 }
+
 .ssam .Menu .menu-List li.Acad a {
     color: #0c5dc0;
 }
@@ -44,6 +45,16 @@
 .dropdown .list-drop-Box-ic li a {display: inline-block; padding-right:10px}
 .dropdown .list-drop-Box-ic:after {content:""; display:block; clear:both}
 
+.ssam .Section .will-nTit {
+    font-size: 16px;
+    font-weight: 600;
+    color: #363636;
+    border-bottom: none;
+    line-height: 24px;
+    margin-bottom: 18px;
+}
+
+/*Main Container : 상단 배너*/
 .ssam .MainVisual {
     width: 100%;
     min-width: 1120px;
@@ -66,6 +77,11 @@
     height: 500px; 
     overflow: hidden;
 }
+.ssam .MaintabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+.ssam .MaintabBox p a {display:none;}
+.ssam .MaintabBox p.leftBtn {margin-left:-560px;}
+.ssam .MaintabBox p.rightBtn {margin-left:528px; background-position: right center;}	
 
 .ssam .MaintabList {
     position: absolute;
@@ -106,30 +122,187 @@
 }
 
 .ssam .VisualBox .Maintab li a:hover,
-.ssam .VisualBox .Maintab li a.active { color:#0c5dc0; border-bottom: 2px solid #0c5dc0;}
+.ssam .VisualBox .Maintab li a.active { color:#0c5dc0; border-bottom: 2px solid #0c5dc0; font-weight: bold;}
 
 
-/* slider : 페이징 버튼 => bSlider */
-.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #b7b7b7;
+/*Main Container : 적중*/
+.ssam .VisualSubBox {text-align: center;background:url("https://static.willbes.net/public/images/promotion/main/2018/2018_main_bg.jpg"); width:1120px; margin:0 auto; padding-bottom:50px}
+.ssam .SubtabBox {
+    width: 978px;
+    height: 260px; 
+    margin:0 auto;
+    overflow: hidden;
 }
-.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a.active,
-.ssam .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #0c5dc0;
+.ssam .SubtabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+.ssam .SubtabBox p a {display:none;}
+.ssam .SubtabBox p.leftBtn {margin-left:-540px;}
+.ssam .SubtabBox p.rightBtn {margin-left:508px; background-position: right center;}	
+.ssam .VisualSubBox .Subtab {width:978px; margin:10px auto 0; border-left:1px solid #e3e3e3; border-top:1px solid #e3e3e3;}
+.ssam .VisualSubBox .Subtab li {display:inline; float:left; width:14.28571%}
+.ssam .VisualSubBox .Subtab li a {display:block; text-align:center; font-size:14px; background: #fff; color:#494949; line-height:30px; border-right:1px solid #e3e3e3; border-bottom:1px solid #e3e3e3}
+.ssam .VisualSubBox .Subtab li a.active,
+.ssam .VisualSubBox .Subtab li a:hover {color:#fff; background:#0c5dc0; font-weight:bold;}
+.ssam .VisualSubBox .Subtab li:nth-child a (6),
+.ssam .VisualSubBox .Subtab li:last-child a {border:0}
+.ssam .VisualSubBox .Subtab:after {content:""; display:block; clear:both}
+
+
+/* Main Container : 수강후기 */
+.ssam .Section2 {background:none}
+.ssam .Section2 .goBtns {position: absolute; top:0; right:0}
+.ssam .Section2 .goBtns li {display:inline; float:left; margin-left:5px}
+.ssam .Section2 .goBtns li a {display:block; padding:5px 15px; color:#fff; background:#0c5dc0}
+.ssam .Section2 .goBtns li:last-child a {background:#464646}
+.ssam .Section2 .reviewBox {border:1px solid #e3e3e3; padding:15px; background:url(https://static.willbes.net/public/images/promotion/main/2018/2018_main_img01.jpg) no-repeat 15px 15px;
+min-height: 260px;}
+.ssam .Section2 .reviewBox .review {position:relative; height:230px; width:745px; margin-left:340px; padding-bottom:15px; border-bottom:1px solid #ececec; color:#3a3a3a; line-height:1.5; }
+.ssam .Section2 .reviewBox .review li {height:215px; overflow:hidden;}
+.ssam .Section2 .reviewBox .reviewInfo {font-size:16px; margin-bottom:20px; border-bottom:1px solid #ececec; padding-bottom:20px; font-weight: bold;}
+.ssam .Section2 .reviewBox .reviewInfo span {margin:0 10px; color:#ccc}
+.ssam .Section2 .reviewBox .review .title {font-weight: bold; font-size:14px; margin-bottom:10px}
+.ssam .Section2 .reviewBox .review .title img {display:inline; margin-right:10px}
+.ssam .Section2 .reviewBox .review .reviewTxt {clear:both; font-size:14px; line-height: 1.7;}
+.ssam .Section2 .reviewBox .bx-wrapper .bx-controls {
+    position: absolute;
+    width: 48px;
+    height: 23px;
+    top:0;
+    right:0 !important;
+    z-index: 1;
 }
 
-/* slider : 페이징 버튼 => bSlider */
-.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #ccc;
-    width: 9px;
-    height: 9px;
+.ssam .Section2 .reviewBox .bx-wrapper .bx-controls-direction {
+    width: 48px;
+    height: 23px; 
 }
-.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.ssam .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #313131;
+.ssam .Section2 .reviewBox .bx-wrapper .bx-controls-direction a {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    left:0;
+    background:url(https://static.willbes.net/public/images/promotion/main/2018/ddDown_btn.jpg) no-repeat;
 }
+.ssam .Section2 .reviewBox .bx-wrapper .bx-controls-direction a.bx-next {
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    left:0;
+    margin-left:25px;
+    background:url(https://static.willbes.net/public/images/promotion/main/2018/ddUp_btn.jpg) no-repeat;
+}
+.ssam .willbes-Layer-ReplyBox {left:50%; top:1400px;margin-left:-445px}
+
+
+/*Main Container : 교수진*/
+.ssam .Section3 li {display: inline; float:left; width:16.6666666%; margin-bottom:10px}
+.ssam .Section3 li a {background:#eee; display:inline-block; width:180px; }
+.ssam .Section3 li a:hover {background:#e3f0ff; box-shadow:5px 5px 15px rgba(0,0,0,0.5);}
+.ssam .Section3 ul:after {content:""; display:block; clear:both}
+
+/*Main Container : 인기강좌*/
+.ssam .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.ssam .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.ssam .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.ssam .smallTit strong {
+    color:#0c5dc0;
+}
+.ssam .Section4 .reference {text-align:right; color:#666; margin-top:30px}
+.ssam .Section4 .bestLecBox {margin-right:-5px; margin-top:10px}
+.ssam .Section4 .bestLec {position:relative; display:block; float:left; width:370px; height:200px; margin-right:5px; overflow: hidden;}
+.ssam .Section4 .bestLec a {position:absolute; display:block; width: 100%; height: 100%; box-shadow:inset 0 0 2px #666; box-sizing: border-box; z-index: 2;}
+.ssam .Section4 .bestLec a:hover {box-shadow:inset 0 0 10px #0c5dc0;}
+.ssam .Section4 .bestLec .profImg img {position:absolute; top:20px; right:-20px; width:50%; z-index:1;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,.5));
+    transform:scale(1); transition: all ease-in-out .2s; 
+}
+.ssam .Section4 .bestLec:hover .profImg img {
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+.ssam .Section4 .lecinfo {position: absolute; top:20px; left:40px; width:230px; z-index: 2; font-size:14px; line-height: 1.5;}
+.ssam .Section4 .lecinfo li {margin-bottom:15px}
+.ssam .Section4 .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 24px;}
+.ssam .Section4 .lecinfo li:nth-of-type(1) span {display: block; font-size:14px}
+.ssam .Section4 .lecinfo li strong {background: #0c5dc0; color:#fff; font-weight: bold; padding:5px 10px}
+.ssam .Section4 .lecinfo li:last-child {display: block; word-break: keep-all;}
+.ssam .Section4 .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
+
+/* Main Container : 교재*/
+.ssam .bookContent {position:relative; padding-left:55px}
+.ssam .bookList {width:1010px; margin:0 auto; font-size:14px;}
+.ssam .bookList li {display:inline; float:left; width:190px; text-align:center; line-height: 1.5; margin-bottom:30px; padding-bottom:10px}
+.ssam .bookList .bookImg {position:relative; width:190px; min-height:230px; overflow: hidden; margin-bottom:10px;}
+.ssam .bookList li img {
+    position: absolute; left:50%; top:50%; max-width:150px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
+    transition: all ease-in-out .2s;   
+}
+.ssam .bookList li:hover img {
+    -ms-transform: translate(-50%, -50%) scale(1.1);
+    -webkit-transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+.ssam .bookList p span {text-decoration: line-through;}
+.ssam .bookList p strong {color:#0c5dc0}
+.ssam .bookList p:nth-of-type(2) {width:95%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.ssam .bookList:after {content:""; display:block; clear:both}
+.ssam .bookContent > p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+.ssam .bookContent > p a {display:none;}
+.ssam .bookContent > p.leftBtn {margin-left:-560px;}
+.ssam .bookContent > p.rightBtn {margin-left:528px; background-position: right center;}
+
+.ssam .willbes-Layer-Box {left:50%; top:3400px !important; margin-left:-490px !important; z-index: 110;}
+
+/* Main Container : 시험정보*/
+.ssam .examInfo {border:1px solid #dedede; line-height: 1.5; font-size:14px}
+.ssam .examInfo .examTop {padding:35px}
+.ssam .examInfo .examTop li {display: inline-block; float:left}
+.ssam .examInfo .examTop li:first-child {width:calc(30% - 50px); padding-left:50px}
+.ssam .examInfo .examTop .titleSubject {font-size:24px}
+.ssam .examInfo .examTop .subject {margin-top:20px}
+.ssam .examInfo .examTop .subject select {font-size:16px; padding:5px 10px; border:3px solid #0c5dc0}
+.ssam .examInfo .examTop li:last-child {width:70%;}
+.ssam .examInfo .examTop table {border-top:1px solid #dedede; border-left:1px solid #dedede}
+.ssam .examInfo .examTop tr {border-bottom:1px solid #dedede}
+.ssam .examInfo .examTop th,
+.ssam .examInfo .examTop td {padding:10px; text-align: center; border-right:1px solid #dedede}
+.ssam .examInfo .examTop th {font-weight: bold; color:#fff; background:#0c5dc0}
+.ssam .examInfo .examTop:after {content:""; display:block; clear:both}
+.ssam .examInfo .examBottom {margin:0 50px; border-top:1px solid #dedede; padding:35px 0; text-align: center;}
+.ssam .examInfo .examBottom .titleTrend {font-size: 24px; color:#0c5dc0; margin-bottom:20px}
+.ssam .examInfo .examBottom ul {width:1000px; margin:0 auto}
+.ssam .examInfo .examBottom li {display: inline-block; float:left; width:calc(10% - 10px); height:90px; border-radius: 45px; background-color: #f7f7f8;
+    margin-right:10px; margin-bottom:10px; line-height: 90px;}
+.ssam .examInfo .examBottom li:hover {background-color:#0c5dc0; color:#fff}
+.ssam .examInfo .examBottom li a {display: block; }
+.ssam .examInfo .examBottom ul:after {content:""; display:block; clear:both}
+
+
 
 /* Main Container : campus : */
 .ssam .campus_info {
@@ -159,16 +332,6 @@
 .ssam .campus_info .btn a img {
     vertical-align: middle;
 }
-
-/*학원둘러보기*/
-.ssam .acadview {position:relative; height:234px; width:1120px; margin: 0 auto;}
-.ssam .acadview .avslider {height:180px; overflow: hidden;}
-.ssam .acadview .avslider li {display:inline; float:left; width: 25%;}
-.ssam .acadview .avslider li a {display:block;} 
-.ssam .acadview .avslider:after {content: ""; display: block; clear:both}
-.ssam .acadview p {position:absolute; top:40%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.ssam .acadview p.leftBtn {left:-22px}
-.ssam .acadview p.rightBtn {right:-22px}
 
 
 /* Main Container : Notice : noticeTabs */
@@ -268,65 +431,6 @@
     text-align: center;
     border: 1px solid #000;    
 }
-
-/* Main Container : QuickMenu : iccheon 
-.ssam .MainQuickMenu {
-    position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 160px;
-    height: auto;    
-    z-index: 100;
-}
-.ssam .MainQuickMenu ul {
-    padding:0 8px !important;
-    background: #ececec;
-    width:100%;
-}
-.ssam .MainQuickMenu li {
-    border-top:1px solid #f6f6f6;
-    border-bottom:1px solid #d4d4d4;
-    height: 40px;
-    line-height: 40px;
-    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
-    margin: 0;
-}
-.ssam .MainQuickMenu li:first-child {
-    border-top:0;
-}
-.ssam .MainQuickMenu li:last-child {
-    border-bottom:0;
-}
-.ssam .MainQuickMenu li a {
-    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
-}
-.ssam .MainQuickMenu li a:hover {
-    color:#00acec; 
-}
-.ssam .MainQuickMenu li:nth-child(1) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
-}
-.ssam .MainQuickMenu li:nth-child(2) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
-}
-.ssam .MainQuickMenu li:nth-child(3) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
-}
-.ssam .MainQuickMenu li:nth-child(4) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
-}
-.ssam .MainQuickMenu li:nth-child(5) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
-}
-.ssam .MainQuickMenu li:nth-child(6) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
-}
-.ssam .MainQuickMenu li:nth-child(7) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
-}
-.ssam .MainQuickMenu li:nth-child(8) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
-}*/
 
 /* Main Container : QuickMenu*/ 
 .ssam .MainQuickMenu {

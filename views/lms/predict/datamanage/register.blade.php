@@ -13,7 +13,6 @@
                             <input type="file" id="attach_file" name="attach_file" class="form-control" title="송장엑셀파일" value="">
                             <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm mb-0 ml-10 mr-10" onClick="registData({{ $PredictIdx }})">엑셀 업로드</button>
                             <button type="button" name="btn_file_download" class="btn btn-success btn-sm mb-0">샘플엑셀 다운로드</button>
-                            {{--TODO : 가데이터 엑셀변환 : 개발완료, 미적용--}}
                             <button type="button" name="btn_fakedata_download" class="btn btn-success btn-sm mb-0">가데이터 엑셀 다운로드</button>
                         </div>
                     </div>

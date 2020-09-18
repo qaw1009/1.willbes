@@ -45,8 +45,8 @@ class ProductFModel extends WB_Model
     // 수강생 교재 공통코드
     public $_student_book_ccd = '610003';
 
-    // 무료강좌타입 공통코드 > 일반, 보강동영상
-    public $_free_lec_type_ccd = ['normal' => '652001', 'bogang' => '652002'];
+    // 무료강좌타입 공통코드 > 일반, 보강동영상, 비로그인
+    public $_free_lec_type_ccd = ['normal' => '652001', 'bogang' => '652002', 'logout' => '652003'];
 
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];

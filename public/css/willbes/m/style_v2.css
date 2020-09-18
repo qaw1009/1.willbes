@@ -3693,7 +3693,7 @@ body.memBody #Footer {
     text-align: center;
     padding:3px 10px 0;
 }
-.freeLecPass a.view { width:auto; background: #333; margin:0; padding:0 10px}
+.freeLecPass a.view {width:auto; background: #333; margin:0; padding:0 10px}
 .freeLecPass:after {content:""; display:block; clear:both}
 
 /*주문배송관리*/

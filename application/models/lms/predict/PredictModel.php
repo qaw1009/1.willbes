@@ -292,7 +292,7 @@ class PredictModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function predictRegistList3($is_count, $predict_idx, $arr_condition = [], $limit='', $offset='', $order_by = [])
+    public function predictRegistList3($is_count, $predict_idx, $arr_condition = [], $arr_condition2 = [], $limit='', $offset='', $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -323,8 +323,8 @@ class PredictModel extends WB_Model
                         {$this->_table['predictGradesOrigin']} AS go
                         LEFT JOIN {$this->_table['predictPaper']} AS pp ON go.PpIDx = pp.PpIdx
                     WHERE go.PrIdx = PR.PrIdx
-                )
-		        AS pgoIdxs
+                ) AS pgoIdxs
+                ,ppCount
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -333,10 +333,13 @@ class PredictModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
 
+        $where2 = $this->_conn->makeWhere($arr_condition2);
+        $where2 = $where2->getMakeWhere(true);
+
         $from = "
             FROM (
                 SELECT 
-                r.*, M.MemId, M.MemName, M.PhoneEnc
+                r.*, M.MemId, M.MemName, M.PhoneEnc, cc.ppCount
                 FROM lms_predict_register AS r
                 INNER JOIN lms_member AS M ON r.MemIdx = M.MemIdx
                 LEFT JOIN (
@@ -344,6 +347,11 @@ class PredictModel extends WB_Model
                     WHERE PredictIdx = '{$predict_idx}'
                     GROUP BY PrIdx
                 ) AS o ON r.PrIdx = o.PrIdx
+                LEFT JOIN (
+                    SELECT PrIdx, COUNT(*) AS ppCount FROM lms_predict_grades_origin
+                    WHERE PredictIdx = '{$predict_idx}'
+                    GROUP BY PrIdx
+                ) AS cc ON r.PrIdx = cc.PrIdx
                 WHERE r.PredictIdx = '{$predict_idx}' AND o.PrIdx IS NOT NULL AND M.MemIdx = 1000000
                 {$where}
                 ORDER BY r.PrIdx DESC
@@ -351,7 +359,7 @@ class PredictModel extends WB_Model
             WHERE PrIdx IS NOT NULL
         ";
 
-        $query = $this->_conn->query('select '. $column . $from . $order_by_offset_limit);
+        $query = $this->_conn->query('select '. $column . $from . $where2 . $order_by_offset_limit);
         if ($is_count === true) {
             return $query->row(0)->numrows;
         } else {
@@ -369,17 +377,24 @@ class PredictModel extends WB_Model
      * @param $predict_idx
      * @return mixed
      */
-    public function predictRegistListForExcel($predict_idx)
+    public function predictRegistFakeListForExcel($predict_idx)
     {
+        //과목정보조회
+        $queryString = "PpIdx, PaperName from {$this->_table['predictPaper']} where PredictIdx = ?";
+        $paperList = $this->_conn->query("select ". $queryString, $predict_idx)->result_array();
+
         $order_by = ['a.TakeMockPart' => 'ASC', 'a.TakeArea' => 'ASC'];
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
 
         $column = "
-            c.CcdName AS TakeMockPartName,
-            d.CcdName AS TakeAreaName,
-            GROUP_CONCAT(b.PaperName ORDER BY a.PpIdx ASC) AS PaperName,
-            GROUP_CONCAT(a.OrgPoint ORDER BY a.PpIdx ASC) AS OrgPoint
+            c.CcdName AS TakeMockPartName,d.CcdName AS TakeAreaName
+            #GROUP_CONCAT(b.PaperName ORDER BY a.PpIdx ASC) AS PaperName,
+            #GROUP_CONCAT(a.OrgPoint ORDER BY a.PpIdx ASC) AS OrgPoint
         ";
+        foreach ($paperList as $row) {
+            $column .= ",(SELECT OrgPoint FROM {$this->_table['predictGradesOrigin']} AS t1 WHERE t1.PrIdx = a.PrIdx AND t1.PpIdx = '{$row['PpIdx']}') AS '{$row['PaperName']}'";
+        }
+
         $from = "
             FROM {$this->_table['predictGradesOrigin']} AS a
             INNER JOIN {$this->_table['predictPaper']} AS b ON a.PpIdx = b.PpIdx
@@ -390,15 +405,19 @@ class PredictModel extends WB_Model
         $condition = [
             'EQ' => [
                 'a.PredictIdx' => $predict_idx,
-            ],
-            'NOT' => [
                 'a.MemIdx' => '1000000'
-            ]
+            ],
+            /*'NOT' => [
+                'a.MemIdx' => '1000000'
+            ]*/
         ];
 
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
         $group_by = " GROUP BY a.PrIdx ";
-        return $this->_conn->query("select ". $column . $from . $where . $group_by . $order_by_offset_limit)->result_array();
+        return [
+            'paperList' => $paperList,
+            'list' => $this->_conn->query("select ". $column . $from . $where . $group_by . $order_by_offset_limit)->result_array()
+        ];
     }
 
 

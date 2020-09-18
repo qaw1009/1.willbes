@@ -156,17 +156,23 @@
                                                             <span class="NSK ml10 nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                             <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span></dt>
                                                     </dl>
-                                                    @if($pattern == 'free' && $row['FreeLecTypeCcd'] == '652002')
+                                                    @if($pattern == 'free' && ($row['FreeLecTypeCcd'] == '652002' || $row['FreeLecTypeCcd'] == '652003'))
                                                         <div class="freeLecPass">
-                                                            @if(empty($row['FreeLecPasswd']))
-                                                                <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
-                                                                <a href="javascript:;" class="view" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">보강동영상 보기</a>
+                                                            @if($row['FreeLecTypeCcd'] == '652002')
+                                                                @if(empty($row['FreeLecPasswd']))
+                                                                    <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="p">
+                                                                    <a href="javascript:;" class="view" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">보강동영상 보기</a>
+                                                                @else
+                                                                    <p>보강동영상 비밀번호 입력</p>
+                                                                    <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
+                                                                    <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">확인</a>
+                                                                @endif
                                                             @else
-                                                                <p>보강동영상 비밀번호 입력</p>
-                                                                <input type="password" type="password" id="free_lec_passwd_{{ $row['ProdCode'] }}" name="free_lec_passwd" placeholder="****" maxlength="20">
-                                                                <a href="#none" name="btn_check_free_passwd" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">확인</a>
+                                                                <input type="hidden" id="free_lec_passwd_{{ $row['ProdCode'] }}"  name="free_lec_passwd" value="" data-chk="o">
+                                                                <a href="javascript:;" class="view bg-gray-purple" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
                                                             @endif
                                                         </div>
+
                                                     @else
                                                         <ul>
                                                             @if(empty($row['ProdPriceData']) === false)
@@ -271,6 +277,12 @@
         function goShow(prod_code, cate_code, pattern) {
             var $free_lec_passwd = $regi_form.find('input[id="free_lec_passwd_' + prod_code + '"]');
             if ($free_lec_passwd.length > 0) {
+
+                if ($free_lec_passwd.data('chk') === "o") {
+                    location.href = '{{ front_url('/lecture/show') }}/cate/' + cate_code + '/pattern/' + pattern + '/prod-code/' + prod_code+'#tab03';
+                    return;
+                }
+
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
                 if ($free_lec_passwd.data('chk') !== "p" && $free_lec_passwd.val() === '') {

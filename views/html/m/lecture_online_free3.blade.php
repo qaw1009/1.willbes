@@ -130,6 +130,22 @@
                                     <a href="#none">확인</a>                                
                                 </div>
                             </div>
+                            <div>
+                                <dl class="w-info">
+                                    <dt>영어<span class="row-line">|</span>한덕현 </dt>
+                                </dl>
+                                <div class="w-tit tx-blue">
+                                    2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
+                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                </dl>
+                                <div class="freeLecPass">    
+                                    <a href="#none" class="view bg-gray-purple">무료강의 보기</a>                                
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     <tr class="replyList willbes-Open-Table">

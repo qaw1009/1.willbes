@@ -1140,7 +1140,7 @@ select[disabled] {
   background: #0d74ae;
 }
 .bg-gray-purple {
-  background: #626d82;
+  background: #626d82 !important;
 }
 .bg-green {
   background: #00b22a;

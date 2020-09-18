@@ -112,17 +112,15 @@
     <div class="Section MainVisual mt20">
         <div class="VisualBox p_re">            
             <div id="MainRollingSlider" class="MaintabBox">
-                <div class="bx-wrapper">
-                    <div class="bx-viewport">
-                        <ul class="MaintabSlider">
-                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_01.jpg" alt="배너명"></a></li>
-                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_02.jpg" alt="배너명"></a></li>
-                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
-                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>
-                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_05.jpg" alt="배너명"></a></li>
-                        </ul>
-                    </div>
-                </div> 
+                <ul class="MaintabSlider">
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_01.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_02.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_05.jpg" alt="배너명"></a></li>
+                </ul>                  
+                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
             </div> 
             <div id="MainRollingDiv" class="MaintabList">
                 <ul class="Maintab">
@@ -143,12 +141,14 @@
                 <div class="tabBox noticeBox">
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">
-                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
-                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
-                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
-                            <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a></li>
+                        <ul class="List-Table">                            
+                            <li><a href="#none"><span>HOT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none"><span>HOT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
                         </ul>
                     </div>
                 </div>
@@ -160,11 +160,13 @@
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none"><span>HOT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none"><span>HOT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
+                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
+                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
+                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
                         </ul>
                     </div>
                 </div>
@@ -172,35 +174,387 @@
         </div>
     </div> 
 
-    <div class="Section mt40 c_both">
-        <div class="widthAuto">
-            <div class="will-acadTit">학원 <span class="tx-color">둘러보기</span></div>
-            <div class="acadview">
-                <ul class="avslider">
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_01.jpg">
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_02.jpg">
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_03.jpg">
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_04.jpg">
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_05.jpg">
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2015_bn_271x180_06.jpg">
-                    </li>
-                </ul>  
-                <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>            
+    <div class="Section mt40">
+        <div class="VisualSubBox p_re"> 
+            <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">           
+            <div id="SubRollingSlider" class="SubtabBox">
+                <ul class="SubtabSlider">
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_mjs.jpg" alt="유아 민정선"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bjm.jpg" alt="초등 배재민"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcw.jpg" alt="교육학 김차웅"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lij.jpg" alt="교육한 이인재"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_hei.jpg" alt="교육한 홍의일"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_swy.jpg" alt="전공국어 송원영"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lwg.jpg" alt="전공국어 이원근"></a></li>
+                    <li><a href="#none"><img src="http://file1.willbes.net/datassam/event/191106_main_wsam32.jpg" alt="전공국어 권보민"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kys.jpg" alt="전공영어 김유석"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kym.jpg" alt="전공영어 김영문"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kh.jpg" alt="전공영어 공훈"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcm.jpg" alt="전공수학 김철홍"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bty.jpg" alt="수학교육론 박태영"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcu.jpg" alt="전공생물 강치욱"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_yhj.jpg" alt="생물교육론 양혜정"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kbc.jpg" alt="도덕윤리 김병찬"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_diana.jpg" alt="음악 다이애나"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_cuy.jpg" alt="전기전자통신 최우영"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_sgj.jpg" alt="정보컴퓨터 송광진"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_jss.jpg" alt="정컴교육론 장순선"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_jgm.jpg" alt="전공중국어 정경미"></a></li>
+                </ul>                  
+                <p class="leftBtn" id="imgBannerLeft2"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight2"><a href="none">다음</a></p> 
+            </div> 
+            <div id="SubRollingDiv" class="SubtabList">
+                <ul class="Subtab">
+                    <li><a data-slide-index='0' href="javascript:void(0);" class="active">유아 민정선</a></li>
+                    <li><a data-slide-index='1' href="javascript:void(0);">초등 배재민</a></li>
+                    <li><a data-slide-index='2' href="javascript:void(0);">교육학 김차웅</a></li>
+                    <li><a data-slide-index='3' href="javascript:void(0);">교육학 이인재</a></li>
+                    <li><a data-slide-index='4' href="javascript:void(0);">교육학 홍의일</a></li>
+                    <li><a data-slide-index='5' href="javascript:void(0);">전공국어 송원영</a></li>
+                    <li><a data-slide-index='6' href="javascript:void(0);">전공국어 이원근</a></li>
+                    <li><a data-slide-index='7' href="javascript:void(0);">전공국어 권보민</a></li>
+                    <li><a data-slide-index='8' href="javascript:void(0);">전공영어 김유석</a></li>
+                    <li><a data-slide-index='9' href="javascript:void(0);">전공영어 김영문</a></li>
+                    <li><a data-slide-index='10' href="javascript:void(0);">전공영어 공훈</a></li>
+                    <li><a data-slide-index='11' href="javascript:void(0);">전공수학 김철홍</a></li>
+                    <li><a data-slide-index='12' href="javascript:void(0);">수학교육론 박태영</a></li>
+                    <li><a data-slide-index='13' href="javascript:void(0);">전공생물 강치욱</a></li>
+                    <li><a data-slide-index='14' href="javascript:void(0);">생물교육론 양혜정</a></li>
+                    <li><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
+                    <li><a data-slide-index='16' href="javascript:void(0);">전공음악 다이애나</a></li>
+                    <li><a data-slide-index='17' href="javascript:void(0);">전기전자통신 최우영</a></li>
+                    <li><a data-slide-index='18' href="javascript:void(0);">정보컴퓨터 송광진</a></li>
+                    <li><a data-slide-index='19' href="javascript:void(0);">정컴교육론 장순선</a></li>
+                    <li><a data-slide-index='20' href="javascript:void(0);">전공중국어 정경미</a></li>
+                </ul>
+            </div>           
+        </div> 
+    </div>
+
+    <div class="Section Section2 mt40">
+        <div class="widthAuto p_re">
+            <div class="will-nTit bd-none">윌비스 임용 <span class="tx-color">수강후기</span></div>
+            <div class="goBtns">
+                <ul>
+                    <li><a href="#none">합격수기 ></a></li>
+                    <li><a href="#none" onclick="openWin('LayerReply'),openWin('Reply')">수강후기 전체보기 ></a></li>
+                </ul>
+            </div>
+            <div class="reviewBox">
+                <div class="review">
+                    <ul>
+                        <li>
+                            <a href="#none">
+                                <div class="reviewInfo">도덕윤리 <span>|</span> 김병찬 <span>|</span> 2019 (9~10월) 모의고사반</div>
+                                <div class="title"><img src="/public/img/willbes/sub/star5.gif"/> 김병찬교수님 강의를 들으면 합격의 길이 보입니다. ^^.  <span class="f_right">황성*</span></div>
+                                <div class="reviewTxt">
+                                    입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                    그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                    직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                    너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                    1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                    다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                    교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                                </div>                                
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <div class="reviewInfo">전공국어 <span>|</span> 권보민 <span>|</span> 2019 9~10월 국어문법 실전모의고사반</div>
+                                <div class="title"><img src="/public/img/willbes/sub/star3.gif"/> 권보민 선생님 강의를 들으셔야 합니다_3 <span class="f_right">황성*</span></div>
+                                <div class="reviewTxt">
+                                    매일 공부의 반 이상을 문법에 투자하기도 했습니다. 
+                                    3) 최근 문법 학계에서 중시되는 주제를 바탕으로 한 확실한 적중
+                                    권보민 교수님은 문법 학회에 참여하시는 전문가이십니다. 학회 참여를 바탕으로 최근 문법 학계에서 논의되는 것이 무엇인지를 파악하시므로 적중률이 높습니다. 
+                                    가령 2017학년도 현대 문법에서 설명 의문문과 판정 의문문의 구분, 중세 문법에서 ‘ㅇ’ 탈락(약화)의 구분, 2019학년도 기입형인 
+                                    ‘-고져’와 ‘-과뎌’의 차이점, 서술형의 어미 문제는 수업 시간에 지속적으로 강조하셨던 것입니다. 고백하자면 저는 선생님이 “가령 ‘ㅇ’에 음가가 있는가 
+                                    없는가’와 같이 논란이 있는 사항에 대해서는 어떻게 공부해야 할까요?”라는 질문에 대해 ‘둘 다를 알아두셔야 합니다’라고 했을 때 ‘에이 그런 건 시험에 
+                                    안 나올 거야. 확실한 게 나올 거야.’라고 생각했었습니다. 그리고 수업 시간에 ‘-고져’와 ‘-과뎌’의 차이가 지속적으로 나올 때 ‘저런 건 한 번도 안 들어 봤고 안 나올 텐데 
+                                    왜 저렇게 자꾸 설명하시지ㅠㅠ’라고 생각했었습니다. 그런데 결론은 다 출제되었죠. 권보민 선생님의 적중률을 믿으시길 바랍니다. 
+                                </div>                               
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none">
+                                <div class="reviewInfo">전공영어 <span>|</span> 공훈 <span>|</span> 2019 11월 공훈 영교론/영어학 최종모의고사반</div>
+                                <div class="title"><img src="/public/img/willbes/sub/star2.gif"/> 공훈 교수님 영어학 강의 1년 수강후기 <span class="f_right">황성*</span></div>
+                                <div class="reviewTxt">
+                                    입학할때 부터 학교 선배들도 항상 김병찬교수님 강의를 듣고 있었고 사물함엔 김병찬 교수님 교재로 빼곡했습니다.
+                                    그냥 당연히 임용준비하는 사람은 다 듣는가보다 하고 자연스레 4학년때 김병찬 교수님 직강을 신청하여 듣게됐습니다.
+                                    직접 들어보니 정말 대단하시다는 생각이 들었습니다. 흐름에 맞춰 개념정리를 쭈~욱 해주시는데 들어주시는 예시들도
+                                    너무 적절했고 어려운 학자들도 이해가 잘됐습니다. 무엇보다도 교수님 강의의 가장 큰 장점은 확실한 반복적 학습인것 같습니다. 
+                                    1년 패키지를 듣게되면 강의마다 총 4번의 복습을 거치게 돼있습니다. 개념정리, 기출분석, 문제풀이, 모의고사 각각 
+                                    다른 수업같지만 그 주제에 맞춰 이론을 시간내에 최소 4번 복습할 수 있습니다. 작년 초수에 수업도 들으면서 교생도 나가고 시간이 없어서 원문, 
+                                    교과서 거의 못봤지만 교수님 강의듣고 복습하고 시키시는대로 (?) 해서 1차 합격했습니다!
+                                </div>                               
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>     
+    </div>
+
+    <div class="Section Section3 mt40">
+        <div class="widthAuto">
+            <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof01.jpg" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof02.jpg" title="배너명"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section Section4 mt50">
+        <div class="widthAuto">  
+            <div class="widthAuto smallTit NSK-Black">          
+                <p><span>윌비스 임용 <strong>실시간 인기강의 TOP3</strong></span></p>            
+            </div>
+            <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
+            <ul class="bestLecBox">
+                <li class="bestLec">                    
+                    <a href="#none">
+                        <ul class="lecinfo">
+                            <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                            <li><strong>이론반</strong></li>
+                            <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
+                        </ul>                                 
+                    </a>  
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                           
+                </li>
+                <li class="bestLec">                       
+                    <a href="#none">
+                        <ul class="lecinfo">
+                            <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                            <li><strong>이론반</strong></li>
+                            <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
+                        </ul>                                    
+                    </a>
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>
+                </li>
+                <li class="bestLec">                    
+                    <a href="#none">
+                        <ul class="lecinfo">
+                            <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                            <li><strong>이론반</strong></li>
+                            <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
+                        </ul>                                       
+                    </a>
+                    <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section mt40">
+        <div class="widthAuto">
+            <div class="will-nTit">윌비스 임용 <span class="tx-color">교재</span></div>
+            <div class="bookContent">
+                <ul class="bookList">
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311683_sm.jpg" title="교재명"></a>
+                        </div>
+                        <div>
+                            <p>[회계사]</p>
+                            <p>2020 원가관리회계 문제풀이</p>
+                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311691_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2021 법률저널 LEET 전국 봉투 모의고사 제4회 - 20.06.21 시행</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311717_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 슬림한 친족 상속법의 맥</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311728_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 민사소송법과 부속법 조문집</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311719_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 원가관리회계 문제풀이</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311683_sm.jpg" title="교재명"></a>
+                        </div>
+                        <div>
+                            <p>[회계사]</p>
+                            <p>2020 원가관리회계 문제풀이</p>
+                            <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311691_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2021 법률저널 LEET 전국 봉투 모의고사 제4회 - 20.06.21 시행</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311717_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 슬림한 친족 상속법의 맥</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311728_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 민사소송법과 부속법 조문집</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                    <li>
+                        <div class="bookImg">
+                            <a href="#none" onclick="openWin('InfoForm')"><img src="https://static.willbes.net/public/images/promotion/main/2018/book_311719_sm.jpg" title="교재명"></a>
+                        </div>
+                        <p>[회계사]</p>
+                        <p>2020 원가관리회계 문제풀이</p>
+                        <p><span>28,000원</span> → <strong>25,200원</strong></p>
+                    </li>
+                </ul>  
+                <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>         
+            </div>
+        </div>
+    </div>   
+    
+    <div class="Section mt70">
+        <div class="widthAuto">
+            <div class="will-nTit">윌비스 임용 <span class="tx-color">시험정보</span></div>
+            <div class="examInfo">
+                <ul class="examTop">
+                    <li>
+                        <div class="titleSubject NSK-Black">유아</div>
+                        <div class="tx16">전국 모집인원 비교</div>
+                        <div class="subject">
+                            <select id="" name="">                                            
+                                <option value="">유아</option>                                        
+                                <option value="">초등</option>                                        
+                                <option value="">중등전체</option>                                        
+                                <option value="">국어</option>                                        
+                                <option value="">수학</option>                                        
+                                <option value="">역사</option>                                        
+                                <option value="">일반사회</option>                                        
+                                <option value="">도덕윤리</option>                                        
+                                <option value="">체육</option>                                        
+                                <option value="">음악</option>                                        
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <table>
+                            <colgroup>
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="*">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">2019학년도</th>
+                                    <th colspan="2">2019 추시</th>
+                                    <th colspan="2">2020학년도</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="first">
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                </tr>
+                                <tr>
+                                    <td>948</td>
+                                    <td>9,955</td>                                    
+                                    <td>482</td>
+                                    <td>12,505</td>                          
+                                    <td>1,154</td>
+                                    <td>13,103</td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+                <div class="examBottom">
+                    <div class="titleTrend NSK-Black">전국 모집인원(경쟁률, 합격선) 현황 및 최근 10년간 모집 동향 분석</div>
+                    <ul>
+                        <li><a href="#none">유아</a></li>
+                        <li><a href="#none">초등</a></li>
+                        <li><a href="#none">국어</a></li>
+                        <li><a href="#none">영어</a></li>
+                        <li><a href="#none">수학</a></li>
+                        <li><a href="#none">도덕윤리</a></li>
+                        <li><a href="#none">역사</a></li>
+                        <li><a href="#none">일반사회</a></li>
+                        <li><a href="#none">전기·전자·통신</a></li>
+                        <li><a href="#none">정보컴퓨터</a></li>
+                        <li><a href="#none">음악</a></li>
+                        <li><a href="#none">미술</a></li>
+                        <li><a href="#none">체육</a></li>
+                        <li><a href="#none">물리</a></li>
+                        <li><a href="#none">화학</a></li>
+                        <li><a href="#none">생물</a></li>
+                        <li><a href="#none">지구과학</a></li>
+                        <li><a href="#none">보건</a></li>
+                        <li><a href="#none">특수</a></li>
+                        <li><a href="#none">중국어</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="Section Section4_ic mt40">
         <div class="widthAuto">
@@ -309,7 +663,6 @@
         </div>
     </div>
 
-
     <div id="QuickMenu" class="MainQuickMenu">
         <div class="mb5">
             <a href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank">
@@ -341,31 +694,578 @@
                 </div>
             </li>
         </ul>
+    </div> 
+    
+    {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}
+    <div id="Reply" class="willbes-Layer-ReplyBox">
+        <a class="closeBtn" href="#" onclick="closeWin('LayerReply'),closeWin('Reply'),closeWin('replyWrite'),openWin('replyListLayer')"><img src="{{ img_url('prof/close.png') }}"></a>
+        <div class="Layer-Tit NG tx-dark-black">수강후기</div>
+
+        <!-- List -->
+        <div id="replyListLayer" class="Layer-Cont">
+            <div class="curriWrap c_both">
+                <div class="CurriBox">
+                    <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">
+                        <colgroup>
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                            <col width="*">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th class="tx-gray">과목선택</th>
+                                <td colspan="8">
+                                    <ul class="curriSelect">
+                                        <li><a href="#none">사회복지학</a></li>
+                                        <li><a href="#none">국어</a></li>
+                                        <li><a href="#none">영어</a></li>
+                                        <li><a href="#none">한국사</a></li>
+                                        <li><a href="#none">행정법</a></li>
+                                        <li><a href="#none">행정학</a></li>
+                                        <li><a href="#none">교육학</a></li>
+                                        <li><a href="#none">수학</a></li>
+                                        <li><a href="#none">독일어</a></li>
+                                        <li><a href="#none">경영학</a></li>
+                                        <li><a href="#none">일본어</a></li>
+                                        <li><a href="#none">관세법</a></li>
+                                        <li><a href="#none">공직선거법</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="tx-gray">교수선택</th>
+                                <td colspan="8" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
+                            </tr>
+                            <tr>
+                                <th class="tx-gray">강좌선택</th>
+                                <td colspan="8" class="tx-left">
+                                    <select id="email" name="email" title="강좌를 선택해 주세요." class="seleEmail">
+                                        <option selected="selected">강좌를 선택해 주세요.</option>
+                                        <option value="강좌1">강좌1</option>
+                                        <option value="강좌2">강좌2</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- curriWrap -->
+            <div class="willbes-Leclist c_both">
+                <div class="willbes-LecreplyList tx-gray">
+                    <dl class="Select-Btn NG">
+                        <dt><a class="on" href="#none">BEST순</a></dt>
+                        <dt><a href="#none">최신순</a></dt>
+                        <dt><a href="#none">평점순</a></dt>
+                    </dl>
+                    <div class="search-Btn btnAuto120 h27 f_right">
+                        <button type="submit" onclick="closeWin('replyListLayer'),openWin('replyWrite')" class="mem-Btn bg-blue bd-dark-blue">
+                            <span>수강후기 작성</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="LeclistTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable replyTable upper-black upper-gray bdb-gray tx-gray">
+                        <colgroup>
+                            <col style="width: 75px;">
+                            <col style="width: 90px;">
+                            <col style="width: 100px;">
+                            <col style="width: 120px;">
+                            <col style="width: 260px;">
+                            <col style="width: 90px;">
+                            <col style="width: 100px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>No<span class="row-line">|</span></li></th>
+                                <th>과목<span class="row-line">|</span></li></th>
+                                <th>교수명<span class="row-line">|</span></li></th>
+                                <th>평점<span class="row-line">|</span></li></th>
+                                <th>제목<span class="row-line">|</span></li></th>
+                                <th>작성자<span class="row-line">|</span></li></th>
+                                <th>등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="replyList w-replyList">
+                                <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
+                                <td class="w-lec">헌법</td>
+                                <td class="w-name">정채영</td>
+                                <td class="w-star star1"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋은강의입니다.
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">장동*</td>
+                                <td class="w-date">2018-00-00</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    Woo ah(우와) Dae Bark(박) 입니다!!! 정채영 교수님 수업을 온/오프라인으로 몇번 들었던 장수생입니다.
+                                    계속해서 무료 강좌 시리즈를 개설해 주셔서 감사합니다! 강의의 질이나 수준도 결코 유료특강에 떨어지지 않는 수준입니다.
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no"><img src="{{ img_url('prof/icon_best_reply.gif') }}"></td>
+                                <td class="w-lec">공직선거법</td>
+                                <td class="w-name">한덕현</td>
+                                <td class="w-star star5"></td>
+                                <td class="w-list tx-left pl20">
+                                    쉽게 설명해주시네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">박형*</td>
+                                <td class="w-date">2018-00-00</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    베스트 댓글2
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">8</td>
+                                <td class="w-lec">스파르타반</td>
+                                <td class="w-name">김쌤</td>
+                                <td class="w-star star4"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">7</td>
+                                <td class="w-lec">행정법</td>
+                                <td class="w-name">최진우</td>
+                                <td class="w-star star2"></td>
+                                <td class="w-list tx-left pl20">
+                                    저랑 잘 맞는 강의입니다.
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">박형*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다.
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">6</td>
+                                <td class="w-lec">공통</td>
+                                <td class="w-name">윤세훈</td>
+                                <td class="w-star star2"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">장동*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div> 
+                                    좋네요 좋네요 좋네요
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">5</td>
+                                <td class="w-lec">헌법</td>
+                                <td class="w-name">정채영</td>
+                                <td class="w-star star2"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋은강의입니다.
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다.
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">4</td>
+                                <td class="w-lec">공직선거법</td>
+                                <td class="w-name">한덕현</td>
+                                <td class="w-star star3"></td>
+                                <td class="w-list tx-left pl20">
+                                    쉽게 설명해주시네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    쉽게 설명해주시네요. 쉽게 설명해주시네요. 쉽게 설명해주시네요.
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">3</td>
+                                <td class="w-lec">스파르타반</td>
+                                <td class="w-name">김쌤</td>
+                                <td class="w-star star4"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">2</td>
+                                <td class="w-lec">행정법</td>
+                                <td class="w-name">최진우</td>
+                                <td class="w-star star3"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    좋네요 좋네요
+                                </td>
+                            </tr>
+
+                            <tr class="replyList w-replyList">
+                                <td class="w-no">1</td>
+                                <td class="w-lec">공통</td>
+                                <td class="w-name">윤세훈</td>
+                                <td class="w-star star1"></td>
+                                <td class="w-list tx-left pl20">
+                                    좋네요
+                                    <div class="subTit">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</div>
+                                </td>
+                                <td class="w-write">최귀*</td>
+                                <td class="w-date">2018-04-22</td>
+                            </tr>
+                            <tr class="replyTxt w-replyTxt tx-gray">
+                                <td colspan="7">
+                                    <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
+                                    좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="willbes-Lec-Search GM p_re mt30">
+                    <div class="inputBox">
+                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                        <button type="submit" onclick="" class="search-Btn">
+                            <span>검색</span>
+                        </button>
+                    </div>
+                </div> 
+            </div>
+            <!-- willbes-Leclist -->
+        </div>
+
+        <!-- Write -->
+        <div id="replyWrite" class="Layer-Cont" style="display: none">
+            <ul class="replyInfo tx-gray NG">
+                <li>· 수강생에 한해 강좌당 1회 작성이 가능합니다.</li>
+                <li>· 수강 종료 강좌는 수강이 종료된 날로부터 30일 이내에만 후기 등록이 가능합니다.</li>
+                <li>· 수강후기 작성 시 포인트 500P가 지급됩니다. (월 최대 2,000p 지급가능)</li>
+                <li>· 강좌와 무관한 내용, 의미없는 문자 나열, 비방이나 욕설이 있을 시 삭제될 수 있습니다.</li>
+            </ul>
+
+            <div class="willbes-Leclist c_both">
+                <div class="LecWriteTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable writeTable upper-gray upper-black bdt-gray bdb-gray fc-bd-none tx-gray">
+                        <colgroup>
+                            <col style="width: 120px;">
+                            <col style="width: 720px;">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td class="w-tit bg-light-white tx-left strong pl30">수강정보<span class="tx-light-blue">(*)</span></td>
+                                <td class="w-selected tx-left pl30">
+                                    <select id="Sbj" name="Sbj" title="Sbj" class="seleSbj" style="width: 150px;">
+                                        <option selected="selected">과목선택</option>
+                                        <option value="헌법">헌법</option>
+                                        <option value="스파르타반">스파르타반</option>
+                                        <option value="공직선거법">공직선거법</option>
+                                    </select>
+                                    <select id="Prof" name="Prof" title="Prof" class="seleProf" style="width: 150px;">
+                                        <option selected="selected">교수선택</option>
+                                        <option value="정채영">정채영</option>
+                                        <option value="한덕현">한덕현</option>
+                                        <option value="김쌤">김쌤</option>
+                                    </select>
+                                    <select id="Lec" name="Lec" title="Lec" class="seleLec" style="width: 360px;">
+                                        <option selected="selected">강좌선택</option>
+                                        <option value="기타">기타</option>
+                                        <option value="강좌내용">강좌내용</option>
+                                        <option value="학습상담">학습상담</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit bg-light-white tx-left strong pl30">평점<span class="tx-light-blue">(*)</span></td>
+                                <td class="w-selected tx-left pl30">
+                                    <!-- Rating Stars Box -->
+                                    <div class="rating-stars text-center GM">
+                                        <ul id="stars">
+                                            <li class="star" title="" data-value='1'>
+                                                <i class="fa fa-star fa-fw"></i>
+                                            </li>
+                                            <li class="star" title="" data-value='2'>
+                                                <i class="fa fa-star fa-fw"></i>
+                                            </li>
+                                            <li class="star" title="" data-value='3'>
+                                                <i class="fa fa-star fa-fw"></i>
+                                            </li>
+                                            <li class="star" title="" data-value='4'>
+                                                <i class="fa fa-star fa-fw"></i>
+                                            </li>
+                                            <li class="star" title="" data-value='5'>
+                                                <i class="fa fa-star fa-fw"></i>
+                                            </li>
+                                        </ul>
+                                        <div class="success-box">
+                                            <div class="text-message">0</div>/ 5
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit bg-light-white tx-left strong pl30">제목<span class="tx-light-blue">(*)</span></td>
+                                <td class="w-text tx-left pl30">
+                                    <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-tit bg-light-white tx-left strong pl30">내용<span class="tx-light-blue">(*)</span></td>
+                                <td class="w-textarea write tx-left pl30">
+                                    <textarea></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="search-Btn mt20 h36 p_re">
+                        <button type="submit" onclick="closeWin('replyWrite'),openWin('replyListLayer')" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                            <span class="tx-purple-gray">취소</span>
+                        </button>
+                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                            <span>저장</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- willbes-Leclist -->
+        </div>
+    </div>    
+    <!-- // willbes-Layer-ReplyBox -->
+
+
+    {{-- 교재보기 팝업 willbes-Layer-Box --}}
+    <div id="InfoForm" class="willbes-Layer-Box">
+        <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+            <img src="{{ img_url('sub/close.png') }}">
+        </a>
+        <div class="Layer-Tit tx-dark-black NG">
+            교재상세정보
+        </div>
+        <div class="lecDetailWrap">
+            <div class="tabBox">
+                <div class="tabLink book2">
+                    <div class="bookWrap">
+                        <div class="bookInfo">
+                            <div class="bookImg">
+                                <img src="{{ img_url('sample/book.jpg') }}">
+                            </div>
+                            <div class="bookDetail">
+                                <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
+                                <div class="book-Author tx-gray">
+                                    <ul>
+                                        <li>분야 : 9급공무원 <span class="row-line">|</span></li>
+                                        <li>저자 : 저자명 <span class="row-line">|</span></li>
+                                        <li>출판사 : 출판사명 <span class="row-line">|</span></li>
+                                        <li>판형/쪽수 : 190*260 / 769</li>
+                                    </ul>
+                                    <ul>
+                                        <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
+                                        <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong> <strong class="tx-light-blue">[판매중]</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="bookBoxWrap">
+                                    <ul class="tabWrap tabDepth2">
+                                        <li><a href="#info1" class="on">교재소개</a></li>
+                                        <li><a href="#info2">교재목차</a></li>
+                                    </ul>
+                                    <div class="tabBox">
+                                        <div id="info1" class="tabContent">
+                                            <div class="book-TxtBox tx-gray">
+                                                2018년재신정판을내면서..<br/>
+                                                첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
+                                                둘째, 매지문마다해설을충실히달았습니다..<br/>
+                                                셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
+                                                기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
+                                            </div>
+                                            <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
+                                        </div>
+                                        <div id="info2" class="tabContent">
+                                            <div class="book-TxtBox tx-gray">
+                                                제1편 현대 문법<br/>
+                                                제2편 고전 문법<br/>
+                                                제3편 국어 생활<br/>
+                                                제4편 현대 문학<br/>
+                                                제5편 고전 문학<br/>
+                                                제1편 현대 문법<br/>
+                                                제2편 고전 문법<br/>
+                                                제3편 국어 생활<br/>
+                                                제4편 현대 문학<br/>
+                                                제5편 고전 문학
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- willbes-Layer-Box -->
+
+    <div id="LayerReply" class="willbes-Layer-Black"></div>
 </div>
 <!-- End Container -->
 
+
 <script type="text/javascript">
+    //상단배너
+    $(function(){ 
+        var slidesImg = $(".MaintabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:3000,
+            sliderWidth:1120,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#MainRollingDiv',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    });
+
+    //적중배너
+    $(function(){ 
+        var slidesImg = $(".SubtabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:3000,
+            sliderWidth:1120,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#SubRollingDiv',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#SubRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerLeft2").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerRight2").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    });
+    
+    //수강후기
+    $(function(){ 
+        var reviewBox = $(".review ul").bxSlider({
+            auto : true,
+            pause : 8000,
+            mode : 'vertical',
+            pager : false,
+            slideMargin : 20,
+            onSlideAfter : function(){
+                reviewBox.startAuto();
+            }
+        });
+    });
+
+    /* 수강후기 팝업 백그라운드 클릭 닫기
+    $(document).ready(function() { 
+        $('#LayerReply.willbes-Layer-Black').on('click', function() {
+            $('.willbes-Layer-ReplyBox').fadeOut();
+            $(this).fadeOut();
+        });
+    });*/
+
+    //교재
     $(function() {
-        var slidesImg1 = $(".avslider").bxSlider({
+        var slidesImg1 = $(".bookList").bxSlider({
             mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
             auto:true,
             speed:350,
             pause:4000,
             pager:true,
             controls:false,
-            minSlides:4,
-            maxSlides:4,
-            slideWidth: 280,
-            slideMargin:12,
+            minSlides:5,
+            maxSlides:5,
+            slideWidth: 190,
+            slideMargin:20,
             autoHover: true,
             moveSlides:1,
             pager:true,
         });
-        $("#imgBannerLeft1").click(function (){
+        $("#imgBannerLeft3").click(function (){
             slidesImg1.goToNextSlide();
         });
-        $("#imgBannerRight1").click(function (){
+        $("#imgBannerRight3").click(function (){
             slidesImg1.goToPrevSlide();
         });        
     });

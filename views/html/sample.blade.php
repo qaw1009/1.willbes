@@ -96,6 +96,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
                 <li class="c_both"></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/main_2018') }}" target="_blank">임용메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/ssam_schedule') }}" target="_blank">임용정보 > 강의실 배정표 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/ssam_upList') }}" target="_blank">임용정보 > 강의 업데이트 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/ssam_board') }}" target="_blank">임용정보 > 합격수기 <span>*</span></a></li>  
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 

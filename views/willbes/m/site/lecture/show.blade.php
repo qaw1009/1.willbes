@@ -38,7 +38,7 @@
                                     @if(empty($data['wAttachFileReal']) === false)
                                     <dt class="h27"><strong>강의계획서</strong><a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$data['wAttachFile'])).'&filename_ori='.urlencode($data['wAttachFileReal'])}}" >{{$data['wAttachFileReal']}}</a></dt><br/>
                                     @endif
-                                    @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                    @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                         @if(empty($data['SaleStartDatm']) === false && empty($data['SaleEndDatm'] === false))
                                             <dt class="h27"><strong>수강가능기간</strong>{{date('Y.m.d',strtotime($data['SaleStartDatm']))}} ~ {{date('Y.m.d', strtotime($data['SaleEndDatm']))}}</dt><br/>
                                         @endif
@@ -130,9 +130,9 @@
 
         <div class="lec-info-tab NGR">
             <ul class="tabWrap">
-                <li><a href="#tab01" @if(!($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')) class="on" @endif>강좌정보</a></li>
+                <li><a href="#tab01" @if($data['FreeLecTypeCcd'] == '652001') class="on" @endif>강좌정보</a></li>
                 <li><a href="#tab02">교재정보</a></li>
-                <li><a href="#tab03" @if(($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')) class="on" @endif>강의목차</a></li>
+                <li><a href="#tab03" @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003')) class="on" @endif>강의목차</a></li>
                 @if($data['IsOpenStudyComment'] === 'Y')
                 <li><a href="#tab04" id="btn_study_board">수강후기</a></li>
                 @endif
@@ -171,7 +171,7 @@
                                 {{ $row['wUnitLectureNum'] }}강 <span class="tx-blue">{{ $row['wRuntime'] }}분</span><br>
                                 {{ $row['wUnitName'] }}
                                 <ul class="NGEB mt10">
-                                    @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                    @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                         @if(empty($row['wWD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_black_line">WIDE</a></li>@endif
                                         @if(empty($row['wHD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_blue">HIGH</a></li>@endif
                                         @if(empty($row['wSD']) === false) <li><a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileFree/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$data['ProdCode']}}&u={{$row['wUnitIdx']}}&q=WD", "{{config_item('starplayer_license')}}");' class="btn_gray">LOW</a></li>@endif
@@ -182,7 +182,7 @@
                                     @endif
                                         <li>
                                             @if(empty($row['wUnitAttachFile']) === false)
-                                                @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                                @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                                     <a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $row['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}"  class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}"> <span class="underline">강의자료</span></a>
                                                 @else
                                                     <div class="f_right"><img src="{{ img_url('m/mypage/icon_lec.png') }}" > <span class="underline">강의자료</span></div>

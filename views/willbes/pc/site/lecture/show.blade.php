@@ -353,7 +353,7 @@
                             {{ $row['wUnitLectureNum'] }}강</td>
                         <td class="w-list tx-left pl20">{{ $row['wUnitName'] }}</td>
                         <td class="w-free">
-                            @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                            @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                 @if(empty($row['wWD']) === false) <span class="tBox NSK t3 white"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','WD');">WIDE</a></span> @endif
                                 @if(empty($row['wHD']) === false) <span class="tBox NSK t1 black"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','HD');">HIGH</a></span> @endif
                                 @if(empty($row['wSD']) === false) <span class="tBox NSK t2 gray"><a href="javascript:fnPlayerFree('{{$data['ProdCode']}}','{{$row['wUnitIdx']}}','SD');">LOW</a></span> @endif
@@ -365,7 +365,7 @@
                         </td>
                         <td class="w-file">
                             @if(empty($row['wUnitAttachFile']) === false)
-                                @if($pattern == 'free' && $data['FreeLecTypeCcd'] == '652002')
+                                @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                     <a href="{{site_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $row['wAttachPath'].'/'.$row['wUnitAttachFile'])).'&filename_ori='.urlencode($row['wUnitAttachFileReal'])}}" >
                                         <img src="{{ img_url('sub/icon_file.gif') }}"></a>
                                 @else

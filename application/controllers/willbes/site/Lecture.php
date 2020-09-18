@@ -250,6 +250,13 @@ class Lecture extends \app\controllers\FrontController
             }
         }
 
+        // 비로그인상태 동영상일 경우 접수기간 체크
+        if ($this->_learn_pattern == 'on_free_lecture' && $data['FreeLecTypeCcd'] == $this->lectureFModel->_free_lec_type_ccd['logout']) {
+            if (strtotime($data['SaleStartDatm']) > strtotime(date("Y-m-d H:i:s")) || strtotime($data['SaleEndDatm']) < strtotime(date("Y-m-d H:i:s"))) {
+                show_alert('접근 권한이 없습니다.', 'back');
+            }
+        }
+
         // 판매가격 정보 확인
         $data['ProdPriceData'] = json_decode($data['ProdPriceData'], true);
         if (empty($data['ProdPriceData']) === true) {

@@ -141,7 +141,7 @@
                                         </ul>
                                         <div>
                                             위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
-                                            <label class="ml10"><input type="radio" name="is_chk" id="is_chk_y"> 동의함</label> <label class="ml10"><input type="radio" name="is_chk" id="is_chk_n"> 동희하지 않습니다.</label>
+                                            <label class="ml10"><input type="radio" name="is_chk" id="is_chk_y"> 동의함</label> <label class="ml10"><input type="radio" name="is_chk" id="is_chk_n"> 동의하지 않습니다.</label>
                                         </div>
                                     </div>
                                 </td>

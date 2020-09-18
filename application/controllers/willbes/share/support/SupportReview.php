@@ -26,6 +26,7 @@ class SupportReview extends BaseSupport
             'campus' => 'd_none',               // 캠퍼스
             'subject' => 'show',                // 과목
             'name' => 'show',                   // 작성자
+            'create_btn' => 'show',             // 등록버튼
             'mod_btn' => 'show',                // 수정버튼
             'arr_table_width' => [65,120,'',60,90,100,90],
         ]

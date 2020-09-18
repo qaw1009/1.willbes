@@ -62,7 +62,7 @@
                                     <tbody>
                                     <tr>
                                         <td id="board_content" class="w-txt tx-left" colspan="4">
-                                            {!! $data['Content'] !!}
+                                            {!! nl2br($data['Content']) !!}
                                         </td>
                                     </tr>
                                     @if(empty($data['AttachData']) === false)

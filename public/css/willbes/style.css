@@ -249,6 +249,12 @@
 .Member .info-Txt-cs span {border:1px solid #333; padding-left:20px; display: inline-block; height: 50px; line-height: 50px;}
 .Member .info-Txt-cs span a { display: inline-block; background: #333; color:#fff; padding:0 20px; margin-left:20px}
 
+.MemberBox {width:940px; margin: 0 auto;}
+.MemberBox .Member {float: left;}
+.MemberBox .youpass {float: right; text-align: center;}
+.MemberBox .youpass img {width:100%; max-width: 460px;}
+.MemberBox:after {content:""; display:block; clear:both}
+
 /* Login Form : 로그인 */
 .mem-Login button.mem-Btn {
     height: 40px;
@@ -11523,6 +11529,10 @@ table.acadlecInfoPackageTable tr.Top td {
         display: none;
     }
 
+    .MemberBox {width: 100% !important; margin: 0 auto;}
+    .MemberBox .Member {float: none;}
+    .MemberBox .youpass {float: none; text-align: center; margin-top:20px}
+    .MemberBox .youpass img {width:100%; max-width: 460px;}
 
     /*-- Login Form : 공통 --*/
     .mem-Tit {

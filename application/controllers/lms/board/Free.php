@@ -29,6 +29,45 @@ class Free extends BaseBoard
         ]
     ];
 
+    // 프론트 컨트롤러 연결, N: 사용안함, '': 특정 조건 노출
+    public $_arr_wbs_sub_domain = [
+        '45' => '/support/notice/index', // 공지
+        '108' => '/support/gosiNotice/index',    // 한림학원전용 공지
+        '48' => '/support/qna/index',   // 상담
+        '51' => '/support/faq/index',   // faq
+        '100' => 'N',    // 이달의강의
+        '54' => '/support/examAnnouncement/index',  // 시험공고
+        '57' => '/support/examNews/index',    // 수험뉴스(정보)
+        '60' => '/support/examQuestion/index',    // 기출문제
+        '97' => 'N',    // 개정법령
+        '98' => 'N',    // 최신판례
+        '63' => '/professor',    // 강사게시판 공지
+        '66' => '/professor',    // 학습Q&A
+        '69' => '/professor',    // 학습자료실
+        '87' => '/professor',    // T-pass자료실
+        '88' => '',    // 첨삭게시판 (첨삭상품에 적용)
+        '101' => '/professor',    // TCC게시판
+        '111' => '/prof/anonymous',    // 익명 자유게시판
+        '99' => 'N',    // 기간제패키지 공지
+        '75' => '/offinfo/boardInfo/index/75',    // 학원휴강/보강공지
+        '94' => '/board/jobQna',    // 인적성/면접 상담게시판
+        '78' => '/offinfo/boardInfo/index/78',    // 신규강의안내
+        '80' => '/offinfo/boardInfo/index/80',    // 강의시간표
+        '82' => '/offinfo/boardInfo/index/82',    // 강의실배정표
+        '89' => '/offinfo/boardInfo/index/89',    // 모의고사성적공지
+        '90' => '/offinfo/gallery/index',    // 학원갤러리
+        '85' => '/professor',    // 수강후기
+        '91' => '/support/review/index',    // 합격수기
+        '92' => 'N',    // 수험생활Tip
+        '93' => 'N',    // 공감게시판
+        '112' => '',    // 익명 자유게시판 (카테고리코드 필요)
+        '106' => 'N',    // 프로모션공지사항
+        '102' => '',    // 합격예측공지사항 (프로모션 공지사항)
+        '113' => '/support/pressNotice/index',    // 출판사공지
+        '114' => '/support/examErrata/index',    // 정오표/추록
+        '115' => '/support/partnerQna/index',    // 업무제휴문의
+    ];
+
     public function __construct()
     {
         $this->models = array_merge($this->models, $this->temp_models);
@@ -56,6 +95,9 @@ class Free extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //사이트 조회
+        $arr_site_host = $this->_getSiteByHost();
+
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -64,7 +106,9 @@ class Free extends BaseBoard
             'arr_category' => $arr_category,
             'arr_m_category' => $arr_m_category,
             'boardName' => $this->board_name,
-            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
+            'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
+            'arr_site_host' => $arr_site_host,
+            'arr_wbs_sub_domain' => $this->_arr_wbs_sub_domain,
         ]);
     }
 
@@ -438,4 +482,22 @@ class Free extends BaseBoard
 
         return$input_data;
     }
+
+    /**
+     * 사이트별 호스트 조회
+     * return mixed
+     */
+    private function _getSiteByHost()
+    {
+        $data = [];
+        $arr_all_site = $this->siteModel->listAllSite();
+        $arr_all_site = array_pluck($arr_all_site,'SiteUrl','SiteCode');
+        foreach ($arr_all_site as $key => $val){
+            if($key == '2000') continue;
+            $val = explode('.',$val);
+            $data[$key] = $val[0] . ENV_DOMAIN;
+        }
+        return $data;
+    }
+    
 }

@@ -72,7 +72,11 @@ class SupportReview extends BaseSupport
         if(empty($s_cate_code) === false){
             $subject_list = $this->sortMappingModel->listSubjectMapping('', $this->_site_code, $s_cate_code);
             if(empty($subject_list) === false){
-                $arr_base['subject'] = array_pluck($subject_list,'SubjectName', 'SubjectIdx');
+                foreach ($subject_list as $key => $val){
+                    if($val['SubjectIdx'] == $val['RSubjectIdx']){
+                        $arr_base['subject'][$val['SubjectIdx']] = $val['SubjectName'];
+                    }
+                }
             }
         }else{
             $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
@@ -241,6 +245,9 @@ class SupportReview extends BaseSupport
         //과목조회
         $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
 
+        // 카테고리 연관 과목 조회
+        $arr_cate_subject = $this->_getCateSubjectParts($arr_base['category']);
+
         $method = 'POST';
         $data = null;
 
@@ -294,6 +301,7 @@ class SupportReview extends BaseSupport
             'board_idx' => $board_idx,
             'reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->supportBoardTwoWayFModel->_attach_img_cnt,
+            'arr_cate_subject' => $arr_cate_subject
         ]);
     }
 
@@ -321,11 +329,6 @@ class SupportReview extends BaseSupport
 
         if (empty($board_idx)) {
             show_alert('게시글번호가 존재하지 않습니다.', 'back');
-        }
-
-        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
-            $arr_swich = null;
         }
 
         //과목조회
@@ -373,6 +376,15 @@ class SupportReview extends BaseSupport
         $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
         if($result !== true) {
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+            $arr_swich = null;
+        }else{
+            if(empty($data['RegName']) === true){ // 등록 게시글의 회원명 조회
+                $data['RegName'] = $this->supportBoardTwoWayFModel->getBoardForMemberInfo($board_idx)['RegName'];
+            }
         }
 
         // 카테고리 조회
@@ -578,4 +590,26 @@ class SupportReview extends BaseSupport
         }
         return$input_data;
     }
+
+    /**
+     * 카테고리 연관 과목 조회
+     * @param $arr_cate_code
+     * @return array
+     */
+    private function _getCateSubjectParts($arr_cate_code = [])
+    {
+        $data = [];
+        foreach ($arr_cate_code as $row){
+            $arr_cate_subject = $this->sortMappingModel->listSubjectMapping('', $this->_site_code, $row['CateCode']);
+            if(empty($arr_cate_subject) === false){
+                foreach ($arr_cate_subject as $key => $val){
+                    if($val['SubjectIdx'] == $val['RSubjectIdx']){
+                        $data[$row['CateCode']][$val['SubjectIdx']] = $val['SubjectName'];
+                    }
+                }
+            }
+        }
+        return $data;
+    }
+
 }

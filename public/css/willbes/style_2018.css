@@ -193,7 +193,6 @@ min-height: 260px;}
 }
 .ssam .willbes-Layer-ReplyBox {left:50%; top:1400px;margin-left:-445px}
 
-
 /*Main Container : 교수진*/
 .ssam .Section3 li {display: inline; float:left; width:16.6666666%; margin-bottom:10px}
 .ssam .Section3 li a {background:#eee; display:inline-block; width:180px; }
@@ -239,6 +238,8 @@ min-height: 260px;}
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+.ssam .Section4 .bestLec .best {width:34px; height: 34px; line-height: 34px; border-radius: 0 17px 17px 17px; background: #0c5dc0; 
+    text-align: center; font-size: 18px;; color:#fff}
 .ssam .Section4 .lecinfo {position: absolute; top:20px; left:40px; width:230px; z-index: 2; font-size:14px; line-height: 1.5;}
 .ssam .Section4 .lecinfo li {margin-bottom:15px}
 .ssam .Section4 .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 24px;}
@@ -246,6 +247,7 @@ min-height: 260px;}
 .ssam .Section4 .lecinfo li strong {background: #0c5dc0; color:#fff; font-weight: bold; padding:5px 10px}
 .ssam .Section4 .lecinfo li:last-child {display: block; word-break: keep-all;}
 .ssam .Section4 .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
+
 
 /* Main Container : 교재*/
 .ssam .bookContent {position:relative; padding-left:55px}
@@ -296,13 +298,91 @@ min-height: 260px;}
 .ssam .examInfo .examBottom {margin:0 50px; border-top:1px solid #dedede; padding:35px 0; text-align: center;}
 .ssam .examInfo .examBottom .titleTrend {font-size: 24px; color:#0c5dc0; margin-bottom:20px}
 .ssam .examInfo .examBottom ul {width:1000px; margin:0 auto}
-.ssam .examInfo .examBottom li {display: inline-block; float:left; width:calc(10% - 10px); height:90px; border-radius: 45px; background-color: #f7f7f8;
+.ssam .examInfo .examBottom li {display: inline-block; float:left; width:calc(10% - 10px); height:90px; border-radius: 45px; background-color: #f7f7f8; 
     margin-right:10px; margin-bottom:10px; line-height: 90px;}
 .ssam .examInfo .examBottom li:hover {background-color:#0c5dc0; color:#fff}
 .ssam .examInfo .examBottom li a {display: block; }
 .ssam .examInfo .examBottom ul:after {content:""; display:block; clear:both}
 
-
+/* subContainer : Prof : willbes-Layer-Trend */
+.willbes-Layer-Trend {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 200px;
+    left:50%;
+    z-index: 110;
+    width: 1220px;    
+    margin-left:-610px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 0 0;
+}
+.willbes-Layer-Trend .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-Trend .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 25px;
+    margin:0 25px;
+}
+.willbes-Layer-Trend .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-Trend .Layer-Cont {
+    padding: 0; margin:0;
+}
+.mainPop_con {overflow: hidden; background: #3a3f45;}
+.mainPop_con .mainPop_map{padding:0; text-align:center; position:relative; }
+.mainPop_con .mainPop_map > img{}
+.mainPop_con .mainPop_map table{width:265px; background:#fff; border:2px solid #000; margin-bottom:15px}
+.mainPop_con .mainPop_map table:last-of-type{margin-bottom:0}
+.mainPop_con .mainPop_map table tr:last-of-type{border-bottom:0}
+.mainPop_con .mainPop_map table tr th,
+.mainPop_con .mainPop_map table tr td{height:21px; font-size:12px; border-right:1px solid #000; border-bottom:1px solid #000}
+.mainPop_con .mainPop_map table tr td:last-of-type{border-right:0}
+.mainPop_con .mainPop_map table tr th{color:#2c303e; font-weight:300; background:#ccff99}
+.mainPop_con .mainPop_map table tr th:first-of-type{background:#ffffcc}
+.mainPop_con .mainPop_map table tr th.blue_th{font-weight:500; color:#2b4ab8; background:#ffff33}
+.mainPop_con .mainPop_map table tr td{color:#838484; font-weight:300}
+.mainPop_con .mainPop_map table tr td span.red{color:#f00}
+.mainPop_con .mainPop_map table tr td span.blue{color:#2b4ab8}
+.mainPop_con .mainPop_map .map_left{ display:none; position:absolute; top:0; left:0}
+.mainPop_con .mainPop_map .map_center{ display:none; height:100%; position:absolute; top:0; left:350px}
+.mainPop_con .mainPop_map .map_right{display:none; position:absolute; top:0; right:0}
+.mainPop_con .mainPop_map div {position:absolute}
+.mainPop_con .mainPop_map .seoul{top:70px; left:133px}
+.mainPop_con .mainPop_map .ic{top:198px; left:98px}
+.mainPop_con .mainPop_map .cn{top:327px; left:58px}
+.mainPop_con .mainPop_map .sj{top:318px; left:333px}
+.mainPop_con .mainPop_map .dj{top:462px; left:253px}
+.mainPop_con .mainPop_map .gj{top:715px; left:103px}
+.mainPop_con .mainPop_map .jn{top:841px; left:103px}
+.mainPop_con .mainPop_map .jb{top:591px; left:103px}
+.mainPop_con .mainPop_map .gg{top:64px; left:434px}
+.mainPop_con .mainPop_map .jj{top:831px; left:411px}
+.mainPop_con .mainPop_map .gw{top:64px; left:734px}
+.mainPop_con .mainPop_map .cb{top:194px; left:794px}
+.mainPop_con .mainPop_map .kb{top:320px; left:794px}
+.mainPop_con .mainPop_map .dg{top:444px; left:794px}
+.mainPop_con .mainPop_map .us{top:590px; left:873px}
+.mainPop_con .mainPop_map .bs{top:714px; left:901px}
+.mainPop_con .mainPop_map .kn{top:714px; left:611px}
+.mainPop_con .mainPop_map .total{top:883px; left:900px}
+.mainPop_con .trendView {background-color: #fff; margin:50px; padding:30px}
+.mainPop_con .trendView .trendTitle {font-size:18px; font-weight:600;}
+.mainPop_con .trendView .graph {border:1px solid #dedede; margin-top:20px; min-height:200px;}
+.mainPop_con .trendView .trendData {margin-top: 20px;}
+.mainPop_con .trendView .trendData table {border-top:1px solid #dedede; border-left:1px solid #dedede}
+.mainPop_con .trendView .trendData tr {border-bottom:1px solid #dedede}
+.mainPop_con .trendView .trendData tr:nth-of-type(even) {background: #fafafa; font-size: 14px;}
+.mainPop_con .trendView .trendData th,
+.mainPop_con .trendView .trendData td {padding:10px; text-align: center; border-right:1px solid #dedede}
+.mainPop_con .trendView .trendData th {font-weight: bold; color:#fff; background:#0c5dc0}
 
 /* Main Container : campus : */
 .ssam .campus_info {

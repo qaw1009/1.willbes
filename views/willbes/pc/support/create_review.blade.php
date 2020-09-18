@@ -49,10 +49,6 @@
                                     @endif
 
                                     <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required" >
-                                        <option value="">과목명</option>
-                                        @foreach($arr_base['subject'] as $key => $val)
-                                            <option value="{{$key}}" @if(element('subject_idx', $arr_input) == $key || (empty($data['SubjectIdx']) === false) && $key == $data['SubjectIdx'])selected="selected"@endif>{{$val}}</option>
-                                        @endforeach
                                     </select>
 
                                     <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus d_none" style="width: 250px;">
@@ -276,8 +272,6 @@
 
             // 카테고리 선택
             $regi_form.on('change', 'select[name="s_cate_code"]', function() {
-                $('#subject_idx').html('');
-
                 var obj_val = $(this).val();
                 fn_cate_subject(obj_val);
             });
@@ -295,7 +289,6 @@
             if (typeof json_data[obj_val] === 'undefined') {
                 return;
             }
-            console.log(json_data[obj_val]);
 
             var subject_idx = "{{ $data['SubjectIdx'] or ''}}";
             var html = "<option value=''>과목</option>";

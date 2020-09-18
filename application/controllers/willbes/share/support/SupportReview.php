@@ -82,8 +82,6 @@ class SupportReview extends BaseSupport
             $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
         }
 
-
-
         // 프론트 ui
         $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
         if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;

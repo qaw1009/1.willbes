@@ -130,7 +130,7 @@
 
         <div class="lec-info-tab NGR">
             <ul class="tabWrap">
-                <li><a href="#tab01" @if(!($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))) class="on" @endif>강좌정보</a></li>
+                <li><a href="#tab01" @if($pattern == 'only' || ($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652001'))) class="on" @endif>강좌정보</a></li>
                 <li><a href="#tab02">교재정보</a></li>
                 <li><a href="#tab03" @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003')) class="on" @endif>강의목차</a></li>
                 @if($data['IsOpenStudyComment'] === 'Y')

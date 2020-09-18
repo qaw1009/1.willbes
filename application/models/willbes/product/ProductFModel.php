@@ -438,7 +438,7 @@ class ProductFModel extends WB_Model
                 and WL.wIsUse = "Y" and WL.wIsStatus = "Y"
                 and WLU.wIsUse = "Y" and WLU.wIsStatus = "Y"            
         ';
-        $order_by = 'order by P.ProdCode desc, WLU.wOrderNum asc, WLU.wUnitIdx desc';
+        $order_by = 'order by P.ProdCode desc, WLU.wOrderNum asc, WLU.wUnitIdx asc';
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $order_by, [$prod_code]);

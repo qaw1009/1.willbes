@@ -114,12 +114,15 @@
                 <div class="form-group">
                     <label class="control-label col-md-2" for="FreeLecTypeCcd">무료강좌유형 <span class="required">*</span>
                     </label>
-                    <div class="col-md-4 form-inline item" >
+                    <div class="col-md-10 form-inline item" >
                         <div class="item inline-block">
                             @foreach($freelectype_ccd as $key => $val)
-                                <input type="radio" name="FreeLecTypeCcd" id="FreeLecTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['FreeLecTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                                <input type="radio" name="FreeLecTypeCcd" id="FreeLecTypeCcd{{$loop->index}}" value="{{$key}}" class="flat" required="required" @if($loop->index == 1 || $data['FreeLecTypeCcd']==$key) checked="checked"@endif> {{$val}}
+                                @if($key == '652002')
+                                [비밀번호] <input type="text" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="30" >
+                                @endif
+                                &nbsp;&nbsp;
                             @endforeach
-                            &nbsp;&nbsp;[비밀번호] <input type="text" name="FreeLecPasswd" id="FreeLecPasswd" value="{{$data['FreeLecPasswd']}}" class="form-control" title="보강동영상 비밀번호" maxlength="30" >
                         </div>
                     </div>
                 </div>

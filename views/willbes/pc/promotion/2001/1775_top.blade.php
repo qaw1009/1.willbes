@@ -125,13 +125,17 @@
 <script>
     var $ajax_form = $('#ajax_form');
     var slideMap = null;
-
     /*서비스이용현황 */
     $(document).ready(function() {
-        @if(date('YmdHi') >= '202006041500' && ENVIRONMENT == 'production')
+        var mem_idx = {{empty(sess_data('mem_idx')) === false ? sess_data('mem_idx') : ''}};
+        if(mem_idx == 1306223 || mem_idx == 1285545){
+
+        }else{
+            @if(date('YmdHi') >= '202006041500' && ENVIRONMENT == 'production')
             alert('2020년 2차 합격예측 풀서비스는 종료 되었습니다.');
             location.href = '{{ front_url('/') }}';
-        @endif
+            @endif
+        }
 
         // 상단 합격안정권 예측 데이터 조회
         areaAvrAjax('{{ $arr_promotion_params['PredictIdx'] }}');

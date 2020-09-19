@@ -84,6 +84,13 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_03.gif" alt="" >
     </div>
 
+    <div class="evtCtnsBox evt_certi" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_certi.jpg" alt="" usemap="#Map1480m_certi" border="0" >
+        <map name="Map1480m_certi" id="Map1480m_certi">
+            <area shape="rect" coords="143,1047,577,1105" href="https://pass.willbes.net/certApply/index/page/transfer/cert/32" />
+        </map>
+    </div>
+
     <div class="evtCtnsBox evt04">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_04.jpg" alt="" >   
     </div>
@@ -109,10 +116,15 @@
                 <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                 <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 정가 기준으로 계산하여 사용 일수만큼 차감하고 환불됩니다.</li>
             </ul>
-            <p class="NSK-Black"><span>●</span> 교재관련 (*3~5순환 패키지의 경우에만 해당)</p>
+            <p class="NSK-Black"><span>●</span> 교재관련 (*4~5순환 패키지의 경우에만 해당)</p>
             <ul>
                 <li>본 상품은 교재를 별도 구매하셔야 하며, 각 강좌별 교재는 무한PASS존 내 [교재구매] 버튼을 통해 구매 가능합니다.</li>
-                <li>4~5순환 모의고사 진행 일정에 맞추어 회원정보에 등록된 휴대폰번호로 신청 방법 및 배송 기간이 문자 안내될 예정입니다.</li>
+                <li>4순환 진도별모의고사 신청방법<br>
+                    - 수강신청 후 ▷ 내강의실 ▷패키지강좌 ▷김동진 교수 민법 4순환 과정 클릭(전과목) ▷교재구매 클릭 ▷결제<br>
+                    - 반드시 위 신청방법 참고하여 4순환 진도별모의고사 신청해 주셔야 만 배송됩니다.<br>
+                    - 배송일정 :  1차 배송 9.22~23일경, 2차 10.22~26일경, 3차 11.20~23일경
+                </li>
+                <li>5순환 전범위모의고사 신청 안내 및 배송안내는 12월 말경 문자 공지 예정입니다.</li>
             </ul>
         </div>
     </div>
@@ -122,7 +134,7 @@
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
         <a href="javascript:goLecture('171313');">
-        3~5순환 전과목 패키지 신청 >
+        4~5순환 전과목 패키지 신청 >
         </a>
         <a href="javascript:goLecture2('171369');">
         1~3순환 법과목 패키지 신청 >

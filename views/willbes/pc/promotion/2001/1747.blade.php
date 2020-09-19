@@ -196,7 +196,7 @@
             @endif
             --}}
             <li><a href="https://police.willbes.net/promotion/index/cate/3002/code/1766" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_sky01.png" title="적중 이벤트"></a></li>
-            <li><a href="javascript:alert('9.19(토) 공개됩니다.')"><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_sky02.png" title="라이브"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_sky02.png" title="라이브"></a></li>
             {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   
 

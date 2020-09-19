@@ -14,7 +14,8 @@
         <div class="evtCtnsBox cts02_02" id="cts02_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts02_02.jpg" alt="라이브 토크쇼" usemap="#Map1747_cts02_02" border="0">
             <map name="Map1747_cts02_02" id="Map1747_cts02_02">
-                <area shape="rect" coords="337,1832,769,1925" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />
+                {{--<area shape="rect" coords="337,1832,769,1925" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" />--}}
+                <area shape="rect" coords="337,1832,769,1925" href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');"/>
             </map>
         </div>
 

@@ -136,7 +136,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $scoredata = array();
             $scoreIs = 'N';
             $addscoreIs = 'N';
-            $scoreType = '';
+            $scoreType = (empty($score1)===false ? 'EACH' : '');
             if(empty($score2)===false){
                 $scoreType = ($scoreType == 'EACH') ? $scoreType : 'DIRECT';
                 foreach ($score2 as $key => $val) {

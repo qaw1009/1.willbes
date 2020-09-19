@@ -11531,8 +11531,8 @@ table.acadlecInfoPackageTable tr.Top td {
 
     .MemberBox {width: 100% !important; margin: 0 auto;}
     .MemberBox .Member {float: none;}
-    .MemberBox .youpass {float: none; text-align: center; margin-top:20px}
-    .MemberBox .youpass img {width:100%; max-width: 460px;}
+    .MemberBox .youpass {display:none}
+
 
     /*-- Login Form : 공통 --*/
     .mem-Tit {

@@ -388,39 +388,12 @@ min-height: 260px;}
 .ssam .Section7 .widthAuto {background-color: #e0e3e6; padding:30px}
 .ssam .Section7 ul {margin-right:-10px; width: 100%}
 .ssam .Section7 li {display: inline; float:left; width: calc(20% - 10px); margin-right:10px}
-.ssam .Section7 li span {display:block}
-.ssam .Section7 li a {display:block; padding-left:20px; font-size:16px}
+.ssam .Section7 li:first-of-type {font-size:20px; line-height: 1.5; padding:8px 0 0 30px}
+.ssam .Section7 li span {display:block; font-size: 12px;}
+.ssam .Section7 li a {display:block; padding-left:20px; font-size:16px; border:1px solid #b1b1b1; height: 58px; line-height:58px; text-align: center;}
+.ssam .Section7 li img {margin-left:5px}
+.ssam .Section7 li a:hover {background-color: #fff;}
 .ssam .Section7 ul:after {content:""; display:block; clear:both}
-
-
-/* Main Container : campus : */
-.ssam .campus_info {
-    position: relative;
-    float: right;
-    width: 350px;
-    height: 328px;
-}
-.ssam .campus_info .btn {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.ssam .campus_info .btn a {
-    display: inline-block; 
-    font-size: 17px; 
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    padding: 0;
-    width: 168px;
-    margin-right: 5px;
-    color: #0c5dc0;
-    text-align: center;
-    border: 1px solid #0c5dc0;    
-}
-.ssam .campus_info .btn a img {
-    vertical-align: middle;
-}
 
 
 /* Main Container : Notice : noticeTabs */
@@ -471,54 +444,63 @@ min-height: 260px;}
     vertical-align: top;
 }
 
-/*학원 오시는 길*/
-.Section4_ic {
-    width: 1120px !important;
-    margin: auto;
+/* Main Container : cscenterBox */
+.ssam .CScenterBox {background: #f6f6f6; position: relative; height: 200px;}
+.ssam .CScenterBox dl dt {
+    float: left;
+    height: 200px;
 }
-.Section4_ic .will-acadTit {border-bottom:2px solid #000; margin-bottom:20px}
-.Section4_ic .noticeTabs {
-    width: 100% !important;
-}
-.Section4_ic .map_img {
-    position: relative;
-    float: left !important;
-    width: 698px;
-    height: 328px;
-    overflow: hidden;
-}
-.Section4_ic .map_img img {
-    position: absolute;
-    left:50%;
-    margin-left:-349px;
+.ssam .CScenterBox dl dd {position: absolute; right:20px; bottom:20px;font-size: 11px;
+    color: #888;}
+.ssam .CScenterBox ul li {
+    display: inline-block;
 }
 
-.Section4_ic .campus_info {
-    position: relative;
-    float: right !important;
-    width: 320px;
-    height: 328px;
-}
-.Section4_ic .campus_info dl dt {
-    border-top: 1px solid #e3e3e3;
-    padding: 25px 0;
-}
-.Section4_ic .campus_info dl dt:first-child {
-    border-top: none;
-    padding: 0 0 25px;
-}
-.Section4_ic .campus_info .btn a {
-    display: inline-block; 
-    font-size: 17px; 
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    padding: 0;
-    width: 168px;
-    margin-right: 5px;
-    color: #000;
+/* Main Container : cscenterBox : willbesCenter */
+.ssam .willbesCenter {
+    background: #e2e2e2 url(https://static.willbes.net/public/images/promotion/main/2018/2018_main_cs.png) no-repeat 40px 30px;;
+    width: 500px;
     text-align: center;
-    border: 1px solid #000;    
+}
+.ssam .willbesCenter ul {width:330px; margin:20px 0 0 150px}
+.ssam .willbesCenter ul li {
+    display: inline; float: left; width:110px;
+    margin:0; margin-bottom:10px
+}
+.ssam .willbesCenter ul li a {
+    display: block;
+}
+.ssam .willbesCenter ul li span {display: block; height: 49px; line-height: 49px;}
+.ssam .willbesCenter ul li .nTxt {
+    font-size: 12px;
+    font-weight: 600;
+    color: #464646;
+    line-height: 14px;
+}
+.ssam .willbesCenter ul:after {content:""; display:block; clear:both}
+/* Main Container : cscenterBox : willbesNumber */
+.ssam .willbesNumber {   
+    width: 620px;
+    padding: 30px 0 0 50px;
+    letter-spacing: normal;    
+}
+.ssam .willbesNumber ul li {
+    margin:0;
+    width:calc(50% - 50px);
+    margin-left:50px;
+    vertical-align: top;    
+}
+.ssam .willbesNumber .nTit {
+    font-size: 17px;
+    color: #464646;
+}
+.ssam .willbesNumber .nNumber {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 55px;
+}
+.ssam .willbesNumber .nNumber span {
+    font-size: 12px;
 }
 
 /* Main Container : QuickMenu*/ 
@@ -526,7 +508,7 @@ min-height: 260px;}
     position: fixed;
     top: 180px;
     right: 10px;
-    width: 164px;
+    width: 100px;
     height: auto;
     z-index: 100;
 }
@@ -536,7 +518,7 @@ min-height: 260px;}
 }
 
 .ssam .MainQuickMenu .sliderNum {
-    width: 164px;
+    width: 100px;
     min-height: 238px;
     overflow: hidden;
 }
@@ -577,52 +559,17 @@ min-height: 260px;}
 }
 
 .ssam .MainQuickMenu .gobtn {
-    padding:0 8px !important;
-    background: #ececec;
-    width:100%;
-    margin-bottom:8px;
+    width:100px;
+    border:1px solid #dbdbdb;
 }
-.ssam .MainQuickMenu .gobtn li {
-    border-top:1px solid #f6f6f6;
-    border-bottom:1px solid #d4d4d4;
-    height: 40px;
-    line-height: 40px;
-    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
-    margin: 0;
-}
-.ssam .MainQuickMenu .gobtn li:first-child {
-    border-top:0;
-}
-.ssam .MainQuickMenu .gobtn li:last-child {
-    border-bottom:0;
-}
+.ssam .MainQuickMenu .gobtn li {margin:0}
 .ssam .MainQuickMenu .gobtn li a {
-    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+    border-bottom:1px solid #dbdbdb;
+    margin: 0 10px;
+    text-align: center;
+    display:block;
+    padding:10px 0;
+    line-height: 1.2;
+    color:#515151;
 }
-.ssam .MainQuickMenu .gobtn li a:hover {
-    color:#00acec; 
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(1) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(2) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(3) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(4) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(5) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(6) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(7) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
-}
-.ssam .MainQuickMenu .gobtn li:nth-child(8) a {
-    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
-}
+.ssam .MainQuickMenu .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold;}

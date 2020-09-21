@@ -174,9 +174,12 @@
         </div>
     </div> 
 
-    <div class="Section mt40">
-        <div class="VisualSubBox p_re"> 
-            <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">           
+    <div class="Section mt70">
+        <div class="widthAuto smallTit NSK-Black">          
+            <p><span><strong>기출적중&수강후기로 증명</strong>하는 윌비스 임용 교수진</span></p>            
+        </div> 
+        <div class="VisualSubBox p_re mt40">               
+            {{--<img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">  --}}                  
             <div id="SubRollingSlider" class="SubtabBox">
                 <ul class="SubtabSlider">
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_mjs.jpg" alt="유아 민정선"></a></li>

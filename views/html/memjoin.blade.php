@@ -58,10 +58,16 @@
             <div class="bSlider mt40">
                 <div class="slider">
                     <div>
-                        <a href="https://www.willbes.net" target="_blank"><img src="{{ img_url('login/loginBanner.jpg') }}" alt="배너명"></a>
+                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/bn_720x250_01.jpg" alt="배너명"></a>
                     </div>                            
                     <div>
-                        <a href="https://www.willbes.net" target="_blank"><img src="{{ img_url('login/loginBanner.jpg') }}" alt="배너명"></a>
+                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/bn_720x250_02.jpg" alt="배너명"></a>
+                    </div>
+                    <div>
+                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/bn_720x250_03.jpg" alt="배너명"></a>
+                    </div>                            
+                    <div>
+                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/bn_720x250_04.jpg" alt="배너명"></a>
                     </div>
                 </div>
             </div>

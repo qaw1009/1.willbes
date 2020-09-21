@@ -16,8 +16,9 @@
 
         /************************************************************/
 
-        .sky2 {position:fixed;top:150px;right:10px;z-index:1;}
-        .sky {position:fixed;top:325px;right:10px;z-index:1;}
+        .skybanner {position:fixed;top:150px;right:0; width:160px; text-align:center; z-index:1;}
+        .skybanner a {display:block; margin-bottom:10px}
+
 
         .evttop_banner {background:#433F71; padding-top:50px}
 
@@ -73,13 +74,10 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">  
 
-        <div class="sky2">
+        <div class="skybanner">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
-            </a>           
-        </div>
-
-        <div class="sky">
+            </a> 
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,116,152,194" href="#youtube_watch" />
@@ -87,7 +85,7 @@
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="-1,359,149,437" href="#evt3" />
             </map>           
-        </div>           
+        </div>         
         
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
@@ -104,15 +102,15 @@
             </div>
         </div>
         
-        {{--
+        
         <div class="evtCtnsBox evttop_banner" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1588_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
-                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" onfocus='this.blur()' target="_blank" />
-                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/mocktest/exam/index" onfocus='this.blur()' target="_blank" />
+                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
+                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>             
         </div>
-        --}}   
+          
         
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            

@@ -372,6 +372,7 @@
         </div>
         <!--wb_tip//-->
 
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1780_popup.gif" usemap="#PopupImgMap860">
@@ -382,6 +383,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        --}}
         
     </div>
     <!-- End Container -->

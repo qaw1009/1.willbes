@@ -174,9 +174,16 @@
         </div>
     </div> 
 
-    <div class="Section mt40">
-        <div class="VisualSubBox p_re"> 
-            <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">           
+    <div class="Section Section1 mt40">
+        <div class="widthAuto smallTit NSK-Black">          
+            <p>
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_img01.png">
+                <span><strong>기출적중&수강후기로 증명</strong>하는 윌비스 임용 교수진</span>
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_img02.png">
+            </p>            
+        </div> 
+        <div class="VisualSubBox p_re mt20">               
+            {{--<img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">  --}}                  
             <div id="SubRollingSlider" class="SubtabBox">
                 <ul class="SubtabSlider">
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_mjs.jpg" alt="유아 민정선"></a></li>
@@ -561,29 +568,68 @@
 
     <div class="Section Section7 mt40">
         <div class="widthAuto">
-            <ul>
-                <li><span>WILLBES</span>학습자료실</li>
+            <ul class="NSK-Black">
+                <li><span class="NSK">WILLBES</span>학습자료실</li>
                 <li><a href="#none">#기출문제 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="기출문제"></a></li>
-                <li><a href="#none">#학습프로그램 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="학습프로그램"></a></li>
-                <li><a href="#none">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="임용가이드북"></a></li>
-                <li><a href="#none">#모바일수강가이드 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="모바일수강가이드"></a></li>
+                <li><a href="#none">#학습프로그램 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon02.png" title="학습프로그램"></a></li>
+                <li><a href="#none">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon03.png" title="임용가이드북"></a></li>
+                <li><a href="#none">#모바일수강가이드 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon04.png" title="모바일수강가이드"></a></li>
             </ul>
         </div>
     </div>
 
-    <div class="Section mt50 mb50 c_both">
+    <div class="Section mt40 mb40 c_both">
         <div class="widthAuto">
             <div class="CScenterBox">
                 <dl>
+                    <dt class="willbesCenter">
+                        <ul>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon01.png"></span>
+                                    <div class="nTxt">학원 FAQ</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon02.png"></span>
+                                    <div class="nTxt">동영상 FAQ</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon03.png"></span>
+                                    <div class="nTxt">모바일 FAQ</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon04.png"></span>
+                                    <div class="nTxt">동영상 원격지원</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon05.png"></span>
+                                    <div class="nTxt">대학특강 문의</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#none">
+                                    <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon06.png"></span>
+                                    <div class="nTxt">교수채용</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </dt>
                     <dt class="willbesNumber">
                         <ul>
                             <li>
-                                <div class="nTit">온라인 수강문의</div>
-                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 1</div>
+                                <div class="nTit">강의&동영상 문의</div>
+                                <div class="nNumber tx-color">1544-3169</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
-                                    평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    월~토: 09시 ~ 22시
                                 </div>
                             </li>
                             <li>
@@ -591,87 +637,45 @@
                                 <div class="nNumber tx-color">1544-4944</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
-                                    평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-1661</div>
-                                <div class="nTxt">
-                                    [전화/방문상담 운영시간]<br/>
-                                    평일/주말: 09시~ 18시<br/>
+                                    평일: 09시~ 17시 (점심시간 12시 ~ 13시)
                                 </div>
                             </li>
                         </ul>
                     </dt>    
-                    <dt class="willbesCenter">
-                        <div class="centerTit">인천 고시학원 사이트에 물어보세요!</div>
-                        <ul>
-                            <li>
-                                <a href="#none">
-                                    <img src="{{ img_url('cop/icon_cecenter1.png') }}">
-                                    <div class="nTxt">자주하는<br/>질문</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                                    <div class="nTxt">학원<br/>상담실</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                                    <div class="nTxt">동영상<br/>상담실</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#none">
-                                    <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                                    <div class="nTxt">1:1<br/>고객지원</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </dt>
-                    
+                    <dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>              
                 </dl>
             </div>            
         </div>
     </div>
 
     <div id="QuickMenu" class="MainQuickMenu">
-        <div class="mb5">
-            <a href="https://police.willbes.net/pass/campus/show/code/605005" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/main/2015_sky01.jpg">
-            </a>
-        </div>
-        <ul class="gobtn">
-            <li><a href="#none">이달의 개강안내</a></li>
-            <li><a href="#none">학원 갤러리</a></li>
-            <li><a href="#none">강의 시간표</a></li>
-            <li><a href="#none">모의고사</a></li>            
-            <li><a href="#none">실시간 소통실</a></li>
-        </ul>
         <ul>
-            <li>   
-                <div class="QuickSlider">      
+            <li class="dday">
+                <div class="QuickSlider">
                     <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                    </div>
-                </div>
-            </li>
-            <li>   
-                <div class="QuickSlider">      
-                    <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">3차 필기시험</div>
+                            <div class="q_day">2018.12.12</div>
+                            <div class="q_dday NSK-Blac">D-5</div>
+                        </div>
+                        <div class="QuickDdayBox">
+                            <div class="q_tit">1차 공무원</div>
+                            <div class="q_day">2019.04.05</div>
+                            <div class="q_dday NSK-Blac">D-10</div>
+                        </div>
                     </div>
                 </div>
             </li>
         </ul>
-    </div> 
+        <ul class="gobtn">
+            <li><a href="#none">강의실배정표</a></li>
+            <li><a href="#none">모바일 수강안내</a></li>
+            <li><a href="#none">1:1 상담</a></li>
+            <li><a href="#none">이벤트</a></li>            
+            <li><a href="#none">재학생<br> 러닝메이트</a></li>
+            <li><a href="#">TOP ▲</a></li>
+        </ul>
+    </div>
     
     {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}
     <div id="Reply" class="willbes-Layer-ReplyBox">
@@ -2058,8 +2062,7 @@
         </div>
     </div>
     <div id="LayerTrend" class="willbes-Layer-Black"></div>    
-    <!-- // willbes-Layer-Trend -->
-    
+    <!-- // willbes-Layer-Trend -->    
 </div>
 <!-- End Container -->
 

@@ -61,7 +61,7 @@
         <div class="evtCtnsBox wb_certi" >
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_certi.jpg" alt="인증하기" usemap="#Map1784_certi" border="0"/>
             <map name="Map1784_certi" id="Map1784_certi">
-                <area shape="rect" coords="124,557,560,614" href="https://pass.willbes.net/certApply/index/page/transfer/cert/32" target="_blank" />
+                <area shape="rect" coords="124,557,560,614" href="javascript:certOpen();"  />
                 <area shape="rect" coords="254,637,404,669" href="#ctsInfo" />
             </map>
         </div>
@@ -85,7 +85,7 @@
             <div id="tab01" class="tabcts">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_03_01.png" alt="1~3순환/4~5순환" usemap="#Map1784_01">
                 <map name="Map1784_01">
-                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" alt="3~5순환" />
+                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('172372');" alt="4~5순환" />
                     <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" alt="1~3순환">
                 </map>                    
             </div> 
@@ -176,6 +176,14 @@
     <!-- End Container -->
 
     <script type="text/javascript">  
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+        
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
@@ -218,5 +226,9 @@
                 });
             });
         });
+
+        function openWin(){
+            window.open("https://pass.willbes.net/certApply/index/page/transfer/cert/32","","resizable=yes,toolbar=no,width=740,height=700");
+        }
     </script>
 @stop

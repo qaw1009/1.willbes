@@ -87,7 +87,7 @@
     <div class="evtCtnsBox evt_certi" >
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_certi.jpg" alt="" usemap="#Map1480m_certi" border="0" >
         <map name="Map1480m_certi" id="Map1480m_certi">
-            <area shape="rect" coords="143,1047,577,1105" href="https://pass.willbes.net/certApply/index/page/transfer/cert/32" />
+            <area shape="rect" coords="143,1047,577,1105" href="https://pass.willbes.net/promotion/index/cate/3035/code/1480" target="_blank">
         </map>
     </div>
 
@@ -133,7 +133,7 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('171313');">
+        <a href="javascript:goLecture('172372');">
         4~5순환 전과목 패키지 신청 >
         </a>
         <a href="javascript:goLecture2('171369');">

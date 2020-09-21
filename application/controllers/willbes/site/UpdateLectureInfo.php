@@ -50,7 +50,7 @@ class UpdateLectureInfo extends \app\controllers\FrontController
             ]
         ];
 
-        $arr_order_by = ['unit_regdate' => 'desc', 'p.ProdCode' => 'desc'];
+        $arr_order_by = ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc'];
 
         $list = [];
         $count = $this->updateLectureInfoFModel->listUpdateInfo(true, $arr_condition);

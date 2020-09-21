@@ -71,11 +71,11 @@
                             <tr class="calendar_day">
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <td><a href="#noe" class="viewSchedule">1<span>배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">2<span>배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule today">3<span>배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">4<span>배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">5<span>배정표</span></a></td>
+                                <td><a href="#noe" class="viewSchedule">1<span class="roomTable">배정표</span></a></td>
+                                <td><a href="#noe" class="viewSchedule">2<span class="roomTable">배정표</span></a></td>
+                                <td><a href="#noe" class="viewSchedule today">3<span class="roomTable">배정표</span></a></td>
+                                <td><a href="#noe" class="viewSchedule">4<span class="roomTable">배정표</span></a></td>
+                                <td><a href="#noe" class="viewSchedule">5<span class="roomTable">배정표</span></a></td>
                             </tr>
                             <tr class="calendar_day">
                                 <td><a href="#noe" class="viewSchedule">6</a></td>

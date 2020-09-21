@@ -118,7 +118,7 @@
             <input type="hidden" name="register_chk_val[]" value=""/>-->
 
             <div class="skybanner">
-               <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/09/1835_sky.jpg"  title="면접캠프 설명회" /></a>
+               <a href="#evt07Tab"><img src="https://static.willbes.net/public/images/promotion/2020/09/1835_sky.jpg"  title="면접캠프 설명회" /></a>
             </div>
 
             <div class="evtCtnsBox evt00">
@@ -473,85 +473,142 @@
                         <li>전)</li>
                         <li>경기남부청 면접위원</li>
                         <li>용인대학교 경찰학/범죄학 박사</li>
-                        <li>경찰청 여성청소년과</li>
-                        <li>경무과, 교통과(성도으 강동, 서초, 강남, 용산)</li>
+                        <li>화성서부경찰서 여성청소년과 과장</li>
+                        <li>경기남부청 정보과 기획정보 팀장</li>
                     </ul>                     
                 </div>
             </div>
-            <div id="popup11" class="Pstyle">    
+            <div id="popup12" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content11">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri02.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 정용옥 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청 면접위원장</li>
+                        <li>경찰교육원 교수(생활안전과)</li>
+                        <li>서울 용산, 서초, 양천, 구로(경무, 생활안전, 보안과장)</li>
+                        <li>광주 광산, 남부서(생활안전, 경비교통과장)</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup12" class="Pstyle">    
+            <div id="popup13" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content12">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri03.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 유봉진 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청 면접위원장</li>
+                        <li>청문감사관(성북, 노원, 마포, 강북)</li>
+                        <li>정보계장, 수사2계장(강북, 도봉)</li>
+                        <li>경찰청 정보과, 외사과, 101단</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup13" class="Pstyle">    
+            <div id="popup14" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content13">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri04.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 강인엽 교수</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>신광은 경찰팀 사전조사 교수</li>
+                        <li>프라임법학원 경찰간부면접 교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰면접위원</li>
+                        <li>경찰대학교 졸업</li>
+                        <li>아모르 이그잼 경찰면접 교수</li>
+                        <li>KG패스원 경찰면접 교수</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup14" class="Pstyle">    
+            <div id="popup15" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content14">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri05.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 이승아 아나운서</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접큐레이터</li>
+                        <li>한국경제 TV 아나운서</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>2019 KBS 아나테이너 우승 3rd</li>
+                        <li>SPOTV 리포터</li>
+                        <li>2017 미스코리아 대구</li>
+                        <li>한화생명 사내아나운서</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup15" class="Pstyle">    
+            <div id="popup16" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content15">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri06.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 김이선 아나운서</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접큐레이터</li>
+                        <li>경찰대학(경감, 경청) 미디어 트레이닝 강사</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰대학교 커뮤니케이션 기법 외래 교수</li>
+                        <li>경찰 소통특강 강사(경기남부청)</li>
+                        <li>경찰청 인권영화제 MC</li>
+                        <li>MBC 뉴스투데이 연예 톡톡 리포터</li>
+                        <li>XTM 프로야구 스포츠 아나운서</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup16" class="Pstyle">    
+            <div id="popup17" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content16">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/profile_c16.png" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 장정훈 교수</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>윌비스 신광은경찰팀 경찰학개론, 경찰행정법 전임 </li>
+                        <li>신림동 프라임법학원 경찰간부 경찰학개론 전임 </li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>EBS 명품강좌 강의 </li>
+                        <li>케이블 TV 일자리방송 경찰학개론 전임</li>
+                        <li>김재규경찰학원 경찰학개론 전임</li>
+                    </ul>                     
                 </div>
             </div>
-            {{--
-            <div id="popup17" class="Pstyle">    
+            <div id="popup18" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content17">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/06/profile_c17.jpg.jpg" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 신광은 교수</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>윌비스 신광은 경찰학원 형사소송법/수사 전임</li>
+                        <li>중앙경찰학교 형사법 교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>형사반장, 조사반장, 폭력주임, 형사계장</li>
+                        <li>경찰종합학교(현, 경찰교육원) 수사학과 교수</li>
+                        <li>경찰대학, 중앙경찰학교, 경찰수사연수원, 해양경찰청 외래교수</li>
+                    </ul>                     
                 </div>
             </div>
-            --}}
-            <div id="popup18" class="Pstyle">    
+            <div id="popup19" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content18">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/profile_c18.png" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 김원욱 교수</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>윌비스 신광은 경찰학원 형법 대표 교수</li>
+                        <li>프라임 법학원 경찰채용 간부 승진 형법 전임</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울대학교 경영학과 졸업</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup19" class="Pstyle">    
-                <span class="b-close">X</span>
-                <div class="content19">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/profile_c19.png" class="off" alt="" />                           
-                </div>
-            </div>
-
-            {{--
-            <div class="evtCtnsBox evt06" id="sky03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06.jpg" usemap="#Map1646a" title="검사신청하기 " border="0"/>
-                <map name="Map1646a" id="Map1646a">
-                    <area shape="rect" coords="750,369,988,434"  href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
-                </map>
-            </div>
-            --}}
-
-            {{--
-            <div class="evtCtnsBox evt06s" id="sky04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1646_06s.jpg" usemap="#Map1646abcd" title="검사신청하기" border="0"/>
-                <map name="Map1646abcd" id="Map1646abcd">
-                    <area shape="rect" coords="749,488,990,554" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1070"  target="_blank" />
-                </map>         
-            </div>
-            --}}   
             
             <div class="evtCtnsBox evt06">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_03.jpg" usemap="#Map1835B" title="면접캠프 일정안내" border="0"/>
@@ -561,7 +618,7 @@
                 </map>
             </div>
 
-            <div class="evtCtnsBox evt07Tab" id="sky05">
+            <div class="evtCtnsBox evt07Tab" id="evt07Tab">
                 <ul class="tabs NGEB">
                     <li><a href="#tab01" class="active">참수리반</a></li>
                     <li><a href="#tab02">무궁화반</a></li>

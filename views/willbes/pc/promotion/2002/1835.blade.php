@@ -69,12 +69,15 @@
         .b-close {
             position: absolute;
             right: 10px;
-            top: 50px;
+            top: 10px;
             padding: 5px;
             display: inline-block;
             cursor: pointer;
+            font-weight:bold;            
         }
-        .Pstyle .content {height:auto; width:auto;}        
+        .Pstyle .content {height:auto; width:auto; background:#fff; padding:20px; min-width:300px; font-size:14px; border:3px solid #000; }
+        .Pstyle .content h5 {font-size:16px; padding-bottom:10px; margin-bottom:10px; border-bottom:1px solid #ccc}       
+        .Pstyle .content li {line-height:1.5; margin-bottom:5px}
 
         .evt06s {padding-bottom:100px;} 
 
@@ -281,87 +284,198 @@
             <div class="evtCtnsBox evt05">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_02_03.jpg" usemap="#Map1835_profile" border="0" />
                 <map name="Map1835_profile">
-                    <area shape="rect" coords="114,724,214,752" href="javascript:go_popup4()" alt="송무빈" />
-                    <area shape="rect" coords="312,723,412,752" href="javascript:go_popup5()" alt="강태중" />
-                    <area shape="rect" coords="509,723,610,751" href="javascript:go_popup6()" alt="박형기" />
-                    <area shape="rect" coords="706,723,806,751" href="javascript:go_popup1()" alt="박은순" />
-                    <area shape="rect" coords="903,723,1004,752" href="javascript:go_popup2()" alt="백금철" />
-                    <area shape="rect" coords="115,1110,216,1139" href="javascript:go_popup3()" alt="홍재희" />
+                    <area shape="rect" coords="114,724,214,752" href="javascript:go_popup1()" alt="송무빈" />
+                    <area shape="rect" coords="312,723,412,752" href="javascript:go_popup2()" alt="강태중" />
+                    <area shape="rect" coords="509,723,610,751" href="javascript:go_popup3()" alt="박형기" />
+                    <area shape="rect" coords="706,723,806,751" href="javascript:go_popup4()" alt="박은순" />
+                    <area shape="rect" coords="903,723,1004,752" href="javascript:go_popup5()" alt="백금철" />
+                    <area shape="rect" coords="115,1110,216,1139" href="javascript:go_popup6()" alt="홍재희" />
                     <area shape="rect" coords="312,1111,412,1139" href="javascript:go_popup7()" alt="권병조" />
                     <area shape="rect" coords="508,1111,611,1139" href="javascript:go_popup8()" alt="강재구" />
                     <area shape="rect" coords="704,1110,809,1140" href="javascript:go_popup9()" alt="장현미" />
-                    <area shape="rect" coords="902,1111,1008,1140" href="javascript:go_popup16()" alt="신영숙" />
-                    <area shape="rect" coords="129,1645,232,1675" href="javascript:go_popup18()" alt="신승철" />
-                    <area shape="rect" coords="325,1645,428,1677" href="javascript:go_popup19()" alt="정용옥" />
-                    <area shape="rect" coords="523,1645,625,1676" href="#" alt="유봉진">
-                    <area shape="rect" coords="863,1661,967,1690" href="#" alt="강인엽">
-                    <area shape="rect" coords="91,2174,196,2204" href="#" alt="이승아">
-                    <area shape="rect" coords="288,2172,395,2202" href="#" alt="김이선">
-                    <area shape="rect" coords="529,2172,638,2204" href="#" alt="장정훈">
-                    <area shape="rect" coords="729,2174,835,2205" href="#" alt="신광은">
-                    <area shape="rect" coords="923,2173,1031,2206" href="#" alt="김원욱">
+                    <area shape="rect" coords="902,1111,1008,1140" href="javascript:go_popup10()" alt="신영숙" />
+                    <area shape="rect" coords="129,1645,232,1675" href="javascript:go_popup11()" alt="신승철" />
+                    <area shape="rect" coords="325,1645,428,1677" href="javascript:go_popup12()" alt="정용옥" />
+                    <area shape="rect" coords="523,1645,625,1676" href="javascript:go_popup13()" alt="유봉진">
+                    <area shape="rect" coords="863,1661,967,1690" href="javascript:go_popup14()" alt="강인엽">
+                    <area shape="rect" coords="91,2174,196,2204" href="javascript:go_popup15()" alt="이승아">
+                    <area shape="rect" coords="288,2172,395,2202" href="javascript:go_popup16()" alt="김이선">
+                    <area shape="rect" coords="529,2172,638,2204" href="javascript:go_popup17()" alt="장정훈">
+                    <area shape="rect" coords="729,2174,835,2205" href="javascript:go_popup18()" alt="신광은">
+                    <area shape="rect" coords="923,2173,1031,2206" href="javascript:go_popup19()" alt="김원욱">
                 </map>
             </div>
 
              <!--레이어팝업-->
-             <div id="popup1" class="Pstyle">
+             <div id="popup1" class="Pstyle NSK">
                 <span class="b-close">X</span>
-                <div class="content1">                  
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c1.jpg" class="off" alt="" />    
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 송무빈 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청 면접위원장</li>
+                        <li>서울청 경비부장, 기동본부장</li>
+                        <li>경찰서장(종로, 분당, 영동)</li>
+                        <li>한양대학교 법학박사</li>
+                        <li>경찰대학교 졸업</li>
+                    </ul>                     
                 </div> 
             </div>    
-            <div id="popup2" class="Pstyle">
+            <div id="popup2" class="Pstyle NSK">
                 <span class="b-close">X</span>   
-                <div class="content2">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c2.jpg" class="off" alt="" /> 
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 강태중 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰면접위원장</li>
+                        <li>중앙경찰학교 교수</li>
+                        <li>경기북부청 청문감사 계장</li>
+                    </ul>                     
                 </div> 
             </div>
-            <div id="popup3" class="Pstyle">    
+            <div id="popup3" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content3">            
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c3.jpg" class="off" alt="" />  
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 박형기 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청(정보,인사,정보,교통)</li>
+                        <li>중앙경찰학교 교수(경무, 정보통신)</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup4" class="Pstyle">    
+            <div id="popup4" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content4">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c4.jpg" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 박은순 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경기남부청 면접위원</li>
+                        <li>경남부청 보안과장</li>
+                        <li>112종합상황실장(성남,수원남부)</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup5" class="Pstyle">
+            <div id="popup5" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content5">                  
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c5.jpg" class="off" alt="" />    
-                </div> 
-            </div>    
-            <div id="popup6" class="Pstyle">
-                <span class="b-close">X</span>   
-                <div class="content6">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c6.jpg" class="off" alt="" /> 
-                </div> 
-            </div>
-            <div id="popup7" class="Pstyle">    
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 백금철 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰면접위원</li>
+                        <li>101경비단 인사계장</li>
+                        <li>경찰종합학교 교수</li>
+                        <li>중앙경찰학교 교무계장</li>
+                    </ul>                     
+                </div>
+            </div>   
+            <div id="popup6" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content7">            
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c7.jpg" class="off" alt="" />  
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 홍재희 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰청 특별 채용 면접위원</li>
+                        <li>서울청 면접위원</li>
+                        <li>경호실 22경호대 경호작전관</li>
+                        <li>경기북부청(생활안전, 경비교통, 경무, 정보보완 과장)</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup8" class="Pstyle">    
+            <div id="popup7" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content8">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c8.jpg" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 권병조 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청 면접위원</li>
+                        <li>청문감사관(서울청, 경기청)</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup9" class="Pstyle">    
+            <div id="popup8" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content9">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/profile_c9.jpg" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 강재구 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰면접위원</li>
+                        <li>경찰청(인사,서무)</li>
+                        <li>경찰인재개발원(인사,서무,경리)</li>
+                        <li>운전면허시험단 인사담당</li>
+                    </ul>                     
                 </div>
             </div>
-            <div id="popup10" class="Pstyle">    
+            <div id="popup9" class="Pstyle NSK">    
                 <span class="b-close">X</span>
-                <div class="content10">         
-                    <img src="https://static.willbes.net/public/images/promotion/2020/05/curri01.JPG" class="off" alt="" />                           
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 장현미 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경찰면접위원</li>
+                        <li>경무과장(성동, 서초, 과천)</li>
+                        <li>송파삼전지구대장</li>
+                    </ul>                     
+                </div>
+            </div>
+            <div id="popup10" class="Pstyle NSK">    
+                <span class="b-close">X</span>
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 신영숙 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>서울청 면접위원</li>
+                        <li>동작경찰서 경무과장</li>
+                        <li>경찰청 여성청소년과</li>
+                        <li>경무과, 교통과(성도으 강동, 서초, 강남, 용산)</li>
+                    </ul>                     
+                </div>
+            </div>
+            <div id="popup11" class="Pstyle NSK">    
+                <span class="b-close">X</span>
+                <div class="content">                  
+                    <h5 class="NSK-Black">약력 : 신승철 교수님</h5>
+                    <ul>
+                        <li>현)</li>
+                        <li>신광은 경찰팀 면접교수</li>
+                        <li>신광은 경찰팀 사전조사서 교수</li>
+                        <li>&nbsp;</li>
+                        <li>전)</li>
+                        <li>경기남부청 면접위원</li>
+                        <li>용인대학교 경찰학/범죄학 박사</li>
+                        <li>경찰청 여성청소년과</li>
+                        <li>경무과, 교통과(성도으 강동, 서초, 강남, 용산)</li>
+                    </ul>                     
                 </div>
             </div>
             <div id="popup11" class="Pstyle">    

@@ -22,6 +22,9 @@
         .skybanner {position:fixed; top:250px; right:10px; width:128px; z-index:1;}
         .skybanner a {display:block; margin-bottom:10px;}
 
+        .skybanner2 {position:absolute; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
+        .skybanner2 a {display:block; margin-bottom:10px;}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) center top no-repeat}    
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_02_bg.jpg) left top repeat-x}
@@ -60,8 +63,12 @@
                 <area shape="rect" coords="8,60,123,115" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank" alt="한덕현 새벽모의고사">
                 <area shape="rect" coords="8,117,122,172" href="https://pass.willbes.net/pass/support/notice/show?board_idx=286968" target="_blank" alt="티패스">
             </map>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank" class="mt10"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky02.jpg" alt="기미진 T" /></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky02.jpg" alt="기미진 T" /></a>
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289043&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky03.jpg" alt="조민주 T" /></a>
+        </div>
+        <div class="skybanner2">
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky04.png" alt="이석준" /></a>
         </div>
 
         <div class="evtCtnsBox evtTop" >            

@@ -133,7 +133,7 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('171313');">
+        <a href="javascript:goLecture('172372');">
         4~5순환 전과목 패키지 신청 >
         </a>
         <a href="javascript:goLecture2('171369');">

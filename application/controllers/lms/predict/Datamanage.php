@@ -46,6 +46,32 @@ class Datamanage extends \app\controllers\BaseController
     }
 
     /**
+     * 등록폼
+     */
+    public function register($param)
+    {
+        if($param) $PredictIdx = $param[0];
+        $sysCode_Area = $this->config->item('sysCode_Area', 'predict');
+        $area = $this->predictModel->getArea($sysCode_Area);
+        $serial = $this->predictModel->getSerialAll();
+
+        if(empty($PredictIdx) === true){
+            $method = "CREATE";
+            $data = array();
+            $data['SiteCode'] = '2001';
+            $data['MockPart'] = '';
+        } else {
+            $method = "PUT";
+        }
+
+        $this->load->view('predict/datamanage/register', [
+            'PredictIdx' => $PredictIdx,
+            'area' => $area,
+            'serial' => $serial,
+        ]);
+    }
+
+    /**
      * 리스트
      */
     public function list()
@@ -53,18 +79,9 @@ class Datamanage extends \app\controllers\BaseController
         $condition = [
             'EQ' => [
                 'r.IsStatus' => 'Y',
-                'r.ApplyType' => $this->_reqP('search_ApplyType'),
-                'r.SiteCode' => $this->_reqP('search_site_code'),
                 'r.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
                 'r.TakeArea' => $this->_reqP('search_TakeArea'),
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'r.MemName' => $this->_reqP('search_fi', true),
-                    'r.MemId' => $this->_reqP('search_fi', true),
-                    'r.TakeNumber' => $this->_reqP('search_fi', true),
-                ]
-            ],
+            ]
         ];
 
         $condition2 = [];
@@ -85,28 +102,6 @@ class Datamanage extends \app\controllers\BaseController
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
             'data' => $list,
-        ]);
-
-    }
-
-    /**
-     * 등록폼
-     */
-    public function register($param)
-    {
-        if($param) $PredictIdx = $param[0];
-
-        if(empty($PredictIdx) === true){
-            $method = "CREATE";
-            $data = array();
-            $data['SiteCode'] = '2001';
-            $data['MockPart'] = '';
-        } else {
-            $method = "PUT";
-        }
-
-        $this->load->view('predict/datamanage/register', [
-            'PredictIdx' => $PredictIdx
         ]);
     }
 

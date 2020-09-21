@@ -372,7 +372,7 @@
         </div>
     </div>
 
-    <div class="Section mt40">
+    <div class="Section Section5 mt40">
         <div class="widthAuto">
             <div class="will-nTit">윌비스 임용 <span class="tx-color">교재</span></div>
             <div class="bookContent">
@@ -468,7 +468,7 @@
         </div>
     </div>   
     
-    <div class="Section mt60">
+    <div class="Section Section6 mt60">
         <div class="widthAuto">
             <div class="will-nTit">윌비스 임용 <span class="tx-color">시험정보</span></div>
             <div class="examInfo">
@@ -556,6 +556,18 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="Section Section7 mt40">
+        <div class="widthAuto">
+            <ul>
+                <li><span>WILLBES</span>학습자료실</li>
+                <li><a href="#none">#기출문제 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="기출문제"></a></li>
+                <li><a href="#none">#학습프로그램 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="학습프로그램"></a></li>
+                <li><a href="#none">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="임용가이드북"></a></li>
+                <li><a href="#none">#모바일수강가이드 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="모바일수강가이드"></a></li>
+            </ul>
         </div>
     </div>
 

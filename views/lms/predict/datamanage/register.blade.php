@@ -40,6 +40,20 @@
                                 <option value="up">5개 이상</option>
                                 <option value="down">5개 이하</option>
                             </select>
+                            <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
+                                <option value="">응시직렬</option>
+                                @foreach($serial as $k => $v)
+                                    <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
+                                <option value="">응시지역</option>
+                                @foreach($area as $k => $v)
+                                    @if($v['Ccd'] != '712018')
+                                        <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                             <button type="submit" class="btn btn-sm btn-primary btn-search ml-10" id="btn_search"><i class="fa fa-spin fa-refresh"></i>&nbsp; 검 색</button>
                         </div>
                     </div>
@@ -194,7 +208,6 @@
             if (!confirm('삭제할 경우 성적 포함 모든 데이터는 삭제 됩니다. 삭제하시겠습니까?\n삭제 후 조정점수 반영해야 정확한 데이터가 산출됩니다.')) {
                 return;
             }
-
             var _url = '{{ site_url("/predict/prerequest/delete/") }}';
             var data = {
                 '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -205,7 +218,7 @@
             sendAjax(_url, data, function(ret) {
                 if (ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    $datatable.draw();
+                    $datatable.draw(false);
                 }
             }, showError, false, 'POST');
         });

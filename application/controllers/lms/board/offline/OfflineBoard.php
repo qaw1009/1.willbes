@@ -20,13 +20,9 @@ class OfflineBoard extends BaseBoard
         'reply' => 1        //본문 답변글첨부
     ];
     private $_on_off_swich = [
-        '2017' => [                                  // 임용[온라인]
-            'create' => [                            // 등록 항목 설정
-                'lecture_start_date' => 'show',
-            ],
-        ],
-        '2018' => [                                  // 임용[학원]
-            'create' => [                            // 등록 항목 설정
+        '82' => [                               // bm_idx 학원게시판 -> 강의실 배정표
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+            'create' => [                       // 등록 항목 설정
                 'lecture_start_date' => 'show',
             ],
         ],
@@ -184,17 +180,23 @@ class OfflineBoard extends BaseBoard
         $this->setDefaultBoardParam();
         $board_params = $this->getDefaultBoardParam();
         $this->bm_idx = $board_params['bm_idx'];
+        $site_code = $this->_reqG('site_code');
 
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $arr_swich = null;
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
+
+        // 항목 설정 (임용)
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
+            $arr_swich = null;
+        }
 
         if (empty($params[0]) === false) {
             $column = '
@@ -240,7 +242,7 @@ class OfflineBoard extends BaseBoard
             'board_idx' => $board_idx,
             'arr_reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
-            'arr_swich' => element($this->_reqG('site_code'),$this->_on_off_swich)
+            'arr_swich' => $arr_swich,
         ]);
     }
 

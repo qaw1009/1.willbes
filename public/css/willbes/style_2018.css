@@ -384,6 +384,15 @@ min-height: 260px;}
 .mainPop_con .trendView .trendData td {padding:10px; text-align: center; border-right:1px solid #dedede}
 .mainPop_con .trendView .trendData th {font-weight: bold; color:#fff; background:#0c5dc0}
 
+/* Main Container : 학습자료실 : */
+.ssam .Section7 .widthAuto {background-color: #e0e3e6; padding:30px}
+.ssam .Section7 ul {margin-right:-10px; width: 100%}
+.ssam .Section7 li {display: inline; float:left; width: calc(20% - 10px); margin-right:10px}
+.ssam .Section7 li span {display:block}
+.ssam .Section7 li a {display:block; padding-left:20px; font-size:16px}
+.ssam .Section7 ul:after {content:""; display:block; clear:both}
+
+
 /* Main Container : campus : */
 .ssam .campus_info {
     position: relative;

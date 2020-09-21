@@ -17,6 +17,8 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
+
         .wb_top {background:#F4F4F4 url(https://static.willbes.net/public/images/promotion/2020/09/1784_top_bg.jpg) no-repeat center top; position:relative;}
 
         .wb_01 {background:#fff}
@@ -49,6 +51,9 @@
     </style>
     
     <div class="evtContent NGR" id="evtContainer">
+        <div class="skybanner">
+            <a href="#wb_certi"><img src="https://static.willbes.net/public/images/promotion/2020/09/1480_sky.png" alt="9만원 할인"/></a>
+        </div>
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_top.gif" alt="김동진 법원팀"/>
         </div>
@@ -58,7 +63,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_02.gif" alt="혁신적인 커리큘럼"/>
         </div>
 
-        <div class="evtCtnsBox wb_certi" >
+        <div class="evtCtnsBox wb_certi" id="wb_certi">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_certi.jpg" alt="인증하기" usemap="#Map1784_certi" border="0"/>
             <map name="Map1784_certi" id="Map1784_certi">
                 <area shape="rect" coords="124,557,560,614" href="javascript:certOpen();"  />

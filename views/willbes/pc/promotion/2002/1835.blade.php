@@ -134,7 +134,7 @@
             <div class="evtCtnsBox evt02">
                 <div class="request" id="request">
                     <div class="requestL">
-                        <h3 class="NGEB">* 면접캠프 설명회  신청접수</h3>
+                        <h3 class="NSK-Black">* 면접캠프 설명회  신청접수</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
                             <col width="25%" />
                             <col  />
@@ -204,7 +204,7 @@
                         </table>
                     </div>
                     <div class="requestR">
-                        <h3 class="NGEB">* 개인정보 수집 및 이용에 대한 안내</h3>
+                        <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
                         <ul>
                             <li>
                                 <strong>1. 개인정보 수집 이용 목적</strong> <br>
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="btn NGEB">
+                <div class="btn NSK-Black">
                     <a href="#none" onclick="javascript:fn_submit();">면접캠프 설명회 신청하기 ></a>
                 </div>
             </div>   
@@ -279,20 +279,27 @@
             </div>
 
             <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_02_03.jpg" usemap="#Map1646_profile" border="0" />
-                <map name="Map1646_profile" id="Map1646_profile">
-                    <area shape="rect" coords="167,542,267,570" href="javascript:go_popup4()" />
-                    <area shape="rect" coords="287,542,387,571" href="javascript:go_popup5()" />
-                    <area shape="rect" coords="407,542,508,570" href="javascript:go_popup6()" />
-                    <area shape="rect" coords="614,542,714,570" href="javascript:go_popup1()" />
-                    <area shape="rect" coords="734,542,835,571" href="javascript:go_popup2()" />
-                    <area shape="rect" coords="854,541,955,570" href="javascript:go_popup3()" />
-                    <area shape="rect" coords="184,922,284,950" href="javascript:go_popup7()" />
-                    <area shape="rect" coords="414,922,502,950" href="javascript:go_popup8()" />
-                    <area shape="rect" coords="530,922,618,951" href="javascript:go_popup9()" />
-                    <area shape="rect" coords="654,922,744,951" href="javascript:go_popup16()" />
-                    <area shape="rect" coords="779,922,868,951" href="javascript:go_popup18()" />
-                    <area shape="rect" coords="903,922,992,950" href="javascript:go_popup19()" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_02_03.jpg" usemap="#Map1835_profile" border="0" />
+                <map name="Map1835_profile">
+                    <area shape="rect" coords="114,724,214,752" href="javascript:go_popup4()" alt="송무빈" />
+                    <area shape="rect" coords="312,723,412,752" href="javascript:go_popup5()" alt="강태중" />
+                    <area shape="rect" coords="509,723,610,751" href="javascript:go_popup6()" alt="박형기" />
+                    <area shape="rect" coords="706,723,806,751" href="javascript:go_popup1()" alt="박은순" />
+                    <area shape="rect" coords="903,723,1004,752" href="javascript:go_popup2()" alt="백금철" />
+                    <area shape="rect" coords="115,1110,216,1139" href="javascript:go_popup3()" alt="홍재희" />
+                    <area shape="rect" coords="312,1111,412,1139" href="javascript:go_popup7()" alt="권병조" />
+                    <area shape="rect" coords="508,1111,611,1139" href="javascript:go_popup8()" alt="강재구" />
+                    <area shape="rect" coords="704,1110,809,1140" href="javascript:go_popup9()" alt="장현미" />
+                    <area shape="rect" coords="902,1111,1008,1140" href="javascript:go_popup16()" alt="신영숙" />
+                    <area shape="rect" coords="129,1645,232,1675" href="javascript:go_popup18()" alt="신승철" />
+                    <area shape="rect" coords="325,1645,428,1677" href="javascript:go_popup19()" alt="정용옥" />
+                    <area shape="rect" coords="523,1645,625,1676" href="#" alt="유봉진">
+                    <area shape="rect" coords="863,1661,967,1690" href="#" alt="강인엽">
+                    <area shape="rect" coords="91,2174,196,2204" href="#" alt="이승아">
+                    <area shape="rect" coords="288,2172,395,2202" href="#" alt="김이선">
+                    <area shape="rect" coords="529,2172,638,2204" href="#" alt="장정훈">
+                    <area shape="rect" coords="729,2174,835,2205" href="#" alt="신광은">
+                    <area shape="rect" coords="923,2173,1031,2206" href="#" alt="김원욱">
                 </map>
             </div>
 
@@ -435,8 +442,8 @@
             <div class="evtCtnsBox evt06">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_03.jpg" usemap="#Map1835B" title="면접캠프 일정안내" border="0"/>
                 <map name="Map1835B">
-                  <area shape="rect" coords="812,444,974,632" href="#none" alt="인적성검사신청하기">
-                  <area shape="rect" coords="817,1342,974,1526" href="#none" alt="사전조사서신청하기">
+                    <area shape="rect" coords="812,444,974,632" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&course_idx=1047&campus_ccd=605001" target="_blank" alt="인적성검사신청하기">
+                    <area shape="rect" coords="817,1342,974,1526" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1070&course_idx=1047&campus_ccd=605001" target="_blank" alt="사전조사서신청하기">
                 </map>
             </div>
 
@@ -451,36 +458,33 @@
             <div class="evtCtnsBox" id="tab01">    
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_04_01.jpg" usemap="#Map1835_tab01" border="0" />
                 <map name="Map1835_tab01">
-                  <area shape="rect" coords="815,628,977,761" href="#none" alt="참수리반신청" />
+                    <area shape="rect" coords="815,628,977,761" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="참수리반신청" />
                 </map>                
             </div>
             <div class="evtCtnsBox" id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_04_02.jpg" usemap="#Map1835_tab02" border="0" />
                 <map name="Map1835_tab02">
-                  <area shape="rect" coords="812,637,977,781" href="#none" alt="무궁화반 신청" />
+                    <area shape="rect" coords="812,637,977,781" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="무궁화반 신청" />
                 </map>
             </div>
             <div class="evtCtnsBox" id="tab03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_04_03.jpg" usemap="#Map1835_tab03" border="0" />
                 <map name="Map1835_tab03">
-                  <area shape="rect" coords="807,627,973,764" href="#none" alt="스파르타반 신청" />
+                    <area shape="rect" coords="807,627,973,764" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="스파르타반 신청" />
                 </map>         
             </div>
 
             <div class="evtCtnsBox evt08">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_05.jpg" usemap="#Map1835C" title="면접캠프 일정안내" border="0"/>
                 <map name="Map1835C">
-                  <area shape="rect" coords="860,364,988,400" href="#none" alt="참수리">
-                  <area shape="rect" coords="859,410,988,451" href="#none" alt="무궁화">
-                  <area shape="rect" coords="860,458,988,498" href="#none" alt="스파르타">
-                  <area shape="rect" coords="858,670,988,710" href="#none" alt="참수리">
-                  <area shape="rect" coords="859,717,989,757" href="#none" alt="무궁화">
-                  <area shape="rect" coords="860,766,986,803" href="#none" alt="스파르타">
-                  <area shape="rect" coords="859,975,989,1014" href="#none" alt="사전조사서">
-                  <area shape="rect" coords="859,1023,989,1064" href="#none" alt="인적성특강">
-                  <area shape="rect" coords="859,1070,989,1111" href="#none" alt="1:1과외반">
+                  <area shape="rect" coords="860,381,988,478" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="스페셜 캐어">
+                  <area shape="rect" coords="859,692,991,787" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="올캐어">
+                  <area shape="rect" coords="859,975,989,1014" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1070&course_idx=1047&campus_ccd=605001" target="_blank" alt="사전조사서">
+                  <area shape="rect" coords="859,1023,989,1064" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&course_idx=1047&campus_ccd=605001" target="_blank" alt="인적성특강">
+                  <area shape="rect" coords="859,1070,989,1111" href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" alt="1:1과외반">
                 </map>
             </div>
+
 
         </form>
 	</div>

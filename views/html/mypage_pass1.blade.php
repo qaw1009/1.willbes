@@ -216,6 +216,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="willbes-Leclist-txt c_both mb20">
+                - 수강중인강좌는 진도율 보존을 위해 삭제할 수 없습니다. (삭제 시 진도율 정보도 함께 삭제되므로)<br>
+                - 수강중인강좌 리스트가 많을 경우 '숨기기' 기능을 이용해 주세요.
+            </div>
+            
             <div class="DetailWrap c_both">
                 <div class="aBox passBox answerBox_block NSK f_right"><a href="#none" onclick="openWin('MoreBook')">교재구매</a></div>
                 <ul class="tabWrap tabDepthPass">

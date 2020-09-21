@@ -21,7 +21,7 @@
 
         .skybanner {position:fixed; top:250px; right:10px; width:178px; z-index:1;}
         .skybanner a { display:block; padding-bottom:10px;}
-        .skybanner2 {position:absolute; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
+        .skybanner2 {position:fixed; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
 
         .evtTop {background:#0A0702 url(https://static.willbes.net/public/images/promotion/2020/08/1781_top_bg.jpg) center top no-repeat}        
 
@@ -57,16 +57,14 @@
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1781_sky01.png" alt="광주 윌비스 공무원 필합반" /></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1781_sky02.png" alt="광주 윌비스 공무원 필합반" /></a>
-        </div>
-        
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1781_sky02.png" alt="기미진 티패스" /></a>
+        </div>        
 
         <div class="skybanner2">
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861&"  target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1781_sky02.jpg" alt="광주 윌비스 공무원 필합반" />
             </a>            
         </div>
-
 
         <div class="evtCtnsBox evtTop" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           

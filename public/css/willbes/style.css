@@ -5222,7 +5222,7 @@ tr.calendar_day td {
 tr.calendar_day td a.today {background:#f2f8fe; color:#0c5dc0; text-decoration: underline; font-weight: bold;}
 tr.calendar_day td a:hover,
 tr.calendar_day td a.active {background:#feeeee; color:#0c5dc0; text-decoration: underline; color:salmon}
-tr.calendar_day td span {width:10px; height:10px; background-color: salmon; float:right; 
+tr.calendar_day td span.roomTable {width:10px; height:10px; background-color: salmon; float:right; 
     font-size:0; text-indent: -9999px; display: inline-block; border-radius: 5px;}
 tr.calendar_month th {
     font-size: 18px;

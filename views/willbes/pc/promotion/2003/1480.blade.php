@@ -85,7 +85,7 @@
             <div id="tab01" class="tabcts">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_03_01.png" alt="1~3순환/4~5순환" usemap="#Map1784_01">
                 <map name="Map1784_01">
-                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('171313');" alt="3~5순환" />
+                    <area shape="rect" coords="639,176,861,261" href="javascript:go_PassLecture('172372');" alt="4~5순환" />
                     <area shape="rect" coords="641,473,858,555" href="javascript:go_PassLecture2('171369');" alt="1~3순환">
                 </map>                    
             </div> 
@@ -218,5 +218,9 @@
                 });
             });
         });
+
+        function openWin(){
+            window.open("https://pass.willbes.net/certApply/index/page/transfer/cert/32","","resizable=yes,toolbar=no,width=740,height=700");
+        }
     </script>
 @stop

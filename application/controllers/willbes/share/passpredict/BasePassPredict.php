@@ -136,23 +136,7 @@ class BasePassPredict extends \app\controllers\FrontController
             $scoredata = array();
             $scoreIs = 'N';
             $addscoreIs = 'N';
-            $scoreType = '';
-            if(empty($score1)===false){
-                $scoreType = 'EACH';
-                foreach ($score1 as $key => $val){
-                    $scoredata['PpIdx'][]  = $val['PpIdx'];
-                    $scoredata['subject'][]  = $val['SubjectName'];
-                    $scoredata['score'][]    = $val['OrgPoint'];
-                    $scoredata['addscore'][] = $val['AdjustPoint'];
-                }
-                $scoreIs = 'Y';
-                if($score1[0]['AdjustPoint']){
-                    $addscoreIs = 'Y';
-                } else {
-                    $addscoreIs = 'N';
-                }
-            }
-
+            $scoreType = (empty($score1)===false ? 'EACH' : '');
             if(empty($score2)===false){
                 $scoreType = ($scoreType == 'EACH') ? $scoreType : 'DIRECT';
                 foreach ($score2 as $key => $val) {
@@ -166,6 +150,22 @@ class BasePassPredict extends \app\controllers\FrontController
                     $addscoreIs = 'Y';
                 } else {
                     $addscoreIs = 'N';
+                }
+            } else {
+                if(empty($score1)===false){
+                    $scoreType = 'EACH';
+                    foreach ($score1 as $key => $val){
+                        $scoredata['PpIdx'][]  = $val['PpIdx'];
+                        $scoredata['subject'][]  = $val['SubjectName'];
+                        $scoredata['score'][]    = $val['OrgPoint'];
+                        $scoredata['addscore'][] = $val['AdjustPoint'];
+                    }
+                    $scoreIs = 'Y';
+                    if($score1[0]['AdjustPoint']){
+                        $addscoreIs = 'Y';
+                    } else {
+                        $addscoreIs = 'N';
+                    }
                 }
             }
             $subject_list = $this->surveyModel->subjectList($idx, $PrIdx);

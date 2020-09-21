@@ -124,17 +124,17 @@
             {{--성적채점--}}
             <div>
                 @if($scoreIs == 'N' || $answer_serviceYn == 'Y')
-                    <div class="sub3_1_txt" id="maskArea" style="display:none;">
+                    {{--<div class="sub3_1_txt" id="maskArea" style="display:none;">
                         <div>
                             <p>
-                                {{--4월 27일 11시40분까지--}}
-                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>
+                                --}}{{--4월 27일 11시40분까지--}}{{--
+                                --}}{{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt1.png" alt="시험 종료 후 1~2시간 내에 오픈될 예정입니다."></p>--}}{{--
 
-                                {{--4월 27일 11시40분이후--}}
-                                {{--<img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">--}}
+                                --}}{{--4월 27일 11시40분이후--}}{{--
+                                <img src="https://static.willbes.net/public/images/promotion/2019/04/1211_txt2.png" alt="먼저 기본정보를 입력 및 저장 해 주세요">
                             </p>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <ul class="tabSt1">
                         <li><a id='t1' href="javascript:tabSel(1)" class="active">일반채점</a></li>

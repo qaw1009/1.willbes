@@ -174,11 +174,15 @@
         </div>
     </div> 
 
-    <div class="Section mt70">
+    <div class="Section Section1 mt40">
         <div class="widthAuto smallTit NSK-Black">          
-            <p><span><strong>기출적중&수강후기로 증명</strong>하는 윌비스 임용 교수진</span></p>            
+            <p>
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_img01.png">
+                <span><strong>기출적중&수강후기로 증명</strong>하는 윌비스 임용 교수진</span>
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_img02.png">
+            </p>            
         </div> 
-        <div class="VisualSubBox p_re mt40">               
+        <div class="VisualSubBox p_re mt20">               
             {{--<img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">  --}}                  
             <div id="SubRollingSlider" class="SubtabBox">
                 <ul class="SubtabSlider">

@@ -124,8 +124,31 @@
 .ssam .VisualBox .Maintab li a:hover,
 .ssam .VisualBox .Maintab li a.active { color:#0c5dc0; border-bottom: 2px solid #0c5dc0; font-weight: bold;}
 
+.ssam .smallTit {
+    border-top:1px solid #b8b8b8;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.ssam .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align: center;
+    width: 100%;
+}
+.ssam .smallTit span {
+    padding:0 20px;
+    font-weight: 600;
+    background: #fff;
+}
+.ssam .smallTit strong {
+    color:#0c5dc0;
+}
 
 /*Main Container : 적중*/
+.ssam .Section1 .smallTit {border-top:0;}
+.ssam .Section1 .smallTit p { position: static;}
+
 .ssam .VisualSubBox {text-align: center;background:url("https://static.willbes.net/public/images/promotion/main/2018/2018_main_bg.jpg"); width:1120px; 
     margin:0 auto; padding:50px 0}
 .ssam .SubtabBox {
@@ -201,26 +224,6 @@ min-height: 260px;}
 .ssam .Section3 ul:after {content:""; display:block; clear:both}
 
 /*Main Container : 인기강좌*/
-.ssam .smallTit {
-    border-top:1px solid #b8b8b8;
-    font-size: 22px;
-    color:#363636;    
-    position: relative;
-}
-.ssam .smallTit p {
-    position: absolute;
-    top:-15px;
-    text-align: center;
-    width: 100%;
-}
-.ssam .smallTit span {
-    padding:0 20px;
-    font-weight: 600;
-    background: #fff;
-}
-.ssam .smallTit strong {
-    color:#0c5dc0;
-}
 .ssam .Section4 .reference {text-align:right; color:#666; margin-top:30px}
 .ssam .Section4 .bestLecBox {margin-right:-5px; margin-top:10px}
 .ssam .Section4 .bestLec {position:relative; display:block; float:left; width:370px; height:200px; margin-right:5px; overflow: hidden;}

@@ -22,7 +22,7 @@
         .skybanner {position:fixed; top:250px; right:10px; width:128px; z-index:1;}
         .skybanner a {display:block; margin-bottom:10px;}
 
-        .skybanner2 {position:absolute; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
+        .skybanner2 {position:fixed; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
         .skybanner2 a {display:block; margin-bottom:10px;}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) center top no-repeat}    
@@ -61,10 +61,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky01.jpg" alt="한덕현 T" usemap="#Map1779" border="0" />
             <map name="Map1779">
                 <area shape="rect" coords="8,60,123,115" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank" alt="한덕현 새벽모의고사">
-                <area shape="rect" coords="8,117,122,172" href="https://pass.willbes.net/pass/support/notice/show?board_idx=286968" target="_blank" alt="티패스">
+                <area shape="rect" coords="8,117,122,172" href="https://pass.willbes.net/pass/support/notice/show?board_idx=294823&" target="_blank" alt="티패스">
             </map>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289239" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky02.jpg" alt="기미진 T" /></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=289043&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky03.jpg" alt="조민주 T" /></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294829&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky02.jpg" alt="기미진 T" /></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294815&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky03.jpg" alt="조민주 T" /></a>
         </div>
         <div class="skybanner2">
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>

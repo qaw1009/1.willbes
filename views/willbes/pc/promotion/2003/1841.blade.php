@@ -18,24 +18,28 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1841_top_bg.jpg) no-repeat center top;}
         .wb_top span {position:absolute; left:50%; z-index:1;}
-        .wb_top span.img1 {top:257px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 3s infinite;}
-        .wb_top span.img2 {top:453px; margin-left:240px; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 10s infinite;}
+        .wb_top span.img1 {top:257px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
+        .wb_top span.img2 {top:453px; margin-left:240px; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 8s infinite;}
         @@keyframes iptimg1{
-            from{margin-left:-513px; opacity: 0;}
-            to{margin-left:-413px; opacity: 1;}
+            0%{margin-left:-513px; opacity: 0;}
+            50%{margin-left:-413px; opacity: 1;}
+            100%{margin-left:-313px; opacity: 0;}
         }
         @@-webkit-keyframes iptimg1{
-            0{margin-left:-513px; opacity: 0;}
-            100%{margin-left:-413px; opacity: 1;}
+            0%{margin-left:-513px; opacity: 0;}
+            50%{margin-left:-413px; opacity: 1;}
+            100%{margin-left:-313px; opacity: 0;}
         }
         
         @@keyframes iptimg2{
-            from{margin-left:440px; opacity: 0;}
-            to{margin-left:140; opacity: 1;}
+            0%{margin-left:440px; opacity: 0;}
+            50%{margin-left:240px; opacity: 1;}
+            100%{margin-left:40px; opacity: 0;}
         }
         @@-webkit-keyframes iptimg2{
-            from{margin-left:440px; opacity: 0;}
-            to{margin-left:140; opacity: 1;}
+            0%{margin-left:440px; opacity: 0;}
+            50%{margin-left:240px; opacity: 1;}
+            100%{margin-left:40px; opacity: 0;}
         }
 
         .wb_01 {background:#27283a; height:140px}

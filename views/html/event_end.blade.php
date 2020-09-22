@@ -126,6 +126,7 @@
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : 2018.04.02~2018.11.20</dt>
                                 </dl>
+                                <div class="mt5"><a href="#none" class="btnstA">바로가기 ></a></div>
                             </td>
                             <td class="w-user">회원</td>
                             <td class="w-evt-reply">0</td>

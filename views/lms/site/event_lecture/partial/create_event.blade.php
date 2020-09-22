@@ -44,6 +44,14 @@
 </div>
 
 <div class="form-group">
+    <label class="control-label col-md-1-1">링크주소</label>
+    <div class="col-md-10">
+        <input type="text" id="link_url" name="link_url" class="form-control" value="{{$data['Link']}}" title="링크" placeholder="링크주소 입니다." style="width: 60%">
+        <div class="mt-10">• 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+    </div>
+</div>
+
+<div class="form-group">
     <label class="control-label col-md-1-1">내용옵션</label>
     <div class="col-md-10 form-inline">
         <div class="radio">

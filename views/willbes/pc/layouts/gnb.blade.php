@@ -230,8 +230,8 @@
                         </a>
                     </dt>
                     <dt>
-                        <a href="http://blog.naver.com/PostList.nhn?blogId=willbes79&from=postList&categoryNo=58" target="_blank">
-                        <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                        <a href=" https://cafe.naver.com/WILLBES" target="_blank">
+                        <img src="{{ img_url('gnb/icon_cafe.png') }}" title="카페">
                         </a>
                     </dt>
                 </dl>

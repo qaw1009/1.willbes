@@ -69,10 +69,12 @@
             <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
         </div>
     </div>
+
     <div class="willbes-Txt NGR c_both mt20">
         - 수강중인강좌는 진도율 보존을 위해 삭제할 수 없습니다. (삭제 시 진도율 정보도 함께 삭제되므로)<br>
         - 수강중인강좌 리스트가 많을 경우 '숨기기' 기능을 이용해 주세요
     </div>
+    
     <div class="lineTabs lecListTabs c_both bdt-m-gray">
         <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
             <li><a href="#leclist1" class="on">수강중 <span>3</span></a><span class="row-line">|</span></li>

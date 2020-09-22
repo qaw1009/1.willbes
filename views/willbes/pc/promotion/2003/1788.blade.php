@@ -48,11 +48,11 @@
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_top.gif" alt="조민주 한국사">  
         </div>
-
+        {{--
         <div class="evtCtnsBox evt01_1"> 
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_QandA.jpg" alt="한국사 정복">
         </div>
-
+        --}}
         <div class="evtCtnsBox evt01">            
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1788_01.jpg" alt="한국사 정복">
             <div>

@@ -66,6 +66,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309003') }}" target="_blank">전문자격증 감정평가사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309004') }}" target="_blank">전문자격증 변리사</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3090_309005') }}" target="_blank">전문자격증 관세사</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_3090_309006') }}" target="_blank">전문자격증 세무사</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3089_308901') }}" target="_blank">기술자격증 소방</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_3089_308902') }}" target="_blank">기술자격증 전기</a></li>

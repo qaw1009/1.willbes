@@ -402,8 +402,8 @@
         <!-- willbes-Lec-buyBtn -->
         --}}
 
-        <div id="InfoForm" class="willbes-Layer-Box">
-            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+        <div id="InfoForm" class="willbes-Layer-Box NGR">
+            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm'),closeWin('bookPocketBox')">
                 <img src="{{ img_url('sub/close.png') }}">
             </a>
             <div class="Layer-Tit tx-dark-black NG">
@@ -417,7 +417,27 @@
                                 <div class="bookImg">
                                     <img src="{{ img_url('sample/book.jpg') }}">
                                 </div>
-                                <div class="bookDetail">
+                                <div class="bookDetail p_re">
+
+                                    <div class="bookBuy">
+                                        <ul class="bookBuyBtns">
+                                            <li class="btnCart"><a onclick="openWin('bookPocketBox')">장바구니</a>                                
+                                            <li class="btnBuy"><a href="#none">바로결제</a></li>
+                                        </ul>
+                                        <div id="bookPocketBox" class="bookPocketBox">
+                                            <a class="closeBtn" href="#none" onclick="closeWin('bookPocketBox')">
+                                                <img src="{{ img_url('cart/close.png') }}">
+                                            </a>
+                                            해당 상품이 장바구니에 담겼습니다.<br/>
+                                            장바구니로 이동하시겠습니까?
+                                            <ul class="NSK mt20">
+                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                                                <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('bookPocketBox')">닫기</a></li>
+                                            </ul>
+                                        </div>  
+                                    </div>
+
                                     <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
                                     <div class="book-Author tx-gray">
                                         <ul>
@@ -430,7 +450,7 @@
                                             <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
                                             <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong> <strong class="tx-light-blue">[판매중]</strong></li>
                                         </ul>
-                                    </div>
+                                    </div>                                   
                                     <div class="bookBoxWrap">
                                         <ul class="tabWrap tabDepth2">
                                             <li><a href="#info1" class="on">교재소개</a></li>

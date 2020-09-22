@@ -335,7 +335,7 @@
         </div>
     </div>
 
-    <div class="Section Section4 mt50">
+    <div class="Section Section4 mt80">
         <div class="widthAuto">  
             <div class="widthAuto smallTit NSK-Black">          
                 <p><span>윌비스 임용 <strong>실시간 인기강의 TOP3</strong></span></p>            
@@ -379,7 +379,7 @@
         </div>
     </div>
 
-    <div class="Section Section5 mt40">
+    <div class="Section Section5 mt80">
         <div class="widthAuto">
             <div class="will-nTit">윌비스 임용 <span class="tx-color">교재</span></div>
             <div class="bookContent">
@@ -672,7 +672,7 @@
             <li><a href="#none">모바일 수강안내</a></li>
             <li><a href="#none">1:1 상담</a></li>
             <li><a href="#none">이벤트</a></li>            
-            <li><a href="#none">재학생<br> 러닝메이트</a></li>
+            <li><a href="#none">재학생 러닝메이트</a></li>
             <li><a href="#">TOP ▲</a></li>
         </ul>
     </div>
@@ -1079,7 +1079,7 @@
 
     {{-- 교재보기 팝업 willbes-Layer-Box --}}
     <div id="InfoForm" class="willbes-Layer-Box">
-        <a class="closeBtn" href="#none" onclick="closeWin('InfoForm')">
+        <a class="closeBtn" href="#none" onclick="closeWin('InfoForm'),closeWin('bookPocketBox')">
             <img src="{{ img_url('sub/close.png') }}">
         </a>
         <div class="Layer-Tit tx-dark-black NG">
@@ -1093,7 +1093,26 @@
                             <div class="bookImg">
                                 <img src="{{ img_url('sample/book.jpg') }}">
                             </div>
-                            <div class="bookDetail">
+                            <div class="bookDetail p_re">
+                                <div class="bookBuy">
+                                    <ul class="bookBuyBtns">
+                                        <li class="btnCart"><a onclick="openWin('bookPocketBox')">장바구니</a>                                
+                                        <li class="btnBuy"><a href="#none">바로결제</a></li>
+                                    </ul>
+                                    <div id="bookPocketBox" class="bookPocketBox">
+                                        <a class="closeBtn" href="#none" onclick="closeWin('bookPocketBox')">
+                                            <img src="{{ img_url('cart/close.png') }}">
+                                        </a>
+                                        해당 상품이 장바구니에 담겼습니다.<br/>
+                                        장바구니로 이동하시겠습니까?
+                                        <ul class="NSK mt20">
+                                            <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                                            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                                            <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('bookPocketBox')">닫기</a></li>
+                                        </ul>
+                                    </div>  
+                                </div>
+
                                 <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
                                 <div class="book-Author tx-gray">
                                     <ul>

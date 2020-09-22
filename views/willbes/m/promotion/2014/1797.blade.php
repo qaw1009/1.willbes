@@ -144,7 +144,7 @@
                 @endforeach
             @else
                 <li><a href="#none">1강 맛보기<br> 수강 준비중 ></a></li>
-                <li><a href="#none">2강 맛보기<br> 수강 준비중 ></a></li>
+                <li><a href="#none">4강 맛보기<br> 수강 준비중 ></a></li>
             @endif
         </ul>
 

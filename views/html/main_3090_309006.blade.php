@@ -8,7 +8,7 @@
         <h3>
             <ul class="menu-Tit">
                 <li class="Tit">자격증<span class="row-line">|</span></li>
-                <li class="subTit">관세사</li>
+                <li class="subTit">세무사</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">

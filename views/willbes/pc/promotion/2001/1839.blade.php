@@ -17,11 +17,12 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1839_top_bg.jpg) no-repeat center top; height:1800px; overflow:hidden}  
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1839_top_bg.jpg) no-repeat center top;
+            overflow:hidden}  
         .wb_top span {position:absolute; left:50%; z-index:10}
 
-        .wb_top span.img1 {width:477px; margin-left:-400px; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
-        .wb_top span.img2 {width:340px; margin-left:20px; top:205px; animation:iptimg2 0.5s ease-in;-webkit-animation:iptimg2 0.5s ease-in;}
+        .wb_top span.img1 {width:477px; margin-left:-400px; animation:iptimg1 1s ease-in;-webkit-animation:iptimg1 1s ease-in;}
+        .wb_top span.img2 {width:340px; margin-left:20px; top:205px; animation:iptimg2 1s ease-in;-webkit-animation:iptimg2 1s ease-in;}
         @@keyframes iptimg1{
             from{top:-500px; opacity: 0;}
             to{top:0; opacity: 1;}
@@ -33,11 +34,11 @@
         
         @@keyframes iptimg2{
             from{margin-left:532px; opacity: 0;}
-            to{margin-left:0; opacity: 1;}
+            to{margin-left:20px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg2{
             from{margin-left:532px; opacity: 0;}
-            to{margin-left:0; opacity: 1;}
+            to{margin-left:20px; opacity: 1;}
         }
 
         .wb_03 {width:1120px; margin:0 auto; position:relative}
@@ -72,6 +73,7 @@
 
     <div class="evtContent NSK" id="evtContainer">      
         <div class="evtCtnsBox wb_top">
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top.jpg"  alt="" />
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top01.png"  alt="사원증" /></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top02.png"  alt="전략이 보인다." /></span>
         </div>

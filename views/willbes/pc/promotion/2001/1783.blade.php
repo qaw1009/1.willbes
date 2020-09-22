@@ -67,12 +67,7 @@
         
         
         <div class="evtCtnsBox wb_evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1783_02.jpg" usemap="#Map1783_01" title="초시생을 위한 합격 플랜" border="0" />
-            <map name="Map1783_01">
-                <area shape="rect" coords="86,633,359,715" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/171153" target="_blank" alt="원유철">
-                <area shape="rect" coords="424,631,690,714" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/171152" target="_blank" alt="오태진">
-                <area shape="rect" coords="757,632,1025,715" href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/171154" target="_blank" alt="경행경채">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1783_02.jpg" title="초시생을 위한 합격 플랜" />
         </div>
 
         @if(empty($arr_base['display_product_data']) === false)

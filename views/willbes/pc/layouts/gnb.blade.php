@@ -186,7 +186,7 @@
                                         </dl>
                                     </li>
                                 @endif
-                            @endforeach
+                            @endforeach                                    
                         </ul>
                     </h4>
                 </div>
@@ -213,9 +213,28 @@
                                     <dt class="{{ $menu_row['MenuType'] }}"><a href="{{ $menu_row['MenuUrl'] }}" target="_{{ $menu_row['UrlTarget'] }}">{{ $menu_row['MenuName'] }}</a></dt>
                                 @endforeach
                             </dl>
-                        </div>
+                        </div>                        
                     @endif
                 @endforeach
+            </div>
+            <div>
+                <dl class="sns-Btn mt10 mb10">
+                    <dt>
+                        <a href="https://www.youtube.com/channel/UCrlOg3NtsZmwRizjmM3ASWQ" target="_blank">
+                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                        </a>
+                    </dt>
+                    <dt>
+                        <a href="http://pf.kakao.com/_ugFxiT" target="_blank">
+                            <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
+                        </a>
+                    </dt>
+                    <dt>
+                        <a href="http://blog.naver.com/PostList.nhn?blogId=willbes79&from=postList&categoryNo=58" target="_blank">
+                        <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                        </a>
+                    </dt>
+                </dl>
             </div>
             <!-- gnb site setting -->
             <ul class="gnb-List-Sub p_re">

@@ -50,6 +50,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1783_top.jpg" title="추천강좌" />
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1783_01.jpg" usemap="#Map1744a" title="파이널패스" border="0" />
             <map name="Map1744a" id="Map1744a">
@@ -61,7 +62,9 @@
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
         @else
-        @endif  
+        @endif 
+        --}} 
+        
         
         <div class="evtCtnsBox wb_evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1783_02.jpg" usemap="#Map1783_01" title="초시생을 위한 합격 플랜" border="0" />

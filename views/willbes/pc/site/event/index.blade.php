@@ -89,6 +89,9 @@
                                 <dl class="w-info tx-gray">
                                     <dt>접수기간 : {{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}</dt>
                                 </dl>
+                                @if (empty($row['Link']) === false)
+                                    <dl class=""><a href="//{{$row['Link']}}" target="_blank">바로가기</a></dl>
+                                @endif
                             </td>
                             <td class="w-user">{{$row['TakeTypeName']}}</td>
                             <td class="w-evt-reply">{{$row['CommentCount']}}</td>

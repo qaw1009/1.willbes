@@ -3,15 +3,10 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -28,7 +23,7 @@
             z-index:1;
         }
 
-        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1424_top_bg.jpg) no-repeat center top;}	
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/09/1782_top_bg.jpg) no-repeat center top;}	
         .wb_cts01 .wb_popWrap {width:1120px; margin:0 auto; position:relative}
 
         .wb_cts01 .illust {position:absolute; width:1120px; margin:0 auto; animation:only 2s ease-in 0s infinite; z-index:11}
@@ -52,14 +47,14 @@
         <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">
                 <div class="illust">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top_img.png"  alt="" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top_img.png"  alt="" />
                 </div>      
-                <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_top.jpg"  alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top.jpg"  alt="" />
             </div>          
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_01.jpg"  alt="" usemap="#Map1424B" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_01.jpg"  alt="" usemap="#Map1424B" border="0" />
             <map name="Map1424B" id="Map1424B">
                 <area shape="rect" coords="252,1559,536,1619" href="javascript:certOpen()" alt="필기합격인증하기" />
                 <area shape="rect" coords="582,1559,869,1619" href="javascript:gradOpen()" alt="나의성적입력하기" />
@@ -69,9 +64,9 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/10/1424_02.jpg"  alt="" usemap="#Map1662A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_02.jpg"  alt="" usemap="#Map1662A" border="0" />
             <map name="Map1662A" id="Map1662A">
-                <area shape="rect" coords="320,940,801,1017" href="https://police.willbes.net/promotion/index/cate/3001/code/1555" target="_blank" alt="합격풀케어 서비스" />
+                <area shape="rect" coords="320,940,801,1017" href="https://police.willbes.net/promotion/index/cate/3001/code/1747" target="_blank" alt="합격풀케어 서비스" />
             </map>  
         </div>
     </div>

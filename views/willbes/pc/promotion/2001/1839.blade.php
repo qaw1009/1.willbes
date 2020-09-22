@@ -78,6 +78,7 @@
         
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_01_01.jpg"  alt=""  />
+            {{--
             <div class="slide_con NSK-Black">
                 <ul id="slidesImg3">
                     <li>토익기준 550점 이상 (3년 유효)</li>
@@ -87,10 +88,12 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_right.png"></a></p>
             </div>
+            --}}
         </div>
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_01_02.jpg"  alt=""  />
+            {{--
             <div class="slide_con NSK-Black">
                 <ul id="slidesImg4">
                     <li>경행경채는 영어(검정제), 필기시험은 경찰학, 형사법, 범죄학으로 진행됩니다.</li>
@@ -100,6 +103,7 @@
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_right.png"></a></p>
             </div>
+            --}}
         </div>
 
         <div class="evtCtnsBox wb_03">

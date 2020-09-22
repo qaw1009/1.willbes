@@ -335,7 +335,7 @@
         </div>
     </div>
 
-    <div class="Section Section4 mt50">
+    <div class="Section Section4 mt80">
         <div class="widthAuto">  
             <div class="widthAuto smallTit NSK-Black">          
                 <p><span>윌비스 임용 <strong>실시간 인기강의 TOP3</strong></span></p>            
@@ -379,7 +379,7 @@
         </div>
     </div>
 
-    <div class="Section Section5 mt40">
+    <div class="Section Section5 mt80">
         <div class="widthAuto">
             <div class="will-nTit">윌비스 임용 <span class="tx-color">교재</span></div>
             <div class="bookContent">

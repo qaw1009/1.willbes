@@ -24,6 +24,14 @@
         .nameBox {position:absolute; top:259px; left:50%; margin-left:-435px; width:870px; height:189px; 
             text-align:center; color:#fff; overflow:hidden; z-index:10}
 
+        .evt01 {position:relative; 
+        background: url(https://static.willbes.net/public/images/promotion/2020/09/1835_02.jpg) no-repeat center top; padding:536px 0 100px}
+        .evt01 .youtube iframe{width:550px; margin:0 auto; height:300px; border:1px solid #000;box-shadow:10px 10px 20px rgba(0,0,0,.2);}
+
+        .evt01 .btn {width:450px; margin:30px auto 0;}
+        .evt01 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; border-radius:50px}
+        .evt01 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
+
         .evt02 {background: url(https://static.willbes.net/public/images/promotion/2020/09/1835_01_bg.jpg) no-repeat center top; padding-top:646px; height:1240px}
         .evt02 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt02 .request h3 {font-size:17px;}
@@ -235,7 +243,16 @@
                 <div class="btn NSK-Black">
                     <a href="#none" onclick="javascript:fn_submit();">면접캠프 설명회 신청하기 ></a>
                 </div>
-            </div>   
+            </div>  
+
+            <div class="evtCtnsBox evt01">
+                <div class="youtube">
+                    <iframe src="https://www.youtube.com/embed/Q1vDeEK5XNE?rel=0" frameborder="0" allowfullscreen=""></iframe>         
+                </div>
+                <div class="btn NGEB">
+                    <a href="https://www.youtube.com/watch?v=I_y6nf274II&list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank">더 많은 영상 보러가기 ></a>
+                </div>
+            </div> 
 
             <div class="evtCtnsBox evt03" >
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_02_01.jpg" title="합격 스토리"/>

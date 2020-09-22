@@ -137,7 +137,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1835_top.jpg" title="면접캠프">
                 <div class="nameBox">
                     <ul id="slider1" class="bxslider">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2020/09/1835_top_img.jpg" title="합격자"></li>			
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/09/1835_top_img.jpg" title="합격자" oncontextmenu='return false' ondragstart='return false'></li>
                     </ul>
                 </div>
             </div>
@@ -681,6 +681,14 @@
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
          $(function() {
+             $(document).bind('keydown',function(e){
+                 // f12 방지
+                 if ( e.keyCode == 123) {
+                     e.preventDefault();
+                     e.returnValue = false;
+                 }
+             });
+
             //Count the number of li elements
             var bx_num01 = $("#slider1 li").length;
             var ticker01 = $('#slider1').bxSlider({

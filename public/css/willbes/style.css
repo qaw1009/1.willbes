@@ -5266,7 +5266,7 @@ tr.calendar_day td {
     border-left: 1px solid #bebebe;
     font-size: 13px;
 }
-/*tr.calendar_day td a.viewSchedule {display:block; position: absolute; top:0; left:0; width: 100%; height:100%; }*/
+
 tr.calendar_week td:first-child,
 tr.calendar_day td:first-child {
     border-left: none;
@@ -5286,12 +5286,16 @@ tr.calendar_day td {
     height: 66px;
     padding: 12px 12px 8px;
     vertical-align: top;
+    cursor: pointer;
 }
-tr.calendar_day td.today {background:#f2f8fe; color:#0c5dc0; text-decoration: underline; font-weight: bold;}
-tr.calendar_day td:hover,
-tr.calendar_day td.active {background:#feeeee; color:#0c5dc0; text-decoration: underline; color:salmon}
-tr.calendar_day td span.roomTable {position: absolute; top:10px; right:10px; width:10px; height:10px; background-color: salmon; float:right; 
-    font-size:0; text-indent: -9999px; display: inline-block; border-radius: 5px; z-index: 1;}
+
+tr.calendar_day td a.viewSchedule {position: absolute; display:block; top:0; left:0; width:100%; height:100%; min-height: 65px; 
+    font-size:0; text-indent: -9999px; z-index:-1; }
+tr.calendar_day td a.today {background:#f2f8fe;}
+tr.calendar_day td a.active {background:#feeeee;}
+tr.calendar_day td:hover {background:#fef7f7; color:#0c5dc0; text-decoration: underline;}
+tr.calendar_day td span.roomTable {position:absolute; top:10px; right:10px; width:10px; height:10px; background-color: salmon; float:right; 
+    font-size:0; text-indent: -9999px; display: inline-block; border-radius: 5px; z-index: 2;}
 tr.calendar_month th {
     font-size: 18px;
     padding: 22px 0;

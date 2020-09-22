@@ -73,7 +73,7 @@
                                 <td>&nbsp;</td>
                                 <td>1<span class="roomTable">배정표</span></td>
                                 <td>2<span class="roomTable">배정표</span></td>
-                                <td class="today">3<span class="roomTable">배정표</span></td>
+                                <td>3<a href="#none" class="viewSchedule today">&nbsp;</a><span class="roomTable">배정표</span></td>
                                 <td>4<span class="roomTable">배정표</span></td>
                                 <td>5<span class="roomTable">배정표</span></td>
                             </tr>
@@ -92,7 +92,7 @@
                                 <td>15</td>
                                 <td>16</td>
                                 <td>17</td>
-                                <td><a href="#noe" class="viewSchedule active">18</td>
+                                <td>18<a href="#noe" class="viewSchedule active">&nbsp;</a></td>
                                 <td>19</td>
                             </tr>
                             <tr class="calendar_day">

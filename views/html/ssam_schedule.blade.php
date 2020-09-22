@@ -71,44 +71,44 @@
                             <tr class="calendar_day">
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <td><a href="#noe" class="viewSchedule">1<span class="roomTable">배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">2<span class="roomTable">배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule today">3<span class="roomTable">배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">4<span class="roomTable">배정표</span></a></td>
-                                <td><a href="#noe" class="viewSchedule">5<span class="roomTable">배정표</span></a></td>
+                                <td>1<span class="roomTable">배정표</span></td>
+                                <td>2<span class="roomTable">배정표</span></td>
+                                <td>3<a href="#none" class="viewSchedule today">&nbsp;</a><span class="roomTable">배정표</span></td>
+                                <td>4<span class="roomTable">배정표</span></td>
+                                <td>5<span class="roomTable">배정표</span></td>
                             </tr>
                             <tr class="calendar_day">
-                                <td><a href="#noe" class="viewSchedule">6</a></td>
-                                <td><a href="#noe" class="viewSchedule">7</a></td>
-                                <td><a href="#noe" class="viewSchedule">8</a></td>
-                                <td><a href="#noe" class="viewSchedule">9</a></td>
-                                <td><a href="#noe" class="viewSchedule">10</a></td>
-                                <td><a href="#noe" class="viewSchedule">11</a></td>
-                                <td><a href="#noe" class="viewSchedule">12</a></td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
                             </tr>
                             <tr class="calendar_day">
-                                <td><a href="#noe" class="viewSchedule">13</a></td>
-                                <td><a href="#noe" class="viewSchedule">14</a></td>
-                                <td><a href="#noe" class="viewSchedule">15</a></td>
-                                <td><a href="#noe" class="viewSchedule">16</a></td>
-                                <td><a href="#noe" class="viewSchedule">17</a></td>
-                                <td><a href="#noe" class="viewSchedule active">18</a></td>
-                                <td><a href="#noe" class="viewSchedule">19</a></td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18<a href="#noe" class="viewSchedule active">&nbsp;</a></td>
+                                <td>19</td>
                             </tr>
                             <tr class="calendar_day">
-                                <td><a href="#noe" class="viewSchedule">20</a></td>
-                                <td><a href="#noe" class="viewSchedule">21</a></td>
-                                <td><a href="#noe" class="viewSchedule">22</a></td>
-                                <td><a href="#noe" class="viewSchedule">23</a></td>
-                                <td><a href="#noe" class="viewSchedule">24</a></td>
-                                <td><a href="#noe" class="viewSchedule">25</a></td>
-                                <td><a href="#noe" class="viewSchedule">26</a></td>
+                                <td>20</td>
+                                <td>21</td>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
                             </tr>
                             <tr class="calendar_day">
-                                <td><a href="#noe" class="viewSchedule">27</a></td>
-                                <td><a href="#noe" class="viewSchedule">28</a></td>
-                                <td><a href="#noe" class="viewSchedule">29</a></td>
-                                <td><a href="#noe" class="viewSchedule">30</a></td>
+                                <td>27</td>
+                                <td>28</td>
+                                <td>29</td>
+                                <td>30</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>

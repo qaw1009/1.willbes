@@ -42,6 +42,14 @@
                 <label class="control-label col-md-1-1 d-line">접수기간</label>
                 <div class="form-control-static col-md-4 ml-12-dot">{{$data['RegisterStartDate']}} ~ {{$data['RegisterEndDate']}}</div>
             </div>
+            <div class="form-group">
+                <label class="control-label col-md-1-1">링크주소</label>
+                <div class="form-control-static col-md-10">
+                    @if (empty($data['Link']) === false)
+                        {{$data['Link']}} <a href="//{{$data['Link']}}" target="_blank"><b>[바로가기]</b></a>
+                    @endif
+                </div>
+            </div>
 
             <div class="promotion">
                 <div class="form-group">

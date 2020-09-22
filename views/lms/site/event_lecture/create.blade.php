@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="event_name">제목<span class="required">*</span></label>
                     <div class="col-md-10 item">
-                        <input type="text" id="event_name" name="event_name" class="form-control" maxlength="100" title="제목" required="required" value="{{ $data['EventName'] }}" placeholder="제목 입니다.">
+                        <input type="text" id="event_name" name="event_name" class="form-control" maxlength="100" title="제목" required="required" value="{{ $data['EventName'] }}" placeholder="제목 입니다." style="width: 60%">
                     </div>
                 </div>
 
@@ -685,17 +685,6 @@
                         
                     </div>
                 </div>
-
-                {{--
-                TODO : 필요없는 항목
-                --}}
-                {{--<div class="form-group">
-                    <label class="control-label col-md-1-1">프로모션 링크</label>
-                    <div class="form-inline col-md-10">
-                        <input type="text" id="promotion_link" name="promotion_link" class="form-control" value="{{$data['Link']}}" title="프로모션 링크">
-                        &nbsp;&nbsp;&nbsp;&nbsp;• 관리할 프로모션 링크를 입력해주세요.
-                    </div>
-                </div>--}}
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="admin_mail_id">조회수</label>

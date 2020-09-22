@@ -672,7 +672,7 @@
             <li><a href="#none">모바일 수강안내</a></li>
             <li><a href="#none">1:1 상담</a></li>
             <li><a href="#none">이벤트</a></li>            
-            <li><a href="#none">재학생<br> 러닝메이트</a></li>
+            <li><a href="#none">재학생 러닝메이트</a></li>
             <li><a href="#">TOP ▲</a></li>
         </ul>
     </div>

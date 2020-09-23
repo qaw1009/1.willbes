@@ -22,7 +22,7 @@
     .cts03_05 {background:#7a7a7a}
 </style>
 
-@if(time() < strtotime('202009211630'))
+@if(time() < strtotime('202009251630'))
     <div>
         <div class="evtCtnsBox cts03_comingsoon">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon.jpg" alt="커밍쑨" />        
@@ -130,3 +130,4 @@
         );
     </script>
 @endif
+

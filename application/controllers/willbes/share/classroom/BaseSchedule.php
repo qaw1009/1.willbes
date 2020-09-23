@@ -12,7 +12,7 @@ class BaseSchedule extends \app\controllers\FrontController
     protected $_default_path;
     private $_on_off_swich = [
         '82' => [                       // bm_idx 학원게시판 -> 강의실배정표
-            'site_code' => ['2018','2002'],    // 적용 사이트 [임용학원]
+            'site_code' => ['2018'],    // 적용 사이트 [임용학원]
         ],
     ];
 
@@ -77,7 +77,7 @@ class BaseSchedule extends \app\controllers\FrontController
 
         $arr_condition = ([
             'EQ' => [
-                'b.SiteCode' => '2018',
+                'b.SiteCode' => $this->_site_code,
                 'b.Title' => $sel_day,
                 'b.IsStatus' => 'Y',
                 'b.IsUse' => 'Y'
@@ -109,7 +109,7 @@ class BaseSchedule extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx
-                ,'b.SiteCode' => '2018'
+                ,'b.SiteCode' => $site_code
                 ,'b.IsUse' => 'Y'
                 ,'b.IsStatus' => 'Y'
             ],
@@ -124,14 +124,14 @@ class BaseSchedule extends \app\controllers\FrontController
         for($i=1; $i<=$last_day; $i++){
             $temp_css = '';
 
-            if(empty($data[$i]) === false){
-                $temp_css = 'roomTable';
-            }
-
             if($i < 10){
                 $day = '0'. $i;
             }else{
                 $day = $i;
+            }
+
+            if(empty($data[$day]) === false){
+                $temp_css = 'roomTable';
             }
 
             $temp_date = $target_month . $day;
@@ -150,15 +150,15 @@ class BaseSchedule extends \app\controllers\FrontController
 
     /**
      * 날짜 형식 포맷
-     * @param integer $date
+     * @param integer $sel_day
      * @return string
      */
-    private function _getFormatDate($date=null)
+    private function _getFormatDate($sel_day=null)
     {
         $week_w = array('일','월','화','수','목','금','토');
-        $d_week = $week_w[date("w",strtotime($date))];
+        $d_week = $week_w[date("w",strtotime($sel_day))];
 
-        return date("Y년 m월 d일", strtotime($date)) . ' (' . $d_week . ')';
+        return date("Y년 m월 d일", strtotime($sel_day)) . ' (' . $d_week . ')';
     }
 
 }

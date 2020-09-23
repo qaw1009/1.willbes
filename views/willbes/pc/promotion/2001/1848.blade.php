@@ -28,7 +28,7 @@
 
         .evt01 {background:#fff;}
 
-        .evt02 {background:#ededed; padding-bottom:100px}
+        .evt02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/09/1848_02_bg.jpg) repeat-x center top;padding-bottom:100px}
         .evt02 .title {width:1120px; font-size:36px;  margin:0 auto 20px; text-align:left; color:#65069b}
         .evt02 .evt02box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 
     </style>

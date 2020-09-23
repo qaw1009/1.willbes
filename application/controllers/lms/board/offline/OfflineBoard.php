@@ -297,6 +297,12 @@ class OfflineBoard extends BaseBoard
 
         $inputData = $this->_setInputData($this->_reqP(null, false));
 
+        // 임용 날짜 포맷
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(empty($arr_swich) === false && in_array($this->_reqG('site_code'),$arr_swich['site_code']) === true){
+            $inputData['board']['Title']  = preg_replace("/[^0-9]*/s", "", $inputData['board']['Title']);
+        }
+
         //_addBoard, _modifyBoard
         $result = $this->{'_' . $method . 'Board'}($method, $inputData, $idx);
 
@@ -429,7 +435,7 @@ class OfflineBoard extends BaseBoard
                 'BmIdx' => $this->bm_idx,
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
-                'Title' => preg_replace("/[^0-9]*/s", "", element('title', $input)),
+                'Title' => element('title', $input),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),

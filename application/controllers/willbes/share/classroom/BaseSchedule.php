@@ -11,18 +11,18 @@ class BaseSchedule extends \app\controllers\FrontController
     protected $_bm_idx;
     protected $_default_path;
     private $_on_off_swich = [
-        '82' => [                               // bm_idx 학원게시판 -> 강의실배정표
-            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+        '82' => [                         // bm_idx 학원게시판 -> 강의실배정표
+            'site_code' => ['2018'],     // 적용 사이트 [임용학원]
         ],
     ];
 
     public function __construct()
     {
         parent::__construct();
-//        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-//        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
-//            show_alert('잘못된 접근 입니다.', 'back');
-//        }
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
     }
 
     public function index($params=[])
@@ -49,8 +49,8 @@ class BaseSchedule extends \app\controllers\FrontController
      */
     public function showCalendar()
     {
-        $year = empty((int)$this->uri->segment(4) == true) ? date('Y') : $this->uri->segment(4);
-        $month = empty((int)$this->uri->segment(5) == true) ? date('m') : $this->uri->segment(5);
+        $year = empty((int)$this->uri->segment(5) == true) ? date('Y') : $this->uri->segment(5);
+        $month = empty((int)$this->uri->segment(6) == true) ? date('m') : $this->uri->segment(6);
 
         //일자별 데이터 조회
         $data = $this->_getScheduleDataForMonth($this->_site_code, $year.$month);
@@ -116,7 +116,7 @@ class BaseSchedule extends \app\controllers\FrontController
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.IsStatus' => 'Y'
-                ,'b.SiteCode' => '2018'
+                ,'b.SiteCode' => $site_code
             ],
             'RAW' => [
                 'b.Title between ' => ' CONCAT(\''.$target_month.'\',\'01\') and REPLACE(LAST_DAY(CONCAT(\''.$target_month.'\',\'01\')),"-","")'

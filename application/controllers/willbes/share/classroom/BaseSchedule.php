@@ -92,8 +92,18 @@ class BaseSchedule extends \app\controllers\FrontController
                     'b.IsUse' => 'Y'
                 ]
             ]);
-            $base_data = $this->supportBoardFModel->findBoardForDaySchedule($arr_condition);
+        }else{
+            $arr_condition = ([
+                'EQ' => [
+                    'b.SiteCode' => $this->_site_code,
+                    'b.Title' => date("Ymd"),
+                    'b.IsStatus' => 'Y',
+                    'b.IsUse' => 'Y'
+                ]
+            ]);
         }
+
+        $base_data = $this->supportBoardFModel->findBoardForDaySchedule($arr_condition);
 
         $this->load->view('site/classroom/show_schedule', [
             'base_data' => $base_data,

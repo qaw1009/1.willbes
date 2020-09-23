@@ -534,19 +534,21 @@ class SupportBoardFModel extends BaseSupportFModel
     public function findBoardForDaySchedule($arr_condition = [])
     {
         $column = " CONCAT(a.AttachFilePath,a.AttachFileName) as ImgUrl,DATE_FORMAT(b.Title, '%Y년%m월%d일') as ScheduleDate,
-            CASE DAYOFWEEK(DATE_FORMAT(b.Title, '%Y-%m-%d'))
-                WHEN '1' THEN '(일)'
-                WHEN '2' THEN '(월)'
-                WHEN '3' THEN '(화)'
-                WHEN '4' THEN '(수)'
-                WHEN '5' THEN '(목)'
-                WHEN '6' THEN '(금)'
-                WHEN '7' THEN '(토)'
-            END AS DayWeek ";
+                    CASE DAYOFWEEK(DATE_FORMAT(b.Title, '%Y-%m-%d'))
+                        WHEN '1' THEN '(일)'
+                        WHEN '2' THEN '(월)'
+                        WHEN '3' THEN '(화)'
+                        WHEN '4' THEN '(수)'
+                        WHEN '5' THEN '(목)'
+                        WHEN '6' THEN '(금)'
+                        WHEN '7' THEN '(토)'
+                    END AS DayWeek 
+                ";
         $from = " FROM {$this->_table['board_2']} 
                 LEFT JOIN lms_board_attach as a ON b.BoardIdx = a.BoardIdx
         ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        return $this->_conn->query('SELECT '. $column. $from. $where)->row_array();
+        $order_by_offset_limit = " ORDER BY b.BoardIdx ASC ";
+        return $this->_conn->query('SELECT '. $column. $from. $where . $order_by_offset_limit)->row_array();
     }
 }

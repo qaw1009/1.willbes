@@ -63,14 +63,6 @@
                         </span>
                     </div>
                     @if(empty($arr_swich['create']['lecture_start_date']) === false)
-                        @php
-                            if(empty($data['Title']) === false){
-                                $lecture_start_date = preg_replace("/[^0-9]*/s", "", $data['Title']);
-                                $lecture_start_date = date("Y-m-d", strtotime( $lecture_start_date ) );
-                            }else{
-                                $lecture_start_date = date("Y-m-d");
-                            }
-                        @endphp
                         <label class="control-label col-md-1-1 d-line" for="lecture_start_date">날짜 선택<span class="required">*</span></label>
                         <div class="col-md-4 ml-12-dot item form-inline">
                             <input type="text" name="lecture_start_date" id="lecture_start_date" value="{{ $lecture_start_date }}" class="form-control datepicker" title="날짜" style="width:100px;" >
@@ -95,9 +87,12 @@
                 </div>
 
                 <div class="form-group">
+                    @php
+
+                    @endphp
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
                     <div class="col-md-10 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ empty($lecture_title) === false ? $lecture_title : $data['Title'] }}" placeholder="제목 입니다.">
                     </div>
                 </div>
 

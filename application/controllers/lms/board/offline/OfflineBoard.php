@@ -125,6 +125,14 @@ class OfflineBoard extends BaseBoard
 
         if ($count > 0) {
             $list = $this->boardModel->listAllBoard($this->board_name,false, $arr_condition, $sub_query_condition, $this->site_code, $this->_reqP('length'), $this->_reqP('start'), ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column);
+            // 임용 제목 => 날짜 포맷 및 요일 구하기
+            $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+            if(empty($arr_swich) === false && in_array($this->site_code,$arr_swich['site_code']) === true){
+                foreach ($list as $key => $val){
+                    $title = date("Y-m-d", strtotime($val['Title']));
+                    $list[$key]['Title'] = $this->_getFormatDate($title);
+                }
+            }
         }
 
         return $this->response([
@@ -185,18 +193,22 @@ class OfflineBoard extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
+        $lecture_title = null;
+
+        // 임용 날짜 포맷 및 요일 구하기
+        $lecture_start_date = date("Y-m-d");
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true){
+            $lecture_title = $this->_getFormatDate($lecture_start_date);
+        }else{
+            $arr_swich = null;
+        }
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
         //캠퍼스'Y'상태 사이트 코드 조회
         $offLineSite_list = $this->siteModel->getOffLineSiteArray();
-
-        // 항목 설정 (임용)
-        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
-            $arr_swich = null;
-        }
 
         if (empty($params[0]) === false) {
             $column = '
@@ -229,6 +241,12 @@ class OfflineBoard extends BaseBoard
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
+            // 임용 제목 => 날짜 포맷 및 요일 구하기
+            if(empty($arr_swich) === false){
+                $lecture_start_date = date("Y-m-d", strtotime($data['Title']));
+                $lecture_title = $this->_getFormatDate($data['Title']);
+            }
         }
 
         $this->load->view("board/offline/{$this->board_name}/create", [
@@ -243,6 +261,8 @@ class OfflineBoard extends BaseBoard
             'arr_reg_type' => $this->_reg_type,
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'arr_swich' => $arr_swich,
+            'lecture_start_date' => $lecture_start_date,
+            'lecture_title' => $lecture_title,
         ]);
     }
 
@@ -338,6 +358,13 @@ class OfflineBoard extends BaseBoard
             $data['arr_cate_code'] = array_values($arr_cate_code);
         }
 
+        // 임용 날짜 포맷 및 요일 구하기
+        $lecture_title = null;
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(empty($arr_swich) === false && in_array($this->_reqG('site_code'),$arr_swich['site_code']) === true){
+            $lecture_title = $this->_getFormatDate($data['Title']);
+        }
+
         $this->load->view("board/offline/{$this->board_name}/read",[
             'boardName' => $this->board_name,
             'data' => $data,
@@ -345,6 +372,7 @@ class OfflineBoard extends BaseBoard
             'attach_file_cnt' => $this->boardModel->_attach_img_cnt,
             'board_previous' => $board_previous,
             'board_next' => $board_next,
+            'lecture_title' => $lecture_title,
         ]);
     }
 
@@ -401,7 +429,7 @@ class OfflineBoard extends BaseBoard
                 'BmIdx' => $this->bm_idx,
                 'CampusCcd' => element('campus_ccd', $input),
                 'RegType' => element('reg_type', $input),
-                'Title' => element('title', $input),
+                'Title' => preg_replace("/[^0-9]*/s", "", element('title', $input)),
                 'IsBest' => (element('is_best', $input) == '1') ? '1' : '0',
                 'Content' => element('board_content', $input),
                 'IsUse' => element('is_use', $input),
@@ -414,5 +442,19 @@ class OfflineBoard extends BaseBoard
         ];
 
         return$input_data;
+    }
+
+    /**
+     * 날짜 형식 포맷
+     * @param string $date
+     * @return string
+     */
+    private function _getFormatDate($date = null)
+    {
+        $week_w = array('일','월','화','수','목','금','토');
+        $d_week = $week_w[date("w",strtotime($date))];
+        $str = date("Y년m월d일", strtotime($date)) . '(' . $d_week . ')';
+
+        return $str;
     }
 }

@@ -11,8 +11,8 @@ class BaseSchedule extends \app\controllers\FrontController
     protected $_bm_idx;
     protected $_default_path;
     private $_on_off_swich = [
-        '82' => [                         // bm_idx 학원게시판 -> 강의실배정표
-            'site_code' => ['2018'],     // 적용 사이트 [임용학원]
+        '82' => [                       // bm_idx 학원게시판 -> 강의실배정표
+            'site_code' => ['2018','2002'],    // 적용 사이트 [임용학원]
         ],
     ];
 
@@ -68,42 +68,27 @@ class BaseSchedule extends \app\controllers\FrontController
      */
     public function showSchedule()
     {
-        $base_data = null;
         $arr_input = $this->_reqG(null);
-        $year_month = element('year_month', $arr_input);
-        $board_idx = element('board_idx', $arr_input);
         $sel_day = element('sel_day', $arr_input);
 
         if(empty($sel_day) === true){
             show_alert('잘못된 접근 입니다.', 'back');
         }
 
-        if(empty($year_month) === true){
-            $year_month = date('Ym');
-        }
+        $arr_condition = ([
+            'EQ' => [
+                'b.SiteCode' => '2018',
+                'b.Title' => $sel_day,
+                'b.IsStatus' => 'Y',
+                'b.IsUse' => 'Y'
+            ]
+        ]);
 
-        $format_date = $this->_getFormatDate($year_month,$sel_day);
-
-        if(empty($board_idx) === false){
-            $arr_condition = ([
-                'EQ' => [
-                    'b.BoardIdx' => $board_idx,
-                    'b.IsStatus' => 'Y',
-                    'b.IsUse' => 'Y'
-                ]
-            ]);
-        }else{
-            $arr_condition = ([
-                'EQ' => [
-                    'b.SiteCode' => $this->_site_code,
-                    'b.Title' => date("Ymd"),
-                    'b.IsStatus' => 'Y',
-                    'b.IsUse' => 'Y'
-                ]
-            ]);
-        }
-
+        // 날짜별 데이터 조회
         $base_data = $this->supportBoardFModel->findBoardForDaySchedule($arr_condition);
+
+        // 날짜 포맷
+        $format_date = $this->_getFormatDate($sel_day);
 
         $this->load->view('site/classroom/show_schedule', [
             'base_data' => $base_data,
@@ -124,9 +109,9 @@ class BaseSchedule extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx
+                ,'b.SiteCode' => '2018'
                 ,'b.IsUse' => 'Y'
                 ,'b.IsStatus' => 'Y'
-                ,'b.SiteCode' => $site_code
             ],
             'RAW' => [
                 'b.Title between ' => ' CONCAT(\''.$target_month.'\',\'01\') and REPLACE(LAST_DAY(CONCAT(\''.$target_month.'\',\'01\')),"-","")'
@@ -138,15 +123,19 @@ class BaseSchedule extends \app\controllers\FrontController
 
         for($i=1; $i<=$last_day; $i++){
             $temp_css = '';
-            $board_idx = '';
-            $temp_date = $target_month . $i;
 
             if(empty($data[$i]) === false){
                 $temp_css = 'roomTable';
-                $board_idx = $data[$i]['BoardIdx'];
             }
 
-            $temp_html = '<span class="btn_day '.$temp_css.'" data-board-idx="'.$board_idx.'" data-year-month="'.$target_month.'" data-sel-day="'.$i.'" title="배정표"></span>';
+            if($i < 10){
+                $day = '0'. $i;
+            }else{
+                $day = $i;
+            }
+
+            $temp_date = $target_month . $day;
+            $temp_html = '<span class="btn_day '.$temp_css.'" data-sel-day="'.$temp_date.'" title="배정표"></span>';
 
             if($temp_date == date('Ymd')){
                 $month_data[$i] ='<a href="#noe" class="viewSchedule today">&nbsp;</a>'.$temp_html;
@@ -161,18 +150,15 @@ class BaseSchedule extends \app\controllers\FrontController
 
     /**
      * 날짜 형식 포맷
-     * @param integer $year_month
-     * @param integer $sel_day
+     * @param integer $date
      * @return string
      */
-    private function _getFormatDate($year_month=null,$sel_day=null)
+    private function _getFormatDate($date=null)
     {
         $week_w = array('일','월','화','수','목','금','토');
-        $sel_day = $sel_day < 10 ? '0'.$sel_day : $sel_day;
-        $temp_date = $year_month . $sel_day;
-        $d_week = $week_w[date("w",strtotime($temp_date))];
+        $d_week = $week_w[date("w",strtotime($date))];
 
-        return date("Y년 m월 d일", strtotime($temp_date)) . ' (' . $d_week . ')';
+        return date("Y년 m월 d일", strtotime($date)) . ' (' . $d_week . ')';
     }
 
 }

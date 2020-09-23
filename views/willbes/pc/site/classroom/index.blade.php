@@ -33,10 +33,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             show_calendar('');
-            show_schedule('','',{{date('d')}});
+            show_schedule({{date("Ymd")}});
 
             $(document).on('click', '.calendar_day td', function() {
-                show_schedule($(this).find("span").data('board-idx'),$(this).find("span").data('year-month'),$(this).find("span").data('sel-day'));
+                if($(this).find("span").length > 0){
+                    show_schedule($(this).find("span").data('sel-day'));
+                }
             });
         });
 
@@ -53,8 +55,8 @@
             $('#this_date').text('날짜를 선택해주세요.');
         }
 
-        function show_schedule(board_idx,year_month,sel_day) {
-            var _url = '{{ front_url($default_path . '/showSchedule/') }}' + '?board_idx=' + board_idx + '&year_month=' + year_month + '&sel_day=' + sel_day;
+        function show_schedule(sel_day) {
+            var _url = '{{ front_url($default_path . '/showSchedule/') }}' + '?sel_day=' + sel_day;
 
             sendAjax(_url, '', function(ret) {
                 $('#schedule_box').html(ret);

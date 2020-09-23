@@ -126,7 +126,8 @@ class Datamanage extends \app\controllers\BaseController
             return $this->json_error('엑셀파일 읽기에 실패했습니다.');
         }
 
-        $result = $this->predictModel->tempDataUpload($predictidx, $params);
+        /*$result = $this->predictModel->tempDataUpload($predictidx, $params);*/
+        $result = $this->predictModel->tempDataUpload222($predictidx, $params);
 
         return $this->json_result($result, '저장 되었습니다.', $result);
     }

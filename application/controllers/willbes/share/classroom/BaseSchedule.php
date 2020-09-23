@@ -19,10 +19,10 @@ class BaseSchedule extends \app\controllers\FrontController
     public function __construct()
     {
         parent::__construct();
-        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
-            show_alert('잘못된 접근 입니다.', 'back');
-        }
+//        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+//        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
+//            show_alert('잘못된 접근 입니다.', 'back');
+//        }
     }
 
     public function index($params=[])
@@ -72,17 +72,17 @@ class BaseSchedule extends \app\controllers\FrontController
         $arr_input = $this->_reqG(null);
         $year_month = element('year_month', $arr_input);
         $board_idx = element('board_idx', $arr_input);
-        $sel_day = element('sel_day', $arr_input,0);
-        $week_w = array('일','월','화','수','목','금','토');
+        $sel_day = element('sel_day', $arr_input);
+
+        if(empty($sel_day) === true){
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
 
         if(empty($year_month) === true){
             $year_month = date('Ym');
         }
 
-        $sel_day = $sel_day < 10 ? '0'.$sel_day : $sel_day;
-        $temp_date = $year_month . $sel_day;
-        $d_week = $week_w[date("w",strtotime($temp_date))];
-        $str_date = date("Y년 m월 d일", strtotime($temp_date)) . ' (' . $d_week . ')';
+        $format_date = $this->_getFormatDate($year_month,$sel_day);
 
         if(empty($board_idx) === false){
             $arr_condition = ([
@@ -97,7 +97,7 @@ class BaseSchedule extends \app\controllers\FrontController
 
         $this->load->view('site/classroom/show_schedule', [
             'base_data' => $base_data,
-            'str_date' => $str_date,
+            'format_date' => $format_date,
         ]);
     }
 
@@ -116,7 +116,7 @@ class BaseSchedule extends \app\controllers\FrontController
                 'b.BmIdx' => $this->_bm_idx
                 ,'b.IsUse' => 'Y'
                 ,'b.IsStatus' => 'Y'
-                ,'b.SiteCode' => $site_code
+                ,'b.SiteCode' => '2018'
             ],
             'RAW' => [
                 'b.Title between ' => ' CONCAT(\''.$target_month.'\',\'01\') and REPLACE(LAST_DAY(CONCAT(\''.$target_month.'\',\'01\')),"-","")'
@@ -147,6 +147,22 @@ class BaseSchedule extends \app\controllers\FrontController
         }
 
         return $month_data;
+    }
+
+    /**
+     * 날짜 형식 포맷
+     * @param integer $year_month
+     * @param integer $sel_day
+     * @return string
+     */
+    private function _getFormatDate($year_month=null,$sel_day=null)
+    {
+        $week_w = array('일','월','화','수','목','금','토');
+        $sel_day = $sel_day < 10 ? '0'.$sel_day : $sel_day;
+        $temp_date = $year_month . $sel_day;
+        $d_week = $week_w[date("w",strtotime($temp_date))];
+
+        return date("Y년 m월 d일", strtotime($temp_date)) . ' (' . $d_week . ')';
     }
 
 }

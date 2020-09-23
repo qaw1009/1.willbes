@@ -87,9 +87,6 @@
                 </div>
 
                 <div class="form-group">
-                    @php
-
-                    @endphp
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
                     <div class="col-md-10 item">
                         <input type="text" id="title" name="title" required="required" class="form-control" maxlength="46" title="제목" value="{{ empty($lecture_title) === false ? $lecture_title : $data['Title'] }}" placeholder="제목 입니다.">

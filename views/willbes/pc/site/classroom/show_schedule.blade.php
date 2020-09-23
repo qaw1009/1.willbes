@@ -1,4 +1,4 @@
-<div class="scheduleDate NSK-Black"><span>{{ $str_date or '' }}</span></div>
+<div class="scheduleDate NSK-Black"><span>{{ $format_date or '' }}</span></div>
 <div class="scheduleTxt" >
     @if(empty($base_data['ImgUrl']) === false)
         <img src="{{ $base_data['ImgUrl'] }}" alt="강의실배정표">

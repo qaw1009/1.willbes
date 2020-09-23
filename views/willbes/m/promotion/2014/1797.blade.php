@@ -133,18 +133,23 @@
 
         <ul class="sample">
             @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                @php $i = 1; @endphp
-                @foreach($arr_base['promotion_otherinfo_data'] as $row)                                    
+                @php
+                    // 셈플강의 4강,1강 하드코딩
+                    $arr_sample_lecture = array_reverse($arr_base['promotion_otherinfo_data']);
+                    $i = 1;
+                    $arr_chapter = [1 => '4', 2 => '1']
+                @endphp
+                @foreach($arr_sample_lecture as $row)
                     <li>
-                        <p>{{$i}}강 맛보기 수강 ▼</p>                                       
+                        <p>{{$arr_chapter[$i]}}강 맛보기 수강 ▼</p>
                         <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD", "{{config_item('starplayer_license')}}");' class="btnst02">HIGH ></a>
                         <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=SD", "{{config_item('starplayer_license')}}");' class="btnst03">LOW ></a>
                     </li>
                     @php $i += 1; @endphp
                 @endforeach
             @else
-                <li><a href="#none">1강 맛보기<br> 수강 준비중 ></a></li>
                 <li><a href="#none">4강 맛보기<br> 수강 준비중 ></a></li>
+                <li><a href="#none">1강 맛보기<br> 수강 준비중 ></a></li>
             @endif
         </ul>
 

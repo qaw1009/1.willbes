@@ -48,44 +48,44 @@
                 <ul>
                     <li>
                      <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6.jpg" class="off" alt="원유철 경찰한국사"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_6on.jpg" class="on" alt="원유철 경찰한국사"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_6.png" class="off" alt="원유철 경찰한국사"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_6on.png" class="on" alt="원유철 경찰한국사"  />
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5.jpg" class="off" alt="오태진 경찰한국사"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_5on.jpg" class="on" alt="오태진 경찰한국사"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_5.png" class="off" alt="오태진 경찰한국사"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_5on.png" class="on" alt="오태진 경찰한국사"  />
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3.jpg" class="off" alt="김원욱 형법"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_3on.jpg" class="on" alt="김원욱 형법"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_3.png" class="off" alt="김원욱 형법"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_3on.png" class="on" alt="김원욱 형법"  />
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">     
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1.jpg" class="off" alt="신광은 형소법"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_1on.jpg" class="on" alt="신광은 형소법"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1.png" class="off" alt="신광은 형소법"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1on.png" class="on" alt="신광은 형소법"  />
                         </a>
                     </li>
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2.jpg" class="off" alt="장정훈 경찰학"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_2on.jpg" class="on" alt="장정훈 경찰학"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_2.png" class="off" alt="장정훈 경찰학"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_2on.png" class="on" alt="장정훈 경찰학"  />
                         </a>
                     </li>                   
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_4.jpg" class="off" alt="하승민 경찰영어"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_4on.jpg" class="on" alt="하승민 경찰영어"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_4.png" class="off" alt="하승민 경찰영어"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_4on.png" class="on" alt="하승민 경찰영어"  />
                         </a>
                     </li>                  
                     <li>
                         <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_7.jpg" class="off" alt="김현정 경찰영어"  />
-                            <img src="https://static.willbes.net/public/images/promotion/2019/05/1022_01_7on.jpg" class="on" alt="김현정 경찰영어"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_7.png" class="off" alt="김현정 경찰영어"  />
+                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_7on.png" class="on" alt="김현정 경찰영어"  />
                         </a>
                     </li>
                 </ul>

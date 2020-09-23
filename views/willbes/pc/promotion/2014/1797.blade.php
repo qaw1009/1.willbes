@@ -165,20 +165,25 @@
 
             <ul class="sample">
                 @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                    @php $i = 1; @endphp
-                    @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
+                    @php
+                        // 셈플강의 4강,1강 하드코딩
+                        $arr_sample_lecture = array_reverse($arr_base['promotion_otherinfo_data']);
+                        $i = 1;
+                        $arr_chapter = [1 => '4', 2 => '1']
+                    @endphp
+                    @foreach($arr_sample_lecture as $row)
                         <li>
-                            <p>{{$i}}강 맛보기 수강 ▼</p>                                
+                            <p>{{$arr_chapter[$i]}}강 맛보기 수강 ▼</p>
                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');" class="btnst02">HIGH ></a>
                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');" class="btnst03">LOW ></a>
                         </li>
                         @php $i += 1; @endphp
                     @endforeach
                 @else
-                    <li><a href="#none">1강 맛보기 준비중 ></a></li>
                     <li><a href="#none">4강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">1강 맛보기 준비중 ></a></li>
                 @endif
-            </ul>             
+            </ul>
 
             <div class="evt10Txt02">
                 * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
@@ -212,7 +217,7 @@
                     <li>16강 정보수집의 집약체,  한산해전 승리의 비밀</li>
                     <li>17강 정보를 이용해 전략을 수립하라</li>
                     <li>&nbsp;</li>
-                    <li>18강 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로 
+                    <li>18강 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로
                     코로나로 변화된 세상에서 반드시 승리할 수 있는 전략을 세워라</li>
                 </ul>
             </div>
@@ -233,7 +238,7 @@
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif        
+        @endif
 
         <div class="evtFooter" id="infoText">
             <h3 class="NSK-Black">[이용안내]</h3>
@@ -256,7 +261,7 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript"> 
+    <script type="text/javascript">
         function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/172160';

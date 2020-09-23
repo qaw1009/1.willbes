@@ -12,7 +12,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
         .skyBanner {position:fixed; width:170px; top:200px; right:10px; z-index:10;}
@@ -33,6 +33,14 @@
         .time table td:last-child span {font-size:36px}
 
         .evtTop {background: url(https://static.willbes.net/public/images/promotion/2020/09/1847_top_bg.jpg) no-repeat center top;}
+        .evtTop span {position:absolute; top:200px; left:50%; margin-left:-500px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        @@keyframes swing{
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            25%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            75%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }
         .evt01 {background:#2d395a;}   
         .evt02 {background:#fef1e0;}
         .evt03 {background:#9f8b6a;} 
@@ -73,6 +81,7 @@
             
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1847_top.jpg" title="올공반 올케어">
+                <span><img src="https://static.willbes.net/public/images/promotion/2020/09/1847_top_img.png" title="올공반 2기"></span>
             </div>
 
             <div class="evtCtnsBox evt01">

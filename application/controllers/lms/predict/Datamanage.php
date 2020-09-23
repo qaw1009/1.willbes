@@ -127,7 +127,6 @@ class Datamanage extends \app\controllers\BaseController
         }
 
         $result = $this->predictModel->tempDataUpload($predictidx, $params);
-
         return $this->json_result($result, '저장 되었습니다.', $result);
     }
 

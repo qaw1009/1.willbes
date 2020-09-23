@@ -6570,6 +6570,87 @@ ul li.profList .willbes-Layer-ProfileBox {
     overflow: hidden;
 }
 
+/* subContainer : Prof : willbes-Prof-Profile-ssam 임용 교수홈 */
+.willbes-Prof-Profile-ssam {
+    width: 940px;
+    height: 448px;
+}
+
+.willbes-Prof-Profile-ssam .ProfImgBox {
+    float: left;
+    width: 252px;
+    height: 448px;
+    border:1px solid #d2d2d2; 
+}
+.willbes-Prof-Profile-ssam .ProfImg {
+    width:100%;
+    height: 284px;
+    overflow: hidden;
+}
+.willbes-Prof-Profile-ssam .ProfImg img {
+    width:250px;
+}
+.willbes-Prof-Profile-ssam .ProfName {color:#fff; background-color: #353e5e; text-align: center; font-size: 22px; height: 52px; line-height: 52px;}
+.willbes-Prof-Profile-ssam .ProfName span {color:#98fbf3}
+.willbes-Prof-Profile-ssam .ProfCareer {height: 110px; overflow-y: auto; padding:10px; line-height:2; color:#646464}
+
+.willbes-Prof-Profile-ssam .prof-profile {
+    float: right;
+    width: 656px;
+    height: 448px;
+    letter-spacing: 0;
+}
+.willbes-Prof-Profile-ssam .prof-brief-btn {
+    border-bottom:1px solid #ddd;
+    padding-bottom:10px;
+}
+.willbes-Prof-Profile-ssam .prof-brief-btn li {
+    display:inline-block;
+    float: left;    
+}
+.willbes-Prof-Profile-ssam .prof-brief-btn li a {
+    display: block;
+    font-size: 11px;
+    padding-right:20px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 1px;
+    line-height: 30px;
+}
+.willbes-Prof-Profile-ssam .prof-brief-btn li img {
+    margin-right:5px
+}
+.willbes-Prof-Profile-ssam .prof-brief-btn li.sampleLec {float:right}
+.willbes-Prof-Profile-ssam .prof-brief-btn li.sampleLec a {background-color: #0d74ae; color:#fff; padding:0 10px}
+.willbes-Prof-Profile-ssam .prof-brief-btn:after {content:''; display:block; clear: both;}
+
+.willbes-Prof-Profile-ssam .ProfBoard {margin-top:30px}
+.willbes-Prof-Profile-ssam .willbes-listTable {width:315px}
+.willbes-Prof-Profile-ssam .willbes-listTable .will-Tit {border-bottom:2px solid #000}
+.willbes-Prof-Profile-ssam .List-Table li {border:0; line-height:30px; height:30px; color:#3a3a3a}
+.willbes-Prof-Profile-ssam .List-Table a {display:inline-block; width:calc(100% - 90px); overflow:hidden;white-space:nowrap; text-overflow:ellipsis; float:left}
+.willbes-Prof-Profile-ssam .List-Table span {float:right}
+.willbes-Prof-Profile-ssam .willbes-listTable:last-child .List-Table a {width:calc(100% - 15px);}
+.willbes-Prof-Profile-ssam .List-Table li:after,
+.willbes-Prof-Profile-ssam .ProfBoard:after {content:''; display:block; clear:both}
+
+.willbes-Prof-Profile-ssam .prof-banner01 {
+    margin-top:30px; clear:both
+}
+.willbes-Prof-Profile-ssam .prof-banner01 li {
+    display: inline;
+    float: left;
+    margin-right:6px;
+}
+.willbes-Prof-Profile-ssam .prof-banner01 li:last-child {margin:0}
+.willbes-Prof-Profile-ssam .prof-banner01:after {
+    content: '';
+    display: block;
+    clear: both;
+} 
+
+
 /* subContainer : Prof : willbes-Layer-ProfileBox */
 .willbes-Layer-ProfileBox {
     display: none;
@@ -6618,12 +6699,14 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #fff;
     position: absolute;
     top: 50px;
-    right: 0px;
+    /*right:0;*/   
     z-index: 110;
     width: 890px;
     height: 620px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;
+    left: 50%;
+    margin-left:-445px;
 }
 .willbes-Layer-CurriBox .closeBtn {
     position: absolute;
@@ -6657,6 +6740,56 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Layer-CurriBox .Layer-Cont {
     height: 480px;
     overflow-y: auto;
+}
+
+/* subContainer : Prof : willbes-Layer-Board */
+.willbes-Layer-Board {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 50px;   
+    left: 50%;
+    margin-left:-470px;
+    z-index: 110;
+    width: 940px;
+    height: 620px;
+    border: 1px solid #2f2f2f;
+    padding: 20px 0 30px;
+    
+}
+.willbes-Layer-Board .closeBtn {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+.willbes-Layer-Board .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding: 20px 0 30px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-Board .Layer-Tit span {
+    vertical-align: baseline;
+}
+.willbes-Layer-Board .Layer-SubTit {
+    font-size: 16px;
+    padding: 30px 0 20px;
+} 
+.willbes-Layer-Board .Layer-Txt {
+    padding: 20px;
+    line-height: 24px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+.willbes-Layer-Board .Layer-Cont img {
+    max-width: 100%;
+    /*max-width: 838px;*/
+}
+.willbes-Layer-Board .Layer-Cont {
+    height: 100%;
+    overflow-y: auto;
+    padding:0 25px;
 }
 
 /* subContainer : Prof : willbes-Layer-ReplyBox */

@@ -113,9 +113,7 @@
         .evt14 li:last-child a{margin-left:10px}
         .evt14 ul:after {content:""; display:block; clear:both}
 
-        .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}
-
-        
+        .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto}        
 
         .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;

@@ -13,8 +13,8 @@ var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/Sta
 var STARPLAYER_OSX_VERSION = "1,0,4,16";
 
 //Agent
-var STARPLAYER_AGENT_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer_agent_1.2.7.77.exe";
-var STARPLAYER_AGENT_VERSION = "1,2,7,77";
+var STARPLAYER_AGENT_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer_agent_1.2.8.81.exe";
+var STARPLAYER_AGENT_VERSION = "1,2,8,81";
 
 //CHROME
 var STARPLAYER_CHROME_URL = "https://cabstarplayer.myskcdn.com/starplayer/chrome.txt";
@@ -22,4 +22,4 @@ var STARPLAYER_CHROME_URL = "https://cabstarplayer.myskcdn.com/starplayer/chrome
 //CONFIG
 var STARPLAYER_CONFIG_URL = "https://static.willbes.net/public/uploads/starplayer/starplayer.txt";
 var STARPLAYER_UPDATED_DATE = "2020.06.11";
-var STARPLAYER_AGENT_UPDATED_DATE = "2020.06.11";
+var STARPLAYER_AGENT_UPDATED_DATE = "2020.09.24";

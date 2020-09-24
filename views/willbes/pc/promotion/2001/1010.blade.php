@@ -4,14 +4,9 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1210px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -113,6 +108,11 @@
                         <col width="15%"  />
                         <col width=""  />
                         <col width="15%"  />
+                        <tr>
+                            <td>2020년 2차</td>
+                            <td>경찰공무원(일반/101단/경행) 채용시험 기출</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3001?board_idx=295819&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>
+                        </tr>
                         <tr>
                             <td>2020년 1차</td>
                             <td>경찰공무원(일반/101단/전의경) 채용시험 기출</td>

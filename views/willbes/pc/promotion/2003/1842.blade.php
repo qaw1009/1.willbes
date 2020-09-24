@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#25c2f7 url("https://static.willbes.net/public/images/promotion/2020/09/1842_top_bg.jpg") center top  no-repeat}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2020/09/1842_top_bg.jpg") center top no-repeat}
         .evtTop div {position:absolute; top:672px; left:50%; width:1120px; margin-left:-560px; z-index:1; color:#fff; font-size:18px; line-height:1.2}
         .evtTop div p {font-size:26px}
         .evtTop span {color:#ead4b5; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite; vertical-align: top;}

@@ -23,4 +23,31 @@
 
     {{-- 교재보기 팝업 willbes-Layer-Box --}}
     <div id="InfoForm" class="willbes-Layer-Box"></div>
+
+    <script>
+        //교재
+        $(function() {
+            var slidesImg1 = $(".bookList").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:5,
+                maxSlides:5,
+                slideWidth: 190,
+                slideMargin:20,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft3").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+            $("#imgBannerRight3").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+        });
+    </script>
 @endif

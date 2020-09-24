@@ -509,9 +509,7 @@ class Home extends \app\controllers\FrontController
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $s_cate_code);
         $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
         $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
-//        echo '<pre>';
-//        print_r($data['dday']);
-//        exit;
+
         return $data;
     }
 
@@ -893,6 +891,12 @@ class Home extends \app\controllers\FrontController
         return $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $limit_cnt, 0, $order_by);
     }
 
+    /**
+     * 교재 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
     private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
     {
         $order_by = ['ProdCode' => 'desc'];

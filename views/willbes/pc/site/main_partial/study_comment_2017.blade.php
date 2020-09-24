@@ -15,7 +15,7 @@
                         <a href="#none">
                             <div class="reviewInfo">{{ $row['SubjectName'] }} <span>|</span> {{ $row['ProfName'] }} <span>|</span> {{ $row['ProdName'] }}</div>
                             <div class="title"><img src="{{ img_url("sub/star" . $row['LecScore'] . ".gif") }}"/> {{ $row['Title'] }} <span class="f_right">{{ hpSubString($row['RegName'],0,2,'*') }}</span></div>
-                            <div class="reviewTxt">{{ $row['Content'] }}</div>
+                            <div class="reviewTxt">{!! $row['Content'] !!}</div>
                         </a>
                     </li>
                 @endforeach

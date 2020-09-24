@@ -67,7 +67,20 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_top.jpg"  title="윌비스 T-PASS" />
         <div>
             지금 T-PASS 구매하면 추가 10%할인 쿠폰 지급!
-            <p class="NSK-Black"><span>10월 4일 (일)</span> 이후 수강기간 혜택이 축소됩니다!</p>
+            <p class="NSK-Black">
+                <span>
+                    @php
+                        if(empty($arr_promotion_params['edate']) === false && strlen($arr_promotion_params['edate']) == 10){
+                            $week_w = array('일','월','화','수','목','금','토');
+                            $edate = str_replace("-","",$arr_promotion_params['edate']);
+                            $d_week = $week_w[date("w",strtotime($edate))];
+                            $format_date = date("m월 d일", strtotime($edate)) . ' (' . $d_week . ')';
+                        }
+                    @endphp
+                    {{ $format_date }}
+                </span>
+                이후 수강기간 혜택이 축소됩니다!
+            </p>
         </div>
     </div>
 

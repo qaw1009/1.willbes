@@ -1,5 +1,5 @@
 <div id="buy_continue_layer" class="willbes-Lec-buyBtn-sm NG common_buy_layer">
-    <div class="pocketBox" style="display:block">
+    <div class="pocketBox" style="display: block;">
         <a class="closeBtn" href="#none">
             <img src="{{ img_url('cart/close.png') }}">
         </a>
@@ -17,11 +17,10 @@
 <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_book_form');
-    var $buy_continue_layer = $('#buy_continue_layer');
 
     $(document).ready(function() {
         {{--장바구니, 바로결제 버튼 클릭--}}
-        $('a[name="btn_book_cart"], a[name="btn_book_direct_pay"]').on('click', function () {
+        $regi_form.on('click', 'a[name="btn_book_cart"], a[name="btn_book_direct_pay"]', function () {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
             var $prod_code = $(this).data('prod-code');
             $regi_form.find('input:checkbox[name="prod_code[]"]').prop('checked', false);

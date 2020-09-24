@@ -34,8 +34,8 @@
     {{-- 경찰학원--}}
     <div id="topBannerLayer">
         <div class="topBanner">
-            <a href="{{site_url('/promotion/index/cate/3001/code/1022')}}">
-                <img src="https://static.willbes.net/public/images/promotion/2020/06/1022_top_ban.jpg" alt="적중! 적중! 또 다시 적중!">
+            <a href="{{site_url('/promotion/index/cate/3001/code/1853')}}">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1022_top_ban.jpg" alt="적중! 적중! 또 다시 적중!">
             </a>
         </div>
     </div>

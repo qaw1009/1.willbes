@@ -1,4 +1,4 @@
-<a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}')">
+<a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}'); hideContinueLayer('buy_continue_layer');">
     <img src="{{ img_url('sub/close.png') }}">
 </a>
 <div class="Layer-Tit tx-dark-black NG">
@@ -12,7 +12,15 @@
                     <div class="bookImg">
                         <img src="{{ $data['wAttachImgPath'] . $data['wAttachImgOgName'] }}" width="200" height="250">
                     </div>
-                    <div class="bookDetail">
+                    <div class="bookDetail p_re">
+                        <div class="bookBuy">
+                            @if($data['IsSalesAble'] == 'Y')
+                            <ul class="bookBuyBtns">
+                                <li class="btnCart"><a href="#none" name="btn_book_cart" data-direct-pay="N" data-is-redirect="N" data-prod-code="{{ $data['ProdCode'] }}" data-layer-dt-type="info_form">장바구니</a>
+                                <li class="btnBuy"><a href="#none" name="btn_book_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-prod-code="{{ $data['ProdCode'] }}">바로결제</a></li>
+                            </ul>
+                            @endif
+                        </div>
                         <div class="book-Tit tx-dark-black NG">{{ $data['ProdName'] }}</div>
                         <div class="book-Author tx-gray">
                             <ul>

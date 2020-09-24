@@ -117,10 +117,10 @@
                     </tbody>
                 </table>
                 <!-- lecTable -->
+                <div id="InfoForm" class="willbes-Layer-Box"></div>
+                <!-- willbes-Layer-Box -->
             </form>
         </div>
-        <div id="InfoForm" class="willbes-Layer-Box"></div>
-        <!-- willbes-Layer-Box -->
     </div>
     @endif
 

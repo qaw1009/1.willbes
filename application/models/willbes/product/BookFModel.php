@@ -48,7 +48,12 @@ class BookFModel extends ProductFModel
     public function findProductBookInfo($prod_code)
     {
         $column = 'P.ProdCode, P.ProdName, P.ProdPriceData, P.wSaleCcd, P.wSaleCcdName, P.wAuthorNames, P.wPublName, P.wPublDate, P.wAttachImgPath, P.wAttachImgOgName
-            , VBB.wEditionSize, VBB.wPageCnt, VBB.wBookDesc, VBB.wTableDesc, SC.CateName';
+            , VBB.wEditionSize, VBB.wPageCnt, VBB.wBookDesc, VBB.wTableDesc, SC.CateName
+            , if(P.IsSaleEnd = "N" and P.IsUse = "Y" and VBB.wIsUse = "Y" and current_timestamp() between P.SaleStartDatm and P.SaleEndDatm
+                and P.SaleStatusCcd = "' . $this->_available_sale_status_ccd['product'] . '"
+                and VBB.wSaleCcd = "' . $this->_available_sale_status_ccd['book'] . '"
+              , "Y", "N") as IsSalesAble';
+
         $from = '
             from ' . $this->_table['book'] . ' as P
                 inner join ' . $this->_table['bms_book_combine'] . ' as VBB

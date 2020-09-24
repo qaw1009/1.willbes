@@ -267,7 +267,11 @@ function showContinueLayer($type, $dt_type, $chk_obj, $target_id) {
             right += 313;   // 515
         } else if ($dt_type === 'prof_right') {
             right -= 157;   // 45
+        } else if ($dt_type === 'info_form') {
+            top -= 31;
+            right -= 157;   // 45
         } else {
+            top -= 33;
             right += 147;
         }
     } else {
@@ -280,6 +284,13 @@ function showContinueLayer($type, $dt_type, $chk_obj, $target_id) {
     }).addClass('active');
 }
 
+/**
+ * 장바구니, 계속구매 레이어 닫기
+ * @param $target_id
+ */
+function hideContinueLayer($target_id) {
+    $('#' + $target_id).removeClass('active');
+}
 
 /**
  * 단강좌, 무료강좌 상품 선택/해제

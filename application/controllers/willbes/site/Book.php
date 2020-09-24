@@ -133,6 +133,9 @@ class Book extends \app\controllers\FrontController
      */
     public function info($params = [])
     {
+        // input parameter
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
         $prod_code = element('prod-code', $params);
         if (empty($prod_code) === true) {
             return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
@@ -144,6 +147,7 @@ class Book extends \app\controllers\FrontController
 
         return $this->load->view('site/book/info_modal', [
             'ele_id' => $this->_req('ele_id'),
+            'arr_input' => $arr_input,
             'data' => $data
         ]);
     }

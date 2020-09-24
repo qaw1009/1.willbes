@@ -86,7 +86,7 @@
         .evtCurri li strong {margin-right:10px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important; }
         .evtCurri li.cTitle {color:#744416; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
-        .evtReplyBox {background:#f5f5f5; padding-bottom:100px}
+        .evtReplyBox {background:#f5f5f5; padding:50px 0 100px}
         .evtReplyBox .columns {width:720px; margin:50px auto 0;
             column-count: 2;
             column-gap:10px;
@@ -359,7 +359,15 @@
                 }
             });
         });
+
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDownText('{{$arr_promotion_params['edate']}}');
+        });
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 
     <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
     <script language='javascript'>

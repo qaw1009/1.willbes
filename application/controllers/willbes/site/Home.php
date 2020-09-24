@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -493,6 +493,23 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 임용[온라인] 데이터 조회
+     * @param string $cate_code
+     * @param array $arr_campus
+     * @return mixed
+     */
+    private function _getSite2017Data($cate_code = '', $arr_campus = [])
+    {
+        $data = [];
+        $data['arr_main_banner'] = $this->_banner('0');
+        $data['notice'] = $this->_boardNotice(7, $cate_code);
+        $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $cate_code);
+        $data['study_comment'] = $this->_boardStudyComment(5, $cate_code);
+
+        return $data;
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array
@@ -701,7 +718,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName, b.LecScore, b.Content, IF(RegType=1, b.RegMemName, m.MemName) AS RegName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'p.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
@@ -848,6 +865,26 @@ class Home extends \app\controllers\FrontController
         $arr_condition = ['EQ' => ['b.BmIdx' => 114, 'b.IsUse' => 'Y']];
         
         return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
+    }
+
+    /**
+     * 강의 업데이트 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _getlectureUpdateInfo($limit_cnt = 5, $cate_code = '', $arr_campus = [])
+    {
+        $order_by = ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc'];
+        $arr_condition = [
+            'EQ' => [
+                'p.SiteCode' => $this->_site_code,
+                'p.ProdTypeCcd' => '636001',
+                'pl.LearnPatternCcd' => '615001',
+            ]
+        ];
+
+        return $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $limit_cnt, 0, $order_by);
     }
 
     /**

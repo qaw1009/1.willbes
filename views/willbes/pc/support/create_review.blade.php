@@ -78,7 +78,11 @@
                             <tr>
                                 <td class="w-tit bg-light-white tx-left strong pl30">내용<span class="tx-light-blue">(*)</span></td>
                                 <td class="w-textarea write tx-left pl30" colspan="3">
-                                    <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
+                                    <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder="• 500자 이상 입력해 주세요.
+
+• 합격수기와 관련없는 내용은 삭제될 수 있습니다.
+
+• 합격인증 및 파일첨부는 필수사항이 아닙니다.">{!! $data['Content'] !!}</textarea>
                                 </td>
                             </tr>
                             <tr>

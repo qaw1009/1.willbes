@@ -500,11 +500,15 @@ class Home extends \app\controllers\FrontController
      */
     private function _getSite2017Data($cate_code = '', $arr_campus = [])
     {
+        $s_cate_code = '';
+
         $data = [];
+        $data['dday'] = $this->_dday();
         $data['arr_main_banner'] = $this->_banner('0');
-        $data['notice'] = $this->_boardNotice(7, $cate_code);
-        $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $cate_code);
-        $data['study_comment'] = $this->_boardStudyComment(5, $cate_code);
+        $data['notice'] = $this->_boardNotice(7, $s_cate_code);
+        $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $s_cate_code);
+        $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
+        $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
 
         return $data;
     }
@@ -718,7 +722,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _boardStudyComment($limit_cnt = 6, $cate_code = '', $arr_campus = [])
     {
-        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName, b.LecScore, b.Content, IF(RegType=1, b.RegMemName, m.MemName) AS RegName
+        $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName, b.LecScore, b.Content, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'p.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
@@ -881,10 +885,34 @@ class Home extends \app\controllers\FrontController
                 'p.SiteCode' => $this->_site_code,
                 'p.ProdTypeCcd' => '636001',
                 'pl.LearnPatternCcd' => '615001',
-            ]
+            ],
         ];
 
         return $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $limit_cnt, 0, $order_by);
+    }
+
+    /**
+     * 교재 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
+    {
+        $order_by = ['ProdCode' => 'desc'];
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+            ],
+            'LKR' => [
+                'CateCode' => $cate_code,
+            ],
+            'IN' => [
+                'DispTypeCcd' => ['619001', '619003']
+            ],
+        ];
+
+        return $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
     }
 
     /**

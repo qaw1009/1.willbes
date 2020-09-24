@@ -51,7 +51,7 @@
         .tab li a.active+div {font-size:20px; color:#7063e7; font-weight:bold}
         .tab ul:after {content:""; display:block; clear:both}
 
-        .tabCts {margin-top:300px;}
+        .tabCts {margin-top:330px;}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}

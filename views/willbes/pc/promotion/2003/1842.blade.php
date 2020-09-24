@@ -32,12 +32,13 @@
         } 
         .evt01 {padding-bottom:150px; }
         /* TAB */
-        .tab { width:1210px; margin:100px auto 50px; text-align:center}		
-        .tab li {display:block; float:left; min-width:150px; min-height:150px; margin-right:10px; font-size:14px}
+        .tab {position:absolute; top:1160px; left:50%; width:100%; margin-left:-50%; text-align:center; z-index:1}	
+        .tab ul {}	
+        .tab li {display:inline-block; margin-right:10px; font-size:14px}
         .tab a {display:block; width:150px; height:150px; border-radius:75px; background:#e0e0e0; overflow:hidden; position:relative; opacity: 0.5;}
         .tab a img {width:100%; position:absolute; top:50%; left:50%; margin-top:-50%; margin-left:-50%;}
-        .tab a:active,
-        .tab a.active {width:250px; height:250px; border-radius:125px; background:#7063e7; opacity: 1; margin-top:-50px;animation:upDown2 .5s ease-out;-webkit-animation:upDown2 .5s ease-out; box-shadow:0px 7px 7px 0px rgba(0, 1, 1, 0.2);  }
+        .tab a.active {width:250px; height:250px; border-radius:125px; background:#7063e7; opacity: 1; 
+            margin-top:0; animation:upDown2 .5s ease-out;-webkit-animation:upDown2 .5s ease-out; box-shadow:0px 7px 7px 0px rgba(0, 1, 1, 0.2);  }
         @@keyframes upDown2{
             from{transform: rotate(0deg) scale(0.7); }
             to{transform: rotate(1440deg) scale(1); }
@@ -46,10 +47,11 @@
             from{transform: rotate(0deg) scale(0.7); }
             to{transform: rotate(1440deg) scale(1); }
         } 
-        .tab li div {margin-top:10px;}
+        .tab li div {margin-top:10px;} 
         .tab li a.active+div {font-size:20px; color:#7063e7; font-weight:bold}
-        .tab li:last-child {margin:0}
-        .tab:after {content:""; display:block; clear:both}
+        .tab ul:after {content:""; display:block; clear:both}
+
+        .tabCts {margin-top:300px;}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -71,77 +73,81 @@
 
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_01.jpg"  title="윌비스 T-PASS 커리큘럼" />
-        <ul class="tab">
-            <li>
-                <a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_07.png" alt="황남기"/></a>
-                <div>행정법/헌법 황남기</div>
-            </li>
-            <li>
-                <a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_05.png" alt="김덕관"/></a>
-                <div>행정학 김덕관</div>
-            </li>
-            <li>
-                <a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_06.png" alt="기미진"/></a>
-                <div>국어 기미진</div>
-            </li>
-            <li>
-                <a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_01.png" alt="한덕현"/></a>
-                <div>영어 한덕현</div>
-            </li>
-            <li>
-                <a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_02.png" alt="조민주"/></a>
-                <div>한국사 조민주</div>
-            </li>
-            <li>
-                <a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_03.png" alt="오태진"/></a>
-                <div>한국사 오태진</div>
-            </li>
-            <li>
-                <a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_04.png" alt="이석준"/></a>
-                <div>행정법 이석준</div>
-            </li>
-        </ul>
-        <div id="tab1">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_07.jpg" usemap="#Map1842_1" title="황남기" border="0" />
-            <map name="Map1842_1">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
-            </map>       
+        <div class="tab">
+            <ul>
+                <li>
+                    <a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_07.png" alt="황남기"/></a>
+                    <div>행정법/헌법 황남기</div>
+                </li>
+                <li>
+                    <a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_05.png" alt="김덕관"/></a>
+                    <div>행정학 김덕관</div>
+                </li>
+                <li>
+                    <a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_06.png" alt="기미진"/></a>
+                    <div>국어 기미진</div>
+                </li>
+                <li>
+                    <a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_01.png" alt="한덕현"/></a>
+                    <div>영어 한덕현</div>
+                </li>
+                <li>
+                    <a href="#tab5"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_02.png" alt="조민주"/></a>
+                    <div>한국사 조민주</div>
+                </li>
+                <li>
+                    <a href="#tab6"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_03.png" alt="오태진"/></a>
+                    <div>한국사 오태진</div>
+                </li>
+                <li>
+                    <a href="#tab7"><img src="https://static.willbes.net/public/images/promotion/2020/09/1842_tab_04.png" alt="이석준"/></a>
+                    <div>행정법 이석준</div>
+                </li>
+            </ul>
         </div>
-        <div id="tab2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_05.jpg" usemap="#Map1842_2" title="김덕관" border="0"/>
-            <map name="Map1842_2">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">  
-            </map>
-        </div>
-        <div id="tab3">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_06.jpg" usemap="#Map1842_3" title="기미진" border="0"/>
-            <map name="Map1842_3">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_balnk">
-            </map>
-        </div>
-        <div id="tab4">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_01.jpg" usemap="#Map1842_4" title="한덕현" border="0"/>
-            <map name="Map1842_4">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_balnk">
-            </map>     
-        </div>
-        <div id="tab5">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_02.jpg" usemap="#Map1842_5" title="조민주" border="0"/>
-            <map name="Map1842_5">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1788" target="_balnk">
-            </map>   
-        </div>
-        <div id="tab6">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_03.jpg" usemap="#Map1842_6" title="오태진" border="0"/>
-            <map name="Map1842_6">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
-            </map>   
-        </div>
-        <div id="tab7">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_04.jpg" usemap="#Map1842_7" title="이석준" border="0"/>
-            <map name="Map1842_7">
-                <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1792" target="_balnk">
-            </map>    
+        <div class="tabCts">
+            <div id="tab1">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_07.jpg" usemap="#Map1842_1" title="황남기" border="0" />
+                <map name="Map1842_1">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_balnk">
+                </map>       
+            </div>
+            <div id="tab2">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_05.jpg" usemap="#Map1842_2" title="김덕관" border="0"/>
+                <map name="Map1842_2">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_balnk">  
+                </map>
+            </div>
+            <div id="tab3">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_06.jpg" usemap="#Map1842_3" title="기미진" border="0"/>
+                <map name="Map1842_3">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_balnk">
+                </map>
+            </div>
+            <div id="tab4">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_01.jpg" usemap="#Map1842_4" title="한덕현" border="0"/>
+                <map name="Map1842_4">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_balnk">
+                </map>     
+            </div>
+            <div id="tab5">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_02.jpg" usemap="#Map1842_5" title="조민주" border="0"/>
+                <map name="Map1842_5">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1788" target="_balnk">
+                </map>   
+            </div>
+            <div id="tab6">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_03.jpg" usemap="#Map1842_6" title="오태진" border="0"/>
+                <map name="Map1842_6">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_balnk">
+                </map>   
+            </div>
+            <div id="tab7">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1842_cts_04.jpg" usemap="#Map1842_7" title="이석준" border="0"/>
+                <map name="Map1842_7">
+                    <area shape="rect" coords="500,234,802,322" href="https://pass.willbes.net/promotion/index/cate/3019/code/1792" target="_balnk">
+                </map>    
+            </div>
         </div>
     </div>  
 
@@ -185,7 +191,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-        $('.tab').each(function(){
+        $('.tab ul').each(function(){
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="'+location.hash+'"]')[3] || $links[3]);
             $active.addClass('active');

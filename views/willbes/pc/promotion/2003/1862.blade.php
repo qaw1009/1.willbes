@@ -30,8 +30,8 @@
             to{right:-200px}*/
         } 
         .evt01 {background:#fff;}
-        .evt02 {background:#fff;}
-        .evt03 {background:#fff;}
+        .evt02 {background:#ededed;}
+        .evt03 {background:#ededed;}
 
     </style>
 

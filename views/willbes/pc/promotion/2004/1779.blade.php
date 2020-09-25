@@ -67,7 +67,7 @@
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294815&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1779_sky03.jpg" alt="조민주 T" /></a>
         </div>
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>
+            {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky04.png" alt="이석준" /></a>
         </div>
 
@@ -78,7 +78,7 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_01.jpg" alt="커리큘럼" usemap="#Map1779_01" border="0" />
             <map name="Map1779_01">
-              <area shape="rect" coords="938,1431,1058,1560" href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank" alt="한덕현">
+              <area shape="rect" coords="938,1431,1058,1560" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
               <area shape="rect" coords="940,1608,1060,1736" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861" target="_blank" alt="이석준">
             </map>
         </div>
@@ -95,7 +95,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_04.jpg" alt="수강신청" usemap="#Map1779_02" border="0" />
             <map name="Map1779_02">
               <area shape="rect" coords="190,1175,931,1292" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank" alt="파란불 수강신청">
-              <area shape="rect" coords="278,1422,515,1478" href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank" alt="한덕현">
+              <area shape="rect" coords="278,1422,515,1478" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
               <area shape="rect" coords="692,1422,928,1475" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861" target="_blank" alt="이석준">
             </map>
         </div>

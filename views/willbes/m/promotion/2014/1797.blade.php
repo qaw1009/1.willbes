@@ -290,7 +290,7 @@
 
         function goLecture() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            location.href = 'https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/172160';
+            location.href = 'https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/172160';
         }
 
         function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)

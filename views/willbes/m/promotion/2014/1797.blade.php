@@ -9,7 +9,7 @@
 
     .evt01 {}
 
-    .evt02 { text-align:center; padding-bottom:100px; background:#212121}
+    .evt02 {text-align:center; padding-bottom:100px; background:#212121}
     .evt02 .dday {font-size:22px;padding:20px 0; background:#fff}
     .evt02 .dday span {color:#a0774e; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
 
@@ -92,10 +92,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_01.jpg" alt="이시한 교수" >
     </div> 
     
+
     <div class="evtCtnsBox evt02 ddayArea">
         <div class="dday NSK-Thin">
             <strong class="NSK-Black">사전예약 마감까지 <br><span id="ddayCountText"></span> 남았습니다.</strong>
         </div> 
+    </div>
+
+    <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1797_02.jpg" alt="" >
         <div class="video-container-box">
             <div class="video-container">
@@ -161,31 +165,31 @@
         
         <div class="curriculum">              
             <dl>
-                <dd>1강 왜 다시 이순신인가? </dd>
-                <dd>2강 무에서 유를 만들어 내는 리더</dd>
+                <dd>1강. 왜 다시 이순신인가? </dd>
+                <dd>2강. 무에서 유를 만들어 내는 리더</dd>
                 <dd>&nbsp;</dd>
-                <dd>3강 정통 문신 집안 출신, 무인의 길을 걷다 </dd>
-                <dd>4강 “임무” vs “업무”를 구분하여 파악하라</dd>
-                <dd>5강 성공적인 삶은 사는 사람들의 공통점은?</dd>
+                <dd>3강. 정통 문신 집안 출신, 무인의 길을 걷다 </dd>
+                <dd>4강. “임무” vs “업무”를 구분하여 파악하라</dd>
+                <dd>5강. 성공적인 삶은 사는 사람들의 공통점은?</dd>
                 <dd>&nbsp;</dd>
-                <dd>6강 NO!는 책임감의 언어</dd>
-                <dd>7강 절대권력 앞에서 과감히 "No!"를 외친 "대간제도"</dd>
+                <dd>6강. NO!는 책임감의 언어</dd>
+                <dd>7강. 절대권력 앞에서 과감히 "No!"를 외친 "대간제도"</dd>
                 <dd>&nbsp;</dd>
-                <dd>8강 필승전략의 귀재! 이순신 장군의 필승전략</dd>
-                <dd>9강 경쟁에서 이기고 싶다면 치열하게 계산하라!</dd>
+                <dd>8강. 필승전략의 귀재! 이순신 장군의 필승전략</dd>
+                <dd>9강. 경쟁에서 이기고 싶다면 치열하게 계산하라!</dd>
                 <dd>&nbsp;</dd>
-                <dd>10강 통찰력의 원천을 찾아라!</dd>
-                <dd>11강 명량을 승리로 이끈 지적 능력</dd>
-                <dd>12강 듣는 기술로 학습을 완성하다</dd>
+                <dd>10강. 통찰력의 원천을 찾아라!</dd>
+                <dd>11강. 명량을 승리로 이끈 지적 능력</dd>
+                <dd>12강. 듣는 기술로 학습을 완성하다</dd>
                 <dd>&nbsp;</dd>
-                <dd>13강 평온할 때 위기에 대비하라</dd>
-                <dd>14강 환경은 탓해야 할 대상이 아니라 극복해야 할 대상</dd>
+                <dd>13강. 평온할 때 위기에 대비하라</dd>
+                <dd>14강. 환경은 탓해야 할 대상이 아니라 극복해야 할 대상</dd>
                 <dd>&nbsp;</dd>
-                <dd>15강 치밀하게 정보를 수집하고 꼼꼼하게 기록하다</dd>
-                <dd>16강 정보수집의 집약체,  한산해전 승리의 비밀</dd>
-                <dd>17강 정보를 이용해 전략을 수립하라</dd>
+                <dd>15강. 치밀하게 정보를 수집하고 꼼꼼하게 기록하다</dd>
+                <dd>16강. 정보수집의 집약체,  한산해전 승리의 비밀</dd>
+                <dd>17강. 정보를 이용해 전략을 수립하라</dd>
                 <dd>&nbsp;</dd>
-                <dd>18강 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로 
+                <dd>18강. 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로 
                 코로나로 변화된 세상에서 반드시 승리할 수 있는 전략을 세워라</dd>
             </dl>
         </div>

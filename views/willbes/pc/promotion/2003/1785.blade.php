@@ -37,7 +37,7 @@
                 <area shape="rect" coords="9,115,117,176" href="https://pass.willbes.net/promotion/index/cate/3035/code/1585" target="_blank" />
                 <area shape="rect" coords="7,184,118,248" href="https://pass.willbes.net/promotion/index/cate/3035/code/1653" target="_blank"/>
                 <area shape="rect" coords="9,256,119,317" href="#evtContainer" alt="3순환" />
-                <area shape="rect" coords="10,324,117,386" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
+                <area shape="rect" coords="10,324,117,386" href="https://pass.willbes.net/promotion/index/cate/3035/code/1862" target="_blank"/>
                 <area shape="rect" coords="10,398,117,470" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
             </map>                         
         </div>

@@ -67,7 +67,7 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1861_01.jpg" usemap="#Map1648B" title="소원을 말해봐" border="0" >
             <map name="Map1648B">
-                <area shape="rect" coords="227,884,891,987" href="#none" alt="쿠폰받기">
+                <area shape="rect" coords="228,872,893,993" href="#none" alt="쿠폰받기">
             </map>           
         </div>
 

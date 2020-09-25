@@ -485,7 +485,9 @@ class BasePromotion extends \app\controllers\FrontController
             ];
             $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);
             if (empty($comment_result) === true) {
-                return $this->json_error('소문내기 댓글을 등록해 주세요.');
+                // 에러 문구 설정
+                $err_msg = empty($this->_req('msg')) === false ? $this->_req('msg') : '소문내기 댓글을 등록해 주세요.';
+                return $this->json_error($err_msg);
             }
         }
 

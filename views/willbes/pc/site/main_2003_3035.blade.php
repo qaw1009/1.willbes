@@ -77,7 +77,7 @@
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1585') }}" target="_blank">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1653') }}" target="_blank">강좌 바로가기</a></li>
                     <li><a href="{{ site_url('/promotion/index/cate/3035/code/1785') }}" target="_blank">강좌 바로가기</a></li>
-                    <li><a class="prepare" href="#none">준비중</a></li>
+                    <li><a href="{{ site_url('/promotion/index/cate/3035/code/1862') }}" target="_blank">강좌 바로가기</a></li>
                     <li><a class="prepare" href="#none">준비중</a></li>
                 </ul>
             </div>

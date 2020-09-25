@@ -65,8 +65,12 @@
         </div>  
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1861_01.jpg" title="소원을 말해봐" >          
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1861_01.jpg" usemap="#Map1648B" title="소원을 말해봐" border="0" >
+            <map name="Map1648B">
+                <area shape="rect" coords="227,884,891,987" href="#none" alt="쿠폰받기">
+            </map>           
         </div>
+
         {{--댓글url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')

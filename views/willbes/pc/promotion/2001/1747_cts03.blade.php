@@ -39,8 +39,8 @@
         <div class="evtCtnsBox cts03_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_02.jpg" alt="" usemap="#Map1361ct03A" border="0" />
             <map name="Map1361ct03A" id="Map1361ct03A">
-                {{--<area shape="rect" coords="427,442,789,515" href="https://cafe.naver.com/polstudy/2374502" target="_blank" alt="체력qna바로가기" />--}}
-                <area shape="rect" coords="427,442,789,515" href="javascript:void(0);" onclick="javascript:alert('Coming soon!');" alt="체력qna바로가기" />
+                <area shape="rect" coords="427,442,789,515" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=882&" target="_blank" alt="체력qna바로가기" />
+                {{--<area shape="rect" coords="427,442,789,515" href="javascript:void(0);" onclick="javascript:alert('Coming soon!');" alt="체력qna바로가기" />--}}
             </map>
         </div>
         <div class="evtCtnsBox cts03_03">

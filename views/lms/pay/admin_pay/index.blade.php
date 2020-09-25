@@ -112,6 +112,18 @@
             </div>
         </div>
     </form>
+    <div class="x_panel mt-10 mb-0">
+        <div class="x_content">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="fa-ul mb-0">
+                        <li><i class="fa-li fa fa-check-square-o"></i>유료결제는 일반 온라인결제와 동일한 조건으로 수강연장, 일시정지 정책이 적용되므로 보강동영상 같은 서비스성 강좌는 등록할 수 없습니다.</li>
+                        <li><i class="fa-li fa fa-check-square-o"></i>보강동영상 등 서비스성 강좌 지급은 0원결제등록으로 진행해 주세요.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="x_panel mt-10">
         <div class="x_content">
             <table id="list_ajax_table" class="table table-striped table-bordered">

@@ -8,9 +8,8 @@ class On extends \app\controllers\FrontController
     protected $auth_controller = true;
     protected $auth_methods = array();
 
-    // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
-    protected $_payroute_normal_ccd = ['670001','670002','670006'];
-    protected $_payroute_admin_ccd = ['670003','670004','670005','670007'];
+    protected $_payroute_normal_ccd = ['670001','670002','670006','670007']; // 온라인, 학원방문, 온라인0원, 관리자유료
+    protected $_payroute_admin_ccd = ['670003','670004','670005']; // 0원결제, 무료결제, 제휴사결제
 
     // 강의형태 단과/사용자패키지/운영자패키지/무료
     protected $_LearnPatternCcd_dan = ['615001','615002'];
@@ -1366,14 +1365,14 @@ class On extends \app\controllers\FrontController
             $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
                 'IN' => [
                     'LearnPatternCcd' => $this->_LearnPatternCcd_dan, // 단과, 사용자
-                    'PayRouteCcd' => ['670001', '670002','670006'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd //['670001', '670002','670006'] // 온, 방
                 ]
             ]));
 
         } elseif ($prodtype === 'P') {
             $leclist = $this->classroomFModel->getPackage(array_merge($cond_arr, [
                 'IN' => [
-                    'PayRouteCcd' => ['670001', '670002','670006'] // 온, 방
+                    'PayRouteCcd' => $this->_payroute_normal_ccd //['670001', '670002','670006'] // 온, 방
                 ]
             ]));
 

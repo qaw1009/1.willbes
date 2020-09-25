@@ -28,7 +28,7 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09/1861_top_bg.jpg) no-repeat center top}
         .evtTop span {position:absolute; left:50%; z-index:1;}
-        .evtTop span.img1 {top:257px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
+        .evtTop span.img1 {top:217px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
         .evtTop span.img2 {top:453px; margin-left:240px; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 8s infinite;}
         @@keyframes iptimg1{
             0%{margin-left:-513px; opacity: 0;}

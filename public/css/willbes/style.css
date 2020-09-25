@@ -6800,11 +6800,13 @@ ul li.profList .willbes-Layer-ProfileBox {
     background: #fff;
     position: absolute;
     top: 54px;
-    right: 0;
+    /*right: 0;*/
     z-index: 110;
     width: 890px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;
+    left:50%;
+    margin-left:-445px;
 }
 .willbes-Layer-ReplyBox .closeBtn {
     position: absolute;

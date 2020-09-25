@@ -16,7 +16,7 @@
 
         /************************************************************/     
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1850_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#202334 url(https://static.willbes.net/public/images/promotion/2020/09/1850_top_bg.jpg) no-repeat center top;}
         .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:300px; margin-left:-80px; width:560px; height:655px; overflow:hidden; 
             animation:iptimg1 2s ease-out; -webkit-animation:iptimg1 2s ease-out;}
         @@keyframes iptimg1{
@@ -58,7 +58,7 @@
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1850_top.jpg" alt="서민지 티패스" usemap="#Map1850A" border="0" />
             <map name="Map1850A">
-                <area shape="rect" coords="304,1641,817,1740" href="#wb_cts04" alt="티패스 수강신청">
+                <area shape="rect" coords="673,1765,911,1864" href="#wb_cts04" alt="티패스 수강신청">
             </map>
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1850_top_img.png" alt="서민지" /></span>
         </div>

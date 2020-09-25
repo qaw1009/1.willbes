@@ -19,35 +19,95 @@
         .skybanner {position:fixed;top:220px; right:10px;z-index:1;}
         
         .evt00 {background:#0a0a0a}
-        .evt_top {height:1200px; overflow:hidden} 
-        .evt_top .topimg {position:absolute; top:0; left:50%; margin-left:-1000px;}
+        .evtTop {height:1200px; overflow:hidden} 
+        .evtTop .topimg {position:absolute; top:0; left:50%; margin-left:-1000px;}
         .evtTop span {position:absolute; left:50%; z-index:2;}
-        .evtTop span.img1 {top:217px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
-        .evtTop span.img2 {top:453px; margin-left:240px; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 8s infinite;}
-        @@keyframes iptimg1{
+        .evtTop span.img1 {top:217px; margin-left:-413px; width:146px;
+            animation:flipInX 2s infinite;
+            -webkit-animation:flipInX 2s infinite;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .evtTop span.img2 {top:253px; margin-left:100px; width:379px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        @@keyframes swing{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
             25%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
             50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
             75%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
             100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
         }
-        @@-webkit-keyframes iptimg1{
+        @@-webkit-keyframes swing{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
             25%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
             50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
             75%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
             100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+        }        
+        @@keyframes flipInX {
+             from {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;                
+             }
+             40% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             60% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+                
+             }
+             80% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             to {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);  
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;               
+             }
         }
-        
-        @@keyframes iptimg2{
-            0%{margin-left:440px; opacity: 0;}
-            50%{margin-left:240px; opacity: 1;}
-            100%{margin-left:40px; opacity: 0;}
-        }
-        @@-webkit-keyframes iptimg2{
-            0%{margin-left:440px; opacity: 0;}
-            50%{margin-left:240px; opacity: 1;}
-            100%{margin-left:40px; opacity: 0;}
+        @@-webkit-keyframes flipInX{
+            from {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;                
+             }
+             40% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             60% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+                
+             }
+             80% {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;
+             }
+             to {
+                 -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+                 transform: perspective(400px) rotate3d(1, 0, 0, 20deg);  
+                 -webkit-animation-timing-function: ease-in;
+                 animation-timing-function: ease-in;               
+             }
         }
        
         .evt01 {padding-bottom:100px; background:#fff !important}
@@ -194,11 +254,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
 
-        <div class="evtCtnsBox evt_top" id="main">
+        <div class="evtCtnsBox evtTop" id="main">
             <div class="topimg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_top.jpg"  alt="PASS" />
-                <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1861_top_img01.png" title="" /></span>      
-                <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1861_top_img02.png" title="" /></span> 
+                <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1864_top_img02.png" title="" /></span>      
+                <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1864_top_img01.png" title="" /></span> 
             </div>
         </div>
 

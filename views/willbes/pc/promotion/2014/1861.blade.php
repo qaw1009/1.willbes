@@ -57,6 +57,11 @@
         .evt02 {background:#222 url(https://static.willbes.net/public/images/promotion/2020/09/1861_02_bg.jpg) no-repeat center top}
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
+
     <div class="p_re evtContent NSK" id="evtContainer">    
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1861_top.jpg" title="추석맞이 열공지원" > 
@@ -67,7 +72,7 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1861_01.jpg" usemap="#Map1648B" title="소원을 말해봐" border="0" >
             <map name="Map1648B">
-                <area shape="rect" coords="228,872,893,993" href="#none" alt="쿠폰받기">
+                <area shape="rect" coords="228,872,893,993" href="javascript:giveCheck();" alt="쿠폰받기">
             </map>           
         </div>
 
@@ -94,6 +99,23 @@
     </div>
     <!-- End Container -->
 
-
+    <script>
+        var $regi_form = $('#regi_form');
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+            @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+    </script>
 
 @stop

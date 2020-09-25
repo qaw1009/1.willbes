@@ -191,6 +191,7 @@
         .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
         .content_guide_box dd strong {color:#555}
         .content_guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px; line-height:1.5}
+        .content_guide_box dd li span {vertical-align: top;}
         .content_guide_box .step {display:inline-block; float:left; width:23%; border:1px solid #c4c4c4; margin-top:10px; margin-right:2%; text-align:center; line-height:1.2}
         .content_guide_box .step h4 {color:#fff; font-size:18px; background:#c4c4c4; padding:10px 0}
         .content_guide_box .step h5 {font-size:18px; color:#333; font-weight:bold; margin-bottom:20px}
@@ -795,7 +796,7 @@
                     </dt>
                     <dd>
                         <ol>
-                            <li>1. 본 상품은 구매일로부터 6개월간 수강 가능한 상품입니다.</li>
+                            <li>본 상품은 구매일로부터 6개월간 수강 가능한 상품입니다.</li>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.<br>
                                 수강가능 교수진 ▼<br>
                                 형사소송법/수사 : 신광은 교수님<br>

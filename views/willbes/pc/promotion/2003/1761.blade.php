@@ -40,11 +40,13 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        {{--
         <div class="skybanner">
             <a href="#play">
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_sky.png" alt="공개무료특강" />
             </a>
-        </div> 
+        </div>
+        --}} 
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1761_01.jpg" alt="이종오 전격 입성"/>

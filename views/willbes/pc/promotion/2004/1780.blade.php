@@ -114,9 +114,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
+        {{--
         <div class="skybanner">
             <a href="#play"><img src="https://static.willbes.net/public/images/promotion/2020/09/1780_sky.png" alt=""></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">

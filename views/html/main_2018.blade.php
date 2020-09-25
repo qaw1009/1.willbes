@@ -381,7 +381,10 @@
 
     <div class="Section Section5 mt80">
         <div class="widthAuto">
-            <div class="will-nTit">윌비스 임용 <span class="tx-color">교재</span></div>
+            <div class="will-nTit">
+                윌비스 임용 <span class="tx-color">교재</span>
+                <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+            </div>
             <div class="bookContent">
                 <ul class="bookList">
                     <li>

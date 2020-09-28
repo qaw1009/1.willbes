@@ -2683,7 +2683,7 @@ class Player extends \app\controllers\FrontController
         $day_stime = intval($lec['WorkWeekDayStartTime']);
         $day_etime = intval($lec['WorkWeekDayEndTime']);
 
-        if($this->classroomFModel->getHoliday() == 1){ // 휴일로 등록된날짜
+        if ($this->classroomFModel->getHoliday() == 1) { // 휴일로 등록된날짜
             return true;
             /*
              * 시간 관계없이 24시간 수강
@@ -2698,7 +2698,7 @@ class Player extends \app\controllers\FrontController
             }
             */
 
-        } elseif(in_array($weekday, [0,6,7]) == true){ // 토, 일
+        } elseif (in_array($weekday, [0, 6, 7]) == true) { // 토, 일
             return true;
             /*
              * 시간 관계없이 24시간 수강
@@ -2714,16 +2714,17 @@ class Player extends \app\controllers\FrontController
             */
 
         } else { // 그렇지 않으면 평일
-            if($day_stime < $day_etime){ // 일반적인 시간 1시 ~ 8시
-                if($hour >= $day_stime && $hour <= $day_etime){
+            if ($day_stime < $day_etime) { // 일반적인 시간 1시 ~ 8시
+                if ($hour >= $day_stime && $hour <= $day_etime) {
                     return true;
                 }
             } else { // 역으로 된 시간 18시 ~ 새벽 4
-                if($hour >= $day_stime || $hour <= $day_etime){
+                if ($hour >= $day_stime || $hour <= $day_etime) {
                     return true;
                 }
             }
         }
 
         return false;
+    }
 }

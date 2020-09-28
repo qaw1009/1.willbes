@@ -1513,12 +1513,12 @@ class Player extends \app\controllers\FrontController
         }
 
         if($data['FreeLecTypeCcd'] == '652002'){ // 일반 보강 로그인해야 수강
-            if($this->session->userdata('is_login') !== true){
+            if(empty($MemIdx) == true || empty($MemId) == true){
                 return $this->StarplayerResult(true,'로그인해야 이용이 가능합니다.');
             }
 
         } else { // 완전무료 미 로그인 상태로 수강가능
-            if($this->session->userdata('is_login') != true){
+            if(empty($MemIdx) == true || empty($MemId) == true){
                 $MemId = "ANONYMOUS";
             }
         }

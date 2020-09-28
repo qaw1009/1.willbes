@@ -6625,13 +6625,13 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Prof-Profile-ssam .prof-brief-btn li.sampleLec a {background-color: #0d74ae; color:#fff; padding:0 10px}
 .willbes-Prof-Profile-ssam .prof-brief-btn:after {content:''; display:block; clear: both;}
 
-.willbes-Prof-Profile-ssam .ProfBoard {margin-top:30px}
+.willbes-Prof-Profile-ssam .ProfBoard {margin-top:40px}
 .willbes-Prof-Profile-ssam .willbes-listTable {width:315px}
-.willbes-Prof-Profile-ssam .willbes-listTable .will-Tit {border-bottom:2px solid #000}
-.willbes-Prof-Profile-ssam .List-Table li {border:0; line-height:30px; height:30px; color:#3a3a3a}
+.willbes-Prof-Profile-ssam .willbes-listTable .will-Tit {border-bottom:2px solid #000; margin-bottom:5px}
+.willbes-Prof-Profile-ssam .List-Table li {border:0; line-height:34px; height:34px; color:#3a3a3a}
 .willbes-Prof-Profile-ssam .List-Table a {display:inline-block; width:calc(100% - 90px); overflow:hidden;white-space:nowrap; text-overflow:ellipsis; float:left}
 .willbes-Prof-Profile-ssam .List-Table span {float:right}
-.willbes-Prof-Profile-ssam .willbes-listTable:last-child .List-Table a {width:calc(100% - 15px);}
+.willbes-Prof-Profile-ssam .willbes-listTable:last-child .List-Table a {width:calc(100% - 20px);}
 .willbes-Prof-Profile-ssam .List-Table li:after,
 .willbes-Prof-Profile-ssam .ProfBoard:after {content:''; display:block; clear:both}
 

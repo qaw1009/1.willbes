@@ -247,7 +247,7 @@
 
             <div class="evtCtnsBox evt01">
                 <div class="youtube">
-                    <iframe src="https://www.youtube.com/embed/Q1vDeEK5XNE?rel=0" frameborder="0" allowfullscreen=""></iframe>         
+                    <iframe src="https://www.youtube.com/embed/VONRXLlADE4?rel=0" frameborder="0" allowfullscreen=""></iframe>         
                 </div>
                 <div class="btn NGEB">
                     <a href="https://www.youtube.com/watch?v=I_y6nf274II&list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank">더 많은 영상 보러가기 ></a>

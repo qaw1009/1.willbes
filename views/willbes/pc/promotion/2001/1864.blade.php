@@ -274,25 +274,29 @@
                         <li>
                             <div>
                             <strong>120</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="172948" onClick=""/> <label for="y_pkg1">합격보장 0원 PASS</label>
+{{--                            <input type="radio" id="y_pkg1" name="y_pkg" value="172948" onClick=""/> <label for="y_pkg1">합격보장 0원 PASS</label>--}}
+                                <input type="radio" id="y_pkg1" name="y_pkg" value="159591" onClick=""/> <label for="y_pkg1">합격보장 0원 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>99</strong>만원<br>
-                                <input type="radio" id="y_pkg2" name="y_pkg" value="172949" onClick=""/> <label for="y_pkg2">무제한 0원 PASS</label>
+{{--                                <input type="radio" id="y_pkg2" name="y_pkg" value="172949" onClick=""/> <label for="y_pkg2">무제한 0원 PASS</label>--}}
+                                <input type="radio" id="y_pkg2" name="y_pkg" value="159592" onClick=""/> <label for="y_pkg2">무제한 0원 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>79</strong>만원<br>
-                                <input type="radio" id="y_pkg3" name="y_pkg" value="172950" onClick=""/> <label for="y_pkg3">무제한 PASS</label>
+{{--                                <input type="radio" id="y_pkg3" name="y_pkg" value="172950" onClick=""/> <label for="y_pkg3">무제한 PASS</label>--}}
+                                <input type="radio" id="y_pkg3" name="y_pkg" value="159593" onClick=""/> <label for="y_pkg3">무제한 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>60</strong>만원<br>
-                                <input type="radio" id="y_pkg4" name="y_pkg" value="172951" onClick=""/> <label for="y_pkg4">6개월 PASS</label>
+{{--                                <input type="radio" id="y_pkg4" name="y_pkg" value="172951" onClick=""/> <label for="y_pkg4">6개월 PASS</label>--}}
+                                <input type="radio" id="y_pkg4" name="y_pkg" value="159594" onClick=""/> <label for="y_pkg4">6개월 PASS</label>
                             </div>
                         </li>
                     </ul>

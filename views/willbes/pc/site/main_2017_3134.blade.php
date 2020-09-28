@@ -231,11 +231,9 @@
             $("#imgBannerRight").click(function (){
                 slidesImg.goToNextSlide();
             });
-        });
 
-        //적중배너
-        $(function(){
-            var slidesImg = $(".SubtabSlider").bxSlider({
+            //적중배너
+            var subslidesImg = $(".SubtabSlider").bxSlider({
                 mode:'horizontal',
                 touchEnabled: false,
                 speed:400,
@@ -250,11 +248,11 @@
                 }
             });
             $("#imgBannerLeft2").click(function (){
-                slidesImg.goToPrevSlide();
+                subslidesImg.goToPrevSlide();
             });
 
             $("#imgBannerRight2").click(function (){
-                slidesImg.goToNextSlide();
+                subslidesImg.goToNextSlide();
             });
         });
     </script>

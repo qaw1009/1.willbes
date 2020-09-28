@@ -863,13 +863,13 @@
                                         @else
                                             @if(empty($row['wHD']) === false)
                                             <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">
-                                                <img src="https://static.willbes.net/public/images/promotion/2020/06/1804_btn03.png" title="해설강의">
+                                                <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_btn03.png" title="해설강의">
                                             </a>
                                             @endif
 
                                             @if(empty($row['wUnitAttachFile']) === false)
                                                 <a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}">
-                                                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1804_btn04.png" title="해설자료">
+                                                    <img src="https://static.willbes.net/public/images/promotion/2020/06/1660_btn04.png" title="해설자료">
                                                 </a>
                                             @endif
                                         @endif

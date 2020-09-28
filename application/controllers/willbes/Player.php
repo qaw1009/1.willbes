@@ -438,20 +438,24 @@ class Player extends \app\controllers\FrontController
         $unitidx = $params[1];
         $quility = $params[2];
 
-        if($this->session->userdata('is_login') !== true){
-            show_alert('로그인해야 이용이 가능합니다.','close');
-        }
-
-        $MemId = $this->session->userdata('mem_id');
-
-        if(empty($quility) === true){
-            $quility = 'WD';
-        }
-
         $data = $this->playerFModel->getLectureFree($prodcode, $unitidx);
 
         if(empty($data) === true){
             show_alert('샘플강좌가 없습니다.', 'close');
+        }
+
+        if($data['FreeLecTypeCcd'] == '652002'){ // 일반 보강 로그인해야 수강
+            if($this->session->userdata('is_login') !== true){
+                show_alert('로그인해야 이용이 가능합니다.','close');
+            }
+            $MemId = $this->session->userdata('mem_id');
+
+        } else { // 완전무료 미 로그인 상태로 수강가능
+            if($this->session->userdata('is_login') == true){
+                $MemId = $this->session->userdata('mem_id');
+            } else {
+                $MemId = "ANONYMOUS";
+            }
         }
 
         switch($quility){
@@ -1392,6 +1396,7 @@ class Player extends \app\controllers\FrontController
      */
     function getMobileSample()
     {
+        $MemIdx = $this->_req("m");
         $MemId = $this->_req("id");
         $prodcode = $this->_req("p");
         $unitidx = $this->_req("u");
@@ -1460,7 +1465,7 @@ class Player extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'UnitIdx' => $unitidx,
                 'Url' => $url,
-                'MemIdx' => $this->session->userdata('mem_idx'),
+                'MemIdx' => $MemIdx,
                 'Quility' => $quility
             ]) == false){
             return $this->StarplayerResult(true,'오류가 발생했습니다. 다시 시도해주십시요.');
@@ -1491,6 +1496,7 @@ class Player extends \app\controllers\FrontController
      */
     function getMobileFree()
     {
+        $MemIdx = $this->_req("m");
         $MemId = $this->_req("id");
         $prodcode = $this->_req("p");
         $unitidx = $this->_req("u");
@@ -1500,23 +1506,21 @@ class Player extends \app\controllers\FrontController
             return $this->StarplayerResult(true,'파라미터가 잘못 되었습니다.');
         }
 
-        if(empty($MemId) === true){
-            return $this->StarplayerResult(true,'로그인해야 이용이 가능합니다.');
-            $MemId = "ANONYMOUS";
-        }
-
-        if(empty($quility) === true){
-            $quility = 'WD';
-        }
-
-        if(empty($quility) === true){
-            $quility = 'WD';
-        }
-
         $data = $this->playerFModel->getLectureFree($prodcode, $unitidx);
 
         if(empty($data) === true){
             return $this->StarplayerResult(true,'강의정보가 없습니다.');
+        }
+
+        if($data['FreeLecTypeCcd'] == '652002'){ // 일반 보강 로그인해야 수강
+            if($this->session->userdata('is_login') !== true){
+                return $this->StarplayerResult(true,'로그인해야 이용이 가능합니다.');
+            }
+
+        } else { // 완전무료 미 로그인 상태로 수강가능
+            if($this->session->userdata('is_login') != true){
+                $MemId = "ANONYMOUS";
+            }
         }
 
         switch($quility){
@@ -1564,7 +1568,7 @@ class Player extends \app\controllers\FrontController
                 'ProdCode' => $prodcode,
                 'UnitIdx' => $unitidx,
                 'Url' => $url,
-                'MemIdx' => $this->session->userdata('mem_idx'),
+                'MemIdx' => $MemIdx,
                 'Quility' => $quility
             ]) == false){
             return $this->StarplayerResult(true,'오류가 발생했습니다. 다시 시도해주십시요.');

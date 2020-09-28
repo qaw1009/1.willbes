@@ -4,21 +4,18 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
+
+        .skybanner {position:fixed;top:250px;right:10px;z-index:1;}
         
         .Wb_top{background:#404044 url(https://static.willbes.net/public/images/promotion/2020/03/1485_top_bg.jpg) no-repeat center top;}
 
@@ -37,6 +34,7 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        @include('willbes.pc.promotion.2003.3035_cycle_sky')
 
         <div class="evtCtnsBox Wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/03/1485_top.jpg" alt="2021 김동진법원팀 예비순환"  > 

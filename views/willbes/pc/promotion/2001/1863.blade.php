@@ -73,6 +73,22 @@
         .tabs:after {content:""; display:block; clear:both}
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+
+        <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}" readonly="readonly"/>
+        <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+        <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11" readonly="readonly">
+        <input type="hidden" name="register_type" value="promotion" readonly="readonly"/>
+
+        @foreach($arr_base['register_list'] as $key => $val)
+            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                <input type="hidden" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" readonly="readonly"/>
+            @endif
+        @endforeach
+    </form>
+
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
@@ -138,7 +154,7 @@
         <div id="tab02" class="pb100">
             <div class="evtCtnsBox wb_02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1863_07.jpg" alt="룰렛 이벤트"/>
-                <a href="#none" class="NSK-Black">문풀1단계 패키지 모두 받기 ></a>
+                <a href="javascript:;" class="NSK-Black" onclick="fn_submit();">문풀1단계 패키지 모두 받기 ></a>
             </div>
         </div>
 
@@ -163,6 +179,21 @@
     </div>
     <!-- End Container -->
     <script>
+        $regi_form = $('#regi_form');
+
+        {{--무료 강좌발급--}}
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            var _url = '{!! front_url('/event/registerStore') !!}?event_code={{$data["ElIdx"]}}';
+
+            ajaxSubmit($regi_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert('강좌가 지급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
         $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');

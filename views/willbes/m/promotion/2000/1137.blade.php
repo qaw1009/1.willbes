@@ -4,7 +4,7 @@
 <!-- Container -->
 
 <style type="text/css">
-    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both;}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
     .evt_apply {background:#f5f5f5;padding:25px;}
@@ -12,6 +12,11 @@
     .evt_apply li {display:inline;float:left; width:48%;}
     .evt_apply li:nth-child(odd) {padding-left:25px;}
     .evt_apply ul:after {content:''; display:block; clear:both}
+
+    .check {position:absolute; bottom:0; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5;}
+    .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -32,9 +37,15 @@
 <div id="Container" class="Container NSK c_both"> 
 
     <div class="evtCtnsBox evtTop">
-        <a href="https://www.local.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank">
+        <a href="javascript:go_PassLecture('');">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_top.jpg" alt="웰컴팩" > 
         </a>
+        <div class="check">
+            <label>
+                <input name="ischk"  type="checkbox" value="Y" />
+                페이지를 모두 확인하였고, 이에 동의합니다.
+            </label>
+        </div>        
     </div> 
     
     <div class="evtCtnsBox evt01">
@@ -97,6 +108,16 @@
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script type="text/javascript">   
 
+{{-- 수강신청 동의 --}}
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/member/join/?ismobile=0&sitecode=2000') }}' + code;
+            location.href = url;
+        }
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

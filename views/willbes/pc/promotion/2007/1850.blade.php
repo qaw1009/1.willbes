@@ -14,7 +14,10 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
-        /************************************************************/     
+        /************************************************************/  
+        
+        .skyBanner {position:fixed; width:180px; top:200px; right:10px; z-index:5;}
+        .skyBanner a {display:block; margin-bottom:5px}
 
         .wb_top {background:#202334 url(https://static.willbes.net/public/images/promotion/2020/09/1850_top_bg.jpg) no-repeat center top;}
         .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:300px; margin-left:-80px; width:560px; height:655px; overflow:hidden; 
@@ -55,6 +58,11 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="skybanner">
+            <a href="https://pf.kakao.com/_Pxixdlxb" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1850_sky.png">
+            </a>
+        </div>
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1850_top.jpg" alt="서민지 티패스" usemap="#Map1850A" border="0" />
             <map name="Map1850A">

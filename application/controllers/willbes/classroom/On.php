@@ -1743,7 +1743,7 @@ class On extends \app\controllers\FrontController
      */
     private function _isHolidayView($lec)
     {
-        $weekday = intval(date('w'));
+        $weekday = intval(date('N'));
         $hour = intval(date('H'));
 
         $holiday_stime = intval($lec['WorkHoliDayStartTime']);
@@ -1751,7 +1751,7 @@ class On extends \app\controllers\FrontController
         $day_stime = intval($lec['WorkWeekDayStartTime']);
         $day_etime = intval($lec['WorkWeekDayEndTime']);
 
-        if(in_array($weekday, [6,7]) == true){ // 토, 일
+        if($this->classroomFModel->getHoliday() == 1){ // 휴일로 등록된날짜
             if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
                 if($hour >= $holiday_stime && $hour <= $holiday_etime){
                     return true;
@@ -1762,7 +1762,7 @@ class On extends \app\controllers\FrontController
                 }
             }
 
-        } elseif($this->classroomFModel->getHoliday() == 1){ // 휴일로 등록된날짜
+        } elseif(in_array($weekday, [0,6,7]) == true){ // 토, 일
             if($holiday_stime < $holiday_etime){ // 일반적인시간 시작 1시 ~ 8시
                 if($hour >= $holiday_stime && $hour <= $holiday_etime){
                     return true;

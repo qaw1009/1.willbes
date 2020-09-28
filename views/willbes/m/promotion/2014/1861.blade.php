@@ -5,30 +5,30 @@
     <style type="text/css">
         .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; position:relative}
         .evtCtnsBox img {width:100%; max-width:720px;}
-        .evtTop {width:720px; overflow:hidden}
+        .evtTop {overflow:hidden}
         .evtTop span {position:absolute; left:50%; z-index:1;}
-        .evtTop span.img1 {top:217px; margin-left:-413px; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
-        .evtTop span.img2 {top:453px; margin-left:240px; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 8s infinite;}
+        .evtTop span.img1 {top:25%; margin-left:-60%; width:146px; animation:iptimg1 10s infinite;-webkit-animation:iptimg1 10s infinite;}
+        .evtTop span.img2 {top:30%; margin-left:120%%; width:379px; animation:iptimg2 8s infinite;-webkit-animation:iptimg2 8s infinite;}
         @@keyframes iptimg1{
-            0%{margin-left:-513px; opacity: 0;}
-            50%{margin-left:-413px; opacity: 1;}
-            100%{margin-left:-313px; opacity: 0;}
+            0%{margin-left:-65%; opacity: 0;}
+            50%{margin-left:-55%; opacity: 1;}
+            100%{margin-left:-50%; opacity: 0;}
         }
         @@-webkit-keyframes iptimg1{
-            0%{margin-left:-513px; opacity: 0;}
-            50%{margin-left:-413px; opacity: 1;}
-            100%{margin-left:-313px; opacity: 0;}
+            0%{margin-left:-65%; opacity: 0;}
+            50%{margin-left:-55%; opacity: 1;}
+            100%{margin-left:-50%; opacity: 0;}
         }
         
         @@keyframes iptimg2{
-            0%{margin-left:440px; opacity: 0;}
-            50%{margin-left:240px; opacity: 1;}
-            100%{margin-left:40px; opacity: 0;}
+            0%{margin-left:30%; opacity: 0;}
+            50%{margin-left:20%; opacity: 1;}
+            100%{margin-left:15%; opacity: 0;}
         }
         @@-webkit-keyframes iptimg2{
-            0%{margin-left:440px; opacity: 0;}
-            50%{margin-left:240px; opacity: 1;}
-            100%{margin-left:40px; opacity: 0;}
+            0%{margin-left:30%; opacity: 0;}
+            50%{margin-left:20%; opacity: 1;}
+            100%{margin-left:15%; opacity: 0;}
         }
         .evtCtnsBox .txt01 {font-size:16px; margin-bottom:20px; padding:20px;}
         .evtCtnsBox .txt02 {background:#9b72e2; color:#fff; font-size:16px; margin:20px 20px 50px; padding:20px; position:relative}

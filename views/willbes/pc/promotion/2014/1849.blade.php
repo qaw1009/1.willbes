@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -132,7 +128,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >            
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/09/1849_sky01.png" alt="신청하기"></a>
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/09/1849_sky02.png" alt="교재구매하기"></a>
+            <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1971&prof_idx=51125" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1849_sky02.png" alt="교재구매하기"></a>
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2020/09/1849_sky03.png" alt="맛보기"></a>                            
         </div>                  
 
@@ -233,31 +229,31 @@
 
                 <div class="evtCurri">
                     <ul>
-                        <li><strong>1강</strong> 왜 다시 이순신인가?</li>
-                        <li><strong>2강</strong> 무에서 유를 만들어 내는 리더</li>
+                        <li><strong>1강.</strong> 왜 다시 이순신인가?</li>
+                        <li><strong>2강.</strong> 무에서 유를 만들어 내는 리더</li>
                         <li>&nbsp;</li>
-                        <li><strong>3강</strong> 정통 문신 집안 출신, 무인의 길을 걷다 </li>
-                        <li><strong>4강</strong> “임무” vs “업무”를 구분하여 파악하라</li>
-                        <li><strong>5강</strong> 성공적인 삶은 사는 사람들의 공통점은?</li>
+                        <li><strong>3강.</strong> 정통 문신 집안 출신, 무인의 길을 걷다 </li>
+                        <li><strong>4강.</strong> “임무” vs “업무”를 구분하여 파악하라</li>
+                        <li><strong>5강.</strong> 성공적인 삶은 사는 사람들의 공통점은?</li>
                         <li>&nbsp;</li>
-                        <li><strong>6강</strong> NO!는 책임감의 언어</li>
-                        <li><strong>7강</strong> 절대권력 앞에서 과감히 "No!"를 외친 "대간제도"</li>
+                        <li><strong>6강.</strong> NO!는 책임감의 언어</li>
+                        <li><strong>7강.</strong> 절대권력 앞에서 과감히 "No!"를 외친 "대간제도"</li>
                         <li>&nbsp;</li>
-                        <li><strong>8강</strong> 필승전략의 귀재! 이순신 장군의 필승전략</li>
-                        <li><strong>9강</strong> 경쟁에서 이기고 싶다면 치열하게 계산하라!</li>
+                        <li><strong>8강.</strong> 필승전략의 귀재! 이순신 장군의 필승전략</li>
+                        <li><strong>9강.</strong> 경쟁에서 이기고 싶다면 치열하게 계산하라!</li>
                         <li>&nbsp;</li>
-                        <li><strong>10강</strong> 통찰력의 원천을 찾아라!</li>
-                        <li><strong>11강</strong> 명량을 승리로 이끈 지적 능력</li>
-                        <li><strong>12강</strong> 듣는 기술로 학습을 완성하다</li>
+                        <li><strong>10강.</strong> 통찰력의 원천을 찾아라!</li>
+                        <li><strong>11강.</strong> 명량을 승리로 이끈 지적 능력</li>
+                        <li><strong>12강.</strong> 듣는 기술로 학습을 완성하다</li>
                         <li>&nbsp;</li>
-                        <li><strong>13강</strong> 평온할 때 위기에 대비하라</li>
-                        <li><strong>14강</strong> 환경은 탓해야 할 대상이 아니라 극복해야 할 대상</li>
+                        <li><strong>13강.</strong> 평온할 때 위기에 대비하라</li>
+                        <li><strong>14강.</strong> 환경은 탓해야 할 대상이 아니라 극복해야 할 대상</li>
                         <li>&nbsp;</li>
-                        <li><strong>15강</strong> 치밀하게 정보를 수집하고 꼼꼼하게 기록하다</li>
-                        <li><strong>16강</strong> 정보수집의 집약체,  한산해전 승리의 비밀</li>
-                        <li><strong>17강</strong> 정보를 이용해 전략을 수립하라</li>
+                        <li><strong>15강.</strong> 치밀하게 정보를 수집하고 꼼꼼하게 기록하다</li>
+                        <li><strong>16강.</strong> 정보수집의 집약체,  한산해전 승리의 비밀</li>
+                        <li><strong>17강.</strong> 정보를 이용해 전략을 수립하라</li>
                         <li>&nbsp;</li>
-                        <li><strong>18강</strong> 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로
+                        <li><strong>18강.</strong> 400년을 뛰어넘어 일본의 존경을 받는 리더의 전략으로
                         코로나로 변화된 세상에서 반드시 승리할 수 있는 전략을 세워라</li>
                     </ul>
                 </div>

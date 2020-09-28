@@ -35,19 +35,8 @@
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">   
-
-        <div class="skybanner">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1862_sky.png" alt="빠르게 가기" usemap="#Map1585sky" border="0" />
-            <map name="Map1585sky" id="Map1585sky">
-                <area shape="rect" coords="10,52,118,104" href="https://pass.willbes.net/promotion/index/cate/3035/code/1485" target="_blank" />
-                <area shape="rect" coords="9,115,117,176" href="https://pass.willbes.net/promotion/index/cate/3035/code/1585" target="_blank" alt="1순환" />
-                <area shape="rect" coords="7,184,118,248" href="https://pass.willbes.net/promotion/index/cate/3035/code/1653" target="_blank"/>
-                <area shape="rect" coords="9,256,119,317" href="https://pass.willbes.net/promotion/index/cate/3035/code/1785" target="_blank"/>
-                <area shape="rect" coords="10,324,117,386" href="#none" />
-                <area shape="rect" coords="10,398,117,470" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" />
-            </map>                         
-        </div>
+    <div class="p_re evtContent NGR" id="evtContainer"> 
+        @include('willbes.pc.promotion.2003.3035_cycle_sky')
 
         <div class="evtCtnsBox evtTop"> 
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1862_top.jpg" alt="김동진 법원팀" />   

@@ -247,7 +247,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/m/periodPackage/show/cate/3028/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
 

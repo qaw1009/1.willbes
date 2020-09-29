@@ -62,7 +62,7 @@
         .wb_05_table table {background:#fff; width:90%;margin:0 auto;} 
         .wb_05_table tr {border-bottom:1px solid #000;border-top:1px solid #000;}        
         .wb_05_table tr.st01 {background:#e3e4e5}
-        .wb_05_table tr:hover {background:#ff7b77;}
+        .wb_05_table tr:hover {background:#f4f4f4;}
         .wb_05_table th,
         .wb_05_table td {padding:15px 20px; font-size:16px; font-weight:500;}
         .wb_05_table th {background:#55FCC5; color:#000;border-right:1px solid #000;}
@@ -192,7 +192,7 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_05.jpg" usemap="#Map1773b" title="6월 심화기출 개강 이벤트" border="0">
             <map name="Map1773b" id="Map1773b">
-                <area shape="rect" coords="621,423,863,531" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
+                <area shape="rect" coords="702,395,944,503" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
                 <area shape="rect" coords="209,955,433,1028" href="#careful" />
                 <area shape="rect" coords="702,956,919,1027" href="#careful" />
             </map>
@@ -223,37 +223,43 @@
                             <tr>
                                 <td>형소법 신광은</td>
                                 <td>2021년 1차대비  신광은 심화 형소법</td>
-                                <td>10/5(월)</td>                        
+                                <td>10/12(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171319" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>형법 신광은</td>
+                                <td>2021년 1차대비  신광은 심화(이론) 형법</td>
+                                <td>10/17(토)</td>                        
+                                <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041&subject_idx=1056" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>영어 하승민</td>
                                 <td>2021년 1차대비 하승민 심화 영어</td>
-                                <td>10/19(월)</td>                       
+                                <td>10/26(월)</td>                       
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171168" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>형법 김원욱</td>
                                 <td>2021년 1차대비 김원욱 심화 형법</td>
-                                <td>10/26(월)</td>                      
+                                <td>11/2(월)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171169" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 오태진</td>
                                 <td>2021년 1차대비 오태진 심화 한국사</td>
-                                <td>11/16(월)</td>                      
+                                <td>11/2(월)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171246" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 원유철</td>
                                 <td>2021년 1차대비 원유철 심화 한국사</td>
-                                <td>11/16(월)</td>                        
+                                <td>11/23(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171170" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>경찰학 장정훈</td>
                                 <td>2021년 1차대비 장정훈 심화 경찰학</td>
-                                <td>12/3(목)</td>                      
+                                <td>11/26(목)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/171312" target="_blank">수강신청</a></td>
                             </tr>             
                         </tbody>
@@ -284,17 +290,19 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>2021 경찰시험대비 심화이론+기출 패키지( 史 오태진)</td>
-                                <td>10/5(월)</td>                        
-                                <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/171331" target="_blank">수강신청</a></td>
+                                <td>2021 경찰시험대비 종합반A<br>
+                                형소법,형법(기출),경찰학,영어,한국사</td>
+                                <td>10/12(월)</td>                        
+                                <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
-                                <td>2021 경찰시험대비 심화이론+기출 패키지( 史 원유철)</td>
-                                <td>10/5(월)</td>                       
-                                <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/171323" target="_blank">수강신청</a></td>
+                                <td>2021 경찰시험대비 종합반B<br>
+                                형소법,형법(이론+기출),경찰학,영어,한국사</td>
+                                <td>10/12(월)</td>
+                                <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank">수강신청</a></td>
                             </tr>
                         </tbody>
-                    </table>        
+                    </table>      
                 </div>                                  
             </div>   
         

@@ -6636,14 +6636,15 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Prof-Profile-ssam .ProfBoard:after {content:''; display:block; clear:both}
 
 .willbes-Prof-Profile-ssam .prof-banner01 {
-    margin-top:30px; clear:both
+    margin-top:30px; clear:both;
+    height:136px;
+    overflow: hidden;
 }
 .willbes-Prof-Profile-ssam .prof-banner01 li {
     display: inline;
     float: left;
-    margin-right:6px;
 }
-.willbes-Prof-Profile-ssam .prof-banner01 li:last-child {margin:0}
+.willbes-Prof-Profile-ssam .prof-banner01 .bSlider {width:325px; float:right}
 .willbes-Prof-Profile-ssam .prof-banner01:after {
     content: '';
     display: block;

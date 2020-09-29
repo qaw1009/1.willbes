@@ -257,12 +257,15 @@
                     </div> 
                 </div>
 
-                <ul class="prof-banner01">
-                    <li>
+                <ul class="prof-banner01 bSlider">
+                    <li class="f_left">
                         <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a>
                     </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a>
+                    <li class="f_right bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a></div>
+                        </div>
                     </li>
                 </ul>               
             

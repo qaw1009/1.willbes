@@ -192,7 +192,7 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_05.jpg" usemap="#Map1773b" title="6월 심화기출 개강 이벤트" border="0">
             <map name="Map1773b" id="Map1773b">
-                <area shape="rect" coords="621,423,863,531" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
+                <area shape="rect" coords="702,395,944,503" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
                 <area shape="rect" coords="209,955,433,1028" href="#careful" />
                 <area shape="rect" coords="702,956,919,1027" href="#careful" />
             </map>

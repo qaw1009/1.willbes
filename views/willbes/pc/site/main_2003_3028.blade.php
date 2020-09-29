@@ -25,12 +25,12 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">실전에 더 가깝게, 빠르고 정확한 문제풀이</a></li>
-                    <li><a href="#tab02">기초부터 차근차근, 체계적인 이론학습</a></li>
+                    <li><a href="#tab01">기초부터 차근차근, 체계적인 이론학습</a></li>
+                    <li><a href="#tab02">실전에 더 가깝게, 빠르고 정확한 문제풀이</a></li>
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">
-                       스킬확립<span class="tx-color"> 고득점 문제풀이</span>
+                        점수의 기반을 형성하는<span class="tx-color"> 이론정립</span>
                     </div>                                 
                     <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)
@@ -46,7 +46,7 @@
                 </div>
                 <div id="tab02">
                     <div class="copyTit NSK-Black mt50">
-                        점수의 기반을 형성하는<span class="tx-color"> 이론정립</span> 
+                        스킬확립<span class="tx-color"> 고득점 문제풀이</span> 
                     </div>                                   
                     <ul class="PBcts mt40">
                         @for($i=5; $i<=8; $i++)

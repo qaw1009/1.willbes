@@ -197,17 +197,17 @@
                 <ul class="prof-brief-btn">
                     <li>
                         <a href="https://www.willbes.net" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon01.png" alt="홈페이지"> 홈페이지
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon01.png" alt="홈페이지"> 교수님 홈페이지
                         </a>
                     </li>
                     <li>
                         <a href="https://section.cafe.naver.com" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon02.png" alt="카페"> 카페
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon02.png" alt="카페"> 교수님 카페
                         </a>
                     </li>
                     <li>
                         <a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon03.png" alt="블로그"> 블로그
+                            <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon03.png" alt="블로그"> 교수님 블로그
                         </a>
                     </li>
                     <li>
@@ -225,11 +225,13 @@
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon06.png" alt="학습자료실"> 학습자료실
                         </a>
                     </li>
+                    {{--
                     <li class="sampleLec">
                         <a href="#none">
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/prof_icon07.png" alt="샘플강의"> 샘플강의
                         </a>
                     </li>
+                    --}}
                 </ul>
 
                 <div class="ProfBoard">
@@ -237,8 +239,6 @@
                         <div class="will-Tit NG">공지사항 <a class="f_right" href="#none" onclick="openWin('Layerprof'),openWin('profNotice')"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                         <ul class="List-Table tx-gray">
                             <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a><img src="{{ img_url('cop/icon_new.png') }}" alt="new"><span>2020-09-21</span></li>
-                            <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을</a><span>2020-09-21</span></li>
-                            <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a><span>2020-09-21</span></li>
                             <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을</a><span>2020-09-21</span></li>
                             <li><a href="#none">2018 정채영국어[현대] 문학 종결자 문학 집중강의 (5-6월)</a><span>2020-09-21</span></li>
                             <li><a href="#none">2018 [지방직/서울시] 정채영 국어 [문학집중강의] 137작품을</a><span>2020-09-21</span></li>
@@ -253,18 +253,19 @@
                             <li><a href="#none">2020 (7~9월) 영역별 정리/문제풀이반 (10주)</a></li>
                             <li><a href="#none">[직강생전용 자료다운용 강의] (7~9월) 영역별 정리/문제풀이반</a></li>
                             <li><a href="#none">[직강생전용 자료다운용 강의] (7~9월) [논술] 영역별 예상문제 (9주+종강모고 1회)</a></li>
-                            <li><a href="#none">2020 (7~9월) 영역별 정리/문제풀이반 (10주)</a></li>
-                            <li><a href="#none">[직강생전용 자료다운용 강의] (7~9월) 영역별 정리/문제풀이반</a></li>
                         </ul>
                     </div> 
                 </div>
 
-                <ul class="prof-banner01">
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x110.jpg" alt="배너명"></a>
+                <ul class="prof-banner01 bSlider">
+                    <li class="f_left">
+                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a>
                     </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x110.jpg" alt="배너명"></a>
+                    <li class="f_right bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_325x136.jpg" alt="배너명"></a></div>
+                        </div>
                     </li>
                 </ul>               
             

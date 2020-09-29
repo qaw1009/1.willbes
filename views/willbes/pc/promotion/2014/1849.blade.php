@@ -158,7 +158,7 @@
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
                 </div>
                 <div id="pass" class="infoCheck">
-                    <input type="checkbox" name="y_pkg" value="169144" style="display: none;" checked/>
+                    <input type="checkbox" name="y_pkg" value="172160" style="display: none;" checked/>
                     <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="#infoText">이용안내 확인하기 ↓</a>
                 </div>

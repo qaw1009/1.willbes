@@ -41,7 +41,6 @@
         <div id="naviA">
             <h2 class="NGEB"><img src="/public/img/willbes/m/main/icon_book.png" class="clogo">임용</h2>
             <ul class="NGEB">
-                <li class="ListTit"><h1 class="NGEB">도서구매</h1></li>
                 <li class="ListBox">
                     <div class="List">보강신청</div>
                 </li>

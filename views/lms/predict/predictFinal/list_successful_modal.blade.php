@@ -85,7 +85,6 @@
         // datatable searching
         function datatableSearching() {
             $datatable_modal
-                /*.columns('.searching').flatten().search($search_form.find('input[name="search_value"]').val())*/
                 .column('.searching_take_mock_part').search($modal_regi_form.find('select[name="search_take_mock_part"]').val())
                 .column('.searching_take_area').search($modal_regi_form.find('select[name="search_take_area"]').val())
                 .draw();
@@ -95,7 +94,7 @@
             var predict_idx = "{{$predict_idx}}";
 
             // searching: true 옵션일 경우 검색
-            $modal_regi_form.filter('.searching').on('keyup change ifChanged', 'input, select, input.flat', function() {
+            $modal_regi_form.filter('.searching').on('keyup change ifChanged', 'select', function() {
                 datatableSearching();
             });
 

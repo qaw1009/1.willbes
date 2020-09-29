@@ -260,7 +260,7 @@ html {
 	overflow: auto;
   }
   optgroup {
-	font-weight: bold;
+	font-weight: bold; 
   }
   table {
 	border-spacing: 0;

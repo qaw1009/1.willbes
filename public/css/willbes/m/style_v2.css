@@ -350,9 +350,22 @@ span {
     position: absolute;
     top: 50%;
     right: 5px;
-    margin-top: -23px;
+    margin-top: -23px;   
     */
 }
+
+#Header button.classroom {
+    position: absolute;
+    top: 0;
+    right: 46px;
+    background: url("../../../img/willbes/m/main/icon_cal.png") no-repeat center center;
+    background-size: 100%;
+    width: 46px;
+    height: 52px;
+    border: none;
+    float:right;
+}
+#Header button.classroom span {color:#000}
 #Header button.myacad {
     background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat center center;
     background-size: 100%;
@@ -366,6 +379,8 @@ span {
     margin-top: -23px;
     */
 }
+
+
 #header .logo {
     /*
     position: absolute;
@@ -452,6 +467,10 @@ span {
 
 #Header .sMenuList a:after,
 #Header .subMenuBox ul:after {content:""; display:block; clear:both}
+
+#Header .dday {background: #f1f1f1; text-align: center; font-size:16px; padding:15px 0 }
+#Header .dday span {color:#339900}
+#Header .dday span:last-child {color:#d60000}
 
 #Header .searchBox {position:relative; clear: both; max-width: 720px; margin: 0 auto 10px;}
 #Header .searchBox div {border:2px solid #2364fe; height:50px !important; width:98%; margin:0 auto; background:#fff;
@@ -998,7 +1017,7 @@ body.memBody #Footer {
 .thisMonth .swiper-container-lec .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
 
 /**/
-.sampleView  {height: 360px; width:calc(100% - 40px); margin: 0 auto; overflow: hidden; padding-bottom:60px;}
+.sampleView  {height:360px; width:calc(100% - 20px); margin: 0 auto; overflow: hidden; padding-bottom:60px;}
 .sampleView .swiper-container-view { 
     width: 100%;
     height: 100%;
@@ -1010,6 +1029,7 @@ body.memBody #Footer {
     text-align: left;
     font-size: 16px;
     background:#eee url("../../../img/willbes/m/main/icon_play.png") no-repeat 98% center;
+    background-size: 30px;
     height: calc((100% - 10px) / 4);
     /* Center slide text vertically */
     display: -webkit-box;
@@ -1145,8 +1165,8 @@ body.memBody #Footer {
 /****************윌스토리 서점 : 메인******************/
 
 .wsbook .tx-main {color:#0c9d00}
-.mainTit {font-size:20px; position: relative; height:30px; padding:0 10px}
-.mainTit a {position:absolute; bottom:0; right:10px; display:block; border:1px solid #ccc; color:#000; line-height: 30px; 
+.wsbook .mainTit {font-size:20px; position: relative; height:30px; padding:0 10px}
+.wsbook .mainTit a {position:absolute; bottom:0; right:10px; display:block; border:1px solid #ccc; color:#000; line-height: 30px; 
     padding:0 10px; font-size:12px; z-index: 1;}
 .wsbookList {height:350px; overflow: hidden; position:relative;}
 .wsbookList .swiper-container-nBook{ 
@@ -1261,6 +1281,86 @@ body.memBody #Footer {
 .wsBookViewWrap .lec-info-tab .tabBox img {display:block; width:100%; max-width:680px; height: auto; margin-bottom:20px;}
 
 /****************윌스토리 서점 : 도서 상세보기 end*************************/
+
+
+/****************윌비스 임용 : 메인******************/
+.ssam .tx-main {color:#0c5dc0}
+.ssam .mainTit {font-size:20px; position: relative; height:30px; margin:0 10px;}
+.ssam .mainTit .goBtns {position:absolute; top:0; right:0}
+.ssam .mainTit .goBtns li {display:inline; float:left; margin-left:5px}
+.ssam .mainTit .goBtns li a {display:block; padding:5px 10px; color:#fff; background:#0c5dc0; font-size:12px}
+.ssam .mainTit .goBtns li:last-child a {background:#464646}
+.ssam .mainTit .goBtns ul:after {content:""; display:block; clear:both}
+
+.ssam .replyBox {height:210px; position:relative;}
+.ssam .replyBox .swiper-container-reply { 
+    height:180px;
+    background-color: #fff8e2;
+    border:1px solid #ccc;     
+    padding:0 10px;
+    margin:0 10px;
+    overflow:hidden; 
+} 
+.ssam .replyBox .swiper-slide { 
+    text-align: left; 
+    font-size: 18px;  
+    height: 180px;
+    position: flex;    
+    background: none;
+    padding:10px;
+} 
+.ssam .replyBox .review {color:#3a3a3a; line-height:1.5;}
+.ssam .replyBox .reviewInfo {font-size:14px; margin-bottom:10px; border-bottom:1px solid #ececec; padding-bottom:10px; font-weight: bold;}
+.ssam .replyBox .reviewInfo span {margin:0 10px; color:#ccc}
+.ssam .replyBox .review .title {font-weight: bold; font-size:14px; margin-bottom:10px}
+.ssam .replyBox .review .title img {display:inline; margin-right:10px; width:82px !important; vertical-align: middle}
+.ssam .replyBox .review .reviewTxt {font-size:14px; line-height: 1.7; height:50px; overflow:hidden;}
+.ssam .swiper-container-reply .swiper-pagination {bottom:0 !important;} 
+.ssam .swiper-container-reply .swiper-pagination .swiper-pagination-bullet {width: 12px !important; height: 12px !important;}
+
+.ssam .noticeBox .List-Table li a span  {background-color: #0c5dc0;}
+
+.ssam .reference {text-align:right; color:#666; margin-top:10px}
+.ssam .bestLecBox {margin-top:10px; border-top:1px solid #ccc}
+.ssam .bestLec {position:relative; display:block; float:left; width:33.33333%; height:150px; overflow: hidden;}
+.ssam .bestLec a {position:absolute; display:block; width:100%; height:100%; border-right:1px solid #ccc; border-bottom:1px solid #ccc; box-sizing: border-box; z-index: 2;}
+.ssam .bestLec:first-child a {border-left:1px solid #ccc;}
+.ssam .bestLec .profImg img {position:absolute; top:20px; right:-30px; width:65%; z-index:1;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.2));
+    -moz-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.2));
+    -ms-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.2));
+    -o-filter: drop-shadow(5px 5px 10px rgba(0,0,0,.2));
+    filter: drop-shadow(5px 5px 10px rgba(0,0,0,.2));
+    transform:scale(1); transition: all ease-in-out .2s; 
+}
+.ssam .bestLec .best {width:34px; height: 34px; line-height: 34px; border-radius: 0 17px 17px 17px; background: #0c5dc0; 
+    text-align: center; font-size: 18px;; color:#fff}
+.ssam .lecinfo {position: absolute; top:35px; left:20px; width:90%; z-index: 2; font-size:14px; line-height: 1.5;}
+.ssam .lecinfo li {margin-bottom:15px}
+.ssam .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 20px;}
+.ssam .lecinfo li:nth-of-type(1) span {display: block; font-size:14px}
+.ssam .lecinfo li strong {background: #a9d1d1; color:#262a6a; font-weight: bold; padding:5px 10px}
+.ssam .lecinfo li:last-child {display: block; word-break: keep-all;}
+.ssam .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
+.ssam .bestLecBox:after {content:""; display:block; clear:both}
+
+.ssam .examInfo li {display: inline; float:left; width:25%; margin-bottom:0}
+.ssam .examInfo li a {display:block; text-align:center; font-size: 15px; border-right:1px solid #e4e4e4; letter-spacing: -1px;}
+.ssam .examInfo li img {display:block; width:70%; max-width: 92px; margin:0 auto 10px; }
+.ssam .examInfo li:nth-child(4) a {border:0}
+.ssam .examInfo ul:after {content:""; display:block; clear:both}
+
+.ssam .ssamEtc {border-top:1px solid #cfcfcf; text-align: center;  padding:20px 0}
+.ssam .ssamEtc a {display: inline-block; border-right:2px solid #414141; font-size: 16px; padding:0 15px; letter-spacing: -1px;}
+.ssam .ssamEtc a:last-child {border:0}
+
+.ssam .csCenter {margin-top:0}
+.ssam .csCenter li {width:50%}
+.ssam .csCenter li span {display: block; color:#006cff; font-weight: bold; font-size: 18px;}
+
+/****************윌비스 임용 : 메인 end******************/
+
+
 
 /* Tabs : lineTab 공통 */
 .lineTabs {
@@ -4292,9 +4392,16 @@ body.memBody #Footer {
     .wsbookList .mdBook .swiper-slide {width:50%;}
     .wsbookList .mdBook .swiper-slide:last-child {display:none}
 
-
     .wsBookView .wsBookImg {display:block; width:calc(100% - 20px); text-align: center; margin:0 0 20px}
     .wsBookView .wsBookInfo {display:block; width:calc(100% - 20px); margin:0 10px}
+
+    .ssam .bestLec {height:190px;}
+    .ssam .bestLec .profImg img {top:0; left:0; right:0; width:100%;}
+    .ssam .lecinfo {position:relative; top:0; left:0; margin:0; margin-top:100px; width:100%; padding:10px; background-color:#a9d1d1;}
+    .ssam .lecinfo li {margin-bottom:5px;}
+    .ssam .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 16px;}
+    .ssam .lecinfo li strong {padding:0}
+    .ssam .examInfo li {width:50%; margin-bottom:15px;}
 }
 
 
@@ -4335,6 +4442,14 @@ body.memBody #Footer {
     .wsbookList .swiper-slide .bookimg {width:100%;}
     .wsbookList .mdBook .swiper-slide {width:50%;}
     .wsbookList .mdBook .swiper-slide:last-child {display:none}
+
+    .ssam .bestLec {height:200px;}
+    .ssam .bestLec .profImg img {top:0; right:0; width:90%;}
+    .ssam .lecinfo {position: relative; top:0; left:0; margin:0; margin-top:110px; width:100%; padding:10px; background-color:#a9d1d1;}
+    .ssam .lecinfo li {margin-bottom:5px;}
+    .ssam .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 16px;}
+    .ssam .lecinfo li strong {padding:0}
+    .ssam .csCenter .tel li div.goTel div {margin-left:0} 
 }
 
 /* Calendar */

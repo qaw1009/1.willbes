@@ -9,8 +9,8 @@ var STARPLAYER64_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starp
 var STARPLAYER64_VERSION = "1,5,22,54";
 
 //OSX
-var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/StarPlayerAgent_1.0.4.16.pkg";
-var STARPLAYER_OSX_VERSION = "1,0,4,16";
+var STARPLAYER_OSX_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/StarPlayerAgent_1.0.5.17.pkg";
+var STARPLAYER_OSX_VERSION = "1,0,5,17";
 
 //Agent
 var STARPLAYER_AGENT_SETUP_URL = "https://cabstarplayer.myskcdn.com/starplayer/starplayer_agent_1.2.8.81.exe";

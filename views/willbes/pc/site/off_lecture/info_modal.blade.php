@@ -5,7 +5,7 @@
     {{$data['ProdName']}}
 </div>
 <div class="lecDetailWrap">
-    <ul class="tabWrap tabDepth1 NG">
+    <ul id="off_lecture_info_form" class="tabWrap tabDepth1 NG">
         <li><a id="hover1" href="#ch1">강좌상세정보</a></li>
         <li><a id="hover2" href="#ch2">교재상세정보 (총 {{ count($data['salebooks']) }}권)</a></li>
     </ul>
@@ -117,13 +117,6 @@
         </div>
     </div>
 </div>
-<script src="/public/js/willbes/tabs.js"></script>
-<script>
-    $(document).ready(function() {
-        {{--강사소개 페이지내 온라인강좌/학원강좌가 탭으로 나눠져 있고 acad2 를 block 처리 하고 노출하고 있는 상황.
-         해서 강제로 학원강좌 리스트부분을 노출시키지고 있음 --}}
-        if(location.href.indexOf('professor/show') > 0) {
-            $('#acad2').css('display', '');
-        }
-    });
+<script type="text/javascript">
+    openTab('#off_lecture_info_form');
 </script>

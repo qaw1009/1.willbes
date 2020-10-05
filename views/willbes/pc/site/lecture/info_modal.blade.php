@@ -8,7 +8,7 @@
     {{ $data['lecture']['ProdName'] }}
 </div>
 <div class="lecDetailWrap">
-    <ul class="tabWrap tabDepth1 NG">
+    <ul id="on_lecture_info_form" class="tabWrap tabDepth1 NG">
         <li><a id="hover1" href="#ch1">강좌상세정보</a></li>
         <li><a id="hover2" href="#ch2">교재상세정보 (총 {{ count($data['salebooks']) }}권)</a></li>
     </ul>
@@ -101,7 +101,6 @@
         </div>
     </div>
 </div>
-{{--<script src="/public/js/willbes/tabs.js"></script>--}}
 <script type="text/javascript">
-    openTab('ul.tabWrap');
+    openTab('#on_lecture_info_form');
 </script>

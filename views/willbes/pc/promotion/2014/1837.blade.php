@@ -11,6 +11,19 @@
         overflow: hidden;
         line-height:1.2;
     }
+    .scroll {position: fixed; bottom:40px; left:50%; margin-left:-37px; width:74px; height:37px; text-align:center; 
+        animation:iptimg1 1s infinite;-webkit-animation:iptimg1 1s infinite; z-index:10}
+    @@keyframes iptimg1{
+        from{bottom:40px;}
+        50%{bottom:30px;}
+        to{bottom:40px;}
+    }
+    @@-webkit-keyframes iptimg1{
+        from{bottom:40px;}
+        50%{bottom:30px;}
+        to{bottom:40px;}
+    }
+
     .mainEvt {
         /*float: left;*/
         width: 100%;
@@ -65,13 +78,9 @@
 
     .mainEvt section.page4 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page4_bg.jpg) no-repeat center top}
     .mainEvt section.page5 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page5_bg.jpg) no-repeat center top}
-
-    body.disabled-onepage-scroll .onepage-wrapper  section {
-      min-height: 100%;
-      height: auto;
-    }
     
-    body.disabled-onepage-scroll .main section .page_container, body.disabled-onepage-scroll .main section.page3 .page_container  {
+    body.disabled-onepage-scroll .main section .page_container, 
+    body.disabled-onepage-scroll .main section.page3 .page_container  {
       padding: 20px;
       margin-top: 150px;
       -webkit-box-sizing: border-box;
@@ -79,11 +88,13 @@
       box-sizing: border-box;
     }
     
-    body.disabled-onepage-scroll  section .page_container h1{
+    body.disabled-onepage-scroll section .page_container h1{
       text-align: center;
       font-size: 50px;
     }
-    body.disabled-onepage-scroll section .page_container h2, body.disabled-onepage-scroll section .page_container .credit, body.disabled-onepage-scroll section .page_container .btns{
+    body.disabled-onepage-scroll section .page_container h2, 
+    body.disabled-onepage-scroll section .page_container .credit, 
+    body.disabled-onepage-scroll section .page_container .btns{
       text-align: center;
       width: 100%;
     }
@@ -114,6 +125,7 @@
     }
     </style>
 
+    <div class="scroll"><span><img src="https://static.willbes.net/public/images/promotion/2020/10/1837_scroll.png" /></span></div>
     <div class="wrapper NSK">
         <div class="mainEvt">                
             <section class="page1">
@@ -197,10 +209,11 @@
                 <div class="page_container">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/1837_page6.jpg" />
                 </div>
-            </section>
-        </div>
-        <a class="back" href="http://www.thepetedesign.com/#design">Back to The Pete Design</a>            
+            </section>            
+        </div>                  
     </div>
+
+    
 
     <!-- End Container -->
 

@@ -60,11 +60,12 @@
     .slide p.rightBtn {margin-left:611px}
 
     .mainEvt section.page2 {}
-    .page2 .txt01 {font-size:22px}
-    .page2 .txt02 {font-size:56px; margin-top:30px;}
-    .page2 .tabs {width:600px; margin:20px auto 0}
+    .page2 .txt01 {font-size:18px}
+    .page2 .txt02 {font-size:38px; margin-top:20px;}
+    .page2 .txt03 {font-size:22px; margin-top:30px;}
+    .page2 .tabs {width:600px; margin:40px auto 0}
     .page2 li {display:inline; float:left; width:200px}
-    .page2 li a {display:block; padding:15px 0; background:#ebebeb; color:#aeaeae; font-size:20px}
+    .page2 li a {display:block; padding:10px 0; background:#ebebeb; color:#aeaeae; font-size:20px}
     .page2 li a:hover,
     .page2 li a.active {background:#000; color:#fff;}
     .page2 .tabs:after {content:""; display:block; clear:both}
@@ -73,8 +74,7 @@
 
     .mainEvt section.page3 {}
     .mainEvt section.page3 .slide {height:630px; margin-bottom:100px !important}
-    .page3 .txt01 {font-size:63px}
-    .page3 .txt02 {font-size:100px; margin-bottom:70px} 
+    .page3 .txt01 {font-size:55px; margin-bottom:30px}
 
     .mainEvt section.page4 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page4_bg.jpg) no-repeat center top}
     .mainEvt section.page5 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page5_bg.jpg) no-repeat center top}
@@ -150,8 +150,7 @@
                         고민인 초보 창업자분들은 여기 주목!
                     </div>
                     <div class="txt02 NSK-Black">
-                        1억뷰N잡 도매꾹&도매매<br>
-                        성공사례 7인7색
+                        1억뷰N잡 도매꾹&도매매 성공사례 7인7색
                     </div>
                     <ul class="tabs NSK-Black">
                         <li><a href="#tab1" class="active">7인 7색</a></li>
@@ -167,16 +166,16 @@
                     <div id="tab3" class="youtube">
                         <iframe src="https://www.youtube.com/embed/BsqW9fk1V6M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
+                    <div class="txt03 NSK-Black">
+                        #1억뷰N잡  #스마트스토어  #도매꾹_도매매  #샵플링
+                    </div>
                 </div>
             </section>
             
             <section class="page3">
                 <div class="page_container">
-                    <div class="txt01">
-                        N잡 선배들의
-                    </div>
-                    <div class="txt02 NSK-Black">
-                        리얼한 성공사례
+                    <div class="txt01 NSK-Black">
+                        N잡 선배들의 리얼한 성공사례
                     </div>
                     <div class="slide">
                         <ul id="slidetop2">
@@ -207,7 +206,10 @@
 
             <section class="page6">
                 <div class="page_container">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1837_page6.jpg" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1837_page6.jpg" usemap="#Map1837" border="0" />
+                    <map name="Map1837">
+                        <area shape="rect" coords="267,612,802,693" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2014" alt="회원가입">
+                    </map>
                 </div>
             </section>            
         </div>                  

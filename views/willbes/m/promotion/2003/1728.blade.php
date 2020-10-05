@@ -89,13 +89,14 @@
             <area shape="rect" coords="450,562,618,630" href="https://m.cafe.daum.net/sharkchoi" target="_blank" alt="카페바로가기">
         </map>
     </div>
-
+    {{--
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_03.jpg" alt="응시표 인증하기" usemap="#Map1728B" border="0" >
         <map name="Map1728B">
             <area shape="rect" coords="43,440,678,535" href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#certification" target="_blank" alt="응시표인증하기">
         </map>
     </div>
+    --}}
 
     <div class="evtCtnsBox evt04" >
         <ul class="tab">

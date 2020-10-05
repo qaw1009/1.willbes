@@ -121,7 +121,7 @@
         <div class="sky">
             <ul>          
                 <li><a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png"  title="티패스 추가할인" /></a></li>
-                <li><a href="#certification"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky2.png"  title="수험표 인증 특별할인" /></a></li>
+                {{--<li><a href="#certification"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky2.png"  title="수험표 인증 특별할인" /></a></li>--}}
             </ul>
         </div>
 
@@ -147,7 +147,7 @@
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1728_04.jpg" title="커리큘럼" />
         </div>
-
+        {{--
         <div class="evtCtnsBox evt04s" id="certification">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_04s.jpg" usemap="#Map1728_certification" title="인증하기" border="0" />
             <map name="Map1728_certification" id="Map1728_certification">
@@ -155,7 +155,7 @@
                 <area shape="rect" coords="472,821,649,854" href="#notice" />
             </map>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt05">
             <ul class="tab" id="apply">
             <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/08/1728_tab01_on.png" class="on"  /></a></li>
@@ -205,6 +205,7 @@
                                 &nbsp;&nbsp;- 전자직 : 2020년도 대비 이론 및 문제풀이 + 2021년도 군무원 전자직 대비 신규 개강 전 과정                          
                                 <li>본 T-PASS 내 제공되는 과정 중 신규 개강이 진행되지 않는 경우, 전년도 진행 과정으로 대체 제공될 수 있습니다.</li>
                                 <li>본 T-PASS를 통한 강의 수강 시, 각 과정당 3배수 제한이 적용됩니다.</li>
+                                <li>본 상품의 이용기간은 수강신청 상세 안내화면에 표시된 기간 만큼 제공됩니다.</li>                                
                             </ol>
                         </dd>
 
@@ -250,19 +251,6 @@
                             </ol>
                         </dd>
 
-                        <dt>
-                            <h3>응시표 인증 이벤트</h3>
-                        </dt>
-                        <dd>
-                            <ol>
-                                <li>본 이벤트는 1아이디당 1회만 참여 가능합니다. (*마감일에는 오후 6시 이전 인증건만 정상 인증처리 됩니다.)</li>
-                                <li>인증 완료 처리는 신청 후 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>
-                                <li>본인의 이름, 응시직렬, 수험번호 등이 명확하게 기재된 응시표의 캡쳐/사진을 통해서만 인증 가능합니다.</li>
-                                <li>본 이벤트는 이벤트 참여자가 본인의 명의로 응시한 시험의 응시표에 한합니다.</li>
-                                <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내 판매중인 T-PASS 상품에만 적용 가능합니다.</li>
-                            </ol>
-                        </dd>
-                        
                     </dl>
                 </div>
             </div>

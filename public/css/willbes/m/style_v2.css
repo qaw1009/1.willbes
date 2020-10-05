@@ -4117,6 +4117,12 @@ body.memBody #Footer {
 .profLecTab .tabWrap.two li { width:50% !important;}
 .profLecTab ul:after {content:""; display:block; clear:both}
 
+.lecListTabs .tabWrap.btntab {margin:20px auto 0; text-align: center;}
+.lecListTabs .tabWrap.btntab li {display:inline;}
+.lecListTabs .tabWrap.btntab a {display:inline-block; border:1px solid #1a8ccc; border-radius: 20px; color:#1a8ccc; padding:10px 20px;}
+.lecListTabs .tabWrap.btntab a.on {background:#1a8ccc; color:#fff}
+.lecListTabs .tabWrap.btntab:after {content: ""; display:block; clear:both}
+
 /* subContainer : Prof : willbes-Layer-ProfileBox */
 .willbes-Layer-ProfileBox {
     display: none;

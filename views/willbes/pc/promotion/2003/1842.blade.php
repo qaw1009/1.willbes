@@ -79,7 +79,7 @@
                     @endphp
                     {{ $format_date }}
                 </span>
-                이후 수강기간 혜택이 축소됩니다!
+                마감됩니다!
             </p>
         </div>
     </div>

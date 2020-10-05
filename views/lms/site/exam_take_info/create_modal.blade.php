@@ -109,6 +109,12 @@
                 </div>
             @endif
 
+            <div class="form-group form-group-sm item">
+                <div class="col-md-12 form-inline text-center">
+                    <b>* 동일 데이터 (학년도 + 정시/추시 + 과목 + 지역) 는 <font color="red">중복으로 등록</font> 되지 않습니다.<font color="red"></b>
+                </div>
+            </div>
+
             <script type="text/javascript">
                 var $regi_form = $('#regi_form');
                 $(document).ready(function() {

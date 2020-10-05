@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -23,7 +19,6 @@
         .wb_cts02 {background:#fff;}
         .wb_cts03 {background:#fff; padding-bottom:150px}
         .wb_last {background:#233758;}
-
 
         .quick {position:fixed; right:10px; top:200px; z-index:10;}
         .quick li{padding-bottom:5px;}

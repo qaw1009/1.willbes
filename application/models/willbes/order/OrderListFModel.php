@@ -378,4 +378,49 @@ class OrderListFModel extends BaseOrderFModel
 
         return $query->result_array();
     }
+
+    /**
+     * 결제완료건수 많은 순서로 단강좌 상품정보 조회
+     * @param int $site_code [사이트코드]
+     * @param int $limit_cnt [조회 상품수]
+     * @param string $complete_sdatm [조회 결제시작일시]
+     * @param string $complete_edatm [조회 결제종료일시]
+     * @return mixed
+     */
+    public function getTopOrderOnLectureData($site_code, $limit_cnt = 3, $complete_sdatm = '', $complete_edatm = '')
+    {
+        // 결제완료일시 디폴트 설정 (현재 ~ 1일전)
+        if (empty($complete_sdatm) === true || empty($complete_edatm) === true) {
+            $complete_sdatm = date('Y-m-d H:i:s', strtotime('-1 day'));
+            $complete_edatm = date('Y-m-d H:i:s');
+        }
+
+        $vw_on_lecture = 'vw_product_on_lecture';   // 단강좌 뷰 테이블명
+        $column = 'TA.ProdCode, VP.ProdName, VP.CateCode, VP.ProdCateName, VP.ProfNickNameAppellation, VP.CourseName
+            , json_value(VP.ProfReferData, "$.prof_index_img") as ProfImgPath';
+        $from = '
+            from (
+                select OP.ProdCode, count(0) as PayProdCnt
+                from ' . $this->_table['order'] . ' as O
+                    inner join ' . $this->_table['order_product'] . ' as OP
+                        on O.OrderIdx = OP.OrderIdx
+                    inner join ' . $this->_table['product_lecture'] . ' as PL
+                        on OP.ProdCode = PL.ProdCode
+                where O.SiteCode = ?
+                    and O.CompleteDatm between ? and ?
+                    and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '"
+                group by OP.ProdCode	
+                order by PayProdCnt desc, OP.ProdCode desc
+                limit ' . $limit_cnt . '
+            ) as TA
+                inner join ' . $vw_on_lecture . ' as VP
+                    on TA.ProdCode = VP.ProdCode	
+            where VP.SiteCode = ?           
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $complete_sdatm, $complete_edatm, $site_code]);
+
+        return $query->result_array();
+    }
 }

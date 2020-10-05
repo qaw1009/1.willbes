@@ -92,7 +92,7 @@
                                 </ul>
                             </div>
                             <div class="bookBoxWrap">
-                                <ul class="tabWrap tabDepth2">
+                                <ul id="off_lecture_book_info" class="tabWrap tabDepth2">
                                     <li><a href="#info1{{ $idx }}" class="on">교재소개</a></li>
                                     <li><a href="#info2{{ $idx }}">교재목차</a></li>
                                 </ul>
@@ -119,4 +119,5 @@
 </div>
 <script type="text/javascript">
     openTab('#off_lecture_info_form');
+    openTab('#off_lecture_book_info');
 </script>

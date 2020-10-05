@@ -40,7 +40,7 @@
             <li><a href="#leclist1" class="on">패키지</a><span class="row-line">|</span></li>
             <li><a href="#leclist2">단과</a><span class="row-line">|</span></li>
             <li><a href="#leclist3">특강</a><span class="row-line">|</span></li>
-            <li><a href="#leclist3">수강생전용</a></li>
+            <li><a href="#leclist4">수강생전용</a></li>
         </ul>        
 
         <div class="tabBox lineBox lecListBox">
@@ -48,13 +48,13 @@
             <div id="leclist1" class="tabContent">
                 <div class="profLecTab">
                     <ul class="tabWrap two">
-                        <li><a href="#onList1" class="on">온라인강좌</a></li>
-                        <li><a href="#onList2">학원강좌</a></li>
+                        <li><a href="#pkgList1" class="on">온라인강좌</a></li>
+                        <li><a href="#pkgList2">학원강좌</a></li>
                     </ul>
                 </div>
 
                 {{--온라인강좌--}}
-                <div class="lineTabs lecListTabs c_both pd-zero" id="onList1">
+                <div class="lineTabs lecListTabs c_both pd-zero" id="pkgList1">
                     <ul class="tabWrap btntab">
                         <li><a href="#pkg01" class="on">추천패키지</a></li>
                         <li><a href="#pkg02">선택패키지</a></li>
@@ -159,8 +159,8 @@
                 </div>
 
                 {{--학원강좌 --}} 
-                <div class="lineTabs lecListTabs c_both pd-zero" id="onList2">  
-                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                <div class="lineTabs lecListTabs c_both pd-zero" id="pkgList2">  
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
                             <tr>
                                 <td class="w-data tx-left">
@@ -168,12 +168,12 @@
                                         <dt>노량진<span class="row-line">|</span>기본이론
                                     </dl>
                                     <div class="w-tit">
-                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                        <a href="lecture_offline_pkg2">2020년 (1~11월) 민정선 유아 연간 패키지</a>
                                     </div>
                                     <dl class="w-info tx-gray">
-                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓50%)</dt>
+                                        <dt>개강월 <span class="tx-blue">2020년 9월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강형태 <span class="tx-blue">실강+인강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
+                                        <dt><span class="tx-blue">1,110,000원</span>(↓35%)</dt>
                                     </dl>
                                 </td>
                             </tr>
@@ -208,64 +208,81 @@
                                 </td>
                             </tr>                    
                         </tbody>
-                    </table>               
-
+                    </table>         
                 </div>              
             </div>
 
-            {{--학원수강신청--}}
+            {{--단과--}}
             <div id="leclist2" class="tabContent">
                 <div class="profLecTab">
                     <ul class="tabWrap two">
-                        <li><a href="#offList1" class="on">단과</a></li>
-                        <li><a href="#offList2">종합반</a></li>
+                        <li><a href="#oneList1" class="on">온라인강좌</a></li>
+                        <li><a href="#oneList2">학원강좌</a></li>
                     </ul>
                 </div>
 
-                {{--단과--}}
-                <div class="lineTabs lecListTabs c_both pd-zero" id="offList1">
+                {{--온라인--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="oneList1">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
                             <tr>
                                 <td class="w-data tx-left">
                                     <div class="oneBox">
                                         <dl class="w-info">
-                                            <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
                                         </dl>
                                         <div class="w-tit tx-blue">
-                                            <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
                                         </div>
-                                        <dl class="w-info tx-gray">                                
-                                            <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
                                         </dl>
-                                        <div class="w-buy">       
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
                                             <ul class="three">
                                                 <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
-                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
-                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
-                                            </ul> 
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                     <div class="oneBox">
                                         <dl class="w-info">
-                                            <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
                                         </dl>
                                         <div class="w-tit tx-blue">
-                                            <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
                                         </div>
-                                        <dl class="w-info tx-gray">                                
-                                            <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
                                         </dl>
-                                        <div class="w-buy">       
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
                                             <ul class="three">
                                                 <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
-                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
-                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
-                                            </ul> 
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </td>                        
@@ -274,38 +291,56 @@
                     </table>                    
                 </div>  
                 
-                {{--종합반--}}
-                <div class="lineTabs lecListTabs c_both pd-zero" id="offList2">
+                {{--학원--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="oneList2">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
                             <tr>
                                 <td class="w-data tx-left">
-                                    <dl class="w-info">
-                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
-                                    </dl>
-                                    <div class="w-tit">
-                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>노량진<span class="row-line">|</span>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">22020 (9~10월) 실전 모의고사반 (7주)휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">11/15 ~ 12/04</span> 월화수목금 (15회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">라이브</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">318,000원</span>(↓0%)</dt>                            
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
                                     </div>
-                                    <dl class="w-info tx-gray">
-                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓50%)</dt>
-                                    </dl>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="w-data tx-left">
-                                    <dl class="w-info">
-                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
-                                    </dl>
-                                    <div class="w-tit">
-                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>노량진<span class="row-line">|</span>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">22020 (9~10월) 실전 모의고사반 (7주)휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">11/15 ~ 12/04</span> 월화수목금 (15회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">라이브</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">318,000원</span>(↓0%)</dt>                            
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
                                     </div>
-                                    <dl class="w-info tx-gray">
-                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
-                                    </dl>
                                 </td>
                             </tr>
                             <tr>
@@ -328,56 +363,228 @@
                 </div> 
             </div>
 
-            {{--무료수강신청--}}
+            {{--특강--}}
             <div id="leclist3" class="tabContent">
-                <div class="lineTabs lecListTabs c_both pd-zero">
+                <div class="profLecTab">
+                    <ul class="tabWrap two">
+                        <li><a href="#specialList1" class="on">온라인강좌</a></li>
+                        <li><a href="#specialList2">학원강좌</a></li>
+                    </ul>
+                </div>
+
+                {{--온라인--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="specialList1">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
                             <tr>
                                 <td class="w-data tx-left">
-                                    <div>
+                                    <div class="oneBox">
                                         <dl class="w-info">
-                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                            <dt>특강반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
                                         </dl>
                                         <div class="w-tit tx-blue">
-                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
                                         </div>
                                         <dl class="w-info tx-gray">
-                                            <dt>학원실강의 : 2020년 1월</dt><br>
-                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
                                         </dl>
-                                        <div class="w-buy">       
-                                            <ul class="two">
-                                                <li class="btn_blue"><a href="#none">바로결제</a></li>
-                                            </ul> 
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div>
+                                    <div class="oneBox">
                                         <dl class="w-info">
-                                            <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                            <dt>특강반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
                                         </dl>
                                         <div class="w-tit tx-blue">
-                                            2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
                                         </div>
                                         <dl class="w-info tx-gray">
-                                            <dt>학원실강의 : 2020년 1월</dt><br>
-                                            <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
+                                        </dl>
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>                        
+                            </tr>                
+                        </tbody>
+                    </table>                    
+                </div>  
+                
+                {{--학원--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="specialList2">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>노량진<span class="row-line">|</span>특강반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">11/15 ~ 12/04</span> 월화수목금 (15회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">라이브</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">318,000원</span>(↓0%)</dt>                            
                                         </dl>
                                         <div class="w-buy">       
-                                            <ul class="two">
-                                                <li class="btn_blue"><a href="#none">바로결제</a></li>
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
                                             </ul> 
                                         </div>
                                     </div>
                                 </td>
-                            </tr>                   
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>노량진<span class="row-line">|</span>특강반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선</dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)휴</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">                                
+                                            <dt>개강일~종강일 : <span class="tx-blue">11/15 ~ 12/04</span> 월화수목금 (15회차)</dt><br>       
+                                            <dt>수강형태 : <span class="tx-blue">라이브</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
+                                            <dt><span class="tx-blue">318,000원</span>(↓0%)</dt>                            
+                                        </dl>
+                                        <div class="w-buy">       
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                    </dl>
+                                    <div class="w-tit">
+                                        <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">
+                                        <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
+                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                    </dl>
+                                </td>
+                            </tr>                    
                         </tbody>
                     </table>
-                </div>
+                </div> 
+            </div>
+
+            {{--수강생전용--}}
+            <div id="leclist4" class="tabContent">
+                {{--온라인--}}
+                <div class="lineTabs lecListTabs c_both pd-zero" id="offList1">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
+                                        </dl>
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
+                                        </dl>
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="three">
+                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>                        
+                            </tr>                
+                        </tbody>
+                    </table>                    
+                </div>  
             </div>
         </div>
     </div>
@@ -412,17 +619,14 @@
             <div class="Layer-Cont">
                 <div class="Layer-SubTit NG">· 약력</div>
                 <div class="Layer-Txt tx-gray">
-                    - (현) 윌비스한림법학원 경제학/재정학/국제경제학 전임<br>
-                    - 정운찬-김영식 공저 거시경제이론 개정작업 참여<br>
-                    - 제44회 행정고등고시 재경직 합격<br>
-                    - 제16회 입법고등고시 최연소 및 전체수석합격 <br>
+                    - 現) 윌비스 임용고시학원 유아임용 대표 교수<br>
+                    - 現) 교육사랑 교컴 [아동생활지도사] 강의<br>
+                    - 現) 배화여자대학교 평생교육원 아동학과 강사<br>
+                    - 중앙대학교 유아교육과 박사 과정 <br>
                 </div>
                 <div class="Layer-SubTit NG">· 저서</div>
                 <div class="Layer-Txt tx-gray">
-                    - 다이제스트 시리즈(경제학/재정학/국제경제학)(도서출판 윌비스)<br>
-                    - Trinity of Macroeconomics(ver 3.0)(도서출판 윌비스)<br>
-                    - Trinity of Microeconomics(ver 3.0)(도서출판 윌비스)<br>
-                    - 2013 연습책(경제학/재정학/국제경제학)(도서출판 윌비스)<br>
+                    - 2020 민쌤의 유아임용 웹지도
                 </div>
             </div>
         </div>

@@ -4108,7 +4108,7 @@ body.memBody #Footer {
 .profAreaView .profMenu li:nth-child(1) a {padding:0; border:0}
 .profAreaView .profMenu ul:after {content: ""; display:block; clear:both}
 
-.profLecTab {text-align:center; background:#1a8ccc; color:#fff; position: relative; height: 50px;}
+.profLecTab {text-align:center; background:#1a8ccc; color:#fff; position: relative; height: 50px; overflow: hidden;}
 .profLecTab ul {position:absolute; top:0px; z-index:2; margin:15px 20px 0; width:calc(100% - 40px);}
 .profLecTab .tabWrap li {display:inline; float:left; width:33.333333% !important; border-right:1px solid #46a8df;}
 .profLecTab .tabWrap li a {display:block; height:35px; line-height:35px;  width: 100% !important;}

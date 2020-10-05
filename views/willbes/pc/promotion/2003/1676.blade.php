@@ -101,7 +101,7 @@
                 </ul>
             </div>
         </div>        
-             
+        {{--        
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
@@ -109,7 +109,7 @@
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>             
         </div>
-           
+        --}}          
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            
         </div>
@@ -149,8 +149,7 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                 
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_september.jpg" /></li>
+                <ul id="slidesImg4">                
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_october.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_november.jpg" /></li>
                 </ul>

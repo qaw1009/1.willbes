@@ -152,7 +152,7 @@
 
         {{-- 방문결제 장바구니 담기 --}}
         function eachProductCart(val,_this, act_type) {
-            var url = frontUrl('/cart/store');
+            var url = frontPassUrl('/cart/store');
             var data = $.extend(arrToJson($regi_visit_form.find('input[type="hidden"]').serializeArray()), {
                 'prod_code[]' : val
             });

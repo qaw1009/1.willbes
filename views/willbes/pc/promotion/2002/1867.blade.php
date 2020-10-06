@@ -58,7 +58,7 @@
         
         .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
         .wb_ctsInfo div {
-            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
+            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.25;
             font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
         }
         .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#d4d4d4;} 

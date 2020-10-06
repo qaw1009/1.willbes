@@ -103,7 +103,11 @@
                                         @endif
                                         <td class="w-file on tx-blue">
                                             @if($row['PaperType'] == 'I')
-                                                <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}', '{{ $row['IsOldData'] }}')">[오답노트]</a>
+                                                @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y')
+                                                    <a href="javascript:popwin('{{ $row['ProdCode'] }}', '2', '{{ $row['MrIdx'] }}', '{{ (($row['TCNT'] != null) ? $row['TCNT'] : '0') }}', '{{ $row['IsOldData'] }}')">[오답노트]</a>
+                                                @else
+                                                    <span class="w-report">-</span>
+                                                @endif
                                             @else
                                                 <span class="tx-black">미제공</span>
                                             @endif

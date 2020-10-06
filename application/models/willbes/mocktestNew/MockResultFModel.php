@@ -312,7 +312,7 @@ class MockResultFModel extends WB_Model
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
                     INNER JOIN {$this->_table['product_subject']} AS d ON c.SubjectIdx = d.SubjectIdx
-                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx AND e.IsStatus = 'Y'
                     WHERE a.ProdCode = '{$prod_code}' AND c.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                 ) AS A
                 GROUP BY A.MpIdx
@@ -340,7 +340,7 @@ class MockResultFModel extends WB_Model
                     ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt
                     FROM {$this->_table['mock_paper']} AS MP
                     JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
-                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx 
+                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
                     AND PM.ProdCode = '{$prod_code}'
                     AND PM.IsStatus = 'Y'
                     GROUP BY MQ.MqIdx

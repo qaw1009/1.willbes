@@ -121,49 +121,31 @@
             </div>
         </div>
 
-        <div class="Section Section4 mt80">
-            <div class="widthAuto">
-                <div class="widthAuto smallTit NSK-Black">
-                    <p><span>윌비스 임용 <strong>실시간 인기강의 TOP3</strong></span></p>
+        @if(empty($data['top_order_lecture']) === false)
+            <div class="Section Section4 mt80">
+                <div class="widthAuto">
+                    <div class="widthAuto smallTit NSK-Black">
+                        <p><span>윌비스 임용 <strong>실시간 인기강의 TOP3</strong></span></p>
+                    </div>
+                    <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
+                    <ul class="bestLecBox">
+                        @foreach($data['top_order_lecture'] as $key => $row)
+                            <li class="bestLec">
+                                <a href="{{ site_url('/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode']) }}">
+                                    <ul class="lecinfo">
+                                        <li class="NSK-Black"><span class="NSK">{{ $row['ProdCateName'] }}</span>{{ $row['ProfNickNameAppellation'] }}</li>
+                                        <li><strong>{{ $row['CourseName'] }}</strong></li>
+                                        <li><span>{{ $row['ProdName'] }}</span></li>
+                                    </ul>
+                                </a>
+                                <div class="profImg"><img src="{{ $row['ProfImgPath'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div>
+                                <div class="best NSK-Black">{{ $key + 1 }}</div>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-                <ul class="bestLecBox">
-                    <li class="bestLec">
-                        <a href="#none">
-                            <ul class="lecinfo">
-                                <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
-                                <li><strong>이론반</strong></li>
-                                <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
-                            </ul>
-                        </a>
-                        <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>
-                        <div class="best NSK-Black">1</div>
-                    </li>
-                    <li class="bestLec">
-                        <a href="#none">
-                            <ul class="lecinfo">
-                                <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
-                                <li><strong>이론반</strong></li>
-                                <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
-                            </ul>
-                        </a>
-                        <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>
-                        <div class="best NSK-Black">2</div>
-                    </li>
-                    <li class="bestLec">
-                        <a href="#none">
-                            <ul class="lecinfo">
-                                <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
-                                <li><strong>이론반</strong></li>
-                                <li><span>2020 (7~9월) 영역별 정리/문제풀이반 (10주)</span></li>
-                            </ul>
-                        </a>
-                        <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>
-                        <div class="best NSK-Black">3</div>
-                    </li>
-                </ul>
             </div>
-        </div>
+        @endif
 
         <div class="Section Section5 mt80">
             <div class="widthAuto">

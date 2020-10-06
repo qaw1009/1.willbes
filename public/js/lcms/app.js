@@ -87,8 +87,8 @@ function init_sidebar() {
                 $SIDEBAR_MENU.find('li ul').slideUp();
             } else {
                 if ($BODY.is('.nav-sm')) {
-                    $SIDEBAR_MENU.find("li").removeClass("active active-sm");
-                    $SIDEBAR_MENU.find("li ul").slideUp();
+                    $SIDEBAR_MENU.find('li').removeClass('active active-sm');
+                    $SIDEBAR_MENU.find('li ul').slideUp();
                 }
             }
             $li.addClass('active');
@@ -158,10 +158,6 @@ function init_sidebar() {
                 clickScrolling : true,
                 autoHide : 'leave',
                 autoHideDelay : 400
-            },
-            overflowBehavior : {
-                x : 's',
-                y : 's'
             }
         });
 

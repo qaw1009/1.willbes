@@ -7,7 +7,7 @@
         .evtCtnsBox img {width:100%; max-width:720px;}
 
         .evtTop {position:relative; }
-        .evtTop .txt01 {padding:10px 0; font-size:20px; background:#f4f4f4}
+        .txt01 {padding:10px 0; font-size:18px}
         .slide_con {height:auto; max-height:700px; overflow:hidden}
         .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0;}     
         .slide_con .bx-wrapper .bx-pager {        
@@ -36,6 +36,11 @@
         .slide_con p.leftBtn {left:10px}
         .slide_con p.rightBtn {right:10px}
 
+        .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+        .embed-container iframe, 
+        .embed-container object, 
+        .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
         /* 폰 가로, 태블릿 세로*/
         @@media only all and (min-width: 320px)  {        
             .slide_con p {margin-top:-15px; width:20px;}
@@ -44,8 +49,7 @@
         /* 태블릿 세로 */
         @@media only all and (min-width: 768px) {
             .slide_con p {margin-top:-35px; width:47px;}       
-        }
-        
+        }        
 
         /************************************************************/
     </style>
@@ -63,11 +67,24 @@
                 <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2020/10/1837_arrowL2.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2020/10//1837_arrowR2.png"></a></p>
             </div> 
-            <div class="NSK-Black txt01">성공스토리 with 1억뷰 N잡</div>
+            {{--<div class="NSK-Black txt01">성공스토리 with 1억뷰 N잡</div>--}}
         </div> 
         
         <div class="evtCtnsBox mt50">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_05.jpg" alt="리얼한 성공사례" >     
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_05_01.jpg" alt="리얼한 성공사례" >
+            <div class='embed-container'>
+                <iframe src='https://www.youtube.com/embed/tynb1Lva540?rel=0' frameborder='0' allowfullscreen></iframe>
+            </div>
+            <div class='embed-container mt20'>
+                <iframe src='https://www.youtube.com/embed/C-HvQpui8xI?rel=0' frameborder='0' allowfullscreen></iframe>
+            </div>
+            <div class='embed-container mt20'>
+                <iframe src='https://www.youtube.com/embed/BsqW9fk1V6M?rel=0' frameborder='0' allowfullscreen></iframe>
+            </div>
+            <div class="txt01 NSK-Black mb100">
+                #1억뷰N잡  #스마트스토어  #도매꾹_도매매  #샵플링
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_05_02.jpg" alt="리얼한 성공사례" >
         </div>
 
         <div class="evtCtnsBox">
@@ -90,7 +107,7 @@
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 auto: true, 
                 speed: 500, 
-                pause: 4000, 
+                pause: 10000, 
                 mode:'fade', 
                 autoControls: false, 
                 controls:false,

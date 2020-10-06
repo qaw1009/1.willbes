@@ -227,7 +227,7 @@
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto: true, 
                 speed: 500, 
-                pause: 4000, 
+                pause: 150000, 
                 mode:'fade', 
                 autoControls: false, 
                 pager:false,
@@ -247,7 +247,7 @@
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto: true, 
                 speed: 500, 
-                pause: 4000, 
+                pause: 20000, 
                 mode:'fade', 
                 autoControls: false, 
                 pager:true,

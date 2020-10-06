@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -508,6 +508,7 @@ class Home extends \app\controllers\FrontController
         $data['notice'] = $this->_boardNotice(7, $s_cate_code);
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $s_cate_code);
         $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
+        $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3, true);
         $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
 
         return $data;

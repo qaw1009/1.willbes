@@ -69,16 +69,10 @@
                 </div>
             </div>
             <div class="form-group form-group-sm item">
-                <label class="control-label col-md-2" for="CompetitionRate">경쟁률<span class="required">*</span></label>
-                <div class="col-md-4 form-inline">
-                    <input type="text" id="CompetitionRate" name="CompetitionRate" maxlength="30" value="{{$data['CompetitionRate']}}" title="경쟁률"  class="form-control" required="required" style="width: 150px">%
-                </div>
                 <label class="control-label col-md-2" for="PassLine">합격선<span class="required">*</span></label>
                 <div class="col-md-4">
                     <input type="text" id="PassLine" name="PassLine" maxlength="30" value="{{$data['PassLine']}}" title="합격선"  class="form-control" required="required" style="width: 150px">
                 </div>
-            </div>
-            <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span></label>
                 <div class="col-md-4">
                     <input type="radio" id="IsUse_Y" name="IsUse" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="IsUse_Y" class="input-label">사용</label>

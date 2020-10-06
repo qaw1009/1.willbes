@@ -1825,8 +1825,76 @@ body.memBody #Footer {
     font-size: 14px;
     line-height: 24px;
     padding: 20px;
+    color:#ccc;
+}
+.willbes-WriteBox textarea:focus {color:#333}
+
+.AllchkBox .chkBox-Agree {
+    background: url("/public/img/willbes/login/icon_check.png") no-repeat 0 0;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    margin-left: 5px;
+  }
+.AllchkBox .chkBox-Agree.checked {
+    background: url("/public/img/willbes/login/icon_check.png") no-repeat 0 -44px;
+}
+.AllchkBox .chkBox-Agree input[type=checkbox] {
+    opacity: 0;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
 }
 
+
+.agree-All-Tit {
+    font-size: 14px;
+    font-weight: 600;
+    color: #707070;
+    border-top:1px solid #e2e2e2;
+    border-bottom:1px solid #e2e2e2;
+    padding:10px 0;
+    margin-bottom:10px;
+}
+.agree-Chk .agree-Tit {
+    position: relative;
+    font-size: 14px;
+    color: #707070;
+}
+.agree-Chk .agree-Tit a {
+    display: block;
+}
+.agree-Chk .agree-Tit a .arrow {
+    vertical-align: baseline;
+    margin-left: 15px;
+    font-size: 12px;
+}
+.agree-Chk .agree-Txt {
+    display: none;
+    margin-top:10px;
+    height: 150px;
+    line-height: 1.5;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+.agree-Chk .agree-Txt li {margin-bottom:10px}
+
+
+.agree-Chk .agree-Tit a .v_arrow {
+    background:url("/public/img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
+    display: inline-block;
+    width: 9px;
+    height: 6px;
+    margin: 10px 15px;
+    text-indent: -9999px;
+    vertical-align: middle;
+}
+.agree-Chk .agree-Tit.hover a .v_arrow {
+    background: url("/public/img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
+}
 /* btn : 공통 */
 .btn_white {
     background: #fff;

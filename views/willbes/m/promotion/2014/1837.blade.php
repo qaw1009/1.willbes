@@ -115,7 +115,7 @@
                 mode:'fade', 
                 autoControls: false, 
                 controls:false,
-                pager:true,
+                pager:false,
                 onSliderLoad: function(){
                     $(".bSlider").css("visibility", "visible").animate({opacity:1});
                 }

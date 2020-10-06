@@ -523,3 +523,25 @@ $(document).ready(function(){
         }, 150);
     });
 });
+
+// 임용 합격수기 동의 Script
+$(function() {
+    $('.willbes-WriteBox .agree-Chk .agree-Tit').click(function() {
+
+        $('.willbes-WriteBox .agree-Chk .agree-Tit').removeClass('hover');
+        $('.arrow').text('▼');
+        
+        $btn_arrow = $(this).parents('.chk').find('.arrow');
+
+        if ($(this).next().is(':visible')) {
+            $(this).next().hide();
+            $btn_arrow.text('▼');
+            $(this).removeClass('hover');
+        } else {
+            $('.willbes-WriteBox .agree-Chk .agree-Txt').hide();
+            $(this).next().show();
+            $btn_arrow.text('▲');
+            $(this).addClass('hover');
+        }   
+    });
+});

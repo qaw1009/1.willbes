@@ -12,11 +12,9 @@
             <ul>
                 @foreach($data['study_comment'] as $row)
                     <li>
-                        <a href="#none">
-                            <div class="reviewInfo">{{ $row['SubjectName'] }} <span>|</span> {{ $row['ProfName'] }} <span>|</span> {{ $row['ProdName'] }}</div>
-                            <div class="title"><img src="{{ img_url("sub/star" . $row['LecScore'] . ".gif") }}"/> {{ $row['Title'] }} <span class="f_right">{{ hpSubString($row['RegName'],0,2,'*') }}</span></div>
-                            <div class="reviewTxt">{!! $row['Content'] !!}</div>
-                        </a>
+                        <div class="reviewInfo">{{ $row['SubjectName'] }} <span>|</span> {{ $row['ProfName'] }} <span>|</span> {{ $row['ProdName'] }}</div>
+                        <div class="title"><img src="{{ img_url("sub/star" . $row['LecScore'] . ".gif") }}"/> {{ $row['Title'] }} <span class="f_right">{{ hpSubString($row['RegName'],0,2,'*') }}</span></div>
+                        <div class="reviewTxt">{!! $row['Content'] !!}</div>
                     </li>
                 @endforeach
             </ul>

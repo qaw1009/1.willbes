@@ -28,7 +28,11 @@
                 @if($__cfg['SiteGroupCode'] == '1002')
                     {{-- 공무원 온라인 사이트일 경우만 적용 --}}
                     <img src="{{ img_url('sub/mocktest_gosi.jpg') }}" alt="공무원 통합모의고사">
-                @endif    
+                @endif  
+                @if($__cfg['SiteGroupCode'] == '1003')
+                    {{-- 고등고시 온라인 사이트일 경우만 적용 --}}
+                    <img src="https://static.willbes.net/public/images/promotion/sub/3096_201006.jpg" alt="모의고사">
+                @endif   
                 </div>
 
             </div>

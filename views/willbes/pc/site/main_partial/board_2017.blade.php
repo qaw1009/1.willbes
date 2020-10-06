@@ -33,7 +33,8 @@
                 @else
                 @foreach($data['lecture_update_info'] as $row)
                 <li>
-                    <span>{{ $row['SubjectName'] }}</span>
+                    <span>{{ $row['ProdName'] }}</span>
+                    @if(date('Y-m-d') == $row['unit_regdate'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                 </li>
                 @endforeach
                 @endif

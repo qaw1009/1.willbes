@@ -132,11 +132,13 @@
                 {{-- 교수 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
-                    @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&';
-                        $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name);
-                    @endphp
-                    <a class="profBox" href="{{ front_url($show_url) }}">
+                    {{-- 교수상세 페이지 URL --}}
+                    @if($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true)
+                        @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&'; @endphp
+                    @else
+                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
+                    @endif
+                    <a class="profBox" href="{{ front_url($show_url . 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
                         @if(empty($row['ProfEventData']) === false)
                             <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
                         @endif

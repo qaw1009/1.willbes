@@ -72,5 +72,61 @@ class UpdateLectureInfo extends \app\controllers\FrontController
         ]);
     }
 
+    public function popupIndex(){
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        // 과목 조회
+        $arr_base['subject'] = $this->baseProductFModel->listSubject($this->_site_code, null);
+        //교수 조회
+        $arr_base['professor'] = $this->professorFModel->listProfessor(false, ['EQ' => ['PF.SiteCode' => $this->_site_code]],null,null,['PF.ProfNickName' => 'ASC']);
+
+        $this->load->view('support/popup_update_lecture', [
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base,
+        ]);
+    }
+
+    /**
+     * ajax list
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $arr_base['search_subject'] = element('search_subject',$arr_input);
+        $arr_base['search_prof'] = element('search_prof',$arr_input);
+        $arr_base['search_value'] = element('search_value',$arr_input);
+
+        $arr_condition = [
+            'EQ' => [
+                'p.SiteCode' => $this->_site_code,
+                'p.ProdTypeCcd' => '636001',
+                'pl.LearnPatternCcd' => '615001',
+                'pf.ProfIdx' => $arr_base['search_prof'],
+                'pl.SubjectIdx' => $arr_base['search_subject'],
+            ],
+            'LKB' => [
+                'p.ProdName' => $arr_base['search_value']
+            ]
+        ];
+
+        $arr_order_by = ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc'];
+
+        $list = [];
+        $count = $this->updateLectureInfoFModel->listUpdateInfo(true, $arr_condition);
+
+        $paging_url = '/' . ltrim($this->getFinalUriString(), APP_DEVICE . '/') . (empty($query_string) === false ? '?' . $query_string : '');
+        $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $this->_show_page_num, true);
+
+        if($count > 0) {
+            $list = $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $paging['limit'], $paging['offset'], $arr_order_by);
+        }
+
+        return $this->response([
+            'paging' => $paging,
+            'ret_data' => $list,
+            'arr_base' => $arr_base,
+        ]);
+    }
 
 }

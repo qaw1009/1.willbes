@@ -8,6 +8,7 @@
 
         .evtTop {position:relative; }
         .txt01 {padding:10px 0; font-size:18px}
+        .txt02 {padding:10px 0; font-size:12px}
         .slide_con {height:auto; max-height:700px; overflow:hidden}
         .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0;}     
         .slide_con .bx-wrapper .bx-pager {        
@@ -85,6 +86,9 @@
                 #1억뷰N잡  #스마트스토어  #도매꾹_도매매  #샵플링
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_05_02.jpg" alt="리얼한 성공사례" >
+            <div class="txt02">
+                (출처:  도매꾹 도매매 유튜브)
+            </div>
         </div>
 
         <div class="evtCtnsBox">

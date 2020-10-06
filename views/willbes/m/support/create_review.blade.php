@@ -36,7 +36,8 @@
                     <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
                 @endif
 
-                <select class="seleProcess width49p ml1p" id="subject_idx" name="subject_idx" title="과목선택" required="required" >
+                <select class="seleProcess width49p ml1p" id="subject_idx" name="subject_idx" title="과목선택" required="required" @if($method == 'POST') disabled="disabled" @endif>
+                    <option value="">과목</option>
                 </select>
 
                 <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus width34p mt1p d_none">
@@ -221,12 +222,14 @@
                 fn_cate_subject(obj_val);
             });
 
-            fn_cate_subject($("#s_cate_code option:selected").val());
+            @if($method == "PUT")
+                fn_cate_subject($("#s_cate_code option:selected").val());
+            @endif
         });
 
         // 과목 리스트 조회
         function fn_cate_subject(obj_val){
-            $("#subject_idx").html('');
+            $("#subject_idx").html('').prop("disabled",false);
 
             @if(empty($arr_cate_subject) === false)
             var json_data = {!! json_encode($arr_cate_subject) !!};

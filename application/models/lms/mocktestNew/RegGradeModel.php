@@ -422,7 +422,7 @@ class RegGradeModel extends WB_Model
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
                     INNER JOIN {$this->_table['product_subject']} AS d ON c.SubjectIdx = d.SubjectIdx
-                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx AND b.IsStatus = 'Y'
                     WHERE a.ProdCode = '{$prod_code}'
                 ) AS A
                 GROUP BY A.TakeMockPart, A.MpIdx
@@ -541,7 +541,7 @@ class RegGradeModel extends WB_Model
         $from = "
             FROM {$this->_table['mock_product']} AS PM
             JOIN {$this->_table['product']} AS PD ON PM.ProdCode = PD.ProdCode
-            JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y'
+            JOIN {$this->_table['product_mock_r_paper']} AS MP ON PM.ProdCode = MP.ProdCode AND MP.IsStatus = 'Y' AND MP.IsStatus = 'Y'
             JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '{$this->_take_form_ccd}'
             JOIN {$this->_table['mock_register_r_paper']} AS RP ON PM.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx AND MP.MpIdx = RP.MpIdx
             JOIN {$this->_table['product_subject']} AS PS ON PS.SubjectIdx = RP.SubjectIdx
@@ -859,7 +859,7 @@ class RegGradeModel extends WB_Model
                 FROM (
                     SELECT a.ProdCode, b.MpIdx, b.MockType
                     FROM {$this->_table['mock_product']} AS a
-                    INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
                     WHERE a.ProdCode = '{$prod_code}'
                 ) AS a1
                 INNER JOIN {$this->_table['mock_paper']} AS b1 ON a1.MpIdx = b1.MpIdx AND b1.IsUse = 'Y' AND b1.IsStatus = 'Y'

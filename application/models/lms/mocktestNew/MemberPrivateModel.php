@@ -219,7 +219,7 @@ class MemberPrivateModel extends WB_Model
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
                     INNER JOIN {$this->_table['product_subject']} AS d ON c.SubjectIdx = d.SubjectIdx
-                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS e ON e.ProdCode = b.ProdCode AND e.MpIdx = b.MpIdx AND e.IsStatus = 'Y'
                     WHERE a.ProdCode = '{$prod_code}' AND c.MpIdx IN (SELECT MpIdx FROM {$this->_table['mock_register_r_paper']} WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}')
                 ) AS A
                 GROUP BY A.MpIdx
@@ -330,7 +330,7 @@ class MemberPrivateModel extends WB_Model
                 FROM {$this->_table['mock_register']} AS mr
                 JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
-                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
+                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
                 {$where}
                 GROUP BY mr.ProdCode
@@ -455,7 +455,7 @@ class MemberPrivateModel extends WB_Model
                     ,(SELECT COUNT(IsWrong) FROM {$this->_table['mock_answerpaper']} WHERE MqIdx = MQ.MqIdx AND MpIdx = Mp.MpIdx AND IsWrong = 'N') AS ncnt
                     FROM {$this->_table['mock_paper']} AS MP
                     JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
-                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx 
+                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
                     AND PM.ProdCode = '{$prod_code}'
                     AND PM.IsStatus = 'Y'
                     GROUP BY MQ.MqIdx

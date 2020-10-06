@@ -174,7 +174,7 @@ class Free extends BaseBoard
     }
 
     /**
-     * 공지게시판 등록/수정 폼
+     * 합격수기 등록/수정 폼
      * @param array $params
      */
     public function create($params = [])
@@ -187,11 +187,16 @@ class Free extends BaseBoard
         $method = 'POST';
         $data = null;
         $board_idx = null;
-        $arr_swich = null;
         $product_subject = null;
 
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
+
+        // 항목 설정 (임용)
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
+            $arr_swich = null;
+        }
 
         if (empty($params[0]) === false) {
             $column = '
@@ -208,10 +213,18 @@ class Free extends BaseBoard
                     'LB.IsStatus' => 'Y'
                 ]
             ]);
-            $arr_condition_file = [
-                'reg_type' => $this->_reg_type['admin'],
-                'attach_file_type' => $this->_attach_reg_type['default']
-            ];
+
+            if(empty($arr_swich) === false){
+                $arr_condition_file = [
+                    'attach_file_type' => $this->_attach_reg_type['default']
+                ];
+            }else{
+                $arr_condition_file = [
+                    'reg_type' => $this->_reg_type['admin'],
+                    'attach_file_type' => $this->_attach_reg_type['default']
+                ];
+            }
+
             $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
 
             if (count($data) < 1) {
@@ -230,12 +243,6 @@ class Free extends BaseBoard
 
         //과목조회
         $arr_subject = $this->_getSubjectArray();
-
-        // 항목 설정 (임용)
-        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($site_code,$arr_swich['site_code']) === true)){
-            $arr_swich = null;
-        }
 
         $this->load->view("board/{$this->board_name}/create", [
             'boardName' => $this->board_name,
@@ -327,10 +334,20 @@ class Free extends BaseBoard
                 'LB.IsStatus' => 'Y'
             ]
         ]);
-        $arr_condition_file = [
-            'reg_type' => $this->_reg_type['admin'],
-            'attach_file_type' => $this->_attach_reg_type['default']
-        ];
+
+        // 항목 설정 (임용)
+        $arr_swich = element($this->bm_idx,$this->_on_off_swich);
+        if(empty($arr_swich) === false && in_array($this->_reqG('site_code'),$arr_swich['site_code']) === true){
+            $arr_condition_file = [
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+        }else{
+            $arr_condition_file = [
+                'reg_type' => $this->_reg_type['admin'],
+                'attach_file_type' => $this->_attach_reg_type['default']
+            ];
+        }
+
         $data = $this->boardModel->findBoardForModify($this->board_name, $column, $arr_condition, $arr_condition_file);
         if ($this->bm_idx != '91') {    //합격수기일 경우 제외
             // 첨부파일 이미지일 경우 해당 배열에 담기

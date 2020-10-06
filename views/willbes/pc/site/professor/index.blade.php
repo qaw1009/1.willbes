@@ -133,7 +133,11 @@
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                 <li class="profList">
                     @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?' : '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&';
+                        if ($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true) {
+                            $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&';
+                        } else {
+                            $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?';
+                        }
                         $show_url .= 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name);
                     @endphp
                     <a class="profBox" href="{{ front_url($show_url) }}">

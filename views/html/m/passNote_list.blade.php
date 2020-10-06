@@ -44,7 +44,7 @@
     <div class="lineTabs lecListTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <tbody>
-                <tr class="bg-light-blue">
+                <tr>
                     <td class="w-data tx-left">
                         <div class="w-tit">
                             <a href="#none"><span class="tx-blue">[유아]</span> 2020학년도 최종합격수기</a>
@@ -56,7 +56,7 @@
                         </dl>
                     </td>
                 </tr>
-                <tr class="bg-light-blue">
+                <tr>
                     <td class="w-data tx-left">
                         <div class="w-tit">
                             <a href="#none"><span class="tx-blue">[유아]</span> 2020학년도 최종합격수기</a>

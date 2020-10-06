@@ -52,27 +52,59 @@
                     </colgroup>
                     <tbody>
                     <tr>
-                        <td class="w-list">유료특강</td>
-                        <td class="w-name">국어<br/><span class="tx-blue">기미진</span></td>
+                        <td class="w-list">{{ $row['CourseName'] }}</td>
+                        <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                         <td class="w-data tx-left pl25">
-                            <div class="w-tit">2018 기미진 국어 아침 실전 동형모의고사 특강[국가직~서울시](3-6개월)</div>
+                            @if($row['LecTypeCcd'] === '607003')
+                                <div class="OTclass">
+                                    <span>직장인/재학생반</span> <a href="#none"  class="lec_type_info">?</a>
+                                </div>
+                            @endif
+                            <div class="w-tit"><a href="#none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', 'only');" class="prod-name">{{ $row['ProdName'] }}</a></div>
                             <dl class="w-info">
-                                <dt class="mr20"><strong>강좌상세정보</strong></dt>
-                                <dt>강의수 : <span class="tx-blue">48강 (예정)</span></dt>
+                                <dt class="mr20">
+                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{ site_url('/lecture') }}', 'pattern/only/')">
+                                        <strong class="open-info-modal">강좌상세정보</strong>
+                                    </a>
+                                </dt>
+                                <dt>강의수 : <span class="tx-blue">{{ $row['wUnitLectureCnt'] }}강{{ $row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount']) === false ? '/' . $row['wScheduleCount'] . '강' : '' }}</span></dt>
                                 <dt><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">100일</span></dt>
+                                <dt>수강기간 : <span class="tx-blue">{{ $row['StudyPeriod'] }}일</span></dt>
                                 <dt class="NSK ml15">
-                                    <span class="nBox n1">2배수</span>
-                                    <span class="nBox n2">진행중</span>
+                                    <span class="nBox n1">{{ $row['MultipleApply'] === '1' ? '무제한' : $row['MultipleApply'] . '배수'}}</span>
+                                    <span class="nBox n{{ substr($row['wLectureProgressCcd'], -1) + 1 }}">{{ $row['wLectureProgressCcdName'] }}</span>
                                 </dt>
                             </dl>
+                            @if($row['IsCart'] == 'N')
+                                <br/><div class="tx-red">※ 바로결제만 가능한 상품입니다.</div>
+                            @endif
                         </td>
                         <td class="w-notice p_re">
-                            <div class="w-sp one"><a href="#none">맛보기</a></div>
-                            <div class="priceWrap chk buybtn p_re">
-                                <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                <span class="price tx-blue">0원</span>
-                            </div>
+                            @if(empty($row['LectureSampleData']) === false)
+                                <div class="w-sp one"><a href="#none" onclick="openWin('lec_sample_{{ $row['ProdCode'] }}')">맛보기</a></div>
+                                <div id="lec_sample_{{ $row['ProdCode'] }}" class="viewBox">
+                                    <a class="closeBtn" href="#none" onclick="closeWin('lec_sample_{{ $row['ProdCode'] }}')"><img src="{{ img_url('cart/close.png') }}"></a>
+                                    @foreach($row['LectureSampleData'] as $sample_idx => $sample_row)
+                                        <dl class="NGR">
+                                            <dt class="Tit NG">맛보기{{ $sample_idx + 1 }}</dt>
+                                            @if(empty($sample_row['wHD']) === false) <dt class="tBox t1 black"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','HD');">HIGH</a></dt> @endif
+                                            @if(empty($sample_row['wSD']) === false) <dt class="tBox t2 gray"><a href="javascript:fnPlayerSample('{{$row['ProdCode']}}','{{$sample_row['wUnitIdx']}}','SD');">LOW</a></dt> @endif
+                                        </dl>
+                                    @endforeach
+                                </div>
+                            @endif
+                            @if(empty($row['ProdPriceData']) === false)
+                                @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                    <div class="priceWrap chk buybtn p_re">
+                                        @if($row['IsCart'] == 'Y')
+                                            <span class="chkBox"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
+                                        @else
+                                            <span class="chkBox" style="width: 14px;"></span>
+                                        @endif
+                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                    </div>
+                                @endforeach
+                            @endif
                             <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                         </td>
                     </tr>
@@ -89,17 +121,31 @@
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                            <div class="w-sub">
-                                <span class="w-obj tx-blue tx11">부교재</span>
-                                <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                <span class="chk">
-                                    <label class="press">[출간예정]</label>
-                                    <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                </span>
-                                <span class="priceWrap">
-                                    <span class="price tx-blue">0원</span>
-                                </span>
-                            </div>
+                            @if(empty($row['ProdBookData']) === false)
+                                @foreach($row['ProdBookData'] as $book_idx => $book_row)
+                                    <div class="w-sub">
+                                        <span class="w-obj tx-blue tx11">{{ $book_row['BookProvisionCcdName'] }}</span>
+                                        <span class="w-subtit">{{ $book_row['ProdBookName'] }}</span>
+                                        <span class="chk">
+                                            <label class="@if($book_row['wSaleCcd'] == '112002' || $book_row['wSaleCcd'] == '112003') soldout @elseif($book_row['wSaleCcd'] == '112004') press @endif">
+                                                [{{ $book_row['wSaleCcdName'] }}]
+                                            </label>
+                                            @if($row['IsCart'] == 'Y')
+                                                <input type="checkbox" name="prod_code[]" value="{{ $book_row['ProdBookCode'] . ':' . $book_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $book_row['ProdBookCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" data-book-provision-ccd="{{ $book_row['BookProvisionCcd'] }}" class="chk_books" @if($book_row['wSaleCcd'] != '112001') disabled="disabled" @endif/>
+                                            @endif
+                                        </span>
+                                        <span class="priceWrap">
+                                            <span class="price tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                        </span>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="w-sub">
+                                    <span class="w-subtit none">
+                                        {{ empty($row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $row['ProdBookMemo'] }}
+                                    </span>
+                                </div>
+                            @endif
                         </td>
                     </tr>
                     </tbody>

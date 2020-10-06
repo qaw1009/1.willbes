@@ -380,7 +380,7 @@ class MockInfoFModel extends WB_Model
 	            ,mr.MrIdx, mr.TakeMockPart, mr.TakeForm, mr.TakeArea, IFNULL(mr.AddPoint,'0') AS AddPoint, mr.IsStatus, mr.TakeNumber
                 FROM {$this->_table['mock_register']} AS mr
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
-                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx
+                JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
                 {$where_main}
                 GROUP BY mr.ProdCode, mr.MrIdx

@@ -293,7 +293,7 @@ $(function() {
             var left = 0;
             var top = 0;
 
-            if ($(this).prop('class').indexOf('curr-pos') > -1) {
+            if ($(this).hasClass('curr-pos')) {
                 top = $(this).position().top + 30;
             } else {
                 top = $(this).parents('.willbes-Lec-Table').position().top + 120;

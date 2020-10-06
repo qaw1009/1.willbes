@@ -69,16 +69,10 @@
                 </div>
             </div>
             <div class="form-group form-group-sm item">
-                <label class="control-label col-md-2" for="CompetitionRate">경쟁률<span class="required">*</span></label>
-                <div class="col-md-4 form-inline">
-                    <input type="text" id="CompetitionRate" name="CompetitionRate" maxlength="30" value="{{$data['CompetitionRate']}}" title="경쟁률"  class="form-control" required="required" style="width: 150px">%
-                </div>
                 <label class="control-label col-md-2" for="PassLine">합격선<span class="required">*</span></label>
                 <div class="col-md-4">
                     <input type="text" id="PassLine" name="PassLine" maxlength="30" value="{{$data['PassLine']}}" title="합격선"  class="form-control" required="required" style="width: 150px">
                 </div>
-            </div>
-            <div class="form-group form-group-sm item">
                 <label class="control-label col-md-2" for="is_use">사용여부 <span class="required">*</span></label>
                 <div class="col-md-4">
                     <input type="radio" id="IsUse_Y" name="IsUse" class="flat" value="Y" required="required" @if($method=="POST" || $data['IsUse']=='Y')checked="checked"@endif/> <label for="IsUse_Y" class="input-label">사용</label>
@@ -108,6 +102,12 @@
                     </div>
                 </div>
             @endif
+
+            <div class="form-group form-group-sm item">
+                <div class="col-md-12 form-inline text-center">
+                    <b>* 동일 데이터 (학년도 + 정시/추시 + 과목 + 지역) 는 <font color="red">중복으로 등록</font> 되지 않습니다.<font color="red"></b>
+                </div>
+            </div>
 
             <script type="text/javascript">
                 var $regi_form = $('#regi_form');

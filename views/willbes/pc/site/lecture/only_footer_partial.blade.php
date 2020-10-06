@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<script src="/public/js/willbes/product_util.js"></script>
+<script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
     var $buy_layer = $('#buy_layer');

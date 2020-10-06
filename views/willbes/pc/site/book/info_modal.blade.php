@@ -37,7 +37,7 @@
                             </ul>
                         </div>
                         <div class="bookBoxWrap">
-                            <ul class="tabWrap tabDepth2">
+                            <ul class="tabWrap tabDepth2 tabBookInfo">
                                 <li><a href="#info1" class="pl10 pr10 on">교재소개</a></li>
                                 <li><a href="#info2" class="pl10 pr10">교재목차</a></li>
                             </ul>
@@ -60,4 +60,6 @@
         </div>
     </div>
 </div>
-<script src="/public/js/willbes/tabs.js"></script>
+<script type="text/javascript">
+    openTab('ul.tabBookInfo');
+</script>

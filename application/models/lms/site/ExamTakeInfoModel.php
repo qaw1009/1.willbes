@@ -164,7 +164,6 @@ class ExamTakeInfoModel extends WB_Model
             'AreaCcd' => element('AreaCcd',$input),
             'NoticeNumber' => element('NoticeNumber',$input),
             'TakeNumber' => element('TakeNumber',$input),
-            'CompetitionRate' => element('CompetitionRate',$input),
             'PassLine' => element('PassLine',$input),
             'IsUse' => element('IsUse',$input)
         ];

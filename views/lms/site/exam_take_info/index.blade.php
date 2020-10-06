@@ -137,7 +137,7 @@
                             return addComma(row.TakeNumber); //지원인원
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta){
-                            return row.CompetitionRate + '%'; //경쟁률
+                            return parseFloat((row.NoticeNumber / row.TakeNumber * 100).toFixed(2)) + '%'; //경쟁률
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta){
                             return row.PassLine; //합격선

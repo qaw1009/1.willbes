@@ -3,10 +3,19 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
+    .skyBanner {position:fixed; bottom:140px; z-index:5;}
+    .skyBanner {width:100%; max-width:720px; margin:0 auto; text-align:right}
+    .skyBanner a {display:block; margin-right:5px}
+    .Container {width:100%; max-width:720px; margin:0 auto; position:relative;}    
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
-    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox img {width:100%; max-width:720px;}    
 
     .evt01 {padding-bottom:100px;background:#202334;}
+
+    .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
+    .embed-container iframe, 
+    .embed-container object, 
+    .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
     .btnbuy a {display:block; width:94%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
@@ -32,7 +41,15 @@
 
 </style>
 
-<div id="Container" class="Container NSK c_both">            
+<div id="Container" class="Container NSK c_both">     
+    <div class="skybanner">
+        <div>
+            <a href="https://pf.kakao.com/_Pxixdlxb" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1850_sky.png">
+            </a>
+        </div>
+    </div>
+
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1850m_top.jpg" alt="지텔프 서민지" >        
     </div>
@@ -40,6 +57,22 @@
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1850m_01.jpg" alt="지텔프 다양한 혜택" >       
     </div> 
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1850m_02.jpg" alt="수험생의 영어 고민" >       
+    </div>
+
+    <div class='embed-container'>
+        <iframe src='https://www.youtube.com/embed/uKyEIDr_uKQ?rel=0' frameborder='0' allowfullscreen></iframe>
+    </div>
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1850m_03.jpg" alt="영어 고민, 한번에 날려드릴게요." >       
+    </div>
+
+    <div class="evtCtnsBox">
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1850m_04.jpg" alt="지텔프 최단기 목표 공략하기" >       
+    </div>
 
     <div class="evtCtnsBox evtFooter" id="infoText">
         <h3 class="NSK-Black">어학 서민지 T-PASS 이용안내</h3>

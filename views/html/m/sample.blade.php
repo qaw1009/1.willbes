@@ -79,6 +79,8 @@
             <p>임용</p>             
             <a href="{{ site_url('/home/html/m/main_2018') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/prof2_ssam') }}" target="_blank">교수 상세보기</a>
+            <a href="{{ site_url('/home/html/m/review_list') }}" target="_blank">수강후기</a>
+            <a href="{{ site_url('/home/html/m/passNote_list') }}" target="_blank">합격수기</a>
         </div>
     </li>
     <li>        

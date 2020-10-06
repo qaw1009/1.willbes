@@ -230,7 +230,7 @@
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto: true, 
                 speed: 500, 
-                pause: 150000, 
+                pause: 15000, 
                 mode:'fade', 
                 autoControls: false, 
                 pager:false,

@@ -337,7 +337,7 @@ class Free extends BaseBoard
 
         // 항목 설정 (임용)
         $arr_swich = element($this->bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_reqG('site_code'),$arr_swich['site_code']) === true)){
+        if(empty($arr_swich) === false && in_array($this->_reqG('site_code'),$arr_swich['site_code']) === true){
             $arr_condition_file = [
                 'attach_file_type' => $this->_attach_reg_type['default']
             ];

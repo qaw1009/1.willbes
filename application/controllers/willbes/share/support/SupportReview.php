@@ -516,32 +516,43 @@ class SupportReview extends BaseSupport
 
     public function delete()
     {
-        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
-        $board_idx = element('board_idx',$arr_input);
-        $s_site_code = element('s_site_code',$arr_input);
-        $s_cate_code = element('s_cate_code',$arr_input);
-        $s_campus = element('s_campus',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
-        $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
-        $s_is_display = element('s_is_display',$arr_input);
-        $s_is_my_contents = element('s_is_my_contents',$arr_input);
-        $view_type = element('view_type',$arr_input);
-        $page = element('page',$arr_input);
-        $get_params = 's_keyword='.urlencode($s_keyword);
-        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code;
-        $get_params .= '&s_campus='.$s_campus;
-        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
-        $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
-        $get_params .= '&page='.$page;
+        if (empty($this->session->userdata('mem_idx')) === true) {
+            $this->json_error('로그인 후 이용해주세요.');
+            return;
+        }
+
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'board_idx', 'label' => '게시판식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $board_idx = $this->_reqP('board_idx');
+        $arr_condition = [
+            'EQ' => [
+                'm.MemIdx' => $this->session->userdata('mem_idx'),
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y'
+            ]
+        ];
+        $data = $this->supportBoardTwoWayFModel->findBoard($board_idx, $arr_condition, 'BoardIdx');
+
+        if (empty($data) === true) {
+            $this->json_error('조회된 게시물이 없습니다.');
+            return;
+        }
 
         $result = $this->supportBoardTwoWayFModel->boardDelete($board_idx);
 
-        if (empty($result['ret_status']) === false) {
-            show_alert('삭제 실패입니다. 관리자에게 문의해주세요.', 'back');
+        if ($result !== true) {
+            $this->json_error('삭제 실패입니다. 관리자에게 문의해주세요.');
+            return;
         }
 
-        show_alert('삭제되었습니다.', front_url($this->_default_path.'/index?'.$get_params));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
     public function destroyFile()

@@ -58,6 +58,7 @@
     .slide p {position:absolute; top:50%; left:50%; margin-top:-35px; width:47px; height:70px; z-index:110}
     .slide p.leftBtn {margin-left:-677px}
     .slide p.rightBtn {margin-left:611px}
+    
 
     .mainEvt section.page2 {}
     .page2 .txt01 {font-size:18px}
@@ -73,8 +74,9 @@
     .page2 .youtube iframe {width:800px; height:450px;}    
 
     .mainEvt section.page3 {}
-    .mainEvt section.page3 .slide {height:630px; margin-bottom:100px !important}
+    .mainEvt section.page3 .slide {height:680px; margin-bottom:100px !important}
     .page3 .txt01 {font-size:55px; margin-bottom:30px}
+    .page3 .txt04 {font-size:12px; text-align:right; width:1120px; margin:10px auto}
 
     .mainEvt section.page4 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page4_bg.jpg) no-repeat center top}
     .mainEvt section.page5 .page_container {background:url(https://static.willbes.net/public/images/promotion/2020/10/1837_page5_bg.jpg) no-repeat center top}
@@ -165,10 +167,7 @@
                     </div>
                     <div id="tab3" class="youtube">
                         <iframe src="https://www.youtube.com/embed/BsqW9fk1V6M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="txt03 NSK-Black">
-                        #1억뷰N잡  #스마트스토어  #도매꾹_도매매  #샵플링
-                    </div>
+                    </div>                   
                 </div>
             </section>
             
@@ -188,7 +187,11 @@
                         </ul>
                         <p class="leftBtn"><a id="imgBannerLeft2"><img src="https://static.willbes.net/public/images/promotion/2020/10/1837_arrowL2.png"></a></p>
                         <p class="rightBtn"><a id="imgBannerRight2"><img src="https://static.willbes.net/public/images/promotion/2020/10//1837_arrowR2.png"></a></p>
+                        <div class="txt04">
+                            #1억뷰N잡  #스마트스토어  #도매꾹_도매매  #샵플링
+                        </div>
                     </div>
+                    
                 </div>
             </section>
 
@@ -227,7 +230,7 @@
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto: true, 
                 speed: 500, 
-                pause: 4000, 
+                pause: 150000, 
                 mode:'fade', 
                 autoControls: false, 
                 pager:false,
@@ -247,7 +250,7 @@
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto: true, 
                 speed: 500, 
-                pause: 4000, 
+                pause: 20000, 
                 mode:'fade', 
                 autoControls: false, 
                 pager:true,

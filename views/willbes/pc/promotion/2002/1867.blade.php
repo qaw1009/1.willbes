@@ -38,7 +38,7 @@
         .wb_03 div li:nth-child(4) {margin-bottom:20px}
         .wb_03 div li:nth-child(5) {margin-bottom:22px}
         .wb_03 div li:nth-child(6) {margin-bottom:22px}
-        .wb_03 div li a {display:block; height:21px; line-height:21px; font-size:13px; letter-spacing:-1px; background:#231f20; color:#fff; border:1px solid #231f20; font-family:'Noto Sans KR', Arial, Sans-serif}
+        .wb_03 div li a {display:block; height:21px; line-height:21px; font-size:13px; letter-spacing:-1px; background:#231f20; color:#fff; border:1px solid #231f20; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;}
         .wb_03 div li a:hover {background:#ffda38; color:#231f20}
         .wb_03 div span {position:absolute; display:block; height:31px; line-height:31px; padding:0 10px; background:#231f20; color:#fff; font-size:14px; border-radius:22px; border:1px solid #231f20; z-index:11; letter-spacing:-1px}
         .wb_03 div span em {font-size:11px}
@@ -58,19 +58,20 @@
         
         .wb_ctsInfo {background:#2b2b2b; padding:100px 0}  
         .wb_ctsInfo div {
-            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
-            font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.25;
+            font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
         }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#f97f7a} 
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#d4d4d4;} 
         .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;
-            text-decoration:underline}  
+            text-decoration:underline;color:#d4d4d4;}  
         .wb_ctsInfo div dd {margin-bottom:30px}
         .wb_ctsInfo div dl {
             position: relative;
             padding-left:10px;
+            color:#d4d4d4;
         }
         .wb_ctsInfo div dl:before{
-            background: #f97f7a none repeat scroll 0 0; 
+            background: #d4d4d4 none repeat scroll 0 0; 
             border-radius: 2px;
             content: '';
             display: block;

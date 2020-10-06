@@ -207,7 +207,7 @@
             'cate_code' : '{{$def_cate_code}}',
             'prof_idx' : '{{$prof_idx}}',
             'board_idx' : $(obj).data('board-idx'),
-            'subject_idx' : '{{$arr_input['subject_idx']}}'
+            'subject_idx' : '{{ element('subject_idx', $arr_input) }}'
         };
 
         sendAjax(_url, data, function(ret) {

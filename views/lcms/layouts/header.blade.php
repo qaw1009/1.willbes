@@ -38,6 +38,8 @@
     <link href="/public/vendor/pnotify/pnotify.nonblock.css" rel="stylesheet">
     <!-- magnific-popup -->
     <link href="/public/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- overlay-Scrollbars -->
+    <link href="/public/vendor/overlay-scrollbars/css/overlayScrollbars.min.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="/public/vendor/animate.css/animate.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
@@ -100,6 +102,8 @@
     <script src="/public/vendor/pnotify/pnotify.nonblock.js"></script>
     <!-- magnific-popup -->
     <script src="/public/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- overlay-Scrollbars -->
+    <script src="/public/vendor/overlay-scrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- base64 -->
     <script src="/public/vendor/base64/webtoolkit.base64.js"></script>
     <!-- validator -->

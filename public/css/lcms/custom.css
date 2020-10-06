@@ -471,10 +471,6 @@ body.no_sidebar {
     z-index: 997;
 }
 
-.nav-md .container.body .col-md-3.left_col.menu_fixed {
-    height:100vh;
-}
-
 /* sidebar */
 .navbar.nav_title {
     background: #367fa9;
@@ -490,6 +486,10 @@ body.no_sidebar {
 .nav-md .container.body .col-md-3.left_col.menu_fixed {
     position: sticky;
     margin-top: -63px;
+    height:100vh;
+}
+.container.body .col-md-3.left_col.menu_fixed .main_menu_side {
+    margin-bottom: 100px;
 }
 .nav.side-menu>li:first-child {
     margin-top: 65px;   /*margin-top: 75px;*/
@@ -497,6 +497,17 @@ body.no_sidebar {
 .menu_section>ul {
     margin-top: 0;
 }
+
+/* overlay scrollbar */
+.os-scrollbar.os-scrollbar-vertical, .os-scrollbar.os-scrollbar-horizontal {
+    z-index: 999999;
+}
+/* overflow menu visible
+.nav-sm .menu_fixed.os-host-overflow,
+.nav-sm .menu_fixed.os-host-overflow .os-padding,
+.nav-sm .menu_fixed.os-host-overflow .os-viewport {
+    overflow-y: visible !important;
+}*/
 
 /* right_col */
 .page-title {

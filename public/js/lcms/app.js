@@ -86,7 +86,7 @@ function init_sidebar() {
                 $SIDEBAR_MENU.find('li').removeClass('active active-sm');
                 $SIDEBAR_MENU.find('li ul').slideUp();
             } else {
-                if ($BODY.is(".nav-sm")) {
+                if ($BODY.is('.nav-sm')) {
                     $SIDEBAR_MENU.find("li").removeClass("active active-sm");
                     $SIDEBAR_MENU.find("li ul").slideUp();
                 }
@@ -146,15 +146,32 @@ function init_sidebar() {
 
     setContentHeight();
 
-    /* 사용안함
     // fixed sidebar
-    if ($.fn.mCustomScrollbar) {
-        $('.menu_fixed').mCustomScrollbar({
-            autoHideScrollbar: true,
-            theme: 'minimal',
-            mouseWheel: {preventDefault: true}
+    if ($.fn.overlayScrollbars) {
+        // sidebar scroll
+        $('.left_col.menu_fixed').overlayScrollbars({
+            className       : 'os-theme-dark',
+            resize          : 'none',
+            sizeAutoCapable : true,
+            paddingAbsolute : true,
+            scrollbars : {
+                clickScrolling : true,
+                autoHide : 'leave',
+                autoHideDelay : 400
+            },
+            overflowBehavior : {
+                x : 's',
+                y : 's'
+            }
         });
-    }*/
+
+        $('.left_col.menu_fixed #sidebar-menu li a').click(function() {
+            // nav-sm menu clicked
+            if ($BODY.hasClass('nav-sm')) {
+                $BODY.removeClass('nav-sm').addClass('nav-md');
+            }
+        });
+    }
 }
 
 // Panel toolbox

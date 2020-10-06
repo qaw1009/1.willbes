@@ -85,7 +85,7 @@
 
             if (ret.ret_data.length < 1) {
                 add_table += '<tr>';
-                add_table += '<td colspan="5" class="w-list tx-center">검색 결과가 없습니다.</td>';
+                add_table += '<td colspan="6" class="w-list tx-center">검색 결과가 없습니다.</td>';
                 add_table += '</tr>';
             } else {
                 $.each(ret.ret_data, function (i, item) {

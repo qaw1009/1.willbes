@@ -1,4 +1,7 @@
 <div id="profNotice" class="willbes-Layer-Board" style="display: block">
+    <a class="closeBtn" href="#none" onclick="closeWin('{{ $arr_input['ele_id'] }}');"><img src="{{ img_url('prof/close.png') }}"></a>
+    <div class="Layer-Tit NG tx-dark-black">학습자료실</div>
+
     <div class="Layer-Cont">
         <div class="willbes-Leclist c_both">
             <div class="LecViewTable">

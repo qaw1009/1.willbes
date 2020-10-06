@@ -104,12 +104,16 @@
                 add_table += '</tr>';
             } else {
                 $.each(ret.ret_data, function (i, item) {
+                    var yyyy = item.unit_regdate.substr(0,4);
+                    var mm = item.unit_regdate.substr(5,2);
+                    var dd = item.unit_regdate.substr(8,2);
+
                     add_table += '<tr>';
                     add_table += '<td class="w-no">'+ rownum +'</td>';
                     add_table += '<td class="w-campus">'+ item.SubjectName +'</td>';
                     add_table += '<td>'+ item.ProfNickName +'</td>';
                     add_table += '<td class="w-list tx-left pl20">'+ item.ProdName +'</td>';
-                    add_table += '<td class="w-date">'+ item.unit_regdate + '총' + item.unit_cnt + '강 업로드</td>';
+                    add_table += '<td class="w-date">'+ mm + '월' + dd + '일 총' + item.unit_cnt + '강 업로드</td>';
                     add_table += '</tr>';
                     rownum = rownum - 1;
                 });

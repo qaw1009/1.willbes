@@ -63,12 +63,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none" class="btn-study" data-board-idx="">
+                        <a href="#none" class="btn-study" data-board-idx="" data-board-url="{{front_url('/support/studyComment/')}}" onclick="go_board_popup(this)">
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon05.png') }}" alt="수강후기"> 수강후기
                         </a>
                     </li>
                     <li>
-                        <a href="#none" class="btn-material" data-board-idx="">
+                        <a href="#none" class="btn-material" data-board-idx="" data-board-url="{{front_url('/prof/material/popupIndex')}}" onclick="go_board_popup(this)">
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon06.png') }}" alt="학습자료실"> 학습자료실
                         </a>
                     </li>
@@ -81,13 +81,13 @@
 
                 <div class="ProfBoard">
                     <div class="willbes-listTable mr25">
-                        <div class="will-Tit NG">공지사항 <a href="#none" class="f_right btn-notice" data-board-idx=""><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
+                        <div class="will-Tit NG">공지사항 <a href="#none" class="f_right btn-notice" data-board-idx="" data-board-url="{{front_url('/prof/notice/popupIndex')}}" onclick="go_board_popup(this)"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                         <ul class="List-Table tx-gray">
                             @if(empty($data['ProfNotice']) === true)
                                 <li>등록된 공지사항이 없습니다.</li>
                             @else
                                 @foreach($data['ProfNotice'] as $idx => $row)
-                                    <li><a href="#none">{{ $row['Title'] }}</a>
+                                    <li><a href="#none" data-board-idx="{{$row['BoardIdx']}}" data-board-url="{{front_url('/prof/notice/popupShow')}}" onclick="go_board_popup(this)">{{ $row['Title'] }}</a>
                                         @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                                         <span>{{ $row['RegDatm'] }}</span>
                                     </li>
@@ -96,13 +96,13 @@
                         </ul>
                     </div>
                     <div class="willbes-listTable">
-                        <div class="will-Tit NG">강의 업데이트 <a href="#none" class="f_right btn-update-lecture-info"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
+                        <div class="will-Tit NG">강의 업데이트 <a href="#none" class="f_right btn-update-lecture-info" data-board-url="{{front_url('/UpdateLectureInfo/popupIndex')}}" onclick="go_board_popup(this)"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a></div>
                         <ul class="List-Table tx-gray">
                             @if(empty($data['ProfUpdateLectureInfo']) === true)
                                 <li>등록된 강의가 없습니다.</li>
                             @else
                                 @foreach($data['ProfUpdateLectureInfo'] as $idx => $row)
-                                    <li><a href="#none">[{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}] {{ date("m월 d일", strtotime($row['unit_regdate'])) }} 총 {{ $row['unit_cnt'] }}강 업로드</a>
+                                    <li><a href="#none" data-board-idx="{{$row['BoardIdx']}}" data-board-url="{{front_url('/UpdateLectureInfo/popupShow')}}" onclick="go_board_popup(this)">[{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}] {{ date("m월 d일", strtotime($row['unit_regdate'])) }} 총 {{ $row['unit_cnt'] }}강 업로드</a>
                                         @if(date('Y-m-d') == $row['unit_regdate'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                                     </li>
                                 @endforeach
@@ -190,27 +190,29 @@
             $('.willbes-Prof-Tabs .tabBox .tabLink').css('display', 'block');
         });
 
-        // 수강후기 레이어팝업
-        $('.btn-study').click(function () {
-            var ele_id = 'WrapReply';
-            var data = {
-                'ele_id' : ele_id,
-                'show_onoff' : 'off',
-                'cate_code' : '{{ $def_cate_code }}',
-                'prof_idx' : '{{ $prof_idx }}',
-                'board_idx' : $(this).data('board-idx'),
-                'subject_idx' : '{{ element('subject_idx', $arr_input) }}'
-            };
-            sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
-                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-            }, showAlertError, false, 'GET', 'html');
-        });
     });
 
     // 메인 탭 클릭
     function goTabUrl(key, val) {
         removeFormInput('#url_form', 'cate_code,subject_idx,subject_name,tab');
         goUrl(key, val);
+    }
+
+    // 게시판 레이어팝업
+    function go_board_popup(obj){
+        var ele_id = 'WrapReply';
+        var _url = $(obj).data('board-url');
+        var data = {
+            'ele_id' : ele_id,
+            'cate_code' : '{{$def_cate_code}}',
+            'prof_idx' : '{{$prof_idx}}',
+            'board_idx' : $(obj).data('board-idx'),
+            'subject_idx' : '{{$arr_input['subject_idx']}}'
+        };
+
+        sendAjax(_url, data, function(ret) {
+            $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
     }
 </script>
 @stop

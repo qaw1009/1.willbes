@@ -291,7 +291,13 @@ $(function() {
 
         if($target_layer.css('display','')) {
             var left = 0;
-            var top = $(this).parents('.willbes-Lec-Table').position().top + 120;
+            var top = 0;
+
+            if ($(this).prop('class').indexOf('curr-pos') > -1) {
+                top = $(this).position().top + 30;
+            } else {
+                top = $(this).parents('.willbes-Lec-Table').position().top + 120;
+            }
 
             $target_layer.css({
                 'top': top,

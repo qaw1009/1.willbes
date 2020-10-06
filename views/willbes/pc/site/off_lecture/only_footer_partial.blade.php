@@ -40,7 +40,7 @@
     <input type="hidden" name="is_visit_pay" value="Y"/>    {{-- 방문결제 여부 --}}
     <input type="hidden" name="prod_code[]" value=""/>  {{-- 상품코드 --}}
 </form>
-<script src="/public/js/willbes/product_util.js"></script>
+<script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
     var $regi_off_form = $('#regi_off_form');
     var $regi_visit_form = $('#regi_visit_form');

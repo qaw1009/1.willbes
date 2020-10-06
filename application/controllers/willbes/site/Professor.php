@@ -24,7 +24,7 @@ class Professor extends \app\controllers\FrontController
         $this->_def_cate_code = get_var($this->_cate_code, $this->_reqG('cate_code'));      // 학원 사이트일 경우 `cate_code` 파라미터 셋팅
         $this->_def_prod_type = $this->_is_pass_site === true ? 'off_lecture' : 'on_lecture';       // 기본 상품타입 설정
         $this->_view_type = in_array($this->_site_code, ['2017', '2018']) === true ? 'v2' : 'v1';   // 뷰 타입 설정 (임용)
-        $this->_view_postfix = $this->_view_type == 'v1' ? '' : '_' . $this->_view_type;            // 뷰 파일 후위첨자 (임용 : _v2)
+        $this->_view_postfix = $this->_is_mobile === true || $this->_view_type == 'v1' ? '' : '_' . $this->_view_type;  // 뷰 파일 후위첨자 (PC 임용 : _v2)
     }
 
     /**
@@ -173,6 +173,20 @@ class Professor extends \app\controllers\FrontController
         // 뷰 타입별 추가 데이터 조회
         $this->_getShowAddData($data, $prof_idx, $arr_input);
 
+        // 탭 목록 (모바일 전용)
+        $tab_list = [];
+        if ($this->_is_mobile === true) {
+            if ($this->_view_type == 'v2') {
+                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
+            } else {
+                $tab_list = ['off_lecture' => '학원수강신청', 'free_lecture' => '무료특강신청'];
+
+                if ($this->_is_pass_site === false) {
+                    $tab_list = array_merge(['on_lecture' => '동영상수강신청'], $tab_list);
+                }
+            }
+        }
+
         // 선택된 탭에 맞는 정보 조회 및 디폴트 탭 설정
         $is_tab_select = isset($arr_input['tab']);
         $arr_input['tab'] = $this->_getShowTabId(element('tab', $arr_input), $data['IntroDefTabId']);
@@ -195,6 +209,7 @@ class Professor extends \app\controllers\FrontController
             'def_cate_code' => $this->_def_cate_code,
             'prof_idx' => $prof_idx,
             'data' => $data,
+            'tab_list' => $tab_list,
             'tab_data' => $tab_data,
             'is_tab_select' => $is_tab_select
         ]);
@@ -208,23 +223,21 @@ class Professor extends \app\controllers\FrontController
      */
     private function _getShowAddData(&$prof_data, $prof_idx, $arr_input = [])
     {
-        // 교수 배너 정보
         if (APP_DEVICE == 'pc') {
+            // 교수 배너 정보
             $prof_data['ProfBnrData'] = $this->professorFModel->listProfessorBanner($prof_idx);
-        }
 
-        if ($this->_view_type == 'v2') {
-            // 공지사항 조회
-            $arr_condition = ['EQ' => ['b.BmIdx' => '63', 'b.IsUse' => 'Y']];
-            $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, "%Y-%m-%d") as RegDatm';
-            $prof_data['ProfNotice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, 5, 0, ['m.IsBest' => 'desc', 'm.BoardIdx' => 'desc']);
-            
-            // 강의 업데이트 조회
-            $this->load->loadModels(['updatelectureinfo/updateLectureInfoF']);
-            $arr_condition = ['EQ' => ['p.SiteCode' => $this->_site_code, 'pf.ProfIdx' => $prof_idx, 'p.ProdTypeCcd' => '636001', 'pl.LearnPatternCcd' => '615001']];
-            $prof_data['ProfUpdateLectureInfo'] = $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, 5, 0, ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc']);
-        } else {
-            if (APP_DEVICE == 'pc') {
+            if ($this->_view_type == 'v2') {
+                // 공지사항 조회
+                $arr_condition = ['EQ' => ['b.BmIdx' => '63', 'b.IsUse' => 'Y']];
+                $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, "%Y-%m-%d") as RegDatm';
+                $prof_data['ProfNotice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, 5, 0, ['m.IsBest' => 'desc', 'm.BoardIdx' => 'desc']);
+
+                // 강의 업데이트 조회
+                $this->load->loadModels(['updatelectureinfo/updateLectureInfoF']);
+                $arr_condition = ['EQ' => ['p.SiteCode' => $this->_site_code, 'pf.ProfIdx' => $prof_idx, 'p.ProdTypeCcd' => '636001', 'pl.LearnPatternCcd' => '615001']];
+                $prof_data['ProfUpdateLectureInfo'] = $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, 5, 0, ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc']);
+            } else {
                 // 베스트강좌 상품 조회
                 $prof_data['BestProduct'] = $this->_getProfBestNewProductData($prof_idx, $this->_def_prod_type, 'Best', 4, ['ProdCode' => 'desc'], $arr_input);
                 $prof_data['BestProduct'] = array_map(function ($arr) {

@@ -2830,6 +2830,10 @@ body.memBody #Footer {
 .board_type a.freeLec {background-color:#06F !important}
 .board_type a:hover { background-color:#000 !important}
 
+.sort {margin:10px 0; text-align: right;}
+.sort a {display: inline-block; font-size: 14px; margin-right: 10px; padding:5px 0}
+.sort a.on {color:#1a8ccc; border-bottom:1px solid #1a8ccc}
+
 /*수강신청*/
 .Lec-Selected {
     border-bottom: 1px solid #ccc;

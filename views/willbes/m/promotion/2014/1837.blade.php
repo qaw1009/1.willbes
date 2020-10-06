@@ -8,6 +8,7 @@
 
         .evtTop {position:relative; }
         .evtTop .txt01 {padding:10px 0; font-size:20px; background:#f4f4f4}
+        .slide_con {height:auto; max-height:700px; overflow:hidden}
         .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0;}     
         .slide_con .bx-wrapper .bx-pager {        
             width: auto;
@@ -53,7 +54,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">        
         <div class="evtCtnsBox evtTop">
             <div class="slide_con">
-                <ul id="slidesImg1">
+                <ul id="slidesImg1" class="bSlider">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_01.jpg" alt="김정환"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_02.jpg" alt="정문진"/></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1837m_03.jpg" alt="황채영"/></li>
@@ -94,6 +95,9 @@
                 autoControls: false, 
                 controls:false,
                 pager:true,
+                onSliderLoad: function(){
+                    $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
             });
             $("#imgBannerLeft").click(function (){
                 slidesImg1.goToPrevSlide();
@@ -101,7 +105,7 @@
 
             $("#imgBannerRight").click(function (){
                 slidesImg1.goToNextSlide();
-            });
+            });            
         });
     </script>
 @stop

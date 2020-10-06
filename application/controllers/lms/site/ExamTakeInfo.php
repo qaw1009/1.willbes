@@ -93,7 +93,6 @@ class ExamTakeInfo extends \app\controllers\BaseController
             ['field' => 'AreaCcd', 'label' => '지역', 'rules' => 'trim|required|integer'],
             ['field' => 'NoticeNumber', 'label' => '모집인원', 'rules' => 'trim|required|integer'],
             ['field' => 'TakeNumber', 'label' => '지원인원', 'rules' => 'trim|required|integer'],
-            ['field' => 'CompetitionRate', 'label' => '경쟁률', 'rules' => 'trim|required'],
             ['field' => 'PassLine', 'label' => '합격선', 'rules' => 'trim|required'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required'],
         ];

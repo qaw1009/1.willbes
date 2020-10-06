@@ -69,7 +69,7 @@
                                 <div class="w-info">
                                     {{ $row['wAuthorNames'] }} 저 <span class="row-line">|</span> {{ $row['wPublDate'] }}<span class="row-line">|</span>
                                     <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ site_url('book') }}')">
-                                        <strong class="detail">교재상세정보</strong>
+                                        <strong class="detail open-info-modal curr-pos">교재상세정보</strong>
                                     </a>
                                 </div>
 

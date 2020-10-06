@@ -216,9 +216,13 @@ class Professor extends \app\controllers\FrontController
         if ($this->_view_type == 'v2') {
             // 공지사항 조회
             $arr_condition = ['EQ' => ['b.BmIdx' => '63', 'b.IsUse' => 'Y']];
-            $prof_data['ProfNotice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title, b.IsBest', 2, 0, ['m.IsBest' => 'desc', 'm.BoardIdx' => 'desc']);
+            $column = 'b.BoardIdx, b.Title, b.IsBest, DATE_FORMAT(b.RegDatm, "%Y-%m-%d") as RegDatm';
+            $prof_data['ProfNotice'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, 5, 0, ['m.IsBest' => 'desc', 'm.BoardIdx' => 'desc']);
             
-            // 강의업데이트 조회
+            // 강의 업데이트 조회
+            $this->load->loadModels(['updatelectureinfo/updateLectureInfoF']);
+            $arr_condition = ['EQ' => ['p.SiteCode' => $this->_site_code, 'pf.ProfIdx' => $prof_idx, 'p.ProdTypeCcd' => '636001', 'pl.LearnPatternCcd' => '615001']];
+            $prof_data['ProfUpdateLectureInfo'] = $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, 5, 0, ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc']);
         } else {
             if (APP_DEVICE == 'pc') {
                 // 베스트강좌 상품 조회
@@ -550,12 +554,9 @@ class Professor extends \app\controllers\FrontController
         $arr_prof_idx = $arr_on_off_code['ProfIdx'];    // 온라인, 학원 교수식별자 셋팅
         $data = [];
 
-        // 온라인 패키지 조회
+        // 온라인 운영자패키지 조회
         if (empty($arr_prof_idx['on']) === false) {
-            $arr_adminpack_lecture_type = ['on_pack_normal', 'on_pack_choice'];
-            foreach ($arr_adminpack_lecture_type as $idx => $type) {
-                $data[$type] = $this->_getOnPackageData('adminpack_lecture', $type, $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
-            }
+            $data['on_pack_lecture'] = $this->_getOnPackageData('adminpack_lecture', 'on_pack_normal', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
         // 학원 종합반 조회
@@ -564,8 +565,7 @@ class Professor extends \app\controllers\FrontController
         }
 
         return [
-            'on_pack_normal' => element('on_pack_normal', $data, []),
-            'on_pack_choice' => element('on_pack_choice', $data, []),
+            'on_pack_lecture' => element('on_pack_lecture', $data, []),
             'off_pack_lecture' => element('off_pack_lecture', $data, [])
         ];
     }
@@ -595,9 +595,16 @@ class Professor extends \app\controllers\FrontController
             $data['off_lecture'] = $this->_getOffLectureData('off_lecture', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
         }
 
+        // 온라인 사이트일 경우만 수강후기 조회
+        if (APP_DEVICE == 'pc' && $this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
+
         return [
             'on_lecture' => element('on_lecture', $data, []),
-            'off_lecture' => element('off_lecture', $data, [])
+            'off_lecture' => element('off_lecture', $data, []),
+            'study_comment' => element('study_comment', $data, []),
         ];
     }
 
@@ -643,7 +650,7 @@ class Professor extends \app\controllers\FrontController
         $data = [];
 
         // 사이트별 특강 과정식별자
-        $arr_special_course_idx = ['2017' => '1216', '2018' => '1225'];
+        $arr_special_course_idx = ['2001' => '1010', '2002' => '1046', '2017' => '1216', '2018' => '1225'];
 
         // 특강반 온라인 단강좌 조회
         if (empty($arr_prof_idx['on']) === false) {
@@ -665,9 +672,16 @@ class Professor extends \app\controllers\FrontController
             unset($arr_input['course_idx']);
         }
 
+        // 온라인 사이트일 경우만 수강후기 조회
+        if (APP_DEVICE == 'pc' && $this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
+        }
+
         return [
             'on_lecture' => element('on_lecture', $data, []),
-            'off_lecture' => element('off_lecture', $data, [])
+            'off_lecture' => element('off_lecture', $data, []),
+            'study_comment' => element('study_comment', $data, []),
         ];
     }
 
@@ -688,11 +702,18 @@ class Professor extends \app\controllers\FrontController
 
         // 온라인 선수강좌 조회
         if (empty($arr_prof_idx['on']) === false) {
+            $data['on_lecture_before'] = [];
+        }
 
+        // 온라인 사이트일 경우만 수강후기 조회
+        if (APP_DEVICE == 'pc' && $this->_is_pass_site === false) {
+            $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
+            $data['study_comment'] = $data['study_comment'] != 'N' ? json_decode($data['study_comment'], true) : [];
         }
 
         return [
-            'on_before_lecture' => element('on_before_lecture', $data, []),
+            'on_lecture_before' => element('on_lecture_before', $data, []),
+            'study_comment' => element('study_comment', $data, []),
         ];
     }
 

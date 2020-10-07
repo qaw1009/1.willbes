@@ -16,7 +16,7 @@
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
                         <div class="w-tit">
-                            <a href="#none">2020학년도 최종합격수기</a>
+                            2020학년도 최종합격수기
                         </div>
                         <dl class="w-info tx-gray">
                             <dt>유아<span class="row-line">|</span></dt>

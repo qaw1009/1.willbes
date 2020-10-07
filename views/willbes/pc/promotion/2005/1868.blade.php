@@ -36,7 +36,7 @@
         .evtCtnsBox td label {cursor:pointer; margin-right:5px}
         .evtCtnsBox td input {border:2px solid #000; margin-right:10px; height:20px; width:20px; }
         .evt_03 .lecBtn {position:relative}
-        .evt_03 .lecBtn span {position:absolute; left:220px; top:215px }
+        .evt_03 .lecBtn span {position:absolute; left:225px; top:195px }
         .evt_03 .lecBtn span input {height:40px; line-height:40px; padding-left:10px; font-size:18px; width:250px; color:#ccc; border:2px solid #0c6800}
         .evt_03 .lecBtn span input:focus {color:#333}
         .evt_03 .lecBtn span a {display:inline-block; height:40px; line-height:40px; font-size:18px; padding:0 10px; background:#0c6800; color:#fff; border:2px solid #0c6800;

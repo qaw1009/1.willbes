@@ -136,7 +136,10 @@
                 <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
                 <div class="lecBtn">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_01.jpg" alt="" />               
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_01.jpg" alt="" usemap="#Map1868_01" border="0" />
+                    <map name="Map1868_01">
+                        <area shape="rect" coords="831,40,1094,108" href="#none" alt="일반행정직렬 관리종합반">
+                    </map>             
                     <span><input type="text" placeholder="친구 아이디 입력"><a href="#none">확인</a></span>
                 </div>
                 <div class="check">
@@ -198,7 +201,10 @@
                 <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
                 <div class="lecBtn">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_02.jpg" alt="" />               
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_02.jpg" alt="" usemap="#Map1868_02" border="0" />
+                    <map name="Map1868_02">
+                        <area shape="rect" coords="831,40,1094,108" href="#none" alt="재경직렬 종합반">
+                    </map>               
                     <span><input type="text" placeholder="친구 아이디 입력"><a href="#none">확인</a></span>
                 </div>
                 <div class="check">
@@ -259,7 +265,10 @@
                 <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
                 <div class="lecBtn">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_03.jpg" alt="" />               
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_03.jpg" alt="" usemap="#Map1868_03" border="0" />
+                    <map name="Map1868_03">
+                        <area shape="rect" coords="831,40,1094,108" href="#none" alt="국립외교원 관리종합반">
+                    </map>               
                     <span><input type="text" placeholder="친구 아이디 입력"><a href="#none">확인</a></span>
                 </div>
                 <div class="check">

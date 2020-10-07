@@ -276,7 +276,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_05.jpg" alt="예비순환 패키지 유의사항" />
         </div>
         
-        <div class="evtCtnsBox evtInfo mt100">
+        <div class="evtCtnsBox evtInfo mt100" id="notice">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">온라인 관리종합반 이용안내<span>(필독바랍니다)</span></h4>
 				<div class="infoTit NG"><strong>수강관련</strong></div>

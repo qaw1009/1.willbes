@@ -16,7 +16,7 @@ class SupportersFModel extends WB_Model
 
     //등록파일 rule 설정
     protected $upload_file_rule = [
-        'allowed_types' => 'jpg|gif|png',
+        'allowed_types' => 'gif|jpg|jpeg|png|bmp',
         'overwrite' => 'false',
         'max_size' => 5120 //2560
     ];

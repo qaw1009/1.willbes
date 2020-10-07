@@ -28,7 +28,7 @@ class LectureRoomRegistModel extends WB_Model
 
     //등록파일 rule 설정
     private $_upload_file_rule = [
-        'allowed_types' => 'gif|jpg|jpeg|png',
+        'allowed_types' => 'gif|jpg|jpeg|png|bmp',
         'overwrite' => 'false'
     ];
     private $_add_seat_count = '0';

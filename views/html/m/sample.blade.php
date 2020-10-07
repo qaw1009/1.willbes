@@ -85,6 +85,8 @@
             <a href="{{ site_url('/home/html/m/passNote_read') }}" target="_blank">합격수기 read</a>
             <a href="{{ site_url('/home/html/m/event_list') }}" target="_blank">이벤트 list</a>
             <a href="{{ site_url('/home/html/m/event_read') }}" target="_blank">이벤트 read</a>
+            <a href="{{ site_url('/home/html/m/lecup_list') }}" target="_blank">강의 업데이트</a>
+            <a href="{{ site_url('/home/html/m/schedule') }}" target="_blank">강의실 배정표</a>
         </div>
     </li>
     <li>        

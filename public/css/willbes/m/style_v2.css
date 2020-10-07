@@ -2209,7 +2209,8 @@ body.memBody #Footer {
 .request .form .f_right {float: right; width: calc(25% - 5px);}
 .request .form .f_right a {display:block; text-align: center; height:65px; line-height: 65px; background-color:#1a8ccc; color:#fff}
 .request .form .f_right a.end {background-color: #666;}
-.request input {vertical-align: middle;}
+.request input {vertical-align: middle; color:#ccc}
+.request input:focus {color:#333}
 .request input[type=radio] {width:18px; height:18px}
 .request input[type=text],
 .request input[type=tel],
@@ -2218,6 +2219,32 @@ body.memBody #Footer {
 .request input[type=tel] {width:60%}
 .request input[type=email] {width:100%}
 .request .form:after {content:""; display:block; clear:both}
+
+.reply {line-height: 1.5;}
+.replyWrite {background-color:#f4f4f4; padding:10px}
+.replyWrite textarea {
+    border: 1px solid #d4d4d4;
+    resize: none;
+    width: 100%;
+    height: 150px;
+    overflow-x: auto;
+    font-size: 14px;
+    padding: 10px;
+    line-height: 1.5;    
+    color:#ccc;
+}
+.replyWrite textarea:focus {color:#333}
+.replyWrite a {display: inline-block; background-color:#1a8ccc; color:#fff; float: right; margin-top: 10px; padding:10px 20px} 
+.replyWrite:after {content:""; display:block; clear:both}
+
+.replyList li {border-bottom:1px solid #f4f4f4; padding:15px 10px}
+.replyList li .date {margin-bottom:10px; color:#666}
+.replyList li .date a {display: inline-block; float:right; color:#000; text-decoration: underline;}
+.replyList li.notice {background-color: #eef7fc;}
+.replyList li.notice .date a {color:#1a8ccc}
+
+.replyList li.notice span {background-color: orangered; color:#fff; padding:0 5px;}
+.replyList li.noReply {text-align: center;}
 
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
@@ -4304,6 +4331,42 @@ body.memBody #Footer {
     overflow-y: auto;
 }
 
+/* subContainer : Prof : willbes-Layer-Replynotice */
+.willbes-Layer-Replynotice {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left:-48%;
+    margin-top:-310px;
+    width: 96%;
+    height: 520px;
+    z-index: 110;    
+    border: 1px solid #2f2f2f;
+    padding: 20px 25px 30px;
+}
+.willbes-Layer-Replynotice .Layer-Tit {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #000;
+}
+.willbes-Layer-Replynotice .Layer-SubTit {
+    padding: 10px;
+    background: #f5f5f5;
+} 
+.willbes-Layer-Replynotice .Layer-SubTit p {
+    text-align: right; color:#999; margin-top: 5px;
+}
+.willbes-Layer-Replynotice .Layer-Txt {
+    height: 350px;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    overflow-x: auto;
+}
+
 /*교재구매*/
 .bookListWrap {margin:20px 0 30px !important; border-top:1px solid #ccc; clear: both;}
 .bookList {display:inline-block; float:left; width:50%; border-bottom:1px solid #ccc; border-right:1px solid #ccc; padding:20px 10px; text-align: center;}
@@ -4434,6 +4497,90 @@ body.memBody #Footer {
 .searchContent h5 select {position:absolute; top:0; right:20px; font-size: 14px; height: 40px; width:110px}
 .searchContent h5:after {content:""; display:block; clear:both} 
 
+/*강의실 배정표*/
+/* calendarTable */
+.calendarTable {
+    width: 68%;
+}
+table.calendar {
+    width: 100%;
+    border: 1px solid #bebebe;
+}
+tr.calendar_week td,
+tr.calendar_day td {
+    border-top: 1px solid #bebebe;
+    border-left: 1px solid #bebebe;
+    font-size: 13px;
+}
+
+tr.calendar_week td:first-child,
+tr.calendar_day td:first-child {
+    border-left: none;
+    color: #ed1c24;
+}
+tr.calendar_week th:last-child,
+tr.calendar_day td:last-child {
+    color: #1a8ccb;
+}
+tr.calendar_week td {
+    background: #f1f1f1;
+    height: 36px;
+    text-align: center;
+}
+tr.calendar_day td {
+    position: relative;
+    height: 66px;
+    padding: 12px 12px 8px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+tr.calendar_day td a.viewSchedule {position: absolute; display:block; top:0; left:0; width:100%; height:100%; min-height: 65px; 
+    font-size:0; text-indent: -9999px; z-index:-1; }
+tr.calendar_day td a.today {background:#f2f8fe;}
+tr.calendar_day td a.active {background:#feeeee;}
+tr.calendar_day td:hover {background:#fef7f7; color:#0c5dc0; text-decoration: underline;}
+tr.calendar_day td span.roomTable {position:absolute; top:10px; right:10px; width:10px; height:10px; background-color: salmon; float:right; 
+    font-size:0; text-indent: -9999px; display: inline-block; border-radius: 5px; z-index: 2;}
+tr.calendar_month th {
+    font-size: 18px;
+    padding: 22px 0;
+}
+tr.calendar_month th span {
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    margin: 0 30px;
+}
+span.calendar_btn {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif";
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 16px;
+    margin: 0 8%;
+    padding: 2px 0;
+}
+
+.btn_end {
+    background: #eaeaea;
+    border: 1px solid #c9c9c9;
+    color: #888;
+}
+.btn_ing {
+    background: #1a8ccb;
+    border: 1px solid #1a8ccb;
+    color: #fff;
+}
+.scheduleImg {margin-top:30px; text-align: center; font-size: 14px; line-height: 1.5; border-top:1px solid #bebebe; border-bottom:1px solid #bebebe; padding:30px 0}
+.scheduleImg img {max-width: 100%;}
+.scheduleImg .scheduleDate {font-size:22px; margin-bottom: 20px;}
+.scheduleImg .scheduleDate span {box-shadow: inset 0 -15px 0 rgba(12,93,192,0.2);}
+
 /* iPhone 5/SE */
 @media only screen and (max-width: 374px) {
     .width25p {
@@ -4560,7 +4707,8 @@ body.memBody #Footer {
         margin-left: -300px;
     }
     .willbes-Layer-ProfileBox,
-    .willbes-Layer-CurriBox {
+    .willbes-Layer-CurriBox,
+    .willbes-Layer-Replynotice {
         margin-left:-300px;
         width: 600px;
     }

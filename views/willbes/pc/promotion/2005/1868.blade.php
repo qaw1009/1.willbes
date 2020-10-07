@@ -62,19 +62,19 @@
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_top.jpg" alt="기본실력완성 패키지 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_top.jpg" alt="한림법학원 5급행정,국립외교원 1순환 온라인 관리반"/>
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_01.jpg" alt="예비순환 패키지"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_01.jpg" alt="노하우"/>
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_02.jpg" alt="예비순환 패키지 유의사항" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_02.jpg" alt="합격을 위한 기본실력 완성" />
 		</div>
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_03.jpg" alt="예비순환 패키지 gs1순환 패키지" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_03.jpg" alt="1순환 온라인 관리반" />
             <ul class="tabs NSK-Black">
                 <li><a href="#tab01">일반행정직렬 관리종합반</a></li>
                 <li><a href="#tab02">재경직렬 관리종합반</a></li>
@@ -148,7 +148,7 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_c1.jpg" alt="" />
             </div> 
             <div id="tab02">
                 <table>
@@ -213,7 +213,7 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_c2.jpg" alt="" />
             </div> 
             <div id="tab03">
                 <table>
@@ -277,12 +277,12 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_c3.jpg" alt="" />
             </div>  
 		</div>
 
         <div class="evtCtnsBox mt50">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_05.jpg" alt="예비순환 패키지 유의사항" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_05.jpg" alt="1순환 온라인 관리반 유의사항" />
         </div>
         
         <div class="evtCtnsBox evtInfo mt100" id="notice">

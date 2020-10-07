@@ -211,6 +211,7 @@
         $datatable_apply = $list_apply_table.DataTable({
             serverSide: true,
             buttons: [
+                { text: '<i class="fa fa-send mr-10"></i> 데이터초기화', className: 'btn-default btn-sm btn-danger border-radius-reset mr-15 btn-delete-apply-member' },
                 { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel-apply-member' },
             ],
             ajax: {
@@ -239,5 +240,24 @@
             formCreateSubmit('{{ site_url('/site/eventLecture/addApplyMemberExcel/'.$el_idx) }}', $search_register_form.serializeArray(), 'POST');
         });
 
+        // 추가 신청자 삭제
+        $('.btn-delete-apply-member').on('click', function(event) {
+            var el_idx = "{{$el_idx}}";
+            var _url = '{{ site_url("/site/eventLecture/deleteApplyMember/") }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $search_register_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'DELETE',
+                'el_idx' : el_idx
+            };
+            if (!confirm('정말로 삭제하시겠습니까?')) {
+                return;
+            }
+            sendAjax(_url, data, function(ret) {
+                if (ret.ret_cd) {
+                    notifyAlert('success', '알림', ret.ret_msg);
+                    $datatable_apply.draw();
+                }
+            }, showError, false, 'POST');
+        });
     });
 </script>

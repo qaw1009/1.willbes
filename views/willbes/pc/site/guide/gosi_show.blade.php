@@ -125,10 +125,10 @@
                                                 <h5 class="hTy6 hTy txt-red center">교정직 및 철도공안직 6급 이하 채용시험의 경우 필기시험 합격자를 대상으로 실기시험(체력검사)을 실시하고, 실기시험 합격자에 한하여 면접시험 실시</h5>
                                             </div>
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">7급 공개경쟁채용시험 2021 국가공무원 채용시험 기준</h4>
+                                                <h4 class="hTy4 hTy">7급 공개경쟁채용시험 (2021 국가공무원 채용시험 기준)</h4>
                                                 {{--<h5 class="hTy5 hTy txt-gray"> <span>(지방직은 각 지역에 따라 내용이 상이하니 각 지역별 채용공고를 참고해 주시기 바랍니다)</span></h5>--}}
                                                 <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2.jpg') }}">
-                                                <h4 class="hTy4 hTy mt30">7급 공개경쟁채용시험 2021 지방공무원 채용시험 기준</h4>
+                                                <h4 class="hTy4 hTy mt30">7급 공개경쟁채용시험 (2021 지방공무원 채용시험 기준)</h4>
                                                 <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2.jpg') }}">
                                                 <h5 class="hTy6 hTy txt-red center">교정직 및 철도공안직 6급 이하 채용시험의 경우 필기시험 합격자를 대상으로 실기시험(체력검사)을 실시하고, 실기시험 합격자에 한하여 면접시험 실시</h5>
                                             </div>
@@ -878,7 +878,7 @@
                                                             <th>행정직(일반행정)</th>
                                                             <th rowspan="24">
                                                                 <p class="tx14 strong">국가직</p>
-                                                                
+                                                                <br>
                                                                 PSAT<br>
                                                                 언어논리<br>
                                                                 상황판단<br>
@@ -890,10 +890,12 @@
                                                                 시험으로 <br>
                                                                 대체) <br>                                                              
                                                                 <br>                                                                
-                                                                <p class="tx14 strong">지방직</p>                                                                
+                                                                <p class="tx14 strong">지방직</p> 
+                                                                <br>                                                               
                                                                 국어<br>
                                                                 (한문 포함,<br>
                                                                 지방직만 응시)<br>
+                                                                <br>
                                                                 영어<br>
                                                                 한국사<br>
                                                                 (능력검정 <br>

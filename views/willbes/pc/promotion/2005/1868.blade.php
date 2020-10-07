@@ -368,12 +368,18 @@
             --}}
 
             {{-- 추천인 아이디 입력여부 체크 --}}
+            var valiMsg = '';
             $('input[name="register_data1"]').each(function(){
                 if($(this).is(':visible') === true && $(this).val() == '') {
-                    alert('추천인 아이디를 입력해주세요.');
+                    valiMsg = '추천인 아이디를 입력해주세요.';
                     return;
                 }
             });
+
+            if(valiMsg != '') {
+                alert(valiMsg);
+                return;
+            }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
 

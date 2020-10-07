@@ -34,7 +34,7 @@ class BaseSupportFModel extends WB_Model
 
     //등록파일 rule 설정
     protected $upload_file_rule = [
-        'allowed_types' => 'hwp|doc|pdf|zip|jpg|gif|png|jpeg',
+        'allowed_types' => 'hwp|doc|pdf|zip|jpg|gif|png|jpeg|bmp',
         'overwrite' => 'false',
         'max_size' => 5120 //2560
     ];

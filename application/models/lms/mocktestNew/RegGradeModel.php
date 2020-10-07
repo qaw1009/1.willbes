@@ -906,8 +906,6 @@ class RegGradeModel extends WB_Model
             ) AS M2
         ";
         $group_by = ' GROUP BY M2.MpIdx';
-        echo '<pre>'.'select ' . $column . $from . $group_by.'</pre>';
-        exit;
         $data = $this->_conn->query('select ' . $column . $from . $group_by)->result_array();
 
         $result = [];

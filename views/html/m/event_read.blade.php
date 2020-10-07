@@ -43,12 +43,25 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="NGR">
+                    <td class="NGR pd-zero">
                         <div class="request">
+                            <div class="title">신청리스트</div>
                             <ul>
                                 <li><label><input type="radio"> 특강명이 노출됩니다.</label><li>
                                 <li><label><input type="radio"> 특강명이 노출됩니다.</label><li>
                             </ul>
+                            <div class="title">신청자정보</div>      
+                            <div class="tx-blue tx12 pl10 mt10">이름, 연락처, 이메일주소를 모두 입력해 주세요.</div>                      
+                            <div class="pd10 form">
+                                <div class="f_left">                           
+                                    <p class="mb5"><input type="text" placeholder="이름"/><input type="tel" placeholder="휴대폰번호 숫자만 입력"></p>
+                                    <p><input type="email" placeholder="이메일" ></p>
+                                </div>
+                                <div class="f_right">
+                                    <a href="#none">신청하기</a>
+                                    {{--<a href="#none" class="end">신청만료</a>--}}
+                                </div>
+                            </div>                            
                         </div>
                     </td>
                 </tr>

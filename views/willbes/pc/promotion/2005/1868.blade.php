@@ -354,6 +354,9 @@
     <script type="text/javascript">
 
         function fn_submit() {
+
+            {!! login_check_inner_script('로그인 후 이용해 주세요', '') !!}
+
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
 

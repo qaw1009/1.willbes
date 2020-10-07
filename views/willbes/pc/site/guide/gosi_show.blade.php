@@ -129,7 +129,7 @@
                                                 {{--<h5 class="hTy5 hTy txt-gray"> <span>(지방직은 각 지역에 따라 내용이 상이하니 각 지역별 채용공고를 참고해 주시기 바랍니다)</span></h5>--}}
                                                 <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2.jpg') }}">
                                                 <h4 class="hTy4 hTy mt30">7급 공개경쟁채용시험 (2021 지방공무원 채용시험 기준)</h4>
-                                                <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2.jpg') }}">
+                                                <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2_1.jpg') }}">
                                                 <h5 class="hTy6 hTy txt-red center">교정직 및 철도공안직 6급 이하 채용시험의 경우 필기시험 합격자를 대상으로 실기시험(체력검사)을 실시하고, 실기시험 합격자에 한하여 면접시험 실시</h5>
                                             </div>
                                         </div>

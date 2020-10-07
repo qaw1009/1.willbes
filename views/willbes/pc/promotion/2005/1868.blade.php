@@ -77,7 +77,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_03.jpg" alt="예비순환 패키지 gs1순환 패키지" />
             <ul class="tabs NSK-Black">
                 <li><a href="#tab01">일반행정직렬 관리종합반</a></li>
-                <li><a href="#tab02">재경직렬 종합반</a></li>
+                <li><a href="#tab02">재경직렬 관리종합반</a></li>
                 <li><a href="#tab03">국립외교원 관리종합반</a></li>
             </ul>
             <div id="tab01">
@@ -97,44 +97,43 @@
                     <tbody>
                         <tr>
                             <td>경제학</td>
-                            <td><label><input type="checkbox">황종휴</label></td>
+                            <td>황종휴</td>
                             <td>10/12(월)~11/7(토)</td>
                             <td>24</td>
                         </tr>
                         <tr>
                             <td rowspan="2">행정법(택1)</td>
-                            <td><label><input type="checkbox">김정일</label></td>
+                            <td>김정일</td>
                             <td rowspan="2">11/9(월)~12/3(목)</td>
                             <td rowspan="2">22</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">박도원</label></td>
+                            <td>박도원</td>
                         </tr>
                         <tr>
                             <td rowspan="2">행정학(택1)</td>
-                            <td><label><input type="checkbox">박경효</label></td>
+                            <td>박경효</td>
                             <td rowspan="2">12/4(금)~12/23(수)</td>
                             <td rowspan="2">17</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">최승호</label></td>
+                            <td>최승호</td>
                         </tr>
                         <tr>
                             <td rowspan="3">정치학(택1)</td>
-                            <td><label><input type="checkbox">김희철</label></td>
+                            <td>김희철</td>
                             <td rowspan="3">12/25(금)~1/13(수)</td>
                             <td rowspan="3">17</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">정원준</label></td>
+                            <td>정원준</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">최승호</label></td>
+                            <td>최승호</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>                
                 <div class="lecBtn">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_01.jpg" alt="" usemap="#Map1868_01" border="0" />
                     <map name="Map1868_01">
@@ -149,6 +148,7 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
             </div> 
             <div id="tab02">
                 <table>
@@ -167,39 +167,38 @@
                     <tbody>
                         <tr>
                             <td>경제학</td>
-                            <td><label><input type="checkbox">황종휴</label></td>
+                            <td>황종휴</td>
                             <td>10/12(월)~11/7(토)</td>
                             <td>24</td>
                         </tr>
                         <tr>
                             <td rowspan="2">행정법(택1)</td>
-                            <td><label><input type="checkbox">김정일</label></td>
+                            <td>김정일</td>
                             <td rowspan="2">11/9(월)~12/3(목)</td>
                             <td rowspan="2">22</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">박도원</label></td>
+                            <td>박도원</td>
                         </tr>
                         <tr>
                             <td rowspan="2">행정학(택1)</td>
-                            <td><label><input type="checkbox">박경효</label></td>
+                            <td>박경효</td>
                             <td rowspan="2">12/4(금)~12/23(수)</td>
                             <td rowspan="2">17</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">최승호</label></td>
+                            <td>최승호</td>
                         </tr>
                         <tr>
                             <td>재정학</td>
-                            <td><label><input type="checkbox">
-                              황종휴</label></td>
+                            <td>
+                              황종휴</td>
                             <td>12/25(금)~1/7(목)</td>
                             <td>12</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>               
                 <div class="lecBtn">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_02.jpg" alt="" usemap="#Map1868_02" border="0" />
                     <map name="Map1868_02">
@@ -214,6 +213,7 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
             </div> 
             <div id="tab03">
                 <table>
@@ -232,38 +232,37 @@
                     <tbody>
                         <tr>
                             <td>경제학</td>
-                            <td><label><input type="checkbox">황종휴</label></td>
+                            <td>황종휴</td>
                             <td>10/12(월)~11/7(토)</td>
                             <td>24</td>
                         </tr>
                         <tr>
                             <td rowspan="2">국제정치학(택1)</td>
-                            <td><label><input type="checkbox">정원준</label></td>
+                            <td>정원준</td>
                             <td rowspan="2">11/9(월)~12/8(화)</td>
                             <td rowspan="2">26</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">김희철</label></td>
+                            <td>김희철</td>
                         </tr>
                         <tr>
                             <td rowspan="2">국제법(택1)</td>
-                            <td><label><input type="checkbox">안진우</label></td>
+                            <td>안진우</td>
                             <td rowspan="2">12/9(수)~1/9(토)</td>
                             <td rowspan="2">28</td>
                         </tr>
                         <tr>
-                            <td><label><input type="checkbox">백승호</label></td>
+                            <td>백승호</td>
                         </tr>
                         <tr>
                             <td>국제경제학</td>
-                            <td><label><input type="checkbox">황종휴</label></td>
+                            <td>황종휴</td>
                             <td>1/11(월)~1/23(토)</td>
                             <td>13</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
+                <div class="mt10 mb50">‣ 강의시간 (시험 없는 날) 1:40~5:10 | (시험) 1:00~2:00 | (강의) 2:10~5:20</div>                
                 <div class="lecBtn">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_03.jpg" alt="" usemap="#Map1868_03" border="0" />
                     <map name="Map1868_03">
@@ -278,10 +277,11 @@
                     </label>
                     <a href="#notice">이용안내확인하기 ↓</a>
                 </div> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04.jpg" alt="" />
             </div>  
 		</div>
 
-        <div class="evtCtnsBox">
+        <div class="evtCtnsBox mt50">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_05.jpg" alt="예비순환 패키지 유의사항" />
         </div>
         

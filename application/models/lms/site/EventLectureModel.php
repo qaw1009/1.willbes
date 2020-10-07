@@ -2380,6 +2380,28 @@ class EventLectureModel extends WB_Model
     }
 
     /**
+     * 추가신청자정보 삭제
+     * @return array|bool
+     */
+    public function deleteApplyMember($el_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            if (empty($el_idx) === true) {throw new \Exception('잘못된 접근 입니다.');}
+            $data = ['IsStatus'=>'N'];
+            $this->_conn->set($data)->where('IsStatus', 'Y')->where("EaaIdx IN (SELECT EaaIdx FROM {$this->_table['event_add_apply']} WHERE ElIdx = '{$el_idx}')", NULL);
+            if($this->_conn->update($this->_table['event_add_apply_member'])=== false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 이벤트 DP 강좌신청 리스트 조회
      * @param $el_idx
      * @return bool

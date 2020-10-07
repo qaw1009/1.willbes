@@ -934,6 +934,22 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 추가신청자정보 삭제
+     */
+    public function deleteApplyMember()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'el_idx', 'label' => '식별자', 'rules' => 'trim|required|integer'],
+        ];
+        if ($this->validate($rules) === false) {
+            return;
+        }
+        $result = $this->eventLectureModel->deleteApplyMember($this->_reqP('el_idx'));
+        $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
      * 댓글 현황 엑셀다운로드
      * @param array $params
      */

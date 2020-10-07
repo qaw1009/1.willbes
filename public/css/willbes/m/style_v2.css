@@ -2200,6 +2200,25 @@ body.memBody #Footer {
 .btnboard {background:#1a8ccc; color:#fff !important; border-radius: 6px; padding:10px 0; display:block; margin:10px auto 0; 
     font-size:16px; text-align: center; font-weight: bold;}
 
+.request {font-size:14px; line-height: 1.5;}
+.request .title {padding:10px; background-color: ivory; border-bottom:1px solid #ccc; font-size: 16px; font-weight: 600;}
+.request ul {padding:10px;border-bottom:1px solid #ccc;}
+.request li {margin-bottom: 5px;}
+.request .form {}
+.request .form .f_left {float: left; width: 75%;}
+.request .form .f_right {float: right; width: calc(25% - 5px);}
+.request .form .f_right a {display:block; text-align: center; height:65px; line-height: 65px; background-color:#1a8ccc; color:#fff}
+.request .form .f_right a.end {background-color: #666;}
+.request input {vertical-align: middle;}
+.request input[type=radio] {width:18px; height:18px}
+.request input[type=text],
+.request input[type=tel],
+.request input[type=email] {height: 30px; line-height: 30px; padding:0 10px}
+.request input[type=text] {width:calc(40% - 5px); margin-right:5px}
+.request input[type=tel] {width:60%}
+.request input[type=email] {width:100%}
+.request .form:after {content:""; display:block; clear:both}
+
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {
     float: left;

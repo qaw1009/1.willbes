@@ -125,9 +125,11 @@
                                                 <h5 class="hTy6 hTy txt-red center">교정직 및 철도공안직 6급 이하 채용시험의 경우 필기시험 합격자를 대상으로 실기시험(체력검사)을 실시하고, 실기시험 합격자에 한하여 면접시험 실시</h5>
                                             </div>
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">7급 공개경쟁채용시험</h4>
-                                                <h5 class="hTy5 hTy txt-gray">2017 국가공무원 채용시험 기준 <span>(지방직은 각 지역에 따라 내용이 상이하니 각 지역별 채용공고를 참고해 주시기 바랍니다)</span></h5>
+                                                <h4 class="hTy4 hTy">7급 공개경쟁채용시험 (2021 국가공무원 채용시험 기준)</h4>
+                                                {{--<h5 class="hTy5 hTy txt-gray"> <span>(지방직은 각 지역에 따라 내용이 상이하니 각 지역별 채용공고를 참고해 주시기 바랍니다)</span></h5>--}}
                                                 <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2.jpg') }}">
+                                                <h4 class="hTy4 hTy mt30">7급 공개경쟁채용시험 (2021 지방공무원 채용시험 기준)</h4>
+                                                <img class="agM" src="{{ img_url('gosi/guide/guide_public_c2_1.jpg') }}">
                                                 <h5 class="hTy6 hTy txt-red center">교정직 및 철도공안직 6급 이하 채용시험의 경우 필기시험 합격자를 대상으로 실기시험(체력검사)을 실시하고, 실기시험 합격자에 한하여 면접시험 실시</h5>
                                             </div>
                                         </div>
@@ -216,63 +218,69 @@
                                                             <col width="*">
                                                         </colgroup>
                                                         <thead>
-                                                        <tr>
-                                                            <th>구분</th>
-                                                            <th>국가직</th>
-                                                            <th>지방직</th>
-                                                            <th>서울시</th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th>구분</th>
+                                                                <th>국가직</th>
+                                                                <th>지방직</th>
+                                                                <th>서울시</th>
+                                                            </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <th>시행처</th>
-                                                            <th>인사혁신처</th>
-                                                            <th>각 지방자치단체</th>
-                                                            <th>서울시</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>시험공고시기</th>
-                                                            <th>매년 1월 1일</th>
-                                                            <th>각 지방자치단체 별도 공고</th>
-                                                            <th>매년 2월중</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>거주지제한</th>
-                                                            <th>X</th>
-                                                            <th>O</th>
-                                                            <th>X</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>필기시험일시</th>
-                                                            <th>8월중</th>
-                                                            <th>10월중</th>
-                                                            <th>6월중</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>시험출제기관</th>
-                                                            <th>인사혁신처</th>
-                                                            <th>인사혁신처</th>
-                                                            <th>서울시</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>필기시험방법</th>
-                                                            <th class="tx-origin-red" colspan="3">
-                                                                4지 1택형 / 5과목 각 객관식 20문항 (총 100분) / 각 과목당 100점 만점<br/>
-                                                                국가직의 경우 공인 영어 성적 대체로 인하여 6과목 각 객관식 20문항 (총 120분)
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>면접</th>
-                                                            <th>인사혁신처</th>
-                                                            <th>각 지방 자치단체</th>
-                                                            <th>서울시</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>근무처</th>
-                                                            <th>중앙부처 OR중앙부처 하급기관</th>
-                                                            <th>각 지방자치단체 하급기관</th>
-                                                            <th>서울시 자치단체</th>
-                                                        </tr>
+                                                            <tr>
+                                                                <th>시행처</th>
+                                                                <th>인사혁신처</th>
+                                                                <th>각 지방자치단체</th>
+                                                                <th>서울시</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>시험공고시기</th>
+                                                                <th>매년 1월 1일</th>
+                                                                <th>각 지방자치단체 별도 공고</th>
+                                                                <th>매년 2월중</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>거주지제한</th>
+                                                                <th>X</th>
+                                                                <th>O</th>
+                                                                <th>X</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>필기시험일시</th>
+                                                                <th>1차 PSAT : 2021년 6월 이후 하반기<br>
+                                                                2차 : 1차 필기시험 합격자 발표 1~2개월 후 시행
+                                                                </th>
+                                                                <th colspan="2">10월중 (통합 시행)</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>시험출제기관</th>
+                                                                <th>인사혁신처</th>
+                                                                <th>인사혁신처</th>
+                                                                <th>서울시</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>필기시험방법</th>
+                                                                <th>1차 : PSAT (언어논리, 자료해석, 상황판단)
+                                                                <br>
+                                                                5지 1택형 / 각 객관식 25문항 (총 180분)<br>
+                                                                <br>
+                                                                2차 : 전문과목
+                                                                <br>
+                                                                4지 1택형 / 4과목 각 객관식 25문항 (총 100분) </th>
+                                                                <th colspan="2">4지 1택형 / 5과목 각 객관식 20문항 (총 100분)
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>면접</th>
+                                                                <th>인사혁신처</th>
+                                                                <th>각 지방 자치단체</th>
+                                                                <th>서울시</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>근무처</th>
+                                                                <th>중앙부처 OR중앙부처 하급기관</th>
+                                                                <th>각 지방자치단체 하급기관</th>
+                                                                <th>서울시 자치단체</th>
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -350,7 +358,7 @@
                             </div>
                             <div id="gosi_guide5" class="tabContent">
                                 <div class="examInfoGu3">
-                                    <h4 class="hTy4 hTy">조정점수 제도</h4>
+                                    <h4 class="hTy4 hTy">조정점수 제도 (2022년도부터 채용 제도 변경에 따라 선택과목/조정점수 제도 폐지 예정)</h4>
                                     <div class="mgB3 tx-center">
                                         <img src="{{ img_url('gosi/guide/guide_public_c3.jpg') }}">
                                     </div>
@@ -666,7 +674,7 @@
                                     <div class="sliderGuide cSliderTM">
                                         <div class="sliderControlsTM">
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">9급 시험과목</h4>
+                                                <h4 class="hTy4 hTy">9급 시험과목 (2022년도부터 채용 제도 변경에 따라 선택과목/조정점수 제도 폐지 예정)</h4>
                                                 <div class="mgB3">
                                                     <table class="basicTb basicWd">
                                                         <colgroup>
@@ -848,7 +856,7 @@
                                                 </div>
                                             </div>
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">7급 시험과목</h4>
+                                                <h4 class="hTy4 hTy">7급 시험과목 (2021년도 채용 기준)</h4>
                                                 <div class="mgB3">
                                                     <table class="basicTb basicWd">
                                                         <colgroup>
@@ -860,24 +868,39 @@
                                                         <thead>
                                                         <tr>
                                                             <th>직렬(직류)</th>
-                                                            <th colspan="2">시험과목 7과목</th>
+                                                            <th>1차</th>
+                                                            <th>2차 - 전공(4과목)</th>
                                                             <th>주요근무 예정기관(예시)</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
                                                             <th>행정직(일반행정)</th>
-                                                            <th class="tx-origin-red" rowspan="23">
-                                                                국어<br/>
-                                                                <span class="tx-green">(한문포함)</span><br/><br/>
-
-                                                                영어<br/>
-                                                                <span class="tx-green">(국가직<br/>
-                                                                영어능력<br/>
-                                                                검정시험<br/>
-                                                                으로 대체)</span><br/><br/>
-
-                                                                한국사
+                                                            <th rowspan="24">
+                                                                <p class="tx14 strong">국가직</p>
+                                                                <br>
+                                                                PSAT<br>
+                                                                언어논리<br>
+                                                                상황판단<br>
+                                                                자료해석<br>
+                                                                <br>
+                                                                영어<br>
+                                                                한국사<br>
+                                                                (능력검정 <br>
+                                                                시험으로 <br>
+                                                                대체) <br>                                                              
+                                                                <br>                                                                
+                                                                <p class="tx14 strong">지방직</p> 
+                                                                <br>                                                               
+                                                                국어<br>
+                                                                (한문 포함,<br>
+                                                                지방직만 응시)<br>
+                                                                <br>
+                                                                영어<br>
+                                                                한국사<br>
+                                                                (능력검정 <br>
+                                                                시험으로 <br>
+                                                                대체)
                                                             </th>
                                                             <th>헌법, 행정법, 행정학, 경제학</th>
                                                             <th>전 부처</th>
@@ -1003,11 +1026,9 @@
                                                         </tr>
                                                         <tr>
                                                             <th>외무영사직(외무영사)</th>
-                                                            <th colspan="2">
-                                                                <span class="tx-origin-red">필수(6) :</span> 국어(한문포함), 영어(국가직:영어능력검정시험으로 대체), 한국사,<br/>
-                                                                헌법, 국제정치학, 국제법<br/>
-                                                                <span class="tx-origin-red">선택(1) :</span> 독어, 불어, 러시아어, 중국어, 일어, 스페인어
-                                                            </th>
+                                                            <th>헌법, 국제정치학, 국제법, 제2외국어 <br>
+                                                            (*제2외국어 : 독어, 불어, 러시아어,  <br>
+                                                            중국어, 일어, 스페인어 中 택1) </th>
                                                             <th>외교부</th>
                                                         </tr>
                                                         </tbody>
@@ -1047,16 +1068,15 @@
                                                             <th>7급 일반행정</th>
                                                             <td class="tx18 bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 국가직 ]</span><br/>
-                                                                영어<br/>
-                                                                <span class="tx13">(영어검정능력시험으로 대체)</span><br/>
-                                                                경제학
+                                                                2차 : 경제학
                                                             </td>
                                                             <td class="bg-white">
                                                                 국어<br/>
                                                                 헌법<br/>
-                                                                한국사<br/>
                                                                 행정학<br/>
-                                                                행정법
+                                                                행정법<br>
+                                                                <span class="tx-origin-red">(영어/한국사의 경우, <br>
+                                                                검정능력시험으로 대체)</span>
                                                             </td>
                                                             <td class="bg-light-gray">
                                                                 <span class="tx-origin-red tx16">[ 서울시/지방직 ]</span><br/>
@@ -1071,7 +1091,7 @@
                                                 </div>
                                             </div>
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">국가직 7급 영어능력검정시험 성적 기준</h4>
+                                                <h4 class="hTy4 hTy">7급 영어능력검정시험 성적 기준</h4>
                                                 <div class="mgB3">
                                                     <table class="basicTb basicWd">
                                                         <colgroup>

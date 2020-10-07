@@ -27,7 +27,10 @@
         .skybanner a{display:block; margin-bottom:10px;}
 
         .evt00 {background:#0a0a0a}
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/08/1786_top_bg.jpg) no-repeat center}
+
+        .kim_gtelp {background:#E12237 url(https://static.willbes.net/public/images/promotion/2020/10/kim_gtelp_bg.jpg) no-repeat center}
+
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/10/1786_top_bg.jpg) no-repeat center}
         
         .evt01 {background:#fff}
         .evt02 {background:#f4f4f4}
@@ -62,7 +65,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt04"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky01.png" alt="9월 지텔프" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_sky01.png" alt="10월 지텔프" >
             </a> 
             <a href="#evt05"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky02.png" alt="지텔프 소문내기" >
@@ -73,8 +76,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>   
 
+        <div class="evtCtnsBox kim_gtelp">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/kim_gtelp.jpg" title="기초영어X G-TELP" />
+        </div>
+
+        <div class="evtCtnsBox kim_01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/kim_01.jpg" title="누구에게 필요한 강의?" />
+        </div>
+
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_top.jpg" title="추천강좌" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_top.jpg" title="추천강좌" />
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -90,25 +101,15 @@
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_03_01.jpg" />
-            <ul class="tabs NSK-Black">
-                <li><a href="#tab01">김준기 교수님</a></li>
-                <li><a href="#tab02">하승민 교수님</a></li>
-                <li><a href="#tab03">김현정 교수님</a></li>
-            </ul>
-            <div class="tabcts" id="tab01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_03_02.jpg" />
-            </div>
-            <div class="tabcts" id="tab02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_03_03.jpg" />
-            </div>
-            <div class="tabcts" id="tab03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_03_04.jpg" />
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_03_01.jpg" />           
+        </div> 
+
+        <div class="evtCtnsBox evt03s">           
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_03_02.jpg" />
         </div> 
 
         <div class="evtCtnsBox evt04" id="evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_04.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_04.jpg" />
             <div class="evt04box">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
@@ -119,10 +120,10 @@
         </div>
 
         <div class="evtCtnsBox evt05" id="evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_05.jpg" usemap="#Map1786_01" border="0" />
-            <map name="Map1786_01">
-              <area shape="rect" coords="446,1849,678,1920" href="javascript:giveCheck();" alt="할인쿠폰받기">
-              <area shape="rect" coords="358,2250,734,2297" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_05.jpg" usemap="#Map1786_01" border="0" />
+            <map name="Map1786_01" id="Map1786_01">
+                <area shape="rect" coords="441,1845,682,1917" href="javascript:giveCheck();" alt="할인쿠폰받기">
+                <area shape="rect" coords="357,2243,732,2294" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
             </map>
         </div> 
 
@@ -133,17 +134,17 @@
 
         <div class="evtCtnsBox evtInfo NGR" id="info">
 			<div class="evtInfoBox">
-				<h4 class="NGEB">NEW 윌비스 신광은경찰팀 G-TELP 런칭 이용안내</h4>
+				<h4 class="NGEB">NEW 윌비스 신광은경찰팀 기초영어 X G-TELP 이용안내</h4>
 				<div class="infoTit NG"><strong>영어 전문 교수진</strong></div>
 				<ul>
 					<li>하승민 교수님 , 김현정 교수님 , 김준기 교수님</li>                    
 				</ul>
 				<div class="infoTit NG"><strong>하이~G-TELP 런칭기념 이벤트</strong></div>
 				<ul>
-                    <li>소문내기시 김준기교수님 9월강의  100%무료쿠폰(온라인 강의) 증정 > 쿠폰은 소문내기 진행시 장바구니 자동지급(유효기간 3일)
-                    <li>김준기 교수님 9월강의 수강후기 작성시 15일 연장 (온라인 강의) > 결제후 수강후기 남겨주시면 익일 진행
+                    <li>소문내기시 김준기 교수님 10월 강의 100%무료쿠폰(온라인 강의)증정> 쿠폰은 소문내기 진행시 장바구니 자동지급( 10/22 사용가능)
+                    <li>김준기 교수님 10월G-TELP강의 수강후기 작성시 15일연장(온라인 강의)>결제후 수강후기 남겨주시면 익일 진행
                     <li>생애 첫 지텔프 50% 수험료 할인 >월요일~일요일 구매자 취합하여 그 다음주 월요일에  개별문자로 쿠폰번호 발송
-                    <li>한능검 온라인 강의 할인쿠폰(추후 공지예정)
+                    <li>한능검 온라인강의 할인쿠폰( G-TELP 문법강의 결제시 자동으로 지급 – 내강의실 확인 (10/22 사용가능)
                     <li>2022년 과목개편 과목(형사법,헌법,경찰학) 온라인 강의할인쿠폰(추후공지예정)</li>
 				</ul>
 				<ul>

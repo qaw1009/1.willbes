@@ -1847,8 +1847,6 @@ body.memBody #Footer {
     margin: 0;
     cursor: pointer;
 }
-
-
 .agree-All-Tit {
     font-size: 14px;
     font-weight: 600;
@@ -2198,6 +2196,9 @@ body.memBody #Footer {
     height: 22px;
     line-height: 22px;
 }
+.btnblue {background:#1a8ccc; color:#fff !important; border-radius: 6px; padding:5px 15px; display: inline-block !important; margin-top:5px}
+.btnboard {background:#1a8ccc; color:#fff !important; border-radius: 6px; padding:10px 0; display:block; margin:10px auto 0; 
+    font-size:16px; text-align: center; font-weight: bold;}
 
 /* ETC : 나머지 버튼 공통 */
 .InfoBtn {

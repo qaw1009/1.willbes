@@ -83,6 +83,8 @@
             <a href="{{ site_url('/home/html/m/passNote_list') }}" target="_blank">합격수기 list</a>
             <a href="{{ site_url('/home/html/m/passNote_write') }}" target="_blank">합격수기 write</a>
             <a href="{{ site_url('/home/html/m/passNote_read') }}" target="_blank">합격수기 read</a>
+            <a href="{{ site_url('/home/html/m/event_list') }}" target="_blank">이벤트 list</a>
+            <a href="{{ site_url('/home/html/m/event_read') }}" target="_blank">이벤트 read</a>
         </div>
     </li>
     <li>        

@@ -2214,8 +2214,8 @@ body.memBody #Footer {
 .request input[type=text],
 .request input[type=tel],
 .request input[type=email] {height: 30px; line-height: 30px; padding:0 10px}
-.request input[type=text] {width:calc(30% - 5px); margin-right:5px}
-.request input[type=tel] {width:70%}
+.request input[type=text] {width:calc(40% - 5px); margin-right:5px}
+.request input[type=tel] {width:60%}
 .request input[type=email] {width:100%}
 .request .form:after {content:""; display:block; clear:both}
 

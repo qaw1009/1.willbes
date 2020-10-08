@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed; width:190px; top:200px;right:0;z-index:1;}
+        .sky {position:fixed; width:190px; top:200px;right:10px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0a0a0a}
@@ -32,8 +32,8 @@
         .time table td:last-child,
         .time table td:last-child span {font-size:40px}
 
-        .wb_cts_top {background:#C4C6C1 url(https://static.willbes.net/public/images/promotion/2020/10/1871_top_bg.jpg) no-repeat center;}
-        .wb_cts03 {background:#3F4FD6;}
+        .wb_cts_top {background:url(https://static.willbes.net/public/images/promotion/2020/10/1871_top_bg.jpg) no-repeat center;}
+        .wb_cts03 {background:#677c69;}
         .wb_cts04 {background:#fff;}
         .wb_cts05 {background:#fff;}
         .wb_cts06 {background:#fff;}   

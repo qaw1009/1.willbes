@@ -44,6 +44,10 @@
         .evt03 .tabs li:last-child a {margin:0}
         .evt03 .tabs:after {content:''; display:block; clear:both}
 
+        .evt03s {position:relative;}
+        .youtube {position:absolute; top:180px; left:50%;z-index:1;margin-left:-145px}
+        .youtube iframe {width:585px; height:345px}
+
         .evt04 {background:#555; padding-bottom:150px}
         .evt04 .evt04box {width:1120px; padding:20px; margin:0 auto; background:#fff}
         .evt05 {background:#fff}
@@ -106,6 +110,9 @@
 
         <div class="evtCtnsBox evt03s">           
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_03_02.jpg" />
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/hFgv1FgRe3I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div> 
 
         <div class="evtCtnsBox evt04" id="evt04">

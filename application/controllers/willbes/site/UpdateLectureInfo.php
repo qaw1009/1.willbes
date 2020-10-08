@@ -10,6 +10,7 @@ class UpdateLectureInfo extends \app\controllers\FrontController
 
     private $_page_per_rows = 20;
     private $_show_page_num = 10;
+    private $_show_page_num_m = 5;
 
     public function __construct()
     {
@@ -50,13 +51,19 @@ class UpdateLectureInfo extends \app\controllers\FrontController
             ]
         ];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_show_page_num;
+        } else {
+            $paging_count = $this->_show_page_num_m;
+        }
+
         $arr_order_by = ['lu.wRegDatm' => 'desc', 'p.ProdCode' => 'desc'];
 
         $list = [];
         $count = $this->updateLectureInfoFModel->listUpdateInfo(true, $arr_condition);
 
         $paging_url = '/' . ltrim($this->getFinalUriString(), APP_DEVICE . '/') . (empty($query_string) === false ? '?' . $query_string : '');
-        $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $this->_show_page_num, true);
+        $paging = $this->pagination($paging_url, $count, $this->_page_per_rows, $paging_count, true);
 
         if($count > 0) {
             $list = $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $paging['limit'], $paging['offset'], $arr_order_by);

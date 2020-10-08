@@ -150,7 +150,7 @@
                     <div class="lecBtn">
                         <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_01.jpg" alt="" usemap="#Map1868_01" border="0" />
                         <map name="Map1868_01">
-                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173322');" alt="일반행정직렬 관리종합반">
+                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173342');" alt="일반행정직렬 관리종합반">
                         </map>
                         <span><input type="text" name="register_data1" placeholder="친구 아이디 입력" oninput="checkInput(this);" maxlength="20"><a href="javascript:fn_submit();">확인</a></span>
                     </div>
@@ -215,7 +215,7 @@
                     <div class="lecBtn">
                         <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_02.jpg" alt="" usemap="#Map1868_02" border="0" />
                         <map name="Map1868_02">
-                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173323');" alt="재경직렬 종합반">
+                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173343');" alt="재경직렬 종합반">
                         </map>
                         <span><input type="text" name="register_data1" placeholder="친구 아이디 입력" oninput="checkInput(this);" maxlength="20"><a href="javascript:fn_submit();">확인</a></span>
                     </div>
@@ -279,7 +279,7 @@
                     <div class="lecBtn">
                         <img src="https://static.willbes.net/public/images/promotion/2020/10/1868_04_03.jpg" alt="" usemap="#Map1868_03" border="0" />
                         <map name="Map1868_03">
-                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173324');" alt="국립외교원 관리종합반">
+                            <area shape="rect" coords="831,40,1094,108" href="javascript:go_PassLecture('173344');" alt="국립외교원 관리종합반">
                         </map>
                         <span><input type="text" name="register_data1" placeholder="친구 아이디 입력" oninput="checkInput(this);" maxlength="20"><a href="javascript:fn_submit();">확인</a></span>
                     </div>
@@ -405,7 +405,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/userPackage/show/cate/3094/prod-code/') }}' + code;
+            var url = '{{ site_url('/package/show/cate/3094/pack/648002/prod-code/') }}' + code;
             location.href = url;
         }
 

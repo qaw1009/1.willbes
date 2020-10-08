@@ -84,7 +84,8 @@
             $datatable = $list_table.DataTable({
                 ajax: false,
                 paging: true,
-                pageLength: 50,
+                pageLength: 100,
+                lengthChange: false,
                 searching: true,
                 buttons: [
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬번호초기화', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-order-num-reset hide' },

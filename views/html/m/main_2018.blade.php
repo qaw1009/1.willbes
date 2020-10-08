@@ -460,11 +460,13 @@
         </ul>
     </div> 
 
+    {{--
     <div class="appPlayer c_both">
         <a href="#none">
             <img src="{{ img_url('m/main/icon_app_player.gif') }}">
         </a>
     </div>
+    --}}
 
 </div>
 <!-- End Container -->

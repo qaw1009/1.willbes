@@ -84,7 +84,8 @@
             $datatable = $list_table.DataTable({
                 ajax: false,
                 paging: true,
-                pageLength: 50,
+                pageLength: 100,
+                lengthChange: false,
                 searching: true,
                 buttons: [
                     { text: '<i class="fa fa-sort-numeric-asc mr-5"></i> 정렬번호초기화', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-order-num-reset hide' },
@@ -177,7 +178,7 @@
             });
 
             // 과정 등록/수정 모달창 오픈
-            $('.btn-regist, .btn-modify').click(function() {
+            $list_form.on('click', '.btn-regist, .btn-modify', function() {
                 var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 

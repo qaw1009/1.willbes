@@ -27,20 +27,23 @@
         <div class="profMenu">
             <ul>
                 <li><a href="#none" onclick="openWin('LayerProfile'),openWin('Profile')">프로필</a><li>
+                {{--
                 <li><a href="#none">홈페이지</a><li>
                 <li><a href="#none">카페</a><li>
                 <li><a href="#none">블로그</a><li>
+                --}}
                 <li><a href="#none" onclick="openWin('LayerCurriculum'),openWin('Curriculum')">커리큘럼</a><li>                
             </ul>
         </div>        
     </div>
 
     <div class="lineTabs lecListTabs c_both">
-        <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
+        <ul class="tabWrap lineWrap rowlineWrap lecListWrap five mt-zero">
             <li><a href="#leclist1" class="on">패키지</a><span class="row-line">|</span></li>
             <li><a href="#leclist2">단과</a><span class="row-line">|</span></li>
-            <li><a href="#leclist3">특강</a><span class="row-line">|</span></li>
-            <li><a href="#leclist4">수강생전용</a></li>
+            <li><a href="#leclist3">전국라이브</a><span class="row-line">|</span></li>
+            <li><a href="#leclist4">특강</a><span class="row-line">|</span></li>
+            <li><a href="#leclist5">수강생전용</a></li>
         </ul>        
 
         <div class="tabBox lineBox lecListBox">
@@ -249,8 +252,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>
@@ -278,8 +280,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>
@@ -363,8 +364,78 @@
                 </div> 
             </div>
 
-            {{--특강--}}
+            {{--전국라이브--}}
             <div id="leclist3" class="tabContent">
+                <div class="lineTabs lecListTabs c_both pd-zero">
+                    <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                        <tbody>
+                            <tr>
+                                <td class="w-data tx-left">
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
+                                        </dl>
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="two">
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="oneBox">
+                                        <dl class="w-info">
+                                            <dt>이론반<span class="row-line">|</span>유아<span class="row-line">|</span>민정선 </dt>
+                                        </dl>
+                                        <div class="w-tit tx-blue">
+                                            <a href="#none">2020 (9~10월) 실전 모의고사반 (7주)</a>
+                                        </div>
+                                        <dl class="w-info tx-gray">
+                                            <dt>강의촬영(실강) : 2020년 09월</dt><br>
+                                            <dt>강의수 : <span class="tx-blue">44강/60강</span><span class="row-line">|</span></dt>
+                                            <dt>수강기간 : <span class="tx-blue">90일</span>
+                                                <span class="NSK ml10 nBox n1">무제한</span>
+                                                <span class="NSK nBox n3">진행중</span>
+                                            </dt>
+                                        </dl>
+                                        <ul>                                                                                                                                                                            
+                                            <li class="mb10">
+                                                <input type="checkbox" name="" class="chk_products">
+                                                <label>PC+모바일 : <span class="tx-blue">318,000원</span>(↓0%)</label>
+                                             </li>
+                                        </ul>
+                                        <div class="w-buy">
+                                            <ul class="two">
+                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>                        
+                            </tr>                
+                        </tbody>
+                    </table>                    
+                </div>  
+            </div>
+
+            {{--특강--}}
+            <div id="leclist4" class="tabContent">
                 <div class="profLecTab">
                     <ul class="tabWrap two">
                         <li><a href="#specialList1" class="on">온라인강좌</a></li>
@@ -400,8 +471,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>
@@ -429,8 +499,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>
@@ -515,8 +584,7 @@
             </div>
 
             {{--수강생전용--}}
-            <div id="leclist4" class="tabContent">
-                {{--온라인--}}
+            <div id="leclist5" class="tabContent">
                 <div class="lineTabs lecListTabs c_both pd-zero" id="offList1">
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                         <tbody>
@@ -544,8 +612,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>
@@ -573,8 +640,7 @@
                                              </li>
                                         </ul>
                                         <div class="w-buy">
-                                            <ul class="three">
-                                                <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
+                                            <ul class="two">
                                                 <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
                                                 <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
                                             </ul>

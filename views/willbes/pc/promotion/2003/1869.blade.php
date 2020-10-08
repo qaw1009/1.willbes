@@ -149,13 +149,13 @@
                         </a>
                     </li>
                     <li>
-                        <a id='tab3' href="@if(time() > strtotime('202010171140')) javascript:alert('10.17(토) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
+                        <a id='tab3' href="@if(time() < strtotime('202010171140')) javascript:alert('10.17(토) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=3#content_3') }}@endif">
                             <span>시험 후 당충전 필수!</span>
                             <div class="NSK-Black">시험총평&이벤트</div>
                         </a>
                     </li>     
                     <li>
-                        <a id='tab4' href="@if(time() > strtotime('202010191600')) javascript:alert('10.19(월) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
+                        <a id='tab4' href="@if(time() < strtotime('202010191600')) javascript:alert('10.19(월) 오픈!') @else {{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/' . $arr_base['promotion_code'] . '/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=4#content_4') }}@endif">
                             <span>2020 서울·지방직 7급</span>
                             <div class="NSK-Black">기출해설강의</div>
                         </a>
@@ -328,7 +328,7 @@
                         <td>일반행정 7급</td>
                     </tr>
                     <tr>
-                        <td>서울</td>
+                        <th><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" target="_blank">서울</a></th>
                         <td>284</td>
                         <td>142</td>
                         <td>17,668</td>
@@ -339,7 +339,7 @@
                         <td>85.5</td>
                     </tr>
                     <tr>
-                        <td>강원</td>
+                        <th><a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" target="_blank">강원</a></th>
                         <td>106</td>
                         <td>5</td>
                         <td>1,570</td>
@@ -350,7 +350,7 @@
                         <td>80.1</td>
                     </tr>
                     <tr>
-                        <td>경기</td>
+                        <th><a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" target="_blank">경기</a></th>
                         <td>131</td>
                         <td>75</td>
                         <td>7,443</td>
@@ -361,7 +361,7 @@
                         <td>85.5</td>
                     </tr>
                     <tr>
-                        <td>경남</td>
+                        <th><a href="@if($file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" target="_blank">경남</a></th>
                         <td>121</td>
                         <td>14</td>
                         <td>3,859</td>
@@ -372,7 +372,7 @@
                         <td>90.71</td>
                     </tr>
                     <tr>
-                        <td>경북</td>
+                        <th><a href="@if($file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" target="_blank">경북</a></th>
                         <td>15</td>
                         <td>15</td>
                         <td>1,220</td>
@@ -383,7 +383,7 @@
                         <td>86.71</td>
                     </tr>
                     <tr>
-                        <td>광주</td>
+                        <th><a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" target="_blank">광주</a></th>
                         <td>42</td>
                         <td>15</td>
                         <td>1,493</td>
@@ -394,7 +394,7 @@
                         <td>83.57</td>
                     </tr>
                     <tr>
-                        <td>대구</td>
+                        <th><a href="@if($file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" target="_blank">대구</a></th>
                         <td>29</td>
                         <td>12</td>
                         <td>1,938</td>
@@ -405,7 +405,7 @@
                         <td>87.85</td>
                     </tr>
                     <tr>
-                        <td>대전</td>
+                        <th><a href="@if($file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" target="_blank">대전</a></th>
                         <td>55</td>
                         <td>22</td>
                         <td>1,419</td>
@@ -416,7 +416,7 @@
                         <td>86.21</td>
                     </tr>
                     <tr>
-                        <td>부산</td>
+                        <th><a href="@if($file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" target="_blank">부산</a></th>
                         <td>50</td>
                         <td>15</td>
                         <td>3,500</td>
@@ -427,7 +427,7 @@
                         <td>86.43</td>
                     </tr>
                     <tr>
-                        <td>세종</td>
+                        <th><a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" target="_blank">세종</a></th>
                         <td>11</td>
                         <td>2</td>
                         <td>517</td>
@@ -438,7 +438,7 @@
                         <td>83.85</td>
                     </tr>
                     <tr>
-                        <td>울산</td>
+                        <th><a href="@if($file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" target="_blank">울산</a></th>
                         <td>16</td>
                         <td>4</td>
                         <td>804</td>
@@ -449,7 +449,7 @@
                         <td>83.86</td>
                     </tr>
                     <tr>
-                        <td>인천</td>
+                        <th><a href="@if($file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" target="_blank">인천</a></th>
                         <td>93</td>
                         <td>12</td>
                         <td>2,494</td>
@@ -460,7 +460,7 @@
                         <td>(총점) 590</td>
                     </tr>
                     <tr>
-                        <td>전남</td>
+                        <th><a href="@if($file_yn[13] == 'Y') {{ front_url($file_link[13]) }} @else {{ $file_link[13] }} @endif" target="_blank">전남</a></th>
                         <td>111</td>
                         <td>33</td>
                         <td>2,082</td>
@@ -471,7 +471,7 @@
                         <td>80.71</td>
                     </tr>
                     <tr>
-                        <td>전북</td>
+                        <th><a href="@if($file_yn[14] == 'Y') {{ front_url($file_link[14]) }} @else {{ $file_link[14] }} @endif" target="_blank">전북</a></th>
                         <td>81</td>
                         <td>3</td>
                         <td>1,667</td>
@@ -482,7 +482,7 @@
                         <td>84.07</td>
                     </tr>
                     <tr>
-                        <td>제주</td>
+                        <th><a href="@if($file_yn[15] == 'Y') {{ front_url($file_link[15]) }} @else {{ $file_link[15] }} @endif" target="_blank">제주</a></th>
                         <td>7</td>
                         <td>-</td>
                         <td>286</td>
@@ -493,7 +493,7 @@
                         <td>85.71</td>
                     </tr>
                     <tr>
-                        <td>충남</td>
+                        <th><a href="@if($file_yn[16] == 'Y') {{ front_url($file_link[16]) }} @else {{ $file_link[16] }} @endif" target="_blank">충남</a></th>
                         <td>112</td>
                         <td>8</td>
                         <td>1,963</td>
@@ -504,7 +504,7 @@
                         <td>86.21</td>
                     </tr>
                     <tr>
-                        <td>충북</td>
+                        <th><a href="@if($file_yn[17] == 'Y') {{ front_url($file_link[17]) }} @else {{ $file_link[17] }} @endif" target="_blank">충북</a></th>
                         <td>40</td>
                         <td>10</td>
                         <td>1,585</td>
@@ -514,8 +514,7 @@
                         <td>62.92:1</td>
                         <td>83.57</td>
                     </tr>
-                    </table>
-     
+                    </table>                                            
             </div>
         </div>
 
@@ -617,11 +616,6 @@
             
         /*tab*/
         $(document).ready(function(){
-            @if(date('YmdHi') < '202010120000' && ENVIRONMENT == 'production')
-                alert('10.12(월) 오픈!');
-                location.href = '{{ front_url('/') }}';
-            @endif
-
             var cnt;
             var tab_id = '{{ $arr_base['tab_id'] }}';
             $('#tab'+tab_id).addClass('active');

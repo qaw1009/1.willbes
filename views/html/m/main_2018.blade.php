@@ -36,40 +36,40 @@
 <body id="goTop">
     <!-- Gnb -->
     <!-- aside -->
-<div id="aside">
-    <div class="asideBox">
-        <div id="naviA">
-            <h2 class="NGEB"><img src="/public/img/willbes/m/main/icon_book.png" class="clogo">임용</h2>
-            <ul class="NGEB">
-                <li class="ListBox">
-                    <div class="List">보강신청</div>
-                </li>
-                <li class="ListBox">
-                    <div class="List">무료강의</div>
-                </li>
-                <li class="ListBox">
-                    <div class="List">FAQ</div>
-                </li>
-                <li class="ListBox">
-                    <div class="List">1:1 상담</div>
-                </li>
-                <li class="ListBox">
-                    <div class="List">오시는길</div>
-                </li>
-            </ul>
-        </div>
+    <div id="aside">
+        <div class="asideBox">
+            <div id="naviA">
+                <h2 class="NGEB"><img src="/public/img/willbes/m/main/icon_book.png" class="clogo">임용</h2>
+                <ul class="NGEB">
+                    <li class="ListBox">
+                        <div class="List">보강신청</div>
+                    </li>
+                    <li class="ListBox">
+                        <div class="List">무료강의</div>
+                    </li>
+                    <li class="ListBox">
+                        <div class="List">FAQ</div>
+                    </li>
+                    <li class="ListBox">
+                        <div class="List">1:1 상담</div>
+                    </li>
+                    <li class="ListBox">
+                        <div class="List">오시는길</div>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="rMenu">
-            <ul>
-                <li><a href="#none" onclick="openWin('LoginForm')" class="Menu_close"><span class="hidden">닫기</span></a></li>
-                <li><a href="#none">윌비스홈</a></li>               
-                <li><a href="#none">로그아웃</a></li>
-                <li><a href="#none" class="tx-red">로그인</a></li>
-                <li><a href="#none">회원가입</a></li>
-            </ul>
+            <div class="rMenu">
+                <ul>
+                    <li><a href="#none" onclick="openWin('LoginForm')" class="Menu_close"><span class="hidden">닫기</span></a></li>
+                    <li><a href="#none">윌비스홈</a></li>               
+                    <li><a href="#none">로그아웃</a></li>
+                    <li><a href="#none" class="tx-red">로그인</a></li>
+                    <li><a href="#none">회원가입</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 <!-- topnav -->
 
 <!-- Header -->
@@ -87,7 +87,7 @@
                     <a href="#none" class="siteTitle NSK-Black">임용</span></a>
                 </div>   
                 <button type="button" class="classroom">
-                    <span class="hidden">강의실배정표</span>
+                    <span>강의실배정표</span>
                 </button>      
                 <button type="button" class="basket">
                     <span class="hidden">장바구니</span>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="dday NSK">
-            <strong class="NSK-Black">D-day</strong> 유초딩 <span>D-050</span>  · 중등 <span>D-064</span>
+            <strong class="NSK-Black">D-day</strong> 유초등 <span>D-050</span>  · 중등 <span>D-064</span>
         </div>
 
         <div class="subMenuBox c_both">

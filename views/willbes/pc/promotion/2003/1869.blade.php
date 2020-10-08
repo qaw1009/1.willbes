@@ -617,11 +617,6 @@
             
         /*tab*/
         $(document).ready(function(){
-            @if(date('YmdHi') < '202010120000' && ENVIRONMENT == 'production')
-                alert('10.12(월) 오픈!');
-                location.href = '{{ front_url('/') }}';
-            @endif
-
             var cnt;
             var tab_id = '{{ $arr_base['tab_id'] }}';
             $('#tab'+tab_id).addClass('active');

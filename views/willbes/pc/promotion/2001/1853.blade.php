@@ -53,7 +53,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none" onclick="javascript:alert('준비중입니다.');">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1858" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_5.png" class="off" alt="오태진 경찰한국사"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_5on.png" class="on" alt="오태진 경찰한국사"  />
                         </a>
@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://police.local.willbes.net/promotion/index/cate/3001/code/1854" target="_blank">     
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/1854" target="_blank">     
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1.png" class="off" alt="신광은 형소법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1on.png" class="on" alt="신광은 형소법"  />
                         </a>

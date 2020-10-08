@@ -1989,9 +1989,14 @@
                         </tbody></table>
                     </div>         
                 </div>
+
+                {{-- 그래프 --}}
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <div class="trendView">
                     <div class="trendTitle">최근 10 년 모집 동향 분석</div>
-                    <div class="graph"></div>
+                    <div class="graph">
+                        <div id="chart_div1"></div>
+                    </div>
                     <div class="graph"></div>
                     <div class="trendData">
                         <table cellspacing="0">
@@ -2198,8 +2203,59 @@
             $(this).fadeOut();
             document.querySelector('.examInfo').scrollIntoView({ behavior: 'smooth' });
         });
-    });    
+    });
 
-    
+
+    $(document).ready(function() {
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawVisualization1);
+        
+        function drawVisualization1() {
+            var data = google.visualization.arrayToDataTable([
+                ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
+                ['2011', {v:44.95, f:'44.95'}, 44.95],
+                ['2012', {v:19.93, f:'19.93'}, 19.93],
+                ['2013', {v:6.68, f:'6.68'}, 6.68],
+                ['2014', {v:11.13, f:'11.13'}, 11.13],
+                ['2015', {v:7.90, f:'7.90'}, 7.90],
+                ['2016', {v:8.04, f:'8.04'}, 8.04],
+                ['2017', {v:10.29, f:'10.29'}, 10.29],
+                ['2018', {v:6.59, f:'6.59'}, 6.59],
+                ['2019 추시', {v:25.9, f:'25.9'}, 25.9],
+                ['2020\n(학년도)', {v:11.35, f:'11.35'}, '11.35'],
+            ]);
+            var options = {
+                title : '(경쟁률)',
+                vAxes: {
+                    0:{
+                        gridlines : { count : 5 },
+                        format: '#\':1\''
+                    }
+                },
+                hAxis: {title: ""},
+                //isStacked: true,
+                seriesType: "bars",
+                series: {
+                    0: { type: "line"}
+                },
+                axes: {
+                    y: {
+                        count: {label: '인원'},
+                        ratio: {side: 'right', label: '비율'}
+                    }
+                },
+                annotations: {
+                    alwaysOutside: true,
+                    textStyle: {
+                        fontSize: 12,
+                        auraColor: 'none',
+                        color: '#555'
+                    },
+                },
+            };
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
+            chart.draw(data, options);
+        }
+    });
 </script>
 @stop

@@ -17,44 +17,35 @@
         </div>
         <div class="willbes-Lec-Selected NG tx-gray">
 
-            @if(empty($arr_base['category']) === false)
-                <select id="s_cate_code" name="s_cate_code" title="카테고리" class="seleCate width32n5p d_none" onchange="goUrl('s_cate_code',this.value)" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
-                    <option value="">카테고리</option>
-                    @foreach($arr_base['category'] as $row)
-                        <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
-                    @endforeach
-                </select>
-            @endif
+            <select id="s_cate_code" name="s_cate_code" title="카테고리" class="width49p" onchange="change_url('s_cate_code',this.value)">
+                <option value="">카테고리</option>
+                @foreach($arr_base['category'] as $row)
+                    <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if(element('s_cate_code', $arr_input) == $row['CateCode'])selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
+                @endforeach
+            </select>
 
-            @if(empty($arr_base['subject']) === false)
-                <select id="subject_idx" name="subject_idx" title="과목" class="seleCate width32n5p" onchange="goUrl('subject_idx',this.value)">
-                    <option value="">과목</option>
-                    @foreach($arr_base['subject'] as $key => $val)
-                        <option value="{{$key}}" @if(element('subject_idx', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
-                    @endforeach
-                </select>
-            @endif
+            <select id="subject_idx" name="subject_idx" title="과목" class="width50p ml1p" onchange="change_url('subject_idx',this.value)" @if(empty(element('s_cate_code', $arr_input)) === true) disabled @endif>
+                <option value="">과목</option>
+                @foreach($arr_base['subject'] as $row)
+                    <option value="{{$row['SubjectIdx']}}" @if(element('subject_idx', $arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                @endforeach
+            </select>
 
-            <div class="willbes-Lec-Search NG width100p mt1p">
-                <div class="inputBox width90p p_re">
-                    <input type="text" id="s_keyword" name="s_keyword" maxlength="30" value="{{ element('s_keyword', $arr_input) }}" class="labelSearch width100p" placeholder="제목 및 내용 검색">
-                    <button type="button" onclick="goUrl('s_keyword', document.getElementById('s_keyword').value)" class="search-Btn" class="search-Btn">
-                        <span class="hidden">검색</span>
-                    </button>
-                </div>
-                <div class="resetBtn width10p">
-                    <a href="{{front_url($default_path.'/index')}}"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
-                </div>
-            </div>
+            <select id="prof_idx" name="prof_idx" title="교수" class="width49p mt1p" onchange="change_url('prof_idx',this.value)" @if(empty(element('s_cate_code', $arr_input)) === true || empty(element('subject_idx', $arr_input)) === true) disabled @endif>
+                <option value="">교수</option>
+                @foreach($arr_base['professor'] as $key => $row)
+                    <option value="{{$row['ProfIdx']}}" @if(element('prof_idx', $arr_input) == $row['ProfIdx'])selected="selected"@endif>{{$row['wProfName']}}</option>
+                @endforeach
+            </select>
         </div>
 
-        @if(empty($arr_swich['create_btn']) === false)
-            <div class="btnBox mb20">
-                <ul class="f_right width100p">
-                    <li class="InfoBtn btn_blue"><a href="{{front_url($default_path.'/create?'.$get_params)}}">등록하기</a></li>
-                </ul>
-            </div>
-        @endif
+        <div class="ml10">※ 수강후기 등록은 PC버전에서만 가능합니다.</div>
+
+        <div class="sort">
+            <a href="#none" id="order_by_best" class="btn-order-by @if($orderby == 'best') on @endif" onclick="goUrl('orderby','best')" >BEST순</a>
+            <a href="#none" id="order_by_date" class="btn-order-by @if($orderby == 'date') on @endif" onclick="goUrl('orderby','date')">최신순</a>
+            <a href="#none" id="order_by_score" class="btn-order-by @if($orderby == 'score') on @endif"  onclick="goUrl('orderby','score')">평점순</a>
+        </div>
 
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <colgroup>
@@ -69,19 +60,31 @@
             @endif
 
             @foreach($list as $row)
-                <tr class="{{$row['IsBest'] == '1' ? 'bg-light-blue' : ''}}">
-                    <td class="w-data tx-left" colspan="2">
-
-                        <a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only' . '/prod-code/' . $row['ProdCode']) }}">
-                            <div class="w-tit">
-                                {{hpSubString($row['Title'],0,40,'...')}}
-                            </div>
-                            <dl class="w-info tx-gray">
-                                <dt>{!! (empty(sess_data('mem_idx')) === false && $row['RegMemIdx'] == sess_data('mem_idx')) ? $row['RegName'] : hpSubString($row['RegName'],0,2,'*') !!}<span class="row-line">|</span></dt>
-                                <dt>{{$row['RegDatm']}}<span class="row-line">|</span></dt>
-                                <dt>조회수 : <span class="tx-blue">{{$row['TotalReadCnt']}}</span></dt>
-                            </dl>
-                        </a>
+                <tr class="replyList willbes-Open-Table">
+                    <td class="w-data tx-left">
+                        <dl class="w-info">
+                            <dt>
+                                @if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_best_reply.gif') }}">@endif
+                                {{ $row['SubjectName'] }} <span class="row-line">|</span> {{ $row['ProfName'] }}
+                            </dt>
+                        </dl>
+                        <div class="w-tit">
+                            {{hpSubString($row['Title'],0,40,'...')}}
+                        </div>
+                        <dl class="w-info tx-gray">
+                            <dt>
+                                <img src="{{ img_url("sub/star" . $row['LecScore'] . ".gif") }}"/> <span class="row-line">|</span>
+                                {!! (empty(sess_data('mem_idx')) === false && $row['RegMemIdx'] == sess_data('mem_idx')) ? $row['RegMemName'] : hpSubString($row['RegMemName'],0,2,'*') !!}
+                                <span class="row-line">|</span> {{$row['RegDatm']}}
+                            </dt>
+                        </dl>
+                    </td>
+                    <td class="MoreBtn tx-center">></td>
+                </tr>
+                <tr class="replyTxt willbes-Open-List bg-light-gray">
+                    <td class="w-txt NGR" colspan="2">
+                        <div class="tx-blue strong mb10">{{ $row['ProdName'] }}</div>
+                        {!! nl2br($row['Content']) !!}
                     </td>
                 </tr>
             @endforeach
@@ -97,4 +100,20 @@
         <!-- Topbtn -->
     </div>
     <!-- End Container -->
+
+    <script>
+        var $url_form = $('#url_form');
+
+        function change_url(s_type,s_val){
+            switch (s_type){
+                case "s_cate_code" :
+                    $("input[name='subject_idx'], input[name='prof_idx']").val("");
+                    break;
+                case "subject_idx" :
+                    $("input[name='prof_idx']").val("");
+                    break;
+            }
+            goUrl(s_type,s_val);
+        }
+    </script>
 @stop

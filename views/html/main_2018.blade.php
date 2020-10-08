@@ -1990,7 +1990,7 @@
                     </div>         
                 </div>
 
-                {{--그래프--}}
+                {{-- 그래프 --}}
                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <div class="trendView">
                     <div class="trendTitle">최근 10 년 모집 동향 분석</div>

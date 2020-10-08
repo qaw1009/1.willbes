@@ -379,7 +379,7 @@ min-height: 260px;}
 .mainPop_con .mainPop_map .total{top:883px; left:900px}
 .mainPop_con .trendView {background-color: #fff; margin:50px; padding:30px}
 .mainPop_con .trendView .trendTitle {font-size:18px; font-weight:600;}
-.mainPop_con .trendView .graph {border:1px solid #dedede; margin-top:20px; min-height:200px;}
+.mainPop_con .trendView .graph {border:1px solid #dedede; margin-top:20px; /*min-height:200px;*/}
 .mainPop_con .trendView .trendData {margin-top: 20px;}
 .mainPop_con .trendView .trendData table {border-top:1px solid #dedede; border-left:1px solid #dedede}
 .mainPop_con .trendView .trendData tr {border-bottom:1px solid #dedede}

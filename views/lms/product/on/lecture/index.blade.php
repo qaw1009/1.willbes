@@ -215,7 +215,10 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.SiteName+'<BR>'+(row.CateName_Parent == null ? '' : row.CateName_Parent+'<BR>')+(row.CateName)+'<BR>'+row.SchoolYear;
                         }},
-                    {'data' : 'LecTypeCcd_Name'},//강좌유형
+                    //{'data' : 'LecTypeCcd_Name'},//강좌유형
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.LecTypeCcd_Name + (row.LecSaleType==='B' ? '<BR><font color="red">선수강좌</font>' : '');
+                        }},//단강좌명
                     {'data' : 'CourseName'},//과정명
                     {'data' : 'SubjectName'},//과목명
                     {'data' : 'wProfName_String'},

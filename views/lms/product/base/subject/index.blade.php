@@ -178,7 +178,7 @@
             });
 
             // 과목 등록/수정 모달창 오픈
-            $('.btn-regist, .btn-modify').click(function() {
+            $list_form.on('click', '.btn-regist, .btn-modify', function() {
                 var is_regist = ($(this).prop('class').indexOf('btn-regist') !== -1) ? true : false;
                 var uri_param = (is_regist === true) ? '' : $(this).data('idx');
 

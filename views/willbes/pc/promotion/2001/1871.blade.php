@@ -121,14 +121,6 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_cts05" id="event2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_05.jpg"  alt="매일 1권씩 추첨" />            
-        </div>
-        {{--댓글url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif  
-
         <div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">이용안내</h4>

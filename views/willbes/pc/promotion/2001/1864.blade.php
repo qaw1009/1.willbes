@@ -266,7 +266,7 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_01_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1864_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
@@ -371,7 +371,7 @@
 
         <div class="evtCtnsBox evt04_03"> 
             <div class="playTv">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_04_04.jpg"  alt="" usemap="#Map1864D" border="0" />               
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1864_04_04.jpg"  alt="" usemap="#Map1864D" border="0" />               
                 <map name="Map1864D">
                     <area shape="rect" coords="275,2584,858,2661" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank" alt="신광은경찰팀 TV">
                 </map>

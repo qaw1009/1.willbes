@@ -21,6 +21,10 @@
         </div>
     </div>
 
+    <style>
+        .ssam .willbes-Layer-ReplyBox { top:0;}
+    </style>
+
     <script type="text/javascript">
         $(document).ready(function() {
             //수강후기

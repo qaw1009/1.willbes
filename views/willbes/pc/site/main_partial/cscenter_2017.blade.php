@@ -3,25 +3,25 @@
         <dt class="willbesCenter">
             <ul>
                 <li>
-                    <a href="#none">
+                    <a href="{{ front_url('/pass/support/main') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon01.png"></span>
                         <div class="nTxt">학원 FAQ</div>
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="{{ front_url('/support/faq/index') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon02.png"></span>
                         <div class="nTxt">동영상 FAQ</div>
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="{{ front_url('/support/faq/index') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon03.png"></span>
                         <div class="nTxt">모바일 FAQ</div>
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="{{ front_url('/support/remote/index') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon04.png"></span>
                         <div class="nTxt">동영상 원격지원</div>
                     </a>

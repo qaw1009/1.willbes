@@ -5,6 +5,7 @@ class ProductFModel extends WB_Model
 {
     protected $_table = [
         'on_lecture' => 'vw_product_on_lecture',
+        'on_lecture_before' => 'vw_product_on_lecture',
         'on_free_lecture' => 'vw_product_on_free_lecture',
         'adminpack_lecture' => 'vw_product_adminpack_lecture',
         'userpack_lecture' => 'vw_product_userpack_lecture',
@@ -82,6 +83,7 @@ class ProductFModel extends WB_Model
             switch ($learn_pattern) {
                 // 온라인 단강좌, 온라인 무료강좌
                 case 'on_lecture' :
+                case 'on_lecture_before' :
                 case 'on_free_lecture' :
                         $column .= ', CateCode, IsBest, IsNew, IsCoupon, IsCart, IsFreebiesTrans, IsDeliveryInfo, StudyPeriod, MultipleApply, StudyStartDate
                             , SubjectIdx, SubjectName, CourseIdx, CourseName, OrderNumCourse, SchoolYear, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan
@@ -277,9 +279,14 @@ class ProductFModel extends WB_Model
         switch ($learn_pattern) {
             // 온라인 단강좌, 온라인 무료강좌
             case 'on_lecture' :
+            case 'on_lecture_before' : //선수강좌
             case 'on_free_lecture' :
+                $lec_sale_type = $learn_pattern == 'on_lecture_before' ? 'B' : 'N';   // 강의판매구분 (일반/선수강좌)
+                $is_before_lecture_able = $learn_pattern == 'on_lecture_before' ? 'Y' : null; //선수강좌신청가능여부
                 $arr_condition = array_merge_recursive($arr_condition, [
-                    'EQ' => [$as . 'LecSaleType' => 'N', $as . 'wIsUse' => 'Y']   // 일반강의, 마스터강의 사용여부
+                    'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y'
+                        , $as . 'IsBeforeLectureAble' => $is_before_lecture_able
+                    ]   // 강의판매구분, 마스터강의, 선수강좌신청가능여부 사용여부
                 ]);
                 break;
             // 학원 단과, 학원 단과 선수강좌
@@ -287,7 +294,6 @@ class ProductFModel extends WB_Model
             case 'off_lecture_before' :
                 $lec_sale_type = $learn_pattern == 'off_lecture_before' ? 'B' : 'N';   // 강의판매구분 (일반/선수강좌)
                 $is_before_lecture_able = $learn_pattern == 'off_lecture_before' ? 'Y' : null; //선수강좌신청가능여부
-
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y'
                                 , $as . 'IsLecOpen' => 'Y', $as . 'IsBeforeLectureAble' => $is_before_lecture_able],   // 강의판매구분, 마스터강의 사용여부, 강의개설여부, 선수강좌신청가능여부

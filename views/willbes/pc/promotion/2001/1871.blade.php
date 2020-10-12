@@ -145,7 +145,7 @@
 				<ul>
 					<li><strong>* 온라인강의 결제완료  + 한능검 합격</strong></li>
 					<li><strong>* 2가지 모두 충족지 환급진행</strong></li>
-                    <li><strong>* 한능검49회 시험 최종합격 회원에 한함</strong></li>
+                    <li><strong>* 한능검 50회 시험 최종합격 회원에 한함</strong></li>
 				</ul>
                 <div class="infoTit NG"><strong>[유의사항]</strong></div>
 				<ul>

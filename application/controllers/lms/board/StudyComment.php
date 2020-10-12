@@ -20,9 +20,10 @@ class StudyComment extends BaseBoard
         'reply' => 1        //본문 답변글첨부
     ];
     private $_prodType_group_ccs = '636';   //강좌적용구분
-    private $_prodType_ccds = [     //강좌적용구분 : 온라인강좌, 학원강좌
+    private $_prodType_ccds = [     //강좌적용구분 : 온라인강좌, 학원강좌, 수기등록
         '636001' => 'on',
-        '636002' => 'off'
+        '636002' => 'off',
+        '636011' => 'create'
     ];
 
     private $_memory_limit_size = '512M';
@@ -89,7 +90,7 @@ class StudyComment extends BaseBoard
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.IsStatus,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
-            LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdCode, ifnull(LB.ProdName, lms_product.ProdName) as ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.UpdMemIdx, LB.UpdAdminIdx
             ,(
@@ -165,10 +166,10 @@ class StudyComment extends BaseBoard
         if (empty($params[0]) === false) {
             $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.ReviewRegDate, 
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
-            LB.ProdApplyTypeCcd, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
+            LB.ProdApplyTypeCcd, LB.ProdCode, ifnull(LB.ProdName, lms_product.ProdName) as ProdName , LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
@@ -197,6 +198,7 @@ class StudyComment extends BaseBoard
             $data['arr_attach_file_path'] = explode(',', $data['AttachFilePath']);
             $data['arr_attach_file_name'] = explode(',', $data['AttachFileName']);
             $data['arr_attach_file_real_name'] = explode(',', $data['AttachRealFileName']);
+
         }
 
         $this->load->view("board/{$this->board_name}/create", [
@@ -230,7 +232,7 @@ class StudyComment extends BaseBoard
             ['field' => 'subject_idx', 'label' => '과목명', 'rules' => 'trim|required'],
             ['field' => 'prof_idx', 'label' => '교수명', 'rules' => 'trim|required'],
             ['field' => 'prod_type_ccd', 'label' => '강좌적용구분', 'rules' => 'trim|required'],
-            ['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
+            //['field' => 'prod_code[]', 'label' => '강좌명', 'rules' => 'trim|required'],
             ['field' => 'lec_score', 'label' => '평점', 'rules' => 'trim|required'],
             ['field' => 'reg_mem_name', 'label' => '회원명', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
@@ -272,7 +274,7 @@ class StudyComment extends BaseBoard
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
             LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.ProdCode, lms_product.ProdName, LSC4.CcdName AS ProdApplyTypeName,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.ProdCode, ifnull(LB.ProdName, lms_product.ProdName) as ProdName, LSC4.CcdName AS ProdApplyTypeName,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName
             ';
@@ -462,15 +464,27 @@ class StudyComment extends BaseBoard
     }
 
     private function _setInputData($input){
-        $prod_code = element('prod_code', $input)[0];
+        $prod_type_ccd = element('prod_type_ccd', $input);
+        if($prod_type_ccd == '636011'){
+            $prod_code = null;
+            $prod_name = element('prod_name', $input);
+            $review_reg_date = element('review_reg_date', $input);
+        }else{
+            $prod_code = element('prod_code', $input)[0];
+            $prod_name = null;
+            $review_reg_date = null;
+        }
+
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
                 'BmIdx' => $this->bm_idx,
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
-                'ProdApplyTypeCcd' => element('prod_type_ccd', $input),
+                'ProdApplyTypeCcd' => $prod_type_ccd,
                 'ProdCode' => $prod_code,
+                'ProdName' => $prod_name,
+                'ReviewRegDate' => $review_reg_date,
                 'LecScore' => element('lec_score', $input),
                 'RegMemName' => element('reg_mem_name', $input),
                 'RegType' => element('reg_type', $input),

@@ -20,7 +20,7 @@
 
         /************************************************************/
 
-        .wb_top {position:relative; background:#222 url(http://file3.willbes.net/new_gosi/2018/08/180817_1_bg.png) no-repeat center top}
+        .wb_top {position:relative; background:#222 url(https://static.willbes.net/public/images/promotion/2020/10/1077_top_bg.png) no-repeat center top}
         .wb_cts01 {background:#eee}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#d17f5a}
@@ -31,44 +31,38 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180830_1.png"alt="고득점 합격의 솔루션 황남기헌법/행정법" usemap="#Map_180820_lec" border="0"  />
-            <map name="Map_180820_lec">
-                <area shape="rect" coords="78,1071,329,1131" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank" alt="헌법" onfocus='this.blur()' />
-                <area shape="rect" coords="354,1070,591,1134" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank" alt="행정법" onfocus='this.blur()' />
-                <area shape="rect" coords="619,1071,863,1136" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank" alt="헌법,행정법" onfocus='this.blur()' />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_top.png" usemap="#Map1077a" border="0" >
+            <map name="Map1077a" id="Map1077a">
+                <area shape="rect" coords="96,1073,336,1135" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank" alt="헌법"  />
+                <area shape="rect" coords="369,1075,602,1137" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank" alt="행정법"  />
+                <area shape="rect" coords="645,1073,878,1134" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank" alt="헌법,행정법" />
             </map>
         </div>
-        <!--WB_top//-->
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180817_2.png" alt="황남기 인가 아닌가로 결정되는 헌법/행정법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_01.png" >
         </div>
-        <!--wb_cts01//-->
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180817_3.png" alt="황남기 헌법/행정법 커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_02.png" >
         </div>
-        <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180817_4.png" alt="황님기 수강평" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_03.png" >
         </div>
-        <!--wb_cts03//-->
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180817_5.png"alt="압도하는 황남기 T-pass" usemap="#Map_180820_lec2" border="0" />
-            <map name="Map_180820_lec2">
-                <area shape="rect" coords="837,724,1046,786" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank">
-                <area shape="rect" coords="839,799,1043,863" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank">
-                <area shape="rect" coords="840,871,1042,936" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_04.png" usemap="#Map1077b" border="0">
+            <map name="Map1077b" id="Map1077b">
+                <area shape="rect" coords="843,725,1042,785" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank">
+                <area shape="rect" coords="842,800,1043,859" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank">
+                <area shape="rect" coords="843,872,1042,933" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank">
             </map>
         </div>
-        <!--wb_cts04//-->
 
         <div class="evtCtnsBox wb_cts05" >
-            <img src="http://file3.willbes.net/new_gosi/2018/08/180817_6.png" alt="이용안내 및 유의사항 " />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_05.png" >
         </div>
-        <!--wb_cts05//-->
 
     </div>
     <!-- End Container -->

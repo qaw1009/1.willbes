@@ -101,8 +101,8 @@ class SupportStudyComment extends BaseSupport
     public function index()
     {
         $arr_input = array_merge($this->_reqG(null));
-        $site_code = element('site_code', $arr_input, $this->_site_code);
         $cate_code = element('cate_code', $arr_input, $this->_cate_code);
+        $site_code = element('site_code', $arr_input, $this->_site_code);
         $prod_code = element('prod_code', $arr_input);
         $arr_base['subject_idx'] = element('subject_idx', $arr_input);
         $arr_base['subject_name'] = element('subject_name', $arr_input);
@@ -129,8 +129,9 @@ class SupportStudyComment extends BaseSupport
             $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($site_code, $cate_code);
         }
 
-        // 전체 교수 목록
+        // 교수 목록 조회
         $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $cate_code);
+        
 
         /*// 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
         $arr_condition = [
@@ -183,7 +184,7 @@ class SupportStudyComment extends BaseSupport
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
                 'b.ProdCode' => $prod_code,
-                /*'b.ProfSiteCode' => $this->_site_code*/
+                'b.ProfSiteCode' => config_app('SiteGroupCode') == '1011' ? $this->_site_code : '',
             ],
             'ORG' => [
                 'LKB' => [
@@ -266,7 +267,7 @@ class SupportStudyComment extends BaseSupport
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
                 'b.ProdCode' => $prod_code,
-                /*'b.ProfSiteCode' => $this->_site_code*/
+                'b.ProfSiteCode' => config_app('SiteGroupCode') == '1011' ? $this->_site_code : '',
             ],
             'ORG' => [
                 'LKB' => [
@@ -332,9 +333,15 @@ class SupportStudyComment extends BaseSupport
     {
         $data = [];
         $arr_input = array_merge($this->_reqP(null));
-        if (empty(element('cate_code', $arr_input)) === false && empty(element('subject_idx', $arr_input)) === false) {
+
+        if (config_app('SiteGroupCode') == '1011') {
             $data = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, element('cate_code', $arr_input), element('subject_idx', $arr_input));
+        }else{
+            if (empty(element('cate_code', $arr_input)) === false && empty(element('subject_idx', $arr_input)) === false) {
+                $data = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, element('cate_code', $arr_input), element('subject_idx', $arr_input));
+            }
         }
+
         $this->json_result(true, '', [], array_pluck($data, 'wProfName', 'ProfIdx'));
     }
 

@@ -81,7 +81,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group @if($data['ProdApplyTypeCcd'] == '636011') hide @endif" id="review_on_off">
                     <label class="control-label col-md-1-1" for="subject_idx">강좌명<span class="required">*</span></label>
                     <div class="col-md-10">
                         <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
@@ -92,7 +92,21 @@
                                     <input type="hidden" name="prod_code[]" value="{{$data['ProdCode']}}"/>
                                 </span>
                             @endif
-                            </span>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group @if($data['ProdApplyTypeCcd'] != '636011') hide @endif" id="review_write">
+                    <label class="control-label col-md-1-1" for="prod_name">강좌명<span class="required">*</span></label>
+                    <div class="col-md-4">
+                        <input type="text" id="prod_name" name="prod_name" required="required" class="form-control" value="{{$data['ProdName']}}">
+                    </div>
+                    <label class="control-label col-md-1-1 d-line" for="review_reg_date">등록날짜<span class="required">*</span></label>
+                    <div class="col-md-3 form-inline ml-12-dot">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="review_reg_date" name="review_reg_date" value="@if(empty($data['ReviewRegDate']) === false) {{$data['ReviewRegDate']}} @else {{date('Y-m-d')}} @endif">
+                        </div>
                     </div>
                 </div>
 
@@ -188,8 +202,17 @@
     <script src="/public/js/lms/board/common.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+        var $end_date = '{{date("Y-m-d")}}';
 
         $(document).ready(function() {
+            // 등록날짜
+            $('#review_reg_date').focusout(function (){
+                if($(this).val() > $end_date){
+                    alert('오늘 이후 날짜는 불가능합니다.')
+                    $(this).val($end_date);
+                }
+            });
+
             //start rating
             $('#starRating').starRating({
                 callback: function (value) {
@@ -248,6 +271,21 @@
             $regi_form.on('click', '.selected-category-delete, .selected-product-delete', function() {
                 var that = $(this);
                 that.parent().remove();
+            });
+
+            // 강좌적용구분
+            $regi_form.on('ifChanged', 'input[name="prod_type_ccd"]', function() {
+                if($(this).prop('checked') === true){
+                    var s_val = $(this).filter(':checked').val();
+                    if(s_val == '636011'){ // 수기등록
+                        $("#review_write").removeClass("hide");
+                        $("#review_on_off").addClass("hide");
+                    }else{
+                        $("#review_on_off").removeClass("hide");
+                        $("#review_write").addClass("hide");
+                    }
+                }
+
             });
 
             //목록
@@ -323,13 +361,16 @@
                 return false;
             }
 
-            if($regi_form.find('input[name="prod_code[]"]').length < 1) {
-                alert('강좌명 선택 필드는 필수입니다.');
+            if($regi_form.find('input[name="prod_code[]"]').length < 1 && !$.trim($regi_form.find('input[name="prod_name"]').val())) {
+                alert('강좌명 입력 필드는 필수입니다.');
                 return false;
-            } else if($regi_form.find('input[name="prod_code[]"]').length > 1) {
+            }
+
+            if($regi_form.find('input[name="prod_code[]"]').length > 1) {
                 alert('강좌명 선택 필드는 1개만 선택 가능합니다.');
                 return false;
             }
+
             return true;
         }
     </script>

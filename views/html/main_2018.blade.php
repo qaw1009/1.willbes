@@ -501,7 +501,45 @@
                             </select>
                         </div>
                     </li>
-                    <li>
+                    <li style="display: block;">
+                        <table>
+                            <colgroup>
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="77px">
+                                <col width="*">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">2019학년도</th>
+                                    <th colspan="2">2019 추시</th>
+                                    <th colspan="2">2020학년도</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="first">
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                    <td>모집 인원</td>
+                                    <td>지원 인원</td>
+                                </tr>
+                                <tr>
+                                    <td>948</td>
+                                    <td>9,955</td>                                    
+                                    <td>482</td>
+                                    <td>12,505</td>                          
+                                    <td>1,154</td>
+                                    <td>13,103</td>                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li style="display: none;">
                         <table>
                             <colgroup>
                                 <col width="77px">

@@ -13,7 +13,7 @@ class Home extends \app\controllers\FrontController
         '2006' => ['309002','309003','309004'],
         '2008' => ['3100']
     ];
-    private $_no_pc_cate_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
+    private $_no_pc_cate_main = ['2012','2017'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
     public function __construct()
     {

@@ -87,7 +87,7 @@
             });
 
             // 계속구매, 닫기 버튼 클릭
-            $regi_form.on('click', '.waitBox_block, .closeBox_block', function() {
+            $regi_form.on('click', '.waitBox_block, .closeBox_block, .closeBtn', function() {
                 $regi_form.find('#buy_continue_layer').removeClass('active');
             });
 

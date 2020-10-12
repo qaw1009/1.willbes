@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -511,6 +511,9 @@ class Home extends \app\controllers\FrontController
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
         $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
 
+        $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getSubjectForSelectBox();
+        $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
+        $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo();
         return $data;
     }
 

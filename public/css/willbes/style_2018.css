@@ -287,12 +287,11 @@ min-height: 260px;}
 /* Main Container : 시험정보*/
 .ssam .examInfo {border:1px solid #dedede; line-height: 1.5; font-size:14px}
 .ssam .examInfo .examTop {padding:35px}
-.ssam .examInfo .examTop li {display: inline-block; float:left}
+.ssam .examInfo .examTop li {display: inline-block; float:left;width:70%;}
 .ssam .examInfo .examTop li:first-child {width:calc(30% - 50px); padding-left:50px}
 .ssam .examInfo .examTop .titleSubject {font-size:24px}
 .ssam .examInfo .examTop .subject {margin-top:20px}
 .ssam .examInfo .examTop .subject select {font-size:16px; padding:5px 10px; border:3px solid #0c5dc0}
-.ssam .examInfo .examTop li:last-child {width:70%;}
 .ssam .examInfo .examTop table {border-top:1px solid #dedede; border-left:1px solid #dedede}
 .ssam .examInfo .examTop tr {border-bottom:1px solid #dedede}
 .ssam .examInfo .examTop th,

@@ -3,12 +3,6 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both">
-        <form id="url_form" name="url_form" method="GET">
-            @foreach($arr_input as $key => $val)
-                <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
-            @endforeach
-        </form>
-
         <div class="willbes-Tit NGEB p_re">
             <button type="button" class="goback" onclick="history.back(-1); return false;">
                 <span class="hidden">뒤로가기</span>
@@ -16,16 +10,23 @@
             강의실 배정표
         </div>
 
+        <div class="mt20">
+            <div class="calendarTable widthAutoFull">
 
+                <div id="calendar_box"></div>
 
+                <div class="scheduleImg" id="schedule_box">
+                </div>
 
-
-        <div id="calendar_box"></div>
-
-        <div class="scheduleImg" id="schedule_box">
+            </div>
         </div>
 
-
+        <div class="goTopbtn">
+            <a href="javascript:link_go();">
+                <img src="{{ img_url('m/main/icon_top.png') }}">
+            </a>
+        </div>
+        <!-- Topbtn -->
 
     </div>
     <!-- End Container -->

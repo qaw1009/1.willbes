@@ -279,7 +279,7 @@ class Lecture extends \app\controllers\FrontController
         $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
         $this->load->view('site/lecture/show', [
-            'learn_pattern' => $this->_learn_pattern,
+            'learn_pattern' => $data['LecSaleType'] === 'B' ? 'on_lecture_before' : $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
             'pattern_banner_section' => element(element('pattern', $params), $this->_pattern_banner_section),

@@ -513,7 +513,7 @@ class Home extends \app\controllers\FrontController
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getSubjectForSelectBox();
         $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
-        $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo();
+        $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo($this->_site_code);
         return $data;
     }
 

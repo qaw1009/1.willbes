@@ -916,7 +916,14 @@ class Home extends \app\controllers\FrontController
             ],
         ];
 
-        return $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+        $data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+        foreach ($data as $key => $row){
+            if(empty($row['ProdPriceData']) === false){
+                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
+            }
+        }
+
+        return $data;
     }
 
     /**

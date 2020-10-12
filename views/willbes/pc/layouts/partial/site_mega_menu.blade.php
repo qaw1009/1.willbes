@@ -601,6 +601,85 @@
                 </ul>
             </div>
         </div>
+    @elseif($__cfg['SiteCode'] == '2017')
+        {{-- 임용 --}}
+        <div class="drop-Box list-drop-Box list-drop-Box-ic">
+            <ul>
+                <li class="Tit">교육학</li>
+                <li>
+                    <a href="#none">김차웅</a>
+                    <a href="#none">이인재</a>
+                    <a href="#none">홍의일</a>
+                </li>
+                <li class="Tit">유아</li>
+                <li>
+                    <a href="#none">민정선</a>
+                </li>
+                <li class="Tit">초등</li>
+                <li>
+                    <a href="#none">배재민</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="Tit">중등</li>
+                <li>
+                    <span>전공국어</span>
+                    <a href="#none">송원영</a>
+                    <a href="#none">이원근</a>
+                    <a href="#none">권보민</a>
+                </li>
+                <li>
+                    <span>전공영어</span>
+                    <a href="#none">김유석</a>
+                    <a href="#none">김영문</a>
+                    <a href="#none">공훈</a>
+                </li>
+                <li>
+                    <span>전공수학</span>
+                    <a href="#none">김철홍</a>
+                </li>
+                <li>
+                    <span>수학교육론</span>
+                    <a href="#none">박태영</a>
+                </li>
+                <li>
+                    <span>전공생물</span>
+                    <a href="#none">강치욱</a>
+                </li>
+                <li>
+                    <span>생물교육론</span>
+                    <a href="#none">양혜정</a>
+                </li>
+                <li>
+                    <span>도덕윤리</span>
+                    <a href="#none">김병찬</a>
+                </li>
+                <li>
+                    <span>전공역사</span>
+                    <a href="#none">최용림</a>
+                </li>
+                <li>
+                    <span>전공음악</span>
+                    <a href="#none">다이애나</a>
+                </li>
+                <li>
+                    <span>전기전자통신</span>
+                    <a href="#none">최우영</a>
+                </li>
+                <li>
+                    <span>정보컴퓨터</span>
+                    <a href="#none">송광진</a>
+                </li>
+                <li>
+                    <span>정보교육론</span>
+                    <a href="#none">장순선</a>
+                </li>
+                <li>
+                    <span>전공중국어</span>
+                    <a href="#none">정경미</a>
+                </li>
+            </ul>
+        </div>
     @endif
 @endsection
 

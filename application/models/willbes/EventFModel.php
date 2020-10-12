@@ -633,7 +633,7 @@ class EventFModel extends WB_Model
                 ORDER BY a.CIdx DESC
             ) AS b
         ) AS c
-        ORDER BY c.ContentOrderBy DESC, c.Idx DESC
+        GROUP BY c.Idx ORDER BY c.ContentOrderBy DESC, c.Idx DESC
         ";
 
         $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit);

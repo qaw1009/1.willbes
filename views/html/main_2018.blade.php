@@ -160,13 +160,13 @@
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
-                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
-                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
-                            <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a></li>
-                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a></li>
-                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
-                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공수학 박태영</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
+                            <li><a href="#none"><strong class="tx-blue">도덕윤리 김병찬</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공국어 송원영</strong> 직강생전용) 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
+                            <li><a href="#none"><strong class="tx-blue">전공국어 송원영</strong> 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
                         </ul>
                     </div>
                 </div>

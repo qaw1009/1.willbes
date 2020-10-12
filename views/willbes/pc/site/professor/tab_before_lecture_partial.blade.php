@@ -158,3 +158,4 @@
     <!-- willbes-Lec -->
 </form>
 <div id="InfoForm" class="willbes-Layer-Box"></div>
+@include('willbes.pc.site.lecture.only_footer_partial')

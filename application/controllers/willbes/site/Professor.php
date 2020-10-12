@@ -177,7 +177,7 @@ class Professor extends \app\controllers\FrontController
         $tab_list = [];
         if ($this->_is_mobile === true) {
             if ($this->_view_type == 'v2') {
-                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
+                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'live_lecture' => '전국라이브', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
             } else {
                 $tab_list = ['off_lecture' => '학원수강신청', 'free_lecture' => '무료특강신청'];
 
@@ -219,7 +219,7 @@ class Professor extends \app\controllers\FrontController
      * 교수진소개 상세 데이터 추가 조회
      * @param array $prof_data [교수데이터]*
      * @param int $prof_idx [교수식별자]
-     * @param array $arr_input [전달파라미터]  
+     * @param array $arr_input [전달파라미터]
      */
     private function _getShowAddData(&$prof_data, $prof_idx, $arr_input = [])
     {
@@ -316,7 +316,7 @@ class Professor extends \app\controllers\FrontController
         // 학습자료실 조회
         $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['b.BmIdx' => '69']]);
         $data['material'] = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', 'b.BoardIdx, b.Title, b.IsBest', 2, 0, ['m.IsBest' => 'desc', 'm.BoardIdx' => 'desc']);
-        
+
         // 신규강좌 조회
         $data['new_product'] = $this->_getProfBestNewProductData($prof_idx, $this->_def_prod_type, 'New', 8, ['ProdCode' => 'desc'], $arr_input);
 
@@ -415,7 +415,7 @@ class Professor extends \app\controllers\FrontController
         if (empty($arr_prof_idx['off']) === false) {
             // 학원 캠퍼스 조회
             $data['off_campus'] = $this->siteFModel->getSiteCampusArray($arr_site_code['off']);
-            
+
             // 선택된 캠퍼스가 없을 경우 1번째 캠퍼스 디폴트 선택
             if (empty($data['off_campus']) === false && empty(element('campus_ccd', $arr_input)) === true) {
                 $arr_input['campus_ccd'] = (string) array_key_first($data['off_campus']);
@@ -715,7 +715,7 @@ class Professor extends \app\controllers\FrontController
 
         // 온라인 선수강좌 조회
         if (empty($arr_prof_idx['on']) === false) {
-            $data['on_lecture_before'] = [];
+            $data['on_lecture_before'] = $this->_getOnLectureData('on_lecture_before', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
         // 온라인 사이트일 경우만 수강후기 조회
@@ -880,7 +880,7 @@ class Professor extends \app\controllers\FrontController
         // 패키지구분 공통코드 셋팅
         $arr_adminpack_lecture_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
         $adminpack_lecture_type_ccd = array_get($arr_adminpack_lecture_type_ccd, $adminpack_lecture_type);
-        
+
         $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $adminpack_lecture_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
         if ($this->_is_pass_site === false) {
             // 온라인 사이트일 경우 카테고리 조건 추가
@@ -919,7 +919,7 @@ class Professor extends \app\controllers\FrontController
         if ($this->_is_pass_site === true) {
             // 학원 사이트일 경우 카테고리 조건 추가
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
-        }        
+        }
 
         if ($learn_pattern === 'off_lecture') {
             $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx]]);

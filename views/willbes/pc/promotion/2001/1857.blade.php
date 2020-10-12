@@ -45,7 +45,7 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1857_01.jpg"  alt="적중=하승민 " />
-            <iframe width="854" height="480" src="https://www.youtube.com/embed/11wTJYKc5HM" frameborder="0" allowfullscreen></iframe>
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/emR2dljaZtc?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox wb_cts02" >

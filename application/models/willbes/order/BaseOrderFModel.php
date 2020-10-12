@@ -179,13 +179,13 @@ class BaseOrderFModel extends WB_Model
     /**
      * 학습형태별 뷰 테이블명 리턴 (선수강좌여부 체크)
      * @param string $learn_pattern [학습형태]
-     * @param string $lec_sale_type [강의판매구분 (N : 일반, B : 선수강좌)]
+     * @param null|string $lec_sale_type [강의판매구분 (N : 일반, B : 선수강좌)]
      * @return string
      */
     public function getProductViewName($learn_pattern, $lec_sale_type = null)
     {
-        // 학원단과반 선수강좌일 경우
-        if (in_array($learn_pattern, ['off_lecture']) === true && $lec_sale_type == 'B') {
+        // 온라인단강좌, 학원단과반 선수강좌일 경우
+        if (in_array($learn_pattern, ['on_lecture', 'off_lecture']) === true && $lec_sale_type == 'B') {
             $learn_pattern .= '_before';
         }
 

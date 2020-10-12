@@ -109,11 +109,11 @@
         </div>
 
         <div class="evtCtnsBox wb_03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_03.png" usemap="#bu">
-            <map name="bu" id="bu">
-                <area shape="rect" coords="160,1503,361,1551" href="https://blog.naver.com/ace5885" target="_blank"/>
-                <area shape="rect" coords="454,1435,656,1483" href="{{ site_url('/pass/promotion/index/code/1059') }}" target="_blank" alt="독한회독 바로가기"/>
-                <area shape="rect" coords="761,1504,963,1552" href="{{ site_url('/pass/promotion/index/code/1058') }}" target="_blank" alt="실전에 강한 최준면접"/>
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1057_03.png" usemap="#Map1057a" border="0">
+            <map name="Map1057a" id="Map1057a">
+                <area shape="rect" coords="160,1483,361,1537" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1748" target="_blank" />
+                <area shape="rect" coords="453,1477,657,1531" href="https://police.willbes.net/pass/campus/show/code/605003" target="_blank" />
+                <area shape="rect" coords="757,1497,964,1551" href="https://police.willbes.net/pass/promotion/index/code/1058" target="_blank" />
             </map>
         </div>
 

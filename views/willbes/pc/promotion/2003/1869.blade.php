@@ -74,7 +74,7 @@
         .boardD {width:980px; border-spacing:0px; border:1px solid #dedede; table-layout:auto; color:#666; margin:0 auto} 
         .boardD caption {display:none}
         .boardD th,
-        .boardD td {font-size:14px}
+        .boardD td {font-size:14px;}
         .boardD th {padding:15px 5px; background:#f5f5f5; border-right:1px solid #dedede; border-bottom:1px solid #dedede; color:#333}
         .boardD thead th {background:#eee; color:#333}
         .boardD td {padding:15px 5px; margin:0; border:none; text-align:center; border-right:1px solid #dedede; border-bottom:1px solid #dedede}
@@ -172,7 +172,7 @@
                 <col width="171" />
                 <col width="155" />
                 <col width="138" />
-                <tr>
+                <tr style="background:#F4F4F4">
                     <td width="66">지역&nbsp;</td>
                     <td width="138">필기 합격자 발표&nbsp;</td>
                     <td width="171">면접 시험장소    공고일&nbsp;</td>
@@ -305,19 +305,19 @@
                 <table cellspacing="0" cellpadding="0" class="boardD">
                     <col width="72" />
                     <col width="125" span="8" />
-                    <tr>
+                    <tr style="background:#F4F4F4">
                         <td rowspan="3" width="72">모집단위</td>
                         <td colspan="6" width="750">2020년</td>
                         <td colspan="2" width="250">2019년</td>
                     </tr>
-                    <tr>
+                    <tr style="background:#F4F4F4">
                         <td colspan="2">선발예정인원</td>
                         <td colspan="2">접수인원</td>
                         <td colspan="2">경쟁률</td>
                         <td>경쟁률</td>
                         <td>합격선</td>
                     </tr>
-                    <tr>
+                    <tr style="background:#F4F4F4">
                         <td>전체</td>
                         <td>일반행정 7급</td>
                         <td>전체</td>

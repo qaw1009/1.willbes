@@ -154,8 +154,12 @@
             </div>
         </div>
 
-        {{-- exam info include --}}
-        @include('willbes.pc.site.main_partial.exam_info_' . $__cfg['SiteCode'])
+        <div class="Section Section5 mt60">
+            <div class="widthAuto">
+                {{-- exam info include --}}
+                @include('willbes.pc.site.main_partial.exam_info_' . $__cfg['SiteCode'])
+            </div>
+        </div>
 
         <div class="Section Section7 mt40">
             <div class="widthAuto">

@@ -177,7 +177,7 @@ class Professor extends \app\controllers\FrontController
         $tab_list = [];
         if ($this->_is_mobile === true) {
             if ($this->_view_type == 'v2') {
-                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
+                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'live_lecture' => '전국라이브', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
             } else {
                 $tab_list = ['off_lecture' => '학원수강신청', 'free_lecture' => '무료특강신청'];
 

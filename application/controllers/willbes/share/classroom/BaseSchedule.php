@@ -49,8 +49,13 @@ class BaseSchedule extends \app\controllers\FrontController
      */
     public function showCalendar()
     {
-        $year = empty((int)$this->uri->segment(5) == true) ? date('Y') : $this->uri->segment(5);
-        $month = empty((int)$this->uri->segment(6) == true) ? date('m') : $this->uri->segment(6);
+        if (APP_DEVICE == 'pc') {
+            $year = empty((int)$this->uri->segment(5) == true) ? date('Y') : $this->uri->segment(5);
+            $month = empty((int)$this->uri->segment(6) == true) ? date('m') : $this->uri->segment(6);
+        } else {
+            $year = empty((int)$this->uri->segment(6) == true) ? date('Y') : $this->uri->segment(6);
+            $month = empty((int)$this->uri->segment(7) == true) ? date('m') : $this->uri->segment(7);
+        }
 
         //일자별 데이터 조회
         $data = $this->_getScheduleDataForMonth($this->_site_code, $year.$month);

@@ -87,9 +87,10 @@ class StudyComment extends BaseBoard
 
         $column = '
             LB.RegType, LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.IsStatus,
+            LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.IsStatus, LB.ReviewRegDate,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
-            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName, 
+            IF(LB.RegType = 1, ADMIN.wAdminName,"") AS admMemName,
             LB.ProdCode, ifnull(LB.ProdName, lms_product.ProdName) as ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.UpdMemIdx, LB.UpdAdminIdx
@@ -515,6 +516,7 @@ class StudyComment extends BaseBoard
                 'LB.SubjectIdx' => $this->_reqP('search_subject'),
                 'LB.ProfIdx' => $this->_reqP('search_professor'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
+                'LB.ProdApplyTypeCcd' => $this->_reqP('search_prod_type_ccd'),
             ],
             'ORG' => [
                 'LKB' => [

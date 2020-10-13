@@ -14,15 +14,12 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-
         /************************************************************/
-
         .evt00 {background:#0a0a0a}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/10/1874_top_bg.jpg) no-repeat center top;}
         .evt01 {}
         .evtLec {width:1120px; margin:0 auto; text-align:left}
-
     </style>
 
     <div class="evtContent NSK" id="evtContainer">

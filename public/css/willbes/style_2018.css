@@ -579,3 +579,18 @@ min-height: 260px;}
     font-size:14px;
 }
 .ssam .MainQuickMenu .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold;}
+
+/*sub*/
+/*임용가이드*/
+.w-Guide-Ssam .tabBox {position:relative;}
+.w-Guide-Ssam .tabShow li {width:auto;}
+.w-Guide-Ssam .tabShow li a {padding:0 20px; font-size:14px}
+.w-Guide-Ssam .tabBox .guideBtn {position:absolute; top:0; right:0}
+.w-Guide-Ssam .tabBox .guideBtn a {display:inline-block; border:1px indianred solid; color:indianred; padding:5px 10px; margin-left:5px}
+.w-Guide-Ssam .tabBox .guideBtn a:hover {background-color: indianred; color:#fff}
+.w-Guide-Ssam .tabContent {margin-top:30px; line-height: 1.8; color:#555; font-weight: normal; letter-spacing: normal;}
+.w-Guide-Ssam .tabContent h4 {margin-bottom:20px; font-size:16px; color:#39ac9a; line-height:30px;}
+.w-Guide-Ssam .tabContent .guideBtn02 {margin-top: 20px; margin-right:-10px}
+.w-Guide-Ssam .tabContent .guideBtn02 li {display:inline; float:left; width:33.33333%}
+.w-Guide-Ssam .tabContent .guideBtn02 a {display:block; border:1px indianred solid; color:indianred; padding:10px; text-align: center; margin-right:10px}
+.w-Guide-Ssam .tabContent .guideBtn02 a:hover {background-color: indianred; color:#fff}

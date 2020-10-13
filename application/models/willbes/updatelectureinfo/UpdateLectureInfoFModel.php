@@ -23,7 +23,7 @@ class UpdateLectureInfoFModel extends WB_Model
                         ,p.ProdCode,p.ProdName
                         ,pl.wLecIdx
                         ,ps.SubjectName
-                        ,pf.ProfNickName
+                        ,pf.ProfNickName, pf.ProfIdx
                         ,date_format(lu.wRegDatm, \'%Y-%m-%d\') as unit_regdate
                         ,count(lu.wUnitIdx) as unit_cnt';
 

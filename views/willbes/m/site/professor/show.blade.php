@@ -26,26 +26,33 @@
         <div class="profMenu">
             <ul>
                 <li><a href="#none" onclick="openWin('LayerProfile');">프로필</a><li>
-                <li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnMobile(\'https:'.front_app_url('/Player/getMobileProf/', 'www').'?idx='.sess_data('mem_idx').'&id='.sess_data('mem_id').'&p='.$prof_idx.'&v='.$data['ProfReferData']['sample_url_type'].'\', \''.config_item('starplayer_license').'\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li>
-                {{-- <li><a href="#none" onclick="{{ empty($data['ProfReferData']['sample_url']) === false ? 'fnMobile(\'' . $prof_idx . '\', \'' . $data['ProfReferData']['sample_url_type'] . '\');' : 'alert(\'등록된 맛보기 동영상이 없습니다.\');' }}">맛보기</a><li> --}}
-                <li><a href="#none" onclick="openWin('LayerCurriculum');">커리큘럼</a><li>
-                @if(empty($data['ProfReferData']['cafe_url']) === false)
-                    {{-- 카페링크 있을 경우만 노출 --}}
-                    <li><a href="{{ $data['ProfReferData']['cafe_url'] }}" target="_blank">{{ $data['AppellationCcdName'] }}카페</a><li>
+                @if($__cfg['SiteGroupCode'] != '1011')
+                    {{-- 사이트그룹코드가 임용 사이트가 아닐 경우만 노출 --}}
+                    @if(empty($data['ProfReferData']['sample_url']) === false)
+                        <li><a href="#none" onclick="fnMobile('{{ 'https:'.front_app_url('/player/getMobileProf/', 'www').'?idx='.sess_data('mem_idx').'&id='.sess_data('mem_id').'&p='.$prof_idx.'&v='.$data['ProfReferData']['sample_url_type'] }}', '{{ config_item('starplayer_license') }}');">맛보기</a><li>
+                    @endif
+                    @if(empty($data['ProfReferData']['homep_url']) === false)
+                        <li><a href="{{ $data['ProfReferData']['homep_url'] }}" target="_blank">홈페이지</a><li>
+                    @endif
+                    @if(empty($data['ProfReferData']['cafe_url']) === false)
+                        <li><a href="{{ $data['ProfReferData']['cafe_url'] }}" target="_blank">카페</a><li>
+                    @endif
+                    @if(empty($data['ProfReferData']['blog_url']) === false)
+                        <li><a href="{{ $data['ProfReferData']['blog_url'] }}" target="_blank">블로그</a><li>
+                    @endif
                 @endif
+                <li><a href="#none" onclick="openWin('LayerCurriculum');">커리큘럼</a><li>
             </ul>
         </div>
     </div>
 
     {{-- 강좌 탭 --}}
     <div class="lineTabs lecListTabs c_both">
-        <ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
-        @if($__cfg['IsPassSite'] === false)
-            {{-- 온라인사이트일 경우만 노출 --}}
-            <li><a href="#none" onclick="goTabUrl('tab', 'on_lecture');" class="{{ $arr_input['tab'] == 'on_lecture' ? 'on' : '' }}">동영상수강신청</a><span class="row-line">|</span></li>
-        @endif
-            <li><a href="#none" onclick="goTabUrl('tab', 'off_lecture');" class="{{ $arr_input['tab'] == 'off_lecture' ? 'on' : '' }}">학원수강신청</a><span class="row-line">|</span></li>
-            <li><a href="#none" onclick="goTabUrl('tab', 'free_lecture');" class="{{ $arr_input['tab'] == 'free_lecture' ? 'on' : '' }}">무료특강신청</a><span class="row-line">|</span></li>
+        @php $arr_tab_width_class = ['1' => 'one', '2' => 'two', '3' => 'three', '4' => 'four', '5' => 'five']; @endphp
+        <ul class="tabWrap lineWrap rowlineWrap lecListWrap mt-zero {{ array_get($arr_tab_width_class, count($tab_list), 'four') }}">
+            @foreach($tab_list as $tab_id => $tab_name)
+                <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ $arr_input['tab'] == $tab_id ? 'on' : '' }}">{{ $tab_name }}</a><span class="row-line">|</span></li>
+            @endforeach
         </ul>
         <div class="tabBox lineBox lecListBox">
             <div id="{{ $arr_input['tab'] }}" class="tabContent">

@@ -14,16 +14,29 @@
         @endforeach
     </form>
 
-    @if(isset($arr_base['subject']) === true)
+    {{-- 카테고리 or 과목 선택 --}}
+    @if(isset($arr_base['category']) === true || isset($arr_base['subject']) === true)
         <ul class="Lec-Selected NG tx-gray">
-            <li>
-                <select id="subject_idx" name="subject_idx" title="과목선택" onchange="goUrl('subject_idx', this.value);">
-                    <option value="">과목전체</option>
-                @foreach($arr_base['subject'] as $idx => $row)
-                    <option value="{{ $row['SubjectIdx'] }}" @if(element('subject_idx', $arr_input) == $row['SubjectIdx']) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
-                @endforeach
-                </select>
-            </li>
+            @if(isset($arr_base['category']) === true)
+                <li>
+                    <select id="cate_code" name="cate_code" title="카테고리선택" onchange="goUrl('cate_code', this.value);">
+                        @foreach($arr_base['category'] as $idx => $row)
+                            <option value="{{ $row['CateCode'] }}" @if($def_cate_code == $row['CateCode']) selected="selected" @endif>{{ $row['CateName'] }}</option>
+                        @endforeach
+                    </select>
+                </li>
+            @endif
+
+            @if(isset($arr_base['subject']) === true)
+                <li>
+                    <select id="subject_idx" name="subject_idx" title="과목선택" onchange="goUrl('subject_idx', this.value);">
+                        <option value="">과목전체</option>
+                    @foreach($arr_base['subject'] as $idx => $row)
+                        <option value="{{ $row['SubjectIdx'] }}" @if(element('subject_idx', $arr_input) == $row['SubjectIdx']) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                    @endforeach
+                    </select>
+                </li>
+            @endif
         </ul>
     @endif
 
@@ -36,10 +49,10 @@
                 {{-- 교수 리스트 loop --}}
                 @foreach($data['list'][$subject_idx] as $idx => $row)
                     {{-- 교수상세 페이지 URL --}}
-                    @if($__cfg['IsPassSite'] === false)
-                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
-                    @else
+                    @if($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true)
                         @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&'; @endphp
+                    @else
+                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
                     @endif
                     <li>
                         <a href="{{ front_url($show_url . 'subject_idx=' . $subject_idx) }}">

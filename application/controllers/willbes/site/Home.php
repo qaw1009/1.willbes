@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -13,7 +13,7 @@ class Home extends \app\controllers\FrontController
         '2006' => ['309002','309003','309004'],
         '2008' => ['3100']
     ];
-    private $_no_pc_cate_main = ['2012'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
+    private $_no_pc_cate_main = ['2012','2017'];   // 온라인 사이트 중 카테고리 메인 미사용 사이트 코드
 
     public function __construct()
     {
@@ -511,6 +511,9 @@ class Home extends \app\controllers\FrontController
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
         $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
 
+        $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getSubjectForSelectBox();
+        $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
+        $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo($this->_site_code);
         return $data;
     }
 
@@ -913,7 +916,14 @@ class Home extends \app\controllers\FrontController
             ],
         ];
 
-        return $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+        $data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+        foreach ($data as $key => $row){
+            if(empty($row['ProdPriceData']) === false){
+                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
+            }
+        }
+
+        return $data;
     }
 
     /**

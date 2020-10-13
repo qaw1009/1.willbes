@@ -74,7 +74,8 @@ class SupportStudyComment extends BaseSupport
         $column .= ',b.SubjectIdx, b.ProfIdx, b.ProdCode';
         $column .= ',b.SubjectName, b.ProdName, f.wProfName as ProfName';
         $column .= ',ProdApplyTypeCcd, LecScore';
-        $order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        //$order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
+        $order_by = ['b.IsBest'=>'Desc','b.RegDatm'=>'Desc'];
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);

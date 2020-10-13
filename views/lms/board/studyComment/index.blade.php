@@ -221,7 +221,7 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             if (row.RegType == '1') {
-                                return row.RegMemName + '<br>' + '('+row.admMemName + ')';
+                                return row.RegMemName + '<br>' + '('+row.AdmMemName + ')';
                             } else {
                                 return row.RegMemName+'<br>'+'('+row.RegMemId+')';
                             }

@@ -90,7 +90,7 @@ class StudyComment extends BaseBoard
             LB.SubjectIdx, PS.SubjectName, LB.ProfIdx, PROFESSOR.ProfNickName, LB.LecScore, LB.IsStatus, LB.ReviewRegDate,
             IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName, 
-            IF(LB.RegType = 1, ADMIN.wAdminName,"") AS admMemName,
+            IF(LB.RegType = 1, ADMIN.wAdminName,"") AS AdmMemName,
             LB.ProdCode, ifnull(LB.ProdName, lms_product.ProdName) as ProdName, LSC4.CcdName AS ProdApplyTypeName,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName,
             LB.UpdMemIdx, LB.UpdAdminIdx
@@ -152,7 +152,8 @@ class StudyComment extends BaseBoard
         $arr_subject = $this->_getSubjectArray();
 
         //교수조회
-        $arr_professor = $this->_getProfessorArray();
+        //$arr_professor = $this->_getProfessorArray();
+        $arr_professor = $this->professorModel->getProfessorArray('','',['WP.wProfName' => 'asc']);
 
         //상품타입
         $arr_prodType_ccds = [];

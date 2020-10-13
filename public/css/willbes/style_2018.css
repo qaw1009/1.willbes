@@ -582,6 +582,11 @@ min-height: 260px;}
 
 /*sub*/
 /*임용가이드*/
+.w-Guide-Ssam {
+    float: left;
+    width: 100%;
+    font-weight: 600;
+}
 .w-Guide-Ssam .tabBox {position:relative;}
 .w-Guide-Ssam .tabShow li {width:auto;}
 .w-Guide-Ssam .tabShow li a {padding:0 20px; font-size:14px}

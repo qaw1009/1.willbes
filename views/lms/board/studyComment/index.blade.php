@@ -46,6 +46,13 @@
                             <option value="N">미사용</option>
                         </select>
 
+                        <select class="form-control" id="search_prod_type_ccd" name="search_prod_type_ccd">
+                            <option value="">강좌적용선택</option>
+                            <option value="636001">온라인강좌</option>
+                            <option value="636002">학원강좌</option>
+                            <option value="636011">수기등록</option>
+                        </select>
+
                         <div class="checkbox ml-30">
                             <input type="checkbox" name="search_chk_create_by_admin" value="1" class="flat create-by-admin" id="create_by_admin"/> <label for="create_by_admin">관리자 등록글 보기</label>
                         </div>
@@ -108,7 +115,7 @@
                     <th>강좌명</th>
                     <th>평점</th>
                     <th>등록자</th>
-                    <th>등록일</th>
+                    <th>등록일<br/>(수기등록일)</th>
                     <th>HOT</th>
                     <th>사용</th>
                     <th>조회수</th>
@@ -214,12 +221,19 @@
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             if (row.RegType == '1') {
-                                return row.RegMemName;
+                                return row.RegMemName + '<br>' + '('+row.AdmMemName + ')';
                             } else {
                                 return row.RegMemName+'<br>'+'('+row.RegMemId+')';
                             }
                         }},
-                    {'data' : 'RegDatm'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if(row.ReviewRegDate){
+                                return row.RegDatm + '<br/>(' + row.ReviewRegDate + ')';
+                            }else{
+                                return row.RegDatm
+                            }
+                        }},
+                    // {'data' : 'RegDatm'},
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             var chk = '';
                             if (data == '1') { chk = 'checked=checked'; $set_is_best[row.BoardIdx] = 1; } else { chk = ''; }

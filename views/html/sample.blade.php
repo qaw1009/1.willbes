@@ -101,6 +101,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/ssam_schedule') }}" target="_blank">임용정보 > 강의실 배정표 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/ssam_upList') }}" target="_blank">임용정보 > 강의 업데이트 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/ssam_board') }}" target="_blank">임용정보 > 합격수기 <span>*</span></a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_01') }}" target="_blank">임용정보 > 임용가이드 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_02') }}" target="_blank">임용정보 > 최근동향 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_03') }}" target="_blank">임용정보 > 지역별 공고문 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_04') }}" target="_blank">임용정보 > 자료실 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200608') }}" target="_blank">임용 합격환승센터 <span>*</span></a></li> 

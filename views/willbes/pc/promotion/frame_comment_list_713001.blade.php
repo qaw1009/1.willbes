@@ -35,6 +35,8 @@
     position: absolute; bottom:0; right:0;
     width:70px; border-left:1px solid #eaeaea; display:block; height:42px; line-height:42px; color:#333; background:#fff;
 }
+.replyWrite span {position:absolute; bottom:10px; right:80px; color:#999;}
+
 .replyNoticeWrap .btnRt {
     margin-top:20px;
     text-align: right;
@@ -127,8 +129,11 @@
                 <div class="textarBx">
                     <textarea id="event_comment" name="event_comment" cols="30" rows="3"></textarea>               
                 </div>
-                <p> * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. </p>
+                <p>
+                     * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.
+                </p>
                 <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
+                {{--<span>74 byte</span>--}}
             </div>
 
             <!--댓글공지-관리자만 등록,수정,삭제 가능-->

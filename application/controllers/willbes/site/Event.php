@@ -9,6 +9,7 @@ class Event extends \app\controllers\FrontController
     protected $auth_methods = array();
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
     protected $_onoff_type = '';
     protected $_page_url = '';
     protected $_view_url = '';
@@ -244,8 +245,14 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->eventFModel->listEventForComment(true, $arr_condition_notice, $arr_condition_event_comment);
-        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, 20, $this->_paging_count, true);
+        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, 20, $paging_count, true);
 
         if ($total_rows > 0) {
             $list = $this->eventFModel->listEventForComment(false, $arr_condition_notice, $arr_condition_event_comment, $paging['limit'], $paging['offset']);
@@ -559,8 +566,14 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
-        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
+        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
             $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
@@ -628,8 +641,14 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
-        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
+        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
             $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);

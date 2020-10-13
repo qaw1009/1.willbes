@@ -15,16 +15,26 @@
                 <tbody>
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
-                        <div class="w-tit">[{{$data['RequestTypeName']}}] {{hpSubString($data['EventName'],0,40,'...')}}</div>
+                        <div class="w-tit"><span class="tx-blue">[{{$data['RequestTypeName']}}]</span> {{hpSubString($data['EventName'],0,40,'...')}}</div>
                         <dl class="w-info tx-gray">
-                            <dt>[접수기간] {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}<span class="row-line">|</span></dt>
+                            <dt>기간 : {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}<span class="row-line">|</span></dt>
                             <dt>{{$data['RegDay']}}<span class="row-line">|</span></dt>
                             <dt>조회수 : <span class="tx-blue">{{$data['ReadCnt']}}</span></dt>
                         </dl>
                     </td>
                 </tr>
 
-                @if(empty($data['file_F']) === false)
+                <tr class="txt">
+                    <td class="w-txt NGR">
+                        @if($data['ContentType'] == $arr_base['content_type']['image'])
+                            <div class="mb10"><img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}"></div>
+                        @else
+                            {!! $data['Content'] !!}
+                        @endif
+                    </td>
+                </tr>
+
+                @if(empty($arr_base['file_F']) === false)
                     <tr class="flie">
                         <td class="w-file NGR">
                             <a href="{{front_url('/event/download?file_idx=').$arr_base['file_F']['EfIdx'].'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
@@ -33,28 +43,18 @@
                         </td>
                     </tr>
                 @endif
-
-                <tr class="txt">
-                    <td class="w-txt NGR">
-                        @if($data['ContentType'] == $arr_base['content_type']['image'])
-                            <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
-                        @else
-                            {!! $data['Content'] !!}
-                        @endif
-                    </td>
-                </tr>
                 </tbody>
             </table>
 
             <!-- show_regist_list -->
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['regist_list'], $data['data_option_ccd']) === true )
-                @include('willbes.pc.site.event.show_regist_list_partial')
+                @include('willbes.m.site.event.show_regist_list_partial')
             @endif
             <!-- show_regist_list -->
 
                 <!-- show_comment_list -->
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.site.event.show_comment_list_partial')
+                @include('willbes.m.site.event.show_comment_list_partial')
             @endif
             <!-- show_comment_list -->
 

@@ -82,6 +82,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
         $set_query .= ') AS m ';
+
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();

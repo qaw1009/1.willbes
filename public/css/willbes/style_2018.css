@@ -379,13 +379,13 @@ min-height: 260px;}
 .mainPop_con .trendView {background-color: #fff; margin:50px; padding:30px}
 .mainPop_con .trendView .trendTitle {font-size:18px; font-weight:600;}
 .mainPop_con .trendView .graph {border:1px solid #dedede; margin-top:20px; /*min-height:200px;*/}
-.mainPop_con .trendView .trendData {margin-top: 20px;}
-.mainPop_con .trendView .trendData table {border-top:1px solid #dedede; border-left:1px solid #dedede}
-.mainPop_con .trendView .trendData tr {border-bottom:1px solid #dedede}
-.mainPop_con .trendView .trendData tr:nth-of-type(even) {background: #fafafa; font-size: 14px;}
-.mainPop_con .trendView .trendData th,
-.mainPop_con .trendView .trendData td {padding:10px; text-align: center; border-right:1px solid #dedede}
-.mainPop_con .trendView .trendData th {font-weight: bold; color:#fff; background:#0c5dc0}
+.trendData {margin-top: 20px;}
+.trendData table {border-top:1px solid #dedede; border-left:1px solid #dedede}
+.trendData tr {border-bottom:1px solid #dedede}
+.trendData tr:nth-of-type(even) {background: #fafafa; font-size: 14px;}
+.trendData th,
+.trendData td {padding:10px; text-align: center; border-right:1px solid #dedede}
+.trendData th {font-weight: bold; color:#fff; background:#0c5dc0}
 
 /* Main Container : 학습자료실 : */
 .ssam .Section7 .widthAuto {background-color: #e0e3e6; padding:30px}
@@ -585,17 +585,42 @@ min-height: 260px;}
 .w-Guide-Ssam {
     float: left;
     width: 100%;
-    font-weight: 600;
 }
-.w-Guide-Ssam .tabBox {position:relative;}
+.w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#000; line-height:30px;}
+.w-Guide-Ssam .tabBox {position:relative; margin-bottom: 30px;}
 .w-Guide-Ssam .tabShow li {width:auto;}
 .w-Guide-Ssam .tabShow li a {padding:0 20px; font-size:14px}
+.w-Guide-Ssam .tabSsam li a {padding:0 15px; font-size: 12px;}
 .w-Guide-Ssam .tabBox .guideBtn {position:absolute; top:0; right:0}
 .w-Guide-Ssam .tabBox .guideBtn a {display:inline-block; border:1px indianred solid; color:indianred; padding:5px 10px; margin-left:5px}
 .w-Guide-Ssam .tabBox .guideBtn a:hover {background-color: indianred; color:#fff}
-.w-Guide-Ssam .tabContent {margin-top:30px; line-height: 1.8; color:#555; font-weight: normal; letter-spacing: normal;}
-.w-Guide-Ssam .tabContent h4 {margin-bottom:20px; font-size:16px; color:#39ac9a; line-height:30px;}
+.w-Guide-Ssam .tabContent {line-height: 1.8; color:#555; font-weight: normal; letter-spacing: normal;}
 .w-Guide-Ssam .tabContent .guideBtn02 {margin-top: 20px; margin-right:-10px}
 .w-Guide-Ssam .tabContent .guideBtn02 li {display:inline; float:left; width:33.33333%}
-.w-Guide-Ssam .tabContent .guideBtn02 a {display:block; border:1px indianred solid; color:indianred; padding:10px; text-align: center; margin-right:10px}
+.w-Guide-Ssam .tabContent .guideBtn02 a {display:block; border:1px indianred solid; color:indianred; padding:10px; text-align: center; font-size: 14px;; margin-right:10px}
 .w-Guide-Ssam .tabContent .guideBtn02 a:hover {background-color: indianred; color:#fff}
+.w-Guide-Ssam .guidebox > div {width:49%;}
+.w-Guide-Ssam .guidebox:after {content:""; display:block; clear:both}
+.w-Guide-Ssam .guidebox table {border-top:1px solid #e2e4e6; border-left:1px solid #e2e4e6}
+.w-Guide-Ssam .guidebox th,
+.w-Guide-Ssam .guidebox td {text-align: center; padding:10px 5px; border-right:1px solid #e2e4e6; line-height: 1.4;}
+.w-Guide-Ssam .guidebox tr {border-bottom:1px solid #e2e4e6}
+.w-Guide-Ssam .guidebox th {font-weight: bold; color:#494a4d; background:#f4f4f5; letter-spacing: normal;}
+.w-Guide-Ssam .guidebox td a.btn01 {display:inline-block; padding:5px 10px; font-size: 11px; border-radius: 4px; background-color:#2b4ab8; color:#fff}
+.w-Guide-Ssam .listTable select {padding:5px}
+
+/* 대학특강, 교수채용 */
+.w-Guide-Ssam .request_con{text-align:center; margin-top:90px}
+.w-Guide-Ssam .request_con > .txt01{font-size:12px; color:#b5caf2; font-weight:300; letter-spacing:31px; text-indent:31px}
+.w-Guide-Ssam .request_con > .txt02{font-size:42px; color:#2b4ab8; font-weight:bold; letter-spacing:-5.5px; margin:28px 0 11px}
+.w-Guide-Ssam .request_con > .txt03{font-size:24px; color:#2b4ab8; font-weight:500; letter-spacing:-2px}
+.w-Guide-Ssam .request_con > img{margin:65px 0 25px}
+.w-Guide-Ssam .request_con .txt04{font-size:16px; color:#2c303e; font-weight:300; line-height:25px}
+.w-Guide-Ssam .request_con .request_txtWrap{padding:45px 0; background:#fff; margin-top:25px; text-align:center}
+.w-Guide-Ssam .request_con .request_txtWrap .txt01{font-size:16px; color:#2b49b8; font-weight:300; line-height:25px; margin-bottom:28px}
+.w-Guide-Ssam .request_con .request_txtWrap .txt02{display:block; width:580px; margin:0 auto; font-size:18px; font-weight:300; color:#2c303e; padding:9px 0; border-bottom:1px dashed #bec3cc}
+.w-Guide-Ssam .request_con .request_txtWrap .txt02:last-of-type{border-bottom:0}
+.w-Guide-Ssam .request_con .request_txtWrap .txt02 span{font-weight:500; color:#2b4ab8}
+.w-Guide-Ssam .professor_con > .txt03{margin:30px 0 10px}
+.w-Guide-Ssam .professor_con > .txt02{margin:0}
+.w-Guide-Ssam .professor_con > img{margin:55px 0 25px}

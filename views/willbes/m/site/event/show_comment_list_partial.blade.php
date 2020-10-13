@@ -4,7 +4,6 @@
 <script type="text/javascript">
     function resizeIframe(iframe) {
         iframe.height = (iframe.contentWindow.document.body.scrollHeight + 15) + "px";
-
     }
 
     function popup_notice_view(notice_idx) {

@@ -72,10 +72,10 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#evt01"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_sky_1.png" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_1.png" alt="" >
             </a> 
             <a href="#evt02"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_sky_2.png" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_2.png" alt="" >
             </a>               
         </div>   
 
@@ -88,18 +88,18 @@
         </div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_01.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_01.jpg" title="" />
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/5A-cMTBiosg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_02.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_02.jpg" title="" />
         </div>
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_03.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_03.jpg" title="" />
             <div class="tabContaier">  
                 <ul class="NGEB">
                     <li><a href="#tab01" class="active">실무자 경험</a></li>
@@ -109,25 +109,25 @@
                 </ul>
             </div>
             <div id="tab01" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_on_tab_c1.jpg" alt="실무자 경험"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_on_tab_c1.jpg" alt="실무자 경험"/>
                 <div class="youtubes">
                     <iframe src="https://www.youtube.com/embed/Ws01SIhfmEg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="tab02" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_on_tab_c2.jpg" alt="형법 신세계"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_on_tab_c2.jpg" alt="형법 신세계"/>
                 <div class="youtubes">
                     <iframe src="https://www.youtube.com/embed/26RYrHD5GfU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>        
             </div>
             <div id="tab03" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_on_tab_c3.jpg" alt="공범&신분"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_on_tab_c3.jpg" alt="공범&신분"/>
                 <div class="youtubes">
                     <iframe src="https://www.youtube.com/embed/AjBcO9dlTa0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>    
             </div>
             <div id="tab04" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_on_tab_c4.jpg" alt="법률 용어"/>
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_on_tab_c4.jpg" alt="법률 용어"/>
                 <div class="youtubes">
                     <iframe src="https://www.youtube.com/embed/ly7Csmd3uiw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>        
@@ -135,7 +135,7 @@
         </div>
 
         <div class="evtCtnsBox evt_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_04.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_04.jpg" title="" />
         </div>
 
         <div class="evtCtnsBox evt_05" id="evt01">
@@ -146,9 +146,9 @@
         </div>
 
         <div class="evtCtnsBox evt_06" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_06.jpg" usemap="#Map1872b" title="" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_06.jpg" usemap="#Map1872b" title="" border="0" />
             <map name="Map1872b" id="Map1872b">
-                <area shape="rect" coords="357,1209,734,1258" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
+                <area shape="rect" coords="355,1119,733,1170" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
             </map>
         </div>
 

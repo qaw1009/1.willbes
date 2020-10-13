@@ -19,8 +19,8 @@
 
         .evt00 {background:#0a0a0a}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/10/1874_top_bg.jpg) no-repeat center;}
-        .evt01 {padding:100px 0 0}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/10/1874_top_bg.jpg) no-repeat center top;}
+        .evt01 {}
         .evtLec {width:1120px; margin:0 auto; text-align:left}
 
     </style>
@@ -31,14 +31,13 @@
         </div>     
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_top.jpg"  alt="10월 추천강좌" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_top.jpg"  alt="10월 추천강좌" usemap="#Map1874" border="0" />
+            <map name="Map1874">
+              <area shape="rect" coords="834,799,1076,909" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원패스">
+            </map>
         </div>
 
         <div class="evtCtnsBox evt01">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_01.jpg"  alt="0원패스" />
-            </a>
-            <br>
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_02.jpg"  alt="심화이론,기출 단과"/>
         </div>
 

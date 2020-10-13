@@ -45,6 +45,7 @@
                             </div>
                         </li>
                     @endif
+                        @php $paging['rownum']-- @endphp
                 @endforeach
             </ul>
         </div>

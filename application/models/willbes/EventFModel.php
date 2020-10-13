@@ -594,9 +594,10 @@ class EventFModel extends WB_Model
      * @param $arr_condition_event_comment
      * @param null $limit
      * @param null $offset
+     * @param null $group_by
      * @return mixed
      */
-    public function listEventForComment($is_count, $arr_condition_notice, $arr_condition_event_comment, $limit = null, $offset = null)
+    public function listEventForComment($is_count, $arr_condition_notice, $arr_condition_event_comment, $limit = null, $offset = null, $group_by = '')
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -633,10 +634,11 @@ class EventFModel extends WB_Model
                 ORDER BY a.CIdx DESC
             ) AS b
         ) AS c
-        GROUP BY c.Idx ORDER BY c.ContentOrderBy DESC, c.Idx DESC
+        {$group_by} ORDER BY c.ContentOrderBy DESC, c.Idx DESC
         ";
 
         $query = $this->_conn->query('select ' . $column . $from . $order_by_offset_limit);
+
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

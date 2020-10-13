@@ -18,7 +18,7 @@
         <div class="willbes-Lec-Selected NG tx-gray">
 
             @if(empty($arr_base['request_type']) === false)
-                <select id="s_request_type" name="s_request_type" title="이벤트종류" class="seleCate width32n5p" onchange="goUrl('s_request_type',this.value)">
+                <select id="s_request_type" name="s_request_type" title="이벤트종류" class="width49p" onchange="goUrl('s_request_type',this.value)">
                     <option value="">전체 이벤트</option>
                     @foreach($arr_base['request_type'] as $key => $val)
                         <option value="{{$key}}" @if(element('s_request_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -27,7 +27,7 @@
             @endif
 
             @if(empty($arr_base['campus']) === false)
-                <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCate width32n5p ml1p" onchange="goUrl('s_campus',this.value)">
+                <select id="s_campus" name="s_campus" title="캠퍼스" class="width50p ml1p" onchange="goUrl('s_campus',this.value)">
                     <option value="">전체 캠퍼스</option>
                     @foreach($arr_base['campus'] as $key => $val)
                         <option value="{{$key}}" @if(element('s_campus', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -62,19 +62,19 @@
 
             @foreach($list as $row)
                 <tr class="{{$row['IsBest'] == '1' ? 'bg-light-blue' : ''}}">
-                    <td class="w-data tx-left" colspan="2">
-                        <a href="{{front_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
-                            <div class="w-tit">
-                                [{{$row['RequestTypeName']}}] {{hpSubString($row['EventName'],0,40,'...')}}
-                            </div>
-                            <dl class="w-info tx-gray">
-                                <dt>접수기간 : {{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}<span class="row-line">|</span></dt>
-                                <dt>조회수 : <span class="tx-blue">{{$row['ReadCnt']}}</span></dt>
-                                @if (empty($row['Link']) === false)
-                                    <div class="InfoBtn btn_blue"><a href="//{{$row['Link']}}" target="_blank">바로가기 &gt;</a></div>
-                                @endif
-                            </dl>
-                        </a>
+                    <td class="w-data tx-left">
+                        <div class="w-tit">
+                            <a href="{{front_url($arr_base['view_url'].'?event_idx='.$row['ElIdx'].'&'.$get_params)}}">
+                                <span class="tx-blue">[{{$row['RequestTypeName']}}]</span> {{hpSubString($row['EventName'],0,40,'...')}}
+                            </a>
+                        </div>
+                        <dl class="w-info tx-gray">
+                            <dt>기간 : {{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}<span class="row-line">|</span></dt>
+                            <dt>조회수 : <span class="tx-blue">{{$row['ReadCnt']}}</span></dt>
+                        </dl>
+                        @if (empty($row['Link']) === false)
+                            <div><a href="//{{$row['Link']}}" class="btnblue">바로가기 &gt;</a></div>
+                        @endif
                     </td>
                 </tr>
             @endforeach

@@ -14,6 +14,7 @@ class SupportExamQuestion extends BaseSupport
     protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
     private $_groupCcd = [
         'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
     ];
@@ -76,9 +77,15 @@ class SupportExamQuestion extends BaseSupport
 
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);

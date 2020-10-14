@@ -17,21 +17,21 @@
         </div>
         <div class="willbes-Lec-Selected NG tx-gray">
 
-            <select id="s_area" name="s_area" title="지역" class="width49p" onchange="goUrl('s_area',this.value)">
+            <select id="s_area" name="s_area" title="지역" class="width49p d_none" onchange="goUrl('s_area',this.value)">
                 <option value="">지역</option>
                 @foreach($arr_base['area'] as $key => $val)
                     <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                 @endforeach
             </select>
 
-            <select id="s_year" name="s_year" title="연도" class="width50p ml1p" onchange="goUrl('s_year',this.value)">
-                <option value="">연도</option>
+            <select id="s_year" name="s_year" title="연도" class="width49p" onchange="goUrl('s_year',this.value)">
+                <option value="">{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : '연도'}}</option>
                 @for($i = date('Y') - 5; $i <= date('Y') + 5; $i++)
                     <option value="{{$i}}" @if(element('s_year', $arr_input) == $i)selected="selected"@endif>{{$i}}</option>
                 @endfor
             </select>
 
-            <select id="s_subject" name="s_subject" title="과목" class="width49p mt1p" onchange="goUrl('s_subject',this.value)">
+            <select id="s_subject" name="s_subject" title="과목" class="width50p ml1p" onchange="goUrl('s_subject',this.value)">
                 <option value="">과목</option>
                 @foreach($arr_base['subject'] as $key => $val)
                     <option value="{{$key}}" @if(element('s_subject', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -72,8 +72,8 @@
                             </a>
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>{{$row['AreaCcd_Name']}}<span class="row-line">|</span></dt>
-                            <dt>{{$row['ExamProblemYear']}}<span class="row-line">|</span></dt>
+{{--                            <dt>{{$row['AreaCcd_Name']}}<span class="row-line">|</span></dt>--}}
+                            <dt>{{$row['ExamProblemYear']}}{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : ''}}<span class="row-line">|</span></dt>
                             <dt>{{$row['RegDatm']}}<span class="row-line">|</span></dt>
                             <dt>조회수 : <span class="tx-blue">{{$row['TotalReadCnt']}}</span></dt>
                         </dl>

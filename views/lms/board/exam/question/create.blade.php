@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="exam_problem_year">연도<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1" for="exam_problem_year">연도(학년도)<span class="required">*</span></label>
                     <div class="form-inline col-md-4 item">
                         <select class="form-control" required="required" id="exam_problem_year" name="exam_problem_year" title="연도">
                             @for($i = date('Y') - 5; $i <= date('Y') + 5; $i++)

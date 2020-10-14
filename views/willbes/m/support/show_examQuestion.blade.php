@@ -16,7 +16,8 @@
                 <tr class="list bg-light-gray">
                     <td class="w-data tx-left">
                         <dl class="w-info">
-                            <dt>{{$data['AreaCcd_Name']}} <span class="row-line">|</span>{{$data['ExamProblemYear']}}</dt>
+{{--                            <dt>{{$data['AreaCcd_Name']}} <span class="row-line">|</span>{{$data['ExamProblemYear']}}</dt>--}}
+                            <dt>{{$data['ExamProblemYear']}}{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : ''}}</dt>
                         </dl>
                         <div class="w-tit">{{$data['Title']}}</div>
                         <dl class="w-info tx-gray">

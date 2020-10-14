@@ -19,9 +19,21 @@ class SupportExamQuestion extends BaseSupport
         'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
     ];
 
+    private $_on_off_swich = [
+        '60' => [                               // bm_idx 수험정보게시판 -> 기출문제
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+            'school_year' => '학년도',
+        ]
+    ];
+    
     public function __construct()
     {
         parent::__construct();
+
+        $this->arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($this->arr_swich) === false && in_array($this->_site_code,$this->arr_swich['site_code']) === true)){;
+            $this->arr_swich = null;
+        }
     }
 
     public function index()
@@ -101,6 +113,7 @@ class SupportExamQuestion extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
+            'arr_swich' => $this->arr_swich
         ]);
     }
 
@@ -207,6 +220,7 @@ class SupportExamQuestion extends BaseSupport
                 'data' => $data,
                 'pre_data' => $pre_data,
                 'next_data' =>  $next_data,
+                'arr_swich' => $this->arr_swich
             ]
         );
     }

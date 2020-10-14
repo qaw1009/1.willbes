@@ -19,7 +19,7 @@
                 <div class="willbes-Leclist c_both">
                     <div class="willbes-Lec-Selected tx-gray mt0">
                         <div class="f_left">
-                            <select id="s_area" name="s_area" title="지역" class="seleLecA" onchange="goUrl('s_area',this.value)">
+                            <select id="s_area" name="s_area" title="지역" class="seleLecA d_none" onchange="goUrl('s_area',this.value)">
                                 <option value="">지역</option>
                                 @foreach($arr_base['area'] as $key => $val)
                                     <option value="{{$key}}" @if(element('s_area', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
@@ -27,7 +27,7 @@
                             </select>
 
                             <select id="s_year" name="s_year" title="연도" class="seleLecA" onchange="goUrl('s_year',this.value)">
-                                <option value="">연도</option>
+                                <option value="">{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : '연도'}}</option>
                                 @for($i = date('Y') - 5; $i <= date('Y') + 5; $i++)
                                     <option value="{{$i}}" @if(element('s_year', $arr_input) == $i)selected="selected"@endif>{{$i}}</option>
                                 @endfor
@@ -54,10 +54,10 @@
                         <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                             <colgroup>
                                 <col style="width: 65px;">
+{{--                                <col style="width: 80px;">--}}
                                 <col style="width: 80px;">
-                                <col style="width: 60px;">
-                                <col style="width: 110px;">
-                                <col style="width: 360px;">
+                                <col style="width: 130px;">
+                                <col style="">
                                 <col style="width: 65px;">
                                 <col style="width: 110px;">
                                 <col style="width: 90px;">
@@ -65,8 +65,8 @@
                             <thead>
                             <tr>
                                 <th>No<span class="row-line">|</span></th>
-                                <th>지역<span class="row-line">|</span></th>
-                                <th>연도<span class="row-line">|</span></th>
+{{--                                <th>지역<span class="row-line">|</span></th>--}}
+                                <th>{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : '연도'}}<span class="row-line">|</span></th>
                                 <th>과목<span class="row-line">|</span></th>
                                 <th>제목<span class="row-line">|</span></th>
                                 <th>첨부<span class="row-line">|</span></th>
@@ -84,8 +84,8 @@
                             @foreach($list as $row)
                                 <tr>
                                     <td class="w-no">@if($row['IsBest'] == '1')<img src="{{ img_url('prof/icon_HOT.gif') }}">@else{{$paging['rownum']}}@endif</td>
-                                    <td>{{$row['AreaCcd_Name']}}</td>
-                                    <td>{{$row['ExamProblemYear']}}</td>
+{{--                                    <td>{{$row['AreaCcd_Name']}}</td>--}}
+                                    <td>{{$row['ExamProblemYear']}}{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : ''}}</td>
                                     <td>{{$row['SubjectName']}}</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="{{front_url($default_path.'/examQuestion/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">

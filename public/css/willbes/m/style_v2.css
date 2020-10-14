@@ -2164,6 +2164,11 @@ body.memBody #Footer {
 .lecTable tr td.w-data a {
     display: block;
 }
+.lecTable tr td.w-data.file a {
+    display: block;
+    background: url("../../../img/willbes/prof/icon_file.gif") no-repeat right center;
+    padding-right:20px
+}
 .lecTable dl dt {
     display: inline-block;
 }

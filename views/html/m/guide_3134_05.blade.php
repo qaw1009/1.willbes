@@ -7,7 +7,7 @@
         <button type="button" class="goback" onclick="history.back(-1); return false;">
             <span class="hidden">뒤로가기</span>
         </button>    
-        지열별 공고문
+        임용시험 최근 10년 동향
     </div>
 
     <div class="w-Guide-Ssam mt20">

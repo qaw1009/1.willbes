@@ -14,13 +14,26 @@ class SupportExamQuestion extends BaseSupport
     protected $_default_path;
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
     private $_groupCcd = [
         'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
     ];
 
+    private $_on_off_swich = [
+        '60' => [                               // bm_idx 수험정보게시판 -> 기출문제
+            'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
+            'school_year' => '학년도',
+        ]
+    ];
+    
     public function __construct()
     {
         parent::__construct();
+
+        $this->arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($this->arr_swich) === false && in_array($this->_site_code,$this->arr_swich['site_code']) === true)){;
+            $this->arr_swich = null;
+        }
     }
 
     public function index()
@@ -76,9 +89,15 @@ class SupportExamQuestion extends BaseSupport
 
         $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
 
-        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$this->_paging_count,true);
+        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
@@ -94,6 +113,7 @@ class SupportExamQuestion extends BaseSupport
             'arr_input' => $arr_input,
             'list'=>$list,
             'paging' => $paging,
+            'arr_swich' => $this->arr_swich
         ]);
     }
 
@@ -200,6 +220,7 @@ class SupportExamQuestion extends BaseSupport
                 'data' => $data,
                 'pre_data' => $pre_data,
                 'next_data' =>  $next_data,
+                'arr_swich' => $this->arr_swich
             ]
         );
     }

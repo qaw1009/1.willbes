@@ -93,11 +93,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_01.jpg" usemap="#Map1744a" title="파이널패스" border="0" />
-            <map name="Map1744a" id="Map1744a">
-                <area shape="rect" coords="98,1173,1022,1278" href="https://police.willbes.net/promotion/index/cate/3001/code/1741" target="_blank" />
-                <area shape="rect" coords="727,1073,927,1118" href="https://police.willbes.net/promotion/index/cate/3001/code/1741" target="_blank" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_01.jpg" />
         </div>         
         
         <div class="evtCtnsBox evt02">

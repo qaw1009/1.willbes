@@ -297,6 +297,9 @@ min-height: 260px;}
 .ssam .examInfo .examTop th,
 .ssam .examInfo .examTop td {padding:10px; text-align: center; border-right:1px solid #dedede}
 .ssam .examInfo .examTop th {font-weight: bold; color:#fff; background:#2b49b7}
+.ssam .examInfo .examTop td span {vertical-align: top; margin-right:5px}
+.ssam .examInfo .examTop td span.down {color:#315ae6}
+.ssam .examInfo .examTop td span.up {color:red}
 .ssam .examInfo .examTop:after {content:""; display:block; clear:both}
 .ssam .examInfo .examBottom {margin:0 50px; border-top:1px solid #dedede; padding:35px 0; text-align: center;}
 .ssam .examInfo .examBottom .titleTrend {font-size: 24px; color:#315ae6; margin-bottom:20px}
@@ -352,8 +355,8 @@ min-height: 260px;}
 .mainPop_con .mainPop_map table tr th:first-of-type{background:#ffffcc}
 .mainPop_con .mainPop_map table tr th.blue_th{font-weight:500; color:#2b4ab8; background:#ffff33}
 .mainPop_con .mainPop_map table tr td{color:#838484; font-weight:300}
-.mainPop_con .mainPop_map table tr td span.red{color:#f00}
-.mainPop_con .mainPop_map table tr td span.blue{color:#2b4ab8}
+.mainPop_con .mainPop_map table tr td span.up{color:#f00; margin-right:5px}
+.mainPop_con .mainPop_map table tr td span.down{color:#2b4ab8; margin-right:5px}
 .mainPop_con .mainPop_map .map_left{ display:none; position:absolute; top:0; left:0}
 .mainPop_con .mainPop_map .map_center{ display:none; height:100%; position:absolute; top:0; left:350px}
 .mainPop_con .mainPop_map .map_right{display:none; position:absolute; top:0; right:0}

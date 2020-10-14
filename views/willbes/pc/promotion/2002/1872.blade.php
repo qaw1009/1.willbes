@@ -148,7 +148,7 @@
         <div class="evtCtnsBox evt_06" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_06.jpg" usemap="#Map1872b" title="" border="0" />
             <map name="Map1872b" id="Map1872b">
-                <area shape="rect" coords="355,1119,733,1170" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
+                <area shape="rect" coords="353,1209,734,1256" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
             </map>
         </div>
 

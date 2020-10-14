@@ -57,11 +57,27 @@
                                 </a>
                             @endif
                         </div>
+                        @if($__cfg['SiteCode'] == '2017') {{-- 임용추가 --}}
+                            <a href="{{ front_url('/pass/board/schedule') }}">
+                                <button type="button" class="classroom"><span>강의실배정표</span></button>
+                            </a>
+                        @endif
                         <button type="button" class="basket" onclick="document.location='{{ front_url('/cart/index') }}';">
                             <span class="hidden">장바구니</span>
                         </button>
                     </div>
                 </div>
+
+                @if($__cfg['SiteCode'] == '2017' && empty($data['dday']) === false) {{-- 임용추가 --}}
+                    <div class="dday NSK">
+                        <strong class="NSK-Black">D-day</strong>
+                        @foreach($data['dday'] as $row)
+                            @if($loop->index <= 2)
+                                {{$row['DayTitle']}} <span>{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</span>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
 
                 {{-- 사이트탭영역 --}}
                 @include('willbes.m.layouts.toptab')
@@ -110,8 +126,10 @@
                     <div class="c_both {{ $__cfg['IsPassSite'] === false ? 'mb10' : '' }}"></div>
                 @endif
 
-                {{-- 검색영역 --}}
-                @include('willbes.m.layouts.topsearch')
+                @if($__cfg['SiteCode'] != '2017') {{-- 임용제외 --}}
+                    {{-- 검색영역 --}}
+                    @include('willbes.m.layouts.topsearch')
+                @endif
             </div>
         </div>
     @endif

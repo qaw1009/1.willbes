@@ -20,8 +20,8 @@
                             <div class="LecViewTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
                                     <colgroup>
-                                        <col style="width: 65px;">
-                                        <col style="width: 65px;">
+{{--                                        <col style="width: 65px;">--}}
+                                        <col style="width: 85px;">
                                         <col style="width: 510px;">
                                         <col style="width: 150px;">
                                         <col style="width: 150px;">
@@ -34,8 +34,8 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <td class="w-area">{{$data['AreaCcd_Name']}}<span class="row-line">|</span></td>
-                                        <td class="w-year">{{$data['ExamProblemYear']}}<span class="row-line">|</span></td>
+{{--                                        <td class="w-area">{{$data['AreaCcd_Name']}}<span class="row-line">|</span></td>--}}
+                                        <td class="w-year">{{$data['ExamProblemYear']}}{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : ''}}<span class="row-line">|</span></td>
                                         <td class="w-sbj tx-left pl20">{{$data['SubjectName']}}<span class="row-line">|</span></td>
                                         <td class="w-date">{{$data['RegDatm']}}<span class="row-line">|</span></td>
                                         <td class="w-click"><strong>조회수</strong> {{$data['TotalReadCnt']}}</td>

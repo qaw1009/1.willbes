@@ -26,18 +26,18 @@
                         <div class="nTxt">동영상 원격지원</div>
                     </a>
                 </li>
-                <li>
-                    <a href="#none">
-                        <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon05.png"></span>
-                        <div class="nTxt">대학특강 문의</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
-                        <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon06.png"></span>
-                        <div class="nTxt">교수채용</div>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="#none">--}}
+{{--                        <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon05.png"></span>--}}
+{{--                        <div class="nTxt">대학특강 문의</div>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <a href="#none">--}}
+{{--                        <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon06.png"></span>--}}
+{{--                        <div class="nTxt">교수채용</div>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
             </ul>
         </dt>
         <dt class="willbesNumber">

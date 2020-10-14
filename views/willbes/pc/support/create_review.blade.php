@@ -263,6 +263,11 @@
                     return false;
                 }
 
+                if (fn_chk_text_length($('#board_content').val(), 'space') < 500) {
+                    alert('내용은 500자 이상 입력하셔야 됩니다.');
+                    return false;
+                }
+
                 if ($("#is_chk_y").is(':checked') === false) {
                     alert('개인정보 수집 및 이용에 동의하여 주십시오.');
                     return false;

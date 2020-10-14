@@ -607,7 +607,7 @@
             <ul>
                 <li class="Tit">교육학</li>
                 <li>
-                    <a href="{{front_url('/professor/show/prof-idx/50958?subject_idx=1880')}}">김차웅</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51073?subject_idx=1980')}}">김차웅</a>
                     <a href="{{front_url('/professor/show/prof-idx/51074?subject_idx=1980')}}">이인재</a>
                     <a href="{{front_url('/professor/show/prof-idx/51075?subject_idx=1980')}}">홍의일</a>
                 </li>

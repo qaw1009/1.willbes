@@ -7,92 +7,24 @@
         <button type="button" class="goback" onclick="history.back(-1); return false;">
             <span class="hidden">뒤로가기</span>
         </button>    
-        임용시험 최근 10년 동향
+        대학 특강문의
     </div>
 
-    <div class="w-Guide-Ssam mt20">
-        <div class="NG ssamInfoMenu">
-            <ul>
-                <li><a href="guide_3134_01">임용<br>시험제도</a><li>
-                <li><a href="guide_3134_02">최근<br>10년동향</a><li>
-                <li class="one"><a href="guide_3134_03">자료실</a><li>
-                <li><a href="guide_3134_04" class="on">지역별<br>공고문</a><li>
-            </ul>
+    <div class="w-Guide-Ssam">
+        <div class="request_con NSK">
+            <p class="txt01">RECRUITMENT</p>
+            <p class="txt02 NSK-Black">윌비스 임용고시 학원은 전국 대학교와<br> 파트너십을 구축하고 있으니</p>
+            <p class="txt03">우수한 서비스와 콘텐츠를 받아보시기 바랍니다.</p>
+            <img src="https://static.willbes.net/public/images/promotion/main/2018/professor_img.png" alt="">
+            <p class="txt04">교원임용시험은 교사에 대한 처우개선 및 직업의 안정성으로 인하여 가장 선호되고 있는 시험 중 하나이며,<br>임용고시는 순위고사라는 우선 임용제 방식에서 91년도부터 공개경쟁채용시험으로 변경되어 선발하고 있습니다.</p>
+            <div class="request_txtWrap">
+                <p class="txt01">제휴를 원하시는 대학은<br>아래 연락처로 연락 주시면 감사하겠습니다.</p>
+                <p class="txt02"><span>과목 :</span> 임용시험 전과목</p>
+                <p class="txt02"><span>담당자 :</span> 교원임용 본부장 최창식 ( 010-7167-2329 / genie001@willbes.com )</p>
+                <p class="txt02"><span>학원문의 :</span> 1544-3169</p>
+            </div>
         </div>
     </div>
-
-    <div class="willbes-Lec-Selected NG tx-gray pt-zero">
-        <select id="process" name="process" title="process" class="seleProcess width40p">
-            <option selected="selected">연도</option>
-            <option value="">2020</option>
-            <option value="">2019</option>
-            <option value="">2018</option>
-        </select>
-        <select id="campus" name="campus" title="campus" class="seleCampus width40p ml1p">
-            <option selected="selected">전체</option>
-            <option value="">교육학</option>
-            <option value="">전공국어</option>
-            <option value="">전공영어</option>
-        </select>
-    </div>
-
-    <div class="lineTabs lecListTabs c_both">
-        <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
-            <tbody>
-                <tr>
-                    <td class="w-data file">
-                        <dl class="w-info">
-                            <dt>2020<span class="row-line">|</span>교육학</dt>
-                        </dl>
-                        <div class="w-tit">
-                            <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="w-data file">
-                        <dl class="w-info">
-                            <dt>2020<span class="row-line">|</span>전공국어</dt>
-                        </dl>
-                        <div class="w-tit">
-                            <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="w-data file">
-                        <dl class="w-info">
-                            <dt>2020<span class="row-line">|</span>전공영어</dt>
-                        </dl>
-                        <div class="w-tit">
-                            <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="w-data file">
-                        <dl class="w-info">
-                            <dt>2020<span class="row-line">|</span>전공수학</dt>
-                        </dl>
-                        <div class="w-tit">
-                            <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="Paging">
-            <ul>
-                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                <li><a href="#none">2</a><span class="row-line">|</span></li>
-                <li><a href="#none">3</a><span class="row-line">|</span></li>
-                <li><a href="#none">4</a><span class="row-line">|</span></li>
-                <li><a href="#none">5</a></li>
-                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-            </ul>
-        </div>
-    </div>    
 
     <div class="goTopbtn">
         <a href="javascript:link_go();">

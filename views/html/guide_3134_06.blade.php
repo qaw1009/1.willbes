@@ -122,7 +122,7 @@
             <div class="request_con NSK">
                 <p class="txt01">RECRUITMENT</p>
                 <p class="txt03">교육에 대한 열정을 가지고 계신 교수님을</p>
-                <p class="txt02">윌비스 임용고시 학원에서 모시고자 합니다<i>!</i></p>
+                <p class="txt02 NSK-Black">윌비스 임용고시 학원에서 모시고자 합니다<i>!</i></p>
                 <img src="https://static.willbes.net/public/images/promotion/main/2018/professor_img00.png" alt="">
                 <p class="txt04">교원임용시험은 교사에 대한 처우개선 및 직업의 안정성으로 인하여 가장 선호되고 있는 시험 중 하나이며,<br>임용고시는 순위고사라는 우선 임용제 방식에서 91년도부터 공개경쟁채용시험으로 변경되어 선발하고 있습니다.</p>
                 <div class="request_txtWrap">

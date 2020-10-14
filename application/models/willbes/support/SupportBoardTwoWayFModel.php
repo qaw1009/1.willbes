@@ -249,7 +249,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $from = "
             FROM {$this->_table['twoway_board_2']}
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
-            INNER JOIN lms_product AS p ON b.ProdCode = p.ProdCode AND p.IsStatus = 'Y'
+            left join lms_product AS p ON b.ProdCode = p.ProdCode AND p.IsStatus = 'Y'
         ";
 
         if (empty($cate_code) === false) {

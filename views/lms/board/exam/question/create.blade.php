@@ -68,7 +68,7 @@
                         <select class="form-control" id="subject_idx" name="subject_idx" title="과목">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
-                                <option value="{{$row['SubjectIdx']}}" class="{{$row['SiteCode']}}">{{$row['SubjectName']}}</option>
+                                <option value="{{$row['SubjectIdx']}}" class="{{$row['SiteCode']}}" @if($row['SubjectIdx'] == $data['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
                             @endforeach
                         </select>
                     </div>

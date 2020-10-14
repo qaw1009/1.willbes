@@ -385,7 +385,7 @@ min-height: 260px;}
 .trendData {margin-top: 20px;}
 .trendData table {border-top:1px solid #dedede; border-left:1px solid #dedede}
 .trendData tr {border-bottom:1px solid #dedede}
-.trendData tr:nth-of-type(even) {background: #fafafa; font-size: 14px;}
+.trendData tr:nth-of-type(even) {background: #fafafa;}
 .trendData th,
 .trendData td {padding:10px; text-align: center; border-right:1px solid #dedede}
 .trendData th {font-weight: bold; color:#fff; background:#0c5dc0}

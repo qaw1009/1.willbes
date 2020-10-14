@@ -87,6 +87,12 @@
             <a href="{{ site_url('/home/html/m/event_read') }}" target="_blank">이벤트 read</a>
             <a href="{{ site_url('/home/html/m/lecup_list') }}" target="_blank">강의 업데이트</a>
             <a href="{{ site_url('/home/html/m/schedule') }}" target="_blank">강의실 배정표</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_01') }}" target="_blank">임용시험제도</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_02') }}" target="_blank">최근동향</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_03') }}" target="_blank">지역별 공고문</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_04') }}" target="_blank">자료실</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_05') }}" target="_blank">대학 특강문의</a>
+            <a href="{{ site_url('/home/html/m/guide_3134_06') }}" target="_blank">교수채용</a>
         </div>
     </li>
     <li>        

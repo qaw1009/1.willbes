@@ -2,7 +2,7 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- Container -->
+    <!-- content -->
     <style type="text/css">
         .evtContent {
             position:relative;
@@ -24,7 +24,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox ev01">
-            @include('html.promotion.ssam_200130_skybanner')
+            @include('willbes.pc.promotion.2017.ssam_200130_skybanner')
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsam14_top.jpg" alt="교육학 이인재" usemap="#Maplij01" border="0" />
                 <map name="Maplij01" id="Maplij01">

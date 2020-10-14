@@ -8,11 +8,15 @@
                 </li>
                 <li>
                     <a href="javascript:;" onclick="popupOpen('{{app_url('/company/protect', 'www')}}', 'protect', '1000', '600', null, null, 'yes');">개인정보 취급방침</a>
+                    @if($__cfg['SiteCode'] != '2017') {{--임용제외--}}
                     <span class="row-line">|</span>
+                    @endif
                 </li>
+                @if($__cfg['SiteCode'] != '2017') {{--임용제외--}}
                 <li>
                     <a href="{{ front_url('/profRecruit/index') }}">강사모집</a><span class="tx-white">&nbsp;{{@(explode('.',$_SERVER["SERVER_ADDR"])[3])}}</span>
                 </li>
+                @endif
                 @if(isMobile() == true)
                     <li class="mobileView">
                         <a href="{{site_url('/?viewPC=0')}}">모바일버전</a>

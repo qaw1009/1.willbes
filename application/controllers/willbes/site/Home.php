@@ -509,7 +509,11 @@ class Home extends \app\controllers\FrontController
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $s_cate_code);
         $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
-        $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
+        if(APP_DEVICE == 'pc'){
+            $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
+        }else{
+            $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
+        }
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getSubjectForSelectBox();
         $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();

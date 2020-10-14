@@ -160,13 +160,13 @@
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
-                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">전공수학 박태영</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">전공수학 김철홍</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">도덕윤리 김병찬</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
-                            <li><a href="#none"><strong class="tx-blue">전공국어 송원영</strong> 직강생전용) 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">전공국어 송원영</strong> 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
+                            <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a></li>
+                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
+                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a></li>
+                            <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a></li>
+                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a></li>
                         </ul>
                     </div>
                 </div>
@@ -501,8 +501,7 @@
                             </select>
                         </div>
                     </li>
-                    <li style="display: block;">
-                        {{--유아
+                    <li>
                         <table>
                             <colgroup>
                                 <col width="77px">
@@ -536,81 +535,6 @@
                                     <td>12,505</td>                          
                                     <td>1,154</td>
                                     <td>13,103</td>                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                        --}}
-                        <table>
-                            <colgroup>
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="*">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th colspan="2">2019학년도</th>
-                                    <th colspan="2">2020학년도</th>
-                                    <th colspan="2">증감</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="first">
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                </tr>
-                                <tr>
-                                    <td>3,629</td>
-                                    <td>6,482</td>                                  
-                                    <td>3,514</td>
-                                    <td>6,739</td>                          
-                                    <td><span class="down">▼</span>115</td>
-                                    <td><span class="up">▲</span>257</td>                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </li>
-                    <li style="display: none;">
-                        <table>
-                            <colgroup>
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="77px">
-                                <col width="*">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th colspan="2">2019학년도</th>
-                                    <th colspan="2">2019 추시</th>
-                                    <th colspan="2">2020학년도</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="first">
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                    <td>모집 인원</td>
-                                    <td>지원 인원</td>
-                                </tr>
-                                <tr>
-                                    <td>3,629</td>
-                                    <td>6,482</td>                                  
-                                    <td>3,514</td>
-                                    <td>6,739</td>                          
-                                    <td><span>▼</span>115</td>
-                                    <td><span>▲</span>257</td>                                   
                                 </tr>
                             </tbody>
                         </table>
@@ -652,7 +576,7 @@
                 <li><a href="#none">#기출문제 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="기출문제"></a></li>
                 <li><a href="#none">#학습프로그램 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon02.png" title="학습프로그램"></a></li>
                 <li><a href="#none">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon03.png" title="임용가이드북"></a></li>
-                <li><a href="#none">#모바일수강안내 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon04.png" title="모바일수강가이드"></a></li>
+                <li><a href="#none">#모바일수강가이드 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon04.png" title="모바일수강가이드"></a></li>
             </ul>
         </div>
     </div>
@@ -1263,39 +1187,41 @@
                                 <col width="27%">
                                 <col width="27%">
                             </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th class="blue_th">서울</th>
-                                    <th>2019학년도</th>
-                                    <th>2020학년도</th>
-                                    <th>증감</th>
-                                </tr>
-                                <tr>
-                                    <th>공고</th>
-                                    <td>387</td>
-                                    <td>345</td>
-                                    <td><span class="down">▼</span>-42</td>
-                                </tr>
-                                <tr>
-                                    <th>지원</th>
-                                    <td>1,405</td>
-                                    <td>1,176</td>
-                                    <td><span class="down">▼</span>-229</td>
-                                </tr>
-                                <tr>
-                                    <th>경쟁률</th>
-                                    <td>3.63</td>
-                                    <td>3.41</td>
-                                    <td><span class="down">▼</span>-0.22</td>
-                                </tr>
-                                <tr>
-                                    <th>합격선</th>                                
-                                    <td>96.5</td>                                
-                                    <td>101.57</td>                                
-                                    <td><span class="up">▲</span>5.07</td>                                
-                                </tr>
-                            </tbody>
-                        </table>
+                            <tbody><tr>
+                                <th class="blue_th">서울</th>
+                                <th>2019학년도</th>
+                                <th>2019 추시</th>
+                                <th>2020학년도</th>
+                            </tr>
+                            <tr>
+                                <th>공고</th>
+                                <td>159</td>
+                                <td>55</td>
+                                <td>96</td>
+                            </tr>
+                            <tr>
+                                <th>지원</th>
+                                <td>1,869</td>
+                                <td>2,209</td>
+                                <td>1,776</td>
+                            </tr>
+                            <tr>
+                                <th>경쟁률</th>
+                                <td>11.75</td>
+                                <td>40.16</td>
+                                <td>18.5</td>
+                            </tr>
+                            <tr>
+                                <th>합격 선</th>
+                                
+                                <td>86</td>
+                                
+                                <td>82.67</td>
+                                
+                                <td>83</td>
+                                
+                            </tr>
+                        </tbody></table>
                     </div>
 
                     <div class="ic">
@@ -1331,7 +1257,7 @@
                                 <td>22.15</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>90</td>
                                 
@@ -1376,7 +1302,7 @@
                                 <td>10.61</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>87</td>
                                 
@@ -1421,7 +1347,7 @@
                                 <td>14.57</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>87</td>
                                 
@@ -1466,7 +1392,7 @@
                                 <td>20</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>86</td>
                                 
@@ -1511,7 +1437,7 @@
                                 <td>11.88</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>86</td>
                                 
@@ -1556,7 +1482,7 @@
                                 <td>8.43</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>86</td>
                                 
@@ -1601,7 +1527,7 @@
                                 <td>10.54</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>85</td>
                                 
@@ -1646,7 +1572,7 @@
                                 <td>10.12</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>86</td>
                                 
@@ -1691,7 +1617,7 @@
                                 <td>16.75</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>84</td>
                                 
@@ -1736,7 +1662,7 @@
                                 <td>9.3</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>84</td>
                                 
@@ -1781,7 +1707,7 @@
                                 <td>8.75</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>88</td>
                                 
@@ -1826,7 +1752,7 @@
                                 <td>13.45</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>87</td>
                                 
@@ -1871,7 +1797,7 @@
                                 <td>18.86</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>83</td>
                                 
@@ -1916,7 +1842,7 @@
                                 <td>10.67</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>84</td>
                                 
@@ -1961,7 +1887,7 @@
                                 <td>11.89</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>84</td>
                                 
@@ -2006,7 +1932,7 @@
                                 <td>8.82</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>87</td>
                                 
@@ -2051,7 +1977,7 @@
                                 <td>11.35</td>
                             </tr>
                             <tr>
-                                <th>합격선</th>
+                                <th>합격 선</th>
                                 
                                 <td>85.88</td>
                                 
@@ -2063,14 +1989,9 @@
                         </tbody></table>
                     </div>         
                 </div>
-
-                {{-- 그래프 --}}
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                 <div class="trendView">
                     <div class="trendTitle">최근 10 년 모집 동향 분석</div>
-                    <div class="graph">
-                        <div id="chart_div1"></div>
-                    </div>
+                    <div class="graph"></div>
                     <div class="graph"></div>
                     <div class="trendData">
                         <table cellspacing="0">
@@ -2277,59 +2198,8 @@
             $(this).fadeOut();
             document.querySelector('.examInfo').scrollIntoView({ behavior: 'smooth' });
         });
-    });
+    });    
 
-
-    $(document).ready(function() {
-        google.charts.load('current', {packages: ['corechart', 'line']});
-        google.charts.setOnLoadCallback(drawVisualization1);
-        
-        function drawVisualization1() {
-            var data = google.visualization.arrayToDataTable([
-                ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
-                ['2011', {v:44.95, f:'44.95'}, 44.95],
-                ['2012', {v:19.93, f:'19.93'}, 19.93],
-                ['2013', {v:6.68, f:'6.68'}, 6.68],
-                ['2014', {v:11.13, f:'11.13'}, 11.13],
-                ['2015', {v:7.90, f:'7.90'}, 7.90],
-                ['2016', {v:8.04, f:'8.04'}, 8.04],
-                ['2017', {v:10.29, f:'10.29'}, 10.29],
-                ['2018', {v:6.59, f:'6.59'}, 6.59],
-                ['2019 추시', {v:25.9, f:'25.9'}, 25.9],
-                ['2020\n(학년도)', {v:11.35, f:'11.35'}, '11.35'],
-            ]);
-            var options = {
-                title : '(경쟁률)',
-                vAxes: {
-                    0:{
-                        gridlines : { count : 5 },
-                        format: '#\':1\''
-                    }
-                },
-                hAxis: {title: ""},
-                //isStacked: true,
-                seriesType: "bars",
-                series: {
-                    0: { type: "line"}
-                },
-                axes: {
-                    y: {
-                        count: {label: '인원'},
-                        ratio: {side: 'right', label: '비율'}
-                    }
-                },
-                annotations: {
-                    alwaysOutside: true,
-                    textStyle: {
-                        fontSize: 12,
-                        auraColor: 'none',
-                        color: '#555'
-                    },
-                },
-            };
-            var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
-            chart.draw(data, options);
-        }
-    });
+    
 </script>
 @stop

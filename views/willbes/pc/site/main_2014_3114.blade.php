@@ -33,7 +33,7 @@
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> HOT 인기강좌</div>
                 <ul class="bestLec">
-                    @for($i=1; $i<=4; $i++)
+                    @for($i=1; $i<=8; $i++)
                         @if(isset($data['arr_main_banner']['메인_hot인기강좌'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_hot인기강좌'.$i]) !!}
@@ -51,7 +51,7 @@
                     {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
                 </div>
                 <ul class="bestLec">
-                    @for($i=1; $i<=8; $i++)
+                    @for($i=1; $i<=20; $i++)
                         @if(isset($data['arr_main_banner']['메인_신규강좌'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_신규강좌'.$i]) !!}

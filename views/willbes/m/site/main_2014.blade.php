@@ -185,6 +185,10 @@
                 <li>{!! banner('M_메인_hot인기강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot인기강좌3', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot인기강좌4', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌5', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌6', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌7', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_hot인기강좌8', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 
@@ -201,6 +205,18 @@
                 <li>{!! banner('M_메인_신규강좌6', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌7', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌8', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌9', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌10', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌11', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌12', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌13', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌14', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌15', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌16', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌17', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌18', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌19', '', $__cfg['SiteCode'], '0') !!}</li>
+                <li>{!! banner('M_메인_신규강좌20', '', $__cfg['SiteCode'], '0') !!}</li>
             </ul>
         </div>
 

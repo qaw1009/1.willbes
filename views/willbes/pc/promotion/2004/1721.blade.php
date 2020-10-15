@@ -184,17 +184,18 @@
                                         </div>
                                     </a>
                                 </li>  
-                                {{--
+                               
                                 <li class="">
                                     <a href="#tab9">
                                         <span class="num_box" data-num="9">9</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200601/20200601185336_9429.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>[가비국어] 이근갑 교수님의 역대급 강의력 겁나 빠르게 확인하기! </p>
-                                            <span>국어 / 이근갑</span>
+                                            <p>『RLC회로의 특성』 바로 이거야!!</p>
                                         </div>
                                     </a>
                                 </li>
+
+                                {{--
                                 <li class="">
                                     <a href="#tab10">
                                         <span class="num_box" data-num="10">10</span>
@@ -275,7 +276,8 @@
         var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
         var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
         var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
-        var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";                        
+        var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
+        var tab9_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        
     
 
         $(function() {
@@ -299,6 +301,8 @@
                     video_tab_url = tab7_url;
                 }else if(activeTab == "#tab8"){
                     video_tab_url = tab8_url;
+                }else if(activeTab == "#tab9"){
+                    video_tab_url = tab9_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

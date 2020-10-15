@@ -85,7 +85,40 @@
                                                 </a>
                                             </dt>
                                         </dl>
-                                        @endif                                       
+                                        @endif  
+                                        @if($__cfg['SiteGroupCode'] === '1011')
+                                            <!--임용-->
+                                            <dt>
+                                                <a href="https://www.instagram.com" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">
+                                                </a>
+                                            </dt>
+                                            <dt>
+                                                <a href="http://pf.kakao.com/_xijRxij/chat" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
+                                                </a>
+                                            </dt>
+                                            <dt>
+                                                <a href="https://blog.naver.com/wbssam" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
+                                                </a>
+                                            </dt>
+                                            <dt>
+                                                <a href="https://tv.kakao.com/channel/2687619/video" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_kakaotv.png') }}" title="카카오TV">
+                                                </a>
+                                            </dt>
+                                            <dt>
+                                                <a href="https://tv.naver.com/wbssam" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
+                                                </a>
+                                            </dt>
+                                            <dt>
+                                                <a href="https://www.youtube.com/channel/UCzF3YAxdQmtZcUqsEUFLRMQ" target="_blank">
+                                                    <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
+                                                </a>
+                                            </dt>                        
+                                            @endif                                       
                                     </li>
                                 @elseif($menu_row['MenuType'] == 'GA')
                                     @php $active_class = $__cfg['IsPassSite'] === true ? 'strong' : ''; @endphp
@@ -183,6 +216,7 @@
                                                 </a>
                                             </dt>
                                             @endif  
+
                                             @if($__cfg['SiteGroupCode'] === '1011')
                                             <!--임용-->
                                             <dt>

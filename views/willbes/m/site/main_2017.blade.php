@@ -105,6 +105,7 @@
     </div>
     <!-- End Container -->
 
+    <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
         $(function() {
             //수강후기

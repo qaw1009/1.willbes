@@ -135,8 +135,8 @@
                         </div>
                         <ul class="guideBtn02 NG">
                             <li><a href="#none">홈페이지 공지사항 확인 ></a><li>
-                            <li><a href="#none">한국교육과정평가원 사이트로 이동 ></a><li>
-                            <li><a href="#none">2020학년도 중등임용 변경사항 확인 ></a><li>
+                            <li><a href="http://www.kice.re.kr/main.do?s=kice" target="_blank">한국교육과정평가원 사이트로 이동 ></a><li>
+                            <li><a href="https://static.willbes.net/public/uploads/willbes/site/2018/willbes_ssam_secondary_test_guide_2020.pdf" target="_blank">2020학년도 중등임용 변경사항 확인 ></a><li>
                         </ul>
                     </div>
                 </div>

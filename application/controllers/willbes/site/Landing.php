@@ -33,4 +33,12 @@ class Landing extends \app\controllers\FrontController
             'data' => $data
         ]);
     }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
+    }
 }

@@ -907,7 +907,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
     {
-        $order_by = ['ProdCode' => 'desc'];
+        $order_by = ['wPublDate' => 'desc'];
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

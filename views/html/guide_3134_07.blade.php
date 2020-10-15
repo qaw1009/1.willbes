@@ -157,7 +157,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="request NSK-Black"><a heft="https://static.willbes.net/public/images/promotion/main/2018/willbesSsam_runningMate.hwp">신청서 다운받기 ></a></div>
+                <div class="request NSK-Black"><a heft="#none">신청서 다운받기 ></a></div>
             </div>
         </div>
     </div>

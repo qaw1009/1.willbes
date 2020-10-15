@@ -202,7 +202,7 @@
                                             </dt>
                                             <dt>
                                                 <a href="https://tv.kakao.com/channel/2687619/video" target="_blank">
-                                                    <img src="{{ img_url('gnb/icon_facebook.png') }}" title="카카오TV">
+                                                    <img src="{{ img_url('gnb/icon_kakaotv.png') }}" title="카카오TV">
                                                 </a>
                                             </dt>
                                             <dt>

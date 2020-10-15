@@ -14,24 +14,49 @@
 
             <div class="tabBox NG">
                 <ul class="tabShow tabSsam">
-                    <li><a href="#trend_guide1" class="on">유아</a></li>
-                    <li><a href="#trend_guide2">초등</a></li>
-                    <li><a href="#trend_guide3">중등전체</a></li>
-                    <li><a href="#trend_guide4">국어</a></li>
-                    <li><a href="#trend_guide4">영어</a></li>
-                    <li><a href="#trend_guide4">수학</a></li>
-                    <li><a href="#trend_guide4">도덕윤리</a></li>
-                    <li><a href="#trend_guide4">체육</a></li>
-                    <li><a href="#trend_guide4">음악</a></li>
-                    <li><a href="#trend_guide4">생물</a></li>
-                    <li><a href="#trend_guide4">중국어</a></li>
-                    <li><a href="#trend_guide4">전기전자통신</a></li>
-                    <li><a href="#trend_guide4">정보컴퓨터</a></li>
-                    <li><a href="#trend_guide4">보건</a></li>
+                    @foreach($arr_base['subject_list'] as $key => $val)
+                        <li><a href="#trend_guide{{$loop->index}}" data-subject-id="{{$key}}" class="btn-subject {{($loop->first === true) ? 'on' : ''}}">{{$val}}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="tabContent GM">
-                <div id="trend_guide1">
+                @foreach($arr_base['subject_list'] as $key => $val)
+                    <div id="trend_guide{{$loop->index}}">
+                        <div class="chart-box" id="chart_box_{{$key}}"></div>
+                        <div class="trendData">
+                            <table cellspacing="0">
+                                <colgroup>
+                                    <col width="25%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                    <col width="25%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>학년도</th>
+                                    <th>모집</th>
+                                    <th>지원</th>
+                                    <th>경쟁률</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(empty($arr_base['graph'][$key]) === false)
+                                    @foreach($arr_base['graph'][$key] as $row)
+                                    <tr>
+                                        <td>{{$row['YearTarget']}}{{($row['TakeType'] == '2') ? ' 추시' : ''}}</td>
+                                        <td>{{number_format($row['NoticeNumber'])}}</td>
+                                        <td>{{number_format($row['TakeNumber'])}}</td>
+                                        <td>{{$row['AvgData']}}</td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endforeach
+
+                {{--<div id="trend_guide1">
                     <div>
                         그래프 1
                     </div>
@@ -124,7 +149,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
 
@@ -133,4 +158,28 @@
 
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            htmlGraph({{key($arr_base['subject_list'])}});
+            $(".btn-subject").click(function (){
+                htmlGraph($(this).data("subject-id"));
+            });
+        });
+
+        function htmlGraph(subject_id) {
+            $(".chart-box").empty();
+            $url = '{{front_url('/examInfo/graphHtml/')}}';
+            $data = 'subject_id='+subject_id;
+            sendAjax($url,
+                $data,
+                function(d){
+                    $("#chart_box_"+subject_id).html(d).end()
+                },
+                function(req, status, err){
+                    /*showError(req, status);*/
+                }, false, 'GET', 'html');
+        }
+    </script>
 @stop

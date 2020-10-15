@@ -88,8 +88,65 @@ class ExamInfo extends \app\controllers\FrontController
 
     private function _trend_m()
     {
-        $this->load->view('site/examinfo/trend',[
+        $arr_input = array_merge($this->_reqG(null));
+        $subject_ccd = element('subject_id', $arr_input);
+        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'AreaCcd' => '734001',
+                'IsStatus' => 'Y',
+                'IsUse' => 'Y'
+            ],
+            'IN' => [
+                'SubjectCcd' => array_keys($arr_base['subject_list'])
+            ]
+        ];
+        $arr_graph = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
+        $temp_data = [];
+        foreach ($arr_graph as $key => $row) {
+            $temp_data[$row['SubjectCcd']][$key]['YearTarget'] = $row['YearTarget'];
+            $temp_data[$row['SubjectCcd']][$key]['TakeType'] = $row['TakeType'];
+            $temp_data[$row['SubjectCcd']][$key]['NoticeNumber'] = $row['NoticeNumber'];
+            $temp_data[$row['SubjectCcd']][$key]['TakeNumber'] = $row['TakeNumber'];
+            $temp_data[$row['SubjectCcd']][$key]['AvgData'] = $row['AvgData'];
+        }
+        $arr_base['graph'] = $temp_data;
 
+        $this->load->view('site/examinfo/trend',[
+            'subject_ccd' => $subject_ccd,
+            'arr_base' => $arr_base
+        ]);
+    }
+
+    public function graphHtml()
+    {
+        $arr_input = array_merge($this->_reqG(null));
+        $subject_ccd = element('subject_id', $arr_input);
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'SubjectCcd' => $subject_ccd,
+                'AreaCcd' => '734001',
+                'IsStatus' => 'Y',
+                'IsUse' => 'Y'
+            ]
+        ];
+        $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
+
+        $temp_data = [];
+        foreach ($arr_base['graph'] as $row) {
+            $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
+            $temp_data[$row['YearTarget']]['NoticeNumber'] = $row['NoticeNumber'];
+            $temp_data[$row['YearTarget']]['TakeNumber'] = $row['TakeNumber'];
+            $temp_data[$row['YearTarget']]['AvgData'] = $row['AvgData'];
+        }
+        ksort($temp_data);
+        $arr_base['graph_table_data'] = $temp_data;
+
+        $this->load->view('site/examinfo/graph_html',[
+            'subject_ccd' => $subject_ccd,
+            'arr_base' => $arr_base
         ]);
     }
 }

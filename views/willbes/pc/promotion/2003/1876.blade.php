@@ -29,8 +29,8 @@
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1876_01.jpg" alt="이벤트" usemap="#Map1876_reply" border="0"/>
             <map name="Map1876_reply" id="Map1876_reply">
-                <area shape="rect" coords="356,1569,766,1629" href="javascript:certOpen()" alt="댓글 이벤트 설문조사 참여" />
-            </map>    
+                <area shape="rect" coords="352,1592,769,1650" href="javascript:certOpen()" alt="댓글 이벤트 설문조사 참여" />
+            </map>  
         </div>        
 
         {{--기본댓글--}}

@@ -24,10 +24,25 @@ class ExamInfo extends \app\controllers\FrontController
     }
 
     /**
+     * 지역별 공고문
+     * @param array $params
+     */
+    public function notice($params = [])
+    {
+        $this->load->view('site/examinfo/notice',[
+        ]);
+    }
+
+    /**
      * 최근 10년동향
      * @param array $params
      */
     public function trend($params = [])
+    {
+        $this->{'_trend_'.APP_DEVICE}();
+    }
+
+    private function _trend_pc()
     {
         $arr_input = array_merge($this->_reqG(null));
         $subject_ccd = element('subject_id', $arr_input);
@@ -71,14 +86,10 @@ class ExamInfo extends \app\controllers\FrontController
         ]);
     }
 
-    /**
-     * 지역별 공고문
-     * @param array $params
-     */
-    public function notice($params = [])
+    private function _trend_m()
     {
-        $this->load->view('site/examinfo/notice',[
+        $this->load->view('site/examinfo/trend',[
+
         ]);
     }
-
 }

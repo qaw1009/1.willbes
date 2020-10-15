@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF', 'eventF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -503,17 +503,19 @@ class Home extends \app\controllers\FrontController
         $s_cate_code = '';
 
         $data = [];
-        $data['dday'] = $this->_dday();
-        $data['arr_main_banner'] = $this->_banner('0');
-        $data['notice'] = $this->_boardNotice(7, $s_cate_code);
-        $data['lecture_update_info'] = $this->_getlectureUpdateInfo(7, $s_cate_code);
-        $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
-        $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
+            $data['event'] = $this->_getlistEvent(5, $s_cate_code);
         }
+
+        $data['dday'] = $this->_dday();
+        $data['arr_main_banner'] = $this->_banner('0');
+        $data['notice'] = $this->_boardNotice((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
+        $data['lecture_update_info'] = $this->_getlectureUpdateInfo((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
+        $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
+        $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getCcdForSubject();
         $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
@@ -926,6 +928,39 @@ class Home extends \app\controllers\FrontController
                 $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
             }
         }
+
+        return $data;
+    }
+
+    /**
+     * 이벤트 게시판 조회
+     * @param int $limit_cnt [조회건수]
+     * @param string $cate_code
+     * @return array|int
+     */
+    private function _getlistEvent($limit_cnt = 5, $cate_code = '')
+    {
+        $order_by = ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC'];
+        $arr_condition = [
+            'EQ' => [
+                'A.IsRegister' => 'Y',
+                'A.IsUse' => 'Y',
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_site_code,
+            ],
+            'GTE' => [
+                'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
+            ]
+        ];
+
+        $sub_query_condition = [
+            'EQ' => [
+                'B.IsStatus' => 'Y',
+                'B.CateCode' => $cate_code
+            ]
+        ];
+
+        $data = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $limit_cnt, 0, $order_by);
 
         return $data;
     }

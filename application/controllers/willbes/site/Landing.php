@@ -9,7 +9,7 @@ class Landing extends \app\controllers\FrontController
     }
 
     protected $models = array('landing/landingF');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
 
@@ -36,9 +36,11 @@ class Landing extends \app\controllers\FrontController
 
     public function download()
     {
-        $file_path = $this->_reqG('path');
-        $file_name = $this->_reqG('fname');
+        $file_path = urldecode($this->_reqG('path',false));
+        $file_name = urldecode($this->_reqG('fname',false));
 
         public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'back');
     }
 }

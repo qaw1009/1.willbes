@@ -27,7 +27,7 @@
                                 <li><strong>{{ $row['CourseName'] }}</strong></li>
                             </ul>
                         </a>
-                        <div class="profImg"><img src="{{ $row['ProfImgPath'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div>
+                        <div class="profImg"><img src="{{ $row['ProfImgPathM'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div>
                         <div class="best NSK-Black">{{ $key + 1 }}</div>
                     </li>
                 @endforeach

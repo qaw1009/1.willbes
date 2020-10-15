@@ -27,13 +27,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/landing/show/lcode/1038/cate/3137/preview/Y') }}">
+                    <a href="{{ front_url('/landing/show/lcode/1038/cate/3134/preview/Y') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon05.png"></span>
                         <div class="nTxt">대학특강 문의</div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/landing/show/lcode/1039/cate/3137/preview/Y') }}">
+                    <a href="{{ front_url('/landing/show/lcode/1039/cate/3134/preview/Y') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon06.png"></span>
                         <div class="nTxt">교수채용</div>
                     </a>

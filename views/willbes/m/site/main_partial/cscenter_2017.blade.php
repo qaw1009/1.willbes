@@ -1,6 +1,6 @@
 <div class="ssamEtc mt50">
-    <a href="#none">대학특강문의</a>
-    <a href="#none">교수채용</a>
+    <a href="{{ front_url('/landing/show/lcode/1038/cate/3134/preview/Y') }}">대학특강문의</a>
+    <a href="{{ front_url('/landing/show/lcode/1039/cate/3134/preview/Y') }}">교수채용</a>
     <a href="#none">오시는길</a>
 </div>
 

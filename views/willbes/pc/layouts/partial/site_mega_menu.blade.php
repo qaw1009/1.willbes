@@ -607,76 +607,76 @@
             <ul>
                 <li class="Tit">교육학</li>
                 <li>
-                    <a href="{{front_url('/professor/show/prof-idx/51073?subject_idx=1980')}}">김차웅</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51074?subject_idx=1980')}}">이인재</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51075?subject_idx=1980')}}">홍의일</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51073?cate_code=3134&subject_idx=1980')}}">김차웅</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980')}}">이인재</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980')}}">홍의일</a>
                 </li>
                 <li class="Tit">유아</li>
                 <li>
-                    <a href="{{front_url('/professor/show/prof-idx/51076?subject_idx=1980')}}">민정선</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981')}}">민정선</a>
                 </li>
                 <li class="Tit">초등</li>
                 <li>
-                    <a href="{{front_url('/professor/show/prof-idx/51077?subject_idx=1982')}}">배재민</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982')}}">배재민</a>
                 </li>
             </ul>
             <ul>
                 <li class="Tit">중등</li>
                 <li>
                     <span>전공국어</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51078?subject_idx=1983')}}">송원영</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51079?subject_idx=1984')}}">이원근</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51080?subject_idx=1984')}}">권보민</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983')}}">송원영</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51079?cate_code=3137&subject_idx=1983')}}">이원근</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983')}}">권보민</a>
                 </li>
                 <li>
                     <span>전공영어</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51081?subject_idx=1984')}}">김유석</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51082?subject_idx=1985')}}">김영문</a>
-                    <a href="{{front_url('/professor/show/prof-idx/51083?subject_idx=1985')}}">공훈</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984')}}">김유석</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984')}}">김영문</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51083?cate_code=3137&subject_idx=1984')}}">공훈</a>
                 </li>
                 <li>
                     <span>전공수학</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51084?subject_idx=1985')}}">김철홍</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985')}}">김철홍</a>
                 </li>
                 <li>
                     <span>수학교육론</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51085?subject_idx=1986')}}">박태영</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986')}}">박태영</a>
                 </li>
                 <li>
                     <span>전공생물</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51086?subject_idx=1987')}}">강치욱</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987')}}">강치욱</a>
                 </li>
                 <li>
                     <span>생물교육론</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51087?subject_idx=1988')}}">양혜정</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988')}}">양혜정</a>
                 </li>
                 <li>
                     <span>도덕윤리</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51088?subject_idx=1989')}}">김병찬</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989')}}">김병찬</a>
                 </li>
                 <li>
                     <span>전공역사</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51089?subject_idx=1990')}}">최용림</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990')}}">최용림</a>
                 </li>
                 <li>
                     <span>전공음악</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51090?subject_idx=1991')}}">다이애나</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991')}}">다이애나</a>
                 </li>
                 <li>
                     <span>전기전자통신</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51091?subject_idx=1992')}}">최우영</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992')}}">최우영</a>
                 </li>
                 <li>
                     <span>정보컴퓨터</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51092?subject_idx=1993')}}">송광진</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993')}}">송광진</a>
                 </li>
                 <li>
                     <span>정보교육론</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51093?subject_idx=1994')}}">장순선</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51093?cate_code=3137&subject_idx=1994')}}">장순선</a>
                 </li>
                 <li>
                     <span>전공중국어</span>
-                    <a href="{{front_url('/professor/show/prof-idx/51094?subject_idx=1995')}}">정경미</a>
+                    <a href="{{front_url('/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995')}}">정경미</a>
                 </li>
             </ul>
         </div>

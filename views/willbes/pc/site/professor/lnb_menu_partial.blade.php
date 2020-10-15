@@ -15,12 +15,14 @@
         <div class="lnb-List-Depth" style="{{ $subject_active_style }}">
             <dl>
                 @foreach(current($lnb_subject_row) as $lnb_prof_idx => $lnb_prof_name)
-                    @php
-                        $show_url = $__cfg['IsPassSite'] === false ? '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $lnb_prof_idx . '/?' : '/professor/show/prof-idx/' . $lnb_prof_idx . '/?cate_code=' . $def_cate_code . '&';
-                        $show_url .= 'subject_idx=' . $lnb_subject_idx . '&subject_name=' . rawurlencode(key($lnb_subject_row));
-                    @endphp
+                    {{-- 교수상세 페이지 URL --}}
+                    @if($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true)
+                        @php $show_url = '/professor/show/prof-idx/' . $lnb_prof_idx . '?cate_code=' . $def_cate_code . '&'; @endphp
+                    @else
+                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $lnb_prof_idx . '?'; @endphp
+                    @endif
                     <dt>
-                        <a href="{{ front_url($show_url) }}" class="{{ isset($prof_idx) === true && $lnb_prof_idx == $prof_idx ? 'active' : '' }}">{{ $lnb_prof_name }}</a>
+                        <a href="{{ front_url($show_url . 'subject_idx=' . $lnb_subject_idx . '&subject_name=' . rawurlencode(key($lnb_subject_row))) }}" class="{{ isset($prof_idx) === true && $lnb_prof_idx == $prof_idx ? 'active' : '' }}">{{ $lnb_prof_name }}</a>
                     </dt>
                 @endforeach
             </dl>

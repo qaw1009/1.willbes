@@ -41,6 +41,6 @@ class Landing extends \app\controllers\FrontController
 
         public_download($file_path, $file_name);
 
-        show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+        show_alert('등록된 파일을 찾지 못했습니다.', 'back');
     }
 }

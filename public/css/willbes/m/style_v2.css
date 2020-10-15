@@ -1087,13 +1087,13 @@ body.memBody #Footer {
 
 /*메인 cs센터*/
 .csCenter {border-top:1px solid #ccc; margin-top:50px; margin-bottom:30px}
-.csCenter li {display: inline; float:left; width:33.33333%}
-.csCenter li a {display: block; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
-.csCenter .link li:last-child a {border-right:0; letter-spacing: -1px;}
-.csCenter .link li a {height: 50px; line-height: 50px; text-align:center; font-size:18px; color:#313131}
-.csCenter .tel li {background: #eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; cursor: pointer;}
+.csCenter li {display: inline; float:left; width:50%}
+.csCenter li a {display:block; border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.csCenter .link li:last-child a {border-right:0; letter-spacing:-1px;}
+.csCenter .link li a {height:50px; line-height: 50px; text-align:center; font-size:18px; color:#313131}
+.csCenter .tel li {background:#eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; cursor:pointer;}
 .csCenter .tel li:last-child {border-right:0}
-.csCenter li img {float:left; margin:0 10px 10px 20px}
+.csCenter li img {float:left; margin:0 5px 10px 15px}
 .csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2;}
 .csCenter li div.goTel a {border:0}
 .csCenter li strong {display: block; font-size:18px; color:#313131}

@@ -515,7 +515,7 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
         }
 
-        $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getSubjectForSelectBox();
+        $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getCcdForSubject();
         $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
         $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo($this->_site_code);
         return $data;
@@ -907,7 +907,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
     {
-        $order_by = ['ProdCode' => 'desc'];
+        $order_by = ['wPublDate' => 'desc'];
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

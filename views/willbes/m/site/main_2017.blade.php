@@ -73,7 +73,7 @@
         <div class="examInfo mt10">
             <ul>
                 <li>
-                    <a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf">
+                    <a href="{{front_url('/examInfo/system')}}">
                         <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam01.png">
                         임용가이드
                     </a>

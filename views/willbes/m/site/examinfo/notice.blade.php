@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td>서울특별시</td>
-                        <td><a href="{{ site_url("/landing/download?") }}" class="btn01">자료받기 ></a></td>
+                        <td><a href="{{ site_url("/landing/download?path=".urlencode('/public/uploads/willbes/site/2018/')."&fname=".urlencode('01.유아초등_서울.pdf')) }}" class="btn01">자료받기 ></a></td>
                         <td><a href="#none" class="btn01">자료받기 ></a></td>
                     </tr>
                     <tr>

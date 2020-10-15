@@ -95,16 +95,16 @@
         <div class="evtCtnsBox evt_05">
 			<img src="https://static.willbes.net/public/images/promotion/2020/10/1877_05.jpg" alt="2차" />
             <ul class="tabs tabs3ea">
-				<li><a href="#tab06">감정평가이론</a></li>
-				<li><a href="#tab07">감정평가실무</a></li>
+				<li><a href="#tab06">감정평가실무</a></li>
+				<li><a href="#tab07">감정평가이론</a></li>
 				<li><a href="#tab08">감평행정법 및 보상법규</a></li>
 			</ul>
 			<div id="tab06">
-				<img src="https://static.willbes.net/public/images/promotion/2020/10/1877_05_cts01.png" alt="감정평가이론" />
-			</div>
-			<div id="tab07">
 				<img src="https://static.willbes.net/public/images/promotion/2020/10/1877_05_cts02.png" alt="감정평가실무" />
 			</div>
+			<div id="tab07">
+				<img src="https://static.willbes.net/public/images/promotion/2020/10/1877_05_cts01.png" alt="감정평가이론" />
+			</div>			
 			<div id="tab08">
 				<img src="https://static.willbes.net/public/images/promotion/2020/10/1877_05_cts03.png" alt="감평행정법 및 보상법규" />
 			</div>

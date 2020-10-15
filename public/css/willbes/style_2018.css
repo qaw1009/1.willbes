@@ -588,8 +588,9 @@ min-height: 260px;}
 .w-Guide-Ssam {
     float: left;
     width: 100%;
+    letter-spacing: normal;
 }
-.w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#000; line-height:30px;}
+.w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#000; line-height:30px; }
 .w-Guide-Ssam .tabBox {position:relative; margin-bottom: 30px;}
 .w-Guide-Ssam .tabShow li {width:auto;}
 .w-Guide-Ssam .tabShow li a {padding:0 20px; font-size:14px}
@@ -602,6 +603,7 @@ min-height: 260px;}
 .w-Guide-Ssam .tabContent .guideBtn02 li {display:inline; float:left; width:33.33333%}
 .w-Guide-Ssam .tabContent .guideBtn02 a {display:block; border:1px indianred solid; color:indianred; padding:10px; text-align: center; font-size: 14px;; margin-right:10px}
 .w-Guide-Ssam .tabContent .guideBtn02 a:hover {background-color: indianred; color:#fff}
+.w-Guide-Ssam .guidebox {background:#fff}
 .w-Guide-Ssam .guidebox > div {width:49%;}
 .w-Guide-Ssam .guidebox:after {content:""; display:block; clear:both}
 .w-Guide-Ssam .guidebox table {border-top:1px solid #e2e4e6; border-left:1px solid #e2e4e6}
@@ -627,3 +629,11 @@ min-height: 260px;}
 .w-Guide-Ssam .professor_con > .txt03{margin:30px 0 10px}
 .w-Guide-Ssam .professor_con > .txt02{margin:0}
 .w-Guide-Ssam .professor_con > img{margin:55px 0 25px}
+
+/* 런닝메이트 */
+.w-Guide-Ssam .runningMate {padding:0 50px 50px; background:#7acaed}
+.w-Guide-Ssam .runningMate th,
+.w-Guide-Ssam .runningMate td {padding:20px 10px; font-size: 14px;}
+.w-Guide-Ssam .runningMate .request a {display:block; text-align: center; padding:20px 0; font-size: 30px; margin-top:20px; 
+    background:#f9f381; color:#0a2341; border-radius: 10px; border:3px solid #0a2341}
+.w-Guide-Ssam .runningMate .request a:hover {background:#0a2341; color:#f9f381;}

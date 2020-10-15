@@ -113,4 +113,17 @@ class ExamTakeInfo extends \app\controllers\BaseController
         }
     }
 
+    public function dataStore()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer']
+        ];
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->examTakeInfoModel->addExamTakeData($this->_reqP('site_code'));
+        $this->json_result($result,'저정 되었습니다.',$result);
+    }
 }

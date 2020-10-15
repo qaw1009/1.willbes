@@ -7,7 +7,7 @@
             <button type="button" class="goback" onclick="history.back(-1); return false;">
                 <span class="hidden">뒤로가기</span>
             </button>
-            지열별 공고문
+            지역별 공고문
         </div>
 
         <div class="w-Guide-Ssam mt20">
@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td>서울특별시</td>
-                        <td><a href="#none" class="btn01">자료받기 ></a></td>
+                        <td><a href="{{ site_url("/landing/download?") }}" class="btn01">자료받기 ></a></td>
                         <td><a href="#none" class="btn01">자료받기 ></a></td>
                     </tr>
                     <tr>

@@ -3,7 +3,7 @@
         <dt class="willbesCenter">
             <ul>
                 <li>
-                    <a href="{{ front_url('/pass/support/main') }}">
+                    <a href="{{ front_url('/pass/support/faq/index') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon01.png"></span>
                         <div class="nTxt">학원 FAQ</div>
                     </a>

@@ -73,19 +73,19 @@
         <div class="examInfo mt10">
             <ul>
                 <li>
-                    <a href="#none">
+                    <a href="{{front_url('/examInfo/system')}}">
                         <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam01.png">
                         임용가이드
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="{{front_url('/examInfo/trend')}}">
                         <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam02.png">
                         최근10년동향
                     </a>
                 </li>
                 <li>
-                    <a href="#none">
+                    <a href="{{front_url('/examInfo/notice')}}">
                         <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam03.png">
                         지역별공고
                     </a>

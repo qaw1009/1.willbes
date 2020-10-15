@@ -1,67 +1,60 @@
-@extends('html.m.layouts.v2.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-<!-- Container -->
-<div id="Container" class="Container NG c_both">
-    <div class="willbes-Tit NGEB p_re">
-        <button type="button" class="goback" onclick="history.back(-1); return false;">
-            <span class="hidden">뒤로가기</span>
-        </button>    
-        임용시험 최근 10년 동향
-    </div>
+    <!-- Container -->
+    <div id="Container" class="Container NG c_both">
+        <div class="willbes-Tit NGEB p_re">
+            <button type="button" class="goback" onclick="history.back(-1); return false;">
+                <span class="hidden">뒤로가기</span>
+            </button>
+            임용시험 최근 10년 동향
+        </div>
 
-    <div class="w-Guide-Ssam mt20">
-        <div class="NG ssamInfoMenu">
-            <ul>
-                <li><a href="guide_3134_01">임용<br>시험제도</a><li>
-                <li><a href="guide_3134_02" class="on">최근<br>10년동향</a><li>
-                <li><a href="guide_3134_03">지역별<br>공고문</a><li>
-                <li class="one"><a href="guide_3134_04">자료실</a><li>                
-            </ul>
-        </div>
-        <div class="tabBox NG">
-            <ul class="tabShow tabSsam">
-                <li><a href="#trend_guide1" class="on">유아</a></li>
-                <li><a href="#trend_guide2">초등</a></li>
-                <li><a href="#trend_guide3">중등전체</a></li>
-                <li><a href="#trend_guide4">국어</a></li>
-                <li><a href="#trend_guide4">영어</a></li>
-                <li><a href="#trend_guide4">수학</a></li>
-                <li><a href="#trend_guide4">도덕윤리</a></li>
-                <li><a href="#trend_guide4">체육</a></li>
-                <li><a href="#trend_guide4">음악</a></li>
-                <li><a href="#trend_guide4">생물</a></li>
-                <li><a href="#trend_guide4">중국어</a></li>
-                <li><a href="#trend_guide4">전기전자통신</a></li>
-                <li><a href="#trend_guide4">정보컴퓨터</a></li>
-                <li><a href="#trend_guide4">보건</a></li>
-            </ul>             
-        </div>
-        <div class="tabContent GM">
-            <div id="trend_guide1">                    
-                <div>
-                    그래프 1
-                </div>
-                <div>
-                    그래프 2
-                </div>
-                <div class="trendData">
-                    <table cellspacing="0">
-                        <colgroup>
-                            <col width="25%">
-                            <col width="25%">
-                            <col width="25%">
-                            <col width="25%">
-                        </colgroup>
-                        <thead>
+        <div class="w-Guide-Ssam mt20">
+
+            <div class="tabBox NG">
+                <ul class="tabShow tabSsam">
+                    <li><a href="#trend_guide1" class="on">유아</a></li>
+                    <li><a href="#trend_guide2">초등</a></li>
+                    <li><a href="#trend_guide3">중등전체</a></li>
+                    <li><a href="#trend_guide4">국어</a></li>
+                    <li><a href="#trend_guide4">영어</a></li>
+                    <li><a href="#trend_guide4">수학</a></li>
+                    <li><a href="#trend_guide4">도덕윤리</a></li>
+                    <li><a href="#trend_guide4">체육</a></li>
+                    <li><a href="#trend_guide4">음악</a></li>
+                    <li><a href="#trend_guide4">생물</a></li>
+                    <li><a href="#trend_guide4">중국어</a></li>
+                    <li><a href="#trend_guide4">전기전자통신</a></li>
+                    <li><a href="#trend_guide4">정보컴퓨터</a></li>
+                    <li><a href="#trend_guide4">보건</a></li>
+                </ul>
+            </div>
+            <div class="tabContent GM">
+                <div id="trend_guide1">
+                    <div>
+                        그래프 1
+                    </div>
+                    <div>
+                        그래프 2
+                    </div>
+                    <div class="trendData">
+                        <table cellspacing="0">
+                            <colgroup>
+                                <col width="25%">
+                                <col width="25%">
+                                <col width="25%">
+                                <col width="25%">
+                            </colgroup>
+                            <thead>
                             <tr>
                                 <th>학년도</th>
                                 <th>모집</th>
                                 <th>지원</th>
                                 <th>경쟁률</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>2020</td>
                                 <td>1,154</td>
@@ -128,20 +121,16 @@
                                 <td>5,079</td>
                                 <td>44.95</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>  
+            </div>
         </div>
-    </div>
 
-    <div class="goTopbtn">
-        <a href="javascript:link_go();">
-            <img src="{{ img_url('m/main/icon_top.png') }}">
-        </a>
-    </div>
-    <!-- Topbtn -->
+        <!-- Topbtn -->
+        @include('willbes.m.layouts.topbtn')
 
-</div>
-<!-- End Container -->
+    </div>
+    <!-- End Container -->
 @stop

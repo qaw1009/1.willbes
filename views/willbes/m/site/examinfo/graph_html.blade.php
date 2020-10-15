@@ -13,8 +13,11 @@
                 ['{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
                 @endforeach
             ]);
+            var chart_width = $('#trend_area').width();
             var options = {
                 title : '(경쟁률)',
+                width : chart_width,
+                chartArea: { width : chart_width },
                 vAxes: {
                     0:{
                         gridlines : { count : 5 },

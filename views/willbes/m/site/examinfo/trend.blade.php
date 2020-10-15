@@ -19,7 +19,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="tabContent GM">
+            <div id="trend_area" class="tabContent GM">
                 @foreach($arr_base['subject_list'] as $key => $val)
                     <div id="trend_guide{{$loop->index}}">
                         <div class="chart-box" id="chart_box_{{$key}}"></div>

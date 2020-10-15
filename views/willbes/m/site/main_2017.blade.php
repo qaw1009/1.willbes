@@ -10,7 +10,7 @@
 
         <div class="noticeTabs c_both mt30">
             {{-- 게시판 --}}
-            @include('willbes.m.site.main_partial.board')
+            @include('willbes.m.site.main_partial.board_' . $__cfg['SiteCode'])
         </div>
 
         @if(empty($data['top_order_lecture']) === false)

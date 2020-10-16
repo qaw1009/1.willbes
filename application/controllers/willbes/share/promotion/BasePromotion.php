@@ -82,6 +82,9 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
+        foreach ($arr_base['promotion_otherinfo_data'] as $key => $val){
+            $arr_base['promotion_otherinfo_data_group'][$val['OrderNum']][] = $val;
+        }
 
         // 프로모션 라이브송출 조회
         $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);

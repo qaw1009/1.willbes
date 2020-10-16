@@ -63,7 +63,7 @@
                                     <th rowspan="{{count($arr)}}">{{ $row['SubjectName'] }}</th>
                                     @endif
                                     <td>
-                                        <div class="tImg"><img src="{{ $row['SubjectName'] }}" alt="{{ $row['ProfNickName'] }}"/></div>
+                                        <div class="tImg"><img src="{{ $row['ReferValue'] }}" alt="{{ $row['ProfNickName'] }}"/></div>
                                         <p><strong>{{ $row['ProfNickName'] }}</strong> 교수</p>
                                     </td>
                                     <td>

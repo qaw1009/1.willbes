@@ -53,230 +53,40 @@
                     <col width="15%"/>
                     <col width="25%"/>
                     <col width=""/>
-                    <tr>
-                    <th>유아</th>
-                        <td>
-                            <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_mjs.png" alt="민정선"/></div>
-                            <p><strong>민정선</strong> 교수</p>
-                        </td>
-                        <td>
-                            <p class="txtSt01">유아임용 합격의 대세~! 합격의 트렌드를 읽다~!</p>
-                            <ul class="btnSet">
-                                <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                    <th rowspan="3">교육학</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_lij.png" alt="이인재"/></div>
-                        <p><strong>이인재</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">명쾌한 설명으로 쉬워지는 교육학!!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_kcw.png" alt="김차웅"/></div>
-                        <p><strong>김차웅</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">교육학 강의 10년의 베테랑, 진짜 전문가의 경험과 노하우</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_hei.jpg" alt="홍의일"/></div>
-                        <p><strong>홍의일</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">실전 첨삭 중심 교육학</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
 
+                    @if(empty($arr_base['promotion_otherinfo_data_group']) === false)
+                        @php $num = 0; @endphp
+                        @foreach($arr_base['promotion_otherinfo_data_group'] as $group => $arr)
+                            @foreach($arr as $row)
+                                <tr>
+                                    @if($num != $group)
+                                    <th rowspan="{{count($arr)}}">{{ $row['SubjectName'] }}</th>
+                                    @endif
+                                    <td>
+                                        <div class="tImg"><img src="{{ $row['ReferValue'] }}" alt="{{ $row['ProfNickName'] }}"/></div>
+                                        <p><strong>{{ $row['ProfNickName'] }}</strong> 교수</p>
+                                    </td>
+                                    <td>
+                                        <p class="txtSt01">{{ $row['OtherData2'] }}</p>
+                                        <ul class="btnSet">
+                                            @if(empty($row['wUnitIdx']) === true && empty($row['wUnitAttachFile']) === true)
+                                                추후 제공 예정입니다.
+                                            @else
+                                                @if(empty($row['wHD']) === false)
+                                                    <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" alt="2021학년도 대비 설명회"></a></li>
+                                                @endif
+                                                @if(empty($row['wUnitAttachFile']) === false)
+                                                    <li><a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" alt="관련자료"></a></li>
+                                                @endif
+                                            @endif
+                                        </ul>
+                                    </td>
+                                </tr>
+                                @php $num = $group; @endphp
+                            @endforeach
+                        @endforeach
+                    @endif
 
-                    <tr>
-                    <th rowspan="2">전공국어</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_swy.png" alt="송원영"/></div>
-                        <p><strong>송원영</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">전공국어, 합격을 위한 필수 전략 제시~! NO 1 교육론</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_lwg.png" alt="이원근"/></div>
-                        <p><strong>이원근</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">국어학 박사의 정통 강의, 핵심만을 짚어내는 안목!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th rowspan="3">전공영어</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_kys.png" alt="김유석"/></div>
-                        <p><strong>김유석</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">일반 영어/영미 문학의 절대 권위자~!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_kh.png" alt="공훈"/></div>
-                        <p><strong>공훈</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">영어학 합격의 새로운 빛</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_kym.png" alt="김영문"/></div>
-                        <p><strong>김영문</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">영어학의 정석, 합격으로 가는 가장 빠른 길~!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th> 수학교육론</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_pty.png" alt="박태영"/></div>
-                        <p><strong>박태영</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">수학 교육론의 새로운 패러다임, 적중의 역사를 쓰다~!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th>도덕윤리</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_kbc.png" alt="김병찬"/></div>
-                        <p><strong>김병찬</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">부드러운 카리스마~! 도덕·윤리의 독보적 명강의 </p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th>전공역사</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_cyl.png" alt="최용림"/></div>
-                        <p><strong>최용림</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">최적의 학습전략으로 합격의 역사를 쓰다!!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th>전공음악</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_diana.png" alt="다이애나"/></div>
-                        <p><strong>다이애나</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">독보적인 커리큐럼! 합격의 지름길!!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th>전기전자통신</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_cwy.png" alt="최우영"/></div>
-                        <p><strong>최우영</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">합격을 만드는 소통, 무한 피드백~! </p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th>정보컴퓨터</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_skj.png" alt="송광진"/></div>
-                        <p><strong>송광진</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">정보컴퓨터의 절대 강자~!</p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
-
-                    <tr>
-                    <th>중국어</th>
-                    <td>
-                        <div class="tImg"><img src="https://static.willbes.net/public/images/promotion/2020/09/200102_jkm.png" alt="정경미"/></div>
-                        <p><strong>정경미</strong> 교수</p>
-                    </td>
-                    <td>
-                        <p class="txtSt01">중국어 임용, 합격의 NEW Paradigm </p>
-                        <ul class="btnSet">
-                            <li><a href="#none">2021학년도 대비 설명회</a></li>
-                            <li><a href="#none" class="tpye01">관련자료</a></li>
-                        </ul>
-                    </td>
-                    </tr>
                 </table>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/09/200304_02.jpg" />

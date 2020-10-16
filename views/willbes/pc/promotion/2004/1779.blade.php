@@ -25,8 +25,8 @@
         .skybanner2 {position:fixed; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
         .skybanner2 a {display:block; margin-bottom:10px;}
 
-        .evt_irona {background:#F4A0A0;}  
-        .evt_top {background:#202743 url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) no-repeat center top}
+        .evt_irona {background: url(https://static.willbes.net/public/images/promotion/2020/10/1779_top_bg.jpg) no-repeat center top;}  
+        .evt_top {background:#202743 url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) no-repeat center top;}     
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_02_bg.jpg) left top repeat-x}
         .evt03 {background:#a7d4ff}
@@ -60,17 +60,21 @@
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky02.jpg" alt="기미진 T" /></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298988&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky01.jpg" alt="한덕현 T" /></a>       
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298975&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky03.jpg" alt="조민주 T" /></a>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky01.jpg" alt="한덕현 T" usemap="#Map1779sky" border="0" />
+            <map name="Map1779sky" id="Map1779sky">
+                <area shape="rect" coords="13,42,117,114" href="https://pass.willbes.net/pass/support/notice/show?board_idx=298988&" target="_blank" />
+                <area shape="rect" coords="11,121,117,173" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank" />
+            </map>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298975&" target="_blank" style="margin-top:10px;"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky03.jpg" alt="조민주 T" /></a>
         </div>
         <div class="skybanner2">
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>
             {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}           
         </div>         
 
-        <div class="evtCtnsBox evt_irona" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_top_irona.jpg" alt="이로나" />                
-        </div>    
+        <div class="evtCtnsBox evt_irona" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_top_irona.jpg">
+        </div>
 
         <div class="evtCtnsBox evt_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="이로나" />                

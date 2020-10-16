@@ -27,7 +27,7 @@
         }
         .skybanner a {margin-bottom:5px}
 
-        .evt_irona {background:#F7B882;}
+        .evt_irona {background:;}
 
         .evt_top {background:#1B0000 url(https://static.willbes.net/public/images/promotion/2020/08/1780_top_bg.jpg) no-repeat center top}
 

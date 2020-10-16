@@ -25,11 +25,82 @@ class ExamInfo extends \app\controllers\FrontController
 
     /**
      * 지역별 공고문
-     * @param array $params
      */
-    public function notice($params = [])
+    public function notice()
     {
+        $arr_download_list = [
+            '서울특별시' => [
+                'infant_file_name' => 'download_infant_seoul.pdf' ,'infant_file_name_kr' => '유아초등_서울.pdf',
+                'secondary_file_name' => 'download_secondary_seoul.pdf' ,'secondary_file_name_kr' => '중등_서울.pdf'
+            ],
+            '경기도' => [
+                'infant_file_name' => 'download_infant_gyeonggi.pdf' ,'infant_file_name_kr' => '유아초등_경기.pdf',
+                'secondary_file_name' => 'download_secondary_gyeonggi.pdf' ,'secondary_file_name_kr' => '중등_경기.pdf'
+            ],
+            '인천광역시' => [
+                'infant_file_name' => 'download_infant_incheon.pdf' ,'infant_file_name_kr' => '유아초등_인천.pdf',
+                'secondary_file_name' => 'download_secondary_incheon.pdf' ,'secondary_file_name_kr' => '중등_인천.pdf'
+            ],
+            '충청북도' => [
+                'infant_file_name' => 'download_infant_chungbuk.pdf' ,'infant_file_name_kr' => '유아초등_충북.pdf',
+                'secondary_file_name' => 'download_secondary_chungbuk.pdf' ,'secondary_file_name_kr' => '중등_충북.pdf'
+            ],
+            '대전광역시' => [
+                'infant_file_name' => 'download_infant_deajeon.pdf' ,'infant_file_name_kr' => '유아초등_대전.pdf',
+                'secondary_file_name' => 'download_secondary_deajeon.pdf' ,'secondary_file_name_kr' => '중등_대전.pdf'
+            ],
+            '충청남도' => [
+                'infant_file_name' => 'download_infant_chungnam.pdf' ,'infant_file_name_kr' => '유아초등_충남.pdf',
+                'secondary_file_name' => 'download_secondary_chungnam.pdf' ,'secondary_file_name_kr' => '중등_충남.pdf'
+            ],
+            '세종시' => [
+                'infant_file_name' => 'download_infant_sejong.pdf' ,'infant_file_name_kr' => '유아초등_세종.pdf',
+                'secondary_file_name' => 'download_secondary_sejong.pdf' ,'secondary_file_name_kr' => '중등_세종.pdf'
+            ],
+            '전라북도' => [
+                'infant_file_name' => 'download_infant_jeonbuk.pdf' ,'infant_file_name_kr' => '유아초등_전북.pdf',
+                'secondary_file_name' => 'download_secondary_jeonbuk.pdf' ,'secondary_file_name_kr' => '중등_전북.pdf'
+            ],
+            '광주광역시' => [
+                'infant_file_name' => 'download_infant_gwangju.pdf' ,'infant_file_name_kr' => '유아초등_광주.pdf',
+                'secondary_file_name' => 'download_secondary_gwangju.pdf' ,'secondary_file_name_kr' => '중등_광주.pdf'
+            ],
+            '전라남도' => [
+                'infant_file_name' => 'download_infant_jeonnam.pdf' ,'infant_file_name_kr' => '유아초등_전남.pdf',
+                'secondary_file_name' => 'download_secondary_jeonnam.pdf' ,'secondary_file_name_kr' => '중등_전남.pdf'
+            ],
+            '대구광역시' => [
+                'infant_file_name' => 'download_infant_deagu.pdf' ,'infant_file_name_kr' => '유아초등_대구.pdf',
+                'secondary_file_name' => 'download_secondary_deagu.pdf' ,'secondary_file_name_kr' => '중등_대구.pdf'
+            ],
+            '강원도' => [
+                'infant_file_name' => 'download_infant_gangwon.pdf' ,'infant_file_name_kr' => '유아초등_강원.pdf',
+                'secondary_file_name' => 'download_secondary_gangwon.pdf' ,'secondary_file_name_kr' => '중등_강원.pdf'
+            ],
+            '울산광역시' => [
+                'infant_file_name' => 'download_infant_ulsan.pdf' ,'infant_file_name_kr' => '유아초등_울산.pdf',
+                'secondary_file_name' => 'download_secondary_ulsan.pdf' ,'secondary_file_name_kr' => '중등_울산.pdf'
+            ],
+            '경상북도' => [
+                'infant_file_name' => 'download_infant_gyeongbuk.pdf' ,'infant_file_name_kr' => '유아초등_경북.pdf',
+                'secondary_file_name' => 'download_secondary_gyeongbuk.pdf' ,'secondary_file_name_kr' => '중등_경북.pdf'
+            ],
+            '부산광역시' => [
+                'infant_file_name' => 'download_infant_busan.pdf' ,'infant_file_name_kr' => '유아초등_부산.pdf',
+                'secondary_file_name' => 'download_secondary_busan.pdf' ,'secondary_file_name_kr' => '중등_부산.pdf'
+            ],
+            '경상남도' => [
+                'infant_file_name' => 'download_infant_gyeongnam.pdf' ,'infant_file_name_kr' => '유아초등_경남.pdf',
+                'secondary_file_name' => 'download_secondary_gyeongnam.pdf' ,'secondary_file_name_kr' => '중등_경남.pdf'
+            ],
+            '제주도' => [
+                'infant_file_name' => 'download_infant_jeju.pdf' ,'infant_file_name_kr' => '유아초등_제주.pdf',
+                'secondary_file_name' => 'download_secondary_jeju.pdf' ,'secondary_file_name_kr' => '중등_제주.pdf'
+            ],
+        ];
+
         $this->load->view('site/examinfo/notice',[
+            'arr_download_list' => $arr_download_list,
         ]);
     }
 

@@ -222,8 +222,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -266,8 +266,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 무선공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156378" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 무선공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172885" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>무선공학</td>
@@ -313,8 +313,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -517,8 +517,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2020 최우영 전기기기 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155800" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171763" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -557,8 +557,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>이론</td>
-                        <td>2020 최우영 전기기기 기본강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/155800" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기기기 기본강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171763" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -655,8 +655,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>
@@ -737,8 +737,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 전자공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156377" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/172882" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>디지털공학</td>

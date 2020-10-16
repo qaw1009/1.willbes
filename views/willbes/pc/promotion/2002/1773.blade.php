@@ -148,11 +148,13 @@
         <!-- 타이머 //-->
 
         <ul class="sky">
+            {{--
             <li>
                 <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1770" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_sky02.png" alt="5개월 패스 바로보기" >
                 </a>
-            </li>               
+            </li>
+            --}}               
         </ul>       
         
         <div class="evtCtnsBox evtTop00">

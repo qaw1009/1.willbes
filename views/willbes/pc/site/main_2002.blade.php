@@ -67,7 +67,7 @@
         <!-- 교수별 빠른강좌 //-->        
 
         <div class="Section Section2 pb110">     
-            <div class="widthAuto tx-center pt80 pb80">    
+            <div class="widthAuto tx-center pt80">    
                 <img src="https://static.willbes.net/public/images/promotion/main/2002_visual_curri_tit.png" title="최적의 합격 커리큘럼">
             </div> 
             <!--

@@ -87,9 +87,6 @@ class BasePromotion extends \app\controllers\FrontController
                 $arr_base['promotion_otherinfo_data_group'][$val['OrderNum']][] = $val;
             }
         }
-        echo '<pre>';
-        print_r($arr_base['promotion_otherinfo_data']);
-        exit;
 
         // 프로모션 라이브송출 조회
         $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);

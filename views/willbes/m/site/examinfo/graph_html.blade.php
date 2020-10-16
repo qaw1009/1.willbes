@@ -1,5 +1,5 @@
-<div id="chart_div1_{{$subject_ccd}}" style="width: 100%; height: 400px;"></div>
-<div id="chart_div2_{{$subject_ccd}}" style="width: 100%; height: 400px;"></div>
+<div id="chart_div1" style="width: 100%; height: 400px;"></div>
+<div id="chart_div2" style="width: 100%; height: 400px;"></div>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -8,7 +8,7 @@
 
         function drawVisualization1() {
             var chart_width = $('#trend_area').width();
-            var charArea_width = (chart_width * 70) / 100
+            var charArea_width = (chart_width * 68) / 100
             var data = google.visualization.arrayToDataTable([
                 ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
@@ -46,7 +46,7 @@
                     },
                 },
             };
-            var chart = new google.visualization.ComboChart(document.getElementById('chart_div1_'+{{$subject_ccd}}));
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
 
             var data = google.visualization.arrayToDataTable([
@@ -81,7 +81,7 @@
                     },
                 },
             };
-            var colom = new google.visualization.ComboChart(document.getElementById('chart_div2_'+{{$subject_ccd}}));
+            var colom = new google.visualization.ComboChart(document.getElementById('chart_div2'));
             colom.draw(data, options1);
         }
     });

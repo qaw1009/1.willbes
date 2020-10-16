@@ -219,6 +219,7 @@ class BasePromotion extends \app\controllers\FrontController
             $comment_create_type = '3';
         }
 
+        $arr_base['max_byte'] = element('max_byte', $arr_input);
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;
 

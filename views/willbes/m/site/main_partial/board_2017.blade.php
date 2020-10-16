@@ -35,7 +35,7 @@
                             {{ date("m월 d일", strtotime($row['unit_regdate'])) }} 총 {{ $row['unit_cnt'] }}강 업로드
                             @if(date('Y-m-d') == $row['unit_regdate'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                         </a>
-                        <span class="date">{{$row['unit_regdate']}}</span>
+{{--                        <span class="date">{{$row['unit_regdate']}}</span>--}}
                     </li>
                 @endforeach
             @endif
@@ -50,9 +50,9 @@
                 @foreach($data['event'] as $row)
                     <li>
                         <a href="{{front_url('/event/show/ongoing?event_idx='.$row['ElIdx'])}}">
-                            [{{$row['RequestTypeName']}}] {{hpSubString($row['EventName'],0,40,'...')}}
+                            [{{$row['RequestTypeName']}}] {{hpSubString($row['EventName'],0,20,'...')}}
                         </a>
-                        <span class="date">{{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}</span>
+{{--                        <span class="date">{{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}</span>--}}
                     </li>
                 @endforeach
             @endif

@@ -518,7 +518,7 @@ class Home extends \app\controllers\FrontController
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getCcdForSubject();
-        $data['exam']['subject_list'] = $this->examTakeInfoFModel->getSubjectForList();
+        $data['exam']['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_pc\') = ' => '\'Y\'']]);
         $data['exam']['total_exam_info'] = $this->examTakeInfoFModel->totalExamInfo($this->_site_code);
         return $data;
     }

@@ -185,7 +185,6 @@ class ExamInfo extends \app\controllers\FrontController
         $arr_base['graph'] = $temp_data;
 
         $this->load->view('site/examinfo/trend',[
-            'subject_ccd' => $subject_ccd,
             'arr_base' => $arr_base
         ]);
     }
@@ -216,7 +215,6 @@ class ExamInfo extends \app\controllers\FrontController
         $arr_base['graph_table_data'] = $temp_data;
 
         $this->load->view('site/examinfo/graph_html',[
-            'subject_ccd' => $subject_ccd,
             'arr_base' => $arr_base
         ]);
     }

@@ -25,7 +25,8 @@
         .skybanner2 {position:fixed; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
         .skybanner2 a {display:block; margin-bottom:10px;}
 
-        .evtTop {background:#F4A0A0;}  
+        .evt_irona {background:#F4A0A0;}  
+        .evt_top {background:#202743 url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) no-repeat center top}
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_02_bg.jpg) left top repeat-x}
         .evt03 {background:#a7d4ff}
@@ -67,8 +68,12 @@
             {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}           
         </div>         
 
-        <div class="evtCtnsBox evtTop" >            
+        <div class="evtCtnsBox evt_irona" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_top_irona.jpg" alt="이로나" />                
+        </div>    
+
+        <div class="evtCtnsBox evt_top" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="이로나" />                
         </div>    
 
         <div class="evtCtnsBox evt01">

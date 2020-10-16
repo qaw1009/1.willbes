@@ -67,9 +67,10 @@
         <!-- 교수별 빠른강좌 //-->        
 
         <div class="Section Section2 pb110">     
-            <div class="widthAuto tx-center pt80 pb80">    
+            <div class="widthAuto tx-center pt80">    
                 <img src="https://static.willbes.net/public/images/promotion/main/2002_visual_curri_tit.png" title="최적의 합격 커리큘럼">
             </div> 
+            <!--
             <div class="widthAuto CurriStepBox">
                 <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}" target="_blank">커리큘럼 자세히보기 &gt;</a></div>
                 <ul class="CurriStep">
@@ -122,6 +123,7 @@
                 </div>
                 
             </div>
+            -->
             <div class="widthAuto curri_schedule">
                 <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="커리큘럼 시간표">    
                 {{--           

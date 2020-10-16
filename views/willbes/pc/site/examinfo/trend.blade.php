@@ -15,6 +15,16 @@
                             } else {
                                 $age_number1 = '-';
                             }
+                            if (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']) === false) {
+                                $age_number2 = ($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['TakeNumber'] - $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['NoticeNumber']) / 100;
+                            } else {
+                                $age_number2 = '-';
+                            }
+                            if (empty($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']) === false) {
+                                $age_number3 = ($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['TakeNumber'] - $arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['NoticeNumber']) / 100;
+                            } else {
+                                $age_number3 = '-';
+                            }
                         @endphp
                         <div class="{{ explode(':',$vals)[1] }}">
                             <table>
@@ -45,14 +55,14 @@
                                 <tr>
                                     <th>경쟁률</th>
                                     <td>{{$age_number1}}</td>
-                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']) === false ? number_format($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['PassLine']) : '-') }}</td>
-                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']) === false ? number_format($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['PassLine']) : '-') }}</td>
+                                    <td>{{$age_number2}}</td>
+                                    <td>{{$age_number3}}</td>
                                 </tr>
                                 <tr>
                                     <th>합격 선</th>
-                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']) === false ? number_format($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['PassLine']) : '-') }}</td>
-                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']) === false ? number_format($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['PassLine']) : '-') }}</td>
-                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']) === false ? number_format($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['PassLine']) : '-') }}</td>
+                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']) === false ? $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['PassLine'] : '-') }}</td>
+                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']) === false ? $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['PassLine'] : '-') }}</td>
+                                    <td>{{ (empty($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']) === false ? $arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['PassLine'] : '-') }}</td>
                                 </tr>
                                 </tbody></table>
                         </div>

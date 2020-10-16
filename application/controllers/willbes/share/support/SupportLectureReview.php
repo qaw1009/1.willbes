@@ -7,7 +7,7 @@ class SupportLectureReview extends BaseSupport
 {
     protected $models = array('categoryF', 'product/baseProductF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
-    protected $auth_controller = true;
+    protected $auth_controller = false;
     protected $auth_methods = array();
 
     protected $_bm_idx;

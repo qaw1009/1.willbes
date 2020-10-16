@@ -20,6 +20,6 @@
     <li><a href="{{ front_url('/support/mobile/index') }}">모바일 수강안내</a></li>
     <li><a href="{{ front_url('/support/qna/index') }}">1:1 상담</a></li>
     <li><a href="{{ front_url('/event/list/ongoing') }}">이벤트</a></li>
-    <li><a href="#none">재학생 러닝메이트</a></li>
+    <li><a href="{{ front_url('/landing/show/lcode/1040/cate/3134/preview/Y') }}">재학생 러닝메이트</a></li>
     <li><a href="#">TOP ▲</a></li>
 </ul>

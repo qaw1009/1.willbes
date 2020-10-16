@@ -21,9 +21,9 @@ class ExamTakeInfoFModel extends WB_Model
      * 시험정보 과목공통코드
      * @return array
      */
-    public function getCcdForSubject()
+    public function getCcdForSubject($add_condition = [])
     {
-        return $this->codeModel->getCcd('733');
+        return $this->codeModel->getCcd('733', '', $add_condition);
     }
 
     /**
@@ -33,15 +33,6 @@ class ExamTakeInfoFModel extends WB_Model
     public function getCcdForArea()
     {
         return $this->codeModel->getCcd('734','CcdEtc');
-    }
-
-    /**
-     * 시험정보 과목공통코드
-     * @return array
-     */
-    public function getSubjectForList()
-    {
-        return $this->codeModel->getCcd('733', '', ['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_pc\') = ' => '\'Y\'']]);
     }
 
     /**
@@ -157,13 +148,13 @@ class ExamTakeInfoFModel extends WB_Model
                     SubjectCcd,TakeType,YearTarget,NoticeNumber,TakeNumber
                     FROM {$this->_table['exam_take_info']}
                     {$where}
-                    ORDER BY YearTarget ASC , TakeType DESC
-                    LIMIT 11
+                    ORDER BY SubjectCcd, YearTarget ASC, TakeType DESC
+                    LIMIT 10000
                 ) AS a
-                GROUP BY a.YearTarget
+                GROUP BY a.SubjectCcd, a.YearTarget
             ) AS m
         ";
-        $order_by = 'ORDER BY m.YearTarget DESC';
+        $order_by = 'ORDER BY m.SubjectCcd, m.YearTarget DESC';
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }

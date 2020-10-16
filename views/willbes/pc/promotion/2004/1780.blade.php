@@ -27,7 +27,9 @@
         }
         .skybanner a {margin-bottom:5px}
 
-        .evtTop {background:#F7B882;}
+        .evt_irona {background:#F7B882;}
+
+        .evt_top {background:#1B0000 url(https://static.willbes.net/public/images/promotion/2020/08/1780_top_bg.jpg) no-repeat center top}
 
         .evt01s {background:#e4e4e4;padding-bottom:50px}
         .evt01s .slide_con {position:relative; width:950px; margin:0 auto}
@@ -120,8 +122,12 @@
         </div>
         --}}
 
-        <div class="evtCtnsBox evtTop" >
+        <div class="evtCtnsBox evt_irona" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_top_irona.jpg">
+        </div>
+
+        <div class="evtCtnsBox evt_top" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
         </div>
 
         <div class="evtCtnsBox evt01s">

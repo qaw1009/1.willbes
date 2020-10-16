@@ -242,7 +242,7 @@
 
         var max_byte = "{{$arr_base['max_byte'] or 0}}";
         if(max_byte > 0){
-            if(!chk_max_byte(max_byte)) return false;
+            return chk_max_byte(max_byte);
         }
 
         return true;
@@ -279,7 +279,6 @@
             }else{
                 strComment += strTxt;
             }
-
         }
 
         if(check === true){

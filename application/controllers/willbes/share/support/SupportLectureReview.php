@@ -33,6 +33,8 @@ class SupportLectureReview extends BaseSupport
         $subject_idx = '';
         $prof_idx = '';
 
+        $arr_base['board_idx'] = element('board_idx', $arr_input);
+
         if(empty($s_cate_code) === false){
             $subject_idx = element('subject_idx', $arr_input);
         }

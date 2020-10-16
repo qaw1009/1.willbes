@@ -1094,6 +1094,7 @@ body.memBody #Footer {
 .csCenter .tel li {background:#eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; cursor:pointer;}
 .csCenter .tel li:last-child {border-right:0}
 .csCenter li img {float:left; margin:0 5px 10px 15px}
+.ssam .csCenter li div.goTel img {width:26px}
 .csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2;}
 .csCenter li div.goTel a {border:0}
 .csCenter li strong {display: block; font-size:18px; color:#313131}
@@ -4735,6 +4736,7 @@ span.calendar_btn {
     .thisMonth .swiper-slide {width:50%; height:160px;}
     .thisMonth .swiper-slide img {bottom:-40px;}
     .csCenter .tel li div.goTel div {margin-left:20px} 
+    
     .location_map {height:300px;}
     .profArea .subjectBox li {width:calc(50% - 10px);}
     .profArea .subjectBox a {height:140px;}
@@ -4765,7 +4767,7 @@ span.calendar_btn {
     .ssam .lecinfo li {margin-bottom:5px;}
     .ssam .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 16px;}
     .ssam .lecinfo li strong {padding:0}
-    .ssam .csCenter .tel li div.goTel div {margin-left:0} 
+    .ssam .csCenter .tel li div.goTel div {margin-left:0}     
 }
 
 /* Calendar */

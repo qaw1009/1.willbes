@@ -27,7 +27,7 @@
         }
         .skybanner a {margin-bottom:5px}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/08/1780_top_bg.jpg) no-repeat center top}
+        .evtTop {background:#F7B882;}
 
         .evt01s {background:#e4e4e4;padding-bottom:50px}
         .evt01s .slide_con {position:relative; width:950px; margin:0 auto}
@@ -121,7 +121,7 @@
         --}}
 
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_top_irona.jpg">
         </div>
 
         <div class="evtCtnsBox evt01s">
@@ -138,11 +138,11 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_02.jpg" title="파이널 문제풀이 특징" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_02.gif" title="파이널 문제풀이 특징" />
         </div>
 
         <div class="evtCtnsBox evt03">                 
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_01.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_01.jpg" title="" />
             <div class="slide_con1">
                 <ul id="slidesImg1">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_01_a.png" alt="후기"/></li>
@@ -231,17 +231,17 @@
         </div>
 
         <div class="evtCtnsBox evt04" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_07.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_07.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
                     <li><a href="#lec1" class="active">9~10월 기본이론 PASS</a></li>
                     <li><a href="#lec2">20년 9월 ~ 21년 3월 연간 PASS</a></li>
                 </ul>
                 <div class="mt10" id="lec1">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_08.jpg" title="7월 기본이론 완성반"></a>
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_08.jpg" title="7월 기본이론 완성반"></a>
                 </div>  
                 <div class="mt10" id="lec2">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_10.jpg" title="연간종합반"/></a>
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_10.jpg" title="연간종합반"/></a>
                 </div>             
             </div>
         </div>

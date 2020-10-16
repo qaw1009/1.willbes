@@ -232,12 +232,12 @@ class ExamTakeInfoFModel extends WB_Model
         $from = "
             FROM {$this->_table['exam_take_data']}
         ";
-        $group_by = "
-            ORDER BY TakeType ASC
+        $order_by = "
+            ORDER BY YearTarget1, TakeType ASC
         ";
 
         // 쿼리 실행
-        $result = $this->_conn->query('select ' . $column . $from . $where . $group_by)->result_array();
+        $result = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
         $data['733001'] = $result;
         return $data;
     }

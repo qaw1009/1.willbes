@@ -23,7 +23,9 @@
         .skybanner a { display:block; padding-bottom:10px;}
         .skybanner2 {position:fixed; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
 
-        .evtTop {background:#AED499}        
+        .evt_irona {background:#AED499}        
+
+        .evt_top {background:#07060B url(https://static.willbes.net/public/images/promotion/2020/08/1781_top_bg.jpg) no-repeat center top;}
 
         .evt01 {background:#eee}
 
@@ -66,9 +68,13 @@
             </a>            
         </div>
 
-        <div class="evtCtnsBox evtTop" >            
+        <div class="evtCtnsBox evt_irona" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_top_irona.jpg" alt="군무원" />           
         </div>    
+        
+        <div class="evtCtnsBox evt_top" >            
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           
+        </div> 
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_01.gif" alt="군무원 커리큘럼" />

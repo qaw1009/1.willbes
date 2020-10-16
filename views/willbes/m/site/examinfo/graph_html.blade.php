@@ -1,23 +1,24 @@
-<div id="chart_div1_{{$subject_ccd}}" {{--style="width: 100%"--}}></div>
-<div id="chart_div2_{{$subject_ccd}}" {{--style="width: 100%"--}}></div>
+<div id="chart_div1_{{$subject_ccd}}" style="width: 100%; height: 400px;"></div>
+<div id="chart_div2_{{$subject_ccd}}" style="width: 100%; height: 400px;"></div>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.load('current', {packages: ['corechart', 'bar']});
         google.charts.setOnLoadCallback(drawVisualization1);
 
         function drawVisualization1() {
+            var chart_width = $('#trend_area').width();
+            var charArea_width = (chart_width * 80) / 100
             var data = google.visualization.arrayToDataTable([
                 ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
                 ['{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
                 @endforeach
             ]);
-            var chart_width = $('#trend_area').width();
             var options = {
                 title : '(경쟁률)',
                 width : chart_width,
-                chartArea: { width : chart_width },
+                chartArea: { width : charArea_width},
                 vAxes: {
                     0:{
                         gridlines : { count : 5 },
@@ -59,6 +60,8 @@
             ]);
             var options1 = {
                 title : '(명)',
+                width : chart_width,
+                chartArea: { width : charArea_width},
                 vAxis: {title: ""},
                 hAxis: {title: ""},
                 //isStacked: true,

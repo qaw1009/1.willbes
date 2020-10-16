@@ -13,7 +13,7 @@
             <div class="swiper-wrapper review">
                 @foreach($data['study_comment'] as $row)
                     <div class="swiper-slide">
-                        <a href="#none">
+                        <a href="{{ front_url('/support/LectureReview/index?board_idx='.$row['BoardIdx']) }}">
                             <div class="reviewInfo">
                                 {{ $row['SubjectName'] }} <span>|</span> {{ $row['ProfName'] }}<br>
                                 {{ $row['ProdName'] }}

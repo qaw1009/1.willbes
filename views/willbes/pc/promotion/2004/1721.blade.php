@@ -72,19 +72,19 @@
         <div class="skybanner">
             <ul>          
                 <li>     
-                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1721_sky.png" usemap="#Map1721sky" title="10월 개강" border="0"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_sky.png" usemap="#Map1721sky" title="10월 개강" border="0"/>
                     <map name="Map1721sky">
                         <area shape="rect" coords="12,128,109,248" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/172072" target="_blank" alt="전기기기">
                         <area shape="rect" coords="15,276,107,400" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/172083" target="_blank" alt="무선공학">
                         <area shape="rect" coords="12,430,108,554" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/172085" target="_blank" alt="전자공학">
                     </map>
                 </li>
-                <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_sky2.png" title="최우영 티패스" /></a></li>
+                <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/10/1721_sky2.png" title="최우영 티패스" /></a></li>
             </ul>
         </div> 
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_top.gif" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_top.gif" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
             <map name="Map1721a" id="Map1721a">
                 <area shape="rect" coords="144,1112,546,1208" href="#t_pass_go" />
                 <area shape="rect" coords="573,1112,980,1210" href="http://cafe.daum.net/sharkchoi" target="_blank" />
@@ -244,7 +244,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
             <map name="Map1721b" id="Map1721b">
                 <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
                 <area shape="rect" coords="611,906,1013,1001" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />

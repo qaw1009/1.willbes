@@ -133,7 +133,7 @@
                      * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.
                 </p>
                 <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
-                <span id="content_byte">0 byte</span>
+                <span id="content_byte"><i>0</i> byte</span>
             </div>
 
             <!--댓글공지-관리자만 등록,수정,삭제 가능-->
@@ -195,7 +195,7 @@
         // 문자 바이트 수 계산
         $('#event_comment').on('change keyup', function() {
             var _byte = fn_chk_byte($(this).val());
-            $('#content_byte').text(_byte + ' byte');
+            $('#content_byte i').text(_byte);
         });
 
         $('#btn_submit_comment').click(function() {
@@ -239,7 +239,56 @@
             alert('댓글을 입력해 주세요.');
             return false;
         }
+
+        var max_byte = "{{$arr_base['max_byte'] or 0}}";
+        if(max_byte > 0){
+            return chk_max_byte(max_byte);
+        }
+
         return true;
+    }
+
+    // byte 체크
+    function chk_max_byte(max_byte){
+        var str = $('#event_comment').val();
+        var rbyte = 0;
+        var strTxt = "";
+        var strComment = "";
+        var one_char = "";
+        var check = false;
+
+        for (i = 0; i < str.length; i++){
+            //체크 하는 문자를 저장
+            strTxt = str.substr(i,1)
+            one_char = str.charAt(i);
+
+            if(escape(one_char).length > 4){
+                rbyte += 2; //한글2Byte
+            }else{
+                rbyte++;    //영문 등 나머지 1Byte
+            }
+
+            if(rbyte > max_byte){ //제한 길이 확인
+                if(escape(one_char).length > 4){
+                    rbyte -= 2;
+                }else{
+                    rbyte--;
+                }
+                check = true;
+                break;
+            }else{
+                strComment += strTxt;
+            }
+        }
+
+        if(check === true){
+            $('#event_comment').val(strComment);
+            $('#content_byte i').text(rbyte);
+            alert('댓글은 ' + max_byte + 'byte이내로 입력 가능합니다.');
+            return false;
+        }else{
+            return true;
+        }
     }
 
     function reload() {

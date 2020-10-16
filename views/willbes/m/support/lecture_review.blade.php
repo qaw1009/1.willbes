@@ -60,7 +60,7 @@
             @endif
 
             @foreach($list as $row)
-                <tr class="replyList willbes-Open-Table">
+                <tr class="replyList willbes-Open-Table @if($row['BoardIdx'] == $arr_base['board_idx']) hover @endif">
                     <td class="w-data tx-left">
                         <dl class="w-info">
                             <dt>
@@ -81,7 +81,7 @@
                     </td>
                     <td class="MoreBtn tx-center">></td>
                 </tr>
-                <tr class="replyTxt willbes-Open-List bg-light-gray">
+                <tr class="replyTxt willbes-Open-List bg-light-gray" style="@if($row['BoardIdx'] == $arr_base['board_idx']) display: table-row; @endif">
                     <td class="w-txt NGR" colspan="2">
                         <div class="tx-blue strong mb10">{{ $row['ProdName'] }}</div>
                         {!! nl2br($row['Content']) !!}

@@ -23,7 +23,7 @@
         .skybanner a { display:block; padding-bottom:10px;}
         .skybanner2 {position:fixed; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
 
-        .evtTop {background:#0A0702 url(https://static.willbes.net/public/images/promotion/2020/08/1781_top_bg.jpg) center top no-repeat}        
+        .evtTop {background:#AED499}        
 
         .evt01 {background:#eee}
 
@@ -56,32 +56,32 @@
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1781_sky01.png" alt="광주 윌비스 공무원 필합반" /></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294829&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/08/1781_sky02.png" alt="기미진 티패스" /></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky01.png" alt="광주 윌비스 공무원 필합반" /></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky02.png" alt="기미진 티패스" /></a>
         </div>        
 
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861&"  target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1781_sky02.jpg" alt="광주 윌비스 공무원 필합반" />
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&"  target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky03.png" alt="광주 윌비스 공무원 필합반" />
             </a>            
         </div>
 
         <div class="evtCtnsBox evtTop" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_top_irona.jpg" alt="군무원" />           
         </div>    
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_01.jpg" alt="군무원 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_01.gif" alt="군무원 커리큘럼" />
 
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_02.jpg" alt="수강신청" usemap="#Map1781" border="0" />
-            <map name="Map1781">
-              <area shape="rect" coords="301,2600,823,2684" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
-              <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
-              <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/support/notice/show?board_idx=294829&" target="_blank" alt="기미진 특강">
-              <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=861&" target="_blank" alt="이석준 특강">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
+            <map name="Map1781a" id="Map1781a">
+                <area shape="rect" coords="257,2585,849,2740" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
+                <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
+                <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank" alt="기미진 특강">
+                <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준 특강">        
             </map>
         </div>
 

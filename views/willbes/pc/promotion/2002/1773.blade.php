@@ -42,8 +42,7 @@
         to{color:#000}
         } 
 
-        .sky li:first-child {position:fixed; top:200px;right:10px;z-index:10;}
-        .sky li:last-child {position:fixed; top:400px;right:15px;z-index:10;}
+        .sky li{position:fixed; top:200px;right:15px;z-index:10;}
 
         .evtTop00 {background:#0a0a0a;}
 
@@ -150,11 +149,6 @@
 
         <ul class="sky">
             <li>
-                <a href="#event">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_sky01.png" alt="할인쿠폰 바로보기" >
-                </a>
-            </li> 
-            <li>
                 <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1770" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_sky02.png" alt="5개월 패스 바로보기" >
                 </a>
@@ -168,7 +162,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_top.jpg" title="심화 이론.기출 패키지">        
         </div>
-
+        {{--
         <div class="evtCtnsBox evt01" id="event">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_01.jpg" usemap="#Map1773a" title="쿠폰 이벤트" border="0">
             <map name="Map1773a" id="Map1773a">
@@ -176,7 +170,7 @@
                 <area shape="rect" coords="567,755,884,894" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
             </map>
         </div>
-
+        --}}
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_02.jpg" title="더 늦기전에 준비">
         </div>
@@ -190,11 +184,9 @@
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1773_05.jpg" usemap="#Map1773b" title="6월 심화기출 개강 이벤트" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1773_05.jpg" usemap="#Map1773b" title="6월 심화기출 개강 이벤트" border="0">
             <map name="Map1773b" id="Map1773b">
                 <area shape="rect" coords="702,395,944,503" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" />
-                <area shape="rect" coords="209,955,433,1028" href="#careful" />
-                <area shape="rect" coords="702,956,919,1027" href="#careful" />
             </map>
         </div>
 
@@ -310,11 +302,7 @@
 
         <div class="wb_ctsInfo NGR" id="careful">
             <div>
-                <h3 class="NGEB">유의사항</h3>
-                <dd>
-                    <dt>사전접수 이벤트 ></dt>
-                    <dl>누구나 50,000원 할인쿠폰 발급진행</span></dl>                   
-                </dd>     
+                <h3 class="NGEB">유의사항</h3>   
                 <dd>
                     <dt>재등록 이벤트 ></dt>
                     <dl>대상자 : 2019년 9월 이후 심화종합반 실강 수강이력이 있는 수강생</dl>

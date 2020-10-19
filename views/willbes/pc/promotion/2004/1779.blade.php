@@ -25,7 +25,7 @@
         .skybanner2 {position:fixed; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
         .skybanner2 a {display:block; margin-bottom:10px;}
 
-        .evt_irona {background: url(https://static.willbes.net/public/images/promotion/2020/10/1779_top_bg.jpg) no-repeat center top;}  
+        .evt_irona {}  
         .evt_top {background:#202743 url(https://static.willbes.net/public/images/promotion/2020/08/1779_top_bg.jpg) no-repeat center top;}     
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_02_bg.jpg) left top repeat-x}
@@ -54,6 +54,9 @@
         .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}   
+
+        #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
+
     </style>
 
 
@@ -70,11 +73,13 @@
         <div class="skybanner2">
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>
             {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}           
-        </div>         
+        </div>
 
+        {{--
         <div class="evtCtnsBox evt_irona" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_top_irona.jpg">
         </div>
+        --}}
 
         <div class="evtCtnsBox evt_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="이로나" />                
@@ -232,6 +237,18 @@
             </div>
         </div>
         <!--wb_tip//-->
+
+        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
+            <div class="Layer-Cont">
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1780_popup.gif" usemap="#PopupImgMap860">
+            </div>
+            <ul class="btnWrapbt popbtn mt10">
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+            </ul>
+        </div>
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+
     </div>
     <!-- End Container -->
 
@@ -260,5 +277,46 @@
             
                 e.preventDefault()})})}
         ); 
+
+         //레이어팝업 close 버튼 클릭        
+         $('.PopupWrap').on('click', '.btn-popup-close', function() {
+                var popup_idx = $(this).data('popup-idx');
+                var hide_days = $(this).data('popup-hide-days');
+
+                // 팝업 close
+                $(this).parents('.PopupWrap').fadeOut();
+
+                //하루 보지않기
+                if (hide_days !== '') {
+                    var domains = location.hostname.split('.');
+                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+
+                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
+                        domain: domain,
+                        path: '/',
+                        expires: hide_days
+                    });
+                }
+
+                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 
+                if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                    $('#PopupBackWrap').fadeOut();
+                }
+            });            
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
+            });
+
+            // 팝업 오늘하루안보기 하드코딩
+            if($.cookie('_wb_client_popup_860') !== 'done') {
+                $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
+            }
+        });
+
     </script>
 @stop

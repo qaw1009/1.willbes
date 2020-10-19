@@ -231,8 +231,141 @@
     </div>
     <!-- End Container -->
 
-    <script>
-    $(document).ready(function(){
+    <script type="text/javascript">
+         $(document).ready(function() {
+            var slidesImg1 = $("#slidesImg1").bxSlider({
+                mode:'fade',
+                auto:true,
+                speed:350,
+                pause:3000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                autoHover: true,
+                moveSlides:1,
+                pager:false
+            });
+
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slider2=$('.tab_inner2').bxSlider({ //롤링 슬라이드
+                sliderMargin:0,
+                speed: 600,
+                pager: true,
+                auto: true,
+                controls: false,
+                mode:'fade',
+                pagerCustom: '.tab2',
+                onSlideAfter: function(){
+                    slider2.stopAuto();
+                    slider2.startAuto();
+                }
+            });
+        });
+
+        
+        $(document).ready(function(){
+            $(".evtTabCts img").hide();
+            $(".evtTabCts img:first").show();
+
+            $(".evtTab ul li a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".evtTab ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".evtTabCts img").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        });  
+
+
+        $(document).ready(function(){
+            $('#tabwrap2').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        );  
+
+        $(document).ready(function(){
+            $('.evt04 ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){ 
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        ); 
+
+        $(document).ready(function(){
             $('.tab02').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -257,8 +390,32 @@
                 e.preventDefault()})})}
         ); 
 
-         //레이어팝업 close 버튼 클릭        
-         $('.PopupWrap').on('click', '.btn-popup-close', function() {
+        var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/b06AI4w38gY?rel=0";
+
+		$(document).ready(function(){
+            $(".tabcts").hide(); 
+            $(".tabcts:first").show();
+            $(".tabMenu li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+                }
+                $(".tabMenu li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabcts").hide(); 
+                $(".tabcts").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+            });
+
+
+            //레이어팝업 close 버튼 클릭        
+            $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 var popup_idx = $(this).data('popup-idx');
                 var hide_days = $(this).data('popup-hide-days');
 

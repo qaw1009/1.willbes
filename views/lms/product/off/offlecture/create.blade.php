@@ -150,7 +150,7 @@
                             @endphp
 
                             <select name="SchoolStartYear" id="SchoolStartYear" required="required" class="form-control" title="개강년">
-                                @for($i=(date('Y')+1); $i>=2014; $i--)
+                                @for($i=(date('Y')+1); $i>=2015; $i--)
                                     <option value="{{$i}}" @if($data['SchoolStartYear'] == $i) selected="selected" @elseif($method == 'POST' && $nextDate[0] == $i) selected="selected" @endif>{{$i}}</option>
                                 @endfor
                             </select>
@@ -172,7 +172,7 @@
                         <div class="item inline-block">
                             <select name="SchoolYear" id="SchoolYear" required="required" class="form-control" title="대비학년도">
                                 <option value="">대비학년도</option>
-                                @for($i=(date('Y')+1); $i>=2005; $i--)
+                                @for($i=(date('Y')+2); $i>=2015; $i--)
                                     <option value="{{$i}}" @if($data['SchoolYear'] == $i) selected="selected" @endif>{{$i}}</option>
                                 @endfor
                             </select>

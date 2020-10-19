@@ -181,7 +181,7 @@
         <div class="eventWrap event03">
         	<img src="https://static.willbes.net/public/images/promotion/2020/10/200608_free_03.jpg" alt="인강무료체험"/>
             <div class="btnBox">
-            	<a href="#none">합격수기 자세히 보기</a>
+            	<a href="{{ front_url('support/review/index') }}">합격수기 자세히 보기</a>
             </div>
         </div>
 
@@ -241,7 +241,7 @@
                         <th>재학생인증<br />파일</th>
                         <td colspan="3">
                         <input type="file" id="uploadFile" name="uploadFile" style="width:60%"/>&nbsp;&nbsp;<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/10/1851_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> <br />
-                        *10MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                        *파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등) 또는 PDF 파일 첨부
                         </td>
                       </tr>
                       </tbody>

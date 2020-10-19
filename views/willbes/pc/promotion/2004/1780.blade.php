@@ -122,12 +122,6 @@
         </div>
         --}}
 
-        {{--
-        <div class="evtCtnsBox evt_irona" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_top_irona.jpg">
-        </div>
-        --}}
-
         <div class="evtCtnsBox evt_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
         </div>

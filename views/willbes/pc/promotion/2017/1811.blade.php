@@ -73,10 +73,10 @@
                                                 추후 제공 예정입니다.
                                             @else
                                                 @if(empty($row['wHD']) === false)
-                                                    <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" alt="2021학년도 대비 설명회"></a></li>
+                                                    <li><a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');">2021학년도 대비 설명회</a></li>
                                                 @endif
                                                 @if(empty($row['wUnitAttachFile']) === false)
-                                                    <li><a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}" alt="관련자료"></a></li>
+                                                    <li><a href="{{ site_url('/promotion/downloadReference?file_idx='.$row['wUnitIdx'].'&event_idx='.$data['ElIdx']) }}">관련자료</a></li>
                                                 @endif
                                             @endif
                                         </ul>

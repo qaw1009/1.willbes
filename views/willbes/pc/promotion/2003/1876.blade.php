@@ -29,7 +29,7 @@
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1876_01.jpg" alt="이벤트" usemap="#Map1876_reply" border="0"/>
             <map name="Map1876_reply" id="Map1876_reply">
-                <area shape="rect" coords="352,1592,769,1650" href="javascript:certOpen()" alt="댓글 이벤트 설문조사 참여" />
+                <area shape="rect" coords="352,1592,769,1650" href="javascript:pullOpen()" alt="댓글 이벤트 설문조사 참여" />
             </map>  
         </div>        
 
@@ -40,15 +40,14 @@
         
     </div>
     <!-- End Container -->
-    <script type="text/javascript"> 
-         function certOpen() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($cert_apply) === false)
-                alert("이미 인증이 완료된 상태입니다.");return;
-            @endif
-            @if(empty($arr_promotion_params) === false)
-                var url = '{{ site_url('/pass/certApply/index/page/'.$arr_promotion_params['page'].'/cert/'.$arr_promotion_params['cert']) }}';
-                window.open(url,'cert_popup', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=800,height=700');
+    <script type="text/javascript">
+        function pullOpen(){
+            @if(empty($arr_promotion_params['SsIdx']) === true)
+            alert('설문정보가 없습니다.');
+            return;
+            @else
+            var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
        

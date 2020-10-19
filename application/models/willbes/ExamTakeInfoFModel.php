@@ -137,7 +137,7 @@ class ExamTakeInfoFModel extends WB_Model
      */
     public function totalDataForGraph($arr_condition)
     {
-        $column = 'SubjectCcd,TakeType,YearTarget,NoticeNumber,TakeNumber,ROUND((TakeNumber - NoticeNumber) / 100,2) AS AvgData';
+        $column = 'SubjectCcd,TakeType,YearTarget,NoticeNumber,TakeNumber,ROUND((TakeNumber / NoticeNumber),2) AS AvgData';
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $from = "

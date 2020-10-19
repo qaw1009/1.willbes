@@ -11,17 +11,17 @@
                     @foreach($arr_base['area_list'] as $key => $vals)
                         @php
                             if (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']) === false) {
-                                $age_number1 = ($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['TakeNumber'] - $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['NoticeNumber']) / 100;
+                                $age_number1 = round(($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['TakeNumber'] / $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']['NoticeNumber']),2);
                             } else {
                                 $age_number1 = '-';
                             }
                             if (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']) === false) {
-                                $age_number2 = ($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['TakeNumber'] - $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['NoticeNumber']) / 100;
+                                $age_number2 = round(($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['TakeNumber'] / $arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['2']['NoticeNumber']),2);
                             } else {
                                 $age_number2 = '-';
                             }
                             if (empty($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']) === false) {
-                                $age_number3 = ($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['TakeNumber'] - $arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['NoticeNumber']) / 100;
+                                $age_number3 = round(($arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['TakeNumber'] / $arr_base['area_data'][$key][$arr_base['years'][1]['YearTarget']]['1']['NoticeNumber']),2);
                             } else {
                                 $age_number3 = '-';
                             }
@@ -71,12 +71,12 @@
                     @foreach($arr_base['area_list'] as $key => $vals)
                         @php
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] - $arr_base['area_data'][$key]['NoticeNumber1']) / 100,2);
+                                $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] / $arr_base['area_data'][$key]['NoticeNumber1']),2);
                             } else {
                                 $avg_number1 = '-';
                             }
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] - $arr_base['area_data'][$key]['NoticeNumber2']) / 100,2);
+                                $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] / $arr_base['area_data'][$key]['NoticeNumber2']),2);
                             } else {
                                 $avg_number2 = '-';
                             }

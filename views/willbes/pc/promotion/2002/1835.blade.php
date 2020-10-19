@@ -141,7 +141,7 @@
                     </ul>
                 </div>
             </div>
-
+            <!--
             <div class="evtCtnsBox evt02">
                 <div class="request" id="request">
                     <div class="requestL">
@@ -244,6 +244,7 @@
                     <a href="#none" onclick="javascript:fn_submit();">면접캠프 설명회 신청하기 ></a>
                 </div>
             </div>  
+            -->
 
             <div class="evtCtnsBox evt01">
                 <div class="youtube">

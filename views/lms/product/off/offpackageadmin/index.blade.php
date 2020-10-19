@@ -33,7 +33,7 @@
 
                         <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
                             <option value="">대비학년도</option>
-                            @for($i=(date('Y')+1); $i>=2005; $i--)
+                            @for($i=(date('Y')+2); $i>=2015; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>

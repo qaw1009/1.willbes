@@ -69,12 +69,6 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky03.png" alt="광주 윌비스 공무원 필합반" />
             </a>            
         </div>
-
-        {{--
-        <div class="evtCtnsBox evt_irona" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_top_irona.jpg" alt="군무원" />           
-        </div>
-        --}}    
         
         <div class="evtCtnsBox evt_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           

@@ -53,7 +53,7 @@
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_hei.jpg" alt="교육한 홍의일"></a></li>
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_swy.jpg" alt="전공국어 송원영"></a></li>
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lwg.jpg" alt="전공국어 이원근"></a></li>
-                        <li><a href="#none"><img src="http://file1.willbes.net/datassam/event/191106_main_wsam32.jpg" alt="전공국어 권보민"></a></li>
+                        <li><a href="#none"><img src="https://file1.willbes.net/datassam/event/191106_main_wsam32.jpg" alt="전공국어 권보민"></a></li>
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kys.jpg" alt="전공영어 김유석"></a></li>
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kym.jpg" alt="전공영어 김영문"></a></li>
                         <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kh.jpg" alt="전공영어 공훈"></a></li>

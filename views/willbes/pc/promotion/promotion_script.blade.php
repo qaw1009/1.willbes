@@ -80,6 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     {{--
      * 프로모션용 디데이카운터
      * @@param end_date [마감일 (YYYY-MM-DD)]
+     * @@param end_time [마감시간 (HH:MM)]
     --}}
     function dDayCountDown(end_date,end_time) {
         // 마감일 1개월전 날짜 (사용안함)

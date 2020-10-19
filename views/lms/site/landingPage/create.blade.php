@@ -97,13 +97,23 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-1-1">내용 <span class="required">*</span><br/><br/>
+                    <label class="control-label col-md-1-1">내용(PC) <br/><br/>
                         @if($method==="PUT")
-                        <button type="button" id="btn-preview" class="btn btn-sm btn-default" data-host="{{$data["SiteHost"]}}">미리보기</button>
+                        <button type="button" class="btn-preview btn btn-sm btn-default" data-device="pc" data-host="{{$data["SiteHost"]}}">미리보기(PC)</button>
                         @endif
                     </label>
                     <div class="col-md-10 form-inline item">
-                        <textarea id="content" name="content" class="form-control" rows="30" title="HTML소스" required="required" placeholder="HTML 소스를 등록해 주세요." style="width: 100%; resize: none;">{{$data['Content']}}</textarea>
+                        <textarea id="content" name="content" class="form-control" rows="30" title="HTML소스" placeholder="HTML 소스를 등록해 주세요." style="width: 100%; resize: none;">{{$data['Content']}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1-1">내용(모바일) <br/><br/>
+                        @if($method==="PUT")
+                            <button type="button" class="btn-preview btn btn-sm btn-default" data-device="m" data-host="{{$data["SiteHost"]}}">미리보기(모바일)</button>
+                        @endif
+                    </label>
+                    <div class="col-md-10 form-inline item">
+                        <textarea id="content_m" name="content_m" class="form-control" rows="30" title="HTML소스" placeholder="HTML 소스를 등록해 주세요." style="width: 100%; resize: none;">{{$data['ContentM']}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -205,6 +215,10 @@
 
             // ajax submit
             $regi_form.submit(function() {
+                if(!$("#content").val() && !$("#content_m").val()){
+                    alert('내용을 입력해주세요.');
+                    return;
+                }
                 var _url = '{{ site_url("/site/landingPage/store") }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -214,15 +228,27 @@
                 }, showValidateError, null, false, 'alert');
             });
 
-           $('#btn-preview').click(function(){
+           $('.btn-preview').click(function(){
                var $host = $(this).data('host');
+               var $device = $(this).data('device');
+               var $content = '';
+               var $env_url = '{{ENV_DOMAIN}}';
+               var open_url = '//'+$host+$env_url+'.willbes.net'+$('#disp_route').val();
+
                $("#preview_form").one("submit", function() {
-                   if($('#content').val() == '') {
-                       alert("내용을 입력하세요");return;
+                   if($device == 'pc'){
+                       $content = $('#content').val();
+                   }else{
+                       open_url = '//'+$host+$env_url+'.willbes.net/m'+$('#disp_route').val();
+                       $content = $('#content_m').val();
                    }
-                   $('#preview_content').val($('#content').val());
-                   $env_url = '{{ENV_DOMAIN}}';
-                   var open_url = '//'+$host+$env_url+'.willbes.net'+$('#disp_route').val();
+
+                   if($content == '') {
+                       alert("내용을 입력하세요");
+                       return;
+                   }
+                   $('#preview_content').val($content);
+
                    window.open('','pop_target','');
                    this.action = open_url;
                    this.method = 'POST';

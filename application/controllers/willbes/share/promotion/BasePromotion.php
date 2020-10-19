@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF', 'eventsurvey/survey');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -174,7 +174,14 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['display_product_data'] = $this->_getDpGroupdata($data['ElIdx']);
         }
 
-        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'];
+        // 설문조사 참여 여부 체크
+        $add_frame_params = '';
+        if(empty($arr_promotion_params['survey_chk_yn']) === false && $arr_promotion_params['survey_chk_yn'] == 'Y' && empty($arr_promotion_params['SsIdx']) === false){
+            $survey_count = $this->surveyModel->findSurveyForAnswer($arr_promotion_params['SsIdx']);
+            $add_frame_params = '&survey_chk_yn=Y&survey_count=' . $survey_count;
+        }
+
+        $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'] . $add_frame_params;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
         $arr_base['register_limit_type'] = $this->eventFModel->_register_limit_type;
@@ -225,6 +232,8 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $arr_base['max_byte'] = element('max_byte', $arr_input);
+        $arr_base['survey_chk_yn'] = element('survey_chk_yn', $arr_input);
+        $arr_base['survey_count'] = element('survey_count', $arr_input);
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;
 

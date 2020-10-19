@@ -16,7 +16,11 @@ class Landing extends \app\controllers\FrontController
     public function show($params = [])
     {
         $data = [];
-        $data['Content'] = $this->_reqP('preview_content');
+        if(APP_DEVICE == 'pc'){
+            $data['Content'] =  $this->_reqP('preview_content');
+        }else{
+            $data['ContentM'] =  $this->_reqP('preview_content');
+        }
         $data['Preview'] = ( empty(element('preview',$params)) ? $this->_reqP('preview') : element('preview',$params) );
 
         $l_code = element('lcode',$params);

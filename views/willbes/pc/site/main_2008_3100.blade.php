@@ -33,6 +33,13 @@
             <div class="widthAuto">
                 <ul class="ProfCopBox mt60">
                     <li>
+                        <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_yas.jpg" alt="조현">
+                        <ul class="ProfBtns">
+                            <li><a href="javascript:alert('맛보기 준비중')">▶</a></li>
+                            <li><a href="/professor/show/cate/3100/prof-idx/51141?subject_idx=1595&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank">교수소개</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjh.jpg" alt="정주형">
                         <ul class="ProfBtns">
                             <li><a href="#none" onclick="fnPlayerProf('50859', 'OT');">▶</a></li>
@@ -45,14 +52,7 @@
                             <li><a href="#none" onclick="fnPlayerProf('50863', 'OT');">▶</a></li>
                             <li><a href="/professor/show/cate/3100/prof-idx/50863/?subject_idx=1597&subject_name=%EB%AF%BC%EB%B2%95%EC%B4%9D%EC%B9%99" target="_blank">교수소개</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jh.jpg" alt="조현">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50861', 'OT');">▶</a></li>
-                            <li><a href="/professor/show/cate/3100/prof-idx/50861/?subject_idx=1596&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank">교수소개</a></li>
-                        </ul>
-                    </li>
+                    </li>                    
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_mhs.jpg" alt="문형석">
                         <ul class="ProfBtns">

@@ -235,6 +235,17 @@
     }
 
     function addValidate() {
+        // 설문조사 체크여부
+        var survey_count = "{{$arr_base['survey_count'] or 0}}";
+        var survey_chk_yn = "{{$arr_base['survey_chk_yn']}}";
+
+        if(survey_chk_yn == 'Y'){
+            if(survey_count == 0){
+                alert('설문조사 참여 후, 댓글 등록이 가능합니다.');
+                return false;
+            }
+        }
+
         if ($('#event_comment').val() == '') {
             alert('댓글을 입력해 주세요.');
             return false;

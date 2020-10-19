@@ -190,6 +190,7 @@ class LandingPageModel extends WB_Model
             'GuidanceNote' => element('guidance_note', $input),
             //'Content' => str_replace(array("\r\n","\r","\n"),'',element('content', $input)),
             'Content' => element('content', $input),
+            'ContentM' => element('content_m', $input),
             'Desc' => element('desc', $input),
             'IsUse' => element('IsUse', $input),
         ];
@@ -208,7 +209,7 @@ class LandingPageModel extends WB_Model
             A.DispStartDatm, A.DispEndDatm,
             DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
             DATE_FORMAT(A.DispEndDatm, '%Y-%m-%d') AS DispEndDay, DATE_FORMAT(A.DispEndDatm, '%H') AS DispEndHour,
-            A.DispRoute, A.GuidanceNote, A.Desc, A.Content, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+            A.DispRoute, A.GuidanceNote, A.Desc, A.Content, A.ContentM, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
             B.CateCode, C.CateName, E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName
             ,substring_index(G.SiteUrl,'.',1) As SiteHost
             ";

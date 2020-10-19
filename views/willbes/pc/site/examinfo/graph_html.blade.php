@@ -8,7 +8,7 @@
 
         function drawVisualization1() {
             var chart_width = $('#trend_area').width();
-            var charArea_width = (chart_width * 65) / 100
+            var charArea_width = (chart_width * 75) / 100
             var data = google.visualization.arrayToDataTable([
                 ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
@@ -40,12 +40,11 @@
                 annotations: {
                     alwaysOutside: true,
                     textStyle: {
-                        fontSize: 9,
+                        fontSize: 12,
                         auraColor: 'none',
                         color: '#555'
                     },
                 },
-                fontSize: 9
             };
             var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
@@ -76,12 +75,11 @@
                 annotations: {
                     alwaysOutside: true,
                     textStyle: {
-                        fontSize: 9,
+                        fontSize: 12,
                         auraColor: 'none',
                         color: '#555'
                     },
                 },
-                fontSize: 9
             };
             var colom = new google.visualization.ComboChart(document.getElementById('chart_div2'));
             colom.draw(data, options1);

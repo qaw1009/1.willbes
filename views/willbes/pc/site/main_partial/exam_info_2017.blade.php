@@ -2,7 +2,7 @@
 <div class="examInfo">
     <ul class="examTop">
         <li>
-            <div class="titleSubject NSK-Black">유아</div>
+            <div class="titleSubject NSK-Black" id="subject_title">유아</div>
             <div class="tx16">전국 모집인원 비교</div>
             <div class="subject">
                 <select name="subject_list" id="subject_list">
@@ -123,13 +123,14 @@
                 'ele_id' : ele_id,
                 'subject_id' : subject_id
             };
-            sendAjax('{{ front_url('/examInfo/trend') }}', data, function(ret) {
+            sendAjax('{{ front_url('/examInfo/trendPopup') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
             }, showAlertError, false, 'GET', 'html');
         });
 
         //select box click
         $('#subject_list').on('change', function (){
+            $("#subject_title").text($("#subject_list option:selected").text());
             $('.exam-table').hide();
             $('#exam_table_'+$(this).val()).show();
         });

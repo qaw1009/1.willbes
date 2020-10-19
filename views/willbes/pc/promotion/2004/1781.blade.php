@@ -23,7 +23,7 @@
         .skybanner a { display:block; padding-bottom:10px;}
         .skybanner2 {position:fixed; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
 
-        .evt_irona {background:}        
+        .evt_irona {background:}         
 
         .evt_top {background:#07060B url(https://static.willbes.net/public/images/promotion/2020/08/1781_top_bg.jpg) no-repeat center top;}
 
@@ -53,6 +53,8 @@
         .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
         .tab02 li:last-child a {margin:0}
         .tab02:after {content:""; display:block; clear:both}   
+
+        #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
     </style>
 
 
@@ -67,10 +69,6 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky03.png" alt="광주 윌비스 공무원 필합반" />
             </a>            
         </div>
-
-        <div class="evtCtnsBox evt_irona" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_top_irona.jpg" alt="군무원" />           
-        </div>    
         
         <div class="evtCtnsBox evt_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           
@@ -218,11 +216,156 @@
             </div>
         </div>
         <!--wb_tip//-->
+
+        <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
+            <div class="Layer-Cont">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_popup.jpg" usemap="#PopupImgMap860">
+            </div>
+            <ul class="btnWrapbt popbtn mt10">
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+            </ul>
+        </div>
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+    
     </div>
     <!-- End Container -->
 
-    <script>
-    $(document).ready(function(){
+    <script type="text/javascript">
+         $(document).ready(function() {
+            var slidesImg1 = $("#slidesImg1").bxSlider({
+                mode:'fade',
+                auto:true,
+                speed:350,
+                pause:3000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                autoHover: true,
+                moveSlides:1,
+                pager:false
+            });
+
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });
+
+        $(document).ready(function() {
+            var slider2=$('.tab_inner2').bxSlider({ //롤링 슬라이드
+                sliderMargin:0,
+                speed: 600,
+                pager: true,
+                auto: true,
+                controls: false,
+                mode:'fade',
+                pagerCustom: '.tab2',
+                onSlideAfter: function(){
+                    slider2.stopAuto();
+                    slider2.startAuto();
+                }
+            });
+        });
+
+        
+        $(document).ready(function(){
+            $(".evtTabCts img").hide();
+            $(".evtTabCts img:first").show();
+
+            $(".evtTab ul li a").click(function(){
+
+                var activeTab = $(this).attr("href");
+                $(".evtTab ul li a").removeClass("active");
+                $(this).addClass("active");
+                $(".evtTabCts img").hide();
+                $(activeTab).fadeIn();
+
+                return false;
+            });
+        });  
+
+
+        $(document).ready(function(){
+            $('#tabwrap2').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        );  
+
+        $(document).ready(function(){
+            $('.evt04 ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){ 
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        ); 
+
+        $(document).ready(function(){
             $('.tab02').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -246,5 +389,69 @@
             
                 e.preventDefault()})})}
         ); 
+
+        var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";
+		var tab2_url = "https://www.youtube.com/embed/b06AI4w38gY?rel=0";
+
+		$(document).ready(function(){
+            $(".tabcts").hide(); 
+            $(".tabcts:first").show();
+            $(".tabMenu li a").click(function(){ 
+                var activeTab = $(this).attr("href"); 
+                var html_str = "";
+                if(activeTab == "#tab1"){
+                    html_str = "<iframe src='"+tab1_url+"' allowfullscreen></iframe>";
+                }else if(activeTab == "#tab2"){
+                    html_str = "<iframe src='"+tab2_url+"' allowfullscreen></iframe>";					
+                }
+                $(".tabMenu li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabcts").hide(); 
+                $(".tabcts").html(''); 
+                $(activeTab).html(html_str);
+                $(activeTab).fadeIn(); 
+                return false; 
+            });
+
+
+            //레이어팝업 close 버튼 클릭        
+            $('.PopupWrap').on('click', '.btn-popup-close', function() {
+                var popup_idx = $(this).data('popup-idx');
+                var hide_days = $(this).data('popup-hide-days');
+
+                // 팝업 close
+                $(this).parents('.PopupWrap').fadeOut();
+
+                //하루 보지않기
+                if (hide_days !== '') {
+                    var domains = location.hostname.split('.');
+                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+
+                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
+                        domain: domain,
+                        path: '/',
+                        expires: hide_days
+                    });
+                }
+
+                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 
+                if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                    $('#PopupBackWrap').fadeOut();
+                }
+            });            
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
+            });
+
+            // 팝업 오늘하루안보기 하드코딩
+            if($.cookie('_wb_client_popup_860') !== 'done') {
+                $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
+            }
+        });
     </script>
 @stop

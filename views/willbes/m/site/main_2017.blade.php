@@ -73,7 +73,7 @@
         <div class="examInfo mt10">
             <ul>
                 <li>
-                    <a href="{{front_url('/examInfo/system')}}">
+                    <a href="{{front_url('/landing/show/lcode/1035/cate/3137')}}">
                         <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam01.png">
                         임용가이드
                     </a>

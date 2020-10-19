@@ -27,7 +27,7 @@
         }
         .skybanner a {margin-bottom:5px}
 
-        .evt_irona {background:;}
+        .evt_irona {background:}
 
         .evt_top {background:#1B0000 url(https://static.willbes.net/public/images/promotion/2020/08/1780_top_bg.jpg) no-repeat center top}
 
@@ -121,10 +121,6 @@
             <a href="#play"><img src="https://static.willbes.net/public/images/promotion/2020/09/1780_sky.png" alt=""></a>
         </div>
         --}}
-
-        <div class="evtCtnsBox evt_irona" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_top_irona.jpg">
-        </div>
 
         <div class="evtCtnsBox evt_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
@@ -380,10 +376,10 @@
         </div>
         <!--wb_tip//-->
 
-        {{--
+ 
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1780_popup.gif" usemap="#PopupImgMap860">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_popup.jpg" usemap="#PopupImgMap860">
             </div>
             <ul class="btnWrapbt popbtn mt10">
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
@@ -391,7 +387,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-        --}}
+    
         
     </div>
     <!-- End Container -->

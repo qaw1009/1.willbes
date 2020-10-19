@@ -28,8 +28,8 @@
                                     <tr>
                                 @endif
                                     <td>{{$area}}</td>
-                                    <td><a href="{{ site_url("/landing/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['infant_file_name']) . "&fname=" . urlencode($row['infant_file_name_kr'])) }}" class="btn01">자료받기 ></a></td>
-                                    <td><a href="{{ site_url("/landing/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['secondary_file_name']) . "&fname=" . urlencode($row['secondary_file_name_kr'])) }}" class="btn01">자료받기 ></a></td>
+                                    <td><a href="{{ site_url("/examInfo/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['infant_file_name']) . "&fname=" . urlencode($row['infant_file_name_kr'])) }}" class="btn01">자료받기 ></a></td>
+                                    <td><a href="{{ site_url("/examInfo/download?path=" . urlencode('/public/uploads/willbes/site/2018/' . $row['secondary_file_name']) . "&fname=" . urlencode($row['secondary_file_name_kr'])) }}" class="btn01">자료받기 ></a></td>
                                 @if($loop->index % 2 == 0)
                                     </tr>
                                 @endif

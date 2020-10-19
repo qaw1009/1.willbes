@@ -6,17 +6,19 @@
             <button type="button" class="goback" onclick="history.back(-1); return false;">
                 <span class="hidden">뒤로가기</span>
             </button>
-            @php
-                if(strpos($data['Title'],'>') !== false){
-                   $arr_title = explode('>',$data['Title']);
-                }else{
-                    $arr_title = array($data['Title']);
-                }
-            @endphp
-            {{ end($arr_title) }}
+            @if(empty($data['Title']) === false)
+                @php
+                    if(strpos($data['Title'],'>') !== false){
+                       $arr_title = explode('>',$data['Title']);
+                    }else{
+                        $arr_title = array($data['Title']);
+                    }
+                @endphp
+                {{ end($arr_title) }}
+            @endif
         </div>
 
-        {!! $data['Content'] !!}
+        {!! $data['ContentM'] or $data['Content'] !!}
 
         <!-- Topbtn -->
         @include('willbes.m.layouts.topbtn')

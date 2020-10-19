@@ -40,12 +40,12 @@
                 annotations: {
                     alwaysOutside: true,
                     textStyle: {
-                        fontSize: 10,
+                        fontSize: 9,
                         auraColor: 'none',
                         color: '#555'
                     },
                 },
-                fontSize: 10
+                fontSize: 9
             };
             var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
@@ -76,12 +76,12 @@
                 annotations: {
                     alwaysOutside: true,
                     textStyle: {
-                        fontSize: 10,
+                        fontSize: 9,
                         auraColor: 'none',
                         color: '#555'
                     },
                 },
-                fontSize: 10
+                fontSize: 9
             };
             var colom = new google.visualization.ComboChart(document.getElementById('chart_div2'));
             colom.draw(data, options1);

@@ -1,6 +1,6 @@
 @extends('willbes.m.layouts.master')
 
-@section('page_title', '학원 오시는 길')
+@section('page_title', '오시는 길')
 
 @section('content')
     <!-- Container -->

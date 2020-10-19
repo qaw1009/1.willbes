@@ -90,7 +90,7 @@ class LandingPage extends \app\controllers\BaseController
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required'],
             ['field' => 'l_code', 'label' => '랜딩코드', 'rules' => 'trim|required'],
             ['field' => 'disp_route', 'label' => '노출경로', 'rules' => 'trim|required'],
-            ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required'],
+//            ['field' => 'content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'IsUse', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]']
         ];
 

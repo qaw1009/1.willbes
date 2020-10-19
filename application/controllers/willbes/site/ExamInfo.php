@@ -14,16 +14,6 @@ class ExamInfo extends \app\controllers\FrontController
     }
 
     /**
-     * 시험제도
-     * @param array $params
-     */
-    public function system($params = [])
-    {
-        $this->load->view('site/examinfo/system',[
-        ]);
-    }
-
-    /**
      * 지역별 공고문
      */
     public function notice()
@@ -289,5 +279,15 @@ class ExamInfo extends \app\controllers\FrontController
         $this->load->view('site/examinfo/graph_html',[
             'arr_base' => $arr_base
         ]);
+    }
+
+    public function download()
+    {
+        $file_path = urldecode($this->_reqG('path',false));
+        $file_name = urldecode($this->_reqG('fname',false));
+
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'back');
     }
 }

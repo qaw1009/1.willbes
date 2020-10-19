@@ -245,7 +245,7 @@
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li>
                         <a href="#pass" target="_self">수강하기 &gt;</a>
-                        <span class="NSK-Black">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 24:00 마감!</span>
+                        <span class="NSK-Black">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} {{ $arr_promotion_params['etime'] }} 마감!</span>
                     </li>
                 </ul>
             </div>
@@ -977,8 +977,42 @@
 
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            dDayCountDownTime('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime']}}');
         });
+
+        function dDayCountDownTime(end_date,end_time) {
+            var arr_end_date = end_date.split('-');
+            var arr_end_time = end_time.split(':');
+            var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], arr_end_time[0], arr_end_time[1], 0);
+            var now = new Date();
+            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
+
+            var Monthleft = event_day.getMonth() - now.getMonth();
+            var Dateleft = dDayDateDiff.inDays(now, event_day);
+            var Hourleft = timeGap.getHours();
+            var Minuteleft = timeGap.getMinutes();
+            var Secondleft = timeGap.getSeconds();
+
+            if ((event_day.getTime() - now.getTime()) > 0) {
+                $('#dd1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Dateleft/10) + '.png');
+                $('#dd2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Dateleft%10) + '.png');
+
+                $('#hh1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Hourleft/10) + '.png');
+                $('#hh2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Hourleft%10) + '.png');
+
+                $('#mm1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Minuteleft/10) + '.png');
+                $('#mm2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Minuteleft%10) + '.png');
+
+                $('#ss1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Secondleft/10) + '.png');
+                $('#ss2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Secondleft%10) + '.png');
+
+                setTimeout(function() {
+                    dDayCountDownTime(end_date,end_time);
+                }, 1000);
+            } else {
+                $('#newTopDday').hide();
+            }
+        }
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->

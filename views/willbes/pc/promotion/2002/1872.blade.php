@@ -74,9 +74,11 @@
             <a href="#evt01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_1.png" alt="" >
             </a> 
+            {{--
             <a href="#evt02"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_2.png" alt="" >
-            </a>               
+            </a>   
+            --}}            
         </div>   
 
         <div class="evtCtnsBox evt00">
@@ -145,17 +147,20 @@
             </map>
         </div>
 
+        {{--
         <div class="evtCtnsBox evt_06" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_06.jpg" usemap="#Map1872b" title="" border="0" />
             <map name="Map1872b" id="Map1872b">
                 <area shape="rect" coords="353,1209,734,1256" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
             </map>
         </div>
+        --}}
 
-        {{--홍보url--}}
+        {{--홍보url
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
+        --}}
 
     </div>
     <!-- End Container -->

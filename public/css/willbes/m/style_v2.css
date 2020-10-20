@@ -1091,10 +1091,11 @@ body.memBody #Footer {
 .csCenter li a {display:block; border-right:1px solid #ccc; border-bottom:1px solid #ccc; letter-spacing:-1px;}
 .csCenter .link li:last-child a {border-right:0; }
 .csCenter .link li a {height:50px; line-height: 50px; text-align:center; font-size:18px; color:#313131}
-.csCenter .tel li {background:#eee; padding:20px 0; border-right:1px solid #ccc; border-bottom:1px solid #ccc; cursor:pointer;}
+.csCenter .tel {background:#eee; border-bottom:1px solid #ccc;}
+.csCenter .tel li {padding:20px 0; border-right:1px solid #ccc; cursor:pointer;}
 .csCenter .tel li:last-child {border-right:0}
 .csCenter li img {float:left; margin:0 5px 10px 10px}
-.csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2;}
+.csCenter li div.goTel div {float:left; font-size:14px; line-height: 1.2; margin-left:5px}
 .csCenter li div.goTel a {border:0}
 .csCenter li strong {display: block; font-size:18px; color:#313131}
 .csCenter li span {display: block; color:#006cff; font-weight: bold;}
@@ -4683,7 +4684,8 @@ span.calendar_btn {
     .thisMonth .swiper-slide div {top:70px;}
     .mainTab li a br {display: block;}
     .csCenter .link li a {font-size:14px;}
-    .csCenter .tel li {display: block; float:none; width:100%; border-right:0}
+    .csCenter .tel li {display: block; float:none; width:100%; border-right:0; border-bottom:1px solid #ccc;}
+    .csCenter .tel li:last-child {border:0}
     .csCenter .tel li br {display:none}    
     .profArea .subjectBox li {width:calc(50% - 10px);}
     .profArea .subjectBox a {height:140px;}

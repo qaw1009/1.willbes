@@ -491,21 +491,23 @@ class EventFModel extends WB_Model
                         $input_register_data['FileRealName'] = $uploaded[0]['client_name'];
                     }
                 }
-
-                // 지급할 강의상품이 있을 경우
-                if(empty($row['ErIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
-                    //중복신청여부 로그인 아이디 기준으로 체크
-                    $result_register_member = $this->getRegisterMember(['EQ' => [ 'A.ErIdx' => $row['ErIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
-                    if(count($result_register_member) == 0) {
-                        $arr_event_product = $this->listEventPromotionForProduct($row['ErIdx']);
-                        if(empty($arr_event_product) === false && count($arr_event_product) > 0) {
-                            //데이터 배열 가공
-                            $arr_product_code = [];
-                            foreach($arr_event_product as $row){
-                                $arr_product_code = array_merge($arr_product_code, [$row['ProdCode']]);
-                            }
-                            if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $arr_product_code) !== true) {
-                                throw new \Exception('제공 강의상품이 처리되지 않았습니다.');
+                
+                if($site_code != '2017'){ // 임용제외
+                    // 지급할 강의상품이 있을 경우
+                    if(empty($row['ErIdx']) === false && empty($this->session->userdata('mem_idx')) == false) {
+                        //중복신청여부 로그인 아이디 기준으로 체크
+                        $result_register_member = $this->getRegisterMember(['EQ' => [ 'A.ErIdx' => $row['ErIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]]);
+                        if(count($result_register_member) == 0) {
+                            $arr_event_product = $this->listEventPromotionForProduct($row['ErIdx']);
+                            if(empty($arr_event_product) === false && count($arr_event_product) > 0) {
+                                //데이터 배열 가공
+                                $arr_product_code = [];
+                                foreach($arr_event_product as $row){
+                                    $arr_product_code = array_merge($arr_product_code, [$row['ProdCode']]);
+                                }
+                                if($this->orderFModel->procAutoOrder('event', element('event_idx', $inputData), $arr_product_code) !== true) {
+                                    throw new \Exception('제공 강의상품이 처리되지 않았습니다.');
+                                }
                             }
                         }
                     }

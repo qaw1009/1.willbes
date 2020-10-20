@@ -32,7 +32,8 @@
                     <strong>온라인문의</strong>
                     <span>1544-5006</span>
                     평일 09시~18시<Br>
-                    주말/공휴일 제외
+                    주말/공휴일 제외<Br>
+                    <Br>
                 </div>
             </div>
         </li>
@@ -42,8 +43,9 @@
                     <strong>학원문의</strong>
                     {{--<span>{{ element('off_tel', $_arr_cs, '') }}</span>--}}
                     <span><a href="tel:1544-0330">1544-0330</a></span>
-                    평일 08시~18시<Br>
-                    주말/공휴일 가능
+                    <p>평일 09시~18시<br>
+                    토요일 09시~14시</p>
+                    일요일/공휴일 제외
                 </div>
             </div>
         </li>
@@ -53,7 +55,8 @@
                     <strong>교재문의</strong>
                     <span>1544-4944</span>
                     평일 09시~17시<Br>
-                    주말/공휴일 제외
+                    주말/공휴일 제외<Br>
+                    <Br>
                 </div>
             </div>
         </li>

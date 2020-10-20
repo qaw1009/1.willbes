@@ -39,6 +39,7 @@
                             <li><a href="/professor/show/cate/3100/prof-idx/51141?subject_idx=1595&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
+                    {{--
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_jjh.jpg" alt="정주형">
                         <ul class="ProfBtns">
@@ -46,6 +47,7 @@
                             <li><a href="/professor/show/cate/3100/prof-idx/50859/?subject_idx=1595&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
+                    --}}
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/3100_prof_kth.jpg" alt="고태환">
                         <ul class="ProfBtns">

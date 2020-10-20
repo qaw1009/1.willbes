@@ -104,6 +104,9 @@ class BasePromotion extends \app\controllers\FrontController
         //이벤트 신청리스트 조회
         $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
+        if(empty($arr_base['register_list']) === false){
+            $arr_base['register_list_prod_data'] = $this->_getRegisterListProdData($arr_base['register_list']);
+        }
 
         //인원 제한 체크를 위한 특강별 회원 수
         $arr_base['register_member_list'] = [];
@@ -739,6 +742,32 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         return $display_group_data;
+    }
+
+    /**
+     * 이벤트 신청리스트 지급상품 조회(단강좌)
+     * @param array $register_list
+     * @return mixed
+     */
+    private function _getRegisterListProdData($register_list = []){
+        foreach ($register_list as $key => $val){
+            if(empty($val['LearnPatternCcd']) === false && empty($val['ProdCode']) === false && $this->_pattern_ccd[$val['LearnPatternCcd']] == 'only'){
+                $register_list[$key]['prod_data'] = $this->_getEventProductGroup($val['LearnPatternCcd'],[$val['ProdCode']]);
+
+                if (empty($register_list[$key]['prod_data']) === false) {
+                    foreach ($register_list[$key]['prod_data'] as $idx => $row) {
+                        $register_list[$key]['prod_data'][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                        if ($this->_pattern_ccd[$val['LearnPatternCcd']] == 'only') {
+                            $register_list[$key]['prod_data'][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                            $register_list[$key]['prod_data'][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
+                            $register_list[$key]['prod_data'][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $register_list;
     }
 
     /**

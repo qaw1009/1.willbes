@@ -387,7 +387,6 @@
                 </dl>
             </div>
         </div>
-
     </div>
 
     <!-- End Container -->
@@ -421,7 +420,6 @@
         function go_popup() {
             $('#popup').bPopup();
         };
-
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
@@ -431,7 +429,6 @@
             var url = '{{ site_url('/periodPackage/show/cate/3103/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
-
-
     </script>
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

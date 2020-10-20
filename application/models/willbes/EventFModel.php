@@ -220,7 +220,12 @@ class EventFModel extends WB_Model
      */
     public function listEventForRegister($arr_condition=[])
     {
-        $column = 'A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, IFNULL(B.MemCount, \'0\') AS MemCount';
+        $column = '
+            A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, 
+            IFNULL(B.MemCount, \'0\') AS MemCount,
+            C.ProdCode,
+            D.LearnPatternCcd
+            ';
         $from = "
             FROM {$this->_table['event_register']} AS A
             LEFT JOIN (
@@ -228,6 +233,8 @@ class EventFModel extends WB_Model
                 FROM {$this->_table['event_member']}
                 GROUP BY ErIdx
             ) AS B ON A.ErIdx = B.ErIdx
+            LEFT JOIN {$this->_table['event_register_r_product']} AS C ON A.ErIdx = C.ErIdx AND C.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['product_lecture']} AS D ON C.ProdCode = D.ProdCode 
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

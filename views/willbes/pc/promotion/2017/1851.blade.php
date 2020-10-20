@@ -186,8 +186,16 @@
         </div>
 
         <div class="eventWrap event04">
-          <form id="brdpost" name="brdpost" method="post" action="" enctype="multipart/form-data">
-        	<div class="event04Box">
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+
+                <div class="event04Box">
             	<h4>인강 무료체험 신청하기</h4>
                 <h5>이벤트참여 대상자</h5>
                 <ul>
@@ -225,39 +233,38 @@
                       <tbody>
                       <tr>
                         <th>이름</th>
-                        <td>홍길동</td>
-                        <input type="hidden" id="userid" name="userid" maxlength="100" title="아이디" value="${loginVO.USER_ID }" />
+                        <td>{{ sess_data('mem_name') }}</td>
                         <th>윌비스ID</th>
-                        <td>willbes</td>
+                        <td>{{sess_data('mem_id')}}</td>
                         <th>연락처</th>
-                        <td><input type="text" id="subjectText" name="subjectText" value="" style="width:90%" /></td>
+                        <td><input type="text" id="register_tel" name="register_tel" value="{{ sess_data('mem_phone') }}" maxlength="11" style="width:90%" /></td>
                       </tr>
                       <tr>
                         <th>대학교(원) / <br />
 						(학부)학과</th>
                         <td>
-                        <input type="text" id="subject" name="subject" maxlength="100" style="width:90%" />
+                        <input type="text" id="register_data1" name="register_data1" maxlength="50" style="width:90%" />
                         </td>
                         <th>재학생인증<br />파일</th>
                         <td colspan="3">
-                        <input type="file" id="uploadFile" name="uploadFile" style="width:60%"/>&nbsp;&nbsp;<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/10/1851_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> <br />
+                        <input type="file" id="attach_file" name="attach_file" style="width:60%"/>&nbsp;&nbsp;
+                        <a onclick="javascript:del_file();"><img src="https://static.willbes.net/public/images/promotion/2020/10/1851_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> <br />
                         *파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등) 또는 PDF 파일 첨부
                         </td>
                       </tr>
                       </tbody>
-                        <input type="hidden" id="event_code" name="event_code" value="200413"/>
                     </table>
                 </div>
               	<h5 class="mB0">강좌 선택<span>* 윌비스임용의 본 이벤트에서 진행하고 있는 인강무료체험은 강좌는 2강좌(교육학1, 전공1)까지만 가능합니다.</span></h5>
               	<div class="evt_tableA">
                     <table>
+                      <col style="width: 50px"/>
+                      <col style="width: 80px"/>
+                      <col style="width: 80px"/>
                       <col />
-                      <col />
-                      <col />
-                      <col />
-                      <col />
-                      <col />
-                      <col />
+                      <col style="width: 80px"/>
+                      <col style="width: 100px"/>
+                      <col style="width: 250px"/>
                       <tr>
                         <th>선택</th>
                         <th>과목명</th>
@@ -267,263 +274,35 @@
                         <th>직강시기</th>
                         <th>교재명</th>
                       </tr>
-                      <tr>
-                        <td><input name="hits" type="checkbox" value="11" id="hits"/></td>
-                        <td>교육학</td>
-                        <td>김차웅</td>
-                        <td>교육학 입문-102알짜 정리 </td>
-                        <td>30강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>스토리텔링 교육학 1.2</td>
-                      </tr>
-                      <tr>
-                        <td><input name="hits" type="checkbox" value="12" id="hits"/></td>
-                        <td>교육학</td>
-                        <td>이인재</td>
-                        <td>교육학[입문] 기초 논술 이론반</td>
-                        <td>12강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>모둠 이인재 교육학 논술[이론편]</td>
-                      </tr>
-                      <tr>
-                        <td><input name="hits" type="checkbox" value="13" id="hits"/></td>
-                        <td>교육학</td>
-                        <td>이인재</td>
-                        <td>교육학 기초 심화반 </td>
-                        <td>13강</td>
-                        <td>2020년 3~4월</td>
-                        <td>모둠 이인재 교육학 논술[이론편]</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="21" id="eventType"/></td>
-                        <td>전공국어</td>
-                        <td>권보민</td>
-                        <td>현대국어 문법 디딤돌 기초반</td>
-                        <td>8강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>프린트</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="22" id="eventType"/></td>
-                        <td>전공국어</td>
-                        <td>권보민</td>
-                        <td>중세국어 문법 디딤돌 기초반</td>
-                        <td>4강</td>
-                        <td>2020년 3~4월</td>
-                        <td>프린트</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="23" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김유석</td>
-                        <td>영미문학 영미시의 이해</td>
-                        <td>9강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>영미시의 이해 4판 (2020년판)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="24" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김유석</td>
-                        <td>일반영어     Power Reading Skills</td>
-                        <td>5강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>Power Reading Skills 4th&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="25" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김유석</td>
-                        <td>영미문학 영미소설의 이해 </td>
-                        <td>6강</td>
-                        <td>2020년 3~4월</td>
-                        <td>영미단편소설의 이해 (2020년판)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="26" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김유석</td>
-                        <td>일반영어 Power Prose Writing</td>
-                        <td>5강</td>
-                        <td>2020년 3~4월</td>
-                        <td>Power Prose Writing&nbsp;(프린트 제공)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="27" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김영문</td>
-                        <td>영어학 기본이론(통사론)</td>
-                        <td>3강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>2020) 김영문 영어학개론</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="28" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>김영문</td>
-                        <td>영어학 기본이론(음운론, 음성학, …)</td>
-                        <td>4강</td>
-                        <td>2020년 3~4월</td>
-                        <td>2020) 김영문 영어학개론</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="29" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>공훈</td>
-                        <td>영어학 기본이론</td>
-                        <td>4강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>2020) 공훈 영어학</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="210" id="eventType"/></td>
-                        <td>영어교육론</td>
-                        <td>공훈</td>
-                        <td>영어교육론 기본이론반 Ⅰ(PLLT)</td>
-                        <td>4강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>Principles of Language Learning and Teaching (6판)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="211" id="eventType"/></td>
-                        <td>전공영어</td>
-                        <td>공훈</td>
-                        <td>음성/음운론 심화이론반(TBP)</td>
-                        <td>4강</td>
-                        <td>2020년 3~4월</td>
-                        <td>Teaching By    Principles</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="212" id="eventType"/></td>
-                        <td>영어교육론</td>
-                        <td>공훈</td>
-                        <td>공훈 음성/음운론 심화이론반(AEP)</td>
-                        <td>4강</td>
-                        <td>2020년 3~4월</td>
-                        <td>Appliend English    Phonology</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="213" id="eventType"/></td>
-                        <td>전공수학</td>
-                        <td>김철홍</td>
-                        <td>미분기하학 마스터반</td>
-                        <td>25강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>미분기하학</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="214" id="eventType"/></td>
-                        <td>수학교육론</td>
-                        <td>박태영</td>
-                        <td>신기한(신론과 기출을 결합한) 이론반</td>
-                        <td>6강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>수학교육신론 1,2</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="215" id="eventType"/></td>
-                        <td>수학교육론</td>
-                        <td>박태영</td>
-                        <td>수학교육과정과 교재연구</td>
-                        <td>5강</td>
-                        <td>2020년 3~4월</td>
-                        <td>수학교육과정과 교재연구 / 자료</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="216" id="eventType"/></td>
-                        <td>도덕윤리</td>
-                        <td>김병찬</td>
-                        <td>교과 내용학 Ⅰ(서양ㆍ동양ㆍ한국윤리)</td>
-                        <td>14강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>서양·동양·한국윤리 (2020년 개정판)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="217" id="eventType"/></td>
-                        <td>도덕윤리</td>
-                        <td>김병찬</td>
-                        <td>교과 내용학 Ⅱ(응용윤리ㆍ정치사회사상)</td>
-                        <td>14강</td>
-                        <td>2020년 3~4월</td>
-                        <td>응용윤리·정치·사회사상 (2020년 개정판)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="218" id="eventType"/></td>
-                        <td>전공음악</td>
-                        <td>다이애나</td>
-                        <td>전공음악 기본이론</td>
-                        <td>22강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>마인드뱁(한끝맵)/종음셋/한줄정리(기본)</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="219" id="eventType"/></td>
-                        <td>전공음악</td>
-                        <td>다이애나</td>
-                        <td>전공음악 화성학 </td>
-                        <td>8강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>연주자를 위한 조성음악 분석 1,2</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="220" id="eventType"/></td>
-                        <td>전공역사</td>
-                        <td>최용림</td>
-                        <td>임용역사 이론반</td>
-                        <td>17강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>전공역사 이론서</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="221" id="eventType"/></td>
-                        <td>전공역사</td>
-                        <td>최용림</td>
-                        <td>임용역사 심화이론</td>
-                        <td>16강</td>
-                        <td>2020년 3~4월</td>
-                        <td>임용역사 기출한자</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="222" id="eventType"/></td>
-                        <td>전기전자통신</td>
-                        <td>최우영</td>
-                        <td>기초전기전자반</td>
-                        <td>18강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>기초전기전자</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="223" id="eventType"/></td>
-                        <td>정보컴퓨터</td>
-                        <td>송광진</td>
-                        <td>정보컴퓨터 내용학 일반과정 </td>
-                        <td>6강</td>
-                        <td>2020년 1~3월</td>
-                        <td>알기 쉽게 풀어가는 정보컴퓨터 일반과정 Ⅰ,Ⅱ</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="224" id="eventType"/></td>
-                        <td>전공중국어</td>
-                        <td>정경미</td>
-                        <td>중국어 기본이론반(Part1)</td>
-                        <td>26강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>중국어 어학 기본이론서</td>
-                      </tr>
-                      <tr>
-                        <td><input name="eventType" type="checkbox" value="225" id="eventType"/></td>
-                        <td>전공중국어</td>
-                        <td>정경미</td>
-                        <td>중국어 기본독해반(Part1)</td>
-                        <td>23강</td>
-                        <td>2020년 1~2월 </td>
-                        <td>中国现当代文学史教程외    2종</td>
-                      </tr>
+                        @if(empty($arr_base['register_list_prod_data']) === false)
+                            @foreach($arr_base['register_list_prod_data'] as $data)
+                                @if(empty($data['prod_data']) === false)
+                                    @foreach($data['prod_data'] as $row)
+                                      <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{$data['ErIdx']}}" data-subject-name="{{ $row['SubjectName'] }}"></td>
+                                        <td>{{ $row['SubjectName'] }}</td>
+                                        <td>{{ $row['ProfNickName'] }}</td>
+                                        <td>{{ $row['ProdName'] }}</td>
+                                        <td>{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</td>
+                                        <td>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</td>
+                                        <td>
+                                            @if(empty($row['ProdBookData']) === false)
+                                                @foreach($row['ProdBookData'] as $book_idx => $book_row)
+                                                    {{ $book_row['BookProvisionCcdName'] }}<br/>
+                                                    {{ $book_row['ProdBookName'] }}
+                                                @endforeach
+                                            @endif
+                                        </td>
+                                      </tr>
+                                    @endforeach
+                                @endif
+                            @endforeach
+                        @endif
                     </table>
               	</div>
                   <div class="tR">* 강의 신청전 페이지 하단의 유의사항을 반드시 확인하시기 바랍니다. </div>
                   <div class="btnBox mt20">
-                     <a href="#none">신청하기</a>
+                     <a onclick="javascript:fn_submit();">신청하기</a>
                   </div>
             </div>
           </form>
@@ -554,4 +333,72 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script>
+        function fn_submit() {
+            var $regi_form_register = $('#regi_form_register');
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            var subject_name1 = '';
+            var subject_name2 = '';
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
+                $regi_form_register.find('input[name="is_chk"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="register_tel"]').val()) {
+                alert('연락처를 입력해 주세요.');
+                $regi_form_register.find('input[name="register_tel"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="register_data1"]').val()) {
+                alert('학교 및 학과를 입력해 주세요.');
+                $regi_form_register.find('input[name="register_data1"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('재학생 인증 파일을 첨부해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length != 2) {
+                alert('강좌를 2개까지 선택해 주세요.');
+                return;
+            }
+
+            $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
+                if(k==0){
+                    subject_name1 = $(this).data('subject-name');
+                }else{
+                    subject_name2 = $(this).data('subject-name');
+                }
+            });
+
+            if(subject_name1 == subject_name2){
+                alert('강좌는 교육학 1개, 전공강좌 1개 총 2개까지 선택 가능합니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+                return;
+            }
+        }
+    </script>
 @stop

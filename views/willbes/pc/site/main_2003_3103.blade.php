@@ -62,7 +62,7 @@
 
          /* 이용안내 */
         .wb_info {padding:100px 0;}
-        .guide_box{width:960px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
+        .guide_box{width:1120px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
         .guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
@@ -102,7 +102,7 @@
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
                         <a href="https://youtu.be/hc17nSkmWtY" target="_blank" >
-                            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt01.jpg"> 
+                            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt01.png"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
@@ -286,8 +286,9 @@
                 <div id="tab02" style="padding-top:40px;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c2.png" alt="">
                 </div>
-                <div id="tab03" style="padding-top:40px;">
+                <div id="tab03" style="padding-top:40px;">                    
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c3.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c4.png" alt="" style="padding-top:40px;">
                 </div>
             </div>
         </div>
@@ -313,9 +314,12 @@
                 </ul>
                 <div id="tab04" style="padding-top:40px;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c1.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c2.png" alt="" style="padding-top:40px;">
                 </div>
                 <div id="tab05" style="padding-top:40px;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c3.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c4.png" alt="" style="padding-top:40px;">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c5.png" alt="" style="padding-top:40px;">
                 </div>
             </div>
         </div> 

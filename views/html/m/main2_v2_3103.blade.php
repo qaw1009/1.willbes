@@ -325,6 +325,62 @@
         </div>
     </div>
 
+    <div class="gosiTitle NSK">
+        윌비스 한림법학원 최강팀의 PSAT!<br> 
+        <span class="NSK-Black">7급 PSAT 입문자를 위한 무료 학습 콘텐츠!</span>
+    </div>
+
+    <div class="gosiTip">
+        <div class="swiper-container-tip">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
+                    </a>                    
+                </div>            
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165048.jpg" alt="배너명"> 
+                        <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div> 
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
+                    </a>                   
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723170605.jpg" alt="배너명">
+                        <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div>
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://pass.dev.willbes.net/public/uploads/willbes/banner/2020/0723/banner_20200723165025.jpg" alt="배너명">
+                        <div class="bnTit">한덕현 영어 1일 1깡? 이제는 1일 2깡</div>
+                    </a>                    
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_720x408.jpg" alt="배너명">
+                        <div class="bnTit">기미진 국어 아침특강 기미진 국어 아침특강 기미진 국어 아침특강</div>
+                    </a>                    
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div> 
+
     <div class="noticeTabs c_both mt30">
         <ul class="tabWrap mainTab">
             <li><a href="#notice1" class="on">공지사항</a></li>
@@ -436,7 +492,26 @@
           spaceBetween: 10,
         },
       }
-    });    
+    });
+    
+     //수험생활 팁
+     var swiper = new Swiper('.swiper-container-tip', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        }, //3초에 한번씩 자동 넘김
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+        640: {
+          spaceBetween: 10,
+        },
+      }
+    });
 </script> 
 
 <!-- footer -->

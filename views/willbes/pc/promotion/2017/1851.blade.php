@@ -336,12 +336,13 @@
 
     <script>
         function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
+            var subject_name = '';
             var subject_name1 = '';
             var subject_name2 = '';
-
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
@@ -373,10 +374,15 @@
             }
 
             $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
+                subject_name = $(this).data('subject-name');
+                if(subject_name != '교육학'){ // 전공
+                    subject_name = subject_name.substr(0,2);
+                }
+
                 if(k==0){
-                    subject_name1 = $(this).data('subject-name');
+                    subject_name1 = subject_name;
                 }else{
-                    subject_name2 = $(this).data('subject-name');
+                    subject_name2 = subject_name;
                 }
             });
 

@@ -388,7 +388,6 @@
             </div>
         </div>
     </div>
-    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     <!-- End Container -->
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
@@ -431,4 +430,5 @@
             location.href = url;
         }
     </script>
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

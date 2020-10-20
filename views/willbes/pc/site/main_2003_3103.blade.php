@@ -101,7 +101,7 @@
                 <li>
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
-                        <a href="https://www.youtube.com/watch?v=ppeyaPbBpPQ" target="_blank" >
+                        <a href="https://youtu.be/hc17nSkmWtY" target="_blank" >
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt01.jpg"> 
                         </a>
                     </span>

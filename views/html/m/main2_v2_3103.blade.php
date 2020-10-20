@@ -130,19 +130,12 @@
                     <span class="hidden">내강의실</span>
                 </button>
                 <div class="logo">
-                    <a href="#none" class="siteTitle NSK-Black">9급 공무원</a>
+                    <a href="#none" class="siteTitle NSK-Black">7급 PSAT</a>
                 </div>        
                 <button type="button" class="basket">
                     <span class="hidden">장바구니</span>
                 </button>                
             </div>                     
-        </div>
-
-        <div class="tab-onoff">
-            <ul>
-                <li><a href="#none" class="on">온라인(메인)</a></li>
-                <li><a href="#none">학원실강</a></li>
-            </ul>
         </div>
 
         <div class="subMenuBox c_both">

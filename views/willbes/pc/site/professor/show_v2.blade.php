@@ -62,16 +62,20 @@
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon04.png') }}" alt="커리큘럼"> 커리큘럼
                         </a>
                     </li>
-                    <li>
-                        <a href="#none" class="btn-study" data-board-idx="" data-board-url="{{front_url('/support/studyComment/')}}" onclick="go_board_popup(this)">
-                            <img src="{{ img_static_url('promotion/main/2018/prof_icon05.png') }}" alt="수강후기"> 수강후기
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none" class="btn-material" data-board-idx="" data-board-url="{{front_url('/prof/material/popupIndex')}}" onclick="go_board_popup(this)">
-                            <img src="{{ img_static_url('promotion/main/2018/prof_icon06.png') }}" alt="학습자료실"> 학습자료실
-                        </a>
-                    </li>
+                    @if($data['IsOpenStudyComment'] == 'Y')
+                        <li>
+                            <a href="#none" class="btn-study" data-board-idx="" data-board-url="{{front_url('/support/studyComment/')}}" onclick="go_board_popup(this)">
+                                <img src="{{ img_static_url('promotion/main/2018/prof_icon05.png') }}" alt="수강후기"> 수강후기
+                            </a>
+                        </li>
+                    @endif
+                    @if($data['IsDataBoard'] == 'Y')
+                        <li>
+                            <a href="#none" class="btn-material" data-board-idx="" data-board-url="{{front_url('/prof/material/popupIndex')}}" onclick="go_board_popup(this)">
+                                <img src="{{ img_static_url('promotion/main/2018/prof_icon06.png') }}" alt="학습자료실"> 학습자료실
+                            </a>
+                        </li>
+                    @endif
                     {{--<li class="sampleLec">
                         <a href="#none">
                             <img src="{{ img_static_url('promotion/main/2018/prof_icon07.png') }}" alt="샘플강의"> 샘플강의

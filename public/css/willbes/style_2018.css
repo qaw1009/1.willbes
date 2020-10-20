@@ -1,5 +1,8 @@
-/***   Main Container : Gosi Acad ****/
-/* Main Container : Gosi Acad */
+/* top bar banner */
+.ssam .topBanner {display:block; background:#4b7494;  width:100%; text-align:center}
+.ssam .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.ssam .topBanner p img {width:100%}
+
 .ssam .tx-color {
     color: #0c5dc0;
 }

@@ -400,6 +400,7 @@
     </div>
 
     <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
+    <!--
     <div class="examInfo mt10">
         <ul>
             <li>
@@ -427,9 +428,31 @@
                 </a>
             </li>
         </ul>
+    </div>-->
+    <div class="w-Guide-Ssam mt20">
+        <div class="NG ssamInfoMenu">
+            <ul class="tabShow tabinfo">
+                <li><a href="#infoTab01" class="on">임용<br>시험제도</a><li>
+                <li><a href="#infoTab02">최근<br>10년동향</a><li>
+                <li><a href="#infoTab03">지역별<br>공고문</a><li>
+                <li class="one"><a href="#infoTab04">자료실</a><li>
+            </ul>
+        </div>
+        <div id="infoTab01">
+            @include('html.m.guide_3134_01_inc')              
+        </div>
+        <div id="infoTab02">
+            @include('html.m.guide_3134_02_inc')              
+        </div>
+        <div id="infoTab03">
+            @include('html.m.guide_3134_03_inc')              
+        </div>
+        <div id="infoTab04">
+            @include('html.m.guide_3134_04_inc')              
+        </div>
     </div>
 
-    <div class="ssamEtc mt50">
+    <div class="ssamEtc mt50 c_both">
         <a href="#none">대학특강문의</a>
         <a href="#none">교수채용</a>
         <a href="#none">오시는길</a>

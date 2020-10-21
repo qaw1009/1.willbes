@@ -102,7 +102,7 @@
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
                         <a href="https://youtu.be/hc17nSkmWtY" target="_blank" >
-                            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt01.png"> 
+                            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt01.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
@@ -113,133 +113,133 @@
                 <li>
                     <div>박준범 <strong>상황판단</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="https://youtu.be/pM0P9Xp9I64" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt02.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/174020" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>이나우 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/23(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt03.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/23(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>한승아 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/23(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt04.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/23(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/26(월) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt05.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Easy Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/26(월) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>박준범 <strong>상황판단</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/28(수) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt06.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Easy Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/28(수) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>이나우 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/30(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt07.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Easy Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/30(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>한승아 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('10/30(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt08.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Easy Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('10/30(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('11/2(월) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt09.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Hard Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('11/2(월) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>박준범 <strong>상황판단</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('11/4(수) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt10.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Hard Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('11/4(수) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>이나우 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('11/6(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt11.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Hard Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('11/6(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>한승아 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('준비중')">
+                        <a href="javascript:alert('11/6(금) 업데이트 예정!')">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt12.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Hard Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('준비중')" class="btn">자세히보기</a>
+                    <a href="javascript:alert('11/6(금) 업데이트 예정!')" class="btn">자세히보기</a>
                 </span>
                 </li>
             </ul>

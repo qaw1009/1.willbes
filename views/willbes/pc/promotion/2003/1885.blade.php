@@ -30,7 +30,7 @@
         </div>
 
         <div class="evt_06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_06.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_06.jpg" style="width:940px;" />       
             <div class="tabBox">
                 <ul class="tab">
                     <li><a href="#tab04" class="active">모의평가 전(2020년 10월~11월)</a></li>

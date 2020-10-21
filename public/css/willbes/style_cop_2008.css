@@ -101,12 +101,12 @@
     position: relative;
     display: inline;
     float: left;
-    width: 185px;
+    width: 180px;
     height: 280px;
     margin-left: 1px;
 }
 .cop2008 .Section .ProfCopBox > li:first-child {
-    margin-left: 0 !important;;
+    margin-left: 25px;
 }
 .cop2008 .Section .ProfCopBox .ProfBtns {
     position: absolute;

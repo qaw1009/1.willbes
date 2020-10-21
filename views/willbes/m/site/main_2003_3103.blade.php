@@ -2,8 +2,8 @@
 
 @section('content')
     <div id="Container" class="Container NSK gosi mb40">
-        {!! banner('M_메인빅배너', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
-        {!! banner('M_메인서브', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인_빅배너', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner('M_메인_서브', 'MainSlider mt20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
         <div class="gosiTitle NSK">
             윌비스 한림법학원 <span class="NSK-Black">PSAT 최강팀</span>
@@ -17,7 +17,7 @@
             <span class="NSK-Black">7급 PSAT 입문자를 위한 무료 학습 콘텐츠!</span>
         </div>
         <div class="gosiTip">
-            {!! banner('M_메인_cast', 'swiper-container-tip', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+            {!! banner('M_메인_cast', 'swiper-container-tip', $__cfg['SiteCode'], $__cfg['CateCode'], 'bnTit') !!}
         </div>
 
         {{-- 게시판 --}}

@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed; width:190px; top:200px;right:10px;z-index:1;}
+        .sky {position:fixed; width:160px; top:200px;right:10px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0a0a0a}
@@ -57,6 +57,9 @@
             </a>            
             <a href="#event1">
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_sky02.png" alt="100프로 환급">
+            </a>
+            <a href="#event2">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_sky04.png" alt="100프로 환급">
             </a>
         </div>
 
@@ -109,15 +112,20 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_03.jpg"  alt="신청하기" usemap="#Map1871_apply" border="0" />
             <map name="Map1871_apply">
-                <area shape="rect" coords="197,1066,441,1151" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171829" target="_blank" alt="한능검1급대비" />
-                <area shape="rect" coords="675,1067,916,1152" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" alt="경찰검정제3급대비" />
+                <area shape="rect" coords="197,1059,441,1144" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171829" target="_blank" alt="한능검1급대비" />
+                <area shape="rect" coords="674,1058,915,1143" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" alt="경찰검정제3급대비" />
+                <area shape="rect" coords="833,1238,1034,1333" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/173905" target="_blank" alt="한능검 합격대비">
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" id="event1">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_04.jpg"  alt="100프로 환급" usemap="#Map1871_notice" border="0" />
+        <div class="evtCtnsBox wb_cts04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_04_01.jpg" alt="100프로 환급" usemap="#Map1871_notice" border="0"  id="event1"/><br>
             <map name="Map1871_notice">
-                <area shape="rect" coords="419,820,702,865" href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=292855&" target="_blank" />
+                <area shape="rect" coords="412,765,713,820" href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=292855&" target="_blank" alt="환급공지사항" />
+            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1871_04_02.jpg" alt="실전모의고사 1회분" usemap="#Map1871_04" border="0" id="event2"/>
+            <map name="Map1871_04">
+                <area shape="rect" coords="383,678,722,751" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/173906" target="_blank" alt="실전모의고사1회분" />
             </map>
         </div>
 

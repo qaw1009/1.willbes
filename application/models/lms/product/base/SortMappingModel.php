@@ -28,9 +28,9 @@ class SortMappingModel extends WB_Model
     public function listSortMapping($arr_condition = [])
     {
         $column = 'U.*, A.wAdminName as LastRegAdminName
-            , (select count(0) from ' . $this->_table['course_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as CateCourseCnt
-            , (select count(0) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as CateSubjectCnt
-            , (select count(0) from ' . $this->_table['subject_r_category_r_code'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode) as ComplexSubjectCnt
+            , (select count(0) from ' . $this->_table['course_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode and IsStatus = "Y") as CateCourseCnt
+            , (select count(0) from ' . $this->_table['subject_r_category'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode and IsStatus = "Y") as CateSubjectCnt
+            , (select count(0) from ' . $this->_table['subject_r_category_r_code'] . ' where SiteCode = U.SiteCode and CateCode = U.LastCateCode and IsStatus = "Y") as ComplexSubjectCnt
         ';
         $from = '
             from (

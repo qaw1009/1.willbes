@@ -60,7 +60,7 @@
                                 {!! '</tr></tr>' !!}
                             @endif
 
-                            <td><input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row[$col_key . 'Idx'] }}" @if($row[$col_key . 'Idx'] == $row['R' . $col_key . 'Idx']) checked="checked" @endif @if($loop->index == 1) required="required" title="{{ $title }}" @endif/></td>
+                            <td><input type="checkbox" id="subject_idx_{{ $loop->index }}" name="subject_idx[]" class="flat" value="{{ $row[$col_key . 'Idx'] }}" @if($row[$col_key . 'Idx'] == $row['R' . $col_key . 'Idx']) checked="checked" @endif @if($loop->index == 1) {{--required="required"--}} title="{{ $title }}" @endif/></td>
                             <td><label for="subject_idx_{{ $loop->index }}" class="input-label no-line-height normal">{{ $row[$col_key . 'Name'] }}</label></td>
                             <td><input type="number" name="order_num[{{ $row[$col_key . 'Idx'] }}]" class="form-control input-sm" value="{{ $row['ROrderNum'] }}" @if($params['_conn_type'] != 'subject') readonly="readonly" @endif></td>
                         @endforeach

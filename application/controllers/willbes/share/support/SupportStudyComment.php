@@ -124,7 +124,13 @@ class SupportStudyComment extends BaseSupport
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($site_code, $cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($site_code, $cate_code, element('series_ccd', $arr_input));
+
+            if (empty($arr_base['series']) === true) {
+                // 복합연결 데이터가 없을 경우 카테고리별 과목 조회
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($site_code, $cate_code);
+            } else {
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($site_code, $cate_code, element('series_ccd', $arr_input));
+            }
         } else {
             // 카테고리별 과목 조회
             $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($site_code, $cate_code);
@@ -132,7 +138,6 @@ class SupportStudyComment extends BaseSupport
 
         // 교수 목록 조회
         $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $cate_code);
-        
 
         /*// 수강중인 강좌 목록 [단강좌 AND 수강이력 AND 강좌종료일 + 30 데이터]
         $arr_condition = [

@@ -8,7 +8,7 @@ class Home extends \app\controllers\FrontController
     protected $auth_controller = false;
     protected $auth_methods = array();
     private $_category_mobile = [
-        '2003' => ['3019','3020','3023','3024','3035','3028'],
+        '2003' => ['3019','3020','3023','3024','3035','3028','3103'],
         '2005' => 'all',
         '2006' => ['309002','309003','309004'],
         '2008' => ['3100']

@@ -95,7 +95,7 @@ class SortMapping extends \app\controllers\BaseController
             ['field' => '_site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer'],
             ['field' => '_cate_code', 'label' => '카테고리코드', 'rules' => 'trim|required|integer'],
             ['field' => 'child_ccd', 'label' => '대분류', 'rules' => 'callback_validateRequiredIf[_conn_type,complex]'],
-            ['field' => 'subject_idx[]', 'label' => '과목', 'rules' => 'trim|required'],
+            /*['field' => 'subject_idx[]', 'label' => '과목', 'rules' => 'trim|required'],*/  // 전체삭제 기능을 위해 필수등록 제외
         ];
 
         if ($this->validate($rules) === false) {

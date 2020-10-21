@@ -81,7 +81,13 @@ class Lecture extends \app\controllers\FrontController
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
+
+            if (empty($arr_base['series']) === true) {
+                // 복합연결 데이터가 없을 경우 카테고리별 과목 조회
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $cate_code);
+            } else {
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
+            }
 
             // 온라인공무원 단강좌일 경우 과목 디폴트 설정 (0번째 과목)
             if ($this->_site_code == '2003' && $this->_learn_pattern == 'on_lecture' && isset($arr_input['subject_idx']) === false) {

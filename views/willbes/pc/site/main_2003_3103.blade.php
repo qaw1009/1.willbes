@@ -91,7 +91,7 @@
         <div class="evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_top.jpg" />    
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/8s9xd7qf96Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>           
         </div>
 

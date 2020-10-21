@@ -432,7 +432,11 @@
     background: #fff;
     margin-bottom: 8px;
 }
-
+.GA .acadMainQuickMenu li.dday {
+    height: 100px;
+    width:164px;
+    overflow: hidden;
+}
 .GA .acadMainQuickMenu .QuickDdayBox {
     position: relative; 
     height: 100px;
@@ -459,9 +463,9 @@
     padding-top: 10px;
     letter-spacing: 0;
 }
-.GA .acadMainQuickMenu li.first .QuickSlider {
+.GA .acadMainQuickMenu li.first {
     width: 164px;
-    height: 100px;
+    height: 164px;
     overflow: hidden;
 }
 .GA .acadMainQuickMenu .sliderNum {

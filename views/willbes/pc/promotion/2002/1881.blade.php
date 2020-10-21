@@ -51,9 +51,9 @@
         <div class="evtCtnsBox evt02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_02.jpg" alt="10개월 슈퍼패스" usemap="#Map1881_02" border="0"  />
             <map name="Map1881_02">
-              <area shape="rect" coords="170,613,301,660" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="10개월 오태진">
-              <area shape="rect" coords="496,615,625,660" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="10개월 원유철">
-              <area shape="rect" coords="818,614,950,659" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3011&campus_ccd=605001&course_idx=1085" target="_blank" alt="10개월 경행경채">
+              <area shape="rect" coords="170,613,301,660" href="https://police.willbes.net/pass/offPackage/show/prod-code/173849" target="_blank" alt="10개월 오태진">
+              <area shape="rect" coords="496,615,625,660" href="https://police.willbes.net/pass/offPackage/show/prod-code/173848" target="_blank" alt="10개월 원유철">
+              <area shape="rect" coords="818,614,950,659" href="https://police.willbes.net/pass/offPackage/show/prod-code/173850" target="_blank" alt="10개월 경행경채">
             </map>
         </div>
 
@@ -67,9 +67,9 @@
         <div class="evtCtnsBox evt04" id="apply" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_04.jpg" alt="4개월 슈퍼패스" usemap="#Map1881_04" border="0" />
             <map name="Map1881_04">
-              <area shape="rect" coords="170,631,302,679" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="4개월 오태진">
-              <area shape="rect" coords="496,631,625,679" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="4개월 원유철">
-              <area shape="rect" coords="821,631,952,677" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3011&campus_ccd=605001&course_idx=1085" target="_blank" alt="4개월 경행경채">
+              <area shape="rect" coords="170,631,302,679" href="https://police.willbes.net/pass/offPackage/show/prod-code/173855" target="_blank" alt="4개월 오태진">
+              <area shape="rect" coords="496,631,625,679" href="https://police.willbes.net/pass/offPackage/show/prod-code/173854" target="_blank" alt="4개월 원유철">
+              <area shape="rect" coords="821,631,952,677" href="https://police.willbes.net/pass/offPackage/show/prod-code/173856" target="_blank" alt="4개월 경행경채">
             </map>        
         </div>	
     </div>

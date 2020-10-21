@@ -879,7 +879,7 @@
             <li><a href="#none">진행 중 이벤트</a></li>
         </ul>
         <ul>
-            <li>
+            <li class="dday">
                 <div class="QuickSlider ">
                     <div class="sliderNum">
                         <div class="QuickDdayBox">
@@ -895,11 +895,11 @@
                     </div>
                 </div>
             </li>
-            <li>   
+            <li class="first">   
                 <div class="QuickSlider">      
                     <div class="sliderNum">
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
-                        <div><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2004//2004_sky01.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0728/banner_20200728102555.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0728/banner_20200728102624.jpg" title="배너명"></a></div>
                     </div>
                 </div>
             </li>

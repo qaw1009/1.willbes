@@ -19,7 +19,7 @@
                                 {{ $row['ProdName'] }}
                             </div>
                             <div class="title"><img src="/public/img/willbes/sub/star{{$row['LecScore']}}.gif"/><span>{{ hpSubString($row['RegName'],0,2,'*') }}</span></div>
-                            <div class="reviewTxt">{{$row['Title']}}</div>
+                            <div class="reviewTxt">{!! $row['Content'] !!}</div>
                         </a>
                     </div>
                 @endforeach

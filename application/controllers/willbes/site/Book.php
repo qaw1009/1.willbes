@@ -55,7 +55,13 @@ class Book extends \app\controllers\FrontController
         if (config_app('SiteGroupCode') == '1002') {
             // 사이트그룹이 공무원일 경우 카테고별 직렬, 직렬별 과목 조회
             $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $cate_code);
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
+
+            if (empty($arr_base['series']) === true) {
+                // 복합연결 데이터가 없을 경우 카테고리별 과목 조회
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $cate_code);
+            } else {
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectSeriesMapping($this->_site_code, $cate_code, element('series_ccd', $arr_input));
+            }
 
             // 온라인공무원일 경우 과목 디폴트 설정 (0번째 과목)
             if ($this->_site_code == '2003' && isset($arr_input['subject_idx']) === false) {
@@ -99,11 +105,8 @@ class Book extends \app\controllers\FrontController
         ];
 
         // 정렬순서
-        if (element('search_order', $arr_input) == 'name') {
-            $arr_order_by = ['P.ProdName' => 'asc'];
-        } else {
-            $arr_order_by = ['P.ProdCode' => 'desc'];
-        }
+        $arr_order_column = ['publdate' => ['P.wPublDate' => 'desc'], 'regist' => ['P.ProdCode' => 'desc'], 'name' => ['P.ProdName' => 'asc']];
+        $arr_order_by = array_get($arr_order_column, element('search_order', $arr_input, 'regist'), $arr_order_column['regist']);
 
         // 상품 조회 (수강생교재 제외를 위해 별도 메소드 사용)
         $list = $this->bookFModel->listSalesProductBook(false, $arr_condition, null, null, $arr_order_by);

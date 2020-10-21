@@ -97,7 +97,7 @@
 .ssam .VisualBox .Maintab {width: 1120px; margin:0 auto;}
 .ssam .VisualBox .Maintab li {
     display: inline-block; 
-    float:left;
+    /*float:left;*/
     height: 50px;
     font-size: 14px;
     line-height: 50px;    

@@ -23,7 +23,7 @@
             </div>
         </li>
     @endif
-    <li>
+    <li class="first">
         <div class="QuickSlider">
             {!! banner_html(element('메인_우측퀵_01', $data['arr_main_banner']), 'sliderNum') !!}
         </div>

@@ -9,7 +9,7 @@
         <div class="Section mt30">
             <div class="widthAuto">  
                 <div class="widthAuto smallTit mt60">          
-                    <p><span>제70기 경찰간부합격 <strong>PROGRAM</strong></span></p>            
+                    <p><span>제71기 경찰간부합격 <strong>PROGRAM</strong></span></p>            
                 </div>
             </div>
             <div class="widthAuto bnrSec01 nSlider pick mt60"> 

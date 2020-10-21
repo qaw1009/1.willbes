@@ -44,7 +44,7 @@
         <div class="evtCtnsBox evt01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_01.jpg" alt="10개월 슈퍼패스" usemap="#Map1881_01" border="0"  />
             <map name="Map1881_01">
-              <area shape="rect" coords="302,1687,789,1776" href="#none" alt="10개월 슈퍼패스">
+              <area shape="rect" coords="302,1687,789,1776" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1882" target="_blank" alt="10개월 슈퍼패스">
             </map>
         </div>      
 
@@ -60,7 +60,7 @@
         <div class="evtCtnsBox evt03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_03.jpg" alt="4개월 슈퍼패스" usemap="#Map1881_03" border="0" />
             <map name="Map1881_03">
-              <area shape="rect" coords="309,1604,784,1694" href="#none" alt="4개월 슈퍼패스">
+              <area shape="rect" coords="309,1604,784,1694" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1883" target="_blank" alt="4개월 슈퍼패스">
             </map>       
         </div>
 

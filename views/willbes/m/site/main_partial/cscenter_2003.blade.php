@@ -44,7 +44,13 @@
                 <div>
                     <strong>학원문의</strong>
                     {{--<span>{{ element('off_tel', $_arr_cs, '') }}</span>--}}
-                    <span><a href="tel:1544-0330">1544-0330</a></span>
+                    <span>
+                        @if($__cfg['CateCode'] == '3103')
+                            <a href="tel:1544-1881">1544-1881</a>
+                        @else
+                            <a href="tel:1544-0330">1544-0330</a>
+                        @endif
+                    </span>
                     <p>평일 09시~18시<br>
                     토요일 09시~14시</p>
                     일요일/공휴일 제외

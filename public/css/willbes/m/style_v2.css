@@ -2749,7 +2749,7 @@ body.memBody #Footer {
     height: 9px;
     margin: -3px 0 0 10px;
 }
-
+.Paging ul:after {content:''; display: block; clear:both}
 /* willbes-Layer-PassBox */
 .willbes-Layer-Black {
     display: none;
@@ -4596,14 +4596,6 @@ span.calendar_btn {
 .w-Guide-Ssam {
     padding:0 20px; margin-bottom:30px
 }
-.ssamInfoMenu {margin-bottom:20px; border-bottom: 1px solid #2d2f56;}
-.ssamInfoMenu ul {border-top:1px solid #dedede; border-left:1px solid #dedede}
-.ssamInfoMenu li {display: inline; float:left; width: 25%;}
-.ssamInfoMenu li a {display:block; text-align: center; font-size: 14px; height:69px; line-height:1.4; padding:15px 0; border-right:1px solid #dedede}
-.ssamInfoMenu li a:hover,
-.ssamInfoMenu li a.on {color:#Fff; background:#2d2f56}
-.ssamInfoMenu li.one a {padding:0; line-height:69px;}
-.ssamInfoMenu ul:after {content:''; display:block; clear:both}
 .w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#2b4ab8; line-height:30px;}
 .w-Guide-Ssam .tabBox {position:relative; margin-bottom: 30px;}
 .w-Guide-Ssam .tabShow {border-top:1px solid #dcdcdc; border-left:1px solid #dcdcdc;}
@@ -4611,6 +4603,14 @@ span.calendar_btn {
 .w-Guide-Ssam .tabShow li a {display:block; font-size:14px; text-align: center; padding:15px 0; border-bottom:1px solid #dcdcdc; border-right:1px solid #dcdcdc}
 .w-Guide-Ssam .tabShow li a.on {color:#2b4ab8; background:#f5f5f5;}
 .w-Guide-Ssam .tabShow:after {content:''; display:block; clear:both}
+.ssamInfoMenu {margin-bottom:20px; border-bottom: 1px solid #2d2f56;}
+.ssamInfoMenu .tabinfo {border-top:1px solid #dedede; border-left:1px solid #dedede}
+.ssamInfoMenu .tabinfo li {display: inline; float:left; width: 25%;}
+.ssamInfoMenu .tabinfo li a {display:block; text-align: center; font-size: 14px; height:69px; line-height:1.4; padding:15px 0; border-right:1px solid #dedede; border-bottom: 0;}
+.ssamInfoMenu .tabinfo li a:hover,
+.ssamInfoMenu .tabinfo li a.on {color:#Fff; background:#2d2f56}
+.ssamInfoMenu .tabinfo li.one a {padding:0; line-height:69px;}
+.ssamInfoMenu .tabinfo:after {content:''; display:block; clear:both}
 .w-Guide-Ssam .tabSsam {border:0}
 .w-Guide-Ssam .tabSsam li {width:auto; margin-bottom: 5px;}
 .w-Guide-Ssam .tabSsam li a {padding:5px 10px; border:0;}

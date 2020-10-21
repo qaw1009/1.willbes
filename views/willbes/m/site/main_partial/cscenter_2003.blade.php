@@ -20,11 +20,13 @@
 @endif
 
 <div class="csCenter">
+    @if($__cfg['CateCode'] != '3103')
     <ul class="link">
         <li><a href="{{ element('on_qna_link', $_arr_cs, '#none') }}">동영상 1:1상담</a></li>
         <li><a href="{{ element('off_qna_link', $_arr_cs, '#none') }}">학원 1:1상담</a></li>
         <li><a href="{{ element('off_map_link', $_arr_cs, '#none') }}">학원 오시는 길</a></li>
     </ul>
+    @endif
     <ul class="tel">
         <li>
             <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">

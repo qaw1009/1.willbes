@@ -17,15 +17,15 @@
         /************************************************************/  
 
         .wb_top {background:#3E137E url(https://static.willbes.net/public/images/promotion/2020/10/1884_top_bg.jpg) no-repeat center top;}
-        .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:280px; margin-left:-660px; width:560px; height:655px; overflow:hidden; 
+        .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:300px; margin-left:-500px; width:560px; height:655px; overflow:hidden; 
             animation:iptimg1 2s ease-out; -webkit-animation:iptimg1 2s ease-out;}
         @@keyframes iptimg1{
-            0%{margin-left:-580px; opacity: 0;}
-            100%{margin-left:-660px; opacity: 1;}
+            0%{margin-left:-450px; opacity: 0;}
+            100%{margin-left:-500px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg1{
-            0%{margin-left:-580px; opacity: 0;}
-            100%{margin-left:-660px; opacity: 1;}
+            0%{margin-left:-450px; opacity: 0;}
+            100%{margin-left:-500px; opacity: 1;}
         }
 
         .wb_cts01 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/10/1884_01_bg.jpg) no-repeat center top;position:relative;}

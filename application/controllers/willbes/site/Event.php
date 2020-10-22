@@ -14,15 +14,6 @@ class Event extends \app\controllers\FrontController
     protected $_page_url = '';
     protected $_view_url = '';
 
-    private $_on_off_swich = [
-        '2017' => [         // 적용 사이트코드
-            'btn' => [
-                'ongoing' => '진행중인 이벤트',
-                'end' => '마감된 이벤트',
-            ],
-        ]
-    ];
-
     public function __construct()
     {
         parent::__construct();
@@ -595,7 +586,6 @@ class Event extends \app\controllers\FrontController
             'list' => $list,
             'paging' => $paging,
             'onoff_type' => $this->_onoff_type,
-            'arr_swich' => element($this->_site_code,$this->_on_off_swich)
         ]);
     }
 
@@ -672,7 +662,6 @@ class Event extends \app\controllers\FrontController
             'list' => $list,
             'paging' => $paging,
             'onoff_type' => $this->_onoff_type,
-            'arr_swich' => element($this->_site_code,$this->_on_off_swich)
         ]);
     }
 

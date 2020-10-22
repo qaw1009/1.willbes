@@ -10,9 +10,9 @@
         </div>
         <div class="gosiProf-psat">
             @for($i=1; $i<=4; $i++)
-                @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                @if(empty($data['arr_main_banner']['메인_M_교수진'.$i]) === false)
                     <div>
-                        {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
+                        {!! banner_html($data['arr_main_banner']['메인_M_교수진'.$i]) !!}
                     </div>
                 @endif
             @endfor

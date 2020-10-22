@@ -8,8 +8,14 @@
         <div class="gosiTitle NSK">
             윌비스 한림법학원 <span class="NSK-Black">PSAT 최강팀</span>
         </div>
-        <div class="gosiProf">
-            {!! banner('M_메인_교수진', 'swiper-container-prof', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        <div class="gosiProf-psat">
+            @for($i=1; $i<=4; $i++)
+                @if(empty($data['arr_main_banner']['메인_교수진'.$i]) === false)
+                    <div>
+                        {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
+                    </div>
+                @endif
+            @endfor
         </div>
 
         <div class="gosiTitle NSK">

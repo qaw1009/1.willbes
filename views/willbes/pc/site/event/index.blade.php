@@ -42,6 +42,16 @@
                         </button>
                     </div>
                 </div>
+
+                @if(empty($arr_swich['btn']) === false)
+                    <div class="evtbtn">
+                        @foreach($arr_swich['btn'] as $type => $event)
+                            @if($type != $onoff_type)
+                                <a href="{{ front_url('/event/list/'.$type) }}">{{ $event }}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                @endif
             </div>
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">

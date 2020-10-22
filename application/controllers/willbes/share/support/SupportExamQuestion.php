@@ -97,9 +97,7 @@ class SupportExamQuestion extends BaseSupport
         }
 
         $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
-
         $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
-
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
@@ -224,6 +222,115 @@ class SupportExamQuestion extends BaseSupport
                 'arr_swich' => $this->arr_swich
             ]
         );
+    }
+
+    /**
+     * ajax list
+     * @return CI_Output
+     */
+    public function listAjax()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $s_keyword = element('s_keyword',$arr_input);
+        $s_area = element('s_area',$arr_input);
+        $s_year = element('s_year',$arr_input);
+        $s_subject = element('s_subject',$arr_input);
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'AreaCcd' => $s_area,
+                'ExamProblemYear' => $s_year,
+                'SubjectIdx' => $s_subject,
+                'b.IsUse' => 'Y'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword
+                    ,'b.Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        $list = [];
+        $cate_code = '';
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $cate_code = $this->_cate_code;
+        }
+
+        $column = 'b.BoardIdx,b.CampusCcd,b.TypeCcd,b.IsBest,b.AreaCcd, b.ExamProblemYear
+                       ,b.Title,b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
+                       ,b.CampusCcd_Name, b.TypeCcd_Name, b.AreaCcd_Name
+                       ,b.SubjectName,b.CourseName,DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+                       ';
+
+        $order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
+
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
+        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
+        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code,$total_rows,$this->_paging_limit,$paging_count,true);
+        if ($total_rows > 0) {
+            $list = $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, $cate_code, $arr_condition, $column, $paging['limit'], $paging['offset'], $order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+            }
+        }
+
+        return $this->response([
+            'paging' => $paging,
+            'ret_data' => $list,
+            'total_rows' => $total_rows
+        ]);
+    }
+
+    /**
+     * @return CI_Output
+     */
+    public function ajaxPaging()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        $s_keyword = element('s_keyword',$arr_input);
+        $s_area = element('s_area',$arr_input);
+        $s_year = element('s_year',$arr_input);
+        $s_subject = element('s_subject',$arr_input);
+        $get_page_params = 's_keyword='.$s_keyword;
+        $get_page_params .= '&s_area='.$s_area;
+        $get_page_params .= '&s_year='.$s_year;
+        $get_page_params .= '&s_subject='.$s_subject;
+
+        $cate_code = '';
+        if ($this->_site_code != config_item('app_intg_site_code')) {
+            $cate_code = $this->_cate_code;
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'ExamProblemYear' => $s_year,
+                'SubjectIdx' => $s_subject,
+                'b.IsUse' => 'Y'
+            ],
+        ];
+
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
+        $total_rows = $this->supportBoardFModel->listBoardForSiteGroup(true, $this->_site_code, $cate_code, $arr_condition);
+        $paging = $this->pagination($this->_default_path.'/examQuestion/index/cate/'.$this->_cate_code.'?'.$get_page_params,$total_rows,$this->_paging_limit,$paging_count,true);
+
+        return $this->response([
+            'paging' => $paging,
+        ]);
     }
 
     public function download()

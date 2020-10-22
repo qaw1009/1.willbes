@@ -96,14 +96,43 @@ class ExamInfo extends \app\controllers\FrontController
     }
 
     /**
-     * 최근 10년동향
+     * 최근 10년동향 (메인페이지)
      * @param array $params
      */
-    public function trend($params = [])
+    public function mainTrend()
     {
-        /*$this->{'_trend_'.APP_DEVICE}();*/
-        $arr_input = array_merge($this->_reqG(null));
-        $subject_ccd = element('subject_id', $arr_input);
+        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
+        $arr_condition = [
+            'EQ' => [
+                'SiteCode' => $this->_site_code,
+                'AreaCcd' => '734001',
+                'IsStatus' => 'Y',
+                'IsUse' => 'Y'
+            ],
+            'IN' => [
+                'SubjectCcd' => array_keys($arr_base['subject_list'])
+            ]
+        ];
+        $arr_graph = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
+        $temp_data = [];
+        foreach ($arr_graph as $key => $row) {
+            $temp_data[$row['SubjectCcd']][$key]['YearTarget'] = $row['YearTarget'];
+            $temp_data[$row['SubjectCcd']][$key]['TakeType'] = $row['TakeType'];
+            $temp_data[$row['SubjectCcd']][$key]['NoticeNumber'] = $row['NoticeNumber'];
+            $temp_data[$row['SubjectCcd']][$key]['TakeNumber'] = $row['TakeNumber'];
+            $temp_data[$row['SubjectCcd']][$key]['AvgData'] = $row['AvgData'];
+        }
+        $arr_base['graph'] = $temp_data;
+        $this->load->view('site/examinfo/main_trend',[
+            'arr_base' => $arr_base
+        ]);
+    }
+
+    /**
+     * 최근 10년동향 (페이지)
+     */
+    public function trend()
+    {
         $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
         $arr_condition = [
             'EQ' => [
@@ -131,82 +160,6 @@ class ExamInfo extends \app\controllers\FrontController
             'arr_base' => $arr_base
         ]);
     }
-
-    /*private function _trend_pc()
-    {
-        $arr_input = array_merge($this->_reqG(null));
-        $subject_ccd = element('subject_id', $arr_input);
-        $arr_condition = [
-            'EQ' => [
-                'DataType' => 'detail',
-                'SiteCode' => $this->_site_code,
-                'SubjectCcd' => $subject_ccd
-            ]
-        ];
-        $arr_subject = $this->examTakeInfoFModel->getCcdForSubject();
-        $arr_base['area_data'] = $this->examTakeInfoFModel->getSubjectForAreaExamInfo($arr_condition);
-        $arr_base['years'] = $this->examTakeInfoFModel->getExamGroupYear($this->_site_code);
-        $arr_base['area_list'] = $this->examTakeInfoFModel->getCcdForArea();
-
-        $arr_condition = [
-            'EQ' => [
-                'SiteCode' => $this->_site_code,
-                'SubjectCcd' => $subject_ccd,
-                'AreaCcd' => '734001',
-                'IsStatus' => 'Y',
-                'IsUse' => 'Y'
-            ]
-        ];
-        $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
-
-        $temp_data = [];
-        foreach ($arr_base['graph'] as $row) {
-            $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
-            $temp_data[$row['YearTarget']]['NoticeNumber'] = $row['NoticeNumber'];
-            $temp_data[$row['YearTarget']]['TakeNumber'] = $row['TakeNumber'];
-            $temp_data[$row['YearTarget']]['AvgData'] = $row['AvgData'];
-        }
-        ksort($temp_data);
-        $arr_base['graph_table_data'] = $temp_data;
-
-        $this->load->view('site/examinfo/trend',[
-            'arr_input' => $arr_input,
-            'title' => $arr_subject[$subject_ccd],
-            'arr_base' => $arr_base
-        ]);
-    }*/
-
-    /*private function _trend_m()
-    {
-        $arr_input = array_merge($this->_reqG(null));
-        $subject_ccd = element('subject_id', $arr_input);
-        $arr_base['subject_list'] = $this->examTakeInfoFModel->getCcdForSubject(['RAW' => ['JSON_EXTRACT(CcdEtc,\'$.is_mobile\') = ' => '\'Y\'']]);
-        $arr_condition = [
-            'EQ' => [
-                'SiteCode' => $this->_site_code,
-                'AreaCcd' => '734001',
-                'IsStatus' => 'Y',
-                'IsUse' => 'Y'
-            ],
-            'IN' => [
-                'SubjectCcd' => array_keys($arr_base['subject_list'])
-            ]
-        ];
-        $arr_graph = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
-        $temp_data = [];
-        foreach ($arr_graph as $key => $row) {
-            $temp_data[$row['SubjectCcd']][$key]['YearTarget'] = $row['YearTarget'];
-            $temp_data[$row['SubjectCcd']][$key]['TakeType'] = $row['TakeType'];
-            $temp_data[$row['SubjectCcd']][$key]['NoticeNumber'] = $row['NoticeNumber'];
-            $temp_data[$row['SubjectCcd']][$key]['TakeNumber'] = $row['TakeNumber'];
-            $temp_data[$row['SubjectCcd']][$key]['AvgData'] = $row['AvgData'];
-        }
-        $arr_base['graph'] = $temp_data;
-
-        $this->load->view('site/examinfo/trend',[
-            'arr_base' => $arr_base
-        ]);
-    }*/
 
     public function trendPopup()
     {
@@ -234,7 +187,6 @@ class ExamInfo extends \app\controllers\FrontController
             ]
         ];
         $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
-
         $temp_data = [];
         foreach ($arr_base['graph'] as $row) {
             $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
@@ -252,8 +204,12 @@ class ExamInfo extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 그래프 ajax
+     */
     public function graphHtml()
     {
+        $arr_base = [];
         $arr_input = array_merge($this->_reqG(null));
         $subject_ccd = element('subject_id', $arr_input);
         $arr_condition = [
@@ -266,7 +222,6 @@ class ExamInfo extends \app\controllers\FrontController
             ]
         ];
         $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
-
         $temp_data = [];
         foreach ($arr_base['graph'] as $row) {
             $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
@@ -288,7 +243,6 @@ class ExamInfo extends \app\controllers\FrontController
         $file_name = urldecode($this->_reqG('fname',false));
 
         public_download($file_path, $file_name);
-
         show_alert('등록된 파일을 찾지 못했습니다.', 'back');
     }
 }

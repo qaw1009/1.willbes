@@ -13,6 +13,9 @@
         <!-- content -->
         @yield('content')
 
+    <!-- quicknav -->
+    @include('willbes.pc.layouts.quickbnr')
+
     <!-- footer -->
     @include('willbes.pc.layouts.footer')
 

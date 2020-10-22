@@ -30,7 +30,7 @@
 
 
         <div class="skybanner" >
-            <a href="#none" onclick="javascript:alert('곧 공개됩니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/10/1881_sky.png" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1874" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1881_sky.png" alt="스카이베너" ></a>
         </div>               
 
 		<div class="evtCtnsBox evt00">

@@ -69,35 +69,8 @@
             </div>
         @endif
 
-        <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
-        <div class="examInfo mt10">
-            <ul>
-                <li>
-                    <a href="{{front_url('/landing/show/lcode/1035/cate/3137')}}">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam01.png">
-                        임용가이드
-                    </a>
-                </li>
-                <li>
-                    <a href="{{front_url('/examInfo/trend')}}">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam02.png">
-                        최근10년동향
-                    </a>
-                </li>
-                <li>
-                    <a href="{{front_url('/examInfo/notice')}}">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam03.png">
-                        지역별공고
-                    </a>
-                </li>
-                <li>
-                    <a href="{{front_url('/pass/support/examQuestion/index')}}">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam04.png">
-                        자료실
-                    </a>
-                </li>
-            </ul>
-        </div>
+        {{-- 시험정보 --}}
+        @include('willbes.m.site.main_partial.examinfo_'.$__cfg['SiteCode'])
 
         {{-- 고객센터 --}}
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])

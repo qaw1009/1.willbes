@@ -93,6 +93,7 @@
                         </button>
                     </div>
                 </div>
+                <div class="evtbtn"><a href="#none">마감된 이벤트</a></div>
             </div>
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">

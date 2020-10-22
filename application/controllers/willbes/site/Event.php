@@ -13,7 +13,7 @@ class Event extends \app\controllers\FrontController
     protected $_onoff_type = '';
     protected $_page_url = '';
     protected $_view_url = '';
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -584,7 +584,8 @@ class Event extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'list' => $list,
-            'paging' => $paging
+            'paging' => $paging,
+            'onoff_type' => $this->_onoff_type,
         ]);
     }
 
@@ -659,7 +660,8 @@ class Event extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'list' => $list,
-            'paging' => $paging
+            'paging' => $paging,
+            'onoff_type' => $this->_onoff_type,
         ]);
     }
 

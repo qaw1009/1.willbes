@@ -42,6 +42,14 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="evtbtn">
+                    @if($onoff_type == 'ongoing')
+                        <a href="{{ front_url('/event/list/end') }}">마감된 이벤트</a>
+                    @elseif($onoff_type == 'end')
+                        <a href="{{ front_url('/event/list/ongoing') }}">진행중인 이벤트</a>
+                    @endif
+                </div>
             </div>
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">

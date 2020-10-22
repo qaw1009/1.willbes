@@ -46,6 +46,7 @@ class SupportExamQuestion extends BaseSupport
         $s_year = element('s_year',$arr_input);
         $s_subject = element('s_subject',$arr_input);
         $view_type = element('view_type',$arr_input);
+        $file_type = element('file_type', $arr_input);
         $get_page_params = 's_keyword='.$s_keyword;
         $get_page_params .= '&view_type='.$view_type;
         $get_page_params .= '&s_area='.$s_area;
@@ -106,7 +107,7 @@ class SupportExamQuestion extends BaseSupport
             }
         }
 
-        $this->load->view('support/examQuestion', [
+        $this->load->view('support/' . $file_type . 'examQuestion', [
             'default_path' => $this->_default_path,
             'get_params' => $get_params,
             'arr_base' => $arr_base,

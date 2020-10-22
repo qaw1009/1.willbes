@@ -89,7 +89,8 @@ class ExamInfo extends \app\controllers\FrontController
             ],
         ];
 
-        $this->load->view('site/examinfo/notice',[
+        $file_type = element('file_type', $this->_reqG(null));
+        $this->load->view('site/examinfo/' . $file_type . 'notice',[
             'arr_download_list' => $arr_download_list,
         ]);
     }

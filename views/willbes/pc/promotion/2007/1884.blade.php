@@ -17,15 +17,15 @@
         /************************************************************/  
 
         .wb_top {background:#3E137E url(https://static.willbes.net/public/images/promotion/2020/10/1884_top_bg.jpg) no-repeat center top;}
-        .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:300px; margin-left:-620px; width:560px; height:655px; overflow:hidden; 
+        .wb_top span.img1 {position:absolute; left:50%; z-index:1; top:280px; margin-left:-660px; width:560px; height:655px; overflow:hidden; 
             animation:iptimg1 2s ease-out; -webkit-animation:iptimg1 2s ease-out;}
         @@keyframes iptimg1{
-            0%{margin-left:-540px; opacity: 0;}
-            100%{margin-left:-620px; opacity: 1;}
+            0%{margin-left:-580px; opacity: 0;}
+            100%{margin-left:-660px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg1{
-            0%{margin-left:-540px; opacity: 0;}
-            100%{margin-left:-620px; opacity: 1;}
+            0%{margin-left:-580px; opacity: 0;}
+            100%{margin-left:-660px; opacity: 1;}
         }
 
         .wb_cts01 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/10/1884_01_bg.jpg) no-repeat center top;position:relative;}
@@ -41,7 +41,7 @@
 
 
         /*TAB*/
-        .tabWrapEvt{width:920px; margin:0 auto;position:absolute;left:50%;top:49%;margin-left:-470px;}
+        .tabWrapEvt{width:920px; margin:0 auto;position:absolute;left:50%;top:50%;margin-left:-470px;}
         .tabWrapEvt li {display:inline; float:left; width:450px; margin-left:10px;}
         .tabWrapEvt li a {display:block; text-align:center}
         .tabWrapEvt li a img.off {display:block}
@@ -54,7 +54,7 @@
         .tabWrapEvt li a.active {}
         .tabWrapEvt li:last-child a {margin-right:0}
         .tabWrapEvt:after {content:""; display:block; clear:both}
-        .tabcts {background:none; width:920px; margin:30px auto 0; text-align:center;position:absolute;left:50%;top:51%;margin-left:-460px;}
+        .tabcts {background:none; width:920px; margin:30px auto 0; text-align:center;position:absolute;left:50%;top:52%;margin-left:-460px;}
         .tabcts iframe {width:920px; margin:30px auto 0; height:520px;}
 
         .evtInfo {padding:80px 0; background:#fff; color:#000; font-size:16px}

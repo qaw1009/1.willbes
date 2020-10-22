@@ -272,22 +272,22 @@
     <div class="gosiProf-psat">
         <div>
             <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_01.png" alt="배너명">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/3103_350x300_01.png" alt="배너명">
             </a>  
         </div> 
         <div>             
             <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_02.png" alt="배너명">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/3103_350x300_02.png" alt="배너명">
             </a>
         </div>
         <div>
             <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_03.png" alt="배너명">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/3103_350x300_03.png" alt="배너명">
             </a>
         </div> 
         <div> 
             <a href="#none">
-                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_04.png" alt="배너명">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/3103_350x300_04.png" alt="배너명">
             </a>
         </div>
     </div>

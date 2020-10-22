@@ -269,52 +269,26 @@
         윌비스 한림법학원 <span class="NSK-Black">PSAT 최강팀</span>
     </div>
 
-    <div class="gosiProf">
-        <div class="swiper-container-prof">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_01.png" alt="배너명">
-                    </a>  
-                </div> 
-                <div class="swiper-slide">             
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_02.png" alt="배너명">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_03.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_04.png" alt="배너명">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_05.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_06.png" alt="배너명">
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_07.png" alt="배너명">
-                    </a>
-                    </div> 
-                <div class="swiper-slide"> 
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_08.png" alt="배너명">
-                    </a>
-                </div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+    <div class="gosiProf-psat">
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_01.png" alt="배너명">
+            </a>  
+        </div> 
+        <div>             
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_02.png" alt="배너명">
+            </a>
+        </div>
+        <div>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_03.png" alt="배너명">
+            </a>
+        </div> 
+        <div> 
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/m/2003/2003_200x300_04.png" alt="배너명">
+            </a>
         </div>
     </div>
 
@@ -465,28 +439,7 @@
 
 </div>
 <!-- End Container -->
-<script>    
-    //교수진
-    var swiper = new Swiper('.swiper-container-prof', {
-      slidesPerView: 'auto',
-      slidesPerColumn: 2,
-      spaceBetween: 30,
-      autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        }, //3초에 한번씩 자동 넘김
-      // init: false,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        640: {
-          spaceBetween: 10,
-        },
-      }
-    });
-    
+<script>     
      //수험생활 팁
      var swiper = new Swiper('.swiper-container-tip', {
         slidesPerView: 'auto',

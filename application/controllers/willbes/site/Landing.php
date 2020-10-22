@@ -22,6 +22,7 @@ class Landing extends \app\controllers\FrontController
             $data['ContentM'] =  $this->_reqP('preview_content');
         }
         $data['Preview'] = ( empty(element('preview',$params)) ? $this->_reqP('preview') : element('preview',$params) );
+        $file_type = element('file_type', $this->_reqG(null));
 
         $l_code = element('lcode',$params);
         if($data['Preview'] === 'Y') {
@@ -33,7 +34,7 @@ class Landing extends \app\controllers\FrontController
                 $data = $this->landingFModel->findLandingByLCode($l_code,['EQ' => ['mm.IsUse'=>'Y']]);
             }
         }
-        $this->load->view('site/landing/show',[
+        $this->load->view('site/landing/' . $file_type . 'show',[
             'data' => $data
         ]);
     }

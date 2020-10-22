@@ -4679,6 +4679,9 @@ form .LeclistTable .evtTable tr td a.w-del {
     display: inline-block;
     line-height: 20px;
 }
+.willbes-LecreplyList .evtbtn {position: absolute; right:0; top:0; width: 120px; z-index: 1;}
+.willbes-LecreplyList .evtbtn a {display: block; height: 30px; line-height:30px; border:1px solid #ccc; border-radius:6px; color:#000; text-align: center;}
+
 .replyBtnBox {
     position: absolute;
     right: 0;

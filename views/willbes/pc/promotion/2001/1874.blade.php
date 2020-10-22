@@ -17,6 +17,8 @@
         /************************************************************/
         .evt00 {background:#0a0a0a}
 
+        .sky {position:fixed; top:225px;right:10px;z-index:10;}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/10/1874_top_bg.jpg) no-repeat center top;}
         .evt01 {}
         .evtLec {width:1120px; margin:0 auto; text-align:left}
@@ -26,6 +28,12 @@
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>     
+
+        <div class="sky">
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1881" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_sky.png" alt="" >
+            </a>             
+        </div>   
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1874_top.jpg"  alt="10월 추천강좌" usemap="#Map1874" border="0" />

@@ -42,8 +42,6 @@
     <!-- End Container -->
     <script type="text/javascript">
         function pullOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-
             @if(empty($arr_promotion_params['SsIdx']) === true)
             alert('설문정보가 없습니다.');
             return;

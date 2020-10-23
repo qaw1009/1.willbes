@@ -1,5 +1,5 @@
 @if($__cfg['SiteCode'] == '2017' || $__cfg['SiteCode'] == '2018') {{-- 임용 --}}
-<div id="QuickMenu" class="MainQuickMenu">
+<div id="QuickMenu" class="MainQuickMenuSSam NGR">
     <ul id="dday_box"></ul>
     <ul class="gobtn">
         <li><a href="{{ site_url('/pass/board/schedule') }}">강의실배정표</a></li>

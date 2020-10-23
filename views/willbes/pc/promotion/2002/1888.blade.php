@@ -21,7 +21,7 @@
        
         .evt00 {background:#404040}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/10/1888_top_bg.jpg) repeat-x center top;}     
-
+        .evt02 {background:#efefef}
         .evt03 {padding-bottom:150px}
         .evt03 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt03 .request h3 {font-size:17px;}
@@ -78,106 +78,109 @@
             </div>
 
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1888_02.jpg" title="스케줄">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1888_04.jpg" title="참석자 증정선물">
             </div>
+
             <div class="evtCtnsBox evt03" id="to_go">
-                    <div class="request" id="request">
-                        <div class="requestL">
-                            <h3 class="NSK-Black">* 10월 설명회  신청접수</h3>
-                            <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                                <col width="25%" />
-                                <col  />
-                                <tr>
-                                    <th>* 이름</th>
-                                    <td scope="col">
-                                        <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>* 연락처</th>
-                                    <td>
-                                        <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>* 참여일</th>
-                                    <td>
-                                        <ul>
-                                            @foreach($arr_base['register_list'] as $key => $val)
-                                                @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                                    @php
-                                                        // 강의 기간 지나면 자동 disabled 처리
-                                                        // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
-                                                        //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
-                                                        $reg_year = '2020';
-                                                        $temp_date = explode(' ', $val['Name'])[0];
-                                                        if(strpos($temp_date, '(') !== false) {
-                                                            $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
-                                                        }
-                                                        $reg_month_day = explode('.', $temp_date);
-                                                        $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
-                                                        $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                                        $reg_date = $reg_year.$reg_month.$reg_day.'0000';
-                                                        //echo date('YmdHi', strtotime($reg_date. '+1 days'));
-                                                    @endphp
-                                                    @if(time() >= strtotime($reg_date. '+1 days'))
-                                                        <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                                    @else
-                                                        <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                                    @endif
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1888_02.jpg" title="스케줄">
+                <div class="request" id="request">
+                    <div class="requestL">
+                        <h3 class="NSK-Black">* 10월 설명회  신청접수</h3>
+                        <table width="0" cellspacing="0" cellpadding="0" class="table_type">
+                            <col width="25%" />
+                            <col  />
+                            <tr>
+                                <th>* 이름</th>
+                                <td scope="col">
+                                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 연락처</th>
+                                <td>
+                                    <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 참여일</th>
+                                <td>
+                                    <ul>
+                                        @foreach($arr_base['register_list'] as $key => $val)
+                                            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                                                @php
+                                                    // 강의 기간 지나면 자동 disabled 처리
+                                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
+                                                    //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
+                                                    $reg_year = '2020';
+                                                    $temp_date = explode(' ', $val['Name'])[0];
+                                                    if(strpos($temp_date, '(') !== false) {
+                                                        $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
+                                                    }
+                                                    $reg_month_day = explode('.', $temp_date);
+                                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
+                                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
+                                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
+                                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
+                                                @endphp
+                                                @if(time() >= strtotime($reg_date. '+1 days'))
+                                                    <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @else
+                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
                                                 @endif
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>* 직렬</th>
-                                    <td>
-                                        <ul>
-                                            <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></li>
-                                            &nbsp;&nbsp;&nbsp;<li><input type="radio" name="register_data2" id="CT3" value="101단" /> <label for="CT3">101단</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT4" value="경행경채" /> <label for="CT4">경행경채</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT6" value="법학경채" /> <label for="CT6">법학경채</label></li>
-                                            <li><input type="radio" name="register_data2" id="CT7" value="기타" /> <label for="CT7">기타</label></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="requestR">
-                            <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
-                            <ul>
-                                <li>
-                                    <strong>1. 개인정보 수집 이용 목적</strong> <br>
-                                    - 신청자 본인 확인 및 신청 접수 및 문의사항 응대
-                                    - 통계분석 및 마케팅
-                                    - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
-                                </li>
-                                <li><strong>2. 개인정보 수집 항목</strong> <br>
-                                - 필수항목 : 성명, 연락처, 직렬항목
-                                </li>
-                                <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
-                                - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
-                                </li>
-                                <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
-                                - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
-                                </li>
-                                <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.
-                                </li>
-                                <li>6. 신이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.
-                                </li>
-                            </ul>
-                            <div>
-                                <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                            </div>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>* 직렬</th>
+                                <td>
+                                    <ul>
+                                        <li><input type="radio" name="register_data2" id="CT1" value="일반남자" /> <label for="CT1">일반남자</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT2" value="일반여자" /> <label for="CT2">일반여자</label></li>
+                                        &nbsp;&nbsp;&nbsp;<li><input type="radio" name="register_data2" id="CT3" value="101단" /> <label for="CT3">101단</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT4" value="경행경채" /> <label for="CT4">경행경채</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT5" value="전의경경채" /> <label for="CT5">전의경경채</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT6" value="법학경채" /> <label for="CT6">법학경채</label></li>
+                                        <li><input type="radio" name="register_data2" id="CT7" value="기타" /> <label for="CT7">기타</label></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="requestR">
+                        <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
+                        <ul>
+                            <li>
+                                <strong>1. 개인정보 수집 이용 목적</strong> <br>
+                                - 신청자 본인 확인 및 신청 접수 및 문의사항 응대
+                                - 통계분석 및 마케팅
+                                - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
+                            </li>
+                            <li><strong>2. 개인정보 수집 항목</strong> <br>
+                            - 필수항목 : 성명, 연락처, 직렬항목
+                            </li>
+                            <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
+                            - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
+                            </li>
+                            <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
+                            - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
+                            </li>
+                            <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.
+                            </li>
+                            <li>6. 신이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.
+                            </li>
+                        </ul>
+                        <div>
+                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
                         </div>
                     </div>
-                    <div class="btn NGEB">
-                        <a href="#none" onclick="javascript:fn_submit();">2020년 10월 설명회 신청하기 ></a>
-                    </div>
+                </div>
+                <div class="btn NGEB">
+                    <a href="#none" onclick="javascript:fn_submit();">2020년 10월 설명회 신청하기 ></a>
+                </div>
             </div>
+
             <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1888_03_01.jpg" title="위치 및 정보"/>
             </div>

@@ -125,25 +125,25 @@
                 <li>
                     <div>이나우 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('10/23(금) 업데이트 예정!')">
+                        <a href="https://youtu.be/dxbdcsYO1Os" target="_blank" >
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt03.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('10/23(금) 업데이트 예정!')" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/174110" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>
                     <div>한승아 <strong>언어논리</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('10/23(금) 업데이트 예정!')">
+                        <a href="https://youtu.be/epVqZDcBk8c" target="_blank" >
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt04.jpg"> 
                         </a>
                     </span>
                     <div>7급공채 PSAT 예시문제 분석</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('10/23(금) 업데이트 예정!')" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/174111" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>

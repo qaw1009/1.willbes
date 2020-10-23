@@ -5,11 +5,6 @@ require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
 
 Class Lecture extends CommonLecture
 {
-    /*
-     * CommonLecture 로 이관
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/on/lecture');
-    protected $helpers = array('download');
-    */
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615001'; //단강좌
 
@@ -20,7 +15,7 @@ Class Lecture extends CommonLecture
 
     public function index()
     {
-        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $arr_site_code = get_auth_site_codes(true);
         $def_site_code = key($arr_site_code);
 
         //공통코드
@@ -165,7 +160,7 @@ Class Lecture extends CommonLecture
      */
     public function create($params=[])
     {
-        $arr_site_code = get_auth_on_off_site_codes('N', true);
+        $arr_site_code = get_auth_site_codes(true);
         $def_site_code = key($arr_site_code);
 
         $method = 'POST';

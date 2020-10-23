@@ -775,8 +775,8 @@
                         <div class="text">
                             [발신번호] {!! html_callback_num_select($arr_send_callback_ccd, $data_sms['SendTel'], 'SendTel', 'SendTel', '', '발신번호', '') !!}
                             &nbsp;&nbsp;&nbsp;
-                            <input class="form-control border-red red" id="content_byte" style="width: 50px;" type="text" readonly="readonly" value="0">
-                            <span class="red">byte</span>
+                            <input type="text" readonly="readonly" class="form-control border-red red" id="content_length" value="0" style="width: 50px;"> <span class="red">글자</span>
+                            <input type="text" readonly="readonly" class="form-control border-red red" id="content_byte" value="0" style="width: 50px;"> <span class="red">byte</span>
                             (55byte 이상일 경우 MMS로 전환됩니다.)
                         </div>
                     </div>
@@ -1044,14 +1044,19 @@
             // 바이트 수
             $('#SmsMemo').on('change keyup input', function() {
                 $('#content_byte').val(fn_chk_byte($(this).val()));
+                $('#content_length').val(fn_chk_text_length($(this).val(), 'space'));
             });
 
             @if(empty($data_sms['Memo']) !== true)
-            $('#content_byte').val(fn_chk_byte($('#SmsMemo').val()));
+                $('#content_byte').val(fn_chk_byte($('#SmsMemo').val()));
+                $('#content_length').val(fn_chk_text_length($('#SmsMemo').val(), 'space'));
             @endif
 
             // ajax submit
             $regi_form.submit(function() {
+                if($('#content_length').val() > 1000 || $('#content_byte').val() > 2000) {
+                    alert('자동문자발송 내용은 공백포함 1000글자, 2000바이트 이내로 전송 가능합니다.'); return;
+                }
 
                 getEditorBodyContent($editor_2);
                 getEditorBodyContent($editor_4);

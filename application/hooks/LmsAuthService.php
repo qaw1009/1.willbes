@@ -142,10 +142,11 @@ class LmsAuthService extends AdminAuthService
                 inner join lms_sys_admin_r_site_campus as ASC2
                     on S.SiteCode = ASC2.SiteCode and (ASC2.CampusCcd = "0" or SC.CampusCcd = ASC2.CampusCcd) and ASC2.IsStatus = "Y"
                 left join lms_sys_code as C 
-                    on ASC2.CampusCcd = C.Ccd and C.GroupCcd = ? and C.IsUse = "Y" and C.IsStatus = "Y"            
+                    on ASC2.CampusCcd = C.Ccd and C.GroupCcd = ? and C.IsUse = "Y" and C.IsStatus = "Y"
+                join lms_site_group SG on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus="Y" and SG.IsUse="Y"            
         ';
         $where = ' where S.IsUse = "Y" and S.IsStatus = "Y" and ASC1.wAdminIdx = ? and ASC2.wAdminIdx = ?';
-        $order_by = ' group by S.SiteCode order by S.SiteCode';
+        $order_by = ' group by S.SiteCode order by SG.SiteGroupCode, S.SiteCode';
 
         // 쿼리 실행
         $query = $this->_db->query('select ' . $column . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);

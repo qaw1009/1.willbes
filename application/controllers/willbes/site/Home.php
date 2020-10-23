@@ -508,9 +508,9 @@ class Home extends \app\controllers\FrontController
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
+            $data['dday'] = $this->_dday();
         }
 
-        //$data['dday'] = $this->_dday();
         $data['arr_main_banner'] = $this->_banner('0');
         $data['notice'] = $this->_boardNotice((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);

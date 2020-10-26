@@ -70,15 +70,15 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
+
         <div class="skybanner">
             <a href="#evt01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_1.png" alt="" >
             </a> 
-            {{--
-            <a href="#evt02"> 
+            <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_sky_2.png" alt="" >
             </a>   
-            --}}            
+                    
         </div>   
 
         <div class="evtCtnsBox evt00">
@@ -86,7 +86,10 @@
         </div>   
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_top.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1872_top.jpg" usemap="#Map1872_go" title="" border="0" />
+            <map name="Map1872_go" id="Map1872_go">
+                <area shape="rect" coords="323,1265,796,1322" href="https://police.willbes.net/pass/professor/show/prof-idx/51136?cate_code=3010&subject_idx=1056&subject_name=%ED%98%95%EB%B2%95&tab=material" target="_blank" />
+            </map>
         </div>
 
         <div class="evtCtnsBox evt_01">

@@ -703,8 +703,7 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3019/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/userPackage/show/cate/3019/prod-code/154935/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3019/code/1281')}}">T-PASS</a> 
+                        <a href="{{front_url('/promotion/index/cate/3019/code/1842')}}">T-PASS</a> 
                     </li>                                
                     <li>
                         <strong>과목</strong>
@@ -744,9 +743,7 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3020/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/userPackage/show/cate/3020/prod-code/154961/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3020/code/1659')}}">7급 PASS</a> 
-                        <a href="{{front_url('/promotion/index/cate/3020/code/1658')}}">외무영사 PASS</a> 
+                        <a href="{{front_url('/promotion/index/cate/3020/code/1878')}}">2차 전문과목 PASS</a> 
                     </li>
                     <li>
                         <strong>과목</strong>
@@ -783,8 +780,7 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3022/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/userPackage/show/cate/3022/prod-code/154935/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3022/code/1281')}}">T-PASS</a> 
+                        <a href="{{front_url('/promotion/index/cate/3019/code/1842')}}">T-PASS</a> 
                     </li>
                     <li>
                         <strong>과목</strong>
@@ -813,7 +809,6 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3035/pack/648001')}}">순환별패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3035/code/1480')}}">법원직 PASS</a>
                     </li>
                     <li>
                         <strong>과목</strong>
@@ -843,8 +838,8 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3023/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3023/code/1081')}}">T-PASS</a>
-                        <a href="{{front_url('/promotion/index/cate/3019/code/1656')}}">소방 PASS</a>
+                        <a href="{{front_url('/promotion/index/cate/3023/code/1724')}}">T-PASS</a>
+                        <a href="{{front_url('/promotion/index/cate/3023/code/1751')}}">소방 PASS</a>
                     </li>
                     <li>
                         <strong>과목</strong>
@@ -935,9 +930,8 @@
                     <li>
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3024/pack/648001')}}">추천패키지</a>
-                        <a href="{{front_url('/userPackage/show/cate/3024/prod-code/155023/lidx/3')}}">DIY패키지</a>
-                        <a href="{{front_url('/promotion/index/cate/3019/code/1655')}}">군무원 PASS</a>
-                    </li>
+                        <a href="{{front_url('/promotion/index/cate/3024/code/1751')}}">군무원 PASS</a>
+                    </li> 
                     <li>
                         <strong>과목</strong>
                         <a href="{{front_url('/lecture/index/cate/3024/pattern/only?search_order=regist&subject_idx=1107')}}">국어</a>

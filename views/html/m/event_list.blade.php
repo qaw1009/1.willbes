@@ -35,6 +35,13 @@
         </div>      
     </div>
 
+    <div class="btnBox mb20">
+        <ul class="f_right">
+            {{--<li class="InfoBtn btn_white"><a href="#none">마감된 이벤트</a></li>--}}
+            <li class="InfoBtn btn_white"><a href="#none">진행중인 이벤트</a></li>
+        </ul>
+    </div>
+
     <div class="lineTabs lecListTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
             <tbody>

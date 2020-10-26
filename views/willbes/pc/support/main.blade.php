@@ -121,7 +121,7 @@
                                                     <td class="w-acad"><span class="oBox allBox NSK">공통</span></td>
                                                     <td class="w-call">1544-4944</td>
                                                     <td class="w-time tx-left pl25">
-                                                        평일 9:00~18:00<br/>
+                                                        평일 9:00~17:00<br/>
                                                         주말/공휴일 휴무
                                                     </td>
                                                 </tr>

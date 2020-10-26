@@ -26,6 +26,16 @@
                 </select>
             @endif
 
+                <ul class="f_right">
+                    <li class="InfoBtn btn_white">
+                        @if($onoff_type == 'ongoing')
+                            <a href="{{ front_url('/event/list/'.(empty($__cfg['CateCode']) === false ? 'cate/'.$__cfg['CateCode'].'/pattern/' : '').'end') }}">마감된 이벤트</a>
+                        @elseif($onoff_type == 'end')
+                            <a href="{{ front_url('/event/list/'.(empty($__cfg['CateCode']) === false ? 'cate/'.$__cfg['CateCode'].'/pattern/' : '').'ongoing') }}">진행중인 이벤트</a>
+                        @endif
+                    </li>
+                </ul>
+
             @if(empty($arr_base['campus']) === false)
                 <select id="s_campus" name="s_campus" title="캠퍼스" class="width50p ml1p" onchange="goUrl('s_campus',this.value)">
                     <option value="">전체 캠퍼스</option>

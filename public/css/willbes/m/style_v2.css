@@ -2287,6 +2287,7 @@ body.memBody #Footer {
 .btnBox ul li {
     margin-right: 5px
 }
+.btnBox ul li:last-child {margin: 0;}
 .AddlecMore {
     clear: both;
 }

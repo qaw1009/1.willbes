@@ -25,9 +25,12 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
+
+        {{--
         <ul class="quick">
             <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1297_q01.jpg" alt="학원문의" ></li>
         </ul>
+        --}}
 
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/07/1297_top.jpg" alt="아침실전모고" />

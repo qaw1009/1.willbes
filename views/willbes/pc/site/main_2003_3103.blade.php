@@ -149,13 +149,13 @@
                 <li>
                     <div>석치수 <strong>자료해석</strong></div>
                     <span class="gif_area">
-                        <a href="javascript:alert('10/26(월) 업데이트 예정!')">
+                        <a href="https://youtu.be/JddTj2Hr8Dk" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_yt05.jpg"> 
                         </a>
                     </span>
                     <div>5급 공채 유사 유형 기출문제분석 특강<br>(Easy Mode)</div>
                     <span class="btn_area">
-                    <a href="javascript:alert('10/26(월) 업데이트 예정!')" class="btn">자세히보기</a>
+                    <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/174213" target="_blank" class="btn">자세히보기</a>
                 </span>
                 </li>
                 <li>

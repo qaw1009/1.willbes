@@ -3,19 +3,19 @@
         <dt class="willbesCenter">
             <ul>
                 <li>
-                    <a href="{{ front_url('/pass/support/faq/index') }}">
+                    <a href="{{ front_url('/pass/support/faq/index?s_faq=628') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon01.png"></span>
                         <div class="nTxt">학원 FAQ</div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/support/faq/index') }}">
+                    <a href="{{ front_url('/support/faq/index?s_faq=626') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon02.png"></span>
                         <div class="nTxt">동영상 FAQ</div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ front_url('/support/faq/index') }}">
+                    <a href="{{ front_url('/support/faq/index?s_faq=627') }}">
                         <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon03.png"></span>
                         <div class="nTxt">모바일 FAQ</div>
                     </a>

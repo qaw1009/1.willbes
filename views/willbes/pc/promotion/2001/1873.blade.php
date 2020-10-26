@@ -5,10 +5,6 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -32,7 +28,7 @@
         
         .evt01 {background:#fff}
         .youtube {position:absolute; top:235px; left:50%;z-index:1;margin-left:-492px}
-        .youtube iframe {width:980px; height:550px}}
+        .youtube iframe {width:980px; height:550px}
 
         .evt02 {background:#f4f4f4}
 
@@ -72,8 +68,8 @@
             <a href="#evt01"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_sky_1.png" alt="" >
             </a> 
-            <a href="#evt02"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_sky_2.png" alt="" >
+            <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_sky_3.png" alt="" >
             </a>               
         </div>   
 
@@ -82,7 +78,10 @@
         </div>   
 
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_top.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_top_01.jpg" usemap="#Map1873_02" title="" border="0" />
+            <map name="Map1873_02">
+              <area shape="rect" coords="313,1264,800,1339" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51135?subject_idx=1003&subject_name=형법&tab=material" target="_blank" alt="학습자료실">
+            </map>
         </div>
 
         <div class="evtCtnsBox evt_01">
@@ -145,10 +144,12 @@
         </div>
 
         <div class="evtCtnsBox evt_06" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_06.jpg" usemap="#Map1872b" title="" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1873_06_01.jpg" usemap="#Map1872b" title="" border="0" />
+            {{--
             <map name="Map1872b" id="Map1872b">
                 <area shape="rect" coords="357,1209,734,1258" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="신광은 형법 심화이론 이미지 다운받기" />
             </map>
+            --}}
         </div>
 
         {{--홍보url--}}

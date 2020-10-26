@@ -131,7 +131,7 @@
                 </li>                    
             </ul>
 
-            <h4 class="NSK-Black">SNS <span>인풀루언서</span></h4>
+            <h4 class="NSK-Black">SNS <span>인플루언서</span></h4>
             <ul>
                 <li>
                     <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_03_05.jpg" alt="이시한" >
@@ -199,6 +199,23 @@
                             @php $i = 1; @endphp
                             @foreach($arr_base['promotion_otherinfo_data'] as $row)
                                 @if($row['ProfIdx'] == '51060') {{-- 양원근 --}}
+                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
+                                    @php $i += 1; @endphp
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
+                </li>                   
+            </ul>
+            <h4 class="NSK-Black">지식창업 <span>(리더십)</span></h4>
+            <ul>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_03_10.jpg" alt="김윤태" >
+                    <div class="viewBtns">
+                        @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                            @php $i = 1; @endphp
+                            @foreach($arr_base['promotion_otherinfo_data'] as $row)
+                                @if($row['ProfIdx'] == '51060') {{-- 김윤태 --}}
                                     <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
                                     @php $i += 1; @endphp
                                 @endif

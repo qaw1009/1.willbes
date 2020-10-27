@@ -3,8 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-     
+    <style type="text/css">  
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -137,9 +136,9 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1675_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                                  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_october.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1675_02_november.jpg" /></li>
+                <ul id="slidesImg4">                    
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1675_02_november.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1675_02_december.jpg" /></li>
                 </ul>
                
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/03/1588_02_left.png"></a></p>
@@ -150,21 +149,21 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1675_03.jpg" usemap="#evt1Map" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="evt1Map" id="evt1Map">
-                <area shape="rect" coords="362,952,757,1018" href="#to_go" />
+                <area shape="rect" coords="360,962,755,1028" href="#to_go" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
             <map name="evt3Map" id="evt3Map">
                 <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/172387" target="_blank" onfocus='this.blur()'  />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1675_03ss2.gif" usemap="#evt4Map" id="evt4" title="새벽모의고사 티패스할인" border="0">
             <map name="evt4Map" id="evt4Map">
                 <area shape="rect" coords="641,271,920,386" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank" />
             </map>

@@ -74,7 +74,10 @@
                 <h4 class="NSK-Black">이커머스 <span>(온라인창업)</span></h4>
                 <ul>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_01.jpg" alt="김정환" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_01.jpg" alt="김정환" usemap="#Map1626_03_01" border="0" >
+                        <map name="Map1626_03_01" id="Map1626_03_01">
+                            <area shape="rect" coords="0,337,211,392" href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -88,7 +91,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_02.jpg" alt="김경은" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_02.jpg" alt="김경은" usemap="#Map1626_03_02" border="0" >
+                        <map name="Map1626_03_02" id="Map1626_03_02">
+                            <area shape="rect" coords="0,338,241,423" href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -102,7 +108,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_03.jpg" alt="황채영" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_03.jpg" alt="황채영" usemap="#Map1626_03_03" border="0" >
+                        <map name="Map1626_03_03" id="Map1626_03_03">
+                            <area shape="rect" coords="2,338,247,403" href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -116,7 +125,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_04.jpg" alt="정문진" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_04.jpg" alt="정문진" usemap="#Map1626_03_04" border="0" >
+                        <map name="Map1626_03_04" id="Map1626_03_04">
+                            <area shape="rect" coords="1,339,203,416" href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -133,7 +145,10 @@
                 <h4 class="NSK-Black">SNS <span>인플루언서</span></h4>
                 <ul>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_05.jpg" alt="이시한" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_05.jpg" alt="이시한" usemap="#Map1626_03_05" border="0" >
+                        <map name="Map1626_03_05" id="Map1626_03_05">
+                            <area shape="rect" coords="4,339,230,406" href="https://njob.willbes.net/promotion/index/cate/3114/code/1710" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -147,7 +162,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_06.jpg" alt="이승기" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_06.jpg" alt="이승기" usemap="#Map1626_03_06" border="0" >
+                        <map name="Map1626_03_06" id="Map1626_03_06">
+                            <area shape="rect" coords="2,338,268,421" href="https://njob.willbes.net/promotion/index/cate/3114/code/1711" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -161,7 +179,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_07.jpg" alt="안혜빈" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_07.jpg" alt="안혜빈" usemap="#Map1626_03_07" border="0" >
+                        <map name="Map1626_03_07" id="Map1626_03_07">
+                            <area shape="rect" coords="-1,339,240,418" href="https://njob.willbes.net/promotion/index/cate/3114/code/1712" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -175,7 +196,10 @@
                         </div>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_08.jpg" alt="이기용" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_08.jpg" alt="이기용" usemap="#Map1626_03_08" border="0" >
+                        <map name="Map1626_03_08" id="Map1626_03_08">
+                            <area shape="rect" coords="0,336,293,475" href="https://njob.willbes.net/promotion/index/cate/3114/code/1713" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -189,10 +213,13 @@
                         </div>
                     </li>                    
                 </ul>
-                <h4 class="NSK-Black">지식창업 <span>(책쓰기)</span></h4>
+                <h4 class="NSK-Black">지식창업</h4>
                 <ul>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_09.jpg" alt="양원근" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_09.jpg" alt="양원근" usemap="#Map1626_03_09" border="0" >
+                        <map name="Map1626_03_09" id="Map1626_03_09">
+                            <area shape="rect" coords="2,339,344,457" href="https://njob.willbes.net/promotion/index/cate/3114/code/1755" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -204,12 +231,12 @@
                                 @endforeach
                             @endif
                         </div>
-                    </li>                   
-                </ul>
-                <h4 class="NSK-Black">지식창업 <span>(리더십)</span></h4>
-                <ul>
+                    </li>      
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_10.jpg" alt="김윤태" >
+                        <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_10.jpg" alt="김윤태" usemap="#Map1626_03_10" border="0" >
+                        <map name="Map1626_03_10" id="Map1626_03_10">
+                            <area shape="rect" coords="-1,336,246,450" href="https://njob.willbes.net/promotion/index/cate/3114/code/1849" target="_blank" />
+                        </map>
                         <div class="viewBtns">
                             @if(empty($arr_base['promotion_otherinfo_data']) === false)
                                 @php $i = 1; @endphp
@@ -221,8 +248,8 @@
                                 @endforeach
                             @endif
                         </div>
-                    </li>                   
-                </ul>
+                    </li>                       
+                </ul>       
             </div>
         </div>
 

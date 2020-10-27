@@ -5,10 +5,6 @@
    
 	<!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -169,7 +165,7 @@
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">공채 3개월</label></li>
                 <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">특채 3개월</label></li>                
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1614_04.jpg" alt="수강신청"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1614_04.jpg" alt="수강신청"/>
             
             <div class="check_bg">
                 <div class="check" id="chkInfo">

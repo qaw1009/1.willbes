@@ -4,13 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">     
-        .evtContent {
-            width:100% !important;
-            min-width:1120px !important;
-            background:#fff;
-            margin-top:20px !important;
-            padding:0 !important;
-        }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
@@ -151,9 +144,9 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_october.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/07/1676_02_november.jpg" /></li>
+                <ul id="slidesImg4">        
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1676_02_november.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1676_02_december.jpg" /></li>
                 </ul>
          
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
@@ -164,14 +157,14 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
             <map name="Map1676b">
                 <area shape="rect" coords="368,974,749,1034" href="#to_go" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
             <map name="Map1676ss" id="Map1676ss">
                 <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/172386" target="_blank" alt="9~10월 방송" />
                 <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="1년치 방송" />
@@ -279,8 +272,8 @@
 					</li>   
                     <li>                    
                         <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며, 8월 17일(월)부터 9월 11일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
-						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE 8/24(월), 9/7(월)의 경우 <br>
+						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며,11월 2일(월)부터 11월 27일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE 11/9(월), 11/23(월)의 경우 <br>
 						&nbsp;&nbsp;&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
 						&nbsp;- 당첨자 안내 공지는 9월 15일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>

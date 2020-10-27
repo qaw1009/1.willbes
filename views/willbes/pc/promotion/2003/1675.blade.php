@@ -158,7 +158,7 @@
         <div class="evtCtnsBox evt03ss">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1675_03ss.gif" usemap="#evt3Map" id="evt3" title="다시보기 서비스" border="0">
             <map name="evt3Map" id="evt3Map">
-                <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/172387" target="_blank" onfocus='this.blur()'  />
+                <area shape="rect" coords="764,449,924,597" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173681" target="_blank" onfocus='this.blur()'  />
             </map>
         </div>
 

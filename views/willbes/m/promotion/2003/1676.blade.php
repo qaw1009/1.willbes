@@ -169,13 +169,13 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_02.jpg" alt="" >
-        <p>10.25(일)이 지나면 한정특가가 마감됩니다!</p>
+        <p>11.30(월)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/172387" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/173676" target="_blank">
                     <span>반반모고</span>
-                    <span>9~10월 방송<br>다시보기</span>
-                    <span><strong>2</strong>만원</span>
+                    <span>11월 방송<br>다시보기</span>
+                    <span><strong>3</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
             </li>
@@ -183,7 +183,7 @@
                 <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank">
                     <span>반반모고</span>
                     <span>1년 방송분<br>다시보기</span>
-                    <span><strong>17</strong>만원</span>
+                    <span><strong>21</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
             </li>
@@ -208,7 +208,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank">
-                    <span>9/21(월)~9/25(금) <br>오후 6시</span>
+                    <span>11/2(월)~11/6(금) <br>오후 6시</span>
                     온라인모의고사<br>접수하기 >
                 </a>
             </li>
@@ -296,8 +296,8 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 8월 17일(월)부터 9월 11일(금)까지 총 20회 진행됩니다.<span>* 공휴일 제외</span></li>
-                <li>출석 체크 가능 시간은 정규방송 오후 9~10시 사이, 모의고사 해설 LIVE 8/24(월), 9/7(월)의 경우 의 경우 오후 7~8시며
+                <li>본 이벤트는 로그인 후 참여 가능하며, 11월 2일(월)부터 11월 27일(금)까지 총 20회 진행됩니다.<span>* 공휴일 제외</span></li>
+                <li>출석 체크 가능 시간은 정규방송 오후 9~10시 사이, 모의고사 해설 LIVE 11/9(월), 11/23(월)의 경우 오후 7~8시며
                     방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.
                 </li>
             </ul>

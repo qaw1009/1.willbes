@@ -227,7 +227,7 @@
                 <li>    
                     <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1849" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_03_10.jpg" alt="김윤태"  border="0" >
-                    </a>
+                    </a> 
                     <div class="viewBtns">
                         @if(empty($arr_base['promotion_otherinfo_data']) === false)
                             @php $i = 1; @endphp

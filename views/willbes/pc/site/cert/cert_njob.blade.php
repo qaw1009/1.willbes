@@ -60,8 +60,10 @@
                             <td><input id="memphone" name="memphone" type="text" value="{{sess_data('mem_phone')}}" readonly></td>
                         </tr>
                         <tr>
-                            <td colspan="3">* 전화번호를 꼭 확인해 주세요. 인증완료시 SMS로 발송될 예정입니다.</td>
-                        
+                            <td colspan="3">
+                                * 전화번호를 꼭 확인해 주세요. 인증완료시 SMS로 발송될 예정입니다.<br>         
+                                * 인증 승인은 매주 월~금 9시~17시에 이루어지며, 주말 및 공휴일의 경우 진행되지 않습니다. 
+                            </td>
                         </tr>
                         </tbody>
                     </table>

@@ -229,15 +229,17 @@
                         <img src="https://static.willbes.net/public/images/promotion/2020/07/1626m_03_10.jpg" alt="김윤태"  border="0" >
                     </a> 
                     <div class="viewBtns">
-                        @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                            @php $i = 1; @endphp
-                            @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                                @if($row['ProfIdx'] == '51060') {{-- 김윤태 --}}
-                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>
-                                    @php $i += 1; @endphp
-                                @endif
-                            @endforeach
-                        @endif
+{{--                        @if(empty($arr_base['promotion_otherinfo_data']) === false)--}}
+{{--                            @php $i = 1; @endphp--}}
+{{--                            @foreach($arr_base['promotion_otherinfo_data'] as $row)--}}
+{{--                                @if($row['ProfIdx'] == '51060') --}}{{-- 김윤태 --}}
+{{--                                    <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row['OtherData1']}}&u={{$row['wUnitIdx']}}&q=HD', '{{config_item('starplayer_license')}}');">{{$i}}강</a>--}}
+{{--                                    @php $i += 1; @endphp--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
+                        <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=172916&u=1250508&q=HD', '{{config_item('starplayer_license')}}');">4강</a>
+                        <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=169849&u=1243207&q=HD', '{{config_item('starplayer_license')}}');">1강</a>
                     </div>
                 </li>                    
             </ul> 

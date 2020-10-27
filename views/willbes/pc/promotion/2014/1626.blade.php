@@ -228,15 +228,17 @@
                             <img src="https://static.willbes.net/public/images/promotion/2020/07/1626_03_10.jpg" alt="김윤태" border="0" >
                         </a>
                         <div class="viewBtns">
-                            @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                                @php $i = 1; @endphp
-                                @foreach($arr_base['promotion_otherinfo_data'] as $row)
-                                    @if($row['ProfIdx'] == '51060') {{-- 김윤태 --}}
-                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>
-                                        @php $i += 1; @endphp
-                                    @endif
-                                @endforeach
-                            @endif
+{{--                            @if(empty($arr_base['promotion_otherinfo_data']) === false)--}}
+{{--                                @php $i = 1; @endphp--}}
+{{--                                @foreach($arr_base['promotion_otherinfo_data'] as $row)--}}
+{{--                                    @if($row['ProfIdx'] == '51060') --}}{{-- 김윤태 --}}
+{{--                                        <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">{{$i}}강</a>--}}
+{{--                                        @php $i += 1; @endphp--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                            @endif--}}
+                            <a href="javascript:fnPlayerSample('172916','1250508','HD');">4강</a>
+                            <a href="javascript:fnPlayerSample('169849','1243207','HD');">1강</a>
                         </div>
                     </li>                       
                 </ul>       

@@ -239,7 +239,7 @@
 {{--                            @endforeach--}}
 {{--                        @endif--}}
                         <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=172916&u=1250508&q=HD', '{{config_item('starplayer_license')}}');">4강</a>
-                        <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=169849&u=1243207&q=HD', '{{config_item('starplayer_license')}}');">1강</a>
+                        <a href="javascript:fnMobile('https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p=172916&u=1250507&q=HD', '{{config_item('starplayer_license')}}');">1강</a>
                     </div>
                 </li>                    
             </ul> 

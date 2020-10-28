@@ -327,10 +327,10 @@ class CertApplyModel extends WB_Model
                             }
                         } else {
                             // 알림톡 템플릿 없을 경우 SMS발송
-                            if(empty($idx['SmsContent'] == false)) {
+                            if(empty($idx['CsTel']) === false && empty($idx['Phone']) === false) {
                                 $smsData = [];
                                 $smsData['CsTel'] = $idx['CsTel'];
-                                $smsData['SmsContent'] = $idx['SmsContent'];
+                                $smsData['SmsContent'] = empty($idx['SmsContent']) === false ? $idx['SmsContent'] : '인증이 완료되었습니다.';
                                 $smsData['Phone'] = $idx['Phone'];
                                 $is_sms = $this->addSms($smsData);
                                 if ($is_sms !== true) {
@@ -441,17 +441,15 @@ class CertApplyModel extends WB_Model
      * @param array $data
      * @return bool|string
      */
-//    public function addSms($data=[])
-//    {
-//        try {
-//
-//            if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
-//                throw new \Exception('SMS 발송에 실패했습니다.');
-//            }
-//
-//        } catch (Exception $e) {
-//            return $e->getMessage();
-//        }
-//        return true;
-//    }
+    public function addSms($data=[])
+    {
+        try {
+            if($this->smsModel->addKakaoMsg($data['Phone'], $data['SmsContent'], $data['CsTel'], null, 'KFT') === false) {
+                throw new \Exception('SMS 발송에 실패했습니다.');
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+        return true;
+    }
 }

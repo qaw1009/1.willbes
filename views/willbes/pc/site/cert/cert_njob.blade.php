@@ -67,7 +67,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <h4 class="mt40">학습이력</h4>
+                    <h4 class="mt40">인증파일 등록</h4>
                     <ul class="attach">
                         {{--
                         <li>

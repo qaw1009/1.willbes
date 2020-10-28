@@ -61,7 +61,7 @@ class Caching_search_word_auto extends CI_Driver
                 'sl.SearchWord !=' => '\' \''
                 ,'date_format(sl.RegDatm,\'%Y-%m-%d\') between ' => 'date_format(date_add(now(),interval -1 year),\'%Y-%m-%d\') and date_format(now(),\'%Y-%m-%d\')'
                 ,'sl.SearchWord NOT IN ' => '(select ExceptWord from lms_search_word_auto_except where SiteCode=\''.(empty($skey) ? null : ($skey == '2000' ? null : $skey)).'\' and ExceptType=\'E\' and IsStatus=\'Y\')'
-                ,'sl.SearchWord NOT REGEXP ' => 'Concat(\'\',IFNULL((select GROUP_CONCAT(ExceptWord separator \'|\') as ExceptWord from lms_search_word_auto_except where SiteCode=\'2001\' and ExceptType=\'L\' and IsStatus=\'Y\'),\'!!@@##$$^^\'),\'\')'
+                ,'sl.SearchWord NOT REGEXP ' => 'Concat(\'\',IFNULL((select GROUP_CONCAT(ExceptWord separator \'|\') as ExceptWord from lms_search_word_auto_except where SiteCode=\''.(empty($skey) ? null : ($skey == '2000' ? null : $skey)).'\' and ExceptType=\'L\' and IsStatus=\'Y\'),\'!!@@##$$^^\'),\'\')'
             ],
         ];
 

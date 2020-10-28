@@ -238,7 +238,7 @@
 {{--                                @endforeach--}}
 {{--                            @endif--}}
                             <a href="javascript:fnPlayerSample('172916','1250508','HD');">4강</a>
-                            <a href="javascript:fnPlayerSample('172916','1250507','HD');">1강</a>
+                            <a href="javascript:fnPlayerSample('174092','1251024','HD');">1강</a>
                         </div>
                     </li>                       
                 </ul>       

@@ -15,28 +15,41 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/10/1893_top_bg.jpg) no-repeat center top;}
+        .skybanner {position:fixed; top:225px; width:170px; right:10px;z-index:1;}
+        .skybanner a {display:block; margin-bottom:10px}
 
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/10/1893_top_bg.jpg) no-repeat center top;}
         .wb_01 {background:#dad8a7}
         .wb_03 {background:#030130}
 
     </style> 
 
     <div class="evtContent NGR" id="evtContainer">
+        <div class="skybanner">
+            <a href="#evt01"><img src="https://static.willbes.net/public/images/promotion/2020/10/1893_sky.png" alt="한능검&지텔프"/></a>
+            <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/10/1893_sky2.png" alt="한능검&지텔프"/></a>
+        </div>
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_top.jpg" alt="개정과목시험"/>            
         </div>
 
-        <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_01.jpg" alt="한능검,지텔프"/>   
-       
+        <div class="evtCtnsBox wb_01" id="evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_01.jpg" alt="한능검,지텔프"/>          
         </div>
 
-        <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_02.jpg" alt="소문내기 이벤트" usemap="#Map1893_01" border="0"/>
+        <div class="evtCtnsBox wb_02" id="evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_02.jpg" alt="소문내기 이벤트" usemap="#Map1893_01" border="0"/><br>
             <map name="Map1893_01">
                 <area shape="rect" coords="405,1200,742,1265" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운받기">
-            </map>            
+            </map>    
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_sns.jpg" alt="소문내기" usemap="#Mapsns" border="0"/>
+            <map name="Mapsns">
+                <area shape="rect" coords="99,37,260,133" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모">
+                <area shape="rect" coords="276,44,448,132" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사">
+                <area shape="rect" coords="469,45,636,134" href="https://cafe.naver.com/kts9719" target="_blank" alt="닥공사">
+                <area shape="rect" coords="662,43,828,137" href="https://cafe.naver.com/dokchi" target="_blank" alt="독취사">
+                <area shape="rect" coords="852,45,1018,136" href="https://cafe.naver.com/specup" target="_blank" alt="스펙업">
+            </map>        
         </div> 
 
         {{--홍보url--}}

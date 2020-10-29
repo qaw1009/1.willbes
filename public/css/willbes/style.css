@@ -1854,11 +1854,11 @@ table.auTable tr td {
     overflow: hidden;
 }
 .QuickSlider .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/cop/btn_quick_prev.png") no-repeat 0 0;
     left: 0;
 }
 .QuickSlider .bx-wrapper .bx-next {
-    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
+    background: url("../../img/willbes/cop/btn_quick_next.png") no-repeat 0 0;
     right: 0;
     left: auto;
 }

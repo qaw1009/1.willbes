@@ -6,11 +6,9 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtCtnsBox ul:after {content:""; display:block; clear:both}
-    li {list-style:none;}
+    .evtCtnsBox li {list-style:none;}
 
     .evtTop {position:relative}
-
-    .evtMenu {background:#f3f3f3; width:100%; border-bottom:1px solid #edeff0; border-top:1px solid #edeff0}
 
     .evt01 {}
 
@@ -116,52 +114,16 @@
 <!-- End Container -->
 
 <script type="text/javascript">
-    /*스크롤고정*/
-    $(function() {
-        var nav = $('.evtMenu');
-        var navTop = nav.offset().top+100;
-        var navHeight = nav.height()+10;
-        var showFlag = false;
-        nav.css('top', -navHeight+'px');
-        $(window).scroll(function () {
-            var winTop = $(this).scrollTop();
-            if (winTop >= navTop) {
-                if (showFlag == false) {
-                    showFlag = true;
-                    nav
-                        .addClass('fixed')
-                        .stop().animate({'top' : '0px'}, 100);
-                }
-            } else if (winTop <= navTop) {
-                if (showFlag) {
-                    showFlag = false;
-                    nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                        nav.removeClass('fixed');
-                    });
-                }
-            }
-        });
-    });
-
-    $(window).on('scroll', function() {
-        $('.top-tab').each(function() {
-            if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
-                $('.top-tab').removeClass('active')
-                $(this).addClass('active');
-            }
-        });
-    });
-
     /*수강신청 동의*/ 
-        function go_PassLecture(code){
-                if($("input[name='ischk']:checked").size() < 1){
-                    alert("이용안내에 동의하셔야 합니다.");
-                    return;
-                }
+    function go_PassLecture(code){
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
+            return;
+        }
 
-                var url = '{{ site_url('/m/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
-                location.href = url;
-        }    
+        var url = '{{ site_url('/m/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
+        location.href = url;
+    }    
 </script>
 
 @stop

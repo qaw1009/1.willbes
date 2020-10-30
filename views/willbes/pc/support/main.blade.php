@@ -202,11 +202,11 @@
                                         </div>
                                     </form>
                                 </div>
-                                <ul class="tabWrap tabcsDepth2 bg-light-gray NSK p_re">
-                                    @foreach($faq_ccd as $row)
-                                        <li><a class="qBox" href="#question{{$row['Ccd']}}">{{$row['CcdName']}}</a></li>
-                                    @endforeach
-                                </ul>
+{{--                                <ul class="tabWrap tabcsDepth2 bg-light-gray NSK p_re">--}}
+{{--                                    @foreach($faq_ccd as $row)--}}
+{{--                                        <li><a class="qBox" href="#question{{$row['Ccd']}}">{{$row['CcdName']}}</a></li>--}}
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
                                 <div class="tabBox">
                                     @foreach($faq_ccd as $row)
                                     <div id="question{{$row['Ccd']}}" class="tabContent">

@@ -40,7 +40,8 @@
         <div class="evtCtnsBox wb_02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_02.jpg" alt="소문내기 이벤트" usemap="#Map1893_01" border="0"/><br>
             <map name="Map1893_01">
-                <area shape="rect" coords="405,1200,742,1265" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운받기">
+                <area shape="rect" coords="401,820,746,886" href="#none" alt="무료쿠폰받기">
+                <area shape="rect" coords="404,1200,741,1265" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운받기">
             </map>    
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_sns.jpg" alt="소문내기" usemap="#Mapsns" border="0"/>
             <map name="Mapsns">

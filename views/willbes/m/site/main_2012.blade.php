@@ -161,7 +161,7 @@
     <div class="csCenterBook">
         <ul class="tel">
             <li>
-                <div class="nTit">도서 문의 : <span class="tx-main">1544-4944</span></div>
+                <div class="nTit">도서 문의 : <span class="tx-main">070-4006-7020</span></div>
                 <div class="nTxt">
                     [운영시간] 평일: 09시~ 17시 (점심시간 12시~13시)<br/>
                     주말/공휴일휴무

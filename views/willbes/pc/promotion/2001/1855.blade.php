@@ -94,7 +94,7 @@
       
         <div class="evtCtnsBox wb_cts01" id="wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2019/05/1024_top.jpg" alt="장정훈 경찰학" />
-            <span><iframe src="https://www.youtube.com/embed/xw_BTo5soJI" frameborder="0" allowfullscreen></iframe></span>
+            <span><iframe src="https://www.youtube.com/embed/HzPBkz4bptA?rel=0" frameborder="0" allowfullscreen></iframe></span>
         </div>       
 
         <div class="evtCtnsBox wb_cts02" id="wb_cts02">

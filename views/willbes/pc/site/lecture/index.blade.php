@@ -184,8 +184,8 @@
                                     <td class="tx-left">공유 방지를 위해 전체강의시간/개별강의시간의 2배까지 수강이 가능한 강좌</td>
                                 </tr>
                                 <tr>
-                                    <th><div class="OTclass"><span>직장인/재학생반</span></div></th>
-                                    <td class="tx-left">직장인(재학생) 대상으로 정해진 시간에만 수강가능한 강좌</td>
+                                    <th><div class="OTclass"><span>직장인</span></div></th>
+                                    <td class="tx-left">직장인 대상으로 정해진 시간에만 수강가능한 강좌</td>
                                 </tr>
                                 <tr>
                                     <th><img src="{{ img_url('sub/icon_detail.gif') }}"></th>
@@ -271,7 +271,7 @@
                                     <td class="w-data tx-left pl25">
                                         @if($row['LecTypeCcd'] === '607003')
                                             <div class="OTclass">
-                                                <span>직장인/재학생반</span> <a href="#none"  class="lec_type_info">?</a>
+                                                <span>직장인</span> <a href="#none" class="lec_type_info">유의사항</a>
                                             </div>
                                         @endif
                                         <div class="w-tit">

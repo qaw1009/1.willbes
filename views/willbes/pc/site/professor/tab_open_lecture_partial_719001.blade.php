@@ -80,7 +80,7 @@
                     <td class="w-data tx-left pl25">
                         @if($row['LecTypeCcd'] === '607003')
                             <div class="OTclass">
-                                <span>직장인</span> <a href="#none"  class="lec_type_info">유의사항</a>
+                                <span>직장인반</span> <a href="#none"  class="lec_type_info">유의사항</a>
                             </div>
                         @endif
                         <div class="w-tit">

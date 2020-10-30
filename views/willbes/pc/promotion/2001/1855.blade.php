@@ -82,14 +82,14 @@
                 <li><a href="#evtContainer">TOP ▲</a></li>
             </ul>
         </div>
-        --}}
+        
         <div class="skybanner" >
             <a href="https://police.willbes.net/support/notice/show?board_idx=238714&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1404_sb1.png" alt="경찰학 베너"></a>            
         </div>
         <div class="skybanner2" >
             <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=239117&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/09/1404_sb2.png" alt="행정학 베너" ></a>
         </div>
-
+        --}}
 
       
         <div class="evtCtnsBox wb_cts01" id="wb_cts01">

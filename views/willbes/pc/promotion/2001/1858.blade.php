@@ -21,9 +21,9 @@
 
         /************************************************************/
 
-        .wb_top {background:#141414 url(https://static.willbes.net/public/images/promotion/2020/10/1898_top_bg.jpg) no-repeat center top;}
-        .wb_cts01 {background:#C8C6C9 url(https://static.willbes.net/public/images/promotion/2020/10/1898_01_bg.jpg) no-repeat center top;}
-        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/10/1898_02_bg.jpg) no-repeat center top; padding-bottom:100px}
+        .wb_top {background:#141414 url(https://static.willbes.net/public/images/promotion/2020/10/1858_top_bg.jpg) no-repeat center top;}
+        .wb_cts01 {background:#C8C6C9 url(https://static.willbes.net/public/images/promotion/2020/10/1858_01_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/10/1858_02_bg.jpg) no-repeat center top; padding-bottom:100px}
         .wb_cts03 {background:#86AF77 url(https://static.willbes.net/public/images/promotion/2020/10/1898_03_bg.jpg) no-repeat center top; padding:317px 0 100px}
         .wb_cts04 {background:#ecebeb;padding-bottom:100px}
         .wb_cts05 {}
@@ -46,15 +46,15 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top"  id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1898_top.jpg"  alt="적중 " />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1858_top.jpg"  alt="적중 " />
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1898_01.jpg"  alt="한국사정복 " />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1858_01.jpg"  alt="한국사정복 " />
         </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1898_02.jpg"  alt="고득점 전략가" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1858_02.jpg"  alt="고득점 전략가" />
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/04/1552_03_01.jpg" alt="" /></li>

@@ -332,6 +332,9 @@ body#widthFrame {
 ol, ul {
 	list-style: none;
 }
+ol:after,
+ul:after {content:""; display:block:""; clear:both}
+
 blockquote, q {
 	quotes: none;
 }

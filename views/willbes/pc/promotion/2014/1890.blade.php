@@ -18,6 +18,9 @@
 
         /************************************************************/
 
+        .skybanner {position:fixed; top:250px; right:0; width:248px; z-index:1;}
+        .skybanner a { display:block; padding-bottom:10px;}
+
         .evtTop {background:#FEDB4D url(https://static.willbes.net/public/images/promotion/2020/10/1890_top_bg.jpg) no-repeat center top}
 
         .evt01 {background:#29304A;position:relative;}
@@ -33,6 +36,9 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        <div class="skybanner">
+            <a href="#certification"><img src="https://static.willbes.net/public/images/promotion/2020/10/1890_sky.png" /></a>
+        </div>
 
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1890_top.jpg" alt="혜택 받기" usemap="#Map1890a" border="0" >

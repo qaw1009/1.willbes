@@ -298,7 +298,7 @@
                             <ul>
                                 <li>
                                     <div class="nTit">도서 문의</div>
-                                    <div class="nNumber tx-color">1544-4944</div>
+                                    <div class="nNumber tx-color">070-4006-7020</div>
                                     <div class="nTxt">
                                         [운영시간]<br/>
                                         평일: 09시~ 17시 (점심시간12시~13시) | 주말/공휴일휴무
@@ -333,10 +333,8 @@
                                         <div class="nTxt">저자모집</div>
                                     </a>
                                 </li>
-
                             </ul>
                         </dt>
-
                     </dl>
                 </div>
             </div>

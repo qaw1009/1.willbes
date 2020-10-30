@@ -25,7 +25,7 @@
                     <div class="lec-profile p_re">
                         <div class="w-tit">
                             @if($lec['LecTypeCcd'] == '607003')
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                <div class="OTclass mr10"><span>직장인</span></div>
                             @endif
                             {{$lec['subProdName']}}
                         </div>
@@ -188,7 +188,7 @@
                                 @endif
                                 <td class="w-free mypage">
                                     @if($lec['canWeekView'] == false)
-                                        <div class="tBox NSK t1 black"><a>직장인반</a></div>
+                                        <div class="tBox NSK t1 black"><a>직장인</a></div>
                                     @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                         <div class="tBox NSK t1 black"><a>수강불가</a></div>
                                     @else

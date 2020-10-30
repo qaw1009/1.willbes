@@ -22,7 +22,12 @@
         .wb_01 {background:#dad8a7}
         .wb_03 {background:#030130}
 
-    </style> 
+    </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NGR" id="evtContainer">
         <div class="skybanner">
@@ -40,7 +45,7 @@
         <div class="evtCtnsBox wb_02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_02.jpg" alt="소문내기 이벤트" usemap="#Map1893_01" border="0"/><br>
             <map name="Map1893_01">
-                <area shape="rect" coords="401,820,746,886" href="#none" alt="무료쿠폰받기">
+                <area shape="rect" coords="401,820,746,886" href="#none" onclick="giveCheck()" alt="무료쿠폰받기">
                 <area shape="rect" coords="404,1200,741,1265" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운받기">
             </map>    
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1893_sns.jpg" alt="소문내기" usemap="#Mapsns" border="0"/>
@@ -70,4 +75,30 @@
         </div>  
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            @if(empty($arr_promotion_params) === false)
+
+            //다건 쿠폰 중복 발급 체크
+            //arr_give_idx_chk: 콤마(,)를 붙여서 생성
+            var arr_give_idx_chk = '';
+            @if(empty($arr_promotion_params['give_type']) === false && $arr_promotion_params['give_type'] == 'coupons')
+                arr_give_idx_chk = '&arr_give_idx_chk={{$arr_promotion_params['give_idx1']}},{{$arr_promotion_params['give_idx2']}}';
+            @endif
+
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}'+arr_give_idx_chk;
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+            @endif
+        }
+    </script>
 @stop

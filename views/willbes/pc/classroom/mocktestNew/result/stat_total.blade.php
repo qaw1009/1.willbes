@@ -66,8 +66,8 @@
                         <tbody>
                         <tr>
                             <td>총점</td>
-                            <td>{{ $gradeInfo['SumOrgPoint'] }}</td>
-                            <td>{{ $gradeInfo['SumAdjustPoint'] }}</td>
+                            <td>{{ round($gradeInfo['SumOrgPoint'], 1) }}</td>
+                            <td>{{ round($gradeInfo['SumAdjustPoint'], 1) }}</td>
                         </tr>
                         <tr>
                             <td>평균</td>

@@ -25,7 +25,7 @@
                     <div class="lec-profile p_re">
                         <div class="w-tit">
                             @if($lec['LecTypeCcd'] == '607003')
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                <div class="OTclass mr10"><span>직장인반</span></div>
                             @endif
                             {{$lec['subProdName']}}
                         </div>

@@ -96,7 +96,7 @@
                                                     </dt>
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
-                                                    <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                    <div class="OTclass mr10"><span>직장인반</span></div>
                                                 @endif
                                                 @if($row['LearnPatternCcd'] == '615002')
                                                     <div class="w-tit pkg-tit">
@@ -174,7 +174,7 @@
                                                         </dt>
                                                     </dl><br/>
                                                     @if($subrow['LecTypeCcd'] == '607003')
-                                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                        <div class="OTclass mr10"><span>직장인반</span></div>
                                                     @endif
                                                     <div class="w-tit">
                                                         <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>

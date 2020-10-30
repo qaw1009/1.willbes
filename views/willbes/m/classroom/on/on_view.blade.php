@@ -29,7 +29,7 @@
                         </div>
                         <div class="w-data tx-left pl15">
                             @if($lec['LecTypeCcd'] == '607003')
-                                <div class="OTclass mr10"><span>직장인</span></div>
+                                <div class="OTclass mr10"><span>직장인반</span></div>
                             @endif
                             <dl class="w-info">
                                 <dt>{{$lec['SubjectName']}}<span class="row-line">|</span>{{$lec['CourseName']}}<span class="row-line">|</span>{{$lec['wProfName']}}교수님</dt>
@@ -112,7 +112,7 @@
                                             </dl>
                                             <ul class="w-free NGEB">
                                                 @if($lec['canWeekView'] == false)
-                                                    <li class="btn_black_line"><a>직장인</a></li>
+                                                    <li class="btn_black_line"><a>직장인반</a></li>
                                                 @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
                                                     <li class="btn_black_line"><a>수강불가</a></li>
                                                 @else

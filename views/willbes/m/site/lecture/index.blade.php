@@ -141,7 +141,7 @@
                                             @foreach($data['list'][$subject_idx][$prof_idx] as $idx => $row)
                                                 <div class="oneBox">
                                                     @if($row['LecTypeCcd'] === '607003')
-                                                        <div class="OTclass mr10"><span>직장인</span></div>
+                                                        <div class="OTclass mr10"><span>직장인반</span></div>
                                                     @endif
                                                     <dl class="w-info">
                                                         <dt>{{ $row['CourseName'] }}<span class="row-line">|</span>{{ $row['SubjectName'] }}<span class="row-line">|</span>{{ $row['ProfNickName'] }} </dt>

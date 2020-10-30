@@ -26,7 +26,7 @@
             <div class="lec-profile p_re">
                 <div class="w-list">
                     @if($data['LecTypeCcd'] === '607003')
-                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                        <div class="OTclass mr10"><span>직장인</span></div>
                     @endif
                     {{ $data['CourseName'] }} / {{ $data['SubjectName'] }}</div>
                 <div class="w-tit tx-blue">{{ $data['ProdName'] }}</div>

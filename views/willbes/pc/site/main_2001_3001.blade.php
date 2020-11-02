@@ -172,7 +172,7 @@
             var collaboslides = $("#collaboslides ul").bxSlider({
                 mode:'fade', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
-                speed:750,
+                speed:350,
                 pause:3000,
                 pager:false,
                 controls:false,

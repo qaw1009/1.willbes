@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -56,6 +52,11 @@
 
         #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
 
+        .evtLive {background:#011135; padding-bottom:150px}
+        .livetab {width:920px; margin:0 auto}
+        .livetab li {display:inline; float:left; width:50%}
+        .livetab a {display:block; text-align:center; background:#e5e400; color:#0f2056; padding:20px 0; font-size:26px}
+        .livetab a.active {background:#fff;}
     </style>
 
 
@@ -74,9 +75,27 @@
             {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}           
         </div>
 
-        <div class="evtCtnsBox evt_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="이로나" />                
-        </div>    
+        <div class="evtCtnsBox evt_top">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="9급 일반행정 파란불" />                
+        </div>
+
+        <div class="evtCtnsBox evtLive">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />  
+            <ul class="livetab NSK-Black">
+                <li><a href="#live01">실강 전용 수강신청</a></li>
+                <li><a href="#live02">라이브 전용 수강신청</a></li>
+            </ul>
+            <div id="live01">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_01.jpg" alt="실강 전용" />
+                </a>
+            </div>  
+            <div id="live02">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
+                </a>
+            </div>             
+        </div>
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
@@ -233,7 +252,7 @@
 
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_popup.jpg" usemap="#PopupImgMap860">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_popup.jpg" usemap="#PopupImgMap860">
             </div>
             <ul class="btnWrapbt popbtn mt10">
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
@@ -328,6 +347,30 @@
             });
         });  
 
+        $(document).ready(function(){
+            $('.livetab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        ); 
 
         $(document).ready(function(){
             $('#tabwrap2').each(function(){

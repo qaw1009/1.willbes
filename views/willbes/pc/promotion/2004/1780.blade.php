@@ -78,11 +78,10 @@
         .evtTab ul:after {content:""; display:block; clear:both}
         .evtTabCts {margin-top:10px}
 
-        .evt04 {background:#36374d; padding-bottom:100px;}
+        .evt04 {background:#36374d; padding:100px 0;}
         .evt04 div {width:930px; margin:0 auto}
-        .evt04 div li {display:inline; float:left; width:50%}
-        .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; border-radius:10px; 
-            margin-right:10px; height:80px; line-height:80px; font-size:30px}
+        .evt04 div li {display:inline; float:left; width:33.333333%}
+        .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; padding:20px 0; line-height:1.4; font-size:18px; margin-right:1px}
         .evt04 div li a.active,
         .evt04 div li a:hover {background:#ebebeb}
         .evt04 div li:last-child a {margin-right:0}
@@ -113,6 +112,7 @@
         
         #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
 
+        .evtLive {background:#011135;}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -124,6 +124,10 @@
 
         <div class="evtCtnsBox evt_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
+        </div>
+
+        <div class="evtCtnsBox evtLive">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />               
         </div>
 
         <div class="evtCtnsBox evt01s">
@@ -236,15 +240,25 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_07.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1" class="active">9~10월 기본이론 PASS</a></li>
-                    <li><a href="#lec2">20년 9월 ~ 21년 3월 연간 PASS</a></li>
+                    <li><a href="#lec1">[실강전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
+                    <li><a href="#lec2">[라이브전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
+                    <li><a href="#lec3">20.11월~21.3월<br> 연간 PASS</a></li>
                 </ul>
-                <div class="mt10" id="lec1">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_08.jpg" title="7월 기본이론 완성반"></a>
+                <div id="lec1">
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_08.jpg" title="실강전용">
+                    </a>
                 </div>  
-                <div class="mt10" id="lec2">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_10.jpg" title="연간종합반"/></a>
-                </div>             
+                <div id="lec2">
+                    <a href="https://pass.willbes.net/pass//pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live_01.jpg" title="라이브전용"/>
+                    </a>
+                </div>
+                <div id="lec3">
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_10.jpg" title="연간 PASS"/>
+                    </a>
+                </div>              
             </div>
         </div>
 
@@ -379,7 +393,7 @@
  
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_popup.jpg" usemap="#PopupImgMap860">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_popup.jpg" usemap="#PopupImgMap860">
             </div>
             <ul class="btnWrapbt popbtn mt10">
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>

@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -55,6 +51,8 @@
         .tab02:after {content:""; display:block; clear:both}   
 
         #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
+        
+        .evtLive {background:#011135;}
     </style>
 
 
@@ -74,15 +72,18 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1781_top.jpg" alt="군무원" />           
         </div> 
 
+        <div class="evtCtnsBox evtLive">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1781_live.jpg" alt="라이브" />               
+        </div>
+
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_01.gif" alt="군무원 커리큘럼" />
-
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
             <map name="Map1781a" id="Map1781a">
-                <area shape="rect" coords="257,2585,849,2740" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
+                <area shape="rect" coords="257,2619,849,2774" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
                 <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
                 <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank" alt="기미진 특강">
                 <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준 특강">        

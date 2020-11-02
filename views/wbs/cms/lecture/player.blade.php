@@ -71,9 +71,9 @@
     <iframe id="subframe" frameborder="0" scrolling="no" width="400px" height="500px" src=""></iframe>
 </div>
 <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
-{{-- <script type="text/javascript" src="/public/vendor/starplayer/js/hls.js?token={{time()}}"></script> --}}
+<script type="text/javascript" src="/public/vendor/starplayer/js/hls.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
-<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_live.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/speedplaytime.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/js/willbes/player.js?token={{time()}}"></script>

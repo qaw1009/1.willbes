@@ -112,6 +112,12 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제조건</label>
                     <div class="col-md-11 form-inline">
+                        <select class="form-control mr-10" id="search_sale_pattern_ccd" name="search_sale_pattern_ccd">
+                            <option value="">상품구분</option>
+                            @foreach($arr_sale_pattern_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
                             <option value="">결제채널</option>
                             @foreach($arr_pay_channel_ccd as $key => $val)
@@ -200,12 +206,13 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th>선택</th>
                 @if($is_tzone === false)
-                    <th>No</th>
+                    <th>선택</th>
                 @endif
+                    <th>No</th>
                     <th>주문번호</th>
                     <th>회원정보</th>
+                    <th>상품구분</th>
                     <th>결제채널</th>
                     <th>결제루트</th>
                     <th>결제수단</th>
@@ -216,7 +223,7 @@
                     <th>결제상태</th>
                 </tr>
                 <tr id="sumTotal" class="hide">
-                    <td colspan="12" class="bg-odd text-center">
+                    <td colspan="13" class="bg-odd text-center">
                         <h4 class="inline-block no-margin">
                             <span id="search_period" class="pr-5"></span>
                             <span class="blue"><span id="sum_pay_price">0</span></span>
@@ -287,6 +294,7 @@
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')';
                     }},
+                    {'data' : 'SalePatternCcdName'},
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},

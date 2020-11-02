@@ -78,7 +78,7 @@
         <div class="evtCtnsBox evt_top">            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="9급 일반행정 파란불" />                
         </div>
-        
+
         {{--
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />  
@@ -251,6 +251,7 @@
             </div>
         </div>
         <!--wb_tip//-->
+        
         {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">

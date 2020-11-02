@@ -84,12 +84,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_03.gif" alt="" >
     </div>
 
+    {{--
     <div class="evtCtnsBox evt_certi" >
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_certi.jpg" alt="" usemap="#Map1480m_certi" border="0" >
         <map name="Map1480m_certi" id="Map1480m_certi">
             <area shape="rect" coords="143,1047,577,1105" href="https://pass.willbes.net/promotion/index/cate/3035/code/1480" target="_blank">
         </map>
     </div>
+    --}}
 
     <div class="evtCtnsBox evt04">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1480m_04.jpg" alt="" >   

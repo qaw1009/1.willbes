@@ -40,7 +40,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_02.jpg" alt="정규 커리큘럼"/>            
         </div>
 
-        <div class="evtCtnsBox wb_03" id=start>
+        <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_03.jpg" alt="윌비스 베스트 강좌"/>            
         </div>
 
@@ -51,7 +51,7 @@
             </map>            
         </div>
 
-        <div class="evtCtnsBox wb_05">
+        <div class="evtCtnsBox wb_05" id=start>
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05.jpg" alt="테스트 yes or no" usemap="#Map1891_test" border="0"/>
             <map name="Map1891_test" id="Map1891_test">
                 <area shape="rect" coords="257,546,551,625" href="#none" />

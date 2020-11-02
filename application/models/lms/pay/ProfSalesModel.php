@@ -212,7 +212,8 @@ class ProfSalesModel extends BaseOrderModel
                     $column .= ', RR.RefundDatm, CPS.CcdName as PayStatusName';
                 }
 
-                $column .= ', M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName';
+                $column .= ', M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone, CPC.CcdName as PayChannelCcdName, CPR.CcdName as PayRouteCcdName, CPM.CcdName as PayMethodCcdName
+                    , CSP.CcdName as SalePatternCcdName';
             }
         }
 
@@ -239,7 +240,9 @@ class ProfSalesModel extends BaseOrderModel
                 left join ' . $this->_table['code'] . ' as CPM
                     on RR.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y" and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '"                   
                 left join ' . $this->_table['code'] . ' as CPS
-                    on RR.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y" and CPS.GroupCcd = "' . $this->_group_ccd['PayStatus'] . '"                                                  	                                     
+                    on RR.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y" and CPS.GroupCcd = "' . $this->_group_ccd['PayStatus'] . '"
+                left join ' . $this->_table['code'] . ' as CSP
+                    on RR.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and CSP.GroupCcd = "' . $this->_group_ccd['SalePattern'] . '"                                                                      	                                     
             ';
         }
 
@@ -249,7 +252,7 @@ class ProfSalesModel extends BaseOrderModel
 
         // 쿼리 실행
         if ($is_count === 'excel') {
-            $excel_column = 'OrderNo, MemName, MemId, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName 
+            $excel_column = 'OrderNo, MemName, MemId, SalePatternCcdName, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName 
                 , RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName, RefundReason';
             $query = 'select ' . $excel_column . ' from (select ' . $column . $from . $where . ') as ED' . $order_by_offset_limit;
         } else {

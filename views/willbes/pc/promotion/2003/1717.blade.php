@@ -25,11 +25,11 @@
         .sky {position:fixed; top:250px; right:10px; z-index:1;}
         .sky ul li {padding-bottom:10px;}
  
-        .wb_top {background:#584883 url(https://static.willbes.net/public/images/promotion/2020/07/1717_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:#66928E url(https://static.willbes.net/public/images/promotion/2020/07/1717_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01, .wb_cts02, .wb_cts03 {background:#EBEBEB;}
 
-        .wb_cts04 {background:#7D3EA6 url(https://static.willbes.net/public/images/promotion/2020/07/1717_04_bg.jpg) no-repeat center top;position:relative;}
+        .wb_cts04 {background:#3E4CA5 url(https://static.willbes.net/public/images/promotion/2020/07/1717_04_bg.jpg) no-repeat center top;position:relative;}
         .check { position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -37,7 +37,7 @@
 
         .wb_cts05 {background:#F2F0F1;}
 
-        .wb_cts06 {background:#E1E1E1;}
+        .wb_cts06 {background:#F2F0F1;}
 
          /*타이머*/
          .newTopDday * {font-size:24px}
@@ -83,7 +83,7 @@
 
         <div class="sky">
             <ul>          
-                <li><a href="#event01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1717_sky01.png"  title="소문내면" /></a></li>
+                {{--<li><a href="#event01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1717_sky01.png"  title="소문내면" /></a></li>--}}
                 <li><a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2020/07/1717_sky02.png"  title="환승시" /></a></li>
             </ul>
         </div>
@@ -99,7 +99,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_02.jpg" alt="효율적인 학습" />
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_03.jpg" alt="알차게 이용" usemap="#Map1717a" border="0" />
             <map name="Map1717a" id="Map1717a">
@@ -107,7 +107,7 @@
                 <area shape="rect" coords="640,683,976,771" href="#event02" />
             </map>
         </div>
-
+        --}}
         <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_04.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
             <map name="Map1717apply" id="Map1717apply">
@@ -121,7 +121,7 @@
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>
         </div>
-
+        <!--
         <div class="evtCtnsBox wb_cts05" id="event01">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_05.jpg" alt="환승 이벤트" usemap="#Map1717sns" border="0" />
             <map name="Map1717sns" id="Map1717sns">
@@ -134,7 +134,7 @@
                 @include('willbes.pc.promotion.show_comment_list_url_partial', array('bottom_cafe_type'=>'N'))
             @endif
         </div>
-
+        -->
         <div class="evtCtnsBox wb_cts06" id="event02">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1717_06.jpg" alt="인증하기" usemap="#Map1717b" border="0" />
             <map name="Map1717b" id="Map1717b">

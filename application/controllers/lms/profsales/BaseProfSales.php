@@ -317,7 +317,7 @@ class BaseProfSales extends \app\controllers\BaseController
 
         // 사용하는 코드값 조회
         $group_ccd = $this->profSalesModel->_group_ccd;
-        $arr_target_group_ccd = array_filter_keys($group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus']);
+        $arr_target_group_ccd = array_filter_keys($group_ccd, ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'SalePattern']);
         $codes = $this->codeModel->getCcdInArray(array_values($arr_target_group_ccd));
 
         // 결제루트 공통코드에서 PG사결제, 학원방문결제, 0원결제, 제휴사결제, 온라인0원결제, 관리자유료결제 코드만 필터링
@@ -333,6 +333,7 @@ class BaseProfSales extends \app\controllers\BaseController
             'arr_pay_route_ccd' => $arr_pay_route_ccd,
             'arr_pay_method_ccd' => $codes[$group_ccd['PayMethod']],
             'arr_pay_status_ccd' => $arr_pay_status_ccd,
+            'arr_sale_pattern_ccd' => $codes[$group_ccd['SalePattern']],
             'arr_input' => $arr_input,
             'is_off_site' => $this->_is_off_site,
             'is_package' => $this->_is_package,
@@ -417,7 +418,7 @@ class BaseProfSales extends \app\controllers\BaseController
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $headers = ['주문번호', '회원명', '회원아이디', '결제채널', '결제루트', '결제수단', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태', '환불사유'];
+        $headers = ['주문번호', '회원명', '회원아이디', '상품구분', '결제채널', '결제루트', '결제수단', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태', '환불사유'];
         $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
 
         $arr_condition = $this->_getOrderListConditions();
@@ -451,7 +452,8 @@ class BaseProfSales extends \app\controllers\BaseController
                 'RR.ProdCode' => $this->_reqP('prod_code'),
                 'RR.PayChannelCcd' => $this->_reqP('search_pay_channel_ccd'),
                 'RR.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'),
-                'RR.PayMethodCcd' => $this->_reqP('search_pay_method_ccd')
+                'RR.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'),
+                'RR.SalePatternCcd' => $this->_reqP('search_sale_pattern_ccd')
             ],
             'ORG1' => [
                 'LKR' => [

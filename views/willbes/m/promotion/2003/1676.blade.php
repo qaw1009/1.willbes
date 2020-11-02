@@ -180,18 +180,18 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank">
+                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/174384" target="_blank">
                     <span>반반모고</span>
-                    <span>1년 방송분<br>다시보기</span>
+                    <span>국가직까지<br>다시보기</span>
                     <span><strong>21</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/164226" target="_blank">
+                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/174386" target="_blank">
                     <span>한덕현 영어</span>
-                    <span>전과정<br>T-PASS</span>
-                    <span><strong>79</strong>만원</span>
+                    <span>국가직 대비 전과정<br>T-PASS</span>
+                    <span><strong>69</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
             </li>

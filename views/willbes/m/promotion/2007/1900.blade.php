@@ -193,7 +193,7 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('173710');">
+        <a href="javascript:goLecture('174333');">
         수강신청하기 >
         </a>
     </div>

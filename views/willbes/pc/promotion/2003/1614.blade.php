@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .sky_bottom{position: fixed; bottom:0; text-align:center; width:100%;background:#616161;opacity:0.9;z-index:100;}
+        .skybanner{position: fixed; top:250px; right:10px; width:190px; z-index:10;}
 
 		.evtTop {background:#191b20 url(https://static.willbes.net/public/images/promotion/2020/04/1614_graph_bg.jpg) no-repeat center top;}
 
@@ -82,10 +82,9 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
-        <div class="sky_bottom">
+        <div class="skybanner">
             <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1614_bottom.png" title="바로가기" />    
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky.png" title="" />    
             </a>        
         </div>
 
@@ -160,12 +159,12 @@
 
         <div class="evtCtnsBox evt04" id="event">             
             <ul>                
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="164226" onClick=""/><label for="y_pkg">공채 12개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="164227" onClick=""/><label for="y_pkg">특채 12개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">공채 3개월</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">특채 3개월</label></li>                
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="174386" onClick=""/><label for="y_pkg">전과정</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="174388" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="174385" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
+                <li><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1614_04.jpg" alt="수강신청"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04.gif" alt="수강신청"/>
             
             <div class="check_bg">
                 <div class="check" id="chkInfo">
@@ -180,13 +179,13 @@
                     {{--<a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
                     <a href="#none" onclick="goPassLecture()">
                         수강신청 >
-                    </a> <!--소방패스 신청하기-->
+                    </a>
                 </div>
             </div>                   
         </div><!--wb_cts03//-->
 
 		<div class="evtCtnsBox evt05" id="tip">
-            <img src="https://static.willbes.net/public/images/promotion/2020/04/1614_05.jpg" title="이용안내 및 유의사항" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_05.jpg" title="이용안내 및 유의사항" />
 		</div>
 	</div>
 	<!-- End Container -->

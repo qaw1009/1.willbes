@@ -78,7 +78,8 @@
         <div class="evtCtnsBox evt_top">            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="9급 일반행정 파란불" />                
         </div>
-
+        
+        {{--
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />  
             <ul class="livetab NSK-Black">
@@ -96,6 +97,7 @@
                 </a>
             </div>             
         </div>
+        --}}
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
@@ -249,7 +251,7 @@
             </div>
         </div>
         <!--wb_tip//-->
-
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_popup.jpg" usemap="#PopupImgMap860">
@@ -260,6 +262,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        --}}
 
     </div>
     <!-- End Container -->

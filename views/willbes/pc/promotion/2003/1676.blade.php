@@ -94,8 +94,7 @@
                 </ul>
             </div>
         </div>        
-
-        {{--           
+    
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
             <map name="Map1588banner" id="Map1588banner">
@@ -103,7 +102,6 @@
                 <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>             
         </div>
-        --}}
            
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            
@@ -276,7 +274,7 @@
 						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE 11/9(월), 11/23(월)의 경우 <br>
 						&nbsp;&nbsp;&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
 						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 당첨자 안내 공지는 9월 15일 (화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
+						&nbsp;- 당첨자 안내 공지는 12/1(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
 					</li>
                     <li>                    
                         <span class="big">돌발퀴즈 이벤트 관련</span><br>

@@ -51,9 +51,12 @@
     </style>
     
     <div class="evtContent NGR" id="evtContainer">
+        {{--
         <div class="skybanner">
             <a href="#wb_certi"><img src="https://static.willbes.net/public/images/promotion/2020/09/1480_sky.png" alt="9만원 할인"/></a>
         </div>
+        --}}
+
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_top.gif" alt="김동진 법원팀"/>
         </div>
@@ -63,6 +66,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_02.gif" alt="혁신적인 커리큘럼"/>
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_certi" id="wb_certi">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1784_certi.jpg" alt="인증하기" usemap="#Map1784_certi" border="0"/>
             <map name="Map1784_certi" id="Map1784_certi">
@@ -70,6 +74,7 @@
                 <area shape="rect" coords="254,637,404,669" href="#ctsInfo" />
             </map>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_02" id="buyLec">
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1784_03.jpg" alt="수강신청">
@@ -160,6 +165,8 @@
                     <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않거나 교수가 변경되는 경우 대체 강의가 제공되며 이로 인한 환불은 불가합니다.</li>
                     <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>                    				
 				</ul>
+                
+                {{--
                 <div class="infoTit NG"><strong>환승이벤트 주의사항</strong></div>
 				<ul>
 					<li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
@@ -174,6 +181,7 @@
                         (*회원정보를 통한 수신거부 시 알림이 별도 발송되지 않습니다.)                       
                     </li>			
 				</ul>
+                --}}
                 <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1544-5006</strong></div>
 			</div>
 		</div>       

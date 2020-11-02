@@ -80,7 +80,7 @@
 
         .evt04 {background:#36374d; padding:100px 0;}
         .evt04 div {width:930px; margin:0 auto}
-        .evt04 div li {display:inline; float:left; width:33.333333%}
+        .evt04 div li {display:inline; float:left; width:50%}
         .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; padding:20px 0; line-height:1.4; font-size:18px; margin-right:1px}
         .evt04 div li a.active,
         .evt04 div li a:hover {background:#ebebeb}
@@ -126,9 +126,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_top.jpg">
         </div>
 
+        {{--
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />               
-        </div>
+        </div>--}}
 
         <div class="evtCtnsBox evt01s">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/thank.jpg"  alt="소방직 합격"/>
@@ -241,7 +242,9 @@
             <div>
                 <ul class="NSK-Black">
                     <li><a href="#lec1">[실강전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
+                    {{--
                     <li><a href="#lec2">[라이브전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
+                    --}}
                     <li><a href="#lec3">20.11월~21.3월<br> 연간 PASS</a></li>
                 </ul>
                 <div id="lec1">
@@ -249,11 +252,13 @@
                         <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_08.jpg" title="실강전용">
                     </a>
                 </div>  
+                {{--
                 <div id="lec2">
                     <a href="https://pass.willbes.net/pass//pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live_01.jpg" title="라이브전용"/>
                     </a>
                 </div>
+                --}}
                 <div id="lec3">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_10.jpg" title="연간 PASS"/>
@@ -390,7 +395,7 @@
         </div>
         <!--wb_tip//-->
 
- 
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_popup.jpg" usemap="#PopupImgMap860">
@@ -401,6 +406,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        --}}
     
         
     </div>

@@ -22,6 +22,7 @@
         .wb_03 {background:#A60D08;}
         .wb_04 {background:#E1F1FE url(https://static.willbes.net/public/images/promotion/2020/10/1891_04_bg.jpg) no-repeat center top;}
         .wb_05 {background:#016FCE;}
+        .wb_05a,.wb_05b,.wb_05c,.wb_05d,.wb_05e,.wb_05f,.wb_05g,.wb_05h {background:#016FCE;}
         .wb_06a,.wb_06b,.wb_06c,.wb_06d,.wb_06e,.wb_06f {background:#016FCE;}
 
     </style> 
@@ -54,6 +55,70 @@
         <div class="evtCtnsBox wb_05" id=start>
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05.jpg" alt="테스트 yes or no" usemap="#Map1891_test" border="0"/>
             <map name="Map1891_test" id="Map1891_test">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05a">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05a.jpg" alt="테스트 yes or no" usemap="#Map1891_test_a" border="0"/>
+            <map name="Map1891_test_a" id="Map1891_test_a">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05b">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05b.jpg" alt="테스트 yes or no" usemap="#Map1891_test_b" border="0"/>
+            <map name="Map1891_test_b" id="Map1891_test_b">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05c">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05c.jpg" alt="테스트 yes or no" usemap="#Map1891_test_c" border="0"/>
+            <map name="Map1891_test_c" id="Map1891_test_c">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05d">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05d.jpg" alt="테스트 yes or no" usemap="#Map1891_test_d" border="0"/>
+            <map name="Map1891_test_d" id="Map1891_test_d">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05e">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05e.jpg" alt="테스트 yes or no" usemap="#Map1891_test_e" border="0"/>
+            <map name="Map1891_test_e" id="Map1891_test_e">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05f">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05f.jpg" alt="테스트 yes or no" usemap="#Map1891_test_f" border="0"/>
+            <map name="Map1891_test_f" id="Map1891_test_f">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05g">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05g.jpg" alt="테스트 yes or no" usemap="#Map1891_test_g" border="0"/>
+            <map name="Map1891_test_g" id="Map1891_test_g">
+                <area shape="rect" coords="257,546,551,625" href="#none" />
+                <area shape="rect" coords="563,546,863,626" href="#none" />
+            </map>            
+        </div>
+
+        <div class="evtCtnsBox wb_05h">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05h.jpg" alt="테스트 yes or no" usemap="#Map1891_test_h" border="0"/>
+            <map name="Map1891_test_h" id="Map1891_test_h">
                 <area shape="rect" coords="257,546,551,625" href="#none" />
                 <area shape="rect" coords="563,546,863,626" href="#none" />
             </map>            

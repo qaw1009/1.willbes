@@ -91,7 +91,8 @@
                 </a>
             </div>  
             <div id="live02">
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                {{--<a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">--}}
+                <a href="#none" onclick="javascript:alert('준비중입니다.');">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
                 </a>
             </div>             

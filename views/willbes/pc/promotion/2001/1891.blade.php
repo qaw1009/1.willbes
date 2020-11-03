@@ -25,7 +25,50 @@
         .wb_05a,.wb_05b,.wb_05c,.wb_05d,.wb_05e,.wb_05f,.wb_05g,.wb_05h {background:#016FCE;}
         .wb_06a,.wb_06b,.wb_06c,.wb_06d,.wb_06e,.wb_06f {background:#016FCE;}
 
-    </style> 
+    </style>
+
+    {{--
+            $arr_self_quality_test 문항 대체키
+            's' => '기본기가 부족하다',
+            'a' => '초시생이다',
+            'b' => '기출문제집 1회독 미만이다',
+            'c' => '스스로 기출문제 풀기가 벅차다',
+            'd' => '일정 점수 유지가 어렵다',
+            'e' => '기초는 있지만 단권화 정리가 안된다',
+            'f' => '실전감각이 부족하다',
+            'g' => '문제 푸는 스킬이 부족하다',
+            'h' => '평균 80점이 안정적으로 나온다',
+
+            맞춤 커리큘럼 대체키
+            'a' => '기본이론',
+            'b' => '심화이론',
+            'c' => '심화기출',
+            'd' => '문풀1단계',
+            'e' => '문풀2단계',
+            'f' => '문풀3단계',
+        --}}
+    @php
+        $arr_self_quality_test = [
+            's' => [
+                'Y' => ['a' => ['Y' => 'a', 'N' => 'b']],
+                'N' => ['b' => [
+                            'Y' => ['c' => ['Y' => 'c', 'N' => ['e' => ['Y' => 'd', 'N' => ['g' => ['Y' => 'e', 'N' => 'e']]]]]],
+                            'N' => [
+                                'd' => [
+                                    'Y' => ['e' => ['Y' => 'd', 'N' => ['g' => ['Y' => 'e', 'N' => 'e']]]],
+                                    'N' => [
+                                        'f' => [
+                                            'Y' => ['g' => ['Y' => 'e', 'N' => 'e']],
+                                            'N' => ['h' => ['Y' => 'f', 'N' => 'e']],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ];
+    @endphp
 
     <div class="evtContent NGR" id="evtContainer">
      
@@ -53,108 +96,44 @@
         </div>
 
         <div class="evtCtnsBox wb_05" id=start>
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05.jpg" alt="테스트 yes or no" usemap="#Map1891_test" border="0"/>
-            <map name="Map1891_test" id="Map1891_test">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05.jpg" alt="테스트 yes or no" usemap="#Map1891_test" border="0" id="test_img"/>
+            <map name="Map1891_test" id="Map1891_test" data-temp-key="s">
+                <area shape="rect" coords="257,546,551,625" href="javascript:void(0);" onclick="self_quality_test('Y');"/>
+                <area shape="rect" coords="563,546,863,626" href="javascript:void(0);" onclick="self_quality_test('N');"/>
             </map>            
         </div>
 
-        <div class="evtCtnsBox wb_05a">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05a.jpg" alt="테스트 yes or no" usemap="#Map1891_test_a" border="0"/>
-            <map name="Map1891_test_a" id="Map1891_test_a">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05b">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05b.jpg" alt="테스트 yes or no" usemap="#Map1891_test_b" border="0"/>
-            <map name="Map1891_test_b" id="Map1891_test_b">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05c">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05c.jpg" alt="테스트 yes or no" usemap="#Map1891_test_c" border="0"/>
-            <map name="Map1891_test_c" id="Map1891_test_c">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05d">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05d.jpg" alt="테스트 yes or no" usemap="#Map1891_test_d" border="0"/>
-            <map name="Map1891_test_d" id="Map1891_test_d">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05e">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05e.jpg" alt="테스트 yes or no" usemap="#Map1891_test_e" border="0"/>
-            <map name="Map1891_test_e" id="Map1891_test_e">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05f">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05f.jpg" alt="테스트 yes or no" usemap="#Map1891_test_f" border="0"/>
-            <map name="Map1891_test_f" id="Map1891_test_f">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05g">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05g.jpg" alt="테스트 yes or no" usemap="#Map1891_test_g" border="0"/>
-            <map name="Map1891_test_g" id="Map1891_test_g">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_05h">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_05h.jpg" alt="테스트 yes or no" usemap="#Map1891_test_h" border="0"/>
-            <map name="Map1891_test_h" id="Map1891_test_h">
-                <area shape="rect" coords="257,546,551,625" href="#none" />
-                <area shape="rect" coords="563,546,863,626" href="#none" />
-            </map>            
-        </div>
-
-        <div class="evtCtnsBox wb_06a">
+        <div class="evtCtnsBox wb_06a d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06a.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891a" border="0"/>
             <map name="Map1891a" id="Map1891a">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1004" target="_blank" />
             </map>  
         </div>    
-        <div class="evtCtnsBox wb_06b">
+        <div class="evtCtnsBox wb_06b d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06b.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891b" border="0"/>
             <map name="Map1891b" id="Map1891b">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1005" target="_blank" />
             </map> 
         </div>
-        <div class="evtCtnsBox wb_06c">   
+        <div class="evtCtnsBox wb_06c d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06c.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891c" border="0"/>
             <map name="Map1891c" id="Map1891c">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1006" target="_blank" />
             </map> 
         </div> 
-        <div class="evtCtnsBox wb_06d">   
+        <div class="evtCtnsBox wb_06d d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06d.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891d" border="0"/>
             <map name="Map1891d" id="Map1891d">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1007" target="_blank" />
             </map> 
         </div>
-        <div class="evtCtnsBox wb_06e">    
+        <div class="evtCtnsBox wb_06e d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06e.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891e" border="0"/>
             <map name="Map1891e" id="Map1891e">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1008" target="_blank" />
             </map> 
         </div>
-        <div class="evtCtnsBox wb_06f">    
+        <div class="evtCtnsBox wb_06f d_none">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_06f.jpg" alt="나에게 맞는 커리큘럼은?" usemap="#Map1891f" border="0"/>
             <map name="Map1891f" id="Map1891f">
                 <area shape="rect" coords="393,717,728,807" href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1009" target="_blank" />
@@ -162,4 +141,27 @@
         </div>        
     </div>
     <!-- End Container -->
+
+    <script>
+        var $json_data = {!! json_encode($arr_self_quality_test) !!};
+
+        // self 진단
+        function self_quality_test(sel_type){
+            var test_key = $("#Map1891_test").data("temp-key");
+            var next_test_key = '';
+
+            $json_data = $json_data[test_key][sel_type];
+            if(typeof $json_data === "object"){
+                $.each($json_data, function (key, value) {
+                    next_test_key = key;
+                    return false;
+                });
+                $("#Map1891_test").data("temp-key",next_test_key);
+                $("#test_img").attr("src","https://static.willbes.net/public/images/promotion/2020/10/1891_05" + next_test_key + ".jpg");
+            }else{
+                $("#start").addClass("d_none");
+                $(".wb_06" + $json_data).removeClass("d_none");
+            }
+        }
+    </script>
 @stop

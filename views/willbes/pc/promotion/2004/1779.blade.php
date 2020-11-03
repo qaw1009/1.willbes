@@ -25,7 +25,7 @@
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1779_02_bg.jpg) left top repeat-x}
         .evt03 {background:#a7d4ff}
-        .evt04 {background:#0e2056}
+        .evt04 {background:#0e2056; padding-bottom:150px}
 
         /* tip */
         .wb_cts09 {background:#fff; text-align:left; padding:100px 0}
@@ -52,7 +52,8 @@
 
         #Popup {position:fixed; top:220px; margin-left:-350px; display:block;}
 
-        .evtLive {background:#011135; padding-bottom:150px}
+        .evtLive {background:#011135;}
+
         .livetab {width:920px; margin:0 auto}
         .livetab li {display:inline; float:left; width:50%}
         .livetab a {display:block; text-align:center; background:#e5e400; color:#0f2056; padding:20px 0; font-size:26px}
@@ -80,22 +81,7 @@
         </div>
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />  
-            <ul class="livetab NSK-Black">
-                <li><a href="#live01">실강 전용 수강신청</a></li>
-                <li><a href="#live02">라이브 전용 수강신청</a></li>
-            </ul>
-            <div id="live01">
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_01.jpg" alt="실강 전용" />
-                </a>
-            </div>  
-            <div id="live02">
-                {{--<a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">--}}
-                <a href="#none" onclick="javascript:alert('준비중입니다.');">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
-                </a>
-            </div>             
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />                       
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -115,12 +101,28 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_04.jpg" alt="수강신청" usemap="#Map1779_02" border="0" />
-            <map name="Map1779_02" id="Map1779_02">
-                <area shape="rect" coords="192,1131,931,1325" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank" alt="파란불 수강신청">
-                <area shape="rect" coords="283,1420,507,1475" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
-                <area shape="rect" coords="698,1419,922,1473" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_04_01.jpg" alt="수강신청" />
+            <ul class="livetab NSK-Black mt100">
+                <li><a href="#live01">실강 전용 수강신청</a></li>
+                <li><a href="#live02">라이브 전용 수강신청</a></li>
+            </ul>
+            <div id="live01">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_01.jpg" alt="실강 전용" />
+                </a>
+            </div>  
+            <div id="live02">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
+                </a>
+            </div> 
+            <div class="mt100">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_04_02.jpg" alt="수강신청" usemap="#Map1779_02" border="0" />   
+                <map name="Map1779_02" id="Map1779_02">
+                    <area shape="rect" coords="279,86,515,148" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
+                    <area shape="rect" coords="692,86,930,147" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준">
+                </map>
+            </div>
         </div>
 
         <!--유의사항-->

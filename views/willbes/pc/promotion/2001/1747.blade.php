@@ -4,14 +4,9 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -304,7 +299,7 @@
                     @elseif($onoff_5 == 'off')
                         <span><img src="https://static.willbes.net/public/images/promotion/2020/08/1747_01_end.gif" alt="종료"></span>
                     @else @endif
-                    <a href="#tab05" class="{{ (($onoff_5 == 'on') ? 'active' : '') }}">
+                    <a href="#tab05" class="{{ (($onoff_5 == 'off') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1747_tab05_on.png" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_tab05.jpg" alt="최종합격" class="off">
                     </a>

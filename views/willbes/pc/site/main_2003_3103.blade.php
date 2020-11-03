@@ -391,6 +391,11 @@
                 </dl>
             </div>
         </div>
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+        </div>
     </div>
 
     <!-- End Container -->

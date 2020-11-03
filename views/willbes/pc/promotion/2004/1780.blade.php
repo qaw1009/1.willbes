@@ -127,7 +127,7 @@
         </div>
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />               
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live.jpg" alt="라이브" />               
         </div>
 
         <div class="evtCtnsBox evt01s">
@@ -250,8 +250,7 @@
                     </a>
                 </div>  
                 <div id="lec2">
-                    {{--<a href="https://pass.willbes.net/pass//pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">--}}
-                    <a href="#none" onclick="javascript:alert('준비중입니다.');">
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live_01.jpg" title="라이브전용"/>
                     </a>
                 </div>

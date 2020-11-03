@@ -15,8 +15,8 @@
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
     /*****************************************************************/ 
     .evt00 {background:#0a0a0a}
-    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1904_top_bg.jpg) no-repeat center top;}    
-    .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/11/1904_01_bg.jpg) no-repeat center top;}
+    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1904_top_bg.jpg) no-repeat center top;}   
+
     .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/11/1904_02_bg.jpg) no-repeat center top;}
     .evt03 {background:#e1e1e1; padding-bottom:120px}
     .evt03 a {display:block; height:64px; line-height:64px; color:#fff; font-size:28px; font-weight:bold; text-align:center; border-radius:50px; 
@@ -32,10 +32,6 @@
         <div class="evtCtnsBox evt_top">  
             <div><img src="https://static.willbes.net/public/images/promotion/2020/11/1904_top.jpg" alt="경찰 합격수기 공모"></div>
         </div>
-
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1904_01.jpg" alt="합격을 진심으로 축하드립니다.">
-        </div>  
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1904_02.jpg" alt="합격을 진심으로 축하드립니다.">

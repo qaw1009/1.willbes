@@ -5,7 +5,10 @@
                 @if(empty($data['onAir']) === true)
                     <div class="offAir">
                         <div class="offAirBar">
-                            <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair_off.png') }}" alt="방송중이아닙니다."></span>
+                            <span class="state">
+                                윌비스 <span class="tx-color">신광은경찰{{--공무원--}}</span> 학원 
+                                <img src="{{ img_url('onair/onair_off.png') }}" alt="방송중이아닙니다.">
+                            </span>
                             <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                                 <li>현재 진행중인 라이브 강의가 없습니다.</li>
                             </ul>
@@ -21,7 +24,10 @@
                             <a id="stoggleBtn"><p id="stoggleBtnNm">닫기 ▲</p></a>
                             <!-- <a id="stoggleBtn">닫기 ▲</a> -->
                         </span>
-                        <span class="state">윌비스 <span class="tx-color">신광은경찰</span> 학원 <img src="{{ img_url('onair/onair.png') }}" alt="방송중"></span>
+                        <span class="state">
+                            윌비스 <span class="tx-color">신광은경찰{{--공무원--}}</span> 학원 
+                            <img src="{{ img_url('onair/onair.png') }}" alt="방송중">
+                        </span>
                         <ul id="scroll" class="on_air_title" style="position: relative; overflow: hidden;">
                             @php $i=0; @endphp
                             @foreach($data['onAir'] as $key => $row)

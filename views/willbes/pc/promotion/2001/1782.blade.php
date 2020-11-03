@@ -49,7 +49,10 @@
                 <div class="illust">
                     <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top_img.png"  alt="" />
                 </div>      
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top.jpg"  alt="" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top.jpg"  alt="" usemap="#Map1782_01" border="0" />
+                <map name="Map1782_01">
+                    <area shape="rect" coords="363,759,784,836" href="#Map1424B" alt="나의위치">
+                </map>
             </div>          
         </div>
 

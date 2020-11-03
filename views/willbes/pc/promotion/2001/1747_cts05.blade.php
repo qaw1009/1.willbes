@@ -17,7 +17,7 @@
             </div>      
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1782_top.jpg"  alt="" usemap="#Map1782_01" border="0" />
             <map name="Map1782_01">
-                <area shape="rect" coords="363,759,784,836" href="https://police.willbes.net/promotion/index/cate/3001/code/1782" target="_blank" alt="나의위치">
+                <area shape="rect" coords="363,759,784,836" href="https://police.willbes.net/promotion/index/cate/3001/code/1782#Map1424B" target="_blank" alt="나의위치">
             </map>
         </div>          
     </div>    

@@ -19,12 +19,12 @@
         .youtube iframe {width:980px; height:550px;}      
 
         .evt_01 {background:#fff;padding-bottom:100px;}
-        .evt_01 ul {width:1120px; margin:0 auto}
+        .evt_01 ul {width:1120px; margin:0 auto;}
         .evt_01 li {display:inline; float:left; width:25%; text-align:center;font-size:14px;}
         .evt_01 li .gif_area img{width:250px; height:140px; margin:0 auto}
         .evt_01 li iframe {width:348px; height:220px; margin:0 auto}        
-        .evt_01 li div {height:30px; line-height:25px;color:#222;}
-        .evt_01 li div:first-child {font-size:16px; line-height:40px; height:40px;}
+        .evt_01 li div {height:348px; line-height:25px;color:#222;}
+        /*.evt_01 li div:first-child {font-size:16px; line-height:40px; height:40px;}*/
         .evt_01 ul:after {content:""; display:block; clear:both}
         .btn_area {display:inline-block;margin:20px 0 80px 0;}
         .btn_area .btn{background:#a8aaa7;color:#fff;font-size:18px;width:170px;}

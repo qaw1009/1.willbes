@@ -68,18 +68,17 @@
                 <area shape="rect" coords="13,42,117,114" href="https://pass.willbes.net/pass/support/notice/show?board_idx=298988&" target="_blank" />
                 <area shape="rect" coords="11,121,117,173" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank" />
             </map>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298975&" target="_blank" style="margin-top:10px;"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky03.jpg" alt="조민주 T" /></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298975&" target="_blank" class="mt10"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky03.jpg" alt="조민주 T" /></a>
         </div>
+
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>
-            {{--<a href="https://pass.willbes.net/pass/support/notice/show?board_idx=294996" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/09/1779_sky05.png" alt="한덕현" /></a>--}}           
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>        
         </div>
 
         <div class="evtCtnsBox evt_top">            
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_top.gif" alt="9급 일반행정 파란불" />                
         </div>
 
-        {{--
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />  
             <ul class="livetab NSK-Black">
@@ -92,12 +91,12 @@
                 </a>
             </div>  
             <div id="live02">
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                {{--<a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">--}}
+                <a href="#none" onclick="javascript:alert('준비중입니다.');">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
                 </a>
             </div>             
         </div>
-        --}}
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
@@ -252,7 +251,6 @@
         </div>
         <!--wb_tip//-->
         
-        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_popup.jpg" usemap="#PopupImgMap860">
@@ -263,7 +261,6 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-        --}}
 
     </div>
     <!-- End Container -->

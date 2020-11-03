@@ -11179,6 +11179,7 @@ table.acadlecInfoPackageTable tr.Top td {
     font-size: 14px;
     color: #eee;
     line-height: 20px;
+    width:98%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; 
 }
 .vodTabs .vodBox .w-data .w-tit span {
     vertical-align: baseline;

@@ -39,7 +39,7 @@ class PlayerFModel extends WB_Model
         $column = '
             ML.wMediaUrl,
             U.wSD, U.wHD, U.wWD, U.wUnitNum, U.wUnitLectureNum, U.wUnitName,
-            IFNULL(C.wCcdValue, 16) AS wRatio
+            IFNULL(C.wCcdValue, 16) AS wRatio, L.IsOpenwUnitNum
             ';
 
         $cond = [
@@ -81,7 +81,7 @@ class PlayerFModel extends WB_Model
         $column = '
             ML.wMediaUrl,
             U.wSD, U.wHD, U.wWD, U.wUnitNum, U.wUnitLectureNum, U.wUnitName,
-            IFNULL(C.wCcdValue, 16) AS wRatio, L.FreeLecTypeCcd
+            IFNULL(C.wCcdValue, 16) AS wRatio, L.FreeLecTypeCcd, L.IsOpenwUnitNum
             ';
 
         $cond = [

@@ -434,8 +434,16 @@
         <a href="#none"><img src="{{ img_url('gosi/banner/bnr_1120x110.jpg') }}" alt="배너명"></a>
     </div>
 
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_1120x100_live.jpg" alt="라이브 모드"></a>
+        </div>
+    </div>
 
-    <div class="Section Section2 pt80 pb80">
+    {{-- on air include --}}
+    @include('willbes.pc.site.main_partial.on_air')
+
+    <div class="Section Section2 pt80 pb80 mt50">
         <div class="widthAuto">
             <div class="gosi-acadTit NSK-Thin mb50">
                 여러분의 꿈과 목표를 위해,<br />

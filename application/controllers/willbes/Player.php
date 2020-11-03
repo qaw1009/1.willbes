@@ -293,6 +293,12 @@ class Player extends \app\controllers\FrontController
 
         $startposition = (empty($time) == false) ? $time : $data['LastPosition'];
 
+        if($lec['IsOpenwUnitNum'] == 'Y') {
+            $pretitle = $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강';
+        } else {
+            $pretitle = $data['wUnitLectureNum'].'강';
+        }
+
         return $this->load->view('/player/normal', [
             'data' => [
                 'orderidx' => $orderidx,
@@ -305,7 +311,7 @@ class Player extends \app\controllers\FrontController
                 'isIntro' => $isintro,
                 'ratio' => $ratio,
                 'startPosition' => $startposition,
-                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'pretitle' => $pretitle,
                 'title' => $data['wUnitName'],
                 'url' => $url,
                 'memid' => $MemId,
@@ -408,9 +414,15 @@ class Player extends \app\controllers\FrontController
             show_alert('오류가 발생했습니다. 다시 시도해주십시요.', 'close');
         };
 
+        if($data['IsOpenwUnitNum'] == 'Y') {
+            $pretitle = $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강';
+        } else {
+            $pretitle = $data['wUnitLectureNum'].'강';
+        }
+
         $this->load->view('/player/sample', [
             'data' => [
-                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'pretitle' => $pretitle,
                 'title' => $data['wUnitName'],
                 'quility' => $quility,
                 'startPosition' => 0,
@@ -519,9 +531,15 @@ class Player extends \app\controllers\FrontController
             show_alert('오류가 발생했습니다. 다시 시도해주십시요.', 'close');
         };
 
+        if($data['IsOpenwUnitNum'] == 'Y') {
+            $pretitle = $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강';
+        } else {
+            $pretitle = $data['wUnitLectureNum'].'강';
+        }
+
         $this->load->view('/player/sample', [
             'data' => [
-                'pretitle' => $data['wUnitNum'].'회 '.$data['wUnitLectureNum'].'강',
+                'pretitle' => $pretitle,
                 'title' => $data['wUnitName'],
                 'quility' => $quility,
                 'startPosition' => 0,

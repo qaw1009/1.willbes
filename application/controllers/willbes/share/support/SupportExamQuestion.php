@@ -19,11 +19,12 @@ class SupportExamQuestion extends BaseSupport
         'type_group_ccd_area' => '631'              //유형 그룹 코드 = 지역
     ];
 
+    private $arr_swich;
     private $_on_off_swich = [
         '60' => [                               // bm_idx 수험정보게시판 -> 기출문제
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'school_year' => '학년도',
-            'compare_year' => '9',              // 연도노출
+            'compare_year' => '9',              // 연도 설정
         ]
     ];
     
@@ -53,6 +54,9 @@ class SupportExamQuestion extends BaseSupport
         $get_page_params .= '&s_area='.$s_area;
         $get_page_params .= '&s_year='.$s_year;
         $get_page_params .= '&s_subject='.$s_subject;
+
+        $arr_base['school_year'] = '연도';
+        $arr_base['compare_year'] = 5;
 
         //지역
         $arr_base['area'] = $this->codeModel->getCcd($this->_groupCcd['type_group_ccd_area']);

@@ -19,8 +19,8 @@
         .wb_top {background:#AEAAAD url(https://static.willbes.net/public/images/promotion/2020/10/1891_top_bg.jpg) no-repeat center top;}
         .wb_01 {background:#fff;}
         .wb_02 {background:#E6E6E6;}
-        .wb_03 {background:#A60D08;}
-        .wb_04 {background:#E1F1FE url(https://static.willbes.net/public/images/promotion/2020/10/1891_04_bg.jpg) no-repeat center top;}
+        .wb_03 {background:#424242;}
+        .wb_04 {background:#D2EBFF;}
         .wb_05 {background:#016FCE;}
         .wb_05a,.wb_05b,.wb_05c,.wb_05d,.wb_05e,.wb_05f,.wb_05g,.wb_05h {background:#016FCE;}
         .wb_06a,.wb_06b,.wb_06c,.wb_06d,.wb_06e,.wb_06f {background:#016FCE;}
@@ -89,10 +89,10 @@
         </div>
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_04.jpg" alt="셀프 진단하기" usemap="#Map1891_start" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1891_04.gif" alt="셀프 진단하기" usemap="#Map1891_start" border="0"/>
             <map name="Map1891_start" id="Map1891_start">
-                <area shape="rect" coords="446,420,676,486" href="#start" />
-            </map>            
+                <area shape="rect" coords="205,639,916,783" href="#start" />
+            </map>     
         </div>
 
         <div class="evtCtnsBox wb_05" id=start>

@@ -85,7 +85,7 @@ class SupportReview extends BaseSupport
 
         // 프론트 ui
         $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
             $arr_swich = null;
         }
 
@@ -380,7 +380,7 @@ class SupportReview extends BaseSupport
         }
 
         $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){;
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
             $arr_swich = null;
         }else{
             if(empty($data['RegName']) === true){ // 등록 게시글의 회원명 조회

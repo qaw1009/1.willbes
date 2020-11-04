@@ -335,8 +335,9 @@ class Books extends \app\controllers\BaseController
         // 로컬서버가 아닐 경우 체크 ==> TODO : 서버 환경별 실행
         if (ENVIRONMENT != 'local') {
             $access_ip = $this->input->ip_address();
+            $allow_ips = $this->bookAModel->allowIp();
 
-            $is_allow = starts_with($access_ip, $this->_allow_ip);
+            $is_allow = starts_with($access_ip, array_data_pluck($allow_ips, 'ApprovalIp'));
             if ($is_allow !== true) {
                 return 'NOT_ALLOW_IP';
             }

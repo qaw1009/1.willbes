@@ -11,7 +11,9 @@ class BookAModel extends WB_Model
         'product' => 'lms_product',
         'member' => 'lms_member',
         'code' => 'lms_sys_code',
-        'admin' => 'wbs_sys_admin'
+        'admin' => 'wbs_sys_admin',
+        'btob' => 'lms_btob',
+        'btob_ip' => 'lms_btob_ip',
     ];
 
     // 배송대상 상품구분 공통코드
@@ -25,6 +27,9 @@ class BookAModel extends WB_Model
     
     // 교재배송 관리자 아이디
     private $_admin_id = 'api_book';
+
+    // 교재배송처 IP 관리용 BtoB 번호
+    private $_btob_idx = 5;
 
     public function __construct()
     {
@@ -299,6 +304,23 @@ class BookAModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * BtoB 관리자의 IP 관리에서 허용 IP 정보를 읽어온다
+     * @return array
+     */
+    public function allowIp()
+    {
+        $query = " SELECT IP.ApprovalIp ";
+        $query .= " FROM {$this->_table['btob']} AS B
+            LEFT JOIN {$this->_table['btob_ip']} AS IP ON B.BtobIdx = IP.BtobIdx AND IP.IsStatus = 'Y' 
+            WHERE B.IsStatus = 'Y' AND B.IsUse = 'Y' AND B.BtobIdx='{$this->_btob_idx}'
+            ";
+
+        $rows = $this->_conn->query($query);
+
+        return ($rows == false) ? [] : $rows->result_array();
     }
 
     /**

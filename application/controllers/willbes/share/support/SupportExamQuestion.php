@@ -32,7 +32,7 @@ class SupportExamQuestion extends BaseSupport
         parent::__construct();
 
         $this->arr_swich = element($this->_bm_idx,$this->_on_off_swich);
-        if(!(empty($this->arr_swich) === false && in_array($this->_site_code,$this->arr_swich['site_code']) === true)){;
+        if(!(empty($this->arr_swich) === false && in_array($this->_site_code,$this->arr_swich['site_code']) === true)){
             $this->arr_swich = null;
         }
     }

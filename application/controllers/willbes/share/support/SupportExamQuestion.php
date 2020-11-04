@@ -23,6 +23,7 @@ class SupportExamQuestion extends BaseSupport
         '60' => [                               // bm_idx 수험정보게시판 -> 기출문제
             'site_code' => ['2017','2018'],     // 적용 사이트 [임용]
             'school_year' => '학년도',
+            'compare_year' => '9',              // 연도노출
         ]
     ];
     

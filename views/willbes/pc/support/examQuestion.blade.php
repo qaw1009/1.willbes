@@ -28,7 +28,7 @@
 
                             <select id="s_year" name="s_year" title="연도" class="seleLecA" onchange="goUrl('s_year',this.value)">
                                 <option value="">{{empty($arr_swich['school_year']) === false ? $arr_swich['school_year'] : '연도'}}</option>
-                                @for($i = date('Y') - 5; $i <= date('Y') + 5; $i++)
+                                @for($i = date('Y') - (empty($arr_swich['compare_year']) === false ? $arr_swich['compare_year'] : 5); $i <= date('Y') + 5; $i++)
                                     <option value="{{$i}}" @if(element('s_year', $arr_input) == $i)selected="selected"@endif>{{$i}}</option>
                                 @endfor
                             </select>

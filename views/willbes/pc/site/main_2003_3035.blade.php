@@ -31,12 +31,12 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">3순환 - 반복, 그리고 이해를 도모하라!</a></li>
-                    <li><a href="#tab02">2순환 – 이해한 만큼 암기가 줄어든다</a></li>
+                    <li><a href="#tab01">4순환 – 객관식 문제해결 능력을 확인하다</a></li>
+                    <li><a href="#tab02">3순환 – 반복, 그리고 이해를 도모하라!</a></li>
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">
-                        문제풀이에 앞서 <span class="tx-color">중요 쟁점을 반복 학습하라</span>
+                        실전연습은 <span class="tx-color">모의고사</span>로, 정리는 <span class="tx-color">OX집</span>으로
                     </div>                     
                     <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)
@@ -52,7 +52,7 @@
                 </div>
                 <div id="tab02">
                     <div class="copyTit NSK-Black mt50">
-                        <span class="tx-color"> 기출된, 그리고 출제 가능성 </span>  있는 모든 것을 정리하라
+                        문제풀이에 앞서 <span class="tx-color"> 중요 쟁점을 반복 학습하라</span>
                     </div>  
                     <ul class="PBcts mt40">
                         @for($i=5; $i<=8; $i++)

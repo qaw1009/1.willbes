@@ -16,6 +16,7 @@
                 <li class="dropdown">
                     <a href="#none">강의안내/신청</a>
                     <div class="drop-Box list-drop-Box list-drop-Box-ic">
+                        {{--
                         <ul>
                             <li class="Tit">교육학</li>
                             <li>
@@ -91,6 +92,118 @@
                                 <a href="#none">정경미</a>
                             </li>
                         </ul>
+                        --}}
+                        <table class="ssamProf">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" scope="col">교육학</th>
+                                    <th colspan="2" scope="col">유.초등</th>
+                                    <th colspan="10" scope="col">중등</th>
+                                </tr>
+                                <tr>
+                                    <th>유아</th>
+                                    <th>초등</th>
+                                    <th>국어</th>
+                                    <th>영어</th>
+                                    <th>수학</th>
+                                    <th>생물</th>
+                                    <th>도덕윤리</th>
+                                    <th>역사</th>
+                                    <th>음악</th>
+                                    <th>전기전자통신</th>
+                                    <th>정보컴퓨터</th>
+                                    <th>중국어</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">김차웅</a></li>
+                                        <li><a href="#none">이인재</a></li>
+                                        <li><a href="#none">홍의일</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">민정선</a></li>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">배재민</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">국어<br>국어교육학</li>
+                                        <li><a href="#none">송원영</a></li>
+                                        <li class="subTit">국어문법</li>
+                                        <li><a href="#none">이원근</a></li>
+                                        <li><a href="#none">권보민</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">일반영어<br>영미문학</li>
+                                        <li><a href="#none">송원영</a></li>
+                                        <li class="subTit">영어학</li>
+                                        <li><a href="#none">김영문</a></li>
+                                        <li class="subTit">영어학<br>영어교육론</li>
+                                        <li><a href="#none">공훈</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">전공수학</li>
+                                        <li><a href="#none">김철홍</a></li>
+                                        <li class="subTit">수학교육론</li>
+                                        <li><a href="#none">박태영</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">전공생물</li>
+                                        <li><a href="#none">강치욱</a></li>
+                                        <li class="subTit">생물교육론</li>
+                                        <li><a href="#none">양혜정</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">김병찬</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">최용림</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">다이애나</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">최우영</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">정보컴퓨터</li>
+                                        <li><a href="#none">송광진</a></li>
+                                        <li class="subTit">정컴교육론</li>
+                                        <li><a href="#none">장순선</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">정경미</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </li>
                 <li>
@@ -727,7 +840,7 @@
         </div>
     </div>
 
-    <div id="QuickMenu" class="MainQuickMenu">
+    <div id="QuickMenu" class="MainQuickMenuSSam">
         <ul>
             <li class="dday">
                 <div class="QuickSlider">

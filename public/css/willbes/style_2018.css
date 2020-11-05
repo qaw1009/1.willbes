@@ -7,16 +7,7 @@
     color: #0c5dc0;
 }
 
-.ssam .Menu .menu-List li.Acad a {
-    color: #0c5dc0;
-}
-.ssam .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
-    float: right;
-    width: 4px;
-    height: 8px;
-    margin: 15px 5px 0;
-}
+
 /*상단 메뉴*/
 .Menu .menu-List li.willbesedu > a {
     font-size: 16px;
@@ -25,28 +16,25 @@
     vertical-align: middle;
 }
 
-.Menu .menu-List li.willbesedu > a .arrow-Btn {
-    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
-    float: right;
-    width: 4px;
-    height: 8px;
-    margin: 15px 5px 0;
-}
 .dropdown .list-drop-Box-ic {
     top: 38px;
     left: 50%;
-    margin-left: -159px;
-    width: 510px;
-    padding: 20px;
-    text-align: left;
+    margin-left: -690px;
+    -webkit-margin-start: -697px;
+    width: 1120px;
+    padding: 0;
     z-index: 100;
 }
-.dropdown .list-drop-Box-ic ul {display:inline; float:left; width:50%}
-.dropdown .list-drop-Box-ic .Tit {margin-top:10px !important}
-.dropdown .list-drop-Box-ic li:first-child {margin:0 !important}
-.dropdown .list-drop-Box-ic span {display: inline-block; width:90px}
-.dropdown .list-drop-Box-ic li a {display: inline-block; padding-right:10px}
-.dropdown .list-drop-Box-ic:after {content:""; display:block; clear:both}
+.dropdown .list-drop-Box-ic table {table-layout: fixed;}
+.dropdown .list-drop-Box-ic th,
+.dropdown .list-drop-Box-ic td {text-align: left; padding:15px 5px; border-right:1px solid #e4e4e4; line-height:1.2; letter-spacing: normal;}
+.dropdown .list-drop-Box-ic tr {border-bottom:1px solid #e4e4e4}
+.dropdown .list-drop-Box-ic th {font-size:14px; background-color: #f9f9f9; letter-spacing: -1px; text-align: center;}
+.dropdown .list-drop-Box-ic td {vertical-align: top;}
+.dropdown .list-drop-Box-ic td li.subTit {margin-top:20px !important;  font-size: 13px; color: #0c5dc0;}
+.dropdown .list-drop-Box-ic li.subTit:first-child {margin:0 !important}
+.dropdown .list-drop-Box-ic li a {display:block; width: 100%; padding:0 5px 5px; margin:0}
+
 
 .ssam .Section .will-nTit {
     font-size: 16px;

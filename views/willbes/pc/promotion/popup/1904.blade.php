@@ -46,7 +46,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>2020년 경찰시험 2차 합격수기 등록하기</h1>
+    <h1>2020년 경찰시험 최종 합격수기 등록하기</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -62,6 +62,8 @@
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
 
+            <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
+
             <div id="request">                
                 <div class="termsBx">
                     <h3 class="tit">[합격생 인증 정보]</h3>
@@ -69,31 +71,33 @@
                         @php
                             $takekind = '';
                             $takearea = '';
+                            $takeno = '';
                             $addcontent1 = '';
 
-                            if(empty($arr_cert['apply_result']['TakeKind']) != true) {
+                            if(empty($arr_cert['apply_result']['TakeKind']) === false) {
                                 $takekind = $arr_cert['apply_result']['TakeKind'];
                             }
-                            if(empty($arr_cert['apply_result']['TakeArea']) != true) {
+                            if(empty($arr_cert['apply_result']['TakeArea']) === false) {
                                 $takearea = $arr_cert['apply_result']['TakeArea'];
                             }
-                            if(empty($arr_cert['apply_result']['AddContent1']) != true) {
+                            if(empty($arr_cert['apply_result']['TakeNo']) === false) {
+                                $takeno = $arr_cert['apply_result']['TakeNo'];
+                            }
+                            if(empty($arr_cert['apply_result']['AddContent1']) === false) {
                                 $addcontent1 = $arr_cert['apply_result']['AddContent1'];
                             }
                         @endphp
 
                         <li><strong>회원명(아이디)</strong> <span>{{sess_data('mem_name')}}({{ substr(sess_data('mem_id'),0, (strlen(sess_data('mem_id'))-3)) }}***)</span></li>
                         <li><strong>응시 시험정보</strong>
-                            <select  name="TakeKind" id="TakeKind" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
+                            <select  name="TakeKind" id="TakeKind" {{empty($takekind) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">직렬선택</option>
                                 @foreach($arr_cert['kind_ccd'] as $key => $val)
-                                    @if($key != '711003')  {{--경행경채 제외--}}
-                                        <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
-                                    @endif
+                                    <option value="{{$key}}" {{($key == $takekind ? 'selected="selected"' : '')}} >{{$val}}</option>
                                 @endforeach
 
                             </select>
-                            <select id="TakeArea" name="TakeArea" {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
+                            <select id="TakeArea" name="TakeArea" {{empty($takearea) === false ? 'disabled="disabled"' : ''}}>
                                 <option value="">지역구분</option>
                                 @foreach($arr_cert['area_ccd'] as $key => $val)
                                     @if($key != '712018') {{--전국제외--}}
@@ -101,12 +105,12 @@
                                     @endif
                                 @endforeach
                             </select>
-                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{empty($arr_cert['apply_result']) != true ? $arr_cert['apply_result']['TakeNo'] : ''}}" placeholder="응시번호"  {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}>
+                            <input type="text" name="TakeNo" id="TakeNo"  numberOnly value="{{ $takeno }}" placeholder="응시번호" {{empty($takeno) === false ? 'disabled="disabled"' : ''}}>
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            {{--<input type="radio" id="AddContent11" name="AddContent1" value="필기합격" {{($addcontent1 == '필기합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">필기합격</label>--}}
-                            <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 최종합격" {{($addcontent1 == '1차 최종합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 최종합격</label>
+                            <input type="radio" id="AddContent12" name="AddContent1" value="2차 최종합격" {{($addcontent1 == '2차 최종합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent12"  class="mr10">2차 최종합격</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
@@ -173,32 +177,45 @@
 <!--willbes-Layer-PassBox//-->
 
 <script type="text/javascript">
+    var $regi_form_register = $('#regi_form_register');
+
     function fn_submit() {
-        var $regi_form_register = $('#regi_form_register');
         @if(empty($arr_cert) === false && $arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
                 alert("인증 신청을 할 수 없습니다.");return;
             @endif
 
             if ($('#TakeKind').val() == '') {
-                alert('직렬을 선택해 주세요.');$('#TakeKind').focus();return;
+                alert('직렬을 선택해 주세요.');
+                $('#TakeKind').focus();
+                return;
             }
             if ($('#TakeArea').val() == '') {
-                alert('지역을 선택해 주세요.');$('#TakeArea').focus();return;
+                alert('지역을 선택해 주세요.');
+                $('#TakeArea').focus();
+                return;
             }
             if ($('#TakeNo').val() == '') {
-                $('#TakeNo').focus();alert('응시번호를 등록해 주세요.');return;
+                alert('응시번호를 등록해 주세요.');
+                $('#TakeNo').focus();
+                return;
             }
             if ($("input:radio[name='AddContent1']").is(':checked') == false) {
-                $('#AddContent11').focus();alert('합격구분을 선택해 주세요.');return;
+                alert('합격구분을 선택해 주세요.');
+                $('#AddContent11').focus();
+                return;
             }
             if ($('#attachfile').val() == '') {
-                alert('인증파일을 등록해 주세요.');return;
+                alert('인증파일을 등록해 주세요.');
+                $('#attachfile').focus();
+                return;
             }
         @endif
 
         if ($('#attach_file').val() == '') {
-            alert('합격수기 파일을 등록해 주세요.');return;
+            alert('합격수기 파일을 등록해 주세요.');
+            $('#attach_file').focus();
+            return;
         } else {
             if(fileExtCheck($('#attach_file').val()) == false) {
                 return;
@@ -214,17 +231,18 @@
 
         @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
-                {{--인증 프로세스--}}
+                {{-- 인증 프로세스 --}}
                 var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
                     ajaxSubmit($regi_form_register, _check_url, function(ret) {
                     if(ret.ret_cd) {
                         //alert('정상적으로 등록되었습니다.');
                         submitEnd();
                     } else {
-                        alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");return;
+                        alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");
+                        return;
                     }
                 }, showValidateError, null, false, 'alert');
-                {{--인증 프로세스--}}
+                {{-- 인증 프로세스 --}}
             @else
                 submitEnd();
             @endif
@@ -243,9 +261,7 @@
         }
     }
 
-
     function submitEnd() {
-        var $regi_form_register = $('#regi_form_register');
         var _url = '{!! front_url('/event/registerStore') !!}';
 
         ajaxSubmit($regi_form_register, _url, function(ret) {
@@ -258,7 +274,6 @@
 
     function modifyFile()
     {
-        var $regi_form_register = $('#regi_form_register');
         var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
 
         if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }

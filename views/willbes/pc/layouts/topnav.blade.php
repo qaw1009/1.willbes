@@ -1,7 +1,13 @@
 <!-- Header -->
 <div id="Header" class="NGR c_both">
     <div class="widthAuto">
-        <div class="topnavTxt {{ SUB_DOMAIN }}">내 인생 모든 시험, <span class="tx-color">윌비스</span>로 합격하다!</div>
+        <div class="topnavTxt {{ SUB_DOMAIN }}">            
+            @if($__cfg['SiteCode'] == '2014')
+                경제적 자유, 수익이 늘어나는 <span class="tx-color">자동화 시스템</span> 만들기
+            @else   
+                내 인생 모든 시험, <span class="tx-color">윌비스</span>로 합격하다!
+            @endif
+        </div>
         <div class="loginDepth p_re">
             <ul class="myLog">
                 @if(strpos(strtoupper(current_url()), '/MEMBER/JOIN') === false)

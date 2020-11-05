@@ -46,7 +46,7 @@
 </style>
 
 <div class="willbes-Layer-PassBox NGR">
-    <h1>2020년 경찰시험 2차 합격수기 등록하기</h1>
+    <h1>2020년 경찰시험 최종 합격수기 등록하기</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -105,8 +105,8 @@
                         </li>
                         <li>
                             <strong>합격 인증 파일</strong>
-                            {{--<input type="radio" id="AddContent11" name="AddContent1" value="필기합격" {{($addcontent1 == '필기합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">필기합격</label>--}}
-                            <input type="radio" id="AddContent12" name="AddContent1" value="최종합격" {{($addcontent1 == '최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">최종합격</label>
+                            <input type="radio" id="AddContent11" name="AddContent1" value="1차 최종합격" {{($addcontent1 == '1차 최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass1"  class="mr10">1차 최종합격</label>
+                            <input type="radio" id="AddContent12" name="AddContent1" value="2차 최종합격" {{($addcontent1 == '2차 최종합격' ? 'checked' : '')}} {{empty($arr_cert['apply_result']) != true ? 'disabled="disabled"' : ''}}> <label for="pass2"  class="mr10">2차 최종합격</label>
                             <input type="file" name="attachfile" id="attachfile" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,

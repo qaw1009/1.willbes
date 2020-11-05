@@ -1,21 +1,23 @@
-@if($__cfg['SiteCode'] == '2017' || $__cfg['SiteCode'] == '2018') {{-- 임용 --}}
-<div id="QuickMenu" class="MainQuickMenuSSam NGR">
-    <ul id="dday_box"></ul>
-    <ul class="gobtn">
-        <li><a href="{{ site_url('/pass/board/schedule') }}">강의실배정표</a></li>
-        <li><a href="{{ site_url('/support/mobile/index') }}">모바일 수강안내</a></li>
-        <li><a href="{{ site_url('/support/qna/index') }}">1:1 상담</a></li>
-        <li><a href="{{ site_url('/event/list/ongoing') }}">이벤트</a></li>
-        <li><a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">재학생 러닝메이트</a></li>
-        <li><a href="#">TOP ▲</a></li>
-    </ul>
-</div>
+@if(in_array($__cfg['SiteCode'],['2017','2018']) === true) {{-- 임용 --}}
+    @if(strpos($_SERVER['REQUEST_URI'], '/promotion/index') === false) {{-- 프로모션 제외 --}}
+        <div id="QuickMenu" class="MainQuickMenuSSam NGR">
+            <ul id="dday_box"></ul>
+            <ul class="gobtn">
+                <li><a href="{{ site_url('/pass/board/schedule') }}">강의실배정표</a></li>
+                <li><a href="{{ site_url('/support/mobile/index') }}">모바일 수강안내</a></li>
+                <li><a href="{{ site_url('/support/qna/index') }}">1:1 상담</a></li>
+                <li><a href="{{ site_url('/event/list/ongoing') }}">이벤트</a></li>
+                <li><a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">재학생 러닝메이트</a></li>
+                <li><a href="#">TOP ▲</a></li>
+            </ul>
+        </div>
 
-<script>
-    $(function (){
-        getSubPageData(['dday']);
-    });
-</script>
+        <script>
+            $(function (){
+                getSubPageData(['dday']);
+            });
+        </script>
+    @endif
 @endif
 
 <script>

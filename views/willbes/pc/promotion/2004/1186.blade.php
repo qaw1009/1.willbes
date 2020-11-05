@@ -4,15 +4,9 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,8 +16,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
-        .skybanner ul li {padding-bottom:10px;}
+        .skybanner {position:fixed; top:250px; width:200px right:10px; z-index:1;}
+        .skybanner a {padding-bottom:10px;}
 
         .evtTop {background:#B7130F url(https://static.willbes.net/public/images/promotion/2020/06/1186_top_bg.jpg) no-repeat center top;}
 
@@ -63,12 +57,11 @@
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
-
+    {{--
     <div class="skybanner">
-        <ul>          
-            <li><a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a></li>
-        </ul>
-    </div>   
+        <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=281940" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2020/06/1486_sky.png"  title="소방면접 찍기특강" /></a>
+    </div>  
+    --}} 
 
       <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/06/1186_top.gif" title="소방전담 교수님의 완벽분석 해설강의">

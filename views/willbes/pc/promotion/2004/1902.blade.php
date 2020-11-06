@@ -35,7 +35,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top.jpg" alt="유튜브 구독 이벤트" usemap="#Map1902_01" border="0" />
             <map name="Map1902_01">
-                <area shape="rect" coords="260,1513,853,1600" href="#none" target="_blank" alt="라이브모드 구매하기" >
+                <area shape="rect" coords="260,1513,853,1600" href="#evt02" alt="라이브모드 구매하기" >
             </map>             
         </div>       
 
@@ -43,7 +43,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_01.jpg" alt="이벤트 안내" />
         </div>  
 
-        <div class="evtCtnsBox evt02">
+        <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM " target="_blank" alt="행정직">

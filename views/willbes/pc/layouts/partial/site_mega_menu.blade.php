@@ -609,7 +609,7 @@
                 <thead>
                     <tr>
                         <th rowspan="2" scope="col">교육학</th>
-                        <th colspan="2" scope="col">유.초등</th>
+                        <th colspan="2" scope="col">유 · 초등</th>
                         <th colspan="10" scope="col">중등</th>
                     </tr>
                     <tr>
@@ -647,10 +647,11 @@
                     </td>
                     <td>
                         <ul>
-                            <li class="subTit">국어<br>국어교육학</li>
+                            <li class="subTit">국어<br>문학 교육론</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983')}}">송원영</a></li>
                             <li class="subTit">국어문법</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51079?cate_code=3137&subject_idx=1983')}}">이원근</a></li>
+                            <li class="subTit">국어문법</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983')}}">권보민</a></li>
                         </ul>
                     </td>

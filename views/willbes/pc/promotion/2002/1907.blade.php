@@ -63,28 +63,28 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_top.jpg"  alt="" usemap="#link"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_top.jpg"  alt="기본이론종합반" usemap="#link"/>
             <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">2020년 11월 조기등로반 신청하기 ></a></div>
 		</div>
 
         <div class="evtCtnsBox wb_01" >
-			<img src="https://static.willbes.net/public/images/promotion/2020/11/1907_01.jpg"  alt=""/>			
+			<img src="https://static.willbes.net/public/images/promotion/2020/11/1907_01.jpg"  alt="2022년도 경찰과목 개편 내용"/>			
 		</div>
 
 		<div class="evtCtnsBox wb_02" >
-			<img src="https://static.willbes.net/public/images/promotion/2020/11/1907_02.jpg"  alt="" />
+			<img src="https://static.willbes.net/public/images/promotion/2020/11/1907_02.jpg"  alt="합격전략 어떻게 세워야 할까요?" />
 		</div>    
 
 		<div class="evtCtnsBox wb_03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_03.jpg"  alt="전국모의고사 이벤트"/>       
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_03.jpg"  alt="종합반 스케줄"/>       
         </div>
         
         <div class="evtCtnsBox wb_04" id="wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_04.jpg"  alt="전국모의고사 이벤트"/>       
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_04.jpg"  alt="선접수 이벤트"/>       
 		</div>
 
         <div class="evtCtnsBox wb_05" id="wb_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_05.jpg"  alt="전국모의고사 신청하기"  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_05.jpg"  alt="기본이론종합반"  />
             <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">기본이론 <span>개편과목까지</span> 준비하기 ></a></div>
         </div>           
         

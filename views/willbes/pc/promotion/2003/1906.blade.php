@@ -21,8 +21,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1906_top.jpg" alt="유튜브 구독 이벤트" usemap="#Map1906_01" border="0" />
-            <map name="Map1906_01">
-              <area shape="rect" coords="67,1554,525,1615" href="https://pass.willbes.net/lecture/index/cate/3103/pattern/free" target="_blank" alt="강의보기">
+            <map name="Map1906_01" id="Map1906_01">
+                <area shape="rect" coords="67,1553,257,1615" href="https://pass.willbes.net/lecture/index/cate/3103/pattern/free" target="_blank" alt="강의보기" > 
+                <area shape="rect" coords="330,1555,522,1614" href="https://pass.willbes.net/lecture/index/cate/3103/pattern/free" target="_blank" alt="강의보기">
+                <area shape="rect" coords="597,1553,785,1614" href="#none" onclick="javascript:alert('11월 중순 업로드 예정');">
+                <area shape="rect" coords="863,1555,1052,1615" href="#none" onclick="javascript:alert('12월 업로드 예정');">
             </map>  
         </div>       
 
@@ -32,7 +35,7 @@
               <area shape="rect" coords="213,890,496,939" href="https://www.youtube.com/channel/UCM69uucXDSE66-8NDcyvIHA" target="_blank" alt="채널구독">
               <area shape="rect" coords="627,893,906,937" href="javascript:pullOpen()" alt="설문조사">
               <area shape="rect" coords="215,1083,495,1130" href="javascript:popup();" alt="구독인증">
-              <area shape="rect" coords="625,1084,905,1131" href="https://pass.willbes.net/lecture/index/cate/3103/pattern/free" target="_blank">
+              <area shape="rect" coords="625,1084,905,1131" href="#Map1906_01">
             </map>  
         </div>  
     </div>

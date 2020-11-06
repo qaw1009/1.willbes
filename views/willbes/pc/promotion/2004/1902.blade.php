@@ -31,7 +31,7 @@
 
         /* 이용안내 */
         .wb_info {padding:100px 0;}
-        .guide_box{width:960px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
+        .guide_box{width:1120px; margin:0 auto; border:2px solid #202020; padding:50px; text-align:left; word-break:keep-all}
         .guide_box h2 {font-size:30px; margin-bottom:30px}
         .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
         .guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
@@ -39,6 +39,10 @@
         .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:13px;}
         .guide_box dd:after {content:""; display:block; clear:both}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}   
+        .wb_info table {margin:20px 0; border-top:1px solid #e4e4e4; border-left:1px solid #e4e4e4;}
+        .wb_info th,
+        .wb_info td {text-align:center; padding:10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
+        .wb_info th {font-weight:bold; color:#333; background:#f6f0ec;}	
         
     </style>
 
@@ -199,7 +203,7 @@
                     <dd>
                         <ol>
                             <li>상품은 윌비스공무원학원 노량진 캠퍼스 현장강의 종료일까지 유효합니다.</li>
-                            <li>본 상품은 결제가 완료되는 즉시 수강이 자동 시작됩니다.</li>
+                            <li>본 상품은 현장강의와 동일한 시간에 수강 가능합니다.</li>
                             <li>본 상품 이용 시 일시정지/연장/재수강은 제공되지 않습니다.</li>
                         </ol>
                     </dd>
@@ -211,8 +215,7 @@
                                 제공되지 않을 수 있습니다.</li>
                             <li>강의 시간에 출석하지 못한 경우 별도의 보충동영상은 제공되지 않습니다.</li>
                             <li>본 상품은 PC/모바일웹/윌비스 모바일앱을 통해 수강하실 수 있습니다.</li>
-                            <li>본 상품은 현장강의와 동일한 시간에 수강할 수 있으므로, 휴강 기능을 이용할 수 없습니다.</li>
-                            <li>본 PASS 이용 시 PC/모바일 기기 2대 이상 동시접속은 불가합니다.</li>                            
+                            <li>본 상품은 현장강의와 동일한 시간에 수강할 수 있으므로, 휴강 기능을 이용할 수 없습니다.</li>                           
                         </ol>
                     </dd>
 
@@ -223,21 +226,61 @@
                         </ol>
                     </dd>
 
-                    <dt>환불정책  (※ 환불 문의 : 1544-0330)</dt>
+                    <dt>환불정책 (※ 환불 문의 : 1544-0330)</dt>
                     <dd>
                         <ol>
-                            <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
-                            <li>2강 이하 수강 시에만 전액 환불 가능합니다.</li>
-                            <li>자료 다운로드 시 수강한 것으로 간주됩니다.</li>
-                            <li>전액 환불은 1회로 제한됩니다.</li>
-                            <li>본 상품은 할인가 적용된 특별기획 상품이므로 부분 환불은 정가 대비 사용일수에 따라 차감 후 환불됩니다.</li>
+                            <li>
+                                <strong>수강료 환불규정 (학원의 설립 및 과외교습에 관한 법률 시행령 제 18조 제 3항 별표 4)</strong>
+                                <table>
+                                    <tr>
+                                        <th>수강료징수기간</th>
+                                        <th>반환 사유발생일</th>
+                                        <th>반환금액</th>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">1개월 이내인 경우</td>
+                                        <td>교습개시 이전</td>
+                                        <td>이미 납부한 수강료 전액</td>
+                                    </tr>
+                                    <tr>
+                                        <td>총 교습 시간의 1/3 경과 전</td>
+                                        <td>이미 납부한수강료의 2/3 해당</td>
+                                    </tr>
+                                    <tr>
+                                        <td>총 교습 시간의 1/2 경과 전</td>
+                                        <td>이미 납부한수강료의 1/2 해당</td>
+                                    </tr>
+                                    <tr>
+                                        <td>총 교습 시간의 1/2 경과 후</td>
+                                        <td>반환하지아니함</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">1개월 초과인 경우</td>
+                                        <td>교습 개시 이전</td>
+                                        <td>이미 납부한 수강료 전액</td>
+                                    </tr>
+                                    <tr>
+                                        <td>교습 개시 이후</td>
+                                        <td>반환 사유가발생한 당해 월의 반환대상 수강료와</br />
+                                        나머지 월의 수강료 전액을 합산한 금액</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>총 교습 시간은 개강월로부터 종강월까지의 수업 개월 수를 말하며, 환불은 1개월을 기준으로 합니다.</li>
+                            <li>환불 접수는 학원 방문 접수만 가능하며, 수강증을 필히 제출하여야 합니다.</li>
+                            <li>카드로 결제하신 경우 결제 하셨던 카드를 지참하셔야 하며, 현금/계좌이체로 결제하신 경우 수강생 본인 명의의 통장으로만 환불금 입금 처리됩니다.</li>
+                            <li>환불 기준일은 실제 수강 여부와 상관없이 환불 신청 날짜 (환불 신청서 작성 날짜)를 기준으로 합니다.</li>        		
+                            <li>개강 이후 종합반 과목 수 변경을 원하실 경우, 구매하신 상품을 환불 규정에 의거 환불한 후 재등록 하셔야 합니다.</li>
+                            <li>친구추천할인 이벤트 적용 대상자의 경우, 추천/피추천인 환불 시 다른 피추천/추천인이 정상금액으로 재결제 해야 환불이 진행됩니다.</li>
+                            <li>개강일이 지난 후에 강의 결제시, 지난 강의는 동영상으로 제공이 되며, 이후 강의 환불은 결제일과 상관없이 개강일을 기준으로 환불금이 산정됩니다.</li>
+                            <li>이미 개강한 강의를 구매하더라도 수강료는 동일합니다.</li>
                         </ol>
                     </dd>
 
                     <dt>유의사항</dt>
                     <dd>
                         <ol>
-                            <li>아이디 공유 적발 시 회원 자격이 박탈되며, 환불은 불가함을 원칙으로 합니다. 추가적인 불법공유행위 적발 시 형사고발 조치가 가능합니다.</li>
+                            <li>아이디 공유 적발 시 회원 자격이 박탈되며, 환불은 불가능합니다.</li>
                             <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
                         </ol>
                     </dd>

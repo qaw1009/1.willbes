@@ -216,6 +216,7 @@ class Home extends \app\controllers\FrontController
             $data['gallery'] = $this->_gallery();
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+            $data['onAir'] = $this->_onAir();
         } else {
             $data['notice'] = $this->_boardNotice(5);
         }

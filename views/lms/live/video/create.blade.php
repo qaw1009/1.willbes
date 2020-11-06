@@ -40,11 +40,13 @@
                 <label class="control-label col-md-2" for="lec_room_name">강의실명 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">
-                    <select class="form-control" id="class_room_idx" name="class_room_idx" required="required" title="강의실명">
+                    <select class="form-control" id="class_room_idx" name="class_room_idx" required="required" title="강의실명" @if($method == 'POST') disabled="disabled" @endif>
                         <option value="">강의실명</option>
-                        @foreach($list_class_room as $row)
-                            <option value="{{ $row['CIdx'] }}" class="{{ $row['CampusCcd'] }}" @if($method == 'PUT' && ($row['CIdx'] == $data['CIdx'])) selected="selected" @endif>{{ $row['ClassRoomName'] }}</option>
-                        @endforeach
+                        @if(empty($arr_site_class_room[$data['SiteCode']][$data['CampusCcd']]) === false)
+                            @foreach($arr_site_class_room[$data['SiteCode']][$data['CampusCcd']] as $room_idx => $room_name)
+                                <option value="{{ $room_idx }}" @if($method == 'PUT' && ($room_idx == $data['CIdx'])) selected="selected" @endif>{{ $room_name }}</option>
+                            @endforeach
+                        @endif
                     </select>
                 </div>
                 <label class="control-label col-md-2" for="order_num">정렬
@@ -105,9 +107,30 @@
 
                 // site-code에 매핑되는 select box 자동 변경
                 $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-                $regi_form.find('select[name="class_room_idx"]').chained("#campus_ccd");
+                // $regi_form.find('select[name="class_room_idx"]').chained("#campus_ccd");
 
                 $(document).ready(function() {
+                    // 운영사이트 선택
+                    $regi_form.on('change', 'select[name="site_code"]', function() {
+                        $("#class_room_idx").attr("disabled",true);
+                        $('#campus_ccd, #class_room_idx').val('');
+                    });
+
+                    // 캠퍼스 선택
+                    $regi_form.on('change', 'select[name="campus_ccd"]', function() {
+                        var class_room_data = {!! json_encode($arr_site_class_room) !!};
+                        var site_code = $('#site_code option:selected').val();
+                        var campus_ccd = $(this).val();
+                        var option_html = '<option value="">강의실명</option>';
+
+                        if (typeof class_room_data[site_code][campus_ccd] !== 'undefined') {
+                            $.each(class_room_data[site_code][campus_ccd], function (room_idx, room_name) {
+                                option_html += '<option value="'+ room_idx +'">' + room_name + '</option>';
+                            });
+                        }
+                        $("#class_room_idx").html(option_html).attr("disabled",false);
+                    });
+
                     // 등록
                     $regi_form.submit(function() {
                         var _url = '{{ site_url('/live/videoManager/store/') }}';

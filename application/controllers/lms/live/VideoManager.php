@@ -84,6 +84,12 @@ class VideoManager extends \app\controllers\BaseController
         //강의실 조회
         $list_class_room = $this->classRoomModel->listClassRoom(['EQ' => ['A.IsUse' => 'Y']], null, null, ['CIdx' => 'asc']);
 
+        // 사이트별 강의실 셋팅
+        $arr_site_class_room = [];
+        foreach ($list_class_room as $key => $val){
+            $arr_site_class_room[$val['SiteCode']][$val['CampusCcd']][$val['CIdx']] = $val['ClassRoomName'];
+        }
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
@@ -98,7 +104,7 @@ class VideoManager extends \app\controllers\BaseController
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
-            'list_class_room' => $list_class_room,
+            'arr_site_class_room' => $arr_site_class_room,
             'idx' => $idx,
             'data' => $data
         ]);

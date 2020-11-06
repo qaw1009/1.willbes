@@ -140,7 +140,13 @@
             </div>
         </div>
 
-        <div class="Section mb70 NSK">
+        <div class="Section mt50">
+            <div class="widthAuto bnSecbar01">
+                {!! banner_html(element('메인_하단띠배너', $data['arr_main_banner'])) !!}
+            </div>
+        </div>
+
+        <div class="Section mt70 mb70 NSK">
             <div class="widthAuto">
                 <div class="willbesNews">
                     <div class="will-listTit NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></div>

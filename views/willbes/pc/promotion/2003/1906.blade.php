@@ -57,7 +57,10 @@
         function popup(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
-            @if(empty($arr_promotion_params['cert']) === true)
+            @if($survey_count < 1)
+                alert('설문조사 참여 후 인증이 가능합니다.');
+                return;
+            @elseif(empty($arr_promotion_params['cert']) === true)
                 alert('인증 정보를 찾을 수 없습니다.');
                 return;
             @else

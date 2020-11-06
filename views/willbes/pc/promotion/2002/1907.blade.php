@@ -11,7 +11,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
@@ -64,7 +64,7 @@
 
         <div class="evtCtnsBox wb_top" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_top.jpg"  alt="기본이론종합반" usemap="#link"/>
-            <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">2020년 11월 조기등로반 신청하기 ></a></div>
+            <div class="NSK-Black"><a href="#none" onclick="javascript:alert('2022년 개편과목대비\n조기등록반\n☞학원으로 문의 바랍니다.\n*경찰학원 1544-0336*');">2020년 11월 조기등로반 신청하기 ></a></div>
 		</div>
 
         <div class="evtCtnsBox wb_01" >
@@ -85,7 +85,7 @@
 
         <div class="evtCtnsBox wb_05" id="wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_05.jpg"  alt="기본이론종합반"  />
-            <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">기본이론 <span>개편과목까지</span> 준비하기 ></a></div>
+            <div class="NSK-Black"><a href="#none" onclick="javascript:alert('2022년 개편과목대비\n조기등록반\n☞학원으로 문의 바랍니다.\n*경찰학원 1544-0336*');">기본이론 <span>개편과목까지</span> 준비하기 ></a></div>
         </div>           
         
         <div class="wb_ctsInfo NSK" id="ctsInfo">

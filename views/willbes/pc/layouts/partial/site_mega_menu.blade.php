@@ -604,7 +604,7 @@
         </div>
     @elseif($__cfg['SiteCode'] == '2017')
         {{-- 임용 --}}
-        <div class="drop-Box list-drop-Box list-drop-Box-ic">
+        <div class="drop-Box list-drop-Box list-drop-Box-ssam">
             <table class="ssamProf">
                 <thead>
                     <tr>

@@ -43,23 +43,27 @@
 
     <script>
         function pullOpen(){
-            @if(sess_data('is_login') != true)
-                alert('로그인 후 이용하여 주십시오.');
-            @endif
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
             @if(empty($arr_promotion_params['SsIdx']) === true)
-            alert('설문정보가 없습니다.');
-            return;
+                alert('설문을 찾을 수 없습니다.');
+                return;
             @else
-            var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+                var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
 
         function popup(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+
+            @if(empty($arr_promotion_params['cert']) === true)
+                alert('인증 정보를 찾을 수 없습니다.');
+                return;
+            @else
+                var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+            @endif
         }
     </script>
 

@@ -34,7 +34,7 @@
     .termsBx input[type=button] {display:inline-block; color:#fff; background:#4582cd; text-align:center; padding:0 15px; height:26px; line-height:26px; border:0}
     .youtubeID {border:1px solid #c14842; padding:10px; margin:20px 0; font-size:14px; font-weight:bold; color:#c14842; background:#fdeeed}
     .youtubeID input {margin-left:10px}
-	
+    
 	.termsBx01{padding:0px 20px; height:100px; overflow:hidden; overflow-y:scroll; border:1px solid #cecece}
 	.termsBx01 h2{margin:10px 0;font-weight:bold;font-size:14px}
 	.termsBx01 .st  {margin-top:15px}
@@ -51,21 +51,6 @@
     <h1>윌비스 7급 PSAT 유튜브 채널 구독 인증</h1>
     <div id="popup" class="Layerpop" >
         <form name="regi_form_register" id="regi_form_register" enctype="multipart/form-data">
-            {!! csrf_field() !!}
-            {!! method_field($arr_base['method']) !!}
-            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $arr_base['data']['ElIdx'] }}"/>
-            <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}">
-            <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
-            <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
-            <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
-            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
-
-            <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
-            <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
-
-            <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
-
             <div id="request">                
                 <div class="termsBx">
                     <h3 class="tit">[혜택안내]</h3>
@@ -121,8 +106,8 @@
                 </div>
                 
                 <div class="mt10">
-                    위의 내용을 이해하였으며, 위와 같은 개인정보 수집/이용 내용에
-                    <input type="radio" id="is_chk1" name="is_chk" value="Y" class="ml10"> <label for="is_chk1">동의합니다.</label>
+                    위의 내용을 이해하였으며, 위와 같은 개인정보 수집/이용 내용에<br>
+                    <input type="radio" id="is_chk1" name="is_chk" value="Y"> <label for="is_chk1">동의합니다.</label>
                     <input type="radio" id="is_chk2" name="is_chk" value="N" class="ml10"> <label for="is_chk2">동의하지 않습니다.</label>
                 </div>
 
@@ -135,119 +120,4 @@
 	</div>
 </div>
 <!--willbes-Layer-PassBox//-->
-
-<script type="text/javascript">
-    var $regi_form_register = $('#regi_form_register');
-
-    function fn_submit() {
-        @if(empty($arr_cert) === false && $arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
-            @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
-                alert("인증 신청을 할 수 없습니다.");return;
-            @endif
-
-            if ($('#TakeKind').val() == '') {
-                alert('직렬을 선택해 주세요.');
-                $('#TakeKind').focus();
-                return;
-            }
-            if ($('#TakeArea').val() == '') {
-                alert('지역을 선택해 주세요.');
-                $('#TakeArea').focus();
-                return;
-            }
-            if ($('#TakeNo').val() == '') {
-                alert('응시번호를 등록해 주세요.');
-                $('#TakeNo').focus();
-                return;
-            }
-            if ($("input:radio[name='AddContent1']").is(':checked') == false) {
-                alert('합격구분을 선택해 주세요.');
-                $('#AddContent11').focus();
-                return;
-            }
-            if ($('#attachfile').val() == '') {
-                alert('인증파일을 등록해 주세요.');
-                $('#attachfile').focus();
-                return;
-            }
-        @endif
-
-        if ($('#attach_file').val() == '') {
-            alert('합격수기 파일을 등록해 주세요.');
-            $('#attach_file').focus();
-            return;
-        } else {
-            if(fileExtCheck($('#attach_file').val()) == false) {
-                return;
-            }
-        }
-
-        if ($("input:radio[name='is_chk']:checked").val() != 'Y') {
-            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-            return;
-        }
-
-        if (!confirm('저장하시겠습니까?')) { return true; }
-
-        @if($arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
-            @if($arr_cert['cert_data']["IsCertAble"] == 'Y')
-                {{-- 인증 프로세스 --}}
-                var _check_url = '{!! front_url('/CertApply/checkTakeNumber/') !!}';
-                    ajaxSubmit($regi_form_register, _check_url, function(ret) {
-                    if(ret.ret_cd) {
-                        //alert('정상적으로 등록되었습니다.');
-                        submitEnd();
-                    } else {
-                        alert("인증 확인이 불가합니다. 운영자에게 문의하여 주십시오.");
-                        return;
-                    }
-                }, showValidateError, null, false, 'alert');
-                {{-- 인증 프로세스 --}}
-            @else
-                submitEnd();
-            @endif
-        @else
-                submitEnd();
-        @endif
-    }
-
-    function fileExtCheck(strfile) {
-        if( strfile != "" ){
-            var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
-                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
-                return false;
-            }
-        }
-    }
-
-    function submitEnd() {
-        var _url = '{!! front_url('/event/registerStore') !!}';
-
-        ajaxSubmit($regi_form_register, _url, function(ret) {
-            if(ret.ret_cd) {
-                alert(ret.ret_msg);
-                window.close();
-            }
-        }, showValidateError, null, false, 'alert');
-    }
-
-    function modifyFile()
-    {
-        var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
-
-        if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
-
-        ajaxSubmit($regi_form_register, _url, function(ret) {
-            if(ret.ret_cd) {
-                alert(ret.ret_msg);
-                window.close();
-            }
-        }, showValidateError, null, false, 'alert');
-    }
-
-    $("input:text[numberOnly]").on("keyup", function() {
-        $(this).val($(this).val().replace(/[^0-9]/g,""));
-    });
-</script>
 @stop

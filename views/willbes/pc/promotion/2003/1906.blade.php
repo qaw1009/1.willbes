@@ -30,8 +30,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1906_01.jpg" alt="이벤트 안내" usemap="#Map1906_02" border="0" />
             <map name="Map1906_02">
               <area shape="rect" coords="213,890,496,939" href="https://www.youtube.com/channel/UCM69uucXDSE66-8NDcyvIHA" target="_blank" alt="채널구독">
-              <area shape="rect" coords="627,893,906,937" href="#none" alt="설문조사">
-              <area shape="rect" coords="215,1083,495,1130" href="#none" onclick="javascript:popup();" alt="구독인증">
+              <area shape="rect" coords="627,893,906,937" href="javascript:pullOpen()" alt="설문조사">
+              <area shape="rect" coords="215,1083,495,1130" href="javascript:popup();" alt="구독인증">
               <area shape="rect" coords="625,1084,905,1131" href="https://pass.willbes.net/lecture/index/cate/3103/pattern/free" target="_blank">
             </map>  
         </div>  
@@ -39,10 +39,25 @@
     <!-- End Container -->
 
     <script>
+        function pullOpen(){
+            @if(sess_data('is_login') != true)
+                alert('로그인 후 이용하여 주십시오.');
+            @endif
+
+            @if(empty($arr_promotion_params['SsIdx']) === true)
+            alert('설문정보가 없습니다.');
+            return;
+            @else
+            var url = "{{front_url('/eventSurvey/index/' . $arr_promotion_params['SsIdx'])}}";
+            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @endif
+        }
+
         function popup(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
         }
     </script>
+
 @stop

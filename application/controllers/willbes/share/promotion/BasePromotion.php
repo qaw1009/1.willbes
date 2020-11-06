@@ -179,6 +179,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 설문조사 참여 여부 체크
         $add_frame_params = '';
+        $survey_count = '';
         if(empty($arr_promotion_params['survey_chk_yn']) === false && $arr_promotion_params['survey_chk_yn'] == 'Y' && empty($arr_promotion_params['SsIdx']) === false){
             $survey_count = $this->surveyModel->findSurveyForAnswer($arr_promotion_params['SsIdx']);
             $add_frame_params = '&survey_chk_yn=Y&survey_count=' . $survey_count;

@@ -647,11 +647,11 @@
                     </td>
                     <td>
                         <ul>
-                            <li class="subTit">국어<br>문학 교육론</li>
+                            <li class="subTit">국어/문학<br>교육론</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983')}}">송원영</a></li>
-                            <li class="subTit">국어문법</li>
+                            <li class="subTit">문법</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51079?cate_code=3137&subject_idx=1983')}}">이원근</a></li>
-                            <li class="subTit">국어문법</li>
+                            <li class="subTit">문법</li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983')}}">권보민</a></li>
                         </ul>
                     </td>

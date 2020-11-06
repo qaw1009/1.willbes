@@ -57,7 +57,8 @@
                     <li>
                         <a href="{{ front_url($show_url . 'subject_idx=' . $subject_idx) }}">
                             <img src="{{ $row['ProfReferData']['prof_index_img'] or '' }}" alt="{{ $row['ProfNickName'] }}">
-                            <div>
+                            <div style="top:12px">
+                                <span style="color:gray">{{ $row['SubjectName'] }}</span>
                                 <span>{{ $row['ProfNickName'] }}</span>
                                 {{ $row['AppellationCcdName'] }}
                             </div>

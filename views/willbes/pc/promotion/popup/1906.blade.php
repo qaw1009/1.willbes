@@ -65,7 +65,7 @@
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
 
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
-            <input type="hidden" name="cert_youtube" value="Y">
+            <input type="hidden" name="is_youtube" value="Y">
 
             <div id="request">                
                 <div class="termsBx">
@@ -145,7 +145,7 @@
             @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
                 alert("인증 신청을 할 수 없습니다.");return;
 
-                if ($('#TakeNo').val() == '') {
+                if ($('#AddContent1').val() == '') {
                     alert('유튜브 정보를 입력해주세요.');
                     $('#AddContent1').focus();
                     return;

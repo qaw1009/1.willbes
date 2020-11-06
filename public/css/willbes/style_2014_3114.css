@@ -114,6 +114,8 @@
 }
 .njob2 .tipLec li a {margin-bottom:10px; display:block}
 
+.njob2 .bnSecbar01 .slider{height:140px; overflow:hidden}
+
 /* Main Container : Notice : noticeTabs */
 .njob2 .willbesNews {width:466px; height:297px; float:left}
 .njob2 .willbesNews .will-listTit {margin-bottom:20px}

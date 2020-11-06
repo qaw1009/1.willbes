@@ -1928,13 +1928,15 @@ table.auTable tr td {
     border-color: transparent transparent #acacac;
     border-width: 6px;
 }
+
 .drop-Box:after {
     top: -10px;
     left: 50%;
     margin-left: -5px;
-    border-color: transparent transparent #fff;
+    border-color: transparent ;
     border-width: 5px;
 }
+
 .drop-Box ul li {
     width: 100%;
     line-height: 18px;

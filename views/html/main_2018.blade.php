@@ -15,7 +15,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#none">강의안내/신청</a>
-                    <div class="drop-Box list-drop-Box list-drop-Box-ic">
+                    <div class="drop-Box list-drop-Box list-drop-Box-ssam">
                         {{--
                         <ul>
                             <li class="Tit">교육학</li>

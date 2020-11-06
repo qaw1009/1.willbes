@@ -60,7 +60,7 @@
                             <img src="{{ $row['ProfReferData']['prof_index_img'] or '' }}" alt="{{ $row['ProfNickName'] }}">
                             <div @if($__cfg['SiteGroupCode'] == '2011') style="top:12px" @endif>
                                 @if($__cfg['SiteGroupCode'] == '2011')
-                                    <span style="color:gray">교수관리에 등록된 슬로건</span>
+                                    <span style="color:gray">교수관리에 등록된 슬로건 노출함</span>
                                 @endif
                                 <span>{{ $row['ProfNickName'] }}</span>
                                 {{ $row['AppellationCcdName'] }}

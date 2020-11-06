@@ -39,7 +39,11 @@
                         @endif
                     </div>
                     <div class="view-wrap">
-                        <div class="all-view subBtn NSK"><a href="{{ front_url('/offLecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">개설강좌 전체보기 ></a></div>
+                        <div class="all-view subBtn NSK">
+                            @if($__cfg['SiteGroupCode'] !== '1011')
+                                <a href="{{ front_url('/offLecture/index/cate/' . $__cfg['CateCode'] . '/?prof_idx=' . $data['ProfIdx']) }}">개설강좌 전체보기 ></a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

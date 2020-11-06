@@ -64,7 +64,7 @@
 
         <div class="evtCtnsBox wb_top" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1907_top.jpg"  alt="기본이론종합반" usemap="#link"/>
-            <div class="NSK-Black"><a href="#none" onclick="javascript:alert('2022년 개편과목대비\n조기등록반\n☞학원으로 문의 바랍니다.\n*경찰학원 1544-0336*');">2020년 11월 조기등로반 신청하기 ></a></div>
+            <div class="NSK-Black"><a href="#none" onclick="javascript:alert('2022년 개편과목대비\n조기등록반\n☞학원으로 문의 바랍니다.\n*경찰학원 1544-0336*');">2020년 11월 조기등록반 신청하기 ></a></div>
 		</div>
 
         <div class="evtCtnsBox wb_01" >

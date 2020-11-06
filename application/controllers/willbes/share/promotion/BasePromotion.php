@@ -207,6 +207,7 @@ class BasePromotion extends \app\controllers\FrontController
             'ismobile' => $ismobile,
             'lec_type' => $this->_lec_type_ccd,
             'pattern_ccd' => $this->_pattern_ccd,
+            'survey_count' => $survey_count,
         ], false);
     }
 

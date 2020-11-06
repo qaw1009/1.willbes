@@ -131,6 +131,7 @@ class CertApplyFModel extends WB_Model
         try {
 
             $cert_idx = element('CertIdx', $input);
+            $file_chk = element('file_chk', $input);
             $certtypeccd = element('CertTypeCcd', $input);
 
             $cert_data = $this->findCertByCertIdx($cert_idx);
@@ -147,23 +148,25 @@ class CertApplyFModel extends WB_Model
                 throw new \Exception('이미 신청하신 내역이 존재합니다.');
             }
 
-            $this->load->library('upload');
-            $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
-            $file_name = $certtypeccd.'-'.date("YmdHis").rand(100,999);
-            
-            //첨부자료 등록
-            $upload_result = $this->upload->uploadFile('file','attachfile',$file_name,$file_path,'overwrite:false');
+            if($file_chk == 'Y'){
+                $this->load->library('upload');
+                $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
+                $file_name = $certtypeccd.'-'.date("YmdHis").rand(100,999);
 
-            if(is_array($upload_result) === false) {
-                //throw new \Exception('파일 등록에 실패했습니다.');
-                throw new \Exception($upload_result);
-            }
+                //첨부자료 등록
+                $upload_result = $this->upload->uploadFile('file','attachfile',$file_name,$file_path,'overwrite:false');
 
-            //echo var_dump($upload_result);exit;
-            if(empty($upload_result) == false) {
-                $AttachFilePath = $this->upload->_upload_url.$file_path.'/';
-                $AttachFileReal= $upload_result[0]['client_name'];
-                $AttachFileName= $upload_result[0]['file_name'];
+                if(is_array($upload_result) === false) {
+                    //throw new \Exception('파일 등록에 실패했습니다.');
+                    throw new \Exception($upload_result);
+                }
+
+                //echo var_dump($upload_result);exit;
+                if(empty($upload_result) == false) {
+                    $AttachFilePath = $this->upload->_upload_url.$file_path.'/';
+                    $AttachFileReal= $upload_result[0]['client_name'];
+                    $AttachFileName= $upload_result[0]['file_name'];
+                }
             }
 
             $data = [

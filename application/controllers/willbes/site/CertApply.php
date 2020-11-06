@@ -128,8 +128,14 @@ class CertApply extends \app\controllers\FrontController
      */
     public function checkTakeNumber()
     {
-        if (empty($this->_reqP('CertIdx')) || empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
-            return $this->json_error('입력 정보가 비정상입니다.');
+        if(empty($this->_reqP('cert_youtube')) === false){ // 유튜브 인증시 체크
+            if (empty($this->_reqP('CertIdx'))) {
+                return $this->json_error('입력 정보가 비정상입니다.');
+            }
+        }else{
+            if (empty($this->_reqP('CertIdx')) || empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
+                return $this->json_error('입력 정보가 비정상입니다.');
+            }
         }
 
         //인증식별자

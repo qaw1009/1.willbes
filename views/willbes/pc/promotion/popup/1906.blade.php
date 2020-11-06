@@ -58,13 +58,14 @@
             <input type="hidden" id="userId" name="userId" value="{{sess_data('mem_id')}}">
             <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
             <input type="hidden" name="register_type" value="promotion"/>
-            <input type="hidden" name="file_chk" value="Y"/>
+            <input type="hidden" name="file_chk" value="N"/>
             <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
 
             <input type="hidden" name="CertIdx" id="CertIdx" value="{{$arr_cert['cert_idx']}}">
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
 
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
+            <input type="hidden" name="cert_youtube" value="Y">
 
             <div id="request">                
                 <div class="termsBx">
@@ -82,7 +83,7 @@
 
                     <div class="youtubeID">
                         유튜브 아이디(혹은 닉네임)
-                        <input type="text" name="TakeNo" id="TakeNo" >
+                        <input type="text" name="AddContent1" id="AddContent1" value="{{$arr_cert['apply_result']['AddContent1'] or ''}}" {{empty($arr_cert['apply_result']['AddContent1']) === false ? 'disabled="disabled"' : ''}}>
                     </div>
 
                     <div class="mt10">
@@ -143,44 +144,14 @@
         @if(empty($arr_cert) === false && $arr_cert['cert_data']['ApprovalStatus'] != 'Y' )
             @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
                 alert("인증 신청을 할 수 없습니다.");return;
+
+                if ($('#TakeNo').val() == '') {
+                    alert('유튜브 정보를 입력해주세요.');
+                    $('#AddContent1').focus();
+                    return;
+                }
             @endif
-
-            if ($('#TakeKind').val() == '') {
-                alert('직렬을 선택해 주세요.');
-                $('#TakeKind').focus();
-                return;
-            }
-            if ($('#TakeArea').val() == '') {
-                alert('지역을 선택해 주세요.');
-                $('#TakeArea').focus();
-                return;
-            }
-            if ($('#TakeNo').val() == '') {
-                alert('응시번호를 등록해 주세요.');
-                $('#TakeNo').focus();
-                return;
-            }
-            if ($("input:radio[name='AddContent1']").is(':checked') == false) {
-                alert('합격구분을 선택해 주세요.');
-                $('#AddContent11').focus();
-                return;
-            }
-            if ($('#attachfile').val() == '') {
-                alert('인증파일을 등록해 주세요.');
-                $('#attachfile').focus();
-                return;
-            }
         @endif
-
-        if ($('#attach_file').val() == '') {
-            alert('합격수기 파일을 등록해 주세요.');
-            $('#attach_file').focus();
-            return;
-        } else {
-            if(fileExtCheck($('#attach_file').val()) == false) {
-                return;
-            }
-        }
 
         if ($("input:radio[name='is_chk']:checked").val() != 'Y') {
             alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');

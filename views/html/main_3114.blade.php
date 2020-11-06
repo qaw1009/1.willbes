@@ -220,9 +220,9 @@
         </div>
     </div>
 
-    <div class="Section3 pb100">
+    <div class="Section3">
         <div class="widthAuto mt70">
-            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 수강생 생생 리얼후기</div> 
+            {{--<div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 수강생 생생 리얼후기</div>--}}
             <ul class="tipLec NSK-Black">
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_01.png" alt="김정한"></a></li>
                 <li><a href="#nnoe"><img src="https://static.willbes.net/public/images/promotion/main/3114_272x153_tip_02.png" alt="김경은"></a></li>
@@ -232,7 +232,16 @@
         </div>
     </div>
 
-    <div class="Section mb70 NSK">
+    <div class="Section mt50">
+        <div class="widthAuto bnSecbar01">
+            <div class="slider">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_bn_1120x140.png" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_bn_1120x140.png" alt="배너명"></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section mt70 mb70 NSK">
         <div class="widthAuto">  
             <div class="willbesNews">
                 <div class="will-listTit NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 공지사항 <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></div>

@@ -72,9 +72,11 @@
                         @endif
                     </div>
                     <div class="all-view subBtn NSK">
+                        @if($__cfg['SiteGroupCode'] !== '1011')
                         <a href="{{ site_url('/lecture/index/cate/' . $__cfg['CateCode'] . '/pattern/only/?prof_idx=' . $data['ProfIdx']) .'&subject_idx=' }}">
                             개설강좌 전체보기 >
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -27,11 +27,11 @@
 }
 .dropdown .list-drop-Box-ssam table {table-layout: fixed;}
 .dropdown .list-drop-Box-ssam th,
-.dropdown .list-drop-Box-ssam td {text-align: left; padding:15px 5px; border-right:1px solid #e4e4e4; line-height:1.2; letter-spacing: normal;}
+.dropdown .list-drop-Box-ssam td {text-align: center; padding:15px 5px; border-right:1px solid #e4e4e4; line-height:1.2; letter-spacing: normal;}
 .dropdown .list-drop-Box-ssam tr {border-bottom:1px solid #e4e4e4}
-.dropdown .list-drop-Box-ssam th {font-size:14px; background-color: #f9f9f9; letter-spacing: -1px; text-align: center;}
+.dropdown .list-drop-Box-ssam th {font-size:14px; background-color: #f9f9f9; letter-spacing: -1px;}
 .dropdown .list-drop-Box-ssam td {vertical-align: top;}
-.dropdown .list-drop-Box-ssam td li.subTit {margin-top:20px !important;  font-size: 13px; color: #0c5dc0;}
+.dropdown .list-drop-Box-ssam td li.subTit {margin-top:20px !important;  font-size: 13px; color: #0c5dc0; line-height: 1.1;}
 .dropdown .list-drop-Box-ssam li.subTit:first-child {margin:0 !important}
 .dropdown .list-drop-Box-ssam li a {display:block; width: 100%; padding:0 5px 5px; margin:0}
 

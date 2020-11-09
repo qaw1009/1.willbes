@@ -70,7 +70,7 @@
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_sky01.png" alt="10월 지텔프" >
             </a> 
-            <a href="#evt05"> 
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1893#evt02" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky02.png" alt="지텔프 소문내기" >
             </a>               
         </div>   

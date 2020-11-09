@@ -70,6 +70,9 @@
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_sky01.png" alt="10월 지텔프" >
             </a> 
+            <a href="#evt05"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky02.png" alt="지텔프 소문내기" >
+            </a>               
         </div>   
 
         <div class="evtCtnsBox evt00">
@@ -116,7 +119,7 @@
                    강의리스트
                 @endif 
             </div>
-        </div>
+        </div> 
 
     </div>
     <!-- End Container -->

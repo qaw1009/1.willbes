@@ -148,7 +148,7 @@ class CertApplyFModel extends WB_Model
                 throw new \Exception('이미 신청하신 내역이 존재합니다.');
             }
 
-            if($file_chk == 'Y'){
+            if($file_chk != 'N'){
                 $this->load->library('upload');
                 $file_path = config_item('upload_prefix_dir').'/cert_apply/'.date('Ym');
                 $file_name = $certtypeccd.'-'.date("YmdHis").rand(100,999);

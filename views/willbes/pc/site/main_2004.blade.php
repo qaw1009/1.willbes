@@ -42,7 +42,7 @@
         {{-- on air include --}}
         @include('willbes.pc.site.main_partial.on_air')
 
-        <div class="Section Section2 pt80 pb80">
+        <div class="Section Section2 pt80 pb80 mt50">
             <div class="widthAuto">
                 <div class="gosi-acadTit NSK-Thin mb50">
                     여러분의 꿈과 목표를 위해,<br />

@@ -1,3 +1,12 @@
+@php
+    $schedule_url = front_url('/offinfo/boardInfo/index');
+    $lecture_url = front_url('/offLecture/index');
+
+    if($__cfg['SiteCode'] == '2004'){
+        $schedule_url = front_url('/offinfo/boardInfo/index/82');
+        $lecture_url = front_url('/offPackage/index?cate_code=3043&campus_ccd=605001');
+    }
+@endphp
 <div class="widthAuto mt50">
     <div class="static clearfix">
         <div class="passLive">
@@ -13,8 +22,8 @@
                                 <li>현재 진행중인 라이브 강의가 없습니다.</li>
                             </ul>
                             <span class="offAirBarBtn">
-                                <a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
-                                <a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
+                                <a href="{{ $schedule_url }}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
+                                <a href="{{ $lecture_url }}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
                             </span>
                         </div>
                     </div>
@@ -120,8 +129,8 @@
                                     <div class="onAirBtn">
                                         <ul>
                                             <li><a href="javascript:void(0);" class="sample btn-video" data-oa-idx="{{$row['OaIdx']}}" data-login-type="{{$row['LoginType']}}" data-play-count="{{$row['VideoPlayCount']}}">{{$row['VideoPlayTime']}}초맛보기</a></li>
-                                            <li><a href="{{front_url('/offinfo/boardInfo/index')}}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
-                                            <li><a href="{{front_url('/offLecture/index')}}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
+                                            <li><a href="{{ $schedule_url }}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
+                                            <li><a href="{{ $lecture_url }}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                         </ul>
                                     </div>
                                 </div>

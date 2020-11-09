@@ -78,8 +78,8 @@ class OnAir extends \app\controllers\BaseController
         // 송출기간 -> 요일값 초기화
         $week_arr = explode(",",",,,,,,");
 
-        //교수정보
-        $arr_professor = $this->professorModel->getProfessorArray();
+        //교수정보 가나다순
+        $arr_professor = $this->professorModel->getProfessorArray('','',['wProfName' => 'asc']);
 
         //캠퍼스 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');

@@ -1216,9 +1216,9 @@
                 </li>
                 <li>
                     <span>단과</span>
-                    <a href="#none">이론과정</a>
-                    <a href="#none">문제풀이</a>
-                    <a href="#none">특강</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1303')}}">이론과정</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1304')}}">문제풀이</a>
+                    <a href="{{front_url('/offLecture/index?cate_code=3126&course_idx=1305')}}">특강</a>
                 </li>
                 <li class="Tit">스파르타 독서실</li>
                 <li>

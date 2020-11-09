@@ -43,7 +43,7 @@
 
     <script>
         function pullOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(empty($arr_promotion_params['SsIdx']) === true)
                 alert('설문을 찾을 수 없습니다.');
@@ -55,7 +55,7 @@
         }
 
         function popup(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if($survey_count < 1)
                 alert('설문조사 참여 후 인증이 가능합니다.');

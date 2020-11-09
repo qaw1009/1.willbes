@@ -65,7 +65,7 @@
             <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$arr_cert['cert_data']['CertTypeCcd']}}">
 
             <input type="hidden" name="check_take_no" value="N">    {{-- 응시번호 합격여부 체크 --}}
-            <input type="hidden" name="is_youtube" value="Y">
+            <input type="hidden" name="AddContent1" value="youtube">
 
             <div id="request">                
                 <div class="termsBx">
@@ -83,7 +83,7 @@
 
                     <div class="youtubeID">
                         유튜브 아이디(혹은 닉네임)
-                        <input type="text" name="AddContent1" id="AddContent1" value="{{$arr_cert['apply_result']['AddContent1'] or ''}}" {{empty($arr_cert['apply_result']['AddContent1']) === false ? 'disabled="disabled"' : ''}}>
+                        <input type="text" name="AddContent2" id="AddContent2" value="{{$arr_cert['apply_result']['AddContent2'] or ''}}" {{empty($arr_cert['apply_result']['AddContent2']) === false ? 'disabled="disabled"' : ''}}>
                     </div>
 
                     <div class="mt10">
@@ -145,9 +145,9 @@
             @if(empty($arr_cert) === false && $arr_cert['cert_data']["IsCertAble"] !== 'Y')
                 alert("인증 신청을 할 수 없습니다.");return;
 
-                if ($('#AddContent1').val() == '') {
+                if ($('#AddContent2').val() == '') {
                     alert('유튜브 정보를 입력해주세요.');
-                    $('#AddContent1').focus();
+                    $('#AddContent2').focus();
                     return;
                 }
             @endif
@@ -182,16 +182,6 @@
         @endif
     }
 
-    function fileExtCheck(strfile) {
-        if( strfile != "" ){
-            var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
-                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
-                return false;
-            }
-        }
-    }
-
     function submitEnd() {
         var _url = '{!! front_url('/event/registerStore') !!}';
 
@@ -202,23 +192,5 @@
             }
         }, showValidateError, null, false, 'alert');
     }
-
-    function modifyFile()
-    {
-        var _url = '{!! front_url('/event/registerStoreForModifyFile') !!}';
-
-        if (!confirm('합격수기 파일이 이미 등록되어 있습니다. \n재등록하시면 기존 파일은 삭제됩니다. \n재등록하시겠습니까?')) { return true; }
-
-        ajaxSubmit($regi_form_register, _url, function(ret) {
-            if(ret.ret_cd) {
-                alert(ret.ret_msg);
-                window.close();
-            }
-        }, showValidateError, null, false, 'alert');
-    }
-
-    $("input:text[numberOnly]").on("keyup", function() {
-        $(this).val($(this).val().replace(/[^0-9]/g,""));
-    });
 </script>
 @stop

@@ -132,36 +132,48 @@ class CertApply extends \app\controllers\FrontController
             return $this->json_error('입력 정보가 비정상입니다.');
         }
 
-        if(empty($this->_reqP('is_youtube')) === true || $this->_reqP('is_youtube') != 'Y'){
-            if (empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
-                return $this->json_error('입력 정보가 비정상입니다.');
-            }
-        }
-
         //인증식별자
         $cert_idx = $this->_reqP('CertIdx');
 
-        //합격자 응시번호 여부 파악
-        if(empty($this->_reqP('check_take_no')) === true || $this->_reqP('check_take_no') != 'N'){
-            $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
-            if($take_result == "0") {
-                return $this->json_error('정상적인 응시번호가 아닙니다. ');
-            }
-        }
+        if(empty($this->_reqP('AddContent1')) === false && $this->_reqP('AddContent1') == 'youtube'){ // 유튜브 구독 인증
+            $add_condition=[
+                'EQ'=>[
+                    'CertIdx'=>$cert_idx
+                    ,'AddContent1'=>$this->_reqP('AddContent1')
+                    ,'MemIdx' => $this->session->userdata('mem_idx')
+                ]
+            ];
 
-       $add_condition=[
-            'EQ'=>[
-                'CertIdx'=>$cert_idx
-                ,'TakeKind'=>$this->_reqP('TakeKind')
-                ,'TakeArea'=>$this->_reqP('TakeArea')
-                ,'TakeNo'=>$this->_reqP('TakeNo')
-            ]
-        ];
+            $err_msg = '이미 인증하신 내역이 존재합니다.';
+        }else{
+            if (empty($this->_reqP('TakeKind')) || empty($this->_reqP('TakeArea')) || empty($this->_reqP('TakeNo')) ) {
+                return $this->json_error('입력 정보가 비정상입니다.');
+            }
+
+            //합격자 응시번호 여부 파악
+            if(empty($this->_reqP('check_take_no')) === true || $this->_reqP('check_take_no') != 'N'){
+                $take_result = $this->certApplyFModel->findPassTakeNumber($this->_reqP(null));
+                if($take_result == "0") {
+                    return $this->json_error('정상적인 응시번호가 아닙니다. ');
+                }
+            }
+
+            $add_condition=[
+                'EQ'=>[
+                    'CertIdx'=>$cert_idx
+                    ,'TakeKind'=>$this->_reqP('TakeKind')
+                    ,'TakeArea'=>$this->_reqP('TakeArea')
+                    ,'TakeNo'=>$this->_reqP('TakeNo')
+                ]
+            ];
+
+            $err_msg = '이미 등록 사용된 응시번호입니다.';
+        }
 
         //기등록된 응시번호 여부 파악
         $reg_result = $this->certApplyFModel->findApply($add_condition);
         if($reg_result > 0) {
-            return $this->json_error('이미 등록 사용된 응시번호입니다.');
+            return $this->json_error($err_msg);
         }
 
         //인증 등록 처리 프로세스

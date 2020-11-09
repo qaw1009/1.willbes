@@ -50,7 +50,6 @@
 
         .evt04 {background:#555; padding-bottom:150px}
         .evt04 .evt04box {width:1120px; padding:20px; margin:0 auto; background:#fff}
-        .evt05 {background:#fff}
 
         .evtInfo {padding:100px 0; background:#f4f4f4; color:#282828; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.5}
@@ -71,9 +70,6 @@
             <a href="#evt04"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_sky01.png" alt="10월 지텔프" >
             </a> 
-            <a href="#evt05"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1786_sky02.png" alt="지텔프 소문내기" >
-            </a>               
         </div>   
 
         <div class="evtCtnsBox evt00">
@@ -121,40 +117,6 @@
                 @endif 
             </div>
         </div>
-
-        <div class="evtCtnsBox evt05" id="evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1786_05.jpg" usemap="#Map1786_01" border="0" />
-            <map name="Map1786_01" id="Map1786_01">
-                <area shape="rect" coords="441,1845,682,1917" href="javascript:giveCheck();" alt="할인쿠폰받기">
-                <area shape="rect" coords="357,2243,732,2294" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="하이 지텔프 소문내기 이미지 다운받기">
-            </map>
-        </div> 
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif 
-
-        <div class="evtCtnsBox evtInfo NGR" id="info">
-			<div class="evtInfoBox">
-				<h4 class="NGEB">NEW 윌비스 신광은경찰팀 기초영어 X G-TELP 이용안내</h4>
-				<div class="infoTit NG"><strong>영어 전문 교수진</strong></div>
-				<ul>
-					<li>하승민 교수님 , 김현정 교수님 , 김준기 교수님</li>                    
-				</ul>
-				<div class="infoTit NG"><strong>하이~G-TELP 런칭기념 이벤트</strong></div>
-				<ul>
-                    <li>소문내기시 김준기 교수님 10월 강의 100%무료쿠폰(온라인 강의)증정> 쿠폰은 소문내기 진행시 장바구니 자동지급( 11/8까지 사용가능)
-                    <li>김준기 교수님 11월 G-TELP강의 수강후기 작성시 15일연장(온라인 강의)>결제후 수강후기 남겨주시면 개강후 순차 진행
-                    <li>생애 첫 지텔프 50% 수험료 할인 >월요일~일요일 구매자 취합하여 그 다음주 월요일에  개별문자로 쿠폰번호 발송
-                    <li>한능검 온라인강의 할인쿠폰( G-TELP 문법강의 결제시 자동으로 지급 – 내강의실 확인 (11/8 까지 사용가능) 
-                    <li>2022년 과목개편 과목(형사법,헌법,경찰학) 온라인 강의할인쿠폰(추후공지예정)</li>
-				</ul>
-				<ul>
-					<li><strong>온라인 고객센터 문의 1544-5006</strong></li>
-				</ul>
-			</div>
-		</div>     
 
     </div>
     <!-- End Container -->

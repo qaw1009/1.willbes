@@ -14,8 +14,9 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .evtTop {background: url("https://static.willbes.net/public/images/promotion/2020/11/1902_top_bg.jpg") center top no-repeat}
-        .evt01 {}
+        .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
+        .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
+
         .evt02 {background:#866038; padding-bottom:150px}
         .evt02 div {width:1120px; margin:0 auto; padding:20px; background:#fff; font-size:14px}
         .evt02 th,
@@ -47,12 +48,17 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">    
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top.jpg" alt="유튜브 구독 이벤트" usemap="#Map1902_01" border="0" />
-            <map name="Map1902_01">
-                <area shape="rect" coords="260,1513,853,1600" href="#evt02" alt="라이브모드 구매하기" >
-            </map>             
-        </div>       
+
+        <div class="evtCtnsBox evtTop01">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top01.gif" alt="" />        
+        </div>   
+
+        <div class="evtCtnsBox evtTop02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
+            <map name="Map1902_buy" id="Map1902_buy">
+                <area shape="rect" coords="259,931,846,1023" href="#evt02" />
+            </map>                 
+        </div>   
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_01.jpg" alt="이벤트 안내" />

@@ -11612,7 +11612,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .Quick-Bnr-book a:hover {background: #333; color:#fff; }
 
 /* 제대군인인증팝업 */
-.leaveArmyJoin {padding-bottom:30px; width:740px; height: 700px;}
+.leaveArmyJoin {padding-bottom:30px; overflow-y:scroll; width:740px; height:700px;}
 .leaveArmyJoin .laj_top h3 {background:#000; height:60px; line-height:60px; color:#fff; font-size:30px; padding-left: 20px}
 .leaveArmyJoin .laj_top h3.survery {background:#26759d url(http://www.willbescop.net/assets/img/common/pop_armytit2.png) no-repeat center center; height:60px; font-size:0}
 .leaveArmyJoin .laj_top div {text-align:center; padding:20px 0; border-bottom:1px dashed #ccc}

@@ -6,6 +6,7 @@
     <li><a href="{{ front_url('/consult/visitConsult/index') }}">1:1 방문상담</a></li>
     <li><a href="{{ front_url('/mockTestNew/apply/cate') }}">전국모의고사 신청</a></li>
     <li><a href="{{ front_url('/event/list/ongoing') }}">진행 중 이벤트</a></li>
+    <li><a href="https://pass.willbes.net/lecture/index/cate/3019/pattern/free?search_order=regist&course_idx=1084">&nbsp;보강 동영상</a></li>
 </ul>
 <ul>
     @if(empty($data['dday']) === false)

@@ -94,12 +94,16 @@ class Disp extends \app\controllers\BaseController
         //배너노출방식
         $ccd_codes = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
 
-        $this->load->view("site/banner/disp_create", [
+        // 배너 롤링 간격
+        $rolling_time = [1,2,3,4,5];
+
+       $this->load->view("site/banner/disp_create", [
             'method' => $method,
             'disp_info' => $ccd_codes[$this->_groupCcd['banner_disp']],
             'disp_rolling_type' => $ccd_codes[$this->_groupCcd['banner_rolling_type']],
             'data' => $data,
             'bd_idx' => $bd_idx,
+            'rolling_time' => $rolling_time,
         ]);
     }
 
@@ -111,7 +115,7 @@ class Disp extends \app\controllers\BaseController
         $rules = [
             ['field' => 'disp_name', 'label' => '노출섹션명', 'rules' => 'trim|required|max_length[20]'],
             ['field' => 'disp_type', 'label' => '노출방식', 'rules' => 'trim|required'],
-            ['field' => 'disp_rolling_time', 'label' => '롤링타임', 'rules' => 'callback_validateRequiredIf[disp_type,664002]|in_list[1,2,3]'],
+            ['field' => 'disp_rolling_time', 'label' => '롤링타임', 'rules' => 'callback_validateRequiredIf[disp_type,664002]|in_list[1,2,3,4,5]'],
             ['field' => 'disp_rolling_type', 'label' => '롤링방식', 'rules' => 'callback_validateRequiredIf[disp_type,664002]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];

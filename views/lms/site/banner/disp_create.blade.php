@@ -59,9 +59,9 @@
 
                                 @if($loop->index == '2')
                                     <select id="disp_rolling_time" class="form-control" name="disp_rolling_time" title="롤링타임">
-                                        <option value="1" @if($data['DispRollingTime'] == 1)selected="selected"@endif>1</option>
-                                        <option value="2" @if($data['DispRollingTime'] == 2)selected="selected"@endif>2</option>
-                                        <option value="3" @if($data['DispRollingTime'] == 3)selected="selected"@endif>3</option>
+                                        @foreach($rolling_time as $sec)
+                                            <option value="{{ $sec }}" @if($data['DispRollingTime'] == $sec)selected="selected"@endif>{{ $sec }}</option>
+                                        @endforeach
                                     </select> sec
                                 @endif
 

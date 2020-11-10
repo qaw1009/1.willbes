@@ -22,8 +22,8 @@
                                 <li>현재 진행중인 라이브 강의가 없습니다.</li>
                             </ul>
                             <span class="offAirBarBtn">
-                                <a href="{{ $schedule_url }}"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
-                                <a href="{{ $lecture_url }}"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
+                                <a href="{{ $schedule_url }}" target="_blank"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a>
+                                <a href="{{ $lecture_url }}" target="_blank"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a>
                             </span>
                         </div>
                     </div>

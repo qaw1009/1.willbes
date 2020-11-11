@@ -126,9 +126,9 @@
         <h2>교수진 소개</h2>
         <div class="lnb-List">
             <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">국어<span class="arrow-Btn">></span></span></a>
+                <div><span class="Txt">교육학<span class="arrow-Btn">></span></span></div>
             </div>
-            <div class="lnb-List-Depth">
+            <div class="lnb-List-Depth lnb-List-Depth-ssam">
                 <dl>
                     <dt><a href="#none" class="active">정채영</a></dt>
                     <dt><a href="#none">기미진</a></dt>
@@ -137,9 +137,9 @@
                 </dl>
             </div>
             <div class="lnb-List-Tit">
-                <a href="#none"><span class="Txt">영어<span class="arrow-Btn">></span></span></a> 
+                <div><span class="Txt">유아<span class="arrow-Btn">></span></span></div> 
             </div>
-            <div class="lnb-List-Depth">
+            <div class="lnb-List-Depth lnb-List-Depth-ssam">
                 <dl>
                     <dt><a href="#none">한덕주</a></dt>
                     <dt><a href="#none">김신주</a></dt>

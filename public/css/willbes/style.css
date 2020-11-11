@@ -2176,6 +2176,7 @@ table.auTable tr td {
 .Lnb .lnb-List .lnb-List-Tit.hover a .arrow-Btn {
     background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px 0;
 }
+.Lnb .lnb-List .lnb-List-Tit-ssam > div,
 .Lnb .lnb-List .lnb-List-Tit a {
     display: block;
     height: 50px;
@@ -2185,6 +2186,7 @@ table.auTable tr td {
     border-bottom: 1px solid #ececec;
     padding-left: 10px;
 }
+.Lnb .lnb-List .lnb-List-Tit-ssam.hover > div,
 .Lnb .lnb-List .lnb-List-Tit.hover a {
     color: #0d74ae;
 }
@@ -2193,6 +2195,9 @@ table.auTable tr td {
     background: #f9f9f9;
     padding: 20px 0 20px 20px;
     border-bottom: 1px solid #ececec;
+}
+.Lnb .lnb-List .lnb-List-Depth.lnb-List-Depth-ssam {
+    display: block;
 }
 .Lnb .lnb-List .lnb-List-Depth dl dt {
     line-height: 20px;

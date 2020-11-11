@@ -28,10 +28,19 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
-     * 교수진 소개 메인
+     * 교수진 소개 메인 (뷰 타입별 메소드 호출)
      * @param array $params
      */
     public function index($params = [])
+    {
+        $this->{'index_' . $this->_view_type}($params);
+    }
+
+    /**
+     * 교수진 소개 v1 메인
+     * @param array $params
+     */
+    private function index_v1($params = [])
     {
         // input parameter
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
@@ -46,8 +55,8 @@ class Professor extends \app\controllers\FrontController
             empty($this->_def_cate_code) === true && $this->_def_cate_code = array_get($arr_base['category'], '0.CateCode', '');
         }
 
-        // 온라인 사이트 && v1 뷰 타입
-        if ($this->_is_pass_site === false && $this->_view_type == 'v1') {
+        // 온라인 사이트
+        if ($this->_is_pass_site === false) {
             if ($this->_site_code == '2003') {
                 // 공무원사이트일 경우 카테고별 직렬, 직렬별 과목 조회
                 $arr_base['series'] = $this->baseProductFModel->listSeriesCategoryMapping($this->_site_code, $this->_def_cate_code);
@@ -69,15 +78,11 @@ class Professor extends \app\controllers\FrontController
                 , 5, 0, 'random');
         }
 
-        // 전체 교수 조회
-        $arr_add_condition = ['EQ' => ['P.IsDispIntro' => 'Y']];    // 교수진소개 노출여부
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $this->_def_cate_code, null, true, $arr_add_condition);
+        // 교수 목록 조회
+        $arr_professor = $this->_getProfessorSubjectMappingData();
 
-        // LNB 메뉴용 전체 교수 정보
-        $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
-
-        // 선택된 과목에 맞는 교수 정보
-        $arr_base['professor'] = current(element($subject_idx, $arr_subject2professor, []));
+        // LNB 메뉴 데이터
+        $arr_lnb_professor = $this->_getProfessorLnbData($arr_professor);
 
         // 교수 조회결과 재정의
         $selected_list = $selected_subjects = [];
@@ -91,17 +96,92 @@ class Professor extends \app\controllers\FrontController
             }
         }
 
-        $this->load->view('site/professor/index', [
+        // 선택된 과목에 맞는 교수 정보
+        $arr_base['professor'] = array_pluck(element($subject_idx, $selected_list, []), 'ProfNickName', 'ProfIdx');
+
+        $this->load->view('site/professor/index' . $this->_view_postfix, [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
-            'arr_subject2professors' => $arr_subject2professor,
+            'arr_lnb_professor' => $arr_lnb_professor,
             'def_cate_code' => $this->_def_cate_code,
             'view_type' => $this->_view_type,
             'data' => [
-                'subjects' => $selected_subjects,
+                'group' => $selected_subjects,
                 'list' => $selected_list
             ]
         ]);
+    }
+
+    /**
+     * 교수진 소개 v2 메인
+     * @param array $params
+     */
+    private function index_v2($params = [])
+    {
+        // input parameter
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+
+        // 교수 목록 조회
+        $arr_professor = $this->_getProfessorSubjectMappingData();
+
+        // LNB 메뉴 데이터
+        $arr_lnb_professor = $this->_getProfessorLnbData($arr_professor);
+
+        // 교수 조회결과 재정의
+        $selected_list = $selected_category = [];
+        foreach ($arr_professor as $idx => $row) {
+            $row['ProfReferData'] = $row['ProfReferData'] == 'N' ? [] : json_decode($row['ProfReferData'], true);
+            $row['ProfEventData'] = $row['ProfEventData'] == 'N' ? [] : element('0', json_decode($row['ProfEventData'], true));
+
+            $selected_category[$row['CateCode']] = $row['CateName'];
+            $selected_list[$row['CateCode']][] = $row;
+        }
+
+        $this->load->view('site/professor/index' . $this->_view_postfix, [
+            'arr_input' => $arr_input,
+            'arr_lnb_professor' => $arr_lnb_professor,
+            'view_type' => $this->_view_type,
+            'data' => [
+                'group' => $selected_category,
+                'list' => $selected_list
+            ]
+        ]);
+    }
+
+    /**
+     * 교수 목록 데이터 조회
+     * @return array
+     */
+    private function _getProfessorSubjectMappingData()
+    {
+        $arr_add_column = ['ProfReferData', 'ProfEventData', 'IsNew', 'SC.CateName'];
+        $arr_add_condition = ['EQ' => ['P.IsDispIntro' => 'Y']];    // 교수진소개 노출여부
+        $cate_code = null;
+
+        if ($this->_view_type == 'v1') {
+            $cate_code = $this->_def_cate_code;
+        }
+
+        // 전체 교수 조회
+        return $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, $arr_add_column, $cate_code, null, true, $arr_add_condition);
+    }
+
+    /**
+     * LNB 메뉴 데이터 리턴
+     * @param array $prof_list [전체교수데이터]
+     * @return array
+     */
+    private function _getProfessorLnbData($prof_list)
+    {
+        $arr_lnb_val_column = ['CateCode', 'SubjectIdx', 'SubjectName', 'ProfNickName'];
+
+        if ($this->_view_type == 'v2') {
+            $arr_lnb_key_column = ['CateName', 'SubjectIdx', 'ProfIdx'];
+        } else {
+            $arr_lnb_key_column = ['SubjectIdx', 'SubjectName', 'ProfIdx'];
+        }
+
+        return array_data_pluck($prof_list, $arr_lnb_val_column, $arr_lnb_key_column);
     }
 
     /**
@@ -144,16 +224,15 @@ class Professor extends \app\controllers\FrontController
             show_alert('해당하는 교수정보가 없습니다.', 'back');
         }
 
-        // 전체 교수 조회
-        $arr_add_condition = ['EQ' => ['P.IsDispIntro' => 'Y']];    // 교수진소개 노출여부
-        $arr_professor = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $this->_def_cate_code, null, true, $arr_add_condition);
+        // 교수 목록 조회
+        $arr_professor = $this->_getProfessorSubjectMappingData();
 
-        // LNB 메뉴용 전체 교수 정보
-        $arr_subject2professor = array_data_pluck($arr_professor, 'ProfNickName', ['SubjectIdx', 'SubjectName', 'ProfIdx']);
+        // LNB 메뉴 데이터
+        $arr_lnb_professor = $this->_getProfessorLnbData($arr_professor);
 
         // 과목명 파라미터가 없을 경우 LNB 메뉴용 전체 교수 정보에서 과목명 추출
         if (empty($arr_input['subject_idx']) === false && isset($arr_input['subject_name']) === false) {
-            $arr_input['subject_name'] = array_key_first(element($arr_input['subject_idx'], $arr_subject2professor, []));
+            $arr_input['subject_name'] = element($arr_input['subject_idx'], array_pluck($arr_professor, 'SubjectName', 'SubjectIdx'));
         }
 
         // 교수 참조 정보
@@ -211,7 +290,7 @@ class Professor extends \app\controllers\FrontController
 
         $this->load->view('site/professor/show' . $this->_view_postfix, [
             'arr_input' => $arr_input,
-            'arr_subject2professors' => $arr_subject2professor,
+            'arr_lnb_professor' => $arr_lnb_professor,
             'def_cate_code' => $this->_def_cate_code,
             'prof_idx' => $prof_idx,
             'data' => $data,
@@ -223,7 +302,7 @@ class Professor extends \app\controllers\FrontController
 
     /**
      * 교수진소개 상세 데이터 추가 조회
-     * @param array $prof_data [교수데이터]*
+     * @param array $prof_data [교수데이터]
      * @param int $prof_idx [교수식별자]
      * @param array $arr_input [전달파라미터]
      */

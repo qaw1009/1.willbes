@@ -15,7 +15,7 @@
     </form>
 
     {{-- 카테고리 or 과목 선택 --}}
-    @if(isset($arr_base['category']) === true || isset($arr_base['subject']) === true)
+    @if(isset($arr_base) === true)
         <ul class="Lec-Selected NG tx-gray">
             @if(isset($arr_base['category']) === true)
                 <li>
@@ -40,27 +40,26 @@
         </ul>
     @endif
 
-    {{-- 과목별 교수 리스트 --}}
+    {{-- 교수 리스트 (v1 : 과목별, v2 : 카테고리별) --}}
     <div class="profArea">
-        @foreach($data['subjects'] as $subject_idx => $subject_name)
+        @foreach($data['group'] as $group_code => $group_name)
             <div class="subjectBox">
-                <div class="subTitle">· {{ $subject_name }}</div>
+                <div class="subTitle">· {{ $group_name }}</div>
                 <ul>
                 {{-- 교수 리스트 loop --}}
-                @foreach($data['list'][$subject_idx] as $idx => $row)
+                @foreach($data['list'][$group_code] as $idx => $row)
                     {{-- 교수상세 페이지 URL --}}
-                    @if($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true)
-                        @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&'; @endphp
+                    @if($__cfg['IsPassSite'] === true || $view_type == 'v2')
+                        @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $row['CateCode'] . '&'; @endphp
                     @else
-                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
+                        @php $show_url = '/professor/show/cate/' . $row['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
                     @endif
                     <li>
-
-                        <a href="{{ front_url($show_url . 'subject_idx=' . $subject_idx) }}">
-                            <img src="{{ $row['ProfReferData']['prof_index_img'] or '' }}" alt="{{ $row['ProfNickName'] }}">
-                            <div @if($__cfg['SiteGroupCode'] == '1011') style="top:12px" @endif>
-                                @if($__cfg['SiteGroupCode'] == '1011')
-                                    <span style="color:gray">{{--교수관리에 등록된 슬로건 노출함--}}</span>
+                        <a href="{{ front_url($show_url . 'subject_idx=' . $row['SubjectIdx'] . '&subject_name=' . rawurlencode($row['SubjectName'])) }}">
+                            <img src="{{ $row['ProfReferData']['prof_index_img'] or '' }}" alt="">
+                            <div>
+                                @if($view_type == 'v2')
+                                    <span class="tx-light-gray tx14 pb15" style="margin-top: -15px;">{!! $row['ProfSlogan'] !!}</span>
                                 @endif
                                 <span>{{ $row['ProfNickName'] }}</span>
                                 {{ $row['AppellationCcdName'] }}

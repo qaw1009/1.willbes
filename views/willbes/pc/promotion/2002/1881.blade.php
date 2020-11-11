@@ -22,8 +22,8 @@
         .evt00 {background:#0a0a0a}
         .evtTop {background:#ffb900 url(https://static.willbes.net/public/images/promotion/2020/10/1881_top_bg.jpg) no-repeat center top; }   
 
-        .evt01,.evt03 {background:#282d40}
-        .evt02,.evt04 {background:#e2e2e2}
+        .evt01 {background:#282d40}
+        .evt02 {background:#e2e2e2}
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -57,21 +57,6 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox evt03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_03.jpg" alt="4개월 슈퍼패스" usemap="#Map1881_03" border="0" />
-            <map name="Map1881_03">
-              <area shape="rect" coords="309,1604,784,1694" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1883" target="_blank" alt="4개월 슈퍼패스">
-            </map>       
-        </div>
-
-        <div class="evtCtnsBox evt04" id="apply" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1881_04.jpg" alt="4개월 슈퍼패스" usemap="#Map1881_04" border="0" />
-            <map name="Map1881_04">
-              <area shape="rect" coords="170,631,302,679" href="https://police.willbes.net/pass/offPackage/show/prod-code/173855" target="_blank" alt="4개월 오태진">
-              <area shape="rect" coords="496,631,625,679" href="https://police.willbes.net/pass/offPackage/show/prod-code/173854" target="_blank" alt="4개월 원유철">
-              <area shape="rect" coords="821,631,952,677" href="https://police.willbes.net/pass/offPackage/show/prod-code/173856" target="_blank" alt="4개월 경행경채">
-            </map>        
-        </div>	
     </div>
     <!-- End Container -->
 @stop

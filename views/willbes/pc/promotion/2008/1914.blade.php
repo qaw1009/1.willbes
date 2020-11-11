@@ -16,22 +16,23 @@
 
         /************************************************************/
         
-        .evt_top {background:#002154 url(https://static.willbes.net/public/images/promotion/2020/11/1908_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:#121327 url(https://static.willbes.net/public/images/promotion/2020/11/1914_top_bg.jpg) no-repeat center top;}
         
-        .evt_01 {background:#fff; padding-bottom:100px}
-        .evt_01 .tabs {border-bottom:2px solid #00235b; width:1120px; margin:0 auto}
-        .evt_01 .tabs li {display:inline; float:left; width:20%}
-        .evt_01 .tabs a {display:block; padding:20px 0; text-align:center; font-size:20px; color:#fff; background:#737373; margin-right:1px}
-        .evt_01 .tabs a:hover,
-        .evt_01 .tabs a.active {background:#00235b;}
-        .evt_01 .tabs li:last-child a {margin:0}
-        .evt_01 .tabs:after {content:''; display:block; clear:both}
+        .evt_02 {background:#fff;}
+        .evt_02 .tabs {border-bottom:2px solid #836849; width:1120px; margin:0 auto}
+        .evt_02 .tabs li {display:inline; float:left; width:16.666666%;}
+        .evt_02 .tabs a {display:block; padding:20px 0; text-align:center; font-size:20px; color:#fff; background:#737373; margin-right:1px}
+        .evt_02 .tabs a:hover,
+        .evt_02 .tabs a.active {background:#836849;}
+        .evt_02 .tabs li:last-child a {margin:0}
+        .evt_02 .tabs:after {content:''; display:block; clear:both}
 
+        .evt_apply {padding-bottom:50px;}
         .check {width:980px; margin:0 auto;letter-spacing:3; padding-top:30px;}
         .check label {cursor:pointer; font-size:15px;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#28f0f0; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
-        .check a:hover {background:#00235b;}
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#83684A; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+        .check a:hover {background:#836849;}
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
@@ -45,52 +46,65 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1908_top.jpg" alt=""/>
-		</div>
-
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1914_top.jpg" alt=""/>
+        </div>
+        
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1914_01.jpg" alt=""/>
+        </div>
+        
+        <div class="evtCtnsBox evt_02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02.jpg" alt=""/>
             <ul class="tabs">
-                <li><a href="#tab01">회계학</a></li>
-                <li><a href="#tab02">경제학개론</a></li>
-                <li><a href="#tab03">민법</a></li>
-                <li><a href="#tab04">부동산학원론</a></li>
-                <li><a href="#tab05">감정평가관계법규</a></li>
+                <li><a href="#tab01">형사소송법</a></li>
+                <li><a href="#tab02">민법총칙</a></li>
+                <li><a href="#tab03">형법</a></li>
+                <li><a href="#tab04">행정학</a></li>
+                <li><a href="#tab05">경찰학개론</a></li>
+                <li><a href="#tab06">한국사</a></li>
             </ul>
             <div>
-                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t01.jpg" alt="회계학" /></span>
-                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t02.jpg" alt="경제학개론" /></span>
-                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t03.jpg" alt="민법" /></span>
-                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t04.jpg" alt="부동산학원론" /></span>
-                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t05.jpg" alt="감정평가관계법규" /></span>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_02.jpg" alt="" /><br>
-            <a href="javascript:go_PassLecture('174454');"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_03.jpg" alt="" /></a>
+                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_01.png" alt="형사소송법" /></span>
+                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_02.png" alt="민법총칙" /></span>
+                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_03.png" alt="형법" /></span>
+                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_04.png" alt="행정학" /></span>
+                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_05.png" alt="경찰학개론" /></span>
+                <span id="tab06"><img src="https://static.willbes.net/public/images/promotion/2020/11/1914_02_06.png" alt="한국사" /></span>
+            </div>            
+        </div>
+        
+        <div class="evtCtnsBox evt_03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1914_03.jpg" alt=""/>           
+		</div>
+
+        <div class="evtCtnsBox evt_apply">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1914_apply.jpg" alt="" usemap="#Map1914_apply" border="0" />
+            <map name="Map1914_apply" id="Map1914_apply">
+                <area shape="rect" coords="58,419,1057,531" href="javascript:go_PassLecture('174676');" />
+            </map> 
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 1순환 종합반 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
-            </div>  
+            </div>         
         </div>    
-
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox" id="careful">
 				<h4 class="NGEB">수강안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-                    <li>본 상품은 2020년 11월 4일(수)부터 진행되는 감정평가 1차 문제풀이 강의가 제공됩니다.</li>
-                    <li>이벤트 기간 내 본 상품 결제 시, 최대 수강료 30% 할인 수강혜택이 적용됩니다.<br>
-                    (2과목 수강 -  5% 할인+수강기간  5일 연장 / 3과목 수강 - 10% 할인+수강기간 10일 연장<br>
-                    4과목 수강 - 15% 할인+수강기간 10일 연장 / 5과목 수강 - 20% 할인+수강기간 20일 연장<br>
-                    6과목 수강 - 30% 할인+수강기간 20일 연장)</li>
+                    <li>본 상품은 2020년 11월 2일(수)부터 진행되는 제71기 대비 경찰간부후보생 시험대비 1순환 강의가 제공됩니다.</li>
+                    <li>이벤트 기간 내 본 상품 결제 시, 수강료 30% 할인혜택이 적용됩니다.</li>
 				</ul>
                 <div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
 					<li>본 상품 신청 시 컴퓨터, 스마트 기기를 이용하여 자유롭게 수강하실 수 있습니다.</li>
-                    <li>본 상품은 2배수 수강 제한이 되어 있습니다.</li>
+                    <li>본 상품 강의의 경우 배수 제한 없이 무제한 수강이 가능합니다.</li>
+                    <li>본 상품 수강기간은 2021년 6월 30일까지 입니다.</li>
+                    <li>본 상품은 구매일로부터 바로 수강이 진행되며, 수강기간 조정 및 정지가 불가합니다.</li>
                 </ul>
                 <div class="infoTit NG"><strong>교재관련</strong></div>
 				<ul>
@@ -121,8 +135,7 @@
 				<div class="infoTit NG"><strong>상담 및 문의</strong></div>
 				<ul>
 					<li>[상담시간] 평일 오전 10시 ~ 오후 5시</li>
-					<li>[상담전화] 1544-5006</li>
-                    <li>[상담내용] 강의 및 패키지 상품 안내</li>
+					<li>[상담전화] 1544-1881</li>
 				</ul> 
 			</div>
 		</div> 
@@ -161,7 +174,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/userPackage/show/cate/309003/prod-code/') }}' + code;
+            var url = '{{ site_url('/package/show/cate/3100/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }    
 

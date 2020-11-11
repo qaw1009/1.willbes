@@ -11,7 +11,7 @@
                         {{-- 카테고리코드::과목식별자::과목명::교수명 --}}
                         @php $lnb_prof_data = explode('::', $lnb_prof_info); @endphp
                         @php $lnb_show_url = '/professor/show/prof-idx/' . $lnb_prof_idx . '?cate_code=' . $lnb_prof_data[0] . '&subject_idx=' . $lnb_prof_data[1] . '&subject_name=' . rawurlencode($lnb_prof_data[2]); @endphp
-                        <dt><a href="{{ front_url($lnb_show_url) }}" class="{{ isset($prof_idx) === true && $lnb_prof_idx == $prof_idx ? 'active' : '' }}">· {{ $lnb_prof_data[2] }} {{ $lnb_prof_data[3] }}</a></dt>
+                        <dt><a href="{{ front_url($lnb_show_url) }}" class="{{ isset($prof_idx) === true && $lnb_prof_idx == $prof_idx ? 'active' : '' }}">· {{ $lnb_prof_data[2] }} <span class="NGEB">{{ $lnb_prof_data[3] }}</span></a></dt>
                     @endforeach
                 @endforeach
             </dl>

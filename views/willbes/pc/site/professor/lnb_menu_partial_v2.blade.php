@@ -1,8 +1,8 @@
 <div class="lnb-List">
     @foreach($arr_lnb_professor as $lnb_cate_name => $lnb_subject_row)
-        <div class="lnb-List-Tit hover">
+        <div class="lnb-List-Tit">
             {{-- 카테고리명 --}}
-            <a href="#none"><span class="Txt">{{ $lnb_cate_name }}<span class="arrow-Btn">></span></span></a>
+            <a href="#none"><span class="Txt">{{ $lnb_cate_name }}</span></a>
         </div>
         <div class="lnb-List-Depth d_block">
             <dl>

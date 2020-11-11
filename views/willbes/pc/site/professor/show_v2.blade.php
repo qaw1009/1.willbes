@@ -12,7 +12,7 @@
     </div>
     <!-- left nav -->
     <div class="Lnb NG">
-        <h2>교수진 소개</h2>
+        <h2>빠른 수강신청</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial_v2')
     </div>
 

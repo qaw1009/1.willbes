@@ -123,8 +123,8 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/11/1864m_01.jpg" alt="" >
         <div class="price"> 
             <ul>
-                <li><input type="radio" id="y_pkg1" name="y_pkg" value="172948" onClick=""/> <label for="y_pkg1">합격보장 0원 pass</label></li>
-                <li><input type="radio" id="y_pkg2" name="y_pkg" value="172949" onClick=""/> <label for="y_pkg2">무제한 0원 pass</label></li>
+                <li><input type="radio" id="y_pkg1" name="y_pkg" value="172948" onClick=""/> <label for="y_pkg1">합격보장<br> 0원 pass</label></li>
+                <li><input type="radio" id="y_pkg2" name="y_pkg" value="172949" onClick=""/> <label for="y_pkg2">무제한<br> 0원 pass</label></li>
                 <li><input type="radio" id="y_pkg3" name="y_pkg" value="172950" onClick=""/> <label for="y_pkg3">무제한 pass</label></li>
                 <li><input type="radio" id="y_pkg4" name="y_pkg" value="172951" onClick=""/> <label for="y_pkg4">6개월 pass</label></li>
             </ul>

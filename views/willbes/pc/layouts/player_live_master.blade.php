@@ -82,7 +82,7 @@
 <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
 <script src="/public/js/util.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/hls.js?token={{time()}}"></script>
-<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config.js?token={{time()}}"></script>
+<script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_config_live.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_live.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/starplayer_ui_live.js?token={{time()}}"></script>
 <script type="text/javascript" src="/public/vendor/starplayer/js/speedplaytime.js?token={{time()}}"></script>

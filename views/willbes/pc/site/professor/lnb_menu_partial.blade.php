@@ -1,3 +1,4 @@
+<h2>교수진 소개</h2>
 <div class="lnb-List">
     @foreach($arr_lnb_professor as $lnb_subject_idx => $lnb_subject_row)
         @php

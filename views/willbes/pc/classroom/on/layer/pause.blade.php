@@ -120,7 +120,11 @@
     $(document).ready(function() {
         $('#enddate').datepicker({
             startDate: "{{ date("Y-m-d", time()) }}",
+            @if($lec['PauseLimit'] == true)
             endDate: "@if( $lec['RealLecEndDate'] < date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))){{$lec['RealLecEndDate']}}@else{{date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))}}@endif",
+            @else
+            endDate: "{{date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))}}",
+            @endif
             format : "yyyy-mm-dd",
             language : "kr",
             todayHighlight: true
@@ -143,12 +147,14 @@
                 return;
             }
 
+            @if($lec['PauseLimit'] == true)
             if($cdate > '{{ $lec['RealLecEndDate'] }}'){
                 $(this).val('');
                 $('#chgdate').html('{{ date("Y-m-d", time()) }} ~ {{$lec['RealLecEndDate']}}');
                 alert("일지중지는 수강 종료일을 초과할수 없습니다.");
                 return;
             }
+            @endif
 
             $('#chgdate').html(moment($('#enddate').val()).add(1, 'days').format('YYYY-MM-DD')
                 +' ~ '+

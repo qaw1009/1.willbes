@@ -48,7 +48,6 @@
             <div class="widthAuto">
                 <div class="will-listTi NSK-Black">
                     <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 신규강좌
-                    {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
                 </div>
                 <ul class="bestLec">
                     @for($i=1; $i<=20; $i++)
@@ -125,9 +124,8 @@
             </div>
         </div>
 
-        <div class="Section3 pb100">
-            <div class="widthAuto mt70">
-                {{--<div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 수강생 생생 리얼후기</div>--}}
+        <div class="Section3">
+            <div class="widthAuto mt70">                
                 <ul class="tipLec NSK-Black">
                     @for($i=1; $i<=4; $i++)
                         @if(isset($data['arr_main_banner']['메인_추천tip'.$i]) === true)

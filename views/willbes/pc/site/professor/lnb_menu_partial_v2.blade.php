@@ -1,3 +1,4 @@
+<h2>강의안내</h2>
 <div class="lnb-List">
     @foreach($arr_lnb_professor as $lnb_cate_name => $lnb_subject_row)
         <div class="lnb-List-Tit-ssam">

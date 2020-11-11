@@ -1126,18 +1126,17 @@ class On extends \app\controllers\FrontController
             $lec['PauseLimit'] = false; // 일시정지 기간 제한 없음 (수강기간 넘어도 정지 가능)
         } else {
             $lec['PauseLimit'] = true; // 일시정지 기간 제한 (수강기간내)
+
+            if($PauseRemain > $lec['remainDays']){
+                $PauseRemain = $lec['remainDays'];
+            }
         }
 
         if($PauseRemain < 0){
             $PauseRemain = 0;
         }
 
-        if($PauseRemain > $lec['remainDays']){
-            $PauseRemain = $lec['remainDays'];
-        }
-
         $lec['PauseRemain'] = $PauseRemain;
-
 
         $log = $this->classroomFModel->getPauseLog([
             'EQ' => [
@@ -1242,10 +1241,10 @@ class On extends \app\controllers\FrontController
         if(in_array($lec['SiteCode'],  ['2017', '2018']) === true){
             // 임용고시
             $PauseRemain = 30 - $lec['PauseSum'];
-        }
-
-        if($PauseRemain > $lec['remainDays']){
-            $PauseRemain = $lec['remainDays'];
+        } else {
+            if($PauseRemain > $lec['remainDays']){
+                $PauseRemain = $lec['remainDays'];
+            }
         }
 
         if($PauseRemain <= 0){

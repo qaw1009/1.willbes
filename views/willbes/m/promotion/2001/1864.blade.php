@@ -79,34 +79,10 @@
     .content_guide_box dl{word-break:keep-all; padding:10px}
     .content_guide_box dt{margin-bottom:10px}
     .content_guide_box dt h3{color:#fff; background:#333; display:inline-block; padding:3px 7px; font-weight:bold; margin-right:10px; font-size:120%}
-    .content_guide_box dt img.btn{padding:2px 0 0 0}
     .content_guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
     .content_guide_box dd strong {color:#555}
     .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
-    .content_guide_box .step {border:1px solid #c4c4c4; margin-top:10px; text-align:center; line-height:1.2; text-align:left}
-    .content_guide_box .step h4 {color:#fff; font-size:18px; background:#c4c4c4; padding:10px}
-    .content_guide_box .step h5 {font-size:18px; color:#333; font-weight:bold; margin-bottom:20px}
-    .content_guide_box .step div {padding:20px; font-size:14px}
-    .content_guide_box .step span {color:#fd4e3d; font-size:10px;}
     .content_guide_box dd:after {content:""; display:block; clear:both}
-
-    /*레이어팝업*/
-    .Pstyle {
-        opacity: 0;
-        display: none;
-        position: relative;
-        width: auto;
-        background-color: #fff;
-    }
-    .b-close {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        padding: 5px;
-        display: inline-block;
-        cursor: pointer;
-    }
-    .Pstyle .content {height:auto; width:auto;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
@@ -645,7 +621,7 @@
                             영어 : 하승민 교수님<br>
                             한국사/한능검 : 원유철 교수님, 오태진 교수님</li>
                         <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강 할 수 있습니다.</li>
-                        <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. (<a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank">배수제한 공지 자세히 보기 ></a>)</li>
+                        <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. (<a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
                         <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                         <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                     </ol>
@@ -658,7 +634,7 @@
                     <ol>
                         <li>신광은경찰PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>
                         <li>교재 포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
-                        <li>교재 포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
+                        <li class="tx-red">교재 포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
                     </ol>
                 </dd>
 
@@ -732,14 +708,6 @@
                     <p>※ 이용문의 : 고객센터 1544-5006 / 사이트 내 1:1 상담 게시판</p>
                 </dd>
             </dl>
-        </div>
-    </div>
-
-    <!--레이어팝업-->
-    <div id="popup" class="Pstyle">
-        <span class="b-close">X</span>
-        <div class="content">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1009_pop01.jpg" />
         </div>
     </div>
 </div>
@@ -910,11 +878,6 @@
             $(".content_guide_box:first").show();
         }
     });
-
-    /*레이어팝업*/
-    function go_popup() {
-        $('#popup').bPopup();
-    }
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

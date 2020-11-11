@@ -12,7 +12,6 @@
     </div>
     <!-- left nav -->
     <div class="Lnb NG">
-        <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20 NG">

@@ -892,6 +892,9 @@ select[disabled] {
 .pr45 {
   padding-right: 45px !important;
 }
+.pr100 {
+  padding-right: 100px !important;
+}
 
 .pb-zero,
 .pb-none {

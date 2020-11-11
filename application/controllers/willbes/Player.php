@@ -299,7 +299,14 @@ class Player extends \app\controllers\FrontController
             $pretitle = $data['wUnitLectureNum'].'강';
         }
 
-        return $this->load->view('/player/normal', [
+        // 라이브강의일경우 플레이어 view 를 live 로
+        if($lec['wShootingCcd'] == '104003'){
+            $player = '/player/live';
+        } else {
+            $player = '/player/normal';
+        }
+
+        return $this->load->view($player, [
             'data' => [
                 'orderidx' => $orderidx,
                 'prodcode' => $prodcode,

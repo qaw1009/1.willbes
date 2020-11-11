@@ -61,18 +61,18 @@
                                         <input type="hidden" name="target_prod_code_sub" value="{{empty($lec['TargetProdCodeSub']) == true ? '' : $lec['TargetProdCodeSub'] }}" />
                                     @endif
                                     <select id="day" name="extend_day" title="day" class="seleDay" style="width: 60px; height: 20px;">
-                                        @for( $d = 5; $d <= ($lec['ExtenLimit']-$lec['RebuySum']+4); $d = $d +5)
+                                        @for( $d = $lec['ExtenDays']; $d <= ($lec['ExtenLimit'] -$lec['RebuySum'] +$lec['ExtenDays'] -1); $d = $d +$lec['ExtenDays'])
                                             <option value="{{$d}}">{{$d}}일</option>
                                         @endfor
                                     </select>&nbsp; 일 &nbsp;
-                                    [연장수강종료일] <span id="expDate">{{date('Y-m-d', strtotime($lec['RealLecEndDate'].'+5day'))}}</span>
+                                    [연장수강종료일] <span id="expDate">{{date('Y-m-d', strtotime($lec['RealLecEndDate'].'+'.$lec['ExtenDays'].'day'))}}</span>
                                 </form>
                             @endif
                         </td>
                     </tr>
                     <tr>
                         <th class="w-tit bg-light-white strong">결제금액</th>
-                        <td class="w-data tx-left pl15"><span id="expPrice">{{number_format(floor($lec['ExtenPrice'] * 5))}}원</span></td>
+                        <td class="w-data tx-left pl15"><span id="expPrice">{{number_format(floor($lec['ExtenPrice'] * $lec['ExtenDays']))}}원</span></td>
                     </tr>
                     </tbody>
                 </table>

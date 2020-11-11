@@ -1118,18 +1118,25 @@ class On extends \app\controllers\FrontController
             return $this->json_error('일시중지할 수 없는 강좌입니다.');
         }
 
+        // todo : 일시중지 기간 설정
         $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
+        if(in_array($lec['SiteCode'],  ['2017', '2018']) === true){
+            // 임용고시
+            $PauseRemain = 30 - $lec['PauseSum'];
+            $lec['PauseLimit'] = false; // 일시정지 기간 제한 없음 (수강기간 넘어도 정지 가능)
+        } else {
+            $lec['PauseLimit'] = true; // 일시정지 기간 제한 (수강기간내)
+
+            if($PauseRemain > $lec['remainDays']){
+                $PauseRemain = $lec['remainDays'];
+            }
+        }
 
         if($PauseRemain < 0){
             $PauseRemain = 0;
         }
 
-        if($PauseRemain > $lec['remainDays']){
-            $PauseRemain = $lec['remainDays'];
-        }
-
         $lec['PauseRemain'] = $PauseRemain;
-
 
         $log = $this->classroomFModel->getPauseLog([
             'EQ' => [
@@ -1229,18 +1236,28 @@ class On extends \app\controllers\FrontController
             return $this->json_error('수강연장 강의는 일시중지가 불가능합니다.');
         }
 
+        // todo : 일시중지기간설정
         $PauseRemain = $lec['LecExpireDay'] - $lec['PauseSum'];
-
-        if($PauseRemain > $lec['remainDays']){
-            $PauseRemain = $lec['remainDays'];
+        if(in_array($lec['SiteCode'],  ['2017', '2018']) === true){
+            // 임용고시
+            $PauseRemain = 30 - $lec['PauseSum'];
+        } else {
+            if($PauseRemain > $lec['remainDays']){
+                $PauseRemain = $lec['remainDays'];
+            }
         }
 
         if($PauseRemain <= 0){
             return $this->json_error('일시중지 기간을 초과했습니다.');
         }
 
-        if($lec['RealLecEndDate'] < $enddate){
-            return $this->json_error('일시중지 기간은 강의 종료일을 초과할 수 없습니다.');
+        // todo : 일지중지 제한 설정
+        if(in_array($lec['SiteCode'],  ['2017', '2018']) === false) {
+            // 임용고시
+            // 일시중지 기간은 실강의 기간을 넘어갈수없음
+            if ($lec['RealLecEndDate'] < $enddate) {
+                return $this->json_error('일시중지 기간은 강의 종료일을 초과할 수 없습니다.');
+            }
         }
 
         // 날짜 계산
@@ -1407,9 +1424,17 @@ class On extends \app\controllers\FrontController
             return $this->json_error('연장신청을 할 수 없는 강좌입니다.');
         }
 
-        $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2);
+        $lec['ExtenDays'] = 5; // 연장 기준 날짜 5 10 15
+        $lec['ExtenLimit'] = round($lec['StudyPeriod'] / 2); // 총 연장가능기간 원 기간의 절반
         $lec['ExtenPrice'] = round($lec['ExtenPrice'] / $lec['StudyPeriod'] ,4);
         $lec['SiteUrl'] = app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'));
+
+        // todo : 한번에 연장할수있는 날짜
+        if(in_array($lec['SiteCode'],  ['2017', '2018']) === true){
+            // 임용고시
+            $lec['ExtenDays'] = 1; // 연장할 기준날짜 1 2 3 4 5
+            $lec['ExtenLimit'] = 30; // 연장가능한 총 기간 30일
+        }
 
         if ($lec['IsRebuy'] > 0) {
             $cond_arr = [

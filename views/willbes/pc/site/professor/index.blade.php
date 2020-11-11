@@ -10,7 +10,6 @@
     </div>
     <!-- left nav -->
     <div class="Lnb NG">
-        <h2>교수진 소개</h2>
         @include('willbes.pc.site.professor.lnb_menu_partial')
     </div>
     <div class="Content p_re ml20">
@@ -30,8 +29,8 @@
             </div>
         @endif
 
-        @if($__cfg['IsPassSite'] === false && $view_type == 'v1')
-        {{-- 온라인 사이트 && v1 뷰 타입만 노출 --}}
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인 사이트만 노출 --}}
         <div class="willbes-NoticeWrap mb40 c_both">
             {!! banner('교수진인덱스_신규강좌배너', 'sliderPromotion widthAuto460 f_left mr20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
             <div class="willbes-listTable willbes-newLec widthAuto460">
@@ -48,8 +47,8 @@
         <!-- willbes-NoticeWrap -->
         @endif
 
-        @if($__cfg['IsPassSite'] === false && $view_type == 'v1')
-        {{-- 온라인 사이트 && v1 뷰 타입만 노출 --}}
+        @if($__cfg['IsPassSite'] === false)
+        {{-- 온라인 사이트만 노출 --}}
         <div class="curriWrap GM c_both">
             <div class="CurriBox">
                 <table cellspacing="0" cellpadding="0" class="curriTable">
@@ -124,21 +123,21 @@
         @endif
 
         {{-- 과목별 교수 리스트 --}}
-        @foreach($data['subjects'] as $subject_idx => $subject_name)
-            <div class="willbes-Prof-List NG c_both">
-            <div class="willbes-Prof-Subject tx-dark-black">· {{ $subject_name }}</div>
+        @foreach($data['group'] as $group_code => $group_name)
+        <div class="willbes-Prof-List NG c_both">
+            <div class="willbes-Prof-Subject tx-dark-black">· {{ $group_name }}</div>
             <!-- willbes-Prof-Subject -->
             <ul class="profGrid">
-                {{-- 교수 리스트 loop --}}
-                @foreach($data['list'][$subject_idx] as $idx => $row)
+            {{-- 교수 리스트 loop --}}
+            @foreach($data['list'][$group_code] as $idx => $row)
                 <li class="profList">
                     {{-- 교수상세 페이지 URL --}}
-                    @if($__cfg['IsPassSite'] === true || empty($__cfg['CateCode']) === true)
-                        @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $def_cate_code . '&'; @endphp
+                    @if($__cfg['IsPassSite'] === true)
+                        @php $show_url = '/professor/show/prof-idx/' . $row['ProfIdx'] . '?cate_code=' . $row['CateCode'] . '&'; @endphp
                     @else
-                        @php $show_url = '/professor/show/cate/' . $def_cate_code . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
+                        @php $show_url = '/professor/show/cate/' . $row['CateCode'] . '/prof-idx/' . $row['ProfIdx'] . '?'; @endphp
                     @endif
-                    <a class="profBox" href="{{ front_url($show_url . 'subject_idx=' . $subject_idx . '&subject_name=' . rawurlencode($subject_name)) }}">
+                    <a class="profBox" href="{{ front_url($show_url . 'subject_idx=' . $row['SubjectIdx'] . '&subject_name=' . rawurlencode($row['SubjectName'])) }}">
                         @if(empty($row['ProfEventData']) === false)
                             <a href="{{ $row['ProfEventData']['Link'] }}"><img class="Evt" src="{{ img_url('prof/icon_event.gif') }}"></a>
                         @endif
@@ -153,12 +152,12 @@
                     <div class="w-notice">
                         <dl>
                             <dt><a href="#none" onclick="{{ empty($row['ProfReferData']['ot_url']) === false ? 'fnPlayerProf(\'' . $row['ProfIdx'] . '\', \'OT\');' : 'alert(\'등록된 대표강의가 없습니다.\');' }}">대표강의</a></dt>
-                            <dt><a href="#none" class="btn-prof-profile" data-subject-idx="{{ $subject_idx }}" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
+                            <dt><a href="#none" class="btn-prof-profile" data-group-code="{{ $group_code }}" data-prof-idx="{{ $row['ProfIdx'] }}">프로필</a></dt>
                         </dl>
                     </div>
-                    <div id="ProfileWrap{{ $subject_idx . '' . $row['ProfIdx'] }}"></div>
+                    <div id="ProfileWrap{{ $group_code . '' . $row['ProfIdx'] }}"></div>
                 </li>
-                @endforeach
+            @endforeach
             </ul>
         </div>
         @endforeach
@@ -172,7 +171,7 @@
         // 프로필 버튼 클릭
         $('.profList').on('click', '.btn-prof-profile', function() {
             var $prof_idx = $(this).data('prof-idx');
-            var ele_id = $(this).data('subject-idx') + '' + $prof_idx;
+            var ele_id = $(this).data('group-code') + '' + $prof_idx;
             var data = { 'ele_id' : ele_id };
 
             sendAjax('{{ front_url('/professor/profile/prof-idx/') }}' + $prof_idx, data, function(ret) {

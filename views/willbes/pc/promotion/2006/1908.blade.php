@@ -16,7 +16,7 @@
 
         /************************************************************/
         
-        .evt_top {background: url(https://static.willbes.net/public/images/promotion/2020/11/1908_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:#002154 url(https://static.willbes.net/public/images/promotion/2020/11/1908_top_bg.jpg) no-repeat center top;}
         
         .evt_01 {background:#fff; padding-bottom:100px}
         .evt_01 .tabs {border-bottom:2px solid #00235b; width:1120px; margin:0 auto}
@@ -54,15 +54,15 @@
                 <li><a href="#tab01">회계학</a></li>
                 <li><a href="#tab02">경제학개론</a></li>
                 <li><a href="#tab03">민법</a></li>
-                <li><a href="#tab04">부동산학개론</a></li>
+                <li><a href="#tab04">부동산학원론</a></li>
                 <li><a href="#tab05">감정평가관계법규</a></li>
             </ul>
             <div>
-                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t01.jpg" alt="" /></span>
-                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t02.jpg" alt="" /></span>
-                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t03.jpg" alt="" /></span>
-                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t04.jpg" alt="" /></span>
-                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t05.jpg" alt="" /></span>
+                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t01.jpg" alt="회계학" /></span>
+                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t02.jpg" alt="경제학개론" /></span>
+                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t03.jpg" alt="민법" /></span>
+                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t04.jpg" alt="부동산학원론" /></span>
+                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_t05.jpg" alt="감정평가관계법규" /></span>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_02.jpg" alt="" /><br>
             <a href="javascript:go_PassLecture('174454');"><img src="https://static.willbes.net/public/images/promotion/2020/11/1908_01_03.jpg" alt="" /></a>

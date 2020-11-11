@@ -120,7 +120,11 @@
     $(document).ready(function() {
         $('#enddate').datepicker({
             startDate: "{{ date("Y-m-d", time()) }}",
+            @if($lec['PauseLimit'] == true)
             endDate: "@if( $lec['RealLecEndDate'] < date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))){{$lec['RealLecEndDate']}}@else{{date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))}}@endif",
+            @else
+            endDate: "{{date("Y-m-d", strtotime(date("Y-m-d", time()).'+'.($lec['PauseRemain']-1).'day'))}}",
+            @endif
             format : "yyyy-mm-dd",
             language : "kr",
             todayHighlight: true

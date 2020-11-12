@@ -194,6 +194,12 @@ function slider(ele_id, type, pause_sec) {
     // slider option
     var option = { auto: true, controls: false, pause: pasue_msec, touchEnabled: false };
     switch (type) {
+        case 'numSlider' :
+            option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1, touchEnabled: false, adaptiveHeight: true, infiniteLoop: true, autoHover: true};
+            break;
+        case 'bSlider' :
+            option = { auto: true, controls: false, pause: pasue_msec, touchEnabled: false, autoHover: true };
+            break;
         case 'cSlider' :
                 option = { auto: true, controls: true, pause: pasue_msec, pager: false, touchEnabled: false };
             break;

@@ -15,7 +15,7 @@
                             <li class="ListTit">
                                 <h1 class="NGEB">
                                     {{ $menu_row['MenuName'] }}
-                                    {{--공무원 학원에만 노출 <img src="{{ img_url('m/main/live_icon.gif') }}">--}}
+                                    @if(empty($menu_row['MenuIcon']) === false)<img src="{{$menu_row['MenuIcon']}}">@endif
                                 </h1>
                             </li>
 

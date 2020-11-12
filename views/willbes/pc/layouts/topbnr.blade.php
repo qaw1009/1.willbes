@@ -54,7 +54,7 @@
     {{-- 공무원 9급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/top_1120_200310.gif" alt="9급"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3019_top_bn.gif" alt="9급"></a>
         </div>
     </div>
 @endif
@@ -62,7 +62,7 @@
     {{-- 공무원 7급 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3020.gif') }}" alt="7급"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3020_top_bn.gif" alt="7급"></a>
         </div>
     </div>
 @endif
@@ -70,7 +70,7 @@
     {{-- 공무원 세무직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3022.gif') }}" alt="세무직"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3022_top_bn.gif" alt="세무직"></a>
         </div>
     </div>
 @endif
@@ -78,7 +78,7 @@
     {{-- 공무원 소방직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3023.gif') }}" alt="소방직"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3023_top_bn.gif" alt="소방직"></a>
         </div>
     </div>
 @endif
@@ -86,7 +86,7 @@
     {{-- 공무원 군무원 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3024.gif') }}" alt="군무원"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3024_top_bn.gif" alt="군무원"></a>
         </div>
     </div>
 @endif
@@ -94,7 +94,7 @@
     {{-- 공무원 기술직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3028.gif') }}" alt="기술직"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3028_top_bn.gif" alt="기술직"></a>
         </div>
     </div>
 @endif
@@ -102,7 +102,7 @@
     {{-- 공무원 부사관 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="{{ img_url('gosi/banner/1119-70-3030.gif') }}" alt="부사관"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3024_top_bn.gif" alt="부사관"></a>
         </div>
     </div>
 @endif
@@ -110,9 +110,7 @@
     {{-- 공무원 법원직 사이트일 경우만 적용 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none">
-                <img src="https://static.willbes.net/public//images/willbes/gosi/banner/M_TopBan200325.gif" alt="필기 합격자">
-            </a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3035_top_bn.gif" alt="법원직"></a>
         </div>
     </div>
 @endif
@@ -120,15 +118,15 @@
     {{-- 공무원 무료인강 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3092_1120x70.gif" alt="무료인강 제로백"></a>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3092_top_bn.gif" alt="무료인강 제로백"></a>
         </div>
     </div>
 @endif
 @if($__cfg['SiteCode'] == '2004')
-    {{-- 공무원 무료인강 --}}
+    {{-- 공무원 학원 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001"><img src="https://static.willbes.net/public/images/promotion/main/1119-70-2004.gif" alt="10월 대개강"></a>
+            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001"><img src="https://static.willbes.net/public/images/promotion/main/2004_top_bn.gif" alt=""></a>
         </div>
     </div>
 @endif
@@ -150,7 +148,7 @@
             <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_top_bn.jpg" alt="실전모의고사" usemap="#Map2017" border="0">
             <map name="Map2017">
               <area shape="rect" coords="641,10,826,63" href="{{ front_url('/promotion/index/cate/3137/code/1810') }}" target="_blank" alt="2020대비실전모의고사다시보기">
-              <area shape="rect" coords="829,11,1020,62" href="{{ front_url('/promotion/index/cate/3137/code/181') }}1" target="_blank" alt="2021대비실전모의고사다시보기">
+              <area shape="rect" coords="829,11,1020,62" href="{{ front_url('/promotion/index/cate/3137/code/1811') }}" target="_blank" alt="2021대비실전모의고사다시보기">
             </map>
         </div>
     </div>

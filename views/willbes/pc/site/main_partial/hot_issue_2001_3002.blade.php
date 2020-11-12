@@ -7,6 +7,6 @@
     <li>{!! banner_html(element('메인_학원배너1', $data['arr_main_banner'])) !!}</li>
     <li>{!! banner_html(element('메인_학원배너2', $data['arr_main_banner'])) !!}</li>
     <li class="sliderHotIssue nSlider pick">
-        {!! banner_html(element('메인_학원배너3', $data['arr_main_banner']), '_num_slider_academy_banner1') !!}
+        {!! banner_html(element('메인_학원배너3', $data['arr_main_banner']), '_num_slider_academy_banner3') !!}
     </li>
 </ul>

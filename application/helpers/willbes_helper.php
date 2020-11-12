@@ -39,6 +39,8 @@ if (!function_exists('banner_html')) {
         $html = '';
         $rolling_start = '';
         $rolling_end = '';
+        $rolling_id = '';
+        $rolling_script = '';
         
         if (empty($data) === true) {
             return $html;
@@ -57,7 +59,31 @@ if (!function_exists('banner_html')) {
 
         // 롤링 class 있을 경우
         if (empty($rolling_class) === false) {
-            $rolling_start = '<div class="' . $rolling_class . '">';
+            // 배너노출섹션 롤링 대기시간 적용 class 앞부분 '_' 추가
+            if(substr($rolling_class,0,1) == '_') {
+                $arr_rolling_type = ['665001' => 'bSlider', '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider', '_num' => 'numSlider'];
+
+                $rolling_class_chop = substr($rolling_class,0,4);
+                if($rolling_class_chop == '_num') {
+                    // 롤링 컨트롤 숫자
+                    $rolling_key = $rolling_class_chop;
+                } else {
+                    // 롤링 컨트롤 아이콘
+                    $rolling_key = $data[0]['DispRollingTypeCcd'];
+                }
+                $rolling_type = element($rolling_key, $arr_rolling_type);
+                $rolling_time = element('DispRollingTime', $data[0], 3);
+
+                $rolling_script = '<script>';
+                $rolling_script .= '$(function() {';
+                $rolling_script .= 'slider("' . $rolling_class . '", "' . $rolling_type . '", "' . $rolling_time . '")';
+                $rolling_script .= '});';
+                $rolling_script .= '</script>';
+
+                $rolling_id = $rolling_class;
+            }
+
+            $rolling_start = '<div class="' . $rolling_class . '" id="' . $rolling_id . '">';
             $rolling_end = '</div>';
         } else {
             $end_banner = end($data);
@@ -131,7 +157,7 @@ if (!function_exists('banner_html')) {
                 $html .= '<div class="' . $title_class . '">' . $row['BannerName'] . '</div>';
             }
         }
-        return $rolling_start . $html . $rolling_end . $map_data;
+        return $rolling_start . $html . $rolling_end . $map_data . $rolling_script;
     }
 }
 

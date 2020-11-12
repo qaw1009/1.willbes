@@ -23,13 +23,13 @@
 
         <div class="Section">
             <div class="widthAuto bnSecbar01">
-                {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
             </div>
         </div>
 
         <div class="Section mt50">
             <div class="widthAuto">
-                {!! banner_html(element('메인_빅배너', $data['arr_main_banner'])) !!}
+                {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_slider_big_banner') !!}
             </div>
         </div>
 
@@ -67,10 +67,10 @@
                         {!! banner_html(element('메인_미들2', $data['arr_main_banner'])) !!}
                     </li>
                     <li class="sliderbnSec02 nSlider pick">
-                        {!! banner_html(element('메인_미들3', $data['arr_main_banner']), 'sliderNum') !!}
+                        {!! banner_html(element('메인_미들3', $data['arr_main_banner']), '_num_slider_middle_banner3') !!}
                     </li>
                     <li class="sliderbnSec02 nSlider pick">
-                        {!! banner_html(element('메인_미들4', $data['arr_main_banner']), 'sliderNum') !!}
+                        {!! banner_html(element('메인_미들4', $data['arr_main_banner']), '_num_slider_middle_banner4') !!}
                     </li>
                 </ul>
             </div>
@@ -86,16 +86,16 @@
                 <div class="sliderPick nSlider pick">
                     <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> Hot Pick</div>
                     <div class="pickBox pick1">
-                        {!! banner_html(element('메인_hotpick1', $data['arr_main_banner'])) !!}
+                        {!! banner_html(element('메인_hotpick1', $data['arr_main_banner']), '_num_slider_hotpick_banner1') !!}
                     </div>
                     <div class="pickBox pick2">
-                        {!! banner_html(element('메인_hotpick2', $data['arr_main_banner'])) !!}
+                        {!! banner_html(element('메인_hotpick2', $data['arr_main_banner']), '_num_slider_hotpick_banner2') !!}
                     </div>
                 </div>
                 <div class="sliderEvt nSlider pick">
                     <div class="will-nTit bd-none">윌비스 <span class="cop-color">신광은경찰</span> 무료특강</div>
                     <ul>
-                        {!! banner_html(element('메인_hotpick3', $data['arr_main_banner'])) !!}
+                        {!! banner_html(element('메인_hotpick3', $data['arr_main_banner']), '_num_slider_hotpick_banner3') !!}
                     </ul>
                 </div>
             </div>

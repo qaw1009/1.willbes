@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 --}}
-                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), 'sliderNum') !!}
+                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
                     {{--
                     <div><a href="https://police.willbes.net/pass/promotion/index/cate/3016/code/1466" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_200117.jpg" alt="해양경찰 합격 패키지"/></a></div>
                     <div><a href="https://police.willbes.net/promotion/index/cate/3007/code/1357" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3007_756x292_190826.jpg" alt="해양경찰 공채 PASS"></a></div>

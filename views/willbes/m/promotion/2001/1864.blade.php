@@ -51,7 +51,7 @@
     .evt02 .ext02txt label {font-size:18px; font-weight:bold}
     .evt02 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
     .evt02 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
-    .evt02 input:checked + label {border-bottom:1px dashed #0d3692; color:#0d3692}
+    .evt02 input:checked + label {color:#fff200}
     .evt02 .ext02txt ul {margin:10px 0 0 25px}
     .evt02 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
 
@@ -71,7 +71,7 @@
     .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
     .content_guide_wrap .guide_tit{text-align:center; font-size:26px; margin-bottom:30px}
     .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
-    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 5px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
+    .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
     .content_guide_wrap .tabs li a:hover,
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
     .content_guide_wrap .tabs:after {content:""; display:block; clear:both}
@@ -90,7 +90,7 @@
         .dday a {padding:5px 10px;}
         .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:120% !important;}
+        .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
     }
 
     /* 태블릿 세로 */
@@ -207,9 +207,9 @@
         <p class="guide_tit NSK-Thin">윌비스 <span class="NSK-Black">신광은 경찰 PASS [일반경찰 + 경행경채] </span> 이용안내 </p>
         <ul class="tabs">            
             <li><a href="#tab1">합격보장<br> 0원 pass</a></li>
-            <li><a href="#tab2">0원<br> 무제한 pass</a></li>
+            <li><a href="#tab2">0원 무제한<br> pass</a></li>
             <li><a href="#tab3">무제한<br> pass</a></li>
-            <li><a href="#tab4">6개월<br> PASS</a></li>
+            <li><a href="#tab4">6개월<br> pass</a></li>
         </ul>        
 
         <!--합격보장-->

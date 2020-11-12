@@ -51,7 +51,7 @@
     .evt02 .ext02txt label {font-size:18px; font-weight:bold}
     .evt02 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
     .evt02 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
-    .evt02 input:checked + label {border-bottom:1px dashed #0d3692; color:#0d3692}
+    .evt02 input:checked + label {color:#fff200}
     .evt02 .ext02txt ul {margin:10px 0 0 25px}
     .evt02 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
 

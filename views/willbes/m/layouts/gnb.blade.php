@@ -12,7 +12,12 @@
                 @if(empty($__cfg['SiteMenu']['TreeMenu']['LNB']) === false)
                     @foreach($__cfg['SiteMenu']['TreeMenu']['LNB'] as $menu_idx => $menu_row)
                         @if(isset($menu_row['Children']) === true)
-                            <li class="ListTit"><h1 class="NGEB">{{ $menu_row['MenuName'] }}</h1></li>
+                            <li class="ListTit">
+                                <h1 class="NGEB">
+                                    {{ $menu_row['MenuName'] }}
+                                    {{--공무원 학원에만 노출 <img src="{{ img_url('m/main/live_icon.gif') }}">--}}
+                                </h1>
+                            </li>
 
                             @foreach($menu_row['Children'] as $child_menu_idx => $child_menu_row)
                                 <li class="ListBox">

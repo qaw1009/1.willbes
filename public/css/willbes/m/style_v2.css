@@ -139,6 +139,8 @@ body {
     line-height: 30px !important;
 }
 
+.fullImg img {width:100%;}
+
 .tx-dark-blue,
 .cop-color {
     color: #0c5dc0;

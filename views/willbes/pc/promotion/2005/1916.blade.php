@@ -66,7 +66,7 @@
         <div class="evtCtnsBox evt_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_05.jpg" alt="" usemap="#Map1916a" border="0" />
             <map name="Map1916a" id="Map1916a">
-                <area shape="rect" coords="849,113,1064,178" href="https://job.willbes.net/userPackage/show/cate/309002/prod-code/171469" target="_blank" />
+                <area shape="rect" coords="849,113,1064,178" href="https://gosi.willbes.net/userPackage/show/cate/3094/prod-code/174697" target="_blank" />
             </map>
         </div>
 

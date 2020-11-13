@@ -57,7 +57,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1916_04.jpg" title="">
             <div class="title NSK-Black">기간제 패키지 강좌</div>
             <div class="evt_04box">                
-                @include('html.promotion.1015_promotionLecPkgB')           
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @endif                
             </div>
         </div>
 

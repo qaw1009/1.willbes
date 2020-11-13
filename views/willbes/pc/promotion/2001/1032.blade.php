@@ -109,7 +109,7 @@
         </div>
 
         <div class="wb_01">
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
             <div class="slide_con">
                 <ul id="slidesImg5">
                     <li><a href="#interview20"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_20.jpg" alt=""/></a></li>
@@ -133,8 +133,8 @@
 					<li><a href="#interview02"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_02.jpg" alt=""/></a></li>
                     <li><a href="#interview01"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_01.jpg" alt=""/></a></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight5"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft5"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight5"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>          
 
 
@@ -171,209 +171,209 @@
         <div class="wb_02">
             <div class="slide_con">
                 <ul id="slidesCts3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_6.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_7.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2019/05/180713_EV03_8.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_6.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_7.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_8.png" alt="3.합격수기 공모전 시상식" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
         </div><!--wb_02//-->
 
         <div class="wb_03" >
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_top.png"  alt="합격비법을 공개합니다." />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_top.png"  alt="합격비법을 공개합니다." />
             <ul class="evTabs">
                 <li>
                     <a href="#tab11">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab1.png"  alt="합격비법 김형*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab1on.png"  alt="합격비법 김형*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab1.png"  alt="합격비법 김형*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab1on.png"  alt="합격비법 김형*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab12">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab2.png"  alt="합격비법 박현*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab2on.png"  alt="합격비법 박현*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab2.png"  alt="합격비법 박현*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab2on.png"  alt="합격비법 박현*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab13">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab3.png"  alt="합격비법 오희*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab3on.png"  alt="합격비법 오희*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab3.png"  alt="합격비법 오희*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab3on.png"  alt="합격비법 오희*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab14">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab4.png"  alt="합격비법 김원*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab4on.png"  alt="합격비법 김원*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab4.png"  alt="합격비법 김원*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab4on.png"  alt="합격비법 김원*" class="on"/>
                     </a>
                 </li>
 
                 <li>
                     <a href="#tab15">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab5.png"  alt="합격비법 김형*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab5on.png"  alt="합격비법 김형*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab5.png"  alt="합격비법 김형*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab5on.png"  alt="합격비법 김형*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab16">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab6.png"  alt="합격비법 박현*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab6on.png"  alt="합격비법 박현*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab6.png"  alt="합격비법 박현*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab6on.png"  alt="합격비법 박현*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab17">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab7.png"  alt="합격비법 오희*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab7on.png"  alt="합격비법 오희*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab7.png"  alt="합격비법 오희*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab7on.png"  alt="합격비법 오희*" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab18">
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab8.png"  alt="합격비법 김원*" class="off"/>
-                        <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab8on.png"  alt="합격비법 김원*" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab8.png"  alt="합격비법 김원*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab8on.png"  alt="합격비법 김원*" class="on"/>
                     </a>
                 </li>
             </ul>
 
             <div id="tab11" class="tabCts">
-                <a onclick="go_popup()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_1.jpg"  alt="합격비법 김형*"/>
+                <a onclick="go_popup()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_1.jpg"  alt="합격비법 김형*"/>
             </div>
             <div id="tab12" class="tabCts">
-                <a onclick="go_popup1()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_2.jpg"  alt="합격비법 박현*"/>
+                <a onclick="go_popup1()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_2.jpg"  alt="합격비법 박현*"/>
             </div>
             <div id="tab13" class="tabCts">
-                <a onclick="go_popup2()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_3.jpg"  alt="합격비법 오희*"/>
+                <a onclick="go_popup2()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_3.jpg"  alt="합격비법 오희*"/>
             </div>
             <div id="tab14" class="tabCts">
-                <a onclick="go_popup3()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_4.jpg"  alt="합격비법 김원*"/>
+                <a onclick="go_popup3()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_4.jpg"  alt="합격비법 김원*"/>
             </div>
             <div id="tab15" class="tabCts">
-                <a onclick="go_popup4()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_5.jpg"  alt="합격비법 김형*"/>
+                <a onclick="go_popup4()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_5.jpg"  alt="합격비법 김형*"/>
             </div>
             <div id="tab16" class="tabCts">
-                <a onclick="go_popup5()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_6.jpg"  alt="합격비법 박현*"/>
+                <a onclick="go_popup5()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_6.jpg"  alt="합격비법 박현*"/>
             </div>
             <div id="tab17" class="tabCts">
-                <a onclick="go_popup6()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_7.jpg"  alt="합격비법 오희*"/>
+                <a onclick="go_popup6()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_7.jpg"  alt="합격비법 오희*"/>
             </div>
             <div id="tab18" class="tabCts">
-                <a onclick="go_popup7()"><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
-                <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_8.jpg"  alt="합격비법 김원*"/>
+                <a onclick="go_popup7()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_8.jpg"  alt="합격비법 김원*"/>
             </div>
         </div><!--wb_03//-->
 
         <div class="wb_04" >
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_top.jpg"  alt="나는 이렇게 합격했다." />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_top.jpg"  alt="나는 이렇게 합격했다." />
             <div class="slide_con slide_con2">
                 <ul id="slidesImg4">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_10.jpg" alt="10" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_1.jpg" alt="1" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_2.jpg" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_3.jpg" alt="3" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_4.jpg" alt="4" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_5.jpg" alt="5" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_6.jpg" alt="6" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_7.jpg" alt="7" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_8.jpg" alt="8" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV05_9.jpg" alt="9" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_10.jpg" alt="10" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_1.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_2.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_3.jpg" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_4.jpg" alt="4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_5.jpg" alt="5" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_6.jpg" alt="6" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_7.jpg" alt="7" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_8.jpg" alt="8" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_9.jpg" alt="9" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
 
             <div id="popup" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab1_pop.jpg" alt="합격비법 김형*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab1_pop.jpg" alt="합격비법 김형*"/>
                 </div>
             </div>
             <div id="popup1" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab2_pop.jpg" alt="합격비법 박현*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab2_pop.jpg" alt="합격비법 박현*"/>
                 </div>
             </div>
             <div id="popup2" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab3_pop.jpg" alt="합격비법 오희*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab3_pop.jpg" alt="합격비법 오희*"/>
                 </div>
             </div>
             <div id="popup3" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab4_pop.jpg" alt="합격비법 김원*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab4_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
             <div id="popup4" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab5_pop.jpg" alt="합격비법 김원*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab5_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
             <div id="popup5" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab6_pop.jpg" alt="합격비법 김원*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab6_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
             <div id="popup6" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab7_pop.jpg" alt="합격비법 김원*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab7_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
             <div id="popup7" class="Pstyle">
                 <div class="b-close">X</div>
                 <div class="fpcontent">
-                    <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV04_tab8_pop.jpg" alt="합격비법 김원*"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab8_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
         </div><!--wb_04//-->
 
 
         <div class="wb_06" >
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07.jpg"  alt="3법도 공통과목도" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07.jpg"  alt="3법도 공통과목도" />
             <div class="slide_con">
                 <ul id="slidesImg6">
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_6.jpg" alt="6" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_7.jpg" alt="7" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_8.jpg" alt="8" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_9.jpg" alt="9" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_10.jpg" alt="10" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_11.jpg" alt="11" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_12.jpg" alt="12" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_13.jpg" alt="13" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_14.jpg" alt="14" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_1.jpg" alt="1" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_2.jpg" alt="2" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_3.jpg" alt="3" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_4.jpg" alt="4" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_5.jpg" alt="5" /></li>
-                    <li><img src="http://file3.willbes.net/new_cop/2018/07/180713_EV07_15.jpg" alt="5" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_6.jpg" alt="6" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_7.jpg" alt="7" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_8.jpg" alt="8" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_9.jpg" alt="9" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_10.jpg" alt="10" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_11.jpg" alt="11" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_12.jpg" alt="12" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_13.jpg" alt="13" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_14.jpg" alt="14" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_1.jpg" alt="1" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_2.jpg" alt="2" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_3.jpg" alt="3" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_4.jpg" alt="4" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_5.jpg" alt="5" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_15.jpg" alt="5" /></li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight6"><img src="http://file3.willbes.net/new_cop/2017/03/EV170306_p_next.png" alt="다음" /></a></p>
+                <p class="leftBtn"><a id="imgBannerLeft6"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
         </div>
 
         <div class="wb_05">
-            <img src="http://file3.willbes.net/new_cop/2018/07/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank" alt="신광은경찰PASS"/>
+                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1864') }}" target="_blank" alt="신광은경찰PASS"/>
                 <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
-                <area shape="rect" coords="678,968,779,1014" href="https://police.willbes.net/home/index/cate/3006" target="_blank" alt="경찰승진PASS"/>
+                <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/home/index/cate/3006') }}" target="_blank" alt="경찰승진PASS"/>
                 <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>
             </map>
         </div><!--wb_05//-->

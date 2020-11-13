@@ -63,7 +63,7 @@
         </div>        
 
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&"  target="_blank">
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=897&"  target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky03.png" alt="광주 윌비스 공무원 필합반" />
             </a>            
         </div>

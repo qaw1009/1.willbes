@@ -279,3 +279,5 @@
 }
 .collaborate li a img { width: 140px; margin:0 auto;}
 .collaborate li:after {content:""; display: block; clear:both}
+
+.adm .upload {border:4px solid #008b6c;}

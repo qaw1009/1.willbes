@@ -883,6 +883,7 @@
     float: right;
 }
 
+
 .cop .willbesNumber ul li {
     margin-left: 100px;
 }
@@ -890,12 +891,53 @@
     margin-left: 50px;
 }
 
-/*2020.06 일반경찰 메인*/
+/*일반경찰 메인*/
 .bnSec01 {padding:20px 0 0;} 
 .bnSec01 li {display:inline; float:left}
 .bnSec01:after {content:""; display:block; clear:both}
 
-.bnSecbar01 .slider{height:100px; overflow:hidden}
+.SectionBg {background: #404040; padding:50px 0}
+.SectionBg:after {content:''; display:block; clear:both}
+.SectionBg .f_left {width: 745px; height: 420px; overflow: hidden;}
+.SectionBg .f_right {width: 375px; height: 420px; overflow: hidden;}
+
+.bnSecbar01 .slider {height:100px; overflow:hidden}
+
+.upload {position: relative; border:4px solid #3370e6; padding-left:20px}
+.upload .sliderNumV div {font-size:18px; height: 50px; line-height: 50px;}
+.upload .sliderNumV div span {color:#ccc; margin:0 10px}
+.upload .sliderNumV div strong:last-child {margin-left:10px; color:#c00}
+.upload .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+}
+.upload .bx-wrapper .bx-next {
+    background: url("../../img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
+    left: 20px;
+}
+.upload .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 40px;
+    height: 20px;
+}
+.upload .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.upload .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 18px;
+    right: 60px;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #888;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
 
 .onProfBox {margin-right:-12px; margin-bottom: -12px;}
 .onProfBox li {
@@ -909,6 +951,15 @@
     overflow: hidden;
     background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
 }
+.onProfBox.three li {
+    width: 370px;
+    height: 250px;
+    margin-right:5px;
+    margin-bottom: 0;
+    overflow: hidden;
+    background: none;
+}
+.onProfBox.three li:last-child {margin:0}
 
 .onProfBox li img {
     position: absolute;

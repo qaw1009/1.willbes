@@ -405,6 +405,7 @@ select[disabled] {
   width: 1120px !important; 
   margin: 0 auto;
 }
+.widthAuto:after {content: ''; display: block; clear:both}
 .widthAuto260 {
   width: 260px;
   margin: 0 auto;

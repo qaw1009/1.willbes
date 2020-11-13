@@ -73,7 +73,7 @@
         </div>
 
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>        
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=897&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>        
         </div>
 
         <div class="evtCtnsBox evt_top">            

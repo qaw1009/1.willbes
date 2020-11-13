@@ -101,32 +101,22 @@
         </div>
     </div>
 
-    <div class="SectionBg">
+    <div class="Section">
         <div class="widthAuto bnSecbar01">
             <div class="slider">
                 <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
                 <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x100.jpg" alt="배너명"></a></div>
-            </div>
-        </div>
-
-        <div class="widthAuto mt50">
-            <div class="f_left nSlider pick">
-                <div class="sliderNum">
-                    <div><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_745x420_01.jpg" alt="배너명"></div>
-                    <div><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_745x420_02.jpg" alt="배너명"></div>
-                </div>
-            </div>
-            <div class="f_right nSlider pick">
-                <div class="sliderNum">
-                    <div><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_375x420_01.jpg" alt="배너명"></div>
-                    <div><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_375x420_02.jpg" alt="배너명"></div>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="Section HotIssue mt50">
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_1120x450.jpg" alt="배너명"></a>
+        </div>
+    </div>
+
+    <div class="Section HotIssue mt20">
         <ul class="widthAuto">
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_01.jpg" alt="배너명"></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_02.jpg" alt="배너명"></a></li>
@@ -135,43 +125,6 @@
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_02.jpg" alt="배너명"></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3001_370x210_03.jpg" alt="배너명"></a></li>
         </ul>
-    </div>
-
-    {{--최근 업로드 강좌--}}
-    <div class="Section mt50">
-        <div class="widthAuto">
-            <div class="will-nTit bd-none">
-                최근 <span class="cop-color">업로드 강좌</span>
-                <a href="#none" class="btn-add f_right"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
-            </div>
-            <div class="upload">
-                <div class="sliderNumV vSlider">
-                    <div><a href="#">형사소송법 신광은 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> <strong>▶ 총 3강 업로드</strong></a></div>
-                    <div><a href="#">경찰학개론 장정훈 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> <strong>▶ 총 3강 업로드</strong></a></div>
-                    <div><a href="#">한국사 원유철 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> <strong>▶ 총 3강 업로드</strong></a></div>
-                    <div><a href="#">한국사 오태진 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> <strong>▶ 총 3강 업로드</strong></a></div>
-                    <div><a href="#">영어 하승민 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> <strong>▶ 총 3강 업로드</strong></a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--경찰 개편 시험 대비 전문교수진--}}
-    <div class="Section mt50">
-        <div class="widthAuto">
-            <div class="will-nTit bd-none">경찰 개편 시험 대비 <span class="cop-color">전문교수진</span></div>
-            <ul class="onProfBox three">
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_370x250_01.jpg" title="배너명" ></a>
-                </li>
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_370x250_01.jpg" title="배너명" ></a>
-                </li>
-                <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_370x250_01.jpg" title="배너명" ></a>
-                </li>
-            </ul>
-        </div>
     </div>
 
     <div class="Section Section5 mt50">
@@ -675,22 +628,6 @@
             }
         });
 
-        //최근 업로드 강좌 
-        $(function() {
-            $('.sliderNumV').bxSlider({
-                mode: 'vertical', 
-                auto: true,
-                controls: true,
-                infiniteLoop: true,
-                pagerType: 'short',
-                minSlides: 1,
-                pause: 4000,
-                pager: true,
-                onSliderLoad: function(){
-                    $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
-                } 
-            });
-        });
     
 </script>
 @stop

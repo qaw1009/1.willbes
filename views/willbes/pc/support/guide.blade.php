@@ -48,11 +48,41 @@
                                 </li>
                             </ul>
                             <div class="tabBox">
-                                <div id="guide1" class="tabContent"><img src="{{ img_url('cs/willbes_guide_01.jpg') }}" alt="주요메뉴"> </div>
-                                <div id="guide2" class="tabContent"><img src="{{ img_url('cs/willbes_guide_02.jpg') }}" alt="회원가입"> </div>
-                                <div id="guide3" class="tabContent"><img src="{{ img_url('cs/willbes_guide_03.jpg') }}" alt="수강신청"> </div>
-                                <div id="guide4" class="tabContent"><img src="{{ img_url('cs/willbes_guide_04.jpg') }}" alt="주문/결제"> </div>
-                                <div id="guide5" class="tabContent"><img src="{{ img_url('cs/willbes_guide_05.jpg') }}" alt="강의수강"> </div>
+                                <div id="guide1" class="tabContent">                                     
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <img src="https://static.willbes.net/public/images/promotion/sub/2017_guide_01.jpg" alt="주요메뉴"> 
+                                    @else
+                                        <img src="{{ img_url('cs/willbes_guide_01.jpg') }}" alt="주요메뉴">
+                                    @endif
+                                </div>
+                                <div id="guide2" class="tabContent">                                    
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <img src="https://static.willbes.net/public/images/promotion/sub/2017_guide_02.jpg" alt="회원가입">
+                                    @else
+                                        <img src="{{ img_url('cs/willbes_guide_02.jpg') }}" alt="회원가입">  
+                                    @endif
+                                </div>
+                                <div id="guide3" class="tabContent">                                    
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <img src="https://static.willbes.net/public/images/promotion/sub/2017_guide_03.jpg" alt="수강신청"> 
+                                    @else
+                                        <img src="{{ img_url('cs/willbes_guide_03.jpg') }}" alt="수강신청"> 
+                                    @endif
+                                </div>
+                                <div id="guide4" class="tabContent">                                    
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <img src="https://static.willbes.net/public/images/promotion/sub/2017_guide_04.jpg" alt="주문/결제"> 
+                                    @else
+                                        <img src="{{ img_url('cs/willbes_guide_04.jpg') }}" alt="주문/결제">
+                                    @endif 
+                                </div>
+                                <div id="guide5" class="tabContent">                                    
+                                    @if($__cfg['SiteCode'] == '2017')
+                                        <img src="https://static.willbes.net/public/images/promotion/sub/2017_guide_05.jpg" alt="강의수강"> 
+                                    @else
+                                        <img src="{{ img_url('cs/willbes_guide_05.jpg') }}" alt="강의수강"> 
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

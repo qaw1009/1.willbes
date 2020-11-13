@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NSK gosi mb40">
-        <div class="imgFull">
+        <div class="fullImg">
             <a href="{{site_url('/m/promotion/index/cate/3024/code/1902')}}">
                 <img src="https://static.willbes.net/public/images/promotion/m/2003/2004_720x340.gif" title="공무원 라이브모드">
             </a>

@@ -13,10 +13,10 @@
     
     <div class="MainSlider swiper-container swiper-container-page">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg"></div>
-            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_01.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_02.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_03.jpg" alt="배너명"></div>
+            <div class="swiper-slide"><img src="https://static.willbes.net/public/images/promotion/m/3094_720x400_04.jpg" alt="배너명"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>

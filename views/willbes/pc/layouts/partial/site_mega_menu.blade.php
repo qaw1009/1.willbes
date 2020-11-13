@@ -322,6 +322,14 @@
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1232&subject_name=%EC%9C%A0%EA%B8%B0%EB%86%8D%EC%97%85%EA%B8%B0%EB%8A%A5%EC%82%AC')}}">장사원</a>
                         <span>[토양학]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1243&subject_name=%ED%86%A0%EC%96%91%ED%95%99')}}">장사원</a>
+                        <span>[가축사양학]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2115&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99')}}">윤용범</a>
+                        <span>[가축육종학]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2116&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99')}}">윤용범</a>
+                        <span>[기계일반]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51148?subject_idx=1216&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98')}}">윤황현</a>
+                        <span>[기계설계]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51148?subject_idx=1217&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84')}}">윤황현</a>
                     </li>
                 </ul>
             </div>
@@ -576,6 +584,14 @@
                         <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1360&subject_name=%EC%9D%91%EC%9A%A9%EC%97%AD%ED%95%99%EA%B0%9C%EB%A1%A0')}}">장성국</a>
                         <span>[토목설계]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50436/?cate_code=3052&subject_idx=1361&subject_name=%ED%86%A0%EB%AA%A9%EC%84%A4%EA%B3%84')}}">장성국</a>
+                        <span>[가축사양학]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2113&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99')}}">윤용범</a>
+                        <span>[가축육종학]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2114&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99')}}">윤용범</a>
+                        <span>[기계일반]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1362&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98')}}">윤황현</a>
+                        <span>[기계설계]</span>
+                        <a href="{{front_url('/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1363&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84')}}">윤황현</a>
                     </li>
                 </ul>
             </div>

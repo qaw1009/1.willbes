@@ -215,6 +215,8 @@
                 <li><span>농업직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1172') }}">장사원</a></li>
                 <li><span>농촌지도사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1230') }}">장사원</a></li>
                 <li><span>유기농업기능사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50429?subject_idx=1232') }}">장사원</a></li>
+                <li><span>축산직</span><a href="{{ front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2115&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99') }}">윤용범</a></li>
+                <li><span>기계직</span><a href="{{ front_url('/professor/show/cate/3028/prof-idx/51148?subject_idx=1216&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98') }}">윤황현</a></li>
             </ul>
         @endif
     @elseif($__cfg['SiteCode'] == '2005')

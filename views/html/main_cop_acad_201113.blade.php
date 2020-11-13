@@ -1,6 +1,622 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style>
+    /*********************************************     Main Container : Cop Acad     *********************************************/       
+.cop_acad .tx-color {
+    color: #0c5dc0;
+}
+.PA .tx-color {
+    color: #0c5dc0;
+}
+.cop_acad .Menu .menu-List li.Acad a {
+    background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
+    color: #2784d2;
+}
+.cop_acad .Menu .menu-List li.Acad a .arrow-Btn {
+    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
+}
+.cop_acad .Section2 {
+    background: #f7f7f7;
+}
+
+/* Main Container : MainVisual : Cop Acad */
+.MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.MainVisual_acad ul li {
+    float: left;
+    margin-left: 11px;
+}
+.MainVisual_acad ul li:first-child {
+    margin-left: 0;
+}
+
+
+/* Main Container : Tit : Cop Acad */
+.Section .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.Section .will-acadTit span {
+    vertical-align: baseline;
+}
+
+
+/* Main Container : 학원소식... : Cop Acad */
+.sliderSuccess {
+    float: left;
+    width: 356px;    
+    margin-right: 18px;
+}
+.sliderSuccessPlay {
+    width: 356px;
+    height: 200px;
+    background: #000;
+}
+.sliderSuccess iframe {
+    width: 356px;
+    height: 200px;
+}
+.sliderInfo {
+    float: left;
+    width: 356x;
+    margin-right: 32px;
+}
+.sliderInfo ul li {
+    margin-top: 4px;
+}
+.sliderInfo ul li:first-child {
+    margin-top: 0;
+}
+
+/* Main Container : acad_infoBox : Cop Acad */
+
+.caProfBox li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 271px;
+    height: 297px;
+    margin-right:12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: url("../../img/willbes/cop_acad/prof/prof_temp.jpg") no-repeat center center;
+}
+
+.caProfBox li:nth-child(4),
+.caProfBox li:nth-child(8),
+.caProfBox li:last-child {
+    margin-right:0;
+}
+
+.caProfBox li img {
+    position: absolute;
+    left:50%;
+    margin-left:-50%;
+}
+.caProfBox .caProfBtsn {
+    position: absolute;
+    top:170px;
+    left:35px;
+    font-size: 14px;
+}
+.caProfBox .caProfBtsn a {
+    display: block;
+    font-size: 16px;
+    background: url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    padding:5px 30px 5px 5px;
+    margin-left:-5px;
+    margin-bottom: 5px
+}
+.caProfBox .caProfBtsn span {
+    display: block;
+    font-size: 13px;
+    color:#fd6f31;
+    margin-top: 4px;
+}
+.caProfBox .caProfBtsn a:hover {
+    color:#fff !important;
+    background: #0c5dc0 url("../../img/willbes/cop_acad/icon_arrow.png") no-repeat 95% 7px;
+    border-radius: 0 5px 0 5px;
+}
+.caProfBox .caProfBtsn a:hover span {
+    color:#fff;
+}
+.caProfBox:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : 특별관리반 : Cop Acad */
+.specialClass li {
+    display: inline;
+    float: left;
+    margin-right: 12px;
+}
+.specialClass li:last-child {
+    margin: 0;
+}
+.specialClass:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Main Container : 합격커리큘럼 : Cop Acad */
+.passCurriWrap {
+    position:absolute;
+    top:351px;
+    left:36px;
+    z-index: 1;
+}
+.passCurriWrap ul {
+    position: relative;
+}
+.passCurriWrap li {
+    position: absolute;
+    z-index: 1;
+}
+.passCurriWrap li img.out {display: block}
+.passCurriWrap li img.over {display: none}
+.passCurriWrap li:hover img.over {display: block;}
+.passCurriWrap li.curriStep1:hover img.over {    
+    margin-top:-41px;
+    margin-left:-24px;
+}
+.passCurriWrap li.curriStep2 {
+    top: 40px;
+    left: 170px;
+}
+.passCurriWrap li.curriStep2:hover img.over {    
+    margin-top:-41px;
+    margin-left:-6px;
+}
+.passCurriWrap li.curriStep3 {
+    top: 80px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep3:hover img.over {    
+    margin-top:-120px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep4 {
+    top: 120px;
+    left: 340px;
+}
+.passCurriWrap li.curriStep4:hover img.over {    
+    margin-top:-41px;
+    margin-left:0;
+}
+.passCurriWrap li.curriStep5 {
+    top: 160px;
+    left: 709px;
+}
+.passCurriWrap li.curriStep5:hover img.over {    
+    margin-top:-133px;
+    margin-left:-2px;
+}
+.passCurriWrap li.curriStep6 {
+    top: 200px;
+    left: 879px;
+}
+.passCurriWrap li.curriStep6:hover img.over {    
+    margin-top:-181px;
+    margin-left:-1px;
+}
+
+
+
+/* Main Container : Notice : noticeTabs */
+.noticeTabs.acad {
+    float: right;
+    width: 358px;
+    margin-top: 27px;
+}
+.tabWrap.noticeWrap_acad {
+    height: 34px;
+    border-bottom: 1px solid #0c5dc0;
+}
+.tabWrap.noticeWrap_acad li {
+    float: left;
+    width: 100px;
+    height: 34px;
+    margin-right: -1px;
+}
+.tabWrap.noticeWrap_acad li a {
+    display: block;
+    width: 100%;
+    height: 33px;
+    line-height: 33px;
+    background: none;
+    font-size: 14px;
+    color: #7c7c7c;
+    text-align: center;
+    letter-spacing: 0;
+    border-top: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+.tabWrap.noticeWrap_acad li a.on {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    height: 34px;
+    line-height: 33px;
+    color: #0c5dc0;
+    border-top: 1px solid #0c5dc0;
+    border-left: 1px solid #0c5dc0;
+    border-right: 1px solid #0c5dc0;
+}
+.tabBox.noticeBox_acad a.btn-add {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+.tabBox.noticeBox_acad .List-Table {
+    padding: 9px 0 0;
+}
+.tabBox.noticeBox_acad .List-Table li {
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-top: 1px solid #e3e3e3;
+}
+.tabBox.noticeBox_acad .List-Table li:first-child {
+    border-top: none;
+}
+.tabBox.noticeBox_acad .List-Table li a {
+    display: inline-block;
+    width: 92%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.tabBox.noticeBox_acad .List-Table li a img {
+    margin-right: 5px;
+}
+
+
+/* Main Container : campus : Cop Acad */
+.tabWrap.noticeWrap_campus {
+    height: 60px;
+    border-bottom: none;
+    border-top: 2px solid #000;
+    clear: both;
+}
+.tabWrap.noticeWrap_campus li {
+    float: left;
+    width: auto;
+    height: 60px;
+    margin: 0 10px;
+}
+.tabWrap.noticeWrap_campus li a {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: none;
+    font-size: 13px;
+    color: #3a3a3a;
+    text-align: center;
+    letter-spacing: 0;
+    border: none;
+    padding-right: 20px;
+}
+.tabWrap.noticeWrap_campus li:first-child a {
+    border-left: none;
+} 
+.tabWrap.noticeWrap_campus li a.on {
+    position: relative;
+    z-index: 2;
+    background: none;
+    height: 60px;
+    line-height: 60px;
+    font-weight: 600;
+    color: #3a3a3a;
+    border: none;
+}
+.tabWrap.noticeWrap_campus .row-line {
+    float: right;
+    background: #b7b7b7;
+    width: 1px;
+    height: 12px;
+    margin: -36px 0 0;
+}
+
+.tabBox.noticeBox_campus {
+    clear: both;
+}
+.tabBox.noticeBox_campus a.btn-add {
+    position: relative;
+    top: -1px;
+    margin-left: 10px;
+}
+.tabBox.noticeBox_campus .List-Table {
+    padding: 10px 0 20px;
+}
+.tabBox.noticeBox_campus .List-Table li {
+    font-size: 14px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+}
+.tabBox.noticeBox_campus .List-Table li a {
+    display: inline-block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.map_img {
+    position: relative;
+    float: left;
+}
+.map_img span {
+    position: absolute;
+    padding:5px;
+    background: #33373a;
+    color:#fff;
+    min-width: 50px;
+    text-align: center;
+    border:1px solid #000;
+    border-radius: 10px;
+    top:51%;
+    left:50%;
+    margin-left: -25px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+    z-index: 1;
+}
+.map_img span.origin {
+    min-width: 80px;
+    margin-left: -40px;
+}
+
+.campus_info {
+    position: relative;
+    float: right;
+    width: 350px;
+    height: 328px;
+}
+.campus_info dl dt {
+    padding: 25px 0;
+}
+.campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0;
+}
+.campus_info .c-tit {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+}
+.campus_info .c-tit span {
+    vertical-align: baseline;
+}
+.campus_info .c-info {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 18px;
+}
+.campus_info .c-info span {
+    float: left;
+    display: table;
+}
+.campus_info .c-info span.a-tit {
+    width: 60px;
+    text-align: left; 
+}
+.campus_info .c-info span.tx-color {
+    font-weight: 600;
+}
+.campus_info .c-info div {
+    clear: both;
+}
+.campus_info .c-info div:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.campus_info .c-info div.tel {
+    margin-top: 10px;
+}
+.campus_info .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.campus_info .btn2 {
+    top:440px;
+}
+.campus_info .btn a {
+    display: inline-block; 
+    font-size: 21px; 
+    font-weight: 600;
+    padding: 11px 47px;
+    color: #0c5dc0;
+    text-align: center;
+    border: 1px solid #0c5dc0;
+}
+
+/*캠퍼스 메인 오시는 길*/
+.PA .map_img {
+    position: relative;
+    float: left;
+    width: 580px;
+    height: 328px;
+    overflow: hidden;
+}
+.PA .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.PA .campus_info {
+    position: relative;
+    float: right;
+    width: 320px;
+    height: 328px;
+}
+.PA .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.PA .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
+}
+
+/* Main Container : QuickMenu : Cop */
+.cop_acad .MainQuickMenu {
+    position: fixed;
+    top: 110px;
+    right: 20px;
+    width: 160px;
+    height: auto;    
+    z-index: 100;
+}
+.cop_acad .MainQuickMenu ul {
+    padding:0 8px !important;
+    background: #ececec;
+    width:100%;
+}
+.cop_acad .MainQuickMenu li {
+    border-top:1px solid #f6f6f6;
+    border-bottom:1px solid #d4d4d4;
+    height: 40px;
+    line-height: 40px;
+    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
+    margin: 0;
+}
+.cop_acad .MainQuickMenu li:first-child {
+    border-top:0;
+}
+.cop_acad .MainQuickMenu li:last-child {
+    border-bottom:0;
+}
+.cop_acad .MainQuickMenu li a {
+    display: block; padding-left:30px; background-position: 5px center; background-repeat:no-repeat;
+}
+.cop_acad .MainQuickMenu li a:hover {
+    color:#00acec; 
+}
+.cop_acad .MainQuickMenu li:nth-child(1) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq01.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(2) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq07.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(3) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq02.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(4) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq03.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(5) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq05.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(6) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq10.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(7) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq06.png");
+}
+.cop_acad .MainQuickMenu li:nth-child(8) a {
+    background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
+}
+
+/*sub 메인*/
+.PA .subSection01 {
+    clear: both;
+    width: 940px;
+    height: 304px;
+    overflow: hidden;
+}
+
+.PA .subSection02 {
+    clear: both;
+    width: 940px !important;
+    height: 105px;
+    overflow: hidden;
+}
+.PA .subSection02 ul li {
+    float: left;
+    width: 468px !important;
+    margin-left: 4px;
+}
+.PA .subSection02 ul li:first-child {
+    margin-left: 0;
+}
+
+/* sub Main Container : Notice : noticeTabs */
+.PA .noticeTabs.acad {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#notice3 .mapWrap {
+    margin-top: 40px;
+    background: #606060;
+}
+#notice3 .mapWrap .mapImg {
+    position: relative;
+    float: left;
+    width: 534px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+#notice3 .mapWrap .mapImg img {
+    position: absolute;
+    top:-39px;
+    left:-82px;
+}
+#notice3 .mapWrap .add {
+    float: right;
+    width: 40%;
+    font-size: 13px;
+}
+#notice3 .mapWrap .add ul li span {
+    display: inline-block;
+    width: 70px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: #f9f9f9;
+    float: left;
+    margin-right:8px;
+}
+#notice3 .mapWrap .add ul li {
+    border-top:1px solid #959595 !important;
+    border-bottom:1px solid #efefef !important;
+    margin-bottom:1px;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: normal;
+}
+#notice3 .mapWrap .add ul li.mapTit {
+    font-size: 16px;
+    border:0 !important;
+}
+#notice3 .mapWrap .add ul li:last-child {
+    border-top:0 !important;
+    border-bottom:1px solid #959595 !important;
+}
+#notice3 .mapWrap:after {
+    conternt:'';
+    display: block;
+    clear: both;
+}
+</style>
 <!-- Container -->
 <div id="Container" class="Container cop_acad NSK c_both">
     <div class="Menu widthAuto NSK c_both">
@@ -86,79 +702,108 @@
         </h3>
     </div>
 
-    <div class="Section1 mt20">        
-        <div class="MainVisualAcad">            
-            <div class="VisualBoxAcad">
-                <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_2000x440_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_2000x440_02.jpg" alt="배너명"></a></div> 
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_2000x440_03.jpg" alt="배너명"></a></div>  
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_2000x440_04.jpg" alt="배너명"></a></div>                                                                     
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="Section barfull">
-        <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_1120x110.jpg" alt="배너명"></a>
-        </div>
-    </div>
-
-    <div class="Section MainVisual_acad2 mt50">
+    <div class="Section MainVisual MainVisual_acad mb20 mt20">
         <div class="widthAuto">
             <ul>
-                <li class="VisualsubBox_acad2">
-                    <div class="tag">#초시생 잇템 SUPER PASS</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_265x290_01.jpg" title="배너명"></a>
+                <li class="VisualsubBox_acad">
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB01.jpg') }}" title="기본이론종합반"></a>
                 </li>
-                <li class="VisualsubBox_acad2">
-                    <div class="tag">#12개월 끝장 PASS</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_265x290_02.jpg" title="배너명"></a>
+                <li class="VisualsubBox_acad">
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB02.jpg') }}" title="superpass"></a>
                 </li>
-                <li class="VisualsubBox_acad2">
-                    <div class="tag">#문제풀이 풀패키지</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_265x290_03.jpg" title="배너명"></a>
+                <li class="VisualsubBox_acad">
+                    <a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB03.jpg') }}" title="문제풀이패키지"></a>
                 </li>
-                <li class="VisualsubBox_acad2">
-                    <div class="bSlider">        
-                        <div class="slider">
-                            <div>
-                                <div class="tag">#기본이 중요! 기본이론 집중완성</div>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_265x290_04.jpg" title="배너명"></a>
-                            </div>
-                            <div>
-                                <div class="tag">#기본이론 집중완성</div>
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_265x290_05.jpg" title="배너명"></a>
-                            </div>
+                <li class="VisualsubBox_acad">                    
+                    <div class="bSlider acad">
+                        <div class="bSlider slider">
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_01.jpg') }}" title="합격전략설명회"></a></div>
+                            <div><a href="#none"><img src="{{ img_url('cop_acad/visual/visual_secB04_02.jpg') }}" title="황세웅면접캠프"></a></div>
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
-    </div> 
+    </div>
 
-    <div class="Section mt50">
+    <div class="Section mb50">
         <div class="widthAuto">
-            <div class="f_left">
-                <div class="will-acadTit">합격을 위한 <span class="tx-color">관리반</span> 시스템</div>
-            </div>
-            <div class="f_right">
-                <div class="will-acadTit">교수팀 <span class="tx-color">신규강좌</span> 리스트</div>
-            </div>
+            <ul class="specialClass">   
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A01.jpg') }}" title="스파르타"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A02.jpg') }}" title="영어지옥 탈출반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A03.jpg') }}" title="통합생활 관리반"></a></li>
+                <li><a href="#none"><img src="{{ img_url('cop_acad/banner/bnr_A04.jpg') }}" title="특별체력 관리반"></a></li>
+            </ul>
         </div>
     </div>
 
-    <div class="Section passCurri mt50">
+    <div class="Section mb50">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2002/2002_img_1120.jpg" title="합격 프로그램">
-            <div><a href="#none" class="NSK-Black">신광은 경찰학원 일정보기 ></a></div>
+            <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
+            <ul class="caProfBox">
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_ske.jpg') }}" usemap="#MapProf01" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf01">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_jjh.jpg') }}" usemap="#MapProf02" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf02">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_wyc.jpg') }}" usemap="#MapProf03" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf03">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_otj.jpg') }}" usemap="#MapProf04" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf04">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_kwu.jpg') }}" usemap="#MapProf05" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf05">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_hsm.jpg') }}" usemap="#MapProf06" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf06">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>                                        
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_khj.jpg') }}" usemap="#MapProf07" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf07">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>
+                <li>
+                    <img src="{{ img_static_url('promotion/main/2002/2002_prof_kjk.jpg') }}" usemap="#MapProf08" title="배너명" alt="배너명" border="0">
+                    <map name="MapProf08">
+                        <area shape="rect" coords="22,173,183,217" href="#">
+                        <area shape="rect" coords="21,220,182,261" href="#">
+                    </map>
+                </li>                  
+            </ul>
         </div>
     </div>
+    <!-- 교수별 빠른강좌 //--> 
+    
 
-    <div class="Section Section2 pb110 mt50">     
+    <div class="Section Section2 pb110">     
         <div class="widthAuto tx-center pt80 pb80">    
             <img src="{{ img_url('cop_acad/visual/visual_curri_tit.png') }}" title="최적의 합격 커리큘럼">
         </div> 
@@ -308,7 +953,7 @@
             </div>
         </div>
     </div>
-    
+   
     <div class="Section Section4 mb50 mt30">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">신광은경찰</span> 캠퍼스</div>

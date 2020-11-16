@@ -42,7 +42,7 @@
         .evt06 {background:#fff}
 
         .evt07 {background:#E1E1E1}           
-        .evtFooter {width:1120px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;}
+        .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
@@ -66,7 +66,7 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02.jpg" alt="" usemap="#Map1911a" border="0" >
             <map name="Map1911a" id="reserve">
-                <area shape="rect" coords="306,1197,814,1271" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="108,1197,613,1272" href="javascript:alert('Comimg Soon :)')" />
             </map>
         </div> 
 

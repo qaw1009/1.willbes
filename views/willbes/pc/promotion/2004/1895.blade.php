@@ -17,17 +17,17 @@
 
         /************************************************************/
 
-        .intro {background:url("https://static.willbes.net/public/images/promotion/2020/11/1895_intro_bg.jpg") center top no-repeat; height:870px; position:relative}
-        .intro .number {width:1120px; margin:0 auto; position:relative}
-        .intro .number span {font-size:80px; color:#fafafa; font-family: 'Anton', sans-serif; position:absolute; letter-spacing:44px}
-        .intro .number span.n01 {top:132px; left:262px;}
-        .intro .number span.n02 {top:264px; left:130px;}
-        .intro .number span.n03 {top:402px; left:450px;}
-        .intro ul {position:absolute; top:590px; width:100%}
-        .intro ul li {text-align:center; color:#fff; font-size:18px}
-        .intro ul li span {padding-bottom:3px; border-bottom:2px solid #ccc}
-        .intro ul li:last-child {margin-top:40px; font-size:24px; line-height:1.5; letter-spacing:-1px}
-        .intro ul li strong {color:#ffc39e}
+        .evtContent .intro {background:url("https://static.willbes.net/public/images/promotion/2020/11/1895_intro_bg.jpg") center top no-repeat; height:870px; position:relative}
+        .evtContent .intro .number {width:1120px; margin:0 auto; position:relative}
+        .evtContent .intro .number span {font-size:80px; color:#fafafa; font-family: 'Anton', sans-serif; position:absolute; letter-spacing:44px}
+        .evtContent .intro .number span.n01 {top:132px; left:262px;}
+        .evtContent .intro .number span.n02 {top:264px; left:130px;}
+        .evtContent .intro .number span.n03 {top:402px; left:450px;}
+        .evtContent .intro ul {position:absolute; top:590px; width:100%}
+        .evtContent .intro ul li {text-align:center; color:#fff; font-size:18px}
+        .evtContent .intro ul li span {padding-bottom:3px; border-bottom:2px solid #ccc}
+        .evtContent .intro ul li:last-child {margin-top:40px; font-size:24px; line-height:1.5; letter-spacing:-1px}
+        .evtContent .intro ul li strong {color:#ffc39e}
         
         .wb_top {background:#EBEFF2;}
         .wb_01  {background:#fff;}

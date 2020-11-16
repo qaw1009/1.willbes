@@ -144,9 +144,85 @@
         <div class="widthAuto">
             <div class="f_left">
                 <div class="will-acadTit">합격을 위한 <span class="tx-color">관리반</span> 시스템</div>
+                <div class="cop-bnSec-left">
+                    <div id="MainRollingDiv" class="MaintabList five">
+                        <ul class="Maintab">
+                            <li><a data-slide-index="0" href="javascript:void(0);" class="active">스파르타 관리반</a></li>
+                            <li><a data-slide-index="1" href="javascript:void(0);" class="">통합생활 관리반</a></li>
+                            <li><a data-slide-index="2" href="javascript:void(0);" class="">11월 추천 강좌</a></li>
+                            <li><a data-slide-index="3" href="javascript:void(0);" class="">아침 특강</a></li>
+                            <li><a data-slide-index="4" href="javascript:void(0);" class="">전범위 모의고사</a></li>
+                        </ul>
+                    </div>
+                    <div id="MainRollingSlider" class="MaintabBox">
+                        <ul class="MaintabSlider">
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_740x300_01.jpg" alt="배너명"></a></li>
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_740x300_02.jpg" alt="배너명"></a></li>
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_740x300_03.jpg" alt="배너명"></a></li>
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_740x300_04.jpg" alt="배너명"></a></li>
+                            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_740x300_05.jpg" alt="배너명"></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="f_right">
+            <div class="newLecture">
                 <div class="will-acadTit">교수팀 <span class="tx-color">신규강좌</span> 리스트</div>
+                <div class="bSlider">        
+                    <div class="slider">
+                        <div>                           
+                            <dl>                                                                  
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50547/lec_list_505471.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">형소법 동형전범위 모의고사 1단계</a></p>
+                                    <p>형사소송법 신광은</p>
+                                </dd>                                                               
+                            </dl>   
+                            <dl>                                 
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50031/lec_list_50031.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">경찰학 동형전범위 모의고사 1단계 경찰학 동형전범위 모의고사 1단계</a></p>
+                                    <p>경찰학개론 장정훈</p>
+                                </dd>                                                                  
+                            </dl>   
+                            <dl>                                       
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50297/lec_list_50297.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">형법 동형전범위 모의고사 1단계</a></p>
+                                    <p>형법 김원욱</p>
+                                </dd>                                    
+                            </dl>                            
+                        </div>
+                        <div>
+                            <dl>                                                                  
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50641/lec_list_50641.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">형소법 동형전범위 모의고사 1단계</a></p>
+                                    <p>형사소송법 신광은</p>
+                                </dd>                                                               
+                            </dl>   
+                            <dl>                                 
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50131/lec_list_50131_1567240397.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">경찰학 동형전범위 모의고사 1단계</a></p>
+                                    <p>경찰학개론 장정훈</p>
+                                </dd>                                                                  
+                            </dl>   
+                            <dl>                                       
+                                <dt><span><img src="https://police.willbes.net/public/uploads/willbes/professor/50135/lec_list_50135.png" alt="교수명"></span></dt>
+                                <dd>
+                                    <p>문풀2단계동형 모의고사</p>
+                                    <p class="NSK-Black"><a href="#none">형법 동형전범위 모의고사 1단계 형법 동형전범위 모의고사 1단계</a></p>
+                                    <p>형법 김원욱</p>
+                                </dd>                                    
+                            </dl>  
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -156,111 +232,6 @@
             <img src="https://static.willbes.net/public/images/promotion/main/2002/2002_img_1120.jpg" title="합격 프로그램">
             <div><a href="#none" class="NSK-Black">신광은 경찰학원 일정보기 ></a></div>
         </div>
-    </div>
-
-    <div class="Section Section2 pb110 mt50">     
-        <div class="widthAuto tx-center pt80 pb80">    
-            <img src="{{ img_url('cop_acad/visual/visual_curri_tit.png') }}" title="최적의 합격 커리큘럼">
-        </div> 
-        <div class="widthAuto CurriStepBox">
-            <div class="CurriView"><a href="{{ site_url('/promotion/index/cate/3001/code/1126') }}" target="_blank">커리큘럼 자세히보기 &gt;</a></div>
-            <ul class="CurriStep">
-                <li class="active">
-                    <div class="curriculumBox">
-                        <span><img src="{{ img_url('cop/icon_bubble.gif') }}" title="2019대비 진행중"> </span>
-                        <div class="Tit">기본과정</div>
-                        <div class="subTit">집중연강식 진행</div>
-                        <ul class="info">
-                            <li>기초개념 정리</li>
-                            <li>지속적인 복습테스트</li>
-                            <li>초시생 필수 수강과정</li>
-                        </ul>
-                    </div>
-                    <a href="#none" onclick="fnPlayerSample('132199', '1019097', 'HD');">OT보기 &gt;</a>
-                </li>
-                <li>&nbsp;</li>
-                <li>
-                    <div class="curriculumBox">
-                        <div class="Tit">심화과정</div>
-                        <div class="subTit">프리미엄 심화과정</div>
-                        <ul class="info">
-                            <li>실력업그레이드</li>
-                            <li>심화 l 이론/기출학습</li>
-                            <li>고득점 합격발판 마련</li>
-                        </ul>
-                    </div>
-                    <a href="#none" onclick="fnPlayerSample('132216', '1019296', 'HD');">OT보기 &gt;</a>
-                </li>
-                <li>&nbsp;</li>
-                <li>
-                    <div class="curriculumBox">
-                        <div class="Tit">문제풀이 과정</div>
-                        <div class="subTit">(실전 1+2+3 단계)</div>
-                        <ul class="info">
-                            <li>1단계 진도별 핵심정리</li>
-                            <li>2단계 전범위 동형모의고사</li>
-                            <li>3단계 FINAL 실전 모의고사</li>
-                        </ul>
-                    </div>
-                    <a href="#none" onclick="fnPlayerSample('131811', '1014607', 'HD');">OT보기 &gt;</a>
-                </li>
-            </ul>
-            <div class="curriculumTxt">
-                <span class="cop-color">모든 강의</span>를 평생 0원 PASS 하나로 <span class="cop-color">평생 수강</span>하실 수 있습니다.
-                <span class="btn"><a href="{{ site_url('/promotion/index/cate/3001/code/1009') }}" target="_blank">평생 0원 PASS 구매하기</a></span>
-            </div>
-        </div>
-        <!-- CurriStepBox //--> 
-        <div class="widthAuto curri_schedule">
-            <img src="https://static.willbes.net/public/images/promotion/main/3001_curri_schedule.png" alt="커리큘럼 시간표">               
-            <ul class="curri_schedules">
-                <li>
-                    <span>12.30~1.31</span>
-                </li>
-                <li>
-                    <span>6월 중순 예정</span>
-                </li>
-                <li>
-                    <span>2.3~3.13</span>
-                </li>    
-                <li>
-                    <span>7월 예정</span> 
-                </li>
-                <li>
-                    <span>3.23~3.27</span>
-                </li>
-                <li>
-                    <span>8월 예정</span>
-                </li>
-                <li>
-                    <span>2.22</span>
-                </li>
-                <li>
-                    <span>3.14</span>
-                </li>
-                <li>
-                    <span>5~6월 예정</span>
-                </li>
-                <li>
-                    <span>7월 예정</span>
-                </li>
-                <li>
-                    <span>8월 예정</span>
-                </li>
-                <li>
-                    <span>예정</span>
-                </li>
-                <li>
-                    <span>예정</span>
-                </li>
-                <li>
-                    <span>예정</span>
-                </li>
-                <li>
-                    <span>예정</span>
-                </li>
-            </ul>                
-        </div>      
     </div>
 
     {{-- on air include --}}

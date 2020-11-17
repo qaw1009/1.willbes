@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Professor extends \app\controllers\FrontController
 {
-    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/bookF', 'product/professorF', 'support/supportBoardF', 'support/supportBoardTwoWayF');
+    protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/bookF', 'product/professorF', 'support/supportBoardF', 'support/supportBoardTwoWayF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -258,19 +258,8 @@ class Professor extends \app\controllers\FrontController
         // 뷰 타입별 추가 데이터 조회
         $this->_getShowAddData($data, $prof_idx, $arr_input);
 
-        // 탭 목록 (모바일 전용)
-        $tab_list = [];
-        if ($this->_is_mobile === true) {
-            if ($this->_view_type == 'v2') {
-                $tab_list = ['pack_lecture' => '패키지', 'only_lecture' => '단과', 'live_lecture' => '전국라이브', 'special_lecture' => '특강', 'before_lecture' => '수강생전용'];
-            } else {
-                $tab_list = ['off_lecture' => '학원수강신청', 'free_lecture' => '무료특강신청'];
-
-                if ($this->_is_pass_site === false) {
-                    $tab_list = array_merge(['on_lecture' => '동영상수강신청'], $tab_list);
-                }
-            }
-        }
+        // 탭 목록
+        $tab_list = $this->_getShowTabList($data);
 
         // 선택된 탭에 맞는 정보 조회 및 디폴트 탭 설정
         $is_tab_select = isset($arr_input['tab']);
@@ -330,12 +319,64 @@ class Professor extends \app\controllers\FrontController
                     $arr['LectureSampleData'] = empty($arr['LectureSampleData']) === false ? json_decode($arr['LectureSampleData'], true) : [];
                     return $arr;
                 }, $prof_data['BestProduct']);
-
-                // 게시판 사용 유무에 탭 버튼 개수 설정
-                $arr_use_board_json = array($prof_data['IsNoticeBoard'], $prof_data['IsQnaBoard'], $prof_data['IsDataBoard'], $prof_data['IsTpassBoard'], $prof_data['IsTccBoard'], $prof_data['IsAnonymousBoard']);
-                $prof_data['tabUseCount'] = array_get(array_count_values($arr_use_board_json), 'Y', 0) + 3;
             }
         }
+    }
+
+    /**
+     * 교수진소개 탭 목록 리턴
+     * @param array $prof_data [교수데이터]
+     * @return array
+     */
+    private function _getShowTabList($prof_data)
+    {
+        $tab_list = [];
+
+        if ($this->_view_type == 'v2') {
+            $arr_intro_def_tab_ccd = $this->codeModel->getCcd('732', 'concat(CcdEtc, ":", CcdValue)'); // 공통코드 => PC탭명::모바일탭명::탭아이디
+            $tab_name_key = 0;  // 탭명 구분키
+            $arr_except_tab_id = [];    // 미사용 탭
+
+            if ($this->_is_mobile === true) {
+                $tab_name_key = 1;
+                $arr_except_tab_id = ['book'];
+            }
+
+            // 노출탭 설정이 있을 경우 기본 탭 목록과 비교하여 일치하는 것만 노출
+            if (empty($prof_data['IntroDispTabCcds']) === false) {
+                $arr_intro_def_tab_ccd = array_intersect_key($arr_intro_def_tab_ccd, array_flip(explode(',', $prof_data['IntroDispTabCcds'])));
+            }
+
+            // 탭아이디 => 탭명 형태로 가공
+            foreach ($arr_intro_def_tab_ccd as $tab_info) {
+                $arr_tab_info = explode(':', $tab_info);
+                $tab_list[$arr_tab_info[2]] = $arr_tab_info[$tab_name_key];
+            }
+
+            // 미사용 탭 삭제
+            if (empty($arr_except_tab_id) === false) {
+                $tab_list = array_unset($tab_list, $arr_except_tab_id);
+            }
+        } else {
+            if ($this->_is_mobile === true) {
+                $tab_list = ['off_lecture' => '학원수강신청', 'free_lecture' => '무료특강신청'];
+                if ($this->_is_pass_site === false) {
+                    $tab_list = array_merge(['on_lecture' => '동영상수강신청'], $tab_list);
+                }
+            } else {
+                $tab_list = ['home' => $prof_data['AppellationCcdName'] . ' 홈', 'open_lecture' => '개설강좌', 'free_lecture' => '무료강좌'];
+
+                // 게시판 사용 탭
+                $prof_data['IsNoticeBoard'] == 'Y' && $tab_list['notice'] = '공지사항';
+                $prof_data['IsQnaBoard'] == 'Y' && $tab_list['qna'] = '학습Q&A';
+                $prof_data['IsDataBoard'] == 'Y' && $tab_list['material'] = '학습자료실';
+                $prof_data['IsTpassBoard'] == 'Y' && $tab_list['tpass'] = 'T-pass 자료실';
+                $prof_data['IsTccBoard'] == 'Y' && $tab_list['tcc'] = $prof_data['AppellationCcdName'] . ' TCC';
+                $prof_data['IsAnonymousBoard'] == 'Y' && $tab_list['anonymous'] = '자유게시판';
+            }
+        }
+
+        return $tab_list;
     }
 
     /**

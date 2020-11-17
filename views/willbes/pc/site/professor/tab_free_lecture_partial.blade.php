@@ -1,4 +1,5 @@
-<div class="willbes-Lec-Search p_re mt30">
+<div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 무료강좌</div>
+<div class="willbes-Lec-Search p_re">
     <div class="inputBox p_re">
         <div class="selectBox">
             <select id="search_order" name="search_order" class="" onchange="goUrl('search_order', this.value);">
@@ -21,14 +22,13 @@
         </button>
     </div>
 </div>
-<div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 무료강좌</div>
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
     <input type="hidden" name="learn_pattern" value="on_free_lecture"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
-    <div class="willbes-Lec NG c_both">
+    <div class="willbes-Lec NG c_both mt20">
         <div class="willbes-Lec-Profdata tx-dark-black">
             <ul>
                 <li class="ProfImg"><img src="{{ $data['ProfReferData']['lec_list_img'] or '' }}"></li>

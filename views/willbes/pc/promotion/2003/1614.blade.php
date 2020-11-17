@@ -29,26 +29,43 @@
 
 		.evt03 {background:#7a2fec;}
 
-        .evt04 {background:#f3f5f7;position:relative; padding-bottom:100px;}	
+        .evt04 {background:#f3f5f7;position:relative; padding:50px 0 100px;}	
+        .evt04 table {width:1100px; margin:0 auto; border:1px solid #333}
+        .evt04 th,
+        .evt04 td {font-size:14px; padding:20px 10px; border-right:1px solid #333; line-height:1.5}
+        .evt04 tr {border-bottom:1px solid #333}
+        .evt04 th {color:#000; background:#fff}
+        /*
         .evt04 ul {position:absolute; left:50%; width:1120px; margin-left:-560px; top:620px;}
         .evt04 li {display:inline; float:left}
         .evt04 li:nth-child(1) {margin-left:320px}
         .evt04 li:nth-child(2) {margin-left:160px}
         .evt04 li:nth-child(3) {margin-left:160px}   
-        .evt04 li:nth-child(4) {margin-left:160px}  
-        .evt04 li input {height:30px; width:30px;}
-        .evt04 li label {display:none}     
+        .evt04 li:nth-child(4) {margin-left:160px}  */
+        .evt04 td input {height:30px; width:30px;}
+        .evt04 td label {display:none}     
 
         .evt04 .check04 {width:877px; height:112px; margin:20px auto 0;}   
-        .evt04 .check_bg {background:#ccc; width:1120px; margin:0 auto}  
-        .evt04 .check {width:980px; margin:0 auto;  padding:25px 0px 25px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
+        .evt04 .check_bg { width:1100px; margin:0 auto}  
+        .evt04 .check {width:980px; margin:0 auto;  padding:25px 0px 25px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:16px}
         .evt04 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .evt04 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fffbfb; background:#252525; margin-left:50px; border-radius:20px}
 
         .evt04 .buyLec {padding-top:50px;}
 		.evt04 .buyLec a {width:1120px;margin:0 auto;display:block; text-align:cetner; font-size:30px; font-weight:600; background:#D43728; color:#fff; padding:20px 0; border-radius:50px}
         .evt04 .buyLec a:hover {background:#D43728; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}        
-        	
+        .evt04 .issue {font-size:24px; margin-bottom:50px; color:#7b7b7b}	
+        .evt04 .issue span {font-size:36px; color:#42499c; animation:txtch 1s infinite;-webkit-animation:txtch 1s infinite;}
+        @@keyframes txtch{
+            from{color:#42499c}
+            50%{color:#ef1821}
+            to{color:#42499c}
+        }
+        @@-webkit-keyframes txtch{
+            from{color:#42499c}
+            50%{color:#ef1821}
+            to{color:#42499c}
+        } 
 
 		.evt05 {background:#fff;padding-bottom:50px;}
 		
@@ -63,7 +80,7 @@
         .tabContaier ul:after {content:""; display:block; clear:both}
 
         .evt04_1 {background:#f3f5f7;}
-        .tabs {width:1120px; margin:0 auto}
+        .tabs {width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:50%}
         .tabs a {display:block; text-align:center; font-size:30px; background:#fff; color:#42499c; border:4px solid #42499c; margin:0 5px; padding:20px 0; border-radius:10px}
         .tabs a:hover,
@@ -103,7 +120,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
             <a href="#lecbuy">
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky_01.png" title="" />    
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky.png" title="" />    
             </a>        
         </div>
 
@@ -176,7 +193,7 @@
 		</div>
 
         <div class="evtCtnsBox evt04_1" id="lecbuy">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_top.gif" title="!" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_top.gif" title="" />
             <ul class="tabs NSK-Black">
                 <li><a href="#tpass01">국가직 대비 T-PASS</a></li>
                 <li><a href="#tpass02">지방직 대비 T-PASS</a></li>
@@ -185,25 +202,143 @@
 
         <div class="evtCtnsBox evt04" id="event">    
             {{--국가직--}}
-            <div id="tpass01">         
-                <ul>                
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174386" onClick=""/><label for="y_pkg">전과정</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174388" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174385" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
-                </ul>
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_01.gif" alt="수강신청"/>               
+            <div id="tpass01">     
+                <div class="issue NSK-Black">
+                    2021 국가직 합격 기원<br>
+                    <span>11월 특별 한정판매</span>
+                </div>  
+                <table>
+                    <col/>
+                    <col />
+                    <col />
+                    <col />
+                    <col/>
+                    <tr>
+                        <th>구분</th>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec01.jpg" title="전과정" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec02.jpg" title="반반모고 제외" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec03.jpg" title="새벽모의고사" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec04.jpg" title="반반한모의고사" /></td>
+                    </tr>
+                    <tr>
+                        <th>제공과정</th>
+                        <td>2020~21 국가직 전 과정 <br />
+                        + 아침똑똑영어 다시보기 <br />
+                        + 반반모의고사 다시보기 <br />
+                        + 새벽모의고사</td>
+                        <td>2020~21 국가직 전 과정 <br />
+                        + 아침똑똑영어 다시보기 <br />
+                        + 새벽모의고사</td>
+                        <td>새벽모의고사<br />
+                        (2020.1 과정부터 제공)</td>
+                        <td>반반모의고사 다시보기<br />
+                        (2020.4 과정부터 제공)</td>
+                    </tr>
+                    <tr>
+                        <th>수강기간</th>
+                        <td colspan="4">2021 국가직 시험일까지 (6개월)</td>
+                    </tr>
+                    <tr>
+                        <th>기기제한</th>
+                        <td colspan="4">PC or 모바일 총 2대</td>
+                    </tr>
+                    <tr>
+                        <th>배수제한</th>
+                        <td colspan="3">X</td>
+                        <td>3배수</td>
+                    </tr>
+                    <tr>
+                        <th>자료제한</th>
+                        <td colspan="3">새벽실저모의고사 2020.4 진행 과정부터 출력 3회 제한</td>
+                        <td>출력 3회 제한</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">가격</th>
+                        <td class="tx18 tx-red NSK-Black">690,000원</td>
+                        <td class="tx18 tx-red NSK-Black">590,000원</td>
+                        <td class="tx18 tx-red NSK-Black">290,000원</td>
+                        <td class="tx18 tx-red NSK-Black">210,000원</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="174386" onClick=""/><label for="y_pkg">전과정</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="174388" onClick=""/><label for="y_pkg">반반모고 제외</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="174385" onClick=""/><label for="y_pkg">새벽모의고사</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></td>
+                    </tr>
+                </table>          
             </div>   
 
             {{--지방직--}}
-            <div id="tpass02">         
+            <div id="tpass02"> 
+            <table>
+                    <col/>
+                    <col />
+                    <col />
+                    <col />
+                    <col/>
+                    <tr>
+                        <th>구분</th>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec01.jpg" title="전과정" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec02.jpg" title="반반모고 제외" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec03.jpg" title="새벽모의고사" /></td>
+                        <td><img src="https://static.willbes.net/public/images/promotion/2020/11/1614_lec04.jpg" title="반반한모의고사" /></td>
+                    </tr>
+                    <tr>
+                        <th>제공과정</th>
+                        <td>2020~21 지방직 전 과정 <br />
+                        + 아침똑똑영어 다시보기 <br />
+                        + 반반모의고사 다시보기 <br />
+                        + 새벽모의고사</td>
+                        <td>2020~21 지방직 전 과정 <br />
+                        + 아침똑똑영어 다시보기 <br />
+                        + 새벽모의고사</td>
+                        <td>새벽모의고사<br />
+                        (2020.1 과정부터 제공)</td>
+                        <td>반반모의고사 다시보기<br />
+                        (2020.4 과정부터 제공)</td>
+                    </tr>
+                    <tr>
+                        <th>수강기간</th>
+                        <td colspan="4">2021 지방직 시험일까지 (8개월)</td>
+                    </tr>
+                    <tr>
+                        <th>기기제한</th>
+                        <td colspan="4">PC or 모바일 총 2대</td>
+                    </tr>
+                    <tr>
+                        <th>배수제한</th>
+                        <td colspan="3">X</td>
+                        <td>3배수</td>
+                    </tr>
+                    <tr>
+                        <th>자료제한</th>
+                        <td colspan="3">새벽실저모의고사 2020.4 진행 과정부터 출력 3회 제한</td>
+                        <td>출력 3회 제한</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">가격</th>
+                        <td class="tx18 tx-red NSK-Black">790,000원</td>
+                        <td class="tx18 tx-red NSK-Black">690,000원</td>
+                        <td class="tx18 tx-red NSK-Black">340,000원</td>
+                        <td class="tx18 tx-red NSK-Black">240,000원</td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="164226" onClick=""/><label for="y_pkg">전과정</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="164227" onClick=""/><label for="y_pkg">반반모고 제외</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">새벽모의고사</label></td>
+                        <td><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">반반모의고사</label></td>
+                    </tr>
+                </table>  
+                {{--        
                 <ul>                
                     <li><input type="radio" id="y_pkg" name="y_pkg" value="164226" onClick=""/><label for="y_pkg">전과정</label></li>
                     <li><input type="radio" id="y_pkg" name="y_pkg" value="164227" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
                     <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
                     <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
-                </ul>
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_02.gif" alt="수강신청"/>          
+                </ul>              
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_02.gif" alt="수강신청"/> 
+                --}}         
+                  
             </div>  
 
             <div class="check_bg">
@@ -229,10 +364,11 @@
                 <div class="infoTit NG"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                    - [국가직 대비] 전 과정  T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직 대비 전 과정 (아침똑똑영어 / 반반한모의고사 다시보기 + 새벽모의고사 포함)<br>
-                    - [국가직 대비] 반반모의고사 제외 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직 대비 전 과정 (아침똑똑영어 + 새벽모의고사 포함)<br>
-                    - [국가직 대비] 새벽모의고사 T-PASS : 2020년 1월부터 2021년 9급 국가직 시험일까지 수강기간 내 진행되는 새벽모의고사 전 과정<br>
-                    - 반반모의고사 T-PASS : 2021년 9급 국가직 시험일까지 수강기간 내 진행되는 한덕현 영어 반반한 모의고사 전 과정</li>
+                        - 전 과정 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직or지방직 대비 전 과정 (아침똑똑영어 / 반반한모의고사 다시보기 + 새벽모의고사 포함)<br>
+                        - 반반모의고사 제외 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직or지방직 대비 전 과정 (아침똑똑영어 + 새벽모의고사 포함)<br>
+                        - 새벽모의고사 T-PASS : 2020년 1월부터 2021년 9급 국가직or지방직 시험일까지 수강기간 내 진행되는 새벽모의고사 전 과정<br>
+                        - 반반모의고사 T-PASS : 2021년 9급 국가직or지방직 시험일까지 수강기간 내 진행되는 한덕현 영어 반반한 모의고사 전 과정<br>
+                    </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 최면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼의 변동이 있을 수 있습니다.</li>
                     <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>

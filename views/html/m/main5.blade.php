@@ -33,7 +33,7 @@
     </div> 
 
     <div class="mSubTit NSK-Black mt40 tx-left">경찰 개편 시험 대비 <span class="tx-blue">전문교수진</span></div>
-    <div class="pl20 pr20">
+    <div class="fullImg pl20 pr20">
         <ul>
             <li class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>
             <li class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>

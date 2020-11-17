@@ -200,16 +200,10 @@
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
-                <ul class="tabWrap tabDepthProf tabDepthProf_{{ element('tabUseCount', $data, 0) }}">
-                    <li><a href="#none" id="hover_home" onclick="goTabUrl('tab', 'home');">{{$data['AppellationCcdName']}} 홈</a></li>
-                    <li><a href="#none" id="hover_open_lecture" onclick="goTabUrl('tab', 'open_lecture');">개설강좌</a></li>
-                    <li><a href="#none" id="hover_free_lecture" onclick="goTabUrl('tab', 'free_lecture');">무료강좌</a></li>
-                    @if($data['IsNoticeBoard'] == 'Y')<li><a href="#none" id="hover_notice" onclick="goTabUrl('tab', 'notice');">공지사항</a></li>@endif
-                    @if($data['IsQnaBoard'] == 'Y')<li><a href="#none" id="hover_qna" onclick="goTabUrl('tab', 'qna');">학습Q&A</a></li>@endif
-                    @if($data['IsDataBoard'] == 'Y')<li><a href="#none" id="hover_material" onclick="goTabUrl('tab', 'material');">학습자료실</a></li>@endif
-                    @if($data['IsTpassBoard'] == 'Y')<li><a href="#none" id="hover_tpass" onclick="goTabUrl('tab', 'tpass');">T-pass 자료실</a></li>@endif
-                    @if($data['IsTccBoard'] == 'Y')<li><a href="#none" id="hover_tcc" onclick="goTabUrl('tab', 'tcc');">{{$data['AppellationCcdName']}} TCC</a></li>@endif
-                    @if($data['IsAnonymousBoard'] == 'Y')<li><a href="#none" id="hover_anonymous" onclick="goTabUrl('tab', 'anonymous');">자유게시판</a></li>@endif
+                <ul class="tabWrap tabDepthProf tabDepthProf_{{ count($tab_list) }}">
+                    @foreach($tab_list as $tab_id => $tab_name)
+                        <li><a href="#none" id="hover_{{ $tab_id }}" onclick="goTabUrl('tab', '{{ $tab_id }}');">{{ $tab_name }}</a></li>
+                    @endforeach
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">

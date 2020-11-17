@@ -466,7 +466,7 @@ class ProfessorModel extends WB_Model
     {
         $column = '
             P.ProfIdx, P.wProfIdx, P.SiteCode, P.ProfNickName, P.ProfSlogan, P.ProfCurriculum, P.ProfContent, P.OnLecViewCcd, P.UseBoardJson, P.IsBoardPublic, P.IsUse, P.RegDatm, P.RegAdminIdx, P.UpdDatm, P.UpdAdminIdx
-                , P.AppellationCcd, P.IntroDefTabCcd, P.IsOpenStudyComment, P.IsDispIntro
+                , P.AppellationCcd, P.IntroDefTabCcd, P.IntroDispTabCcds, P.IsOpenStudyComment, P.IsDispIntro
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '") as IsNoticeBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '") as IsQnaBoard
                 , json_value(P.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '") as IsDataBoard
@@ -496,6 +496,12 @@ class ProfessorModel extends WB_Model
             $wprof_idx = element('wprof_idx', $input);
             $site_code = element('site_code', $input);
 
+            // 임용 교수진소개 노출탭
+            $intro_disp_tab_ccds = element('intro_disp_tab_ccd', $input);
+            if (empty($intro_disp_tab_ccds) === false) {
+                $intro_disp_tab_ccds = implode(',', $intro_disp_tab_ccds);
+            }
+
             // 운영사이트+WBS교수정보 중복체크
             $duplicate_cnt = $this->findProfessor(true, ['EQ' => ['wProfIdx' => $wprof_idx, 'SiteCode' => $site_code, 'IsStatus' => 'Y']]);
             if ($duplicate_cnt > 0) {
@@ -515,6 +521,7 @@ class ProfessorModel extends WB_Model
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
                 'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
+                'IntroDispTabCcds' => $intro_disp_tab_ccds,
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -607,6 +614,12 @@ class ProfessorModel extends WB_Model
         try {
             $prof_idx = element('idx', $input);
 
+            // 임용 교수진소개 노출탭
+            $intro_disp_tab_ccds = element('intro_disp_tab_ccd', $input);
+            if (empty($intro_disp_tab_ccds) === false) {
+                $intro_disp_tab_ccds = implode(',', $intro_disp_tab_ccds);
+            }
+
             // 기존 교수 기본정보 조회
             $row = $this->findProfessor('ProfIdx', ['EQ' => ['ProfIdx' => $prof_idx]]);
             if (empty($row) === true) {
@@ -624,6 +637,7 @@ class ProfessorModel extends WB_Model
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
                 'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
+                'IntroDispTabCcds' => $intro_disp_tab_ccds,
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')

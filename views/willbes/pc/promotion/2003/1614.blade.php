@@ -29,24 +29,26 @@
 
 		.evt03 {background:#7a2fec;}
 
-        .evt04 {background:#f3f5f7;position:relative;padding-bottom:65px;}	
-        .evt04 ul {position:absolute; left:50%;top:475px;}
-        .evt04 li:nth-child(1) {margin-left:-830px;margin-top:365px;}
-        .evt04 li:nth-child(2) {margin-left:-461px;margin-top:-31px;}
-        .evt04 li:nth-child(3) {margin-left:-85px;margin-top:-29px;}   
-        .evt04 li:nth-child(4) {margin-left:336px;margin-top:-28px;}  
+        .evt04 {background:#f3f5f7;position:relative; padding-bottom:100px;}	
+        .evt04 ul {position:absolute; left:50%; width:1120px; margin-left:-560px; top:620px;}
+        .evt04 li {display:inline; float:left}
+        .evt04 li:nth-child(1) {margin-left:320px}
+        .evt04 li:nth-child(2) {margin-left:160px}
+        .evt04 li:nth-child(3) {margin-left:160px}   
+        .evt04 li:nth-child(4) {margin-left:160px}  
         .evt04 li input {height:30px; width:30px;}
         .evt04 li label {display:none}     
 
         .evt04 .check04 {width:877px; height:112px; margin:20px auto 0;}   
-        .evt04 .check_bg {background:#ccc;}  
+        .evt04 .check_bg {background:#ccc; width:1120px; margin:0 auto}  
         .evt04 .check {width:980px; margin:0 auto;  padding:25px 0px 25px 20px; letter-spacing:3; font-weight:bold; color:#362f2d; font-size:14px}
         .evt04 .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .evt04 .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fffbfb; background:#252525; margin-left:50px; border-radius:20px}
 
         .evt04 .buyLec {padding-top:50px;}
 		.evt04 .buyLec a {width:1120px;margin:0 auto;display:block; text-align:cetner; font-size:30px; font-weight:600; background:#D43728; color:#fff; padding:20px 0; border-radius:50px}
-		.evt04 .buyLec a:hover {background:#D43728; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
+        .evt04 .buyLec a:hover {background:#D43728; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}        
+        	
 
 		.evt05 {background:#fff;padding-bottom:50px;}
 		
@@ -60,6 +62,14 @@
         .tabContaier a.active img.on {display:block}
         .tabContaier ul:after {content:""; display:block; clear:both}
 
+        .evt04_1 {background:#f3f5f7;}
+        .tabs {width:1120px; margin:0 auto}
+        .tabs li {display:inline; float:left; width:50%}
+        .tabs a {display:block; text-align:center; font-size:30px; background:#fff; color:#42499c; border:4px solid #42499c; margin:0 5px; padding:20px 0; border-radius:10px}
+        .tabs a:hover,
+        .tabs a.active {background:#42499c;color:#fff;}
+        .tabs:after {content:""; display:block; clear:both}
+
 		/*타이머*/
         .time{width:100%; text-align:center; background:#000}
         .time_date {text-align:center; padding:20px 0}
@@ -69,22 +79,31 @@
         .time_txt {font-family: 'NanumGothic', '나눔고딕','NanumGothicWeb', '맑은 고딕', 'Malgun Gothic', Dotum; font-size:28px; color:#f2f2f2; letter-spacing: -1px; font-weight:bold}
         .time_txt span {color:#ef6759; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ecd60f}
-        to{color:#d63e4d}
+            from{color:#d63e4d}
+            50%{color:#ecd60f}
+            to{color:#d63e4d}
         }
         @@-webkit-keyframes upDown{
-        from{color:#d63e4d}
-        50%{color:#ecd60f}
-        to{color:#d63e4d}
+            from{color:#d63e4d}
+            50%{color:#ecd60f}
+            to{color:#d63e4d}
         }  
+
+        .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
+		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:20px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
+		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
+		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
+        .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky.png" title="" />    
+            <a href="#lecbuy">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky_01.png" title="" />    
             </a>        
         </div>
 
@@ -149,7 +168,6 @@
 				<div class="tabContents" id="tab3">
 					<img src="https://static.willbes.net/public/images/promotion/2019/04/1193_02_c3.jpg" alt="윌비스 영어 70점 이상 강력 추천! " />
 				</div>
-				{{--<div class="mt20">*본 T-PASS에서는 기출+단원별+동형모의고사 및 FINAL특강만을 제공합니다.</div>--}}
 			</div>
 		</div>
 
@@ -157,36 +175,90 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/04/1614_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
 		</div>
 
-        <div class="evtCtnsBox evt04" id="event">             
-            <ul>                
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="174386" onClick=""/><label for="y_pkg">전과정</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="174388" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="174385" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
-                <li><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
+        <div class="evtCtnsBox evt04_1" id="lecbuy">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_top.gif" title="!" />
+            <ul class="tabs NSK-Black">
+                <li><a href="#tpass01">국가직 대비 T-PASS</a></li>
+                <li><a href="#tpass02">지방직 대비 T-PASS</a></li>
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04.gif" alt="수강신청"/>
-            
+        </div>
+
+        <div class="evtCtnsBox evt04" id="event">    
+            {{--국가직--}}
+            <div id="tpass01">         
+                <ul>                
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174386" onClick=""/><label for="y_pkg">전과정</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174388" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174385" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
+                </ul>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_01.gif" alt="수강신청"/>               
+            </div>   
+
+            {{--지방직--}}
+            <div id="tpass02">         
+                <ul>                
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="164226" onClick=""/><label for="y_pkg">전과정</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="164227" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
+                    <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
+                </ul>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_02.gif" alt="수강신청"/>          
+            </div>  
+
             <div class="check_bg">
                 <div class="check" id="chkInfo">
                     <label>
-                        <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 한덕현 영어 T-PASS 이용안내를 모두 확인하였고,이에 동의합니다.             
+                        <input name="is_chk" type="checkbox" value="Y" /> 페이지 하단 이용안내를 모두 확인하였고,이에 동의합니다.             
                     </label>
                     <a href="#tip">이용안내확인하기 ↓</a>
                 </div> 
-            </div>
+            </div>            
             <div>                
                 <div class="buyLec">
-                    {{--<a href="#none" onclick="goCartNDirectPay('event', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
                     <a href="#none" onclick="goPassLecture()">
                         수강신청 >
                     </a>
                 </div>
-            </div>                   
+            </div>              
         </div><!--wb_cts03//-->
-
-		<div class="evtCtnsBox evt05" id="tip">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_05.jpg" title="이용안내 및 유의사항" />
-		</div>
+        
+        <div class="evtCtnsBox evtInfo" id="tip">
+            <div class="evtInfoBox">
+                <h4 class="NGEB">이용안내 및 유의사항</h4>
+                <div class="infoTit NG"><strong>상품구성</strong></div>
+                <ul>
+                    <li>제공과정<br>
+                    - [국가직 대비] 전 과정  T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직 대비 전 과정 (아침똑똑영어 / 반반한모의고사 다시보기 + 새벽모의고사 포함)<br>
+                    - [국가직 대비] 반반모의고사 제외 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직 대비 전 과정 (아침똑똑영어 + 새벽모의고사 포함)<br>
+                    - [국가직 대비] 새벽모의고사 T-PASS : 2020년 1월부터 2021년 9급 국가직 시험일까지 수강기간 내 진행되는 새벽모의고사 전 과정<br>
+                    - 반반모의고사 T-PASS : 2021년 9급 국가직 시험일까지 수강기간 내 진행되는 한덕현 영어 반반한 모의고사 전 과정</li>
+                    <li>본 상품의 수강기간은 상품 수강신청 상세안내 최면에 표기된 기간만큼 제공됩니다.</li>
+                    <li>개강일정 및 교수님 사정에 따라 커리큘럼의 변동이 있을 수 있습니다.</li>
+                    <li>본 상품은 결제가 완료되는 즉시 수강이 시작됩니다.</li>
+                </ul>
+                <div class="infoTit NG"><strong>기기제한</strong></div>
+                <ul>
+                    <li>본 상품 수강 시 이용 가능한 기기는 다음과 같이 제한됩니다.<br>
+                    - <span>PC 2대 or 모바일 2대 of  PC 1대 + 모바일 1대(총 2대)</span></li>
+                    <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 최조 1회에 한해 [내강의실] > [등록기기정보]에서 직접 초기화 가능하며, <br>
+                    그 외 특별한 사유에 의한 단말기 초기화의 경우, 고객센터 1544-5006 or 1:1 상단게시판으로 문의바랍니다.</li>
+                </ul>
+                <div class="infoTit NG"><strong>수강안내</strong></div>
+                <ul>
+                    <li>먼저 [내강의실] 메뉴에 무한 PASS존으로 접속합니다.</li>
+                    <li>구매하신 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 강좌를 선택 등록 후 수강할 수 있습니다.</li>
+                    <li>본 상품은 <span>일시정지/수강연장/재수강이 불가한 상품</span>입니다.</li>
+                </ul>
+                <div class="infoTit NG"><strong>결제/환불</strong></div>
+                <ul>
+                    <li>결제 후 7일 이내 전액 환불 가능합니다. 단, 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.<br>
+                        강의자료 및 모바일 강의 다운로드 서비스를 이용 시 수강한 것으로 간주 됩니다.
+                    <li>본 상품은 특별 기획 강좌로 환불 시에는 할인 되기 전 정가를 기준으로 사용일 수 만큼 차감되고 환불 됩니다.
+                    <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다.</li>
+                </ul>
+            </div>
+        </div>
 	</div>
 	<!-- End Container -->
 
@@ -207,7 +279,7 @@
 
 			return false; 
 			});
-		});	
+		});	        
 
         function goPassLecture() {
             var frm = $('#event');
@@ -225,13 +297,37 @@
             }
 
             location.href = '{{ front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + prod_code.val();
-        }
-		
+        }		
 
 		/*디데이카운트다운*/
 		$(document).ready(function() {
 			dDayCountDown('{{$arr_promotion_params['edate']}}');
 		});
+
+        $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        );
 	</script>
 
 	{{-- 프로모션용 스크립트 include --}}

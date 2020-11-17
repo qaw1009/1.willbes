@@ -2,9 +2,7 @@
 .cop_acad .tx-color {
     color: #0c5dc0;
 }
-.PA .tx-color {
-    color: #0c5dc0;
-}
+
 .cop_acad .Menu .menu-List li.Acad a {
     background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
     color: #2784d2;
@@ -16,12 +14,67 @@
     background: #f7f7f7;
 }
 
+.cop_acad .barfull {background:#1f58f6}
+
 /* Main Container : MainVisual : Cop Acad */
+.cop_acad .Section1 {height: 440px; position: relative; max-width: 2000px; margin: 0 auto;}
+.cop_acad .MainVisualAcad {
+    position: absolute;
+    width: 100%;   
+    max-width: 2000px; 
+    height: 440px;
+    left:50%;
+    margin-left:-50%;
+}
+.cop_acad .VisualBoxAcad {
+    width:2000px;
+    height: 440px;
+    text-align: center !important;
+    overflow: hidden;
+    position: absolute; left:50%; top:50%; 
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+.cop_acad .VisualBoxAcad .sliderStopAutoPager img {
+    min-width: 1120px;
+    margin: 0 auto;
+}
+.cop_acad .VisualBoxAcad .bx-wrapper .bx-controls-auto {
+    left:50%;
+    margin-left:-500px;
+    top: 410px;
+    width: 50px;
+    z-index: 90;
+}
+.cop_acad .VisualBoxAcad .bx-wrapper .bx-pager {
+    width: auto;
+    left:50%;
+    margin-left:-450px;
+    top: 390px;
+    text-align: left;
+    z-index: 90;
+}
+.cop_acad .VisualBoxAcad .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.cop_acad .VisualBoxAcad .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop_acad .VisualBoxAcad .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop_acad .VisualBoxAcad .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #3997f0 !important;
+    z-index: 10;
+}
+
+
 .MainVisual:after {
     content: "";
     display: block;
     clear: both;
 }
+
 .MainVisual_acad ul li {
     float: left;
     margin-left: 11px;
@@ -29,15 +82,110 @@
 .MainVisual_acad ul li:first-child {
     margin-left: 0;
 }
-.VisualBox_acad {
-    width: 616px;
-    height: 274px;
-}
+
+.MainVisual_acad2:after {content:''; display: block; clear:both}
 .VisualsubBox_acad {
     width: 271px;
     height: 274px;
     overflow: hidden;
 }
+
+.VisualsubBox_acad2 {
+    width:265px;
+    height:350px;
+    margin-right:20px;
+    display: inline;
+    float: left;
+}
+.VisualsubBox_acad2:last-child {margin:0}
+.VisualsubBox_acad2 .tag {height:30px; line-height: 30px; font-size: 15px;}
+.VisualsubBox_acad2 .slider {width: 265px; height: 320px; overflow: hidden;}
+.cop_acad .bSlider .bx-wrapper .bx-pager {
+    text-align: center;
+    font-size: .85em;
+    font-family: Arial;
+    font-weight: bold;
+    color: #666;
+    left:0; right:0; bottom:-30px;
+  }
+  .cop_acad .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #666;
+    text-indent: -9999px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    outline: 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+.cop_acad .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop_acad .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop_acad .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #000;
+    width: 10px;
+    height: 10px;
+  }
+
+.cop_acad .passCurri { background-color:#f6f7f8; padding-bottom:100px}
+.cop_acad .passCurri a {display: block; width:400px; height: 60px; line-height: 60px; margin:0 auto; text-align: center; 
+    background-color: #0c5dc0; color:#fff; font-size: 26px; border-radius: 35px;}
+.cop_acad .passCurri a:hover {background-color: #000;}
+
+.cop-bnSec-left {
+    position: relative;
+    width: 740px;
+    height: 300px;
+    overflow: hidden;    
+}
+.cop-bnSec-left .MaintabList {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;
+}
+.cop-bnSec-left .MaintabList ul li {
+    display: inline-block; 
+}
+.cop-bnSec-left .MaintabList ul li a {
+    display: block;
+    color: #a1a1a1;
+    font-size: 17px;
+    padding:0 20px
+}
+.cop-bnSec-left .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+.cop-bnSec-left .MaintabList ul li a:hover,
+.cop-bnSec-left .MaintabList ul li a.active { color:#0c5dc0; font-weight: 600;}
+
+.newLecture {
+    float:right;
+    width: 360px;   
+}
+.newLecture .bSlider {border: 1px solid #ebebeb;}
+.newLecture .slider {    
+    height: 300px;  
+    width: 100%; overflow: hidden;
+}
+.newLecture .slider div {padding:22px; }
+.newLecture .slider div dl {margin-bottom:16px}
+.newLecture .slider div dl:after {content: ''; display:block; clear:both}
+.newLecture .slider div dt {float:left; width:74px; height:74px; border-radius:4px; overflow:hidden; position:relative; display: block;}
+.newLecture .slider div dt span {position:absolute; top:0; left:50%; margin-left:-52px; width: 104px; display: block; z-index: 10;}
+.newLecture .slider div dd {float: left; width:225px; margin-left:10px;}
+.newLecture .slider div dl:nth-child(1) dt {background-color:#50649c;}
+.newLecture .slider div dl:nth-child(2) dt {background-color:#5f69cb;}
+.newLecture .slider div dl:nth-child(3) dt {background-color:#34b696;}
+.newLecture .slider div dl:nth-child(3) {margin:0}
+.newLecture .slider div dd p {margin-bottom:5px}
+.newLecture .slider div dd p:nth-child(1) {margin-bottom:10px; color:#0c5dc0}
+.newLecture .slider div dd p:nth-child(3) {color:#848484}
+.newLecture .slider div dd a {font-size: 16px; color:#363636} 
 
 /* Main Container : Tit : Cop Acad */
 .Section .will-acadTit {
@@ -75,35 +223,6 @@
 }
 .sliderInfo ul li:first-child {
     margin-top: 0;
-}
-.bSlider.acad.blue .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    right: 8px;
-    bottom: 8px;
-    text-align: right;
-}
-.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #d7d7d7;
-    width: 8px;
-    height: 8px;
-    margin: 0 2px;
-}
-.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a.active,
-.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #0c5dc0;
-}
-.bSlider.acad.blue .bx-wrapper .bx-pager.bx-default-pager a.active {
-    width: 30px;
-}
-.bSlider.acad.blue .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    right: 8px;
-    top: 12px;
-    text-align: right; 
-    padding-top: 0; 
 }
 
 /* Main Container : acad_infoBox : Cop Acad */

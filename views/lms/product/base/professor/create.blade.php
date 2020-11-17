@@ -279,6 +279,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">교수진소개 노출탭 선택 (임용)
+                        </label>
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @foreach($arr_intro_def_tab_ccd as $key => $val)
+                                    <input type="checkbox" id="intro_disp_tab_ccd_{{$key}}" name="intro_disp_tab_ccd[]" value="{{$key}}" class="flat" @if(strpos($data['IntroDispTabCcds'], strval($key)) !== false) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_disp_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 @endif
                 <div class="form-group">
                     <label class="control-label col-md-2">교수 커뮤니티
@@ -718,11 +729,13 @@
                 $regi_form.find('input[name="del_prof_calc_idx[]"]').remove();
                 $('#selected_subject_mapping').html('');
 
-                // 교수진소개 디폴트탭 선택 초기화
+                // 교수진소개 디폴트탭/노출탭 선택 초기화
                 if ($(this).val().length > 0 && '{{ implode(',', $arr_intro_def_tab_use_site) }}'.indexOf($(this).val()) > -1) {
                     $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('enable');
+                    $regi_form.find('input[name="intro_disp_tab_ccd[]"]').iCheck('enable');
                 } else {
                     $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('disable');
+                    $regi_form.find('input[name="intro_disp_tab_ccd[]"]').iCheck('disable');
                 }
             });
 

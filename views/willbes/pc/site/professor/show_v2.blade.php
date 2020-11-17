@@ -161,13 +161,10 @@
         <div class="willbes-Prof-Tabs">
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
-                <ul class="tabWrap tabDepthProf tabDepthProf_6">
-                    <li><a href="#none" id="hover_pack_lecture" onclick="goTabUrl('tab', 'pack_lecture');">패키지강의</a></li>
-                    <li><a href="#none" id="hover_only_lecture" onclick="goTabUrl('tab', 'only_lecture');">단과강의</a></li>
-                    <li><a href="#none" id="hover_live_lecture" onclick="goTabUrl('tab', 'live_lecture');">전국 라이브 영상반</a></li>
-                    <li><a href="#none" id="hover_special_lecture" onclick="goTabUrl('tab', 'special_lecture');">특강</a></li>
-                    <li><a href="#none" id="hover_before_lecture" onclick="goTabUrl('tab', 'before_lecture');">수강생 전용</a></li>
-                    <li><a href="#none" id="hover_book" onclick="goTabUrl('tab', 'book');">교재</a></li>
+                <ul class="tabWrap tabDepthProf tabDepthProf_{{ count($tab_list) }}">
+                    @foreach($tab_list as $tab_id => $tab_name)
+                        <li><a href="#none" id="hover_{{ $tab_id }}" onclick="goTabUrl('tab', '{{ $tab_id }}');">{{ $tab_name }}</a></li>
+                    @endforeach
                 </ul>
                 <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">

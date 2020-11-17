@@ -52,7 +52,7 @@ class ProfessorFModel extends WB_Model
             }
 
             $column = 'PF.ProfIdx, PF.wProfIdx, PF.SiteCode, WPF.wProfName, PF.ProfNickName, PF.ProfSlogan, PF.UseBoardJson, PF.IsBoardPublic, PF.ProfCurriculum, PF.ProfContent
-                , PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent, PF.AppellationCcd, PF.IntroDefTabCcd, PF.IsOpenStudyComment 
+                , PF.OnLecViewCcd, WPF.wProfProfile, WPF.wBookContent, PF.AppellationCcd, PF.IntroDefTabCcd, PF.IntroDispTabCcds, PF.IsOpenStudyComment 
                 , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['notice'] . '"), "N") as IsNoticeBoard
                 , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['qna'] . '"), "N") as IsQnaBoard
                 , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['data'] . '"), "N") as IsDataBoard

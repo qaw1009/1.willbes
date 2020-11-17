@@ -37,11 +37,11 @@
         .tabs{width:100%; text-align:center; }
         .tabs ul {margin:0 auto;}       
         .tabs li {display:inline; float:left;}	
-        .tabs ul.top_tab  {position:absolute;left:50%;top:27%;margin-left:-470px;}	
+        .tabs ul.top_tab  {position:absolute;left:50%;top:28%;margin-left:-470px;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}
-        .tabs a.active img.on {display:block}
+        .tabs a.active img.on {display:block;}
         .tabs ul:after {content:""; display:block; clear:both}
 
 		.wb_cts02 {background:#7104ff;}
@@ -126,7 +126,10 @@
         
             <div id="tab01s"> 
                 <div class="tab01s_01">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.jpg" alt="" /> 
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.jpg" alt="" usemap="#Map1915_home_a" border="0" />
+                    <map name="Map1915_home_a" id="Map1915_home_a">
+                        <area shape="rect" coords="98,619,167,685" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51150?subject_idx=2116&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99" target="_blank" />
+                    </map>
                 </div>
                 <div class="tab01s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02.jpg" alt="" /> 
@@ -164,7 +167,10 @@
             </div>                                        
             <div id="tab02s">
                 <div class="tab02s_01">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s.jpg" alt="" /> 
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s.jpg" alt="" usemap="#Map1915_home_b" border="0" />
+                    <map name="Map1915_home_b" id="Map1915_home_b">
+                        <area shape="rect" coords="947,599,1014,661" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51148?subject_idx=1217&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84" target="_blank" />
+                    </map> 
                 </div>           
                 <div class="tab02s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02s.jpg" alt="" /> 

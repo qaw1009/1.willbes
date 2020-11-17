@@ -18,14 +18,15 @@
 
         .wb_top {background:#DDD6C4 url(https://static.willbes.net/public/images/promotion/2020/11/1915_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {position:absolute;top:1000px;}
-
-       
+        .wb_cts01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
+        
+        .tab01s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
         .tab01s_02 {background:#EAE6DB}
         .tab01s_03 {background:#fff;padding-bottom:100px;}
         .tab01s_04 {background:#EAE6DB}
         .tab01s_05 {background:#C1392D}
 
+        .tab02s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01s_bg.jpg) no-repeat center top;}
         .tab02s_02 {background:#EAE6DB}
         .tab02s_03 {background:#fff;padding-bottom:100px;}
         .tab02s_04 {background:#EAE6DB}
@@ -33,9 +34,10 @@
 
 
          /*탭(이미지)*/
-         .tabs{width:100%; text-align:center; }
-        .tabs ul {margin:0 auto;}		
-        .tabs li {display:inline; float:left;width:50%;}	
+        .tabs{width:100%; text-align:center; }
+        .tabs ul {margin:0 auto;}       
+        .tabs li {display:inline; float:left;}	
+        .tabs ul.top_tab  {position:absolute;left:50%;top:27%;margin-left:-470px;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}
@@ -104,27 +106,28 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_top.gif" alt="" usemap="#Map1850A" border="0" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">          
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.png" alt="" />
-        </div>
+        
 
         <div class="tabs">
-            <ul>
+            <ul class="top_tab">
                 <li>
                     <a href="#tab01s" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_pro_on.png"  class="on" style="margin-left:-48px;" />                       
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_pro_off.png"  class="off"style="margin-left:-48px;" />                    
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png"  class="on"  />                       
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01_off.png"  class="off" />                    
                     </a>
                 </li>
                 <li>
                     <a href="#tab02s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s_pro_on.png"  class="on" />
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s_pro_off.png" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02.png"  class="on" />
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02_off.png" class="off"/>
                     </a>
                 </li>
             </ul>
         
             <div id="tab01s"> 
+                <div class="tab01s_01">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.jpg" alt="" /> 
+                </div>
                 <div class="tab01s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02.jpg" alt="" /> 
                 </div>
@@ -160,6 +163,9 @@
                 </div>                                      
             </div>                                        
             <div id="tab02s">
+                <div class="tab02s_01">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s.jpg" alt="" /> 
+                </div>           
                 <div class="tab02s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02s.jpg" alt="" /> 
                 </div>

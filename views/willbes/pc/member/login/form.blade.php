@@ -62,7 +62,7 @@
                     </div>
                 </div>  
                 <div class="youpass">
-                    <a href="https://youpass.co.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/youpass.jpg" title="유패스"></a>
+                    <a href="https://pf.kakao.com/_tUSRK" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/login_bn_njob.jpg" title="njob"></a>
                 </div>
             </div>
             <!-- End 로그인 -->

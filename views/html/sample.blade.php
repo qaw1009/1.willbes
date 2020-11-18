@@ -558,6 +558,7 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/profRecruit') }}" target="_blank">강사모집</a></li>
                 <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/check') }}" target="_blank">시스템 점검 페이지</a></li>
                 <li><a href="{{ site_url('/home/html/error') }}" target="_blank">error 페이지</a></li>
                 <li><a href="{{ site_url('/home/html/test_popup') }}" target="_blank">*** test popup</a></li>
                 <li><a href="{{ site_url('/home/html/test_popup2') }}" target="_blank">*** test 인증하기</a></li>

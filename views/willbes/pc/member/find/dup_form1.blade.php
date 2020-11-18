@@ -83,10 +83,6 @@
                 </div>
                 <div class="convert-chkBox mt30">
                     <div class="mb20 tx-center mg-auto"><img src="{{ img_url('login/willbes_convert_user.jpg') }}"></div>
-                    <div class="info-Txt tx-black bd-none">
-                        남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
-                        한림법학원은 강좌포인트로 일괄 이관됩니다.
-                    </div>
                     <div class="chkBox-Save mt30 mb30">
                         <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
                         <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>

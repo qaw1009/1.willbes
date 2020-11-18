@@ -11,7 +11,7 @@
     <!-- 통합 서비스 안내 : 본인인증 -->
     <div class="Member mem-Combine widthAuto690 mb100">
         <div class="user-Txt tx-black">
-            윌비스 한림법학원 회원 통합으로 인하여 <span class="tx-red">회원 개인정보 보안을 위해</span><br/>
+            윌비스 회원 통합으로 인하여 <span class="tx-red">회원 개인정보 보안을 위해</span><br/>
             번거러우시더라도 <span class="tx-red">본인인증을 진행</span>해 주시기 바랍니다.
         </div>
         <ul class="tabWrap tabLoginDepth1 tabs full c_both mt40">
@@ -55,7 +55,7 @@
     <!-- 통합 서비스 안내 : 비밀번호 변경 -->
     <div class="Member mem-Combine widthAuto690 mb100">
         <div class="user-Txt tx-black">
-            윌비스 한림법학원 회원 통합으로 인하여 <span class="tx-red">회원 개인정보 보안을 위해</span><br/>
+            윌비스 회원 통합으로 인하여 <span class="tx-red">회원 개인정보 보안을 위해</span><br/>
             번거러우시더라도 <span class="tx-red">비밀번호를 변경</span>해 주시기 바랍니다.
         </div>
         <table cellspacing="0" cellpadding="0" class="combineTable mb60 mt40">

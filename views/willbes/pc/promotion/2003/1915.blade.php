@@ -18,14 +18,15 @@
 
         .wb_top {background:#DDD6C4 url(https://static.willbes.net/public/images/promotion/2020/11/1915_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {position:absolute;top:1000px;}
-
-       
+        .wb_cts01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
+        
+        .tab01s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
         .tab01s_02 {background:#EAE6DB}
         .tab01s_03 {background:#fff;padding-bottom:100px;}
         .tab01s_04 {background:#EAE6DB}
         .tab01s_05 {background:#C1392D}
 
+        .tab02s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01s_bg.jpg) no-repeat center top;}
         .tab02s_02 {background:#EAE6DB}
         .tab02s_03 {background:#fff;padding-bottom:100px;}
         .tab02s_04 {background:#EAE6DB}
@@ -33,14 +34,16 @@
 
 
          /*탭(이미지)*/
-         .tabs{width:100%; text-align:center; }
-        .tabs ul {margin:0 auto;}		
-        .tabs li {display:inline; float:left;width:50%;}	
+        .tabs{width:100%; text-align:center; }
+        .tabs ul {margin:0 auto;}       
+        .tabs li {display:inline; float:left;}	
+        .tabs ul.top_tab  {position:absolute;left:50%;top:28%;margin-left:-470px;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}
-        .tabs a.active img.on {display:block}
+        .tabs a.active img.on {display:block;}
         .tabs ul:after {content:""; display:block; clear:both}
+        .top_tab li {box-shadow: 10px 10px 5px grey;}
 
 		.wb_cts02 {background:#7104ff;}
         .wb_cts03 {background:#fff;}
@@ -104,27 +107,31 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_top.gif" alt="" usemap="#Map1850A" border="0" />
         </div>
 
-        <div class="evtCtnsBox wb_cts01">          
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.png" alt="" />
-        </div>
+        
 
         <div class="tabs">
-            <ul>
+            <ul class="top_tab">
                 <li>
                     <a href="#tab01s" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_pro_on.png"  class="on" style="margin-left:-48px;" />                       
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_pro_off.png"  class="off"style="margin-left:-48px;" />                    
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png"  class="on"  />                       
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01_off.png"  class="off" />                    
                     </a>
                 </li>
                 <li>
                     <a href="#tab02s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s_pro_on.png"  class="on" />
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s_pro_off.png" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02.png"  class="on" />
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02_off.png" class="off"/>
                     </a>
                 </li>
             </ul>
         
             <div id="tab01s"> 
+                <div class="tab01s_01">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.jpg" alt="" usemap="#Map1915_home_a" border="0" />
+                    <map name="Map1915_home_a" id="Map1915_home_a">
+                        <area shape="rect" coords="98,619,167,685" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51150?subject_idx=2116&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99" target="_blank" />
+                    </map>
+                </div>
                 <div class="tab01s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02.jpg" alt="" /> 
                 </div>
@@ -160,6 +167,12 @@
                 </div>                                      
             </div>                                        
             <div id="tab02s">
+                <div class="tab02s_01">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01s.jpg" alt="" usemap="#Map1915_home_b" border="0" />
+                    <map name="Map1915_home_b" id="Map1915_home_b">
+                        <area shape="rect" coords="947,599,1014,661" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51148?subject_idx=1217&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84" target="_blank" />
+                    </map> 
+                </div>           
                 <div class="tab02s_02">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02s.jpg" alt="" /> 
                 </div>

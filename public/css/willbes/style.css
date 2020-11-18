@@ -732,10 +732,10 @@ table.auTable tr td {
     background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -30px 0;
 }
 #Gnb h1 {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 8px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #ececec;
 }
 #Gnb h1 img {
@@ -745,13 +745,13 @@ table.auTable tr td {
 }
 #Gnb h4 {
     position: relative;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
 }
 
 #Gnb h4 ul li {
-    line-height: 26px;    
+    line-height: 23px; 
 }
 #Gnb h4 ul li.active a {
     font-weight: 600;
@@ -763,20 +763,19 @@ table.auTable tr td {
 }
 #Gnb h4 ul li.Acad  {
     border-top: 1px solid #ececec;
-    padding-top: 15px;
-    margin:15px 10px -15px;
+    padding-top: 5px;
+    margin:5px 10px -15px;
 }
-#Gnb .topView h4 ul {padding-bottom:15px}
+#Gnb .topView h4 ul {padding-bottom:10px;}
 #Gnb .topView h4 ul li.dropdown {
     position: relative;
     text-align: left;
     padding-left:20px;
 }
-#Gnb .topView h4 ul li.dropdown .sns-Btn {margin-lefT:-20px; margin-bottom:0}
+#Gnb .topView h4 ul li.dropdown .sns-Btn {margin-left:-20px; margin-bottom:0}
 #Gnb .sns-Btn {
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 20px;
+    margin-bottom:10px;
 }
 #Gnb .sns-Btn dt {
     display: inline-block;
@@ -784,13 +783,13 @@ table.auTable tr td {
 }
 #Gnb .gnb-List {background: #fff !important;}
 #Gnb .gnb-List .gnb-List-Tit {
-    height: 40px;
-    line-height: 40px;
+    height: 36px;
+    line-height:36px;
 }
 #Gnb .gnb-List li a {
     display: block;
     width: 100%;
-    height: 40px;    
+    height: 36px; 
 }
 #Gnb .willbes-icon_sm {
     float: left;
@@ -868,7 +867,7 @@ table.auTable tr td {
     float: right;
     width: 9px;
     height: 6px;
-    margin: 17px 10px 17px 0;
+    margin: 16px 10px 0 0;
 }
 .Gnb-md .gnb-List .gnb-List-Tit.active a .arrow-Btn {
     background: url("../../img/willbes/gnb/icon_arrow.gif") no-repeat -20px -12px;
@@ -878,10 +877,10 @@ table.auTable tr td {
 }
 .Gnb-md .gnb-List .gnb-List-Tit a {
     display: block;
-    height: 40px;
+    height: 36px;
     font-size: 14px;
     color: #383838;
-    line-height: 40px;
+    line-height: 36px;
     border-bottom: 1px solid #ececec;
 }
 .Gnb-md .gnb-List .gnb-List-Depth {
@@ -916,8 +915,8 @@ table.auTable tr td {
 }
 .Gnb-md .gnb-List-Sub li a {
     display: block;
-    padding-top: 20px;
-    padding-bottom: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .Gnb-md .gnb-List-Sub li a .Txt {
     margin-top: 5px;

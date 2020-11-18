@@ -35,11 +35,12 @@
 
 		<div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1919_01.jpg" alt="" />
-            <div class="title NSK-Black">단과</div>
+            <div class="title NSK-Black">단과 [최종 마무리 핵심체크]</div>
             <div class="evt01_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif  
+            <div class="title NSK-Black" style="padding:25px 0;">단과 [사례형 전범위 모의시험+강평]</div>    
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif                    

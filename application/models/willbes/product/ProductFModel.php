@@ -273,7 +273,7 @@ class ProductFModel extends WB_Model
         $arr_condition = [
             'EQ' => [$as . 'IsSaleEnd' => 'N', $as . 'IsUse' => 'Y'],
             'IN' => [$as . 'SaleStatusCcd' => array_values($this->_sale_status_ccds)],
-            'RAW' => ['NOW() between ' => $as . 'SaleStartDatm and ' . $as . 'SaleEndDatm']
+            //'RAW' => ['NOW() between ' => $as . 'SaleStartDatm and ' . $as . 'SaleEndDatm']
         ];
 
         switch ($learn_pattern) {

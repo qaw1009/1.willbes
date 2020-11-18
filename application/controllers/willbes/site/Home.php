@@ -125,6 +125,7 @@ class Home extends \app\controllers\FrontController
             $data['dday'] = $this->_dday();
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
+            $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
         }
 
         $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
@@ -153,6 +154,7 @@ class Home extends \app\controllers\FrontController
             $data['onAir'] = $this->_onAir();
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
+            $data['new_product'] = $this->_product('off_lecture', 9, $cate_code, 'New');
         }
 
         return $data;
@@ -567,6 +569,10 @@ class Home extends \app\controllers\FrontController
                 , ifnull(JSON_VALUE(ProfReferData, "$.prof_index_img"), "") as ProfIndexImg
                 , ProdMainIntroMemo
                 , ifnull(FN_PRODUCT_LECTURE_SAMPLE_DATA(ProdCode),\'N\') As LectureSamplewUnit';
+        }else if($learn_pattern == 'off_lecture'){
+            $add_column = ', ifnull(JSON_VALUE(ProfReferData, "$.lec_list_img"), "") as ProfLecListImg
+                , ifnull(JSON_VALUE(ProfReferData, "$.lec_detail_img"), "") as ProfLecDetailImg
+                ';
         }
 
         return $this->productFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit_cnt, 0, ['ProdCode' => 'desc'], $add_column);

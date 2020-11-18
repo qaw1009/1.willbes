@@ -99,7 +99,7 @@
             visible: true,
             auto_progressive_download: true,
             dualMonitor: true,
-            watermarkText: "test",
+            watermarkText: "{{sess_data('admin_id')}}(A)",
             watermarkTextColor: "#308ECE92",
             watermarkTextSize: "2%",
             watermarkHorzAlign: WatermarkAlign.RANDOM,

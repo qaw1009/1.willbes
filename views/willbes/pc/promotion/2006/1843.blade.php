@@ -83,6 +83,10 @@
                     <area shape="rect" coords="867,679,965,716" href="javascript:go_PassLecture('172516');" />
                     <area shape="rect" coords="866,729,966,767" href="javascript:go_PassLecture('172521');" />
                 </map>
+                <img src="https://static.willbes.net/public/images/promotion/2020/09/1843_03_01s.jpg" usemap="#Map1843aa" border="0"/>
+                <map name="Map1843aa" id="Map1843aa">
+                    <area shape="rect" coords="865,528,966,566" href="javascript:go_PassLecture('175054');" />
+                </map>
 			</div>
 			<div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1843_03_02.jpg" alt="감정평가이론" usemap="#Map1843b" border="0" />

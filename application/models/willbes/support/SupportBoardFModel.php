@@ -115,13 +115,19 @@ class SupportBoardFModel extends BaseSupportFModel
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
+//        $from = "
+//            FROM {$this->_table['board_2']}
+//            INNER JOIN (
+//                SELECT SiteGroupCode
+//                FROM {$this->_table['site']}
+//                WHERE SiteCode = '{$site_code}'
+//            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+//        ";
+
+        // slow query 개선
         $from = "
             FROM {$this->_table['board_2']}
-            INNER JOIN (
-                SELECT SiteGroupCode
-                FROM {$this->_table['site']}
-                WHERE SiteCode = '{$site_code}'
-            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            INNER JOIN {$this->_table['site']} AS s ON s.SiteGroupCode = b.SiteGroupCode
         ";
 
         if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {

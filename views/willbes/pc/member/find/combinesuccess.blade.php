@@ -16,7 +16,6 @@
         </ul>
         <div class="user-Txt tx-black">
             <strong>윌비스 통합회원 전환을 환영합니다.</strong><br/>
-            기존 수강강좌, 포인트, 쿠폰은 '통합 내강의실'에서 확인하실 수 있습니다.<br/>
             로그인후에 이용해주시기 바랍니다.
         </div>
         <div class="agree-user-Chk">

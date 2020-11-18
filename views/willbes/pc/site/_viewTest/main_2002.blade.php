@@ -40,8 +40,8 @@
                                     @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
                                         <div>
                                             <div class="tag">{{ $row['BannerName'] }}</div>
-                                            <a href="{{ empty($row['LinkUrl']) === false ? $row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}">
-                                                <img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" title="{{ $row['BannerName'] }}">
+                                            <a href="{{ empty($row['LinkUrl']) === false ? $row['LinkUrl'] : '#none' }}" target="_{{ $row['LinkType'] }}">
+                                                <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}">
                                             </a>
                                         </div>
                                     @endforeach

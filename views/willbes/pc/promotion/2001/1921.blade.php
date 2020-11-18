@@ -46,11 +46,11 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1921_01_01.jpg" alt="형사법을 정의하다.">
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/GG7f25Umjaw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1921_01_02.jpg" alt="형사법의 새로운 기준">
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/GG7f25Umjaw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/CsreKYYznO4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1921_01_03.jpg" alt="유튜브 댓글">
         </div>

@@ -295,13 +295,20 @@ class SupportBoardFModel extends BaseSupportFModel
             ]
         ]);
 
+//        $from = "
+//            FROM {$this->_table['board_find']}
+//            INNER JOIN (
+//                SELECT SiteGroupCode
+//                FROM {$this->_table['site']}
+//                WHERE SiteCode = '{$site_code}'
+//            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+//            LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
+//        ";
+
+        // slow query 개선
         $from = "
             FROM {$this->_table['board_find']}
-            INNER JOIN (
-                SELECT SiteGroupCode
-                FROM {$this->_table['site']}
-                WHERE SiteCode = '{$site_code}'
-            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
+            INNER JOIN {$this->_table['site']} AS s ON s.SiteGroupCode = b.SiteGroupCode
             LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
         ";
 

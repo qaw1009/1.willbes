@@ -11,7 +11,6 @@
         <div class="Member mem-Convert widthAuto690 mb100">
             <div class="user-Txt tx-black">
                 <strong>윌비스 통합회원 전환을 환영합니다.</strong><br/>
-                기존 수강강좌, 포인트 등은 통합된 ‘내강의실’에서 확인하실 수 있습니다.<br/>
                 로그인후에 이용해 주시 바랍니다.
             </div>
             <div class="agree-user-Chk">
@@ -37,8 +36,8 @@
                 </table>
             </div>
             <div class="convert-Btn mt60 tx-center btnAuto h36">
-                <button type="button" onclick="location.replace('/');" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
-                    <span>확인</span>
+                <button type="button" onclick="location.replace('{{front_app_url('/member/login/', 'www')}}');" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
+                    <span>로그인</span>
                 </button>
             </div>
         </div>

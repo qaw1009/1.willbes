@@ -13,8 +13,8 @@
                 {!! csrf_field() !!}
                 <div class="Member mem-Convert widthAuto690 mb100">
                     <div class="user-Txt tx-black">
-                        윌비스공무원, 신광은경찰, 한림법학원이<br/>
-                        더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
+                        더 나은 서비스 제공을 위해 새롭게 통합되는 윌비스!<br/>
+                        이제 윌비스 사이트를 하나의 아이디로 편리하게 이용할 수 있습니다.<br/>
                         기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
                         <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
                     </div>
@@ -24,10 +24,6 @@
                     </div>
                     <div class="convert-chkBox mt30">
                         <img src="{{ img_url('login/willbes_convert_user.jpg') }}">
-                        <div class="info-Txt tx-black bd-none">
-                            남은 포인트 경우 윌비스공무원&신광은경찰은 교재포인트로, <bR>
-                            한림법학원은 강좌포인트로 일괄 이관됩니다.
-                        </div>
                         <div class="chkBox-Save mt30 mb30">
                             <input type="checkbox" id="agree" name="agree" value="Y" class="iptSave">
                             <label for="USER_ID_SAVE" class="labelSave tx-gray"><span class="tx-red">(필수)</span> 윌비스 통합회원 전환을 동의합니다.</label>

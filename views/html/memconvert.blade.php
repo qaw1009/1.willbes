@@ -10,9 +10,9 @@
     </div>
     <!-- 통합 서비스 안내 -->
     <div class="Member mem-Convert widthAuto690">
-        <div class="user-Txt tx-black">
-            윌비스공무원(www.willbesgosi.net), 신광은경찰(www.willbescop.net)이<br/>
-            더 좋은 서비스 제공을 위해 '윌비스' 라는 이름으로 새롭게 통합되었습니다.<br/>
+        <div class="user-Txt tx-black ">
+            더 나은 서비스 제공을 위해 새롭게 통합되는 윌비스!<br/>
+            이제 윌비스 사이트를 하나의 아이디로 편리하게 이용할 수 있습니다.<br/>
             기존 수강 강좌 및 혜택을 유지하기 위해 윌비스 통합회원으로 전환이 필요하며,<br/>
             <div class="tx-red">전환을 신청하지 않을 시 서비스 이용이 불가능합니다.</div>
         </div>
@@ -34,8 +34,7 @@
         </div>
         <div class="info-Txt tx-black mt60">
             <div class="tx-red">※ 기존사용하는 ID 그대로 통합 ID로 사용할 수 있습니다.</div>
-            단, ID가 중복된 통합ID가 있을 경우, 신규 통합 ID를 생성이 필요합니다.<br/>
-            <div class="tx-red">※ 기존 수강 강좌, 포인트, 쿠폰은 '통합ID'계정으로 이관됩니다.</div>
+            단, ID가 중복된 통합ID가 있을 경우, 신규 통합 ID를 생성이 필요합니다.
         </div>
     </div>
     <!-- End 통합 서비스 안내 -->
@@ -282,7 +281,7 @@
         </ul>
         <div class="user-Txt tx-black">
             <strong>윌비스 통합회원 전환을 환영합니다.</strong><br/>
-            기존 수강강좌, 포인트, 쿠폰은 '통합 내강의실'에서 확인하실 수 있습니다.
+            로그인 후에 이용해주시기 바랍니다.
         </div>
         <div class="agree-user-Chk">
             <table cellspacing="0" cellpadding="0" class="auTable">
@@ -308,7 +307,7 @@
         </div>
         <div class="convert-Btn mt60 tx-center btnAuto h36">
             <button type="submit" onclick="" class="mem-Btn btnAuto180 bg-blue bd-dark-blue">
-                <span>확인</span>
+                <span>로그인</span>
             </button>
         </div>
     </div>

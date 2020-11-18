@@ -12,13 +12,21 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/          
 
         .wb_top {background:#DDD6C4 url(https://static.willbes.net/public/images/promotion/2020/11/1915_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
+        .top_tab {position:absolute; left:50%; top:1880px; width:960px; margin-left:-460px; z-index:10}   
+        .top_tab li {display:inline; float:left; height:150px; width:50%;}        
+        .top_tab li a {position:relative;}	     
+        .top_tab a img {position:absolute; left:0; top:0; width:480px; height:150px;  z-index:11}   
+        .top_tab a img.off {display:block}
+        .top_tab a img.on {display:none} 
+        .top_tab a.active img.off {display:none}
+        .top_tab a.active img.on {display:block; box-shadow: 0 20px 30px rgba(0,0,0,.5);}    
+        .top_tab:after {content:""; display:block; clear:both}
         
         .tab01s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_bg.jpg) no-repeat center top;}
         .tab01s_02 {background:#EAE6DB}
@@ -30,24 +38,9 @@
         .tab02s_02 {background:#EAE6DB}
         .tab02s_03 {background:#fff;padding-bottom:100px;}
         .tab02s_04 {background:#EAE6DB}
-        .tab02s_05 {background:#C1392D}
+        .tab02s_05 {background:#C1392D}      
 
 
-         /*탭(이미지)*/
-        .tabs{width:100%; text-align:center; }
-        .tabs ul {margin:0 auto;}       
-        .tabs li {display:inline; float:left;}	
-        .tabs ul.top_tab  {position:absolute;left:50%;top:28%;margin-left:-470px;}	
-        .tabs a img.off {display:block}
-        .tabs a img.on {display:none}
-        .tabs a.active img.off {display:none}
-        .tabs a.active img.on {display:block;}
-        .tabs ul:after {content:""; display:block; clear:both}
-        .top_tab li {box-shadow: 10px 10px 5px grey;}
-
-		.wb_cts02 {background:#7104ff;}
-        .wb_cts03 {background:#fff;}
-        .wb_cts04 {background:#eb4295}
         .check { position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -102,29 +95,26 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_top.gif" alt="" usemap="#Map1850A" border="0" />
         </div>
 
-        
+        <ul class="top_tab">
+            <li>
+                <a href="#tab01s" class="active">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png"  class="on"  />                       
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01_off.png"  class="off" />                    
+                </a>
+            </li>
+            <li>
+                <a href="#tab02s">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02.png"  class="on" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02_off.png" class="off"/>
+                </a>
+            </li>
+        </ul>        
 
-        <div class="tabs">
-            <ul class="top_tab">
-                <li>
-                    <a href="#tab01s" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png"  class="on"  />                       
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01_off.png"  class="off" />                    
-                    </a>
-                </li>
-                <li>
-                    <a href="#tab02s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02.png"  class="on" />
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02_off.png" class="off"/>
-                    </a>
-                </li>
-            </ul>
-        
+        <div class="evtCtnsBox">        
             <div id="tab01s"> 
                 <div class="tab01s_01">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01.jpg" alt="" usemap="#Map1915_home_a" border="0" />
@@ -229,7 +219,6 @@
     <script type="text/javascript">
        	var tab1_url = "https://www.youtube.com/embed/jcr0AKg9yVk?rel=0";
 		var tab2_url = "https://www.youtube.com/embed/iJEmIip6phg?rel=0";
-        var tab3_url = "https://www.youtube.com/embed/s53Pjkbzjng?rel=0";
 
 		$(document).ready(function(){
 		$(".tabcts").hide(); 
@@ -254,28 +243,28 @@
 	
         /*탭(이미지버전)*/
         $(document).ready(function(){
-                $('.tabs ul').each(function(){
-                    var $active, $content, $links = $(this).find('a');
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                    //$active.addClass('active');
-                    $content = $($active[0].hash);
+            $('.top_tab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                //$active.addClass('active');
+                $content = $($active[0].hash);
 
-                    $links.not($active).each(function () {
-                        $(this.hash).hide();
-                    });
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
 
-                    // Bind the click event handler
-                    $(this).on('click', 'a', function(e){
-                        $active.removeClass('active');
-                        $content.hide();
-                        $active = $(this);
-                        $content = $(this.hash);
-                        $active.addClass('active');
-                        $content.show();
-                        e.preventDefault()
-                    });
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
                 });
             });
+        });
         
         /*팝업 커리큘럼*/ 
             function go_popup1() {

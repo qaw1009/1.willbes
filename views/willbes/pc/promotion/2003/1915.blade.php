@@ -43,6 +43,7 @@
         .tabs a.active img.off {display:none}
         .tabs a.active img.on {display:block;}
         .tabs ul:after {content:""; display:block; clear:both}
+        .top_tab li {box-shadow: 10px 10px 5px grey;}
 
 		.wb_cts02 {background:#7104ff;}
         .wb_cts03 {background:#fff;}

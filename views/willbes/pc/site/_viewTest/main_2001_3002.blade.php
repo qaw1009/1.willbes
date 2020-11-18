@@ -29,14 +29,10 @@
 
         <div class="widthAuto mt50">
             <div class="f_left nSlider pick">
-                <div class="sliderNum">
-                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
-                </div>
+                {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
             </div>
             <div class="f_right nSlider pick">
-                <div class="sliderNum">
-                    {!! banner_html(element('메인_서브', $data['arr_main_banner']), '_num_slider_sub_banner') !!}
-                </div>
+                {!! banner_html(element('메인_서브', $data['arr_main_banner']), '_num_slider_sub_banner') !!}
             </div>
         </div>
 

@@ -38,6 +38,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008') }}" target="_blank">경찰간부 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008_v2') }}" target="_blank">경찰간부 온라인 메인 ver2</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2013') }}" target="_blank">경찰간부 학원 메인</a></li>                
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gate') }}" target="_blank">공무원 게이트</a></li>

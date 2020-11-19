@@ -21,6 +21,8 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_02_bg.jpg) no-repeat center top; height:1069px}
         .evt02 iframe {margin-top:300px}
+
+        .willbes-Layer-ReplyBox { top: 2000px}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -29,17 +31,34 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_top.jpg" alt="교육학 김차웅" usemap="#Mapkcw01" border="0" />
                 <map name="Mapkcw01" id="Mapkcw01">
-                  <area shape="rect" coords="3,819,387,916" href="#none" alt="적중증거자료영상보기" />
-                  <area shape="rect" coords="417,820,609,917" href="#none" alt="증거자료다운받기" />
-                  <area shape="rect" coords="674,820,1060,917" href="#none" alt="설명회보기" />
-                  <area shape="rect" coords="1096,815,1280,918" href="#none" alt="설명회자료다운" />
+                    @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                        @foreach($arr_base['promotion_otherinfo_data'] as $key => $row)
+                            @if($key == 0)
+                                @if(empty($row['wHD']) === false)
+                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="3,819,387,916" href="#none" alt="적중증거자료영상보기" />
+                                @endif
+
+                                @if(empty($row['FileFullPath']) === false)
+                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="417,820,609,917" alt="증거자료다운받기" />
+                                @endif
+                            @else
+                                @if(empty($row['wHD']) === false)
+                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="674,820,1060,917" href="#none" alt="설명회보기" />
+                                @endif
+
+                                @if(empty($row['FileFullPath']) === false)
+                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="1096,815,1280,918" alt="설명회자료다운" />
+                                @endif
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 
             <div class="evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamkcw_01.jpg" usemap="#Mapkcw02" border="0">
                 <map name="Mapkcw02" class="review_btn" id="wsamkcw">
-                  <area shape="rect" coords="412,926,869,1006" href="#none" alt="합격수기확인" />
+                  <area shape="rect" coords="412,926,869,1006" href="#none" onclick="go_study_comment_popup();" alt="합격수기확인" />
                 </map>
             </div>
 
@@ -49,4 +68,6 @@
         </div>
     </div>
     <!-- End Container -->
+
+    @include('willbes.pc.promotion.ssam.study_comment')
 @stop

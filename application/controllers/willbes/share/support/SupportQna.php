@@ -226,6 +226,9 @@ class SupportQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        //공개여부 (임용인 경우 비공개 처리)
+        $arr_base['public_type'] = (config_app('SiteGroupCode') == '1011') ? false : true;
+
         $method = 'POST';
         $data = null;
 
@@ -267,6 +270,8 @@ class SupportQna extends BaseSupport
             }
 
             $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+
+            $arr_base['public_type'] = ($data['SiteCode'] == '2017' || $data['SiteCode'] == '2018') ? false : true;
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [

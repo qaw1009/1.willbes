@@ -21,7 +21,7 @@
                     <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309006" target="_blank">세무사</a></li>                    
                     <li><a href="https://gosi.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=3099" target="_blank">변호사시험</a></li>
                     <li><a href="https://job.willbes.net/m/lecture/index/pattern/only?search_order=course&cate_code=309005" target="_blank">관세사</a></li>
-                    <li><a href="https://spo.willbes.net/m/lecture/index/pattern/only" target="_blank">경찰간부(간부후보생)</a></li>
+                    <li><a href="https://spo.willbes.net/m/lecture/index/pattern/only" target="_blank">경찰간부·일반경찰</a></li>
                     <li><a href="https://lang.willbes.net/m/lecture/index/pattern/only" target="_blank">어학</a></li>
                     <li><a href="https://work.willbes.net/m/lecture/index/pattern/only" target="_blank">취업</a></li>
                     <li><a href="https://njob.willbes.net/m/home/index" target="_blank">N잡 e-커머스 <span>●</span></a></li>

@@ -428,7 +428,7 @@
     <div class="Section Section1">
         <div>
             <div class="copyTit">
-                <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+                <strong class="NSK-Black">WILLBES 경찰간부·일반경찰</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
             </div>
             <div class="thisMonth NSK">
                 <div class="thisMonthBox">
@@ -510,7 +510,7 @@
             </div>
 
             <div class="copyTit mt100">
-                <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
+                <strong class="NSK-Black">WILLBES 경찰간부·일반경찰</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
             </div>
             <div class="preview NSK">
                 <div class="previewBox">

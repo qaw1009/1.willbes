@@ -44,7 +44,7 @@
                                 @endif
 
                                 @if(empty($row['FileFullPath']) === false)
-                                    <area shape="rect" coords="486,818,668,917" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$data['ElIdx']) }}" alt="답안자료" />
+                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="486,818,668,917" alt="답안자료" />
                                 @endif
                             @else
                                 @if(empty($row['wHD']) === false)
@@ -77,29 +77,5 @@
     </div>
     <!-- End Container -->
 
-    <!-- willbes-Layer-수강후기 -->
-    <div id="WrapReply"></div>
-    <!-- // willbes-Layer-수강후기 -->
-
-    <script>
-        // 수강후기 레이어팝업
-        function go_study_comment_popup(){
-            var ele_id = 'WrapReply';
-            var _url = "{{front_url('/support/studyComment/')}}";
-            var data = {};
-
-            @if(empty($arr_base['promotion_otherinfo_data'][0]) === false && empty($arr_promotion_params['cate_code']) === false)
-                data = {
-                    'ele_id' : ele_id,
-                    'cate_code' : '{{ $arr_promotion_params['cate_code'] }}',
-                    'prof_idx' : '{{ element('ProfIdx', $arr_base['promotion_otherinfo_data'][0]) }}',
-                    'subject_idx' : '{{ element('SubjectIdx', $arr_base['promotion_otherinfo_data'][0]) }}'
-                };
-            @endif
-
-            sendAjax(_url, data, function(ret) {
-                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-            }, showAlertError, false, 'GET', 'html');
-        }
-    </script>
+    @include('willbes.pc.promotion.ssam.study_comment')
 @stop

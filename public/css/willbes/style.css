@@ -751,7 +751,7 @@ table.auTable tr td {
 }
 
 #Gnb h4 ul li {
-    line-height: 23px; 
+    line-height: 23px;
 }
 #Gnb h4 ul li.active a {
     font-weight: 600;
@@ -763,10 +763,11 @@ table.auTable tr td {
 }
 #Gnb h4 ul li.Acad  {
     border-top: 1px solid #ececec;
-    padding-top: 5px;
-    margin:5px 10px -15px;
+    margin:0 10px 0;
+    padding:5px 0;
 }
-#Gnb .topView h4 ul {padding-bottom:10px;}
+#Gnb h4 ul li.Acad:last-child {margin-top:0}
+#Gnb .topView h4 ul {padding:0;}
 #Gnb .topView h4 ul li.dropdown {
     position: relative;
     text-align: left;
@@ -775,7 +776,6 @@ table.auTable tr td {
 #Gnb .topView h4 ul li.dropdown .sns-Btn {margin-left:-20px; margin-bottom:0}
 #Gnb .sns-Btn {
     text-align: center;
-    margin-bottom:10px;
 }
 #Gnb .sns-Btn dt {
     display: inline-block;

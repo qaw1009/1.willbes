@@ -52,18 +52,18 @@
         <div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01.jpg" alt="" />
             <ul class="tabs">
-                <li><a href="#tab01">회계학</a></li>
-                <li><a href="#tab02">경제학개론</a></li>
-                <li><a href="#tab03">민법</a></li>
-                <li><a href="#tab04">부동산학원론</a></li>
-                <li><a href="#tab05">감정평가관계법규</a></li>
+                <li><a href="#tab01">민법</a></li>
+                <li><a href="#tab02">감정평가관계법규</a></li>
+                <li><a href="#tab03">부동산학원론</a></li>
+                <li><a href="#tab04">경제학개론</a></li>
+                <li><a href="#tab05">회계학</a></li>
             </ul>
             <div>
-                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_01.jpg" alt="회계학" /></span>
-                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_02.jpg" alt="경제학개론" /></span>
-                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_03.jpg" alt="민법" /></span>
-                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_04.jpg" alt="부동산학원론" /></span>
-                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_05.jpg" alt="감정평가관계법규" /></span>
+                <span id="tab01"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_01.jpg" alt="민법" /></span>
+                <span id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_02.jpg" alt="감정평가관계법규" /></span>
+                <span id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_03.jpg" alt="부동산학원론" /></span>
+                <span id="tab04"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_04.jpg" alt="경제학개론" /></span>
+                <span id="tab05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_01_05.jpg" alt="회계학" /></span>
             </div>
             <a href="javascript:go_PassLecture('175055');"><img src="https://static.willbes.net/public/images/promotion/2020/11/1925_02.jpg" alt="" /></a>
             <div class="check">

@@ -397,6 +397,27 @@ class BasePromotion extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
     }
 
+    /**
+     * 이벤트 프로모션 상세설정 첨부파일 다운로드
+     */
+    public function downloadOtherFile()
+    {
+        $file_idx = $this->_reqG('file_idx');
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
+
+        $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event_promotion_otherinfo');
+        if (empty($file_data) === true) {
+            show_alert('조회된 파일이 없습니다.', 'close', '');
+        }
+
+        $file_path = $file_data['FilePath'];
+        $file_name = $file_data['RealFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+    }
+
     public function popup($param = [])
     {
         $arr_base['promotion_code'] = $param[0];

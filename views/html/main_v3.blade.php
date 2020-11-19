@@ -10,7 +10,7 @@
             <li><a href="#none">9급공무원</a><span>x</span></li>
             <li><a href="#none">기술직</a><span>x</span></li>
             <li><a href="#none">법원직</a><span>x</span></li>
-            <li><a href="#none">경찰간부</a><span>x</span></li>          
+            <li><a href="#none">경찰간부·일반경찰</a><span>x</span></li>          
         </ul>
         <span><a href="#none" onclick="openWin('addArea')" class="add">관심분야 설정</a></span>
         {{--//추가팝업--}}
@@ -42,7 +42,7 @@
                             <li><a href="#none">경찰승진</a></li>
                             <li><a href="#none">해양경찰</a></li>                                                               
                             <li><a href="#none">해양경찰특채</a></li>
-                            <li><a href="#none">경찰간부(간부후보생)</a></li>
+                            <li><a href="#none">경찰간부·일반경찰</a></li>
                         </ul>
                     </div>
                     <div>
@@ -115,7 +115,7 @@
                             <a href="https://police.willbes.net/home/index/cate/3005" target="_blank">경찰승진</a>
                             <a href="https://police.willbes.net/home/index/cate/3007" target="_blank">해양경찰</a>
                             <a href="https://police.willbes.net/home/index/cate/3008" target="_blank">해양경찰특채</a> 
-                            <a href="https://police.willbes.net/home/index/cate/3100" target="_blank">경찰간부(간부후보생)</a> 
+                            <a href="https://police.willbes.net/home/index/cate/3100" target="_blank">경찰간부·일반경찰</a> 
                         </td>
                     </tr>
                     <tr>

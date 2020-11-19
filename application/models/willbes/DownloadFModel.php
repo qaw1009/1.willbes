@@ -9,7 +9,8 @@ class DownloadFModel extends WB_Model
         'crm_send' => 'lms_crm_send',
         'event_promotion_live_video' => 'lms_event_promotion_live_video',
         'lms_board_download_log' => 'lms_board_download_log',
-        'lms_event_download_log' => 'lms_event_download_log'
+        'lms_event_download_log' => 'lms_event_download_log',
+        'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo'
     ];
 
     public function __construct()
@@ -92,6 +93,17 @@ class DownloadFModel extends WB_Model
                 $arr_condition = [
                     'RAW' => [
                         'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
+                    ],
+                    'EQ' => ['IsStatus' => 'Y']
+                ];
+                break;
+            case "event_promotion_otherinfo":
+                $column = 'FileFullPath AS FilePath, FileRealName AS RealFileName';
+                $table = $this->_table['event_promotion_otherinfo'];
+                $arr_condition = [
+                    'RAW' => [
+                        'EpoIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
                         'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsStatus' => 'Y']

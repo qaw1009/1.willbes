@@ -226,6 +226,9 @@ class SupportQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        //공개여부 (임용인 경우 비공개 처리)
+        $arr_base['public_type'] = (config_app('SiteGroupCode') == '1011') ? false : true;
+
         $method = 'POST';
         $data = null;
 

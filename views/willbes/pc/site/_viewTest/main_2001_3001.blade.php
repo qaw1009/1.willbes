@@ -21,18 +21,20 @@
             </div>
         </div>
 
-        <div class="Section">
-            <div class="widthAuto bnSecbar01">
-                {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+        <div class="SectionBg">
+            <div class="Section">
+                <div class="widthAuto bnSecbar01">
+                    {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+                </div>
             </div>
-        </div>
 
-        <div class="widthAuto mt50">
-            <div class="f_left nSlider pick">
-                {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
-            </div>
-            <div class="f_right nSlider pick">
-                {!! banner_html(element('메인_서브', $data['arr_main_banner']), '_num_slider_sub_banner') !!}
+            <div class="widthAuto mt50">
+                <div class="f_left nSlider pick">
+                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
+                </div>
+                <div class="f_right nSlider pick">
+                    {!! banner_html(element('메인_서브', $data['arr_main_banner']), '_num_slider_sub_banner') !!}
+                </div>
             </div>
         </div>
 

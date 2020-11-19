@@ -98,24 +98,24 @@
             </div>
         </div>
 
-        <div class="Section mb50">
-            <div class="widthAuto">
-                <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>
-                <ul class="caProfBox">
-                    @for($i=1; $i<=8; $i++)
-                        <li>
-                            {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
-                        </li>
-                    @endfor
-                </ul>
-            </div>
-        </div>
+{{--        <div class="Section mb50">--}}
+{{--            <div class="widthAuto">--}}
+{{--                <div class="will-acadTit">교수별 <span class="tx-color">빠른강좌</span> 찾기</div>--}}
+{{--                <ul class="caProfBox">--}}
+{{--                    @for($i=1; $i<=8; $i++)--}}
+{{--                        <li>--}}
+{{--                            {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}--}}
+{{--                        </li>--}}
+{{--                    @endfor--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        </div>--}}
         <!-- 교수별 빠른강좌 //-->
 
         <div class="Section passCurri mt50">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2002/2002_img_1120.jpg" title="합격 프로그램">
-                <div><a href="#none" class="NSK-Black">신광은 경찰학원 일정보기 ></a></div>
+                <div><a href="{{ front_url('/offinfo/boardInfo/index/78') }}" class="NSK-Black">신광은 경찰학원 일정보기 ></a></div>
             </div>
         </div>
 

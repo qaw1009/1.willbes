@@ -900,6 +900,7 @@ class Home extends \app\controllers\FrontController
         $arr_condition = [
             'EQ' => [
                 'p.SiteCode' => $this->_site_code,
+                'prc.CateCode' => $cate_code,
                 'p.ProdTypeCcd' => '636001',
                 'pl.LearnPatternCcd' => '615001',
             ],

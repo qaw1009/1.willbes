@@ -134,7 +134,7 @@
                     <th xrowspan="2">관심분야</th>
                     <th xrowspan="2">회원번호</th>
                     <th xrowspan="2">이름</th>
-                    <th xrowspan="2">아이디</br>(이관아이디)</th>
+                    <th xrowspan="2">아이디</br>(한림이관,임용이관)</th>
                     <th xcolspan="2">휴대폰정보(수신)</th>
                     <th xcolspan="2">E-mail정보(수신)</th>
                     <th xrowspan="2">가입일</th>
@@ -201,10 +201,10 @@
                             return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
                         }},
                     {'data' : 'MemId', 'render' : function(data,type,row,meta){
-                            if(row.HanlimID == '') {
+                            if(row.HanlimID == '' && row.ssamID == '') {
                                 return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</a>';
                             } else {
-                                return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</br>( '+row.HanlimID+' )</a>';
+                                return '<a href="#" class="btn-view1 blue" data-idx="' + row.MemIdx + '">' + data + '</br>( '+row.HanlimID+' / '+ row.ssamID + ' )</a>';
                             }
                         }},
                     {'data' : 'Phone', 'render' : function(data, type, row, meta){

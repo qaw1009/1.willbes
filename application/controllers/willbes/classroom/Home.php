@@ -202,6 +202,28 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 임용고시 이전 사이트 가기
+     */
+    public function gotoSsam()
+    {
+        $this->load->library('Crypto', ['license' => 'willbes^ssam^20201201']);
+
+        $data = $this->memberFModel->getMember(false, [
+            'EQ' => [
+                'Mem.MemIdx' => $this->session->userdata('mem_idx'),
+                'Mem.IsStatus' => 'Y'
+            ]
+        ]);
+
+        $plaintext = '^'.$data['ssamID'].'^'.date('Y-m-d H:i:s').'^';
+        $enc_data = $this->crypto->encrypt($plaintext);
+
+        return $this->load->view('classroom/gotossam', [
+            'enc_data' => $enc_data
+        ]);
+    }
+
+    /**
      * 서포터즈회원 여부
      * @return bool : true 회원, false 비회원
      */

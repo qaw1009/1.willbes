@@ -90,6 +90,15 @@ class SupportBoardFModel extends BaseSupportFModel
      */
     public function listBoardForSiteGroup($is_count, $site_code, $cate_code, $arr_condition=[], $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
     {
+        $query_string = "
+            SiteCode FROM {$this->_table['site']} AS a WHERE SiteGroupCode = ( SELECT SiteGroupCode FROM {$this->_table['site']} AS a WHERE a.SiteCode = ? )
+        ";
+        $arr_site = $this->_conn->query('select ' . $query_string, $site_code)->result_array();
+        $get_site_group = ['2000'];
+        if (empty($arr_site) === false) {
+            $get_site_group = array_pluck($arr_site, 'SiteCode');
+        }
+
         if ($is_count === true) {
             $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
@@ -114,21 +123,14 @@ class SupportBoardFModel extends BaseSupportFModel
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
-
-//        $from = "
-//            FROM {$this->_table['board_2']}
-//            INNER JOIN (
-//                SELECT SiteGroupCode
-//                FROM {$this->_table['site']}
-//                WHERE SiteCode = '{$site_code}'
-//            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
-//        ";
-
-        // slow query 개선
         $from = "
             FROM {$this->_table['board_2']}
-            INNER JOIN {$this->_table['site']} AS s ON s.SiteCode = '{$site_code}' AND s.SiteGroupCode = b.SiteGroupCode
         ";
+        $arr_condition = array_merge_recursive($arr_condition, [
+            'IN' => [
+                'b.SiteCode' => array_values($get_site_group)
+            ]
+        ]);
 
         if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {
             $from .= "
@@ -295,26 +297,24 @@ class SupportBoardFModel extends BaseSupportFModel
      */
     public function findBoardForSiteGroup($site_code, $cate_code, $board_idx, $arr_condition=[], $column='*', $limit = null, $offset = null, $order_by = [])
     {
+        $query_string = "
+            SiteCode FROM {$this->_table['site']} AS a WHERE SiteGroupCode = ( SELECT SiteGroupCode FROM {$this->_table['site']} AS a WHERE a.SiteCode = ? )
+        ";
+        $arr_site = $this->_conn->query('select ' . $query_string, $site_code)->result_array();
+        $get_site_group = ['2000'];
+        if (empty($arr_site) === false) {
+            $get_site_group = array_pluck($arr_site, 'SiteCode');
+        }
         $arr_condition = array_merge_recursive($arr_condition,[
             'EQ' => [
                 'b.BoardIdx' => $board_idx,
+            ],
+            'IN' => [
+                'b.SiteCode' => $get_site_group
             ]
         ]);
-
-//        $from = "
-//            FROM {$this->_table['board_find']}
-//            INNER JOIN (
-//                SELECT SiteGroupCode
-//                FROM {$this->_table['site']}
-//                WHERE SiteCode = '{$site_code}'
-//            ) AS s ON b.SiteGroupCode = s.SiteGroupCode
-//            LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
-//        ";
-
-        // slow query 개선
         $from = "
             FROM {$this->_table['board_find']}
-            INNER JOIN {$this->_table['site']} AS s ON s.SiteCode = '{$site_code}' AND s.SiteGroupCode = b.SiteGroupCode
             LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
         ";
 

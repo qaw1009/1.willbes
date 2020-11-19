@@ -44,13 +44,11 @@
         <div id="navi_mypage" class="navi d_none">
             <ul class="NGEB">
                 <li class="ListTit"><h1 class="NGEB">내강의실</h1></li>
-                {{--
-                @if(sess_data('is_login') == true && empty(sess_data('mem_hanlimid')) == false)
+                @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
                     <li class="ListBox">
-                        <div class="List NGEB"><a href="{{ front_app_url('/classroom/home/gotoHanlim/', 'www', false, true) }}" target="_blank">이전 내강의실 보기</a></div>
+                        <div class="List NGEB"><a href="{{ front_app_url('/classroom/home/gotoSsam/', 'www', false, true) }}" target="_blank">이전 내강의실 보기</a></div>
                     </li>
                 @endif
-                --}}
                 <li class="ListBox">
                     <div class="List NGEB"><a href="{{ front_app_url('/classroom/pass/index', 'www', false, true) }}">무한 PASS존</a></div>
                 </li>

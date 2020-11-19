@@ -335,9 +335,6 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        echo '<pre>';
-        print_r('select '.$column .$from .$where . $order_by_offset_limit);
-        exit;
 
         return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }

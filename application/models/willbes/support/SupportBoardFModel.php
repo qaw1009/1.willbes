@@ -127,7 +127,7 @@ class SupportBoardFModel extends BaseSupportFModel
         // slow query 개선
         $from = "
             FROM {$this->_table['board_2']}
-            INNER JOIN {$this->_table['site']} AS s ON s.SiteGroupCode = b.SiteGroupCode
+            INNER JOIN {$this->_table['site']} AS s ON s.SiteCode = '{$site_code}' AND s.SiteGroupCode = b.SiteGroupCode
         ";
 
         if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {

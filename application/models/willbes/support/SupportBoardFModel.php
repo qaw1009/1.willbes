@@ -314,7 +314,7 @@ class SupportBoardFModel extends BaseSupportFModel
         // slow query 개선
         $from = "
             FROM {$this->_table['board_find']}
-            INNER JOIN {$this->_table['site']} AS s ON s.SiteGroupCode = b.SiteGroupCode
+            INNER JOIN {$this->_table['site']} AS s ON s.SiteCode = '{$site_code}' AND s.SiteGroupCode = b.SiteGroupCode
             LEFT JOIN lms_product AS p ON b.ProdCode = p.ProdCode
         ";
 
@@ -335,6 +335,9 @@ class SupportBoardFModel extends BaseSupportFModel
 
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        echo '<pre>';
+        print_r('select '.$column .$from .$where . $order_by_offset_limit);
+        exit;
 
         return $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit)->row_array();
     }

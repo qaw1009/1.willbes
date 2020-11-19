@@ -178,7 +178,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1924_04.jpg"  alt="전국모의고사 이벤트" usemap="#Map1924z" border="0"/>
             <map name="Map1924z">
                 <area shape="rect" coords="303,1337,690,1397"href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
-                <area shape="rect" coords="420,951,701,1028" href="#" />
+                <area shape="rect" coords="420,951,701,1028" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
             </map>           
 		</div>
 

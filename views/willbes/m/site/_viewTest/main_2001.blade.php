@@ -24,13 +24,9 @@
         <div class="mSubTit NSK-Black mt40 tx-left">경찰 개편 시험 대비 <span class="tx-blue">전문교수진</span></div>
         <div class="fullImg pl20 pr20">
             <ul>
-                @for($i=1; $i<=3; $i++)
-                    @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
-                        <li class="@if($i < 3) mb10 @endif">
-                            {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
-                        </li>
-                    @endif
-                @endfor
+                <li class="mb10">{!! banner('M_메인_전문교수진1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
+                <li class="mb10">{!! banner('M_메인_전문교수진2', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
+                <li>{!! banner('M_메인_전문교수진3', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
             </ul>
         </div>
 

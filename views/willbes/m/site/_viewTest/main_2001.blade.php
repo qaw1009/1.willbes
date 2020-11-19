@@ -14,12 +14,6 @@
 
         {!! banner('M_메인서브1', 'MainSlider c_both mt20', $__cfg['SiteCode'], '0') !!}
 
-        {{-- 경찰 캐스트 --}}
-        <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
-        <div class="cast">
-            {!! banner('M_메인_cast', 'swiper-container-lec', $__cfg['SiteCode'], '0') !!}
-        </div>
-
         {{-- 전문교수진 --}}
         <div class="mSubTit NSK-Black mt40 tx-left">경찰 개편 시험 대비 <span class="tx-blue">전문교수진</span></div>
         <div class="fullImg pl20 pr20">
@@ -28,6 +22,12 @@
                 <li class="mb10">{!! banner('M_메인_전문교수진2', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
                 <li>{!! banner('M_메인_전문교수진3', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>
             </ul>
+        </div>
+
+        {{-- 경찰 캐스트 --}}
+        <div class="mSubTit NSK-Black mt40 tx-left">윌비스 <span class="tx-blue">경찰 케스트</span></div>
+        <div class="cast">
+            {!! banner('M_메인_cast', 'swiper-container-lec', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{-- 베스트 강좌 --}}

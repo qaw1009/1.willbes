@@ -13,17 +13,15 @@
         <div class="ActIndex MyInfo widthAutoFull">
             <div class="widthAuto p_re">
                 <div class="Content p_re">
-                    {{--
-                    @if(empty(sess_data('mem_hanlimid')) == false)
+                    @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
                     <div class="oldMypage" id="oldMypage">
                         <img src="https://static.willbes.net/public/images/promotion/sub/mypage_popup_200615.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
                         <map name="oldMypage" id="oldMypage">
-                            <area shape="rect" coords="85,243,196,269" href="javascript:popupOpen('{{front_url('/classroom/home/gotoHanlim/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
+                            <area shape="rect" coords="85,243,196,269" href="javascript:popupOpen('{{front_url('/classroom/home/gotoSsam/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
                             <area shape="rect" coords="251,3,274,27" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
                         </map>
                     </div>
                     @endif
-                    --}}
                     <div class="will-Tit NG">나의 <span class="tx-light-blue">학습</span>/혜택 <span class="tx-light-blue">정보</span></div>
                     <div class="MyLecInfoBox NG">
                         <ul>

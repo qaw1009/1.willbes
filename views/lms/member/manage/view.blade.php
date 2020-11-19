@@ -59,7 +59,10 @@
                     <td>
                         {{ $data['MemId'] }}
                         @if(empty($data['HanlimID']) === false)
-                            <br>( 이관아이디 : {{$data['HanlimID']}} )
+                            <br>( 한림이관 : {{$data['HanlimID']}} )
+                        @endif
+                        @if(empty($data['ssamID']) === false)
+                            <br>( 임용이관 : {{$data['ssamID']}} )
                         @endif
                     </td>
                     <td>{{ $data['CertName'] }}</td>

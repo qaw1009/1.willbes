@@ -88,9 +88,11 @@
         }
         .b-close {
             position: absolute;
-            right: 10px;
-            top: 50px;
-            padding: 5px;
+            right: 0;
+            top: 0;
+            padding:7px 10px;
+            font-size:20px;
+            background:#000; color:#fff;
             display: inline-block;
             cursor: pointer;
         }
@@ -248,31 +250,31 @@
         
         <!--레이어팝업-->
         <div id="popup1" class="Pstyle">
-            <span class="b-close">X</span>
+            <span class="b-close NSK-Black">X</span>
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri01.jpg" class="off" alt="" />    
             </div> 
         </div>    
         <div id="popup2" class="Pstyle">
-            <span class="b-close">X</span>
+            <span class="b-close NSK-Black">X</span>
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri02.jpg" class="off" alt="" />    
             </div> 
         </div>    
         <div id="popup3" class="Pstyle">
-            <span class="b-close">X</span>
+            <span class="b-close NSK-Black">X</span>
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri03.jpg" class="off" alt="" />    
             </div> 
         </div>  
         <div id="popup5" class="Pstyle">
-            <span class="b-close">X</span>
+            <span class="b-close NSK-Black">X</span>
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri01_c.jpg" class="off" alt="" />    
             </div> 
         </div> 
         <div id="popup6" class="Pstyle">
-            <span class="b-close">X</span>
+            <span class="b-close NSK-Black">X</span>
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri02_c.jpg" class="off" alt="" />    
             </div> 

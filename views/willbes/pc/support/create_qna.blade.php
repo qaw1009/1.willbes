@@ -74,7 +74,7 @@
                             <td class="w-radio tx-left pl30" colspan="3">
                                 <ul>
                                     @if ($arr_base['public_type'] === true)
-                                        <li id="public_type_y"><input type="radio" id="is_public_y" name="is_public" class="goods_chk" value="Y" @if($data['IsPublic']=='N')checked="checked"@endif><label>공개</label></li>
+                                        <li id="public_type_y"><input type="radio" id="is_public_y" name="is_public" class="goods_chk" value="Y" @if($data['IsPublic']=='Y')checked="checked"@endif><label>공개</label></li>
                                         <li><input type="radio" id="is_public_n" name="is_public" class="goods_chk" value="N" @if($method == 'POST' || $data['IsPublic']=='N')checked="checked"@endif><label>비공개</label></li>
                                     @else
                                         <li><input type="radio" name="is_public" class="goods_chk" value="N" checked="checked"><label>비공개</label></li>

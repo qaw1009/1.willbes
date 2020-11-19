@@ -270,6 +270,8 @@ class SupportQna extends BaseSupport
             }
 
             $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+
+            $arr_base['public_type'] = ($data['SiteCode'] == '2017' || $data['SiteCode'] == '2018') ? false : true;
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [

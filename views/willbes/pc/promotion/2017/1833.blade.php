@@ -29,10 +29,17 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamjkm_top.jpg" alt="국어 이원근" usemap="#Mappty01" border="0" />
                 <map name="Mappty01" id="Mappty01">
-                    <area shape="rect" coords="4,819,358,918" href="#none" alt="기출해설특강" />
-                    <area shape="rect" coords="399,819,580,917" href="#none" alt="기출해설자료" />
-                    <area shape="rect" coords="660,819,1058,916" href="#none" alt="설명회보기" />
-                    <area shape="rect" coords="1097,819,1275,920" href="#none" alt="설명회자료" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="4,819,358,918" href="#none" alt="기출해설특강" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="399,819,580,917" alt="기출해설자료" />
+                            @else
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="660,819,1058,916" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="1097,819,1275,920" alt="설명회자료" />
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

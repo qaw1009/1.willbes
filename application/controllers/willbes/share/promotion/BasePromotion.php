@@ -82,11 +82,8 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
-        foreach ($arr_base['promotion_otherinfo_data'] as $key => $val){
-            if(empty($val['OrderNum']) === false){
-                $arr_base['promotion_otherinfo_data_group'][$val['OrderNum']][] = $val;
-            }
-        }
+        $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
+        $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
 
         // 프로모션 라이브송출 조회
         $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);
@@ -625,6 +622,40 @@ class BasePromotion extends \app\controllers\FrontController
             return $this->json_error('이벤트를 신청한뒤 이용 가능한 서비스입니다.');
         }
         return $this->json_result(true);
+    }
+
+    /**
+     * 이벤트 상세설정 조회
+     * @param array $otherinfo_data
+     * @param null $option (group: 그룹핑, professor: 교수정보)
+     * @return mixed
+     */
+    private function _getPromotionOtherinfoData($otherinfo_data = [], $option = null)
+    {
+        $data = [];
+
+        foreach ($otherinfo_data as $key => $val){
+            if($option == 'professor'){
+                $data[$key]['download_url'] = "#none";
+                if(empty($val['FileFullPath']) === false){
+                    $data[$key]['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$val['PromotionCode']);
+                }
+
+                if(empty($val['wHD']) === false){
+                    $data[$key]['player_sample'] = "javascript:fnPlayerSample('" . $val['OtherData1'] . "','" . $val['wUnitIdx'] . "','WD');";
+                }else{
+                    $data[$key]['player_sample'] = "javascript:alert('준비중입니다.')";
+                }
+            }
+
+            if($option == 'group'){
+                if(empty($val['OrderNum']) === false){
+                    $data[$val['OrderNum']][] = $val;
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**

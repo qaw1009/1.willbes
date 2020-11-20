@@ -28,8 +28,15 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09//200130_ssamjss_top.jpg" alt="정컴교육론 정순선" usemap="#Maplij01" border="0" />
                 <map name="Maplij01" id="Maplij01">
-                    <area shape="rect" coords="365,812,771,911" href="#none" alt="설명회보기" />
-                    <area shape="rect" coords="804,812,991,913" href="#none" alt="설명회자료다운" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="365,812,771,911" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="804,812,991,913" alt="설명회자료다운" />
+                            @else
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

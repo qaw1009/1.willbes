@@ -34,24 +34,14 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsam32_top.jpg" alt="국어 송원영" usemap="#Mapswy01" border="0" />
                 <map name="Mapswy01" id="Mapswy01">
-                    @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                        @foreach($arr_base['promotion_otherinfo_data'] as $key => $row)
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
                             @if($key == 0)
-                                @if(empty($row['wHD']) === false)
-                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="5,815,381,918" href="#none" alt="기출해설특강영상" />
-                                @endif
-
-                                @if(empty($row['FileFullPath']) === false)
-                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="417,811,613,921" alt="기출특강 자료" />
-                                @endif
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="5,815,381,918" href="#none" alt="기출해설특강영상" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="417,811,613,921" alt="기출특강 자료" />
                             @else
-                                @if(empty($row['wHD']) === false)
-                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="676,816,1057,918" href="#none" alt="설명회영상" />
-                                @endif
-
-                                @if(empty($row['FileFullPath']) === false)
-                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="1094,811,1282,917" alt="설명회자료" />
-                                @endif
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="676,816,1057,918" href="#none" alt="설명회영상" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="1094,811,1282,917" alt="설명회자료" />
                             @endif
                         @endforeach
                     @endif

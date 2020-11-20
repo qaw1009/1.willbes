@@ -35,9 +35,16 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsam33_top.jpg" alt="국어 이원근" usemap="#Mapkys01" border="0" />
                 <map name="Mapkys01" id="Mapkys01">
-                  <area shape="rect" coords="89,819,461,919" href="javascript:openPrsnt('kys1');" alt="합격사례발표회" />
-                  <area shape="rect" coords="592,820,967,918" href="javascript:openPrsnt('kys2');" alt="설명회" />
-                  <area shape="rect" coords="1010,814,1192,916" href="javascript:openFileCenter('기출적중/2020/전공영어 김유석.pdf');" alt="설명회자료" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="89,819,461,919" href="#none" alt="합격사례발표회" />
+                            @else
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="592,820,967,918" href="#none" alt="설명회" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="1010,814,1192,916" alt="설명회자료" />
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

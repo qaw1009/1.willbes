@@ -202,7 +202,7 @@
                 </ul>
             </div>
             <div id="tab01s" class="pb100"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab1_con.jpg">                
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1053_tab1_con.jpg">                
                 <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
             </div>                                        
             <div id="tab02s" class="pb100">

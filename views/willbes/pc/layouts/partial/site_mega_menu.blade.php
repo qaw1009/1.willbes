@@ -138,8 +138,7 @@
                         <span>[경영학]</span>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50763/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99&search_order=course&tab=open_lecture&series=')}}">고강유</a>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50549/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99')}}">전수환</a>
-                    </li>
-                    <li>&nbsp;</li>
+                    </li>                    
                 </ul>
             </div>
 
@@ -241,6 +240,10 @@
                         <span>[사회]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
                     </li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
+                    <li>&nbsp;</li>
                 </ul>
             </div>
 
@@ -325,13 +328,17 @@
                         <span>[토양학]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50429/?subject_idx=1243&subject_name=%ED%86%A0%EC%96%91%ED%95%99')}}">장사원</a>
                         <span>[가축사양학]</span>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2115&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99')}}">윤용범</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2115&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99')}}">윤용범</a> 
                         <span>[가축육종학]</span>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2116&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99')}}">윤용범</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51150?subject_idx=2116&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99')}}">윤용범</a>                       
+                    </li>
+                    <li>                        
                         <span>[기계일반]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/51148?subject_idx=1216&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98')}}">윤황현</a>
                         <span>[기계설계]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/51148?subject_idx=1217&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84')}}">윤황현</a>
+                    </li>
+                    <li>
                         <span>[조경학]</span>
                         <a href="{{front_url('/professor/show/cate/3052/prof-idx/51153?subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
                         <span>[조경계획 및 설계/생태계관리]</span>

@@ -29,8 +29,15 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09//200130_wsamDiana_top.jpg" alt="음악 다이애나" usemap="#Maplij01" border="0" />
                 <map name="Maplij01" id="Maplij01">
-                    <area shape="rect" coords="312,818,718,917" href="#none" alt="설명회보기" />
-                    <area shape="rect" coords="755,813,942,914" href="#none" alt="설명회자료다운" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="312,818,718,917" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="755,813,942,914" alt="설명회자료다운" />
+                            @else
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

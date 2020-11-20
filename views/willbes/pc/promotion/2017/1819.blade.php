@@ -30,8 +30,15 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsam22_top.jpg" alt="국어 이원근" usemap="#Maplwg01" border="0" />
                 <map name="Maplwg01" id="Maplwg01">
-                    <area shape="rect" coords="766,814,952,917" href="#none" alt="설명회자료" />
-                    <area shape="rect" coords="328,817,728,918" href="#none" alt="설명회영상" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="328,817,728,918" href="#none" alt="설명회영상" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="766,814,952,917" alt="설명회자료" />
+                            @else
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

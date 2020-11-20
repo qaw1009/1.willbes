@@ -21,6 +21,8 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/09//191212_wsamkbc_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09//200130_wsamkbc_02_bg.jpg) no-repeat center top; height:1069px}
         .evt02 iframe {margin-top:300px}
+
+        .willbes-Layer-ReplyBox { top: 2300px}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -29,17 +31,24 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09//200130_wsamkbc_top.jpg" alt="도덕윤리 김병찬" usemap="#Mapmjs01" border="0" />
                 <map name="Mapmjs01" id="Mapmjs01">
-                    <area shape="rect" coords="2,830,388,927" href="#none" alt="기출해설특강" />
-                    <area shape="rect" coords="423,823,607,924" href="#none" alt="강의자료다운받기" />
-                    <area shape="rect" coords="666,826,1059,930" href="#none" alt="설명회보기" />
-                    <area shape="rect" coords="1099,824,1281,924" href="#none" alt="설명회자료받기" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="2,830,388,927" href="#none" alt="기출해설특강" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="423,823,607,924" alt="강의자료다운받기" />
+                            @else
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="666,826,1059,930" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="1099,824,1281,924" alt="설명회자료받기" />
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 
             <div class="evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09//191212_wsamkbc_01.jpg" usemap="#Mapmjs02" border="0">
                 <map name="Mapmjs02" class="review_btn" id="wsamkbc">
-                    <area shape="rect" coords="385,1498,901,1587" href="#none" alt="합격수기확인" />
+                    <area shape="rect" coords="385,1498,901,1587" href="#none" onclick="go_study_comment_popup();" alt="합격수기확인" />
                 </map>
             </div>
 
@@ -49,4 +58,6 @@
         </div>
     </div>
     <!-- End Container -->
+
+    @include('willbes.pc.promotion.ssam.study_comment')
 @stop

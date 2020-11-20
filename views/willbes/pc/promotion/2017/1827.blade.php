@@ -21,6 +21,8 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/09/200130_wsamyhj_01_bg.jpg) no-repeat center top;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09/200130_wsamyhj_02_bg.jpg) no-repeat center top; height:1069px}
         .evt02 iframe {margin-top:300px}
+
+        .willbes-Layer-ReplyBox { top: 2200px}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -29,15 +31,22 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamyhj_top.jpg" alt="전공영어 공훈" usemap="#Mapkcw01" border="0" />
                 <map name="Mapkcw01" id="Mapkcw01">
-                    <area shape="rect" coords="322,828,708,925" href="#none" alt="설명회보기" />
-                    <area shape="rect" coords="750,826,934,929" href="#none" alt="설명회자료다운" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="322,828,708,925" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="750,826,934,929" alt="설명회자료다운" />
+                            @else
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 
             <div class="evt01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsamyhj_01.jpg" usemap="#Mapkcw02" border="0">
                 <map name="Mapkcw02" class="review_btn" id="wsamyhj">
-                    <area shape="rect" coords="425,1352,865,1428" href="#none" alt="합격수기확인" />
+                    <area shape="rect" coords="425,1352,865,1428" href="#none" onclick="go_study_comment_popup();" alt="합격수기확인" />
                 </map>
             </div>
 
@@ -47,4 +56,6 @@
         </div>
     </div>
     <!-- End Container -->
+
+    @include('willbes.pc.promotion.ssam.study_comment')
 @stop

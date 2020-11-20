@@ -28,9 +28,7 @@
         .newTopDday ul {width:1120px; margin:0 auto}
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
-        .newTopDday ul li .color1 {color:#2525F5;vertical-align:baseline;}
-        .newTopDday ul li .color2 {color:#2525F5;vertical-align:baseline;}
-        .newTopDday ul li .color3 {color:#25BAF0;vertical-align:baseline;}
+        .newTopDday ul li .color {color:#BF146E;vertical-align:baseline;}
         .newTopDday ul li img {width:50px}
         .newTopDday ul li:first-child {line-height:none; padding-right:10px; padding-top:10px; width:28%;line-height:30px;}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
@@ -46,6 +44,14 @@
         .evt02 {background:#2B3D53;}
         .evt03 {background:#2B3D53;}
         .evt04 {background:#2B3D53;}
+
+        .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:17px}
+		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px;margin-left:-25px;}
+		.evtInfoBox .infoTit {font-size:20px;}
+		.evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox ul li {list-style:decimal;}
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">
@@ -58,7 +64,7 @@
             <div>
                 <ul>
                     <li>
-                    <span class="color1">WILL</span>BES <span class="color2">WIN</span>TER <span class="color3">SCHOOL</span><br>접수마감까지
+                    <span class="color">WILL</span>BES <span class="color">WIN</span>TER <span class="color">SCHOOL</span><br>접수마감까지
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -106,6 +112,20 @@
         <div class="evtCtnsBox evt04" id="winter_school">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1920_04.jpg" title="">
         </div>
+
+        <div class="evtCtnsBox evtInfo NGR">
+			<div class="evtInfoBox">
+				<h4 class="NGEB">WILLBES WINTER SCHOOL 유의사항</h4>
+                <ul>
+					<li>해당 이벤트는 윌비스 신광은경찰 사이트에 가입된 회원만 신청 가능합니다.</li>
+                    <li>WILLBES WINTER SCHOOL 모집기간은 20년 12월27일 일요일까지 입니다.</li>
+                    <li>양식 외의 다른 파일로 신청 접수하거나, 확인할 수 없을 경우엔 선발에서 제외됩니다.<br>(온라인 관리반은 20년 경찰공무원 필기시험 성적표 첨부 필수)</li>
+                    <li>미션이 진행되며 발생하는 후기 및 관련 자료, 미션사항은 모두 윌비스 신광은경찰에 소유권이 있으며, 불법 유포를 금합니다.<br>또한 진행된 미션에 대한 모든 콘텐츠는 윌비스 신광은경찰의 홍보용으로 사용 될 수 있습니다.</li>
+                    <li>우수 서포터즈 및 체험단은 미션 수행, 성실성 등 내부 기준을 통해 선발합니다.</li>
+                    <li>유의사항을 읽지 않고 발생된 상황은 책임지지 않습니다.</li>
+				</ul>
+			</div>
+		</div>
 
     </div>
     <!-- End Container -->

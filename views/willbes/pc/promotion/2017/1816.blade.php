@@ -36,20 +36,13 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsammjs_top.jpg" alt="유아 민정선" usemap="#Mapmjs01" border="0" />
                 <map name="Mapmjs01" id="Mapmjs01">
-                    @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                        @foreach($arr_base['promotion_otherinfo_data'] as $key => $row)
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
                             @if($key == 0)
-                                @if(empty($row['wHD']) === false)
-                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="65,819,445,915" href="#none" alt="기출해설A형" />
-                                @endif
-
-                                @if(empty($row['FileFullPath']) === false)
-                                    <area shape="rect" href="{{ site_url('/promotion/downloadOtherFile?file_idx='.$row['EpoIdx'].'&event_idx='.$row['PromotionCode']) }}" coords="486,818,668,917" alt="답안자료" />
-                                @endif
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}"  coords="65,819,445,915" href="#none" alt="기출해설A형" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="486,818,668,917" alt="답안자료" />
                             @else
-                                @if(empty($row['wHD']) === false)
-                                    <area shape="rect" onclick="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','WD');" coords="844,818,1220,916" href="#none" alt="기출해설B형" />
-                                @endif
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="844,818,1220,916" href="#none" alt="기출해설B형" />
                             @endif
                         @endforeach
                     @endif

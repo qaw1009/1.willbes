@@ -28,10 +28,17 @@
             <div class="evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/200130_wsam14_top.jpg" alt="교육학 이인재" usemap="#Maplij01" border="0" />
                 <map name="Maplij01" id="Maplij01">
-                  <area shape="rect" coords="3,814,371,912" href="#none" alt="적중증거자료영상보기" />
-                  <area shape="rect" coords="410,814,593,913" href="#none" alt="증거자료다운받기" />
-                  <area shape="rect" coords="687,814,1057,916" href="#none" alt="설명회보기" />
-                  <area shape="rect" coords="1100,813,1278,916" href="#none" alt="설명회자료다운" />
+                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
+                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
+                            @if($key == 0)
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="3,814,371,912" href="#none" alt="적중증거자료영상보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="410,814,593,913" alt="증거자료다운받기" />
+                            @else
+                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="687,814,1057,916" href="#none" alt="설명회보기" />
+                                <area shape="rect" href="{{ $row['download_url'] }}" coords="1100,813,1278,916" alt="설명회자료다운" />
+                            @endif
+                        @endforeach
+                    @endif
                 </map>
             </div>
 

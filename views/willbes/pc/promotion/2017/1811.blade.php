@@ -54,9 +54,9 @@
                     <col width="25%"/>
                     <col width=""/>
 
-                    @if(empty($arr_base['promotion_otherinfo_data_group']) === false)
+                    @if(empty($arr_base['promotion_otherinfo_group']) === false)
                         @php $num = 0; @endphp
-                        @foreach($arr_base['promotion_otherinfo_data_group'] as $group => $arr)
+                        @foreach($arr_base['promotion_otherinfo_group'] as $group => $arr)
                             @foreach($arr as $row)
                                 <tr>
                                     @if($num != $group)

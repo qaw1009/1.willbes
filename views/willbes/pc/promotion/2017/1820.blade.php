@@ -33,7 +33,7 @@
                 <map name="Mapmjs01" id="Mapmjs01">
                     @if(empty($arr_base['promotion_otherinfo_professor']) === false)
                         @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
-                            @if($key == 0)
+                            @if($loop->index == 1)
                                 <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="3,819,385,923" href="#none" alt="기출해설특강" />
                                 <area shape="rect" href="{{ $row['download_url'] }}" coords="417,811,610,919" alt="강의자료다운받기" />
                             @else

@@ -636,15 +636,16 @@ class BasePromotion extends \app\controllers\FrontController
 
         foreach ($otherinfo_data as $key => $val){
             if($option == 'professor'){
-                $data[$key]['download_url'] = "#none";
                 if(empty($val['FileFullPath']) === false){
-                    $data[$key]['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$val['PromotionCode']);
+                    $data[$val['EpoIdx']]['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$val['PromotionCode']);
+                }else{
+                    $data[$val['EpoIdx']]['download_url'] = "#none";
                 }
 
                 if(empty($val['wHD']) === false){
-                    $data[$key]['player_sample'] = "javascript:fnPlayerSample('" . $val['OtherData1'] . "','" . $val['wUnitIdx'] . "','WD');";
+                    $data[$val['EpoIdx']]['player_sample'] = "javascript:fnPlayerSample('" . $val['OtherData1'] . "','" . $val['wUnitIdx'] . "','WD');";
                 }else{
-                    $data[$key]['player_sample'] = "javascript:alert('준비중입니다.')";
+                    $data[$val['EpoIdx']]['player_sample'] = "javascript:alert('준비중입니다.')";
                 }
             }
 

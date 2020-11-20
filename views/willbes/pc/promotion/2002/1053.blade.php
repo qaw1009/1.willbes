@@ -4,15 +4,10 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -208,7 +203,7 @@
             </div>
             <div id="tab01s" class="pb100"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab1_con.jpg">                
-                <div><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
+                <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
             </div>                                        
             <div id="tab02s" class="pb100">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />

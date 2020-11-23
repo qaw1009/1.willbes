@@ -843,6 +843,7 @@
                         <strong>직렬</strong>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614001')}}">일반행정직</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614002')}}">교육행정직</a>
+                        <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614011')}}">검찰사무직</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614003')}}">출입국관리직</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614004')}}">선거행정직</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=&series_ccd=614005')}}">사회복지직</a>
@@ -860,6 +861,8 @@
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1109')}}">한국사</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1111')}}">행정법</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
+                        <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1117')}}">형사소송법</a>
+                        <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1116')}}">형법</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
                         <a href="{{front_url('/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1133')}}">사회</a>
                     </li>
@@ -903,6 +906,8 @@
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1112')}}">행정학</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1114')}}">헌법</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1115')}}">경제학</a>
+                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1117')}}">형사소송법</a>
+                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1116')}}">형법</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
@@ -1022,7 +1027,10 @@
                         <a href="{{front_url('/promotion/index/cate/3028/code/1068#tab2')}}">7급농업직</a>
                         <a href="{{front_url('/promotion/index/cate/3028/code/1068#tab3')}}">농촌지도사</a>
                         <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1129&series_ccd=614025')}}">보건직</a> 
-                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614014')}}">토목직</a>                                  
+                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=&series_ccd=614014')}}">토목직</a> 
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&series_ccd=614044')}}">축산직</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&series_ccd=614020')}}">기계직</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=&series_ccd=614045')}}">조경직</a>                                 
                     </li>
                     <li>
                         <strong>패키지</strong>
@@ -1059,7 +1067,12 @@
                         <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1214')}}">응용역학</a>
                         <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1215')}}">토목설계</a>
                         <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1216')}}">기계일반</a>
-                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1217')}}">기계설계</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=1217')}}">기계설계</a><br>
+                        <strong>&nbsp;</strong>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=2116')}}">가축육종학</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=2115')}}">가축사양학</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=2117')}}">조경학</a>
+                        <a href="{{front_url('/lecture/index/cate/3028/pattern/only?search_order=regist&subject_idx=2119')}}">조경계획/조경설계 및 생태계관리</a>
                     </li>
                     <li>
                         <strong>과정</strong>

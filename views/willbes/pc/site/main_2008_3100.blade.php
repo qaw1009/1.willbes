@@ -281,7 +281,7 @@
             <div class="widthAuto">
                 <ul id="goMenu" class="goMenu" >
                     <li><a href="{{ front_url('/OffVisitLecture') }}">학원수강신청<span>|</span></a></li>
-                    <li><a href="{{ front_url('/lecture/index/cate/'.$__cfg['CateCode'].'/pattern/free?search_order=course&course_idx=1236') }}">학원보강<span>|</span></a></li>
+                    <li><a href="{{ front_url('/lecture/index/cate/'.$__cfg['CateCode'].'/pattern/free?search_order=course&course_idx=1372') }}">학원보강<span>|</span></a></li>
                     <li><a href="{{ front_url('/pass/offinfo/boardInfo/index/82?s_cate_code='.$data['mapping_cate_data']['CateCode']) }}">강의실배정표<span>|</span></a></li>
                     <li><a href="{{ front_url('/pass/offinfo/boardInfo/index/80?s_cate_code='.$data['mapping_cate_data']['CateCode']) }}">강의시간표<span>|</span></a></li>
                     <li><a href="{{ front_url('/lecture/index/cate/'.$__cfg['CateCode'].'/pattern/free') }}">무료특강<span>|</span></a></li>

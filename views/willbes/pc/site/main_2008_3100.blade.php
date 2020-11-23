@@ -127,7 +127,7 @@
 
         <div class="Section Section4_hl mt50">
             <div class="widthAuto">
-                <div class="will-acadTit">윌비스 <span class="tx-color">경찰간부</span> 학원</div>
+                <div class="will-acadTit bdb-black2 mb30">윌비스 <span class="tx-color">경찰간부</span> 학원</div>
                 {{--학원 오시는 길--}}
                 @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
             </div>

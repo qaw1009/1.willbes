@@ -18,7 +18,8 @@
             <div class="willbes-Txt-Tit NG">· 수강연장 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
             - 수강연장된 강의는 일시정지를 신청할 수 없습니다.<br/>
             - 강좌별로 <span class="tx-red">최대3회까지</span>만 가능하며, <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span><br/>
-            - 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.
+            - 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.<br/>
+            - 단, 사이트(과정)별 수강정책에 특이사항이 있을 경우 예외 정책을 반영할 수 있습니다.<br/>
         </div>
 
         <div class="willbes-List-Tit NG">수강연장 신청</div>

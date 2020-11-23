@@ -19,7 +19,7 @@
                 <li><a href="#leclist1" class="on">단강좌 <span>{{count($lecList)}}</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist2">패키지강좌 <span>{{count($pkgList)}}</span></a></li>
                 {{--
-                }}<li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist3">무료강좌 <span>6</span></a><span class="row-line">|</span></li>
                 <li><a href="#leclist4">관리자부여 <span>6</span></a></li>
                 --}}
             </ul>
@@ -31,7 +31,8 @@
                         - 수강종료된 강좌는 재수강 신청만 가능합니다.(수강연장 신청 불가)<br>
                         - 재수강시, 정상가에서 20% 할인된 가격으로 수강할 수 있습니다.<br>
                         - 폐강된 강좌는 재수강신청이 제공되지 않습니다.<br>
-                        - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.
+                        - 수강기간은 개별 강좌에 따라 다르게 책정되며 수정 될 수 있습니다.<br>
+                        - 단, 사이트(과정)별 수강정책에 특이사항이 있을 경우 예외 정책을 반영할 수 있습니다.<br>
                     </div>
                     <form name="searchFrm" id="searchFrm" action="{{front_app_url('/classroom/on/list/end/', 'www')}}">
                     <div class="paymentDate mt-zero pt20">

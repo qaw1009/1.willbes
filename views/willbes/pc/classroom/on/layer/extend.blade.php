@@ -11,6 +11,7 @@
             <li class="txt">- 수강연장된 강의는 일시정지를 신청할 수 없습니다.</li>
             <li class="txt">- 강좌별로 <span class="tx-red">최대{{$lec['ExtenNum']}}회까지</span>만 가능하며, <span class="tx-red">연장일수는 본래 수강기간의 50%를 초과할 수 없습니다.</span></li>
             <li class="txt">- 수강연장은 종료일까지만 신청이 가능하며 5일단위(5일, 10일, 15일)로 신청할 수 있습니다.</li>
+            <li class="txt">- 단, 사이트(과정)별 수강정책에 특이사항이 있을 경우 예외 정책을 반영할 수 있습니다.</li>
         </ul>
         <div class="PASSZONE-Lec-Section">
             <div class="Search-Result strong mt40 mb15 tx-gray">· 수강연장 신청</div>

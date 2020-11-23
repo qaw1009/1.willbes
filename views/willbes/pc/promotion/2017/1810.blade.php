@@ -103,8 +103,7 @@
                     <div class="btnset">
                         <p>국어 송원영</p>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung_leeWongeun01.pdf')."&fname=".urlencode('전국모의고사-국어 문제-송원영 이원근(A 세트).pdf')) }}" class="btn01">문제자료</a>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung01.pdf')."&fname=".urlencode('전국모고_A형 해설(송원영).pdf')) }}" class="btn02">해설자료(A)</a>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung02.pdf')."&fname=".urlencode('전국모고_B형 해설(송원영).pdf')) }}" class="btn02">해설자료(B)</a>
+                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung01.pdf')."&fname=".urlencode('전국모고_A형&B형 해설(송원영).pdf')) }}" class="btn02">해설자료</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung03.pdf')."&fname=".urlencode('2019Real실전모고성적(국어).pdf')) }}" class="btn04">석차1</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'songWonyoung04.pdf')."&fname=".urlencode('2019Real실전모고성적(국어과_교육학만).pdf')) }}" class="btn04">석차2</a>
                     </div>
@@ -113,8 +112,7 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_yhj.jpg" alt="전공생물 강치욱/양혜정"/>
                     <div class="btnset">
                         <p>전공생물 강치욱/양혜정</p>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kangChiwook_yangHyejeong01.pdf')."&fname=".urlencode('전국모의고사-생물 문제-강치욱 양혜정(A 세트).pdf')) }}" class="btn01">문제자료(A)</a>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kangChiwook_yangHyejeong02.pdf')."&fname=".urlencode('전국모의고사-생물 문제-강치욱 양혜정(B 세트).pdf')) }}" class="btn01">문제자료(B)</a>
+                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kangChiwook_yangHyejeong01.pdf')."&fname=".urlencode('전국모의고사-생물 문제-강치욱 양혜정(A&B 세트).pdf')) }}" class="btn01">문제자료</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kangChiwook_yangHyejeong03.pdf')."&fname=".urlencode('실전모의고사 생물 2,3교시-정답 및 해설.pdf')) }}" class="btn02">해설자료</a>
                     </div>
                 </li>
@@ -132,8 +130,7 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_kbc.jpg" alt="도덕윤리 김병찬"/>
                     <div class="btnset">
                         <p>도덕윤리 김병찬</p>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kimByungchan01.pdf')."&fname=".urlencode('전국모의고사-도덕윤리 문제-김병찬(A 세트).pdf')) }}" class="btn01">문제자료(A)</a>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kimByungchan02.pdf')."&fname=".urlencode('전국모의고사-도덕윤리 문제-김병찬(B 세트).pdf')) }}" class="btn01">문제자료(B)</a>
+                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kimByungchan01.pdf')."&fname=".urlencode('전국모의고사-도덕윤리 문제-김병찬(A&B 세트).pdf')) }}" class="btn01">문제자료</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kimByungchan03.pdf')."&fname=".urlencode('실전모의고사 도덕윤리 2,3교시-정답 및 해설.pdf')) }}" class="btn02">해설자료</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'kimByungchan04.pdf')."&fname=".urlencode('2019 6월30일 실전 모의고사_채점(도덕윤리 및 교육학).pdf')) }}" class="btn04">석차</a>
                     </div>
@@ -183,8 +180,7 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_jkm.jpg" alt="중국어 정경미"/>
                     <div class="btnset">
                         <p>중국어 정경미</p>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'JeongKyungmi01.pdf')."&fname=".urlencode('전국모의고사-중국어 문제-정경미(A세트).pdf')) }}" class="btn01">문제자료(A)</a>
-                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'JeongKyungmi02.pdf')."&fname=".urlencode('전국모의고사-중국어 문제-정경미(B세트).pdf')) }}" class="btn01">문제자료(B)</a>
+                        <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'JeongKyungmi01.pdf')."&fname=".urlencode('전국모의고사-중국어 문제-정경미(A&B세트).pdf')) }}" class="btn01">문제자료</a>
                         <a href="{{ site_url($download_url . "?path=".urlencode($download_path . 'JeongKyungmi03.pdf')."&fname=".urlencode('2020학년도공개 모의고사 문제 풀이.pdf')) }}" class="btn02">해설자료</a>
                         <a href="javascript:fnPlayerSample('174889','1258431','HD');" class="btn03">해설1</a>
                         <a href="javascript:fnPlayerSample('175312','1258432','HD');" class="btn03">해설2</a>

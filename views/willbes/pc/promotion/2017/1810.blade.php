@@ -58,10 +58,10 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_lij.jpg" alt="교육학 이인재"/>
                     <div class="btnset">
                         <p>교육학 이인재 (국어, 영어, 중국어)</p>
-                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae01.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재'))}}" class="btn01">문제자료</a>
-                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae02.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재_해설'))}}" class="btn02">해설자료</a>
+                        <a href="{{site_url("/promotion/downloadHardCodingFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae01.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재'))}}" class="btn01">문제자료</a>
+                        <a href="{{site_url("/promotion/downloadHardCodingFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae02.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재_해설'))}}" class="btn02">해설자료</a>
                         <a href="javascript:fnPlayerSample('174862','1256176','HD');" class="btn03">해설강의</a>
-                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae03.pdf')."&fname=".urlencode('2019 실전모의고사 점수(교육학_국어_영어_중국어)'))}}" class="btn04">석차</a>
+                        <a href="{{site_url("/promotion/downloadHardCodingFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae03.pdf')."&fname=".urlencode('2019 실전모의고사 점수(교육학_국어_영어_중국어)'))}}" class="btn04">석차</a>
                     </div>
                 </li>
                 <li>

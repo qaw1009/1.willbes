@@ -58,10 +58,10 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_lij.jpg" alt="교육학 이인재"/>
                     <div class="btnset">
                         <p>교육학 이인재 (국어, 영어, 중국어)</p>
-                        <a href="#none" class="btn01">문제자료</a>
-                        <a href="#none" class="btn02">해설자료</a>
-                        <a href="#none" class="btn03">해설강의</a>
-                        <a href="#none" class="btn04">석차</a>
+                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae01.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재'))}}" class="btn01">문제자료</a>
+                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae02.pdf')."&fname=".urlencode('전국모의고사-교육학 문제-이인재_해설'))}}" class="btn02">해설자료</a>
+                        <a href="javascript:fnPlayerSample('174862','1256176','HD');" class="btn03">해설강의</a>
+                        <a href="{{site_url("/promotion/downloadOtherFile?path=".urlencode('/public/uploads/willbes/promotion/2020/1123/leeInjae03.pdf')."&fname=".urlencode('2019 실전모의고사 점수(교육학_국어_영어_중국어)'))}}" class="btn04">석차</a>
                     </div>
                 </li>
                 <li>
@@ -70,7 +70,7 @@
                         <p>전공수학 김철홍</p>
                         <a href="#none" class="btn01">문제자료</a>
                         <a href="#none" class="btn02">해설자료</a>
-                        <a href="#none" class="btn03">해설강의</a>
+                        <a href="javascript:fnPlayerSample('174878','1258430','HD');" class="btn03">해설강의</a>
                         <a href="#none" class="btn04">석차</a>
                     </div>
                 </li>
@@ -80,7 +80,7 @@
                         <p>교육학 홍의일 (수학,생물, 윤리, 체육, 정컴)</p>
                         <a href="#none" class="btn01">문제자료</a>
                         <a href="#none" class="btn02">해설자료</a>
-                        <a href="#none" class="btn03">해설강의</a>
+                        <a href="javascript:fnPlayerSample('174864','1256182','HD');" class="btn03">해설강의</a>
                         <a href="#none" class="btn04">석차</a>
                     </div>
                 </li>
@@ -90,7 +90,7 @@
                         <p>전공수학 박태영</p>
                         <a href="#none" class="btn01">문제자료</a>
                         <a href="#none" class="btn02">해설자료</a>
-                        <a href="#none" class="btn03">해설강의</a>
+                        <a href="javascript:fnPlayerSample('175303','1258830','HD');" class="btn03">해설강의</a>
                         <a href="#none" class="btn04">석차</a>
                     </div>
                 </li>
@@ -135,7 +135,7 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_kys.jpg" alt="일반영어 김유석"/>
                     <div class="btnset">
                         <p>일반영어 김유석</p>
-                        <a href="#none" target="_blank" class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
+                        <a href="{{ front_url('/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984&subject_name=전공영어&tab=before_lecture') }}" target="_blank" class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
                     </div>
                 </li>
                 <li>
@@ -151,7 +151,7 @@
                     <img src="http://file1.willbes.net/datassam/event/190703_02_kym.jpg" alt="일반영어 김영문"/>
                     <div class="btnset">
                         <p>일반영어 김영문</p>
-                        <a href="#none" target="_blank"  class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
+                        <a href="{{ front_url('/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984&subject_name=전공영어&tab=before_lecture') }}" target="_blank"  class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
                     </div>
                 </li>
                 <li>
@@ -160,15 +160,15 @@
                         <p>정보컴퓨터 송광진</p>
                         <a href="#none" class="btn01">문제자료</a>
                         <a href="#none" class="btn02">해설자료</a>
-                        <a href="#none" class="btn03">해설강의</a>
-                        <a href="javascript:openFileCenter('2019/모의고사 석차/Real모고-정보컴퓨터 석차.pdf');" class="btn04">석차</a>
+                        <a href="javascript:fnPlayerSample('174888','1258831','HD');" class="btn03">해설강의</a>
+                        <a href="#none" class="btn04">석차</a>
                     </div>
                 </li>
                 <li>
                     <img src="http://file1.willbes.net/datassam/event/190703_02_gh.jpg" alt="영교론 공훈"/>
                     <div class="btnset">
                         <p>영교론 공훈</p>
-                        <a href="#none" target="_blank" class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
+                        <a href="{{ front_url('/professor/show/prof-idx/51083?cate_code=3137&subject_idx=1984&subject_name=전공영어&tab=before_lecture') }}" target="_blank" class="btn02 btn02_1">해설강의/해설자료 바로가기</a>
                     </div>
                 </li>
                 

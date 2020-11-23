@@ -82,8 +82,10 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
-        $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
-        $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
+        if(config_app('SiteGroupCode') == '1011'){ // 임용
+            $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
+            $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
+        }
 
         // 프로모션 라이브송출 조회
         $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);
@@ -410,6 +412,21 @@ class BasePromotion extends \app\controllers\FrontController
 
         $file_path = $file_data['FilePath'];
         $file_name = $file_data['RealFileName'];
+        public_download($file_path, $file_name);
+
+        show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');
+    }
+
+    /**
+     * 하드코딩 파일 다운로드
+     */
+    public function downloadHardCodingFile()
+    {
+        $event_idx = $this->_reqG('event_idx');
+        $this->downloadFModel->saveLogEvent($event_idx);
+
+        $file_path = urldecode($this->_reqG('path',false));
+        $file_name = urldecode($this->_reqG('fname',false));
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.', 'close', '');

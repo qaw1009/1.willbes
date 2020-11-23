@@ -1,202 +1,242 @@
-/*********************************************     Main Container : Cop_sea     *********************************************/
-/* Main Container : Cop_sea */
-.cop2008 .tx-color {
+/* top bar banner */
+.cop2008v2 .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.cop2008v2 .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.cop2008v2 .topBanner p img {width:100%}
+
+.cop2008v2 .menu-List .Tit {color: #9177d4;}
+.cop2008v2 .Menu .menu-List li.job > a {
     color: #9177d4;
+    display:inline-block;
+    vertical-align: middle;
 }
-.cop2008 .menu-List li.cop2008 > a {
-    background: url("../../img/willbes/sub/icon_acad.gif") no-repeat left center;
+.cop2008v2 .menu-List li.cop2008 > a {
+    background: url("../../public/img/willbes/sub/icon_acad.gif") no-repeat left center;
     font-size: 16px;
     color: #0c5dc0;
-    padding-left: 26px; 
+    padding-left: 26px;
     display:inline-block;
     vertical-align: middle;
 }
 
-.cop2008 .menu-List li.cop2008 > a .arrow-Btn {
-    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat left center;
+.cop2008v2 .menu-List li.cop2008 > a .arrow-Btn {
+    background: url("../../public/img/willbes/sub/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
     height: 8px;
     margin: 15px 5px 0;
 }
-.Section2 { background: #f7f7f7}
 
-/* Main Container : Tit : Cop_sea */
-.cop2008 .smallTit {
-    border-top:1px solid #b8b8b8;
-    font-size: 22px;
-    color:#363636;    
-    position: relative;
-}
-.cop2008 .smallTit p {
-    position: absolute;
-    top:-15px;
-    text-align: center;
-    width: 100%;
-}
-.cop2008 .smallTit span {
-    padding:0 20px;
-    font-weight: 600;
-    background: #fff;
-}
-.cop2008 .smallTit strong {
-    color:#9177d4;
-}
-
-.cop2008 .smallTit a {
-    position: absolute;
-    width: 23px;
-    top:-12px;
-    right:0;    
-    z-index: 1;
-}
-.cop2008 .smallTit2 span {
-    background:#f7f7f7;
-}
-.cop2008 .Section .will-big-Tit .cop-color {
+/*********************************************     Main Container     *********************************************/
+.cop2008v2 .Depth .depth:last-child strong {
     color: #9177d4;
 }
 
-/**/
-.cop2008 .Section .bnrSec01 li {
-    display: inline;
-    float: left;   
-    width: 756px;
-    height: 292px;  
-    overflow: hidden; 
+/* Main Container : MainVisual */
+.cop2008v2 .MainVisual {
+    position: relative;
+    width: 1120px;
+    margin:40px auto 0;
+    height: 400px;
 }
-.cop2008 .Section .bnrSec01 li:last-child {    
-    width: 360px;
-    float: right;  
-}
-.cop2008 .Section .bnrSec01:after {
-    content:'';
+.cop2008v2 .MainVisual:after {
+    content: "";
     display: block;
-    clear:both;
+    clear: both;
+}
+.cop2008v2 .VisualBox {
+    width:725px;
+    height: 400px;
+    overflow: hidden;
+    float:left;
+}
+.cop2008v2 .VisualBox img {
+    height: 400px;
 }
 
-/* Main Container : Prof */
-.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager {
+.cop2008v2 .VisualBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    width: 50px;
+    z-index: 90;
+}
+.cop2008v2 .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:60px;
+    bottom: 22px;
+    text-align: left;
+    z-index: 90;
+}
+.cop2008v2 .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+
+.cop2008v2 .VisualsubBox {
+    width: 384px;
+    padding:10px;
+    float:right;
+    background: #ccc;
+}
+
+.cop2008v2 .VisualsubBox .bSlider:nth-child(2) {
+    margin-top:3px;
+    width: 364px;
+    height: 248px !important;
+    overflow: hidden;
+}
+
+.cop2008v2 .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 90;
+}
+.cop2008v2 .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
     width: auto;
-    height: 30px;
     left:60px;
-    top: -10px;    
+    bottom: 20px;
     text-align: right;
-    z-index: 110;
+    z-index: 90;
 }
-.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #ccc !important;
+.cop2008v2 .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
     width: 8px;
     height: 8px;
     margin: 0 2px;
 }
-.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a.active,
-.cop2008 .Section .ProfCopBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+
+.cop2008v2 .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+
+.cop2008v2 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 20px;
+    bottom: 10px;
+    text-align: left;
+}
+.cop2008v2 .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.cop2008v2 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop2008v2 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2008v2 .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #9177d4 !important;
 }
 
-.cop2008 .Section .ProfCopBox > li {
-    position: relative;
-    display: inline;
-    float: left;
-    width: 139px;
-    height: 280px;
-    margin-left: 1px;
-}
-.cop2008 .Section .ProfCopBox > li:first-child {
-    /*margin-left: 25px;*/
-}
-.cop2008 .Section .ProfCopBox .ProfBtns {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;    
-    z-index: 100;
-}
-.cop2008 .Section .ProfCopBox .ProfBtns li {    
-    display: inline;
-    float: left;
-    width: 50%;   
-    height: 40px;
-    height: 40px;          
-}
-.cop2008 .Section .ProfCopBox .ProfBtns li a {    
-    display: block;
-    line-height: 40px;    
-    color:#fff;
-    text-align: center;
-    margin-left: 1px; 
-    background: rgba(0,0,0,.5); 
-}
-.cop2008 .Section .ProfCopBox .ProfBtns li:first-child a {
-    margin-left: 0;
-}
-.cop2008 .Section .ProfCopBox .ProfBtns li a:hover {
-    background:#9177d4;
-    font-size: 14px;
-}
-.cop2008 .Section .ProfCopBox .ProfBtns li span {
-    padding-left:10px;
-}
-.cop2008 .Section .ProfCopBox .ProfBtns:after,
-.cop2008 .Section .ProfCopBox:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
 /**/
-.cop2008 .Section .bnrSec02 li {
-    display: inline;
-    float: left;
-    margin-right: 8px;    
-}
-.cop2008 .Section .bnrSec02 li:last-child {
-    margin:0
-}
-.cop2008 .Section .bnrSec01:after {
-    content:'';
-    display: block;
-    clear:both;
+.cop2008v2 .will-listTit {
+    margin-bottom: 15px;
+    color:#181818;
 }
 
-/* Main Container : SpecialLecBox */
-.cop2008 .Section .SpecialLecBox .infoTit .btn .btn-sbj a {
+
+/* Main Container : Notice : noticeTabs */
+.cop2008v2 .noticeTabs {
+    width: 345px !important;
+    float:left;
+    margin-right:40px;
+}
+.cop2008v2 .tabBox.noticeBox {
+    margin-top:-30px;
+}
+.cop2008v2 .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.cop2008v2 .tabBox.noticeBox .List-Table {
+    width: 100%;
+}
+.cop2008v2 .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.cop2008v2 .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.cop2008v2 .tabBox.noticeBox .List-Table li a span {
+    background: #9177d4;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.cop2008v2 .willbesNumber ul li {
+    margin-left: 30px;
+    vertical-align: top;
+}
+
+.cop2008v2 .goMenu {background:#9177d4}
+
+.cop2008v2 .tx-color {
+    color: #9177d4 !important;
+}
+.cop2008v2 .tx-color2 {
+    color: #c3aefa !important;
+}
+.cop2008v2 .Section1 {
+    background: #f8f8f8;
+    padding:90px 0;
+}
+.cop2008v2 .copyTit {
+    font-size: 33px;
+    color: #363636;
+    line-height: 1.2;
+    text-align: center;
+}
+.cop2008v2 .copyTit strong {
+    vertical-align: baseline;
+    color:#000;
+}
+.cop2008v2 .copyTit span {
+    color:#9177d4;
+    vertical-align: baseline;
+}
+.cop2008v2 .List-Table li a img,
+.cop2008v2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop2008v2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2008v2 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.cop2008v2 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop2008v2 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop2008v2 .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #9177d4;
 }
-.cop2008 .Section .SpecialLecBox .infoList .List-Table li a span {
-    float: left;
-    width: 130px;
-    color: #9177d4;
-    text-align: center;
+.cop2008v2 .Section .SpecialBox li {
+    display: inline; float: left;
+    width: 216px; height: 143px;
+    margin-right:10px; margin-bottom:10px;
+}
+.cop2008v2 .Section .SpecialBox li:nth-child(5),
+.cop2008v2 .Section .SpecialBox li:last-child {
+    margin-right:0;
+}
+.cop2008v2 .Section .SpecialBox ul:after {
+    content:''; display: block; clear:both;List-Table
 }
 
-/* Main Container : Notice : Cop_sea */
-.cop2008 .Section .nNoticeBox .infoBox .infoTit {
-    color: #9177d4;
-    line-height: 20px;
-    font-weight: 600;
+.cop2008v2 .Section4_hl .noticeTabs {
+    width: 100% !important;
 }
-
-.cop2008 .willbesNumber ul li {
-    margin-left: 100px;
-}
-.cop2008 .willbesNumber ul li:first-child {
-    margin-left: 50px;
-}
-
 
 /* Main Container : QuickMenu : Cop */
-.cop2008 .MainQuickMenu {
+.cop2008v2 .MainQuickMenu {
     position: fixed;
     top: 110px;
     right: 20px;
     width: 160px;
-    height: auto;    
+    height: auto;
     z-index: 100;
     overflow: hidden;
 }
-.cop2008 .QuickSlider {width:160px; height: 100px; overflow:hidden;}
-.cop2008 .QuickDdayBox {width:160px !important;}
+.cop2008v2 .QuickSlider {width:160px; height: 100px; overflow:hidden;}
+.cop2008v2 .QuickDdayBox {width:160px !important;}

@@ -14,8 +14,8 @@
     background: #f7f7f7;
 }
 
-.cop_acad .barfull {position:relative; height: 110px; width: 100%; max-width: 2000px; overflow: hidden; text-align: center;}
-.cop_acad .barfull div {position:absolute; width:2000px; height: 110px; left:50%; margin-left:-1000px; z-index: 1;}
+.cop_acad .barfull {position:relative; height: 110px; width: 100%; max-width: 2000px; overflow: hidden; }
+.cop_acad .barfull div {position:absolute; width:2000px; height: 110px; left:50%; margin-left:-1000px; z-index: 1;text-align: center;}
 
 /* Main Container : MainVisual : Cop Acad */
 .cop_acad .bSlider .bx-wrapper .bx-pager {

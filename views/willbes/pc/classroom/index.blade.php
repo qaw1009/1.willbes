@@ -17,8 +17,8 @@
                     <div class="oldMypage" id="oldMypage">
                         <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
                         <map name="oldMypage" id="oldMypage">
-                            <area shape="rect" coords="85,243,196,269" href="javascript:popupOpen('{{front_url('/classroom/home/gotoSsam/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
-                            <area shape="rect" coords="251,3,274,27" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
+                            <area shape="rect" coords="30,190,210,220" href="javascript:popupOpen('{{front_url('/classroom/home/gotoSsam/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
+                            <area shape="rect" coords="210,0,234,25" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
                         </map>
                     </div>
                     @endif

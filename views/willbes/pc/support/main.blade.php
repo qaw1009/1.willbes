@@ -68,7 +68,7 @@
                                 <ul>
                                     <li>
                                         <span class="tit">온라인 문의</span>
-                                        <span class="num tx-light-blue">1544-5006</span>
+                                        <span class="num tx-light-blue">{{ $__cfg['CsTel'] or '1544-5006' }}</span>
                                         <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="row-line">|</span>
                                     </li>
@@ -84,7 +84,7 @@
                                         <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="tit">운영시간</span>
                                         <span class="time tx-light-blue">
-                                            평일 9:00 ~ 18:00
+                                            평일 {{ $__cfg['CsTime'] or '9:00 ~ 18:00' }}
                                             주말/공휴일 휴무<br>
                                             (점심시간 12시~13시)
                                         </span>

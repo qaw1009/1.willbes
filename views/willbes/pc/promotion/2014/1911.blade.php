@@ -50,7 +50,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="sky" >
-            <a href="#reserve"><img src="https://static.willbes.net/public/images/promotion/2020/11/1911_sky.png" alt=""></a>
+            <a href="#Map1911A"><img src="https://static.willbes.net/public/images/promotion/2020/11/1911_sky.png" alt=""></a>
         </div>                       
 
 		<div class="evtCtnsBox evtTop">
@@ -66,7 +66,7 @@
             <div>
                 <iframe src="https://www.youtube.com/embed/CMDjINjDQyg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02_1.jpg" alt="" usemap="#Map1911A" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02_1.jpg" alt="" usemap="#Map1911A" border="0" id="Map1911A" >
             <map name="Map1911A">
                 <area shape="rect" coords="78,592,311,686" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
                 <area shape="rect" coords="410,592,639,684" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">

@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .wb_cts01 {position:relative; height:1090px; overflow:hidden; background:#ce7598 url("https://static.willbes.net/public/images/promotion/2020/11/1922_top_bg.jpg") center top  no-repeat;height:1025px;}
+        .wb_cts01 {position:relative; height:1090px; overflow:hidden; background:url("https://static.willbes.net/public/images/promotion/2020/11/1922_top_bg.jpg") center top  no-repeat;height:1025px;}
         /* txt_motion */
 		.wb_cts01 span {position:absolute; left:50%; width:1120px; text-align:center; margin-left:-560px; z-index: 1;}
 		.wb_cts01 span.txt1 {top:75px; animation:slidein1 0.3s ease-in; -webkit-animation:slidein1 0.5s ease-in;}

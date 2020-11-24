@@ -102,8 +102,8 @@
     </div>
 
     <div class="Section barfull">
-        <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/2002_1120x110.jpg" alt="배너명"></a>
+        <div>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2002/banner_20201123184201.png" alt="배너명"></a>
         </div>
     </div>
 

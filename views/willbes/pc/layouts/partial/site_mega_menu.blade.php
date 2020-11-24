@@ -340,9 +340,9 @@
                     </li>
                     <li>
                         <span>[조경학]</span>
-                        <a href="{{front_url('/professor/show/cate/3052/prof-idx/51153?subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51152?subject_idx=2117&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
                         <span>[조경계획 및 설계/생태계관리]</span>
-                        <a href="{{front_url('/professor/show/cate/3052/prof-idx/51153?subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99')}}">이윤주</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51152?subject_idx=2119&subject_name=%EC%A1%B0%EA%B2%BD%EA%B3%84%ED%9A%8D%20%EB%B0%8F%20%EC%84%A4%EA%B3%84')}}">이윤주</a>
                     </li>
                 </ul>
             </div>

@@ -143,14 +143,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">        
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/10/1676_02_november.jpg" /></li>
-                    {{--<li><img src="https://static.willbes.net/public/images/promotion/2020/10/1676_02_december.jpg" /></li>--}}
-                </ul>
-         
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1676_02_november.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1676_02_december.jpg" /></li>
+                </ul>         
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>
-            
-            </div>        
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>            
+            </div> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1675_02_bottom.jpg">       
         </div>           
 
         {{-- 출석체크 --}}

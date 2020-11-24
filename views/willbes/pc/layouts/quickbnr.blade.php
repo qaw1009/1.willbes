@@ -32,7 +32,7 @@
             if (ret.ret_data) {
                 var html = '';
                 $.each(methods, function (k, method) {
-                    if(ret.ret_data[method]){
+                    if(ret.ret_data[method].length > 0){
                         switch (method){
                             case "dday":
                                 html = getDdayHtml(ret.ret_data.dday);

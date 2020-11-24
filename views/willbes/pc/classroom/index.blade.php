@@ -15,7 +15,7 @@
                 <div class="Content p_re">
                     @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
                     <div class="oldMypage" id="oldMypage">
-                        <img src="https://static.willbes.net/public/images/promotion/sub/mypage_popup_200615.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
+                        <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
                         <map name="oldMypage" id="oldMypage">
                             <area shape="rect" coords="85,243,196,269" href="javascript:popupOpen('{{front_url('/classroom/home/gotoSsam/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');" alt="이전 내강의실 보기"/>
                             <area shape="rect" coords="251,3,274,27" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
@@ -98,7 +98,7 @@
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
                 <div class="Quick-Bnr mt20">
                     <a href="javascript:popupOpen('{{front_url('/classroom/home/gotoSsam/')}}', 'mylec', 1100, 800, null, null, 'yes', 'no');">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기">
+                        <img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_quick.gif" alt="이전 내강의실 보기">
                     </a>
                 </div>
                 @endif

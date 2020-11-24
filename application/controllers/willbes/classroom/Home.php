@@ -206,6 +206,8 @@ class Home extends \app\controllers\FrontController
      */
     public function gotoSsam()
     {
+        $param = $this->_req('param');
+
         $this->load->library('Crypto', ['license' => 'willbes^ssam^20201201']);
 
         $data = $this->memberFModel->getMember(false, [
@@ -219,7 +221,8 @@ class Home extends \app\controllers\FrontController
         $enc_data = $this->crypto->encrypt($plaintext);
 
         return $this->load->view('classroom/gotossam', [
-            'enc_data' => $enc_data
+            'enc_data' => $enc_data,
+            'param' => $param
         ]);
     }
 

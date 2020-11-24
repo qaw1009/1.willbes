@@ -15,7 +15,7 @@
     .evtContent span {vertical-align:auto}
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
     /*****************************************************************/ 
-    .skybanner {position:fixed; top:225px; width:170px; right:10px;z-index:1;}
+    .skybanner {position:fixed; top:225px; width:150px; right:10px;z-index:1;}
     .skybanner a {display:block; margin-bottom:10px}
 
     .evt00 {background:#0a0a0a}
@@ -25,10 +25,9 @@
 
     .evt01 {background:#fff; padding-bottom:150px}   
     /**/
-    .roll_starwars {width:1120px; margin:-150px auto 0; 
-        transform-origin: 50% 100%; transform:perspective(45px) rotateX(4deg);}
-    .wr_starwars {width:100%; height:400px;}
-    .wr_starwars .slide {font-size:30px; color:#000; text-align:center; height:100px; line-height:100px}
+    .roll_starwars {width:1120px; margin:-200px auto 0; height:500px; 
+        transform-origin: 50% 100%; transform:perspective(45px) rotateX(4deg); overflow:hidden}
+    .wr_starwars .slide {font-size:30px; color:#000; text-align:center; line-height:100px}
 
     .evt02 {background:#e7e7e8;}
     .slide_con {position:absolute; width:911px; left:50%; top:544px; margin-left:-455px; z-index:10}
@@ -76,11 +75,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_01.jpg" alt="이미 준비된 신광은 형사법">  
             <div class="roll_starwars NSK-Black">
                 <div class="wr_roll wr_starwars">
-                    <div class="slide">경찰대학 졸업 제 47회 사법고시 합격, 사법연수원 37기 수료 </div>
-                    <div class="slide">前) 형사반장, 조사반장, 폭력주임, 형사계장</div>
-                    <div class="slide">前) 경찰대학, 중앙경찰학교, 경찰수사연수원, 해양경찰청 외래교수</div>
-                    <div class="slide">前) 청와대 22경호대(대통령경호대) 서울기동단 등 초빙교수</div>
-                    <div class="slide">前) 인천지방검찰청 검사(시보)</div>
+                    <div class="slide">
+                        경찰대학 졸업 제 47회 사법고시 합격, 사법연수원 37기 수료<br>
+                        前) 형사반장, 조사반장, 폭력주임, 형사계장<br>
+                        前) 경찰대학, 중앙경찰학교, 경찰수사연수원, 해양경찰청 외래교수<br>
+                        前) 청와대 22경호대(대통령경호대) 서울기동단 등 초빙교수<br>
+                        前) 인천지방검찰청 검사(시보)<br>
+                    </div>                                                         
                 </div>
             </div>     
         </div>
@@ -190,9 +191,9 @@
             //Count the number of li elements
             var bx_num01 = $(".roll_starwars").length;
             var ticker01 = $('.wr_starwars').bxSlider({
-                minSlides: 4,
-                maxSlides: 4,
-                slideMargin: 10,
+                minSlides: 1,
+                maxSlides: 1,
+                slideMargin: 0,
                 ticker: true,
                 mode: 'vertical',
                 speed:10000*bx_num01

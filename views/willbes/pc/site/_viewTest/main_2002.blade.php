@@ -16,7 +16,7 @@
         </div>
 
         <div class="Section barfull">
-            <div class="widthAuto">
+            <div>
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
             </div>
         </div>

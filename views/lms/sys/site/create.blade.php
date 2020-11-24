@@ -116,7 +116,6 @@
                         <p class="form-control-static"># 접속하는 도메인을 모두 입력해 주세요. (구분자 콤마(,))</p>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-2" for="">내비게이션 사용여부 <span class="required">*</span>
                     </label>
@@ -127,7 +126,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-2" for="pg_ccd">PG사 <span class="required">*</span>
                     </label>
@@ -237,7 +235,13 @@
                         <p class="form-control-static"># 0000-0000 형식일경우첫번째, 두번째자리에입력(세번째자리공란처리)</p>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="cs_time">고객센터 운영시간
+                    </label>
+                    <div class="col-md-5 item">
+                        <input type="text" id="cs_time" name="cs_time" class="form-control" title="고객센터 운영시간" value="{{ $data['CsTime'] }}">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="control-label col-md-2" for="site_mail_id">대표 이메일
                     </label>
@@ -251,7 +255,6 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-md-2" for="head_title">사이트 Title
                     </label>

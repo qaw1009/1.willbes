@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -23,9 +19,9 @@
         .sky {position:fixed;top:250px;right:50px;z-index:1;width:120px;}
         .sky a {display:block; margin-bottom:5px}
 
-        .evtTop {background:#D5BA6B url(https://static.willbes.net/public/images/promotion/2020/11/1911_top_bg.jpg) no-repeat center top}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/11/1911_top_bg.jpg) no-repeat center top}
 
-        .evt01 {background:#B7A092}     
+        .evt01 {background:#B7A092 url(https://static.willbes.net/public/images/promotion/2020/11/1911_01_bg.jpg) no-repeat center top}     
 
         .evt02 {background:#CABDB4}
 
@@ -48,11 +44,13 @@
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
         .evtFooter li {margin-left:20px; list-style-type: decimal;}
+
+        .evtCtnsBox iframe {width:720px; height:406px; margin:0 auto} 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="sky" >
-            <a href="#reserve"><img src="https://static.willbes.net/public/images/promotion/2020/11/1911_sky.png" alt=""></a>
+            <a href="#Map1911A"><img src="https://static.willbes.net/public/images/promotion/2020/11/1911_sky.png" alt=""></a>
         </div>                       
 
 		<div class="evtCtnsBox evtTop">
@@ -64,9 +62,14 @@
         </div> 
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02.jpg" alt="" usemap="#Map1911a" border="0" >
-            <map name="Map1911a" id="reserve">
-                <area shape="rect" coords="108,1197,613,1272" href="javascript:alert('Comimg Soon :)')" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02.jpg" alt="" >
+            <div>
+                <iframe src="https://www.youtube.com/embed/CMDjINjDQyg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02_1.jpg" alt="" usemap="#Map1911A" border="0" id="Map1911A" >
+            <map name="Map1911A">
+                <area shape="rect" coords="78,592,311,686" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
+                <area shape="rect" coords="410,592,639,684" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
             </map>
         </div> 
 
@@ -145,11 +148,33 @@
         <div class="evtCtnsBox evt07">
             <div class="evtFooter">
                 <h3 class="NSK-Black">이용 안내</h3>
-                <p>사전예약 혜택</p>
+                <p>#사전예약 혜택</p>
                 <ul>
-                    <li>사전예약 혜택은 00월 00일까지 결제완료일자에 한해서만 적용합니다.</li>
-                    <li>사전예약 혜택은 수강료 00% 할인입니다.</li>
-                    <li>수강기간 추가 혜택은 강의 시작(00월 00일) 이후 일괄적으로 적용 예정입니다.</li>
+                    <li>사전예약 혜택은 12월 7일까지 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>전예약 혜택은 강의료(키트 제외) 40% 할인입니다.</li>
+                    <li>강의 시작일은 12월 7일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>
+                </ul>
+                <p>#라탄 공예 키트 안내</p>
+                <ul>
+                    <li>키트구성 <br>
+                    : 라탄환심, 유리병, 타원판, 원판, 줄자, 등가위, 송곳, 분무기</li>
+                    <li>키트 배송일정<br>
+                    : 강사님이 직접 배송을 진행하고 있으므로, 결제일로부터 5~7일 기간 소요 될 수 있으니, 참고 부탁 드립니다.<br>
+                    - 키트 발송은 사전예약자에 한하여 12월 3일 이후부터 순차발송 진행 됩니다. </li>
+                    <li>키트 환불 절차 및 금액<br>
+                    : 키트에 대한 환불절차는 키트의 미배송 또는 반송이 확인된 이후 진행됩니다.<br>
+                    - 배송 시작 전 : 결제대금 전액<br>
+                    - 배송 시작 후 키트 수령일로부터 7일 경과 전 : 결제대금 전액<br>
+                    (단, 키트 반송에 소요되는 운송비를 공제)<br>
+                    - 키트 수령일로부터 7일 경과 후 : 환불 불가<br>
+                    (단순변심에 의한 키트반품은 왕복 택배비 6,000원입니다.) </li>
+                    <li>키트 환불 불가사유<br>
+                    - 회원의 책임 있는 사유에 따라 키트가 멸실 또는 훼손 등으로 재판매가 불가한 경우<br>
+                    - 회원의 사용 또는 시간경과, 일부 소비로 키트의 가치가 현저히 감소한 경우<br>
+                    - 시간이 지나 재판매가 곤란할 정도로 키트의 가치가 현저히 감소한 경우<br>
+                    - 복제가 가능한 키트의 포장을 훼손한 경우<br>
+                    - 회사가 키트의 청약철회 등의 제한에 관해 사전에 고지한 경우<br>
+                    - 그 밖에 거래의 안전 등 법령에 정하여진 사유가 있는 경우</li>
                 </ul>
                 <h3 class="NSK-Black">문의안내 : 1544-5006</h3>
             </div>    

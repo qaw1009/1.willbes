@@ -212,7 +212,7 @@ class SiteModel extends WB_Model
     {
         $column = '
             S.SiteCode, S.SiteGroupCode, S.SiteTypeCcd, S.SiteName, S.SiteNickName, S.SiteUrl, S.UseDomain, S.UseMail, S.PgCcd, S.PgMid, S.PgBookMid, S.PayMethodCcds, S.DeliveryCompCcd, S.DeliveryPrice, S.DeliveryAddPrice, S.DeliveryFreePrice
-                , S.Logo, S.Favicon, S.CsTel, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.MobileFooterInfo
+                , S.Logo, S.Favicon, S.CsTel, S.CsTime, S.HeadTitle, S.MetaKeyword, S.HeaderInfo, S.MetaDesc, S.FrontCss, S.FooterInfo, S.MobileFooterInfo
                 , S.CommPcScript, S.CommMobileScript, S.CommAppScript
                 , S.IsCampus, S.IsUse, S.IsFrontUse, S.IsNaviUse, S.RegDatm, S.RegAdminIdx, S.UpdDatm, S.UpdAdminIdx
                 , if(IsCampus = "Y", (
@@ -277,6 +277,7 @@ class SiteModel extends WB_Model
                 'DeliveryAddPrice' => element('delivery_add_price', $input),
                 'DeliveryFreePrice' => element('delivery_free_price', $input),
                 'CsTel' => $cs_tel,
+                'CsTime' => element('cs_time', $input),
                 'HeadTitle' => element('head_title', $input),
                 'MetaKeyword' => element('meta_keyword', $input),
                 'MetaDesc' => element('meta_desc', $input),
@@ -371,6 +372,7 @@ class SiteModel extends WB_Model
                 'DeliveryAddPrice' => element('delivery_add_price', $input),
                 'DeliveryFreePrice' => element('delivery_free_price', $input),
                 'CsTel' => $cs_tel,
+                'CsTime' => element('cs_time', $input),
                 'HeadTitle' => element('head_title', $input),
                 'MetaKeyword' => element('meta_keyword', $input),
                 'MetaDesc' => element('meta_desc', $input),

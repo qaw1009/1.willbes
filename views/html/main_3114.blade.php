@@ -48,23 +48,16 @@
         </h3>
     </div>
 
-    {{--
-    <div class="Section Section0">
-        <div class="widthAuto">
-            <a href="https://www.youtube.com/watch?v=sBGMUCaAq6k&feature=youtu.be" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/3114_fullx110.gif" alt="1억뷰 N잡"></a>
-        </div>
-    </div>
-    --}}
-        
+       
     <div class="Section1 mt20">        
         <div class="MainVisual NSK">            
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0710/banner_20200731110751.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0610/banner_20200731110838.jpg" alt="배너명"></a></div> 
-                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0807/banner_20200807181421.jpg" alt="배너명"></a></div>  
-                        <div><a href="#none"><img src="https://njob.willbes.net/public/uploads/willbes/banner/2020/0408/banner_20200731111203.jpg" alt="배너명"></a></div>                                                                     
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/banner_20200820161942.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/banner_20201020132506.jpg" alt="배너명"></a></div> 
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/banner_20201020132423.jpg" alt="배너명"></a></div>  
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2014/banner_20200820162715.jpg" alt="배너명"></a></div>                                                                     
                     </div>
                 </div>
             </div>
@@ -131,6 +124,226 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
                     </a>
                 </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 추천강좌
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                유통의 가장 강력한 무기, <strong class="tx-color">E-커머스</strong>
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                스마트폰 하나만 있으면 나도 사업가, <strong class="tx-color">인스타마켓</strong>
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                누구나 바로 시작할 수 있는, <strong class="tx-color">블로그</strong>
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                채널기획ㆍ운영ㆍ편집가이드, <strong class="tx-color">유튜브</strong>
+            </div>
+            <ul class="bestLec">
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section NSK mt70">
+        <div class="widthAuto">
+            <div class="will-listTi NSK-Black">
+                지식과 경험을 돈으로 바꾸는, <strong class="tx-color">커리어</strong>
+            </div>
+            <ul class="bestLec">
                 <li>
                     <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        

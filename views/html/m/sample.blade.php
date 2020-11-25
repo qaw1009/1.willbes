@@ -41,7 +41,7 @@
             <a href="{{ site_url('/home/html/m/main2_v2_309003') }}" target="_blank">메인-감정평가사</a>
             <a href="{{ site_url('/home/html/m/main2_v2_309004') }}" target="_blank">메인-변리사</a>
             <br><br>
-            <a href="{{ site_url('/home/html/m/main2014_v2') }}" target="_blank">메인-창업</a>
+            <a href="{{ site_url('/home/html/m/main_2014_v2') }}" target="_blank">메인-창업</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/main_2015') }}" target="_blank">메인-인천 고시학원</a>            
             <br><br>

@@ -84,7 +84,7 @@
                                             <dt><span><img src="{{ $row['ProfLecDetailImg'] }}" alt="{{ $row['ProfNickName'] }}"></span></dt>
                                             <dd>
                                                 <p>{{ $row['CourseName'] }}   {{ $loop->index % 3 }}</p>
-                                                <p class="NSK-Black"><a href="#none">{{ $row['ProdName'] }}</a></p>
+                                                <p class="NSK-Black"><a href="{{ front_url('/offLecture/show/cate/' . $row['CateCode'] . '/prod-code/' . $row['ProdCode']) }}">{{ $row['ProdName'] }}</a></p>
                                                 <p>{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}</p>
                                             </dd>
                                         </dl>

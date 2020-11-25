@@ -201,7 +201,7 @@ function slider(ele_id, type, pause_sec) {
             option = { auto: true, controls: false, pause: pasue_msec, touchEnabled: false, autoHover: true };
             break;
         case 'cSlider' :
-                option = { mode: 'fade', auto: true, autoControls: true, stopAutoOnClick: true, pager: true, touchEnabled: false, controls: false, autoHover: true, };
+                option = { mode: 'fade', auto: true, pause: pasue_msec, autoControls: true, stopAutoOnClick: true, pager: true, touchEnabled: false, controls: false, autoHover: true, };
             break;
         case 'nSlider' :
                 option = { auto: true, controls: true, pause: pasue_msec, pager: true, pagerType: 'short', moveSlides: 1, touchEnabled: false };

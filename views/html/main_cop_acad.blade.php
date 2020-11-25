@@ -149,8 +149,8 @@
                         <ul class="Maintab">
                             <li><a data-slide-index="0" href="javascript:void(0);" class="active">스파르타 관리반</a></li>
                             <li><a data-slide-index="1" href="javascript:void(0);" class="">통합생활 관리반</a></li>
-                            <li><a data-slide-index="2" href="javascript:void(0);" class="">11월 추천 강좌</a></li>
-                            <li><a data-slide-index="3" href="javascript:void(0);" class="">아침 특강</a></li>
+                            <li><a data-slide-index="2" href="javascript:void(0);" class="">11월 추천강좌</a></li>
+                            <li><a data-slide-index="3" href="javascript:void(0);" class="">12월 아침특강</a></li>
                             <li><a data-slide-index="4" href="javascript:void(0);" class="">전범위 모의고사</a></li>
                         </ul>
                     </div>

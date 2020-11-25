@@ -171,15 +171,16 @@
                 <tr>
                     <td class="combine-Tit">관심정보</td>
                     <td>
-                        <div class="p_re">
-                            <label for="a02" class="mr10"><input name="" type="radio" value="" id="a02"/> 신광은경찰</label>
+                        <div>
+                            <label for="a02" class="mr10"><input name="" type="radio" value="" id="a02"/> 경찰</label>
                             <label for="a03" class="mr10"><input name="" type="radio" value="" id="a03"/> 공무원</label>
                             <label for="a04" class="mr10"><input name="" type="radio" value="" id="a04"/> 고등고시</label>
                             <label for="a05" class="mr10"><input name="" type="radio" value="" id="a05"/> 자격증</label>
-                            <label for="a06" class="mr10"><input name="" type="radio" value="" id="a06"/> 경찰간부(간부후보생)</label>
+                            <label for="a06" class="mr10"><input name="" type="radio" value="" id="a06"/> 경찰간부</label>
                             <label for="a07" class="mr10"><input name="" type="radio" value="" id="a07"/> 취업</label>
-                            <label for="a08" class="mr10"><input name="" type="radio" value="" id="a08"/> 어학</label><br>
-                            <label for="a09" class="mr10"><input name="" type="radio" value="" id="a09"/> 창업</label>
+                            <label for="a08" class="mr10"><input name="" type="radio" value="" id="a08"/> 어학</label>
+                            <label for="a09" class="mr10"><input name="" type="radio" value="" id="a09"/> 창업/N잡</label>
+                            <label for="a10" class="mr10"><input name="" type="radio" value="" id="a10"/> 임용</label>
                         </div>
                     </td>
                 </tr>
@@ -358,6 +359,7 @@
                 <option selected="selected">선택안함</option>
                 <option value="공무원">공무원</option>
                 <option value="경찰">경찰</option>
+                <option value="임용">임용</option>
             </select>
         </div>
         <button type="submit" onclick="" class="mem-Btn h36 mt30 bg-blue bd-dark-blue">

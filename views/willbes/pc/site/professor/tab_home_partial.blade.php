@@ -195,7 +195,11 @@
     <div class="prof-banner02 bSlider c_both">
         <div class="slider">
             @foreach($data['ProfBnrData']['02'] as $bnr_num => $bnr_row)
-                <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @if($bnr_row['LinkType'] == 'script')
+                    <div><a href="#none" onclick="{!! str_replace("\"", "'", $bnr_row['LinkUrl']) !!}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @else
+                    <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @endif
             @endforeach
         </div>
     </div>
@@ -207,7 +211,11 @@
     <div class="sliderWillbesBnr cSliderTM mt40">
         <div class="sliderControlsTM">
             @foreach($data['ProfBnrData']['03'] as $bnr_num => $bnr_row)
-                <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @if($bnr_row['LinkType'] == 'script')
+                    <div><a href="#none" onclick="{!! str_replace("\"", "'", $bnr_row['LinkUrl']) !!}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @else
+                    <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                @endif
             @endforeach
         </div>
     </div>

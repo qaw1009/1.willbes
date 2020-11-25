@@ -542,8 +542,9 @@
                                     <select class="form-control col-md-1 mr-5 mb-10" id="link_type_01_{{$i}}" name="link_type_01_{{$i}}" title="이벤트 배너 링크방식{{$i}}">
                                         <option value="self" @if(array_get($data['Bnr'], '01.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
                                         <option value="blank" @if(array_get($data['Bnr'], '01.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                        <option value="script" @if(array_get($data['Bnr'], '01.' . $i . '.LinkType') == 'script') selected="selected" @endif>스크립트</option>
                                     </select>
-                                    <input type="text" id="link_url_01_{{$i}}" name="link_url_01_{{$i}}" value="{{ $data['Bnr']['01'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="이벤트 배너 링크 주소{{$i}}">
+                                    <input type="text" id="link_url_01_{{$i}}" name="link_url_01_{{$i}}" value="{{ $data['Bnr']['01'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5" title="이벤트 배너 링크 주소{{$i}}">
                                 </div>
                             </div>
                         @endfor
@@ -574,8 +575,9 @@
                                     <select class="form-control col-md-1 mr-5 mb-10" id="link_type_04_{{$i}}" name="link_type_04_{{$i}}" title="이벤트 배너 링크방식2 - {{$i}}">
                                         <option value="self" @if(array_get($data['Bnr'], '04.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
                                         <option value="blank" @if(array_get($data['Bnr'], '04.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                        <option value="script" @if(array_get($data['Bnr'], '04.' . $i . '.LinkType') == 'script') selected="selected" @endif>스크립트</option>
                                     </select>
-                                    <input type="text" id="link_url_04_{{$i}}" name="link_url_04_{{$i}}" value="{{ $data['Bnr']['04'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="이벤트 배너 링크 주소2 - {{$i}}">
+                                    <input type="text" id="link_url_04_{{$i}}" name="link_url_04_{{$i}}" value="{{ $data['Bnr']['04'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5" title="이벤트 배너 링크 주소2 - {{$i}}">
                                 </div>
                             </div>
                         @endfor
@@ -606,8 +608,9 @@
                                     <select class="form-control col-md-1 mr-5 mb-10" id="link_type_02_{{$i}}" name="link_type_02_{{$i}}" title="띠 배너 링크방식{{$i}}">
                                         <option value="self" @if(array_get($data['Bnr'], '02.' . $i . '.LinkType') == 'self') selected="selected" @endif>본창</option>
                                         <option value="blank" @if(array_get($data['Bnr'], '02.' . $i . '.LinkType') == 'blank') selected="selected" @endif>새창</option>
+                                        <option value="script" @if(array_get($data['Bnr'], '02.' . $i . '.LinkType') == 'script') selected="selected" @endif>스크립트</option>
                                     </select>
-                                    <input type="text" id="link_url_02_{{$i}}" name="link_url_02_{{$i}}" value="{{ $data['Bnr']['02'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5 optional" pattern="url" title="띠 배너 링크 주소{{$i}}">
+                                    <input type="text" id="link_url_02_{{$i}}" name="link_url_02_{{$i}}" value="{{ $data['Bnr']['02'][$i]['LinkUrl'] or '' }}" class="form-control col-md-5" title="띠 배너 링크 주소{{$i}}">
                                 </div>
                             </div>
                         @endfor

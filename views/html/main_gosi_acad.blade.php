@@ -393,16 +393,36 @@
         <div class="widthAuto">
             <ul class="bnSecTop">
                 <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a>
+                    <div class="bSlider acad">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a>
+                    <div class="bSlider acad">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a>
+                    <div class="bSlider acad">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a>
+                    <div class="bSlider acad">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_04.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2004/2004_bn_216x300_01.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
                 </li>
                 <li>
                     <div class="bSlider acad">

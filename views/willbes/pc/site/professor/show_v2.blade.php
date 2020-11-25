@@ -120,7 +120,11 @@
                         <li class="f_left bSlider">
                             <div class="{{ count($data['ProfBnrData']['01']) > 1 ? 'slider' : '' }}">
                                 @foreach($data['ProfBnrData']['01'] as $bnr_num => $bnr_row)
-                                    <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @if($bnr_row['LinkType'] == 'script')
+                                        <div><a href="#none" onclick="{!! str_replace("\"", "'", $bnr_row['LinkUrl']) !!}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @else
+                                        <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @endif
                                 @endforeach
                             </div>
                         </li>
@@ -130,7 +134,11 @@
                         <li class="f_right bSlider">
                             <div class="{{ count($data['ProfBnrData']['04']) > 1 ? 'slider' : '' }}">
                                 @foreach($data['ProfBnrData']['04'] as $bnr_num => $bnr_row)
-                                    <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @if($bnr_row['LinkType'] == 'script')
+                                        <div><a href="#none" onclick="{!! str_replace("\"", "'", $bnr_row['LinkUrl']) !!}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @else
+                                        <div><a href="{{ empty($bnr_row['LinkUrl']) === false ? $bnr_row['LinkUrl'] : '#none' }}" target="_{{ $bnr_row['LinkType'] }}"><img src="{{ $bnr_row['BnrImgPath'] . $bnr_row['BnrImgName'] }}" alt=""></a></div>
+                                    @endif
                                 @endforeach
                             </div>
                         </li>

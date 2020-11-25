@@ -403,6 +403,12 @@
                 var real_sale_price = $(this).find('input[name="prod_code[]"]:eq(0)').data('real-sale-price');
                 $regi_form.find('input[name="real_pay_price"]').val(real_sale_price);
                 $regi_form.find('input[name="real_pay_price"]').data('real-sale-price', real_sale_price);
+
+                // 단강좌일 경우 수강제공시간을 해당 상품의 수강기간으로 설정
+                var study_period = $(this).find('input[name="prod_code[]"]:eq(0)').data('study-period');
+                if (typeof study_period !== 'undefined' && study_period !== '') {
+                    $regi_form.find('input[name="lec_expire_day"]').val(study_period);
+                }
             });
 
             // 회차 검색

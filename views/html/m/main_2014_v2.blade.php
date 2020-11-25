@@ -18,14 +18,12 @@
     .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
     .evtCtnsBox .will-listTi > img {width:50px}
     .evtCtnsBox .will-listTi span {font-size: 16px; vertical-align: middle; color:#666; display:block} 
-    .evt02 {padding:20px;}  
-    .evt02 .bestLec {width:100%; margin:0 auto}
-    .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
-    .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5; }
-    .evt02 .bestLec li ul li {margin-bottom:10px; }
-    .evt02 .bestLec li ul li:first-child {font-size:14px}
-    .evt02 .bestLec li ul li span {vertical-align: bottom;}
-    .evt02 .bestLec li ul li:last-child a {display:inline-block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
+
+    .njob2 .evt02 {padding:20px 36px;}  
+    .njob2 .bannerSt01 {margin-right:-20px}
+    .njob2 .bannerSt01 li {display:inline; float:left; width:50%}
+    .njob2 .bannerSt01 li a {display:block; margin-right:20px}
+    .njob2 .bannerSt01:after {content:''; display:block; clear:both}
     
 
     .evt03 {padding:20px 20px 0 20px; text-align:left; background:#f7f7f7}
@@ -111,7 +109,7 @@
     .evt08 img {width:40px}
     .evt08 a {display: inline-block; margin:0 5px}
 
-    .swiper-button-next,
+    .swiper-button-next {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px;  background-size:50%}
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px;  background-size:50%}
 
     .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
@@ -130,19 +128,16 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {  
-        .evt02 .bestLec > li {display: inline ; float:left; width:46%; margin-right:4%}
-        .evt02 .bestLec > li:nth-of-type(even) {margin-right:0}
-        .evt02 .bestLec:after {content:""; display:block; clear:both} 
+
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) { 
-        .evt02 {padding:40px 60px;} 
         .evt03,
         .evt05,
         .evt06,
         .evt07 {padding:40px 60px 0 40px;}
-        .evt08 {margin:40px auto 60px}  
+        .evt08 {margin:40px auto 60px}  */
         .evtCtnsBox .will-listTi > img {width:64px}       
         .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}   
         .evtCtnsBox .will-listTi span {display:inline}             
@@ -162,8 +157,7 @@
 
     } 
  </style>   
-
-    <div id="Container" class="Container NGR c_both">
+    <div id="Container" class="Container njob2 NGR c_both">
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/m/3114_top.jpg" title="">
         </div>
@@ -171,10 +165,6 @@
         <div class="evtCtnsBox evt01">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn01.jpg" title=""></a>
         </div>
-
-        <div class="evtCtnsBox evt01">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn02.jpg" title=""></a>
-        </div>   
 
         <div class="evtCtnsBox evt04" id="evt04">
             <div class="MainBnrSlider swiper-container swiper-container-arrow">
@@ -190,79 +180,257 @@
             </div>
         </div> 
 
+        <div class="evtCtnsBox evt01">
+            <a href="{{ front_url('/promotion/index/cate/3114/code/1626') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn04.gif" title=""></a>
+        </div>
+
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
-
-            <ul class="bestLec">
+            <ul class="bannerSt01">
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1564" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_01.gif" alt="김정한 대표">                        
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_01.jpg" alt="배너명">                        
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1566" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_02.gif" alt="김경은 대표">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_02.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1565" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_03.gif" alt="황채영 대표">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_03.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1567" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_hot_272_04.gif" alt="정문진 대표">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_04.jpg" alt="배너명">
                     </a>
-                </li>                
+                </li> 
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_05.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_06.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_07.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_08.jpg" alt="배너명">
+                    </a>
+                </li>               
             </ul>
-        </div>  
-        
+        </div>        
         
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌</div>
-            <ul class="bestLec">
+            <ul class="bannerSt01">
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_05.jpg" alt="배너명">                        
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_06.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_07.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_08.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1665" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_01.gif" alt="이시한">                        
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_09.jpg" alt="배너명">                        
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1666" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_02.gif" alt="이승기">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_10.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1668" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_03.gif" alt="안혜빈">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_11.jpg" alt="배너명">
                     </a>
                 </li>
                 <li>
-                    <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1669" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/main/3114_new_272_04.gif" alt="이기용">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_12.jpg" alt="배너명">
                     </a>
                 </li>
             </ul>
         </div> 
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 추천강좌</div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_11.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_12.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_13.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_14.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black">유통의 가장 강력한 무기, <strong class="tx-color">E-커머스</strong></div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_07.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_08.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_13.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_14.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black">스마트폰 하나만 있으면 나도 사업가, <strong class="tx-color">인스타마켓</strong></div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_09.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_10.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_01.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_02.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black">누구나 바로 시작할 수 있는, <strong class="tx-color">블로그</strong></div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_11.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_12.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_04.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_05.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black">채널기획ㆍ운영ㆍ편집가이드, <strong class="tx-color">유튜브</strong></div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_13.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_14.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_01.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_02.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evtCtnsBox evt02">
+            <div class="will-listTi NSK-Black">지식과 경험을 돈으로 바꾸는, <strong class="tx-color">커리어</strong></div>
+            <ul class="bannerSt01">
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_04.jpg" alt="배너명">                        
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_05.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_07.jpg" alt="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion//m/2014/2014_bn_w314_11.jpg" alt="배너명">
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         <div class="evtCtnsBox evt01">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/3114_bn03.jpg" title=""></a>

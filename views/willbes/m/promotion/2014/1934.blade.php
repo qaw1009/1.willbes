@@ -1,55 +1,22 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <style type="text/css">
-        .evtContent {
-            position:relative;
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
-            color:#3a3a3a;
-        }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative; }
+        .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
+        .evtCtnsBox img {width:100%; max-width:720px;}
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/11/1934_top_bg.jpg) no-repeat center top; height:904px}
-        .evtTop .evtTilte {padding-top:240px; font-size:150px; font-family: 'Black Han Sans', sans-serif; color:#f9cf43;
-            text-shadow: 2px 2px 1px #eb452b, 
-            4px 4px 1px #efa032, 
-            6px 6px 1px #46b59b, 
-            8px 8px 1px #017e7f, 
-            10px 10px 1px #052939, 
-            12px 12px 1px #000, 
-            14px 14px 1px #000, 
-            16px 16px 1px #000, 
-            18px 18px 1px #000;
-            animation:upDown 1s infinite; -webkit-animation:upDown 1s infinite;
-        }
-        @@keyframes upDown{
-        from{color:#f9cf43}
-        50%{color:#fbeab3}
-        to{color:#f9cf43}
-        }
-        @@-webkit-keyframes upDown{
-        from{color:#f9cf43}
-        50%{color:#fbeab3}
-        to{color:#f9cf43}
-        }
 
-        .evt01 {background:#393a3e}
+        .evtCtnsBox ul {margin:50px 10px 100px}
+        .evtCtnsBox li {display:inline; float:left; width:50%; padding-bottom:10px;}        
+        .evtCtnsBox li a {display:block; text-align:center; margin:0 auto; margin:0 10px}
+        .evtCtnsBox li img {max-width:272px;}
+        .evtCtnsBox ul:after {content:''; display:block; clear:both}
 
-        .evt02 {width:1120px; margin:150px auto 140px}
-        .evt02 li {display:inline; float:left; width:25%;height:531px;padding-bottom:10px;}
-        .evt02 li a {display:block; text-align:center; }
-        .evt02 li img:hover {box-shadow: 0 5px 10px rgba(0,0,0,0.1); margin-top:-10px}
-        .evt02 ul:after {content:''; display:block; clear:both}
+        @@media only screen and (max-width: 640px) {
+
+        }
     </style>
 
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -58,19 +25,13 @@
         <input type="hidden" name="msg" value="인생계획을 남겨주세요.">
     </form>
 
-    <div class="p_re evtContent NSK" id="evtContainer">    
-        <div class="evtCtnsBox evtTop">
-            <div class="evtTilte">
-                BLACK<br>
-                PRICE DAY
-            </div>
-        </div>  
-
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1934_01.jpg" alt="" >   
-        </div>
-
-        <div class="evtCtnsBox evt02"> 
+    <div class="p_re evtContent NSK" id="evtContainer">        
+        <div class="evtCtnsBox">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1934m_top.jpg" alt="" > 
+        </div> 
+        
+        <div class="evtCtnsBox">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1934m_01.jpg" alt="" >      
             <ul>
                 <li><a href="javascript:giveCheck();"><img src="https://static.willbes.net/public/images/promotion/2020/11/1934_02_01.png" alt="김정환" ></a></li>
                 <li><a href="javascript:giveCheck();"><img src="https://static.willbes.net/public/images/promotion/2020/11/1934_02_02.png" alt="황채영" ></a></li>

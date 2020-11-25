@@ -21,15 +21,20 @@
             </div>
         </div>
 
-        <div class="Section">
-            <div class="widthAuto bnSecbar01">
-                {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+        <div class="SectionBg">
+            <div class="Section">
+                <div class="widthAuto bnSecbar01">
+                    {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+                </div>
             </div>
-        </div>
 
-        <div class="Section mt50">
-            <div class="widthAuto">
-                {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_slider_big_banner') !!}
+            <div class="widthAuto mt50">
+                <div class="f_left nSlider pick">
+                    {!! banner_html(element('메인_빅배너', $data['arr_main_banner']), '_num_slider_big_banner') !!}
+                </div>
+                <div class="f_right nSlider pick">
+                    {!! banner_html(element('메인_서브', $data['arr_main_banner']), '_num_slider_sub_banner') !!}
+                </div>
             </div>
         </div>
 
@@ -44,14 +49,49 @@
             </ul>
         </div>
 
+        {{--최근 업로드 강좌--}}
+        <div class="Section mt50">
+            <div class="widthAuto">
+                <div class="will-nTit bd-none">
+                    최근 <span class="cop-color">업로드 강좌</span>
+                    <a href="{{ front_url('/updateLectureInfo') }}" class="btn-add f_right"><img src="{{ img_url('cop/icon_add_big.png') }}" alt="더보기"></a>
+                </div>
+                <div class="upload">
+                    <div class="sliderNumV vSlider">
+                        @foreach($data['lecture_update_info'] as $row)
+                            <div><a href="#none">{{$row['SubjectName']}} {{$row['ProfNickName']}} <span>|</span> <strong>{{$row['ProdName']}}</strong> <strong>▶ 총 {{$row['unit_cnt']}}강 업로드</strong></a></div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{--경찰 개편 시험 대비 전문교수진--}}
+        <div class="Section mt50">
+            <div class="widthAuto">
+                <div class="will-nTit bd-none">경찰 개편 시험 대비 <span class="cop-color">전문교수진</span></div>
+                <ul class="onProfBox three">
+                    @for($i=1; $i<=3; $i++)
+                        @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
         <div class="Section Section5 mt50">
             <div class="widthAuto">
                 <div class="will-nTit bd-none">경찰합격 <span class="cop-color">전문교수진</span></div>
                 <ul class="onProfBox">
                     @for($i=1; $i<=8; $i++)
-                        <li>
-                            {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
-                        </li>
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
                     @endfor
                 </ul>
             </div>
@@ -209,11 +249,26 @@
             $("#imgBannerRight1").click(function (){
                 slidesImg1.goToNextSlide();
             });
+
+            //최근 업로드 강좌
+            $('.sliderNumV').bxSlider({
+                mode: 'vertical',
+                auto: true,
+                controls: true,
+                infiniteLoop: true,
+                pagerType: 'short',
+                minSlides: 1,
+                pause: 4000,
+                pager: true,
+                onSliderLoad: function(){
+                    $(".vSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
         });
 
         //유튜브 모달팝업 close 버튼 클릭
         var youtube_html;
-        $(document).ready(function() {                
+        $(document).ready(function() {
             $('.PopupWrap').on('click', '.btn-popup-close', function() {
                 youtube_html = $('#youtube_box');
                 $('#youtube_box').html('');

@@ -57,7 +57,7 @@
   <div class="evtCtnsBox wb_cts05">
     <img src="https://static.willbes.net/public/images/promotion/2020/11/1922_04.jpg" usemap="#Map1922a"  title="" border="0" />
     <map name="Map1922a" id="Map1762a">
-        <area shape="rect" coords="280,747,843,863" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50133/?subject_idx=1116" target="_blank" alt="김원욱 형법과 함께하기" />
+        <area shape="rect" coords="280,747,843,863" href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50133/?subject_idx=1116&subject_name=%ED%98%95%EB%B2%95&tab=open_lecture" target="_blank" alt="김원욱 형법과 함께하기" />
     </map>
   </div> 
 

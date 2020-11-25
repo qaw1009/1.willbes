@@ -15,15 +15,12 @@
     .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
     .evtCtnsBox .will-listTi > img {width:50px}
     .evtCtnsBox .will-listTi span {font-size: 16px; vertical-align: middle; color:#666; display:block} 
-    .evt02 {padding:20px;}  
-    .evt02 .bestLec {width:100%; margin:0 auto}
-    .evt02 .bestLec div {width:272px; margin:0 auto; text-align:left}
-    .evt02 .bestLec li ul {padding:20px 10px; font-size:15px; line-height:1.5; }
-    .evt02 .bestLec li ul li {margin-bottom:10px; }
-    .evt02 .bestLec li ul li:first-child {font-size:14px}
-    .evt02 .bestLec li ul li span {vertical-align: bottom;}
-    .evt02 .bestLec li ul li:last-child a {display:inline-block; width:80px; text-align:center; color:#Fff; background:#3997f0; font-size:14px; height:24px; line-height:24px; border-radius:5px}
-    
+
+    .njob .evt02 {padding:20px 36px;}  
+    .njob .bannerSt01 {margin-right:-20px}
+    .njob .bannerSt01 li {display:inline; float:left; width:50%}
+    .njob .bannerSt01 li a {display:block; margin-right:20px}
+    .njob .bannerSt01:after {content:''; display:block; clear:both}    
 
     .evt03 {padding:20px 20px 0 20px; text-align:left; background:#f7f7f7}
     .evt03 .hotLec {margin-left:-20px}
@@ -108,7 +105,7 @@
     .evt08 img {width:40px}
     .evt08 a {display: inline-block; margin:0 5px}
 
-    .swiper-button-next,
+    .swiper-button-next {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px;  background-size:50%}
     .swiper-button-prev {background-color:#fff !important; border-radius:30px; width:30px !important; height:30px !important; margin:0 10px;  background-size:50%}
 
     .btnbuy {position:fixed; width:100%; bottom:0; left:0; border-top:1px solid #ccc; border-bottom:1px solid #ccc; background:#fff; z-index:100;}
@@ -127,19 +124,16 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {  
-        .evt02 .bestLec > li {display: inline ; float:left; width:46%; margin-right:4%}
-        .evt02 .bestLec > li:nth-of-type(even) {margin-right:0}
-        .evt02 .bestLec:after {content:""; display:block; clear:both} 
+
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) { 
-        .evt02 {padding:40px 60px;} 
         .evt03,
         .evt05,
         .evt06,
         .evt07 {padding:40px 60px 0 40px;}
-        .evt08 {margin:40px auto 60px}  
+        .evt08 {margin:40px auto 60px}  */
         .evtCtnsBox .will-listTi > img {width:64px}       
         .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}   
         .evtCtnsBox .will-listTi span {display:inline}             
@@ -158,9 +152,9 @@
 
 
     } 
- </style> 
+ </style>  
     <!-- Container -->
-    <div id="Container" class="Container NGR c_both">
+    <div id="Container" class="Container njob NGR c_both">
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/m/3114_top.jpg" title="">
         </div>
@@ -177,10 +171,9 @@
             <a href="{{ front_url('/promotion/index/cate/3114/code/1626') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn04.gif" title=""></a>
         </div>
 
-        {{--핫 인기강좌--}}
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
-            <ul class="bestLec">
+            <ul class="bannerSt01">
                 <li>{!! banner('M_메인_hot인기강좌1', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot인기강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_hot인기강좌3', '', $__cfg['SiteCode'], '0') !!}</li>
@@ -193,10 +186,8 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌
-                {{--<span>사전 예약시 수강기간 1년 + 20% 할인권 증정</span>--}}
-            </div>
-            <ul class="bestLec">
+            <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 신규강좌</div>
+            <ul class="bannerSt01">
                 <li>{!! banner('M_메인_신규강좌1', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌2', '', $__cfg['SiteCode'], '0') !!}</li>
                 <li>{!! banner('M_메인_신규강좌3', '', $__cfg['SiteCode'], '0') !!}</li>

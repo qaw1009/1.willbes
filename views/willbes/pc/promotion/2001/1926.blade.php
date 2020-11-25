@@ -249,14 +249,14 @@
     <!-- End Container --> 
     <link rel="stylesheet" type="text/css" href="/public/vendor/jquery/slick/slick.css">
     <script src="/public/vendor/jquery/slick/jquery.slick.min.js"></script>
-    <script>
+    <script type="text/javascript">
         $ ('.wr_starwars').slick({
             dots: false,
             arrows: true,
             infinite: true,
             autoplay:true,
             autoplaySpeed:0,
-            speed: 2000,
+            speed: 700,
             slidesToShow: 5,
             slidesToScroll: 1,
             adaptiveHeight: true,
@@ -265,9 +265,7 @@
             pauseOnHover:false,
             vertical:true
         });
-    </script>
 
-    <script type="text/javascript">
         $(document).ready(function() {
             var slidesImg3 = $("#slidesImg3").bxSlider({
                 mode:'horizontal',
@@ -293,7 +291,6 @@
                 slidesImg3.goToNextSlide();
             });
         });        
-    </script>
-    
+    </script>   
 
 @stop

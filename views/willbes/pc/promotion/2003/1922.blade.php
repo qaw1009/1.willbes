@@ -64,10 +64,4 @@
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">
-
-</script>
-{{-- 프로모션용 스크립트 include --}}
-@include('willbes.pc.promotion.promotion_script')
-
 @stop

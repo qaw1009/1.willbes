@@ -6,7 +6,7 @@
     var first_height = '';
     function resizeIframe713002(iframe) {
         if (first_height == '') {
-            iframe.height = (iframe.contentWindow.document.body.scrollHeight + 15) + "px";
+            iframe.height = (iframe.contentWindow.document.body.scrollHeight + 250) + "px";
             if (iframe.contentWindow.document.body.scrollHeight <= 100) {
                 iframe.height = '633px';    //강제초기화
             }

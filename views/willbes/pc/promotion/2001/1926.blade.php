@@ -25,9 +25,9 @@
 
     .evt01 {background:#fff; padding-bottom:150px}   
     /**/
-    .roll_starwars {width:1120px; margin:-200px auto 0; height:500px; 
-        transform-origin: 50% 100%; transform:perspective(45px) rotateX(4deg); overflow:hidden}
-    .wr_starwars .slide {font-size:30px; color:#000; text-align:center; line-height:100px}
+    .evt01 .roll_starwars {position:relative;overflow:hidden;width:1120px;margin:-100px auto 0;text-align:left;
+        transform-origin: 50% 100%;transform:perspective(45px) rotateX(4deg)}
+	.evt01 .wr_starwars .slide {padding:15px 0; text-align:center; font-size:30px; color:#454545; line-height:1.5}
 
     .evt02 {background:#e7e7e8;}
     .slide_con {position:absolute; width:911px; left:50%; top:544px; margin-left:-455px; z-index:10}
@@ -73,15 +73,94 @@
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_01.jpg" alt="이미 준비된 신광은 형사법">  
-            <div class="roll_starwars NSK-Black">
-                <div class="wr_roll wr_starwars">
+            <div class="roll_starwars">
+                <div class="wr_roll wr_starwars NSK-Black">
                     <div class="slide">
-                        경찰대학 졸업 제 47회 사법고시 합격, 사법연수원 37기 수료<br>
-                        前) 형사반장, 조사반장, 폭력주임, 형사계장<br>
-                        前) 경찰대학, 중앙경찰학교, 경찰수사연수원, 해양경찰청 외래교수<br>
-                        前) 청와대 22경호대(대통령경호대) 서울기동단 등 초빙교수<br>
-                        前) 인천지방검찰청 검사(시보)<br>
-                    </div>                                                         
+                        경찰대학 졸업 제 47회 사법고시 합격, 사법연수원 37기 수료
+                    </div>
+                    <div class="slide">
+                        前) 경찰종합학교(현, 경찰교육원) 수사학과 교수
+                    </div>
+
+                    <div class="slide">
+                        前) 경찰대학, 중앙경찰학교, 경찰수사연수원, 해양경찰청 외래교수
+                    </div>
+
+                    <div class="slide">
+                        前) 청와대 22경호대(대통령경호대) 서울기동단 등 초빙교수
+                    </div>
+
+                    <div class="slide">
+                        前) 인천지방검찰청 검사(시보)
+                    </div>
+
+                    <div class="slide">
+                        前) 서울 디지털대학 경찰학과 교수
+                    </div>
+
+                    <div class="slide">
+                        前) 경찰청 채용시험 출제위원
+                    </div>
+
+                    <div class="slide">
+                        前) 경찰공제회 경찰실무종합, 경찰실무Ⅱ 저자
+                    </div>
+
+                    <div class="slide">
+                        前) 전국 공무원교육발전연구대회(강의대회)대통령상 수상(행정자치부 중앙공무원교육원 주관)
+                    </div>
+                    <div class="slide">
+                        前) 2014 대한민국 50대 스타강사 선정(時事매거진)
+                    </div>
+                    <div class="slide">
+                        前) 2014 대한민국 가치경영대상 수상(헤럴드경제)
+                    </div>
+                    <div class="slide">
+                        前) 2014 올해의 新한국인 대상 교육인 대상 수상(시사투데이)
+                    </div>
+                    <div class="slide">
+                        前) 2015 대한민국 문화경영대상 교육부문 수상(헤럴드경제)
+                    </div>
+                    <div class="slide">
+                        現) 수사연수원 형사법 교수
+                    </div>
+                    <div class="slide">
+                        現) 경찰청 법학교육컨텐츠 형사소송법 담당
+                    </div>
+                    <div class="slide">
+                        現) 한남대학교 경찰행정학과 객원교수
+                    </div>
+                    <div class="slide">
+                        現) 신림동 프라임 법학원 경찰간부/로스쿨 형사소송법 전임
+                    </div>
+                    <div class="slide">
+                        現) 중앙경찰학교 형사법 교수
+                    </div>
+                    <div class="slide">
+                        現) 경찰교육원 형사법 교수
+                    </div>
+                    <div class="slide">
+                        現) 윌비스 신광은 경찰학원 형법/형사소송법/수사 전임
+                    </div>
+                    <div class="slide">
+                        경찰 생활 : 157,680 시간 <br>
+                        검사 시보 : 4,320 시간<br>
+                        판사 시보 : 4,320 시간<br>
+                        강의 시간 :  105,120 시간<br>
+                        <br>
+                        진행중 271,440시간 (계속 진행 중) <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="slide">
+                        <br>
+                    </div>
+                    <div class="slide">
+                        <br>
+                    </div>
                 </div>
             </div>     
         </div>
@@ -90,15 +169,24 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02.jpg" alt="신광은 이름이 곧 실력">
             <div class="slide_con">
                 <div class="slideBox">
-                    <ul id="slidesImg4">
+                    <ul id="slidesImg3">
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_01.png" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_02.png" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_03.png" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_04.png" alt="" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_05.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_06.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_07.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_08.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_09.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_10.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_11.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_12.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_13.png" alt="" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_02_14.png" alt="" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_l_arr.png" alt="left" /></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_r_arr.png" alt="right" /></a></p>
+                    <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_l_arr.png" alt="" /></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_r_arr.png" alt="" /></a></p>                    
                 </div>
             </div>           
         </div>
@@ -159,47 +247,50 @@
         @endif                      
     </div>
     <!-- End Container --> 
-
+    <link rel="stylesheet" type="text/css" href="/public/vendor/jquery/slick/slick.css">
+    <script src="/public/vendor/jquery/slick/jquery.slick.min.js"></script>
     <script type="text/javascript">
+        $ ('.wr_starwars').slick({
+            dots: false,
+            arrows: true,
+            infinite: true,
+            autoplay:true,
+            autoplaySpeed:0,
+            speed: 700,
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            draggable: false,
+            cssEase: 'linear',
+            pauseOnHover:false,
+            vertical:true
+        });
+
         $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg4").bxSlider({
+            var slidesImg3 = $("#slidesImg3").bxSlider({
                 mode:'horizontal',
                 auto:true,
                 speed:350,
                 pause:4000,
                 pager:true,
                 controls:false,
-                minSlides:1,
-                maxSlides:1,
+                minSlides:3,
+                maxSlides:3,
                 slideWidth:2000,
-                slideMargin:0,
+                slideMargin:10,
                 autoHover: true,
                 moveSlides:1,
                 pager:false,
             });
 
-            $("#imgBannerLeft3").click(function (){
+            $("#imgBannerRight3").click(function (){
                 slidesImg3.goToPrevSlide();
             });
 
-            $("#imgBannerRight3").click(function (){
+            $("#imgBannerLeft3").click(function (){
                 slidesImg3.goToNextSlide();
             });
-        });
-
-        $(function() {
-            //Count the number of li elements
-            var bx_num01 = $(".roll_starwars").length;
-            var ticker01 = $('.wr_starwars').bxSlider({
-                minSlides: 1,
-                maxSlides: 1,
-                slideMargin: 0,
-                ticker: true,
-                mode: 'vertical',
-                speed:10000*bx_num01
-            });
-        });
-        
-    </script>
+        });        
+    </script>   
 
 @stop

@@ -52,9 +52,9 @@
                         <thead>
                         <tr>
                             <th>선택</th>
-                            <th>회차/강<span class="required">*</span></th>
-                            <th>영상제목<span class="required">*</span>/보조자료</th>
-                            <th>강의시간<span class="required">*</span><BR>/북페이지</th>
+                            <th>회차/강<span class="required">*</span><br/>[코드]</th>
+                            <th>영상제목<span class="required">*</span><br/>/보조자료</th>
+                            <th>강의시간<span class="required">*</span><br/>/북페이지</th>
                             <th>영상경로<span class="required">*</span></th>
                             <th>촬영일/교수<span class="required">*</span></th>
                             <th>등록자/등록일</th>
@@ -70,7 +70,7 @@
                                 </div>
                             </td>
                             <td>
-                                {{ $row['wUnitNum'] }}회차<BR>{{ $row['wUnitLectureNum'] }}강
+                                {{ $row['wUnitNum'] }}회차<br/>{{ $row['wUnitLectureNum'] }}강<br/>[{{$row["wUnitIdx"]}}]
                             </td>
                             <td>
                                 {{ $row['wUnitName'] }}

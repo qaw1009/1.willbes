@@ -59,7 +59,7 @@
                 <div class="upload">
                     <div class="sliderNumV vSlider">
                         @foreach($data['lecture_update_info'] as $row)
-                            <div><a href="#none">{{$row['SubjectName']}} {{$row['ProfNickName']}} <span>|</span> <strong>{{$row['ProdName']}}</strong> <strong>▶ 총 {{$row['unit_cnt']}}강 업로드</strong></a></div>
+                            <div><a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">{{$row['SubjectName']}} {{$row['ProfNickName']}} <span>|</span> <strong>{{$row['ProdName']}}</strong> <strong>▶ 총 {{$row['unit_cnt']}}강 업로드</strong></a></div>
                         @endforeach
                     </div>
                 </div>

@@ -243,6 +243,10 @@
             <img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn05.gif" title="">
         </div>
 
+        <div class="evtCtnsBox evt01">
+            <a href="{{ front_url('/promotion/index/cate/3114/code/1923') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/2014_bn_w720_01.jpg" title="크리에이터 모집"></a>
+        </div>
+
         <div class="evtCtnsBox evt06">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> 공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a></div>
             <ul class="List-Table">

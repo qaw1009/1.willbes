@@ -180,6 +180,10 @@
             </div>
         </div> 
 
+        <div class="evtCtnsBox evt01">
+            <a href="{{ front_url('/promotion/index/cate/3114/code/1626') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/3114_bn04.gif" title=""></a>
+        </div>
+
         <div class="evtCtnsBox evt02">
             <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/3114_icon.png" alt="1억뷰 N잡"> HOT 인기 강좌</div>
             <ul class="bannerSt01">

@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1839_top_bg.jpg) no-repeat center top;
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1839_top_bg.jpg) no-repeat center top;
             overflow:hidden}  
         .wb_top span {position:absolute; left:50%; z-index:10}
 
@@ -47,65 +47,32 @@
         .wb_03 span {font-size:0; text-indent: -9999px;}
         .wb_03 li div {display:none; position:absolute; top:300px; left:50%; width:700px; margin-left:-600px; z-index:15}
         .wb_03 li:hover div {display:block}
-
-        .wb_04 {} 
-        .wb_05 {background:#5d57f6;} 
-
-        /* 슬라이드배너 */
-        .slide_con {position:relative; width:1120px; margin:30px auto}	
-        .slide_con p {position:absolute; top:50%; width:52px; height:52px; margin-top:-26px; z-index:50}
-        .slide_con p a {cursor:pointer}
-        .slide_con p.leftBtn {left:0;}
-        .slide_con p.rightBtn {right:0;}
-        .slide_con li {font-size:22px; height:52px; line-height:52px;}
-
         
+        .wb_05 {background:#5d57f6;} 
+        .wb_06 {background:#a8b4bc;}
+        .tabs {width:1120px; margin:0 auto}
+        .tabs li {display:inline; float:left; width:33.333333%}
+        .tabs li a {display:block; background:#656c71; color:#a8b4bc; text-align:center; font-size:30px; height:72px; line-height:72px; margin-right:5px}
+        .tabs li a.active {color:#636363; background:#fff}
+        .tabs li:last-child a {margin:0}
 
-        /*유의사항*/
-        .wb_ctsInfo {background:#fff; width:1120px; margin:100px auto; display:block; 
-            border:17px solid #555; padding:80px; line-height:1.5;}  
-        .wb_ctsInfo h3 {font-size:36px !important; letter-spacing:-1px; margin-bottom:40px; color:#000;}        
-        .wb_ctsInfo .big {font-size:18px; font-weight:bold; color:#000; margin-bottom:10px} 
-        .wb_ctsInfo ul {margin-bottom:30px}       
-		.wb_ctsInfo li {list-style:disc; margin-left:20px}
-
+        .wb_07 {background:url(https://static.willbes.net/public/images/promotion/2020/11/1839_07_bg.jpg) no-repeat center top;}
+        .wb_09 {background:#333351}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">      
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top.jpg"  alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_top.jpg"  alt="" />
             <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top01.png"  alt="사원증" /></span>
             <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2020/09/1839_top02.png"  alt="전략이 보인다." /></span>
         </div>
         
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_01_01.jpg"  alt=""  />
-            {{--
-            <div class="slide_con NSK-Black">
-                <ul id="slidesImg3">
-                    <li>토익기준 550점 이상 (3년 유효)</li>
-                    <li>영어 검정시험의 경우 토플(TOEFL), 텝스(TEPS), 지텔프(G-TELP), 플렉스(FLEX), 토셀(TOSEL)도 인정</li>
-                    <li>한능검 3급 이상 (4년 유효)</li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_right.png"></a></p>
-            </div>
-            --}}
         </div>
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_01_02.jpg"  alt=""  />
-            {{--
-            <div class="slide_con NSK-Black">
-                <ul id="slidesImg4">
-                    <li>경행경채는 영어(검정제), 필기시험은 경찰학, 형사법, 범죄학으로 진행됩니다.</li>
-                    <li>토익기준 550점 이상 (3년유효)</li>
-                    <li>영어 검정시험의 경우 토플(TOEFL), 텝스(TEPS), 지텔프(G-TELP), 플렉스(FLEX), 토셀(TOSEL)도 인정</li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_right.png"></a></p>
-            </div>
-            --}}
         </div>
 
         <div class="evtCtnsBox wb_03">
@@ -130,61 +97,85 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_01_04.jpg"  alt=""  />
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1839_02.jpg"  alt=""  />
-        </div>              
+        </div>
+        --}}
+
+        <div class="evtCtnsBox wb_06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_top.jpg"  alt=""  />
+            <ul class="tabs NSK-Black">
+                <li><a href="#tab01">형사법</a></li>
+                <li><a href="#tab02">헌법</a></li>
+                <li><a href="#tab03">경찰학</a></li>
+            </ul>
+            <div id="tab01">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_01.jpg"  alt="형사법 신광은" usemap="#Map1839A" border="0"  />
+                <map name="Map1839A">
+                    <area shape="rect" coords="770,429,1016,674" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                </map>
+            </div>
+            <div id="tab02">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_02.jpg"  alt="헌법 김원욱" usemap="#Map1839B" border="0"  />
+                <map name="Map1839B">
+                    <area shape="rect" coords="766,429,1022,671" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                </map>
+            </div>
+            <div id="tab03">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_03.jpg"  alt="경찰학 장정훈" usemap="#Map1839C" border="0"  />
+                <map name="Map1839C">
+                    <area shape="rect" coords="766,429,1020,670" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                </map>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox wb_07">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_07.jpg"  alt="한국사, 영어 검정제 변경" usemap="#Map1839D" border="0"  />
+            <map name="Map1839D">
+              <area shape="rect" coords="303,997,818,1088" href="https://police.willbes.net/promotion/index/cate/3001/code/1786" target="_blank" alt="지텔프 영어 자격증 바로가기">
+            </map>
+        </div>
+
+        <div class="evtCtnsBox wb_08">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_08.jpg"  alt="지텔프, 한국사능력검정 시험"  />
+        </div>
+
+        <div class="evtCtnsBox wb_09">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_09.jpg"  alt="2022년 과목개편대비 준비" usemap="#Map1839E" border="0"  />
+            <map name="Map1839E">
+              <area shape="rect" coords="242,800,406,863" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원패스">
+              <area shape="rect" coords="736,797,902,866" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1907" target="_blank" alt="기본이론종합반">
+            </map>
+        </div>
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:false,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:1120,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1
-                });
-            
-                $("#imgBannerLeft3").click(function (){
-                    slidesImg3.goToPrevSlide();
-                });
-            
-                $("#imgBannerRight3").click(function (){
-                    slidesImg3.goToNextSlide();
-                });
-        });
-        
-        $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:false,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:1120,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1
-                });
-            
-                $("#imgBannerLeft4").click(function (){
-                    slidesImg4.goToPrevSlide();
-                });
-            
-                $("#imgBannerRight4").click(function (){
-                    slidesImg4.goToNextSlide();
-                });
-        });
+         /*tab*/
+         $(document).ready(function(){
+            $('.tabs').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        ) 
     </script>
 @stop

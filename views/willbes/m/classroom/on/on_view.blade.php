@@ -180,10 +180,14 @@
         </div>
         <!-- Topbtn -->
         @if($lec['canWeekView'] == false)
+            {{-- 주말반 제한 --}}
         @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
+            {{-- BtoB 강의 제한 --}}
         @elseif($lec['wShootingCcd'] == '104003')
+            {{-- 라이브강의는 다운로드버튼 없음 --}}
         @else
             @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
+                {{-- 실제 강의 수강기간일때만 --}}
             <div id="Fixbtn" class="Fixbtn three">
                 <ul>
                     <li class="btn_black_line"><a href="javascript:;" onclick="fnDown('WD');">WIDE 다운</a></li>
@@ -196,7 +200,13 @@
         <!-- Fixbtn -->
     </div>
     <!-- End Container -->
+@if($lec['wShootingCcd'] == '104003')
+    {{-- 라이브강의 스타플레이어 플러스 --}}
+    <script src="/public/vendor/starplayer/js/starplayer_app_plus.js"></script>
+@else
+    {{-- 다른강의 일반 스타플레이어 --}}
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
+@endif
     <script>
         $(document).ready(function() {
             $('#allchk').on('change', function (){

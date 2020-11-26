@@ -524,7 +524,7 @@ class BasePromotion extends \app\controllers\FrontController
         $limit_count = 1;   //발급 제한 갯수
         $result = null;
 
-        if(empty($give_type)) {
+        if(empty($give_type) === true) {
             return $this->json_error('정보가 존재하지 않습니다.');
         }
 
@@ -555,15 +555,42 @@ class BasePromotion extends \app\controllers\FrontController
 
         // *** 쿠폰 발급 체크 ***
         if($give_type === 'coupon' || (empty($give_overlap_chk) === false && empty($give_overlap_chk) === 'N')) {
-            if(empty($give_idx)) {
-                return $this->json_error('정보가 존재하지 않습니다.');
+
+            if($give_overlap_chk == 'coupons'){
+                // 다건 쿠폰 아이디당 1회만 발급
+                if(empty($this->_req('arr_give_idx_chk')) === true) {
+                    return $this->json_error('쿠폰 정보가 존재하지 않습니다.');
+                }
+
+                $arr_give_idx = explode(',', $this->_req('arr_give_idx_chk'));
+                $give_idx = element($give_idx,$arr_give_idx);
+
+                if(empty($give_idx) === true){
+                    return $this->json_error('쿠폰 정보가 존재하지 않습니다.');
+                }
+
+                $arr_condition = [
+                    'EQ' => [
+                        'CP.MemIdx' =>  $this->session->userdata('mem_idx')
+                    ],
+                    'IN' => [
+                        'C.CouponIdx' => $arr_give_idx,
+                    ]
+                ];
+                $check = $this->couponFModel->checkOverlapCoupon($arr_condition);
             }else{
-                //발급여부 확인
-                $check = $this->couponFModel->checkIssueCoupon($give_idx);
-                if((int)$check >= $limit_count) {
-                    return $this->json_error('이미 발급받은 쿠폰이 존재합니다.');
+                if(empty($give_idx)) {
+                    return $this->json_error('정보가 존재하지 않습니다.');
+                }else{
+                    //발급여부 확인
+                    $check = $this->couponFModel->checkIssueCoupon($give_idx,$arr_condition);
                 }
             }
+
+            if((int)$check >= $limit_count) {
+                return $this->json_error('이미 발급받은 쿠폰이 존재합니다.');
+            }
+
             $result = $this->_addPromotionCoupon($give_type, $give_idx);
 
         } else if($give_type === 'coupons') {

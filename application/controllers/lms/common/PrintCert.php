@@ -27,7 +27,13 @@ class PrintCert extends \app\controllers\BaseController
                 $order_prod_idx = $this->_reqG('order_prod_idx');
                 $site_code = $this->_reqG('site_code');
 
-                //인천학원 뷰
+                // 임용 출력 안내
+                if ($site_code == '2018') {
+                    show_alert('수강생관리 > [학원]수강생현황 > 단과반 > 단과별 상세 페이지에서 출력해 주십시오.','close');
+                    break;
+                }
+
+                // 인천학원 뷰
                 $view_page = ($site_code == '2015') ? $view_page.'_'.$site_code : $view_page;
 
                 // 데이터 조회

@@ -160,6 +160,7 @@
                     <th>휴대폰정보</th>
                     <th>E-mail정보</th>
                     <th>자동로그인</th>
+                    <th>수강증출력</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -167,6 +168,7 @@
             </table>
         </div>
     </div>
+    <script src="/public/js/lms/common_order.js"></script>
     <script type="text/javascript">
         var $datatable;
         var $search_form = $('#search_form_view');
@@ -228,7 +230,11 @@
                     {'data' : 'Mail'},//이메일
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
-                        }} //자동로그인
+                        }}, //자동로그인
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return (row.PayStatusCcd === '676001' ? '<button type="button" class="btn btn-xs btn-success mr-0 btn-print" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '" data-prod-code-sub="' + row.ProdCodeSub + '">수강증출력</button>' : '')
+                            + (row.IsPrintCert === 'Y' ? '<br/><a class="red cs-pointer btn-print-log" data-toggle="popover" data-html="true" data-placement="left" data-content="" data-order-idx="' + row.OrderIdx + '" data-order-prod-idx="' + row.OrderProdIdx + '" data-prod-code-sub="' + row.ProdCodeSub + '">(Y)</a>' : '');
+                        }}  //수강증출력
                 ]
             });
 
@@ -246,6 +252,22 @@
 
             $("#all_check").on('change', function(event) {
                 $("input[name=selectMember]").prop('checked', $("#all_check").prop("checked"));
+            });
+
+            // 수강증 출력 버튼 클릭
+            $list_table.on('click', '.btn-print', function() {
+                var url = '{{ site_url('/common/printCert/') }}?prod_type=off_sub_lecture&order_idx=' + $(this).data('order-idx')
+                    + '&order_prod_idx=' + $(this).data('order-prod-idx') + '&prod_code_sub=' + $(this).data('prod-code-sub') + '&site_code=9999';
+                popupOpen(url, '_cert_print', 620, 350);
+            });
+
+            // 수강증 출력 로그 보기
+            $list_table.on('mouseover', '.btn-print-log', function() {
+                // 수강증 출력 로그 조회
+                if ($(this).data('content').length < 1) {
+                    var html = getPrintCertLog('SubLecCert', $(this).data('order-idx'), $(this).data('order-prod-idx'), $(this).data('prod-code-sub'));
+                    $(this).data('content', html);
+                }
             });
         });
     </script>

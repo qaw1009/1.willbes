@@ -54,6 +54,16 @@
                     {{-- 페이지별 인쇄 시작 --}}
                     startPrint();
                 @endforeach
+            @elseif($data['ViewType'] == 'A')
+                {{-- 사이트 공통 (단과/종합반 서브단과별 출력) --}}
+                ctkprint_bar.prt_text_L4 = '{{ $data['MemName'] }}({{ $data['OrderNo'] }})' + ';굴림;10;true;left';
+
+                @for($i = 0; $i < $data['LineCnt']; $i++)
+                    ctkprint_bar.prt_text_R{{ $data['StartLine'] + ($i * 2) }} = '{!! array_get($data['OrderProdNameData'], $i . '.Name', '') !!}' + ';굴림;8;' + '{{ array_get($data['OrderProdNameData'], $i . '.Bold', 'false') }}' + ';left';
+                @endfor
+
+                ctkprint_bar.prt_text_L28 = '{{ date('Y-m-d') }}' + ';굴림;8;false;left';
+                startPrint();
             @endif
         }
 

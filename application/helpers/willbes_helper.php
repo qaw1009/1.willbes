@@ -61,14 +61,14 @@ if (!function_exists('banner_html')) {
         if (empty($rolling_class) === false) {
             // 배너노출섹션 롤링 대기시간 적용 class 앞부분 '_' 추가
             if(substr($rolling_class,0,1) == '_') {
+                // 롤링방식
                 $arr_rolling_type = ['665001' => 'bSlider', '665002' => 'cSlider', '665003' => 'nSlider', '665004' => 'vSlider', '_num' => 'numSlider'];
 
                 $rolling_class_chop = substr($rolling_class,0,4);
                 if($rolling_class_chop == '_num') {
-                    // 롤링 컨트롤 숫자
+                    // 기본가로형 => 페이징가로형 변경 
                     $rolling_key = $rolling_class_chop;
                 } else {
-                    // 롤링 컨트롤 아이콘
                     $rolling_key = $data[0]['DispRollingTypeCcd'];
                 }
                 $rolling_type = element($rolling_key, $arr_rolling_type);

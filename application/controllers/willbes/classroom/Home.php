@@ -217,6 +217,11 @@ class Home extends \app\controllers\FrontController
             ]
         ]);
 
+        if(empty($data['ssamID']) == true){
+            // 임용고시 아이디가 가 없으면
+            show_alert('임용고시 회원이 아닙니다.', 'close', false);
+        }
+
         $plaintext = '^'.$data['ssamID'].'^'.date('Y-m-d H:i:s').'^';
         $enc_data = $this->crypto->encrypt($plaintext);
 

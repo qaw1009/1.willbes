@@ -9,9 +9,11 @@
             <div class="widthAuto">
                 <ul class="bnSecTop">
                     @for($i=1; $i<=5; $i++)
+                    <li>
                         <div class="bSlider acad">
-                            <li>{!! banner_html(element('메인_상단배너'.$i, $data['arr_main_banner']), 'slider') !!}</li>
+                            {!! banner_html(element('메인_상단배너'.$i, $data['arr_main_banner']), 'slider') !!}
                         </div>
+                    </li>
                     @endfor
                 </ul>
             </div>

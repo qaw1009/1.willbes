@@ -59,10 +59,13 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">    
         <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1934_top.jpg" alt="" >
+            {{--
             <div class="evtTilte">
                 BLACK<br>
                 PRICE DAY
             </div>
+            --}}
         </div>  
 
         <div class="evtCtnsBox evt01">

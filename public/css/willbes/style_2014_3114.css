@@ -90,7 +90,8 @@
 
 .njob2 .Section2 {background:url(https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190_bg.gif) no-repeat center top;}
 .njob2 .Section3 {background:#fff}
-.njob2 .Section4 {background:#08145d}
+.njob2 .Section4 {position: relative; height: 110px;}
+.njob2 .Section4 a {display: block; position:absolute; width: 2000px; left:50%; margin-left: -1000px; z-index: 1;}
 .njob2 .Section5 {background:#ece5e4; padding:50px 0}
 .njob2 .Section5 .will-listTi {position: absolute; top:0; left:0; z-index: 1;}
 .njob2 .Section5 .slidertip .youtube {width:100%; height:315px; overflow: hidden;}

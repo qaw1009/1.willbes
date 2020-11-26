@@ -24,7 +24,9 @@
         </div>
 
         <div class="Section4">
-            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=304791"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx110.gif" alt="헤드라인 뉴스"></a>
+            <div class="widthAuto">
+                <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=304791"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx110.gif" alt="헤드라인 뉴스"></a>
+            </div>
         </div>
 
         <div class="Section NSK mt70">
@@ -59,6 +61,108 @@
             </div>
         </div>
 
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    <img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> 추천강좌
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['M_메인_N잡추천강좌'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['M_메인_N잡추천강좌'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    유통의 가장 강력한 무기, <strong class="tx-color">E-커머스</strong>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=12; $i++)
+                        @if(isset($data['arr_main_banner']['메인_E커머스'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_E커머스'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    스마트폰 하나만 있으면 나도 사업가, <strong class="tx-color">인스타마켓</strong>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=8; $i++)
+                        @if(isset($data['arr_main_banner']['메인_인스타마켓'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_인스타마켓'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    누구나 바로 시작할 수 있는, <strong class="tx-color">블로그</strong>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_블로그'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_블로그'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    채널기획ㆍ운영ㆍ편집가이드, <strong class="tx-color">유튜브</strong>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_유튜브'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_유튜브'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        <div class="Section NSK mt70">
+            <div class="widthAuto">
+                <div class="will-listTi NSK-Black">
+                    지식과 경험을 돈으로 바꾸는, <strong class="tx-color">커리어</strong>
+                </div>
+                <ul class="bestLec">
+                    @for($i=1; $i<=4; $i++)
+                        @if(isset($data['arr_main_banner']['메인_커리어'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_커리어'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
         <div class="Section2 mt70">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190.gif" alt="전강좌 10% 할인">
@@ -82,17 +186,17 @@
 
         <div class="Section5">
             <div class="widthAuto p_re">
-                <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div> 
+                <div class="will-listTi NSK-Black"><img src="https://static.willbes.net/public/images/promotion/main/3114_icon01.png" alt="1억뷰 N잡"> PD 추천 꿀 Tip</div>
                 <div class="bSlider">
                     <div class="slidertip">
                         <div class="youtube">
                             <div class="copytxt NSK-Black">
                                 스마트스토어,<br>
-                                언택트 비대면시대엔<br> 
+                                언택트 비대면시대엔<br>
                                 앞으로 더 활성화 된다구요?
                             </div>
                             <iframe src="https://www.youtube.com/embed/8Ha99xncaQg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>  
+                        </div>
                         <div class="youtube">
                             <div class="copytxt NSK-Black">
                                 무재고 쇼핑몰<br>
@@ -116,14 +220,14 @@
                                 들어보셨어요? <br>
                             </div>
                             <iframe src="https://www.youtube.com/embed/IPoWDc0AuwE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>                  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="Section3">
-            <div class="widthAuto mt70">                
+            <div class="widthAuto mt70">
                 <ul class="tipLec NSK-Black">
                     @for($i=1; $i<=4; $i++)
                         @if(isset($data['arr_main_banner']['메인_추천tip'.$i]) === true)
@@ -164,38 +268,38 @@
                 <!--willbesNews //-->
 
                 <div class="willbesCenter f_right">
-                <h5 class="NSK-Black">서비스 <span class="tx-color">이용안내</span> <span class="tx13 NSK ml20 tx-black">궁금하신 사항에 대해 자세히 알려드립니다.</span></h5>
-                <ul>
-                    <li>
-                        <a href="{{ front_url('/support/faq/index') }}">
-                            <img src="{{ img_url('cop/icon_cecenter1.png') }}">
-                            <div class="nTxt">자주하는 질문</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ front_url('/support/mobile/index') }}">
-                            <img src="{{ img_url('cop/icon_cecenter2.png') }}">
-                            <div class="nTxt">모바일 서비스</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ front_url('/support/qna/index') }}">
-                            <img src="{{ img_url('cop/icon_cecenter3.png') }}">
-                            <div class="nTxt">동영상 상담실</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ front_url('/support/remote/index') }}">
-                            <img src="{{ img_url('cop/icon_cecenter4.png') }}">
-                            <div class="nTxt">1:1 고객지원</div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tel">
-                    수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006</span><br>
-                    운영시간 평일 <span class="NSK-Black tx-color ml10">09시~18시 (점심시간 12시~1시)  주말/공휴일 휴무</span>
+                    <h5 class="NSK-Black">서비스 <span class="tx-color">이용안내</span> <span class="tx13 NSK ml20 tx-black">궁금하신 사항에 대해 자세히 알려드립니다.</span></h5>
+                    <ul>
+                        <li>
+                            <a href="{{ front_url('/support/faq/index') }}">
+                                <img src="{{ img_url('cop/icon_cecenter1.png') }}">
+                                <div class="nTxt">자주하는 질문</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ front_url('/support/mobile/index') }}">
+                                <img src="{{ img_url('cop/icon_cecenter2.png') }}">
+                                <div class="nTxt">모바일 서비스</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ front_url('/support/qna/index') }}">
+                                <img src="{{ img_url('cop/icon_cecenter3.png') }}">
+                                <div class="nTxt">동영상 상담실</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ front_url('/support/remote/index') }}">
+                                <img src="{{ img_url('cop/icon_cecenter4.png') }}">
+                                <div class="nTxt">1:1 고객지원</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tel">
+                        수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006</span><br>
+                        운영시간 평일 <span class="NSK-Black tx-color ml10">09시~18시 (점심시간 12시~1시)  주말/공휴일 휴무</span>
+                    </div>
                 </div>
-            </div> 
             </div>
         </div>
 
@@ -208,34 +312,34 @@
     <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
-<script>
-    function popup(){
+    <script>
+        function popup(){
             var url = "https://www.youtube.com/embed/sBGMUCaAq6k";
             var name = "Njob";
 
             var _width = '650';
             var _height = '380';
-            
+
             // 팝업을 가운데 위치시키기 위해 아래와 같이 값 구하기
             var _left = Math.ceil(( screen.width - _width )/2);
-            var _top = Math.ceil(( screen.height - _height )/2); 
-        
+            var _top = Math.ceil(( screen.height - _height )/2);
+
             window.open(url, name, 'width='+ _width +', height='+ _height +', left=' + _left + ', top='+ _top );
         }
 
-    $(function() {
-        $('.slidertip').bxSlider({
-            auto: false,
-            touchEnabled: false,
-            controls: false,
-            pause: 3000,
-            autoHover: true,
-            onSliderLoad: function(){
-                $(".bSlider").css("visibility", "visible").animate({opacity:1});
-            }
+        $(function() {
+            $('.slidertip').bxSlider({
+                auto: false,
+                touchEnabled: false,
+                controls: false,
+                pause: 3000,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 
 @stop

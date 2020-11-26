@@ -23,27 +23,28 @@
     .evt_top .youtube {width:726px; position:absolute; top:1566px; left:50%; margin-left:-363px; z-index:5}
     .evt_top .youtube iframe {width:726px; height:380px;} 
 
-    .evt01 {background:#fff; padding-bottom:150px}   
+    .evt01 {background:#2c2c2c url(https://static.willbes.net/public/images/promotion/2020/11/1926_01_bg.jpg) no-repeat center bottom;}   
     /**/
     .evt01 .roll_starwars {position:relative;overflow:hidden;width:1120px;margin:-100px auto 0;text-align:left;
         transform-origin: 50% 100%;transform:perspective(45px) rotateX(4deg)}
-	.evt01 .wr_starwars .slide {padding:15px 0; text-align:center; font-size:30px; color:#454545; line-height:1.5}
+	.evt01 .wr_starwars .slide {padding:15px 0; text-align:center; font-size:30px; color:#fff; line-height:1.5}
 
-    .evt02 {background:#e7e7e8;}
+    .evt02 {background:#454545;}
     .slide_con {position:absolute; width:911px; left:50%; top:544px; margin-left:-455px; z-index:10}
     .slideBox {position:relative}
     .slide_con p {position:absolute; top:50%; width:56px; height:56px; margin-top:-28px; z-index:20}
     .slide_con p a {cursor:pointer}
     .slide_con p.leftBtn {left:-100px}
     .slide_con p.rightBtn {right:-100px}
+    .evt02 .reply {position:absolute; top:1156px; left:50%; margin-left:-441px; width:882px; z-index:1}
 
-    .evt03 {background:#fff} 
+    .evt03 {background:#262626} 
     .evt03 .youtube {width:622px; position:absolute; top:644px; left:50%; margin-left:-494px; z-index:5}
     .evt03 .youtube.youtube2 {top:1227px; margin-left:-130px}
     .evt03 .youtube.youtube3 {top:1810px;}
     .evt03 .youtube iframe {width:622px; height:348px;}     
 
-    .evt04 {background:#323b6d}     
+    .evt04 {background:#323232 url(https://static.willbes.net/public/images/promotion/2020/11/1926_04_bg.jpg) no-repeat center bottom;}     
     .evt04 .youtube {width:695px; position:absolute; top:463px; left:50%; margin-left:-347px; z-index:5}
     .evt04 .youtube iframe {width:695px; height:380px;} 
 
@@ -67,7 +68,7 @@
                 <area shape="rect" coords="226,1452,434,1517" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/50547?subject_idx=1004" target="_blank" alt="교수님 ">
             </map>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/fdzMRbzjJbU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -162,7 +163,8 @@
                         <br>
                     </div>
                 </div>
-            </div>     
+            </div>    
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_01_bottom.jpg" alt="이미 준비된 신광은 형사법"> 
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">
@@ -188,26 +190,27 @@
                     <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_l_arr.png" alt="" /></a></p>
                     <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_r_arr.png" alt="" /></a></p>                    
                 </div>
-            </div>           
+            </div>
+            <div class="reply"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_reply.gif" alt="후기"></div>         
         </div>
 
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_03.jpg" alt="신광은 형사법은 차원이 다르다!">
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dx4dJ9iEU3c?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="youtube youtube2">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/cgsX8mR01WM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="youtube youtube3">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/-MxsOn8FKr4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>  
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_04.jpg" alt="신광은 형사법"> 
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/55o7INyZzG4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>           
         </div>
 
@@ -219,8 +222,8 @@
             @endif
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_05_02.jpg" alt="형사법 미리 예습이 필요하다면!" usemap="#Map1926_02" border="0">
             <map name="Map1926_02">
-                <area shape="rect" coords="269,435,461,497" href="#evt06" alt="추첨50명">
-                <area shape="rect" coords="656,438,840,493" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원 PASS">
+                <area shape="rect" coords="269,428,461,490" href="#evt06" alt="추첨50명">
+                <area shape="rect" coords="656,431,840,486" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원 PASS">
             </map>  
         </div>
 

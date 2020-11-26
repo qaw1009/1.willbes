@@ -90,7 +90,7 @@
                                             <!--임용-->
                                             <dl class="sns-Btn">
                                                 <dt>
-                                                    <a href="https://www.instagram.com" target="_blank">
+                                                    <a href="https://www.instagram.com/ssam_willbes" target="_blank">
                                                         <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">
                                                     </a>
                                                 </dt>

@@ -21,21 +21,21 @@
         .wb_top span.img02 {margin-left:-103px; top:549px; animation:iptimg2 1s ease-in;-webkit-animation:iptimg2 1s ease-in;}
         .wb_top span.img03 {animation:iptimg3 1s ease-in; 1s;-webkit-animation:iptimg3 1s ease-in; margin-left:239px; top:247px;}
         @@keyframes iptimg1{
-        from{margin-left:-200px; opacity: 0;}
-        to{margin-left:-107px; opacity: 1;}
+            from{margin-left:-200px; opacity: 0;}
+            to{margin-left:-107px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg1{
-        from{margin-left:-200px; opacity: 0;}
-        to{margin-left:-107px; opacity: 1;}
+            from{margin-left:-200px; opacity: 0;}
+            to{margin-left:-107px; opacity: 1;}
         }
         
         @@keyframes iptimg2{
-        from{margin-left:100px; opacity: 0;}
-        to{margin-left:-103px; opacity: 1;}
+            from{margin-left:100px; opacity: 0;}
+            to{margin-left:-103px; opacity: 1;}
         }
         @@-webkit-keyframes iptimg2{
-        from{margin-left:100px; opacity: 0;}
-        to{margin-left:-103px; opacity: 1;}
+            from{margin-left:100px; opacity: 0;}
+            to{margin-left:-103px; opacity: 1;}
         }
 
         @@keyframes iptimg3{

@@ -245,7 +245,7 @@ class StudentModel extends WB_Model
         } else {
 
             $column = "  M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
-                ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
+                ,OP.OrderProdIdx, OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
                 ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
                 ,O.CompleteDatm as PayDate, ifnull(A.wAdminName, '') as AdminName,
                 (SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate,
@@ -253,6 +253,7 @@ class StudentModel extends WB_Model
                 P1.ProdName, P1.ProdCode, P2.ProdName AS ProdNameSub, P2.ProdCode AS ProdCodeSub
                 ,IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
                 ,IF(PLR.LrCode IS NOT NULL, REPLACE(fn_order_lectureroom_seat_data(OP.OrderIdx, OP.OrderProdIdx, OP.ProdCode, P2.ProdCode), '::', '-'), '') AS LectureRoomSeatNo
+                ,IF(LPC.OrderIdx IS NOT NULL, 'Y', 'N') as IsPrintCert
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -278,7 +279,9 @@ class StudentModel extends WB_Model
                         left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
-                        left join lms_product_r_lectureroom AS PLR ON P2.ProdCode = PLR.ProdCode and PLR.IsStatus = 'Y'    
+                        left join lms_product_r_lectureroom AS PLR ON P2.ProdCode = PLR.ProdCode and PLR.IsStatus = 'Y'  
+                        left join lms_order_product_activity_log AS LPC ON OP.OrderIdx = LPC.OrderIdx AND OP.OrderProdIdx = LPC.OrderProdIdx 
+                            AND P2.ProdCode = LPC.ProdCodeSub AND LPC.ActType = 'SubLecCert' AND LPC.IsFirstAct = 'Y' 
                     WHERE (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)
         ";
 

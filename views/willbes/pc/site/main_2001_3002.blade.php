@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="Section HotIssue mt20">
+        <div class="Section HotIssue mt50">
             <ul class="widthAuto">
                 <li>{!! banner_html(element('메인_서브1', $data['arr_main_banner'])) !!}</li>
                 <li>{!! banner_html(element('메인_서브2', $data['arr_main_banner'])) !!}</li>

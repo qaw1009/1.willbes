@@ -156,7 +156,7 @@
     </style>
 
     <!-- Container -->
-    <div id="Container" class="Container njob NGR c_both">
+    <div id="Container" class="Container njob2 NGR c_both">
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/m/3114_top.jpg" title="">
         </div>

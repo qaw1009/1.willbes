@@ -1267,6 +1267,27 @@ class OrderListModel extends BaseOrderModel
             $data['LineCnt'] = 8;
             $data['StartLine'] = 7;
             $data['ViewType'] = 'H';
+        } elseif ($site_code == '9999') {
+            // 수강생현황 > 단과반 (사이트 공통, 단과/종합반 서브단과별 출력)
+            // 주문상품 조회
+            $data = $this->getPrintCertSubLectureBaseSubProdData($order_idx, $order_prod_idx, $prod_code_sub);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+            $data = element('0', $data);
+
+            $cut_str = 16;  // 라인당 출력되는 상품명 길이
+            $arr_line = [];
+
+            for($i = 0; $i < ceil(mb_strlen($data['ProdNameSub']) / $cut_str); $i++) {
+                $is_bold = $i == 0 ? 'true' : 'false';
+                $arr_line[] = ['Name' => trim(mb_substr($data['ProdNameSub'], $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+            }
+
+            $data['OrderProdNameData'] = $arr_line;
+            $data['LineCnt'] = 8;
+            $data['StartLine'] = 8;
+            $data['ViewType'] = 'A';
         } else {
             return '일치하는 사이트코드가 없습니다.';
         }
@@ -1314,6 +1335,39 @@ class OrderListModel extends BaseOrderModel
                 and OP.OrderProdIdx = ?
                 and OSP.ProdCodeSub = ?
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"        
+        ';
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from, [$order_idx, $order_prod_idx, $prod_code_sub]);
+
+        return $query->result_array();
+    }
+
+    /**
+     * 학원수강증 서브단과 기준 주문 데이터 조회 (단과/종합반 서브단과별 출력)
+     * @param int $order_idx [주문식별자]
+     * @param int $order_prod_idx [주문상품식별자]
+     * @param int $prod_code_sub [상품코드서브]
+     * @return mixed
+     */
+    public function getPrintCertSubLectureBaseSubProdData($order_idx, $order_prod_idx, $prod_code_sub)
+    {
+        $column = 'O.OrderNo, M.MemName, SP.ProdName as ProdNameSub';
+
+        $from = '
+            from ' . $this->_table['my_lecture'] . ' as ML 
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on ML.OrderIdx = OP.OrderIdx and ML.OrderProdIdx = OP.OrderProdIdx and ML.ProdCode = OP.ProdCode
+                inner join ' . $this->_table['order'] . ' as O
+                    on ML.OrderIdx = O.OrderIdx
+                inner join ' . $this->_table['product'] . ' as SP
+                    on ML.ProdCodeSub = SP.ProdCode and SP.IsStatus = "Y"
+                left join ' . $this->_table['member'] . ' as M
+                    on O.MemIdx = M.MemIdx		
+            where ML.OrderIdx = ?
+                and ML.OrderProdIdx = ?
+                and ML.ProdCodeSub = ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"            
         ';
 
         // 쿼리 실행

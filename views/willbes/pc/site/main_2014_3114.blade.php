@@ -68,9 +68,9 @@
                 </div>
                 <ul class="bestLec">
                     @for($i=1; $i<=4; $i++)
-                        @if(isset($data['arr_main_banner']['M_메인_N잡추천강좌'.$i]) === true)
+                        @if(isset($data['arr_main_banner']['메인_N잡추천강좌'.$i]) === true)
                             <li>
-                                {!! banner_html($data['arr_main_banner']['M_메인_N잡추천강좌'.$i]) !!}
+                                {!! banner_html($data['arr_main_banner']['메인_N잡추천강좌'.$i]) !!}
                             </li>
                         @endif
                     @endfor

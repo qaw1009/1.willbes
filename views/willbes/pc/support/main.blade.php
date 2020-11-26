@@ -69,19 +69,14 @@
                                     <li>
                                         <span class="tit">온라인 문의</span>
                                         <span class="num tx-light-blue">{{ $__cfg['CsTel'] or '1544-5006' }}</span>
-                                        <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="row-line">|</span>
                                     </li>
                                     <li>
                                         <span class="tit">교재 문의</span>
                                         <span class="num tx-light-blue">1544-4944</span>
-                                        <!--a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="row-line">|</span>
                                     </li>
                                     <li>
-                                        <!--span class="tit">윌비스 임용</span>
-                                        <span class="num tx-light-blue">1544-3169</span>
-                                        <a class="bnr_go" href="#none"><img src="{{ img_url('cs/icon_go.png') }}"></a-->
                                         <span class="tit">운영시간</span>
                                         <span class="time tx-light-blue">
                                             평일 {{ $__cfg['CsTime'] or '9:00 ~ 18:00' }}
@@ -102,10 +97,10 @@
                                     <div class="LeclistTable">
                                         <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
                                             <colgroup>
-                                                <col style="width: 130px;">
-                                                <col style="width: 115px;">
+                                                <col style="width: 120px;">
+                                                <col style="width: 110px;">
                                                 <col style="width: 155px;">
-                                                <col style="width: 260px;">
+                                                <col>
                                             </colgroup>
                                             <thead>
                                                 <tr>
@@ -123,6 +118,22 @@
                                                     <td class="w-time tx-left pl25">
                                                         평일 9:00~17:00<br/>
                                                         주말/공휴일 휴무
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-site" rowspan="2">임용</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-call">1544-3169</td>
+                                                    <td class="w-time tx-left pl25">
+                                                        평일 09:00~22:00<br/>
+                                                        주말/공휴일 09:00~18:00
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-call">1544-3169</td>
+                                                    <td class="w-time tx-left pl25">
+                                                        평일 09:00~22:00
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -158,17 +169,50 @@
                                                         일요일 9:00~20:00
                                                     </td>
                                                 </tr>
-                                                <!--tr>
-                                                    <td class="w-site">임용</td>
+                                                <tr>
+                                                    <td class="w-site" rowspan="2">고등고시</td>
                                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                    <td class="w-call">1544-3169</td>
+                                                    <td class="w-call">1544-5006</td>
                                                     <td class="w-time tx-left pl25">
-                                                        월~토 9:00~22:00<br/>
-                                                        일요일/공휴일 휴무
+                                                        평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                        주말/공휴일 휴무
                                                     </td>
-                                                </tr-->
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                    <td class="w-call">1544-1881</td>
+                                                    <td class="w-time tx-left pl25">평일/주말 9:00~18:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-site" rowspan="3">전문자격증</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-call">1544-5006</td>
+                                                    <td class="w-time tx-left pl25">
+                                                        평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                        주말/공휴일 휴무
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                  <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                                  <td class="w-call">신림(본원) 1544-4774</td>
+                                                  <td class="w-time tx-left pl25">평일/주말 8:00~18:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-call">강남(분원) 1544-3383</td>
+                                                    <td class="w-time tx-left pl25">평일/주말 8:00~18:00</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="w-site">고등고시</td>
+                                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                                    <td class="w-call">1544-5006</td>
+                                                    <td class="w-time tx-left pl25">
+                                                        평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                        주말/공휴일 휴무
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>

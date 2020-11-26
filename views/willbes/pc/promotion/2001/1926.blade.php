@@ -68,7 +68,7 @@
                 <area shape="rect" coords="226,1452,434,1517" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/50547?subject_idx=1004" target="_blank" alt="교수님 ">
             </map>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/dx4dJ9iEU3c?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/fdzMRbzjJbU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -197,20 +197,20 @@
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_03.jpg" alt="신광은 형사법은 차원이 다르다!">
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/cgsX8mR01WM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dx4dJ9iEU3c?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="youtube youtube2">
-                <iframe src="https://www.youtube.com/embed/-MxsOn8FKr4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/cgsX8mR01WM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="youtube youtube3">
-                <iframe src="https://www.youtube.com/embed/55o7INyZzG4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/-MxsOn8FKr4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>  
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_04.jpg" alt="신광은 형사법"> 
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/hwTmR3domFU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/55o7INyZzG4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>           
         </div>
 

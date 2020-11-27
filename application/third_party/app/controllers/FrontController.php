@@ -124,6 +124,8 @@ abstract class FrontController extends BaseController
         // 전체 사이트 캐쉬
         $all_site_cache = $this->getCacheItem('site');
 
+        var_dump($all_site_cache);
+
         // 현재 사이트 정보 캐쉬
         $site_cache = element($this->_site_key, $all_site_cache, []);
         if (empty($site_cache) === true) {

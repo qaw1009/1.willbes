@@ -7569,7 +7569,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .ActIndex.MainVisual {
     background: #fbfbfb;
     border-bottom: 1px solid #e5e5e5;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 .ActIndex.MainVisual .will-main-Tit {
     float: left;
@@ -7658,7 +7658,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-weight: 600;
 }
 .callBox ul li .time {
-    font-size: 14px;   
+    font-size: 14px;
 }
 .callBox ul li a.bnr_go {
     margin-left: 10px;
@@ -7821,9 +7821,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     position: absolute;
     top: 29px;
     right: 0;
-    z-index: 110;
+    z-index: 100;
     width: 700px;
-    height: 610px;
+    height: 800px;
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;
 }
@@ -7846,14 +7846,15 @@ ul li.profList .willbes-Layer-ProfileBox {
     font-size: 12px;
     padding: 20px 0;
 } 
+.willbes-Layer-CScenterBox .Layer-Cont {height: 700px;}
 .willbes-Layer-CScenterBox table tr th,
 .willbes-Layer-CScenterBox table tr td {
     font-size: 12px;
     font-weight: 300;
 }
 .willbes-Layer-CScenterBox table tr td {
-    line-height: 20px !important;
-    padding: 13px 0;
+    line-height: 1.5 !important;
+    padding: 8px 0 !important;
 }
 /*교재구매 > 강의정보*/
 .bookLecBtn {position: relative;}

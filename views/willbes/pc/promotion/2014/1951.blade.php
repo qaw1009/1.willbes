@@ -58,8 +58,8 @@
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="giftPopupWrap" id="giftPopupWrap" style="display:none;">
             <div class="giftPop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_rull_popup.png" alt="당첨팝업" usemap="#Map1698pop" border="0"/>
-                <map name="Map1698pop" id="Map1698pop">
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_rull_popup.png" alt="당첨팝업" usemap="#Map1951pop" border="0"/>
+                <map name="Map1951pop" id="Map1951pop">
                     <area shape="rect" coords="637,85,715,163" href="#none" onClick="closeWin('giftPopupWrap')" alt="닫기" />
                 </map>
                 {{-- 상품이미지 01 ~ 08 --}}

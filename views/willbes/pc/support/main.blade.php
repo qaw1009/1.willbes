@@ -202,7 +202,7 @@
                                                     <td class="w-time tx-left pl25">평일/주말 8:00~18:00</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="w-site">고등고시</td>
+                                                    <td class="w-site">N잡/어학/취업</td>
                                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                     <td class="w-call">1544-5006</td>
                                                     <td class="w-time tx-left pl25">

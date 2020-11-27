@@ -51,6 +51,14 @@
         width:450px; margin:0 auto; box-shadow:0 10px 0 rgba(45,62,81,1);}
         .wb_01 .golec a:hover {background:#fff}
 
+        .wb_02 {padding-bottom:100px}
+        .wb_02 ul {width:1010px; margin:0 auto}
+        .wb_02 li {display:block; float:left; width:50%; margin-bottom:50px;}         
+        .wb_02 .youtube {width:488px; margin:0 auto;}
+        .wb_02 .youtube div {margin-bottom:10px}
+        .wb_02 .youtube div span {font-size:16px; padding:5px 30px; border:2px solid #000; color:#000; border-radius:30px; display:inline-block}
+        .wb_02 .youtube iframe {width:488px; height:278px;}
+        .wb_02 ul:after {content:''; display:block; clear:both}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">   
@@ -328,7 +336,37 @@
             <div id="tab02"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_02.jpg" alt="찐합격수기 소방" /></div>
             <div id="tab03"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_03.jpg" alt="찐합격수기 9급" /></div>
             <div class="golec"><a href="https://willbesedu.willbes.net/pass/support/review/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/11/1947_01_txt.png" alt="찐합격수기 더보기" /></a></div>
-        </div>  
+        </div> 
+
+         <div class="evtCtnsBox wb_02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1947_02.jpg" alt="인천윌비스 공무원 합격자" />
+            <ul>
+                <li>                    
+                    <div class="youtube">
+                        <div><span>2019년 1차 최종합격생</span></div>
+                        <iframe src="https://www.youtube.com/embed/HVvraTegmuY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </li>
+                <li>                    
+                    <div class="youtube">
+                        <div><span>2019년 2차 최종합격생</span></div>
+                        <iframe src="https://www.youtube.com/embed/4UiP-Q5VMyw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </li>
+                <li>                    
+                    <div class="youtube">
+                        <div><span>2020년 소방 합격생</span></div>
+                        <iframe src="https://www.youtube.com/embed/n4CoEMmvbWQ?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </li>
+                <li>                    
+                    <div class="youtube">
+                        <div><span>2020년 최종 합격생</span></div>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1947_02_01.jpg" alt="2020년 최종 합격생" />
+                    </div>
+                </li>
+            </ul>
+         </div>
     </div>
     <!-- End Container -->
 

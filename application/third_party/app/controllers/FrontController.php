@@ -127,7 +127,6 @@ abstract class FrontController extends BaseController
         // 현재 사이트 정보 캐쉬
         $site_cache = element($this->_site_key, $all_site_cache, []);
         if (empty($site_cache) === true) {
-            logger('프런트 사이트캐시 없음', [], 'ERROR');
             redirect(app_url('/', 'www'));
         }
 

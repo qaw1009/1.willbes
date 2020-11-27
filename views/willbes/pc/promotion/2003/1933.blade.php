@@ -24,7 +24,7 @@
 
         .evt_01 {background:#F75C64;}
         
-        .evt_02 {background:#fff}
+        .evt_02 {background:#fff;padding-bottom:100px;}
         .evt_02 .title {width:1120px; font-size:35px;  margin:0 auto 20px; text-align:left; color:#464646}
         .evt_02 .evt02_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	
         .evt_02 .evt02_box .dis{color:#f35a61;vertical-align:baseline;}        

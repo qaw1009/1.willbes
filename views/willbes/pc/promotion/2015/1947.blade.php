@@ -361,7 +361,7 @@
                 </li>
                 <li>                    
                     <div class="youtube">
-                        <div><span>2020년 최종 합격생</span></div>
+                        <div><span>2021년 최종 합격생</span></div>
                         <img src="https://static.willbes.net/public/images/promotion/2020/11/1947_02_01.jpg" alt="2020년 최종 합격생" />
                     </div>
                 </li>

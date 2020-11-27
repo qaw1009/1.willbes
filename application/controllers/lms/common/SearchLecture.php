@@ -57,7 +57,8 @@ class SearchLecture extends \app\controllers\BaseController
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.CourseIdx' => $this->_reqP('search_course_idx'),
-                'C.CateCode' => $this->_reqP('cate_code')
+                'C.CateCode' => $this->_reqP('cate_code'),
+                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
             ]
         ];
 

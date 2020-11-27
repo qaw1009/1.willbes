@@ -47,11 +47,17 @@
             </div>
             <div class="form-group pt-10 pb-5">
                 <label class="control-label col-md-2 pt-5" for="search_professor">강사검색</label>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input type="text" class="form-control input-sm" id="search_professor" name="search_professor">
                 </div>
                 <div class="col-md-1"><label class="control-label pt-5 pl-30">조건</label></div>
-                <div class="col-md-6 form-inline">
+                <div class="col-md-7 form-inline">
+                    <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
+                        <option value="">대비학년도</option>
+                        @for($i=(date('Y')+2); $i>=2005; $i--)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
+                    </select>
                     <select class="form-control" id="search_course_idx" name="search_course_idx">
                         <option value="">과정</option>
                         @foreach($arr_course as $row)

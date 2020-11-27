@@ -77,7 +77,7 @@
                         <div class="item inline-block">
                             <select name="SchoolYear" id="SchoolYear" required="required" class="form-control" title="대비학년도">
                                 <option value="">대비학년도</option>
-                                @for($i=(date('Y')+1); $i>=2005; $i--)
+                                @for($i=(date('Y')+2); $i>=2005; $i--)
                                     <option value="{{$i}}" @if($data['SchoolYear'] == $i) selected="selected" @endif>{{$i}}</option>
                                 @endfor
                             </select>

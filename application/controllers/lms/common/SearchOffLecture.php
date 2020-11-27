@@ -47,6 +47,7 @@ class SearchOffLecture extends \app\controllers\BaseController
                 'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
                 'B.CourseIdx' => $this->_reqP('search_course_idx'),
                 'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
+                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),

@@ -33,6 +33,12 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         {!! html_site_select($site_code, 'site_code', 'site_code', 'hide', '운영 사이트', '', false, []) !!}
+                        <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
+                            <option value="">대비학년도</option>
+                            @for($i=(date('Y')+2); $i>=2005; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
                         <select class="form-control mr-2" id="search_lg_cate_code" name="search_lg_cate_code">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)

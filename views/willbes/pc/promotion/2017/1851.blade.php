@@ -274,30 +274,284 @@
                         <th>직강시기</th>
                         <th>교재명</th>
                       </tr>
-                        @if(empty($arr_base['register_list_prod_data']) === false)
-                            @foreach($arr_base['register_list_prod_data'] as $data)
-                                @if(empty($data['prod_data']) === false)
-                                    @foreach($data['prod_data'] as $row)
-                                      <tr>
-                                        <td><input type="checkbox" name="register_chk[]" value="{{$data['ErIdx']}}" data-subject-name="{{ $row['SubjectName'] }}"></td>
-                                        <td>{{ $row['SubjectName'] }}</td>
-                                        <td>{{ $row['ProfNickName'] }}</td>
-                                        <td>{{ $row['ProdName'] }}</td>
-                                        <td>{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</td>
-                                        <td>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</td>
-                                        <td>
-                                            @if(empty($row['ProdBookData']) === false)
-                                                @foreach($row['ProdBookData'] as $book_idx => $book_row)
-                                                    {{ $book_row['BookProvisionCcdName'] }}<br/>
-                                                    {{ $book_row['ProdBookName'] }}
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                @endif
-                            @endforeach
-                        @endif
+
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"></td>
+                            <td>교육학</td>
+                            <td>김차웅</td>
+                            <td>{{ $arr_base['register_list'][0]['Name'] or ''}}</td>
+                            <td>30강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>스토리텔링 교육학 1.2</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}"></td>
+                            <td>교육학</td>
+                            <td>이인재</td>
+                            <td>{{ $arr_base['register_list'][1]['Name'] or ''}}</td>
+                            <td>12강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>모둠 이인재 교육학 논술[이론편]</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}"></td>
+                            <td>교육학</td>
+                            <td>이인재</td>
+                            <td>{{ $arr_base['register_list'][2]['Name'] or ''}}</td>
+                            <td>13강</td>
+                            <td>2020년 3~4월</td>
+                            <td>모둠 이인재 교육학 논술[이론편]</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}"></td>
+                            <td>전공국어</td>
+                            <td>권보민</td>
+                            <td>{{ $arr_base['register_list'][3]['Name'] or ''}}</td>
+                            <td>8강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>프린트</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}"></td>
+                            <td>전공국어</td>
+                            <td>권보민</td>
+                            <td>{{ $arr_base['register_list'][4]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 3~4월</td>
+                            <td>프린트</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김유석</td>
+                            <td>{{ $arr_base['register_list'][5]['Name'] or ''}}</td>
+                            <td>9강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>영미시의 이해 4판 (2020년판)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김유석</td>
+                            <td>{{ $arr_base['register_list'][6]['Name'] or ''}}</td>
+                            <td>5강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>Power Reading Skills 4th&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김유석</td>
+                            <td>{{ $arr_base['register_list'][7]['Name'] or ''}}</td>
+                            <td>6강</td>
+                            <td>2020년 3~4월</td>
+                            <td>영미단편소설의 이해 (2020년판)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김유석</td>
+                            <td>{{ $arr_base['register_list'][8]['Name'] or ''}}</td>
+                            <td>5강</td>
+                            <td>2020년 3~4월</td>
+                            <td>Power Prose Writing&nbsp;(프린트 제공)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김영문</td>
+                            <td>{{ $arr_base['register_list'][9]['Name'] or ''}}</td>
+                            <td>3강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>2020) 김영문 영어학개론</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>김영문</td>
+                            <td>{{ $arr_base['register_list'][10]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 3~4월</td>
+                            <td>2020) 김영문 영어학개론</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>공훈</td>
+                            <td>{{ $arr_base['register_list'][11]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>2020) 공훈 영어학</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"></td>
+                            <td>영어교육론</td>
+                            <td>공훈</td>
+                            <td>{{ $arr_base['register_list'][12]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>Principles of Language Learning and Teaching (6판)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"></td>
+                            <td>전공영어</td>
+                            <td>공훈</td>
+                            <td>{{ $arr_base['register_list'][13]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 3~4월</td>
+                            <td>Teaching By    Principles</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"></td>
+                            <td>영어교육론</td>
+                            <td>공훈</td>
+                            <td>{{ $arr_base['register_list'][14]['Name'] or ''}}</td>
+                            <td>4강</td>
+                            <td>2020년 3~4월</td>
+                            <td>Appliend English    Phonology</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"></td>
+                            <td>전공수학</td>
+                            <td>김철홍</td>
+                            <td>{{ $arr_base['register_list'][15]['Name'] or ''}}</td>
+                            <td>25강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>미분기하학</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"></td>
+                            <td>수학교육론</td>
+                            <td>박태영</td>
+                            <td>{{ $arr_base['register_list'][16]['Name'] or ''}}</td>
+                            <td>6강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>수학교육신론 1,2</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"></td>
+                            <td>수학교육론</td>
+                            <td>박태영</td>
+                            <td>{{ $arr_base['register_list'][17]['Name'] or ''}}</td>
+                            <td>5강</td>
+                            <td>2020년 3~4월</td>
+                            <td>수학교육과정과 교재연구 / 자료</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}"></td>
+                            <td>도덕윤리</td>
+                            <td>김병찬</td>
+                            <td>{{ $arr_base['register_list'][18]['Name'] or ''}}</td>
+                            <td>14강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>서양·동양·한국윤리 (2020년 개정판)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}"></td>
+                            <td>도덕윤리</td>
+                            <td>김병찬</td>
+                            <td>{{ $arr_base['register_list'][19]['Name'] or ''}}</td>
+                            <td>14강</td>
+                            <td>2020년 3~4월</td>
+                            <td>응용윤리·정치·사회사상 (2020년 개정판)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}"></td>
+                            <td>전공음악</td>
+                            <td>다이애나</td>
+                            <td>{{ $arr_base['register_list'][20]['Name'] or ''}}</td>
+                            <td>22강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>마인드뱁(한끝맵)/종음셋/한줄정리(기본)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}"></td>
+                            <td>전공음악</td>
+                            <td>다이애나</td>
+                            <td>{{ $arr_base['register_list'][21]['Name'] or ''}}</td>
+                            <td>8강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>연주자를 위한 조성음악 분석 1,2</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}"></td>
+                            <td>전공역사</td>
+                            <td>최용림</td>
+                            <td>{{ $arr_base['register_list'][22]['Name'] or ''}}</td>
+                            <td>17강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>전공역사 이론서</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}"></td>
+                            <td>전공역사</td>
+                            <td>최용림</td>
+                            <td>{{ $arr_base['register_list'][23]['Name'] or ''}}</td>
+                            <td>16강</td>
+                            <td>2020년 3~4월</td>
+                            <td>임용역사 기출한자</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][24]['ErIdx'] or ''}}"></td>
+                            <td>전기전자통신</td>
+                            <td>최우영</td>
+                            <td>{{ $arr_base['register_list'][24]['Name'] or ''}}</td>
+                            <td>18강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>기초전기전자</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][25]['ErIdx'] or ''}}"></td>
+                            <td>정보컴퓨터</td>
+                            <td>송광진</td>
+                            <td>{{ $arr_base['register_list'][25]['Name'] or ''}}</td>
+                            <td>6강</td>
+                            <td>2020년 1~3월</td>
+                            <td>알기 쉽게 풀어가는 정보컴퓨터 일반과정 Ⅰ,Ⅱ</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][26]['ErIdx'] or ''}}"></td>
+                            <td>전공중국어</td>
+                            <td>정경미</td>
+                            <td>{{ $arr_base['register_list'][26]['Name'] or ''}}</td>
+                            <td>26강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>중국어 어학 기본이론서</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][27]['ErIdx'] or ''}}"></td>
+                            <td>전공중국어</td>
+                            <td>정경미</td>
+                            <td>{{ $arr_base['register_list'][27]['Name'] or ''}}</td>
+                            <td>23강</td>
+                            <td>2020년 1~2월 </td>
+                            <td>中国现当代文学史教程외    2종</td>
+                        </tr>
+
+{{--                        @if(empty($arr_base['register_list_prod_data']) === false)--}}
+{{--                            @foreach($arr_base['register_list_prod_data'] as $data)--}}
+{{--                                @if(empty($data['prod_data']) === false)--}}
+{{--                                    @foreach($data['prod_data'] as $row)--}}
+{{--                                      <tr>--}}
+{{--                                        <td><input type="checkbox" name="register_chk[]" value="{{$data['ErIdx']}}" data-subject-name="{{ $row['SubjectName'] }}"></td>--}}
+{{--                                        <td>{{ $row['SubjectName'] }}</td>--}}
+{{--                                        <td>{{ $row['ProfNickName'] }}</td>--}}
+{{--                                        <td>{{ $row['ProdName'] }}</td>--}}
+{{--                                        <td>{{ $row['wUnitLectureCnt'] }}강@if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false)/{{$row['wScheduleCount']}}강@endif</td>--}}
+{{--                                        <td>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</td>--}}
+{{--                                        <td>--}}
+{{--                                            @if(empty($row['ProdBookData']) === false)--}}
+{{--                                                @foreach($row['ProdBookData'] as $book_idx => $book_row)--}}
+{{--                                                    {{ $book_row['BookProvisionCcdName'] }}<br/>--}}
+{{--                                                    {{ $book_row['ProdBookName'] }}--}}
+{{--                                                @endforeach--}}
+{{--                                            @endif--}}
+{{--                                        </td>--}}
+{{--                                      </tr>--}}
+{{--                                    @endforeach--}}
+{{--                                @endif--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
                     </table>
               	</div>
                   <div class="tR">* 강의 신청전 페이지 하단의 유의사항을 반드시 확인하시기 바랍니다. </div>
@@ -338,6 +592,11 @@
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
+            @if(empty($register_count) === false)
+                alert('등록된 신청자 정보가 있습니다.');
+                return;
+            @endif
+
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
             var subject_name = '';
@@ -374,7 +633,7 @@
             }
 
             $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
-                subject_name = $(this).data('subject-name');
+                subject_name = $(this).parent().next().text();
                 if(subject_name != '교육학'){ // 전공
                     subject_name = subject_name.substr(0,2);
                 }

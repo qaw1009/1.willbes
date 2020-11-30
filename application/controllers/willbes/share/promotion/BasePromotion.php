@@ -103,10 +103,10 @@ class BasePromotion extends \app\controllers\FrontController
         //이벤트 신청리스트 조회
         $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
-        if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
-            $arr_base['register_list_prod_data'] = $this->_getRegisterListProdData($arr_base['register_list']);
-            $arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
-        }
+        //if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
+            //$arr_base['register_list_prod_data'] = $this->_getRegisterListProdData($arr_base['register_list']);
+            //$arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
+        //}
 
         // 신청리스트 참여 여부 체크
         $register_count = '';

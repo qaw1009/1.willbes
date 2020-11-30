@@ -105,7 +105,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
         if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
             $arr_base['register_list_prod_data'] = $this->_getRegisterListProdData($arr_base['register_list']);
-            $arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
+            //$arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
         }
 
         // 신청리스트 참여 여부 체크

@@ -183,43 +183,509 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php $prof_idx = ''; @endphp
-                                        @if(empty($arr_base['register_prof_group_data']) === false)
-                                            @foreach($arr_base['register_prof_group_data'] as $subject_idx => $group_data)
-                                                @if(empty($group_data) === false)
-                                                    @foreach($group_data as $key => $row)
-                                                        <tr>
-                                                            @if($key == 0)
-                                                                <td rowspan="{{ count($group_data) }}">{{ $row['SubjectName'] }}</td>
-                                                            @endif
-                                                            @if($prof_idx != $row['ProfIdx'])
-                                                                <td rowspan="{{ $row['prod_count'] }}">{{ $row['ProfNickName'] }}</td>
-                                                                @php $prof_idx = $row['ProfIdx']; @endphp
-                                                            @endif
-                                                            <td><input type="checkbox" name="register_chk[]" value="{{ $row['ErIdx'] }}"></td>
-                                                            <td class="tx-left">{{ $row['ProdName'] }}</td>
-                                                            <td>{{ $row['StudyPeriod'] }}일</td>
-                                                            <td>
-                                                                @if(empty($row['ProdPriceData']) === false)
-                                                                    @foreach($row['ProdPriceData'] as $price_row)
-                                                                        {{ number_format($price_row['SalePrice'], 0) }} →
-                                                                        <strong>{{ number_format($price_row['RealSalePrice'], 0) }}원</strong>   
-                                                                        <span>{{ number_format($price_row['SalePrice'] - $price_row['RealSalePrice'], 0) }}원 할인</span>
-                                                                    @endforeach
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                @if(empty($row['ProdBookData']) === false)
-                                                                    @foreach($row['ProdBookData'] as $book_row)
-                                                                        {{ $book_row['ProdBookName'] }} <br/>
-                                                                    @endforeach
-                                                                @endif
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        @endif
+                                    <tr>
+                                        <td rowspan="6">교육학</td>
+                                        <td rowspan="3">김차웅</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][0]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
+                                        <td>프린트 파일제공 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][1]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
+                                        <td>프린트 파일제공 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][2]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
+                                        <td>프린트 파일제공 </td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">이인재</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][3]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
+                                        <td>모둠 이인재 교육학논술 [이론편]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][4]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
+                                        <td>모둠 이인재 교육학논술 [이론편]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][5]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>
+                                            330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
+                                        <td>모둠 이인재 교육학논술+기출프린트</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6">전공국어</td>
+                                        <td rowspan="3">송원영</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][6]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
+                                        <td>송원영 국어교육론/문학교육론 <br>
+                                            송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][7]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
+                                        <td>송원영 국어교육론 교육과정    분석 및 정리<br>
+                                            송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][8]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>
+                                             380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
+                                        <td>송원영 국어교육론/문학교육론 프린트   <br>
+                                            송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">권보민</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][9]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
+                                        <td>현대국어문법 프린트(제공)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][10]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>
+                                             200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
+                                        <td>중세국어문법 프린트(제공)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][11]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
+                                        <td>현대문법&amp;중세문법 프린트 (제공)</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="11">전공영어</td>
+                                        <td rowspan="3">김영문</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][12]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>2020 김영문 영어학개론</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][13]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>2020 김영문 영어학개론 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][14]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>English Syntax and Argumentation by    Bas Aarts, 4th</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">공훈</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][15]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>Principles of Language Learning    and Teaching (6판)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][16]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>공감 영어학 기본이론</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][17]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>Teacher's Grammar of English (Ron    Cowen)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][18]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>Teaching By Principles</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][19]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>Appliend English Phonology</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][20]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>Transformational Grammar</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][21]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>영어학 기출 프린트(제공)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][22]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
+                                        <td>영어교육론 기출 프린트(제공)</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="6">전공수학</td>
+                                        <td rowspan="6">김철홍</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][23]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>200,000 → <strong>140,000원</strong>    <span>60,000원 할인</span></td>
+                                        <td>김철홍 위상수학(윌비스,제본)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][24]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][24]['Name'] or ''}}</td>
+                                        <td>40일</td>
+                                        <td>120,000 → <strong>84,000원</strong>    <span>36,000원 할인</span></td>
+                                        <td>프린트 파일제공 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][25]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][25]['Name'] or ''}}</td>
+                                        <td>100일</td>
+                                        <td>400,000 → <strong>280,000원</strong>  <span>120,000원 할인</span></td>
+                                        <td>김철홍 대수학</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][26]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][26]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>320,000 → <strong>224,000원</strong>   <span>96,000원 할인</span></td>
+                                        <td>김철홍 해석학</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][27]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][27]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>240,000 → <strong>168,000원</strong>   <span>72,000원 할인</span></td>
+                                        <td>김철홍 위상수학</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][28]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][28]['Name'] or ''}}</td>
+                                        <td>50일</td>
+                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
+                                        <td>김철홍 복소해석학</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">수학교육론</td>
+                                        <td rowspan="3">박태영</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][29]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][29]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
+                                        <td>수학교육신론1, 2&nbsp;(문음사, 2019 개정증보판)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][30]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][30]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
+                                        <td>수학교육과정과 교재연구 (경문사)+프린트&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][31]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][31]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
+                                        <td>박태영 수학교육론 기출 100선 교재 및 자료</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">생물교육론</td>
+                                        <td rowspan="2">양혜정</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][32]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][32]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>360,000 → <strong>288,000원</strong>   <span>72,000원 할인</span></td>
+                                        <td>2020 생물교육론 심화과정</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][33]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][33]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>360,000 → <strong>288,000원</strong>   <span>72,000원 할인</span></td>
+                                        <td>생명과학교육론 2판 (개별구매)</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">전공역사</td>
+                                        <td rowspan="3">최용림</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][34]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][34]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
+                                        <td>2021학년도 대비 교재</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][35]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][35]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
+                                        <td>2021학년도 대비 교재</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][36]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][36]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
+                                        <td>2021학년도 대비 교재</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="10">전공음악</td>
+                                        <td rowspan="10">다이애나</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][37]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][37]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>360,000 → <strong>252,000원</strong>   <span>108,000원 할인</span></td>
+                                        <td>다이애나 종.음.셋 / 한.끝.맵</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][38]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][38]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>360,000 → <strong>252,000원</strong>   <span>108,000원 할인</span></td>
+                                        <td>연주자를 위한 조성음악 분석 1,2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][39]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][39]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>음악교육학 총론/음악교육 기초</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][40]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][40]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>서양음악사 1,2</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][41]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][41]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>전통음악개론</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][42]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][42]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>다이애나 한줄정리 서양 1,2,3(전3권)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][43]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][43]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>다이애나 한줄정리 국악 1,2,3(전3권)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][44]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][44]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>다이애나 종합음악세트(총4권)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][45]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][45]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>다이애나 종합음악세트(총4권)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][46]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][46]['Name'] or ''}}</td>
+                                        <td>160일</td>
+                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
+                                        <td>다이애나 종합음악세트(총4권)</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="3">전기/전자/통신</td>
+                                        <td rowspan="3">최우영</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][47]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][47]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>360,000 → <strong>288,000원</strong>    <span>72,000원 할인</span></td>
+                                        <td>전기자기학</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][48]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][48]['Name'] or ''}}</td>
+                                        <td>150일</td>
+                                        <td>400,000 → <strong>320,000원</strong>   <span>80,000원 할인</span></td>
+                                        <td>무선공학 통신공학 통신이론 공통이론</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][49]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][49]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>400,000 → <strong>320,000원</strong>   <span>80,000원 할인</span></td>
+                                        <td>유레카 전자공학개론</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="4">정보컴퓨터</td>
+                                        <td rowspan="4">송광진</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][50]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][50]['Name'] or ''}}</td>
+                                        <td>60일</td>
+                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
+                                        <td>알기 쉽게 풀어가는 C언어 &amp; JAVA</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][51]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][51]['Name'] or ''}}</td>
+                                        <td>150일</td>
+                                        <td>600,000 → <strong>480,000원</strong>   <span>120,000원 할인</span></td>
+                                        <td>알기 쉽게 풀어가는 정보컴퓨터 일반과정 Ⅰ,Ⅱ</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][52]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][52]['Name'] or ''}}</td>
+                                        <td>80일</td>
+                                        <td>400,000 → <strong>320,000원</strong>    <span>80,000원 할인</span></td>
+                                        <td>정보컴퓨터 기출문제 분석집 (2020년 개정판</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][53]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][53]['Name'] or ''}}</td>
+                                        <td>150일</td>
+                                        <td>600,000 → <strong>480,000원</strong>   <span>120,000원 할인</span></td>
+                                        <td>알기 쉽게 풀어가는 정보컴퓨터 심화과정</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="8">전공중국어</td>
+                                        <td rowspan="8">정경미</td>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][54]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][54]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>2020 중국어 어학 기본이론서</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][55]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][55]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>중국현당대문학사교정[제본교재]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][56]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][56]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>2020 중국어 어학 기본이론서</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][57]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][57]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>특수 프린트</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][58]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][58]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>중국고대문학작품해설[제본교재]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][59]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][59]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>2020 중국어 어학 기본이론서</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][60]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][60]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
+                                        <td>중국현당대문학사교정[제본교재]</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][61]['ErIdx'] or ''}}"></td>
+                                        <td class="tx-left">{{ $arr_base['register_list'][61]['Name'] or ''}}</td>
+                                        <td>90일</td>
+                                        <td>250,000 → <strong>125,000원</strong>    <span>125,000원 할인</span></td>
+                                        <td>2020 전공중국어 기출문제해설서 (전3권)[개정판]</td>
+                                    </tr>
+
+{{--                                        @php $prof_idx = ''; @endphp--}}
+{{--                                        @if(empty($arr_base['register_prof_group_data']) === false)--}}
+{{--                                            @foreach($arr_base['register_prof_group_data'] as $subject_idx => $group_data)--}}
+{{--                                                @if(empty($group_data) === false)--}}
+{{--                                                    @foreach($group_data as $key => $row)--}}
+{{--                                                        <tr>--}}
+{{--                                                            @if($key == 0)--}}
+{{--                                                                <td rowspan="{{ count($group_data) }}">{{ $row['SubjectName'] }}</td>--}}
+{{--                                                            @endif--}}
+{{--                                                            @if($prof_idx != $row['ProfIdx'])--}}
+{{--                                                                <td rowspan="{{ $row['prod_count'] }}">{{ $row['ProfNickName'] }}</td>--}}
+{{--                                                                @php $prof_idx = $row['ProfIdx']; @endphp--}}
+{{--                                                            @endif--}}
+{{--                                                            <td><input type="checkbox" name="register_chk[]" value="{{ $row['ErIdx'] }}"></td>--}}
+{{--                                                            <td class="tx-left">{{ $row['ProdName'] }}</td>--}}
+{{--                                                            <td>{{ $row['StudyPeriod'] }}일</td>--}}
+{{--                                                            <td>--}}
+{{--                                                                @if(empty($row['ProdPriceData']) === false)--}}
+{{--                                                                    @foreach($row['ProdPriceData'] as $price_row)--}}
+{{--                                                                        {{ number_format($price_row['SalePrice'], 0) }} →--}}
+{{--                                                                        <strong>{{ number_format($price_row['RealSalePrice'], 0) }}원</strong>   --}}
+{{--                                                                        <span>{{ number_format($price_row['SalePrice'] - $price_row['RealSalePrice'], 0) }}원 할인</span>--}}
+{{--                                                                    @endforeach--}}
+{{--                                                                @endif--}}
+{{--                                                            </td>--}}
+{{--                                                            <td>--}}
+{{--                                                                @if(empty($row['ProdBookData']) === false)--}}
+{{--                                                                    @foreach($row['ProdBookData'] as $book_row)--}}
+{{--                                                                        {{ $book_row['ProdBookName'] }} <br/>--}}
+{{--                                                                    @endforeach--}}
+{{--                                                                @endif--}}
+{{--                                                            </td>--}}
+{{--                                                        </tr>--}}
+{{--                                                    @endforeach--}}
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
+{{--                                        @endif--}}
                                     </tbody>
                                 </table>
                             </div>
@@ -245,7 +711,7 @@
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
-            @if($register_count > 0)
+            @if(empty($register_count) === false)
                 alert('등록된 신청자 정보가 있습니다.');
                 return;
             @endif

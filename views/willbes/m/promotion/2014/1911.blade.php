@@ -80,9 +80,13 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_03.jpg" alt="" >
     </div> 
 
+    <div class="evtCtnsBox evt06">
+        <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_06.jpg" alt="" >
+    </div>
+
     <div class="evtCtnsBox evt04">
         <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_04.jpg" alt="" >
-    </div> 
+    </div>     
 
     <div class="evtCtnsBox evt05">
         <div class="evtCurri">
@@ -147,11 +151,7 @@
                 <li>1. 여러분의 라탄 입문을 축하합니다!</li>
             </ul>
         </div>
-    </div> 
-
-    <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_06.jpg" alt="" >
-    </div> 
+    </div>    
 
     <div class="evtCtnsBox evt07">
         <div class="evtFooter">

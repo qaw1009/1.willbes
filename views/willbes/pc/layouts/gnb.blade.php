@@ -88,7 +88,7 @@
                                         @endif  
                                         @if($__cfg['SiteGroupCode'] === '1011')
                                             <!--임용-->
-                                            <dl class="sns-Btn">
+                                            <dl class="sns-Btn mb10">
                                                 <dt>
                                                     <a href="https://www.instagram.com/ssam_willbes" target="_blank">
                                                         <img src="{{ img_url('gnb/icon_Instagram.png') }}" title="인스타그램">

@@ -6606,7 +6606,7 @@ ul li.profList .willbes-Layer-ProfileBox {
     width:250px;
 }
 .willbes-Prof-Profile-ssam .ProfName {color:#fff; background-color: #353e5e; text-align: center; font-size: 22px; height: 52px; line-height: 52px;}
-.willbes-Prof-Profile-ssam .ProfName span {color:#98fbf3}
+.willbes-Prof-Profile-ssam .ProfName span {color:#98fbf3; vertical-align: top;}
 .willbes-Prof-Profile-ssam .ProfCareer {height: 110px; overflow-y: auto; padding:10px; line-height:1.8; color:#646464}
 
 .willbes-Prof-Profile-ssam .prof-profile {

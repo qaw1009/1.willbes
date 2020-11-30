@@ -35,7 +35,7 @@
         .evtCurri li.cTitle {color:#414d4c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;} 
         .mt_15 {display:block;margin-top:15px;}
 
-        .evt06 {background:#fff}
+        .evt06 {background:#f8eddb}
 
         .evt07 {background:#E1E1E1}           
         .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;}
@@ -75,6 +75,10 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_03.jpg" alt="" >
+        </div> 
+
+        <div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_06.jpg" alt="" >
         </div> 
 
         <div class="evtCtnsBox evt04">
@@ -144,10 +148,6 @@
                     <li>1. 여러분의 라탄 입문을 축하합니다!</li>
                 </ul>
             </div>
-        </div> 
-
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_06.jpg" alt="" >
         </div> 
 
         <div class="evtCtnsBox evt07">

@@ -13,6 +13,7 @@
                         <li><a href="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" target="_blank">국립외교원</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3035', 'pass') }}" target="_blank">법원직</a></li>
                         <li><a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">PSAT</a></li>
+                        {{--<li><a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">임용 <span>N</span></a></li>--}}
                         <li><a href="{{ front_app_url('/home/index/cate/309002', 'job') }}" target="_blank">공인노무사</a></li>   
                         <li><a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a></li>                    
                         <li><a href="{{ front_app_url('/home/index/cate/309003', 'job') }}" target="_blank">감정평가사</a></li>   
@@ -26,7 +27,7 @@
                         <li><a href="{{ front_app_url('/home/index', 'lang') }}" target="_blank">어학</a></li>              
                         <li><a href="{{ front_app_url('/home/index', 'njob') }}" target="_blank">N잡/e창업 e-커머스</a></li>
                         <li><a href="{{ front_app_url('/home/index', 'willbesedu') }}" target="_blank">인천학원</a></li>
-                        <li><a href="{{ front_app_url('/home/index', 'book') }}" target="_blank">온라인서점</a></li>
+                        <li class="full"><a href="{{ front_app_url('/home/index', 'book') }}" target="_blank">온라인서점</a></li>
                     </ul>
                     <div class="etc">
                         <a href="#none" class="btnMainToggle">기타자격증 <span>+</span></a>

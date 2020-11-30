@@ -171,10 +171,9 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c1.png" alt="">
                     </div>
                     <div class="mt40">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c2.png" alt="" usemap="#Map3103A" border="0">
-                        <map name="Map3103A">
-                            <area shape="rect" coords="431,310,690,358" href="https://pass.willbes.net/promotion/index/cate/3103/code/1933" alt="강의보러가기">
-                        </map>
+                        <a href="https://pass.willbes.net/promotion/index/cate/3103/code/1933">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c2.png" alt="">
+                        </a>
                     </div>
                 </div>
                 <div id="tab05">

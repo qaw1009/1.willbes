@@ -81,13 +81,7 @@
             <map name="Map1951A">
                 <area shape="rect" coords="254,639,368,680" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2014" target="_blank" alt="신규가입">
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_02.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1951B" border="0"/>
-            <map name="Map1951B">
-                <area shape="rect" coords="365,916,428,980" href="https://www.instagram.com/" target="_blank" alt="인스타">
-                <area shape="rect" coords="461,916,526,981" href="https://www.facebook.com/" target="_blank" alt="페이스북">
-                <area shape="rect" coords="558,916,623,979" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank" alt="블로그">
-                <area shape="rect" coords="657,916,718,979" href="https://cafe.naver.com/" target="_blank" alt="네이버카페">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_02.jpg"/>
         </div>
 
         {{--기본댓글--}}

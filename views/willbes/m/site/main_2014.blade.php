@@ -232,7 +232,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black">스마트폰 하나만 있으면 나도 사업가, <strong class="tx-color">인스타마켓</strong></div>
+            <div class="will-listTi NSK-Black">스마트폰 하나로 해결, <strong class="tx-color">인스타마켓</strong></div>
             <ul class="bannerSt01">
                 @for($i=1; $i<=8; $i++)
                     <li>{!! banner('M_메인_인스타마켓'.$i, '', $__cfg['SiteCode'], '0') !!}</li>
@@ -250,7 +250,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black">채널기획ㆍ운영ㆍ편집가이드, <strong class="tx-color">유튜브</strong></div>
+            <div class="will-listTi NSK-Black">채널기획 · 운영 · 편집까지, <strong class="tx-color">유튜브</strong></div>
             <ul class="bannerSt01">
                 @for($i=1; $i<=4; $i++)
                     <li>{!! banner('M_메인_유튜브'.$i, '', $__cfg['SiteCode'], '0') !!}</li>
@@ -259,7 +259,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black">지식과 경험을 돈으로 바꾸는, <strong class="tx-color">커리어</strong></div>
+            <div class="will-listTi NSK-Black">지식과 경험을 N잡으로, <strong class="tx-color">커리어</strong></div>
             <ul class="bannerSt01">
                 @for($i=1; $i<=4; $i++)
                     <li>{!! banner('M_메인_커리어'.$i, '', $__cfg['SiteCode'], '0') !!}</li>

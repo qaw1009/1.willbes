@@ -598,10 +598,11 @@ body.memBody #Footer {
 .introBox3 h4 {padding:12px 0; font-size:16px; color:#fff; text-align: left;}
 .introBox3 h4 img {width:24px; vertical-align: middle; margin-right:5px; }
 .introBox3 .bigType li {display: inline; float:left; width:50%;}
-.introBox3 .bigType li a {display:block; padding:10px; border:1px solid #808080; margin:0 8px 8px 0; font-size:14px; color:#fff;}
+.introBox3 .bigType li.full {width: 100%;}
+.introBox3 .bigType li a {display:block; padding:10px; border:1px solid #808080; margin:0 8px 8px 0; font-size:14px; color:#fff; position: relative;}
 .introBox3 .bigType li a:active,
 .introBox3 .bigType li a:hover {background: #ffff00; border:1px solid #ffff00; color:#000}
-.introBox3 .bigType li a span {font-size: 8px; vertical-align: text-top; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
+.introBox3 .bigType li a span {position: absolute; top:10px; left:40px; font-size: 10px; vertical-align: text-top; animation:upDown 1s infinite;-webkit-animation:upDown 1s infinite;}
         @keyframes upDown{
         from{color:#fff}
         50%{color:#ff0000}

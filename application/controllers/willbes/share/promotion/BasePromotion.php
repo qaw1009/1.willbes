@@ -872,11 +872,13 @@ class BasePromotion extends \app\controllers\FrontController
         foreach ($new_prod_data as $subject_idx => $data){
             foreach ($data as $prof_idx => $arr){
                 foreach ($arr as $key => $val){
-                    $val['prod_count'] = count($arr);
-                    $val['ProdPriceData'] = $val['prod_data'][0]['ProdPriceData'];
-                    $val['ProdBookData'] = $val['prod_data'][0]['ProdBookData'];
-                    unset($val['prod_data']);
-                    $prof_group_data[$val['SubjectIdx']][] = $val;
+                    if(empty($val['prod_data']) === false){
+                        $val['prod_count'] = count($arr);
+                        $val['ProdPriceData'] = $val['prod_data'][0]['ProdPriceData'];
+                        $val['ProdBookData'] = $val['prod_data'][0]['ProdBookData'];
+                        unset($val['prod_data']);
+                        $prof_group_data[$val['SubjectIdx']][] = $val;
+                    }
                 }
             }
         }

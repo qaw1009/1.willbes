@@ -68,8 +68,8 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02_1.jpg" alt="" usemap="#Map1911A" border="0" id="Map1911A" >
             <map name="Map1911A">
-                <area shape="rect" coords="78,592,311,686" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
-                <area shape="rect" coords="410,592,639,684" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
+                <area shape="rect" coords="79,753,312,847" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
+                <area shape="rect" coords="411,753,640,845" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
             </map>
         </div> 
 

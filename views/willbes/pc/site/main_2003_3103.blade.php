@@ -87,7 +87,7 @@
         </div>
 
         <div class="evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01.jpg" alt="">
             <ul>
                 @for($i=1; $i<=12; $i++)
                     @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
@@ -97,18 +97,18 @@
                     @endif
                 @endfor
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_01_detail.gif" alt="" usemap="#Map3103a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01_detail.gif" alt="" usemap="#Map3103a" border="0">
             <map name="Map3103a" id="Map3103a">
                 <area shape="rect" coords="219,18,900,88" href="#to_go" />
             </map>
         </div>
 
         <div class="evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_02.jpg" />         
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_02.jpg" />         
         </div>
 
         <div class="evt_03" id="evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_03.jpg" usemap="#Map3103b" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03.jpg" usemap="#Map3103b" border="0" />
             <map name="Map3103b" id="Map3103b">
                 <area shape="rect" coords="129,346,548,522" href="javascript:go_PassLecture('173664');" alt="수강신청" />
                 <area shape="rect" coords="578,347,1000,523" href="javascript:go_PassLecture('173904');" alt="수강신청" />
@@ -123,11 +123,11 @@
         </div>
 
         <div class="evt_03_info">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_03_info.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03_info.jpg" />       
         </div>        
 
         <div class="evt_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_04.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_04.jpg" alt="">
             <div class="tabBox">
                 <ul class="tab">
                     <li><a href="#tab01" class="active">자료해석</a></li>
@@ -135,45 +135,57 @@
                     <li><a href="#tab03">언어논리</a></li>
                 </ul>
                 <div id="tab01" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c1.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c1.png" alt="">
                 </div>
                 <div id="tab02" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c2.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c2.png" alt="">
                 </div>
                 <div id="tab03" style="padding-top:40px;">                    
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c3.png" alt="">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab_c4.png" alt="" style="padding-top:40px;">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c3.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c4.png" alt="" style="padding-top:40px;">
                 </div>
             </div>
         </div>
 
         <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_05.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05.jpg" />       
         </div> 
 
          <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_05_mid.gif" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_mid.gif" />       
         </div>
 
          <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_05_bt.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_bt.jpg" />       
         </div> 
 
         <div class="evt_06" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_06.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_06.jpg" />       
             <div class="tabBox">
                 <ul class="tab">
                     <li><a href="#tab04" class="active">모의평가 전(2020년 10월~11월)</a></li>
                     <li><a href="#tab05">모의평가 후(2021년 1월~6월)</a></li>
                 </ul>
-                <div id="tab04" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c1.png" alt="">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c2.png" alt="" style="padding-top:40px;">
+                <div id="tab04">
+                    <div class="mt40">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c1.png" alt="">
+                    </div>
+                    <div class="mt40">
+                        <a href="https://pass.willbes.net/promotion/index/cate/3103/code/1933">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c2.png" alt="">
+                        </a>
+                    </div>
                 </div>
-                <div id="tab05" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c3.png" alt="">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c4.png" alt="" style="padding-top:40px;">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_tab2_c5.png" alt="" style="padding-top:40px;">
+                <div id="tab05">
+                    <div class="mt40">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c3.png" alt="">
+                    </div>
+                    <div class="mt40">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c4.png" alt="">
+                    </div>
+                    <div class="mt40">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c5.png" alt="">
+                    </div>
                 </div>
             </div>
         </div> 

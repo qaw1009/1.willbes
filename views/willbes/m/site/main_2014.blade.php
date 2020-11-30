@@ -13,7 +13,7 @@
         }
 
         .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:20px; text-align:left}
-        .evtCtnsBox .will-listTi > img {width:50px}
+        .evtCtnsBox .will-listTi > img {width:50px;vertical-align: middle;}
         .evtCtnsBox .will-listTi span {font-size: 16px; vertical-align: middle; color:#666; display:block}
 
         .njob2 .evt02 {padding:20px 36px;}
@@ -116,6 +116,7 @@
         .btnbuy a:hover {background:#fff; color:#3a99f0;}
         .btnbuy a.btnNotice { position:absolute; top:10px; right:0; width:30px}
         .btnbuy a.btnNotice img {width:100%}
+        .evtCtnsBox .will-listTi {font-size:20px; margin-bottom:30px; letter-spacing:-1px}
 
 
         /* Main Container */
@@ -134,9 +135,7 @@
             .evt05,
             .evt06,
             .evt07 {padding:40px 60px 0 40px;}
-            .evt08 {margin:40px auto 60px}  */
-            .evtCtnsBox .will-listTi > img {width:64px}
-            .evtCtnsBox .will-listTi {font-size:24px; margin-bottom:30px;}
+            .evt08 {margin:40px auto 60px}           
             .evtCtnsBox .will-listTi span {display:inline}
 
             .evt07 br {display:none}
@@ -146,12 +145,6 @@
             .btnbuy span {margin:0 5px}
             .evt07 .tel {font-size:18px;}
             .evt07 .tel br {display:none}
-        }
-
-        /* 태블릿 가로, PC */
-        @@media only all and (min-width: 1024px) {
-
-
         }
     </style>
 
@@ -250,7 +243,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="will-listTi NSK-Black">채널기획 · 운영 · 편집까지, <strong class="tx-color">유튜브</strong></div>
+            <div class="will-listTi NSK-Black">채널기획, 운영 편집, <strong class="tx-color">유튜브</strong></div>
             <ul class="bannerSt01">
                 @for($i=1; $i<=4; $i++)
                     <li>{!! banner('M_메인_유튜브'.$i, '', $__cfg['SiteCode'], '0') !!}</li>

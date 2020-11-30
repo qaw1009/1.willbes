@@ -81,18 +81,12 @@
             <map name="Map1951A">
                 <area shape="rect" coords="254,639,368,680" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2014" target="_blank" alt="신규가입">
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_02.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1951B" border="0"/>
-            <map name="Map1951B">
-                <area shape="rect" coords="365,916,428,980" href="https://www.instagram.com/" target="_blank" alt="인스타">
-                <area shape="rect" coords="461,916,526,981" href="https://www.facebook.com/" target="_blank" alt="페이스북">
-                <area shape="rect" coords="558,916,623,979" href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" target="_blank" alt="블로그">
-                <area shape="rect" coords="657,916,718,979" href="https://cafe.naver.com/" target="_blank" alt="네이버카페">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1951_02.jpg"/>
         </div>
 
-        {{--홍보url--}}
+        {{--기본댓글--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+            @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
 
         <div class="evtCtnsBox wb_02">
@@ -125,17 +119,16 @@
                         </ol>
                     </dd>
 
-                    <dt>소문내기 이벤트</dt>
+                    <dt>의지 보여주기! 댓글 이벤트</dt>
                     <dd>
                         <ol>
                             <li>본 이벤트는 로그인 후 참여 가능합니다.</li>
                             <li>이벤트 기간 : 2020.12.1.(화)~12.15.(화)<br>
                             - 경품 지급 안내 : 2020.12.17.(목) 윌비스 N잡 온라인 공지사항 참고</li>
-                            <li>이벤트 기간 외 참여 후 인증한 URL은 이벤트 정상 참여로 인정되지 않습니다.</li>
-                            <li>지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.</li>
+                            <li>이벤트 기간 외 참여 후 작성한 댓글은 이벤트 정상 참여로 인정되지 않습니다.</li>
                             <li>이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.</li>
-                            <li>다양한 커뮤니티에 다양한 내용으로 참여 시 당첨확률이 올라갑니다.</li>
-                            <li>소문내기 글 제목에 “윌비스“, “N잡” 키워드가 반드시 포함되어야 정상 참여로 인정됩니다.</li>                            
+                            <li>다양한 내용으로 다양한 의지를 담은 내용의 댓글 작성 시 당첨 확률이 높아집니다.</li>
+                            <li>이벤트 내용과 상관 없는 댓글 및 도배/무의미하거나 성의없는 댓글 등은 관리자에 의해 임의적으로 삭제될 수 있습니다.</li>                            
                         </ol>
                     </dd>
                 </dl>

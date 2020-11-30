@@ -480,7 +480,7 @@ class StudyComment extends BaseBoard
         $input_data = [
             'board' => [
                 'SiteCode' => element('site_code', $input),
-                'BmIdx' => $this->bm_idx,
+                'BmIdx' => element('bm_idx', $input, $this->bm_idx),
                 'SubjectIdx' => element('subject_idx', $input),
                 'ProfIdx' => element('prof_idx', $input),
                 'ProdApplyTypeCcd' => $prod_type_ccd,
@@ -602,5 +602,68 @@ class StudyComment extends BaseBoard
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    /**
+     * 수강후기 엑셀 업로드
+     */
+    public function excelUpload()
+    {
+        $result = null;
+        $input = [];
+        $arr_excel_key = [];
+
+        $rules = [
+            ['field' => 'excel_file', 'label' => '업로드파일', 'rules' => 'callback_validateFileRequired[excel_file]']
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $excel_data = $this->_getExcelData();
+
+        if(empty($excel_data) === false){
+            foreach ($excel_data as $num => $data){
+                if(empty($data) === false){
+                    if($num == 1){ // 배열 키 생성
+                        foreach ($data as $key => $val){
+                            if(empty($val) === false){
+                                $arr_excel_key[$val] = $key;
+                            }
+                        }
+                    }else{ // 배열 담기
+                        foreach ($arr_excel_key as $k => $v){
+                            if($k == 'cate_code'){
+                                if(strpos($data[$v],',') !== false){
+                                    $data[$v] = explode(',',$data[$v]);
+                                }else{
+                                    $data[$v] = [$data[$v]];
+                                }
+                            }
+
+                            $input[$k] = $data[$v];
+                        }
+                        $inputData = $this->_setInputData($input);
+                        $result = $this->_addBoard('add', $inputData);
+                    }
+                }
+            }
+        }
+
+        $this->json_result($result, '저장 되었습니다.', $result);
+    }
+
+    /**
+     * 엑셀데이터 파일 정보 추출
+     * @return array|bool
+     */
+    private function _getExcelData()
+    {
+        try {
+            $this->load->library('excel');
+            $data = $this->excel->readExcel($_FILES['excel_file']['tmp_name']);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return $data;
     }
 }

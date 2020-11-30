@@ -5,17 +5,14 @@
     <style type="text/css">
         .Container {
             width:100% !important;
-            min-width:1210px !important;
-            background:#fff;
+            min-width:1120px !important;
             padding:0 !important;
             background:#fff;
             text-align:center;
         }
 
-        .skyBanner {position:fixed; width:162px; top:200px; right:225px; z-index:10;}
-
-        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/2020/10/3103_top_bg.jpg) no-repeat center top; margin-top:20px;position:relative;}
-        .youtube {position:absolute; bottom:84px; left:50%;z-index:1;margin-left:-491px}
+        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg.jpg) no-repeat center top; margin-top:20px; position:relative; padding-bottom:100px}
+        .youtube {width:980px; margin:0 auto}
         .youtube iframe {width:980px; height:550px;}      
 
         .evt_01 {background:#fff;padding-bottom:100px;}
@@ -42,8 +39,8 @@
 
         .evt_04 {background:#F3F3F3;padding-bottom:150px;}
         .evt_04 .tabBox {position:relative; width:1120px; margin:0 auto;}
-        .evt_04 .tab li {display:inline; float:left; width:33.333333%;border:1px solid #1a1a1a;}
-        .evt_04 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px}
+        .evt_04 .tab li {display:inline; float:left; width:33.333333%;}
+        .evt_04 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; border:1px solid #1a1a1a; margin-right:1px}
         .evt_04 .tab li a:hover,
         .evt_04 .tab li a.active {background:#9b1f29; color:#fff;}
         .evt_04 .tab li:last-child a {margin:0}
@@ -53,8 +50,8 @@
 
         .evt_06 {background:#F6F6F6;padding-bottom:125px;}
         .evt_06 .tabBox {position:relative; width:1120px; margin:0 auto;}
-        .evt_06 .tab li {display:inline; float:left; width:50%;border:1px solid #1a1a1a;}
-        .evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px}
+        .evt_06 .tab li {display:inline; float:left; width:50%;}
+        .evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px; border:1px solid #1a1a1a;}
         .evt_06 .tab li a:hover,
         .evt_06 .tab li a.active {background:#9b1f29; color:#fff;}
         .evt_06 .tab li:last-child a {margin:0}
@@ -71,7 +68,6 @@
         .guide_box dd:after {content:""; display:block; clear:both}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}   
         .guide_box .infoTit {font-size:20px;}  
-
     </style>
 
 
@@ -80,16 +76,11 @@
                 @include('willbes.pc.layouts.partial.site_menu')
         </div>
 
-        {{--
-        <div class="skyBanner">       
-            <a href="https://pass.willbes.net/support/notice/show/cate/3103?board_idx=245818" target="_blank" alt="지금 바로 확인하기">           
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_sky.png" />   
-            </a>        
-        </div>
-        --}}
-
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_top.jpg" />    
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_top.jpg" usemap="#Map3103" border="0" />
+            <map name="Map3103">
+                <area shape="rect" coords="307,836,789,943" href="/promotion/index/cate/3103/code/1933" alt="50%할인">
+            </map>    
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>           
@@ -116,11 +107,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_02.jpg" />         
         </div>
 
-        <div class="evt_03">
+        <div class="evt_03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/3103_03.jpg" usemap="#Map3103b" border="0" />
             <map name="Map3103b" id="Map3103b">
                 <area shape="rect" coords="129,346,548,522" href="javascript:go_PassLecture('173664');" alt="수강신청" />
-                <area shape="rect" coords="578,347,1000,523" href="javascript:go_PassLecture('173904');" alt="수강신청" />>
+                <area shape="rect" coords="578,347,1000,523" href="javascript:go_PassLecture('173904');" alt="수강신청" />
             </map>         
             <div class="check" id="chkInfo">   
                 <label>

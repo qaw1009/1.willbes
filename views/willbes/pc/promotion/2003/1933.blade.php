@@ -25,7 +25,7 @@
         .evt_01 {background:#F75C64;}
         
         .evt_02 {background:#fff;padding-bottom:100px;}
-        .evt_02 .title {width:1120px; font-size:35px;  margin:0 auto 20px; text-align:left; color:#464646}
+        .evt_02 .title {width:1120px; font-size:25px;  margin:0 auto 20px; text-align:left; color:#464646}
         .evt_02 .evt02_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	
         .evt_02 .evt02_box .dis{color:#f35a61;vertical-align:baseline;}        
         .evt_02 .evt02_box .evt{color:#fff;vertical-align:baseline;border-radius:30px;background:#f35a61;padding:0 10px;}
@@ -46,7 +46,7 @@
 		<div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1933_02.jpg" alt="" />
             <div class="evt02_box" id="apply">       
-            <div class="title NSK-Black" style="padding-top:50px;"><span class="dis">50%할인</span> <span class="evt">EVENT1</span> 7급 PSAT CORE 특강 PASS </div>                 
+            <div class="title NSK-Black" style="padding:75px 0 25px;"><span class="dis">50%할인</span> <span class="evt">EVENT1</span> 7급 PSAT CORE 특강 PASS </div>                 
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif  
@@ -55,7 +55,7 @@
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif                    
             </div>
-		</div>
+		</div> 
 
 	</div>
     <!-- End Container -->

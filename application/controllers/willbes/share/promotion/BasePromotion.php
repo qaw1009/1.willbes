@@ -108,6 +108,13 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
         }
 
+        // 신청리스트 참여 여부 체크
+        $register_count = '';
+        if(empty($arr_promotion_params['register_chk_yn']) === false && $arr_promotion_params['register_chk_yn'] == 'Y'){
+            $arr_condition = ['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]];
+            $register_count = $this->eventFModel->getRegisterMember($arr_condition);
+        }
+
         //인원 제한 체크를 위한 특강별 회원 수
         $arr_base['register_member_list'] = [];
         if (empty($arr_base['register_list']) === false) {
@@ -209,6 +216,7 @@ class BasePromotion extends \app\controllers\FrontController
             'lec_type' => $this->_lec_type_ccd,
             'pattern_ccd' => $this->_pattern_ccd,
             'survey_count' => $survey_count,
+            'register_count' => $register_count,
         ], false);
     }
 

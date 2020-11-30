@@ -342,7 +342,7 @@
                         </li>
                         <li>
                             <strong>교원임용</strong>
-                            <a href="http://ssam.willbes.net" target="_blank">노량진</a>
+                            <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">노량진</a>
                         </li>
                         <li>
                             <strong>고등고시</strong>

@@ -47,9 +47,9 @@
                         <div>
                             <h5>ㆍ 교원임용</h5>
                             <ul>
-                                <li><a href="#none" class="favor-cate-each" data-key="ssam_1" data-url="http://ssam.willbes.net/main/index.html">교육학</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="ssam_2" data-url="http://ssam.willbes.net/main/index.html">유아.초등</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="ssam_3" data-url="http://ssam.willbes.net/main/index.html">중등</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="ssam_1" data-url="{{ front_app_url('/home/index', 'ssam') }}">교육학</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="ssam_2" data-url="{{ front_app_url('/home/index', 'ssam') }}">유아.초등</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="ssam_3" data-url="{{ front_app_url('/home/index', 'ssam') }}">중등</a></li>
                             </ul>
                         </div>
                         <div>
@@ -186,9 +186,9 @@
                         <tr>
                             <th scope="row">임용</th>
                             <td colspan="3">
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">교육학</a>
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">유아.초등</a>
-                                <a href="http://ssam.willbes.net/main/index.html" target="_blank">중등</a>
+                                <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">교육학</a>
+                                <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">유아.초등</a>
+                                <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">중등</a>
                             </td>
                             <th>어학</th>
                             <td><a href="{{ front_app_url('/home/index/cate/3093', 'lang') }}" target="_blank">G-TELP</a></td>
@@ -342,7 +342,7 @@
                         </li>
                         <li>
                             <strong>교원임용</strong>
-                            <a href="http://ssam.willbes.net" target="_blank">노량진</a>
+                            <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">노량진</a>
                         </li>
                         <li>
                             <strong>고등고시</strong>

@@ -245,6 +245,11 @@
         function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
+            @if($register_count > 0)
+                alert('등록된 신청자 정보가 있습니다.');
+                return;
+            @endif
+
             var _url = '{!! front_url('/event/registerStore') !!}';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {

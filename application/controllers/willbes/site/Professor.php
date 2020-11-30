@@ -788,8 +788,12 @@ class Professor extends \app\controllers\FrontController
         $arr_prof_idx = $arr_on_off_code['ProfIdx'];    // 온라인, 학원 교수식별자 셋팅
         $data = [];
 
-        // 사이트별 특강 과정식별자
-        $arr_special_course_idx = ['2001' => '1010', '2002' => '1046', '2017' => '1216', '2018' => '1225'];
+        // 사이트별 특강 과정식별자 ---> 개발서버 / 실서버 과정코드가 다른 문제로 아래와 같이 분기
+        if(in_array(ENVIRONMENT, ['local','development'])) {
+            $arr_special_course_idx = ['2001' => '1010', '2002' => '1046', '2017' => '1216', '2018' => '1225'];
+        } else {
+            $arr_special_course_idx = ['2001' => '1010', '2002' => '1046', '2017' => '1326', '2018' => '1336'];
+        }
 
         // 특강반 온라인 단강좌 조회
         if (empty($arr_prof_idx['on']) === false) {

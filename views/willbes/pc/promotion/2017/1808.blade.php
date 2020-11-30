@@ -100,560 +100,136 @@
         </div>
 
         <div class="eventWrap event03">
-        	<form id="brdpost" name="brdpost" method="post" action="" enctype="multipart/form-data">
-            <div class="event03Box">
-            	<img src="https://static.willbes.net/public/images/promotion/2020/09/200608_03.jpg" alt="환승이벤트"/>
-                <div class="event03-txt01 mB50">
-                	<ul class="info">
-                    	<li>
-                        개인정보 수집 이용 목적  <br />
-                        - 본 이벤트의 대상자(타학원 수강이력이 있는 수험생) 확인 및 각종 문의사항 응대<br />
-                        - 통계분석 및 기타 마케팅에 활용<br />
-                        - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공<br />
-                    	</li>
-                        <li>개인정보 수집 항목<br />
-                        - 필수항목 : 성명, 윌비스 임용 ID, 연락처, 타학원의 수강이력 인증파일 </li>
-                        <li>개인정보 이용기간 및 보유기간<br />
-                        - 본사의 이용 목적 달성되었거나, 신청자의 해지요청 및 삭제요청 시 바로 파기 </li>
-                        <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br />
-                        - 개인정보 수집에 동의하지 않으시는 경우 수강료 할인 및 기타 서비스 이용에 제한이 있을 수 있습니다.</li>
-                        <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                        <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
-                    </ul>
-                    <input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
 
-                    <h5 class="mt50">타학원 수강이력 인증 <span>* 타학원 수강이력 인증 파일은 수강기간이 명시되어 있는 <strong>수강증과 수강확인증</strong>만 가능합니다.</span></h5>
-                    <div class="evt_table">
-                        <table>
-                            <col width="190" />
-                            <col width="180" />
-                            <col width="150" />
-                            <col width="200" />
-                            <col width="150" />
-                            <col width="180" />
-                            <tbody>
-                                <tr>
-                                    <th>이름</th>
-                                    <td>홍길동</td>                                    
-                                    <th>윌비스ID</th>
-                                    <td>willbes</td>
-                                    <th>연락처</th>
-                                    <td><input type="text" id="subjectText" name="subjectText" value=""/></td>
-                                </tr>
-                                <tr>
-                                    <th>타학원 수강이력<br> 인증파일</th>
-                                    <td colspan="5">
-                                        <input type="file" id="uploadFile" name="uploadFile" style="width:60%" />
-                                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/09/200608_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> *10MB 이하의 이미지 파일(png, jpg, gif, bmp)
-                                    </td>
-                                </tr>
-                            </tbody>                            
-                        </table>
-                        <input type="hidden" id="event_code" name="event_code" value="200429"/>
-                    </div>
+                <div class="event03Box">
+                    <img src="https://static.willbes.net/public/images/promotion/2020/09/200608_03.jpg" alt="환승이벤트"/>
+                    <div class="event03-txt01 mB50">
+                        <ul class="info">
+                            <li>
+                            개인정보 수집 이용 목적  <br />
+                            - 본 이벤트의 대상자(타학원 수강이력이 있는 수험생) 확인 및 각종 문의사항 응대<br />
+                            - 통계분석 및 기타 마케팅에 활용<br />
+                            - 윌비스 임용고시학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공<br />
+                            </li>
+                            <li>개인정보 수집 항목<br />
+                            - 필수항목 : 성명, 윌비스 임용 ID, 연락처, 타학원의 수강이력 인증파일 </li>
+                            <li>개인정보 이용기간 및 보유기간<br />
+                            - 본사의 이용 목적 달성되었거나, 신청자의 해지요청 및 삭제요청 시 바로 파기 </li>
+                            <li>신청자의 개인정보 수집 및 활용 동의 거부 시<br />
+                            - 개인정보 수집에 동의하지 않으시는 경우 수강료 할인 및 기타 서비스 이용에 제한이 있을 수 있습니다.</li>
+                            <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
+                            <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
+                        </ul>
+                        <input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
 
-                    <h5 class="mT50">강좌선택<span>* 윌비스임용의 환승할인 이벤트는 인강만 진행하고 있습니다. (강의신청시, 확인해 주시기 바랍니다)</span></h5>
-
-                    <div id="tab01">
-                    	<div class="evt_tableA">
-							<table>
-                                <col width="8%">
-                                <col width="7%">
-                                <col width="5%">
-                                <col/>
-                                <col width="6%">
-                                <col width="16%">
-                                <col width="24%">
-                                <thead>
-                                    <tr>
-                                        <th>과목명</th>
-                                        <th>교수명</th>
-                                        <th>선택</th>
-                                        <th>강좌명</th>
-                                        <th>기간</th>
-                                        <th>수강료</th>
-                                        <th>교재명</th>
-                                    </tr>
-                                </thead>
+                        <h5 class="mt50">타학원 수강이력 인증 <span>* 타학원 수강이력 인증 파일은 수강기간이 명시되어 있는 <strong>수강증과 수강확인증</strong>만 가능합니다.</span></h5>
+                        <div class="evt_table">
+                            <table>
+                                <col width="190" />
+                                <col width="180" />
+                                <col width="150" />
+                                <col width="200" />
+                                <col width="150" />
+                                <col width="180" />
                                 <tbody>
-                                <input type="hidden" id="subject" name="subject" value=""/>
-                                <input type="hidden" id="hits" name="hits" value=""/>
-                                <input type="hidden" id="eventType" name="eventType" value=""/>
                                     <tr>
-                                        <td rowspan="6">교육학</td>
-                                        <td rowspan="3">김차웅</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="1" id="sub01"/></td>
-                                        <td class="tx-left">2020년(1~2월) 교육학 입문이론 </td>
-                                        <td>80일</td>
-                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
-                                        <td>프린트 파일제공 </td>
+                                        <th>이름</th>
+                                        <td>{{ sess_data('mem_name') }}</td>
+                                        <th>윌비스ID</th>
+                                        <td>{{ sess_data('mem_id') }}</td>
+                                        <th>연락처</th>
+                                        <td><input type="text" id="register_tel" name="register_tel" value="{{ sess_data('mem_phone') }}" maxlength="11" /></td>
                                     </tr>
                                     <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="2" id="sub02"/></td>
-                                        <td class="tx-left">2020년(3~4월) 교육학 기본이론</td>
-                                        <td>80일</td>
-                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
-                                        <td>프린트 파일제공 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="3" id="sub03"/></td>
-                                        <td class="tx-left">2020년(5~6월) 교육학 원본 알짜 306 논점쓰기(1)</td>
-                                        <td>80일</td>
-                                        <td>330,000 → <strong>264,000원</strong>    <span>66,000원 할인</span></td>
-                                        <td>프린트 파일제공 </td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3">이인재</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="4" id="sub04"/></td>
-                                        <td class="tx-left">2020년(1~2월) 이인재 교육학 [입문] 기초 논술 이론반</td>
-                                        <td>80일</td>
-                                        <td>330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
-                                        <td>모둠 이인재 교육학논술 [이론편]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="5" id="sub05"/></td>
-                                        <td class="tx-left">2020년(3~4월) 이인재 교육학 기초 심화반</td>
-                                        <td>80일</td>
-                                        <td>330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
-                                        <td>모둠 이인재 교육학논술 [이론편]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="6" id="sub06"/></td>
-                                        <td class="tx-left">2020년(5~6월) 이인재 교육학 기출 분석 및 이론반</td>
-                                        <td>80일</td>
-                                        <td>
-                                        330,000 → <strong>165,000원</strong>  <span>165,000원 할인</span></td>
-                                        <td>모둠 이인재 교육학논술+기출프린트</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="6">전공국어</td>
-                                        <td rowspan="3">송원영</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="7" id="sub07"/></td>
-                                        <td class="tx-left">2020년(1~2월) 국어/문학교육론 이론정리</td>
-                                        <td>90일</td>
-                                        <td>380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
-                                        <td>송원영 국어교육론/문학교육론 <br>
-                                        송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="8" id="sub08"/></td>
-                                        <td class="tx-left">2020년(3~4월) 국어/문학교육론 교육과정 정리 및 문학작품 문석</td>
-                                        <td>90일</td>
-                                        <td>380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
-                                        <td>송원영 국어교육론 교육과정    분석 및 정리<br>
-                                        송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="9" id="sub09"/></td>
-                                        <td class="tx-left">2020년(5~6월) 국어/문학교육론 교육과정 적용, 구체화 및…</td>
-                                        <td>90일</td>
-                                        <td>
-                                         380,000 → <strong>323,000원</strong>    <span>57,000원 할인</span></td>
-                                        <td>송원영 국어교육론/문학교육론 프린트   <br>
-                                        송원영 국어교육론/문학교육론 기출해설(배움출판)</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3">권보민</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="10" id="sub10"/></td>
-                                        <td class="tx-left">2020년(1~2월) 현대국어문법 디딤돌 기초반</td>
-                                        <td>90일</td>
-                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
-                                        <td>현대국어문법 프린트(제공)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="11" id="sub11"/></td>
-                                        <td class="tx-left">2020년(3~4월) 중세문법 디딤돌 기초반</td>
-                                        <td>90일</td>
-                                        <td>
-                                         200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
-                                        <td>중세국어문법 프린트(제공)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="12" id="sub12"/></td>
-                                        <td class="tx-left">2020년(5~6월) 현대국어문법과 중세국어문법 디딤돌 심화반</td>
-                                        <td>90일</td>
-                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
-                                        <td>현대문법&amp;중세문법 프린트 (제공)</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="11">전공영어</td>
-                                        <td rowspan="3">김영문</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="13" id="sub13"/></td>
-                                        <td class="tx-left">2020년(1~2월) 김영문 영어학 기본이론반(통사론)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>2020 김영문 영어학개론</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="14" id="sub14"/></td>
-                                        <td class="tx-left">2020년(3~4월) 김영문 영어학 기본이론반(학교문법, 음운론, …)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>2020 김영문 영어학개론 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="15" id="sub15"/></td>
-                                        <td class="tx-left">2020년(5~6월) 김영문 영어학 필수원서특강(Syntax)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>English Syntax and Argumentation by    Bas Aarts, 4th</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="8">공훈</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="16" id="sub16"/></td>
-                                        <td class="tx-left">2020년(1~2월) 공훈 영어교육론Ⅰ (PLLT)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>Principles of Language Learning    and Teaching (6판)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="17" id="sub17"/></td>
-                                        <td class="tx-left">2020년(1~2월) 공훈 영어학 기본이론반</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>공감 영어학 기본이론</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="18" id="sub18"/></td>
-                                        <td class="tx-left">2020년(1~2월) 공훈TG(Teacher's Grammar) 특강</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>Teacher's Grammar of English (Ron    Cowen)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="19" id="sub19"/></td>
-                                        <td class="tx-left">2020년(3~4월) 공훈 영어교육론 심화이론반(TBP)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>Teaching By Principles</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="20" id="sub20"/></td>
-                                        <td class="tx-left">2020년(3~4월) 공훈 음성/음운론 심화이론반 (AEP)</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>Appliend English Phonology</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="21" id="sub21"/></td>
-                                        <td class="tx-left">2020년(5~6월) 공훈 Transformational Grammar 원서특강</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>Transformational Grammar</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="22" id="sub22"/></td>
-                                        <td class="tx-left">2020년(5~6월) 공훈 영어학 기출문제분석반</td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>영어학 기출 프린트(제공)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="23" id="sub23"/></td>
-                                        <td class="tx-left">2020년(5~6월) 공훈 영어교육론 기출문제분석반 </td>
-                                        <td>60일</td>
-                                        <td>140,000 →  <strong>98,000원</strong>    <span>42,000원 할인</span></td>
-                                        <td>영어교육론 기출 프린트(제공)</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="6">전공수학</td>
-                                        <td rowspan="6">김철홍</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="24" id="sub24"/></td>
-                                        <td class="tx-left">2020년(1~2월) 미분기하학 마스터반 </td>
-                                        <td>60일</td>
-                                        <td>200,000 → <strong>140,000원</strong>    <span>60,000원 할인</span></td>
-                                        <td>김철홍 위상수학(윌비스,제본)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="25" id="sub25"/></td>
-                                        <td class="tx-left">2020년(02월) 미분기하학 문제풀이반</td>
-                                        <td>40일</td>
-                                        <td>120,000 → <strong>84,000원</strong>    <span>36,000원 할인</span></td>
-                                        <td>프린트 파일제공 </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="26" id="sub26"/></td>
-                                        <td class="tx-left">2020년(3~4월) 대수학 마스터반(기본이론+문제풀이)</td>
-                                        <td>100일</td>
-                                        <td>400,000 → <strong>280,000원</strong>  <span>120,000원 할인</span></td>
-                                        <td>김철홍 대수학</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="27" id="sub27"/></td>
-                                        <td class="tx-left">2020년(3~4월) 해석학 마스터반 (기본이론+문제풀이반)</td>
-                                        <td>80일</td>
-                                        <td>320,000 → <strong>224,000원</strong>   <span>96,000원 할인</span></td>
-                                        <td>김철홍 해석학</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="28" id="sub28"/></td>
-                                        <td class="tx-left">2020년(5~6월) 위상수학 마스터반(기본이론+문제풀이) </td>
-                                        <td>60일</td>
-                                        <td>240,000 → <strong>168,000원</strong>   <span>72,000원 할인</span></td>
-                                        <td>김철홍 위상수학</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="29" id="sub29"/></td>
-                                        <td class="tx-left">2020년(5~6월) 복소해석학 마스터반 (기본이론+문제풀이) </td>
-                                        <td>50일</td>
-                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
-                                        <td>김철홍 복소해석학</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3">수학교육론</td>
-                                        <td rowspan="3">박태영</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="30" id="sub30"/></td>
-                                        <td class="tx-left">2020년(1~2월) 신기한(신론과 기출을 결합한) 이론반-19개정</td>
-                                        <td>80일</td>
-                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
-                                        <td>수학교육신론1, 2&nbsp;(문음사, 2019 개정증보판)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="31" id="sub31"/></td>
-                                        <td class="tx-left">2020년(3~4월) 수학교육과정과 교재연구</td>
-                                        <td>80일</td>
-                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
-                                        <td>수학교육과정과 교재연구 (경문사)+프린트&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="32" id="sub32"/></td>
-                                        <td class="tx-left">2020년(5~6월) 임용수학기출 100선</td>
-                                        <td>80일</td>
-                                        <td>200,000 → <strong>140,000원</strong>   <span>60,000원 할인</span></td>
-                                        <td>박태영 수학교육론 기출 100선 교재 및 자료</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2">생물교육론</td>
-                                        <td rowspan="2">양혜정</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="52" id="sub52"/></td>
-                                        <td class="tx-left">2020년(5~6월) 생물교육론 심화과정</td>
-                                        <td>80일</td>
-                                        <td>360,000 → <strong>288,000원</strong>   <span>72,000원 할인</span></td>
-                                        <td>2020 생물교육론 심화과정</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="53" id="sub53"/></td>
-                                        <td class="tx-left">2020년(2~3월) 생물교육론 기본과정: 생명과학교육론</td>
-                                        <td>80일</td>
-                                        <td>360,000 → <strong>288,000원</strong>   <span>72,000원 할인</span></td>
-                                        <td>생명과학교육론 2판 (개별구매)</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3">전공역사</td>
-                                        <td rowspan="3">최용림</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="33" id="sub33"/></td>
-                                        <td class="tx-left">2020년(1~2월) 임용역사 이론반</td>
-                                        <td>90일</td>
-                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
-                                        <td>2021학년도 대비 교재</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="34" id="sub34"/></td>
-                                        <td class="tx-left">2020년(3~4월) 임용역사 심화이론</td>
-                                        <td>90일</td>
-                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
-                                        <td>2021학년도 대비 교재</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="35" id="sub35"/></td>
-                                        <td class="tx-left">2020년(5~6월) 임용역사 기출문제분석</td>
-                                        <td>90일</td>
-                                        <td>280,000 → <strong>168,000원</strong>   <span>112,000원 할인</span></td>
-                                        <td>2021학년도 대비 교재</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="10">전공음악</td>
-                                        <td rowspan="10">다이애나</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="66" id="sub66"/></td>
-                                        <td class="tx-left">2020년(1~2월) 전공음악 기본이론</td>
-                                        <td>80일</td>
-                                        <td>360,000 → <strong>252,000원</strong>   <span>108,000원 할인</span></td>
-                                        <td>다이애나 종.음.셋 / 한.끝.맵</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="67" id="sub67"/></td>
-                                        <td class="tx-left">2020년(1~2월) 전공음악 화성학</td>
-                                        <td>80일</td>
-                                        <td>360,000 → <strong>252,000원</strong>   <span>108,000원 할인</span></td>
-                                        <td>연주자를 위한 조성음악 분석 1,2</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="68" id="sub68"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 개론서(음악교육론)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>음악교육학 총론/음악교육 기초</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="69" id="sub69"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 개론서(서양음악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>서양음악사 1,2</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="70" id="sub70"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 개론서(국악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>전통음악개론</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="71" id="sub71"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 한줄정리(서양음악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>다이애나 한줄정리 서양 1,2,3(전3권)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="72" id="sub72"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 한줄정리(국악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>다이애나 한줄정리 국악 1,2,3(전3권)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="73" id="sub73"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 종음셋(음악교육론)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>다이애나 종합음악세트(총4권)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="74" id="sub74"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 종음셋(서양음악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>다이애나 종합음악세트(총4권)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="75" id="sub75"/></td>
-                                        <td class="tx-left">2020년(3~6월) 전공음악 종음셋(국악)</td>
-                                        <td>160일</td>
-                                        <td>190,000 → <strong>133,000원</strong>   <span>57,000원 할인</span></td>
-                                        <td>다이애나 종합음악세트(총4권)</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3">전기/전자/통신</td>
-                                        <td rowspan="3">최우영</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="76" id="sub76"/></td>
-                                        <td class="tx-left">2020년(1~2월) 회로이론/전기자기학 [전기/전자/통신 공통과정]</td>
-                                        <td>90일</td>
-                                        <td>360,000 → <strong>288,000원</strong>    <span>72,000원 할인</span></td>
-                                        <td>전기자기학</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="77" id="sub77"/></td>
-                                        <td class="tx-left">2020년(3~6월) 통신이론+문제풀이</td>
-                                        <td>150일</td>
-                                        <td>400,000 → <strong>320,000원</strong>   <span>80,000원 할인</span></td>
-                                        <td>무선공학 통신공학 통신이론 공통이론</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="78" id="sub78"/></td>
-                                        <td class="tx-left">2020년(3~5월) 전자회로(전자공학) [전기/전자/통신 공통과정]</td>
-                                        <td>90일</td>
-                                        <td>400,000 → <strong>320,000원</strong>   <span>80,000원 할인</span></td>
-                                        <td>유레카 전자공학개론</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="4">정보컴퓨터</td>
-                                        <td rowspan="4">송광진</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="36" id="sub36"/></td>
-                                        <td class="tx-left">2020 정보컴퓨터 내용학 C언어 특강(2019 개정)</td>
-                                        <td>60일</td>
-                                        <td>200,000 → <strong>160,000원</strong>    <span>40,000원 할인</span></td>
-                                        <td>알기 쉽게 풀어가는 C언어 &amp; JAVA</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="37" id="sub37"/></td>
-                                        <td class="tx-left">2020년(1~3월) 정보컴퓨터 내용학 일반과정</td>
-                                        <td>150일</td>
-                                        <td>600,000 → <strong>480,000원</strong>   <span>120,000원 할인</span></td>
-                                        <td>알기 쉽게 풀어가는 정보컴퓨터 일반과정 Ⅰ,Ⅱ</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="38" id="sub38"/></td>
-                                        <td class="tx-left">2020년(3~4월) 정보컴퓨터 내용학    기출문제분석</td>
-                                        <td>80일</td>
-                                        <td>400,000 → <strong>320,000원</strong>    <span>80,000원 할인</span></td>
-                                        <td>정보컴퓨터 기출문제 분석집 (2020년 개정판</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="39" id="sub39"/></td>
-                                        <td class="tx-left">2020년(4~6월) 정보컴퓨터 내용학    심화과정</td>
-                                        <td>150일</td>
-                                        <td>600,000 → <strong>480,000원</strong>   <span>120,000원 할인</span></td>
-                                        <td>알기 쉽게 풀어가는 정보컴퓨터 심화과정</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="8">전공중국어</td>
-                                        <td rowspan="8">정경미</td>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="54" id="sub54"/></td>
-                                        <td class="tx-left">2020년(1~2월) 임용중국어 기본이론반(Part1)</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>2020 중국어 어학 기본이론서</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="55" id="sub55"/></td>
-                                        <td class="tx-left">2020년(1~2월) 임용중국어 기본독해반(Part1)</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>중국현당대문학사교정[제본교재]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="56" id="sub56"/></td>
-                                        <td class="tx-left">2020년(3~4월) 임용충국어 기본이론반(Part2)</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>2020 중국어 어학 기본이론서</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="57" id="sub57"/></td>
-                                        <td class="tx-left">2020년(3~4월) 임용중국어 단원별 문제풀이반</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>특수 프린트</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="58" id="sub58"/></td>
-                                        <td class="tx-left">2020년(3~4월) 임용중국어 기본독해반(Part2)</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>중국고대문학작품해설[제본교재]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="59" id="sub59"/></td>
-                                        <td class="tx-left">2020년(5~6월) 임용중국어 심화이론반</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>2020 중국어 어학 기본이론서</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="60" id="sub60"/></td>
-                                        <td class="tx-left">2020년(5~6월) 임용중국어 심화독해반</td>
-                                        <td>90일</td>
-                                        <td>340,000 → <strong>170,000원</strong>    <span>170,000원 할인</span></td>
-                                        <td>중국현당대문학사교정[제본교재]</td>
-                                    </tr>
-                                    <tr>
-                                        <td><input onclick="CountChecked(this)" name="user_sel_subject" type="checkbox" value="61" id="sub61"/></td>
-                                        <td class="tx-left">2020년(5~6월) 임용중국어 기출문제분석 특강</td>
-                                        <td>90일</td>
-                                        <td>250,000 → <strong>125,000원</strong>    <span>125,000원 할인</span></td>
-                                        <td>2020 전공중국어 기출문제해설서 (전3권)[개정판]</td>
+                                        <th>타학원 수강이력<br> 인증파일</th>
+                                        <td colspan="5">
+                                            <input type="file" id="attach_file" name="attach_file" style="width:60%"/>&nbsp;&nbsp;
+                                            <a href="javascript:del_file();"><img src="https://static.willbes.net/public/images/promotion/2020/09/200608_btn_del.png" style="vertical-align:middle !important" alt="삭제"></a> *10MB 이하의 이미지 파일(png, jpg, gif, bmp)
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <input type="hidden" id="event_code" name="event_code" value="200429"/>
                         </div>
-                        <div class="btnBox">
-                            <a href="javascript:fn_save2();">신청하기</a>
+
+                        <h5 class="mT50">강좌선택<span>* 윌비스임용의 환승할인 이벤트는 인강만 진행하고 있습니다. (강의신청시, 확인해 주시기 바랍니다)</span></h5>
+
+                        <div id="tab01">
+                            <div class="evt_tableA">
+                                <table>
+                                    <col width="8%">
+                                    <col width="7%">
+                                    <col width="5%">
+                                    <col/>
+                                    <col width="6%">
+                                    <col width="16%">
+                                    <col width="24%">
+                                    <thead>
+                                        <tr>
+                                            <th>과목명</th>
+                                            <th>교수명</th>
+                                            <th>선택</th>
+                                            <th>강좌명</th>
+                                            <th>기간</th>
+                                            <th>수강료</th>
+                                            <th>교재명</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php $prof_idx = ''; @endphp
+                                        @if(empty($arr_base['register_prof_group_data']) === false)
+                                            @foreach($arr_base['register_prof_group_data'] as $subject_idx => $group_data)
+                                                @if(empty($group_data) === false)
+                                                    @foreach($group_data as $key => $row)
+                                                        <tr>
+                                                            @if($key == 0)
+                                                                <td rowspan="{{ count($group_data) }}">{{ $row['SubjectName'] }}</td>
+                                                            @endif
+                                                            @if($prof_idx != $row['ProfIdx'])
+                                                                <td rowspan="{{ $row['prod_count'] }}">{{ $row['ProfNickName'] }}</td>
+                                                                @php $prof_idx = $row['ProfIdx']; @endphp
+                                                            @endif
+                                                            <td><input type="checkbox" name="register_chk[]" value="{{ $row['ErIdx'] }}"></td>
+                                                            <td class="tx-left">{{ $row['ProdName'] }}</td>
+                                                            <td>{{ $row['StudyPeriod'] }}일</td>
+                                                            <td>
+                                                                @if(empty($row['ProdPriceData']) === false)
+                                                                    @foreach($row['ProdPriceData'] as $price_row)
+                                                                        {{ number_format($price_row['SalePrice'], 0) }} →
+                                                                        <strong>{{ number_format($price_row['RealSalePrice'], 0) }}원</strong>   
+                                                                        <span>{{ number_format($price_row['SalePrice'] - $price_row['RealSalePrice'], 0) }}원 할인</span>
+                                                                    @endforeach
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if(empty($row['ProdBookData']) === false)
+                                                                    @foreach($row['ProdBookData'] as $book_row)
+                                                                        {{ $book_row['ProdBookName'] }} <br/>
+                                                                    @endforeach
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="btnBox">
+                                <a href="javascript:fn_submit();">신청하기</a>
+                            </div>
                         </div>
                     </div>
-				</div>
 
-            </div>
+                </div>
             </form>
         </div><!--//event04-->
 
@@ -662,4 +238,57 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script>
+        var $regi_form_register = $('#regi_form_register');
+
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+                alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
+                $regi_form_register.find('input[name="is_chk"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="register_tel"]').val()) {
+                alert('연락처를 입력해 주세요.');
+                $regi_form_register.find('input[name="register_tel"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('재학생 인증 파일을 첨부해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
+                alert('강좌를 선택해 주세요.');
+                return;
+            }
+
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length > 3) {
+                alert('강좌를 3개까지 선택해 주세요.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return; }
+            ajaxSubmit($regi_form_register, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert(ret.ret_msg);
+                    location.reload();
+                }
+            }, showValidateError, null, false, 'alert');
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+                return;
+            }
+        }
+    </script>
 @stop

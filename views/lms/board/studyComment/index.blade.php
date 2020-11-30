@@ -354,4 +354,52 @@
             });
         });
     </script>
+
+
+    {{-- 수강후기 엑셀등록 --}}
+    @php
+        if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
+            $arr_auth_admin_idx = ['1062', '1130', '1350', '1344'];
+        } else {
+            $arr_auth_admin_idx = ['1062', '1130', '1506', '1452'];
+        }
+    @endphp
+
+    @if(in_array(sess_data('admin_idx'),$arr_auth_admin_idx) === true)
+        <form id="excel_upload_form" name="excel_upload_form" method="POST" onsubmit="return false;">
+            {!! csrf_field() !!}
+            <div class="form-group form-group-sm form-group-bordered">
+                <label class="control-label col-md-1">엑셀 업로드</label>
+                <div class="col-md-11 form-inline">
+                    <input type="file" id="excel_file" name="excel_file" class="form-control" title="송장엑셀파일" value="">
+                    <button type="button" name="btn_file_upload" class="btn btn-primary btn-sm" onClick="excel_upload()">엑셀 업로드</button>
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            var $excel_form = $('#excel_upload_form');
+            function excel_upload(){
+
+                if (typeof $excel_form.find("#excel_file")[0].files[0] === 'undefined') {
+                    alert('엑셀파일을 선택해 주세요.');
+                    return;
+                }
+
+                var _url = '{{ site_url("/board/{$boardName}/excelUpload/") }}' + getQueryString();
+                var data = new FormData();
+                data.append('{{ csrf_token_name() }}', $excel_form.find('input[name="{{ csrf_token_name() }}"]').val());
+                data.append('_method', 'POST');
+                data.append('excel_file', $excel_form.find('input[name="excel_file"]')[0].files[0]);
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST', 'json', true);
+
+            }
+        </script>
+    @endif
 @stop

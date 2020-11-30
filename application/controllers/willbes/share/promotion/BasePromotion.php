@@ -82,7 +82,7 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
-        if(config_app('SiteGroupCode') == '1011'){ // 임용
+        if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
             $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
             $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
         }
@@ -103,8 +103,9 @@ class BasePromotion extends \app\controllers\FrontController
         //이벤트 신청리스트 조회
         $arr_condition = ['EQ' => ['A.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.IsUse' => 'Y']];
         $arr_base['register_list'] = $this->eventFModel->listEventForRegister($arr_condition);
-        if(empty($arr_base['register_list']) === false){
+        if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
             $arr_base['register_list_prod_data'] = $this->_getRegisterListProdData($arr_base['register_list']);
+            $arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
         }
 
         //인원 제한 체크를 위한 특강별 회원 수
@@ -833,7 +834,8 @@ class BasePromotion extends \app\controllers\FrontController
      * @param array $register_list
      * @return mixed
      */
-    private function _getRegisterListProdData($register_list = []){
+    private function _getRegisterListProdData($register_list = [])
+    {
         foreach ($register_list as $key => $val){
             if(empty($val['LearnPatternCcd']) === false && empty($val['ProdCode']) === false && $this->_pattern_ccd[$val['LearnPatternCcd']] == 'only'){
                 $register_list[$key]['prod_data'] = $this->_getEventProductGroup($val['LearnPatternCcd'],[$val['ProdCode']]);
@@ -852,6 +854,36 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         return $register_list;
+    }
+
+    /**
+     * 이벤트 신청리스트 교수 그룹핑(단강좌)
+     * @param array $register_list_prod_data
+     * @return mixed
+     */
+    private function _getProfGroupData($register_list_prod_data=[])
+    {
+        $new_prod_data = [];
+        $prof_group_data = [];
+        foreach ($register_list_prod_data as $key => $val){
+            $new_prod_data[$val['SubjectIdx']][$val['ProfIdx']][] = $val;
+        }
+
+        foreach ($new_prod_data as $subject_idx => $data){
+            foreach ($data as $prof_idx => $arr){
+                foreach ($arr as $key => $val){
+                    if(empty($val['prod_data']) === false){
+                        $val['prod_count'] = count($arr);
+                        $val['ProdPriceData'] = $val['prod_data'][0]['ProdPriceData'];
+                        $val['ProdBookData'] = $val['prod_data'][0]['ProdBookData'];
+                        unset($val['prod_data']);
+                        $prof_group_data[$val['SubjectIdx']][] = $val;
+                    }
+                }
+            }
+        }
+
+        return $prof_group_data;
     }
 
     /**

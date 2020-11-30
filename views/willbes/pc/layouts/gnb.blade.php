@@ -58,7 +58,7 @@
                                         @endif
                                         @if($__cfg['SiteGroupCode'] === '1008')
                                         <!--n잡-->
-                                        <dl class="sns-Btn">
+                                        <dl class="sns-Btn mb10">
                                             <dt>
                                                 <a href="https://www.youtube.com/channel/UC2jUfowhznI9aNF7iA5vnIA" target="_blank">
                                                     <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">

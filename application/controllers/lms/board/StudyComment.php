@@ -631,6 +631,13 @@ class StudyComment extends BaseBoard
                         }
                     }else{ // 배열 담기
                         foreach ($arr_excel_key as $k => $v){
+                            if($k == 'review_reg_date'){
+                                if(strpos($data[$v],'/') !== false){
+                                    $date = explode('/',$data[$v]);
+                                    $data[$v] = $date[2] . '-' . $date[0] . '-' . $date[1];
+                                }
+                            }
+
                             if($k == 'cate_code'){
                                 if(strpos($data[$v],',') !== false){
                                     $data[$v] = explode(',',$data[$v]);

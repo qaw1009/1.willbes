@@ -224,7 +224,8 @@ class EventFModel extends WB_Model
             A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, 
             IFNULL(B.MemCount, \'0\') AS MemCount,
             C.ProdCode,
-            D.LearnPatternCcd
+            D.LearnPatternCcd,
+            E.ProfIdx, E.ProfNickName, E.SubjectIdx, E.SubjectName, E.ProdName, E.StudyPeriod
             ';
         $from = "
             FROM {$this->_table['event_register']} AS A
@@ -235,6 +236,7 @@ class EventFModel extends WB_Model
             ) AS B ON A.ErIdx = B.ErIdx
             LEFT JOIN {$this->_table['event_register_r_product']} AS C ON A.ErIdx = C.ErIdx AND C.IsStatus = 'Y'
             LEFT JOIN {$this->_table['product_lecture']} AS D ON C.ProdCode = D.ProdCode 
+            LEFT JOIN {$this->_table['product_on_lecture']} AS E ON D.ProdCode = E.ProdCode AND E.IsSaleEnd = 'N' AND E.IsUse = 'Y' AND E.SaleStatusCcd = '618001' AND E.LecSaleType = 'N' AND E.wIsUse = 'Y'
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

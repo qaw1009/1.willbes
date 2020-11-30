@@ -527,6 +527,16 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
+     * 임용[학원] 메인페이지 없음
+     * @param string $cate_code
+     * @param array $arr_campus
+     */
+    private function _getSite2018Data($cate_code = '', $arr_campus = [])
+    {
+        redirect(front_url('/home/index', false, true));
+    }
+
+    /**
      * 메인 배너
      * @param int $cate_code
      * @return array

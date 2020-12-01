@@ -378,6 +378,15 @@
             </div>
         </div>
 
+        @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
+        <div class="widthAutoFull NSK mb20 c_both">
+            <a href="{{ front_app_url('/classroom/home/gotoSsam/', 'www', false, true) }}" class="btnStA" target="_blank">
+                윌비스 임용
+                <p class="tx18"><strong class="NSK-Black tx-yellow">이전 내강의실</strong> 바로가기</p>
+            </a>
+        </div>
+        @endif
+
         <div class="goTopbtn">
             <a href="javascript:link_go();">
                 <img src="{{ img_url('m/main/icon_top.png') }}">

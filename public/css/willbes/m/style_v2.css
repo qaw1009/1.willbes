@@ -1356,6 +1356,8 @@ body.memBody #Footer {
 .ssam .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
 .ssam .bestLecBox:after {content:""; display:block; clear:both}
 
+.ssam .w-Guide-Ssam {padding:0 10px;}
+
 .ssam .examInfo li {display: inline; float:left; width:25%; margin-bottom:0}
 .ssam .examInfo li a {display:block; text-align:center; font-size: 15px; border-right:1px solid #e4e4e4; letter-spacing: -1px;}
 .ssam .examInfo li img {display:block; width:70%; max-width: 92px; margin:0 auto 10px; }
@@ -4315,7 +4317,7 @@ body.memBody #Footer {
     top: 50px;
     left: 50%;
     margin-left:-48%;
-    margin-top:-10%;
+    margin-top:-20%;
     width: 96%;
     height: auto;
     z-index: 110;    
@@ -4352,6 +4354,7 @@ body.memBody #Footer {
 }
 .willbes-Layer-CurriBox .Layer-Cont {
     overflow-y: auto;
+    height: 500px;
 }
 
 /* subContainer : Prof : willbes-Layer-Replynotice */

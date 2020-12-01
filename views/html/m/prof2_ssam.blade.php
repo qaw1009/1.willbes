@@ -665,7 +665,7 @@
             </a>
             <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
             <div class="Layer-Cont">
-                <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3510.JPG"/>
+                <img src="https://lms.willbes.net/public/uploads/willbes/board/92/2020/1008/board_297951_01_20201008155552.jpg"/>
             </div>
         </div>
         <div class="dim" onclick="closeWin('LayerCurriculum')"></div>

@@ -4312,10 +4312,10 @@ body.memBody #Footer {
     display: none;
     background: #fff;
     position: absolute;
-    top: 50px;
+    top: 50px !important;
     left: 50%;
     margin-left:-48%;
-    margin-top:-20%;
+    margin-top:0;
     width: 96%;
     height: auto;
     z-index: 110;    

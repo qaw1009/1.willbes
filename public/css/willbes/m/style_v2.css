@@ -1356,6 +1356,8 @@ body.memBody #Footer {
 .ssam .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
 .ssam .bestLecBox:after {content:""; display:block; clear:both}
 
+.ssam .w-Guide-Ssam {padding:0 10px;}
+
 .ssam .examInfo li {display: inline; float:left; width:25%; margin-bottom:0}
 .ssam .examInfo li a {display:block; text-align:center; font-size: 15px; border-right:1px solid #e4e4e4; letter-spacing: -1px;}
 .ssam .examInfo li img {display:block; width:70%; max-width: 92px; margin:0 auto 10px; }
@@ -4276,6 +4278,7 @@ body.memBody #Footer {
     margin-top:-310px;
     width: 96%;
     height: 620px;
+    overflow-y: auto;
     z-index: 110;    
     border: 1px solid #2f2f2f;
     padding: 20px 25px 30px;

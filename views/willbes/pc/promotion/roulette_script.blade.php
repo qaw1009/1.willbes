@@ -49,7 +49,7 @@
         });
     }
 
-    function startRoulette() {
+    function startRoulette(img_url,img_extension) {
         var roulette_code = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
         var _url = '{{ front_url('/roulette/store/') }}' + roulette_code;
         var _data = {};
@@ -59,8 +59,14 @@
             if (ret.ret_cd) {
                 var segmentNumber = ret.ret_data.ret_msg;   // The segment number should be in response.
                 if (segmentNumber) {
-                    //console.log('ret', ret);
-                    ret_prod_img = (ret.ret_data.ret_prod_img ? ret.ret_data.ret_prod_img : '')
+
+                    if(img_url && img_extension){
+                        // 룰렛 당첨 이미지 변경
+                        ret_prod_img = img_url + '' + segmentNumber + '.' + img_extension;
+                    }else{
+                        ret_prod_img = (ret.ret_data.ret_prod_img ? ret.ret_data.ret_prod_img : '')
+                    }
+
                     $("#temp_prod_num").val(segmentNumber);
                     var stopAt = theWheel.getRandomForSegment(segmentNumber);
                     // Important thing is to set the stopAngle of the animation before stating the spin.

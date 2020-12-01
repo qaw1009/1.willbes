@@ -56,4 +56,7 @@ body {
         </div>     
 	</div>
 </body>
+<script>
+    location.replace('/');
+</script>
 </html>

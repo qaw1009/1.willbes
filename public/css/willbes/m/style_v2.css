@@ -4315,7 +4315,7 @@ body.memBody #Footer {
     top: 50px;
     left: 50%;
     margin-left:-48%;
-    margin-top:-10%;
+    margin-top:-20%;
     width: 96%;
     height: auto;
     z-index: 110;    
@@ -4352,6 +4352,7 @@ body.memBody #Footer {
 }
 .willbes-Layer-CurriBox .Layer-Cont {
     overflow-y: auto;
+    height: 500px;
 }
 
 /* subContainer : Prof : willbes-Layer-Replynotice */
@@ -4606,8 +4607,9 @@ span.calendar_btn {
 
 /*임용가이드*/
 .w-Guide-Ssam {
-    padding:0 20px; margin-bottom:30px
+    padding:0 20px; margin-bottom:30px;
 }
+.ssam .w-Guide-Ssam {padding:0 10px;}
 .w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#2b4ab8; line-height:30px;}
 .w-Guide-Ssam .tabBox {position:relative; margin-bottom: 30px;}
 .w-Guide-Ssam .tabShow {border-top:1px solid #dcdcdc; border-left:1px solid #dcdcdc;}

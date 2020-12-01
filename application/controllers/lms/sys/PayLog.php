@@ -12,7 +12,10 @@ class PayLog extends \app\controllers\BaseController
         'cancel_stats' => ['PgMid', 'CancelType'],
     ];
     private $_codes = [
-        'PgMid' => ['willbes015' => '동영상(willbes015)', 'willbes515' => '교재(willbes515)', 'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트상점아이디'],
+        'PgMid' => [
+            'willbes015' => '동영상(willbes015)', 'willbes515' => '교재(willbes515)', 'willbes018' => '임용동영상(willbes018)', 'willbes518' => '임용교재(willbes518)',
+            'willbes006' => '인천학원(willbes006)', 'INIpayTest' => '테스트상점아이디'
+        ],
         'PayType' => ['PA' => '결제요청', 'CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불', 'MP' => '결제요청(모바일)'],
         'CancelType' => ['CA' => '결제취소', 'NC' => '망취소', 'RP' => '부분환불'],
         'DepositType' => ['PC' => 'PC', 'MO' => '모바일'],

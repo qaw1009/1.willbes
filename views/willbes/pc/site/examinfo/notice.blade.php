@@ -14,7 +14,7 @@
                         <table>
                             <tbody>
                             <tr>
-                                <th rowspan="10">2020<BR>
+                                <th rowspan="10">2021<BR>
                                     학년도 </th>
                                 <th>지역</th>
                                 <th>유아 · 초등</th>

@@ -29,7 +29,7 @@
                         @forelse($curriculum as $row)
                             <li>
                                 <div class="tt1">
-                                    @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
+                                    @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002')
                                         @if($lec['IsOpenwUnitNum'] == 'Y')
                                             {{$row['wUnitNum']}}회
                                         @endif

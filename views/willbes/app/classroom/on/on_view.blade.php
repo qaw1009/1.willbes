@@ -96,7 +96,7 @@
                                         <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
                                         <td class="w-data tx-left">
                                             <div class="w-tit mb10">
-                                                @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002' && $lec['SiteCode'] != '2003' && $lec['SiteCode'] != '2004')
+                                                @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002')
                                                     @if($lec['IsOpenwUnitNum'] == 'Y')
                                                         {{$row['wUnitNum']}}회
                                                     @endif

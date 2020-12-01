@@ -4668,6 +4668,9 @@ span.calendar_btn {
 .w-Guide-Ssam .professor_con > .txt02{margin:0}
 .w-Guide-Ssam .professor_con > img{margin:55px 0 25px}
 
+.btnStA {margin:0 auto; display:block; text-align: center; color:#fff !important; background-color:#005699; font-size:1rem; padding:10px 0; line-height: 1.4;}
+
+
 /* iPhone 5/SE */
 @media only screen and (max-width: 374px) {
     .width25p {

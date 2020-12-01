@@ -1356,8 +1356,6 @@ body.memBody #Footer {
 .ssam .lecinfo li:last-child span {background:rgba(255,255,255,0.5);}
 .ssam .bestLecBox:after {content:""; display:block; clear:both}
 
-.ssam .w-Guide-Ssam {padding:0 10px;}
-
 .ssam .examInfo li {display: inline; float:left; width:25%; margin-bottom:0}
 .ssam .examInfo li a {display:block; text-align:center; font-size: 15px; border-right:1px solid #e4e4e4; letter-spacing: -1px;}
 .ssam .examInfo li img {display:block; width:70%; max-width: 92px; margin:0 auto 10px; }
@@ -4609,8 +4607,9 @@ span.calendar_btn {
 
 /*임용가이드*/
 .w-Guide-Ssam {
-    padding:0 20px; margin-bottom:30px
+    padding:0 20px; margin-bottom:30px;
 }
+.ssam .w-Guide-Ssam {padding:0 10px;}
 .w-Guide-Ssam h4 {margin-bottom:10px; font-size:16px; color:#2b4ab8; line-height:30px;}
 .w-Guide-Ssam .tabBox {position:relative; margin-bottom: 30px;}
 .w-Guide-Ssam .tabShow {border-top:1px solid #dcdcdc; border-left:1px solid #dcdcdc;}

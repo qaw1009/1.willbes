@@ -194,14 +194,16 @@
 
         <div class="evtCtnsBox evt04_1" id="lecbuy">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_top.gif" title="" />
+            {{--
             <ul class="tabs NSK-Black">
                 <li><a href="#tpass01">국가직 대비 T-PASS</a></li>
                 <li><a href="#tpass02">지방직 대비 T-PASS</a></li>
             </ul>
+            --}}
         </div>
 
         <div class="evtCtnsBox evt04" id="event">    
-            {{--국가직--}}
+            {{--국가직
             <div id="tpass01">     
                 <div class="issue NSK-Black">
                     2021 국가직 합격 기원<br>
@@ -266,11 +268,12 @@
                         <td><input type="radio" id="y_pkg" name="y_pkg" value="174384" onClick=""/><label for="y_pkg">반반모의고사</label></td>
                     </tr>
                 </table>          
-            </div>   
+            </div>  
+            --}} 
 
             {{--지방직--}}
             <div id="tpass02"> 
-            <table>
+                <table>
                     <col/>
                     <col />
                     <col />
@@ -328,18 +331,9 @@
                         <td><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">새벽모의고사</label></td>
                         <td><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">반반모의고사</label></td>
                     </tr>
-                </table>  
-                {{--        
-                <ul>                
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="164226" onClick=""/><label for="y_pkg">전과정</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="164227" onClick=""/><label for="y_pkg">반반모고 제외</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="163940" onClick=""/><label for="y_pkg">새벽모의고사</label></li>
-                    <li><input type="radio" id="y_pkg" name="y_pkg" value="163829" onClick=""/><label for="y_pkg">반반모의고사</label></li>                
-                </ul>              
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_04_02.gif" alt="수강신청"/> 
-                --}}         
-                  
+                </table>      
             </div>  
+            
 
             <div class="check_bg">
                 <div class="check" id="chkInfo">
@@ -364,10 +358,10 @@
                 <div class="infoTit NG"><strong>상품구성</strong></div>
                 <ul>
                     <li>제공과정<br>
-                        - 전 과정 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직or지방직 대비 전 과정 (아침똑똑영어 / 반반한모의고사 다시보기 + 새벽모의고사 포함)<br>
-                        - 반반모의고사 제외 T-PASS : 2020 ~ 2021 한덕현 영어 9급 국가직or지방직 대비 전 과정 (아침똑똑영어 + 새벽모의고사 포함)<br>
-                        - 새벽모의고사 T-PASS : 2020년 1월부터 2021년 9급 국가직or지방직 시험일까지 수강기간 내 진행되는 새벽모의고사 전 과정<br>
-                        - 반반모의고사 T-PASS : 2021년 9급 국가직or지방직 시험일까지 수강기간 내 진행되는 한덕현 영어 반반한 모의고사 전 과정<br>
+                        - 전 과정 T-PASS : 2020 ~ 2021 한덕현 영어 9급 지방직 대비 전 과정 (아침똑똑영어 / 반반한모의고사 다시보기 + 새벽모의고사 포함)<br>
+                        - 반반모의고사 제외 T-PASS : 2020 ~ 2021 한덕현 영어 9급 지방직 대비 전 과정 (아침똑똑영어 + 새벽모의고사 포함)<br>
+                        - 새벽모의고사 T-PASS : 2020년 1월부터 2021년 9급 지방직 시험일까지 수강기간 내 진행되는 새벽모의고사 전 과정<br>
+                        - 반반모의고사 T-PASS : 2021년 9급 지방직 시험일까지 수강기간 내 진행되는 한덕현 영어 반반한 모의고사 전 과정<br>
                     </li>
                     <li>본 상품의 수강기간은 상품 수강신청 상세안내 최면에 표기된 기간만큼 제공됩니다.</li>
                     <li>개강일정 및 교수님 사정에 따라 커리큘럼의 변동이 있을 수 있습니다.</li>

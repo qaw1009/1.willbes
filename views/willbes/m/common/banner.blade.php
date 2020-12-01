@@ -14,7 +14,9 @@ var html = '', link_url = '#none';
         html = '<div class="{{ strpos($disp['DispRollingTypeName'], 'manual') === false ? 'swiper-container' : '' }} {{ $disp['DispRollingTypeName'] }} {{ $css_class }}">';
         html += '   <div class="swiper-wrapper">';
         @foreach($data as $idx => $row)
-            @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#')
+            @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] == '#')
+                link_url = '#none';
+            @elseif(empty($row['LinkUrl']) === false)
                 link_url = '{{ front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($row['LinkUrl']) . '&link_url_type=' . $row['LinkUrlType'], 'www') }}';
             @endif
             html += '   <div class="swiper-slide">';

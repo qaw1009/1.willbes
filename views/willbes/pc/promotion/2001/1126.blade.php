@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent { 
             position:relative;            
             width:100% !important;
@@ -19,7 +15,7 @@
 
         /************************************************************/
 
-        .wb_top {background:#fff url(http://file3.willbes.net/new_cop/2019/03/1129_01_bg.jpg) no-repeat center top}
+        .wb_top {background:#fff url(https://static.willbes.net/public/images/promotion/2020/12/1129_01_bg.jpg) no-repeat center top}
         .wb_top div {position:absolute; width:200px; left:50%; margin-left:-100px; top:359px; z-index:1;}
         .wb_top div a {
             display:block; text-align:center; height:44px; line-height:44px;
@@ -43,13 +39,13 @@
             text-indent:-9999;
         }
         .evttab li:first-child a {
-            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab1.jpg) no-repeat left top;
+            background:url(https://static.willbes.net/public/images/promotion/2020/12/1129_02_tab1.jpg) no-repeat left top;
         }        
         .evttab li:nth-child(2) a {
-            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab2.jpg) no-repeat left top;
+            background:url(https://static.willbes.net/public/images/promotion/2020/12/1129_02_tab2.jpg) no-repeat left top;
         }
         .evttab li:last-child a {
-            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab3.jpg) no-repeat left top;
+            background:url(https://static.willbes.net/public/images/promotion/2020/12/1129_02_tab3.jpg) no-repeat left top;
         }
         .evttab li:last-child {            
             margin:0
@@ -87,14 +83,11 @@
 <div class="evtContent" id="evtContainer">     
 
     <div class="evtCtnsBox wb_top" >
-        <img src="http://file3.willbes.net/new_cop/2019/03/1129_01.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
-        <div>
-            <a href="{{ site_url('/promotion/index/cate/3010/code/1129') }}" class="NG">신의법칙 자세히보기 &gt;</a>
-        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1129_01.jpg" alt=" 윌비스 신광은경찰팀 신의 법칙을 믿어라! " />
     </div>     
 
     <div class="evtCtnsBox wb_cts01">
-        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
         <div class="evttab">
             <ul>
                 <li><a href="#tab01" class="active">기본과정</a></li>
@@ -103,26 +96,16 @@
             </ul>
         </div>
         <div id="tab01" class="tabCts">
-            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
             <map name="Map1126A" id="Map1126A">
                 <area shape="rect" coords="354,585,438,614" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1406" />
-                <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                <area shape="rect" coords="803,2450,884,2476" href="javascript:alert('Coming Soon')" />
             </map>
         </div>
         <div id="tab02" class="tabCts">
-            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
-            <map name="Map1126B" id="Map1126B">
-                <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                <area shape="rect" coords="803,2208,884,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1129_02_t02.jpg" alt="심화과정" border="0">
         </div>
         <div id="tab03" class="tabCts">
-            <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t03.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
-            <map name="Map1126C" id="Map1126C">
-                <area shape="rect" coords="235,3072,318,3104" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
-                <area shape="rect" coords="803,3072,884,3104" href="{{ site_url('/pass/promotion/index/cate/3010/code/1128') }}" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1129_02_t03.jpg" alt="필합 풀패키지" border="0">
         </div>
     </div>
 

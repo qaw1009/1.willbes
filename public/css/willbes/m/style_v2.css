@@ -2780,7 +2780,7 @@ body.memBody #Footer {
     margin-bottom:20px
 }
 .willbes-Layer-PassBox {
-    float: left;
+    /*float: left;*/
     width: 90%;
     height: auto;
     background: #fff;
@@ -4310,18 +4310,14 @@ body.memBody #Footer {
 /* subContainer : Prof : willbes-Layer-CurriBox */
 .willbes-Layer-CurriBox {
     display: none;
-    background: #fff;
     position: absolute;
-    top: 50px;
+    top: 50px !important;
     left: 50%;
     margin-left:-48%;
-    margin-top:-20%;
+    margin-top:0;
     width: 96%;
-    height: auto;
-    z-index: 110;    
-    border: 1px solid #2f2f2f;
-    padding: 20px 25px 30px;
 }
+
 .willbes-Layer-CurriBox .closeBtn {
     position: absolute;
     top: 15px;
@@ -4351,8 +4347,10 @@ body.memBody #Footer {
     max-width: 100%;
 }
 .willbes-Layer-CurriBox .Layer-Cont {
-    overflow-y: auto;
-    height: 500px;
+    height:auto;
+    max-height: 480px;
+    overflow-y: auto !important;
+    
 }
 
 /* subContainer : Prof : willbes-Layer-Replynotice */
@@ -4670,6 +4668,9 @@ span.calendar_btn {
 .w-Guide-Ssam .professor_con > .txt02{margin:0}
 .w-Guide-Ssam .professor_con > img{margin:55px 0 25px}
 
+.btnStA {margin:0 auto; display:block; text-align: center; color:#fff !important; background-color:#005699; font-size:1rem; padding:10px 0; line-height: 1.4;}
+
+
 /* iPhone 5/SE */
 @media only screen and (max-width: 374px) {
     .width25p {
@@ -4737,6 +4738,11 @@ span.calendar_btn {
     .ssam .lecinfo li:nth-of-type(1) {font-weight: bold; font-size: 16px;}
     .ssam .lecinfo li strong {padding:0}
     .ssam .examInfo li {width:50%; margin-bottom:15px;}
+
+    .willbes-Layer-CurriBox .Layer-Cont {
+        height: 300px !important;
+        overflow-y: scroll;
+    }
 }
 
 
@@ -4802,6 +4808,10 @@ span.calendar_btn {
     .willbes-Layer-Replynotice {
         margin-left:-300px;
         width: 600px;
+    }
+    .willbes-Layer-CurriBox {
+        top:50px !important;
+        margin-top:0;
     }
     .calendarTable .table-condensed tr th,
     .calendarTable .table-condensed tr td {

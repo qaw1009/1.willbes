@@ -1110,6 +1110,7 @@ select[disabled] {
 .tx-purple-gray {
   color: #7e7e86 !important;
 }
+.tx-yellow {color:#ffde00 !important}
 
 .bg-black {
   background: #333;

@@ -461,6 +461,14 @@
         </div>
     </div>
 
+    {{--통합 회원으로 전환된 임용 회원만 노출--}}
+    <div class="widthAutoFull NSK mb20 c_both">
+        <a href="#none" class="btnStA">
+            윌비스 임용
+            <p class="tx18"><strong class="NSK-Black tx-yellow">이전 내강의실</strong> 바로가기</p>
+        </a>
+    </div>
+
     <div class="goTopbtn">
         <a href="javascript:link_go();">
             <img src="{{ img_url('m/main/icon_top.png') }}">

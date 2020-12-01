@@ -23,10 +23,14 @@
 
     .evt04 div {font-size:16px; font-weight:600; margin-top:20px}
 
-    .evt05 {margin-top:80px}
-    .evtCurri {margin:50px auto 0; text-align:left}
-    .evtCurri li {font-size:1.25rem; margin-bottom:15px; color:#414d4c; letter-spacing:-1px}
-    .evtCurri li.cTitle {color:#414d4c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;} 
+    .evt05 {text-align:left; padding:0 20px;word-break: keep-all;}
+    .evt05 .curriculum {margin:30px 0}
+    .curriculum li.cTitle {list-style:none;color:#414d4c; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;} 
+    .evt05 dl {margin-top:30px;}
+    .evt05 dl:first-child {margin:0}
+    .evt05 dt {font-size:16px; font-weight:bold; color:#383368; margin:30px 0 10px}
+    .evt05 dt:first-child {margin:0 0 10px}
+    .evt05 dd {margin-bottom:10px; line-height:1.4}    
 
     .evtFooter {margin:80px auto 0; padding:30px 20px; text-align:left; color:#3a3a3a; background:#E1E1E1; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -36,18 +40,18 @@
     .evtFooter li {margin-left:20px; list-style-type: decimal;}
 
 
-    /* 폰 가로, 태블릿 세로*/
-    @@media only screen and (max-width: 374px) {        
-     
+   /* 폰 가로, 태블릿 세로*/
+   @@media only screen and (max-width: 374px) {
+      
     }
 
     @@media only screen and (min-width: 375px) and (max-width: 640px) {
-
+        
     }
-
     /* 태블릿 세로 */
-    @@media only screen and (min-width: 690px) {       
-    
+    @@media only screen and (min-width: 690px) {
+        .evt05 h5 br {display:none}
+        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}              
     }
 
 </style>
@@ -89,67 +93,76 @@
     </div>     
 
     <div class="evtCtnsBox evt05">
-        <div class="evtCurri">
-            <ul>
+        <div class="curriculum">
+            <dl>
                 <li class="cTitle">내 손으로 만드는 여유,<br><span class="mt_15">만들어 쓰는 즐거움 루루라탄의 라탄공예 입문</span></li>
-                <li class="cTitle">CH 1. 루루라탄의 라탄공예 입문</li>
-                <li>1. 안녕하세요, 루루라탄입니다.</li>
-                <li>2. 라탄(등공예)란 무엇인가?</li>
-                <li>3. 앞으로 1억뷰N잡에서 함께 할 라탄공예 입문 클래스</li>
-                <li class="cTitle">CH 2. 라탄공예, 그 위대한 첫 발</li>
-                <li>1. 라탄 재료에 대한 종류와 이해	</li>
-                <li>2. 공예를 시작할 때 필요한 준비물</li>
-                <li>3. 라탄 관련 용어 및 재료의 사용법</li>
-                <li>4. 환심 물에 담그는 방법</li>
-                <li>5. 환심 보관하는 방법</li>
-                <li>6. 환심 부러졌을 때, 사릿대 이어서 엮는 방법</li>
-                <li class="cTitle">CH 3. 다용도 원형 바구니</li>
-                <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
-                <li>2. 사릿대 1줄로 막엮기</li>
-                <li>3. 상•하 기본 엮어 마무르기</li>
-                <li class="cTitle">CH 4. 기본 티코스터, 응용 티코스터</li>
-                <li>1. 원형의 기본 +자짜기를 이용한 시작</li>
-                <li>2. 날대를 균일하게 나눠주는 방법</li>
-                <li>3. 막엮기를 이용한 엮음</li>
-                <li>4. 2줄꼬아엮기</li>
-                <li>5. 엮어마무르기<br>
+                <dt>CH 1. 루루라탄의 라탄공예 입문</dt> 
+                <dd>1. 안녕하세요, 루루라탄입니다.</dd>
+                <dd>2. 라탄(등공예)란 무엇인가?</dd>
+                <dd>3. 앞으로 1억뷰N잡에서 함께 할 라탄공예 입문 클래스</dd>
+
+                <dt>CH 2. 라탄공예, 그 위대한 첫 발</dt>
+                <dd>1. 라탄 재료에 대한 종류와 이해</dd>
+                <dd>2. 공예를 시작할 때 필요한 준비물</dd>
+                <dd>3. 라탄 관련 용어 및 재료의 사용법</dd>
+                <dd>4. 환심 물에 담그는 방법</dd>
+                <dd>5. 환심 보관하는 방법</dd>
+                <dd>6. 환심 부러졌을 때, 사릿대 이어서 엮는 방법</dd>
+
+                <dt>CH 3. 다용도 원형 바구니</dt>
+                <dd>1. 자작나무 플레이트에 라탄 환심 끼우기</dd>
+                <dd>2. 사릿대 1줄로 막엮기<dd>
+                <dd>3. 상•하 기본 엮어 마무르기<dd>
+
+                <dt>CH 4. 기본 티코스터, 응용 티코스터</dt>
+                <dd>1. 원형의 기본 +자짜기를 이용한 시작</dd>
+                <dd>2. 날대를 균일하게 나눠주는 방법</dd>
+                <dd>3. 막엮기를 이용한 엮음</dd>
+                <dd>4. 2줄꼬아엮기</dd>
+                <dd>5. 엮어마무르기<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - BONUS, 티코스터 업그레이드 하기<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 기본티코스터 3번까지 엮은 후 덧날대 추가하여 엮기
-                </li>
-                <li class="cTitle">CH 5. 회오리 티코스터</li>
-                <li>1. 井(우물정)자짜기를 이용해 원형 바닥 짜기</li>
-                <li>2. 날대 수를 이용한 회오리기법</li>
-                <li>3. 젖혀마무르기 변형으로 마무리하기</li>
-                <li class="cTitle">CH 6. 타원트레이</li>
-                <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
-                <li>2. 사릿대 2줄로 따라 엮기</li>
-                <li>3. 3줄 꼬아 엮기 2단하기</li>
-                <li>4. 두 번 젖혀 마무르기<br>
+                </dd>
+
+                <dt>CH 5. 회오리 티코스터</dt>
+                <dd>1. 井(우물정)자짜기를 이용해 원형 바닥 짜기</dd>
+                <dd>2. 날대 수를 이용한 회오리기법</dd>
+                <dd>3. 젖혀마무르기 변형으로 마무리하기</dd>
+
+                <dt>CH 6. 타원트레이</dt>
+                <dd>1. 자작나무 플레이트에 라탄 환심 끼우기</dd>
+                <dd>2. 사릿대 2줄로 따라 엮기</dd>
+                <dd>3. 3줄 꼬아 엮기 2단하기</dd>
+                <dd>4. 두 번 젖혀 마무르기<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - tip. 한 번 젖혀 마무르기
-                </li>    
-                <li class="cTitle">CH 7. 타원바구니</li>
-                <li>1. 井자짜기 변형을 이용한 타원 바닥 짜기</li>
-                <li>2. 매끼돌리기와 따라 엮기를 이용한 바닥 엮기</li>
-                <li>3. 덧날대 추가 후 3줄 꼬아 엮기</li>
-                <li>4. 3줄 꼬아 엮기 3단 하기</li>
-                <li>5. 따라 엮기와 되돌아엮기로 측면 올리기</li>
-                <li>6. 비단무늬 1/2 넣기</li>
-                <li>7. 2줄 꼬아 엮기 정방향과 역방향 엮어 주기</li>
-                <li>8. 감아 마무르기</li>
-                <li class="cTitle">CH 8. 라탄 물병</li>
-                <li>1. 물병 혹은 화병에 라탄 엮는 기법</li>
-                <li>2. 2줄 꼬아엮기로 고정하기</li>
-                <li>3. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
-                <li>4. 비단무늬 1/2 넣기</li>
-                <li>5. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
-                <li>6. 2줄 꼬아 엮기 1단 하기</li>
-                <li>7. 엮어마무르기 변형으로 위, 아래 마무리</li>
-                <li class="cTitle">CH 9. 라탄 공예 재료 구입 방법 및 응용</li>
-                <li>1. 라탄 재료 구입 방법과 좋은 재료 구별법 tip</li>
-                <li>2. 배운 기법을 응용하여 만들 수 있는 작품들 tip</li>
-                <li class="cTitle">CH 10. 드디어 완강! 수고하셨습니다.</li>
-                <li>1. 여러분의 라탄 입문을 축하합니다!</li>
-            </ul>
+                </dd>
+
+                <dt>CH 7. 타원바구니</dt>
+                <dd>1. 井자짜기 변형을 이용한 타원 바닥 짜기</dd>
+                <dd>2. 매끼돌리기와 따라 엮기를 이용한 바닥 엮기</dd>
+                <dd>3. 덧날대 추가 후 3줄 꼬아 엮기</dd>
+                <dd>4. 3줄 꼬아 엮기 3단 하기</dd>
+                <dd>5. 따라 엮기와 되돌아엮기로 측면 올리기</dd>
+                <dd>6. 비단무늬 1/2 넣기</dd>
+                <dd>7. 2줄 꼬아 엮기 정방향과 역방향 엮어 주기</dd>
+                <dd>8. 감아 마무르기</dd>
+
+                <dt>CH 8. 라탄 물병</dt>
+                <dd>1. 물병 혹은 화병에 라탄 엮는 기법</dd>
+                <dd>2. 2줄 꼬아엮기로 고정하기</dd>
+                <dd>3. 막엮기 혹은 따라엮기를 3.5cm 엮기</dd>
+                <dd>4. 비단무늬 1/2 넣기</dd>
+                <dd>5. 막엮기 혹은 따라엮기를 3.5cm 엮기</dd>
+                <dd>6. 2줄 꼬아 엮기 1단 하기</dd>
+                <dd>7. 엮어마무르기 변형으로 위, 아래 마무리</dd>
+
+                <dt>CH 9. 라탄 공예 재료 구입 방법 및 응용</dt>
+                <dd>1. 라탄 재료 구입 방법과 좋은 재료 구별법 tip</dd>
+                <dd>2. 배운 기법을 응용하여 만들 수 있는 작품들 tip</dd>
+
+                <dt>CH 10. 드디어 완강! 수고하셨습니다.</dt>
+                <dd>1. 여러분의 라탄 입문을 축하합니다!</dd>
+            </dl>
         </div>
     </div>    
 

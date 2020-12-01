@@ -14,7 +14,7 @@
     }	
     .evtContent span {vertical-align:auto}
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
-    
+
     /*****************************************************************/ 
     
     .evt_top {background:#5F5DFF;}
@@ -26,8 +26,8 @@
         <div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1929_top.jpg" alt="" usemap="#Map1929a" border="0">
             <map name="Map1929a" id="Map1929a">
-                <area shape="rect" coords="54,825,320,931" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="393,825,658,932" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="54,825,320,931" href="https://www.instagram.com/p/CIPp9TZHwUy/" target="_blank" />
+                <area shape="rect" coords="393,825,658,932" href="https://pf.kakao.com/_tUSRK/60893015" target="_blank" />
             </map>
         </div>
 

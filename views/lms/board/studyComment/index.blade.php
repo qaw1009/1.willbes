@@ -358,10 +358,11 @@
 
     {{-- 수강후기 엑셀등록 --}}
     @php
+        $arr_auth_admin_idx = [];
         if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development') {
-            $arr_auth_admin_idx = ['1062', '1130', '1350', '1344'];
+            // $arr_auth_admin_idx = ['1062', '1130', '1344', '1350']; // 최진영, 한주연, 최은정, 김성일
         } else {
-            $arr_auth_admin_idx = ['1062', '1130', '1506', '1452'];
+            // $arr_auth_admin_idx = ['1062', '1130', '1452', '1506']; // 최진영, 한주연, 최은정, 김성일
         }
     @endphp
 

@@ -35,13 +35,6 @@
         .evt04 td {font-size:14px; padding:20px 10px; border-right:1px solid #333; line-height:1.5}
         .evt04 tr {border-bottom:1px solid #333}
         .evt04 th {color:#000; background:#fff}
-        /*
-        .evt04 ul {position:absolute; left:50%; width:1120px; margin-left:-560px; top:620px;}
-        .evt04 li {display:inline; float:left}
-        .evt04 li:nth-child(1) {margin-left:320px}
-        .evt04 li:nth-child(2) {margin-left:160px}
-        .evt04 li:nth-child(3) {margin-left:160px}   
-        .evt04 li:nth-child(4) {margin-left:160px}  */
         .evt04 td input {height:30px; width:30px;}
         .evt04 td label {display:none}     
 
@@ -118,11 +111,13 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+        {{--
         <div class="skybanner">
             <a href="#lecbuy">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1614_sky.png" title="" />    
             </a>        
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop">
 			<img src="https://static.willbes.net/public/images/promotion/2020/04/1614_graph.gif" title="한덕현T-PASS" />			

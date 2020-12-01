@@ -18,7 +18,7 @@
 
         <div class="evtCtnsBox evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1929_01.jpg" alt="">
-            <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/1929" target="_blank">
+            <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1929" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1929_01m.jpg" alt="">
             </a>
         </div>

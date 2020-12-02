@@ -252,7 +252,7 @@
                             <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 Perfect PSAT Program 온라인 PASS반은 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
                         </ol>
                     </dd>
-                    <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1544-5006</strong></div>
+                    <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1566-4770 > 3</strong></div>
 
                 </dl>
             </div>

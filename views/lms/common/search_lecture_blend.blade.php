@@ -25,27 +25,21 @@
             </div>
             @if(empty($wLecIdx) === true)
                 <div class="form-group pt-10 pb-5">
-                    <label class="control-label col-md-2 pt-5" for="search_value">@if($LearnPatternCcd === '615006')단과반@else강좌@endif검색
+                    <label class="control-label col-md-2" for="search_value">@if($LearnPatternCcd === '615006')단과반@else강좌@endif검색
                     </label>
+                    <div class="col-md-6 form-inline" >
+                        <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd === '615006' ? $LearnPatternCcd : '615001'}}">
+                        <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
+                            <option value="">대비학년도</option>
+                            @for($i=(date('Y')+2); $i>=2005; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        <input type="text" class="form-control" style="width: 50%;" id="search_value" name="search_value">
+                        명칭, 코드 검색 가능
+                    </div>
 
-                    <div class="col-md-2 radio ">
-                        @if($LearnPatternCcd === '615006')
-                            <input type="hidden" name="LearnPatternCcd" value="615006">
-                        @else
-                            <input type="hidden" name="LearnPatternCcd" value="615001">
-                            <!--
-                            <input type="radio" name="LearnPatternCcd" value="615001" class="flat" @if($LearnPatternCcd === '' || $LearnPatternCcd === '615001') checked="checked" @endif> 단강좌
-
-                            <input type="radio" name="LearnPatternCcd" value="615005" class="flat" @if($LearnPatternCcd === '615005') checked="checked" @endif> 무료강좌//-->
-                        @endif
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control input-sm" id="search_value" name="search_value">
-                    </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
-                    </div>
-                    <div class="col-md-2 text-right pr-5">
+                    <div class="col-md-1 text-right">
                         <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
                     </div>
                 </div>

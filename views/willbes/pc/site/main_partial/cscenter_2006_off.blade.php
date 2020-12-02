@@ -1,10 +1,24 @@
+@php
+    switch ($__cfg['CateCode']){
+        case "309002":
+        case "309003":
+            $telephone_inquiry = '1566-4770 <span>▶</span> 4';
+            break;
+        case "309004":
+            $telephone_inquiry = '1566-4770 <span>▶</span> 5';
+            break;
+
+        default: $telephone_inquiry = '1544-5006 <span>▶</span> 4'; break;
+    }
+@endphp
+
 <div class="CScenterBox">
     <dl>
         <dt class="willbesNumber">
             <ul>
                 <li>
                     <div class="nTit">온라인 수강문의</div>
-                    <div class="nNumber tx-color">1544-5006 <span>▶</span> 4</div>
+                    <div class="nNumber tx-color">{!! $telephone_inquiry !!}</div>
                     {{--노무, 감평
                     <div class="nNumber tx-color">1566-4770 <span>▶</span> 4</div>
                     --}}

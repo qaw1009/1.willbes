@@ -1,10 +1,21 @@
+@php
+    switch ($__cfg['CateCode']){
+        case "3098":
+        case "3099":
+            $call_number = '5';
+            break;
+
+        default: $call_number = '2'; break;
+    }
+@endphp
+
 <div class="CScenterBox">
     <dl>
         <dt class="willbesNumber">
             <ul>
                 <li>
                     <div class="nTit">온라인 수강문의</div>
-                    <div class="nNumber tx-color">1566-4770 <span>▶</span> 2</div>
+                    <div class="nNumber tx-color">1566-4770 <span>▶</span> {{ $call_number }}</div>
                     {{--법원행시, 변호사시험
                     <div class="nNumber tx-color">1566-4770 <span>▶</span> 5</div>
                     --}}

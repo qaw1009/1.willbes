@@ -42,7 +42,10 @@
         </div>
 
         <div class="evtCtnsBox evt01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1952_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1952_01.jpg" alt="" usemap="#Map1952_detail" border="0" />
+            <map name="Map1952_detail" id="Map1952_detail">
+                <area shape="rect" coords="372,1133,748,1223" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" />
+            </map>
         </div>     
 
         <div class="evtCtnsBox evt02" >

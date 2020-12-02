@@ -1,11 +1,14 @@
 @php
-    $telephone_inquiry = '1544-5006 <span>▶</span> 4';
-    if(empty($__cfg['CateCode']) === false){
-        if(in_array($__cfg['CateCode'],['309002','309003']) === true){
+    switch ($__cfg['CateCode']){
+        case "309002":
+        case "309003":
             $telephone_inquiry = '1566-4770 <span>▶</span> 4';
-        }else if(in_array($__cfg['CateCode'],['309004']) === true){
+            break;
+        case "309004":
             $telephone_inquiry = '1566-4770 <span>▶</span> 5';
-        }
+            break;
+
+        default: $telephone_inquiry = '1544-5006 <span>▶</span> 4'; break;
     }
 @endphp
 

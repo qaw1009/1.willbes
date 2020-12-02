@@ -1,7 +1,11 @@
 @php
-    $call_number = '2';
-    if(empty($__cfg['CateCode']) === false && in_array($__cfg['CateCode'],['3098','3099']) === true){
-        $call_number = '5';
+    switch ($__cfg['CateCode']){
+        case "3098":
+        case "3099":
+            $call_number = '5';
+            break;
+
+        default: $call_number = '2'; break;
     }
 @endphp
 

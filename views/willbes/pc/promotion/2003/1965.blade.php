@@ -19,6 +19,12 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1965_top_bg.jpg) no-repeat center top;}	      
         .evt02 {background:#f0f0f0;padding-bottom:100px;}
 
+        .check {margin-top:20px; color:#333; font-size:14px}
+        .check label {cursor:pointer}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .check a.infotxt:hover {background:#d9312b}   
+
         /* 이용안내 */
         .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5}
         .guide_box{width:980px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}

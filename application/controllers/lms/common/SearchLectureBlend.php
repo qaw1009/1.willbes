@@ -40,6 +40,7 @@ class SearchLectureBlend extends \app\controllers\BaseController
             'EQ' => [
                 'B.LearnPatternCcd' => $LearnPatternCcd,
                 'A.SiteCode' => $this->_reqP('site_code'),
+                'B.SchoolYear' => $this->_reqP('search_schoolyear'),
             ]
         ];
 

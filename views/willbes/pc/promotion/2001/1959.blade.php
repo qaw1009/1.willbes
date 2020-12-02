@@ -53,12 +53,12 @@
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1959_02.jpg"  alt="" usemap="#Map1959b" border="0"/>
             <map name="Map1959b" id="Map1959b">
-                <area shape="rect" coords="314,586,430,620" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="682,586,794,620" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="96,927,186,953" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="371,927,460,953" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="658,927,747,954" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="930,926,1020,954" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="314,586,430,620" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175823" target="_blank" />
+                <area shape="rect" coords="682,586,794,620" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175824" target="_blank" />
+                <area shape="rect" coords="96,927,186,953" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175825" target="_blank" />
+                <area shape="rect" coords="371,927,460,953" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175826" target="_blank" />
+                <area shape="rect" coords="658,927,747,954" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175827" target="_blank" />
+                <area shape="rect" coords="930,926,1020,954" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175828" target="_blank" />
             </map>
         </div>
 
@@ -80,8 +80,8 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1959_05.jpg"  alt="" usemap="#Map1959c" border="0"/>
             <map name="Map1959c" id="Map1959c">
-                <area shape="rect" coords="257,563,516,611" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="600,562,863,612" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="257,563,516,611" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/173091" target="_blank" />
+                <area shape="rect" coords="600,562,863,612" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/173090" target="_blank" />
             </map>
         </div>
 

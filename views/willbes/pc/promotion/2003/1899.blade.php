@@ -16,6 +16,8 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
+        .sky {position:fixed; top:230px;right:10px; width:200px; z-index:10;}
+
         .evtContent .intro {background:url("https://static.willbes.net/public/images/promotion/2020/11/1895_intro_bg.jpg") center top no-repeat; height:870px; position:relative}
         .evtContent .intro .number {width:1120px; margin:0 auto; position:relative}
         .evtContent .intro .number span {font-size:80px; color:#fafafa; font-family: 'Anton', sans-serif; position:absolute; letter-spacing:44px}
@@ -35,7 +37,13 @@
         .wb_04  {background:#E1D3CA;}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">  
+    <div class="p_re evtContent NSK" id="evtContainer"> 
+        <div class="sky">
+            <a href="#lecbuy"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1899_sky.jpg" alt="" >
+            </a>             
+        </div> 
+    
         <div class="evtCtnsBox intro">
             <div class="number">
                 <span id="counter1" class="n01">30</span>
@@ -68,7 +76,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_03.jpg" alt="" />  
         </div> 
 
-        <div class="evtCtnsBox wb_04">
+        <div class="evtCtnsBox wb_04" id="lecbuy">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_04.jpg" alt="" usemap="#Map1899a" border="0" />
             <map name="Map1899a" id="Map1899a">
                 <area shape="rect" coords="218,843,432,909" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174277" target="_blank" alt="기초영어"/>

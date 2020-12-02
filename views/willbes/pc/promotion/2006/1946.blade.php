@@ -18,10 +18,10 @@
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1946_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/11/1946_01_bg.jpg) no-repeat center top;}
+        .evt01 {background:#f5f5f6}
 
         .evt02 {background:#5c5c5c; padding:150px 0;}
-        .evt02 .slide_con {width:784px; margin:0 auto; position:relative;}
+        .evt02 .slide_con {width:790px; margin:0 auto; position:relative;}
         .evt02 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px !important; height:45px !important; z-index:10}
         .evt02 .slide_con p.leftBtn {left:-22px}
         .evt02 .slide_con p.rightBtn {right:-22px}
@@ -86,12 +86,12 @@
         <div class="evtCtnsBox evt05">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1946_05.jpg" alt="" usemap="#Map1946b" border="0" />
             <map name="Map1946b" id="Map1946b">
-                <area shape="rect" coords="70,876,1048,979" href="javascript:go_PassLecture('175055');">
+                <area shape="rect" coords="608,1297,1056,1433" href="javascript:go_PassLecture('175055');">
             </map> 
             <div class="check">
                 <label>
                     <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 김동진 민법 온라인 T-PASS 반 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>         

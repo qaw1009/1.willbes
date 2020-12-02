@@ -9,7 +9,7 @@
             <div class="goTel"><img src="{{ img_url('m/main/icon_tel.png') }}">
                 <div>
                     <strong>온라인문의</strong>
-                    <span>1544-5006</span>
+                    <span>1566-4770</span>
                     평일 09시~18시<Br>
                     주말/공휴일 제외
                 </div>

@@ -19,6 +19,12 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1965_top_bg.jpg) no-repeat center top;}	      
         .evt02 {background:#f0f0f0;padding-bottom:100px;}
 
+        .check {margin-top:20px; color:#333; font-size:14px}
+        .check label {cursor:pointer}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
+        .check a.infotxt:hover {background:#d9312b}   
+
         /* 이용안내 */
         .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5}
         .guide_box{width:980px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}
@@ -42,12 +48,19 @@
 		<div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1965_02.jpg" alt="" usemap="#Map1965" border="0" />
             <map name="Map1965">
-                <area shape="rect" coords="636,790,859,861" href="#none" alt="예비+정규순환">
-                <area shape="rect" coords="636,1054,862,1122" href="#none" alt="정규순환">
+                <area shape="rect" coords="636,790,859,861" href="javascript:go_PassLecture('175963')" alt="예비+정규순환">
+                <area shape="rect" coords="636,1054,862,1122" href="javascript:go_PassLecture('175965')" alt="정규순환">
             </map>
+            <div class="check" id="chkInfo">   
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
+            </div> 
         </div> 
         
-        <div class="evtCtnsBox evtInfo" id="info">
+        <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내</h2>
                 <dl>
@@ -112,4 +125,16 @@
 
 	</div>
     <!-- End Container -->
+
+    <script type="text/javascript">         
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
+    </script>
 @stop

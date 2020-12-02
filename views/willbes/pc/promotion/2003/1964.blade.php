@@ -20,12 +20,14 @@
         .evt02 {background:#f0f0f0;padding-bottom:100px;}
 
         /* 이용안내 */
-        .evtInfo {padding:100px 0; background:#555; color:#fff}
+        .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5}
         .guide_box{width:980px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}
-        .guide_box h2 {font-size:30px; margin-bottom:30px; }
-        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
-        .guide_box dd{color:#fff; margin:0 0 20px 5px; line-height:17px}
-        .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:13px;}
+        .guide_box h2 {font-size:30px; margin-bottom:30px;}
+        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
+        .guide_box dd{margin-bottom:50px;}
+        .guide_box dd li{margin-bottom:5px; list-style:decimal; margin-left:20px;font-size:14px;}
+        .guide_box dd li.none {list-style:none; margin-left:0}
+        .guide_box dd:last-child {margin:0}
         /************************************************************/      
     </style> 
 	<div class="evtContent NGR">
@@ -53,9 +55,11 @@
                     <dd>
                         <ol>
                             <li>본 상품은 윌비스김동진법원팀 교수진의 지정된 순환별 과정을 배수 제한 없이 무제한 수강 가능합니다.</li>
-                            <li>예비+정규순환」 상품 : 민법(김동진), 민사소송법(이덕훈), 형법(문형석), 형사소송법(유안석), 헌법(이국령), 국어(이현나), 영어(박초롱), 한국사(임진석) 교수별 예비순환 및 1~5순환 과정</li>
-                            <li>「정규순환」 상품 : 민법(김동진), 민사소송법(이덕훈), 형법(문형석), 형사소송법(유안석), 헌법(이국령), 국어(이현나), 영어(박초롱), 한국사(임진석) 교수별 1~5순환 과정<br>
-                            ※ 개강 전후 부득이한 학원 사정에 의해 일부 강사진의 변동이 있을 수 있습니다.</li>
+                            <li>예비+정규순환」 상품 : <br>
+                            민법(김동진), 민사소송법(이덕훈), 형법(문형석), 형사소송법(유안석), 헌법(이국령), 국어(이현나), 영어(박초롱), 한국사(임진석) 교수별 예비순환 및 1~5순환 과정</li>
+                            <li>「정규순환」 상품 : <br>
+                            민법(김동진), 민사소송법(이덕훈), 형법(문형석), 형사소송법(유안석), 헌법(이국령), 국어(이현나), 영어(박초롱), 한국사(임진석) 교수별 1~5순환 과정</li>
+                            <li class="none">※ 개강 전후 부득이한 학원 사정에 의해 일부 강사진의 변동이 있을 수 있습니다.</li>
                         </ol>
                     </dd>
                     <dt>수강기간</dt>

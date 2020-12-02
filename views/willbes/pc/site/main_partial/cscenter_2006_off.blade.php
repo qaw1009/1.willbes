@@ -1,10 +1,21 @@
+@php
+    $telephone_inquiry = '1544-5006 <span>▶</span> 4';
+    if(empty($__cfg['CateCode']) === false){
+        if(in_array($__cfg['CateCode'],['309002','309003']) === true){
+            $telephone_inquiry = '1566-4770 <span>▶</span> 4';
+        }else if(in_array($__cfg['CateCode'],['309004']) === true){
+            $telephone_inquiry = '1566-4770 <span>▶</span> 5';
+        }
+    }
+@endphp
+
 <div class="CScenterBox">
     <dl>
         <dt class="willbesNumber">
             <ul>
                 <li>
                     <div class="nTit">온라인 수강문의</div>
-                    <div class="nNumber tx-color">1544-5006 <span>▶</span> 4</div>
+                    <div class="nNumber tx-color">{!! $telephone_inquiry !!}</div>
                     {{--노무, 감평
                     <div class="nNumber tx-color">1566-4770 <span>▶</span> 4</div>
                     --}}

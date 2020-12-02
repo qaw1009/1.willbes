@@ -24,7 +24,9 @@
         <div class="SectionBg">
             <div class="Section">
                 <div class="widthAuto bnSecbar01">
-                    {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+                    <div class="bSlider">
+                        {!! banner_html(element('메인_핵심띠배너', $data['arr_main_banner']), '_slider_belt_banner') !!}
+                    </div>
                 </div>
             </div>
 

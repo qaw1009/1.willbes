@@ -71,10 +71,10 @@
         <div class="evtCtnsBox wb_04">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_04.jpg" alt="" usemap="#Map1899a" border="0" />
             <map name="Map1899a" id="Map1899a">
-                <area shape="rect" coords="218,843,432,909" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174277" target="_blank" />
-                <area shape="rect" coords="689,841,903,907" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="214,1503,439,1571" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="687,1505,907,1571" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="218,843,432,909" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174277" target="_blank" alt="기초영어"/>
+                <area shape="rect" coords="689,841,903,907" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174276" target="_blank" alt="고급영어"/>
+                <area shape="rect" coords="214,1503,439,1571" href="javascript:alert('Comimg Soon :)')" alt="기출문제"/>
+                <area shape="rect" coords="687,1505,907,1571" href="javascript:alert('Comimg Soon :)')" alt="예상문제"/>
             </map>
         </div>  
 

@@ -5,6 +5,12 @@
                 <li>
                     <div class="nTit">온라인 수강문의</div>
                     <div class="nNumber tx-color">1544-5006 <span>▶</span> 4</div>
+                    {{--노무, 감평
+                    <div class="nNumber tx-color">1566-4770 <span>▶</span> 4</div>
+                    --}}
+                    {{--변리사
+                    <div class="nNumber tx-color">1566-4770 <span>▶</span> 5</div>
+                    --}}
                     <div class="nTxt">
                         [운영시간]<br/>
                         평일: 09시~ 18시 (점심시간12시~13시)<br/>

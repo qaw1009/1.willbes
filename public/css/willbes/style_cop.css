@@ -901,7 +901,7 @@
 .SectionBg .f_left {width: 745px; height: 420px; overflow: hidden;}
 .SectionBg .f_right {width: 375px; height: 420px; overflow: hidden;}
 
-.bnSecbar01 .slider {height:100px; overflow:hidden}
+.bnSecbar01 .bSlider {height:100px; overflow:hidden}
 
 .upload {position: relative; border:4px solid #3370e6; padding-left:20px}
 .upload .sliderNumV div {font-size:18px; height: 50px; line-height: 50px;}

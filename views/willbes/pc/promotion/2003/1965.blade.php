@@ -42,12 +42,19 @@
 		<div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1965_02.jpg" alt="" usemap="#Map1965" border="0" />
             <map name="Map1965">
-                <area shape="rect" coords="636,790,859,861" href="#none" alt="예비+정규순환">
-                <area shape="rect" coords="636,1054,862,1122" href="#none" alt="정규순환">
+                <area shape="rect" coords="636,790,859,861" href="javascript:go_PassLecture('175963')" alt="예비+정규순환">
+                <area shape="rect" coords="636,1054,862,1122" href="javascript:go_PassLecture('175965')" alt="정규순환">
             </map>
+            <div class="check" id="chkInfo">   
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#ctsInfo" class="infotxt">이용안내확인하기 ↓</a>
+            </div> 
         </div> 
         
-        <div class="evtCtnsBox evtInfo" id="info">
+        <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
                 <h2 class="NSK-Black">이용안내</h2>
                 <dl>
@@ -112,4 +119,16 @@
 
 	</div>
     <!-- End Container -->
+
+    <script type="text/javascript">         
+        function go_PassLecture(code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var url = '{{ site_url('/periodPackage/show/cate/3035/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }
+    </script>
 @stop

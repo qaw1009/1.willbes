@@ -140,7 +140,7 @@
 
         function fnExten()
         {
-            if(window.confirm('연장신청을 진행하시겠습니까?')){
+            if(window.confirm('연장신청을 진행하시겠습니까?\n(수강연장된 강의는 일시정지 서비스가 제공되지 않는 점 유의해 주세요)')){
                 $("#extenForm").submit();
             }
         }

@@ -3,11 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">            
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -21,8 +17,8 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:200px; right:10px; z-index:1;}
-        .sky ul li {padding-bottom:10px;}
+        .sky {position:fixed; top:200px; width:180px; right:10px; z-index:1;}
+        .sky a {padding-bottom:10px; display:block}
         
         .evtTop {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2020/07/1716_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2020/07/1716_01_bg.jpg) no-repeat center top;}
@@ -46,9 +42,10 @@
     <div class="p_re evtContent NGR" id="evtContainer">
 
         <div class="sky">
-            <ul>
-                <li><a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1716_sky.jpg"  title="수강신청하기" /></a></li>
-            </ul>
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1716_sky.jpg"  title="수강신청하기" /></a>
+            <a href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/176018" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1716_sky2.jpg"  title="수강신청하기" />
+            </a>
         </div>
 
         <div class="evtCtnsBox evtTop">

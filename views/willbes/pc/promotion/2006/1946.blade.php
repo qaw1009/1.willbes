@@ -86,7 +86,7 @@
         <div class="evtCtnsBox evt05">            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1946_05.jpg" alt="" usemap="#Map1946b" border="0" />
             <map name="Map1946b" id="Map1946b">
-                <area shape="rect" coords="608,1297,1056,1433" href="javascript:go_PassLecture('175055');">
+                <area shape="rect" coords="608,1297,1056,1433" href="javascript:go_PassLecture('176031');">
             </map> 
             <div class="check">
                 <label>
@@ -111,7 +111,7 @@
                 <div class="infoTit NG"><strong>교재</strong></div>
 				<ul>
 					<li>각 강의수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>
-                    <li>3월 31일까지 수강신청시 무료(강사직접 구입 무료제공)제공되는 기본서는 기본서 출간시 공지 후 무료로 주문할 수 있게 등록이 될 예정입니다.</li>
+                    <li>1월 31일까지 수강신청시 무료(강사직접 구입 무료제공)제공되는 기본서는 기본서 출간시 공지 후 무료로 주문할 수 있게 등록이 될 예정입니다.</li>
                 </ul>
                 <div class="infoTit NG"><strong>환불</strong></div>
 				<ul>
@@ -137,7 +137,7 @@
                     <li>김동진 온라인 T-PASS반 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
                     <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 김동진 온라인 T-PASS반은 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
 				</ul>
-				<div class="NGEB"><strong>※ 이용 문의 : 윌비스 고객만족센터 1544-4770</strong></div>
+				<div class="NGEB"><strong>※ 이용 문의 : 윌비스 고객만족센터 1566-4770</strong></div>
 			</div>
 		</div> 
 
@@ -179,7 +179,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/package/show/cate/309003/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }    
 

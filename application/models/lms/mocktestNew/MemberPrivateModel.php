@@ -22,10 +22,12 @@ class MemberPrivateModel extends WB_Model
         'mock_grades' => 'lms_mock_grades',
         'mock_answertemp' => 'lms_mock_answertemp',
         'mock_answerpaper' => 'lms_mock_answerpaper',
+        'order' => 'lms_order',
         'order_product' => 'lms_order_product',
         'category' => 'lms_sys_category',
         'mock_log' => 'lms_mock_log',
-        'lms_member' => 'lms_member'
+        'lms_member' => 'lms_member',
+        'sys_code' => 'lms_sys_code'
     ];
 
     public function __construct()
@@ -53,11 +55,76 @@ class MemberPrivateModel extends WB_Model
         $where_2 = $where_2->getMakeWhere(true);
 
         if ($is_count === true) {
-            $query_string = $this->_set_query_string_count($where_1, $where_2);
+            $column = "COUNT(*) AS numrows";
+            $order_by_offset_limit = '';
+
         } else {
-            $query_string = $this->_set_query_string_row($is_count, $where_1, $where_2, $limit, $offset, $order_by);
+            if ($is_count == 'excel') {
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+                $column = "
+                    MB.MemName ,CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone ,MR.TakeNumber
+                    ,fn_ccd_name(MR.TakeForm) AS TakeFormName
+                    ,MP.MockYear ,MP.MockRotationNo ,PD.ProdName ,C1.CateName
+                    ,fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
+                    ,(
+                        SELECT GROUP_CONCAT(SJ.SubjectName)
+                        FROM {$this->_table['mock_register_r_paper']} AS MAS
+                        JOIN {$this->_table['product_subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
+                        WHERE MR.MrIdx = MAS.MrIdx
+                    ) AS SubjectName
+                    ,fn_ccd_name(MR.TakeArea) AS TakeAreaName
+                    ,ROUND((SELECT SUM(AdjustPoint) FROM {$this->_table['mock_grades']} WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx),2) AS AdjustSum
+                    ,MR.RegDatm AS ExamRegDatm
+                ";
+            } else {
+                $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+                $column = "
+                    MR.MemIdx, MB.MemName, MB.MemId, CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone
+                    ,MP.ProdCode ,PD.ProdName, MR.MrIdx, MR.OrderProdIdx
+                    ,MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea   #응시번호,응시직렬,응시형태,응시지역
+                    ,MP.MockYear, MP.MockRotationNo, C1.CateName,MR.IsTake #연도, 회차, 카테고리명, 응시/미응시
+                    ,MR.RegDatm AS ExamRegDatm #시험종료
+                    ,fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
+                    ,fn_ccd_name(MR.TakeForm) AS TakeFormName
+                    ,fn_ccd_name(MR.TakeArea) AS TakeAreaName
+                    ,(
+                        SELECT GROUP_CONCAT(SJ.SubjectName)
+                        FROM {$this->_table['mock_register_r_paper']} AS MAS
+                        JOIN {$this->_table['product_subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
+                        WHERE MR.MrIdx = MAS.MrIdx
+                    ) AS SubjectName
+                    ,ROUND((SELECT SUM(AdjustPoint) FROM lms_mock_grades WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx),2) AS AdjustSum #총점
+                    ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answertemp WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS tempCnt
+                    ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answerpaper WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS answerCnt
+                ";
+            }
         }
-        $query = $this->_conn->query($query_string);
+
+        $from = "
+            FROM {$this->_table['mock_register']} AS MR
+            JOIN {$this->_table['lms_member']} AS MB ON MR.MemIdx = MB.MemIdx AND MB.IsStatus = 'Y'
+            JOIN {$this->_table['order_product']} AS OP ON OP.OrderProdIdx = MR.OrderProdIdx AND OP.PayStatusCcd = 676001
+            JOIN {$this->_table['order']} AS O ON OP.OrderIdx = O.OrderIdx
+            JOIN {$this->_table['product_mock']} AS MP ON MR.ProdCode = MP.ProdCode
+            JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
+            JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
+            JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+            #LEFT JOIN {$this->_table['sys_code']} AS SC1 ON MR.TakeMockPart = SC1.Ccd
+            #LEFT JOIN {$this->_table['sys_code']} AS SC2 ON MR.TakeForm = SC1.Ccd
+            #LEFT JOIN {$this->_table['sys_code']} AS SC3 ON MR.TakeArea = SC1.Ccd
+        ";
+
+        //과목 검색 조건시 추가
+        if (empty($arr_condition_1['EQ']['S.SubjectIdx']) === false) {
+            $from .= "
+                JOIN lms_mock_register_r_paper AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
+                JOIN lms_mock_paper_new AS MO ON RP.MpIdx = MO.MpIdx
+                JOIN lms_product_subject AS S ON RP.SubjectIdx = S.SubjectIdx
+            ";
+        }
+
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where_1 . $where_2 . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -560,109 +627,5 @@ class MemberPrivateModel extends WB_Model
         $group_by = " GROUP BY S.MalIdx";
         $order_by = " ORDER BY S.MockType, S.MpIdx, S.QuestionNO ASC";
         return $this->_conn->query('select ' . $column . $from . $group_by . $order_by)->result_array();
-    }
-
-    /**
-     * 리스트 카운트용 쿼리
-     * @param $where
-     * @return string
-     */
-    private function _set_query_string_count($where_1, $where_2)
-    {
-        $column = "COUNT(M.MemIdx) AS numrows";
-        $from = "
-            FROM (
-                SELECT 
-                A.MemIdx
-                FROM (
-                    SELECT MR.MemIdx, MR.OrderProdIdx
-                    FROM {$this->_table['product_mock']} AS MP
-                    JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
-                    JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
-                    JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-                    JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-                    JOIN {$this->_table['mock_register']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
-                    JOIN {$this->_table['mock_register_r_paper']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
-                    JOIN {$this->_table['mock_paper']} AS MO ON RP.MpIdx = MO.MpIdx
-                    JOIN {$this->_table['product_subject']} AS S ON RP.SubjectIdx = S.SubjectIdx
-                    JOIN {$this->_table['lms_member']} AS searchMem ON MR.MemIdx = searchMem.MemIdx
-                    {$where_1} {$where_2}
-                    GROUP BY MR.MrIdx
-                ) AS A
-                JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
-                JOIN {$this->_table['order_product']} AS OP ON A.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = 676001
-            ) AS M
-        ";
-        return 'select ' . $column . $from;
-    }
-
-    /**
-     * 쿼리문
-     * @param bool $is_count
-     * @param $where_1
-     * @param $where_2
-     * @param $limit
-     * @param $offset
-     * @param $order_by
-     * @return string
-     */
-    private function _set_query_string_row($is_count = false, $where_1, $where_2, $limit, $offset, $order_by)
-    {
-        if ($is_count == 'excel') {
-            $order_by_offset_limit = $this->_conn->makeOrderBy(['MP.ProdCode' => 'DESC', 'MR.RegDatm' => 'DESC'])->getMakeOrderBy();
-            $column = "
-                MB.MemName ,CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone ,A.TakeNumber ,fn_ccd_name(A.TakeForm) AS TakeFormName
-                ,A.MockYear ,A.MockRotationNo ,A.ProdName ,A.CateName ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName ,A.SubjectName ,fn_ccd_name(A.TakeArea) AS TakeAreaName
-                ,ROUND((SELECT SUM(AdjustPoint) FROM {$this->_table['mock_grades']} WHERE ProdCode = A.ProdCode AND MrIdx = A.MrIdx),2) AS AdjustSum ,A.ExamRegDatm
-            ";
-        } else {
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-
-            $column = "
-                MB.MemIdx, MB.MemId, MB.MemName
-                ,CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone
-                ,A.ProdCode ,A.ProdName, A.MrIdx, A.TakeNumber
-                ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
-                ,fn_ccd_name(A.TakeForm) AS TakeFormName
-                ,fn_ccd_name(A.TakeArea) AS TakeAreaName
-                ,A.MockYear, A.MockRotationNo
-                ,A.CateName, A.SubjectName, A.IsTake, A.ExamRegDatm
-                ,ROUND((SELECT SUM(AdjustPoint) FROM {$this->_table['mock_grades']} WHERE ProdCode = A.ProdCode AND MrIdx = A.MrIdx),2) AS AdjustSum #총점
-                ,(SELECT COUNT(*) AS tempCnt FROM {$this->_table['mock_answertemp']} WHERE MrIdx = A.MrIdx AND MemIdx = A.MemIdx) AS tempCnt
-                ,(SELECT COUNT(*) AS tempCnt FROM {$this->_table['mock_answerpaper']} WHERE MrIdx = A.MrIdx AND MemIdx = A.MemIdx) AS answerCnt
-            ";
-        }
-
-        $from = "
-            FROM (
-                SELECT 
-                    MR.MemIdx
-                    ,MP.ProdCode ,PD.ProdName, MR.MrIdx, MR.OrderProdIdx
-                    ,MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea   #응시번호,응시직렬,응시형태,응시지역
-                    ,MP.MockYear, MP.MockRotationNo                 #연도, 회차
-                    ,C1.CateName                                    #카테고리명
-                    ,GROUP_CONCAT(RP.SubjectIdx) AS SubjectIdx
-                    ,GROUP_CONCAT(S.SubjectName) AS SubjectName     #과목
-                    ,MR.IsTake
-                    ,MR.RegDatm AS ExamRegDatm                      #시험종료
-                FROM {$this->_table['product_mock']} AS MP
-                JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
-                JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
-                JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-                JOIN {$this->_table['product_sale']} AS PS ON MP.ProdCode = PS.ProdCode AND PS.IsStatus = 'Y'
-                JOIN {$this->_table['mock_register']} AS MR ON MP.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y'
-                JOIN {$this->_table['mock_register_r_paper']} AS RP ON MR.ProdCode = RP.ProdCode AND MR.MrIdx = RP.MrIdx 
-                JOIN {$this->_table['mock_paper']} AS MO ON RP.MpIdx = MO.MpIdx
-                JOIN {$this->_table['product_subject']} AS S ON RP.SubjectIdx = S.SubjectIdx
-                JOIN {$this->_table['lms_member']} AS searchMem ON MR.MemIdx = searchMem.MemIdx
-                {$where_1} {$where_2}
-                GROUP BY MR.MrIdx
-                {$order_by_offset_limit}
-            ) AS A
-            JOIN {$this->_table['lms_member']} AS MB ON A.MemIdx = MB.MemIdx
-            JOIN {$this->_table['order_product']} AS OP ON A.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = 676001
-        ";
-        return 'select ' . $column . $from;
     }
 }

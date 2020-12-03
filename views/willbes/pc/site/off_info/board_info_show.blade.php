@@ -76,37 +76,41 @@
                                             <a href="{{front_url($default_path.'/index/'.$bm_idx.'?'.$get_params)}}"><span>목록</span></a>
                                         </div>
                                     </div>
-                                    <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 150px;">
-                                            <col style="width: 640px;">
-                                            <col style="width: 150px;">
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
-                                            <td class="tx-left pl20">
-                                                @if(empty($pre_data) === false)
-                                                    <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
-                                                @else
-                                                    이전글이 없습니다.
-                                                @endif
-                                            </td>
-                                            <td class="w-date">@if(empty($pre_data) === false){{$pre_data['RegDatm']}}@endif</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-next bg-light-gray"><strong>다음글</strong></td>
-                                            <td class="tx-left pl20">
-                                                @if(empty($next_data) === false)
-                                                    <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
-                                                @else
-                                                    다음글이 없습니다.
-                                                @endif
-                                            </td>
-                                            <td class="w-date">@if(empty($next_data) === false){{$next_data['RegDatm']}}@endif</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+
+                                    @if($data['IsBest'] != '1')
+                                        <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 150px;">
+                                                <col style="width: 640px;">
+                                                <col style="width: 150px;">
+                                            </colgroup>
+                                            <tbody>
+                                            <tr>
+                                                <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                                <td class="tx-left pl20">
+                                                    @if(empty($pre_data) === false)
+                                                        <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$pre_data['BoardIdx'].'&'.$get_params)}}">{{$pre_data['Title']}}</a><span class="row-line">|</span>
+                                                    @else
+                                                        이전글이 없습니다.
+                                                    @endif
+                                                </td>
+                                                <td class="w-date">@if(empty($pre_data) === false){{$pre_data['RegDatm']}}@endif</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                                <td class="tx-left pl20">
+                                                    @if(empty($next_data) === false)
+                                                        <a href="{{front_url($default_path.'/show/'.$bm_idx.'?board_idx='.$next_data['BoardIdx'].'&'.$get_params)}}">{{$next_data['Title']}}</a><span class="row-line">|</span>
+                                                    @else
+                                                        다음글이 없습니다.
+                                                    @endif
+                                                </td>
+                                                <td class="w-date">@if(empty($next_data) === false){{$next_data['RegDatm']}}@endif</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    @endif
+
                                 </div>
                             </div>
                         </div>

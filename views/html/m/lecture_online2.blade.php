@@ -1,4 +1,4 @@
-@extends('html.m.layouts.master')
+@extends('html.m.layouts.v2.master')
 
 @section('content')
 <!-- Container -->
@@ -60,8 +60,7 @@
                         <input type="checkbox" id="" name="">
                     </span>
                     <div class="priceWrap NG">
-                        [PC+모바일] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span><br>
-                        {{--<p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>--}}
+                        [PC+모바일] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span>
                     </div>
                 </li>
                 <li>
@@ -70,11 +69,17 @@
                         <input type="checkbox" id="" name="">
                     </span>
                     <div class="priceWrap NG">
-                        [PC] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span><br>
-                        {{--<p class="NGR">강의시간: 60분 <span class="row-line">ㅣ</span> 수강시간: 60분 <span class="row-line">ㅣ</span> 잔여시간: <span class="tx-blue">60분</span></p>--}}
+                        [PC] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span>
                     </div>
                 </li>
             </ul>
+            <div class="automatic">
+                <div>자동지급강의</div>
+                <p>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 1</p>
+                <p>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 2</p>
+                <p>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 3</p>   
+                <p>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 4</p>
+            </div>
         </div>
 
         <div class="lec-info">

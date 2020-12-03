@@ -63,8 +63,8 @@ class MemberPrivate extends BaseMocktest
         $arr_condition_2 = [
             'ORG' => [
                 'LKB' => [
-                    'searchMem.MemId' => $this->_reqP('search_member_fi', true),
-                    'searchMem.MemName' => $this->_reqP('search_member_fi', true)
+                    'MB.MemId' => $this->_reqP('search_member_fi', true),
+                    'MB.MemName' => $this->_reqP('search_member_fi', true)
                 ]
             ]
         ];
@@ -73,7 +73,7 @@ class MemberPrivate extends BaseMocktest
         $count = $this->memberPrivateModel->mainList(true, $arr_condition_1, $arr_condition_2);
 
         if ($count > 0) {
-            $list = $this->memberPrivateModel->mainList(false, $arr_condition_1, $arr_condition_2, $this->_reqP('length'), $this->_reqP('start'), ['MP.ProdCode' => 'DESC', 'MR.RegDatm' => 'DESC']);
+            $list = $this->memberPrivateModel->mainList(false, $arr_condition_1, $arr_condition_2, $this->_reqP('length'), $this->_reqP('start'), ['MP.ProdCode' => 'DESC', 'MR.MrIdx' => 'DESC']);
         }
         return $this->response([
             'recordsTotal' => $count,
@@ -110,8 +110,8 @@ class MemberPrivate extends BaseMocktest
         $arr_condition_2 = [
             'ORG' => [
                 'LKB' => [
-                    'searchMem.MemId' => $this->_reqP('search_member_fi', true),
-                    'searchMem.MemName' => $this->_reqP('search_member_fi', true)
+                    'MB.MemId' => $this->_reqP('search_member_fi', true),
+                    'MB.MemName' => $this->_reqP('search_member_fi', true)
                 ]
             ]
         ];

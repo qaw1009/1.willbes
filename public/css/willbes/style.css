@@ -3664,17 +3664,21 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 table.profTable tr td .priceWrap {
     top: 0;
 }
-
+table.profTable tr td.automatic {padding-left:10px; font-size: 12px;}
+table.profTable tr td.automatic ul {height:70px; overflow-y: auto;}
 
 /* subContainer : Content : willbes-Buy-Table */
 .willbes-Buy-Table {
-    height: 256px;
+    /*height: 256px;*/
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #3a3e47;
+    background: #f9f9f9;
 }
+.willbes-Buy-Table:after {content:''; display: block; clear:both}
 .willbes-Buy-List {
     float: left;
     width: 710px;
+    background-color: #fff;
 }
 .willbes-Buy-List table.lecTable {
     display: block;
@@ -3710,11 +3714,10 @@ table.profTable tr td .priceWrap {
 .willbes-Buy-List table.lecTable tr td.chk input[type=checkbox] {
     margin-top: 2px;
 }
-.willbes-Buy-Price {
-    background: #f9f9f9;
+.willbes-Buy-Price {    
     float: right;
     width: 230px;
-    height: 254px;
+    height: 100%;
     padding: 20px 15px 0;
 }
 .willbes-Buy-Price thead tr th {
@@ -3750,6 +3753,7 @@ table.profTable tr td .priceWrap {
     height: 80px;
     overflow-y: auto;
     overflow-x: hidden;
+    margin-right:15px;
 }
 .willbes-Buy-Table .lecInfoTable .w-lectit {
     margin-bottom: 15px;

@@ -3056,6 +3056,10 @@ body.memBody #Footer {
     margin: 0 10px;
     vertical-align: middle;
 }
+.lec-info .automatic {clear:both; margin-top:20px; background-color: #f9f9f9; padding:10px}
+.lec-info .automatic div {color:#1a8ccc; margin-bottom:10px}
+.lec-info .automatic p {font-size: 12px; line-height: 1.4; margin-top:5px}
+
 .priceBox {
     padding:20px;
     border-top:1px solid #ccc;
@@ -3288,6 +3292,8 @@ body.memBody #Footer {
     width: 100%; display: block; margin:20px 0;
     max-width: 880px;
 }
+
+
 .lec-choice-pkg {border:1px solid #898989}
 .lec-choice-pkg .lecTable tr td {
     padding: 20px;

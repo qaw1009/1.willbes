@@ -136,7 +136,7 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td class="w-lectit tx-left" colspan="3">
+                                <td class="w-lectit tx-left" colspan="2">
                                     <span class="w-obj NSK"><div class="pBox p1">강좌</div></span>
                                     <span class="MoreBtn"><a href="#Class">강좌정보 보기 ▼</a></span>
                                 </td>
@@ -163,11 +163,22 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="tx-left automatic" colspan="2">
+                                    <div class="tx-blue">자동지급강의</div>
+                                    <ul>
+                                        <li>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 1</li>
+                                        <li>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 2</li>
+                                        <li>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 3</li>   
+                                        <li>2021학년도 전공음악 기출문제 해설 및 적중 비교 강의 4</li>                                 
+                                    </ul>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <!-- lecTable -->
 
-                    <div class="lecInfoTable" style="display: block">
+                    <div class="lecInfoTable d_block">
                         <div class="w-lectit tx-left" colspan="3">
                             <span class="w-obj NSK"><div class="pBox p3">교재</div></span>
                             <span class="MoreBtn"><a href="#BookInfo">교재정보 보기 ▼</a></span>

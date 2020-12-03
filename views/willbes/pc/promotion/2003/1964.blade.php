@@ -17,7 +17,8 @@
         /************************************************************/ 
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1964_top_bg.jpg) no-repeat center top;}	      
-        .evt02 {background:#f0f0f0;padding-bottom:100px;}
+        .evt02 {background:#f0f0f0;}
+        .evt04 {background:#f0f0f0;padding-bottom:100px;}
 
         .check {margin-top:20px; color:#333; font-size:14px}
         .check label {cursor:pointer}
@@ -43,10 +44,18 @@
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1964_01.jpg" alt="" />
-		</div>
+        </div>
+        
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1964_02.jpg" alt="" />
+        </div>
+        
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1964_03.jpg" alt="" />
+        </div>
 
-		<div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1964_02.jpg" alt="" usemap="#Map1964" border="0" />
+		<div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1964_04.jpg" alt="" usemap="#Map1964" border="0" />
             <map name="Map1964">
                 <area shape="rect" coords="636,790,859,861" href="javascript:go_PassLecture('175963')" alt="예비+정규순환">
                 <area shape="rect" coords="636,1054,862,1122" href="javascript:go_PassLecture('175965')" alt="정규순환">

@@ -880,9 +880,11 @@ select[disabled] {
 .pl135 {
   padding-left: 135px !important;
 }
-
 .pr10 {
   padding-right: 10px !important;
+}
+.pr15 {
+  padding-right: 15px !important;
 }
 .pr20 {
   padding-right: 20px !important;

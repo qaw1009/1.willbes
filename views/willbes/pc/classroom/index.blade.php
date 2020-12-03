@@ -221,6 +221,8 @@
                             </ul>
                         </div>
                     </div>
+
+                    {{--
                     <div class="ActIndex ActIndex3 mt50">
                         <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
                             <div class="will-Tit NSK">공지<span class="tx-light-blue">사항</span> <a class="f_right" href="{{front_url('/support/notice/index')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
@@ -235,6 +237,7 @@
                             </ul>
                         </div>
                     </div>
+                    --}}                    
                 </div>
                 <!-- Mypage_PASS_Index -->
             </div>

@@ -203,43 +203,48 @@ class SupportProfTpass extends BaseSupport
         $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
-        $arr_condition_base = [
-            'EQ' => [
-                'b.IsBest' => '0'
-                ,'b.BmIdx' => $this->_bm_idx
-                ,'b.IsUse' => 'Y'
-                ,'b.ProfIdx' => $prof_idx
-                /*,'b.SubjectIdx' => $subject_idx*/
-                ,'b.ProdCode' => $s_tpass_lecture
-            ],
-            'ORG' => [
+        #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
+        $pre_data = [];
+        $next_data = [];
+        if($data['IsBest'] != 1) {
+            $arr_condition_base = [
+                'EQ' => [
+                    'b.IsBest' => '0'
+                    , 'b.BmIdx' => $this->_bm_idx
+                    , 'b.IsUse' => 'Y'
+                    , 'b.ProfIdx' => $prof_idx
+                    /*,'b.SubjectIdx' => $subject_idx*/
+                    , 'b.ProdCode' => $s_tpass_lecture
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'b.Title' => $s_keyword
+                        , 'b.Content' => $s_keyword
+                    ]
+                ],
                 'LKB' => [
-                    'b.Title' => $s_keyword
-                    ,'b.Content' => $s_keyword
+                    'Category_String' => $s_cate_code
                 ]
-            ],
-            'LKB' => [
-                'Category_String'=>$s_cate_code
-            ]
-        ];
+            ];
 
-        $pre_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'LT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $pre_order_by = ['b.BoardIdx'=>'Desc'];
+            $pre_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'LT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $pre_order_by = ['b.BoardIdx' => 'Desc'];
 
-        $next_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'GT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $next_order_by = ['b.BoardIdx'=>'Asc'];
+            $next_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'GT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $next_order_by = ['b.BoardIdx' => 'Asc'];
 
 
-        $pre_data = $this->supportBoardFModel->findBoardForTpass($this->_site_code, false, $pre_arr_condition, $arr_condition_pkg, $arr_condition_auth, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForTpass($this->_site_code, false, $next_arr_condition, $arr_condition_pkg, $arr_condition_auth, $column,1,null, $next_order_by);
+            $pre_data = $this->supportBoardFModel->findBoardForTpass($this->_site_code, false, $pre_arr_condition, $arr_condition_pkg, $arr_condition_auth, $column, 1, null, $pre_order_by);
+            $next_data = $this->supportBoardFModel->findBoardForTpass($this->_site_code, false, $next_arr_condition, $arr_condition_pkg, $arr_condition_auth, $column, 1, null, $next_order_by);
+        }
 
         $this->load->view('support/'.$view_type.'/show_tpass',[
                 'default_path' => $this->_default_path,

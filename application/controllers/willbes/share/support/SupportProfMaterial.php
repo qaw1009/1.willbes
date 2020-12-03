@@ -130,43 +130,47 @@ class SupportProfMaterial extends BaseSupport
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         #-------------------------------- 게시글 조회
 
-        #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
-        $arr_condition_base = [
-            'EQ' => [
-                /*'b.SiteCode' => $this->_site_code*/
-                'b.IsBest' => '0'
-                ,'b.BmIdx' => $this->_bm_idx
-                ,'b.IsUse' => 'Y'
-                /*,'b.ProfIdx' => $prof_idx
-                ,'b.SubjectIdx' => $subject_idx*/
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'b.Title' => $s_keyword
-                    ,'b.Content' => $s_keyword
+        #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
+        $pre_data = [];
+        $next_data = [];
+        if($data['IsBest'] != 1) {
+            $arr_condition_base = [
+                'EQ' => [
+                    /*'b.SiteCode' => $this->_site_code*/
+                    'b.IsBest' => '0'
+                    , 'b.BmIdx' => $this->_bm_idx
+                    , 'b.IsUse' => 'Y'
+                    /*,'b.ProfIdx' => $prof_idx
+                    ,'b.SubjectIdx' => $subject_idx*/
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'b.Title' => $s_keyword
+                        , 'b.Content' => $s_keyword
+                    ]
+                ],
+                /*'LKB' => [
+                    'Category_String'=>$this->_cate_code
+                ],*/
+            ];
+
+            $pre_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'LT' => ['b.BoardIdx' => $board_idx]
                 ]
-            ],
-            /*'LKB' => [
-                'Category_String'=>$this->_cate_code
-            ],*/
-        ];
+            ]);
+            $pre_order_by = ['b.BoardIdx' => 'Desc'];
 
-        $pre_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'LT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $pre_order_by = ['b.BoardIdx'=>'Desc'];
+            $next_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'GT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $next_order_by = ['b.BoardIdx' => 'Asc'];
 
-        $next_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'GT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $next_order_by = ['b.BoardIdx'=>'Asc'];
-
-        $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column,1,null, $next_order_by);
+            $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column, 1, null, $pre_order_by);
+            $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column, 1, null, $next_order_by);
+        }
 
         $this->load->view('support/'.$view_type.'/show_material',[
                 'default_path' => $this->_default_path,
@@ -275,37 +279,41 @@ class SupportProfMaterial extends BaseSupport
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         #-------------------------------- 게시글 조회
 
-        #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
-        $arr_condition_base = [
-            'EQ' => [
-                'b.IsBest' => '0'
-                ,'b.BmIdx' => $this->_bm_idx
-                ,'b.IsUse' => 'Y'
-            ],
-            'ORG' => [
-                'LKB' => [
-                    'b.Title' => $s_keyword
-                    ,'b.Content' => $s_keyword
+        #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
+        $pre_data = [];
+        $next_data = [];
+        if($data['IsBest'] != 1) {
+            $arr_condition_base = [
+                'EQ' => [
+                    'b.IsBest' => '0'
+                    , 'b.BmIdx' => $this->_bm_idx
+                    , 'b.IsUse' => 'Y'
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'b.Title' => $s_keyword
+                        , 'b.Content' => $s_keyword
+                    ]
+                ],
+            ];
+
+            $pre_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'LT' => ['b.BoardIdx' => $board_idx]
                 ]
-            ],
-        ];
+            ]);
+            $pre_order_by = ['b.BoardIdx' => 'Desc'];
 
-        $pre_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'LT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $pre_order_by = ['b.BoardIdx'=>'Desc'];
+            $next_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'GT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $next_order_by = ['b.BoardIdx' => 'Asc'];
 
-        $next_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'GT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $next_order_by = ['b.BoardIdx'=>'Asc'];
-
-        $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column,1,null, $pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column,1,null, $next_order_by);
+            $pre_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $pre_arr_condition, $column, 1, null, $pre_order_by);
+            $next_data = $this->supportBoardFModel->findBoardForProf($this->_site_code, $prof_idx, false, $next_arr_condition, $column, 1, null, $next_order_by);
+        }
 
         $this->load->view('support/popup_show_material',[
                 'default_path' => $this->_default_path,

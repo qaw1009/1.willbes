@@ -178,46 +178,50 @@ class SupportOffBoardInfo extends BaseSupport
         $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
         #-------------------------------- 게시글 조회
 
-        #--------------------------------  이전글, 다음글 조회 : 베스트/핫 일경우 무시하고 BoardIdx 로 비교 , 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
-        $s_campus = element('s_campus',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
+        #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
+        $pre_data = [];
+        $next_data = [];
+        if($data['IsBest'] != 1){
+            $s_campus = element('s_campus',$arr_input);
+            $s_keyword = element('s_keyword',$arr_input);
 
-        $arr_condition_base = [
-            'EQ' => [
-                'b.SiteCode' => $this->_site_code
-                ,'b.IsBest' => '0'
-                ,'b.BmIdx' => $bm_idx
-                ,'b.IsUse' => 'Y'
-                ,'b.CampusCcd' => $s_campus
-            ],
-            'ORG' => [
+            $arr_condition_base = [
+                'EQ' => [
+                    'b.SiteCode' => $this->_site_code
+                    ,'b.IsBest' => '0'
+                    ,'b.BmIdx' => $bm_idx
+                    ,'b.IsUse' => 'Y'
+                    ,'b.CampusCcd' => $s_campus
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'b.Title' => $s_keyword
+                        ,'b.Content' => $s_keyword
+                    ]
+                ],
                 'LKB' => [
-                    'b.Title' => $s_keyword
-                    ,'b.Content' => $s_keyword
+                    'Category_String'=>$s_cate_code
+                ],
+            ];
+
+            $pre_arr_condition = array_merge($arr_condition_base,[
+                'ORG1' => [
+                    'LT' => ['b.BoardIdx' => $board_idx]
                 ]
-            ],
-            'LKB' => [
-                'Category_String'=>$s_cate_code
-            ],
-        ];
+            ]);
+            $pre_order_by = ['b.BoardIdx'=>'Desc'];
 
-        $pre_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'LT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $pre_order_by = ['b.BoardIdx'=>'Desc'];
-
-        $next_arr_condition = array_merge($arr_condition_base,[
-            'ORG1' => [
-                'GT' => ['b.BoardIdx' => $board_idx]
-            ]
-        ]);
-        $next_order_by = ['b.BoardIdx'=>'Asc'];
+            $next_arr_condition = array_merge($arr_condition_base,[
+                'ORG1' => [
+                    'GT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $next_order_by = ['b.BoardIdx'=>'Asc'];
 
 
-        $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
-        $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
+            $pre_data = $this->supportBoardFModel->findBoard(false,$pre_arr_condition,$column,1,null,$pre_order_by);
+            $next_data = $this->supportBoardFModel->findBoard(false,$next_arr_condition,$column,1,null,$next_order_by);
+        }
 
         $this->load->view('site/off_info/board_info_show', [
                 'default_path' => $this->_default_path,

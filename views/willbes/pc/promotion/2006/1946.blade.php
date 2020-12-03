@@ -179,8 +179,10 @@
                 return;
             }
 
-            var url = '{{ site_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
-            location.href = url;
+            if(confirm('김동진 민법 T-PASS 상품 이용안내 및 환불관련 내용을 모두 확인하였고 이에 동의합니다.')){
+                var url = '{{ site_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
+                location.href = url;
+            }
         }    
 
     </script>

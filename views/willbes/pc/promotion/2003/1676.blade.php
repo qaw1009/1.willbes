@@ -49,13 +49,15 @@
         }
         .evt05 a {position:absolute; top:30px; left:50%; margin-left:280px}               
 	
-	    /*유의사항*/
-		.wb_ctsInfo {background:#2b2b2b; padding:100px 0; margin-top:50px}  
-        .wb_ctsInfo div {width:980px; margin:0 auto; color:#fff; width:900px; display:block; border:1px solid #aaa; padding:80px; line-height:1.5; font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important; }
-        .wb_ctsInfo div h3 {font-size:28px !important; letter-spacing:-1px; margin-bottom:30px; color:#fff;}        
-        .wb_ctsInfo ul li .big {font-size:15px; font-weight:bold;}
-        .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; color:#eee; font-size:13px;}        
-		.txt_point {color:#ff9472; font-size:12px;}        	
+        /* 이용안내 */
+        .evtInfo {padding:100px 0; background:#555; color:#fff; line-height:1.5; margin-top:100px}
+        .guide_box{width:980px; margin:0 auto; padding:0 50px; text-align:left; word-break:keep-all}
+        .guide_box h2 {font-size:30px; margin-bottom:30px;}
+        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:16px;}        
+        .guide_box dd{margin-bottom:50px;}
+        .guide_box dd li{margin-bottom:10px; list-style:decimal; margin-left:20px;font-size:14px;}
+        .guide_box dd li.none {list-style:none; margin-left:0}
+        .guide_box dd:last-child {margin:0}    	
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
@@ -65,7 +67,7 @@
             </a> 
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
-                <area shape="rect" coords="6,116,152,194" href="#youtube_watch" />
+                <area shape="rect" coords="6,116,152,194" href="#watch" />
                 <area shape="rect" coords="4,199,150,272" href="#detail" />
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
@@ -112,7 +114,7 @@
                     </ul> 
                 </div>        
             </div>   
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_02.jpg" title="더켠읜 반반한 모의고사"><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_02.jpg" title="더켠읜 반반한 모의고사" id="watch"><br>
             {{--<iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>--}}
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_03.jpg" title="더켠읜 반반한 모의고사">         
         </div> 
@@ -213,57 +215,46 @@
             @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
         @endif
 
-        <div class="wb_ctsInfo">
-            <div>
-                <h3 class="NGEB">- 유의사항 - </h3>
-                <ul>
-				    <li>
-                        <span class="big">더켠의 반반한 모의고사는 윌비스공무원학원 실강 동영상 촬영분을 일정에 맞추어 정기 송출해드리는 방송이오니,<br> 방송 시간에 맞추어 본 페이지에 접속 후 수강하시면 됩니다.</span><br> 
-						<span class="txt_point">(*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</span>
-					</li>
-                    <li>                    
-                        <span class="big">윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</span>
-                    </li>       
-                    <li>                    
-                        <span class="big">더켠의 반반한 모의고사 과정 진행 안내</span><br>
-						&nbsp;- 매주 월~금 오후 9~10시 : 더켠의 반반한 모의고사+해설 정규 방송<br>    
-						&nbsp;- 2주분 방송 진행 후 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 신청 접수 마감)<br>
-						&nbsp;- 모의고사 접수 후 토~일 : 무료 온라인 모의고사 응시 기간<br>
-						&nbsp;- 모의고사 응시 후 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE)<br>    
-						<span class="txt_point"> (*무료 온라인 모의고사의 경우, 2주에 1회 진행)</span><br>    
-					</li>    
-                    <li>                    
-                        <span class="big">본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>단, 정규방송과의 형평성을 고려하여 방송 후 일주일 뒤 동영상
-                        서비스가 제공됩니다.</span>
-					</li>
-                    <li>                    
-                        <span class="big">강의 자료 제공 일정 안내</span><br>
-                        &nbsp;- 방송 당일 오후 12시~오후 22시 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
-						&nbsp;- 방송 당일 오후 22시~자정 : 문제+해설+스터디 자료<br>
-					</li>     
-                    <li>                   
-                        <span class="big">본 방송은 PC 및 모바일로 시청 가능합니다.</span><br>
-						&nbsp;- PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
-						&nbsp;- 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.<br>
-					</li>   
-                    <li>                    
-                        <span class="big">열공 출첵 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 로그인 후 참여 가능하며,11월 2일(월)부터 11월 27일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
-						&nbsp;- 출석체크 가능 시간은 정규방송 (월~금) 기준 오후 9~10시 사이, 모의고사 해설 LIVE 11/9(월), 11/23(월)의 경우 <br>
-						&nbsp;&nbsp;&nbsp;오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
-						&nbsp;- 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
-						&nbsp;- 당첨자 안내 공지는 12/1(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.<br>
-					</li>
-                    <li>                    
-                        <span class="big">돌발퀴즈 이벤트 관련</span><br>
-						&nbsp;- 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
-						&nbsp;- 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
-						&nbsp;- 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.				
-                    </li>                            
-                </ul>
+        <div class="evtCtnsBox evtInfo" id="ctsInfo">
+            <div class="guide_box">
+                <h2 class="NSK-Black">유의사항</h2>
+                <dl>
+                    <dd>
+                        <ol>
+                            <li>더켠의 반반&똑똑영어는 사전에 촬영, 촬영분을 실시간으로 송출해드리는 방송이오니 방송 시간에 맞추어 본 페이지에 접속 후 수강하시면 됩니다.
+                            (*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</li>
+                            <li>윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</li>
+
+                            <li>더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)<br>
+                            - 매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분<br>
+                            - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
+                            - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 신청 접수 마감)<br>
+                            - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
+                            - 2주차/4주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분<br></li>
+
+                            <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
+                            단, 정규방송과의 형평성을 고려하여 방송 후 1주일 뒤 동영상 서비스가 제공됩니다.</li>
+
+                            <li>강의 자료 제공 일정 안내<br>
+                            - 방송 당일 오후 12시~오후 21시40분 : 문제 자료 (사전에 인쇄하여 풀어보신 후 수업에 참여바랍니다.)<br>
+                            - 방송 당일 오후 21시40분~자정 : 문제+해설+스터디 자료</li>
+                            <li>본 방송은 PC 및 모바일로 시청 가능합니다.<br>
+                            - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
+                            - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
+                            <li>열공 출첵 이벤트 관련<br>
+                            - 본 이벤트는 로그인 후 참여 가능하며,12월 7일(월)부터 1월 1일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+                            - 출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (12/14(월), 12/28(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
+                            - 총 출석횟수에 따라 경품이 차등 지급되며, 단 1번만 참여해도 경품이 전원 지급됩니다.<br>
+                            - 당첨자 안내 공지는 1/5(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            <li>돌발퀴즈 이벤트 관련<br>
+                            - 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
+                            - 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
+                            - 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.</li>
+                        </ol>
+                    </dd>
+                </dl>
             </div>
-        </div>
-                
+        </div>                
 	</div>
     <!-- End Container -->
 

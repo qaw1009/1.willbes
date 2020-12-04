@@ -15,13 +15,10 @@
 
         /************************************************************/
 
-        .wb_cts01 {background:#00A7CB url(https://static.willbes.net/public/images/promotion/2019/09/1066_top_bg.jpg) center top no-repeat}
-        .wb_cts02 {background:#f8f8f8}
-        .wb_cts03 {background:#F3EFE4;}
-        .wb_cts04 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}
-        .wb_cts05 {background:#f8f8f8}
-        .wb_cts06 {background:#242424;padding-bottom:100px;}
-        .wb_cts07 {background:#DBC8B7;}
+        .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_top_bg.jpg) center top no-repeat}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_01_bg.jpg) center top no-repeat}
+        .wb_cts03 {background:#DBC8B7;}
+        .wb_cts04 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
 
         .skybanner {position:fixed;top:250px;right:10px;width:259px; text-align:center; z-index:11;}      
     </style>
@@ -35,18 +32,17 @@
         </div>
       
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/09/1066_top.jpg" title="" />       
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_top.jpg" title="" />       
         </div>    
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/05/1066_01.jpg" usemap="#Map1066a" title="반반한 모의고사 무료방송" border="0" />
+        <div class="evtCtnsBox wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_01.jpg" usemap="#Map1066a" title="반반한 모의고사 무료방송" border="0" />
             <map name="Map1066a" id="Map1066a">
-                <area shape="rect" coords="668,555,934,640" href="https://pass.willbes.net/promotion/index/cate/3019/code/1588#detail" target="_blnak" onfocus='this.blur()' />
-                <area shape="rect" coords="669,664,936,751" href="https://pass.willbes.net/promotion/index/cate/3019/code/1588" target="_blnak" onfocus='this.blur()' />
-            </map>   
+                <area shape="rect" coords="238,1051,883,1158" href="https://pass.willbes.net/promotion/index/cate/3019/code/1676" target="_blnak" alt="방송보러가기" onfocus='this.blur()' />
+            </map>
         </div>
 
-        <div class="evtCtnsBox wb_cts07" >
+        <div class="evtCtnsBox wb_cts03" >
             <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_02.jpg" title="" />    
          
         </div>

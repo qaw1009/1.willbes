@@ -92,8 +92,6 @@
 
     .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
-
-
     
 
     /* 폰 가로, 태블릿 세로*/
@@ -116,7 +114,7 @@
 
 <div id="Container" class="Container NSK c_both">       
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_top.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_top.jpg" alt="" > 
     </div>  
 
     <div class="evtMenu">
@@ -129,11 +127,11 @@
     </div> 
     
     <div class="evtCtnsBox evt01" id="tab01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_01.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_01.jpg" alt="" >
     </div>
 
     <div class="evtCtnsBox evt03" id="tab02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <p>11.30(월)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>

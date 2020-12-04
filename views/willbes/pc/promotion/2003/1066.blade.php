@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -74,7 +70,7 @@
                 <area shape="rect" coords="230,493,278,511" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="230,534,279,551" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169816" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="424,512,472,531" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169820" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="829,559,879,577" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/171044" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="829,559,879,577" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/175744" target="_blank" alt="새벽모의고사" onfocus='this.blur()' />
                 <area shape="rect" coords="230,635,278,653" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169815" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="831,677,877,695" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170173" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170281" target="_blank" onfocus='this.blur()' />
@@ -82,6 +78,7 @@
             </map >        
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_cts06" >
             <img src="https://static.willbes.net/public/images/promotion/2020/05/1066_05.png" usemap="#Map1066c" border="0" />
             <map name="Map1066c" id="Map1066c">
@@ -92,6 +89,7 @@
                 <area shape="rect" coords="899,701,1067,736" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/158684" target="_blank" onfocus='this.blur()' />
             </map>
         </div>
+        --}}
 
     </div>
     <!-- End Container -->

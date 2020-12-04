@@ -137,7 +137,7 @@
         <p>11.30(월)이 지나면 한정특가가 마감됩니다!</p>
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/173676" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/175749" target="_blank">
                     <span>반반&똑똑</span>
                     <span>12월 방송<br>다시보기</span>
                     <span><strong>6</strong>만원</span>
@@ -145,7 +145,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/174384" target="_blank">
+                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank">
                     <span>반반&똑똑</span>
                     <span>지방직까지<br>다시보기</span>
                     <span><strong>24</strong>만원</span>
@@ -153,7 +153,7 @@
                 </a>
             </li>
             <li>
-                <a href="https://pass.willbes.net/m/periodPackage/show/cate/3019/pack/648001/prod-code/174386" target="_blank">
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank">
                     <span>한덕현 영어</span>
                     <span>전과정<br>T-PASS</span>
                     <span><strong>79</strong>만원</span>

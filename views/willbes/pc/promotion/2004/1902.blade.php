@@ -50,11 +50,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top01.gif" alt="" />        
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_top01.gif" alt="" />        
         </div>   
 
         <div class="evtCtnsBox evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
             <map name="Map1902_buy" id="Map1902_buy">
                 <area shape="rect" coords="259,931,846,1023" href="#evt02" />
             </map>                 
@@ -65,7 +65,7 @@
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM " target="_blank" alt="행정직">
                 <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM " target="_blank" alt="소방직">

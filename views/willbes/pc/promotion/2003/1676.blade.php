@@ -3,7 +3,8 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">     
+    <style type="text/css">   
+        .evtContent {margin-top:20px}
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
@@ -13,10 +14,10 @@
         .skybanner a {display:block; margin-bottom:10px}
 
 
-        .evttop_banner {background:#433F71; padding-top:50px}
+        .evttop_banner {background:#e2d111}
 
         /* 탭 */
-        .tabContaier{width:1120px; margin:0 auto}
+        .tabContaier{width:1120px; margin:20px auto 0}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
         .tabContaier li {display:inline; float:left; width:50%}
         .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px;color:#7B7F82;} 
@@ -27,26 +28,19 @@
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/06/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1676_top_bg.jpg) no-repeat center top; }
 
-        .box_book{width:920px; margin:0 auto;border-top:2px solid #22197f;}
+        .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
         .slice_area {margin-top:-5px;}
-        .evt01 {background:#f3f3f3}
-        .evt01s {padding-top:80px; background:#f3f3f3}
-        .evt01s_youtube {background:#f3f3f3}
-        .evt01s_youtube iframe{width:853px; height:480px; margin:50px auto 0;}
-        .evt01ss {padding-top:100px; background:#f3f3f3}
+        .evt01 {background:#fff}
+        .evt01 iframe{width:853px; height:480px; margin:50px auto 0;}
 
-        .evt02 {background:#e7e7e7;padding-bottom:120px;}    
+        .evt02 {background:#e7e7e7;}    
         .evt02 .slide_con {position:relative; width:900px; margin:0 auto}
         .evt02 .slide_con p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
         .evt02 .slide_con p.leftBtn {left:-80px}
-        .evt02 .slide_con p.rightBtn {right:-80px}
-
-        .evt_soon {padding:50px 0;}
-
-        .evt03, .evt03ss, .evt04{background:#fff}
+        .evt02 .slide_con p.rightBtn {right:-80px}       
         
         .evt05 {background:#fff; position:relative}
         .evt05 span {font-size:60px; position:absolute; top:35px; left:50%; margin-left:110px; color:#ce2721; animation: sp01 1.5s linear infinite;}
@@ -61,25 +55,24 @@
         .wb_ctsInfo div h3 {font-size:28px !important; letter-spacing:-1px; margin-bottom:30px; color:#fff;}        
         .wb_ctsInfo ul li .big {font-size:15px; font-weight:bold;}
         .wb_ctsInfo ul li {margin:10px 0 15px 15px; list-style:decimal; color:#eee; font-size:13px;}        
-		.txt_point {color:#ff9472; font-size:12px;}
-        	
+		.txt_point {color:#ff9472; font-size:12px;}        	
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  
-
         <div class="skybanner">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
             </a> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,116,152,194" href="#youtube_watch" />
                 <area shape="rect" coords="4,199,150,272" href="#detail" />
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
-                <area shape="rect" coords="-1,359,149,437" href="#evt3" />
+                <area shape="rect" coords="3,359,153,437" href="#evt3" />
             </map>           
         </div>         
         
+        {{--
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
                 <ul class="NGEB">
@@ -93,22 +86,19 @@
                     </li>
                 </ul>
             </div>
-        </div>        
-        {{--
+        </div>  
+        --}}      
+
         <div class="evtCtnsBox evttop_banner" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1588banner"  title="더켠의 반반한 밤" border="0" />
-            <map name="Map1588banner" id="Map1588banner">
-                <area shape="rect" coords="597,16,806,94" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
-                <area shape="rect" coords="809,15,1020,95"href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
-            </map>             
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top_00.jpg"  title="더켠의 반반한 밤">            
         </div>
-        --}}   
+
         <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_top.jpg"  title="더켠의 반반한 밤">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top.jpg"  title="더켠의 반반한 밤">            
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01.jpg" title="마무리짓는 1시간"> 
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_01.jpg" title="마무리짓는 1시간"> 
             <div class="box_book">
                 <div class="slice_area">
                     <ul class="slidesDay">
@@ -121,61 +111,50 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01_sunday.png" alt="일요일"/></li>         
                     </ul> 
                 </div>        
-            </div>            
-        </div>              
+            </div>   
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_02.jpg" title="더켠읜 반반한 모의고사"><br>
+            {{--<iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>--}}
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_01_03.jpg" title="더켠읜 반반한 모의고사">         
+        </div> 
 
-        <div class="evtCtnsBox evt01s">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01s.jpg" title="더켠읜 반반한 모의고사">    
-            <map name="Map1588a" id="Map1588a">
-                <area shape="rect" coords="359,844,751,907" href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/videos?view=0&sort=dd&shelf_id=7" target="_blank" />
-            </map>
-        </div>     
-
-        <div class="evtCtnsBox evt01s_youtube">  
-            <iframe src="https://www.youtube.com/embed/8T84bvoKd28?rel=0M" frameborder="0" allowfullscreen="" id="youtube_watch"></iframe>          
-        </div>
-
-        <div class="evtCtnsBox evt01ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_01ss.jpg" title="공시 영어의 지존">        
-        </div>
         
         <div class="evtCtnsBox evt02" id="pairing">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02.jpg" id="detail" title="편성표">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">        
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1676_02_november.jpg" /></li>
+                <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1676_02_december.jpg" /></li>
-                </ul>         
+                </ul>     
+                {{--    
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>            
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>  
+                --}}          
             </div> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1675_02_bottom.jpg">       
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_02.jpg">       
         </div>           
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1676_03.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
-            <map name="Map1676b">
-                <area shape="rect" coords="368,974,749,1034" href="#to_go" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+                <map name="Map1676b">
+                    <area shape="rect" coords="342,1259,778,1342" href="#to_go" />
+                </map>
+            </div>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+                <map name="Map1676ss">
+                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/175749" target="_blank" alt="12월 방송" />
+                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="지방직 방송" />
+                    <area shape="rect" coords="618,782,825,882" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
+                </map> 
+            </div>
         </div>
-
-        <div class="evtCtnsBox evt03ss">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1676_03ss.gif" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
-            <map name="Map1676ss" id="Map1676ss">
-                <area shape="rect" coords="182,565,496,640" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173676" target="_blank" alt="11월 방송" />
-                <area shape="rect" coords="618,565,942,642" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="1년치 방송" />
-                <area shape="rect" coords="650,950,908,1054" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
-            </map>  
-        </div>
-
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_04.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
-            <map name="Map1676e" id="Map1588e">
-                <area shape="rect" coords="123,27,396,126" href="#pairing" />
-                <area shape="rect" coords="436,24,711,126" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="738,24,996,126" href="https://pass.willbes.net/pass/support/notice/show?board_idx=266556" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_03.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
+            <map name="Map1676e">
+                <area shape="rect" coords="162,62,552,163" href="#pairing" />
+                <area shape="rect" coords="569,64,959,159" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
             </map>                  
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')

@@ -257,7 +257,7 @@
                     </a>
                 </div>
                 <div id="lec3">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_10.jpg" title="연간 PASS"/>
                     </a>
                 </div>              

@@ -124,7 +124,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_04_02.jpg" alt="수강신청" usemap="#Map1779_02" border="0" />   
                 <map name="Map1779_02" id="Map1779_02">
                     <area shape="rect" coords="279,86,515,148" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
-                    <area shape="rect" coords="692,86,930,147" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준">
+                    <area shape="rect" coords="692,86,930,147" href="https://pass.willbes.net/pass/event/list/ongoing" target="_blank" alt="이석준">
                 </map>
             </div>
         </div>

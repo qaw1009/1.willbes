@@ -92,6 +92,14 @@
                         @endforeach
                     @endif
                 </ul>
+                @if(empty($data['ProdAutoLectures']) === false)
+                    <div class="automatic">
+                        <div>자동지급강의</div>
+                        @foreach($data['ProdAutoLectures'] as $prod_row)
+                            <p>{{ $prod_row['ProdName'] }}</p>
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
             <div class="lec-info">

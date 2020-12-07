@@ -128,6 +128,18 @@
                                 @endif
                             </td>
                         </tr>
+                        @if(empty($data['ProdAutoLectures']) === false)
+                            <tr>
+                                <td class="tx-left automatic" colspan="2">
+                                    <div class="tx-blue">자동지급강의</div>
+                                    <ul>
+                                        @foreach($data['ProdAutoLectures'] as $prod_row)
+                                            <li>{{ $prod_row['ProdName'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                     <!-- lecTable -->

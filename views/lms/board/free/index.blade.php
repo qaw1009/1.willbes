@@ -90,7 +90,7 @@
                     <th>제목</th>
                     <th>첨부</th>
                     <th>등록자</th>
-                    <th>등록일</th>
+                    <th>등록일<br/>(수기등록일)</th>
                     <th>BEST</th>
                     <th>사용</th>
                     <th>조회수</th>
@@ -183,13 +183,26 @@
                             return tmp_return;
                         }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
+                            var reg_memname = '';
                             if (row.RegType == '1') {
-                                return row.wAdminName;
+                                if(row.RegMemName){
+                                    reg_memname =  row.RegMemName + '<br>' + '('+row.AdmMemName + ')';
+                                }else{
+                                    reg_memname = row.wAdminName;
+                                }
                             } else {
-                                return row.RegMemName+'<br>'+'('+row.RegMemId+')';
+                                reg_memname = row.RegMemName+'<br>'+'('+row.RegMemId+')';
+                            }
+
+                            return reg_memname;
+                        }},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            if(row.ReviewRegDate){
+                                return row.RegDatm + '<br/>(' + row.ReviewRegDate + ')';
+                            }else{
+                                return row.RegDatm
                             }
                         }},
-                    {'data' : 'RegDatm'},
                     {'data' : 'IsBest', 'render' : function(data, type, row, meta) {
                             //return (data == 'Y') ? '사용' : '<p class="red">미사용</p>';
                             var chk = '';

@@ -119,7 +119,10 @@ class Free extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.RegType,
-            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, MEM.MemName AS RegMemName, MEM.MemId AS RegMemId
+            LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, MEM.MemName AS RegMemName, MEM.MemId AS RegMemId, LB.ReviewRegDate,
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName, 
+            IF(LB.RegType = 1, ADMIN.wAdminName,"") AS AdmMemName
         ';
 
         $list = [];
@@ -280,6 +283,7 @@ class Free extends BaseBoard
             ['field' => 'title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
+            ['field' => 'review_reg_date', 'label' => '등록날짜', 'rules' => 'trim|required'],
         ];
 
         // 임용 추가
@@ -447,6 +451,7 @@ class Free extends BaseBoard
                 'SettingReadCnt' => element('setting_readCnt', $input),
                 'SubjectIdx' => element('subject_idx', $input),
                 'RegMemName' => element('reg_mem_name', $input),
+                'ReviewRegDate' => element('review_reg_date', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('cate_code', $input)

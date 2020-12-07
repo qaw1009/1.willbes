@@ -284,6 +284,9 @@ class Lecture extends \app\controllers\FrontController
         // 상품 강의 목차
         $data['LectureUnits'] = $this->lectureFModel->findProductLectureUnits($prod_code);
 
+        // 자동지급 강좌상품
+        $data['ProdAutoLectures'] = $this->lectureFModel->findProductToProduct($prod_code, 'on_lecture');
+
         $this->load->view('site/lecture/show', [
             'learn_pattern' => $data['LecSaleType'] === 'B' ? 'on_lecture_before' : $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),

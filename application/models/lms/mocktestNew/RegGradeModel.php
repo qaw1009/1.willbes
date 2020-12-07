@@ -304,7 +304,9 @@ class RegGradeModel extends WB_Model
             $MemIdx = element('mem_idx', $formData);
 
             $update_data = [
-                'IsTake' => 'Y'
+                'IsTake' => 'Y',
+                'RegDatm' => date('Y-m-d H:i:s'),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
             ];
             $this->_conn->set($update_data)->where('MrIdx', $MrIdx);
             if ($this->_conn->update($this->_table['mock_register']) === false) {

@@ -113,6 +113,7 @@
                         <th class="text-center">총점</th>
                         <th class="text-center">등록일</th>
                         <th class="text-center">응시여부</th>
+                        <th class="text-center">응시상태변경</br>관리자</th>
                         <th class="text-center">성적확인</th>
                     </tr>
                     </thead>
@@ -175,6 +176,7 @@
                             }
                             return str;
                         }},
+                    {'data' : 'UpdAdminName', 'class': 'text-center'},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             /*return row.AdjustSum > 0 ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="'+row.ProdCode+'" data-mr-idx="'+row.MrIdx+'">확인</a>' : '';*/
                             return (row.tempCnt > 0 || row.answerCnt > 0) ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="' + row.ProdCode + '" data-mr-idx="' + row.MrIdx + '">확인</a>' : '';

@@ -59,6 +59,7 @@
                             @else
                                 @if ($privateExamInfo['tempCnt'] > 0 ) 임시저장 @else 미응시 @endif
                             @endif
+                            @if (empty($privateExamInfo['UpdAdminName']) === false)<br>상태변경관리자 - {{$privateExamInfo['UpdAdminName']}}@endif
                         </td>
                         <td>{{ $privateExamInfo['tempCnt'] }}</td>
                         <td>{{ $privateExamInfo['ProductCountAnswer'] }}</td>

@@ -27,7 +27,8 @@ class MemberPrivateModel extends WB_Model
         'category' => 'lms_sys_category',
         'mock_log' => 'lms_mock_log',
         'lms_member' => 'lms_member',
-        'sys_code' => 'lms_sys_code'
+        'sys_code' => 'lms_sys_code',
+        'admin' => 'wbs_sys_admin'
     ];
 
     public function __construct()
@@ -97,6 +98,7 @@ class MemberPrivateModel extends WB_Model
                     ,ROUND((SELECT SUM(AdjustPoint) FROM lms_mock_grades WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx),2) AS AdjustSum #총점
                     ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answertemp WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS tempCnt
                     ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answerpaper WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS answerCnt
+                    ,ADMIN.wAdminName AS UpdAdminName
                 ";
             }
         }
@@ -110,6 +112,7 @@ class MemberPrivateModel extends WB_Model
             JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
             JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+            LEFT JOIN {$this->_table['admin']} AS ADMIN ON MR.UpdAdminIdx = ADMIN.wAdminIdx
         ";
 
         //과목 검색 조건시 추가
@@ -160,11 +163,12 @@ class MemberPrivateModel extends WB_Model
                     WHERE a.ProdCode = M.ProdCode
                 )
             ) AS ProductCountAnswer
+            ,ADMIN.wAdminName AS UpdAdminName
         ";
 
         $from = "
             FROM (
-                SELECT MR.ProdCode, MR.MrIdx, MR.MemIdx, MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea, MR.IsTake, MR.RegDatm
+                SELECT MR.ProdCode, MR.MrIdx, MR.MemIdx, MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea, MR.IsTake, MR.RegDatm, MR.UpdAdminIdx
                 , GROUP_CONCAT(S.SubjectIdx) AS SubjectIdxs
                 , GROUP_CONCAT(S.SubjectName) AS SubjectNames
                 FROM {$this->_table['mock_register']} AS MR
@@ -179,6 +183,7 @@ class MemberPrivateModel extends WB_Model
             INNER JOIN {$this->_table['product_r_category']} AS PC ON PM.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             INNER JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             INNER JOIN {$this->_table['lms_member']} AS MB ON M.MemIdx = MB.MemIdx
+            LEFT JOIN {$this->_table['admin']} AS ADMIN ON M.UpdAdminIdx = ADMIN.wAdminIdx
             LIMIT 1
         ";
 

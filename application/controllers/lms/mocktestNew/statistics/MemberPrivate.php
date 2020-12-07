@@ -410,6 +410,7 @@ class MemberPrivate extends BaseMocktest
     {
         $arr_data = [];
         foreach ($data as $key => $row) {
+            $arr_data[$row['SubjectName']]['temp_answer'][] = $row['TempAnswer'];
             $arr_data[$row['SubjectName']]['right_answer'][] = $row['RightAnswer'];
             $arr_data[$row['SubjectName']]['answer'][] = $row['Answer'];
             $arr_data[$row['SubjectName']]['is_wrong'][] = $row['IsWrong'];

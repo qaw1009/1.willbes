@@ -525,7 +525,7 @@ class MemberPrivateModel extends WB_Model
     public function gradeSubjectDetail($prod_code, $mr_idx)
     {
         $column = "
-            P.*, MA.Answer, MA.IsWrong
+            P.*, MA.Answer, MA.IsWrong, MAT.Answer AS TempAnswer
             ,(
                 SELECT ROUND(((ycnt / (ycnt + ncnt)) * 100), 2) AS QAVR
                 FROM (
@@ -565,6 +565,7 @@ class MemberPrivateModel extends WB_Model
                 INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
             ) AS P
             LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
+            LEFT JOIN {$this->_table['mock_answertemp']} AS MAT ON P.MqIdx = MAT.MqIdx AND MAT.ProdCode = '{$prod_code}' AND MAT.MrIdx = '{$mr_idx}'
         ";
         $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();

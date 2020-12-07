@@ -88,101 +88,101 @@
                         <tr>
                             <td>국어</td>
                             <td>기미진</td>
-                            <td>[라이브][20.11-12] 기미진 기특한 국어 기출문제분석</td>
-                            <td>11/18 ~ 12/31</td>
-                            <td>수/목</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/173967" target="_blank">수강신청</a></td>
+                            <td>[라이브][21.01-02] 기미진 기특한 국어 진도별 문제풀이</td>
+                            <td>01-07 ~    02-25</td>
+                            <td>목</td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175918" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>한덕현</td>
-                            <td>[라이브][20.11-12] 한덕현 제니스영어 기출리뷰</td>
-                            <td>11/16 ~ 12/28</td>
+                            <td>[라이브][21.01-02] 한덕현 제니스영어 스나이퍼32</td>
+                            <td>01-04 ~ 02-22</td>
                             <td>월</td>
-                            <td>63,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/173968" target="_blank">수강신청</a></td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
                             <td>조민주</td>
-                            <td>[라이브][20.11-12] 조민주 한국사 기출문제풀이</td>
-                            <td>11/16 ~ 12/29</td>
+                            <td>[라이브][21.01-02] 조민주 한국사 진도별 문제풀이</td>
+                            <td>01-04 ~ 02-23</td>
                             <td>월/화</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/173969" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175920" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정법</td>
                             <td>이석준</td>
-                            <td>[라이브][20.11-12] 이석준 행정법 기출문제풀이</td>
-                            <td>11/17 ~ 12/31</td>
+                            <td>[라이브][21.01-02] 이석준 행정법 진도별 문제풀이</td>
+                            <td>01-05 ~ 02-25</td>
                             <td>화/목</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/173970" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175922" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정학</td>
                             <td>김덕관</td>
-                            <td>[라이브][20.11-12] 김덕관 강한행정학 기출문제풀이</td>
-                            <td>11/21 ~ 01/13</td>
+                            <td>[라이브][21.01-02] 김덕관 강한행정학 진도별 문제풀이</td>
+                            <td>01-15 ~ 02-26</td>
                             <td>수/금</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/173971" target="_blank">수강신청</a></td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175921" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>국어</td>
                             <td>김세령</td>
-                            <td>[라이브][20.11-12] 불꽃소방 세령국어 이론정리+기출분석</td>
-                            <td>11/16 ~ 12/28</td>
-                            <td>월</td>
+                            <td>[라이브][21.01-02] 불꽃소방 세령국어 진도별 문제풀이</td>
+                            <td>01-04 ~ 02-22</td>
+                            <td>화</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173976" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175944" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>이아림</td>
-                            <td>[라이브][20.11-12] 불꽃소방 이아림 공채영어 이론정리+기출분석</td>
-                            <td>11/20 ~ 01/01</td>
+                            <td>[라이브][21.01-02] 불꽃소방 이아림 공채영어 진도별 문제풀이</td>
+                            <td>01-08 ~ 02-26</td>
                             <td>금</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173977" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175945" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>양익</td>
-                            <td>[라이브][20.11-12] 불꽃소방 양익 경채영어 이론정리+기출분석</td>
-                            <td>11/17 ~ 12/29</td>
-                            <td>화/목</td>
-                            <td>63,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173978" target="_blank">수강신청</a></td>
+                            <td>[라이브][21.01-02] 불꽃소방 양익 경채영어 진도별 문제풀이</td>
+                            <td>01-05 ~ 02-23</td>
+                            <td>화</td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175946" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
                             <td>한경준</td>
-                            <td>[라이브][20.11-12] 불꽃소방 한경준 미친한국사 이론정리+기출분석</td>
-                            <td>11/17 ~ 12/29</td>
+                            <td>[라이브][21.01-02] 불꽃소방 한경준 미친한국사 진도별 문제풀이</td>
+                            <td>01-05 ~ 02-23</td>
                             <td>화</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173981" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175949" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방학개론</td>
                             <td>이종오</td>
-                            <td>[라이브][20.11-12] 불꽃소방 이종오 소방학개론 이론정리+기출분석</td>
-                            <td>11/18 ~ 12/30</td>
+                            <td>[라이브][21.01-02] 불꽃소방 이종오 소방학개론 문제풀이 + 빈출 테마</td>
+                            <td>01-06 ~ 02-24</td>
                             <td>수</td>
                             <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173979" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175947" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방관계법규</td>
                             <td>이종오</td>
-                            <td>[라이브][20.11-12] 불꽃소방 이종오 소방관계법규 이론정리+기출분석</td>
-                            <td>11/19 ~ 12/31</td>
+                            <td>[라이브][21.01-02] 불꽃소방 이종오 소방관계법규 문제풀이 + 빈출 테마</td>
+                            <td>01-07 ~ 02-25</td>
                             <td>목</td>
-                            <td>63,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/173980" target="_blank">수강신청</a></td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175948" target="_blank">수강신청</a></td>
                         </tr>
                     </tbody>
                 </table>

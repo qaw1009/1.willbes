@@ -27,7 +27,8 @@ class MemberPrivateModel extends WB_Model
         'category' => 'lms_sys_category',
         'mock_log' => 'lms_mock_log',
         'lms_member' => 'lms_member',
-        'sys_code' => 'lms_sys_code'
+        'sys_code' => 'lms_sys_code',
+        'admin' => 'wbs_sys_admin'
     ];
 
     public function __construct()
@@ -82,7 +83,7 @@ class MemberPrivateModel extends WB_Model
                 $column = "
                     MR.MemIdx, MB.MemName, MB.MemId, CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone
                     ,MP.ProdCode ,PD.ProdName, MR.MrIdx, MR.OrderProdIdx
-                    ,MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea   #응시번호,응시직렬,응시형태,응시지역
+                    ,MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea #응시번호,응시직렬,응시형태,응시지역
                     ,MP.MockYear, MP.MockRotationNo, C1.CateName,MR.IsTake #연도, 회차, 카테고리명, 응시/미응시
                     ,MR.RegDatm AS ExamRegDatm #시험종료
                     ,fn_ccd_name(MR.TakeMockPart) AS TakeMockPartName
@@ -97,6 +98,7 @@ class MemberPrivateModel extends WB_Model
                     ,ROUND((SELECT SUM(AdjustPoint) FROM lms_mock_grades WHERE ProdCode = MR.ProdCode AND MrIdx = MR.MrIdx),2) AS AdjustSum #총점
                     ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answertemp WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS tempCnt
                     ,(SELECT COUNT(*) AS tempCnt FROM lms_mock_answerpaper WHERE MrIdx = MR.MrIdx AND MemIdx = MR.MemIdx) AS answerCnt
+                    ,ADMIN.wAdminName AS UpdAdminName
                 ";
             }
         }
@@ -110,9 +112,7 @@ class MemberPrivateModel extends WB_Model
             JOIN {$this->_table['product']} AS PD ON MP.ProdCode = PD.ProdCode AND PD.IsStatus = 'Y'
             JOIN {$this->_table['product_r_category']} AS PC ON MP.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             JOIN {$this->_table['category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-            #LEFT JOIN {$this->_table['sys_code']} AS SC1 ON MR.TakeMockPart = SC1.Ccd
-            #LEFT JOIN {$this->_table['sys_code']} AS SC2 ON MR.TakeForm = SC1.Ccd
-            #LEFT JOIN {$this->_table['sys_code']} AS SC3 ON MR.TakeArea = SC1.Ccd
+            LEFT JOIN {$this->_table['admin']} AS ADMIN ON MR.UpdAdminIdx = ADMIN.wAdminIdx
         ";
 
         //과목 검색 조건시 추가
@@ -147,17 +147,28 @@ class MemberPrivateModel extends WB_Model
 
         $column = "
             M.ProdCode, MB.MemIdx, MB.MemName, CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone
-            ,M.TakeNumber, M.TakeMockPart, M.TakeForm, M.TakeArea, PM.MockYear, PM.MockRotationNo
+            ,M.TakeNumber, M.TakeMockPart, M.TakeForm, M.TakeArea, M.IsTake, PM.MockYear, PM.MockRotationNo
             ,PD.ProdName, C1.CateName, M.SubjectIdxs, M.SubjectNames, M.RegDatm AS ExamRegDatm
             ,fn_ccd_name(M.TakeMockPart) AS TakeMockPartName
             ,fn_ccd_name(M.TakeForm) AS TakeFormName
             ,fn_ccd_name(M.TakeArea) AS TakeAreaName
-            ,(SELECT COUNT(*) AS tempCnt FROM {$this->_table['mock_answertemp']} WHERE MrIdx = M.MrIdx AND MemIdx = M.MemIdx) AS tempCnt
+            ,(SELECT COUNT(*) AS tempCnt FROM {$this->_table['mock_answertemp']} WHERE MrIdx = M.MrIdx AND MemIdx = M.MemIdx AND Answer > 0) AS tempCnt
+            ,(
+                SELECT COUNT(*) AS ProductCountAnswer
+                FROM {$this->_table['mock_questions']}
+                WHERE MpIdx IN (
+                    SELECT b.MpIdx
+                    FROM {$this->_table['product_mock']} AS a
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode
+                    WHERE a.ProdCode = M.ProdCode
+                )
+            ) AS ProductCountAnswer
+            ,ADMIN.wAdminName AS UpdAdminName
         ";
 
         $from = "
             FROM (
-                SELECT MR.ProdCode, MR.MrIdx, MR.MemIdx, MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea, MR.RegDatm
+                SELECT MR.ProdCode, MR.MrIdx, MR.MemIdx, MR.TakeNumber, MR.TakeMockPart, MR.TakeForm, MR.TakeArea, MR.IsTake, MR.RegDatm, MR.UpdAdminIdx
                 , GROUP_CONCAT(S.SubjectIdx) AS SubjectIdxs
                 , GROUP_CONCAT(S.SubjectName) AS SubjectNames
                 FROM {$this->_table['mock_register']} AS MR
@@ -172,6 +183,7 @@ class MemberPrivateModel extends WB_Model
             INNER JOIN {$this->_table['product_r_category']} AS PC ON PM.ProdCode = PC.ProdCode AND PC.IsStatus = 'Y'
             INNER JOIN {$this->_table['sys_category']} AS C1 ON PC.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
             INNER JOIN {$this->_table['lms_member']} AS MB ON M.MemIdx = MB.MemIdx
+            LEFT JOIN {$this->_table['admin']} AS ADMIN ON M.UpdAdminIdx = ADMIN.wAdminIdx
             LIMIT 1
         ";
 
@@ -513,7 +525,7 @@ class MemberPrivateModel extends WB_Model
     public function gradeSubjectDetail($prod_code, $mr_idx)
     {
         $column = "
-            P.*, MA.Answer, MA.IsWrong
+            P.*, MA.Answer, MA.IsWrong, MAT.Answer AS TempAnswer
             ,(
                 SELECT ROUND(((ycnt / (ycnt + ncnt)) * 100), 2) AS QAVR
                 FROM (
@@ -553,6 +565,7 @@ class MemberPrivateModel extends WB_Model
                 INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
             ) AS P
             LEFT JOIN {$this->_table['mock_answerpaper']} AS MA ON P.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' AND MA.MrIdx = '{$mr_idx}'
+            LEFT JOIN {$this->_table['mock_answertemp']} AS MAT ON P.MqIdx = MAT.MqIdx AND MAT.ProdCode = '{$prod_code}' AND MAT.MrIdx = '{$mr_idx}'
         ";
         $order_by = " ORDER BY P.MpIdx, P.OrderNum, P.QuestionNO";
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();

@@ -16,6 +16,8 @@
 
         .evttop_banner {background:#e2d111}
 
+        .evttop_banners {background:#0A2B3C;padding-top:50px;} 
+
         /* 탭 */
         .tabContaier{width:1120px; margin:20px auto 0}
         .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
@@ -92,7 +94,15 @@
         --}}      
 
         <div class="evtCtnsBox evttop_banner" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top_00.jpg"  title="더켠의 반반한 밤">            
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top_00.jpg"  title="반반과 똑독이 하나">            
+        </div>
+        
+        <div class="evtCtnsBox evttop_banners" >     
+            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1676_banner"  title="신청 베너" border="0">
+            <map name="Map1676_banner" id="Map1676_banner">
+                <area shape="rect" coords="604,22,802,92" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
+                <area shape="rect" coords="814,23,1012,92" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
+            </map>             
         </div>
 
         <div class="evtCtnsBox evttop" >     

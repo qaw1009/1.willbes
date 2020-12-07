@@ -629,6 +629,14 @@
                 <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
+                <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
             </ul>
         </div>
     </div>

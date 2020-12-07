@@ -45,7 +45,7 @@
 		.evtInfoBox .infoTit {font-size:16px; margin-bottom:20px}
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
 		.evtInfoBox ul {margin-bottom:30px}
-		.evtInfoBox li {margin-bottom:8px; margin-left:20px; list-style:disc}
+		.evtInfoBox li {margin-bottom:5px; margin-left:20px; list-style:disc}
      
     </style>
 
@@ -115,10 +115,11 @@
                 </ul>
                 <div class="infoTit NG"><strong>환불</strong></div>
 				<ul>
-                    <li>결제 후 7일 이내 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.(일부강의만의 환불은 불가합니다.)</li>
-                    <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
-                    <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
-                    <li>고객 변심으로 인한 환불은 수강시작일 (당일 포함)로부터 7일이 경과되면, 김동진 온라인 T-PASS반 결제가 기준으로 계산하여 사용일수만큼 차감 후 환불됩니다.(환불시 무료로 제공된 기본서는 반환하셔야 합니다.)</li>
+                    <li>결제일로부터 7일 이내 전액 환불 가능합니다. 단, 맛보기 강좌를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.</li>
+                    <li>강의 자료 및 모바일 강의 다운로드 서비스를 이용 시 수강한 것으로 간주 됩니다.</li>
+                    <li>본 상품은 특별 기획 강좌로 환불 시에는 수강하신 상품의 정가를 기준으로 이용기간을 공제하고 환불됩니다.<br>
+                    (환불시 무료로 제공된 기본서는 반납 또는 교재비 차감 후 환불됩니다.)</li>
+                    <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가하오니 유의 바랍니다</li>
 				</ul>
 				<div class="infoTit NG"><strong>PASS 수강</strong></div>
 				<ul>
@@ -179,7 +180,7 @@
                 return;
             }
 
-            if(confirm('김동진 민법 T-PASS 상품 이용안내 및 환불관련 내용을 모두 확인하였고 이에 동의합니다.')){
+            if(confirm('김동진 민법 T-PASS 상품 이용안내 및 환불관련 내용을 모두 확인하였고 이에 동의합니다.\n (결제후 7일 이후 환불요청시 각 단과 정가기준 공제 후 환불)')){
                 var url = '{{ site_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
                 location.href = url;
             }

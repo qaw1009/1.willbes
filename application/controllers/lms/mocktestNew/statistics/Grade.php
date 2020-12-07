@@ -259,6 +259,25 @@ class Grade extends BaseMocktest
     }
 
     /**
+     * 응시상태변경
+     */
+    public function storeIsTakeAjax()
+    {
+        $rules = [
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required'],
+            ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required'],
+            ['field' => 'mem_idx', 'label' => '회원식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->regGradeModel->updateForIsTake($this->_reqP(null, false));
+        $this->json_result($result, $result['ret_msg'], $result);
+    }
+
+    /**
      * 조정점수반영
      */
     public function scoreMakeAjax()

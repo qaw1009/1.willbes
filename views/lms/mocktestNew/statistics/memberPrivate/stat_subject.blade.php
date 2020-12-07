@@ -47,18 +47,22 @@
                             </thead>
                             <tbody>
                             <tr>
+                                <th style="border-top: 1px solid #e3e3e3;">임시마킹<br>(online)</th>
+                                @foreach($row['temp_answer'] as $key2 => $row2)
+                                    <td>{{ $row2 }}</td>
+                                @endforeach
+                            </tr>
+                            <tr>
                                 <th style="border-top: 1px solid #e3e3e3;">정답</th>
                                 @foreach($row['right_answer'] as $key2 => $row2)
                                     <td>{{ $row2 }}</td>
                                 @endforeach
-
                             </tr>
                             <tr>
                                 <th style="border-top: 1px solid #e3e3e3;">마킹</th>
                                 @foreach($row['answer'] as $key2 => $row2)
                                     <td><span class="@if($row['is_wrong'][$key2] == 'N') red bold glyphicon glyphicon-ok @endif">{{ $row2 }}</span></td>
                                 @endforeach
-
                             </tr>
                             <tr>
                                 <th style="border-top: 1px solid #e3e3e3;">정답률</th>

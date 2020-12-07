@@ -44,6 +44,7 @@ class MemberPrivate extends BaseMocktest
             'EQ' => [
                 'PD.SiteCode' => $this->_reqP('search_site_code'),
                 'MR.TakeForm' => $this->_reqP('search_TakeFormsCcd'),
+                'MR.IsTake' => $this->_req('search_IsTake'),
                 'MP.MockYear' => $this->_reqP('search_year'),
                 'MP.MockRotationNo' => $this->_reqP('search_round'),
                 'C1.CateCode' => $this->_reqP('search_cateD1'),
@@ -409,6 +410,7 @@ class MemberPrivate extends BaseMocktest
     {
         $arr_data = [];
         foreach ($data as $key => $row) {
+            $arr_data[$row['SubjectName']]['temp_answer'][] = $row['TempAnswer'];
             $arr_data[$row['SubjectName']]['right_answer'][] = $row['RightAnswer'];
             $arr_data[$row['SubjectName']]['answer'][] = $row['Answer'];
             $arr_data[$row['SubjectName']]['is_wrong'][] = $row['IsWrong'];

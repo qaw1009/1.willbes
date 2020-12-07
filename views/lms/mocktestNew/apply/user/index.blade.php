@@ -33,6 +33,7 @@
                             <option value="">응시여부</option>
                             <option value="Y" @if($arr_base['search_IsTake'] == 'Y') selected="selected" @endif>응시</option>
                             <option value="N" @if($arr_base['search_IsTake'] == 'N') selected="selected" @endif>미응시</option>
+                            <option value="E" @if($arr_base['search_IsTake'] == 'E') selected="selected" @endif>시험종료(미응시)</option>
                         </select>
                     </div>
                     <label class="control-label col-md-1" for="search_start_date">결제완료일</label>
@@ -154,7 +155,15 @@
                     {'data' : 'SubjectNameList', 'class': 'text-center'},
                     {'data' : 'TakeArea_Name', 'class': 'text-center'},
                     {'data' : 'IsTake', 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            return (data === 'Y') ? '응시' : (row.answerTempCnt > 0) ? '임시저장' : '미응시';
+                            var str = '';
+                            if (data === 'Y') {
+                                str = '응시';
+                            } else if (data === 'E') {
+                                str = '시험종료(미응시)';
+                            } else {
+                                if (row.answerTempCnt > 0) { str = '임시저장'; } else { str = '미응시'; }
+                            }
+                            return str;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return  '<a href="javascript:;" class="blue cs-pointer btn-print" data-idx="'+row.MrIdx+'">[출력]</a>';

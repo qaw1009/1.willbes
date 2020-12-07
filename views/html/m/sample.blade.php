@@ -78,7 +78,7 @@
             <a href="{{ site_url('/home/html/m/mypage_csvideo_read') }}" target="_blank">내강의실 > 고객센터 > 동영상 상담실 Read</a>
             <br><br> 
             <p>임용</p>             
-            <a href="{{ site_url('/home/html/m/main_2018') }}" target="_blank">메인</a>
+            <a href="{{ site_url('/home/html/m/main_2018_v1') }}" target="_blank">메인</a>
             <a href="{{ site_url('/home/html/m/prof2_ssam') }}" target="_blank">교수 상세보기</a>
             <a href="{{ site_url('/home/html/m/review_list') }}" target="_blank">수강후기</a>
             <a href="{{ site_url('/home/html/m/passNote_list') }}" target="_blank">합격수기 list</a>

@@ -40,22 +40,22 @@
                 </li>
             </ul>
         </dt>
-        <dt class="willbesNumber">
+        <dt class="willbesNumber NSK">
             <ul>
                 <li>
                     <div class="nTit">강의&동영상 문의</div>
-                    <div class="nNumber tx-color">1544-3169</div>
-                    <div class="nTxt">
+                    <div class="nNumber tx-color NSK-Black">1544-3169</div>
+                    <div class="nTxt NSK">
                         [운영시간]<br/>
                         09시 ~ 22시
                     </div>
                 </li>
                 <li>
                     <div class="nTit">교재배송문의</div>
-                    <div class="nNumber tx-color">1544-4944</div>
-                    <div class="nTxt">
+                    <div class="nNumber tx-color NSK-Black">1544-4944</div>
+                    <div class="nTxt NSK">
                         [운영시간]<br/>
-                        평일: 09시~ 17시 (점심시간 12시 ~ 13시)
+                        평일: 09시~ 17시<br> (점심시간 12시 ~ 13시)
                     </div>
                 </li>
             </ul>

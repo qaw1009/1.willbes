@@ -16,7 +16,7 @@
 
         .evttop_banner {background:#e2d111}
 
-        .evttop_banners {background:#0A2B3C} 
+        .evttop_banners {background:#0A2B3C;padding-top:50px;} 
 
         /* 탭 */
         .tabContaier{width:1120px; margin:20px auto 0}

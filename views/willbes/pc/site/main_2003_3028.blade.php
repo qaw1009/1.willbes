@@ -73,7 +73,7 @@
             <div class="widthAuto p_re">
                 <img src="https://static.willbes.net/public/images/promotion/main/3028_visual_tit02.jpg" alt="무엇 하나 빠지지 않는 빈틈없는 라인업 윌비스 기술직 교수진">
                 <ul class="ProfBoxB">
-                    @for($i=1; $i<=8; $i++)
+                    @for($i=1; $i<=16; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}

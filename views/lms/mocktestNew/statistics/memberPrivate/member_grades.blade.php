@@ -227,7 +227,7 @@
                 var mr_idx = $(this).data('mr-idx');
                 uri_param = '?prod_code=' + prod_code + '&mr_idx=' + mr_idx;
                 var _url = '{{ site_url('/mocktestNew/statistics/memberPrivate/winStatTotal') }}' + uri_param;
-                win = window.open(_url, 'mockPopupL', 'width=1215, height=900, scrollbars=yes, resizable=yes');
+                win = window.open(_url, 'mockPopupL', 'width=1400, height=900, scrollbars=yes, resizable=yes');
                 win.focus();
             });
         });

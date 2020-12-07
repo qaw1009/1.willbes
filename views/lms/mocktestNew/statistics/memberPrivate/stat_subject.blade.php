@@ -47,7 +47,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <th style="border-top: 1px solid #e3e3e3;">임시마킹</th>
+                                <th style="border-top: 1px solid #e3e3e3;">임시마킹<br>(online)</th>
                                 @foreach($row['temp_answer'] as $key2 => $row2)
                                     <td>{{ $row2 }}</td>
                                 @endforeach

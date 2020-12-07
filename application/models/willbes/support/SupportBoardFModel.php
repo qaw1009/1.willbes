@@ -561,7 +561,7 @@ class SupportBoardFModel extends BaseSupportFModel
                 LEFT JOIN lms_board_attach as a ON b.BoardIdx = a.BoardIdx
         ";
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
-        $order_by_offset_limit = " ORDER BY b.BoardIdx ASC ";
+        $order_by_offset_limit = " ORDER BY b.BoardIdx ASC, a.BoardFileIdx DESC ";
         return $this->_conn->query('SELECT '. $column. $from. $where . $order_by_offset_limit)->row_array();
     }
 }

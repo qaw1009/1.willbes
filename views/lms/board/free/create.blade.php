@@ -62,30 +62,31 @@
                             @endif
                         </span>
                     </div>
-                    @if(empty($arr_swich['create']['subject']) === false)
-                        <div class="arr_subject_wrap @if($method == 'POST') hide @endif">
-                            <label class="control-label col-md-1-1 d-line" for="subject_idx">과목<span class="required">*</span></label>
-                            <div class="col-md-4 ml-12-dot item form-inline">
-                                <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required">
-                                    <option value="">과목명</option>
-                                    @if(empty($arr_subject) === false)
-                                        @foreach($arr_subject as $row)
-                                            <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['SubjectIdx'] == $data['SubjectIdx'])) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                            </div>
+
+                    <label class="control-label col-md-1-1 d-line" for="review_reg_date">등록날짜<span class="required">*</span></label>
+                    <div class="col-md-3 form-inline ml-12-dot">
+                        <div class="input-group mb-0">
+                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                            <input type="text" class="form-control datepicker" id="review_reg_date" name="review_reg_date" value="{{ $data['ReviewRegDate'] or date('Y-m-d') }}">
                         </div>
-                    @endif
+                    </div>
                 </div>
 
-                @if(empty($arr_swich['create']['mem_name']) === false)
-                    <div class="arr_subject_wrap @if($method == 'POST') hide @endif">
-                        <div class="form-group">
-                            <label class="control-label col-md-1-1" for="reg_mem_name">회원명<span class="required">*</span></label>
-                            <div class="form-inline col-md-4">
-                                <input type="text" id="reg_mem_name" name="reg_mem_name" required="required" class="form-control" maxlength="46" title="회원명" value="{{$data['RegMemName']}}">
-                            </div>
+                @if(empty($arr_swich['create']['mem_name']) === false && empty($arr_swich['create']['subject']) === false)
+                    <div class="form-group arr_subject_wrap @if($method == 'POST') hide @endif">
+                        <label class="control-label col-md-1-1" for="reg_mem_name">회원명<span class="required">*</span></label>
+                        <div class="form-inline col-md-4">
+                            <input type="text" id="reg_mem_name" name="reg_mem_name" required="required" class="form-control" maxlength="46" title="회원명" value="{{$data['RegMemName']}}">
+                        </div>
+
+                        <label class="control-label col-md-1-1 d-line" for="subject_idx">과목<span class="required">*</span></label>
+                        <div class="col-md-4 ml-12-dot item form-inline">
+                            <select class="form-control" id="subject_idx" name="subject_idx" title="과목명" required="required">
+                                <option value="">과목명</option>
+                                @foreach($arr_subject as $row)
+                                    <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['SubjectIdx'] == $data['SubjectIdx'])) selected="selected" @endif>{{ $row['SubjectName'] }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 @endif
@@ -285,6 +286,15 @@
                             $(this).addClass('hide');
                         }
                     });
+                }
+            });
+
+            // 등록날짜
+            $('#review_reg_date').focusout(function (){
+                var $end_date = '{{date("Y-m-d")}}';
+                if($(this).val() > $end_date){
+                    alert('오늘 날짜보다 작거나 같아야 합니다.');
+                    $(this).val($end_date);
                 }
             });
 

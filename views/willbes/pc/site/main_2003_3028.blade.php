@@ -75,7 +75,7 @@
                 <ul class="ProfBoxB">
                     @for($i=1; $i<=16; $i++)
                         @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
-                            <li @if($i % 4 == 1) style="margin-left:0;" @endif>
+                            <li>
                                 {!! banner_html($data['arr_main_banner']['메인_교수진'.$i]) !!}
                             </li>
                         @endif

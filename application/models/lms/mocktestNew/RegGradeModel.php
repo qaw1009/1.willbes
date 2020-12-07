@@ -291,6 +291,37 @@ class RegGradeModel extends WB_Model
     }
 
     /**
+     * 응시상태변경
+     * @param array $formData
+     * @return array|bool
+     */
+    public function updateForIsTake($formData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ProdCode = element('prod_code', $formData);
+            $MrIdx = element('mr_idx', $formData);
+            $MemIdx = element('mem_idx', $formData);
+
+            $update_data = [
+                'IsTake' => 'Y',
+                'RegDatm' => date('Y-m-d H:i:s'),
+                'UpdAdminIdx' => $this->session->userdata('admin_idx')
+            ];
+            $this->_conn->set($update_data)->where('MrIdx', $MrIdx);
+            if ($this->_conn->update($this->_table['mock_register']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
      * 조정점수반영
      * @param $prod_code
      * @param $mode
@@ -866,7 +897,7 @@ class RegGradeModel extends WB_Model
                 INNER JOIN {$this->_table['mock_questions']} AS c1 ON b1.MpIdx = c1.MpIdx AND c1.IsStatus = 'Y'
             ) AS M
             INNER JOIN {$this->_table['mock_answerpaper']} AS MA ON M.MqIdx = MA.MqIdx AND MA.ProdCode = '{$prod_code}' 
-            INNER JOIN {$this->_table['mock_register']} AS MR ON MA.MrIdx = MR.MrIdx AND MR.IsStatus = 'Y' #AND MR.IsTake = 'Y'
+            INNER JOIN {$this->_table['mock_register']} AS MR ON MA.MrIdx = MR.MrIdx AND MR.IsStatus = 'Y' AND MR.IsTake = 'Y'
         ";
         $group_by = ' GROUP BY MA.MrIdx, MA.MpIdx';
         $order_by = ' ORDER BY M.MpIdx, SumOrgPoint DESC';

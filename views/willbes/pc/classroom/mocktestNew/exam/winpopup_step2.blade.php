@@ -248,10 +248,9 @@
 
         function timeover() {
             clearInterval(timer);
-            if (confirm('시험이 종료되어 답안을 제출할 수 없습니다. 응시창을 닫으시겠습니까?')) {
-                examEndAjax();
-                window.close();
-            }
+            alert('시험이 종료되어 답안을 제출할 수 없습니다.');
+            examEndAjax();
+            window.close();
             $('#timer').html("00:00:00");
         }
 

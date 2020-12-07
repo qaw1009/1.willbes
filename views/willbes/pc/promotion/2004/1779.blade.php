@@ -66,7 +66,7 @@
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_sky02.png" alt="한덕현" />
             </a>
-            <a href="#none">
+            <a href="https://pass.willbes.net/pass/event/list/ongoing">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_sky03.png" alt="" />
             </a>
         </div>

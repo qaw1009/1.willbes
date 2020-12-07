@@ -27,7 +27,7 @@
     .infoCheck a:hover {background:#0099ff;}
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left;  background:#525151; color:#fff; font-size:0.875rem; line-height:1.4 }
-    .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+    .evtInfoBox {text-align:left; line-height:1.4}
     .evtInfoBox li {list-style: decimal; margin-left:20px; font-size:14px; margin-bottom:10px}
     .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
     .evtInfoBox .infoTit {font-size:20px; margin-bottom:10px}

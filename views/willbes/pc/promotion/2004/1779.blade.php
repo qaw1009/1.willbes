@@ -63,17 +63,18 @@
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky02.jpg" alt="기미진 T" /></a>
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky01.jpg" alt="한덕현 T" usemap="#Map1779sky" border="0" />
-            <map name="Map1779sky" id="Map1779sky">
-                <area shape="rect" coords="13,42,117,114" href="https://pass.willbes.net/pass/support/notice/show?board_idx=298988&" target="_blank" />
-                <area shape="rect" coords="11,121,117,173" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank" />
-            </map>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298975&" target="_blank" class="mt10"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky03.jpg" alt="조민주 T" /></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_sky02.png" alt="한덕현" />
+            </a>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_sky03.png" alt="" />
+            </a>
         </div>
 
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=897&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1779_sky04.png" alt="이석준" /></a>        
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_sky01.png" alt="1~2월" />
+            </a>        
         </div>
 
         <div class="evtCtnsBox evt_top">            
@@ -81,14 +82,17 @@
         </div>
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live.jpg" alt="라이브" />                       
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_live.jpg" alt="라이브" usemap="#Map1779_live" border="0" />
+            <map name="Map1779_live">
+                <area shape="rect" coords="209,1104,912,1214" href="#none" alt="구매하기">
+            </map>                       
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
             <map name="Map1779_01">
-              <area shape="rect" coords="938,1431,1058,1560" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
-              <area shape="rect" coords="940,1608,1060,1736" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준">
+                <area shape="rect" coords="938,1431,1058,1560" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
+                <area shape="rect" coords="940,1608,1060,1736" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=896&" target="_blank" alt="이석준">
             </map>
         </div>
 
@@ -101,19 +105,19 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_04_01.jpg" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_04_01.jpg" alt="수강신청" />
             <ul class="livetab NSK-Black mt100">
                 <li><a href="#live01">실강 전용 수강신청</a></li>
                 <li><a href="#live02">라이브 전용 수강신청</a></li>
             </ul>
             <div id="live01">
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_01.jpg" alt="실강 전용" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_live_01.jpg" alt="실강 전용" />
                 </a>
             </div>  
             <div id="live02">
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_live_02.jpg" alt="라이브 전용" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_live_02.jpg" alt="라이브 전용" />
                 </a>
             </div> 
             <div class="mt100">
@@ -253,6 +257,7 @@
         </div>
         <!--wb_tip//-->
         
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_popup.jpg" usemap="#PopupImgMap860">
@@ -263,6 +268,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        --}}
 
     </div>
     <!-- End Container -->

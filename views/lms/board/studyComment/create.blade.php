@@ -105,7 +105,7 @@
                     <div class="col-md-3 form-inline ml-12-dot">
                         <div class="input-group mb-0">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control datepicker" id="review_reg_date" name="review_reg_date" value="@if(empty($data['ReviewRegDate']) === false) {{$data['ReviewRegDate']}} @else {{date('Y-m-d')}} @endif">
+                            <input type="text" class="form-control datepicker" id="review_reg_date" name="review_reg_date" value="{{ $data['ReviewRegDate'] or date('Y-m-d') }}">
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
             // 등록날짜
             $('#review_reg_date').focusout(function (){
                 if($(this).val() > $end_date){
-                    alert('오늘 이후 날짜는 불가능합니다.')
+                    alert('오늘 날짜보다 작거나 같아야 합니다.');
                     $(this).val($end_date);
                 }
             });

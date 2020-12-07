@@ -596,16 +596,17 @@ class ProductFModel extends WB_Model
     }
 
     /**
-     * 자동지급 사은품 조회
-     * @param array $prod_code
+     * 자동지급 연결상품 조회
+     * @param int $prod_code [상품코드]
+     * @param string $prod_type [상품타입 (on_lecture, freebie)
      * @return array|int
      */
-    public function findProductFreebie($prod_code = [])
+    public function findProductToProduct($prod_code, $prod_type)
     {
+        $prod_type_ccd = $this->_prod_type_ccd[$prod_type];
         $column = 'P.ProdCode, P.ProdName';
         $arr_condition = [
-            'EQ' => ['PP.IsStatus' => 'Y', 'P.IsStatus' => 'Y'],
-            'IN' => ['PP.ProdCode' => (array) $prod_code, 'PP.ProdTypeCcd' => [$this->_prod_type_ccd['freebie']]]
+            'EQ' => ['PP.ProdCode' => get_var($prod_code, 0), 'PP.ProdTypeCcd' => $prod_type_ccd, 'PP.IsStatus' => 'Y', 'P.IsStatus' => 'Y']
         ];
         
         return $this->_conn->getJoinListResult($this->_table['product_r_product'] . ' as PP', 'inner', $this->_table['product'] . ' as P'

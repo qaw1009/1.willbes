@@ -15,9 +15,9 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed; top:250px; right:10px; width:178px; z-index:1;}
+        .skybanner {position:fixed; top:250px; right:10px; width:120px; z-index:1;}
         .skybanner a { display:block; padding-bottom:10px;}
-        .skybanner2 {position:fixed; top:200px; left:50%; margin-left:-640px; width:120px; z-index:1;}
+        .skybanner2 {position:fixed; top:250px; left:50%; margin-left:-680px; width:120px; z-index:1;}
 
         .evt_irona {background:}         
 
@@ -58,13 +58,17 @@
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky01.png" alt="광주 윌비스 공무원 필합반" /></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=298992&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky02.png" alt="기미진 티패스" /></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky02.png" alt="최우영 T" />
+            </a>
+            <a href="#none">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky03.png" alt="이석준 T" />
+            </a>
         </div>        
 
         <div class="skybanner2">
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=897&"  target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_sky03.png" alt="광주 윌비스 공무원 필합반" />
+            <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78"  target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky01.png" alt="1~2월" />
             </a>            
         </div>
         
@@ -73,15 +77,18 @@
         </div> 
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1781_live.jpg" alt="라이브" />               
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_live.jpg" alt="라이브" usemap="#Map1781_live" border="0" />
+            <map name="Map1781_live">
+              <area shape="rect" coords="221,1099,912,1224" href="#none" alt="라이브모드 구매하기">
+            </map>               
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1781_01.gif" alt="군무원 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_01.gif" alt="군무원 커리큘럼" />
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
             <map name="Map1781a" id="Map1781a">
                 <area shape="rect" coords="258,2620,850,2775" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
                 <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
@@ -218,6 +225,7 @@
         </div>
         <!--wb_tip//-->
 
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1781_popup.jpg" usemap="#PopupImgMap860">
@@ -228,6 +236,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        --}}
     
     </div>
     <!-- End Container -->

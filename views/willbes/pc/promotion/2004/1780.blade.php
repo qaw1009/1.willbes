@@ -7,7 +7,6 @@
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -127,7 +126,10 @@
         </div>
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live.jpg" alt="라이브" />               
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_live.jpg" alt="라이브" usemap="#Map1780_live" border="0" />
+            <map name="Map1780_live">
+                <area shape="rect" coords="216,1101,911,1216" href="#" alt="라이브모드 구매하기">
+            </map>               
         </div>
 
         <div class="evtCtnsBox evt01s">
@@ -144,7 +146,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_02.gif" title="파이널 문제풀이 특징" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_02.gif" title="파이널 문제풀이 특징" />
         </div>
 
         <div class="evtCtnsBox evt03">                 
@@ -215,7 +217,7 @@
                 <div class="tab_inner2">
                     <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_02_tab01_img.jpg" alt="기초및기초이론"/></div>
                     <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_02_tab02_img.jpg" alt="심화이론"/></div>
-                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_02_tab03_img.jpg" alt="기출문제풀이"/></div>
+                    <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2020/12/1780_02_tab03_img.jpg" alt="기출문제풀이"/></div>
                     <div class="tabcont"><img src="https://static.willbes.net/public/images/promotion/2020/08/1780_02_tab04_img.jpg" alt="단원동형문제풀이" /></div>
                 </div>
             </div> 
@@ -237,26 +239,26 @@
         </div>
 
         <div class="evtCtnsBox evt04" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_07.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_07.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1">[실강전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
-                    <li><a href="#lec2">[라이브전용]<br> 11~12월 이론완성 및 기출분석 PASS</a></li>
-                    <li><a href="#lec3">20.11월~21.3월<br> 연간 PASS</a></li>
+                    <li><a href="#lec1">[실강전용]<br> 01~02월 진도별 문풀 PASS</a></li>
+                    <li><a href="#lec2">[라이브전용]<br> 01~02월 진도별 문풀 PASS</a></li>
+                    <li><a href="#lec3">21.1월~21.3월<br> 3개월PASS</a></li>
                 </ul>
                 <div id="lec1">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_08.jpg" title="실강전용">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_08.jpg" title="실강전용">
                     </a>
                 </div>  
                 <div id="lec2">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_live_01.jpg" title="라이브전용"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_live_01.jpg" title="라이브전용"/>
                     </a>
                 </div>
                 <div id="lec3">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/10/1780_03_10.jpg" title="연간 PASS"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_10.jpg" title="연간 PASS"/>
                     </a>
                 </div>              
             </div>
@@ -390,6 +392,7 @@
         </div>
         <!--wb_tip//-->
 
+        {{--
         <div id="Popup" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1780_popup.jpg" usemap="#PopupImgMap860">
@@ -400,6 +403,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>    
+        --}}
         
     </div>
     <!-- End Container -->

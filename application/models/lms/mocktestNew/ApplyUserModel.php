@@ -47,7 +47,7 @@ class ApplyUserModel extends WB_Model
                         JOIN {$this->_table['product_subject']} AS SJ ON MAS.SubjectIdx = SJ.SubjectIdx
                         WHERE MR.MrIdx = MAS.MrIdx
                     ) AS SubjectNameList
-                    ,case MR.IsTake when 'Y' then '응시' else '미응시' end AS IsTake
+                    ,CASE MR.IsTake WHEN 'Y' THEN '응시' WHEN 'E' THEN '시험종료(미응시)' ELSE '미응시' END AS IsTake
                 ";
             } else {
                 $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();

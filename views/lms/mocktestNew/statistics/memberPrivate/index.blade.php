@@ -2,6 +2,8 @@
 
 @section('content')
     <h5 class="mt-20">- 응시자 가준으로 개별 모의고사성적을 확인하는 메뉴입니다.</h5>
+    <h5>- 응시형태조건 : 모든 답안입력 후 최종확인 페이지에서 '시험종료'를 진행한 상태.</h5>
+    <h5>- 문제/해설 조건 : 온라인응시 + 응시형태가 응시인 상태.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}
         {!! html_def_site_tabs($def_site_code, 'tabs_site_code', 'tab', false, [], false, $arr_site_code) !!}
@@ -16,6 +18,12 @@
                             @foreach($arr_base['applyType'] as $k => $v)
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
+                        </select>
+                        <select class="form-control mr-5" id="search_IsTake" name="search_IsTake">
+                            <option value="">응시여부</option>
+                            <option value="Y">응시</option>
+                            <option value="N">미응시</option>
+                            <option value="E">시험종료(미응시)</option>
                         </select>
                         <select class="form-control mr-5" id="search_year" name="search_year">
                             <option value="">연도</option>
@@ -104,6 +112,7 @@
                         <th class="text-center">응시지역</th>
                         <th class="text-center">총점</th>
                         <th class="text-center">등록일</th>
+                        <th class="text-center">응시여부</th>
                         <th class="text-center">성적확인</th>
                     </tr>
                     </thead>
@@ -155,6 +164,17 @@
                     {'data' : 'TakeAreaName', 'class': 'text-center'},
                     {'data' : 'AdjustSum', 'class': 'text-center'},
                     {'data' : 'ExamRegDatm', 'class': 'text-center'},
+                    {'data' : 'IsTake', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            var str = '';
+                            if (data === 'Y') {
+                                str = '응시';
+                            } else if (data === 'E') {
+                                str = '시험종료(미응시)';
+                            } else {
+                                if (row.answerTempCnt > 0) { str = '임시저장'; } else { str = '미응시'; }
+                            }
+                            return str;
+                        }},
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             /*return row.AdjustSum > 0 ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="'+row.ProdCode+'" data-mr-idx="'+row.MrIdx+'">확인</a>' : '';*/
                             return (row.tempCnt > 0 || row.answerCnt > 0) ? '<a href="javascript:void(0);" class="blue act-view" data-prod-code="' + row.ProdCode + '" data-mr-idx="' + row.MrIdx + '">확인</a>' : '';

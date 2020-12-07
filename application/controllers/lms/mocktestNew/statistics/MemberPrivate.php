@@ -44,6 +44,7 @@ class MemberPrivate extends BaseMocktest
             'EQ' => [
                 'PD.SiteCode' => $this->_reqP('search_site_code'),
                 'MR.TakeForm' => $this->_reqP('search_TakeFormsCcd'),
+                'MR.IsTake' => $this->_req('search_IsTake'),
                 'MP.MockYear' => $this->_reqP('search_year'),
                 'MP.MockRotationNo' => $this->_reqP('search_round'),
                 'C1.CateCode' => $this->_reqP('search_cateD1'),

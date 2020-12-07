@@ -47,11 +47,11 @@
                     <div class="nNumber tx-color">1544-3169</div>
                     <div class="nTxt">
                         [운영시간]<br/>
-                        월~토: 09시 ~ 22시
+                        09시 ~ 22시
                     </div>
                 </li>
                 <li>
-                    <div class="nTit">교재문의</div>
+                    <div class="nTit">교재배송문의</div>
                     <div class="nNumber tx-color">1544-4944</div>
                     <div class="nTxt">
                         [운영시간]<br/>
@@ -60,6 +60,6 @@
                 </li>
             </ul>
         </dt>
-        <dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>
+        {{--<dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>--}}
     </dl>
 </div>

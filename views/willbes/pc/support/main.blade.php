@@ -82,6 +82,9 @@
                                             평일 {{ $__cfg['CsTime'] or '9:00 ~ 18:00' }}
                                             주말/공휴일 휴무<br>
                                             (점심시간 12시~13시)
+                                            {{--임용
+                                            09:00 ~ 22:00
+                                            --}}
                                         </span>
                                     </li>
                                 </ul>
@@ -125,15 +128,14 @@
                                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                     <td class="w-call">1544-3169</td>
                                                     <td class="w-time tx-left pl25">
-                                                        평일 09:00~22:00<br/>
-                                                        주말/공휴일 09:00~18:00
+                                                        09:00~22:00
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                     <td class="w-call">1544-3169</td>
                                                     <td class="w-time tx-left pl25">
-                                                        평일 09:00~22:00
+                                                        09:00~22:00
                                                     </td>
                                                 </tr>
                                                 <tr>

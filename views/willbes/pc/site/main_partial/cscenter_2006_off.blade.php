@@ -3,12 +3,12 @@
         case "309002":
         case "309003":
             $telephone_inquiry = '1566-4770 <span>▶</span> 4';
-            $school_cs_tel = '1544-1881';
+            $school_cs_tel = '1544-1881 <span>▶</span> 1';
             break;
 
         case "309004":
             $telephone_inquiry = '1566-4770 <span>▶</span> 5';
-            $school_cs_tel = '1544-3383';
+            $school_cs_tel = '1544-1881 <span>▶</span> 1';
             break;
 
         default:
@@ -25,12 +25,6 @@
                 <li>
                     <div class="nTit">온라인 수강문의</div>
                     <div class="nNumber tx-color">{!! $telephone_inquiry !!}</div>
-                    {{--노무, 감평
-                    <div class="nNumber tx-color">1566-4770 <span>▶</span> 4</div>
-                    --}}
-                    {{--변리사
-                    <div class="nNumber tx-color">1566-4770 <span>▶</span> 5</div>
-                    --}}
                     <div class="nTxt">
                         [운영시간]<br/>
                         평일: 09시~ 18시 (점심시간12시~13시)<br/>
@@ -48,10 +42,10 @@
                 </li>
                 <li>
                     <div class="nTit">학원 고객센터</div>
-                    <div class="nNumber tx-color">{{ $school_cs_tel }}</div>
+                    <div class="nNumber tx-color">{!! $school_cs_tel !!}</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
-                        평일/주말 : 08시 ~ 18시 
+                        평일/주말 : 08시 ~ 19시 
                     </div>
                 </li>
             </ul>

@@ -109,7 +109,7 @@
             <li>PC,모바일 등 단말기 초기화가 필요한 경우 최초 초기화는 본인이 직접 초기화 진행 가능 합니다.
             <br/>&nbsp;&nbsp;&nbsp;그 이후 추가 초기화가 필요할 시 내용 확인 후 초기화 진행 가능 하오니 고객센터로 문의 바랍니다.
             (무한 PASS존 내 등록 기기정보 확인)</li>
-            <li>5. 21년 1차대비 2단계,3단계 문제풀이 강의는 강의자료 3회출력제한 됩니다. <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=252343" target="_blank">출력제한 안내 바로보기 ></a></li>
+            <li> 21년 1차대비 2단계,3단계 문제풀이 강의는 강의자료 3회출력제한 됩니다. <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=252343" target="_blank">출력제한 안내 바로보기 ></a></li>
         </ul>
 
         <p>● 교재 구매</p>

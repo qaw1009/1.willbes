@@ -8674,7 +8674,7 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .lecMoreWrap {
     float: left;
     width: 100%;
-    padding: 30px 0 0;
+    padding: 0;
 }
 .willbes-Layer-PassBox .passinfoWrap {
     width: 100%;
@@ -8745,7 +8745,7 @@ table.PassZoneTable .w-data {
     padding-bottom: 10px;
 }
 .willbes-Layer-PassBox .passzoneSubInfo li {
-    line-height: 23px;
+    line-height: 1.7;
 }
 .willbes-Layer-PassBox .passzoneSubInfo li.tit {
     line-height: 12px;
@@ -9790,7 +9790,7 @@ table.testTable tr td.w-date {
     padding-right: 25px;
 }
 .ExamBox .popupContainer {
-    margin: 120px 10px 0;
+    margin: 0 10px 0;
 }
 .ExamBox .popupContainer .tabSty:after {
     content: '';

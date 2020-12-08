@@ -29,10 +29,10 @@
 
         <div class="examPaperWp">     
             <div class="exam-paper">
-                {{--pdf 방식
+                {{--pdf 방식--}}   
                 <div class="pdfType">                
                     <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
-                </div>--}}                
+                </div>             
 
                 {{--이미지 방식 --}}  
                 <div class="imgType">
@@ -126,7 +126,9 @@
             <div class="answer-sheet">
                 <div class="exam-txt">
                     * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
-                    * 정답제출을 해야만 성적결과를 확인할 수 있습니다.
+                    * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
+                    * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
+                    <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
                 </div>
                 <table class="answerTb">
                     <colgroup>

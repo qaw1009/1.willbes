@@ -9741,7 +9741,7 @@ table.testTable tr td.w-date {
     font-size: 11px;
     color: #056fac;  
     line-height: 15px; 
-    padding: 10px 0; 
+    padding-bottom:10px; 
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : answerTb */

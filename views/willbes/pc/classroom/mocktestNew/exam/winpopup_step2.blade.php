@@ -71,8 +71,10 @@
 
             @foreach($questionData as $subject_key => $subject_data)
                 <div class="examPaperWp pb20" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
-                    <div class="exam-paper mt50">
+                    <div class="exam-paper">
                         @if ($examData['productInfo']['PaperType'] == 'I')
+                        <div class="imgType">
+                            <div class="willbes-Layer-Black"></div>   
                             <ul>
                                 {{--문항별이미지--}}
                                 @foreach($subject_data as $key => $val)
@@ -82,10 +84,13 @@
                                     </li>
                                 @endforeach
                             </ul>
+                        </div>
                         @else
                             {{--문제통파일이미지--}}
                             @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
+                            <div class="pdfType">     
                                 <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                            <div>
                             @endif
                         @endif
                     </div>

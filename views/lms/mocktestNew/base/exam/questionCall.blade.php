@@ -164,6 +164,7 @@
                                 if(rt.Difficulty == 'T') Difficulty = '상';
                                 else if(rt.Difficulty == 'M') Difficulty = '중';
                                 else if(rt.Difficulty == 'B') Difficulty = '하';
+                                else if(rt.Difficulty == 'N') Difficulty = '없음';
 
                                 that.find('td:eq(1)').html(rt.AreaName);
                                 that.find('td:eq(2)').html(QuestionOption);

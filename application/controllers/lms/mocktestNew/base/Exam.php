@@ -207,7 +207,7 @@ class Exam extends BaseMocktest
             ['field' => 'MalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'QuestionOption[]', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
             ['field' => 'Scoring[]', 'label' => '배점', 'rules' => 'trim|required|numeric'],
-            ['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B]'],
+            ['field' => 'Difficulty[]', 'label' => '난이도', 'rules' => 'trim|required|in_list[T,M,B,N]'],
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST,PUT]'],
             ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'TotalScore', 'label' => '총점', 'rules' => 'trim|required|numeric|less_than_equal_to[255]'],

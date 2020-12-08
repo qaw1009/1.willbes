@@ -286,6 +286,7 @@
                                     <option value="T">상</option>
                                     <option value="M">중</option>
                                     <option value="B">하</option>
+                                    <option value="N">없음</option>
                                 </select>
                             </td>
                             <td class="text-center"><button type="button" class="btn btn-xs btn-success mt-5 act-call-unit">호출</button></td>
@@ -356,6 +357,7 @@
                                         <option value="T" @if($row['Difficulty'] == 'T') selected @endif>상</option>
                                         <option value="M" @if($row['Difficulty'] == 'M') selected @endif>중</option>
                                         <option value="B" @if($row['Difficulty'] == 'B') selected @endif>하</option>
+                                        <option value="N" @if($row['Difficulty'] == 'N') selected @endif>없음</option>
                                     </select>
                                 </td>
                                 <td class="text-center"><button type="button" class="btn btn-xs btn-success mt-5 act-call-unit">호출</button></td>

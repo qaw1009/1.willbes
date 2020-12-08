@@ -3,12 +3,18 @@
         case "309002":
         case "309003":
             $telephone_inquiry = '1566-4770 <span>▶</span> 4';
-            break;
-        case "309004":
-            $telephone_inquiry = '1566-4770 <span>▶</span> 5';
+            $school_cs_tel = '1544-1881';
             break;
 
-        default: $telephone_inquiry = '1544-5006 <span>▶</span> 4'; break;
+        case "309004":
+            $telephone_inquiry = '1566-4770 <span>▶</span> 5';
+            $school_cs_tel = '1544-3383';
+            break;
+
+        default:
+            $telephone_inquiry = '1544-5006 <span>▶</span> 4';
+            $school_cs_tel = '1544-4774';
+            break;
     }
 @endphp
 
@@ -42,7 +48,7 @@
                 </li>
                 <li>
                     <div class="nTit">학원 고객센터</div>
-                    <div class="nNumber tx-color">@if(empty($cate_code) === false && $cate_code == '309004') 1544-3383 {{-- 변리사 --}} @else 1544-4774 @endif</div>
+                    <div class="nNumber tx-color">{{ $school_cs_tel }}</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
                         평일/주말 : 08시 ~ 18시 

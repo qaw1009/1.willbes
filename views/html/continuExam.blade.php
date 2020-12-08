@@ -29,14 +29,14 @@
 
         <div class="examPaperWp">     
             <div class="exam-paper">
-                {{--pdf 방식--}}   
+                {{--pdf 방식 
                 <div class="pdfType">                
                     <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
-                </div>             
+                </div> --}}            
 
                 {{--이미지 방식 --}}  
                 <div class="imgType">
-                    <div class="willbes-Layer-Black"></div>   
+                    {{--<div class="willbes-Layer-Black"></div>--}}
                     <ul>
                         <li id="que1" name="que1">
                             <a class="strong tx-black underline">01.</a>  
@@ -119,8 +119,7 @@
                             <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
                         </li>
                     </ul> 
-                </div>         
-                        
+                </div>                        
             </div> 
 
             <div class="answer-sheet">

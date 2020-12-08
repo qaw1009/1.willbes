@@ -547,7 +547,7 @@ class MemberPrivateModel extends WB_Model
             FROM (
                 SELECT 
                 PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
-                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중','하')))AS Difficulty
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중',(IF(MQ.Difficulty='N','','하')))))AS Difficulty
                 FROM
                 (
                     SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType, PMP.OrderNum

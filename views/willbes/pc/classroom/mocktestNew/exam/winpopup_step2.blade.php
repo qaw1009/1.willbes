@@ -74,7 +74,7 @@
                     <div class="exam-paper">
                         @if ($examData['productInfo']['PaperType'] == 'I')
                         <div class="imgType">
-                            <div class="willbes-Layer-Black"></div>   
+                            {{--<div class="willbes-Layer-Black"></div>--}}
                             <ul>
                                 {{--문항별이미지--}}
                                 @foreach($subject_data as $key => $val)

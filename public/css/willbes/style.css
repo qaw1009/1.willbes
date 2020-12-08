@@ -9632,6 +9632,7 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examSjBx */
+.ExamBox .ExamBoxHead {position: fixed; top:0; width: 100%; background-color: #fff;}
 .ExamBox .examSjBx {
     height: 40px;
     font-size: 12px;
@@ -9685,7 +9686,7 @@ table.testTable tr td.w-date {
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examPaperWp */
 .ExamBox .examPaperWp {
-    margin: 6px 10px 0 25px;
+    margin: 0 25px 0;
 }
 .ExamBox .examPaperWp:after {
     content: '';
@@ -9693,9 +9694,13 @@ table.testTable tr td.w-date {
     clear: both;
 }
 .ExamBox .examPaperWp .exam-paper {
-    float: left;
-    width: 650px;
-    height: 665px;
+    /*float: left;*/
+    position: fixed;
+    top:120px;
+    width: calc(100% - 550px);
+    height: calc(100% - 130px);;
+    min-height: 600px;
+    overflow-y: auto;
     overflow-x: auto;
 }
 .ExamBox .examPaperWp .exam-paper li {
@@ -9706,9 +9711,16 @@ table.testTable tr td.w-date {
     color: #555;
     vertical-align: top;
 }
+/*
 .ExamBox .examPaperWp .answer-sheet {
     float: right;
     width: 460px;
+}*/
+.ExamBox .examPaperWp .answer-sheet {
+    width: 460px;
+    position: fixed;
+    right:25px;
+    top:110px;
 }
 .ExamBox .examPaperWp .answer-sheet .exam-txt {
     font-size: 11px;
@@ -9778,7 +9790,7 @@ table.testTable tr td.w-date {
     padding-right: 25px;
 }
 .ExamBox .popupContainer {
-    margin: 30px 10px;
+    margin: 120px 10px 0;
 }
 .ExamBox .popupContainer .tabSty:after {
     content: '';

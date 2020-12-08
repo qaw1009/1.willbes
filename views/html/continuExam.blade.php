@@ -2,29 +2,31 @@
 
 @section('content')
 <!-- Popup -->
-<div class="Popup ExamBox">
-    <div class="popTitBox">
-		<div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
-		<div class="pop-subTit">2018 제2회 전국모의고사 (12/03 사행) - 9급 [일행/세무] *선택과목 과학 제외</div>
-	</div>
+<div class="Popup ExamBox">    
     <div class="popupContainer mg-zero">
-        <div class="examSjBx">
-            <div class="inner">
-                <h3>응시과목 : </h3>
-                <ul class="sj">
-                    <li><a class="exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
-                    <li><a class="exam-fin" href="" onclick="">영어</a><span class="row-line">|</span></li>
-                    <li><a href="" onclick="">한국사</a><span class="row-line">|</span></li>
-                    <li><a href="" onclick="">행정법</a><span class="row-line">|</span></li>
-                    <li><a class="exam-ing" href="" onclick="">행정학</a></li>
-                </ul>
-                <div class="countTime">남은시간 : <span id="timer" class="time">01:35:56</span></div>
+        <div class="ExamBoxHead">
+            <div class="popTitBox">
+                <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
+                <div class="pop-subTit">2018 제2회 전국모의고사 (12/03 사행) - 9급 [일행/세무] *선택과목 과학 제외</div>
+            </div>
+            <div class="examSjBx">
+                <div class="inner">
+                    <h3>응시과목 : </h3>
+                    <ul class="sj">
+                        <li><a class="exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
+                        <li><a class="exam-fin" href="" onclick="">영어</a><span class="row-line">|</span></li>
+                        <li><a href="" onclick="">한국사</a><span class="row-line">|</span></li>
+                        <li><a href="" onclick="">행정법</a><span class="row-line">|</span></li>
+                        <li><a class="exam-ing" href="" onclick="">행정학</a></li>
+                    </ul>
+                    <div class="countTime">남은시간 : <span id="timer" class="time">01:35:56</span></div>
+                </div>
             </div>
         </div>
         <!-- //응시과목 -->
 
         <div class="examPaperWp">
-            <div class="exam-paper mt50">
+            <div class="exam-paper">
                 <ul>
                     <li id="que1" name="que1">
                         <a class="strong tx-black underline">01.</a>  

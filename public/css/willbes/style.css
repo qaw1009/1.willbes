@@ -9703,12 +9703,18 @@ table.testTable tr td.w-date {
     overflow-y: auto;
     overflow-x: auto;
 }
-.ExamBox .examPaperWp .exam-paper .coverBox {position: absolute; top:0; left:0; width: calc(100% - 550px); height: calc(100% - 130px); z-index: 1;}
+/*
+.ExamBox .examPaperWp .exam-paper .coverBox {position: absolute; top:0; left:0; 
+    width: calc(100% - 550px); height: calc(100% - 130px); 
+    -webkit-width: calc(100% - 550px); height: calc(100% - 130px);     
+}
 .ExamBox .examPaperWp .exam-paper .coverBox .cover {
     position:fixed; 
     width: calc(100% - 550px); height: calc(100% - 130px); 
+    -webkit-width: calc(100% - 550px); height: calc(100% - 130px); 
+    background-color: rgba(0, 0, 0, 0.6);
     font-size: 0; text-indent: -9999px;
-}
+}*/
 .ExamBox .examPaperWp .exam-paper li {
     margin-bottom: 20px;
 }

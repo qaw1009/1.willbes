@@ -353,7 +353,7 @@ class MockResultFModel extends WB_Model
             FROM (
                 SELECT 
                 PS.SubjectName, A.MpIdx, A.MockType, A.OrderNum, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
-                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중',(IF(MQ.Difficulty='N','없음','하')))))AS Difficulty
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중',(IF(MQ.Difficulty='N','','하')))))AS Difficulty
                 , A.OrderNum AS pmpOrderNum
                 FROM
                 (

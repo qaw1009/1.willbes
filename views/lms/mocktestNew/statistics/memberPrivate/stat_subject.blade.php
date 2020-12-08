@@ -34,7 +34,7 @@
                             <colgroup>
                                 <col style="width: 70px;"/>
                                 @foreach($row['right_answer'] as $key2 => $row2)
-                                    <col width="*">
+                                    <col width="62px">
                                 @endforeach
                             </colgroup>
                             <thead>

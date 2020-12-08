@@ -25,16 +25,18 @@
         </div>
         <!-- //응시과목 -->
 
-        <div class="examPaperWp">
-            <div class="exam-paper">
-                {{--pdf 방식--}}
-                <div class="pdfType">                
-                    <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
-                </div>
-                
+        <div class="ExamBoxTemp"></div>
 
-                {{--이미지 방식  
-                <div class="imgType"> 
+        <div class="examPaperWp">     
+            <div class="exam-paper">
+                {{--pdf 방식
+                <div class="pdfType">                
+                    <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                </div>--}}                
+
+                {{--이미지 방식 --}}  
+                <div class="imgType">
+                    <div class="willbes-Layer-Black"></div>   
                     <ul>
                         <li id="que1" name="que1">
                             <a class="strong tx-black underline">01.</a>  
@@ -117,9 +119,10 @@
                             <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
                         </li>
                     </ul> 
-                </div>      
-                --}}       
-            </div>
+                </div>         
+                        
+            </div> 
+
             <div class="answer-sheet">
                 <div class="exam-txt">
                     * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
@@ -339,7 +342,7 @@
                         <li><a class="btnlightGray" href="#none">임시저장</a></li>
                     </ul>
                 </div>
-            </div>      
+            </div> 
         </div>
     </div>
     <!-- //popupContainer -->

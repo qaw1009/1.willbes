@@ -9632,7 +9632,7 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examSjBx */
-.ExamBox .ExamBoxHead {position: fixed; top:0; width: 100%; background-color: #fff; z-index: 1;}
+.ExamBox .ExamBoxHead {position:fixed; top:0; width: 100%; background-color: #fff; z-index: 10;}
 .ExamBox .examSjBx {
     height: 40px;
     font-size: 12px;
@@ -9685,29 +9685,27 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examPaperWp */
+.ExamBox .ExamBoxTemp {height: 110px; clear: both;}
 .ExamBox .examPaperWp {
-    position: absolute;
-    top:120px;
+    display: block;
     width: 100%;
     padding:0 25px;
-    height: calc(100% - 120px);
-    min-height: 625px;
+    height: 100% !important;
+    margin-top:10px
 }
 .ExamBox .examPaperWp:after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
 }
 .ExamBox .examPaperWp .exam-paper {
     width: calc(100% - 500px);
-    height: 100%;
-    overflow-y: auto;
     overflow-x: auto;
-    position: relative;
+    /*overflow-y: auto;  */  
 }
-.ExamBox .examPaperWp .exam-paper .pdfType {height: 100%;}
+.ExamBox .examPaperWp .exam-paper .pdfType {height:100% !important;}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .ExamBox .examPaperWp .exam-paper .pdfType iframe {margin-top:-50px}
+.ExamBox .examPaperWp .exam-paper .pdfType iframe {position:absolute; top:55px; left:0; width: calc(100% - 500px); height: calc(100% - 60px);
 }
 
 .ExamBox .examPaperWp .exam-paper li {
@@ -9718,11 +9716,19 @@ table.testTable tr td.w-date {
     color: #555;
     vertical-align: top;
 }
-/*
-.ExamBox .examPaperWp .answer-sheet {
-    float: right;
-    width: 460px;
-}*/
+.ExamBox .willbes-Layer-Black {
+    display: block;
+    background: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=100);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
 .ExamBox .examPaperWp .answer-sheet {
     width: 460px;
     position: fixed;

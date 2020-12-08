@@ -27,6 +27,9 @@
 
         <div class="examPaperWp">
             <div class="exam-paper">
+                <div class="coverBox">
+                    <div class="cover">투명창</div>
+                </div>
                 <ul>
                     <li id="que1" name="que1">
                         <a class="strong tx-black underline">01.</a>  

@@ -9698,10 +9698,16 @@ table.testTable tr td.w-date {
     position: fixed;
     top:120px;
     width: calc(100% - 550px);
-    height: calc(100% - 130px);;
+    height: calc(100% - 130px);
     min-height: 600px;
     overflow-y: auto;
     overflow-x: auto;
+}
+.ExamBox .examPaperWp .exam-paper .coverBox {position: absolute; top:0; left:0; width: calc(100% - 550px); height: calc(100% - 130px); z-index: 1;}
+.ExamBox .examPaperWp .exam-paper .coverBox .cover {
+    position:fixed; 
+    width: calc(100% - 550px); height: calc(100% - 130px); 
+    font-size: 0; text-indent: -9999px;
 }
 .ExamBox .examPaperWp .exam-paper li {
     margin-bottom: 20px;
@@ -9721,6 +9727,8 @@ table.testTable tr td.w-date {
     position: fixed;
     right:25px;
     top:110px;
+    z-index: 10;
+    background-color: #fff;
 }
 .ExamBox .examPaperWp .answer-sheet .exam-txt {
     font-size: 11px;

@@ -467,7 +467,9 @@
                                     <td class="w-site" rowspan="4">전문자격증</td>
                                     <td rowspan="2" class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td class="w-call">
-                                    공인노무사/감평/변리사<br>1566-4770<br></td>
+                                        공인노무사/감평/변리사<br>
+                                        1566-4770
+                                    </td>
                                     <td rowspan="2" class="w-time tx-left pl25">
                                         평일 9:00~18:00 (점심시간 12시~13시)<br/>
                                         주말/공휴일 휴무
@@ -479,11 +481,11 @@
                                 </tr>
                                 <tr>
                                     <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
-                                    <td class="w-call">신림(본원) 1544-4774 ▶ 1</td>
+                                    <td class="w-call">신림(본원) 1544-1881 ▶ 1</td>
                                     <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
                                 </tr>
                                 <tr>
-                                    <td class="w-call">강남(분원) 1544-4774 ▶ 1</td>
+                                    <td class="w-call">강남(분원) 1544-1881 ▶ 1</td>
                                     <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
                                 </tr>
                                 <tr>

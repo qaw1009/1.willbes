@@ -91,14 +91,14 @@
 
                         {{--임용 외 전체사이트--}}
                         <div class="will-Tit NSK">서비스별 <span class="tx-light-blue">고객센터</span> 안내</div>
-                        <div class="Layer-Cont">
+                        <div class="Layer-Cont tx12">
                             <div class="tx-blue mt20 mb10">특정 서비스에 대한 문의는 해당 사이트로 바로 문의주셔야 빠르게 답변을 받을 수 있습니다.</div>
                             <div class="LeclistTable">
                                 <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
                                     <colgroup>
                                         <col style="width: 140px;">
                                         <col style="width: 130px;">
-                                        <col style="width: 180px;">
+                                        <col style="width: 200px;">
                                         <col>
                                     </colgroup>
                                     <thead>

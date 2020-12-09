@@ -60,37 +60,29 @@
             <div class="Content p_re">
                 <div class="willbes-CScenter c_both">
                     <div class="ActIndex ActIndex1 mt50">
-                        {{--임용--}}
-                        <div class="will-Tit NSK">즐겨찾는 <span class="tx-light-blue">고객센터</span></div>
-                        <div class="callBox NG">
-                            <ul>
-                                <li>
-                                    <span class="tit">온라인 문의</span>
-                                    <span class="num tx-light-blue">{{ $__cfg['CsTel'] or '1544-5006' }}</span>
-                                    <span class="row-line">|</span>
-                                </li>
-                                <li>
-                                    <span class="tit">교재 문의</span>
-                                    <span class="num tx-light-blue">1544-4944</span>
-                                    <span class="row-line">|</span>
-                                </li>
-                                <li>
-                                    <span class="tit">운영시간</span>
-                                    <span class="time tx-light-blue">
-                                        @if($__cfg['SiteGroupCode'] == '1011') {{-- 임용 --}}
+                        @if($__cfg['SiteGroupCode'] == '1011') {{--임용--}}
+                            <div class="will-Tit NSK">즐겨찾는 <span class="tx-light-blue">고객센터</span></div>
+                            <div class="callBox NG">
+                                <ul>
+                                    <li>
+                                        <span class="tit">온라인 문의</span>
+                                        <span class="num tx-light-blue">{{ $__cfg['CsTel'] or '1544-5006' }}</span>
+                                        <span class="row-line">|</span>
+                                    </li>
+                                    <li>
+                                        <span class="tit">교재 문의</span>
+                                        <span class="num tx-light-blue">1544-4944</span>
+                                        <span class="row-line">|</span>
+                                    </li>
+                                    <li>
+                                        <span class="tit">운영시간</span>
+                                        <span class="time tx-light-blue">
                                             {{ $__cfg['CsTime'] or '09:00 ~ 22:00' }}
-                                        @else
-                                            평일 {{ $__cfg['CsTime'] or '09:00 ~ 18:00' }}
-                                            주말/공휴일 휴무<br>
-                                            (점심시간 12시~13시)
-                                        @endif
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>  
-
-                        {{--임용 외 전체사이트--}}
-                        @if($__cfg['SiteGroupCode'] != '1011')
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        @else {{--임용 외 전체사이트--}}
                             <div class="will-Tit NSK">서비스별 <span class="tx-light-blue">고객센터</span> 안내</div>
                             <div class="Layer-Cont tx12">
                                 <div class="tx-blue mt20 mb10">특정 서비스에 대한 문의는 해당 사이트로 바로 문의주셔야 빠르게 답변을 받을 수 있습니다.</div>

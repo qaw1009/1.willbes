@@ -76,7 +76,7 @@
                                     </li>
                                     <li>
                                         <span class="tit">운영시간</span>
-                                        <span class="time tx-light-blue">
+                                        <span class="num tx-light-blue">
                                             {{ $__cfg['CsTime'] or '09:00 ~ 22:00' }}
                                         </span>
                                     </li>

@@ -62,7 +62,7 @@
                     <div class="ActIndex ActIndex1 mt50">
                         {{--임용--}}
                         <div class="will-Tit NSK">즐겨찾는 <span class="tx-light-blue">고객센터</span></div>
-                        <div class="callBox NG">
+                        <div class="callBox NG" style="height: 80px">
                             <ul>
                                 <li>
                                     <span class="tit">온라인 문의</span>
@@ -77,9 +77,13 @@
                                 <li>
                                     <span class="tit">운영시간</span>
                                     <span class="time tx-light-blue">
-                                        평일 {{ $__cfg['CsTime'] or '9:00 ~ 18:00' }}
-                                        주말/공휴일 휴무<br>
-                                        (점심시간 12시~13시)
+                                        @if($__cfg['SiteGroupCode'] == '1011') {{-- 임용 --}}
+                                            {{ $__cfg['CsTime'] or '09:00 ~ 22:00' }}
+                                        @else
+                                            평일 {{ $__cfg['CsTime'] or '09:00 ~ 18:00' }}
+                                            주말/공휴일 휴무<br>
+                                            (점심시간 12시~13시)
+                                        @endif
                                     </span>
                                 </li>
                             </ul>

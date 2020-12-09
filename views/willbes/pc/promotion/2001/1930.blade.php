@@ -26,7 +26,14 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1930_top_bg.jpg) no-repeat center;}
 
-        .wb_01,.wb_02,.wb_03,.wb_04,.wb_06{background:#FFF8E6;}	
+        .wb_01,.wb_02,.wb_03,.wb_04,.wb_06{background:#FFF8E6;}
+
+        /* 슬라이드배너 */
+        .slide_con {position:relative; width:971px; margin:0 auto}	
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-100px; top:60%; width:67px; height:67px;}
+        .slide_con p.rightBtn {right:-100px;top:60%; width:67px; height:67px;}
 
         .wb_05 {background:#FF3552;}
        
@@ -119,11 +126,18 @@
             <map name="Map1930a" id="Map1930a">
                 <area shape="rect" coords="374,772,747,855" href="https://police.willbes.net/promotion/index/cate/3001/code/1839" target="_blank" />
             </map>
-		</div>
-
-		<div class="evtCtnsBox wb_02" >
-			<img src="https://static.willbes.net/public/images/promotion/2020/11/1930_02.jpg"  alt="" />
-		</div>
+        </div>        
+        
+        <div class="evtCtnsBox wb_02 c_both">    
+            <div class="slide_con">
+                <ul id="slidesImg3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1930_02.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1930_02_01.jpg" alt="" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_l_arr.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_r_arr.png"></a></p>
+            </div>
+        </div> 
        
 		<div class="evtCtnsBox wb_03" id="table">			
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1930_03.jpg"  alt="" usemap="#Map1930b" border="0" />
@@ -143,9 +157,9 @@
         <div class="evtCtnsBox wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1930_05.jpg"  alt="" usemap="#Map1930c" border="0" />
             <map name="Map1930c" id="Map1930c">
-                <area shape="rect" coords="159,597,399,665" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="436,595,680,667" href="javascript:alert('Comimg Soon :)')" />
-                <area shape="rect" coords="721,595,959,668" href="javascript:alert('Comimg Soon :)')" />
+                <area shape="rect" coords="159,597,399,665" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/176320" target="_blank" />
+                <area shape="rect" coords="436,595,680,667" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/176322" target="_blank" />
+                <area shape="rect" coords="721,595,959,668" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/176324" target="_blank" />
             </map>            
 		</div>           
 
@@ -191,6 +205,33 @@
         $(document).ready(function() {
             dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
         });
+
+        /*슬라이드*/
+        $(document).ready(function() {
+            var slidesImg3 = $("#slidesImg3").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:false,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:1120,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1
+                });
+            
+                $("#imgBannerLeft3").click(function (){
+                    slidesImg3.goToPrevSlide();
+                });
+            
+                $("#imgBannerRight3").click(function (){
+                    slidesImg3.goToNextSlide();
+                });
+        });
+      
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

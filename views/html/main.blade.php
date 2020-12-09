@@ -257,91 +257,14 @@
         </div>
     </div>
 
-    
-
-<!--
-    <div class="Section Act3 mb90">
-        <div class="widthAuto">
-            <dl>
-                <dt class="BestLec">
-                    <div class="will-Tit">
-                        Best 수강후기
-                        <div class="willbes-Lec-Selected main-Lec-Selected tx-gray">
-                            <select id="list" name="list" title="list" class="seleList">
-                                <option selected="selected">목록</option>
-                                <option value="경찰">경찰</option>
-                                <option value="국어">국어</option>
-                                <option value="영어">영어</option>
-                            </select>
-                        </div>
-                    </div>
-                    <ul class="List-Table">
-                        <li><a href="#none"><span class="w-sbj">국어</span><span class="w-prof">정채영</span><span class="w-tit">명불허전! 역시 최고의 강의</span><span class="w-user">반영*</span><span class="w-star"><img src="{{ img_url('main/icon/star4.gif') }}"></span></a></li>
-                        <li><a href="#none"><span class="w-sbj">영어</span><span class="w-prof">한덕현</span><span class="w-tit">역시 영스타 하프모고 최고입니다!</span><span class="w-user">조남*</span><span class="w-star"><img src="{{ img_url('main/icon/star1.gif') }}"></span></a></li>
-                        <li><a href="#none"><span class="w-sbj">한국사</span><span class="w-prof">박민주</span><span class="w-tit">복습이 따로 필요없는 강의!!</span><span class="w-user">김지*</span><span class="w-star"><img src="{{ img_url('main/icon/star3.gif') }}"></span></a></li>
-                        <li><a href="#none"><span class="w-sbj">행정법</span><span class="w-prof">황남기</span><span class="w-tit">막판 정리에 좋은 강의입니다.</span><span class="w-user">윤혜*</span><span class="w-star"><img src="{{ img_url('main/icon/star4.gif') }}"></span></a></li>
-                        <li><a href="#none"><span class="w-sbj">행정학</span><span class="w-prof">김덕관</span><span class="w-tit">출제 포인트를 익힐 수 있는 좋은강의</span><span class="w-user">김혜*</span><span class="w-star"><img src="{{ img_url('main/icon/star5.gif') }}"></span></a></li>
-                        <li><a href="#none"><span class="w-sbj">국어</span><span class="w-prof">기미진</span><span class="w-tit">말이 필요없네요 그냥 최고</span><span class="w-user">정고*</span><span class="w-star"><img src="{{ img_url('main/icon/star4.gif') }}"></span></a></li>
-                    </ul>
-                </dt>
-                <dt class="passInterview">
-                    <div class="will-Tit bd-none mb-zero">합격자 인터뷰</div>
-                    <div class="videoTabs c_both">
-                        <div class="tabBox videoBox">
-                            <div id="interview1" class="tabContent">
-                                <a href="#none"><img src="{{ img_url('main/video/video_180918.jpg') }}"></a>
-                            </div>
-                            <div id="interview2" class="tabContent">
-                                <a href="#none"><img src="{{ img_url('main/video/video_180919.jpg') }}"></a>
-                            </div>
-                            <div id="interview3" class="tabContent">
-                                <a href="#none"><img src="{{ img_url('main/video/video_180920.jpg') }}"></a>
-                            </div>
-                        </div>
-                        <ul class="tabWrap videoWrap">
-                            <li><a href="#interview1" class="on">2018 법원직수석<br/>김용건 합격생</a></li>
-                            <li><a href="#interview2" class="">2018 경찰 2차 일반<br/>장동건 합격생</a></li>
-                            <li><a href="#interview3" class="">2018 유아 교사 임용<br/>장희빈 합격생</a></li>
-                        </ul>
-                    </div>
-                </dt>
-            </dl>
-        </div>
-    </div>
--->
-
     <div class="Section Bnr mb50">
         <div class="widthAuto">
             <dl class="willbes-Bnr">
                 <dt>
                     <a href="#none" target="_blank"><img src="{{ img_url('main/banner/bnr_180918.jpg') }}"></a>
-                    <!--
-                    <ul>
-                        <li>
-                            <div class="bSlider">
-                                <div class="slider">
-                                    <div><a href="#none"><img src="{{ img_url('main/banner/bnr_180918.jpg') }}"></a></div>
-                                    <div><img src="{{ img_url('main/banner/bnr_180919.jpg') }}"></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    -->
                 </dt>
                 <dt>
                     <a href="#none" target="_blank"><img src="{{ img_url('main/banner/bnr_180919.jpg') }}"></a>
-                    <!--
-                    <ul>
-                        <li>
-                            <div class="bSlider">
-                                <div class="slider">
-                                    <div><a href="#none"><img src="{{ img_url('main/banner/bnr_180919.jpg') }}"></a></div>
-                                    <div><img src="{{ img_url('main/banner/bnr_180918.jpg') }}"></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    -->
                 </dt>
             </dl>
         </div>
@@ -407,9 +330,9 @@
                         </li>
                         <li>
                             <strong>전문자격</strong>
-                            <a href="http://value.willbes.net" target="_blank">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                            <a href="http://value.willbes.net" target="_blank">감평/노무-신림(한림법학원)</a><span>|</span>
                             <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                            <a href="http://patent.willbes.net" target="_blank">변리사-강남</a>
+                            <a href="http://patent.willbes.net" target="_blank">변리사-강남(한림법학원)</a>
                         </li>
                     </ul>            
                 </dt>
@@ -426,6 +349,7 @@
 
     <div class="Section Act6 mb50">
         <div class="widthAuto">
+            {{--
             <div class="CScenterBox">
                 <table cellspacing="0" cellpadding="0" class="mainTable">
                     <colgroup>
@@ -462,6 +386,124 @@
                     </tbody>
                 </table>
             </div>
+            --}}
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit tx-blue mt20 mb10">특정 서비스에 대한 문의는 해당 사이트로 바로 문의주셔야 빠르게 답변을 받을 수 있습니다.</div>
+                <div class="LeclistTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                        <colgroup>
+                            <col style="width: 140px;">
+                            <col style="width: 130px;">
+                            <col style="width: 180px;">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>사이트<span class="row-line">|</span></th>
+                                <th>분류<span class="row-line">|</span></th>
+                                <th>연락처<span class="row-line">|</span></th>
+                                <th>운영시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="w-site">교재문의</td>
+                                <td class="w-acad"><span class="oBox allBox NSK">공통</span></td>
+                                <td class="w-call">1544-4944</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~17:00<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">임용</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td rowspan="2" class="w-call">1544-3169</td>
+                                <td rowspan="2" class="w-time tx-left pl25">
+                                    평일/주말 09:00~22:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">윌비스 공무원</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-0330</td>
+                                <td class="w-time tx-left pl25">
+                                    평일/주말 9:00~22:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">신광은 경찰</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-0336</td>
+                                <td class="w-time tx-left pl25">
+                                    월~토 9:00~22:00<br/>
+                                    일요일 9:00~20:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">고등고시</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1566-4770  ▶ 2</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-1881 ▶ 1</td>
+                                <td class="w-time tx-left pl25">평일/주말 8:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="3">전문자격증</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1566-4770 ▶ 4                                            </td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">신림(본원) 1544-4774 ▶ 4</td>
+                                <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-call">강남(분원) 1544-4774 ▶ 4</td>
+                                <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-site">N잡/어학/취업</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
         </div>
     </div> 
     

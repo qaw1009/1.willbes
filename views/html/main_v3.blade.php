@@ -320,9 +320,9 @@
                     </li>
                     <li>
                         <strong>전문자격</strong>
-                        <a href="{{ app_url('/home/index/cate/309002', 'job') }}">감평/노무 - 신림(한림법학원)</a><span>|</span>
+                        <a href="{{ app_url('/home/index/cate/309002', 'job') }}">감평/노무-신림(한림법학원)</a><span>|</span>
                         <a href="http://www.namucpa.com" target="_blank">세무/회계 종로(나무아카데미)</a><span>|</span>
-                        <a href="{{ app_url('/home/index/cate/309004', 'job') }}">변리사-강남</a>
+                        <a href="{{ app_url('/home/index/cate/309004', 'job') }}">변리사-강남(한림법학원)</a>
                     </li>
                 </ul>                
             </div>
@@ -338,12 +338,131 @@
     <div class="Section Area6 mt50 mb50">
         <div class="widthAuto">
             <div class="will-Tit">윌비스 고객센터</div>
+            {{--
             <div class="CScenterBox">
                 <ul>
                     <li>ㆍ <span>수강</span>문의 <strong>1544-5006</strong></li>
                     <li>ㆍ <span>교재</span>문의 <strong>1544-4944</strong> [운영시간] 평일 9시 ~ 18시 | 주말, 공휴일 휴무</li>
                 </ul>
             </div>
+            --}}
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit tx-blue mt20 mb10">특정 서비스에 대한 문의는 해당 사이트로 바로 문의주셔야 빠르게 답변을 받을 수 있습니다.</div>
+                <div class="LeclistTable">
+                    <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                        <colgroup>
+                            <col style="width: 160px;">
+                            <col style="width: 150px;">
+                            <col style="width: 200px;">
+                            <col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>사이트<span class="row-line">|</span></th>
+                                <th>분류<span class="row-line">|</span></th>
+                                <th>연락처<span class="row-line">|</span></th>
+                                <th>운영시간</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="w-site">교재문의</td>
+                                <td class="w-acad"><span class="oBox allBox NSK">공통</span></td>
+                                <td class="w-call">1544-4944</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~17:00<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">임용</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td rowspan="2" class="w-call">1544-3169</td>
+                                <td rowspan="2" class="w-time tx-left pl25">
+                                    평일/주말 09:00~22:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">윌비스 공무원</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-0330</td>
+                                <td class="w-time tx-left pl25">
+                                    평일/주말 9:00~22:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">신광은 경찰</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-0336</td>
+                                <td class="w-time tx-left pl25">
+                                    월~토 9:00~22:00<br/>
+                                    일요일 9:00~20:00
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="2">고등고시</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1566-4770  ▶ 2</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">1544-1881 ▶ 1</td>
+                                <td class="w-time tx-left pl25">평일/주말 8:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-site" rowspan="3">전문자격증</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1566-4770 ▶ 4                                            </td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
+                                <td class="w-call">신림(본원) 1544-4774 ▶ 4</td>
+                                <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-call">강남(분원) 1544-4774 ▶ 4</td>
+                                <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                            </tr>
+                            <tr>
+                                <td class="w-site">N잡/어학/취업</td>
+                                <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                <td class="w-call">1544-5006</td>
+                                <td class="w-time tx-left pl25">
+                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                    주말/공휴일 휴무
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
         </div>
     </div> 
     

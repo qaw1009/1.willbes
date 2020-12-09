@@ -4,7 +4,7 @@
 <!-- Popup -->
 <div class="Popup willbes-Layer-PassBox">
     <div class="popupContainer">
-        <div class="lecMoreWrap pt10">
+        <div class="lecMoreWrap">
             <div class="PASSZONE-List widthAutoFull">
                 <div class="passzoneTitInfo tx-light-blue tx-center NG tx22">8/13 빅매지2 - 경행경채 모의고사</div>
                 <ul class="passzoneSubInfo tx-gray NGR">

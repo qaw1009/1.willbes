@@ -33,9 +33,11 @@
         .tabs li a span {font-weight:bold; float:right}
         .tabs li a.active,
         .tabs li a:hover {background:#ffd800}
-        .tabCts {float:right; width:777px; border-top:5px solid #000;}
 
-        .tabTop {background:#4b66b0; border:1px solid #c4c4c4; border-top:0}
+        .tabCts {float:right; width:777px;}
+        .tabCts .ctsTitle {font-size:38px; text-align:left; margin-bottom:20px; color:#232323}
+        .tabCts .ctsTitle span {color:#cb1800}
+        .tabTop {background:#4b66b0; border:1px solid #c4c4c4; border-top:5px solid #000;}
         .tabTop .left {float:left; width:276px}
         .tabTop .left li:nth-child(1) div {width:188px; height:188px; margin:50px auto 0; border-radius:94px; background:#fff; box-shadow:0 0 20px rgba(0,0,0,.3); overflow:hidden}
         .tabTop .left li:nth-child(1) div img {width:100%}
@@ -47,25 +49,27 @@
         .tabTop:after {content:''; display:block; clear:both}
 
         .tabBottom {margin-top:40px; border:1px solid #c4c4c4;}
-        .tabBottom td {padding:30px; text-align:left; line-height:1.5; vertical-align: top;}
+        .tabBottom td {padding:30px 20px; text-align:left; line-height:1.5; vertical-align: top;}
         .tabBottom td:nth-child(1) {background:#f3f3f3}
         .tabBottom td:nth-child(1) li {margin-bottom:5px}
-        .tabBottom td:nth-child(1) li span {display:inline-block; color:#2c4fad; width:50px; margin-right:10px}
-        .tabBottom td:nth-child(1) li.sTitle {font-size:17px; margin:10px 0}
+        .tabBottom td:nth-child(1) li span {display:inline-block; color:#2c4fad; width:45px; margin-right:5px}
+        .tabBottom td:nth-child(1) li.sTitle {font-size:15px; margin:10px 0}
         .tabBottom td:nth-child(1) li.sTitle:nth-child(1) {margin-top:0}
-        .tabBottom td input {width:22px; height:22px; vertical-align: middle; margin-right:5px}
-        .tabBottom td:nth-child(2) {font-size:19px}
-        .tabBottom td:nth-child(2) li:nth-child(1) {margin-bottom:20px}
+        .tabBottom td input {width:20px; height:20px; vertical-align: middle; margin-right:5px}
+        .tabBottom td:nth-child(2) {font-size:16px}
+        .tabBottom td:nth-child(2) li:nth-child(1) {margin-bottom:20px;}
+        .tabBottom td:nth-child(2) li label .NSK-Black {letter-spacing:-1px}
         .tabBottom td:nth-child(2) strong {display:inline-block; width:26px; height:26px; line-height:26px; text-align:center; color:#fff; background:#17aec1; border-radius:13px;}
         .tabBottom td:nth-child(2) > div:nth-child(2) strong {background:#38af00;}
         .tabBottom td:nth-child(2) p {font-size:12px; padding-left:25px; color:#999}
         .tabBottom td:nth-child(2) > div {position:relative; margin-bottom:30px}
         .tabBottom td:nth-child(2) div li:last-child {position:absolute; bottom:0; right:20px; background:#ffd800; width:60px; height:60px; line-height:60px; 
             text-align:center; border-radius:30px; color:#000}
-        .tabBottom td:nth-child(2) > div:nth-child(3) {margin:0}
-        .tabBottom td:nth-child(2) > div:nth-child(3) a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
+        .tabBottom td:nth-child(2) > div:last-child {margin:0}
+        .tabBottom td:nth-child(2) > div:last-child a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
             padding:15px 0; text-align:center; line-height:1.2}
-        .tabBottom td:nth-child(2) > div:nth-child(3) a:last-child {background:#4b66b0}
+        .tabBottom td:nth-child(2) > div:last-child a:last-child {background:#4b66b0}
+        .tabBottom td h5 {border-radius:10px; color:#fff; text-align:center; background:#4b66b0; padding:10px 0; width:100%; margin-bottom:10px; font-size:14px}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_04_bg.jpg) no-repeat center top;}
         .evt05 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_05_bg.jpg) no-repeat center top;}
@@ -93,11 +97,11 @@
 
         <div class="evtCtnsBox evt03">
             <div class="tabs">
-                <ul>
-                    <li><a href="#tab01">· 유아 <span>민정선 교수님</span></a>
-                    <li><a href="#tab02">· 초등 <span>배재민 교수님</span></a>
-                    <li><a href="#tab03">· 교육학 <span>정 현 교수님</span></a>
-                    <li><a href="#tab04">· 전공체육 <span>최규훈 교수님</span></a>
+                <ul>                    
+                    <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a>
+                    <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a>
+                    <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a>
+                    <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a>
                     <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a>
                     <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a>
                     <li><a href="#tab07">· 전공수학 <span>김철홍 교수님</span></a>
@@ -115,74 +119,7 @@
 
             <div class="tabCts">
                 <div id="tab01">
-                    <div class="tabTop">
-                        <div class="left">
-                            <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/prof_detail_51076.png" alt="민정선"></div></li>
-                                <li class="NSK-thin">유아<br> <strong class="NSK-Black">민정선</strong> 교수<li>
-                                <li>
-                                    <a href="/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
-                                </li>                                
-                            </ul>
-                        </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r01.jpg" alt=""/></div>
-                    </div>
-                    <div class="tabBottom">
-                        <table>
-                            <col width="276px" />
-                            <col />
-                            <tr>
-                                <td>
-                                    <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="tab02">
+                    <div class="ctsTitle NSK-Black">광범위한 교과내용을 <span>체계적인 강의</span>로 정리!!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -190,7 +127,7 @@
                                 <li class="NSK-thin">초등<br> <strong class="NSK-Black">배재민</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">샘플강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -202,15 +139,16 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span> 기본이론반</li>
+                                        <li><span>3월</span> 기출분석반</li>
+                                        <li><span>4월</span> 국정지도서분석반</li>
+                                        <li><span>5월</span> 검정지도서분석반</li>
+                                        <li><span>6~8월</span> 유아교육개론</li>
+                                        <li><span>9월</span> 과목별 문제풀이반(기본문풀)</li>
+                                        <li><span>10월</span> 실전 모의고사반(심화문풀)</li>
                                     </ul>
                                 </td>
                                 <td>
@@ -218,31 +156,23 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox"> 1년 전과정 Full Package</div>
+                                                    <p>* 교재 별도 구매</p>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 학원강의 : 2021년 1월~10월<br>
+                                                        - 온라인강의 : 326일 * 배수:1.8배수<br>
+                                                    </div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,000,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,400,000원</span></li>
+                                            <li><div class="NSK-Black">30%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -250,7 +180,8 @@
                     </div>
                 </div>
 
-                <div id="tab03">
+                <div id="tab02">
+                    <div class="ctsTitle NSK-Black">교육학 고득점을 위한 <span>최적의 Solution</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -258,7 +189,7 @@
                                 <li class="NSK-thin">교육학<br> <strong class="NSK-Black">정 현</strong> 교수<li>
                                 <li>
                                     <a href="#none">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -270,6 +201,78 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 (1~6월) 커리큘럼</h5>
+                                    <ul>
+                                        <li class="sTitle NSK-Black">2021년 VZONEdu 교육학 기본이론반</li>
+                                        <li><span>1월</span> 교육사철학</li>
+                                        <li><span>2월</span> 교육과정</li>
+                                        <li><span>3월</span> 교육심리</li>
+                                        <li><span>3월</span> 교육방법</li>
+                                        <li><span>4월</span> 교육행정</li>
+                                        <li><span>5월</span> 교육평가</li>
+                                        <li><span>6월</span> 생활지도 및 교육사회</li>
+                                        <li class="sTitle NSK-Black">2021년 VZON 전공체육 기본이론반</li>
+                                        <li><span>1월</span> 체육교육론</li>
+                                        <li><span>2월</span> 체육측정평가</li>
+                                        <li><span>3월</span> 운동생리학</li>
+                                        <li><span>4월</span> 운동역학</li>
+                                        <li><span>5월</span> 운동학습과 심리</li>
+                                        <li><span>6월</span> 스포츠사회학</li>
+                                        <li><span>6월</span> 체육사ㆍ철학</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <h5>1~6월 기본이론 Package</h5>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <label>                                                    
+                                                    <div class="NSK-Black"><input type="checkbox">VZONEdu(교육학) 기본이론 + VZON(전공체육) 기본이론 패키지</div>
+                                                    <p>* 교재 별도 구매</p>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 직강 LIVE : 2021년 1월~6월<br>
+                                                        - 온라인강의 : 240일 * 배수:1.8배수<br>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            <li class="tx-gray">원 수강료 : <s>1,820,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,600,000원</span></li>
+                                            <li><div class="NSK-Black">12%</div></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">직강LIVE</span><br>수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br>수강신청</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="tab03">
+                    <div class="ctsTitle NSK-Black">전공체육 고득점을 위한 <span>최적의 Solution</span></div>
+                    <div class="tabTop">
+                        <div class="left">
+                            <ul>
+                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51156/prof_detail_51156.png" alt="최규훈"></div></li>
+                                <li class="NSK-thin">전공체육<br> <strong class="NSK-Black">최규훈</strong> 교수<li>
+                                <li>
+                                    <a href="#none">교수페이지 바로가기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
+                                </li>                                
+                            </ul>
+                        </div>
+                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r04.jpg" alt=""/></div>
+                    </div>
+                    <div class="tabBottom">
+                        <table>
+                            <col width="276px" />
+                            <col />
+                            <tr>
+                                <td>
+                                    <h5>2022학년도 대비 (1~6월) 커리큘럼</h5>
                                     <ul>
                                         <li class="sTitle NSK-Black">[정규강의]</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
@@ -282,35 +285,46 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1~6월 기본이론 Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">VZONEdu(교육학) 기본이론 + VZON(전공체육) 기본이론 패키지</div>
+                                                    <p>* 교재 별도 구매</p>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 직강 LIVE : 2021년 1월~6월<br>
+                                                        - 온라인강의 : 240일 * 배수:1.8배수<br>
+                                                    </div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,820,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,600,000원</span></li>
+                                            <li><div class="NSK-Black">12%</div></li>
                                         </ul>
                                     </div>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">VZON(전공체육) 기본이론 패키지</div>
+                                                    <p>* 교재 별도 구매</p>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 직강 LIVE : 2021년 1월~6월<br>
+                                                        - 온라인강의 : 240일 * 배수:1.8배수<br>
+                                                    </div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,320,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,250,000원</span></li>
+                                            <li><div class="NSK-Black">약5%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -319,18 +333,19 @@
                 </div>
 
                 <div id="tab04">
+                    <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
-                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51156/prof_detail_51156.png" alt="최규훈"></div></li>
-                                <li class="NSK-thin">전공체육<br> <strong class="NSK-Black">최규훈</strong> 교수<li>
+                                <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51078/prof_detail_51078.png" alt="송원영"></div></li>
+                                <li class="NSK-thin">전공국어<br> <strong class="NSK-Black">송원영</strong> 교수<li>
                                 <li>
-                                    <a href="#none">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
+                                    <a href="#none">샘플강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r04.jpg" alt=""/></div>
+                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r01.jpg" alt=""/></div>
                     </div>
                     <div class="tabBottom">
                         <table>
@@ -338,47 +353,40 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span> 국어/문학교육론 이론정리반</li>
+                                        <li><span>3~4월</span> 국어/문학교육론 교육과정 정리 및 문학작품 분석반</li>
+                                        <li><span>5~6월</span> 국어/문학교육론 교육과정 적용, 구체화 및 문학작품 분석반(갈래이론 및 문학사)</li>
+                                        <li><span>7~8월</span> 국어/문학교육론 문제풀이를 통한 이론정리반</li>
+                                        <li><span>9~10월</span> 실전 모고를 통한 이론완성+파이널 시험 직전 출제 예상테마</li>
+                                        <li class="sTitle NSK-Black tx-center tx18">+</li>
+                                        <li>권보민 교수님 연간 패키지 </li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2021 연간 패키지</div>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 학원강의 : 2021년 1월~11월<br>
+                                                        - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                                    </div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,640,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,066,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -387,6 +395,7 @@
                 </div>
 
                 <div id="tab05">
+                    <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -394,7 +403,7 @@
                                 <li class="NSK-thin">국어문법<br> <strong class="NSK-Black">권보민</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">샘플강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -406,6 +415,7 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
                                         <li class="sTitle NSK-Black">[정규강의]</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
@@ -418,35 +428,27 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 학원강의 : 2021년 1월~11월<br>
+                                                        - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                                    </div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,640,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,066,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -490,12 +492,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -503,18 +505,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -558,12 +560,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -571,18 +573,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -626,12 +628,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -639,18 +641,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -694,12 +696,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -707,18 +709,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -762,12 +764,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -775,18 +777,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -830,12 +832,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -843,18 +845,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -898,12 +900,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -911,18 +913,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -966,12 +968,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -979,18 +981,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -1034,12 +1036,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -1047,18 +1049,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -1102,12 +1104,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -1115,18 +1117,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -1170,12 +1172,12 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>A</strong> 2020 연간 패키지 - 논술 포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
@@ -1183,18 +1185,18 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"><strong>B</strong> 2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">정상수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
-                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>

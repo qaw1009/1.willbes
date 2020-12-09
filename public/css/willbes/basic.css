@@ -556,6 +556,9 @@ select[disabled] {
 .h66 {
   height: 66px !important;
 }
+.h120 {
+  height: 120px !important;
+}
 .h250 {
   height: 250px !important;
 }

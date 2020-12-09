@@ -2,116 +2,132 @@
 
 @section('content')
 <!-- Popup -->
-<div class="Popup ExamBox">
-    <div class="popTitBox">
-		<div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
-		<div class="pop-subTit">2018 제2회 전국모의고사 (12/03 사행) - 9급 [일행/세무] *선택과목 과학 제외</div>
-	</div>
-    <div class="popupContainer mg-zero">
-        <div class="examSjBx">
-            <div class="inner">
-                <h3>응시과목 : </h3>
-                <ul class="sj">
-                    <li><a class="exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
-                    <li><a class="exam-fin" href="" onclick="">영어</a><span class="row-line">|</span></li>
-                    <li><a href="" onclick="">한국사</a><span class="row-line">|</span></li>
-                    <li><a href="" onclick="">행정법</a><span class="row-line">|</span></li>
-                    <li><a class="exam-ing" href="" onclick="">행정학</a></li>
-                </ul>
-                <div class="countTime">남은시간 : <span id="timer" class="time">01:35:56</span></div>
+<div class="Popup ExamBox">    
+    <div class="mg-zero popupContainer">
+        <div class="ExamBoxHead">
+            <div class="popTitBox">
+                <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
+                <div class="pop-subTit">2018 제2회 전국모의고사 (12/03 사행) - 9급 [일행/세무] *선택과목 과학 제외</div>
+            </div>
+            <div class="examSjBx">
+                <div class="inner">
+                    <h3>응시과목 : </h3>
+                    <ul class="sj">
+                        <li><a class="exam-temp" href="" onclick="">국어</a><span class="row-line">|</span></li>    
+                        <li><a class="exam-fin" href="" onclick="">영어</a><span class="row-line">|</span></li>
+                        <li><a href="" onclick="">한국사</a><span class="row-line">|</span></li>
+                        <li><a href="" onclick="">행정법</a><span class="row-line">|</span></li>
+                        <li><a class="exam-ing" href="" onclick="">행정학</a></li>
+                    </ul>
+                    <div class="countTime">남은시간 : <span id="timer" class="time">01:35:56</span></div>
+                </div>
             </div>
         </div>
         <!-- //응시과목 -->
 
-        <div class="examPaperWp">
-            <div class="exam-paper mt50">
-                <ul>
-                    <li id="que1" name="que1">
-                        <a class="strong tx-black underline">01.</a>  
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
-                    </li>
-                    <li id="que2" name="que2">
-                        <a>02.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
-                    </li>
-                    <li id="que3" name="que3">
-                        <a>03.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
-                    </li>
-                    <li id="que4" name="que4">
-                        <a>04.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
-                    </li>
-                    <li id="que5" name="que5">
-                        <a>05.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span> 
-                    </li>
-                    <li id="que6" name="que6">
-                        <a>06.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
-                    </li>
-                    <li id="que7" name="que7">
-                        <a>07.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
-                    </li>
-                    <li id="que8" name="que8">
-                        <a>08.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
-                    </li>
-                    <li id="que9" name="que9">
-                        <a>09.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
-                    </li>
-                    <li id="que10" name="que10">
-                        <a>10.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>  
-                    </li>
-                    <li id="que11" name="que11">
-                        <a>11.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
-                    </li>
-                    <li id="que12" name="que12">
-                        <a>12.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
-                    </li>
-                    <li id="que13" name="que13">
-                        <a>13.</a>   
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
-                    </li>
-                    <li id="que14" name="que14">
-                        <a>14.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
-                    </li>
-                    <li id="que15" name="que15">
-                        <a>15.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
-                    </li>
-                    <li id="que16" name="que16">
-                        <a>16.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
-                    </li>
-                    <li id="que17" name="que17">
-                        <a>17.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
-                    </li>
-                    <li id="que18" name="que18">
-                        <a>18.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
-                    </li>       
-                    <li id="que19" name="que19">
-                        <a>19.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
-                    </li>
-                    <li id="que20" name="que20">
-                        <a>20.</a>
-                        <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
-                    </li>
-                </ul>
-            </div>
+        <div class="ExamBoxTemp"></div>
+
+        <div class="examPaperWp">     
+            <div class="exam-paper">
+                {{--pdf 방식 
+                <div class="pdfType">                
+                    <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                </div> --}}            
+
+                {{--이미지 방식 --}}  
+                <div class="imgType">
+                    {{--<div class="willbes-Layer-Black"></div>--}}
+                    <ul>
+                        <li id="que1" name="que1">
+                            <a class="strong tx-black underline">01.</a>  
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
+                        </li>
+                        <li id="que2" name="que2">
+                            <a>02.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
+                        </li>
+                        <li id="que3" name="que3">
+                            <a>03.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
+                        </li>
+                        <li id="que4" name="que4">
+                            <a>04.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
+                        </li>
+                        <li id="que5" name="que5">
+                            <a>05.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span> 
+                        </li>
+                        <li id="que6" name="que6">
+                            <a>06.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
+                        </li>
+                        <li id="que7" name="que7">
+                            <a>07.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
+                        </li>
+                        <li id="que8" name="que8">
+                            <a>08.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
+                        </li>
+                        <li id="que9" name="que9">
+                            <a>09.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
+                        </li>
+                        <li id="que10" name="que10">
+                            <a>10.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>  
+                        </li>
+                        <li id="que11" name="que11">
+                            <a>11.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
+                        </li>
+                        <li id="que12" name="que12">
+                            <a>12.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
+                        </li>
+                        <li id="que13" name="que13">
+                            <a>13.</a>   
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
+                        </li>
+                        <li id="que14" name="que14">
+                            <a>14.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
+                        </li>
+                        <li id="que15" name="que15">
+                            <a>15.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
+                        </li>
+                        <li id="que16" name="que16">
+                            <a>16.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
+                        </li>
+                        <li id="que17" name="que17">
+                            <a>17.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView5.jpg') }}"></span>
+                        </li>
+                        <li id="que18" name="que18">
+                            <a>18.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView6.jpg') }}"></span>
+                        </li>       
+                        <li id="que19" name="que19">
+                            <a>19.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView7.jpg') }}"></span>
+                        </li>
+                        <li id="que20" name="que20">
+                            <a>20.</a>
+                            <span class="que"><img src="{{ img_url('/sample/imgFileView8.jpg') }}"></span>
+                        </li>
+                    </ul> 
+                </div>                        
+            </div> 
+
             <div class="answer-sheet">
                 <div class="exam-txt">
                     * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
-                    * 정답제출을 해야만 성적결과를 확인할 수 있습니다.
+                    * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
+                    * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
+                    <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
                 </div>
                 <table class="answerTb">
                     <colgroup>
@@ -327,7 +343,7 @@
                         <li><a class="btnlightGray" href="#none">임시저장</a></li>
                     </ul>
                 </div>
-            </div>      
+            </div> 
         </div>
     </div>
     <!-- //popupContainer -->

@@ -59,9 +59,13 @@
         .tabBottom td:nth-child(2) strong {display:inline-block; width:26px; height:26px; line-height:26px; text-align:center; color:#fff; background:#17aec1; border-radius:13px;}
         .tabBottom td:nth-child(2) > div:nth-child(2) strong {background:#38af00;}
         .tabBottom td:nth-child(2) p {font-size:12px; padding-left:25px; color:#999}
-        .tabBottom td:nth-child(2) > div {position:relative; margin-bottom:20px}
+        .tabBottom td:nth-child(2) > div {position:relative; margin-bottom:30px}
         .tabBottom td:nth-child(2) div li:last-child {position:absolute; bottom:0; right:20px; background:#ffd800; width:60px; height:60px; line-height:60px; 
             text-align:center; border-radius:30px; color:#000}
+        .tabBottom td:nth-child(2) > div:nth-child(3) {margin:0}
+        .tabBottom td:nth-child(2) > div:nth-child(3) a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
+            padding:15px 0; text-align:center; line-height:1.2}
+        .tabBottom td:nth-child(2) > div:nth-child(3) a:last-child {background:#4b66b0}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_04_bg.jpg) no-repeat center top;}
         .evt05 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_05_bg.jpg) no-repeat center top;}
@@ -168,6 +172,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -231,6 +239,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -296,6 +308,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -359,6 +375,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -424,6 +444,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -487,6 +511,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -552,6 +580,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -615,6 +647,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -680,6 +716,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -743,6 +783,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -808,6 +852,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -871,6 +919,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -936,6 +988,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -999,6 +1055,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>
@@ -1064,6 +1124,10 @@
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
                                     </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -1127,6 +1191,10 @@
                                             <li>패키지 구매가 : <span class="NSK-Black">1,470,000원</span></li>
                                             <li><div class="NSK-Black">35%</div></li>
                                         </ul>
+                                    </div>
+                                    <div>
+                                        <a href="#none"><span class="NSK-Black">학원강의</span><br> 바로 구매하기</a>
+                                        <a href="#none"><span class="NSK-Black">온라인강의</span><br> 바로 구매하기</a>
                                     </div>
                                 </td>
                             </tr>

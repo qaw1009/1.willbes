@@ -51,9 +51,9 @@
         .tabBottom {margin-top:40px; border:1px solid #c4c4c4;}
         .tabBottom td {padding:30px 20px; text-align:left; line-height:1.5; vertical-align: top;}
         .tabBottom td:nth-child(1) {background:#f3f3f3}
-        .tabBottom td:nth-child(1) li {margin-bottom:5px}
-        .tabBottom td:nth-child(1) li span {display:inline-block; color:#2c4fad; width:45px; margin-right:5px}
-        .tabBottom td:nth-child(1) li.sTitle {font-size:15px; margin:10px 0}
+        .tabBottom td:nth-child(1) li {margin-bottom:5px; padding-left:60px; position:relative}
+        .tabBottom td:nth-child(1) li span {position:absolute; left:0; display:inline-block; color:#2c4fad;}
+        .tabBottom td:nth-child(1) li.sTitle {font-size:15px; margin:10px 0; padding:0}
         .tabBottom td:nth-child(1) li.sTitle:nth-child(1) {margin-top:0}
         .tabBottom td input {width:20px; height:20px; vertical-align: middle; margin-right:5px}
         .tabBottom td:nth-child(2) {font-size:16px}
@@ -68,7 +68,9 @@
         .tabBottom td:nth-child(2) > div:last-child {margin:0}
         .tabBottom td:nth-child(2) > div:last-child a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
             padding:15px 0; text-align:center; line-height:1.2}
-        .tabBottom td:nth-child(2) > div:last-child a:last-child {background:#4b66b0}
+        .tabBottom td:nth-child(2) > div:last-child a:nth-child(2) {background:#4b66b0}
+        .tabBottom td:nth-child(2) > div:last-child.three a {width:30%;}
+        .tabBottom td:nth-child(2) > div:last-child a:nth-child(3) {background:#1bd3e1}
         .tabBottom td h5 {border-radius:10px; color:#fff; text-align:center; background:#4b66b0; padding:10px 0; width:100%; margin-bottom:10px; font-size:14px}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_04_bg.jpg) no-repeat center top;}
@@ -362,7 +364,7 @@
                                         <li><span>7~8월</span> 국어/문학교육론 문제풀이를 통한 이론정리반</li>
                                         <li><span>9~10월</span> 실전 모고를 통한 이론완성+파이널 시험 직전 출제 예상테마</li>
                                         <li class="sTitle NSK-Black tx-center tx18">+</li>
-                                        <li>권보민 교수님 연간 패키지 </li>
+                                        <li class="sTitle NSK-Black">권보민 교수님 연간 패키지 </li>
                                     </ul>
                                 </td>
                                 <td>
@@ -395,7 +397,7 @@
                 </div>
 
                 <div id="tab05">
-                    <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
+                    <div class="ctsTitle NSK-Black">깊게 이해하고 쉽게 푸는 <span>국어문법</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -417,14 +419,37 @@
                                 <td>
                                     <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span>
+                                            - 현대 국어 문법 기초 다지기<br>
+                                            - 기출문제 분석 및 응용반 1<br>
+                                            - 중세 국어 문법 감각 기르기 (중세 국어 문법 개론서 예문 분석 1)
+                                        </li>
+                                        <li><span>3~4월</span>
+                                            - 중세 국어 문법 기초 다지기 <br>
+                                            - 기출문제 분석 및 응용반2<br>
+                                            - 중세 국어 문법 적용력 기르기 (중세 국어 문법 개론서 예문 분석 2 및 자료 강독 1)
+                                        </li>
+                                        <li><span>5~6월</span>
+                                            - 현대 국어 문법과 중세 국어 문법 강화하기<br>
+                                            - 중세 국어 문법 확장하기(중세 국어 원전 자료 강독 2)<br>
+                                            - 문법 개론서 정리('우리말문법론' 핵심 정리) 
+                                        </li>
+                                        <li><span>7~8월</span>
+                                            - 문법 갈무리 미니모의고사<br>
+                                            - 적중 예상 문제 300제 특강<br>
+                                            - 핵심 주제 문법 특강 1
+                                        </li>
+                                        <li><span>9~10월</span>
+                                            - 실전모의고사 1<br>
+                                            - 중세 국어 문법 열매 맺기 (중세 국어 원전 자료 강독 3)<br>
+                                            - 핵심 주제 문법 특강 2<br>
+                                        </li>
+                                        <li><span>11월</span>
+                                            - 실전모의고사 2<br>
+                                            - 중세 국어 문법 파이널 갈무리<br>
+                                            - 현대 국어 문법 파이널 갈무리
+                                        </li>
                                     </ul>
                                 </td>
                                 <td>
@@ -433,7 +458,24 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
+                                                    <div class="NSK-Black"><input type="checkbox">권보민 교수님 국어문법  패키지</div>
+                                                    <div class="NSK tx14 mt10">
+                                                        [수강기간]<br>
+                                                        - 학원강의 : 2021년 1월~11월<br>
+                                                        - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                                    </div>
+                                                </label>
+                                            </li>
+                                            <li class="tx-gray">원 수강료 : <s>1,640,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,066,000원</span></li>
+                                            <li><div class="NSK-Black">35%</div></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul>
+                                            <li>
+                                                <label>                                                    
+                                                    <div class="NSK-Black"><input type="checkbox">권보민 교수님 국어문법 + 송원영 교수님 국어/문학 교육론  패키지</div>
                                                     <div class="NSK tx14 mt10">
                                                         [수강기간]<br>
                                                         - 학원강의 : 2021년 1월~11월<br>
@@ -457,6 +499,7 @@
                 </div>
 
                 <div id="tab06">
+                    <div class="ctsTitle NSK-Black">흐름을 꿰뚫는 <span>전략!</span> 차이를 만드는 <span>힘!</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -464,7 +507,7 @@
                                 <li class="NSK-thin">전공영어<br> <strong class="NSK-Black">김유석</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">샘플강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -476,42 +519,31 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span> 일반영어 Power Reading(5판)</li>
+                                        <li><span>1~2월</span> 영미문학 영미시의 이해</li>
+                                        <li><span>3~4월</span> 일반영어 Power Prose Writing</li>
+                                        <li><span>5~6월</span> 일반영어/영미문학 기출 모의고사반</li>
+                                        <li><span>3~4월</span> 영미문학 영미소설의 이해</li>
+                                        <li><span>5~6월</span> 영미시/영미소설 문제적용반</li>
+                                        <li><span>7~8월</span> 일반영어/영미문학 상위권 문제풀이반</li>
+                                        <li><span>9~11월</span> 일반영어/영미문학 상위권 모의고사반</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,040,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,700,000원</span></li>
+                                            <li><div class="NSK-Black">17%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -525,6 +557,7 @@
                 </div>
 
                 <div id="tab07">
+                    <div class="ctsTitle NSK-Black">수학 <span>“내용학+교육론”</span> 합격을 위한 One Team</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -532,7 +565,7 @@
                                 <li class="NSK-thin">전공수학<br> <strong class="NSK-Black">김철홍</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -593,6 +626,7 @@
                 </div>
 
                 <div id="tab08">
+                    <div class="ctsTitle NSK-Black">수학 <span>“내용학+교육론”</span> 합격을 위한 One Team</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -600,7 +634,7 @@
                                 <li class="NSK-thin">수학교육론<br> <strong class="NSK-Black">박태영</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -661,6 +695,7 @@
                 </div>
 
                 <div id="tab09">
+                    <div class="ctsTitle NSK-Black">독보적인 도덕ㆍ윤리, <span>명품 강의!</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -668,7 +703,7 @@
                                 <li class="NSK-thin">도덕윤리<br> <strong class="NSK-Black">김병찬</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -680,42 +715,34 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~2월</span> 교과 내용학 Ⅰ</li>
+                                        <li><span>3~4월</span> 교과 내용학 Ⅱ</li>
+                                        <li><span>4~5월</span> 기출문제 분석</li>
+                                        <li><span>5~6월</span> 교과교육론</li>
+                                        <li><span>7~8월</span> 영역별ㆍ주제별 문제풀이</li>
+                                        <li><span>9~10월</span> 모의고사</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~10월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,980,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">1,728,000원</span></li>
+                                            <li><div class="NSK-Black">13%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -729,6 +756,7 @@
                 </div>
 
                 <div id="tab10">
+                    <div class="ctsTitle NSK-Black">최적의 <span>학습전략</span>으로 합격의 역사를 쓴다!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -736,7 +764,7 @@
                                 <li class="NSK-thin">전공역사<br> <strong class="NSK-Black">최용림</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -748,42 +776,34 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span> 임용역사 이론반</li>
+                                        <li><span>3~4월</span> 임용역사 심화이론</li>
+                                        <li><span>5~6월</span> 임용역사 기출문제분석</li>
+                                        <li><span>7~8월</span> 임용역사 영역ㆍ단원별 문제풀이</li>
+                                        <li><span>9~10월</span> 임용역사 실전모의고사 </li>
+                                        <li><span>11월</span> 임용역사 핵심 FINAL - 출제 예상 주제 및 모의고사</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~11월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>1,580,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">948,000원</span></li>
+                                            <li><div class="NSK-Black">40%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -797,6 +817,7 @@
                 </div>
 
                 <div id="tab11">
+                    <div class="ctsTitle NSK-Black">구조화의 끝판왕! <span>합격의 지름길!!</span></div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -804,7 +825,7 @@
                                 <li class="NSK-thin">전공음악<br> <strong class="NSK-Black">다이애나</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -816,47 +837,49 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
+                                        <li><span>1~2월</span> 전공음악 기본이론</li>
+                                        <li><span>1~2월</span> 전공음악 화성학</li>
+                                        <li><span>1~2월</span> 전공음악 한.끝.맵.(한권으로 끝내는 마인드맵)</li>
+                                        <li><span>3~4월</span> 전공음악 심화이론</li>
+                                        <li><span>3~6월</span> 전공음악 한줄정리(국악)</li>
+                                        <li><span>3~6월</span> 전공음악 한줄정리(서양음악)</li>
+                                        <li><span>3~6월</span> 전공음악 개론서(국악)</li>
+                                        <li><span>3~6월</span> 전공음악 개론서(서양음악)</li>
+                                        <li><span>3~6월</span> 전공음악 개론서(음악교육론)</li>
+                                        <li><span>7~8월</span> 전공음악 문제풀이반</li>
+                                        <li><span>7~8월</span> 전공음악 기출문제 풀이반</li>
+                                        <li><span>9~10월</span> 전공음악 모의고사반</li>
+                                        <li><span>11월</span> 전공음악 파이널 스터디</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
+                                                    <p>* 교재 별도 구매</p>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~6월<br>
+                                                    - 직강 LIVE : 2021년 1월~6월<br>
+                                                    - 온라인강의 : 240일 * 배수:1.8배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
+                                    <div class="three">
                                         <a href="#none"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
                                         <a href="#none"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="#none"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>
@@ -865,6 +888,7 @@
                 </div>
 
                 <div id="tab12">
+                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -872,7 +896,7 @@
                                 <li class="NSK-thin">전기<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -884,42 +908,38 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
+                                        <li><span>3~6월</span> 전력+문제풀이</li>
+                                        <li><span>3~6월</span> 전기자기학</li>
+                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
+                                        <li><span>10~11월</span> 전기 모의고사 </li>
+                                        <li><span>인강제공</span> 
+                                            출문제분석<br>
+                                            전기기기+문제풀이<br>
+                                            제어+문제풀이
+                                        </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    <div>
+                                    <h5>1년 전과정 Full Package</h5>
+                                    <div>                                        
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~11월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -933,6 +953,7 @@
                 </div>
 
                 <div id="tab13">
+                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -940,7 +961,7 @@
                                 <li class="NSK-thin">전자<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -952,42 +973,38 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
+                                        <li><span>3~6월</span> 전자회로</li>
+                                        <li><span>3~6월</span> 전기자기학</li>
+                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
+                                        <li><span>10~11월</span> 전기 모의고사</li>
+                                        <li><span>인강제공</span> 
+                                            마이크로프로세서+문제풀이<br>
+                                            통신+문제풀이<br>
+                                            전자기기+문제풀이
+                                        </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    <div>
+                                    <h5>1년 전과정 Full Package</h5>
+                                    <div>                                        
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~11월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -1001,6 +1018,7 @@
                 </div>
 
                 <div id="tab14">
+                    <div class="ctsTitle NSK-Black">합격하는 그 순간까지 함께 하는 우영쌤~!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -1008,7 +1026,7 @@
                                 <li class="NSK-thin">통신<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1020,42 +1038,38 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~2월</span> 기초 전기전자/회로이론</li>
+                                        <li><span>3~6월</span> 전자회로</li>
+                                        <li><span>3~6월</span> 전기자기학</li>
+                                        <li><span>7~9월</span> 1~6월, 이론반 통합문제풀이</li>
+                                        <li><span>10~11월</span> 전기 모의고사</li>
+                                        <li><span>인강제공</span> 
+                                            마이크로프로세서+문제풀이<br>
+                                            통신+문제풀이<br>
+                                            전자기기+문제풀이
+                                        </li>
                                     </ul>
                                 </td>
                                 <td>
-                                    <div>
+                                     <h5>1년 전과정 Full Package</h5>
+                                    <div>                                        
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~11월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -1069,6 +1083,7 @@
                 </div>
 
                 <div id="tab15">
+                    <div class="ctsTitle NSK-Black">정보컴퓨터의 절대 강자!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -1076,7 +1091,7 @@
                                 <li class="NSK-thin">정보컴퓨터<br> <strong class="NSK-Black">송광진</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1088,15 +1103,15 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~3월</span> 정보컴퓨터 내용학 일반과정</li>
+                                        <li><span>4~6월</span> 정보컴퓨너 태용학 심화과정</li>
+                                        <li><span>3~4월</span> 정보컴퓨터 내용학 기출문제분석</li>
+                                        <li><span>7~9월</span> 정보컴퓨터 적중 문제풀이반</li>
+                                        <li><span>10~11월</span> 정보컴퓨터 최종모의고사반(송광진&장순선)</li>
+                                        <li><span>인강제공</span> 정보컴퓨터 내용학 C언어 특강</li>
                                     </ul>
                                 </td>
                                 <td>
@@ -1104,26 +1119,17 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~11월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
                                     <div>
@@ -1137,6 +1143,7 @@
                 </div>
 
                 <div id="tab16">
+                    <div class="ctsTitle NSK-Black">임용 중국어의 New Paradigm!</div>
                     <div class="tabTop">
                         <div class="left">
                             <ul>
@@ -1144,7 +1151,7 @@
                                 <li class="NSK-thin">전공중국어<br> <strong class="NSK-Black">정경미</strong> 교수<li>
                                 <li>
                                     <a href="/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none">합격전략 설명회 보기</a>
+                                    <a href="#none">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1156,15 +1163,16 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
-                                        <li><span>1~2월</span> 유아교육개론</li>
-                                        <li><span>3~4월</span> 유아교육개론</li>
-                                        <li><span>5~6월</span> 유아교육개론</li>
+                                        <li class="sTitle NSK-Black">2021</li>
+                                        <li><span>1~4월</span> 전공중국어 기본이론</li>
+                                        <li><span>1~4월</span> 전공중국어 기본독해</li>
+                                        <li><span>5~6월</span> 전공중국어 기본이론심화</li>
+                                        <li><span>5~6월</span> 전공중국어 독해심화</li>
+                                        <li><span>7~8월</span> 전공중국어 핵심체크</li>
+                                        <li><span>7~8월</span> 전공중국어 독해반</li>
+                                        <li><span>9~10월</span> 전공중국어 모의고사</li>
                                     </ul>
                                 </td>
                                 <td>
@@ -1172,26 +1180,17 @@
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~10월<br>
+                                                    - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                                </div>
                                             </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
+                                            <li class="tx-gray">원 수강료 : <s>2,800,000원</s></li>
+                                            <li>패키지 수강료 : <span class="NSK-Black">2,100,000원</span></li>
+                                            <li><div class="NSK-Black">25%</div></li>
                                         </ul>
                                     </div>
                                     <div>

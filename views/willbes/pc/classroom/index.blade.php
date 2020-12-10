@@ -78,6 +78,8 @@
                                 @endforelse
                             </ul>
                         </div>
+                        @if(sess_data('mem_interest') != '718009')
+                        {{-- 임용관련 메뉴 안보이게하기 --}}
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                             <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="{{front_url('/classroom/pass/')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
@@ -93,7 +95,7 @@
                                 @endforelse
                             </ul>
                         </div>
-
+                        @endif
                     </div>
                 </div>
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
@@ -120,6 +122,8 @@
             </div>
             <div class="Content p_re">
                 <div class="Mypage_PASS_Index c_both">
+                    @if(sess_data('mem_interest') != '718009')
+                    {{-- 임용관련 메뉴 안보이게하기 --}}
                     <div class="ActIndex ActIndex1 mt70">
                         <div class="willbes-listTable widthAuto940 f_inherit">
                             <div class="will-Tit NG">최근 <span class="tx-light-blue">수강강좌</span> <span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
@@ -183,6 +187,7 @@
                             <!--willbes-Lec-Table -->
                         </div>
                     </div>
+                    @endif
                     <div class="ActIndex ActIndex2 mt50">
                         <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                             <div class="will-Tit NSK">나의 <span class="tx-light-blue">상담내역</span>

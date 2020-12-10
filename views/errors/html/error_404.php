@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * todo : 임시로 404 오류 메인 페이지로 이동, 안정화 이후 삭제
  */
-header('Location: /');exit();
+// header('Location: /');exit();
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

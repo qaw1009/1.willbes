@@ -426,10 +426,11 @@
     </div>
 
     <div class="noticeTabs c_both mt30">
-        <ul class="tabWrap mainTab">
+        <ul class="tabWrap mainTab four">
             <li><a href="#notice1" class="on">학원공지사항</a></li>
-            <li><a href="#notice2">시험공고</a></li>
-            <li><a href="#notice3">수험뉴스</a></li>
+            <li><a href="#notice2" >강의실배정표</a></li>
+            <li><a href="#notice3">시험공고</a></li>
+            <li><a href="#notice4">수험뉴스</a></li>
         </ul>
         <div class="tabBox buttonBox noticeBox">
             <div id="notice1" class="tabContent pd20">
@@ -445,6 +446,16 @@
             <div id="notice2" class="tabContent pd20">
                 <div class="moreBtn"><a href="#none">+ 더보기</a></div>
                 <ul class="List-Table">
+                    <li><a href="#none">강의실 배정표 – 12월 11일 (금)</a><span class="date">2018-04-01</span></li>
+                    <li><a href="#none">강의실 배정표 – 12월 10일 (목)</a><span class="date">2018-04-01</span></li>
+                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                    <li><a href="#none">강의실 배정표 – 12월 9일 (수)</a><span class="date">2018-03-06</span></li>
+                </ul>
+            </div>
+            <div id="notice3" class="tabContent pd20">
+                <div class="moreBtn"><a href="#none">+ 더보기</a></div>
+                <ul class="List-Table">
                     <li><a href="#none">공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
                     <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a><span class="date">2018-04-01</span></li>
                     <li><a href="#none">설연휴학원고객센터운영안내22</a><span class="date">2018-03-06</span></li>
@@ -452,7 +463,7 @@
                     <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2018-03-06</span></li>
                 </ul>
             </div>
-            <div id="notice3" class="tabContent pd20">
+            <div id="notice4" class="tabContent pd20">
                 <div class="moreBtn"><a href="#none">+ 더보기</a></div>
                 <ul class="List-Table">
                     <li><a href="#none">공지사항 제목이 출력됩니다.333</a><span class="date">2018-04-01</span></li>

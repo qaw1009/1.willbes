@@ -45,7 +45,7 @@
                     </select>
                 </li>
                 @endif
-                @if(isset($arr_base['series']) === true)
+                @if(isset($arr_base['series']) === true && $pattern !== 'free' )
                 <li>
                     <select id="series_ccd" name="series_ccd" title="직렬" class="select_search">
                         <option value="">직렬전체</option>

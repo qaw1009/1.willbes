@@ -100,22 +100,24 @@
         <div class="evtCtnsBox evt03">
             <div class="tabs">
                 <ul>                    
-                    <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a>
-                    <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a>
-                    <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a>
-                    <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a>
-                    <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a>
-                    <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a>
-                    <li><a href="#tab07">· 전공수학 <span>김철홍 교수님</span></a>
-                    <li><a href="#tab08">· 수학교육론 <span>박태영 교수님</span></a>
-                    <li><a href="#tab09">· 도덕윤리 <span>김병찬 교수님</span></a>
-                    <li><a href="#tab10">· 전공역사 <span>최용림 교수님</span></a>
-                    <li><a href="#tab11">· 전공음악 <span>다이애나 교수님</span></a>
-                    <li><a href="#tab12">· 전기 <span>최우영 교수님</span></a>
-                    <li><a href="#tab13">· 전자 <span>최우영 교수님</span></a>
-                    <li><a href="#tab14">· 통신 <span>최우영 교수님</span></a>
-                    <li><a href="#tab15">· 정보컴퓨터 <span>송광진 교수님</span></a>
-                    <li><a href="#tab16">· 전공중국어 <span>정경미 교수님</span></a>
+                    <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a></li>
+                    {{--
+                    <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a></li>
+                    <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a></li>
+                    --}}
+                    <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a></li>
+                    <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a></li>
+                    <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a></li>
+                    <li><a href="#tab07">· 전공수학 <span>김철홍 교수님</span></a></li>
+                    <li><a href="#tab08">· 수학교육론 <span>박태영 교수님</span></a></li>
+                    <li><a href="#tab09">· 도덕윤리 <span>김병찬 교수님</span></a></li>
+                    <li><a href="#tab10">· 전공역사 <span>최용림 교수님</span></a></li>
+                    <li><a href="#tab11">· 전공음악 <span>다이애나 교수님</span></a></li>
+                    <li><a href="#tab12">· 전기 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab13">· 전자 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab14">· 통신 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab15">· 정보컴퓨터 <span>송광진 교수님</span></a></li>
+                    <li><a href="#tab16">· 전공중국어 <span>정경미 교수님</span></a></li>
                 </ul>  
             </div>
 
@@ -181,7 +183,7 @@
                         </table>
                     </div>
                 </div>
-
+                {{--
                 <div id="tab02">
                     <div class="ctsTitle NSK-Black">교육학 고득점을 위한 <span>최적의 Solution</span></div>
                     <div class="tabTop">
@@ -333,7 +335,7 @@
                         </table>
                     </div>
                 </div>
-
+                --}}
                 <div id="tab04">
                     <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
                     <div class="tabTop">

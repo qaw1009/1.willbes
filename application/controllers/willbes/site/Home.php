@@ -221,6 +221,7 @@ class Home extends \app\controllers\FrontController
             $data['onAir'] = $this->_onAir();
         } else {
             $data['notice'] = $this->_boardNotice(5);
+            $data['schedule'] = $this->_boardNotice(5,$cate_code,$arr_campus,82);
         }
 
         $data['arr_campus_info'] = $this->_getSiteCampusInfo();
@@ -631,7 +632,7 @@ class Home extends \app\controllers\FrontController
     }
 
     /**
-     * 공지사항 조회
+     * 공지사항, 강의실배정표 조회
      * @param int $limit_cnt [조회건수]
      * @param string $cate_code
      * @param array $arr_campus

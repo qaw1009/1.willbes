@@ -1,15 +1,5 @@
 @extends('willbes.pc.layouts.master')
-<style type="text/css">
-    .loading-box {
-        background: url('/public/vendor/jquery/bxslider/images/bx_loader.gif') center center no-repeat #ffffff;
-        height: 100%;
-        width: 100%;
-        position: inherit;
-        top: 0;
-        left: 0;
-        z-index: 2000;
-    }
-</style>
+
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
@@ -38,7 +28,6 @@
         show_schedule('');
 
         $calendar_form.on('click', '.btn_ing', function() {
-            $('.loading-box').css('display','block');
             show_schedule($(this).data('cs_idx'));
         });
     });

@@ -113,7 +113,7 @@
             <div id="tab01">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_01.jpg"  alt="형사법 신광은" usemap="#Map1839A" border="0"  />
                 <map name="Map1839A">
-                    <area shape="rect" coords="770,429,1016,674" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                    <area shape="rect" coords="770,429,1016,674" href="https://police.willbes.net/promotion/index/cate/3001/code/1926" target="_blank" alt="교수홈">
                 </map>
             </div>
             <div id="tab02">

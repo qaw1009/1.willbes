@@ -32,6 +32,14 @@ class Join extends BaseMember
         '718009' => '2017' // 임용
     ];
 
+    protected $_except_phones = ['01054621322', // 하준걸
+        '01062287588', // 김상구
+        '01086296372', // 박창구
+        '01055597195', // 최석환
+        '01068680039', // 한주연
+        '01089492047' // 최진영
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -486,15 +494,30 @@ class Join extends BaseMember
 
         // 이미 가입된 정보 검색
         $phoneEnc = $this->memberFModel->getEncString($phonenumber);
-        $count = $this->memberFModel->getMember(true, [
-            'EQ' => [
-//                'Mem.MemName' => $sms_name,
-                'Mem.PhoneEnc' => $phoneEnc
-            ],
-            'NOT' => [
-                'Mem.IsStatus' => 'N'
-            ]
-        ]);
+
+        if(starts_with($phonenumber, $this->_except_phones) == true ){
+            // 특정전화번호는 이름+전화번호로 중복 차단
+            $count = $this->memberFModel->getMember(true, [
+                'EQ' => [
+                    'Mem.MemName' => $sms_name,
+                    'Mem.PhoneEnc' => $phoneEnc
+                ],
+                'NOT' => [
+                    'Mem.IsStatus' => 'N'
+                ]
+            ]);
+        } else {
+            // 일반 가입은 전화번호 중복 차
+            $count = $this->memberFModel->getMember(true, [
+                'EQ' => [
+                    'Mem.PhoneEnc' => $phoneEnc
+                ],
+                'NOT' => [
+                    'Mem.IsStatus' => 'N'
+                ]
+            ]);
+        }
+
 
         if($count > 0){
             // 가입된 정보임

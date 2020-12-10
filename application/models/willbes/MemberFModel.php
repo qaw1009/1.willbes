@@ -80,7 +80,7 @@ class MemberFModel extends WB_Model
             IFNULL(Mem.IsBlackList, '') AS IsBlackList, 
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'M' AND IsUse='Y' ) AS MobileCount,
-            Mem.CertifiedInfoTypeCcd, Info.HanlimID, Info.ssamID
+            Mem.CertifiedInfoTypeCcd, Info.HanlimID, Info.ssamID, Info.InterestCode AS interest
             ";
         }
 
@@ -153,7 +153,9 @@ class MemberFModel extends WB_Model
             $query = "SELECT  
             Mem.MemIdx, Mem.MemName, Mem.MemId, 
             Mem.IsStatus, Mem.IsDup, Mem.IsChange,
-            fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone, Info.HanlimID, Info.ssamID ";
+            fn_dec(Mem.MailEnc) AS Mail, fn_dec(Mem.PhoneEnc) AS Phone, Info.HanlimID, Info.ssamID,
+            Info.InterestCode AS interest
+             ";
         }
 
         $query .= " FROM {$this->_table['member']} AS Mem 
@@ -214,6 +216,7 @@ class MemberFModel extends WB_Model
             $this->session->set_userdata('mem_phone', $data['Phone']);
             $this->session->set_userdata('mem_hanlimid', $data['HanlimID']);
             $this->session->set_userdata('mem_ssamid', $data['ssamID']);
+            $this->session->set_userdata('mem_interest', $data['interest']);
             $this->session->set_userdata('login_key', $loginKey);
             $this->session->set_userdata('is_login', true);
 

@@ -49,9 +49,12 @@
                         <div class="List NGEB"><a href="{{ front_app_url('/classroom/home/gotoSsam/', 'www', false, true) }}" target="_blank">이전 내강의실 보기</a></div>
                     </li>
                 @endif
+                @if(sess_data('mem_interest') != '718009')
+                {{-- 임용관련 메뉴 안보이게하기 --}}
                 <li class="ListBox">
                     <div class="List NGEB"><a href="{{ front_app_url('/classroom/pass/index', 'www', false, true) }}">무한 PASS존</a></div>
                 </li>
+                @endif
                 <li class="ListBox">
                     <div class="List NGEB">온라인강좌</div>
                     <div class="List-Depth">

@@ -128,7 +128,7 @@ class ManageMemberModel extends WB_Model
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
             c1.CcdName AS CertName, 
             c2.CcdName AS InterestName,
-            Info.HanlimID, Info.ssamID
+            Info.HanlimID, Info.ssamID, Info.InterestCode AS interest            
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 

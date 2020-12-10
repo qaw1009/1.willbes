@@ -29,7 +29,7 @@
         .wb_01,.wb_02,.wb_03,.wb_04,.wb_06{background:#FFF8E6;}
 
         /* 슬라이드배너 */
-        .slide_con {position:relative; width:971px; margin:0 auto}	
+        .slide_con {position:relative; width:1120px; margin:0 auto}	
         .slide_con p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_con p a {cursor:pointer}
         .slide_con p.leftBtn {left:-100px; top:60%; width:67px; height:67px;}

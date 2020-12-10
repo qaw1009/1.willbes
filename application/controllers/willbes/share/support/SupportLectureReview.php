@@ -28,31 +28,23 @@ class SupportLectureReview extends BaseSupport
      */
     public function index($params = [])
     {
-        $arr_input = array_merge($this->_reqG(null));
+        $arr_input = $this->_reqG(null);
         $s_cate_code = element('s_cate_code', $arr_input);
-        $subject_idx = '';
-        $prof_idx = '';
+        $prof_idx = element('prof_idx', $arr_input);
+        $subject_idx = element('subject_idx', $arr_input);
+        $orderby = element('orderby',$arr_input, 'best');
 
         $arr_base['board_idx'] = element('board_idx', $arr_input);
 
-        if(empty($s_cate_code) === false){
-            $subject_idx = element('subject_idx', $arr_input);
-        }
-
-        if(empty($subject_idx) === false){
-            $prof_idx = element('prof_idx', $arr_input);
-        }
-
-        $orderby = element('orderby',$arr_input, 'best');
-
         // 카테고리 조회
-        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
+        //$arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
 
         // 카테고리별 과목 조회
-        $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $s_cate_code);
+        //$arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $s_cate_code);
 
         // 교수 목록 조회
-        $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $s_cate_code);
+        $group_by = ' group by PSC.SubjectIdx, P.ProfIdx ';
+        $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], '', '', '', [], $group_by);
 
         $arr_condition = [
             'EQ' => [

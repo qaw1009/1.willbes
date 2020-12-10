@@ -53,9 +53,12 @@
                                 <li>
                                     <a href="{{ app_url('/classroom/on/list/ongoing', 'www') }}">수강중인 강의</a>
                                 </li>
+                                @if(sess_data('mem_interest') != '718009')
+                                {{-- 임용관련 메뉴 안보이게하기 --}}
                                 <li>
                                     <a href="{{ app_url('/classroom/pass/index', 'www') }}">PASS 강의</a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="{{ app_url('/classroom/order/index', 'www') }}">주문/배송조회</a>
                                 </li>

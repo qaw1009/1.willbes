@@ -137,6 +137,27 @@
                     case '718002':
                         site_code = '2003';
                         break;
+                    case '718003':
+                        site_code = '2005';
+                        break;
+                    case '718004':
+                        site_code = '2006';
+                        break;
+                    case '718005':
+                        site_code = '2008';
+                        break;
+                    case '718006':
+                        site_code = '2009';
+                        break;
+                    case '718007':
+                        site_code = '2007';
+                        break;
+                    case '718008':
+                        site_code = '2014';
+                        break;
+                    case '718009':
+                        site_code = '2017';
+                        break;
                 }
 
                 $('#btn_coupon_search').setLayer({
@@ -157,6 +178,27 @@
                         break;
                     case '718002':
                         site_code = '2003';
+                        break;
+                    case '718003':
+                        site_code = '2005';
+                        break;
+                    case '718004':
+                        site_code = '2006';
+                        break;
+                    case '718005':
+                        site_code = '2008';
+                        break;
+                    case '718006':
+                        site_code = '2009';
+                        break;
+                    case '718007':
+                        site_code = '2007';
+                        break;
+                    case '718008':
+                        site_code = '2014';
+                        break;
+                    case '718009':
+                        site_code = '2017';
                         break;
                 }
 

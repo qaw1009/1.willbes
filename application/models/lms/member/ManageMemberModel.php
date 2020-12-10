@@ -58,8 +58,8 @@ class ManageMemberModel extends WB_Model
             Mem.IsStatus,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType IN ('M','A') AND IsUse='Y' ) AS MobileCount,
-            c1.CcdName AS InterestName,
-            IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID 
+            c1.CcdName AS InterestName, 
+            IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID, Info.InterestCode AS interest
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -128,7 +128,7 @@ class ManageMemberModel extends WB_Model
             (SELECT SiteName FROM {$this->_table['site']} WHERE SiteCode = Mem.SiteCode) AS SiteName,
             c1.CcdName AS CertName, 
             c2.CcdName AS InterestName,
-            Info.HanlimID, Info.ssamID
+            Info.HanlimID, Info.ssamID, Info.InterestCode AS interest            
             ";
 
         $from = "FROM {$this->_table['member']} AS Mem 
@@ -512,6 +512,7 @@ class ManageMemberModel extends WB_Model
             $this->session->set_userdata('mem_phone', $data['Phone']);
             $this->session->set_userdata('mem_hanlimid', $data['HanlimID']);
             $this->session->set_userdata('mem_ssamid', $data['ssamID']);
+            $this->session->set_userdata('mem_interest', $data['interest']);
             $this->session->set_userdata('login_key', $loginKey);
             $this->session->set_userdata('is_login', true);
 

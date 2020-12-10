@@ -78,6 +78,8 @@
                                 @endforelse
                             </ul>
                         </div>
+                        @if(sess_data('mem_interest') != '718009')
+                        {{-- 임용관련 메뉴 안보이게하기 --}}
                         <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                             <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="{{front_url('/classroom/pass/')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
                             <ul class="List-Table GM myTablet tx-gray">
@@ -93,7 +95,7 @@
                                 @endforelse
                             </ul>
                         </div>
-
+                        @endif
                     </div>
                 </div>
                 @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
@@ -183,6 +185,7 @@
                             <!--willbes-Lec-Table -->
                         </div>
                     </div>
+
                     <div class="ActIndex ActIndex2 mt50">
                         <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
                             <div class="will-Tit NSK">나의 <span class="tx-light-blue">상담내역</span>
@@ -202,6 +205,8 @@
                                 @endif
                             </ul>
                         </div>
+                        @if(sess_data('mem_interest') != '718009')
+                            {{-- 임용관련 메뉴 안보이게하기 --}}
                         <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left ml50">
                             <div class="will-Tit NSK">나의 <span class="tx-light-blue">학습Q&A</span>
                                 <a class="f_right" href="{{front_url('/classroom/profQna/index?tab=professor')}}"><img src="{{ img_url('prof/icon_add.png') }}"></a>
@@ -220,6 +225,7 @@
                                 @endif
                             </ul>
                         </div>
+                        @endif
                     </div>
 
                     {{--

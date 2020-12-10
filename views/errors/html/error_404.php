@@ -3,7 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * todo : 임시로 404 오류 메인 페이지로 이동, 안정화 이후 삭제
  */
-if (strpos(strtolower($_SERVER['REQUEST_URI']), '/public/') === false) {
+if (strpos(strtolower($_SERVER['REQUEST_URI']), '/public/') === false
+    && strpos(strtolower($_SERVER['REQUEST_URI']), '/img/') === false
+    && strpos(strtolower($_SERVER['REQUEST_URI']), '/images/') === false) {
     header('Location: /');exit();
 }
 ?><!DOCTYPE html>

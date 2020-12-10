@@ -380,7 +380,7 @@
                 <div class="Layer-Cont NGR tx14">
                     <div class="Layer-SubTit tx-blue mt20 mb10">특정 서비스에 대한 문의는 해당 사이트로 바로 문의주셔야 빠르게 답변을 받을 수 있습니다.</div>
                     <div class="LeclistTable">
-                        <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
+                            <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
                             <colgroup>
                                 <col style="width: 150px;">
                                 <col style="width: 150px;">
@@ -417,12 +417,20 @@
                                     <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="w-site" rowspan="2">윌비스 공무원</td>
-                                    <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                    <td class="w-call">1544-5006</td>
-                                    <td class="w-time tx-left pl25">
+                                    <td class="w-site" rowspan="3">윌비스 공무원</td>
+                                    <td rowspan="2" class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
+                                    <td class="w-call">
+                                        9급/7급/세무직/법원직 등<br>
+                                        1544-5006 </td>
+                                    <td rowspan="2" class="w-time tx-left pl25">
                                         평일 9:00~18:00 (점심시간 12시~13시)<br/>
                                         주말/공휴일 휴무
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-call">
+                                        7급 PSAT<br>
+                                        1566-4770
                                     </td>
                                 </tr>
                                 <tr>

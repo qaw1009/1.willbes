@@ -46,18 +46,18 @@
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab01_02.jpg" alt="기술직" usemap="#Map1971A" border="0" />
                 <map name="Map1971A">
-                    <area shape="rect" coords="243,585,332,627" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176362" target="_blank" alt="전산직 기초">
-                    <area shape="rect" coords="243,653,329,693" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176364" target="_blank" alt="전산직 기본">
-                    <area shape="rect" coords="243,726,333,765" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176366" target="_blank" alt="전산직 심화">
-                    <area shape="rect" coords="91,1094,288,1154" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/176396" target="_blank" alt="곽후근 티패스">
-                    <area shape="rect" coords="613,602,700,642" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176388" target="_blank" alt="환경직 기초">
-                    <area shape="rect" coords="613,688,700,730" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176390" target="_blank" alt="환경직 기본">
-                    <area shape="rect" coords="613,772,700,812" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176391" target="_blank" alt="환경직 심화">
-                    <area shape="rect" coords="614,840,700,883" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176393" target="_blank" alt="환경직 특채">
-                    <area shape="rect" coords="464,1094,652,1155" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/176398" target="_blank" alt="환경직 티패스">
-                    <area shape="rect" coords="985,585,1071,627" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176367" target="_blank" alt="산림자원직 기초">
-                    <area shape="rect" coords="983,649,1070,694" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/176370" target="_blank" alt="산림자원직 기본">                
-                    <area shape="rect" coords="830,1095,1028,1153" href="https://pass.willbes.net/periodPackage/show/cate/3024/pack/648001/prod-code/176397" target="_blank" alt="산림자원직 티패스">
+                    <area shape="rect" coords="243,585,332,627" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176362" target="_blank" alt="전산직 기초">
+                    <area shape="rect" coords="243,653,329,693" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176364" target="_blank" alt="전산직 기본">
+                    <area shape="rect" coords="243,726,333,765" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176366" target="_blank" alt="전산직 심화">
+                    <area shape="rect" coords="91,1094,288,1154" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/176396" target="_blank" alt="곽후근 티패스">
+                    <area shape="rect" coords="613,602,700,642" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176388" target="_blank" alt="환경직 기초">
+                    <area shape="rect" coords="613,688,700,730" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176390" target="_blank" alt="환경직 기본">
+                    <area shape="rect" coords="613,772,700,812" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176391" target="_blank" alt="환경직 심화">
+                    <area shape="rect" coords="614,840,700,883" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176393" target="_blank" alt="환경직 특채">
+                    <area shape="rect" coords="464,1094,652,1155" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/176398" target="_blank" alt="환경직 티패스">
+                    <area shape="rect" coords="985,585,1071,627" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176367" target="_blank" alt="산림자원직 기초">
+                    <area shape="rect" coords="983,649,1070,694" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176370" target="_blank" alt="산림자원직 기본">                
+                    <area shape="rect" coords="830,1095,1028,1153" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/176397" target="_blank" alt="산림자원직 티패스">
                 </map>
                 <br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab01_03.jpg" alt="기술직" usemap="#Map1971B" border="0" />

@@ -34,6 +34,16 @@ class SupportLectureReview extends BaseSupport
         $subject_idx = element('subject_idx', $arr_input);
         $orderby = element('orderby',$arr_input, 'best');
 
+        $arr_check = ['s_cate_code','prof_idx','subject_idx'];
+        foreach ($arr_input as $key => $val){
+            if(in_array($key,$arr_check) === true){
+                if(!(empty($s_cate_code) === false && empty($prof_idx) === false && empty($subject_idx) === false)){
+                    show_alert('잘못된 접근 입니다.', 'back');
+                }
+                break;
+            }
+        }
+
         $arr_base['board_idx'] = element('board_idx', $arr_input);
 
         // 카테고리 조회

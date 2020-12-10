@@ -202,6 +202,7 @@
                 <div>
                     <div class="pull-left mt-15 mb-10">[ 총 {{ count($question_data) }}건 ]</div>
                     <div class="pull-right text-right form-inline mb-5">
+                        <input type="text" class="form-control" id="_score" name="_score" title="배점" placeholder="배점" style="width: 45px">
                         <select class="form-control">
                             @foreach(range(1, 20) as $n)
                                 <option value="{{$n}}" @if($loop->index == '20') selected @endif>{{$n}}개</option>
@@ -521,7 +522,10 @@
                 }
 
                 cList.find('tr').each(function (index) {
-                    if(index >= rowLen) $(this).find('[name="QuestionNO[]"]').val(++index);
+                    if(index >= rowLen) {
+                        $(this).find('[name="QuestionNO[]"]').val(++index);
+                        $(this).find('[name="Scoring[]"]').val($("#_score").val());
+                    }
                 });
 
                 init_iCheck();

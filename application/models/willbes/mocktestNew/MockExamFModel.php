@@ -450,7 +450,7 @@ class MockExamFModel extends WB_Model
      * @param array $formData
      * @return mixed
      */
-    public function examEnd($formData = [])
+    public function examTimeEnd($formData = [])
     {
         $this->_conn->trans_begin();
         try {
@@ -460,6 +460,41 @@ class MockExamFModel extends WB_Model
 
             // 데이터 수정
             $data = ['IsTake' => 'E'];
+            $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
+            if ($this->_conn->update($this->_table['mock_register']) === false) {
+                throw new \Exception('상태수정에 실패했습니다.');
+            }
+
+            // 데이터 수정
+            $data = ['LogType' => 'E'];
+            $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['LogIdx' => $LogIdx]);
+            if ($this->_conn->update($this->_table['mock_log']) === false) {
+                throw new \Exception('상태수정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 시험종료
+     * @param array $formData
+     * @return mixed
+     */
+    public function examEnd($formData = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ProdCode = element('prod_code', $formData);
+            $LogIdx = element('log_idx', $formData);
+            $MrIdx = element('mr_idx', $formData);
+
+            // 데이터 수정
+            $data = ['IsTake' => 'Y'];
             $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
             if ($this->_conn->update($this->_table['mock_register']) === false) {
                 throw new \Exception('상태수정에 실패했습니다.');

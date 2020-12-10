@@ -14,6 +14,7 @@
             </span>
         </div>
         <div class="SelectTime NGR schedule-box">
+            <div class="loading-box" style="display: none"></div>
             <ul>
                 @if(empty($base_data) === true || $base_data == 'null' || empty($arr_schedule_list) === true || $arr_schedule_list == 'null')
                     <li class="SelectTxt">

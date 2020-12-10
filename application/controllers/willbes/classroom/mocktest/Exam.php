@@ -269,6 +269,16 @@ class Exam extends \app\controllers\FrontController
      * 시험종료
      * @return object|string
      */
+    public function examTimeEndAjax()
+    {
+        $result = $this->mockExamFModel->examTimeEnd($this->_reqP(null, false));
+        $this->json_result($result, '저장되었습니다.', $result);
+    }
+
+    /**
+     * 시험종료
+     * @return object|string
+     */
     public function examEndAjax()
     {
         $result = $this->mockExamFModel->examEnd($this->_reqP(null, false));

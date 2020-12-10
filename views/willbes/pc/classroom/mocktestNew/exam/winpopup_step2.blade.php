@@ -255,7 +255,7 @@
         }
 
         function examEndAjax() {
-            var _url = '{{ front_url('/classroom/mocktest/exam/examEndAjax') }}';
+            var _url = '{{ front_url('/classroom/mocktest/exam/examTimeEndAjax') }}';
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert('시험이 종료되었습니다.');

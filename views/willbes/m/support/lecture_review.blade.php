@@ -48,7 +48,9 @@
                         </a>
                     </li>
                 @endforeach
-                <li data-cate-code="" data-subject-idx="" data-prof-idx=""><a href="#none" class="@if(element('prof_idx', $arr_input) == '' && element('subject_idx', $arr_input) == '') on @endif">전체</a></li>
+                <li data-cate-code="" data-subject-idx="" data-prof-idx="">
+                    <a href="#none" class="@if(element('s_cate_code', $arr_input) == '' && element('prof_idx', $arr_input) == '' && element('subject_idx', $arr_input) == '') on @endif">전체</a>
+                </li>
             </ul>
         </div>
 
@@ -124,9 +126,11 @@
             var prof_idx = $(this).data('prof-idx');
 
             $url_form.html('');
-            $url_form.append('<input type="hidden" name="s_cate_code" value="' + s_cate_code + '"/>');
-            $url_form.append('<input type="hidden" name="subject_idx" value="' + subject_idx + '"/>');
-            $url_form.append('<input type="hidden" name="prof_idx" value="' + prof_idx + '"/>');
+            if(s_cate_code && subject_idx && prof_idx){
+                $url_form.append('<input type="hidden" name="s_cate_code" value="' + s_cate_code + '"/>');
+                $url_form.append('<input type="hidden" name="subject_idx" value="' + subject_idx + '"/>');
+                $url_form.append('<input type="hidden" name="prof_idx" value="' + prof_idx + '"/>');
+            }
             $url_form.prop('action', location.protocol + '//' + location.host + location.pathname);
             $url_form.submit();
         });

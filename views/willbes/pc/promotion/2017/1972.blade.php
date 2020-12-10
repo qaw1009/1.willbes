@@ -270,7 +270,7 @@
                                 </li>                                
                             </ul>
                         </div>
-                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r04.jpg" alt=""/></div>
+                        <div class="right"><img src="https://static.willbes.net/public/images/promotion/2020/12/1972_03_r05.jpg" alt=""/></div>
                     </div>
                     <div class="tabBottom">
                         <table>

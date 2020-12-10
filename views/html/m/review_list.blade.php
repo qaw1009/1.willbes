@@ -9,6 +9,7 @@
         </button>    
         수강후기
     </div>
+    {{--
     <div class="willbes-Lec-Selected NG tx-gray">
         <select id="" name="" title="" class="width49p">
             <option selected="selected">과목</option>
@@ -22,6 +23,34 @@
             <option value="">이인재</option>
             <option value="">송원영</option>
         </select>        
+    </div>
+    --}}
+    <div class="sortList">
+        <ul>
+            <li><a href="#none">교육학 김차웅</a></li>
+            <li><a href="#none">교육학 이인재</a></li>
+            <li><a href="#none">교육학 홍의일</a></li>
+            <li><a href="#none">유아 민정선</a></li>
+            <li><a href="#none">초등 배재민</a></li>
+            <li><a href="#none">전공국어 송원영</a></li>
+            <li><a href="#none">전공국어 이원근</a></li>
+            <li><a href="#none">전공국어 권보민</a></li>
+            <li><a href="#none">전공영어 김유석</a></li>
+            <li><a href="#none">전공영어 김영문</a></li>
+            <li><a href="#none">전공영어 공훈</a></li>
+            <li><a href="#none">전공수학 김철홍</a></li>
+            <li><a href="#none">수학교육론 박태영</a></li>
+            <li><a href="#none">전공생물 강치욱</a></li>
+            <li><a href="#none">생물교육론 양혜정</a></li>
+            <li><a href="#none">도덕윤리 김병찬</a></li>
+            <li><a href="#none">전공역사 최용림</a></li>
+            <li><a href="#none">전공음악 다이애나</a></li>
+            <li><a href="#none">전기전자통신 최우영</a></li>
+            <li><a href="#none">정보컴퓨터 송광</a></li>
+            <li><a href="#none">정컴교육론 장순선</a></li>
+            <li><a href="#none">전공중국어 정경미</a></li>
+            <li><a href="#none" class="on">전체</a></li>
+        </ul>
     </div>
 
     <div class="ml10">※ 수강후기 등록은 PC버전에서만 가능합니다.</div>

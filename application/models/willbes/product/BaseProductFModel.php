@@ -240,9 +240,10 @@ class BaseProductFModel extends WB_Model
      * @param null|string $subject_idx
      * @param bool $is_use_sm_order_num [소트매핑정렬번호사용여부]
      * @param array $arr_add_condition [추가조회조건]
+     * @param null $group_by
      * @return mixed
      */
-    public function listProfessorSubjectMapping($site_code, $arr_add_column = [], $cate_code = null, $subject_idx = null, $is_use_sm_order_num = false, $arr_add_condition = [])
+    public function listProfessorSubjectMapping($site_code, $arr_add_column = [], $cate_code = null, $subject_idx = null, $is_use_sm_order_num = false, $arr_add_condition = [], $group_by = null)
     {
         $add_column = '';   // 추가 조회 컬럼
         if (empty($arr_add_column) === false) {
@@ -305,7 +306,7 @@ class BaseProductFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(true);
-        $order_by = ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
+        $order_by = $group_by . ' order by SC.OrderNum asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';
 
         if ($is_use_sm_order_num === true) {
             $order_by = ' order by SC.OrderNum asc, ifnull(PSCO.OrderNum, 0) asc, PS.OrderNum asc, PSC.OrderNum asc, PSC.PcIdx desc';

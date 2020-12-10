@@ -266,7 +266,7 @@ class Exam extends \app\controllers\FrontController
     }
 
     /**
-     * 시험종료
+     * 시험시간 종료 (시험종료)
      * @return object|string
      */
     public function examTimeEndAjax()

@@ -59,9 +59,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         
         // 수강후기 사용안함으로 설정한 교수 이름 보여주기
         if(empty($arr_condition['EQ']['b.BmIdx']) === false && $arr_condition['EQ']['b.BmIdx'] == '85'){
-            $from .= " inner join {$this->_table['lms_professor']} AS e ON b.ProfIdx = e.ProfIdx 
-                        inner join wbs_pms_professor AS f ON e.wProfIdx = f.wProfIdx
-                    ";
+            $from .= " 
+                inner join {$this->_table['lms_professor']} AS e ON b.ProfIdx = e.ProfIdx 
+                inner join wbs_pms_professor AS f ON e.wProfIdx = f.wProfIdx
+            ";
         }
 
         if (empty($cate_code) === false) {

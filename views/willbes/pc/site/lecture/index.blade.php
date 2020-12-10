@@ -1,6 +1,10 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+
+@php
+    $is_except = ($__cfg['SiteGroupCode'] === '1011' ?  'Y' : '');     //임용 사이트 예외처리 변수
+@endphp
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <!-- site nav -->
@@ -16,7 +20,7 @@
         </form>
         <div class="curriWrap c_both">
             {{-- 과정 --}}
-            <ul class="curriTabs c_both">
+            <ul class="curriTabs c_both {{($is_except === 'Y' && $pattern === 'free') ? 'd_none' : ''}}">
                 <li><a href="#none" onclick="goUrl('course_idx', '');" class="@if(empty(element('course_idx', $arr_input)) === true) on @endif">전체</a></li>
                 @foreach($arr_base['course'] as $idx => $row)
                     <li><a href="#none" onclick="goUrl('course_idx', '{{ $row['CourseIdx'] }}');" class="@if(element('course_idx', $arr_input) == $row['CourseIdx']) on @endif">{{ $row['CourseName'] }}</a></li>
@@ -87,7 +91,7 @@
                             <td colspan="9" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
                         </tr>
                     @endif
-                    <tr>
+                    <tr class="{{($is_except === 'Y' && $pattern === 'free') ? 'd_none' : ''}}">
                         <th class="tx-gray">대비년도</th>
                         <td colspan="8" class="tx-left">
                             <span>
@@ -317,7 +321,13 @@
                                                 @endif
                                             @else
                                                 <div class="w-sp">
-                                                    <a href="javascript:;" class="bg-gray-purple tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
+                                                    @if($is_except === 'Y')
+                                                        @if(empty($row['LectureSampleData']) === false)
+                                                            <a class="bg-gray-purple tx-white bd-none" href="javascript:fnPlayerSample('{{$row['ProdCode']}}', '{{$row['LectureSampleData'][0]['wUnitIdx']}}', '{{empty($row['LectureSampleData'][0]['wHD']) === false ? 'HD' : 'SD'}}');">무료강의 보기</a>
+                                                        @endif
+                                                    @else
+                                                        <a href="javascript:;" class="bg-gray-purple tx-white bd-none" onclick="goShow('{{ $row['ProdCode'] }}', '{{ substr($row['CateCode'], 0, 6) }}', '{{ $pattern }}');">무료강의 보기</a>
+                                                    @endif
                                                 </div>
                                             @endif
                                         @else

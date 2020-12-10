@@ -67,10 +67,11 @@
             text-align:center; border-radius:30px; color:#000}
         .tabBottom td:nth-child(2) > div:last-child {margin:0}
         .tabBottom td:nth-child(2) > div:last-child a {display:inline-block; width:47%; margin-right:10px; color:#fff; background:#111; font-size:20px;
-            padding:15px 0; text-align:center; line-height:1.2}
+            padding:15px 0; text-align:center; line-height:1.2}            
         .tabBottom td:nth-child(2) > div:last-child a:nth-child(2) {background:#4b66b0}
         .tabBottom td:nth-child(2) > div:last-child.three a {width:30%;}
         .tabBottom td:nth-child(2) > div:last-child a:nth-child(3) {background:#1bd3e1}
+        .tabBottom td:nth-child(2) > div:last-child a:hover {color:#000; background:#ffd800;}
         .tabBottom td h5 {border-radius:10px; color:#fff; text-align:center; background:#4b66b0; padding:10px 0; width:100%; margin-bottom:10px; font-size:14px}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_04_bg.jpg) no-repeat center top;}
@@ -100,22 +101,24 @@
         <div class="evtCtnsBox evt03">
             <div class="tabs">
                 <ul>                    
-                    <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a>
-                    <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a>
-                    <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a>
-                    <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a>
-                    <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a>
-                    <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a>
-                    <li><a href="#tab07">· 전공수학 <span>김철홍 교수님</span></a>
-                    <li><a href="#tab08">· 수학교육론 <span>박태영 교수님</span></a>
-                    <li><a href="#tab09">· 도덕윤리 <span>김병찬 교수님</span></a>
-                    <li><a href="#tab10">· 전공역사 <span>최용림 교수님</span></a>
-                    <li><a href="#tab11">· 전공음악 <span>다이애나 교수님</span></a>
-                    <li><a href="#tab12">· 전기 <span>최우영 교수님</span></a>
-                    <li><a href="#tab13">· 전자 <span>최우영 교수님</span></a>
-                    <li><a href="#tab14">· 통신 <span>최우영 교수님</span></a>
-                    <li><a href="#tab15">· 정보컴퓨터 <span>송광진 교수님</span></a>
-                    <li><a href="#tab16">· 전공중국어 <span>정경미 교수님</span></a>
+                    <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a></li>
+                    {{--
+                    <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a></li>
+                    <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a></li>
+                    --}}
+                    <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a></li>
+                    <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a></li>
+                    <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a></li>
+                    <li><a href="#tab07">· 전공수학 <span>김철홍 교수님</span></a></li>
+                    <li><a href="#tab08">· 수학교육론 <span>박태영 교수님</span></a></li>
+                    <li><a href="#tab09">· 도덕윤리 <span>김병찬 교수님</span></a></li>
+                    <li><a href="#tab10">· 전공역사 <span>최용림 교수님</span></a></li>
+                    <li><a href="#tab11">· 전공음악 <span>다이애나 교수님</span></a></li>
+                    <li><a href="#tab12">· 전기 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab13">· 전자 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab14">· 통신 <span>최우영 교수님</span></a></li>
+                    <li><a href="#tab15">· 정보컴퓨터 <span>송광진 교수님</span></a></li>
+                    <li><a href="#tab16">· 전공중국어 <span>정경미 교수님</span></a></li>
                 </ul>  
             </div>
 
@@ -154,18 +157,19 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox"> 1년 전과정 Full Package</div>
-                                                    <p>* 교재 별도 구매</p>
-                                                    <div class="NSK tx14 mt10">
-                                                        [수강기간]<br>
-                                                        - 학원강의 : 2021년 1월~10월<br>
-                                                        - 온라인강의 : 326일 * 배수:1.8배수<br>
-                                                    </div>
+                                                    <div class="NSK-Black"><input type="checkbox">2021 연간 패키지</div>
+                                                    <p>* 교재 별도 구매</p>                                                    
                                                 </label>
+                                                <div class="NSK tx14 mt10">
+                                                    [수강기간]<br>
+                                                    - 학원강의 : 2021년 1월~10월<br>
+                                                    - 온라인강의 : 326일 * 배수:1.8배수<br>
+                                                </div>
                                             </li>
                                             <li class="tx-gray">원 수강료 : <s>2,000,000원</s></li>
                                             <li>패키지 수강료 : <span class="NSK-Black">1,400,000원</span></li>
@@ -181,7 +185,7 @@
                         </table>
                     </div>
                 </div>
-
+                {{--
                 <div id="tab02">
                     <div class="ctsTitle NSK-Black">교육학 고득점을 위한 <span>최적의 Solution</span></div>
                     <div class="tabTop">
@@ -333,7 +337,7 @@
                         </table>
                     </div>
                 </div>
-
+                --}}
                 <div id="tab04">
                     <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
                     <div class="tabTop">
@@ -577,36 +581,24 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
+                                        <li class="sTitle NSK-Black">2021</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
                                         <li><span>3~4월</span> 유아교육개론</li>
                                         <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
                                         <li><span>3~4월</span> 유아교육개론</li>
                                         <li><span>5~6월</span> 유아교육개론</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
@@ -646,36 +638,24 @@
                             <col />
                             <tr>
                                 <td>
+                                    <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
-                                        <li class="sTitle NSK-Black">[정규강의]</li>
+                                        <li class="sTitle NSK-Black">2021년</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
                                         <li><span>3~4월</span> 유아교육개론</li>
                                         <li><span>5~6월</span> 유아교육개론</li>
-                                        <li class="sTitle NSK-Black">[논술강의]</li>
                                         <li><span>1~2월</span> 유아교육개론</li>
                                         <li><span>3~4월</span> 유아교육개론</li>
                                         <li><span>5~6월</span> 유아교육개론</li>
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
                                                 <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 포함</div>
-                                                    <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
-                                                </label>
-                                            </li>
-                                            <li class="tx-gray">원 수강료 : <s>2,270,000원</s></li>
-                                            <li>패키지 수강료 : <span class="NSK-Black">1,470,000원</span></li>
-                                            <li><div class="NSK-Black">35%</div></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul>
-                                            <li>
-                                                <label>                                                    
-                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지 - 논술 미포함</div>
+                                                    <div class="NSK-Black"><input type="checkbox">2020 연간 패키지</div>
                                                     <p>* 1차 대비 강의만 포함 (2차 강의는 별도)</p>
                                                 </label>
                                             </li>
@@ -1115,6 +1095,7 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>
@@ -1176,6 +1157,7 @@
                                     </ul>
                                 </td>
                                 <td>
+                                    <h5>1년 전과정 Full Package</h5>
                                     <div>
                                         <ul>
                                             <li>

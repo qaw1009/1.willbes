@@ -1,8 +1,15 @@
 @extends('lcms.layouts.master')
 
 @section('content')
-    <h5 class="mt-20">- 응시자 가준으로 개별 모의고사성적을 확인하는 메뉴입니다.</h5>
-    <h5>- 응시형태조건 : 모든 답안입력 후 최종확인 페이지에서 '시험종료'를 진행한 상태.</h5>
+    <h5 class="mt-20">- 응시자 가준으로 개별 모의고사성적을 확인하는 메뉴입니다.<br>
+    - 응시여부
+        <ul>
+            <li>응시 : 모든 답안입력 후 최종확인 페이지에서 '시험종료'를 진행한 상태</li>
+            <li>미응시 : 답안입력을 안하거나 '시험종료'를 하지 않은 상태</li>
+            <li>시험종료(미응시) : 시험 시간이 종료된 상태</li>
+        </ul>
+    </h5>
+
     <h5>- 문제/해설 조건 : 온라인응시 + 응시형태가 응시인 상태.</h5>
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
         {!! csrf_field() !!}

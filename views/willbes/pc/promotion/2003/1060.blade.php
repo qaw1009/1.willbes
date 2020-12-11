@@ -40,9 +40,11 @@
         to{color:#d63e4d}
         }         
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09/1060_top_bg.jpg) no-repeat center top;}	
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1060_top_bg.jpg) no-repeat center top;}	
      
-        .evt01 {}
+        .evt01 {padding-top:100px}
+        .evt01 .tImg img {margin:0 5px 10px}
+
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09/1060_02_bg.jpg) center top; padding-bottom:100px}	
             .bannerImg3 {position:relative; width:920px; margin:0 auto}
             .bannerImg3 p {position:absolute; top:50%; margin-top:-34px; width:30px; z-index:100;}
@@ -85,12 +87,18 @@
       
         .evt05 {width:100%; text-align:center; background:#f3f5f7; padding-top:50px}	
 
-        .evtInfo {padding:80px 0; background:#fff; color:#636363; font-size:16px}
-        .evtInfoBox {width:980px; margin:0 auto; text-align:left; line-height:1.4}
-        .evtInfoBox li {list-style:disc; margin-left:20px; font-size:14px; margin-bottom:5px}
-        .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
-        .evtInfoBox .infoTit {font-size:20px; margin-bottom:10px}
-        .evtInfoBox ul {margin-bottom:30px}       
+
+        /* 이용안내 */
+        .wb_info {padding:100px 0;}
+        .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:13px;}
+        .guide_box h2 {font-size:30px; margin-bottom:30px}
+        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; 
+        padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}        
+        .guide_box dd{color:#777; margin:0 0 20px 5px;}
+        .guide_box dd strong {color:#555}
+        .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;}
+        .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
+        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}  
         
     </style>
     
@@ -126,11 +134,19 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_top.jpg" alt="소방 PASS"/><br>            
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_top.jpg" alt="소방 PASS"/><br>            
         </div>
 
         <div class="evtCtnsBox evt01" >    
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_01.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_01.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
+            <div class="tImg">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t01.gif" alt="소방학/법규 이종오" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t02.gif" alt="국어 김세령" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t03.gif" alt="영어 이아림" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t04.gif" alt="영어 양익" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t05.gif" alt="한국사 한경준" />
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_02.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
         </div>
         
         <div class="evtCtnsBox evt02" >
@@ -220,53 +236,84 @@
             </div>    
         </div><!--evt04//-->
 
-        <div class="evtCtnsBox evtInfo" id="careful">
-			<div class="evtInfoBox">
-				<h4 class="NGEB">윌비스 소방PASS 이용안내</h4>
-				<div class="infoTit NG"><strong>상품구성</strong></div>
-				<ul>
-					<li>본 PASS는 수강신청 시 선택 직렬에 따라 소방직 공채, 구조/구급&관련학과 특채를 대비할 수 있는 상품입니다.</li>
-                    <li>수강 가능 과목 :<br>
-                    [공채] 국어, 영어, 한국사, 소방학개론, 소방관계법규<br>
-                    [특채] 구조/구급 – 국어,  생활영어,  소방학 ㅣ 관련학과 – 국어,  소방학,  소방관계법규</li>
-                    <li>본 PASS 이용 시 수강기간 내에 시행되는 소방직 대비 온라인 모의고사 응시권이 제공됩니다.</li>
-                    <li>본 PASS는 윌비스공무원학원 소방단독반 전문 교수진의 과정을 제공하는 상품입니다.<br>
-                    - 국어 김세령, 영어 [공채] 이아림 [특채] 양익, 한국사 한경준, 소방학개론/소방관계법규 이종오/김종상</li>
-                    <li>부득이하게 윌비스공무원학원 소방단독반 전담 교수진 변경 시에는 일부 커리큘럼이 제공되지 않을 수 있으며, 이에 따른 대체 과정을 제공해드립니다.</li>                     
-				</ul>
-				<div class="infoTit NG"><strong>수강기간</strong></div>
-				<ul>
-					<li>소방PASS 공채/특채 상품은 결제일로부터 수강신청 상세 안내 페이지에 표기된 기간만큼 제공됩니다.</li> 
-                    <li>본 상품은 일시정지/재수강/연장이 불가능한 상품입니다.</li>       
-				</ul>
-				<div class="infoTit NG"><strong>수강관련</strong></div>
-				<ul>
-					<li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li>
-                    <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li>
-                    <li>PASS 이용 중에는 일시중지가 불가능합니다.</li>
-                    <li>수강 가능 기기 대수는 PC 2대 또는 모바일 2대 또는 PC 1대 + 모바일 1대입니다.</li>             				
-				</ul>
-                <div class="infoTit NG"><strong>교재관련</strong></div>
-				<ul>
-					<li>본 상품은 교재를 별도로 구매하셔야 합니다.</li>
-                    <li>각 강좌별 교재는 무한PASS존 내 교재구매 버튼 및 [교재구매] 메뉴를 통해 구매 가능합니다.</li>                    				
-				</ul>
-                <div class="infoTit NG"><strong>환불정책</strong></div>
-				<ul>
-					<li>결제 후 7일 이내 전액 환불 가능합니다.</li>
-                    <li>본 상품은 맛보기 강좌를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.</li>
-                    <li>모바일 다운로드 이용 시 수강한 것으로 간주됩니다.</li>
-                    <li>고객변심으로 인한 부분환불은 수강시작일(결제 당일 포함)로부터 7일이 경과되면 정가 기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.</li>                  				
-                </ul>
-                <div class="infoTit NG"><strong>유의사항</strong></div>
-				<ul>
-                    <li>본 상품은 특별할인상품으로 쿠폰/적립금 사용이 불가합니다.</li>
-                    <li>제공되는 교수님의 강의가 학원 사정에 의해 진행되지 않는 경우, 대체 강의로 제공되며 이로 인한 환불은 불가합니다.</li>
-                    <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가능하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>                  				
-				</ul>
-                <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1544-5006</strong></div>
-			</div>
-		</div>    
+        <div class="evtCtnsBox wb_info" id="careful">
+            <div class="guide_box">
+                <h2 class="NSK-Black">윌비스 소방 PASS 이용안내</h2>
+                <dl>
+                    <dt>상품구성</dt>
+                    <dd>
+                        <ol>
+                            <li>본 PASS는 수강신청 시 선택 직렬에 따라 소방직 공채, 구조/구급&관련학과 특채를 대비할 수 있는 상품입니다.</li>
+                            <li>수강 가능 과목 :<br>
+                            [공채] 국어, 영어, 한국사, 소방학개론, 소방관계법규<br>
+                            [특채] 구조/구급 – 국어,  생활영어,  소방학 ㅣ 관련학과 – 국어,  소방학,  소방관계법규</li>
+                            <li>본 PASS 이용 시 수강기간 내에 시행되는 소방직 대비 온라인 모의고사 응시권이 제공됩니다.</li>
+                            <li>본 PASS는 윌비스공무원학원 소방단독반 전문 교수진의 과정을 제공하는 상품입니다.<br>
+                            - 국어 김세령, 영어 [공채] 이아림 [특채] 양익, 한국사 한경준, 소방학개론/소방관계법규 이종오/김종상</li>
+                            <li>부득이하게 윌비스공무원학원 소방단독반 전담 교수진 변경 시에는 일부 커리큘럼이 제공되지 않을 수 있으며, 이에 따른 대체 과정을 제공해드립니다.</li>
+                        </ol>
+                    </dd>
+
+                    <dt>수강기간</dt>
+                    <dd>
+                        <ol>
+                            <li>소방PASS 공채/특채 상품은 결제일로부터 수강신청 상세 안내 페이지에 표기된 기간만큼 제공됩니다.</li> 
+                            <li>본 상품은 일시정지/재수강/연장이 불가능한 상품입니다.</li>   
+                        </ol>
+                    </dd>
+
+                    <dt>수강관련</dt>
+                    <dd>
+                        <ol>
+                            <li>먼저 [내강의실] 메뉴에서 무한PASS존으로 접속합니다.</li>
+                            <li>구매하신 무한PASS 상품명 옆의 [강좌추가] 버튼을 클릭, 원하는 과목/교수님/강좌를 선택 등록 후 수강할 수 있습니다.</li>
+                            <li>PASS 이용 중에는 일시중지가 불가능합니다.</li>
+                            <li>수강 가능 기기 대수는 PC 2대 또는 모바일 2대 또는 PC 1대 + 모바일 1대입니다.</li>                           
+                        </ol>
+                    </dd>
+
+                    <dt>교재관련</dt>
+                    <dd>
+                        <ol>
+                            <li>본 상품은 교재를 별도로 구매하셔야 합니다.</li>
+                            <li>각 강좌별 교재는 무한PASS존 내 교재구매 버튼 및 [교재구매] 메뉴를 통해 구매 가능합니다.</li>  
+                        </ol>
+                    </dd>
+
+                    <dt>환불정책</dt>
+                    <dd>
+                        <ol>
+                            <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
+                            <li>본 상품은 맛보기 강좌를 제외하고 2강 이하 수강 시에만 전액 환불이 가능합니다.</li>
+                            <li>모바일 다운로드 이용 시 수강한 것으로 간주됩니다.</li>
+                            <li>고객변심으로 인한 부분환불은 수강시작일(결제 당일 포함)로부터 7일이 경과되면 정가 기준으로 계산하여 사용일수만큼 차감하고 환불됩니다.</li>     
+                        </ol>
+                    </dd>
+
+                    <dt>유의사항</dt>
+                    <dd>
+                        <ol>
+                            <li>본 상품은 특별할인상품으로 쿠폰/적립금 사용이 불가합니다.</li>
+                            <li>제공되는 교수님의 강의가 학원 사정에 의해 진행되지 않는 경우, 대체 강의로 제공되며 이로 인한 환불은 불가합니다.</li>
+                            <li>아이디 공유 적발 시 회원 자격 박탈 및 환불이 불가능하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>  
+                        </ol>
+                    </dd>  
+
+                    <dt>라이브모드 수강관련</dt>
+                    <dd>
+                        <ol>
+                            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
+                            - 국어 기미진, 행정법 이석준, 행정학 김덕관</li>
+                            <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
+                            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
+                            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
+                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
+                        </ol>
+                    </dd>                
+                </dl>
+                <div class="inquire">※ 이용 문의 : 윌비스 고객만족센터 1544-5006</div>
+            </div>
+        </div>
 
     </div>
     <!-- End Container -->

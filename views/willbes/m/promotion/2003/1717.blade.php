@@ -19,18 +19,16 @@
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
 
-    .evt03 {padding-bottom:50px}
-   
+    .evt03 {padding-bottom:50px}   
 
-    .evtFooter {margin:0 auto;text-align:left; color:#000; line-height:1.7;background:#fff }
-    .evtFooter h3 {font-size:20px;color:#f3f3f3; background:#161616; text-align:center; padding:10px 0}
-    .evtFooter .infoBox {padding:20px;}
+    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
+    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
     .evtFooter p {margin-bottom:10px; color:#252525; font-size:19px;}
     .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
-    .evtFooter ul {margin-bottom:20px; padding:0 10px}
-    .evtFooter li {margin-left:20px; list-style-type: decimal; color:#636363;font-size:14px;}
-    .evtFooter li span {color:#252525;}
+    .evtFooter ul {margin-bottom:30px; padding-left:10px}
+    .evtFooter li {margin-left:20px; list-style-type: decimal;}
+    .evtFooter li a {display:inline-block; margin-left:10px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
 
     .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
@@ -107,6 +105,15 @@
                 <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                 <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
                 <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 정가 기준으로 계산하여 사용 일수만큼 차감하고 환불됩니다.</li>
+            </ul>
+
+            <p class="NSK-Black"><span>●</span>  라이브모드 수강관련</p>
+            <ul>
+                <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
+                - 국어 기미진, 행정법 이석준, 행정학 김덕관</li>
+                <li>제공되는 강좌 및 진행일정은 [자세히보기 >] 클릭 후 페이지 하단에서 확인 가능합니다. <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
+                <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
+                <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
             </ul>
         </div>
     </div>

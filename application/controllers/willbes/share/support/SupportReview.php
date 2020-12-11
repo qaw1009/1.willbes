@@ -182,7 +182,7 @@ class SupportReview extends BaseSupport
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition, $s_cate_code);
         $paging = $this->pagination($this->_default_path . '/index/?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition, $s_cate_code, $column, $paging['limit'], $paging['offset'], $order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition, $s_cate_code, $column, $paging['limit'], $paging['offset'], $order_by, $order_by);
             foreach ($list as $idx => $row) {
                 $list[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
             }

@@ -247,7 +247,7 @@ class SupportStudyComment extends BaseSupport
         $paging = $this->pagination('/support/studyComment/listAjax/',$total_rows,$this->_paging_limit,$this->_paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$cate_code,$column,$paging['limit'],$paging['offset'],$order_by,$order_by);
         }
         return $this->response([
             'paging' => $paging,

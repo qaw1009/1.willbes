@@ -36,7 +36,9 @@
         to{color:#d63e4d}
         }            
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/08/1751_top_bg.jpg) no-repeat center top;}   
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1751_top_bg.jpg) no-repeat center top;}   
+
+        .wb_01 .tImg img {margin-right:5px; width:330px;}
 
         .wb_02 {background:#F5F9FC}
 
@@ -99,11 +101,17 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_top.jpg" alt="군무원 PASS"/>        
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1751_top.jpg" alt="군무원 PASS"/>        
         </div>
 
         <div class="evtCtnsBox wb_01">
-  			<img src="https://static.willbes.net/public/images/promotion/2020/08/1751_01.jpg" alt="군무원 패스와 함께"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1751_01_01.jpg" alt="군무원 패스와 함께"/>
+            <div class="tImg">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t01.gif" alt="국어 기미진" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t04.gif" alt="행정법 이석준" />
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t05.gif" alt="행정학 김덕관" />
+            </div>
+  			<img src="https://static.willbes.net/public/images/promotion/2020/12/1751_01.jpg" alt="군무원 패스와 함께"/>
 			<div class="menuWarp">    
             	<div class="PeMenu">
             		<ul>

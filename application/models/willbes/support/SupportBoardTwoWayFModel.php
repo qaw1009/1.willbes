@@ -23,13 +23,15 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param array $add_order_by
      * @return array|int
      */
-    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
+    public function listBoard($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [], $add_order_by = [])
     {
         if ($is_count === true) {
             $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
+            $main_query_order_by = '';
         } else {
             $def_column = "
                 m.*,
@@ -50,6 +52,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $main_query_order_by = $this->_conn->makeOrderBy($add_order_by)->getMakeOrderBy();
         }
 
         $from = "
@@ -79,10 +83,10 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $where .= $this->addDefWhereOfCampus();
-
+        
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
-        $set_query .= ') AS m ';
+        $set_query .= ') AS m ' . $main_query_order_by;
 
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
@@ -915,13 +919,15 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
      * @param null $limit
      * @param null $offset
      * @param array $order_by
+     * @param array $add_order_by
      * @return mixed
      */
-    public function listBoardForQna($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [])
+    public function listBoardForQna($is_count, $arr_condition=[], $cate_code, $column = 'b.BoardIdx', $limit = null, $offset = null, $order_by = [], $add_order_by = [])
     {
         if ($is_count === true) {
             $def_column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
+            $main_query_order_by = '';
         } else {
             $def_column = "
                 m.*,
@@ -942,6 +948,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $main_query_order_by = $this->_conn->makeOrderBy($add_order_by)->getMakeOrderBy();
         }
 
         $from = "
@@ -966,7 +974,8 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
 
         $set_query = ' FROM ( select ' . $column;
         $set_query .= $from . $where . $order_by_offset_limit;
-        $set_query .= ') AS m ';
+        $set_query .= ') AS m ' . $main_query_order_by;
+
         $query = $this->_conn->query('select ' . $def_column . $set_query);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();

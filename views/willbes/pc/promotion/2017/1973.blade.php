@@ -76,22 +76,6 @@
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th>유아</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/prof_detail_51076.png" alt="민정선"></div>
-                                <p><strong>민정선</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">유아 임용 합격의 대세~! 합격의 트렌드를 읽다.</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr> 
-                        <tr>
                             <th>교육학</th>
                             <td>
                                 <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51074/prof_detail_51074.png" alt="이인재"></div>
@@ -110,23 +94,7 @@
                         <tr>
                             <th>교육학</th>
                             <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51073/prof_detail_51073.png" alt="김차웅"></div>
-                                <p><strong>김차웅</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">교육학 강의 10년의 베테랑, 진짜 전문가의 경험과 노하우</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>교육학</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_detail_.png" alt="정현"></div>
+                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_detail_51158.png" alt="정현"></div>
                                 <p><strong>정현</strong> 교수</p>
                             </td>
                             <td>
@@ -154,23 +122,7 @@
                                     <li><a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
                                 </ul>
                             </td>
-                        </tr>     
-                        <tr>
-                            <th>전공국어</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51079/prof_detail_51079.png" alt="이원근"></div>
-                                <p><strong>이원근</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">국어학 박사의 정통 강의, 핵심만을 짚어내는 안목!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr>    
+                        </tr>       
                         <tr>
                             <th>전공영어</th>
                             <td>
@@ -338,14 +290,14 @@
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">유의사항</h4>
                 <ul>
-                    <li>SNS는 페이스북, 인스타그램, 카카오스토리, 트위터가 해당되며, 카페 및 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
-                        (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)
-                    <li>설명회 안내 링크 주소와 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.
-                    <li>임용 설명회와 관계가 없는 글이나, 삭제 및 비공개로 설정 되어 있는 경우에는, 당첨에서 제외될 수 있습니다.
-                    <li>중복된 공유 글은 당첨에서 제외합니다.
+                    <li>Sns는 페이스북, 인스타그램, 카카오스토리, 트위터가 해당되며, 카페 및 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
+                    (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)</li>  
+                    <li>설명회 안내 링크 주소와 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.</li>  
+                    <li>임용 설명회와 관계가 없는 글이나, 삭제 및 비공개로 설정 되어 있는 경우에는, 당첨에서 제외될 수 있습니다.</li>  
+                    <li>중복된 공유 글은 당첨에서 제외합니다.</li>  
+                    <li>당첨자는 1월 15일, 게시판을 통해 공지합니다.</li>  
                     <li>이벤트 상품은 기프티콘으로 지급될 예정이며, 회원가입 시 입력하신 휴대폰 정보로 전송됩니다.<br>
-                        (회원 정보 오류 시, 12월 28일까지 수정해주셔야 합니다.)
-                    <li>당첨자는 12월 23일, 게시판을 통해 공지합니다.</li>                     
+                        (회원 정보 오류 시, 1월 20일까지 수정해주셔야 합니다.)</li>                     
                 </ul>
 
             </div>

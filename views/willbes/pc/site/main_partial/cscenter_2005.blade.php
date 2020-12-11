@@ -3,9 +3,13 @@
         case "3098":
         case "3099":
             $call_number = '5';
+            $business_hours = '평일 : 8시 30분 ~ 19시 <br/>주말 : 9시 ~ 19시';
             break;
 
-        default: $call_number = '2'; break;
+        default:
+            $call_number = '2';
+            $business_hours = '월 ~ 토요일 : 8시 ~ 19시 <br/>일요일 : 8시 ~ 18시';
+            break;
     }
 @endphp
 
@@ -36,8 +40,7 @@
                     <div class="nNumber tx-color">1544-1881 <span>▶</span> 1</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
-                        월~토요일 : 08시 ~ 19시<br/>
-						일요일 : 09시 ~ 19시
+                        {!! $business_hours !!}
                     </div>
                 </li>
             </ul>

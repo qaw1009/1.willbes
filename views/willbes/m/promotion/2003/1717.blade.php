@@ -11,6 +11,35 @@
     .evtTop {position:relative}
 
     .evt01 {}
+    .evt01 .slide_con {padding-bottom:30px}
+    .evt01 .slide_con img {max-width:348px; margin:0 auto}
+    .evt01 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
+    .evt01 .slide_con .bx-wrapper .bx-pager {        
+        width: auto;
+        bottom: 0;
+        left:0;
+        right:0;
+        text-align: center;
+        z-index:90;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a {
+        background: #ccc;
+        width: 14px;
+        height: 14px;
+        margin: 0 4px;
+        border-radius:10px;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
+        background: #fd898c;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
+        width: 30px;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager {     
+        bottom: -30px;
+    }  
 
     .evt02 {position:relative;}
     .evt02 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
@@ -55,10 +84,21 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_top.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_top.jpg" alt="9급 패스" > 
     </div>  
     
-    <div class="evtCtnsBox evt01" id="tab01">
+    <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_01_01.jpg" alt="" >
+        <div class="slide_con">
+            <div id="slidesImg1">
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t01.gif" alt="국어 기미진"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t02.gif" alt="영어 한덕현"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t03.gif" alt="영어 이아림"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t04.gif" alt="영어 양익"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t05.gif" alt="한국사 한경준"/></div>
+            </div>
+        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_01_02.jpg" alt="" >
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_01.jpg" alt="" >
     </div>
 
@@ -120,6 +160,8 @@
 </div>
 <!-- End Container -->
 
+<link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script type="text/javascript">
     /*수강신청 동의*/ 
     function go_PassLecture(code){
@@ -130,7 +172,19 @@
 
         var url = '{{ site_url('/m/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
         location.href = url;
-    }    
+    }  
+    $(document).ready(function() {
+        var slidesImg1 = $("#slidesImg1").bxSlider({
+            auto: true, 
+            speed: 500, 
+            pause: 5000, 
+            mode:'fade', 
+            autoControls: false, 
+            adaptiveHeight: true,
+            controls:false,
+            pager:true,
+        });
+    }); 
 </script>
 
 @stop

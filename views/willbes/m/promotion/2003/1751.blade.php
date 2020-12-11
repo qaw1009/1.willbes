@@ -11,8 +11,36 @@
     .evt00 .dday {font-size:22px;padding:20px 0;}
     .evt00 .dday span {color:#435d96; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
 
-    .evt02 {padding-bottom:120px; background:#f6f6f6}
-    .evt02 a {display:block; margin:0 auto; width:60%; font-size:20px; background:#293342; color:#fff; padding:15px 0; text-align:center; border-radius:50px; line-height:1.4}
+    .evt01 {padding-bottom:50px;}
+    .evt01 .slide_con {padding-bottom:30px}
+    .evt01 .slide_con img {max-width:348px; margin:0 auto}
+    .evt01 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
+    .evt01 .slide_con .bx-wrapper .bx-pager {        
+        width: auto;
+        bottom: 0;
+        left:0;
+        right:0;
+        text-align: center;
+        z-index:90;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a {
+        background: #ccc;
+        width: 14px;
+        height: 14px;
+        margin: 0 4px;
+        border-radius:10px;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
+        background: #fd898c;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
+        width: 30px;
+    }
+    .evt01 .slide_con .bx-wrapper .bx-pager {     
+        bottom: -30px;
+    }   
 
     .evt03 {position:relative;}
   
@@ -86,15 +114,19 @@
     </div>   
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_top.jpg" alt="" >
-    </div> 
-
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_01.jpg" alt="" >
-    </div> 
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1751m_top.jpg" alt="군무원패스" >
+    </div>  
     
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_01s.jpg" alt="" >
+    <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1751m_01_01.jpg" alt="" >
+        <div class="slide_con">
+            <div id="slidesImg1">
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t01.gif" alt="국어 기미진"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t04.gif" alt="행정법 이석준"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t05.gif" alt="행정학 김덕관"/></div>
+            </div>
+        </div> 
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1751m_01s.jpg" alt="" >
     </div> 
 
     <div class="evtCtnsBox">
@@ -177,7 +209,8 @@
     {!! method_field('POST') !!}
 </form>
 
-
+<link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
+<script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
     /*디데이카운트다운*/
@@ -254,7 +287,18 @@
                 var url = '{{ site_url('/m/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
                 location.href = url;
         }    
-
+    $(document).ready(function() {
+        var slidesImg1 = $("#slidesImg1").bxSlider({
+            auto: true, 
+            speed: 500, 
+            pause: 5000, 
+            mode:'fade', 
+            autoControls: false, 
+            adaptiveHeight: true,
+            controls:false,
+            pager:true,
+        });
+    }); 
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

@@ -686,12 +686,25 @@
                     <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
                 </li>
                 <li><span>한국사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50855?subject_idx=1591') }}">임진석</a></li>
-                <li><span>형법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50856?subject_idx=1592') }}">문형석</a></li>
+                <li>
+                    <span>형법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50968?subject_idx=1592') }}">진신</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50856?subject_idx=1592') }}">문형석</a>
+                </li>
                 <li><span>행정학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50858?subject_idx=1593') }}">이동호</a></li>
                 <li><span>경찰학개론</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50862?subject_idx=1594') }}">정진천</a></li>
                 <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51141?subject_idx=1595') }}">유안석</a></li>
-                {{--<li><span>행정법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50861?subject_idx=1596') }}">조현</a></li>--}}
-                <li><span>민법총칙</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50863?subject_idx=1597') }}">고태환</a></li>
+                <li>
+                    <span>민법총칙</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51176?subject_idx=1597') }}">김동진</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50863?subject_idx=1597') }}">고태환</a>
+                </li>
+                <li>
+                    <span>헌법</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51143?subject_idx=1974') }}">선동주</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51142?subject_idx=1974') }}">이국령</a>
+                </li>
+                <li><span>범죄학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51175?subject_idx=1975') }}">김기환</a></li>
             </ul>
         @endif
     @endif

@@ -4,16 +4,19 @@
         case "309003":
             $telephone_inquiry = '1566-4770 <span>▶</span> 4';
             $school_cs_tel = '1544-1881 <span>▶</span> 1';
+            $business_hours = '월 ~ 토요일 : 8시 ~ 19시 <br/>일요일 : 8시 ~ 18시';
             break;
 
         case "309004":
             $telephone_inquiry = '1566-4770 <span>▶</span> 5';
             $school_cs_tel = '1544-1881 <span>▶</span> 1';
+            $business_hours = '평일 : 8시 30분 ~ 19시 <br/>주말 : 9시 ~ 19시 ';
             break;
 
         default:
             $telephone_inquiry = '1544-5006 <span>▶</span> 4';
             $school_cs_tel = '1544-4774';
+            $business_hours = '평일/주말 : 08시 ~ 19시';
             break;
     }
 @endphp
@@ -28,7 +31,7 @@
                     <div class="nTxt">
                         [운영시간]<br/>
                         평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                        공휴일/일요일휴무<br/>
+                        주말/공휴일 휴무<br/>
                     </div>
                 </li>
                 <li>
@@ -37,7 +40,7 @@
                     <div class="nTxt">
                         [운영시간]<br/>
                         평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                        공휴일/일요일휴무<br/>
+                        주말/공휴일 휴무<br/>
                     </div>
                 </li>
                 <li>
@@ -45,7 +48,7 @@
                     <div class="nNumber tx-color">{!! $school_cs_tel !!}</div>
                     <div class="nTxt">
                         [전화/방문상담 운영시간]<br/>
-                        평일/주말 : 08시 ~ 19시 
+                        {!! $business_hours !!}
                     </div>
                 </li>
             </ul>

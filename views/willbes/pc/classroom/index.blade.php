@@ -30,7 +30,7 @@
                                 <div class="Tit tx-light-blue NSK">온라인강좌<br/>현황</div>
                                 <div class="TableInfo">
                                     <dl>
-                                        <dt><div class="subTit">무한PASS</div><div><a class="tx-blue" href="{{front_url('/classroom/pass/index')}}">{{$data['pass_cnt']}}</a>개</div></dt>
+                                        @if(sess_data('mem_interest') != '718009')<dt><div class="subTit">무한PASS</div><div><a class="tx-blue" href="{{front_url('/classroom/pass/index')}}">{{$data['pass_cnt']}}</a>개</div></dt>@endif
                                         <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="{{front_url('/classroom/on/list/ongoing')}}">{{$data['ing_cnt']}}</a>개</div></dt>
                                         <dt><div class="subTit">수강대기</div><div><a class="tx-blue" href="{{front_url('/classroom/on/list/standby')}}">{{$data['standby_cnt']}}</a>개</div></dt>
                                     </dl>

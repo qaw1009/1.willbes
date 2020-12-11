@@ -688,7 +688,6 @@
                 <li><span>한국사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50855?subject_idx=1591') }}">임진석</a></li>
                 <li>
                     <span>형법</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50968?subject_idx=1592') }}">진신</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50856?subject_idx=1592') }}">문형석</a>
                 </li>
                 <li><span>행정학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50858?subject_idx=1593') }}">이동호</a></li>
@@ -1032,6 +1031,8 @@
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1597') }}">민법총칙</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1600') }}">설명회</a>
                     <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1741') }}">영어</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1974') }}">헌법</a>
+                    <a href="{{ front_url('/lecture/index/cate/' . $menu_cate_code . '/pattern/only?search_order=course&c=&course_idx=&subject_idx=1975') }}">범죄학</a>
                 </li>
             </ul>
         @endif

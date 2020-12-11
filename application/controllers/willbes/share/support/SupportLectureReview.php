@@ -103,7 +103,7 @@ class SupportLectureReview extends BaseSupport
         $paging = $this->pagination($this->_default_path .'/index',$total_rows,$this->_paging_limit,$paging_count,true);
 
         if ($total_rows > 0) {
-            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by);
+            $list = $this->supportBoardTwoWayFModel->listBoard(false,$arr_condition,$s_cate_code,$column,$paging['limit'],$paging['offset'],$order_by,$order_by);
         }
 
         $this->load->view('support/lecture_review', [

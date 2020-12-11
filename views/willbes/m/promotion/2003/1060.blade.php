@@ -43,10 +43,12 @@
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
-    .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
+    .evtFooter p {margin-bottom:10px; color:#252525; font-size:19px;}
+    .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
     .evtFooter li {margin-left:20px; list-style-type: decimal;}
+    .evtFooter li a {display:inline-block; margin-left:10px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
 
 
     /* 폰 가로, 태블릿 세로*/
@@ -118,7 +120,7 @@
 
     <div class="evtCtnsBox evtFooter" id="infoText">
         <h3 class="NSK-Black">윌비스 소방PASS 이용안내</h3>
-        <p>● 상품구성 </p>
+        <p class="NSK-Black"><span>●</span> 상품구성 </p>
         <ul>
             <li>본 PASS는 수강신청 시 선택 직렬에 따라 소방직 공채, 구조/구급&관련학과 특채를 대비할 수 있는 상품입니다.</li>
             <li>수강가능 과목 :<br>
@@ -131,7 +133,7 @@
             <li>본 PASS 이용 시 수강기간 내에 시행되는 소방직 대비 온라인 모의고사 응시권이 제공됩니다.</li>
         </ul>
 
-        <p>● 수강관련</p>
+        <p class="NSK-Black"><span>●</span> 수강관련</p>
         <ul>
             <li>[내강의실]-[무한PASS존]-[강좌추가]버튼을 클릭, 원하는 과목/교수/강좌를 선택 등록 후 수강할 수 있습니다.</li>
             <li>본 PASS는 일시정지/연장/재수강 기능을 제공하지 않습니다.</li>
@@ -139,12 +141,21 @@
             <li>PC/모바일 기기변경 등 단말기 초기화가 필요한 경우, 내용 확인 후 진행 가능하오니 고객센터로 문의주시기 바랍니다.</li>
         </ul>
 
-        <p>● 환불정책</p>
+        <p class="NSK-Black"><span>●</span> 환불정책</p>
         <ul>
             <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
             <li>고객변심으로 인한 부분환불은 수강시작일(당일 포함)로부터 7일이 경과되면, 정가 기준으로 계산하여 사용 일수만큼 차감하고 환불됩니다.</li>
+        </ul>
+
+        <p class="NSK-Black"><span>●</span> 라이브모드 수강관련</p>
+        <ul>
+            <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
+            - 국어 김세령, 영어 [공채] 이아림, 영어 [특채] 양익, 한국사 한경준, 소방학/법규 이종오</li>
+            <li>제공되는 강좌 및 진행일정은 [자세히보기 >] 클릭 후 페이지 하단에서 확인 가능합니다. <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
+            <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
+            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
         </ul>
         <div>※ 이용문의 : 1544-5006</div>
     </div>  

@@ -165,10 +165,8 @@
                 <div class="tab01s_05">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05.jpg" alt="" usemap="#Map1915_tab01s_05" border="0" />
                     <map name="Map1915_tab01s_05" id="Map1915_tab01s_05">
-                        <area shape="rect" coords="487,600,709,654" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/174685" target="_blank" />
-                        <area shape="rect" coords="729,601,951,656" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174799" target="_blank" />
-                        <area shape="rect" coords="486,778,710,829" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/174686" target="_blank" />
-                        <area shape="rect" coords="727,778,947,832" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174804" target="_blank" />
+                        <area shape="rect" coords="483,596,953,662" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174799" target="_blank" />
+                        <area shape="rect" coords="482,772,953,838" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174804" target="_blank" />
                     </map>        
                 </div>                                      
             </div> 
@@ -201,12 +199,10 @@
                 <div class="tab02s_05">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05s.jpg" alt="" usemap="#Map1915_tab02s_05" border="0" />
                     <map name="Map1915_tab02s_05">
-                        <area shape="rect" coords="487,601,708,656" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/174671" target="_blank" />
-                        <area shape="rect" coords="727,600,948,657" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174807" target="_blank" />
-                        <area shape="rect" coords="488,777,708,831" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/174673" target="_blank" />
-                        <area shape="rect" coords="728,777,948,833" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174808" target="_blank" />
+                        <area shape="rect" coords="479,595,955,663" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174807" target="_blank" />
+                        <area shape="rect" coords="483,771,954,834" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174808" target="_blank" />
                     </map>        
-                </div>                  
+                </div>                 
             </div>
 
             <div id="tab03s">
@@ -238,8 +234,7 @@
                 <div class="tab02s_05">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05_c.jpg" alt="조경직 이윤주 강의 신청" usemap="#Map1915_tab03s_c" border="0" />
                     <map name="Map1915_tab03s_c">
-                        <area shape="rect" coords="487,601,708,656" href="https://pass.willbes.net/pass/offLecture/show/cate/3052/prod-code/175026" target="_blank" />
-                        <area shape="rect" coords="727,600,948,657" href="javascript:alert('Coming soon!')" />
+                        <area shape="rect" coords="484,595,954,664" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
                         <area shape="rect" coords="488,777,708,831" href="javascript:alert('Coming soon!')" />
                         <area shape="rect" coords="728,777,948,833" href="javascript:alert('Coming soon!')" />
                     </map>        

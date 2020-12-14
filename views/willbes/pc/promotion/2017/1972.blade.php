@@ -255,8 +255,8 @@
                                 <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51156/prof_detail_51156.png" alt="최규훈"></div></li>
                                 <li class="NSK-thin">전공체육<br> <strong class="NSK-Black">최규훈</strong> 교수<li>
                                 <li>
-                                    <a href="#none" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="#none">교수페이지 바로가기</a>
+                                    <a href="#none">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>

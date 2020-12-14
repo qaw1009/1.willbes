@@ -58,7 +58,7 @@
         .tabBottom td:nth-child(1) li.sTitle2 {border:1px solid #333; padding:5px; text-align:center}
         .tabBottom td input {width:20px; height:20px; vertical-align: middle; margin-right:5px}
         .tabBottom td:nth-child(2) {font-size:16px}
-        .tabBottom td:nth-child(2) ul {margin-top:20px}
+        .tabBottom td:nth-child(2) ul {margin:20px 80px 0}
         .tabBottom td:nth-child(2) li {display:inline; float:left; width:33.33333%; text-align:center}
         .tabBottom td:nth-child(2) > div:nth-child(2) strong {background:#38af00;}
         .tabBottom td:nth-child(2) p {font-size:12px; padding-left:25px; color:#999}
@@ -165,9 +165,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 : <br><s>2,000,000원</s></li>
+                                            <li class="tx-gray">원 수강료 <br><s>2,000,000원</s></li>
                                             <li><div class="NSK-Black">30%<br>할인</div></li>
-                                            <li>패키지 수강료 : <br><span class="NSK-Black">1,400,000원</span></li>                                            
+                                            <li>패키지 수강료 <br><span class="NSK-Black">1,400,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -232,9 +232,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,820,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,820,000원</s></li>
                                             <li><div class="NSK-Black">12%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,600,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,600,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -299,9 +299,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,820,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,820,000원</s></li>
                                             <li><div class="NSK-Black">12%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,600,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,600,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -318,9 +318,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,320,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,320,000원</s></li>
                                             <li><div class="NSK-Black">약5%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,250,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,250,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -375,9 +375,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
                                             <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료 : <br><span class="NSK-Black">1,670,000원</span></li>                                            
+                                            <li>패키지 수강료 <br><span class="NSK-Black">1,670,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -455,9 +455,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,640,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,640,000원</s></li>
                                             <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,066,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,066,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -472,9 +472,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
                                             <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,670,000원</span></li>                                           
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,670,000원</span></li>                                           
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -530,9 +530,9 @@
                                             - 온라인강의 : 365일 * 배수:1.5배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,060,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,060,000원</s></li>
                                             <li><div class="NSK-Black">17%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,700,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,700,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -604,9 +604,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,710,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
                                             <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,226,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -678,9 +678,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,710,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
                                             <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,226,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -734,9 +734,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,980,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,980,000원</s></li>
                                             <li><div class="NSK-Black">13%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,728,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,728,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -790,9 +790,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,580,000원</s></li>
                                             <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">948,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">948,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -855,9 +855,9 @@
                                             - 온라인강의 : 240일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>                                            
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
                                         </ul>
                                     </div>
                                     <div class="three">
@@ -918,9 +918,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                     
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,590,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
                                             <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -980,9 +980,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                  
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,790,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,790,000원</s></li>
                                             <li><div class="NSK-Black">약46%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -1042,9 +1042,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                  
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,590,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
                                             <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -1100,9 +1100,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -1157,9 +1157,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>                                            
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
                                         </ul>
                                     </div>
                                     <div class="lecBtn">

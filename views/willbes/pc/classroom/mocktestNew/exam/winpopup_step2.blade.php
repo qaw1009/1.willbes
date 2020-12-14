@@ -66,8 +66,7 @@
                             <div class="countTime">남은시간 : <span id="timer" class="time">--:--:--</span></div>
                         </div>
                     </div>
-                </div>
-            </div>           
+                </div>                      
 
             @foreach($questionData as $subject_key => $subject_data)
                 <div class="examPaperWp" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
@@ -89,6 +88,7 @@
                             @endif
                         @endif
                     </div>
+
                     <div class="answer-sheet">
                         <div class="exam-txt">
                             * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
@@ -157,6 +157,8 @@
                     </div>
                 </div>
             @endforeach
+            </div> 
+            <!--popupContainer//-->
         </form>
     </div>
 

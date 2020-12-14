@@ -307,7 +307,7 @@ class Player extends \app\controllers\FrontController
             // 신규 보안 라이브강의
             $player = '/player/live';
             $this->load->library('SKBsignurl');
-            $url = $this->skbsignurl->getSign($data['wMediaUrl'].'/'.$filename);
+            $url = $this->skbsignurl->getSign($this->clearUrl($data['wMediaUrl'].'/'.$filename));
 
         } else {
             $player = '/player/normal';

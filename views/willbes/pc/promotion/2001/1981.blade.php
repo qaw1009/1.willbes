@@ -46,6 +46,8 @@
         .wb_ctsInfo {width:980px; margin:0 auto; font-size:14px; line-height:1.25; padding:100px 0; color:#333}
         .wb_ctsInfo h3 {font-size:30px; margin-bottom:30px; color:#000;} 
         .wb_ctsInfo li {list-style:disc; margin-left:20px; margin-bottom:10px}
+
+        .wb_08 {padding-bottom:100px;}        
     </style>
 
 
@@ -105,18 +107,7 @@
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif     		
 		</div>                    
-        
-        <div class="wb_ctsInfo NSK" id="ctsInfo">
-            <h3 class="NSK-Black">유의사항</h3>
-            <ul>
-                <li>2022년 시험 대비 개편과목 기본종합반입니다. (영어,한국사 기본이론은 수강불가)</li>
-                <li>11~12월 기존과목(형사소송법,형법,경찰학개론) + 2021년 1월~3월 개편과목 형사법,헌법,경찰학개론 제공</li>
-                <li>조기등록반 혜택 : 한능검(3급) + G-TELP  + 영어3주 기초완성반 – 온라인 동영상 제공</li>
-                <li>국가재난,정부지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 
-                동영상 강의로 대체될수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>
-            </ul>      
-            <div class="mt40 tx16 NSK-Black">※ 학원 종합반 문의 : 1544-0336</div>
-        </div>       
+
 	</div>
     <!-- End Container -->
 @stop

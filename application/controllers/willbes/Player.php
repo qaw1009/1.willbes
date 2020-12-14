@@ -1404,7 +1404,7 @@ class Player extends \app\controllers\FrontController
             } elseif($lec['wShootingCcd'] == '104004') {
                 // 신규 보안 라이브강의
                 $this->load->library('SKBsignurl');
-                $url = $this->skbsignurl->getSign($data['wMediaUrl'].'/'.$filename);
+                $url = $this->skbsignurl->getSign($this->clearUrl($row['wMediaUrl'] . '/' . $filename));
 
             } else {
                 $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
@@ -1957,7 +1957,7 @@ class Player extends \app\controllers\FrontController
             } elseif($lec['wShootingCcd'] == '104004') {
                 // 신규 보안 라이브강의
                 $this->load->library('SKBsignurl');
-                $url = $this->skbsignurl->getSign($data['wMediaUrl'].'/'.$filename);
+                $url = $this->skbsignurl->getSign($this->clearUrl($row['wMediaUrl'] . '/' . $filename));
 
             } else {
                 $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);

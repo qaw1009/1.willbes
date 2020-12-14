@@ -9702,7 +9702,7 @@ table.testTable tr td.w-date {
 .ExamBox .examPaperWp .exam-paper {
     position: absolute;
     top:110px;
-    width: calc(100% - 520px);
+    width: calc(100% - 540px);
     height: calc(100% - 120px);
     overflow-x: auto;
 }
@@ -9723,7 +9723,9 @@ table.testTable tr td.w-date {
     position: fixed;
     top:90px;
     right:10px;
-    width: 460px;
+    width: 480px;
+    height: calc(100% - 120px);
+    overflow-y: auto;
 }
 .ExamBox .examPaperWp .answer-sheet .exam-txt {
     font-size: 11px;
@@ -9733,6 +9735,7 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : answerTb */
+
 .ExamBox .answerTb tr th,
 .ExamBox .answerTb tr td {
     font-size: 12px;

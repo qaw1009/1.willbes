@@ -24,7 +24,7 @@
                 <input type="hidden" name="q_cnt_{{$key}}" value="{{$val['TCNT']}}"/>
             @endforeach               
 
-            <div class="popupContainer mg-zero">
+            <div class="mg-zero popupContainer">
                 <div class="ExamBoxHead">
                     <div class="popTitBox">
                         <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
@@ -68,7 +68,7 @@
                     </div>
                 </div>                      
 
-            @foreach($questionData as $subject_key => $subject_data)
+                @foreach($questionData as $subject_key => $subject_data)
                 <div class="examPaperWp" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
                     <div class="exam-paper">
                         @if ($examData['productInfo']['PaperType'] == 'I')
@@ -84,7 +84,7 @@
                         @else
                             {{--문제통파일이미지--}}
                             @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
-                                <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="650px" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                                <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
                             @endif
                         @endif
                     </div>
@@ -156,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
             </div> 
             <!--popupContainer//-->
         </form>

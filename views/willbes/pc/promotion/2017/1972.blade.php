@@ -58,7 +58,7 @@
         .tabBottom td:nth-child(1) li.sTitle2 {border:1px solid #333; padding:5px; text-align:center}
         .tabBottom td input {width:20px; height:20px; vertical-align: middle; margin-right:5px}
         .tabBottom td:nth-child(2) {font-size:16px}
-        .tabBottom td:nth-child(2) ul {margin-top:20px}
+        .tabBottom td:nth-child(2) ul {margin:20px 80px 0}
         .tabBottom td:nth-child(2) li {display:inline; float:left; width:33.33333%; text-align:center}
         .tabBottom td:nth-child(2) > div:nth-child(2) strong {background:#38af00;}
         .tabBottom td:nth-child(2) p {font-size:12px; padding-left:25px; color:#999}
@@ -131,7 +131,7 @@
                                 <li class="NSK-thin">초등<br> <strong class="NSK-Black">배재민</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('175159','1260419','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -165,9 +165,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 : <br><s>2,000,000원</s></li>
+                                            <li class="tx-gray">원 수강료 <br><s>2,000,000원</s></li>
                                             <li><div class="NSK-Black">30%<br>할인</div></li>
-                                            <li>패키지 수강료 : <br><span class="NSK-Black">1,400,000원</span></li>                                            
+                                            <li>패키지 수강료 <br><span class="NSK-Black">1,400,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -232,9 +232,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,820,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,820,000원</s></li>
                                             <li><div class="NSK-Black">12%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,600,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,600,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -299,9 +299,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,820,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,820,000원</s></li>
                                             <li><div class="NSK-Black">12%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,600,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,600,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -318,9 +318,9 @@
                                             * 교재 별도 구매
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,320,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,320,000원</s></li>
                                             <li><div class="NSK-Black">약5%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,250,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,250,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -342,7 +342,7 @@
                                 <li class="NSK-thin">전공국어<br> <strong class="NSK-Black">송원영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174869','1256192','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -375,9 +375,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
                                             <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료 : <br><span class="NSK-Black">1,670,000원</span></li>                                            
+                                            <li>패키지 수강료 <br><span class="NSK-Black">1,670,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -455,9 +455,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,640,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,640,000원</s></li>
                                             <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,066,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,066,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -472,9 +472,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,580,000원</s></li>
                                             <li><div class="NSK-Black">약53%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,670,000원</span></li>                                           
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,670,000원</span></li>                                           
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -496,7 +496,7 @@
                                 <li class="NSK-thin">전공영어<br> <strong class="NSK-Black">김유석</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174873','1256220','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -530,9 +530,9 @@
                                             - 온라인강의 : 365일 * 배수:1.5배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,060,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,060,000원</s></li>
                                             <li><div class="NSK-Black">17%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,700,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,700,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -604,9 +604,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,710,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
                                             <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,226,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -628,7 +628,7 @@
                                 <li class="NSK-thin">수학교육론<br> <strong class="NSK-Black">박태영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('176092','1263042','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -678,9 +678,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>3,710,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
                                             <li><div class="NSK-Black">35%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,226,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -702,7 +702,7 @@
                                 <li class="NSK-thin">도덕윤리<br> <strong class="NSK-Black">김병찬</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174884','1256233','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -734,9 +734,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,980,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,980,000원</s></li>
                                             <li><div class="NSK-Black">13%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,728,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,728,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -758,7 +758,7 @@
                                 <li class="NSK-thin">전공역사<br> <strong class="NSK-Black">최용림</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('176991','1260609','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -790,9 +790,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>1,580,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>1,580,000원</s></li>
                                             <li><div class="NSK-Black">40%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">948,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">948,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -814,7 +814,7 @@
                                 <li class="NSK-thin">전공음악<br> <strong class="NSK-Black">다이애나</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174885','1256234','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -855,9 +855,9 @@
                                             - 온라인강의 : 240일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>                                            
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
                                         </ul>
                                     </div>
                                     <div class="three">
@@ -882,7 +882,7 @@
                                 <li class="NSK-thin">전기<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -918,9 +918,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                     
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,590,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
                                             <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -944,7 +944,7 @@
                                 <li class="NSK-thin">전자<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -980,9 +980,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                  
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,790,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,790,000원</s></li>
                                             <li><div class="NSK-Black">약46%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -1006,7 +1006,7 @@
                                 <li class="NSK-thin">통신<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">기출 해설강의 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1042,9 +1042,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>                                  
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,590,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,590,000원</s></li>
                                             <li><div class="NSK-Black">약42%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">1,500,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     {{--
@@ -1068,7 +1068,7 @@
                                 <li class="NSK-thin">정보컴퓨터<br> <strong class="NSK-Black">송광진</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174887','1256241','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1100,9 +1100,9 @@
                                             - 온라인강의 : 365일 * 배수:1.6배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>                                            
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -1124,7 +1124,7 @@
                                 <li class="NSK-thin">전공중국어<br> <strong class="NSK-Black">정경미</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174890','1256242','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1157,9 +1157,9 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료 :<br> <s>2,800,000원</s></li>                                            
+                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
                                             <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료 :<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
                                         </ul>
                                     </div>
                                     <div class="lecBtn">

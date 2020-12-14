@@ -89,6 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property Caching $caching                              Application Caching Driver Class
  * @property Pg $pg                                            Pg Driver Class
  * @property SendSms $sendsms                           Send Sms Class
+ * @property SKBsignurl $skbsignurl                     SKB Sign Url Class
  ***************** MY MODELS ************************************************************************
  * @property SampleModel $sampleModel                       Sample Model Class
  ***************** WBS ******************************************************************************

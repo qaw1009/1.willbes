@@ -181,7 +181,7 @@
         <!-- Topbtn -->
         @if($lec['canWeekView'] == false)
         @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
-        @elseif($lec['wShootingCcd'] == '104003')
+        @elseif($lec['wShootingCcd'] == '104003' || $lec['wShootingCcd'] == '104004')
         @else
             @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
             <div id="Fixbtn" class="Fixbtn three">

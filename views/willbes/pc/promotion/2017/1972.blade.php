@@ -131,7 +131,7 @@
                                 <li class="NSK-thin">초등<br> <strong class="NSK-Black">배재민</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('175159','1260419','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -342,7 +342,7 @@
                                 <li class="NSK-thin">전공국어<br> <strong class="NSK-Black">송원영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174869','1256192','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -496,7 +496,7 @@
                                 <li class="NSK-thin">전공영어<br> <strong class="NSK-Black">김유석</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174873','1256220','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -628,7 +628,7 @@
                                 <li class="NSK-thin">수학교육론<br> <strong class="NSK-Black">박태영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('176092','1263042','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -702,7 +702,7 @@
                                 <li class="NSK-thin">도덕윤리<br> <strong class="NSK-Black">김병찬</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174884','1256233','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -758,7 +758,7 @@
                                 <li class="NSK-thin">전공역사<br> <strong class="NSK-Black">최용림</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('176991','1260609','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -814,7 +814,7 @@
                                 <li class="NSK-thin">전공음악<br> <strong class="NSK-Black">다이애나</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174885','1256234','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -882,7 +882,7 @@
                                 <li class="NSK-thin">전기<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -944,7 +944,7 @@
                                 <li class="NSK-thin">전자<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1006,7 +1006,7 @@
                                 <li class="NSK-thin">통신<br> <strong class="NSK-Black">최우영</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">기출 해설강의 보기</a>
+                                    <a href="javascript:fnPlayerSample('174886','1256235','HD');">기출 해설강의 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1068,7 +1068,7 @@
                                 <li class="NSK-thin">정보컴퓨터<br> <strong class="NSK-Black">송광진</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174887','1256241','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -1124,7 +1124,7 @@
                                 <li class="NSK-thin">전공중국어<br> <strong class="NSK-Black">정경미</strong> 교수<li>
                                 <li>
                                     <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="javascript:fnPlayerSample('174890','1256242','HD');">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>

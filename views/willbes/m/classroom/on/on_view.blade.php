@@ -183,7 +183,7 @@
             {{-- 주말반 제한 --}}
         @elseif($lec['isBtob'] == 'Y' && $lec['enableIp'] == 'N')
             {{-- BtoB 강의 제한 --}}
-        @elseif($lec['wShootingCcd'] == '104003')
+        @elseif($lec['wShootingCcd'] == '104003' || $lec['wShootingCcd'] == '104004')
             {{-- 라이브강의는 다운로드버튼 없음 --}}
         @else
             @if($lec['isstart'] == 'Y' && $lec['ispause'] == 'N')
@@ -200,7 +200,7 @@
         <!-- Fixbtn -->
     </div>
     <!-- End Container -->
-@if($lec['wShootingCcd'] == '104003')
+@if($lec['wShootingCcd'] == '104003' || $lec['wShootingCcd'] == '104004')
     {{-- 라이브강의 스타플레이어 플러스 --}}
     <script src="/public/vendor/starplayer/js/starplayer_app_plus.js"></script>
 @else

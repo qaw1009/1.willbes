@@ -325,7 +325,19 @@ class Lecture extends \app\controllers\BaseController
                     break;
             }
 
-            $url = $data['wMediaUrl'].'/'.$filename;
+            if($data['wShootingCcd'] == '104003') {
+                // 일반 비보안 라이브강의
+                $url = $data['wMediaUrl'].'/'.$filename;
+
+            } elseif($data['wShootingCcd'] == '104004') {
+                // skb sign url 보안 라이브강의
+                $this->load->library('SKBsignurl');
+                $url = $this->skbsignurl->getSign($data['wMediaUrl'].'/'.$filename);
+
+            } else {
+                $url = $data['wMediaUrl'].'/'.$filename;
+            }
+
             $title = $unitdata['wUnitNum'].'회 '.$unitdata['wUnitLectureNum'].'강 '.$unitdata['wUnitName'];
         }
 
@@ -339,7 +351,6 @@ class Lecture extends \app\controllers\BaseController
             ]) === false){
             show_alert('오류가 발생하였습니다.', 'close');
         };
-
 
         $this->load->view('cms/lecture/player', [
             'title' => $title,

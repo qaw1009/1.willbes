@@ -262,7 +262,6 @@ class Player extends \app\controllers\FrontController
 
         $url = $this->clearUrl($data['wMediaUrl'].'/'.$filename);
 
-
         $RealExpireTime = ceil(doubleval($data['wRuntime']) * doubleval($lec['MultipleApply']));
 
         // 수강히스토리 기록생성
@@ -300,8 +299,16 @@ class Player extends \app\controllers\FrontController
         }
 
         // 라이브강의일경우 플레이어 view 를 live 로
-        if($lec['wShootingCcd'] == '104003'){
+        if($lec['wShootingCcd'] == '104003') {
+            // 일반 라이브강의
             $player = '/player/live';
+
+        } elseif($lec['wShootingCcd'] == '104004') {
+            // 신규 보안 라이브강의
+            $player = '/player/live';
+            $this->load->library('SKBsignurl');
+            $url = $this->skbsignurl->getSign($this->clearUrl($data['wMediaUrl'].'/'.$filename));
+
         } else {
             $player = '/player/normal';
         }
@@ -1390,7 +1397,19 @@ class Player extends \app\controllers\FrontController
                 continue;
             }
 
-            $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            if($lec['wShootingCcd'] == '104003') {
+                // 비보안 일반 라이브강의
+                $url = $this->clearUrl($row['wMediaUrl'] . '/' . $filename);
+
+            } elseif($lec['wShootingCcd'] == '104004') {
+                // 신규 보안 라이브강의
+                $this->load->library('SKBsignurl');
+                $url = $this->skbsignurl->getSign($this->clearUrl($row['wMediaUrl'] . '/' . $filename));
+
+            } else {
+                $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            }
+
             $title = $row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName'];
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             // $category = $lec['SubjectName'].'/'.$lec['CourseName'];
@@ -1931,7 +1950,19 @@ class Player extends \app\controllers\FrontController
                 continue;
             }
 
-            $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            if($lec['wShootingCcd'] == '104003') {
+                // 일반 라이브강의
+                $url = $this->clearUrl($row['wMediaUrl'] . '/' . $filename);
+
+            } elseif($lec['wShootingCcd'] == '104004') {
+                // 신규 보안 라이브강의
+                $this->load->library('SKBsignurl');
+                $url = $this->skbsignurl->getSign($this->clearUrl($row['wMediaUrl'] . '/' . $filename));
+
+            } else {
+                $url = $this->clearUrl($row['wMediaUrl'].'/'.$filename);
+            }
+
             $title = clean_string($row['wUnitNum'].'회 '.$row['wUnitLectureNum'].'강 '.$row['wUnitName']);
             $id = "^{$MemId}^{$MemIdx}^{$OrderIdx}^{$lec['OrderProdIdx']}^{$ProdCode}^{$ProdCodeSub}^{$row['wUnitIdx']}^{$logidx}^";
             $category = clean_string($lec['subProdName']); //$lec['SubjectName'].'/'.$lec['CourseName'];

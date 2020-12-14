@@ -184,4 +184,63 @@ class DeliveryInfoModel extends BaseOrderModel
             $this->smsModel->addKakaoMsg($phone, null, null, null, 'KAT', 'delivery003', $tmpl_val);
         }
     }
+
+    /**
+     * 배송대상 주문조회 (송장번호 등록이전 데이터, 모아시스 전용)
+     * @param string $search_start_datm [조회시작일시 (결제일시)]
+     * @param string $search_end_datm [조회종료일시 (결제일시)]
+     * @param null|int $site_code [사이트코드]
+     * @return array
+     */
+    public function getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $site_code = null)
+    {
+        $where = $this->_conn->makeWhere(['EQ' => ['O.SiteCode' => $site_code]])->getMakeWhere(true);
+
+        $column = 'O.OrderIdx, OP.OrderProdIdx, OP.ProdCode
+            , current_date() as OutDate
+            , ODA.Receiver
+            , fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone
+            , TA.wBookIdx
+            , WB.wBookName
+            , OP.OrderPrice
+            , TA.OrderProdQty
+            , OP.RealPayPrice
+            , ODA.ZipCode
+            , concat(trim(ODA.Addr1), " ", trim(fn_dec(ODA.Addr2Enc))) as Addr
+            , ODA.DeliveryMemo        
+        ';
+
+        $from = '
+            from (
+                select O.OrderIdx, PB.wBookIdx, max(OP.OrderProdIdx) as OrderProdIdx, count(0) as OrderProdQty
+                from ' . $this->_table['order'] . ' as O
+                    inner join ' . $this->_table['order_product'] . ' as OP
+                        on O.OrderIdx = OP.OrderIdx	
+                    inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
+                        on OP.OrderProdIdx = OPD.OrderProdIdx		
+                    inner join ' . $this->_table['product_book'] . ' as PB
+                        on OP.ProdCode = PB.ProdCode
+                where O.CompleteDatm between ? and ?
+                    and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                    and OPD.DeliveryStatusCcd is null
+                    ' . $where . '
+                group by O.OrderIdx, PB.wBookIdx
+            ) as TA
+                inner join ' . $this->_table['order'] . ' as O
+                    on TA.OrderIdx = O.OrderIdx
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on TA.OrderIdx = OP.OrderIdx and TA.OrderProdIdx = OP.OrderProdIdx
+                inner join ' . $this->_table['order_delivery_address'] . ' as ODA
+                    on TA.OrderIdx = ODA.OrderIdx
+                inner join ' . $this->_table['bms_book'] . ' as WB
+                    on TA.wBookIdx = WB.wBookIdx
+            where O.CompleteDatm between ? and ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                ' . $where . '
+            order by TA.OrderIdx desc, TA.OrderProdIdx asc        
+        ';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from, [$search_start_datm, $search_end_datm, $search_start_datm, $search_end_datm])->result_array();
+    }
 }

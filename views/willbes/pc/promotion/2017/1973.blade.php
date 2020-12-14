@@ -17,6 +17,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1973_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#f0f0f0;}
         .evt02 {padding:100px 0}
@@ -25,27 +26,29 @@
         .table_wrap {width:1120px; margin:0 auto}
         .table_wrap table{margin-top:30px; border-top:1px solid #d0d2d9; background:#fff}
         .table_wrap table td,
-        .table_wrap table th{height:48px; padding:0 10px; border:1px solid #d0d2d9; border-left:0; border-top:0}
-        .table_wrap table th{font-size:16px; color:#767987; font-weight:500; background:#dfe1e7}
-        .table_wrap table td{font-size:15px; color:#444; padding:20px 15px; line-height:1.5;}
+        .table_wrap table th{height:48px; padding:0 10px; border:1px solid #d0d2d9; border-left:0; border-top:0; text-align:center}
+        .table_wrap table th{font-size:16px; color:#767987; font-weight:bold; background:#dfe1e7}
+        .table_wrap table td{font-size:14px; color:#444; padding:20px 15px; line-height:1.5;}
         .table_wrap table td div.tImg {width:150px; height:150px; overflow:hidden; margin:0 auto; border:1px solid #333; margin-bottom:10px}
         .table_wrap table td div img {width:100%}
         .table_wrap table tr:first-of-type th{border-top:1px solid #d0d2d9}
         .table_wrap table tr th:first-of-type,
         .table_wrap table tr td:first-of-type{border-left:1px solid #d0d2d9}
-        .table_wrap table tr td:last-of-type{text-align:left; padding:20px 30px}
-        .table_wrap table td p.txtSt01 {font-size:130%; color:#000}
-        .table_wrap table td p strong {font-size:110%; font-weight:400; color:#000}
-        .table_wrap table td .btnSet {width:80%; margin-top:10px}
-        .table_wrap table td .btnSet li {display:inline; float:left; width:48%; margin-right:2%; margin-bottom:10px}
-        .table_wrap table td .btnSet a {display:block; padding:8px 0; text-align:center; font-size:105%; background:#427eec; color:#fff}
-        .table_wrap table td .btnSet li:nth-child(3) a,
-        .table_wrap table td .btnSet li:nth-child(4) a{background:#8c6f47}
-        .table_wrap table td .btnSet li a:hover {background:#333}
-        .table_wrap table td .btnSet:after {content:""; display:block; clear:both}
+        .table_wrap table tr td:last-of-type{text-align:left;}
+        .table_wrap table td table {margin-top:10px;}
+        .table_wrap table td table,
+        .table_wrap table td tr, 
+        .table_wrap table td th, 
+        .table_wrap table td td {border:0 !important}
+        .table_wrap table td th {background:#d8e5fc; color:#333; border:0} 
+        .table_wrap table td th:nth-child(2) {background:#fdeeda;} 
+        .table_wrap table td td {text-align:center !important; border:0; vertical-align: top;}
+        .table_wrap table td td a {display:block; padding:8px 0; text-align:center; font-size:14px; background:#235fcc; color:#fff; margin-bottom:5px}
+        .table_wrap table td td:nth-child(2) a {background:#427eec}
+        .table_wrap table td td:nth-child(3) a {background:#8c6f47}
+        .table_wrap table td p.txtSt01 {font-size:18px; color:#000; font-weight:bold}
 
         .evt03 {background:#fee333}
-
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
@@ -76,22 +79,6 @@
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th>유아</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51076/prof_detail_51076.png" alt="민정선"></div>
-                                <p><strong>민정선</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">유아 임용 합격의 대세~! 합격의 트렌드를 읽다.</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr> 
-                        <tr>
                             <th>교육학</th>
                             <td>
                                 <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51074/prof_detail_51074.png" alt="이인재"></div>
@@ -99,44 +86,68 @@
                             </td>
                             <td>
                                 <p class="txtSt01">명쾌한 설명으로 쉬워지는 교육학!!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:alert('준비중입니다.');">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr> 
                         <tr>
                             <th>교육학</th>
                             <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51073/prof_detail_51073.png" alt="김차웅"></div>
-                                <p><strong>김차웅</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">교육학 강의 10년의 베테랑, 진짜 전문가의 경험과 노하우</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[5] == 'Y') {{ front_url($file_link[5]) }} @else {{ $file_link[5] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>교육학</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_detail_.png" alt="정현"></div>
+                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51158/prof_detail_51158.png" alt="정현"></div>
                                 <p><strong>정현</strong> 교수</p>
                             </td>
                             <td>
                                 <p class="txtSt01">VZONEdu 교육학</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[7] == 'Y') {{ front_url($file_link[7]) }} @else {{ $file_link[7] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[8] == 'Y') {{ front_url($file_link[8]) }} @else {{ $file_link[8] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:alert('준비중입니다.');">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>     
                         <tr>
@@ -147,30 +158,34 @@
                             </td>
                             <td>
                                 <p class="txtSt01">전공국어, 합격을 위한 필수 전략 제시~! NO 1. 교육론</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[9] == 'Y') {{ front_url($file_link[9]) }} @else {{ $file_link[9] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
-                        </tr>     
-                        <tr>
-                            <th>전공국어</th>
-                            <td>
-                                <div class="tImg"><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51079/prof_detail_51079.png" alt="이원근"></div>
-                                <p><strong>이원근</strong> 교수</p>
-                            </td>
-                            <td>
-                                <p class="txtSt01">국어학 박사의 정통 강의, 핵심만을 짚어내는 안목!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[11] == 'Y') {{ front_url($file_link[11]) }} @else {{ $file_link[11] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[12] == 'Y') {{ front_url($file_link[12]) }} @else {{ $file_link[12] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
-                            </td>
-                        </tr>    
+                        </tr>       
                         <tr>
                             <th>전공영어</th>
                             <td>
@@ -179,12 +194,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">일반영어/영미 문학의 절대 권위자~!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[13] == 'Y') {{ front_url($file_link[13]) }} @else {{ $file_link[13] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[14] == 'Y') {{ front_url($file_link[14]) }} @else {{ $file_link[14] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>    
                         <tr>
@@ -195,12 +230,28 @@
                             </td>
                             <td>
                                 <p class="txtSt01">영어학의 정석, 합격으로 가는 가장 빠른길~!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[15] == 'Y') {{ front_url($file_link[15]) }} @else {{ $file_link[15] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[16] == 'Y') {{ front_url($file_link[16]) }} @else {{ $file_link[16] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div>* 설명회 강의에 기출 해설 강의가 포함됨</div>
                             </td>
                         </tr>    
                         <tr>
@@ -211,12 +262,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">수학교육론의 새로운 패러다임, 적중의 역사를 쓰다~!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[17] == 'Y') {{ front_url($file_link[17]) }} @else {{ $file_link[17] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[18] == 'Y') {{ front_url($file_link[18]) }} @else {{ $file_link[18] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>  
                         <tr>
@@ -227,12 +298,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">부드러운 카리스마~! 도덕 윤리의 독보적 명강의</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[19] == 'Y') {{ front_url($file_link[19]) }} @else {{ $file_link[19] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[20] == 'Y') {{ front_url($file_link[20]) }} @else {{ $file_link[20] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>   
                         <tr>
@@ -243,12 +334,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">차원이 다른 클래스 VZONE 전공체육</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[21] == 'Y') {{ front_url($file_link[21]) }} @else {{ $file_link[21] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[22] == 'Y') {{ front_url($file_link[22]) }} @else {{ $file_link[22] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:alert('준비중입니다.');">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>  
                         <tr>
@@ -259,12 +370,33 @@
                             </td>
                             <td>
                                 <p class="txtSt01">독보적인 커리큘럼~! 음악 합격의 필수 관문!!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[23] == 'Y') {{ front_url($file_link[23]) }} @else {{ $file_link[23] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[24] == 'Y') {{ front_url($file_link[24]) }} @else {{ $file_link[24] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비 1강</a>
+                                                    <a href="#none">2021 학년도 대비 2강</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -275,12 +407,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">합격을 만드는 위대한 소통, 무한 피드백~!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[25] == 'Y') {{ front_url($file_link[25]) }} @else {{ $file_link[25] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[26] == 'Y') {{ front_url($file_link[26]) }} @else {{ $file_link[26] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>   
                         <tr>
@@ -291,12 +443,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">정보컴퓨터의 대체 불가 절대 강자~!</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[27] == 'Y') {{ front_url($file_link[27]) }} @else {{ $file_link[27] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[28] == 'Y') {{ front_url($file_link[28]) }} @else {{ $file_link[28] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr> 
                         <tr>
@@ -307,12 +479,32 @@
                             </td>
                             <td>
                                 <p class="txtSt01">중국어 임용, 합격의 NEW Paradigm</p>
-                                <ul class="btnSet">
-                                    <li><a href="#none">2021학년도 대비 설명회</a></li>
-                                    <li><a href="@if($file_yn[29] == 'Y') {{ front_url($file_link[29]) }} @else {{ $file_link[29] }} @endif" alt="설명회 자료" >설명회 관련 자료</a></li>
-                                    <li><a href="#none">2021학년도 기출 해설</a></li>
-                                    <li><a href="@if($file_yn[30] == 'Y') {{ front_url($file_link[30]) }} @else {{ $file_link[30] }} @endif" alt="기출 자료" >기출 관련 자료</a></li>
-                                </ul>
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">설명회</th>
+                                                <th>기출해설</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <a href="#none">2021 학년도 대비</a>
+                                                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="javascript:alert('준비중입니다.');">2022 학년도 대비</a>
+                                                    <a href="@if($file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                                <td>
+                                                    <a href="#none">2021 학년도 기출</a>
+                                                    <a href="@if($file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" alt="설명회 자료">자료</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </td>
                         </tr>                                                                                      
                     </tbody>
@@ -328,7 +520,6 @@
             </map>
         </div>
 
-
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
@@ -338,14 +529,14 @@
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">유의사항</h4>
                 <ul>
-                    <li>SNS는 페이스북, 인스타그램, 카카오스토리, 트위터가 해당되며, 카페 및 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
-                        (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)
-                    <li>설명회 안내 링크 주소와 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.
-                    <li>임용 설명회와 관계가 없는 글이나, 삭제 및 비공개로 설정 되어 있는 경우에는, 당첨에서 제외될 수 있습니다.
-                    <li>중복된 공유 글은 당첨에서 제외합니다.
+                    <li>Sns는 페이스북, 인스타그램, 카카오스토리, 트위터가 해당되며, 카페 및 블로그의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
+                    (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)</li>  
+                    <li>설명회 안내 링크 주소와 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.</li>  
+                    <li>임용 설명회와 관계가 없는 글이나, 삭제 및 비공개로 설정 되어 있는 경우에는, 당첨에서 제외될 수 있습니다.</li>  
+                    <li>중복된 공유 글은 당첨에서 제외합니다.</li>  
+                    <li>당첨자는 1월 15일, 게시판을 통해 공지합니다.</li>  
                     <li>이벤트 상품은 기프티콘으로 지급될 예정이며, 회원가입 시 입력하신 휴대폰 정보로 전송됩니다.<br>
-                        (회원 정보 오류 시, 12월 28일까지 수정해주셔야 합니다.)
-                    <li>당첨자는 12월 23일, 게시판을 통해 공지합니다.</li>                     
+                        (회원 정보 오류 시, 1월 20일까지 수정해주셔야 합니다.)</li>                     
                 </ul>
 
             </div>

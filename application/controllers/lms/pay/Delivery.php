@@ -407,4 +407,80 @@ class Delivery extends BaseOrder
 
         $this->json_result($result, '수정되었습니다.', $result);
     }
+
+    /**
+     * 배송대상 주문조회 (모아시스)
+     */
+    public function targetExcel()
+    {
+        // 발송대상 주문조회
+        $search_start_date = $this->_reqP('search_start_date');
+        $search_end_date = $this->_reqP('search_end_date');
+        $search_site_code = $this->_reqP('search_site_code');
+
+        if (empty($search_start_date) === true || empty($search_end_date) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        $search_start_datm = $search_start_date . ' 00:00:00';
+        $search_end_datm = $search_end_date . ' 23:59:59';
+
+        $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
+        if (empty($data) === true) {
+            show_alert('데이터가 없습니다.', 'back');
+        }
+        $last_query = $this->deliveryInfoModel->getLastQuery();
+
+        // 주문 데이터 가공 (동일주문건 배송지정보 1번째 주문상품건에만 표기)
+        $prev_order_idx = null;
+        $order_prod_seq = 1;
+        $results = [];
+
+        foreach ($data as $idx => $row) {
+            if ($row['OrderIdx'] != $prev_order_idx) {
+                $order_prod_seq = 1;
+
+                $results[$idx]['OutDate'] = $row['OutDate'];
+                $results[$idx]['Receiver'] = $row['Receiver'];
+                $results[$idx]['ReceiverPhone'] = $row['ReceiverPhone'];
+                $results[$idx]['OrderProdSeq'] = $order_prod_seq;
+                $results[$idx]['wBookIdx'] = $row['wBookIdx'];
+                $results[$idx]['wBookName'] = $row['wBookName'];
+                $results[$idx]['OrderPrice'] = (int) $row['OrderPrice'];
+                $results[$idx]['OrderProdQty'] = (int) $row['OrderProdQty'];
+                $results[$idx]['SupplyRate'] = 100;
+                $results[$idx]['RealPayPrice'] = (int) $row['RealPayPrice'];
+                $results[$idx]['Type1'] = '위탁';
+                $results[$idx]['Type2'] = '';
+                $results[$idx]['SupplyLocation'] = '창고';
+                $results[$idx]['ZipCode'] = $row['ZipCode'];
+                $results[$idx]['Addr'] = $row['Addr'];
+                $results[$idx]['DeliveryMemo'] = $row['DeliveryMemo'];
+            } else {
+                $results[$idx]['OutDate'] = '';
+                $results[$idx]['Receiver'] = '';
+                $results[$idx]['ReceiverPhone'] = '';
+                $results[$idx]['OrderProdSeq'] = $order_prod_seq;
+                $results[$idx]['wBookIdx'] = $row['wBookIdx'];
+                $results[$idx]['wBookName'] = $row['wBookName'];
+                $results[$idx]['OrderPrice'] = (int) $row['OrderPrice'];
+                $results[$idx]['OrderProdQty'] = (int) $row['OrderProdQty'];
+                $results[$idx]['SupplyRate'] = 100;
+                $results[$idx]['RealPayPrice'] = (int) $row['RealPayPrice'];
+                $results[$idx]['Type1'] = '';
+                $results[$idx]['Type2'] = '';
+                $results[$idx]['SupplyLocation'] = '';
+                $results[$idx]['ZipCode'] = '';
+                $results[$idx]['Addr'] = '';
+                $results[$idx]['DeliveryMemo'] = '';
+            }
+
+            $prev_order_idx = $row['OrderIdx'];
+            $order_prod_seq++;
+        }
+
+        // export excel
+        $headers = ['출고일자', '이름', '연락처', '순번', '도서코드', '교재명', '정가', '출고부수', '공급율', '출고금액', '구분1', '구분2', '출고위치', '우편번호', '주소', '비고'];
+        $this->_makeExcel('교재배송_모아시스', $results, $headers, true, $last_query);
+    }
 }

@@ -129,6 +129,13 @@
                                 <td class="w-list">{{ $row['CourseName'] }}</td>
                                 <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
                                 <td class="w-data tx-left pl25">
+                                    @if($row['LecTypeCcd'] === '607003')
+                                        <dl class="w-info">
+                                            <div class="OTclass">
+                                                <span>직장인반</span> <a href="#none" class="lec_type_info">유의사항</a>
+                                            </div>
+                                        </dl>
+                                    @endif
                                     <div class="w-tit prod-title-{{ $row['ProdCode'] }}" data-inof="lec">{{ $row['ProdName'] }}</div>
                                     <dl class="w-info">
                                         <dt>강의촬영(실강) : {{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt>
@@ -248,6 +255,27 @@
             </form>
         </div>
         {!! banner('수강신청_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        <div id="OTclassInfo" class="willbes-Layer-requestInfo2">
+            <a class="closeBtn" href="#none" onclick="closeWin('OTclassInfo')">
+                <img src="{{ img_url('prof/close.png') }}">
+            </a>
+            <div class="Layer-Tit NG tx-dark-black">직장인반  <span class="tx-blue">수강 안내</span></div>
+            <div class="Layer-Cont">
+                <div class="Layer-SubTit tx-gray">
+                    <ul>
+                        <li>
+                            <strong>예) 40일 강좌 수강시</strong><br>
+                            - 수강 시간 : 평일 18~06시만 수강 / 주말, 공휴일 24시간 수강<br>
+                            - 수강 기간 : 원래 수강 기간 X 1.4배수(40일 X 1.4 = 56일)<br>
+                            - 수강 중지 : 3회. 3회의 합은 56일까지<br>
+                            - 수강 연장 : 3회. 1일 연장 수강료는 원래 수강 기간 40일 기준(강의 종료일까지만 연장 가능)<br>
+                            - 수강 환불 : 환불일수는 원래 수강 기간 40일 기준(수강 중지시 환불 불가)<br>
+                            - 직장인반은 일반강의로 변경이 안됩니다.<br>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- willbes-Lec-buyBtn-sm -->
     {!! popup('657002') !!}
@@ -418,6 +446,24 @@
                 }
                 cartNDirectPay($regi_form, $is_direct_pay, 'Y');
             });
+
+            $('.lec_type_info').on('click', function(){
+                var $target_layer = $('#OTclassInfo');
+                var top_bn_height = $('#topBannerLayer').height();
+                var top = $(this).offset().top + 30;
+                if (top_bn_height !== null && typeof top_bn_height !== 'undefined') {
+                    top = top - top_bn_height;
+                }
+                var right = 180;
+                $target_layer.css({
+                    'display': 'block',
+                    'top': top,
+                    'right': right,
+                    'left': 400,
+                    'position': 'absolute'
+                }).addClass();
+            });
+
         });
     </script>
 @stop

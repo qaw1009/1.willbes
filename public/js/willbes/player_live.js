@@ -76,13 +76,19 @@ function onKeyDown(keycode)
             }
             break;
         case 90: // z : 원배속
-            player.setRate(((player.getRate() - 0.2) < 0.6) ? 0.6 : (player.getRate() - 0.2));
+            if(player.getShowRate()) {
+                var newrate = (player.getRate() - 0.2) < 0.6 ? 0.6 : (player.getRate() - 0.2);
+                player.setRate(newrate.toFixed(1));
+            }
             break;
         case 88: // x : 느리게
             player.setRate(1);
             break;
         case 67: // c : 빠르게
-            player.setRate(player.getRate() + 0.2);
+            if(player.getShowRate()) {
+                var newrate = player.getRate() + 0.2;
+                player.setRate(newrate.toFixed(1));
+            }
             break;
         default:
             return;

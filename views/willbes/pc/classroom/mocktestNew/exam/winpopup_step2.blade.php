@@ -3,11 +3,6 @@
 @section('content')
     <!-- Popup -->
     <div class="Popup ExamBox">
-        <div class="popTitBox">
-            <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
-            <div class="pop-subTit">{{ $examData['productInfo']['ProdName'] }}</div>
-        </div>
-
         <form id="all_regi_form" name="all_regi_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
             <input type="hidden" name="mr_idx" value="{{ element('mr_idx',$arr_input) }}"/>
@@ -27,15 +22,33 @@
             <input type="hidden" name="remain_sec"/>
             @foreach($examData['qtList'] as $key => $val)
                 <input type="hidden" name="q_cnt_{{$key}}" value="{{$val['TCNT']}}"/>
-            @endforeach
+            @endforeach               
 
             <div class="popupContainer mg-zero">
-                <div class="examSjBx">
-                    <div class="inner">
-                        <h3>응시과목 : </h3>
-                        <ul class="sj">
-                            @foreach($examData['p_subject'] as $key => $val)
-                                <li id="button_{{$key}}">
+                <div class="ExamBoxHead">
+                    <div class="popTitBox">
+                        <div class="pop-Tit NG"><img src="{{ img_url('/mypage/logo.gif') }}"> 전국 모의고사</div>
+                        <div class="pop-subTit">{{ $examData['productInfo']['ProdName'] }}</div>
+                    </div>
+                    <div class="examSjBx">
+                        <div class="inner">
+                            <h3>응시과목 : </h3>
+                            <ul class="sj">
+                                @foreach($examData['p_subject'] as $key => $val)
+                                    <li id="button_{{$key}}">
+                                        @php
+                                            $class = '';
+                                            if(empty($examData['qtList'][$key]) === false && ($examData['qtList'][$key]['CNT'] == $examData['qtList'][$key]['TCNT'])) {
+                                                $class = 'exam-fin';
+                                            } else if (empty($examData['qtList'][$key]) === false && ($examData['qtList'][$key]['CNT'] > 0)) {
+                                                $class = 'exam-temp';
+                                            }
+                                        @endphp
+                                        <a href="javascript:void(0);" class="btn-subject {{($loop->first === true) ? 'exam-ing' : ''}} {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
+                                        @if ($loop->last === false) <span class="row-line">|</span> @endif
+                                    </li>
+                                @endforeach
+                                @foreach($examData['s_subject'] as $key => $val)
                                     @php
                                         $class = '';
                                         if(empty($examData['qtList'][$key]) === false && ($examData['qtList'][$key]['CNT'] == $examData['qtList'][$key]['TCNT'])) {
@@ -44,33 +57,20 @@
                                             $class = 'exam-temp';
                                         }
                                     @endphp
-                                    <a href="javascript:void(0);" class="btn-subject {{($loop->first === true) ? 'exam-ing' : ''}} {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
-                                    @if ($loop->last === false) <span class="row-line">|</span> @endif
-                                </li>
-                            @endforeach
-                            @foreach($examData['s_subject'] as $key => $val)
-                                @php
-                                    $class = '';
-                                    if(empty($examData['qtList'][$key]) === false && ($examData['qtList'][$key]['CNT'] == $examData['qtList'][$key]['TCNT'])) {
-                                        $class = 'exam-fin';
-                                    } else if (empty($examData['qtList'][$key]) === false && ($examData['qtList'][$key]['CNT'] > 0)) {
-                                        $class = 'exam-temp';
-                                    }
-                                @endphp
-                                <li id="button_{{$key}}">
-                                    <span class="row-line">|</span>
-                                    <a href="javascript:void(0);" class="btn-subject {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <div class="countTime">남은시간 : <span id="timer" class="time">--:--:--</span></div>
+                                    <li id="button_{{$key}}">
+                                        <span class="row-line">|</span>
+                                        <a href="javascript:void(0);" class="btn-subject {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <div class="countTime">남은시간 : <span id="timer" class="time">--:--:--</span></div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div>                      
 
             @foreach($questionData as $subject_key => $subject_data)
-                <div class="examPaperWp pb20" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
-                    <div class="exam-paper mt50">
+                <div class="examPaperWp" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
+                    <div class="exam-paper">
                         @if ($examData['productInfo']['PaperType'] == 'I')
                             <ul>
                                 {{--문항별이미지--}}
@@ -88,6 +88,7 @@
                             @endif
                         @endif
                     </div>
+
                     <div class="answer-sheet">
                         <div class="exam-txt">
                             * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
@@ -156,6 +157,8 @@
                     </div>
                 </div>
             @endforeach
+            </div> 
+            <!--popupContainer//-->
         </form>
     </div>
 

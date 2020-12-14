@@ -284,7 +284,7 @@
                         <li>
                             <div>
                             <strong>120</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="176479" onClick=""/> <label for="y_pkg1">0원 무제한 PASS</label>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">0원 무제한 PASS</label>
                             </div>
                         </li>
                         <li>
@@ -400,9 +400,9 @@
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS [일반경찰+경행경채]</span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab1">합격보장 0원 PASS</a></li>
+                <li><a href="#tab1">0원 무제한 PASS</a></li>
                 <li><a href="#tab2">15개월 PASS</a></li>
-                <li><a href="#tab3">6개월 PASS</a></li>
+                <li><a href="#tab3">2021년 대비 PASS</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab1">
@@ -416,7 +416,7 @@
                             <li>본 상품은 2021년 시험 이내 환급 또는 환불 조건을 달성하지 못한 경우, 수강 기간 갱신 가능합니다.</li>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.<br>
                                 수강가능 교수진 확인하기 ▼<br>
-                                형사소송법/수사 : 신광은 교수님<br>
+                                형사소송법/형사법/수사 : 신광은 교수님<br>
                                 형법/헌법 : 김원욱 교수님<br>
                                 경찰학개론/행정법 : 장정훈 교수님<br>
                                 영어 : 하승민 교수님<br>
@@ -427,7 +427,7 @@
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>신광은경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                            <li>환급/환불 혜택은 합격 시 환급, 불합격 시 환불 중 1번만 가능하며, 환급 시 보유한 PASS 수강기간은 종료됩니다. (수강기간 갱신 불가))</li>
+                            <li>최종합격 인증 후 환급 시 보유한 PASS 수강기간은 종료됩니다. (수강기간 갱신 불가)</li>
                         </ol>
                     </dd>
 
@@ -549,7 +549,7 @@
                             <li>본 상품은 구매일로부터 15개월간 수강 가능한 상품입니다.</li>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.<br>
                                 수강가능 교수진 확인하기 ▼<br>
-                                형사소송법/수사 : 신광은 교수님<br>
+                                형사소송법/형사법/수사 : 신광은 교수님<br>
                                 형법/헌법 : 김원욱 교수님<br>
                                 경찰학개론/행정법 : 장정훈 교수님<br>
                                 영어 : 하승민 교수님<br>
@@ -625,11 +625,11 @@
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
-                        <h3>6개월 PASS</h3>
+                        <h3>2021년 대비 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 6개월간 수강 가능한 상품입니다.</li>
+                            <li>본 상품은 구매일로부터  21년 2차 시험일 8/21 까지 들을수 있는 상품입니다.</li>
                             <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.<br>
                                 수강가능 교수진 확인하기 ▼<br>
                                 형사소송법/수사 : 신광은 교수님<br>

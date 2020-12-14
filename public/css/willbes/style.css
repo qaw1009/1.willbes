@@ -8674,7 +8674,6 @@ table.PassZoneTable .w-data {
 .willbes-Layer-PassBox .lecMoreWrap {
     float: left;
     width: 100%;
-    padding: 30px 0 0;
 }
 .willbes-Layer-PassBox .passinfoWrap {
     width: 100%;
@@ -8739,13 +8738,13 @@ table.PassZoneTable .w-data {
     padding-left: 10px;
 }
 .willbes-Layer-PassBox .passzoneSubInfo {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     letter-spacing: 0;
     border-bottom: 1px solid #959595;
     padding-bottom: 10px;
 }
 .willbes-Layer-PassBox .passzoneSubInfo li {
-    line-height: 23px;
+    line-height: 20px;
 }
 .willbes-Layer-PassBox .passzoneSubInfo li.tit {
     line-height: 12px;
@@ -9631,6 +9630,7 @@ table.testTable tr td.w-date {
     background: url("../../img/willbes/mypage/icon_round_blue.png") no-repeat center center;
 }
 
+.ExamBox .ExamBoxHead {position: fixed; width:100%; background-color: #fff;}
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examSjBx */
 .ExamBox .examSjBx {
     height: 40px;
@@ -9685,17 +9685,25 @@ table.testTable tr td.w-date {
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examPaperWp */
 .ExamBox .examPaperWp {
-    margin: 6px 10px 0 25px;
+    margin: 0 10px 0 25px;
 }
 .ExamBox .examPaperWp:after {
     content: '';
     display: block;
     clear: both;
 }
+/*
 .ExamBox .examPaperWp .exam-paper {
     float: left;
     width: 650px;
     height: 665px;
+    overflow-x: auto;
+}*/
+.ExamBox .examPaperWp .exam-paper {
+    position: absolute;
+    top:110px;
+    width: calc(100% - 540px);
+    height: calc(100% - 120px);
     overflow-x: auto;
 }
 .ExamBox .examPaperWp .exam-paper li {
@@ -9706,9 +9714,18 @@ table.testTable tr td.w-date {
     color: #555;
     vertical-align: top;
 }
+/*
 .ExamBox .examPaperWp .answer-sheet {
     float: right;
     width: 460px;
+}*/
+.ExamBox .examPaperWp .answer-sheet {
+    position: fixed;
+    top:90px;
+    right:10px;
+    width: 480px;
+    height: calc(100% - 120px);
+    overflow-y: auto;
 }
 .ExamBox .examPaperWp .answer-sheet .exam-txt {
     font-size: 11px;
@@ -9718,6 +9735,7 @@ table.testTable tr td.w-date {
 }
 
 /* subContainer : Mypage : 모의고사관리 : ExamBox : answerTb */
+
 .ExamBox .answerTb tr th,
 .ExamBox .answerTb tr td {
     font-size: 12px;
@@ -9738,6 +9756,8 @@ table.testTable tr td.w-date {
     height: 28px;
     line-height: 26px;
 }
+.ExamBox .answerTb tr th:nth-child(6) {background-color:#e8c2c2;}
+.ExamBox .answerTb tr td:nth-child(6) {background-color:#fee5e5;}
 .ExamBox .answerTb tr.nth {
     background: #f4f4f4;
 }
@@ -9755,8 +9775,8 @@ table.testTable tr td.w-date {
 /* subContainer : Mypage : 모의고사관리 : ExamBox */
 .ExamBox .popTitBox {
     background: #eaeaea;
-    height: 64px;
-    line-height: 64px;
+    height: 50px;
+    line-height: 50px;
     letter-spacing: -1px;
     border-bottom: 1px solid #ccc;
 }
@@ -9768,7 +9788,7 @@ table.testTable tr td.w-date {
 }
 .ExamBox .popTitBox .pop-Tit img {
     float: left;
-    margin: 10px 0 0 25px;
+    margin: 5px 0 0 25px;
 }
 .ExamBox .popTitBox .pop-subTit {
     float: right;

@@ -157,4 +157,19 @@ class ExamTakeInfo extends \app\controllers\BaseController
         $result = $this->examTakeInfoModel->modifySubjectCcd($this->_reqP(null));
         $this->json_result($result,'정상 처리 되었습니다.',$result);
     }
+
+    public function storeIsUses()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->examTakeInfoModel->modifyIsUse(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
 }

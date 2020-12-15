@@ -65,6 +65,7 @@
             </div>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <colgroup>
+                    <col style="width: 5%;">
                     <col style="width: 3%;">
                     <col style="width: 11%;">
                     <col style="width: 6%;">
@@ -82,6 +83,7 @@
                 </colgroup>
                 <thead>
                 <tr>
+                    <th class="valign-middle">선택<input type="checkbox" class="flat" id="all_check"/></th>
                     <th class="text-center">No</th>
                     <th class="text-center">사이트</th>
                     <th class="text-center">학년도</th>
@@ -116,7 +118,8 @@
                     //{ text: '<i class="fa fa-pencil mr-5"></i> 엑셀일괄등록', className: 'btn-sm btn-warning border-radius-reset mr-15 btn-regist-excel'},
                     { text: '<i class="fa fa-pencil"></i> 추시과목설정', className: 'btn-sm btn-primary border-radius-reset mr-10 btn-modify-subject-ccd'},
                     { text: '<i class="fa fa-pencil"></i> 응시정보입력', className: 'btn-sm btn-primary border-radius-reset mr-10 btn-regist'},
-                    { text: '<i class="fa fa-pencil"></i> 데이터산출', className: 'btn-sm btn-primary border-radius-reset btn-data-setting'},
+                    { text: '<i class="fa fa-pencil"></i> 데이터산출', className: 'btn-sm btn-primary border-radius-reset mr-20 btn-data-setting'},
+                    { text: '<i class="fa fa-pencil"></i> 사용/미사용처리', className: 'btn-sm btn-danger border-radius-reset btn-modify-is-use'},
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/examTakeInfo/listAjax') }}',
@@ -126,6 +129,9 @@
                     }
                 },
                 columns: [
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
+                            return '<input type="checkbox" class="flat" name="is_use" value="Y" data-is-use-idx="'+ row.EtiIdx +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             // 리스트 번호
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -166,6 +172,50 @@
                             return '<button type="button" class="btn btn-success btn-modify" id="btn_modity" data-idx="'+row.EtiIdx+'">수정</button>'
                         }},
                 ]
+            });
+
+            $list_table.on('ifChanged', '#all_check', function() {
+                iCheckAll($list_table.find('input[name="is_use"]'), $(this));
+            });
+
+            //사용/미사용 처리
+            $('.btn-modify-is-use').on('click', function() {
+                if (!confirm('사용/미사용 상태를 적용하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_use = $list_table.find('input[name="is_use"]');
+                var origin_val, this_val, this_use_val;
+                var $params = {};
+                var _url = '{{ site_url('/site/examTakeInfo/storeIsUses') }}';
+
+                $is_use.each(function(idx) {
+                    // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                    this_use_val = $is_use.eq(idx).filter(':checked').val() || 'N';
+                    this_val = this_use_val;
+                    origin_val = $is_use.eq(idx).data('origin-is-use');
+                    if (this_val != origin_val) {
+                        $params[$(this).data('is-use-idx')] = { 'IsUse' : this_use_val };
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('변경된 내용이 없습니다.');
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
             $('.btn-regist').setLayer({

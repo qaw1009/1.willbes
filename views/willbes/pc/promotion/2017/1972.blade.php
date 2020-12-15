@@ -103,8 +103,10 @@
             <div class="tabs">
                 <ul>                    
                     <li><a href="#tab01">· 초등 <span>배재민 교수님</span></a></li>
+                    {{--
                     <li><a href="#tab02">· 교육학 <span>정 현 교수님</span></a></li>
                     <li><a href="#tab03">· 전공체육 <span>최규훈 교수님</span></a></li>
+                    --}}
                     <li><a href="#tab04">· 전공국어 <span>송원영 교수님</span></a></li>
                     <li><a href="#tab05">· 국어문법 <span>권보민 교수님</span></a></li>
                     <li><a href="#tab06">· 전공영어 <span>김유석 교수님</span></a></li>
@@ -179,7 +181,7 @@
                         </table>
                     </div>
                 </div>
-
+{{--
                 <div id="tab02">
                     <div class="ctsTitle NSK-Black">교육학 고득점을 위한 <span>최적의 Solution</span></div>
                     <div class="tabTop">
@@ -332,7 +334,7 @@
                         </table>
                     </div>
                 </div>
-
+--}}
                 <div id="tab04">
                     <div class="ctsTitle NSK-Black">국어ㆍ문학교육론! 체계적이면서 <span>완벽한 자료!!</span></div>
                     <div class="tabTop">

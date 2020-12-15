@@ -71,12 +71,20 @@
                     @foreach($arr_base['area_list'] as $key => $vals)
                         @php
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] / $arr_base['area_data'][$key]['NoticeNumber1']),2);
+                                if (empty($arr_base['area_data'][$key]['TakeNumber1']) === true || empty($arr_base['area_data'][$key]['NoticeNumber1']) === true) {
+                                    $avg_number1 = 0;
+                                } else {
+                                    $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] / $arr_base['area_data'][$key]['NoticeNumber1']),2);
+                                }
                             } else {
                                 $avg_number1 = '-';
                             }
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] / $arr_base['area_data'][$key]['NoticeNumber2']),2);
+                                if (empty($arr_base['area_data'][$key]['TakeNumber2']) === true || empty($arr_base['area_data'][$key]['NoticeNumber2']) === true) {
+                                    $avg_number2 = 0;
+                                } else {
+                                    $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] / $arr_base['area_data'][$key]['NoticeNumber2']),2);
+                                }
                             } else {
                                 $avg_number2 = '-';
                             }

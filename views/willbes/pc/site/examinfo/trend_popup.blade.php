@@ -7,7 +7,7 @@
         <div class="mainPop_con">
             <div class="mainPop_map">
                 <img src="https://static.willbes.net/public/images/promotion/main/2018/mainPop_map.jpg" alt="">
-                @if ($arr_input['subject_id'] == '733001')
+                @if ($retake_type == 'retake')
                     @foreach($arr_base['area_list'] as $key => $vals)
                         @php
                             if (empty($arr_base['area_data'][$key][$arr_base['years'][0]['YearTarget']]['1']) === false) {
@@ -36,9 +36,9 @@
                                 </colgroup>
                                 <tbody><tr>
                                     <th class="blue_th">{{ explode(':',$vals)[0] }}</th>
-                                    <th>2019 학년도</th>
-                                    <th>2019 추시</th>
-                                    <th>2020 학년도</th>
+                                    <th>{{(empty($arr_base['years'][0]['YearTarget']) === true ? '' : $arr_base['years'][0]['YearTarget'])}} 학년도</th>
+                                    <th>{{(empty($arr_base['years'][0]['YearTarget']) === true ? '' : $arr_base['years'][0]['YearTarget'])}} 추시</th>
+                                    <th>{{(empty($arr_base['years'][1]['YearTarget']) === true ? '' : $arr_base['years'][1]['YearTarget'])}} 학년도</th>
                                 </tr>
                                 <tr>
                                     <th>공고</th>
@@ -71,12 +71,20 @@
                     @foreach($arr_base['area_list'] as $key => $vals)
                         @php
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] / $arr_base['area_data'][$key]['NoticeNumber1']),2);
+                                if (empty($arr_base['area_data'][$key]['TakeNumber1']) === true || empty($arr_base['area_data'][$key]['NoticeNumber1']) === true) {
+                                    $avg_number1 = 0;
+                                } else {
+                                    $avg_number1 = round(($arr_base['area_data'][$key]['TakeNumber1'] / $arr_base['area_data'][$key]['NoticeNumber1']),2);
+                                }
                             } else {
                                 $avg_number1 = '-';
                             }
                             if (empty($arr_base['area_data'][$key]) === false) {
-                                $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] / $arr_base['area_data'][$key]['NoticeNumber2']),2);
+                                if (empty($arr_base['area_data'][$key]['TakeNumber2']) === true || empty($arr_base['area_data'][$key]['NoticeNumber2']) === true) {
+                                    $avg_number2 = 0;
+                                } else {
+                                    $avg_number2 = round(($arr_base['area_data'][$key]['TakeNumber2'] / $arr_base['area_data'][$key]['NoticeNumber2']),2);
+                                }
                             } else {
                                 $avg_number2 = '-';
                             }
@@ -103,8 +111,9 @@
                                 </colgroup>
                                 <tbody><tr>
                                     <th class="blue_th">{{ explode(':',$vals)[0] }}</th>
-                                    <th>2019 학년도</th>
-                                    <th>2020 학년도</th>
+                                    @foreach($arr_base['years'] as $y_row)
+                                        <th>{{ $y_row['YearTarget'] }} 학년도</th>
+                                    @endforeach
                                     <th>증감</th>
                                 </tr>
                                 <tr>

@@ -3,9 +3,11 @@
 @section('content')
     <h5>- 응시정보 데이터를 관리하는 메뉴입니다.</h5>
     <h5>
-        <li>테이블 정보를 기준으로 데이터산출 진행.</li>
-        <li>산출된 데이터는 사용자페이지에 노출됩니다.</li>
+        <li>추시과목설정 : 기준년도를 기준으로 추가 시험이 있는 과목 설정 (2019 유아과목)</li>
+        <li>기준년도 : 데이터산출 시 기준년도를 기준으로 증감,경쟁률 계산 </li>
+        <li>데이터 산출 : 산출된 데이터를 기준으로 사용자페이지에 노출</li>
         <li>임용시험과목(공통코드)의 '사용여부' 기준으로 사용자페에지 및 데이터 산출 진행.</li>
+        <li>데이터 산출 순서 : 응시정보입력 -> 추시과목설정 -> 데이터산출 -> 사용자페이지 노출</li>
     </h5>
 
     <form class="form-horizontal" id="search_form" name="search_form" method="POST" onsubmit="return false;">
@@ -56,6 +58,11 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <div class="form-group form-inline">
+                <div class="col-md-12 text-right mb-5">
+                    기준년도 : <input type="text" class="form-control" style="width: 50px;" id="target_year" name="기준년도" value="{{key($target_year_ccd)}}">
+                </div>
+            </div>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <colgroup>
                     <col style="width: 3%;">
@@ -106,9 +113,10 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    //{ text: '<i class="fa fa-pencil mr-5"></i> 엑셀일괄등록', className: 'btn-sm btn-warning border-radius-reset mr-15 btn-regist_excel'},
-                    { text: '<i class="fa fa-pencil mr-5"></i> 응시정보입력', className: 'btn-sm btn-primary border-radius-reset mr-18 btn-regist'},
-                    { text: '<i class="fa fa-pencil mr-5"></i> 데이터산출', className: 'btn-sm btn-primary border-radius-reset ml-10 btn-data-setting'},
+                    //{ text: '<i class="fa fa-pencil mr-5"></i> 엑셀일괄등록', className: 'btn-sm btn-warning border-radius-reset mr-15 btn-regist-excel'},
+                    { text: '<i class="fa fa-pencil"></i> 추시과목설정', className: 'btn-sm btn-primary border-radius-reset mr-10 btn-modify-subject-ccd'},
+                    { text: '<i class="fa fa-pencil"></i> 응시정보입력', className: 'btn-sm btn-primary border-radius-reset mr-10 btn-regist'},
+                    { text: '<i class="fa fa-pencil"></i> 데이터산출', className: 'btn-sm btn-primary border-radius-reset btn-data-setting'},
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/examTakeInfo/listAjax') }}',
@@ -166,7 +174,13 @@
                 'modal_id' : 'exam_take_create'
             });
 
-            $('.btn-regist_excel').setLayer({
+            $('.btn-modify-subject-ccd').setLayer({
+                'url' : '{{ site_url('/site/examTakeInfo/modifySubjectCcd') }}',
+                'width' : 900,
+                'modal_id' : 'pop_modal'
+            });
+
+            $('.btn-regist-excel').setLayer({
                 'url' : '{{ site_url('/site/examTakeInfo/createExcel/') }}',
                 'width' : 900,
                 'modal_id' : 'exam_take_excel_create'
@@ -184,10 +198,17 @@
             $('.btn-data-setting').click(function () {
                 if (!confirm('산출하시겠습니까?')) {return;}
                 var site_code = ($search_form.find('select[name="search_site_code"]').val() == '') ? '2017' : $search_form.find('select[name="search_site_code"]').val();
+                var target_year = $("#target_year").val();
+                if (target_year == '') {
+                    alert('기준년도를 입력해주세요.');
+                    $('#target_year').focus();
+                    return false;
+                }
                 var data = {
                     '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'POST',
-                    'site_code' : site_code
+                    'site_code' : site_code,
+                    'target_year' : target_year
                 };
 
                 sendAjax('{{ site_url('/site/examTakeInfo/dataStore') }}/', data, function(ret) {

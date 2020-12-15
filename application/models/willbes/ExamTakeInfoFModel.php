@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ExamTakeInfoFModel extends WB_Model
 {
-    private $_target_year = '';
     private $_table = [
         'sys_code' => 'lms_sys_code',
         'exam_take_info' => 'lms_exam_take_info',
@@ -14,7 +13,6 @@ class ExamTakeInfoFModel extends WB_Model
     {
         parent::__construct('lms');
         $this->load->model('lms/sys/codeModel');
-        $this->_target_year = date('Y') - 1;
     }
 
     /**
@@ -23,7 +21,15 @@ class ExamTakeInfoFModel extends WB_Model
      */
     public function getCcdForSubject($add_condition = [])
     {
-        return $this->codeModel->getCcd('733', '', $add_condition);
+        $add_condition = array_merge($add_condition, [
+            'EQ' => ['GroupCcd' => '733','IsUse' => 'Y','IsStatus' => 'Y']
+        ]);
+        $data = $this->codeModel->listAllCode($add_condition);
+        foreach ($data as $key => $row) {
+            $result[$row['Ccd']]['subject_name'] = $row['CcdName'];
+            $result[$row['Ccd']]['retake_type'] = $row['CcdDesc'];
+        }
+        return $result;
     }
 
     /**
@@ -43,7 +49,7 @@ class ExamTakeInfoFModel extends WB_Model
     public function totalExamInfo($site_code)
     {
         $data = $this->_totalExamInfo($site_code);
-        $data_kids = $this->_totalExamInfoForKids($site_code);
+        $data_kids = $this->_totalExamInfoForReTake($site_code);
         $data = array_replace_recursive($data_kids, $data);
         return $data;
     }
@@ -51,7 +57,7 @@ class ExamTakeInfoFModel extends WB_Model
     /**
      * 과목의 지역별 데이터
      */
-    public function getSubjectForAreaExamInfo($arr_condition)
+    public function getSubjectForAreaExamInfo($arr_condition, $retake_type)
     {
         $column = '
             SiteCode, TakeType, SubjectCcd, AreaCcd, YearTarget1, YearTarget2, NoticeNumber1, NoticeNumber2, TakeNumber1, TakeNumber2, PassLine1, PassLine2
@@ -69,7 +75,7 @@ class ExamTakeInfoFModel extends WB_Model
         $result = $this->_conn->query('select ' . $column . $from . $where . $group_by)->result_array();
 
         $data = [];
-        if ($arr_condition['EQ']['SubjectCcd'] == '733001') {
+        if ($retake_type == 'retake') {
             foreach ($result as $key => $val) {
                 $data[$val['AreaCcd']][$val['YearTarget1']][$val['TakeType']]['NoticeNumber'] = $val['NoticeNumber1'];
                 $data[$val['AreaCcd']][$val['YearTarget1']][$val['TakeType']]['TakeNumber'] = $val['TakeNumber1'];
@@ -77,10 +83,6 @@ class ExamTakeInfoFModel extends WB_Model
             }
         } else {
             foreach ($result as $key => $row) {
-                /*$data[$val['AreaCcd']][$val['YearTarget1']][$val['TakeType']]['NoticeNumber1'] = $val['NoticeNumber1'];
-                $data[$val['AreaCcd']][$val['YearTarget1']][$val['TakeType']]['TakeNumber1'] = $val['TakeNumber1'];
-                $data[$val['AreaCcd']][$val['YearTarget1']][$val['TakeType']]['PassLine1'] = $val['PassLine1'];*/
-
                 $data[$row['AreaCcd']]['SubjectCcd'] = $row['SubjectCcd'];
                 $data[$row['AreaCcd']]['TakeType'] = $row['TakeType'];
                 $data[$row['AreaCcd']]['YearTarget1'] = $row['YearTarget1'];
@@ -108,6 +110,10 @@ class ExamTakeInfoFModel extends WB_Model
      */
     public function getExamGroupYear($site_code)
     {
+        //기준년도조회(공통코드)
+        $data = $this->codeModel->getCcd('735');
+        $target_year_ccd = key($data);
+
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $site_code,
@@ -115,7 +121,7 @@ class ExamTakeInfoFModel extends WB_Model
                 'IsUse' => 'Y'
             ],
             'RAW' => [
-                'YearTarget >=' => $this->_target_year
+                'YearTarget >= ' => $target_year_ccd
             ]
         ];
         $column = 'YearTarget';
@@ -169,22 +175,23 @@ class ExamTakeInfoFModel extends WB_Model
     {
         $arr_condition = [
             'EQ' => [
-                'DataType' => 'total',
-                'SiteCode' => $site_code,
-                'AreaCcd' => '734001'
+                'a.DataType' => 'total',
+                'a.SiteCode' => $site_code,
+                'a.AreaCcd' => '734001'
             ],
             'NOT' => [
-                'SubjectCcd' => '733001'
+                'b.CcdDesc' => 'retake'
             ]
         ];
         $column = '
-            SiteCode, TakeType, SubjectCcd, AreaCcd, YearTarget1, YearTarget2, NoticeNumber1, NoticeNumber2, TakeNumber1, TakeNumber2, PassLine1, PassLine2
-            , NoticeNumber, TakeNumber, PassLine, UpDownNoticeNumber, UpDownTakeNumber, UpDownPassLine
+            a.SiteCode, a.TakeType, a.SubjectCcd, a.AreaCcd, a.YearTarget1, a.YearTarget2, a.NoticeNumber1, a.NoticeNumber2, a.TakeNumber1, a.TakeNumber2, a.PassLine1, a.PassLine2
+            , a.NoticeNumber, a.TakeNumber, a.PassLine, a.UpDownNoticeNumber, a.UpDownTakeNumber, a.UpDownPassLine
         ';
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $from = "
-            FROM {$this->_table['exam_take_data']}
+            FROM {$this->_table['exam_take_data']} as a
+            INNER JOIN {$this->_table['sys_code']} as b on a.SubjectCcd = b.Ccd
         ";
         // 쿼리 실행
         $result = $this->_conn->query('select ' . $column . $from . $where)->result_array();
@@ -213,32 +220,48 @@ class ExamTakeInfoFModel extends WB_Model
      * @param $site_code
      * @return mixed
      */
-    private function _totalExamInfoForKids($site_code)
+    private function _totalExamInfoForReTake($site_code)
     {
         $arr_condition = [
             'EQ' => [
-                'DataType' => 'total',
-                'SiteCode' => $site_code,
-                'SubjectCcd' => '733001',
-                'AreaCcd' => '734001'
+                'a.DataType' => 'total',
+                'a.SiteCode' => $site_code,
+                'a.AreaCcd' => '734001',
+                'b.CcdDesc' => 'retake'
             ]
         ];
         $column = '
-            SiteCode, TakeType, SubjectCcd, AreaCcd, YearTarget1, YearTarget2, NoticeNumber1, NoticeNumber2, TakeNumber1, TakeNumber2, PassLine1, PassLine2
-            , NoticeNumber, TakeNumber, PassLine, UpDownNoticeNumber, UpDownTakeNumber, UpDownPassLine
+            a.SiteCode, a.TakeType, a.SubjectCcd, a.AreaCcd, a.YearTarget1, a.YearTarget2, a.NoticeNumber1, a.NoticeNumber2, a.TakeNumber1, a.TakeNumber2, a.PassLine1, a.PassLine2
+            , a.NoticeNumber, a.TakeNumber, a.PassLine, a.UpDownNoticeNumber, a.UpDownTakeNumber, a.UpDownPassLine
         ';
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $from = "
-            FROM {$this->_table['exam_take_data']}
+            FROM {$this->_table['exam_take_data']} as a
+            INNER JOIN {$this->_table['sys_code']} as b on a.SubjectCcd = b.Ccd
         ";
         $order_by = "
-            ORDER BY YearTarget1, TakeType ASC
+            ORDER BY a.YearTarget1, a.TakeType ASC
         ";
 
         // 쿼리 실행
         $result = $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
-        $data['733001'] = $result;
+
+        $data = [];
+        foreach ($result as $key => $row) {
+            $data[$row['SubjectCcd']][$key]['SubjectCcd'] = $row['SubjectCcd'];
+            $data[$row['SubjectCcd']][$key]['TakeType'] = $row['TakeType'];
+            $data[$row['SubjectCcd']][$key]['YearTarget1'] = $row['YearTarget1'];
+            $data[$row['SubjectCcd']][$key]['YearTarget2'] = $row['YearTarget2'];
+            $data[$row['SubjectCcd']][$key]['NoticeNumber1'] = $row['NoticeNumber1'];
+            $data[$row['SubjectCcd']][$key]['NoticeNumber2'] = $row['NoticeNumber2'];
+            $data[$row['SubjectCcd']][$key]['TakeNumber1'] = $row['TakeNumber1'];
+            $data[$row['SubjectCcd']][$key]['TakeNumber2'] = $row['TakeNumber2'];
+            $data[$row['SubjectCcd']][$key]['NoticeNumber'] = $row['NoticeNumber'];
+            $data[$row['SubjectCcd']][$key]['TakeNumber'] = $row['TakeNumber'];
+            $data[$row['SubjectCcd']][$key]['UpDownNoticeNumber'] = $row['UpDownNoticeNumber'];
+            $data[$row['SubjectCcd']][$key]['UpDownTakeNumber'] = $row['UpDownTakeNumber'];
+        }
         return $data;
     }
 }

@@ -33,7 +33,7 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1979_01.jpg" alt="온라인 pass반" usemap="#Map1979B" border="0" />
             <map name="Map1979B">
-                <area shape="rect" coords="45,363,1076,522" href="#" alt="수강자 전원 무료제공">
+                <area shape="rect" coords="45,363,1076,522" href="#evt03" alt="수강자 전원 무료제공">
             </map>
         </div>
 
@@ -44,7 +44,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="evt03">
             <h5 class="NSK-Black">[7급 PSAT] CORE 특강</h5>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

@@ -40,7 +40,7 @@
     --}}
 @endif
 @if($__cfg['SiteCode'] == '2002')
-    {{-- 경찰학원--}}
+    {{-- 경찰학원
     <div id="topBannerLayer">
         <div class="topBanner">
             <a href="{{site_url('/promotion/index/cate/3001/code/1853')}}">
@@ -48,6 +48,7 @@
             </a>
         </div>
     </div>
+    --}}
 @endif
 
 @if($__cfg['CateCode'] == '3019')

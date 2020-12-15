@@ -255,8 +255,8 @@
                                 <li><div><img src="https://ssam.willbes.net/public/uploads/willbes/professor/51156/prof_detail_51156.png" alt="최규훈"></div></li>
                                 <li class="NSK-thin">전공체육<br> <strong class="NSK-Black">최규훈</strong> 교수<li>
                                 <li>
-                                    <a href="#none" target="_blank">교수페이지 바로가기</a>
-                                    <a href="#none" target="_blank">합격전략 설명회 보기</a>
+                                    <a href="#none">교수페이지 바로가기</a>
+                                    <a href="#none">합격전략 설명회 보기</a>
                                 </li>                                
                             </ul>
                         </div>
@@ -514,8 +514,8 @@
                                         <li><span>1~2월</span> 일반영어 Power Reading(5판)</li>
                                         <li><span>1~2월</span> 영미문학 영미시의 이해</li>
                                         <li><span>3~4월</span> 일반영어 Power Prose Writing</li>
-                                        <li><span>5~6월</span> 일반영어/영미문학 기출 모의고사반</li>
                                         <li><span>3~4월</span> 영미문학 영미소설의 이해</li>
+                                        <li><span>5~6월</span> 일반영어/영미문학 기출 모의고사반</li>                                        
                                         <li><span>5~6월</span> 영미시/영미소설 문제적용반</li>
                                         <li><span>7~8월</span> 일반영어/영미문학 상위권 문제풀이반</li>
                                         <li><span>9~11월</span> 일반영어/영미문학 상위권 모의고사반</li>
@@ -613,6 +613,24 @@
                                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176972" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
                                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176960" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
+
+                                    <h5 class="mt50">수학 내용학(김철홍교수) 1년 과정 Package</h5>
+                                    <div>
+                                        <div class="NSK tx14 mt10">
+                                            [수강기간]<br>
+                                            - 학원강의 : 2021년 1월~11월<br>
+                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                        </div>
+                                        <ul>
+                                            <li class="tx-gray">원 수강료<br> <s>2,080,000원</s></li>
+                                            <li><div class="NSK-Black">30%<br>할인</div></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,456,000원</span></li>                                            
+                                        </ul>
+                                    </div>
+                                    <div class="lecBtn">
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176977" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176965" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -681,6 +699,24 @@
                                             <li class="tx-gray">원 수강료<br> <s>3,710,000원</s></li>
                                             <li><div class="NSK-Black">35%<br>할인</div></li>
                                             <li>패키지 수강료<br> <span class="NSK-Black">2,226,000원</span></li>                                            
+                                        </ul>
+                                    </div>
+                                    <div class="lecBtn">
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176972" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176960" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                    </div>
+
+                                    <h5 class="mt50">수학교육론(박태영교수) 1년 과정 Package</h5>
+                                    <div>
+                                        <div class="NSK tx14 mt10">
+                                            [수강기간]<br>
+                                            - 학원강의 : 2021년 1월~11월<br>
+                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
+                                        </div>
+                                        <ul>
+                                            <li class="tx-gray">원 수강료<br> <s>1,430,000원</s></li>
+                                            <li><div class="NSK-Black">30%<br>할인</div></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,000,000원</span></li>                                            
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
@@ -1092,7 +1128,7 @@
                                     </ul>
                                 </td>
                                 <td>
-                                    <h5>1년 전과정 Full Package</h5>
+                                    <h5>정보컴퓨터 All-In-One  Package (C언어 포함)</h5>
                                     <div>
                                         <div class="NSK tx14 mt10">
                                             [수강기간]<br>
@@ -1108,6 +1144,24 @@
                                     <div class="lecBtn">
                                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176146" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
                                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176005" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                    </div>
+
+                                    <h5 class="mt50">정보컴퓨터 All-In-One  Package (C언어 제외)</h5>
+                                    <div>
+                                        <div class="NSK tx14 mt10">
+                                            [수강기간]<br>
+                                            - 학원강의 : 2021년 1월~11월<br>
+                                            - 온라인강의 : 365일 * 배수:1.6배수<br>
+                                        </div>
+                                        <ul>
+                                            <li class="tx-gray">원 수강료<br> <s>2,600,000원</s></li>
+                                            <li><div class="NSK-Black">25%<br>할인</div></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,950,000원</span></li>                                            
+                                        </ul>
+                                    </div>
+                                    <div class="lecBtn">
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176265" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176263" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>

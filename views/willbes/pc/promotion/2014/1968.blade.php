@@ -65,7 +65,7 @@
 
         .evtCurriBox {padding:100px 0; text-align:left; background:#F5F5F5}
         .evtCurriBox .copy {width:720px; margin:0 auto;}
-        .evtCurriBox h5 {color:#414d4c; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
+        .evtCurriBox h5 {color:#6c4936; font-size:50px; line-height:1; margin-bottom:20px; letter-spacing:-1px;}
         .evtCurriBox .evtCurriBoxTxt01 {font-size:28px; margin:20px auto 80px}
         .evtCurriBox .sample {width:720px; margin:0 auto}
         .evtCurriBox .sample li {display:inline; float:left; width:49%; padding:20px; margin-right:1%; border-radius:10px; 
@@ -78,7 +78,7 @@
         .evtCurriBox .sample:after {content:""; display:block; clear:both}
         .evtCurriBox .evtCurriBoxTxt02 {width:720px; margin:0 auto; font-size:16px; line-height:1.4; margin-top:20px; text-align:left; letter-spacing:-1px; color:#333;}  
         .evtCurri {width:720px; margin:50px auto 0; text-align:left}
-        .evtCurri li {font-size:20px; margin-bottom:15px; color:#414d4c; letter-spacing:-1px; line-height:1.2}
+        .evtCurri li {font-size:20px; margin-bottom:15px; color:#6c4936; letter-spacing:-1px; line-height:1.2}
         .evtCurri li strong {margin-right:10px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important; }
         .evtCurri li.cTitle {color:#744416; font-size:28px; margin:50px 0 30px; font-family: "Noto Sans KR Black", "Noto Sans KR", "sans-serif" !important;}
 
@@ -127,11 +127,14 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#Map1911A"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_sky.png" alt=""></a>                         
+            <a href="#Map1968A"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_sky.png" alt=""></a>                         
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" >              
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
+            <map name="Map1968B">
+                <area shape="rect" coords="93,640,631,774" href="#Map1968B" alt="수강신청">
+            </map>              
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -165,12 +168,12 @@
                 </div>
                 --}}
 
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02.jpg" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="수강신청" >
                 <div>
                     <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1911_02_1.jpg" alt="" usemap="#Map1911A" border="0" id="Map1911A" >
-                <map name="Map1911A">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="Map1968A" >
+                <map name="Map1968A">
                     <area shape="rect" coords="79,753,312,847" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
                     <area shape="rect" coords="411,753,640,845" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
                 </map>

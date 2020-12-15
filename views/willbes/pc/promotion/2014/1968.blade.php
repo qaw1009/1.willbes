@@ -133,7 +133,7 @@
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
             <map name="Map1968B">
-                <area shape="rect" coords="93,640,631,774" href="#Map1968B" alt="수강신청">
+                <area shape="rect" coords="93,640,631,774" href="#Map1968A" alt="수강신청">
             </map>              
         </div>
 

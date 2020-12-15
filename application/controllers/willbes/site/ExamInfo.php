@@ -165,6 +165,8 @@ class ExamInfo extends \app\controllers\FrontController
     {
         $arr_input = array_merge($this->_reqG(null));
         $subject_ccd = element('subject_id', $arr_input);
+        $arr_base = [];
+
         $arr_condition = [
             'EQ' => [
                 'DataType' => 'detail',
@@ -173,7 +175,7 @@ class ExamInfo extends \app\controllers\FrontController
             ]
         ];
         $arr_subject = $this->examTakeInfoFModel->getCcdForSubject();
-        $arr_base['area_data'] = $this->examTakeInfoFModel->getSubjectForAreaExamInfo($arr_condition);
+        $arr_base['area_data'] = $this->examTakeInfoFModel->getSubjectForAreaExamInfo($arr_condition, $arr_subject[$subject_ccd]['retake_type']);
         $arr_base['years'] = $this->examTakeInfoFModel->getExamGroupYear($this->_site_code);
         $arr_base['area_list'] = $this->examTakeInfoFModel->getCcdForArea();
 
@@ -199,7 +201,8 @@ class ExamInfo extends \app\controllers\FrontController
 
         $this->load->view('site/examinfo/trend_popup',[
             'arr_input' => $arr_input,
-            'title' => $arr_subject[$subject_ccd],
+            'title' => $arr_subject[$subject_ccd]['subject_name'],
+            'retake_type' => $arr_subject[$subject_ccd]['retake_type'],
             'arr_base' => $arr_base
         ]);
     }

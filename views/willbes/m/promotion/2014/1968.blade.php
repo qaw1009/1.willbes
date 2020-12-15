@@ -70,14 +70,14 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="" >        
-    </div> 
-    
-    <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
         <map name="Map1968B">
             <area shape="rect" coords="93,640,631,774" href="#Map1968A" alt="수강신청">
-        </map> 
+        </map>       
+    </div> 
+    
+    <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_01.jpg" alt="라탄공예">
     </div> 
     
     <div class="evtCtnsBox evt02">

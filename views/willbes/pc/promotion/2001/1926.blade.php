@@ -48,14 +48,13 @@
     .evt04 .youtube {width:695px; position:absolute; top:463px; left:50%; margin-left:-347px; z-index:5}
     .evt04 .youtube iframe {width:695px; height:380px;} 
 
-    .evt05 {background:#e7e7e8} 
+    .evt05 {background:#e7e7e8; padding-bottom:100px} 
 
     </style>
 
     <div class="evtContent NGR" id="evtContainer"> 
         <div class="skybanner">
-            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_sky01.jpg" alt="소문내고 쿠폰받자"/></a>
-            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_sky02.jpg" alt="형사법"/></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2020/11/1926_sky01.jpg" alt="형사법 시작부터 제대로"/></a>
         </div>
 
         <div class="evtCtnsBox evt00">
@@ -214,19 +213,15 @@
             </div>           
         </div>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_05_01.jpg" alt="형사법 미리 예습이 필요하다면!"> 
             {{--프로모션 동영상 강의 불러오기--}}
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_05_02.jpg" alt="형사법 미리 예습이 필요하다면!" usemap="#Map1926_02" border="0">
-            <map name="Map1926_02">
-                <area shape="rect" coords="269,428,461,490" href="#evt06" alt="추첨50명">
-                <area shape="rect" coords="656,431,840,486" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원 PASS">
-            </map>  
         </div>
 
+        {{--
         <div class="evtCtnsBox evt06" id="evt06">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_06_01.jpg" alt="형사법 런칭 소문내기" usemap="#Map1926_03" border="0">
             <map name="Map1926_03">
@@ -236,18 +231,21 @@
                 <area shape="rect" coords="748,736,916,821" href="https://cafe.naver.com/kts9719" target="_blank" alt="닥공사">
             </map> 
         </div>
-        {{--홍보url--}}
+        --}}
+        {{--홍보url
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
-        @endif
+        @endif--}}
 
+        {{--
         <div class="evtCtnsBox evt07" id="evt07">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_06_02.jpg" alt="신광은 이름이 곧 실력">
         </div>
-        {{--기본댓글--}}
+        --}}
+        {{--기본댓글
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif                      
+        @endif --}}                     
     </div>
     <!-- End Container --> 
     <link rel="stylesheet" type="text/css" href="/public/vendor/jquery/slick/slick.css">

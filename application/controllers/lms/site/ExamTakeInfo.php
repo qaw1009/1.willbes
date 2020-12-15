@@ -35,6 +35,7 @@ class ExamTakeInfo extends \app\controllers\BaseController
                 'A.SubjectCcd' => element('search_subject_ccd', $arr_input),
                 'A.AreaCcd' => element('search_area_ccd', $arr_input),
                 'A.TakeType' => element('search_take_type', $arr_input),
+                'A.IsUse' => element('search_is_use', $arr_input),
             ]
         ];
 

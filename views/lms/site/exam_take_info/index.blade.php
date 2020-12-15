@@ -45,6 +45,12 @@
                             <option value="1">정시</option>
                             <option value="2">추시</option>
                         </select>
+
+                        <select name="search_is_use" id="search_is_use" class="form-control mr-10">
+                            <option value="">사용여부</option>
+                            <option value="Y">사용</option>
+                            <option value="N">미사용</option>
+                        </select>
                     </div>
                 </div>
             </div>

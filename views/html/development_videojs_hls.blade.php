@@ -15,12 +15,12 @@
     <h1>VideoJs(7.7.5) HLS Sample</h1>
     <video
         id="my-video"
-        class="video-js vjs-default-skin vjs-big-play-centered"
+        class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"
         controls
         disablePictureInPicture
         preload="none"
-        width="1200"
-        height="600"
+        {{-- width="1200" --}}
+        {{-- height="600" --}}
         poster="/public/img/willbes/willbes_video_test.jpg"
         data-setup="{}"
     >

@@ -42,7 +42,7 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1959_top.jpg"  alt="12월 추천강좌" usemap="#Map1959a" border="0" />
             <map name="Map1959a">
-              <area shape="rect" coords="834,799,1076,909" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원패스">
+              <area shape="rect" coords="835,799,1077,909" href="https://police.willbes.net/promotion/index/cate/3001/code/1976" target="_blank" alt="0원패스">
             </map>
         </div>
 

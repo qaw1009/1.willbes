@@ -144,7 +144,7 @@
         <div class="evtCtnsBox wb_09">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_09.jpg"  alt="2022년 과목개편대비 준비" usemap="#Map1839E" border="0"  />
             <map name="Map1839E">
-              <area shape="rect" coords="242,800,406,863" href="https://police.willbes.net/promotion/index/cate/3001/code/1864" target="_blank" alt="0원패스">
+              <area shape="rect" coords="242,800,406,863" href="https://police.willbes.net/promotion/index/cate/3001/code/1976" target="_blank" alt="0원패스">
               <area shape="rect" coords="736,797,902,866" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1907" target="_blank" alt="기본이론종합반">
             </map>
         </div>

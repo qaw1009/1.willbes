@@ -7,14 +7,14 @@
             <div class="subject">
                 <select name="subject_list" id="subject_list">
                     @foreach($data['exam']['subject_select_box'] as $key => $val)
-                        <option value="{{$key}}">{{$val}}</option>
+                        <option value="{{$key}}">{{$val['subject_name']}}</option>
                     @endforeach
                 </select>
             </div>
         </li>
         @foreach($data['exam']['subject_select_box'] as $key => $val)
             <li class="exam-table" style="{{($loop->first === true) ? 'display: block' : 'display: none'}}" id="exam_table_{{$key}}">
-                @if($key == '733001')
+                @if($val['retake_type'] == 'retake')
                     <table>
                         <colgroup>
                             <col width="77px">
@@ -27,20 +27,20 @@
                         </colgroup>
                         <thead>
                         <tr>
-                            <th colspan="2">{{$data['exam']['total_exam_info']['733001'][0]['YearTarget1']}} 학년도</th>
-                            <th colspan="2">{{$data['exam']['total_exam_info']['733001'][1]['YearTarget1']}} 추시</th>
-                            <th colspan="2">{{$data['exam']['total_exam_info']['733001'][2]['YearTarget1']}} 학년도</th>
+                            <th colspan="2">{{empty($data['exam']['total_exam_info'][$key][0]['YearTarget1']) === true ? '' : $data['exam']['total_exam_info'][$key][0]['YearTarget1']}} 학년도</th>
+                            <th colspan="2">{{empty($data['exam']['total_exam_info'][$key][1]['YearTarget1']) === true ? '' : $data['exam']['total_exam_info'][$key][1]['YearTarget1']}} 추시</th>
+                            <th colspan="2">{{empty($data['exam']['total_exam_info'][$key][2]['YearTarget1']) === true ? '' : $data['exam']['total_exam_info'][$key][2]['YearTarget1']}} 학년도</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="first">
-                            @foreach($data['exam']['total_exam_info']['733001'] as $k => $val)
+                            @foreach($data['exam']['total_exam_info'][$key] as $k => $val)
                                 <td>모집 인원</td>
                                 <td>지원 인원</td>
                             @endforeach
                         </tr>
                         <tr>
-                            @foreach($data['exam']['total_exam_info']['733001'] as $k => $val)
+                            @foreach($data['exam']['total_exam_info'][$key] as $k => $val)
                                 <td>{{number_format($val['NoticeNumber1'])}}</td>
                                 <td>{{number_format($val['TakeNumber1'])}}</td>
                             @endforeach
@@ -106,7 +106,7 @@
         <div class="titleTrend NSK-Black">전국 모집인원(경쟁률, 합격선) 현황 및 최근 10년간 모집 동향 분석</div>
         <ul>
             @foreach($data['exam']['subject_list'] as $key => $val)
-                <li><a href="#Container" class="btn-exam-layer" data-id="{{$key}}">{{$val}}</a></li>
+                <li><a href="#Container" class="btn-exam-layer" data-id="{{$key}}">{{$val['subject_name']}}</a></li>
             @endforeach
         </ul>
     </div>

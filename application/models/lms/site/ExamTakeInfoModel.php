@@ -15,7 +15,15 @@ class ExamTakeInfoModel extends WB_Model
     public function __construct()
     {
         parent::__construct('lms');
-        $this->_target_year = date('Y') - 1;
+    }
+
+    /**
+     * 데이터 산출 : 기준년도 셋팅
+     * @param $target_year
+     */
+    private function _set_target_year($target_year)
+    {
+        $this->_target_year = $target_year;
     }
 
     public function listExamTakeInfo($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
@@ -79,7 +87,6 @@ class ExamTakeInfoModel extends WB_Model
     {
         $this->_conn->trans_begin();
         try {
-
             $arr_condition = [
               'EQ' => [
                   'A.SiteCode' => element('SiteCode',$input),
@@ -174,27 +181,50 @@ class ExamTakeInfoModel extends WB_Model
         return $input_data;
     }
 
-    public function addExamTakeData($site_code)
+    public function addExamTakeData($form_data = [])
     {
         $this->_conn->trans_begin();
         try {
-            $subject_datas = $this->codeModel->getCcd('733', '', ['NOT' => ['Ccd' => '733001']]);
+            $site_code = element('site_code', $form_data);
+            $target_year = element('target_year', $form_data);
+            $this->_set_target_year($target_year);
+
+            //기준년도수정(공통코드)
+            if($this->_conn->set(['CcdValue' => $target_year])->where('Ccd', '735001')->update($this->_table['sys_code']) === false){
+                throw new \Exception('기준년도 설정에 실패했습니다.');
+            }
+
+            $arr_subject = $this->codeModel->listAllCode(['EQ' => ['GroupCcd' => '733', 'IsUse' => 'Y', 'IsStatus' => 'Y']]);
+            $subject_retake_datas = []; //추가시험과목
+            $subject_datas = []; //기본과목
+            foreach ($arr_subject as $row) {
+                if ($row['CcdDesc'] == 'retake') {
+                    $subject_retake_datas[$row['Ccd']] = $row['CcdName'];
+                } else {
+                    $subject_datas[$row['Ccd']] = $row['CcdName'];
+                }
+            }
 
             $where = ['SiteCode' => $site_code];
             if($this->_conn->delete($this->_table['exam_take_data'], $where) === false){
-                throw new \Exception('기존 데이터 실패했습니다.');
+                throw new \Exception('기존 데이터 삭제 실패했습니다.');
             }
 
-            //전체,상세 유아 데이터 조회
-            $total_kids = $this->_totalDataKids($site_code);
-            $total = $this->_totalDataNotKids($site_code);
-            $detail_kids = $this->_detailDataKids($site_code);
+            //추시 데이터
+            if (empty($subject_retake_datas) === false) {
+                foreach ($subject_retake_datas as $key => $val) {
+                    $total_kids = $this->_totalDataForReTake($site_code,$key);
+                    $detail_kids = $this->_detailDataForReTake($site_code,$key);
+                    if ($total_kids) $this->_conn->insert_batch($this->_table['exam_take_data'], $total_kids);
+                    if ($detail_kids) $this->_conn->insert_batch($this->_table['exam_take_data'], $detail_kids);
+                }
+            }
 
-            if($total_kids) $this->_conn->insert_batch($this->_table['exam_take_data'], $total_kids);
+            $arr_subject_retake = explode(',',implode(',', array_keys($subject_retake_datas)));
+            $total = $this->_totalDataNotReTake($site_code,$arr_subject_retake);
             if($total) $this->_conn->insert_batch($this->_table['exam_take_data'], $total);
-            if($detail_kids) $this->_conn->insert_batch($this->_table['exam_take_data'], $detail_kids);
             foreach ($subject_datas as $subject_ccd => $val) {
-                $detail = $this->_detailDataNotKids($site_code, $subject_ccd);
+                $detail = $this->_detailDataNotReTake($site_code, $subject_ccd);
                 if($detail) $this->_conn->insert_batch($this->_table['exam_take_data'], $detail);
             }
 
@@ -212,18 +242,18 @@ class ExamTakeInfoModel extends WB_Model
     }
 
     /**
-     * 전체데이터조회 : 유아
+     * 전체데이터조회 : 추시대상과목
      * @param $site_code
      * @return mixed
      */
-    private function _totalDataKids($site_code)
+    private function _totalDataForReTake($site_code,$subject_ccd)
     {
         $query_string = "
             'total' AS DataType,SiteCode,TakeType,SubjectCcd,AreaCcd,YearTarget AS YearTarget1,NoticeNumber AS NoticeNumber1,TakeNumber AS TakeNumber1
             FROM {$this->_table['exam_take']}
             WHERE SiteCode = '{$site_code}'
             AND YearTarget >= {$this->_target_year}
-            AND SubjectCcd = '733001'
+            AND SubjectCcd = '{$subject_ccd}'
             AND AreaCcd = '734001'
             AND IsStatus = 'Y'
             AND IsUse = 'Y'
@@ -233,12 +263,20 @@ class ExamTakeInfoModel extends WB_Model
     }
 
     /**
-     * 전체데이터조회 : 유아제외
+     * 전체데이터조회 : 추시과목제외
      * @param $site_code
      * @return mixed
      */
-    private function _totalDataNotKids($site_code)
+    private function _totalDataNotReTake($site_code,$arr_subject_retake)
     {
+        $add_where = '';
+        if (empty($arr_subject_retake[0]) === false) {
+            $arr_condition = [
+                'NOTIN' => ['SubjectCcd' => $arr_subject_retake]
+            ];
+            $add_where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        }
+
         $query_string = "
             'total' AS DataType,m.SiteCode,m.TakeType,m.SubjectCcd,m.AreaCcd
             ,m.YearTarget1,m.YearTarget2,m.NoticeNumber1,m.NoticeNumber2,m.TakeNumber1,m.TakeNumber2
@@ -278,9 +316,9 @@ class ExamTakeInfoModel extends WB_Model
                             WHERE SiteCode = '{$site_code}'
                             AND YearTarget >= {$this->_target_year}
                             AND AreaCcd = '734001'
+                            {$add_where}
                             AND IsStatus = 'Y'
                             AND IsUse = 'Y'
-                            AND SubjectCcd != '733001'
                         ) AS a
                         GROUP BY a.SubjectCcd
                     ) AS b
@@ -291,18 +329,18 @@ class ExamTakeInfoModel extends WB_Model
     }
 
     /**
-     * 상세데이터 : 유아 : 지역별 데이터
+     * 상세데이터 : 추시대상과목 : 지역별 데이터
      * @param $site_code
      * @return mixed
      */
-    private function _detailDataKids($site_code)
+    private function _detailDataForReTake($site_code,$subject_ccd)
     {
         $query_string = "
             'detail' AS DataType,SiteCode,TakeType,SubjectCcd,AreaCcd,YearTarget AS YearTarget1,NoticeNumber AS NoticeNumber1,TakeNumber AS TakeNumber1,PassLine AS PassLine1
             FROM {$this->_table['exam_take']}
             WHERE SiteCode = '{$site_code}'
             AND YearTarget >= {$this->_target_year}
-            AND SubjectCcd = '733001'
+            AND SubjectCcd = '{$subject_ccd}'
             AND IsStatus = 'Y'
             AND IsUse = 'Y'
             ORDER BY AreaCcd,YearTarget,TakeType ASC
@@ -311,12 +349,12 @@ class ExamTakeInfoModel extends WB_Model
     }
 
     /**
-     * 상세데이터 유아제외 : 지역별 데이터
+     * 상세데이터 추시과목제외 : 지역별 데이터
      * @param $site_code
      * @param $subject_ccd
      * @return mixed
      */
-    private function _detailDataNotKids($site_code, $subject_ccd)
+    private function _detailDataNotReTake($site_code, $subject_ccd)
     {
         $query_string = "
             'detail' AS DataType,m.SiteCode,m.TakeType,m.SubjectCcd,m.AreaCcd
@@ -368,5 +406,31 @@ class ExamTakeInfoModel extends WB_Model
             ) AS m
         ";
         return $this->_conn->query('select '. $query_string)->result_array();
+    }
+
+    /**
+     * 추시과목 설정
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function modifySubjectCcd($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $ccd = element('ccd', $form_data);
+            $input_data = [
+                'CcdDesc' => (element('desc_type',$form_data) == 'Y') ? 'retake' : ''
+            ];
+            if($this->_conn->set($input_data)->where('Ccd', $ccd)->update($this->_table['sys_code']) === false){
+                throw new \Exception('과목 추시 설정에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 }

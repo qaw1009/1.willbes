@@ -13,11 +13,12 @@ class ExamTakeInfo extends \app\controllers\BaseController
 
     public function index()
     {
-        $codes = $this->codeModel->getCcdInArray(['733','734']);
+        $codes = $this->codeModel->getCcdInArray(['733','734','735']);
 
         $this->load->view('site/exam_take_info/index',[
             'exam_subject_ccd' => $codes['733'],
             'exam_area_ccd' => $codes['734'],
+            'target_year_ccd' => $codes['735'],
             'arr_input' => [],
         ]);
     }
@@ -117,13 +118,43 @@ class ExamTakeInfo extends \app\controllers\BaseController
     {
         $rules = [
             ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
-            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer']
+            ['field' => 'site_code', 'label' => '사이트코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'target_year', 'label' => '기준년도', 'rules' => 'trim|required|integer|min_length[4]|max_length[4]']
         ];
         if($this->validate($rules) === false) {
             return;
         }
 
-        $result = $this->examTakeInfoModel->addExamTakeData($this->_reqP('site_code'));
+        $result = $this->examTakeInfoModel->addExamTakeData($this->_reqP(null));
         $this->json_result($result,'저정 되었습니다.',$result);
+    }
+
+    /**
+     * 과목세부항목설정팝업 (추시설정)
+     */
+    public function modifySubjectCcd()
+    {
+        $data = $this->codeModel->listAllCode(['EQ' => ['GroupCcd' => '733','IsUse' => 'Y', 'IsStatus' => 'Y']]);
+        $this->load->view('site/exam_take_info/modify_subject_ccd_modal',[
+            'data' => $data
+        ]);
+    }
+
+    /**
+     * 과목세부항목설정 (추시설정)
+     */
+    public function storeSubjectCcd()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[POST]'],
+            ['field' => 'ccd', 'label' => '과목코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'desc_type', 'label' => '설정타입', 'rules' => 'trim|required|in_list[Y,N]'],
+        ];
+        if($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->examTakeInfoModel->modifySubjectCcd($this->_reqP(null));
+        $this->json_result($result,'정상 처리 되었습니다.',$result);
     }
 }

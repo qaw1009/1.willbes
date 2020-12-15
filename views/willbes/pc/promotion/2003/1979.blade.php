@@ -49,13 +49,13 @@
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
-            <h5 class="NSK-Black">CORE 특강 PASS반</h5>
+            <h5 class="NSK-Black mt100">CORE 특강 PASS반</h5>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif 
-            <h5 class="NSK-Black">[7급 PSAT] Perfect PSAT Program 온라인 PASS반</h5>
+            <h5 class="NSK-Black mt100">[7급 PSAT] Perfect PSAT Program 온라인 PASS반</h5>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif 
         </div>
     

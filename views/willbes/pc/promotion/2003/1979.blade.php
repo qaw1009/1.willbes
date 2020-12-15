@@ -16,7 +16,7 @@
 
         /************************************************************/ 
 
-        .evtTop {background:#e1dddc url(https://static.willbes.net/public/images/promotion/2020/12/1979_top_bg.jpg) no-repeat center top;}	      
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1979_top_bg.jpg) no-repeat center top;}	      
 
         .evt02 {background:#7cacdc;}
 

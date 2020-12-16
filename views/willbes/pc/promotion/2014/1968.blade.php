@@ -373,7 +373,7 @@
     <!-- End Container -->
 
     <script type="text/javascript">  
-        /*스크롤고정*/
+        /*스크롤고정
         $(function() {
             var nav = $('.evtMenu');
             var navTop = nav.offset().top+100;
@@ -407,7 +407,7 @@
                     $(this).addClass('active');
                 }
             });
-        });
+        });*/
 
         /*디데이카운트다운*/
         $(document).ready(function() {

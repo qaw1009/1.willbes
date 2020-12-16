@@ -139,7 +139,6 @@
                             <li>준비된 경품이 소진될 경우, 이벤트는 조기마감될 수 있습니다.</li>
                         </ol>
                     </dd>
-
                     <dt>소문내기 이벤트</dt>
                     <dd>
                         <ol>
@@ -158,6 +157,5 @@
         </div>
     </div>
     <!-- End Container -->
-    @include('willbes.pc.promotion.roulette_script')
-    
+    @include('willbes.pc.promotion.roulette_script')    
 @stop

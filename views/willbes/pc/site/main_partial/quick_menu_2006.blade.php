@@ -1,7 +1,7 @@
 {{--
 <ul>
     @if(empty($data['dday']) === false)
-        <li>
+        <li class="dday">
             <div class="QuickSlider">
                 <div class="sliderNum">
                     @foreach($data['dday'] as $row)

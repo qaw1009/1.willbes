@@ -305,7 +305,11 @@
                 <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
                 <div class="Layer-Cont">
                     <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3510.JPG"/>
-                </div>
+                    <ul>
+                        <li><a href="#none">2022학년도 커리큘럼.jpg</a></li>
+                        <li><a href="#none">2022학년도_교육학_커리큘럼_상세.hwp</a></li>
+                    </ul>
+                </div>                
             </div>
             <!-- // willbes-Layer-CurriBox -->
 

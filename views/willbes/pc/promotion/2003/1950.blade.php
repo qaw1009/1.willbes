@@ -9,14 +9,25 @@
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff url(https://static.willbes.net/public/images/promotion/2020/11/1950_top_bg.jpg) no-repeat center top;
+            background:#fff url(https://static.willbes.net/public/images/promotion/2020/12/1950_top_bg.jpg) no-repeat center top;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; margin:0 auto;}
 
         /************************************************************/
 
-        .wb_top {position:relative}
+        .topimg01,
+        .topimg02 {position:absolute; left:50%; z-index:1;}
+        .topimg01 {width:353px; margin-left:-520px; top:-20px; -webkit-animation:swing 2s linear infinite;animation:swing 2s linear infinite}
+        @@keyframes swing{
+            0%{-webkit-transform:rotate(5deg);-webkit-transform-origin:0 0;transform:rotate(5deg);transform-origin:0 0;}
+            50%{-webkit-transform:rotate(0deg);-webkit-transform-origin:0 0;transform:rotate(0deg);transform-origin:0 0}
+            100%{-webkit-transform:rotate(5deg);-webkit-transform-origin:0 0;transform:rotate(5deg);transform-origin:0 0}
+        }
+        .topimg02 {top:1188px; width:1105px; margin-left:-507px}
+
+        .wb_top {position:relative; overflow:hidden}
+
         .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:280px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
@@ -66,12 +77,14 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1950_top.jpg" alt="룰렛 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1950_top.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2020/06/1698_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>
+            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2020/12/1951_img01.png" alt="산타"/></div>
+            <div class="topimg02"><img src="https://static.willbes.net/public/images/promotion/2020/12/1951_img02.png" alt="선물"/></div> 
         </div>
 
         <div class="evtCtnsBox wb_01">
@@ -79,7 +92,7 @@
             <map name="Map1950A">
                 <area shape="rect" coords="254,639,368,680" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" alt="신규가입">
             </map>
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1950_02.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1950B" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1950_02.jpg" alt="룰렛 이벤트 소문내기" usemap="#Map1950B" border="0"/>
             <map name="Map1950B">
                 <area shape="rect" coords="290,916,353,980" href="https://www.instagram.com/" target="_blank" alt="인스타">
                 <area shape="rect" coords="384,916,449,981" href="https://www.facebook.com/" target="_blank" alt="페이스북">
@@ -115,8 +128,8 @@
                     <dd>
                         <ol>
                             <li>본 이벤트는 이벤트 기간 내 윌비스 통합사이트 신규회원가입 및 [관심직렬]→[공무원] 체크 시에만 참여 가능합니다. </li>
-                            <li>이벤트 기간 : 2020.12.1.(화)~12.15.(화)<br>
-                                - 경품 지급 안내 : 2020.12.17.(목) 윌비스 공무원 온라인 공지사항 참고</li>
+                            <li>이벤트 기간 : 2020.12.16.(수)~12.31.(목)<br>
+                            - 경품 지급 안내 : 2021.1.5.(목) 윌비스 공무원 온라인 온라인 공지사항 참고</li>
                             <li>당첨 경품은 룰렛 이미지를 통해 바로 확인 가능하며, 부정한 방법을 통해 참여할 경우 당첨 대상에서 제외됩니다. <br>
                             (탈퇴 후 재가입, 중복 연락처로 가입, 매크로 등)</li>
                             <li>본 이벤트는 최초 1회에 한해 참여 가능하며, 당첨된 상품을 취소하거나 재참여하는 것은 불가합니다.</li>
@@ -126,13 +139,12 @@
                             <li>준비된 경품이 소진될 경우, 이벤트는 조기마감될 수 있습니다.</li>
                         </ol>
                     </dd>
-
                     <dt>소문내기 이벤트</dt>
                     <dd>
                         <ol>
                             <li>본 이벤트는 로그인 후 참여 가능합니다.</li>
-                            <li>이벤트 기간 : 2020.12.1.(화)~12.15.(화)<br>
-                                - 경품 지급 안내 : 2020.12.17.(목) 윌비스 공무원 온라인 공지사항 참고</li>
+                            <li>이벤트 기간 : 2020.12.16.(수)~12.31.(목)<br>
+                            - 경품 지급 안내 : 2021.1.5.(목) 윌비스 공무원 온라인 온라인 공지사항 참고</li>
                             <li>이벤트 기간 외 참여 후 인증한 URL은 이벤트 정상 참여로 인정되지 않습니다.</li>
                             <li>지정된 커뮤니티 외 타 커뮤니티/SNS 등에 작성한 글은 인정되지 않습니다.</li>
                             <li>이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.</li>
@@ -145,6 +157,5 @@
         </div>
     </div>
     <!-- End Container -->
-    @include('willbes.pc.promotion.roulette_script')
-    
+    @include('willbes.pc.promotion.roulette_script')    
 @stop

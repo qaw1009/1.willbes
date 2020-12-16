@@ -140,174 +140,124 @@
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_01.jpg" alt="루루라탄" >           
         </div>
-
-        {{--
-        <div class="evtCtnsBox">
-            <div class="evtMenu">
-                <ul class="tabs">
-                    <li><a href="#tab01" data-tab="tab01" class="top-tab">수강신청</a></li>
-                    <li><a href="#tab02" data-tab="tab02" class="top-tab">인플루언서</a></li>
-                    <li><a href="#tab03" data-tab="tab03" class="top-tab">커리큘럼 안내</a></li>
-                    <li><a href="#tab04" data-tab="tab04" class="top-tab">수강후기</a></li>
-                </ul>
-            </div>  
-        </div>  
-        --}}
-
-        <div id="tab01">
-            <div class="evtCtnsBox evt02">
-                {{--
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1849_02.jpg">
-                <div class="btnbuy NSK-Black">
-                    <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
-                </div>
-                <div id="pass" class="infoCheck">
-                    <input type="checkbox" name="y_pkg" value="172160" style="display: none;" checked/>
-                    <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-                    <a href="#infoText">이용안내 확인하기 ↓</a>
-                </div>
-                --}}
-
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="수강신청" >
-                <div>
-                    <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
-                <map name="Map1968A">
-                    <area shape="rect" coords="79,753,312,847" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
-                    <area shape="rect" coords="411,753,640,845" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
-                </map>
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="수강신청" >
+            <div>
+                <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
+            <map name="Map1968A">
+                <area shape="rect" coords="79,753,312,847" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
+                <area shape="rect" coords="411,753,640,845" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
+            </map>
+        </div>
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_03.jpg" alt="자연을 엮다" >                
+        </div>
+        <div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_06.jpg" alt="" >
+        </div>
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_04.jpg" alt="" >
         </div>
 
-        <div id="tab02">
-            <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_03.jpg" alt="자연을 엮다" >                
+        <div class="evtCtnsBox evtCurriBox" id="evtCurriBoxSec">
+            <div class="copy">
+                <h5 class="NSK-Black">
+                    <div>내 손으로 만드는 여유,</div>
+                </h5>
+                <div class="evtCurriBoxTxt01 NSK-Thin">만들어 쓰는 즐거움 루루라탄의 라탄공예 입문</div>
             </div>
-            <div class="evtCtnsBox evt06">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_06.jpg" alt="" >
-            </div>
-            <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_04.jpg" alt="" >
-            </div>
-        </div>       
 
-
-        <div id="tab03">
-            <div class="evtCtnsBox evtCurriBox" id="evtCurriBoxSec">
-                <div class="copy">
-                    <h5 class="NSK-Black">
-                        <div>내 손으로 만드는 여유,</div>
-                    </h5>
-                    <div class="evtCurriBoxTxt01 NSK-Thin">만들어 쓰는 즐거움 루루라탄의 라탄공예 입문</div>
-                </div>
-
-                <ul class="sample">
-                    @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                        @php $i = 1; @endphp
-                        @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
-                            <li>
-                                <p>{{$i}}강 맛보기 수강 ▼</p>
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">고해상도 ></a>
-                                <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');">저해상도 ></a>
-                            </li>
-                            @php $i += 1; @endphp
-                        @endforeach
-                    @else
-                        <li><a href="#none">1강 맛보기 준비중 ></a></li>
-                        <li><a href="#none">2강 맛보기 준비중 ></a></li>
-                        <li><a href="#none">3강 맛보기 준비중 ></a></li>
-                        <li><a href="#none">4강 맛보기 준비중 ></a></li>
-                        <li><a href="#none">5강 맛보기 준비중 ></a></li>
-                    @endif
-                </ul>           
-
-                <div class="evtCurriBoxTxt02">
-                    * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                    스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                    팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
-                </div>
-
-                <div class="evtCurri">
-                    <ul>
-                        <li class="cTitle">CH 1. 루루라탄의 라탄공예 입문</li>
-                        <li>1. 안녕하세요, 루루라탄입니다.</li>
-                        <li>2. 라탄(등공예)란 무엇인가?</li>
-                        <li>3. 취미로 시작한 라탄, 새로운 기회가 될 수 있을까요?</li>
-                        <li class="cTitle">CH 2. 라탄공예, 그 위대한 첫 발</li>
-                        <li>1. 라탄 재료에 대한 종류와 이해	</li>
-                        <li>2. 공예를 시작할 때 필요한 준비물</li>
-                        <li>3. 라탄 관련 용어 및 재료의 사용법</li>
-                        <li>4. 환심 물에 담그는 방법</li>
-                        <li>5. 환심 보관하는 방법</li>
-                        <li>6. 환심 부러졌을 때, 사릿대 이어서 엮는 방법</li>
-                        <li class="cTitle">CH 3. 다용도 원형 바구니</li>
-                        <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
-                        <li>2. 사릿대 1줄로 막엮기</li>
-                        <li>3. 상•하 기본 엮어 마무르기</li>
-                        <li class="cTitle">CH 4. 기본 티코스터, 응용 티코스터</li>
-                        <li>1. 원형의 기본 +자짜기를 이용한 시작</li>
-                        <li>2. 날대를 균일하게 나눠주는 방법</li>
-                        <li>3. 막엮기를 이용한 엮음</li>
-                        <li>4. 2줄꼬아엮기</li>
-                        <li>5. 엮어마무르기<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - BONUS, 티코스터 업그레이드 하기<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 기본티코스터 3번까지 엮은 후 덧날대 추가하여 엮기
+            <ul class="sample">
+                @if(empty($arr_base['promotion_otherinfo_data']) === false)
+                    @php $i = 1; @endphp
+                    @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
+                        <li>
+                            <p>{{$i}}강 맛보기 수강 ▼</p>
+                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">고해상도 ></a>
+                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');">저해상도 ></a>
                         </li>
-                        <li class="cTitle">CH 5. 회오리 티코스터</li>
-                        <li>1. 井(우물정)자짜기를 이용해 원형 바닥 짜기</li>
-                        <li>2. 날대 수를 이용한 회오리기법</li>
-                        <li>3. 젖혀마무르기 변형으로 마무리하기</li>
-                        <li class="cTitle">CH 6. 타원트레이</li>
-                        <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
-                        <li>2. 사릿대 2줄로 따라 엮기</li>
-                        <li>3. 3줄 꼬아 엮기 2단하기</li>
-                        <li>4. 두 번 젖혀 마무르기<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - tip. 한 번 젖혀 마무르기
-                        </li>    
-                        <li class="cTitle">CH 7. 타원바구니</li>
-                        <li>1. 井자짜기 변형을 이용한 타원 바닥 짜기</li>
-                        <li>2. 매끼돌리기와 따라 엮기를 이용한 바닥 엮기</li>
-                        <li>3. 덧날대 추가 후 3줄 꼬아 엮기</li>
-                        <li>4. 3줄 꼬아 엮기 3단 하기</li>
-                        <li>5. 따라 엮기와 되돌아엮기로 측면 올리기</li>
-                        <li>6. 비단무늬 1/2 넣기</li>
-                        <li>7. 2줄 꼬아 엮기 정방향과 역방향 엮어 주기</li>
-                        <li>8. 감아 마무르기</li>
-                        <li class="cTitle">CH 8. 라탄 물병</li>
-                        <li>1. 물병 혹은 화병에 라탄 엮는 기법</li>
-                        <li>2. 2줄 꼬아엮기로 고정하기</li>
-                        <li>3. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
-                        <li>4. 비단무늬 1/2 넣기</li>
-                        <li>5. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
-                        <li>6. 2줄 꼬아 엮기 1단 하기</li>
-                        <li>7. 엮어마무르기 변형으로 위, 아래 마무리</li>
-                        <li class="cTitle">CH 9. 라탄 공예 재료 구입 방법 및 응용</li>
-                        <li>1. 라탄 재료 구입 방법과 좋은 재료 구별법 tip</li>
-                        <li>2. 배운 기법을 응용하여 만들 수 있는 작품들 tip</li>
-                        <li class="cTitle">CH 10. 드디어 완강! 수고하셨습니다.</li>
-                        <li>1. 여러분의 라탄 입문을 축하합니다!</li>
-                    </ul>
-                </div>
+                        @php $i += 1; @endphp
+                    @endforeach
+                @else
+                    <li><a href="#none">1강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">2강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">3강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">4강 맛보기 준비중 ></a></li>
+                    <li><a href="#none">5강 맛보기 준비중 ></a></li>
+                @endif
+            </ul>           
+
+            <div class="evtCurriBoxTxt02">
+                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
+                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
+                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
+            </div>
+
+            <div class="evtCurri">
+                <ul>
+                    <li class="cTitle">CH 1. 루루라탄의 라탄공예 입문</li>
+                    <li>1. 안녕하세요, 루루라탄입니다.</li>
+                    <li>2. 라탄(등공예)란 무엇인가?</li>
+                    <li>3. 취미로 시작한 라탄, 새로운 기회가 될 수 있을까요?</li>
+                    <li class="cTitle">CH 2. 라탄공예, 그 위대한 첫 발</li>
+                    <li>1. 라탄 재료에 대한 종류와 이해	</li>
+                    <li>2. 공예를 시작할 때 필요한 준비물</li>
+                    <li>3. 라탄 관련 용어 및 재료의 사용법</li>
+                    <li>4. 환심 물에 담그는 방법</li>
+                    <li>5. 환심 보관하는 방법</li>
+                    <li>6. 환심 부러졌을 때, 사릿대 이어서 엮는 방법</li>
+                    <li class="cTitle">CH 3. 다용도 원형 바구니</li>
+                    <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
+                    <li>2. 사릿대 1줄로 막엮기</li>
+                    <li>3. 상•하 기본 엮어 마무르기</li>
+                    <li class="cTitle">CH 4. 기본 티코스터, 응용 티코스터</li>
+                    <li>1. 원형의 기본 +자짜기를 이용한 시작</li>
+                    <li>2. 날대를 균일하게 나눠주는 방법</li>
+                    <li>3. 막엮기를 이용한 엮음</li>
+                    <li>4. 2줄꼬아엮기</li>
+                    <li>5. 엮어마무르기<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - BONUS, 티코스터 업그레이드 하기<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 기본티코스터 3번까지 엮은 후 덧날대 추가하여 엮기
+                    </li>
+                    <li class="cTitle">CH 5. 회오리 티코스터</li>
+                    <li>1. 井(우물정)자짜기를 이용해 원형 바닥 짜기</li>
+                    <li>2. 날대 수를 이용한 회오리기법</li>
+                    <li>3. 젖혀마무르기 변형으로 마무리하기</li>
+                    <li class="cTitle">CH 6. 타원트레이</li>
+                    <li>1. 자작나무 플레이트에 라탄 환심 끼우기</li>
+                    <li>2. 사릿대 2줄로 따라 엮기</li>
+                    <li>3. 3줄 꼬아 엮기 2단하기</li>
+                    <li>4. 두 번 젖혀 마무르기<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - tip. 한 번 젖혀 마무르기
+                    </li>    
+                    <li class="cTitle">CH 7. 타원바구니</li>
+                    <li>1. 井자짜기 변형을 이용한 타원 바닥 짜기</li>
+                    <li>2. 매끼돌리기와 따라 엮기를 이용한 바닥 엮기</li>
+                    <li>3. 덧날대 추가 후 3줄 꼬아 엮기</li>
+                    <li>4. 3줄 꼬아 엮기 3단 하기</li>
+                    <li>5. 따라 엮기와 되돌아엮기로 측면 올리기</li>
+                    <li>6. 비단무늬 1/2 넣기</li>
+                    <li>7. 2줄 꼬아 엮기 정방향과 역방향 엮어 주기</li>
+                    <li>8. 감아 마무르기</li>
+                    <li class="cTitle">CH 8. 라탄 물병</li>
+                    <li>1. 물병 혹은 화병에 라탄 엮는 기법</li>
+                    <li>2. 2줄 꼬아엮기로 고정하기</li>
+                    <li>3. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
+                    <li>4. 비단무늬 1/2 넣기</li>
+                    <li>5. 막엮기 혹은 따라엮기를 3.5cm 엮기</li>
+                    <li>6. 2줄 꼬아 엮기 1단 하기</li>
+                    <li>7. 엮어마무르기 변형으로 위, 아래 마무리</li>
+                    <li class="cTitle">CH 9. 라탄 공예 재료 구입 방법 및 응용</li>
+                    <li>1. 라탄 재료 구입 방법과 좋은 재료 구별법 tip</li>
+                    <li>2. 배운 기법을 응용하여 만들 수 있는 작품들 tip</li>
+                    <li class="cTitle">CH 10. 드디어 완강! 수고하셨습니다.</li>
+                    <li>1. 여러분의 라탄 입문을 축하합니다!</li>
+                </ul>
             </div>
         </div>
-
-        {{--
-        <div id="tab04">
-            <div class="evtCtnsBox evtReplyBox">
-                @if(empty($data['ProdCode']) === false)
-                    <div class="evtReply">
-                        <div class="willbes-Reply p_re c_both"><a id="Reply" name="Reply" class="sticky-top"></a></div>
-                        @include('willbes.pc.site.lecture.iframe_reply_partial')
-                        <div class="TopBtn">
-                            <a href="#none" onclick="goTop()"><span class="arrow-Btn">></span> TOP</a>
-                        </div>
-                    </div>
-                @endif
-            </div>        
-        </div>
-        --}}
-
+        
         <div class="evtFooter" id="infoText">
             <h3 class="NSK-Black">[이용 및 환불 안내]</h3>
 
@@ -371,52 +321,6 @@
         </div>
     </div>
     <!-- End Container -->
-
-    <script type="text/javascript">  
-        /*스크롤고정*/
-        $(function() {
-            var nav = $('.evtMenu');
-            var navTop = nav.offset().top+100;
-            var navHeight = nav.height()+10;
-            var showFlag = false;
-            nav.css('top', -navHeight+'px');
-            $(window).scroll(function () {
-                var winTop = $(this).scrollTop();
-                if (winTop >= navTop) {
-                    if (showFlag == false) {
-                        showFlag = true;
-                        nav
-                            .addClass('fixed')
-                            .stop().animate({'top' : '0px'}, 100);
-                    }
-                } else if (winTop <= navTop) {
-                    if (showFlag) {
-                        showFlag = false;
-                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                            nav.removeClass('fixed');
-                        });
-                    }
-                }
-            });
-        });
-
-        $(window).on('scroll', function() {
-            $('.top-tab').each(function() {
-                if($(window).scrollTop() >= $('#'+$(this).data('tab')).offset().top) {
-                    $('.top-tab').removeClass('active')
-                    $(this).addClass('active');
-                }
-            });
-        });
-
-        /*디데이카운트다운*/
-        $(document).ready(function() {
-            dDayCountDownText('{{$arr_promotion_params['edate']}}');
-        });
-    </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
 
     <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
     <script language='javascript'>

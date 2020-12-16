@@ -81,7 +81,7 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1698" target="_blank" >
+        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1951" target="_blank" >
         이벤트 참여하기 >
         </a>
     </div>

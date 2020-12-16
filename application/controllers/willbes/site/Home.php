@@ -155,6 +155,7 @@ class Home extends \app\controllers\FrontController
             $data['arr_main_banner'] = $this->_banner('0');
             $data['notice_campus'] = $this->_boardNoticeByCampus(2);
             $data['new_product'] = $this->_product('off_lecture', 9, $cate_code, 'New');
+            $data['dday'] = $this->_dday();
         }
 
         return $data;

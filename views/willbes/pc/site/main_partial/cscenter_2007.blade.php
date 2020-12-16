@@ -20,6 +20,7 @@
                         주말/공휴일 휴무<br/>
                     </div>
                 </li>
+                {{--
                 <li>
                     <div class="nTit">학원 고객센터</div>
                     <div class="nNumber tx-color">1544-1881 <span>▶</span> 2</div>
@@ -28,6 +29,7 @@
                         평일/주말: 09시~ 22시<br/>
                     </div>
                 </li>
+                --}}
             </ul>
         </dt>
         <dt class="willbesCenter">

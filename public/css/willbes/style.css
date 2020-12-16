@@ -1818,14 +1818,14 @@ table.auTable tr td {
     margin-bottom: 8px;
 }
 .MainQuickMenu li.dday{
-    height: 100px;
+    height: 102px;
     width: 100%;
     overflow: hidden;    
 }
-.QuickSlider {border: 1px solid #dbdbdb;}
+.MainQuickMenu li.dday .QuickSlider {border: 1px solid #dbdbdb !important}
 .QuickSlider .QuickDdayBox {
     position: relative; 
-    height: 100px;    
+    height:100px;        
     text-align: center;
     width: 100%; 
 }
@@ -6761,6 +6761,9 @@ ul li.profList .willbes-Layer-ProfileBox {
     height: 480px;
     overflow-y: auto;
 }
+.willbes-Layer-CurriBox .Layer-Cont ul {border:1px solid #f0f0f0; padding:10px 20px}
+.willbes-Layer-CurriBox .Layer-Cont li {margin-bottom:5px;}
+.willbes-Layer-CurriBox .Layer-Cont li a {display:block; padding:5px 0 5px 20px; background: url("/public/img/willbes/prof/icon_file.gif") no-repeat left center;}
 
 /* subContainer : Prof : willbes-Layer-Board */
 .willbes-Layer-Board {

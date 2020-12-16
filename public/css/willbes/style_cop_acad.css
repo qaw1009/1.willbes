@@ -637,7 +637,8 @@
     height: auto;    
     z-index: 100;
 }
-.cop_acad .QuickSlider {width:160px; height: 100px; overflow:hidden; background-color:#fff; margin-bottom:10px}
+
+.cop_acad .QuickSlider {width:160px; height:100px; overflow:hidden; background-color:#fff;  margin-bottom:10px}
 .cop_acad .QuickDdayBox {width:160px !important;}
 
 .cop_acad .MainQuickMenu ul {

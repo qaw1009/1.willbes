@@ -166,9 +166,18 @@
     border-radius: 10px;
     margin-right: 5px;
 }
-
+.lang .willbesNumber {
+    padding: 30px 0 0 50px;
+}
+.lang .willbesNumber ul {
+    padding:0 50px;
+}
 .lang .willbesNumber ul li {
-    margin-left: 40px;
+    margin:0;
+    vertical-align: top;
+    display: inline;
+    float:left;
+    width:50%;  
 }
 .lang .willbesNumber ul li:first-child {
     margin-left: 0;

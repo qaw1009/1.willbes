@@ -130,7 +130,7 @@
                                                     9급/7급/세무직/법원직 등<br>
                                                     1544-5006 </td>
                                                 <td rowspan="2" class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                    평일 9:00~18:00 <br/>
                                                     주말/공휴일 휴무
                                                 </td>
                                             </tr>
@@ -176,7 +176,10 @@
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-1881 ▶ 1</td>
-                                                <td class="w-time tx-left pl25">평일/주말 8:00~19:00</td>
+                                                <td class="w-time tx-left pl25">
+                                                월~토요일 : 08:00~19:00 <br />
+                                                일요일 : 08:00~18:00 
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="4">전문자격증</td>

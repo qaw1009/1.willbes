@@ -1818,14 +1818,14 @@ table.auTable tr td {
     margin-bottom: 8px;
 }
 .MainQuickMenu li.dday{
-    height: 100px;
+    height: 102px;
     width: 100%;
     overflow: hidden;    
 }
-.QuickSlider {border: 1px solid #dbdbdb;}
+.MainQuickMenu li.dday .QuickSlider {border: 1px solid #dbdbdb !important}
 .QuickSlider .QuickDdayBox {
     position: relative; 
-    height: 100px;    
+    height:100px;        
     text-align: center;
     width: 100%; 
 }

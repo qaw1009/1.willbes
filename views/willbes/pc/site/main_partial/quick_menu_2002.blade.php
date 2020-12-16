@@ -1,20 +1,16 @@
-
-{{-- 
-<div class="QuickSlider">
-    <div class="sliderNum">
-        <div class="QuickDdayBox">
-            <div class="q_tit">3차 필기시험</div>
-            <div class="q_day">2018.12.12</div>
-            <div class="q_dday NSK-Blac">D-5</div>
-        </div>
-        <div class="QuickDdayBox">
-            <div class="q_tit">1차 공무원</div>
-            <div class="q_day">2019.04.05</div>
-            <div class="q_dday NSK-Blac">D-10</div>
+@if(empty($data['dday']) === false)
+    <div class="QuickSlider">
+        <div class="sliderNum">
+            @foreach($data['dday'] as $row)
+                <div class="QuickDdayBox">
+                    <div class="q_tit">{{$row['DayTitle']}}</div>
+                    <div class="q_day">{{$row['DayDatm']}}</div>
+                    <div class="q_dday NSK-Black">{{($row['DDay'] == 0) ? 'D-'.$row['DDay'] : 'D'.$row['DDay']}}</div>
+                </div>
+            @endforeach
         </div>
     </div>
-</div>
---}}
+@endif
 
 <ul class="mb5">
     <li><a href="{{ front_url('/offinfo/boardInfo/index/78') }}">이달의 개강안내</a></li>

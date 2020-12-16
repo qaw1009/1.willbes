@@ -437,8 +437,9 @@
                                     <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-call">1544-0330</td>
                                     <td class="w-time tx-left pl25">
-                                        평일/주말 9:00~22:00
-                                    </td>
+                                        평일 : 09:00~18:00<br />
+                                        주말/공휴일 휴무
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td class="w-site" rowspan="2">신광은 경찰</td>
@@ -472,7 +473,7 @@
                                     <td class="w-time tx-left pl25">
                                     월~토요일 : 08:00~19:00 <br />
                                     일요일 : 08:00~18:00 
-                                    </td>
+                                  </td>
                                 </tr>
                                 <tr>
                                     <td class="w-site" rowspan="4">전문자격증</td>
@@ -493,11 +494,17 @@
                                 <tr>
                                     <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                     <td class="w-call">신림(본원) 1544-1881 ▶ 1</td>
-                                    <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                                    <td class="w-time tx-left pl25">
+                                    평일 : 09:00~18:00<br />
+                                    주말/공휴일 휴무
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="w-call">강남(분원) 1544-1881 ▶ 1</td>
-                                    <td class="w-time tx-left pl25">평일/주말 08:00~19:00</td>
+                                    <td class="w-time tx-left pl25">
+                                        월~토요일 : 08:00~19:00 <br /> 
+                                        일요일 : 08:00~18:00 
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="w-site" rowspan="2">경찰간부 · 일반경찰</td>

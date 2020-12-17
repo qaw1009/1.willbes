@@ -194,7 +194,8 @@ class AdminPay extends BaseOrder
             ['field' => 'prod_code[]', 'label' => '상품식별자', 'rules' => 'trim|required'],
             ['field' => 'lec_start_date', 'label' => '수강시작일', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'lec_expire_day', 'label' => '수강제공기간', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
-            ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|greater_than[0]'],
+            /*['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|greater_than[0]'],*/
+            ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer'],
             ['field' => 'admin_reason_ccd', 'label' => '부여사유유형', 'rules' => 'trim|required'],
             ['field' => 'admin_etc_reason', 'label' => '상세부여사유', 'rules' => 'trim|required'],
             ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],

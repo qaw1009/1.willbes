@@ -53,7 +53,7 @@
         .tab a img.off {display:block}
         .tab a img.on {display:none}
         .tab a.active img.off {display:none}
-        .tab a.active img.on {display:block}
+        .tab a.active img.on {display:block;width:265px;height:100px;}
         .tab:after {content:""; display:block; clear:both}
 
         /*수강신청 체크*/

@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1982_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1983_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#EBEBEB;}
         .wb_cts01 .tImg img {margin:0 5px 10px;width:343px;height:188px;}
@@ -26,13 +26,12 @@
 
         .wb_cts03 {background:#fff}
 
-        .wb_cts04 {background:#703551}
+        .wb_cts04 {background:#1D4D1B}
 
         .wb_cts05 {background:#fff}
         .radio_apply {position:relative;}
-        .radio_apply li.one{position:absolute;left:50%;margin-left:-220px;margin-top:-70px}
-        .radio_apply li.two {position:absolute;left:50%;margin-left:140px;margin-top:-70px}
-        .radio_apply li.three {position:absolute;left:50%;margin-left:-40px;margin-top:-105px}
+        .radio_apply li.one{position:absolute;left:50%;margin-left:-220px;margin-top:-75px}
+        .radio_apply li.two {position:absolute;left:50%;margin-left:140px;margin-top:-75px}
         .radio_apply  li input {height:30px; width:30px;}
 
          /*타이머*/
@@ -46,24 +45,15 @@
         .newTopDday ul li:first-child span { font-size:28px; color:#000; }
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}  
-
-         /* TAB */
-        .tab {width:1120px; margin:0 auto; bottom:120px;}		
-        .tab li { float:left;}
-        .tab a img.off {display:block}
-        .tab a img.on {display:none}
-        .tab a.active img.off {display:none}
-        .tab a.active img.on {display:block}
-        .tab:after {content:""; display:block; clear:both}
-
+        
         /*수강신청 체크*/
         .check p {margin-bottom:20px;padding-top:50px;}
-        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#6e3550; text-align:center; border-radius:90px;}
+        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#265e23; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
         .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-        .check a.infotxt:hover {background:#8d0033}   
+        .check a.infotxt:hover {background:#265e23}   
 
 
         /* 이용안내 */
@@ -87,7 +77,7 @@
             <div>
                 <ul>
                     <li>
-                        기술직 PASS - {{$arr_promotion_params['turn']}}기<br />
+                        세무직 PASS - {{$arr_promotion_params['turn']}}기<br />
                         <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -109,81 +99,37 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_top.jpg" alt=""  />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_top.jpg" alt=""  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_01.jpg" alt="" />
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_01.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_02.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_03.gif" alt="" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_02.jpg" alt="" />
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03.jpg" alt="" />
-            <ul class="tab" id="apply">
-                <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab01.png" class="on"  /></a></li>
-                <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab02.png" class="on"  /></a></li>
-                <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab03.png" class="on"  /></a></li>
-                <li><a href="#tab4"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab04_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab04.png" class="on"  /></a></li>
-            </ul>
-            <div id="tab1">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_01.jpg" title="" />
-            </div>
-            <div id="tab2">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_02.jpg" title="" />
-            </div>   
-            <div id="tab3">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_03.jpg" title="" />
-            </div>
-            <div id="tab4">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_04.jpg" title="" />
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_03.jpg" alt="" />
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_04.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_04.jpg" alt="" />
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05.jpg" alt="" />
-                <ul class="tab" id="apply">
-                    <li><a href="#tab1s"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab01.png" class="on"  /></a></li>
-                    <li><a href="#tab2s"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab02.png" class="on"  /></a></li>
-                    <li><a href="#tab3s"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab03.png" class="on"  /></a></li>
-                    <li><a href="#tab4s"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab04_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_tab04.png" class="on"  /></a></li>
-                </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_05.jpg" alt="" />              
                 <div id="tab1s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_01.jpg" title="" />
+                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_05_01.jpg" title="" />
                     <ul class="radio_apply">
-                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176394" onClick=""/><label for="y_pkg"></label></li>   
-                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176396" onClick=""/><label for="y_pkg"></label></li>
+                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176432" onClick=""/><label for="y_pkg"></label></li>   
+                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176415" onClick=""/><label for="y_pkg"></label></li>
                     </ul>
                 </div>
-                <div id="tab2s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_02.jpg" title="" />
-                    <ul class="radio_apply">
-                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176411" onClick=""/><label for="y_pkg"></label></li>   
-                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176398" onClick=""/><label for="y_pkg"></label></li>
-                    </ul>
-                </div>   
-                <div id="tab3s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_03.jpg" title="" />
-                    <ul class="radio_apply">
-                        <li class="three"><input type="radio" id="y_pkg" name="y_pkg" value="176409" onClick=""/><label for="y_pkg"></label></li>   
-                    </ul>
-                </div>
-                <div id="tab4s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_05_04.jpg" title="" />
-                    <ul class="radio_apply">
-                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176402" onClick=""/><label for="y_pkg"></label></li>   
-                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176397" onClick=""/><label for="y_pkg"></label></li>
-                    </ul>
-                </div>
-            
+
             <div class="check" id="chkInfo">               
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
@@ -226,13 +172,13 @@
 
         <div class="evtCtnsBox wb_info" id="tip">
             <div class="guide_box">
-                <h2 class="NSK-Black">윌비스 기술직 PASS 이용안내</h2>
+                <h2 class="NSK-Black">윌비스 세무직 PASS 이용안내</h2>
                 <dl>
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>본 PASS는 전산직/환경직(공채)/환경직(특채)/산림자원직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
-                            * 국어 기미진, 영어 한덕현 일부과정 제외
+                            <li>본 PASS는 세무직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
+                            (교수진은 상단 수강신청 안내 화면에서 확인 가능합니다.)
                             </li>
                             <li>2021년 대비로 진행된 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                             (해당 과정은 대방고시학원 제휴 과정으로, 국/영/한 교수진과 전공과목 교수진의 커리큘럼이 약간 상이합니다.)
@@ -306,33 +252,7 @@
     <!-- End Container -->
 
     <script>    
-
-        /*탭*/
-        $(document).ready(function(){
-        $('.tab').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-        
-            $content = $($active[0].hash);
-        
-            $links.not($active).each(function () {
-            $(this.hash).hide()});
-        
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})})}
-        );
-
+    
         /*수강신청 동의*/ 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){
@@ -346,7 +266,7 @@
                     return;
                 }
             }
-            location.href = "{{ site_url('/periodPackage/show/cate/3024/pack/648001/prod-code/') }}" + code;
+            location.href = "{{ site_url('/periodPackage/show/cate/3022/pack/648001/prod-code/') }}" + code;
         }
 
         /* 팝업창 */ 

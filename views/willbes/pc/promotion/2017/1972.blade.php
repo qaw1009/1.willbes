@@ -74,6 +74,10 @@
         .tabBottom td:nth-child(2) > div.lecBtn a:nth-child(3) {background:#1bd3e1}
         .tabBottom td:nth-child(2) > div.lecBtn a:hover {color:#000; background:#ffd800;}
         .tabBottom td h5 {border-radius:10px; color:#fff; text-align:center; background:#4b66b0; padding:10px 0; width:100%; margin-bottom:10px; font-size:14px}
+        .tabBottom td .banner {border:1px solid #b96ac3; margin:20px; padding:20px; text-align:center}
+        .tabBottom td .banner p {font-size:28px; color:#8448c2; padding:0}
+        .tabBottom td .banner a {display:block; margin-top:20px; background:#b96ac3; color:#fff; padding:10px}
+        .tabBottom td .banner a:hover {background:#8448c2}
 
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_04_bg.jpg) no-repeat center top;}
         .evt05 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_05_bg.jpg) no-repeat center top;}
@@ -904,7 +908,13 @@
                                         <a href="#none" target="_blank"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
                                     </div>
                                     --}}
-                                    음악은 12월 27일 공개예정입니다.
+                                    <p class="tx22 tx-center tx-dark-black">음악은 12월 27일 공개예정입니다.</p>
+                                    <div class="banner">
+                                        2022학년도 대비 On-Tact Live 설명회<br>
+                                        <p class="NSK-Black">다이애나 전공음악</p>
+                                        2020. 12. 27. (일) PM. 09:30
+                                        <a href="https://ssam.willbes.net/pass/offLecture/show/cate/3141/prod-code/177108" target="_blank">설명회 신청하기 ></a>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -961,12 +971,10 @@
                                             <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
-                                    {{--
                                     <div class="lecBtn">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176811" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176685" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
-                                    --}}
                                 </td>
                             </tr>
                         </table>
@@ -1022,13 +1030,11 @@
                                             <li><div class="NSK-Black">약46%<br>할인</div></li>
                                             <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
-                                    </div>
-                                    {{--
+                                    </div>                                    
                                     <div class="lecBtn">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                    </div>
-                                    --}}
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176813" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176686" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                    </div>                                    
                                 </td>
                             </tr>
                         </table>
@@ -1085,12 +1091,10 @@
                                             <li>패키지 수강료<br> <span class="NSK-Black">1,500,000원</span></li>                                            
                                         </ul>
                                     </div>
-                                    {{--
                                     <div class="lecBtn">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176812" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176687" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
-                                    --}}
                                 </td>
                             </tr>
                         </table>

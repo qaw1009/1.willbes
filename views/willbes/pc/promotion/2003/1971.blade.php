@@ -81,9 +81,9 @@
                     <area shape="rect" coords="775,559,868,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51164?subject_idx=1182&subject_name=화학" target="_blank" alt="김병일">
                     <area shape="rect" coords="227,739,314,783" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50395?subject_idx=2130&subject_name=환경보건" target="_blank" alt="하재남">
                     <area shape="rect" coords="776,740,865,782" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50541?subject_idx=1223&subject_name=임업경영" target="_blank" alt="장재영">
-                    <area shape="rect" coords="109,1219,302,1277" href="#none" onclick="javascript:alert('준비중입니다.');" alt="전산직 패스">
-                    <area shape="rect" coords="461,1216,656,1279" href="#" onclick="javascript:alert('준비중입니다.');" alt="환경직 패스">
-                    <area shape="rect" coords="814,1219,1009,1278" href="#" onclick="javascript:alert('준비중입니다.');" alt="산림자원직 패스">
+                    <area shape="rect" coords="109,1219,302,1277" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="전산직 패스">
+                    <area shape="rect" coords="461,1216,656,1279" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="환경직 패스">
+                    <area shape="rect" coords="814,1219,1009,1278" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="산림자원직 패스">
                 </map>
             </div>
         </div>
@@ -99,7 +99,7 @@
                   <area shape="rect" coords="852,650,985,696" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/176001" target="_blank" alt="회계학 심화">
                   <area shape="rect" coords="848,851,984,897" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175992" target="_blank" alt="세법 기본">
                   <area shape="rect" coords="852,910,985,953" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175998" target="_blank" alt="세법 심화">
-                  <area shape="rect" coords="739,1308,932,1368" href="#" onclick="javascript:alert('준비중입니다.');" alt="세무직 패스">
+                  <area shape="rect" coords="739,1308,932,1368" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" alt="세무직 패스">
                 </map>
             </div>
         </div>

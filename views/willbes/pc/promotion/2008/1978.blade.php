@@ -11,17 +11,22 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        
+        .skyBanner {position:fixed; top:200px;right:10px; width:120px; z-index:10;}
+        .skyBanner a {display:block; text-align:center; margin-bottom:5px; background:#fffc19; font-size:16px; height:80px; line-height:80px; 
+            color:#1845dc; border:1px solid #1845dc}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1978_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#1845dc;}
-        .evt02 {background:#efefef;}
-        .evt02 .youtube {position:absolute; top:725px; left:50%; margin-left:-392px; width:784px; height:442px; z-index:1}
-        .evt02 .youtube iframe {width:784px; height:442px;}
-        .evt03 {width:1000px; margin:0 auto 100px}
+        .evt02 {background:#efefef; padding-bottom:150px}
+        .evt02 .youtube {width:784px; margin:80px auto 0}
+        .evt02 .youtube div {font-size:24px; margin-bottom:30px; color:#333; text-align:left}
+        .evt02 .youtube div span {color:#1945dc; box-shadow:inset 0 -16px 0 rgba(255,252,25,1);}
+        .evt02 .youtube iframe {width:784px; height:442px; display:block}
+        .evt03 {width:1000px; margin:0 auto 100px; clear:both}
         .evt03 table {border-top:1px solid #dedede; border-right:1px solid #dedede}
         .evt03 tr {border-bottom:1px solid #dedede}
         .evt03 th,
@@ -34,6 +39,11 @@
         /************************************************************/      
     </style> 
 	<div class="evtContent NSK">
+        <div class="skyBanner NSK-Black">
+            <a href="#evt02">강사소개 ></a>
+            <a href="#evt03">수강신청 ></a>
+        </div>
+
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_top.jpg" alt=""/>
         </div>
@@ -42,16 +52,47 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_01.jpg" alt=""/>
         </div>
         
-        <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_02.jpg" alt=""/> 
-            {{-- 
+        <div class="evtCtnsBox evt02" id="evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_02_01.jpg" alt=""/> 
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 및 <span>지금! 해야할 것들</span></div>
+                <iframe src="https://www.youtube.com/embed/9K4JtlQ4D7I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>  
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>① 문형석 형법</span></div>
+                <iframe src="https://www.youtube.com/embed/q8BxVcRIz88?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> 
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>② 정진천 경찰학</span></div>
+                <iframe src="https://www.youtube.com/embed/PrBgpmE6oLg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}         
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>③ 유안석 형사소송법</span></div>
+                <iframe src="https://www.youtube.com/embed/Hw7Vn-wna-Q?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> 
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>④ 김기환 범죄학</span></div>
+                <iframe src="https://www.youtube.com/embed/08vwlN_damM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>⑤ 선동주 헌법</span></div>
+                <iframe src="https://www.youtube.com/embed/S1qYf5XLDtU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>⑥ 이국령 헌법</span></div>
+                <iframe src="https://www.youtube.com/embed/-0vh2md7ufo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>⑦ 고태환 민법총칙</span></div>
+                <iframe src="https://www.youtube.com/embed/itjvE9lp6x4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="youtube">
+                <div class="NSK-Black">[윌비스 경찰간부] 72기 대비 공부방법론 <span>⑧ 이동호 행정학</span></div>
+                <iframe src="https://www.youtube.com/embed/uLkMYJNIsN8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
         
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_03.jpg" alt=""/>   
             <div class="mt50">
                 <table>

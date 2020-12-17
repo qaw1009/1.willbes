@@ -30,7 +30,7 @@
                 <div class="will-nTit bd-none">윌비스 <span class="tx-color">경찰 캐스트</span></div>
                 <div class="preview">
                     <div class="previewBox">
-                        <ul class="pvslider">
+                        <ul class="cast">
                             @php
                                 foreach ($data['arr_main_banner'] as $key => $val) {
                                     if (strpos($key, '메인_cast') !== false) {
@@ -39,8 +39,8 @@
                                 }
                             @endphp
                         </ul>
-                        <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                        <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
+                        <p class="leftBtn"><a id="imgBannerLeft2"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                        <p class="rightBtn"><a id="imgBannerRight2"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
                     </div>
                 </div>
             </div>
@@ -213,6 +213,29 @@
 
             $("#imgBannerRight1").click(function (){
                 slidesImg1.goToNextSlide();
+            });
+
+            // 경찰캐스트
+            var slidesImg2 = $(".cast").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:3,
+                maxSlides:3,
+                slideWidth: 460,
+                slideMargin:10,
+                autoHover: true,
+                moveSlides:1,
+            });
+            $("#imgBannerLeft2").click(function (){
+                slidesImg2.goToPrevSlide();
+            });
+
+            $("#imgBannerRight2").click(function (){
+                slidesImg2.goToNextSlide();
             });
         });
     </script>

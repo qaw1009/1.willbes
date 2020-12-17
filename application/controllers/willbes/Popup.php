@@ -3,9 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Popup extends \app\controllers\BaseController
 {
-    protected $models = array('popupF');
+    protected $models = array('popupF','access/accessF');
     protected $helpers = array();
     protected $sess_controller = false;  // 세션 사용안함
+    protected $sess_methods = array('click');   // 세션 사용 메소드
 
     // 팝업구분 공통코드 (레이어팝업, 모달팝업, 하단고정팝업)
     private $_popup_type_ccd = ['717001' => 'layer', '717002' => 'modal', '717003' => 'bnBottom'];
@@ -42,5 +43,27 @@ class Popup extends \app\controllers\BaseController
             'data' => $data,
             'arr_popup_type_ccd' => $this->_popup_type_ccd
         ]);
+    }
+
+    /**
+     * 팝업클릭 (접속로그 저장)
+     */
+    public function click()
+    {
+        $popup_idx = $this->_reqG('popup_idx');
+        $return_url = $this->_reqG('return_url');
+        $link_url_type = $this->_reqG('link_url_type'); //외부, 내부 링크 타입
+
+        if(empty($popup_idx) === false && is_numeric($popup_idx) === true && empty($return_url) === false) {
+            // 로그 저장
+            $this->accessFModel->saveLog('popup', $popup_idx);
+
+            if (empty($link_url_type) === true || $link_url_type == 'I') {
+                $return_url = '//' . (strpos($return_url, config_item('base_domain')) === false ? $return_url : app_to_env_url($return_url));
+            }
+            redirect($return_url);
+        } else {
+            redirect(app_url('/home/index', 'www'));
+        }
     }
 }

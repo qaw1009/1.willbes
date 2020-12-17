@@ -52,9 +52,9 @@ class Popup extends \app\controllers\BaseController
     {
         $arr_condition = $this->_getListConditions();
         $list = [];
-        $count = $this->popupModel->listAllPopup(true, $arr_condition);
+        $count = $this->popupModel->listAllPopup(false, true, $arr_condition);
         if ($count > 0) {
-            $list = $this->popupModel->listAllPopup(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PIdx' => 'desc']);
+            $list = $this->popupModel->listAllPopup(true, false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['PIdx' => 'desc']);
         }
 
         return $this->response([
@@ -191,7 +191,7 @@ class Popup extends \app\controllers\BaseController
         //배너노출섹션
         $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
 
-        $list = $this->popupModel->listAllPopup(false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'PIdx' => 'desc']);
+        $list = $this->popupModel->listAllPopup(false, false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'PIdx' => 'desc']);
 
         foreach ($list as $key => $val) {
             $img_real_path = public_to_upload_path($list[$key]['PopUpFullPath'].$list[$key]['PopUpImgName']);

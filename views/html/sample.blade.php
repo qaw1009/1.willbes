@@ -570,6 +570,15 @@
         </div>
     </li>
     <li>
+        <div>
+            <ul>
+                <li class="c_both"></li>
+                <li><a href="{{ site_url('/home/html/interpretation_graph') }}" target="_blank">실전모의고사 성적분포표 > interpretation_graph</a></li>
+                <li><a href="{{ site_url('/home/html/interpretation_data') }}" target="_blank">실전모의고사 문항분석표 > interpretation_data</a></li>
+            </ul>
+        </div>
+    </li>
+    <li>
         <div>  
             <ul>          
                 

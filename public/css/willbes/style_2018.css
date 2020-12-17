@@ -630,3 +630,19 @@ min-height: 260px;}
 .w-Guide-Ssam .runningMate .request a {display:block; text-align: center; padding:20px 0; font-size: 30px; margin-top:20px; 
     background:#f9f381; color:#0a2341; border-radius: 10px; border:3px solid #0a2341}
 .w-Guide-Ssam .runningMate .request a:hover {background:#0a2341; color:#f9f381;}
+
+/*공지사항 강의 일정 테이블*/
+.ssamLecTable {max-width:940px; margin:0 auto 50px; font-size:12px}
+.ssamLecTable h5 {font-size:30px; text-align:center; padding:20px 0}
+.ssamLecTable h5 span {color:#002060; vertical-align:top}
+.ssamLecTable table {border:2px solid #000;}
+.ssamLecTable thead {border-bottom:2px solid #000}
+.ssamLecTable th,
+.ssamLecTable td {text-align:center; padding:10px 5px; line-height:1.4; border:0; border-right:1px solid #eee}
+.ssamLecTable thead th {color:#333; background:#d9d9d9; font-size:14px; font-weight:bold}
+.ssamLecTable td a {display:block; padding-bottom:3px}
+.ssamLecTable td a.btnSt01 {color:#ff6600; border-bottom:1px solid #ff6600}
+.ssamLecTable td a.btnSt02 {color:#2e898e; border-bottom:1px solid #2e898e}
+.ssamLecTable td strong {color:#000}
+.ssamLecTable td em {color:#ed1c24}
+

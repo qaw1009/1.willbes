@@ -329,7 +329,69 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>  
+
+    <div class="Section Section5 mt50">
+        <div class="widthAuto">
+            <div class="will-nTit bd-none">윌비스 <span class="tx-color">경찰 캐스트</span></div>
+            <div class="preview">
+                <div class="previewBox">
+                    <ul class="pvslider">
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
+                        </li>
+                        <li>
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main//3001_367x225.jpg">
+                                </a>
+                            </div>
+                            <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
+                        </li>
+                    </ul>  
+                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                </div>
+            </div>
+        </div>
+    </div>  
    
     <div class="Section Section4_hl mt50">
         <div class="widthAuto">

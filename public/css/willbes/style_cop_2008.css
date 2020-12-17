@@ -228,6 +228,15 @@
     width: 100% !important;
 }
 
+/*cast*/
+.cop2008v2 .preview .cast {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
+.cop2008v2 .preview .cast li {display: inline; float: left; width:33.33333%;}
+.cop2008v2 .preview .cast li a {display:block; height:225px;} 
+.cop2008v2 .preview .cast li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; 
+   width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+.cop2008v2 .preview .cast:after {content: ""; display: block; clear:both}
+
+
 /* Main Container : QuickMenu : Cop */
 .cop2008v2 .MainQuickMenu {
     position: fixed;

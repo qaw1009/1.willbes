@@ -25,8 +25,8 @@
         .wb_cts01 {background:#fff}
 
         .wb_cts02 {background:#FAFAFC;position:relative;}
-        .youtube {position:absolute; bottom:197px; left:50%; width:607px; z-index:1;margin-left:-485px}
-        .youtube iframe {width:970px; height:500px}
+        .youtube {position:absolute; bottom:195px; left:50%; width:607px; z-index:1;margin-left:-430px}
+        .youtube iframe {width:860px; height:485px;}
 
         .wb_cts03 {background:#fff}
 		.wb_cts04 {background:#FAFAFC}

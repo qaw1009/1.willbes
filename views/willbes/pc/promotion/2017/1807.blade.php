@@ -29,7 +29,7 @@
         .ssamLecTable table {border:2px solid #999}
         .ssamLecTable thead {border-bottom:2px solid #999}
         .ssamLecTable th,
-        .ssamLecTable td {text-align:center; padding:10px 5px; line-height:1.4; border:0; border-right:1px solid #ccc; border-bottom:1px solid #ccc}
+        .ssamLecTable td {text-align:center; padding:10px 5px !important; line-height:1.4; border:0; border-right:1px solid #ccc; border-bottom:1px solid #ccc}
         .ssamLecTable thead th {color:#333; background:#e9ecf5; font-size:14px; font-weight:bold; }
         .ssamLecTable td a {display:block; padding:3px; border-radius:3px; font-size:11px}
         .ssamLecTable td a.btnSt01 {background:#ff6600; color:#fff;}

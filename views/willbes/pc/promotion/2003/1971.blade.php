@@ -75,12 +75,12 @@
                 <br>
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab01_03.jpg" alt="기술직" usemap="#Map1971B" border="0" />
                 <map name="Map1971B">
-                    <area shape="rect" coords="226,378,314,424" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51162?subject_idx=1169&subject_name=컴퓨터일반" target="_blank" alt="곽후근">
-                    <area shape="rect" coords="772,379,868,422" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51163?subject_idx=2129&subject_name=환경공학" target="_blank" alt="신영조">
-                    <area shape="rect" coords="226,560,313,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51165?subject_idx=1182&subject_name=화학" target="_blank" alt="송연욱">
-                    <area shape="rect" coords="775,559,868,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51164?subject_idx=1182&subject_name=화학" target="_blank" alt="김병일">
-                    <area shape="rect" coords="227,739,314,783" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50395?subject_idx=2130&subject_name=환경보건" target="_blank" alt="하재남">
-                    <area shape="rect" coords="776,740,865,782" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50541?subject_idx=1223&subject_name=임업경영" target="_blank" alt="장재영">
+                    <area shape="rect" coords="226,378,314,424" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51162?subject_idx=1169&subject_name=%EC%BB%B4%ED%93%A8%ED%84%B0%EC%9D%BC%EB%B0%98&tab=open_lecture" target="_blank" alt="곽후근">
+                    <area shape="rect" coords="772,379,868,422" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51163?subject_idx=2129&subject_name=%ED%99%98%EA%B2%BD%EA%B3%B5%ED%95%99&tab=open_lecture" target="_blank" alt="신영조">
+                    <area shape="rect" coords="226,560,313,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51165?subject_idx=1182&subject_name=%ED%99%94%ED%95%99&tab=open_lecture" target="_blank" alt="송연욱">
+                    <area shape="rect" coords="775,559,868,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51164?subject_idx=1182&subject_name=%ED%99%94%ED%95%99&tab=open_lecture" target="_blank" alt="김병일">
+                    <area shape="rect" coords="227,739,314,783" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50395?subject_idx=2130&subject_name=%ED%99%98%EA%B2%BD%EB%B3%B4%EA%B1%B4&tab=open_lecture" target="_blank" alt="하재남">
+                    <area shape="rect" coords="776,740,865,782" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50541?subject_idx=1223&subject_name=%EC%9E%84%EC%97%85%EA%B2%BD%EC%98%81&tab=open_lecture" target="_blank" alt="장재영">
                     <area shape="rect" coords="109,1219,302,1277" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="전산직 패스">
                     <area shape="rect" coords="461,1216,656,1279" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="환경직 패스">
                     <area shape="rect" coords="814,1219,1009,1278" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="산림자원직 패스">

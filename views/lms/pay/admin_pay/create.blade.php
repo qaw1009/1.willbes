@@ -84,8 +84,8 @@
                             <label class="control-label col-md-1">결제금액 <span class="required">*</span>
                             </label>
                             <div class="col-md-9 form-inline item">
-                                <input type="number" id="real_pay_price" name="real_pay_price" class="form-control" required="required" data-validate-minmax="1" title="결제금액" value=""> 원
-                                <div class="inline-block bold red ml-20"># 0원 이상, 상품 판매금액 이하의 금액으로 입력 가능합니다.</div>
+                                <input type="number" id="real_pay_price" name="real_pay_price" class="form-control" required="required" {{--data-validate-minmax="1"--}} title="결제금액" value=""> 원
+                                <div class="inline-block bold red ml-20"># {{--0원 이상, --}}상품 판매금액 이하의 금액으로 입력 가능합니다.</div>
                             </div>
                         </div>
                         <div class="form-group">

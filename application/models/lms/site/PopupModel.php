@@ -11,6 +11,7 @@ class PopupModel extends WB_Model
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin',
+        'popup_log' => 'lms_popup_access_log',
     ];
 
     public function __construct()
@@ -20,6 +21,7 @@ class PopupModel extends WB_Model
 
     /**
      * 팝업 목록 조회
+     * @param bool $is_join
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -27,7 +29,7 @@ class PopupModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listAllPopup($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listAllPopup($is_join, $is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -64,8 +66,20 @@ class PopupModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        $query_string = 'select A.*';
+        $query_string .= ($is_join === true) ? ' ,COUNT(PL.PIdx) AS ClickCnt' : '';
+        $query_string .= ' from ( ';
+        $query_string .= " select {$column} {$from} {$where} {$order_by_offset_limit}";
+        $query_string .= ' ) as A';
+
+        if ($is_join === true) {
+            $query_string .= " LEFT OUTER JOIN {$this->_table['popup_log']} AS PL ON A.PIdx = PL.PIdx";
+            $query_string .= ' GROUP BY A.PIdx';
+            $query_string .= $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+        }
+
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

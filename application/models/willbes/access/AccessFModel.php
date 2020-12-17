@@ -8,7 +8,8 @@ class AccessFModel extends WB_Model
         'btob' => 'lms_btob',
         'banner' => 'lms_banner',
         'visitor' => 'lms_visitor',
-        'visitor_sum' => 'lms_visitor_sum'
+        'visitor_sum' => 'lms_visitor_sum',
+        'popup' => 'lms_popup',
     ];
 
     public function __construct()
@@ -17,7 +18,7 @@ class AccessFModel extends WB_Model
     }
 
     /**
-     * 접속 로그 저장 (광고 / 제휴사 / 배너 정보 저장)
+     * 접속 로그 저장 (광고 / 제휴사 / 배너 / 팝업 정보 저장)
      * @param $strType
      * @param null $idx
      * @return array|bool
@@ -58,6 +59,13 @@ class AccessFModel extends WB_Model
         } elseif ($strType == 'banner') {
             $input_data = array_merge($input_data,[
                 'BIdx' => $idx,
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'UserPlatform' =>$platform,
+                'UserAgentShort' =>substr($agent_short,0,99)
+            ]);
+        } elseif ($strType == 'popup') {
+            $input_data = array_merge($input_data,[
+                'PIdx' => $idx,
                 'MemIdx' => $this->session->userdata('mem_idx'),
                 'UserPlatform' =>$platform,
                 'UserAgentShort' =>substr($agent_short,0,99)

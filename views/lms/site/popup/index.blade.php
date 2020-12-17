@@ -96,6 +96,7 @@
                     <th>등록일</th>
                     <th>최종수정자</th>
                     <th>최종수정일</th>
+                    <th>클릭수</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -163,7 +164,8 @@
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdAdminName'},
-                    {'data' : 'UpdDatm'}
+                    {'data' : 'UpdDatm'},
+                    {'data' : 'ClickCnt'}
                 ]
             });
 

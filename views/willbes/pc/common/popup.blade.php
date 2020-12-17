@@ -24,7 +24,8 @@
                 {{--// 팝업 링크URL --}}
                 @php $img_link_url = '#none'; @endphp
                 @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#')
-                    @php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp
+                    @php $img_link_url = front_app_url('/popup/click?popup_idx=' . $row['PIdx'] . '&return_url=' . urlencode($row['LinkUrl']), 'www'); @endphp
+{{--                    @php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp--}}
                 @endif
 
                 html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap {{ $popup_type }} willbes-Layer-popBox" style="{{ $pop_style }}">';

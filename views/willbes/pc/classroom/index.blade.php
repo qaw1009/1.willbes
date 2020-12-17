@@ -124,7 +124,7 @@
                 <div class="Mypage_PASS_Index c_both">
                     <div class="ActIndex ActIndex1 mt70">
                         <div class="willbes-listTable widthAuto940 f_inherit">
-                            <div class="will-Tit NG">최근 <span class="tx-light-blue">수강강좌</span> <span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
+                            <div class="will-Tit NG">최근 <span class="tx-light-blue">온라인 수강강좌</span> <span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 강좌리스트가 노출됩니다.</span></div>
                             <div class="willbes-Lec-Table NG d_block">
                                 <table cellspacing="0" cellpadding="0" class="lecTable">
                                     <colgroup>

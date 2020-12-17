@@ -96,7 +96,7 @@
             <div class="will-nTit bd-none">윌비스 <span class="tx-color">경찰 캐스트</span></div>
             <div class="preview">
                 <div class="previewBox">
-                    <ul class="pvslider">
+                    <ul class="cast">
                         <li>
                             <div>
                                 <a href="#none">
@@ -146,8 +146,8 @@
                             <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
                         </li>
                     </ul>  
-                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                    <p class="leftBtn"><a id="imgBannerLeft2"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                    <p class="rightBtn"><a id="imgBannerRight2"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
                 </div>
             </div>
         </div>
@@ -158,6 +158,7 @@
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3094_1120x20_sample.jpg" alt="배너명"></a>
         </div>
     </div> 
+
 
     <div class="Section mt50">
         <div class="widthAuto"> 
@@ -578,6 +579,31 @@
             });
 
             $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+
+        $(function() {
+            var slidesImg1 = $(".cast").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:3,
+                maxSlides:3,
+                slideWidth: 460,
+                slideMargin:10,
+                autoHover: true,
+                moveSlides:1,
+                pager:true,
+            });
+            $("#imgBannerLeft2").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight2").click(function (){
                 slidesImg1.goToNextSlide();
             });
         });

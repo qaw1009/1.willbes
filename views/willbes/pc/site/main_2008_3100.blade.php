@@ -25,6 +25,27 @@
             </div>
         </div>
 
+        <div class="Section Section5 mt50">
+            <div class="widthAuto">
+                <div class="will-nTit bd-none">윌비스 <span class="tx-color">경찰 캐스트</span></div>
+                <div class="preview">
+                    <div class="previewBox">
+                        <ul class="pvslider">
+                            @php
+                                foreach ($data['arr_main_banner'] as $key => $val) {
+                                    if (strpos($key, '메인_cast') !== false) {
+                                        echo '<li>'.banner_html(element($key, $data['arr_main_banner']), '', '' , false, '', '', 'castTitle').'</li>';
+                                    }
+                                }
+                            @endphp
+                        </ul>
+                        <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                        <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="Section mt50">
             <div class="widthAuto">
                 {{-- board include --}}

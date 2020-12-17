@@ -184,6 +184,73 @@
                             </div>
                             <!--willbes-Lec-Table -->
                         </div>
+
+                        <div class="willbes-listTable widthAuto940 f_inherit mt70">
+                            <div class="will-Tit NG">최근 <span class="tx-orange">학원 수강강좌</span> <span class="will-subTit">수강중인 학원 강좌 리스트가 전체 노출됩니다.</span></div>
+                            <div class="will-Tit NG tx-orange c_both mt30">종합반</div>
+                            <div class="willbes-Lec-Table NG d_block">
+                                <table cellspacing="0" cellpadding="0" class="lecTable">
+                                    <tbody>
+                                    @forelse( $data['off_pkg_list'] as $key => $row )
+                                        <tr>
+                                            <td class="w-data tx-left pl25">
+                                                <div class="w-tit">
+                                                    <a href="/classroom/off/list/ongoing?tab=1#Mypagetab1">{{$row['ProdName']}}</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td class="tx-center">신청한 종합반이 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                                <!-- lecTable -->
+                            </div>
+                            <div class="will-Tit NG tx-orange mt30">단과반</div>
+                            <div class="willbes-Lec-Table NG d_block">
+                                <table cellspacing="0" cellpadding="0" class="lecTable">
+                                    <colgroup>
+                                        <col style="width: 675px;">
+                                        <col style="width: 140px;">
+                                        <col style="width: 125px;">
+                                    </colgroup>
+                                    <tbody>
+                                    @forelse( $data['off_lec_list'] as $key => $row )
+                                        <tr>
+                                            <td class="w-data tx-left pl25">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$row['CourseName']}}<span class="row-line">|</span>
+                                                        {{$row['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$row['wProfName']}} 교수님
+                                                    </dt>
+                                                </dl>
+                                                <div class="w-tit">
+                                                    <a href="/classroom/off/list/ongoing?tab=2#Mypagetab2"><span class="tx-orange">{{ $row['StudyPatternCcdName'] }}</span>
+                                                        {{$row['subProdName']}}</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                                ~ {{str_replace('-', '.', $row['StudyEndDate'])}}
+                                            </td>
+                                            <td>
+                                                {{$row['WeekArrayName']}}<br/>
+                                                {{$row['Amount']}}회차
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3" class="tx-center">신청한 단과반이 없습니다.</td>
+                                        </tr>
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                                <!-- lecTable -->
+                            </div>
+                        </div>
                     </div>
 
                     <div class="ActIndex ActIndex2 mt50">

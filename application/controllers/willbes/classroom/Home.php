@@ -153,6 +153,41 @@ class Home extends \app\controllers\FrontController
         // 서포터즈회원조회
         $data['supporters'] = $this->_isSupporters();
 
+        // 학원강의 신청목록 조회
+        // 학원 단과
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+            ],
+            'GTE' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
+                    'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
+                ]
+            ],
+            'IN' => [
+                'LearnPatternCcd' => ['615006'] // 학원단과
+            ]
+        ];
+        $data['off_lec_list'] = $this->classroomFModel->getLecture($cond_arr, ['OrderDate' => 'ASC'],false, true);
+
+        // 학원 종합반 목록 읽어오기
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+            ],
+            'GTE' => [
+                'StudyEndDate' => $today // 종료일 >= 오늘
+            ],
+        ];
+        $data['off_pkg_list'] = $this->classroomFModel->getPackage($cond_arr, ['OrderDate' => 'ASC'], false, true);
+
         $this->load->view('/classroom/index', [
             'data' => $data
         ]);

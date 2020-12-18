@@ -74,6 +74,64 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50201/?subject_idx=1135&subject_name=%EC%88%98%ED%95%99')}}">곽윤근</a>                        
                     </li>                        
                 </ul>
+                <h5>법원직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50065/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">이현나</a>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50571/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">임진석</a>
+                    </li>
+                    <li>
+                        <span>[헌법]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50591/?subject_idx=1114&subject_name=%ED%97%8C%EB%B2%95')}}">이국령</a>
+                        <span>[형법]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50073/?subject_idx=1116&subject_name=%ED%98%95%EB%B2%95')}}">문형석</a>
+                        <span>[형사소송법]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50685/?subject_idx=1117&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">유안석</a>
+                    </li>
+                    <li>
+                        <span>[민법]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50519/?subject_idx=1118&subject_name=%EB%AF%BC%EB%B2%95')}}">김동진</a>
+                        <span>[민사소송법]</span>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50145/?subject_idx=1119&subject_name=%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">이덕훈</a>
+                    </li>
+                </ul>
+                <h5>소방직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50661/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">김세령</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
+                    </li>
+                    <li>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
+                    </li>
+                    <li>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50305/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50027/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
+                    </li>
+                    <li>
+                        <span>[소방학개론]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">김종상</a>
+                    </li>
+                    <li>
+                        <span>[소방관계법규]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
+                    </li>
+                    <li>
+                        <span>[사회]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
+                    </li>
+                </ul>                   
             </div>
 
             <div class="prof-drop-Box">
@@ -140,128 +198,6 @@
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50549/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99')}}">전수환</a>
                     </li>                    
                 </ul>
-            </div>
-
-            <div class="prof-drop-Box">
-                <h5>세무직</h5>
-                <ul>
-                    <li>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
-                    </li>
-                    <li>
-                        <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
-                    </li>
-                    <li>
-                        <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50647/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">조민주</a>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50027/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
-                    </li>
-                    <li>
-                        <span>[세법]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50187/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">고선미</a>
-                    </li>
-                    <li>
-                        <span>[회계학]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50227/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김영훈</a>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50057/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김현식</a>
-                    </li>
-                    <li>
-                        <span>[사회]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
-                    </li>
-                    <li>
-                        <span>[수학]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50201/?subject_idx=1135&subject_name=%EC%88%98%ED%95%99')}}">곽윤근</a>
-                    </li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                </ul>
-            </div>
-
-            <div class="prof-drop-Box">
-                <h5>법원직</h5>
-                <ul>
-                    <li>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50065/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">이현나</a>
-                        <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
-                        <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50571/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">임진석</a>
-                    </li>
-                    <li>
-                        <span>[헌법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50591/?subject_idx=1114&subject_name=%ED%97%8C%EB%B2%95')}}">이국령</a>
-                        <span>[형법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50073/?subject_idx=1116&subject_name=%ED%98%95%EB%B2%95')}}">문형석</a>
-                        <span>[형사소송법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50685/?subject_idx=1117&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">유안석</a>
-                    </li>
-                    <li>
-                        <span>[민법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50519/?subject_idx=1118&subject_name=%EB%AF%BC%EB%B2%95')}}">김동진</a>
-                        <span>[민사소송법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50145/?subject_idx=1119&subject_name=%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">이덕훈</a>
-                    </li>
-                </ul>
-                <h5>소방직</h5>
-                <ul>
-                    <li>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50661/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">김세령</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
-                    </li>
-                    <li>
-                        <span>[영어]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
-                    </li>
-                    <li>
-                        <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50305/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50027/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
-                    </li>
-                    <li>
-                        <span>[소방학개론]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">김종상</a>
-                    </li>
-                    <li>
-                        <span>[소방관계법규]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
-                    </li>
-                    <li>
-                        <span>[사회]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
-                    </li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                    <li>&nbsp;</li>
-                </ul>
-            </div>
-
-            <div class="prof-drop-Box">
-                <h5>7급 PSAT</h5>
-                <ul>
-                    <li>
-                        <span>[언어논리]</span>
-                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">이나우</a>
-                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">한승아</a>
-                    </li>
-                    <li>
-                        <span>[자료해석]</span>
-                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">석치수</a>
-                        <span>[상황판단]</span>
-                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">박준범</a>
-                    </li>
-                </ul>
                 <h5>기술직</h5>
                 <ul>
                     <li>
@@ -278,11 +214,7 @@
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50027/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
                     </li>
-                    <li>
-                        <span>[보건행정]</span>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50395/?subject_idx=1129&subject_name=%EB%B3%B4%EA%B1%B4%ED%96%89%EC%A0%95')}}">하재남</a>
-                        <span>[공중보건]</span>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50395/?subject_idx=1130&subject_name=%EA%B3%B5%EC%A4%91%EB%B3%B4%EA%B1%B4')}}">하재남</a>
+                    <li>                        
                         <span>[전기기기]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50718/?subject_idx=1168&subject_name=%EC%A0%84%EA%B8%B0%EA%B8%B0%EA%B8%B0')}}">최우영</a>
                     </li>
@@ -344,10 +276,82 @@
                         <span>[조경계획 및 설계/생태계관리]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/51152?subject_idx=2119&subject_name=%EC%A1%B0%EA%B2%BD%EA%B3%84%ED%9A%8D%20%EB%B0%8F%20%EC%84%A4%EA%B3%84')}}">이윤주</a>
                     </li>
+                    <li>
+                        <span>[컴퓨터일반]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51162?subject_idx=1169&subject_name=%EC%BB%B4%ED%93%A8%ED%84%B0%EC%9D%BC%EB%B0%98')}}">곽후근</a>
+                        <span>[정보보호론]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51162?subject_idx=1170&subject_name=%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8%EB%A1%A0')}}">곽후근</a>
+                    </li>
+                    <li>
+                        <span>[환경공학]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51163?subject_idx=2129&subject_name=%ED%99%98%EA%B2%BD%EA%B3%B5%ED%95%99')}}">신영조</a>
+                        <span>[화학]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51165?subject_idx=1182&subject_name=%ED%99%94%ED%95%99')}}">송연욱</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/51164?subject_idx=1182&subject_name=%ED%99%94%ED%95%99')}}">김병일</a>
+                        <span>[환경보건]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50395?subject_idx=2130&subject_name=%ED%99%98%EA%B2%BD%EB%B3%B4%EA%B1%B4')}}">하재남</a>
+                    </li>
+                    <li>
+                        <span>[임업경영]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50541?subject_idx=1223&subject_name=%EC%9E%84%EC%97%85%EA%B2%BD%EC%98%81')}}">장재영</a>
+                        <span>[조림]</span>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50541?subject_idx=1224&subject_name=%EC%A1%B0%EB%A6%BC')}}">장재영</a>
+                    </li>
                 </ul>
             </div>
 
             <div class="prof-drop-Box">
+                <h5>세무직</h5>
+                <ul>
+                    <li>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
+                    </li>
+                    <li>
+                        <span>[영어]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
+                    </li>
+                    <li>
+                        <span>[한국사]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50647/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">조민주</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50027/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
+                    </li>
+                    <li>
+                        <span>[세법]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">박정한</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50187/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">고선미</a>
+                    </li>
+                    <li>
+                        <span>[회계학]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51166/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">이윤호</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50227/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김영훈</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50057/?subject_idx=1124&subject_name=%ED%9A%8C%EA%B3%84%ED%95%99')}}">김현식</a>
+                    </li>
+                    <li>
+                        <span>[사회]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
+                    </li>
+                    <li>
+                        <span>[수학]</span>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50201/?subject_idx=1135&subject_name=%EC%88%98%ED%95%99')}}">곽윤근</a>
+                    </li>
+                </ul>
+                <h5>7급 PSAT</h5>
+                <ul>
+                    <li>
+                        <span>[언어논리]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">이나우</a>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">한승아</a>
+                    </li>
+                    <li>
+                        <span>[자료해석]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">석치수</a>
+                        <span>[상황판단]</span>
+                        <a href="https://pass.willbes.net/home/index/cate/3103" target="_blank">박준범</a>
+                    </li>
+                </ul> 
                 <h5>군무원</h5>
                 <ul>
                     <li>
@@ -381,7 +385,7 @@
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50619/?subject_idx=1237&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EA%B2%80%EC%A0%95%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98')}}">김상범</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50305/?subject_idx=1237&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EA%B2%80%EC%A0%95%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98')}}">한경준</a>
                     </li>
-                </ul>                
+                </ul>
             </div>
         </div>
     @elseif($__cfg['SiteCode'] == '2004')

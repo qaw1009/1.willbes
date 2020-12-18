@@ -215,8 +215,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50647?subject_idx=1109') }}">조민주</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50027?subject_idx=1109') }}">오태진</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50003?subject_idx=1109') }}">원유철</a>
-                </li>
-                <li><span>보건직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=1129') }}">하재남</a></li>
+                </li>                
                 <li><span>통신직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163') }}">최우영</a></li>
                 <li><span>전기직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163/?subject_idx=1193') }}">최우영</a></li>
                 <li><span>토목직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50435?subject_idx=1215') }}">장성국</a></li>
@@ -226,6 +225,14 @@
                 <li><span>축산직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51150?subject_idx=2115') }}">윤용범</a></li>
                 <li><span>기계직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51148?subject_idx=1216') }}">윤황현</a></li>
                 <li><span>조경직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51153?subject_idx=2120') }}">이윤주</a></li>
+                <li><span>전산직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51162?subject_idx=1169') }}">곽후근</a></li>
+                <li><span>환경공학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51163?subject_idx=2129') }}">신영조</a></li>
+                <li><span>화학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51165?subject_idx=1182') }}">송연욱</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51164?subject_idx=1182') }}">김병일</a>
+                </li>
+                <li><span>환경보건</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=2130') }}">하재남</a></li>
+                <li><span>임업직</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50541?subject_idx=1223') }}">장재영</a></li>
             </ul>
         @endif
     @elseif($__cfg['SiteCode'] == '2005')

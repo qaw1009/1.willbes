@@ -17,6 +17,7 @@
         /************************************************************/
 
         .skybanner {position:fixed;top:200px; width:130px; right:10px;z-index:1;}        
+        .skybanner a {display:block; margin-bottom:5px}
 
         .wb_police {background:#0A0A0A}
 
@@ -29,7 +30,7 @@
         .wb_02 ul {width:859px; margin:0 auto}
         .wb_02 li {display:inline; float:left; margin-right:10px}
         .wb_02 ul:after { content:''; display:block; clear:both}
-        .wb_02 .youtube {width:276px; border:1px solid #000; box-shadow:0 10px 20px rgba(0,0,0,.3)}
+        .wb_02 .youtube {width:276px; box-shadow:0 10px 20px rgba(0,0,0,.3)}
         .wb_02 .youtube iframe {width:276px; height:159px}
         .wb_04 {background:#5898f9}
 
@@ -41,7 +42,12 @@
 
 
 
-    <div class="p_re evtContent NSK" id="evtContainer">        
+    <div class="p_re evtContent NSK" id="evtContainer">      
+        <div class="skybanner">
+            <a href="#apply01"><img src="https://static.willbes.net/public/images/promotion/2020/12/1981_sky_01.png" alt="" ></a>
+            <a href="#apply02"><img src="https://static.willbes.net/public/images/promotion/2020/12/1981_sky_02.png" alt="" ></a>
+        </div>  
+
         <div class="evtCtnsBox wb_police" >
             <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="경찰학원부분 1위" />            
 		</div>     

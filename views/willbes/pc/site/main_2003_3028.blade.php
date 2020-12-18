@@ -18,7 +18,11 @@
 
         <div class="Section Section2">
             <div class="widthAuto ">
-                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1787"><img src="https://static.willbes.net/public/images/promotion/main/3028_visual_top.jpg" alt="윌비스 기술직 라인업"></a>
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3028_visual_top.jpg" alt="윌비스 기술직 라인업" usemap="#Map3028A" border="0">
+            <map name="Map3028A">
+                <area shape="rect" coords="19,17,478,284" href="https://pass.willbes.net/promotion/index/cate/3028/code/1787" target="_blank" alt="윌비스 기술직">
+                <area shape="rect" coords="629,19,1099,284" href="https://pass.willbes.net/promotion/index/cate/3019/code/1971" target="_blank" alt="대방고시 라인업">
+            </map>
             </div>
         </div>
 

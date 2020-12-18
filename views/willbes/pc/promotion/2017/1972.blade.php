@@ -1199,13 +1199,16 @@
                                     <h5>2022학년도 대비 연간 커리큘럼</h5>
                                     <ul>
                                         <li class="sTitle NSK-Black">2021년</li>
-                                        <li><span>1~4월</span> 전공중국어 기본이론</li>
-                                        <li><span>1~4월</span> 전공중국어 기본독해</li>
-                                        <li><span>5~6월</span> 전공중국어 기본이론심화</li>
-                                        <li><span>5~6월</span> 전공중국어 독해심화</li>
-                                        <li><span>7~8월</span> 전공중국어 핵심체크</li>
-                                        <li><span>7~8월</span> 전공중국어 독해반</li>
-                                        <li><span>9~10월</span> 전공중국어 모의고사</li>
+                                        <li><span>1~4월</span> 기본이론반</li>
+                                        <li><span>1~4월</span> 기본독해반</li>
+                                        <li><span>3~4월</span> 영역별문제풀이반</li>
+                                        <li><span>5~6월</span> 심화이론반</li>
+                                        <li><span>5~6월</span> 심화독해반</li>
+                                        <li><span>5~6월</span> 기출문제분석반</li>
+                                        <li><span>7~8월</span> 문제풀이 + 핵심체크반</li>
+                                        <li><span>7~8월</span> 독해 마스터반</li>
+                                        <li><span>9~10월</span> 모의고사반</li>
+                                        <li><span>11월</span> 최종정리 모의고사반</li>
                                     </ul>
                                 </td>
                                 <td>
@@ -1217,14 +1220,14 @@
                                             - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
-                                            <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li class="tx-gray">원 수강료<br> <s>3,420,000원</s></li>                                            
+                                            <li><div class="NSK-Black">50%<br>할인</div></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">1,710,000원</span></li>
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.stage.willbes.net/pass/offPackage/show/prod-code/177162" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.stage.willbes.net/package/show/cate/3137/pack/648001/prod-code/177161" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>

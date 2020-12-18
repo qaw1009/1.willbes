@@ -84,7 +84,7 @@
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_live.jpg" alt="라이브" usemap="#Map1779_live" border="0" />
             <map name="Map1779_live">
-                <area shape="rect" coords="209,1104,912,1214" href="#evt04" alt="구매하기">
+                <area shape="rect" coords="209,1104,912,1214" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank" alt="구매하기">
             </map>                       
         </div>
 
@@ -104,7 +104,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/08/1779_03.jpg" alt="프로그램" />
         </div>
 
-        <div class="evtCtnsBox evt04" id="evt04">
+        <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_04_01.jpg" alt="수강신청" />
             <ul class="livetab NSK-Black mt100">
                 <li><a href="#live01">실강 전용 수강신청</a></li>

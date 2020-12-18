@@ -467,25 +467,25 @@
                                         <tr>
                                             <td rowspan="3">중국어</td>
                                             <td rowspan="3">정경미</td>
-                                            <td colspan="2" class="tx-left">01~04월 중국어 기본이론
-                                                <br><em>※ 강의일정 추후공지</em></td>
-                                            <td>　</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2" class="tx-left">01~04월 중국어 기본이론                                                </td>
+                                            <td>600,000 ▶ <strong>540,000</strong><br>
+                                            (10%↓)</td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=%EC%A0%84%EA%B3%B5%EC%A4%91%EA%B5%AD%EC%96%B4&tab=only_lecture" target="_blank" class="btnSt01">신청하기</a></td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=%EC%A0%84%EA%B3%B5%EC%A4%91%EA%B5%AD%EC%96%B4&tab=only_lecture" target="_blank" class="btnSt02">신청하기</a></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" class="tx-left">01~04월 중국어 기본독해
-                                                <br><em>※ 강의일정 추후공지</em></td>
-                                            <td>　</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2" class="tx-left">01~04월 중국어 기본독해                                                </td>
+                                            <td>600,000 ▶ <strong>540,000</strong><br>
+                                            (10%↓)</td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=%EC%A0%84%EA%B3%B5%EC%A4%91%EA%B5%AD%EC%96%B4&tab=only_lecture" target="_blank" class="btnSt01">신청하기</a></td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=전공중국어&tab=only_lecture" target="_blank" class="btnSt02">신청하기</a></td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2" class="tx-left">2021년(1~11월) 정경미 중국어 연간 패키지
-                                                <br><em>※ 수강료 추후공지</em></td>
-                                            <td>　</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2" class="tx-left">2021년(1~11월) 정경미 중국어 연간 패키지</td>
+                                            <td>3,420,000 ▶ <strong>1,71,000</strong><br>
+                                            (50%↓)</td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=전공중국어&tab=only_lecture" target="_blank" class="btnSt01">신청하기</a></td>
+                                            <td><a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995&subject_name=전공중국어&tab=only_lecture" target="_blank" class="btnSt02">신청하기</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

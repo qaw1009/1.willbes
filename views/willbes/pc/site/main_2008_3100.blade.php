@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="Section mt50">
+        <div class="Section mt80">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])

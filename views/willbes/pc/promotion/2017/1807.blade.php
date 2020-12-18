@@ -112,7 +112,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="tx-left">2021년(1~8월) 배재민 초등 상반기 패키지 </td>
-                                            <td>1,500,000 ▶ 1,200,000</strong><br>(20%↓)</td>
+                                            <td>1,500,000 ▶ <strong>1,200,000</strong><br>(20%↓)</td>
                                             <td><a href="https://ssam.willbes.net/package/show/cate/3136/pack/648001/prod-code/176514" target="_blank" class="btnSt01">신청하기</a></td>
                                             <td><a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176515" target="_blank" class="btnSt02">신청하기</a></td>
                                         </tr>

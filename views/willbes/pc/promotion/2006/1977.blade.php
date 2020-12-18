@@ -41,7 +41,7 @@
 		<div class="evtCtnsBox evt_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1977_top.jpg" alt="감평2차 김기홍 기본강의" usemap="#Map1977A" border="0"/>
             <map name="Map1977A">
-                <area shape="rect" coords="362,1462,756,1549"  href="javascript:go_PassLecture('176562');" target="_blank" alt="수강신청">
+                <area shape="rect" coords="362,1462,756,1549"  href="javascript:go_PassLecture('176562');" alt="수강신청">
             </map>
 		</div>
 
@@ -52,7 +52,7 @@
         <div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1977_02.jpg" alt="기본강의 수강신청" usemap="#Map1977B" border="0" />
             <map name="Map1977B">
-                <area shape="rect" coords="367,437,753,517" href="javascript:go_PassLecture('176562');" target="_blank" alt="수강신청">
+                <area shape="rect" coords="367,437,753,517" href="javascript:go_PassLecture('176562');" alt="수강신청">
             </map>
 
             <div class="check">

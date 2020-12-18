@@ -202,8 +202,8 @@
                 </ul>
             </div>
             <div id="tab01s" class="pb100"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1053_tab1_con.jpg">                
-                <div><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1053_tab1_con.jpg">                
+                <div><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
             </div>                                        
             <div id="tab02s" class="pb100">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
@@ -283,12 +283,13 @@
                         &nbsp;통합생활관리반은 숙박,식사,실강,인강 등이 통합된 패키지 상품으로 등록 시점에 담당자와 협의를 거친 경우를 제외하고<br />
                         &nbsp;혜택 이용 여부에 따른 <b>부분적인 금액 공제는 불가</b>합니다.<br />
                         &nbsp;<span class="wb_tip_orange">(ex: 총 6개월 과정을 등록하였는데 2개월은 식당을 이용하지 않았으니 해당 부분 환불해주세요. X)</span><br />
-                        &nbsp;<span class="wb_tip_orange">(ex: 인강PASS를 이용하지 않으니 인강 비용만큼 금액 공제해 주세요. X)</span><br /><br />
-                        - 이용 기간에 따른 환불(교육청 환불 기준 준수)                           
-                        </li>                                
+                        &nbsp;<span class="wb_tip_orange">(ex: 인강PASS를 이용하지 않으니 인강 비용만큼 금액 공제해 주세요. X)</span><br />
+                        </li>
+                        <li>중도 환불 시 무료 혜택 금액을 차감하고 환불됩니다.</li>
+                        <span class="wb_tip_orange">- 이용 기간에 따른 환불(교육청 환불 기준 준수)</span><br>                                              
                     </ol>
                 </div> 
-                <table>
+                <table style="margin-top:25px;">  
                     <col />
                     <col />
                     <col />

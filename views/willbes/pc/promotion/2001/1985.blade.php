@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:200px; width:130px; right:10px;z-index:1;}        
+        .skybanner {position:fixed;top:200px; width:140px; right:10px;z-index:1;}        
         .skybanner a {display:block; margin-bottom:5px}
 
         .wb_police {background:#0A0A0A}
@@ -44,8 +44,8 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
-            <a href="#apply01"><img src="https://static.willbes.net/public/images/promotion/2020/12/1981_sky_01.png" alt="" ></a>
-            <a href="#apply02"><img src="https://static.willbes.net/public/images/promotion/2020/12/1981_sky_02.png" alt="" ></a>
+            <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2020/12/1985_sky_01.jpg" alt="" ></a>
+            <a href="#evt08"><img src="https://static.willbes.net/public/images/promotion/2020/12/1985_sky_02.jpg" alt="" ></a>
         </div>  
 
         <div class="evtCtnsBox wb_police" >
@@ -103,14 +103,14 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/12/1985_06.jpg" alt="회원수 증가율 1위"/>	 	
 		</div>      
         
-        <div class="evtCtnsBox wb_07" >
+        <div class="evtCtnsBox wb_07" id="evt07">
 			<img src="https://static.willbes.net/public/images/promotion/2020/12/1985_07.jpg" alt="경찰학 입문강의"/>	
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif    		
 		</div> 
 
-        <div class="evtCtnsBox wb_08" >
+        <div class="evtCtnsBox wb_08" id="evt08">
 			<img src="https://static.willbes.net/public/images/promotion/2020/12/1985_08.jpg" alt="회원수 증가율 1위" usemap="#Map1985B" border="0"/>
             <map name="Map1985B">
                 <area shape="rect" coords="327,724,788,809" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운로드"  alt="이미지 다운받기">

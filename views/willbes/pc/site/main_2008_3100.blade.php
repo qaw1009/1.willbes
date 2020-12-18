@@ -34,7 +34,7 @@
                             @php
                                 foreach ($data['arr_main_banner'] as $key => $val) {
                                     if (strpos($key, '메인_cast') !== false) {
-                                        echo '<li>'.banner_html(element($key, $data['arr_main_banner']), '', '' , false, '', '', 'castTitle').'</li>';
+                                        echo '<li>'.banner_html(element($key, $data['arr_main_banner']), '', '' , false, '', '').'</li>';
                                     }
                                 }
                             @endphp

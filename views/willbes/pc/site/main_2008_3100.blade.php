@@ -34,7 +34,7 @@
                             @php
                                 foreach ($data['arr_main_banner'] as $key => $val) {
                                     if (strpos($key, '메인_cast') !== false) {
-                                        echo '<li>'.banner_html(element($key, $data['arr_main_banner']), '', '' , false, '', '', 'castTitle').'</li>';
+                                        echo '<li>'.banner_html(element($key, $data['arr_main_banner']), '', '' , false, '', '').'</li>';
                                     }
                                 }
                             @endphp
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="Section mt50">
+        <div class="Section mt80">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])

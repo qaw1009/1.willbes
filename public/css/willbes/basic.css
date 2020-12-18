@@ -329,11 +329,10 @@ body {
 body#widthFrame {
   min-width: 100%;
 }
-ol, ul {
+ol li, 
+ul li {
 	list-style: none;
 }
-ol:after,
-ul:after {content:""; display:block:""; clear:both}
 
 blockquote, q {
 	quotes: none;

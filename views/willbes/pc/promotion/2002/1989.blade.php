@@ -42,8 +42,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1989_01.jpg"  alt="" usemap="#Map1989B" border="0" />
             <map name="Map1989B" id="Map1989B">
                 <area shape="rect" coords="374,1135,746,1219" href="https://police.willbes.net/promotion/index/cate/3001/code/1959" target="_blank" alt="문제풀이" />
-                <area shape="rect" coords="178,1644,306,1698" href="https://police.willbes.net/pass/offPackage/show/prod-code/175178" target="_blank" alt="원유철 문풀" />
-                <area shape="rect" coords="499,1648,633,1693" href="https://police.willbes.net/pass/offPackage/show/prod-code/176273" target="_blank" alt="오태진 문풀" />
+                <area shape="rect" coords="314,1645,442,1699" href="https://police.willbes.net/pass/offPackage/show/prod-code/175178" target="_blank" alt="원유철 문풀" />
+                <area shape="rect" coords="671,1656,805,1701" href="https://police.willbes.net/pass/offPackage/show/prod-code/176273" target="_blank" alt="오태진 문풀" />
                 <area shape="rect" coords="153,2187,256,2227" href="https://police.willbes.net/pass/offPackage/show/prod-code/175163" target="_blank" alt="원유철 문풀2단계" />
                 <area shape="rect" coords="385,2188,486,2224" href="https://police.willbes.net/pass/offPackage/show/prod-code/175164" target="_blank" alt="오태진 문풀2단계" />
                 <area shape="rect" coords="613,2186,712,2225" href="https://police.willbes.net/pass/offPackage/show/prod-code/175421" target="_blank" alt="원유철 문풀3단계" />

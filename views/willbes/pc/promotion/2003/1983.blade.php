@@ -17,6 +17,8 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:225px;right:10px;z-index:10;}
+
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1983_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#EBEBEB;}
@@ -98,6 +100,12 @@
             </div>
         </div>
 
+        <div class="sky">
+            <a href="#apply"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_sky01.png" alt="" >
+            </a>             
+        </div>   
+
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_top.jpg" alt=""  />
         </div>
@@ -121,7 +129,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_05.jpg" alt="" />              
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_05.jpg" id="apply" alt="" />              
                 <div id="tab1s">
                     <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_05_01.jpg" title="" />
                     <ul class="radio_apply">

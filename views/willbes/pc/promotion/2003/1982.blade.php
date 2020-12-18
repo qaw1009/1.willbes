@@ -17,6 +17,8 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:225px;right:10px;z-index:10;}
+
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1982_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#EBEBEB;}
@@ -107,6 +109,12 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="sky">
+            <a href="#apply"> 
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_sky01.png" alt="" >
+            </a>             
+        </div>   
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_top.jpg" alt=""  />
@@ -124,7 +132,7 @@
 
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03.jpg" alt="" />
-            <ul class="tab" id="apply">
+            <ul class="tab">
                 <li><a href="#tab1"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab01_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab01.png" class="on"  /></a></li>
                 <li><a href="#tab2"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab02_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab02.png" class="on"  /></a></li>
                 <li><a href="#tab3"><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab03_off.png" class="off" alt=""/><img src="https://static.willbes.net/public/images/promotion/2020/12/1982_03_tab03.png" class="on"  /></a></li>

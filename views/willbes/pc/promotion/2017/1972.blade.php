@@ -1226,8 +1226,8 @@
                                         </ul>
                                     </div>
                                     <div class="lecBtn">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.stage.willbes.net/pass/offPackage/show/prod-code/177162" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.stage.willbes.net/package/show/cate/3137/pack/648001/prod-code/177161" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
                                     </div>
                                 </td>
                             </tr>

@@ -5,35 +5,6 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; font-size:14px; line-height:1.5; position:relative;}
     .evtCtnsBox img {width:100%; max-width:720px;}  
-    .evt03 .slide_con {margin-bottom:30px}
-    .evt03 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
-    .evt03 .slide_con .bx-wrapper .bx-pager {        
-        width: auto;
-        bottom: 0;
-        left:0;
-        right:0;
-        text-align: center;
-        z-index:90;
-    }
-    .evt03 .slide_con .bx-wrapper .bx-pager.bx-default-pager a {
-        background: #ccc;
-        width: 14px;
-        height: 14px;
-        margin: 0 4px;
-        border-radius:10px;
-    }
-    .evt03 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-    .evt03 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
-    .evt03 .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #fd898c;
-    }
-    .evt03 .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
-        width: 30px;
-    }
-    .evt03 .slide_con .bx-wrapper .bx-pager {     
-        bottom: 0px;
-    }   
-
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {

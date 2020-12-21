@@ -202,36 +202,6 @@
             </div>      
         </div>
 
-        <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_06.jpg" alt="" />
-        </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_02.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
-            <map name="Map1717apply" id="Map1717apply">
-                <area shape="rect" coords="513,757,922,844" href="javascript:go_PassLecture('168184');">
-            </map>
-            <div class="check">
-                <label>
-                    <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#careful">유의사항 자세히보기 ↓</a>
-            </div>
-        </div>
-        --}}
-
-        {{--
-        <div class="evtCtnsBox wb_cts03" id="wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_03.jpg" alt="인증하기" usemap="#Map1717b" border="0"/>
-            <map name="Map1717b" id="Map1717b">
-                <area shape="rect" coords="339,847,775,902" href="javascript:certOpen();"/>
-                <area shape="rect" coords="469,927,619,958" href="#careful" />
-            </map>            
-        </div>
-        --}}
-
         <div class="evtCtnsBox wb_info" id="tip">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 기술직 PASS 이용안내</h2>
@@ -283,6 +253,9 @@
                             <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
+                            <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
+                                · 결제금액 - (강좌 정상가의 1일 이용대금×이용일수)
+                            </li>
                         </ol>
                     </dd>
 

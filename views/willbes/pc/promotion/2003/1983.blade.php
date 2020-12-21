@@ -147,37 +147,7 @@
                 <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
             </div>      
         </div>
-
-        <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_06.jpg" alt="" />
-        </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_02.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
-            <map name="Map1717apply" id="Map1717apply">
-                <area shape="rect" coords="513,757,922,844" href="javascript:go_PassLecture('168184');">
-            </map>
-            <div class="check">
-                <label>
-                    <input name="ischk"  type="checkbox" value="Y" />
-                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#careful">유의사항 자세히보기 ↓</a>
-            </div>
-        </div>
-        --}}
-
-        {{--
-        <div class="evtCtnsBox wb_cts03" id="wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_03.jpg" alt="인증하기" usemap="#Map1717b" border="0"/>
-            <map name="Map1717b" id="Map1717b">
-                <area shape="rect" coords="339,847,775,902" href="javascript:certOpen();"/>
-                <area shape="rect" coords="469,927,619,958" href="#careful" />
-            </map>            
-        </div>
-        --}}
-
+        
         <div class="evtCtnsBox wb_info" id="tip">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 세무직 PASS 이용안내</h2>

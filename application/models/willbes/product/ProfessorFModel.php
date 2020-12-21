@@ -109,6 +109,22 @@ class ProfessorFModel extends WB_Model
     }
 
     /**
+     * 교수별 참조 데이터 목록 조회
+     * @param int $prof_idx [교수식별자]
+     * @param array $arr_add_condition [추가조회조건]
+     * @return array|int
+     */
+    public function listProfessorReferData($prof_idx, $arr_add_condition = [])
+    {
+        $column = 'ReferIdx, ReferType, ReferValue, ReferEtc';
+        $arr_condition = array_replace_recursive([
+            'EQ' => ['Profidx' => get_var($prof_idx, 0), 'IsStatus' => 'Y']
+        ], $arr_add_condition);
+
+        return $this->_conn->getListResult($this->_table['professor_reference'], $column, $arr_condition);
+    }
+
+    /**
      * 교수별 참조 데이터 조회
      * @param int $prof_idx [교수식별자]
      * @param array $arr_refer_type [참조데이터 타입]

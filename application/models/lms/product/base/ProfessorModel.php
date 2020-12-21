@@ -20,7 +20,7 @@ class ProfessorModel extends WB_Model
     ];
     private $_refer_type = [
         'string' => ['ot_url', 'wsample_url', 'sample_url1', 'sample_url2', 'sample_url3', 'homep_url', 'cafe_url', 'blog_url', 'yt_url1', 'yt_url2', 'yt_url3'],
-        'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img']
+        'attach' => ['prof_index_img', 'prof_detail_img', 'lec_list_img', 'lec_detail_img', 'lec_review_img', 'class_detail_img', 'curri1_file', 'curri2_file', 'curri3_file', 'curri4_file', 'curri5_file']
     ];
     private $_refer_opt_code = ['sample_url1_opt_code', 'sample_url2_opt_code', 'sample_url3_opt_code', 'yt_url1_opt_code', 'yt_url2_opt_code', 'yt_url3_opt_code'];
     private $_bnr_type = ['01' => 3, '02' => 3, '03' => 3, '04' => 3];     // 배너타입별 이미지 갯수
@@ -291,7 +291,7 @@ class ProfessorModel extends WB_Model
         ]);
 
         foreach ($data as $idx => $row) {
-            $result_key = (ends_with($row['ReferType'], '_img') === true) ? 'attach' : 'string';
+            $result_key = (ends_with($row['ReferType'], ['_img', '_file']) === true) ? 'attach' : 'string';
 
             $results[$result_key][$row[$_key]] = $row[$_value];
             $key_type == 'idx' && $results{$result_key . '_value'}[$row[$_key]] = $row['ReferValue'];
@@ -884,11 +884,11 @@ class ProfessorModel extends WB_Model
             $attach_img_names = [];
             array_map(function ($val) use (&$attach_img_names, $arr_attach_refer, $prof_idx) {
                 $attach_img_postfix = (in_array($val, $arr_attach_refer) === true) ? '_' . time() : '';
-                $attach_img_names[] = str_replace('_img', '_' . $prof_idx, $val) . $attach_img_postfix;
+                $attach_img_names[] = str_replace(['_img', '_file'], '_' . $prof_idx, $val) . $attach_img_postfix;
             }, $this->_refer_type['attach']);
 
-            // 이미지 업로드
-            $uploaded = $this->upload->uploadFile('img', $this->_refer_type['attach'], $attach_img_names, $upload_sub_dir, 'overwrite:false');
+            // 이미지 업로드 (upload_type : img => file 수정)
+            $uploaded = $this->upload->uploadFile('file', $this->_refer_type['attach'], $attach_img_names, $upload_sub_dir, 'overwrite:false');
             if (is_array($uploaded) === false) {
                 throw new \Exception($uploaded);
             }
@@ -899,6 +899,7 @@ class ProfessorModel extends WB_Model
                     if (in_array($_refer_type, $arr_attach_refer) === true) {
                         $data = [
                             'ReferValue' => $this->upload->_upload_url . $upload_sub_dir . '/' . $attach_imgs['file_name'],
+                            'ReferEtc' => $attach_imgs['client_name'],
                             'UpdAdminIdx' => $admin_idx
                         ];
 
@@ -916,6 +917,7 @@ class ProfessorModel extends WB_Model
                             'ProfIdx' => $prof_idx,
                             'ReferType' => $this->_refer_type['attach'][$idx],
                             'ReferValue' => $this->upload->_upload_url . $upload_sub_dir . '/' . $attach_imgs['file_name'],
+                            'ReferEtc' => $attach_imgs['client_name'],
                             'RegAdminIdx' => $admin_idx,
                             'RegIp' => $reg_ip
                         ];

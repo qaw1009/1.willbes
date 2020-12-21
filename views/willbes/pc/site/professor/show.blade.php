@@ -190,16 +190,7 @@
             <div id="LayerProfile" class="willbes-Layer-Black"></div>
             <!-- // willbes-Layer-ProfileBox -->
             <!-- willbes-Layer-CurriBox -->
-            <div id="Curriculum" class="willbes-Layer-CurriBox">
-                <a class="closeBtn" href="#none" onclick="closeWin('LayerCurriculum'); closeWin('Curriculum')">
-                    <img src="{{ img_url('prof/close.png') }}">
-                </a>
-                <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">{{ $data['ProfNickName'] }}</span> {{$data['AppellationCcdName']}} 커리큘럼</div>
-                <div class="Layer-Cont">
-                    {!! $data['ProfCurriculum'] !!}
-                </div>
-            </div>
-            <div id="LayerCurriculum" class="willbes-Layer-Black"></div>
+            @include('willbes.pc.site.professor.curri_partial')
             <!-- // willbes-Layer-CurriBox -->
         </div>
         <!-- // willbes-Prof-Profile -->

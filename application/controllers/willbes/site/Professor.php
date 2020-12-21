@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Professor extends \app\controllers\FrontController
 {
     protected $models = array('siteF', 'categoryF', 'product/baseProductF', 'product/lectureF', 'product/packageF', 'product/bookF', 'product/professorF', 'support/supportBoardF', 'support/supportBoardTwoWayF', '_lms/sys/code');
-    protected $helpers = array();
+    protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array();
 
@@ -254,6 +254,9 @@ class Professor extends \app\controllers\FrontController
         if (empty($refer_data['yt_url']) === false) {
             $data['ProfReferData']['yt_url'] = array_value_first($refer_data['yt_url']);
         }
+
+        // 커리큘럼 첨부파일 조회
+        $data['ProfReferData']['curri_file'] = $this->professorFModel->listProfessorReferData($prof_idx, ['IN' => ['ReferType' => ['curri1_file', 'curri2_file', 'curri3_file', 'curri4_file', 'curri5_file']]]);
 
         // 뷰 타입별 추가 데이터 조회
         $this->_getShowAddData($data, $prof_idx, $arr_input);
@@ -1253,5 +1256,32 @@ class Professor extends \app\controllers\FrontController
             'frame_path' => $frame_path,
             'frame_params' => $frame_params
         ];
+    }
+
+    /**
+     * 참조 정보 첨부파일 다운로드
+     */
+    public function referDownload()
+    {
+        $prof_idx = $this->_reqP('prof_idx');
+        $refer_idx = $this->_reqP('refer_idx');
+        $refer_type = $this->_reqP('refer_type');
+
+        if (empty($prof_idx) === true || empty($refer_idx) === true || empty($refer_type) === true) {
+            show_alert('필수 파라미터 오류입니다.', 'back');
+        }
+
+        // 참조 첨부파일 조회
+        $data = $this->professorFModel->listProfessorReferData($prof_idx, ['EQ' => ['ReferIdx' => $refer_idx, 'ReferType' => $refer_type]]);
+        if (empty($data) === true) {
+            show_alert('참조 데이터가 없습니다.', 'back');
+        }
+
+        $filepath = public_to_upload_path($data[0]['ReferValue']);
+        if (file_exists($filepath) === false) {
+            show_alert('첨부파일이 없습니다.', 'back');
+        }
+
+        rename_download($filepath, $data[0]['ReferEtc']);
     }
 }

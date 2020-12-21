@@ -397,6 +397,24 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label col-md-2" for="">커리큘럼 첨부
+                    </label>
+                    <div class="col-md-9">
+                        @for($i = 1; $i <= 5; $i++)
+                            <div class="row mb-5">
+                                <div class="col-md-5">
+                                    <input type="file" id="curri{{ $i }}_file" name="curri{{ $i }}_file" class="form-control" title="커리큘럼 첨부파일{{ $i }}"/>
+                                </div>
+                                <div class="col-md-7 pl-0">
+                                    @if(empty($data['curri'. $i . '_file']) === false)
+                                        <p class="form-control-static"><a href="{{ $data['curri'. $i . '_file'] }}" rel="popup-image">{{ str_last_pos_after($data['curri'. $i . '_file'], '/') }}</a> <a href="#none" class="img-delete" data-img-type="{{ 'curri'. $i . '_file' }}"><i class="fa fa-times red"></i></a></p>
+                                    @endif
+                                </div>
+                            </div>
+                        @endfor
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="prof_content">내용
                     </label>
                     <div class="col-md-9 item">

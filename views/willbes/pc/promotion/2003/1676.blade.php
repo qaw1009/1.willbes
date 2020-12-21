@@ -96,8 +96,7 @@
         <div class="evtCtnsBox evttop_banner" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top_00.jpg"  title="반반과 똑독이 하나">            
         </div>
-        
-        {{--
+
         <div class="evtCtnsBox evttop_banners" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1676_banner"  title="신청 베너" border="0">
             <map name="Map1676_banner" id="Map1676_banner">
@@ -105,7 +104,6 @@
                 <area shape="rect" coords="814,23,1012,92" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>             
         </div>
-        --}}
 
         <div class="evtCtnsBox evttop" >     
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top.jpg"  title="더켠의 반반한 밤">            

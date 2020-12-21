@@ -186,8 +186,9 @@
                                                     <a href="javascript:fnPlayerSample('174873', '1256220', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_bnt01.png" alt="2021학년도 대비" ></a>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn02.png" alt="2022학년도 대비" ></a>
-                                                    <a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>
+                                                    <a href="javascript:fnPlayerSample('176718', '1267102', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn08.png" alt="2022학년도 대비 1강" ></a>
+                                                    <a href="javascript:fnPlayerSample('176718', '1268480', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn09.png" alt="2022학년도 대비 2강" ></a>
+                                                    {{--<a href="@if($file_yn[6] == 'Y') {{ front_url($file_link[6]) }} @else {{ $file_link[6] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>--}}
                                                 </td>
                                                 <td>
                                                     * 기출해설<br> 강의는 없습니다.

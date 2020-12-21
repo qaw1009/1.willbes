@@ -201,7 +201,7 @@
                 <p class="NGEB"><a onclick="go_PassLecture(1);" target="_blank">지금 바로 신청하기 ></a></p>     
             </div>      
         </div>
-        
+
         <div class="evtCtnsBox wb_info" id="tip">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 기술직 PASS 이용안내</h2>
@@ -253,6 +253,9 @@
                             <li>결제 후 7일 이내 전액 환불 가능합니다.</li>
                             <li>맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
                             <li>자료 및 모바일 강의 다운로드 시 수강한 것으로 간주됩니다.</li>
+                            <li>본 상품은 특별 기획 상품으로, 수강시작일(결제 당일 포함)로부터 7일 경과 후 환불 시에는 할인 되기 전 정가를 기준으로 사용일수만큼 차감하고 환불됩니다.<br>
+                                · 결제금액 - (강좌 정상가의 1일 이용대금×이용일수)
+                            </li>
                         </ol>
                     </dd>
 

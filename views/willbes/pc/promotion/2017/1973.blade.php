@@ -271,7 +271,7 @@
                                                     <a href="@if($file_yn[10] == 'Y') {{ front_url($file_link[10]) }} @else {{ $file_link[10] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn07.png" alt="2021학년도 기출" /></a>                                                    
+                                                    <a href="javascript:fnPlayerSample('176092', '1263042', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn07.png" alt="2021학년도 기출" /></a>
                                                 </td>
                                             </tr>
                                         </tbody>

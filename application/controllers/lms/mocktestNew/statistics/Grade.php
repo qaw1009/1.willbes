@@ -311,6 +311,12 @@ class Grade extends BaseMocktest
             show_error('잘못된 접근 입니다.');
         }
         $prod_code = $params[0];
+
+        $product_info = $this->regGradeModel->productInfo($prod_code);
+        if (empty($product_info) === true) {
+            show_error('조회된 상품이 없습니다.');
+        }
+
         $arr_totalStatistics = $this->_totalStatistics($prod_code);
         if (empty($arr_totalStatistics['base_statistisc']) === true) {
             show_alert('통계에 필요한 사용자 기본정보가 없습니다.', 'back');
@@ -322,10 +328,12 @@ class Grade extends BaseMocktest
         $avg_score_total = $this->_pointAvgForRankStatistics($prod_code,'total');
 
         $this->load->view('mocktestNew/statistics/grade/detail_score', [
+            'product_info' => $product_info,
             'base_statistisc' => $arr_totalStatistics['base_statistisc'],
             'data_total_statistics' => $arr_totalStatistics['data_total_statistics'],
             'data_total_point_statistics' => $arr_pointForStatistics['data_total_point_statistics'],
             'data_total_point_chart' => $arr_pointForStatistics['data_total_point_chart'],
+            'data_max_cnt' => $arr_pointForStatistics['data_max_cnt'],
             'data_avg_score_10' => $avg_score_10,
             'data_avg_score_25' => $avg_score_25,
             'data_avg_score_total' => $avg_score_total
@@ -342,6 +350,11 @@ class Grade extends BaseMocktest
             show_error('잘못된 접근 입니다.');
         }
         $prod_code = $params[0];
+
+        $product_info = $this->regGradeModel->productInfo($prod_code);
+        if (empty($product_info) === true) {
+            show_error('조회된 상품이 없습니다.');
+        }
 
         $arr_totalStatistics = $this->_totalStatistics($prod_code);
         if (empty($arr_totalStatistics['base_statistisc']) === true) {
@@ -373,6 +386,7 @@ class Grade extends BaseMocktest
         }
 
         $this->load->view('mocktestNew/statistics/grade/detail_score2', [
+            'product_info' => $product_info,
             'base_statistisc' => $arr_totalStatistics['base_statistisc'],
             'data_total_statistics' => $arr_totalStatistics['data_total_statistics'],
             'arr_question_data' => $arr_question_data
@@ -414,6 +428,8 @@ class Grade extends BaseMocktest
      */
     private function _pointForStatistics($prod_code = '')
     {
+        $temp_data_max_cnt = [];
+        $data_max_cnt = [];
         $data_total_point_statistics = [];
         $data_total_point_chart = [];
 
@@ -424,6 +440,7 @@ class Grade extends BaseMocktest
             $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['cnt'] = $row['cnt'];
             $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['sumCnt'] = $row['sumCnt'];
             $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['tavg'] = $row['tavg'];
+            $temp_data_max_cnt[$row['listMockPart']][$row['MpIdx']][] = $row['cnt'];
 
             if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 7.5) {
                 $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][0][$row['t_point']] = $row['cnt'];
@@ -480,9 +497,15 @@ class Grade extends BaseMocktest
             }
         }
 
+        foreach ($temp_data_max_cnt as $m_key => $m_row) {
+            foreach ($m_row as $p_key => $p_row) {
+                $data_max_cnt[$m_key][$p_key] = max(array_values($p_row));
+            }
+        }
         return [
             'data_total_point_statistics' => $data_total_point_statistics,
             'data_total_point_chart' => $data_total_point_chart,
+            'data_max_cnt' => $data_max_cnt,
         ];
     }
 

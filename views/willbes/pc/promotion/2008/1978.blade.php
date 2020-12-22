@@ -209,10 +209,11 @@
                 </table>
             </div>        
         </div>
-        
+        {{--
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1978_04.jpg" alt=""/>           
-		</div>
+        </div>
+        --}}
 	</div>
     <!-- End Container -->
 @stop

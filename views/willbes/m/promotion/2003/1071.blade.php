@@ -50,7 +50,7 @@
             <area shape="rect" coords="512,553,640,602" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직">
             <area shape="rect" coords="512,653,640,702" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직">
             <area shape="rect" coords="512,753,642,802" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직">
-            <area shape="rect" coords="513,953,641,1002" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/158347" target="_blank" alt="국가직">
+            <area shape="rect" coords="513,953,641,1002" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/177169" target="_blank" alt="국가직">
             <area shape="rect" coords="512,1083,640,1133" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/176489" target="_blank" alt="전기직">
             <area shape="rect" coords="512,1262,641,1310" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" alt="단가 수강신청">
         </map>

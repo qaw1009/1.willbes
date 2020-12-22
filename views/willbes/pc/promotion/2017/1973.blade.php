@@ -529,7 +529,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1973_03.jpg" alt="소식알리기" usemap="#Map1973" border="0"/>
             <map name="Map1973">
                 <area shape="rect" coords="221,1905,546,1989" href="#none" onclick="_copyUrl();" alt="주소복사">

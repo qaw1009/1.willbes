@@ -992,6 +992,9 @@ select[disabled] {
 .tx22 {
   font-size: 22px !important;
 }
+.tx30 {
+  font-size: 30px !important;
+}
 
 .tx-center {
   text-align: center !important;

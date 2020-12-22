@@ -789,87 +789,92 @@ class RegGradeModel extends WB_Model
     public function pointForStatistics($prod_code)
     {
         $query_string = "
-            m.listMockPart, m.MpIdx, m.t_point, m.cnt
-            ,SUM(m.cnt) OVER(PARTITION BY m.listMockPart, m.MpIdx ORDER BY m.listMockPart ASC, m.MpIdx ASC, m.t_point DESC) AS sumCnt
-            ,IFNULL((
-                SELECT ROUND((m.cnt / a.total_cnt) * 100,2) AS total_cnt
-                FROM (
-                    SELECT b.TakeMockPart, a.MpIdx, COUNT(*) AS total_cnt
-                    FROM {$this->_table['mock_grades']} AS a
-                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
-                    WHERE a.ProdCode = ?
-                    GROUP BY b.TakeMockPart, a.MpIdx
-                ) AS a
-                WHERE a.TakeMockPart = m.listMockPart AND a.MpIdx = m.MpIdx
-            ),0) AS tavg
+            m.listMockPart, m.MpIdx, m.t_point, m.cnt, m.sumCnt
+            ,IFNULL(ROUND((m.sumCnt / m.total_cnt) * 100,2),0) AS tavg
             FROM (
-                SELECT m.listMockPart, m.MpIdx, m.t_point, IFNULL(p.cnt,0) AS cnt
-                FROM (
-                    SELECT a.listMockPart, a.MpIdx, b.t_point
+                SELECT
+                m.listMockPart, m.MpIdx, m.t_point, m.cnt
+                ,SUM(m.cnt) OVER(PARTITION BY m.listMockPart, m.MpIdx ORDER BY m.listMockPart ASC, m.MpIdx ASC, m.t_point DESC) AS sumCnt
+                ,(
+                    SELECT a.total_cnt
                     FROM (
-                        SELECT b.listMockPart, a.MpIdx, a.mapping
-                        FROM (
-                            SELECT a.ProdCode, b.MpIdx, 'mapping' AS mapping
-                            FROM {$this->_table['mock_product']} AS a
-                            INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
-                            WHERE a.ProdCode = ?
-                        ) AS a
-                        INNER JOIN (
-                            SELECT a.ProdCode,SUBSTRING_INDEX (SUBSTRING_INDEX(a.MockPart,',',numbers.n),',',-1) listMockPart
-                            FROM 
-                            (
-                                SELECT 1 n UNION ALL SELECT 2
-                                UNION ALL SELECT 3 UNION ALL SELECT 4
-                                UNION ALL SELECT 5 UNION ALL SELECT 6
-                                UNION ALL SELECT 7 UNION ALL SELECT 8
-                                UNION ALL SELECT 9 UNION ALL SELECT 10
-                            ) numbers
-                            INNER JOIN {$this->_table['mock_product']} AS a ON CHAR_LENGTH (a.MockPart) - CHAR_LENGTH ( REPLACE (a.MockPart,',',''))>= numbers . n-1
-                            WHERE a.ProdCode = ?
-                        ) AS b ON a.ProdCode = b.ProdCode
-                        INNER JOIN (
-                            SELECT TakeMockPart
-                            FROM {$this->_table['mock_register']}
-                            WHERE ProdCode = ?
-                            GROUP BY TakeMockPart
-                        ) AS c ON b.listMockPart = c.TakeMockPart
+                        SELECT b.TakeMockPart, a.MpIdx, COUNT(*) AS total_cnt
+                        FROM {$this->_table['mock_grades']} AS a
+                        INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = ?
+                        GROUP BY b.TakeMockPart, a.MpIdx
                     ) AS a
-                    LEFT JOIN (
-                        SELECT a.t_point, 'mapping' AS mapping
+                    WHERE a.TakeMockPart = m.listMockPart AND a.MpIdx = m.MpIdx
+                ) AS total_cnt
+                FROM (
+                    SELECT m.listMockPart, m.MpIdx, m.t_point, IFNULL(p.cnt,0) AS cnt
+                    FROM (
+                        SELECT a.listMockPart, a.MpIdx, b.t_point
                         FROM (
-                            SELECT 100 AS t_point
-                            UNION ALL SELECT 97.5 AS t_point UNION ALL SELECT 95 AS t_point
-                            UNION ALL SELECT 92.5 AS t_point UNION ALL SELECT 90 AS t_point
-                            UNION ALL SELECT 87.5 AS t_point UNION ALL SELECT 85 AS t_point
-                            UNION ALL SELECT 82.5 AS t_point UNION ALL SELECT 80 AS t_point
-                            UNION ALL SELECT 77.5 AS t_point UNION ALL SELECT 75 AS t_point
-                            UNION ALL SELECT 72.5 AS t_point UNION ALL SELECT 70 AS t_point
-                            UNION ALL SELECT 67.5 AS t_point UNION ALL SELECT 65 AS t_point
-                            UNION ALL SELECT 62.5 AS t_point UNION ALL SELECT 60 AS t_point
-                            UNION ALL SELECT 57.5 AS t_point UNION ALL SELECT 55 AS t_point
-                            UNION ALL SELECT 52.5 AS t_point UNION ALL SELECT 50 AS t_point
-                            UNION ALL SELECT 47.5 AS t_point UNION ALL SELECT 45 AS t_point
-                            UNION ALL SELECT 42.5 AS t_point UNION ALL SELECT 40 AS t_point
-                            UNION ALL SELECT 37.5 AS t_point UNION ALL SELECT 35 AS t_point
-                            UNION ALL SELECT 32.5 AS t_point UNION ALL SELECT 30 AS t_point
-                            UNION ALL SELECT 27.5 AS t_point UNION ALL SELECT 25 AS t_point
-                            UNION ALL SELECT 22.5 AS t_point UNION ALL SELECT 20 AS t_point
-                            UNION ALL SELECT 17.5 AS t_point UNION ALL SELECT 15 AS t_point
-                            UNION ALL SELECT 12.5 AS t_point UNION ALL SELECT 10 AS t_point
-                            UNION ALL SELECT 7.5 AS t_point UNION ALL SELECT 5 AS t_point
-                            UNION ALL SELECT 2.5 AS t_point UNION ALL SELECT 0 AS t_point
+                            SELECT b.listMockPart, a.MpIdx, a.mapping
+                            FROM (
+                                SELECT a.ProdCode, b.MpIdx, 'mapping' AS mapping
+                                FROM {$this->_table['mock_product']} AS a
+                                INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
+                                WHERE a.ProdCode = ?
+                            ) AS a
+                            INNER JOIN (
+                                SELECT a.ProdCode,SUBSTRING_INDEX (SUBSTRING_INDEX(a.MockPart,',',numbers.n),',',-1) listMockPart
+                                FROM 
+                                (
+                                    SELECT 1 n UNION ALL SELECT 2
+                                    UNION ALL SELECT 3 UNION ALL SELECT 4
+                                    UNION ALL SELECT 5 UNION ALL SELECT 6
+                                    UNION ALL SELECT 7 UNION ALL SELECT 8
+                                    UNION ALL SELECT 9 UNION ALL SELECT 10
+                                ) numbers
+                                INNER JOIN {$this->_table['mock_product']} AS a ON CHAR_LENGTH (a.MockPart) - CHAR_LENGTH ( REPLACE (a.MockPart,',',''))>= numbers . n-1
+                                WHERE a.ProdCode = ?
+                            ) AS b ON a.ProdCode = b.ProdCode
+                            INNER JOIN (
+                                SELECT TakeMockPart
+                                FROM {$this->_table['mock_register']}
+                                WHERE ProdCode = ?
+                                GROUP BY TakeMockPart
+                            ) AS c ON b.listMockPart = c.TakeMockPart
                         ) AS a
-                    ) AS b ON a.mapping = b.mapping
+                        LEFT JOIN (
+                            SELECT a.t_point, 'mapping' AS mapping
+                            FROM (
+                                SELECT 100 AS t_point
+                                UNION ALL SELECT 97.5 AS t_point UNION ALL SELECT 95 AS t_point
+                                UNION ALL SELECT 92.5 AS t_point UNION ALL SELECT 90 AS t_point
+                                UNION ALL SELECT 87.5 AS t_point UNION ALL SELECT 85 AS t_point
+                                UNION ALL SELECT 82.5 AS t_point UNION ALL SELECT 80 AS t_point
+                                UNION ALL SELECT 77.5 AS t_point UNION ALL SELECT 75 AS t_point
+                                UNION ALL SELECT 72.5 AS t_point UNION ALL SELECT 70 AS t_point
+                                UNION ALL SELECT 67.5 AS t_point UNION ALL SELECT 65 AS t_point
+                                UNION ALL SELECT 62.5 AS t_point UNION ALL SELECT 60 AS t_point
+                                UNION ALL SELECT 57.5 AS t_point UNION ALL SELECT 55 AS t_point
+                                UNION ALL SELECT 52.5 AS t_point UNION ALL SELECT 50 AS t_point
+                                UNION ALL SELECT 47.5 AS t_point UNION ALL SELECT 45 AS t_point
+                                UNION ALL SELECT 42.5 AS t_point UNION ALL SELECT 40 AS t_point
+                                UNION ALL SELECT 37.5 AS t_point UNION ALL SELECT 35 AS t_point
+                                UNION ALL SELECT 32.5 AS t_point UNION ALL SELECT 30 AS t_point
+                                UNION ALL SELECT 27.5 AS t_point UNION ALL SELECT 25 AS t_point
+                                UNION ALL SELECT 22.5 AS t_point UNION ALL SELECT 20 AS t_point
+                                UNION ALL SELECT 17.5 AS t_point UNION ALL SELECT 15 AS t_point
+                                UNION ALL SELECT 12.5 AS t_point UNION ALL SELECT 10 AS t_point
+                                UNION ALL SELECT 7.5 AS t_point UNION ALL SELECT 5 AS t_point
+                                UNION ALL SELECT 2.5 AS t_point UNION ALL SELECT 0 AS t_point
+                            ) AS a
+                        ) AS b ON a.mapping = b.mapping
+                    ) AS m
+                    LEFT JOIN (
+                        SELECT b.TakeMockPart, a.MpIdx, a.AdjustPoint, COUNT(*) AS cnt
+                        FROM {$this->_table['mock_grades']} AS a
+                        INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
+                        WHERE a.ProdCode = ?
+                        GROUP BY b.TakeMockPart, a.MpIdx, a.AdjustPoint
+                    ) AS p ON m.listMockPart = p.TakeMockPart AND m.MpIdx = p.MpIdx AND m.t_point = p.AdjustPoint
                 ) AS m
-                LEFT JOIN (
-                    SELECT b.TakeMockPart, a.MpIdx, a.AdjustPoint, COUNT(*) AS cnt
-                    FROM {$this->_table['mock_grades']} AS a
-                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
-                    WHERE a.ProdCode = ?
-                    GROUP BY b.TakeMockPart, a.MpIdx, a.AdjustPoint
-                ) AS p ON m.listMockPart = p.TakeMockPart AND m.MpIdx = p.MpIdx AND m.t_point = p.AdjustPoint
-            ) AS m
-            ORDER BY m.listMockPart ASC, m.MpIdx ASC , m.t_point DESC
+            ) as m
+            ORDER BY m.listMockPart ASC, m.MpIdx ASC, m.t_point DESC
         ";
         return $this->_conn->query('select ' . $query_string, [$prod_code,$prod_code,$prod_code,$prod_code,$prod_code])->result_array();
     }

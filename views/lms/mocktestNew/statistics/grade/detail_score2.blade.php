@@ -30,23 +30,28 @@
                                 <div id="print_content_{{$key}}_{{$subject_key}}">
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <div class="print_title bold">{{$val}} > {{$subject_val}}</div>
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">만점</th>
+                                                    <th class="text-center bg-aero" style="width: 8%">모의고사명</th>
+                                                    <td class="text-left" style="width: 10%" colspan="3">{{$product_info['ProdName']}}</td>
+                                                    <th class="text-center bg-aero" style="width: 8%">직렬 > 과목</th>
+                                                    <td class="text-left" style="width: 10%" colspan="3">{{$val}} > {{$subject_val}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">만점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['sum_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">응시인원</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">응시인원</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['reg_member_cnt']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">평균</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">평균</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['avg_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">최고득점</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">최고득점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['max_scoring']) }}
                                                     </td>

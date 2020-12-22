@@ -312,6 +312,10 @@ class Grade extends BaseMocktest
         }
         $prod_code = $params[0];
         $arr_totalStatistics = $this->_totalStatistics($prod_code);
+        if (empty($arr_totalStatistics['base_statistisc']) === true) {
+            show_alert('통계에 필요한 사용자 기본정보가 없습니다.', 'back');
+        }
+
         $arr_pointForStatistics = $this->_pointForStatistics($prod_code);
         $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10');
         $avg_score_25 = $this->_pointAvgForRankStatistics($prod_code,'25');
@@ -340,9 +344,12 @@ class Grade extends BaseMocktest
         $prod_code = $params[0];
 
         $arr_totalStatistics = $this->_totalStatistics($prod_code);
-        $result_data = $this->regGradeModel->totalStatistics2($prod_code);
+        if (empty($arr_totalStatistics['base_statistisc']) === true) {
+            show_alert('통계에 필요한 사용자 기본정보가 없습니다.','back');
+        }
 
         $arr_question_data = [];
+        $result_data = $this->regGradeModel->totalStatistics2($prod_code);
         foreach ($result_data as $row) {
             $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['TakeMockPart'] = $row['TakeMockPart'];
             $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['AreaName'] = $row['AreaName'];

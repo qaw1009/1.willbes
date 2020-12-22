@@ -63,8 +63,8 @@
                                                     <th class="text-center" style="vertical-align: middle;" rowspan="2">문항</th>
                                                     <th class="text-center" colspan="4">정답</th>
                                                     <th class="text-center" colspan="3">정답비율</th>
-                                                    <th class="text-center" colspan="5">정답자수(명)</th>
-                                                    <th class="text-center" colspan="5">문항별정답률(%)</th>
+                                                    <th class="text-center" colspan="5">마킹수</th>
+                                                    <th class="text-center" colspan="5">마킹률(%)</th>
                                                 </tr>
                                                 <tr>
                                                     <th>정답</th>
@@ -91,8 +91,8 @@
                                                     @foreach($arr_question_data[$key][$subject_key] as $question_num => $row)
                                                         <tr>
                                                             <td>{{ $question_num }}</td>
-                                                            <td>{{ $row['Scoring'] }}</td>
                                                             <td>{{ $row['RightAnswer'] }}</td>
+                                                            <td>{{ $row['Scoring'] }}</td>
                                                             <td>{{ $row['AreaName'] }}</td>{{-- 분류 --}}
                                                             <td></td>{{-- 유형 --}}
                                                             <td>{{ $row['QAVR_Top10'] }}</td>

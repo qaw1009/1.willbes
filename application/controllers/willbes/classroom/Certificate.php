@@ -9,7 +9,7 @@ class Certificate extends \app\controllers\FrontController
     protected $auth_methods = array();
 
     // 결제루트코드 온라인/학원방문/0원/무료/제휴사/온라인0원
-    protected $_payroute_normal_ccd = ['670001','670002','670006'];
+    protected $_payroute_normal_ccd = ['670001','670002','670006','670007'];
     protected $_payroute_admin_ccd = ['670003','670004','670005'];
 
     // 강의형태 단과/사용자패키지/운영자패키지/무료
@@ -37,7 +37,7 @@ class Certificate extends \app\controllers\FrontController
         $cond_arr = [
             'IN' => [
                 'LearnPatternCcd' => array_merge($this->_LearnPatternCcd_dan, $this->_LearnPatternCcd_free, $this->_LearnPatternCcd_pkg),
-                'PayRouteCcd' => $this->_payroute_normal_ccd
+                'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자

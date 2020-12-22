@@ -19,9 +19,9 @@
 
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
-        .wb_top {background:#e1c6b0}
-        .wb_01 {background:#e1c6b0}
-        .wb_02 {background:#e1c6b0}
+        .wb_top {background:#ECDBCB}
+        .wb_01 {background:#ECDBCB}
+        .wb_02 {background:#ECDBCB}
         .wb_03 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1994_03_bg.jpg) no-repeat center top}
          /*타이머*/
         .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px; font-size:24px}

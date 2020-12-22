@@ -91,8 +91,8 @@
                                                     @foreach($arr_question_data[$key][$subject_key] as $question_num => $row)
                                                         <tr>
                                                             <td>{{ $question_num }}</td>
-                                                            <td>{{ $row['Scoring'] }}</td>
                                                             <td>{{ $row['RightAnswer'] }}</td>
+                                                            <td>{{ $row['Scoring'] }}</td>
                                                             <td>{{ $row['AreaName'] }}</td>{{-- 분류 --}}
                                                             <td></td>{{-- 유형 --}}
                                                             <td>{{ $row['QAVR_Top10'] }}</td>

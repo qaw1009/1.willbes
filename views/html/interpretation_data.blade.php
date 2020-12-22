@@ -8,8 +8,8 @@
                 <th class="text-center" style="vertical-align: middle;" rowspan="2">문항</th>
                 <th class="text-center" colspan="4">정답</th>
                 <th class="text-center" colspan="3">정답비율</th>
-                <th class="text-center" colspan="8">정답자수(명)</th>
-                <th class="text-center" colspan="8">문항별정답률(%)</th>
+                <th class="text-center" colspan="5">정답자수(명)</th>
+                <th class="text-center" colspan="5">문항별정답률(%)</th>
             </tr>
             <tr>
                 <th>정답</th>
@@ -24,17 +24,17 @@
                 <th>③</th>
                 <th>④</th>
                 <th>⑤</th>
-                <th>⑥</th>
+                {{--<th>⑥</th>
                 <th>⑦</th>
-                <th>⑧</th>
+                <th>⑧</th>--}}
                 <th>①</th>
                 <th>②</th>
                 <th>③</th>
                 <th>④</th>
                 <th>⑤</th>
-                <th>⑥</th>
+                {{--<th>⑥</th>
                 <th>⑦</th>
-                <th>⑧</th>
+                <th>⑧</th>--}}
             </tr>
             </thead>
             <tbody>
@@ -57,12 +57,12 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                {{--<td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td></td>--}}
             </tr>
             </tbody>
         </table>

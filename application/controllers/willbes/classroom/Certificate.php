@@ -37,7 +37,7 @@ class Certificate extends \app\controllers\FrontController
         $cond_arr = [
             'IN' => [
                 'LearnPatternCcd' => array_merge($this->_LearnPatternCcd_dan, $this->_LearnPatternCcd_free, $this->_LearnPatternCcd_pkg),
-                'PayRouteCcd' => $this->_payroute_normal_ccd
+                'PayRouteCcd' => array_merge($this->_payroute_normal_ccd, $this->_payroute_admin_ccd)
             ],
             'EQ' => [
                 'MemIdx' => $this->session->userdata('mem_idx'), // 사용자

@@ -85,6 +85,10 @@ class Grade extends BaseMocktest
         ]);
     }
 
+    /**
+     * 통계페이지 : 조정점수처리,성적통계
+     * @param array $params
+     */
     public function detail($params = [])
     {
         if (empty($params[0]) === true) {
@@ -294,5 +298,215 @@ class Grade extends BaseMocktest
         $prod_code = element('prod_code', $formData);
         $result = $this->regGradeModel->scoreMake($prod_code, 'web');
         $this->json_result($result, '저장되었습니다.', $result);
+    }
+
+
+    /**
+     * 통계페이지 : 문항,점수별 통계 (그래프)
+     * @param array $params
+     */
+    public function detailScore($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $prod_code = $params[0];
+        $arr_totalStatistics = $this->_totalStatistics($prod_code);
+        $arr_pointForStatistics = $this->_pointForStatistics($prod_code);
+        $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10');
+        $avg_score_25 = $this->_pointAvgForRankStatistics($prod_code,'25');
+        $avg_score_total = $this->_pointAvgForRankStatistics($prod_code,'total');
+
+        $this->load->view('mocktestNew/statistics/grade/detail_score', [
+            'base_statistisc' => $arr_totalStatistics['base_statistisc'],
+            'data_total_statistics' => $arr_totalStatistics['data_total_statistics'],
+            'data_total_point_statistics' => $arr_pointForStatistics['data_total_point_statistics'],
+            'data_total_point_chart' => $arr_pointForStatistics['data_total_point_chart'],
+            'data_avg_score_10' => $avg_score_10,
+            'data_avg_score_25' => $avg_score_25,
+            'data_avg_score_total' => $avg_score_total
+        ]);
+    }
+
+    /**
+     * 통계페이지 : 문항별 상세 통계 (테이블)
+     * @param array $params
+     */
+    public function detailScore2($params = [])
+    {
+        if (empty($params[0]) === true) {
+            show_error('잘못된 접근 입니다.');
+        }
+        $prod_code = $params[0];
+
+        $arr_totalStatistics = $this->_totalStatistics($prod_code);
+        $result_data = $this->regGradeModel->totalStatistics2($prod_code);
+
+        $arr_question_data = [];
+        foreach ($result_data as $row) {
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['TakeMockPart'] = $row['TakeMockPart'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['AreaName'] = $row['AreaName'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['SubjectName'] = $row['SubjectName'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['MpIdx'] = $row['MpIdx'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['MockType'] = $row['MockType'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['MqIdx'] = $row['MqIdx'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['QuestionNO'] = $row['QuestionNO'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['RightAnswer'] = $row['RightAnswer'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['Scoring'] = $row['Scoring'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['Difficulty'] = $row['Difficulty'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['QAVR_Top10'] = $row['QAVR_Top10'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['QAVR_Top25'] = $row['QAVR_Top25'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['QAVR_Total'] = $row['QAVR_Total'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['marking_cnt_num_1'] = $row['marking_cnt_num_1'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['marking_cnt_num_2'] = $row['marking_cnt_num_2'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['marking_cnt_num_3'] = $row['marking_cnt_num_3'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['marking_cnt_num_4'] = $row['marking_cnt_num_4'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['marking_cnt_num_5'] = $row['marking_cnt_num_5'];
+            $arr_question_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']]['total_marking_cnt'] = $row['total_marking_cnt'];
+        }
+
+        $this->load->view('mocktestNew/statistics/grade/detail_score2', [
+            'base_statistisc' => $arr_totalStatistics['base_statistisc'],
+            'data_total_statistics' => $arr_totalStatistics['data_total_statistics'],
+            'arr_question_data' => $arr_question_data
+        ]);
+    }
+
+    /**
+     * 전체 평균
+     * @param string $prod_code
+     * @return array
+     */
+    private function _totalStatistics($prod_code = '')
+    {
+        $base_statistisc = []; //직렬,과목코드 셋팅
+        $data_total_statistics = [];
+
+        $result_total_statistics = $this->regGradeModel->totalStatistics($prod_code);
+        foreach ($result_total_statistics as $row) {
+            $base_statistisc['TakeMockPart'][$row['TakeMockPart']] = $row['TakeMockPartName'];
+            $base_statistisc['MpIdx'][$row['MpIdx']] = $row['SubjectName'];
+            $base_statistisc['TotalQuestionCount'][$row['MpIdx']] = $row['count_question'];
+
+            $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['sum_scoring'] = $row['sum_scoring'];
+            $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['reg_member_cnt'] = $row['reg_member_cnt'];
+            $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['avg_scoring'] = $row['avg_scoring'];
+            $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['max_scoring'] = $row['max_scoring'];
+        }
+
+        return [
+            'base_statistisc' => $base_statistisc,
+            'data_total_statistics' => $data_total_statistics,
+        ];
+    }
+
+    /**
+     * 점수별 분포표,인원,누계,백분률
+     * @param string $prod_code
+     * @return array[]
+     */
+    private function _pointForStatistics($prod_code = '')
+    {
+        $data_total_point_statistics = [];
+        $data_total_point_chart = [];
+
+        $result_point_statistics = $this->regGradeModel->pointForStatistics($prod_code);
+
+        foreach ($result_point_statistics as $row) {
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] = $row['t_point'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['cnt'] = $row['cnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['sumCnt'] = $row['sumCnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['tavg'] = $row['tavg'];
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 7.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][0][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 7.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 17.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][1][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 17.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 27.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][2][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 27.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 37.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][3][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 37.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 47.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][4][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 47.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 57.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][5][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 57.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 67.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][6][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 67.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 77.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][7][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 77.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 87.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][8][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 87.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 97.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][9][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 97.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 100) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][10][$row['t_point']] = $row['cnt'];
+            }
+        }
+
+        return [
+            'data_total_point_statistics' => $data_total_point_statistics,
+            'data_total_point_chart' => $data_total_point_chart,
+        ];
+    }
+
+    /**
+     *
+     * @param string $prod_code
+     * @param string $rank
+     * @return array
+     */
+    private function _pointAvgForRankStatistics($prod_code = '', $rank = 'total')
+    {
+        $data = [];
+        $result = $this->regGradeModel->pointAvgForRankStatistics($prod_code, $rank);
+
+        if ($rank == 'total') {
+            $temp_data = [];
+            foreach ($result as $row) {
+                $temp_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']] = $row['AvgScore'];
+            }
+
+            $data = [];
+            foreach ($temp_data as $key => $row) {
+                foreach ($row as $q_num => $score) {
+                    $data[$key][$q_num] = array_chunk($score,5);
+                }
+            }
+        } else {
+            foreach ($result as $row) {
+                $data[$row['TakeMockPart']][$row['MpIdx']][] = $row['AvgScore'];
+            }
+        }
+        return $data;
     }
 }

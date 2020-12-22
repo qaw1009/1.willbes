@@ -14,6 +14,9 @@ class RegGradeModel extends WB_Model
         'mock_grades' => 'lms_mock_grades',
         'mock_grades_log' => 'lms_mock_grades_log',
         'mock_log' => 'lms_mock_log',
+        'mock_paper_r_category' => 'lms_mock_paper_r_category',
+        'mock_r_category' => 'lms_mock_r_category',
+        'mock_r_subject' => 'lms_mock_r_subject',
         'product_mock_r_paper' => 'lms_product_mock_r_paper',
         'product' => 'lms_product',
         'product_subject' => 'lms_product_subject',
@@ -25,7 +28,7 @@ class RegGradeModel extends WB_Model
         'site' => 'lms_site',
         'sys_code' => 'lms_sys_code',
         'sys_category' => 'lms_sys_category',
-        'admin' => 'wbs_sys_admin',
+        'admin' => 'wbs_sys_admin'
     ];
     private $_take_form_ccd = '690002'; //오프라인
 
@@ -705,6 +708,591 @@ class RegGradeModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 직렬,과목별 전체통계
+     * 문항수,만점,응시인원,평균,최고득점
+     * @param $prod_code
+     * @return mixed
+     */
+    public function totalStatistics($prod_code)
+    {
+        $query_string = "
+            M.*
+            ,(
+                SELECT COUNT(*) AS count_question
+                FROM {$this->_table['mock_questions']} AS a
+                WHERE a.MpIdx = M.MpIdx
+            ) AS count_question
+            ,(
+                SELECT SUM(Scoring) AS sum_scoring
+                FROM {$this->_table['mock_questions']} AS a
+                WHERE a.MpIdx = M.MpIdx
+            ) AS sum_scoring
+            ,(
+                SELECT 
+                COUNT(*)
+                FROM {$this->_table['mock_register']} AS a
+                INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                WHERE a.ProdCode = ? AND a.TakeMockPart = M.TakeMockPart AND b.MpIdx = M.MpIdx
+                GROUP BY a.TakeMockPart, b.MpIdx
+            ) AS reg_member_cnt
+            ,ROUND((
+                SELECT 
+                AVG(AdjustPoint)
+                FROM {$this->_table['mock_register']} AS a
+                INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                WHERE a.ProdCode = ? AND a.TakeMockPart = M.TakeMockPart AND b.MpIdx = M.MpIdx
+                GROUP BY a.TakeMockPart, b.MpIdx
+            ),2) AS avg_scoring
+            ,ROUND((
+                SELECT 
+                MAX(AdjustPoint)
+                FROM {$this->_table['mock_register']} AS a
+                INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                WHERE a.ProdCode = ? AND a.TakeMockPart = M.TakeMockPart AND b.MpIdx = M.MpIdx
+                GROUP BY a.TakeMockPart, b.MpIdx
+            ),2) AS max_scoring
+            FROM (
+                SELECT TM.TakeMockPart, fn_ccd_name(TM.TakeMockPart) AS TakeMockPartName, PS.SubjectName, A.MpIdx, A.MockType
+                FROM (
+                    SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType
+                    FROM {$this->_table['mock_product']} AS PM
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                    INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                    WHERE PM.ProdCode = ?
+                    GROUP BY MP.MpIdx
+                ) AS A
+                INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+                INNER JOIN (
+                    SELECT ProdCode, TakeMockPart
+                    FROM {$this->_table['mock_register']}
+                    WHERE ProdCode = ?
+                    GROUP BY TakeMockPart
+                ) AS TM ON TM.ProdCode = A.ProdCode
+            ) AS M
+            ORDER BY M.TakeMockPart ASC, M.MpIdx ASC
+        ";
+        return $this->_conn->query('select ' . $query_string, [$prod_code,$prod_code,$prod_code,$prod_code,$prod_code])->result_array();
+    }
+
+    /**
+     * 점수별 인원,누계,백분율  전체응시자 점수분포표
+     * 직렬,과목,점수,마킹수,누계,백분률
+     * @param $prod_code
+     * @return mixed
+     */
+    public function pointForStatistics($prod_code)
+    {
+        $query_string = "
+            m.listMockPart, m.MpIdx, m.t_point, m.cnt
+            ,SUM(m.cnt) OVER(PARTITION BY m.listMockPart, m.MpIdx ORDER BY m.listMockPart ASC, m.MpIdx ASC, m.t_point DESC) AS sumCnt
+            ,IFNULL((
+                SELECT ROUND((m.cnt / a.total_cnt) * 100,2) AS total_cnt
+                FROM (
+                    SELECT b.TakeMockPart, a.MpIdx, COUNT(*) AS total_cnt
+                    FROM {$this->_table['mock_grades']} AS a
+                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
+                    WHERE a.ProdCode = ?
+                    GROUP BY b.TakeMockPart, a.MpIdx
+                ) AS a
+                WHERE a.TakeMockPart = m.listMockPart AND a.MpIdx = m.MpIdx
+            ),0) AS tavg
+            FROM (
+                SELECT m.listMockPart, m.MpIdx, m.t_point, IFNULL(p.cnt,0) AS cnt
+                FROM (
+                    SELECT a.listMockPart, a.MpIdx, b.t_point
+                    FROM (
+                        SELECT b.listMockPart, a.MpIdx, a.mapping
+                        FROM (
+                            SELECT a.ProdCode, b.MpIdx, 'mapping' AS mapping
+                            FROM {$this->_table['mock_product']} AS a
+                            INNER JOIN {$this->_table['product_mock_r_paper']} AS b ON a.ProdCode = b.ProdCode AND b.IsStatus = 'Y'
+                            WHERE a.ProdCode = ?
+                        ) AS a
+                        INNER JOIN (
+                            SELECT a.ProdCode,SUBSTRING_INDEX (SUBSTRING_INDEX(a.MockPart,',',numbers.n),',',-1) listMockPart
+                            FROM 
+                            (
+                                SELECT 1 n UNION ALL SELECT 2
+                                UNION ALL SELECT 3 UNION ALL SELECT 4
+                                UNION ALL SELECT 5 UNION ALL SELECT 6
+                                UNION ALL SELECT 7 UNION ALL SELECT 8
+                                UNION ALL SELECT 9 UNION ALL SELECT 10
+                            ) numbers
+                            INNER JOIN {$this->_table['mock_product']} AS a ON CHAR_LENGTH (a.MockPart) - CHAR_LENGTH ( REPLACE (a.MockPart,',',''))>= numbers . n-1
+                            WHERE a.ProdCode = ?
+                        ) AS b ON a.ProdCode = b.ProdCode
+                        INNER JOIN (
+                            SELECT TakeMockPart
+                            FROM {$this->_table['mock_register']}
+                            WHERE ProdCode = ?
+                            GROUP BY TakeMockPart
+                        ) AS c ON b.listMockPart = c.TakeMockPart
+                    ) AS a
+                    LEFT JOIN (
+                        SELECT a.t_point, 'mapping' AS mapping
+                        FROM (
+                            SELECT 100 AS t_point
+                            UNION ALL SELECT 97.5 AS t_point UNION ALL SELECT 95 AS t_point
+                            UNION ALL SELECT 92.5 AS t_point UNION ALL SELECT 90 AS t_point
+                            UNION ALL SELECT 87.5 AS t_point UNION ALL SELECT 85 AS t_point
+                            UNION ALL SELECT 82.5 AS t_point UNION ALL SELECT 80 AS t_point
+                            UNION ALL SELECT 77.5 AS t_point UNION ALL SELECT 75 AS t_point
+                            UNION ALL SELECT 72.5 AS t_point UNION ALL SELECT 70 AS t_point
+                            UNION ALL SELECT 67.5 AS t_point UNION ALL SELECT 65 AS t_point
+                            UNION ALL SELECT 62.5 AS t_point UNION ALL SELECT 60 AS t_point
+                            UNION ALL SELECT 57.5 AS t_point UNION ALL SELECT 55 AS t_point
+                            UNION ALL SELECT 52.5 AS t_point UNION ALL SELECT 50 AS t_point
+                            UNION ALL SELECT 47.5 AS t_point UNION ALL SELECT 45 AS t_point
+                            UNION ALL SELECT 42.5 AS t_point UNION ALL SELECT 40 AS t_point
+                            UNION ALL SELECT 37.5 AS t_point UNION ALL SELECT 35 AS t_point
+                            UNION ALL SELECT 32.5 AS t_point UNION ALL SELECT 30 AS t_point
+                            UNION ALL SELECT 27.5 AS t_point UNION ALL SELECT 25 AS t_point
+                            UNION ALL SELECT 22.5 AS t_point UNION ALL SELECT 20 AS t_point
+                            UNION ALL SELECT 17.5 AS t_point UNION ALL SELECT 15 AS t_point
+                            UNION ALL SELECT 12.5 AS t_point UNION ALL SELECT 10 AS t_point
+                            UNION ALL SELECT 7.5 AS t_point UNION ALL SELECT 5 AS t_point
+                            UNION ALL SELECT 2.5 AS t_point UNION ALL SELECT 0 AS t_point
+                        ) AS a
+                    ) AS b ON a.mapping = b.mapping
+                ) AS m
+                LEFT JOIN (
+                    SELECT b.TakeMockPart, a.MpIdx, a.AdjustPoint, COUNT(*) AS cnt
+                    FROM {$this->_table['mock_grades']} AS a
+                    INNER JOIN {$this->_table['mock_register']} AS b ON a.MrIdx = b.MrIdx
+                    WHERE a.ProdCode = ?
+                    GROUP BY b.TakeMockPart, a.MpIdx, a.AdjustPoint
+                ) AS p ON m.listMockPart = p.TakeMockPart AND m.MpIdx = p.MpIdx AND m.t_point = p.AdjustPoint
+            ) AS m
+            ORDER BY m.listMockPart ASC, m.MpIdx ASC , m.t_point DESC
+        ";
+        return $this->_conn->query('select ' . $query_string, [$prod_code,$prod_code,$prod_code,$prod_code,$prod_code])->result_array();
+    }
+
+    /**
+     * 전체, 상위 **퍼센트 응시자 정답률
+     * @param string $prod_code
+     * @param string $rank
+     * @return mixed
+     */
+    public function pointAvgForRankStatistics($prod_code = '', $rank = 'total')
+    {
+        if ($rank == 'total') {
+            $rank_where = '';
+        } else {
+            $rank_where = "WHERE A.PaperPercRank BETWEEN 0 AND ({$rank} / 100)"; //상위 퍼센트 조건
+        }
+
+        $query_string = "
+            P.*
+            ,IFNULL((
+                SELECT ROUND(((IFNULL(ycnt,0) / (IFNULL(ycnt,0) + IFNULL(ncnt,0))) * 100), 2) AS AvgScore
+                FROM (
+                    SELECT TM.TakeMockPart, MP.MpIdx, MQ.MqIdx
+                    ,(
+                        SELECT a.ycnt
+                        FROM (
+                            SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ycnt
+                            FROM (
+                                SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                FROM (
+                                    SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                    ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                    FROM {$this->_table['mock_register']} AS a
+                                    INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                                    WHERE a.ProdCode = ?
+                                ) AS A
+                                {$rank_where}
+                            ) AS a
+                            INNER JOIN {$this->_table['mock_answerpaper']} AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                            WHERE b.IsWrong = 'Y'
+                            GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                        ) AS a
+                        WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                    ) AS ycnt
+            
+                    ,(
+                        SELECT a.ncnt
+                        FROM (
+                            SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ncnt
+                            FROM (
+                                SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                FROM (
+                                    SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                    ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                    FROM {$this->_table['mock_register']} AS a
+                                    INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
+                                    WHERE a.ProdCode = ?
+                                ) AS A
+                                {$rank_where}
+                            ) AS a
+                            INNER JOIN {$this->_table['mock_answerpaper']} AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                            WHERE b.IsWrong = 'N'
+                            GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                        ) AS a
+                        WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                    ) AS ncnt
+            
+                    FROM {$this->_table['mock_paper']} AS MP
+                    JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                    JOIN {$this->_table['product_mock_r_paper']} AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
+                    INNER JOIN (
+                        SELECT ProdCode, TakeMockPart
+                        FROM {$this->_table['mock_register']}
+                        WHERE ProdCode = ?
+                        GROUP BY TakeMockPart
+                    ) AS TM ON TM.ProdCode = PM.ProdCode
+            
+                    AND PM.ProdCode = ?
+                    AND PM.IsStatus = 'Y'
+                ) AS A
+                WHERE A.TakeMockPart = P.TakeMockPart AND A.MpIdx = P.MpIdx AND A.MqIdx = P.MqIdx
+            ),0) AS AvgScore
+            
+            FROM (
+                SELECT 
+                TM.TakeMockPart, PS.SubjectName, A.MpIdx, A.MockType, MQ.MqIdx, MQ.MalIdx, MQ.QuestionNO, MQ.RightAnswer
+                ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중',(IF(MQ.Difficulty='N','','하')))))AS Difficulty
+                FROM
+                (
+                    SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType
+                    FROM {$this->_table['mock_product']} AS PM
+                    INNER JOIN {$this->_table['product_mock_r_paper']} AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_paper']} AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                    INNER JOIN {$this->_table['mock_paper_r_category']} AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                    INNER JOIN {$this->_table['mock_r_category']} AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                    INNER JOIN {$this->_table['mock_r_subject']} AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                    WHERE PM.ProdCode = ?
+                    GROUP BY MP.MpIdx
+                ) AS A
+                INNER JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                INNER JOIN {$this->_table['product_subject']} AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+                INNER JOIN (
+                    SELECT ProdCode, TakeMockPart
+                    FROM {$this->_table['mock_register']}
+                    WHERE ProdCode = ?
+                    GROUP BY TakeMockPart
+                ) AS TM ON TM.ProdCode = A.ProdCode
+            ) AS P
+            ORDER BY P.TakeMockPart, P.MpIdx, P.MqIdx ASC
+        ";
+        return $this->_conn->query('select ' . $query_string, [$prod_code,$prod_code,$prod_code,$prod_code,$prod_code,$prod_code])->result_array();
+    }
+
+    /**
+     * 문항별 데이터
+     * 문항,정답,배점,분류,유형, 정답비율 (10%,25%,전체), 마킹수(1번,2번,3번 마킹수~) 마킹률
+     * column : 직렬,문제영역명,과목명,과목코드,문항코드,문항번호,정답,배점,난이도,정답률 상위10,정답률 상위25,정답률 전체,마킹수 1번, 2번, 3번, 4번, 5번, 전체마킹수
+     * @param $prod_code
+     * @return mixed
+     */
+    public function totalStatistics2($prod_code)
+    {
+        $query_string = "
+            M.TakeMockPart, M.AreaName, M.SubjectName, M.MpIdx, M.MockType, M.MqIdx, M.QuestionNo, M.RightAnswer, M.Scoring, M.Difficulty
+            , M.QAVR_Top10, M.QAVR_Top25, M.QAVR_Total
+            , M.marking_cnt_num_1, M.marking_cnt_num_2, M.marking_cnt_num_3, M.marking_cnt_num_4, M.marking_cnt_num_5, M.total_marking_cnt
+            /*
+            ,ROUND((M.marking_cnt_num_1 / M.total_marking_cnt) * 100,2) AS marking_avg_num_1
+            ,ROUND((M.marking_cnt_num_2 / M.total_marking_cnt) * 100,2) AS marking_avg_num_2
+            ,ROUND((M.marking_cnt_num_3 / M.total_marking_cnt) * 100,2) AS marking_avg_num_3
+            ,ROUND((M.marking_cnt_num_4 / M.total_marking_cnt) * 100,2) AS marking_avg_num_4
+            ,ROUND((M.marking_cnt_num_5 / M.total_marking_cnt) * 100,2) AS marking_avg_num_5
+            */
+            FROM (
+                SELECT
+                P.TakeMockPart, P.AreaName, P.SubjectName, P.MpIdx, P.MockType, P.MqIdx, P.QuestionNO, P.RightAnswer, P.Scoring, P.Difficulty
+                , P.marking_cnt_num_1, P.marking_cnt_num_2, P.marking_cnt_num_3, P.marking_cnt_num_4, P.marking_cnt_num_5, P.total_marking_cnt
+                
+                ,(
+                    SELECT ROUND(((IFNULL(ycnt,0) / (IFNULL(ycnt,0) + IFNULL(ncnt,0))) * 100), 2) AS QAVR
+                    FROM (
+                        SELECT TM.TakeMockPart, MP.MpIdx, MQ.MqIdx
+                        ,(
+                            SELECT a.ycnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ycnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'Y'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ycnt
+            
+                        ,(
+                            SELECT a.ncnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ncnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    WHERE A.PaperPercRank BETWEEN 0 AND (10 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'N'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ncnt
+            
+                        FROM lms_mock_paper_new AS MP
+                        JOIN lms_mock_questions AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                        JOIN lms_product_mock_r_paper AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
+                        INNER JOIN (
+                            SELECT ProdCode, TakeMockPart
+                            FROM lms_mock_register
+                            WHERE ProdCode = ?
+                            GROUP BY TakeMockPart
+                        ) AS TM ON TM.ProdCode = PM.ProdCode
+            
+                        AND PM.ProdCode = ?
+                        AND PM.IsStatus = 'Y'
+                    ) AS A
+                    WHERE A.TakeMockPart = P.TakeMockPart AND A.MpIdx = P.MpIdx AND A.MqIdx = P.MqIdx
+                ) AS QAVR_Top10
+            
+                ,(
+                    SELECT ROUND(((IFNULL(ycnt,0) / (IFNULL(ycnt,0) + IFNULL(ncnt,0))) * 100), 2) AS QAVR
+                    FROM (
+                        SELECT TM.TakeMockPart, MP.MpIdx, MQ.MqIdx
+                        ,(
+                            SELECT a.ycnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ycnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    WHERE A.PaperPercRank BETWEEN 0 AND (25 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'Y'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ycnt
+            
+                        ,(
+                            SELECT a.ncnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ncnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    WHERE A.PaperPercRank BETWEEN 0 AND (25 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'N'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ncnt
+            
+                        FROM lms_mock_paper_new AS MP
+                        JOIN lms_mock_questions AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                        JOIN lms_product_mock_r_paper AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
+                        INNER JOIN (
+                            SELECT ProdCode, TakeMockPart
+                            FROM lms_mock_register
+                            WHERE ProdCode = ?
+                            GROUP BY TakeMockPart
+                        ) AS TM ON TM.ProdCode = PM.ProdCode
+            
+                        AND PM.ProdCode = ?
+                        AND PM.IsStatus = 'Y'
+                    ) AS A
+                    WHERE A.TakeMockPart = P.TakeMockPart AND A.MpIdx = P.MpIdx AND A.MqIdx = P.MqIdx
+                ) AS QAVR_Top25
+            
+                ,(
+                    SELECT ROUND(((IFNULL(ycnt,0) / (IFNULL(ycnt,0) + IFNULL(ncnt,0))) * 100), 2) AS QAVR
+                    FROM (
+                        SELECT TM.TakeMockPart, MP.MpIdx, MQ.MqIdx
+                        ,(
+                            SELECT a.ycnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ycnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    #WHERE A.PaperPercRank BETWEEN 0 AND (100 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'Y'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ycnt
+            
+                        ,(
+                            SELECT a.ncnt
+                            FROM (
+                                SELECT a.ProdCode, a.TakeMockPart, a.MpIdx, b.MqIdx, COUNT(*) AS ncnt
+                                FROM (
+                                    SELECT A.ProdCode, A.MrIdx, A.TakeMockPart, A.MpIdx
+                                    FROM (
+                                        SELECT a.ProdCode, a.MrIdx, a.TakeMockPart, b.MpIdx, b.AdjustPoint
+                                        ,PERCENT_RANK() OVER (PARTITION BY a.TakeMockPart, b.MpIdx ORDER BY b.AdjustPoint DESC) AS PaperPercRank
+                                        FROM lms_mock_register AS a
+                                        INNER JOIN lms_mock_grades AS b ON a.MrIdx = b.MrIdx
+                                        WHERE a.ProdCode = ?
+                                    ) AS A
+                                    #WHERE A.PaperPercRank BETWEEN 0 AND (100 / 100) #상위 퍼센트 조건
+                                ) AS a
+                                INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
+                                WHERE b.IsWrong = 'N'
+                                GROUP BY a.TakeMockPart, a.MpIdx, b.MqIdx
+                            ) AS a
+                            WHERE a.ProdCode = PM.ProdCode AND a.TakeMockPart = TM.TakeMockPart AND a.MpIdx = MP.MpIdx AND a.MqIdx = MQ.MqIdx
+                        ) AS ncnt
+            
+                        FROM lms_mock_paper_new AS MP
+                        JOIN lms_mock_questions AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y' 
+                        JOIN lms_product_mock_r_paper AS PM ON Mp.MpIdx = PM.MpIdx AND PM.IsStatus = 'Y'
+                        INNER JOIN (
+                            SELECT ProdCode, TakeMockPart
+                            FROM lms_mock_register
+                            WHERE ProdCode = ?
+                            GROUP BY TakeMockPart
+                        ) AS TM ON TM.ProdCode = PM.ProdCode
+            
+                        AND PM.ProdCode = ?
+                        AND PM.IsStatus = 'Y'
+                    ) AS A
+                    WHERE A.TakeMockPart = P.TakeMockPart AND A.MpIdx = P.MpIdx AND A.MqIdx = P.MqIdx
+                ) AS QAVR_Total
+                
+                FROM (
+                    SELECT 
+                    TM.TakeMockPart, MAL.AreaName, PS.SubjectName, A.MpIdx, A.MockType, MQ.MqIdx, MQ.QuestionNO, MQ.RightAnswer, MQ.Scoring
+                    ,IF(MQ.Difficulty='T','상',(IF(MQ.Difficulty='M','중',(IF(MQ.Difficulty='N','','하')))))AS Difficulty
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx AND b.Answer = 1
+                        GROUP BY a.TakeMockPart, b.MpIdx, b.Answer
+                    ),0) AS marking_cnt_num_1
+            
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx AND b.Answer = 2
+                        GROUP BY a.TakeMockPart, b.MpIdx, b.Answer
+                    ),0) AS marking_cnt_num_2
+            
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx AND b.Answer = 3
+                        GROUP BY a.TakeMockPart, b.MpIdx, b.Answer
+                    ),0) AS marking_cnt_num_3
+            
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx AND b.Answer = 4
+                        GROUP BY a.TakeMockPart, b.MpIdx, b.Answer
+                    ),0) AS marking_cnt_num_4
+            
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx AND b.Answer = 5
+                        GROUP BY a.TakeMockPart, b.MpIdx, b.Answer
+                    ),0) AS marking_cnt_num_5
+            
+                    ,IFNULL((
+                        SELECT 
+                        COUNT(*) AS marking_cnt
+                        FROM lms_mock_register AS a
+                        INNER JOIN lms_mock_answerpaper AS b ON a.MrIdx = b.MrIdx
+                        WHERE b.ProdCode = ? AND a.TakeMockPart = TM.TakeMockPart AND b.MpIdx = A.MpIdx AND b.MqIdx = MQ.MqIdx
+                        GROUP BY a.TakeMockPart, b.MpIdx
+                    ),0) AS total_marking_cnt
+            
+                    FROM (
+                        SELECT PM.ProdCode, MP.MpIdx, MRS.SubjectIdx, PMP.MockType
+                        FROM lms_product_mock AS PM
+                        INNER JOIN lms_product_mock_r_paper AS PMP ON PM.ProdCode = PMP.ProdCode AND PMP.IsStatus='Y'
+                        INNER JOIN lms_mock_paper_new AS MP ON PMP.MpIdx = MP.MpIdx AND MP.IsStatus='Y' AND MP.IsUse='Y'
+                        INNER JOIN lms_mock_paper_r_category AS MPRC ON MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                        INNER JOIN lms_mock_r_category AS MRC ON MPRC.MrcIdx = MRC.MrcIdx AND MRC.IsStatus='Y'
+                        INNER JOIN lms_mock_r_subject AS MRS ON MRC.MrsIdx = MRS.MrsIdx AND MRS.IsStatus='Y'
+                        INNER JOIN lms_product_subject AS SJ ON MRS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                        WHERE PM.ProdCode = ?
+                        GROUP BY MP.MpIdx
+                    ) AS A
+                    INNER JOIN lms_mock_questions AS MQ ON MQ.MpIdx = A.MpIdx AND MQ.IsStatus = 'Y'
+                    INNER JOIN lms_product_subject AS PS ON A.SubjectIdx = PS.SubjectIdx AND PS.IsUse = 'Y' AND PS.IsStatus = 'Y'
+                    INNER JOIN lms_mock_area_list AS MAL ON MAL.MalIdx = MQ.MalIdx AND MAL.IsUse = 'Y' AND MAL.IsStatus = 'Y'
+                    INNER JOIN (
+                        SELECT ProdCode, TakeMockPart
+                        FROM lms_mock_register
+                        WHERE ProdCode = ?
+                        GROUP BY TakeMockPart
+                    ) AS TM ON TM.ProdCode = A.ProdCode		
+                ) AS P
+            ) AS M
+            ORDER BY M.TakeMockPart, M.MpIdx, M.MqIdx ASC
+        ";
+        return $this->_conn->query('select ' . $query_string, [
+            $prod_code,$prod_code,$prod_code,$prod_code,$prod_code
+            ,$prod_code,$prod_code,$prod_code,$prod_code,$prod_code
+            ,$prod_code,$prod_code,$prod_code,$prod_code,$prod_code
+            ,$prod_code,$prod_code,$prod_code,$prod_code,$prod_code
+        ])->result_array();
+    }
+
 
     /**
      * 응시번호기준 접수식별자, 회원식별자 조회

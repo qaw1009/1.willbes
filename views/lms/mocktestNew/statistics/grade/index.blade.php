@@ -84,7 +84,7 @@
                     <th rowspan="2" class="text-center">모의고사명</th>
                     <th colspan="2" class="text-center">응시형태</th>
                     <th colspan="2" class="text-center">응시현황</th>
-                    <th rowspan="2" class="text-center">통계확인</th>
+                    <th colspan="3" class="text-center">통계확인</th>
                     <th rowspan="2" class="text-center" style="width: 11%">성적오픈일<br>(성적오픈사용)</th>
                     <th rowspan="2" class="text-center">복수정답처리</th>
                     <th rowspan="2" class="text-center">답안재검</th>
@@ -96,6 +96,9 @@
                     <th class="text-center">Off</th>
                     <th class="text-center">Online</th>
                     <th class="text-center">Off</th>
+                    <th class="text-center">성적</th>
+                    <th class="text-center">분포</th>
+                    <th class="text-center">문항</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -151,6 +154,12 @@
                     {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.GradeOpenIsUse == 'Y' ? '<span class="blue underline-link act-view" data-prod-code="'+row.ProdCode+'">확인</span>' : '';
                         }},
+                    {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return row.GradeOpenIsUse == 'Y' ? '<span class="blue underline-link act-view-score" data-prod-code="'+row.ProdCode+'">확인</span>' : '';
+                        }},
+                    {'data' : 'ProdCode', 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return row.GradeOpenIsUse == 'Y' ? '<span class="blue underline-link act-view-score2" data-prod-code="'+row.ProdCode+'">확인</span>' : '';
+                        }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return (row.GradeOpenDatm != null) ? row.GradeOpenDatm + ' (' + row.GradeOpenIsUse + ')' : '';
                         }},
@@ -175,6 +184,16 @@
             // 성적확인페이지
             $list_table.on('click', '.act-view', function () {
                 location.href = '{{ site_url('/mocktestNew/statistics/grade/detail/') }}' + $(this).data('prod-code') + '/' + dtParamsToQueryString($datatable);
+            });
+
+            // 그래프통계
+            $list_table.on('click', '.act-view-score', function () {
+                location.href = '{{ site_url('/mocktestNew/statistics/grade/detailScore/') }}' + $(this).data('prod-code') + '/' + dtParamsToQueryString($datatable);
+            });
+
+            // 통계
+            $list_table.on('click', '.act-view-score2', function () {
+                location.href = '{{ site_url('/mocktestNew/statistics/grade/detailScore2/') }}' + $(this).data('prod-code') + '/' + dtParamsToQueryString($datatable);
             });
 
             // 성적처리

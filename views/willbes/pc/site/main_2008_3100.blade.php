@@ -27,7 +27,7 @@
 
         <div class="Section Section5 mt50">
             <div class="widthAuto">
-                <div class="will-nTit bd-none">윌비스 <span class="tx-color">경찰 캐스트</span></div>
+                <div class="will-nTit bd-none"><span class="tx-color">72기 대비 </span>공부방법론 및 지금! 해야 할 것들</div>
                 <div class="preview">
                     <div class="previewBox">
                         <ul class="cast">

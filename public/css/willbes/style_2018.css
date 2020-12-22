@@ -82,27 +82,26 @@
     z-index: 99;
     background-color: rgba(0,0,0,0.5);
 }
-.ssam .VisualBox .Maintab {width: 1120px; margin:0 auto;}
-.ssam .VisualBox .Maintab li {
-    display: inline-block; 
-    /*float:left;*/
+.ssam .VisualBox .Maintab {width: 100%; margin:0 auto; text-align:center}
+.ssam .VisualBox .Maintab span {
+    display: inline-block;    
     height: 50px;
     font-size: 14px;
     line-height: 50px;    
-    width: 20%;
+    width: 200px;
 }
-.ssam .VisualBox .Maintab li a { color:#fff}
+.ssam .VisualBox .Maintab span a { color:#fff}
 .ssam .VisualBox .Maintab:after {content:""; display:block; clear:both}
-.ssam .VisualBox .MaintabList.three ul li {
+.ssam .VisualBox .MaintabList.three span {
     width: 209px;
 }
-.ssam .VisualBox .MaintabList.four ul li {
+.ssam .VisualBox .MaintabList.four span {
     width: 156px;
 }
-.ssam .VisualBox .MaintabList.five ul li {
+.ssam .VisualBox .MaintabList.five span {
     width: 188px;
 }
-.ssam .VisualBox .MaintabList ul li a {
+.ssam .VisualBox .MaintabList span a {
     display: block;
     width: 100%;
     height: 100%;

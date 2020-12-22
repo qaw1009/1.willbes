@@ -16,11 +16,11 @@
                         <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
 
                         <div id="MainRollingDiv" class="MaintabList">
-                            <ul class="Maintab">
+                            <div class="Maintab">
                                 @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
-                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                    <span><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></span>
                                 @endforeach
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 @endif

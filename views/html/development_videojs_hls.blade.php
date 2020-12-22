@@ -17,8 +17,8 @@
         id="my-video"
         class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9"
         controls
-        disablePictureInPicture
-        preload="none"
+        {{-- disablePictureInPicture --}}
+        preload="auto"
         {{-- width="1200" --}}
         {{-- height="600" --}}
         poster="/public/img/willbes/willbes_video_test.jpg"
@@ -49,9 +49,15 @@
                 // volumeControl: false,
                 // currentTimeDisplay: true,
                 // remainingTimeDisplay: true,
+                pictureInPictureToggle: true,
                 remainingTimeDisplay: false,
                 volumePanel: {
                     inline: false
+                }
+            },
+            html5: {
+                hls: {
+                    overrideNative: true,
                 }
             },
             plugins: {

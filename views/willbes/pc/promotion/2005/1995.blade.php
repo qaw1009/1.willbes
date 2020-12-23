@@ -42,7 +42,8 @@
 		.evtInfoBox .infoTit strong {padding:8px 20px; background:#333; border-radius:20px}
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
-        .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}            
+        .evtInfoBox span {color:#ff6d6d;vertical-align:bottom}           
+        .contact {font-size:17px;} 
 
         /************************************************************/      
     </style> 
@@ -121,7 +122,7 @@
                 <ul>
                     <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.</li>
                 </ul>
-                <div class="infoTit NSK-Black"><strong>※ 이용 문의 : 윌비스 고객만족센터 1566-4770</strong></div>
+                <p class="contact"><strong>※ 이용 문의 : 윌비스 고객만족센터 1566-4770</strong></p>
             </div>
         </div>
 

@@ -75,14 +75,16 @@
         </div>        
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_top.jpg" alt="룰렛 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_top_01.gif" alt="룰렛 이벤트"/><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_top_02.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1951_rull_gift0','png'); this.disabled=true;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_rull_start.png" alt="start" />
                 </button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" class="NSK-Black">RESET</a>
-            </div>            
+            </div>
+
         </div>
 
         <div class="evtCtnsBox wb_01" id="wb_01">
@@ -95,9 +97,10 @@
         @endif
 
         <div class="evtCtnsBox wb_02" id="wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02.jpg" alt="사전예약" usemap="#Map1993A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02_01.gif" alt="온라인 관리반 체험단" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02_02.jpg" alt="온라인 관리반 체험단" usemap="#Map1993A" border="0" />
             <map name="Map1993A" id="Map1993A">
-                <area shape="rect" coords="365,1417,758,1499" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="다운로드" />
+                <area shape="rect" coords="362,484,757,567" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="다운로드" />
             </map>
         </div>
     </div>

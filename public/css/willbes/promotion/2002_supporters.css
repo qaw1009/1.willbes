@@ -19,7 +19,7 @@
 
 .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg) no-repeat center top;}
 
-.notice {position:absolute; left:50%; top:1050px; margin-left:-290px; z-index:1; width:630px; background:#fff; 
+.notice {position:absolute; left:50%; top:1050px; margin-left:-315px; z-index:1; width:630px; background:#fff; 
     box-shadow: 10px 19px 19px rgba(0,0,0,.2);
 }
 .notice .title {float:left; background:#275891; width:170px; height:126px; line-height:126px}

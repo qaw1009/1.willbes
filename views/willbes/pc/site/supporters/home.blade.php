@@ -27,7 +27,7 @@
 
         <div class="evt01">
             <ul class="tab NSK-Black">
-                <li><a href="#tab01"><span>신과함께 소개<span></a></li>
+                <li><a href="#tab01"><span>서포터즈 소개<span></a></li>
                 <li><a href="#tab02"><span>과제수행<span></a></li>
                 <li><a href="#tab03"><span>제안 및 의견<span></a></li>
                 <li><a href="#tab04"><span>명예의 전당<span></a></li>

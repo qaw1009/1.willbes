@@ -21,7 +21,8 @@
 
         /************************************************************/
 
-        
+        .sky {position:fixed; top:225px;right:25px;z-index:10;}
+
         .wb_ctstop {position:relative; overflow:hidden; background:url("https://static.willbes.net/public/images/promotion/2020/08/1767_top_bg.jpg") center top  no-repeat;}
         .wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
         .wb_ctstop span{position:absolute;top:702px;left:50%;margin-left:-271px;opacity:0;opacity:1 \0/IE9;animation: zoomAni .1s 1s ease-in-out both;} 
@@ -49,6 +50,12 @@
  </style>
 
  <div class="p_re evtContent NGR" id="evtContainer">
+
+ <div class="sky">
+      <a href="#apply"> 
+          <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_sky.png" alt="" >
+      </a>             
+  </div>   
   
   <div class="evtCtnsBox wb_ctstop">
     <div class>
@@ -65,7 +72,7 @@
     <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_02.jpg"  title="" />
   </div>
 
-  <div class="evtCtnsBox wb_03" id="event">  
+  <div class="evtCtnsBox wb_03" id="apply">  
     <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_03.jpg" usemap="#Map1767_apply" title="수강신청" border="0" />
     <map name="Map1767_apply" id="Map1767_apply">
       <area shape="rect" coords="726,379,972,440" href="javascript:go_PassLecture('177313');">
@@ -122,8 +129,8 @@
         <li>2. 선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
         <li>3. 아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>        
       </ul>               
-      <strong>※ 학원종합반 문의 : 1544-0336</strong>
-      
+      <strong>※ 고객만족센터 : 1544-5006</strong>
+
 	</div>  
 
 </div>

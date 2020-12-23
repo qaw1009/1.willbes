@@ -77,7 +77,7 @@
                                                 <tbody>
                                                 @if(empty($data_total_point_statistics[$key][$subject_key]) === false)
                                                     @foreach($data_total_point_statistics[$key][$subject_key] as $point_key => $point_row)
-                                                        <tr>
+                                                        <tr style="{{ ((($loop->index+3) % 5) == 0) ? 'border-top: 2px solid #3e3e3e;' : '' }}">
                                                             <td>{{ $point_row['t_point'] }}</td>
                                                             <td>{{ $point_row['cnt'] }}</td>
                                                             <td>{{ $point_row['sumCnt'] }}</td>
@@ -185,81 +185,129 @@
                         },
                         'chartDiv': 'spread_all_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'multi_column',
-                        'chartSize': {width: 800, height: 300},
+                        'chartSize': {width: 900, height: 300},
                         'minValue': 0,
                         'maxValue': ({{$data_max_cnt[$takemock_key][$subject_key]}} >= 100) ? 100 : {{$data_max_cnt[$takemock_key][$subject_key]}},
-                        'increment': increment
+                        'increment': increment,
+                        /*'isGuideLineNeeded' : true*/
                     };
                     Nwagon.chart(spread_all_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
             @endforeach
 
-            //상위랭킹 10%
             @foreach($data_avg_score_10 as $takemock_key => $takemock_row)
                 @foreach($takemock_row as $subject_key => $subject_row)
-                    var rank_names_{{$takemock_key}}_{{$subject_key}} = [];
-                    for (var i = 1; i <= {{$base_statistisc['TotalQuestionCount'][$subject_key]}}; i++) {
-                        rank_names_{{$takemock_key}}_{{$subject_key}}.push(i);
+                    @for($i=0; $i<count($subject_row); $i++)
+                        var count_R10_{{$i}} = {!! json_encode(array_values($subject_row[$i]),true) !!};
+                    @endfor
+
+                    var legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5'];
+                    var dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0];
+                    if ({{count($subject_row)}} == 2) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1];
                     }
-                    var arr_set_data_{{$takemock_key}}_{{$subject_key}} = {!! json_encode($data_avg_score_10[$takemock_key][$subject_key]) !!};
-                    var rank_values_{{$takemock_key}}_{{$subject_key}} = [];
-                    for (var j = 0; j < arr_set_data_{{$takemock_key}}_{{$subject_key}}.length; j++) {
-                        rank_values_{{$takemock_key}}_{{$subject_key}}[j] = [];
-                        rank_values_{{$takemock_key}}_{{$subject_key}}[j][0] = arr_set_data_{{$takemock_key}}_{{$subject_key}}[j];
+                    if ({{count($subject_row)}} == 3) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2];
                     }
+                    if ({{count($subject_row)}} == 4) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2,count_R10_3];
+                    }
+                    if ({{count($subject_row)}} == 5) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2,count_R10_3,count_R10_4];
+                    }
+                    if ({{count($subject_row)}} == 6) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2,count_R10_3,count_R10_4,count_R10_5];
+                    }
+                    if ({{count($subject_row)}} == 7) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30','31~35'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2,count_R10_3,count_R10_4,count_R10_5,count_R10_6];
+                    }
+                    if ({{count($subject_row)}} == 8) {
+                        legend_names_R10_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30','31~35','36~40'];
+                        dataset_values_R10_{{$takemock_key}}_{{$subject_key}} = [count_R10_0,count_R10_1,count_R10_2,count_R10_3,count_R10_4,count_R10_5,count_R10_6,count_R10_7];
+                    }
+
                     var answers_rank10_{{$takemock_key}}_{{$subject_key}} = {
                         'legend': {
-                            names: rank_names_{{$takemock_key}}_{{$subject_key}},
-                            /*names: ['1~5','6~10','11~15','16~20','21~25','26~30','31~35','36~40'],*/
+                            names: legend_names_R10_{{$takemock_key}}_{{$subject_key}},
                             hrefs: []
                         },
                         'dataset': {
-                            title: '상위10% 응시자 정답률(%)',
-                            values: rank_values_{{$takemock_key}}_{{$subject_key}},
-                            colorset: ['#30a1ce'],
-                            fields: ['문항']
+                            title: '전체 응시자 정답률(%)',
+                            values: dataset_values_R10_{{$takemock_key}}_{{$subject_key}},
+                            colorset: ['#DC143C', '#FF8C00', "#30a1ce", '#DC143C', '#FF8C00'],
+                            fields: ['(명)', '', '', '', '']
                         },
                         'chartDiv': 'answers_rank10_{{$takemock_key}}_{{$subject_key}}',
-                        'chartType': 'line',
-                        'chartSize': {width: 800, height: 300},
+                        'chartType': 'multi_column',
+                        'chartSize': {width: 900, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
-                        'increment': 20,
+                        'increment': 20
                     };
                     Nwagon.chart(answers_rank10_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
             @endforeach
 
-            //상위랭킹 25%
             @foreach($data_avg_score_25 as $takemock_key => $takemock_row)
                 @foreach($takemock_row as $subject_key => $subject_row)
-                    var rank_names_{{$takemock_key}}_{{$subject_key}} = [];
-                    for (var i = 1; i <= {{$base_statistisc['TotalQuestionCount'][$subject_key]}}; i++) {
-                        rank_names_{{$takemock_key}}_{{$subject_key}}.push(i);
+                    @for($i=0; $i<count($subject_row); $i++)
+                        var count_R25_{{$i}} = {!! json_encode(array_values($subject_row[$i]),true) !!};
+                    @endfor
+
+                    var legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5'];
+                    var dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0];
+                    if ({{count($subject_row)}} == 2) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1];
                     }
-                    var arr_set_data_{{$takemock_key}}_{{$subject_key}} = {!! json_encode($data_avg_score_10[$takemock_key][$subject_key]) !!};
-                    var rank_values_{{$takemock_key}}_{{$subject_key}} = [];
-                    for (var j = 0; j < arr_set_data_{{$takemock_key}}_{{$subject_key}}.length; j++) {
-                        rank_values_{{$takemock_key}}_{{$subject_key}}[j] = [];
-                        rank_values_{{$takemock_key}}_{{$subject_key}}[j][0] = arr_set_data_{{$takemock_key}}_{{$subject_key}}[j];
+                    if ({{count($subject_row)}} == 3) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2];
                     }
+                    if ({{count($subject_row)}} == 4) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2,count_R25_3];
+                    }
+                    if ({{count($subject_row)}} == 5) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2,count_R25_3,count_R25_4];
+                    }
+                    if ({{count($subject_row)}} == 6) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2,count_R25_3,count_R25_4,count_R25_5];
+                    }
+                    if ({{count($subject_row)}} == 7) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30','31~35'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2,count_R25_3,count_R25_4,count_R25_5,count_R25_6];
+                    }
+                    if ({{count($subject_row)}} == 8) {
+                        legend_names_R25_{{$takemock_key}}_{{$subject_key}} = ['1~5','6~10','11~15','16~20','21~25','26~30','31~35','36~40'];
+                        dataset_values_R25_{{$takemock_key}}_{{$subject_key}} = [count_R25_0,count_R25_1,count_R25_2,count_R25_3,count_R25_4,count_R25_5,count_R25_6,count_R25_7];
+                    }
+
                     var answers_rank25_{{$takemock_key}}_{{$subject_key}} = {
                         'legend': {
-                            names: rank_names_{{$takemock_key}}_{{$subject_key}},
+                            names: legend_names_R25_{{$takemock_key}}_{{$subject_key}},
                             hrefs: []
                         },
                         'dataset': {
-                            title: '상위10% 응시자 정답률(%)',
-                            values: rank_values_{{$takemock_key}}_{{$subject_key}},
-                            colorset: ['#30a1ce'],
-                            fields: ['문항']
+                            title: '전체 응시자 정답률(%)',
+                            values: dataset_values_R25_{{$takemock_key}}_{{$subject_key}},
+                            colorset: ['#DC143C', '#FF8C00', "#30a1ce", '#DC143C', '#FF8C00'],
+                            fields: ['(명)', '', '', '', '']
                         },
                         'chartDiv': 'answers_rank25_{{$takemock_key}}_{{$subject_key}}',
-                        'chartType': 'line',
-                        'chartSize': {width: 800, height: 300},
+                        'chartType': 'multi_column',
+                        'chartSize': {width: 900, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
-                        'increment': 20,
+                        'increment': 20
                     };
                     Nwagon.chart(answers_rank25_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
@@ -315,7 +363,7 @@
                         },
                         'chartDiv': 'answers_all_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'multi_column',
-                        'chartSize': {width: 800, height: 300},
+                        'chartSize': {width: 900, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
                         'increment': 20
@@ -323,6 +371,8 @@
                     Nwagon.chart(answers_all_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
             @endforeach
+
+            $(".fields").hide();
         });
     </script>
 @stop

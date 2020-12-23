@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <table class="table-striped table-bordered" style="width: 100%">
+                                            <table class="table-striped table-bordered" style="width: 100%;">
                                                 <thead>
                                                 <tr style="text-align:center; height: 30px;">
                                                     <th class="text-center" style="vertical-align: middle;" rowspan="2">문항</th>
@@ -98,7 +98,7 @@
                                                 <tbody>
                                                 @if(empty($arr_question_data[$key][$subject_key]) === false)
                                                     @foreach($arr_question_data[$key][$subject_key] as $question_num => $row)
-                                                        <tr style="text-align:center; height: 27px;">
+                                                        <tr style="text-align:center; height: 27px; {{ (($loop->index % 5) == 0 && $loop->last == false) ? 'border-bottom: 2px solid #3e3e3e;' : '' }}">
                                                             <td>{{ $question_num }}</td>
                                                             <td>{{ $row['RightAnswer'] }}</td>
                                                             <td>{{ $row['Scoring'] }}</td>
@@ -209,12 +209,10 @@
 
             var initBody;
             window.onbeforeprint = function(){
-                $(".accessibility").hide();
                 initBody = document.body.innerHTML;
                 document.body.innerHTML =  $('#print_content_'+mock_part_code+'_'+subject_code).html();
             };
             window.onafterprint = function(){
-                $(".accessibility").show();
                 document.body.innerHTML = initBody;
             };
             window.print();

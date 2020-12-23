@@ -323,9 +323,9 @@ class Grade extends BaseMocktest
         }
 
         $arr_pointForStatistics = $this->_pointForStatistics($prod_code);
-        $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10');
-        $avg_score_25 = $this->_pointAvgForRankStatistics($prod_code,'25');
-        $avg_score_total = $this->_pointAvgForRankStatistics($prod_code,'total');
+        $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10','group');
+        $avg_score_25 = $this->_pointAvgForRankStatistics($prod_code,'25','group');
+        $avg_score_total = $this->_pointAvgForRankStatistics($prod_code,'total','group');
 
         $this->load->view('mocktestNew/statistics/grade/detail_score', [
             'product_info' => $product_info,
@@ -515,12 +515,12 @@ class Grade extends BaseMocktest
      * @param string $rank
      * @return array
      */
-    private function _pointAvgForRankStatistics($prod_code = '', $rank = 'total')
+    private function _pointAvgForRankStatistics($prod_code = '', $rank = 'total', $type = '')
     {
         $data = [];
         $result = $this->regGradeModel->pointAvgForRankStatistics($prod_code, $rank);
 
-        if ($rank == 'total') {
+        if ($type == 'group') {
             $temp_data = [];
             foreach ($result as $row) {
                 $temp_data[$row['TakeMockPart']][$row['MpIdx']][$row['QuestionNO']] = $row['AvgScore'];

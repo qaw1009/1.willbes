@@ -6,6 +6,6 @@
         <area shape="rect" coords="7,184,118,248" href="/promotion/index/cate/3035/code/1653" alt="2순환"/>
         <area shape="rect" coords="9,256,119,317" href="/promotion/index/cate/3035/code/1785" alt="3순환"/>
         <area shape="rect" coords="10,324,117,386" href="/promotion/index/cate/3035/code/1862" alt="4순환"/>
-        <area shape="rect" coords="10,398,117,470" href="javascript:alert('개강 일정에 맞추어 공개됩니다.');" alt="5순환"/>
+        <area shape="rect" coords="10,398,117,470" href="/promotion/index/cate/3035/code/1998" alt="5순환"/>
     </map>                         
 </div>

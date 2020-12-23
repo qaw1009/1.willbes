@@ -37,7 +37,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈</a></li>  
-                <li class="w50"><a href="{{ site_url('/home/html/supporters') }}" target="_blank">온라인 관리반</a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/management') }}" target="_blank">온라인 관리반 체험단</a></li> 
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008_v2') }}" target="_blank">경찰간부 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2013') }}" target="_blank">경찰간부 학원 메인</a></li>                

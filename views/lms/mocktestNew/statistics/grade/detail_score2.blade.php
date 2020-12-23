@@ -68,14 +68,14 @@
                                         <div class="col-md-12">
                                             <table class="table-striped table-bordered" style="width: 100%">
                                                 <thead>
-                                                <tr style="height: 30px;">
+                                                <tr style="text-align:center; height: 30px;">
                                                     <th class="text-center" style="vertical-align: middle;" rowspan="2">문항</th>
                                                     <th class="text-center" colspan="4">정답</th>
                                                     <th class="text-center" colspan="3">정답비율</th>
                                                     <th class="text-center" colspan="5">마킹수</th>
                                                     <th class="text-center" colspan="5">마킹률(%)</th>
                                                 </tr>
-                                                <tr style="height: 30px;">
+                                                <tr style="text-align-last:center; height: 30px;">
                                                     <th>정답</th>
                                                     <th>배점</th>
                                                     <th>분류</th>
@@ -98,7 +98,7 @@
                                                 <tbody>
                                                 @if(empty($arr_question_data[$key][$subject_key]) === false)
                                                     @foreach($arr_question_data[$key][$subject_key] as $question_num => $row)
-                                                        <tr style="height: 27px;">
+                                                        <tr style="text-align:center; height: 27px;">
                                                             <td>{{ $question_num }}</td>
                                                             <td>{{ $row['RightAnswer'] }}</td>
                                                             <td>{{ $row['Scoring'] }}</td>

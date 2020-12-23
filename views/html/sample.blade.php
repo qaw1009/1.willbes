@@ -36,9 +36,10 @@
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_sea_special_online') }}" target="_blank">해양경찰특채 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_acad') }}" target="_blank">경찰학원 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/acad_sub_main') }}" target="_blank">경찰 캠퍼스 안내</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/supporters') }}" target="_blank">광은 서포터즈</a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/supporters') }}" target="_blank">온라인 관리반</a></li> 
                 <li class="c_both"></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008') }}" target="_blank">경찰간부 온라인 메인</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008_v2') }}" target="_blank">경찰간부 온라인 메인 ver2</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_cop_2008_v2') }}" target="_blank">경찰간부 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_cop_2013') }}" target="_blank">경찰간부 학원 메인</a></li>                
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gate') }}" target="_blank">공무원 게이트</a></li>
@@ -247,8 +248,7 @@
         <div>       
             <ul>            
                 <li><a href="{{ site_url('/home/html/promotion/1137') }}" target="_blank">통합 웰컴팩 </a></li>                
-                <li><p>경찰 온라인 ▼</p></li>
-                <li><a href="{{ site_url('/home/html/promotion/supporters') }}" target="_blank">광은 서포터즈<span>*</span></a></li>  
+                <li><p>경찰 온라인 ▼</p></li>                
                 <li><a href="{{ site_url('/home/html/promotion/event_onMouPop_2019') }}" target="_blank">2019 온라인 교육 콘텐츠 제공 MOU 체결 팝업 size 850x700 <span>*</span></a></li>  
                 <li><a href="{{ site_url('/home/html/promotion/1227') }}" target="_blank">최종합격기원감사제 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/promotion/1211') }}" target="_blank">2019 경찰 1차 합격예측 풀서비스 #2 성적채점/확인 <span>*</span></a></li>

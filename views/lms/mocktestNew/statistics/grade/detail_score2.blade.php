@@ -30,25 +30,34 @@
                                 <div id="print_content_{{$key}}_{{$subject_key}}">
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <div class="print_title bold">{{$val}} > {{$subject_val}}</div>
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">만점</th>
+                                                    <th class="text-center bg-aero" style="width: 8%">모의고사명</th>
+                                                    <td class="text-left" style="width: 10%" colspan="3">{{$product_info['ProdName']}}</td>
+                                                    <th class="text-center bg-aero" style="width: 8%">직렬 > 과목</th>
+                                                    <td class="text-left" style="width: 10%" colspan="5">{{$val}} > {{$subject_val}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">만점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['sum_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">응시인원</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">응시인원</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['reg_member_cnt']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">평균</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">평균</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['avg_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">최고득점</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">최고득점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['max_scoring']) }}
+                                                    </td>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">문항수</th>
+                                                    <td class="text-center" style="width: 10%">
+                                                        {{ $base_statistisc['TotalQuestionCount'][$subject_key] }}
                                                     </td>
                                                 </tr>
                                                 </thead>
@@ -57,16 +66,16 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <table class="table table-striped table-bordered">
+                                            <table class="table-striped table-bordered" style="width: 100%">
                                                 <thead>
-                                                <tr>
+                                                <tr style="height: 30px;">
                                                     <th class="text-center" style="vertical-align: middle;" rowspan="2">문항</th>
                                                     <th class="text-center" colspan="4">정답</th>
                                                     <th class="text-center" colspan="3">정답비율</th>
                                                     <th class="text-center" colspan="5">마킹수</th>
                                                     <th class="text-center" colspan="5">마킹률(%)</th>
                                                 </tr>
-                                                <tr>
+                                                <tr style="height: 30px;">
                                                     <th>정답</th>
                                                     <th>배점</th>
                                                     <th>분류</th>
@@ -89,11 +98,11 @@
                                                 <tbody>
                                                 @if(empty($arr_question_data[$key][$subject_key]) === false)
                                                     @foreach($arr_question_data[$key][$subject_key] as $question_num => $row)
-                                                        <tr>
+                                                        <tr style="height: 27px;">
                                                             <td>{{ $question_num }}</td>
                                                             <td>{{ $row['RightAnswer'] }}</td>
                                                             <td>{{ $row['Scoring'] }}</td>
-                                                            <td>{{ $row['AreaName'] }}</td>{{-- 분류 --}}
+                                                            <td>{{--{{ $row['AreaName'] }}--}}</td>{{-- 분류 --}}
                                                             <td></td>{{-- 유형 --}}
                                                             <td>{{ $row['QAVR_Top10'] }}</td>
                                                             <td>{{ $row['QAVR_Top25'] }}</td>

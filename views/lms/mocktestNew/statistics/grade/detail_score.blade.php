@@ -32,24 +32,29 @@
                             <div id="subject_{{$key}}_{{$subject_key}}" class="form-group tab-pane fade {{($loop->first === true) ? 'in active' : ''}}">
                                 <div id="print_content_{{$key}}_{{$subject_key}}">
                                     <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="print_title bold">{{$val}} > {{$subject_val}}</div>
+                                        <div class="col-md-11">
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">만점</th>
+                                                    <th class="text-center bg-aero" style="width: 8%">모의고사명</th>
+                                                    <td class="text-left" style="width: 10%" colspan="3">{{$product_info['ProdName']}}</td>
+                                                    <th class="text-center bg-aero" style="width: 8%">직렬 > 과목</th>
+                                                    <td class="text-left" style="width: 10%" colspan="3">{{$val}} > {{$subject_val}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">만점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['sum_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">응시인원</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">응시인원</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['reg_member_cnt']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">평균</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">평균</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['avg_scoring']) }}
                                                     </td>
-                                                    <th class="text-center bg-dark-blue" style="width: 8%">최고득점</th>
+                                                    <th class="text-center bg-white-gray" style="width: 8%">최고득점</th>
                                                     <td class="text-center" style="width: 10%">
                                                         {{ (empty($data_total_statistics[$key][$subject_key]) === true ? '' : $data_total_statistics[$key][$subject_key]['max_scoring']) }}
                                                     </td>
@@ -84,7 +89,7 @@
                                             </table>
                                         </div>
 
-                                        <div class="col-md-8">
+                                        <div class="col-md-7">
                                             <div class="col-md-12 pt-15 board_gray">
                                                 <h4 class="text-center"><strong>전체 응시자 점수분포표</strong></h4>
                                                 <div id="spread_all_{{$key}}_{{$subject_key}}" class="text-center"></div>
@@ -143,6 +148,13 @@
             //전체 응시자 정답률
             @foreach($data_total_point_chart as $takemock_key => $takemock_row)
                 @foreach($takemock_row as $subject_key => $subject_row)
+                    var increment = '5';
+                    if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 10) {
+                        increment = 1;
+                    }
+                    if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} > 10 && {{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 20) {
+                        increment = 2;
+                    }
                     var count1 = {!! json_encode(array_values($subject_row[0]),true) !!};
                     var count2 = {!! json_encode(array_values($subject_row[1]),true) !!};
                     var count3 = {!! json_encode(array_values($subject_row[2]),true) !!};
@@ -154,7 +166,6 @@
                     var count9 = {!! json_encode(array_values($subject_row[8]),true) !!};
                     var count10 = {!! json_encode(array_values($subject_row[9]),true) !!};
                     var count11 = {!! json_encode(array_values($subject_row[10]),true) !!};
-
                     var spread_all_{{$takemock_key}}_{{$subject_key}} = {
                         'legend': {
                             names: ['~7.5', '~17.5', '~27.5', '~37.5', '~47.5', '~57.5', '~67.5', '~77.5', '~87.5', '97.5', '100'],
@@ -174,10 +185,10 @@
                         },
                         'chartDiv': 'spread_all_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'multi_column',
-                        'chartSize': {width: 1000, height: 300},
+                        'chartSize': {width: 800, height: 300},
                         'minValue': 0,
-                        'maxValue': 100,
-                        'increment': 20
+                        'maxValue': ({{$data_max_cnt[$takemock_key][$subject_key]}} >= 100) ? 100 : {{$data_max_cnt[$takemock_key][$subject_key]}},
+                        'increment': increment
                     };
                     Nwagon.chart(spread_all_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
@@ -199,6 +210,7 @@
                     var answers_rank10_{{$takemock_key}}_{{$subject_key}} = {
                         'legend': {
                             names: rank_names_{{$takemock_key}}_{{$subject_key}},
+                            /*names: ['1~5','6~10','11~15','16~20','21~25','26~30','31~35','36~40'],*/
                             hrefs: []
                         },
                         'dataset': {
@@ -209,7 +221,7 @@
                         },
                         'chartDiv': 'answers_rank10_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'line',
-                        'chartSize': {width: 1000, height: 300},
+                        'chartSize': {width: 800, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
                         'increment': 20,
@@ -244,7 +256,7 @@
                         },
                         'chartDiv': 'answers_rank25_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'line',
-                        'chartSize': {width: 1000, height: 300},
+                        'chartSize': {width: 800, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
                         'increment': 20,
@@ -252,7 +264,6 @@
                     Nwagon.chart(answers_rank25_{{$takemock_key}}_{{$subject_key}});
                 @endforeach
             @endforeach
-
 
             @foreach($data_avg_score_total as $takemock_key => $takemock_row)
                 @foreach($takemock_row as $subject_key => $subject_row)
@@ -304,7 +315,7 @@
                         },
                         'chartDiv': 'answers_all_{{$takemock_key}}_{{$subject_key}}',
                         'chartType': 'multi_column',
-                        'chartSize': {width: 1000, height: 300},
+                        'chartSize': {width: 800, height: 300},
                         'minValue': 0,
                         'maxValue': 100,
                         'increment': 20

@@ -207,6 +207,8 @@
                             @foreach(range(1, 20) as $n)
                                 <option value="{{$n}}" @if($loop->index == '20') selected @endif>{{$n}}개</option>
                             @endforeach
+                            <option value="25">25개</option>
+                            <option value="40">40개</option>
                         </select>
                         <button class="btn btn-sm btn-primary" id="act-addRow">필드추가</button>
                         <button class="btn btn-sm btn-primary" id="act-sort">정렬변경</button>
@@ -352,7 +354,13 @@
                                     <input type="hidden" name="RightAnswer[]" value="{{$row['RightAnswer']}}">
                                 </td>
                                 <td class="text-center"><input type="text" class="form-control" name="Scoring[]" value="{{$row['Scoring']}}"></td>
-                                <td class="text-center">
+                                <td class="text-center form-inline">
+                                    {{--<div class="radio">
+                                        <div><input type="radio" class="flat" id="difficulty_t_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="T" @if($row['Difficulty'] == 'T') checked="checked" @endif> <label for="difficulty_t_{{$loop->index}}" class="input-label">상</label></div>
+                                        <div><input type="radio" class="flat" id="difficulty_m_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="M" @if($row['Difficulty'] == 'M') checked="checked" @endif> <label for="difficulty_m_{{$loop->index}}" class="input-label">중</label></div>
+                                        <div><input type="radio" class="flat" id="difficulty_b_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="B" @if($row['Difficulty'] == 'B') checked="checked" @endif> <label for="difficulty_b_{{$loop->index}}" class="input-label">하</label></div>
+                                        <div><input type="radio" class="flat" id="difficulty_n_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="N" @if($row['Difficulty'] == 'N') checked="checked" @endif> <label for="difficulty_n_{{$loop->index}}" class="input-label">없음</label></div>
+                                    </div>--}}
                                     <select class="form-control" name="Difficulty[]" style="padding:0">
                                         <option value="">선택</option>
                                         <option value="T" @if($row['Difficulty'] == 'T') selected @endif>상</option>

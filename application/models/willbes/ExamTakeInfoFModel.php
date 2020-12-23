@@ -157,10 +157,10 @@ class ExamTakeInfoFModel extends WB_Model
                     ORDER BY SubjectCcd, YearTarget ASC, TakeType DESC
                     LIMIT 10000
                 ) AS a
-                GROUP BY a.SubjectCcd, a.YearTarget
+                GROUP BY a.SubjectCcd, a.YearTarget, a.TakeType
             ) AS m
         ";
-        $order_by = 'ORDER BY m.SubjectCcd, m.YearTarget DESC';
+        $order_by = 'ORDER BY m.SubjectCcd, m.YearTarget DESC, m.TakeType DESC';
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }

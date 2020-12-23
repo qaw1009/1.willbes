@@ -51,7 +51,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1998_03.jpg" alt="1순환 기본강의 패키지" usemap="#Map1998b" border="0" />
             <map name="Map1998b" id="Map1998b">
-                <area shape="rect" coords="354,1190,766,1276" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/17704"  target="_blank" />
+                <area shape="rect" coords="354,1190,766,1276" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/177046"  target="_blank" />
             </map>                   
         </div>
               

@@ -12,7 +12,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
-                ['{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
+                ['{{$val['YearTarget']}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
                 @endforeach
             ]);
             var options = {
@@ -54,7 +54,7 @@
                 ['학년도', '모집', {type: 'number', role: 'annotation'}, '지원', {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
                 [
-                    '{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}'
+                    '{{$val['YearTarget']}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}'
                     , {{$val['NoticeNumber']}}, {{$val['NoticeNumber']}}, {{$val['TakeNumber']}}, {{$val['TakeNumber']}}
                 ],
                 @endforeach

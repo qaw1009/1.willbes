@@ -23,7 +23,7 @@
             z-index:1;
         }
 
-        .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg) no-repeat center top;}
+        .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
 
         .notice {position:absolute; left:50%; top:1050px; margin-left:-290px; z-index:1; width:630px; background:#fff; 
             box-shadow: 10px 19px 19px rgba(0,0,0,.2);
@@ -166,7 +166,7 @@
 <div class="p_re evtContent NGR" id="evtContainer">
     <form name="form" id="form">
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_2020.jpg" title="광은 서포터즈">
+            <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top.jpg" title="온라인관리반">
             <div class="notice">
                 <div class="title">
                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_img01.png" title="공지사항 더보기"></a>
@@ -274,14 +274,14 @@
 
         <div class="evt01">
             <ul class="tab NSK-Black">
-                <li><a href="#tab01"><span>신과함께 소개<span></a></li>
+                <li><a href="#tab01"><span>서포터즈 소개<span></a></li>
                 <li><a href="#tab02"><span>과제수행<span></a></li>
                 <li><a href="#tab03"><span>제안 및 의견<span></a></li>
                 <li><a href="#tab04"><span>명예의 전당<span></a></li>
             </ul> 
             <div class="evtCtsBox">
                 <div id="tab01" class="evtCts tx-center">
-                    <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab01_2020.jpg" title="광은 서포터즈">
+                    <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_tab01.jpg.jpg" title="온라인관리반">
                 </div>
 
                 <div id="tab02" class="evtCts">
@@ -800,7 +800,7 @@
                 <div id="tab04" class="evtCts">
                     <h4>● 서포터즈 명예의 전당</h4>
                     <div class="p_re">
-                        자랑스럽고 든든한 윌비스 “광은 서포터즈” 여러분들을 소개하는 공간입니다.<br>
+                        자랑스럽고 든든한 윌비스 “온라인관리반” 여러분들을 소개하는 공간입니다.<br>
                         함께 활동하는 서포터즈 여러분들 상호간에 이해와 교류의 시간을 가져보세요.<br>
                         자기소개와 선정소감을 올려주시면 활동 시에 서로 많은 도움이 될 수 있습니다.<br>
                         합격장려금을 지원해 드립니다.

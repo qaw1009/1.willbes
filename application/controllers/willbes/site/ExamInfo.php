@@ -191,10 +191,11 @@ class ExamInfo extends \app\controllers\FrontController
         $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
         $temp_data = [];
         foreach ($arr_base['graph'] as $row) {
-            $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
-            $temp_data[$row['YearTarget']]['NoticeNumber'] = $row['NoticeNumber'];
-            $temp_data[$row['YearTarget']]['TakeNumber'] = $row['TakeNumber'];
-            $temp_data[$row['YearTarget']]['AvgData'] = $row['AvgData'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['YearTarget'] = $row['YearTarget'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['TakeType'] = $row['TakeType'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['NoticeNumber'] = $row['NoticeNumber'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['TakeNumber'] = $row['TakeNumber'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['AvgData'] = $row['AvgData'];
         }
         ksort($temp_data);
         $arr_base['graph_table_data'] = $temp_data;
@@ -227,10 +228,11 @@ class ExamInfo extends \app\controllers\FrontController
         $arr_base['graph'] = $this->examTakeInfoFModel->totalDataForGraph($arr_condition);
         $temp_data = [];
         foreach ($arr_base['graph'] as $row) {
-            $temp_data[$row['YearTarget']]['TakeType'] = $row['TakeType'];
-            $temp_data[$row['YearTarget']]['NoticeNumber'] = $row['NoticeNumber'];
-            $temp_data[$row['YearTarget']]['TakeNumber'] = $row['TakeNumber'];
-            $temp_data[$row['YearTarget']]['AvgData'] = $row['AvgData'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['YearTarget'] = $row['YearTarget'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['TakeType'] = $row['TakeType'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['NoticeNumber'] = $row['NoticeNumber'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['TakeNumber'] = $row['TakeNumber'];
+            $temp_data[$row['YearTarget'].$row['TakeType']]['AvgData'] = $row['AvgData'];
         }
         ksort($temp_data);
         $arr_base['graph_table_data'] = $temp_data;

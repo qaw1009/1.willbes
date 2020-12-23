@@ -9,8 +9,7 @@
             {{ $data['SupportersYear'] }}년 {{ $data['SupportersNumber'] }}기
         </div>--}}
         <div class="evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top.jpg" title="광은 서포터즈">
-            <span class="img1"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_title.png" alt="화살표"></span>
+            <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg" title="광은 서포터즈">
             <div class="notice">
                 <div class="title">
                     <a href="javascript:go_popup('', '{{ $data['SupportersIdx'] }}');"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_img01.png" title="공지사항 더보기"></a>
@@ -23,29 +22,33 @@
                         <li><a href="javascript:go_popup('{{ $row['BoardIdx'] }}', '{{ $row['SupportersIdx'] }}');">{{ $row['Title'] }}</a><span>{{ $row['RegDatm'] }}</span></li>
                     @endforeach
                 </ul>
+            </div>            
+        </div>
+
+        <div class="evt01">
+            <ul class="tab NSK-Black">
+                <li><a href="#tab01"><span>서포터즈 소개<span></a></li>
+                <li><a href="#tab02"><span>과제수행<span></a></li>
+                <li><a href="#tab03"><span>제안 및 의견<span></a></li>
+                <li><a href="#tab04"><span>명예의 전당<span></a></li>
+            </ul> 
+            <div class="evtCtsBox">
+                <div id="tab01" class="evtCts tx-center">
+                    <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab01.jpg" title="광은 서포터즈">
+                </div>
+
+                <div id="tab02" class="evtCts">
+                    @include('willbes.pc.site.supporters.home_assignment_partial')
+                </div>
+
+                <div id="tab03" class="evtCts">
+                    @include('willbes.pc.site.supporters.home_suggest_partial')
+                </div>
+
+                <div id="tab04" class="evtCts">
+                    @include('willbes.pc.site.supporters.home_member_partial')
+                </div>
             </div>
-            <ul class="tab NGEB">
-                <li><a href="#tab01">신과함께 소개</a></li>
-                <li><a href="#tab02">과제수행</a></li>
-                <li><a href="#tab03">제안 및 의견</a></li>
-                <li><a href="#tab04">명예의 전당</a></li>
-            </ul>
-        </div>
-
-        <div id="tab01" class="evtCts">
-            <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab01.jpg" title="광은 서포터즈">
-        </div>
-
-        <div id="tab02" class="evtCts">
-            @include('willbes.pc.site.supporters.home_assignment_partial')
-        </div>
-
-        <div id="tab03" class="evtCts">
-            @include('willbes.pc.site.supporters.home_suggest_partial')
-        </div>
-
-        <div id="tab04" class="evtCts">
-            @include('willbes.pc.site.supporters.home_member_partial')
         </div>
     </div>
     <!-- End Container -->

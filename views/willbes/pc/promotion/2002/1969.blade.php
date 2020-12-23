@@ -141,7 +141,7 @@
             <map name="Map1969a" id="Map1969a">
                 <area shape="rect" coords="344,903,776,963" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043"  target="_blank" />
                 <area shape="rect" coords="345,1785,778,1844" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" />
-                <area shape="rect" coords="343,2589,776,2645" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045"  target="_blank" />
+                <area shape="rect" coords="343,2589,776,2645" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045"  target="_blank" />
             </map>
         </div>
         

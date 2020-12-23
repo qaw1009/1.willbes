@@ -247,7 +247,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['학년도', '경쟁률',  {type: 'number', role: 'annotation'},],
                 @foreach($arr_base['graph_table_data'] as $key => $val)
-                    ['{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
+                    ['{{$val['YearTarget']}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}', {v: {{$val['AvgData']}}, f:'{{$val['AvgData']}}'}, {{$val['AvgData']}}],
                 @endforeach
             ]);
             var options = {
@@ -278,6 +278,9 @@
                         color: '#555'
                     },
                 },
+                chartArea: {
+                    width: '80%'
+                }
             };
             var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
             chart.draw(data, options);
@@ -286,7 +289,7 @@
                 ['학년도', '모집인원', {type: 'number', role: 'annotation'}, '지원자 수', {type: 'number', role: 'annotation'},],
                     @foreach($arr_base['graph_table_data'] as $key => $val)
                 [
-                    '{{$key}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}'
+                    '{{$val['YearTarget']}}{{($val['TakeType'] == '2' ? ' 추시' : '')}}{{($loop->last === true) ? '\n(학년도)' : ''}}'
                     , {{$val['NoticeNumber']}}, {{$val['NoticeNumber']}}, {{$val['TakeNumber']}}, {{$val['TakeNumber']}}
                 ],
                 @endforeach
@@ -311,6 +314,9 @@
                         color: '#555'
                     },
                 },
+                chartArea: {
+                    width: '82%'
+                }
             };
             var colom = new google.visualization.ComboChart(document.getElementById('chart_div2'));
             colom.draw(data, options1);

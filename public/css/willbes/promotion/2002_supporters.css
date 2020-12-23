@@ -1,15 +1,10 @@
-.subContainer {
-    min-height: auto !important;
-    margin-bottom:0 !important;
-}
 .evtContent {
     width:100%;
-    background:#fff;
     margin-top:20px !important;
     margin:0 auto;
     line-height:1.5;
     padding:0 !important;
-    background:#fff;
+    background:#e4e4e4;
 }
 .evtContent span {vertical-align:auto}
 
@@ -21,47 +16,35 @@
     right:10px;
     z-index:1;
 }
-.jumpMenu {width:780px; margin:0 auto; text-align:right; margin-bottom:15px}
-.jumpMenu select {height:28px; line-height:28px; padding:5px}
-.evtTop {position:relative; text-align:center; background:#404ae0}
-.evtTop span.img1 {position:absolute; left:50%; z-index:1; top:140px; margin-left:-314px; width:628px; animation:iptimg1 .5s ease-in;-webkit-animation:iptimg1 .5s ease-in;}
-@keyframes iptimg1{
-     from{opacity: 0; transform:scale(0.0)}
-     to{opacity: 1; transform:scale(1)}
- }
-@-webkit-keyframes iptimg1{
-     from{top:150px; opacity: 0.1; transform:scale(0.0)}
-     30%{top:250px; opacity: 0.25; transform:scale(0.33)}
-     80%{top:200px; opacity: 0.7; transform:scale(0.66)}
-     to{top:140px; opacity: 1; transform:scale(1)}
- }
 
-.notice {position:absolute; left:50%; top:735px; margin-left:-290px; z-index:1; width:580px; background:#fff;
+.evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg) no-repeat center top;}
+
+.notice {position:absolute; left:50%; top:1050px; margin-left:-290px; z-index:1; width:630px; background:#fff; 
     box-shadow: 10px 19px 19px rgba(0,0,0,.2);
 }
-.notice .title {float:left; background:#252525; width:120px; height:126px; line-height:126px}
+.notice .title {float:left; background:#275891; width:170px; height:126px; line-height:126px}
 .notice .list {float:left; width:460px; margin:20px 0}
 .notice .list li {margin-left:40px; list-style:disc; line-height:1.8; text-align:left; padding-right:20px}
 .notice .list li a {float:left; display:block; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 .notice .list li span {float:right}
 .notice:after {content:""; display:block; clear:both}
 
-.tab {width:780px; margin:0 auto}
-.tab li {display:inline; float:left; width:25%}
-.tab li a {display:block; text-align:center; padding:20px 0; font-weight:bold; color:#a6a6a6; font-size:18px; background:#636363; line-height:1.4;
-    border:1px solid #5d5d5d; border-bottom:none; border-right:none;
-}
-.tab li a:hover,
-.tab li a.active {background:#fff; color:#292929}
-.tab li:last-child a {border-right:1px solid #5d5d5d}
-.tab:after {content:""; display:block; clear:both}
+.evt01 {width:1120px; margin:0 auto; padding:150px 0;}
+    .tab li {display:inline; float:left; width:25%}
+    .tab li a {display:block; text-align:center; height:130px; color:#a6a6a6; font-size:22px; border-right:1px solid #a6a6a6; background:#727272;
+    border-radius:30px 30px 0 0; margin-top:20px}
+    .tab li a.active {background:#000; color:#fff; margin-top:0; font-size:26px}
+    .tab li:last-child a {border-right:0}
+    .tab li a span {display:block; padding-top:25px;}
+    .tab:after {content:""; display:block; clear:both}
 
-.evtCts {width:780px; margin:0 auto; padding-bottom:100px}
-.evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:100px 0 20px}
-.evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}
+.evtCtsBox {position:relative; height:100%}
+.evtCts { /*position:absolute; top:-50px;*/ width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
+.evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}     
+.evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}  
 .evtCts .row-line {
-    background: #ccc;
-    margin:0 10px;
+    background: #ccc;  
+    margin:0 10px;  
     height:14px;
     width:1px;
     vertical-align:bottom;

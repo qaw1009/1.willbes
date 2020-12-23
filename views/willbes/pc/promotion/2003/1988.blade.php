@@ -63,14 +63,14 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1988_05.jpg" alt="" usemap="#Map" border="0" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="782,545,969,596" href="https://job.willbes.net/package/show/cate/3035/pack/648001/prod-code/177100" target="_blank" />
-                <area shape="rect" coords="782,775,973,828" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177094" target="_blank" />
-                <area shape="rect" coords="782,985,972,1039" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177093"target="_blank" />
-                <area shape="rect" coords="783,1196,968,1250" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177095" target="_blank" />
-                <area shape="rect" coords="784,1405,972,1459" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177099" target="_blank" />
-                <area shape="rect" coords="783,1615,973,1670" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177096" target="_blank" />
-                <area shape="rect" coords="782,1825,972,1879" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177098" target="_blank" />
-                <area shape="rect" coords="782,2035,973,2089" href="https://job.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177097" target="_blank" />
+                <area shape="rect" coords="782,545,969,596" href="https://pass.willbes.net/package/show/cate/3035/pack/648001/prod-code/177100" target="_blank" />
+                <area shape="rect" coords="782,775,973,828" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177330" target="_blank" />
+                <area shape="rect" coords="782,985,972,1039" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177093"target="_blank" />
+                <area shape="rect" coords="783,1196,968,1250" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177095" target="_blank" />
+                <area shape="rect" coords="784,1405,972,1459" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177099" target="_blank" />
+                <area shape="rect" coords="783,1615,973,1670" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177096" target="_blank" />
+                <area shape="rect" coords="782,1825,972,1879" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177098" target="_blank" />
+                <area shape="rect" coords="782,2035,973,2089" href="https://pass.willbes.net/lecture/show/cate/3035/pattern/only/prod-code/177097" target="_blank" />
             </map>
         </div>
         

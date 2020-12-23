@@ -25,10 +25,10 @@
 
         .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
 
-        .notice {position:absolute; left:50%; top:1050px; margin-left:-290px; z-index:1; width:630px; background:#fff; 
+        .notice {position:absolute; left:50%; top:1050px; margin-left:-315px; z-index:1; width:630px; background:#fff; 
             box-shadow: 10px 19px 19px rgba(0,0,0,.2);
         }
-        .notice .title {float:left; background:#275891; width:170px; height:126px; line-height:126px}
+        .notice .title {float:left; background:#d12c10; width:170px; height:126px; line-height:126px}
         .notice .list {float:left; width:460px; margin:20px 0}
         .notice .list li {margin-left:40px; list-style:disc; line-height:1.8; text-align:left; padding-right:20px}
         .notice .list li a {float:left; display:block; width:80%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
@@ -55,6 +55,8 @@
             width:1px;
             vertical-align:bottom;
         }
+        .evtCts .subBtn a {background:#a32015; border:0}
+
         .tableTypeA {border-top:1px solid #959595}
         .tableTypeA th {background:#f9f9f9; color:#707070; padding:15px 10px; font-weight:bold;}
         .tableTypeA th,
@@ -92,21 +94,6 @@
             padding: 10px;
             line-height:1.5;
         }
-
-        .gift { position:absolute; right:0; top:-40px; z-index:1}
-
-        .wtgMember {margin-top:20px; width:100%}
-		.wtgMember li {display:inline; float:left; width:25%; margin-bottom:10px}
-		.wtgMember .wtgUser {border:1px solid #d9d9d9; padding:17px 0; height:254px; text-align:center; position:relative; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_user.png) no-repeat center 17px; margin-right:10px}
-		.wtgMember .wtgUser .mask {width:100%; height:80px; background:url(https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_mask.png) no-repeat center top; position:absolute; top:17px; z-index:10}
-		.wtgMember .wtgUser .userMsg {width:80%; margin:15px auto; height:54px; overflow:hidden; line-height:1.5; text-align:left}
-		.wtgMember .wtgUser p {margin-top:10px}
-		.wtgMember .wtgUser strong {color:#424ac7}
-		.wtgMember .wtgUser img {margin-bottom:10px; width:80px; height:80px; margin:0 auto}
-		.wtgMember .wtgUser a {font-size:11px; color:#222; border:2px solid #222; padding:3px 0 2px; display:block; width:56px; margin:0 auto; text-align:center;}
-		.wtgMember .wtgUser a:hover {background:#222; color:#fff}
-		.wtgMember:after {content:""; display:block; clear:both}
-
 
         /*********팝업***********/
         .Pstyle {
@@ -166,7 +153,7 @@
 <div class="p_re evtContent NGR" id="evtContainer">
     <form name="form" id="form">
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top.jpg" title="온라인관리반">
+            <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top.jpg" title="온라인관리반 체험단">
             <div class="notice">
                 <div class="title">
                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_img01.png" title="공지사항 더보기"></a>
@@ -274,22 +261,178 @@
 
         <div class="evt01">
             <ul class="tab NSK-Black">
-                <li><a href="#tab01"><span>서포터즈 소개<span></a></li>
-                <li><a href="#tab02"><span>과제수행<span></a></li>
-                <li><a href="#tab03"><span>제안 및 의견<span></a></li>
-                <li><a href="#tab04"><span>명예의 전당<span></a></li>
+                <li><a href="#tab01"><span>체험단 소개<span></a></li>
+                <li><a href="#tab02"><span>출석체크<span></a></li>
+                <li><a href="#tab03"><span>과제수행<span></a></li>
+                <li><a href="#tab04"><span>제안 및 의견<span></a></li>
             </ul> 
             <div class="evtCtsBox">
                 <div id="tab01" class="evtCts tx-center">
-                    <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_tab01.jpg.jpg" title="온라인관리반">
+                    <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_tab01.jpg" title="온라인관리반 체험단">
                 </div>
 
                 <div id="tab02" class="evtCts">
-                    <h4>● 서포터즈 미션! 과제를 수행하라</h4>
+                    <h4>● 온라인 관리반 출첵 합시다!</h4>
                     <div>
-                        윌비스 신광은 경찰 학원 및 사이트 개선을 위한 매월 정기 주제별 과제 참여 공간입니다.<br>
-                        바쁘시더라도 서포터즈 여러분들의 성실한 과제 수행을 당부 드립니다.<br>
-                        <span class="tx-red">※ 정당한 사유 없이 3회 이상 과제 미제출시 서포터즈 혜택을 제한합니다.</span>
+                        온라인 관리반 여러분들의 출첵공간입니다.<br>
+                        하루하루!  모두함께~~!!<br>
+                        출첵을 해주시기 바랍니다.<br>
+                        <span class="tx-red">※ 정당한 사유없이 3일 이상 출첵 없을시 관리반 혜택을 제한합니다.</span>
+                    </div>
+                    {{--리스트--}}
+                    <div class="mt30">
+                        <div class="f_right mb10">
+                            <div class="subBtn NSK f_right"><a href="#none">글쓰기</a></div>
+                        </div>
+                        <table class="tableTypeA">
+                            <col width="8%"/>
+                            <col width=""/>
+                            <col width="12%"/>
+                            <col width="10%"/>
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>제목</th>
+                                    <th>작성일</th>
+                                    <th>조회수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="tx-left">
+                                        <a href="#none">    
+                                            오늘도 출첵!! 열심히~
+                                        </a>    
+                                    </td>
+                                    <td>2019-05-10</td>
+                                    <td>7542</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="tx-left">
+                                        <a href="#none">
+                                            오늘도 출첵!! 열심히~
+                                        </a>
+                                    </td>
+                                    <td>2019-05-10</td>
+                                    <td>2112</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="tx-left">
+                                        <a href="#none">
+                                            오늘도 출첵!! 열심히~
+                                        </a>
+                                    </td>
+                                    <td>2019-05-10</td>
+                                    <td>150</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="tx-left">
+                                        <a href="#none">
+                                            오늘도 출첵!! 열심히~
+                                        </a>
+                                    </td>
+                                    <td>2019-05-10</td>
+                                    <td>125</td>
+                                </tr>                        
+                            </tbody>
+                        </table>
+
+                        <div class="Paging">
+                            <ul>
+                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                <li><a href="#none">10</a></li>
+                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {{--글쓰기--}}
+                    <div class="mt30">
+                        <table class="tableTypeA">
+                            <col width="15%"/>
+                            <col width=""/>
+                            <tbody>
+                                <tr>
+                                    <th>제목<span class="tx-light-blue">(*)</span></th>
+                                    <td class="tx-left">
+                                        <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>내용<span class="tx-light-blue">(*)</span></th>
+                                    <td class="tx-left">
+                                        <textarea></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="search-Btn mt20 h36 p_re">
+                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                            <span class="tx-purple-gray">취소</span>
+                        </button>
+                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                            <span>저장</span>
+                        </button>
+                    </div>
+
+                    {{--글보기--}}
+                    <div class="mt30">
+                        <table class="tableTypeA">
+                            <col width="15%"/>
+                            <col width=""/>
+                            <tbody>
+                                <tr>
+                                    <th class="tx-left">서포터즈를 마치며</th>
+                                </tr>
+                                <tr>
+                                    <th class="tx-right normal">홍길동 <span class="ml10 mr10">|</span> 2018-00-00</th>
+                                </tr>
+                                <tr>
+                                    <td class="tx-left">
+                                        이제 서포터즈 활동을 마무리하게 되었습니다. 
+                                        마지막으로 끝나기 전에 전에도 말씀드렸던 것을 한 번만 더 강조하고 싶어서 글 남깁니다.
+                                        Sns로 들어가는 아이콘의 크기를 키워주시고 그 반대편에 각자 교수님들의 사진 아이콘을 만들어 그 아이콘을 클릭하면 각 교수님들이 관리하시는 사이트로 들어갈 수 있게 링크를 만들어주셨으면 합니다.
+                                        윌비스 신광은 경찰 온라인과 수강생들에게 정말 크나큰 도움이 될 것이라 믿어 의심치 않습니다.
+                                        그동안 수고하셨습니다!
+                                    </td>
+                                </tr>                        
+                            </tbody>
+                        </table>                
+                    </div>
+                    <div class="search-Btn mt20 h36 p_re">
+                        <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                            <a href="#none" class="tx-purple-gray">삭제</a>
+                        </div>
+                        <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
+                            <a href="#none" class="tx-purple-gray">수정</a>
+                        </div>
+                        <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
+                            <a href="#none">목록</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab03" class="evtCts">
+                    <h4>● 체험단 미션! 과제를 수행하라</h4>
+                    <div>
+                        여러분들의 주간 스케줄 / 일일 스케줄등 학습 노하우를 올려주세요!<br>
+                        체험단이 진행되는 동안 강의 후기 등 학습에 도움되는 모든 것을 커뮤니티 공간에 올려주시면 됩니다.<br>
+                        <span class="tx-red">※ 정당한 사유 없이 3회 이상 과제 미제출시 체험단 혜택을 제한합니다.</span>
                     </div>
                     <div class="mt30">
                         <table class="tableTypeA">
@@ -602,10 +745,10 @@
                     </div>
                 </div>
 
-                <div id="tab03" class="evtCts">
-                    <h4>● 서포터즈 열린 건의함! 제안 및 토론</h4>
+                <div id="tab04" class="evtCts">
+                    <h4>● 체험단 열린 건의함! 제안 및 토론</h4>
                     <div>
-                        서포터즈 여러분들의 자유로운 제안, 의견 공유 공간입니다.<br>
+                        체험단 여러분들의 자유로운 제안, 의견 공유 공간입니다.<br>
                         신광은 경찰학원 및 사이트를 위해 격려와 질책은 물론 번뜩이는 아이디어도 많이 제안해 주세요.<br>
                         사이트 및 강좌 모니터링, 아이디어를 채택하여 포상 혜택 부여 및 해당 의견을 반영할 예정입니다.<br>
                         <span class="tx-red">※ 정당한 사유 없이 3주 이상 제안이 1건도 없을 시 서포터즈 혜택을 제한합니다.</span>
@@ -795,94 +938,7 @@
                             <a href="#none">목록</a>
                         </div>
                     </div>
-                </div>
-
-                <div id="tab04" class="evtCts">
-                    <h4>● 서포터즈 명예의 전당</h4>
-                    <div class="p_re">
-                        자랑스럽고 든든한 윌비스 “온라인관리반” 여러분들을 소개하는 공간입니다.<br>
-                        함께 활동하는 서포터즈 여러분들 상호간에 이해와 교류의 시간을 가져보세요.<br>
-                        자기소개와 선정소감을 올려주시면 활동 시에 서로 많은 도움이 될 수 있습니다.<br>
-                        합격장려금을 지원해 드립니다.
-                        <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_img1.jpg" class="gift">
-                    </div>
-
-                    <h5>신광은 경찰팀을 함께 만들어가는 <span class="tx-red">2021 광은서포터즈</span></h5>
-                    <ul class="wtgMember">
-                        <li>
-                            <div class="wtgUser">
-                                <div>
-                                    <div class="mask"></div>
-                                    <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab04_sample.jpg">
-                                </div>
-                                <p><strong>홍길동</strong>님</p>
-                                <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
-                                <a href="javascript:go_popup_user()" >소개보기</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="wtgUser">
-                                <div>
-                                    <div class="mask"></div>
-                                    <img src="">
-                                </div>
-                                <p><strong>홍길동</strong>님</p>
-                                <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
-                                <a href="#none">소개보기</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="wtgUser">
-                                <div>
-                                    <div class="mask"></div>
-                                    <img src="">
-                                </div>
-                                <p><strong>홍길동</strong>님</p>
-                                <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 </div>
-                                <a href="#none">소개보기</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="wtgUser">
-                                <div>
-                                    <div class="mask"></div>
-                                    <img src="">
-                                </div>
-                                <p><strong>홍길동</strong>님</p>
-                                <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
-                                <a href="#none">소개보기</a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="wtgUser">
-                                <div>
-                                    <div class="mask"></div>
-                                    <img src="">
-                                </div>
-                                <p><strong>홍길동</strong>님</p>
-                                <div class="userMsg" >안녕하세요. 현재 경찰행정학과 3학년에 재학중인 신과함께 서포터즈 김은선입니다.</div>
-                                <a href="#none">소개보기</a>
-                            </div>
-                        </li>
-                        <li>등록된 글이 없습니다.</li>	   
-                    </ul>
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                        </ul>
-                    </div>
-                </div>
+                </div>               
             </div>
         </div>
 

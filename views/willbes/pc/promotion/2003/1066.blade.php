@@ -65,10 +65,10 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" />
             <map name="Map1066_apply" id="Map1066_apply">
-                <area shape="rect" coords="80,652,260,711" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blnak" />
-                <area shape="rect" coords="340,653,521,710" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177213" target="_blnak" />
-                <area shape="rect" coords="602,652,783,711" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177216" target="_blnak" />
-                <area shape="rect" coords="862,654,1042,710" href="https://pass.willbes.net/pass/offLecture/show/cate/3046/prod-code/175732" target="_blnak" />
+                <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blnak" />
+                <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177216" target="_blnak" />
+                <area shape="rect" coords="600,655,781,714" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177213" target="_blnak" />
+                <area shape="rect" coords="861,657,1041,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3046/prod-code/175732" target="_blnak" />
             </map>
         </div>
 

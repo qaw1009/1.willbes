@@ -212,7 +212,7 @@ class Event extends \app\controllers\FrontController
         $comment_create_type = '1';
         if ($onoff_type == 'ongoing') {
             if (element('take_type', $arr_input) == 1) {
-                if ($this->session->userdata('is_login') === false) {
+                if ($this->session->userdata('is_login') !== true) {
                     $comment_create_type = '2';
                 }
             } else {
@@ -468,7 +468,7 @@ class Event extends \app\controllers\FrontController
         $arr_base['register_create_type'] = $register_create_type;
 
         $comment_create_type = '1';
-        if ($this->session->userdata('is_login') === false) {
+        if ($this->session->userdata('is_login') !== true) {
             $comment_create_type = '2';
         }
         $arr_base['comment_create_type'] = $comment_create_type;

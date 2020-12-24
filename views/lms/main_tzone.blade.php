@@ -9,8 +9,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @if(false)
-                    {{-- @if($isSsam == 'Y') --}}
+                    @if($isSsam == 'Y')
                     <div class="well" style="text-align: center">
                         <button type="button" class="btn btn-primary btn-search" onclick="window.open('/home/gotoSsam');"><i class="fa fa-spin fa-refresh"></i> 임용고시 이전사이트 매출현황보기 </button>
                     </div>

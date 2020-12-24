@@ -55,6 +55,32 @@
             from{margin-left:300px; opacity: 0;}
             to{margin-left:10px; opacity: 1;}
         }
+        .evt_top div {height:100%; position:absolute; width:100%}
+        .evt_top div.star01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_star01.png) no-repeat center top;
+            animation:starA 3s ease-in infinite;-webkit-animation:starA 3s ease-in infinite}
+        @@keyframes starA{
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        @@-webkit-keyframes starA{
+            0% {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        } 
+        
+        .evt_top div.star02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_star02.png) no-repeat center top;
+            animation:starB 3s ease-in infinite;-webkit-animation:starB 3s ease-in infinite}
+        @@keyframes starB{
+            0% {opacity: 1;}
+            50% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        @@-webkit-keyframes starB{
+            0% {opacity: 1;}
+            50% {opacity: 0;}
+            100% {opacity: 1;}
+        } 
 
         .evt_01 {background:#e7d900}	
         
@@ -79,6 +105,8 @@
             <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img03.png" alt="2020" /></span>
             <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img02.png" alt="20" /></span>            
             <span class="img04"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img04.png" alt="21" /></span>
+            <div class="star01"></div>
+            <div class="star02"></div>
 		</div>
 
         <div class="evtCtnsBox evt_01">

@@ -66,8 +66,11 @@ class Home extends \app\controllers\BaseController
             $data = $this->adminModel->listAdminSiteCampus($this->session->userdata('admin_idx'));
             foreach ($data as $row) {
                 if ($row['SiteCode'] == '2017' || $row['SiteCode'] == '2018') {
-                    $isSsam = 'Y';
-                    break;
+                    if($row['IsPermSite'] == 'Y') {
+                        $isSsam = 'Y';
+                        break;
+                    }
+
                 }
             }
         }

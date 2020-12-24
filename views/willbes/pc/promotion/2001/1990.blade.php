@@ -54,7 +54,10 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_top.jpg"  alt="김원욱 경찰헌법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_top.jpg"  alt="김원욱 경찰헌법" usemap="#Map1990B" border="0"/>
+            <map name="Map1990B" id="Map1990B">
+                <area shape="rect" coords="793,529,1001,571" href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank" alt="교수홈 바로가기" />
+            </map>
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/B_SpAwQNwio?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	

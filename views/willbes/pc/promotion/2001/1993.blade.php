@@ -21,7 +21,8 @@
  
         .wb_top {position:relative; overflow:hidden}
         .rulletBox {position:absolute; top:2015px; width:786px; left:50%; margin-left:-393px; z-index:5}
-        .rulletBox .tutCanvas {position:absolute; top:0; left:0; border:5px solid #000; width:786px; border-radius:393px; box-shadow:inset 0 0 20px rgba(0,0,0,0.5);}
+        .rulletBox .circle {position:absolute; top:0; left:0; border:5px solid #000; width:786px; border-radius:393px; font-size:0; text-identie
+            box-shadow:inset 0 0 20px rgba(0,0,0,0.5); z-index:4; text-indent:-9999px}
         .rulletBox .btn-roulette {position:absolute; top:302px; width:182px; 
             height:182px; left:50%; padding:0; margin:0; margin-left:-91px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:600px; left:650px; width:80px; height:80px; line-height:60px; color:#fff; background:#ff6600; font-size:15px;
@@ -80,6 +81,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_top_01.gif" alt="룰렛 이벤트"/><br>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_top_02.jpg" alt="룰렛 이벤트"/>
             <div class="rulletBox">
+                <div class="circle">rullet</div>
                 <canvas id="box_roulette" class="tutCanvas" width="786" height="786">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1951_rull_gift0','png'); this.disabled=true;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_rull_start.png" alt="start" />

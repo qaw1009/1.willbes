@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board');
+    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board', '_lms/sys/admin');
     protected $helpers = array();
 
     public function __construct()
@@ -60,11 +60,40 @@ class Home extends \app\controllers\BaseController
             $set_unAnswered[$row['SiteGroupCode']]['info'][$row['SiteOnOffName']] = $row['CounselCnt'];
         }
 
+        $isSsam = 'N';
+        if (SUB_DOMAIN == 'tzone') {
+            // Tzone 페이지 사이트 권한에 임용온라인/임용학원 이있는지 체크
+            $data = $this->adminModel->listAdminSiteCampus($this->session->userdata('admin_idx'));
+            foreach ($data as $row) {
+                if ($row['SiteCode'] == '2017' || $row['SiteCode'] == '2018') {
+                    $isSsam = 'Y';
+                    break;
+                }
+            }
+        }
+
         $this->load->view('main_' . SUB_DOMAIN, [
             'last_login_ip' => $this->input->ip_address(),
             'data' => $list,
             'refund_data' => $refund_data,
-            'unAnswered_data' => $set_unAnswered
+            'unAnswered_data' => $set_unAnswered,
+            'isSsam' => $isSsam
+        ]);
+    }
+
+    /**
+     * tzone 임용 강사 이전페이지 가기
+     * @return object|string
+     */
+    public function gotoSsam()
+    {
+        $this->load->library('Crypto', ['license' => 'willbes^ssam^20201201']);
+        $plaintext = '^'.$this->session->userdata('admin_id').'^'.date('Y-m-d H:i:s').'^';
+        $enc_data = $this->crypto->encrypt($plaintext);
+
+        return $this->load->view('gotoSsam', [
+            'enc_data' => $enc_data,
+            'param' => '201223'
         ]);
     }
 }

@@ -237,12 +237,16 @@ class BasePromotion extends \app\controllers\FrontController
 
         $comment_create_type = '1';
         if ($onoff_type == 'ongoing') {
-            if ($this->session->userdata('is_login') === false) {
+            if ($this->session->userdata('is_login') !== true) {
                 $comment_create_type = '2';
-                $arr_base['login_url'] = element('login_url', $arr_input);
             }
         } else {
             $comment_create_type = '3';
+        }
+
+        if ($this->session->userdata('is_login') !== true) {
+            $comment_create_type = '2';
+            $arr_base['login_url'] = element('login_url', $arr_input);
         }
 
         $arr_base['max_byte'] = element('max_byte', $arr_input);

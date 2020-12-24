@@ -22,9 +22,11 @@
         .wb_cts02s {background:#f4996d;}
         .wb_cts02s .tImg img {margin:0 5px 10px;width:302px;height:166px;border:2px solid #28364a;}
 
-        .wb_cts03 {background:#DBC8B7;}
+        .wb_cts03 {padding-bottom:150px}
 
-        .wb_cts04 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
+        .wb_cts04 {background:#DBC8B7;}
+
+        .wb_cts05 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
 
         .skybanner {position:fixed;top:250px;right:10px;width:259px; text-align:center; z-index:11;}      
     </style>
@@ -41,7 +43,7 @@
         </div>
       
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_top.jpg" title="" />       
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_top.jpg" title="제니스 영어 한덕현" />       
         </div>    
 
         <div class="evtCtnsBox wb_cts02">
@@ -69,18 +71,20 @@
             </map>
         </div>
 
-        {{-- 이모티콘 댓글 --}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
-        @endif
-
         <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_02.jpg" title="" />    
-         
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_03.jpg" alt="실시간 소통 댓글" /> 
+            {{-- 이모티콘 댓글 --}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
+            @endif  
         </div>
 
-        <div class="evtCtnsBox wb_cts04" id="cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1066_04.gif" usemap="#Map1066b" border="0" />
+        <div class="evtCtnsBox wb_cts04" >
+            <img src="https://static.willbes.net/public/images/promotion/2019/11/1066_02.jpg" alt="영어는 어려운 과목이 아닙니다." />   
+        </div>
+
+        <div class="evtCtnsBox wb_cts05" id="cts05">
+            <img src="https://static.willbes.net/public/images/promotion/2020/10/1066_04.gif" usemap="#Map1066b" border="0" alt="커리큘럼"/>
             <map name="Map1066b" id="Map1066b">
                 <area shape="rect" coords="230,694,277,711" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="230,752,278,769" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173562" target="_blank" onfocus='this.blur()' />

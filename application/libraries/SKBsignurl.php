@@ -90,9 +90,9 @@ tceO+by8Z2AKAWpx+9OzuSsxSyDRhd6FLxKn+rOAjNzb
         $separator = strpos($stream, '?') == FALSE ? '?' : '&';
 
         if($expires) {
-            $result .= $path . $separator . "Expires=" . $expires . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id;
+            $result .= $path . $separator . "Expires=" . $expires . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id . "&playlist.m3u8";
         } else {
-            $result .= $path . $separator . "Policy=" . $policy . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id;
+            $result .= $path . $separator . "Policy=" . $policy . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id . "&playlist.m3u8";
         }
 
         return str_replace('\n', '', $result);

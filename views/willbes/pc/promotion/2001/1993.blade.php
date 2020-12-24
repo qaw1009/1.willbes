@@ -20,7 +20,7 @@
         .skybanner a {display:block; margin-bottom:5px}        
  
         .wb_top {position:relative; overflow:hidden}
-        .rulletBox {position:absolute; top:2000px; width:786px; left:50%; margin-left:-393px; z-index:5}
+        .rulletBox {position:absolute; top:2015px; width:786px; left:50%; margin-left:-393px; z-index:5}
         .rulletBox canvas {width:786px; height:786px}
         .rulletBox .btn-roulette {position:absolute; top:280px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}

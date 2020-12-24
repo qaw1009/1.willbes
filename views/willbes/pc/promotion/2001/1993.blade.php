@@ -21,8 +21,8 @@
  
         .wb_top {position:relative; overflow:hidden}
         .rulletBox {position:absolute; top:2015px; width:786px; left:50%; margin-left:-393px; z-index:5}
-        .rulletBox .btn-roulette {position:absolute; top:280px; width:255px; 
-            height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
+        .rulletBox .btn-roulette {position:absolute; top:286px; width:182px; 
+            height:182px; left:50%; padding:0; margin:0; margin-left:-81px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:600px; left:650px; width:80px; height:80px; line-height:60px; color:#fff; background:#ff6600; font-size:15px;
             border-radius:40px; border:10px solid #000; z-index:20}
         .rulletBox a:hover {background:#a16136; color:#fff}

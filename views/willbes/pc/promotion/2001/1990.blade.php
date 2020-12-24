@@ -54,18 +54,18 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_top.jpg"  alt="장정훈 경찰학개론 베테랑"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_top.jpg"  alt="김원욱 경찰헌법"/>
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/B_SpAwQNwio?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	
 		</div>
 
         <div class="evtCtnsBox wb_01" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_01.jpg"  alt="장정훈"/>            	
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_01.jpg"  alt="딱맞는 플랜"/>            	
 		</div>
 
         <div class="evtCtnsBox wb_02" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_02.jpg"  alt="베테랑은 다른다"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_02.jpg"  alt="경찰헌법 커리큘럼"/>
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/xCaNQU2R_h8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	
@@ -75,7 +75,7 @@
 		</div>        
 
         <div class="evtCtnsBox wb_03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_03.jpg"  alt="왜? 2020 장정훈?"/>	
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_03.jpg"  alt="체계적인 합습 컨텐츠"/>	
             <div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1990_03_01.jpg" alt="" /></li>
@@ -87,14 +87,14 @@
 		</div>        
 
         <div class="evtCtnsBox wb_04" id="evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_04.jpg"  alt="경찰학개론 1위 장정훈"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_04.jpg"  alt="김원욱 헌법"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif  			
 		</div>        
 
         <div class="evtCtnsBox wb_05" id="evt05">
-			<img src="https://static.willbes.net/public/images/promotion/2020/12/1990_05.jpg"  alt="부동의 1위" usemap="#Map1990A" border="0"/>
+			<img src="https://static.willbes.net/public/images/promotion/2020/12/1990_05.jpg"  alt="헌법 런칭 소문내기" usemap="#Map1990A" border="0"/>
             <map name="Map1990A" id="Map1990A">
                 <area shape="rect" coords="313,633,647,691" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운" />
                 <area shape="rect" coords="164,899,303,966" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모" />

@@ -28,7 +28,8 @@
 
         .wb_cts05 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
 
-        .skybanner {position:fixed;top:250px;right:10px;width:259px; text-align:center; z-index:11;}      
+        .skybanner {position:fixed;top:250px;right:10px;width:259px; text-align:center; z-index:11;}   
+        .skybanner a {display:block; margin-bottom:10px}   
     </style>
 
 

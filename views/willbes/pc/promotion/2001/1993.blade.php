@@ -84,7 +84,7 @@
             <div class="rulletBox">
                 <div class="circle">rullet</div>
                 <canvas id="box_roulette" class="tutCanvas" width="786" height="786">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1951_rull_gift0','png'); this.disabled=true;">
+                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1993_rull_gift0','png'); this.disabled=true;">
                     <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_rull_start.png" alt="start" />
                 </button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" class="NSK-Black">RESET</a>

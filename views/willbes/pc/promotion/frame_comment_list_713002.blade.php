@@ -173,7 +173,10 @@
             @if($arr_base['comment_create_type'] == '1')
             comment_submit();
             @elseif($arr_base['comment_create_type'] == '2')
-            alert('회원만 댓글을 등록할 수 있습니다.');
+                alert('회원만 댓글을 등록할 수 있습니다.');
+                @if(empty($arr_base['login_url']) === false)
+                    window.open('{{$arr_base['login_url']}}', 'login', 'width='+ document.body.clientWidth +', height=1000, left=0, top=0' );
+                @endif
             @elseif($arr_base['comment_create_type'] == '3')
             alert('만료된 이벤트 입니다.');
             @endif

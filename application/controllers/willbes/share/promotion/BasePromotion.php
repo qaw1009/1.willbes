@@ -239,6 +239,7 @@ class BasePromotion extends \app\controllers\FrontController
         if ($onoff_type == 'ongoing') {
             if ($this->session->userdata('is_login') === false) {
                 $comment_create_type = '2';
+                $arr_base['login_url'] = element('login_url', $arr_input);
             }
         } else {
             $comment_create_type = '3';

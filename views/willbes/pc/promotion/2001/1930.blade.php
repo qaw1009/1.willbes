@@ -87,7 +87,7 @@
         <div class="sky">
             <a href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="먼슬리 플래너 다운받기" ><img src="https://static.willbes.net/public/images/promotion/2020/11/1930_sky.png" alt="" ></a>
         </div>        
-
+        {{--
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
             <div>
@@ -112,7 +112,7 @@
                 </ul>
             </div>
         </div>  
-        
+        --}}        
         <div class="evtCtnsBox wb_police" >
 			<img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="" />
 		</div>     
@@ -162,7 +162,7 @@
                 <area shape="rect" coords="721,595,959,668" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/176324" target="_blank" />
             </map>            
 		</div>           
-
+        {{--
         <div class="evtCtnsBox wb_06" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1930_06.jpg"  alt="" usemap="#Map1930d" border="0" />
             <map name="Map1930d" id="Map1930d">
@@ -173,7 +173,7 @@
                 <area shape="rect" coords="661,1502,836,1599" href="https://cafe.naver.com/kts9719" target="_blank" />
             </map>         
 		</div>     
-
+        --}}
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))

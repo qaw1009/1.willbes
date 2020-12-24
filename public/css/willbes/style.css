@@ -9759,8 +9759,9 @@ table.testTable tr td.w-date {
     height: 28px;
     line-height: 26px;
 }
-.ExamBox .answerTb tr th:nth-child(6) {background-color:#e8c2c2;}
-.ExamBox .answerTb tr td:nth-child(6) {background-color:#fee5e5;}
+.ExamBox .answerTb th.worry {border-top:1px solid red; background-color:#ffe4e4;}
+.ExamBox .answerTb .worry {border-right:1px solid red; border-left:1px solid red}
+.ExamBox .answerTb tr:last-child td.worry {border-bottom:1px solid red}
 .ExamBox .answerTb tr.nth {
     background: #f4f4f4;
 }

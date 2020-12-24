@@ -59,7 +59,7 @@
         .evt_01 {background:#e7d900}	
         
         .evt_02 {background:#fff; padding:100px 0; width:1120px; margin:0 auto}
-        .evt_02 .title {font-size:25px; text-align:left; color:#0342AB; margin-bottom:20px}
+        .evt_02 .title {font-size:30px; color:#19184f; margin-bottom:30px}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -149,7 +149,7 @@
                 <div class="infoTit NSK-Black"><strong>이용안내</strong></div>
                 <ul>
                     <li>본 상품은 2021년 1월 3일 (일)까지 진행되는 이벤트 상품입니다.</li>
-                    <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-blue">2021년 새해맞이 이벤트!</span>에서 신청시 적용)</li>
+                    <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-light-blue">2021년 새해맞이 이벤트!</span>에서 신청시 적용)</li>
                     <li><span class="tx16">[5급행정, 국립외교원, PSAT, 5급헌법용]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">10%할인</span><br>
                         2강좌 동시 결제 :  약 <span class="tx-red">15%할인</span><br>

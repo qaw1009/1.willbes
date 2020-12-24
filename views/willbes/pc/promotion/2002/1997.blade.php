@@ -27,8 +27,8 @@
         .evt04 {background:#fff; padding-bottom:150px}
         .evt04 .youtube {position:absolute; top:1293px; left:50%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
         .evt04 .youtube iframe {width:455px; height:298px} 
-        .evt04 .youtube:nth-child(2) {top:1503px; margin-left:31px;}
-        .evt04 .youtube:nth-child(3) {top:1713px;}
+        .evt04 .youtube.yu02 {top:1503px; margin-left:31px;}
+        .evt04 .youtube.yu03 {top:1713px;}
         .evt04 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt04 .request h3 {font-size:17px;}
         .evt04 .request td {padding:10px}
@@ -66,7 +66,7 @@
             <input type="hidden" name="register_chk_val[]" value=""/>-->
             
             <div class="skyBanner">               
-                <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
+                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
             </div>
 
             <div class="evtCtnsBox evt00">
@@ -93,10 +93,10 @@
                 <div class="youtube">
                     <iframe src="https://www.youtube.com/embed/qMNyjRyfqSM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="youtube">
+                <div class="youtube yu02">
                     <iframe src="https://www.youtube.com/embed/5yINoHYm66g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="youtube">
+                <div class="youtube yu03">
                     <iframe src="https://www.youtube.com/embed/hdP0CyIsmSI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="request" id="request">

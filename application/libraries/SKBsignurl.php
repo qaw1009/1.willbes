@@ -92,7 +92,7 @@ tceO+by8Z2AKAWpx+9OzuSsxSyDRhd6FLxKn+rOAjNzb
         if($expires) {
             $result .= $path . $separator . "Expires=" . $expires . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id . "&.m3u8";
         } else {
-            $result .= $path . $separator . "Policy=" . $policy . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id . "&.sm3u8";
+            $result .= $path . $separator . "Policy=" . $policy . "&Signature=" . $signature . "&Key-Pair-Id=" . $key_pair_id . "&.m3u8";
         }
 
         return str_replace('\n', '', $result);

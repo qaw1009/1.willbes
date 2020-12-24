@@ -43,6 +43,8 @@
         .evt04 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt04 .btn a:hover {background:#ffe342; color:#000; box-shadow:0 10px 10px rgba(0,0,0,.2);}  
 
+        .evt05 {background:#343434}
+
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
 
@@ -187,6 +189,10 @@
                 <div class="btn NGEB">
                     <a href="#none" onclick="javascript:fn_submit();">외사경채 상담 신청하기 ></a>
                 </div>
+            </div>
+
+            <div class="evtCtnsBox evt05">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1997_05.jpg" alt="준비중">                
             </div>
         </form>
 	</div>

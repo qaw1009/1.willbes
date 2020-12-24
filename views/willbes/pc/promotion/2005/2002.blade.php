@@ -87,7 +87,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2002_01_01.jpg" alt="5급행정, 국립외교원, PSAT, 5급헌법용" />
         @endif
         @if($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099')
-        {{--변호사, 법원행시--}}
+        {{--법원행시, 변호사--}}
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2002_01_02.jpg" alt="5급행정, 변호사, 법원행시용" />
         @endif
 		</div>
@@ -126,7 +126,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3098')
-            <div class="title NSK-Black">[변호사] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[법원행시] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
@@ -134,7 +134,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3099')
-            <div class="title NSK-Black">[법원행시] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[변호사] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
@@ -150,11 +150,11 @@
                 <ul>
                     <li>본 상품은 2021년 1월 3일 (일)까지 진행되는 이벤트 상품입니다.</li>
                     <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-light-blue">2021년 새해맞이 이벤트!</span>에서 신청시 적용)</li>
-                    <li><span class="tx16">[5급행정, 국립외교원, PSAT, 5급헌법용]</span> <br>
+                    <li><span class="tx16">[5급행정, 국립외교원, PSAT, 5급헌법]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">10%할인</span><br>
                         2강좌 동시 결제 :  약 <span class="tx-red">15%할인</span><br>
                         3강좌 동시 결제 :  약 <span class="tx-red">20%할인</span></li>
-                    <li><span class="tx16">[변호사, 법원행시용]</span> <br>
+                    <li><span class="tx16">[법원행시, 변호사]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">15%할인</span><br>
                         2강좌 동시 결제 :  약 <span class="tx-red">20%할인</span><br>
                         3강좌 동시 결제 :  약 <span class="tx-red">30%할인</span></li>

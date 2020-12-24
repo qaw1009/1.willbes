@@ -146,7 +146,7 @@
                             <th>2번</th>
                             <th>3번</th>
                             <th>4번</th>
-                            <th class="ath6">고민중</th>
+                            <th class="ath6 worry">고민중</th>
                             <th class="ath7">문제보기</th>
                         </tr>
                     </thead>
@@ -157,7 +157,7 @@
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER1" name="ANSWERNUMBER1" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que1" class="qv btnlineGray">문제보기 ></a></td>  
                         </tr>
                         <tr>
@@ -166,7 +166,7 @@
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER2" name="ANSWERNUMBER2" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que2" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -175,7 +175,7 @@
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER3" name="ANSWERNUMBER3" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que3" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -184,7 +184,7 @@
                             <td><input type="radio" id="ANSWERNUMBER4" name="ANSWERNUMBER4" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER4" name="ANSWERNUMBER4" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER4" name="ANSWERNUMBER4" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER4" name="ANSWERNUMBER4" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER4" name="ANSWERNUMBER4" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que4" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -193,7 +193,7 @@
                             <td><input type="radio" id="ANSWERNUMBER5" name="ANSWERNUMBER5" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER5" name="ANSWERNUMBER5" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER5" name="ANSWERNUMBER5" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER5" name="ANSWERNUMBER5" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER5" name="ANSWERNUMBER5" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que5" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -202,7 +202,7 @@
                             <td><input type="radio" id="ANSWERNUMBER6" name="ANSWERNUMBER6" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER6" name="ANSWERNUMBER6" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER6" name="ANSWERNUMBER6" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER6" name="ANSWERNUMBER6" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER6" name="ANSWERNUMBER6" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que6" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -211,7 +211,7 @@
                             <td><input type="radio" id="ANSWERNUMBER7" name="ANSWERNUMBER7" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER7" name="ANSWERNUMBER7" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER7" name="ANSWERNUMBER7" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER7" name="ANSWERNUMBER7" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER7" name="ANSWERNUMBER7" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que7" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -220,7 +220,7 @@
                             <td><input type="radio" id="ANSWERNUMBER8" name="ANSWERNUMBER8" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER8" name="ANSWERNUMBER8" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER8" name="ANSWERNUMBER8" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER8" name="ANSWERNUMBER8" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER8" name="ANSWERNUMBER8" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que8" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -229,7 +229,7 @@
                             <td><input type="radio" id="ANSWERNUMBER9" name="ANSWERNUMBER9" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER9" name="ANSWERNUMBER9" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER9" name="ANSWERNUMBER9" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER9" name="ANSWERNUMBER9" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER9" name="ANSWERNUMBER9" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que9" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -238,7 +238,7 @@
                             <td><input type="radio" id="ANSWERNUMBER10" name="ANSWERNUMBER10" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER10" name="ANSWERNUMBER10" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER10" name="ANSWERNUMBER10" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER10" name="ANSWERNUMBER10" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER10" name="ANSWERNUMBER10" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que10" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -247,7 +247,7 @@
                             <td><input type="radio" id="ANSWERNUMBER11" name="ANSWERNUMBER11" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER11" name="ANSWERNUMBER11" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER11" name="ANSWERNUMBER11" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER11" name="ANSWERNUMBER11" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER11" name="ANSWERNUMBER11" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que11" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>                  
                         <tr>
@@ -256,7 +256,7 @@
                             <td><input type="radio" id="ANSWERNUMBER12" name="ANSWERNUMBER12" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER12" name="ANSWERNUMBER12" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER12" name="ANSWERNUMBER12" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER12" name="ANSWERNUMBER12" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER12" name="ANSWERNUMBER12" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que12" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -265,7 +265,7 @@
                             <td><input type="radio" id="ANSWERNUMBER13" name="ANSWERNUMBER13" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER13" name="ANSWERNUMBER13" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER13" name="ANSWERNUMBER13" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER13" name="ANSWERNUMBER13" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER13" name="ANSWERNUMBER13" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que13" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -274,7 +274,7 @@
                             <td><input type="radio" id="ANSWERNUMBER14" name="ANSWERNUMBER14" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER14" name="ANSWERNUMBER14" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER14" name="ANSWERNUMBER14" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER14" name="ANSWERNUMBER14" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER14" name="ANSWERNUMBER14" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que14" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -283,7 +283,7 @@
                             <td><input type="radio" id="ANSWERNUMBER15" name="ANSWERNUMBER15" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER15" name="ANSWERNUMBER15" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER15" name="ANSWERNUMBER15" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER15" name="ANSWERNUMBER15" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER15" name="ANSWERNUMBER15" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que15" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>  
                         <tr>
@@ -292,7 +292,7 @@
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que16" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -301,7 +301,7 @@
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que17" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -310,7 +310,7 @@
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que18" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -319,7 +319,7 @@
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que19" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -328,7 +328,7 @@
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que20" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -337,7 +337,7 @@
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER16" name="ANSWERNUMBER16" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que16" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -346,7 +346,7 @@
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER17" name="ANSWERNUMBER17" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que17" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -355,7 +355,7 @@
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER18" name="ANSWERNUMBER18" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que18" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -364,7 +364,7 @@
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER19" name="ANSWERNUMBER19" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que19" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                         <tr>
@@ -373,7 +373,7 @@
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="2"></td>
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="3"></td>
                             <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="4"></td>
-                            <td><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="0"></td>
+                            <td class="worry"><input type="radio" id="ANSWERNUMBER20" name="ANSWERNUMBER20" value="0"></td>
                             <td class="btnAgR btnc"><a href="#que20" class="qv btnlineGray">문제보기 ></a></td>
                         </tr>
                     </tbody>

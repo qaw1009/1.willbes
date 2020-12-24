@@ -19,7 +19,7 @@
 
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:#27c9d7;}
+        .evt01 {background:#002643;}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1972_02_bg.jpg) no-repeat center top;}
 
         .evt03 {width:1120px; margin:0 auto; padding:100px 0}
@@ -96,7 +96,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1972_01.jpg" alt="열공지원금 팡팡"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1972_01_v2.jpg" alt="열공지원금 팡팡"/>
         </div>
 
         <div class="evtCtnsBox evt02">

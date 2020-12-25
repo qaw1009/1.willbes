@@ -279,7 +279,7 @@
     /*디데이카운트다운*/
     $(document).ready(function() {
         @if(empty($arr_promotion_params['edate']) === false)
-            dDayCountDownText('{{$arr_promotion_params['edate']}}');
+            //dDayCountDownText('{{$arr_promotion_params['edate']}}');
         @endif
     });
 

@@ -13,7 +13,6 @@
 <script src="/public/vendor/base64/webtoolkit.base64.js"></script>
 <!-- validator -->
 <script src="/public/vendor/validator/validator.js"></script>
-<script src="/public/js/willbes/ios-orientationchange-fix.js"></script>
 <script src="/public/js/willbes/jquery.rwdImageMaps.js?ver={{time()}}"></script><!--반응형 이미지맵-->
 <!-- Custom Script -->
 <script src="/public/js/util.js?ver={{time()}}"></script>

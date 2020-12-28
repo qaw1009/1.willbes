@@ -83,13 +83,9 @@
 
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
+        <a href="https://njob.willbes.net/m/userPackage/show/cate/3114/prod-code/177081" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
         [온라인강의] 신청하기 >
         </a>
-    </div>
-    <div id="pass" class="infoCheck">
-        <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
-        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
     </div>
 </div>
 
@@ -101,32 +97,7 @@
             dDayCountDownText('{{$arr_promotion_params['edate']}}');
         });
 
-        /*스크롤고정*/
-        $(function() {
-            var nav = $('.evtMenu');
-            var navTop = nav.offset().top+100;
-            var navHeight = nav.height()+10;
-            var showFlag = false;
-            nav.css('top', -navHeight+'px');
-            $(window).scroll(function () {
-                var winTop = $(this).scrollTop();
-                if (winTop >= navTop) {
-                    if (showFlag == false) {
-                        showFlag = true;
-                        nav
-                            .addClass('fixed')
-                            .stop().animate({'top' : '0px'}, 100);
-                    }
-                } else if (winTop <= navTop) {
-                    if (showFlag) {
-                        showFlag = false;
-                        nav.stop().animate({'top' : -navHeight+'px'}, 100, function(){
-                            nav.removeClass('fixed');
-                        });
-                    }
-                }
-            });
-        });
+   
 
         $(window).on('scroll', function() {
             $('.top-tab').each(function() {

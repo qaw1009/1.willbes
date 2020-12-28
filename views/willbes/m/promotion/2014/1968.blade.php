@@ -52,20 +52,6 @@
     .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px}
 
 
-   /* 폰 가로, 태블릿 세로*/
-   @@media only screen and (max-width: 374px) {
-      
-    }
-
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        
-    }
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 690px) {
-        .evt05 h5 br {display:none}
-        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}              
-    }
-
 </style>
 
 <div id="Container" class="Container NSK c_both">            

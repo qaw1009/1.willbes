@@ -576,6 +576,7 @@ class RegGoodsModel extends WB_Model
                 'TakeEndDatm' => element('TakeEndDatm_d', $form_data) .' '. element('TakeEndDatm_h', $form_data) .':'. element('TakeEndDatm_m', $form_data) .':59',
                 'TakeTime' => element('TakeTime', $form_data), // 분
                 'PaperType' => element('PaperType', $form_data),
+                'IsPaperDownload' => element('is_paper_download', $form_data),
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
                 'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),
@@ -675,6 +676,7 @@ class RegGoodsModel extends WB_Model
                 'TakeEndDatm' => element('TakeEndDatm_d', $form_data) .' '. element('TakeEndDatm_h', $form_data) .':'. element('TakeEndDatm_m', $form_data) .':59',
                 'TakeTime' => element('TakeTime', $form_data), // 분
                 'PaperType' => element('PaperType', $form_data),
+                'IsPaperDownload' => element('is_paper_download', $form_data),
                 'GradeOpenIsUse' => element('grade_open_is_use', $form_data),
                 'GradeOpenDatm' => (empty(element('GradeOpenDatm_d', $form_data)) === false) ? element('GradeOpenDatm_d', $form_data) .' '. element('GradeOpenDatm_h', $form_data) .':'. element('GradeOpenDatm_m', $form_data) .':00' : null,
                 'SubjectSViewCount' => element('subject_s_view_count', $form_data, '2'),

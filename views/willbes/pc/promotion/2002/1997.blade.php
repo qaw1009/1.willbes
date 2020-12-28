@@ -52,18 +52,10 @@
         <form name="regi_form_register" id="regi_form_register">
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
-            <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}"/>
-{{--            <input type="hidden" name="register_chk[]"  id ="register_chk" value="{{ (empty($arr_base['register_list']) === false) ? $arr_base['register_list'][0]['ErIdx'] : '' }}"/>--}}
-            {{--@foreach($arr_base['register_list'] as $key => $val)
-                <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
-            @endforeach--}}
-{{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
-{{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
             <input type="hidden" name="register_type" value="promotion"/>
-            <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
-            <input type="hidden" name="register_chk_val[]" value=""/>-->
+            <input type="hidden" name="file_chk" value="N"/>
+            <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}" />
             
             <div class="skyBanner">               
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
@@ -108,7 +100,7 @@
                             <tr>
                                 <th>* 이름</th>
                                 <td scope="col">
-                                    <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" alt="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+                                    <input type="text" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" alt="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
                                 </td>
                             </tr>
                             <tr>
@@ -199,8 +191,16 @@
     <!-- End Container -->
 
     <script>
+        var $regi_form_register = $('#regi_form_register');
+
         function fn_submit() {
-            var $regi_form_register = $('#regi_form_register');
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+            @if(empty($register_count) === false)
+            alert('등록된 신청자 정보가 있습니다.');
+            return;
+            @endif
+
             var _url = '{!! front_url('/event/registerStore') !!}';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
@@ -217,24 +217,20 @@
                 $("#register_tel").focus();
                 return;
             }
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
-                alert('참여일을 선택하셔야 합니다.');
-                return;
-            }
             if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
                 alert('직렬을 선택하셔야 합니다.');
                 return;
             }
 
-            if (!confirm('저장하시겠습니까?')) { return true; }
+            if (!confirm('신청하시겠습니까?')) { return true; }
 
-            //전부 disabled 처리
-            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', true);
-
-            //체크 disable 해제
-            $regi_form_register.find('input[name="register_chk[]"]:checked').each(function(i){
-                $(this).attr('disabled', false);
-            });
+            // //전부 disabled 처리
+            // $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', true);
+            //
+            // //체크 disable 해제
+            // $regi_form_register.find('input[name="register_chk[]"]:checked').each(function(i){
+            //     $(this).attr('disabled', false);
+            // });
 
             ajaxSubmit($regi_form_register, _url, function(ret) {
                 if(ret.ret_cd) {
@@ -242,7 +238,7 @@
                     location.reload();
                 }
             }, showValidateError, null, false, 'alert');
-            $regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
+            //$regi_form_register.find('input[name="register_chk[]"]').attr('disabled', false); //disable 해제
         }
     </script>
 @stop 

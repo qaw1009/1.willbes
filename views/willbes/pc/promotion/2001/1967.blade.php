@@ -144,7 +144,7 @@
                     <map name="Map1967a" id="Map1967a">
                         <area shape="rect" coords="891,124,1031,165" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1007" target="_blank" />
                         <area shape="rect" coords="890,304,1029,346" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank" />
-                        <area shape="rect" coords="892,494,1032,536" href="javascript:alert(' 1월중 오픈 예정! ')" />
+                        <area shape="rect" coords="892,494,1032,536" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1009" target="_blnak" />
                     </map>
                 </div>
             </div>     

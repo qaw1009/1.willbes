@@ -137,7 +137,7 @@
                         </table>
 
                         <div class="btnAgR btnl c_both NGEB">
-                            @if($examData['productInfo']['ProdName'] == 'Y')
+                            @if($examData['productInfo']['IsPaperDownload'] == 'Y')
                                 @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
                                     <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
                                         문제 다운로드

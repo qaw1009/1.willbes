@@ -254,10 +254,13 @@ function link_go() {
     }, 200);
 }
 
-
 // 반응형 이미지맵
-$(function(){ 
-    $(document).ready(function(e) { 
-        $('img[usemap]').rwdImageMaps(); 
-    }); 
+$(function(){
+    $(document).ready(function(e) {
+        // IOS에서는 이미지맵을 스크립트로 조절하면 안먹히는 이슈 있음.
+        //if (navigator.userAgent.match(/iPad/i) == null && navigator.userAgent.match(/iPhone|iPod/i) == null) {
+        if (navigator.userAgent.match(/iPad/i) == null) {
+            $('img[usemap]').rwdImageMaps();
+        }
+    });
 });

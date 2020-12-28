@@ -52,20 +52,6 @@
     .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px}
 
 
-   /* 폰 가로, 태블릿 세로*/
-   @@media only screen and (max-width: 374px) {
-      
-    }
-
-    @@media only screen and (min-width: 375px) and (max-width: 640px) {
-        
-    }
-    /* 태블릿 세로 */
-    @@media only screen and (min-width: 690px) {
-        .evt05 h5 br {display:none}
-        .evt05 .curriculum {column-count: 2; column-gap:40px; column-rule:1px solid #e4e4e4}              
-    }
-
 </style>
 
 <div id="Container" class="Container NSK c_both">            
@@ -73,7 +59,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
         <map name="Map1968B">
             <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">
-        </map>       
+        </map>
     </div> 
     
     <div class="evtCtnsBox evt01">
@@ -90,8 +76,8 @@
         <div>
             <img id="lecBuy" src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0">
             <map name="Map1968A">
-                <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약" style="display: block;">
-                <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약" style="display: block;">
+                <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank">
+                <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank">
             </map>
         </div>
     </div> 

@@ -258,8 +258,7 @@ function link_go() {
 $(function(){
     $(document).ready(function(e) {
         // IOS에서는 이미지맵을 스크립트로 조절하면 안먹히는 이슈 있음.
-        //if (!navigator.userAgent.match(/iPad/i) && !navigator.userAgent.match(/iPhone|iPod/i)) {
-        if (!navigator.userAgent.match(/iPad/i)) {
+        if (navigator.userAgent.match(/iPad/i) == null && navigator.userAgent.match(/iPhone|iPod/i) == null) {
             $('img[usemap]').rwdImageMaps();
         }
     });

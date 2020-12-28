@@ -82,11 +82,13 @@
     
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="" >
+        {{--
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
+        --}}
         <div>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
             <map name="Map1968A">

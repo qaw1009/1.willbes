@@ -13,6 +13,7 @@
 <script src="/public/vendor/base64/webtoolkit.base64.js"></script>
 <!-- validator -->
 <script src="/public/vendor/validator/validator.js"></script>
+<script src="/public/js/willbes/jquery.rwdImageMaps.js?ver={{time()}}"></script><!--반응형 이미지맵-->
 <!-- Custom Script -->
 <script src="/public/js/util.js?ver={{time()}}"></script>
 <script src="/public/js/validation_util.js?ver={{time()}}"></script>
@@ -20,7 +21,6 @@
 <script src="/public/js/willbes/sub.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/mobile.js?ver={{time()}}"></script>
 <script src="/public/js/willbes/app.js?ver={{time()}}"></script>
-<script src="/public/js/willbes/jquery.rwdImageMaps.js?ver={{time()}}"></script><!--반응형 이미지맵-->
 <!--// JAVASCRIPT -->
 <!-- Common Site Script -->
 {!! base64_decode($__cfg['CommMobileScript']) !!}

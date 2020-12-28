@@ -70,18 +70,18 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
-        <map name="Map1968B">
-            <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">
-        </map>       
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >--}}
+{{--        <map name="Map1968B">--}}
+{{--            <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">--}}
+{{--        </map>       --}}
     </div> 
     
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_01.jpg" alt="라탄공예">
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_01.jpg" alt="라탄공예">--}}
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="" >
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="" >--}}
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -98,15 +98,15 @@
     
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_03.jpg" alt="" >
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_03.jpg" alt="" >--}}
     </div> 
 
     <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_06.jpg" alt="" >
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_06.jpg" alt="" >--}}
     </div>
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_04.jpg" alt="" >
+{{--        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_04.jpg" alt="" >--}}
     </div>     
 
     <div class="evtCtnsBox evt05">

@@ -86,12 +86,14 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
+        </div>
+        <div>
+            <img id="lecBuy" src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0">
             <map name="Map1968A">
-                <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
-                <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
+                <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약" style="display: block;">
+                <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약" style="display: block;">
             </map>
-        </div>    
+        </div>
     </div> 
     
 
@@ -271,18 +273,11 @@
             <h3 class="NSK-Black">문의안내 : 1544-5006</h3>
         </div>    
     </div> 
-</div>
+</div> 
 <!-- End Container -->
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
-    /*디데이카운트다운*/
-    $(document).ready(function() {
-        @if(empty($arr_promotion_params['edate']) === false)
-            //dDayCountDownText('{{$arr_promotion_params['edate']}}');
-        @endif
-    });
-
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

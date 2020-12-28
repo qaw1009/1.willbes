@@ -88,7 +88,7 @@
             </div>
         </div>
         <div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0">
             <map name="Map1968A">
                 <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
                 <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
@@ -280,7 +280,6 @@
 <script type="text/javascript">
 </script>
 
-{{--
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
 <script language='javascript'>
     var _AceGID=(function(){var Inf=['gtp14.acecounter.com','8080','AH1A44052179653','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
@@ -288,6 +287,5 @@
 </script>
 <noscript><img src='https://gtp14.acecounter.com:8080/?uid=AH1A44052179653&je=n&' border='0' width='0' height='0' alt=''></noscript>
 <!-- AceCounter Log Gathering Script End -->
---}}
 
 @stop

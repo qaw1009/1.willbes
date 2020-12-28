@@ -287,12 +287,20 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">시험지제공형태 <span class="required">*</span>
                     </label>
-                    <div class="col-md-10 form-inline item">
+                    <div class="col-md-4 form-inline item">
                         <select class="form-control" name="PaperType" required="required">
                             <option value="P" @if($method==='POST' || $data['PaperType'] == 'P') selected @endif>통파일(PDF)</option>
                             <option value="I" @if($method==='PUT' && $data['PaperType'] == 'I') selected @endif>문항별이미지</option>
                         </select>
                         <span class="ml-20">• 통파일(PDF) 선택 시 '오답노트'를 제공하지 않음</span>
+                    </div>
+                    <label class="control-label col-md-1-1">시험지 다운로드여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <input type="radio" id="is_paper_download_y" name="is_paper_download" class="flat" value="Y" required="required" title="시험지다운로드여부" @if($method == 'POST' || $data['IsPaperDownload'] == 'Y')checked="checked"@endif/> <label for="is_paper_download_y" class="input-label">사용</label>
+                            <input type="radio" id="is_paper_download_n" name="is_paper_download" class="flat" value="N" @if($data['IsPaperDownload'] == 'N')checked="checked"@endif/> <label for="is_paper_download_n" class="input-label">미사용</label>
+                        </div>
                     </div>
                 </div>
 

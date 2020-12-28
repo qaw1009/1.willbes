@@ -111,7 +111,7 @@
                                 @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
                                     <th>{{ $i }}번</th>
                                 @endfor
-                                <th class="ath6">고민중</th>
+                                <th class="ath6 worry">고민중</th>
                                 @if ($examData['productInfo']['PaperType'] == 'I')
                                     <th class="ath7">문제보기</th>
                                 @endif
@@ -125,7 +125,7 @@
                                     @for($i = 1; $i <= $row['AnswerNum']; $i++)
                                         <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','{{ $i }}', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif disabled="disabled"/></td>
                                     @endfor
-                                        <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
+                                        <td class="worry"><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
                                     @if ($examData['productInfo']['PaperType'] == 'I')
                                         <td class="btnAgR btnc"><a href="#que{{$subject_key.'_'.$key}}" class="qv btnlineGray">문제보기 ></a></td>
                                     @endif
@@ -137,12 +137,14 @@
                         </table>
 
                         <div class="btnAgR btnl c_both NGEB">
-                            @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
-                                <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
-                                    문제 다운로드
-                                </a>
-                            @else
-                                <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
+                            @if($examData['productInfo']['ProdName'] == 'Y')
+                                @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
+                                    <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
+                                        문제 다운로드
+                                    </a>
+                                @else
+                                    <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
+                                @endif
                             @endif
                             <!-- 다음과목 -->
                                 <a href="javascript:void(0);" class="f_right btntxtBlack" id="btn_next_tab">다음과목 > </a>

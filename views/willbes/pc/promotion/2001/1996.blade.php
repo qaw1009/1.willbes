@@ -90,22 +90,20 @@
         </div>
         <!-- 타이머 //--> 
 
-        {{--
         <div class="skyBanner">
-            <a href="https://pf.kakao.com/_ayxgKK" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1996_sky_01.png" alt="신청하기">
+            <a href="#apply">
+                <img src="https://static.willbes.net/public/images/promotion/2020/12/1996_sky.jpg" alt="신청하기">
             </a>
-        </div>
-        --}}        
+        </div>    
 
         <div class="evtCtnsBox wb_top">
             <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/12/1996_top_img01.png" alt="2022 신광은 경찰 패스"/></span>   
             <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/12/1996_top_img02.png" alt="2022 신광은 경찰 패스 교수진"/></span>  
         </div>
 
-        <div class="evtCtnsBox wb_01">
+        <div class="evtCtnsBox wb_01" >
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1996_01.jpg" alt="2022 신광은 경찰 패스 혜택"/>
-            <div class="btnLec NSK-Black"><a href="javascript:go_PassLecture('174333');" >2022 신광은경찰 PASS 신청하기 ></a></div>
+            <div class="btnLec NSK-Black" id="apply"><a href="javascript:go_PassLecture('177223');" >2022 신광은경찰 PASS 신청하기 ></a></div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#careful">이용안내확인하기 ↓</a>               

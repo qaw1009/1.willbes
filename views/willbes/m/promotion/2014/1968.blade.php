@@ -264,10 +264,6 @@
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(e) {
-        $('img[usemap]').rwdImageMaps();
-    });
-
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

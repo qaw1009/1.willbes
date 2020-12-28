@@ -256,8 +256,10 @@ function link_go() {
 
 
 // 반응형 이미지맵
-$(function(){ 
-    $(document).ready(function(e) { 
-        $('img[usemap]').rwdImageMaps(); 
-    }); 
+/*
+$(function(){
+    $(document).ready(function(e) {
+        $('img[usemap]').rwdImageMaps();
+    });
 });
+*/

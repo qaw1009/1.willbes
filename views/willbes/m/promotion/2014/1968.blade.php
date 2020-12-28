@@ -82,13 +82,11 @@
     
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02.jpg" alt="" >
-        {{--
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        --}}
         <div>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
             <map name="Map1968A">
@@ -280,15 +278,9 @@
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">
-    /*디데이카운트다운*/
-    $(document).ready(function() {
-        @if(empty($arr_promotion_params['edate']) === false)
-            //dDayCountDownText('{{$arr_promotion_params['edate']}}');
-        @endif
-    });
-
 </script>
 
+{{--
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
 <script language='javascript'>
     var _AceGID=(function(){var Inf=['gtp14.acecounter.com','8080','AH1A44052179653','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src ="https://"+ Inf[0] +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
@@ -296,5 +288,6 @@
 </script>
 <noscript><img src='https://gtp14.acecounter.com:8080/?uid=AH1A44052179653&je=n&' border='0' width='0' height='0' alt=''></noscript>
 <!-- AceCounter Log Gathering Script End -->
+--}}
 
 @stop

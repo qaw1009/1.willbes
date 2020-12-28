@@ -254,11 +254,12 @@ function link_go() {
     }, 200);
 }
 
-
 // 반응형 이미지맵
-// 해당 코드 때문에 아이패드 크롬, 사파리에서 이미지맵 안되는 이슈 있음. 2020-12-28 최형진
 $(function(){
     $(document).ready(function(e) {
-        $('img[usemap]').rwdImageMaps();
+        // IOS에서는 이미지맵을 스크립트로 조절하면 안먹히는 이슈 있음.
+        if (!navigator.userAgent.match(/iPad/i) && !navigator.userAgent.match(/iPhone|iPod/i)) {
+            $('img[usemap]').rwdImageMaps();
+        }
     });
 });

@@ -2965,6 +2965,8 @@ body.memBody #Footer {
     border:0;
     padding:0;
 } 
+.paymentWrap .method {margin-bottom: 10px;}
+.paymentWrap .method:after {content:''; display:block; clear:both}
 .paymentWrap .method li {
     display: inline; float: left; width: 33.33333%;
 }
@@ -2978,9 +2980,11 @@ body.memBody #Footer {
     padding:15px 0;
     margin-right:10px;
 }
-.paymentWrap .method li:last-child a, .paymentWrap .method li:last-child label {
+.paymentWrap .method li:last-child a, 
+.paymentWrap .method li:last-child label {
     margin:0;
 }
+
 .paymentCts .policyInfo {
     line-height: 1.5;
     font-size:14px;

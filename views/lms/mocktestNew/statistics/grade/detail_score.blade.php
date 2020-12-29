@@ -151,10 +151,11 @@
                     var base_core = {{ (empty($base_statistisc['BaseScoring'][$subject_key]) === true ? '2.5' : $base_statistisc['BaseScoring'][$subject_key]) }};
                     console.log(base_core);
                     var increment = '5';
-                    if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 10) {
+                    if ({{(empty($data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']) === true ? '0' : $data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt'])}} <= 10) {
                         increment = 1;
                     }
-                    if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} > 10 && {{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 20) {
+                    if ({{(empty($data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']) === true ? '0' : $data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt'])}} > 10
+                        && {{(empty($data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']) === true ? '0' : $data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt'])}} <= 20) {
                         increment = 2;
                     }
 

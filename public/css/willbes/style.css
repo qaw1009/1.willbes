@@ -3874,7 +3874,7 @@ table.classTable {
     letter-spacing: 0;
 }
 table.classTable tr td {
-    height: 100px;
+    /*height: 100px;*/
     line-height: 16px !important;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -6133,6 +6133,7 @@ table.deliveryTable input.phone {
 .willbes-BuyInfo .w-buyinfo dl dt {
     height: 30px;
     line-height: 28px;
+    margin-bottom:10px;
 }
 .willbes-BuyInfo .w-buyinfo .t-price {
     font-size: 23px;
@@ -6151,15 +6152,16 @@ table.deliveryTable input.phone {
 .willbes-BuyInfo .w-buyinfo .caution-txt span {
     vertical-align: baseline;
 }
-.willbes-BuyInfo .w-buyinfo ul li {
+.willbes-BuyInfo .w-buyinfo dt li {
     float: left;
     margin-right: 30px;
 }
-.willbes-BuyInfo .w-buyinfo ul li input[type="radio"] {
+.willbes-BuyInfo .w-buyinfo dt li input[type="radio"] {
     float: left;
     margin-top: 8px;
     margin-right: 5px;
 }
+
 
 /* subContainer : Cart : 결제하기 : 유의사항 및 환불정책안내 */
 .willbes-PolicyInfo {

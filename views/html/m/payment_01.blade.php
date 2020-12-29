@@ -260,6 +260,26 @@
                                 <li><a href="#none">실시간 계좌이체</a></li>
                                 <li><a href="#none">무통장입금(가상계좌)</a></li>             
                             </ul>
+                            <div class="strong tx-blue">신용카드 결제</div>
+                            <ul class="paymentTxt pd_all_none bd-none">
+                                <li>카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</li>
+                                <li>최종 결제승인 이전에 전자결제창을 닫지 마시기 바랍니다.</li>
+                                <li>전자금융거래 기본법에 따라 결제금액이 30만원 이상일 경우 전자상거래법에 의해 발급된 공인인증서를 이용하여 본인 
+                            확인을 거쳐야 결제를 할 수 있습니다.</li>
+                            </ul>                       
+                            <div class="strong tx-blue">실시간 계좌이체 </div>
+                            <ul class="paymentTxt pd_all_none bd-none">
+                                <li>실시간 계좌이체 이용을 위해서는 보안 수단(보안카드, OTP)과 공인인증서가 필요합니다.</li>
+                                <li>지정한 은행 계좌에서 결제 금액이 실시간으로 이체되며 결제 승인 후 바로 수강이 가능합니다.</li>
+                                <li>현금 영수증은 입금이 완료되면 발행됩니다.</li>
+                            </ul>
+                            <div class="strong tx-blue">무통장입금(가상계좌)</div>
+                            <ul class="paymentTxt pd_all_none bd-none">
+                                <li>주문 시마다 새로운 입금계좌번호가 생성됩니다.</li>
+                                <li>상품을 나누어 주문하시는 경우 주문별로 생성되는 입금계좌로 각각 입금해 주세요.</li>
+                                <li>입금 기한 내에 입금을 하지 않을 경우 주문이 자동으로 취소됩니다. 결제를 원할 시 재주문을 해주세요.</li>
+                                <li>입금 후 15분 이내 입금 승인 처리되며, 현금 영수증은 입금이 완료되면 발행됩니다.</li>
+                            </ul>
                         </td>
                     </tr>
                 </tbody>

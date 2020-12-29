@@ -46,8 +46,8 @@
     }
 
     .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; 
-    padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+    .btnbuy a {display:block; width:100%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; 
+    padding:15px; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
     .btnbuy a:hover {background:#593c14;
         -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

@@ -39,7 +39,7 @@
         </div>     
 
         <div class="sky">
-            <a href="javascript:alert('곧 공개됩니다.')" > 
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1989" target="_blank" > 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_sky.png" alt="" >
             </a>             
         </div>   

@@ -143,9 +143,10 @@ class MockExamFModel extends WB_Model
      * 문항정보호출
      * @param string $prod_code
      * @param string $mp_idx
+     * @param string $mr_idx
      * @return array
      */
-    public function listQuestion($prod_code = '', $mp_idx = '')
+    public function listQuestion($prod_code = '', $mp_idx = '', $mr_idx = '')
     {
         $arr_condition = [
             'EQ' => ['pmp.ProdCode' => $prod_code],
@@ -162,7 +163,8 @@ class MockExamFModel extends WB_Model
             FROM {$this->_table['mock_paper']} AS MP
             JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
             JOIN {$this->_table['product_mock_r_paper']} AS pmp ON MP.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
-            LEFT OUTER JOIN {$this->_table['mock_answertemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND MT.ProdCode = ".$prod_code."
+            LEFT OUTER JOIN {$this->_table['mock_answertemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MrIdx = '{$mr_idx}'
+                AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND MT.ProdCode = ".$prod_code."
         ";
         $order_by = " ORDER BY pmp.OrderNum, QuestionNO ";
 

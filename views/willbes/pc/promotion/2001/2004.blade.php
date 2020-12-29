@@ -64,7 +64,7 @@
                 <area shape="rect" coords="841,1193,1016,1262" href="https://police.willbes.net/promotion/index/cate/3001/code/1976" target="_blank" />
             </map>
         </div>
-        
+
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_03.jpg"  alt=""/>
         </div>
@@ -72,11 +72,11 @@
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_04.jpg"  alt=""/>
             <div class="evt04_box" id="apply">       
-            <div class="title NSK-Black"><span class="dis">50%할인</span></div>                 
+            <div class="title NSK-Black" style="padding:75px 0 25px;"><span class="dis">단과</span></div>                 
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif  
-            <div class="title NSK-Black" style="padding:75px 0 25px;"><span class="dis">단과 40%할인</span></div>    
+            <div class="title NSK-Black" style="padding:75px 0 25px;"><span class="dis">종합반</span></div>    
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif                  
@@ -86,7 +86,7 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_05.jpg"  alt="" usemap="#Map2004_apply" border="0"/>
             <map name="Map2004_apply" id="Map2004_apply">
-                <area shape="rect" coords="814,116,951,157" href="javascript:alert('곧 공개됩니다.')" > 
+                <area shape="rect" coords="814,116,951,157" href="https://police.willbes.net/promotion/index/cate/3001/code/1996" target="_blank" > 
             </map>
         </div>
 

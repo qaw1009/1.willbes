@@ -4,6 +4,7 @@ body {
     min-width: 320px;
     font-size: 0.75em;
 }
+area {display:block; border:10px solid #000 !important}
 .hidden  {
     overflow: hidden;
     font-size: 0;

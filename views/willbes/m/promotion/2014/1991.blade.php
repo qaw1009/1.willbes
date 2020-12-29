@@ -58,7 +58,7 @@
     .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
     .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; color:#0099ff} 
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-    .infoCheck a:hover {background:#a14f5b;}
+    .infoCheck a:hover {background:#593c14;}
 
     .slide_con {max-width:720px; margin:0 auto}
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
@@ -103,86 +103,85 @@
 </style>
 
 <div id="Container" class="Container NSK c_both">  
- 
     <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_top.gif" alt="우리집 요리사" >             
-        </div>  
-        
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_01.jpg" alt="집밥마스터 입문" usemap="#Map1991B" border="0" >
-            <map name="Map1991B">
-                <area shape="rect" coords="380,928,691,1223" href="#evt05" alt="사전예약">
-            </map>
-        </div> 
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_top.gif" alt="우리집 요리사" >             
+    </div>  
+    
+    <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_01.jpg" alt="집밥마스터 입문" usemap="#Map1991B" border="0" >
+        <map name="Map1991B">
+            <area shape="rect" coords="380,928,691,1223" href="#evt05" alt="사전예약">
+        </map>
+    </div> 
 
-        <div class="evtCtnsBox evt02">           
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_02.jpg" alt="요리연구가 이나우" >
-        </div> 
+    <div class="evtCtnsBox evt02">           
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_02.jpg" alt="요리연구가 이나우" >
+    </div> 
 
-        <div class="evtCtnsBox evt03">
-            <div class="video-container-box">
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/eCPGzSosPSo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+    <div class="evtCtnsBox evt03">
+        <div class="video-container-box">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/eCPGzSosPSo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_03.jpg" alt="요리연구가 이나우" >
-        </div> 
+        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_03.jpg" alt="요리연구가 이나우" >
+    </div> 
 
-        <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04.jpg" alt="나누면 따뜻한 집바" >
-            <div class="slide_con pb100">
-                <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_01.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_02.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_03.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_04.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_05.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_06.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_07.jpg" alt="사전구매 상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_08.jpg" alt="사전구매 상품"/></li>
-                </ul>
-            </div>
-        </div> 
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04.jpg" alt="나누면 따뜻한 집바" >
+        <div class="slide_con pb100">
+            <ul id="slidesImg1">
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_01.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_02.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_03.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_04.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_05.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_06.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_07.jpg" alt="사전구매 상품"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_04_08.jpg" alt="사전구매 상품"/></li>
+            </ul>
+        </div>
+    </div> 
 
-        <div class="evtCtnsBox evt05" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_top.jpg" alt="사전예약" >
-            <div class="slide_con pb100">
-                <ul id="slidesImg2">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_01.jpg" alt="육수 양념"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_02.jpg" alt="일품 한 그릇 요리"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_03.jpg" alt="국 찌개"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_04.jpg" alt="깍두기와 장아찌"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_05.jpg" alt="일품요리"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_06.jpg" alt="스피드 집밥"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_07.jpg" alt="스피드 집밥"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_08.jpg" alt="밑반찬"/></li>
-                </ul>
-            </div>
-            <div id="evt05">
-                <a href="javascript:go_PassLecture('177450');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn01.jpg" alt="수강권" ></a>
-                <a href="javascript:go_PassLecture('177452');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn02.jpg" alt="강의+베이직" ></a>
-                <a href="javascript:go_PassLecture('177453');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn03.jpg" alt="강의+프리미엄" ></a>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_bottom.jpg" alt="사전예약" >
-        </div> 
+    <div class="evtCtnsBox evt05" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_top.jpg" alt="사전예약" >
+        <div class="slide_con pb100">
+            <ul id="slidesImg2">
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_01.jpg" alt="육수 양념"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_02.jpg" alt="일품 한 그릇 요리"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_03.jpg" alt="국 찌개"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_04.jpg" alt="깍두기와 장아찌"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_05.jpg" alt="일품요리"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_06.jpg" alt="스피드 집밥"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_07.jpg" alt="스피드 집밥"/></li>
+                <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_08.jpg" alt="밑반찬"/></li>
+            </ul>
+        </div>
+        <div id="evt05">
+            <a href="javascript:go_PassLecture('177450');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn01.jpg" alt="수강권" ></a>
+            <a href="javascript:go_PassLecture('177452');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn02.jpg" alt="강의+베이직" ></a>
+            <a href="javascript:go_PassLecture('177453');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn03.jpg" alt="강의+프리미엄" ></a>
+        </div>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_bottom.jpg" alt="사전예약" >
+    </div> 
 
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_06.gif" alt="사전예약 이벤트" >            
-        </div> 
+    <div class="evtCtnsBox evt06">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_06.gif" alt="사전예약 이벤트" >            
+    </div> 
 
-        <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_07.jpg" alt="수업" >            
-        </div> 
+    <div class="evtCtnsBox evt07">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_07.jpg" alt="수업" >            
+    </div> 
 
-        <div class="evtCtnsBox evt08">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_08.jpg" alt="맛있고 건강한 요리" >            
-        </div> 
+    <div class="evtCtnsBox evt08">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_08.jpg" alt="맛있고 건강한 요리" >            
+    </div> 
 
-        <div class="evtCtnsBox evt09">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_09.jpg" alt="오픈 이벤트" > 
-            <a href="http://pf.kakao.com/_tUSRK/61873027" target="_blank" class="NSK-Black">쿠킹클래스 기대평 작성하기 ></a>    
-            <div>이벤트 기간 : 12.30(수)~1.12(화) <br> 당첨자발표 : 2021.1.15(금) 공지사항 참조</div>
-        </div>  
+    <div class="evtCtnsBox evt09">
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_09.jpg" alt="오픈 이벤트" > 
+        <a href="http://pf.kakao.com/_tUSRK/61873027" target="_blank" class="NSK-Black">쿠킹클래스 기대평 작성하기 ></a>    
+        <div>이벤트 기간 : 12.30(수)~1.12(화) <br> 당첨자발표 : 2021.1.15(금) 공지사항 참조</div>
+    </div>  
 
     <div class="evtCtnsBox">
         <div class="curriculum">
@@ -232,7 +231,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_10.jpg" alt="" >
     </div>   
 
-    <div class="evtCtnsBox evt07">
+    <div class="evtCtnsBox evt07" id="infoText">
         <div class="evtFooter">
             <h3 class="NSK-Black">이용 안내</h3>
             <p>#사전예약 혜택</p>

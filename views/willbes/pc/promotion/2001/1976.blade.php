@@ -224,14 +224,10 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-
         <div class="sky">
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_sky01.png" alt="">
-            </a>            
-            <a href="#coupon">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1976_sky.png" alt="">
-            </a>
+            </a>     
         </div>
 
         <!-- 타이머 -->
@@ -330,14 +326,6 @@
             </div>
         </div>
         <!-- evt02//-->  
-
-        <div class="evtCtnsBox evt_coupon" id="coupon">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1976_coupon.jpg"  alt="" usemap="#Map1976_coupon" border="0"/>
-            <map name="Map1976_coupon" id="Map1976_coupon">
-                <area shape="rect" coords="281,929,831,1028" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
-            </map>
-        </div>
-
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_02.jpg"  alt=""/>

@@ -33,7 +33,7 @@
         .evt02, .evt03, .evt04 {background:#ddd;}
         .evt02_title {background:#ddd;padding:50px 0;}
 
-        .evt04 {padding-top:100px;}
+        .evt04 {padding:100px 0;}
 
         .evt05 {background:#F1F1F1;position:relative;}
         .check {color:#000; font-size:14px;font-weight:bold;position:absolute;left:50%;top:39%;margin-left:-434px;margin-top:325px;background:#ececec;width:867px;padding:10px 0;}

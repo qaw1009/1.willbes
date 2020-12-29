@@ -40,6 +40,26 @@
     .curriculum dt:first-child {margin:0 0 10px}
     .curriculum dd {margin-bottom:10px; line-height:1.4}    
 
+    .fixed {position:fixed; width:100%; background:rgba(255,255,255,0.5);
+        background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2);left:0; z-index:10;
+        text-align:center;
+    }
+
+    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
+    .btnbuy a {display:block; width:100%; max-width:720px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; 
+    padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+    .btnbuy a span {font-size:1.2rem;}
+    .btnbuy a:hover {background:#593c14;
+        -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    .infoCheck {width:100%; max-width:720px; margin:10px auto; font-size:12px;}
+    .infoCheck label {margin-right:30px; cursor: pointer; font-weight:bold; }
+    .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
+    .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; color:#0099ff} 
+    .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
+    .infoCheck a:hover {background:#a14f5b;}
+
     .slide_con {max-width:720px; margin:0 auto}
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {        
@@ -84,7 +104,7 @@
 
 <div id="Container" class="Container NSK c_both">  
  
-<div class="evtCtnsBox evtTop">
+    <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_top.gif" alt="우리집 요리사" >             
         </div>  
         
@@ -102,7 +122,7 @@
         <div class="evtCtnsBox evt03">
             <div class="video-container-box">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/eCPGzSosPSo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_03.jpg" alt="요리연구가 이나우" >
@@ -124,7 +144,7 @@
             </div>
         </div> 
 
-        <div class="evtCtnsBox evt05" id="evt05">
+        <div class="evtCtnsBox evt05" >
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_top.jpg" alt="사전예약" >
             <div class="slide_con pb100">
                 <ul id="slidesImg2">
@@ -138,10 +158,10 @@
                     <li><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_08.jpg" alt="밑반찬"/></li>
                 </ul>
             </div>
-            <div>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn01.jpg" alt="수강권" ></a>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn02.jpg" alt="강의+베이직" ></a>
-                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn03.jpg" alt="강의+프리미엄" ></a>
+            <div id="evt05">
+                <a href="javascript:go_PassLecture('177450');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn01.jpg" alt="수강권" ></a>
+                <a href="javascript:go_PassLecture('177452');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn02.jpg" alt="강의+베이직" ></a>
+                <a href="javascript:go_PassLecture('177453');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn03.jpg" alt="강의+프리미엄" ></a>
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_bottom.jpg" alt="사전예약" >
         </div> 
@@ -217,24 +237,30 @@
             <h3 class="NSK-Black">이용 안내</h3>
             <p>#사전예약 혜택</p>
             <ul>
-                <li>사전예약 혜택은 12월 14일까지 결제완료자에 한해서만 적용됩니다.</li>
-                <li>전예약 혜택은 강의료(키트 제외) 40% 할인입니다.</li>
-                <li>강의 시작일은 12월 14일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>
+                <li>사전예약 혜택은 1월 12일까지 결제완료자에 한해서만 적용됩니다.</li>
+                <li>사전예약 혜택은 강의료(키트 제외) 40% 할인입니다.</li>
+                <li>강의 시작일은 1월 12일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>
             </ul>
-            <p>#라탄 공예 키트 안내</p>
+            <p>#요리 클래스 키트 안내</p>
             <ul>
-                <li>키트구성 <br>
-                : 라탄환심, 유리병, 타원판, 원판, 줄자, 등가위, 송곳, 분무기</li>
-                <li>키트 배송일정<br>
-                : 강사님이 직접 배송을 진행하고 있으므로, 결제일로부터 5~7일 기간 소요 될 수 있으니, 참고 부탁 드립니다.</li>
-                <li>키트 환불 절차 및 금액<br>
+                <li>* 키트구성 <br>
+                - 베이직 : 만능양념장, 네오플램 피카 18cm 편수냄비IH, 만능간장(맛간장), 계량스푼, 계량컵<br>
+                - 프리미엄 : 만능양념장, 네오플램 피카 18cm 편수냄비IH/26cm 웍 IH, 만능간장(맛간장), 계량스푼, 계량컵</li>
+
+                <li>* 키트 배송일정<br>
+                : 강사님이 직접 배송을 진행하고 있으며, 결제일로부터 5~7일 기간 소요 될 수 있으니 참고 부탁 드립니다.<br>
+                - 키트 발송은 사전예약자에 한하여 1월 12일 이후부터 순차발송 진행 됩니다.<br>
+                - 키트 상품 중 일부 깨지기 쉬운 물품은 대체 용기로 변경되어 배송되므로 실제 이미지와 다를 수 있습니다.</li>
+
+                <li>* 키트 환불 절차 및 금액<br>
                 : 키트에 대한 환불절차는 키트의 미배송 또는 반송이 확인된 이후 진행됩니다.<br>
                 - 배송 시작 전 : 결제대금 전액<br>
                 - 배송 시작 후 키트 수령일로부터 7일 경과 전 : 결제대금 전액<br>
                 (단, 키트 반송에 소요되는 운송비를 공제)<br>
                 - 키트 수령일로부터 7일 경과 후 : 환불 불가<br>
-                (단순변심에 의한 키트반품은 왕복 택배비 6,000원입니다.) </li>
-                <li>키트 환불 불가사유<br>
+                (단순변심에 의한 키트반품은 왕복 택배비 6,000원입니다.)</li>
+
+                <li>* 키트 환불 불가사유<br>
                 - 회원의 책임 있는 사유에 따라 키트가 멸실 또는 훼손 등으로 재판매가 불가한 경우<br>
                 - 회원의 사용 또는 시간경과, 일부 소비로 키트의 가치가 현저히 감소한 경우<br>
                 - 시간이 지나 재판매가 곤란할 정도로 키트의 가치가 현저히 감소한 경우<br>
@@ -245,9 +271,21 @@
             <h3 class="NSK-Black">문의안내 : 1544-5006</h3>
         </div>    
     </div> 
-
 </div>
 <!-- End Container -->
+
+<div class="btnbuyBox">
+    <div class="btnbuy NSK-Black">     
+        <a href="#evt05">
+        [온라인강의] 신청하기 >
+        </a>
+    </div>
+    <div id="pass" class="infoCheck">
+        <input type="checkbox" name="y_pkg" value="172160" style="display: none;" checked/>
+        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+        <a href="#infoText">이용안내 확인하기 ↓</a>
+    </div>
+</div>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
 <script language='javascript'>
@@ -281,6 +319,17 @@
             pager:true,
         });
     });
+
+    {{-- 수강신청 동의 --}}
+    function go_PassLecture(code){
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
+            return;
+        }
+
+        var url = '{{ site_url('/m/lecture/show/cate/3114/pattern/only/prod-code/') }}' + code;
+        location.href = url;
+    }
 </script>
 
 @stop

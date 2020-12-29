@@ -39,7 +39,7 @@
 
         .evt01 {background:#B7A092 url(https://static.willbes.net/public/images/promotion/2020/12/1968_01_bg.jpg) no-repeat center top}  
 
-        .evt02 {background:#CABDB4;}
+        .evt02 {background:#CABDB4; padding-bottom:150px}
         .btnbuy {width:720px; margin:50px auto 0}
         .btnbuy a {border-radius:10px; display:block; font-size:40px; background:#000; color:#fff; padding:20px 0;}
         .btnbuy a:hover {background:#a14f5b;}
@@ -145,11 +145,11 @@
             <div>
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0" id="lecBuy" >
-            <map name="Map1968A">
-                <area shape="rect" coords="79,753,312,847" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank" alt="강의+키트 사전예약">
-                <area shape="rect" coords="411,753,640,845" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank" alt="강의 사전예약">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_01.jpg" alt="" >
+            <div>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_03.jpg" alt="강의 사전예약"></a>
+            </div>
         </div>
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_03.jpg" alt="자연을 엮다" >                

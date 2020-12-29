@@ -130,7 +130,7 @@ class Exam extends \app\controllers\FrontController
         $remain_sec = element('remain_sec',$arr_input);
 
         $examData = $this->_baseExamData($prod_code, $mr_idx);
-        $questionData = $this->mockExamFModel->listQuestion($prod_code, $examData['productInfo']['MpIdx']);
+        $questionData = $this->mockExamFModel->listQuestion($prod_code, $examData['productInfo']['MpIdx'], $mr_idx);
         $timeData = $this->mockExamFModel->callRemainTime($mr_idx);
 
         if (empty($remain_sec) === true) {

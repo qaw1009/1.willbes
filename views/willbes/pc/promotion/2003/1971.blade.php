@@ -46,9 +46,9 @@
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_top.jpg" alt="윌비스 공무원 x 대방고시학원" />
             <ul class="tabs NSK-Black">
-                <li><a href="#tab01">기술직</a></li>
-                <li><a href="#tab02">세무직</a></li>
-                <li><a href="#tab03">자격증</a></li>
+                <li><a href="#tab01" class="active">기술직</a></li>
+                <li><a href="/promotion/index/cate/3028/code/1999" target="_blank">세무직</a></li>
+                <li><a href="/promotion/index/cate/3028/code/2003" target="_blank">자격증</a></li>
             </ul>
 		</div>
 
@@ -87,58 +87,6 @@
                 </map>
             </div>
         </div>
-
-        <div id="tab02">
-            <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab02_01.jpg" alt="세무직" />
-            </div>
-            <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab02_02.jpg" alt="세무직" usemap="#Map1971C" border="0" />
-                <map name="Map1971C">
-                  <area shape="rect" coords="851,592,985,639" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175999" target="_blank" alt="회계학 기본">
-                  <area shape="rect" coords="852,650,985,696" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/176001" target="_blank" alt="회계학 심화">
-                  <area shape="rect" coords="848,851,984,897" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175992" target="_blank" alt="세법 기본">
-                  <area shape="rect" coords="852,910,985,953" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175998" target="_blank" alt="세법 심화">
-                  <area shape="rect" coords="739,1308,932,1368" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" alt="세무직 패스">
-                </map>
-            </div>
-        </div>
-
-        <div id="tab03">
-            <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab03_01.jpg" alt="자격증" />
-            </div>
-            <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab03_02.jpg" alt="자격증" />
-            </div>
-        </div>
 	</div>
     <!-- End Container -->
-
-    <script type="text/javascript">         
-        $(document).ready(function(){
-            $('.tabs').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );
-    </script>
 @stop

@@ -148,6 +148,8 @@
             //전체 응시자 정답률
             @foreach($data_total_point_chart as $takemock_key => $takemock_row)
                 @foreach($takemock_row as $subject_key => $subject_row)
+                    var base_core = {{ (empty($base_statistisc['BaseScoring'][$subject_key]) === true ? '2.5' : $base_statistisc['BaseScoring'][$subject_key]) }};
+                    console.log(base_core);
                     var increment = '5';
                     if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 10) {
                         increment = 1;
@@ -155,31 +157,51 @@
                     if ({{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} > 10 && {{$data_total_statistics[$takemock_key][$subject_key]['reg_member_cnt']}} <= 20) {
                         increment = 2;
                     }
-                    var count1 = {!! json_encode(array_values($subject_row[0]),true) !!};
-                    var count2 = {!! json_encode(array_values($subject_row[1]),true) !!};
-                    var count3 = {!! json_encode(array_values($subject_row[2]),true) !!};
-                    var count4 = {!! json_encode(array_values($subject_row[3]),true) !!};
-                    var count5 = {!! json_encode(array_values($subject_row[4]),true) !!};
-                    var count6 = {!! json_encode(array_values($subject_row[5]),true) !!};
-                    var count7 = {!! json_encode(array_values($subject_row[6]),true) !!};
-                    var count8 = {!! json_encode(array_values($subject_row[7]),true) !!};
-                    var count9 = {!! json_encode(array_values($subject_row[8]),true) !!};
-                    var count10 = {!! json_encode(array_values($subject_row[9]),true) !!};
-                    var count11 = {!! json_encode(array_values($subject_row[10]),true) !!};
+
+                    if (base_core == 4)
+                    {
+                        var count1 = {!! (empty($subject_row[0]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[0]),true)) !!}
+                        var count2 = {!! (empty($subject_row[1]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[1]),true)) !!}
+                        var count3 = {!! (empty($subject_row[2]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[2]),true)) !!}
+                        var count4 = {!! (empty($subject_row[3]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[3]),true)) !!}
+                        var count5 = {!! (empty($subject_row[4]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[4]),true)) !!}
+                        var count6 = {!! (empty($subject_row[5]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[5]),true)) !!}
+                        var count7 = {!! (empty($subject_row[6]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[6]),true)) !!}
+                        var dataset_values = [count1, count2, count3, count4, count5, count6, count7];
+                        var legend_names = ['~12', '~28', '~44', '~60', '~76', '~96', '100'];
+                    } else if (base_core == 5) {
+                        var count1 = {!! (empty($subject_row[0]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[0]),true)) !!}
+                        var count2 = {!! (empty($subject_row[1]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[1]),true)) !!}
+                        var count3 = {!! (empty($subject_row[2]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[2]),true)) !!}
+                        var count4 = {!! (empty($subject_row[3]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[3]),true)) !!}
+                        var count5 = {!! (empty($subject_row[4]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[4]),true)) !!}
+                        var count6 = {!! (empty($subject_row[5]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[5]),true)) !!}
+                        var dataset_values = [count1, count2, count3, count4, count5, count6];
+                        var legend_names = ['~15', '~35', '~55', '~75', '~95', '100'];
+                    } else {
+                        var count1 = {!! (empty($subject_row[0]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[0]),true)) !!}
+                        var count2 = {!! (empty($subject_row[1]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[1]),true)) !!}
+                        var count3 = {!! (empty($subject_row[2]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[2]),true)) !!}
+                        var count4 = {!! (empty($subject_row[3]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[3]),true)) !!}
+                        var count5 = {!! (empty($subject_row[4]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[4]),true)) !!}
+                        var count6 = {!! (empty($subject_row[5]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[5]),true)) !!}
+                        var count7 = {!! (empty($subject_row[6]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[6]),true)) !!}
+                        var count8 = {!! (empty($subject_row[7]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[7]),true)) !!}
+                        var count9 = {!! (empty($subject_row[8]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[8]),true)) !!}
+                        var count10 = {!! (empty($subject_row[9]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[9]),true)) !!}
+                        var count11 = {!! (empty($subject_row[10]) === true ? json_encode(['0']) : json_encode(array_values($subject_row[10]),true)) !!}
+                        var dataset_values = [count1, count2, count3, count4, count5, count6, count7, count8, count9, count10, count11];
+                        var legend_names = ['~7.5', '~17.5', '~27.5', '~37.5', '~47.5', '~57.5', '~67.5', '~77.5', '~87.5', '97.5', '100'];
+                    }
+
                     var spread_all_{{$takemock_key}}_{{$subject_key}} = {
                         'legend': {
-                            names: ['~7.5', '~17.5', '~27.5', '~37.5', '~47.5', '~57.5', '~67.5', '~77.5', '~87.5', '97.5', '100'],
+                            names: legend_names,
                             hrefs: []
                         },
                         'dataset': {
                             title: '전체 응시자 정답률(%)',
-                            values: [
-                                count1,count2
-                                ,count3,count4
-                                ,count5,count6
-                                ,count7,count8
-                                ,count9,count10,count11
-                            ],
+                            values: dataset_values,
                             colorset: ['#DC143C', '#FF8C00', "#30a1ce", '#DC143C', '#FF8C00'],
                             fields: ['(명)', '', '', '', '']
                         },

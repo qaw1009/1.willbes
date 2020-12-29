@@ -118,6 +118,19 @@
                     <div class="col-md-4 form-inline item">
                         <input type="text" class="form-control" id="TotalScore" name="TotalScore" title="총점" required="required" value="@if($method == 'PUT'){{ $data['TotalScore'] }}@endif" {{($method == 'PUT' && $isDeny) ? 'disabled' : ''}}> 점
                     </div>
+                    <label class="control-label col-md-1-1" for="is_use_y">기본배점</label>
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control mr-5" id="BaseScoring" name="BaseScoring" title="기본배점">
+                            <option value="">기본배점</option>
+                            <option value="5" @if($method == 'PUT' && $data['BaseScoring'] == '5') selected @endif>5점</option>
+                            <option value="4" @if($method == 'PUT' && $data['BaseScoring'] == '4') selected @endif>4점</option>
+                            <option value="2.5" @if($method == 'PUT' && $data['BaseScoring'] == '2.5') selected @endif>2.5점</option>
+                        </select>
+                        <span class="ml-20">※ 성적처리/통계 > 점수분포표 점수 기준 셋팅 설정 (기본 2.5점 기준).</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
                         <div class="radio">
@@ -355,12 +368,6 @@
                                 </td>
                                 <td class="text-center"><input type="text" class="form-control" name="Scoring[]" value="{{$row['Scoring']}}"></td>
                                 <td class="text-center form-inline">
-                                    {{--<div class="radio">
-                                        <div><input type="radio" class="flat" id="difficulty_t_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="T" @if($row['Difficulty'] == 'T') checked="checked" @endif> <label for="difficulty_t_{{$loop->index}}" class="input-label">상</label></div>
-                                        <div><input type="radio" class="flat" id="difficulty_m_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="M" @if($row['Difficulty'] == 'M') checked="checked" @endif> <label for="difficulty_m_{{$loop->index}}" class="input-label">중</label></div>
-                                        <div><input type="radio" class="flat" id="difficulty_b_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="B" @if($row['Difficulty'] == 'B') checked="checked" @endif> <label for="difficulty_b_{{$loop->index}}" class="input-label">하</label></div>
-                                        <div><input type="radio" class="flat" id="difficulty_n_{{$loop->index}}" name="Difficulty_{{$row['MqIdx']}}[]" value="N" @if($row['Difficulty'] == 'N') checked="checked" @endif> <label for="difficulty_n_{{$loop->index}}" class="input-label">없음</label></div>
-                                    </div>--}}
                                     <select class="form-control" name="Difficulty[]" style="padding:0">
                                         <option value="">선택</option>
                                         <option value="T" @if($row['Difficulty'] == 'T') selected @endif>상</option>

@@ -334,6 +334,8 @@ ul li {
 	list-style: none;
 }
 
+ul.disc li {list-style:disc !important;  margin-left:20px !important}
+
 blockquote, q {
 	quotes: none;
 }

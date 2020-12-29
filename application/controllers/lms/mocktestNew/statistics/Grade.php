@@ -322,7 +322,9 @@ class Grade extends BaseMocktest
             show_alert('통계에 필요한 사용자 기본정보가 없습니다.', 'back');
         }
 
-        $arr_pointForStatistics = $this->_pointForStatistics($prod_code);
+        /*$arr_pointForStatistics = $this->_pointForStatistics($prod_code);*/
+        $arr_pointForStatistics = $this->_pointForStatistics2($prod_code,$arr_totalStatistics['base_statistisc']['BaseScoring']);
+
         $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10','group');
         $avg_score_25 = $this->_pointAvgForRankStatistics($prod_code,'25','group');
         $avg_score_total = $this->_pointAvgForRankStatistics($prod_code,'total','group');
@@ -408,6 +410,7 @@ class Grade extends BaseMocktest
             $base_statistisc['TakeMockPart'][$row['TakeMockPart']] = $row['TakeMockPartName'];
             $base_statistisc['MpIdx'][$row['MpIdx']] = $row['SubjectName'];
             $base_statistisc['TotalQuestionCount'][$row['MpIdx']] = $row['count_question'];
+            $base_statistisc['BaseScoring'][$row['MpIdx']] = $row['BaseScoring'];
 
             $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['sum_scoring'] = $row['sum_scoring'];
             $data_total_statistics[$row['TakeMockPart']][$row['MpIdx']]['reg_member_cnt'] = $row['reg_member_cnt'];
@@ -424,9 +427,257 @@ class Grade extends BaseMocktest
     /**
      * 점수별 분포표,인원,누계,백분률
      * @param string $prod_code
+     * @param array $arr_base_scoring
+     * @return array|null
+     */
+    private function _pointForStatistics2($prod_code = '', $arr_base_scoring = [])
+    {
+        $temp_data_2_5 = [];
+        $temp_data_4 = [];
+        $temp_data_5 = [];
+        $result = [];
+
+        foreach ($arr_base_scoring as $mock_key => $val) {
+            switch ($val) {
+                case "2.5":
+                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics_2_5($prod_code,$mock_key));
+                    break;
+                case "4":
+                    $temp_data_4 = array_merge($temp_data_4, $this->regGradeModel->pointForStatistics_4($prod_code,$mock_key));
+                    break;
+                case "5":
+                    $temp_data_5 = array_merge($temp_data_5, $this->regGradeModel->pointForStatistics_5($prod_code,$mock_key));
+                    break;
+                default;
+                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics_2_5($prod_code,$mock_key));
+            }
+        }
+
+        $result_2_5 = $this->_get_total_point_chart_2_5($temp_data_2_5);
+        $result_4 = $this->_get_total_point_chart_4($temp_data_4);
+        $result_5 = $this->_get_total_point_chart_5($temp_data_5);
+
+        $result = array_replace_recursive($result, $result_2_5);
+        $result = array_replace_recursive($result, $result_4);
+        $result = array_replace_recursive($result, $result_5);
+
+        return $result;
+    }
+
+    /**
+     * 2.5 배점
+     * @param $result_point_statistics
      * @return array[]
      */
-    private function _pointForStatistics($prod_code = '')
+    private function _get_total_point_chart_2_5($result_point_statistics)
+    {
+        $temp_data_max_cnt = [];
+        $data_max_cnt = [];
+        $data_total_point_statistics = [];
+        $data_total_point_chart = [];
+
+        foreach ($result_point_statistics as $row) {
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] = $row['t_point'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['cnt'] = $row['cnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['sumCnt'] = $row['sumCnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['tavg'] = $row['tavg'];
+            $temp_data_max_cnt[$row['listMockPart']][$row['MpIdx']][] = $row['cnt'];
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 7.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][0][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 7.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 17.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][1][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 17.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 27.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][2][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 27.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 37.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][3][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 37.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 47.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][4][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 47.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 57.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][5][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 57.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 67.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][6][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 67.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 77.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][7][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 77.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 87.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][8][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 87.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 97.5) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][9][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 97.5 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 100) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][10][$row['t_point']] = $row['cnt'];
+            }
+        }
+        foreach ($temp_data_max_cnt as $m_key => $m_row) {
+            foreach ($m_row as $p_key => $p_row) {
+                $data_max_cnt[$m_key][$p_key] = max(array_values($p_row));
+            }
+        }
+
+        return [
+            'data_total_point_statistics' => $data_total_point_statistics,
+            'data_total_point_chart' => $data_total_point_chart,
+            'data_max_cnt' => $data_max_cnt,
+        ];
+    }
+
+    /**
+     * 4점 배점
+     * @param $result_point_statistics
+     * @return array[]
+     */
+    private function _get_total_point_chart_4($result_point_statistics)
+    {
+        $temp_data_max_cnt = [];
+        $data_max_cnt = [];
+        $data_total_point_statistics = [];
+        $data_total_point_chart = [];
+
+        foreach ($result_point_statistics as $row) {
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] = $row['t_point'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['cnt'] = $row['cnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['sumCnt'] = $row['sumCnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['tavg'] = $row['tavg'];
+            $temp_data_max_cnt[$row['listMockPart']][$row['MpIdx']][] = $row['cnt'];
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 12) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][0][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 12 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 28) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][1][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 28 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 44) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][2][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 44 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 60) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][3][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 60 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 76) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][4][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 76 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 96) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][5][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 96 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 100) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][6][$row['t_point']] = $row['cnt'];
+            }
+        }
+        foreach ($temp_data_max_cnt as $m_key => $m_row) {
+            foreach ($m_row as $p_key => $p_row) {
+                $data_max_cnt[$m_key][$p_key] = max(array_values($p_row));
+            }
+        }
+
+        return [
+            'data_total_point_statistics' => $data_total_point_statistics,
+            'data_total_point_chart' => $data_total_point_chart,
+            'data_max_cnt' => $data_max_cnt,
+        ];
+    }
+
+    /**
+     * 5점 배점
+     * @param $result_point_statistics
+     * @return array[]
+     */
+    private function _get_total_point_chart_5($result_point_statistics)
+    {
+        $temp_data_max_cnt = [];
+        $data_max_cnt = [];
+        $data_total_point_statistics = [];
+        $data_total_point_chart = [];
+
+        foreach ($result_point_statistics as $row) {
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] = $row['t_point'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['cnt'] = $row['cnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['sumCnt'] = $row['sumCnt'];
+            $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['tavg'] = $row['tavg'];
+            $temp_data_max_cnt[$row['listMockPart']][$row['MpIdx']][] = $row['cnt'];
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 15) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][0][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 15 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 35) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][1][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 35 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 55) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][2][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 55 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 75) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][3][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 75 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 95) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][4][$row['t_point']] = $row['cnt'];
+            }
+
+            if ($data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] > 95 &&
+                $data_total_point_statistics[$row['listMockPart']][$row['MpIdx']][$row['t_point']]['t_point'] <= 100) {
+                $data_total_point_chart[$row['listMockPart']][$row['MpIdx']][5][$row['t_point']] = $row['cnt'];
+            }
+        }
+        foreach ($temp_data_max_cnt as $m_key => $m_row) {
+            foreach ($m_row as $p_key => $p_row) {
+                $data_max_cnt[$m_key][$p_key] = max(array_values($p_row));
+            }
+        }
+
+        return [
+            'data_total_point_statistics' => $data_total_point_statistics,
+            'data_total_point_chart' => $data_total_point_chart,
+            'data_max_cnt' => $data_max_cnt,
+        ];
+    }
+
+    /*private function _pointForStatistics($prod_code = '')
     {
         $temp_data_max_cnt = [];
         $data_max_cnt = [];
@@ -507,7 +758,7 @@ class Grade extends BaseMocktest
             'data_total_point_chart' => $data_total_point_chart,
             'data_max_cnt' => $data_max_cnt,
         ];
-    }
+    }*/
 
     /**
      *

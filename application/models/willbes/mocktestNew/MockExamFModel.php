@@ -164,7 +164,7 @@ class MockExamFModel extends WB_Model
             JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y' AND MQ.IsStatus = 'Y'
             JOIN {$this->_table['product_mock_r_paper']} AS pmp ON MP.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
             LEFT OUTER JOIN {$this->_table['mock_answertemp']} AS MT ON MQ.MqIdx = MT.MqIdx AND MT.MrIdx = '{$mr_idx}'
-            AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND MT.ProdCode = ".$prod_code."
+                AND MT.MemIdx = ".$this->session->userdata('mem_idx')." AND MT.ProdCode = ".$prod_code."
         ";
         $order_by = " ORDER BY pmp.OrderNum, QuestionNO ";
 

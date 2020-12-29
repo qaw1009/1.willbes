@@ -169,12 +169,6 @@
         <div class="evtCtnsBox evt11">
             <div class="evtCurri">
                 <h4 class="NSK-Black">나누면 따뜻한 집밥,<br>요리연구가 이난우의 집밥 마스터 입문</h4>
-                <div class="tx16 mb50">
-                    * 촬영 장소 : 나우 쿠킹 스튜디오<br>
-                    * 촬영 일정 : 12월 21일 오전 10시(본 강의 촬영1) / 12월 30일 오후 1시 (본 강의 촬영2)<br>
-                    * 총 9개 챕터 (OP/CL 포함), 총 19강<br>
-                </div>
-
                 <ul>
                     <li class="cTitle">함께 나누면 따뜻한 집밥, 요리연구가 이난우의 집밥 요리클래스 OPEN!</li>
                     <li>안녕하세요, 요리연구가 이난우입니다</li>

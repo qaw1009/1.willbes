@@ -344,7 +344,9 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    * 2021년 대비<br> 설명회는 없습니다.
+                                                    <a href="javascript:fnPlayerSample('175625', '1260609', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn05.png" alt="2020학년도 대비 1강" ></a>
+                                                    <a href="javascript:fnPlayerSample('175625', '1260610', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn06.png" alt="2020학년도 대비 2강" ></a>
+                                                    <a href="@if($file_yn[24] == 'Y') {{ front_url($file_link[24]) }} @else {{ $file_link[24] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:fnPlayerSample('177112', '1267652', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn08.png" alt="2022학년도 대비 1강" ></a>
@@ -389,7 +391,8 @@
                                                     <a href="@if($file_yn[13] == 'Y') {{ front_url($file_link[13]) }} @else {{ $file_link[13] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:alert('준비중입니다.');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn02.png" alt="2022학년도 대비" ></a>
+                                                    <a href="javascript:fnPlayerSample('177109', '1269590', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn08.png" alt="2022학년도 대비 1강" ></a>
+                                                    <a href="javascript:fnPlayerSample('177109', '1269635', 'HD');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn09.png" alt="2022학년도 대비 2강" ></a>
                                                     <a href="@if($file_yn[14] == 'Y') {{ front_url($file_link[14]) }} @else {{ $file_link[14] }} @endif" alt="설명회 자료"><img src="https://static.willbes.net/public/images/promotion/2020/12/1973_btn03.png" alt="2022학년도 대비" ></a>
                                                 </td>
                                                 <td>

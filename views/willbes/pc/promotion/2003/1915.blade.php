@@ -109,27 +109,22 @@
 
         <ul class="top_tab">
             <li>
-                <a href="#tab01s" class="active">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png" alt="축산직 윤용범" class="on"  />                       
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01_off.png"alt="축산직 윤용범" class="off" />                    
-                </a>
+                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab01.png" alt="축산직 윤용범" class="on"  />
             </li>
             <li>
-                <a href="#tab02s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02.png" alt="기계직 윤황현" class="on" />
+                <a href="/promotion/index/cate/3028/code/2000">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab02_off.png" alt="기계직 윤황현" class="off"/>
                 </a>
             </li>
             <li>
-                <a href="#tab03s">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab03.png" alt="조경직 이윤주" class="on" />
+                <a href="/promotion/index/cate/3028/code/2001">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_tab03_off.png" alt="조경직 이윤주" class="off"/>
                 </a>
             </li>
         </ul>        
 
         <div class="evtCtnsBox">        
-            <div id="tab01s"> 
+            <div> 
                 <div class="tab01s_01">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_a.jpg" alt="축산직 윤용범"/>
                     <span>
@@ -170,76 +165,6 @@
                     </map>        
                 </div>                                      
             </div> 
-
-            <div id="tab02s">
-                <div class="tab02s_01">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_b.jpg" alt="기계직 윤황현" />
-                    <span>
-                        <a href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51148?subject_idx=1217&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84" target="_blank">
-                            <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_home.png" alt="교수홈">
-                        </a>
-                    </span> 
-                </div>           
-                <div class="tab02s_02">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02s.jpg" alt="" /> 
-                </div>
-                <div class="tab02s_03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03s.jpg" alt="" usemap="#Map1915_tab02s_03" border="0" />
-                    <map name="Map1915_tab02s_03">
-                        <area shape="rect" coords="106,354,554,448" href="javascript:alert('Coming soon!')" /> 
-                        <area shape="rect" coords="565,352,1011,450" href="javascript:go_popup3()" /> 
-                    </map><br>   
-                    <div>                               		
-                        <iframe src="https://www.youtube.com/embed/s53Pjkbzjng?rel=0" frameborder="0" allowfullscreen></iframe>   
-                    </div>                                   
-                </div>
-                <div class="tab02s_04">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_04s.jpg" alt="" />
-                </div>
-                <div class="tab02s_05">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05s.jpg" alt="" usemap="#Map1915_tab02s_05" border="0" />
-                    <map name="Map1915_tab02s_05">
-                        <area shape="rect" coords="479,595,955,663" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174807" target="_blank" />
-                        <area shape="rect" coords="483,771,954,834" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174808" target="_blank" />
-                    </map>        
-                </div>                 
-            </div>
-
-            <div id="tab03s">
-                <div class="tab03s_01">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_01_c.jpg" alt="조경직 이윤주"/>
-                    <span>
-                        <a href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51152?subject_idx=2117">
-                            <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_home.png" alt="교수홈">
-                        </a>
-                    </spa> 
-                </div>           
-                <div class="tab02s_02">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_02_c.jpg" alt="" /> 
-                </div>
-                <div class="tab02s_03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03_c.jpg" alt="" usemap="#Map1915_tab03s_03" border="0" />
-                    <map name="Map1915_tab03s_03">
-                        <area shape="rect" coords="106,354,554,448" href="javascript:go_popup5()" /> 
-                        <area shape="rect" coords="565,352,1011,450" href="javascript:go_popup6()" /> 
-                    </map><br>   
-                    <div>   
-                        <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_03s_01.jpg" >                           		
-                        {{--<iframe src="https://www.youtube.com/embed/s53Pjkbzjng?rel=0" frameborder="0" allowfullscreen></iframe>--}} 
-                    </div>                                   
-                </div>
-                <div class="tab02s_04">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_04_c.jpg" alt="조경직 real 점문가" />
-                </div>
-                <div class="tab02s_05">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05_c.jpg" alt="조경직 이윤주 강의 신청" usemap="#Map1915_tab03s_c" border="0" />
-                    <map name="Map1915_tab03s_c">
-                        <area shape="rect" coords="484,595,954,664" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
-                        <area shape="rect" coords="488,777,708,831" href="javascript:alert('Coming soon!')" />
-                        <area shape="rect" coords="728,777,948,833" href="javascript:alert('Coming soon!')" />
-                    </map>        
-                </div>                  
-            </div>
         </div>   
 
         
@@ -255,25 +180,7 @@
             <div class="content">                  
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri02.jpg" class="off" alt="" />    
             </div> 
-        </div>    
-        <div id="popup3" class="Pstyle">
-            <span class="b-close NSK-Black">X</span>
-            <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri03.jpg" class="off" alt="" />    
-            </div> 
         </div>  
-        <div id="popup5" class="Pstyle">
-            <span class="b-close NSK-Black">X</span>
-            <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri01_c.jpg" class="off" alt="" />    
-            </div> 
-        </div> 
-        <div id="popup6" class="Pstyle">
-            <span class="b-close NSK-Black">X</span>
-            <div class="content">                  
-                <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_curri02_c.jpg" class="off" alt="" />    
-            </div> 
-        </div>   
 
     </div>
     <!-- End Container -->
@@ -303,47 +210,14 @@
 			return false; 
 			});
         });
-	
-        /*탭(이미지버전)*/
-        $(document).ready(function(){
-            $('.top_tab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                //$active.addClass('active');
-                $content = $($active[0].hash);
 
-                $links.not($active).each(function () {
-                    $(this.hash).hide();
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-                    $active = $(this);
-                    $content = $(this.hash);
-                    $active.addClass('active');
-                    $content.show();
-                    e.preventDefault()
-                });
-            });
-        });
         
         /*팝업 커리큘럼*/ 
-            function go_popup1() {
+        function go_popup1() {
             $('#popup1').bPopup();
         }
         function go_popup2() {
             $('#popup2').bPopup();
-        }
-        function go_popup3() {
-            $('#popup3').bPopup();
-        }
-        function go_popup5() {
-            $('#popup5').bPopup();
-        }
-        function go_popup6() {
-            $('#popup6').bPopup();
         }
 	</script>
 

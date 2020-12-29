@@ -9,7 +9,10 @@
 
     .evt01 {}
 
-    .evt02 {text-align:center; }
+    .evt02 {text-align:center; padding-bottom:100px; background:#CABDB4; }
+    .evt02 div a {float:left; display:inline; width:50%}
+    .evt02 div a img {max-width:360px}
+    .evt02 div:after {content:''; display:block; clear:both}
     .evt02 .dday {font-size:22px;padding:20px 0; background:#fff}
     .evt02 .dday span {color:#a0774e; box-shadow:inset 0 -25px 0 rgba(0,0,0,0.1);}
     .video_area {background:#CABDB4;}
@@ -87,11 +90,11 @@
             </div>
         </div>
         <div>
-            <img id="lecBuy" src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_1.jpg" alt="" usemap="#Map1968A" border="0">
-            <map name="Map1968A">
-                <area shape="rect" coords="78,752,311,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank">
-                <area shape="rect" coords="410,754,639,846" href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_01.jpg" alt="" >
+            <div>
+                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
+                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_03.jpg" alt="강의 사전예약"></a>
+            </div>
         </div>
     </div> 
     

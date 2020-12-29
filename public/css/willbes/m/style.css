@@ -9,6 +9,8 @@ body {
 }
 html[xmlns*=""] body:last-child area {display:block;}
 
+area {display:block;}
+
 .hidden  {
     overflow: hidden;
     font-size: 0;

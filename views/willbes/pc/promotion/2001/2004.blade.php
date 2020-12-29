@@ -53,17 +53,18 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_02.jpg"  alt="" usemap="#Map1959b" border="0"/>
-            <map name="Map1959b" id="Map1959b">
-                <area shape="rect" coords="314,586,430,620" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175823" target="_blank" />
-                <area shape="rect" coords="682,586,794,620" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175824" target="_blank" />
-                <area shape="rect" coords="96,927,186,953" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175825" target="_blank" />
-                <area shape="rect" coords="371,927,460,953" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175826" target="_blank" />
-                <area shape="rect" coords="658,927,747,954" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175827" target="_blank" />
-                <area shape="rect" coords="930,926,1020,954" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175828" target="_blank" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_02.jpg"  alt="" usemap="#Map2004a" border="0"/>
+            <map name="Map2004a" id="Map2004a">
+                <area shape="rect" coords="344,631,456,665" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175823" target="_blank" />
+                <area shape="rect" coords="660,631,773,665" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/175824" target="_blank" />
+                <area shape="rect" coords="138,1034,229,1062" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175825" target="_blank" />
+                <area shape="rect" coords="372,1034,460,1061" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175826" target="_blank" />
+                <area shape="rect" coords="656,1034,744,1061" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175827" target="_blank" />
+                <area shape="rect" coords="890,1035,978,1060" href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/175828" target="_blank" />
+                <area shape="rect" coords="841,1193,1016,1262" href="https://police.willbes.net/promotion/index/cate/3001/code/1976" target="_blank" />
             </map>
         </div>
-
+        
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_03.jpg"  alt=""/>
         </div>

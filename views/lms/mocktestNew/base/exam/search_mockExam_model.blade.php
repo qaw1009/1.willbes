@@ -174,13 +174,15 @@
                         var row = $datatable.row( $(this).data('row-idx')).data();
                         var target = (suType == 'E') ? $('#eSubject-wrap table > tbody') : $('#sSubject-wrap table > tbody');
                         var index = target.find('tr').length;
-                        target.append('<tr data-subject-idx="">' + suAddField + '</tr>');
+                        var link = "<a href='{{ site_url('/mocktestNew/base/exam/create/') }}"+row.MpIdx+"' target='_blank'>수정</a>";
+                        target.append('<tr class="bg-info" data-subject-idx="">' + suAddField + '</tr>');
                         target.find('tr').last().find('[name="OrderNum[]"]').val(++index);
                         target.find('tr').last().find('td:eq(1)').text(row.Year);
                         target.find('tr').last().find('td:eq(2)').text(row.RotationNo);
                         target.find('tr').last().find('td:eq(3)').text(row.SubjectName);
                         target.find('tr').last().find('td:eq(4)').text(row.wProfName);
                         target.find('tr').last().find('td:eq(5)').text('['+ row.MpIdx +'] '+ row.PapaerName);
+                        target.find('tr').last().find('td:eq(6)').html(link);
                         target.find('tr').last().find('[name="MpIdx[]"]').val(row.MpIdx);
                         target.find('tr').last().find('[name="MockType[]"]').val(suType);
                         /*$("#pop_modal").modal('toggle');*/

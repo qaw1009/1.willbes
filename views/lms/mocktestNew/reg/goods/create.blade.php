@@ -322,6 +322,7 @@
                                     <th class="text-center">과목명</th>
                                     <th class="text-center">교수명</th>
                                     <th class="text-center">과목별시험지명</th>
+                                    <th class="text-center">수정</th>
                                     <th class="text-center">삭제</th>
                                 </tr>
                                 </thead>
@@ -338,6 +339,7 @@
                                     <td class="text-center"></td>
                                     <td class="text-center"></td>
                                     <td></td>
+                                    <td class="text-center"></td>
                                     <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                                 </tr>
                                 {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
@@ -356,6 +358,7 @@
                                             <td class="text-center">{{ $row['SubjectName'] }}</td>
                                             <td class="text-center">{{ $row['wProfName'] }}</td>
                                             <td>{{ '['. $row['MpIdx'] .'] '. $row['PapaerName'] }}</td>
+                                            <td class="text-center"><a href='{{ site_url('/mocktestNew/base/exam/create/'.$row['MpIdx']) }}' target='_blank'>수정</a></td>
                                             <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                                         </tr>
                                     @endforeach
@@ -392,6 +395,7 @@
                                     <th class="text-center">과목명</th>
                                     <th class="text-center">교수명</th>
                                     <th class="text-center">과목별시험지명</th>
+                                    <th class="text-center">수정</th>
                                     <th class="text-center">삭제</th>
                                 </tr>
                                 </thead>
@@ -410,6 +414,7 @@
                                             <td class="text-center">{{ $row['SubjectName'] }}</td>
                                             <td class="text-center">{{ $row['wProfName'] }}</td>
                                             <td>{{ '['. $row['MpIdx'] .'] '. $row['PapaerName'] }}</td>
+                                            <td class="text-center"><a href='{{ site_url('/mocktestNew/base/exam/create/'.$row['MpIdx']) }}' target='_blank'>수정</a></td>
                                             <td class="text-center"><span class="act-su-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                                         </tr>
                                     @endforeach

@@ -16,9 +16,13 @@
 
         /************************************************************/ 
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1965_top_bg.jpg) no-repeat center top;}	      
-        .evt02 {background:#f0f0f0;padding-bottom:100px;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/1965_top_bg.jpg) no-repeat center top;}
 
+        .evt02 {background:#f0f0f0;}
+
+        .evt03 {background:#f0f0f0;}
+
+        .evt06 {background:#f0f0f0;padding-bottom:100px;}
         .check {margin-top:20px; color:#333; font-size:14px}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
@@ -38,18 +42,34 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1965_top.jpg" alt="" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_top.jpg" alt="" />
 		</div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1965_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_01.jpg" alt="" />
 		</div>
 
-		<div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1965_02.jpg" alt="" usemap="#Map1965" border="0" />
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_02.jpg" alt="" />
+		</div>
+
+        <div class="evtCtnsBox evt03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_03.jpg" alt="" />
+		</div>
+
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_04.jpg" alt="" />
+		</div>
+
+        <div class="evtCtnsBox evt05">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_05.jpg" alt="" />
+		</div>
+
+		<div class="evtCtnsBox evt06">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1965_06.jpg" alt="" usemap="#Map1965" border="0" />
             <map name="Map1965">
-                <area shape="rect" coords="636,790,859,861" href="javascript:go_PassLecture('175963')" alt="예비+정규순환">
-                <area shape="rect" coords="636,1054,862,1122" href="javascript:go_PassLecture('175965')" alt="정규순환">
+                <area shape="rect" coords="636,790,859,861" href="javascript:go_PassLecture('177411')" alt="예비+정규순환">
+                <area shape="rect" coords="636,1054,862,1122" href="javascript:go_PassLecture('177412')" alt="정규순환">
             </map>
             <div class="check" id="chkInfo">   
                 <label>

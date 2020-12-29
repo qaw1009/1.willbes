@@ -143,10 +143,10 @@ class MockExamFModel extends WB_Model
      * 문항정보호출
      * @param string $prod_code
      * @param string $mp_idx
-     * @param $mr_idx
+     * @param string $mr_idx
      * @return array
      */
-    public function listQuestion($prod_code = '', $mp_idx = '', $mr_idx)
+    public function listQuestion($prod_code = '', $mp_idx = '', $mr_idx = '')
     {
         $arr_condition = [
             'EQ' => ['pmp.ProdCode' => $prod_code],

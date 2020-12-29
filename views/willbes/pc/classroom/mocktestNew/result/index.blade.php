@@ -71,7 +71,7 @@
                                 <th>시험응시일<span class="row-line">|</span></th>
                                 <th>모의고사명<span class="row-line">|</span></th>
                                 <th>총점<span class="row-line">|</span></th>
-                                <th>평균<span class="row-line">|</span></th>
+                                <th>전체평균<span class="row-line">|</span></th>
                                 <th>성적표</th>
                                 <th>부록</th>
                                 <th>문제/해설</th>
@@ -94,7 +94,7 @@
                                         </td>
                                         <td class="w-t-grade">{{ $row['TCNT'] }}</td>
                                         <td class="w-average">
-                                            {{ round($row['TCNT'] / $row['KCNT'], 2) }}
+                                            {{ $row['TotalAvgAdjustPoint'] }}
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y')
                                             <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}', '{{ $row['IsOldData'] }}')">[성적확인]</a></td>

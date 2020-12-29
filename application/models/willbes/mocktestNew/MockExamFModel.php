@@ -494,7 +494,10 @@ class MockExamFModel extends WB_Model
             $MrIdx = element('mr_idx', $formData);
 
             // 데이터 수정
-            $data = ['IsTake' => 'Y'];
+            $data = [
+                'IsTake' => 'Y',
+                'RegDatm' => date('Y-m-d H:i:s')
+            ];
             $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
             if ($this->_conn->update($this->_table['mock_register']) === false) {
                 throw new \Exception('상태수정에 실패했습니다.');

@@ -4,7 +4,11 @@ body {
     min-width: 320px;
     font-size: 0.75em;
 }
-area {display:block; border:10px solid #000 !important}
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    area {display:block}
+}
+html[xmlns*=""] body:last-child area {display:block;}
+
 .hidden  {
     overflow: hidden;
     font-size: 0;

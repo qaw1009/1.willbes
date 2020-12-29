@@ -887,27 +887,25 @@
                                     </ul>
                                 </td>
                                 <td>
-                                    <h5>1년 전과정 Full Package</h5>
-                                    {{--
+                                    <h5>1년 전과정 Full Package</h5>                                    
                                     <div>
                                         <div class="NSK tx14 mt10">
                                             [수강기간]<br>
-                                            - 학원강의 : 2021년 1월~6월<br>
-                                            - 직강 LIVE : 2021년 1월~6월<br>
-                                            - 온라인강의 : 240일 * 배수:1.8배수<br>
+                                            - 학원강의 : 2021년 1월~11월<br>
+                                            - 온라인강의 : 365일 * 배수:1.8배수<br>
                                         </div>
                                         <ul>
-                                            <li class="tx-gray">원 수강료<br> <s>2,800,000원</s></li>                                            
-                                            <li><div class="NSK-Black">25%<br>할인</div></li>
-                                            <li>패키지 수강료<br> <span class="NSK-Black">2,100,000원</span></li>
+                                            <li class="tx-gray">원 수강료<br> <s>4,200,000원</s></li>                                            
+                                            <li><div class="NSK-Black">약51%<br>할인</div></li>
+                                            <li>패키지 수강료<br> <span class="NSK-Black">2,050,000원</span></li>
                                         </ul>
                                     </div>
-                                    <div class="three">
-                                        <a href="#none" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
-                                        <a href="#none" target="_blank"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
+                                    <div class="lecBtn three">
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/177090" target="_blank"><span class="NSK-Black">학원강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/177089" target="_blank"><span class="NSK-Black">온라인강의</span><br> 수강신청</a>
+                                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/177092" target="_blank"><span class="NSK-Black">직강LIVE</span><br> 수강신청</a>
                                     </div>
-                                    --}}
+                                    {{--
                                     <p class="tx22 tx-center tx-dark-black">음악은 12월 27일 공개예정입니다.</p>
                                     <div class="banner">
                                         2022학년도 대비 On-Tact Live 설명회<br>
@@ -915,6 +913,7 @@
                                         2020. 12. 27. (일) PM. 09:30
                                         <a href="https://ssam.willbes.net/pass/offLecture/show/cate/3141/prod-code/177108" target="_blank">설명회 신청하기 ></a>
                                     </div>
+                                    --}}
                                 </td>
                             </tr>
                         </table>

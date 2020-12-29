@@ -55,7 +55,10 @@ class MockResultFModel extends WB_Model
                     JOIN {$this->_table['mock_register']} AS MMR ON MMR.MrIdx = MA.MrIdx
                     WHERE MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
-                (SELECT COUNT(*) FROM {$this->_table['mock_register_r_paper']} WHERE MrIdx = MR.MrIdx AND ProdCode = MR.ProdCode) AS KCNT,
+                (SELECT ROUND(AVG(a.AdjustPoint),2)
+                    FROM {$this->_table['mock_grades']} AS a
+                    WHERE a.ProdCode = MR.ProdCode
+                ) AS TotalAvgAdjustPoint,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 

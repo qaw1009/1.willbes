@@ -338,7 +338,7 @@
                         </li>
                         <li>
                             <strong>경찰간부</strong>
-                            <a href="{{ front_app_url('/home/index', 'spo', true) }}" target="_blank">신림(한림법학원)</a>
+                            <a href="{{ front_app_url('/home/index/cate/3100', 'spo', true) }}" target="_blank">신림(한림법학원)</a>
                         </li>
                         <li>
                             <strong>교원임용</strong>

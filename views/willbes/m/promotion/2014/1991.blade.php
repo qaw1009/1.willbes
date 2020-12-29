@@ -18,7 +18,7 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .evt05 {background:#f7f3e7}
-    .evt05 a {display:inline; float:left}
+    .evt05 a {display:inline; float:left; width:33.33333%}
     .evt05 a img {max-width:240px}
 
     .evt09 {padding-bottom:150px}

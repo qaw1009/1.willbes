@@ -9451,8 +9451,9 @@ table.PassZoneTable .w-data {
 .bookmark-prof tr td {
     font-size: 14px;
     padding: 30px 0;
-    line-height: 20px;
+    line-height: 1.5;
 }
+.bookmark-prof tr td span {vertical-align: auto;}
 .bookmark-prof tr td.w-prof {
     text-align: center;
 }
@@ -9460,7 +9461,7 @@ table.PassZoneTable .w-data {
     background: #868686;
     width: 1px;
     height: 11px;
-    margin: 14px 10px;
+    margin: 0 10px;
 }
 table.bookmarkTable tr td {
     padding: 14px 0;

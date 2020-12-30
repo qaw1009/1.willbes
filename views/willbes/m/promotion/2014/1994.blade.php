@@ -196,8 +196,8 @@
             if(second_left.length == 1) second_left = '0' + second_left;
 
             if ((event_day.getTime() - now.getTime()) > 0) {
-                $('#'+ele_id).html(hour_left + ':' + minute_left + ':' + second_left);
-                $('#ddayCountDayText').html(date_left + '일 ');
+                $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
+                //$('#ddayCountDayText').html(date_left + '일 ');
 
                 setTimeout(function() {
                     dDayCountDownText(end_date, ele_id);

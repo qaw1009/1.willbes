@@ -5,10 +5,6 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -16,9 +12,10 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            height:100% !important;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
 
         /************************************************************/
 
@@ -32,7 +29,6 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_top.jpg" title="기본이론" />
         </div>
@@ -62,7 +58,7 @@
 
             <h1>기간제 패키지 강좌</h1>
             @include('html.promotion.1015_promotionLecPkgB')
-        </div>       
+        </div>        
 
     </div>
     <!-- End Container -->

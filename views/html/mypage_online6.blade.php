@@ -120,8 +120,8 @@
         <div class="willbes-Prof-List c_both">
             <table cellspacing="0" cellpadding="0" class="bookmark-prof tx-gray NG">
                 <colgroup>
-                    <col style="width: 20%;"/>
-                    <col style="width: 80%;"/>
+                    <col style="width: 30%;"/>
+                    <col/>
                 </colgroup>
                 <tbody>
                     <tr>

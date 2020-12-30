@@ -34,17 +34,17 @@
             <div class="willbes-Prof-List c_both">
                 <table cellspacing="0" cellpadding="0" class="bookmark-prof tx-gray NG">
                     <colgroup>
-                        <col style="width: 20%;"/>
-                        <col style="width: 80%;"/>
+                        <col style="width: 30%;"/>
+                        <col/>
                     </colgroup>
                     <tbody>
                     <tr>
                         <td class="w-prof">
                             <span class="tx-black">{{$lec['SubjectName']}}</span> <span class="row-line">|</span>
-                            <span class="tx-deep-blue">{{$lec['wProfName']}}교수님</span>
+                            <span class="tx-deep-blue">{{$lec['wProfName']}}교수님</span> <span class="row-line">|</span> {{$lec['wLectureProgressCcdName']}}
                         </td>
                         <td class="w-lec">
-                            {{$lec['wLectureProgressCcdName']}}
+                            {{$row['subProdName']}}
                         </td>
                     </tr>
                     </tbody>

@@ -52,17 +52,7 @@
                                 </div>
                             </li>                                    
                             <li class="btnBuy">
-                                <a onclick="openWin('pocketBox2')" >바로결제</a>
-                                <div id="pocketBox2" class="pocketBox">
-                                    <a class="closeBtn" href="#none" onclick="closeWin('pocketBox2')">
-                                        <img src="{{ img_url('cart/close.png') }}">
-                                    </a>
-                                    도서구입비 소득공제 시행에 따라 강좌와 교재는 동시 결제가 불가능 합니다.<br>
-                                    선택한 교재는 장바구니에 자동으로 담기며, 강좌 선 결제 후 장바구니에 담긴 교재를 결제하실 수 있습니다.
-                                    <ul class="NSK mt20">
-                                        <li class="aBox waitBox_block"><a href="#none">확인</a></li>
-                                    </ul>
-                                </div>
+                                <a href="#none">바로결제</a>
                             </li>
                         </ul>
                     </td>
@@ -176,8 +166,11 @@
                     <td>
                         <ul class="lecBuyBtns tx-rgiht">
                             <li class="btnCart">
-                                <a onclick="openWin('pocketBox')" >장바구니</a>
-                            </li>                                  
+                                <a href="#none">장바구니</a>
+                            </li>  
+                            <li class="btnBuy">
+                                <a href="#none">바로결제</a>
+                            </li>                                
                         </ul>
                     </td>
                 </tr>
@@ -288,9 +281,12 @@
                         </dl>
                     </td>
                     <td>
-                        <ul class="lecBuyBtns tx-rgiht">                                
+                        <ul class="lecBuyBtns tx-rgiht">
+                            <li class="btnCart">
+                                <a href="#none">장바구니</a>
+                            </li>                                 
                             <li class="btnBuy">
-                                <a onclick="openWin('pocketBox2')" >바로결제</a>
+                                <a href="#none">바로결제</a>
                             </li>
                         </ul>
                     </td>

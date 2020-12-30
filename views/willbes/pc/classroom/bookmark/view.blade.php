@@ -41,10 +41,10 @@
                     <tr>
                         <td class="w-prof">
                             <span class="tx-black">{{$lec['SubjectName']}}</span> <span class="row-line">|</span>
-                            <span class="tx-deep-blue">{{$lec['wProfName']}}교수님</span> <span class="row-line">|</span> {{$lec['wLectureProgressCcdName']}}
+                            <span class="tx-deep-blue">{{$lec['wProfName']}}교수님</span> <span class="row-line">|</span> 
                         </td>
                         <td class="w-lec">
-                            {{$row['subProdName']}}
+                            {{$lec['wLectureProgressCcdName']}}
                         </td>
                     </tr>
                     </tbody>

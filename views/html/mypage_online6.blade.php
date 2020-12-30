@@ -126,7 +126,8 @@
                 <tbody>
                     <tr>
                         <td class="w-prof">
-                            <span class="tx-black">국어</span> <span class="row-line">|</span> <span class="tx-deep-blue">정채영교수</span>
+                            <span class="tx-black">국어</span> <span class="row-line">|</span> 
+                            <span class="tx-deep-blue">정채영교수</span> <span class="row-line">|</span> 완강
                         </td>
                         <td class="w-lec">
                             2018 정채영 국어[현대] 문학 종결자 문학 집중강의(5-6월)<br/>

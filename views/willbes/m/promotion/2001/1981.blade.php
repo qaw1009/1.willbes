@@ -7,7 +7,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .title {font-size:30px;  margin:20px 10px; text-align:left; color:#65069b}
 
-    .evtTop a {position: absolute; left: 25.56%; top: 84.9%; width: 45.83%; height: 7.42%; z-index: 2;}
+    .evtTop a {position:absolute; left: 25.56%; top: 84.9%; width: 45.83%; height: 7.42%; z-index: 2;}
 
     .video-container-box {padding:20px}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}

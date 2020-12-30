@@ -14,21 +14,20 @@
         @if($pattern_ccd[$ccd] == 'only') {{-- 단과강좌 --}}
             <div class="mb100">
                 <div class="pd20">
-                    {{--<div class="NSK-Black tx22 mb10">단과 강좌</div>--}}
-                    <div class="tx-red tx14 mb10">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
+                    <div class="tx-red tx14 pb10 bdb-light-gray">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
                 </div>
                 @if(empty($val) === false)
                     @foreach($val as $key => $row)
                         <div class="passProfTabs c_both">
-                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdb-light-gray">
                                 <tbody>
                                 <tr>
-                                    <td>
+                                    <td class="pb0">
                                         <div class="w-prof p_re">
                                             <img src="{{ $row['ProfReferData']['lec_detail_img'] }}">
                                             <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                                         </div>
-                                        <div class="w-data tx-left pl15">
+                                        <div class="w-data tx-left pt0 pb0 pl15">
                                             <div class="OTclass mr10"><span>{{ element($row['LecTypeCcd'],$lec_type) }}</span></div>
                                             <dl class="w-info pt-zero">
                                                 <dt>{{ $row['CourseName'] }}<span class="row-line">|</span>{{ $row['SubjectName'] }}<span class="row-line">|</span>{{ $row['ProfNickName'] }}</dt>
@@ -36,7 +35,11 @@
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/m/lecture/show/cate/').$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'] }}">{{ $row['ProdName'] }}</a>
                                             </div>
-                                            <dt class="w-info tx-gray">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="pt0 pb0">
+                                            <div class="w-info tx-gray pd0">
                                                 <dl>
                                                     <dt class="h27"><strong>강의촬영(실강)</strong>{{ empty($row['StudyStartDate']) ? '' : substr($row['StudyStartDate'],0,4).'년 '. substr($row['StudyStartDate'],5,2).'월' }}</dt><br/>
                                                     <dt class="h27"><strong>강의수</strong>{{ $row['wUnitLectureCnt'] }}강 @if($row['wLectureProgressCcd'] != '105002' && empty($row['wScheduleCount'])==false) / {{$row['wScheduleCount']}}강 @endif</dt><br/>
@@ -108,8 +111,7 @@
         @elseif($pattern_ccd[$ccd] == 'package') {{-- 운영자 패키지 --}}
             <div class="mb100">
                 <div class="pd20">
-                    {{--<div class="NSK-Black tx22 mb10">운영자 패키지 강좌</div>--}}
-                    <div class="tx-red tx14 mb10">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
+                    <div class="tx-red tx14 pb10 bdb-light-gray">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
                 </div>
 
                 <div class="lineTabs lecListTabs c_both">

@@ -7,6 +7,8 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .title {font-size:30px;  margin:20px 10px; text-align:left; color:#65069b}
 
+    .evtTop a {position: absolute; left: 25.56%; top: 84.9%; width: 45.83%; height: 7.42%; z-index: 2;}
+
     .video-container-box {padding:20px}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
     .video-container iframe,
@@ -40,11 +42,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_mpolice.jpg" alt="" >
     </div> 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1981_mtop.jpg" alt="" usemap="#Map1981_mtop" border="0" >
+        {{--
         <map name="Map1981_mtop" id="Map1981_mtop">
             <area shape="rect" coords="189,653,515,706" href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1004&school_year=2022" target="_blank" />
         </map>
+        --}}
+        <a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1004&school_year=202" title="온라인신청하기"></a>
     </div> 
     
     <div class="evtCtnsBox">

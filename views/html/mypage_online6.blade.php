@@ -120,13 +120,14 @@
         <div class="willbes-Prof-List c_both">
             <table cellspacing="0" cellpadding="0" class="bookmark-prof tx-gray NG">
                 <colgroup>
-                    <col style="width: 20%;"/>
-                    <col style="width: 80%;"/>
+                    <col style="width: 30%;"/>
+                    <col/>
                 </colgroup>
                 <tbody>
                     <tr>
                         <td class="w-prof">
-                            <span class="tx-black">국어</span> <span class="row-line">|</span> <span class="tx-deep-blue">정채영교수</span>
+                            <span class="tx-black">국어</span> <span class="row-line">|</span> 
+                            <span class="tx-deep-blue">정채영교수</span> <span class="row-line">|</span> 완강
                         </td>
                         <td class="w-lec">
                             2018 정채영 국어[현대] 문학 종결자 문학 집중강의(5-6월)<br/>

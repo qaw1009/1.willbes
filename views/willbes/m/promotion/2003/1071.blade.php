@@ -5,6 +5,18 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtTop a {position: absolute; width: 31.11%; height: 17.47%; z-index: 2;}
+    .evtTop a.a01 {left: 2.78%; top: 75.6%;}
+    .evtTop a.a02 {left: 34.31%; top: 75.6%;}
+    .evtTop a.a03 {left: 65.97%; top: 75.6%;}
+
+    .evt03 a {position: absolute; left: 69.31%; width: 21.53%; height: 4.39%; z-index: 2;}
+    .evt03 a.b01 {top: 35.54%;}
+    .evt03 a.b02 {top: 42.3%;}
+    .evt03 a.b03 {top: 48.92%;}
+    .evt03 a.b04 {top: 62.1%;}
+    .evt03 a.b05 {top: 70.75%;}
+    .evt03 a.b06 {top: 82.49%;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media all and (min-width:320px) and (max-width:408px) {       
@@ -28,32 +40,28 @@
 
 <div id="Container" class="Container NSK c_both">   
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_graph.gif" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_graph.gif" alt="그래프" >
     </div> 
 
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_top.jpg" alt="" usemap="#Map1071m_youtube" border="0" >
-        <map name="Map1071m_youtube" id="Map1071m_youtube">
-            <area shape="rect" coords="24,571,240,694" href="https://youtu.be/FYzC6MElEzw?rel=0 " target="_blank">
-            <area shape="rect" coords="250,571,465,693" href="https://youtu.be/9dxrpJ6TOZg?rel=0 " target="_blank">
-            <area shape="rect" coords="477,570,693,694" href="https://youtu.be/_RDnE7u4k8U?rel=0 " target="_blank">
-        </map>
+    <div class="evtCtnsBox evtTop">
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1071m_top.jpg" alt="통신/전기 최우영" >
+        <a href="https://youtu.be/FYzC6MElEzw?rel=0" target="_blank" class="a01"></a>
+        <a href="https://youtu.be/9dxrpJ6TOZg?rel=0" target="_blank" class="a02"></a>
+        <a href="https://youtu.be/_RDnE7u4k8U?rel=0" target="_blank" class="a03"></a>
     </div> 
 
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1071m_02.jpg" alt="" >
     </div> 
     
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox evt03">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1071m_03.jpg" alt="" usemap="#Map1071m_apply" border="0" >
-        <map name="Map1071m_apply" id="Map1071m_apply">
-            <area shape="rect" coords="512,553,640,602" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직">
-            <area shape="rect" coords="512,653,640,702" href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직">
-            <area shape="rect" coords="512,753,642,802" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직">
-            <area shape="rect" coords="513,953,641,1002" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/177169" target="_blank" alt="국가직">
-            <area shape="rect" coords="512,1083,640,1133" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/176489" target="_blank" alt="전기직">
-            <area shape="rect" coords="512,1262,641,1310" href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" alt="단가 수강신청">
-        </map>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" target="_blank" class="b01"></a>
+        <a href="https://pass.willbes.net/m/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" target="_blank" class="b02"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" target="_blank" class="b03"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직" target="_blank" class="b04"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직" target="_blank" class="b05"></a>
+        <a href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" title="단가 수강신청" class="b06"></a>
     </div>   
 </div>
 <!-- End Container -->

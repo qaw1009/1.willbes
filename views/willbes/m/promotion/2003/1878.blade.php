@@ -11,11 +11,13 @@
     .evt00 .dday {font-size:22px;padding:20px 0;}
     .evt00 .dday span {color:#435d96; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
 
-    .evt04 {background:#062C5D;}
-    .check {padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
+    .evt04 {position:relative;}
+    .evt04 .a01 {position: absolute; left: 53.06%; top: 86.11%; width: 24.03%; height: 6.44%; margin:0; padding:0; z-index: 5;}
+
+    .check {background:#062C5D; padding:20px 0px 40px 10px; letter-spacing:0; color:#fff; z-index:5}
     .check label {cursor:pointer; font-size:14px;color:#fff;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a {display:block;padding:10px 20px; color:#000; background:#fff; margin-top:20px; border-radius:20px; font-size:14px;font-weight:bold;}
+    .check > a {display:block; width:80%; padding:10px 20px; color:#000; background:#fff; margin:20px auto 0; border-radius:20px; font-size:14px;font-weight:bold;}
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -70,18 +72,17 @@
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1878m_04.jpg" alt="" usemap="#Map1878m_apply" border="0" >
-        <map name="Map1878m_apply" id="Map1878m_apply">
-            <area shape="rect" coords="382,779,556,829" href="javascript:go_PassLecture('173499');">
-        </map>
-        <div class="check">
-            <label>
-                <input name="ischk" type="checkbox" value="Y" />
-                페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
-            </label>
-            <a href="#infoText">이용안내 확인하기 ↓</a>
-        </div>     
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1878m_04.jpg" alt="" >
+        <a href="javascript:go_PassLecture('173499');" class="a01"></a>           
     </div> 
+
+    <div class="evtCtnsBox check">
+        <label>
+            <input name="ischk" type="checkbox" value="Y" />
+            페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+        </label>
+        <a href="#infoText">이용안내 확인하기 ↓</a>
+    </div>  
 
     <div class="evtCtnsBox evtFooter" id="infoText">
         <h3 class="NSK-Black">2021 국가직 7급 전문과목 PASS 이용안내</h3>

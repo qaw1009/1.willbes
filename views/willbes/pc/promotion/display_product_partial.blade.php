@@ -245,6 +245,25 @@
         .group_h1 {width: 100%; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
     </style>
     <script src="/public/js/willbes/product_util.js"></script>
+    <script>
+        function productGroupShowBuyLayer($chk_obj, $target_id) {
+            var $target_layer = $('#' + $target_id);
+
+            if($chk_obj.is(':checked')) {
+                var top = $chk_obj.offset().top - 210;  // 180
+                var right = 580;
+
+                $target_layer.css({
+                    'top': top,
+                    'right': right,
+                    'position': 'absolute'
+                }).addClass('active');
+            } else {
+                $target_layer.find('.pocketBox').css('display','none').hide();
+                $target_layer.removeClass('active');
+            }
+        }
+    </script>
 @endif
 <script type="text/javascript">
     var $dp_prod_form{{$group_num}} = $('#dp_prod_form{{$group_num}}');
@@ -257,7 +276,7 @@
             // 목록 페이지
             // 상품 선택/해제
             $dp_prod_form{{$group_num}}.on('change', '.chk_products, .chk_books', function() {
-                showBuyLayer('on', $(this), 'buy_layer{{$group_num}}');
+                productGroupShowBuyLayer($(this), 'buy_layer{{$group_num}}');
                 setCheckLectureProduct($dp_prod_form{{$group_num}}, $(this), '', '', '', '');
             });
 

@@ -84,8 +84,8 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1994_03.gif" alt="" usemap="#Map1994A" border="0" />
             <map name="Map1994A" id="Map1994A">
-                <area shape="rect" coords="111,317,604,403" href="https://njob.willbes.net/m/userPackage/show/cate/3114/prod-code/177081" target="_blank" alt="시작하기" />
-                <area shape="rect" coords="255,422,449,460" href="https://njob.willbes.net/m/support/notice/show/cate/3114?board_idx=296682" target="_blank" alt="이용안내" />
+                <area shape="rect" coords="111,317,604,403" href="https://njob.willbes.net/userPackage/show/cate/3114/prod-code/177081" target="_blank" alt="시작하기" />
+                <area shape="rect" coords="255,422,449,460" href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=296682" target="_blank" alt="이용안내" />
             </map>
         </div>
         

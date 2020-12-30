@@ -72,13 +72,12 @@
 
     <div class="evtCtnsBox evt03">
         <a href="https://njob.willbes.net/userPackage/show/cate/3114/prod-code/177081" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1994_03_01.jpg" alt="시작하기"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1994_03_01.gif" alt="시작하기"/>
         </a>
         <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=296682" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1994_03_02.jpg" alt="이용안내"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1994_03_02.gif" alt="이용안내"/>
         </a>        
     </div> 
-
 </div>
 <!-- End Container -->
 

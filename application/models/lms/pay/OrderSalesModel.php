@@ -283,7 +283,7 @@ class OrderSalesModel extends BaseOrderModel
                     left join ' . $this->_table['code'] . ' as CPT
                         on PL.PackTypeCcd = CPT.Ccd and CPT.IsStatus = "Y"                
                     left join ' . $this->_table['code'] . ' as CPP
-                        on PL.StudyPeriod = CPP.CcdValue and CPP.IsStatus = "Y"';
+                        on PL.StudyPeriod = CPP.CcdValue and CPP.IsStatus = "Y" and CPP.GroupCcd = "' . $this->_group_ccd['PeriodPackDays'] . '"';
                 $column .= ', PL.SchoolYear, CPT.CcdName as PackTypeCcdName, CPP.CcdName as PackPeriodCcdName';
                 $excel_column .= 'SchoolYear, PackTypeCcdName, PackPeriodCcdName, RealSalePrice, SalePrice, SaleStatusCcdName, tOrderProdCnt';
                 break;

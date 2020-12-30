@@ -132,7 +132,7 @@
 
     <div class="evtCtnsBox evt03" id="tab02">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
-        <p>11.30(월)이 지나면 한정특가가 마감됩니다!</p>
+        {{--<p>11.30(월)이 지나면 한정특가가 마감됩니다!</p>--}}
         <ul>
             <li>
                 <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/175749" target="_blank">

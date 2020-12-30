@@ -13,7 +13,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/ 
 
@@ -56,7 +56,7 @@
             from{margin-left:300px; opacity: 0;}
             to{margin-left:10px; opacity: 1;}
         }
-        .evt_top div {height:100%; position:absolute; width:100%}
+        /*.evt_top div {height:100%; position:absolute; width:100%}*/
         .evt_top div.star01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_star01.png) no-repeat center top;
             animation:starA 3s ease-in infinite;-webkit-animation:starA 3s ease-in infinite}
         @@keyframes starA{

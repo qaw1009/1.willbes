@@ -275,7 +275,7 @@
         if ($is_show === false || $is_professor === true) {
             // 목록 페이지
             // 상품 선택/해제
-            $dp_prod_form{{$group_num}}.on('change', '.chk_products, .chk_books', function() {
+            $dp_prod_form{{$group_num}}.on('change', '.chk_products', function() {
                 productGroupShowBuyLayer($(this), 'buy_layer{{$group_num}}');
                 setCheckLectureProduct($dp_prod_form{{$group_num}}, $(this), '', '', '', '');
             });

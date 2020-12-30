@@ -26,6 +26,39 @@
         .wb_evt04 {background:#f4f4f4; padding-bottom:150px}     
         
         h1 {width: 1120px; font-size:30px; font-weight:600; margin:50px auto 20px; text-align:left}
+
+        .proLecDp {
+            display:none;
+            background: #fff;
+            position: absolute;
+            top: -130px;
+            left: -45px;
+            width: 275px;
+            font-size: 13px;
+            color: #3a3a3a;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid #2f2f2f;
+            padding: 30px 25px;
+            z-index: 9999;
+        }
+        .proLecDp .closeBtn {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 11px;
+            heighT: 11px;
+            line-height: 9px;
+        }
+        .proLecDp .aBox {
+        width: 57px;
+        height: 23px; 
+        }
+        .proLecDp .aBox a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -58,9 +91,19 @@
 
             <h1>기간제 패키지 강좌</h1>
             @include('html.promotion.1015_promotionLecPkgB')
-        </div>        
+        </div>    
 
     </div>
-    <!-- End Container -->
+    <!-- End Container -->   
+
+    <script type="text/javascript">
+        $('.lecBuyBtns .btnCart a').click(function(){
+            $('.proLecDp').show()
+        })
+        $('.proLecDp .closeBtn').click(function(){
+            $('.proLecDp').hide()
+        })
+    </script>
+
 
 @stop

@@ -52,7 +52,7 @@
                                             장바구니로 이동하시겠습니까?
                                             <ul class="NSK mt20">
                                                 <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                                <li class="aBox closeBox_block"><a href="#none"">계속구매</a></li>
+                                                <li class="aBox closeBox_block"><a href="#none">계속구매</a></li>
                                             </ul>
                                         </div>
                                     </td>

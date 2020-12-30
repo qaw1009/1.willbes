@@ -85,12 +85,13 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/04/1015_04_title.jpg" title="기본이론 강좌"/>
             <h1>단과 강좌</h1>
             @include('html.promotion.1015_promotionLecList')
-
+            {{--
             <h1>운영자 패키지 강좌</h1>
             @include('html.promotion.1015_promotionLecPkgA')
 
             <h1>기간제 패키지 강좌</h1>
             @include('html.promotion.1015_promotionLecPkgB')
+            --}}
         </div>    
 
     </div>

@@ -16,7 +16,6 @@
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
     }
-
 </style>
 
 <div id="Container" class="Container NSK c_both">  

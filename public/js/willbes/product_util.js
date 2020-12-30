@@ -227,7 +227,7 @@ function showBuyLayer($type, $chk_obj, $target_id) {
             }
         } else if ($type === 'book') {
             right = 292;    // 242
-        } else if($type == 'promotion'){
+        } else if($type === 'promotion'){
             right += 288;
         }else{
             right = 186;    // 166

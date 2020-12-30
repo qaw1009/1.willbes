@@ -215,6 +215,7 @@ function showBuyLayer($type, $chk_obj, $target_id) {
         //var top = $chk_obj.offset().top;
         //var left = $chk_obj.offset().left - 52;
         var top = $chk_obj.offset().top - 222;  // 180
+        console.log(top);
         if (top_bn_height !== null && typeof top_bn_height !== 'undefined') {
             // top banner height 적용
             top = top - top_bn_height;
@@ -227,7 +228,9 @@ function showBuyLayer($type, $chk_obj, $target_id) {
             }
         } else if ($type === 'book') {
             right = 292;    // 242
-        } else {
+        } else if($type == 'promotion'){
+            right += 288;
+        }else{
             right = 186;    // 166
         }
 

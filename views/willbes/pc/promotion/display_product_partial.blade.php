@@ -257,7 +257,7 @@
             // 목록 페이지
             // 상품 선택/해제
             $dp_prod_form{{$group_num}}.on('change', '.chk_products, .chk_books', function() {
-                showBuyLayer('on', $(this), 'buy_layer{{$group_num}}');
+                showBuyLayer('promotion', $(this), 'buy_layer{{$group_num}}');
                 setCheckLectureProduct($dp_prod_form{{$group_num}}, $(this), '', '', '', '');
             });
 

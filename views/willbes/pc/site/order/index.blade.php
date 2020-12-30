@@ -389,7 +389,7 @@
                 <div class="willbes-BuyInfo c_both">
                     <div class="willbes-Lec-Tit NG tx-black">결제정보</div>
                     <div class="buyInfoTable GM">
-                        <table cellspacing="0" cellpadding="0" class="classTable tx-gray">
+                        <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                             <colgroup>
                                 <col style="width: 140px;">
                                 <col width="*">
@@ -407,9 +407,9 @@
                                                 <span class="w-point">적립예정포인트: <span class="tx-light-blue"><span id="total_save_point">{{ number_format($results['total_save_point']) }}</span>원</span></span>
                                             @endif
                                         </dt>
-                                        <dt>
+                                        <dd>
                                             <div id="delivery_add_price_caution_txt" class="caution-txt"></div>
-                                        </dt>
+                                        </dd>
                                     </dl>
                                 </td>
                             </tr>
@@ -426,7 +426,7 @@
                                                     @endforeach
                                                 </ul>
                                             </dt>
-                                            <dt><div id="pay_method_caution_txt" class="caution-txt"></div></dt>
+                                            <dd><div id="pay_method_caution_txt" class="caution-txt"></div></dd>
                                         </dl>
                                     </td>
                                 </tr>
@@ -443,7 +443,7 @@
                                                     <li><input type="radio" name="is_escrow" value="N" class="" checked="checked"/><label>미사용</label></li>
                                                 </ul>
                                             </dt>
-                                            <dt><div class="caution-txt">[에스크로란?] 회원님께서 결제하신 금액을 에스크로업체에서 예치하고 있다가 상품이 회원님께 소중히 전달된 후 판매자에게 지불되는 방식</div></dt>
+                                            <dd><div class="caution-txt">[에스크로란?] 회원님께서 결제하신 금액을 에스크로업체에서 예치하고 있다가 상품이 회원님께 소중히 전달된 후 판매자에게 지불되는 방식</div></dd>
                                         </dl>
                                     </td>
                                 </tr>

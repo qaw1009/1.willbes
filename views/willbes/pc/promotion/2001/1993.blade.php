@@ -48,7 +48,7 @@
         .giftPop span {display:block; position:absolute; top:343px; width:100%; text-align:center; z-index:10}
 
         .wb_01 {width:1120px; margin}
-        .wb_02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/12/1993_02_bg.jpg) repeat-x center top; margin-top:100px}
+        .wb_02 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/12/1993_02_bg.jpg) repeat-x center top;margin:100px 0;}
 
         /* 이용안내 */
         .wb_info {padding:100px 0; background:#555; color:#fff}
@@ -103,11 +103,7 @@
         @endif
 
         <div class="evtCtnsBox wb_02" id="wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02_01.gif" alt="온라인 관리반 체험단" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02_02.jpg" alt="온라인 관리반 체험단" usemap="#Map1993A" border="0" />
-            <map name="Map1993A" id="Map1993A">
-                <area shape="rect" coords="362,484,757,567" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="다운로드" />
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1993_02_01.gif" alt="온라인 관리반 체험단" />
         </div>
     </div>
     <!-- End Container -->

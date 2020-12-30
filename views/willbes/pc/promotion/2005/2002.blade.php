@@ -133,7 +133,7 @@
             <div class="title NSK-Black">[국립외교원] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif  
             </div>
         @endif
@@ -141,7 +141,7 @@
             <div class="title NSK-Black">[PSAT] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif  
             </div>
         @endif
@@ -149,7 +149,7 @@
             <div class="title NSK-Black">[5급헌법] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
                 @endif  
             </div>
         @endif
@@ -157,7 +157,7 @@
             <div class="title NSK-Black">[법원행시] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
                 @endif  
             </div>
         @endif
@@ -165,7 +165,7 @@
             <div class="title NSK-Black">[변호사] 2021 Dreams come true! 동영상 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>6))
                 @endif  
             </div>
         @endif

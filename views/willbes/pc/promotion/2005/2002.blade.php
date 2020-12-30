@@ -5,6 +5,7 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
+            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -12,7 +13,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/ 
 

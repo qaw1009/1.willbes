@@ -11,6 +11,15 @@
     .evt00 .dday {font-size:22px;padding:20px 0;}
     .evt00 .dday span {color:#435d96; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
 
+    .evt03 a {position: absolute; width: 41.94%; height: 3.88%; z-index: 2;}
+    .evt03 a.a01 {left: 51.81%; top: 8.4%;}
+    .evt03 a.a02 {left: 51.81%; top: 22.08%;}
+    .evt03 a.a03 {left: 51.81%; top: 35.6%;}
+    .evt03 a.a04 {left: 51.81%; top: 49.32%;}
+    .evt03 a.a05 {left: 51.81%; top: 62.68%;}
+    .evt03 a.a06 {left: 51.81%; top: 76.48%;}
+    .evt03 a.a07 {left: 51.81%; top: 90%;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media all and (min-width:320px) and (max-width:408px) {       
 
@@ -35,7 +44,7 @@
 <div id="Container" class="Container NSK c_both">     
     
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_top.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_top.jpg" alt="윌비스 티패스" >
     </div>
 
     <div class="evtCtnsBox evt00 ddayArea">
@@ -45,28 +54,26 @@
     </div>      
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_top2.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_top2.jpg" alt="고득점 완성" >
     </div> 
     
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_step.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_step.jpg" alt="전략적 계획, 효율적 학습" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_pass.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_pass.jpg" alt="고득점 합격" >
     </div> 
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_apply.jpg" alt="" usemap="#Map1842m_apply" border="0" >
-        <map name="Map1842m_apply" id="Map1842m_apply">
-            <area shape="rect" coords="21,54,701,336" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
-            <area shape="rect" coords="21,395,699,674" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank" />
-            <area shape="rect" coords="18,734,700,1013" href="https://pass.willbes.net/promotion/index/cate/3019/code/1788" target="_blank" />
-            <area shape="rect" coords="21,1075,700,1354" href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_blank" />
-            <area shape="rect" coords="19,1414,701,1697" href="https://pass.willbes.net/promotion/index/cate/3019/code/1792" target="_blank" />
-            <area shape="rect" coords="21,1755,699,2035" href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_blank" />
-            <area shape="rect" coords="19,2093,700,2376" href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_blank" />
-        </map> 
+        <img src="https://static.willbes.net/public/images/promotion/2020/10/1842m_apply.jpg" alt="교수진">
+        <a title="국어 기미진" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" class="a01"></a>
+        <a title="영어 한덕현" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="_blank" class="a02"></a>
+        <a title="한국사 조민주" href="https://pass.willbes.net/promotion/index/cate/3019/code/1788" target="_blank" class="a03"></a>
+        <a title="한국사 오태진" href="https://pass.willbes.net/promotion/index/cate/3019/code/1392" target="_blank" class="a04"></a>
+        <a title="행정법 이석준" href="https://pass.willbes.net/promotion/index/cate/3019/code/1792" target="_blank" class="a05"></a>
+        <a title="행정법/헌법 황남기" href="https://pass.willbes.net/promotion/index/cate/3019/code/1077" target="_blank" class="a06"></a>
+        <a title="행정학 김덕관" href="https://pass.willbes.net/promotion/index/cate/3019/code/1080" target="_blank" class="a07"></a>
     </div> 
 
 </div>

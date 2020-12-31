@@ -4,9 +4,7 @@
 <!-- Container -->
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
-    .evtCtnsBox img {width:100%; max-width:720px;}
-
-    
+    .evtCtnsBox img {width:100%; max-width:720px;}  
 
 
     .evtTop {position:relative}
@@ -84,10 +82,8 @@
     </div>
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_02.jpg" alt="선택하는 이유" usemap="#Map1728A" border="0" >
-        <map name="Map1728A">
-            <area shape="rect" coords="450,562,618,630" href="https://m.cafe.daum.net/sharkchoi" target="_blank" alt="카페바로가기">
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1728m_02.jpg" alt="선택하는 이유">
+        <a href="https://m.cafe.daum.net/sharkchoi" target="_blank" title="카페바로가기" style="position: absolute; left: 61.94%; top: 55.12%; width: 25%; height: 6.4%; z-index: 2;"></a>
     </div>
     {{--
     <div class="evtCtnsBox">

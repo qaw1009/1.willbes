@@ -15,6 +15,13 @@
         animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
     
+    .evt02 a {position: absolute; width:26.94%; height:2.88%; z-index: 2;}
+    .evt02 a.a01 {left: 13.61%; top: 41.19%;}
+    .evt02 a.a02 {left: 59.03%; top: 41.19%;}
+    .evt02 a.a03 {left: 13.75%; top: 63.3%;}
+    .evt02 a.a04 {left: 59.31%; top: 63.3%;}
+    .evt02 a.a05 {left: 13.33%; top: 85.1%;}
+    .evt02 a.a06 {left: 59.31%; top: 85.1%;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
@@ -41,15 +48,13 @@
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1950m_03.jpg" alt="공무원 합격, 윌비스에서 시작하세요." usemap="#Map1951B" border="0" >
-        <map name="Map1951B">
-          <area shape="rect" coords="100,790,290,842" href="https://pass.willbes.net/m/home/index/cate/3019" target="_blank" alt="9급패스">
-          <area shape="rect" coords="431,789,621,840" href="https://pass.willbes.net/m/home/index/cate/3103" target="_blank" alt="7급패스">
-          <area shape="rect" coords="100,1211,289,1259" href="https://pass.willbes.net/m/home/index/cate/3035" target="_blank" alt="김동진법원팀">
-          <area shape="rect" coords="432,1211,617,1258" href="https://pass.willbes.net/m/home/index/cate/3023" target="_blank" alt="소방패스">
-          <area shape="rect" coords="102,1632,286,1678" href="https://pass.willbes.net/m/home/index/cate/3028" target="_blank" alt="기술직">
-          <area shape="rect" coords="431,1632,621,1678" href="https://pass.willbes.net/m/home/index/cate/3024" target="_blank" alt="군무원">
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1950m_03.jpg" alt="공무원 합격, 윌비스에서 시작하세요."  >
+        <a href="https://pass.willbes.net/m/home/index/cate/3019" target="_blank" alt="9급패스" class="a01">
+        <a href="https://pass.willbes.net/m/home/index/cate/3103" target="_blank" alt="7급패스" class="a02">
+        <a href="https://pass.willbes.net/m/home/index/cate/3035" target="_blank" alt="김동진법원팀" class="a03">
+        <a href="https://pass.willbes.net/m/home/index/cate/3023" target="_blank" alt="소방패스" class="a04"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3028" target="_blank" alt="기술직" class="a05"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3024" target="_blank" alt="군무원" class="a06"></a>
     </div>
 </div>
 

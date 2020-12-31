@@ -4,7 +4,10 @@
 <!-- Container -->
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; font-size:14px; line-height:1.5; position:relative;}
-    .evtCtnsBox img {width:100%; max-width:720px;}    
+    .evtCtnsBox img {width:100%; max-width:720px;}   
+    
+    .evt02 a {position: absolute; left: 10.56%; top: 88.79%; width: 77.36%; height: 6.36%; z-index: 2;}
+    .evt03 a {position: absolute; left: 12.22%; top: 86.35%; width: 77.08%; height: 6.44%; z-index: 2;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
@@ -21,17 +24,13 @@
     </div>  
    
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_02.jpg" alt="한덕현 모의고사" usemap="#Map1297A" border="0" >
-        <map name="Map1297A">
-            <area shape="rect" coords="77,934,635,1004" href="https://pass.willbes.net/m/pass/professor/show/prof-idx/50500?cate_code=3043&subject_idx=1254" target="_blank">
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_02.jpg" alt="한덕현 모의고사">
+        <a href="https://pass.willbes.net/m/pass/professor/show/prof-idx/50500?cate_code=3043&subject_idx=1254" title="한덕현 모의고사" target="_blank"></a>        
     </div>
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_03.jpg" alt="기미진 모의고사" usemap="#Map1297B" border="0" >
-        <map name="Map1297B">
-            <area shape="rect" coords="90,898,642,966" href="#none">
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_03.jpg" alt="기미진 모의고사" >
+        <a href="javascript:alert('준비중입니다.');" title="기미진 모의고사"></a>
     </div>
 
     <div class="evtCtnsBox evt04">

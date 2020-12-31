@@ -33,6 +33,14 @@
         width: 30px;
     }
 
+    .evt05 a {position: absolute; top: 85.08%; width: 29.58%; height: 9.08%; z-index: 2;}
+    .evt05 a.a01 {left: 15.14%;}
+    .evt05 a.a02 {left: 54.44%;}
+
+    .evt06 a {position: absolute; top: 85.08%; width: 29.58%; height: 9.08%; z-index: 2;}
+    .evt06 a.b01 {left: 15.14%;}
+    .evt06 a.b02 {left: 54.44%;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
 
@@ -83,35 +91,28 @@
     </div> 
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_05.jpg" alt="농업직 이론 패키지" usemap="#Map1068m_a" border="0" >
-        <map name="Map1068m_a" id="Map1068m_a">
-            <area shape="rect" coords="115,562,315,603" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171517" />
-            <area shape="rect" coords="398,562,600,604" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171522" />
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_05.jpg" alt="농업직 이론 패키지">
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171517" title="농업직 기본심화이론" target="_blank" class="a01"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171522" title="7급 농업직" target="_blank" class="a02"></a>
     </div> 
 
     <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_06.jpg" alt="농촌지도사 이론 패키지" usemap="#Map1068m_b" border="0" >
-        <map name="Map1068m_b" id="Map1068m_b">
-            <area shape="rect" coords="116,562,315,603" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171775" />
-            <area shape="rect" coords="400,562,599,602" href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171777" />
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171775" title="농촌지도사 경기인천외" class="b01"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171777" title="농촌지도사 경기인천" class="b02"></a>
     </div> 
 
     <div class="evtCtnsBox evt07">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_07.jpg" alt="수강신청 바로가기" usemap="#Map1068m_c" border="0" >
-        <map name="Map1068m_c" id="Map1068m_c">
-            <area shape="rect" coords="476,77,588,114" href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" />
-        </map>
-    </div> 
-    
+        <a href="https://pass.willbes.net/m/professor/show/cate/3028/prof-idx/50429/?subject_idx=1171&subject_name=%EC%9E%AC%EB%B0%B0%ED%95%99" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_07.jpg" alt="수강신청 바로가기">
+        </a>
+    </div>     
 </div>
 
 <!-- End Container -->
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
-<script type="text/javascript">   
-
+<script type="text/javascript"> 
     $(document).ready(function() {
         var slidesImg1 = $("#slidesImg1").bxSlider({
             auto: true, 
@@ -123,7 +124,6 @@
             pager:true,
         });        
     });
-
 </script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->

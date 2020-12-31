@@ -6,6 +6,14 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
+    .evt04 a {position: absolute; width:26.94%; height:2.88%; z-index: 2;}
+    .evt04 a.a01 {left: 16.67%; top: 38.32%;}
+    .evt04 a.a02 {left: 63.89%; top: 38.32%;}
+    .evt04 a.a03 {left: 16.67%; top: 63.23%;}
+    .evt04 a.a04 {left: 63.89%; top: 63.23%;}
+    .evt04 a.a05 {left: 16.67%; top: 87.68%;}
+    .evt04 a.a06 {left: 63.89%; top: 87.68%;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media all and (min-width:320px) and (max-width:408px) {       
 
@@ -39,16 +47,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1084m_03.jpg" alt="" >
     </div>
     
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1084m_04.jpg" alt="" usemap="#Map1084A" border="0" >
-        <map name="Map1084A">
-            <area shape="rect" coords="49,353,331,680" href="https://pass.willbes.net/m/home/index/cate/3019" target="_blank" alt="9급패스">
-            <area shape="rect" coords="387,352,669,681" href="https://pass.willbes.net/m/home/index/cate/3020" target="_blank" alt="7급패스">
-            <area shape="rect" coords="48,731,332,1064" href="https://pass.willbes.net/m/home/index/cate/3035" target="_blank" alt="법원직패스">
-            <area shape="rect" coords="389,730,670,1064" href="https://pass.willbes.net/m/home/index/cate/3023" target="_blank" alt="소방직패스">
-            <area shape="rect" coords="47,1110,331,1442" href="https://pass.willbes.net/m/home/index/cate/3028" target="_blank" alt="기술직">
-            <area shape="rect" coords="389,1111,670,1441" href="https://pass.willbes.net/m/home/index/cate/3024" target="_blank" alt="군무원패스">
-        </map>
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2020/08/1084m_04.jpg" alt="" >
+        <a href="https://pass.willbes.net/m/home/index/cate/3019" title="9급패스" target="_blank" class="a01"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3020" title="7급패스" target="_blank" class="a02"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3035" title="법원직패스" target="_blank" class="a03"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3023" title="소방직패스" target="_blank" class="a04"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3028" title="기술직" target="_blank" class="a05"></a>
+        <a href="https://pass.willbes.net/m/home/index/cate/3024" title="군무원패스" target="_blank" class="a06"></a>
     </div>  
 </div>
 <!-- End Container -->

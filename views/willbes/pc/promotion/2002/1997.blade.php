@@ -16,7 +16,7 @@
 
         /************************************************************/
         .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:10;}
-        .skyBanner a {display:block; margin-bottom:5px}
+        .skyBanner a {display:block; margin-bottom:15px}
        
         .evt00 {background:#0a0a0a}
         .evtTop {background:#456DDC url(https://static.willbes.net/public/images/promotion/2020/12/1997_top_bg.jpg) no-repeat center top;}     
@@ -59,7 +59,8 @@
             
             <div class="skyBanner">               
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
-            </div>
+                <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/01/1997_sky02.png" alt="수강신청"></a>
+            </div>            
 
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원 1위">
@@ -183,8 +184,12 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1997_05.jpg" alt="준비중">                
+            <div class="evtCtnsBox evt05" id="apply">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1997_05.jpg" alt="수강신청" usemap="#Map1997a" border="0">
+                <map name="Map1997a" id="Map1997a">
+                    <area shape="rect" coords="238,312,475,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177325" target="_blank" />
+                    <area shape="rect" coords="640,311,875,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177326" target="_blank" />
+                </map>  
             </div>
         </form>
 	</div>

@@ -16,10 +16,6 @@
 
         <div class="passProfTabs c_both">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
-                <colgroup>
-                    <col style="width: 15%;">
-                    <col style="width: 85%;">
-                </colgroup>
                 <tbody>
                 <tr>
                     <td>
@@ -27,7 +23,7 @@
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                             <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                         </div>
-                        <div class="w-data tx-left pl15">
+                        <div class="w-data tx-left pl15 pb10">
                             @if($lec['LecTypeCcd'] == '607003')
                                 <div class="OTclass mr10"><span>직장인반</span></div>
                             @endif
@@ -37,25 +33,27 @@
                             <div class="w-tit">
                                 {{$lec['subProdName']}}
                             </div>
-                        </div>
-                        <div class="w-info tx-gray bdt-bright-gray">
-                            <dl>
-                                <dt><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</dt><br/>
-                                <dt><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span><!-- (1강/20강) --><span class="row-line">|</span>
-                                    <strong>잔여기간 :</strong> <span class="tx-blue">
-                                        @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
-                                            {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
-                                        @elseif(empty($lec['lastPauseEndDate']) == true)
-                                            {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
-                                        @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
-                                            {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
-                                        @else
-                                            {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
-                                        @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})</dt>
-                            </dl>
-                        </div>
-                        @if($lec['wControlCountUse'] > 0)
-                            <div class="w-info tx-gray bdt-bright-gray">
+                            <div class="w-info tx-gray">
+                                <dl>
+                                    <dt class="h22"><strong>강좌정보 :</strong> {{$lec['wLectureProgressCcdName']}}<span class="row-line">|</span>{{$lec['MultipleApply'] == '1' ? '무제한' : round($lec['MultipleApply'], 1).'배수' }}</dt><br/>
+                                    <dt class="h22"><strong>진도율 :</strong> <span class="tx-blue">{{$lec['StudyRate']}}%</span></dt><br/>
+                                    <dt class="h22">                                    
+                                        <strong>잔여기간 :</strong> <span class="tx-blue">
+                                            @if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
+                                            @elseif(empty($lec['lastPauseEndDate']) == true)
+                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                            @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
+                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
+                                            @else
+                                                {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                            @endif</span>({{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}})
+                                    </dt>
+                                </dl>
+                            </div>                            
+                        </div>                     
+                       @if($lec['wControlCountUse'] > 0)
+                            <div class="w-info tx-gray bdt-bright-gray lh1_5">
                                 ※ 해당 강좌는 회차별 자료 인쇄 제한이 있습니다.<br/>
                                 자료는 PC에서만 확인 가능합니다.
                             </div>
@@ -65,6 +63,7 @@
                 </tbody>
             </table>
         </div>
+
         <div class="buttonTabs passTabs c_both">
             <div class="tabBox buttonBox passBox">
                 <div id="notice1" class="tabContent">
@@ -78,10 +77,10 @@
                             <input type="hidden" name="sp" value="{{$lec['ProdCodeSub']}}" />
                             <input type="hidden" name="q" id="quility" value="" />
                             <input type="hidden" name="st" value="D" />
-                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable" />
+                            <table class="lecTable">
                                 <colgroup>
-                                    <col style="width: 13%;">
-                                    <col style="width: 87%;">
+                                    <col style="width:50px;">
+                                    <col>
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -93,8 +92,8 @@
                                     <tr @if($row['StudyTime'] > 0)
                                         class="finish"
                                             @endif>
-                                        <td class="w-chk"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
-                                        <td class="w-data tx-left">
+                                        <td class="w-chk tx-center"><input type="checkbox" id="wUnitIdx" name="u[]" value="{{$row['wUnitIdx']}}" class="goods_chk unitchk" @if($row['timeover'] == 'Y')disabled="diabbled"@endif></td>
+                                        <td class="w-data tx-left pr10">
                                             <div class="w-tit mb10">
                                                 @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002')
                                                     @if($lec['IsOpenwUnitNum'] == 'Y')
@@ -156,7 +155,7 @@
                                                         @endif
                                                         --}}
                                                     @endif
-                                                </li>
+                                                </li>                                                
                                             </ul>
                                         </td>
                                     </tr>

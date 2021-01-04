@@ -17,7 +17,7 @@
 
         /************************************************************/
 
-        .wb_top {width:100%; text-align:center; background:#3c3e3f url(https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
+        .wb_top {width:100%; text-align:center; background:#292522 url(https://static.willbes.net/public/images/promotion/2021/01/1032_top_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
         .wb_top div {width:1210px; margin:0 auto; position:relative}
         .wb_top span {position:absolute; display:block; top:588px; left:425px; width:340px; z-index:10; color:#fff6c8; font-size:80px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:15px}
 
@@ -51,6 +51,18 @@
         #slidesCts3 li {display:inline; float:left; width:900px; position:static; left:0}
         #slidesCts3:after {content:""; display:block; clear:both}
 
+        .wb_07 {width:100%; text-align:center; background:#faf8f5; min-width:1210px; padding:150px 0}
+        .wb_07 .evTabs {width:833px; margin:30px auto 0; text-align: center;}
+        .wb_07 .evTabs li {display:inline; float:left; text-align: center; margin-right:10px;margin-bottom:10px;width:267px;}
+        .wb_07 .evTabs li:last-child {margin:0}
+        .wb_07 .evTabs img.off {display:block}
+        .wb_07 .evTabs img.on {display:none}
+        .wb_07 .evTabs a {background:none}
+        .wb_07 .evTabs a.active img.off {display:none}
+        .wb_07 .evTabs a.active img.on {display:block}
+        .wb_07 .evTabs:after {content:""; display:block; clear:both}
+        .wb_07 .tabCts {clear:both; width:833px; margin:10px auto 0; position:relative !important}
+        .wb_07 .tabCts a {position:absolute; right:20px; top:40px; z-index:10}
 
         .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
         .wb_03 .evTabs {width:864px; margin:30px auto 0; text-align: center;}
@@ -62,7 +74,6 @@
         .wb_03 .evTabs a.active img.off {display:none}
         .wb_03 .evTabs a.active img.on {display:block}
         .wb_03 .evTabs:after {content:""; display:block; clear:both}
-
         .wb_03 .tabCts {clear:both; width:854px; margin:10px auto 0; position:relative !important}
         .wb_03 .tabCts a {position:absolute; right:20px; top:40px; z-index:10}
 
@@ -99,7 +110,7 @@
 
         <div class="wb_top">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_top.jpg" alt="신광은경찰 합격스토리 대공개" />
                 <span id="counter">9,629</span>
             </div>
         </div>
@@ -164,6 +175,104 @@
             </div>
         </div>        
         --}}
+
+        <div class="wb_07">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07.png"  alt="시크릿 노트" />
+            <ul class="evTabs">
+                <li>
+                    <a href="#tab21">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab01on.png"  alt="김성*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab01.png"  alt="김성*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab22">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab02on.png"  alt="김재*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab02.png"  alt="김재*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab23">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab03on.png"  alt="이세*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab03.png"  alt="이세*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab24">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab04on.png"  alt="이영*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab04.png"  alt="이영*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab25">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab05on.png"  alt="성찬*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab05.png"  alt="성찬*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab26">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab06on.png"  alt="김원*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab06.png"  alt="김원*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab27">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab07on.png"  alt="오혜*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab07.png"  alt="오혜*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab28">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab08on.png"  alt="윤종*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab08.png"  alt="윤종*" class="on"/>
+                    </a>
+                </li>   
+                <li>
+                    <a href="#tab29">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab09on.png"  alt="박제*" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab09.png"  alt="박제*" class="on"/>
+                    </a>
+                </li>                            
+            </ul>
+
+            <div id="tab21" class="tabCts">
+                <a onclick="go_popup21()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab01_cts.png"  alt="시크릿노트 김성*"/>
+            </div>
+            <div id="tab22" class="tabCts">
+                <a onclick="go_popup22()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab02_cts.png"  alt="시크릿노트 김재*"/>
+            </div>
+            <div id="tab23" class="tabCts">
+                <a onclick="go_popup23()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab03_cts.png"  alt="시크릿노트 이세*"/>
+            </div>
+            <div id="tab24" class="tabCts">
+                <a onclick="go_popup24()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab04_cts.png"  alt="시크릿노트 이영*"/>
+            </div>
+            <div id="tab25" class="tabCts">
+                <a onclick="go_popup25()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab05_cts.png"  alt="시크릿노트 성찬*"/>
+            </div>
+            <div id="tab26" class="tabCts">
+                <a onclick="go_popup26()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab06_cts.png"  alt="시크릿노트 김원*"/>
+            </div>
+            <div id="tab27" class="tabCts">
+                <a onclick="go_popup27()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab07_cts.png"  alt="시크릿노트 오혜*"/>>
+            </div>
+            <div id="tab28" class="tabCts">
+                <a onclick="go_popup28()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab08_cts.png"  alt="시크릿노트 윤종*"/>
+            </div>
+            <div id="tab29" class="tabCts">
+                <a onclick="go_popup29()"><img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_btn.png"  alt="시크릿노트"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab09_cts.png"  alt="시크릿노트 박제*"/>
+            </div>
+
+        </div>
 
         <div class="wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_top.png"  alt="합격비법을 공개합니다." />
@@ -339,6 +448,60 @@
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_tab8_pop.jpg" alt="합격비법 김원*"/>
                 </div>
             </div>
+            <div id="popup21" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab01_pop.png" alt="시크릿노트 김성*"/>
+                </div>
+            </div>
+            <div id="popup22" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab02_pop.png" alt="시크릿노트 김재*"/>
+                </div>
+            </div>
+            <div id="popup23" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab03_pop.png" alt="시크릿노트 이세*"/>
+                </div>
+            </div>
+            <div id="popup24" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab04_pop.png" alt="시크릿노트 이영*"/>
+                </div>
+            </div>
+            <div id="popup25" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab05_pop.png" alt="시크릿노트 성찬*"/>
+                </div>
+            </div>
+            <div id="popup26" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab06_pop.png" alt="시크릿노트 김원*"/>
+                </div>
+            </div>
+            <div id="popup27" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab07_pop.png" alt="시크릿노트 오혜*"/>
+                </div>
+            </div>
+            <div id="popup28" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab08_pop.png" alt="시크릿노트 윤종*"/>
+                </div>
+            </div>
+            <div id="popup29" class="Pstyle">
+                <div class="b-close">X</div>
+                <div class="fpcontent">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab09_pop.png" alt="시크릿노트 박제*"/>
+                </div>
+            </div>
         </div><!--wb_04//-->
 
         {{--
@@ -410,10 +573,48 @@
         function go_popup6(){
             $('#popup6').bPopup();
         }
-
+        
         function go_popup7(){
             $('#popup7').bPopup();
         }
+
+        function go_popup21(){
+            $('#popup21').bPopup();
+        }
+
+        function go_popup22(){
+            $('#popup22').bPopup();
+        }
+
+        function go_popup23(){
+            $('#popup23').bPopup();
+        }
+
+        function go_popup24(){
+            $('#popup24').bPopup();
+        }
+
+        function go_popup25(){
+            $('#popup25').bPopup();
+        }
+
+        function go_popup26(){
+            $('#popup26').bPopup();
+        }
+
+        function go_popup27(){
+            $('#popup27').bPopup();
+        }
+
+        function go_popup28(){
+            $('#popup28').bPopup();
+        }
+
+        function go_popup29(){
+            $('#popup29').bPopup();
+        }
+
+
 
         $(document).ready(function(){
             $('ul.evTabs').each(function(){

@@ -9,22 +9,7 @@
         </button>    
         수강후기
     </div>
-    {{--
-    <div class="willbes-Lec-Selected NG tx-gray">
-        <select id="" name="" title="" class="width49p">
-            <option selected="selected">과목</option>
-            <option value="">교육학</option>
-            <option value="">유아</option>
-            <option value="">국어</option>
-        </select>
-        <select id="" name="" title="" class="width50p ml1p">
-            <option selected="selected">교수</option>
-            <option value="">민정선</option>
-            <option value="">이인재</option>
-            <option value="">송원영</option>
-        </select>        
-    </div>
-    --}}
+
     <div class="sortList">
         <ul>
             <li><a href="#none">교육학 김차웅</a></li>
@@ -53,7 +38,7 @@
         </ul>
     </div>
 
-    <div class="ml10">※ 수강후기 등록은 PC버전에서만 가능합니다.</div>
+    <div class="ml10 tx-red">※ 수강후기는 내강의실에서 등록 가능합니다.</div>
 
     <div class="sort">
         <a href="#none" class="on">BEST순</a>

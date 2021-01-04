@@ -23,7 +23,7 @@
             z-index:1;
         }
 
-        .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
+        .evtTop {position:relative; text-align:center; background:#fff url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
 
         .notice {position:absolute; left:50%; top:1050px; margin-left:-315px; z-index:1; width:630px; background:#fff; 
             box-shadow: 10px 19px 19px rgba(0,0,0,.2);
@@ -59,7 +59,8 @@
         .evtCts .subBtn a {background:#a32015; border:0}
 
         .evtCts tr.calendar_day td {cursor: default;}      
-        .evtCts tr.calendar_day td span.attend {display:block; width:30px; height:30px; line-height:30px; border-radius:20px; color:#fff; background:#d12c10; text-align:center}
+        .evtCts tr.calendar_day td span.attend {display:block; width:30px; height:30px; line-height:30px; border-radius:20px;
+            background:#d12c10; float:right}
         .evtCts tr.calendar_day td:hover {background:none; text-decoration:none;}
         .evtCts .btnAttend {clear:both; padding-top:30px}
         .evtCts .btnAttend a {display:block; color:#fff; background:#d12c10; font-size:20px; border-radius:40px; text-align:center; padding:15px 0}
@@ -324,7 +325,7 @@
                                     <td>2</td>
                                     <td>3</td>
                                     <td>4</td>
-                                    <td><span class="attend">5</span></td>
+                                    <td>5<span class="attend"></span></td>
                                 </tr>
                                 <tr class="calendar_day">
                                     <td>6</td>
@@ -341,7 +342,7 @@
                                     <td>15</td>
                                     <td>16</td>
                                     <td>17</td>
-                                    <td>18<a href="#noe" class="viewSchedule active">&nbsp;</a></td>
+                                    <td>18</td>
                                     <td>19</td>
                                 </tr>
                                 <tr class="calendar_day">

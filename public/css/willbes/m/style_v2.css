@@ -1856,6 +1856,7 @@ body.memBody #Footer {
     float: left;
     padding: 0 20px;
 }
+.willbes-WriteBox .lecTitle { padding:15px 0; font-size:14px; color:#000; border-bottom:1px solid #ccc; line-height: 1.5;}
 .willbes-WriteBox textarea {
     border: 1px solid #d4d4d4;
     resize: none;
@@ -1868,6 +1869,37 @@ body.memBody #Footer {
     color:#ccc;
 }
 .willbes-WriteBox textarea:focus {color:#333}
+
+/* subContainer : rating-stars */
+.rating-stars {padding:10px 0; border-bottom:1px solid #ccc}
+.rating-stars span {float: left; display: inline-block; line-height: 24px; margin-right: 10px; font-size:14px; color:#000;}
+.rating-stars ul {float: left;}
+.rating-stars ul > li.star {
+    display:inline-block;
+    margin: 0 -3px;
+}
+.rating-stars ul > li.star > i.fa,
+.rating-stars ul > li.star.selected.none > i.fa {
+    background: url("/public/img/willbes/mypage/icon_star_off.png") no-repeat center center;
+    width: 24px;
+    height: 24px;
+    display: block;  
+    cursor: pointer;
+}
+.rating-stars ul > li.star.hover > i.fa,
+.rating-stars ul > li.star.selected > i.fa {
+    background: url("/public/img/willbes/mypage/icon_star_on.png") no-repeat center center;
+}
+.rating-stars .success-box {
+    display: inline-block;
+    margin-left: 10px;
+    line-height: 24px;
+}
+.rating-stars .success-box > div {
+    vertical-align: baseline;
+    display: inline-block;
+}
+.rating-stars:after {content: ''; display: block; clear:both}
 
 .AllchkBox .chkBox-Agree {
     background: url("/public/img/willbes/login/icon_check.png") no-repeat 0 0;
@@ -2449,6 +2481,13 @@ body.memBody #Footer {
 }
 .passProfTabs .w-info strong {
     display: inline-block; width: 100px;
+}
+.passProfTabs .lecReview {margin-top:10px; text-align: right; clear: both;}
+.passProfTabs .lecReview a {display: inline-block; 
+    background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat left center;
+    background-size: 46px;
+    padding:10px 10px 10px 40px;
+    border:1px solid #4f4f4f; font-size:14px; color:#4f4f4f;
 }
 
 .tBox {

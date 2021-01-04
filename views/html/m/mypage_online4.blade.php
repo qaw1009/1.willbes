@@ -95,6 +95,7 @@
                                 <div class="w-start tx-gray">                        
                                     <ul class="two">
                                         <li class="btn_white"><a href="#none">재수강불가</a></li>
+                                        <li class="btn_white"><a href="#none">후기등록</a></li>
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>
@@ -112,9 +113,9 @@
                                     <dt>수강기간 : <span class="tx-black">2018-00-00 ~ 2018-00-00</span></dt>
                                 </dl>
                                 <div class="w-start tx-gray">                        
-                                    <ul class="two">
-                                        <li class="btn_white"><a href="#none">후기등록</a></li>
+                                    <ul class="two">                                        
                                         <li class="btn_blue"><a href="#none">재수강신청</a></li>
+                                        <li class="btn_white"><a href="#none">후기등록</a></li>
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>

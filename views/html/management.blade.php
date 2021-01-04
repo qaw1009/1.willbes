@@ -65,7 +65,9 @@
         .evtCts .calendar thead tr {border-bottom:1px solid #f0f0f0; border-top:1px solid #f0f0f0}
         .evtCts .calendar td span {width:30px; height:30px; line-height:30px; display:block; margin:0 auto}
         .evtCts .calendar td span.attend {border-radius:20px; color:#fff; background:#d12c10;}
-        .evtCts .btnAttend {clear:both; color:#fff; background:#d12c10; font-size:20px; border-radius:40px; text-align:center; padding:15px 0 }
+        .evtCts .btnAttend {clear:both; padding-top:30px}
+        .evtCts .btnAttend a {display:block; color:#fff; background:#d12c10; font-size:20px; border-radius:40px; text-align:center; padding:15px 0}
+        .evtCts .btnAttend a:hover {background:#000}
 
         .tableTypeA {border-top:1px solid #959595}
         .tableTypeA th {background:#f9f9f9; color:#707070; padding:15px 10px; font-weight:bold;}
@@ -362,7 +364,7 @@
                             </tbody>
                         </table>                       
                     </div>   
-                    <div class="btnAttend">출석체크하기</div>                 
+                    <div class="btnAttend"><a href="#none">출석체크하기</a></div>                 
 
 
                     {{--리스트

@@ -91,11 +91,9 @@
                 <h4 class="NSK-Black">PSAT 실전모의고사+해설 및 핵심정리 동영상 종합반 이벤트 안내</h4>
                 <div class="infoTit NSK-Black"><strong>이용안내</strong></div>
                 <ul>
-                    <li>본 상품은 2021년 1월 3일 (일)까지 진행되는 이벤트 상품입니다.</li>
                     <li>강의 : PSAT 실전 모의고사 + 해설 및 핵심정리강의 3과목  동영상종합반</li>
                     <li><span>수강료 :  15%할인 (498,000원 -> 423,300원)</span></li>
                     <li><span>수강기간 :  2021년 3월 6일까지</span></li>
-                    <li>이벤트 종료일 : 2021년 1월 3일(일) 24:00까지</li>
                 </ul>
                 <div class="infoTit NSK-Black"><strong>교재</strong></div>
                 <ul>

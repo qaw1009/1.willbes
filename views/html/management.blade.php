@@ -23,7 +23,7 @@
             z-index:1;
         }
 
-        .evtTop {position:relative; text-align:center; background:url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
+        .evtTop {position:relative; text-align:center; background:#fff url(https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top_bg.jpg) no-repeat center top;}
 
         .notice {position:absolute; left:50%; top:1050px; margin-left:-315px; z-index:1; width:630px; background:#fff; 
             box-shadow: 10px 19px 19px rgba(0,0,0,.2);

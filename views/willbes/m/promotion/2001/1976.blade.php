@@ -142,14 +142,14 @@
         </div> 
         <div><a href="#none" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>
     </div>
-
+    {{--
     <div class="evtCtnsBox evt_coupon">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1976m_02.jpg" alt="쿠폰받기" usemap="#Map1976_coupon" border="0" >
         <map name="Map1976_coupon" id="Map1976_coupon">
             <area shape="rect" coords="87,914,628,1011" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
         </map>        
     </div> 
-    
+    --}}
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2020/11/1864m_05.jpg" alt="신광은경찰 PASS" >
         <div class="slide_con">

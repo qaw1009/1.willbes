@@ -187,8 +187,8 @@
             <div class="evtCtnsBox evt05" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/1997_05.jpg" alt="수강신청" usemap="#Map1997a" border="0">
                 <map name="Map1997a" id="Map1997a">
-                    <area shape="rect" coords="238,312,475,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177325" target="_blank" />
-                    <area shape="rect" coords="640,311,875,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177326" target="_blank" />
+                    <area shape="rect" coords="238,312,475,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177326" target="_blank" />
+                    <area shape="rect" coords="640,311,875,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177325" target="_blank" />
                 </map>  
             </div>
         </form>

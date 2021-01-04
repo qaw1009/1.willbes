@@ -476,6 +476,7 @@
                                 <td class="bg-white-only">
                                     @if(empty($data['admin_prod']['MyLecData']) === false)
                                         [수강시작일] {{ $data['admin_prod']['MyLecData']['LecStartDate'] }} &nbsp;
+                                        [수강종료일] {{ $data['admin_prod']['MyLecData']['LecEndDate'] }} &nbsp;
                                         [수강제공기간] {{ $data['admin_prod']['MyLecData']['LecExpireDay'] }}일 &nbsp;
                                     @endif
                                     [결제금액] {{ number_format($data['admin_prod']['RealPayPrice']) }}원 &nbsp;

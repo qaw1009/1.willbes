@@ -5,14 +5,10 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -104,10 +100,10 @@
         <div class="wb_top">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2019/07/1032_EV01_1.jpg" alt="신광은경찰 합격스토리 대공개" />
-                <span id="counter">8,447</span>
+                <span id="counter">9,629</span>
             </div>
         </div>
-
+        {{--
         <div class="wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
             <div class="slide_con">
@@ -167,23 +163,7 @@
                 <a href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank" class="moreBtn">더 많은 고득점자 인터뷰 보기 ></a>
             </div>
         </div>        
-
-        <div class="wb_02">
-            <div class="slide_con">
-                <ul id="slidesCts3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_6.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_7.png" alt="3.합격수기 공모전 시상식" /></li>
-					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_8.png" alt="3.합격수기 공모전 시상식" /></li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
-            </div>
-        </div><!--wb_02//-->
+        --}}
 
         <div class="wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_top.png"  alt="합격비법을 공개합니다." />
@@ -273,6 +253,25 @@
             </div>
         </div><!--wb_03//-->
 
+        <div class="wb_02">
+            <div class="slide_con">
+                <ul id="slidesCts3">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_1.png" alt="1.경찰합교 최종합격자의 밤" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_2.png" alt="2.중앙경찰학교 입교하는 날" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_3.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_4.png" alt="3.합격수기 공모전 시상식" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_5.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_6.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_7.png" alt="3.합격수기 공모전 시상식" /></li>
+					<li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV03_8.png" alt="3.합격수기 공모전 시상식" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
+            </div>
+        </div><!--wb_02//-->
+
+
+
         <div class="wb_04" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_top.jpg"  alt="나는 이렇게 합격했다." />
             <div class="slide_con slide_con2">
@@ -342,7 +341,7 @@
             </div>
         </div><!--wb_04//-->
 
-
+        {{--
         <div class="wb_06" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07.jpg"  alt="3법도 공통과목도" />
             <div class="slide_con">
@@ -367,6 +366,7 @@
                 <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
         </div>
+        --}}
 
         <div class="wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />

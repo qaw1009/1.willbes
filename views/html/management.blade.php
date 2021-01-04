@@ -45,7 +45,8 @@
             .tab:after {content:""; display:block; clear:both}
 
         .evtCtsBox {position:relative; height:100%}
-        .evtCts { /*position:absolute; top:-50px;*/ width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
+        .evtCts {width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
+        
         .evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}     
         .evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}  
         .evtCts .row-line {
@@ -56,6 +57,13 @@
             vertical-align:bottom;
         }
         .evtCts .subBtn a {background:#a32015; border:0}
+
+        .evtCts tr.calendar_day td {cursor: default;}      
+        .evtCts tr.calendar_day td span.attend {display:block; width:30px; height:30px; line-height:30px; border-radius:20px; color:#fff; background:#d12c10; text-align:center}
+        .evtCts tr.calendar_day td:hover {background:none; text-decoration:none;}
+        .evtCts .btnAttend {clear:both; padding-top:30px}
+        .evtCts .btnAttend a {display:block; color:#fff; background:#d12c10; font-size:20px; border-radius:40px; text-align:center; padding:15px 0}
+        .evtCts .btnAttend a:hover {background:#000}
 
         .tableTypeA {border-top:1px solid #959595}
         .tableTypeA th {background:#f9f9f9; color:#707070; padding:15px 10px; font-weight:bold;}
@@ -272,159 +280,94 @@
                 </div>
 
                 <div id="tab02" class="evtCts">
-                    <h4>● 온라인 관리반 출첵 합시다!</h4>
+                    <h4>● 온라인 관리반 출첵 합시다!</h4>                    
                     <div>
                         온라인 관리반 여러분들의 출첵공간입니다.<br>
                         하루하루!  모두함께~~!!<br>
                         출첵을 해주시기 바랍니다.<br>
                         <span class="tx-red">※ 정당한 사유없이 3일 이상 출첵 없을시 관리반 혜택을 제한합니다.</span>
                     </div>
-                    {{--리스트--}}
-                    <div class="mt30">
-                        <div class="f_right mb10">
-                            <div class="subBtn NSK f_right"><a href="#none">글쓰기</a></div>
-                        </div>
-                        <table class="tableTypeA">
-                            <col width="8%"/>
-                            <col width=""/>
-                            <col width="12%"/>
-                            <col width="10%"/>
+                    <div class="mt40">
+                        <table cellpadding="0" cellspacing="0" class="calendar NG">
+                            <colgroup>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                                <col style="width: 14.28%"/>
+                            </colgroup>
                             <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>제목</th>
-                                    <th>작성일</th>
-                                    <th>조회수</th>
+                                <tr class="calendar_month">
+                                    <th colspan="7" class="">
+                                        <span class="prev"><a href="#none"><img src="{{ img_url('counsel/calendar_prev.png') }}"></a></span>
+                                        2020년&nbsp;&nbsp;&nbsp;&nbsp;09월
+                                        <span class="next"><a href="#none"><img src="{{ img_url('counsel/calendar_next.png') }}"></a></span>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>4</td>
-                                    <td class="tx-left">
-                                        <a href="#none">    
-                                            오늘도 출첵!! 열심히~
-                                        </a>    
-                                    </td>
-                                    <td>2019-05-10</td>
-                                    <td>7542</td>
+                                <tr class="calendar_week">
+                                    <td>일</td>
+                                    <td>월</td>
+                                    <td>화</td>
+                                    <td>수</td>
+                                    <td>목</td>
+                                    <td>금</td>
+                                    <td>토</td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td class="tx-left">
-                                        <a href="#none">
-                                            오늘도 출첵!! 열심히~
-                                        </a>
-                                    </td>
-                                    <td>2019-05-10</td>
-                                    <td>2112</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="tx-left">
-                                        <a href="#none">
-                                            오늘도 출첵!! 열심히~
-                                        </a>
-                                    </td>
-                                    <td>2019-05-10</td>
-                                    <td>150</td>
-                                </tr>
-                                <tr>
+                                <tr class="calendar_day">
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                     <td>1</td>
-                                    <td class="tx-left">
-                                        <a href="#none">
-                                            오늘도 출첵!! 열심히~
-                                        </a>
-                                    </td>
-                                    <td>2019-05-10</td>
-                                    <td>125</td>
-                                </tr>                        
-                            </tbody>
-                        </table>
-
-                        <div class="Paging">
-                            <ul>
-                                <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                                <li><a href="#none">2</a><span class="row-line">|</span></li>
-                                <li><a href="#none">3</a><span class="row-line">|</span></li>
-                                <li><a href="#none">4</a><span class="row-line">|</span></li>
-                                <li><a href="#none">5</a><span class="row-line">|</span></li>
-                                <li><a href="#none">6</a><span class="row-line">|</span></li>
-                                <li><a href="#none">7</a><span class="row-line">|</span></li>
-                                <li><a href="#none">8</a><span class="row-line">|</span></li>
-                                <li><a href="#none">9</a><span class="row-line">|</span></li>
-                                <li><a href="#none">10</a></li>
-                                <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {{--글쓰기--}}
-                    <div class="mt30">
-                        <table class="tableTypeA">
-                            <col width="15%"/>
-                            <col width=""/>
-                            <tbody>
-                                <tr>
-                                    <th>제목<span class="tx-light-blue">(*)</span></th>
-                                    <td class="tx-left">
-                                        <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
-                                    </td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td><span class="attend">5</span></td>
                                 </tr>
-                                <tr>
-                                    <th>내용<span class="tx-light-blue">(*)</span></th>
-                                    <td class="tx-left">
-                                        <textarea></textarea>
-                                    </td>
+                                <tr class="calendar_day">
+                                    <td>6</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td>9</td>
+                                    <td>10</td>
+                                    <td>11</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr class="calendar_day">
+                                    <td>13</td>
+                                    <td>14</td>
+                                    <td>15</td>
+                                    <td>16</td>
+                                    <td>17</td>
+                                    <td>18<a href="#noe" class="viewSchedule active">&nbsp;</a></td>
+                                    <td>19</td>
+                                </tr>
+                                <tr class="calendar_day">
+                                    <td>20</td>
+                                    <td>21</td>
+                                    <td>22</td>
+                                    <td>23</td>
+                                    <td>24</td>
+                                    <td>25</td>
+                                    <td>26</td>
+                                </tr>
+                                <tr class="calendar_day">
+                                    <td>27</td>
+                                    <td>28</td>
+                                    <td>29</td>
+                                    <td>30</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-
-                    <div class="search-Btn mt20 h36 p_re">
-                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                            <span class="tx-purple-gray">취소</span>
-                        </button>
-                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
-                            <span>저장</span>
-                        </button>
-                    </div>
-
-                    {{--글보기--}}
-                    <div class="mt30">
-                        <table class="tableTypeA">
-                            <col width="15%"/>
-                            <col width=""/>
-                            <tbody>
-                                <tr>
-                                    <th class="tx-left">서포터즈를 마치며</th>
-                                </tr>
-                                <tr>
-                                    <th class="tx-right normal">홍길동 <span class="ml10 mr10">|</span> 2018-00-00</th>
-                                </tr>
-                                <tr>
-                                    <td class="tx-left">
-                                        이제 서포터즈 활동을 마무리하게 되었습니다. 
-                                        마지막으로 끝나기 전에 전에도 말씀드렸던 것을 한 번만 더 강조하고 싶어서 글 남깁니다.
-                                        Sns로 들어가는 아이콘의 크기를 키워주시고 그 반대편에 각자 교수님들의 사진 아이콘을 만들어 그 아이콘을 클릭하면 각 교수님들이 관리하시는 사이트로 들어갈 수 있게 링크를 만들어주셨으면 합니다.
-                                        윌비스 신광은 경찰 온라인과 수강생들에게 정말 크나큰 도움이 될 것이라 믿어 의심치 않습니다.
-                                        그동안 수고하셨습니다!
-                                    </td>
-                                </tr>                        
-                            </tbody>
-                        </table>                
-                    </div>
-                    <div class="search-Btn mt20 h36 p_re">
-                        <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                            <a href="#none" class="tx-purple-gray">삭제</a>
+                        <div class="btnAttend">
+                            <a href="#none">출석 체크하기 ></a>  
                         </div>
-                        <div class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray center">
-                            <a href="#none" class="tx-purple-gray">수정</a>
-                        </div>
-                        <div class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray f_right">
-                            <a href="#none">목록</a>
-                        </div>
-                    </div>
+                    </div>    
                 </div>
 
                 <div id="tab03" class="evtCts">

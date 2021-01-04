@@ -61,7 +61,7 @@
             <br><br>
             <a href="{{ site_url('/home/html/m/mypage_online1') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌</a>
             <a href="{{ site_url('/home/html/m/mypage_lecView') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌 > 강좌상세</a>
-            <a href="{{ site_url('/home/html/m/mypage_review_write') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌 > 강좌상세 > 수강후기</a>
+            <a href="{{ site_url('/home/html/m/review_write') }}" target="_blank">내강의실 > 온라인강좌 > 수강대기강좌 > 강좌상세 > 수강후기</a>
             <a href="{{ site_url('/home/html/m/mypage_online2') }}" target="_blank">내강의실 > 온라인강좌 > 수강중강좌</a>
             <a href="{{ site_url('/home/html/m/mypage_online3') }}" target="_blank">내강의실 > 온라인강좌 > 일시정지강좌</a>
             <a href="{{ site_url('/home/html/m/mypage_online4') }}" target="_blank">내강의실 > 온라인강좌 > 수강종료강좌</a>

@@ -45,7 +45,8 @@
             .tab:after {content:""; display:block; clear:both}
 
         .evtCtsBox {position:relative; height:100%}
-        .evtCts { /*position:absolute; top:-50px;*/ width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
+        .evtCts {width:100%; padding:100px; border-radius:30px; background:#fff; margin-top:-50px}
+        
         .evtCts h4 {font-size:18px; font-weight:bold; margin-left:15px; margin:0 0 20px}     
         .evtCts h5 {font-size:16px; font-weight:bold; margin-top:30px}  
         .evtCts .row-line {
@@ -56,6 +57,17 @@
             vertical-align:bottom;
         }
         .evtCts .subBtn a {background:#a32015; border:0}
+
+        .evtCts .f_left {width:50%;}        
+        .evtCts .calendar div.thisMonth {font-size:25px; text-align:center; margin:0; padding-bottom:20px; color:#d12c10}
+        .evtCts .calendar th,
+        .evtCts .calendar td {padding:10px; text-align:center}
+        .evtCts .calendar thead tr {border-bottom:1px solid #f0f0f0; border-top:1px solid #f0f0f0}
+        .evtCts .calendar td span {width:30px; height:30px; line-height:30px; display:block; margin:0 auto}
+        .evtCts .calendar td span.attend {border-radius:20px; color:#fff; background:#d12c10;}
+        .evtCts .btnAttend {clear:both; padding-top:30px}
+        .evtCts .btnAttend a {display:block; color:#fff; background:#d12c10; font-size:20px; border-radius:40px; text-align:center; padding:15px 0}
+        .evtCts .btnAttend a:hover {background:#000}
 
         .tableTypeA {border-top:1px solid #959595}
         .tableTypeA th {background:#f9f9f9; color:#707070; padding:15px 10px; font-weight:bold;}
@@ -272,14 +284,90 @@
                 </div>
 
                 <div id="tab02" class="evtCts">
-                    <h4>● 온라인 관리반 출첵 합시다!</h4>
-                    <div>
+                    <h4>● 온라인 관리반 출첵 합시다!</h4>                    
+                    <div class="f_left">
                         온라인 관리반 여러분들의 출첵공간입니다.<br>
                         하루하루!  모두함께~~!!<br>
                         출첵을 해주시기 바랍니다.<br>
                         <span class="tx-red">※ 정당한 사유없이 3일 이상 출첵 없을시 관리반 혜택을 제한합니다.</span>
                     </div>
-                    {{--리스트--}}
+                    <div class="f_left calendar">
+                        <div class="thisMonth NSK-Black">1월</div>
+                        <table>
+                            <col span="7" />
+                            <thead>
+                                <tr>
+                                    <td>일</td>
+                                    <td>월</td>
+                                    <td>화</td>
+                                    <td>수</td>
+                                    <td>목</td>
+                                    <td>금</td>
+                                    <td>토</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span>1</span></td>
+                                    <td><span>2</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>3</span></td>
+                                    <td><span class="attend">4</span></td>
+                                    <td><span>5</span></td>
+                                    <td><span>6</span></td>
+                                    <td><span>7</span></td>
+                                    <td><span>8</span></td>
+                                    <td><span>9</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>10</span></td>
+                                    <td><span>11</span></td>
+                                    <td><span>12</span></td>
+                                    <td><span>13</span></td>
+                                    <td><span>14</span></td>
+                                    <td><span>15</span></td>
+                                    <td><span>16</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>17</span></td>
+                                    <td><span>18</span></td>
+                                    <td><span>19</span></td>
+                                    <td><span>20</span></td>
+                                    <td><span>21</span></td>
+                                    <td><span>22</span></td>
+                                    <td><span>23</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>24</span></td>
+                                    <td><span>25</span></td>
+                                    <td><span>26</span></td>
+                                    <td><span>27</span></td>
+                                    <td><span>28</span></td>
+                                    <td><span>29</span></td>
+                                    <td><span>30</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>31</span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                    <td><span></span></td>
+                                </tr>
+                            </tbody>
+                        </table>                       
+                    </div>   
+                    <div class="btnAttend"><a href="#none">출석체크하기</a></div>                 
+
+
+                    {{--리스트
                     <div class="mt30">
                         <div class="f_right mb10">
                             <div class="subBtn NSK f_right"><a href="#none">글쓰기</a></div>
@@ -357,9 +445,9 @@
                                 <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div>--}}
 
-                    {{--글쓰기--}}
+                    {{--글쓰기
                     <div class="mt30">
                         <table class="tableTypeA">
                             <col width="15%"/>
@@ -389,8 +477,9 @@
                             <span>저장</span>
                         </button>
                     </div>
+                    --}}
 
-                    {{--글보기--}}
+                    {{--글보기
                     <div class="mt30">
                         <table class="tableTypeA">
                             <col width="15%"/>
@@ -425,6 +514,7 @@
                             <a href="#none">목록</a>
                         </div>
                     </div>
+                    --}}
                 </div>
 
                 <div id="tab03" class="evtCts">

@@ -805,16 +805,7 @@ select[disabled] {
   margin-right: 70px !important;
 }
 
-.pb0,
-.pb-zero,
-.pb-none {
-  padding-bottom: 0 !important;
-}
 
-.pt0,
-.pt-zero {
-  padding-top: 0px !important;
-}
 .pt4 {
   padding-top: 4px !important;
 }
@@ -958,9 +949,6 @@ select[disabled] {
 .pb130 {
   padding-bottom: 130px !important;
 }
-.pd0,
-.pd-zero,
-.pd_all_none {padding:0 !important}
 
 .pd10 {
   padding: 10px !important;
@@ -969,6 +957,19 @@ select[disabled] {
 .pd20 {
   padding: 20px !important;
 }
+
+.pb0,
+.pb-zero,
+.pb-none {
+  padding-bottom: 0 !important;
+}
+.pt0,
+.pt-zero {
+  padding-top: 0px !important;
+}
+.pd0,
+.pd-zero,
+.pd_all_none {padding:0 !important}
 
 .tx11 {
   font-size: 11px;

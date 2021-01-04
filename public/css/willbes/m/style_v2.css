@@ -2450,6 +2450,13 @@ body.memBody #Footer {
 .passProfTabs .w-info strong {
     display: inline-block; width: 100px;
 }
+.passProfTabs .lecReview {margin-top:10px; text-align: right; clear: both;}
+.passProfTabs .lecReview a {display: inline-block; 
+    background: url("../../../img/willbes/m/main/icon_myacad.png") no-repeat left center;
+    background-size: 46px;
+    padding:10px 10px 10px 40px;
+    border:1px solid #4f4f4f; font-size:14px; color:#4f4f4f;
+}
 
 .tBox {
     display: inline-block;

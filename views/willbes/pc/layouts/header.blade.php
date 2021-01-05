@@ -29,6 +29,7 @@
     <link href="/public/css/willbes/pnotify.custom.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="/public/css/willbes/basic.css?ver={{time()}}" rel="stylesheet">
+    <link href="/public/css/willbes/style_2018.css?ver={{time()}}" rel="stylesheet">
     <link href="/public/css/willbes/style.css?ver={{time()}}" rel="stylesheet">
     <!--// CSS -->
     <!-- JAVASCRIPT -->

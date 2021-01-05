@@ -77,7 +77,8 @@ class ProductFModel extends WB_Model
     public function listProduct($learn_pattern, $column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
         if ($column === false) {
-            $column = ($learn_pattern === 'off_lecture_before' ? ' straight_join \'\' as TempCol, ' : '');
+            //$column = ($learn_pattern === 'off_lecture_before' ? ' straight_join \'\' as TempCol, ' : '');
+            $column = ' straight_join \'\' as TempCol, ';
             $column .= 'ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSaleEnd, SaleStartDatm, SaleEndDatm, IsSalesAble, IsUse, RegDatm';
 
             switch ($learn_pattern) {

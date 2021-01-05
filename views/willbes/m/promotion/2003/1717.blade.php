@@ -168,7 +168,8 @@
 
         var url = '{{ site_url('/m/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
         location.href = url;
-    }  
+    } 
+     
     $(document).ready(function() {
         var slidesImg1 = $("#slidesImg1").bxSlider({
             auto: true, 

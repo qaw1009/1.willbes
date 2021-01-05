@@ -84,7 +84,8 @@ class MessageFModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('SELECT STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
+        // todo : 쿼리 속도가 느려서 straight_join 제거함
+        $query = $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit);
 
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

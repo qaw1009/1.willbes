@@ -68,7 +68,7 @@
             .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px; line-height:1.5}
             .tabMenu li span {display:block; font-size:14px}
             .tabMenu li a:hover,
-            .tabMenu li a.active {background:#358c78; color:#fff}
+            .tabMenu li a.active {background:#b39d6c; color:#fff}
             .tabMenu:after {content:""; display:block; clear:both}
         .evt03 iframe {width:800px; height:450px; margin:0 auto;} 
         
@@ -106,7 +106,7 @@
         {{--
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
-            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2020/09/1060_c11.png" alt="소방체력풀패키지" ></a>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_c11.png" alt="소방체력풀패키지" ></a>
         </div>   
         --}}
 
@@ -138,7 +138,7 @@
         </div>
 
         <div class="evtCtnsBox evt01" >    
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_01.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_01.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t01.gif" alt="소방학/법규 이종오" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t02.gif" alt="국어 김세령" /><br>
@@ -146,7 +146,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t04.gif" alt="영어 양익" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t05.gif" alt="한국사 한경준" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_02.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_02.jpg" alt="소방공무원, 시작부터 달라야 합니다."/>
         </div>
         
         <div class="evtCtnsBox evt02" >
@@ -163,39 +163,39 @@
         <!--evt02//-->
 
         <div class="evtCtnsBox evt03">
-  			<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_01.jpg" alt="윌비스와 함께 자랑스러운 대한민국의 공무원이 되어주세요!"/>
+  			<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_01.jpg" alt="윌비스와 함께 자랑스러운 대한민국의 공무원이 되어주세요!"/>
 			<div class="menuWarp">    
             	<div class="PeMenu">
             		<ul>
                         <li> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t01.jpg" alt="소방학/법규 이종오" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t01_on.jpg" alt="소방학/법규 이종오" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t01.jpg" alt="소방학/법규 이종오" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t01_on.jpg" alt="소방학/법규 이종오" class="on"/>
                         </li>
                 		<li> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t02.jpg" alt="소방학/법규 김종상" class="off"/>
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t02_on.jpg" alt="소방학/법규 김종상" class="on"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t02.jpg" alt="소방학/법규 김종상" class="off"/>
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t02_on.jpg" alt="소방학/법규 김종상" class="on"/>
                         </li>                        
                 		<li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t03.jpg" alt="국어 김세령" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t03_on.jpg" alt="국어 김세령" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t03.jpg" alt="국어 김세령" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t03_on.jpg" alt="국어 김세령" class="on"/>
                         </li>                        
                 		<li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t04.jpg" alt="영어 이현정" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t04_on.jpg" alt="영어 이현정" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t04.jpg" alt="영어 이현정" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t04_on.jpg" alt="영어 이현정" class="on"/>
                         </li>
                         <li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t05.jpg" alt="영어 양익" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t05_on.jpg" alt="영어 양익" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t05.jpg" alt="영어 양익" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t05_on.jpg" alt="영어 양익" class="on"/>
                         </li>
                         <li> 
-                        	<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t06.jpg" alt="한국사 한경준" class="off"/> 
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_t06_on.jpg" alt="한국사 한경준" class="on"/>
+                        	<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t06.jpg" alt="한국사 한경준" class="off"/> 
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_t06_on.jpg" alt="한국사 한경준" class="on"/>
                         </li>                        
                		 </ul>
             	</div><!--PeMenu//-->
             </div><!--menuWarp//-->
 
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_02.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_02.jpg" title="" />
 
             <ul class="tabMenu NSK-Black">
                 <li>
@@ -218,14 +218,16 @@
                 <iframe src="https://www.youtube.com/embed/b06AI4w38gY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
             </div>
 
-  			<img src="https://static.willbes.net/public/images/promotion/2020/09/1060_04_03.jpg" alt="소방공무원의 꿈을 이루어줄 따라만 가도 완성되는 커리큘럼"/>
+  			<img src="https://static.willbes.net/public/images/promotion/2021/01/1060_04_03.jpg" alt="소방공무원의 꿈을 이루어줄 따라만 가도 완성되는 커리큘럼"/>
         </div><!--evt03//-->
           
-        <div class="evtCtnsBox evt04" id="event">       
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1060_05.jpg" usemap="#Map1060_07" title="수강신청" border="0" />
+        <div class="evtCtnsBox evt04" id="event">      
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_05.jpg" usemap="#Map1060_07" title="수강신청" border="0" />
             <map name="Map1060_07" id="Map1060_07">
-                <area shape="rect" coords="836,386,950,447" href="javascript:go_PassLecture('167765');">
-                <area shape="rect" coords="840,516,951,577" href="javascript:go_PassLecture('167766');">
+                <area shape="rect" coords="137,711,320,764" href="javascript:go_PassLecture('167765');" alt="공채12개월">
+                <area shape="rect" coords="344,712,526,764" href="javascript:go_PassLecture('177600');" alt="공채시험일까지">
+                <area shape="rect" coords="600,713,781,764" href="javascript:go_PassLecture('167766');" alt="특채12개월" />
+                <area shape="rect" coords="807,713,988,763" href="javascript:go_PassLecture('177601');" alt="특채시험일까지" />
             </map> 
             <div class="check">
                 <label>

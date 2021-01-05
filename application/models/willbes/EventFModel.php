@@ -240,7 +240,8 @@ class EventFModel extends WB_Model
         ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $query = $this->_conn->query('select ' . $column . $from . $where);
+        // todo : 쿼리 속도를 위해 straight_join 추가
+        $query = $this->_conn->query('select straight_join ' . $column . $from . $where);
         return $query->result_array();
     }
 

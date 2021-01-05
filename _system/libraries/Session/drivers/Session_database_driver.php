@@ -355,7 +355,9 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 		if ($this->_platform === 'mysql')
 		{
 			$arg = md5($session_id.($this->_config['match_ip'] ? '_'.$_SERVER['REMOTE_ADDR'] : ''));
-			if ($this->_db->query("SELECT GET_LOCK('".$arg."', 300) AS ci_session_lock")->row()->ci_session_lock)
+			//if ($this->_db->query("SELECT GET_LOCK('".$arg."', 300) AS ci_session_lock")->row()->ci_session_lock)
+            // DB GET_LOCK 제거
+            if(true)
 			{
 				$this->_lock = $arg;
 				return TRUE;
@@ -396,7 +398,9 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 
 		if ($this->_platform === 'mysql')
 		{
-			if ($this->_db->query("SELECT RELEASE_LOCK('".$this->_lock."') AS ci_session_lock")->row()->ci_session_lock)
+			//if ($this->_db->query("SELECT RELEASE_LOCK('".$this->_lock."') AS ci_session_lock")->row()->ci_session_lock)
+            // DB RELEASE LOCK 제거
+            if(true)
 			{
 				$this->_lock = FALSE;
 				return TRUE;

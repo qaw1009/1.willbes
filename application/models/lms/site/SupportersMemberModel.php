@@ -7,6 +7,7 @@ class SupportersMemberModel extends WB_Model
         'supporters' => 'lms_supporters',
         'supporters_r_member' => 'lms_supporters_r_member',
         'supporters_myclass' => 'lms_supporters_myclass',
+        'supporters_attendance' => 'lms_supporters_attendance',
         'lms_member' => 'lms_member',
         'lms_member_otherinfo' => 'lms_member_otherinfo',
         'lms_site' => 'lms_site',
@@ -32,18 +33,22 @@ class SupportersMemberModel extends WB_Model
             $column = '
                 a.SrmIdx, a.SupportersIdx, a.SiteCode, a.SupportersStatusCcd, a.MemIdx, a.UniversityName, a.Department,
                 a.RegDatm, a.RegAdminIdx, a.UpdDatm,
-                b.SupportersYear, b.SupportersNumber, b.Title,
+                b.SupportersTypeCcd, b.SupportersYear, b.SupportersNumber, b.Title,
                 m.MemName, m.MemId,
                 c.SiteName, d.wAdminName as RegAdminName,
                 fn_ccd_name(a.SupportersStatusCcd) AS SupportersStatusCcdName,
                 fn_ccd_name(a.SerialCcd) AS SerialCcdName,
                 fn_ccd_name(a.SchoolYearCcd) AS SchoolYearCcdName,
                 fn_ccd_name(a.IsSchoolCcd) AS IsSchoolCcdName,
+                fn_ccd_name(b.SupportersTypeCcd) AS SupportersTypeCcdName,
                 ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['assignment'].'" AND SupportersIdx = a.SupportersIdx ) AS AssignmentTotalCnt,
                 ( SELECT COUNT(*) FROM lms_board AS ta 
                     INNER JOIN lms_board_assignment AS tb ON ta.BoardIdx = tb.BoardIdx WHERE ta.BmIdx = "'.$this->_arr_bm_idx['assignment'].'" AND ta.SupportersIdx = a.SupportersIdx AND tb.MemIdx = a.MemIdx
                 ) AS AssignmentCnt,
-                ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['suggest'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx ) AS SuggestCnt
+                ( SELECT COUNT(*) FROM lms_board WHERE BmIdx = "'.$this->_arr_bm_idx['suggest'].'" AND SupportersIdx = a.SupportersIdx AND RegMemIdx = a.MemIdx ) AS SuggestCnt,
+                ( 
+                    SELECT COUNT(*) AS AttendanceCnt FROM lms_supporters_attendance AS ad WHERE a.SupportersIdx = ad.SupportersIdx AND a.MemIdx = ad.MemIdx AND ad.IsStatus = "Y"
+                ) AS AttendanceCnt
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -315,6 +320,56 @@ class SupportersMemberModel extends WB_Model
             return error_result($e);
         }
         return true;
+    }
+
+    /**
+     * 회원 출석 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listMyAttendance($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = "SadIdx, SupportersIdx, DATE_FORMAT(AttendanceDay, '%Y-%m-%d') AS AttendanceDay, RegDatm";
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+        $from = " FROM {$this->_table['supporters_attendance']}";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 출석체크 회원 정보 조회
+     * @param array $arr_condition
+     * @return array
+     */
+    public function getSupportersAttendanceMember($arr_condition = [])
+    {
+        $column = " 
+            AttendanceDay
+        ";
+        $from = " FROM {$this->_table['supporters_attendance']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $list = $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+
+        $data = [];
+        foreach ($list as $key => $val){
+            $data[$val['AttendanceDay']] = $val;
+        }
+        return $data;
     }
 
     /**

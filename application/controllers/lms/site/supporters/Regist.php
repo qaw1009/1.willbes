@@ -23,6 +23,7 @@ class Regist extends BaseSupporters
         $arr_base['arr_site_code'] = $this->_listSite();
         $arr_base['arr_supporters_year'] = $this->supportersRegistModel->getSupportersYear();
         $arr_base['arr_supporters_number'] = $this->supportersRegistModel->getSupportersNumber();
+        $arr_base['supporters_type'] = $this->_getCcdData($this->_ccd['supporters_type']);
         $this->load->view('site/supporters/regist/index', ['arr_base' => $arr_base]);
     }
 
@@ -31,6 +32,7 @@ class Regist extends BaseSupporters
         $arr_condition = [
             'EQ' => [
                 'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.SupportersTypeCcd' => $this->_reqP('search_supporters_type_ccd'),
                 'a.SupportersYear' => $this->_reqP('search_supporters_year'),
                 'a.SupportersNumber' =>$this->_reqP('search_supporters_number'),
                 'a.IsUse' =>$this->_reqP('search_is_use'),
@@ -69,12 +71,13 @@ class Regist extends BaseSupporters
         $data = null;
         $arr_base['arr_site_code'] = $this->_listSite();
         $arr_base['coupon_issue_ccd'] = $this->_couponIssueCcd();
+        $arr_base['supporters_type'] = $this->_getCcdData($this->_ccd['supporters_type']);
 
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $arr_base['supporters_idx'] = $params[0];
             $column = '
-                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
+                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersTypeCcd, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
                 b.SiteName, c.wAdminName as RegAdminName, d.wAdminName as UpdAdminName
             ';
             $arr_condition = [
@@ -102,6 +105,7 @@ class Regist extends BaseSupporters
     {
         $rules = [
             ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
+            ['field' => 'supporters_type_ccd', 'label' => '서포터즈 유형', 'rules' => 'trim|required|integer'],
             ['field' => 'supporters_year', 'label' => '기수(년)', 'rules' => 'trim|required'],
             ['field' => 'supporters_number', 'label' => '기수', 'rules' => 'trim|required'],
             ['field' => 'start_date', 'label' => '운영시작일', 'rules' => 'trim|required'],

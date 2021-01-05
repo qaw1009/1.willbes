@@ -17,21 +17,21 @@
                 <div class="x_content">
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">룰렛코드</label>
-                        <div class="col-md-2 ">
+                        <div class="form-control-static col-md-2 ">
                             {{ $roulette_code }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">제목</label>
-                        <div class="col-md-4">
+                        <div class="form-control-static col-md-4">
                             {{ $arr_base['roulette_data']['Title'] }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="day_limit_count">참여 횟수 조건</label>
-                        <div class="form-inline col-md-10 item">
+                        <div class="form-control-static col-md-10">
                             아이디 기준 참여 횟수
                             {{ $arr_base['roulette_data']['MemberLimitCount'] }} 회
                             <span class="ml-10 mr-10"> | </span>
@@ -43,52 +43,48 @@
 
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">당첨 카운트 기준일</label>
-                        <div class="col-md-2">
+                        <div class="form-control-static col-md-2">
                             {{ ($arr_base['roulette_data']['CountType'] == 'D' ? '1일씩' : '전체 룰렛 진행 기간') }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">신규회원 가입대상 사용여부</label>
-                        <div class="col-md-2">
+                        <div class="form-control-static col-md-3">
                             {{ ($arr_base['roulette_data']['NewMemberJoinType'] == 'Y') ? '사용' : '미사용' }}
                         </div>
                         <label class="control-label col-md-2" for="search_rro_idx">신규회원 가입대상 기간</label>
-                        <div class="col-md-4">
+                        <div class="form-control-static col-md-3">
                             {{ $arr_base['roulette_data']['NewMemberJoinStartDate'] }} ~ {{ $arr_base['roulette_data']['NewMemberJoinEndDate'] }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
                         <label class="control-label col-md-2" for="search_rro_idx">이벤트 기간</label>
-                        <div class="col-md-6">
+                        <div class="form-control-static col-md-6">
                             {{ $arr_base['roulette_data']['RouletteStartDatm'] }} ~ {{ $arr_base['roulette_data']['RouletteEndDatm'] }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-md-2">등록자
-                        </label>
-                        <div class="col-md-2">
-                            <p class="form-control-static">{{ $arr_base['roulette_data']['RegAdminName'] }}</p>
+                        <label class="control-label col-md-2">등록자</label>
+                        <div class="form-control-static col-md-3">
+                            {{ $arr_base['roulette_data']['RegAdminName'] }}
                         </div>
-                        <label class="control-label col-md-2">등록일
-                        </label>
-                        <div class="col-md-2">
-                            <p class="form-control-static">{{ $arr_base['roulette_data']['RegDatm'] }}</p>
+                        <label class="control-label col-md-2">등록일</label>
+                        <div class="form-control-static col-md-2">
+                            {{ $arr_base['roulette_data']['RegDatm'] }}
                         </div>
                     </div>
 
                     <div class="form-group form-group-sm">
-                        <label class="control-label col-md-2">수정자
-                        </label>
-                        <div class="col-md-2">
-                            <p class="form-control-static">{{ $arr_base['roulette_data']['UpdAdminName'] }}</p>
+                        <label class="control-label col-md-2">수정자</label>
+                        <div class="form-control-static col-md-3">
+                            {{ $arr_base['roulette_data']['UpdAdminName'] }}
                         </div>
-                        <label class="control-label col-md-2">수정일
-                        </label>
-                        <div class="col-md-2">
-                            <p class="form-control-static">{{ $arr_base['roulette_data']['UpdDatm'] }}</p>
+                        <label class="control-label col-md-2">수정일</label>
+                        <div class="form-control-static col-md-2">
+                            {{ $arr_base['roulette_data']['UpdDatm'] }}
                         </div>
                     </div>
                 </div>
@@ -179,6 +175,8 @@
                             { text: '<i class="fa fa-send mr-10"></i> 엑셀변환', className: 'btn-default btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                             { text: '<i class="fa fa-truck mr-10"></i> 일괄지급', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-win-all' },
                             { text: '<i class="fa fa-truck mr-10"></i> 선택지급', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-win' },
+                            { text: '<i class="fa fa-truck mr-10"></i> 일괄삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-del-all' },
+                            { text: '<i class="fa fa-truck mr-10"></i> 선택삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-del' },
                         ],
                         ajax: {
                             "url" : "{{ site_url('site/eventRoulette/memberListModalAjax/'.$roulette_code) }}",
@@ -215,15 +213,15 @@
                         }
 
                         var $is_use = $list_modal_table.find('input[name="is_use"]');
-                        var origin_val, this_val;
+                        var origin_val, this_val, is_disabled;
                         var $params = {};
                         var _url = "{{ site_url('site/eventRoulette/storeIsUse') }}";
 
                         $is_use.each(function(idx) {
-                            // 신규 또는 추천 값이 변하는 경우에만 파라미터 설정
+                            is_disabled = $(this).attr("disabled");
                             this_val = $(this).filter(':checked').val() || 'N';
                             origin_val = $is_use.eq(idx).data('origin-is-use');
-                            if (this_val != origin_val) {
+                            if (this_val != origin_val && is_disabled != 'disabled') {
                                 $params[$(this).data('rm-idx')] = { 'IsUse' : this_val };
                             }
                         });
@@ -253,6 +251,63 @@
                         }
 
                         var _url = "{{ site_url('site/eventRoulette/storeIsUseAll/'.$roulette_code) }}";
+                        var data = {
+                            '{{ csrf_token_name() }}' : $search_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '_method' : 'PUT'
+                        };
+
+                        sendAjax(_url, data, function(ret) {
+                            if (ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                                $datatable_modal.draw();
+                            }
+                        }, showError, false, 'POST');
+                    });
+
+                    $('.btn-del').on('click', function() {
+                        if (!confirm('선택 항목을 삭제하시겠습니까?')) {
+                            return;
+                        }
+
+                        var $is_use = $list_modal_table.find('input[name="is_use"]');
+                        var origin_val, this_val;
+                        var $params = {};
+                        var _url = "{{ site_url('site/eventRoulette/memberDelete') }}";
+
+                        $is_use.each(function(idx) {
+                            is_disabled = $(this).attr("disabled");
+                            this_val = $(this).filter(':checked').val() || 'N';
+                            origin_val = $is_use.eq(idx).data('origin-is-use');
+                            if (this_val != origin_val && is_disabled != 'disabled') {
+                                $params[$(this).data('rm-idx')] = { 'IsStatus' : 'N' };
+                            }
+                        });
+
+                        if (Object.keys($params).length < 1) {
+                            alert('변경된 내용이 없습니다.');
+                            return;
+                        }
+
+                        var data = {
+                            '{{ csrf_token_name() }}' : $search_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
+                            '_method' : 'PUT',
+                            'params' : JSON.stringify($params)
+                        };
+
+                        sendAjax(_url, data, function(ret) {
+                            if (ret.ret_cd) {
+                                notifyAlert('success', '알림', ret.ret_msg);
+                                $datatable_modal.draw();
+                            }
+                        }, showError, false, 'POST');
+                    });
+
+                    $('.btn-del-all').on('click', function() {
+                        if (!confirm('일괄 삭제 하시겠습니까?')) {
+                            return;
+                        }
+
+                        var _url = "{{ site_url('site/eventRoulette/memberDeleteAll/'.$roulette_code) }}";
                         var data = {
                             '{{ csrf_token_name() }}' : $search_form_modal.find('input[name="{{ csrf_token_name() }}"]').val(),
                             '_method' : 'PUT'

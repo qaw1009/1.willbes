@@ -66,6 +66,9 @@ class Bookmark extends \app\controllers\FrontController
             'GTE' => [
                 'RealLecEndDate' => $today // 종료일 >= 오늘
             ],
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
+            ],
             'ORG' => [
                 'LKB' => [
                     'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)

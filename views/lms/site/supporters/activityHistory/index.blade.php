@@ -17,6 +17,12 @@
                                 <option value="{{ $row['SupportersIdx'] }}" class="{{ $row['SiteCode'] }}">{!! $row['Title'] . " [{$row['SupportersYear']}-{$row['SupportersNumber']}]" !!}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_supporters_type_ccd" name="search_supporters_type_ccd" title="서포터즈 유형">
+                            <option value="">서포터즈 유형</option>
+                            @foreach($arr_base['supporters_type'] as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_supporters_type" name="search_supporters_type">
                             <option value="">구분</option>
                             @foreach($arr_base['arr_supporters_type'] as $key => $val)
@@ -65,6 +71,8 @@
                 <tr>
                     <th>NO</th>
                     <th>운영사이트</th>
+                    <th>서포터즈명</th>
+                    <th>서포터즈유형</th>
                     <th>구분</th>
                     <th>연도</th>
                     <th>기수</th>
@@ -86,6 +94,8 @@
         var $list_table = $('#list_ajax_table');
 
         $(document).ready(function() {
+            $search_form.find('select[name="search_supporters_idx"]').chained("#search_site_code");
+
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [],
@@ -102,6 +112,8 @@
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
                         }},
                     {'data' : 'SiteName'},
+                    {'data' : 'SupportersTitle'},
+                    {'data' : 'SupportersTypeCcdName'},
                     {'data' : 'SupportersTypeName'},
                     {'data' : 'SupportersYear'},
                     {'data' : 'SupportersNumber'},

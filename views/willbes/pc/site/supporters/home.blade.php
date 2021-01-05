@@ -2,14 +2,25 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <link href="/public/css/willbes/promotion/2002_supporters.css?ver={{time()}}" rel="stylesheet">
+
+    @if($data['SupportersTypeCcd'] == '736001')
+        <link href="/public/css/willbes/promotion/2002_supporters.css?ver={{time()}}" rel="stylesheet">
+    @else
+        <link href="/public/css/willbes/promotion/2002_supporters2.css?ver={{time()}}" rel="stylesheet">
+    @endif
+
     <!-- Container -->
     <div class="p_re evtContent NGR" id="evtContainer">
         {{--<div class="jumpMenu">
             {{ $data['SupportersYear'] }}년 {{ $data['SupportersNumber'] }}기
         </div>--}}
         <div class="evtTop" >
-            <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg" title="광은 서포터즈">
+            @if($data['SupportersTypeCcd'] == '736001')
+                <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_bg_2020.jpg" title="광은 서포터즈">
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_top.jpg" title="온라인관리반 체험단">
+            @endif
+
             <div class="notice">
                 <div class="title">
                     <a href="javascript:go_popup('', '{{ $data['SupportersIdx'] }}');"><img src="https://static.willbes.net/public/images/promotion/supporters/supporters_top_img01.png" title="공지사항 더보기"></a>
@@ -22,32 +33,52 @@
                         <li><a href="javascript:go_popup('{{ $row['BoardIdx'] }}', '{{ $row['SupportersIdx'] }}');">{{ $row['Title'] }}</a><span>{{ $row['RegDatm'] }}</span></li>
                     @endforeach
                 </ul>
-            </div>            
+            </div>
         </div>
 
         <div class="evt01">
             <ul class="tab NSK-Black">
-                <li><a href="#tab01"><span>서포터즈 소개<span></a></li>
-                <li><a href="#tab02"><span>과제수행<span></a></li>
-                <li><a href="#tab03"><span>제안 및 의견<span></a></li>
-                <li><a href="#tab04"><span>명예의 전당<span></a></li>
-            </ul> 
+                @if($data['SupportersTypeCcd'] == '736001')
+                    <li><a href="#tab01"><span>서포터즈 소개</span></a></li>
+                    <li><a href="#tab02"><span>과제수행</span></a></li>
+                    <li><a href="#tab03"><span>제안 및 의견</span></a></li>
+                    <li><a href="#tab04"><span>명예의 전당</span></a></li>
+                @else
+                    <li><a href="#tab01"><span>서포터즈 소개</span></a></li>
+                    <li><a href="#tab02"><span>출석체크</span></a></li>
+                    <li><a href="#tab03"><span>과제수행</span></a></li>
+                    <li><a href="#tab04"><span>제안 및 의견</span></a></li>
+                @endif
+
+            </ul>
             <div class="evtCtsBox">
-                <div id="tab01" class="evtCts tx-center">
-                    <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab01.jpg" title="광은 서포터즈">
-                </div>
-
-                <div id="tab02" class="evtCts">
-                    @include('willbes.pc.site.supporters.home_assignment_partial')
-                </div>
-
-                <div id="tab03" class="evtCts">
-                    @include('willbes.pc.site.supporters.home_suggest_partial')
-                </div>
-
-                <div id="tab04" class="evtCts">
-                    @include('willbes.pc.site.supporters.home_member_partial')
-                </div>
+                @if($data['SupportersTypeCcd'] == '736001')
+                    <div id="tab01" class="evtCts tx-center">
+                        <img src="https://static.willbes.net/public/images/promotion/supporters/supporters_tab01.jpg" title="광은 서포터즈">
+                    </div>
+                    <div id="tab02" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_assignment_partial')
+                    </div>
+                    <div id="tab03" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_suggest_partial')
+                    </div>
+                    <div id="tab04" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_member_partial')
+                    </div>
+                @else
+                    <div id="tab01" class="evtCts tx-center">
+                        <img src="https://static.willbes.net/public/images/promotion/supporters/2021_cop_management_tab01.jpg" title="온라인관리반 체험단">
+                    </div>
+                    <div id="tab02" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_attendance_partial')
+                    </div>
+                    <div id="tab03" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_assignment_partial')
+                    </div>
+                    <div id="tab04" class="evtCts">
+                        @include('willbes.pc.site.supporters.home_suggest_partial')
+                    </div>
+                @endif
             </div>
         </div>
     </div>

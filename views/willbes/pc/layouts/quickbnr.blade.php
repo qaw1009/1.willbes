@@ -3,11 +3,36 @@
         <div id="QuickMenu" class="MainQuickMenuSSam NGR">
             <ul id="dday_box"></ul>
             <ul class="gobtn">
-                <li><a href="{{ site_url('/pass/board/schedule') }}">강의실배정표</a></li>
-                <li><a href="{{ site_url('/support/mobile/index') }}">모바일 수강안내</a></li>
-                <li><a href="{{ site_url('/support/qna/index') }}">1:1 상담</a></li>
-                <li><a href="{{ site_url('/event/list/ongoing') }}">이벤트</a></li>
-                <li><a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">재학생 러닝메이트</a></li>
+                <li>
+                    <a href="{{ site_url('/pass/board/schedule') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01.png" title="강의실배정표" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01_on.png" title="강의실배정표" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/support/mobile/index') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02.png" title="모바일수강안내" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02_on.png" title="모바일수강안내" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/support/qna/create?') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03.png" title="1:1상담" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03_on.png" title="1:1상담" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/event/list/ongoing') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04.png" title="이벤트" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04_on.png" title="이벤트" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05.png" title="재학생러닝메이트" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05_on.png" title="재학생러닝메이트" class="on">
+                    </a>
+                </li>
                 <li><a href="#">TOP ▲</a></li>
             </ul>
         </div>

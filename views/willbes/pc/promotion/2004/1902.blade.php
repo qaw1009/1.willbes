@@ -89,7 +89,7 @@
                             <td>국어</td>
                             <td>기미진</td>
                             <td>[라이브][21.01-02] 기미진 기특한 국어 진도별 문제풀이</td>
-                            <td>01-07 ~    02-25</td>
+                            <td>01-14 ~ 03-04</td>
                             <td>목</td>
                             <td>72,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175918" target="_blank">수강신청</a></td>
@@ -98,16 +98,34 @@
                             <td>영어</td>
                             <td>한덕현</td>
                             <td>[라이브][21.01-02] 한덕현 제니스영어 스나이퍼32</td>
-                            <td>01-04 ~ 02-22</td>
+                            <td>01-11 ~ 03-01</td>
                             <td>월</td>
                             <td>72,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td>[라이브][21.01-02] 한덕현 제니스영어 논리독해</td>
+                            <td>01-14 ~ 03-04</td>
+                            <td>목</td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177216" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td>[라이브][21.01-02] 한덕현 제니스영어 실전문법464</td>
+                            <td>01-16 ~ 03-06</td>
+                            <td>토</td>
+                            <td>72,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177213" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
                             <td>한국사</td>
                             <td>조민주</td>
                             <td>[라이브][21.01-02] 조민주 한국사 진도별 문제풀이</td>
-                            <td>01-04 ~ 02-23</td>
+                            <td>01-11 ~ 03-02</td>
                             <td>월/화</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175920" target="_blank">수강신청</a></td>
@@ -116,7 +134,7 @@
                             <td>행정법</td>
                             <td>이석준</td>
                             <td>[라이브][21.01-02] 이석준 행정법 진도별 문제풀이</td>
-                            <td>01-05 ~ 02-25</td>
+                            <td>01-12 ~ 03-03</td>
                             <td>화/목</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175922" target="_blank">수강신청</a></td>
@@ -134,7 +152,7 @@
                             <td>국어</td>
                             <td>김세령</td>
                             <td>[라이브][21.01-02] 불꽃소방 세령국어 진도별 문제풀이</td>
-                            <td>01-04 ~ 02-22</td>
+                            <td>01-11 ~ 03-02</td>
                             <td>화</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175944" target="_blank">수강신청</a></td>
@@ -143,7 +161,7 @@
                             <td>영어</td>
                             <td>이아림</td>
                             <td>[라이브][21.01-02] 불꽃소방 이아림 공채영어 진도별 문제풀이</td>
-                            <td>01-08 ~ 02-26</td>
+                            <td>01-15 ~ 03-05</td>
                             <td>금</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175945" target="_blank">수강신청</a></td>
@@ -152,7 +170,7 @@
                             <td>영어</td>
                             <td>양익</td>
                             <td>[라이브][21.01-02] 불꽃소방 양익 경채영어 진도별 문제풀이</td>
-                            <td>01-05 ~ 02-23</td>
+                            <td>01-12 ~ 03-03</td>
                             <td>화</td>
                             <td>72,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175946" target="_blank">수강신청</a></td>
@@ -161,7 +179,7 @@
                             <td>한국사</td>
                             <td>한경준</td>
                             <td>[라이브][21.01-02] 불꽃소방 한경준 미친한국사 진도별 문제풀이</td>
-                            <td>01-05 ~ 02-23</td>
+                            <td>01-12 ~ 03-03</td>
                             <td>화</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175949" target="_blank">수강신청</a></td>
@@ -170,7 +188,7 @@
                             <td>소방학개론</td>
                             <td>이종오</td>
                             <td>[라이브][21.01-02] 불꽃소방 이종오 소방학개론 문제풀이 + 빈출 테마</td>
-                            <td>01-06 ~ 02-24</td>
+                            <td>01-13 ~ 03-04</td>
                             <td>수</td>
                             <td>112,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175947" target="_blank">수강신청</a></td>
@@ -179,7 +197,7 @@
                             <td>소방관계법규</td>
                             <td>이종오</td>
                             <td>[라이브][21.01-02] 불꽃소방 이종오 소방관계법규 문제풀이 + 빈출 테마</td>
-                            <td>01-07 ~ 02-25</td>
+                            <td>01-14 ~ 03-05</td>
                             <td>목</td>
                             <td>72,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175948" target="_blank">수강신청</a></td>

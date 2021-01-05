@@ -43,12 +43,10 @@
                 </p>
             </div>
             <div class="VisualSubBox p_re mt20">
-                {{--<img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_title.jpg">  --}}
                 <div id="SubRollingSlider" class="SubtabBox">
                     <ul class="SubtabSlider">
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1816') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_mjs.jpg" alt="유아 민정선"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1817') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_bjm.jpg" alt="초등 배재민"></a></li>
-                        <li><a href="{{ front_url('/promotion/index/cate/3140/code/1813') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_kcw.jpg" alt="교육학 김차웅"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1814') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_lij.jpg" alt="교육한 이인재"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1815') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_hei.jpg" alt="교육한 홍의일"></a></li>
                         <li><a href="{{ front_url('/promotion/index/cate/3140/code/1818') }}"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_swy.jpg" alt="전공국어 송원영"></a></li>
@@ -75,7 +73,6 @@
                     <ul class="Subtab">
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1816') }}"'><a data-slide-index='0' href="javascript:void(0);" class="active">유아 민정선</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1817') }}"'><a data-slide-index='1' href="javascript:void(0);">초등 배재민</a></li>
-                        <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1813') }}"'><a data-slide-index='2' href="javascript:void(0);">교육학 김차웅</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1814') }}"'><a data-slide-index='3' href="javascript:void(0);">교육학 이인재</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1815') }}"'><a data-slide-index='4' href="javascript:void(0);">교육학 홍의일</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1818') }}"'><a data-slide-index='5' href="javascript:void(0);">전공국어 송원영</a></li>

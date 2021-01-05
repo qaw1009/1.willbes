@@ -47,6 +47,7 @@ class RouletteFModel extends WB_Model
                 SELECT RroIdx, COUNT(*) AS ProdUsedCnt
                 FROM {$this->_table['roulette_member']}
                 WHERE RouletteCode = '{$roulette_code}' {$default_where}
+                AND IsStatus = 'Y'
                 GROUP BY RroIdx
             ) AS M ON other.RroIdx = M.RroIdx
         ";
@@ -206,7 +207,7 @@ class RouletteFModel extends WB_Model
         ];
         $column = '
             a.RroIdx, a.RouletteCode, a.ProdName, a.ProdQty, a.ProdProbability
-            ,(cast(a.ProdQty as signed) - (SELECT COUNT(*) FROM lms_roulette_member WHERE RroIdx = a.RroIdx AND RegDatm > CURRENT_DATE())) AS unUsedCount
+            ,(cast(a.ProdQty as signed) - (SELECT COUNT(*) FROM lms_roulette_member WHERE RroIdx = a.RroIdx AND RegDatm > CURRENT_DATE() AND IsStatus = "Y")) AS unUsedCount
             ,a.FileFullPath
             ,a.FinishFileFullPath
         ';
@@ -243,6 +244,9 @@ class RouletteFModel extends WB_Model
      */
     private function _findGetUsedCount($arr_condition, $count_type)
     {
+        $arr_condition = array_merge_recursive($arr_condition,[
+            'EQ' => ['IsStatus' => 'Y']
+        ]);
         if ($count_type == 'D') {
             $arr_condition = array_merge($arr_condition,[
                 'RAW' => ['RegDatm > ' => 'CURRENT_DATE()']
@@ -277,6 +281,7 @@ class RouletteFModel extends WB_Model
                 SELECT RroIdx, COUNT(*) AS UsedTotalCount
                 FROM {$this->_table['roulette_member']}
                 WHERE RouletteCode = '{$roulette_code}'
+                AND IsStatus = 'Y'
                 {$sub_where}
                 GROUP BY `RroIdx`
             ) AS B ON A.RroIdx = B.RroIdx
@@ -292,7 +297,8 @@ class RouletteFModel extends WB_Model
     {
         $arr_condition = [
             'EQ' => [
-                'RouletteCode' => $roulette_code
+                'RouletteCode' => $roulette_code,
+                'IsStatus' => 'Y'
             ]
         ];
         if ($count_type == 'D') {
@@ -319,7 +325,8 @@ class RouletteFModel extends WB_Model
         $arr_condition = [
             'EQ' => [
                 'RouletteCode' => $roulette_code,
-                'MemIdx' => $this->session->userdata('mem_idx')
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'IsStatus' => 'Y'
             ]
         ];
         if ($count_type == 'D') {

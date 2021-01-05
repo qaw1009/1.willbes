@@ -74,7 +74,7 @@ class ManageMemberModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where . $inQuery . $order_by_offset_limit);
+        $rows = $this->_conn->query('SELECT ' . ($is_count == true ? '' : 'straight_join') . $column . $from . $where . $inQuery . $order_by_offset_limit);
 
         return ($is_count === true) ? $rows->row(0)->rownums : $rows->result_array();
     }

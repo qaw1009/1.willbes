@@ -547,7 +547,11 @@ class ClassroomFModel extends WB_Model
         $query = "SELECT STRAIGHT_JOIN * ";
 
         $query .= " FROM {$this->_table['lec_unit']} AS U
-         JOIN {$this->_table['bookmark']} AS B ON U.ProdCode = B.ProdCode AND  U.ProdCodeSub = B.ProdCodeSub AND U.wLecIdx = B.wLecIdx AND U.wUnitIdx = B.wUnitIdx
+         JOIN {$this->_table['bookmark']} AS B ON U.ProdCode = B.ProdCode 
+         AND U.ProdCodeSub = B.ProdCodeSub 
+         AND U.wLecIdx = B.wLecIdx 
+         AND U.wUnitIdx = B.wUnitIdx
+         AND U.MemIdx = B.MemIdx
          ";
 
         $where = $this->_conn->makeWhere($cond);

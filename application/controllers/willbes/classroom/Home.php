@@ -272,7 +272,7 @@ class Home extends \app\controllers\FrontController
      */
     private function _isSupporters()
     {
-        $column = 'a.SupportersIdx, a.SiteCode';
+        $column = 'a.SupportersIdx, a.SiteCode, a.SupportersTypeCcd';
         $arr_condition_1 = [
             'EQ' => [
                 'IsUse' => 'Y'

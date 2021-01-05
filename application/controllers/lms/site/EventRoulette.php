@@ -67,7 +67,6 @@ class EventRoulette extends \app\controllers\BaseController
             }
             $data['roulette_list_otherinfo'] = $this->rouletteModel->listRouletteOtherInfo($roulette_code);
 
-            unset($arr_condition['EQ']['a.IsStatus']);
             if (empty($this->rouletteModel->listWinMember(true, $arr_condition, $roulette_code)) === false) {
                 $modify_type = 'disabled="disabled"';
             }
@@ -115,6 +114,7 @@ class EventRoulette extends \app\controllers\BaseController
             $arr_condition = [
                 'EQ' => [
                     'a.RouletteCode' => $params[0],
+                    'a.IsStatus' => 'Y',
                     'a.IsUse' => $this->_reqP('search_is_use'),
                     'b.RroIdx' => $this->_reqP('search_rro_idx'),
                 ],
@@ -281,6 +281,7 @@ class EventRoulette extends \app\controllers\BaseController
         $arr_condition = [
             'EQ' => [
                 'a.RouletteCode' => $params[0],
+                'a.IsStatus' => 'Y',
                 'a.IsUse' => $this->_reqP('search_is_use'),
                 'b.RroIdx' => $this->_reqP('search_rro_idx'),
             ],
@@ -312,6 +313,41 @@ class EventRoulette extends \app\controllers\BaseController
         // export excel
         $this->load->library('excel');
         $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
+    public function memberDelete()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'params', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->rouletteModel->memberDelete(json_decode($this->_reqP('params'), true));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    public function memberDeleteAll($params = [])
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]']
+        ];
+
+        if (empty($params) === true) {
+            $rules = array_merge($rules, [
+                ['field' => 'params', 'label' => '룰렛식별자', 'rules' => 'trim|required']
+            ]);
+        }
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->rouletteModel->memberDeleteAll($params[0]);
+        $this->json_result($result, '적용 되었습니다.', $result);
     }
 
     /**

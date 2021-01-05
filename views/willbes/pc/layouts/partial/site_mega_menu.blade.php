@@ -668,7 +668,6 @@
                 <tr>
                     <td>
                         <ul>
-                            <li><a href="{{front_url('/professor/show/prof-idx/51073?cate_code=3134&subject_idx=1980')}}">김차웅</a></li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980')}}">이인재</a></li>
                             <li><a href="{{front_url('/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980')}}">홍의일</a></li>
                         </ul>

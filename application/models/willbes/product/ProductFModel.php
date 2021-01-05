@@ -207,9 +207,10 @@ class ProductFModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
+        // todo : 쿼리 속도를 위해 straight_join 추가 
         $query = /** @lang text */ '
             select * from (
-                select ' . $column . ' from ' . $this->_table[$learn_pattern] . $where . '
+                select straight_join ' . $column . ' from ' . $this->_table[$learn_pattern] . $where . '
             ) U
             where RowNum < ? 
             order by SubjectIdx asc, ProdCode desc';

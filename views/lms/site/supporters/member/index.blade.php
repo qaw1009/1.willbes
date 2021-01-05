@@ -16,6 +16,12 @@
                                 <option value="{{ $row['SupportersIdx'] }}" class="{{ $row['SiteCode'] }}">{!! $row['Title'] . " [{$row['SupportersYear']}-{$row['SupportersNumber']}]" !!}</option>
                             @endforeach
                         </select>
+                        <select class="form-control" id="search_supporters_type_ccd" name="search_supporters_type_ccd" title="서포터즈 유형">
+                            <option value="">서포터즈 유형</option>
+                            @foreach($arr_base['supporters_type'] as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -64,6 +70,7 @@
                     <th>연도</th>
                     <th>기수</th>
                     <th>서포터즈명</th>
+                    <th>서포터즈유형</th>
                     <th>활동상태</th>
                     <th>과제수행</th>
                     <th>제안/토론</th>
@@ -72,6 +79,7 @@
                     <th>학년</th>
                     <th>재학여부</th>
                     <th>응시직렬</th>
+                    <th>출석일수</th>
                     <th>등록자</th>
                     <th>등록일</th>
                     <th>수정일</th>
@@ -126,6 +134,7 @@
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {
                             return '<a href="javascript:void(0);" class="btn-read" data-srm-idx="' + row.SrmIdx + '"><u>' + data + '</u></a>';
                         }},
+                    {'data' : 'SupportersTypeCcdName'},
                     {'data' : 'SupportersStatusCcdName'},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.AssignmentCnt + '/' + row.AssignmentTotalCnt;
@@ -136,6 +145,7 @@
                     {'data' : 'SchoolYearCcdName'},
                     {'data' : 'IsSchoolCcdName'},
                     {'data' : 'SerialCcdName'},
+                    {'data' : 'AttendanceCnt'},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'UpdDatm'},

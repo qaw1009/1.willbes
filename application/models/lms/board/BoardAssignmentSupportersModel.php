@@ -7,7 +7,7 @@ class BoardAssignmentSupportersModel extends BoardModel
 {
     private $_this_table = [
         'lms_board_assignment' => 'lms_board_assignment',
-        'lms_supporters' => 'lms_supporters',
+        'lms_supporters' => 'lms_supporters'
     ];
 
     public function listAllSupportersForMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
@@ -17,7 +17,8 @@ class BoardAssignmentSupportersModel extends BoardModel
             $order_by_offset_limit = '';
         } else {
             $column = '
-                Board.*, SP.SupportersIdx, SP.SupportersYear, SP.SupportersNumber, S.SiteName, M.MemId, M.MemName
+                Board.*, SP.SupportersIdx, SP.Title AS SupportersTitle, SP.SupportersTypeCcd, SP.SupportersYear, SP.SupportersNumber, S.SiteName, M.MemId, M.MemName
+                ,LSC.CcdName AS SupportersTypeCcdName
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -39,6 +40,7 @@ class BoardAssignmentSupportersModel extends BoardModel
             INNER JOIN {$this->_this_table['lms_supporters']} AS SP ON Board.SupportersIdx = SP.SupportersIdx
             INNER JOIN {$this->_table_sys_site} AS S ON Board.SiteCode = S.SiteCode
             INNER JOIN {$this->_table_member} AS M ON Board.MemIdx = M.MemIdx
+            INNER JOIN {$this->_table_sys_code} AS LSC ON LSC.Ccd = SP.SupportersTypeCcd
         ";
 
         // 사이트 권한 추가

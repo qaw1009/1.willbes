@@ -39,6 +39,12 @@ class SupportOffBoardInfo extends BaseSupport
         } else if($bm_idx == '107') {
             $bm_title = '통합생활관리반 공지';
             $tab_menu = false;
+        } else if($bm_idx == '116') {
+            $bm_title = '프리미엄 올공반';
+            $tab_menu = false;
+        } else if($bm_idx == '117') {
+            $bm_title = '스파르타 관리반';
+            $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';
             $tab_menu = true;
@@ -128,6 +134,12 @@ class SupportOffBoardInfo extends BaseSupport
             $tab_menu = false;
         } else if($bm_idx == '107') {
             $bm_title = '통합생활관리반 공지';
+            $tab_menu = false;
+        } else if($bm_idx == '116') {
+            $bm_title = '프리미엄 올공반';
+            $tab_menu = false;
+        } else if($bm_idx == '117') {
+            $bm_title = '스파르타 관리반';
             $tab_menu = false;
         } else {
             $bm_title = '학원강의정보';
@@ -237,5 +249,4 @@ class SupportOffBoardInfo extends BaseSupport
             ]
         );
     }
-
 }

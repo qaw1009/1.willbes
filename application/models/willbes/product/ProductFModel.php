@@ -482,7 +482,7 @@ class ProductFModel extends WB_Model
     }
 
     /**
-     * 해당 강좌상품의 서브강좌 중 해당 수강생교재를 포함하고 있는 단강좌 코드 리턴
+     * 해당 강좌상품의 서브강좌 중 해당 수강생교재를 포함하고 있는 단강좌/학원단과 코드 리턴
      * @param string $prod_lecture_code [강좌상품코드]
      * @param string $prod_book_code [교재상품코드]
      * @return mixed
@@ -498,7 +498,7 @@ class ProductFModel extends WB_Model
                     left join ' . $this->_table['product_r_sublecture'] . ' as PRS
                         on P.ProdCode = PRS.ProdCode and PRS.IsStatus = "Y"
                 where P.ProdCode = ?    #강좌코드
-                    and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+                    and P.ProdTypeCcd in ("' . $this->_prod_type_ccd['on_lecture'] . '", "' . $this->_prod_type_ccd['off_lecture'] . '")
                     and P.IsStatus = "Y"		
             ) as LP
                 inner join ' . $this->_table['product_r_product'] . ' as PRP

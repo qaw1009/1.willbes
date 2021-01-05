@@ -47,13 +47,13 @@ class WB_Calendar extends CI_Calendar
             {/heading_row_start}
     
             {heading_previous_cell}
-            <span class="prev"><a="javascript:void(0)" onclick="show_calendar(\'{previous_url}\')" style="cursor:pointer"><img src="'.img_url('counsel/calendar_prev.png').'"></a></span>
+            <span class="prev"><a="javascript:void(0)" onclick="show_calendar(\'{previous_url}\')" style="cursor:pointer"><img src="/public/img/willbes/counsel/calendar_prev.png"></a></span>
             {/heading_previous_cell}
             
             {heading_title_cell}{heading}{/heading_title_cell}
             
             {heading_next_cell}
-            <span class="next"><a="javascript:void(0)" onclick="show_calendar(\'{next_url}\')" style="cursor:pointer"><img src="'.img_url('counsel/calendar_next.png').'"></a></span>
+            <span class="next"><a="javascript:void(0)" onclick="show_calendar(\'{next_url}\')" style="cursor:pointer"><img src="/public/img/willbes/counsel/calendar_next.png"></a></span>
             {/heading_next_cell}
     
             {heading_row_end}

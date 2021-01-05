@@ -13,7 +13,7 @@ class BoardModel extends WB_Model
     private $_table_assignment_r_schedule_date = 'lms_board_assignment_r_schedule_date';
     protected $_table_sys_site = 'lms_site';
     protected $_table_sys_admin = 'wbs_sys_admin';
-    private $_table_sys_code = 'lms_sys_code';
+    protected $_table_sys_code = 'lms_sys_code';
     private $_table_sys_category = 'lms_sys_category';
     protected $_table_member = 'lms_member';
     private $_table_product = 'lms_product';                    //상품관리테이블

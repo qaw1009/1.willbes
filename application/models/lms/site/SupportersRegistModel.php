@@ -50,9 +50,9 @@ class SupportersRegistModel extends WB_Model
         $from = "
             FROM (
                 SELECT
-                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
+                a.SupportersIdx, a.SiteCode, a.Title, a.SupportersTypeCcd, a.SupportersYear, a.SupportersNumber, a.StartDate, a.EndDate, a.CouponIssueCcd, a.IsUse, a.RegDatm, a.RegAdminIdx,
                 b.SiteName, c.wAdminName as RegAdminName,
-                fn_ccd_name(a.CouponIssueCcd) AS CouponIssueCcdName 
+                fn_ccd_name(a.SupportersTypeCcd) AS SupportersTypeCcdName, fn_ccd_name(a.CouponIssueCcd) AS CouponIssueCcdName 
                 FROM {$this->_table['supporters']} AS a
                 INNER JOIN {$this->_table['lms_site']} as b ON a.SiteCode = b.SiteCode
                 INNER JOIN {$this->_table['wbs_sys_admin']} as c ON a.RegAdminIdx = c.wAdminIdx AND c.wIsStatus='Y'
@@ -373,6 +373,7 @@ class SupportersRegistModel extends WB_Model
     {
         $input_data = [
             'SiteCode' => element('site_code',$input)
+            ,'SupportersTypeCcd' => element('supporters_type_ccd',$input)
             ,'Title' => element('title',$input)
             ,'SupportersYear' => element('supporters_year',$input)
             ,'SupportersNumber' => element('supporters_number',$input)

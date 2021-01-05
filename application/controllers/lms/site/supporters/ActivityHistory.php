@@ -35,6 +35,7 @@ class ActivityHistory extends BaseSupporters
         $arr_base['arr_site_code'] = $this->_listSite();
         $arr_base['arr_supporters_data'] = $this->_getSupportersData();
         $arr_base['arr_supporters_type'] = $this->_arr_supporters_type;
+        $arr_base['supporters_type'] = $this->_getCcdData($this->_ccd['supporters_type']);
         $this->load->view('site/supporters/activityHistory/index', ['arr_base' => $arr_base]);
     }
 

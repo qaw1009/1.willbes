@@ -22,6 +22,7 @@ class Member extends BaseSupporters
         $arr_base['def_site_code'] = '2001';
         $arr_base['arr_site_code'] = $this->_listSite();
         $arr_base['arr_supporters_data'] = $this->_getSupportersData();
+        $arr_base['supporters_type'] = $this->_getCcdData($this->_ccd['supporters_type']);
         $this->load->view('site/supporters/member/index', ['arr_base' => $arr_base]);
     }
 
@@ -30,7 +31,8 @@ class Member extends BaseSupporters
         $arr_condition = [
             'EQ' => [
                 'a.SiteCode' => $this->_reqP('search_site_code'),
-                'a.SupportersIdx' => $this->_reqP('search_supporters_idx')
+                'a.SupportersIdx' => $this->_reqP('search_supporters_idx'),
+                'b.SupportersTypeCcd' => $this->_reqP('search_supporters_type_ccd')
             ],
             'ORG' => [
                 'LKB' => [
@@ -185,7 +187,7 @@ class Member extends BaseSupporters
         $srm_idx = $params[0];
 
         $column = '
-            a.SiteCode, b.SiteName, a.SupportersIdx, s.Title AS SupportersName, a.MemIdx, s.SupportersYear, s.SupportersNumber,
+            a.SrmIdx, a.SiteCode, b.SiteName, a.SupportersIdx, s.Title AS SupportersName, a.MemIdx, s.SupportersYear, s.SupportersNumber,
             a.SupportersStatusCcd, a.SerialCcd, a.UniversityName, a.Department, a.SchoolYearCcd, a.IsSchoolCcd, a.ExamPeriodCcd, a.ExamCount,
             a.Content1, a.Content2, a.Content3, a.Content4, a.Content5, a.RegDatm, a.RegAdminIdx, a.RegIp, a.UpdDatm, a.UpdAdminIdx,
             m.MemIdx, m.MemId, m.MemName, m.BirthDay, m.Sex, fn_dec(m.PhoneEnc) as Phone, fn_dec(m.MailEnc) as Mail,
@@ -346,6 +348,82 @@ class Member extends BaseSupporters
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
+    /**
+     * 출석체크 ajax
+     */
+    public function ajaxMyAttendance()
+    {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
+
+        $this->load->view('site/supporters/member/layer/list_my_attendance', [
+            'arr_hidden_data' => $arr_hidden_data
+        ]);
+    }
+
+    /**
+     * 출석체크 데이터테이블
+     * @return CI_Output
+     */
+    public function ajaxMyAttendanceDataTable()
+    {
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $this->_reqP('supporters_idx'),
+                'MemIdx' => $this->_reqP('member_idx'),
+                'IsStatus' => 'Y',
+            ]
+        ];
+
+        $list = [];
+        $count = $this->supportersMemberModel->listMyAttendance( true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->supportersMemberModel->listMyAttendance(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['SadIdx' => 'desc']);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    public function calendarModal()
+    {
+        $arr_hidden_data['supporters_idx'] = $this->_reqG('supporters_idx');
+        $arr_hidden_data['member_idx'] = $this->_reqG('member_idx');
+
+        $this->load->view('site/supporters/member/calendar_modal', [
+            'arr_hidden_data' => $arr_hidden_data
+        ]);
+    }
+
+    public function showCalendar($params = [])
+    {
+        $supporters_idx = $this->_reqG('supporters_idx');
+        $member_idx = $this->_reqG('member_idx');
+
+        if (empty($params) === true) {
+            $year = date('Y');
+            $month = date('m');
+        } else {
+            $year = $params[0];
+            $month = $params[1];
+        }
+
+        //일자별 데이터 조회
+        $data = $this->_getScheduleDataForMonth($supporters_idx, $member_idx, $year.$month);
+
+        $this->load->library('calendar');
+        $this->calendar->next_prev_url = site_url('/site/supporters/member/showCalendar');
+        $calendar = $this->calendar->generate($year, $month, $data);
+
+        $this->load->view('site/supporters/member/calendar', [
+            'calendar' => $calendar
+        ]);
+    }
+
     private function _setInputData($input){
         $input_data = [
             'Content' => element('myclass_content', $input),
@@ -353,5 +431,42 @@ class Member extends BaseSupporters
             'UpdAdminIdx' => $this->session->userdata('admin_idx')
         ];
         return$input_data;
+    }
+
+    /**
+     * 일자별 데이터 조회
+     * @param string $supporters_idx
+     * @param string $member_idx
+     * @param string $target_month
+     * @return array
+     */
+    private function _getScheduleDataForMonth($supporters_idx = '', $member_idx = '', $target_month = '')
+    {
+        $month_data = [];
+        $arr_condition = [
+            'EQ' => [
+                'SupportersIdx' => $supporters_idx
+                ,'MemIdx' => $member_idx
+                ,'IsStatus' => 'Y'
+            ]
+        ];
+
+        $data = $this->supportersMemberModel->getSupportersAttendanceMember($arr_condition);
+        $last_day = date('t', strtotime($target_month . '01'));
+
+        for ($i=1; $i<=$last_day; $i++) {
+            $temp_css = '';
+            if($i < 10){
+                $day = '0'. $i;
+            }else{
+                $day = $i;
+            }
+            if(empty($data[$target_month.$day]) === false){
+                $temp_css = 'attend';
+            }
+            $temp_html = '<span class="'.$temp_css.'"></span>';
+            $month_data[$i] = $temp_html;
+        }
+        return $month_data;
     }
 }

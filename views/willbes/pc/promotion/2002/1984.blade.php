@@ -147,7 +147,7 @@
             <map name="1984b" id="1984b">
                 <area shape="rect" coords="120,822,384,878" href="https://police.willbes.net/pass/offPackage/show/prod-code/176417" target="_blank">
                 <area shape="rect" coords="430,822,694,879" href="https://police.willbes.net/pass/offPackage/show/prod-code/176450" target="_blank">
-                <area shape="rect" coords="740,822,1002,879" href="https://police.willbes.net/pass/offPackage/show/prod-code/176410" target="_blank">
+                {{--<area shape="rect" coords="740,822,1002,879" href="https://police.willbes.net/pass/offPackage/show/prod-code/176410" target="_blank">--}}
             </map>
 		</div>  
 

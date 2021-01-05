@@ -564,15 +564,14 @@ min-height: 260px;}
 }
 .MainQuickMenuSSam .gobtn li {margin:0; margin-bottom:10px}
 .MainQuickMenuSSam .gobtn li a {
-    border-bottom:1px solid #dbdbdb;
+    /*border-bottom:1px solid #dbdbdb;
     margin: 0 10px;       
     line-height: 1.2;
     color:#515151;
     font-weight: bold;
-    font-size:14px;
+    font-size:14px;*/
     display:block;
     text-align: center;
-    background-color: #2e898e;
 }
 .MainQuickMenuSSam .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold; padding-top:10px}
 .MainQuickMenuSSam .gobtn li a img.off {display: block;}

@@ -11,6 +11,7 @@ class SupportersFModel extends WB_Model
         'supporters_r_member' => 'lms_supporters_r_member',
         'supporters_r_coupon' => 'lms_supporters_r_coupon',
         'supporters_myclass' => 'lms_supporters_myclass',
+        'supporters_attendance' => 'lms_supporters_attendance',
         'lms_member' => 'lms_member'
     ];
 
@@ -44,7 +45,7 @@ class SupportersFModel extends WB_Model
         $from = "
             FROM (
                 SELECT
-                SiteCode, SupportersIdx, Title, SupportersYear, SupportersNumber, CouponIssueCcd
+                SiteCode, SupportersIdx, SupportersTypeCcd, Title, SupportersYear, SupportersNumber, CouponIssueCcd
                 FROM {$this->_table['supporters']}
                 {$where_1}
                 ORDER BY SupportersIdx DESC
@@ -153,6 +154,80 @@ class SupportersFModel extends WB_Model
             }
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * 출석체크 회원 정보 조회
+     * @param array $arr_condition
+     * @return array
+     */
+    public function getSupportersAttendanceMember($arr_condition = [])
+    {
+        $column = " 
+            AttendanceDay
+        ";
+        $from = " FROM {$this->_table['supporters_attendance']} ";
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $list = $this->_conn->query('SELECT '. $column. $from. $where)->result_array();
+
+        $data = [];
+        foreach ($list as $key => $val){
+            $data[$val['AttendanceDay']] = $val;
+        }
+        return $data;
+    }
+
+    public function findSupportersAttendance($arr_condition = [], $column = 'SadIdx')
+    {
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $from = "
+            FROM {$this->_table['supporters_attendance']}
+        ";
+
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
+    /**
+     * 출석체크
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function storeSupportersAttendance($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $supporters_idx = element('supporters_idx',$form_data);
+            $arr_condition = [
+                'EQ' => [
+                    'SupportersIdx' => $supporters_idx
+                    ,'MemIdx' => $this->session->userdata('mem_idx')
+                    ,'AttendanceDay' => date('Ymd')
+                    ,'IsStatus' => 'Y'
+                ]
+            ];
+            $data = $this->findSupportersAttendance($arr_condition);
+            if (empty($data) === false) {
+                throw new \Exception('금일 출석체크를 완료했습니다.');
+            }
+
+            $input_data = [
+                'SupportersIdx' => $supporters_idx
+                ,'MemIdx' => $this->session->userdata('mem_idx')
+                ,'AttendanceDay' => date('Ymd')
+                ,'RegDatm' => date('Y-m-d H:i:s')
+                ,'RegIp' => $this->input->ip_address()
+            ];
+
+            if ($this->_conn->set($input_data)->insert($this->_table['supporters_attendance']) === false) {
+                throw new \Exception('출석체크 등록 실패했습니다.');
+            }
+            $this->_conn->trans_commit();
+        } catch(\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }

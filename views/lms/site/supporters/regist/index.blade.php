@@ -10,6 +10,13 @@
                     <label class="control-label col-md-1" for="search_supporters_year">서포터즈 검색</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($arr_base['def_site_code'], 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
+                        <select class="form-control" id="search_supporters_type_ccd" name="search_supporters_type_ccd" title="서포터즈 유형">
+                            <option value="">서포터즈 유형</option>
+                            @foreach($arr_base['supporters_type'] as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_supporters_year" name="search_supporters_year">
                             <option value="">년도</option>
                             @foreach($arr_base['arr_supporters_year'] as $keys => $vals)
@@ -77,6 +84,7 @@
                     <th>NO</th>
                     <th>운영사이트</th>
                     <th>코드</th>
+                    <th>서포터즈유형</th>
                     <th>연도</th>
                     <th>기수</th>
                     <th>서포터즈명</th>
@@ -121,6 +129,7 @@
                         }},
                     {'data' : 'SiteName'},
                     {'data' : 'SupportersIdx'},
+                    {'data' : 'SupportersTypeCcdName'},
                     {'data' : 'SupportersYear'},
                     {'data' : 'SupportersNumber'},
                     {'data' : 'Title', 'render' : function(data, type, row, meta) {

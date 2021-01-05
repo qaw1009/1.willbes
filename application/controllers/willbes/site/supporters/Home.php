@@ -17,7 +17,7 @@ class Home extends \app\controllers\FrontController
     {
         $arr_base = [];
 
-        $column = 'a.SupportersIdx, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber';
+        $column = 'a.SupportersIdx, a.SupportersTypeCcd, a.Title AS SupportersTitle, a.SupportersYear, a.SupportersNumber';
         $arr_condition_1 = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

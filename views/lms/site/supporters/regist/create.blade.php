@@ -16,8 +16,16 @@
         <div class="form-group-sm">
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="site_code">운영 사이트 <span class="required">*</span></label>
-                <div class="col-md-8 form-inline item">
+                <div class="col-md-4 form-inline item">
                     {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', false, $arr_base['arr_site_code']) !!}
+                </div>
+                <label class="control-label col-md-1-1" for="start_date">서포터즈 유형 <span class="required">*</span></label>
+                <div class="col-md-5 form-inline item">
+                    <select class="form-control" id="supporters_type_ccd" name="supporters_type_ccd" required="required" title="서포터즈 유형">
+                        @foreach($arr_base['supporters_type'] as $key => $val)
+                            <option value="{{$key}}" @if($method == 'PUT' && $key == $data['SupportersTypeCcd']) selected="selected" @endif>{{$val}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -48,7 +56,7 @@
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="title">서포터즈명 <span class="required">*</span></label>
                 <div class="col-md-8 form-inline item">
-                    <input type="text" class="form-control" id="title" name="title" required="required" title="서포터즈명" value="{{ $data['Title'] }}">
+                    <input type="text" class="form-control" id="title" name="title" required="required" title="서포터즈명" value="{{ $data['Title'] }}" style="width: 300px;">
                 </div>
             </div>
             <div class="form-group">

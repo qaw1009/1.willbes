@@ -10,7 +10,6 @@
 
     .evtTop {position:relative}
 
-    .evt01 {}
     .evt01 .slide_con {padding-bottom:30px}
     .evt01 .slide_con img {max-width:348px; margin:0 auto}
     .evt01 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
@@ -40,18 +39,19 @@
     .evt01 .slide_con .bx-wrapper .bx-pager {     
         bottom: -30px;
     }  
-
-    .evt02 {position:relative;}
-    .evt02 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
-    .check {position:absolute; bottom:50px; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
+    .evt02 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2021/01/1717m_02_bg.jpg) repeat-y center top;}
+    .evt02 p:after {content:''; display:block; clear:both}
+    .evt02 p a {display:inline; float:left; width:50%}    
+    .evt02 p a img {width:100%; max-width:360px}    
+    .check {width:100%; text-align:center; color:#fff; padding:30px 10px 50px}
     .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
 
     .evt03 {padding-bottom:50px}   
 
-    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
-    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
+    .evtFooter {margin:0 auto; padding-bottom:30px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
+    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#fff; background:#252525; text-align:center; padding:15px 0}
     .evtFooter p {margin-bottom:10px; color:#252525; font-size:19px;}
     .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
@@ -63,50 +63,46 @@
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}
 
     /* 폰 가로, 태블릿 세로*/
-    @@media all and (min-width:320px) and (max-width:480px)  { 
-        .check {position:absolute;width:300px;left:50%;margin-left:-150px;bottom:0;}
+    @@media all and (max-width:480px)  {      
         .check label {font-size:12px;}
         .check input {width:16px;height:16px;}
     }
 
     /* 태블릿 세로 */
-    @@media all and (min-width:481px) and (max-width:768px)  {  
-        .check {position:absolute;width:400px;left:50%;margin-left:-200px;bottom:20px;padding:10px;}
+    @@media all and (min-width:481px) and (max-width:768px)  { 
         .check label {font-size:13px;}
         .check input {width:20px;height:20px;}
-    }
-
-    /* 태블릿 가로, PC */
-    @@media only all and (min-width: 1024px) {
-
     }
 </style>
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_top.jpg" alt="9급 패스" > 
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_top.jpg" alt="9급 패스" > 
     </div>  
     
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_01_01.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_01_01.jpg" alt="" >
         <div class="slide_con">
             <div id="slidesImg1">
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t01.gif" alt="국어 기미진"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t02.gif" alt="영어 한덕현"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t03.gif" alt="영어 이아림"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t04.gif" alt="영어 양익"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t05.gif" alt="한국사 한경준"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t01.gif" alt="국어 기미진"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t02.gif" alt="영어 한덕현"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t03.gif" alt="영어 이아림"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t04.gif" alt="영어 양익"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t05.gif" alt="한국사 한경준"/></div>
             </div>
         </div>
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1717m_01_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_01_02.jpg" alt="" >
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_01.jpg" alt="" >
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_02.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02.jpg" alt="9급 패스" >
         <p> 
             <a href="javascript:go_PassLecture('168184');">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1717m_02_apply.png" alt="" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_01.jpg" alt="" >
+            </a> 
+            <a href="javascript:go_PassLecture('177584');">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_02.jpg" alt="" >
             </a>    
         </p>
         <div class="check">

@@ -572,6 +572,7 @@ min-height: 260px;}
     font-size:14px;
     display:block;
     text-align: center;
+    background-color: #2e898e;
 }
 .MainQuickMenuSSam .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold; padding-top:10px}
 .MainQuickMenuSSam .gobtn li a img.off {display: block;}

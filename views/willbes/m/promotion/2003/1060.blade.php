@@ -284,6 +284,7 @@
             return;
         }
         location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code;
+        location.href = url;
     }
 
     var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";

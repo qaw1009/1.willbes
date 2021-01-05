@@ -165,7 +165,7 @@ class RouletteModel extends WB_Model
             $roulette_code = element('roulette_code', $input);
 
             //당첨자데이터 체크
-            $arr_condition = ['EQ' => ['a.RouletteCode' => $roulette_code]];
+            $arr_condition = ['EQ' => ['a.RouletteCode' => $roulette_code, 'a.IsStatus' => 'Y']];
             $win_member_cnt = $this->listWinMember(true, $arr_condition);
 
             //정보 조회
@@ -350,8 +350,67 @@ class RouletteModel extends WB_Model
                 ->set('UpdAdminIdx', $this->session->userdata('admin_idx'))
                 ->set('UseDatm', date('Y-m-d H:i:s'))
                 ->where('IsUse', 'N')
-                ->where('RouletteCode', $roulette_code);
+                ->where('RouletteCode', $roulette_code)
+                ->where('IsStatus', 'Y');
+            if ($this->_conn->update($this->_table['roulette_member']) === false) {
+                throw new \Exception('지급 상태 수정에 실패했습니다.');
+            }
 
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * IsStatus 업데이트
+     * @param array $params
+     * @return array|bool
+     */
+    public function memberDelete($params = [])
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $rm_idx => $columns) {
+                $this->_conn->set($columns)->set('DelAdminIdx', $this->session->userdata('admin_idx'))->set('DelDatm', date('Y-m-d H:i:s'))->where('RmIdx', $rm_idx);
+
+                if ($this->_conn->update($this->_table['roulette_member']) === false) {
+                    throw new \Exception('지급 상태 수정에 실패했습니다.');
+                }
+                //echo $this->_conn->last_query();
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
+
+    /**
+     * IsStatus 업데이트
+     * @param $roulette_code
+     * @return array|bool
+     */
+    public function memberDeleteAll($roulette_code)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            $this->_conn->set('IsStatus', 'N')
+                ->set('DelAdminIdx', $this->session->userdata('admin_idx'))
+                ->set('DelDatm', date('Y-m-d H:i:s'))
+                ->where('RouletteCode', $roulette_code)
+                ->where('IsUse', 'N')
+                ->where('IsStatus', 'Y');
             if ($this->_conn->update($this->_table['roulette_member']) === false) {
                 throw new \Exception('지급 상태 수정에 실패했습니다.');
             }

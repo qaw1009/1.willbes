@@ -283,7 +283,7 @@
             alert("이용안내에 동의하셔야 합니다.");
             return;
         }
-        location.href = '{{ site_url('/m/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + code;
+        var url = '{{ site_url('/m/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + code;
         location.href = url;
     }
 

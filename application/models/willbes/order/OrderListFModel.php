@@ -419,7 +419,8 @@ class OrderListFModel extends BaseOrderFModel
         ';
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from, [$site_code, $complete_sdatm, $complete_edatm, $site_code]);
+        // todo : straight_join
+        $query = $this->_conn->query('select straight_join ' . $column . $from, [$site_code, $complete_sdatm, $complete_edatm, $site_code]);
 
         return $query->result_array();
     }

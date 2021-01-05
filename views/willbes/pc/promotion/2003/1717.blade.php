@@ -20,12 +20,12 @@
         .sky {position:fixed; top:250px; right:10px; width:163px; z-index:1;}
         .sky a {display:block; margin-bottom:10px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1717_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/1717_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:#EBEBEB;}
         .wb_cts01 .tImg img {margin:0 5px 10px}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1717_02_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/01/1717_02_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#f2f0f0}
 
@@ -94,25 +94,26 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_top.jpg" alt="9급 패스"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_top.jpg" alt="9급 패스"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_01.jpg" alt="전문 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_01.jpg" alt="전문 교수진" />
             <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t01.gif" alt="국어 기미진" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t02.gif" alt="영어 한덕현" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t03.gif" alt="한국사 조민주" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t04.gif" alt="행정법 이석준" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_t05.gif" alt="행정학 김덕관" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t01.gif" alt="국어 기미진" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t02.gif" alt="영어 한덕현" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t03.gif" alt="한국사 조민주" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t04.gif" alt="행정법 이석준" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t05.gif" alt="행정학 김덕관" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_01_02.jpg" alt="전문 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_02.jpg" alt="전문 교수진" />
         </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_02.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_02.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
             <map name="Map1717apply" id="Map1717apply">
-                <area shape="rect" coords="513,757,922,844" href="javascript:go_PassLecture('168184');">
+                <area shape="rect" coords="508,756,681,820" href="javascript:go_PassLecture('168184');" alt="12개월">
+                <area shape="rect" coords="738,755,910,820" href="javascript:go_PassLecture('177584');" alt="9급지방직까지" />
             </map>
             <div class="check">
                 <label>
@@ -124,7 +125,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" id="wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1717_03.jpg" alt="인증하기" usemap="#Map1717b" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_03.jpg" alt="인증하기" usemap="#Map1717b" border="0"/>
             <map name="Map1717b" id="Map1717b">
                 <area shape="rect" coords="339,847,775,902" href="javascript:certOpen();"/>
                 <area shape="rect" coords="469,927,619,958" href="#careful" />

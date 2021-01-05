@@ -47,30 +47,22 @@
     .tabMenu li a {display:block; padding:15px 0; text-align:center; border-radius:10px; background:#e1e1e1; color:#9d9d9d; font-size:22px; line-height:1.5}
     .tabMenu li span {display:block; font-size:14px}
     .tabMenu li a:hover,
-    .tabMenu li a.active {background:#358c78; color:#fff}
+    .tabMenu li a.active {background:#b16613; color:#fff}
     .tabMenu:after {content:""; display:block; clear:both}
     .embed-container {position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;} 
     .embed-container iframe, 
     .embed-container object, 
     .embed-container embed {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
-    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy {max-width:720px; margin:0 auto}
-    .btnbuy a {display:block; width:99%; max-width:700px; margin:0 auto 5px; font-size:1.2rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
-    .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#3a99f0;
-        -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
-    .infoCheck {width:100%; max-width:720px; margin:10px auto; font-size:12px;}
-    .infoCheck label {margin-right:30px; cursor: pointer; }
-    .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
-    .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
-    .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-    .infoCheck a:hover {background:#0099ff;}
+    .evt04 {padding-bottom:50px; background:#f3f5f7}
 
-    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
-    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
+    .check {width:100%; text-align:center; padding:30px 10px 50px}
+    .check label {cursor:pointer; font-size:14px; font-weight:bold;}
+    .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+    .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+
+    .evtFooter {margin:0 auto; padding-bottom:30px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
+    .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#fff; background:#252525; text-align:center; padding:15px 0}
     .evtFooter p {margin-bottom:10px; color:#252525; font-size:19px;}
     .evtFooter p span {display:inline-block; font-size:10px; padding-bottom:5px; vertical-align:middle}
     .evtFooter div,
@@ -81,19 +73,16 @@
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {        
-        .btnbuy a {display:inline-block;width:49%; }  
+        .check label {font-size:12px;}
+        .check input {width:16px;height:16px;}
     }
 
     /* 태블릿 세로 */
     @@media only all and (min-width: 768px) {
         .evt00 .dday {font-size:30px;}
         .evt00 .dday span {box-shadow:inset 0 -20px 0 rgba(0,0,0,0.1);}  
-        .btnbuy a {font-size:1.5rem;}  
-    }
-
-    /* 태블릿 가로, PC */
-    @@media only all and (min-width: 1024px) {
-
+        .check label {font-size:13px;}
+        .check input {width:20px;height:20px;}
     }
 </style>
 
@@ -105,29 +94,30 @@
     </div>   
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1060m_top.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_top.jpg" alt="윌비스 소방패스" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_01.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_01.jpg" alt="윌비스 소방패스" >
     </div> 
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1060m_02_01.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_02_01.jpg" alt="윌비스 소방패스" >
         <div class="slide_con">
             <div id="slidesImg1">
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t01.gif" alt="소방학/법규 이종오"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t02.gif" alt="국어 김세령"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t03.gif" alt="영어 이아림"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t04.gif" alt="영어 양익"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1060_01_t05.gif" alt="한국사 한경준"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_t01.gif" alt="소방학/법규 이종오"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_t02.gif" alt="국어 김세령"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_t03.gif" alt="영어 이아림"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_t04.gif" alt="영어 양익"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_01_t05.gif" alt="한국사 한경준"/></div>
             </div>
         </div> 
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1060m_02.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_02_02.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_02.jpg" alt="윌비스 소방패스" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_03.jpg" alt="윌비스 소방패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_03.jpg" alt="윌비스 소방패스" >
         <ul class="tabMenu NSK-Black">
             <li>
                 <a href="#tab1" class="active">
@@ -152,8 +142,20 @@
         </div>
     </div>
     
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/09/1060m_04.jpg" alt="윌비스 소방패스" >
+    <div class="evtCtnsBox evt04">
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_04.jpg" alt="윌비스 소방패스" usemap="#Map1060" border="0" >
+        <map name="Map1060" id="Map1060">
+            <area shape="rect" coords="149,612,334,680" href="javascript:go_PassLecture('167765');" alt="공채12개월" />
+            <area shape="rect" coords="385,613,576,682" href="javascript:go_PassLecture('177600');" alt="공채시험일까지" />
+            <area shape="rect" coords="145,933,335,998" href="javascript:go_PassLecture('167766');" alt="특채12개월" />
+            <area shape="rect" coords="388,931,574,1000" href="javascript:go_PassLecture('177601');" alt="특채시험일까지" />
+        </map>
+        <div class="check">
+            <label>
+                <input name="ischk"  type="checkbox" value="Y" />
+                페이지 하단 윌비스 소방 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+            </label>
+        </div> 
     </div> 
 
     <div class="evtCtnsBox evtFooter" id="infoText">
@@ -200,21 +202,7 @@
 </div>
 <!-- End Container -->
 
-<div class="btnbuyBox">
-    <div class="btnbuy NSK-Black">     
-        <a href="javascript:goLecture('167765');">
-        공채 12개월 신청 >
-        </a>
-        <a href="javascript:goLecture('167765');">
-        특채 12개월 신청 >
-        </a>
-    </div>
-    <div id="pass" class="infoCheck">
-        <input type="checkbox" name="y_pkg" value="162748" style="display: none;" checked/>
-        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
-        <a href="#infoText">이용안내 확인하기 ↓</a>
-    </div>
-</div>
+
 
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
@@ -290,12 +278,13 @@
     }
 
     {{-- 수강신청 이동 --}}
-    function goLecture(prod_code) {
-        if ($('#is_chk').is(':checked') === false) {
-            alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+    function go_PassLecture(code){
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
             return;
         }
-        location.href = '{{ front_url('/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + prod_code;
+        location.href = '{{ site_url('/m/periodPackage/show/cate/3023/pack/648001/prod-code/') }}' + code;
+        location.href = url;
     }
 
     var tab1_url = "https://www.youtube.com/embed/xBWCniTv_Ro?rel=0";

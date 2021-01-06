@@ -233,7 +233,8 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 				'data' => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data)
 			);
 
-			if ($this->_db->insert($this->_config['save_path'], $insert_data))
+			// todo : session 동시생성 이슈로 insert 를 replace 로 변경
+			if ($this->_db->replace($this->_config['save_path'], $insert_data))
 			{
 				$this->_fingerprint = md5($session_data);
 				$this->_row_exists = TRUE;

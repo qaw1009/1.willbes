@@ -49,7 +49,8 @@
         .newTopDday ul:after {content:""; display:block; clear:both}  
         
         /*수강신청 체크*/
-        .check p {margin-bottom:20px;padding-top:50px;}
+        .check {border-bottom:5px solid #265e23;}
+        .check p {margin-bottom:50px;padding-top:50px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#265e23; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
         .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}
@@ -102,7 +103,7 @@
 
         <div class="sky">
             <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky01.png" alt="윌비스 패스 바로가기" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="세무직 패스 바로가기" >
             </a>             
         </div>   
 

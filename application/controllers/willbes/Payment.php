@@ -65,9 +65,8 @@ class Payment extends \app\controllers\FrontController
             ['field' => 'cart_type', 'label' => '장바구니구분', 'rules' => 'trim|required|in_list[on_lecture,off_lecture,book,mock_exam]'],
             ['field' => 'cart_idx[]', 'label' => '장바구니식별자', 'rules' => 'trim|required'],
             //['field' => 'pay_method_ccd', 'label' => '결제수단', 'rules' => 'trim|required|integer'],     // PG결제와 0원결제 혼용
-            ['field' => 'agree1', 'label' => '유의사항안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
-            ['field' => 'agree2', 'label' => '개인정보활용안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
-            ['field' => 'agree3', 'label' => '환불정책안내 동의여부', 'rules' => 'trim|required|in_list[Y]']
+            ['field' => 'agree1', 'label' => '개인정보활용안내 동의여부', 'rules' => 'trim|required|in_list[Y]'],
+            ['field' => 'agree2', 'label' => '환불정책안내 동의여부', 'rules' => 'trim|required|in_list[Y]']
         ];
 
         if (isset($arr_input['receiver']) === true) {

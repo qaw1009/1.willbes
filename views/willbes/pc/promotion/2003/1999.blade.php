@@ -16,7 +16,7 @@
 
         /************************************************************/ 
 
-        .sky {position:fixed; width:160px; top:200px;right:50px;z-index:1;}
+        .sky {position:fixed; width:160px; top:75px;right:50px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .evtTop {background:#e1dddc url(https://static.willbes.net/public/images/promotion/2020/12/1971_top_bg.jpg) no-repeat center top;}	      
@@ -35,11 +35,17 @@
 	<div class="evtContent NGR">
 
         <div class="sky">
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_sky.png" alt="">
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_sky.png" alt="">
             </a>            
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_sky.png" alt="">
+            </a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_sky.png" alt="">
+            </a>
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1983" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_sky.png" alt="">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="">
             </a>
         </div>
 

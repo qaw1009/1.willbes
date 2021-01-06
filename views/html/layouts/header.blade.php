@@ -20,7 +20,7 @@
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <!-- Custom Theme Style -->
     <link href="/public/css/front/basic.css" rel="stylesheet">
-    <link href="/public/css/front/style.css" rel="stylesheet">
+    <link href="/public/css/front/style_v2.css" rel="stylesheet">
     <!--/ CSS -->
 
 </head>

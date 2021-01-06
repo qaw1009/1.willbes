@@ -16,83 +16,6 @@
                 <li class="dropdown">
                     <a href="#none">강의안내/신청</a>
                     <div class="drop-Box list-drop-Box list-drop-Box-ssam">
-                        {{--
-                        <ul>
-                            <li class="Tit">교육학</li>
-                            <li>
-                                <a href="#none">김차웅</a>
-                                <a href="#none">이인재</a>
-                                <a href="#none">홍의일</a>
-                            </li>
-                            <li class="Tit">유아</li>
-                            <li>
-                                <a href="#none">민정선</a>
-                            </li>
-                            <li class="Tit">초등</li>
-                            <li>
-                                <a href="#none">배재민</a>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li class="Tit">중등</li>
-                            <li>
-                                <span>전공국어</span>
-                                <a href="#none">송원영</a>
-                                <a href="#none">이원근</a>
-                                <a href="#none">권보민</a>
-                            </li>
-                            <li>
-                                <span>전공영어</span>
-                                <a href="#none">김유석</a>
-                                <a href="#none">김영문</a>
-                                <a href="#none">공훈</a>
-                            </li>
-                            <li>
-                                <span>전공수학</span>
-                                <a href="#none">김철홍</a>
-                            </li>
-                            <li>
-                                <span>수학교육론</span>
-                                <a href="#none">박태영</a>
-                            </li>
-                            <li>
-                                <span>전공생물</span>
-                                <a href="#none">강치욱</a>
-                            </li>
-                            <li>
-                                <span>생물교육론</span>
-                                <a href="#none">양혜정</a>
-                            </li>
-                            <li>
-                                <span>도덕윤리</span>
-                                <a href="#none">김병찬</a>
-                            </li>
-                            <li>
-                                <span>전공역사</span>
-                                <a href="#none">최용림</a>
-                            </li>
-                            <li>
-                                <span>전공음악</span>
-                                <a href="#none">다이애나</a>
-                            </li>
-                            <li>
-                                <span>전기전자통신</span>
-                                <a href="#none">최우영</a>
-                            </li>
-                            <li>
-                                <span>정보컴퓨터</span>
-                                <a href="#none">송광진</a>
-                            </li>
-                            <li>
-                                <span>정보교육론</span>
-                                <a href="#none">장순선</a>
-                            </li>
-                            <li>
-                                <span>전공중국어</span>
-                                <a href="#none">정경미</a>
-                            </li>
-                        </ul>
-                        --}}
                         <table class="ssamProf">
                             <thead>
                                 <tr>
@@ -119,7 +42,6 @@
                             <tr>
                                 <td>
                                     <ul>
-                                        <li><a href="#none">김차웅</a></li>
                                         <li><a href="#none">이인재</a></li>
                                         <li><a href="#none">홍의일</a></li>
                                     </ul>
@@ -841,7 +763,7 @@
             </div>            
         </div>
     </div>
-
+{{--
     <div id="QuickMenu" class="MainQuickMenuSSam">
         <ul>
             <li class="dday">
@@ -870,6 +792,43 @@
             <li><a href="#">TOP ▲</a></li>
         </ul>
     </div>
+    --}}
+    <div id="QuickMenu" class="MainQuickMenuSSam NGR">
+            <ul id="dday_box"></ul>
+            <ul class="gobtn">
+                <li>
+                    <a href="{{ site_url('/pass/board/schedule') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01.png" title="강의실배정표" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01_on.png" title="강의실배정표" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/support/mobile/index') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02.png" title="모바일수강안내" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02_on.png" title="모바일수강안내" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/support/qna/create?') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03.png" title="1:1상담" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03_on.png" title="1:1상담" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/event/list/ongoing') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04.png" title="이벤트" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04_on.png" title="이벤트" class="on">
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05.png" title="재학생러닝메이트" class="off">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05_on.png" title="재학생러닝메이트" class="on">
+                    </a>
+                </li>
+                <li><a href="#">TOP ▲</a></li>
+            </ul>
+        </div>
     
     {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}
     <div id="Reply" class="willbes-Layer-ReplyBox">

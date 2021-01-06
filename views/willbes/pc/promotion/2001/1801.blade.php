@@ -30,6 +30,8 @@
     .youtube iframe {width:720px; height:405px}
 
     .evt02 {background:#f6f6f6;}
+
+    .evt03 {padding-bottom:50px;}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
@@ -46,7 +48,7 @@
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/bPPX2qZgSBg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1004&course_idx=1072" target="_blank">형법 무료특강 온라인강의 바로가기  ></a>
+            <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/free?search_order=course&subject_idx=1003&course_idx=1072&prof_idx=51135" target="_blank">형법 무료특강 온라인강의 바로가기  ></a>
         </div>  
 
         <div class="evtCtnsBox evt02">
@@ -65,10 +67,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1801_03.jpg" alt="형법 질문하기">            
         </div>
-        {{--댓글url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif 
+
     </div>
     <!-- End Container --> 
 @stop

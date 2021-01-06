@@ -426,7 +426,32 @@
                                                     @endforeach
                                                 </ul>
                                             </dt>
-                                            <dd><div id="pay_method_caution_txt" class="caution-txt"></div></dd>
+                                            <dd id="pay_method_caution_txt_604001" class="pay-method-caution-txt" style="display: none;">
+                                                <div class="strong tx-blue mb10">신용카드</div>
+                                                <ul class="disc">
+                                                    <li>카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.</li>
+                                                    <li>최종 결제승인 이전에 전자결제창을 닫지 마시기 바랍니다.</li>
+                                                    <li>전자금융거래 기본법에 따라 결제금액이 30만원 이상일 경우 전자상거래법에 의해 발급된 공인인증서를 이용하여 본인
+                                                        확인을 거쳐야 결제를 할 수 있습니다.</li>
+                                                </ul>
+                                            </dd>
+                                            <dd id="pay_method_caution_txt_604002" class="pay-method-caution-txt" style="display: none;">
+                                                <div class="strong tx-blue mb10">실시간 계좌이체</div>
+                                                <ul class="disc">
+                                                    <li>실시간 계좌이체 이용을 위해서는 보안 수단(보안카드, OTP)과 공인인증서가 필요합니다.</li>
+                                                    <li>지정한 은행 계좌에서 결제 금액이 실시간으로 이체되며 결제 승인 후 바로 수강이 가능합니다.</li>
+                                                    <li>현금 영수증은 입금이 완료되면 발행됩니다.</li>
+                                                </ul>
+                                            </dd>
+                                            <dd id="pay_method_caution_txt_604003" class="pay-method-caution-txt" style="display: none;">
+                                                <div class="strong tx-blue mb10">무통장입금(가상계좌)</div>
+                                                <ul class="disc">
+                                                    <li>주문 시마다 새로운 입금계좌번호가 생성됩니다.</li>
+                                                    <li>상품을 나누어 주문하시는 경우 주문별로 생성되는 입금계좌로 각각 입금해 주세요.</li>
+                                                    <li>입금 기한 내에 입금을 하지 않을 경우 주문이 자동으로 취소됩니다. 결제를 원할 시 재주문을 해주세요.</li>
+                                                    <li>입금 후 15분 이내 입금 승인 처리되며, 현금 영수증은 입금이 완료되면 발행됩니다.</li>
+                                                </ul>
+                                            </dd>
                                         </dl>
                                     </td>
                                 </tr>
@@ -454,7 +479,7 @@
                 </div>
                 <!-- willbes-BuyInfo -->
                 <div class="willbes-PolicyInfo p_re c_both">
-                    <div class="willbes-Lec-Tit NG tx-black">유의사항 및 환불정책안내</div>
+                    <div class="willbes-Lec-Tit NG tx-black">개인정보 활용 및 환불정책 안내</div>
                     <div class="policyInfoTable GM">
                         <table cellspacing="0" cellpadding="0" class="classTable under-gray tx-gray">
                             <colgroup>
@@ -462,44 +487,6 @@
                                 <col width="*">
                             </colgroup>
                             <tbody>
-                            <tr class="chk">
-                                <td class="w-list bg-light-white">유의사항 안내</td>
-                                <td class="w-txt tx-left">
-                                    <div class="txtBox">
-                                        {{-- TODO : 임의 등록 --}}
-                                        @if($__cfg['SiteCode'] == '2010' && $results['cart_type'] == 'off_lecture')
-                                            {{-- 고등고시학원 추가 유의사항 (한시적 노출) --}}
-                                            <p class="tx-red mb15">
-                                                <strong>
-                                                    [학원실강 필독]<br/>
-                                                    ※ 코로나19 바이러스 확산 예방을 위한 학원운영 방침<br/>
-                                                    - 실강 수강 중 학원의 불가피한 사정으로 인해 인강 수강으로 전환될 수 있습니다.<br/>
-                                                    - 실강 수강 시 마스크 미착용 또는 건강 이상 징후(발열, 기침 등) 시 퇴실 조치 될 수 있습니다.
-                                                </strong>
-                                            </p>
-                                        @endif
-                                        신용카드 결제 시<br/>
-                                        - 최종 결제승인 이전에 전자결제창을 닫지 마시기 바랍니다.<br/>
-                                        - 전자금융거래 기본법에 따라 결제금액이 30만원 이상일 경우 전자상거래법에 의해 발급된 공인인증서를 이용하여<br/>
-                                        본인 확인을 거쳐야 결제를 할 수 있습니다.<br/><br/>
-                                        무통장 입금 결제 시<br/>
-                                        - 주문시마다 새로운 입금계좌번호가 생성됩니다.<br/>
-                                        - 상품을 나누어 주문하시는 경우 주문별로 생성되는 입금계좌로 각각 입금하여 주십시오.<br/>
-                                        - 입금기한 내에 입금을 하지 않을 경우, 생성된 입금계좌는 자동으로 사라집니다. 결제를 원할 시, 재주문을 해주시기 바랍니다.<br/>
-                                        - 수강료 입금 후(15분 이내) 입금 승인처리 되며, 현금 영수증은 입금이 완료 되면 발행됩니다.<br/><br/>
-                                        실시간 계좌이체 결제 시<br/>
-                                        - 인터넷 뱅킹 사용 여부와 상관없이 공인인증서가 있어야 결제가 가능합니다.<br/>
-                                        - 지정하신 은행계좌에서 결제 금액이 실시간으로 이체되며 결제 승인 후 바로 수강이 가능합니다.<br/>
-                                        - 현금 영수증은 입금이 완료되면 발행됩니다.<br/>
-                                    </div>
-                                    <div class="chkBox">
-                                        위 유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                        <span class="chkBox-Agree item">
-                                            <input type="checkbox" id="agree1" name="agree1" value="Y" title="유의사항 안내" required="required"/>
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
                             <tr class="chk">
                                 <td class="w-list bg-light-white">개인정보 활용안내</td>
                                 <td class="w-txt tx-left">
@@ -516,7 +503,7 @@
                                     <div class="chkBox">
                                         위 개인정보 활용 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                         <span class="chkBox-Agree item">
-                                            <input type="checkbox" id="agree2" name="agree2" value="Y" title="개인정보 활용안내" required="required"/>
+                                            <input type="checkbox" id="agree1" name="agree1" value="Y" title="개인정보 활용안내" required="required"/>
                                         </span>
                                     </div>
                                 </td>
@@ -548,7 +535,7 @@
                                     <div class="chkBox">
                                         위 환불정책 안내 사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
                                         <span class="chkBox-Agree item">
-                                            <input type="checkbox" id="agree3" name="agree3" value="Y" title="환불정책 안내" required="required"/>
+                                            <input type="checkbox" id="agree2" name="agree2" value="Y" title="환불정책 안내" required="required"/>
                                         </span>
                                     </div>
                                 </td>
@@ -807,13 +794,13 @@
                     $regi_form.find('#pay_method_name').html('');
                     $regi_form.find('input[name="pay_method_ccd"]').prop('disabled', true);
                     $regi_form.find('#is_escrow').css('display', 'none');
+                    $regi_form.find('input[name="is_escrow"][value="N"]').prop('checked', true);
                 }
             });
 
             // 결제수단 선택
             $regi_form.find('input[name="pay_method_ccd"]').on('click', function() {
                 var code = $(this).val();
-                var caution_txt = '';
 
                 // 에스크로 필드 노출 여부
                 if ($regi_form.find('.willbes-Delivery-Info').length > 0) {
@@ -821,14 +808,13 @@
                         $regi_form.find('#is_escrow').css('display', '');   // 실시간 계좌이체, 무통장입금(가상계좌) 일 경우
                     } else {
                         $regi_form.find('#is_escrow').css('display', 'none');
+                        $regi_form.find('input[name="is_escrow"][value="N"]').prop('checked', true);
                     }
                 }
 
                 // 결제수단별 주의사항
-                if (code === '604001') {
-                    caution_txt = '카드사별 무이자할부 카드 정보는 결제창에서 확인하실 수 있습니다.';
-                }
-                $regi_form.find('#pay_method_caution_txt').html(caution_txt);
+                $regi_form.find('.pay-method-caution-txt').css('display', 'none');
+                $regi_form.find('#pay_method_caution_txt_' + code).css('display', '');
 
                 // 선택한 결제수단명 노출
                 $regi_form.find('#pay_method_name').html('[' + $(this).data('pay-method-name') + ']');

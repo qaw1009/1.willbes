@@ -506,6 +506,21 @@ $('*[id*=QuickMenuB]:visible').ready(function() {
     }
 });
 
+// 임용
+$('*[id*=QuickMenuC]:visible').ready(function() {
+    var stickyOffset = $('#QuickMenuC').offset();
+
+    if (typeof stickyOffset !== 'undefined') {
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > stickyOffset.top) {
+                $('#QuickMenuC').css('top', '20px');
+            } else {
+                $('#QuickMenuC').css('top', '220px');
+            }
+        });
+    }
+});
+
 // image flipped
 $(document).ready(function(){
     $(".Flipped ul li a").mouseenter(function(){

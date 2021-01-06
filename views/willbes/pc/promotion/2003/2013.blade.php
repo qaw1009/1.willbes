@@ -19,16 +19,16 @@
 
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/1983_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2013_top_bg.jpg) no-repeat center top;}
 
-        .wb_cts01 {background:#EBEBEB;}
+        .wb_cts01 {background:#F1F1F1;}
         .wb_cts01 .tImg img {margin:0 5px 10px;width:343px;height:188px;}
 
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1717_02_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#fff}
 
-        .wb_cts04 {background:#1D4D1B}
+        .wb_cts04 {background:#3F3F3F}
 
         .wb_cts05 {background:#fff}
         .radio_apply {position:relative;}
@@ -50,7 +50,7 @@
         
         /*수강신청 체크*/
         .check p {margin-bottom:20px;padding-top:50px;}
-        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#265e23; text-align:center; border-radius:90px;}
+        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#571632; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
         .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
@@ -102,43 +102,39 @@
 
         <div class="sky">
             <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky01.png" alt="윌비스 패스 바로가기" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_sky.png" alt="전산직 패스 신청하기" >
             </a>             
         </div>   
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_top.jpg" alt="세무직 패스"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_top.jpg" alt="전산직 패스"  />
         </div>
 
         <div class="evtCtnsBox wb_tops">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_01.jpg" alt="전격출시"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_01.jpg" alt="전격출시"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_02.jpg" alt="라이브로 만나다" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_02.jpg" alt="라이브로 만나다" />
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_01.gif" alt="강의1" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_02.gif" alt="강의2" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_03.gif" alt="강의3" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_03.jpg" alt="합격이 앞당겨집니다" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_03.jpg" alt="합격이 앞당겨집니다" />
         </div>
-
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_04.jpg" alt="교수진" />
-        </div>
-
+    
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_05.jpg" alt="커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_04.jpg" alt="커리큘럼" />
         </div>
 
         <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_06.jpg" id="apply" alt="수강신청" />              
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_05.jpg" id="apply" alt="수강신청" />              
                 <div id="tab1s">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_06_01.jpg" title="신청하기" />
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_05_01.jpg" title="신청하기" />
                     <ul class="radio_apply">
-                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176432" onClick=""/><label for="y_pkg"></label></li>   
-                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176415" onClick=""/><label for="y_pkg"></label></li>
+                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176394" onClick=""/><label for="y_pkg"></label></li>   
+                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176396" onClick=""/><label for="y_pkg"></label></li>
                     </ul>
                 </div>
 
@@ -154,12 +150,12 @@
 
         <div class="evtCtnsBox wb_info" id="tip">
             <div class="guide_box">
-                <h2 class="NSK-Black">윌비스 세무직 PASS 이용안내</h2>
+                <h2 class="NSK-Black">윌비스 전산직 PASS 이용안내</h2>
                 <dl>
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>본 PASS는 세무직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
+                            <li>본 PASS는 전산직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
                             * 국어 기미진, 영어 한덕현 일부과정 제외
                             </li>
                             <li>2021년 대비로 진행된 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>

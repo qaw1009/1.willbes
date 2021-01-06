@@ -102,7 +102,7 @@
 
         <div class="sky">
             <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky01.png" alt="윌비스 패스 바로가기" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="세무직 패스 바로가기" >
             </a>             
         </div>   
 

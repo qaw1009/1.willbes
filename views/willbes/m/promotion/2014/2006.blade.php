@@ -72,7 +72,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_01.jpg" alt="라탄공예">
         <div class="video-container-box">
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dPrn9DS8Ci8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/dPrn9DS8Ci8?rel=0" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div> 

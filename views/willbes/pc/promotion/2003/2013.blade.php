@@ -79,7 +79,7 @@
             <div>
                 <ul>
                     <li>
-                        세무직 PASS - {{$arr_promotion_params['turn']}}기<br />
+                        전산직 PASS - {{$arr_promotion_params['turn']}}기<br />
                         <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

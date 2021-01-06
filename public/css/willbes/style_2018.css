@@ -504,23 +504,23 @@ min-height: 260px;}
 /* Main Container : QuickMenu*/ 
 .MainQuickMenuSSam {
     position: fixed;
-    top: 180px;
+    top: 220px;
     left: 50%;
-    margin-left:580px;
-    width: 90px;
+    margin-left:620px;
+    width: 100px;
     height: auto;
     z-index: 100;        
 }
 .MainQuickMenuSSam ul li {
-    /*background: #fff;*/
     margin-bottom: 8px;        
 }
-.MainQuickMenuSSam .dday {border:1px solid #dbdbdb; }
-.MainQuickMenuSSam .sliderNum {
-    width: 140px;
-    min-height: 238px;    
-    overflow: hidden;     
+.MainQuickMenuSSam .dday {
+    border:1px solid #dbdbdb; background-color: #fff; 
+    width: 100px;
+    height: 100px;    
+    overflow: hidden;
 }
+.MainQuickMenuSSam .sliderNum {}
 .MainQuickMenuSSam .QuickDdayBox {border:0 !important; }
 .MainQuickMenuSSam .bx-wrapper .bx-prev {
     background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
@@ -559,23 +559,20 @@ min-height: 260px;}
 }
 
 .MainQuickMenuSSam .gobtn {
-    /*width:140px;
-    border:1px solid #dbdbdb;*/
+    width:100%;
 }
-.MainQuickMenuSSam .gobtn li {margin:0; margin-bottom:10px}
+.MainQuickMenuSSam .gobtn li {margin:0; margin-bottom:10px; line-height:1.2; font-size:13px}
 .MainQuickMenuSSam .gobtn li a {
-    /*border-bottom:1px solid #dbdbdb;
-    margin: 0 10px;       
-    line-height: 1.2;
-    color:#515151;
-    font-weight: bold;
-    font-size:14px;*/
     display:block;
-    text-align: center;
+    text-align: center;    
+    color:#5f6281;
 }
 .MainQuickMenuSSam .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold; padding-top:10px}
+.MainQuickMenuSSam .gobtn li a p {margin-top:5px;}
+.MainQuickMenuSSam .gobtn li a img {width:70px; margin:0 auto}
 .MainQuickMenuSSam .gobtn li a img.off {display: block;}
 .MainQuickMenuSSam .gobtn li a img.on {display: none;}
+.MainQuickMenuSSam .gobtn li a:hover {color:#2b3277}
 .MainQuickMenuSSam .gobtn li a:hover img.off {display: none;}
 .MainQuickMenuSSam .gobtn li a:hover img.on {display: block;}
 

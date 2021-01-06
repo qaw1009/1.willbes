@@ -49,7 +49,8 @@
         .newTopDday ul:after {content:""; display:block; clear:both}  
         
         /*수강신청 체크*/
-        .check p {margin-bottom:20px;padding-top:50px;}
+        .check {border-bottom:5px solid #571632;}
+        .check p {margin-bottom:50px;padding-top:50px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#571632; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
         .check label {cursor:pointer;color:#000;font-weight:bold;font-size:15px;}

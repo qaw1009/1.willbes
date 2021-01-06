@@ -367,7 +367,7 @@
 
             // 답변 수정/등록 폼
             $list_table.on('click', '.btn-reply-modify', function() {
-                location.href='{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}';
+                location.href='{{ site_url("/board/{$boardName}/createCounselReply") }}/' + $(this).data('idx') + dtParamsToQueryString($datatable) + '{!! $boardDefaultQueryString !!}&site_code=' + $("#tabs_site_code .active a").data('site-code');;
             });
 
             // 공지 데이터 Read 페이지

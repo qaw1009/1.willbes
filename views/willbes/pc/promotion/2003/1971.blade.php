@@ -16,7 +16,7 @@
 
         /************************************************************/ 
 
-        .sky {position:fixed; width:160px; top:200px;right:50px;z-index:1;}
+        .sky {position:fixed; width:160px; top:75px;right:50px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .evtTop {background:#e1dddc url(https://static.willbes.net/public/images/promotion/2020/12/1971_top_bg.jpg) no-repeat center top;}	      
@@ -35,11 +35,17 @@
 	<div class="evtContent NGR">
 
         <div class="sky">
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_sky.png" alt="">
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_sky.png" alt="">
             </a>            
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_sky.png" alt="">
+            </a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_sky.png" alt="">
+            </a>
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1983" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1983_sky.png" alt="">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="">
             </a>
         </div>
 
@@ -81,9 +87,9 @@
                     <area shape="rect" coords="775,559,868,600" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/51164?subject_idx=1182&subject_name=%ED%99%94%ED%95%99&tab=open_lecture" target="_blank" alt="김병일">
                     <area shape="rect" coords="227,739,314,783" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50395?subject_idx=2130&subject_name=%ED%99%98%EA%B2%BD%EB%B3%B4%EA%B1%B4&tab=open_lecture" target="_blank" alt="하재남">
                     <area shape="rect" coords="776,740,865,782" href="https://pass.willbes.net/professor/show/cate/3028/prof-idx/50541?subject_idx=1223&subject_name=%EC%9E%84%EC%97%85%EA%B2%BD%EC%98%81&tab=open_lecture" target="_blank" alt="장재영">
-                    <area shape="rect" coords="109,1219,302,1277" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="전산직 패스">
-                    <area shape="rect" coords="461,1216,656,1279" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="환경직 패스">
-                    <area shape="rect" coords="814,1219,1009,1278" href="https://pass.willbes.net/promotion/index/cate/3028/code/1982" target="_blank" alt="산림자원직 패스">
+                    <area shape="rect" coords="109,1219,302,1277" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" alt="전산직 패스">
+                    <area shape="rect" coords="461,1216,656,1279" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직 패스">
+                    <area shape="rect" coords="814,1219,1009,1278" href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" alt="산림자원직 패스">
                 </map>
             </div>
         </div>

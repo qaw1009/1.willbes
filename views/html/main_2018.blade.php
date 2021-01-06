@@ -1,8 +1,124 @@
-@extends('willbes.pc.layouts.master')
-
+{{--@extends('willbes.pc.layouts.master')--}}
+@extends('html.layouts.master')
 @section('content')
+<style type="text/css">
+/* Main Container : QuickMenu*/ 
+.MainQuickMenuSSam {
+    position: fixed;
+    top: 220px;
+    left: 50%;
+    margin-left:620px;
+    width: 100px;
+    height: auto;
+    z-index: 100;        
+}
+.MainQuickMenuSSam ul li {
+    margin-bottom: 8px;        
+}
+.MainQuickMenuSSam .dday {
+    border:1px solid #dbdbdb; background-color: #fff; 
+    width: 100px;
+    height: 100px;    
+    overflow: hidden;
+}
+.MainQuickMenuSSam .sliderNum {}
+.MainQuickMenuSSam .QuickDdayBox {border:0 !important; }
+.MainQuickMenuSSam .bx-wrapper .bx-prev {
+    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
+    left: 0;
+}
+.MainQuickMenuSSam .bx-wrapper .bx-next {
+    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
+    right: 0;
+    left: auto;
+}
+.MainQuickMenuSSam .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    width: 54px;
+    height: 14px;
+    margin: 0 auto;
+}
+.MainQuickMenuSSam .bx-wrapper .bx-controls-direction a {
+    width: 12px;
+    height: 13px;
+}
+.MainQuickMenuSSam .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    right: 0;
+    font-size: 10px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+.MainQuickMenuSSam .gobtn {
+    width:100%;
+}
+.MainQuickMenuSSam .gobtn li {margin:0; margin-bottom:10px; line-height:1.2; font-size:13px}
+.MainQuickMenuSSam .gobtn li a {
+    display:block;
+    text-align: center;    
+    color:#5f6281;
+}
+.MainQuickMenuSSam .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold; padding-top:10px}
+.MainQuickMenuSSam .gobtn li a p {margin-top:5px;}
+.MainQuickMenuSSam .gobtn li a img {width:70px; margin:0 auto}
+.MainQuickMenuSSam .gobtn li a img.off {display: block;}
+.MainQuickMenuSSam .gobtn li a img.on {display: none;}
+.MainQuickMenuSSam .gobtn li a:hover {color:#2b3277}
+.MainQuickMenuSSam .gobtn li a:hover img.off {display: none;}
+.MainQuickMenuSSam .gobtn li a:hover img.on {display: block;}
+</style>
+
 <!-- Container -->
 <div id="Container" class="Container ssam NGR c_both">
+
+    <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
+        <div class="Section widthAuto">
+            <div class="onSearch NGR">
+                <div>
+                    <input type="hidden" name="cate" id="unifiedSearch_cate" value="">
+                    <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                    <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                    <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
+                    <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                    <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
+                </div>
+                <div class="searchPop">
+                    <div class="popTit">인기검색어</div>
+                    <ul>
+                        <li><a href="#nnon">신광은</a></li>
+                        <li><a href="#nnon">무료특강</a></li>
+                        <li><a href="#nnon">형소법</a></li>
+                        <li><a href="#nnon">기미진</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -701,134 +817,134 @@
                     <dt class="willbesCenter">
                         <ul>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/pass/support/faq/index?s_faq=628') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon01.png"></span>
                                     <div class="nTxt">학원 FAQ</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/support/faq/index?s_faq=626') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon02.png"></span>
                                     <div class="nTxt">동영상 FAQ</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/support/faq/index?s_faq=627') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon03.png"></span>
                                     <div class="nTxt">모바일 FAQ</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/support/remote/index') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon04.png"></span>
                                     <div class="nTxt">동영상 원격지원</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/landing/show/lcode/1038/cate/3134/preview/Y') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon05.png"></span>
                                     <div class="nTxt">대학특강 문의</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="#none">
+                                <a href="{{ front_url('/landing/show/lcode/1039/cate/3134/preview/Y') }}">
                                     <span><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_csicon06.png"></span>
                                     <div class="nTxt">교수채용</div>
                                 </a>
                             </li>
                         </ul>
                     </dt>
-                    <dt class="willbesNumber">
+                    <dt class="willbesNumber NSK">
                         <ul>
                             <li>
                                 <div class="nTit">강의&동영상 문의</div>
-                                <div class="nNumber tx-color">1544-3169</div>
-                                <div class="nTxt">
+                                <div class="nNumber tx-color NSK-Black">1544-3169</div>
+                                <div class="nTxt NSK">
                                     [운영시간]<br/>
-                                    월~토: 09시 ~ 22시
+                                    09시 ~ 22시
                                 </div>
                             </li>
                             <li>
-                                <div class="nTit">교재문의</div>
-                                <div class="nNumber tx-color">1544-4944</div>
-                                <div class="nTxt">
+                                <div class="nTit">교재배송문의</div>
+                                <div class="nNumber tx-color NSK-Black">1544-4944</div>
+                                <div class="nTxt NSK">
                                     [운영시간]<br/>
-                                    평일: 09시~ 17시 (점심시간 12시 ~ 13시)
+                                    평일: 09시~ 17시<br> (점심시간 12시 ~ 13시)
                                 </div>
                             </li>
                         </ul>
-                    </dt>    
-                    <dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>              
+                    </dt>
+                    {{--<dd class="GM">※ 전화상담 시 통화 내용은 자동녹취되며, 일요일 및 법정공휴일은 휴무입니다.</dd>--}}
                 </dl>
-            </div>            
+            </div>          
         </div>
     </div>
-{{--
-    <div id="QuickMenu" class="MainQuickMenuSSam">
+
+    <div id="QuickMenuC" class="MainQuickMenuSSam NGR">
         <ul>
             <li class="dday">
                 <div class="QuickSlider">
                     <div class="sliderNum">
                         <div class="QuickDdayBox">
-                            <div class="q_tit">3차 필기시험</div>
+                            <div class="q_tit">중등</div>
                             <div class="q_day">2018.12.12</div>
-                            <div class="q_dday NSK-Blac">D-5</div>
+                            <div class="q_dday NSK-Black">D-5</div>
                         </div>
                         <div class="QuickDdayBox">
-                            <div class="q_tit">1차 공무원</div>
+                            <div class="q_tit">유아·초등</div>
                             <div class="q_day">2019.04.05</div>
-                            <div class="q_dday NSK-Blac">D-10</div>
+                            <div class="q_dday NSK-Black">D-10</div>
                         </div>
                     </div>
                 </div>
             </li>
         </ul>
-        <ul class="gobtn">
-            <li><a href="#none">강의실배정표</a></li>
-            <li><a href="#none">모바일 수강안내</a></li>
-            <li><a href="#none">1:1 상담</a></li>
-            <li><a href="#none">이벤트</a></li>            
-            <li><a href="#none">재학생 러닝메이트</a></li>
+        <ul class="gobtn NG">
+            <li>
+                <a href="{{ site_url('/lecture/index/pattern/free?cate_code=') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick00.png" title="무료강의" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick00_on.png" title="무료강의" class="on">
+                    <p>무료강의</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site_url('/pass/board/schedule') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick01.png" title="강의실배정표" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick01_on.png" title="강의실배정표" class="on">
+                    <p>강의실배정표</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site_url('/support/mobile/index') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick02.png" title="모바일수강안내" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick02_on.png" title="모바일수강안내" class="on">
+                    <p>모바일<br>수강안내</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site_url('/support/qna/create?') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick03.png" title="1:1상담" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick03_on.png" title="1:1상담" class="on">
+                    <p>1:1상담</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site_url('/event/list/ongoing') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick04.png" title="이벤트" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick04_on.png" title="이벤트" class="on">
+                    <p>이벤트</p>
+                </a>
+            </li>
+            <li>
+                <a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick05.png" title="재학생러닝메이트" class="off">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick05_on.png" title="재학생러닝메이트" class="on">
+                    <p>재학생<br>러닝메이트</p>
+                </a>
+            </li>
             <li><a href="#">TOP ▲</a></li>
         </ul>
     </div>
-    --}}
-    <div id="QuickMenu" class="MainQuickMenuSSam NGR">
-            <ul id="dday_box"></ul>
-            <ul class="gobtn">
-                <li>
-                    <a href="{{ site_url('/pass/board/schedule') }}">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01.png" title="강의실배정표" class="off">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img01_on.png" title="강의실배정표" class="on">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ site_url('/support/mobile/index') }}">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02.png" title="모바일수강안내" class="off">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img02_on.png" title="모바일수강안내" class="on">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ site_url('/support/qna/create?') }}">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03.png" title="1:1상담" class="off">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img03_on.png" title="1:1상담" class="on">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ site_url('/event/list/ongoing') }}">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04.png" title="이벤트" class="off">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img04_on.png" title="이벤트" class="on">
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ site_url('/landing/show/lcode/1040/cate/3134') }}">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05.png" title="재학생러닝메이트" class="off">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2018/quick_img05_on.png" title="재학생러닝메이트" class="on">
-                    </a>
-                </li>
-                <li><a href="#">TOP ▲</a></li>
-            </ul>
-        </div>
     
     {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}
     <div id="Reply" class="willbes-Layer-ReplyBox">
@@ -2242,7 +2358,34 @@
 <!-- End Container -->
 
 
-<script type="text/javascript">
+<script type="text/javascript">  
+    //자동검색어
+    $(function(){
+        var autocomplete_text = ["스파르타","신광은","모의고사","장정훈","최신판례","김원욱","하승민","형사소송법","네친구","해설","형법","최신","수사","실용글쓰기","최기판","오태진","승진","면접","리마인드","원유철","숫자","판례","해설강의","경찰학","김현정","기출","Flex","원기총","형소법","개정","실무종합","영어","문제풀이","마무리","오현웅","행정법","동형","2단계","2020","경찰학개론","송광호","학설","한국사","좋은데이","조문","심화","신광은 형사소송법","문제폭격","최신기출","1차","실용","추록","최신 판례","형사소송","신의한수","해양경찰","총평","숫자특강","심화이론","기지개","특강","형사법","구문독해","마무리특강","경찰승진","입문특강","해사법규","위원회","키워드","김준기","교재","형사소송법 심화","무료특강","2020년 1차","시험","승진기출","기본이론","헌법","실무","모의","글쓰기","해양경찰학","합격","공득인","김원욱 형법","체력","형법 심화","형법 최신","형법 심화이론","법학경채","아침","박우찬","기출해설","적중","형법 핵심이론 요약정리","조문특강","파이널","합기독","ox","개정법령","마무리 특강","5개년","형법 최신판례","패키지","최신기출판례","기본","독해","사료","요약","법학","20년 1차","범죄수사","기출문제","장정훈 경찰학개론","2차","문제","주관식","형사","찍기","심화기출","2차대비","해양경찰학개론","보강","1단계","문풀","죄수론","2020년 1차대비 신광은 형사소송법","법령","최신판례특강","죄수","전문법칙","역사","민법","일정","2020 1차","강의","하이힐","단계","박영식","판례특강","진도별","경찰실무","정태정","2019","경찰간부","19년 2차","해설특강","최기","2020년 2차","오태진 한국사","해양","간부","최신판","형법최신판례","제이슨","숫자 특강","무료","형사소송법 입문","해사영어","경찰","김원욱 형법 기본","300","신광은 형사법","실전","도사국사","경찰작용법","2018","2020년 1차대비 김원욱 형법 기본","찍기특강","선박","2020년 2차대비 신광은 형사소송법","형사소송법 최신판례","면접캠프","2018년 3차","기관술"," 마무리","베이직","형법 마무리","3개월","아침영어","신광은 형소법","이것만","인증","김원욱형법","이론","국어","경찰특공대","해수부","이기자","문제폭격 스파르타","신광은 경찰","신광은 형사소송법 기본이론 ","장정훈 행정법","풀이","1차대비","최신 기출","한국사 기본","1개년","심화이론특강","300제"];
+        $("#unifiedSearch_text").autocomplete({
+            source: autocomplete_text,
+            select: function(event, ui) {
+            },
+            focus: function(event, ui) {
+                return false;
+            }
+        })
+    });
+
+    //인기검색어
+    $(document).ready(function() {
+        var fieldExample = $('.unifiedSearch');
+            fieldExample.focus(function() {
+            var div = $('div.searchPop').show();
+            $(document).bind('focusin.example click.example',function(e) {
+                if ($(e.target).closest('.example, .unifiedSearch').length) return;
+                $(document).unbind('.example');
+                div.fadeOut('medium');
+            });
+        });
+        $('div.searchPop').hide();
+    });
+
     //상단배너
     $(function(){ 
         var slidesImg = $(".MaintabSlider").bxSlider({
@@ -2405,5 +2548,7 @@
             chart.draw(data, options);
         }
     });
+
+    
 </script>
 @stop

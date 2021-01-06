@@ -16,7 +16,7 @@
 <ul class="skybanner NG">
     <li><a href='1816'>유아 <strong>민정선</strong></a></li>
     <li><a href='1817'>초등 <strong>배재민</strong></a></li>
-    <li><a href='1813'>교육학 <strong>김차웅</strong></a></li>
+    {{--<li><a href='1813'>교육학 <strong>김차웅</strong></a></li>--}}
     <li><a href='1814'>교육학 <strong>이인재</strong></a></li>
     <li><a href='1815'>교육학 <strong>홍의일</strong></a></li>
     <li><a href='1818'>전공국어 <strong>송원영</strong></a></li>

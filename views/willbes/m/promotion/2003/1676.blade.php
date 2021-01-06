@@ -134,9 +134,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/175749" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/177490" target="_blank">
                     <span>반반&똑똑</span>
-                    <span>12월 방송<br>다시보기</span>
+                    <span>1월 방송<br>다시보기</span>
                     <span><strong>6</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
@@ -259,8 +259,8 @@
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
                 <li>본 이벤트는 로그인 후 참여 가능하며,12월 7일(월)부터 1월 1일(금)까지 총 20회 진행됩니다. <span>(*공휴일 제외)</span></li>
-                <li>출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (12/14(월), 
-                12/28(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.</li>
+                <li>출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (1/18(월), 2/1(월))의 경우 
+                    오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.</li>
             </ul>
         </div>
     </div>

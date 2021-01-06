@@ -134,7 +134,6 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/1676_02_december.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1676_02_january.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1676_02_february.jpg" /></li>
                 </ul>     
@@ -157,7 +156,7 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
                 <map name="Map1676ss">
-                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/175749" target="_blank" alt="12월 방송" />
+                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177490" target="_blank" alt="1월 방송" />
                     <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="지방직 방송" />
                     <area shape="rect" coords="618,782,825,882" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
                 </map> 
@@ -255,8 +254,8 @@
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
                             - 본 이벤트는 로그인 후 참여 가능하며,12월 7일(월)부터 1월 1일(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
-                            - 출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (12/14(월), 12/28(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 1/5(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (1/18(월), 2/1(월))의 경우 오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.<br>
+                            - 당첨자 안내 공지는 2/9(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                             <li>돌발퀴즈 이벤트 관련<br>
                             - 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
                             - 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>

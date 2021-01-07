@@ -92,7 +92,7 @@
         --}}  
 
         <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top_banner.jpg" usemap="#Map1676_banner"  title="신청 베너" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top_banner.png" usemap="#Map1676_banner"  title="신청 베너" border="0">
             <map name="Map1676_banner" id="Map1676_banner">
                 <area shape="rect" coords="604,22,802,92" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
                 <area shape="rect" coords="814,23,1012,92" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />

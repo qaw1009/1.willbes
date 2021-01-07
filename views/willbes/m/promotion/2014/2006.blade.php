@@ -62,14 +62,14 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_top.jpg" alt="억대연봉 세일즈마케팅" usemap="#Map1968B" border="0" >
         <map name="Map1968B">
             <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">
         </map>
     </div> 
     
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_01.jpg" alt="라탄공예">
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_01.jpg" alt="안은재 대표">
         <div class="video-container-box">
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/dPrn9DS8Ci8?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -78,20 +78,20 @@
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_02.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_02.jpg" alt="역대급 세일즈마케팅 강의" > 
         <a href="#none" title="사전예약"></a>
     </div>    
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_03.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_03.jpg" alt="미치도록 팔고 싶다." >
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_04.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_04.jpg" alt="세일즈" >
     </div>
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_05.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_05.jpg" alt="받드시 해내고야 말겠어" >
     </div>     
 
     <div class="evtCtnsBox evtCurri">
@@ -195,7 +195,7 @@
     </div>
     
     <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_06.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_06.jpg" alt="소문내기" >
         <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2006#evt02" title="이벤트참여"></a>
     </div>  
 

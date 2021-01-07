@@ -114,7 +114,7 @@
 
 <div id="Container" class="Container NSK c_both">       
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_top.jpg" alt="" > 
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1676m_top.jpg" alt="" > 
     </div>  
 
     <div class="evtMenu">

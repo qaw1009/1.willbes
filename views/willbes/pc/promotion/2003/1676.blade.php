@@ -14,9 +14,7 @@
         .skybanner a {display:block; margin-bottom:10px}
 
 
-        .evttop_banner {background:#e2d111}
-
-        .evttop_banners {background:#0A2B3C;padding-top:50px;} 
+        .evttop_banners {background:#12104f; padding-top:50px;} 
 
         /* 탭 */
         .tabContaier{width:1120px; margin:20px auto 0}
@@ -30,12 +28,12 @@
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/01/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
         .slice_area {margin-top:-5px;}
-        .evt01 {background:#fff}
+        .evt01 {background:#fff; padding-top:100px}
         .evt01 iframe{width:853px; height:480px; margin:50px auto 0;}
 
         .evt02 {background:#e7e7e7;}    
@@ -91,22 +89,18 @@
                 </ul>
             </div>
         </div>  
-        --}}      
+        --}}  
 
-        <div class="evtCtnsBox evttop_banner" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top_00.jpg"  title="반반과 똑독이 하나">            
-        </div>
-        {{--
         <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1676_top_banner.jpg" usemap="#Map1676_banner"  title="신청 베너" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top_banner.jpg" usemap="#Map1676_banner"  title="신청 베너" border="0">
             <map name="Map1676_banner" id="Map1676_banner">
                 <area shape="rect" coords="604,22,802,92" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
                 <area shape="rect" coords="814,23,1012,92" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>             
-        </div>
-        --}}
-        <div class="evtCtnsBox evttop" >     
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_top.jpg"  title="더켠의 반반한 밤">            
+        </div>                
+
+        <div class="evtCtnsBox evttop">                 
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -148,13 +142,13 @@
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
                 <map name="Map1676b">
                     <area shape="rect" coords="342,1259,778,1342" href="#to_go" />
                 </map>
             </div>
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
                 <map name="Map1676ss">
                     <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177490" target="_blank" alt="1월 방송" />
                     <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="지방직 방송" />

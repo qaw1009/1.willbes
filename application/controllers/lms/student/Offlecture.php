@@ -72,6 +72,13 @@ class Offlecture extends BaseStudent
                     ],
                     'BDT' => [
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
 
@@ -91,6 +98,13 @@ class Offlecture extends BaseStudent
                     ],
                     'IN' => [
                         'OP.PayStatusCcd' => $payStatus_arr
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
             }
@@ -231,6 +245,13 @@ class Offlecture extends BaseStudent
                     ],
                     'BDT' => [
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
 
@@ -250,6 +271,13 @@ class Offlecture extends BaseStudent
                     ],
                     'IN' => [
                         'OP.PayStatusCcd' => $payStatus_arr
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
             }
@@ -281,6 +309,13 @@ class Offlecture extends BaseStudent
                     ],
                     'BDT' => [
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
 
                 ];
@@ -301,6 +336,13 @@ class Offlecture extends BaseStudent
                     ],
                     'BDT' => [
                         'O.CompleteDatm' => [$search_start_date, $search_end_date]
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
             }

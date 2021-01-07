@@ -246,7 +246,7 @@ class BaseStudent extends \app\controllers\BaseController
             return $this->json_error('강좌코드를 입력해주십시요.');
         }
 
-        switch($this->_reqP('search_pay_status_ccd')){
+        switch($this->_req('search_pay_status_ccd')){
             case 'pay':
                 $payStatus_arr = ['676001', '676007'];
                 break;
@@ -270,11 +270,18 @@ class BaseStudent extends \app\controllers\BaseController
                     'OP.PayStatusCcd' => $payStatus_arr
                 ],
                 'EQ' => [
-                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                    'OP.SalePatternCcd' => $this->_req('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_req('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_req('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_req('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_req('SmsRcv'), // Sms 수신
+                ],
+                'ORG' => [
+                    'EQ' => [
+                        'M.MemId' => $this->_req('search_value'),
+                        'M.MemName' => $this->_req('search_value'),
+                        'M.Phone3' => $this->_req('search_value')
+                    ]
                 ]
             ];
 
@@ -282,31 +289,38 @@ class BaseStudent extends \app\controllers\BaseController
             $arr_condition = [
                 'EQ' => [
                     'OP.ProdCode' => $ProdCode, // 강좌코드
-                    'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
-                    'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
-                    'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
-                    'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
-                    'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                    'OP.SalePatternCcd' => $this->_req('search_pay_type_ccd'), // 상품구분
+                    'O.PayRouteCcd' => $this->_req('search_pay_route_ccd'), // 결제루트
+                    'O.PayMethodCcd' => $this->_req('search_pay_method_ccd'), // 결제수단
+                    'MI.MailRcvStatus' => $this->_req('MailRcv'), // 이메일수신
+                    'MI.SmsRcvStatus' => $this->_req('SmsRcv'), // Sms 수신
                 ],
                 'IN' => [
                     'OP.PayStatusCcd' => $payStatus_arr
+                ],
+                'ORG' => [
+                    'EQ' => [
+                        'M.MemId' => $this->_req('search_value'),
+                        'M.MemName' => $this->_req('search_value'),
+                        'M.Phone3' => $this->_req('search_value')
+                    ]
                 ]
             ];
         }
 
         // 날짜 검색
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
+        $search_start_date = $this->_req('search_start_date');
+        $search_end_date = $this->_req('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
         // 강좌 수강중인 회원 읽어오기
         $list = [];
         $count = $this->studentModel->getStudentList(true, $arr_condition,
-            $this->_reqP('length'), $this->_reqP('start'));
+            $this->_req('length'), $this->_req('start'));
 
         if($count > 0){
             $list = $this->studentModel->getStudentList(false, $arr_condition,
-                $this->_reqP('length'), $this->_reqP('start'));
+                $this->_req('length'), $this->_req('start'));
 
             foreach($list as $key => $row){
                 if(empty($list[$key]['OrderSubProdData']) == false) {
@@ -402,6 +416,13 @@ class BaseStudent extends \app\controllers\BaseController
                         'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                         'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                         'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                    ],
+                    'ORG' => [
+                        'EQ' => [
+                            'M.MemId' => $this->_req('search_value'),
+                            'M.MemName' => $this->_req('search_value'),
+                            'M.Phone3' => $this->_req('search_value')
+                        ]
                     ]
                 ];
             } else {
@@ -417,6 +438,13 @@ class BaseStudent extends \app\controllers\BaseController
                             'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                             'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                             'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                        ],
+                        'ORG' => [
+                            'EQ' => [
+                                'M.MemId' => $this->_req('search_value'),
+                                'M.MemName' => $this->_req('search_value'),
+                                'M.Phone3' => $this->_req('search_value')
+                            ]
                         ]
                     ];
                 } else {
@@ -431,6 +459,13 @@ class BaseStudent extends \app\controllers\BaseController
                             'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
                             'MI.MailRcvStatus' => $this->_reqP('MailRcv'), // 이메일수신
                             'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
+                        ],
+                        'ORG' => [
+                            'EQ' => [
+                                'M.MemId' => $this->_req('search_value'),
+                                'M.MemName' => $this->_req('search_value'),
+                                'M.Phone3' => $this->_req('search_value')
+                            ]
                         ]
                     ];
                 }
@@ -451,6 +486,13 @@ class BaseStudent extends \app\controllers\BaseController
                 ],
                 'IN' => [
                     'OP.PayStatusCcd' => $payStatus_arr
+                ],
+                'ORG' => [
+                    'EQ' => [
+                        'M.MemId' => $this->_req('search_value'),
+                        'M.MemName' => $this->_req('search_value'),
+                        'M.Phone3' => $this->_req('search_value')
+                    ]
                 ]
             ];
         }

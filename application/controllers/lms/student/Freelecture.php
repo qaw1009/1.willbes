@@ -32,6 +32,13 @@ class Freelecture extends BaseStudent
             ],
             'IN' => [
                 'OP.PayStatusCcd' => ['676001', '676007']
+            ],
+            'ORG' => [
+                'EQ' => [
+                    'M.MemId' => $this->_req('search_value'),
+                    'M.MemName' => $this->_req('search_value'),
+                    'M.Phone3' => $this->_req('search_value')
+                ]
             ]
         ];
         // 날짜 검색

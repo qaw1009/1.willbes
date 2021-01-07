@@ -117,7 +117,7 @@
         </div> 
 
         <div class='embed-container'>
-            <iframe src="https://www.youtube.com/embed/uR6eivD1zV4?rel=0&autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>          
+            <iframe src="https://www.youtube.com/embed/uR6eivD1zV4?rel=0&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>          
         </div>
 
 		<div class="evtCtnsBox evtTop">

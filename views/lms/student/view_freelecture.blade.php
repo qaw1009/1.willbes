@@ -103,7 +103,7 @@
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
                     </div>
                     <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1">조건검색</label>
                     <div class="col-md-5">

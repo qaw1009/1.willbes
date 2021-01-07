@@ -294,21 +294,21 @@
                                     <td class="w-selected tx-left pl30">
                                         <select id="process" name="process" title="process" class="seleProcess" style="width: 250px;">
                                             <option selected="selected">과정선택</option>
-                                            <option value="헌법">헌법</option>
-                                            <option value="스파르타반">스파르타반</option>
-                                            <option value="공직선거법">공직선거법</option>
+                                            <option value="경찰">경찰</option>
+                                            <option value="공무원">공무원</option>
+                                            <option value="고등고시">고등고시</option>
                                         </select>
                                         <select id="div" name="div" title="div" class="seleDiv" style="width: 250px;">
                                             <option selected="selected">구분</option>
-                                            <option value="헌법">헌법</option>
-                                            <option value="스파르타반">스파르타반</option>
-                                            <option value="공직선거법">공직선거법</option>
+                                            <option value="일반경찰">일반경찰</option>
+                                            <option value="경행경채">경행경채</option>
+                                            <option value="경찰승진">경찰승진</option>
                                         </select>
                                         <select id="campus" name="campus" title="campus" class="seleCampus" style="width: 250px;">
                                             <option selected="selected">캠퍼스 선택</option>
-                                            <option value="헌법">헌법</option>
-                                            <option value="스파르타반">스파르타반</option>
-                                            <option value="공직선거법">공직선거법</option>
+                                            <option value="노량진">노량진</option>
+                                            <option value="신림">신림</option>
+                                            <option value="인천">인천</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -317,9 +317,9 @@
                                     <td class="w-selected full tx-left pl30" colspan="3">
                                         <select id="A" name="A" title="A" class="seleLecA">
                                             <option selected="selected">상담 유형 선택</option>
-                                            <option value="헌법">헌법</option>
-                                            <option value="스파르타반">스파르타반</option>
-                                            <option value="공직선거법">공직선거법</option>
+                                            <option value="수강">수강</option>
+                                            <option value="교재">교재</option>
+                                            <option value="결제">결제</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -349,25 +349,36 @@
                                     <td class="w-file answer tx-left" colspan="4">
                                         <ul class="attach">
                                             <li>
-                                                <!--div class="filetype">
-                                                    <input type="text" class="file-text" />
-                                                    <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                    <span class="file-select"-->
-                                                        <input type="file" class="input-file" size="3">
-                                                    <!--/span>
-                                                    <input class="file-reset NSK" type="button" value="X" />
-                                                </div-->
+                                                <div class="filetypeB">
+                                                    <input type="file" class="input-file" size="3">
+                                                    <input class="file-reset NSK" type="button" value="+" /> 
+                                                </div>                                               
                                             </li>
                                             <li>
-                                                <!--div class="filetype">
+                                                <div class="filetypeB">
+                                                    <input type="file" class="input-file" size="3">
+                                                    <input class="file-reset NSK" type="button" value="-" /> 
+                                                </div>                                               
+                                            </li>
+                                            <li>
+                                                <div class="filetypeB">
+                                                    <input type="file" class="input-file" size="3">
+                                                    <input class="file-reset NSK" type="button" value="-" /> 
+                                                </div>                                               
+                                            </li>
+                                            {{--
+                                            <li>
+                                                <div class="filetype">
                                                     <input type="text" class="file-text" />
                                                     <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
-                                                    <span class="file-select"-->
+                                                    <span class="file-select">
                                                         <input type="file" class="input-file" size="3">
-                                                    <!--/span>
+                                                    </span>
                                                     <input class="file-reset NSK" type="button" value="X" />
-                                                </div-->
+                                                </div>
                                             </li>
+                                            --}}
+                                            
                                             <li>
                                                 • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
                                                 • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.

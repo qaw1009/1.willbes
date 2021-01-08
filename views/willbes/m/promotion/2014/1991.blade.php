@@ -18,8 +18,10 @@
     .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
     .evt05 {background:#f7f3e7}
-    .evt05 a {display:inline; float:left; width:33.33333%}
-    .evt05 a img {max-width:240px}
+    .evt05 a,
+    .evt05 span {display:inline; float:left; width:33.33333%}
+    .evt05 a img,
+    .evt05 span img {max-width:240px}
 
     .evt09 {padding-bottom:150px}
     .evt09 a {display:block; margin:0 20px; padding:15px; border-radius:40px; color:#fff; background:#2fa700; font-size:22px}
@@ -159,14 +161,18 @@
         </div>
         <div id="evt05">
             <a href="javascript:go_PassLecture('177450');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn01.jpg" alt="수강권" ></a>
-            <a href="javascript:go_PassLecture('177452');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn02.jpg" alt="강의+베이직" ></a>
+            <span class="p_re">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1991_05_btn02.jpg" alt="강의+베이직" >
+                <a href="javascript:go_PassLecture('177452');" title="강의+베이직A키트" style="position: absolute; left: 2.08%; top: 80%; width: 48.75%; height: 18.77%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('177573');" title="강의+베이직B키트" style="position: absolute; left: 51.25%; top: 80.31%; width: 45.83%; height: 18.77%; z-index: 2;"></a>
+            </span>
             <a href="javascript:go_PassLecture('177453');"><img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_btn03.jpg" alt="강의+프리미엄" ></a>
         </div>
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_05_bottom.jpg" alt="사전예약" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1991_05_bottom.jpg" alt="사전예약" >
     </div> 
 
     <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_06.gif" alt="사전예약 이벤트" >            
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1991_06.gif" alt="사전예약 이벤트" >            
     </div> 
 
     <div class="evtCtnsBox evt07">
@@ -180,7 +186,7 @@
     <div class="evtCtnsBox evt09">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1991_09.jpg" alt="오픈 이벤트" > 
         <a href="http://pf.kakao.com/_tUSRK/61873027" target="_blank" class="NSK-Black">쿠킹클래스 기대평 작성하기 ></a>    
-        <div>이벤트 기간 : 12.30(수)~1.12(화) <br> 당첨자발표 : 2021.1.15(금) 공지사항 참조</div>
+        <div>이벤트 기간 : 12.30(수)~2.1(월) <br> 당첨자발표 : 2021.2.4 (목) 공지사항 참조</div>
     </div>  
 
     <div class="evtCtnsBox">
@@ -236,19 +242,20 @@
             <h3 class="NSK-Black">이용 안내</h3>
             <p>#사전예약 혜택</p>
             <ul>
-                <li>사전예약 혜택은 1월 12일까지 결제완료자에 한해서만 적용됩니다.</li>
+                <li>사전예약 혜택은 2월 1일까지 결제완료자에 한해서만 적용됩니다.</li>
                 <li>사전예약 혜택은 강의료(키트 제외) 40% 할인입니다.</li>
-                <li>강의 시작일은 1월 12일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>
+                <li>강의 시작일은 2월 1일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>
             </ul>
             <p>#요리 클래스 키트 안내</p>
             <ul>
                 <li>키트구성 <br>
-                - 베이직 : 만능양념장, 네오플램 피카 18cm 편수냄비IH, 만능간장(맛간장), 계량스푼, 계량컵<br>
-                - 프리미엄 : 만능양념장, 네오플램 피카 18cm 편수냄비IH/26cm 웍 IH, 만능간장(맛간장), 계량스푼, 계량컵</li>
+                    - 베이직 A : 만능양념장, 네오플램 피카 18cm 편수냄비 IH, 만능간장(맛간장), 계량스푼, 계량컵<br>
+                    - 베이직 B : 만능양념장, 네오플램 피카 26cm 웍 IH, 만능간장(맛간장), 계량스푼, 계량컵<br>
+                    - 프리미엄 : 만능양념장, 네오플램 피카 18cm 편수냄비IH, 26cm 웍 IH, 만능간장(맛간장), 계량스푼, 계량컵</li>
 
                 <li>키트 배송일정<br>
                 : 강사님이 직접 배송을 진행하고 있으며, 결제일로부터 5~7일 기간 소요 될 수 있으니 참고 부탁 드립니다.<br>
-                - 키트 발송은 사전예약자에 한하여 1월 12일 이후부터 순차발송 진행 됩니다.<br>
+                - 키트 발송은 사전예약자에 한하여 2월 1일 이후부터 순차발송 진행 됩니다.<br>
                 - 키트 상품 중 일부 깨지기 쉬운 물품은 대체 용기로 변경되어 배송되므로 실제 이미지와 다를 수 있습니다.</li>
 
                 <li>키트 환불 절차 및 금액<br>
@@ -256,8 +263,7 @@
                 - 배송 시작 전 : 결제대금 전액<br>
                 - 배송 시작 후 키트 수령일로부터 7일 경과 전 : 결제대금 전액<br>
                 (단, 키트 반송에 소요되는 운송비를 공제)<br>
-                - 키트 수령일로부터 7일 경과 후 : 환불 불가<br>
-                (단순변심에 의한 키트반품은 왕복 택배비 6,000원입니다.)</li>
+                - 키트 수령일로부터 7일 경과 후 : 환불 불가</li>
 
                 <li>키트 환불 불가사유<br>
                 - 회원의 책임 있는 사유에 따라 키트가 멸실 또는 훼손 등으로 재판매가 불가한 경우<br>

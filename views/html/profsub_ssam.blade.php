@@ -1,5 +1,5 @@
-@extends('willbes.pc.layouts.master')
-
+{{--@extends('willbes.pc.layouts.master')--}}
+@extends('html.layouts.master')
 @section('content')
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">

@@ -19,7 +19,8 @@
                             <span class="tx-blue">[설명회]</span> 2021 합격 전략 설명회
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>
+                            <dt class="tx-red">진행중<span class="row-line">|</span></dt>  
+                            <dt>기간 : 2020-09-18 ~ 2020-10-20</dt><br>
                             <dt>2020-09-17<span class="row-line">|</span></dt>
                             <dt>조회수 : <span class="tx-blue">10</span></dt>
                         </dl>
@@ -36,16 +37,18 @@
                         <div class="btnboard"><a href="#none">★ 퀵써머리 패키지 수강신청 바로가기 ★</a></div>
                     </td>
                 </tr>
+                {{--
                 <tr class="flie">
                     <td class="w-file NGR">
                         <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 이벤트.jpg</a>
                         <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
                     </td>
-                </tr>    
+                </tr>
+                --}}
             </tbody>
         </table>
 
-        {{--신청기능--}}
+        {{--신청기능
         <div class="request">
             <div class="title">신청리스트</div>
             <ul>
@@ -61,12 +64,12 @@
                 </div>
                 <div class="f_right">
                     <a href="#none">신청하기</a>
-                    {{--<a href="#none" class="end">신청만료</a>--}}
+                    <!--<a href="#none" class="end">신청만료</a>-->
                 </div>
             </div>                            
-        </div>
+        </div>--}}
 
-        {{--댓글기능--}}
+        {{--댓글기능
         <div class="reply">
             <div class="replyWrite">
                 <textarea placeholder="지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다. 댓글을 입력해 주세요."></textarea>
@@ -107,7 +110,7 @@
                     <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                 </ul>
             </div>
-        </div>
+        </div>--}}
 
         <div class="lecSubject mt40">
             <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}">목록</a>

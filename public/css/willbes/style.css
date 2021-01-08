@@ -4449,7 +4449,8 @@ table.classTable tr td img {
 	float: right;
 	background: #e4e4e4;
 	width: 1px;
-	height: 11px;
+	/*height: 11px;*/
+	vertical-align: middle;
 }
 .LeclistTable .listTable tbody tr td.w-free .w-sp {
 	float: inherit;
@@ -4479,6 +4480,42 @@ table.classTable tr td img {
 	display: block;
 	margin: 2px auto;
 }
+.listTable .w-progress span {
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 11px;
+}
+.listTable .w-progress .on {
+	background-color: #ed1c24;
+	animation: upDown 1s infinite;
+	-webkit-animation: upDown 1s infinite;
+}
+@keyframes upDown {
+	from {
+		background-color: #ed1c24;
+	}
+	50% {
+		background-color: #9b1116;
+	}
+	to {
+		background-color: #ed1c24;
+	}
+}
+@-webkit-keyframes upDown {
+	from {
+		background-color: #ed1c24;
+	}
+	50% {
+		background-color: #9b1116;
+	}
+	to {
+		background-color: #ed1c24;
+	}
+}
+.listTable .w-progress .off {
+	background-color: #666;
+}
+
 .LeclistTable .listTable .userInfoBox th,
 .LeclistTable .listTable .userInfoBox td {
 	line-height: 30px;
@@ -4596,7 +4633,6 @@ form .LeclistTable .evtTable tr td a.w-del {
 	float: right;
 	background: #e4e4e4;
 	width: 1px;
-	height: 11px;
 }
 .LecViewTable .listTable thead tr td dl dt {
 	float: left;
@@ -4635,7 +4671,11 @@ form .LeclistTable .evtTable tr td a.w-del {
 .prevnextTable tr:first-child td {
 	border: none;
 }
-
+.LecViewTable .listTable tr td img.boardImg {
+	display:block;
+	max-width: 940px;
+	margin: 10px auto;
+}
 /* subContainer : Content : 강의목차 : LecWriteTable */
 .LecWriteTable .listTable {
 	clear: both;
@@ -7138,7 +7178,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	display: none;
 	background: #fff;
 	position: absolute;
-	top: 50px;
+	top: -70px;
 	left: 50%;
 	margin-left: -470px;
 	z-index: 110;

@@ -12,15 +12,14 @@
     <div class="willbes-Lec-Selected NG tx-gray">
         <select id="" name="" title="" class="width49p">
             <option selected="selected">전체 이벤트</option>
-            <option value="">이벤트1</option>
-            <option value="">이벤트2</option>
-            <option value="">이벤트3</option>
+            <option value="">진행중</option>
+            <option value="">종료</option>
         </select>
         <select id="" name="" title="" class="width50p ml1p">
-            <option selected="selected">전체 캠퍼스</option>
-            <option value="">캠퍼스1</option>
-            <option value="">캠퍼스2</option>
-            <option value="">캠퍼스3</option>
+            <option selected="selected">유형</option>
+            <option value="">설명회</option>
+            <option value="">특강</option>
+            <option value="">이벤트</option>
         </select>  
         <div class="willbes-Lec-Search NG width100p mt1p">
             <div class="inputBox width88p p_re">
@@ -35,12 +34,14 @@
         </div>      
     </div>
 
+    {{--
     <div class="btnBox mb20">
         <ul class="f_right">
-            {{--<li class="InfoBtn btn_white"><a href="#none">마감된 이벤트</a></li>--}}
+            <li class="InfoBtn btn_white"><a href="#none">마감된 이벤트</a></li>
             <li class="InfoBtn btn_white"><a href="#none">진행중인 이벤트</a></li>
         </ul>
     </div>
+    --}}
 
     <div class="lineTabs lecListTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
@@ -51,21 +52,21 @@
                             <a href="#none"><span class="tx-blue">[이벤트]</span> 막판 정리 '퀵써머리 패키지' 수강안내</a>
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>
-                            <dt>2020-09-17<span class="row-line">|</span></dt>
+                            <dt class="tx-red">진행중<span class="row-line">|</span></dt>  
+                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>                            
                             <dt>조회수 : <span class="tx-blue">10</span></dt>
                         </dl>
                         <div><a href="#none" class="btnblue">바로가기 ></a></div>
                     </td>
                 </tr>
-                <tr>
+                <tr class="bg-light-blue">
                     <td class="w-data tx-left">
                         <div class="w-tit">
                             <a href="#none"><span class="tx-blue">[설명회]</span> 2021 합격 전략 설명회</a>
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>
-                            <dt>2020-09-17<span class="row-line">|</span></dt>
+                            <dt class="tx-red">진행중<span class="row-line">|</span></dt> 
+                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>                            
                             <dt>조회수 : <span class="tx-blue">10</span></dt>
                         </dl>
                         <div><a href="#none" class="btnblue">바로가기 ></a></div>
@@ -77,8 +78,8 @@
                             <a href="#none"><span class="tx-blue">[이벤트]</span> 인강체험/환승할인 이벤트를 연중이벤트로 진행</a>
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>
-                            <dt>2020-09-17<span class="row-line">|</span></dt>
+                            <dt>종료<span class="row-line">|</span></dt>  
+                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>                            
                             <dt>조회수 : <span class="tx-blue">10</span></dt>
                         </dl>
                         <div><a href="#none" class="btnblue">바로가기 ></a></div>
@@ -90,8 +91,8 @@
                             <a href="#none"><span class="tx-blue">[특강]</span> 스승의 날 감사인사 전하기</a>
                         </div>
                         <dl class="w-info tx-gray">
-                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>
-                            <dt>2020-09-17<span class="row-line">|</span></dt>
+                            <dt>종료<span class="row-line">|</span></dt>
+                            <dt>기간 : 2020-09-18 ~ 2020-10-20<span class="row-line">|</span></dt>                            
                             <dt>조회수 : <span class="tx-blue">10</span></dt>
                         </dl>
                     </td>

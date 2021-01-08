@@ -55,16 +55,15 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377open" border="0" />
-            <map name="Map1377open" id="Map1377open">
-                <area shape="rect" coords="669,329,833,373" href="/lecture/show/cate/3019/pattern/only/prod-code/166672" target="_blank" />
-                <area shape="rect" coords="668,446,832,495" href="/lecture/show/cate/3019/pattern/only/prod-code/169566" target="_blank" />
-                <area shape="rect" coords="666,567,835,614" href="/lecture/show/cate/3019/pattern/only/prod-code/169905" target="_blank" />
-                <area shape="rect" coords="839,328,1001,376" href="javascript:alert('마감되었습니다.')">
-                <area shape="rect" coords="835,447,1003,493" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
-                <area shape="rect" coords="841,568,1001,613" href="https://pass.willbes.net/pass/professor/show/prof-idx/50242/?cate_code=3043&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&series=" target="_blank" />
-                <area shape="rect" coords="664,719,1003,783" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
-            </map>         
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377_apply" border="0" />
+            <map name="Map1377_apply" id="Map1377_apply">
+                <area shape="rect" coords="393,497,504,539" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175550" target="_blank" />
+                <area shape="rect" coords="393,568,501,610" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177127" target="_blank" />
+                <area shape="rect" coords="390,643,504,683" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175918" target="_blank" />
+                <area shape="rect" coords="847,494,958,541" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
+                <area shape="rect" coords="847,569,958,611" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
+                <area shape="rect" coords="847,641,958,683" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
+            </map>      
         </div>
         <!--wb_cts04//-->
     </div>

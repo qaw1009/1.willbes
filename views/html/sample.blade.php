@@ -223,6 +223,7 @@
                 <li><a href="{{ site_url('/home/html/event_ing_read') }}" target="_blank">이벤트 > 진행중인 이벤트 상세</a></li>
                 <li><a href="{{ site_url('/home/html/event_end') }}" target="_blank">이벤트 > 마감된 이벤트</a></li>
                 <li><a href="{{ site_url('/home/html/event_end_read') }}" target="_blank">이벤트 > 마감된 이벤트 상세</a></li>
+                <li><a href="{{ site_url('/home/html/eventBoard_ssam') }}" target="_blank">이벤트 > 임용 이벤트 게시판</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/promotion/event_onLeaveArmyPassIntro') }}" target="_blank">전역군인인증 통합</a></li>
                 <li><a href="{{ site_url('/home/html/promotion/event_onLeaveArmyPass') }}" target="_blank">전역군인인증 온라인 메인</a></li>

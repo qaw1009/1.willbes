@@ -36,7 +36,7 @@
         to{color:#d63e4d}
         }            
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1751_top_bg.jpg) no-repeat center top;}   
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/1751_top_bg.jpg) no-repeat center top;}   
 
         .wb_01 .tImg img {margin-right:5px; width:330px;}
 
@@ -52,12 +52,12 @@
         .PeMenu li:hover img.on {display:block}
         .PeMenu ul:after {content:''; display:block; clear:both}
 
-        .wb_03 {background:#032E5B} 
+        .wb_03 {background:#032E5B; padding-bottom:150px;} 
 
         .check {position:absolute;bottom:50px;left:50%;margin-left:-490px;width:980px;padding: 20px 0px 20px 10px;letter-spacing:3;color:#fff;z-index:5;}
-        .check label {cursor:pointer;font-size:15px;color:#FFF;font-weight:bold;}
+        .check label {cursor:pointer;font-size:15px;color:#FFF;}
         .check input {border:2px solid #000; margin-right:10px; height:25px; width:25px;}
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#000; background:#00cfef; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#000; background:#00cfef; margin-left:50px; border-radius:20px;font-size:14px;}
         
         .wb_cts04 {width:100%; text-align:center;  min-width:11200px; background:#e5dac9;}   
 
@@ -101,7 +101,7 @@
         <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1751_top.jpg" alt="군무원 PASS"/>        
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1751_top.jpg" alt="군무원 PASS"/>        
         </div>
 
         <div class="evtCtnsBox wb_01">
@@ -146,12 +146,16 @@
         </div>
           
         <div class="evtCtnsBox wb_03" id="event">       
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1751_03.jpg" usemap="#Map1751_apply" title="수강신청" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1751_03.jpg" usemap="#Map1751_apply" title="수강신청" border="0" />
             <map name="Map1751_apply" id="Map1751_apply">
-                <area shape="rect" coords="343,568,468,631" href="javascript:go_PassLecture('169730');">
-                <area shape="rect" coords="907,443,1000,490" href="javascript:go_PassLecture('170030');">
-                <area shape="rect" coords="907,514,1000,562" href="javascript:go_PassLecture('170029');">
-                <area shape="rect" coords="908,584,1000,632" href="javascript:go_PassLecture('170031');">
+                <area shape="rect" coords="416,534,533,580" href="javascript:go_PassLecture('169730');" alt="행정직">
+                <area shape="rect" coords="418,682,535,727" href="javascript:go_PassLecture('170030');" alt="국어+행정법">
+                <area shape="rect" coords="418,608,533,653" href="javascript:go_PassLecture('170029');" alt="국어+행정학">
+                <area shape="rect" coords="418,756,534,799" href="javascript:go_PassLecture('170031');" alt="행정학+행정법">
+                <area shape="rect" coords="845,536,962,578" href="javascript:go_PassLecture('177805');" alt="6개월 행정직" />
+                <area shape="rect" coords="844,610,963,653" href="javascript:go_PassLecture('177807');" alt="6개월 국어+행정학" />
+                <area shape="rect" coords="845,682,961,726" href="javascript:go_PassLecture('177808');" alt="6개월 국어+행정법" />
+                <area shape="rect" coords="845,755,961,799" href="javascript:go_PassLecture('177809');" alt="6개월 행정학+행정법" />
             </map>
             <div class="check">
                 <label>
@@ -170,11 +174,11 @@
                     <dd>
                         <ol>
                             <li>본 PASS는 군무원 9급 행정직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.</li>
-                            <li>2. 수강 가능 교수진 : 국어 기미진/임재진, 행정법 이석준, 행정학 김덕관/김헌<br>
+                            <li>수강 가능 교수진 : 국어 기미진/임재진, 행정법 이석준, 행정학 김덕관/김헌<br>
                                 (국어 임재진, 행정학 김헌 교수 과정은 2020년 대비 진행된 기존 과정만 제공됩니다.)</li>
-                            <li>3. 2020년 대비 전 강좌 및 2021년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
-                            (일부 교수진의 경우, 학원 사정으로 인하여 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 수강해주셔야 합니다.)</li>
-                            <li>4. 참여 교수진의 강의 진행 일정은 과목별로 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
+                            <li>2020년 대비 전 강좌 및 2021년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
+                                (일부 교수진의 경우, 학원 사정으로 인하여 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 수강해주셔야 합니다.)</li>
+                            <li>참여 교수진의 강의 진행 일정은 과목별로 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지   부탁드립니다.<br>
                             (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)</li>
                         </ol>
                     </dd>

@@ -43,32 +43,20 @@
     }   
 
     .evt03 {position:relative;}
+    .evt03 .apply a {position: absolute; width: 31.11%; height: 4.26%; z-index: 2;}
+    .evt03 .apply a.a01 {left: 14.86%; top: 58.14%; }
+    .evt03 .apply a.a02 {left: 14.86%; top: 69.05%; }
+    .evt03 .apply a.a03 {left: 14.86%; top: 80.05%; }
+    .evt03 .apply a.a04 {left: 14.86%; top: 90.88%; }
+    .evt03 .apply a.a05 {left: 53.75%; top: 58.31%; }
+    .evt03 .apply a.a06 {left: 53.75%; top: 69.05%; }
+    .evt03 .apply a.a07 {left: 53.75%; top: 80.05%; }
+    .evt03 .apply a.a08 {left: 53.75%; top: 90.88%; }
   
-    .evt03 p img {position:absolute;left:50%;top:70%;margin-left:-40%;width:80%; max-width:576px}    
-    .evt03 .apply ul li a:first-child {position: absolute;width:100%;left:50%;top:48%;margin-left:-28%;}
-    .evt03 .apply ul li a:nth-child(2) {position: absolute;width:100%;left:50%;top:68%;margin-left:-28%;}
-    .evt03 .apply ul li a:nth-child(3) {position: absolute;width:100%;left:50%;top:73%;margin-left:-28%;}
-    .evt03 .apply ul li a:nth-child(4) {position: absolute;width:100%;left:50%;top:78%;margin-left:-28%;}
-    .evt03 .apply img{width:13.5%;}
-    .check {position:absolute; bottom:7%; left:50%; margin-left:-360px; width:720px; padding:20px 0px 20px 10px; letter-spacing:0; color:#fff; z-index:5}
-    .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
+    .check {padding:20px 0px 50px 10px; letter-spacing:0; color:#fff; background-color:#032e5b;}
+    .check label {cursor:pointer; font-size:14px;color:#FFF;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-    .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff;margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;
-              position:absolute;left:50%;top:90%;margin-left:-23%;}
-    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
-    .btnbuy {max-width:720px; margin:0 auto}
-    .btnbuy a {display:block; width:99%; max-width:700px; margin:0 auto 5px; font-size:14px; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
-    .btnbuy a span {font-size:1.2rem;}
-    .btnbuy a:hover {background:#3a99f0;
-        -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
-    .infoCheck {width:100%; max-width:720px; margin:10px auto; font-size:12px;}
-    .infoCheck label {margin-right:30px; cursor: pointer; }
-    .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
-    .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
-    .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
-    .infoCheck a:hover {background:#0099ff;}
+    .check a {display:block; padding:10px 20px; color:#032e5b; border-radius:20px; font-size:14px; background-color:#dac28d; width:280px; margin:15px auto}
 
     .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#666; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
@@ -78,7 +66,6 @@
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
     .evtFooter li {margin-left:20px; list-style-type: decimal;}
     .evtFooter li a {display:inline-block; margin-left:10px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
-
 
     /* 폰 가로, 태블릿 세로*/
     @@media all and (min-width:320px) and (max-width:408px) {       
@@ -114,7 +101,7 @@
     </div>   
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1751m_top.jpg" alt="군무원패스" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1751m_top.jpg" alt="군무원패스" >
     </div>  
     
     <div class="evtCtnsBox evt01">
@@ -133,35 +120,27 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_02.jpg" alt="" >
     </div> 
 
-    <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03.jpg" alt="" >
-        <div class="apply"> 
-            <ul>
-                <li>
-                    <a href="javascript:go_PassLecture('169730');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
-                    </a>    
-                    <a href="javascript:go_PassLecture('170030');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
-                    </a>  
-                    <a href="javascript:go_PassLecture('170029');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
-                    </a>  
-                    <a href="javascript:go_PassLecture('170031');">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_apply.png" alt="" >
-                    </a>  
-                </li>
-            </ul>          
-        </div>
-        <div class="check">
-            <label>
-                <input name="ischk"  type="checkbox" value="Y" />
-                페이지 하단 군무원 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-            </label>
-            <a href="#guide">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1751m_03_guide.png" alt="" >
-            </a>
-        </div>        
+    <div class="evtCtnsBox evt03 p_re">
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1751m_03.jpg" alt="수강신청" >
+        <div class="apply">
+            <a href="javascript:go_PassLecture('169730');" title="행정직PASS" class="a01"></a>
+            <a href="javascript:go_PassLecture('170029');" title="국어+행정학PASS" class="a02"></a>
+            <a href="javascript:go_PassLecture('170030');" title="국어+행정법PASS" class="a03"></a>
+            <a href="javascript:go_PassLecture('170031');" title="행정학+행정법PASS" class="a04"></a>
+            <a href="javascript:go_PassLecture('177805');" title="6개월 행정직PASS" class="a05"></a>
+            <a href="javascript:go_PassLecture('177807');" title="6개월 국어+행정학PASS" class="a06"></a>
+            <a href="javascript:go_PassLecture('177808');" title="6개월 국어+행정법PASS" class="a07"></a>
+            <a href="javascript:go_PassLecture('177809');" title="6개월 행정학+행정법PASS" class="a08"></a>
+        </div>       
+    </div> 
+    <div class="evtCtnsBox check">
+        <label>
+            <input name="ischk"  type="checkbox" value="Y" />
+            페이지 하단 군무원 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+        </label>
+        <a href="#guide">
+            이용안내 확인하기 ↓
+        </a>
     </div> 
 
     <div class="evtCtnsBox evtFooter" id="guide">

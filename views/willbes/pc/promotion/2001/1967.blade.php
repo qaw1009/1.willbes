@@ -65,12 +65,17 @@
         <ul class="sky">
             <li>
                 <a href="#apply01"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_sky1.jpg" alt="" >
+                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_sky1.jpg" alt="1단계" >
                 </a>
-            </li>      
+            </li>  
+            <li>
+                <a href="#apply03"> 
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1967_sky.png" alt="2단계" >
+                </a>
+            </li>        
             <li>
                 <a href="#apply02"> 
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_sky2.jpg" alt="" >
+                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_sky2.jpg" alt="실전문풀 풀패키지" >
                 </a>
             </li>                
         </ul> 
@@ -100,7 +105,7 @@
         </div>
 
         <div class="evtCtnsBox evt03" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_03.jpg"  title="문제풀이 2단계">
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1967_03.jpg"  title="문제풀이 2단계" id="apply03">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @else

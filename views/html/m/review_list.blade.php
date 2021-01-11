@@ -31,7 +31,7 @@
             <li><a href="#none">전공역사 최용림</a></li>
             <li><a href="#none">전공음악 다이애나</a></li>
             <li><a href="#none">전기전자통신 최우영</a></li>
-            <li><a href="#none">정보컴퓨터 송광</a></li>
+            <li><a href="#none">정보컴퓨터 송광진</a></li>
             <li><a href="#none">정컴교육론 장순선</a></li>
             <li><a href="#none">전공중국어 정경미</a></li>
             <li><a href="#none" class="on">전체</a></li>

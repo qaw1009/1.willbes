@@ -7245,6 +7245,7 @@ span.calendar_btn {
 .sortList li {
 	display: inline;
 	float: left;
+	width: calc(20% - 5px);
 	margin-right: 5px;
 	margin-bottom: 5px;
 }
@@ -7253,6 +7254,8 @@ span.calendar_btn {
 	border: 1px solid #ccc;
 	padding: 5px;
 	color: #999;
+	text-align: center;
+	letter-spacing: -1px;
 }
 .sortList a.on {
 	border-color: #1a8ccc;
@@ -7470,6 +7473,10 @@ span.calendar_btn {
 		height: 300px !important;
 		overflow-y: scroll;
 	}
+
+	.sortList li {
+		width: calc(50% - 5px);
+	}
 }
 
 /* iPhone 6/7/8 */
@@ -7611,9 +7618,11 @@ span.calendar_btn {
 		background: none;
 		color: #fff;
 	}
-
 	.ssam .sampleLec {
 		margin: 0 10px;
+	}
+	.sortList li {
+		width: calc(33.33333% - 5px);
 	}
 }
 

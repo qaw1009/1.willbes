@@ -184,7 +184,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">임용</th>
+                            <th scope="row">교원임용</th>
                             <td colspan="3">
                                 <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">교육학</a>
                                 <a href="{{ front_app_url('/home/index', 'ssam') }}" target="_blank">유아.초등</a>
@@ -406,7 +406,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-site" rowspan="2">임용</td>
+                                    <td class="w-site" rowspan="2">교원임용</td>
                                     <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                     <td rowspan="2" class="w-call">1544-3169</td>
                                     <td rowspan="2" class="w-time tx-left pl25">

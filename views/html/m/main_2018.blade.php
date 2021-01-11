@@ -432,18 +432,18 @@
     <div class="w-Guide-Ssam mt20">
         <div class="NG ssamInfoMenu">
             <ul class="tabShow tabinfo">
-                <li><a href="#infoTab01" class="on">임용<br>시험제도</a><li>
-                <li><a href="#infoTab02">최근<br>10년동향</a><li>
+                <li><a href="#infoTab01" class="on">최근<br>10년동향</a><li>
+                <li><a href="#infoTab02">임용<br>시험제도</a><li>                
                 <li><a href="#infoTab03">지역별<br>공고문</a><li>
                 <li class="one"><a href="#infoTab04">자료실</a><li>
             </ul>
         </div>
         <div id="infoTab01">
-            @include('html.m.guide_3134_01_inc')              
-        </div>
-        <div id="infoTab02">
             @include('html.m.guide_3134_02_inc')              
         </div>
+        <div id="infoTab02">
+            @include('html.m.guide_3134_01_inc')              
+        </div>        
         <div id="infoTab03">
             @include('html.m.guide_3134_03_inc')              
         </div>

@@ -17,7 +17,7 @@
         /************************************************************/
 
         .skyBanner {position:fixed; bottom:250px;right:0;z-index:10;}
-        .skybannerB{position: fixed; bottom:0; text-align:center; z-index: 101; background:#242424; width:100%}
+        .skybannerB{position:fixed; bottom:0; text-align:center; z-index: 101; background:#242424; width:100%}
 
         /*상단 동영상*/
         .layer {width:100%; height:800px; -ms-overflow:hidden;}
@@ -27,15 +27,13 @@
         .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
         .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
        
-        .wb_cts01{}
-
-        /* 슬라이드배너 */
-        .slide_con1 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
-        .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
+           /* 슬라이드배너 */
+        .slide_con1 {position:relative; width:900px; margin:0 auto;}
         .slide_con1 img {width:100%;}
-        .evtCtnsBox p a {cursor:pointer}
-        .evtCtnsBox p.leftBtn1 {left:-31px; top:19%; width:62px; height:62px; margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
-        .evtCtnsBox p.rightBtn1 {right:-31px;top:19%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
+        .slide_con1 p {position:absolute; top:50%; width:62px; margin-top:-31px; height:62px; opacity:0.9; filter:alpha(opacity=90); z-index:90;}
+        .slide_con1 p a {cursor:pointer}
+        .slide_con1 p.leftBtn1 {left:-31px;}
+        .slide_con1 p.rightBtn1 {right:-31px; opacity:0.9;}
 
         /*탭(이미지)*/
         .tabs{width:100%; text-align:center; background:#0f44a0;}
@@ -59,10 +57,10 @@
             text-indent:-9999;
         }
         .evttab li:first-child a {
-            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab1.jpg) no-repeat left top;
+            background:url(https://static.willbes.net/public/images/promotion/2021/01/1129_02_tab1.jpg) no-repeat left top;
         }        
         .evttab li:nth-child(2) a {
-            background:url(http://file3.willbes.net/new_cop/2019/03/1129_02_tab2.jpg) no-repeat left top;
+            background:url(https://static.willbes.net/public/images/promotion/2021/01/1129_02_tab2.jpg) no-repeat left top;
         }
         .evttab li:last-child a {
             background:url(https://static.willbes.net/public/images/promotion/2019/11/1129_02_tab3.jpg) no-repeat left top;
@@ -89,7 +87,8 @@
         .tabCts div a {
             display:block; height:24px; line-height:24px; background:#0c5dc0; color:#fff; text-align:center;
         }
-        #tab01s a {width:1120px; margin:50px auto 0; display:block; font-size:34px; color:#fff; padding:20px 0; border-radius:50px;
+   
+        .btngo a {width:1120px; margin:50px auto 0; display:block; font-size:34px; color:#fff; padding:20px 0; border-radius:50px;
             -webkit-animation: color-change-5x 8s linear infinite alternate both;
             animation: color-change-5x 8s linear infinite alternate both;
         }
@@ -97,14 +96,8 @@
             0% {
             background: #19dcea;
             }
-            25% {
-            background: #b22cff;
-            }
             50% {
             background: #ea2222;
-            }
-            75% {
-            background: #f5be10;
             }
             100% {
             background: #3bd80d;
@@ -114,27 +107,16 @@
             0% {
             background: #19dcea;
             }
-            25% {
-            background: #b22cff;
-            }
             50% {
             background: #ea2222;
-            }
-            75% {
-            background: #f5be10;
             }
             100% {
             background: #3bd80d;
             }
         }
-        .wb_cts03 {background:#FFF;}
-        .menuWarp {position:relative; width:1210px; height:490px; margin:0 auto; }
-        .PeMenu {position:absolute; width:1210px; height:328px; top:0px; left:0px;}
-        .PeMenu li { display:inline; float:left}
-        .PeMenu li a img.off {display:block} 	
-        .PeMenu li a img.on {display:none} 	
+        .wb_cts03 {background:#FFF;}  
         
-        #tab04s2{background:#f7f7f7}
+        .tab04s2{background:#f7f7f7}
 
           /* tip */
         .wb_cts09 {background:#e9e9e9; text-align:left; padding:100px 0;}
@@ -208,41 +190,46 @@
                     </li>
                 </ul>
             </div>
-            <div id="tab01s" class="pb100 tabContents"> 
+
+            <div id="tab01s" class="pb100"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1053_tab1_con.jpg">                
-                <div><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
-            </div>                                        
-            <div id="tab02s" class="pb100 tabContents">
+                <div class="btngo"><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
+            </div> 
+
+            <div id="tab02s" class="pb100">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
                 <map name="Map1053tab2" id="Map1053tab2">
                     <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
                     <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
                 </map>   
+
                 <div class="slide_con1">
                     <ul id="slidesImg1">
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info1.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info2.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info3.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info4.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info5.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info6.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info7.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info8.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info9.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info10.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info11.jpg" alt=""/></li>
-                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info12.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info5.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info6.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info7.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info8.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info9.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info10.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" alt=""/></li>
                     </ul>
                     <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/sparta/1501_roll_arr_l.png"></a></p>
                     <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
                 </div>          
             </div>
-            <div id="tab03s" class="pb100 tabContents">
+
+            <div id="tab03s" class="pb100">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
             </div>
-            <div id="tab04s" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab4_con.jpg" /> 
-                <div id="tab04s2">
+
+            <div id="tab04s">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_tab4_con.jpg" /> 
+                <div class="tab04s2">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
                     <div class="evttab">
                         <ul>
@@ -252,7 +239,7 @@
                         </ul>
                     </div>
                     <div id="tab01" class="tabCts">
-                        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_02_t01.jpg" alt="기본과정" usemap="#Map1126A" border="0">
                         <map name="Map1126A" id="Map1126A">
                             <area shape="rect" coords="354,585,438,614" href="{{ site_url('/pass/promotion/index/cate/3010/code/1124') }}" />
                             <area shape="rect" coords="235,2450,318,2476" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
@@ -260,15 +247,15 @@
                         </map>
                     </div>
                     <div id="tab02" class="tabCts">
-                        <img src="http://file3.willbes.net/new_cop/2019/03/1129_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_02_t02.jpg" alt="심화과정" usemap="#Map1126B" border="0">
                         <map name="Map1126B" id="Map1126B">
                             <area shape="rect" coords="235,2208,318,2240" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
                             <area shape="rect" coords="803,2208,884,2240" href="javascript:alert('Coming Soon')" />
                         </map>
                     </div>
                     <div id="tab03" class="tabCts">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03.jpg" alt="필합 풀패키지">
-                        <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02_t03s.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_02_t03.jpg" alt="필합 풀패키지">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_02_t03s.jpg" alt="필합 풀패키지" usemap="#Map1126C" border="0">
                         <map name="Map1126C" id="Map1126C">
                             <area shape="rect" coords="232,425,323,456" href="{{ site_url('/pass/promotion/index/cate/3010/code/1131') }}" />
                             <area shape="rect" coords="794,421,893,459" href="javascript:alert('Coming Soon')" />
@@ -361,65 +348,12 @@
     <!-- End Container -->
 
     <script language="javascript">
-
-     /*탭(이미지버전)*/
-     $(document).ready(function(){
-                $('.tabs ul').each(function(){
-                    var $active, $content, $links = $(this).find('a');
-                    $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                    //$active.addClass('active');
-                    $content = $($active[0].hash);
-
-                    $links.not($active).each(function () {
-                        $(this.hash).hide();
-                    });
-
-                    // Bind the click event handler
-                    $(this).on('click', 'a', function(e){
-                        $active.removeClass('active');
-                        $content.hide();
-                        $active = $(this);
-                        $content = $(this.hash);
-                        $active.addClass('active');
-                        $content.show();
-                        e.preventDefault()
-                    });
-                });
-            });
-
-            /*탭(텍스터버전)*/
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-            });
-        });
-
-            $(document).ready(function(){
-        $(".tabCts").hide(); 
-        $(".tabCts:first").show();        
-        $(".evttab ul li a").click(function(){             
-            var activeTab = $(this).attr("href"); 
-            $(".evttab ul li a").removeClass("active"); 
-            $(this).addClass("active"); 
-            $(".tabCts").hide(); 
-            $(activeTab).fadeIn();             
-            return false; 
-        });
-    });
-
-    $(document).ready(function() {
+        $(document).ready(function() {
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
                 auto:true,
                 speed:350,
-                pause:8000,
+                pause:4000,
                 pager:true,
                 controls:false,
                 minSlides:1,
@@ -427,7 +361,8 @@
                 slideWidth:900,
                 slideMargin:0,
                 autoHover: true,
-                moveSlides:1
+                moveSlides:1,
+                adaptiveHeight: true,
             });
 
             $("#imgBannerLeft1").click(function (){
@@ -438,7 +373,44 @@
                 slidesImg1.goToNextSlide();
             });
         });
-            
+
+        /*탭(이미지버전)*/
+        $(document).ready(function(){
+            $('.tabs ul').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                //$active.addClass('active');
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide();
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                });
+            });
+        });
+
+        $(document).ready(function(){
+            $(".tabCts").hide(); 
+            $(".tabCts:first").show();        
+            $(".evttab ul li a").click(function(){             
+                var activeTab = $(this).attr("href"); 
+                $(".evttab ul li a").removeClass("active"); 
+                $(this).addClass("active"); 
+                $(".tabCts").hide(); 
+                $(activeTab).fadeIn();             
+                return false; 
+            });
+        });    
             
     </script>
 @stop

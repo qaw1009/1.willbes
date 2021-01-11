@@ -1,6 +1,6 @@
 @if(in_array($__cfg['SiteCode'],['2017','2018']) === true) {{-- 임용 --}}
     @if(strpos($_SERVER['REQUEST_URI'], '/promotion/index') === false) {{-- 프로모션 제외 --}}
-        <div id="QuickMenu" class="MainQuickMenuSSam NGR">
+        <div id="QuickMenuC" class="MainQuickMenuSSam NGR">
             <ul id="dday_box"></ul>
             <ul class="gobtn NG">
                 <li>

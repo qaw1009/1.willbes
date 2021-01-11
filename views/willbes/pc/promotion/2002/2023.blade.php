@@ -182,8 +182,8 @@
 		<div class="evtCtnsBox wb_05" >
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2023_05.jpg"  alt="전국모의고사 이벤트" usemap="#Map2023_event" border="0"/>
             <map name="Map2023_event" id="Map2023_event">
-                <area shape="rect" coords="438,1018,681,1099" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
-                <area shape="rect" coords="369,1419,750,1476" ref="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
+                <area shape="rect" coords="369,1419,750,1476" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="전국모의고사 이미지 다운받기" />
+                <area shape="rect" coords="438,1018,681,1099" href="javascript:;" onclick="giveCheck()" alt="응시쿠폰 받기" />
             </map>         
 		</div>
 

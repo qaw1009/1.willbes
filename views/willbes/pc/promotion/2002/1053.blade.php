@@ -29,6 +29,13 @@
        
         .wb_cts01{}
 
+        /* 슬라이드배너 */
+        .slide_con1 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
+        .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
+        .slide_con1 img {width:100%;}
+        .evtCtnsBox p a {cursor:pointer}
+        .evtCtnsBox p.leftBtn1 {left:-31px; top:19%; width:62px; height:62px; margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
+        .evtCtnsBox p.rightBtn1 {right:-31px;top:19%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
 
         /*탭(이미지)*/
         .tabs{width:100%; text-align:center; background:#0f44a0;}
@@ -201,21 +208,39 @@
                     </li>
                 </ul>
             </div>
-            <div id="tab01s" class="pb100"> 
+            <div id="tab01s" class="pb100 tabContents"> 
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1053_tab1_con.jpg">                
                 <div><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
             </div>                                        
-            <div id="tab02s" class="pb100">
+            <div id="tab02s" class="pb100 tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
                 <map name="Map1053tab2" id="Map1053tab2">
                     <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
                     <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
-                </map>             
+                </map>   
+                <div class="slide_con1">
+                    <ul id="slidesImg1">
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info1.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info2.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info3.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info4.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info5.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info6.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info7.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info8.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info9.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info10.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info11.jpg" alt=""/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/01/info12.jpg" alt=""/></li>
+                    </ul>
+                    <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/sparta/1501_roll_arr_l.png"></a></p>
+                    <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
+                </div>          
             </div>
-            <div id="tab03s" class="pb100">
+            <div id="tab03s" class="pb100 tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
             </div>
-            <div id="tab04s">
+            <div id="tab04s" class="tabContents">
                 <img src="https://static.willbes.net/public/images/promotion/2019/11/1053_tab4_con.jpg" /> 
                 <div id="tab04s2">
                     <img src="https://static.willbes.net/public/images/promotion/2019/11/1129_02.jpg" alt="여러분을 합격의 지름길로 안내할 3가지의 신의법칙 " />
@@ -362,6 +387,20 @@
                 });
             });
 
+            /*탭(텍스터버전)*/
+        $(document).ready(function(){
+            $(".tabContents").hide();
+            $(".tabContents:first").show();
+            $(".tabContaier ul li a").click(function(){
+            var activeTab = $(this).attr("href");
+            $(".tabContaier ul li a").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContents").hide();
+            $(activeTab).fadeIn();
+            return false;
+            });
+        });
+
             $(document).ready(function(){
         $(".tabCts").hide(); 
         $(".tabCts:first").show();        
@@ -374,6 +413,31 @@
             return false; 
         });
     });
+
+    $(document).ready(function() {
+            var slidesImg1 = $("#slidesImg1").bxSlider({
+                mode:'fade',
+                auto:true,
+                speed:350,
+                pause:8000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideWidth:900,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1
+            });
+
+            $("#imgBannerLeft1").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight1").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
             
             
     </script>

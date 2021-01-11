@@ -89,7 +89,7 @@
                         <ul>
                             <li><a href="{{ front_cate_url('/support/notice/index', 's_cate_code') }}">· 공지사항</a></li>
                             <li><a href="{{ front_cate_url('/support/faq/index') }}">· FAQ</a></li>
-                            <li><a href="{{ front_cate_url('/support/qna/index', 's_cate_code') }}">· 동영상 상담실</a></li>
+                            <li><a href="{{ front_cate_url('/support/qna/index', 's_cate_code') }}">· 1:1 상담</a></li>
                         </ul>
                     </div>
                 </li>

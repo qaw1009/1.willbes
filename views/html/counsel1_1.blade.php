@@ -75,49 +75,58 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth">
-            <span class="depth-Arrow">></span><strong>상담실</strong>
-            <span class="depth-Arrow">></span><strong>일반상담</strong>
+        <a href="#none"><img src="{{ img_url('sub/icon_home.gif') }}"></a>
+        <span class="depth">
+            <span class="depth-Arrow">></span>
+            <strong>고객센터</strong>
+        </span>
+        <span class="depth">
+            <span class="depth-Arrow">></span>
+            <strong>1:1상담</strong>
         </span>
     </div>
     <div class="Content p_re">
 
         <div class="willbes-CScenter c_both">
             <div class="willbes-Lec-Tit NG bd-none tx-black c_both pt-zero">
-                · 일반상담
-                <div class="willbes-Lec-Search GM f_right" style="margin: 0;">
-                    <div class="inputBox p_re">
-                        <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
-                        <button type="submit" onclick="" class="search-Btn">
-                            <span>검색</span>
-                        </button>
-                    </div>
-                </div>
+                · 1:1상담                
             </div>
             <div class="Act3 mt30">
                 <!-- List -->
                 <div class="willbes-Leclist c_both">
-                    <div class="willbes-Lec-Selected tx-gray">
-                        <select id="process" name="process" title="process" class="seleProcess">
-                            <option selected="selected">과정</option>
-                            <option value="헌법">헌법</option>
-                            <option value="스파르타반">스파르타반</option>
-                            <option value="공직선거법">공직선거법</option>
-                        </select>
-                        <select id="div" name="div" title="div" class="seleDiv">
-                            <option selected="selected">구분</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
-                        </select>
-                        <select id="A" name="A" title="A" class="seleLecA">
-                            <option selected="selected">상담유형</option>
-                            <option value="기타">기타</option>
-                            <option value="강좌내용">강좌내용</option>
-                            <option value="학습상담">학습상담</option>
-                        </select>
-                        <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
+                    <div class="willbes-Lec-Selected tx-gray">                        
+                        <div class="willbes-Lec-Search GM">
+                            <select id="process" name="process" title="process" class="seleProcess">
+                                <option selected="selected">과정선택</option>
+                                <option value="임용[온라인]">임용[온라인]</option>
+                                <option value="임용[학원]">임용[학원]</option>
+                            </select>
+                            <select id="div" name="div" title="div" class="seleDiv">
+                                <option selected="selected">구분</option>
+                                <option value="교육학">교육학</option>
+                                <option value="유아">유아</option>
+                                <option value="초등">초등</option>
+                                <option value="중등">중등</option>
+                            </select>
+                            <select id="A" name="A" title="A" class="seleLecA">
+                                <option selected="selected">상담 유형 선택</option>
+                                <option value="수강">수강</option>
+                                <option value="결제">결제</option>
+                                <option value="환불">환불</option>
+                                <option value="교재">교재</option>
+                                <option value="이벤트">이벤트</option>
+                                <option value="불법신고">불법신고</option>
+                                <option value="학원상담">학원상담</option>
+                                <option value="기타">기타</option>
+                            </select>
+                            <div class="inputBox p_re">
+                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해 주세요" maxlength="30">
+                                <button type="submit" onclick="" class="search-Btn">
+                                    <span>검색</span>
+                                </button>
+                            </div>
+                            <div class="subBtn blue NSK f_right"><a href="#none">문의하기 ></a></div>
+                        </div>                        
                     </div>
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable qnaTable upper-gray upper-black bdb-gray tx-gray">
@@ -144,18 +153,23 @@
                             <tbody>
                                 <tr>
                                     <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                    <td class="w-process"><div class="pBox p5">임용</div></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-process"><div class="pBox p5">임용[온라인]</div></td>
+                                    <td class="w-A">수강</td>
+                                    <td class="w-list tx-left pl20">
+                                        <a href="#none">
+                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?
+                                            <img src="{{ img_url('prof/icon_N.gif') }}">
+                                        </a>
+                                    </td>
                                     <td class="w-write">관리자명</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer"><span class="aBox answerBox NSK">답변완료</span></td>
                                 </tr>
                                 <tr>
                                     <td class="w-no"><img src="{{ img_url('prof/icon_notice.gif') }}"></td>
-                                    <td class="w-process"><div class="pBox p6">공무원</div></td>
+                                    <td class="w-process"><div class="pBox p6">임용[학원]</div></td>
                                     <td class="w-A">수강</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">만14세미만회원은어떻게가입하나요?</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 만14세미만회원은어떻게가입하나요?</a></td>
                                     <td class="w-write">장동*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer"><span class="aBox waitBox NSK">답변대기</span></td>
@@ -163,8 +177,8 @@
                                 <tr>
                                     <td class="w-no">10</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-A">결제</td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -187,8 +201,8 @@
                                 <tr>
                                     <td class="w-no">8</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
-                                    <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-A">환불</td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -212,7 +226,7 @@
                                     <td class="w-no">6</td>
                                     <td class="w-process"><div class="pBox p7">경찰</div></td>
                                     <td class="w-A">기기</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">관리자명</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -223,8 +237,7 @@
                                     <td class="w-A">교재</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
-                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요? 
-                                            <img src="{{ img_url('prof/icon_N.gif') }}"> 
+                                            <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요?                                              
                                             <img src="{{ img_url('prof/icon_file.gif') }}">
                                         </a>
                                     </td>
@@ -235,7 +248,7 @@
                                 <tr>
                                     <td class="w-no">4</td>
                                     <td class="w-process">&nbsp;</td>
-                                    <td class="w-A">결제/환불</td>
+                                    <td class="w-A">결제</td>
                                     <td class="w-list tx-left pl20">
                                         <a href="#none">
                                             <img src="{{ img_url('prof/icon_locked.gif') }}"> 회원탈퇴는어떻게하나요?
@@ -249,7 +262,7 @@
                                     <td class="w-no">3</td>
                                     <td class="w-process">&nbsp;</td>
                                     <td class="w-A">수강</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -258,7 +271,7 @@
                                     <td class="w-no">2</td>
                                     <td class="w-process">&nbsp;</td>
                                     <td class="w-A">교재</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}"> 로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">장동*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -267,7 +280,7 @@
                                     <td class="w-no">1</td>
                                     <td class="w-process">&nbsp;</td>
                                     <td class="w-A">교재</td>
-                                    <td class="w-list tx-left pl20"><a href="#none">로그인이되지않는데어떻게하나요?</a></td>
+                                    <td class="w-list tx-left pl20"><a href="#none"><img src="{{ img_url('prof/icon_locked.gif') }}">로그인이되지않는데어떻게하나요?</a></td>
                                     <td class="w-write">박형*</td>
                                     <td class="w-date">2018-00-00</td>
                                     <td class="w-answer">&nbsp;</td>
@@ -294,21 +307,21 @@
                                     <td class="w-selected tx-left pl30">
                                         <select id="process" name="process" title="process" class="seleProcess" style="width: 250px;">
                                             <option selected="selected">과정선택</option>
-                                            <option value="경찰">경찰</option>
-                                            <option value="공무원">공무원</option>
-                                            <option value="고등고시">고등고시</option>
+                                            <option value="임용[온라인]">임용[온라인]</option>
+                                            <option value="임용[학원]">임용[학원]</option>
                                         </select>
                                         <select id="div" name="div" title="div" class="seleDiv" style="width: 250px;">
                                             <option selected="selected">구분</option>
-                                            <option value="일반경찰">일반경찰</option>
-                                            <option value="경행경채">경행경채</option>
-                                            <option value="경찰승진">경찰승진</option>
+                                            <option value="교육학">교육학</option>
+                                            <option value="유아">유아</option>
+                                            <option value="초등">초등</option>
+                                            <option value="중등">중등</option>
                                         </select>
                                         <select id="campus" name="campus" title="campus" class="seleCampus" style="width: 250px;">
-                                            <option selected="selected">캠퍼스 선택</option>
-                                            <option value="노량진">노량진</option>
-                                            <option value="신림">신림</option>
-                                            <option value="인천">인천</option>
+                                            <option selected="selected">과목</option>
+                                            <option value="국어">국어</option>
+                                            <option value="영어">영어</option>
+                                            <option value="수학">수학</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -318,8 +331,13 @@
                                         <select id="A" name="A" title="A" class="seleLecA">
                                             <option selected="selected">상담 유형 선택</option>
                                             <option value="수강">수강</option>
-                                            <option value="교재">교재</option>
                                             <option value="결제">결제</option>
+                                            <option value="환불">환불</option>
+                                            <option value="교재">교재</option>
+                                            <option value="이벤트">이벤트</option>
+                                            <option value="불법신고">불법신고</option>
+                                            <option value="학원상담">학원상담</option>
+                                            <option value="기타">기타</option>
                                         </select>
                                     </td>
                                 </tr>

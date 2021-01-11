@@ -29,8 +29,8 @@
         <div class="Section ProfBox">
             <div class="widthAuto">
                 <ul class="PBtab NSK">
-                    <li><a href="#tab01">기초부터 차근차근, 체계적인 이론학습</a></li>
-                    <li><a href="#tab02">실전에 더 가깝게, 빠르고 정확한 문제풀이</a></li>
+                    <li><a href="#tab01">실전에 더 가깝게, 빠르고 정확한 문제풀이</a></li>
+                    <li><a href="#tab02">기초부터 차근차근, 체계적인 이론학습</a></li>
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">

@@ -1114,18 +1114,19 @@
                                         <th class="w-click"><strong>조회수</strong> 123</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>                                    
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="5">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/board/63/2020/1218/board_309736_01_20201218114139.jpg" class="boardImg">
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td class="w-file tx-left pl20" colspan="5">
                                             <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일1이 노출됩니다.docx</a>
                                             <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 파일2가 노출됩니다.docx</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-txt tx-left" colspan="5">
-                                            이달의 개강 강좌 공지입니다.<br/>
-                                            이달의 개강 강좌 공지입니다.<br/>
-                                            이달의 개강 강좌 공지입니다.
                                         </td>
                                     </tr>
                                 </tbody>

@@ -45,7 +45,6 @@
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
             <a href="#evt07"><img src="https://static.willbes.net/public/images/promotion/2020/12/1985_sky_01.jpg" alt="" ></a>
-            <a href="#evt08"><img src="https://static.willbes.net/public/images/promotion/2020/12/1985_sky_02.jpg" alt="" ></a>
         </div>  
 
         <div class="evtCtnsBox wb_police" >
@@ -109,21 +108,7 @@
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif    		
 		</div> 
-
-        <div class="evtCtnsBox wb_08" id="evt08">
-			<img src="https://static.willbes.net/public/images/promotion/2020/12/1985_08.jpg" alt="회원수 증가율 1위" usemap="#Map1985B" border="0"/>
-            <map name="Map1985B">
-                <area shape="rect" coords="327,724,788,809" href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지 다운로드"  alt="이미지 다운받기">
-                <area shape="rect" coords="315,952,479,1046" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모">
-                <area shape="rect" coords="535,952,706,1044" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사">
-                <area shape="rect" coords="751,950,919,1046" href="https://cafe.naver.com/kts9719" target="_blank" alt="닥공사">
-            </map>	 	
-		</div>  
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N')){{--기존SNS예외처리시--}}
-        @endif       
+        
     </div>
     <!-- End Container -->
 @stop

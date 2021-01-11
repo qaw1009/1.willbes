@@ -42,14 +42,9 @@
         .slide_con1 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
         .slide_con1 p {position:absolute; top:35%; width:30px; z-index:90}
         .slide_con1 img {width:100%;}
-        .evtCtnsBox p a {cursor:pointer}
-        .evtCtnsBox p.leftBtn1 {left:-31px; top:50%; width:62px; height:62px; margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
-        .evtCtnsBox p.rightBtn1 {right:-31px;top:50%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
-
-        .slide_con2 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
-        .slide_con2 p {position:absolute; top:35%; width:30px; z-index:90}
-        .slide_con2 img {width:100%;}
-        .slide_con2 p a {cursor:pointer}
+        .slide_con1 p a {cursor:pointer}
+        .slide_con1 p.leftBtn1 {left:-31px; top:50%; width:62px; height:62px; margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
+        .slide_con1 p.rightBtn1 {right:-31px;top:50%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
 
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#0e275f;}
@@ -135,7 +130,7 @@
 
     <script language="javascript">
         $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg1").bxSlider({
+            var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
                 auto:true,
                 speed:350,
@@ -151,37 +146,11 @@
             });
 
             $("#imgBannerLeft1").click(function (){
-                slidesImg2.goToPrevSlide();
+                slidesImg1.goToPrevSlide();
             });
 
             $("#imgBannerRight1").click(function (){
-                slidesImg2.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg2").bxSlider({
-                mode:'fade',
-                auto:true,
-                speed:350,
-                pause:8000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideWidth:900,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false
-            });
-
-            $("#imgBannerLeft2").click(function (){
-                slidesImg2.goToPrevSlide();
-            });
-
-            $("#imgBannerRight2").click(function (){
-                slidesImg2.goToNextSlide();
+                slidesImg1.goToNextSlide();
             });
         });
 

@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="w-txt tx-left" colspan="7">
+                            <td class="w-txt tx-left" colspan="4">
                                 {!! $data['Content'] !!}
                             </td>
                         </tr>

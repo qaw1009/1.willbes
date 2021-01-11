@@ -44,7 +44,7 @@
         .slide_con1 img {width:100%;}
         .evtCtnsBox p a {cursor:pointer}
         .evtCtnsBox p.leftBtn1 {left:-31px; top:50%; width:62px; height:62px; margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
-        .evtCtnsBox p.rightBtn1 {right:-31px;top:50%; width:62px; height:62px;  margin-top:-31Dpx;opacity:0.9; filter:alpha(opacity=90);}
+        .evtCtnsBox p.rightBtn1 {right:-31px;top:50%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
 
         .slide_con2 {position:relative; width:900px; margin:0 auto; padding-top:10px;}
         .slide_con2 p {position:absolute; top:35%; width:30px; z-index:90}

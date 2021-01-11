@@ -100,16 +100,18 @@
                 <li class="c_both"></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/main_2018') }}" target="_blank">임용메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/profsub_ssam') }}" target="_blank">임용 교수홈</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/ssam_schedule') }}" target="_blank">임용정보 > 강의실 배정표 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/ssam_upList') }}" target="_blank">임용정보 > 강의 업데이트 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/ssam_board') }}" target="_blank">임용정보 > 합격수기 <span>*</span></a></li>  
-                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_01') }}" target="_blank">임용정보 > 임용가이드 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_02') }}" target="_blank">임용정보 > 최근동향 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_03') }}" target="_blank">임용정보 > 지역별 공고문 <span>*</span></a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_04') }}" target="_blank">임용정보 > 자료실 <span>*</span></a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/ssam_schedule') }}" target="_blank">임용정보 > 강의실 배정표 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/ssam_upList') }}" target="_blank">임용정보 > 강의 업데이트 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/ssam_board') }}" target="_blank">임용정보 > 합격수기 </a></li>  
+                <li class="w50"><a href="{{ site_url('/home/html/counsel1_1') }}" target="_blank">임용정보 > 1:1상담 </a></li> 
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_01') }}" target="_blank">임용정보 > 임용가이드 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_02') }}" target="_blank">임용정보 > 최근동향 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_03') }}" target="_blank">임용정보 > 지역별 공고문 </a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/guide_3134_04') }}" target="_blank">임용정보 > 자료실 </a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_05') }}" target="_blank">대학 특강문의</li>
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_06') }}" target="_blank">교수채용</li>
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_07') }}" target="_blank">런닝메이트 <span>*</span></li>
+                {{--
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200608') }}" target="_blank">임용 합격환승센터 <span>*</span></a></li> 
@@ -137,6 +139,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_191212_wsamskj') }}" target="_blank">임용 정보컴퓨터 송광진 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200130_ssamjss') }}" target="_blank">임용 정컴교육론 장순선 <span>*</span></a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_190924_wsamjkm') }}" target="_blank">임용 중국어 정경미 <span>*</span></a></li>
+                --}}
                       
             </ul>
         </div>        

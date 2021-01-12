@@ -75,7 +75,7 @@
                         1) 임용시험은 총 1, 2차로 구성되며, 일부 시도교육청은 2차 시험을 자체적으로 출제하므로 반드시 해당 시도교육청 공고문을 확인해야 합니다.
                     </div>
                     <ul class="guideBtn02 NG">
-                        <li><a href="https://ssam.willbes.net/examInfo/notice" target="_blank">지역별 공고문 확인 ></a><li>
+                        <li><a href="#none">지역별 공고문 확인 ></a><li>
                         <li><a href="http://www.kice.re.kr/main.do?s=kice" target="_blank">한국교육과정평가원 사이트로 이동 ></a><li>
                         <li><a href="https://static.willbes.net/public/uploads/willbes/site/2018/willbes_ssam_secondary_test_guide_2020.pdf" target="_blank">2020학년도 중등임용 변경사항 확인 ></a><li>
                     </ul>

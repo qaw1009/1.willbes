@@ -995,7 +995,7 @@
                         <strong>패키지</strong>
                         <a href="{{front_url('/package/index/cate/3023/pack/648001')}}">추천패키지</a>
                         <a href="{{front_url('/promotion/index/cate/3023/code/1724')}}">T-PASS</a>
-                        <a href="{{front_url('/promotion/index/cate/3023/code/1751')}}">소방 PASS</a>
+                        <a href="{{front_url('/promotion/index/cate/3023/code/1060')}}">소방 PASS</a>
                     </li>
                     <li>
                         <strong>과목</strong>

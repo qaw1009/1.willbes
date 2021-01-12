@@ -82,15 +82,7 @@
                 @endif                  
             </div>
         </div>   
-        
-        <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2004_05.jpg"  alt="" usemap="#Map2004_apply" border="0"/>
-            <map name="Map2004_apply" id="Map2004_apply">
-                <area shape="rect" coords="814,116,951,157" href="https://police.willbes.net/promotion/index/cate/3001/code/1996" target="_blank" > 
-            </map>
-        </div>
-
-   
+           
     </div>
     <!-- End Container -->
 @stop

@@ -41,15 +41,15 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_top.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_top.jpg" alt="GS1순환 온라인종합반" />
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_01.jpg" alt="" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_01.jpg" alt="GS1순환" />            
         </div>
         
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_02.jpg" alt="" />            
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/2009_02.jpg" alt="GS1순환 강사진" />            
         </div>             
         
         <div class="evtCtnsBox evt_03">
@@ -91,9 +91,11 @@
 				</ul>
 				<div class="infoTit NG"><strong>결제/환불관련</strong></div>
 				<ul>
-					<li>본 상품은 파격 할인가가 적용된 상품으로 복지할인 등 다른 쿠폰과 중복 적용되지 않습니다.</li>
-                    <li>본 상품 환불시 원 수강료와 수강일수 기준으로 환불이 됩니다.</li>
-                    <li>기타 환불규정은 약관의 규정에 따릅니다.</li>         
+					<li>본 패키지 강좌의 환불시 패키지 구성 일부 과목만의 환불은 불가하며, 패키지 전체 환불만 가능합니다.</li>
+                    <li>자세한 환불규정은 다음의 각 호의 규정에 따릅니다.<br>
+                    ① 강좌 파일을 열거나 강좌 자료 및 모바일 다운로드 이용 시 수강한 것으로 간주합니다.<br>
+                    ② 특별 기획 상품 등 할인이 적용된 상품은 해당 상품의 정가를 기준으로 환불하는 것을 원칙으로 합니다.<br>
+                    ③ 최종 완강 되지 않은 강좌의 학습 회차 계산은 공지된 예정 강좌수를 기준으로 환불 금액을 산출합니다.</li>         
 				</ul>
 				<div class="infoTit NG"><strong>유의사항</strong></div>
 				<ul>

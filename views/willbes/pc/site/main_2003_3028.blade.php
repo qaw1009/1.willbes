@@ -34,7 +34,7 @@
                 </ul>
                 <div id="tab01">
                     <div class="copyTit NSK-Black mt50">
-                        점수의 기반을 형성하는<span class="tx-color"> 이론정립</span>
+                        스킬확립<span class="tx-color"> 고득점 문제풀이</span> 
                     </div>                                 
                     <ul class="PBcts mt40">
                         @for($i=1; $i<=4; $i++)
@@ -49,8 +49,8 @@
                     </ul>
                 </div>
                 <div id="tab02">
-                    <div class="copyTit NSK-Black mt50">
-                        스킬확립<span class="tx-color"> 고득점 문제풀이</span> 
+                    <div class="copyTit NSK-Black mt50">               
+                        점수의 기반을 형성하는<span class="tx-color"> 이론정립</span>
                     </div>                                   
                     <ul class="PBcts mt40">
                         @for($i=5; $i<=8; $i++)

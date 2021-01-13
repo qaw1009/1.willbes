@@ -64,10 +64,7 @@
 				<h4 class="NGEB">상품 이용안내 </h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-                    <li>본 상품은 2019년 3월 ~ 2020년 6월에 진행된 [감정평가사 2차 기본강의] 과정입니다.<br>
-                        동영상 강의는 실강 진행 후 다음날 동영상 업로드(공휴일/일요일제외) 됩니다.
-                    </li>
-               
+                    <li>본 상품은 2019년 3월 ~ 2020년 6월에 진행된 [감정평가사 2차 기본강의] 과정입니다.</li>               
 				</ul>
                 <div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>

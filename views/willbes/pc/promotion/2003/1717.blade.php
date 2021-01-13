@@ -90,6 +90,7 @@
         </div>
 
         <div class="sky">
+            <a href="#wb_cts02"><img src="https://static.willbes.net/public/images/promotion/2021/01/1717_sky01.png"  title="문제풀이 패스" /></a>
             <a href="#wb_cts03"><img src="https://static.willbes.net/public/images/promotion/2020/07/1717_sky02.png"  title="환승시" /></a>
         </div>
 
@@ -109,11 +110,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_02.jpg" alt="전문 교수진" />
         </div>
 
-        <div class="evtCtnsBox wb_cts02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_02.jpg" alt="수강신청" usemap="#Map1717apply" border="0" />
-            <map name="Map1717apply" id="Map1717apply">
-                <area shape="rect" coords="508,756,681,820" href="javascript:go_PassLecture('168184');" alt="12개월">
-                <area shape="rect" coords="738,755,910,820" href="javascript:go_PassLecture('177584');" alt="9급지방직까지" />
+        <div class="evtCtnsBox wb_cts02"  id="wb_cts02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_02.jpg" alt="수강신청" usemap="#Map1717_apply" border="0" />
+            <map name="Map1717_apply" id="Map1717_apply">
+                <area shape="rect" coords="739,509,910,602" href="javascript:go_PassLecture('177930');" alt="9급 문제풀이 패스" />
+                <area shape="rect" coords="508,857,679,920" href="javascript:go_PassLecture('168184');" alt="12개월">
+                <area shape="rect" coords="736,857,910,920" href="javascript:go_PassLecture('177584');" alt="9급지방직까지" />
             </map>
             <div class="check">
                 <label>

@@ -148,8 +148,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
+						<td>2021 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -188,8 +188,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159042">수강신청</a></td>
+						<td>2021 장사원 식용작물 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -232,8 +232,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
+						<td>2021 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -272,8 +272,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159042">수강신청</a></td>
+						<td>2021 장사원 식용작물 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -305,8 +305,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2020 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
+						<td>2021 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
@@ -359,8 +359,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159040">수강신청</a></td>
+						<td>2021 장사원 재배학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -421,8 +421,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2020 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
+						<td>2021 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
@@ -497,8 +497,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>이론</td>
-						<td>2020 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159046">수강신청</a></td>
+						<td>2021 장사원 생물학 이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>

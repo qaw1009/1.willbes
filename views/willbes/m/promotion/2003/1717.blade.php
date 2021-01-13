@@ -96,8 +96,11 @@
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02.jpg" alt="9급 패스" >
-        <p> 
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02.jpg" alt="9급 패스" >  
+            <a href="javascript:go_PassLecture('177930');">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_top.jpg" alt="" >
+            </a> 
+        <p>     
             <a href="javascript:go_PassLecture('168184');">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_01.jpg" alt="" >
             </a> 

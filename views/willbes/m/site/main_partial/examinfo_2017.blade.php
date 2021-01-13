@@ -31,8 +31,8 @@
 <div class="w-Guide-Ssam mt20">
     <div class="NG ssamInfoMenu">
         <ul class="tabinfo" id="info_tab">
-            <li onclick="ajaxInfoTab(this);" data-url="{{front_url('/landing/show/lcode/1035/cate/3137?file_type=ajax_')}}"><a href="#none">임용<br>시험제도</a></li>
             <li onclick="ajaxInfoTab(this);" data-url="{{front_url('/examInfo/mainTrend')}}"><a href="#none" class="on">최근<br>10년동향</a></li>
+            <li onclick="ajaxInfoTab(this);" data-url="{{front_url('/landing/show/lcode/1035/cate/3137?file_type=ajax_')}}"><a href="#none">임용<br>시험제도</a></li>
             <li onclick="ajaxInfoTab(this);" data-url="{{front_url('/examInfo/notice?file_type=ajax_')}}"><a href="#none">지역별<br>공고문</a></li>
             <li onclick="ajaxInfoTab(this);" data-url="{{front_url('/support/examQuestion?file_type=ajax_')}}" class="one"><a href="#none">자료실</a></li>
         </ul>
@@ -50,7 +50,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     $(function (){
-        $("#info_tab li").eq(1).trigger("click");
+        $("#info_tab li").eq(0).trigger("click");
     });
 
     // 시험정보 탭

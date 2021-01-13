@@ -224,14 +224,14 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156913" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
                     </tr>         
                     <tr>
                         <td>전자공학</td>
@@ -321,14 +321,14 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156913" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 단원별문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
                     </tr>  
                     <tr>
                         <td>전자공학</td>
@@ -669,14 +669,14 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156913" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
                     </tr>     
                     <tr>
                         <td>전자공학</td>
@@ -757,14 +757,14 @@
                     <tr>
                         <td>디지털공학</td>
                         <td>이론</td>
-                        <td>2020 최우영 디지털공학 이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/156913" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 디지털공학 이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176064" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전자공학 단원별 문제풀이</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/157561" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전자공학 단원별문제풀이+ 신규 문제추가 (2020 + 2021)</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/176277" target="_blank">수강신청</a></td>
                     </tr>       
                     <tr>
                         <td>전자공학</td>

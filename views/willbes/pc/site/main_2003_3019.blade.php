@@ -38,9 +38,9 @@
 
         <div class="Section">
             <div class="widthAuto">
-                {{--<a href="https://pass.willbes.net/promotion/index/cate/3019/code/1636" target="_blank">--}}
-                    <img src="https://static.willbes.net/public/images/promotion/main/3019_graph.gif" alt="파이널 수강생 성적향상 효과 증명">
-                {{--</a>--}}
+                <a href="https://pass.willbes.net/promotion/index/cate/3022/code/2020" target="_blank">--}}
+                    <img src="https://static.willbes.net/public/images/promotion/main/2020_graph.gif" alt="성적상승과 합격을 경험">
+                </a>
             </div>
         </div>
 

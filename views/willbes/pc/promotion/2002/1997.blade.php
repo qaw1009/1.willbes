@@ -24,7 +24,7 @@
         .evt02 {background:#fadd99}
         .evt03 {background:#eee}        
 
-        .evt04 {background:#fff; padding-bottom:150px}
+        .evt04 {background:#fff; padding-bottom:50px}
         .evt04 .youtube {position:absolute; top:1293px; left:50%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}
         .evt04 .youtube iframe {width:455px; height:298px} 
         .evt04 .youtube.yu02 {top:1503px; margin-left:31px;}
@@ -56,12 +56,12 @@
             <input type="hidden" name="register_type" value="promotion"/>
             <input type="hidden" name="file_chk" value="N"/>
             <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}" />
-            
+            {{--     
             <div class="skyBanner">               
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
                 <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/01/1997_sky02.png" alt="수강신청"></a>
-            </div>            
-
+            </div>
+            --}}
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg" alt="경찰학원 1위">
             </div>
@@ -92,105 +92,8 @@
                 <div class="youtube yu03">
                     <iframe src="https://www.youtube.com/embed/hdP0CyIsmSI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <div class="request" id="request">
-                    <div class="requestL">
-                        <h3 class="NSK-Black">* 외사경채 프리미엄반상담 신청</h3>
-                        <table width="0" cellspacing="0" cellpadding="0" class="table_type">
-                            <col width="25%" />
-                            <col  />
-                            <tr>
-                                <th>* 이름</th>
-                                <td scope="col">
-                                    <input type="text" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" alt="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>* 연락처</th>
-                                <td>
-                                    <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11">
-                                </td>
-                            </tr>
-                            {{--
-                            <tr>
-                                <th>* 참여일</th>
-                                <td>
-                                    <ul>
-                                        @foreach($arr_base['register_list'] as $key => $val)
-                                            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                                @php
-                                                    // 강의 기간 지나면 자동 disabled 처리
-                                                    // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
-                                                    //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
-                                                    $reg_year = '2020';
-                                                    $temp_date = explode(' ', $val['Name'])[0];
-                                                    if(strpos($temp_date, '(') !== false) {
-                                                        $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
-                                                    }
-                                                    $reg_month_day = explode('.', $temp_date);
-                                                    $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
-                                                    $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                                    $reg_date = $reg_year.$reg_month.$reg_day.'0000';
-                                                    //echo date('YmdHi', strtotime($reg_date. '+1 days'));
-                                                @endphp
-                                                @if(time() >= strtotime($reg_date. '+1 days'))
-                                                    <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                                @else
-                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                                @endif
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </td>
-                            </tr>
-                            --}}
-                            <tr>
-                                <th>* 직렬</th>
-                                <td>
-                                    <ul>
-                                        <li><input type="radio" name="register_data2" id="CT1" value="외사경채" /> <label for="CT1">경찰 외사경채(영어) 상담신청</label></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="requestR">
-                        <h3 class="NSK-Black">* 개인정보 수집 및 이용에 대한 안내</h3>
-                        <ul>
-                            <li>
-                                <strong>1. 개인정보 수집 이용 목적</strong> <br>
-                                - 신청자 본인 확인 및 신청 접수 및 문의사항 응대 <br>
-                                - 통계분석 및 마케팅 <br>
-                                - 윌비스 신광은경찰학원의 신상품이나 새로운 서비스, 이벤트 등 최신 정보 및 광고성 정보 제공
-                            </li>
-                            <li><strong>2. 개인정보 수집 항목</strong> <br>
-                                - 필수항목 : 성명, 연락처, 직렬항목
-                            </li>
-                            <li><strong>3. 개인정보 이용기간 및 보유기간</strong><br>
-                                - 이용 목적 달성 또는 신청자의 신청 해지 및 삭제 요청 시 파기
-                            </li>
-                            <li><strong>4. 신청자의 개인정보 수집 및 활용 동의 거부 시</strong><br>
-                                - 개인정보 수집에 동의하지 않으시는 경우 설명회 접수 및 서비스 이용에 제한이 있을 수 있습니다.
-                            </li>
-                            <li>5. 입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3 자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
-                            <li>6. 신이벤트 진행에 따른 단체사진 및 영상 촬영에 대한 귀하의 초상권 사용을 동의하며, 해당 저작물에 대한 저작권은 윌비스에 귀속됩니다.</li>
-                        </ul>
-                        <div>
-                            <input name="is_chk" id="is_chk" type="checkbox" value="Y"><label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn NGEB">
-                    <a href="#none" onclick="javascript:fn_submit();">외사경채 상담 신청하기 ></a>
-                </div>
             </div>
 
-            <div class="evtCtnsBox evt05" id="apply">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1997_05.jpg" alt="수강신청" usemap="#Map1997a" border="0">
-                <map name="Map1997a" id="Map1997a">
-                    <area shape="rect" coords="238,312,475,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177326" target="_blank" />
-                    <area shape="rect" coords="640,311,875,378" href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/177325" target="_blank" />
-                </map>  
-            </div>
         </form>
 	</div>
     <!-- End Container -->

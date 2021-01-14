@@ -243,8 +243,8 @@
 .adm .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
 .adm .SecBanner05 {margin-right:-20px; margin-top:20px}
 .adm .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0; position:relative}
-.adm .SecBanner05 li a {position: absolute; top: 68.72%; left: 6.79%; width: 21.51%; height: 9.48%; z-index: 2;}
-.adm .SecBanner05 li a.link02 {top: 78.67%;}
+.adm .SecBanner05 li a {position: absolute; left: 7.69%; top: 45.31%; width: 28.85%; height: 6.25%; z-index: 2;}
+.adm .SecBanner05 li a.link02 {top: 51.55%;}
 .adm .SecBanner05:after {content:''; display: block; clear:both}
 
 .adm .SectionBg02 {background:#f8f0dd; padding:100px 0}
@@ -611,53 +611,43 @@ width:167; height:196px; position: absolute; left:10px; top:0; z-index:10}
         </div>
     </div>
 
-    <div class="Section mt100">
+    <div class="Section SectionBg01 mt100">
         <div class="widthAuto">
             <div class="will-nTit NSK-Black">
-                <span class="cop-color">전문 교수진</span>
+                전문 <span class="cop-color">교수진</span>
                 <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
             </div>
-            <ul class="ProfCopBox mt20">
+            <ul class="SecBanner05">
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_ske2.jpg" alt="신광은" usemap="#Map220A" border="0">
-                    <map name="Map220A">
-                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
-                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_01.jpg" alt="배너명" usemap="#Map220A" border="0">
+                    <a href="#none" title="맛보기영상"></a>
+                    <a href="#none" title="베스트강좌" class="link02"></a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_kwu2.jpg" alt="김원욱" usemap="#Map220B" border="0">
-                    <map name="Map220B">
-                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
-                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_02.jpg" alt="배너명" usemap="#Map220B" border="0">
+                    <a href="#none" title="맛보기영상"></a>
+                    <a href="#none" title="베스트강좌" class="link02"></a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_jjh2.jpg" alt="장정훈" usemap="#Map220C" border="0">
-                    <map name="Map220C">
-                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
-                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_03.jpg" alt="배너명" usemap="#Map220C" border="0">
+                    <a href="#none" title="맛보기영상"></a>
+                    <a href="#none" title="베스트강좌" class="link02"></a>
                 </li>                
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_skh2.jpg" alt="송광호" usemap="#Map220D" border="0">
-                    <map name="Map220D">
-                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
-                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_04.jpg" alt="배너명" usemap="#Map220D" border="0">
+                    <a href="#none" title="맛보기영상"></a>
+                    <a href="#none" title="베스트강좌" class="link02"></a>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/3006_220x237_psk2.jpg" alt="박상규" usemap="#Map220E" border="0">
-                    <map name="Map220E">
-                        <area shape="rect" coords="11,203,112,230" href="#none" alt="맛보기">
-                        <area shape="rect" coords="11,233,111,261" href="#none" alt="교수소개">
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_05.jpg" alt="배너명" usemap="#Map220E" border="0">
+                    <a href="#none" title="맛보기영상"></a>
+                    <a href="#none" title="베스트강좌" class="link02"></a>
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="Section SectionBg02 NSK mt100">
+    <div class="Section SectionBg02 NSK">
         <div class="widthAuto">
             <div class="will-nTit NSK-Black">
                 수험생 맞춤 콘텐츠

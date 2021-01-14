@@ -42,7 +42,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1912_03.jpg" usemap="#Map1912a" title="" border="0">
             <map name="Map1912a" id="Map1912a">
-                <area shape="rect" coords="754,838,967,923" href="https://pass.willbes.net/package/show/cate/3024/pack/648001/prod-code/174674" target="_blank" />
+                <area shape="rect" coords="754,838,967,923" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/174674" target="_blank" />
             </map>
         </div>      
 	</div>

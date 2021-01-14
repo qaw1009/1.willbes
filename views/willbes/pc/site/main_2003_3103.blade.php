@@ -11,8 +11,8 @@
             text-align:center;
         }
 
-        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg.jpg) no-repeat center top; margin-top:20px; position:relative; padding-bottom:100px}
-        .youtube {width:980px; margin:0 auto}
+        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg_0113.jpg) no-repeat center top; margin-top:20px; position:relative; padding-bottom:100px}
+        .youtube {width:980px; margin:100px auto 0}
         .youtube iframe {width:980px; height:550px;}      
 
         .evt_01 {background:#fff;padding-bottom:100px;}
@@ -77,9 +77,9 @@
         </div>
 
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_top.jpg" usemap="#Map3103" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_top_0113.jpg" usemap="#Map3103" border="0" />
             <map name="Map3103">
-                <area shape="rect" coords="307,836,789,943" href="/promotion/index/cate/3103/code/1933" alt="50%할인">
+                <area shape="rect" coords="191,1340,930,1480" href="/promotion/index/cate/3103/code/2030" alt="강의신청">
             </map>    
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

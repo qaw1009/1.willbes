@@ -7,7 +7,6 @@
 </head>
 <body class="widthAutoFull">
     {{--이용약관--}}
-        @include('willbes.pc.company.agreementContent')
-    </div>
+    @include('willbes.pc.company.agreementContent')
 </body>
 </html>

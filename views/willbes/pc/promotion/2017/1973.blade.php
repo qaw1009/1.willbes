@@ -531,6 +531,7 @@
             </div>
         </div>
 
+        {{--                                                
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1973_03.jpg" alt="소식알리기" usemap="#Map1973" border="0"/>
             <map name="Map1973">
@@ -538,12 +539,16 @@
                 <area shape="rect" coords="564,1906,886,1990" href="@if($file_yn[23] == 'Y') {{ front_url($file_link[23]) }} @else {{ $file_link[23] }} @endif"  alt="이미지 다운로드">
             </map>
         </div>
+        --}}
 
         {{--홍보url--}}
+        <!--
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N','login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www'))){{--기존SNS예외처리시, 로그인페이지--}}
         @endif 
+        -->
 
+        {{--
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">유의사항</h4>
@@ -557,9 +562,9 @@
                     <li>이벤트 상품은 기프티콘으로 지급될 예정이며, 회원가입 시 입력하신 휴대폰 정보로 전송됩니다.<br>
                         (회원 정보 오류 시, 1월 20일까지 수정해주셔야 합니다.)</li>                     
                 </ul>
-
             </div>
         </div>
+        --}}
     </div>
     <!-- End Container -->
 

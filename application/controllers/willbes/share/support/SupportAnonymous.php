@@ -8,7 +8,7 @@ class SupportAnonymous extends BaseSupport
     protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
     protected $helpers = array('download');
     protected $auth_controller = false;
-    protected $auth_methods = array('create', 'store');
+    protected $auth_methods = array('create', 'store', 'delete');
 
     protected $_bm_idx;
     protected $_default_path;

@@ -8,7 +8,7 @@ class SupportReview extends BaseSupport
     protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject');
     protected $helpers = array('download');
     protected $auth_controller = false;
-    protected $auth_methods = array('create', 'store');
+    protected $auth_methods = array('create', 'store', 'delete', 'destroyFile');
 
     protected $_bm_idx;
     protected $_default_path;

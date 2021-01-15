@@ -44,7 +44,12 @@
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2031_01.jpg" alt="수강 대상 및 기타 특징" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2031_01.jpg" alt="수강 대상 및 기타 특징" usemap="#Map2031_comments" border="0" />
+            <map name="Map2031_comments" id="Map2031_comments">
+                <area shape="rect" coords="254,1494,415,1523" href="https://www.youtube.com/watch?v=05j4bwoz9PQ" target="_blank" />
+                <area shape="rect" coords="484,1494,646,1523" href="https://www.youtube.com/watch?v=Q-a2P2NW3ks" target="_blank" />
+                <area shape="rect" coords="713,1494,875,1523" href="https://www.youtube.com/watch?v=Af4XrDxOJ9c" target="_blank" />
+            </map>
 		</div>
 
         <div class="evtCtnsBox evt_02">

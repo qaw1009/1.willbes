@@ -6,7 +6,7 @@ class Comment extends \app\controllers\FrontController
     protected $models = array('support/baseSupportF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('commentStore', 'commentDel');
 
     protected $_default_path = '/support/comment';
     protected $_paging_limit = 20;

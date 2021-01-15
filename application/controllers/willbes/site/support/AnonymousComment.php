@@ -6,7 +6,7 @@ class AnonymousComment extends \app\controllers\FrontController
     protected $models = array('support/baseSupportF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('commentStore', 'commentDel', 'commentDisuse');
 
     protected $_default_path = '/support/AnonymousComment';
     protected $_paging_limit = 20;

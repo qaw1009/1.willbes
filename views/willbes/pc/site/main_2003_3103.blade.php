@@ -10,8 +10,8 @@
             background:#fff;
             text-align:center;
         }
-        .evt_00 {background:#6696c7; margin-top:20px}
-        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg_0113.jpg) no-repeat center top;  position:relative; padding-bottom:100px}
+        .evt_00 {margin-top:20px}
+        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg_0113.jpg) no-repeat center top;  position:relative; padding-bottom:100px; margin-top:20px}
         .youtube {width:980px; margin:100px auto 0}
         .youtube iframe {width:980px; height:550px;}      
 
@@ -77,7 +77,7 @@
         </div>
 
         <div class="evt_00">
-            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100.jpg"></a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>
         </div>
 
         <div class="evtTop">

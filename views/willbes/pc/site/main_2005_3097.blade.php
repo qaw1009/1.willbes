@@ -23,7 +23,8 @@
                 </div>
             </div>
         </div>
-        <div class="Section barBnr">
+
+        <div class="Section mt20">
             <div class="widthAuto">
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
             </div>

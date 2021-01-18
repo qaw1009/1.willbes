@@ -61,8 +61,8 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2027_03.jpg" alt="통신직 수강 신청하기" usemap="#apply02Map" id="apply02" border="0" />
             <map name="apply02Map" id="apply02Map">
-                <area shape="rect" coords="174,386,476,448" href="javascript:alert('Coming Soon!')"  />
-                <area shape="rect" coords="640,397,941,457" href="javascript:alert('Coming Soon!')"  />
+                <area shape="rect" coords="174,386,476,448" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178076" target="_blank" />
+                <area shape="rect" coords="640,397,941,457" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178074" target="_blank" />
             </map>
         </div>
 

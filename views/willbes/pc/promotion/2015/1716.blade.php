@@ -24,7 +24,7 @@
         .evt01 {background:#79CAFF url(https://static.willbes.net/public/images/promotion/2020/07/1716_01_bg.jpg) no-repeat center top;}
         .evt02 {background:#9090FE url(https://static.willbes.net/public/images/promotion/2020/07/1716_02_bg.jpg) no-repeat center top;}
         .evt03 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/07/1716_03_bg.jpg) no-repeat center top;}
-        .evt06 {background:#EAF7FF url(https://static.willbes.net/public/images/promotion/2020/07/1716_06_bg.jpg) no-repeat center top;} 
+        .evt06 {background: url(https://static.willbes.net/public/images/promotion/2021/01/1716_06_bg.jpg) no-repeat center top;} 
 
          /*탭(이미지)*/
         .tabs{width:100%; text-align:center;}
@@ -43,9 +43,6 @@
 
         <div class="sky">
             <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2020/07/1716_sky.jpg"  title="수강신청하기" /></a>
-            <a href="https://willbesedu.willbes.net/pass/offPackage/show/prod-code/176018" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1716_sky2.jpg"  title="수강신청하기" />
-            </a>
         </div>
 
         <div class="evtCtnsBox evtTop">
@@ -87,12 +84,12 @@
         </div>
         
          <div class="evtCtnsBox evt06" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1716_06.jpg" usemap="#Map1716_apply"  title="수강신청" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1716_06.jpg" usemap="#Map1716_apply"  title="수강신청" border="0">
             <map name="Map1716_apply" id="Map1716_apply">
                 <area shape="rect" coords="102,517,343,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3125&course_idx=1301" target="_blank" alt="경찰관리형" />
                 <area shape="rect" coords="439,516,682,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3126&course_idx=1301" target="_blank" alt="소방관리형" />
                 <area shape="rect" coords="775,517,1019,556" href="https://willbesedu.willbes.net/pass/offPackage/index?cate_code=3124&course_idx=1301" target="_blank" alt="공무원관리형" />
-                <area shape="rect" coords="699,880,865,938" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3130" target="_blank" />
+                <area shape="rect" coords="752,883,904,934" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3130" target="_blank"  alt="강한 학습 관리반" />
             </map>                  
         </div>
 

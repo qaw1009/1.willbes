@@ -102,7 +102,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1009" target="_blank" >
+                            <a href="{{ site_url('/home/index/cate/3001') }}" target="_blank" >
                                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_08_02.jpg" alt="" class="off"  />
                                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1084_08_02_on.jpg" alt="" class="on"  />
                             </a>

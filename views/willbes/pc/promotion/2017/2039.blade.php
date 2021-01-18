@@ -86,7 +86,7 @@
                         </tr>
                         <tr>
                             <th>* 연락처</th>
-                            <td><input name="phone_no" id="phone_no" style="width:200px;" type="text" value=""></td>
+                            <td>010-1234-5678</td>
                             <th>* 주민번호</th>
                             <td>
                                 <input name="" id="" style="width:100px;" type="text" value=""> - 

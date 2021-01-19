@@ -40,12 +40,19 @@
         .evt05 table th {color:#fff; background:#49569e; font-size:16px; font-weight:300; padding:15px 0; text-align:center;}
         .evt05 table td{padding:0 10px; font-size:14px; color:#000; text-align:left; padding:10px}
         .evt05 table td input[type=file] {width:300px}
+        .evt05 table td a.delbtn {display:block; border-radius: 5px; background-color:#49569e; color:#fff; text-align:center; padding:5px; width:50px; margin:10px auto 0}
         .evt05 .btns {margin-top:50px}
         .evt05 .btns a {display:inline-block; padding:10px 20px; color:#fff; background:#4c49de; font-size:20px; border:1px solid #4c49de; margin-right:10px}
         .evt05 .btns a:last-child {background:#fff; color:#4c49de; margin:0}
         .evt05 .list td {text-align:center; color:#666}
         .evt05 .list td img {width:250px}
         .evt05 .list td:nth-child(3) {text-align:left}
+
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
 
     </style>
 
@@ -150,7 +157,10 @@
                         <td>10</td>
                         <td>영어</td>
                         <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
+                        <td>
+                            will****
+                            <a href="#none" class="delbtn">삭제</a>
+                        </td>
                         <td>2021.01.18</td>
                     </tr>
                     <tr>
@@ -232,6 +242,20 @@
                     <li><a href="#none">9</a><span class="row-line">|</span></li>
                     <li><a href="#none">10</a></li>
                     <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evtInfo">
+            <div class="evtInfoBox">
+                <h4 class="NSK-Black">유의사항</h4>
+                <ul>
+                    <li>한 개의 인증 게시물로 추첨 선물 증정 대상으로 선정된 경우, 전원 증정 선물과 중복 증정은 되지 않습니다.</li>
+                    <li>여러 개의 게시물을 업로드 했을 경우, 추첨과 전원 증정 각각 하나씩 증정은 가능하나, 같은 상품의 중복 증정은 되지 않습니다.</li>
+                    <li>같은 이미지를 중복해서 올리는 것은 인정되지 않습니다. (각기 다른 영상에 ‘좋아요’ 인증만 인정)</li>
+                    <li>이벤트 당첨 대상자는 2월 22일(월) 17시에 발표할 예정입니다.</li>
+                    <li>상품은 모바일 기프티콘으로 2월 24일(수)에 일괄 발송될 예정입니다.</li>
+                    <li>이벤트 참여는 유튜브 채널 구독 중인 경우만 가능합니다.</li>
                 </ul>
             </div>
         </div>

@@ -320,7 +320,7 @@
                     </li>
                     <li>
                         <span>[세법]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">박정한</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">박창한</a>
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50187/?subject_idx=1123&subject_name=%EC%84%B8%EB%B2%95')}}">고선미</a>
                     </li>
                     <li>

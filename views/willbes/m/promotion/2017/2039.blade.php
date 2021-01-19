@@ -73,7 +73,7 @@
             </div>
             <div class="table_wrap">
                 <table>
-                    <col width="20%">
+                    <col width="90px">
                     <col>
                     <tbody>
                         <tr>

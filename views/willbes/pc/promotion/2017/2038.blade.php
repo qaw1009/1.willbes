@@ -48,6 +48,12 @@
         .evt05 .list td img {width:250px}
         .evt05 .list td:nth-child(3) {text-align:left}
 
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -236,6 +242,20 @@
                     <li><a href="#none">9</a><span class="row-line">|</span></li>
                     <li><a href="#none">10</a></li>
                     <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evtInfo">
+            <div class="evtInfoBox">
+                <h4 class="NSK-Black">유의사항</h4>
+                <ul>
+                    <li>한 개의 인증 게시물로 추첨 선물 증정 대상으로 선정된 경우, 전원 증정 선물과 중복 증정은 되지 않습니다.</li>
+                    <li>여러 개의 게시물을 업로드 했을 경우, 추첨과 전원 증정 각각 하나씩 증정은 가능하나, 같은 상품의 중복 증정은 되지 않습니다.</li>
+                    <li>같은 이미지를 중복해서 올리는 것은 인정되지 않습니다. (각기 다른 영상에 ‘좋아요’ 인증만 인정)</li>
+                    <li>이벤트 당첨 대상자는 2월 22일(월) 17시에 발표할 예정입니다.</li>
+                    <li>상품은 모바일 기프티콘으로 2월 24일(수)에 일괄 발송될 예정입니다.</li>
+                    <li>이벤트 참여는 유튜브 채널 구독 중인 경우만 가능합니다.</li>
                 </ul>
             </div>
         </div>

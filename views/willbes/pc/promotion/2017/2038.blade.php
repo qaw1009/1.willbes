@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#4d4ade}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2038_top_bg.jpg) repeat-y center top;}
         .evt01 {background:#4346df}
         .evt02 {background:#383840}
         .evt03 {background:#e6e6e6}

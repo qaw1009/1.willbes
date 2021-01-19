@@ -24,24 +24,21 @@
         .evt01 .info ul {border:1px solid #ccc; background:#f4f4f4; padding:20px; margin:20px 0 10px;}
         .evt01 .info li {margin-left:20px; list-style:disc; margin-bottom:5px}
         .evt01 .info ul:after {content:""; display:block; clear:both}
-        .table_wrap {padding:10px 0}
-        .table_wrap table {width:100%; border-top:1px solid #d0d2d9; background:#fff; margin-top:10px !important}
-        .table_wrap table:first-of-type{margin-top:0}
-        .table_wrap table td,
-        .table_wrap table th{padding:10px; border:1px solid #d0d2d9; border-left:0; border-top:0; font-size:15px; text-align:center}
-        .table_wrap table th{color:#767987; font-weight:500; background:#dfe1e7}
-        .table_wrap table td{color:#444;padding:10px; line-height:1.5; text-align:left}
-        .table_wrap table tr:first-of-type th{border-top:1px solid #d0d2d9}
-        .table_wrap table tr th:first-of-type,
-        .table_wrap table tr td:first-of-type{border-left:1px solid #d0d2d9}
-        .table_wrap table input {width:100px}
-        .evt01 .btnSet {width:80%; margin:50px auto}
-        .evt01 .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#427eec; color:#fff; border-radius:50px}
-        .evt01 .btnSet a:hover {background:#333;}
         .evt01 input,
         .evt01 label {vertical-align:middle}
         .evt01 label {margin-left:5px; font-size:14px}
         .evt01 input[type=checkbox] {width:20px; height:20px}
+        .evt01 .table_wrap {padding:10px 0}
+        .evt01 .table_wrap table {width:100%; border-top:1px solid #d0d2d9; background:#fff; margin-top:10px !important}
+        .evt01 .table_wrap td,
+        .evt01 .table_wrap th{padding:10px; border:1px solid #d0d2d9; border-left:0; border-top:0; font-size:15px; text-align:center}
+        .evt01 .table_wrap th{color:#767987; font-weight:500; background:#dfe1e7}
+        .evt01 .table_wrap td{color:#444;padding:10px; line-height:1.5; text-align:left}
+        .evt01 .table_wrap tr th{border-top:1px solid #d0d2d9}
+        .evt01 .table_wrap td input {width:100px;}
+        .evt01 .btnSet {width:80%; margin:50px auto}
+        .evt01 .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#427eec; color:#fff; border-radius:50px}
+        .evt01 .btnSet a:hover {background:#333;}       
 
     </style>
 
@@ -101,8 +98,8 @@
                                 <td>{{sess_data('mem_phone')}}</td>
                                 <th>* 주민번호</th>
                                 <td>
-                                    <input name="ssn_1" id="ssn_1" style="width:100px;" type="text" maxlength="6"> -
-                                    <input name="ssn_2" id="ssn_2" style="width:100px;" type="text" maxlength="7">
+                                    <input name="ssn_1" id="ssn_1" type="text" maxlength="6"> - 
+                                    <input name="ssn_2" id="ssn_2" type="text" maxlength="7">
                                 </td>
                             </tr>
                             <tr>

@@ -21,7 +21,7 @@
     .table_wrap table tr:first-of-type th{border-top:1px solid #d0d2d9}
     .table_wrap table tr th:first-of-type,
     .table_wrap table tr td:first-of-type{border-left:1px solid #d0d2d9}
-    .table_wrap table input {width:100px}
+    .table_wrap table input {width:100px; padding:0 3px}
     .evt01 .btnSet {width:80%; margin:50px auto}
     .evt01 .btnSet a {display:block; padding:20px 0; text-align:center; font-size:25px; font-weight:bold; background:#427eec; color:#fff; border-radius:50px}
     .evt01 .btnSet a:hover {background:#333;}
@@ -87,8 +87,8 @@
                         <tr>
                             <th>* 주민번호</th>
                             <td>
-                                <input name="ssn_1" id="ssn_1" style="width:100px;" type="text" maxlength="6"> -
-                                <input name="ssn_2" id="ssn_2" style="width:100px;" type="text" maxlength="7">
+                                <input name="ssn_1" id="ssn_1" type="text" maxlength="6"> -
+                                <input name="ssn_2" id="ssn_2" type="text" maxlength="7">
                             </td>
                         </tr>
                         <tr>

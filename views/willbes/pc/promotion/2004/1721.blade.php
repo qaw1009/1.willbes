@@ -67,11 +67,11 @@
         <div class="skybanner">
             <ul>          
                 <li>     
-                    <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_sky.png" usemap="#Map1721sky" title="10월 개강" border="0"/>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/1721_sky.png" usemap="#Map1721sky" title="10월 개강" border="0"/>
                     <map name="Map1721sky">
-                        <area shape="rect" coords="12,128,109,248" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw&subject_idx=" target="_blank" alt="전기기기">
-                        <area shape="rect" coords="15,276,107,400" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug&subject_idx=" target="_blank" alt="무선공학">
-                        <area shape="rect" coords="12,430,108,554" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE7J6Q&subject_idx=" target="_blank" alt="전자공학">
+                        <area shape="rect" coords="12,128,109,248" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67ZqM66Gc&subject_idx=" target="_blank" alt="전기기기">
+                        <area shape="rect" coords="15,276,107,400" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU666y07ISg&subject_idx=" target="_blank" alt="무선공학">
+                        <area shape="rect" coords="12,430,108,554" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU665SU7KeA7YS4&subject_idx=" target="_blank" alt="전자공학">
                     </map>
                 </li>
                 <li><a href="#t_pass_go"><img src="https://static.willbes.net/public/images/promotion/2020/10/1721_sky2.png" title="최우영 티패스" /></a></li>

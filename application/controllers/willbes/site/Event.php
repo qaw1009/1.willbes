@@ -280,6 +280,7 @@ class Event extends \app\controllers\FrontController
         $file_chk = $this->_reqP('file_chk');   //첨부파일 체크 유무
         $el_idx = (int)$this->_req('event_code');   //이벤트식별자
         $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
+        $ssn_type = $this->_req('ssn_type');    //상품권지급 프로모션 여부
 
         // 댓글 참여 여부 확인
         if(empty($comment_chk_yn) === false && $comment_chk_yn == 'Y') {
@@ -325,6 +326,13 @@ class Event extends \app\controllers\FrontController
                     ]);
                 }
             }
+        }
+
+        if ($ssn_type == 'Y') {
+            $rules = array_merge($rules, [
+                ['field' => 'ssn_1', 'label' => '주민번호', 'rules' => 'trim|required|integer|min_length[6]|max_length[6]'],
+                ['field' => 'ssn_2', 'label' => '주민번호', 'rules' => 'trim|required|integer|min_length[7]|max_length[7]'],
+            ]);
         }
 
         if ($this->validate($rules) === false) {

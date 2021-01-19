@@ -61,6 +61,7 @@
                 <th>아이디</th>
                 <th>연락처</th>
                 <th>이메일</th>
+                <th>주민번호</th>
                 <th>주소</th>
                 <th>추가데이터</th>
                 <th>첨부파일</th>
@@ -142,6 +143,7 @@
                 {'data' : 'MemId'},
                 {'data' : 'Phone'},
                 {'data' : 'Mail'},
+                {'data' : 'UserSsn'},
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         // 리스트 번호
                         return row.Addr1 + row.Addr2 + ' ('+ row.ZipCode +')';

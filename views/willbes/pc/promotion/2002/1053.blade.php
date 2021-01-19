@@ -29,6 +29,7 @@
        
         /* 슬라이드배너 */
         .slide_con {position:relative; width:960px; margin:0 auto;}
+        .slide_con ul {width:960px; height:540px}
         .slide_con img {width:100%;}
         .slide_con p {position:absolute; top:50%; width:62px; margin-top:-31px; height:62px; opacity:0.9; filter:alpha(opacity=90); z-index:90;}
         .slide_con p a {cursor:pointer}
@@ -36,7 +37,7 @@
         .slide_con p.rightBtn1 {right:-31px; opacity:0.9;}
 
         /*탭(이미지)*/
-        .tabs{width:100%; text-align:center; background:#0f44a0;}
+        .tabs{width:100%; text-align:center; background:#0f44a0; padding-top:30px}
         .tabs ul {width:1180px;margin:0 auto;}		
         .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}

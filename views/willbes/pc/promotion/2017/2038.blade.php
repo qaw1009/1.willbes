@@ -40,6 +40,7 @@
         .evt05 table th {color:#fff; background:#49569e; font-size:16px; font-weight:300; padding:15px 0; text-align:center;}
         .evt05 table td{padding:0 10px; font-size:14px; color:#000; text-align:left; padding:10px}
         .evt05 table td input[type=file] {width:300px}
+        .evt05 table td a.delbtn {display:block; border-radius: 5px; background-color:#49569e; color:#fff; text-align:center; padding:5px; width:50px; margin:10px auto 0}
         .evt05 .btns {margin-top:50px}
         .evt05 .btns a {display:inline-block; padding:10px 20px; color:#fff; background:#4c49de; font-size:20px; border:1px solid #4c49de; margin-right:10px}
         .evt05 .btns a:last-child {background:#fff; color:#4c49de; margin:0}
@@ -150,7 +151,10 @@
                         <td>10</td>
                         <td>영어</td>
                         <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
+                        <td>
+                            will****
+                            <a href="#none" class="delbtn">삭제</a>
+                        </td>
                         <td>2021.01.18</td>
                     </tr>
                     <tr>

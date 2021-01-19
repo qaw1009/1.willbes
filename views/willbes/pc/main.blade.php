@@ -63,7 +63,7 @@
                             <ul>
                                 <li><a href="#none" class="favor-cate-each" data-key="2005_3094" data-url="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" >5급행정(입법고시)</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2005_3095" data-url="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" >국립외교원</a></li>
-                                <li><a href="#none" class="favor-cate-each" data-key="2005_3096" data-url="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" >PSAT</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2005_3096" data-url="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" >5급PSAT</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2005_3097" data-url="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" >5급헌법</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2005_3098" data-url="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" >법원행시</a></li>
                                 <li><a href="#none" class="favor-cate-each" data-key="2005_3099" data-url="{{ front_app_url('/home/index/cate/3099', 'gosi') }}" >변호사</a></li>
@@ -198,7 +198,7 @@
                             <td colspan="5">
                                 <a href="{{ front_app_url('/home/index/cate/3094', 'gosi') }}" target="_blank">5급행정(입법고시)</a>
                                 <a href="{{ front_app_url('/home/index/cate/3095', 'gosi') }}" target="_blank">국립외교원</a>
-                                <a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">PSAT</a>
+                                <a href="{{ front_app_url('/home/index/cate/3096', 'gosi') }}" target="_blank">5급PSAT</a>
                                 <a href="{{ front_app_url('/home/index/cate/3097', 'gosi') }}" target="_blank">5급헌법</a>
                                 <a href="{{ front_app_url('/home/index/cate/3098', 'gosi') }}" target="_blank">법원행시</a>
                                 <a href="{{ front_app_url('/home/index/cate/3099', 'gosi') }}" target="_blank">변호사</a>

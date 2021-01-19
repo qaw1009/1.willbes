@@ -27,16 +27,17 @@
         .wb_mp4 {width:100%; text-align:center; margin:0 auto; background:#000; min-width:1120px;}
         .wb_mp4 ul {width:100%; margin:0 auto; min-width:1120px;}
        
-           /* 슬라이드배너 */
-        .slide_con1 {position:relative; width:900px; margin:0 auto;}
-        .slide_con1 img {width:100%;}
-        .slide_con1 p {position:absolute; top:50%; width:62px; margin-top:-31px; height:62px; opacity:0.9; filter:alpha(opacity=90); z-index:90;}
-        .slide_con1 p a {cursor:pointer}
-        .slide_con1 p.leftBtn1 {left:-31px;}
-        .slide_con1 p.rightBtn1 {right:-31px; opacity:0.9;}
+        /* 슬라이드배너 */
+        .slide_con {position:relative; width:960px; margin:0 auto;}
+        .slide_con ul {width:960px; height:540px}
+        .slide_con img {width:100%;}
+        .slide_con p {position:absolute; top:50%; width:62px; margin-top:-31px; height:62px; opacity:0.9; filter:alpha(opacity=90); z-index:90;}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn1 {left:-31px;}
+        .slide_con p.rightBtn1 {right:-31px; opacity:0.9;}
 
         /*탭(이미지)*/
-        .tabs{width:100%; text-align:center; background:#0f44a0;}
+        .tabs{width:100%; text-align:center; background:#0f44a0; padding-top:30px}
         .tabs ul {width:1180px;margin:0 auto;}		
         .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}
@@ -131,7 +132,9 @@
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {font-size:14px; color:#c03011;}
-        .wb_tipBox b{vertical-align:top;}
+        .wb_tipBox b{vertical-align:top;}           
+
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -201,9 +204,11 @@
                 <map name="Map1053tab2" id="Map1053tab2">
                     <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
                     <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
-                </map>   
+                </map> 
+            </div>
 
-                <div class="slide_con1">
+            <div id="tab03s" class="pb100">
+                <div class="slide_con mt100 mb100">
                     <ul id="slidesImg1">
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt=""/></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" alt=""/></li>
@@ -220,10 +225,7 @@
                     </ul>
                     <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/sparta/1501_roll_arr_l.png"></a></p>
                     <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
-                </div>          
-            </div>
-
-            <div id="tab03s" class="pb100">
+                </div>
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
             </div>
 
@@ -358,7 +360,6 @@
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
-                slideWidth:900,
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1,

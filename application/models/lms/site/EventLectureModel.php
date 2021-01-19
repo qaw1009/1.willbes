@@ -783,13 +783,17 @@ class EventLectureModel extends WB_Model
         } else {
             $column = '
             A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcValue, A.RegDatm,
-            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, D.registerCnt, A.FileFullPath, A.FileRealName,
-            O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode
+            A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.FileFullPath, A.FileRealName,
+            O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
+            fn_dec(A.UserSsnEnc) AS UserSsn
+            ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx) AS registerCnt
             ';
 
             if ($is_count == 'excel') {
                 $column = '
-                    A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName, D.registerCnt, O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
+                    A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.EtcValue, A.RegDatm, B.Name AS RegisterName
+                    ,(SELECT COUNT(*) FROM lms_event_member AS em WHERE A.ErIdx = em.ErIdx) AS registerCnt
+                    , O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
                     CASE C.Sex WHEN "M" THEN "남" WHEN "F" THEN "여" END AS MemSex
                 ';
             }
@@ -803,9 +807,6 @@ class EventLectureModel extends WB_Model
             INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
             LEFT JOIN {$this->_table['member']} AS C ON A.MemIdx = C.MemIdx
             LEFT JOIN {$this->_table['member_otherinfo']} AS O ON C.MemIdx = O.MemIdx
-            LEFT JOIN (
-		        SELECT ErIdx, COUNT(*) AS registerCnt FROM {$this->_table['event_member']} GROUP BY ErIdx
-            ) AS D ON B.ErIdx = D.ErIdx
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

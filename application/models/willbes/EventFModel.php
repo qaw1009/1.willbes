@@ -13,6 +13,7 @@ class EventFModel extends WB_Model
         'event_promotion_otherinfo' => 'lms_event_promotion_otherinfo',
         'event_promotion_live_video' => 'lms_event_promotion_live_video',
         'event_read_log' => 'lms_event_read_log',
+        'event_promotion_member_recipient' => 'lms_event_promotion_member_recipient',
         'board' => 'lms_board',
         'board_r_category' => 'lms_board_r_category',
         'vw_board_2' => 'vw_board_2',
@@ -357,6 +358,32 @@ class EventFModel extends WB_Model
             $result_register_member_info = $this->getRegisterMemberCount($arr_condition);
             $arr_register_member = array_pluck($result_register_member_info,'MemCount','ErIdx');
 
+            //중복체크, 저장 데이터 셋팅
+            $register_tel = (empty($inputData['register_tel']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_tel']);
+            $register_email = (empty($inputData['register_email']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_email']);
+
+            //프로모션상품 지급 대상자 조회
+            $reg_ssn = ''; //함호화된 주민번호 변수
+            if (element('ssn_type', $inputData) == 'Y') {
+                if (empty($this->session->userdata('mem_idx')) === true) {
+                    throw new \Exception('로그인 후 이용해주세요.');
+                }
+                $arr_condition = [
+                    'EQ' => [
+                        'PromotionCode' => $event_data['PromotionCode']
+                        ,'MemIdx' => $this->session->userdata('mem_idx')
+                        ,'MemId' => $this->session->userdata('mem_id')
+                        ,'IsStatus' => 'Y'
+                    ]
+                ];
+                $result_recipient = $this->_findPromotionRecipient($arr_condition);
+                if (empty($result_recipient) === true) {
+                    throw new \Exception('회원님은 상품권 수령 대상자가 아닙니다.');
+                }
+                $temp_ssn = $inputData['ssn_1'].$inputData['ssn_2'];
+                $reg_ssn = $this->memberFModel->getEncString($temp_ssn);
+            }
+
             //검증
             foreach ($register_info as $key => $row) {
                 //만료상태 체크
@@ -388,10 +415,6 @@ class EventFModel extends WB_Model
                         throw new \Exception($inputData['register_chk_other_msg']);
                     }
                 }
-
-                //중복체크, 저장 데이터 셋팅
-                $register_tel = (empty($inputData['register_tel']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_tel']);
-                $register_email = (empty($inputData['register_email']) === true) ? '' : $this->memberFModel->getEncString($inputData['register_email']);
 
                 $etc_value = '';
                 if (empty($inputData['target_params']) === false && is_array($inputData['target_params'])) {
@@ -448,7 +471,7 @@ class EventFModel extends WB_Model
                         'UserName' => $inputData['register_name'],
                         'UserTelEnc' => $register_tel,
                         'UserMailEnc' => $register_email,
-                        'EtcValue' => $etc_value
+                        'EtcValue' => $etc_value,
                     ];
                 }
 
@@ -516,6 +539,11 @@ class EventFModel extends WB_Model
                     }
                 }
 
+                //주민번호(암호화)
+                if (element('ssn_type', $inputData) == 'Y') {
+                    $input_register_data['UserSsnEnc'] = $reg_ssn;
+                }
+
                 if ($this->_addEventRegisterMember($input_register_data) !== true) {
                     throw new \Exception('특강 신청에 등록 실패했습니다.');
                 }
@@ -531,6 +559,13 @@ class EventFModel extends WB_Model
             if (empty($arr_event_option) === false && array_key_exists($this->_ccd['option']['send_sms'], $arr_event_option) === true) {
                 if ($this->_sendSms($event_data, $inputData) === false) {
                     throw new \Exception('SMS발송 실패했습니다. 관리자에게 문의해 주세요.');
+                }
+            }
+
+            if (element('ssn_type', $inputData) == 'Y') {
+                if ($this->_updatePromotionRecipientMemberApply(
+                    $event_data['PromotionCode'], $this->session->userdata('mem_idx'), $this->session->userdata('mem_id')) !== true) {
+                    throw new \Exception('신청에 실패했습니다. 관리자에게 문의해주세요.');
                 }
             }
 
@@ -2012,4 +2047,48 @@ class EventFModel extends WB_Model
         return $this->_conn->query('SELECT ' . $column . $from . $where . $order_by_offset_limit, [$el_idx])->result_array();
     }
 
+    /**
+     * 프로모션 대상자 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    private function _findPromotionRecipient($arr_condition)
+    {
+        $column = 'EpmrIdx, PromotionCode, MemIdx, MemId, IsStatus, IsApply';
+        $from = " FROM {$this->_table['event_promotion_member_recipient']} ";
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        return $this->_conn->query('SELECT '.$column .$from .$where)->row_array();
+    }
+
+    /**
+     * 프로모션 대상자 신청 상태 업데이트
+     * @param $promotion_code
+     * @param $mem_idx
+     * @param $mem_id
+     * @return array|bool
+     */
+    private function _updatePromotionRecipientMemberApply($promotion_code, $mem_idx, $mem_id)
+    {
+        try {
+            $input = [
+                'IsApply' => 'Y',
+                'UpdDatm' => date("Y-m-d H:i:s")
+            ];
+            $where = [
+                'PromotionCode' => $promotion_code,
+                'MemIdx' => $mem_idx,
+                'MemId' => $mem_id,
+                'IsStatus' => 'Y'
+            ];
+            $this->_conn->set($input)->where($where);
+            if ($this->_conn->update($this->_table['event_promotion_member_recipient']) === false) {
+                throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+        } catch (\Exception $e) {
+            return error_result($e);
+        }
+        return true;
+    }
 }

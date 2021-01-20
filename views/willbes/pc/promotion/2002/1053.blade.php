@@ -89,32 +89,9 @@
             display:block; height:24px; line-height:24px; background:#0c5dc0; color:#fff; text-align:center;
         }
    
-        .btngo a {width:1120px; margin:50px auto 0; display:block; font-size:34px; color:#fff; padding:20px 0; border-radius:50px;
-            -webkit-animation: color-change-5x 8s linear infinite alternate both;
-            animation: color-change-5x 8s linear infinite alternate both;
-        }
-        @@-webkit-keyframes color-change-5x {
-            0% {
-            background: #19dcea;
-            }
-            50% {
-            background: #ea2222;
-            }
-            100% {
-            background: #3bd80d;
-            }
-        }
-        @@keyframes color-change-5x {
-            0% {
-            background: #19dcea;
-            }
-            50% {
-            background: #ea2222;
-            }
-            100% {
-            background: #3bd80d;
-            }
-        }
+        .btngo a {width:1000px; margin:50px auto 0; display:block; font-size:34px; background:#0f44a0; color:#fff; padding:20px 0; border-radius:50px;}
+        .btngo a:hover {background:#333;}
+
         .wb_cts03 {background:#FFF;}  
         
         .tab04s2{background:#f7f7f7}
@@ -132,8 +109,49 @@
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
         .wb_tip_orange {font-size:14px; color:#c03011;}
-        .wb_tipBox b{vertical-align:top;}           
+        .wb_tipBox b{vertical-align:top;}  
+        
+        .EventBox {width:960px; margin:100px auto; position:relative}
+        .EventBox .evtBigimg {width:960px; height:540px; overflow:hidden}
 
+        .EventBox .thumbnail {width:100%; height:129px; overflow:hidden; position:relative;}
+        .EventBox .thumbnail:after {content:''; display:block; clear:both}
+        .EventBox .thumbnail span {display:inline-block !important; float:left !important; width:230px !important;}
+        .EventBox .thumbnail img {width:100%}
+        .EventBox .thumbnail .bx-wrapper .bx-controls {
+            position: absolute;
+            width: 48px;
+            height: 23px;
+            bottom:0px;
+            right:0 !important;
+            z-index: 1;
+            background:#ccc;
+        }
+        .EventBox .bx-wrapper .bx-pager {
+            width: auto;
+            position: absolute;
+            bottom:-30px;
+            left: 0;
+            right: 0;
+            font-size: 12px;
+            font-weight: 300;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            letter-spacing: 0;
+        }
+
+        .EventBox .bx-wrapper .bx-controls-direction {
+            width: 48px;
+            height: 23px; 
+            border:3px solid #000;
+        }
+
+        .EventBox p {position:absolute; bottom:35px; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer; 
+            background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+        .EventBox p a {display:none;}
+        .EventBox p.leftBtn {margin-left:-560px;}
+        .EventBox p.rightBtn {margin-left:528px; background-position: right center;}	
 
     </style>
 
@@ -165,7 +183,7 @@
         </div>
         
         <div class="evtCtnsBox wb_cts01">          
-            <div class="tabs">
+            <div class="tabs">                
                 <ul>
                     <li>
                         <a href="#tab01s" class="active">
@@ -194,7 +212,7 @@
                 </ul>
             </div>
 
-            <div id="tab01s" class="pb100"> 
+            <div id="tab01s" class="pb100">            
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1053_tab1_con.jpg">                
                 <div class="btngo"><a href="https://police.willbes.net/pass/offPackage/index/type/life?cate_code=3010&campus_ccd=605001&course_idx=1093" target="_blank" >신청하기 ></a></div>                            
             </div> 
@@ -208,6 +226,75 @@
             </div>
 
             <div id="tab03s" class="pb100">
+                <div class="EventBox">            
+                    <div id="evtRollingSlider" class="evtBigimg">
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info5.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info6.jpg" alt="배너명"></div>  
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info7.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info8.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info9.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info10.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info13.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info14.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" alt="배너명"></div>
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" alt="배너명"></div>              
+                    </div>
+
+                    <div class="mt20">                        
+                        <div id="evtRollingDiv" class="thumbnail">
+                            <span>
+                                <a data-slide-index="0" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="1" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="2" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="3" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="4" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info5.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="5" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info6.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="6" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info7.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="7" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info8.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="8" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info9.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="9" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info10.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="10" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info13.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="11" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info14.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="12" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" /></a>
+                            </span>
+                            <span>
+                                <a data-slide-index="13" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" /></a>
+                            </span>
+                        </div>                        
+                    </div>
+                    
+                    <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                    <p class="rightBtn" id="imgBannerRight"><a href="#none">다음</a></p> 
+                </div>
+                {{--
                 <div class="slide_con mt100 mb100">
                     <ul id="slidesImg1">
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt=""/></li>
@@ -226,6 +313,7 @@
                     <p class="leftBtn1"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/sparta/1501_roll_arr_l.png"></a></p>
                     <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
                 </div>
+                --}}
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
             </div>
 
@@ -350,6 +438,35 @@
     <!-- End Container -->
 
     <script language="javascript">
+        
+        $(function(){ 
+            var slidesImg = $(".thumbnail").bxSlider({
+                mode:'horizontal',
+                touchEnabled: false,
+                speed:500,
+                pause:3000,
+                sliderWidth:230,
+                auto : true,
+                slideMargin:15,
+                /*minSlides:4,
+                maxSlides:4,*/
+                autoHover: true,
+                pager:true,
+                pagerType: 'short',
+                moveSlides:1,
+                /*pagerCustom: '#evtRollingSlider',*/
+                controls:false
+            });	
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToPrevSlide();
+            });        
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToNextSlide();
+            });			
+        });
+
+
+        
         $(document).ready(function() {
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
@@ -363,17 +480,17 @@
                 slideMargin:0,
                 autoHover: true,
                 moveSlides:1,
-                adaptiveHeight: true,
+                /*adaptiveHeight: true,*/
             });
 
             $("#imgBannerLeft1").click(function (){
-                slidesImg1.goToPrevSlide();
+                slidesImg1.goToPrevSlide1();
             });
 
             $("#imgBannerRight1").click(function (){
-                slidesImg1.goToNextSlide();
+                slidesImg1.goToNextSlide1();
             });
-        });
+        });        
 
         /*탭(이미지버전)*/
         $(document).ready(function(){

@@ -40,7 +40,7 @@
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_02.jpg" alt="한덕현영어" usemap="#Map1297B" border="0" />
             <map name="Map1297B" id="Map1297B">
-                <area shape="rect" coords="288,620,830,674" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" />
+                <area shape="rect" coords="288,620,830,674" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178151" target="_blank" />
             </map>
         </div>
 

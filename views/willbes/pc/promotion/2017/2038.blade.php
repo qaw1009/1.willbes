@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .evtTop {background:#4d4ade}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2038_top_bg.jpg) repeat-y center top;}
         .evt01 {background:#4346df}
         .evt02 {background:#383840}
         .evt03 {background:#e6e6e6}
@@ -84,7 +84,7 @@
                 <ul>
                     <li><a href="https://youtu.be/sLuznU9Rmd0" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_01.jpg" alt="교육학 이인재"/></a></li>
                     <li><a href="https://youtu.be/Afj5ci5H2xg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_02.jpg" alt="교육학 홍의일"/></a></li>
-                    <li><a href=https://youtu.be/Y2W3lUrn3aI" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_03.jpg" alt="유아 민정선"/></a></li>
+                    <li><a href=https://youtu.be/Y2W3lUrn3aI?t=1" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_03.jpg" alt="유아 민정선"/></a></li>
                     <li><a href="https://youtu.be/1Tof3jVF__E" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_04.jpg" alt="초등 배재민"/></a></li>
                     <li><a href="https://youtu.be/nmqJSQbE0v4" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_05.jpg" alt="전공국어 송원영"/></a></li>
                     <li><a href="https://youtu.be/9XNWbFy2PWk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04_06.jpg" alt="도덕윤리 김병찬"/></a></li>

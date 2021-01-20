@@ -14,19 +14,21 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
-        /************************************************************/
-        
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2022_top_bg.jpg) no-repeat center top;}     
-        .evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2022_01_bg.jpg) no-repeat center top;}      
-        .evt_02 {padding-bottom:100px;}
-        .btnLec {display:block; border-radius:40px; color:#fff !important; background:#12408c; font-size:30px; text-align:center; padding:20px 0; width:1000px; margin:50px auto}
+        /************************************************************/        
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2022_top_bg.jpg) no-repeat center top;} 
 
+        .evt_01 {background:#fff;}              
+        .btnLec {display:block; border-radius:40px; color:#fff !important; background:#12408c; font-size:30px; text-align:center; padding:20px 0; width:1000px; margin:50px auto}
         .check {width:980px; margin:0 auto;letter-spacing:3; padding-top:30px;}
         .check label {cursor:pointer; font-size:15px;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#1a140e; 
             margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
         .check a:hover {background:#12408c;}
+
+        .evt_02 {padding-bottom:100px;}
+
+        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2022_03_bg.jpg) no-repeat center top;}   
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
@@ -44,11 +46,7 @@
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2022_01.jpg" alt="과목별 강의 특징" />
-		</div>
-
-        <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2022_02.jpg" alt="과목별 강사진, 수강특전" />    
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2022_01.jpg" alt="수강특전" />    
             <a href="javascript:go_PassLecture('177759');" alt="수강신청" class="btnLec NSK-Black">수강신청 바로가기 ></a>
             <div class="check">
                 <label>
@@ -58,6 +56,17 @@
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div>       
         </div> 
+
+        <div class="evtCtnsBox evt_02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2022_02.jpg" alt="수험방향 잡기" usemap="#Map2022a" border="0" />
+            <map name="Map2022a" id="Map2022a">
+                <area shape="rect" coords="99,774,456,812" href="https://job.willbes.net/support/gosiNotice/show/cate/309003?board_idx=313470&s_cate_code=309003&s_cate_code_disabled=Y" target="_blank" />
+            </map>
+		</div>     
+
+        <div class="evtCtnsBox evt_03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2022_03.jpg" alt="과목 및 강사진 안내" />
+		</div>    
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox" id="careful">

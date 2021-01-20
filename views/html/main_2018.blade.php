@@ -362,7 +362,7 @@
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_jgm.jpg" alt="전공중국어 정경미"></a></li>
                 </ul>                  
                 <p class="leftBtn" id="imgBannerLeft2"><a href="#none">이전</a></p>
-                <p class="rightBtn" id="imgBannerRight2"><a href="none">다음</a></p> 
+                <p class="rightBtn" id="imgBannerRight2"><a href="#none">다음</a></p> 
             </div> 
             <div id="SubRollingDiv" class="SubtabList">
                 <ul class="Subtab">

@@ -358,23 +358,6 @@
                                     <tr>
                                         <th class="tx-gray">교수선택</th>
                                         <td colspan="8" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
-                                        <!-- 과목선택 시 해당 과목 교수 출력
-                                        <td>
-                                            <a href="#none">정채영</a>
-                                        </td>
-                                        <td>
-                                            <a href="#none">기미진</a>
-                                        </td>
-                                        <td>
-                                            <a href="#none">김세령</a>
-                                        </td>
-                                        <td>
-                                            <a href="#none">오대혁</a>
-                                        </td>
-                                        <td>
-                                            <a href="#none">이현나</a>
-                                        </td>
-                                        -->
                                     </tr>
                                     <tr>
                                         <th class="tx-gray">강좌선택</th>
@@ -1250,6 +1233,7 @@
                                             <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
                                             <td class="w-date">09월 14일 총 10강 업로드</td>
                                         </tr>
+                                        {{--
                                         <tr>
                                             <td class="w-no">6523</td>
                                             <td class="w-campus">전기전자통신</td>
@@ -1313,9 +1297,11 @@
                                             <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
                                             <td class="w-date">09월 14일 총 10강 업로드</td>
                                         </tr>
+                                        
                                         <tr>
                                             <td class="w-list tx-center" colspan="5">검색 결과가 없습니다.</td>
                                         </tr>
+                                        --}}
                                     </tbody>
                                 </table>
                                 <div class="Paging">

@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
@@ -25,7 +21,7 @@
             right:10px;
             z-index:1;
         }
-        .skybanner li {margin-bottom:5px}
+        .skybanner a {margin-bottom:5px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/03/1586_top_bg.jpg) no-repeat center top}
         .wb_01 {background:#3e4552}
@@ -55,38 +51,45 @@
         .tabContaier li a:hover,
         .tabContaier li a.active {border-bottom:5px solid #31d1ff;color:#fff;font-size:26px;}
 
+        .wb_ctsInfo {background:#e9e9e9; padding:100px 0; line-height:1.5;}  
+        .wb_ctsInfo div {width:980px; margin:0 auto; color:#444; font-size:14px; text-align:left;}
+        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#555;} 
+        .wb_ctsInfo div p {font-size:18px; margin-bottom:10px;}  
+        .wb_ctsInfo div li {margin-bottom:30px; list-style:disc; margin-left:20px}
+        .wb_ctsInfo div dl {position: relative; padding-left:10px;}
+
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <ul class="skybanner" >
-            <li><a href="#sparta"><img src="https://static.willbes.net/public/images/promotion/2020/03/1586_sky.png" alt="입실문의"></a></li>            
-        </ul>
+        <div class="skybanner" >
+            <a href="#sparta"><img src="https://static.willbes.net/public/images/promotion/2020/03/1586_sky.png" alt="입실문의"></a>        
+        </div>
 
         <div class="evtCtnsBox wb_top" id="sparta">
-            <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_top.jpg" alt="스파르타" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_top.jpg" alt="스파르타" />            
         </div>  
        
         <div class="evtCtnsBox wb_tab">
             <div class="tabContaier">    
                 <ul>    
-                    <li><a href="#tab1" class="active">개강정보</a></li>
-                        
-                    <li><a href="#tab2">스파르타 안내</a></li>
-                    
-                    <li><a href="#tab3">합격수기</a></li>
-                    
+                    <li><a href="#tab1" class="active">개강정보</a></li>                        
+                    <li><a href="#tab2">스파르타 안내</a></li>                    
+                    <li><a href="#tab3">합격수기</a></li>                    
                     <li><a href="#tab4">채용현황</a></li>              
                 </ul>
             </div> 
             <div id="tab1" class="tabContents">       
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_01_content.jpg" usemap="#Map" title="" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1586_01_content.jpg" usemap="#Map" title="" border="0" />
                 <map name="Map" id="Map">
                     <area shape="rect" coords="361,545,757,644" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605001" target="_blank" />
-                </map>      
+                </map>    
             </div>
+
             <div id="tab2" class="tabContents">       
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_02_content.jpg"  title="" />      
             </div>
+
             <div id="tab3" class="tabContents tabs3">       
                 <img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_t1.png" alt="2018 합격수기" />
                 <div class="slide_con1">
@@ -120,10 +123,48 @@
                 </div>
                 <img src="https://static.willbes.net/public/images/promotion/sparta/1051_03_t2.png" alt="양해" />
             </div>
+
             <div id="tab4" class="tabContents tabs4">       
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_04_content.jpg"  title="" />      
             </div>             
-        </div>         
+        </div>   
+
+        <div class="wb_ctsInfo" id="ctsInfo">
+            <div>
+                <h3 class="NSK-Black">스파르타 유의사항 안내</h3>
+                <ul>
+                    <li>
+                        <p class="NSK-Black">스파르타 기본규칙</p>
+                        - 강의실 내 잡담 금지. 작은 소리도 타인에겐 소음입니다.<br>
+                        - 휴대폰 무음모드 기본, 오답노트를 위해 가위질 칼집, 시잔촬영 금지<br>
+                        - 강의실 내 음식물 반입 금지. (냄ㅅ개, 소리가 나지 않는 음식물만 제한적 허용)<br>
+                        - 타이핑, 마우스 크릭은 큰 불편을 주는 소음입니다.<br>
+                        - 흡연자는 주변인들을 위해 가글, 섬유탈취제를 이용해 주시고 반드시 손을 씻고 입실해 주시기 바랍니다.<br>
+                        - 공석이더라도 자리 외 착석 및 불건보관을 금지하고, 독서실 책장 칸막이 설치를 금지합니다.<br>
+                        - 자기주도학습시간은 물론 쉬는 시간에도 정숙<br>
+                        - 복도에서 잡담 금지, 스터디 금지 (쉬는 시간에도 강의실 안에서 공부하는 학생에게 방해되지 않도록 자습실 내부는 물론 복도에서도 정숙해 주시기 바랍니다.)
+                    </li>
+                    <li>
+                        <p class="NSK-Black">지정 시간표 준수</p>
+                        - 쉬는 시간 외에 출입문을 잠급니다.<br>
+                        읿실 하지 못한 학생은 다음 쉬는 시간까지 밖에서 대기하셔야 합니다.<br>
+                        (내부에서 공부하는 학생들에게 피해가 가지 않도록 통제합니다.)<br>
+                        중간 자리 이동시 벌점(본인 자리 외의 좌석에서 공부 또는 자기주도학습시간에 이동시)
+                    </li>
+                    <li>
+                        <p class="NSK-Black">강제퇴실 참고사항</p>
+                        - 출결 벌점<br>
+                        - 기본규칙 미준수
+                    </li>
+                    <li>
+                        <p class="NSK-Black">스파르타 제제 시스템</p>
+                        자율적이지 않은 관리 및 통제 시스템이 많이 불편할 수 있습니다. <br>
+                        하지만 자율적인 분위기에서는 본인의 학습시간확보가 어렵기 때문에 자신을 위해 스스로 들어온 곳입니다. <br>
+                        전체적인 학습 분위기 조성을 위해 정해진 자습시간은 반드시 따라주시기 바랍니다.
+                    </li>
+                </ul>
+            </div>
+        </div>       
 
     </div>
     <!-- End Container -->

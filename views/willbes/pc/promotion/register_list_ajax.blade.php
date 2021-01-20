@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $rownum }}</td>
                     <td>{{ $row['EtcValue'] }}</td>
-                    <td><img src="{{ $row['FileFullPath'] }}" alt=""/></td>
+                    <td style="text-align: center"><img src="{{ $row['FileFullPath'] }}" alt=""/></td>
                     <td>
                         @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                             {{ $row['UserName'] }}

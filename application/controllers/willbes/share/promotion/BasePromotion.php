@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasePromotion extends \app\controllers\FrontController
 {
-    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF', 'eventsurvey/survey');
+    protected $models = array('eventF', 'downloadF', 'cert/certApplyF', 'couponF', 'support/supportBoardF', 'predict/predictF', '_lms/sys/code', 'DDayF', 'product/lectureF', 'eventsurvey/survey', '_lms/product/base/subject');
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
@@ -82,9 +82,19 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 프로모션 부가정보 조회
         $arr_base['promotion_otherinfo_data'] = $this->eventFModel->listEventPromotionForOther($data['PromotionCode']);
-        if(config_app('SiteGroupCode') == '1011'){ // 임용 추가처리
+
+        // 임용 추가처리
+        if(config_app('SiteGroupCode') == '1011'){
             $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
             $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
+
+            //과목조회
+            $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
+            if(in_array(ENVIRONMENT, ['local','development']) === true) {
+                $arr_base['max_subject_idx'] = 1895;
+            }else{
+                $arr_base['max_subject_idx'] = 1995;
+            }
         }
 
         // 프로모션 라이브송출 조회

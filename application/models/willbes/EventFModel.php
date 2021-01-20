@@ -2091,4 +2091,77 @@ class EventFModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 접수관리 회원 신청 리스트
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listRegisterMember($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = '
+                A.EmIdx, A.MemIdx, A.EtcValue, DATE_FORMAT(A.RegDatm, \'%Y.%m.%d\') AS RegDatm, A.UserName, A.FileFullPath, A.FileRealName
+            ';
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = "
+            FROM {$this->_table['event_member']} AS A
+            INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 신청리스트 삭제
+     * @param $em_idx
+     * @return array|bool
+     */
+    public function delEventRegister($em_idx)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_condition = [
+                'EQ' => [
+                    'A.EmIdx' => $em_idx,
+                    'A.IsStatus' => 'Y',
+                    'B.IsStatus' => 'Y',
+                ],
+            ];
+            $result = $this->listRegisterMember(true, $arr_condition);
+            if (empty($result) === true) {
+                throw new \Exception('삭제할 데이터가 없습니다.');
+            }
+
+            $is_update = $this->_conn->set([
+                'IsStatus' => 'N',
+                'UpdMemIdx' => $this->session->userdata('mem_idx')
+            ])->where('EmIdx', $em_idx)->update($this->_table['event_member']);
+
+            if ($is_update === false) {
+                throw new \Exception('데이터 삭제에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
+    }
 }

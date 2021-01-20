@@ -228,7 +228,8 @@
             <div id="tab03s" class="pb100">
                 <div class="EventBox">            
                     <div id="evtRollingSlider" class="evtBigimg">
-                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt="배너명"></div>
+                        <div><img id="result_slide_img" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" alt="배너명"></div>
+                        {{--
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" alt="배너명"></div>
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" alt="배너명"></div>
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" alt="배너명"></div>
@@ -241,52 +242,53 @@
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info13.jpg" alt="배너명"></div>
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info14.jpg" alt="배너명"></div>
                         <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" alt="배너명"></div>
-                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" alt="배너명"></div>              
+                        <div><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" alt="배너명"></div>
+                        --}}
                     </div>
 
                     <div class="mt20">                        
                         <div id="evtRollingDiv" class="thumbnail">
                             <span>
-                                <a data-slide-index="0" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" /></a>
+                                <a data-slide-index="0" href="javascript:clickSildeImg(0);"><img id="silde_img_0" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info1.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="1" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" /></a>
+                                <a data-slide-index="1" href="javascript:clickSildeImg(1);"><img id="silde_img_1" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info2.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="2" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" /></a>
+                                <a data-slide-index="2" href="javascript:clickSildeImg(2);"><img id="silde_img_2" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info3.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="3" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" /></a>
+                                <a data-slide-index="3" href="javascript:clickSildeImg(3);"><img id="silde_img_3" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info4.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="4" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info5.jpg" /></a>
+                                <a data-slide-index="4" href="javascript:clickSildeImg(4);"><img id="silde_img_4" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info5.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="5" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info6.jpg" /></a>
+                                <a data-slide-index="5" href="javascript:clickSildeImg(5);"><img id="silde_img_5" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info6.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="6" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info7.jpg" /></a>
+                                <a data-slide-index="6" href="javascript:clickSildeImg(6);"><img id="silde_img_6" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info7.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="7" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info8.jpg" /></a>
+                                <a data-slide-index="7" href="javascript:clickSildeImg(7);"><img id="silde_img_7" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info8.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="8" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info9.jpg" /></a>
+                                <a data-slide-index="8" href="javascript:clickSildeImg(8);"><img id="silde_img_8" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info9.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="9" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info10.jpg" /></a>
+                                <a data-slide-index="9" href="javascript:clickSildeImg(9);"><img id="silde_img_9" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info10.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="10" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info13.jpg" /></a>
+                                <a data-slide-index="10" href="javascript:clickSildeImg(10);"><img id="silde_img_10" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info13.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="11" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info14.jpg" /></a>
+                                <a data-slide-index="11" href="javascript:clickSildeImg(11);"><img id="silde_img_11" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info14.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="12" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" /></a>
+                                <a data-slide-index="12" href="javascript:clickSildeImg(12);"><img id="silde_img_12" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info11.jpg" /></a>
                             </span>
                             <span>
-                                <a data-slide-index="13" href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" /></a>
+                                <a data-slide-index="13" href="javascript:clickSildeImg(13);"><img id="silde_img_13" src="https://static.willbes.net/public/images/promotion/2021/01/1053_info12.jpg" /></a>
                             </span>
                         </div>                        
                     </div>
@@ -528,7 +530,11 @@
                 $(activeTab).fadeIn();             
                 return false; 
             });
-        });    
+        });
+
+        function clickSildeImg(idx) {
+            $('#result_slide_img').prop('src', $('#silde_img_' + idx).prop('src'));
+        }
             
     </script>
 @stop

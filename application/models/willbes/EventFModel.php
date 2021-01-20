@@ -492,9 +492,11 @@ class EventFModel extends WB_Model
                     $arr_condition['EQ']['B.ElIdx'] = $inputData['register_chk_el_idx'];
                 }
 
-                $register_member_info = $this->getRegisterMember($arr_condition);
-                if (count($register_member_info) > 0) {
-                    throw new \Exception('등록된 신청자 정보가 있습니다.');
+                if(empty($inputData['register_overlap_chk']) === true){
+                    $register_member_info = $this->getRegisterMember($arr_condition);
+                    if (count($register_member_info) > 0) {
+                        throw new \Exception('등록된 신청자 정보가 있습니다.');
+                    }
                 }
 
                 //이미지 등록

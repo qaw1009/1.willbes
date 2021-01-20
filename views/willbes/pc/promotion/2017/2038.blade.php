@@ -111,6 +111,7 @@
                     {!! method_field('POST') !!}
                     <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                     <input type="hidden" name="register_type" value="promotion"/>
+                    <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
                     <input type="hidden" name="file_chk" value="Y"/>
                     <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
                     <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>

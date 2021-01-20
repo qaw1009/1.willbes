@@ -171,7 +171,7 @@
                 <tr>
                     <td class="combine-Tit">관심정보</td>
                     <td>
-                        <div>
+                        <div class="addInfo1">
                             <label for="a02" class="mr10"><input name="" type="radio" value="" id="a02"/> 경찰</label>
                             <label for="a03" class="mr10"><input name="" type="radio" value="" id="a03"/> 공무원</label>
                             <label for="a04" class="mr10"><input name="" type="radio" value="" id="a04"/> 고등고시</label>
@@ -181,6 +181,42 @@
                             <label for="a08" class="mr10"><input name="" type="radio" value="" id="a08"/> 어학</label>
                             <label for="a09" class="mr10"><input name="" type="radio" value="" id="a09"/> 창업/N잡</label>
                             <label for="a10" class="mr10"><input name="" type="radio" value="" id="a10"/> 임용</label>
+                        </div>
+
+                        {{--임용선택 시 노출--}}
+                        <div class="addInfo2">                            
+                            <div>
+                                <span class="tx-red">응시(예정)과목 *</span>
+                                <select id="" name="" title="">
+                                    <option value="">선택</option>
+                                    <option value="">유아</option>
+                                    <option value="">초등</option>
+                                </select>
+                            </div>
+                            <div>
+                                <span>출신학교/학과</span>
+                                <input type="text" id="" name="" placeholder="출신학교/학과를 입력해 주세요">
+                            </div>
+                            <div>
+                                <span class="tx-red">희망응시지역 *</span>
+                                <select id="" name="" title="">
+                                    <option value="">선택</option>
+                                    <option value="">서울</option>
+                                    <option value="">경기</option>
+                                </select>
+                            </div>
+                            <div>
+                                <span>응시횟수</span>
+                                <select id="" name="" title="">
+                                    <option value="">선택</option>
+                                    <option value="">초수(응시예정)</option>
+                                    <option value="">1회</option>
+                                    <option value="">2회</option>
+                                    <option value="">3회</option>
+                                    <option value="">4회</option>
+                                    <option value="">5회이상</option>
+                                </select>
+                            </div>
                         </div>
                     </td>
                 </tr>

@@ -106,143 +106,56 @@
 
         <div class="evtCtnsBox evt05">
             <div>
-                <table>
-                    <col width="15%">
-                    <col width="35%">
-                    <col width="15%">
-                    <col width="*">
-                    <tbody>
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
+                    <input type="hidden" name="file_chk" value="Y"/>
+                    <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                    <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
+                    <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+                    <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+
+                    <table>
+                        <col width="15%">
+                        <col width="35%">
+                        <col width="15%">
+                        <col width="*">
+                        <tbody>
                         <tr>
                             <th>과목선택</th>
                             <td>
-                            <select name="select1" id="select1">
-                                <option>선택</option>
-                                <option>초등</option>
-                                <option>국어</option>
-                                <option>영어</option>
-                            </select>
+                                <select name="register_data1" id="register_data1">
+                                    <option value="">선택</option>
+                                    @foreach($arr_base['subject'] as $key => $val)
+                                        @if($key <= $arr_base['max_subject_idx'])
+                                            <option value="{{ $val }}">{{ $val }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </td>
                             <th>* 윌비스 ID</th>
-                            <td>willbes</td>
+                            <td>{{sess_data('mem_id')}}</td>
                         </tr>
                         <tr>
                             <th>* 캡쳐 이미지 첨부</th>
                             <td colspan="3">
-                                <input type="file" name="fileField" id="fileField" />
-                                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a> 
+                                <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)"/>
+                                <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
                             </td>
                         </tr>
-                    </tbody>
-                </table>                
+                        </tbody>
+                    </table>
+                    <div class="btns">
+                        <a href="#none" onclick="fn_submit();">확인</a>
+                        <a href="#none" onclick="reset_form(this);">취소</a>
+                    </div>
+                </form>
             </div>
-            <div class="btns">
-                <a href="#none">확인</a>
-                <a href="#none">취소</a>
-            </div>
-            <div class="mt100 list">
-                <table>
-                    <col width="10%">
-                    <col width="15%">
-                    <col>
-                    <col width="15%">
-                    <col width="10%">
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">과목</th>
-                        <th scope="col">캡쳐이미지</th>
-                        <th scope="col">아이디</th>
-                        <th scope="col">등록일</th>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>영어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>
-                            will****
-                            <a href="#none" class="delbtn">삭제</a>
-                        </td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>국어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>수학</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>중국어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>영어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>국어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>수학</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>중국어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>수학</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>중국어</td>
-                        <td><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sample.jpg" alt=""/></td>
-                        <td>will****</td>
-                        <td>2021.01.18</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="Paging">
-                <ul>
-                    <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                    <li><a href="#none">2</a><span class="row-line">|</span></li>
-                    <li><a href="#none">3</a><span class="row-line">|</span></li>
-                    <li><a href="#none">4</a><span class="row-line">|</span></li>
-                    <li><a href="#none">5</a><span class="row-line">|</span></li>
-                    <li><a href="#none">6</a><span class="row-line">|</span></li>
-                    <li><a href="#none">7</a><span class="row-line">|</span></li>
-                    <li><a href="#none">8</a><span class="row-line">|</span></li>
-                    <li><a href="#none">9</a><span class="row-line">|</span></li>
-                    <li><a href="#none">10</a></li>
-                    <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                </ul>
+
+            <div id="registerListWrap">
             </div>
         </div>
 
@@ -261,4 +174,75 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script>
+        var $regi_form_register = $('#regi_form_register');
+
+        $(function (){
+            fnRegisterList();
+        });
+
+        function fnRegisterList(page){
+            var _url = '{{ site_url('/event/listRegisterAjax/' . $data['ElIdx']) }}';
+            var data = {
+                '{{ csrf_token_name() }}' : $regi_form_register.find('input[name="{{ csrf_token_name() }}"]').val(),
+                '_method' : 'GET',
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#registerListWrap").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if (!$regi_form_register.find('select[name="register_data1"]').val()) {
+                alert('과목을 선택해 주세요.');
+                $regi_form_register.find('select[name="register_data1"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('이미지를 등록해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if (confirm('저장하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
+
+                if($.inArray(ext, ['jpg', 'png']) == -1) {
+                    $(elem).val("");
+                    alert('jpg, png 만 업로드 가능합니다.');
+                }
+            }
+        }
+
+        function reset_form(elem){
+            $(elem).closest('form').get(0).reset();
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+            }
+        }
+    </script>
 @stop

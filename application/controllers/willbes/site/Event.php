@@ -5,7 +5,7 @@ class Event extends \app\controllers\FrontController
 {
     protected $models = array('eventF', 'siteF', 'downloadF', 'memberF', '/support/supportBoardF');
     protected $helpers = array('download');
-    protected $auth_controller = false;
+    protected $auth_controller = array('deleteRegister');
     protected $auth_methods = array();
     protected $_paging_limit = 10;
     protected $_paging_count = 10;
@@ -786,6 +786,60 @@ class Event extends \app\controllers\FrontController
 
         $result = $this->eventFModel->procPromotionEtc($this->_reqP(null, false), $this->_site_code);
         $this->json_result($result, '처리 되었습니다.', $result);
+    }
+
+    /**
+     * 프로모션 회원 신청리스트
+     * @return mixed
+     */
+    public function listRegisterAjax($params = [])
+    {
+        $data = [];
+        $el_idx = $params[0];
+
+        if(empty($el_idx)) {
+            return $this->json_error('필수 데이터 누락입니다.');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'B.ElIdx' => $el_idx,
+                'B.IsStatus' => 'Y',
+                'A.IsStatus' => 'Y',
+            ],
+        ];
+        $order_by = ['A.EmIdx' => 'DESC'];
+
+        $total_rows = $this->eventFModel->listRegisterMember(true, $arr_condition);
+        $paging = $this->pagination('/event/listRegisterAjax/' . $el_idx, $total_rows, $this->_paging_limit, $this->_paging_count,true);
+
+        if ($total_rows > 0) {
+            $data = $this->eventFModel->listRegisterMember(false,$arr_condition,$paging['limit'],$paging['offset'],$order_by);
+        }
+
+        $this->load->view('promotion/register_list_ajax', [
+            'data' => $data,
+            'paging' => $paging,
+            'total_rows' => $total_rows,
+        ]);
+    }
+
+    /**
+     * 신청내역 삭제
+     */
+    public function deleteRegister()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'em_idx', 'label' => '이벤트접수식별자', 'rules' => 'trim|required|integer']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return $this->json_error('필수 데이터 누락입니다.');
+        }
+
+        $result = $this->eventFModel->delEventRegister(element('em_idx', $this->_reqP(null)));
+        $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
 }

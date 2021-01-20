@@ -218,7 +218,7 @@
             </div> 
 
             <div id="tab02s" class="pb100">
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_tab2_con.jpg" usemap="#Map1053tab2" border="0" />
                 <map name="Map1053tab2" id="Map1053tab2">
                     <area shape="rect" coords="226,4529,468,4576" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1051" target="_blank" />
                     <area shape="rect" coords="227,4651,467,4700" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1128" target="_blank" />
@@ -316,7 +316,7 @@
                     <p class="rightBtn1"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/sparta/1051_roll_arr_r.png"></a></p>
                 </div>
                 --}}
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1053_tab3_con.jpg" />            
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1053_tab3_con.jpg" />            
             </div>
 
             <div id="tab04s">
@@ -440,7 +440,7 @@
     <!-- End Container -->
 
     <script language="javascript">
-        
+        //관리반 시설 이미지
         $(function(){ 
             var slidesImg = $(".thumbnail").bxSlider({
                 mode:'horizontal',
@@ -467,8 +467,11 @@
             });			
         });
 
-
+        function clickSildeImg(idx) {
+            $('#result_slide_img').prop('src', $('#silde_img_' + idx).prop('src'));
+        }
         
+        //
         $(document).ready(function() {
             var slidesImg1 = $("#slidesImg1").bxSlider({
                 mode:'fade',
@@ -530,11 +533,7 @@
                 $(activeTab).fadeIn();             
                 return false; 
             });
-        });
-
-        function clickSildeImg(idx) {
-            $('#result_slide_img').prop('src', $('#silde_img_' + idx).prop('src'));
-        }
+        });       
             
     </script>
 @stop

@@ -185,8 +185,6 @@
         function fnRegisterList(page){
             var _url = '{{ site_url('/event/listRegisterAjax/' . $data['ElIdx']) }}';
             var data = {
-                '{{ csrf_token_name() }}' : $regi_form_register.find('input[name="{{ csrf_token_name() }}"]').val(),
-                '_method' : 'GET',
                 'page' : page,
             };
             sendAjax(_url, data, function(ret) {

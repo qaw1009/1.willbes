@@ -792,14 +792,15 @@ class Event extends \app\controllers\FrontController
      * 프로모션 회원 신청리스트
      * @return mixed
      */
-    public function listRegisterAjax($params = [])
+    public function listRegisterAjax()
     {
         $data = [];
-        $el_idx = $params[0];
 
-        if(empty($el_idx)) {
+        if(empty($this->_reqG('el_idx')) === true) {
             return $this->json_error('필수 데이터 누락입니다.');
         }
+
+        $el_idx = $this->_reqG('el_idx');
 
         $arr_condition = [
             'EQ' => [

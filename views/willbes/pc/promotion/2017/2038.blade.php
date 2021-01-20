@@ -183,8 +183,9 @@
         });
 
         function fnRegisterList(page){
-            var _url = '{{ site_url('/event/listRegisterAjax/' . $data['ElIdx']) }}';
+            var _url = '{{ site_url('/event/listRegisterAjax') }}';
             var data = {
+                'el_idx' : '{{ $data['ElIdx'] }}',
                 'page' : page,
             };
             sendAjax(_url, data, function(ret) {

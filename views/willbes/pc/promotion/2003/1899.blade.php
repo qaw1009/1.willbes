@@ -34,16 +34,20 @@
 
         .wb_03  {background:#ADBBC8 url("https://static.willbes.net/public/images/promotion/2020/11/1899_03_bg.jpg") center top no-repeat}
 
+        .wb_01s {background:#fff url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
+
         .wb_04  {background:#E1D3CA;}
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
-        <div class="sky">
-            <a href="#lecbuy"> 
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1899_sky.jpg" alt="" >
-            </a>             
-        </div> 
-    
+        <div class="sky">         
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1899_sky.png" alt="고급영어 & 이론패키지" usemap="#Map1899_sky" border="0" >
+            <map name="Map1899_sky" id="Map1899_sky">
+                <area shape="rect" coords="0,0,163,217" href="#lecbuy" />
+                <area shape="rect" coords="0,229,180,465" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank"> 
+            </map>                        
+        </div>     
+
         <div class="evtCtnsBox intro">
             <div class="number">
                 <span id="counter1" class="n01">30</span>
@@ -61,23 +65,30 @@
         </div>      
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_top.jpg" alt="" />  
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_top.jpg" alt="신석 교수님" />  
         </div>       
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_01.jpg" alt="" />  
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_01.jpg" alt="영어 학습 신세계" />  
         </div>     
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_02.jpg" alt="" />  
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_02.jpg" alt="가장 고민하는 과목 영어" />  
         </div>     
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_03.jpg" alt="" />  
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_03.jpg" alt="프로그램 스타트" />  
         </div> 
 
+        <div class="evtCtnsBox wb_01s">
+			<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기" usemap="#Map0119_add" border="0">
+			<map name="Map0119_add" id="Map0119_add">
+				<area shape="rect" coords="362,943,760,1017" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" />
+			</map>
+        </div>	
+
         <div class="evtCtnsBox wb_04" id="lecbuy">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_04.jpg" alt="" usemap="#Map1899a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_04.jpg" alt="수강신청" usemap="#Map1899a" border="0" />
             <map name="Map1899a" id="Map1899a">
                 <area shape="rect" coords="218,843,432,909" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174277" target="_blank" alt="기초영어"/>
                 <area shape="rect" coords="689,841,903,907" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174276" target="_blank" alt="고급영어"/>

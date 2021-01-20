@@ -15,12 +15,15 @@
 
 		/************************************************************/
 		
-		.skybanner {position:fixed;top:200px;right:50px;width:122px;z-index:10;}
+		.skybanner {position:fixed;top:160px;right:50px;width:122px;z-index:10;}
         .wb_top {background:#E8E8E8 url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
 		.wb_00 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top;}
 
-		.wb_01{background:#fff;}       
+		.wb_01{background:#fff;}      
+
+		.wb_01s {background:#fff url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
+
 		.wb_02{background:#f4f4f4;}  
 		
 		.content_guide_wrap {background:#fff; width:1210px; margin:0 auto; padding:50px 0 100px;}
@@ -85,6 +88,9 @@
 				<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>	
+			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2028_sky.png" alt="이론패키지 신청하기" >
+            </a>   
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -109,6 +115,13 @@
 		<div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
         </div>		
+
+		<div class="evtCtnsBox wb_01s">
+			<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기" usemap="#Map0119_add" border="0">
+			<map name="Map0119_add" id="Map0119_add">
+				<area shape="rect" coords="362,943,760,1017" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" />
+			</map>
+        </div>	
 
 		<div class="evtCtnsBox wb_02" id="to_go">
 			<img src="https://static.willbes.net/public/images/promotion/2020/09/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />

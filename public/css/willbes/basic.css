@@ -1446,9 +1446,9 @@ select[disabled] {
 	background: #1a8ccc !important;
 	border-radius: 40px;
 	font-size: 16px !important;
-	font-weight: 600 !important;
 	border: 1px solid #1a8ccc;
 	font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
+	margin-bottom:30px;
 }
 .btn-Board-Link:hover {
 	background: #fff !important;

@@ -2110,7 +2110,8 @@ class EventFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                A.EmIdx, A.MemIdx, A.EtcValue, DATE_FORMAT(A.RegDatm, \'%Y.%m.%d\') AS RegDatm, A.UserName, A.FileFullPath, A.FileRealName
+                A.EmIdx, A.MemIdx, A.EtcValue, DATE_FORMAT(A.RegDatm, \'%Y.%m.%d\') AS RegDatm, A.UserName, A.FileFullPath, A.FileRealName,
+                C.MemId
             ';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -2120,6 +2121,7 @@ class EventFModel extends WB_Model
         $from = "
             FROM {$this->_table['event_member']} AS A
             INNER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx
+            INNER JOIN {$this->_table['lms_member']} AS C ON A.MemIdx = C.MemIdx AND C.IsStatus = 'Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);

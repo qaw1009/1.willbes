@@ -21,10 +21,10 @@
                     <td style="text-align: center"><img src="{{ $row['FileFullPath'] }}" alt=""/></td>
                     <td>
                         @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
-                            {{ $row['UserName'] }}
+                            {{ $row['MemId'] }}
                             <a href="#none" class="delbtn" onclick="delRegister('{{ $row['EmIdx'] }}')">삭제</a>
                         @else
-                            {!! hpSubString($row['UserName'],0,2,'*') !!}
+                            {{ str_replace(substr($row['MemId'],-4), "****", $row['MemId']) }}
                         @endif
                     </td>
                     <td>{{ $row['RegDatm'] }}</td>

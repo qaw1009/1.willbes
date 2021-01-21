@@ -18,6 +18,9 @@
 
         /************************************************************/
 
+        .skyBanner {position:fixed; width:180px; top:250px; right:10px; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:10px}
+
         .evtTop {background:#464bdb url(https://static.willbes.net/public/images/promotion/2021/01/2038_top_bg.jpg) repeat-y center top;}
         .evt01 {background:#4346df}
         .evt02 {background:#383840}
@@ -57,6 +60,12 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="skyBanner">
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky.png" alt="영상 바로가기"/></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky2.png" alt="이벤트 참여"/></a>
+        </div>
+
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_top.jpg" alt="윌비스 임용 유튜브 이벤트"/>
         </div>
@@ -73,7 +82,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_03.jpg" alt="참여방법"/>
         </div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" id="evt04">
             <div class="evt04top">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04.jpg" alt=""/>
                 <a href="https://www.youtube.com/channel/UCzF3YAxdQmtZcUqsEUFLRMQ" title="유튜브" target="_blank" class="link01"></a>
@@ -104,7 +113,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt05">
             <div>
                 <form name="regi_form_register" id="regi_form_register">
                     {!! csrf_field() !!}

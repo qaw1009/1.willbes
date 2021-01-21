@@ -1088,6 +1088,12 @@
                                         <div>알집</div>
                                     </a>
                                 </dt>
+                                <dt>
+                                    <a href="#none">
+                                        <img src="{{ img_url('cs/icon_program_671001.gif') }}">
+                                        <div>알집</div>
+                                    </a>
+                                </dt>
                             </dl>
                         </div>
                         <a class="bnr_mobile" href="#none"><img src="{{ img_url('cs/bnr_mobile_n.jpg') }}"></a>

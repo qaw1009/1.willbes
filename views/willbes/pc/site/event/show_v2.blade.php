@@ -86,7 +86,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#btn_list').click(function() {
-                location.href = '{!! front_url($arr_base['page_url']) !!}';
+                location.href = '{{ front_url('/event/list/all') }}';
             });
 
             /**

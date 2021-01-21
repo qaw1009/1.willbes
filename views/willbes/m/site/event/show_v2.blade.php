@@ -64,7 +64,7 @@
             <!-- show_comment_list -->
 
             <div class="lecSubject mt40">
-                <a href="{{front_url($arr_base['page_url'])}}">목록</a>
+                <a href="{{ front_url('/event/list/all') }}">목록</a>
             </div>
         </div>
 

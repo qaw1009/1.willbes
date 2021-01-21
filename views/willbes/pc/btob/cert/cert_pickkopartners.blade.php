@@ -47,18 +47,18 @@ select option:before {height:20px}
     <div class="popWrap NGR mt5">
         <div class="logo">
             <img src="https://police.stage.willbes.net/public/img/willbes/gnb/logo.gif" alt="윌비스" />
-            <span class="zaksim"><img src="https://static.willbes.net/public/images/btob/zaksim_logo_b.png" alt="작심독서실" /></span>
+            <span class="zaksim"><img src="https://static.willbes.net/public/images/btob/pickko_logo_b.png" alt="픽코파트너스" /></span>
         </div>
         <div class="copyright">
             <span>제휴<br>인증센터</span>
             <div>
-                윌비스 신광은 경찰/공무원 & 작심독서실
+                윌비스 신광은 경찰/공무원 & 픽코파트너스
                 <h4>온라인 강좌 수강신청</h4>
-                <p>대한민국 1등 윌비스 신광은경찰 및 공무원 & 업계성장률 1위<br> 프리미엄 독서실 국민브랜드 '작심'이 함께 열공 지원합니다.</p>
+                <p>대한민국 1등 윌비스 신광은 경찰 및 공무원 & 픽코파트너스가 함께 열공 지원합니다.</p>
             </div>
         </div>
         <div class="popCts">
-            <h4>◎ 작심회원 인증 정보 입력</h4>
+            <h4>◎ 픽코회원 인증 정보 입력</h4>
             • 윌비스 회원이 아니신 분은 회원 가입 후 신청해 주세요. (로그인 필수)
             <form class="form-horizontal" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -114,14 +114,14 @@ select option:before {height:20px}
                 <label for="agree">아래 콘텐츠 및 개인정보 이용안내 관련한 내용을 확인하였고, 이에 동의합니다. (필수)</label>
 
                 <div class="btns">
-                    <a href="#none" class="btn-cert-apply">작심회원 인증 신청하기</a>
+                    <a href="#none" class="btn-cert-apply">픽코회원 인증 신청하기</a>
                 </div>
             </form>
 
             <h4>◎ 콘텐츠 및 개인정보 이용 안내</h4>
             <div class="cl01">[콘텐츠 이용안내]</div>
             <ul>
-                <li>해당 콘텐츠는 작심독서실 1개월(30일), 작심스터디카페 4주권 또는 월 100시간권 이상 이용권을 결제한 작심 회원 대상입니다.</li>
+                <li>해당 콘텐츠는 픽코파트너스 이용 회원 대상입니다. /li>
                 <li>지점에 따라 제공이 불가능할 수 있습니다.(해당 지점에 확인해주세요.)</li>
                 <li>지급 강좌는 좌석 이용기간이 만료되면 종료됩니다.</li>
                 <li>아이디공유, 재판매, 양도시에는 콘텐츠는 지급대상에서 제외되며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다.</li>
@@ -132,7 +132,7 @@ select option:before {height:20px}
             <div class="cl01">[개인정보 이용안내]</div>
             <ul>
                 <li>
-                    본 서비스는 작심독서실 이용자에 한해 제공되며, 이용자 확인을 위해 다음과 같이 개인정보가 제공됩니다.
+                    본 서비스는 픽코콘텐츠 이용자에 한해 제공되며, 이용자 확인을 위해 다음과 같이 개인정보가 제공됩니다.
                     <table>
                         <col width="55%"/>
                         <col />
@@ -143,11 +143,11 @@ select option:before {height:20px}
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자</th>
-                            <td>㈜아이엔지스토리 '작심독서실', '작심스터디카페'</td>
+                            <td>‘하우스터디독서실’, ‘하우스터디스터디카페＇</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자의 개인정보 이용목적</th>
-                            <td>'작심독서실', '작심스터디카페' 이용자 확인</td>
+                            <td>‘하우스터디독서실’, ‘하우스터디스터디카페＇ 이용자 확인</td>
                         </tr>
                         <tr>
                             <th>개인정보를 제공 받는 자의 개인정보 이용기간 및 보유기간</th>

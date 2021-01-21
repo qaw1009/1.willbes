@@ -3,17 +3,17 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
+    
+
     <style type="text/css">
         .evtContent {
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            margin-top:20px !important;
             padding:0 !important;
             background:#fff;
             color:#3a3a3a;
         }
-        .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
@@ -21,14 +21,11 @@
             position:fixed;
             top:250px;
             right:10px;
-            z-index:9999;
+            z-index:1;
             width:150px;
             text-align:left;
         }
         .skybanner a {display:block; margin-bottom:5px; text-align:center}
-
-        .embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } 
-        .embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index:1}
 
         .evtTop {background:#000} 
 
@@ -108,16 +105,31 @@
         .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px }
 
         .evtReply { width:940px; margin:0 auto; position:relative}
+
+        a.top {position: fixed; right: 10px; bottom: 10px; display: none; width:40px; height:40px; line-height:40px; font-size:14px; text-align:center; background:#333; color:#fff; border-radius:25px; z-index:9999}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+
+    <div id="background" class="player mt20" data-property="{
+        videoURL:'https://youtu.be/uR6eivD1zV4',
+        mute: true,
+        showControls: false,
+        useOnMobile: true,
+        quality: 'highres',
+        containment: 'self',
+        loop: true,
+        autoPlay: true,
+        stopMovieOnBlur: false,
+        startAt: 0,
+        opacity: 1
+        }"></div>
+
+
+
+    <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky02.png" alt=""></a>                           
-        </div> 
-
-        <div class='embed-container'>
-            <iframe src="https://www.youtube.com/embed/uR6eivD1zV4?rel=0&autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>          
         </div>
 
 		<div class="evtCtnsBox evtTop">
@@ -282,8 +294,44 @@
                 <p>※ 문의안내 : 1544-5006</p>
             </div>
         </div>
+
+        <a href="#evtContainer" class="top">Top</a>
     </div>
+
+    
+
     <!-- End Container -->
+
+    {{--//상단영상--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.1/css/jquery.mb.YTPlayer.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.1/jquery.mb.YTPlayer.min.js"></script>
+    <script>     
+        //상단영상
+        jQuery( function() {
+            jQuery( '#background' ).YTPlayer();
+        } );
+    </script>
+    <script>
+      $( document ).ready( function() {
+        $( window ).scroll( function() {
+          if ( $( this ).scrollTop() > 200 ) {
+            $( '.top' ).fadeIn();
+          } else {
+            $( '.top' ).fadeOut();
+          }
+        } );
+        $( '.top' ).click( function() {
+          $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+          return false;
+        } );
+      } );
+    </script>
+    <style>
+      #background { z-index: -1; background:#000;}
+    </style>
+
+    {{--상단영상//--}}
+
 
     <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
     <script language='javascript'>

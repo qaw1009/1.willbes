@@ -23,7 +23,7 @@
     
         .evtCtnsBox input[type=checkbox] {width:20px; height:20px; vertical-align:middle}
 
-        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2034_top_bg.jpg) repeat-x center top;}
+        .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2034_top_bg.jpg) no-repeat center top;}
 
         .event01 {background:#1c1c1c; padding-bottom:100px}
 

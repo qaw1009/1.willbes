@@ -26,7 +26,7 @@
 
             .tabs { margin-left:-490px; width:980px; z-index:10;margin:0 auto;padding-top:25px;}
             .tabs ul{width:789px;margin:0 auto;}
-            .tabs li {display:inline; float:left; width:20%;}
+            .tabs li {display:inline; float:left; width:16.6%;}
             .tabs li a {display:block; text-align:center; height:45px; line-height:45px; background:#b7b7b7; color:#fff; font-size:16px; margin-right:4px;border-radius:16px;}
             .tabs li a:hover,
             .tabs li a.active {background:#c6b269;}
@@ -68,6 +68,7 @@
                 <ul>
                     <li><a href="#tab01">서울(노량진)</a></li>
                     <li><a href="#tab02">인천</a></li>
+                    <li><a href="#tab03">전북</a></li>
                     <li><a href="#tab04">광주</a></li>
                     <li><a href="#tab05">대구</a></li>
                     <li><a href="#tab06">부산</a></li>
@@ -77,7 +78,10 @@
                 </div>
                 <div id="tab02">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab02.jpg" alt="인천" />
-                </div>              
+                </div>     
+                <div id="tab03">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab03.jpg" alt="전북" />
+                </div>         
                 <div id="tab04">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab04.jpg" alt="광주" />
                 </div>

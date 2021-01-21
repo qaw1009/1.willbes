@@ -63,13 +63,24 @@ class Event extends \app\controllers\FrontController
         }
         $this->setDefaultData($onoff_type, $page_url, $view_url);
 
+        $file_type = '';
+        if(strpos($onoff_type, '_v') !== false){
+            $file_type = '_' . explode('_', $onoff_type)[1];
+        }
+
         switch ($onoff_type) {
             case 'ongoing': // 진행중 이벤트
-                $this->ongoing();
+            case 'ongoing_v2':
+                $this->ongoing($file_type);
                 break;
 
             case 'end': // 종료 이벤트
-                $this->end();
+            case 'end_v2':
+                $this->end($file_type);
+                break;
+
+            case 'all':
+                $this->all();
                 break;
 
             default:
@@ -87,6 +98,7 @@ class Event extends \app\controllers\FrontController
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
+        $file_type = '';
 
         $result = $this->eventFModel->modifyEventRead(element('event_idx', $arr_input));
         if($result !== true) {
@@ -115,9 +127,25 @@ class Event extends \app\controllers\FrontController
             ]
         ];
 
+        if($onoff_type == 'all'){
+            // 이벤트 상태 조회
+            $data = $this->eventFModel->findEvent($default_condition);
+            if (empty($data) === true) {
+                show_alert('데이터 조회에 실패했습니다.', front_url($page_url), false);
+            }
+
+            // 진행중 이벤트 여부 확인 후 분기
+            if($data['IsRegister'] == 'Y' && $data['RegisterEndDate'] > date('Y-m-d H:i:s')){
+                $onoff_type = 'ongoing_v2';
+            }else{
+                $onoff_type = 'end_v2';
+            }
+        }
+
         $arr_condition = [];
         switch ($onoff_type) {
             case 'ongoing': // 진행중 이벤트
+            case 'ongoing_v2':
                 $arr_condition = array_merge($default_condition, [
                     'GTE' => [
                         'A.RegisterEndDate' => date('Y-m-d H:i') . ':00'
@@ -126,6 +154,7 @@ class Event extends \app\controllers\FrontController
                 break;
 
             case 'end': // 종료 이벤트
+            case 'end_v2':
                 $arr_condition = array_merge($default_condition, [
                     'ORG2' => [
                         'EQ' => [
@@ -179,6 +208,10 @@ class Event extends \app\controllers\FrontController
 
         $register_create_type = $this->_createRegisterChk(count($arr_register_data), $arr_input, $data, $onoff_type);
 
+        if(strpos($onoff_type, '_v') !== false){
+            $file_type = '_' . explode('_', $onoff_type)[1];
+        }
+
         $arr_base['page_url'] = $page_url;
         $arr_base['onoff_type'] = $onoff_type;
         $arr_base['content_type'] = $this->eventFModel->_content_type;
@@ -187,7 +220,7 @@ class Event extends \app\controllers\FrontController
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;
         $arr_base['register_create_type'] = $register_create_type;
 
-        $this->load->view('site/event/show',[
+        $this->load->view('site/event/show' . $file_type,[
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
@@ -210,7 +243,7 @@ class Event extends \app\controllers\FrontController
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';
-        if ($onoff_type == 'ongoing') {
+        if (in_array($onoff_type, ['ongoing', 'ongoing_v2']) === true) {
             if (element('take_type', $arr_input) == 1) {
                 if ($this->session->userdata('is_login') !== true) {
                     $comment_create_type = '2';
@@ -527,16 +560,18 @@ class Event extends \app\controllers\FrontController
 
     /**
      * 진행중이벤트 인덱스
+     * @param null $file_type
      */
-    private function ongoing()
+    private function ongoing($file_type = null)
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
         $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
-        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input));
+        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input))  . '&s_event_type=' . element('s_event_type', $arr_input);
 
         $arr_base['request_type'] = $this->eventFModel->_request_type;
+        $arr_base['event_type'] = $this->eventFModel->_event_type;
 
         //진행중,마감 이벤트 타입
         $arr_base['onoff_type'] = $this->getDefaultData('_onoff_type');
@@ -587,28 +622,29 @@ class Event extends \app\controllers\FrontController
             $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
         }
 
-        $this->load->view('site/event/index', [
+        $this->load->view('site/event/index' . $file_type, [
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'list' => $list,
             'paging' => $paging,
-            'onoff_type' => $this->_onoff_type,
         ]);
     }
 
     /**
      * 종료된이벤트 인덱스
+     * @param null $file_type
      */
-    private function end()
+    private function end($file_type = null)
     {
         $list = [];
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
         $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
-        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input));
+        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input))  . '&s_event_type=' . element('s_event_type', $arr_input);
 
         $arr_base['request_type'] = $this->eventFModel->_request_type;
+        $arr_base['event_type'] = $this->eventFModel->_event_type;
 
         //진행중,마감 이벤트 타입
         $arr_base['onoff_type'] = $this->getDefaultData('_onoff_type');
@@ -663,13 +699,80 @@ class Event extends \app\controllers\FrontController
             $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
         }
 
-        $this->load->view('site/event/index', [
+        $this->load->view('site/event/index' . $file_type, [
             'arr_base' => $arr_base,
             'arr_input' => $arr_input,
             'get_params' => $get_params,
             'list' => $list,
             'paging' => $paging,
-            'onoff_type' => $this->_onoff_type,
+        ]);
+    }
+
+    /**
+     * 전체이벤트 인덱스
+     */
+    private function all()
+    {
+        $list = [];
+        $arr_input = array_merge($this->_reqG(null));
+        $get_params = http_build_query($arr_input);
+        $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
+        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input)) . '&s_event_type=' . element('s_event_type', $arr_input);
+
+        $arr_base['request_type'] = $this->eventFModel->_request_type;
+        $arr_base['event_type'] = $this->eventFModel->_event_type;
+
+        //진행중,마감 이벤트 타입
+        $arr_base['onoff_type'] = $this->getDefaultData('_onoff_type');
+
+        //기본경로셋팅
+        $arr_base['page_url'] = $this->getDefaultData('_page_url');
+        $arr_base['view_url'] = $this->getDefaultData('_view_url');
+
+        //캠퍼스조회
+        $arr_base['campus'] = ($this->_is_pass_site === true) ? $this->siteFModel->getSiteCampusArray($this->_site_code) : [];
+
+        $arr_condition = [
+            'EQ' => [
+                'A.IsUse' => 'Y',
+                'A.IsStatus' => 'Y',
+                'A.SiteCode' => $this->_site_code,
+                'A.RequestType' => element('s_request_type', $arr_input),
+                'A.CampusCcd' => element('s_campus', $arr_input)
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'A.EventName' => element('s_keyword', $arr_input)
+                ]
+            ],
+        ];
+
+        $sub_query_condition = [
+            'EQ' => [
+                'B.IsStatus' => 'Y',
+                'B.CateCode' => $this->_cate_code
+            ]
+        ];
+
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
+        $total_rows = $this->eventFModel->listAllEvent(true, $arr_condition, $sub_query_condition);
+        $paging = $this->pagination($arr_base['page_url'].'?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
+
+        if ($total_rows > 0) {
+            $list = $this->eventFModel->listAllEvent(false, $arr_condition, $sub_query_condition, $paging['limit'], $paging['offset'], ['A.IsBest' => 'DESC', 'A.ElIdx' => 'DESC']);
+        }
+
+        $this->load->view('site/event/index_v2', [
+            'arr_base' => $arr_base,
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'list' => $list,
+            'paging' => $paging,
         ]);
     }
 
@@ -684,7 +787,7 @@ class Event extends \app\controllers\FrontController
     private function _createRegisterChk($register_count, $arr_input, $data, $onoff_type)
     {
         $return_type = 1;
-        if ($onoff_type == 'ongoing') {
+        if (in_array($onoff_type, ['ongoing', 'ongoing_v2']) === true) {
             switch ($data['TakeType']) {
                 case "1":   //회원
                     if (empty($this->session->userdata('mem_idx')) === true) {

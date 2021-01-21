@@ -98,6 +98,8 @@ class Event extends \app\controllers\FrontController
         $method = 'POST';
         $arr_input = array_merge($this->_reqG(null));
         $get_params = http_build_query($arr_input);
+        $get_page_params = 's_request_type=' . element('s_request_type', $arr_input) . '&s_campus=' . element('s_campus', $arr_input);
+        $get_page_params .= '&s_keyword=' . urlencode(element('s_keyword', $arr_input))  . '&s_event_type=' . element('s_event_type', $arr_input);
         $file_type = '';
 
         $result = $this->eventFModel->modifyEventRead(element('event_idx', $arr_input));
@@ -108,11 +110,11 @@ class Event extends \app\controllers\FrontController
         //학원,온라인 경로 셋팅
         if (empty($params['cate']) === false) {
             $onoff_type = $this->_getOnOffType($params['pattern'], element('event_idx', $arr_input));
-            $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
+            $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$params['pattern'];
             $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         } else {
             $onoff_type = $this->_getOnOffType($params[0], element('event_idx', $arr_input));
-            $page_url = '/event/list/'.$onoff_type;
+            $page_url = '/event/list/'.$params[0];
             $frame_params = 'cate_code=&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         }
 
@@ -211,7 +213,8 @@ class Event extends \app\controllers\FrontController
             'get_params' => $get_params,
             'frame_params' => $frame_params,
             'data' => $data,
-            'method' => $method
+            'method' => $method,
+            'get_page_params' => $get_page_params
         ]);
     }
 

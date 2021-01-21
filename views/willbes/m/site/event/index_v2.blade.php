@@ -26,7 +26,7 @@
 
             @if(empty($arr_base['request_type']) === false)
                 <select id="s_request_type" name="s_request_type" title="이벤트종류" class="width50p ml1p" onchange="goUrl('s_request_type',this.value)">
-                    <option value="">전체 이벤트</option>
+                    <option value="">유형</option>
                     @foreach($arr_base['request_type'] as $key => $val)
                         <option value="{{$key}}" @if(element('s_request_type', $arr_input) == $key)selected="selected"@endif>{{$val}}</option>
                     @endforeach

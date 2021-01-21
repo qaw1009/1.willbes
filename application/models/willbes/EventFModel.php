@@ -60,6 +60,11 @@ class EventFModel extends WB_Model
         '2' => '특강',
         '3' => '이벤트',
     ];
+    public $_event_type = [
+        'all' => '전체 이벤트',
+        'ongoing_v2' => '진행중',
+        'end_v2' => '종료',
+    ];
     public $_content_type = [
         'image' => 'I',
         'editer' => 'E'

@@ -107,11 +107,11 @@ class Event extends \app\controllers\FrontController
 
         //학원,온라인 경로 셋팅
         if (empty($params['cate']) === false) {
-            $onoff_type = $params['pattern'];
+            $onoff_type = $this->_getOnOffType($params['pattern'], element('event_idx', $arr_input));
             $page_url = '/event/list/cate/'.$params['cate'].'/pattern/'.$onoff_type;
             $frame_params = 'cate_code='.$params['cate'].'&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         } else {
-            $onoff_type = $params[0];
+            $onoff_type = $this->_getOnOffType($params[0], element('event_idx', $arr_input));
             $page_url = '/event/list/'.$onoff_type;
             $frame_params = 'cate_code=&event_idx='.element('event_idx', $arr_input).'&pattern='.$onoff_type;
         }
@@ -126,21 +126,6 @@ class Event extends \app\controllers\FrontController
                 'A.IsStatus' => 'Y'
             ]
         ];
-
-        if($onoff_type == 'all'){
-            // 이벤트 상태 조회
-            $data = $this->eventFModel->findEvent($default_condition);
-            if (empty($data) === true) {
-                show_alert('데이터 조회에 실패했습니다.', front_url($page_url), false);
-            }
-
-            // 진행중 이벤트 여부 확인 후 분기
-            if($data['IsRegister'] == 'Y' && $data['RegisterEndDate'] > date('Y-m-d H:i:s')){
-                $onoff_type = 'ongoing_v2';
-            }else{
-                $onoff_type = 'end_v2';
-            }
-        }
 
         $arr_condition = [];
         switch ($onoff_type) {
@@ -228,6 +213,35 @@ class Event extends \app\controllers\FrontController
             'data' => $data,
             'method' => $method
         ]);
+    }
+
+    /**
+     * 이벤트 진행상태 조회
+     * @param null $pattern
+     * @param null $event_idx
+     */
+    private function _getOnOffType($pattern = null, $event_idx = null)
+    {
+        if($pattern == 'all'){
+            $arr_condition = [
+                'EQ'=>[
+                    'A.ElIdx' => $event_idx,
+                    'A.IsStatus' => 'Y'
+                ]
+            ];
+            $data = $this->eventFModel->findEvent($arr_condition);
+
+            // 진행중 이벤트 여부 확인 후 분기
+            if (empty($data) === false) {
+                if($data['IsRegister'] == 'Y' && $data['RegisterEndDate'] > date('Y-m-d H:i:s')){
+                    $pattern = 'ongoing_v2';
+                }else{
+                    $pattern = 'end_v2';
+                }
+            }
+        }
+
+        return $pattern;
     }
 
     /**

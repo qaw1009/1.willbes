@@ -106,7 +106,6 @@
 
         .evtReply { width:940px; margin:0 auto; position:relative}
 
-        a.top {position: fixed; right: 10px; bottom: 10px; display: none; width:40px; height:40px; line-height:40px; font-size:14px; text-align:center; background:#333; color:#fff; border-radius:25px; z-index:9999}
     </style>
 
 
@@ -294,8 +293,6 @@
                 <p>※ 문의안내 : 1544-5006</p>
             </div>
         </div>
-
-        <a href="#" class="top">Top</a>
     </div>
 
     
@@ -310,21 +307,6 @@
         jQuery( function() {
             jQuery( '#background' ).YTPlayer();
         } );
-    </script>
-    <script>
-      $( document ).ready( function() {
-        $( window ).scroll( function() {
-          if ( $( this ).scrollTop() > 200 ) {
-            $( '.top' ).fadeIn();
-          } else {
-            $( '.top' ).fadeOut();
-          }
-        } );
-        $( '.top' ).click( function() {
-          $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
-          return false;
-        } );
-      } );
     </script>
     <style>
       #background { z-index: -1; background:#000;}

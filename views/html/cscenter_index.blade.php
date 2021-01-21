@@ -1091,7 +1091,7 @@
                                 <dt>
                                     <a href="#none">
                                         <img src="{{ img_url('cs/icon_program_671001.gif') }}">
-                                        <div>알집</div>
+                                        <div>ezPDFReader</div>
                                     </a>
                                 </dt>
                             </dl>

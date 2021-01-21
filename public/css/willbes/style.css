@@ -8375,11 +8375,14 @@ ul li.profList .willbes-Layer-ProfileBox {
 	height: 100%;
 	border: 5px solid #eaeaea;
 	padding: 10px 0;
+	
 }
 .willbes-program dl dt div {
 	font-size: 11px;
 	color: #3a3a3a;
-	margin-bottom: 10px;
+	width: 95%;
+	margin:0 auto 10px;	
+	overflow: hidden;white-space:nowrap; text-overflow:ellipsis;	
 }
 .bnr_mobile {
 	display: block;

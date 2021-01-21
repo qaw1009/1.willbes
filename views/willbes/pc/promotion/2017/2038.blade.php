@@ -62,8 +62,8 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skyBanner">
-            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky.png" alt="영상 바로가기"/></a>
-            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky2.png" alt="이벤트 참여"/></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky2.png" alt="영상 바로가기"/></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky.png" alt="이벤트 참여"/></a>
         </div>
 
         <div class="evtCtnsBox evtTop">

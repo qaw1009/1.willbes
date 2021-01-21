@@ -66,7 +66,7 @@
         .youtube_divide .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
         .youtube_divide .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
         .youtube_divide .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
-                                                                            overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
+                                                                            overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;}
         .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}        
 
  </style>
@@ -89,16 +89,16 @@
   <div class="evtCtnsBox wb_cts01">
     <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_01.jpg"  title="예비전력관리업무담당자 김도형 교수" />
   </div>   
-  {{--
+
   <div class="evtCtnsBox wb_cts02" >
     <img src="https://static.willbes.net/public/images/promotion/2021/01/1767_02.jpg" alt="합경을 이끌어낸 그 과정"/>
     <div class="youtube_contents">
         <div class="youtube_divide">             
             <div class="preview_area">
                 <div class="avi_box">
-                    <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
+                    <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/T7bpGfvf-_U?rel=0"></iframe>
                 </div>
-                <h2 class="avi_title">[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
+                <h2 class="avi_title">예비군법 핵심포인트 정리! - 『법+위·사·시·필·사』</h2>
             </div>
             <div class="preview_list_area">
                 <div class="preview_list">
@@ -108,10 +108,12 @@
                                 <span class="num_box" data-num="1">1</span>
                                 <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                 <div class="text_box">
-                                    <p>기초전기전자 직렬별 출제유형 전격 공개</p>
+                                    <p>예비군법 핵심포인트 정리! - 『법+위·사·시·필·사』</p>
                                 </div>
                             </a>
                         </li>
+
+                        {{--
                         <li class="">
                             <a href="#tab2">
                                 <span class="num_box" data-num="2">2</span>
@@ -121,6 +123,7 @@
                                 </div>
                             </a>
                         </li>
+
                         <li class="">
                             <a href="#tab3">
                                 <span class="num_box" data-num="3">3</span>
@@ -130,6 +133,7 @@
                                 </div>
                             </a>
                         </li>
+
                         <li class="">
                             <a href="#tab4">
                                 <span class="num_box" data-num="4">4</span>
@@ -190,7 +194,6 @@
                             </a>
                         </li>
 
-                        {{--
                         <li class="">
                             <a href="#tab10">
                                 <span class="num_box" data-num="10">10</span>
@@ -201,14 +204,15 @@
                                 </div>
                             </a>
                         </li>    
-                        --}}                                     
+                        --}}        
+
                     </ul>
                 </div>
             </div>          
         </div>
     </div>
   </div>  
-  --}}
+
   <div class="evtCtnsBox wb_cts02s">
     <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_02.jpg"  title="" />
   </div>
@@ -292,7 +296,7 @@
 
 
       //유툽
-      var tab1_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
+      var tab1_url = "https://www.youtube.com/embed/T7bpGfvf-_U?rel=0";
       var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
       var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
       var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   

@@ -8,7 +8,6 @@
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            margin-top:20px !important;
             padding:0 !important;
             background:#fff;
             color:#3a3a3a;
@@ -110,14 +109,39 @@
         .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
+    {{--//상단영상--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.1/css/jquery.mb.YTPlayer.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.3.1/jquery.mb.YTPlayer.min.js"></script>
+    <script>
+        jQuery( function() {
+            jQuery( '#background' ).YTPlayer();
+        } );
+    </script>
+    <style>
+      #background { z-index: -1; }
+    </style>
+
+    <div id="background" class="player mt20" data-property="{
+        videoURL:'https://youtu.be/uR6eivD1zV4',
+        mute: true,
+        showControls: false,
+        useOnMobile: true,
+        quality: 'highres',
+        containment: 'self',
+        loop: true,
+        autoPlay: true,
+        stopMovieOnBlur: false,
+        startAt: 0,
+        opacity: 1
+        }">
+    </div>
+    {{--상단영상//--}}
+
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner" >            
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky02.png" alt=""></a>                           
-        </div> 
-
-        <div class='embed-container'>
-            <iframe src="https://www.youtube.com/embed/uR6eivD1zV4?rel=0&autoplay=1&amp;mute=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>          
         </div>
 
 		<div class="evtCtnsBox evtTop">
@@ -284,6 +308,9 @@
         </div>
     </div>
     <!-- End Container -->
+
+
+
 
     <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
     <script language='javascript'>

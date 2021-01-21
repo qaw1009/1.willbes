@@ -106,7 +106,7 @@
                         <li class="on">
                             <a href="#tab1" class="active">
                                 <span class="num_box" data-num="1">1</span>
-                                <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail01.jpg" alt=""></div>
                                 <div class="text_box">
                                     <p>예비군법 핵심포인트 정리! - 『법+위·사·시·필·사』</p>
                                 </div>

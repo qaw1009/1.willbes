@@ -16,7 +16,7 @@
                         @if($__cfg['SiteCode'] == '2017')
                         <div class="willbes-m-guide NGEB">
                             <div class="tabBox">
-                                <div class="tabContent"><img src="{{ img_url('cs/willbes_m_guide01_2007.jpg') }}" alt="모바일 웹"></div>
+                                <div class="tabContent"><img src="https://static.willbes.net/public/images/promotion/sub/2007_willbes_m_guide.jpg" alt="모바일 웹"></div>
                             </div>
                         </div>
                         @else  

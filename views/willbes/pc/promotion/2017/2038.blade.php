@@ -13,8 +13,11 @@
             background:#fff;
             color:#3a3a3a;
         }
+
+        .evtContent a.top {position: fixed; right: 10px; bottom: 10px; display: none; width:40px; height:40px; line-height:40px; font-size:14px; text-align:center; background:#333; color:#fff; border-radius:25px; z-index:9999}
  
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        
 
         /************************************************************/
 
@@ -181,8 +184,26 @@
                 </ul>
             </div>
         </div>
+
+        <a href="#evtContainer" class="top">Top</a>
     </div>
     <!-- End Container -->
+
+    <script>
+      $( document ).ready( function() {
+        $( window ).scroll( function() {
+          if ( $( this ).scrollTop() > 200 ) {
+            $( '.top' ).fadeIn();
+          } else {
+            $( '.top' ).fadeOut();
+          }
+        } );
+        $( '.top' ).click( function() {
+          $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+          return false;
+        } );
+      } );
+    </script>
 
     <script>
         var $regi_form_register = $('#regi_form_register');

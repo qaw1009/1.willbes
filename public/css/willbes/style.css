@@ -8559,9 +8559,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 .tabWrap.tab_m_Guide li a {
 	height: 49px;
 	font-size: 14px;
+	line-height: 49px;
 }
 .tabWrap.tab_m_Guide li a.on {
 	height: 50px;
+	line-height: 50px;
 }
 
 /* subContainer : Cs : CScenter1 : Act6 : PC 원격지원 */

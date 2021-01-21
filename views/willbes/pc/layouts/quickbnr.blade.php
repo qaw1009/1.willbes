@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/event/list/ongoing') }}">
+                    <a href="{{ site_url('/event/list/all') }}">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick04.png" title="이벤트" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick04_on.png" title="이벤트" class="on">
                         <p>이벤트</p>

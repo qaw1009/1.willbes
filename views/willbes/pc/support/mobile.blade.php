@@ -13,8 +13,15 @@
                 <div class="Act5">
                     <img src="{{ img_url('cs/willbes_m_guide.jpg') }}">
                     <div class="w-Guide mt40">
+                        @if($__cfg['SiteCode'] == '2017')
                         <div class="willbes-m-guide NGEB">
-                            <ul class="tabWrap tabcsDepth2 tab_m_Guide p_re NG">
+                            <div class="tabBox">
+                                <div class="tabContent"><img src="{{ img_url('cs/willbes_m_guide01_2007.jpg') }}" alt="모바일 웹"></div>
+                            </div>
+                        </div>
+                        @else  
+                        <div class="willbes-m-guide NGEB">
+                            <ul class="tabWrap tab_m_Guide p_re NG">
                                 <li class="w-m-guide1"><a class="qBox on" href="#m_guide1"><span>모바일 웹</span></a></li>
                                 <li class="w-m-guide2"><a class="qBox" href="#m_guide2"><span>모바일 수강전용 앱</span></a></li>
                             </ul>
@@ -23,6 +30,7 @@
                                 <div id="m_guide2" class="tabContent"><img src="{{ img_url('cs/willbes_m_guide02.jpg') }}" alt="모바일 수강전용 앱"></div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

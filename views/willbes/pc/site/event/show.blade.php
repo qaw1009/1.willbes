@@ -36,14 +36,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="w-file tx-left pl20" colspan="7">
-                                @if(empty($arr_base['file_F']) === false)
+                        @if(empty($arr_base['file_F']) === false)
+                            <tr>
+                                <td class="w-file tx-left pl20" colspan="7">
                                     <a href="{{front_url('/event/download?file_idx=').$arr_base['file_F']['EfIdx'].'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
-                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}</a>
-                                @endif
-                            </td>
-                        </tr>
+                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}
+                                    </a>
+                                </td>
+                            </tr>
+                        @endif
                         <tr>
                             <td class="w-txt tx-left" colspan="7">
                                 @if($data['ContentType'] == $arr_base['content_type']['image'])

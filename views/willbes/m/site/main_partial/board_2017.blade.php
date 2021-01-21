@@ -42,14 +42,14 @@
         </ul>
     </div>
     <div id="notice3" class="tabContent pd20">
-        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/event/list/ongoing'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
+        <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/event/list/all'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
         <ul class="List-Table">
             @if(empty($data['event']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else
                 @foreach($data['event'] as $row)
                     <li>
-                        <a href="{{front_url('/event/show/ongoing?event_idx='.$row['ElIdx'])}}">
+                        <a href="{{front_url('/event/show/ongoing_v2?event_idx='.$row['ElIdx'])}}">
                             [{{$row['RequestTypeName']}}] {{hpSubString($row['EventName'],0,20,'...')}}
                         </a>
 {{--                        <span class="date">{{$row['RegisterStartDay']}}~{{$row['RegisterEndDay']}}</span>--}}

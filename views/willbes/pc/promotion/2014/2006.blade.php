@@ -295,7 +295,7 @@
             </div>
         </div>
 
-        <a href="#evtContainer" class="top">Top</a>
+        <a href="#" class="top">Top</a>
     </div>
 
     

@@ -13,10 +13,16 @@
             background:#fff;
             color:#3a3a3a;
         }
+
+        .evtContent a.top {position: fixed; right: 10px; bottom: 10px; display: none; width:40px; height:40px; line-height:40px; font-size:14px; text-align:center; background:#333; color:#fff; border-radius:25px; z-index:9999}
  
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        
 
         /************************************************************/
+
+        .skyBanner {position:fixed; width:180px; top:250px; right:10px; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:10px}
 
         .evtTop {background:#464bdb url(https://static.willbes.net/public/images/promotion/2021/01/2038_top_bg.jpg) repeat-y center top;}
         .evt01 {background:#4346df}
@@ -57,6 +63,12 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="skyBanner">
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky2.png" alt="영상 바로가기"/></a>
+            <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky.png" alt="이벤트 참여"/></a>
+        </div>
+
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_top.jpg" alt="윌비스 임용 유튜브 이벤트"/>
         </div>
@@ -73,7 +85,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_03.jpg" alt="참여방법"/>
         </div>
 
-        <div class="evtCtnsBox evt04">
+        <div class="evtCtnsBox evt04" id="evt04">
             <div class="evt04top">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_04.jpg" alt=""/>
                 <a href="https://www.youtube.com/channel/UCzF3YAxdQmtZcUqsEUFLRMQ" title="유튜브" target="_blank" class="link01"></a>
@@ -104,7 +116,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt05">
             <div>
                 <form name="regi_form_register" id="regi_form_register">
                     {!! csrf_field() !!}
@@ -166,14 +178,32 @@
                     <li>한 개의 인증 게시물로 추첨 선물 증정 대상으로 선정된 경우, 전원 증정 선물과 중복 증정은 되지 않습니다.</li>
                     <li>여러 개의 게시물을 업로드 했을 경우, 추첨과 전원 증정 각각 하나씩 증정은 가능하나, 같은 상품의 중복 증정은 되지 않습니다.</li>
                     <li>같은 이미지를 중복해서 올리는 것은 인정되지 않습니다. (각기 다른 영상에 ‘좋아요’ 인증만 인정)</li>
-                    <li>이벤트 당첨 대상자는 2월 22일(월) 17시에 발표할 예정입니다.</li>
-                    <li>상품은 모바일 기프티콘으로 2월 24일(수)에 일괄 발송될 예정입니다.</li>
+                    <li>이벤트 당첨 대상자는 2월 23일(화) 17시에 발표할 예정입니다.</li>
+                    <li>상품은 모바일 기프티콘으로 2월 26일(금)에 일괄 발송될 예정입니다.</li>
                     <li>이벤트 참여는 유튜브 채널 구독 중인 경우만 가능합니다.</li>
                 </ul>
             </div>
         </div>
+
+        <a href="#" class="top">Top</a>
     </div>
     <!-- End Container -->
+
+    <script>
+      $( document ).ready( function() {
+        $( window ).scroll( function() {
+          if ( $( this ).scrollTop() > 200 ) {
+            $( '.top' ).fadeIn();
+          } else {
+            $( '.top' ).fadeOut();
+          }
+        } );
+        $( '.top' ).click( function() {
+          $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+          return false;
+        } );
+      } );
+    </script>
 
     <script>
         var $regi_form_register = $('#regi_form_register');

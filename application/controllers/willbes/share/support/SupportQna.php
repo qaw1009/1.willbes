@@ -269,7 +269,7 @@ class SupportQna extends BaseSupport
                 , IF(RegType=1, \'\', RegMemName) AS RegName
                 , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
                 , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
-                , AttachData, Category_String
+                , AttachData, Category_String, SubjectIdx
             ';
 
             $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);

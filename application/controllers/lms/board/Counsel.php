@@ -199,7 +199,7 @@ class Counsel extends BaseBoard
         }
 
         $column = '
-            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName,
+            LB.BoardIdx, LB.RegType, LB.SiteCode, LB.MdCateCode, LB.CampusCcd, LSC.CcdName AS CampusName, LB.SubjectIdx,
             LS.SiteName, LB.Title, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse, LB.IsStatus,
             LB.ReadCnt, LB.SettingReadCnt, ADMIN.wAdminName, ADMIN.wAdminIdx,
             LB.RegMemIdx, MEM.MemName AS RegMemName, MEM.MemIdx AS RegMemIdx, MEM.MemId AS RegMemId,
@@ -208,7 +208,8 @@ class Counsel extends BaseBoard
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
             ADMIN2.wAdminName as ReplyRegAdminName,
             MdSysCate.CateName as MdCateName,
-            AttachFilePath
+            AttachFilePath,
+            PS.SubjectName
         ';
 
         $list = [];
@@ -356,7 +357,8 @@ class Counsel extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
+            PS.SubjectName
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -572,7 +574,8 @@ class Counsel extends BaseBoard
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
             counselAdmin.wAdminName AS counselAdminName, counselAdmin2.wAdminName AS counselUpdAdminName,
             LB.ReplyRegDatm, LB.ReplyUpdDatm,
-            MdSysCate.CateName as MdCateName
+            MdSysCate.CateName as MdCateName,
+            PS.SubjectName
             ';
         $board_idx = $params[0];
         $arr_condition = ([

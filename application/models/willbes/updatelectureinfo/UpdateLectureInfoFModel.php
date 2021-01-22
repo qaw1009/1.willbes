@@ -8,7 +8,7 @@ class UpdateLectureInfoFModel extends WB_Model
         parent::__construct('lms');
     }
 
-    public function listUpdateInfo($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function listUpdateInfo($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $add_column = '')
     {
 
         if($is_count) {
@@ -28,6 +28,7 @@ class UpdateLectureInfoFModel extends WB_Model
                         ,pf.ProfNickName, pf.ProfIdx
                         ,date_format(lu.wRegDatm, \'%Y-%m-%d\') as unit_regdate
                         ,count(lu.wUnitIdx) as unit_cnt ';
+        $column .= $add_column;
 
         $from = ' from 
                         lms_product p

@@ -34,6 +34,13 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="">과목</label>
+                    <div class="form-control-static col-md-10">
+                        {{$data['SubjectName']}}
+                    </div>
+                </div>
+
                 <div class="form-group {{$arr_swich['reply']['MdCateName'] or ''}}">
                     <label class="control-label col-md-1-1" for="">분류</label>
                     <div class="form-control-static col-md-4">
@@ -89,7 +96,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="">질문</label>
-                    <div class="form-control-static col-md-10">{!! nl2br($data['Content']) !!}</div>
+                    <div class="form-control-static col-md-10 content_box">{!! nl2br($data['Content']) !!}</div>
                 </div>
             </div>
         </div>

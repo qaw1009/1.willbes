@@ -503,6 +503,11 @@
 
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
+        @if(sess_data('is_login') == true && empty(sess_data('mem_ssamid')) == false)
+        <div class="Quick-Bnr ml20">
+            <div class="mb10"><a href="{{front_url('/classroom/home/gotoSsam/')}}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_quick.gif"></a></div>
+        </div>
+        @endif
     </div>
     <!-- End Container -->
     <form name="postForm" id="postForm" >

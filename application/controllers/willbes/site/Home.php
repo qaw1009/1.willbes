@@ -126,6 +126,7 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(7, $s_cate_code);
         }
 
         $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
@@ -918,7 +919,11 @@ class Home extends \app\controllers\FrontController
             ],
         ];
 
-        return $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $limit_cnt, 0, $order_by);
+        $add_column = '
+            ,(SELECT ReferValue FROM lms_professor_reference as a WHERE a.ProfIdx = pf.ProfIdx AND a.ReferType = \'lec_list_img\' AND a.IsStatus = \'Y\') AS ProfLecListImg
+        ';
+
+        return $this->updateLectureInfoFModel->listUpdateInfo(false, $arr_condition, $limit_cnt, 0, $order_by, $add_column);
     }
 
     /**

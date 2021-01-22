@@ -16,6 +16,10 @@
 
         /************************************************************/          
 
+        .sky {position:fixed;top:200px;right:50px;z-index:200;}
+
+        .wb_tops {background:#991DED;}       
+
         .wb_top {background:#DDD6C4 url(https://static.willbes.net/public/images/promotion/2020/11/1915_top_bg.jpg) no-repeat center top;}
 
         .top_tab {position:absolute; left:50%; top:1880px; width:975px; margin-left:-487px; z-index:10}   
@@ -33,6 +37,19 @@
         .tab01s_02 {background:#EAE6DB}
         .tab01s_03 {background:#fff;padding-bottom:100px;}
         .tab01s_04 {background:#EAE6DB}
+
+        /*타이머*/
+        .newTopDday * {font-size:24px}
+        .newTopDday {background:#e4e4e4; width:100%; padding:15px 0 40px}
+        .newTopDday ul {width:1120px; margin:0 auto;}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-size:28px; height:60px; line-height:60px; padding-top:10px !important; font-weight:bold; color:#000}
+        .newTopDday ul li strong {line-height:60px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {text-align:right; padding-right:20px; width:28%; font-size:16px; color:#666; line-height:2.5; }
+        .newTopDday ul li:first-child span { font-size:28px; color:#000; }
+        .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
+        .newTopDday ul:after {content:""; display:block; clear:both}
+
         .tab01s_05 {background:#C1392D}
 
         .tab02s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_b_bg.jpg) no-repeat center top;}
@@ -40,7 +57,7 @@
         .tab02s_02 {background:#EAE6DB}
         .tab02s_03 {background:#fff;padding-bottom:100px;}
         .tab02s_04 {background:#EAE6DB}
-        .tab02s_05 {background:#C1392D}  
+        .tab02s_05 {background:#C23A2E;padding-bottom:100px;}
         
         .tab03s_01 {background:#1B1A20 url(https://static.willbes.net/public/images/promotion/2020/11/1915_01_c_bg.jpg) no-repeat center top;}
         .tab03s_01 span {position:absolute; top:720px; left:50%; margin-left:500px; width:51px; z-index:10}
@@ -103,6 +120,18 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky">
+            <a href="#apply">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2001_sky.png" alt="스카이베너" >
+            </a>     
+        </div>   
+
+        <div class="evtCtnsBox wb_tops" >            
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2001_top.jpg" alt=""/>
+        </div>
+
+
         <div class="evtCtnsBox wb_top" >            
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_top.gif" alt="단숨에 합격"/>
         </div>
@@ -147,17 +176,44 @@
                         {{--<iframe src="https://www.youtube.com/embed/s53Pjkbzjng?rel=0" frameborder="0" allowfullscreen></iframe>--}} 
                     </div>                                   
                 </div>
+
                 <div class="tab02s_04">
                     <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_04_c.jpg" alt="조경직 real 점문가" />
                 </div>
-                <div class="tab02s_05">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/11/1915_05_c.jpg" alt="조경직 이윤주 강의 신청" usemap="#Map1915_tab03s_c" border="0" />
-                    <map name="Map1915_tab03s_c">
-                        <area shape="rect" coords="484,595,954,664" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
-                        <area shape="rect" coords="488,777,708,831" href="javascript:alert('Coming soon!')" />
-                        <area shape="rect" coords="728,777,948,833" href="javascript:alert('Coming soon!')" />
-                    </map>        
-                </div>                  
+                
+                <!-- 타이머 -->
+                <div id="newTopDday" class="newTopDday NG">        
+                    <div>
+                        <ul>
+                            <li>                                
+                                <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
+                            </li>
+                            <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><strong>일</strong></li>
+                            <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><strong>:</strong></li>
+                            <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><strong>:</strong></li>
+                            <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                            <li>
+                                남았습니다
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <div class="tab02s_05" id="apply">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2001_05.jpg" alt="" usemap="#Map2000_apply" border="0"  />
+                    <map name="Map2000_apply" id="Map2000_apply">
+                        <area shape="rect" coords="794,465,987,515" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
+                        <area shape="rect" coords="795,534,988,585" href="javascript:alert('Coming Soon!')" />
+                        <area shape="rect" coords="683,874,873,949" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" />
+                    </map>   
+                </div>                
             </div>
         </div>   
 
@@ -213,6 +269,15 @@
         function go_popup6() {
             $('#popup6').bPopup();
         }
-	</script>
+
+
+           /*디데이카운트다운*/
+           $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
+    </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 
 @stop

@@ -1360,6 +1360,7 @@ table.auTable tr td {
 	float: right;
 	margin-top: 48px;
 }
+#Footer a.top {position: fixed; right: 10px; bottom: 10px; display: none; width:40px; height:40px; line-height:40px; font-size:14px; text-align:center; background:#333; color:#fff; border-radius:25px; z-index:9999}
 
 /*********************************************     MAIN PAGE     *********************************************/
 /* 공통파일 */

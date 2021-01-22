@@ -75,18 +75,18 @@
                 </tr>
                 </thead>
                 <tbody>
+                @if(empty($data['AttachData']) === false)
                 <tr>
                     <td class="w-file tx-left pl20" colspan="4">
-                        @if(empty($data['AttachData']) === false)
-                            @foreach($data['AttachData'] as $row)
-                                @if($row['FileType'] == 1)
-                                    <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
-                                        <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
-                                @endif
-                            @endforeach
-                        @endif
+                        @foreach($data['AttachData'] as $row)
+                            @if($row['FileType'] == 1)
+                                <a href="{{front_url($default_path.'/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
+                                    <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}</a>
+                            @endif
+                        @endforeach
                     </td>
                 </tr>
+                @endif
                 <tr>
                     <td class="w-txt answer tx-left" colspan="4">
                         @if($data['ReplyStatusCcd'] == '621004')

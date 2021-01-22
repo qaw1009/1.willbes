@@ -65,8 +65,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1791m_06.jpg" alt=""  >   
         </a>  
     </div>
-
-
+    {{--
     <div class="evtCtnsBox evtFooter" id="infoText">
         <div class="evtInfoBox">
             <h4 class="NSK-Black">이벤트 유의사항</h4>
@@ -77,6 +76,7 @@
             </ul>
         </div>
     </div>
+    --}}
 </div>
 <!-- End Container -->
 @stop

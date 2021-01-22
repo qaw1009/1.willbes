@@ -310,27 +310,17 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="Section MainVisual mt20">
-            <div class="VisualBox p_re">            
+            <div class="VisualBox p_re">
                 <div id="MainRollingSlider" class="MaintabBox">
-                    <ul class="MaintabSlider">
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_01.jpg" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_02.jpg" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_03.jpg" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_04.jpg" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_05.jpg" alt="배너명"></a></li>
-                        <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_2000x440_06.jpg" alt="배너명"></a></li>
-                    </ul>                  
+                    {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'MaintabSlider') !!}
                     <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
                     <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
                 </div> 
                 <div id="MainRollingDiv" class="MaintabList NSK">
                     <div class="Maintab">
-                        <span><a data-slide-index="0" href="javascript:void(0);" class="active">0원 무제한 패스</a></span>
-                        <span><a data-slide-index="1" href="javascript:void(0);" class="">개편과목 프리패스</a></span>
-                        <span><a data-slide-index="2" href="javascript:void(0);" class="">신광은 형사법</a></span>
-                        <span><a data-slide-index="3" href="javascript:void(0);" class="">장정훈 경찰학</a></span>
-                        <span><a data-slide-index="4" href="javascript:void(0);" class="">김원욱 헌법</a></span>
-                        <span><a data-slide-index="5" href="javascript:void(0);" class="">환승할인</a></span>
+                        @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                            <span><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></span>
+                        @endforeach
                     </div>
                 </div>           
             </div>        
@@ -339,39 +329,33 @@
         <div class="Section mt100">
             <div class="widthAuto NSK">
                 <ul>
-                    <li class="SecBanner02">
-                        <div class="tag">#초시생 잇템 SUPER PASS</div>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_01.jpg" title="배너명"></a>
-                    </li>
-                    <li class="SecBanner02">
-                        <div class="tag">#12개월 끝장 PASS</div>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_02.jpg" title="배너명"></a>
-                    </li>
-                    <li class="SecBanner02">
-                        <div class="tag">#문제풀이 풀패키지</div>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_03.jpg" title="배너명"></a>
-                    </li>
+                    @for($i=1; $i<=3; $i++)
+                        @if(isset($data['arr_main_banner']['메인_상품배너'.$i]) === true)
+                            <li class="SecBanner02">
+                                <div class="tag">{{ $data['arr_main_banner']['메인_상품배너'.$i][0]['BannerName'] or "" }}</div>
+                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
                     <li class="SecBanner02">
                         <div class="bSlider">        
                             <div class="slider">
-                                <div>
-                                    <div class="tag">#기본이 중요! 기본이론 집중완성</div>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_04.jpg" title="배너명"></a>
-                                </div>
-                                <div>
-                                    <div class="tag">#기본이론 집중완성</div>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_05.jpg" title="배너명"></a>
-                                </div>
-                                <div>
-                                    <div class="tag">#기본이론 집중완성</div>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x290_06.jpg" title="배너명"></a>
-                                </div>
+                                @if(isset($data['arr_main_banner']['메인_상품배너4']) === true)
+                                    @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
+                                        <div>
+                                            <div class="tag">{{ $row['BannerName'] }}</div>
+                                            <a href="{{ empty($row['LinkUrl']) === false ? $row['LinkUrl'] : '#none' }}" target="_{{ $row['LinkType'] }}">
+                                                <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}">
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div> 
+        </div>
 
         <div class="Section mt100">
             <div class="widthAuto">
@@ -382,140 +366,26 @@
                 <div class="uploadLec NSK">
                     <div class="vSlider">
                         <div class="sliderNumV">
-                            <div>
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
+                            @foreach($data['lecture_update_info'] as $row)
+                                @if($loop->index % 2 == 1)
+                                    <div>
+                                        @endif
+                                        <div class="lecReview">
+                                            <a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">
+                                                <div class="imgBox">
+                                                    <img src="{{$row['ProfLecListImg']}}">
+                                                </div>
+                                                <div class="lecinfo">
+                                                    <p>{{$row['SubjectName']}} {{$row['ProfNickName']}}</p>
+                                                    <p>{{ $row['ProdName'] }}</p>
+                                                    <p>{{ date("m", strtotime($row['unit_regdate'])) }}월 {{ date("d", strtotime($row['unit_regdate'])) }}일 총 {{ $row['unit_cnt'] }}강 업로드</p>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="lecinfo">
-                                            <p>형법 신광은</p>
-                                            <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
-                                            <p>12월 16일 총 4강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/50135/lec_list_50135.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>영어 하승민</p>
-                                            <p>2021년 1차대비 하승민 영어 형법 기본이론(20년 11,12월)</p>
-                                            <p>12월 16일 총 3강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>   
-                            </div>
-
-                            <div>                         
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>형법 김원욱</p>
-                                            <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월)</p>
-                                            <p>12월 16일 총 4강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>영어 김현정</p>
-                                            <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
-                                            <p>12월 16일 총 3강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>   
-                            </div>  
-
-                            <div>                      
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>영어 김현정</p>
-                                            <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
-                                            <p>12월 16일 총 3강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>  
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>형법 신광은</p>
-                                            <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
-                                            <p>12월 16일 총 4강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div>
-
-                            <div>                       
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/51135/lec_list_51135.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>형법 신광은</p>
-                                            <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
-                                            <p>12월 16일 총 4강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div> 
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>영어 김현정</p>
-                                            <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
-                                            <p>12월 16일 총 3강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>  
-                            </div>
-
-                            <div>                                             
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/51146/lec_list_51146.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>형법 김원욱</p>
-                                            <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월)</p>
-                                            <p>12월 16일 총 4강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="lecReview">
-                                    <a href="#none">
-                                        <div class="imgBox">
-                                            <img src="https://police.willbes.net/public/uploads/willbes/professor/50748/lec_list_50748.png">
-                                        </div>
-                                        <div class="lecinfo">
-                                            <p>영어 김현정</p>
-                                            <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
-                                            <p>12월 16일 총 3강 업로드</p>
-                                        </div>
-                                    </a>
-                                </div>                          
-                            </div>
+                                        @if($loop->index % 2 == 0)
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -529,36 +399,24 @@
                     <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
                 </div>
                 <ul class="SecBanner03">
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_01.jpg" title="배너명">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_02.jpg" title="배너명">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_03.jpg" title="배너명">
-                        </a>
-                    </li>
+                    @for($i=1; $i<=3; $i++)
+                        @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
+                            <li>
+                                {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
 
-        <div class="Section mt70">
-            <div class="widthAuto SecBanner04">
-                <div class="bSlider">
-                    <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_1120x100_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_1120x100_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_1120x100_03.jpg" alt="배너명"></a></div>
-                    </div>
+        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
+            <div class="Section mt70">
+                <div class="widthAuto SecBanner04">
+                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'slider') !!}
                 </div>
             </div>
-        </div>
+        @endif
 
         <div class="Section SectionBg01 mt100">
             <div class="widthAuto">
@@ -567,31 +425,13 @@
                     <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
                 </div>
                 <ul class="SecBanner05">
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_01.jpg" alt="배너명" usemap="#Map220A" border="0">
-                        <a href="#none" title="맛보기영상"></a>
-                        <a href="#none" title="베스트강좌" class="link02"></a>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_02.jpg" alt="배너명" usemap="#Map220B" border="0">
-                        <a href="#none" title="맛보기영상"></a>
-                        <a href="#none" title="베스트강좌" class="link02"></a>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_03.jpg" alt="배너명" usemap="#Map220C" border="0">
-                        <a href="#none" title="맛보기영상"></a>
-                        <a href="#none" title="베스트강좌" class="link02"></a>
-                    </li>                
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_04.jpg" alt="배너명" usemap="#Map220D" border="0">
-                        <a href="#none" title="맛보기영상"></a>
-                        <a href="#none" title="베스트강좌" class="link02"></a>
-                    </li>
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3002_208x320_05.jpg" alt="배너명" usemap="#Map220E" border="0">
-                        <a href="#none" title="맛보기영상"></a>
-                        <a href="#none" title="베스트강좌" class="link02"></a>
-                    </li>
+                    @for($i=1; $i<=8; $i++)
+                        @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
             </div>
         </div>
@@ -603,33 +443,13 @@
                     <span class="tx16 NSK-Thin pt10 ml20">경시생들에게 제공하는 수강 맞춤 콘텐츠 입니다.</span>
                 </div>
                 <ul class="SecBanner06">
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_01.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_02.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_03.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_04.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_05.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_06.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_07.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_08.jpg" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_09.jpg" alt="배너명"></a>
-                    </li>
+                    @for($i=1; $i<=9; $i++)
+                        @if(isset($data['arr_main_banner']['메인_콘텐츠'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_콘텐츠'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
                 </ul>
                 <div class="will-nTit NSK-Black mt100">
                     신광은경찰팀 TV
@@ -644,46 +464,34 @@
                         <div class="moreBtn"><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">영상 더보기 ></a></div>
                     </div>
                     <div id="tabTv01" class="TvctsBox">
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_01.jpg" alt="배너명"></a>
-                            <p>2022년 커리큘&공부방법</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_02.jpg" alt="배너명"></a>
-                            <p>22년 개편 경찰학 완전대비</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_03.jpg" alt="배너명"></a>
-                            <p>경찰헌법 무료특강</p>
-                        </div>
+                        @for($i=1; $i<=3; $i++)
+                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
+                                <div class="Tvcts">
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
+                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                </div>
+                            @endif
+                        @endfor
                     </div>
-                    <div id="tabTv02" class="TvctsBox">                    
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_02.jpg" alt="배너명"></a>
-                            <p>22년 개편 경찰학 완전대비</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_03.jpg" alt="배너명"></a>
-                            <p>경찰헌법 무료특강</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_01.jpg" alt="배너명"></a>
-                            <p>2022년 커리큘&공부방법</p>
-                        </div>
+                    <div id="tabTv02" class="TvctsBox">
+                        @for($i=4; $i<=6; $i++)
+                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
+                                <div class="Tvcts">
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
+                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                </div>
+                            @endif
+                        @endfor
                     </div>
                     <div id="tabTv03" class="TvctsBox">
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_03.jpg" alt="배너명"></a>
-                            <p>경찰헌법 무료특강</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_01.jpg" alt="배너명"></a>
-                            <p>2022년 커리큘&공부방법</p>
-                        </div>
-                        <div class="Tvcts">
-                            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x149_02.jpg" alt="배너명"></a>
-                            <p>22년 개편 경찰학 완전대비</p>
-                        </div>
+                        @for($i=7; $i<=9; $i++)
+                            @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
+                                <div class="Tvcts">
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
+                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                </div>
+                            @endif
+                        @endfor
                     </div>
                 </div>
             </div>
@@ -696,28 +504,19 @@
                     <span class="tx16 NSK-Thin pt10 ml20">학원의 최신 소식을 한 눈에 확인하세요.</span>
                 </div>
                 <ul>
+                    @for($i=1; $i<=3; $i++)
+                        @if(isset($data['arr_main_banner']['메인_핫이슈'.$i]) === true)
+                            <li>
+                                {!! banner_html(element('메인_핫이슈'.$i, $data['arr_main_banner'])) !!}
+                            </li>
+                        @endif
+                    @endfor
                     <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x361_01.jpg" alt="배너명">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x361_01.jpg" alt="배너명">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x361_01.jpg" alt="배너명">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x181_01.jpg" alt="배너명">
-                        </a>
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x181_02.jpg" alt="배너명">
-                        </a>
+                        @for($i=1; $i<=2; $i++)
+                            @if(isset($data['arr_main_banner']['메인_핫이슈서브'.$i]) === true)
+                                {!! banner_html(element('메인_핫이슈서브'.$i, $data['arr_main_banner'])) !!}
+                            @endif
+                        @endfor
                     </li>
                 </ul>
             </div>
@@ -725,183 +524,9 @@
     
         <div class="Section SectionBg03 mt100">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">
-                    경찰 BEST <span class="tx-color">교재</span>
-                    <span class="tx16 NSK-Thin pt10 ml20">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
-                    <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                </div>
-                <div class="bookContent NSK">
-                    <ul class="bookList">
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span>                       
-                                <div class="bookImg">                                
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311683_sm.jpg" title="교재명">
-                                </div>
-                                <div>
-                                    <p>네친구 신광은 형사소송법(신정10판)</p>
-                                    <p>[판매중] 10,800원 (10%)</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311691_sm.jpg" title="교재명">
-                                </div>
-                                <p>2021 경찰채용 1차대비 김원욱 형법 적중예상문제풀이</p>
-                                <p>[판매중] 20,700원 (↓10%)</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311717_sm.jpg" title="교재명">
-                                </div>                        
-                                <p>2020 슬림한 친족 상속법의 맥</p>
-                                <p>[판매중] 8,800원 (↓20%)</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311728_sm.jpg" title="교재명">
-                                </div>                        
-                                <p>2020 민사소송법과 부속법 조문집</p>
-                                <p>[판매중] 8,800원 (↓20%)</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311719_sm.jpg" title="교재명">
-                                </div>                        
-                                <p>2020 원가관리회계 문제풀이</p>
-                                <p>[품절] 20,700원 (↓10%)</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311683_sm.jpg" title="교재명">
-                                </div>
-                                <div>                            
-                                    <p>2020 원가관리회계 문제풀이</p>
-                                    <p>[판매중] 8,800원 (↓20%)</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none" onclick="openWin('InfoForm')">
-                                <span></span> 
-                                <div class="bookImg">
-                                    <img src="https://static.willbes.net/public/images/promotion/main/2018/book_311691_sm.jpg" title="교재명">
-                                </div>                        
-                                <p>2021 법률저널 LEET 전국 봉투 모의고사 제4회 - 20.06.21 시행</p>
-                                <p>[판매중] 20,700원 (↓10%)</p>
-                            </a>
-                        </li>
-                    </ul>  
-                    <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
-                    <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>         
-                </div>
+                @include('willbes.pc.site.main_partial.new_product_' . $__cfg['SiteCode'])
             </div>
         </div>
-
-        {{-- 교재보기 팝업 willbes-Layer-Box --}}
-        <div id="InfoForm" class="willbes-Layer-Box">
-            <a class="closeBtn" href="#none" onclick="closeWin('InfoForm'),closeWin('bookPocketBox')">
-                <img src="{{ img_url('sub/close.png') }}">
-            </a>
-            <div class="Layer-Tit tx-dark-black NG">
-                교재상세정보
-            </div>
-            <div class="lecDetailWrap">
-                <div class="tabBox">
-                    <div class="tabLink book2">
-                        <div class="bookWrap">
-                            <div class="bookInfo">
-                                <div class="bookImg">
-                                    <img src="{{ img_url('sample/book.jpg') }}">
-                                </div>
-                                <div class="bookDetail p_re">
-                                    <div class="bookBuy">
-                                        <ul class="bookBuyBtns">
-                                            <li class="btnCart"><a onclick="openWin('bookPocketBox')">장바구니</a>                                
-                                            <li class="btnBuy"><a href="#none">바로결제</a></li>
-                                        </ul>
-                                        <div id="bookPocketBox" class="bookPocketBox">
-                                            <a class="closeBtn" href="#none" onclick="closeWin('bookPocketBox')">
-                                                <img src="{{ img_url('cart/close.png') }}">
-                                            </a>
-                                            해당 상품이 장바구니에 담겼습니다.<br/>
-                                            장바구니로 이동하시겠습니까?
-                                            <ul class="NSK mt20">
-                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                                                <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('bookPocketBox')">닫기</a></li>
-                                            </ul>
-                                        </div>  
-                                    </div>
-
-                                    <div class="book-Tit tx-dark-black NG">2018 기특한국어기출문제집 (전2권)</div>
-                                    <div class="book-Author tx-gray">
-                                        <ul>
-                                            <li>분야 : 9급공무원 <span class="row-line">|</span></li>
-                                            <li>저자 : 저자명 <span class="row-line">|</span></li>
-                                            <li>출판사 : 출판사명 <span class="row-line">|</span></li>
-                                            <li>판형/쪽수 : 190*260 / 769</li>
-                                        </ul>
-                                        <ul>
-                                            <li>출판일 : 2018-00-00 <span class="row-line">|</span></li>
-                                            <li>교재비 : <strong class="tx-light-blue">20,000원</strong> (↓20%) <strong class="tx-red">[품절]</strong> <strong class="tx-light-blue">[판매중]</strong></li>
-                                        </ul>
-                                    </div>
-                                    <div class="bookBoxWrap">
-                                        <ul class="tabWrap tabDepth2">
-                                            <li><a href="#info1" class="on">교재소개</a></li>
-                                            <li><a href="#info2">교재목차</a></li>
-                                        </ul>
-                                        <div class="tabBox">
-                                            <div id="info1" class="tabContent">
-                                                <div class="book-TxtBox tx-gray">
-                                                    2018년재신정판을내면서..<br/>
-                                                    첫째, 2017년에출제된모든기출문제를반영하여수록하였습니다.<br/>
-                                                    둘째, 매지문마다해설을충실히달았습니다..<br/>
-                                                    셋째, 책분량이너무많아져최근5년간기출문제(2013-2017년)는빠짐없이수록하되, 오래된문제라도<br/>
-                                                    기본적이고중요한내용을담고있는부분은유지하되중복된부분은덜어냈습니다.
-                                                </div>
-                                                <div class="caution-txt tx-red">수강생 교재는 해당 온라인 강좌 수강생에 한해 구매 가능합니다. (교재만 별도 구매 불가능)</div>
-                                            </div>
-                                            <div id="info2" class="tabContent">
-                                                <div class="book-TxtBox tx-gray">
-                                                    제1편 현대 문법<br/>
-                                                    제2편 고전 문법<br/>
-                                                    제3편 국어 생활<br/>
-                                                    제4편 현대 문학<br/>
-                                                    제5편 고전 문학<br/>
-                                                    제1편 현대 문법<br/>
-                                                    제2편 고전 문법<br/>
-                                                    제3편 국어 생활<br/>
-                                                    제4편 현대 문학<br/>
-                                                    제5편 고전 문학
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- willbes-Layer-Box -->
 
         <div class="Section Section6 mt80">
             <div class="widthAuto">
@@ -948,6 +573,7 @@
         {{--유튜브 모달팝업//--}}
     @endif
 
+    <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             //하단이벤트배너 닫기

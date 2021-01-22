@@ -85,11 +85,9 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth">
-            <span class="depth-Arrow">></span><strong>내강의실</strong>
-            <span class="depth-Arrow">></span><strong>온라인강좌</strong>
-            <span class="depth-Arrow">></span><strong>수강중강좌</strong>
-        </span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>내강의실</strong></span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>온라인강좌</strong></span>
+        <span class="depth"><span class="depth-Arrow">></span><strong>수강중강좌</strong></span>
     </div>
     <div class="Content p_re">
 
@@ -802,7 +800,8 @@
 
     </div>
     <div class="Quick-Bnr ml20">
-        <img src="{{ img_url('sample/banner_180605.jpg') }}">     
+        <div class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/sub/ssam_oldmypage_quick.gif"></a></div>
+        <div><a href="#none"><img src="{{ img_url('sample/banner_180605.jpg') }}"></a></div>        
     </div>
 </div>
 <!-- End Container -->

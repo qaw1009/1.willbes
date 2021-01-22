@@ -111,6 +111,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC3 ON LB.ReplyStatusCcd = LSC3.Ccd
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                     LEFT OUTER JOIN (
                         select BoardIdx, AttachFilePath
                         from {$this->_table_attach}
@@ -620,6 +621,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin ON LB.ReplyAdminIdx = counselAdmin.wAdminIdx and counselAdmin.wIsStatus='Y'
                     LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin2 ON LB.ReplyUpdAdminIdx = counselAdmin2.wAdminIdx and counselAdmin2.wIsStatus='Y'
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
+                    LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
                 ";
                 break;
             case "faq" :

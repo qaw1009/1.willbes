@@ -37,7 +37,7 @@
                                     @endforeach
                                 </select>
 
-                                <select id="s_cate_code" name="s_cate_code" title="구분" class="seleCategory" style="width: 250px;" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
+                                <select id="s_cate_code" name="s_cate_code" title="구분" class="seleDiv" style="width: 250px;" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
                                     <option value="">구분</option>
                                     @php $temp_s_cate_code = ''; @endphp
                                     @foreach($arr_base['category'] as $row)
@@ -49,7 +49,18 @@
                                     <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
                                 @endif
 
-                                <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus" style="width: 250px;">
+                                <select class="form-control" id="s_subject_idx" name="s_subject_idx" class="seleCampus" style="width: 250px;" title="과목명" required="required" @if($method == 'POST') disabled="disabled" @endif>
+                                    <option value="">과목</option>
+                                    @foreach($arr_base['subject'] as $arr)
+                                        @if(empty($arr) === false)
+                                            @foreach($arr as $row)
+                                                <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'] || element('s_subject_idx',$arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </select>
+
+                                <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus d_none" style="width: 250px;">
                                     <option value="">캠퍼스 선택</option>
                                     @foreach($arr_base['campus'] as $row)
                                         <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'] || element('s_campus',$arr_input) == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
@@ -96,15 +107,16 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
-                            <td class="w-file answer tx-left" colspan="4">
-                                <ul class="attach">
-                                    @for($i = 0; $i < $attach_file_cnt; $i++)
-                                        <li>
-                                            <!--div class="filetype"-->
+                            @if(empty($arr_swich['file_ver']) === false &&  $arr_swich['file_ver']== 1)
+                                <td class="w-file answer tx-left" colspan="4">
+                                    <ul class="attach">
+                                        @for($i = 0; $i < $attach_file_cnt; $i++)
+                                            <li>
+                                                <!--div class="filetype"-->
                                                 <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"-->
-                                                    <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
+                                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
                                                 <!--/span>
                                                 <input class="file-reset NSK" type="button" value="X" /-->
                                                 @if(empty($data['AttachData'][$i]) === false)
@@ -113,14 +125,44 @@
                                                     </p>
                                                 @endif
                                             <!--/div-->
+                                            </li>
+                                        @endfor
+                                        <li>
+                                            • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
+                                            • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
                                         </li>
-                                    @endfor
-                                    <li>
-                                        • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
-                                        • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
-                                    </li>
-                                </ul>
-                            </td>
+                                    </ul>
+                                </td>
+                            @else
+                                <td class="w-file answer tx-left" colspan="4">
+                                    <ul class="attach">
+                                        <li>
+                                            <div class="filetypeB">
+                                                @if(empty($data['AttachData'][0]['RealName']) === false)
+                                                    [ {{ $data['AttachData'][0]['RealName'] }} ]<br/>
+                                                @endif
+                                                <input type="file" name="attach_file[]" class="input-file" onchange="chkUploadFile(this);">
+                                                <input class="file-reset NSK" type="button" value="+" onclick="addAttachFile()"/>
+                                            </div>
+                                        </li>
+                                        @for($i = 1; $i < $attach_file_cnt - 1; $i++)
+                                            @if(empty($data['AttachData'][$i]) === false)
+                                                <li>
+                                                    <div class="filetypeB">
+                                                        [ {{ $data['AttachData'][$i]['RealName'] }} ]<br/>
+                                                        <input type="file" name="attach_file[]" class="input-file" size="3" value="{{ $data['AttachData'][$i]['RealName'] }}" onchange="chkUploadFile(this);">
+                                                        <input class="file-reset NSK file-delete" type="button" value="-" data-attach-idx="{{ $data['AttachData'][$i]['FileIdx'] }}"/>
+                                                    </div>
+                                                </li>
+                                            @endif
+                                        @endfor
+                                        <li>
+                                            • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
+                                            • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                        </li>
+                                    </ul>
+                                </td>
+                            @endif
                         </tr>
                         </tbody>
                     </table>
@@ -147,7 +189,7 @@
         @if(empty(element('s_cate_code_disabled', $arr_input)) === true || element('s_cate_code_disabled', $arr_input) != 'Y')
             $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
         @endif
-        $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
+        $regi_form.find('select[name="s_subject_idx"]').chained("#s_cate_code");
 
         $('#s_site_code').on('change', function () {
             if ($(this).val() == '2017' || $(this).val() == '2018') {
@@ -164,21 +206,26 @@
         });
 
         $('.file-delete').click(function() {
+            var attach_idx = $(this).data('attach-idx');
             var _url = '{{ front_url("{$default_path}/destroyFile/?".$get_params) }}';
             var data = {
                 '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                 '_method' : 'DELETE',
-                'attach_idx' : $(this).data('attach-idx')
+                'attach_idx' : attach_idx
             };
             if (!confirm('정말로 삭제하시겠습니까?')) {
                 return;
             }
-            sendAjax(_url, data, function(ret) {
-                if (ret.ret_cd) {
-                    notifyAlert('success', '알림', ret.ret_msg);
-                    location.reload();
-                }
-            }, showError, false, 'POST');
+
+            if(attach_idx){
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                    }
+                }, showError, false, 'POST');
+            }
+
+            removeAttachFile($(this));
         });
 
         $regi_form.submit(function() {
@@ -223,6 +270,40 @@
             return true;
         }
     });
+
+    function addAttachFile(){
+        var html = '';
+        var file_length = $(".attach li .filetypeB").length;
+        var file_max_cnt = '{{ $attach_file_cnt - 1}}';
+
+        if(file_length > file_max_cnt){
+            alert('첨부파일 영역 최대 ' + file_max_cnt + '개까지 추가 가능합니다.');
+            return ;
+        }else{
+            html += '<li>';
+            html += '<div class="filetypeB">';
+            html += '<input type="file" name="attach_file[]" class="input-file" onchange="chkUploadFile(this);"> ';
+            html += '<input class="file-reset NSK" type="button" value="-" onclick="removeAttachFile(this)"/>';
+            html += '</div>';
+            html += '</li>';
+            $(".attach li:last").before(html);
+        }
+    }
+
+    function removeAttachFile(obj){
+        $(obj).closest("li").remove();
+    }
+
+    function chkUploadFile(elem){
+        if($(elem).val()){
+            var filename =  $(elem).prop("files")[0].name;
+            var ext = filename.split('.').pop().toLowerCase();
+            if($.inArray(ext, ['hwp', 'doc', 'pdf', 'jpg', 'gif', 'png', 'zip']) == -1) {
+                $(elem).val("");
+                alert('hwp, doc, pdf, jpg, gif, png, zip 만 업로드 가능합니다.');
+            }
+        }
+    }
 </script>
 <!-- End Container -->
 @stop

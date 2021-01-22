@@ -28,4 +28,5 @@
     <div class="widthAuto">
         {!! $__cfg['FooterInfo'] !!}
     </div>
+    <a href="#" class="top NSK">Top</a>
 </div>

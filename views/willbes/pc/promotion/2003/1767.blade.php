@@ -112,18 +112,18 @@
                                 </div>
                             </a>
                         </li>
-
-                        {{--
+                 
                         <li class="">
                             <a href="#tab2">
                                 <span class="num_box" data-num="2">2</span>
-                                <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail02.jpg" alt=""></div>
+                                <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail02.jpg" alt=""></div>
                                 <div class="text_box">
-                                    <p>전기이론 10분만에 정리하기</p>
+                                    <p>병역법의 정의에서 꼭 1문제는 나온다! - 『징·역 / 소·의·지』</p>
                                 </div>
                             </a>
                         </li>
 
+                        {{--
                         <li class="">
                             <a href="#tab3">
                                 <span class="num_box" data-num="3">3</span>
@@ -297,7 +297,7 @@
 
       //유툽
       var tab1_url = "https://www.youtube.com/embed/T7bpGfvf-_U?rel=0";
-      var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
+      var tab2_url = "https://www.youtube.com/embed/dXzoUDt9UME?rel=0";  
       var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
       var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
       var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 

@@ -142,6 +142,7 @@
                     @else
                         <th>캠퍼스</th>
                         <th>카테고리</th>
+                        <th>과목</th>
                         <th>분류</th>
                         <th>상담유형</th>
                         <th>제목</th>
@@ -242,6 +243,10 @@
                             return str;
                         }
                         }},
+                    @endif
+
+                    @if(empty($arr_swich['list']) || empty($arr_swich['list']['SubjectName']) === false)
+                    {'data' : 'SubjectName'},
                     @endif
 
                     @if(empty($arr_swich['list']) || empty($arr_swich['list']['MdCateName']) === false)

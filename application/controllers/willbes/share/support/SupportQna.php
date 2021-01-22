@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportQna extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code', 'product/baseProductF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store', 'delete', 'destroyFile');
@@ -26,6 +26,7 @@ class SupportQna extends BaseSupport
             'cate' => 'd_none',                 // 카테고리 노출여부
             'consult_type' => 'd_none',         // 상담유형 노출여부
             'default_consult_type' => '622006', // 상담유형 디폴트 선택
+            'file_ver' => 1,                    // 첨부파일 버전 1
             'arr_table_width' => [65,555,100,120,100]
         ]
     ];
@@ -121,6 +122,16 @@ class SupportQna extends BaseSupport
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
                 'b.IsBest' => '0'
             ]);
+        }
+
+        // 임용은 본인 작성글만 보여주기
+        if(config_app('SiteGroupCode') == '1011'){
+            if($this->session->userdata('is_login') === true){
+                $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                    'b.RegMemIdx' => $this->session->userdata('mem_idx'),
+                    'b.RegType' => '0'
+                ]);
+            }
         }
 
         // 내질문보기
@@ -229,6 +240,11 @@ class SupportQna extends BaseSupport
         //공개여부 (임용인 경우 비공개 처리)
         $arr_base['public_type'] = (config_app('SiteGroupCode') == '1011') ? false : true;
 
+        //카테고리별 과목 조회
+        foreach ($arr_base['category'] as $row){
+            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $row['CateCode']);
+        }
+
         $method = 'POST';
         $data = null;
 
@@ -271,7 +287,7 @@ class SupportQna extends BaseSupport
 
             $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
 
-            $arr_base['public_type'] = ($data['SiteCode'] == '2017' || $data['SiteCode'] == '2018') ? false : true;
+            $arr_base['public_type'] = (config_app('SiteGroupCode') == '1011') ? false : true;
         }
 
         $this->load->view('support/'.$view_type.'/create_qna', [

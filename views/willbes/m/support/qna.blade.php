@@ -50,15 +50,17 @@
     <div class="btnBox mb20">
         <ul class="f_left width100p">
             <li class="InfoBtn btn_blue"><a href="{{front_url($default_path.'/create?'.$get_params)}}">문의하기</a></li>
-            <li class="InfoBtn btn_white">
-                @if (element('s_is_my_contents', $arr_input) == 1)
-                    <input type="hidden" id="s_is_my_contents" name="s_is_my_contents" value="0">
-                    <a href="#none" onclick="goUrl('s_is_my_contents', document.getElementById('s_is_my_contents').value)">전체문의</a>
-                @else
-                    <input type="hidden" id="s_is_my_contents" name="s_is_my_contents" value="1">
-                    <a href="#none" id="btn_my_counsel">나의문의</a>
-                @endif
-            </li>
+            @if($__cfg['SiteGroupCode'] != '1011')
+                <li class="InfoBtn btn_white">
+                    @if (element('s_is_my_contents', $arr_input) == 1)
+                        <input type="hidden" id="s_is_my_contents" name="s_is_my_contents" value="0">
+                        <a href="#none" onclick="goUrl('s_is_my_contents', document.getElementById('s_is_my_contents').value)">전체문의</a>
+                    @else
+                        <input type="hidden" id="s_is_my_contents" name="s_is_my_contents" value="1">
+                        <a href="#none" id="btn_my_counsel">나의문의</a>
+                    @endif
+                </li>
+            @endif
         </ul>
     </div>
     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">

@@ -5,11 +5,15 @@
 
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both;}
-    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox img {width:100%; max-width:720px; position:relative}
+
+    .evtTop a {position: absolute; left: 19.25%; top: 86.7%; width: 62.76%; height: 7.02%; z-index: 2;}
 
     .evt_apply {background:#f5f5f5;padding:25px;}
     .evt_apply ul {margin-bottom:15px}
     .evt_apply li {display:inline;float:left; width:48%;}
+    .evt_apply li a {box-shadow: 10px 10px 20px rgba(0,0,0,.1); display:inline-block}
+    .evt_apply li img {max-width:280px; margin:0 auto}
     .evt_apply li:nth-child(odd) {padding-left:25px;}
     .evt_apply ul:after {content:''; display:block; clear:both}
 
@@ -32,24 +36,24 @@
 <div id="Container" class="Container NSK c_both"> 
 
     <div class="evtCtnsBox evtTop">
-        <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_top.jpg" alt="웰컴팩" > 
-        </a>    
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1137m_top.gif" alt="" >   
+        <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" title="웰컴팩" style=""></a>
     </div> 
     
     <div class="evtCtnsBox evt01">
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1137m_00.jpg" alt="바로 신청하기" >
         <a href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_01.jpg" alt="바로 신청하기" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1137m_01.jpg" alt="바로 신청하기" >
         </a>
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_02.jpg" alt="쿠폰&포인트" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1137m_02.jpg" alt="쿠폰&포인트" >
     </div>
 
     <div class="evtCtnsBox evt03">
         <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/08/1137m_03.jpg" alt="웰컴팩 받기" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1137m_03.jpg" alt="웰컴팩 받기" >
         </a>
     </div>
 
@@ -87,17 +91,8 @@
             <li>
         </ul>
     </div>
-
-
-
 </div>
-
 <!-- End Container -->
-<link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
-<script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
-<script type="text/javascript">   
-
-</script>
 
 <!-- AceCounter Log Gathering Script V.8.0.AMZ2019080601 -->
 <script language='javascript'>

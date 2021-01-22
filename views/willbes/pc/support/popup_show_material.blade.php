@@ -24,17 +24,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="w-file tx-left pl20" colspan="3">
-                            @if(empty($data['AttachData']) === false)
+                    @if(empty($data['AttachData']) === false)
+                        <tr>
+                            <td class="w-file tx-left pl20" colspan="3">
                                 @foreach($data['AttachData'] as $row)
                                     <a href="{{front_url($default_path.'/notice/download?file_idx=').$row['FileIdx'].'&board_idx='.$board_idx }}" target="_blank">
                                         <img src="{{ img_url('prof/icon_file.gif') }}"> {{$row['RealName']}}
                                     </a>
                                 @endforeach
-                            @endif
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    @endif
                     <tr>
                         <td class="w-txt tx-left" colspan="3">
                             {!! $data['Content'] !!}

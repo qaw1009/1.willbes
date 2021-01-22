@@ -107,7 +107,7 @@
                         </tr>
                         <tr>
                             <td class="w-tit bg-light-white tx-left strong pl30">첨부</td>
-                            @if(empty($arr_swich['file_ver']) === false &&  $arr_swich['file_ver']== 1)
+                            @if(empty($arr_swich['file_ver']) === false &&  $arr_swich['file_ver'] == 1)
                                 <td class="w-file answer tx-left" colspan="4">
                                     <ul class="attach">
                                         @for($i = 0; $i < $attach_file_cnt; $i++)
@@ -116,7 +116,7 @@
                                                 <!--input type="text" class="file-text" />
                                                 <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
                                                 <span class="file-select"-->
-                                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3">
+                                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="input-file" size="3" onchange="chkUploadFile(this);">
                                                 <!--/span>
                                                 <input class="file-reset NSK" type="button" value="X" /-->
                                                 @if(empty($data['AttachData'][$i]) === false)
@@ -225,7 +225,11 @@
                 }, showError, false, 'POST');
             }
 
-            removeAttachFile($(this));
+            @if(empty($arr_swich['file_ver']) === true)
+                removeAttachFile($(this));
+            @else
+                location.reload();
+            @endif
         });
 
         $regi_form.submit(function() {

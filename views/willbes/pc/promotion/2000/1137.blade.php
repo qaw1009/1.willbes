@@ -5,15 +5,10 @@
     <!-- content -->
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
             min-width:1120px !important;
-            background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -22,49 +17,26 @@
 
         /************************************************************/
 
-        .skybanner {
-            position:absolute;
-            top:20px;
-            right:0;
-            z-index:1;
-        }
-        .skybanner li {
-            margin-bottom:5px;
-        }
-        .skybanner_sectionFixed {position:fixed; top:20px}
-        
-        .wb_mp4 {background:#000}
+        .wb_top {background:#fff url('https://static.willbes.net/public/images/promotion/2021/01/1137_top_bg.jpg') no-repeat center top;}
+
         .wb_01 {background:#303132}
 		.wb_02 {background:#f5f5f5}
 
-        .layer {width:100%; height:1070px; -ms-overflow:hidden; overflow:hidden}
-        .video {width:100%; height:1200px; margin:0 auto; position:relative; opacity:0.3; box-shadow:0px rgba(0,0,0,0.3); }
-        .video video {height:1070px}
-        .pngimg {position:absolute; top:0; left:50%; margin-left:-500px; width:1000px; height:1070px; z-index:1}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox wb_mp4" id="main">
-            <div class="layer">
-                <div class="video">
-                    <video autoplay="" loop="" muted="">
-                        <source src="https://static.willbes.net/public/images/promotion/2019/05/Beach-0701.mp4" type="video/mp4"></source>
-                    </video>
-                </div>
-                <div class="pngimg">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/05/1137_top_L.png"  alt="메인" usemap="#welcomepack1"  />
-                    <map name="welcomepack1" id="welcomepack1">
-                        <area shape="rect" coords="282,949,696,1005" href="{{ app_url('/member/join/?ismobile=0&sitecode=' . $__cfg['SiteCode'], 'www') }}" onfocus='this.blur()'  alt="웰컴팩받기" target="_blink">
-                    </map>
-                </div>
-            </div>
+        <div class="evtCtnsBox wb_top">
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1137_top.gif" alt="웰컴팩" usemap="#Map1137" border="0"/>
+            <map name="Map1137" id="Map1137">
+                <area shape="rect" coords="341,946,775,1013" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank" alt="웰컴팩 받기" />
+            </map>
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1137_01-1_L.png"  alt="아주특별한혜택" usemap="#Map1137a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/1137_01.jpg"  alt="아주특별한혜택" usemap="#Map1137a" border="0" />
             <map name="Map1137a" id="Map1137a">
-                <area shape="rect" coords="298,560,506,591" href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank"/>
-                <area shape="rect" coords="166,2048,974,2177" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>
+                <area shape="rect" coords="296,924,508,960" href="https://pass.willbes.net/promotion/index/cate/3092/code/1312" target="_blank"/>
+                <area shape="rect" coords="162,2426,977,2554" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2000" target="_blank"/>
             </map>
         </div> 
 

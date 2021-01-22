@@ -55,6 +55,8 @@
         .btn a {font-size:30px; display:block; border-radius:50px; background:#03675f; color:#fff; padding:20px 0}
         .btn a:hover {background:#333;}   
 
+        .evt_guide {padding-bottom:25px;}
+
         .evt02 {background:#0160E0;}
         .evt02 > div {width:700px; margin:0 auto}
         .evt02 div table {table-layout: auto; border-top:1px solid #757578;}
@@ -275,6 +277,9 @@
                             </td>                        
                         </tr>
                         --}}
+                        <div class="evt_guide">
+                            <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_guide.png" title="이벤트 유의사항">
+                        </div>
                         </tbody>
                     </table>
                 </div>

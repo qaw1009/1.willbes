@@ -385,6 +385,10 @@
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50619/?subject_idx=1237&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EA%B2%80%EC%A0%95%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98')}}">김상범</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50305/?subject_idx=1237&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC%EA%B2%80%EC%A0%95%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98')}}">한경준</a>
                     </li>
+                    <li>
+                        <span>[예비전력관리업무담당자]</span>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/51056?subject_idx=1967&subject_name=%EC%98%88%EB%B9%84%EC%A0%84%EB%A0%A5%EA%B4%80%EB%A6%AC')}}">김도형</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -240,9 +240,7 @@
     /*전문교수진 */
     .adm .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
     .adm .SecBanner05 {margin-right:-20px; margin-top:20px}
-    .adm .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0; position:relative}
-    .adm .SecBanner05 li a {position: absolute; left: 7.69%; top: 45.31%; width: 28.85%; height: 6.25%; z-index: 2;}
-    .adm .SecBanner05 li a.link02 {top: 51.55%;}
+    .adm .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
     .adm .SecBanner05:after {content:''; display: block; clear:both}
 
     .adm .SectionBg02 {background:#f8f0dd; padding:100px 0}

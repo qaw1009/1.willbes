@@ -206,7 +206,7 @@
     }
     .cop .SecBanner03:after {content:''; display: block; clear:both}
 
-    /*개편 과목 전문교수진*/
+    /*bar 배너*/
     .cop .SecBanner04 .bSlider .slider {
         height: 100px;
         overflow:hidden;
@@ -240,9 +240,7 @@
     /*전문교수진 */
     .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
     .cop .SecBanner05 {margin-right:-20px; margin-top:20px}
-    .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0; position:relative}
-    .cop .SecBanner05 li a {position: absolute; top: 68.72%; left: 6.79%; width: 21.51%; height: 9.48%; z-index: 2;}
-    .cop .SecBanner05 li a.link02 {top: 78.67%;}
+    .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
     .cop .SecBanner05:after {content:''; display: block; clear:both}
 
     .cop .SectionBg02 {background:#f8f0dd; padding:100px 0}
@@ -653,44 +651,60 @@
             </div>
             <ul class="SecBanner05">
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_01.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_01.jpg" usemap="#MapProp01" title="배너명" border="0">
+                    <map name="MapProp01">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_02.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_02.jpg" usemap="#MapProp02" title="배너명" border="0">
+                    <map name="MapProp02">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_03.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_03.jpg" usemap="#MapProp03" title="배너명" border="0">
+                    <map name="MapProp03">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_04.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_04.jpg" usemap="#MapProp04" title="배너명" border="0">
+                    <map name="MapProp04">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_05.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_05.jpg" usemap="#MapProp05" title="배너명" border="0">
+                    <map name="MapProp05">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_06.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_06.jpg" usemap="#MapProp06" title="배너명" border="0">
+                    <map name="MapProp06">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_07.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_07.jpg" usemap="#MapProp07" title="배너명" border="0">
+                    <map name="MapProp07">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
                 <li>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_08.jpg" alt="배너명">
-                    <a href="#none" title="맛보기영상"></a>
-                    <a href="#none" title="베스트강좌" class="link02"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_265x211_08.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
                 </li>
             </ul>
         </div>

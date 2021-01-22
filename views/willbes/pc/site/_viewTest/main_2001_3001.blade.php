@@ -239,10 +239,9 @@
 
     /*전문교수진 */
     .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
+    .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
     .cop .SecBanner05 {margin-right:-20px; margin-top:20px}
-    .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0; position:relative}
-    .cop .SecBanner05 li a {position: absolute; top: 68.72%; left: 6.79%; width: 21.51%; height: 9.48%; z-index: 2;}
-    .cop .SecBanner05 li a.link02 {top: 78.67%;}
+    .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
     .cop .SecBanner05:after {content:''; display: block; clear:both}
 
     .cop .SectionBg02 {background:#f8f0dd; padding:100px 0}

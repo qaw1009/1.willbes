@@ -22,7 +22,7 @@
                                 <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgOgName'] }}" title="{{ $row['ProdName'] }}">
                             </div>
                             <div>
-                                <p>{{ $row['ProdName'] }}</p>
+                                <p>{{ (mb_strlen($row['ProdName'], 'UTF-8') >= 25 ? mb_substr($row['ProdName'],'0','25','UTF-8').'...' : $row['ProdName']) }}</p>
                                 <p>[{{ $row['wSaleCcdName'] }}] {{ number_format($row['rwRealSalePrice']) }}원 (↓{{ $row['rwSaleRate'] . $row['rwSaleRateUnit'] }})</p>
                             </div>
                         </a>

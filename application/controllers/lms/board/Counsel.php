@@ -5,7 +5,7 @@ require APPPATH . 'controllers/lms/board/BaseBoard.php';
 
 class Counsel extends BaseBoard
 {
-    protected $temp_models = array('sys/boardMaster', 'board/board');
+    protected $temp_models = array('sys/boardMaster', 'board/board', 'product/base/subject');
     protected $helpers = array('download','file');
 
     private $board_name = 'counsel';
@@ -97,6 +97,9 @@ class Counsel extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //과목조회
+        $arr_subject = $this->_getSubjectArray();
+
         //상담유형
         $arr_type_group_ccd = $this->_getCcdArray($this->_groupCcd['type_group_ccd']);
         //답변상태
@@ -127,7 +130,8 @@ class Counsel extends BaseBoard
             'arr_type_group_ccd' => $arr_type_group_ccd,
             'arr_reply' => $arr_reply,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}",
-            'arr_swich' => element($this->bm_idx,$this->_on_off_swich)
+            'arr_swich' => element($this->bm_idx,$this->_on_off_swich),
+            'arr_subject' => $arr_subject
         ]);
     }
 
@@ -151,6 +155,7 @@ class Counsel extends BaseBoard
                 'LB.ReplyStatusCcd' => $this->_reqP('search_reply_type'),
                 'LB.isPublic' => $this->_reqP('search_is_public'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
+                'LB.SubjectIdx' => $this->_reqP('search_subject_idx'),
             ],
             'ORG' => [
                 'LKB' => [
@@ -435,7 +440,8 @@ class Counsel extends BaseBoard
             ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm,
             MEM.MemName, MEM.MemId, MEM.MemIdx, fn_dec(MEM.PhoneEnc) AS MemPhone,
             LB.VocCcd, LB.ReplyStatusCcd, LB.ReplyContent,
-            MdSysCate.CateName as MdCateName
+            MdSysCate.CateName as MdCateName,
+            PS.SubjectName
             ';
         $board_idx = $params[0];
         $arr_condition = ([

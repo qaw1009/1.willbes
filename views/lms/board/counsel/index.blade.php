@@ -45,6 +45,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control hide" id="search_subject_idx" name="search_subject_idx">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control {{$arr_swich['search']['search_reply_type'] or ''}}" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
                             @foreach($arr_reply as $key => $val)
@@ -177,6 +184,17 @@
         var arr_search_data = {!! $arr_search_data !!};
 
         $(document).ready(function() {
+            // 과목 검색조건
+            $('#tabs_site_code li a').on('click', function() {
+                var s_site_code = $(this).data('site-code')
+
+                if(s_site_code == '2017' || s_site_code == '2018'){
+                    $("#search_subject_idx").removeClass("hide");
+                }else{
+                    $("#search_subject_idx").addClass("hide");
+                }
+            });
+
             $.each(arr_search_data,function(key,value) {
                 if(getQueryString().lastIndexOf('?q=') == -1){
                     $search_form.find('input[name="'+key+'"]').val(value);
@@ -189,6 +207,7 @@
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
             $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
+            $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,

@@ -70,7 +70,7 @@
 {{--        @endif--}}
 
         <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
-        <div class="sampleLec" style="height: 300px">
+        <div class="sampleView">
             {!! banner('M_메인_맛보기1', 'sampleLecSlide', $__cfg['SiteCode'], '0') !!}
         </div>
 
@@ -84,7 +84,7 @@
     <!-- End Container -->
 
     <style>
-        .sampleLecSlide .swiper-slide { height:72px;}
+        /*.sampleLecSlide .swiper-slide { height:72px;}*/
     </style>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>

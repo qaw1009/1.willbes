@@ -520,7 +520,7 @@ class Home extends \app\controllers\FrontController
         $data['arr_main_banner'] = $this->_banner('0');
         $data['notice'] = $this->_boardNotice((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
         $data['lecture_update_info'] = $this->_getlectureUpdateInfo((APP_DEVICE == 'pc' ? 7 : 5), $s_cate_code);
-        $data['study_comment'] = $this->_boardStudyComment(5, $s_cate_code);
+        $data['study_comment'] = $this->_boardStudyComment((APP_DEVICE == 'pc' ? 10 : 5), $s_cate_code);
         $data['top_order_lecture'] = $this->orderListFModel->getTopOrderOnLectureData( $this->_site_code, 3);
 
         $data['exam']['subject_select_box'] = $this->examTakeInfoFModel->getCcdForSubject();

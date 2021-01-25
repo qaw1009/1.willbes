@@ -55,7 +55,6 @@
 
     // 시험정보 탭
     function ajaxInfoTab(obj,_index){
-        console.log(_index);
         var _url = $(obj).data('url');
         var num = $(obj).index() + 1;
 

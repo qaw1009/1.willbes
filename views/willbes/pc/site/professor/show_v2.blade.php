@@ -105,7 +105,13 @@
                                 <li>등록된 강의가 없습니다.</li>
                             @else
                                 @foreach($data['ProfUpdateLectureInfo'] as $idx => $row)
-                                    <li><a href="#none" data-board-url="{{front_url('/UpdateLectureInfo/popupIndex')}}" onclick="go_board_popup(this)">[{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}] {{ date("m월 d일", strtotime($row['unit_regdate'])) }} 총 {{ $row['unit_cnt'] }}강 업로드</a>
+                                    <li>
+{{--                                        <a href="#none" data-board-url="{{front_url('/UpdateLectureInfo/popupIndex')}}" onclick="go_board_popup(this)">--}}
+                                        <a href="{{front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode'])}}">
+                                            [{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}]
+                                            <strong style="color: #c00;">총 {{ $row['unit_cnt'] }}강 업로드</strong>
+                                            {{ $row['ProdName'] }}
+                                        </a>
                                         @if(date('Y-m-d') == $row['unit_regdate'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                                     </li>
                                 @endforeach

@@ -168,10 +168,10 @@
         <div class="sky">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_sky.png" alt="스카이베너" usemap="#Map2040_sky" border="0" >
             <map name="Map2040_sky" id="Map2040_sky">
-                <area shape="rect" coords="1,80,148,225" href="#evt_secret" />
-                <area shape="rect" coords="1,228,144,374" href="#evt_01" />
-                <area shape="rect" coords="1,378,155,526" href="#evt_02" />
-                <area shape="rect" coords="1,530,160,697" href="#evt_03" />
+                <area shape="rect" coords="1,80,148,225" href="#evt_01" />
+                <area shape="rect" coords="1,228,144,374" href="#evt_02" />
+                <area shape="rect" coords="1,378,155,526" href="#evt_03" />
+                <area shape="rect" coords="1,530,160,697" href="#evt_coupon" />
             </map>
         </div>
 
@@ -179,7 +179,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_top.jpg" title="더켠의 시크릿 무료배포 이벤트">
         </div>
 
-        <div class="evtCtnsBox evt01" id="evt_secret">
+        <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_01.jpg" title="영어 합격 시크릿">
         </div>
 
@@ -390,7 +390,7 @@
             </div>
         </form>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt_coupon">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_05.jpg" usemap="#Map2040_sns" title="소문내고,단과 할인 받자!" border="0">
             <map name="Map2040_sns" id="Map2040_sns">
                 <area shape="rect" coords="576,610,741,673" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" />
@@ -427,10 +427,10 @@
                 <div class="infoTit NG"><strong>[EVENT 02. 강좌 수강생 대상]</strong></div>
                 <ul>
                     <li>본 이벤트는 이벤트 시작일 0시 기준으로 유료 구매한 선착순 100명을 대상으로 합니다.</li>
-                    <li>신규 수강생 신청방법 : 수강신청 시 [강좌]와 [교재] 모두 장바구니에 담은 후 0원 결제 진행<br>
-                        기존 수강생 신청방법 : [내강의실]에서 수강중인 강좌의 [교재] 0원 결제 진행
+                    <li>신규 수강생 신청방법 : 해당 강좌 수강신청 시 입력한 주소로 배송 처리<br>
+                        기존 수강생 신청방법 : 문자를 통해 별도 공지 예정
                     </li>
-                    <li>수량 마감 시 추가 공지 없이 [교재] 리스트에서 삭제 처리됩니다.</li>
+                    <li>수량 마감 시 추가 공지 없이 사은품 지급 대상에서 제외됩니다.</li>
                 </ul>
                 <div class="infoTit NG"><strong>[EVENT 03. 기존회원 대상]</strong></div>
                 <ul>

@@ -112,12 +112,6 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN2 ON LB.ReplyAdminIdx = ADMIN2.wAdminIdx
                     LEFT OUTER JOIN {$this->_table_sys_category} as MdSysCate ON LB.MdCateCode = MdSysCate.CateCode AND LB.SiteCode = MdSysCate.SiteCode
                     LEFT OUTER JOIN {$this->_table_product_subject} as PS ON LB.SubjectIdx = PS.SubjectIdx
-                    LEFT OUTER JOIN (
-                        select BoardIdx, AttachFilePath
-                        from {$this->_table_attach}
-                        where IsStatus = 'Y' and RegType = 1
-                        GROUP BY BoardIdx
-                    ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                 ";
                 break;
             case "faq" :

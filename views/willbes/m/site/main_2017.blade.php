@@ -107,7 +107,7 @@
             var swiper_lecture = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
-                spaceBetween: 10,
+                spaceBetween: 5,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

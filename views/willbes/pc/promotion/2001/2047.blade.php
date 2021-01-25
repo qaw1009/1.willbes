@@ -55,7 +55,7 @@
         .evtInfoBox .infoTit {font-size:20px; margin-bottom:10px}
         .evtInfoBox ul {margin-bottom:30px}
 
-        .skyBanner {position:fixed; width:189px; top:200px; right:0; z-index:5;}
+        .skyBanner {position:fixed; width:130px; top:200px; right:10px; z-index:5;}
         .skyBanner a {display:block; margin-bottom:5px}          
         
     </style>
@@ -87,7 +87,7 @@
 
         <div class="skyBanner">
             <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_sky.png" alt="신청하기">
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_sky.jpg" alt="신청하기">
             </a>
         </div>    
 
@@ -182,7 +182,7 @@
         <div class="evtCtnsBox wb_04">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_04.jpg" alt="파이널패스" usemap="#Map2017B" border="0"/>
             <map name="Map2017B" id="apply">
-                <area shape="rect" coords="273,521,844,653" href="javascript:go_PassLecture('177223');" alt="파이널 패스 신청하기" />
+                <area shape="rect" coords="273,521,844,653" href="javascript:go_PassLecture('178370');" alt="파이널 패스 신청하기" />
             </map>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />신광은경찰 FINAL PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -241,7 +241,7 @@
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-            var url = '{{ site_url('/periodPackage/show/cate/3093/pack/648001/prod-code/') }}' + code;
+            var url = '{{ site_url('/periodPackage/show/cate/3006/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
 

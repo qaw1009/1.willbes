@@ -24,9 +24,11 @@
     .fixed {position:fixed; width:100%; left:0; z-index:10; border:0; opacity: .95;} 
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}    
 
-    .evt05 a {position: absolute; width:34.17%; height:7.65%; z-index: 2;}
-    .evt05 a.a01 {left: 9.31%; top: 73.37%;}
-    .evt05 a.a02 {left: 57.36%; top: 73.47%;}
+    .evt05 {background:#C1392D;}
+    .evt05 a {position: absolute; width:26.81%; height:7.65%; z-index: 2;}
+    .evt05 a.a01 {left: 51.25%; top: 40.37%;}
+    .evt05 a.a02 {left: 51.53%; top: 47.6%;}
+    .evt05 a.a03 {left: 59.17%; top: 83.89%;}
 
 
     /* 폰 가로, 태블릿 세로*/
@@ -79,9 +81,10 @@
     </div>
 
     <div class="evtCtnsBox evt05" >
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1915m_05.jpg" alt="수강신청"  >
+        <img src="https://static.willbes.net/public/images/promotion/2021/01/1915m_05.jpg" alt="수강신청"  >
         <a href="https://pass.willbes.net/m/lecture/show/cate/3028/pattern/only/prod-code/174799" target="_blank" alt="가축사양학" class="a01">
         <a href="https://pass.willbes.net/m/lecture/show/cate/3028/pattern/only/prod-code/174804" target="_blank" alt="가축육종학" class="a02">
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/178352" target="_blank" alt="축산직" class="a03">
     </div>
 
 </div>

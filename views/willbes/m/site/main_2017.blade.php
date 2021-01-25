@@ -70,8 +70,8 @@
 {{--        @endif--}}
 
         <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
-        <div class="sampleView">
-            {!! banner('M_메인_맛보기1', 'swiper-container-view', $__cfg['SiteCode'], '0') !!}
+        <div class="sampleLec" style="height: 300px">
+            {!! banner('M_메인_맛보기1', 'sampleLecSlide', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{-- 시험정보 --}}
@@ -82,6 +82,10 @@
 
     </div>
     <!-- End Container -->
+
+    <style>
+        .sampleLecSlide .swiper-slide { height:72px;}
+    </style>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>
@@ -104,7 +108,7 @@
             });
 
             //맛보기강의
-            var swiper_lecture = new Swiper('.swiper-container-view', {
+            var swiper_lecture = new Swiper('.sampleLecSlide', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
                 spaceBetween: 10,

@@ -71,7 +71,7 @@
 
         <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
         <div class="sampleView">
-            {!! banner('M_메인_맛보기1', 'sampleLecSlide', $__cfg['SiteCode'], '0') !!}
+            {!! banner('M_메인_맛보기1', 'swiper-container-view', $__cfg['SiteCode'], '0') !!}
         </div>
 
         {{-- 시험정보 --}}

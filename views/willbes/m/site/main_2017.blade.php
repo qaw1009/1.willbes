@@ -120,7 +120,7 @@
                     el: '.swiper-pagination',
                     clickable: true,
                 },
-            }); 
+            });  
         });
     </script>
 @stop

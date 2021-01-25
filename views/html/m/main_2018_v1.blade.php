@@ -450,54 +450,41 @@
 
 </div>
 <!-- End Container -->
-<script>       
-    $(function() {         
-        //수강후기
-        var swiper = new Swiper ('.swiper-container-reply', { 
-            slidesPerView: 'auto',
-            spaceBetween: 0, 
-            slidesPerGroup: 1,
-            loop: true,
-            loopFillGroupWithBlank: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            pagination: { 
-                el: '.swiper-pagination', 
-                clickable: true,
-            }, 
-        });        
-    });   
+    <script>
+        $(function() {
+            //수강후기
+            var swiper_review = new Swiper ('.swiper-container-reply', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                slidesPerGroup: 1,
+                loop: true,
+                loopFillGroupWithBlank: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
 
-    /*맛보기강의*/
-    /*$(function(){
-        main04 = $(".sampleLec ul").bxSlider({
-            auto: true,
-            speed:1000,
-            pause:5000,
-            autoHover: true,
-            controls:false,
+            //맛보기강의
+            var swiper = new Swiper('.swiper-container-view', {
+                slidesPerView: 1,
+                slidesPerColumn: 4,
+                spaceBetween: 10,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });  
         });
-    });*/
-
-    $(function() {
-        var swiper = new Swiper('.swiper-container-view', {
-            slidesPerView: 1,
-            slidesPerColumn: 4,
-            spaceBetween: 10,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });    
-    });
-
-</script> 
+    </script>
 
 <!-- footer -->
 <div id="Footer" class="widthAutoFull NGR c_both pb30">

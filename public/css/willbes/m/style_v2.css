@@ -2741,6 +2741,50 @@ body.memBody #Footer {
 	clear: both;
 }
 
+/*임용 맛보기*/
+/*.ssam .sampleView {
+	height: 440px;
+	width: 100% !important;	
+	max-width: 680px;
+	margin: 0 auto;
+	padding-bottom: 60px;
+}
+.ssam .sampleView .swiper-container-view {
+	width: 100%;	
+	height: 100%;
+	position: relative;
+}
+.ssam .sampleView .swiper-slide {
+	text-align: center;
+	height: calc((100% - 10px) / 4);
+	background: none;
+}
+@media only screen and (max-width: 374px) {
+	.ssam .sampleView {height: 240px;}
+	.ssam .sampleView .swiper-slide {height: calc((100% - 0) / 4);}
+}
+@media only screen and (min-width: 375px) and (max-width: 640px) {
+	.ssam .sampleView {height: 340px;}
+	.ssam .sampleView .swiper-slide {height: calc((100% - 0) / 4);}
+}
+.ssam .sampleView .swiper-container-View .swiper-pagination {
+	bottom: -55px !important;
+}
+.ssam .sampleView
+	.swiper-container-View
+	.swiper-pagination
+	.swiper-pagination-bullet {
+	width: 12px !important;
+	height: 12px !important;
+}
+.ssam .sampleView .swiper-slide a { padding:0 !important; margin:0 !important;}
+.ssam .sampleView .swiper-slide a img {
+	width: 100% !important;	
+	max-width: 680px;
+	padding:0 !important; margin:0 !important;
+}
+*/
+
 .ssam .ssamEtc {
 	border-top: 1px solid #cfcfcf;
 	text-align: center;
@@ -2775,6 +2819,7 @@ body.memBody #Footer {
 .ssam .csCenter li div.goTel img {
 	width: 24px;
 }
+
 
 /****************윌비스 임용 : 메인 end******************/
 

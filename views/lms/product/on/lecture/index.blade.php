@@ -165,6 +165,7 @@
                     <th>추천</th>
                     <th>배수</th>
                     <th>판매여부</th>
+                    <th>정렬</th>
                     <th>사용</th>
                     <th>정산입력</th>
                     <!--  쿼리속도 저하로 인해 제거
@@ -192,7 +193,8 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
-                    { text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
+                    { text: '<i class="fa fa-pencil mr-5"></i> 정렬순서 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-order-modify'}
+                    ,{ text: '<i class="fa fa-pencil mr-5"></i> 신규/추천/사용 적용', className: 'btn-sm btn-success border-radius-reset mr-15 btn-new-best-modify'}
                     ,{ text: '<i class="fa fa-copy mr-5"></i> 단강좌복사', className: 'btn-sm btn-success border-radius-reset mr-15 btn-copy'}
                     ,{ text: '<i class="fa fa-pencil mr-5"></i> 단강좌등록', className: 'btn-sm btn-primary border-radius-reset btn-reorder',action : function(e, dt, node, config) {
                             location.href = '{{ site_url('product/on/lecture/create') }}';
@@ -243,6 +245,9 @@
                     {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
                             return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
                         }},//판매여부
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
+                        }}, // 정렬
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
@@ -290,6 +295,35 @@
                         }
                     }, showError, false, 'POST');
                 }
+            });
+
+            // 정렬순서 변경
+            $('.btn-order-modify').on('click', function() {
+                if (!confirm('정렬순서를 적용하시겠습니까?')) {
+                    return;
+                }
+                var $order = $list_table.find('input[name="OrderNum[]"]');
+                var $params = {};
+                var this_prodcode,this_num;
+
+                $order.each(function(idx) {
+                    this_prodcode = $order.eq(idx).data('idx');
+                    this_num = $order.eq(idx).val();
+                    $params[this_prodcode] = this_num ;
+                });
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'PUT',
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax('{{ site_url('/product/on/lecture/reorder') }}', data, function(ret) {
+                    if (ret.ret_cd) {
+                        notifyAlert('success', '알림', ret.ret_msg);
+                        $datatable.draw();
+                    }
+                }, showError, false, 'POST');
             });
 
             // 신규, 추천, 사용 상태 변경

@@ -22,7 +22,7 @@
 
         .wb_top {background:#DDD6C4 url(https://static.willbes.net/public/images/promotion/2020/11/1915_top_bg.jpg) no-repeat center top;}
 
-        .top_tab {position:absolute; left:50%; top:1880px; width:975px; margin-left:-487px; z-index:10}   
+        .top_tab {position:absolute; left:50%; top:1909px; width:975px; margin-left:-487px; z-index:10}   
         .top_tab li {display:inline; float:left; height:150px; width:325px;}        
         .top_tab li a {position:relative;}	     
         .top_tab a img {position:absolute; left:0; top:0; width:325px; height:150px;  z-index:11}   

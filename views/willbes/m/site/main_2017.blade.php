@@ -108,7 +108,7 @@
             });
 
             //맛보기강의
-            var swiper_lecture = new Swiper('.sampleLecSlide', {
+            var swiper = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
                 spaceBetween: 10,
@@ -120,7 +120,7 @@
                     el: '.swiper-pagination',
                     clickable: true,
                 },
-            });
+            }); 
         });
     </script>
 @stop

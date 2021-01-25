@@ -47,7 +47,7 @@ class Counsel extends BaseBoard
             'list' => [                             // 리스트 항목 설정
                 'CateCode' => '카테고리',
                 'Title' => '제목',
-                'AttachRealFileName' => '첨부',
+                'AttachFileName' => '첨부',
                 'RegType' => '등록자',
                 'RegDatm' => '등록일',
                 'ReplyStatusCcdName' => '답변상태',
@@ -164,10 +164,14 @@ class Counsel extends BaseBoard
             ]
         ];
 
+        $arr_condition['ORG2']['RAW'] = ['LB.IsBest = ' => '0 OR (LB.IsBest = 1 AND LB.IsStatus = \'Y\')'];
+
+        if ($this->_req('search_is_delete') == 'Y') {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsStatus' => 'Y']);
+        }
+
         if ($this->_req('search_chk_delete_value') == '1') {
             $arr_condition['EQ'] = array_merge($arr_condition['EQ'], ['LB.IsBest' => '0', 'LB.IsStatus' => 'N']);
-        } else {
-            $arr_condition['ORG2']['RAW'] = ['LB.IsBest = ' => '0 OR (LB.IsBest = 1 AND LB.IsStatus = \'Y\')'];
         }
 
         if ($this->_req('search_chk_vod_value') == 1) {
@@ -208,7 +212,6 @@ class Counsel extends BaseBoard
             LB.ReplyStatusCcd, LSC3.CcdName AS ReplyStatusCcdName,
             ADMIN2.wAdminName as ReplyRegAdminName,
             MdSysCate.CateName as MdCateName,
-            AttachFilePath,
             PS.SubjectName
         ';
 

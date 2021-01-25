@@ -66,6 +66,11 @@
                             <option value="N">비공개</option>
                         </select>
 
+                        <select class="form-control {{$arr_swich['search']['search_is_delete'] or ''}}" id="search_is_public" name="search_is_delete">
+                            <option value="Y">회원삭제글미노출</option>
+                            <option value="N">회원삭제글노출</option>
+                        </select>
+
                         <div class="checkbox ml-30">
                             @if(empty($arr_swich['search']['vod_value']) === true)
                             <input type="checkbox" name="search_chk_vod_value" value="1" class="flat" id="vod_value"/> <label for="vod_value" class="mr-10">강성 클레임</label>
@@ -267,8 +272,8 @@
                         }},
                     @endif
 
-                    @if(empty($arr_swich['list']['AttachRealFileName']) === false)
-                    {'data' : 'AttachRealFileName', 'render' : function(data, type, row, meta) {
+                    @if(empty($arr_swich['list']['AttachFileName']) === false)
+                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                             var tmp_return;
                             (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                             return tmp_return;

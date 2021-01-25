@@ -168,10 +168,10 @@
         <div class="sky">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_sky.png" alt="스카이베너" usemap="#Map2040_sky" border="0" >
             <map name="Map2040_sky" id="Map2040_sky">
-                <area shape="rect" coords="1,80,148,225" href="#evt_secret" />
-                <area shape="rect" coords="1,228,144,374" href="#evt_01" />
-                <area shape="rect" coords="1,378,155,526" href="#evt_02" />
-                <area shape="rect" coords="1,530,160,697" href="#evt_03" />
+                <area shape="rect" coords="1,80,148,225" href="#evt_01" />
+                <area shape="rect" coords="1,228,144,374" href="#evt_02" />
+                <area shape="rect" coords="1,378,155,526" href="#evt_03" />
+                <area shape="rect" coords="1,530,160,697" href="#evt_coupon" />
             </map>
         </div>
 
@@ -179,7 +179,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_top.jpg" title="더켠의 시크릿 무료배포 이벤트">
         </div>
 
-        <div class="evtCtnsBox evt01" id="evt_secret">
+        <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_01.jpg" title="영어 합격 시크릿">
         </div>
 
@@ -390,7 +390,7 @@
             </div>
         </form>
 
-        <div class="evtCtnsBox evt05">
+        <div class="evtCtnsBox evt05" id="evt_coupon">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_05.jpg" usemap="#Map2040_sns" title="소문내고,단과 할인 받자!" border="0">
             <map name="Map2040_sns" id="Map2040_sns">
                 <area shape="rect" coords="576,610,741,673" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" />

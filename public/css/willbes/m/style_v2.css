@@ -2742,7 +2742,7 @@ body.memBody #Footer {
 }
 
 /*임용 맛보기*/
-.ssam .sampleView {
+/*.ssam .sampleView {
 	height: 440px;
 	width: 100% !important;	
 	max-width: 680px;
@@ -2783,7 +2783,7 @@ body.memBody #Footer {
 	max-width: 680px;
 	padding:0 !important; margin:0 !important;
 }
-
+*/
 
 .ssam .ssamEtc {
 	border-top: 1px solid #cfcfcf;

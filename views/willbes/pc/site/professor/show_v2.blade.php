@@ -106,7 +106,8 @@
                             @else
                                 @foreach($data['ProfUpdateLectureInfo'] as $idx => $row)
                                     <li>
-                                        <a href="#none" data-board-url="{{front_url('/UpdateLectureInfo/popupIndex')}}" onclick="go_board_popup(this)">
+{{--                                        <a href="#none" data-board-url="{{front_url('/UpdateLectureInfo/popupIndex')}}" onclick="go_board_popup(this)">--}}
+                                        <a href="{{front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode'])}}">
                                             [{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}]
                                             <strong style="color: #c00;">총 {{ $row['unit_cnt'] }}강 업로드</strong>
                                             {{ $row['ProdName'] }}

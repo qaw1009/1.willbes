@@ -181,11 +181,11 @@
                     <th>개설여부</th>
                     <th>접수기간</th>
                     <th>접수상태</th>
+                    <th>정렬</th>
                     <th>사용</th>
                     <th>정산입력</th>
                     <th>등록자</th>
                     <th>등록일</th>
-                    <th>정렬</th>
                     <th>복사</th>
                 </tr>
                 </thead>
@@ -278,7 +278,9 @@
                             html += '</select>';
                             return html;
                         }},
-
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
+                        }}, // 정렬
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
@@ -287,9 +289,6 @@
                         }},//정산입력
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
-                    {'data' : null, 'render' : function(data, type, row, meta) {
-                            return '<input type="text" class="form-control" name="OrderNum[]" data-idx="'+ row.ProdCode +'"  value="'+row.OrderNum+'" style="width:30px" maxlength="3">';
-                        }}, // 정렬
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return (row.ProdCode_Original !== '') ? '<span class="red">Y</span>' : '';
                         }},//복사여부

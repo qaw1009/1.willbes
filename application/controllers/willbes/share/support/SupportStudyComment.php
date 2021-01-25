@@ -108,6 +108,7 @@ class SupportStudyComment extends BaseSupport
         $arr_base['subject_idx'] = element('subject_idx', $arr_input);
         $arr_base['subject_name'] = element('subject_name', $arr_input);
         $arr_base['prof_idx'] = element('prof_idx', $arr_input);
+        $arr_base['board_idx'] = element('board_idx', $arr_input);
 
         /*if (empty($prod_code) === true || empty($arr_base['subject_idx']) === true || empty($arr_base['prof_idx']) === true) {
             show_alert('강좌 정보가 없습니다.', 'close');

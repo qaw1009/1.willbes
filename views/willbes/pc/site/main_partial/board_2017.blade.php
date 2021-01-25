@@ -33,8 +33,9 @@
                 @else
                 @foreach($data['lecture_update_info'] as $row)
                 <li>
-                    <a href="{{front_url('/professor/show/cate/' . $row['CateCode'] . '/prof-idx/' . $row['ProfIdx'])}}">
-                        <strong class="tx-blue">[{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}]</strong> {{ date("m월 d일", strtotime($row['unit_regdate'])) }} 총 {{ $row['unit_cnt'] }}강 업로드
+{{--                    <a href="{{front_url('/professor/show/cate/' . $row['CateCode'] . '/prof-idx/' . $row['ProfIdx'])}}">--}}
+                    <a href="{{front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode'])}}">
+                        <strong class="tx-blue">[{{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}]</strong> 총 {{ $row['unit_cnt'] }}강 업로드 {{ date("m월 d일", strtotime($row['unit_regdate'])) }}
                         @if(date('Y-m-d') == $row['unit_regdate'])<img src="{{ img_url('cop/icon_new.png') }}" alt="new"/>@endif
                     </a>
                 </li>

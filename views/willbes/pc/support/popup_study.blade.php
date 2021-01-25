@@ -212,6 +212,10 @@
     var $mem_id = '{{sess_data('mem_id')}}';
 
     $(document).ready(function(){
+        @if(empty($arr_base['board_idx']) === false)
+            $("#reply_{{$arr_base['board_idx']}}").trigger("click");
+        @endif
+
         var is_login = '{{sess_data('is_login')}}';
         $_ajax_reg_form.find('select[name="study_prof_idx"]').chained("#study_subject_idx");
 
@@ -381,7 +385,7 @@
                         set_table_style = 'none';
                     }
 
-                    add_table += '<tr class="replyList w-replyList">';
+                    add_table += '<tr class="replyList w-replyList" id="reply_' + item.BoardIdx + '">';
                     add_table += '<td class="w-no">';
                     if (item.IsBest == 1) {
                         add_table += '<img src="{{ img_url('prof/icon_best_reply.gif') }}">';

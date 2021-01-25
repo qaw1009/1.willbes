@@ -238,7 +238,8 @@
                                                 @endif
                                                 <td>
                                                     <div>
-                                                        @if(time() >= strtotime($arr_base['add_apply_data'][$j]['ApplyEndDatm']) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
+                                                        @php $add_end_date = substr($arr_base['add_apply_data'][$j]['ApplyEndDatm'],0,10) . ' 23:59:59' @endphp
+                                                        @if(time() >= strtotime($add_end_date) || $arr_base['add_apply_data'][$j]['PersonLimit'] <= $arr_base['add_apply_data'][$j]['MemberCnt'])
                                                             <span><img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_dead_line.png" alt="마감"></span>
                                                         @endif
 

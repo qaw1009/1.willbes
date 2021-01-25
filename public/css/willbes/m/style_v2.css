@@ -1654,6 +1654,35 @@ body.memBody #Footer {
 	display: block;
 	clear: both;
 }
+/*임용*/
+.sampleView_2017 {
+	height: 520px;
+	width: calc(100% - 20px);
+	margin:0 auto;
+	overflow: hidden;
+	padding-bottom:40px;	
+}
+.sampleView_2017 .swiper-container-view {
+	width: 100%;
+	height: 100%;
+	margin:0 auto;
+	position: relative;
+}
+.sampleView_2017 .swiper-slide {
+	height: calc((100% - 10px) / 4);
+}
+.sampleView_2017 .swiper-container-View .swiper-pagination {
+	bottom: -30px !important;
+}
+.sampleView_2017 .swiper-container-View .swiper-pagination .swiper-pagination-bullet {
+	width: 12px !important;
+	height: 12px !important;
+}
+@media only screen and (max-width: 640px) {
+	.sampleView_2017 {height: 340px;}
+}
+
+
 
 /*로드맵*/
 .loadMap {

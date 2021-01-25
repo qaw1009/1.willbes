@@ -316,6 +316,7 @@
     </ul>
 
     <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
+    {{--
     <div class="sampleLec">
         <ul>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" title="교수명"></a>
@@ -345,6 +346,57 @@
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_jss.jpg" title="교수명"></a>
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_jkm.jpg" title="교수명"></a></li>
         </ul>
+    </div>
+    --}}
+    <div class="sampleView_2017">
+        <div class="overhidden">
+            <div class="swiper-container-view">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/m/2018/2017_lec_mjs.jpg" alt="강사명">
+                        </a>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
     </div>
 
     <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
@@ -425,6 +477,7 @@
     });   
 
     /*맛보기강의*/
+    /*
     $(function(){
         main04 = $(".sampleLec ul").bxSlider({
             auto: true,
@@ -433,6 +486,21 @@
             autoHover: true,
             controls:false,
         });
+    });*/
+    $(function() {
+        var swiper = new Swiper('.swiper-container-view', {
+            slidesPerView: 1,
+            slidesPerColumn: 4,
+            spaceBetween: 5,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });    
     });
 </script> 
 

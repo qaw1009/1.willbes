@@ -45,6 +45,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control hide" id="search_subject_idx" name="search_subject_idx">
+                            <option value="">과목</option>
+                            @foreach($arr_subject as $row)
+                                <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control {{$arr_swich['search']['search_reply_type'] or ''}}" id="search_reply_type" name="search_reply_type">
                             <option value="">답변상태</option>
                             @foreach($arr_reply as $key => $val)
@@ -64,6 +71,11 @@
                             <option value="">공개여부</option>
                             <option value="Y">공개</option>
                             <option value="N">비공개</option>
+                        </select>
+
+                        <select class="form-control {{$arr_swich['search']['search_is_delete'] or ''}}" id="search_is_public" name="search_is_delete">
+                            <option value="Y">회원삭제글미노출</option>
+                            <option value="N">회원삭제글노출</option>
                         </select>
 
                         <div class="checkbox ml-30">
@@ -172,6 +184,17 @@
         var arr_search_data = {!! $arr_search_data !!};
 
         $(document).ready(function() {
+            // 과목 검색조건
+            $('#tabs_site_code li a').on('click', function() {
+                var s_site_code = $(this).data('site-code')
+
+                if(s_site_code == '2017' || s_site_code == '2018'){
+                    $("#search_subject_idx").removeClass("hide");
+                }else{
+                    $("#search_subject_idx").addClass("hide");
+                }
+            });
+
             $.each(arr_search_data,function(key,value) {
                 if(getQueryString().lastIndexOf('?q=') == -1){
                     $search_form.find('input[name="'+key+'"]').val(value);
@@ -184,6 +207,7 @@
             $search_form.find('select[name="search_campus_ccd"]').chained("#search_site_code");
             $search_form.find('select[name="search_category"]').chained("#search_site_code");
             $search_form.find('select[name="search_md_cate_code"]').chained("#search_category");
+            $search_form.find('select[name="search_subject_idx"]').chained("#search_site_code");
 
             $datatable = $list_table.DataTable({
                 serverSide: true,
@@ -267,8 +291,8 @@
                         }},
                     @endif
 
-                    @if(empty($arr_swich['list']['AttachRealFileName']) === false)
-                    {'data' : 'AttachRealFileName', 'render' : function(data, type, row, meta) {
+                    @if(empty($arr_swich['list']['AttachFileName']) === false)
+                    {'data' : 'AttachFileName', 'render' : function(data, type, row, meta) {
                             var tmp_return;
                             (data === null) ? tmp_return = '' : tmp_return = '<p class="glyphicon glyphicon-file"></p>';
                             return tmp_return;

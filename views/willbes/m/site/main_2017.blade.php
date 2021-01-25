@@ -69,8 +69,8 @@
 {{--            </div>--}}
 {{--        @endif--}}
 
-        <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>        
-        <div class="sampleView_2017">
+        <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
+        <div class="sampleView">
             {!! banner('M_메인_맛보기1', 'swiper-container-view', $__cfg['SiteCode'], '0') !!}
         </div>
 
@@ -107,7 +107,7 @@
             var swiper_lecture = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 4,
-                spaceBetween: 5,
+                spaceBetween: 10,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

@@ -398,7 +398,10 @@
                     개편 과목 <span class="cop-color">전문 교수진</span>
                     <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
                 </div>
-                <ul class="SecBanner03">
+                <div class="SecBanner03">
+                    {!! banner_html($data['arr_main_banner']['메인_전문교수진'], 'slider') !!}
+                </div>
+                {{--<ul class="SecBanner03">
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
                             <li>
@@ -406,7 +409,7 @@
                             </li>
                         @endif
                     @endfor
-                </ul>
+                </ul>--}}
             </div>
         </div>
 

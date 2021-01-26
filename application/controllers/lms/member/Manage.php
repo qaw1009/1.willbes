@@ -2703,4 +2703,32 @@ class Manage extends \app\controllers\BaseController
         return $this->json_result(true,'삭제되었습니다.');
 
     }
+
+    public function ssamInfo($params = [])
+    {
+        $memIdx = null;
+        $data = [];
+
+        if (empty($params[0]) === false) {
+            $memIdx = $params[0]; //회원번호
+
+            if (is_numeric($memIdx) == true) {
+                $data = $this->manageMemberModel->getMember($memIdx);
+            } else {
+                show_error('파라미터가 정확하지 않습니다.');
+            }
+        } else {
+            show_error('파라미터가 정확하지 않습니다.');
+        }
+
+        if(empty($data) == true){
+            show_error('회원검색에 실패했습니다.');
+        }
+
+        $data['ssam_info'] = $this->manageMemberModel->getSsamInfo($memIdx);
+
+        $this->load->view('member/log/ssaminfo', [
+            'data' => $data
+        ]);
+    }
 }

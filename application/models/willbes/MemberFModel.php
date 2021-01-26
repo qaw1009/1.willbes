@@ -18,7 +18,8 @@ class MemberFModel extends WB_Model
         'btob_log' => 'lms_btob_access_log',
         'btob_member' => 'lms_btob_r_member',
         'draw' => 'lms_member_out_log',
-        'welcomepack' => 'lms_welcomepack'
+        'welcomepack' => 'lms_welcomepack',
+        'ssam_info' => 'lms_member_ssaminfo'
     ];
 
     protected $_mailSendTypeCcd = [
@@ -654,6 +655,16 @@ class MemberFModel extends WB_Model
                 set('Addr2Enc',"fn_enc('".element('Addr2', $input)."')",false)->
                 insert($this->_table['info']) === false){
                 throw new \Exception('부가정보 입력에 실패했습니다.');
+            }
+
+            // lms_member_ssaminfo 저장 임용전용
+            if($this->_conn->set('MemIdx', $MemIdx)
+                ->set('SubjectCcd', element('SubjectCcd', $input))
+                ->set('School', element('School', $input))
+                ->set('RegionCcd', element('RegionCcd', $input))
+                ->set('TakeCcd', element('TakeCcd', $input))
+                ->insert($this->_table['ssam_info']) === false){
+                throw new \Exception('임용고시 부가정보 입력에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

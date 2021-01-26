@@ -2719,6 +2719,9 @@ body.memBody #Footer {
 	background: #0c5dc0;
 }
 
+
+
+
 .ssam .examInfo li {
 	display: inline;
 	float: left;
@@ -2755,10 +2758,16 @@ body.memBody #Footer {
 	overflow: hidden;     
 	padding-bottom: 60px;
 }
+.ssam .sampleView .swiper-container-view {
+	width: 100%;            
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
 .ssam .sampleView .swiper-slide {
 	text-align: left;
 	font-size: 16px;
-	background: #eee url("/public/img/willbes/m/main/icon_play.png") no-repeat 98% center;
+	background: #eee url("../../../img/willbes/m/main/icon_play.png") no-repeat 98% center;
 	background-size: 30px;
 	height: calc((100% - 10px) / 5);
 	/* Center slide text vertically */
@@ -2775,6 +2784,51 @@ body.memBody #Footer {
 	-webkit-align-items: center;
 	align-items: center;
 }
+.ssam .sampleView .swiper-container-View .swiper-pagination {
+	bottom: -55px !important;
+}
+
+/*임용 맛보기 이미지 배너*/
+.ssam .sampleViewImg {
+	height: 600px;
+	width: calc(100% - 20px);
+	margin: 0 auto;       
+	overflow: hidden;     
+	padding-bottom: 80px;
+	position:relative;
+}
+.ssam .sampleViewImg .swiper-slide {
+	background: none;
+	height: calc((100% - 10px) / 5);
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.ssam .sampleViewImg .swiper-slide a img {
+	width: 100%;
+	float: none;
+	margin:0;
+}
+.ssam .sampleViewImg .swiper-container-View .swiper-pagination {
+	bottom: 50px !important;
+}
+@media only screen and (max-width: 374px) {
+	.ssam .sampleViewImg {height: 90vw;}
+}
+@media only screen and (min-width: 375px) and (max-width: 640px){
+	.ssam .sampleViewImg {height: 90vw;}
+}
+
 /*
 .ssam .sampleView {
 	height: 440px;

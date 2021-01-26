@@ -90,7 +90,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>{{ $data['InterestName'] }}</td>
+                    <td>
+                        {{ $data['InterestName'] }}
+                        @if($data['interest'] === '718009')
+                            <br><button type="button" class="btn btn-default" id="view_ssam_info">추가정보</button>
+                        @endif
+                    </td>
                     <td>({{ $data['ZipCode'] }}) {{ $data['Addr1'] }} {{ $data['Addr2'] }}</td>
                     <td>{{ $data['Phone'] }} ({{ $data['SmsRcvStatus'] }})<br>
                         <button type="button" class="btn btn-default" id="chg_sms_log">SMS 발송내역</button></td>
@@ -147,6 +152,13 @@
             $('#login_log').setLayer({
                 url : "{{ site_url("member/manage/loginLog/{$data['MemIdx']}") }}",
                 width : 1000
+            });
+
+            $('#view_ssam_info').setLayer({
+                url : "{{ site_url("member/manage/ssamInfo/{$data['MemIdx']}") }}",
+                overflow : 'scroll',
+                width : '800',
+                max_height : '300'
             });
 
             $('#chg_info_log').setLayer({

@@ -114,11 +114,45 @@
                     <tr>
                         <td class="combine-Tit">준비과정</td>
                         <td>
-                            <div class="p_re">
+                            <div class="addInfo1">
                                 @foreach($interestCode as $key => $value)
-                                    <label><input name="InterestCode" type="radio" value="{{ $key }}" class="ml10" /> {{$value}}</label>
+                                    <label><input name="InterestCode" type="radio" value="{{ $key }}" class="ml10 interest" /> {{$value}}</label>
                                 @endforeach
                                 <input type="hidden" name="int_temp" />
+                            </div>
+                            {{--임용선택 시 노출--}}
+                            <div class="addInfo2" id="ssam_info" style="display: none">
+                                <div>
+                                    <span class="tx-red">응시(예정)과목 *</span>
+                                    <select name="SubjectCcd" title="">
+                                        <option value="">선택</option>
+                                        @foreach($subject as $key => $value)
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>출신학교/학과</span>
+                                    <input type="text" name="School" placeholder="출신학교/학과를 입력해 주세요">
+                                </div>
+                                <div>
+                                    <span class="tx-red">희망응시지역 *</span>
+                                    <select name="RegionCcd" title="">
+                                        <option value="">선택</option>
+                                        @foreach($region as $key => $value)
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>응시횟수</span>
+                                    <select name="TakeCcd" title="">
+                                        <option value="">선택</option>
+                                        @foreach($take as $key => $value)
+                                            <option value="{{$key}}">{{$value}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="tx-red mt10 err_msg" style="display: block;"></div>
                         </td>
@@ -304,6 +338,12 @@
                     },
                     MailDomain : {
                         mail_chk : true
+                    },
+                    SubjectCcd : {
+                        ssam_subject : true
+                    },
+                    RegionCcd : {
+                        ssam_region : true
                     }
                 },
                 messages : {
@@ -348,6 +388,12 @@
                     },
                     MailId : {
                         mail_chk : "메일형식이 올바르지 않습니다."
+                    },
+                    SubjectCcd : {
+                        ssam_subject : "응시(예정)과목을 선택해주십시요."
+                    },
+                    RegionCcd : {
+                        ssam_region : "응시희망지역을 선택해주십시요."
                     }
                 },
                 invalidHandler: function(form, validator) {
@@ -363,7 +409,7 @@
                     var name = $element.attr("name");
                     if(name == 'Sex'){
                         var obj = $('input[name=MemName]');
-                    } else if(name == 'InterestCode') {
+                    } else if(name == 'InterestCode' || name == 'SubjectCcd' || name == 'RegionCcd') {
                         var obj = $("input[name=int_temp]");
                     } else if(name == 'MailId' || name == 'MailDomain') {
                         var obj = $("input[name=mail_tmp]");
@@ -444,6 +490,18 @@
                 return re.test(email);
             });
 
+            $.validator.addMethod("ssam_subject",function(value, element) {
+                if(value == ''){ return false};
+                return true;
+            });
+
+            $.validator.addMethod("ssam_region",function(value, element) {
+                if(value == ''){ return false};
+                return true;
+            });
+
+
+
             $('#btn_submit').click(function(){
                 if($join_form.valid() == true){
                     if($('#agree1').is(":checked") != true ||
@@ -483,6 +541,14 @@
 
                 return confirm_id;
             }
+
+            $('.interest').on('click', function(){
+                if($("input[name='InterestCode']:checked").val() === '718009'){
+                    $('#ssam_info').show();
+                } else {
+                    $('#ssam_info').hide();
+                }
+            });
 
             $("#domain").change(function (){
                 setMailDomain('domain', 'MailDomain');

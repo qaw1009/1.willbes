@@ -1,0 +1,603 @@
+@extends('willbes.pc.layouts.master')
+
+@section('content')
+<!-- Container -->
+<div id="Container" class="subContainer">
+    <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
+        <div class="Section widthAuto">
+            <div class="onSearch NGR">
+                <div>
+                    <input type="hidden" name="cate" id="unifiedSearch_cate" value="">
+                    <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
+                    <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
+                    <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
+                    <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                    <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
+                </div>
+                <div class="searchPop">
+                    <div class="popTit">인기검색어</div>
+                    <ul>
+                        <li><a href="#nnon">신광은</a></li>
+                        <li><a href="#nnon">무료특강</a></li>
+                        <li><a href="#nnon">형소법</a></li>
+                        <li><a href="#nnon">기미진</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                        <li><a href="#nnon">모의고사</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <div class="Menu widthAuto NGR c_both">
+        <h3>
+            <ul class="menu-Tit">
+                <li class="Tit">교원임용<span class="row-line">|</span></li>
+                <li class="subTit">윌비스임용</li>
+            </ul>
+            <ul class="menu-List">
+                <li>
+                    <a href="#none">내강의실</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#none">강의안내/신청</a>
+                    <div class="drop-Box list-drop-Box list-drop-Box-ssam">
+                        <table class="ssamProf">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" scope="col">교육학</th>
+                                    <th colspan="2" scope="col">유.초등</th>
+                                    <th colspan="10" scope="col">중등</th>
+                                </tr>
+                                <tr>
+                                    <th>유아</th>
+                                    <th>초등</th>
+                                    <th>국어</th>
+                                    <th>영어</th>
+                                    <th>수학</th>
+                                    <th>생물</th>
+                                    <th>도덕윤리</th>
+                                    <th>역사</th>
+                                    <th>음악</th>
+                                    <th>전기전자통신</th>
+                                    <th>정보컴퓨터</th>
+                                    <th>중국어</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">이인재</a></li>
+                                        <li><a href="#none">홍의일</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">민정선</a></li>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">배재민</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">국어<br>국어교육학</li>
+                                        <li><a href="#none">송원영</a></li>
+                                        <li class="subTit">국어문법</li>
+                                        <li><a href="#none">이원근</a></li>
+                                        <li><a href="#none">권보민</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">일반영어<br>영미문학</li>
+                                        <li><a href="#none">송원영</a></li>
+                                        <li class="subTit">영어학</li>
+                                        <li><a href="#none">김영문</a></li>
+                                        <li class="subTit">영어학<br>영어교육론</li>
+                                        <li><a href="#none">공훈</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">전공수학</li>
+                                        <li><a href="#none">김철홍</a></li>
+                                        <li class="subTit">수학교육론</li>
+                                        <li><a href="#none">박태영</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">전공생물</li>
+                                        <li><a href="#none">강치욱</a></li>
+                                        <li class="subTit">생물교육론</li>
+                                        <li><a href="#none">양혜정</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">김병찬</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">최용림</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">다이애나</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">최우영</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li class="subTit">정보컴퓨터</li>
+                                        <li><a href="#none">송광진</a></li>
+                                        <li class="subTit">정컴교육론</li>
+                                        <li><a href="#none">장순선</a></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><a href="#none">정경미</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                <li>
+                    <a href="#none">교재안내/신청</a>
+                </li>
+                <li>
+                    <a href="#none">무료강의</a>
+                </li>
+                <li>
+                    <a href="#none">임용정보</a>
+                </li>
+                <li>
+                    <a href="#none">고객센터</a>
+                </li>
+            </ul>
+        </h3>
+    </div>
+
+    <div class="widthAuto c_both">
+        <div class="Menu NGR c_both">
+            <h3 class="bdb-none mt0">
+                <ul class="menu-List menu-List-Center f_right">
+                    <li>
+                        <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ site_url('/home/html/mypage_online1') }}">온라인강좌</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">온라인강좌</li>
+                                <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">학원강좌</li>
+                                <li><a href="{{ site_url('/home/html/mypage_acad1') }}">수강신청강좌</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_acad2') }}">수강종료강좌</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ site_url('/home/html/mypage_test1') }}">모의고사관리</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">모의고사관리</li>
+                                <li><a href="{{ site_url('/home/html/mypage_test1') }}">접수현황</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_test2') }}">온라인모의고사 응시</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_test3') }}">성적결과</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">결제관리</li>
+                                <li><a href="{{ site_url('/home/html/mypage_payment1') }}">주문/배송조회</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_payment3') }}">포인트관리</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_payment4') }}">쿠폰/수강권관리</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">학습지원관리</li>
+                                <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#none">회원정보</a>
+                        <div class="drop-Box list-drop-Box">
+                            <ul>
+                                <li class="Tit">회원정보</li>
+                                <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                                <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </h3>
+        </div>
+        <div class="Depth c_both">
+            <img src="{{ img_url('sub/icon_home.gif') }}"> 
+            <span class="1depth"><span class="depth-Arrow">></span><strong>내강의실</strong></span>
+        </div>
+    </div>
+
+    <div class="ActIndex MyInfo widthAutoFull">
+        <div class="widthAuto p_re">
+            <div class="Content p_re">
+                <div class="oldMypage" id="oldMypage">
+                    <img src="https://static.willbes.net/public/images/promotion/sub/mypage_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
+                    <map name="oldMypage" id="oldMypage">
+                        <area shape="rect" coords="74,232,205,262" href="#none" alt="이전 내강의실 보기"/>
+                        <area shape="rect" coords="257,0,280,24" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
+                    </map>                    
+                </div>
+                <div class="will-Tit NG">나의 <span class="tx-light-blue">학습</span>/혜택 <span class="tx-light-blue">정보</span></div>
+                <div class="MyLecInfoBox NG">
+                    <ul>
+                        <li class="line">
+                            <div class="Tit tx-light-blue NSK">온라인강좌<br/>현황</div>
+                            <div class="TableInfo">
+                                <dl>
+                                    <dt><div class="subTit">무한PASS</div><div><a class="tx-blue" href="#none">10</a>개</div></dt>
+                                    <dt><div class="subTit">수강중</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
+                                    <dt><div class="subTit">수강대기</div><div><a class="tx-blue" href="#none">10</a>개</div></dt>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="line sm">
+                            <div class="Tit tx-light-blue NSK">학원강좌<br/>현황</div>
+                            <div class="TableInfo">
+                                <dl>
+                                    <dt><div class="subTit">수강신청</div><div><a class="tx-blue" href="#none">5</a>개</div></dt>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="Tit tx-light-blue NSK">포인트<br/>현황</div>
+                            <div class="TableInfo">
+                                <dl>
+                                    <dt><div class="subTit">강좌</div><div><a class="tx-blue" href="#none">410,000</a>P</div></dt>
+                                    <dt><div class="subTit">교재</div><div><a class="tx-blue" href="#none">130,000</a>P</div></dt>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="sm">
+                            <div class="Tit tx-light-blue NSK">쿠폰<br/>현황</div>
+                            <div class="TableInfo">
+                                <dl>
+                                    <dt><div class="subTit">쿠폰</div><div><a class="tx-blue" href="#none">5</a>장</div></dt>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="MyInfoBox">
+                    <div class="willbes-listTable MyInfoBoxList widthAutoFull">
+                        <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                        <ul class="List-Table GM tx-gray">
+                            <li><a href="#none">쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.쪽지 제목이 노출됩니다.</a><img src="{{ img_url('mypage/icon_N.png') }}"></li>
+                            <li>수신된 쪽지가 없습니다.</li>
+                        </ul>
+                    </div>
+                    <div class="willbes-listTable MyInfoBoxList widthAutoFull mg0">
+                        <div class="will-Tit NG">나의 학습 기기 (무한PASS) <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                        <ul class="List-Table GM myTablet tx-gray">
+                            <!-- 리스트 -->
+                            <li>PC 1대 <span class="tx-bright-gray">(2019.03.14 14:24:19 등록)</span></li>
+                            <li>모바일 1대 <span class="tx-bright-gray">(2019.03.14 14:24:19 등록)</span></li>
+                            <!-- 기기없음
+                            <li>등록된 기기가 없습니다.</li>
+                            <li><span class="tx-bright-gray">( ID당 2개만 등록가능 )</span></li>
+                            -->
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="Quick-Bnr mt20">
+                <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
+            </div>
+        </div>
+    </div>
+    <div class="widthAuto">
+        <div class="Quick-Bnr mt100">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/bn_160x180.jpg" alt="학원실강 복습동영상"></a>
+        </div>
+        <div class="Content p_re">            
+            <div class="Mypage_PASS_Index c_both">
+                <div class="ActIndex ActIndex1 mt70">
+                    {{--온라인 강좌--}}
+                    <div class="willbes-listTable widthAuto940 f_inherit">
+                        <div class="will-Tit NG">최근 <span class="tx-light-blue">온라인 수강강좌</span> <span class="will-subTit">가장 최근 수강한 <span class="tx-blue">3</span>개의 온라인 강좌 리스트가 노출됩니다.</span></div>
+                        <div class="willbes-Lec-Table NG d_block">
+                            <table cellspacing="0" cellpadding="0" class="lecTable">
+                                <colgroup>
+                                    <col style="width: 125px;">
+                                    <col style="width: 140px;">
+                                    <col style="width: 675px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name1.png') }}"></a></td>
+                                        <td class="w-percent">
+                                            <div class="round">
+                                                진도율<br/>
+                                                <span class="tx-blue">77%</span>
+                                            </div>
+                                        </td>
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    경찰<span class="row-line">|</span>
+                                                    영어<span class="row-line">|</span>
+                                                    한덕현교수님
+                                                    <span class="NSK ml15 nBox n2">진행중</span>
+                                                </dt>
+                                            </dl><br/>
+                                            <div class="w-tit">
+                                                <a href="{{ site_url('/home/html/mypage_pass1') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                            </dl>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name2.png') }}"></a></td>
+                                        <td class="w-percent">
+                                            <div class="round">
+                                                진도율<br/>
+                                                <span class="tx-blue">5%</span>
+                                            </div>
+                                        </td>
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    공무원<span class="row-line">|</span>
+                                                    수학<span class="row-line">|</span>
+                                                    한덕현교수님
+                                                    <span class="NSK ml15 nBox n2">진행중</span>
+                                                </dt>
+                                            </dl><br/>
+                                            <div class="w-tit">
+                                                <a href="#none">[재수강] 2018(교육행정대비) 한덕현 제니스 영어 실전 동형모의고사(4-5월)</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                            </dl>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-list NGEB"><a href="#none"><img src="{{ img_url('mypage/icon_name3.png') }}"></a></td>
+                                        <td class="w-percent">
+                                            <div class="round">
+                                                진도율<br/>
+                                                <span class="tx-blue">9%</span>
+                                            </div>
+                                        </td>
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    공무원<span class="row-line">|</span>
+                                                    수학<span class="row-line">|</span>
+                                                    한덕현교수님
+                                                    <span class="NSK ml15 nBox n4">완강</span>
+                                                </dt>
+                                            </dl><br/>
+                                            <div class="w-tit">
+                                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                            </div>
+                                            <dl class="w-info tx-gray">
+                                                <dt>강의수 : <span class="tx-black">12강</span></dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>잔여기간 : <span class="tx-blue">50일</span>(2018.04.02~2018.11.20)</dt>
+                                                <dt><span class="row-line">|</span></dt>
+                                                <dt>최종학습일 : <span class="tx-black">2018.10.20</span></dt>
+                                            </dl>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecTable -->
+                        </div>
+                        <!--willbes-Lec-Table -->
+                    </div>
+
+                    {{--학원 강좌--}}
+                    <div class="willbes-listTable widthAuto940 f_inherit mt70">
+                        <div class="will-Tit NG">최근 <span class="tx-orange">학원 수강강좌</span> <span class="will-subTit">수강중인 학원 강좌 리스트가 전체 노출됩니다.</span></div>
+                        <div class="will-Tit NG tx-orange c_both mt30">종합반</div>
+                        <div class="willbes-Lec-Table NG d_block">
+                            <table cellspacing="0" cellpadding="0" class="lecTable">
+                                <tbody>
+                                    <tr>
+                                        <td class="tx-center">신청한 종합반이 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-data tx-left pl25">
+                                            <div class="w-tit">
+                                                <a href="#none">2022년 대비 입문 기초종합반[12/21~1/8]</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-data tx-left pl25">
+                                            <div class="w-tit">
+                                                <a href="#none">기본종합(오)[12/21~2/18]</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecTable -->
+                        </div>
+                        <div class="will-Tit NG tx-orange mt30">단과반</div>
+                        <div class="willbes-Lec-Table NG d_block">
+                            <table cellspacing="0" cellpadding="0" class="lecTable">
+                                <colgroup>                                    
+                                    <col style="width: 675px;">                                    
+                                    <col style="width: 140px;">
+                                    <col style="width: 125px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" class="tx-center">신청한 단과반이 없습니다.</td>
+                                    </tr>
+                                    <tr>                                
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    기본이론<span class="row-line">|</span>
+                                                    헌법(과목개편)<span class="row-line">|</span>
+                                                    김원욱 교수님
+                                                </dt>
+                                            </dl>
+                                            <div class="w-tit">
+                                                <a href="#none"><span class="tx-orange">실강</span> 2022년 대비 헌법 입문 기본이론[1/15~2/26]</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            2021.01.15<br>
+                                            ~ 2021.02.26
+                                        </td>
+                                        <td>금<br>6회차</td>
+                                    </tr>
+                                    <tr>                                
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    기본이론<span class="row-line">|</span>
+                                                    헌법(과목개편)<span class="row-line">|</span>
+                                                    김원욱 교수님
+                                                </dt>
+                                            </dl>
+                                            <div class="w-tit">
+                                                <a href="#none"><span class="tx-orange">실강</span> 2022년 대비 형사법 입문 기초[12/28~1/1]</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            2021.01.15<br>
+                                            ~ 2021.02.26
+                                        </td>
+                                        <td>월화수목금<br>5회차</td>
+                                    </tr>
+                                    <tr>                                
+                                        <td class="w-data tx-left pl25">
+                                            <dl class="w-info">
+                                                <dt>
+                                                    기본이론<span class="row-line">|</span>
+                                                    헌법(과목개편)<span class="row-line">|</span>
+                                                    김원욱 교수님
+                                                </dt>
+                                            </dl>
+                                            <div class="w-tit">
+                                                <a href="#none"><span class="tx-orange">실강</span> 영어-아침특강 [12/2~12/27]</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            2021.01.15<br>
+                                            ~ 2021.02.26
+                                        </td>
+                                        <td>월화수목금<br>20회차</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- lecTable -->
+                        </div>
+                    </div>
+                </div>
+                <div class="ActIndex ActIndex2 mt50">
+                    <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left">
+                        <div class="will-Tit NSK">나의 <span class="tx-light-blue">상담내역</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                        <ul class="List-Table GM tx-gray">
+                            <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
+                            <li>등록된 상담 내용이 없습니다.</li>
+                        </ul>
+                    </div>
+                    <div class="willbes-listTable willbes-info willbes-info widthAuto445 f_left ml50">
+                        <div class="will-Tit NSK">나의 <span class="tx-light-blue">학습Q&A</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                        <ul class="List-Table GM tx-gray">
+                            <li><a href="#none">등록기기 초기화</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">수강시작일 00/00으로 변경해주...</a><span class="aBox waitBox  NSK">답변대기</span><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">교재문의입니다.</a><span class="aBox answerBox  NSK">답변완료</span><span class="date">2018-03-06</span></li>
+                            <li>등록된 학습 Q&A 내용이 없습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ActIndex ActIndex3 mt50">
+                    <div class="willbes-listTable willbes-info willbes-info860 widthAuto940 f_left">
+                        <div class="will-Tit NSK">공지<span class="tx-light-blue">사항</span> <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
+                        <ul class="List-Table GM tx-gray">
+                            <li><a href="#none">3월 무이자카드안내</a><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">3월 31일(금) 새벽시스템점검안내</a><span class="date">2018-04-01</span></li>
+                            <li><a href="#none">설연휴학원고객센터운영안내</a><span class="date">2018-03-06</span></li>
+                            <li>등록된 공지 내용이 없습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Mypage_PASS_Index -->
+        </div>
+    </div>
+
+</div>
+<!-- End Container -->
+@stop
+

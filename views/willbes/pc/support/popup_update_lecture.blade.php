@@ -14,13 +14,13 @@
                         <select id="search_subject" name="search_subject" title="과목" class="seleAcad">
                             <option value="">과목</option>
                             @foreach($arr_base['subject'] as $row)
-                                <option value="{{$row['SubjectIdx']}}" @if(element('subject_idx',$arr_input) == $row['SubjectIdx']) selected @endif>{{$row['SubjectName']}}</option>
+                                <option value="{{$row['SubjectIdx']}}" @if(empty($subject_idx) === false &&  $subject_idx == $row['SubjectIdx']) selected @else disabled @endif>{{$row['SubjectName']}}</option>
                             @endforeach
                         </select>
                         <select id="search_prof" name="search_prof" title="교수">
                             <option value="">교수</option>
                             @foreach($arr_base['professor'] as $row)
-                                <option value="{{$row['ProfIdx']}}" @if(element('prof_idx',$arr_input) == $row['ProfIdx']) selected @endif >{{$row['ProfNickName']}}</option>
+                                <option value="{{$row['ProfIdx']}}" @if(empty($prof_idx) === false && $prof_idx == $row['ProfIdx']) selected @else disabled @endif >{{$row['ProfNickName']}}</option>
                             @endforeach
                         </select>
                     </span>
@@ -112,7 +112,7 @@
                     add_table += '<td class="w-no">'+ rownum +'</td>';
                     add_table += '<td class="w-campus">'+ item.SubjectName +'</td>';
                     add_table += '<td>'+ item.ProfNickName +'</td>';
-                    add_table += '<td class="w-list tx-left pl20"><a href="{{front_url('/lecture/show/cate/')}}' + item.CateCode + '/pattern/only/prod-code/' + item.ProdCode + '">'+ item.ProdName +'</a></td>';
+                    add_table += '<td class="w-list tx-left pl20"><a href="{{front_url('/lecture/show/cate/')}}' + item.CateCode + '/pattern/only/prod-code/' + item.ProdCode + '#Leclist">'+ item.ProdName +'</a></td>';
                     add_table += '<td class="w-date">'+ mm + '월' + dd + '일 총' + item.unit_cnt + '강 업로드</td>';
                     add_table += '</tr>';
                     rownum = rownum - 1;

@@ -66,7 +66,7 @@
                                         <td class="w-no">{{$paging['rownum']}}</td>
                                         <td class="w-campus">{{$row['SubjectName']}}</td>
                                         <td>{{$row['ProfNickName']}}</td>
-                                        <td class="w-list tx-left pl20"><a href="{{front_url('/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'])}}">{{$row['ProdName']}}</a></td>
+                                        <td class="w-list tx-left pl20"><a href="{{front_url('/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'].'#Leclist')}}">{{$row['ProdName']}}</a></td>
                                         <td class="w-date">{{date("m월 d일", strtotime($row['unit_regdate']))}} 총 {{$row['unit_cnt']}}강 업로드</td>
                                     </tr>
                                     @php $paging['rownum']-- @endphp

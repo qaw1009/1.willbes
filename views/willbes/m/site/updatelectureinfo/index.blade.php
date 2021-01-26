@@ -50,7 +50,7 @@
                         <tr>
                             <td class="w-data tx-left">
                                 <div class="w-tit">
-                                    <a href="{{front_url('/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'])}}">
+                                    <a href="{{front_url('/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode'])}}#tab03">
                                         <span class="tx-blue">[{{$row['SubjectName']}} {{$row['ProfNickName']}}]</span><br>
                                         {{$row['ProdName']}}
                                     </a>

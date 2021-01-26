@@ -1105,26 +1105,15 @@ class OrderListModel extends BaseOrderModel
                 }
 
                 // 출력상품명 설정
-                $_prod_name = $row['ProdName'];   // 학원강좌가 아닐 경우
+                $_prod_name = $row['ProdName'];   // 학원강좌가 아닐 경우 (독서실, 사물함)
 
-                if ($site_code == '2010') {
-                    // 고등고시
-                    if ($row['IsPackage'] == 'Y') {
-                        // 대비년도-상품명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
-                    } elseif ($row['IsPackage'] == 'N') {
-                        // 대비년도-과정명-과목명-교수명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['CourseName'] . '_' . $row['SubjectName'] . '_' . $row['ProfName'] . '_' . $row['StudyPatternCcdName'];
-                    }
-                } else {
-                    // 자격증, 경찰간부
-                    if ($row['IsPackage'] == 'Y') {
-                        // 대비년도-카테고리-상품명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
-                    } elseif ($row['IsPackage'] == 'N') {
-                        // 대비년도-카테고리-상품명-수강형태
-                        $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
-                    }
+                // 고등고시, 자격증, 경찰간부
+                if ($row['IsPackage'] == 'Y') {
+                    // 대비년도-카테고리-상품명-수강형태
+                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
+                } elseif ($row['IsPackage'] == 'N') {
+                    // 대비년도-카테고리-상품명-수강형태
+                    $_prod_name = $row['SchoolYear'] . '_' . $row['LgCateName'] . '_' . $row['ProdName'] . '_' . $row['StudyPatternCcdName'];
                 }
 
                 // 강의실 좌석번호 추가
@@ -1209,7 +1198,8 @@ class OrderListModel extends BaseOrderModel
                 left join ' . $this->_table['member'] . ' as M
                     on O.MemIdx = M.MemIdx
             where O.OrderIdx = ?
-                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"        
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"    
+                and OP.SalePatternCcd = "' . $this->_sale_pattern_ccd['normal'] . '"
         ';
 
         // 쿼리 실행

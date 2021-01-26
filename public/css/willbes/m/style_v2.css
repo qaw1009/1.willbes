@@ -61,6 +61,9 @@ body {
 .width32n5p {
 	width: 32.5%;
 }
+.width33p {
+	width: 33%;
+}
 .width34p {
 	width: 34%;
 }
@@ -87,6 +90,9 @@ body {
 }
 .width65p {
 	width: 65%;
+}
+.width67p {
+	width: 67%;
 }
 .width70p {
 	width: 70%;
@@ -3350,6 +3356,9 @@ body.memBody #Footer {
 .willbes-Lec-Selected .resetBtn a img {
 	width: 100%;
 }
+.willbes-Lec-Selected .resetBtn.resetBtn02 {
+	top: 50px;
+}
 .willbes-Lec-Selected:after {
 	content: "";
 	display: block;
@@ -4284,8 +4293,7 @@ body.memBody #Footer {
 	color: #333;
 }
 .willbes-Lec-Search button.search-Btn {
-	background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0
-		0;
+	background: url("../../../img/willbes/m/main/icon_search_btn.png") no-repeat 0 0;
 	background-size: 100%;
 	width: 51px;
 	height: 38px;
@@ -4294,6 +4302,7 @@ body.memBody #Footer {
 	top: 1px;
 	right: 1px;
 }
+.willbes-Lec-Search button.search-Btn02 {right: 40%;}
 .willbes-Lec-Search .resetBtn {
 	top: 0;
 	right: 0;

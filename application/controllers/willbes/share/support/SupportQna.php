@@ -88,6 +88,11 @@ class SupportQna extends BaseSupport
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
 
+        $arr_base['subject'] = [];
+        if(empty($s_cate_code) === false){
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $s_cate_code);
+        }
+
         $arr_condition = [
             'EQ' => [
                 'b.BmIdx' => $this->_bm_idx,

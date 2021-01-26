@@ -232,7 +232,7 @@
                                             <tr>
                                                 <td class="w-site">N잡/어학/취업</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
-                                                <td class="w-call">1544-5006</td>
+                                                <td class="w-call">1544-5006 ▶ 2</td>
                                                 <td class="w-time tx-left pl25">
                                                     평일 9:00~18:00 (점심시간 12시~13시)<br/>
                                                     주말/공휴일 휴무

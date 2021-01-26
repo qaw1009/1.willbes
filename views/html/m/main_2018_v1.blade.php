@@ -30,42 +30,7 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-        .ssam .sampleView {
-            height: 440px;
-            width: calc(100% - 20px);
-            margin: 0 auto;       
-            overflow: hidden;     
-            padding-bottom: 60px;
-        }
-        .ssam .sampleView .swiper-container-view {
-            width: 100%;            
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-        }
-        .ssam .sampleView .swiper-slide {
-            text-align: left;
-            font-size: 16px;
-            background: #eee url("../../../img/willbes/m/main/icon_play.png") no-repeat 98% center;
-            background-size: 30px;
-            height: calc((100% - 10px) / 5);
-            /* Center slide text vertically */
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-        .ssam .sampleView .swiper-container-View .swiper-pagination {
-            bottom: -55px !important;
-        }
+        
     </style>
 
 </head>
@@ -353,10 +318,20 @@
 
     <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
 
-    {{--
-    <div class="sampleView">
+    
+    <div class="sampleViewImg">
         <div class="swiper-container-view">
             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2017/2017_lec_mjs.jpg" title="교수명">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/m/2017/2017_lec_mjs.jpg" title="교수명">
+                    </a>
+                </div>
                 <div class="swiper-slide">
                     <a href="#none">
                         <img src="https://static.willbes.net/public/images/promotion/m/2017/2017_lec_mjs.jpg" title="교수명">
@@ -402,8 +377,8 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-    --}}
-
+    
+    {{--
     <div class="sampleView">
         <div class="overhidden">
             <div class="swiper-container-view">
@@ -504,6 +479,7 @@
             </div>
         </div>
     </div>
+    --}}    
 
     <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
     <div class="w-Guide-Ssam mt20">

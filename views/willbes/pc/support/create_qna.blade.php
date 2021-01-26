@@ -252,8 +252,18 @@
                 return false;
             }
 
+            if ($('#s_cate_code').val() == '') {
+                alert('카테고리를 선택해 주세요.');
+                return false;
+            }
+
             if ($('#s_consult_type').val() == '') {
                 alert('상담유형을 선택해 주세요.');
+                return false;
+            }
+
+            if ($('#s_subject_idx').val() == '') {
+                alert('과목을 선택해 주세요.');
                 return false;
             }
 

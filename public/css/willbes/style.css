@@ -7204,7 +7204,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	margin-left: -470px;
 	z-index: 110;
 	width: 940px;
-	height: 620px;
+	height: auto;
 	border: 1px solid #2f2f2f;
 	padding: 20px 25px 30px;
 }
@@ -7238,7 +7238,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	/*max-width: 838px;*/
 }
 .willbes-Layer-Board .Layer-Cont {
-	height: 500px;
+	height: auto;
 	overflow-y: auto;
 	padding-right: 10px;
 	position: relative;

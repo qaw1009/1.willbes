@@ -1059,7 +1059,7 @@
                                 </colgroup>
                                 <thead>
                                     <tr>
-                                        <th class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</strong></th>
+                                        <th class="w-list tx-left  pl20"><img src="{{ img_url('prof/icon_notice.gif') }}" style="marign-right: 5px;"> <strong>[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사 </strong></th>
                                         <th class="w-date">2018-00-00<span class="row-line">|</span></th>
                                         <th class="w-click"><strong>조회수</strong> 123</th>
                                     </tr>
@@ -1199,8 +1199,7 @@
                                             <td>최우영</td>
                                             <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
                                             <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>                                      
-                                        
+                                        </tr>                                     
                                         <tr>
                                             <td class="w-list tx-center" colspan="5">검색 결과가 없습니다.</td>
                                         </tr>

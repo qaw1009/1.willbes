@@ -88,6 +88,9 @@ class Join extends BaseMember
         // 이메일 코드
         $codes = $this->codeModel->getCcdInArray(['661']);
         $inerestCode = $this->codeModel->getCcd('718');
+        $ssamsubject = $this->codeModel->getCcd('737');
+        $ssamregion = $this->codeModel->getCcd('738');
+        $ssamtake = $this->codeModel->getCcd('739');
 
         if($jointype === "655002") {
             // 핸드폰 sms 인증
@@ -147,7 +150,10 @@ class Join extends BaseMember
                     'memName' => $name,
                     'MailId' => '',
                     'MailDomain' => '',
-                    'interestCode' => $inerestCode
+                    'interestCode' => $inerestCode,
+                    'subject' => $ssamsubject,
+                    'region' => $ssamregion,
+                    'take' => $ssamtake
                 ]);
 
             } catch(Exception $e) {
@@ -206,7 +212,10 @@ class Join extends BaseMember
                     'MailId' => $mailId,
                     'MailDomain' => $mailDomain,
                     'phone' => '',
-                    'interestCode' => $inerestCode
+                    'interestCode' => $inerestCode,
+                    'subject' => $ssamsubject,
+                    'region' => $ssamregion,
+                    'take' => $ssamtake
                 ]);
 
             } catch(Exception $e) {

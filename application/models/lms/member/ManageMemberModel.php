@@ -13,7 +13,8 @@ class ManageMemberModel extends WB_Model
         'site' => 'lms_site',
         'code' => 'lms_sys_code',
         'admin' => 'wbs_sys_admin',
-        'deviceMemo' => 'lms_member_device_memo'
+        'deviceMemo' => 'lms_member_device_memo',
+        'ssam_info' => 'lms_member_ssaminfo'
     ];
 
     public function __construct()
@@ -59,7 +60,10 @@ class ManageMemberModel extends WB_Model
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType = 'P' AND IsUse='Y' ) AS PcCount,
             (SELECT COUNT(*) FROM {$this->_table['device']} WHERE MemIDX = Mem.MemIdx AND DeviceType IN ('M','A') AND IsUse='Y' ) AS MobileCount,
             c1.CcdName AS InterestName, 
-            IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID, Info.InterestCode AS interest
+            IFNULL(Info.HanlimID, '') AS HanlimID, IFNULL(Info.ssamID, '') AS ssamID, Info.InterestCode AS interest,
+            IFNULL((SELECT c2.CcdName FROM {$this->_table['ssam_info']} as si
+                         LEFT JOIN {$this->_table['code']} as c2 ON si.SubjectCcd = c2.Ccd
+                         WHERE si.MemIdx = Mem.MemIdx), '') as SubjectName            
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -138,6 +142,29 @@ class ManageMemberModel extends WB_Model
             ";
 
         $where = " WHERE Mem.MemIdx = {$memIdx} ";
+
+        $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where );
+
+        return $rows->row_array();
+    }
+
+    public function getSsamInfo($memIdx)
+    {
+        if(empty($memIdx) == true) return [];
+
+        $column = " 
+        IFNULL(c1.CcdName, '') AS Subject, 
+        IFNULL(c2.CcdName, '') AS Region, 
+        IFNULL(c3.CcdName, '') AS Take, 
+        IFNULL(I.School, '') AS School ";
+
+        $from = "FROM {$this->_table['ssam_info']} AS I
+            LEFT JOIN {$this->_table['code']} AS c1 ON I.SubjectCcd = c1.Ccd
+            LEFT JOIN {$this->_table['code']} AS c2 ON I.RegionCcd = c2.Ccd
+            LEFT JOIN {$this->_table['code']} AS c3 ON I.TakeCcd = c3.Ccd
+            ";
+
+        $where = " WHERE I.MemIdx = {$memIdx} ";
 
         $rows = $this->_conn->query('SELECT straight_join ' . $column . $from . $where );
 

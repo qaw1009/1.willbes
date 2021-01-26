@@ -110,7 +110,7 @@
             //맛보기강의
             var swiper = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
-                slidesPerColumn: 4,
+                slidesPerColumn: 5,
                 spaceBetween: 10,
                 autoplay: {
                     delay: 3000,

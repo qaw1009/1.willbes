@@ -29,6 +29,44 @@
     <!--// JAVASCRIPT -->
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
+    <style>
+        .ssam .sampleView {
+            height: 440px;
+            width: calc(100% - 20px);
+            margin: 0 auto;       
+            overflow: hidden;     
+            padding-bottom: 60px;
+        }
+        .ssam .sampleView .swiper-container-view {
+            width: 100%;            
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        .ssam .sampleView .swiper-slide {
+            text-align: left;
+            font-size: 16px;
+            background: #eee url("../../../img/willbes/m/main/icon_play.png") no-repeat 98% center;
+            background-size: 30px;
+            height: calc((100% - 10px) / 5);
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .ssam .sampleView .swiper-container-View .swiper-pagination {
+            bottom: -55px !important;
+        }
+    </style>
 
 </head>
 <body id="goTop">
@@ -314,6 +352,8 @@
     </ul>
 
     <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
+
+    {{--
     <div class="sampleView">
         <div class="swiper-container-view">
             <div class="swiper-wrapper">
@@ -360,6 +400,108 @@
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    --}}
+
+    <div class="sampleView">
+        <div class="overhidden">
+            <div class="swiper-container-view">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                                유아<span></span><strong>민정선 민정선 민정선</strong>
+                                <p>2020년 1~2월 유아교육개론</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/lec_list_50837.png" alt="강사명">
+                            <div>
+                                행정법<span></span><strong>김정일 2</strong>
+                                <p>행정법 원론강의 </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/lec_list_50838.png" alt="강사명">
+                            <div>
+                                행정법<span></span><strong>박도원 3</strong>
+                                <p>행정법 GS3순환 </p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/lec_list_50836.png" alt="강사명">
+                            <div>
+                                행정학<span></span><strong>백승준 4</strong>
+                                <p>2020 행정학 예비순환 오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 5</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 6</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 7</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 8</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 7</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#none">
+                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
+                            <div>
+                            경제학<span></span><strong>황종휴 8</strong>
+                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
 
@@ -442,8 +584,8 @@
             //맛보기강의
             var swiper = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
-                slidesPerColumn: 4,
-                spaceBetween: 10,
+                slidesPerColumn: 5,
+                spaceBetween: 5,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

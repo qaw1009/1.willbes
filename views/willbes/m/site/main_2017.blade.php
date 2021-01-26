@@ -111,7 +111,7 @@
             var swiper = new Swiper('.swiper-container-view', {
                 slidesPerView: 1,
                 slidesPerColumn: 5,
-                spaceBetween: 10,
+                spaceBetween: 5,
                 autoplay: {
                     delay: 3000,
                     disableOnInteraction: false,

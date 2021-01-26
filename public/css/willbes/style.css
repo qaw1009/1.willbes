@@ -7246,7 +7246,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Layer-Board .Layer-Cont .willbes-Prof-Subject {
 	margin-bottom: 20px;
 }
-.willbes-Layer-Board .LecViewTable .listTable td img.boardImg {
+.willbes-Layer-Board .LecViewTable .listTable td.w-txt img {
 	display: block;
 	max-width: 840px !important;
 	margin: 10px auto;

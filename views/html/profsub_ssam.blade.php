@@ -1023,58 +1023,25 @@
                                         </td>
                                         <td class="w-date">2018-00-00</td>
                                         <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">7</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
-                                        <td class="w-file">
-                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                        </td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">6</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
-                                        <td class="w-file">&nbsp;</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">5</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
-                                        <td class="w-file">&nbsp;</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">4</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
-                                        <td class="w-file">
-                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                        </td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">3</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">[주의] 이럴 경우 답변되지 않을수 있습니다.</a></td>
-                                        <td class="w-file">&nbsp;</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-no">2</td>
-                                        <td class="w-list tx-left pl20"><a href="#none">2018 필살기실전모의고사파본관련공지</a></td>
-                                        <td class="w-file">&nbsp;</td>
-                                        <td class="w-date">2018-00-00</td>
-                                        <td class="w-click">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-list tx-center" colspan="5">검색 결과가 없습니다.</td>
-                                    </tr>
+                                    </tr>                                   
                                 </tbody>
                             </table>
+                            <div class="Paging">
+                                <ul>
+                                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
+                                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">2</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">3</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">4</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">5</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">6</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">7</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">8</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">9</a><span class="row-line">|</span></li>
+                                    <li><a href="#none">10</a></li>
+                                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <!-- willbes-Leclist -->
@@ -1100,7 +1067,7 @@
                                 <tbody>                                    
                                     <tr>
                                         <td class="w-txt tx-left" colspan="5">
-                                            <img src="https://ssam.willbes.net/public/uploads/willbes/board/63/2020/1218/board_309736_01_20201218114139.jpg" class="boardImg">
+                                            <img src="https://ssam.willbes.net/public/uploads/willbes/board/63/2020/1218/board_309736_01_20201218114139.jpg">
                                             이달의 개강 강좌 공지입니다.<br/>
                                             이달의 개강 강좌 공지입니다.<br/>
                                             이달의 개강 강좌 공지입니다.
@@ -1232,76 +1199,11 @@
                                             <td>최우영</td>
                                             <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
                                             <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        {{--
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">교육학</td>
-                                            <td>이인재</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">2020 (9~11월) 이인재 교육학 모의고사반</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">직강생전용)[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반) - 복습용 강좌</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전공음악</td>
-                                            <td>다이애나</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">2020 7월 전공음악 교과서 분석반 [인강전용]</a></td>                                    
-                                            <td class="w-date">교과서분석반 [ 민속악 성악 총 2강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-no">6523</td>
-                                            <td class="w-campus">전기전자통신</td>
-                                            <td>최우영</td>
-                                            <td class="w-list tx-left pl20"><a href="#none">[통합] 2020 7~9월 영역별 문제풀이반(1~5월 통합 이론반)</a></td>                                    
-                                            <td class="w-date">09월 14일 총 10강 업로드</td>
-                                        </tr>
+                                        </tr>                                      
                                         
                                         <tr>
                                             <td class="w-list tx-center" colspan="5">검색 결과가 없습니다.</td>
                                         </tr>
-                                        --}}
                                     </tbody>
                                 </table>
                                 <div class="Paging">

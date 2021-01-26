@@ -296,7 +296,7 @@
                         </li>
                     </ul>
                     <div class="tel">
-                        수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006</span><br>
+                        수강문의 전화 <span class="NSK-Black tx-color ml10">1544-5006 ▶ 2 </span><br>
                         운영시간 평일 <span class="NSK-Black tx-color ml10">09시~18시 (점심시간 12시~1시)  주말/공휴일 휴무</span>
                     </div>
                 </div>

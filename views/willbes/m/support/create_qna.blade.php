@@ -23,17 +23,12 @@
                     <option value="{{$key}}" @if($data['SiteCode'] == $key || $__cfg['SiteCode'] == $key)selected="selected"@endif>{{$val}}</option>
                 @endforeach
             </select>
-            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleProcess width33p ml1p" @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y') disabled @endif>
+            <select id="s_cate_code" name="s_cate_code" title="구분" class="seleProcess width33p ml1p">
                 <option value="">구분</option>
-                @php $temp_s_cate_code = ''; @endphp
                 @foreach($arr_base['category'] as $row)
                     <option value="{{$row['CateCode']}}" class="{{$row['SiteCode']}}" @if($data['Category_String'] == $row['CateCode']  || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']))selected="selected"@endif @if(empty($row['ChildCnt']) === false && $row['ChildCnt'] > 0) disabled @endif>{{$row['CateNameRoute']}}</option>
-                    @php if($data['Category_String'] == $row['CateCode'] || (empty(element('s_cate_code', $arr_input)) === false && element('s_cate_code', $arr_input) == $row['CateCode']) || (empty(element('on_off_link_cate_code', $arr_input)) === false && element('on_off_link_cate_code', $arr_input) == $row['OnOffLinkCateCode'])) $temp_s_cate_code = $row['CateCode']; @endphp
                 @endforeach
             </select>
-            @if(empty(element('s_cate_code_disabled', $arr_input)) == false && element('s_cate_code_disabled', $arr_input) == 'Y')
-                <input type="hidden" name="s_cate_code" value="{{$temp_s_cate_code}}">
-            @endif
             <select id="s_consult_type" name="s_consult_type" title="상담유형" class="seleProcess width33p ml1p">
                 <option value="">상담유형</option>
                 @foreach($arr_base['consult_type'] as $key => $val)
@@ -51,7 +46,7 @@
                 @foreach($arr_base['subject'] as $arr)
                     @if(empty($arr) === false)
                         @foreach($arr as $row)
-                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'] || element('s_subject_idx',$arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'] || element('subject_idx',$arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
                         @endforeach
                     @endif
                 @endforeach
@@ -122,6 +117,11 @@
 
             if ($('#s_site_code').val() == '') {
                 alert('과정을 선택해 주세요.');
+                return false;
+            }
+
+            if ($('#s_cate_code').val() == '') {
+                alert('카테고리를 선택해 주세요.');
                 return false;
             }
 

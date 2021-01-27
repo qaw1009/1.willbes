@@ -186,7 +186,6 @@
         <form id="add_apply_form2" name="add_apply_form2">
             <div class="evtCtnsBox evt02" id="evt_01">
 
-
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02.jpg" title="신규회원 30명 10일간 300권">
                 <div>
                     <table cellspacing="0" cellpadding="0">
@@ -210,10 +209,14 @@
                         --}}
                         <div class="evt_guide">
                             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_guide.png" title="이벤트 유의사항">
-                        </div>
+                        </div>                    
                         </tbody>
-                    </table>
+                    </table>                  
                 </div>
+                {{--기본댓글--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                @endif    
                 <ul>
                     <li><a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_btn.png"  alt="윌비스 회원가입하기"/></a></li>
                     {{--<li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>--}}

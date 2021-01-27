@@ -718,22 +718,22 @@
     <div class="Section sortMenu NSK">
         <div class="widthAuto">
             <ul>
-                <li><a href="#none">농업직</a></li>
-                <li><a href="#none">농촌지도사</a></li>
-                <li><a href="#none">유기농업기능사</a></li>
-                <li><a href="#none">전송기술직</a></li>
-                <li><a href="#none">통신기술직</a></li>
-                <li><a href="#none">전기직</a></li>
-                <li><a href="#none">전자직</a></li>
-                <li><a href="#none">토목직</a></li>
-                <li><a href="#none">축산직</a></li>
-                <li><a href="#none">기계직</a></li>
-                <li><a href="#none">조경직</a></li>
-                <li><a href="#none">전산직</a></li>
-                <li><a href="#none">환경직(공채)</a></li>
-                <li><a href="#none">환경직(특채)</a></li>
-                <li><a href="#none">산림자원직</a></li>
-                <li><a href="#none">공통과목</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#to_go">농업직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#to_go">농촌지도사</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#tab5">유기농업기능사</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전송기술직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">통신기술직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전기직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전자직</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3028/pattern/only?search_order=regist&series_ccd=614021">토목직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1915">축산직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2000">기계직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2001">조경직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013">전산직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(공채)</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(특채)</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015">산림자원직</a></li>
+                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178589">공통과목</a></li>
             </ul>
         </div>
     </div> 

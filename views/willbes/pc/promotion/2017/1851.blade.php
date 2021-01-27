@@ -599,9 +599,8 @@
 
             var $regi_form_register = $('#regi_form_register');
             var _url = '{!! front_url('/event/registerStore') !!}';
+            var subject_count = 0;
             var subject_name = '';
-            var subject_name1 = '';
-            var subject_name2 = '';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
@@ -634,18 +633,12 @@
 
             $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
                 subject_name = $(this).parent().next().text();
-                if(subject_name != '교육학'){ // 전공
-                    subject_name = subject_name.substr(0,2);
-                }
-
-                if(k==0){
-                    subject_name1 = subject_name;
-                }else{
-                    subject_name2 = subject_name;
+                if(subject_name == '교육학'){
+                    subject_count++;
                 }
             });
 
-            if(subject_name1 == subject_name2){
+            if(subject_count != 1){
                 alert('강좌는 교육학 1개, 전공강좌 1개 총 2개까지 선택 가능합니다.');
                 return;
             }

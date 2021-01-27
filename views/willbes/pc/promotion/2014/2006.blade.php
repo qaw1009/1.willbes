@@ -145,7 +145,7 @@
         <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2006_02.jpg" alt="역대급 세일즈 마케팅 강의" usemap="#Map2006A" border="0" >
             <map name="Map2006A" id="Map2006A">
-                <area shape="rect" coords="675,912,997,972" href="#none" alt="사전예약신청" />
+                <area shape="rect" coords="675,912,997,972" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank" alt="사전예약신청" />
             </map>            
         </div>
 
@@ -161,6 +161,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2006_05.jpg" alt="반드시 해내고야 말겠어" >
         </div>
 
+        {{--
         <div class="evtCtnsBox evtCurriBox" id="evtCurriBoxSec">
             <div class="copy">
                 <h5 class="NSK-Black">
@@ -254,6 +255,7 @@
                 </ul>
             </div>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt06">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2006_06.jpg" alt="소문내기 이벤트" usemap="#Map2006B" border="0" >
@@ -278,16 +280,16 @@
 
                 <p># 사전예약 혜택</p>
                 <ul>
-                    <li>사전예약 혜택은 2021년 1월 22일 결제완료자에 한해서만 적용됩니다.</li>
-                    <li>사전예약 혜택은 수강료가 40% 할인됩니다.<br>
-                        수강기간 추가 혜택은 강의 시작(2월 1일) 일괄 적용 예정
+                    <li>사전예약 혜택은 2021년 2월 15일 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 수강기간 1개월이 무료 제공됩니다.<br>
+                        수강기간 추가 혜택은 3월 3일 일괄 적용예정
                     </li>  
                 </ul>
 
                 <p># 소문내기 이벤트</p>
                 <ul>
                     <li>발표 시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
-                    <li>당첨자 발표는 1월 22일(금) 공지사항 참조<div class=""></div></li>
+                    <li>당첨자 발표는 2021년 3월 3일(수) 공지사항 참조</li>
                 </ul>
 
                 <p>※ 문의안내 : 1544-5006</p>

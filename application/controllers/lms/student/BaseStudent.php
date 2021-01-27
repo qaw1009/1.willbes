@@ -129,8 +129,8 @@ class BaseStudent extends \app\controllers\BaseController
             $arr_condition = array_merge($arr_condition,[
                 'ORG2' => [
                     'LKB' => [
-                        'Be.wLecIdx' => $this->_reqP('search_value'),
-                        'Be.wLecName' => $this->_reqP('search_value')
+                        'Be.wLecIdx' => $this->_reqP('search_value_list'),
+                        'Be.wLecName' => $this->_reqP('search_value_list')
                     ]
                 ],
             ]);
@@ -139,9 +139,9 @@ class BaseStudent extends \app\controllers\BaseController
             $arr_condition = array_merge($arr_condition,[
                 'ORG1' => [
                     'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value'),
-                        'E.wProfName_String' => $this->_reqP('search_value')
+                        'A.ProdCode' => $this->_reqP('search_value_list'),
+                        'A.ProdName' => $this->_reqP('search_value_list'),
+                        'E.wProfName_String' => $this->_reqP('search_value_list')
                     ]
                 ],
             ]);
@@ -150,8 +150,8 @@ class BaseStudent extends \app\controllers\BaseController
             $arr_condition = array_merge($arr_condition,[
                 'ORG1' => [
                     'LKB' => [
-                        'A.ProdCode' => $this->_reqP('search_value'),
-                        'A.ProdName' => $this->_reqP('search_value')
+                        'A.ProdCode' => $this->_reqP('search_value_list'),
+                        'A.ProdName' => $this->_reqP('search_value_list')
                     ]
                 ],
             ]);

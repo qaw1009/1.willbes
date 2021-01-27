@@ -92,13 +92,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1" for="search_value">강좌검색</label>
+                    <label class="control-label col-md-1" for="">강좌검색</label>
                     <div class="col-md-6 form-inline">
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
                             <option value="lec">강좌명</option>
                             <option value="wlec">마스터강의</option>
                         </select>
-                        <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
+                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
                     </div>
                     <div class="col-md-5">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>

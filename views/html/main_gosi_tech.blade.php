@@ -56,8 +56,7 @@
 .tech .gosi-tech-bntop .Techtab li a.active {color:#fff; font-weight: bold;}
 
 /**/ 
-.tech .tech-bnfull {position:relative; height:286px;}
-.tech .tech-bnfull a {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; z-index:1}  
+.tech .tech-bnfull {background:url("https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286_bg.jpg") repeat-x;}
 
 /**/
 .gosi-tech-bn01 {margin-top:130px;} 
@@ -774,7 +773,9 @@
     </div>
 
     <div class="Section tech-bnfull">
-        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_fullx286.jpg" alt="배너명"></a>
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286.jpg" alt="배너명"></a>
+        </div>
     </div> 
 
     <div class="Section gosi-tech-bn01 NSK">

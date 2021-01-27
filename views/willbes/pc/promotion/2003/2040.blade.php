@@ -185,6 +185,8 @@
 
         <form id="add_apply_form2" name="add_apply_form2">
             <div class="evtCtnsBox evt02" id="evt_01">
+
+
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02.jpg" title="신규회원 30명 10일간 300권">
                 <div>
                     <table cellspacing="0" cellpadding="0">
@@ -196,7 +198,16 @@
                             <col width="20%">
                         </colgroup>
                         <tbody>
-
+                        {{--
+                        <tr>
+                            <td>
+                                <div>
+                                    <span class="bubble"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img04.png" alt="마감"></span>
+                                    <span class="first_come"><img src="https://static.willbes.net/public/images/promotion/2020/08/1730_02_img03.png" alt="선착순"></span>
+                                </div>
+                            </td>
+                        </tr>
+                        --}}
                         <div class="evt_guide">
                             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_guide.png" title="이벤트 유의사항">
                         </div>
@@ -249,7 +260,7 @@
                         @if(empty($arr_base['add_apply_data']) === false)
                             @php $col_cnti = 5; @endphp
                             @for($ii=0; $ii < count($arr_base['add_apply_data']); $ii++)
-                                @if($ii==0 || $ii%$col_cnt == 0)
+                                @if($ii==0 || $ii%$col_cnti == 0)
                                     @php $tr_ii = $ii; @endphp
                                     <tr>
                                         @endif

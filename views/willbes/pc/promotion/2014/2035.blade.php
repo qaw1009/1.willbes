@@ -242,10 +242,6 @@
                 </ul>
             </div>
         </div>
-
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_06.jpg" >
-        </div>
         
         <div class="evtCtnsBox evt07">
             <div class="evtFooter" id="infoText">

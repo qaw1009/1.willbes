@@ -718,22 +718,22 @@
     <div class="Section sortMenu NSK">
         <div class="widthAuto">
             <ul>
-                <li><a href="#none">농업직</a></li>
-                <li><a href="#none">농촌지도사</a></li>
-                <li><a href="#none">유기농업기능사</a></li>
-                <li><a href="#none">전송기술직</a></li>
-                <li><a href="#none">통신기술직</a></li>
-                <li><a href="#none">전기직</a></li>
-                <li><a href="#none">전자직</a></li>
-                <li><a href="#none">토목직</a></li>
-                <li><a href="#none">축산직</a></li>
-                <li><a href="#none">기계직</a></li>
-                <li><a href="#none">조경직</a></li>
-                <li><a href="#none">전산직</a></li>
-                <li><a href="#none">환경직(공채)</a></li>
-                <li><a href="#none">환경직(특채)</a></li>
-                <li><a href="#none">산림자원직</a></li>
-                <li><a href="#none">공통과목</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#to_go">농업직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#to_go">농촌지도사</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#tab5">유기농업기능사</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전송기술직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">통신기술직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전기직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전자직</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3028/pattern/only?search_order=regist&series_ccd=614021">토목직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1915">축산직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2000">기계직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2001">조경직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013">전산직</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(공채)</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014">환경직(특채)</a></li>
+                <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015">산림자원직</a></li>
+                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178589">공통과목</a></li>
             </ul>
         </div>
     </div> 
@@ -781,13 +781,13 @@
     <div class="Section gosi-tech-bn01 NSK">
         <div class="widthAuto">  
             <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>이론강좌</span></div>  
+                <div class="will-nTit NSK-Black">추천 <span>이론강좌</span></div>  
                 <div>
                     과목별 기초 개념과<br>
                     배경지식을 다지는<br>
                     학습 전략
                 </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
+                <div><a href="https://pass.willbes.net/package/index/cate/3028/pack/648001?course_idx=1055" target="_blank">패키지 확인하기 ></a></div>               
             </div>
             <ul>
                 <li class="nSlider">
@@ -812,13 +812,13 @@
         </div>
         <div class="widthAuto mt80">  
             <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>문제풀이</span></div>  
+                <div class="will-nTit NSK-Black">추천 <span>문제풀이</span></div>  
                 <div>
                     기출 문제 및<br>
                     예상 문제풀이를 통한<br>
                     출제포인트 공략<br>
                 </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
+                <div><a href="https://pass.willbes.net/package/index/cate/3028/pack/648001?course_idx=1056" target="_blank">패키지 확인하기 ></a></div>               
             </div>
             <ul>
                 <li class="nSlider">

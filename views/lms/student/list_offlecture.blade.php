@@ -119,7 +119,7 @@
                             <option value="lec">강좌(교수명)</option>
                             <option value="wlec">마스터강의</option>
                         </select>
-                        <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
+                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>

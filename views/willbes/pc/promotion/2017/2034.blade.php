@@ -260,7 +260,7 @@
                             <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"></td>
                             <td>전공역사</td>
                             <td>최용림</td>
-                            <td>2021 1~2월 임용역사    이론반</td>
+                            <td>2021 1~2월 임용역사 이론반</td>
                             <td>28강</td>
                             <td>2021 최용림 전공역사 이론서 [윌비스,제본]</td>
                         </tr>
@@ -270,21 +270,23 @@
                             <td>다이애나</td>
                             <td>2021 1~2월 전공음악    기본이론반(한끝맵)</td>
                             <td>15강</td>
-                            <td>다이애나 한.끝.맵(한권으로 끝내는 마인드맵)<br>-총 2권 [뮤직서커스]</td>
+                            <td>
+                                다이애나 한.끝.맵(한권으로 끝내는 마인드맵)<br>-총 2권 [뮤직서커스]<br>
+                                다이애나 종.음.셋(종합음악세트)<br>-총 4권 [뮤직서커스]</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"></td>
                             <td>전공음악</td>
                             <td>다이애나</td>
-                            <td>2021 1~2월 전공음악    화성학</td>
+                            <td>2021 1~2월 전공음악 화성학</td>
                             <td>10강</td>
-                            <td>다이애나 종.음.셋(종합음악세트)<br>-총 4권 [뮤직서커스]</td>
+                            <td>별도 교재 없음</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"></td>
                             <td>전기/전자</td>
                             <td>최우영</td>
-                            <td>2021 1~2월 최우영    기초전기전자/회로이론반</td>
+                            <td>2021 1~2월 최우영 기초전기전자/회로이론반</td>
                             <td>21강</td>
                             <td>기초전기전자 - 개정5판 [예문사]</td>
                         </tr>
@@ -292,7 +294,7 @@
                             <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"></td>
                             <td>정보컴퓨터</td>
                             <td>송광진</td>
-                            <td>2021 1~3월    정보컴퓨터 내용학 일반과정</td>
+                            <td>2021 1~3월 정보컴퓨터 내용학 일반과정</td>
                             <td>6강</td>
                             <td>알기 쉽게 풀어가는 정보컴퓨터 일반과정1 [배움]<br />
                             알기 쉽게 풀어가는 정보컴퓨터 일반과정2[배움]</td>

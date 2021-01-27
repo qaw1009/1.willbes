@@ -130,7 +130,6 @@
                     },
                 @endif
                     'data' : function(data) {
-                        console.log($search_form.serializeArray());
                         return $.extend(arrToJson($search_form.serializeArray()), {});
                     }
                 },

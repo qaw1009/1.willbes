@@ -781,13 +781,13 @@
     <div class="Section gosi-tech-bn01 NSK">
         <div class="widthAuto">  
             <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>이론강좌</span></div>  
+                <div class="will-nTit NSK-Black">추천 <span>이론강좌</span></div>  
                 <div>
                     과목별 기초 개념과<br>
                     배경지식을 다지는<br>
                     학습 전략
                 </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
+                <div><a href="https://pass.willbes.net/package/index/cate/3028/pack/648001?course_idx=1055" target="_blank">패키지 확인하기 ></a></div>               
             </div>
             <ul>
                 <li class="nSlider">
@@ -812,13 +812,13 @@
         </div>
         <div class="widthAuto mt80">  
             <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>문제풀이</span></div>  
+                <div class="will-nTit NSK-Black">추천 <span>문제풀이</span></div>  
                 <div>
                     기출 문제 및<br>
                     예상 문제풀이를 통한<br>
                     출제포인트 공략<br>
                 </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
+                <div><a href="https://pass.willbes.net/package/index/cate/3028/pack/648001?course_idx=1056" target="_blank">패키지 확인하기 ></a></div>               
             </div>
             <ul>
                 <li class="nSlider">

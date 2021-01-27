@@ -125,16 +125,18 @@
             <input type="hidden" name="{{$key}}" value="{{$val}}"/>
         @endforeach
         <div class="reply" id="reply">
-            <div class="replyWrite">
-                <div class="textarBx">
-                    <textarea id="event_comment" name="event_comment" cols="30" rows="3"></textarea>               
+            @if(empty($arr_base['write_yn']) === true)
+                <div class="replyWrite">
+                    <div class="textarBx">
+                        <textarea id="event_comment" name="event_comment" cols="30" rows="3"></textarea>
+                    </div>
+                    <p>
+                         * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.
+                    </p>
+                    <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
+                    <span id="content_byte"><i>0</i> byte</span>
                 </div>
-                <p>
-                     * 지나친 도배, 욕설, 주제와 상관없는 글은 예고 없이 관리자에 의해 삭제될 수 있습니다.
-                </p>
-                <button type="button" class="btnrwt" id="btn_submit_comment">글쓰기</button>
-                <span id="content_byte"><i>0</i> byte</span>
-            </div>
+            @endif
 
             <!--댓글공지-관리자만 등록,수정,삭제 가능-->
             <div class="replyNoticeWrap">

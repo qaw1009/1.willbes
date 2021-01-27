@@ -215,7 +215,7 @@
                 </div>
                 {{--기본댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                    @include('willbes.pc.promotion.show_comment_list_normal_partial',array('write_yn'=>'N'))
                 @endif    
                 <ul>
                     <li><a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_btn.png"  alt="윌비스 회원가입하기"/></a></li>

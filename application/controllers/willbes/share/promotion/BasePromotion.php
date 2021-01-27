@@ -260,6 +260,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         $arr_base['max_byte'] = element('max_byte', $arr_input);
+        $arr_base['write_yn'] = element('write_yn', $arr_input);
         $arr_base['survey_chk_yn'] = element('survey_chk_yn', $arr_input);
         $arr_base['survey_count'] = element('survey_count', $arr_input);
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;

@@ -1,12 +1,10 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/style_gosi_gate.css??ver={{time()}}" rel="stylesheet">
 <!-- Container -->
-<style type="text/css">
 
-</style>
-
-<div id="Container" class="Container gosi-gate NGR c_both">
+<div id="Container" class="Container gosi-gate NSK c_both">
     <div class="widthAuto gosi-gate-top">
         <div class="gosi-gate-sns">
             <ul>
@@ -95,131 +93,422 @@
             <li><a href="#none">군무원</a></li>
         </ul>
     </div>
-    
-    <div class="Section mt30">
-        <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x80.jpg" alt="배너명">
-        </div>
+
+    <div class="gosi-bnfull">
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx65.jpg" alt="배너명"></a>
     </div>
 
-    <div class="Section">
+    <div class="Section gosi-gate-Sec">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt01.jpg" alt="윌비스 패스">
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto gosi-gate-bnSec01 nSlider pick">   
-            <div class="f_left">                
-                <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_01.jpg" alt="정태정 핵심이론"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_02.jpg" alt="10일 완성 패키지"></a></div>
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x285.gif" alt="배너명"></a>
+            <div class="gosi-gate-bntop p_re">
+                <div id="MainRollingDiv" class="MaintabList">
+                    <ul class="Maintab">
+                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급</a></li>
+                        <li><a data-slide-index="1" href="javascript:void(0);">7급</a></li>
+                        <li><a data-slide-index="2" href="javascript:void(0);">세무직</a></li>
+                        <li><a data-slide-index="3" href="javascript:void(0);">법원직</a></li>
+                        <li><a data-slide-index="4" href="javascript:void(0);">농업직</a></li>
+                        <li><a data-slide-index="5" href="javascript:void(0);">통신/전기</a></li>
+                        <li><a data-slide-index="6" href="javascript:void(0);">전산직</a></li>
+                        <li><a data-slide-index="7" href="javascript:void(0);">환경직</a></li>
+                        <li><a data-slide-index="8" href="javascript:void(0);">산림자원직</a></li>
+                        <li><a data-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a></li>
+                    </ul>
+                </div>
+                <div id="MainRollingSlider" class="MaintabBox">
+                    <ul class="MaintabSlider">
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_01.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_02.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_03.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_04.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_05.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_06.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_07.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_08.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_09.jpg" alt="배너명">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#none" target="_blank">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_10.jpg" alt="배너명">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="f_right">                    
+        </div>
+    </div>
+
+    <div class="gosi-bnfull02">
+        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx227.jpg" alt="배너명"></a>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto gosi-gate-bn01 nSlider pick">   
+            <div class="f_left">  
+                <div class="will-nTit NSK-Black">공무원, 어떻게 준비하나요? </div>              
                 <div class="sliderNum">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_02.jpg" alt="10일 완성 패키지"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_555x400_01.jpg" title="KCG 핵심요약"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_550x162_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_550x162_02.jpg" alt="배너명"></a></div>
+                </div>
+            </div>
+            <div class="f_right">  
+                <div class="will-nTit NSK-Black">윌비스 신규회원가입 혜택</div>                  
+                <div class="sliderNum">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_550x162_02.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_550x162_01.jpg" alt="배너명"></a></div>
                 </div>
             </div>
             </ul>         
         </div>
     </div>
 
-    <div class="Section gosi-gate-Sec">
+    <div class="Section tpassWrap">
         <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt02.jpg" alt="윌비스 티패스">
-            <div class="gosi-gate-bnSec02 p_re">
-                <div id="MainRollingDiv" class="MaintabList five">
-                    <ul class="Maintab">
-                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9/7급공무원</a></li>
-                        <li><a data-slide-index="1" href="javascript:void(0);" class="">소방직</a></li>
-                        <li><a data-slide-index="2" href="javascript:void(0);" class="">세무직</a></li>
-                        <li><a data-slide-index="3" href="javascript:void(0);" class="">법원직</a></li>
-                        <li><a data-slide-index="4" href="javascript:void(0);" class="">군무원/기술직</a></li>
-                    </ul>
+            <div><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_01.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_02.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_03.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_04.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_05.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_06.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_07.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_08.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_09.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_10.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_11.jpg" alt="배너명"></a><li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_12.jpg" alt="배너명"></a><li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section gosi-gate-profWrap">
+        <div class="widthAuto">
+            <div class="will-nTit NSK-Black">합격을 책임질 윌비스 직렬별 대표 교수진</div>        
+            <ul class="gosi-tabs-prof">
+                <li><a href="#item01" class="on">9/7급</a></li>
+                <li><a href="#item02">세무직</a></li>
+                <li><a href="#item03">법원직</a></li>
+                <li><a href="#item04">소방직</a></li>
+                <li><a href="#item05">기술직</a></li>
+                <li><a href="#item06">군무원</a></li>
+            </ul>
+            <div class="gosi-tabs-contents-wrap">
+                <div id="item01" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof">
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
                 </div>
-                <div id="MainRollingSlider" class="MaintabBox">
-                    <ul class="MaintabSlider">
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_02.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_02.jpg" alt="배너명"></a></li>
-                        <li><a href="#none" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_1120x400_01.jpg" alt="배너명"></a></li>
-                    </ul>
+                <div id="item02" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof" >
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        
+                    </ul>                
+                </div>
+                <div id="item03" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof" >
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>    
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>                        
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
+                </div>
+                <div id="item04" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof" >
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>    
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>                        
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
+                </div>
+                <div id="item05" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof" >
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
+                </div>
+                <div id="item06" class="gosi-tabs-content">
+                    <ul class="gosi-gate-prof" >
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_03.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>                        
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_01.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_02.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nSlider">
+                                <div class="sliderProf">
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_05.jpg" alt="배너명 핵심이론"></a></div>
+                                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_208x470_04.jpg" alt="배너명"></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>                
                 </div>
             </div>
         </div>
-    </div>
+    </div>   
 
-    <div class="Section mt100">
+    <div class="Section castWrap">
         <div class="widthAuto">
-            <ul class="gosi-gate-bnSec03">
-                <li><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_img01.jpg" alt="공무원, 어떻게 시작해야될지 고민된다면?"></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200_01.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_300x200_02.jpg" alt="배너명"></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section gosi-gate-Sec">
-        <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt03.jpg" alt="윌비스 교수진">
-            <ul class="gosi-gate-prof">
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111345.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111418.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111529.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111708.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720111824.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720112057.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_220x380.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt04.jpg" alt="수험생활 tip">
+            <div class="tx16 mb20">수험을 가장 잘 아는, 그리고 많은 합격생을 배출한 교수님들이 전합니다.</div>
+            <div class="will-nTit NSK-Black">합격을 앞당기는 <span>수험생활 팁</span></div>  
             <div class="castBox">
                 <ul class="castslider">
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
                             </a>
                         </div>
                         <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
@@ -227,7 +516,7 @@
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
                             </a>
                         </div>
                         <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
@@ -235,7 +524,7 @@
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_03.jpg">
                             </a>
                         </div>
                         <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
@@ -243,7 +532,7 @@
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
                             </a>
                         </div>
                         <div class="castTitle">신광은 경찰학원 행사이벤트 및 커리큘럼안내</div>
@@ -251,7 +540,7 @@
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
                             </a>
                         </div>
                         <div class="castTitle">합격생이 말해주는 1단계 문제풀이 ☜ 12월30일 大개강이라닛☆</div>
@@ -259,38 +548,40 @@
                     <li>
                         <div>
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x220.jpg">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_03.jpg">
                             </a>
                         </div>
                         <div class="castTitle">압도적 1위 장정훈 교수 6만돌파 이벤트!</div>
                     </li>
-                </ul>  
-                <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
+                </ul> 
+                <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>                   
+                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p> 
+                             
             </div>
         </div>
     </div>
 
-    <div class="Section mt50">
-        <div class="widthAuto gosi-gate-bnSec04 nSlider pick">   
-            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_txt05.jpg" alt="학원 실강 안내">
+    <div class="Section gosi-gate-bn02">
+        <div class="widthAuto pick">   
+            <div class="tx16 mb20">수험을 가장 잘 아는, 그리고 많은 합격생을 배출한 교수님들이 전합니다.</div>
+            <div class="will-nTit NSK-Black">윌비스 공무원 학원 <span>실강 안내</span></div>  
             <ul>
-                <li>
+                <li class="nSlider">
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_01.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_02.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_02.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
-                <li>
+                <li class="nSlider">
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_03.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_01.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_02.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_03.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
-                <li>
+                <li class="nSlider">
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_02.jpg" alt="정태정 핵심이론"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/gosi_gate_370x320_03.jpg" alt="10일 완성 패키지"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_03.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x290_01.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
             </ul>
@@ -408,7 +699,7 @@
         <ul>
             <li class="dday">
                 <div class="QuickSlider">
-                    <div class="sliderNum">
+                    <div class="sliderProf">
                         <div class="QuickDdayBox">
                             <div class="q_tit">3차 필기시험</div>
                             <div class="q_day">2018.12.12</div>
@@ -424,7 +715,7 @@
             </li>
             <li>   
                 <div class="QuickSlider">      
-                    <div class="sliderNum">
+                    <div class="sliderProf">
                         <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720103645.jpg" title="배너명"></a></div>
                         <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                     </div>
@@ -432,7 +723,7 @@
             </li>
             <li>   
                 <div class="QuickSlider">      
-                    <div class="sliderNum">
+                    <div class="sliderProf">
                         <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0625/banner_20200625154631.jpg" title="배너명"></a></div>
                         <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                     </div>
@@ -440,7 +731,7 @@
             </li>
             <li>   
                 <div class="QuickSlider">      
-                    <div class="sliderNum">
+                    <div class="sliderProf">
                         <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                         <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0224/banner_20200624133355.jpg" title="배너명"></a></div>
                     </div>
@@ -449,11 +740,58 @@
         </ul>
     </div>
 </div>
-
 <!-- End Container -->
-<script src="/public/js/willbes/jquery.counterup.min.js"></script>
-<script src="/public/js/willbes/waypoints.min.js"></script>
+
+
 <script type="text/javascript">
+    //교수진 배너    
+     $(document).ready(function(){
+        $('.gosi-tabs-prof').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+        
+            $content = $($active[0].hash);
+        
+            $links.not($active).each(function () {
+            $(this.hash).hide()});
+        
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+            $active.removeClass('active');
+            $content.hide();
+        
+            $active = $(this);
+            $content = $(this.hash);
+        
+            $active.addClass('active');
+            $content.show();
+        
+            e.preventDefault()})}
+        )}
+    );
+
+    $(function() {
+        $('.sliderProf').bxSlider({        
+            auto: true,
+            controls: true,
+            pause: 4000,
+            pager: true,
+            pagerType: 'short',
+            slideWidth: 208,
+            minSlides:1,
+            maxSlides:1,
+            moveSlides:1,
+            adaptiveHeight: true,
+            infiniteLoop: true,
+            touchEnabled: false,
+            autoHover: true,
+            onSliderLoad: function(){
+                $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1}); 
+            }  
+        });
+    });
+
     //캐스트
     $(function() {
         var slidesImg1 = $(".castslider").bxSlider({
@@ -478,33 +816,6 @@
         $("#imgBannerRight1").click(function (){
             slidesImg1.goToNextSlide();
         });
-    }); 
-
-    //자동검색어
-    $(function(){
-        var autocomplete_text = ["스파르타","신광은","모의고사","장정훈","최신판례","김원욱","하승민","형사소송법","네친구","해설","형법","최신","수사","실용글쓰기","최기판","오태진","승진","면접","리마인드","원유철","숫자","판례","해설강의","경찰학","김현정","기출","Flex","원기총","형소법","개정","실무종합","영어","문제풀이","마무리","오현웅","행정법","동형","2단계","2020","경찰학개론","송광호","학설","한국사","좋은데이","조문","심화","신광은 형사소송법","문제폭격","최신기출","1차","실용","추록","최신 판례","형사소송","신의한수","해양경찰","총평","숫자특강","심화이론","기지개","특강","형사법","구문독해","마무리특강","경찰승진","입문특강","해사법규","위원회","키워드","김준기","교재","형사소송법 심화","무료특강","2020년 1차","시험","승진기출","기본이론","헌법","실무","모의","글쓰기","해양경찰학","합격","공득인","김원욱 형법","체력","형법 심화","형법 최신","형법 심화이론","법학경채","아침","박우찬","기출해설","적중","형법 핵심이론 요약정리","조문특강","파이널","합기독","ox","개정법령","마무리 특강","5개년","형법 최신판례","패키지","최신기출판례","기본","독해","사료","요약","법학","20년 1차","범죄수사","기출문제","장정훈 경찰학개론","2차","문제","주관식","형사","찍기","심화기출","2차대비","해양경찰학개론","보강","1단계","문풀","죄수론","2020년 1차대비 신광은 형사소송법","법령","최신판례특강","죄수","전문법칙","역사","민법","일정","2020 1차","강의","하이힐","단계","박영식","판례특강","진도별","경찰실무","정태정","2019","경찰간부","19년 2차","해설특강","최기","2020년 2차","오태진 한국사","해양","간부","최신판","형법최신판례","제이슨","숫자 특강","무료","형사소송법 입문","해사영어","경찰","김원욱 형법 기본","300","신광은 형사법","실전","도사국사","경찰작용법","2018","2020년 1차대비 김원욱 형법 기본","찍기특강","선박","2020년 2차대비 신광은 형사소송법","형사소송법 최신판례","면접캠프","2018년 3차","기관술"," 마무리","베이직","형법 마무리","3개월","아침영어","신광은 형소법","이것만","인증","김원욱형법","이론","국어","경찰특공대","해수부","이기자","문제폭격 스파르타","신광은 경찰","신광은 형사소송법 기본이론 ","장정훈 행정법","풀이","1차대비","최신 기출","한국사 기본","1개년","심화이론특강","300제"];
-        $("#unifiedSearch_text").autocomplete({
-            source: autocomplete_text,
-            select: function(event, ui) {
-            },
-            focus: function(event, ui) {
-                return false;
-            }
-        })
-    });
-
-    //인기검색어
-    $(document).ready(function() {
-        var fieldExample = $('.unifiedSearch');
-            fieldExample.focus(function() {
-            var div = $('div.searchPop').show();
-            $(document).bind('focusin.example click.example',function(e) {
-                if ($(e.target).closest('.example, .unifiedSearch').length) return;
-                $(document).unbind('.example');
-                div.fadeOut('medium');
-            });
-        });
-        $('div.searchPop').hide();
     });
 </script>
 @stop

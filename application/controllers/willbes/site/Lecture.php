@@ -136,7 +136,7 @@ class Lecture extends \app\controllers\FrontController
         //$add_column = ', ifnull(fn_professor_study_comment_data(ProfIdx, SiteCode, CateCode, SubjectIdx, 3), "N") as StudyCommentData';
 
         // 상품 조회
-        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['ProdCode' => 'desc']);
+        $list = $this->lectureFModel->listSalesProduct($this->_learn_pattern, false, $arr_condition, null, null, ['OrderNum' => 'desc', 'ProdCode' => 'desc']);
 
 
         // 상품조회 결과 배열 초기화
@@ -149,6 +149,7 @@ class Lecture extends \app\controllers\FrontController
         if (empty($list) === false) {
             // 상품조회 결과에 존재하는 과목 정보
             $selected_subjects = array_pluck($this->baseProductFModel->listSubject($this->_site_code, array_unique(array_pluck($list, 'SubjectIdx'))), 'SubjectName', 'SubjectIdx');
+
 
             // 교수정보 추출
             // 상품조회 결과에서 교수정보 추출 (교수명::슬로건)
@@ -185,13 +186,12 @@ class Lecture extends \app\controllers\FrontController
                 // 정렬방식이 과정순일 경우 배열키 재정의, 배열키 기준으로 재정렬하기 위해 필요 (OrderNumCourse + ProdCode)
                 if (element('search_order', $arr_input) == 'course') {
                     //$selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . $row['ProdCode']] = $row;
-                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . (300000 - $row['ProdCode'])] = $row;
+                    $selected_list[$row['SubjectIdx']][$row['ProfIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . str_pad((999 - $row['OrderNum']), 3, '0', STR_PAD_LEFT) . (300000 - $row['ProdCode'])] = $row;
                 } else {
                     $selected_list[$row['SubjectIdx']][$row['ProfIdx']][] = $row;
                 }
             }
         }
-
 
         $this->load->view('site/lecture/index', [
             'arr_input' => $arr_input,

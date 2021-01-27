@@ -1,117 +1,158 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-{{--<link href="/public/css/willbes/style_gosi_tech.css??ver={{time()}}" rel="stylesheet">--}}
 <style>
-/*********************************************     Main Container : tech     *********************************************/
-.tech .tx-color {color: #6faf4e;}
-.tech .Depth .depth:last-child strong {color: #ba560e;}
-.tech .will-nTit {border:0; font-size:46px}
-.tech .will-nTit span {color:#6faf4e}
-
-.tech .Menu h3 {border:0}  
-
-.tech .sortMenu {border-top:1px solid #e9e9e9; background:#fbfbfb; padding:8px 0}
-.tech .sortMenu li {display:inline; float:left; width:12.5%}
-.tech .sortMenu a {display:block; padding:8px 0 8px 5px; font-size:14px; color:#606060}
-.tech .sortMenu a:hover {color: #6faf4e;}
-
-/*상단 메인 배너*//
-.tech .gosi-tech-Sec {
-    width: 100%;
-    max-width: 2000px;        
+    /*********************************************     Main Container : tech     *********************************************/
+.tech .Section2 {
+    background:url("../../img/willbes/gosi_tech/visual/visual_top_bg.jpg") repeat-x left 95px;
 }
-.tech .gosi-tech-bntop {position:relative; margin:0; height: 460px !important;}
-.tech .gosi-tech-bntop .TechtabBox {
-    position: absolute;
-    top:0;
-    left:50%;
-    margin-left:-1000px;
-    width: 2000px;
-    min-width: 1120px;
-    max-width: 2000px;
-    height: 460px; 
+.tech .Section3 {
+    background: #f7f7f7;
+}
+
+.tech .Depth .depth:last-child strong {
+    color: #ba560e;
+}
+
+/* Main Container : MainVisual */
+.tech .VisualsubBox {
+    width: 1120px;
+    height: 380px;
     overflow: hidden;
 }
-.tech .gosi-tech-bntop .TechtabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; 
-    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.2; filter:alpha(opacity=20);}
-.tech .gosi-tech-bntop .TechtabBox p a {display:none;}
-.tech .gosi-tech-bntop .TechtabBox p.leftBtn {margin-left:-620px;}
-.tech .gosi-tech-bntop .TechtabBox p.rightBtn {margin-left:588px; background-position: right center;}	
-.tech .gosi-tech-bntop .TechtabBox p:hover {opacity:100; filter:alpha(opacity=100);}
-
-.tech .gosi-tech-bntop .TechtabList {
-    position: absolute;
-    top:405px;
-    width:100%;
-    z-index: 99;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.tech .gosi-tech-bntop .Techtab {width:1120px; margin:0 auto;}
-.tech .gosi-tech-bntop .Techtab:after {content:""; display:block; clear:both}
-.tech .gosi-tech-bntop .Techtab li {display:inline-block; float:left; width: 11.11111%;}   
-.tech .gosi-tech-bntop .Techtab li a {display:block; text-align:center; line-height:1.2; font-size: 15px; color:#b4b4b4; padding:10px 0}
-.tech .gosi-tech-bntop .Techtab li a:hover,
-.tech .gosi-tech-bntop .Techtab li a.active {color:#fff; font-weight: bold;}
-
-/**/ 
-.tech .tech-bnfull {background:url("https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286_bg.jpg") repeat-x;}
-
-/**/
-.gosi-tech-bn01 {margin-top:130px;} 
-.gosi-tech-bn01 .bnTitle {float:left; width:280px;}
-.gosi-tech-bn01 .will-nTit {font-size:33px}  
-.gosi-tech-bn01 .bnTitle div:nth-child(2) {line-height:1.4; color:#a6a6a6; font-size:20px; margin:30px 0 20px}
-.gosi-tech-bn01 .bnTitle a {display:inline-block; color:#fff; background:#000; font-size:14px; height:24px; line-height:24px; border-radius:13px; padding:0 20px }
-.gosi-tech-bn01 ul {float:right;}
-.gosi-tech-bn01 li {display:inline-block; float:left; width:266px; margin-right:20px;}
-.gosi-tech-bn01 li:last-child {margin:0}
-.gosi-tech-bn01 ul:after {content: ""; display: block; clear:both}
-.gosi-tech-bn01 .nSlider .sliderNum {height:250px; background:#ccc; overflow:hidden}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-controls-direction {
-    position: absolute;
-    top: 250px;
-    left:0;
-    right: 0;
-    width: 100%;
-    height: 20px;
-    text-align:center;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-controls-direction a {
-    width: 20px;
-    height: 20px;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper a.bx-prev {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
-    left:150px !important;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper a.bx-next {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
-    left:95px !important;     
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-pager {
-    width: auto;
-    position: absolute;
-    top: 255px;
-    left:0;
-    right: 0;
-    bottom: 0;
-    font-size: 11px;
-    font-weight: 300;
-    color: #000;
+.tech .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
     margin: 0;
-    padding: 0;
-    letter-spacing: 0;
+    width: 50px;
+    z-index: 50;
+  }
+.tech .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index: 50;
+}
+.tech .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;    
 }
 
-/**/
-.tech .tech-bnfull02 {background:#fbfbfd; margin-top:130px} 
+.tech .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #898989 !important;
+}
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.tech .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #f7ec1e !important;
+}
+
+
+/* Main Container : Prof */
+.tech .ProfBox {
+    margin-top:70px;
+}
+.tech .ProfBox .PBtab li {
+    display: inline;
+    float: left;
+    width: 50%;
+}
+.tech .ProfBox .PBtab li a {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    color:#b9b9b9;
+    height: 54px;
+    line-height: 54px;
+    border:1px solid #b9b9b9;
+    border-bottom:1px solid #6faf4e;
+}
+.tech .ProfBox .PBtab li a.active {
+    color:#6faf4e;
+    border:1px solid #6faf4e;
+    border-bottom:1px solid #fff;
+    font-weight: 600;
+}
+.tech .ProfBox .PBtab:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.tech .ProfBox .PBcts li {
+    float: left;
+    width: 274px;
+    height: 234px;
+    margin-left: 8px;
+}
+.tech .ProfBox .PBcts li:first-child {
+    margin-left: 0;
+}
+
+.tech .ProfBox .PBcts:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 30px;
+    bottom: 10px;
+    text-align: left;
+    }
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.tech .ProfBox .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #5a9f37 !important;
+    }
 
 /**/
-.tech .ProfBoxB {margin-left:-8px; margin-top:50px}
-.tech .ProfBoxB li {float: left; width: 274px; height: 234px; margin-left: 8px;margin-bottom: 8px;}
-.tech .ProfBoxB:after {content: ""; display: block; clear: both;}
+.tech .ProfBoxB {margin-left:-8px}
+.tech .ProfBoxB li {
+    float: left;
+    width: 274px;
+    height: 234px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+.tech .ProfBoxB:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/**/
+.tech .smallTit {
+    border-top:1px solid #000;
+    font-size: 22px;
+    color:#363636;    
+    position: relative;
+}
+.tech .smallTit p {
+    position: absolute;
+    top:-15px;
+    text-align:left;
+    width: 100%;
+}
+.tech .smallTit p a {vertical-align: top; margin-left: 10px}
+.tech .smallTit span {
+    font-weight: 600;
+    background: #fff;
+    padding:0 20px 0 0;
+}
+.tech .smallTit strong {
+    color:#ba560e;
+}
+
+.tech .will-listTit {
+    margin-bottom: 15px;
+    color:#181818;
+}
 
 
 /* Main Container : Notice : noticeTabs */
@@ -181,14 +222,34 @@
     border-radius: 10px;
     margin-right: 5px;
 }
+
+
+/* Main Container : Gosi */
+.tech .tx-color {
+    color: #6faf4e;
+}
+
+.tech .copyTit {
+    font-size: 35px;
+    color: #363636;
+    line-height: 1.2;
+    text-align: center;
+}
+.tech .copyTit strong {
+    vertical-align: baseline;
+	color:#000;
+} 
+.tech .copyTit span {
+	vertical-align: baseline;
+}
 </style>
 <!-- Container -->
 <div id="Container" class="Container tech NGR c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">온라인공무원<span class="row-line">|</span></li>
-                <li class="subTit">기술직</li>
+                <li class="Tit">공무원<span class="row-line">|</span></li>
+                <li class="subTit">9급</li>
             </ul>
             <ul class="menu-List">
                 <li class="dropdown">
@@ -713,146 +774,94 @@
                 </li>
             </ul>
         </h3>
-    </div>
-
-    <div class="Section sortMenu NSK">
-        <div class="widthAuto">
-            <ul>
-                <li><a href="#none">농업직</a></li>
-                <li><a href="#none">농촌지도사</a></li>
-                <li><a href="#none">유기농업기능사</a></li>
-                <li><a href="#none">전송기술직</a></li>
-                <li><a href="#none">통신기술직</a></li>
-                <li><a href="#none">전기직</a></li>
-                <li><a href="#none">전자직</a></li>
-                <li><a href="#none">토목직</a></li>
-                <li><a href="#none">축산직</a></li>
-                <li><a href="#none">기계직</a></li>
-                <li><a href="#none">조경직</a></li>
-                <li><a href="#none">전산직</a></li>
-                <li><a href="#none">환경직(공채)</a></li>
-                <li><a href="#none">환경직(특채)</a></li>
-                <li><a href="#none">산림자원직</a></li>
-                <li><a href="#none">공통과목</a></li>
-            </ul>
-        </div>
-    </div> 
-
-    <div class="Section gosi-tech-Sec NSK">
-        <div class="gosi-tech-bntop">                        
-            <div id="TechRollingSlider" class="TechtabBox">
-                <ul class="TechtabSlider">
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_01.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_03.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_04.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_01.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_04.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_03.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
-                </ul>                  
-                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
-                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
-            </div> 
-            
-            <div id="TechRollingDiv" class="TechtabList">
-                <div class="Techtab">
-                    <li><a data-slide-index="0" href="javascript:void(0);" class="active">농업전공X영어<br>PACKAGE</a></li>
-                    <li><a data-slide-index="1" href="javascript:void(0);">전기/통신 5과목<br>PACKAGE</a></li>
-                    <li><a data-slide-index="2" href="javascript:void(0);">농업직 5과목<br>PACKAGE</a></li>
-                    <li><a data-slide-index="3" href="javascript:void(0);">축산/기계/조경<br>NEW 라인업</a></li>
-                    <li><a data-slide-index="4" href="javascript:void(0);">환경직<br>PACKAGE</a></li>
-                    <li><a data-slide-index="5" href="javascript:void(0);">전산직<br>PACKAGE</a></li>
-                    <li><a data-slide-index="6" href="javascript:void(0);">임업직<br>PACKAGE</a></li>
-                    <li><a data-slide-index="7" href="javascript:void(0);">전기/통신<br>최우영</a></li>
-                    <li><a data-slide-index="8" href="javascript:void(0);">농업직렬<br>장사원</a></li>
+    </div>      
+        
+    <div class="Section MainVisual">        
+        <div class="widthAuto NSK mt30">
+            <div class="VisualsubBox">
+                <div class="bSlider">
+                    <div class="sliderStopAutoPager">
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
+                    </div>
                 </div>
-            </div>           
-        </div>        
-    </div>
-
-    <div class="Section tech-bnfull">
-        <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286.jpg" alt="배너명"></a>
-        </div>
-    </div> 
-
-    <div class="Section gosi-tech-bn01 NSK">
-        <div class="widthAuto">  
-            <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>이론강좌</span></div>  
-                <div>
-                    과목별 기초 개념과<br>
-                    배경지식을 다지는<br>
-                    학습 전략
-                </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
             </div>
-            <ul>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_02.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_05.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_06.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="widthAuto mt80">  
-            <div class="bnTitle"> 
-                <div class="will-nTit NSK-Black">NEW <span>문제풀이</span></div>  
-                <div>
-                    기출 문제 및<br>
-                    예상 문제풀이를 통한<br>
-                    출제포인트 공략<br>
-                </div> 
-                <div><a href="#none">영상 더보기 ></a></div>               
-            </div>
-            <ul>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-                <li class="nSlider">
-                    <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_06.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_05.jpg" alt="배너명"></a></div>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
 
-    <div class="Section tech-bnfull02">
-        <div class="widthAuto">
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3028_1120_img01.jpg" alt="빈틈없는 완벽한 실력을 쌓게 됩니다.">
+    <div class="Section Section2">
+        <div class="widthAuto ">
+            <a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_top.jpg') }}" alt="윌비스TOP 기술직 라인업"></a>
         </div>
-    </div>    
+    </div>
 
-    <div class="Section mt100">
-        <div class="widthAuto">
-            <div class="tx16">무엇 하나 빠지지 않는 빈틈없는 라인업</div>
-            <div class="will-nTit NSK-Black mt20">체계적인 학습 CARE, <span>윌비스 기술직 교수진</span></div>  
+
+    <div class="Section ProfBox">
+        <div class="widthAuto">        
+            <ul class="PBtab NSK">
+                <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
+                <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
+            </ul>  
+            <div id="tab01">  
+                <img src="{{ img_url('gosi_tech/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
+                <ul class="PBcts">
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                </ul>
+            </div>
+            <div id="tab02">  
+                <img src="{{ img_url('gosi_tech/visual/visual_tit01_02.jpg') }}" alt="빠르게 기본이론 강좌로 개념정립!">            
+                <ul class="PBcts">
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li> 
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="{{ img_url('gosi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="Section Section3 mt100">
+        <div class="widthAuto p_re">
+            <div><img src="{{ img_url('gosi_tech/visual/visual_tip.jpg') }}" alt="빈틈없는 완벽한 실력을 쌓게 됩니다."></div>
+        </div>
+    </div>
+
+    <div class="Section">
+        <div class="widthAuto p_re">
+            <img src="{{ img_url('gosi_tech/visual/visual_tit02.jpg') }}" alt="무엇 하나 빠지지 않는 빈틈없는 라인업 윌비스 TOP 기술직 교수진">
             <ul class="ProfBoxB">
                 <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
                 <li><a href="#none"><img src="{{ img_url('gosi_tech/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
@@ -1011,30 +1020,36 @@
 </div>
 <!-- End Container -->
 
-<script type="text/javascript">   
-    //상단 메인 배너
-    $(function(){ 
-        var slidesImg = $(".TechtabSlider").bxSlider({
-            mode:'horizontal',
-            touchEnabled: false,
-            speed:400,
-            pause:5000,
-            sliderWidth:2000,
-            auto : true,	
-            autoHover: true,						
-            pagerCustom: '#TechRollingDiv',
-            controls:false, 				
-            onSliderLoad: function(){
-                $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1}); 
-            }
-        });	
-        $("#imgBannerLeft").click(function (){
-            slidesImg.goToPrevSlide();
+<script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function() {
+                $('.PBtab').each(function () {
+                    var $active, $content, $links = $(this).find('a');
+                    $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+                    $active.addClass('active');
+
+                    $content = $($active[0].hash);
+
+                    $links.not($active).each(function () {
+                        $(this.hash).hide();
+                    });
+
+                    // Bind the click event handler
+                    $(this).on('click', 'a', function (e) {
+                        $active.removeClass('active');
+                        $content.hide();
+
+                        $active = $(this);
+                        $content = $(this.hash);
+
+                        $active.addClass('active');
+                        $content.show();
+
+                        e.preventDefault();
+                    });
+                });
+            }, 200);
         });
-    
-        $("#imgBannerRight").click(function (){
-            slidesImg.goToNextSlide();
-        });			
-    });        
-</script>
+    </script>
+@stop
 @stop

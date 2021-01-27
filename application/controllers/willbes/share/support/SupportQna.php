@@ -73,13 +73,16 @@ class SupportQna extends BaseSupport
         if ($this->_site_code == config_item('app_intg_site_code')) {
             if (empty($s_site_code) === true) {
                 $arr_base['category'] = [];
+                $arr_base['subject'] = [];
             } else {
                 //$arr_base['category'] = $this->categoryFModel->listSiteCategory($s_site_code);
                 $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($s_site_code);
+                $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($s_site_code, $s_cate_code);
             }
         } else {
             //$arr_base['category'] = $this->categoryFModel->listSiteCategory($this->_site_code);
             $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
+            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $s_cate_code);
         }
 
         //구분목록 (학원,온라인)
@@ -87,11 +90,6 @@ class SupportQna extends BaseSupport
 
         //상담유형
         $arr_base['consult_type'] = $this->codeModel->getCcd($this->_groupCcd['consult_ccd']);
-
-        $arr_base['subject'] = [];
-        if(empty($s_cate_code) === false){
-            $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $s_cate_code);
-        }
 
         $arr_condition = [
             'EQ' => [
@@ -247,7 +245,7 @@ class SupportQna extends BaseSupport
 
         //카테고리별 과목 조회
         foreach ($arr_base['category'] as $row){
-            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($this->_site_code, $row['CateCode']);
+            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
         }
 
         $method = 'POST';

@@ -99,9 +99,9 @@ class OffLecture extends \app\controllers\FrontController
         ];
 
         if (element('search_order', $arr_input) == 'course') {
-            $order_by = ['OrderNum'=>'Desc','OrderNumCourse'=>'Desc'];
+            $order_by = ['OrderNum'=>'Desc', 'OrderNumCourse'=>'Desc', 'ProdCode'=>'Desc'];
         } else {
-            $order_by = ['OrderNum'=>'Desc','ProdCode'=>'Desc'];
+            $order_by = ['OrderNum'=>'Desc', 'ProdCode'=>'Desc'];
         }
 
         $lec_type = ($this->_learn_pattern === 'off_lecture_before' ? 'S' : null);  // 선수강좌유형 기본셋팅 : 수강생전용 TODO 추후 일반형 과 같이 사용될 가능성 존재로 컨트롤러에서 조건생성
@@ -129,7 +129,7 @@ class OffLecture extends \app\controllers\FrontController
 
                 // 정렬방식이 과정순일 경우 배열키 재정의, 배열키 기준으로 재정렬하기 위해 필요 (OrderNumCourse + ProdCode)
                 if (element('search_order', $arr_input) == 'course') {
-                    $selected_list[$row['SubjectIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . $row['ProdCode']] = $row;
+                    $selected_list[$row['SubjectIdx']][str_pad($row['OrderNumCourse'], 3, '0', STR_PAD_LEFT) . str_pad((999 - $row['OrderNum']), 3, '0', STR_PAD_LEFT) . (300000 - $row['ProdCode'])] = $row;
                 } else {
                     $selected_list[$row['SubjectIdx']][] = $row;
                 }

@@ -1,0 +1,232 @@
+.gosi-gate .tx-color {
+    color: #ba560e;
+}
+.gosi-gate .will-nTit {border:0; font-size:46px}
+.gosi-gate .will-nTit span {color:#205591}
+.gosi-gate-top { position:relative; height:120px;}
+.gosi-gate-sns {width:150px; height:40px; float:left; position:absolute; top:60px; z-index:10}
+.gosi-gate-sns li {display:inline; float:left; margin-right:5px}
+.gosi-gate-sns ul:after {content:''; display:block; clear:both}
+
+.gosi-logo {position:absolute; left:50%; margin-left:-107px; width:214px; top:30px; z-index:10}
+
+.gosi-gate-search {position:absolute; top:40px; right:0; z-index:1}
+
+.gosi-gate-menu {width:1120px; margin:0 auto; border:0}
+.gosi-gate-menu li {display:inline; float:left; width:11.11111%;}    
+.gosi-gate-menu a {display:block; text-align:center; font-size:16px; margin:10px 0 15px; border-right:1px solid #b7b7b7; font-weight:bold}
+.gosi-gate-menu a:hover {color:#ba560e}
+.gosi-gate-menu li:last-child a {border:0}
+.gosi-gate-menu ul:after {content:''; display:block; clear:both}
+
+.gosi-bnfull {position:relative; height:65px;}
+.gosi-bnfull a {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; z-index:1}    
+
+.gosi-gate-Sec {background:url(https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_h610_bg.jpg) repeat-x left top; margin:0; height:745px}
+.gosi-gate-bntop {
+    width: 1120px;
+    height: 460px;
+    background:#fff;
+    overflow: hidden;   
+    box-shadow:0 10px 20px rgba(0,0,0,.2); 
+    position: absolute;
+    z-index:10;
+}
+
+.gosi-gate-bntop .MaintabList {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    text-align: center;   
+    width:100%;     
+}
+.gosi-gate-bntop .Maintab {width:100%;}
+.gosi-gate-bntop .Maintab:after {content:''; display:block; clear:both}
+.gosi-gate-bntop .Maintab li {
+    background: rgba(0,0,0,.5);
+    display: inline-block; 
+    float:left;
+    height: 50px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 50px;
+    width: 10%;
+}
+.gosi-gate-bntop .MaintabList a {
+    display: block;
+    color:#b4b4b4;
+}
+.gosi-gate-bntop .MaintabList a:hover,
+.gosi-gate-bntop .MaintabList a.active {color:#fff; font-weight:bold}
+
+.gosi-gate-bntop .MaintabSlider li img {
+    width: 100%;
+    height: 100%;
+}
+
+.gosi-bnfull02 {position:relative; height:227px;}
+.gosi-bnfull02 a {position:absolute; top:0; left:50%; margin-left:-1000px; z-index:1}
+
+.gosi-gate-bn01 {margin-top:130px}
+.gosi-gate-bn01 > div {width:550px;}
+.gosi-gate-bn01 .sliderNum {width:550px; height:162px; overflow:hidden}
+.gosi-gate-bn01:after {content:''; display:block; clear:both}
+.gosi-gate-bn01 .will-nTit {font-size:26px; color:#363636}
+
+.tpassWrap {background:#fbfbfd; padding:130px 0; margin-top:130px}
+.tpassWrap .widthAuto div {float:left}
+.tpassWrap ul {width:570px; float:right;}    
+.tpassWrap li {display:inline; float:left; width:33.33333%;}
+.tpassWrap li a {display:block; margin-left:20px; margin-bottom:20px}
+.tpassWrap ul:after,
+.tpassWrap > div:after {content:''; display:block; clear:both}
+
+/*교수진*/
+.gosi-gate-profWrap {background:#c0bcb0; padding:130px 0}
+.gosi-gate-profWrap .will-nTit {color:#fff}
+.gosi-tabs-prof{border-radius:20px; background:#535046; width:1116px; margin:65px auto 45px; box-shadow: inset 5px 5px 10px rgba(0,0,0,.2);}
+.gosi-tabs-prof:after {content:''; display:block; clear:both}
+.gosi-tabs-prof li{display: inlinek;float:left;width:186px}
+.gosi-tabs-prof li a {display:block; height:40px; line-height:40px; text-align:center; color:#b6b5b2; font-size:20px}
+.gosi-tabs-prof li a.active {border-radius:20px; background: #fff;color: #535046; box-shadow:5px 5px 10px rgba(0,0,0,.2);}
+
+.gosi-tabs-contents-wrap {width:1120px; height:470px; overflow:hidden}
+.gosi-gate-prof li {        
+    display: inline;
+    float: left;  
+    margin-right:15px;  
+    width: 208px;
+    height:470px;
+    background:#fff;                      
+}   
+
+.gosi-gate-prof li:last-child {margin:0}
+.gosi-gate-prof:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.gosi-gate-prof .nSlider {}  
+.gosi-gate-prof .nSlider .sliderProf div {width: 208px !important; height:470px; position:relative;}
+.gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 425px;
+    left:0;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    text-align:center;
+}
+.gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.gosi-gate-prof .nSlider .bx-wrapper a.bx-prev {
+    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
+    left:120px !important;
+}
+.gosi-gate-prof .nSlider .bx-wrapper a.bx-next {
+    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
+    left:70px !important;     
+}
+.gosi-gate-prof .nSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 430px;
+    left:0;
+    right: 0;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+.gosi-gate .castWrap {margin-top:130px}
+.gosi-gate .castBox {position:relative; margin-top:60px}   
+.gosi-gate .castslider {width:1120px; margin: 0 auto; height:250px; overflow: hidden;}
+.gosi-gate .castslider li {display: inline; float: left; width:33.33333%;}
+.gosi-gate .castslider li a {display:block; width:370px; height:220px;} 
+.gosi-gate .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+.gosi-gate .castslider:after {content: ""; display: block; clear:both}
+.gosi-gate .castBox p {position:absolute; top:45%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.gosi-gate .castBox p.leftBtn {left:-40px}
+.gosi-gate .castBox p.rightBtn {right:-50px}
+.gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #e1e1e1;
+    width: 12px;
+    height: 12px;
+    margin: 0 2px;
+    border-radius:6px;
+}
+.gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a.active,
+.gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #898989;
+}
+.gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a.active {
+    width: 48px;
+}
+
+.gosi-gate-bn02 {margin-top:130px; padding:100px 0; background:#fbfbfd}    
+.gosi-gate-bn02 ul {margin-top:60px; height:290px;}
+.gosi-gate-bn02 li {display:inline; float:left; width:360px; margin-right:20px}
+.gosi-gate-bn02 li:last-child {margin:0}
+.gosi-gate-bn02 ul:after {content: ""; display: block; clear:both}
+.gosi-gate-bn02 .nSlider .bx-wrapper .bx-controls-direction {
+    position: absolute;
+    top: 310px;
+    left:0;
+    right: 0;
+    width: 100%;
+    height: 20px;
+    text-align:center;
+}
+.gosi-gate-bn02 .nSlider .bx-wrapper .bx-controls-direction a {
+    width: 20px;
+    height: 20px;
+}
+.gosi-gate-bn02 .nSlider .bx-wrapper a.bx-prev {
+    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
+    left:200px !important;
+}
+.gosi-gate-bn02 .nSlider .bx-wrapper a.bx-next {
+    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
+    left:140px !important;     
+}
+.gosi-gate-bn02 .nSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 315px;
+    left:0;
+    right: 0;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+
+.gosi-gate .noticeList .List-Table li a {
+    display: inline-block;
+    width: 75%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.gosi-gate .noticeList .List-Table li img {display: inline-block; vertical-align: top; margin-top: 8px;}
+.gosi-gate .noticeList .List-Table li a span {
+    background: #ba560e;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-top:3px;
+    margin-right: 5px;
+    height: 19px; line-height: 19px;    
+}

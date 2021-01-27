@@ -983,7 +983,7 @@ class Professor extends \app\controllers\FrontController
 
         $limit = empty($limit_cnt) === true ? null : $limit_cnt;
         $offset = empty($limit_cnt) === true ? null : 0;
-        $order_by = element('search_order', $arr_input) == 'course' ? ['OrderNumCourse' => 'asc', 'ProdCode' => 'desc'] : ['ProdCode' => 'desc'];
+        $order_by = element('search_order', $arr_input) == 'course' ? ['OrderNumCourse' => 'asc', 'OrderNum'=> 'desc', 'ProdCode' => 'desc'] : ['OrderNum'=> 'desc', 'ProdCode' => 'desc'];
 
         $data = $this->lectureFModel->listSalesProduct($learn_pattern, false, $arr_condition, $limit, $offset, $order_by);
 

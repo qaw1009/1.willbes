@@ -185,19 +185,6 @@
 
         <form id="add_apply_form2" name="add_apply_form2">
             <div class="evtCtnsBox evt02" id="evt_01">
-                {!! csrf_field() !!}
-                {!! method_field('POST') !!}
-                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-                <input type="hidden" name="register_type" value="promotion"/>
-                <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
-                @foreach($arr_base['add_apply_data'] as $row)
-                    {{--                    <input type="radio" name="add_apply_chk[]" id="add_apply_{{ $row['EaaIdx'] }}" value="{{$row['EaaIdx']}}" /> <label for="register_chk_{{ $row['EaaIdx'] }}">{{ $row['Name'] }}</label>--}}
-                    {{--                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyStartDatm']))--}}
-                    @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
-                        <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
-                        @break;
-                    @endif
-                @endforeach
 
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02.jpg" title="신규회원 30명 10일간 300권">
                 <div>
@@ -210,56 +197,6 @@
                             <col width="20%">
                         </colgroup>
                         <tbody>
-                        @if(empty($arr_base['add_apply_data']) === false)
-                            @php $col_cnt = 5; @endphp
-                            @for($i=0; $i < count($arr_base['add_apply_data']); $i++)
-                                @if($i==0 || $i%$col_cnt == 0)
-                                    @php $tr_i = $i; @endphp
-                                    <tr>
-                                        @endif
-                                        <td>{{$arr_base['add_apply_data'][$i]['Name']}}</td>
-                                        @if($i==($tr_i+$col_cnt-1) || $i == (count($arr_base['add_apply_data']))-1)
-                                            @if($i == (count($arr_base['add_apply_data']))-1) {{-- 마지막일때 --}}
-                                            @php
-                                                $remain_cnt = $col_cnt - (count($arr_base['add_apply_data'])%$col_cnt);
-                                                if($remain_cnt == $col_cnt) $remain_cnt = 0;
-                                            @endphp
-                                            @if($remain_cnt != 0)
-                                                @for($r=0; $r < $remain_cnt; $r++)
-                                                    <td></td>
-                                                @endfor
-                                            @endif
-                                            @endif
-                                    </tr>
-                                    @php $temp_j = 0; @endphp
-                                    @for($j=($i-$col_cnt+1+(empty($remain_cnt)? 0 : $remain_cnt)); $j <= $i; $j++)
-                                        @if($j==0 || ($j%$col_cnt == 0  && $temp_j == 0) || ($i == (count($arr_base['add_apply_data']))-1 && $temp_j == 0) )
-                                            <tr>
-                                                @endif
-                                                <td>
-                                                    <div>
-                                                        @php $add_end_date = substr($arr_base['add_apply_data'][$j]['ApplyEndDatm'],0,10) . ' 23:59:59' @endphp
-                                                        @if(time() >= strtotime($add_end_date))
-                                                            <span><img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_dead_line.png" alt="마감"></span>
-                                                        @endif
-
-                                                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_first_come.png" alt="선착순">
-                                                    </div>
-                                                </td>
-                                                @if($j==($tr_i+$col_cnt-1) || $j == (count($arr_base['add_apply_data']))-1)
-                                                    @if(empty($remain_cnt) === false && $remain_cnt != 0)
-                                                        @for($r=0; $r < $remain_cnt; $r++)
-                                                            <td></td>
-                                                        @endfor
-                                                    @endif
-                                            </tr>
-                                        @endif
-                                        @php $temp_j++; @endphp
-                                    @endfor
-                                @endif
-
-                            @endfor
-                        @endif
                         {{--
                         <tr>
                             <td>
@@ -272,10 +209,14 @@
                         --}}
                         <div class="evt_guide">
                             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_guide.png" title="이벤트 유의사항">
-                        </div>
+                        </div>                    
                         </tbody>
-                    </table>
+                    </table>                  
                 </div>
+                {{--기본댓글--}}
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_normal_partial')
+                @endif    
                 <ul>
                     <li><a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02_btn.png"  alt="윌비스 회원가입하기"/></a></li>
                     {{--<li><a onclick="javascript:fn_promotion_etc_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/02/1545_02_btn02.png"  alt="빠른유료구매"/></a></li>--}}
@@ -322,7 +263,7 @@
                         @if(empty($arr_base['add_apply_data']) === false)
                             @php $col_cnti = 5; @endphp
                             @for($ii=0; $ii < count($arr_base['add_apply_data']); $ii++)
-                                @if($ii==0 || $ii%$col_cnt == 0)
+                                @if($ii==0 || $ii%$col_cnti == 0)
                                     @php $tr_ii = $ii; @endphp
                                     <tr>
                                         @endif

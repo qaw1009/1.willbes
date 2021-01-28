@@ -205,7 +205,7 @@
                             <td>송원영</td>
                             <td>{{ $arr_base['register_list'][1]['Name'] or ''}}</td>
                             <td>7강</td>
-                            <td>2021 송원영 국어교육론 [배움]<br />
+                            <td>2021 송원영 국어교육론 [윌비스]<br />
                             전공국어 국어교육론 기출문제 해설집(개정판) [배움]</td>
                         </tr>
                         <tr>
@@ -247,7 +247,7 @@
                             <td>김철홍</td>
                             <td>{{ $arr_base['register_list'][6]['Name'] or ''}}</td>
                             <td>22강</td>
-                            <td>별도 교재 없음</td>
+                            <td>김철홍 대수학과 정수론[윌비스,제본]</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"></td>

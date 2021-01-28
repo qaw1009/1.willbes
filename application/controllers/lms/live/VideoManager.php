@@ -100,11 +100,15 @@ class VideoManager extends \app\controllers\BaseController
             }
         }
 
+        // 라이브타입 코드 조회
+        $arr_live_type = $this->codeModel->getCcd('740', 'CcdValue');
+
         $this->load->view('live/video/create', [
             'method' => $method,
             'offLineSite_list' => $offLineSite_list,
             'arr_campus' => $arr_campus,
             'arr_site_class_room' => $arr_site_class_room,
+            'arr_live_type' => $arr_live_type,
             'idx' => $idx,
             'data' => $data
         ]);
@@ -116,6 +120,7 @@ class VideoManager extends \app\controllers\BaseController
             ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
             ['field' => 'campus_ccd', 'label' => '캠퍼스', 'rules' => 'trim|required|integer'],
             ['field' => 'class_room_idx', 'label' => '강의실명', 'rules' => 'trim|required'],
+            ['field' => 'LiveTypeCcd', 'label' => '영상타입', 'rules' => 'trim|required'],
             ['field' => 'is_use', 'label' => '노출여부', 'rules' => 'trim|required|in_list[Y,N]'],
         ];
 
@@ -172,8 +177,30 @@ class VideoManager extends \app\controllers\BaseController
      */
     public function viewFullVideoModel()
     {
-        $this->load->view('live/video/view_full_video_model', [
-            'video_route' => $this->_req('video_route')
+        $list = $this->videoManagerModel->listLiveVideo([
+            'EQ' => [
+                'lms_live_video.LecLiveVideoIdx' => $this->_req(('idx'))
+            ]
+        ]);
+
+        if(empty($list) == true){
+            show_alert('라이브정보가 없습니다.', 'close');
+        }
+
+        if(count($list) != 1){
+            show_alert('라이브정보가 없습니다.', 'close');
+        }
+
+        $url = $list[0]['LiveVideoRoute'];
+
+        // SKCDN 라이브 DRM
+        if($list[0]['LiveTypeCcd'] == '740002'){
+            $this->load->library('SKBsignurl');
+            $url = $this->skbsignurl->getSign($url);
+        }
+
+        $this->load->view('live/video/starplayer_full_video_model', [
+            'url' => $url
         ]);
     }
 

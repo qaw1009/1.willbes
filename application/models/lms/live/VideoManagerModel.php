@@ -28,7 +28,7 @@ class VideoManagerModel extends WB_Model
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
 
-        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode,
+        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode, lms_live_video.LiveTypeCcd,
                     lms_live_video.CampusCcd, lms_live_video.CIdx, lms_live_video.LiveVideoRoute,
                     lms_live_video.OrderNum, lms_live_video.IsUse, lms_live_video.RegDatm, lms_live_video.RegAdminIdx, lms_site.SiteName, lms_sys_code.CcdName as CampusName, lms_class_room.ClassRoomName';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
@@ -90,7 +90,7 @@ class VideoManagerModel extends WB_Model
      */
     public function findLiveVideoForModify($idx)
     {
-        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode,
+        $column = 'lms_live_video.LecLiveVideoIdx, lms_live_video.SiteCode, lms_live_video.LiveTypeCcd,
                     lms_live_video.CampusCcd, lms_live_video.CIdx, lms_live_video.LiveVideoRoute,
                     lms_live_video.OrderNum, lms_live_video.IsUse, lms_live_video.RegDatm, lms_live_video.RegAdminIdx, lms_live_video.UpdDatm, lms_live_video.UpdAdminIdx';
         $column .= ' , (select wAdminName from ' . $this->_table['admin'] . ' where wAdminIdx = lms_live_video.RegAdminIdx and wIsStatus = "Y") as RegAdminName';
@@ -136,6 +136,7 @@ class VideoManagerModel extends WB_Model
                 'CIdx' => element('class_room_idx', $input),
                 'LiveVideoRoute' => element('live_video_route', $input),
                 'OrderNum' => $order_num,
+                'LiveTypeCcd' => element('LiveTypeCcd', $input),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $admin_idx,
                 'RegIp' => $this->input->ip_address()
@@ -194,6 +195,7 @@ class VideoManagerModel extends WB_Model
                 'CampusCcd' => element('campus_ccd', $input),
                 'CIdx' => element('class_room_idx', $input),
                 'LiveVideoRoute' => element('live_video_route', $input),
+                'LiveTypeCcd' => element('LiveTypeCcd', $input),
                 'OrderNum' => $order_num,
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $admin_idx

@@ -45,6 +45,7 @@
                 경찰여러분께서는 재직증명서 및 현직 경찰임을 증명할 수 있는 신분증 뒷면 을 등록하여
                 현직 경찰임을 인증해 주시기 바랍니다.<br>
                 인증을 받으셔야 각종 할인 및 이벤트 혜택이 적용되오니 사이트 이용에 참고하시기 바랍니다.
+                <p style="font-weight:bold;"> * 승진 PASS 구매하시기 전 꼭! 필수인증하시기 바랍니다.</p>
             </div>
 
                 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>

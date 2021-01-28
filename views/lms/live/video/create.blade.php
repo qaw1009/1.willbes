@@ -69,6 +69,15 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="live_video_route">영상타입
+                </label>
+                <div class="col-md-7">
+                    @foreach($arr_live_type as $key => $value)
+                        <label for="live_type_{{$key}}" class="input-label"><input type="radio" id="live_type_{{$key}}" name="LiveTypeCcd" class="flat" value="{{$key}}" required="required" title="영상타입" @if($method == 'POST' || $data['LiveTypeCcd'] == $key)checked="checked"@endif/> {{$value}}</label>
+                    @endforeach
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="is_use">사용 여부 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 item">

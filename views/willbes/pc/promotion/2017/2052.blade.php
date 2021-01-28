@@ -7,14 +7,14 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1278px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:middle}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1278px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
    
@@ -24,6 +24,7 @@
 
         .event01_1 {background:#fff; width:1120px; margin:0 auto; padding:100px 0; font-size:14px}
         .event01_1 .title { font-size:40px; color:#67c0c1; margin-bottom:30px}
+        .event01_1 span {vertical-align:top}
 
         .event02 {background:#65bebf; position:relative; padding-bottom:100px}
         .evt_table{position:absolute; top:1170px; width:800px; left:50%; margin-left:-400px}
@@ -52,31 +53,37 @@
         .event02 .imgSlider p.rightBtn {margin-left:550px}
 
         .event02 .imgSlider .imgWrap {background:#fff; border-radius:20px; width:180px; padding:0 15px 15px}
-        .event02 .imgSlider .imgWrap .listTitle {color:#333; padding:15px 0; font-size:18px}
-        .event02 .imgSlider .imgWrap .listTitle span {color:#3b9091}
+        .event02 .imgSlider .imgWrap .listTitle {color:#333; padding:15px 0; font-size:16px}
+        .event02 .imgSlider .imgWrap .listTitle span {color:#3b9091; vertical-align:top}
+        .event02 .imgSlider .imgWrap .listTitle a {display:inline-block; background:#333; color:#fff; font-size:14px; width:20px; line-height:20px;  border-radius:4px; float:right}
         .event02 .imgSlider .imgWrap .imgBox {width:150px; height:165px; margin:0 auto; overflow:hidden}
 
         .event02 .imgSlider > div {width:980px; margin:0 auto; height:auto; overflow:hidden;}
         .event02 .imgSlider .list ul {margin-right:-20px}
-        .event02 .imgSlider .list li {display:inline-block; float:left; width:180px; margin-right:20px; margin-bottom:20px}
+        .event02 .imgSlider .list li {display:inline-block; float:left; width:180px; margin-right:20px; margin-bottom:20px;}
 
         .event02 .Paging a {color:#fff}
         .event02 .Paging a.on {color:#f6f859; text-decoration:none}
 
         .event03 {background:#4ea5a6;}
+
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+        .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
     </style>
 
     <div class="p_re evtContent NSK">
-        <div class="evtCtnsBox ev01">
-        <div class="eventWrap eventTop">
+        <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
-        <div class="eventWrap event01">
+        <div class="evtCtnsBox event01">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>
         </div>
 
-        <div class="eventWrap event01_1">
+        <div class="evtCtnsBox event01_1">
             <div class="title NSK-Black">합겨수기 등록하기</div>
             {{--글쓰기--}}
             <div class="willbes-Leclist c_both">
@@ -90,12 +97,6 @@
                             <tr>
                                 <td class="w-tit bg-light-white strong">과정선택<span class="tx-light-blue">(*)</span></td>
                                 <td class="w-selected tx-left pl30">
-                                    <select id="process" name="process" title="process" class="seleProcess" style="width: 250px;">
-                                        <option selected="selected">카테고리</option>
-                                        <option value="교육학">교육학</option>
-                                        <option value="초등">초등</option>
-                                        <option value="중등">중등</option>
-                                    </select>
                                     <select id="div" name="div" title="div" class="seleDiv" style="width:250px;">
                                         <option selected="selected">과목</option>
                                         <option value="영어">영어</option>
@@ -183,11 +184,6 @@
             <div class="willbes-Leclist c_both mt150">
                 <div class="willbes-Lec-Selected tx-gray c_both mt-zero mb-zero">
                     <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
-                        <select id="acad" name="acad" title="카테고리" class="seleAcad">
-                            <option selected="selected">카테고리</option>
-                            <option value="카테고리1">카테고리1</option>
-                            <option value="카테고리2">카테고리2</option>
-                        </select>
                         <select id="" name="" title="">
                             <option selected="selected">과목</option>
                             <option value="과목1">과목1</option>
@@ -234,7 +230,7 @@
                                 <td class="w-file">
                                     <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                 </td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">123</td>
                             </tr>
@@ -245,7 +241,7 @@
                                 <td class="w-file">
                                     <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
                                 </td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">244</td>
                             </tr>
@@ -254,7 +250,7 @@
                                 <td class="w-campus">영어</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">355</td>
                             </tr>
@@ -263,7 +259,7 @@
                                 <td class="w-campus">도덕윤리</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">466</td>
                             </tr>
@@ -272,7 +268,7 @@
                                 <td class="w-campus">유아</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">355</td>
                             </tr>
@@ -281,7 +277,7 @@
                                 <td class="w-campus">체육</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">466</td>
                             </tr>
@@ -290,7 +286,7 @@
                                 <td class="w-campus">전기전자통신</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">355</td>
                             </tr>
@@ -299,7 +295,7 @@
                                 <td class="w-campus">생물</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">466</td>
                             </tr>
@@ -308,7 +304,7 @@
                                 <td class="w-campus">국어</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">355</td>
                             </tr>
@@ -317,7 +313,7 @@
                                 <td class="w-campus">유아</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">466</td>
                             </tr>
@@ -326,7 +322,7 @@
                                 <td class="w-campus">수학</td>
                                 <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
                                 <td class="w-file">&nbsp;</td>
-                                <td>홍길*</td>
+                                <td>홍*동</td>
                                 <td class="w-date">2018-00-00</td>
                                 <td class="w-click">355</td>
                             </tr>
@@ -352,7 +348,7 @@
             </div>
         </div>
 
-        <div class="eventWrap event02">
+        <div class="evtCtnsBox event02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02.jpg" alt="이벤트 둘"/>
             <div class="evt_table">
                 <table>
@@ -400,7 +396,7 @@
                     <ul id="sliderImg">
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동<a href="#none">X</a></div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -408,7 +404,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -416,7 +412,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -424,7 +420,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -432,7 +428,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -440,7 +436,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -448,7 +444,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -466,7 +462,7 @@
                     <ul>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동<a href="#none">X</a></div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -474,7 +470,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -482,7 +478,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -490,7 +486,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -498,7 +494,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -506,7 +502,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -514,7 +510,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -522,7 +518,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -530,7 +526,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -538,7 +534,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍길*</div>
+                                <div class="listTitle"><span>영어</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -565,9 +561,23 @@
             </div>
         </div>
 
-        <div class="eventWrap event03">
+        <div class="evtCtnsBox event03">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_03.jpg" alt="합격을 진심으로 축하합니다."/>
         </div>
+
+        <div class="evtCtnsBox evtInfo">
+            <div class="evtInfoBox">
+                <h4 class="NSK-Black">유의사항</h4>
+                <ul>
+                    <li>합격 수기와 합격 인증은 중복 참여 가능합니다.</li>
+                    <li>합격 인증에 1, 2차 모두 올렸을 경우 1회만 인정됩니다.</li>
+                    <li>무성의한 글은 당첨에서 제외될 수 있습니다.</li>
+                    <li>이벤트 인원이 적을 경우, 일부 상품이 지급되지 않을 수 있습니다.</li>
+                    <li>이벤트는 3월 23일(화) 종료됩니다.</li>
+                    <li>당첨자 발표는 3월 26일(금)에 진행하며, 상품은 3월 30일(화)에 일괄 발송됩니다.</li>
+                </ul>
+            </div>
+        </div>  
     </div>
     <!-- End Container -->
 

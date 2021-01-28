@@ -127,4 +127,21 @@ class Intro extends \app\controllers\FrontController
 
         return $this->supportBoardFModel->listBoardForSiteGroup(false, $this->_site_code, null, $arr_condition, $column, $limit_cnt, 0, $order_by);
     }
+
+    public function indexTest(){
+        $_view_path = $this->_site_code;
+        $_data_method = '_getSite' . $this->_site_code . 'Data';
+        $data = [];
+
+        // get data
+        if (method_exists($this, $_data_method) === true) {
+            $data = $this->{$_data_method}();
+        } else {
+            show_404(strtolower(get_class($this)) . '/' . $_data_method);
+        }
+
+        $this->load->view('site/_viewTest/intro_'. $_view_path, [
+            'data' => $data
+        ]);
+    }
 }

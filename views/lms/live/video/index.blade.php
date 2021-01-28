@@ -68,7 +68,7 @@
                             <td>{{ $row['SiteName'] }}<span class="hide">{{ $row['SiteCode'] }}</span></td>
                             <td>{{ $row['CampusName'] }}<span class="hide">{{ $row['CampusCcd'] }}</span></td>
                             <td><a href="javascript:void(0);" class="btn-modify" data-idx="{{ $row['LecLiveVideoIdx'] }}"><u>{{ $row['ClassRoomName'] }}</u></a></td>
-                            <td><a href="javascript:void(0);" class="btn-video" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
+                            <td><a href="javascript:void(0);" class="btn-video" data-idx="{{ $row['LecLiveVideoIdx'] }}" data-dideo-route="{{ $row['LiveVideoRoute'] }}"><u>수강하기</u></a></td>
                             <td>@if($row['IsUse'] == 'Y') 사용 @elseif($row['IsUse'] == 'N') <span class="red">미사용</span> @endif
                                 <span class="hide">{{ $row['IsUse'] }}</span>
                             </td>
@@ -132,7 +132,7 @@
 
             // 동영상 플레이 모달창 오픈
             $('.btn-video').click(function() {
-                var uri_param = '?video_route=' + $(this).data('dideo-route');
+                var uri_param = '?idx=' + $(this).data('idx');
                 window.open('{{ site_url('/live/videoManager/viewFullVideoModel/') }}' + uri_param);
             });
 

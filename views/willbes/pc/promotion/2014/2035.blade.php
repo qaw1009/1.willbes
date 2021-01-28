@@ -128,7 +128,7 @@
         <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_01.jpg" alt="마케팅 1% 전문가 권혁중" >
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/dPrn9DS8Ci8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/W2nDOfP913A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>   
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_02.jpg" alt="" >         
         </div>
@@ -148,7 +148,7 @@
         <div class="evtCtnsBox evt06" id="evt06">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
-                <a href="#none" title="" style="position: absolute; left: 11.98%; top: 83.28%; width: 75.13%; height: 7.1%; z-index:2;"></a>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank" title="" style="position: absolute; left: 11.98%; top: 83.28%; width: 75.13%; height: 7.1%; z-index:2;"></a>
             </div>
         </div>
 
@@ -249,9 +249,9 @@
 
                 <p># 사전예약 혜택</p>
                 <ul>
-                    <li>사전예약 혜택은 00월 00일까지 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 2월 15일까지 결제완료자에 한해서만 적용됩니다.</li>
                     <li>사전예약 혜택은 강의료 40% 할인입니다.</li>
-                    <li>강의 시작일은 00월 00일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>  
+                    <li>강의 시작일은 2월 15일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>  
                 </ul>
 
                 <p>※ 문의안내 : 1544-5006</p>

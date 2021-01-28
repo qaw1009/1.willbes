@@ -99,7 +99,7 @@
         <div class="eventWrap event03">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2034_03.jpg" alt="인강무료체험"/>
             <div class="btnBox">
-            	<a href="{{ front_url('support/review/index') }}">합격수기 자세히 보기 ></a>
+            	<a href="{{ front_url('support/review/index') }}" target="_blank">합격수기 자세히 보기 ></a>
             </div>
         </div>
 

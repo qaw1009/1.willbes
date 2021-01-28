@@ -95,19 +95,15 @@
             <div class="widthAuto gosi-gate-bn01 nSlider pick">
                 <div class="f_left">
                     <div class="will-nTit NSK-Black">공무원, 어떻게 준비하나요? </div>
-                    <div class="sliderNum">
-                        @for($i=1; $i<2; $i++)
-                        {!! banner_html(element('인트로_서브1', $data['banner']), '_num_slider_sub1_banner'.$i) !!}
-                        @endfor
-                    </div>
+                    @for($i=1; $i<2; $i++)
+                        {!! banner_html(element('인트로_서브1', $data['banner']), 'sliderNum') !!}
+                    @endfor
                 </div>
                 <div class="f_right">
                     <div class="will-nTit NSK-Black">윌비스 신규회원가입 혜택</div>
-                    <div class="sliderNum">
-                        @for($i=1; $i<2; $i++)
-                            {!! banner_html(element('인트로_서브2', $data['banner']), '_num_slider_sub2_banner'.$i) !!}
-                        @endfor
-                    </div>
+                    @for($i=1; $i<2; $i++)
+                        {!! banner_html(element('인트로_서브2', $data['banner']), 'sliderNum') !!}
+                    @endfor
                 </div>
                 </ul>
             </div>
@@ -146,9 +142,7 @@
                                 @if(isset($data['banner']['인트로_9_7급'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_9_7급'.$i, $data['banner']), '_num_slider_9_7_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_9_7급'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -161,9 +155,7 @@
                                 @if(isset($data['banner']['인트로_세무직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_세무직'.$i, $data['banner']), '_num_slider_tax_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_세무직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -176,9 +168,7 @@
                                 @if(isset($data['banner']['인트로_법원직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_법원직'.$i, $data['banner']), '_num_slider_court_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_법원직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -191,9 +181,7 @@
                                 @if(isset($data['banner']['인트로_소방직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_소방직'.$i, $data['banner']), '_num_slider_sobang_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_소방직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -206,9 +194,7 @@
                                 @if(isset($data['banner']['인트로_기술직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_기술직'.$i, $data['banner']), '_num_slider_technique_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_기술직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -221,9 +207,7 @@
                                 @if(isset($data['banner']['인트로_군무원'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            <div class="sliderProf">
-                                                {!! banner_html(element('인트로_군무원'.$i, $data['banner']), '_num_slider_military_banner'.$i) !!}
-                                            </div>
+                                            {!! banner_html(element('인트로_군무원'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -261,7 +245,7 @@
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['banner']['인트로_실강안내'.$i]) === true)
                             <li class="nSlider">
-                                {!! banner_html(element('인트로_실강안내'.$i, $data['banner']), '_num_slider_room_banner'.$i) !!}
+                                {!! banner_html(element('인트로_실강안내'.$i, $data['banner']), 'sliderNum') !!}
                             </li>
                         @endif
                     @endfor

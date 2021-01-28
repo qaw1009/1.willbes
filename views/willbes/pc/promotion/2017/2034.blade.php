@@ -136,7 +136,8 @@
                         <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
                         <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
                     </ul>
-                    <input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅 활용 동의하기(필수)</label>
+
+                    <input name="is_chk" type="checkbox" value="Y" id="is_chk" @if(sess_data('is_login') !== true) onchange="goLoginUrl()" @endif/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅 활용 동의하기(필수)</label>
 				</div>
 
               	<h5>재학생 인증 <span>* 윌비스임용의 본 이벤트의 대상자는 임용시험준비를 시작하는 대학교(원)의 재학생입니다.</span></h5>
@@ -360,8 +361,12 @@
     <!-- End Container -->
 
     <script>
+        function goLoginUrl(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
+
         function fn_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(empty($register_count) === false)
                 alert('등록된 신청자 정보가 있습니다.');

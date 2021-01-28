@@ -42,10 +42,9 @@
     text-align: center;   
     width:100%;     
 }
-.gosi-gate-bntop .Maintab {width:100%;}
+.gosi-gate-bntop .Maintab {width:100%; background: rgba(0,0,0,.5);}
 .gosi-gate-bntop .Maintab:after {content:''; display:block; clear:both}
 .gosi-gate-bntop .Maintab li {
-    background: rgba(0,0,0,.5);
     display: inline-block; 
     float:left;
     height: 50px;

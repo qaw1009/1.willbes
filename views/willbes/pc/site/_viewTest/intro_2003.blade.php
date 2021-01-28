@@ -111,16 +111,14 @@
 
         <div class="Section tpassWrap">
             <div class="widthAuto">
-                <div><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
-                <ul>
+                <div class="f_left"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
+                <div class="f_right">
                     @for($i=1; $i<=12; $i++)
                         @if(isset($data['banner']['인트로_티패스'.$i]) === true)
-                            <li>
-                                {!! banner_html(element('인트로_티패스'.$i, $data['banner'])) !!}
-                            </li>
+                            {!! banner_html(element('인트로_티패스'.$i, $data['banner'])) !!}
                         @endif
                     @endfor
-                </ul>
+                </div>
             </div>
         </div>
 

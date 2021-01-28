@@ -204,21 +204,21 @@
 
     <div class="Section tpassWrap">
         <div class="widthAuto">
-            <div><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
-            <ul>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_01.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_02.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_03.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_04.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_05.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_06.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_07.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_08.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_09.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_10.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_11.jpg" alt="배너명"></a><li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_12.jpg" alt="배너명"></a><li>
-            </ul>
+            <div class="f_left"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
+            <div class="f_right">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_01.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_02.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_03.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_04.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_05.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_06.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_07.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_08.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_09.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_10.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_11.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_170x106_12.jpg" alt="배너명"></a></div>
+            </div>
         </div>
     </div>
 

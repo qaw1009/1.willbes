@@ -82,12 +82,12 @@
 .gosi-gate-bn01 .will-nTit {font-size:26px; color:#363636}
 
 .tpassWrap {background:#fbfbfd; padding:130px 0; margin-top:130px}
-.tpassWrap .widthAuto div {float:left}
-.tpassWrap ul {width:570px; float:right;}    
-.tpassWrap li {display:inline; float:left; width:33.33333%;}
-.tpassWrap li div { margin-left:20px; margin-bottom:20px}
+.tpassWrap .f_left {float:left}
+.tpassWrap .f_right {width:570px; float:right;}    
+.tpassWrap .f_right div {display:inline; float:left; width:33.33333%;}
+.tpassWrap .f_right div a {display:block; margin-left:20px; margin-bottom:20px}
 .tpassWrap ul:after,
-.tpassWrap > div:after {content:''; display:block; clear:both}
+.tpassWrap .widthAuto:after {content:''; display:block; clear:both}
 
 /*교수진*/
 .gosi-gate-profWrap {background:#c0bcb0; padding:130px 0}

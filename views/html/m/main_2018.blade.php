@@ -315,7 +315,7 @@
         </li>
     </ul>
 
-    <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
+    <div class="mainTit NSK-Black tx-center mt80" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
     <div class="sampleView">
         <div class="overhidden">
             <div class="swiper-container-view">
@@ -399,7 +399,7 @@
         </div>
     </div>
 
-    <div class="mainTit NSK-Black  tx-center mt30" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
+    <div class="mainTit NSK-Black tx-center mt30" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
     <!--
     <div class="examInfo mt10">
         <ul>

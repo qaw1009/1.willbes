@@ -3665,7 +3665,7 @@ body.memBody #Footer {
 .lecTable .w-tit {
 	font-size: 14px;
 	color: #323232;
-	line-height: 20px;
+	line-height: 1.5;
 }
 .lecTable .pkg-tit span {
 	border: 1px solid #1a8ccc;
@@ -3911,6 +3911,12 @@ body.memBody #Footer {
 	height: 22px;
 	line-height: 22px;
 }
+
+.btnSt01 {background: #1a8ccc; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt02 {background: #333; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt03 {border:1px solid #c00; color:#c00 !important; padding: 5px 15px; display: inline-block !important;}
+.btnStfull01 {background: #333; color:#fff !important; padding: 5px 15px; display: block; border-radius:15px; text-align:center; font-size:13px}
+
 .btnblue {
 	background: #1a8ccc;
 	color: #fff !important;
@@ -3918,6 +3924,13 @@ body.memBody #Footer {
 	padding: 5px 15px;
 	display: inline-block !important;
 	margin-top: 5px;
+}
+.btnblue02 {
+	color: #1a8ccc !important;
+	border:1px solid #1a8ccc;
+	padding: 5px 15px;
+	display: inline-block !important;
+	font-size:14px
 }
 .btnboard {
 	background: #1a8ccc;
@@ -5536,13 +5549,13 @@ body.memBody #Footer {
 .paymentWrap .payLecList li {
 	margin-bottom: 10px;
 }
-
 .paymentWrap .payLecList li .row-line {
 	background: #b5b5b5;
 	width: 1px;
 	height: 12px;
 	margin: 0 10px;
 }
+
 .readingRoom {
 	text-align: right;
 	border-bottom: 1px solid #ccc;
@@ -5604,6 +5617,11 @@ body.memBody #Footer {
 	vertical-align: middle;
 	z-index: 5;
 }
+
+.paymentWrap .payLecList02 li {
+	font-size: 12px !important;
+}
+.paymentWrap .payLecList02 li a {text-decoration: underline; color:#1a8ccc}
 
 .paymentWrap input[type="radio"] {
 	width: 20px;

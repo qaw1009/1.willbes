@@ -85,7 +85,7 @@
 .tpassWrap .widthAuto div {float:left}
 .tpassWrap ul {width:570px; float:right;}    
 .tpassWrap li {display:inline; float:left; width:33.33333%;}
-.tpassWrap li a {display:block; margin-left:20px; margin-bottom:20px}
+.tpassWrap li div { margin-left:20px; margin-bottom:20px}
 .tpassWrap ul:after,
 .tpassWrap > div:after {content:''; display:block; clear:both}
 

@@ -256,7 +256,7 @@
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_이론강좌'.$i]) === true)
                             <li class="nSlider">
-                                {!! banner_html(element('메인_이론강좌'.$i, $data['arr_main_banner']), '_num_slider_lecture_banner'.$i) !!}
+                                {!! banner_html(element('메인_이론강좌'.$i, $data['arr_main_banner']), 'sliderNum') !!}
                             </li>
                         @endif
                     @endfor
@@ -276,7 +276,7 @@
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_문제풀이'.$i]) === true)
                             <li class="nSlider">
-                                {!! banner_html(element('메인_문제풀이'.$i, $data['arr_main_banner']), '_num_slider_problem_banner'.$i) !!}
+                                {!! banner_html(element('메인_문제풀이'.$i, $data['arr_main_banner']), 'sliderNum') !!}
                             </li>
                         @endif
                     @endfor

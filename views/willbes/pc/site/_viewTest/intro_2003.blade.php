@@ -111,16 +111,14 @@
 
         <div class="Section tpassWrap">
             <div class="widthAuto">
-                <div><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
-                <ul>
+                <div class="f_left"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
+                <div class="f_right">
                     @for($i=1; $i<=12; $i++)
                         @if(isset($data['banner']['인트로_티패스'.$i]) === true)
-                            <li>
-                                {!! banner_html(element('인트로_티패스'.$i, $data['banner'])) !!}
-                            </li>
+                            {!! banner_html(element('인트로_티패스'.$i, $data['banner'])) !!}
                         @endif
                     @endfor
-                </ul>
+                </div>
             </div>
         </div>
 
@@ -220,7 +218,8 @@
 
         <div class="Section castWrap">
             <div class="widthAuto">
-                <img src="{{ img_static_url('promotion/main/gosi_gate/gosi_gate_txt04.jpg') }}" alt="수험생활 tip">
+                <div class="tx16 mb20">수험을 가장 잘 아는, 그리고 많은 합격생을 배출한 교수님들이 전합니다.</div>
+                <div class="will-nTit NSK-Black">합격을 앞당기는 <span>수험생활 팁</span></div>
                 <div class="castBox">
                     <ul class="castslider">
                         @foreach($data['banner'] as $section_name => $section_banners)

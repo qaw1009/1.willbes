@@ -67,6 +67,35 @@
 <script type="text/javascript" src="/public/js/willbes/player_live.js?token={{time()}}"></script>
 <script type="text/javascript">
     $(document).ready(function (){
+        $(window).resize(function(){
+            resizePlayer()
+        });
+
+        function resizePlayer() {
+            var height = $(window).height();
+            var width = $(window).width();
+
+            if($("#video-container").length > 0) {
+                $("#video-container").height(height - 81);
+                $("#video-container").width(width);
+            }
+
+            if($("#starplayer").length > 0) {
+                $("#starplayer").height(height - 81);
+                $("#starplayer").width(width);
+            }
+
+            if($("#controller-container").length > 0) {
+                $("#controller-container").width(width);
+                $("#controller-container").css({'top': (height - 81) + 'px'});
+            }
+
+            if($("#controller-container2").length > 0) {
+                $("#controller-container2").width(width);
+                $("#controller-container2").css({'top': (height - 81) + 'px'});
+            }
+        }
+
         config = {
             userId: "{{sess_data('admin_id')}}(A)",
             id: "starplayer",
@@ -97,23 +126,6 @@
         };
 
         fnStartPlayer(config, media);
-
-
-        $(window).resize(function(){
-            resizePlayer()
-        });
-
-        var resizePlayer = () => {
-            var height = $(window).height();
-            var width = $(window).width();
-            $("#video-container").height(height-81);
-            $("#video-container").width(width);
-
-            $("#controller-container").width(width);
-            $("#controller-container2").width(width);
-            $("#controller-container").css({'top':(height-81)+'px'});
-            $("#controller-container2").css({'top':(height-81)+'px'});
-        }
 
         resizePlayer()
     });

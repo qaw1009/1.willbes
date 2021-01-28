@@ -168,14 +168,18 @@
                                 <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x460_10.jpg" alt="배너명">
                             </a>
                         </li>
-                    </ul>
-                </div>
+                    </ul>                    
+                </div>                
             </div>
+            <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+            <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
         </div>
     </div>
-
-    <div class="gosi-bnfull02">
-        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx227.jpg" alt="배너명"></a>
+    
+    <div class="Section gosi-bnfull02">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_1120x227.jpg" alt="배너명"></a>
+        </div>
     </div>
 
     <div class="Section">
@@ -555,8 +559,7 @@
                     </li>
                 </ul> 
                 <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>                   
-                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p> 
-                             
+                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p>                              
             </div>
         </div>
     </div>
@@ -744,6 +747,31 @@
 
 
 <script type="text/javascript">
+    //상단 메인 배너
+    $(function(){ 
+        var slidesImg = $(".MaintabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:5000,
+            sliderWidth:2000,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#MainRollingDiv',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    });
+
     //교수진 배너    
      $(document).ready(function(){
         $('.gosi-tabs-prof').each(function(){

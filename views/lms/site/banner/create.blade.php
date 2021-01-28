@@ -106,6 +106,7 @@
                         <div class="radio">
                             <input type="radio" id="link_type_self" name="link_type" class="flat" value="self" required="required" title="링크방식" @if($method == 'POST' || $data['LinkType']=='self')checked="checked"@endif/> <label for="link_type_self" class="input-label">본창</label>
                             <input type="radio" id="link_type_blank" name="link_type" class="flat" value="blank" @if($data['LinkType']=='blank')checked="checked"@endif/> <label for="link_type_blank" class="input-label">새창</label>
+                            <input type="radio" id="link_type_script" name="link_type" class="flat" value="script" @if($data['LinkType']=='script')checked="checked"@endif/> <label for="link_type_script" class="input-label">스크립트(모바일전용)</label>
                             <input type="radio" id="link_type_layer" name="link_type" class="flat" value="layer" @if($data['LinkType']=='layer')checked="checked"@endif/>
                             <label for="link_type_layer" class="input-label">레이어팝업 (이벤트 바로신청팝업)</label>
                             <input type="radio" id="link_type_popup" name="link_type" class="flat" value="popup" @if($data['LinkType']=='popup')checked="checked"@endif/> <label for="link_type_popup" class="input-label">팝업창</label>
@@ -121,6 +122,7 @@
                         <input type="text" id="link_url" name="link_url" class="form-control" maxlength="255" title="링크주소" value="{{ $data['LinkUrl'] }}" required="required" placeholder="링크주소 입니다." style="width: 40%">
                         <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
                         <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                        <div class="mt-5">• 스크립트 : <span class="red bold">스크립트 코드 입력 (예1 : javascript:alert('샘플영상 준비중입니다.'); 예2: javascript:fnPlayerSample('상품코드','회차코드','화질');</span></div>
                         <div class="mt-5">• 레이어팝업 : <span class="red bold">실제 서비스 도메인만 입력 (예 : police.willbes.net)</span></div>
                         <div class="mt-5">• 연결링크가 없을 경우 : <span class="red bold">#</span> 입력</div>
                     </div>
@@ -353,11 +355,26 @@
 
         function addValidate() {
             var link_type = $(":input:radio[name=link_type]:checked").val();
+            var link_url = $("input[name='link_url']").val();
 
-            if (link_type != 'layer' && $("input[name='link_url']").val() == '') {
+            if (link_type != 'layer' && link_url == '') {
                 alert('링크주소를 입력해 주세요.');
                 return false;
             }
+
+            if(link_type == 'script'){
+                if(link_url.indexOf('javascript:') === -1){
+                    alert('링크주소를 확인해 주세요.');
+                    return false;
+                }
+            }else{
+                if(link_url.indexOf('javascript:') !== -1){
+                    alert('링크방식을 확인해 주세요.');
+                    return false;
+                }
+            }
+
+
             return true;
         }
     </script>

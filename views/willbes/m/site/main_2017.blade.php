@@ -35,7 +35,7 @@
         @endif
 
         @if(empty($data['new_product']) === false)
-            <div class="mainTit NSK-Black tx-center mt50" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
+            <div class="mainTit NSK-Black tx-center mt80" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
             <div class="sampleView">
                 <div class="overhidden">
                     <div class="swiper-container-view">
@@ -69,7 +69,7 @@
             </div>
         @endif
 
-{{--        <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>--}}
+{{--        <div class="mainTit NSK-Black  tx-center mt80" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>--}}
 {{--        <div class="sampleView">--}}
 {{--            {!! banner('M_메인_맛보기1', 'swiper-container-view', $__cfg['SiteCode'], '0') !!}--}}
 {{--        </div>--}}

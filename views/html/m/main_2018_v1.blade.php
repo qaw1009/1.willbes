@@ -316,9 +316,7 @@
         </li>
     </ul>
 
-    <div class="mainTit NSK-Black  tx-center mt80" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
-
-    
+    <div class="mainTit NSK-Black  tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>    
     <div class="sampleViewImg">
         <div class="swiper-container-view">
             <div class="swiper-wrapper">

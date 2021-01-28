@@ -352,7 +352,7 @@ class SupportReview extends BaseSupport
             , RegType, TypeCcd, IsBest, IsPublic
             , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
             , Title, Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
-            , RegDatm
+            , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
             , RegMemIdx, RegMemId, RegMemName
             , ReplyContent, ReplyRegDatm, ReplyStatusCcd
             , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name

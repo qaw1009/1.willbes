@@ -110,7 +110,7 @@
 
 
     <div id="background" class="player mt20" data-property="{
-        videoURL:'https://youtu.be/uR6eivD1zV4',
+        videoURL:'https://youtu.be/odGgBq2eqCg',
         mute: true,
         showControls: false,
         useOnMobile: true,

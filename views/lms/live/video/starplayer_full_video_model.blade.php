@@ -74,17 +74,27 @@
         function resizePlayer() {
             var height = $(window).height();
             var width = $(window).width();
-            $("#video-container").height(height-81);
-            $("#video-container").width(width);
 
-            $("#controller-container").width(width);
-            $("#controller-container2").width(width);
-            $("#controller-container").css({'top':(height-81)+'px'});
-            $("#controller-container2").css({'top':(height-81)+'px'});
+            if($("#video-container").length > 0) {
+                $("#video-container").height(height - 81);
+                $("#video-container").width(width);
+            }
+
+            if($("#starplayer").length > 0) {
+                $("#starplayer").height(height - 81);
+                $("#starplayer").width(width);
+            }
+
+            if($("#controller-container").length > 0) {
+                $("#controller-container").width(width);
+                $("#controller-container").css({'top': (height - 81) + 'px'});
+            }
+
+            if($("#controller-container2").length > 0) {
+                $("#controller-container2").width(width);
+                $("#controller-container2").css({'top': (height - 81) + 'px'});
+            }
         }
-
-        resizePlayer()
-
 
         config = {
             userId: "{{sess_data('admin_id')}}(A)",
@@ -116,6 +126,8 @@
         };
 
         fnStartPlayer(config, media);
+
+        resizePlayer()
     });
 
     function fnCheckPID(){}

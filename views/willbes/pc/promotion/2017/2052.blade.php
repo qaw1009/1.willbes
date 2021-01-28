@@ -53,7 +53,7 @@
         .event02 .imgSlider p.rightBtn {margin-left:550px}
 
         .event02 .imgSlider .imgWrap {background:#fff; border-radius:20px; width:180px; padding:0 15px 15px}
-        .event02 .imgSlider .imgWrap .listTitle {color:#333; padding:15px 0; font-size:18px}
+        .event02 .imgSlider .imgWrap .listTitle {color:#333; padding:15px 0; font-size:16px}
         .event02 .imgSlider .imgWrap .listTitle span {color:#3b9091; vertical-align:top}
         .event02 .imgSlider .imgWrap .listTitle a {display:inline-block; background:#333; color:#fff; font-size:14px; width:20px; line-height:20px;  border-radius:4px; float:right}
         .event02 .imgSlider .imgWrap .imgBox {width:150px; height:165px; margin:0 auto; overflow:hidden}
@@ -404,7 +404,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
+                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>
@@ -470,7 +470,7 @@
                         </li>
                         <li>
                             <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
+                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
                                 <div class="imgBox">
                                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
                                 </div>

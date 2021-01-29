@@ -30,7 +30,7 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-        
+
     </style>
 
 </head>
@@ -283,6 +283,41 @@
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
     </div>
     <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
+    <ul class="bestLecBox">
+        <li class="bestLec">                    
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul> 
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                                
+            </a>  
+            
+            <div class="best NSK-Black">1</div>                         
+        </li>
+        <li class="bestLec">                       
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul> 
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>                                   
+            </a>
+            
+            <div class="best NSK-Black">2</div>
+        </li>
+        <li class="bestLec">                    
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul>  
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>                                     
+            </a>            
+            <div class="best NSK-Black">3</div>
+        </li>
+    </ul>
+    {{--
     <ul class="bestLecBoxV2">
         <li class="bestLec">                    
             <a href="#none">
@@ -315,6 +350,7 @@
             <div class="best NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/2018/rank03.png" ></div>
         </li>
     </ul>
+    --}}
 
     <div class="mainTit NSK-Black  tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>    
     <div class="sampleViewImg">

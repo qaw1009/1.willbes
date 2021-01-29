@@ -7,14 +7,14 @@
         .evtContent {
             position:relative;
             width:100% !important;
-            min-width:1278px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1278px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
 

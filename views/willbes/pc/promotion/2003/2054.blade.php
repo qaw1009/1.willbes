@@ -25,6 +25,7 @@
 
     </style> 
 
+    <div class="evtContent NSK">
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2054_top.jpg" alt="7급 피셋 오픈 클래스" />
         </div>

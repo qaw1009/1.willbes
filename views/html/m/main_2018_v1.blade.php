@@ -30,7 +30,137 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-        
+.ssam .bestLecBox {
+	margin-top: 10px;
+	border-top: 1px solid #ccc;
+}
+.ssam .bestLecBox .bestLec {
+	position: relative;
+	display: block;
+	float: left;
+	width: 33.33333%;
+    height: 20vw;
+    max-height:160px;
+	/**/
+}
+.ssam .bestLecBox .bestLec a {
+    position:absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index:2;
+}
+.ssam .bestLecBox .bestLec:first-child a {
+	border-left: 1px solid #ccc;
+}
+.ssam .bestLecBox .bestLec .profImg img {
+	position: absolute;
+	top: 0;
+	right: -30px;
+	width: 65%;
+	z-index: 1;
+	-webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-moz-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-ms-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-o-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	transform: scale(1);
+	transition: all ease-in-out 0.2s;
+}
+.ssam .bestLecBox .best {
+    position:absolute;
+    bottom:-15px;
+    right:2%;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+	background: #0c5dc0;
+	text-align: center;
+	font-size: 14px;
+    color: #fff;
+    z-index:3;
+}
+.ssam .bestLecBox .lecinfo {
+    position:absolute;
+    top:10%;
+    left:5%;
+    width: 90%;
+    line-height: 1.3;
+    z-index:4
+}
+.ssam .bestLecBox .lecinfo li {
+    margin-bottom: 5%;
+    font-size: 20px;
+}
+.ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+	font-weight: bold;
+}
+.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+    display: block;
+    font-size: 16px;
+}
+.ssam .bestLecBox .lecinfo li strong {
+	color: #262a6a;
+	background: #a9d1d1;
+	font-weight: bold;
+	font-size: 18px;
+	padding:1px;
+}
+.ssam .bestLecBox .lecinfo li:last-child {
+	display: block;
+	word-break: keep-all;
+}
+.ssam .bestLecBox .lecinfo li:last-child span {
+	background: rgba(255, 255, 255, 0.5);
+}
+.ssam .bestLecBox:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+@@media only screen and (max-width: 374px) {
+.ssam .bestLecBox .bestLec .profImg img {
+		right: -20px;
+	}
+	.ssam .bestLecBox .best {
+		bottom:-10px;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		border-radius: 10px;
+		font-size: 14px;
+	}
+	.ssam .bestLecBox .lecinfo li {
+		margin-bottom: 3%;
+		font-size: 14px;
+	}
+	.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+		font-size: 12px;
+	}
+	.ssam .bestLecBox .lecinfo li strong {
+		font-size: 12px;
+    }
+}
+@@media only screen and (min-width: 375px) and (max-width: 640px) {
+    .ssam .bestLecBox .bestLec .profImg img {
+		right: -15px;
+	}
+	.ssam .bestLecBox .lecinfo li {
+		margin-bottom: 3%;
+		font-size: 15px;
+	}
+	.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+		font-size: 13px;
+	}
+	.ssam .bestLecBox .lecinfo li strong {
+		font-size: 13px;
+	}
+}
     </style>
 
 </head>
@@ -283,6 +413,41 @@
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
     </div>
     <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
+    <ul class="bestLecBox">
+        <li class="bestLec">                    
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul> 
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                                
+            </a>  
+            
+            <div class="best NSK-Black">1</div>                         
+        </li>
+        <li class="bestLec">                       
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul> 
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>                                   
+            </a>
+            
+            <div class="best NSK-Black">2</div>
+        </li>
+        <li class="bestLec">                    
+            <a href="#none">
+                <ul class="lecinfo">
+                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li><strong>이론반</strong></li>
+                </ul>  
+                <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>                                     
+            </a>            
+            <div class="best NSK-Black">3</div>
+        </li>
+    </ul>
+    {{--
     <ul class="bestLecBoxV2">
         <li class="bestLec">                    
             <a href="#none">
@@ -315,6 +480,7 @@
             <div class="best NSK-Black"><img src="https://static.willbes.net/public/images/promotion/m/2018/rank03.png" ></div>
         </li>
     </ul>
+    --}}
 
     <div class="mainTit NSK-Black  tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>    
     <div class="sampleViewImg">

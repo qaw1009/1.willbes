@@ -129,13 +129,13 @@
                 <div id="tab1" class="tabContents">       
                     <img src="https://static.willbes.net/public/images/promotion/2021/01/1975_04_cts01.jpg" usemap="#Map1975a"  title="일반경찰" border="0" />
                     <map name="Map1975a" id="Map1975a">
-                        <area shape="rect" coords="223,840,892,957" href="javascript:alert('Coming Soon!')"  alt="일반경찰"/>
+                        <area shape="rect" coords="223,840,892,957" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank" alt="일반경찰"/>
                     </map> 
                 </div>
                 <div id="tab2" class="tabContents">       
                     <img src="https://static.willbes.net/public/images/promotion/2021/01/1975_04_cts02.jpg" usemap="#Map1975b"  title="경행경채" border="0" />
                     <map name="Map1975b" id="Map1975b">
-                        <area shape="rect" coords="226,846,893,951" href="javascript:alert('Coming Soon!')"  alt="경행경채"/>
+                        <area shape="rect" coords="226,846,893,951" href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3011&campus_ccd=605001&course_idx=1085" target="_blank" alt="경행경채"/>
                     </map>
                 </div> 
             </div>         
@@ -188,10 +188,9 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        
-          /*디데이카운트다운*/
-          $(document).ready(function() {
+    <script type="text/javascript">        
+        /*디데이카운트다운*/
+        $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
 
@@ -208,7 +207,6 @@
             return false;
             });
         });
-
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

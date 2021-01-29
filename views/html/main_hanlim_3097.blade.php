@@ -1,9 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/style_hanlim.css??ver={{time()}}" rel="stylesheet">
 <!-- Container -->
-
-<div id="Container" class="Container hanlim3097 NSK c_both">
+<div id="Container" class="Container hanlim hl3097 NSK c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
@@ -17,8 +17,19 @@
                         <ul>
                             <li class="Tit">교수진소개 메인</li>
                             <li><a href="#none">신규강좌게시판</li>
-                            <li><a href="#none">김유향</li>
-                            <li><a href="#none">선동주</a></li>
+                            <li><a href="#none">경제학</a></li>
+                            <li><a href="#none">행정법</a></li>
+                            <li><a href="#none">행정학</a></li>
+                            <li><a href="#none">정치학</a></li>
+                            <li><a href="#none">국제법</a></li>
+                            <li><a href="#none">재정학</a></li>
+                            <li><a href="#none">정책학</a></li>
+                            <li><a href="#none">정보체계론</a></li>
+                            <li><a href="#none">국제경제학</a></li>
+                            <li><a href="#none">교육학</a></li>
+                            <li><a href="#none">PSAT</a></li>
+                            <li><a href="#none">영어</a></li>
+                            <li><a href="#none">한국사능력검정시험</a></li>
                             <li class="Tit">교수님 홈</li>
                             <li><a href="#none">개설강좌</a></li>
                             <li><a href="#none">무료강좌</a></li>
@@ -82,7 +93,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="hanlim3097">
+                <li class="gosi">
                     <a href="#none" target="_self">
                         학원 방문 결제 
                         <span class="arrow-Btn">></span>
@@ -92,30 +103,171 @@
         </h3>
     </div>
 
+    <div class="Section mt20">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_img01.jpg" alt="">
+        </div>
+    </div> 
+
     <div class="Section p_re">        
         <div class="MainVisual NSK">            
             <div class="VisualBox">
                 <div class="bSlider">
                     <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_725x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_740x400.jpg" alt="배너명"></a></div>
                     </div>
                 </div>
             </div>
             <div class="VisualsubBox">
                 <div class="bSlider VisualsubBoxTop">                    
                     <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x128.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x154.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
                 <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_364x248.jpg" alt="배너명"></a></div>
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x223.jpg" alt="배너명"></a></div>
                     </div>
                 </div>   
             </div>
+        </div>
+    </div>
+
+    <div class="Section mt50">
+        <div class="goMenuBtns">
+        <ul id="goMenuBtns">
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon01.png" alt=""><span>학원공지사항</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon02.png" alt=""><span>학원수강신청</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon03.png" alt=""><span>학원보강</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon04.png" alt=""><span>강의실배정표</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon05.png" alt=""><span>신규동영상안내</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon06.png" alt=""><span>무료특강</span></a></li>
+            <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_icon07.png" alt=""><span>강의자료실</span></a></li>
+        </ul>
+        </div>
+    </div>
+
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_1120x204.jpg" alt="배너명"></a>
+        </div>
+    </div> 
+
+    {{--최근 업로드 강좌--}}
+    <div class="Section mt50">
+        <div class="widthAuto">
+            <div class="will-nTit bd-none">
+                최근 <span class="tx-color">업로드 강좌</span>
+            </div>
+            <div class="uploadLec">
+                <div class="sliderNumV vSlider">
+                    <div><a href="#">형사소송법 신광은 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+                    <div><a href="#">경찰학개론 장정훈 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+                    <div><a href="#">한국사 원유철 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+                    <div><a href="#">한국사 오태진 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+                    <div><a href="#">영어 하승민 <span>|</span> <strong>2021년 1차대비 신광은 형사소송법 심화이론 + OX (20년 10월)</strong> </a></div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="Section hotIssue mt50">
+        <div class="widthAuto">
+            <div class="copyTit NSK-Black">
+                한림법학원 <span class="tx-color">Hot Issue!</span> <span class="NSK ml20 tx16">학원강의일정 및 이벤트 등 중요내용을 확인하세요.</span>
+            </div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_01.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_02.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_03.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_03.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_01.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_02.jpg" alt="배너명"></a></li> 
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_360x210_02.jpg" alt="배너명"></a></li>               
+            </ul>
+        </div>
+    </div>  
+
+    <div class="Section SectionBg01">
+        <div class="widthAuto">
+            <div class="copyTit NSK-Black">
+                전문 <span class="tx-colorr">교수진</span> <span class="NSK ml20 tx16">최고의 교수진으로 수험생의 합격을 돕겠습니다.</span>
+            </div>
+            <ul class="SecBanner01">
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp01" title="배너명" border="0">
+                    <map name="MapProp01">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp02" title="배너명" border="0">
+                    <map name="MapProp02">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp03" title="배너명" border="0">
+                    <map name="MapProp03">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp04" title="배너명" border="0">
+                    <map name="MapProp04">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp05" title="배너명" border="0">
+                    <map name="MapProp05">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp06" title="배너명" border="0">
+                    <map name="MapProp06">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp07" title="배너명" border="0">
+                    <map name="MapProp07">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+                <li>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_265x211.jpg" usemap="#MapProp08" title="배너명" border="0">
+                    <map name="MapProp08">
+                        <area shape="rect" coords="16,146,76,166" href="#none" alt="맛보기">
+                        <area shape="rect" coords="16,166,76,187" href="#none" alt="베스트강좌">
+                    </map>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -154,195 +306,70 @@
             </div>
 
             <div class="noticeTabs mr-zero">
-                <div class="will-listTit">수험정보</div>
+                <div class="will-listTit">강의계획서</div>
                 <div class="tabBox noticeBox">
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table">
                             <li><a href="#none">2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
                             <li><a href="#none">2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                            <li><a href="#none">2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
                             <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="Section mt30">
-        <div class="widthAuto"> 
-            <ul id="goMenu" class="goMenu" >
-                <li><a href="#none">학원수강신청<span>|</span></a></li>
-                <li><a href="#none">학원보강<span>|</span></a></li>
-                <li><a href="#none">강의실배정표<span>|</span></a></li>
-                <li><a href="#none">신규동영상안내<span>|</span></a></li>
-                <li><a href="#none">무료특강<span>|</span></a></li>
-                <li><a href="#none">강의자료실</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section lecBanner mt50">
-        <div class="widthAuto">
-            <div class="copyTit NSK-Thin mb50">
-                꿈을 향한 소중한 첫 걸음부터, <strong class="NSK-Black"><span class="tx-color">합격의 순간</span></strong>까지!<br />
-                29년을 이어온 대표전문학원, <strong class="NSK-Black"><span class="tx-color">윌비스 한림법학원</span></strong>이 함께 합니다!!
-            </div>
-            <ul>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115095837.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200115102038.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200123131907.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128152955.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200128153052.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/popup_20200131165936.jpg" alt="배너명"></a></li>                
-            </ul>
-        </div>
-    </div>
-    
+    </div>     
 
     {{--이달의 강의 / 강의맛보기 --}}
-    <div class="Section Section1">
-        <div>
-            <div class="copyTit">
-                <strong class="NSK-Black">WILLBES 한림법학원</strong> <strong class="NSK-Black"><span class="tx-color">이달의 강의</span></strong>
+    <div class="Section lectureBestWrap mt50">
+        <div class="widthAuto">
+            <div class="copyTit NSK-Black">
+                윌비스 한림법학원 <span class="tx-color">대표 강의 맛보기</span>
             </div>
-            <div class="thisMonth NSK">
-                <div class="thisMonthBox">
-                    <ul class="tmslider">
+            <div class="f_left">
+                <div>윌비스<br>
+                대표 강의 맛보기</div>
+                <a href="#none">강의 더보기 ></a>
+            </div>
+            <div class="lectureBest NSK">
+                <div class="lectureBestBox">
+                    <ul class="lbSlider">
                         <li>
                             <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">황종휴</div>
-                                <div>2020 거시경제학 예비순환</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_01.jpg" alt="배너명">
+                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
-                                <div class="tx-color">행정법 예비순환</div>
-                                <div class="NSK-Black">김정일</div>
-                                <div>2020 행정법 예비순환<br> (미시+거시)</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_02.jpg" alt="배너명">
+                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
-                                <div class="tx-color">행정법 예비순환</div>
-                                <div class="NSK-Black">박도원</div>
-                                <div>행정법 GS3순환(미시+거시)<br>+매일모의고사추가</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_03.jpg" alt="배너명">
+                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
                             </a>
                         </li>
                         <li>
                             <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">김기홍</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
+                                <img src="https://static.willbes.net/public/images/promotion/main/2005/2005_282x228_02.jpg" alt="배너명">
+                                <div>행정법 김정일 11월 22일 : 오리엔테이션</div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">이동호</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">최승호</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50852/prof_index_50852_1586137263.png">
-                                <div class="tx-color">경제학 예비순환</div>
-                                <div class="NSK-Black">안진우</div>
-                                <div>경제학 10개년 기출문제<br>연도별 해설특강(2019년기출..</div>
-                            </a>
-                        </li>
-                    </ul>  
-                    <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                 
+                    </ul> 
                 </div>
-            </div>
-
-            <div class="copyTit mt100">
-                <strong class="NSK-Black">윌비스</strong> <strong class="NSK-Black"><span class="tx-color">대표 강의 맛보기</span></strong>
-            </div>
-            <div class="preview NSK">
-                <div class="previewBox">
-                    <ul class="pvslider">
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/prof_index_50769.png">
-                                <div>
-                                    오리엔테이션, 무역모형기초 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/prof_index_50837.png">
-                                <div>
-                                    03월 27일 : 제 10회 모의고사 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/prof_index_50838.png">
-                                <div>
-                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50839/prof_index_50839_1578624621.png">
-                                <div>
-                                    오리엔테이션, 무역모형기초 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50841/prof_index_50841.png">
-                                <div>
-                                    09월 04일 : 2019 학제통합논술Ⅰ~ 학논Ⅱ2-1문 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#none">
-                                <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50848/prof_index_50848.png">
-                                <div>
-                                    03월 27일 : 제 10회 모의고사 1회 1강
-                                    <strong>국제경제학 황종휴</strong>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>  
-                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p>                
-                </div>
+                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowL.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/main/btn_arrowR.png"></a></p> 
             </div>
         </div>
-    </div>
-
-
-    <div class="Section Section4_hl mt50">
+    </div>       
+    
+    <div class="Section loadMap mt50">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
             <div class="noticeTabs campus c_both">
@@ -425,11 +452,11 @@
                         <ul>
                             <li>
                                 <div class="nTit">온라인 수강문의</div>
-                                <div class="nNumber tx-color">1544-5006 <span>▶</span> 3</div>
+                                <div class="nNumber tx-color">1566-4770 <span>▶</span> 2</div>
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
@@ -438,15 +465,16 @@
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
                                 <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-1881~3</div>
+                                <div class="nNumber tx-color">1544-1881 <span>▶</span> 1</div>
                                 <div class="nTxt">
                                     [전화/방문상담 운영시간]<br/>
-                                    평일/주말: 09시~ 18시<br/>
+                                    월 ~ 토요일 : 8시 ~ 19시<br/>
+                                    일요일 : 8시 ~ 18시
                                 </div>
                             </li>
                         </ul>
@@ -487,32 +515,63 @@
     </div>
     <!-- CS센터 //-->
 
-    <div id="QuickMenu" class="MainQuickMenu">
-        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005_sky01.jpg"></a></div>    
-        <ul>
-            <li><a href="#none">강의 계획서</a></li>
-            <li><a href="#none">강의 시간표</a></li>
-            <li><a href="#none">강의실 배정표</a></li>
-            <li><a href="#none">학원 할인정책</a></li>
-        </ul>
-    </div>
-
+    <div id="QuickMenuB" class="MainQuickMenu">
+        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_01.jpg" alt="동영상 1:1 상담"></a></div> 
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_02.jpg" alt="학원 1:1상담"></a></div>  
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_03.jpg" alt="강의시간표"></a></div>
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_04.jpg" alt="강의계획서"></a></div>
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_05.jpg" alt="학원공지사항"></a></div>
+        <div class="mt5"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2005/2005_quick_06.jpg" alt="저작물불법이용"></a></div>
+    </div> 
 </div>
 
 <!-- End Container -->
 <script type="text/javascript">
+    //최근 업로드 강좌 
     $(function() {
-        var slidesImg = $(".tmslider").bxSlider({
+        $('.sliderNumV').bxSlider({
+            mode: 'vertical', 
+            auto: true,
+            controls: true,
+            infiniteLoop: true,
+            pagerType: 'short',
+            minSlides: 1,
+            pause: 4000,
+            pager: true,
+            onSliderLoad: function(){
+                $(".vSlider").css("visibility", "visible").animate({opacity:1}); 
+            } 
+        });
+    });    
+
+    //바로가기 스크롤 배너
+    $('*[id*=goMenuBtns]:visible').ready(function () {
+        var stickyOffset = $('.goMenuBtns').offset();
+
+        if (typeof stickyOffset !== 'undefined') {
+            $(window).scroll(function () {
+                if ($(document).scrollTop() > stickyOffset.top) {
+                    $('.goMenuBtns').addClass('fixed');
+                } else {
+                    $('.goMenuBtns').removeClass('fixed');
+                }
+            });
+        }
+    });  
+    
+    //대표강의맛보기
+    $(function() {
+        var slidesImg = $(".lbSlider").bxSlider({
             mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
             auto:true,
             speed:350,
             pause:4000,
             pager:true,
             controls:false,
-            minSlides:4,
-            maxSlides:4,
-            slideWidth: 274,
-            slideMargin:8,
+            minSlides:3,
+            maxSlides:3,
+            slideWidth: 282,
+            slideMargin:38,
             autoHover: true,
             moveSlides:1,
             pager:true,
@@ -523,31 +582,6 @@
 
         $("#imgBannerRight").click(function (){
             slidesImg.goToNextSlide();
-        });
-    });
-
-    $(function() {
-        var slidesImg1 = $(".pvslider").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:350,
-            pause:4000,
-            pager:true,
-            controls:false,
-            minSlides:3,
-            maxSlides:3,
-            slideWidth: 460,
-            slideMargin:10,
-            autoHover: true,
-            moveSlides:1,
-            pager:true,
-        });
-        $("#imgBannerLeft1").click(function (){
-            slidesImg1.goToPrevSlide();
-        });
-
-        $("#imgBannerRight1").click(function (){
-            slidesImg1.goToNextSlide();
         });
     });
 </script>

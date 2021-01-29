@@ -3,29 +3,36 @@
 .hanlim .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .hanlim .topBanner p img {width:100%}
 
-.Menu .menu-List li.hanlim > a {
-    color: #ba560e;
+.hanlim .menu-List .Tit {color: #b85712;}
+.hanlim .Menu .menu-List li.gosi > a {
+    color: #b85712;
     display:inline-block;
     vertical-align: middle;
 }
-.Menu .menu-List li.hanlim > a .arrow-Btn {
-    background: url("../../img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+.hanlim .Menu .menu-List li.gosi > a .arrow-Btn {
+    background: url("/public/img/willbes/gosi/icon_arrow.gif") no-repeat left center;
     float: right;
     width: 4px;
     height: 8px;
     margin: 15px 5px 0;
 }
+.hanlim .Depth .depth:last-child strong {
+    color: #b85712;
+}
+.hanlim .tx-color {
+    color: #b85712;
+}
+.hanlim .copyTit {color: #363636; font-size:36px; text-align:left; margin-bottom:30px}
+.hanlim .copyTit span {vertical-align: bottom;}
+.hanlim .copyTit span:nth-child(2) {color: #363636;}
 
 /*********************************************     Main Container     *********************************************/
-.hanlim .Depth .depth:last-child strong {
-    color: #ba560e;
-}
 
 /* Main Container : MainVisual */
 .hanlim .MainVisual {
     position: relative;
     width: 1120px;
-    margin:40px auto 0;
+    margin:0 auto;
     height: 400px;
 }
 .hanlim .MainVisual:after {
@@ -35,7 +42,7 @@
 }
 
 .hanlim .VisualBox {
-    width:725px;  
+    width:740px;  
     height: 400px;
     overflow: hidden;
     float:left;
@@ -48,7 +55,7 @@
     left:20px;
     bottom: 20px;
     width: 50px;
-    z-index: 100;
+    z-index: 90;
 }
 .hanlim .VisualBox .bx-wrapper .bx-pager {
     width: auto;
@@ -62,7 +69,7 @@
   }
 
 .hanlim .VisualsubBox {
-    width: 384px;
+    width: 380px;
     padding:10px;
     float:right;
     background: #ccc;
@@ -70,8 +77,8 @@
 
 .hanlim .VisualsubBox .bSlider:nth-child(2) {
     margin-top:3px;
-    width: 364px;
-    height: 248px !important;
+    width: 360px;
+    height: 223px !important;
     overflow: hidden;
   }
 
@@ -80,7 +87,7 @@
     bottom: 20px;
     margin: 0;
     width: 50px;
-    z-index: 110;
+    z-index: 90;
   }
 .hanlim .VisualsubBox .bx-wrapper .bx-pager {
     float: right;
@@ -88,7 +95,7 @@
     left:60px;
     bottom: 20px;
     text-align: right;
-    z-index: 110;
+    z-index: 90;
 }
 .hanlim .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
@@ -97,96 +104,134 @@
     margin: 0 2px;
 }
 
-.hanlim .VisualsubBox .VisualsubBoxTop {width: 364px; height:128px; overflow: hidden;}
+.hanlim .VisualsubBox .VisualsubBoxTop {width: 360px; height:154px; overflow: hidden;}
 
-.hanlim .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager {
+.hanlim .VisualsubBox .bSlider .bx-wrapper .bx-pager {
     float: left;
     width: auto;
     left: 20px;
     bottom: 10px;
     text-align: left;
 }
-.hanlim .VisualsubBox .VisualsubBoxTop  .bx-wrapper .bx-pager.bx-default-pager a {
+.hanlim .bx-wrapper .bx-pager.bx-default-pager a {
     background: #cecece;
 }
-.hanlim .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .VisualsubBox .VisualsubBoxTop .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
+.hanlim .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hanlim .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hanlim .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #b85712 !important;
 }
 
-/**/
-.hanlim .Section.barBnr {
-    background:url("../../img/willbes/gosi/banner/bnr_1120_bg.jpg") repeat-x left bottom;
-    margin-top:20px;
+/*바로가기 메뉴*/
+.hanlim .goMenuBtns {background:#fff; padding:10px 0}
+.hanlim .goMenuBtns ul {width:1120px; margin:0 auto}
+.hanlim .goMenuBtns li {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+.hanlim .goMenuBtns li a {
+	display: block;
+	text-align: center;
+ }
+.hanlim .goMenuBtns li a img {display:block; margin:0 auto}
+.hanlim .goMenuBtns li span {display:inline-block; color:#363636; background:#c9e6fc; border-radius:10px; margin-top:10px; font-size:15px; padding:5px 15px}
+.hanlim .goMenuBtns li a:hover span {color: #fff; background:#0076e1}
+.hanlim .goMenuBtns:after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
-/* Main Container : Prof */
-.hanlim .PBcts li {
-    display: inline;
-    float: left;    
-    width: 274px;
-    height: 234px;
-    overflow: hidden;
-    margin-left: 8px;
-}
-.hanlim .PBcts li:first-child {
-    margin-left: 0;
-}
-
-.hanlim .PBcts:after {
-    content: "";
-    display: block;
-    clear: both;
-}
-.hanlim .PBcts .bSlider .bx-wrapper .bx-pager {
-    float: left;
-    width: auto;
-    left: 0;
-    bottom: 10px;
-    text-align: center;
-}
-.hanlim .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-}
-.hanlim .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .PBcts .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e !important;
-}
-
-/**/
-.hanlim .Section .willbesLec {
-    width:614px;
-    float:left;
-}
-.hanlim .smallTit {
-    border-top:1px solid #000;
-    font-size: 22px;
-    color:#363636;    
-    position: relative;
-}
-.hanlim .smallTit p {
-    position: absolute;
-    top:-15px;
-    text-align:left;
+.hanlim .Section .fixed {
+	position: fixed;
     width: 100%;
-}
-.hanlim .smallTit p a {vertical-align: top; margin-left: 10px}
-.hanlim .smallTit span {
-    font-weight: 600;
-    background: #fff;
-    padding:0 20px 0 0;
-}
-.hanlim .smallTit strong {
-    color:#ba560e;
+    border-bottom:1px solid #333;
+	top: 0;
+	z-index: 100;
 }
 
-.hanlim .will-listTit {
-    margin-bottom: 15px;
-    color:#181818;
+/*업로드강의*/
+.hanlim .uploadLec {
+	position: relative;
+    border: 4px solid #b85712;
+    height:58px;
+    padding-left: 20px;
+    overflow:hidden;
+}
+.hanlim .uploadLec .sliderNumV div {
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+}
+.hanlim .uploadLec .sliderNumV div span {
+	color: #ccc;
+	margin: 0 10px;
+}
+.hanlim .uploadLec .bx-wrapper .bx-prev {
+	background: url("/public/img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+}
+.hanlim .uploadLec .bx-wrapper .bx-next {
+	background: url("/public/img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
+	left: 20px;
+}
+.hanlim .uploadLec .bx-wrapper .bx-controls-direction {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	width: 40px;
+	height: 20px;
+}
+.hanlim .uploadLec .bx-wrapper .bx-controls-direction a {
+	width: 20px;
+	height: 20px;
+}
+.hanlim .uploadLec .bx-wrapper .bx-pager {
+	width: auto;
+	position: absolute;
+	top: 18px;
+	right: 60px;
+	bottom: 0;
+	font-size: 11px;
+	font-weight: 300;
+	color: #888;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0;
 }
 
+/*hot issue*/
+.hanlim .hotIssue {background:#eee;	padding: 100px 0;}
+.hanlim .hotIssue li {
+	display: inline;
+	float: left;
+	width: 33.33333%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.hanlim .hotIssue li a {
+	display: block;
+	width: 360px;
+	margin: 0 auto;
+	transition: opacity 0.4s ease-in-out;
+}
+.hanlim .hotIssue li a img {
+	width: 100%;
+}
+.hanlim .hotIssue li a:hover {
+	-webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+}
+.hanlim .hotIssue ul:hover a:not(:hover) {
+	opacity: 0.4;
+}
+
+/*전문교수진 */
+.hanlim .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
+.hanlim .SecBanner01 {margin-right:-20px; margin-top:20px}
+.hanlim .SecBanner01 li {display:inline; float:left; margin:0 20px 20px 0;}
+.hanlim .SecBanner01:after {content:''; display: block; clear:both}
 
 /* Main Container : Notice : noticeTabs */
 .hanlim .noticeTabs {
@@ -222,7 +267,7 @@
     letter-spacing: 0;
 }
 .hanlim .tabBox.noticeBox .List-Table li a span {
-    background: #ba560e;
+    background: #b85712;
     color:#fff;
     padding: 0 10px;
     border-radius: 10px;
@@ -233,359 +278,147 @@
     vertical-align: top;
 }
 
-/* Main Container */
-.hanlim .tx-color {
-    color: #ba560e;
+/*대표 강의 맛보기*/
+.hanlim .lectureBestWrap {background:#f0eee3; padding:100px 0}
+.hanlim .lectureBestWrap .f_left {background: url("https://static.willbes.net/public/images/promotion/main/2005/2005_img02.png") no-repeat center 0; float:left; height:270px; font-size:16px; width:180px}
+.hanlim .lectureBestWrap .f_left div {margin-top:170px; margin-left:30px}
+.hanlim .lectureBestWrap .f_left a {display:block; width:120px; margin:20px auto 0; text-align:center; color:#fff; background:#282828; border-radius:8px; padding:10px 0; font-size:16px}
+.hanlim .lectureBestWrap .lectureBest {position:relative; width:923px; float:right}
+.hanlim .lectureBestWrap .lectureBest .lbSlider {height:270px; overflow: hidden;}
+.hanlim .lectureBestWrap .lectureBest .lbSlider li {display: inline; float:left;}
+.hanlim .lectureBestWrap .lectureBest .lbSlider li a {display:block;} 
+.hanlim .lectureBestWrap .lectureBest .lbSlider li a div {text-align: center; margin-top:10px}
+.hanlim .lectureBestWrap .lectureBest .lbSlider:after {content: ""; display: block; clear:both}
+.hanlim .lectureBestWrap .lectureBest p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.hanlim .lectureBestWrap .lectureBest p.leftBtn {left:-22px}
+.hanlim .lectureBestWrap .lectureBest p.rightBtn {right:-22px}
+
+/*오시는길*/
+.hanlim .loadMap .noticeTabs {
+	width: 100% !important;
 }
-.hanlim .Section1 {
-    background: #f8f8f8;
-    padding-bottom:90px;
+.hanlim .loadMap .map_img {
+	position: relative;
+	float: left !important;
+	width: 698px;
+	height: 328px;
+	overflow: hidden;
 }
-.hanlim .List-Table li a img,
-.hanlim .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus,
-.hanlim .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.hanlim .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.hanlim .bSlider.blueSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #ba560e;
-}
-.hanlim .Section .SpecialBox li {
-    display: inline; float: left;
-    width: 216px; height: 143px;
-    margin-right:10px; margin-bottom:10px;
-}
-.hanlim .Section .SpecialBox li:nth-child(5),
-.hanlim .Section .SpecialBox li:last-child {
-    margin-right:0;
-}
-.hanlim .Section .SpecialBox ul:after {
-    content:''; display: block; clear:both;List-Table
+.hanlim .loadMap .map_img img {
+	position: absolute;
+	left: 50%;
+	margin-left: -349px;
 }
 
-/* Main Container : QuickMenu 
-.hanlim .QuickDdayBox .q_dday {
-    font-size: 24px;
-    font-weight: 600;
-    color: #ba560e;
-    padding-top: 10px;
-    letter-spacing: 0;
+.hanlim .loadMap .campus_info {
+	position: relative;
+	float: right !important;
+	width: 320px;
+	height: 328px;
 }
-.hanlim .QuickSlider .sliderNum {
-    width: 100px;
-    height: 192px;
-    overflow: hidden;
-}*/
+.hanlim .loadMap .campus_info dl dt {
+	border-top: 1px solid #e3e3e3;
+	padding: 25px 0;
+}
+.hanlim .loadMap .campus_info dl dt:first-child {
+	border-top: none;
+	padding: 0 0 25px;
+}
+.hanlim .loadMap .campus_info .btn a {
+	display: inline-block;
+	font-size: 17px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	padding: 0;
+	width: 168px;
+	margin-right: 5px;
+	color: #000;
+	text-align: center;
+	border: 1px solid #000;
+}
 
-/* Main Container : QuickMenu  */
+.hanlim .willbesNumber {
+	padding: 30px 0 0 0;
+}
+.hanlim .willbesNumber ul li {
+    margin-left: 40px !important;
+}
+
 .hanlim .MainQuickMenu {
     position: fixed;
-    top: 110px;
-    right: 20px;
-    width: 164px;
-    height: auto;
-    background: #ececec;
+    top: 80px;
+    right: 10px;
+    width: 100px;
+    height: auto;    
     z-index: 100;
 }
-.hanlim .MainQuickMenu ul {
-    margin:0 8px 5px !important;
-}
-.hanlim .MainQuickMenu li {
-    border-top:1px solid #f6f6f6;
-    border-bottom:1px solid #d4d4d4;
-    height: 40px;
-    line-height: 40px;
-    background: url("../../img/willbes/cop_acad/icon_arrow02.png") no-repeat 95% center;
-    margin: 0;
-}
-.hanlim .MainQuickMenu li:first-child {
-    border-top:0;
-}
-.hanlim .MainQuickMenu li:last-child {
-    border-bottom:0;
-}
-.hanlim .MainQuickMenu li a {
-    display: block; padding-left:30px;
-}
-.hanlim .MainQuickMenu li a:hover {
-    color:#00acec;
-}
-.hanlim .MainQuickMenu li:nth-child(1) a {
-    background: url("../../img/willbes/cop_acad/icon_rq01.png") no-repeat 3px center;
-}
-.hanlim .MainQuickMenu li:nth-child(2) a {
-    background: url("../../img/willbes/cop_acad/icon_rq07.png") no-repeat 3px center;
-}
-.hanlim .MainQuickMenu li:nth-child(3) a {
-    background: url("../../img/willbes/cop_acad/icon_rq02.png") no-repeat 3px center;
-}
-.hanlim .MainQuickMenu li:nth-child(4) a {
-    background: url("../../img/willbes/cop_acad/icon_rq03.png") no-repeat 3px center;
-}
-.hanlim .MainQuickMenu li:nth-child(5) a {
-    background: url("../../img/willbes/cop_acad/icon_rq05.png") no-repeat 3px center;
-}
 
 
-/* Guide Container */
-/*수험가이드*/
-.tabShow.tab_gosi_Guide {
-    background: #026f61;
-    height: 62px;
-    border-bottom: none;
-}
-.tabShow.tab_gosi_Guide li {
-    width: 12.5%;
-    height: 62px;
-    padding: 0 8px;
-}
-.tabShow.tab_gosi_Guide li a.two,
-.tabShow.tab_gosi_Guide li a.on.two {
-    line-height: 17px;
-}
-.tabShow.tab_gosi_Guide li a.two span {
-    padding-top: 15px;
-    display: inline-block;
-}
-.tabShow.tab_gosi_Guide li a.on.two span {
-    line-height: 17px;
-    padding-top: 10px;
-}
-.tabShow.tab_gosi_Guide li a.on span {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: #fff;
-    color: #026f61;
-    display: inline-block;
-    height: 54px;
-    line-height: 52px;
-    border-top: 1px solid #026f61;
-    border-left: 1px solid #026f61;
-    border-right: 1px solid #026f61;
-}
-.tabShow.tab_gosi_Guide li a,
-.tabShow.tab_gosi_Guide li a.on {
-    background: #026f61;
-    color: #fff;
-    line-height: 58px;
-    font-size: 14px;
-    font-weight: 300;
-    height: 62px;
-    border: none;
-}
-.tabShow.tab_gosi_Guide li:first-child a,
-.tabShow.tab_gosi_Guide li:first-child a.on {
-    border: none;
+/**************************************************************************************/
+
+
+/*국립외교원*/
+.hl3095 .menu-List .Tit,
+.hl3095 .Menu .menu-List li.gosi > a,
+.hl3095 .Depth .depth:last-child strong,
+.hl3095 .tx-color {color: #70b04c;}
+.hl3095 .uploadLec {border: 4px solid #70b04c;}
+.hl3095 .tabBox.noticeBox .List-Table li a span {background: #70b04c;}
+.hl3095 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hl3095 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hl3095 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #70b04c !important;
 }
 
-.w-gosi-Guide {letter-spacing: 0}
-.w-gosi-Guide .examInfoGu2 .hTy4 {background: url("../../img/willbes/gosi/guide/left_arrow.png") no-repeat 0 center; font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"; margin: 30px 0 10px; font-size:16px; font-weight:bold; color: #24606a; line-height: 30px; padding-left: 25px;}
-
-.examInfoGu3 {padding: 35px 45px 55px}
-.examInfoGu3 .hTy {font-family: "NanumGothic-Bold", "Nanum Gothic", "나눔고딕", "sans-serif"}
-.examInfoGu3 .hTy.txt-gray {font-size: 14px; font-weight:bold; color: #555; line-height: 18px}
-.examInfoGu3 .hTy.txt-red {font-size: 14px; font-weight:bold; color: #d52b2b; line-height: 18px}
-.examInfoGu3 .hTy4 {width: 786px; margin: 0 auto 20px; font-size:16px; font-weight:bold; color: #026f61; line-height: 30px}
-
-.examInfoGu3 .hTy5 {width: 786px; margin: 0 auto 15px}
-.examInfoGu3 .hTy5 span {font-size: 13px}
-
-.examInfoGu3 .hTy6.center {margin: 15px 60px 0; font-size:13px}
-.examInfoGu3 .hTy6.right {margin: 0 0 5px; text-align: right;}
-.examInfoGu3 .hTy6.right span {font-size: 13px}
-.examInfoGu3 .hTy6.left span {margin: 5px 0 0; text-align: left; font-size: 12px}
-
-.sliderGuide .bx-wrapper .bx-viewport {
-    z-index: 10;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction {
-    width: 100%;
-    height: 45px;
-    position: absolute;
-    top: 50%;
-    margin-top: -22px;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction a {
-    width: 35px;
-    height: 45px;
-}
-.sliderGuide .bx-wrapper .bx-controls-direction a.disabled {
-    display: block;
-    opacity: 0.5;
-}
-.sliderGuide .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/gosi/guide/guide_prev.png") no-repeat 0 0;
-    left: -45px;
-    right: inherit;
-}
-.sliderGuide .bx-wrapper .bx-next {
-    background: url("../../img/willbes/gosi/guide/guide_next.png") no-repeat 0 0;
-    left: inherit;
-    right: -45px;
-}
-.sliderGuide .bx-wrapper .bx-pager {
-    font-size: 12px;
-    font-weight: 300;
-    padding: 0;
-    bottom: -40px;
+/*5급PSAT*/
+.hl3096 .menu-List .Tit,
+.hl3096 .Menu .menu-List li.gosi > a,
+.hl3096 .Depth .depth:last-child strong,
+.hl3096 .tx-color {color: #6440b3;}
+.hl3096 .uploadLec {border: 4px solid #6440b3;}
+.hl3096 .tabBox.noticeBox .List-Table li a span {background: #6440b3;}
+.hl3096 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hl3096 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hl3096 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #6440b3 !important;
 }
 
-.guide_slider {
-    width: 848px !important;
-}
-.basicWd {
-    width:786px;
-    margin: 0 auto;
-}
-.basicWd1 tr td {
-    padding: 20px;
-}
-.basicWd .txtL ul li {margin-bottom:5px;padding-left:8px;background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 6px}
-
-.mgBox {
-    background: #f0f0f0;
-    border: 1px solid #dbdbdb;
-    padding: 25px 30px;
-    width: 786px;
-    margin: 20px auto 0;
-}
-.mgBox-none {
-    background: none;
-    border: none;
-}
-.mgBox .tt {
-    background: url("../../img/willbes/gosi/guide/right_arrow.png") no-repeat 0 6px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #232323;
-    padding-left: 12px;
-    margin-bottom: 10px;
-}
-.mgBox .st {
-    margin-bottom: 5px;
-}
-.mgBox .ttx {
-    font-size: 13px;
-    font-weight: 600;
-    color: #4d4d4d;
-}
-.mgBox ul li {
-    margin-top: 15px;
-    padding-left: 10px;
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
-}
-.mgBox dl dt {
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
-    padding-left: 10px;
-}
-.mgBox ul li:first-child {
-    margin-top: 0;
-}
-.mgBox_no {
-    border: 1px solid #dbdbdb;
-    padding: 40px 60px;
-    width: 786px;
-    margin: 20px auto 0;
-}
-.mgBox span {
-    vertical-align: baseline;
-}
-ul.dot li {
-    margin-top: 15px;
-    padding-left: 10px;
-    background: url("../../img/willbes/cop/guide/dot_sq3.gif") no-repeat 0 7px;
+/*5급헌법*/
+.hl3097 .menu-List .Tit,
+.hl3097 .Menu .menu-List li.gosi > a,
+.hl3097 .Depth .depth:last-child strong,
+.hl3097 .tx-color {color: #142596;}
+.hl3097 .uploadLec {border: 4px solid #142596;}
+.hl3097 .tabBox.noticeBox .List-Table li a span {background: #142596;}
+.hl3097 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hl3097 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hl3097 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #142596 !important;
 }
 
-.tableBox tr th {
-    font-size: 21px;
-    font-weight: 600;
-    color: #243553;
-    border-right: 1px solid #bfbfbf;
-}
-.tableBox tr td {
-    font-size: 14px;
-    text-align: center;
-    border-top: 1px solid #bfbfbf;
-    border-right: 1px solid #bfbfbf;
-    border-bottom: 1px solid #bfbfbf;
-    padding: 25px 0;
-}
-.tableBox tr.hh td {
-    border: none;
-    height: 25px;
+/*법원행시*/
+.hl3098 .menu-List .Tit,
+.hl3098 .Menu .menu-List li.gosi > a,
+.hl3098 .Depth .depth:last-child strong,
+.hl3098 .tx-color {color: #20755e;}
+.hl3098 .uploadLec {border: 4px solid #20755e;}
+.hl3098 .tabBox.noticeBox .List-Table li a span {background: #20755e;}
+.hl3098 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hl3098 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hl3098 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #20755e !important;
 }
 
-.tabWrap.tab_gosi_success_Guide {
-    height: 67px;
-    border: 1px solid #24606a;
-}
-.tabWrap.tab_gosi_success_Guide li {
-    width: 50%;
-    height: 65px;
-}
-.tabWrap.tab_gosi_success_Guide li a {
-    background: #fff;
-    color: #24606a;
-}
-.tabWrap.tab_gosi_success_Guide li a.on {
-    background: #24606a;
-    color: #fff;
-}
-.tabWrap.tab_gosi_success_Guide li a,
-.tabWrap.tab_gosi_success_Guide li a.on {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 63px;
-    height: 65px;
-    border: none;
-}
-.tabWrap.tab_gosi_success_Guide a.on:before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    top: 66px;
-    left: 50%;
-    margin-left: -5px;
-    border-color: #24606a transparent transparent;
-    border-width: 10px;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide {
-    float: left;
-    height: 35px;
-    border-bottom: none;
-    clear: both;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li {
-    height: 35px;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a {
-    color: #24606a;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
-    color: #8f724d;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li a,
-.tabWrap.tab_gosi_scuuess_list_Guide li a.on {
-    background: none;
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 33px;
-    height: 35px;
-    border: none;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a,
-.tabWrap.tab_gosi_scuuess_list_Guide li:first-child a.on {
-    border: none;
-}
-.tabWrap.tab_gosi_scuuess_list_Guide .row-line {
-    float: right;
-    background: #b7b7b7;
-    width: 1px;
-    height: 16px;
-    margin: 11px 0;
+/*변호사시험*/
+.hl3099 .menu-List .Tit,
+.hl3099 .Menu .menu-List li.gosi > a,
+.hl3099 .Depth .depth:last-child strong,
+.hl3099 .tx-color {color: #bf112b;}
+.hl3099 .uploadLec {border: 4px solid #bf112b;}
+.hl3099 .tabBox.noticeBox .List-Table li a span {background: #bf112b;}
+.hl3099 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.hl3099 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.hl3099 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #bf112b !important;
 }

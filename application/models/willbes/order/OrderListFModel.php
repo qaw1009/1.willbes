@@ -396,7 +396,7 @@ class OrderListFModel extends BaseOrderFModel
         }
 
         $vw_on_lecture = 'vw_product_on_lecture';   // 단강좌 뷰 테이블명
-        $column = 'TA.ProdCode, VP.ProdName, VP.CateCode, VP.ProdCateName, VP.ProfNickNameAppellation, VP.CourseName
+        $column = 'TA.ProdCode, VP.ProdName, VP.CateCode, VP.ProdCateName, VP.ProfNickNameAppellation, VP.CourseName, VP.SubjectName
             , json_value(VP.ProfReferData, "$.prof_index_img") as ProfImgPath, json_value(VP.ProfReferData, "$.lec_detail_img") as ProfImgPathM';
         $from = '
             from (

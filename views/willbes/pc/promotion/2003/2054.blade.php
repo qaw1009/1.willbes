@@ -47,11 +47,11 @@
 
         <div class="evtCtnsBox evt_02">
             <div class="evt02_box" id="apply">       
-            <div class="title NSK-Black" style="padding:75px 0 25px;"> <span class="evt">OPEN CLASS</span ><span style="padding-left:10px;vertical-align:top;">7급 PSAT</span ></div>                 
+            <div class="title NSK-Black" style="padding:75px 0 25px;"> <span class="evt">7급</span ><span style="padding-left:10px;vertical-align:top;">OPEN PSAT CLASS PASS반</span ></div>                 
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                 @endif   
-            <div class="title NSK-Black" style="padding:75px 0 25px;"> <span class="evt">OPEN CLASS </span><span style="padding-left:10px;vertical-align:top;">7급 PSAT 단강좌</span ></div>     
+            <div class="title NSK-Black" style="padding:75px 0 25px;"> <span class="evt">7급</span><span style="padding-left:10px;vertical-align:top;">OPEN PSAT CLASS 단과반</span ></div>     
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif                    

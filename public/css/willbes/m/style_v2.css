@@ -7716,19 +7716,20 @@ span.calendar_btn {
 	}
 
 	.ssam .bestLecBox .bestLec {
-		height: 200px;
+		height: 190px;
 	}
 	.ssam .bestLecBox .bestLec .profImg img {
 		top: 0;
+		left: 0;
 		right: 0;
-		width: 90%;
+		width: 100%;
 	}
 	.ssam .bestLecBox .lecinfo {
 		position: relative;
 		top: 0;
 		left: 0;
 		margin: 0;
-		margin-top: 110px;
+		margin-top: 100px;
 		width: 100%;
 		padding: 10px;
 		background-color: #a9d1d1;
@@ -7743,26 +7744,23 @@ span.calendar_btn {
 	.ssam .bestLecBox .lecinfo li strong {
 		padding: 0;
 	}
-	.ssam .bestLecBox .csCenter .tel li div.goTel div {
-		margin-left: 0;
-	}
 
 	.ssam .bestLecBoxV2 .lecinfo {
-		top: 18%;
+		top: 12%;
 		left: 10px;
 		width: 90%;
 		z-index: 2;
-		font-size: 13px;
+		font-size: 12px;
 		line-height: 1.4;
 	}
 	.ssam .bestLecBoxV2 .lecinfo li {
 		margin-bottom: 5px;
 	}
 	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) {
-		font-size: 18px;
+		font-size: 15px;
 	}
 	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) span {
-		font-size: 14px;
+		font-size: 13px;
 	}
 	.ssam .bestLecBoxV2 .lecinfo li span.prof {
 		display: none;
@@ -7772,6 +7770,7 @@ span.calendar_btn {
 		background: none;
 		color: #fff;
 	}
+	
 	.ssam .sampleLec {
 		margin: 0 10px;
 	}

@@ -46,22 +46,22 @@
                             <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
                                 <div>1기스터디  <span class="row-line">|</span>  감정평가실무  <span class="row-line">|</span>  여지훈 교수님</div>
                                 <div class="w-tit">1기스터디 감정평가실무 여지훈</div>
-                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
                                 <ul class="mt10">
                                     <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
                                     <li>[좌석번호] <span class="tx-light-blue">41</span><li>
                                     <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
                                 </ul>
+                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>                                
                             </div>
                             <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
                                 <div>1기스터디  <span class="row-line">|</span>  감정평가 및 보상법규  <span class="row-line">|</span>  이현진 교수님</div>
                                 <div class="w-tit">1기스터디 감정평가 및 보상법규 이현진</div>
-                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
                                 <ul class="mt10">
                                     <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
                                     <li>[좌석번호] <span class="tx-light-blue">41</span><li>
                                     <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
                                 </ul>
+                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>                                
                             </div>
                         </td>
                     </tr>

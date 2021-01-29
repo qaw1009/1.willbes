@@ -500,7 +500,7 @@ $('*[id*=QuickMenuB]:visible').ready(function () {
             if ($(document).scrollTop() > stickyOffset.top) {
                 $('#QuickMenuB').css('top', '20px');
             } else {
-                $('#QuickMenuB').css('top', '100px');
+                $('#QuickMenuB').css('top', '80px');
             }
         });
     }

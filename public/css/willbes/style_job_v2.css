@@ -1,0 +1,379 @@
+/* top bar banner */
+.job .topBanner {display:block; background:#ececec; width:100%; text-align:center}
+.job .topBanner p {width:100%; max-width:1120px; margin:0 auto}
+.job .topBanner p img {width:100%}
+
+.job .menu-List .Tit {color: #109bb8;}
+.job .Menu .menu-List li.job > a {
+    color: #109bb8;
+    display:inline-block;
+    vertical-align: middle;
+}
+.job .Menu .menu-List li.gosi > a .arrow-Btn {
+    background: url("/public/img/willbes/gosi/icon_arrow.gif") no-repeat left center;
+    float: right;
+    width: 4px;
+    height: 8px;
+    margin: 15px 5px 0;
+}
+.job .Depth .depth:last-child strong {
+    color: #109bb8;
+}
+.job .tx-color {
+    color: #109bb8;
+}
+.job .copyTit {color: #363636; font-size:36px; text-align:left; margin-bottom:30px}
+.job .copyTit span {vertical-align: bottom;}
+.job .copyTit span:nth-child(2) {color: #363636;}
+
+/*********************************************     Main Container     *********************************************/
+
+/* Main Container : MainVisual */
+.job .MainVisual {
+    position: relative;
+    width: 1120px;
+    margin:0 auto;
+    height: 400px;
+}
+.job .MainVisual:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.job .VisualBox {
+    width:740px;  
+    height: 400px;
+    overflow: hidden;
+    float:left;
+  }
+.job .VisualBox img {
+    height: 400px;
+  }
+  
+.job .VisualBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    width: 50px;
+    z-index: 90;
+}
+.job .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:60px;
+    bottom: 22px;
+    text-align: left;
+    z-index: 90;
+}
+.job .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+  }
+
+.job .VisualsubBox {
+    width: 380px;
+    padding:10px;
+    float:right;
+    background: #ccc;
+}
+
+.job .VisualsubBox .bSlider:nth-child(2) {
+    margin-top:3px;
+    width: 360px;
+    height: 223px !important;
+    overflow: hidden;
+  }
+
+.job .VisualsubBox .bx-wrapper .bx-controls-auto {
+    left:20px;
+    bottom: 20px;
+    margin: 0;
+    width: 50px;
+    z-index: 90;
+  }
+.job .VisualsubBox .bx-wrapper .bx-pager {
+    float: right;
+    width: auto;
+    left:60px;
+    bottom: 20px;
+    text-align: right;
+    z-index: 90;
+}
+.job .VisualsubBox .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+}
+
+.job .VisualsubBox .VisualsubBoxTop {width: 360px; height:154px; overflow: hidden;}
+
+.job .VisualsubBox .bSlider .bx-wrapper .bx-pager {
+    float: left;
+    width: auto;
+    left: 20px;
+    bottom: 10px;
+    text-align: left;
+}
+.job .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #cecece;
+}
+.job .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.job .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #109bb8 !important;
+}
+
+/*바로가기 메뉴*/
+.job .goMenuBtns {background:#fff; padding:10px 0}
+.job .goMenuBtns ul {width:1120px; margin:0 auto}
+.job .goMenuBtns li {
+	display: inline;
+	float: left;
+	width: 160px;
+}
+.job .goMenuBtns li a {
+	display: block;
+	text-align: center;
+ }
+.job .goMenuBtns li a img {display:block; margin:0 auto}
+.job .goMenuBtns li span {display:inline-block; color:#363636; background:#c9e6fc; border-radius:10px; margin-top:10px; font-size:15px; padding:5px 15px}
+.job .goMenuBtns li a:hover span {color: #fff; background:#0076e1}
+.job .goMenuBtns:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.job .Section .fixed {
+	position: fixed;
+    width: 100%;
+    border-bottom:1px solid #333;
+	top: 0;
+	z-index: 100;
+}
+
+/*업로드강의*/
+.job .uploadLec {
+	position: relative;
+    border: 4px solid #109bb8;
+    height:58px;
+    padding-left: 20px;
+    overflow:hidden;
+}
+.job .uploadLec .sliderNumV div {
+	font-size: 18px;
+	height: 50px;
+	line-height: 50px;
+}
+.job .uploadLec .sliderNumV div span {
+	color: #ccc;
+	margin: 0 10px;
+}
+.job .uploadLec .bx-wrapper .bx-prev {
+	background: url("/public/img/willbes/prof/btn_prev_V.png") no-repeat 0 0 !important;
+}
+.job .uploadLec .bx-wrapper .bx-next {
+	background: url("/public/img/willbes/prof/btn_next_V.png") no-repeat 0 0 !important;
+	left: 20px;
+}
+.job .uploadLec .bx-wrapper .bx-controls-direction {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	width: 40px;
+	height: 20px;
+}
+.job .uploadLec .bx-wrapper .bx-controls-direction a {
+	width: 20px;
+	height: 20px;
+}
+.job .uploadLec .bx-wrapper .bx-pager {
+	width: auto;
+	position: absolute;
+	top: 18px;
+	right: 60px;
+	bottom: 0;
+	font-size: 11px;
+	font-weight: 300;
+	color: #888;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0;
+}
+
+/*hot issue*/
+.job .hotIssue {background:#eee;	padding: 100px 0;}
+.job .hotIssue li {
+	display: inline;
+	float: left;
+	width: 33.33333%;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.job .hotIssue li a {
+	display: block;
+	width: 360px;
+	margin: 0 auto;
+	transition: opacity 0.4s ease-in-out;
+}
+.job .hotIssue li a img {
+	width: 100%;
+}
+.job .hotIssue li a:hover {
+	-webkit-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.3);
+}
+.job .hotIssue ul:hover a:not(:hover) {
+	opacity: 0.4;
+}
+
+/*전문교수진 */
+.job .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
+.job .SecBanner01 {margin-right:-20px; margin-top:20px}
+.job .SecBanner01 li {display:inline; float:left; margin:0 20px 20px 0;}
+.job .SecBanner01:after {content:''; display: block; clear:both}
+
+/* Main Container : Notice : noticeTabs */
+.job .noticeTabs {
+    width: 345px !important;
+    float:left;
+    margin-right:40px;
+}
+.job .tabBox.noticeBox {
+    margin-top:-30px;   
+}
+.job .tabBox.noticeBox a.btn-add {
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+.job .tabBox.noticeBox .List-Table {
+    width: 100%;
+}
+.job .tabBox.noticeBox .List-Table li {
+    position: relative;
+    font-size: 13px;
+    color: #3a3a3a;
+    height: 37px;
+    line-height: 37px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.job .tabBox.noticeBox .List-Table li a {
+    display: inline-block;
+    width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0;
+}
+.job .tabBox.noticeBox .List-Table li a span {
+    background: #109bb8;
+    color:#fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.job .willbesNumber ul li {
+    margin-left: 40px;
+    vertical-align: top;
+}
+
+/*대표 강의 맛보기*/
+.job .lectureBestWrap {background:#f0eee3; padding:100px 0}
+.job .lectureBestWrap .f_left {background: url("https://static.willbes.net/public/images/promotion/main/2005/2005_img02.png") no-repeat center 0; float:left; height:270px; font-size:16px; width:180px}
+.job .lectureBestWrap .f_left div {margin-top:170px; margin-left:30px}
+.job .lectureBestWrap .f_left a {display:block; width:120px; margin:20px auto 0; text-align:center; color:#fff; background:#282828; border-radius:8px; padding:10px 0; font-size:16px}
+.job .lectureBestWrap .lectureBest {position:relative; width:923px; float:right}
+.job .lectureBestWrap .lectureBest .lbSlider {height:270px; overflow: hidden;}
+.job .lectureBestWrap .lectureBest .lbSlider li {display: inline; float:left;}
+.job .lectureBestWrap .lectureBest .lbSlider li a {display:block;} 
+.job .lectureBestWrap .lectureBest .lbSlider li a div {text-align: center; margin-top:10px}
+.job .lectureBestWrap .lectureBest .lbSlider:after {content: ""; display: block; clear:both}
+.job .lectureBestWrap .lectureBest p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.job .lectureBestWrap .lectureBest p.leftBtn {left:-22px}
+.job .lectureBestWrap .lectureBest p.rightBtn {right:-22px}
+
+/*오시는길*/
+.job .loadMap .noticeTabs {
+	width: 100% !important;
+}
+.job .loadMap .map_img {
+	position: relative;
+	float: left !important;
+	width: 698px;
+	height: 328px;
+	overflow: hidden;
+}
+.job .loadMap .map_img img {
+	position: absolute;
+	left: 50%;
+	margin-left: -349px;
+}
+
+.job .loadMap .campus_info {
+	position: relative;
+	float: right !important;
+	width: 320px;
+	height: 328px;
+}
+.job .loadMap .campus_info dl dt {
+	border-top: 1px solid #e3e3e3;
+	padding: 25px 0;
+}
+.job .loadMap .campus_info dl dt:first-child {
+	border-top: none;
+	padding: 0 0 25px;
+}
+.job .loadMap .campus_info .btn a {
+	display: inline-block;
+	font-size: 17px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	padding: 0;
+	width: 168px;
+	margin-right: 5px;
+	color: #000;
+	text-align: center;
+	border: 1px solid #000;
+}
+
+.job .willbesNumber {
+	background: #f6f6f6;
+	width: 720px;
+	padding: 30px 0 0 50px;
+	letter-spacing: normal;
+}
+.job .willbesNumber ul li {
+	margin-left: 30px;
+	vertical-align: top;
+}
+.job .willbesNumber ul li:first-child {
+	margin-left: 0;
+}
+
+
+/**************************************************************************************/
+
+
+/*감정평가사*/
+.job309003 .menu-List .Tit,
+.job309003 .Menu .menu-List li.job > a,
+.job309003 .Depth .depth:last-child strong,
+.job309003 .tx-color {color: #d39e02;}
+.job309003 .uploadLec {border: 4px solid #d39e02;}
+.job309003 .tabBox.noticeBox .List-Table li a span {background: #d39e02;}
+.job309003 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.job309003 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job309003 .bx-wrapper .bx-pager.bx-default-pager a:focus {background: #d39e02 !important;}
+
+/*변리사*/
+.job309004 .menu-List .Tit,
+.job309004 .Menu .menu-List li.job > a,
+.job309004 .Depth .depth:last-child strong,
+.job309004 .tx-color {color: #034c03;}
+.job309004 .uploadLec {border: 4px solid #034c03;}
+.job309004 .tabBox.noticeBox .List-Table li a span {background: #034c03;}
+.job309004 .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.job309004 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.job309004 .bx-wrapper .bx-pager.bx-default-pager a:focus {background: #034c03 !important;}

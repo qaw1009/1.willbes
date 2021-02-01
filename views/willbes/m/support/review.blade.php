@@ -73,9 +73,10 @@
                     <td class="w-data tx-left" colspan="2">
                         <a href="{{front_url($default_path.'/show?board_idx='.$row['BoardIdx'].'&'.$get_params)}}">
                             <div class="w-tit">
-                                @if(empty($arr_base['subject'][$row['SubjectIdx']]) === false)
-                                    <span class="tx-blue">[{{ $arr_base['subject'][$row['SubjectIdx']]}}]</span>
+                                @if(empty($arr_swich['subject']) === false)
+                                    <span class="tx-blue">[{{ $row['SubJectName'] or '' }}]</span>
                                 @endif
+
                                  {{hpSubString($row['Title'],0,40,'...')}}
                             </div>
                             <dl class="w-info tx-gray">

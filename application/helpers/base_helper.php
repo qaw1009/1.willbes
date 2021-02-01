@@ -89,14 +89,29 @@ if (!function_exists('csrf_token_name')) {
     }
 }
 
-if (!function_exists('datetime_verify')) {
+if (!function_exists('date_compute')) {
+    /**
+     * 날짜 계산
+     * @param string $datetime [datetime 문자열]
+     * @param string $add_date [추가할 날짜 문자열, 일: day, 월: month, 연도: year, 주: week, 시간: hour, 분: minute, 초: second)
+     * @param string $format [리턴 날짜포맷]
+     * @return false|string
+     */
+    function date_compute($datetime = '', $add_date = '1 day', $format = 'Y-m-d H:i:s')
+    {
+        $dt = date_add(date_create($datetime), date_interval_create_from_date_string($add_date));
+        return date_format($dt, $format);
+    }
+}
+
+if (!function_exists('date_verify')) {
     /**
      * datetime 날짜포맷 유효여부 체크
      * @param string $datetime [datetime 문자열]
      * @param string $format [확인 날짜포맷]
      * @return bool
      */
-    function datetime_verify($datetime, $format = 'Y-m-d H:i:s')
+    function date_verify($datetime, $format = 'Y-m-d H:i:s')
     {
         $dt = DateTime::createFromFormat($format, $datetime);
         return $dt !== false && $dt->format($format) == $datetime;

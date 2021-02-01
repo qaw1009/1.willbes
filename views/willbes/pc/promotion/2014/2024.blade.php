@@ -77,12 +77,14 @@
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
+        .evt07 {background:#e1e1e1;}
         .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
         .evtFooter div,
         .evtFooter ul {margin-bottom:30px; padding-left:10px}
-        .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px }
+        .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px }       
+
     </style>
 
 

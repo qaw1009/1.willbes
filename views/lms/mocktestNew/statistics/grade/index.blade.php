@@ -89,6 +89,7 @@
                     <th rowspan="2" class="text-center">복수정답처리</th>
                     <th rowspan="2" class="text-center">답안재검</th>
                     <th rowspan="2" class="text-center">조정점수</th>
+                    <th rowspan="2" class="text-center">마킹데이터<br>엑셀변환</th>
                     <th rowspan="2" class="text-center">등록일</th>
                 </tr>
                 <tr>
@@ -172,6 +173,9 @@
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return row.GradeOpenIsUse == 'Y' ? '<span class="blue underline-link act-score" data-prod-code="'+row.ProdCode+'" data-action-type="make">' + '조정점수반영' + '</span>' : '';
                         }},
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            return '<span class="blue underline-link btn-excel" data-prod-code="'+row.ProdCode+'">' + '엑셀변환' + '</span>';
+                        }},
                     {'data' : 'wAdminName', 'class': 'text-center'}
                 ]
             });
@@ -218,6 +222,15 @@
                         alert(ret.ret_msg);
                     }
                 }, showValidateError, null, 'alert', $regi_form);
+            });
+
+            $list_table.on('click', '.btn-excel', function (event) {
+                $("#prod_code").val($(this).data('prod-code'));
+
+                event.preventDefault();
+                if (confirm('엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/mocktestNew/statistics/grade/answerDataExcel') }}', $regi_form.serializeArray(), 'POST');
+                }
             });
         });
     </script>

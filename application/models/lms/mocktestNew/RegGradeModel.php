@@ -1558,6 +1558,30 @@ class RegGradeModel extends WB_Model
         ])->result_array();
     }
 
+    /**
+     * 응시자 마킹정보 엑셀 데이터 조회
+     * @param $arr_condition
+     * @return mixed
+     */
+    public function answerDataExcel($arr_condition)
+    {
+        $column = 'sc1.CcdName AS TakeMockPartName,ps.SubjectName,mr.TakeNumber,m.MemName,mat.Answer,mq.QuestionNo';
+        $where = $this->_conn->makewhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        $order_by = " ORDER BY mat.MpIdx, mat.MrIdx, mat.MqIdx ASC";
+
+        $from = "
+            FROM {$this->_table['mock_register']} AS mr
+            INNER JOIN {$this->_table['mock_register_r_paper']} AS mrrp ON mr.MrIdx = mrrp.MrIdx AND mr.ProdCode = mrrp.ProdCode
+            INNER JOIN {$this->_table['mock_answertemp']} AS mat ON mat.MrIdx = mrrp.MrIdx AND mat.ProdCode = mrrp.ProdCode AND mat.MpIdx = mrrp.MpIdx
+            INNER JOIN {$this->_table['mock_questions']} AS mq ON mat.MqIdx = mq.MqIdx
+            INNER JOIN {$this->_table['lms_member']} AS m ON mr.MemIdx = m.MemIdx
+            INNER JOIN {$this->_table['product_subject']} AS ps ON mrrp.SubjectIdx = ps.SubjectIdx
+            INNER JOIN {$this->_table['sys_code']} AS sc1 ON mr.TakeMockPart = sc1.Ccd
+        ";
+        return $this->_conn->query('select ' . $column . $from . $where. $order_by)->result_array();
+    }
+
 
     /**
      * 응시번호기준 접수식별자, 회원식별자 조회

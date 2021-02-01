@@ -42,26 +42,27 @@
                                 <a href="#none" class="btnSt03">온라인첨삭</a>
                             </div>
 
-                            {{--좌석선택 시 보이는 영역--}}
                             <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
                                 <div>1기스터디  <span class="row-line">|</span>  감정평가실무  <span class="row-line">|</span>  여지훈 교수님</div>
-                                <div class="w-tit">1기스터디 감정평가실무 여지훈</div>
-                                <ul class="mt10">
+                                <div class="w-tit mb10">1기스터디 감정평가실무 여지훈</div>
+                                <ul>
                                     <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
                                     <li>[좌석번호] <span class="tx-light-blue">41</span><li>
                                     <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
                                 </ul>
-                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>                                
+                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>    
+                                <div class="mt10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
                             </div>
                             <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
                                 <div>1기스터디  <span class="row-line">|</span>  감정평가 및 보상법규  <span class="row-line">|</span>  이현진 교수님</div>
                                 <div class="w-tit">1기스터디 감정평가 및 보상법규 이현진</div>
-                                <ul class="mt10">
+                                <ul class="mb10">
                                     <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
                                     <li>[좌석번호] <span class="tx-light-blue">41</span><li>
                                     <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
                                 </ul>
-                                <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>                                
+                                <div class="mb10"><a href="#none" class="btnStfull01">좌석선택 ></a></div> 
+                                <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                                
                             </div>
                         </td>
                     </tr>
@@ -149,7 +150,7 @@
 
         <div id="leclist2" class="tabContent">
             <div class="tx-center mt20">수강신청한 강좌가 없습니다.</div>
-
+            {{--
             <div class="willbes-Lec-Selected NG c_both tx-gray">
                 <select id="process" name="process" title="process" class="seleProcess width21p">
                     <option selected="selected">과정</option>
@@ -173,7 +174,8 @@
                     <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
                 </div>
             </div>
-            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+            --}}
+            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable mt20">
                 <tbody>
                     <tr>
                         <td class="w-data tx-left">
@@ -187,6 +189,34 @@
                                 <dt>수강기간 : 2018-00-00~2018-00-00</dt>
                                 <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                             </dl>
+
+                            <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                                <ul class="mb10">
+                                    <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
+                                    <li>[좌석번호] <span class="tx-light-blue">41</span><li>
+                                    <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
+                                </ul>
+                                <div class="mb10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>    
+                                <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w-data tx-left">
+                            <dl class="w-info">
+                                <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n5">접수중</span></dt>
+                            </dl>
+                            <div class="w-tit">
+                                <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                            </div>
+                            <dl class="w-info acad tx-gray">
+                                <dt>수강기간 : 2018-00-00~2018-00-00</dt>
+                                <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
+                            </dl>
+
+                            <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">  
+                                <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
+                            </div>
                         </td>
                     </tr>
                     <tr>

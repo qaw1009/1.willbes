@@ -63,13 +63,13 @@
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2024m_top.jpg" alt="창업&마케팅" >
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/W2nDOfP913A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/7znMVhk8p9g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>   
     </div> 
     
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2024m_01.jpg" alt="1% 전문가만 살아남는 쇼핑몰" >        
-        <a href="#none" title="사전예약 신청하기" target="_blank" style="position: absolute; left: 16.02%; top: 85.69%; width: 66.54%; height: 5.79%; z-index: 2;"></a>
+        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178677" title="사전예약 신청하기" target="_blank" style="position: absolute; left: 16.02%; top: 85.69%; width: 66.54%; height: 5.79%; z-index: 2;"></a>
     </div> 
     
     <div class="evtCtnsBox evt02">

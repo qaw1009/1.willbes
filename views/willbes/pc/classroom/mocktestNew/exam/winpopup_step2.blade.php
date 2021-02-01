@@ -22,7 +22,7 @@
             <input type="hidden" name="remain_sec"/>
             @foreach($examData['qtList'] as $key => $val)
                 <input type="hidden" name="q_cnt_{{$key}}" value="{{$val['TCNT']}}"/>
-            @endforeach               
+            @endforeach
 
             <div class="mg-zero popupContainer">
                 <div class="ExamBoxHead">
@@ -44,7 +44,10 @@
                                                 $class = 'exam-temp';
                                             }
                                         @endphp
-                                        <a href="javascript:void(0);" class="btn-subject {{($loop->first === true) ? 'exam-ing' : ''}} {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
+                                        <a href="javascript:void(0);" class="btn-subject {{($loop->first === true) ? 'exam-ing' : ''}} {{$class}}"
+                                           data-p-id="{{ element('prod_code',$arr_input) }}" data-subject-idx="{{$key}}">
+                                            {{$val}}
+                                        </a>
                                         @if ($loop->last === false) <span class="row-line">|</span> @endif
                                     </li>
                                 @endforeach
@@ -59,107 +62,116 @@
                                     @endphp
                                     <li id="button_{{$key}}">
                                         <span class="row-line">|</span>
-                                        <a href="javascript:void(0);" class="btn-subject {{$class}}" data-subject-idx="{{$key}}">{{$val}}</a>
+                                        <a href="javascript:void(0);" class="btn-subject {{$class}}" data-p-id="{{ element('prod_code',$arr_input) }}" data-subject-idx="{{$key}}">{{$val}}</a>
                                     </li>
                                 @endforeach
                             </ul>
                             <div class="countTime">남은시간 : <span id="timer" class="time">--:--:--</span></div>
                         </div>
                     </div>
-                </div>                      
+                </div>
 
                 @foreach($questionData as $subject_key => $subject_data)
                 <div class="examPaperWp" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
-                    <div class="exam-paper">
-                        @if ($examData['productInfo']['PaperType'] == 'I')
-                            <ul>
-                                {{--문항별이미지--}}
-                                @foreach($subject_data as $key => $val)
-                                    <li id="que{{$subject_key.'_'.$key}}" name="que{{$subject_key.'_'.$key}}">
-                                        <a class="strong tx-black underline">{{ $key }}.</a>
-                                        <span class="que"><img src="{{ $val['QFilePath'] }}{{ $val['file'] }}"></span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @else
-                            {{--문제통파일이미지--}}
-                            @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
-                                <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
-                            @endif
-                        @endif
-                    </div>
-
-                    <div class="answer-sheet">
-                        <div class="exam-txt">
-                            * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
-                            * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
-                            * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
-                            <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
+                    {{--@if($examData['isOpen'][$subject_key] != 'Y')
+                        <div class="exam-paper">
+                            시험 시작 전
                         </div>
-                        <table class="answerTb">
-                            <colgroup>
-                                <col style="width: 60px;"/>
-                                @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
+                    @else--}}
+                        <div class="exam-paper" id="paper_close_box_{{$subject_key}}">
+                            시험 시작 전
+                        </div>
+                        <div class="exam-paper" id="paper_box_{{$subject_key}}" style="display: none">
+                            @if ($examData['productInfo']['PaperType'] == 'I')
+                                <ul>
+                                    {{--문항별이미지--}}
+                                    @foreach($subject_data as $key => $val)
+                                        <li id="que{{$subject_key.'_'.$key}}" name="que{{$subject_key.'_'.$key}}">
+                                            <a class="strong tx-black underline">{{ $key }}.</a>
+                                            <span class="que"><img src="{{ $val['QFilePath'] }}{{ $val['file'] }}"></span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                {{--문제통파일이미지--}}
+                                @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
+                                    <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                                @endif
+                            @endif
+                        </div>
+
+                        <div class="answer-sheet" id="answer_sheet_box_{{$subject_key}}" style="display: none">
+                            <div class="exam-txt">
+                                * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
+                                * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
+                                * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
+                                <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
+                            </div>
+                            <table class="answerTb">
+                                <colgroup>
                                     <col style="width: 60px;"/>
-                                @endfor
-                                <col style="width: 65px;"/>
-                                <col width="*">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th class="ath1">번호</th>
-                                @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
-                                    <th>{{ $i }}번</th>
-                                @endfor
-                                <th class="ath6 worry">고민중</th>
-                                @if ($examData['productInfo']['PaperType'] == 'I')
-                                    <th class="ath7">문제보기</th>
-                                @endif
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- 정답체크 -->
-                            @foreach($subject_data as $key => $row)
-                                <tr>
-                                    <td>{{$key}}<img class="q_img" id='ko_{{$subject_key.'_'.$key}}' src="/public/img/willbes/mypage/icon_question_orange.png" style="display:@if($row['Answer'] === '0') @else none @endif;"></td>
-                                    @for($i = 1; $i <= $row['AnswerNum']; $i++)
-                                        <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','{{ $i }}', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif disabled="disabled"/></td>
+                                    @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
+                                        <col style="width: 60px;"/>
                                     @endfor
-                                        <td class="worry"><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
+                                    <col style="width: 65px;"/>
+                                    <col width="*">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th class="ath1">번호</th>
+                                    @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
+                                        <th>{{ $i }}번</th>
+                                    @endfor
+                                    <th class="ath6 worry">고민중</th>
                                     @if ($examData['productInfo']['PaperType'] == 'I')
-                                        <td class="btnAgR btnc"><a href="#que{{$subject_key.'_'.$key}}" class="qv btnlineGray">문제보기 ></a></td>
+                                        <th class="ath7">문제보기</th>
                                     @endif
-                                    <input type="hidden" class="mq_hidden_datas subject_mq_{{$subject_key}}" name="mq_idx_{{$subject_key.'_'.$key}}" value="{{ $row['MqIdx'] }}" disabled="disabled">
                                 </tr>
-                            @endforeach
-                            <!-- 정답체크 -->
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <!-- 정답체크 -->
+                                @foreach($subject_data as $key => $row)
+                                    <tr>
+                                        <td>{{$key}}<img class="q_img" id='ko_{{$subject_key.'_'.$key}}' src="/public/img/willbes/mypage/icon_question_orange.png" style="display:@if($row['Answer'] === '0') @else none @endif;"></td>
+                                        @for($i = 1; $i <= $row['AnswerNum']; $i++)
+                                            <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','{{ $i }}', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif disabled="disabled"/></td>
+                                        @endfor
+                                            <td class="worry"><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
+                                        @if ($examData['productInfo']['PaperType'] == 'I')
+                                            <td class="btnAgR btnc"><a href="#que{{$subject_key.'_'.$key}}" class="qv btnlineGray">문제보기 ></a></td>
+                                        @endif
+                                        <input type="hidden" class="mq_hidden_datas subject_mq_{{$subject_key}}" name="mq_idx_{{$subject_key.'_'.$key}}" value="{{ $row['MqIdx'] }}" disabled="disabled">
+                                    </tr>
+                                @endforeach
+                                <!-- 정답체크 -->
+                                </tbody>
+                            </table>
 
-                        <div class="btnAgR btnl c_both NGEB">
-                            @if($examData['productInfo']['IsPaperDownload'] == 'Y')
-                                @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
-                                    <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
-                                        문제 다운로드
-                                    </a>
-                                @else
-                                    <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
+                            <div class="btnAgR btnl c_both NGEB">
+                                @if($examData['productInfo']['IsPaperDownload'] == 'Y')
+                                    @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
+                                        <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
+                                            문제 다운로드
+                                        </a>
+                                    @else
+                                        <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
+                                    @endif
                                 @endif
-                            @endif
-                            <!-- 다음과목 -->
-                                <a href="javascript:void(0);" class="f_right btntxtBlack" id="btn_next_tab">다음과목 > </a>
-                            <!-- 다음과목 -->
+                                <!-- 다음과목 -->
+                                    <a href="javascript:void(0);" class="f_right btntxtBlack" id="btn_next_tab">다음과목 > </a>
+                                <!-- 다음과목 -->
+                            </div>
+                            <div class="btnAgR c_both btns NG">
+                                <ul>
+                                    <li><a class="btnBlue" href="javascript:void(0);" onclick="storeAnswer()">정답제출</a></li>
+                                    <li><a class="btnlightGray" href="javascript:void(0);" onclick="storeAnswerTemp()">임시저장</a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="btnAgR c_both btns NG">
-                            <ul>
-                                <li><a class="btnBlue" href="javascript:void(0);" onclick="storeAnswer()">정답제출</a></li>
-                                <li><a class="btnlightGray" href="javascript:void(0);" onclick="storeAnswerTemp()">임시저장</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    {{--@endif--}}
                 </div>
                 @endforeach
-            </div> 
+            </div>
             <!--popupContainer//-->
         </form>
     </div>
@@ -172,6 +184,7 @@
         var timer;
         var tempValue;
         var clickDelay = 'N';
+        var array_is_Open = {!! json_encode($examData['isOpen']) !!};
 
         $(document).ready(function() {
             timer = self.setInterval('timeGo()', 1000);
@@ -179,29 +192,44 @@
                 $('.answerTb tr:nth-child(2n)').addClass('nth');
             });
 
+            {{--시험지 시작여부 체크--}}
+            $.each(array_is_Open, function (key,value) {
+                if (value == 'Y') {
+                    $('#paper_box_'+key).show();
+                    $('#answer_sheet_box_'+key).show();
+                    $('#paper_close_box_'+key).hide();
+                } else {
+                    $('#paper_box_'+key).hide();
+                    $('#answer_sheet_box_'+key).hide();
+                    $('#paper_close_box_'+key).show();
+                }
+            })
+
             //과목별 문항식별자 초기값 설정
             var this_subject_idx = $('.sj > li:first').find('a').data('subject-idx');
             $('.subject_mq_'+this_subject_idx).prop('disabled', false);
             $('.subject_answer_'+this_subject_idx).prop('disabled', false);
 
-
             $('.btn-subject').on('click', function() {
+                var p_id = $(this).data('p-id');
                 var subject_idx = $(this).data('subject-idx');
-                actionTab(subject_idx);
+                actionTab(p_id, subject_idx);
             });
 
             $regi_form.on('click', '#btn_next_tab', function() {
                 var tab_id = $('.exam-ing').data('subject-idx');
                 var next_li = $('#button_'+tab_id).next();
+                var next_p_id = next_li.find('a').data('p-id');
                 var next_subject_id = next_li.find('a').data('subject-idx');
-                actionTab(next_subject_id);
+                actionTab(next_p_id, next_subject_id);
             });
         });
 
         //응시과목선택
-        function actionTab(target_id)
+        function actionTab(p_id, target_id)
         {
             if (typeof target_id === 'undefined') {
+                p_id = $('.sj > li:first').find('a').data('p-id');
                 target_id = $('.sj > li:first').find('a').data('subject-idx');
             }
             $('.btn-subject').removeClass('exam-ing');
@@ -211,6 +239,8 @@
             $('.examPaperWp').hide();
             $('#answer_box_' + target_id).prop('disabled', false);
             $('#answer_box_' + target_id).show();
+
+            getPaperIsOpen(p_id, target_id);
             $('#mp_idx').val(target_id);
 
             $('.mq_hidden_datas').prop('disabled', true);
@@ -218,6 +248,34 @@
 
             $('.answer_radio_datas').prop('disabled', true);
             $('.subject_answer_'+target_id).prop('disabled', false);
+        }
+
+        {{-- 시험지(과목) 오픈 여부 --}}
+        function getPaperIsOpen(p_id,m_id)
+        {
+            var url = '{{ front_url('/classroom/mocktest/exam/getPaperIsOpen') }}';
+            var data = {
+                '{{ csrf_token_name() }}' : '{{ csrf_token() }}',
+                '_method' : 'POST',
+                'p_id' : p_id,
+                'm_id' : m_id
+            };
+            sendAjax(url, data, function (ret) {
+                if (ret.ret_cd) {
+                    if (ret.ret_data == 'Y') {
+                        $('#paper_box_'+m_id).show();
+                        $('#answer_sheet_box_'+m_id).show();
+                        $('#paper_close_box_'+m_id).hide();
+                    } else {
+                        $('#paper_box_'+m_id).hide();
+                        $('#answer_sheet_box_'+m_id).hide();
+                        $('#paper_close_box_'+m_id).show();
+                    }
+                }
+            }, function(ret, status){
+                alert(ret.ret_msg);
+                window.close();
+            }, false, 'POST');
         }
 
         function timeGo() {

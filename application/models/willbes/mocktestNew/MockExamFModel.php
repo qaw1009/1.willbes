@@ -77,7 +77,7 @@ class MockExamFModel extends WB_Model
 
         $column = "
             MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
-            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names,
+            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.IsOpen,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
             IFNULL((SELECT RemainSec FROM {$this->_table['mock_log']} WHERE MrIdx = A.MrIdx ORDER BY RemainSec LIMIT 1), (MP.TakeTime*60)) AS RemainSec
@@ -89,7 +89,8 @@ class MockExamFModel extends WB_Model
                 mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
                 GROUP_CONCAT(pmp.MpIdx ORDER BY pmp.OrderNum ASC) AS MpIdx,
-                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName) ORDER BY pmp.OrderNum ASC) AS subject_names
+                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName) ORDER BY pmp.OrderNum ASC) AS subject_names,
+                GROUP_CONCAT(CONCAT(pmp.MpIdx,'|',pmp.IsOpen) ORDER BY pmp.OrderNum ASC) AS IsOpen
                 FROM {$this->_table['mock_register']} AS mr
                 JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
@@ -519,6 +520,22 @@ class MockExamFModel extends WB_Model
         }
         return true;
     }
+
+    /**
+     * 상품의 과목 정보 조회
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function findProductMockRPaper($arr_condition = [])
+    {
+        $column = "PmrpIdx, ProdCode, MpIdx, IsOpen";
+        $from = " FROM {$this->_table['product_mock_r_paper']}";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select ' . $column . $from . $where)->row_array();
+    }
+
 
     /**
      * 시간저장

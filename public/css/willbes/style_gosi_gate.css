@@ -19,8 +19,17 @@
 .gosi-gate-menu li:last-child a {border:0}
 .gosi-gate-menu ul:after {content:''; display:block; clear:both}
 
-.gosi-bnfull {position:relative; height:65px;}
-.gosi-bnfull a {position:absolute; width:2000px; top:0; left:50%; margin-left:-1000px; z-index:1}    
+.gosi-bnfull-Sec {position:relative; margin:0; height: 65px !important;}
+.gosi-bnfull {position: absolute;
+    top:0;
+    left:50%;
+    margin-left:-1000px;
+    width: 2000px;
+    min-width: 1120px;
+    max-width: 2000px;
+    height: 65px; 
+    overflow: hidden;}    
+.gosi-bnfull .bx-wrapper .sliderBar img {width:2000px !important; height:65px}
 
 .gosi-gate-Sec {background:url(https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_h610_bg.jpg) repeat-x left top; margin:0; height:745px; position: relative;}
 .gosi-gate-bntop {
@@ -214,6 +223,7 @@
     color: #000;
     margin: 0;
     padding: 0;
+
     letter-spacing: 0;
 }
 

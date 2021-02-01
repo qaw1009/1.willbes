@@ -286,6 +286,38 @@ class Exam extends \app\controllers\FrontController
     }
 
     /**
+     * 시험지(과목) 오픈 여부
+     */
+    public function getPaperIsOpen()
+    {
+        if (empty($this->_reqP('p_id')) === true || $this->_reqP('m_id') === true) {
+            $return = false;
+            $err_data = [
+                'ret_cd' => false,
+                'ret_msg' => '과목정보 조회 실패입니다. 관리자에게 문의해 주세요.',
+                'ret_status' => _HTTP_ERROR
+            ];
+            $return_data = 'N';
+        } else {
+            $arr_condition = [
+                'EQ' => [
+                    'ProdCode' => $this->_reqP('p_id'),
+                    'MpIdx' => $this->_reqP('m_id'),
+                    'IsStatus' => 'Y'
+                ]
+            ];
+            $result = $this->mockExamFModel->findProductMockRPaper($arr_condition);
+            if (empty($result) === false) {
+                $return = true;
+                $err_data = true;
+                $return_data = $result['IsOpen'];
+            }
+        }
+        $this->json_result($return, '죄회 성공', $err_data, $return_data);
+    }
+
+
+    /**
      * 응시한 모의고사 상품 기본정보
      * @param $prod_code
      * @param $mr_idx
@@ -317,7 +349,6 @@ class Exam extends \app\controllers\FrontController
         foreach ($temp_subject_depth1 as $key => $val) {
             $temp_subject_depth2[] = explode('|', $val);
         }
-
         foreach ($temp_subject_depth2 as $rows) {
             $arr_temps = explode('@',$rows[1]);
             if ($rows[0] == 'E') {
@@ -325,6 +356,12 @@ class Exam extends \app\controllers\FrontController
             } else if ($rows[0] == 'S') {
                 $data['s_subject'][$arr_temps[0]] = $arr_temps[1];
             }
+        }
+
+        $temp_is_open = explode(',', $data['productInfo']['IsOpen']);
+        foreach ($temp_is_open as $key => $val) {
+            $arr_temps = explode('|', $val);
+            $data['isOpen'][$arr_temps[0]] = $arr_temps[1];
         }
 
         $arr_condition2 = [

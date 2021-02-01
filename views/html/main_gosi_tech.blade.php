@@ -48,9 +48,9 @@
     background-color: rgba(0,0,0,0.5);
 }
 
-.tech .gosi-tech-bntop .Techtab {width:1120px; margin:0 auto;}
+.tech .gosi-tech-bntop .Techtab {width:1120px; margin:0 auto; text-align:center}
 .tech .gosi-tech-bntop .Techtab:after {content:""; display:block; clear:both}
-.tech .gosi-tech-bntop .Techtab li {display:inline-block; float:left; width: 11.11111%;}   
+.tech .gosi-tech-bntop .Techtab li {display:inline-block;  width: calc(11.11111% - 2px);}   
 .tech .gosi-tech-bntop .Techtab li a {display:block; text-align:center; line-height:1.2; font-size: 15px; color:#b4b4b4; padding:10px 0}
 .tech .gosi-tech-bntop .Techtab li a:hover,
 .tech .gosi-tech-bntop .Techtab li a.active {color:#fff; font-weight: bold;}
@@ -766,7 +766,7 @@
                     <li><a data-slide-index="5" href="javascript:void(0);">전산직<br>PACKAGE</a></li>
                     <li><a data-slide-index="6" href="javascript:void(0);">임업직<br>PACKAGE</a></li>
                     <li><a data-slide-index="7" href="javascript:void(0);">전기/통신<br>최우영</a></li>
-                    <li><a data-slide-index="8" href="javascript:void(0);">농업직렬<br>장사원</a></li>
+                    {{--<li><a data-slide-index="8" href="javascript:void(0);">농업직렬<br>장사원</a></li>--}}
                 </div>
             </div>           
         </div>        

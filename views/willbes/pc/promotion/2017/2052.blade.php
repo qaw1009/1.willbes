@@ -23,7 +23,7 @@
         .event01 {background:#429697;}
 
         .event01_1 {background:#fff; width:1120px; margin:0 auto; padding:100px 0; font-size:14px}
-        .event01_1 .title { font-size:40px; color:#67c0c1; margin-bottom:30px}
+        .event01_1 .title { font-size:40px; color:#67c0c1; margin-bottom:50px}
         .event01_1 span {vertical-align:top}
 
         .event02 {background:#65bebf; position:relative; padding-bottom:100px}
@@ -84,106 +84,19 @@
         </div>
 
         <div class="evtCtnsBox event01_1">
-            <div class="title NSK-Black">합겨수기 등록하기</div>
-            {{--글쓰기--}}
-            <div class="willbes-Leclist c_both">
-                <div class="LecWriteTable">                        
-                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
-                        <colgroup>
-                            <col style="width: 120px;">
-                            <col>
-                        </colgroup>
-                        <tbody>
-                            <tr>
-                                <td class="w-tit bg-light-white strong">과정선택<span class="tx-light-blue">(*)</span></td>
-                                <td class="w-selected tx-left pl30">
-                                    <select id="div" name="div" title="div" class="seleDiv" style="width:250px;">
-                                        <option selected="selected">과목</option>
-                                        <option value="영어">영어</option>
-                                        <option value="유아">유아</option>
-                                        <option value="국어">국어</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white strong">제목<span class="tx-light-blue">(*)</span></td>
-                                <td class="w-text tx-left pl30">
-                                    <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white strong">내용<span class="tx-light-blue">(*)</span></td>
-                                <td class="w-textarea write tx-left pl30">
-                                    <textarea></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="w-tit bg-light-white strong">첨부</td>
-                                <td class="w-file answer tx-left">
-                                    <ul class="attach">
-                                        <li>
-                                            <input type="file" class="input-file" size="3">
-                                        </li>
-                                        <li>
-                                            <input type="file" class="input-file" size="3">
-                                        </li>
-                                        <li>
-                                            • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
-                                            • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tx-left" colspan="2">                                                    
-                                    <div class="info">
-                                        <h5>개인정보 수집 및 이용에 대한 안내<span class="tx-light-blue">(*)</span></h5>
-                                        <ul>
-                                            <li>
-                                                개인정보 수집 이용 목적<br>
-                                                - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
-                                                - 이벤트 참여에 따른 강의 수강자 목록에 활용
-                                            </li>
-                                            <li>
-                                                개인정보 수집 항목<br>
-                                                - 신청인의 이름
-                                            </li>
-                                            <li>
-                                                개인정보 이용기간 및 보유기간<br>
-                                                - 본 수집, 활용목적 달성 후 바로 파기
-                                            </li>
-                                            <li>
-                                                개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                                                - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은
-                                                이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                                            </li>
-                                        </ul>                                        
-                                        <div>
-                                            위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
-                                            <label class="ml10"><input type="radio"> 동의함</label> <label class="ml10"><input type="radio"> 동희하지 않습니다.</label>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="search-Btn mt20 h36 p_re">
-                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                            <span class="tx-purple-gray">취소</span>
-                        </button>
-                        <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
-                            <span>저장</span>
-                        </button>
-                    </div>
-
-                </div>
-            </div>
+            <div class="title NSK-Black">합격수기 등록하기</div>
 
             {{--글목록--}}
-            <div class="willbes-Leclist c_both mt150">
+            <div class="willbes-Leclist c_both NSK">
                 <div class="willbes-Lec-Selected tx-gray c_both mt-zero mb-zero">
-                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
+                    <span class="willbes-Lec-Search willbes-SelectBox mb20 f_left">
+                        <select id="" name="" title="">
+                            <option selected="selected">카테고리</option>
+                            <option value="교육학">교육학</option>
+                            <option value="유아">유아</option>
+                            <option value="초등">초등</option>
+                            <option value="중등">중등</option>
+                        </select>
                         <select id="" name="" title="">
                             <option selected="selected">과목</option>
                             <option value="과목1">과목1</option>
@@ -199,6 +112,7 @@
                             </button>
                         </div>
                     </span>
+                    <div class="subBtn blue f_right"><a href="#none" onclick="openWin('profNotice')">등록하기 ></a></div>
                 </div>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -343,6 +257,189 @@
                             <li><a href="#none">10</a></li>
                             <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- willbes-Layer-Notice -->
+            <div id="profNotice" class="willbes-Layer-Board">
+                <a class="closeBtn" href="#none" onclick="closeWin('profNotice')">
+                    <img src="{{ img_url('prof/close.png') }}">
+                </a>
+                <div class="Layer-Tit NG tx-dark-black tx-left">합격수기 등록하기</div>
+                <div class="Layer-Cont">
+                    <div class="willbes-Leclist c_both mt20">
+                        <div class="LecWriteTable">                        
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
+                                <colgroup>
+                                    <col style="width: 120px;">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-tit bg-light-white strong">과정선택<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-selected tx-left pl30">
+                                            <select id="process" name="process" title="process" class="seleProcess" style="width: 250px;">
+                                                <option selected="selected">카테고리</option>
+                                                <option value="교육학">교육학</option>
+                                                <option value="초등">초등</option>
+                                                <option value="중등">중등</option>
+                                            </select>
+                                            <select id="div" name="div" title="div" class="seleDiv" style="width:250px;">
+                                                <option selected="selected">과목</option>
+                                                <option value="영어">영어</option>
+                                                <option value="유아">유아</option>
+                                                <option value="국어">국어</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white strong">제목<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-text tx-left pl30">
+                                            <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white strong">내용<span class="tx-light-blue">(*)</span></td>
+                                        <td class="w-textarea write tx-left pl30">
+                                            <textarea placeholder="* 500자 이상 입력해 주세요.
+                                            &#13;&#10;* 합격수기와 관련없는 내용은 삭제할 수 있습니다.
+                                            &#13;&#10;* 합격인증 및 파일첨부는 필수사항이 아닙니다."></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-tit bg-light-white strong">첨부</td>
+                                        <td class="w-file answer tx-left">
+                                            <ul class="attach">
+                                                <li>
+                                                    <input type="file" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    <input type="file" class="input-file" size="3">
+                                                </li>
+                                                <li>
+                                                    • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
+                                                    • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tx-left" colspan="2">                                                    
+                                            <div class="info">
+                                                <h5>개인정보 수집 및 이용에 대한 안내<span class="tx-light-blue">(*)</span></h5>
+                                                <ul>
+                                                    <li>
+                                                        개인정보 수집 이용 목적<br>
+                                                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
+                                                        - 이벤트 참여에 따른 강의 수강자 목록에 활용
+                                                    </li>
+                                                    <li>
+                                                        개인정보 수집 항목<br>
+                                                        - 신청인의 이름
+                                                    </li>
+                                                    <li>
+                                                        개인정보 이용기간 및 보유기간<br>
+                                                        - 본 수집, 활용목적 달성 후 바로 파기
+                                                    </li>
+                                                    <li>
+                                                        개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                                                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은
+                                                        이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                                                    </li>
+                                                </ul>                                        
+                                                <div>
+                                                    위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
+                                                    <label class="ml10"><input type="radio"> 동의함</label> <label class="ml10"><input type="radio"> 동희하지 않습니다.</label>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="search-Btn mt20 h36 p_re">
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
+                                    <span class="tx-purple-gray">취소</span>
+                                </button>
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                    <span>저장</span>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <br/><br/><br/>
+
+                    <!-- View -->
+                    <div class="willbes-Leclist c_both">
+                        <div class="LecViewTable">
+                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
+                                <colgroup>
+                                    <col>
+                                    <col style="width: 90px;">
+                                    <col style="width: 180px;">
+                                    <col style="width: 150px;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th colspan="4" class="w-list tx-left pl20 strong">
+                                            <img src="{{ img_url('prof/icon_HOT.gif') }}" class="mr5"> 2020학년도 최종합격수기
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-acad tx-left pl20">
+                                            <dl>
+                                                <dt>중등<span class="row-line">|</span></dt>
+                                                <dt>영어</dt>
+                                            </dl>
+                                            <span class="row-line">|</span>
+                                        </td>
+                                        <td>홍길*<span class="row-line">|</span></td>
+                                        <td class="w-date">2018-00-00 00:00:00<span class="row-line">|</span></td>
+                                        <td class="w-click"><strong>조회수</strong> 123</td>
+                                    </tr>
+                                </thead>
+                                <tbody>                                
+                                    <tr>
+                                        <td class="w-txt tx-left" colspan="4">
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.<br/>
+                                            이달의 개강 강좌 공지입니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-file tx-left pl20" colspan="4">
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 2020_중등_영어_합격수기.hwp</a>
+                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 20200914_100432.jpg</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
+                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
+                                    <span>수정</span>
+                                </button>
+                            </div>
+                            <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
+                                <colgroup>
+                                    <col style="width: 150px;">
+                                    <col style="width: 640px;">
+                                    <col style="width: 150px;">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
+                                        <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-next bg-light-gray"><strong>다음글</strong></td>
+                                        <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a></td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

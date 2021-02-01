@@ -206,15 +206,17 @@
                 <div class="tab02s_05" id="apply">
                     <img src="https://static.willbes.net/public/images/promotion/2021/01/2000_05.jpg" alt="" usemap="#Map2000_apply" border="0"  />
                     <map name="Map2000_apply" id="Map2000_apply">
-                        <area shape="rect" coords="794,465,987,515" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174807" target="_blank" />
-                        <area shape="rect" coords="795,534,988,585" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174808" target="_blank" />
-                        <area shape="rect" coords="683,874,873,949" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178353" target="_blank" />
-                    </map>   
-                </div>                 
+                        <area shape="rect" coords="535,475,726,526" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178349" target="_blank" />
+                        <area shape="rect" coords="735,475,926,525" href="https://pass.willbes.net/pass/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1362&subject_name=%EA%B8%B0%EA%B3%84%EC%9D%BC%EB%B0%98&tab=open_lecture" target="_blank" />
+                        <area shape="rect" coords="534,603,725,653" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178350" target="_blank" />
+                        <area shape="rect" coords="736,603,927,653" href="https://pass.willbes.net/pass/professor/show/prof-idx/51149?cate_code=3052&subject_idx=1363&subject_name=%EA%B8%B0%EA%B3%84%EC%84%A4%EA%B3%84&tab=open_lecture" target="_blank" />
+                        <area shape="rect" coords="684,874,873,949" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178353" target="_blank" />
+                    </map>
+                </div>               
+                  
             </div>
         </div>   
 
-        
         <!--레이어팝업-->  
         <div id="popup3" class="Pstyle">
             <span class="b-close NSK-Black">X</span>

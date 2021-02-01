@@ -14,7 +14,7 @@
         </div>
     </div>
    
-    <div class="willbes-Txt2 NGR tx-blue">
+    <div class="willbes-Txt2 tx-blue">
         1기스터디
     </div>
 
@@ -29,7 +29,7 @@
                         <td class="MoreBtn tx-center">></td>
                     </tr>
                     <tr>
-                        <td class="pl0 pr0"> 
+                        <td class="pl0 pr0" colspan="2"> 
                             <ul class="payLecList payLecList02">
                                 <li><strong>결제일</strong> 2020-10-13 00:00:00</li>
                                 <li><strong>결제금액</strong> 2,600,000</li>

@@ -408,6 +408,7 @@ class OrderListFModel extends BaseOrderFModel
                         on OP.ProdCode = PL.ProdCode
                 where O.SiteCode = ?
                     and O.CompleteDatm between ? and ?
+                    and OP.RealPayPrice > 0
                     and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '"
                 group by OP.ProdCode	
                 order by PayProdCnt desc, OP.ProdCode desc

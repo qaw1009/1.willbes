@@ -46,12 +46,12 @@
 .gosi-gate-bntop .Maintab:after {content:''; display:block; clear:both}
 .gosi-gate-bntop .Maintab li {
     display: inline-block; 
-    float:left;
+    /*float:left;*/
     height: 50px;
     font-size: 14px;
     color: #fff;
     line-height: 50px;
-    width: 10%;
+    width: calc(10% - 2px);
 }
 .gosi-gate-bntop .MaintabList a {
     display: block;

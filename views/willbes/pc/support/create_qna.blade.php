@@ -55,7 +55,7 @@
                                     @endforeach
                                 </select>
 
-                                <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus d_none" style="width: 250px;">
+                                <select id="s_campus" name="s_campus" title="캠퍼스" class="seleCampus" style="width: 250px;">
                                     <option value="">캠퍼스 선택</option>
                                     @foreach($arr_base['campus'] as $row)
                                         <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" @if($data['CampusCcd'] == $row['CampusCcd'] || element('s_campus',$arr_input) == $row['CampusCcd'])selected="selected"@endif>{{$row['CcdName']}}</option>
@@ -183,6 +183,7 @@
     $(document).ready(function() {
         @if(empty(element('s_cate_code_disabled', $arr_input)) === true || element('s_cate_code_disabled', $arr_input) != 'Y')
             $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
+            $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
         @endif
         $regi_form.find('select[name="s_subject_idx"]').chained("#s_cate_code");
 

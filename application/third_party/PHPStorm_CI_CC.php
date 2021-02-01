@@ -216,6 +216,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property TaskModel $taskModel                                           Task Model Class
  * @property NpayModel $npayModel                                           Npay Model Class
  * @property ExamTakeInfoModel $examTakeInfoModel                        Exam TakeInfo Model Class
+ * @property AuthGiveModel $authGiveModel                                           Auth Model Class
+ * @property AuthGiveApplyModel $authGiveApplyModel                             Auth Apply Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

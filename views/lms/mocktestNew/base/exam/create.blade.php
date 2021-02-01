@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">모의고사카테고리<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">모의고사카테고리<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
                         <button type="button" class="btn btn-sm btn-primary act-searchCate" >카테고리검색</button>
                         <div id="selected_category" class="row mt-10">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-1-1" for="">문제영역<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">문제영역<span class="required">*</span></label>
                     <div class="col-md-10 form-inline">
                         <button type="button" class="btn btn-sm btn-primary act-searchArea" >문제영역검색</button>
                         <span id="selected_area" class="mt-10">
@@ -74,9 +74,9 @@
                     <div class="col-md-4 item">
                         <input type="text" class="form-control" id="PapaerName" name="PapaerName" value="{{$data['PapaerName']}}" title="과목문제지명" required="required">
                     </div>
-                    <label class="control-label col-md-1-1" for="">과목문제지코드<span class="required">*</span></label>
+                    <label class="control-label col-md-1-1">과목문제지코드<span class="required">*</span></label>
                     <div class="col-md-4 form-inline">
-                        {{$data['MpIdx']}}
+                        <span class="form-control-static">{{$data['MpIdx']}}</span>
                     </div>
                 </div>
 

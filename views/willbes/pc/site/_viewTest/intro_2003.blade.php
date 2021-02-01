@@ -60,8 +60,10 @@
             </ul>
         </div>
 
-        <div class="gosi-bnfull">
-            {!! banner_html(element('인트로_상단띠배너', $data['banner'])) !!}
+        <div class="gosi-bnfull-Sec">
+            <div class="gosi-bnfull">
+                {!! banner_html(element('인트로_상단띠배너', $data['banner']), 'sliderBar') !!}
+            </div>
         </div>
 
         <div class="Section gosi-gate-Sec">
@@ -459,6 +461,17 @@
 
             $('#imgBannerRight1').click(function (){
                 slidesImg1.goToNextSlide();
+            });
+
+            $('.sliderBar').bxSlider({
+                mode:'fade',
+                auto: true,
+                touchEnabled: false,
+                controls: false,
+                sliderWidth:2000,
+                pause: 3000,
+                autoHover: true,
+                pager: false,
             });
         });
     </script>

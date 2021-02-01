@@ -94,9 +94,15 @@
         </ul>
     </div>
 
-    <div class="gosi-bnfull">
-        <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx65.jpg" alt="배너명"></a>
+    <div class="gosi-bnfull-Sec">
+        <div class="gosi-bnfull">
+            <div class="sliderBar">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx65.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_fullx65_01.jpg" alt="배너명"></a></div>
+            </div>
+        </div>
     </div>
+
 
     <div class="Section gosi-gate-Sec">
         <div class="widthAuto">
@@ -747,6 +753,19 @@
 
 
 <script type="text/javascript">
+    $(function() {
+        $('.sliderBar').bxSlider({
+            mode:'fade',
+            auto: true,
+            touchEnabled: false,
+            controls: false,
+            sliderWidth:2000,
+            pause: 3000,
+            autoHover: true,
+            pager: false,
+        });
+    });
+
     //상단 메인 배너
     $(function(){ 
         var slidesImg = $(".MaintabSlider").bxSlider({
@@ -754,7 +773,6 @@
             touchEnabled: false,
             speed:400,
             pause:5000,
-            sliderWidth:2000,
             auto : true,	
             autoHover: true,						
             pagerCustom: '#MainRollingDiv',

@@ -3912,10 +3912,38 @@ body.memBody #Footer {
 	line-height: 22px;
 }
 
+.lecTable tr.bgst01 th {background:#f4f4f4; border-bottom:1px solid #fff}
+.lecTable tr.bgst01 td {padding-left:10px; padding-right:10px}
+.lecTable tr.bgst01:nth-child(1) td {border-top:1px solid #ccc}
+
 .btnSt01 {background: #1a8ccc; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt01border {border:1px solid #1a8ccc; color:#1a8ccc !important; padding: 5px 15px; display: inline-block !important;}
 .btnSt02 {background: #333; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
-.btnSt03 {border:1px solid #c00; color:#c00 !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt02border {border:1px solid #333; color:#333 !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt03 {background:#ed1c24; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
+.btnSt03border {border:1px solid #ed1c24; color:#ed1c24 !important; padding: 5px 15px; display: inline-block !important;}
 .btnStfull01 {background: #333; color:#fff !important; padding: 5px 15px; display: block; border-radius:15px; text-align:center; font-size:13px}
+.btnStfull02 {border:1px solid #ed1c24; background: #fff; color:#ed1c24 !important; padding: 5px 15px; display: block; border-radius:15px; text-align:center; font-size:13px}
+
+.aBox {
+	display: inline-block;
+	width: 60px;
+	height: 22px;
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 20px;
+	text-align: center;
+	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica",
+		"Apple SD Gothic Neo", "sans-serif";
+}
+.blueBox {background: #1a8ccc;color:#fff;}
+.blueBoxborder {border:1px solid #1a8ccc; color:#1a8ccc;}
+.redBox {background: #ed1c24;color:#fff;}
+.waitBox_block {
+	border: 1px solid #4b4b51 !important;
+	color: #4b4b51 !important;
+	background: #fff !important;
+}
 
 .btnblue {
 	background: #1a8ccc;
@@ -4553,7 +4581,7 @@ body.memBody #Footer {
 	right: 0;
 	float: right;
 	display: inline-block;
-	z-index: 10;
+	z-index: 1;
 	background: #000;
 	width: 40px;
 	height: 40px;
@@ -5779,6 +5807,26 @@ body.memBody #Footer {
 	padding-right: 0;
 	display: inline-block;
 }
+
+.lecTable .SubTit {
+	clear: both;
+	margin-bottom: 10px;
+}
+.lecTable .Txt {
+	width: 100%;
+
+}
+.lecTable .Txt .aBox {float:left; display:block}
+.lecTable .Txt .SubTxt {
+	float: left;
+	display:block;
+	line-height: 22px;
+	margin-left:10px;
+	width: calc(100% - 70px);
+}
+.lecTable .SubTit:after,
+.lecTable .Txt:after {content:''; display:block; clear:both}
+
 
 /*배송 주소록 팝업*/
 .addressListBox {

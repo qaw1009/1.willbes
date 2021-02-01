@@ -823,6 +823,7 @@ class RegGoodsModel extends WB_Model
                             /*'ProdCode'    => '999999',*/
                             'MpIdx'       => element('MpIdx', $form_data)[$k],
                             'MockType'    => element('MockType', $form_data)[$k],
+                            'IsOpen'    => element('IsOpen', $form_data)[$k],
                             'OrderNum'    => element('OrderNum', $form_data)[$k],
                             'RegIp'       => $this->input->ip_address(),
                             'RegDatm'     => date("Y-m-d H:i:s"),
@@ -833,6 +834,7 @@ class RegGoodsModel extends WB_Model
                             'PmrpIdx' => $v,
                             'MpIdx'       => element('MpIdx', $form_data)[$k],
                             'MockType'    => element('MockType', $form_data)[$k],
+                            'IsOpen'    => element('IsOpen', $form_data)[$k],
                             'OrderNum'    => element('OrderNum', $form_data)[$k],
                             'UpdDatm' => date("Y-m-d H:i:s"),
                             'UpdAdminIdx' => $this->session->userdata('admin_idx'),

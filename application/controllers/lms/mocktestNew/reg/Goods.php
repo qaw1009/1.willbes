@@ -242,6 +242,7 @@ class Goods extends BaseMocktest
             ['field' => 'MpIdx[]', 'label' => '과목선택', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockType[]', 'label' => '과목선택', 'rules' => 'trim|required|in_list[E,S]'],
             ['field' => 'OrderNum[]', 'label' => '과목정렬', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'IsOpen[]', 'label' => '오픈여부', 'rules' => 'trim|required'],
 
             ['field' => 'IsSms', 'label' => '문자사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
             ['field' => 'Memo', 'label' => '문자내용', 'rules' => 'trim|callback_validateRequiredIf[IsSms,Y]'],

@@ -121,15 +121,15 @@ if (!function_exists('banner_html')) {
                     $map_link = "href='#none'";
                     if (empty($map_row['LinkUrl']) === false && $map_row['LinkUrl'] != '#') {
                         if ($map_row['LinkUrlType'] == 'J') {
-                            $map_link = 'onclick="'.$map_row['LinkUrl'].'"';
+                            $map_link .= ' onclick="'.$map_row['LinkUrl'].'"';
                         } else {
                             if ($row['LinkType'] == 'layer') {
                                 $set_map_link_url = app_to_env_url($map_row['LinkUrl']) . '/event/popupRegistCreateByBanner?banner_idx=' . $row['BIdx'];
-                                $map_link = 'onclick="event_layer_popup(\'' . $set_map_link_url . '\');"';
+                                $map_link .= ' onclick="event_layer_popup(\'' . $set_map_link_url . '\');"';
                             } else {
                                 $set_map_link_url = front_app_url('/banner/click?banner_idx=' . $row['BIdx'] . '&return_url=' . urlencode($map_row['LinkUrl']) . '&link_url_type=' . urlencode($row['LinkUrlType']), 'www');
                                 if ($row['LinkType'] == 'popup') {
-                                    $map_link = 'onclick="popupOpen(\'' . $set_map_link_url . '\');"';
+                                    $map_link .= ' onclick="popupOpen(\'' . $set_map_link_url . '\');"';
                                 } else {
                                     $map_link = 'href="' . $set_map_link_url . '" target=' . $row['LinkType'];
                                 }

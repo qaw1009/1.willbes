@@ -119,7 +119,11 @@
                                     <ul>
                                         @foreach($arr_base['register_list'] as $key => $val)
                                             @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                                <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @if(time() >= strtotime($data['RegisterEndDate']. '+1 days'))
+                                                    <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @else
+                                                    <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
+                                                @endif
                                             @endif
                                         @endforeach
                                     </ul>

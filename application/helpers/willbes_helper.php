@@ -136,7 +136,7 @@ if (!function_exists('banner_html')) {
                             }
                         }
                     }
-                    $map_data .= "<area shape='{$map_row['ImgType']}' coords='{$map_row['ImgArea']}' {$map_link} style='cursor: pointer;'/>";
+                    $map_data .= "<area shape='{$map_row['ImgType']}' coords='{$map_row['ImgArea']}' {$map_link} style='cursor: hand'/>";
                 }
                 $map_data .= '</map>';
             }

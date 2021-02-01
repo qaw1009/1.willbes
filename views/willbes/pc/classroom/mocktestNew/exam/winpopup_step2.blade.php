@@ -100,7 +100,7 @@
                             @endif
                         </div>
 
-                        <div class="answer-sheet">
+                        <div class="answer-sheet" id="answer_sheet_box_{{$subject_key}}" style="display: none">
                             <div class="exam-txt">
                                 * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
                                 * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
@@ -196,9 +196,11 @@
             $.each(array_is_Open, function (key,value) {
                 if (value == 'Y') {
                     $('#paper_box_'+key).show();
+                    $('#answer_sheet_box_'+key).show();
                     $('#paper_close_box_'+key).hide();
                 } else {
                     $('#paper_box_'+key).hide();
+                    $('#answer_sheet_box_'+key).hide();
                     $('#paper_close_box_'+key).show();
                 }
             })
@@ -262,9 +264,11 @@
                 if (ret.ret_cd) {
                     if (ret.ret_data == 'Y') {
                         $('#paper_box_'+m_id).show();
+                        $('#answer_sheet_box_'+m_id).show();
                         $('#paper_close_box_'+m_id).hide();
                     } else {
                         $('#paper_box_'+m_id).hide();
+                        $('#answer_sheet_box_'+m_id).hide();
                         $('#paper_close_box_'+m_id).show();
                     }
                 }

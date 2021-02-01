@@ -19,7 +19,7 @@
 .gosi-gate-menu li:last-child a {border:0}
 .gosi-gate-menu ul:after {content:''; display:block; clear:both}
 
-.gosi-bnfull-Sec {position:relative; margin:0; height: 65px !important; background-color: #ba560e}
+.gosi-bnfull-Sec {position:relative; margin:0; height: 65px !important;}
 .gosi-bnfull {position: absolute;
     top:0;
     left:50%;

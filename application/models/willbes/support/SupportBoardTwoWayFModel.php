@@ -955,6 +955,7 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $from = "
             FROM {$this->_table['twoway_board_2']}
             left join {$this->_table['lms_member']} as m on b.RegMemIdx = m.MemIdx
+            left join {$this->_table['product_subject']} as ps on b.SubjectIdx = ps.SubjectIdx and ps.IsStatus = 'Y' 
         ";
 
         if (empty($cate_code) === false || empty($arr_condition['EQ']['d.OnOffLinkCateCode']) === false) {

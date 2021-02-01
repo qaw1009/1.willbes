@@ -1565,21 +1565,35 @@ class RegGradeModel extends WB_Model
      */
     public function answerDataExcel($arr_condition)
     {
-        $column = 'sc1.CcdName AS TakeMockPartName,ps.SubjectName,mr.TakeNumber,m.MemName,mat.Answer,mq.QuestionNo';
+        $column = 'r.TakeMockPartName, r.SubjectName, r.TakeNumber, r.MemName, m.Answer';
         $where = $this->_conn->makewhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $order_by = " ORDER BY mat.MpIdx, mat.MrIdx, mat.MqIdx ASC";
+        $order_by = " ORDER BY m.MpIdx, m.MrIdx ASC";
 
         $from = "
-            FROM {$this->_table['mock_register']} AS mr
-            INNER JOIN {$this->_table['mock_register_r_paper']} AS mrrp ON mr.MrIdx = mrrp.MrIdx AND mr.ProdCode = mrrp.ProdCode
-            INNER JOIN {$this->_table['mock_answertemp']} AS mat ON mat.MrIdx = mrrp.MrIdx AND mat.ProdCode = mrrp.ProdCode AND mat.MpIdx = mrrp.MpIdx
-            INNER JOIN {$this->_table['mock_questions']} AS mq ON mat.MqIdx = mq.MqIdx
-            INNER JOIN {$this->_table['lms_member']} AS m ON mr.MemIdx = m.MemIdx
-            INNER JOIN {$this->_table['product_subject']} AS ps ON mrrp.SubjectIdx = ps.SubjectIdx
-            INNER JOIN {$this->_table['sys_code']} AS sc1 ON mr.TakeMockPart = sc1.Ccd
+            FROM (
+                SELECT
+                a.ProdCode,a.MrIdx,a.MpIdx
+                ,GROUP_CONCAT(a.Answer ORDER BY a.MqIdx ASC) AS Answer
+                FROM {$this->_table['mock_answerpaper']} AS a
+                INNER JOIN {$this->_table['mock_questions']} AS b ON a.MqIdx = b.MqIdx
+                {$where}
+                GROUP BY a.MrIdx,a.MpIdx
+            ) AS m
+            
+            INNER JOIN (
+                SELECT
+                a.ProdCode, a.MrIdx, b.MpIdx,
+                sc1.CcdName AS TakeMockPartName,c.SubjectName,a.TakeNumber,m.MemName
+                FROM {$this->_table['mock_register']} AS a
+                INNER JOIN {$this->_table['mock_register_r_paper']} AS b ON a.MrIdx = b.MrIdx AND a.ProdCode = b.ProdCode
+                INNER JOIN {$this->_table['lms_member']} AS m ON a.MemIdx = m.MemIdx
+                INNER JOIN {$this->_table['product_subject']} AS c ON b.SubjectIdx = c.SubjectIdx
+                INNER JOIN {$this->_table['sys_code']} AS sc1 ON a.TakeMockPart = sc1.Ccd
+                {$where}
+            ) AS r ON m.ProdCode = r.ProdCode AND m.MrIdx = r.MrIdx AND m.MpIdx = r.MpIdx
         ";
-        return $this->_conn->query('select ' . $column . $from . $where. $order_by)->result_array();
+        return $this->_conn->query('select ' . $column . $from . $order_by)->result_array();
     }
 
 

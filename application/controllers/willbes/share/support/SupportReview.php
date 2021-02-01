@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportReview extends BaseSupport
 {
-    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject');
+    protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject', 'product/baseProductF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('create', 'store', 'delete', 'destroyFile');
@@ -165,6 +165,7 @@ class SupportReview extends BaseSupport
         $column .= ', IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName';
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $column .= ', ps.SubJectName';
         //$order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
         $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
 
@@ -574,6 +575,282 @@ class SupportReview extends BaseSupport
 
         $result = $this->supportBoardTwoWayFModel->removeFile($this->_reqP('attach_idx'));
         $this->json_result($result, '삭제 되었습니다.', $result);
+    }
+
+    /**
+     * 합격수기 리스트 ajax
+     * @return mixed
+     */
+    public function listReviewAjax()
+    {
+        $list = [];
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $get_params = http_build_query($arr_input);
+
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $s_is_display = element('s_is_display',$arr_input);
+        $s_is_my_contents = element('s_is_my_contents',$arr_input);
+        $on_off_link_cate_code = element('on_off_link_cate_code', $arr_input);
+        $view_type = element('view_type',$arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
+        $get_page_params = 's_keyword='.urlencode($s_keyword);
+        $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code;
+        $get_page_params .= '&s_campus='.$s_campus;
+        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
+        $get_page_params .= '&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
+
+        //사이트목록 (과정)
+        $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
+        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
+
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
+
+        if(empty($arr_base['category']) === false){
+            foreach ($arr_base['category'] as $row){
+                $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
+            }
+        }
+
+        // 프론트 ui
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
+            $arr_swich = null;
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'b.BmIdx' => $this->_bm_idx,
+                'b.IsUse' => 'Y',
+                'b.ProfIdx' => $prof_idx,
+                'b.SubjectIdx' => $subject_idx,
+                'b.CampusCcd' => $s_campus,
+                'd.OnOffLinkCateCode' => $on_off_link_cate_code,
+                'b.SiteCode' => $s_site_code
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'b.Title' => $s_keyword,
+                    'b.Content' => $s_keyword
+                ]
+            ]
+        ];
+
+        // 공지숨기기
+        if ($s_is_display == 1) {
+            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                'b.IsBest' => '0'
+            ]);
+        }
+
+        // 내 학격수기 보기
+        if ($s_is_my_contents == 1) {
+            if (empty($this->session->userdata('mem_idx')) === false) {
+                $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                    'b.RegMemIdx' => $this->session->userdata('mem_idx'),
+                    'b.RegType' => '0'
+                ]);
+            } else {
+                $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
+                    'b.RegMemIdx' => '0',
+                    'b.RegType' => '0'
+                ]);
+            }
+        }
+
+        $column = 'b.BoardIdx, b.CampusCcd, b.TypeCcd, b.IsBest, b.RegType, b.RegMemIdx, b.ProdName, b.SubjectIdx';
+        $column .= ', b.Title, b.Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt';
+        $column .= ', DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
+        $column .= ', b.IsPublic, b.CampusCcd_Name, b.TypeCcd_Name';
+        $column .= ', b.SiteName, b.ReplyStatusCcd, b.ReplyStatusCcd_Name';
+        $column .= ', IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName';
+        $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
+        $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
+        $column .= ', ps.SubJectName';
+        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
+        // 통합사이트인 공지만 나오도록
+        $arr_condition['RAW'] = [
+            ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
+        ];
+
+        $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition, $s_cate_code);
+        $paging = $this->pagination($this->_default_path . '/listReviewAjax/?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
+        if ($total_rows > 0) {
+            $list = $this->supportBoardTwoWayFModel->listBoardForQna(false,$arr_condition, $s_cate_code, $column, $paging['limit'], $paging['offset'], $order_by, $order_by);
+            foreach ($list as $idx => $row) {
+                $list[$idx]['AttachData'] = json_decode($row['AttachData'], true);       //첨부파일
+            }
+        }
+
+        $this->load->view('promotion/review_list_ajax', [
+            'default_path' => $this->_default_path,
+            'arr_base' => $arr_base,
+            'arr_input' => $arr_input,
+            'list'=>$list,
+            'paging' => $paging,
+            'get_params' => $get_params,
+            'arr_swich' => $arr_swich,
+        ]);
+    }
+
+    public function showReviewLayer()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $s_is_display = element('s_is_display',$arr_input);
+        $s_is_my_contents = element('s_is_my_contents',$arr_input);
+        $view_type = element('view_type',$arr_input);
+        $page = element('page',$arr_input);
+
+        $get_params = 's_keyword='.urlencode($s_keyword);
+        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code;
+        $get_params .= '&s_campus='.$s_campus;
+        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
+        $get_params .= '&page='.$page;
+
+        if (empty($board_idx)) {
+            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+        }
+
+        //과목조회
+        $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
+
+        $arr_condition = [
+            'EQ' => [
+                'BmIdx' => $this->_bm_idx,
+                'IsUse' => 'Y'
+            ],
+        ];
+
+        if (empty($s_campus) === false) {
+            $arr_condition['ORG2']['RAW'] = ['(b.CampusCcd = "' => $s_campus . '" OR b.CampusCcd = 605999)'];
+        }
+
+        $column = '
+            BoardIdx, b.SiteCode, MdCateCode, CampusCcd, SubjectIdx
+            , RegType, TypeCcd, IsBest, IsPublic
+            , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName
+            , Title, Content, (b.ReadCnt + b.SettingReadCnt) as TotalReadCnt
+            , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm
+            , RegMemIdx, RegMemId, RegMemName
+            , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+            , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+            , VocCcd_Name, MdCateCode_Name, SubJectName
+            , IF(RegType=1, \'\', RegMemName) AS RegName
+            , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+            , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName, Category_String
+            , AttachData
+        ';
+
+        $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+        if (empty($data)) {
+            show_alert('게시글이 존재하지 않습니다.', 'back');
+        }
+        // 첨부파일 이미지일 경우 해당 배열에 담기
+        $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
+        $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
+
+        if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+            show_alert('잘못된 접근 입니다.', 'back');
+        }
+
+        $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+        if($result !== true) {
+            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+        }
+
+        $arr_swich = element($this->_bm_idx,$this->_on_off_swich);
+        if(!(empty($arr_swich) === false && in_array($this->_site_code,$arr_swich['site_code']) === true)){
+            $arr_swich = null;
+        }else{
+            if(empty($data['RegName']) === true){ // 등록 게시글의 회원명 조회
+                $data['RegName'] = $this->supportBoardTwoWayFModel->getBoardForMemberInfo($board_idx)['RegName'];
+            }
+        }
+
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategory(null);
+        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+
+        #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
+        $pre_data = [];
+        $next_data = [];
+        if($data['IsBest'] != 1) {
+            $arr_condition_base = [
+                'EQ' => [
+                    'b.SiteCode' => $this->_site_code
+                    , 'b.IsBest' => '0'
+                    , 'b.BmIdx' => $this->_bm_idx
+                    , 'b.IsUse' => 'Y'
+                    , 'b.ProfIdx' => $prof_idx
+                    , 'b.SubjectIdx' => $subject_idx
+                ],
+                'ORG' => [
+                    'LKB' => [
+                        'b.Title' => $s_keyword
+                        , 'b.Content' => $s_keyword
+                    ]
+                ],
+                'LKB' => [
+                    'Category_String' => $s_cate_code
+                ],
+            ];
+
+            if (empty($s_campus) === false) {
+                $arr_condition_base['ORG2']['RAW'] = ['(b.CampusCcd = "' => $s_campus . '" OR b.CampusCcd = 605999)'];
+            }
+
+            $pre_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'LT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $pre_order_by = ['b.BoardIdx' => 'Desc'];
+
+            $next_arr_condition = array_merge($arr_condition_base, [
+                'ORG1' => [
+                    'GT' => ['b.BoardIdx' => $board_idx]
+                ]
+            ]);
+            $next_order_by = ['b.BoardIdx' => 'Asc'];
+
+            $pre_data = $this->supportBoardTwoWayFModel->findBoard(false, $pre_arr_condition, $column, 1, null, $pre_order_by);
+            $next_data = $this->supportBoardTwoWayFModel->findBoard(false, $next_arr_condition, $column, 1, null, $next_order_by);
+        }
+
+        $this->load->view('promotion/review_show_layer', [
+                'default_path' => $this->_default_path,
+                'arr_base' => $arr_base,
+                'arr_input' => $arr_input,
+                'get_params' => $get_params,
+                'data' => $data,
+                'board_idx' => $board_idx,
+                'reply_type_complete' => $this->_groupCcd['reply_status_ccd_complete'],
+                'pre_data' => $pre_data,
+                'next_data' =>  $next_data,
+                'arr_swich' => $arr_swich,
+            ]
+        );
     }
 
     /**

@@ -408,21 +408,38 @@ class Grade extends BaseMocktest
         }
 
         $prod_code = $this->_reqP('prod_code');
-        $headers = ['직렬','과목','응시번호','이름','마킹정보','번호'];
+        $headers = ['직렬','과목','응시번호','이름'];
+        $number = [];
+        for($i=1; $i<=40; $i++) {
+            array_push($number, $i);
+        }
+        $headers = array_merge($headers, $number);
         $file_name = '회원별 마킹정보_' . $prod_code . '_' . date('Y-m-d');
 
-        $arr_condition = ['EQ' => ['mat.ProdCode' => $prod_code]];
+        $arr_condition = ['EQ' => ['a.ProdCode' => $prod_code]];
         $list = $this->regGradeModel->answerDataExcel($arr_condition);
+
+        $excel_data = [];
+        foreach ($list as $key => $row) {
+            $excel_data[$key]['TakeMockPartName'] = $row['TakeMockPartName'];
+            $excel_data[$key]['SubjectName'] = $row['SubjectName'];
+            $excel_data[$key]['TakeNumber'] = $row['TakeNumber'];
+            $excel_data[$key]['MemName'] = $row['MemName'];
+            $arr_answer = explode(',',$row['Answer']);
+            foreach ($arr_answer as $a_key => $a_val) {
+                $excel_data[$key][$a_key] = $a_val;
+            }
+        }
 
         $download_query = $this->regGradeModel->getLastQuery();
         $this->load->library('approval');
-        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+        if($this->approval->SysDownLog($download_query, $file_name, count($excel_data)) !== true) {
             show_alert('로그 저장 중 오류가 발생하였습니다.','back');
         }
 
         // export excel
         $this->load->library('excel');
-        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+        if ($this->excel->exportHugeExcel($file_name, $excel_data, $headers) !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
     }

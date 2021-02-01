@@ -44,7 +44,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2056m_03.jpg" alt="소문내기 이벤트" >     
             <div class="txt01">* 이벤트 참여는 PC 페이지에서만 가능합니다.</div>      
             <div class="txt02">
-                <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/2056" target="_blank">        
+                <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2056" target="_blank">        
                     <span class="NSK-Black">강의 소문내고 수강권 받자!</span>             
                     <strong><img src="https://static.willbes.net/public/images/promotion/common/icon_pointer.png" alt="" ><strong>
                 </a>

@@ -207,13 +207,16 @@
                 </div>
 
                  <div class="tab02s_05" id="apply">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2001_05.jpg" alt="" usemap="#Map2000_apply" border="0"  />
-                    <map name="Map2000_apply" id="Map2000_apply">
-                        <area shape="rect" coords="794,465,987,515" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
-                        <area shape="rect" coords="795,534,988,585" href="javascript:alert('Coming Soon!')" />
-                        <area shape="rect" coords="683,874,873,949" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" />
+                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2001_05.jpg" alt="" usemap="#Map2001_apply" border="0"  />
+                    <map name="Map2001_apply" id="Map2001_apply">                    
+                        <area shape="rect" coords="536,474,726,526" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" />
+                        <area shape="rect" coords="735,474,927,525" href="javascript:alert('마감 되었습니다.')" />
+                        <area shape="rect" coords="535,602,727,654" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178346" target="_blank" />
+                        <area shape="rect" coords="736,603,925,653" href="https://pass.willbes.net/pass/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99&tab=open_lecture" target="_blank" />
+                        <area shape="rect" coords="682,871,872,946" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" />
                     </map>   
-                </div>                
+                </div> 
+
             </div>
         </div>   
 

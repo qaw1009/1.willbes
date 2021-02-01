@@ -36,7 +36,7 @@
             font-weight:600; color:#000; font-size:22px;}
         .newTopDday ul li img {width:40px; height:56px}
         .newTopDday ul li:first-child {padding-right:10px;}
-        .newTopDday ul li:last-child {padding-left:50px; font-size:18px; }
+        .newTopDday ul li:last-child {padding-left:25px; font-size:18px; }
         .newTopDday ul li:last-child a {display:inline-block; font-size:14px; margin-top:5px; padding:4px 20px; background:#effe01; border:1px solid #777e09; color:#000; 
             text-align:center; border-radius:20px; line-height:1}
         .newTopDday ul li:last-child a:hover {background:#333; color:#fff}

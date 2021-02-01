@@ -215,11 +215,13 @@
                 
                 <div class="tab01s_05" id="apply">
                     <img src="https://static.willbes.net/public/images/promotion/2021/01/1915_05.jpg" alt="신청하기" usemap="#Map1915_apply" border="0" />
-                    <map name="Map1915_apply" id="Map1915_apply">
-                        <area shape="rect" coords="795,464,986,515" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174799" target="_blank" />
-                        <area shape="rect" coords="795,535,985,585" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174804" target="_blank" />
+                    <map name="Map1915_apply" id="Map1915_apply">                        
+                        <area shape="rect" coords="536,474,725,524" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178347" target="_blank" />
+                        <area shape="rect" coords="735,474,925,526" href="https://pass.willbes.net/pass/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2113&subject_name=%EA%B0%80%EC%B6%95%EC%82%AC%EC%96%91%ED%95%99" target="_blank" />
+                        <area shape="rect" coords="534,603,727,654" href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178348" target="_blank" />
+                        <area shape="rect" coords="735,601,925,654" href="https://pass.willbes.net/pass/professor/show/prof-idx/51151?cate_code=3052&subject_idx=2114&subject_name=%EA%B0%80%EC%B6%95%EC%9C%A1%EC%A2%85%ED%95%99&tab=open_lecture" target="_blank" />
                         <area shape="rect" coords="683,874,873,949" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178352" target="_blank" />
-                    </map>                      
+                    </map>                          
                 </div>                                      
             </div> 
         </div>   

@@ -25,10 +25,12 @@
     .fixed ul {width:100%; max-width:720px; margin:0 auto; background:rgba(255,255,255,0.5); background:#f3f3f3; box-shadow:0 10px 10px rgba(102,102,102,0.2);}    
 
     .evt05 {background:#C1392D;}
-    .evt05 a {position: absolute; width:26.81%; height:7.65%; z-index: 2;}
-    .evt05 a.a01 {left: 51.25%; top: 40.37%;}
-    .evt05 a.a02 {left: 51.53%; top: 47.6%;}
-    .evt05 a.a03 {left: 59.17%; top: 83.89%;}
+    .evt05 a {position: absolute; width:29.31%; height:5.5%; z-index: 2;}
+    .evt05 a.a01 {left: 14.17%; top: 43.33%;}
+    .evt05 a.a02 {left: 56.25%; top: 43.43%;}
+    .evt05 a.a03 {left: 13.89%; top: 49.54%;}
+    .evt05 a.a04 {left: 56.39%; top: 49.24%;}
+    .evt05 a.a05 {left: 59.58%; top: 83.89%;}
 
     /* 폰 가로, 태블릿 세로*/
     @@media only all and (min-width: 408px)  {
@@ -78,9 +80,11 @@
 
     <div class="evtCtnsBox evt05" >
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2001m_05.jpg" alt="수강신청"  >
-        <a href="https://pass.willbes.net/m/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" alt="조경직 기본이론" class="a01">
-        <a href="javascript:alert('Coming Soon!')"  alt="조경직 문제풀이" class="a02">
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" alt="조경직" class="a03">
+        <a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/175420" target="_blank" alt="온라인 수강신청" class="a01">
+        <a href="javascript:alert('마감 되었습니다.')" alt="실강 수강신청" class="a02">
+        <a href="https://pass.willbes.net/m/lecture/show/cate/3028/pattern/only/prod-code/178346" target="_blank" alt="온라인 수강신청" class="a03">
+        <a href="https://pass.willbes.net/m/pass/professor/show/prof-idx/51153?cate_code=3052&subject_idx=2120&subject_name=%EC%A1%B0%EA%B2%BD%ED%95%99" target="_blank" alt="실강 수강신청" class="a04">
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" alt="신청하기" class="a05">
     </div>
 
 </div>

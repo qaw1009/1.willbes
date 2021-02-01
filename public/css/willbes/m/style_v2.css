@@ -3683,7 +3683,7 @@ body.memBody #Footer {
 .lecTable .w-info span {
 	vertical-align: baseline;
 }
-.lecTable .w-info .row-line {
+.lecTable .row-line {
 	background: #b5b5b5;
 	width: 1px;
 	height: 8px;
@@ -3915,6 +3915,8 @@ body.memBody #Footer {
 .lecTable tr.bgst01 th {background:#f4f4f4; border-bottom:1px solid #fff}
 .lecTable tr.bgst01 td {padding-left:10px; padding-right:10px}
 .lecTable tr.bgst01:nth-child(1) td {border-top:1px solid #ccc}
+
+.lecTable .w-data .disc li strong {display:inline-block; color:#333; width:60px}
 
 .btnSt01 {background: #1a8ccc; color:#fff !important; padding: 5px 15px; display: inline-block !important;}
 .btnSt01border {border:1px solid #1a8ccc; color:#1a8ccc !important; padding: 5px 15px; display: inline-block !important;}
@@ -7469,6 +7471,55 @@ span.calendar_btn {
 	clear: both;
 }
 
+
+/*좌석선택*/
+.seatChoiceSec {padding:20px; line-height: 1.4}
+.seatChoiceSec .seatBtn {text-align: center; margin-bottom:10px}
+.seatChoiceSec .seatBtn a {background:#333; color:#fff; border-radius: 20px; padding:10px 30; display: inline-block; font-size:14px}
+.seatChoiceSec .seatChoice {text-align: right; margin-top:10px}
+.seatChoiceSec .seatChoice span {display: inline-block; margin-left:10px; width:60px; height:30px; line-height:30px; text-align:center}
+.seatChoiceSec .seatChoice span:nth-child(1) {border:1px solid #ccc; color:#ed1c24}
+.seatChoiceSec .seatChoice span:nth-child(2) {background: #ccc;}
+.seatNumber ul {
+	margin: 20px 0 20px;
+}
+.seatNumber li {
+	display: inline;
+	float: left;
+	margin-bottom: 8px;
+}
+.seatNumber li button {
+	display: inline-block;
+	width: calc(100% - 8px);
+	text-align: center;
+	letter-spacing: normal;
+	height:30px;
+	line-height:30px;
+	border: 1px solid #e4e4e4;
+	background: #fff;
+	color: #333;
+}
+.seatNumber .sNumberA {
+	color:#ed1c24
+}
+.seatNumber .sNumberB {
+	background: #e4e4e4;
+}
+.seatNumber .sNumberC {
+	background: #1a8ccb;
+	color: #fff;
+}
+.seatNumber li button.active {
+	border: 1px solid #1a8ccb;
+	color: #1a8ccb;
+}
+
+.seatNumber ul:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 /* iPhone 5/SE */
 @media only screen and (max-width: 374px) {
 	.width25p {
@@ -7680,6 +7731,7 @@ span.calendar_btn {
 		width: calc(50% - 5px);
 	}
 }
+
 
 /* iPhone 6/7/8 */
 @media only screen and (min-width: 375px) and (max-width: 640px) {

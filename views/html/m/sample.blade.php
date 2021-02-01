@@ -75,6 +75,7 @@
             <a href="{{ site_url('/home/html/m/mypage_acad1_3') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 온라인첨삭</a>
             <a href="{{ site_url('/home/html/m/mypage_acad1_4') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 온라인첨삭 > 답안제출</a>
             <a href="{{ site_url('/home/html/m/mypage_acad1_5') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 온라인첨삭 > 채점결과</a>
+            <a href="{{ site_url('/home/html/m/mypage_acad1_6') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌 > 좌석선택</a>
             <a href="{{ site_url('/home/html/m/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌</a>
             <br><br>
             <a href="{{ site_url('/home/html/m/mypage_csnotice_list') }}" target="_blank">내강의실 > 고객센터 > 공지사항 List</a>

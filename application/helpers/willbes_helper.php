@@ -184,8 +184,9 @@ if (!function_exists('login_check_inner_script')) {
      * javascript 내 로그인 여부 적용
      * @param string $msg  - 경고 메세지
      * @param string $move - 로그인 페이지로 이동여부 : Y 이동
+     * @param string $rtn_url - 리턴 url
      */
-    function login_check_inner_script($msg='', $move='')
+    function login_check_inner_script($msg='', $move='', $rtn_url='')
     {
         if (sess_data('is_login') !== true) {
             $output = '';
@@ -194,7 +195,11 @@ if (!function_exists('login_check_inner_script')) {
             }
 
             if ($move === 'Y') {
-                $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
+                if (empty($rtn_url) === false) {
+                    $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode($rtn_url), 'www') . '";' . PHP_EOL;
+                }else{
+                    $output .= 'location.href = "' . app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www') . '";' . PHP_EOL;
+                }
             }
 
             if(empty($msg) === false || empty($move) === false) {

@@ -397,15 +397,18 @@ function init_magnificPopup() {
 function init_datatable() {
     // datatable search_form submit
     if(typeof $search_form !== 'undefined') {
-        $search_form.off('submit');
-        $search_form.submit(function(e) {
-            e.preventDefault();
-            if ($(this).hasClass('searching') === true) {
-                datatableSearching();
-            } else {
-                $datatable.draw();
-            }
-        });
+        // use-app data property가 false일 경우 페이지 내 submit event 사용
+        if (typeof $search_form.data('use-app') === 'undefined' || $search_form.data('use-app').toString() === 'true') {
+            $search_form.off('submit');
+            $search_form.submit(function(e) {
+                e.preventDefault();
+                if ($(this).hasClass('searching') === true) {
+                    datatableSearching();
+                } else {
+                    $datatable.draw();
+                }
+            });
+        }
 
         // searching: true 옵션일 경우 검색
         $search_form.filter('.searching').off('keyup change ifChanged', 'input, select, input.flat');
@@ -433,9 +436,9 @@ function init_datatable() {
         $search_form.off('click', '#btn_reset, #_btn_reset');
         $search_form.on('click', '#btn_reset, #_btn_reset', function() {
             $search_form[0].reset();
-            //기본화면셋팅 정보가 있을 경우
-            if(typeof arr_search_data != 'undefined' && arr_search_data != null && typeof $search_form != 'undefined' && $search_form != null){
-                $.each(arr_search_data,function(key,value) {
+            // 기본화면셋팅 정보가 있을 경우
+            if (typeof arr_search_data != 'undefined' && arr_search_data != null && typeof $search_form != 'undefined' && $search_form != null) {
+                $.each(arr_search_data, function(key,value) {
                     $search_form.find('input[name="'+key+'"]').val(value);
                     $search_form.find('select[name="'+key+'"]').val(value);
                     $search_form.find('input[name="'+key+'"]').attr('checked', true);

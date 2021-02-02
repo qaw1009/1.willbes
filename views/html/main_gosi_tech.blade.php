@@ -794,8 +794,8 @@
                     <div class="sliderNum">
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_02.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_02.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
                 <li class="nSlider">

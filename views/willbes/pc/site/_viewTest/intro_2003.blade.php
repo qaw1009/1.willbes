@@ -97,15 +97,19 @@
             <div class="widthAuto gosi-gate-bn01 nSlider pick">
                 <div class="f_left">
                     <div class="will-nTit NSK-Black">공무원, 어떻게 준비하나요? </div>
-                    @for($i=1; $i<2; $i++)
-                        {!! banner_html(element('인트로_서브1', $data['banner']), 'sliderNum') !!}
-                    @endfor
+                    @foreach($data['banner'] as $section_name => $section_banners)
+                        @if(starts_with($section_name, '인트로_서브1') === true)
+                            {!! banner_html($section_banners, 'sliderNum') !!}
+                        @endif
+                    @endforeach
                 </div>
                 <div class="f_right">
                     <div class="will-nTit NSK-Black">윌비스 신규회원가입 혜택</div>
-                    @for($i=1; $i<2; $i++)
-                        {!! banner_html(element('인트로_서브2', $data['banner']), 'sliderNum') !!}
-                    @endfor
+                    @foreach($data['banner'] as $section_name => $section_banners)
+                        @if(starts_with($section_name, '인트로_서브2') === true)
+                            {!! banner_html($section_banners, 'sliderNum') !!}
+                        @endif
+                    @endforeach
                 </div>
                 </ul>
             </div>

@@ -227,19 +227,19 @@ class SupportStudyComment extends BaseSupport
         switch ($orderby) {
             case "best" :
                 //$order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-                $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+                $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc','BoardIdx'=>'Desc'];
                 break;
             case "date" :
                 //$order_by = ['BoardIdx'=>'Desc'];
-                $order_by = ['RegDatm'=>'Desc'];
+                $order_by = ['RegDatm'=>'Desc','BoardIdx'=>'Desc'];
                 break;
             case "score" :
                 //$order_by = ['LecScore'=>'Desc','BoardIdx'=>'Desc'];
-                $order_by = ['LecScore'=>'Desc','RegDatm'=>'Desc'];
+                $order_by = ['LecScore'=>'Desc','RegDatm'=>'Desc','BoardIdx'=>'Desc'];
                 break;
             default :
                 //$order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-                $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+                $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc','BoardIdx'=>'Desc'];
                 break;
         }
 

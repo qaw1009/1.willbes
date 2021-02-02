@@ -83,579 +83,66 @@
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>
         </div>
 
-        <div class="evtCtnsBox event01_1">
-            <div class="title NSK-Black">합격수기 등록하기</div>
-
-            {{--글목록--}}
-            <div class="willbes-Leclist c_both NSK">
-                <div class="willbes-Lec-Selected tx-gray c_both mt-zero mb-zero">
-                    <span class="willbes-Lec-Search willbes-SelectBox mb20 f_left">
-                        <select id="" name="" title="">
-                            <option selected="selected">카테고리</option>
-                            <option value="교육학">교육학</option>
-                            <option value="유아">유아</option>
-                            <option value="초등">초등</option>
-                            <option value="중등">중등</option>
-                        </select>
-                        <select id="" name="" title="">
-                            <option selected="selected">과목</option>
-                            <option value="과목1">과목1</option>
-                            <option value="과목2">과목2</option>
-                            <option value="과목3">과목3</option>
-                        </select>
-                    </span>
-                    <span class="willbes-Lec-Search willbes-SelectBox mb20 GM">
-                        <div class="inputBox p_re">
-                            <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="제목 또는 내용을 입력해주세요." maxlength="30">
-                            <button type="submit" onclick="" class="search-Btn">
-                                <span>검색</span>
-                            </button>
-                        </div>
-                    </span>
-                    <div class="subBtn blue f_right"><a href="#none" onclick="openWin('profNotice')">등록하기 ></a></div>
-                </div>
-                <div class="LeclistTable">
-                    <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
-                        <colgroup>
-                            <col style="width: 65px;">
-                            <col style="width: 120px;">
-                            <col>
-                            <col style="width: 60px;">
-                            <col style="width: 90px;">
-                            <col style="width: 100px;">
-                            <col style="width: 90px;">
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>No<span class="row-line">|</span></th>
-                                <th>과목<span class="row-line">|</span></th>
-                                <th>제목<span class="row-line">|</span></th>
-                                <th>첨부<span class="row-line">|</span></th>
-                                <th>작성자<span class="row-line">|</span></th>
-                                <th>작성일<span class="row-line">|</span></th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                            <tr>
-                                <td class="w-no">12</td>
-                                <td class="w-campus">유아</td>
-                                <td class="w-list tx-left pl20"><a href="#none">2020학년도 최종합격수기</a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">123</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">11</td>
-                                <td class="w-campus">영어</td>
-                                <td class="w-list tx-left pl20"><a href="#none">2020 전남 합격 수기 </a></td>
-                                <td class="w-file">
-                                    <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"></a>
-                                </td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">244</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">10</td>
-                                <td class="w-campus">영어</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">355</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">9</td>
-                                <td class="w-campus">도덕윤리</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">466</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">8</td>
-                                <td class="w-campus">유아</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">355</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">7</td>
-                                <td class="w-campus">체육</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">466</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">6</td>
-                                <td class="w-campus">전기전자통신</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">355</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">5</td>
-                                <td class="w-campus">생물</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">466</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">4</td>
-                                <td class="w-campus">국어</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">355</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">3</td>
-                                <td class="w-campus">유아</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">466</td>
-                            </tr>
-                            <tr>
-                                <td class="w-no">2</td>
-                                <td class="w-campus">수학</td>
-                                <td class="w-list tx-left pl20"><a href="#none">[개강] 1.4(월) 개강!! 황남기 헌법 진도별 모의고사</a></td>
-                                <td class="w-file">&nbsp;</td>
-                                <td>홍*동</td>
-                                <td class="w-date">2018-00-00</td>
-                                <td class="w-click">355</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- willbes-Layer-Notice -->
-            <div id="profNotice" class="willbes-Layer-Board">
-                <a class="closeBtn" href="#none" onclick="closeWin('profNotice')">
-                    <img src="{{ img_url('prof/close.png') }}">
-                </a>
-                <div class="Layer-Tit NG tx-dark-black tx-left">합격수기 등록하기</div>
-                <div class="Layer-Cont">
-                    <div class="willbes-Leclist c_both mt20">
-                        <div class="LecWriteTable">                        
-                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdt-gray bdb-gray tx-gray fc-bd-none">
-                                <colgroup>
-                                    <col style="width: 120px;">
-                                    <col>
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-tit bg-light-white strong">과정선택<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-selected tx-left pl30">
-                                            <select id="process" name="process" title="process" class="seleProcess" style="width: 250px;">
-                                                <option selected="selected">카테고리</option>
-                                                <option value="교육학">교육학</option>
-                                                <option value="초등">초등</option>
-                                                <option value="중등">중등</option>
-                                            </select>
-                                            <select id="div" name="div" title="div" class="seleDiv" style="width:250px;">
-                                                <option selected="selected">과목</option>
-                                                <option value="영어">영어</option>
-                                                <option value="유아">유아</option>
-                                                <option value="국어">국어</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white strong">제목<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-text tx-left pl30">
-                                            <input type="text" id="TITLE" name="TITLE" class="iptTitle" maxlength="30">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white strong">내용<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-textarea write tx-left pl30">
-                                            <textarea placeholder="* 500자 이상 입력해 주세요.
-                                            &#13;&#10;* 합격수기와 관련없는 내용은 삭제할 수 있습니다.
-                                            &#13;&#10;* 합격인증 및 파일첨부는 필수사항이 아닙니다."></textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white strong">첨부</td>
-                                        <td class="w-file answer tx-left">
-                                            <ul class="attach">
-                                                <li>
-                                                    <input type="file" class="input-file" size="3">
-                                                </li>
-                                                <li>
-                                                    <input type="file" class="input-file" size="3">
-                                                </li>
-                                                <li>
-                                                    • 첨부파일 총합 최대 5MB까지 등록 가능합니다.<br/>
-                                                    • hwp, doc, pdf, jpg, gif, png, zip 만 등록 가능합니다.
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tx-left" colspan="2">                                                    
-                                            <div class="info">
-                                                <h5>개인정보 수집 및 이용에 대한 안내<span class="tx-light-blue">(*)</span></h5>
-                                                <ul>
-                                                    <li>
-                                                        개인정보 수집 이용 목적<br>
-                                                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
-                                                        - 이벤트 참여에 따른 강의 수강자 목록에 활용
-                                                    </li>
-                                                    <li>
-                                                        개인정보 수집 항목<br>
-                                                        - 신청인의 이름
-                                                    </li>
-                                                    <li>
-                                                        개인정보 이용기간 및 보유기간<br>
-                                                        - 본 수집, 활용목적 달성 후 바로 파기
-                                                    </li>
-                                                    <li>
-                                                        개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                                                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은
-                                                        이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                                                    </li>
-                                                </ul>                                        
-                                                <div>
-                                                    위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
-                                                    <label class="ml10"><input type="radio"> 동의함</label> <label class="ml10"><input type="radio"> 동희하지 않습니다.</label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <div class="search-Btn mt20 h36 p_re">
-                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-white bd-dark-gray f_left">
-                                    <span class="tx-purple-gray">취소</span>
-                                </button>
-                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
-                                    <span>저장</span>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <br/><br/><br/>
-
-                    <!-- View -->
-                    <div class="willbes-Leclist c_both">
-                        <div class="LecViewTable">
-                            <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
-                                <colgroup>
-                                    <col>
-                                    <col style="width: 90px;">
-                                    <col style="width: 180px;">
-                                    <col style="width: 150px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th colspan="4" class="w-list tx-left pl20 strong">
-                                            <img src="{{ img_url('prof/icon_HOT.gif') }}" class="mr5"> 2020학년도 최종합격수기
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-acad tx-left pl20">
-                                            <dl>
-                                                <dt>중등<span class="row-line">|</span></dt>
-                                                <dt>영어</dt>
-                                            </dl>
-                                            <span class="row-line">|</span>
-                                        </td>
-                                        <td>홍길*<span class="row-line">|</span></td>
-                                        <td class="w-date">2018-00-00 00:00:00<span class="row-line">|</span></td>
-                                        <td class="w-click"><strong>조회수</strong> 123</td>
-                                    </tr>
-                                </thead>
-                                <tbody>                                
-                                    <tr>
-                                        <td class="w-txt tx-left" colspan="4">
-                                            이달의 개강 강좌 공지입니다.<br/>
-                                            이달의 개강 강좌 공지입니다.<br/>
-                                            이달의 개강 강좌 공지입니다.
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-file tx-left pl20" colspan="4">
-                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 2020_중등_영어_합격수기.hwp</a>
-                                            <a href="#none"><img src="{{ img_url('prof/icon_file.gif') }}"> 20200914_100432.jpg</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="search-Btn btnAuto90 h36 mt20 mb30 f_right">
-                                <button type="submit" onclick="" class="btnAuto90 h36 mem-Btn bg-purple-gray bd-dark-gray center">
-                                    <span>수정</span>
-                                </button>
-                            </div>
-                            <table cellspacing="0" cellpadding="0" class="listTable prevnextTable upper-gray bdt-gray bdb-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 150px;">
-                                    <col style="width: 640px;">
-                                    <col style="width: 150px;">
-                                </colgroup>
-                                <tbody>
-                                    <tr>
-                                        <td class="w-prev bg-light-gray"><strong>이전글</strong></td>
-                                        <td class="tx-left pl20"><a href="#none">[개강] 황남기 헌법, 행정법 리마인드 핵심 이론 + 기출문풀</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-next bg-light-gray"><strong>다음글</strong></td>
-                                        <td class="tx-left pl20"><a href="#none">[헌법] 5~6월 강의안내</a></td>
-                                    </tr> 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="evtCtnsBox event01_1" id="reviewListWrap">
         </div>
 
         <div class="evtCtnsBox event02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02.jpg" alt="이벤트 둘"/>
             <div class="evt_table">
-                <table>
-                    <col width="35%" />
-                    <col  />
-                    <tbody>
-                        <tr>
-                            <th><div>과목</div></th>
-                            <td>
-                                <select id="div" name="div" title="div" class="seleDiv" style="width:100%;">
-                                    <option selected="selected">과목선택</option>
-                                    <option value="영어">영어</option>
-                                    <option value="유아">유아</option>
-                                    <option value="국어">국어</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><div>이름</div></th>
-                            <td><div>{{ sess_data('mem_name') }} 홍길동</div></td>
-                        </tr>
-                        <tr>
-                            <th><div>합격 인증 파일 첨부</div></th>
-                            <td colspan="3">
-                                <div>
-                                    <input type="file" id="attach_file" name="attach_file" style="width:60%"/>&nbsp;&nbsp;
-                                    <a onclick="javascript:del_file();">
-                                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제">
-                                    </a>
-                                    <p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등) 또는 PDF 파일 첨부</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="btns">
-                    <a href="#none">확인</a>
-                    <a href="#none">취소</a>
-                </div>
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
+                    <input type="hidden" name="file_chk" value="Y"/>
+                    <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                    <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] }}"/>
+                    <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+                    <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+
+                    <table>
+                        <col width="35%" />
+                        <col  />
+                        <tbody>
+                            <tr>
+                                <th><div>과목</div></th>
+                                <td>
+                                    <select name="register_data1" id="register_data1" class="seleDiv" style="width:100%;">
+                                        <option value="">선택</option>
+                                        @foreach($arr_base['subject'] as $key => $val)
+                                            @if($key <= $arr_base['max_subject_idx'])
+                                                <option value="{{ $val }}">{{ $val }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><div>이름</div></th>
+                                <td><div>{{ sess_data('mem_name') }}</div></td>
+                            </tr>
+                            <tr>
+                                <th><div>합격 인증 파일 첨부</div></th>
+                                <td colspan="3">
+                                    <div>
+                                        <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>
+                                        <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
+
+                                        <p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="btns">
+                        <a href="#none" onclick="fn_submit();">확인</a>
+                        <a href="#none" onclick="reset_form(this);">취소</a>
+                    </div>
+                </form>
             </div>
 
-            {{--20개까지 롤링형식--}}
-            <div class="imgSlider">
-                <div>
-                    <ul id="sliderImg">
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동<a href="#none">X</a></div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <p class="leftBtn"><a id="imgBannerLeft"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_arrowL.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_arrowR.png"></a></p>
-            </div>
-
-            {{--21개이상 리스트 형식--}}
-            <div class="imgSlider">
-                <div class="list">
-                    <ul>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동<a href="#none">X</a></div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>전기전자통신</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgWrap">
-                                <div class="listTitle"><span>영어</span> | 홍*동</div>
-                                <div class="imgBox">
-                                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_sample.jpg" alt="인증이미지"/>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="Paging">
-                <ul>
-                    <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
-                    <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                    <li><a href="#none">2</a><span class="row-line">|</span></li>
-                    <li><a href="#none">3</a><span class="row-line">|</span></li>
-                    <li><a href="#none">4</a><span class="row-line">|</span></li>
-                    <li><a href="#none">5</a><span class="row-line">|</span></li>
-                    <li><a href="#none">6</a><span class="row-line">|</span></li>
-                    <li><a href="#none">7</a><span class="row-line">|</span></li>
-                    <li><a href="#none">8</a><span class="row-line">|</span></li>
-                    <li><a href="#none">9</a><span class="row-line">|</span></li>
-                    <li><a href="#none">10</a></li>
-                    <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
-                </ul>
-            </div>
+            <div id="imgSliderWrap"></div>
         </div>
 
         <div class="evtCtnsBox event03">
@@ -679,7 +166,12 @@
     <!-- End Container -->
 
     <script type="text/javascript">
+        var $regi_form_register = $('#regi_form_register');
+
         $(document).ready(function() {
+            fnReviewList();
+            fnRegisterList();
+
             var sliderImg = $("#sliderImg").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
@@ -703,6 +195,85 @@
                 sliderImg.goToNextSlide();
             });
         });
+
+        function fnReviewList(page,cate_code,subject_idx,keyword){
+            var _url = '{{ site_url('/support/review/listReviewAjax') }}';
+            var data = {
+                's_site_code' : '{{ $__cfg['SiteCode'] }}',
+                'list_cate_code' : cate_code,
+                'list_subject_idx' : subject_idx,
+                'list_keyword' : keyword,
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#reviewListWrap").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fnRegisterList(page){
+            var _url = '{{ site_url('/event/listRegisterAjax') }}';
+            var data = {
+                'el_idx' : '{{ $data['ElIdx'] }}',
+                'file_type': '_thumbnail',
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#imgSliderWrap").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fn_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if (!$regi_form_register.find('select[name="register_data1"]').val()) {
+                alert('과목을 선택해 주세요.');
+                $regi_form_register.find('select[name="register_data1"]').focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('이미지를 등록해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if (confirm('저장하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
+
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp']) == -1) {
+                    $(elem).val("");
+                    alert('이미지 파일만 업로드 가능합니다.');
+                }
+            }
+        }
+
+        function reset_form(elem){
+            $(elem).closest('form').get(0).reset();
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+            }
+        }
     </script>
 
 @stop

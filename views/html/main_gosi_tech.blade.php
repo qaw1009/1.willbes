@@ -766,7 +766,7 @@
                     <li><a data-slide-index="5" href="javascript:void(0);">전산직 PACKAGE</a></li>
                     <li><a data-slide-index="6" href="javascript:void(0);">임업직 PACKAGE</a></li>
                     <li><a data-slide-index="7" href="javascript:void(0);">전기/통신 최우영</a></li>
-                    {{--<li><a data-slide-index="8" href="javascript:void(0);">농업직렬 장사원</a></li>--}}
+                    <li><a data-slide-index="8" href="javascript:void(0);">농업직렬 장사원</a></li>
                 </div>
             </div>           
         </div>        
@@ -800,18 +800,14 @@
                 </li>
                 <li class="nSlider">
                     <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_02.jpg" alt="배너명"></a></div>
                         <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
                 <li class="nSlider">
                     <div class="sliderNum">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_05.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_06.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_03.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_04.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/2028_266x250_01.jpg" alt="배너명"></a></div>
                     </div>
                 </li>
             </ul>
@@ -942,7 +938,6 @@
             <!--willbesNews //-->
         </div>
     </div>
-
 
     <div class="Section NSK mt70 mb90">
         <div class="widthAuto">

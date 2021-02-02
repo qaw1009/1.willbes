@@ -77,7 +77,7 @@
                                     {{ $row['UserName'] }}
                                     <a href="#none" onclick="delRegister('{{ $row['EmIdx'] }}')">X</a>
                                 @else
-                                    {{ str_replace(mb_substr($row['UserName'],1,1,'UTF-8'), "*", $row['UserName']) }}
+                                    {{ str_replace(mb_substr($row['UserName'],1,1,'UTF-8'), "*", mb_substr($row['UserName'],0,4,'UTF-8')) }}
                                 @endif
                             </div>
                             <div class="imgBox">

@@ -73,7 +73,7 @@
                     <li>
                         <div class="imgWrap">
                             <div class="listTitle"><span>{{ $row['EtcValue'] }}</span> |
-                                @if(sess_data('is_login') === true && sess_data('mem_idx') !== $row['MemIdx'])
+                                @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                     {{ $row['UserName'] }}
                                     <a href="#none" onclick="delRegister('{{ $row['EmIdx'] }}')">X</a>
                                 @else
@@ -95,8 +95,6 @@
 
 <script>
     function delRegister(em_idx){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.') !!}
-
         var _url = '{{ site_url("/event/deleteRegister") }}';
         var data = {
             '{{ csrf_token_name() }}' : '{{ csrf_token() }}',

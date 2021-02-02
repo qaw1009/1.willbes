@@ -40,8 +40,8 @@
             <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/2035" target="_blank" alt="권혁중" class="a01">
             <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/2024" target="_blank" alt="이상욱" class="a02">
             <a href="https://njob.willbes.net/m/promotion/index/cate/3114/code/2006" target="_blank" alt="안은재" class="a03">
-            <a href="javascript:alert('COMING SOON! 2월 3일 공개됩니다.')" alt="최효진" class="a04">
-        </div>    
+            <a href="javascript:alert('COMING SOON! 2월 5일(금) 공개됩니다.')" alt="최효진" class="a04">
+        </div>      
 
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2056m_02.jpg" alt="이커머스 핵심키워드" >            

@@ -796,6 +796,7 @@ class SupportReview extends BaseSupport
             'paging' => $paging,
             'get_params' => $get_params,
             'arr_swich' => $arr_swich,
+            'rtn_url' => $_SERVER['HTTP_REFERER'],
         ]);
     }
 

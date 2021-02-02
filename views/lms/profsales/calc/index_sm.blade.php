@@ -240,7 +240,7 @@
                     'type' : 'POST',
                     'beforeSend' : function() {
                         var limit_year_month = '{{ $limit_year_month }}';
-                        var search_year_month = $search_form.find('select[name="search_year"]').val() + '-' + $search_form.find('input[name="search_month"]').val().padStart(2, '0');
+                        var search_year_month = $search_form.find('select[name="search_year"]').val() + '-' + strLpad($search_form.find('input[name="search_month"]').val(), 2, '0');
 
                         if (search_year_month < limit_year_month) {
                             @if($is_tzone === true)

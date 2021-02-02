@@ -638,6 +638,23 @@ function resetModal(selector) {
 }
 
 /**
+ * str lpad
+ * @param str [대상문자열]
+ * @param length [최대문자열길이]
+ * @param pad_str [채울문자열]
+ * @returns {*}
+ */
+function strLpad(str, length, pad_str) {
+    if (str.length < length) {
+        while (str.length < length) {
+            str = pad_str + str;
+        }
+    }
+
+    return str;
+}
+
+/**
  * ajax function
  * @param url
  * @param data is_file = false인 경우는 seialize된 데이터 (json), is_file = true인 경우는 FormData로 전송 필요

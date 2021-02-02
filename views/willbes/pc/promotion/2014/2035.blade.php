@@ -96,6 +96,20 @@
             background:#fff; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
+        .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
+        .btnbuy a {display:block; width:94%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
+        .btnbuy a span {font-size:1.2rem;}
+        .btnbuy a:hover {background:#3a99f0;
+            -webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+        .infoCheck {width:100%; max-width:720px; margin:10px auto; font-size:12px;}
+        .infoCheck label {margin-right:30px; cursor: pointer; }
+        .infoCheck input[type=checkbox] {width:20px; height:20px; margin-right:10px}
+        .infoCheck input[type=checkbox]:checked + label {border-bottom:1px dashed #0099ff; font-weight:bold; color:#0099ff} 
+        .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
+        .infoCheck a:hover {background:#0099ff;}
+
         .evtFooter {width:720px; margin:0 auto; padding:100px 0; text-align:left; line-height:1.5; font-size:14px; color:#666;}
         .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
         .evtFooter p {font-size:1.1rem; margin-bottom:10px; color:#333;}
@@ -110,14 +124,14 @@
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky01.png" alt=""></a> 
+            <a href="#gostart"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky02.png" alt=""></a>                           
         </div>
 
 		<div class="evtCtnsBox evtTop">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_top.jpg" alt="창업&마케팅" >   
-                <a href="#evt06" title="" style="position: absolute; left: 16.28%; top: 74.15%; width: 67.19%; height: 9.27%; z-index: 2;"></a>
+                <a href="#gostart" title="" style="position: absolute; left: 16.28%; top: 74.15%; width: 67.19%; height: 9.27%; z-index: 2;"></a>
             </div>        
         </div>
 
@@ -148,7 +162,7 @@
         <div class="evtCtnsBox evt06" id="evt06">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank" title="" style="position: absolute; left: 11.98%; top: 83.28%; width: 75.13%; height: 7.1%; z-index:2;"></a>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank" title="" style="position: absolute; left: 11.98%; top: 83.28%; width: 75.13%; height: 7.1%; z-index:2;" id="gostart"></a>
             </div>
         </div>
 

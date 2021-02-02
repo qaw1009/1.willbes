@@ -222,7 +222,7 @@
                         <div id="TechRollingDiv" class="TechtabList">
                             <div class="Techtab">
                                 @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
-                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                    <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{!! $row['BannerName'] !!}</a></li>
                                 @endforeach
                             </div>
                         </div>

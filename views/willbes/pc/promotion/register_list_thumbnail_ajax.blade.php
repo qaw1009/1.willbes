@@ -81,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="imgBox">
-                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지"/>
+                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지" style="width: 100%; "/>
                             </div>
                         </div>
                     </li>

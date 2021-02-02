@@ -8,7 +8,7 @@ class SupportReview extends BaseSupport
     protected $models = array('categoryF', 'support/supportBoardTwoWayF', 'downloadF', '_lms/sys/site', '_lms/sys/code','_lms/product/base/sortMapping','_lms/product/base/subject', 'product/baseProductF');
     protected $helpers = array('download');
     protected $auth_controller = false;
-    protected $auth_methods = array('create', 'store', 'delete', 'destroyFile');
+    protected $auth_methods = array('create', 'store', 'delete', 'destroyFile', 'writeReviewLayer');
 
     protected $_bm_idx;
     protected $_default_path;
@@ -167,7 +167,7 @@ class SupportReview extends BaseSupport
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $column .= ', ps.SubJectName';
         //$order_by = ['IsBest'=>'Desc','BoardIdx'=>'Desc'];
-        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc', 'BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
@@ -577,6 +577,99 @@ class SupportReview extends BaseSupport
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
+    public function writeReviewLayer()
+    {
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
+        $board_idx = element('board_idx',$arr_input);
+        $s_site_code = element('s_site_code',$arr_input);
+        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_campus = element('s_campus',$arr_input);
+        $s_keyword = element('s_keyword',$arr_input);
+        $prof_idx = element('prof_idx',$arr_input);
+        $subject_idx = element('subject_idx',$arr_input);
+        $s_is_display = element('s_is_display',$arr_input);
+        $s_is_my_contents = element('s_is_my_contents',$arr_input);
+        $view_type = element('view_type',$arr_input);
+        $page = element('page',$arr_input);
+        $on_off_link_cate_code = element('on_off_link_cate_code',$arr_input);
+        $s_cate_code_disabled = element('s_cate_code_disabled',$arr_input);
+
+        $get_params = 's_keyword='.urlencode($s_keyword);
+        $get_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code;
+        $get_params .= '&s_campus='.$s_campus;
+        $get_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
+        $get_params .= '&page='.$page;
+        $get_params .= '&on_off_link_cate_code='.$on_off_link_cate_code;
+        $get_params .= '&s_cate_code_disabled='.$s_cate_code_disabled;
+
+        //사이트목록 (과정)
+        $arr_base['site_list'] = $this->siteModel->getSiteArray(false, 'SiteName', ['EQ' => ['IsFrontUse' => 'Y']]);
+        unset($arr_base['site_list'][config_item('app_intg_site_code')]);
+
+        // 카테고리 조회
+        $arr_base['category'] = $this->categoryFModel->listSiteCategoryRoute($this->_site_code);
+
+        //과목조회
+        foreach ($arr_base['category'] as $row){
+            $arr_base['subject'][] = $this->baseProductFModel->listSubjectCategoryMapping($row['SiteCode'], $row['CateCode']);
+        }
+
+        $method = 'POST';
+        $data = null;
+
+        if (empty($board_idx) === false) {
+            $method = 'PUT';
+
+            $arr_condition = [
+                'EQ' => [
+                    'BmIdx' => $this->_bm_idx,
+                    'IsUse' => 'Y'
+                ],
+            ];
+
+            $column = '
+                BoardIdx, b.SiteCode, MdCateCode, CampusCcd, RegType, TypeCcd, IsBest, IsPublic
+                , VocCcd, ProdApplyTypeCcd, ProdCode, LecScore, ProdName, SubjectIdx
+                , Title, Content, ReadCnt, SettingReadCnt
+                , RegDatm, RegMemIdx, RegMemId, RegMemName
+                , ReplyContent, ReplyRegDatm, ReplyStatusCcd
+                , CampusCcd_Name, ReplyStatusCcd_Name, TypeCcd_Name
+                , VocCcd_Name, MdCateCode_Name, SubJectName
+                , IF(RegType=1, \'\', RegMemName) AS RegName
+                , IF(IsCampus=\'Y\',\'offline\',\'online\') AS CampusType
+                , IF(IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName        
+                , AttachData, Category_String
+            ';
+
+            $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
+
+            if (empty($data)) {
+                $this->json_error('게시글이 존재하지 않습니다.');
+            }
+            if ($data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
+                $this->json_error('잘못된 접근 입니다.');
+            }
+            $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
+            if($result !== true) {
+                $this->json_error('게시글 조회시 오류가 발생되었습니다.');
+            }
+
+            $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        }
+
+        $this->load->view('promotion/review_write_layer', [
+            'default_path' => $this->_default_path,
+            'method' => $method,
+            'arr_base' => $arr_base,
+            'arr_input' => $arr_input,
+            'get_params' => $get_params,
+            'data' => $data,
+            'board_idx' => $board_idx,
+            'reg_type' => $this->_reg_type,
+        ]);
+    }
+
     /**
      * 합격수기 리스트 ajax
      * @return mixed
@@ -588,20 +681,20 @@ class SupportReview extends BaseSupport
         $get_params = http_build_query($arr_input);
 
         $s_site_code = element('s_site_code',$arr_input);
-        $s_cate_code = element('s_cate_code',$arr_input);
+        $s_cate_code = element('list_cate_code',$arr_input);
+        $subject_idx = element('list_subject_idx',$arr_input);
+        $s_keyword = element('list_keyword',$arr_input);
         $s_campus = element('s_campus',$arr_input);
-        $s_keyword = element('s_keyword',$arr_input);
         $prof_idx = element('prof_idx',$arr_input);
-        $subject_idx = element('subject_idx',$arr_input);
         $s_is_display = element('s_is_display',$arr_input);
         $s_is_my_contents = element('s_is_my_contents',$arr_input);
         $on_off_link_cate_code = element('on_off_link_cate_code', $arr_input);
         $view_type = element('view_type',$arr_input);
         $s_cate_code_disabled = element('s_cate_code_disabled', $arr_input);
-        $get_page_params = 's_keyword='.urlencode($s_keyword);
-        $get_page_params .= '&s_site_code='.$s_site_code.'&s_cate_code='.$s_cate_code;
+        $get_page_params = 'list_keyword='.urlencode($s_keyword);
+        $get_page_params .= '&s_site_code='.$s_site_code.'&list_cate_code='.$s_cate_code;
         $get_page_params .= '&s_campus='.$s_campus;
-        $get_page_params .= '&prof_idx='.$prof_idx.'&subject_idx='.$subject_idx.'&view_type='.$view_type;
+        $get_page_params .= '&prof_idx='.$prof_idx.'&list_subject_idx='.$subject_idx.'&view_type='.$view_type;
         $get_page_params .= '&s_is_display='.$s_is_display.'&s_is_my_contents='.$s_is_my_contents;
         $get_page_params .= '&on_off_link_cate_code='.$on_off_link_cate_code.'&s_cate_code_disabled='.$s_cate_code_disabled;
 
@@ -673,7 +766,7 @@ class SupportReview extends BaseSupport
         $column .= ', IF(b.IsCampus=\'Y\',\'offline\',\'online\') AS CampusType';
         $column .= ', IF(b.IsCampus=\'Y\',\'학원\',\'온라인\') AS CampusType_Name, SiteGroupName';
         $column .= ', ps.SubJectName';
-        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc', 'BoardIdx'=>'Desc'];
 
         if (APP_DEVICE == 'pc') {
             $paging_count = $this->_paging_count;
@@ -729,7 +822,7 @@ class SupportReview extends BaseSupport
         $get_params .= '&page='.$page;
 
         if (empty($board_idx)) {
-            show_alert('게시글번호가 존재하지 않습니다.', 'back');
+            $this->json_error('게시글번호가 존재하지 않습니다.');
         }
 
         //과목조회
@@ -764,19 +857,19 @@ class SupportReview extends BaseSupport
 
         $data = $this->supportBoardTwoWayFModel->findBoard($board_idx,$arr_condition,$column);
         if (empty($data)) {
-            show_alert('게시글이 존재하지 않습니다.', 'back');
+            $this->json_error('게시글이 존재하지 않습니다.');
         }
         // 첨부파일 이미지일 경우 해당 배열에 담기
         $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
         $data['ReplyContent'] = $this->_getBoardForContent($data['ReplyContent'], $data['AttachData'], 1);
 
         if ($data['RegType'] == '0' && $data['IsPublic'] == 'N' && $data['RegMemIdx'] != $this->session->userdata('mem_idx')) {
-            show_alert('잘못된 접근 입니다.', 'back');
+            $this->json_error('잘못된 접근 입니다.');
         }
 
         $result = $this->supportBoardTwoWayFModel->modifyBoardRead($board_idx);
         if($result !== true) {
-            show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
+            $this->json_error('게시글 조회시 오류가 발생되었습니다.');
         }
 
         $arr_swich = element($this->_bm_idx,$this->_on_off_swich);

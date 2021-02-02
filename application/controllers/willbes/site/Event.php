@@ -917,6 +917,7 @@ class Event extends \app\controllers\FrontController
         $data = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $el_idx = element('el_idx',$arr_input);
+        $file_type = element('file_type',$arr_input);
 
         if(empty($el_idx) === true) {
             return $this->json_error('필수 데이터 누락입니다.');
@@ -938,7 +939,7 @@ class Event extends \app\controllers\FrontController
             $data = $this->eventFModel->listRegisterMember(false,$arr_condition,$paging['limit'],$paging['offset'],$order_by);
         }
 
-        $this->load->view('promotion/register_list_ajax', [
+        $this->load->view('promotion/register_list' . $file_type . '_ajax', [
             'data' => $data,
             'paging' => $paging,
             'total_rows' => $total_rows,

@@ -754,7 +754,7 @@ class Home extends \app\controllers\FrontController
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.SubjectIdx, b.SubjectName, b.ProfIdx, b.ProfName, b.ProdName, b.LecScore, b.Content, IF(b.RegType=1, b.RegMemName, m.MemName) AS RegName
             , DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm, fn_professor_refer_value(b.ProfIdx, "lec_list_img") as ProfLecListImg';
-        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc'];
+        $order_by = ['IsBest'=>'Desc','RegDatm'=>'Desc','BoardIdx'=>'Desc'];
         $arr_condition = ['EQ' => ['b.BmIdx' => 85, 'b.SiteCode' => $this->_site_code, 'b.IsUse' => 'Y']];
 
         return $this->supportBoardTwoWayFModel->listBoardForProfStudy(false, $arr_condition, $cate_code, $column, $limit_cnt, 0, $order_by);

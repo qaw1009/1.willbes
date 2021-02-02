@@ -781,11 +781,11 @@
                 $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1}); 
             }
         });	
-        $("#imgBannerLeft").click(function (){
+        $("#imgBannerRight").click(function (){
             slidesImg.goToPrevSlide();
         });
     
-        $("#imgBannerRight").click(function (){
+        $("#imgBannerLeft").click(function (){
             slidesImg.goToNextSlide();
         });			
     });

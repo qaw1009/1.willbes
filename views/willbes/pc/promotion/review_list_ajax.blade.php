@@ -128,7 +128,7 @@
     });
 
     function writeReviewLayer(board_idx){
-        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.', 'Y', $rtn_url) !!}
 
         var ele_id =  'profNotice';
         var data = {

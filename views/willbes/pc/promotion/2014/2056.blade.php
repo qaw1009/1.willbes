@@ -42,6 +42,13 @@
         .newTopDday ul li:last-child a:hover {background:#333; color:#fff}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
+        .evt04 {background:#c2c2c2;}
+        .evt04 .evt04Box {width:900px; margin:0 auto; color:#3a3a3a; text-align:left; padding:50px 0; font-size:14px; line-height:1.5}
+        .evt04 h3 {font-size:28px; margin-bottom:30px}
+        .evt04 div {font-size:16px; margin-bottom:10px}
+        .evt04 .evt04Box li {list-style: decimal; margin-left:15px}
+        .evt04 .evt04Box ul {margin-bottom:30px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
@@ -99,90 +106,44 @@
                 <area shape="rect" coords="679,858,766,946" href="https://band.us/" target="_blank">
                 <area shape="rect" coords="784,858,874,949" href="https://twitter.com/" target="_blank">
             </map>
-        </div>
+        </div>      
 
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif
 
+        <div class="evtCtnsBox evt04">
+            <div class="evt04Box">
+                <h3 class="NSK-Black">[이용안내]</h3>
+                <div class="NSK-Black"># 사전예약 혜택</div>
+                <ul>
+                    <li>사전예약 혜택은 2021년 2월 15일까지 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 수강기간 1개월 및 수강권 40% 할인입니다.<br>
+                        - 안은재 대표의 경우 40% 할인은 적용되지 않습니다.<br>
+                        - 수강기간 추가 혜택은 사전예약자에 한해 2월 16일 일괄 적용 예정이니 참고 부탁 드립니다.
+                    </li>
+                    <li>강의시작일은 2월 15일 예정이오나, 일정에 따라 각 강의의 시작일은 변경 될 수 있으니 참고 부탁 드립니다. </li>
+                </ul>
+
+                <div class="NSK-Black"># 소문내기 이벤트</div>
+                <ul>
+                    <li>발표 시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
+                    <li>당첨자 발표는 2021년 2월 18일 (수) 공지사항 참조 부탁 드립니다.</li>
+                </ul>
+                <div class="NSK-Black">※ 문의안내 : 1544-5006</div>
+            </div>
+        </div>
+
     </div>
     <!-- End Container -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            var collaboslides = $(".review ul").bxSlider({
-                mode:'fade', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:750,
-                pause:3000,
-                pager:false,
-                controls:false,
-                minSlides:1,
-                maxSlides:1, 
-                moveSlides:1,
-            });
-        });
-
-        function fn_submit() {
-            var $regi_form_register = $('#regi_form_register');
-            var _url = '{!! front_url('/event/registerStore') !!}';
-
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
-                alert('교수님을 선택해주세요.');
-                return;
-            }
-
-            if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
-                alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
-                return;
-            }
-
-            {{-- register_chk_name 필요한것 이외 disabled 처리. (신청리스트명 문자발송 치환을 위한 정보) --}}
-            var reg_chk_val = $regi_form_register.find('input[name="register_chk[]"]:checked').val();
-            $regi_form_register.find('input[name="register_chk_name[]"]').each(function(i) {
-                if($(this).data('register-chk') == reg_chk_val) {
-                    $(this).attr('disabled', false);
-                } else {
-                    $(this).attr('disabled', true);
-                }
-            });
-
-            if (!confirm('저장하시겠습니까?')) { return true; }
-            ajaxSubmit($regi_form_register, _url, function(ret) {
-                if(ret.ret_cd) {
-                    alert(getApplyMsg(ret.ret_msg));
-                    location.reload();
-                }
-            }, showValidateError, null, false, 'alert');
-        }
-
-        {{-- 해당 프로모션 종속 결과 메세지 --}}
-        function getApplyMsg(ret_msg) {
-            var apply_msg = '';
-            var arr_apply_msg = [
-                ['신청 되었습니다.','사전예약이 완료되었습니다.'],
-            ];
-            for (var i = 0; i < arr_apply_msg.length; i++) {
-                if(arr_apply_msg[i][0] == ret_msg) {
-                    apply_msg = arr_apply_msg[i][1];
-                }
-            }
-            if(apply_msg == '') apply_msg = ret_msg;
-            return apply_msg;
-        }
-
-        {{-- 숫자만 유효성 체크 --}}
-        function onlyNumberCheck(object){
-            object.value = object.value.replace(/[^0-9.]/g, "");
-            if (object.value.length > object.maxLength) {
-                object.value = object.value.slice(0, object.maxLength);
-            }
-        }
 
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
+                
     </script>
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

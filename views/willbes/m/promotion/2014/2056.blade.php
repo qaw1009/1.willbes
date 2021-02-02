@@ -20,6 +20,13 @@
         .evtCtnsBox .txt02 span {display:block; font-size:20px; color:#fafdb2}
         .evtCtnsBox .txt02 strong {position:absolute; bottom:0; right:10px; width:50px; z-index:1}
 
+        .evt04 {background:#c2c2c2;}
+        .evt04 .evt04Box {color:#3a3a3a; text-align:left; padding:40px; font-size:14px; line-height:1.5}
+        .evt04 h3 {font-size:28px; margin-bottom:30px}
+        .evt04 div {font-size:16px; margin-bottom:10px}
+        .evt04 .evt04Box li {list-style: decimal; margin-left:15px;font-weight:300;}
+        .evt04 .evt04Box ul {margin-bottom:30px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">        
@@ -49,6 +56,28 @@
                     <strong><img src="https://static.willbes.net/public/images/promotion/common/icon_pointer.png" alt="" ><strong>
                 </a>
             </div>     
+        </div>
+
+        <div class="evtCtnsBox evt04">
+            <div class="evt04Box">
+                <h3 class="NSK-Black">[이용안내]</h3>
+                <div class="NSK-Black"># 사전예약 혜택</div>
+                <ul>
+                    <li>사전예약 혜택은 2021년 2월 15일까지 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 수강기간 1개월 및 수강권 40% 할인입니다.<br>
+                        - 안은재 대표의 경우 40% 할인은 적용되지 않습니다.<br>
+                        - 수강기간 추가 혜택은 사전예약자에 한해 2월 16일 일괄 적용 예정이니 참고 부탁 드립니다.
+                    </li>
+                    <li>강의시작일은 2월 15일 예정이오나, 일정에 따라 각 강의의 시작일은 변경 될 수 있으니 참고 부탁 드립니다. </li>
+                </ul> 
+
+                <div class="NSK-Black"># 소문내기 이벤트</div>
+                <ul>
+                    <li>발표 시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
+                    <li>당첨자 발표는 2021년 2월 18일 (수) 공지사항 참조 부탁 드립니다.</li>
+                </ul>
+                <div class="NSK-Black">※ 문의안내 : 1544-5006</div>
+            </div>            
         </div>
       
     </div>

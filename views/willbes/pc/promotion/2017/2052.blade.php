@@ -72,9 +72,16 @@
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+
+        .skyBanner {position:fixed; width:180px; top:250px; right:10px; z-index:10;}
+        .skyBanner a {display:block; margin-bottom:10px}
     </style>
 
     <div class="p_re evtContent NSK">
+        <div class="skyBanner">
+            <a href="#reviewListWrap"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky01.png" alt="합격축하 이벤트"/></a>
+            <a href="#regi_form_register"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky02.png" alt="합격축하 이벤트"/></a>
+        </div>
         <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>
         </div>
@@ -86,7 +93,7 @@
         <div class="evtCtnsBox event01_1" id="reviewListWrap">
         </div>
 
-        <div class="evtCtnsBox event02">
+        <div class="evtCtnsBox event02" id="event02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>
             <div class="evt_table">
                 <form name="regi_form_register" id="regi_form_register">
@@ -159,6 +166,7 @@
                     <li>이벤트 인원이 적을 경우, 일부 상품이 지급되지 않을 수 있습니다.</li>
                     <li>이벤트는 3월 23일(화) 종료됩니다.</li>
                     <li>당첨자 발표는 3월 26일(금)에 진행하며, 상품은 3월 30일(화)에 일괄 발송됩니다.</li>
+                    <li>합격 인증 이벤트의 경우 본인 확인이 가능해야 합니다.(이름 노출을 원하지 않으시면 인증 파일 첨부 시 이름의 가운데 글자를 가려주세요.)</li>
                 </ul>
             </div>
         </div>  

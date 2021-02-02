@@ -41,7 +41,7 @@
 
         .tech .gosi-tech-bntop .TechtabList {
             position: absolute;
-            top:405px;
+            top:410px;
             width:100%;
             z-index: 99;
             background-color: rgba(0,0,0,0.5);

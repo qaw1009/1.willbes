@@ -44,7 +44,7 @@
     position: absolute;
     top:404px;
     width:100%;
-    z-index: 99;
+    z-index: 50;
     background-color: rgba(0,0,0,0.5);
     padding:10px 0;
 }

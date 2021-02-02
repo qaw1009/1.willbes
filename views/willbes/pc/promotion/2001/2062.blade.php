@@ -46,7 +46,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2062_top.jpg"  alt="새해 복 많이 받으세요."/>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/CsreKYYznO4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/7pdLoBBE83E?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
 		</div>
 

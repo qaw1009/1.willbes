@@ -99,9 +99,7 @@
                     <div class="will-nTit NSK-Black">공무원, 어떻게 준비하나요? </div>
                     @foreach($data['banner'] as $section_name => $section_banners)
                         @if(starts_with($section_name, '인트로_서브1') === true)
-                            <li>
-                                {!! banner_html($section_banners, 'sliderNum') !!}
-                            </li>
+                            {!! banner_html($section_banners, 'sliderNum') !!}
                         @endif
                     @endforeach
                 </div>
@@ -109,9 +107,7 @@
                     <div class="will-nTit NSK-Black">윌비스 신규회원가입 혜택</div>
                     @foreach($data['banner'] as $section_name => $section_banners)
                         @if(starts_with($section_name, '인트로_서브2') === true)
-                            <li>
-                                {!! banner_html($section_banners, 'sliderNum') !!}
-                            </li>
+                            {!! banner_html($section_banners, 'sliderNum') !!}
                         @endif
                     @endforeach
                 </div>

@@ -79,8 +79,8 @@
 
     <div class="p_re evtContent NSK">
         <div class="skyBanner">
-            <a href="#reviewListWrap"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky01.png" alt="합격축하 이벤트"/></a>
-            <a href="#regi_form_register"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky02.png" alt="합격축하 이벤트"/></a>
+            <a href="#reviewListWrap"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky01.png" alt="합격수기 작성"/></a>
+            <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky02.png" alt="합격 인증하기"/></a>
         </div>
         <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>

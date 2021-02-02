@@ -118,13 +118,12 @@
         .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px }
 
         .evtReply { width:940px; margin:0 auto; position:relative}
-
     </style>
 
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#gostart"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky01.png" alt=""></a> 
+            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky02.png" alt=""></a>                           
         </div>
 

@@ -76,7 +76,7 @@
 
         .evt03 {background:#382020;}
         .evt03 div {width:1120px; margin:0 auto; position:relative}
-        .evt03 div a {position: absolute; width: 18.13%; height: 3.14%; border:1px solid #000; z-index: 2;}
+        .evt03 div a {position: absolute; width: 18.13%; height: 3.14%; z-index: 2;}
         .evt03 div a.link01 {left: 9.11%; top: 44.02%;}
         .evt03 div a.link02 {left: 41.25%; top: 43.91%;}
         .evt03 div a.link03 {left: 73.93%; top: 43.97%;}

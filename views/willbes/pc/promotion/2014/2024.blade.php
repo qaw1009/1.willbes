@@ -90,7 +90,7 @@
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#evt01"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_01.png" alt=""></a> 
+            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_02.png" alt=""></a>                           
         </div>
 

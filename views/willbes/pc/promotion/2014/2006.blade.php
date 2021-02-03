@@ -127,7 +127,7 @@
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky01.png" alt=""></a> 
+            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky01.png" alt=""></a> 
             {{--<a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2006_sky02.png" alt=""></a>--}}
         </div>
 

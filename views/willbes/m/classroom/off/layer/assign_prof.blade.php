@@ -75,11 +75,11 @@
                                 <col style="width: 13%;">
                             </colgroup>
                             <tbody>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>{{ $sublec['ess'][0]['SubjectName'] }}</td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
     @php
         $prev_course_idx = $sublec['ess'][0]['CourseIdx'];
@@ -120,13 +120,13 @@
             @endphp
                                 </td>
                             </tr>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>
                                     {{ $row['SubjectName'] }}
                                 </td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
         @endif
                                     <div class="w-data-pkg">
@@ -170,11 +170,11 @@
                                 <col style="width: 13%;">
                             </colgroup>
                             <tbody>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>{{ $sublec['choice'][0]['SubjectName'] }}</td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
 @php
     $prev_course_idx = $sublec['choice'][0]['CourseIdx'];
@@ -201,13 +201,13 @@
                                 <col style="width: 13%;">
                             </colgroup>
                             <tbody>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>
                                     {{ $row['SubjectName'] }}
                                 </td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
         @elseif($prev_subject_idx != $row['SubjectIdx'])
             @php
@@ -215,13 +215,13 @@
             @endphp
                                 </td>
                             </tr>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>
                                     {{ $row['SubjectName'] }}
                                 </td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
         @endif
                                     <div class="w-data-pkg">

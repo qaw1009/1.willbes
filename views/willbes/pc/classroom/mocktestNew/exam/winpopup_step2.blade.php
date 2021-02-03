@@ -73,102 +73,152 @@
 
                 @foreach($questionData as $subject_key => $subject_data)
                 <div class="examPaperWp" id="answer_box_{{$subject_key}}" @if($loop->first !== true) disabled="disabled" style="display: none" @endif>
-                    {{--@if($examData['isOpen'][$subject_key] != 'Y')
-                        <div class="exam-paper">
-                            시험 시작 전
+                    {{-- 시험 시작 전 --}}
+                    <div class="ExamBoxTemp"></div>
+                    <div class="examTimeWrap" id="paper_close_box_{{$subject_key}}">
+                        <div class="examTimeSec">
+                            <div class="examtitle NSK-Black">[시험시간 안내]</div>
+                            <table>
+                                <col span="3" />
+                                <tr>
+                                    <th>구분</th>
+                                    <th colspan="2">시험시간</th>
+                                </tr>
+                                <tr>
+                                    <td>수험생 교육</td>
+                                    <td>9:20 ~ 10:00</td>
+                                    <td>40분</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">1교시 시험</td>
+                                    <td>10:00 ~ 10:25</td>
+                                    <td>25분</td>
+                                </tr>
+                                <tr>
+                                    <td>10:25 ~ 11:55</td>
+                                    <td>90분</td>
+                                </tr>
+                                <tr>
+                                    <td>중식</td>
+                                    <td>11:55 ~ 13:30</td>
+                                    <td>95분</td>
+                                </tr>
+                                <tr>
+                                    <td>2교시 수험생교육</td>
+                                    <td>13:30 ~ 14:00</td>
+                                    <td>30분</td>
+                                </tr>
+                                <tr>
+                                    <td>2교시 시험</td>
+                                    <td>14:00 ~ 15:30</td>
+                                    <td>90분</td>
+                                </tr>
+                                <tr>
+                                    <td>휴식</td>
+                                    <td>15:30 ~ 16:00</td>
+                                    <td>30분</td>
+                                </tr>
+                                <tr>
+                                    <td>3교시 수험생교육</td>
+                                    <td>16:00 ~ 16:30</td>
+                                    <td>30분</td>
+                                </tr>
+                                <tr>
+                                    <td>3교시 시험</td>
+                                    <td>16:30 ~ 18:00</td>
+                                    <td>90분</td>
+                                </tr>
+                            </table>
                         </div>
-                    @else--}}
-                        <div class="exam-paper" id="paper_close_box_{{$subject_key}}">
-                            시험 시작 전
+                    </div>
+
+                    <div class="exam-paper" id="paper_box_{{$subject_key}}" style="display: none">
+                        @if ($examData['productInfo']['PaperType'] == 'I')
+                            <ul>
+                                {{--문항별이미지--}}
+                                @foreach($subject_data as $key => $val)
+                                    <li id="que{{$subject_key.'_'.$key}}" name="que{{$subject_key.'_'.$key}}">
+                                        <a class="strong tx-black underline">{{ $key }}.</a>
+                                        <span class="que"><img src="{{ $val['QFilePath'] }}{{ $val['file'] }}"></span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @else
+                            {{--문제통파일이미지--}}
+                            @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
+                                <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                            @endif
+                        @endif
+                    </div>
+
+                    <div class="answer-sheet" id="answer_sheet_box_{{$subject_key}}" style="display: none">
+                        <div class="exam-txt">
+                            * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
+                            * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
+                            * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
+                            <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
                         </div>
-                        <div class="exam-paper" id="paper_box_{{$subject_key}}" style="display: none">
-                            @if ($examData['productInfo']['PaperType'] == 'I')
-                                <ul>
-                                    {{--문항별이미지--}}
-                                    @foreach($subject_data as $key => $val)
-                                        <li id="que{{$subject_key.'_'.$key}}" name="que{{$subject_key.'_'.$key}}">
-                                            <a class="strong tx-black underline">{{ $key }}.</a>
-                                            <span class="que"><img src="{{ $val['QFilePath'] }}{{ $val['file'] }}"></span>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @else
-                                {{--문제통파일이미지--}}
-                                @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile']) === false)
-                                    <iframe src="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] . $questionData[$subject_key][key($subject_data)]['FrontRealQuestionFile'] }}" name="frmL" id="frmL" width="99%" height="100%" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
+                        <table class="answerTb">
+                            <colgroup>
+                                <col style="width: 60px;"/>
+                                @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
+                                    <col style="width: 60px;"/>
+                                @endfor
+                                <col style="width: 65px;"/>
+                                <col width="*">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th class="ath1">번호</th>
+                                @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
+                                    <th>{{ $i }}번</th>
+                                @endfor
+                                <th class="ath6 worry">고민중</th>
+                                @if ($examData['productInfo']['PaperType'] == 'I')
+                                    <th class="ath7">문제보기</th>
+                                @endif
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- 정답체크 -->
+                            @foreach($subject_data as $key => $row)
+                                <tr>
+                                    <td>{{$key}}<img class="q_img" id='ko_{{$subject_key.'_'.$key}}' src="/public/img/willbes/mypage/icon_question_orange.png" style="display:@if($row['Answer'] === '0') @else none @endif;"></td>
+                                    @for($i = 1; $i <= $row['AnswerNum']; $i++)
+                                        <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','{{ $i }}', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif disabled="disabled"/></td>
+                                    @endfor
+                                        <td class="worry"><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
+                                    @if ($examData['productInfo']['PaperType'] == 'I')
+                                        <td class="btnAgR btnc"><a href="#que{{$subject_key.'_'.$key}}" class="qv btnlineGray">문제보기 ></a></td>
+                                    @endif
+                                    <input type="hidden" class="mq_hidden_datas subject_mq_{{$subject_key}}" name="mq_idx_{{$subject_key.'_'.$key}}" value="{{ $row['MqIdx'] }}" disabled="disabled">
+                                </tr>
+                            @endforeach
+                            <!-- 정답체크 -->
+                            </tbody>
+                        </table>
+
+                        <div class="btnAgR btnl c_both NGEB">
+                            @if($examData['productInfo']['IsPaperDownload'] == 'Y')
+                                @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
+                                    <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
+                                        문제 다운로드
+                                    </a>
+                                @else
+                                    <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
                                 @endif
                             @endif
+                            <!-- 다음과목 -->
+                                <a href="javascript:void(0);" class="f_right btntxtBlack" id="btn_next_tab">다음과목 > </a>
+                            <!-- 다음과목 -->
                         </div>
-
-                        <div class="answer-sheet" id="answer_sheet_box_{{$subject_key}}" style="display: none">
-                            <div class="exam-txt">
-                                * 모든 과목 & 모든 문항의 답안을 체크하셔야 ‘ 정답제출’ 이 가능합니다.<br/>
-                                * 정답제출을 해야만 성적결과를 확인할 수 있습니다.<br/>
-                                * 시험시간이 종료되기 전 답안을 제출해 주세요. 답안을 제출하지 않을 경우 시험 결과를 확인할 수 없습니다.
-                                <span style="color:red;">(시험시간 종료 시 답안 제출 불가)</span>
-                            </div>
-                            <table class="answerTb">
-                                <colgroup>
-                                    <col style="width: 60px;"/>
-                                    @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
-                                        <col style="width: 60px;"/>
-                                    @endfor
-                                    <col style="width: 65px;"/>
-                                    <col width="*">
-                                </colgroup>
-                                <thead>
-                                <tr>
-                                    <th class="ath1">번호</th>
-                                    @for($i = 1; $i <= $questionData[array_key_first($questionData)][array_key_first($subject_data)]['AnswerNum']; $i++)
-                                        <th>{{ $i }}번</th>
-                                    @endfor
-                                    <th class="ath6 worry">고민중</th>
-                                    @if ($examData['productInfo']['PaperType'] == 'I')
-                                        <th class="ath7">문제보기</th>
-                                    @endif
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <!-- 정답체크 -->
-                                @foreach($subject_data as $key => $row)
-                                    <tr>
-                                        <td>{{$key}}<img class="q_img" id='ko_{{$subject_key.'_'.$key}}' src="/public/img/willbes/mypage/icon_question_orange.png" style="display:@if($row['Answer'] === '0') @else none @endif;"></td>
-                                        @for($i = 1; $i <= $row['AnswerNum']; $i++)
-                                            <td><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','{{ $i }}', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="{{ $i }}" @if($row['Answer'] == $i) checked @endif disabled="disabled"/></td>
-                                        @endfor
-                                            <td class="worry"><input type="radio" class="answer_radio_datas subject_answer_{{$subject_key}}" name="answer_{{$subject_key.'_'.$key}}" onClick="storeRowAnswer('{{$key}}','0', '{{ $row['MqIdx'] }}', '{{$subject_key}}')" value="0" @if($row['Answer'] === '0') checked @endif disabled="disabled"/></td>
-                                        @if ($examData['productInfo']['PaperType'] == 'I')
-                                            <td class="btnAgR btnc"><a href="#que{{$subject_key.'_'.$key}}" class="qv btnlineGray">문제보기 ></a></td>
-                                        @endif
-                                        <input type="hidden" class="mq_hidden_datas subject_mq_{{$subject_key}}" name="mq_idx_{{$subject_key.'_'.$key}}" value="{{ $row['MqIdx'] }}" disabled="disabled">
-                                    </tr>
-                                @endforeach
-                                <!-- 정답체크 -->
-                                </tbody>
-                            </table>
-
-                            <div class="btnAgR btnl c_both NGEB">
-                                @if($examData['productInfo']['IsPaperDownload'] == 'Y')
-                                    @if (empty($questionData[$subject_key][key($subject_data)]['PFilePath']) === false && empty($questionData[$subject_key][key($subject_data)]['filetotal']) === false)
-                                        <a class="f_left btntxtBlack" href="{{ $questionData[$subject_key][key($subject_data)]['PFilePath'] }}{{ $questionData[$subject_key][key($subject_data)]['filetotal'] }}" target="_blank">
-                                            문제 다운로드
-                                        </a>
-                                    @else
-                                        <a class="f_left btntxtBlack" href="javascript:void(0);" onclick="alert('다운로드할 파일이 없습니다.');">문제 다운로드</a>
-                                    @endif
-                                @endif
-                                <!-- 다음과목 -->
-                                    <a href="javascript:void(0);" class="f_right btntxtBlack" id="btn_next_tab">다음과목 > </a>
-                                <!-- 다음과목 -->
-                            </div>
-                            <div class="btnAgR c_both btns NG">
-                                <ul>
-                                    <li><a class="btnBlue" href="javascript:void(0);" onclick="storeAnswer()">정답제출</a></li>
-                                    <li><a class="btnlightGray" href="javascript:void(0);" onclick="storeAnswerTemp()">임시저장</a></li>
-                                </ul>
-                            </div>
+                        <div class="btnAgR c_both btns NG">
+                            <ul>
+                                <li><a class="btnBlue" href="javascript:void(0);" onclick="storeAnswer()">정답제출</a></li>
+                                <li><a class="btnlightGray" href="javascript:void(0);" onclick="storeAnswerTemp()">임시저장</a></li>
+                            </ul>
                         </div>
-                    {{--@endif--}}
+                    </div>
                 </div>
                 @endforeach
             </div>

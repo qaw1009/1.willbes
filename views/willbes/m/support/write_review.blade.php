@@ -67,7 +67,7 @@
         <div id="Fixbtn" class="Fixbtn two">
             <ul>
                 <li class="btn-purple"><a href="#none" id="btn_submit">등록</a></li>
-                <li class="btn_gray"><a href="#none" onclick="goReviewList();">취소</a></li>
+                <li class="btn_gray"><a href="#none" onclick="history.back(-1);">취소</a></li>
             </ul>
         </div>
 

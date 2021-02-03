@@ -254,7 +254,7 @@
             if (confirm('저장하시겠습니까?')) {
                 ajaxSubmit($regi_form_register, _url, function (ret) {
                     if (ret.ret_cd) {
-                        alert(ret.ret_msg);
+                        alert('등록되었습니다.');
                         location.reload();
                     }
                 }, showValidateError, null, false, 'alert');

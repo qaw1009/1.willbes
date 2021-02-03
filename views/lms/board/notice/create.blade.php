@@ -147,7 +147,7 @@
 
     <!-- cheditor -->
     <link href="/public/vendor/cheditor/css/ui.css" rel="stylesheet">
-    <script src="/public/vendor/cheditor/cheditor.js"></script>
+    <script src="/public/vendor/cheditor/cheditor.js?token={{time()}}"></script>
     <script src="/public/js/editor_util.js"></script>
     <script src="/public/js/lms/board/common.js"></script>
     <script type="text/javascript">
@@ -156,6 +156,10 @@
         $(document).ready(function() {
             //editor load
             var $editor_profile = new cheditor();
+            $editor_profile.config.templateType = 'mobile';
+            $editor_profile.config.useSource = false;
+            $editor_profile.config.usePreview = false;
+            $editor_profile.config.useFullScreen = false;
             $editor_profile.config.editorHeight = '170px';
             $editor_profile.config.editorWidth = '100%';
             $editor_profile.inputForm = 'board_content';

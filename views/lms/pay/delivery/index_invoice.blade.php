@@ -74,7 +74,7 @@
                             @for($i = 0; $i <= 23; $i++)
                                 <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
                             @endfor
-                        </select> 시 00분
+                        </select> 시 00분 00초
                         <span class="pl-5 pr-5">~</span>
                         <div class="input-group mb-0">
                             <div class="input-group-addon no-border-right">
@@ -86,7 +86,7 @@
                             @for($i = 0; $i <= 23; $i++)
                                 <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $i == 23 ? 'selected="selected"' : '' }}>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
                             @endfor
-                        </select> 시 59분
+                        </select> 시 59분 59초
                         <div class="btn-group ml-20" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>

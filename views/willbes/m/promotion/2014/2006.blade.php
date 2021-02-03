@@ -44,7 +44,7 @@
     .evtFooter ul {margin-bottom:30px; padding-left:10px}
     .evtFooter li {margin-left:20px; list-style-type: decimal; margin-bottom:10px}
 
-    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px}
+    .btnbuyBox {width:100%; position:fixed; bottom:0; text-align:center; background:rgba(255,255,255,0.5); padding-top:10px; z-index:100}
     .btnbuy a {display:block; width:94%; max-width:700px; margin:0 auto; font-size:1.5rem; background:#000; color:#fff; padding:15px 0; text-align:center; border-radius:10px; line-height:1.4}
     .btnbuy a span {font-size:1.2rem;}
     .btnbuy a:hover {background:#3a99f0;

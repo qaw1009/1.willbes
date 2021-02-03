@@ -364,7 +364,7 @@
 
     <div class="Section mt50">
         <div class="widthAuto"> 
-            <div class="will-nTit NSK-Black">협력기관<span class="tx-color">(MOU)</span></div>
+            <div class="will-nTit NSK-Black">협력기관<span class="tx-color">(MOU)</span> <span class="tx16 ml10 NSK">문의: 070-4006-8926</span></div>
             <div class="mouBox">
                 <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_01.jpg" alt=""></a></span>
                 <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_02.jpg" alt=""></a></span>

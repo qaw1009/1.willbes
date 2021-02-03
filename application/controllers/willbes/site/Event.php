@@ -918,6 +918,7 @@ class Event extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $el_idx = element('el_idx',$arr_input);
         $file_type = element('file_type',$arr_input);
+        $limit = element('limit',$arr_input, $this->_paging_limit);
 
         if(empty($el_idx) === true) {
             return $this->json_error('필수 데이터 누락입니다.');
@@ -933,7 +934,7 @@ class Event extends \app\controllers\FrontController
         $order_by = ['A.EmIdx' => 'DESC'];
 
         $total_rows = $this->eventFModel->listRegisterMember(true, $arr_condition);
-        $paging = $this->pagination('/event/listRegisterAjax/' . $el_idx, $total_rows, $this->_paging_limit, $this->_paging_count,true);
+        $paging = $this->pagination('/event/listRegisterAjax/' . $el_idx, $total_rows, $limit, $this->_paging_count,true);
 
         if ($total_rows > 0) {
             $data = $this->eventFModel->listRegisterMember(false,$arr_condition,$paging['limit'],$paging['offset'],$order_by);

@@ -225,6 +225,7 @@
             var data = {
                 'el_idx' : '{{ $data['ElIdx'] }}',
                 'file_type': '_thumbnail',
+                'limit' : 25,
                 'page' : page,
             };
             sendAjax(_url, data, function(ret) {

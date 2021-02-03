@@ -34,9 +34,9 @@
 
     </style> 
 
-    <div class="evtContent NSK">
-
+    <div class="evtContent NSK">        
         <div class="evtCtnsBox evt_top"> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_top.jpg" alt="설맞이 이벤트" >
             <ul class="tabs NSK-Black">
                 <li>
                     <a href="#tab01">
@@ -86,8 +86,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_01.jpg" alt="복이 세배!" >
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_normal_partial',array('write_yn'=>'N'))
-            @endif 
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif
         </div>
         
 

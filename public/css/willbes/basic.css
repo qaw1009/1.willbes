@@ -531,6 +531,10 @@ select[disabled] {
 	display: block;
 	clear: both;
 }
+.widthAuto100 {
+	width: 100px;
+	margin: 0 auto;
+}
 .widthAuto260 {
 	width: 260px;
 	margin: 0 auto;
@@ -827,6 +831,9 @@ select[disabled] {
 .mt150 {
 	margin-top: 150px !important;
 }
+.mt200 {
+	margin-top: 200px !important;
+}
 
 .mb0,
 .mb-zero {
@@ -971,6 +978,9 @@ select[disabled] {
 }
 .pt100 {
 	padding-top: 100px !important;
+}
+.pt150 {
+	padding-top: 150px !important;
 }
 
 .pl-zero {

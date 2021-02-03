@@ -33,6 +33,7 @@
     height: 460px; 
     overflow: hidden;
 }
+
 .tech .gosi-tech-bntop .TechtabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; 
     background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.2; filter:alpha(opacity=20);}
 .tech .gosi-tech-bntop .TechtabBox p a {display:none;}

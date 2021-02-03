@@ -19,7 +19,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed;top:200px;right:50px;z-index:200;}
+        .sky {position:fixed;top:100px;right:10px; width:144px; z-index:200;}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2040_top_bg.jpg) no-repeat center top;}
 

@@ -76,13 +76,15 @@
     </div>
 
     <div class="Section">
-        <div class="widthAuto Profinfo">          
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_visual_01.jpg" alt="전문화된 교수진">
-            {{--
-            <span class="btn01"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50297/?subject_idx=1003&subject_name=%ED%98%95%EB%B2%95') }}" alt="김원욱">자세히보기 &gt;</a></span>
-            <span class="btn02"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50547/?subject_idx=1004&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95') }}" alt="신광은">자세히보기 &gt;</a></span>
-            <span class="btn03"><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51037/?subject_idx=1023&subject_name=%EA%B2%BD%EC%B0%B0%EC%8B%A4%EB%AC%B4%EC%A2%85%ED%95%A9') }}" alt="장정훈">자세히보기 &gt;</a></span>     
-            --}}    
+        <div class="widthAuto">          
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_visual_01.jpg" alt="">   
+        </div>
+    </div> 
+
+    <div class="Section mt50">
+        <div class="widthAuto">    
+            <div class="will-nTit NSK-Black">객관식 <span class="tx-color">형사소송법, 형법, 실무종합, 헌법(NEW), 행정학(NEW)</span></div>      
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_visual_02.jpg" alt="전문화된 교수진">   
         </div>
     </div> 
 
@@ -90,8 +92,8 @@
         <div class="widthAuto"> 
             <div class="will-nTit NSK-Black">주관식 <span class="tx-color">형사소송법</span></div>
             <div class="tx-center">
-                <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_01.jpg" alt="형소법 정주형"></a></span>
-                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_02.jpg" alt="행정법 유시완"></a></span>
+                <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_01.jpg" alt="배너명"></a></span>
+                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_02.jpg" alt="배너명"></a></span>
             </div>  
         </div>
     </div>
@@ -100,8 +102,8 @@
         <div class="widthAuto">           
             <div class="will-nTit NSK-Black">승진대비 <span class="tx-color">계급&amp;직렬</span> 승진 PASS</div>
             <ul class="proPAss">
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_01.jpg') }}" alt="계급별 12개월 PASS"></a></li>
-                <li><a href="#none"><img src="{{ img_url('cop_pro/banner/bnr_557_02.jpg') }}" alt="교수별 12개월 PASS"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_557x270_01.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_557x270_02.jpg" alt="배너명"></a></li>
             </ul>            
         </div>
     </div>

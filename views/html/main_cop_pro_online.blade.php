@@ -90,7 +90,7 @@
 
     <div class="Section mt100">
         <div class="widthAuto"> 
-            <div class="will-nTit NSK-Black">주관식 <span class="tx-color">형사소송법</span></div>
+            <div class="will-nTit NSK-Black">주관식 <span class="tx-color">형사소송법 / 행정법</span></div>
             <div class="tx-center">
                 <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_01.jpg" alt="배너명"></a></span>
                 <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_02.jpg" alt="배너명"></a></span>

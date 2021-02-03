@@ -41,16 +41,17 @@
 
         .tech .gosi-tech-bntop .TechtabList {
             position: absolute;
-            top:410px;
+            top:404px;
             width:100%;
-            z-index: 99;
+            z-index: 50;
             background-color: rgba(0,0,0,0.5);
+            padding:10px 0;
         }
 
         .tech .gosi-tech-bntop .Techtab {width:1120px; margin:0 auto; text-align:center}
         .tech .gosi-tech-bntop .Techtab:after {content:""; display:block; clear:both}
         .tech .gosi-tech-bntop .Techtab li {display:inline-block; width: calc(11.11111% - 2px);}
-        .tech .gosi-tech-bntop .Techtab li a {display:block; text-align:center; line-height:50px; font-size: 15px; color:#b4b4b4; height:50px; width:95%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis;}
+        .tech .gosi-tech-bntop .Techtab li a {display:block; text-align:center; line-height:1.2; font-size: 15px; color:#b4b4b4; }
         .tech .gosi-tech-bntop .Techtab li a:hover,
         .tech .gosi-tech-bntop .Techtab li a.active {color:#fff; font-weight: bold;}
 

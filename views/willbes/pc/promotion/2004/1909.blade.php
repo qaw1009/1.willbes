@@ -37,7 +37,7 @@
                 <area shape="rect" coords="756,361,984,541" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/174017" target="_blank" />
                 <area shape="rect" coords="756,549,986,728" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/174527" target="_blank" />
                 <area shape="rect" coords="755,736,985,915" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/176587" target="_blank" />
-              	<area shape="rect" coords="755,923,985,1106" href="javascript:alert('1월에 공개됩니다!')" />
+              	<area shape="rect" coords="755,923,985,1106" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/177896" target="_blank" />
             </map> 
         </div>     
 

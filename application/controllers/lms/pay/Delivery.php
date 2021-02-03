@@ -143,24 +143,26 @@ class Delivery extends BaseOrder
         }
 
         // 날짜 검색
-        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
-        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
+        $search_start_hour = get_var($this->_reqP('search_start_hour'), '00');
+        $search_end_hour = get_var($this->_reqP('search_end_hour'), '23');
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01')) . ' ' . $search_start_hour . ':00:00';
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t')) . ' ' . $search_end_hour . ':59:59';
 
         switch ($this->_reqP('search_date_type')) {
             case 'invoice' :
-                $arr_condition['BDT'] = ['OPD.InvoiceRegDatm' => [$search_start_date, $search_end_date]];
+                $arr_condition['BET'] = ['OPD.InvoiceRegDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'complete' :
-                $arr_condition['BDT'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
+                $arr_condition['BET'] = ['OPD.DeliverySendDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'cancel' :
-                $arr_condition['BDT'] = ['OPD.StatusUpdDatm' => [$search_start_date, $search_end_date]];
+                $arr_condition['BET'] = ['OPD.StatusUpdDatm' => [$search_start_date, $search_end_date]];
                 break;
             case 'refund' :
-                $arr_condition['BDT'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
+                $arr_condition['BET'] = ['OPR.RefundDatm' => [$search_start_date, $search_end_date]];
                 break;
             default :
-                $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
+                $arr_condition['BET'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
                 break;
         }
 
@@ -307,6 +309,26 @@ class Delivery extends BaseOrder
     }
 
     /**
+     * 송장번호 초기화
+     */
+    public function init()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'status', 'label' => '변경배송상태', 'rules' => 'trim|required|in_list[init]'],
+            ['field' => 'params', 'label' => '주문상품식별자', 'rules' => 'trim|required']
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->deliveryInfoModel->modifyDeliveryInit(json_decode($this->_reqP('params'), true));
+
+        $this->json_result($result, '송장번호가 초기화되었습니다.', $result);
+    }
+
+    /**
      * 프린트 폼
      * @return mixed
      */
@@ -415,15 +437,17 @@ class Delivery extends BaseOrder
     {
         // 발송대상 주문조회
         $search_start_date = $this->_reqP('search_start_date');
+        $search_start_hour = $this->_reqP('search_start_hour');
         $search_end_date = $this->_reqP('search_end_date');
+        $search_end_hour = $this->_reqP('search_end_hour');
         $search_site_code = $this->_reqP('search_site_code');
 
-        if (empty($search_start_date) === true || empty($search_end_date) === true) {
+        if (empty($search_start_date) === true || empty($search_start_hour) === true || empty($search_end_date) === true || empty($search_end_hour) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
-        $search_start_datm = $search_start_date . ' 00:00:00';
-        $search_end_datm = $search_end_date . ' 23:59:59';
+        $search_start_datm = $search_start_date . ' ' . $search_start_hour . ':00:00';
+        $search_end_datm = $search_end_date . ' ' . $search_end_hour . ':59:59';
 
         $data = $this->deliveryInfoModel->getDeliveryTargetOrderData($search_start_datm, $search_end_datm, $search_site_code);
         if (empty($data) === true) {

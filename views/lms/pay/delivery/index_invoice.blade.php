@@ -61,21 +61,33 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control mr-10" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="paid">결제완료일</option>
                         </select>
-                        <div class="input-group mb-0 mr-20">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일">
+                        </div>
+                        <select class="form-control" id="search_start_hour" name="search_start_hour" title="조회시작시간" style="width: 60px;">
+                            @for($i = 0; $i <= 23; $i++)
+                                <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}">{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                            @endfor
+                        </select> 시 00분
+                        <span class="pl-5 pr-5">~</span>
+                        <div class="input-group mb-0">
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일자">
                         </div>
-                        <div class="btn-group" role="group">
+                        <select class="form-control" id="search_end_hour" name="search_end_hour" title="조회종료시간" style="width: 60px;">
+                            @for($i = 0; $i <= 23; $i++)
+                                <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" {{ $i == 23 ? 'selected="selected"' : '' }}>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                            @endfor
+                        </select> 시 59분
+                        <div class="btn-group ml-20" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
@@ -121,7 +133,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="rowspan">선택</th>
+                    <th class="rowspan"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
                     <th class="">No</th>
                     <th class="rowspan">주문번호</th>
                     <th class="rowspan">회원정보</th>
@@ -213,6 +225,11 @@
                         return '<input type="text" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '"' + attr_disabled + ' style="width: 120px;" />' + bt_html;
                     }}
                 ]
+            });
+
+            // 전체선택/해제
+            $list_table.on('ifChanged', '#_is_all', function() {
+                iCheckAll($list_table.find('input[name="order_idx"]'), $(this));
             });
 
             // 송장엑셀업로드 버튼 클릭

@@ -8,7 +8,7 @@ class SupportLectureReview extends BaseSupport
     protected $models = array('categoryF', 'product/baseProductF', 'support/supportBoardTwoWayF');
     protected $helpers = array();
     protected $auth_controller = false;
-    protected $auth_methods = array();
+    protected $auth_methods = array('create');
 
     protected $_bm_idx;
     protected $_default_path;
@@ -29,6 +29,7 @@ class SupportLectureReview extends BaseSupport
     public function index($params = [])
     {
         $arr_input = $this->_reqG(null);
+        $site_code = element('site_code', $arr_input, $this->_site_code);
         $s_cate_code = element('s_cate_code', $arr_input);
         $prof_idx = element('prof_idx', $arr_input);
         $subject_idx = element('subject_idx', $arr_input);
@@ -54,7 +55,7 @@ class SupportLectureReview extends BaseSupport
 
         // 교수 목록 조회
         $group_by = ' group by PSC.SubjectIdx, P.ProfIdx ';
-        $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], '', '', '', [], $group_by);
+        $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], '', '', '', [], $group_by);
 
         $arr_condition = [
             'EQ' => [
@@ -62,7 +63,7 @@ class SupportLectureReview extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
-                'b.ProfSiteCode' => $this->_site_code
+                //'b.ProfSiteCode' => $this->_site_code
             ],
             'RAW' => [
                 'b.ProfIdx is not ' => 'null'
@@ -113,6 +114,24 @@ class SupportLectureReview extends BaseSupport
             'paging' => $paging,
             'list' => $list,
             'orderby' => $orderby,
+            'site_code' => $site_code
+        ]);
+    }
+
+    public function create()
+    {
+        $arr_input = $this->_reqG(null);
+        $arr_base['site_code'] = element('site_code', $arr_input);
+        $arr_base['prod_code'] = element('prod_code', $arr_input);
+        $arr_base['cate_code'] = element('cate_code', $arr_input);
+        $arr_base['subject_idx'] = element('subject_idx', $arr_input);
+        $arr_base['subject_name'] = element('subject_name', $arr_input);
+        $arr_base['prof_idx'] = element('prof_idx', $arr_input);
+        $arr_base['board_idx'] = element('board_idx', $arr_input);
+
+        $this->load->view('support/write_review', [
+            'arr_input' => $arr_input,
+            'arr_base' => $arr_base,
         ]);
     }
 

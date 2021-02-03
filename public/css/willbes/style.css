@@ -10256,6 +10256,16 @@ table.testTable tr td.w-date {
 	margin-right: 30px;
 }
 
+.ExamBox .examTimeWrap {position: absolute;	top: 95px; width:100%; height: calc(100% - 95px); background:#fff; z-index:10}
+.ExamBox .examTimeWrap .examTimeSec {width:600px; margin:100px auto 0}
+.ExamBox .examTimeWrap .examtitle {font-size:20px; margin-bottom:20px; text-align:center}
+.ExamBox .examTimeWrap .examTimeSec table {border:2px solid #333;}
+.ExamBox .examTimeWrap .examTimeSec tr {border-bottom:1px solid #ccc}
+.ExamBox .examTimeWrap .examTimeSec th,
+.ExamBox .examTimeWrap .examTimeSec td {padding:10px; border-right:1px solid #ccc; text-align:center}
+.ExamBox .examTimeWrap .examTimeSec th {background-color: #f4f4f4; color:#000; font-weight: bold}
+
+
 /* subContainer : Mypage : 모의고사관리 : ExamBox : examPaperWp */
 .ExamBox .examPaperWp {
 	margin: 0 10px 0 25px;
@@ -10294,7 +10304,7 @@ table.testTable tr td.w-date {
 }*/
 .ExamBox .examPaperWp .answer-sheet {
 	position: fixed;
-	top: 90px;
+	top: 95px;
 	right: 10px;
 	width: 480px;
 	height: calc(100% - 120px);

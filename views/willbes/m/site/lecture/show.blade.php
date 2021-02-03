@@ -205,7 +205,7 @@
                 @if($data['IsOpenStudyComment'] === 'Y')
                     <div id="tab04" class="lec-reply">
                         해당 강좌 총 수강후기 [<strong>0</strong>건]
-                        <p class="tx-red">※ 수강후기 등록은 PC버전에서만 가능합니다.</p>
+                        <p class="tx-red">※ 수강후기는 내강의실에서 등록 가능합니다.</p>
                         <div class="tab04-content"></div>
                     </div>
                 @endif

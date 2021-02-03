@@ -42,19 +42,19 @@
         <div class="sortList">
             <ul>
                 @foreach($arr_base['professor'] as $row)
-                    <li data-cate-code="{{ $row['CateCode'] }}" data-subject-idx="{{ $row['SubjectIdx'] }}" data-prof-idx="{{ $row['ProfIdx'] }}">
+                    <li data-site-code="{{ $site_code }}" data-cate-code="{{ $row['CateCode'] }}" data-subject-idx="{{ $row['SubjectIdx'] }}" data-prof-idx="{{ $row['ProfIdx'] }}">
                         <a href="#none" class="@if(element('s_cate_code', $arr_input) == $row['CateCode'] && element('subject_idx', $arr_input) == $row['SubjectIdx'] && element('prof_idx', $arr_input) == $row['ProfIdx']) on @endif">
                             {{ $row['SubjectName'] }} {{ $row['ProfNickName'] }}
                         </a>
                     </li>
                 @endforeach
-                <li data-cate-code="" data-subject-idx="" data-prof-idx="">
+                <li data-site-code="{{ $site_code }}" data-cate-code="" data-subject-idx="" data-prof-idx="">
                     <a href="#none" class="@if(element('s_cate_code', $arr_input) == '' && element('prof_idx', $arr_input) == '' && element('subject_idx', $arr_input) == '') on @endif">전체</a>
                 </li>
             </ul>
         </div>
 
-        <div class="ml10">※ 수강후기 등록은 PC버전에서만 가능합니다.</div>
+        <div class="ml10 tx-red">※ 수강후기는 내강의실에서 등록 가능합니다.</div>
 
         <div class="sort">
             <a href="#none" id="order_by_best" class="btn-order-by @if($orderby == 'best') on @endif" onclick="goUrl('orderby','best')" >BEST순</a>
@@ -121,11 +121,13 @@
 
         // 교수별 수강후기 조회
         $(".sortList ul li").click(function (){
+            var site_code = $(this).data('site-code');
             var s_cate_code = $(this).data('cate-code');
             var subject_idx = $(this).data('subject-idx');
             var prof_idx = $(this).data('prof-idx');
 
             $url_form.html('');
+            $url_form.append('<input type="hidden" name="site_code" value="' + site_code + '"/>');
             if(s_cate_code && subject_idx && prof_idx){
                 $url_form.append('<input type="hidden" name="s_cate_code" value="' + s_cate_code + '"/>');
                 $url_form.append('<input type="hidden" name="subject_idx" value="' + subject_idx + '"/>');

@@ -106,13 +106,13 @@
                                 <col style="width: 13%;">
                             </colgroup>
                             <tbody>
-                            <tr class="replyList willbes-Open-Table">
+                            <tr class="replyList willbes-Open-Table hover">
                                 <td>
                                     {{ $row['SubjectName'] }}
                                 </td>
                                 <td class="MoreBtn tx-center">></td>
                             </tr>
-                            <tr class="willbes-Open-List">
+                            <tr class="willbes-Open-List" style="display:table-row;">
                                 <td class="w-data tx-left" colspan="2">
         @elseif($prev_subject_idx != $row['SubjectIdx'])
             @php

@@ -74,7 +74,7 @@
                     <div id="MainRollingDiv" class="MaintabList">
                         <ul class="Maintab">
                             @foreach($data['banner']['인트로_메인빅배너'] as $row)
-                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></li>
+                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{!! $row['BannerName'] !!}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -67,7 +67,7 @@
         <div id="Fixbtn" class="Fixbtn two">
             <ul>
                 <li class="btn-purple"><a href="#none" id="btn_submit">등록</a></li>
-                <li class="btn_gray"><a href="{{ front_url('/support/lectureReview/index') }}?site_code={{$arr_base['site_code']}}&s_cate_code={{$arr_base['cate_code']}}&subject_idx={{$arr_base['subject_idx']}}&prof_idx={{$arr_base['prof_idx']}}">취소</a></li>
+                <li class="btn_gray"><a href="#none" onclick="goReviewList();">취소</a></li>
             </ul>
         </div>
 
@@ -93,7 +93,7 @@
                     if(ret.ret_cd) {
                         alert(ret.ret_msg);
                     }
-                    location.href = "{{ front_url('/support/lectureReview/index') }}?site_code={{$arr_base['site_code']}}&s_cate_code={{$arr_base['cate_code']}}&subject_idx={{$arr_base['subject_idx']}}&prof_idx={{$arr_base['prof_idx']}}";
+                    goReviewList();
                 }, showValidateError, addValidate, false, 'alert');
 
             });
@@ -122,6 +122,13 @@
 
         function starCount(count) {
             $('#start_count').val(count);
+        }
+
+        function goReviewList(){
+            var _url = "{{ front_url('/support/lectureReview/index?') }}";
+            _url += "site_code={{$arr_base['site_code']}}&s_cate_code={{$arr_base['cate_code']}}&subject_idx={{$arr_base['subject_idx']}}&prof_idx={{$arr_base['prof_idx']}}";
+
+            location.href = _url;
         }
     </script>
 @stop

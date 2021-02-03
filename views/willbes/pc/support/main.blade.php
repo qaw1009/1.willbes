@@ -70,7 +70,7 @@
                                         <span class="row-line">|</span>
                                     </li>
                                     <li>
-                                        <span class="tit">교재 문의</span>
+                                        <span class="tit">교재배송문의</span>
                                         <span class="num tx-light-blue">1544-4944</span>
                                         <span class="row-line">|</span>
                                     </li>

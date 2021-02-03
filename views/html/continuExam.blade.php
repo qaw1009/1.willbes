@@ -27,16 +27,73 @@
 
         <div class="ExamBoxTemp"></div>
 
+        <div class="examTimeWrap">
+            <div class="examTimeSec">
+                <div class="examtitle NSK-Black">[시험시간 안내]</div>
+                <table>
+                    <col span="3" />
+                    <tr>
+                        <th>구분</th>
+                        <th colspan="2">시험시간</th>
+                    </tr>
+                    <tr>
+                        <td>수험생 교육</td>
+                        <td>9:20 ~ 10:00</td>
+                        <td>40분</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">1교시 시험</td>
+                        <td>10:00 ~ 10:25</td>
+                        <td>25분</td>
+                    </tr>
+                    <tr>
+                        <td>10:25 ~ 11:55</td>
+                        <td>90분</td>
+                    </tr>
+                    <tr>
+                        <td>중식</td>
+                        <td>11:55 ~ 13:30</td>
+                        <td>95분</td>
+                    </tr>
+                    <tr>
+                        <td>2교시 수험생교육</td>
+                        <td>13:30 ~ 14:00</td>
+                        <td>30분</td>
+                    </tr>
+                    <tr>
+                        <td>2교시 시험</td>
+                        <td>14:00 ~ 15:30</td>
+                        <td>90분</td>
+                    </tr>
+                    <tr>
+                        <td>휴식</td>
+                        <td>15:30 ~ 16:00</td>
+                        <td>30분</td>
+                    </tr>
+                    <tr>
+                        <td>3교시 수험생교육</td>
+                        <td>16:00 ~ 16:30</td>
+                        <td>30분</td>
+                    </tr>
+                    <tr>
+                        <td>3교시 시험</td>
+                        <td>16:30 ~ 18:00</td>
+                        <td>90분</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
         <div class="examPaperWp">     
             <div class="exam-paper">
-                {{--pdf 방식 
+                <!--pdf 방식 
                 <div class="pdfType">                
                     <iframe src="https://lms.willbes.net/public/uploads/willbes/mocktest/6/E_4bfbab360cc3983e57b9d51ba039e531.pdf" name="frmL" id="frmL" marginwidth="0" marginheight="0" scrolling="yes" frameborder="0" ></iframe>
-                </div> --}}            
+                </div> -->           
 
-                {{--이미지 방식 --}}  
+                <!--이미지 방식  -->   
                 <div class="imgType">
-                    {{--<div class="willbes-Layer-Black"></div>--}}
+                    <!--<div class="willbes-Layer-Black"></div> -->  
                     <ul>
                         <li id="que1" name="que1">
                             <a class="strong tx-black underline">01.</a>  
@@ -390,6 +447,7 @@
                 </div>
             </div> 
         </div>
+        
     </div>
     <!-- //popupContainer -->
 </div>

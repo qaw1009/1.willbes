@@ -58,6 +58,12 @@
                                 자료는 PC에서만 확인 가능합니다.
                             </div>
                         @endif
+
+                        @if($lec['IsOpenStudyComment'] == 'Y')
+                            <div class="lecReview bdt-bright-gray pt10">
+                                <a href="#none" onclick="goReviewWrite()">수강후기 작성하기</a>
+                            </div>
+                        @endif
                     </td>
                 </tr>
                 </tbody>
@@ -229,6 +235,15 @@
             $info_url = 'https:{{front_url('/Player/getMobile/')}}?' + $('#downForm').serialize();
 
             fnMobile($info_url, '{{config_item('starplayer_license')}}');
+        }
+
+        function goReviewWrite(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var _url = "{{ front_url('/support/lectureReview/create?') }}";
+                _url += "site_code={{$lec['SiteCode']}}&cate_code={{$lec['CateCode']}}&prod_code={{$lec['ProdCode']}}&subject_idx={{$lec['SubjectIdx']}}&prof_idx={{$lec['ProfIdx']}}&subject_name=" + encodeURIComponent('{{$lec['subProdName']}}');
+
+            location.href = _url;
         }
     </script>
 @stop

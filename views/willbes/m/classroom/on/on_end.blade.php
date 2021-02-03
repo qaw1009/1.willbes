@@ -121,6 +121,10 @@
                                             @else
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>
                                             @endif
+
+                                            @if($row['IsOpenStudyComment'] == 'Y')
+                                                    <li class="btn_white"><a href="#none" onclick="goReviewWrite('{{$row['SiteCode']}}', '{{$row['CateCode']}}', '{{$row['ProdCodeSub']}}', '{{$row['SubjectIdx']}}', '{{$row['subProdName']}}', '{{$row['ProfIdx']}}')">후기등록</a></li>
+                                            @endif
                                         </ul>
                                     </div>
                                     <div class="w-line">-</div>
@@ -209,6 +213,7 @@
                                             </dl>
                                             <div class="w-start tx-gray">
                                                 <ul class="two">
+                                                    <li class="btn_white"><a href="javascript:;" onclick="goReviewWrite('{{$subrow['SiteCode']}}', '{{$subrow['CateCode']}}', '{{$subrow['ProdCodeSub']}}', '{{$subrow['SubjectIdx']}}', '{{$subrow['subProdName']}}', '{{$subrow['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a></li>
                                                 </ul>
                                             </div>
                                             <div class="w-line">-</div>
@@ -278,6 +283,15 @@
             if(window.confirm('재수강 신청하시겠습니까?') == true){
                 $('#retakeForm').prop('action', '//'+$site+'/m/cart/store').submit();
             }
+        }
+
+        function goReviewWrite(sitecode, catecode, prodcode, subjectidx, prodname, profidx){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var _url = "{{ front_url('/support/lectureReview/create?') }}";
+            _url += "site_code="+sitecode+"&cate_code="+catecode+"&prod_code="+prodcode+"&subject_idx="+subjectidx+"&prof_idx="+profidx+"&subject_name=" + encodeURIComponent(prodname);
+
+            location.href = _url;
         }
     </script>
 @stop

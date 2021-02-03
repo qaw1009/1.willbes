@@ -11,11 +11,73 @@
         </div>
         <div class="lineTabs lecListTabs c_both">
             <ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
-                <li><a href="#leclist1" class="on">단과반 <span>{{count($list)}}</span></a><span class="row-line">|</span></li>
-                <li><a href="#leclist2">종합반 <span>{{count($pkglist)}}</span></a></li>
+                <li><a href="#leclist1" class="on">종합반 <span>{{count($pkglist)}}</span></a><span class="row-line">|</span></li>
+                <li><a href="#leclist2">단과반 <span>{{count($list)}}</span></a></li>
             </ul>
 
             <div id="leclist1" class="tabContent">
+                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
+                    <tbody>
+                    @forelse( $pkglist as $row )
+                        <tr>
+                            <td class="w-data tx-left">
+                                <div class="w-tit">
+                                    <a href="#none">{{$row['ProdName']}}</a>
+                                </div>
+                                @if(in_array($row['SiteCode'], ['2010','2011','2013']))
+                                    <ul class="w-info acad tx-gray">
+                                        <li>(수강증번호 : {{$row['CertNo']}})</li>
+                                    </ul>
+                                @endif
+                                @if($row['PackTypeCcd'] == '648003')
+                                    <div class="btnblue02 mt5"><a href="javascript:;" onclick="ViewAssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')">강사선택현황보기 ></a></div>
+                                @endif
+
+                                @if($row['PackTypeCcd'] == '648003')
+                                    <div class="mt10">
+                                        <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')" class="btnSt01 mr10">강사선택</a>
+                                        {{--
+                                        <a href="#none" class="btnSt02 mr10">좌석선택</a>
+                                        <a href="#none" class="btnSt03">온라인첨삭</a>
+                                        --}}
+                                    </div>
+                                @endif
+                                {{-- 좌석선택/온라인첨
+                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                                    <div>1기스터디  <span class="row-line">|</span>  감정평가실무  <span class="row-line">|</span>  여지훈 교수님</div>
+                                    <div class="w-tit mb10">1기스터디 감정평가실무 여지훈</div>
+                                    <ul>
+                                        <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
+                                        <li>[좌석번호] <span class="tx-light-blue">41</span><li>
+                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>
+                                    </ul>
+                                    <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
+                                    <div class="mt10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>
+                                </div>
+                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                                    <div>1기스터디  <span class="row-line">|</span>  감정평가 및 보상법규  <span class="row-line">|</span>  이현진 교수님</div>
+                                    <div class="w-tit">1기스터디 감정평가 및 보상법규 이현진</div>
+                                    <ul class="mb10">
+                                        <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
+                                        <li>[좌석번호] <span class="tx-light-blue">41</span><li>
+                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>
+                                    </ul>
+                                    <div class="mb10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
+                                    <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>
+                                </div>
+                                 좌석선택 / 온라인 첨삭 --}}
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td class="w-data tx-center">수강신청 강좌가 없습니다.</td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="leclist2" class="tabContent">
                 <form name="searchFrm" id="searchFrm" action="{{front_url('/classroom/off/list/ongoing/')}}" onsubmit="">
                     <div class="willbes-Lec-Selected NG c_both tx-gray">
                         <select id="sitegroup_ccd" name="sitegroup_ccd" title="process" class="seleProcess width21p">
@@ -85,50 +147,7 @@
                 </table>
             </div>
 
-            <div id="leclist2" class="tabContent">
-                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
-                    <tbody>
-                    @forelse( $pkglist as $row )
-                    <tr>
-                        <td class="w-data tx-left">
-                            <div class="w-tit">
-                                {{$row['ProdName']}}
-                            </div>
-                            <dl class="w-info acad tx-gray">
-                                @if(in_array($row['SiteCode'], ['2010','2011','2013']))
-                                    <dt>
-                                        (수강증번호 : {{$row['CertNo']}})
-                                    </dt>
-                                @endif
-                                {{-- <dt>수강기간 : {{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</dt> --}}
-                                @if($row['PackTypeCcd'] == '648003')
-                                    <dt class="tx-red">※ 강사 선택하기는 PC버전에서만 가능합니다.</dt>
-                                @endif
-                            </dl>
-                            @if($row['PackTypeCcd'] != '648003')
-                                <div class="w-lecList">
-                                    <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
-                                    <ul>
-                                        @if(empty($row['subleclist']) == true)
-                                            <li>강의가 없습니다.</li>
-                                        @else
-                                            @foreach($row['subleclist'] as $subrow)
-                                                <li>{{$subrow['subProdName']}}</li>
-                                            @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                            @endif
-                        </td>
-                    </tr>
-                    @empty
-                        <tr>
-                            <td class="w-data tx-center">수강신청 강좌가 없습니다.</td>
-                        </tr>
-                    @endforelse
-                    </tbody>
-                </table>
-            </div>
+
         </div>
         <div class="goTopbtn">
             <a href="javascript:link_go();">
@@ -139,6 +158,20 @@
 
     </div>
     <!-- End Container -->
+    <form name="postForm" id="postForm" method="post">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="choice_box_p_no" id="choice_box_p_no" value="" />
+        <input type="hidden" name="choice_box_no" id="choice_box_no" value="" />
+        <input type="hidden" name="orderidx" id="orderidx" value="" />
+        <input type="hidden" name="orderprodidx" id="orderprodidx" value="" />
+
+        <input type="hidden" name="pkg_yn" id="pkg_yn" value="" />
+        <input type="hidden" name="prod_code" id="prod_code" value="" />
+        <input type="hidden" name="prod_code_sub" id="prod_code_sub" value="" />
+        <input type="hidden" name="lr_code" id="lr_code" value="" />
+        <input type="hidden" name="lr_unit_code" id="lr_unit_code" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
@@ -151,5 +184,18 @@
                 }
             });
         });
+
+        function ViewAssignProf(o,op){
+            $('#orderidx').val(o);
+            $('#orderprodidx').val(op);
+            $("#postForm").attr("action", "{{ front_url("/classroom/off/ViewAssignProf/") }}").submit();
+        }
+
+        function AssignProf(o,op)
+        {
+            $('#orderidx').val(o);
+            $('#orderprodidx').val(op);
+            $("#postForm").attr("action", "{{ front_url("/classroom/off/AssignProf/") }}").submit();
+        }
     </script>
 @stop

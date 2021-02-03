@@ -58,8 +58,11 @@
         .onLecFreeBox .evtMenu .infotxt:after {content:''; display:block; clear:both}
         .onLecFreeBox .evtMenu .choiceLec {border-top:1px solid #000; border-bottom:1px solid #000; padding:10px; line-height:1.4; font-size:12px; height:90px; overflow-y:scroll}
         .onLecFreeBox .evtMenu .choiceLec div {margin-bottom:8px}
+        .onLecFreeBox .evtMenu .choiceLec span:nth-child(1) {display:inline-block; width:80px; color:#1a8ccc}
+        .onLecFreeBox .evtMenu .choiceLec span:nth-child(2) {display:inline-block; width:80px;}
 
         .onLecFreeBox .tabCts {padding-top:160px}
+        .onLecFreeBox #tab01 {padding-top:20px;}
 
         .evt_table{margin-bottom:30px;}
         .evt_table table{width:100%; border:1px solid #c1c1c1}

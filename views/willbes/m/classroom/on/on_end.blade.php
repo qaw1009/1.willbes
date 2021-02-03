@@ -213,7 +213,9 @@
                                             </dl>
                                             <div class="w-start tx-gray">
                                                 <ul class="two">
-                                                    <li class="btn_white"><a href="javascript:;" onclick="goReviewWrite('{{$subrow['SiteCode']}}', '{{$subrow['CateCode']}}', '{{$subrow['ProdCodeSub']}}', '{{$subrow['SubjectIdx']}}', '{{$subrow['subProdName']}}', '{{$subrow['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a></li>
+                                                    @if($row['IsOpenStudyComment'] == 'Y')
+                                                        <li class="btn_white"><a href="javascript:;" onclick="goReviewWrite('{{$subrow['SiteCode']}}', '{{$subrow['CateCode']}}', '{{$subrow['ProdCodeSub']}}', '{{$subrow['SubjectIdx']}}', '{{$subrow['subProdName']}}', '{{$subrow['ProfIdx']}}' );"><span class="bBox whiteBox NSK">후기등록</span></a></li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                             <div class="w-line">-</div>

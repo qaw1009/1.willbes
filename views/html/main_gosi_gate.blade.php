@@ -110,14 +110,14 @@
             <div class="gosi-gate-bntop p_re">
                 <div id="MainRollingDiv" class="MaintabList">
                     <ul class="Maintab">
-                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급</a></li>
-                        <li><a data-slide-index="1" href="javascript:void(0);">7급</a></li>
-                        <li><a data-slide-index="2" href="javascript:void(0);">세무직</a></li>
-                        <li><a data-slide-index="3" href="javascript:void(0);">법원직</a></li>
-                        <li><a data-slide-index="4" href="javascript:void(0);">농업직</a></li>
-                        <li><a data-slide-index="5" href="javascript:void(0);">통신/전기</a></li>
-                        <li><a data-slide-index="6" href="javascript:void(0);">전산직</a></li>
-                        <li><a data-slide-index="7" href="javascript:void(0);">환경직</a></li>
+                        <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급<br>pass</a></li>
+                        <li><a data-slide-index="1" href="javascript:void(0);">7급<br>pass</a></li>
+                        <li><a data-slide-index="2" href="javascript:void(0);">세무직<br>pass</a></li>
+                        <li><a data-slide-index="3" href="javascript:void(0);">법원직<br>pass</a></li>
+                        <li><a data-slide-index="4" href="javascript:void(0);">농업직<br>pass</a></li>
+                        <li><a data-slide-index="5" href="javascript:void(0);">통신/전기<br>pass</a></li>
+                        <li><a data-slide-index="6" href="javascript:void(0);">전산직<br>pass</a></li>
+                        <li><a data-slide-index="7" href="javascript:void(0);">환경직<br>pass</a></li>
                         <li><a data-slide-index="8" href="javascript:void(0);">산림자원직</a></li>
                         <li><a data-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a></li>
                     </ul>

@@ -55,16 +55,16 @@
 .gosi-gate-bntop .Maintab:after {content:''; display:block; clear:both}
 .gosi-gate-bntop .Maintab li {
     display: inline-block; 
-    /*float:left;*/
-    height: 50px;
+    /*float:left;*/    
     font-size: 14px;
-    color: #fff;
-    line-height: 50px;
+    color: #fff;    
     width: calc(10% - 2px);
 }
 .gosi-gate-bntop .MaintabList a {
     display: block;
     color:#b4b4b4;
+    padding:10px 0;
+    line-height: 1.2;
 }
 .gosi-gate-bntop .MaintabList a:hover,
 .gosi-gate-bntop .MaintabList a.active {color:#fff; font-weight:bold}

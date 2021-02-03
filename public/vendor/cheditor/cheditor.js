@@ -469,6 +469,7 @@ function setConfig() {
         tabIndent           : 3,
         tabIndex            : 0,
         thumbnailWidth      : 120,
+        templateType : '',  //template 파일 로드 유형 (front : templateFront.xml 그외 template.xml)
 
         // 버튼 사용 유무
         useSource           : true,
@@ -561,6 +562,8 @@ function setConfig() {
     this.config = config;
     this.templateFile = 'template.xml';
     this.templatePath = config.editorPath + this.templateFile;
+    this.templateMobileFile = 'templateMobile.xml';
+    this.templateMobilePath = config.editorPath + this.templateMobileFile;
     this.W3CRange = !(this.undefined(window.getSelection));
     this.inputForm = 'textAreaId';
     this.range = null;
@@ -608,6 +611,16 @@ function cheditor() {
 
 cheditor.prototype = {
     //----------------------------------------------------------------
+    getTemplatePath : function () {
+        var path;
+        if (this.config.templateType == 'mobile') {
+            path = this.templateMobilePath;
+        } else {
+            path = this.templatePath;
+        }
+        return path;
+    },
+
     resetData : function () {
         if (GB.browser.msie) {
             if (this.undefined(this.cheditor.editArea.onreadystatechange)) {
@@ -1067,7 +1080,7 @@ cheditor.prototype = {
             }
             httpRequest.onreadystatechange = templateReady;
             try {
-                httpRequest.open('GET', self.templatePath, true);
+                httpRequest.open('GET', this.getTemplatePath(), true);
             }
             catch (e) {
                 showError(e + '참고: 에디터를 웹 서버에서 실행하여 주십시오.');
@@ -1077,7 +1090,7 @@ cheditor.prototype = {
             httpRequest = new window.ActiveXObject('Microsoft.XMLDOM');
             httpRequest.async = true;
             httpRequest.onreadystatechange = templateReady;
-            httpRequest.load(self.templatePath);
+            httpRequest.load(this.getTemplatePath());
         } else {
             showError('현재 브라우저에서 ' + self.templateFile + ' 파일을 사용할 수 없습니다.');
         }

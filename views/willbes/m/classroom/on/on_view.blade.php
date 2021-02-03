@@ -241,7 +241,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var _url = "{{ front_url('/support/lectureReview/create?') }}";
-                _url += "site_code={{$lec['SiteCode']}}&cate_code={{$lec['CateCode']}}&prod_code={{$lec['ProdCode']}}&subject_idx={{$lec['SubjectIdx']}}&prof_idx={{$lec['ProfIdx']}}&subject_name=" + encodeURIComponent('{{$lec['subProdName']}}');
+                _url += "o={{$lec['OrderIdx']}}&site_code={{$lec['SiteCode']}}&cate_code={{$lec['CateCode']}}&prod_code={{$lec['ProdCode']}}&subject_idx={{$lec['SubjectIdx']}}&prof_idx={{$lec['ProfIdx']}}&subject_name=" + encodeURIComponent('{{$lec['subProdName']}}');
 
             location.href = _url;
         }

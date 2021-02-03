@@ -77,6 +77,61 @@ class DeliveryInfoModel extends BaseOrderModel
     }
 
     /**
+     * 주문상품별 송장번호(배송정보) 초기화
+     * @param array $params [주문상품식별자 배열, 순차번호 => 주문상품식별자]
+     * @return array|bool
+     */
+    public function modifyDeliveryInit($params)
+    {
+        $this->_conn->trans_begin();
+
+        try {
+            if (count($params) < 1) {
+                throw new \Exception('필수 파라미터 오류입니다.');
+            }
+
+            foreach ($params as $idx => $order_prod_idx) {
+                // 주문상품 배송정보 조회
+                $order_prod_row = $this->orderListModel->findOrderProductDeliveryInfo($order_prod_idx);
+
+                if (empty($order_prod_row) === true) {
+                    throw new \Exception('주문상품 데이터 조회에 실패했습니다.', _HTTP_NOT_FOUND);
+                }
+
+                // 배송정보 초기화
+                $data = [
+                    'DeliveryStatusCcd' => 'NULL',
+                    'InvoiceNo' => 'NULL',
+                    'InvoiceRegDatm' => 'NULL',
+                    'InvoiceRegAdminIdx' => 'NULL',
+                    'InvoiceUpdDatm' => 'NULL',
+                    'InvoiceUpdAdminIdx' => 'NULL',
+                    'DeliverySendDatm' => 'NULL',
+                    'DeliverySendAdminIdx' => 'NULL',
+                    'StatusUpdDatm' => 'NULL',
+                    'StatusUpdAdminIdx' => 'NULL'
+                ];
+
+                $is_update = $this->_conn->set($data, null, false)
+                    ->where('OrderProdDeliveryIdx', $order_prod_row['OrderProdDeliveryIdx'])
+                    ->where('OrderProdIdx', $order_prod_idx)
+                    ->update($this->_table['order_product_delivery_info']);
+
+                if ($is_update === false) {
+                    throw new \Exception('송장번호 초기화에 실패했습니다.');
+                }
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
      * 주문상품별 배송상태 수정
      * @param string $delivery_status [변경할 배송상태 (발송완료 : complete, 발송전취소 : cancel)
      * @param array $params [주문상품식별자 배열, 순차번호 => 주문상품식별자]

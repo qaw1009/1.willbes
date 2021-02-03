@@ -22,16 +22,16 @@
 
         /************************************************************/
 
-        .wb_top {background:#16191d url(http://file3.willbes.net/new_cop/2019/01/EV190107_p1_bg.jpg) no-repeat center;}
+        .wb_top {background:#16191d url(https://static.willbes.net/public/images/promotion/2021/02/1019_p1_bg.jpg) no-repeat center;}
 
 
-        .wb_cts01 {background:#1b3752 url(http://file3.willbes.net/new_cop/2019/01/EV190107_p2_bg.jpg) no-repeat center;}
+        .wb_cts01 {background:#1b3752 url(https://static.willbes.net/public/images/promotion/2021/02/1019_p2_bg.jpg) no-repeat center;}
 
 
-        .wb_cts02 {background:#dedede url(http://file3.willbes.net/new_cop/2019/01/EV190107_p3_bg.jpg) no-repeat center;}
+        .wb_cts02 {background:#dedede url(https://static.willbes.net/public/images/promotion/2021/02/1019_p3_bg.jpg) no-repeat center;}
 
 
-        .wb_cts03 {background:#0d1625 url(http://file3.willbes.net/new_cop/2019/01/EV190107_p4_bg.jpg) no-repeat center;}
+        .wb_cts03 {background:#0d1625 url(https://static.willbes.net/public/images/promotion/2021/02/1019_p4_bg.jpg) no-repeat center;}
 
 
         .layer				{width:100%;height:1070px; -ms-overflow:hidden;}
@@ -54,7 +54,7 @@
                 </div>
                 <div class="pngimg">
                     <div class="pngimg-real">
-                        <li><img src="http://file3.willbes.net/new_cop/2019/01/EV190107_p1_new.png"  alt="1" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/02/1019_p1_new.png"  alt="1" /></li>
                         <li style="padding-bottom:100px;"><iframe width="854" height="480" src="https://www.youtube.com/embed/lrZxQV21DE8?rel=0" frameborder="0" allowfullscreen></iframe></li>
                     </div>
                 </div>
@@ -62,15 +62,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190107_p2.png"  alt="2" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1019_p2.png"  alt="2" />
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190107_p3.png"  alt="3" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1019_p3.png"  alt="3" />
         </div>
 
         <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_cop/2019/01/EV190107_p4.png"  alt="4" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1019_p4.png"  alt="4" />
         </div>
 
     </div>

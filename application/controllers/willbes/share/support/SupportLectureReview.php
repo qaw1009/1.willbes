@@ -5,7 +5,7 @@ require_once APPPATH . 'controllers/willbes/share/support/BaseSupport.php';
 
 class SupportLectureReview extends BaseSupport
 {
-    protected $models = array('categoryF', 'product/baseProductF', 'support/supportBoardTwoWayF');
+    protected $models = array('categoryF', 'product/baseProductF', 'support/supportBoardTwoWayF', 'product/professorF', 'order/orderListF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array('create');
@@ -121,6 +121,7 @@ class SupportLectureReview extends BaseSupport
     public function create()
     {
         $arr_input = $this->_reqG(null);
+        $order_idx = element('o', $arr_input);
         $arr_base['site_code'] = element('site_code', $arr_input);
         $arr_base['prod_code'] = element('prod_code', $arr_input);
         $arr_base['cate_code'] = element('cate_code', $arr_input);
@@ -128,6 +129,22 @@ class SupportLectureReview extends BaseSupport
         $arr_base['subject_name'] = element('subject_name', $arr_input);
         $arr_base['prof_idx'] = element('prof_idx', $arr_input);
         $arr_base['board_idx'] = element('board_idx', $arr_input);
+
+        if(empty($order_idx) === true || empty($arr_base['prof_idx']) === true || empty($arr_base['prod_code']) === true || empty($arr_base['subject_idx']) === true || empty($arr_base['subject_name']) === true){
+            show_alert('잘못된 접근입니다.', 'back');
+        }
+
+        // 교수 정보 조회
+        $prof_data = $this->professorFModel->findProfessorByProfIdx($arr_base['prof_idx']);
+        if(empty($prof_data['IsOpenStudyComment']) === true || $prof_data['IsOpenStudyComment'] !== 'Y'){
+            show_alert('잘못된 접근입니다.', 'back');
+        }
+
+        // 주문정보 조회
+        $order_data = $this->orderListFModel->findOrderByOrderIdx($order_idx, $this->session->userdata('mem_idx'));
+        if(empty($order_data) === true){
+            show_alert('잘못된 접근입니다.', 'back');
+        }
 
         $this->load->view('support/write_review', [
             'arr_input' => $arr_input,

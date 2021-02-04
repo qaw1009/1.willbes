@@ -1,21 +1,6 @@
-<style>
-.bSlider .bx-wrapper .bx-pager {
-    float: right;
-    width: auto;
-    top:0;
-    bottom: 8px;
-    text-align: right;
-}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a{
-    background:#ccc !important
-}
-.bSlider .bx-wrapper .bx-pager.bx-default-pager a.active{
-    background:#9177d4 !important
-}
-</style>
 @extends('willbes.pc.layouts.master')
-
 @section('content')
+<link href="/public/css/willbes/style_cop_sea_special.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container seaSp NGR c_both">
         <!-- site nav -->
@@ -46,25 +31,6 @@
                 </ul>
             </div>
         </div>
-
-        {{--
-        <div class="Section mt8">
-            <div class="widthAuto bnrSec02">
-                <ul>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/156170"><img src="https://static.willbes.net/public/images/promotion/main/191011_01.jpg" title="김수현 항해술"></a></li>
-                    <li><a href="https://police.willbes.net/lecture/show/cate/3008/pattern/only/prod-code/156302"><img src="https://static.willbes.net/public/images/promotion/main/191011_02.jpg" title="황영신 기관술"></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="Section mt8">
-            <div class="widthAuto">
-                <a href="{{ site_url('/lecture/show/cate/3008/pattern/only/prod-code/153470') }}">
-                    <img src="https://static.willbes.net/public/images/promotion/main/3008_1120_110_01.jpg" title="합격은 공득인이 정답입니다.">
-                </a>
-            </div>
-        </div>
-        --}}
         
         <div class="Section mt8">
             <div class="widthAuto">

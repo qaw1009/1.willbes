@@ -1,6 +1,6 @@
 @extends('willbes.pc.layouts.master')
-
 @section('content')
+<link href="/public/css/willbes/style_cop_sea.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
 <div id="Container" class="Container sea NGR c_both">
     <div class="Menu widthAuto NGR c_both">

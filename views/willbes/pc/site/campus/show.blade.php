@@ -1,14 +1,14 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <div id="Container" class="subContainer widthAuto c_both">
+    <div id="Container" class="subContainer PA widthAuto c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
         <div class="Depth">
             @include('willbes.pc.layouts.partial.site_route_path')
         </div>
 
-        <div class="Content p_re PA">
+        <div class="Content p_re">
             <form id="url_form" name="url_form" method="GET">
                 @foreach($arr_input as $key => $val)
                     <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>

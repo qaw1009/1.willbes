@@ -3,17 +3,6 @@
     color: #0c5dc0;
 }
 
-.cop_acad .Menu .menu-List li.Acad a {
-    background: url("../../img/willbes/cop_acad/icon_acad.png") no-repeat 0 2px;
-    color: #2784d2;
-}
-.cop_acad .Menu .menu-List li.Acad a .arrow-Btn {
-    background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
-}
-.cop_acad .Section2 {
-    background: #f7f7f7;
-}
-
 .cop_acad .barfull {position:relative; height: 110px; width: 100%; max-width: 2000px; overflow: hidden; }
 .cop_acad .barfull div {position:absolute; width:2000px; height: 110px; left:50%; margin-left:-1000px; z-index: 1;text-align: center;}
 
@@ -191,13 +180,13 @@
 .newLecture .slider div dd a {font-size: 16px; color:#363636} 
 
 /* Main Container : Tit : Cop Acad */
-.Section .will-acadTit {
+.cop_acad .will-acadTit {
     font-size: 19px;
     font-weight: 600;
     color: #363636;
     line-height: 60px;
 }
-.Section .will-acadTit span {
+.cop_acad .will-acadTit span {
     vertical-align: baseline;
 }
 
@@ -228,7 +217,7 @@
     margin-top: 0;
 }
 
-/* Main Container : acad_infoBox : Cop Acad */
+/* Main Container : acad_infoBox : Cop Acad 
 
 .caProfBox li {
     position: relative;
@@ -285,9 +274,9 @@
     content: '';
     display: block;
     clear: both;
-}
+}*/
 
-/* Main Container : 특별관리반 : Cop Acad */
+/* Main Container : 특별관리반 : Cop Acad 
 .specialClass li {
     display: inline;
     float: left;
@@ -300,9 +289,9 @@
     content: '';
     display: block;
     clear: both;
-}
+}*/
 
-/* Main Container : 합격커리큘럼 : Cop Acad */
+/* Main Container : 합격커리큘럼 : Cop Acad
 .passCurriWrap {
     position:absolute;
     top:351px;
@@ -363,7 +352,7 @@
     margin-top:-181px;
     margin-left:-1px;
 }
-
+ */
 
 
 /* Main Container : Notice : noticeTabs */
@@ -599,34 +588,7 @@
     border: 1px solid #0c5dc0;
 }
 
-/*캠퍼스 메인 오시는 길*/
-.PA .map_img {
-    position: relative;
-    float: left;
-    width: 580px;
-    height: 328px;
-    overflow: hidden;
-}
-.PA .map_img img {
-    position: absolute;
-    left:50%;
-    margin-left:-349px;
-}
 
-.PA .campus_info {
-    position: relative;
-    float: right;
-    width: 320px;
-    height: 328px;
-}
-.PA .campus_info dl dt {
-    border-top: 1px solid #e3e3e3;
-    padding: 25px 0;
-}
-.PA .campus_info dl dt:first-child {
-    border-top: none;
-    padding: 0 0 25px;
-}
 
 /* Main Container : QuickMenu : Cop */
 .cop_acad .MainQuickMenu {
@@ -690,6 +652,35 @@
 }
 .cop_acad .MainQuickMenu li:nth-child(8) a {
     background-image: url("../../img/willbes/cop_acad/icon_rq08.png");
+}
+
+/*캠퍼스 메인 오시는 길*/
+.PA .map_img {
+    position: relative;
+    float: left;
+    width: 580px;
+    height: 328px;
+    overflow: hidden;
+}
+.PA .map_img img {
+    position: absolute;
+    left:50%;
+    margin-left:-349px;
+}
+
+.PA .campus_info {
+    position: relative;
+    float: right;
+    width: 320px;
+    height: 328px;
+}
+.PA .campus_info dl dt {
+    border-top: 1px solid #e3e3e3;
+    padding: 25px 0;
+}
+.PA .campus_info dl dt:first-child {
+    border-top: none;
+    padding: 0 0 25px;
 }
 
 /*sub 메인*/

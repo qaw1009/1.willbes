@@ -62,6 +62,28 @@
 
 .evt06 {background:#F79647}
 
+/*분할 유튜브*/
+.youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
+.youtube_divide {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
+.youtube_divide .preview_area {display:inline-block;border-right:1px solid #ddd;padding-bottom:40px;text-align:left;}
+.youtube_divide .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
+.youtube_divide .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
+.youtube_divide .preview_area span {font-size:14px;font-weight:400;color:#555;}
+.youtube_divide .preview_area span a {display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
+                                        background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;background-size:100% auto;font-size:0;}
+.youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
+.youtube_divide .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
+.youtube_divide .preview_list_area .preview_list ul li {margin-bottom:12px;}
+.youtube_divide .preview_list_area .preview_list ul li .num_box {width:25px;display:inline-block;font-size: 12px;font-weight:400;
+                                                                    color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;}
+.youtube_divide .preview_list_area .preview_list ul li .thum_box {display: inline-block;width: 120px;height: 70px;box-sizing: border-box;vertical-align: middle;overflow: hidden;}
+/*.youtube_divide .preview_list_area .preview_list ul li.on .thum_box {border:3px solid #00E752;}*/
+.youtube_divide .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
+.youtube_divide .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
+.youtube_divide .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
+                                                                    overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;}
+.youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}        
+
 </style>
 
     <div class="evtContent NGR" id="evtContainer"> 
@@ -88,10 +110,125 @@
 
         <div class="evtCtnsBox evt02"> 
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1840_02.jpg" alt="열정을 보여주마">
-        </div>
+            <div class="youtube_contents">
+                <div class="youtube_divide">             
+                    <div class="preview_area">
+                        <div class="avi_box">
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/2_x_ICBX4ao?rel=0"></iframe>
+                        </div>
+                        <h2 class="avi_title">[소방학개론 빈출테마 1탄] 열량 및 비열 빈칸 채우기 및 O/X특강!</h2>
+                    </div>
+                    <div class="preview_list_area">
+                        <div class="preview_list">
+                            <ul>
+                                <li class="on">
+                                    <a href="#tab1" class="active">
+                                        <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail01.jpg" alt="소방 1탄"></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론 빈출테마 1탄] 열량 및 비열 빈칸 채우기 및 O/X특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
+                        
+                                <li class="">
+                                    <a href="#tab2">
+                                        <span class="num_box" data-num="2">2</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail02.jpg" alt="소방 2탄"></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론 빈출테마 2탄] 연소의 분류 빈칸 채우기 및 O/X 특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
 
-        <div class="evtCtnsBox evt_youtube">  
-            <iframe width="853" height="480" src="https://www.youtube.com/embed/xBWCniTv_Ro?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                                {{--
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail03.jpg" alt="통합방위법"></div>
+                                        <div class="text_box">
+                                            <p>통합방위법에는 시행규칙이 없다!</p>
+                                        </div>
+                                    </a>
+                                </li>                               
+                               
+                                <li class="">
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
+                                        </div>
+                                    </a>
+                                </li> 
+                            
+                                <li class="">
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>『전기회로 기본용어』 10분 핵심정리 확인하기!!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆 2탄</p>
+                                        </div>
+                                    </a>
+                                </li>                                
+                            
+                                <li class="">
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!? 피날레!</p>
+                                        </div>
+                                    </a>
+                                </li>  
+                                
+                                <li class="">
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>『RLC회로의 특성』 바로 이거야!!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
+                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
+                                            <span>영어 / 이리라</span>
+                                        </div>
+                                    </a>
+                                </li>    
+                                --}}        
+
+                            </ul>
+                        </div>
+                    </div>          
+                </div>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt03"> 
@@ -244,6 +381,50 @@
            $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
+
+        //유툽
+      var tab1_url = "https://www.youtube.com/embed/2_x_ICBX4ao?rel=0";
+      var tab2_url = "https://www.youtube.com/embed/DL0LRv6jync?rel=0";  
+      var tab3_url = "https://www.youtube.com/embed/kpiHmPg9-_U?rel=0";   
+      var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
+      var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
+      var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
+      var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
+      var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
+      var tab9_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        
+  
+
+      $(function() {
+          $(".preview_list ul li a").click(function(){
+              var activeTab = $(this).attr("href");
+              var video_tab_url = '';
+              var html_str = '';
+              if(activeTab == "#tab1"){
+                  video_tab_url = tab1_url;
+              }else if(activeTab == "#tab2"){
+                  video_tab_url = tab2_url;
+              }else if(activeTab == "#tab3"){
+                  video_tab_url = tab3_url;
+              }else if(activeTab == "#tab4"){
+                  video_tab_url = tab4_url;
+              }else if(activeTab == "#tab5"){
+                  video_tab_url = tab5_url;
+              }else if(activeTab == "#tab6"){
+                  video_tab_url = tab6_url;
+              }else if(activeTab == "#tab7"){
+                  video_tab_url = tab7_url;
+              }else if(activeTab == "#tab8"){
+                  video_tab_url = tab8_url;
+              }else if(activeTab == "#tab9"){
+                  video_tab_url = tab9_url;
+              }
+              html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
+              $(this).addClass("active");
+              $('.avi_box').html(html_str);
+              $('.avi_title').html($(this).find('p').html());
+          });
+      });
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

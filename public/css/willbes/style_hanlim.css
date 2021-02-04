@@ -290,8 +290,18 @@
 .hanlim .lectureBestWrap .lectureBest .lbSlider li a div {text-align: center; margin-top:10px}
 .hanlim .lectureBestWrap .lectureBest .lbSlider:after {content: ""; display: block; clear:both}
 .hanlim .lectureBestWrap .lectureBest p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.hanlim .lectureBestWrap .lectureBest p.leftBtn {left:-22px}
-.hanlim .lectureBestWrap .lectureBest p.rightBtn {right:-22px}
+.hanlim .lectureBestWrap .lectureBest p.leftBtn {left:-30px}
+.hanlim .lectureBestWrap .lectureBest p.rightBtn {right:-50px}
+
+.hanlim .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.hanlim .will-acadTit span {
+    vertical-align: baseline;
+}
 
 /*오시는길*/
 .hanlim .loadMap .noticeTabs {

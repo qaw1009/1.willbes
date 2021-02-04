@@ -1,5 +1,4 @@
 @extends('willbes.pc.layouts.master')
-
 @section('content')
 <link href="/public/css/willbes/style_hanlim.css??ver={{time()}}" rel="stylesheet">
 <!-- Container -->

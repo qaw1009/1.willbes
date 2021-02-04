@@ -290,8 +290,8 @@
 .job .lectureBestWrap .lectureBest .lbSlider li a div {text-align: center; margin-top:10px}
 .job .lectureBestWrap .lectureBest .lbSlider:after {content: ""; display: block; clear:both}
 .job .lectureBestWrap .lectureBest p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.job .lectureBestWrap .lectureBest p.leftBtn {left:-22px}
-.job .lectureBestWrap .lectureBest p.rightBtn {right:-22px}
+.job .lectureBestWrap .lectureBest p.leftBtn {left:-30px}
+.job .lectureBestWrap .lectureBest p.rightBtn {right:-50px}
 
 /*오시는길*/
 .job .loadMap .noticeTabs {
@@ -350,6 +350,16 @@
 }
 .job .willbesNumber ul li:first-child {
 	margin-left: 0;
+}
+
+.job .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.job .will-acadTit span {
+    vertical-align: baseline;
 }
 
 

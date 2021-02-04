@@ -32,7 +32,12 @@
     .evtInfoBox ul {margin-bottom:30px}
     .evtInfoBox ul li {list-style:disc; margin-left:20px}
 
-    </style> 
+    </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NSK">        
         <div class="evtCtnsBox evt_top"> 
@@ -94,9 +99,9 @@
         <div class="evtCtnsBox evt02" id="tab02">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_02.jpg" alt="혜택이 세배!" usemap="#Map2051A" border="0" >
             <map name="Map2051A" id="Map2051A">
-                <area shape="rect" coords="274,548,426,594" href="#none" alt="단과쿠폰" />
-                <area shape="rect" coords="482,548,635,594" href="#none" alt="패키지쿠폰" />
-                <area shape="rect" coords="682,548,834,594" href="#none" alt="패스쿠폰" />
+                <area shape="rect" coords="274,548,426,594" href="#none" alt="단과쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
+                <area shape="rect" coords="482,548,635,594" href="#none" alt="패키지쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
+                <area shape="rect" coords="682,548,834,594" href="#none" alt="패스쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
             </map>
         </div>
 
@@ -181,7 +186,31 @@
         </div>
 
     </div>
-    <!-- End Container --> 
+    <!-- End Container -->
+
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+
+                @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+                    alert('쿠폰발급 기간이 아닙니다.');
+                    return;
+                @endif
+
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @endif
+        }
+    </script>
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

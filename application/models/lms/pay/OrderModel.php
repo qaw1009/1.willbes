@@ -436,6 +436,7 @@ class OrderModel extends BaseOrderModel
             $delivery_price = element('delivery_price', $input, 0);     // 배송료
             $is_delivery_info = false;  // 배송정보 등록 여부
             $is_cert_no_add = false;    // 수강증번호 등록 여부
+            $is_auto_add = true;    // 자동지급 상품, 쿠폰 부여 여부 (정책변경 : 미지급 -> 지급 (2021.02.04))
             $arr_prod_row = [];    // 상품조회 결과 배열
 
             // 상품코드 기준으로 주문상품 데이터 생성
@@ -600,7 +601,7 @@ class OrderModel extends BaseOrderModel
 
                 // 주문상품 등록
                 foreach ($arr_prod_row as $prod_row) {
-                    $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], false, $prod_row);
+                    $is_order_product = $this->addOrderProduct($order_idx, $mem_idx, $this->_pay_status_ccd['paid'], $is_auto_add, $prod_row);
                     if ($is_order_product !== true) {
                         throw new \Exception($is_order_product);
                     }
@@ -743,16 +744,15 @@ class OrderModel extends BaseOrderModel
                     throw new \Exception($is_add_my_lecture);
                 }
 
-                // 실결제금액이 0원이면 자동지급 안함
-                if ($is_auto_add === true && $real_pay_price > 0) {
+                if ($is_auto_add === true) {
                     // 자동지급 주문상품 데이터 등록
                     $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $mem_idx, $pay_status_ccd, $input);
                     if ($is_add_auto_product !== true) {
                         throw new \Exception($is_add_auto_product);
                     }
 
-                    // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료일 경우)
-                    if ($pay_status_ccd == $this->_pay_status_ccd['paid']) {
+                    // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료 and 결제금액이 0원 초과일 경우)
+                    if ($pay_status_ccd == $this->_pay_status_ccd['paid'] && $real_pay_price > 0) {
                         $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code, $mem_idx);
                         if ($is_add_auto_coupon !== true) {
                             throw new \Exception($is_add_auto_coupon);

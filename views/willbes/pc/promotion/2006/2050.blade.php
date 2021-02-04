@@ -57,10 +57,10 @@
 		<div class="evtCtnsBox evt_01">
 			<img src="https://static.willbes.net/public/images/promotion/2021/02/2050_01.jpg" alt="신청하기" usemap="#Map2050_apply" border="0" />
 			<map name="Map2050_apply" id="Map2050_apply">
-				<area shape="rect" coords="-1,855,264,943"  href="javascript:go_PassLecture('178660');" />
-				<area shape="rect" coords="285,856,548,942" href="javascript:go_PassLecture('178663');" />
-				<area shape="rect" coords="571,856,835,943" href="javascript:go_PassLecture('178661');" />
-				<area shape="rect" coords="856,856,1138,942" href="javascript:go_PassLecture('178664');" />
+				<area shape="rect" coords="-1,855,264,943"  href="javascript:go_PassLecture('178929');" />
+				<area shape="rect" coords="285,856,548,942" href="javascript:go_PassLecture('178930');" />
+				<area shape="rect" coords="571,856,835,943" href="javascript:go_PassLecture('178931');" />
+				<area shape="rect" coords="856,856,1138,942" href="javascript:go_PassLecture('178932');" />
 			</map>
 			<div class="check">
                 <label>
@@ -256,7 +256,7 @@
                     return;
                 }
 
-                var url = '{{ site_url('/periodPackage/show/cate/309002/pack/648001/prod-code/') }}' + code;
+                var url = '{{ site_url('/package/show/cate/309002/pack/648002/prod-code/') }}' + code;
                 location.href = url;
             }    
     </script>

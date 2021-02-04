@@ -79,7 +79,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="Acad">
+                <li class="police">
                     <a href="#none">신광은경찰 온라인 <span class="arrow-Btn">></span></a>
                 </li>
             </ul>

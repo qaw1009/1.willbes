@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="subContainer widthAuto c_both">
+<div id="Container" class="subContainer PA widthAuto c_both">
     <div class="Menu NSK c_both">
         <h3>
             <ul class="menu-Tit">
@@ -70,7 +70,7 @@
     </div>
     <!-- Depth//-->
 
-    <div class="Content p_re PA">        
+    <div class="Content p_re">        
         <div class="subSection01 bSlider acad">
             <div class="slider">
                 <div><a href="#none"><img src="{{ img_url('cop_acad/visual/sub_visual_190211_01.jpg') }}" alt="배너명"></a></div>

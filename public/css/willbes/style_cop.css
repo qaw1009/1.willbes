@@ -38,13 +38,7 @@
 .cop .cop-color {
 	color: #0c5dc0;
 }
-.cop .Menu .menu-List li.Acad a {
-	background: url("../../img/willbes/sub/icon_acad.gif") no-repeat 0 0;
-	color: #0c5dc0;
-}
-.cop .Menu .menu-List li.Acad a .arrow-Btn {
-	background: url("../../img/willbes/sub/icon_arrow.gif") no-repeat 0 0;
-}
+
 
 
 /* Main Container : 일반경찰 Cop */

@@ -258,6 +258,7 @@
     .adm .tabTv .moreBtn a {display:inline-block; color:#fff; background:#000; border-radius:30px; height:24px; line-height:24px; padding:0 20px}
     .adm .tabTv .TvctsBox:after {content:''; display: block; clear:both}
     .adm .tabTv .Tvcts {width:265px; display:inline-block; float:left; margin-right:20px}
+    .adm .tabTv .Tvcts img {width:100%}
     .adm .tabTv .Tvcts:last-child {margin:0}
     .adm .tabTv .TVcts p {text-align:center; margin-top:10px; font-size:15px; color:#000}
 

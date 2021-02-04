@@ -259,6 +259,7 @@
     .cop .tabTv .moreBtn a {display:inline-block; color:#fff; background:#000; border-radius:30px; height:24px; line-height:24px; padding:0 20px}
     .cop .tabTv .TvctsBox:after {content:''; display: block; clear:both}
     .cop .tabTv .Tvcts {width:265px; display:inline-block; float:left; margin-right:20px}
+    .cop .tabTv .Tvcts img {width:100%}
     .cop .tabTv .Tvcts:last-child {margin:0}
     .cop .tabTv .TVcts p {text-align:center; margin-top:10px; font-size:15px; color:#000}
 

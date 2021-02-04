@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<link href="/public/css/willbes/style_lang.css??ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div id="Container" class="Container lang c_both">
         <!-- site nav -->

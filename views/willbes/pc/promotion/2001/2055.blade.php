@@ -59,9 +59,9 @@
                 <area shape="rect" coords="101,271,394,442" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177228" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="103,562,390,734" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177660" target="_blank"  onfocus='this.blur()' />
                 <area shape="rect" coords="414,561,704,733" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177365" target="_blank"  onfocus='this.blur()' />
-                <area shape="rect" coords="732,562,1021,733" href="javascript:alert('Coming Soon!')"  onfocus='this.blur()' />
+                <area shape="rect" coords="732,562,1021,733" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178782" target="_blank"  onfocus='this.blur()' />
                 <area shape="rect" coords="102,833,390,1002" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177505" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="418,832,705,1003" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178535" target="_blank" onfocus='this.blur()' />>
+                <area shape="rect" coords="418,832,705,1003" href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178535" target="_blank" onfocus='this.blur()' />
             </map>
         </div>
 

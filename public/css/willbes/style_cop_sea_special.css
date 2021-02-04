@@ -39,7 +39,28 @@
 .seaSp .smallTit2 span {
     background:#f7f7f7;
 }
-.seaSp .Section .will-big-Tit .cop-color {
+
+.Section .will-big-Tit {
+	text-align: center;
+}
+.Section .will-big-Tit span {
+	vertical-align: baseline;
+}
+.Section .will-big-Tit .big {
+	font-size: 47px;
+	color: #000;
+	letter-spacing: -3px;
+	line-height: 57px;
+}
+.Section .will-big-Tit .big .small {
+	font-size: 47px;
+	color: #363636;
+}
+.Section .will-big-Tit .small {
+	font-size: 32px;
+	color: #363636;
+}
+.Section .will-big-Tit .cop-color {
     color: #9177d4;
 }
 
@@ -57,7 +78,49 @@
     display: block;
     clear:both;
 }
-
+.nSlider.pick .bx-wrapper .bx-controls {
+	background: #000;
+	width: 62px;
+	height: 19px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.nSlider.pick .bx-wrapper .bx-prev {
+	background: url("../../img/willbes/cop/btn_pick_prev.jpg") no-repeat 0 0;
+	left: 0;
+}
+.nSlider.pick .bx-wrapper .bx-next {
+	background: url("../../img/willbes/cop/btn_pick_next.jpg") no-repeat 0 0;
+	right: 0;
+	left: auto;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction {
+	position: absolute;
+	top: 3px;
+	left: 4px;
+	right: 4px;
+	width: 54px;
+	height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-controls-direction a {
+	width: 12px;
+	height: 13px;
+}
+.nSlider.pick .bx-wrapper .bx-pager {
+	width: auto;
+	position: absolute;
+	top: 5px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 10px;
+	font-weight: 300;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 0;
+}
 /**/
 .seaSp .Section .bnrSec02 li {
     display: inline;

@@ -30,27 +30,17 @@
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_상품배너'.$i]) === true)
                             <li class="SecBanner02">
-                                <div class="tag">{{ $data['arr_main_banner']['메인_상품배너'.$i][0]['BannerName'] or "" }}</div>
-                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner'])) !!}
+                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner']),'','','','','','',true) !!}
                             </li>
                         @endif
                     @endfor
-                    <li class="SecBanner02">
-                        <div class="bSlider">
-                            <div class="slider">
-                                @if(isset($data['arr_main_banner']['메인_상품배너4']) === true)
-                                    @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
-                                        <div>
-                                            <div class="tag">{{ $row['BannerName'] }}</div>
-                                            <a href="{{ empty($row['LinkUrl']) === false ? $row['LinkUrl'] : '#none' }}" target="_{{ $row['LinkType'] }}">
-                                                <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}">
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                @endif
+                    @if(isset($data['arr_main_banner']['메인_상품배너4']) === true)
+                        <li class="SecBanner02">
+                            <div class="bSlider">
+                                {!! banner_html(element('메인_상품배너4', $data['arr_main_banner']),'slider','','','','','',true) !!}
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -165,8 +155,7 @@
                         @for($i=1; $i<=3; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor
@@ -175,8 +164,7 @@
                         @for($i=4; $i<=6; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor
@@ -185,8 +173,7 @@
                         @for($i=7; $i<=9; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor

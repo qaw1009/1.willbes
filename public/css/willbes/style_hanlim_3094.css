@@ -201,8 +201,8 @@ transition: 0.2s all ease;
 }
 .thisMonth .tmslider:after {content: ""; display: block; clear:both}
 .thisMonth .thisMonthBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.thisMonth .thisMonthBox p.leftBtn {left:-22px}
-.thisMonth .thisMonthBox p.rightBtn {right:-22px}
+.thisMonth .thisMonthBox p.leftBtn {left:-30px}
+.thisMonth .thisMonthBox p.rightBtn {right:-50px}
 
 .Section1 .preview {margin-top:50px}
 .Section1 .preview .previewBox {position:relative; height:234px;  width:1120px; margin: 0 auto;}
@@ -238,8 +238,8 @@ transition: 0.2s all ease;
 .Section1 .preview .pvslider li a div strong {display:block; font-size:18px; font-weight:600; margin-top:10px}
 .Section1 .preview .pvslider:after {content: ""; display: block; clear:both}
 .Section1 .preview .previewBox p {position:absolute; top:50%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.Section1 .preview .previewBox p.leftBtn {left:-22px}
-.Section1 .preview .previewBox p.rightBtn {right:-22px}
+.Section1 .preview .previewBox p.leftBtn {left:-30px}
+.Section1 .preview .previewBox p.rightBtn {right:-50px}
 
 
 /**/

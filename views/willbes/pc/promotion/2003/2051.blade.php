@@ -23,7 +23,8 @@
     .evt_top .tabs li a.active {background:url('https://static.willbes.net/public/images/promotion/2021/02/2051_tab_on.png') no-repeat right top; }
     .evt_top .tabs li a span {height:58px; line-height:58px; font-size:20px; display:block; margin-bottom:20px}
     
-    .evt01 {background:#fff; padding-top:150px}   
+    .evt01 {background:#fff; padding-top:150px;}   
+    .evt03 {height:1400px}
 
     .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px}
     .evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -96,22 +97,22 @@
         </div>
         
 
-        <div class="evtCtnsBox evt02" id="tab02">
+        <div class="evtCtnsBox evt02 mt100" id="tab02">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_02.jpg" alt="혜택이 세배!" usemap="#Map2051A" border="0" >
             <map name="Map2051A" id="Map2051A">
-                <area shape="rect" coords="274,548,426,594" href="#none" alt="단과쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
-                <area shape="rect" coords="482,548,635,594" href="#none" alt="패키지쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
-                <area shape="rect" coords="682,548,834,594" href="#none" alt="패스쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
+                <area shape="rect" coords="273,442,425,488" href="#none" alt="단과쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
+                <area shape="rect" coords="484,442,637,488" href="#none" alt="패키지쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
+                <area shape="rect" coords="685,442,837,488" href="#none" alt="패스쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
             </map>
         </div>
 
         <div class="evtCtnsBox evt03" id="tab03">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_03.jpg" alt="기쁨이 세배!" usemap="#Map2051B" border="0" >
             <map name="Map2051B" id="Map2051B">
-                <area shape="rect" coords="234,731,403,797" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" alt="공갤" />
-                <area shape="rect" coords="418,731,562,797" href="https://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
-                <area shape="rect" coords="576,731,728,797" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
-                <area shape="rect" coords="741,731,889,797" href="https://cafe.naver.com/willbes" target="_blank" alt="윌비스" />
+                <area shape="rect" coords="234,713,403,779" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" alt="공갤" />
+                <area shape="rect" coords="418,713,562,779" href="https://cafe.daum.net/9glade" target="_blank" alt="구꿈사" />
+                <area shape="rect" coords="576,713,728,779" href="https://cafe.naver.com/gugrade" target="_blank" alt="공드림" />
+                <area shape="rect" coords="741,713,889,779" href="https://cafe.naver.com/willbes" target="_blank" alt="윌비스" />
             </map>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
@@ -123,26 +124,27 @@
         <div class="evtCtnsBox evt04" id="tab04">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2051_04.jpg" alt="할인받으소!!" usemap="#Map2051C" border="0" >
             <map name="Map2051C" id="Map2051C">
-                <area shape="rect" coords="104,732,247,782" href="https://pass.willbes.net/promotion/index/cate/3019/code/1717" target="_blank" alt="문풀패스" />
-                <area shape="rect" coords="357,732,496,781" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" alt="세무직패스" />
-                <area shape="rect" coords="626,732,768,781" href="https://pass.willbes.net/home/index/cate/3103" target="_blank" alt="psat패스" />
-                <area shape="rect" coords="878,732,1017,781" href="https://pass.willbes.net/promotion/index/cate/3020/code/1878" target="_blank" alt="전문과목패스" />
-                <area shape="rect" coords="105,1214,246,1260" href="https://pass.willbes.net/promotion/index/cate/3023/code/1060" target="_blank" alt="소방직문풀패스" />
-                <area shape="rect" coords="366,1212,510,1262" href="https://pass.willbes.net/promotion/index/cate/3024/code/1751" target="_blank" alt="군문원문풀" />
-                <area shape="rect" coords="616,1043,759,1094" href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank" alt="군수직" />
-                <area shape="rect" coords="617,1212,757,1262" href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank" alt="정보직" />
-                <area shape="rect" coords="875,1213,1017,1261" href="https://pass.willbes.net/promotion/index/cate/3035/code/1965" target="_blank" alt="법원직" />
-                <area shape="rect" coords="102,1523,243,1573" href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" alt="농업직" />
-                <area shape="rect" coords="102,1688,241,1736" href="https://pass.willbes.net/promotion/index/cate/3028/code/2028" target="_blank" alt="장사원_선석" />
-                <area shape="rect" coords="367,1688,501,1735" href="https://pass.willbes.net/promotion/index/cate/3028/code/1728" target="_blank" alt="통신전기" />
-                <area shape="rect" coords="636,1465,742,1503" href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" alt="산림자원직" />
-                <area shape="rect" coords="636,1545,742,1582" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" alt="전산직" />
-                <area shape="rect" coords="636,1632,740,1670" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직공채" />
-                <area shape="rect" coords="635,1722,743,1758" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직특채" />
-                <area shape="rect" coords="895,1466,1003,1502" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="기계직" />
-                <area shape="rect" coords="895,1545,1005,1583" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="축산직" />
-                <area shape="rect" coords="896,1633,1004,1670" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="조경직" />
-                <area shape="rect" coords="895,1721,1002,1759" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178876" target="_blank" alt="토목직" />
+                <area shape="rect" coords="105,662,248,712" href="https://pass.willbes.net/promotion/index/cate/3019/code/1717" target="_blank" alt="문풀패스" />
+                <area shape="rect" coords="358,662,497,712" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" alt="세무직패스" />
+                <area shape="rect" coords="626,662,768,712" href="https://pass.willbes.net/home/index/cate/3103" target="_blank" alt="psat패스" />
+                <area shape="rect" coords="878,662,1017,712" href="https://pass.willbes.net/promotion/index/cate/3020/code/1878" target="_blank" alt="전문과목패스" />
+                <area shape="rect" coords="106,1144,247,1190" href="https://pass.willbes.net/promotion/index/cate/3023/code/1060" target="_blank" alt="소방직문풀패스" />
+                <area shape="rect" coords="364,972,508,1022" href="https://pass.willbes.net/promotion/index/cate/3024/code/1751" target="_blank" alt="윌비스군무원행정직" />
+                <area shape="rect" coords="367,1152,506,1202" href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank" alt="민족군무원 행정직 문풀" />
+                <area shape="rect" coords="615,972,758,1023" href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank" alt="군수직" />
+                <area shape="rect" coords="616,1152,756,1202" href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank" alt="정보직" />
+                <area shape="rect" coords="875,1143,1017,1191" href="https://pass.willbes.net/promotion/index/cate/3035/code/1965" target="_blank" alt="법원직" />
+                <area shape="rect" coords="101,1451,242,1501" href="https://pass.willbes.net/promotion/index/cate/3028/code/1068" target="_blank" alt="농업직" />
+                <area shape="rect" coords="103,1618,242,1666" href="https://pass.willbes.net/promotion/index/cate/3028/code/2028" target="_blank" alt="장사원_선석" />
+                <area shape="rect" coords="368,1618,502,1665" href="https://pass.willbes.net/promotion/index/cate/3028/code/1728" target="_blank" alt="통신전기" />
+                <area shape="rect" coords="636,1394,742,1432" href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" alt="산림자원직" />
+                <area shape="rect" coords="634,1476,740,1513" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" alt="전산직" />
+                <area shape="rect" coords="636,1562,740,1600" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직공채" />
+                <area shape="rect" coords="634,1651,742,1687" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직특채" />
+                <area shape="rect" coords="893,1396,1001,1432" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="기계직" />
+                <area shape="rect" coords="894,1475,1004,1513" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="축산직" />
+                <area shape="rect" coords="896,1563,1004,1600" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="조경직" />
+                <area shape="rect" coords="896,1651,1003,1689" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178876" target="_blank" alt="토목직" />   
             </map>
         </div>
 

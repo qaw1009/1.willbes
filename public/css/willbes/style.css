@@ -1874,14 +1874,14 @@ table.auTable tr td {
 	height: auto;
 	z-index: 100;
 }
-.MainQuickMenu ul li {
-	background: #fff;
+.MainQuickMenu ul li {	
 	margin-bottom: 8px;
 }
 .MainQuickMenu li.dday {
 	height: 102px;
 	width: 100%;
 	overflow: hidden;
+	background: #fff;
 }
 .MainQuickMenu li.dday .QuickSlider {
 	border: 1px solid #dbdbdb !important;

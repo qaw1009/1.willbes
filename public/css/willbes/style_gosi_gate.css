@@ -166,9 +166,9 @@
 .gosi-gate .castslider li a {display:block; width:370px; height:220px;} 
 .gosi-gate .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
 .gosi-gate .castslider:after {content: ""; display: block; clear:both}
-.gosi-gate .castBox p {position:absolute; top:45%; margin-top:-22px; width:44px; height:45px; z-index:10}
+.gosi-gate .castBox p {position:absolute; top:45%; margin-top:-22px; width:22px; height:38px; z-index:10}
 .gosi-gate .castBox p.leftBtn {left:-40px}
-.gosi-gate .castBox p.rightBtn {right:-50px}
+.gosi-gate .castBox p.rightBtn {right:-30px}
 .gosi-gate .castBox .bx-wrapper .bx-pager.bx-default-pager a {
     background: #e1e1e1;
     width: 12px;

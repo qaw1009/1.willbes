@@ -141,10 +141,10 @@
                 <area shape="rect" coords="634,1476,740,1513" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" alt="전산직" />
                 <area shape="rect" coords="636,1562,740,1600" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직공채" />
                 <area shape="rect" coords="634,1651,742,1687" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" alt="환경직특채" />
-                <area shape="rect" coords="893,1396,1001,1432" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="기계직" />
+                <area shape="rect" coords="893,1396,1001,1432" href="https://pass.willbes.net/promotion/index/cate/3028/code/2000" target="_blank" alt="기계직" />
                 <area shape="rect" coords="894,1475,1004,1513" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="축산직" />
-                <area shape="rect" coords="896,1563,1004,1600" href="https://pass.willbes.net/promotion/index/cate/3028/code/1915" target="_blank" alt="조경직" />
-                <area shape="rect" coords="896,1651,1003,1689" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178876" target="_blank" alt="토목직" />   
+                <area shape="rect" coords="896,1563,1004,1600" href="https://pass.willbes.net/promotion/index/cate/3028/code/2001" target="_blank" alt="조경직" />
+                <area shape="rect" coords="896,1651,1003,1689" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178876" target="_blank" alt="토목직" />      
             </map>
         </div>
 

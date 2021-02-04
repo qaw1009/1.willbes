@@ -27,11 +27,11 @@
         .skybanner a {display:block; margin-bottom:5px; text-align:center}
 
         .evtCtnsBox .youtube { width:100%; max-width:768px; margin:0 auto; } 
-        .evtCtnsBox .youtube iframe {width:768px; height:432px}
+        .evtCtnsBox .youtube iframe {width:768px; height:433px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2053_top_bg.jpg) no-repeat center top;} 
         .evtTop > div {width:768px; margin:0 auto; position:relative;}
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2053_01_bg.jpg) no-repeat center top}  
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2053_01_bg.jpg) no-repeat center top; padding-bottom:200px}  
         .evt03 {background:#f5f2ef}
         .evt05 {background:#eff5f1}       
         .evt07 {background:#303d5f}
@@ -146,8 +146,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_01.jpg" alt="이커머스 전문 MD 최효진" >   
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/W2nDOfP913A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>   
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_01_01.jpg" alt="" >                     
+            </div>                  
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">

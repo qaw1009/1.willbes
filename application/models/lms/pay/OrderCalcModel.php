@@ -524,14 +524,29 @@ class OrderCalcModel extends BaseOrderModel
                 from ' . $this->_table['order'] . ' as RO
                     inner join ' . $this->_table['order_product'] . ' as ROP
                         on RO.OrderIdx = ROP.OrderIdx
+                    inner join ' . $this->_table['product'] . ' as RP
+                    	on ROP.ProdCode = RP.ProdCode
+                    inner join ' . $this->_table['product_lecture'] . ' as RPL
+                        on ROP.ProdCode = RPL.ProdCode                        
                 where RO.CompleteDatm between ? and ?
                     and ROP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
                     and ROP.RealPayPrice > 0
+                    and RP.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+                    and RPL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"                    
                 union
-                select OrderIdx, OrderProdIdx
-                from ' . $this->_table['order_product_refund'] . '
-                where RefundDatm between ? and ?	
-                    and RefundPrice > 0			
+                select ROPR.OrderIdx, ROPR.OrderProdIdx
+                from ' . $this->_table['order_product_refund'] . ' as ROPR
+                    inner join ' . $this->_table['order_product'] . ' as ROP
+                		on ROPR.OrderIdx = ROP.OrderIdx and ROPR.OrderProdIdx = ROP.OrderProdIdx
+                    inner join ' . $this->_table['product'] . ' as RP
+                    	on ROP.ProdCode = RP.ProdCode                		
+                    inner join ' . $this->_table['product_lecture'] . ' as RPL
+                        on ROP.ProdCode = RPL.ProdCode                
+                where ROPR.RefundDatm between ? and ?	
+                    and ROPR.RefundPrice > 0
+                    and ROP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
+                    and RP.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+                    and RPL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"           			
             ) as BO
 			    inner join ' . $this->_table['order'] . ' as O
 			        on BO.OrderIdx = O.OrderIdx
@@ -553,17 +568,10 @@ class OrderCalcModel extends BaseOrderModel
 				left join ' . $this->_table['code'] . ' as CPM
 					on O.PayMethodCcd = CPM.Ccd and CPM.GroupCcd = "' . $this->_group_ccd['PayMethod'] . '" and CPM.IsStatus = "Y"							
 			where OP.RealPayPrice > 0
-				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")';
-
-        if ($prod_type === 'lecture') {
-            // 온라인강좌
-            $raw_query .= ' and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
-				and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"';
-        } else {
-            // 학원강좌
-            $raw_query .= ' and P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '"
-				and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"';
-        }
+				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
+				and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+				and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '"
+        ';
 
         // where 조건
         $raw_query .= $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);

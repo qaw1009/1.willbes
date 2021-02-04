@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
-
 @section('content')
+<link href="/public/css/willbes/style_cop_sea.css?ver={{time()}}" rel="stylesheet">
+
     <!-- Container -->
     <div id="Container" class="Container sea NGR c_both">
         <!-- site nav -->
@@ -127,15 +128,6 @@
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}">교수소개</a></li>
                         </ul>
                     </li>
-                    {{--
-                    <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_sgh_184.jpg" title="송광호">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50759', 'OT');">▶</a></li>
-                            <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/50759/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">교수소개</a></li>
-                        </ul>
-                    </li>
-                    --}}
                 </ul>
             </div>
         </div>

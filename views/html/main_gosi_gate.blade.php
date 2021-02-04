@@ -725,7 +725,7 @@
             <li>   
                 <div class="QuickSlider">      
                     <div class="sliderProf">
-                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/0720/banner_20200720103645.jpg" title="배너명"></a></div>
+                        <div><a href="#none" target="_blank"><img src="https://pass.willbes.net/public/uploads/willbes/banner/2020/1112/banner_20210201181048.png" title="배너명"></a></div>
                         <div><a href="#none" target="_blank"><img src="https://police.stage.willbes.net/public/uploads/willbes/banner/2019/0324/banner_20190324165210.jpg" title="배너명"></a></div>
                     </div>
                 </div>

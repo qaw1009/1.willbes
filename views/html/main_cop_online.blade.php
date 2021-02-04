@@ -1,6 +1,4 @@
 @extends('willbes.pc.layouts.master')
-
-
 @section('content')
 <!-- Container -->
 <div id="Container" class="Container cop NGR c_both">

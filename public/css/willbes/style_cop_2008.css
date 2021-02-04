@@ -4,11 +4,7 @@
 .cop2008v2 .topBanner p img {width:100%}
 
 .cop2008v2 .menu-List .Tit {color: #9177d4;}
-.cop2008v2 .Menu .menu-List li.job > a {
-    color: #9177d4;
-    display:inline-block;
-    vertical-align: middle;
-}
+
 .cop2008v2 .menu-List li.cop2008 > a {
     background: url("../../public/img/willbes/sub/icon_acad.gif") no-repeat left center;
     font-size: 16px;
@@ -229,12 +225,46 @@
 }
 
 /*cast*/
+.preview .previewBox {
+	position: relative;
+	width: 1120px;
+	margin: 0 auto;
+}
+
+
+.preview .previewBox p {
+	position: absolute;
+	top: 50%;
+	margin-top: -22px;
+	width: 44px;
+	height: 45px;
+	z-index: 10;
+}
+.preview .previewBox p.leftBtn {
+	left: -30px;
+}
+.preview .previewBox p.rightBtn {
+	right: -50px;
+}
+
 .cop2008v2 .preview .cast {width:1120px; margin: 0 auto; height:265px; overflow: hidden;}
 .cop2008v2 .preview .cast li {display: inline; float: left; width:33.33333%;}
 .cop2008v2 .preview .cast li a {display:block; height:225px;} 
 .cop2008v2 .preview .cast li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:center; 
    width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
 .cop2008v2 .preview .cast:after {content: ""; display: block; clear:both}
+
+.preview .pvslider:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.cop2008v2 .thisMonth .thisMonthBox p.leftBtn {left: -30px;}
+.cop2008v2 .thisMonth .thisMonthBox p.rightBtn {right: -50px;}
+
+.cop2008v2 .Section1 .preview .previewBox p.leftBtn {left:-30px}
+.cop2008v2 .Section1 .preview .previewBox p.rightBtn {right:-50px}
 
 
 /* Main Container : QuickMenu : Cop */

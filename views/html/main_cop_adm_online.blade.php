@@ -1,6 +1,6 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
-<link href="/public/css/willbes/style_cop_adm.css??ver={{time()}}" rel="stylesheet">
+<link href="/public/css/willbes/style_cop_adm.css?ver={{time()}}" rel="stylesheet">
 <!-- Container -->
     <div id="Container" class="Container adm NGR c_both">
         <div class="Menu widthAuto NSK c_both">

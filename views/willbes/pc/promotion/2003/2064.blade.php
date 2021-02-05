@@ -12,18 +12,20 @@
             padding:0 !important;
             background:#fff;
         }	
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#e1e1e1}
+        .time {position:absolute; top:1273px; left:50%; width:920px; margin-left:-460px; text-align:center;}
         .time {text-align:center; padding:20px 0}
-        .time table {width:1120px; margin:0 auto}
-        .time table td:first-child {font-size:40px}
-        .time table td img {width:80%}
-        .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
+        .time ul {width:100%;}
+        .time ul:after {content:''; display:block; clear:both}
+        .time li {display:inline; float:left; line-height:61px; font-size:24px; margin-right:10px}
+        .time li:first-child {margin-left:80px}
+        .time li img {width:44px}
+        .time .time_txt {color:#000; letter-spacing:-1px}
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         @@keyframes upDown{
         from{color:#d63e4d}
@@ -62,34 +64,29 @@
     
     <div class="p_re evtContent NSK" id="evtContainer">
 
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
-            <div>
-                <table>
-                    <tr>
-                    <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
-                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
-                    <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">일 </td>
-                    <td><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">:</td>
-                    <td><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td class="time_txt">:</td>
-                    <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    </tr>
-                </table>                
-            </div>
-        </div>
-        <!-- 타이머 //-->
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2064_top.jpg" alt="군무원 문제풀이 PASS" usemap="#Map2064_apply" border="0"/>
             <map name="Map2064_apply" id="Map2064_apply">
                 <area shape="rect" coords="751,1430,980,1527" href="#apply" />
             </map>
+            <div class="time NGEB" id="newTopDday">
+                <ul>
+                    <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
+                    <li class="time_txt"><span>남은 시간은</span></li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">일</li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
+                </ul>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_01">

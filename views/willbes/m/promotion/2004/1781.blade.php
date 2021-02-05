@@ -24,7 +24,7 @@
     </div> 
    
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1781m_02.jpg" alt="라이브모드">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1781m_02.jpg" alt="라이브모드">
         <a href="#evt04" title="군무원 라이브 모드"></a>
     </div>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="evtCtnsBox evt04" id="evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1781m_04.jpg" alt="군무원 행정직">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1781m_04.jpg" alt="군무원 행정직">
         <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3048&campus_ccd=605001" title="군무원 행정직 수강신청" target="_blank"></a>
     </div>
 </div>

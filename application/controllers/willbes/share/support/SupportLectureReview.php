@@ -28,7 +28,7 @@ class SupportLectureReview extends BaseSupport
      */
     public function index($params = [])
     {
-        $arr_input = $this->_reqG(null);
+        $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $site_code = element('site_code', $arr_input, $this->_site_code);
         $s_cate_code = element('s_cate_code', $arr_input);
         $prof_idx = element('prof_idx', $arr_input);
@@ -63,7 +63,7 @@ class SupportLectureReview extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.SubjectIdx' => $subject_idx,
                 'b.ProfIdx' => $prof_idx,
-                //'b.ProfSiteCode' => $this->_site_code
+                'b.SiteCode' => $site_code
             ],
             'RAW' => [
                 'b.ProfIdx is not ' => 'null'

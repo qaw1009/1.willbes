@@ -26,7 +26,7 @@
     </div> 
    
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1779m_02.jpg" alt="">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1779m_02.jpg" alt="">
         <a href="#evt06" title="라이브모드"></a>
     </div>
 
@@ -39,12 +39,12 @@
     </div> 
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1779m_05.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1779m_05.jpg" alt="" >
         <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3043&campus_ccd=605001" title="합격의파란불 수강신청" target="_blank"></a>
     </div> 
 
     <div class="evtCtnsBox evt06" id="evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1779m_06.jpg" alt="">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1779m_06.jpg" alt="">
         <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" title="라이브 수강신청" target="_blank"></a>
     </div> 
 </div>

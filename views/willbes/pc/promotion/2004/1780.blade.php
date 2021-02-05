@@ -79,7 +79,7 @@
 
         .evt04 {background:#36374d; padding:100px 0;}
         .evt04 div {width:930px; margin:0 auto}
-        .evt04 div li {display:inline; float:left; width:33.33333%}
+        .evt04 div li {display:inline; float:left; width:50%}
         .evt04 div li a {display:block; text-align:center; background:#5a5b6d; color:#36374d; padding:20px 0; line-height:1.4; font-size:18px; margin-right:1px}
         .evt04 div li a.active,
         .evt04 div li a:hover {background:#ebebeb}
@@ -146,7 +146,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_02.gif" title="파이널 문제풀이 특징" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_02.gif" title="파이널 문제풀이 특징" />
         </div>
 
         <div class="evtCtnsBox evt03">                 
@@ -226,12 +226,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_03.jpg" title="" />
                 <div class="evtTab">
                     <ul>
-                        <li><a href="#tab1" class="active">효율 100%<br>복습 TEST SYSTEM</a></li>
-                        <li><a href="#tab2">DOUBLE CARE<br>PROGRAM</a></li>
+                        <li><a href="#tab3" class="active">효율 100%<br>복습 TEST SYSTEM</a></li>
+                        <li><a href="#tab4">DOUBLE CARE<br>PROGRAM</a></li>
                     </ul>
-                    <div class="evtTabCts">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_04.jpg" title="" id="tab1"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_05.jpg" title="" id="tab2"/>
+                    <div class="evtTabCts" id="tab3">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_04.jpg" title=""/>
+                    </div>
+                    <div class="evtTabCts" id="tab4">
+                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1780_03_05.jpg" title=""/>
                     </div>
                 </div>
             <div> 
@@ -239,28 +241,22 @@
         </div>
 
         <div class="evtCtnsBox evt04" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_07.jpg" title="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_03_07.jpg" title="" />
             <div>
                 <ul class="NSK-Black">
-                    <li><a href="#lec1">[실강전용]<br> 01~02월 진도별 문풀 PASS</a></li>
-                    <li><a href="#lec2">[라이브전용]<br> 01~02월 진도별 문풀 PASS</a></li>
-                    <li><a href="#lec3">21.1월~21.3월<br> 3개월PASS</a></li>
+                    <li><a href="#lec1">[실강전용]<br> 3월 FINAL 실전동형모고 PASS</a></li>
+                    <li><a href="#lec2">[라이브전용]<br> 3월 FINAL 실전동형모고 PASS</a></li>
                 </ul>
                 <div id="lec1">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_08.jpg" title="실강전용">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_03_08.jpg" title="실강전용">
                     </a>
                 </div>  
                 <div id="lec2">
                     <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_live_01.jpg" title="라이브전용"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_live_01.jpg" title="라이브전용"/>
                     </a>
-                </div>
-                <div id="lec3">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" target="_blank">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_03_10.jpg" title="연간 PASS"/>
-                    </a>
-                </div>              
+                </div>            
             </div>
         </div>
 
@@ -474,22 +470,32 @@
             });
         });
 
-        
+
+
         $(document).ready(function(){
-            $(".evtTabCts img").hide();
-            $(".evtTabCts img:first").show();
+            $('.evtTab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
 
-            $(".evtTab ul li a").click(function(){
+                $content = $($active[0].hash);
 
-                var activeTab = $(this).attr("href");
-                $(".evtTab ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".evtTabCts img").hide();
-                $(activeTab).fadeIn();
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
 
-                return false;
-            });
-        });  
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()})})}
+        );  
 
 
         $(document).ready(function(){

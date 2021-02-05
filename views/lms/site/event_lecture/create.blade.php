@@ -584,7 +584,7 @@
                                                             <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_{{$add_apply_index}}" style="min-width: 70px;">
                                                                 <option value="N" @if($row['ProductGiveType'] == 'N')selected="selected"@endif>미지급</option>
                                                                 <option value="C" @if($row['ProductGiveType'] == 'C')selected="selected"@endif>장바구니지급</option>
-                                                                <option value="D" @if($row['ProductGiveType'] == 'D')selected="selected"@endif>내상의실지급</option>
+                                                                <option value="D" @if($row['ProductGiveType'] == 'D')selected="selected"@endif>내강의실지급</option>
                                                             </select>
                                                             <button type="button" data-eaaidx="{{$row['EaaIdx']}}" data-poptype="add_apply" class="btn_product_search btn btn-sm btn-primary mb-0">상품추가</button>
                                                             <span id="event_add_apply_product_{{$row['EaaIdx']}}" class="event_add_apply_product">
@@ -1308,7 +1308,7 @@
             add_lists += '      <select class="form-control" name="event_add_apply_product_give_type[]" id="event_add_apply_product_give_type_' + temp_apply_idx + '" style="min-width: 70px;">';
             add_lists += '      	<option value="N">미지급</option>';
             add_lists += '      	<option value="C">장바구니지급</option>';
-            add_lists += '      	<option value="D">내상의실지급</option>';
+            add_lists += '      	<option value="D">내강의실지급</option>';
             add_lists += '      </select>';
             add_lists += '	    <button type="button" data-eaaidx="' + temp_apply_idx + '" data-poptype="add_apply" class="btn_product_search btn btn-sm btn-primary mb-0">상품추가</button>';
             add_lists += '	    <span id="event_add_apply_product_' + temp_apply_idx + '" class="event_add_apply_product">';

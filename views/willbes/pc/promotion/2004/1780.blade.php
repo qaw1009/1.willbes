@@ -126,7 +126,7 @@
         </div>
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1780_live.jpg" alt="라이브" usemap="#Map1780_live" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_live.jpg" alt="라이브" usemap="#Map1780_live" border="0" />
             <map name="Map1780_live">
                 <area shape="rect" coords="216,1101,911,1216" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank" alt="라이브모드 구매하기">
             </map>               

@@ -24,6 +24,7 @@
             {!! csrf_field() !!}
             {!! method_field('POST') !!}
             <input type="hidden" id="start_count" name="start_count">
+            <input type="hidden" name="study_site_code" value="{{ $arr_base['site_code'] }}"/>
             <input type="hidden" name="study_cate_code" value="{{ $arr_base['cate_code'] }}"/>
             <input type="hidden" name="study_prod_code" value="{{ $arr_base['prod_code'] }}"/>
             <input type="hidden" name="study_subject_idx" value="{{ $arr_base['subject_idx'] }}"/>

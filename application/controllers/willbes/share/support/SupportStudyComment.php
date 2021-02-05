@@ -406,7 +406,7 @@ class SupportStudyComment extends BaseSupport
         $input_data = [
             'board' => [
                 'BmIdx' => $this->_bm_idx,
-                'SiteCode' => $this->_site_code,
+                'SiteCode' => element('study_site_code', $input, $this->_site_code),
                 'RegType' => '0',
                 'IsBest' => '0',
                 'Title' => element('study_title', $input),

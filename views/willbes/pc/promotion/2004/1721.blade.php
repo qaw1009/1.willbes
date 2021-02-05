@@ -225,21 +225,21 @@
             </div>
             <p class="change">*시험일정에 따른 개강/종강일 변동 가능</p>
             <div id="tab01" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1721_04_tab01.jpg" alt="전기직 9급"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab01.jpg" alt="전기직 9급"/>
             </div>
             <div id="tab02" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1721_04_tab02.jpg" alt="전기직 7급"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab02.jpg" alt="전기직 7급"/>
             </div>
             <div id="tab03" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1721_04_tab03.jpg" alt="통신직"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab03.jpg" alt="통신직"/>
             </div>
             <div id="tab04" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1721_04_tab04.jpg" alt="전자직"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab04.jpg" alt="전자직"/>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
             <map name="Map1721b" id="Map1721b">
                 <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
                 <area shape="rect" coords="611,906,1013,1001" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />

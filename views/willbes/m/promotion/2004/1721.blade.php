@@ -10,11 +10,12 @@
     .evt01 a.a01 {left: 12.22%;}
     .evt01 a.a02 {left: 50.97%;}   
 
-    .evt03 .slide_con {margin-bottom:30px}
-    .evt03 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
+    
+    .evt03 .slide_con {position:relative;}
+    .evt03 .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0; padding-bottom:50px;}
     .evt03 .slide_con .bx-wrapper .bx-pager {        
         width: auto;
-        bottom: 0;
+        bottom: -30px;
         left:0;
         right:0;
         text-align: center;
@@ -68,14 +69,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_top.jpg" alt="전기전자통신 최우영 신규강좌">
         <div class="slide_con">
             <div id="slidesImg1">
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_01.jpg" alt="전기직9급"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_02.jpg" alt="전기직7급"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_03.jpg" alt="통신직"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_04.jpg" alt="전자직"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_01.jpg" alt="전기직9급"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_02.jpg" alt="전기직7급"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_03.jpg" alt="통신직"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_04.jpg" alt="전자직"/></div>
             </div>
         </div> 
-        <div class="p_re">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03.jpg" alt="전기전자통신 최우영 신규강좌" id="evt03">        
+        <div class="p_re mt30">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03.jpg" alt="전기전자통신 최우영 신규강좌" id="evt03">        
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="공무원" target="_blank" class="b01"></a>
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="군무원" target="_blank" class="b02"></a>
         </div>

@@ -25,7 +25,7 @@
         .wb_cts01 {background:#EBEBEB;}
         .wb_cts01 .tImg img {margin:0 5px 10px}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/01/1717_02_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1717_02_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#f2f0f0}
 
@@ -111,9 +111,9 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02"  id="wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_02.jpg" alt="수강신청" usemap="#Map1717_apply" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1717_02.jpg" alt="수강신청" usemap="#Map1717_apply" border="0" />
             <map name="Map1717_apply" id="Map1717_apply">
-                <area shape="rect" coords="739,509,910,602" href="javascript:go_PassLecture('177930');" alt="9급 문제풀이 패스" />
+                <area shape="rect" coords="754,509,925,602" href="javascript:go_PassLecture('177930');" alt="9급 문제풀이 패스" />
                 <area shape="rect" coords="508,857,679,920" href="javascript:go_PassLecture('168184');" alt="12개월">
                 <area shape="rect" coords="736,857,910,920" href="javascript:go_PassLecture('177584');" alt="9급지방직까지" />
             </map>

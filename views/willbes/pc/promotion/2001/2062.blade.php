@@ -30,6 +30,7 @@
         .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
         .evtInfoBox .infoTit {font-size:20px; margin-bottom:10px}
         .evtInfoBox ul {margin-bottom:30px}
+        .evtInfoBox .only {color:#E80000;vertical-align:top;}
 
     </style>
 
@@ -70,7 +71,9 @@
                     <li>쿠폰은 현금으로 전환 및 일부 사용이 불가하며 환불 시 소멸됩니다.</li>
                     <li>온라인 0원 무제한 PASS, 통합생활관리반 등 일부 상품에는 적용되지 않습니다.</li>
                     <li>경찰 승진, 해양 경찰 강좌에는 적용되지 않습니다.</li>
-                    <li>2만원 쿠폰: 5만원 이상, 10만원 쿠폰: 30만원 이상, 20만원 쿠폰: 60만원 이상의 과정 결재시에만 이용 가능합니다.</li>                  
+                    <li>2만원 쿠폰: 5만원 이상, 10만원 쿠폰: 30만원 이상, 20만원 쿠폰: 60만원 이상의 과정 결재시에만 이용 가능합니다.</li>         
+                    <li>쿠폰은 이벤트에 참여한 아이디로 지급되며 양도할 수 없습니다.</li>     
+                    <li><span class="only">오프라인 쿠폰은 서울 노량진 본원에서만</span> 이용 가능하며 지방 학원에서는 이용하실 수 없습니다.</li>  
 				</ul>
 			</div>
 		</div>       

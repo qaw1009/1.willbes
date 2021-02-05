@@ -18,7 +18,7 @@
         .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
 
         .evt02 {background:#866038; padding-bottom:150px}
-        .evt02 div {width:1120px; margin:0 auto; padding:20px; background:#fff; font-size:14px}
+        .evt02 div {width:1000px; margin:0 auto; padding:20px; background:#fff; font-size:14px}
         .evt02 th,
         .evt02 td {padding:20px 10px;}
         .evt02 td:nth-child(3) {text-align:left; color:#000}
@@ -50,11 +50,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_top01.gif" alt="" />        
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_top01.gif" alt="" />        
         </div>   
 
         <div class="evtCtnsBox evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
             <map name="Map1902_buy" id="Map1902_buy">
                 <area shape="rect" coords="259,931,846,1023" href="#evt02" />
             </map>                 
@@ -65,7 +65,7 @@
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM " target="_blank" alt="행정직">
                 <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM " target="_blank" alt="소방직">
@@ -88,119 +88,101 @@
                         <tr>
                             <td>국어</td>
                             <td>기미진</td>
-                            <td>[라이브][21.01-02] 기미진 기특한 국어 진도별 문제풀이</td>
-                            <td>01-14 ~ 03-04</td>
+                            <td>[라이브][국가직 대비] 기특한 국어 실전 동형모의고사</td>
+                            <td>03-18 ~ 04-08</td>
+                            <td>tn,목</td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178570" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td>[라이브][국가직 대비] 제니스영어 실전 동형모의고사</td>
+                            <td>03-15 ~ 04-05</td>
                             <td>목</td>
                             <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175918" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>한덕현</td>
-                            <td>[라이브][21.01-02] 한덕현 제니스영어 스나이퍼32</td>
-                            <td>01-11 ~ 03-01</td>
-                            <td>월</td>
-                            <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>한덕현</td>
-                            <td>[라이브][21.01-02] 한덕현 제니스영어 논리독해</td>
-                            <td>01-14 ~ 03-04</td>
-                            <td>목</td>
-                            <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177216" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>한덕현</td>
-                            <td>[라이브][21.01-02] 한덕현 제니스영어 실전문법464</td>
-                            <td>01-16 ~ 03-06</td>
-                            <td>토</td>
-                            <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177213" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
                             <td>조민주</td>
-                            <td>[라이브][21.01-02] 조민주 한국사 진도별 문제풀이</td>
-                            <td>01-11 ~ 03-02</td>
-                            <td>월/화</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175920" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>행정법</td>
-                            <td>이석준</td>
-                            <td>[라이브][21.01-02] 이석준 행정법 진도별 문제풀이</td>
-                            <td>01-12 ~ 03-03</td>
-                            <td>화/목</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175922" target="_blank">수강신청</a></td>
+                            <td>[라이브][국가직 대비] 한국사 실전 동형모의고사</td>
+                            <td>03-15 ~ 04-06</td>
+                            <td>월,화</td>
+                            <td>128,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178455" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정학</td>
                             <td>김덕관</td>
-                            <td>[라이브][21.01-02] 김덕관 강한행정학 진도별 문제풀이</td>
-                            <td>01-15 ~ 02-26</td>
-                            <td>수/금</td>
-                            <td>96,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175921" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>국어</td>
-                            <td>김세령</td>
-                            <td>[라이브][21.01-02] 불꽃소방 세령국어 진도별 문제풀이</td>
-                            <td>01-11 ~ 03-02</td>
-                            <td>화</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175944" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>이아림</td>
-                            <td>[라이브][21.01-02] 불꽃소방 이아림 공채영어 진도별 문제풀이</td>
-                            <td>01-15 ~ 03-05</td>
-                            <td>금</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175945" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>영어</td>
-                            <td>양익</td>
-                            <td>[라이브][21.01-02] 불꽃소방 양익 경채영어 진도별 문제풀이</td>
-                            <td>01-12 ~ 03-03</td>
-                            <td>화</td>
+                            <td>[라이브][국가직 대비] 강한행정학 실전 동형모의고사</td>
+                            <td>03-17 ~ 04-07</td>
+                            <td>수</td>
                             <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175946" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178436" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
-                            <td>한국사</td>
-                            <td>한경준</td>
-                            <td>[라이브][21.01-02] 불꽃소방 한경준 미친한국사 진도별 문제풀이</td>
-                            <td>01-12 ~ 03-03</td>
+                            <td>행정법</td>
+                            <td>이석준</td>
+                            <td>[라이브][국가직 대비] 행정법 실전 동형모의고사</td>
+                            <td>03-16 ~ 04-08</td>
+                            <td>화,목</td>
+                            <td>128,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
+                        </tr>                        
+                        <tr>
+                            <td>소방국어</td>
+                            <td>김세령</td>
+                            <td>[라이브]김세령 소방국어 실전 동형모의고사</td>
+                            <td>03-08 ~ 03-22</td>
+                            <td>월</td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178417" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>공채영어</td>
+                            <td>이아림</td>
+                            <td>[라이브]이아림 공채영어 실전 동형모의고사</td>
+                            <td>03-12 ~ 03-26</td>
+                            <td>금</td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178418" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>공채영어</td>
+                            <td>양익</td>
+                            <td>[라이브]양익 경채영어 실전 동형모의고사</td>
+                            <td>03-09 ~ 03-23</td>
                             <td>화</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175949" target="_blank">수강신청</a></td>
+                            <td>54,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178419" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>소방한국사</td>
+                            <td>한경준</td>
+                            <td>[라이브]한경준 소방한국사 실전 동형모의고사</td>
+                            <td>03-09 ~ 03-24</td>
+                            <td>화</td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178420" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방학개론</td>
                             <td>이종오</td>
-                            <td>[라이브][21.01-02] 불꽃소방 이종오 소방학개론 문제풀이 + 빈출 테마</td>
-                            <td>01-13 ~ 03-04</td>
+                            <td>[라이브]이종오 소방학개론 실전 동형모의고사</td>
+                            <td>03-10 ~ 03-24</td>
                             <td>수</td>
-                            <td>112,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175947" target="_blank">수강신청</a></td>
+                            <td>96,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178422" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방관계법규</td>
                             <td>이종오</td>
-                            <td>[라이브][21.01-02] 불꽃소방 이종오 소방관계법규 문제풀이 + 빈출 테마</td>
-                            <td>01-14 ~ 03-05</td>
+                            <td>[라이브]이종오 소방관계법규 실전 동형모의고사</td>
+                            <td>03-11 ~ 03-25</td>
                             <td>목</td>
-                            <td>72,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/175948" target="_blank">수강신청</a></td>
+                            <td>54,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178423" target="_blank">수강신청</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -214,7 +196,7 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>윌비스공무원 라이브모드는 윌비스공무원학원 노량진 캠퍼스에서 11~12월 내 진행되는 9급/군무원/소방직 현장강의를 
+                            <li>윌비스공무원 라이브모드는 윌비스공무원학원 노량진 캠퍼스에서 진행되는 9급/군무원/소방직 현장강의를 
                                 실시간으로 수강 가능한 상품입니다.</li>
                             <li>직렬 및 과목별 수강 가능 교수진<br>
                             - 9급 종합반 : 국어 기미진, 영어 한덕현, 한국사 조민주, 행정법 이석준, 행정학 김덕관<br>

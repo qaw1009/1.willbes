@@ -6,6 +6,7 @@
     <div id="AddList" class="Layer-Cont" style="display: {{$style_display['list']}}">
         <form class="form-horizontal form-label-left" id="_ajax_search_form" name="_ajax_search_form" method="POST" onsubmit="return false;" novalidate>
             {!! csrf_field() !!}
+            <input type="hidden" id="search_site_code" name="search_cate_code" value="{{element('site_code', $arr_input)}}">
             <input type="hidden" id="search_cate_code" name="search_cate_code" value="{{element('cate_code', $arr_input)}}">
             <input type="hidden" id="search_subject_idx" name="search_subject_idx" value="{{element('subject_idx', $arr_input)}}">
             <input type="hidden" id="search_prof_idx" name="search_prof_idx" value="{{element('prof_idx', $arr_input)}}">
@@ -128,6 +129,7 @@
             {!! method_field('POST') !!}
             <input type="hidden" id="start_count" name="start_count">
             <input type="hidden" name="board_idx" value=""/>
+            <input type="hidden" name="study_site_code" value="{{element('site_code', $arr_input)}}"/>
             <input type="hidden" name="study_cate_code" value="{{element('cate_code', $arr_input)}}"/>
             <input type="hidden" name="study_prod_code" value="{{element('prod_code', $arr_input)}}"/>
             <input type="hidden" name="study_subject_idx" value="{{element('subject_idx', $arr_input)}}"/>
@@ -357,6 +359,8 @@
         var _url = '{{ front_url("/support/studyComment/listAjax") }}';
         var data = {
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+            'search_site_code' : $('#search_site_code').val(),
+            'search_cate_code' : $('#search_cate_code').val(),
             'search_cate_code' : $('#search_cate_code').val(),
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),

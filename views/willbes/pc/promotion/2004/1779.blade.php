@@ -83,7 +83,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1779_01.gif" alt="커리큘럼" usemap="#Map1779_01" border="0" />
             <map name="Map1779_01">
                 <area shape="rect" coords="938,1431,1058,1560" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
                 <area shape="rect" coords="940,1608,1060,1736" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1086" target="_blank" alt="이석준">

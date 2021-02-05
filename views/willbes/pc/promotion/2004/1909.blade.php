@@ -32,12 +32,13 @@
         </div>     
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1909_02.jpg" alt="" usemap="#Map1909a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1909_02.jpg" alt="" usemap="#Map1909a" border="0" />
             <map name="Map1909a" id="Map1909a">
                 <area shape="rect" coords="756,361,984,541" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/174017" target="_blank" />
                 <area shape="rect" coords="756,549,986,728" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/174527" target="_blank" />
                 <area shape="rect" coords="755,736,985,915" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/176587" target="_blank" />
               	<area shape="rect" coords="755,923,985,1106" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/free/prod-code/177896" target="_blank" />
+                <area shape="rect" coords="756,1112,986,1293" href="javascript:alert('준비중입니다.');" alt="최신개정법령" />
             </map> 
         </div>     
 

@@ -107,7 +107,7 @@
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_01.jpg" alt="이커머스 전문 MD 최효진" >  
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/VSy5cCMywVo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/cAcybcQaN4U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div> 
     

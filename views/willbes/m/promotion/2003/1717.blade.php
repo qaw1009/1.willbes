@@ -39,11 +39,9 @@
     .evt01 .slide_con .bx-wrapper .bx-pager {     
         bottom: -30px;
     }  
-    .evt02 {position:relative; background:url(https://static.willbes.net/public/images/promotion/2021/01/1717m_02_bg.jpg) repeat-y center top;}
-    .evt02 p:after {content:''; display:block; clear:both}
-    .evt02 p a {display:inline; float:left; width:50%}    
-    .evt02 p a img {width:100%; max-width:360px}    
-    .check {width:100%; text-align:center; color:#fff; padding:30px 10px 50px}
+    .evt02 {position:relative;}
+ 
+    .check {width:100%; text-align:center; color:#fff; position:absolute; bottom:6vh}
     .check label {cursor:pointer; font-size:14px;color:#FFF;font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
@@ -96,18 +94,11 @@
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02.jpg" alt="9급 패스" >  
-            <a href="javascript:go_PassLecture('177930');">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_top.jpg" alt="" >
-            </a> 
-        <p>     
-            <a href="javascript:go_PassLecture('168184');">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_01.jpg" alt="" >
-            </a> 
-            <a href="javascript:go_PassLecture('177584');">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717m_02_02.jpg" alt="" >
-            </a>    
-        </p>
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1717m_02.jpg" alt="9급 패스" >  
+        <a href="javascript:go_PassLecture('177930');" title="9급문풀패스" style="position: absolute; left: 58.47%; top: 45.5%; width: 28.19%; height: 7.73%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('168184');" title="12개월" style="position: absolute; left: 11.81%; top: 78.25%; width: 30.14%; height: 8.46%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('177584');" title="21년 9급 지방직까지" style="position: absolute; left: 57.22%; top: 78.43%; width: 30.14%; height: 8.46%; z-index: 2;"></a>
+
         <div class="check">
             <label>
                 <input name="ischk"  type="checkbox" value="Y" />

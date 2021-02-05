@@ -54,9 +54,9 @@
     .embed-container object, 
     .embed-container embed {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 
-    .evt04 {padding-bottom:50px; background:#f3f5f7}
+    .evt04 {position:relative}
 
-    .check {width:100%; text-align:center; padding:30px 10px 50px}
+    .check {width:100%; text-align:center; position:absolute; bottom:8vh}
     .check label {cursor:pointer; font-size:14px; font-weight:bold;}
     .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
     .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
@@ -143,13 +143,13 @@
     </div>
     
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/1060m_04.jpg" alt="윌비스 소방패스" usemap="#Map1060" border="0" >
-        <map name="Map1060" id="Map1060">
-            <area shape="rect" coords="149,612,334,680" href="javascript:go_PassLecture('167765');" alt="공채12개월" />
-            <area shape="rect" coords="385,613,576,682" href="javascript:go_PassLecture('177600');" alt="공채시험일까지" />
-            <area shape="rect" coords="145,933,335,998" href="javascript:go_PassLecture('167766');" alt="특채12개월" />
-            <area shape="rect" coords="388,931,574,1000" href="javascript:go_PassLecture('177601');" alt="특채시험일까지" />
-        </map>
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1060m_04.jpg" alt="윌비스 소방패스">
+        <a href="javascript:go_PassLecture('178778');" title="문풀패스" style="position: absolute; left: 62.08%; top: 41.44%; width: 23.19%; height: 3.58%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('167765');" title="12개월" style="position: absolute; left: 20.28%; top: 61.84%; width: 26.11%; height: 4.17%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('177600');" title="21년 소방직 시험일까지" style="position: absolute; left: 53.47%; top: 61.9%; width: 26.11%; height: 4.17%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('167766');" title="특채 12개월" style="position: absolute; left: 20.28%; top: 80.92%; width: 26.11%; height: 4.17%;z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('177601');" title="특채 21년 소방직 시험일까지" style="position: absolute; left: 53.89%; top: 81.04%; width: 26.11%; height: 4.17%; z-index: 2;"></a>
+
         <div class="check">
             <label>
                 <input name="ischk"  type="checkbox" value="Y" />

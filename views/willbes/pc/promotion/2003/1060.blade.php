@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .skybanner {position:absolute; top:-150px;right:10px; z-index:1;}
+        .skybanner {position:fixed; top:250px; right:10px; width:163px; z-index:1;}
         .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
@@ -103,13 +103,11 @@
     </style>
     
     <div class="p_re evtContent NSK" id="evtContainer">
-        {{--
-        <div class="skybanner">
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3050/code/1410#to_go" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/10/1410_sky.png" alt="소방영어"></a>
-            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2021/01/1060_c11.png" alt="소방체력풀패키지" ></a>
-        </div>   
-        --}}
 
+        <div class="skybanner">
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2021/02/1060_sky01.png" alt="문풀패스" ></a>
+        </div>   
+        
         <div class="evtCtnsBox time NSK-Black" id="newTopDday">
             <div>
                 <table>
@@ -222,12 +220,13 @@
         </div><!--evt03//-->
           
         <div class="evtCtnsBox evt04" id="event">      
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1060_05.jpg" usemap="#Map1060_07" title="수강신청" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1060_05.jpg" usemap="#Map1060_07" title="수강신청" border="0" />
             <map name="Map1060_07" id="Map1060_07">
-                <area shape="rect" coords="137,711,320,764" href="javascript:go_PassLecture('167765');" alt="공채12개월">
-                <area shape="rect" coords="344,712,526,764" href="javascript:go_PassLecture('177600');" alt="공채시험일까지">
-                <area shape="rect" coords="600,713,781,764" href="javascript:go_PassLecture('167766');" alt="특채12개월" />
-                <area shape="rect" coords="807,713,988,763" href="javascript:go_PassLecture('177601');" alt="특채시험일까지" />
+            	<area shape="rect" coords="791,667,962,755" href="javascript:go_PassLecture('178778');" alt="문풀패스" />
+                <area shape="rect" coords="135,1058,318,1111" href="javascript:go_PassLecture('167765');" alt="공채12개월">
+                <area shape="rect" coords="343,1059,525,1111" href="javascript:go_PassLecture('177600');" alt="공채시험일까지">
+                <area shape="rect" coords="601,1059,782,1110" href="javascript:go_PassLecture('167766');" alt="특채12개월" />
+                <area shape="rect" coords="809,1059,990,1109" href="javascript:go_PassLecture('177601');" alt="특채시험일까지" />                
             </map> 
             <div class="check">
                 <label>
@@ -387,22 +386,7 @@
 			$(activeTab).fadeIn(); 
 			return false; 
 			});
-		});
-
-
-        var quick_top = $(".skybanner").offset().top;
-        $(window).scroll(function(){
-            if ( $(window).scrollTop() > quick_top - 100 ){
-                $(".skybanner").stop().animate({top: $(window).scrollTop() - 150}, 500);
-            }else {
-                $(".skybanner").stop().animate({top: quick_top}, 500);
-            }
-            if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                $(".skybanner").stop().animate({top: $(document).height()-1200}, 500);
-            }
-        });
-
-        
+		});        
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

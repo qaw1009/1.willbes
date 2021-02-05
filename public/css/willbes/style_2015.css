@@ -13,6 +13,16 @@
     height: 8px;
     margin: 15px 5px 0;
 }
+.incheon .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.incheon .will-acadTit span {
+    vertical-align: baseline;
+}
+
 /*상단 메뉴*/
 .Menu .menu-List li.willbesedu > a {
     font-size: 16px;
@@ -28,19 +38,6 @@
     height: 8px;
     margin: 15px 5px 0;
 }
-.dropdown .list-drop-Box-ic {
-    top: 38px;
-    left: 50%;
-    margin-left: -159px;
-    width: 470px;
-    padding: 20px;
-    text-align: left;
-    z-index: 100;
-}
-.dropdown .list-drop-Box-ic .Tit {margin-top:10px !important}
-.dropdown .list-drop-Box-ic li:first-child {margin:0 !important}
-.dropdown .list-drop-Box-ic span {display: inline-block; font-size: 14px !important; width:50px}
-.dropdown .list-drop-Box-ic li a {display: inline-block; padding-right:20px}
 
 .incheon .VisualBox {
     clear: both;
@@ -166,8 +163,8 @@
 .incheon .acadview .avslider li a {display:block;} 
 .incheon .acadview .avslider:after {content: ""; display: block; clear:both}
 .incheon .acadview p {position:absolute; top:40%; margin-top:-22px; width:44px; height:45px; z-index:10}
-.incheon .acadview p.leftBtn {left:-22px}
-.incheon .acadview p.rightBtn {right:-22px}
+.incheon .acadview p.leftBtn {left:-30px}
+.incheon .acadview p.rightBtn {right:-50px}
 
 
 /* Main Container : Notice : noticeTabs */

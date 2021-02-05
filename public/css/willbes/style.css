@@ -31,7 +31,7 @@
 @import url("style_willpass.css"); /*취업*/
 @import url("style_2014_3114.css"); /*엔잡*/
 @import url("style_willstory.css"); /*윌스토리*/
-@import url("style_2015.css"); /*인천학원*/
+/*@import url("style_2015.css"); 인천학원*/
 @import url("style_2018.css?ver=2101061517"); /*임용*/
 
 /* Login Form : 공통 */
@@ -13231,6 +13231,22 @@ table.acadlecInfoPackageTable tr.Top td {
 	display: block;
 	clear: both;
 }
+
+/*인천학원 상단 메뉴*/
+.dropdown .list-drop-Box-ic {
+    top: 38px;
+    left: 50%;
+    margin-left: -159px;
+    width: 470px;
+    padding: 20px;
+    text-align: left;
+    z-index: 100;
+}
+.dropdown .list-drop-Box-ic .Tit {margin-top:10px !important}
+.dropdown .list-drop-Box-ic li:first-child {margin:0 !important}
+.dropdown .list-drop-Box-ic span {display: inline-block; font-size: 14px !important; width:50px}
+.dropdown .list-drop-Box-ic li a {display: inline-block; padding-right:20px}
+
 
 /*단과수강 신청 교재정보*/
 .bookInfoTable {

@@ -361,7 +361,6 @@
             '{{ csrf_token_name() }}' : $_ajax_search_form.find('input[name="{{ csrf_token_name() }}"]').val(),
             'search_site_code' : $('#search_site_code').val(),
             'search_cate_code' : $('#search_cate_code').val(),
-            'search_cate_code' : $('#search_cate_code').val(),
             'search_subject_idx' : $('#search_subject_idx').val(),
             'search_prof_idx' : $('#search_prof_idx').val(),
             'search_prod_code' : $('#search_prod_code').val(),

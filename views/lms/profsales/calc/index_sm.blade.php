@@ -73,7 +73,7 @@
                 <div class="col-xs-12">
                     <h2 class="bold">
                         <span class="green"><span class="wprof-name">{{ $def_wprof_name }}</span> 교수님</span>
-                        <span class="red"><span class="curr-month">{{ $def_curr_month }}</span>월 5일 지급분</span>
+                        <span class="red"><span class="curr-month">{{ $def_curr_month }}</span>월 {{ $is_off_site == 'Y' ? '5' : '15' }}일 지급분</span>
                         <span class="green">{{ $calc_name }} 배당금 내역</span>
                     </h2>
                     @if($is_off_site == 'Y')

@@ -3,7 +3,15 @@
 .GA .tx-color {
     color: #ba560e;
 }
-
+.GA .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.GA .will-acadTit span {
+    vertical-align: baseline;
+}
 
 /**/
 .GA .VisualBox {

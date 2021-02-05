@@ -4,6 +4,7 @@
 <style type="text/css">
 .pro .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
 
+
 .pro .ProfProBox {margin-left:-5px}
 .pro .ProfProBox > li {
     position: relative;
@@ -15,6 +16,10 @@
     margin-bottom:5px
 }
 .pro .mouBox span {display:inline-block; margin:0 10px 10px 0}
+
+.pro .Sec01 {background:#0a0a0a; margin-top:20px}
+.pro .Sec02 {position:relative; height:390px}
+.pro .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
 </style>
 <!-- Container -->
 <div id="Container" class="Container pro NSK c_both">
@@ -69,31 +74,37 @@
         </h3>
     </div>
 
-    <div class="Section">
-        <div class="widthAuto">     
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120X307.jpg" alt="대한민국 1등 경찰학원">            
-        </div>
+    <div class="Section Sec01">   
+        <div class="widthAuto">  
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x76.jpg" alt="대한민국 1등 경찰학원">  
+        </div> 
     </div>
 
-    <div class="Section">
-        <div class="widthAuto">          
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_visual_01.jpg" alt="">   
+    <div class="Section Sec02">
+        <div>       
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_2000x390.jpg" alt="합격패스">  
         </div>
     </div> 
 
+    <div class="Section mt40">   
+        <div class="widthAuto">  
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1148x133.jpg" alt="경감/경정 승진 패스 개설, 네오고시뱅크 제휴">  
+        </div> 
+    </div>
+
     <div class="Section mt50">
         <div class="widthAuto">    
-            <div class="will-nTit NSK-Black">객관식 <span class="tx-color">형사소송법, 형법, 실무종합, 헌법(NEW), 행정학(NEW)</span></div>      
-            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_visual_02.jpg" alt="전문화된 교수진">   
+            <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">객관식</span> <span class="tx16 NSK ml20">형사소송법, 형법, 실무종합, <span class="tx-color">헌법(NEW), 행정학(NEW)</span></span></div>      
+            <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465.jpg" alt="전문화된 교수진">   
         </div>
     </div> 
 
     <div class="Section mt100">
         <div class="widthAuto"> 
-            <div class="will-nTit NSK-Black">주관식 <span class="tx-color">형사소송법 / 행정법</span></div>
-            <div class="tx-center">
-                <span><a href="#none" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_01.jpg" alt="배너명"></a></span>
-                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_372x190_02.jpg" alt="배너명"></a></span>
+            <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
+            <div>
+                <span class="mr25"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_515x190_01.jpg" alt="배너명"></a></span>
+                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_515x190_02.jpg" alt="배너명"></a></span>
             </div>  
         </div>
     </div>
@@ -101,28 +112,12 @@
     <div class="Section mt100">
         <div class="widthAuto">           
             <div class="will-nTit NSK-Black">승진대비 <span class="tx-color">계급&amp;직렬</span> 승진 PASS</div>
-            <ul class="proPAss">
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_557x270_01.jpg" alt="배너명"></a></li>
-                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_557x270_02.jpg" alt="배너명"></a></li>
+            <div>
+                <span class="mr25"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_546x270_01.jpg" alt="배너명"></a></span>
+                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_546x270_02.jpg" alt="배너명"></a></span>
             </ul>            
         </div>
     </div>
-
-    {{--
-    <div class="Section mt100">
-        <div class="widthAuto">           
-            <div class="will-nTit NSK-Black">윌비스 <span class="tx-color">신광은경찰</span> MOU 협약식</div>
-            <div class="mou">
-                <ul>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_01.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_02.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_03.jpg') }}" alt="MOU 협약식"></li>
-                    <li><img src="{{ img_url('cop_pro/visual/visual_556_04.jpg') }}" alt="MOU 협약식"></li>
-                </ul> 
-            <div>           
-        </div>
-    </div>
-    --}}
 
     <div class="Section Section3 mt100">
         <div class="widthAuto">

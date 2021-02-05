@@ -23,11 +23,11 @@
                 <div class="mt10">
                 @if($__cfg['SiteGroupCode'] == '1001')
                     {{-- 경찰온라인 사이트일 경우만 적용 --}}
-                    <img src="{{ img_url('sub/mocktest_cop.jpg') }}" alt="경찰 통합모의고사">
+                    <img src="https://static.willbes.net/public/images/promotion/sub/2002_mocktest.jpg" alt="경찰 통합모의고사">
                 @endif
                 @if($__cfg['SiteGroupCode'] == '1002')
                     {{-- 공무원 온라인 사이트일 경우만 적용 --}}
-                    <img src="{{ img_url('sub/mocktest_gosi.jpg') }}" alt="공무원 통합모의고사">
+                    <img src="https://static.willbes.net/public/images/promotion/sub/2004_mocktest.jpg" alt="공무원 통합모의고사">
                 @endif  
                 @if($__cfg['SiteGroupCode'] == '1003')
                     {{-- 고등고시 온라인 사이트일 경우만 적용 --}}

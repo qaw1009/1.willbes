@@ -88,7 +88,7 @@
                 <area shape="rect" coords="189,704,343,740" href="https://njob.willbes.net/promotion/index/cate/3114/code/2035" target="_blank" />
                 <area shape="rect" coords="385,703,537,740" href="https://njob.willbes.net/promotion/index/cate/3114/code/2024" target="_blank" />
                 <area shape="rect" coords="599,704,748,740" href="https://njob.willbes.net/promotion/index/cate/3114/code/2006" target="_blank" />
-                <area shape="rect" coords="778,703,929,740" href="javascript:alert('COMING SOON! 2월 5일(금) 공개됩니다.')"  />
+                <area shape="rect" coords="778,703,929,740" href="https://njob.willbes.net/promotion/index/cate/3114/code/2053" target="_blank" />
             </map>        
         </div>
 

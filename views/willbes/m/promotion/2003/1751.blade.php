@@ -43,15 +43,15 @@
     }   
 
     .evt03 {position:relative;}
-    .evt03 .apply a {position: absolute; width: 31.11%; height: 4.26%; z-index: 2;}
-    .evt03 .apply a.a01 {left: 14.86%; top: 58.14%; }
-    .evt03 .apply a.a02 {left: 14.86%; top: 69.05%; }
-    .evt03 .apply a.a03 {left: 14.86%; top: 80.05%; }
-    .evt03 .apply a.a04 {left: 14.86%; top: 90.88%; }
-    .evt03 .apply a.a05 {left: 53.75%; top: 58.31%; }
-    .evt03 .apply a.a06 {left: 53.75%; top: 69.05%; }
-    .evt03 .apply a.a07 {left: 53.75%; top: 80.05%; }
-    .evt03 .apply a.a08 {left: 53.75%; top: 90.88%; }
+
+
+    .evt03_01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1751m_03_bg.jpg) repeat-y; background-size:100%; padding:0 8% 30px}
+    .evt03_01 table {border:1px solid #ccc}
+    .evt03_01 th,
+    .evt03_01 td {padding:10px; text-align:center; font-size:14px; border-right:1px solid #ccc}
+    .evt03_01 th {font-weight:bold; background:#f4f4f4}
+    .evt03_01 tr {border-bottom:1px solid #ccc}
+    .evt03_01 td a {background:#111; color:#fff; display:block; margin:0 5%; padding:5px 0}
   
     .check {padding:20px 0px 50px 10px; letter-spacing:0; color:#fff; background-color:#032e5b;}
     .check label {cursor:pointer; font-size:14px;color:#FFF;}
@@ -121,18 +121,54 @@
     </div> 
 
     <div class="evtCtnsBox evt03 p_re">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/1751m_03.jpg" alt="수강신청" >
-        <div class="apply">
-            <a href="javascript:go_PassLecture('169730');" title="행정직PASS" class="a01"></a>
-            <a href="javascript:go_PassLecture('170029');" title="국어+행정학PASS" class="a02"></a>
-            <a href="javascript:go_PassLecture('170030');" title="국어+행정법PASS" class="a03"></a>
-            <a href="javascript:go_PassLecture('170031');" title="행정학+행정법PASS" class="a04"></a>
-            <a href="javascript:go_PassLecture('177805');" title="6개월 행정직PASS" class="a05"></a>
-            <a href="javascript:go_PassLecture('177807');" title="6개월 국어+행정학PASS" class="a06"></a>
-            <a href="javascript:go_PassLecture('177808');" title="6개월 국어+행정법PASS" class="a07"></a>
-            <a href="javascript:go_PassLecture('177809');" title="6개월 행정학+행정법PASS" class="a08"></a>
-        </div>       
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1751m_03.jpg" alt="수강신청" >
+        <a href="javascript:go_PassLecture('178781');" title="시험일까지" style="position: absolute; left: 59.03%; top: 53.01%; width: 27.64%; height: 6.9%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('169730');" title="12개월" style="position: absolute; left: 12.92%; top: 86.9%; width: 30.28%; height: 8.12%; z-index: 2;"></a>
+        <a href="javascript:go_PassLecture('177805');" title="6개월" style="position: absolute; left: 55.42%; top: 86.9%; width: 30.28%; height: 8.12%; z-index: 2;"></a>           
     </div> 
+
+    <div class="evtCtnsBox evt03_01">
+        <table cellspacing="0" cellpadding="0">
+            <col span="3" />
+            <tr>
+                <th colspan="3">12개월</th>
+            </tr>
+            <tr>
+                <td>국어+행정학</td>
+                <td>35만원</td>
+                <td><a href="javascript:go_PassLecture('170029');">수강신청</a></td>
+            </tr>
+            <tr>
+                <td>국어+행정법</td>
+                <td>35만원</td>
+                <td><a href="javascript:go_PassLecture('170030');">수강신청</a></td>
+            </tr>
+            <tr>
+                <td>행정학+행정법</td>
+                <td>35만원</td>
+                <td><a href="javascript:go_PassLecture('170031');">수강신청</a></td>
+            </tr>
+            <tr>
+                <th colspan="3">6개월</th>
+            </tr>
+            <tr>
+                <td>국어+행정학</td>
+                <td>25만원</td>
+                <td><a href="javascript:go_PassLecture('177807');">수강신청</a></td>
+            </tr>
+            <tr>
+                <td>국어+행정법</td>
+                <td>25만원</td>
+                <td><a href="javascript:go_PassLecture('177808');">수강신청</a></td>
+            </tr>
+            <tr>
+                <td>행정학+행정법</td>
+                <td>25만원</td>
+                <td><a href="javascript:go_PassLecture('177809');">수강신청</a></td>
+            </tr>
+        </table>
+    </div> 
+
     <div class="evtCtnsBox check">
         <label>
             <input name="ischk"  type="checkbox" value="Y" />

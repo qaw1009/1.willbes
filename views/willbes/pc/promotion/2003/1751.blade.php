@@ -34,7 +34,10 @@
         from{color:#d63e4d}
         50%{color:#ff6600}
         to{color:#d63e4d}
-        }            
+        }          
+        
+        .skybanner {position:fixed; top:250px; right:10px; width:163px; z-index:1;}
+        .skybanner a {display:block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/1751_top_bg.jpg) no-repeat center top;}   
 
@@ -100,6 +103,10 @@
         </div>
         <!-- 타이머 //-->
 
+        <div class="skybanner">
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2021/02/1060_sky01.png" alt="문풀패스" ></a>
+        </div>   
+
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2021/01/1751_top.jpg" alt="군무원 PASS"/>        
         </div>
@@ -146,16 +153,17 @@
         </div>
           
         <div class="evtCtnsBox wb_03" id="event">       
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1751_03.jpg" usemap="#Map1751_apply" title="수강신청" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1751_03.jpg" usemap="#Map1751_apply" title="수강신청" border="0" />
             <map name="Map1751_apply" id="Map1751_apply">
-                <area shape="rect" coords="416,534,533,580" href="javascript:go_PassLecture('169730');" alt="행정직">
-                <area shape="rect" coords="418,682,535,727" href="javascript:go_PassLecture('170030');" alt="국어+행정법">
-                <area shape="rect" coords="418,608,533,653" href="javascript:go_PassLecture('170029');" alt="국어+행정학">
-                <area shape="rect" coords="418,756,534,799" href="javascript:go_PassLecture('170031');" alt="행정학+행정법">
-                <area shape="rect" coords="845,536,962,578" href="javascript:go_PassLecture('177805');" alt="6개월 행정직" />
-                <area shape="rect" coords="844,610,963,653" href="javascript:go_PassLecture('177807');" alt="6개월 국어+행정학" />
-                <area shape="rect" coords="845,682,961,726" href="javascript:go_PassLecture('177808');" alt="6개월 국어+행정법" />
-                <area shape="rect" coords="845,755,961,799" href="javascript:go_PassLecture('177809');" alt="6개월 행정학+행정법" />
+            	<area shape="rect" coords="752,455,921,555" href="javascript:go_PassLecture('178781');" alt="시험일까지" />
+                <area shape="rect" coords="500,803,678,873" href="javascript:go_PassLecture('169730');" alt="12개월">                
+				<area shape="rect" coords="440,1046,538,1086" href="javascript:go_PassLecture('177805');" alt="6개월">
+                <area shape="rect" coords="440,998,538,1037" href="javascript:go_PassLecture('170029');" alt="국어+행정학">
+                <area shape="rect" coords="439,1091,539,1131" href="javascript:go_PassLecture('170030');" alt="국어+행정법">
+                <area shape="rect" coords="730,802,909,876" href="javascript:go_PassLecture('170031');" alt="행정학+행정법" />
+                <area shape="rect" coords="813,997,910,1036" href="javascript:go_PassLecture('177807');" alt="6개월 국어+행정학" />
+                <area shape="rect" coords="813,1046,910,1084" href="javascript:go_PassLecture('177808');" alt="6개월 국어+행정법" />
+                <area shape="rect" coords="812,1092,911,1131" href="javascript:go_PassLecture('177809');" alt="6개월 행정학+행정법" />
             </map>
             <div class="check">
                 <label>

@@ -126,9 +126,9 @@
                 var $list_table_modal = $('#_list_ajax_table');
                 var $parent_regi_form = $('#regi_form');
 
-                var $parent_location = "{{str_replace("Add",'List',$locationid)}}";
+                var $parent_location = "{{ str_replace('Add', 'List', $locationid) }}";
                 var $parent_location_tr = @if($locationid === 'subLecAdd') 'subLecTrId'; @elseif($locationid === 'essLecAdd') 'essLecTrId'; @elseif($locationid === 'selLecAdd') 'selLecTrId'; @else 'lecTrId'; @endif
-                var $parent_element = @if($locationid === 'subLecAdd' || $locationid === 'essLecAdd' || $locationid === 'selLecAdd' ) 'ProdCodeSub'; @else 'ProdCode_lecture'; @endif
+                var $parent_element = @if($locationid === 'subLecAdd' || $locationid === 'essLecAdd' || $locationid === 'selLecAdd') 'ProdCodeSub'; @elseif($locationid === 'authLecAdd') 'ProdCode' @else 'ProdCode_lecture'; @endif
 
                 //본체에 등록된 상품 코드 배열
                 var $selected_prodcode = {};
@@ -136,7 +136,7 @@
                 $(document).ready(function() {
                     $("#"+$parent_location).find("tr").each(function() {
                         ele = $(this);
-                        prod_code = ele.find('input[name="ProdCodeSub[]"]').val();
+                        prod_code = ele.find('input[name="'+$parent_element+'[]"]').val();
                         if(prod_code != undefined) {
                             $selected_prodcode[prod_code] = prod_code;
                         }
@@ -177,6 +177,7 @@
                                         +row.RealSalePrice+'@$'
                                         +row.SaleStatusCcd_Name+'@$'
                                         +row.SalePrice+'@$'
+                                        +(row.IsUse == 'Y' ? '사용' : '미사용')+'@$' //10
                                     ;
                                     return checked == 'Y' ? '<span class="red"><b>선택<BR>완료</b><input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="hide" value=""></span>':'<input type="checkbox" id="checkIdx' + seq + '" name="checkIdx" class="flat" value="' + codeInfo + '" />';
                                 }},
@@ -261,31 +262,55 @@
                                 if(temp_data != '') {
                                     temp_data_arr = temp_data.split("@$");
                                     $(document).find("#" + $parent_location).append(
-                                        "<tr id='" + $parent_location_tr + seq + "' name='" + $parent_location_tr + "'>"
-                                        + "		<input type='hidden'  name='" + $parent_element + "[]' id='" + $parent_element + seq + "' value='" + temp_data_arr[0] + "'>"
-                                            @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
-                                        + "		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}" + seq + "' value='Y'>"
-                                        + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
-                                        + "		<td>"
-                                        + "     <select name='SubGroupName[]' id='SubGroupName" + seq + "' class=\"form-control mr-10\">"
-                                            @for($i=1;$i<101;$i++)
-                                        + "         <option value='{{$i}}'>{{$i}}</option>"
-                                            @endfor
-                                        + "     </select>"
-                                        + "		</td>"
-                                            @elseif($locationid === 'subLecAdd')
-                                        + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='N'>"
-                                            @endif
-                                        + "		<td>" + temp_data_arr[1] + "</td>"
-                                        + "		<td>" + temp_data_arr[2] + "</td>"
-                                        + "		<td>" + temp_data_arr[3] + "</td>"
-                                        + "		<td>" + temp_data_arr[4] + "</td>"
-                                        + "		<td style='text-align:left'>[" + temp_data_arr[0] + "] " + temp_data_arr[5] + "</td>"
-                                        + "		<td>" + temp_data_arr[6] + "</td>"
-                                        + "		<td><div class='{{$locationid === 'essLecAdd' ? 'essLecPrice' : ''}}' data-price='" + temp_data_arr[9] + "'>" + addComma(temp_data_arr[7]) + "원</div></td>"
-                                        + "		<td>" + temp_data_arr[8] + "</td>"
-                                        + "		<td><a href='javascript:;' onclick=\"rowDelete('" + $parent_location_tr + seq + "')\"><i class=\"fa fa-times red\"></i></a></td>"
-                                        + "	</tr>"
+                                        @if($locationid === 'authLecAdd') //강좌지급인증 설정
+                                            "<tr>"
+                                            + "		<input type='hidden'  name='" + $parent_element + "[]' value='" + temp_data_arr[0] + "'>"
+                                            + "		<td>"
+                                            + "             <select name='SubGroupName[]' id='SubGroupName" + seq + "' class=\"form-control mr-10\">"
+                                                            @for($i=1; $i <= 100;$i++)
+                                            + "                 <option value='{{$i}}'>{{$i}}</option>"
+                                                            @endfor
+                                            + "             </select>"
+                                            + "		</td>"
+                                            + "		<td>" + temp_data_arr[1] + "</td>"
+                                            + "		<td>" + temp_data_arr[3] + "</td>"
+                                            + "		<td>" + temp_data_arr[4] + "</td>"
+                                            + "		<td style='text-align:left'>[" + temp_data_arr[0] + "] " + temp_data_arr[5] + "</td>"
+                                            + "		<td>" + temp_data_arr[10] + "</td>"
+                                            + "		<td><select name='IsEssential[]' class='form-control mr-10'><option value='Y'>Y</option><option value='N' selected='selected'>N</option></td>"
+                                            + "		<td><input type='number' name='OrderNum[]' class=\"form-control\" value='' style='width:50px'></td>"
+                                            + "		 <td><a href='#none' class='selected-product-delete'><i class='fa fa-times red'></i></a></td>"
+                                            + "</tr>"
+
+                                        @else
+
+                                            "<tr id='" + $parent_location_tr + seq + "' name='" + $parent_location_tr + "'>"
+                                            + "		<input type='hidden'  name='" + $parent_element + "[]' id='" + $parent_element + seq + "' value='" + temp_data_arr[0] + "'>"
+                                                @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
+                                            + "		<input type='hidden'  name='{{$locationid}}Check[]' id='{{$locationid}}" + seq + "' value='Y'>"
+                                            + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='{{$locationid === 'essLecAdd' ? 'Y' : 'N'}}'>"
+                                            + "		<td>"
+                                            + "     <select name='SubGroupName[]' id='SubGroupName" + seq + "' class=\"form-control mr-10\">"
+                                                @for($i=1;$i<101;$i++)
+                                            + "         <option value='{{$i}}'>{{$i}}</option>"
+                                                @endfor
+                                            + "     </select>"
+                                            + "		</td>"
+                                                @elseif($locationid === 'subLecAdd')
+                                            + "		<input type='hidden'  name='IsEssential[]' id='IsEssential" + seq + "' value='N'>"
+                                                @endif
+                                            + "		<td>" + temp_data_arr[1] + "</td>"
+                                            + "		<td>" + temp_data_arr[2] + "</td>"
+                                            + "		<td>" + temp_data_arr[3] + "</td>"
+                                            + "		<td>" + temp_data_arr[4] + "</td>"
+                                            + "		<td style='text-align:left'>[" + temp_data_arr[0] + "] " + temp_data_arr[5] + "</td>"
+                                            + "		<td>" + temp_data_arr[6] + "</td>"
+                                            + "		<td><div class='{{$locationid === 'essLecAdd' ? 'essLecPrice' : ''}}' data-price='" + temp_data_arr[9] + "'>" + addComma(temp_data_arr[7]) + "원</div></td>"
+                                            + "		<td>" + temp_data_arr[8] + "</td>"
+                                            + "		<td><a href='javascript:;' onclick=\"rowDelete('" + $parent_location_tr + seq + "')\"><i class=\"fa fa-times red\"></i></a></td>"
+                                            + "	</tr>"
+
+                                        @endif
                                     );
                                     seq = seq + 1;
                                 }

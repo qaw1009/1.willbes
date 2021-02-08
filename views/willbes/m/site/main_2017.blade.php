@@ -18,16 +18,16 @@
                 윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>
             </div>
             <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-            <ul class="bestLecBox NSK">
+            <ul class="bestLecBox">
                 @foreach($data['top_order_lecture'] as $key => $row)
                     <li class="bestLec">
                         <a href="{{ site_url('/m/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode']) }}">
                             <ul class="lecinfo">
-                                <li class="NSK-Black">{{ $row['SubjectName'] }}<br><span class="NSK-Black">{{ $row['ProfNickNameAppellation'] }}</span></li>
+                                <li class="NSK-Black"><span class="NSK">{{ $row['SubjectName'] }}</span>{{ $row['ProfNickNameAppellation'] }}</li>
                                 <li><strong>{{ $row['CourseName'] }}</strong></li>
                             </ul>
-                            <div class="profImg"><img src="{{ $row['ProfImgPathM'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div>
-                        </a>                        
+                        </a>
+                        <div class="profImg"><img src="{{ $row['ProfImgPathM'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div>
                         <div class="best NSK-Black">{{ $key + 1 }}</div>
                     </li>
                 @endforeach
@@ -79,13 +79,9 @@
 
         {{-- 고객센터 --}}
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])
-
     </div>
     <!-- End Container -->
 
-    <style>
-        /*.sampleLecSlide .swiper-slide { height:72px;}*/
-    </style>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>

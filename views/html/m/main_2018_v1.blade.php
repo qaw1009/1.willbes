@@ -30,11 +30,11 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
-.ssam .bestLecBox {
+.ssam .bestLecBox2 {
 	margin-top: 10px;
 	border-top: 1px solid #ccc;
 }
-.ssam .bestLecBox .bestLec {
+.ssam .bestLecBox2 .bestLec {
 	position: relative;
 	display: block;
 	float: left;
@@ -43,7 +43,7 @@
     max-height:160px;
     height: 20vw;
 }
-.ssam .bestLecBox .bestLec a {
+.ssam .bestLecBox2 .bestLec a {
     position:absolute;
 	display: block;
 	width: 100%;
@@ -54,10 +54,10 @@
     overflow: hidden;
     z-index:2;
 }
-.ssam .bestLecBox .bestLec:first-child a {
+.ssam .bestLecBox2 .bestLec:first-child a {
 	border-left: 1px solid #ccc;
 }
-.ssam .bestLecBox .bestLec .profImg img {
+.ssam .bestLecBox2 .bestLec .profImg img {
 	position: absolute;
 	bottom: 0;
 	right: -15%;
@@ -71,7 +71,7 @@
 	transform: scale(1);
 	transition: all ease-in-out 0.2s;
 }
-.ssam .bestLecBox .best {
+.ssam .bestLecBox2 .best {
     position:absolute;
     top:0;
     left:0;
@@ -86,7 +86,7 @@
     color: #fff;
     z-index:3;
 }
-.ssam .bestLecBox .lecinfo {
+.ssam .bestLecBox2 .lecinfo {
     position:absolute;
     bottom:8%;
     left:4%;
@@ -94,52 +94,52 @@
     line-height: 1.3;
     z-index:4
 }
-.ssam .bestLecBox .lecinfo li {
+.ssam .bestLecBox2 .lecinfo li {
     margin-bottom: 2%;
 }
-.ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+.ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
 	font-weight: bold;    
     font-size: 14px;
 }
-.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+.ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
     font-size: 18px;
 }
-.ssam .bestLecBox .lecinfo li strong {
+.ssam .bestLecBox2 .lecinfo li strong {
 	color: #0c5dc0;
 	font-weight: bold;
 	font-size: 15px;
 }
-.ssam .bestLecBox .lecinfo li:last-child {
+.ssam .bestLecBox2 .lecinfo li:last-child {
 	display: block;
 	word-break: keep-all;
 }
-.ssam .bestLecBox .lecinfo li:last-child span {
+.ssam .bestLecBox2 .lecinfo li:last-child span {
 	background: rgba(255, 255, 255, 0.5);
 }
-.ssam .bestLecBox:after {
+.ssam .bestLecBox2:after {
 	content: "";
 	display: block;
 	clear: both;
 }
 @@media only screen and (max-width: 374px) {
-    .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 12px;
     }
-    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
         font-size: 15px;
     }
-    .ssam .bestLecBox .lecinfo li strong {
+    .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 13px;
     }
 }
 @@media only screen and (min-width: 375px) and (max-width: 640px) {
-    .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 13px;
     }
-    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
         font-size: 16px;
     }
-    .ssam .bestLecBox .lecinfo li strong {
+    .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 14px;
     }
 }
@@ -395,7 +395,7 @@
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
     </div>
     <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-    <ul class="bestLecBox NSK">
+    <ul class="bestLecBox2 NSK">
         <li class="bestLec">                    
             <a href="#none">
                 <ul class="lecinfo">

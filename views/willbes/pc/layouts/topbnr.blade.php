@@ -127,7 +127,7 @@
     {{-- 공무원 학원 --}}
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
-            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001"><img src="https://static.willbes.net/public/images/promotion/main/2004_top_bn.gif" alt=""></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902"><img src="https://static.willbes.net/public/images/promotion/main/2004_top_bn.gif" alt=""></a>
         </div>
     </div>
 @endif

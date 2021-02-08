@@ -5,6 +5,8 @@
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container NG c_both">
+        {!! banner('M_수강신청_종합반상단', 'MainSlider mt20 mb20', $__cfg['SiteCode'], element('cate_code', $arr_input)) !!}
+
         <!-- PageTitle -->
         @include('willbes.m.layouts.page_title')
         <div>

@@ -241,7 +241,7 @@ class DeliveryInfoModel extends BaseOrderModel
     }
 
     /**
-     * 배송대상 주문조회 (송장번호 등록이전 데이터, 모아시스 전용)
+     * 모아시스 송장등록 주문조회 (송장번호 등록이전 데이터)
      * @param string $search_start_datm [조회시작일시 (결제일시)]
      * @param string $search_end_datm [조회종료일시 (결제일시)]
      * @param null|int $site_code [사이트코드]
@@ -297,5 +297,45 @@ class DeliveryInfoModel extends BaseOrderModel
 
         // 쿼리 실행
         return $this->_conn->query('select ' . $column . $from, [$search_start_datm, $search_end_datm, $search_start_datm, $search_end_datm])->result_array();
+    }
+
+    /**
+     * CNPlus 송장등록 주문조회 (송장번호 등록이전 데이터)
+     * @param string $search_start_datm [조회시작일시 (결제일시)]
+     * @param string $search_end_datm [조회종료일시 (결제일시)]
+     * @param null|int $site_code [사이트코드]
+     * @return mixed
+     */
+    public function getDeliveryCNPlusOrderData($search_start_datm, $search_end_datm, $site_code = null)
+    {
+        $where = $this->_conn->makeWhere(['EQ' => ['O.SiteCode' => $site_code]])->getMakeWhere(true);
+
+        $column = 'ODA.Receiver, fn_dec(ODA.ReceiverTelEnc) as ReceiverTel, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone
+            , ODA.ZipCode, concat(trim(ODA.Addr1), " ", trim(fn_dec(ODA.Addr2Enc))) as Addr, ODA.DeliveryMemo
+            , PB.wBookIdx, VBB.wPublName, VBB.wIsbn, VBB.wOrgPrice
+            , OP.OrderPrice, "1" as OrderQty, OP.RealPayPrice, VBB.wBookName, O.OrderNo
+        ';
+
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                inner join ' . $this->_table['order_product'] . ' as OP
+                    on O.OrderIdx = OP.OrderIdx
+                inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
+                    on OP.OrderProdIdx = OPD.OrderProdIdx
+                inner join ' . $this->_table['order_delivery_address'] . ' as ODA
+                    on O.OrderIdx = ODA.OrderIdx		
+                inner join ' . $this->_table['product_book'] . ' as PB
+                    on OP.ProdCode = PB.ProdCode
+                inner join ' . $this->_table['bms_book_combine'] . ' as VBB
+                    on PB.wBookIdx = VBB.wBookIdx
+            where O.CompleteDatm between ? and ?
+                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                and OPD.DeliveryStatusCcd is null
+                ' . $where . '
+            order by O.OrderIdx desc, OP.OrderProdIdx asc
+        ';
+
+        // 쿼리 실행
+        return $this->_conn->query('select ' . $column . $from, [$search_start_datm, $search_end_datm])->result_array();
     }
 }

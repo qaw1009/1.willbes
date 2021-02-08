@@ -21,6 +21,9 @@
 
         /************************************************************/             
         .sky {position:fixed; top:225px;right:25px;z-index:10;}
+        .sky a {display:block;padding-top:15px;}
+        .sky2 {position:fixed;right:30px;}
+
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2037_top_bg.jpg) no-repeat center top;}	    
         .evt01 {background:#DDD0BF;}
 
@@ -48,8 +51,11 @@
 
         <div class="sky">
             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2037_sky02.png" alt="윌비스 전국모의고사 접수하기" >
-            </a>             
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2037_sky.png" alt="윌비스 전국모의고사 접수하기" >
+            </a>
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2051#tab01" target="_blank" class="sky2"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2037_sky2.png" alt="모의고사 무료 참여하기" >
+            </a>                       
         </div>
 
         <div class="evtCtnsBox evtTop">

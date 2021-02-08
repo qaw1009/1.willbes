@@ -140,18 +140,17 @@
                                         </div>
                                     </a>
                                 </li>
-
-                                {{--
+                         
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/01/1767_thumbnail03.jpg" alt="통합방위법"></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>통합방위법에는 시행규칙이 없다!</p>
+                                            <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
                                         </div>
                                     </a>
                                 </li>                               
-                               
+                                {{--
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
@@ -385,7 +384,7 @@
         //유툽
       var tab1_url = "https://www.youtube.com/embed/2_x_ICBX4ao?rel=0";
       var tab2_url = "https://www.youtube.com/embed/DL0LRv6jync?rel=0";  
-      var tab3_url = "https://www.youtube.com/embed/kpiHmPg9-_U?rel=0";   
+      var tab3_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
       var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
       var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
       var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  

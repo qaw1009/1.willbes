@@ -1,26 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <style type="text/css">
-        .pro .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
-
-
-        .pro .ProfProBox {margin-left:-5px}
-        .pro .ProfProBox > li {
-            position: relative;
-            display: inline;
-            float: left;
-            width: 220px;
-            height: 327px;
-            margin-left: 5px;
-            margin-bottom:5px
-        }
-        .pro .mouBox span {display:inline-block; margin:0 10px 10px 0}
-
-        .pro .Sec01 {background:#0a0a0a; margin-top:20px}
-        .pro .Sec02 {position:relative; height:390px}
-        .pro .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
-    </style>
+    <link href="/public/css/willbes/style_cop_pro.css?ver={{time()}}" rel="stylesheet">
 
     <!-- Container -->
     <div id="Container" class="Container pro NGR c_both">

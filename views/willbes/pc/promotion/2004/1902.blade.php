@@ -90,8 +90,8 @@
                             <td>기미진</td>
                             <td>[라이브][국가직 대비] 기특한 국어 실전 동형모의고사</td>
                             <td>03-18 ~ 04-08</td>
-                            <td>tn,목</td>
-                            <td>96,000원</td>
+                            <td>수,목</td>
+                            <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178570" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -100,7 +100,7 @@
                             <td>[라이브][국가직 대비] 제니스영어 실전 동형모의고사</td>
                             <td>03-15 ~ 04-05</td>
                             <td>목</td>
-                            <td>72,000원</td>
+                            <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -109,7 +109,7 @@
                             <td>[라이브][국가직 대비] 한국사 실전 동형모의고사</td>
                             <td>03-15 ~ 04-06</td>
                             <td>월,화</td>
-                            <td>128,000원</td>
+                            <td>64,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178455" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -118,7 +118,7 @@
                             <td>[라이브][국가직 대비] 강한행정학 실전 동형모의고사</td>
                             <td>03-17 ~ 04-07</td>
                             <td>수</td>
-                            <td>72,000원</td>
+                            <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178436" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -127,7 +127,7 @@
                             <td>[라이브][국가직 대비] 행정법 실전 동형모의고사</td>
                             <td>03-16 ~ 04-08</td>
                             <td>화,목</td>
-                            <td>128,000원</td>
+                            <td>64,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
                         </tr>                        
                         <tr>
@@ -136,7 +136,7 @@
                             <td>[라이브]김세령 소방국어 실전 동형모의고사</td>
                             <td>03-08 ~ 03-22</td>
                             <td>월</td>
-                            <td>96,000원</td>
+                            <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178417" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -145,7 +145,7 @@
                             <td>[라이브]이아림 공채영어 실전 동형모의고사</td>
                             <td>03-12 ~ 03-26</td>
                             <td>금</td>
-                            <td>96,000원</td>
+                            <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178418" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -154,7 +154,7 @@
                             <td>[라이브]양익 경채영어 실전 동형모의고사</td>
                             <td>03-09 ~ 03-23</td>
                             <td>화</td>
-                            <td>54,000원</td>
+                            <td>27,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178419" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -163,7 +163,7 @@
                             <td>[라이브]한경준 소방한국사 실전 동형모의고사</td>
                             <td>03-09 ~ 03-24</td>
                             <td>화</td>
-                            <td>96,000원</td>
+                            <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178420" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -172,7 +172,7 @@
                             <td>[라이브]이종오 소방학개론 실전 동형모의고사</td>
                             <td>03-10 ~ 03-24</td>
                             <td>수</td>
-                            <td>96,000원</td>
+                            <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178422" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -181,7 +181,7 @@
                             <td>[라이브]이종오 소방관계법규 실전 동형모의고사</td>
                             <td>03-11 ~ 03-25</td>
                             <td>목</td>
-                            <td>54,000원</td>
+                            <td>27,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178423" target="_blank">수강신청</a></td>
                         </tr>
                     </tbody>

@@ -24,9 +24,6 @@ class AdminAuthHook
         '/predict/gradeprocessing/scoreMakeStep3Ajax'
     ];
 
-    // LMS 교수관리자 역할식별자
-    private $_lms_prof_role_idx = '1011';
-
     // 메뉴 권한 체크 제외 URI - /{directory?}/{controller?}/{method?}
     protected $perm_excepts = [
         '/home/',
@@ -92,8 +89,8 @@ class AdminAuthHook
             }
 
             if (SUB_DOMAIN == 'lms') {
-                if ($role['Role']['RoleIdx'] == $this->_lms_prof_role_idx) {
-                    show_alert('운영자 권한이 없습니다.', 'back');
+                if (in_array($role['Role']['RoleIdx'], config_item('prof_role_idx')) === true) {
+                    show_alert('운영자 권한이 없습니다.', site_url('/lcms/auth/login'));
                 }
 
                 if (empty($role['Site']) === true) {

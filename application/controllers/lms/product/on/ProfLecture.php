@@ -22,7 +22,7 @@ Class ProfLecture extends Lecture
         $arr_site_code = get_auth_on_off_site_codes('N', true);
         $def_site_code = key($arr_site_code);
 
-        $is_prof = $this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == $this->prof_role_idx ? 'Y' : '';
+        $is_prof = (in_array($this->session->userdata('admin_auth_data')['Role']['RoleIdx'], $this->prof_role_idx) === true) ? 'Y' : '';
 
         //공통코드
         $codes = $this->codeModel->getCcdInArray(['607','611','618','635']);

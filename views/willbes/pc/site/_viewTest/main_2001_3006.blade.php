@@ -27,6 +27,12 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        <div class="Section Sec01">
+            <div class="widthAuto">
+                <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x76.jpg" alt="대한민국 1등 경찰학원">
+            </div>
+        </div>
+
         <div class="Section Sec02">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_2000x390.jpg" alt="합격패스">

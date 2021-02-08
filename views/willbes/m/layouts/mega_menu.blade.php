@@ -750,6 +750,45 @@
                 </li>
             </ul>
         @endif
+    @elseif($__cfg['SiteCode'] == '2004')
+        {{-- 공무원학원 --}}
+        <ul>
+            <li>
+                <span>9급</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3043&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3043&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>7급</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3044&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3044&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>세무직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3046&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3046&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>법원직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3059&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3059&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>소방직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3050&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3050&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>기술직</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3052&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3052&campus_ccd=605001') }}">단과</a>
+            </li>
+            <li>
+                <span>군무원</span>
+                <a href="{{ front_url('/offPackage/index?cate_code=3048&campus_ccd=605001') }}">종합반</a>
+                <a href="{{ front_url('/offLecture/index?cate_code=3048&campus_ccd=605001') }}">단과</a>
+            </li>
+        </ul>
     @elseif($__cfg['SiteCode'] == '2005')
         {{-- 고등고시온라인 --}}
         @if($menu_cate_code == '3094')

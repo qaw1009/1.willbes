@@ -128,7 +128,7 @@
         <div class="evtCtnsBox evtLive">            
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_live.jpg" alt="라이브" usemap="#Map1780_live" border="0" />
             <map name="Map1780_live">
-                <area shape="rect" coords="216,1101,911,1216" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank" alt="라이브모드 구매하기">
+                <area shape="rect" coords="216,1101,911,1216" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" alt="라이브모드 구매하기">
             </map>               
         </div>
 
@@ -253,7 +253,7 @@
                     </a>
                 </div>  
                 <div id="lec2">
-                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                    <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank">
                         <img src="https://static.willbes.net/public/images/promotion/2021/02/1780_live_01.jpg" title="라이브전용"/>
                     </a>
                 </div>            

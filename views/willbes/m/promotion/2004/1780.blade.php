@@ -28,7 +28,7 @@
    
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/1780m_02.jpg" alt="라이브모드">
-        <a href="#evt04" title="소방직 라이브 모드"></a>
+        <a href="https://pass.willbes.net/m/promotion/index/cate/3043/code/1902" target="_blank" title="소방직 라이브 모드"></a>
     </div>
 
     <div class="evtCtnsBox evt03" >
@@ -38,7 +38,7 @@
     <div class="evtCtnsBox evt04" id="evt04">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/1780m_04.jpg" alt="소방직">
         <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3050&campus_ccd=605001" title="진도별 문풀 패스" class="a01"></a>
-        <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" title="라이브 진도별 문풀 패스" class="a02"></a>
+        <a href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" title="라이브 진도별 문풀 패스" class="a02"></a>
     </div>
 </div>
 <!-- End Container -->

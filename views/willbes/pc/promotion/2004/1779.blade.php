@@ -110,7 +110,7 @@
                 </a>
             </div>  
             <div id="live02">
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU665287J2067iM" target="_blank">
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/02/1779_live_02.jpg" alt="라이브 전용" />
                 </a>
             </div> 
@@ -118,7 +118,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1779_04_02.jpg" alt="수강신청" usemap="#Map1779_02" border="0" />   
                 <map name="Map1779_02" id="Map1779_02">
                     <area shape="rect" coords="279,86,515,148" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605001&subject_idx=1254&prof_idx=50500" target="_blank" alt="한덕현">
-                    <area shape="rect" coords="692,86,930,147" href="https://pass.willbes.net/pass/event/list/ongoing" target="_blank" alt="이석준">
+                    <area shape="rect" coords="692,86,930,147" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1086&" target="_blank" alt="이석준">
                 </map>
             </div>
         </div>

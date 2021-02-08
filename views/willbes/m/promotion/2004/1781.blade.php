@@ -25,7 +25,7 @@
    
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/1781m_02.jpg" alt="라이브모드">
-        <a href="#evt04" title="군무원 라이브 모드"></a>
+        <a href="https://pass.willbes.net/m/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 라이브 모드"></a>
     </div>
 
     <div class="evtCtnsBox evt03" >

@@ -45,6 +45,13 @@
             </div>
         </div>
 
+        <div class="Section mt50">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">객관식</span> <span class="tx16 NSK ml20">형사소송법, 형법, 실무종합, <span class="tx-color">헌법(NEW), 행정학(NEW)</span></span></div>
+                <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_1120x465.jpg" alt="전문화된 교수진">
+            </div>
+        </div>
+
         <div class="Section mt100">
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
@@ -87,7 +94,21 @@
             </div>
         </div>
 
-        <div class="Section Section7 mb100">
+        <div class="Section mt50">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">협력기관<span class="tx-color">(MOU)</span> <span class="tx16 ml10 NSK">문의: 070-4006-8926</span></div>
+                <div class="mouBox">
+                    <span><a href="https://www.police.go.kr/index.do" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_01.jpg" alt=""></a></span>
+                    <span><a href="https://www.police.ac.kr/police/index.do" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_02.jpg" alt=""></a></span>
+                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=kidonghq" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_03.jpg" alt=""></a></span>
+                    <span><a href="https://www.cnpolice.go.kr" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_04.jpg" alt=""></a></span>
+                    <span><a href="https://www.jjpolice.go.kr/jjpolice" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_05.jpg" alt=""></a></span>
+                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=dj" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_06.jpg" alt=""></a></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section Section7 mb100 mt50">
             <div class="widthAuto">
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>

@@ -168,6 +168,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> CN플러스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-cnplus-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 모아시스 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-target-excel' },
                     { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-comment-o mr-5"></i> 쪽지발송', className: 'btn-sm btn-primary border-radius-reset mr-15 btn-message' },
@@ -388,8 +389,8 @@
                 }
             });
 
-            // 모아시스 엑셀다운로드 버튼 클릭
-            $('.btn-target-excel').on('click', function(event) {
+            // 모아시스, CN플러스 엑셀다운로드 버튼 클릭
+            $('.btn-target-excel, .btn-cnplus-excel').on('click', function(event) {
                 event.preventDefault();
                 if ($search_form.find('input[name="search_site_code"]').val().length < 1) {
                     alert('운영사이트를 먼저 선택해 주십시오. (사이트탭 선택)');
@@ -399,8 +400,10 @@
                 var msg = '사이트와 결제일자 조건 (회원/상품검색 조건 무시)에만 해당하는\n'
                     + '송장번호 미등록 상태의 결제완료 주문건만 다운로드 됩니다.\n'
                     + '정말로 엑셀다운로드 하시겠습니까?';
+                var url = '{{ site_url('/pay/delivery/') }}' + ($(this).hasClass('btn-cnplus-excel') === true ? 'cnplus' : 'target') + 'Excel';
+
                 if (confirm(msg)) {
-                    formCreateSubmit('{{ site_url('/pay/delivery/targetExcel') }}', $search_form.serializeArray(), 'POST');
+                    formCreateSubmit(url, $search_form.serializeArray(), 'POST');
                 }
             });
 

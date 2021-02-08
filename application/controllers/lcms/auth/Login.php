@@ -46,7 +46,7 @@ class Login extends \app\controllers\BaseController
 
         $admin_id = $this->_reqP('admin_id');
         $wbs_prof_role_idx = '1013';    // WBS 교수관리자 역할식별자
-        $lms_prof_role_idx = '1011';    // LMS 교수관리자 역할식별자
+        $lms_prof_role_idx = $this->config->item('prof_role_idx');  // LMS 교수관리자 역할식별자
 
         // 관리자 아이디/비밀번호 확인
         $row = $this->loginModel->findAdminForLogin($admin_id, $this->_reqP('admin_passwd', false));
@@ -73,7 +73,7 @@ class Login extends \app\controllers\BaseController
             }
 
             // 교수관리자 권한으로 lms 접근 금지
-            if (SUB_DOMAIN == 'lms' && $lms_role_idx == $lms_prof_role_idx) {
+            if (SUB_DOMAIN == 'lms' && in_array($lms_role_idx, $lms_prof_role_idx) === true) {
                 $is_auth = false;
             }
         }

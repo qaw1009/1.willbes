@@ -20,7 +20,6 @@
         .pro .Sec01 {background:#0a0a0a; margin-top:20px}
         .pro .Sec02 {position:relative; height:390px}
         .pro .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
-        .pro .Section .ProfCopBox > li:nth-child(6) { margin-left: 0}
     </style>
 
     <!-- Container -->
@@ -65,10 +64,10 @@
             </div>
         </div>
 
-        <div class="Section Section3 mt90">
+        <div class="Section Section3 mt100">
             <div class="widthAuto">
-                <div class="will-nTit bd-none">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
-                <ul class="ProfCopBox mt20 mb100">
+                <div class="will-nTit NSK-Black">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
+                <ul class="ProfProBox">
                     @for($i=1; $i<=10; $i++)
                         <li>
                             {!! banner_html(element('메인_승진교수'.$i, $data['arr_main_banner'])) !!}
@@ -78,7 +77,7 @@
             </div>
         </div>
 
-        <div class="Section Section6 mb50">
+        <div class="Section Section6 mb50 mt100">
             <div class="widthAuto">
                 {{-- best/new product include --}}
                 @include('willbes.pc.site.main_partial.lecture_' . $__cfg['SiteCode'])

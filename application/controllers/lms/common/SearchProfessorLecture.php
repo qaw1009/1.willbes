@@ -35,7 +35,6 @@ class SearchProfessorLecture extends \app\controllers\BaseController
             $lecture_model = 'lectureFreeModel';
         }
 
-
         $arr_condition = [
             'EQ' => [
                 'A.ProdCode' => $prod_code
@@ -43,7 +42,6 @@ class SearchProfessorLecture extends \app\controllers\BaseController
         ];
 
         //교수 관리자의 경우 본인의 과정만 추출
-        //if($this->session->userdata('admin_auth_data')['Role']['RoleIdx'] == $this->config->item('prof_role_idx')) {
         if( in_array($this->session->userdata('admin_auth_data')['Role']['RoleIdx'], $this->config->item('prof_role_idx'))) {
             if(empty($this->session->userdata("admin_wprof_idx")) === false) {
                 $arr_condition = array_merge_recursive($arr_condition,[

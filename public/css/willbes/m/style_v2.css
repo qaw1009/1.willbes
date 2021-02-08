@@ -2517,6 +2517,7 @@ body.memBody #Footer {
 	color: #666;
 	margin-top: 10px;
 }
+
 .ssam .bestLecBox {
 	margin-top: 10px;
 	border-top: 1px solid #ccc;
@@ -2525,27 +2526,29 @@ body.memBody #Footer {
 	position: relative;
 	display: block;
 	float: left;
-	width: 33.33333%;
-	height: 150px;
-	overflow: hidden;
+	width: 33.33333%;     
+    min-height:100px;
+    max-height:160px;
+    height: 20vw;
 }
 .ssam .bestLecBox .bestLec a {
-	position: absolute;
+    position:absolute;
 	display: block;
 	width: 100%;
 	height: 100%;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	box-sizing: border-box;
-	z-index: 2;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index:2;
 }
 .ssam .bestLecBox .bestLec:first-child a {
 	border-left: 1px solid #ccc;
 }
 .ssam .bestLecBox .bestLec .profImg img {
 	position: absolute;
-	top: 20px;
-	right: -30px;
+	bottom: 0;
+	right: -15%;
 	width: 65%;
 	z-index: 1;
 	-webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
@@ -2557,40 +2560,42 @@ body.memBody #Footer {
 	transition: all ease-in-out 0.2s;
 }
 .ssam .bestLecBox .best {
-	width: 34px;
-	height: 34px;
-	line-height: 34px;
-	border-radius: 0 17px 17px 17px;
+    position:absolute;
+    top:0;
+    left:0;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	border-radius: 0;
+    border-radius:0 12px 12px 12px;
 	background: #0c5dc0;
 	text-align: center;
-	font-size: 18px;
-	color: #fff;
+	font-size: 1.8vh;
+    color: #fff;
+    z-index:3;
 }
 .ssam .bestLecBox .lecinfo {
-	position: absolute;
-	top: 35px;
-	left: 20px;
-	width: 90%;
-	z-index: 2;
-	font-size: 14px;
-	line-height: 1.5;
+    position:absolute;
+    bottom:8%;
+    left:4%;
+    width: 90%;
+    line-height: 1.3;
+    z-index:4
 }
 .ssam .bestLecBox .lecinfo li {
-	margin-bottom: 15px;
+    margin-bottom: 2%;
 }
 .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
-	font-weight: bold;
-	font-size: 20px;
+	font-weight: bold;    
+    font-size: 14px;
 }
 .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
-	display: block;
-	font-size: 14px;
+    font-size: 18px;
 }
 .ssam .bestLecBox .lecinfo li strong {
-	background: #a9d1d1;
-	color: #262a6a;
+	color: #0c5dc0;
 	font-weight: bold;
-	padding: 5px 10px;
+	font-size: 15px;
 }
 .ssam .bestLecBox .lecinfo li:last-child {
 	display: block;
@@ -7657,61 +7662,15 @@ span.calendar_btn {
 		margin: 0 10px;
 	}
 
-	.ssam .bestLecBox .bestLec {
-		height: 190px;
-	}
-	.ssam .bestLecBox .bestLec .profImg img {
-		top: 0;
-		left: 0;
-		right: 0;
-		width: 100%;
-	}
-	.ssam .bestLecBox .lecinfo {
-		position: relative;
-		top: 0;
-		left: 0;
-		margin: 0;
-		margin-top: 100px;
-		width: 100%;
-		padding: 10px;
-		background-color: #a9d1d1;
-	}
-	.ssam .bestLecBox .lecinfo li {
-		margin-bottom: 5px;
-	}
 	.ssam .bestLecBox .lecinfo li:nth-of-type(1) {
-		font-weight: bold;
-		font-size: 16px;
-	}
-	.ssam .bestLecBox .lecinfo li strong {
-		padding: 0;
-	}
-
-	.ssam .bestLecBoxV2 .lecinfo {
-		top: 12%;
-		left: 10px;
-		width: 90%;
-		z-index: 2;
-		font-size: 12px;
-		line-height: 1.4;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li {
-		margin-bottom: 5px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) {
-		font-size: 15px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) span {
-		font-size: 13px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li span.prof {
-		display: none;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li strong {
-		padding: 0;
-		background: none;
-		color: #fff;
-	}
+        font-size: 12px;
+    }
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+        font-size: 15px;
+    }
+    .ssam .bestLecBox .lecinfo li strong {
+        font-size: 13px;
+    }
 
 	.ssam .sampleLec {
 		margin: 0 10px;
@@ -7815,61 +7774,15 @@ span.calendar_btn {
 		display: none;
 	}
 
-	.ssam .bestLecBox .bestLec {
-		height: 190px;
-	}
-	.ssam .bestLecBox .bestLec .profImg img {
-		top: 0;
-		left: 0;
-		right: 0;
-		width: 100%;
-	}
-	.ssam .bestLecBox .lecinfo {
-		position: relative;
-		top: 0;
-		left: 0;
-		margin: 0;
-		margin-top: 100px;
-		width: 100%;
-		padding: 10px;
-		background-color: #a9d1d1;
-	}
-	.ssam .bestLecBox .lecinfo li {
-		margin-bottom: 5px;
-	}
 	.ssam .bestLecBox .lecinfo li:nth-of-type(1) {
-		font-weight: bold;
-		font-size: 16px;
-	}
-	.ssam .bestLecBox .lecinfo li strong {
-		padding: 0;
-	}
-
-	.ssam .bestLecBoxV2 .lecinfo {
-		top: 12%;
-		left: 10px;
-		width: 90%;
-		z-index: 2;
-		font-size: 12px;
-		line-height: 1.4;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li {
-		margin-bottom: 5px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) {
-		font-size: 15px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li:nth-of-type(1) span {
-		font-size: 13px;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li span.prof {
-		display: none;
-	}
-	.ssam .bestLecBoxV2 .lecinfo li strong {
-		padding: 0;
-		background: none;
-		color: #fff;
-	}
+        font-size: 13px;
+    }
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+        font-size: 16px;
+    }
+    .ssam .bestLecBox .lecinfo li strong {
+        font-size: 14px;
+    }
 	
 	.ssam .sampleLec {
 		margin: 0 10px;

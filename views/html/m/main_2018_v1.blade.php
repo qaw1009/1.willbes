@@ -38,10 +38,10 @@
 	position: relative;
 	display: block;
 	float: left;
-	width: 33.33333%;
-    height: 20vw;
+	width: 33.33333%;     
+    min-height:100px;
     max-height:160px;
-	/**/
+    height: 20vw;
 }
 .ssam .bestLecBox .bestLec a {
     position:absolute;
@@ -59,8 +59,8 @@
 }
 .ssam .bestLecBox .bestLec .profImg img {
 	position: absolute;
-	top: 0;
-	right: -30px;
+	bottom: 0;
+	right: -15%;
 	width: 65%;
 	z-index: 1;
 	-webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
@@ -73,43 +73,41 @@
 }
 .ssam .bestLecBox .best {
     position:absolute;
-    bottom:-15px;
-    right:2%;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	border-radius: 15px;
+    top:0;
+    left:0;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	border-radius: 0;
+    border-radius:0 12px 12px 12px;
 	background: #0c5dc0;
 	text-align: center;
-	font-size: 14px;
+	font-size: 1.8vh;
     color: #fff;
     z-index:3;
 }
 .ssam .bestLecBox .lecinfo {
     position:absolute;
-    top:10%;
-    left:5%;
+    bottom:8%;
+    left:4%;
     width: 90%;
     line-height: 1.3;
     z-index:4
 }
 .ssam .bestLecBox .lecinfo li {
-    margin-bottom: 5%;
-    font-size: 20px;
+    margin-bottom: 2%;
 }
 .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
-	font-weight: bold;
+	font-weight: bold;    
+    font-size: 14px;
 }
 .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
-    display: block;
-    font-size: 16px;
+    font-size: 18px;
 }
 .ssam .bestLecBox .lecinfo li strong {
-	color: #262a6a;
-	background: #a9d1d1;
+	color: #0c5dc0;
 	font-weight: bold;
-	font-size: 18px;
-	padding:1px;
+	font-size: 15px;
 }
 .ssam .bestLecBox .lecinfo li:last-child {
 	display: block;
@@ -124,42 +122,26 @@
 	clear: both;
 }
 @@media only screen and (max-width: 374px) {
-.ssam .bestLecBox .bestLec .profImg img {
-		right: -20px;
-	}
-	.ssam .bestLecBox .best {
-		bottom:-10px;
-		width: 20px;
-		height: 20px;
-		line-height: 20px;
-		border-radius: 10px;
-		font-size: 14px;
-	}
-	.ssam .bestLecBox .lecinfo li {
-		margin-bottom: 3%;
-		font-size: 14px;
-	}
-	.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
-		font-size: 12px;
-	}
-	.ssam .bestLecBox .lecinfo li strong {
-		font-size: 12px;
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+        font-size: 12px;
+    }
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+        font-size: 15px;
+    }
+    .ssam .bestLecBox .lecinfo li strong {
+        font-size: 13px;
     }
 }
 @@media only screen and (min-width: 375px) and (max-width: 640px) {
-    .ssam .bestLecBox .bestLec .profImg img {
-		right: -15px;
-	}
-	.ssam .bestLecBox .lecinfo li {
-		margin-bottom: 3%;
-		font-size: 15px;
-	}
-	.ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
-		font-size: 13px;
-	}
-	.ssam .bestLecBox .lecinfo li strong {
-		font-size: 13px;
-	}
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) {
+        font-size: 13px;
+    }
+    .ssam .bestLecBox .lecinfo li:nth-of-type(1) span {
+        font-size: 16px;
+    }
+    .ssam .bestLecBox .lecinfo li strong {
+        font-size: 14px;
+    }
 }
     </style>
 
@@ -413,11 +395,11 @@
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
     </div>
     <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-    <ul class="bestLecBox">
+    <ul class="bestLecBox NSK">
         <li class="bestLec">                    
             <a href="#none">
                 <ul class="lecinfo">
-                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li>유아<br><span class="NSK-Black"">민정선</span> 교수</li>
                     <li><strong>이론반</strong></li>
                 </ul> 
                 <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_01.png" title="교수명"></div>                                
@@ -428,8 +410,8 @@
         <li class="bestLec">                       
             <a href="#none">
                 <ul class="lecinfo">
-                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
-                    <li><strong>이론반</strong></li>
+                    <li>전기전자통신<br><span class="NSK-Black"">최우영</span> 교수</li>
+                    <li><strong>문제풀이반</strong></li>
                 </ul> 
                 <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_02.png" title="교수명"></div>                                   
             </a>
@@ -439,7 +421,7 @@
         <li class="bestLec">                    
             <a href="#none">
                 <ul class="lecinfo">
-                    <li class="NSK-Black"><span class="NSK">유아</span>민정선 교수</li>
+                    <li>수학교육론<br><span class="NSK-Black"">박태영</span> 교수</li>
                     <li><strong>이론반</strong></li>
                 </ul>  
                 <div class="profImg"><img src="https://static.willbes.net/public/images/promotion/main/2018/prof_280x290_03.png" title="교수명"></div>                                     

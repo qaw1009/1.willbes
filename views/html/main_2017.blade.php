@@ -947,12 +947,12 @@
     </div>
     
     {{-- 수강후기 팝업 willbes-Layer-ReplyBox --}}
-    <div id="Reply" class="willbes-Layer-ReplyBox">
+    <div id="Reply" class="willbes-Layer-ReplyBox willbes-Layer-ReplyBox-1120">
         <a class="closeBtn" href="#" onclick="closeWin('LayerReply'),closeWin('Reply'),closeWin('replyWrite'),openWin('replyListLayer')"><img src="{{ img_url('prof/close.png') }}"></a>
         <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
         <!-- List -->
-        <div id="replyListLayer" class="Layer-Cont">
+        <div id="replyListLayer" class="Layer-Cont tx14">
             <div class="curriWrap c_both">
                 <div class="CurriBox">
                     <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">
@@ -971,7 +971,7 @@
                             <tr>
                                 <th class="tx-gray">과목선택</th>
                                 <td colspan="8">
-                                    <ul class="curriSelect">
+                                    <ul class="curriSelect tx14">
                                         <li><a href="#none">사회복지학</a></li>
                                         <li><a href="#none">국어</a></li>
                                         <li><a href="#none">영어</a></li>
@@ -1056,7 +1056,7 @@
                                 <td class="w-date">2018-00-00</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     Woo ah(우와) Dae Bark(박) 입니다!!! 정채영 교수님 수업을 온/오프라인으로 몇번 들었던 장수생입니다.
                                     계속해서 무료 강좌 시리즈를 개설해 주셔서 감사합니다! 강의의 질이나 수준도 결코 유료특강에 떨어지지 않는 수준입니다.
@@ -1076,7 +1076,7 @@
                                 <td class="w-date">2018-00-00</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     베스트 댓글2
                                 </td>
@@ -1095,7 +1095,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
                                 </td>
@@ -1114,7 +1114,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다. 저랑 잘 맞는 강의입니다.
                                 </td>
@@ -1133,7 +1133,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div> 
                                     좋네요 좋네요 좋네요
                                 </td>
@@ -1152,7 +1152,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다. 좋은강의입니다.
                                 </td>
@@ -1171,7 +1171,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     쉽게 설명해주시네요. 쉽게 설명해주시네요. 쉽게 설명해주시네요.
                                 </td>
@@ -1190,7 +1190,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
                                 </td>
@@ -1209,7 +1209,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     좋네요 좋네요
                                 </td>
@@ -1228,7 +1228,7 @@
                                 <td class="w-date">2018-04-22</td>
                             </tr>
                             <tr class="replyTxt w-replyTxt tx-gray">
-                                <td colspan="7">
+                                <td colspan="7" class="tx14">
                                     <div class="tx-blue"><a href="#none">2018 정채영 국어 필살기 모의고사Ⅱ (3월)</a></div>
                                     좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요 좋네요
                                 </td>

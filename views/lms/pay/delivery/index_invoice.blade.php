@@ -106,18 +106,12 @@
             </div>
         </div>
     </form>
-    <div class="x_panel mt-10">
+    <div class="x_panel mt-15">
         <div class="x_content">
             <form class="form-horizontal" id="invoice_form" name="invoice_form" method="POST" onsubmit="return false;">
                 {!! csrf_field() !!}
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="fa-ul mb-0">
-                            <li><i class="fa-li fa fa-check-square-o"></i>결제상태가 ‘결제완료’인 교재 정보만 노출되며, 송장을 등록하는 메뉴 (송장 등록시 ‘발송준비(환불반영)’ 탭으로 자동 이관)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="form-group form-group-sm form-group-bordered mt-15">
+                <p><i class="fa fa-check-square-o"></i> 결제상태가 ‘결제완료’인 교재 정보만 노출되며, 송장을 등록하는 메뉴 (송장 등록시 ‘발송준비(환불반영)’ 탭으로 자동 이관)</p>
+                <div class="form-group form-group-sm form-group-bordered">
                     <label class="control-label col-md-1">송장정보</label>
                     <div class="col-md-11 form-inline">
                         <input type="file" id="attach_invoice_file" name="attach_invoice_file" class="form-control" title="송장엑셀파일" value="">
@@ -130,6 +124,7 @@
     </div>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <p class="bold mb-15"><i class="fa fa-check-square-o"></i> 주문번호 기준 총 건수 : <span id="t_order_cnt">0</span></p>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -226,6 +221,11 @@
                         return '<input type="text" name="invoice_no" class="form-control input-sm" value="' + data + '" data-order-idx="' + row.OrderIdx + '"' + attr_disabled + ' style="width: 120px;" />' + bt_html;
                     }}
                 ]
+            });
+
+            // 주문번호 기준 총 건수 표기
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                $('#t_order_cnt').html(addComma(json.order_cnt));
             });
 
             // 전체선택/해제

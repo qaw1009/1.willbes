@@ -108,19 +108,14 @@
             </div>
         </div>
     </form>
-    <div class="x_panel mt-10">
+    <div class="x_panel mt-15">
         <div class="x_content">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="fa-ul mb-0">
-                        <li><i class="fa-li fa fa-check-square-o"></i>실제 발송이 완료된 내역, 발송 수량 및 정보 확인, 발송내역 다운로드 가능</li>
-                    </ul>
-                </div>
-            </div>
+            <p class="mb-0"><i class="fa fa-check-square-o"></i> 실제 발송이 완료된 내역, 발송 수량 및 정보 확인, 발송내역 다운로드 가능</p>
         </div>
     </div>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <p class="bold mb-15"><i class="fa fa-check-square-o"></i> 주문번호 기준 총 건수 : <span id="t_order_cnt">0</span></p>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -217,6 +212,11 @@
                     {'data' : 'DeliverySendAdminName'},
                     {'data' : 'DeliverySendDatm'}
                 ]
+            });
+
+            // 주문번호 기준 총 건수 표기
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                $('#t_order_cnt').html(addComma(json.order_cnt));
             });
 
             // 전체선택/해제

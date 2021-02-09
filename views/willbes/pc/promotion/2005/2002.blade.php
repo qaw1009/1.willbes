@@ -16,77 +16,34 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/ 
+         /*타이머*/
+         .timeBox {background:#333}
+        .time {width:920px; margin:0 auto; text-align:center;}
+        .time {text-align:center; padding:20px 0}
+        .time ul {width:100%;}
+        .time ul:after {content:''; display:block; clear:both}
+        .time li {display:inline; float:left; line-height:61px; font-size:24px; margin-right:10px;}
+        .time li:first-child {margin-left:80px}
+        .time li img {width:44px}
+        .time .time_txt {color:#fff; letter-spacing:-1px}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }  
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_top_bg.jpg) no-repeat center top; height:1257px}	
-        .evt_top span {position:absolute; left:50%}
-        .evt_top span.img01 { top:80px; width:442px; margin-left:-241px; z-index:3; animation:iptimg1 0.5s ease-in;-webkit-animation:iptimg1 0.5s ease-in;}
-        .evt_top span.img02 { top:0; width:402px; margin-left:20px; z-index:1; opacity: 0; animation:iptimg2 1s ease-in;-webkit-animation:iptimg2 1s ease-in;} 
-        .evt_top span.img03 { top:300px; width:368px; margin-left:-423px; z-index:2; animation:iptimg3 0.5s ease-in;-webkit-animation:iptimg3 0.5s ease-in }
-        .evt_top span.img04 { top:300px; width:345px; margin-left:10px; z-index:4; animation:iptimg4 0.5s ease-in;-webkit-animation:iptimg4 0.5s ease-in }
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/02/2002_top_bg.jpg) no-repeat center top;}	
 
-        @@keyframes iptimg1{
-            from{top:0; opacity: 0;}
-            to{top:80px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg1{
-            from{top:0; opacity: 0;}
-            to{top:80px; opacity: 1;}
-        }        
-        @@keyframes iptimg2{
-            from{top:400px; opacity: 0;}
-            to{top:0; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg2{
-            from{top:400px; opacity: 0;}
-            to{top:0; opacity: 1;}
-        }
-        @@keyframes iptimg3{
-            from{margin-left:-600px; opacity: 0;}
-            to{margin-left:-423px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg3{
-            from{margin-left:-600px; opacity: 0;}
-            to{margin-left:-423px; opacity: 1;}
-        }        
-        @@keyframes iptimg4{
-            from{margin-left:300px; opacity: 0;}
-            to{margin-left:10px; opacity: 1;}
-        }
-        @@-webkit-keyframes iptimg4{
-            from{margin-left:300px; opacity: 0;}
-            to{margin-left:10px; opacity: 1;}
-        }
-        /*.evt_top div {height:100%; position:absolute; width:100%}*/
-        .evt_top div.star01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_star01.png) no-repeat center top;
-            animation:starA 3s ease-in infinite;-webkit-animation:starA 3s ease-in infinite}
-        @@keyframes starA{
-            0% {opacity: 0;}
-            50% {opacity: 1;}
-            100% {opacity: 0;}
-        }
-        @@-webkit-keyframes starA{
-            0% {opacity: 0;}
-            50% {opacity: 1;}
-            100% {opacity: 0;}
-        } 
+        .evt_01 {background:#a9cfc0}	
         
-        .evt_top div.star02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/2002_star02.png) no-repeat center top;
-            animation:starB 3s ease-in infinite;-webkit-animation:starB 3s ease-in infinite}
-        @@keyframes starB{
-            0% {opacity: 1;}
-            50% {opacity: 0;}
-            100% {opacity: 1;}
-        }
-        @@-webkit-keyframes starB{
-            0% {opacity: 1;}
-            50% {opacity: 0;}
-            100% {opacity: 1;}
-        } 
-
-        .evt_01 {background:#e7d900}	
-        
-        .evt_02 {background:#fff; padding:100px 0; width:1120px; margin:0 auto}
-        .evt_02 .title {font-size:30px; color:#19184f; margin-bottom:30px}
+        .evt_02 {padding:100px 0; width:1120px; margin:0 auto}
+        .evt_02 .title {font-size:30px; color:#1a3443; margin-bottom:50px}
 
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -100,24 +57,39 @@
         /************************************************************/      
     </style> 
 
-	<div class="evtContent NGR">
+	<div class="evtContent NG">
+        <div class="evtCtnsBox timeBox">
+            <div class="time NGEB" id="newTopDday">
+                <ul>
+                    <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
+                    <li class="time_txt"><span>남은 시간은</span></li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">일</li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
+                </ul>
+            </div>
+        </div>
+
 		<div class="evtCtnsBox evt_top">
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img01.png" alt="새해" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img03.png" alt="2020" /></span>
-            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img02.png" alt="20" /></span>            
-            <span class="img04"><img src="https://static.willbes.net/public/images/promotion/2020/12/2002_top_img04.png" alt="21" /></span>
-            <div class="star01"></div>
-            <div class="star02"></div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2002_top.jpg" alt="5급행정, 국립외교원, PSAT, 5급헌법용" />
 		</div>
 
         <div class="evtCtnsBox evt_01">
         {{--5급행정, 국립외교원, PSAT, 5급헌법--}}
         @if($__cfg['CateCode'] == '3094' || $__cfg['CateCode'] == '3095' || $__cfg['CateCode'] == '3096' || $__cfg['CateCode'] == '3097')
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2002_01_01.jpg" alt="5급행정, 국립외교원, PSAT, 5급헌법용" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2002_01_01.jpg" alt="5급행정, 국립외교원, PSAT, 5급헌법용" />
         @endif
         @if($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099')
         {{--법원행시, 변호사--}}
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/2002_01_02.jpg" alt="5급행정, 변호사, 법원행시용" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2002_01_02.jpg" alt="5급행정, 변호사, 법원행시용" />
         @endif
 		</div>
 
@@ -128,7 +100,7 @@
 
 		<div class="evtCtnsBox evt_02">
         @if($__cfg['CateCode'] == '3094')
-            <div class="title NSK-Black">[5급행정] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[5급행정] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
@@ -136,7 +108,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3095')
-            <div class="title NSK-Black">[국립외교원] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[국립외교원] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
@@ -144,7 +116,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3096')
-            <div class="title NSK-Black">[PSAT] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[PSAT] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
@@ -152,7 +124,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3097')
-            <div class="title NSK-Black">[5급헌법] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[5급헌법] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
@@ -160,7 +132,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3098')
-            <div class="title NSK-Black">[법원행시] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[법원행시] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>6))
@@ -168,7 +140,7 @@
             </div>
         @endif
         @if($__cfg['CateCode'] == '3099')
-            <div class="title NSK-Black">[변호사] 2021 Dreams come true! 동영상 특별이벤트</div>
+            <div class="title NSK-Black">[변호사] 2021 Dreams come true! 설맞이 특별이벤트</div>
             <div class="evt02_box">                
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>7))
@@ -182,17 +154,15 @@
                 <h4 class="NSK-Black">한림법학원 새해맞이 동영상 특별 이벤트안내</h4>
                 <div class="infoTit"><strong>이용안내</strong></div>
                 <ul>
-                    <li>본 상품은 2021년 1월 3일 (일)까지 진행되는 이벤트 상품입니다.</li>
-                    <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-light-blue">2021년 새해맞이 이벤트!</span>에서 신청시 적용)</li>
+                    <li>본 상품은 2021년 2월 14일 (일)까지 진행되는 이벤트 상품입니다.</li>
+                    <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-light-blue">2021년 설맞이 이벤트!</span>에서 신청시 적용)</li>
                     <li><span class="tx16">[5급행정, 국립외교원, PSAT, 5급헌법]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">10%할인</span><br>
-                        2강좌 동시 결제 :  약 <span class="tx-red">15%할인</span><br>
-                        3강좌 동시 결제 :  약 <span class="tx-red">20%할인</span></li>
+                        2강좌 동시 결제 :  약 <span class="tx-red">20%할인</span></li>
                     <li><span class="tx16">[법원행시, 변호사]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">15%할인</span><br>
-                        2강좌 동시 결제 :  약 <span class="tx-red">20%할인</span><br>
-                        3강좌 동시 결제 :  약 <span class="tx-red">30%할인</span></li>
-                    <li>2강좌 이상 결제시 적용되는 할인은 이벤트 페이지에서 신청해주셔야 적용됩니다.</li>
+                        2강좌 동시 결제 :  약 <span class="tx-red">30%할인</span></li>
+                    <li>2강좌 이상 결제시 적용되는 할인은 <span class="tx-red">이벤트 페이지에서 신청</span>해주셔야 적용됩니다.</li>
                 </ul>
                 <div class="infoTit"><strong>수강시작일관련</strong></div>
                 <ul>
@@ -226,4 +196,14 @@
 
 	</div>
     <!-- End Container -->
+
+    <script>  
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });   
+    </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

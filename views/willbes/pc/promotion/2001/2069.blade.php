@@ -297,7 +297,7 @@
                     @elseif($onoff_5 == 'off')
                         <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_end.png" alt="종료"></span>
                     @else @endif
-                    <a href="#tab05" class="{{ (($onoff_5 == 'off') ? 'active' : '') }}">
+                    <a href="#tab05" class="{{ (($onoff_5 == 'on') ? 'active' : '') }}">
                         <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_tab05_on.png" alt="최종합격" class="on">
                         <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_tab05.png" alt="최종합격" class="off">
                     </a>
@@ -370,7 +370,7 @@
                 @include('willbes.pc.promotion.2001.1747_cts05')
             </div>
         @endif
-        
+
     </div>
     <!-- End Container -->
 

@@ -2557,9 +2557,7 @@ body.memBody #Footer {
 	transition: all ease-in-out 0.2s;
 }
 .ssam .bestLecBox .best {
-	width: 34px;
-	height: 34px;
-	line-height: 34px;
+	width: 34px; height: 34px; line-height: 34px;
 	border-radius: 0 17px 17px 17px;
 	background: #0c5dc0;
 	text-align: center;

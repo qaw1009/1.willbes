@@ -1,6 +1,5 @@
 /* CSS : import */
 @import url("style_cop.css"); /*일반경찰*/
-@import url("style_cop_pro.css"); /*경찰승진*/
 @import url("style_cop_acad.css"); /*경찰학원*/
 @import url("style_gosi.css"); /*9급,7급*/
 @import url("style_gosi_acad.css"); /*공무원학원*/

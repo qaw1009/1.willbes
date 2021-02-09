@@ -79,13 +79,9 @@
 
         {{-- 고객센터 --}}
         @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])
-
     </div>
     <!-- End Container -->
 
-    <style>
-        /*.sampleLecSlide .swiper-slide { height:72px;}*/
-    </style>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>

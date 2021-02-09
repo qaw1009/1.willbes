@@ -420,6 +420,8 @@ class SupportQna extends BaseSupport
             ['field' => 'board_title', 'label' => '제목', 'rules' => 'trim|required|max_length[50]'],
             ['field' => 'board_content', 'label' => '내용', 'rules' => 'trim|required'],
             ['field' => 'is_public', 'label' => '공개여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer'],
+            ['field' => 's_subject_idx', 'label' => '과목식별자', 'rules' => 'trim|required|integer']
         ];
 
         switch ($this->_default_path) {
@@ -427,13 +429,6 @@ class SupportQna extends BaseSupport
                 if (empty($s_site_code) === true) {
                     $rules = array_merge($rules, [
                         ['field' => 's_site_code', 'label' => '과정', 'rules' => 'trim|required|integer'],
-                    ]);
-                }
-
-                //통합사이트 제외한 나머지 카테고리 항목 체크
-                if ($s_site_code != config_item('app_intg_site_code')) {
-                    $rules = array_merge($rules, [
-                        ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer']
                     ]);
                 }
 
@@ -447,9 +442,7 @@ class SupportQna extends BaseSupport
 
             case "/prof/qna" :   //교수게시판 학습Q&A
                 $rules = array_merge($rules, [
-                    ['field' => 's_cate_code', 'label' => '카테고리', 'rules' => 'trim|required|integer'],
                     ['field' => 's_prof_idx', 'label' => '교수식별자', 'rules' => 'trim|required|integer'],
-                    ['field' => 's_subject_idx', 'label' => '과목식별자', 'rules' => 'trim|required|integer']
                 ]);
                 break;
         }

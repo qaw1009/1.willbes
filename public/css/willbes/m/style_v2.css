@@ -3386,7 +3386,7 @@ body.memBody #Footer {
 .willbes-Lec-Selected .chkBox.line2 {
 	top: 65px;
 }
-.willbes-Lec-Selected .chkBox input[type="checkbox"] {
+.willbes-Lec-Selected .chkBox input[type="checkbox"], .willbes-Lec-Selected .chkBox input[type="radio"] {
 	width: 20px;
 	height: 20px;
 	margin: 10px 4px 10px 0;

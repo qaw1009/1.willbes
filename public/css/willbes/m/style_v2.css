@@ -4568,6 +4568,7 @@ body.memBody #Footer {
 	width: 100%;
 	height: 40px;
 	overflow: hidden;
+	z-index: 99;
 }
 .filetype .file-select .input-file {
 	width: 100%;

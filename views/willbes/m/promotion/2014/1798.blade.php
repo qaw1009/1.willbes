@@ -158,7 +158,8 @@
     <div id="tab03">
         <div class="evtCtnsBox evtCurri">
             <h5 class="NSK-Black">
-                <div>억대연봉 세일즈 마케팅</div>
+                <div>서민지 지텔프 32점</div>
+                <div>3시간 완성 커리큘럼</div>
             </h5>
             <div class="evtCurriTxt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
             <ul class="sample">

@@ -173,8 +173,8 @@
             <div class="evtCtnsBox evtCurriWrap" id="evtCurri">
                 <div class="copy">
                     <h5 class="NSK-Black">
-                        <div>가장 현실적인 월 100만원 만들고</div>
-                        <div>지금 바로 시작할 수 있는 커리큘럼</div>
+                        <div>서민지 지텔프 32점</div>
+                        <div>3시간 완성 커리큘럼</div>
                     </h5>
                     <div class="evtCurriTxt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
                 </div>

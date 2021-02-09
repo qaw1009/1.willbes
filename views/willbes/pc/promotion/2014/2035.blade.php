@@ -169,8 +169,8 @@
             <div class="copy">
                 <h5 class="NSK-Black">
                     <div>
-                        지금 바로 시작할 수 있는<br>
-                        실전 온라인 쇼핑몰 창업&마케팅
+                        실전 쇼핑몰 창업&마케팅 : <br>
+                        실전 마케팅을 통한 쇼핑몰 매출 상승 비법
                     </div>
                 </h5>
                 <div class="evtCurriBoxTxt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>

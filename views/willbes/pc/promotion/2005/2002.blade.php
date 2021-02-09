@@ -57,7 +57,7 @@
         /************************************************************/      
     </style> 
 
-	<div class="evtContent NSK">
+	<div class="evtContent NG">
         <div class="evtCtnsBox timeBox">
             <div class="time NGEB" id="newTopDday">
                 <ul>

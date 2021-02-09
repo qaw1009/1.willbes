@@ -235,7 +235,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     notifyAlert('success', '알림', ret.ret_msg);
-                    location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
+                    location.href = '{!! front_url($default_path.'/index') !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');
         });

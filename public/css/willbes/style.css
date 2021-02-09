@@ -7256,6 +7256,11 @@ ul li.profList .willbes-Layer-ProfileBox {
 	left: 50%;
 	margin-left: -445px;
 }
+.willbes-Layer-ReplyBox-1120 {
+	width: 1120px;
+	left: 50%;
+	margin-left: -560px !important;
+}
 .willbes-Layer-ReplyBox .closeBtn {
 	position: absolute;
 	top: -1px;

@@ -49,16 +49,21 @@ class Delivery extends BaseOrder
         $arr_condition = $this->_getListConditions();
 
         $list = [];
+        $order_cnt = 0;
         $count = $this->orderListModel->listAllOrder(true, $arr_condition, null, null, [], $this->_list_add_join);
 
         if ($count > 0) {
             $list = $this->orderListModel->listAllOrder(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy(), $this->_list_add_join);
+
+            // 주문식별자 기준 조회건수 조회
+            $order_cnt = array_get($this->orderListModel->listAllOrder('count(distinct O.OrderIdx) as tOrderCnt', $arr_condition, null, null, [], $this->_list_add_join, false), '0.tOrderCnt', 0);
         }
 
         return $this->response([
             'recordsTotal' => $count,
             'recordsFiltered' => $count,
-            'data' => $list
+            'data' => $list,
+            'order_cnt' => $order_cnt
         ]);
     }
 

@@ -114,20 +114,15 @@
             </div>
         </div>
     </form>
-    <div class="x_panel mt-10">
+    <div class="x_panel mt-15">
         <div class="x_content">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="fa-ul mb-0">
-                        <li><i class="fa-li fa fa-check-square-o"></i>송장 등록된 교재만 노출되며, ‘발송완료’ 처리 전 송장 수정 및 환불완료 교재 발송취소 처리 가능 (‘발송전취소’ 처리시 ‘발송취소’ 탭으로 자동 이관)</li>
-                        <li><i class="fa-li fa fa-check-square-o"></i>‘발송완료승인’ 클릭 시, ‘발송완료’ 탭으로 자동 이관</li>
-                    </ul>
-                </div>
-            </div>
+            <p><i class="fa fa-check-square-o"></i> 송장 등록된 교재만 노출되며, ‘발송완료’ 처리 전 송장 수정 및 환불완료 교재 발송취소 처리 가능 (‘발송전취소’ 처리시 ‘발송취소’ 탭으로 자동 이관)</p>
+            <p class="mb-0"><i class="fa fa-check-square-o"></i> ‘발송완료승인’ 클릭 시, ‘발송완료’ 탭으로 자동 이관</p>
         </div>
     </div>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <p class="bold mb-15"><i class="fa fa-check-square-o"></i> 주문번호 기준 총 건수 : <span id="t_order_cnt">0</span></p>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -229,6 +224,11 @@
                         return data + (row.InvoiceUpdDatm !== null ? '<br/>(' + row.InvoiceUpdDatm + ')' : '');
                     }}
                 ]
+            });
+
+            // 주문번호 기준 총 건수 표기
+            $datatable.on('xhr.dt', function(e, settings, json) {
+                $('#t_order_cnt').html(addComma(json.order_cnt));
             });
 
             // 전체선택/해제

@@ -46,13 +46,13 @@
                 @foreach($arr_base['subject'] as $arr)
                     @if(empty($arr) === false)
                         @foreach($arr as $row)
-                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'] || element('subject_idx',$arr_input) == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
+                            <option value="{{$row['SubjectIdx']}}" class="{{$row['CateCode']}}" @if($data['SubjectIdx'] == $row['SubjectIdx'])selected="selected"@endif>{{$row['SubjectName']}}</option>
                         @endforeach
                     @endif
                 @endforeach
             </select>
             <span class="chkBox line2">
-                <input type="checkbox" id="s_is_public" name="s_is_public" class="goods_chk" value="1" @if($method == 'POST' || $data['IsPublic']=='N')checked="checked"@endif> <span>비밀글 여부</span>
+                <input type="radio" id="s_is_public" name="s_is_public" class="goods_chk" value="1" @if($method == 'POST' || $data['IsPublic']=='N')checked="checked"@endif> <span>비밀글 여부</span>
             </span>
             <div class="willbes-Lec-Search NG width100p mt1p">
                 <input type="text" id="board_title" name="board_title" class="labelSearch width100p" placeholder="제목" maxlength="30" value="{{$data['Title']}}">
@@ -107,7 +107,7 @@
             ajaxSubmit($regi_form, _url, function(ret) {
                 if(ret.ret_cd) {
                     alert(ret.ret_msg);
-                    location.href = '{!! front_url($default_path.'/index?'.$get_params) !!}';
+                    location.href = '{!! front_url($default_path.'/index') !!}';
                 }
             }, showValidateError, addValidate, false, 'alert');
         });

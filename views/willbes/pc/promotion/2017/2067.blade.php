@@ -95,6 +95,7 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
         <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2034_top.jpg" alt="인강무료체험"/>
         </div>
@@ -326,11 +327,32 @@
                                                 <span class="chk buybtn p_re">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
+
+                                                    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:0; left:-70px; ">
+                                                        <div class="tx-center">
+                                                            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
+                                                                <span>장바구니</span>
+                                                            </button>
+                                                        </div>
+                                                        <div>
+                                                            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
+                                                                <span>바로결제</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="pocketBox" class="pocketBox" style="display:block">
+                                                            해당 상품이 장바구니에 담겼습니다.<br>
+                                                            장바구니로 이동하시겠습니까?
+                                                            <ul class="NSK mt20">
+                                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </span>
                                                 <span class="priceWrap">
                                                     <span class="price tx-blue">30,000원</span>
                                                     <span class="discount">(↓10%)</span>
-                                                </span>
+                                                </span>                                                
                                             </div>
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">주교재</span> 
@@ -342,7 +364,8 @@
                                                 <span class="priceWrap">
                                                     <span class="price tx-blue">20,000원</span>
                                                     <span class="discount">(↓10%)</span>
-                                                </span>
+                                                </span>                                                
+                                                
                                             </div>
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">부교재</span> 
@@ -540,7 +563,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                             
+                            </div>                                                        
                         </div>
                         <!-- willbes-Lec-Table -->           
 
@@ -642,7 +665,7 @@
                         </div>
                         <!-- willbes-Lec-Table -->                         
                     </div>
-                    <!-- willbes-Lec -->
+                    <!-- willbes-Lec -->                    
                 </div>    
                 
                 <div id="tab02" class="tabCts">
@@ -2152,9 +2175,10 @@
                     </div>
                     <!-- willbes-Lec -->
                 </div>
-
-            </div>
+            </div>            
         </div>
+
+        
 
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">

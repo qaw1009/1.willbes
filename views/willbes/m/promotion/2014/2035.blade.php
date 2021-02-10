@@ -75,35 +75,35 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035m_top.jpg" alt="창업&마케팅" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_top.jpg" alt="창업&마케팅" >
     </div> 
     
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_01.jpg" alt="1% 전문가만 살아남는 쇼핑몰" >  
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_01.jpg" alt="1% 전문가만 살아남는 쇼핑몰" >  
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_01.jpg" alt="마케팅 1% 전문가 권혁중" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_02_01.jpg" alt="마케팅 1% 전문가 권혁중" >
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/W2nDOfP913A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>   
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_02.jpg" alt="" >  
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_02_02.jpg" alt="" >  
     </div>    
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_03.jpg" alt="권혁중은 다르다 1" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_03.jpg" alt="권혁중은 다르다 1" >
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_04.jpg" alt="권혁중은 다르다 2" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_04.jpg" alt="권혁중은 다르다 2" >
     </div>
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_05.jpg" alt="권혁중은 다르다" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_05.jpg" alt="권혁중은 다르다" >
     </div>   
     
     <div class="evtCtnsBox evt06" id="evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2035m_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2035m_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
     </div> 
 
     <div class="evtCtnsBox evtCurri">

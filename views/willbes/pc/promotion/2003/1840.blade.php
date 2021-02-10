@@ -144,19 +144,19 @@
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail03.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail03.jpg" alt="화재 정의"></div>
                                         <div class="text_box">
-                                            <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
+                                            <p>[소방학개론 빈출테마 3탄] 화재정의 중요 키워드 빈칸 채우기 & O/X</p>
                                         </div>
                                     </a>
                                 </li>                               
-                                {{--
+                             
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail04.jpg" alt="명예 소방관 1탄"></div>
                                         <div class="text_box">
-                                            <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
+                                            <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
                                         </div>
                                     </a>
                                 </li> 
@@ -164,13 +164,13 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail05.jpg" alt="명예 소방관 2탄"></div>
                                         <div class="text_box">
-                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
+                                            <p>[소방관계법규 빈출테마 2탄] 화재경계지구 빈칸 채우기 특강!</p>                                   
                                         </div>
                                     </a>
                                 </li>
-
+                                {{--
                                 <li class="">
                                     <a href="#tab6">
                                         <span class="num_box" data-num="6">6</span>
@@ -384,9 +384,9 @@
         //유툽
       var tab1_url = "https://www.youtube.com/embed/2_x_ICBX4ao?rel=0";
       var tab2_url = "https://www.youtube.com/embed/DL0LRv6jync?rel=0";  
-      var tab3_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
-      var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
-      var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
+      var tab3_url = "https://www.youtube.com/embed/wb5Mc43sHSs?rel=0";   
+      var tab4_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
+      var tab5_url = "https://www.youtube.com/embed/nGvEN8pbthc?rel=0"; 
       var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
       var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
       var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   

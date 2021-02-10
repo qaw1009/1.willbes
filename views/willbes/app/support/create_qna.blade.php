@@ -61,11 +61,11 @@
 
         <div class="willbes-WriteBox NG tx-gray pb20">
             <textarea id="board_content" name="board_content" class="form-control" title="내용" placeholder="">{!! $data['Content'] !!}</textarea>
-            <div class="filetype p_re mt10">
-                <input type="text" class="file-text"/>
-                <span class="file-btn reset-Btn f_right width25p ml1p">Search</span>
-                <span class="file-select"><input type="file" name="attach_file[]" class="input-file" size="3"></span>
-            </div>
+{{--            <div class="filetype p_re mt10">--}}
+{{--                <input type="text" class="file-text"/>--}}
+{{--                <span class="file-btn reset-Btn f_right width25p ml1p">Search</span>--}}
+{{--                <span class="file-select"><input type="file" name="attach_file[]" class="input-file" size="3"></span>--}}
+{{--            </div>--}}
         </div>
 
         <div class="goTopbtn">

@@ -28,18 +28,18 @@
         }
         .skybanner a {display:block; margin-bottom:5px; text-align:center}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2035_top_bg.jpg) no-repeat center top;} 
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_top_bg.jpg) no-repeat center top;} 
         .evtTop > div {width:768px; margin:0 auto; position:relative;}
 
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2035_01_bg.jpg) no-repeat center top}         
+        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_01_bg.jpg) no-repeat center top}         
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2035_02_bg.jpg) no-repeat center top;}
+        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_02_bg.jpg) no-repeat center top;}
         .evt02 .youtube { width:100%; max-width:768px; margin:0 auto; } 
         .evt02 .youtube iframe {width:768px; height:432px}
 
-        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2035_03_bg.jpg)}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_03_bg.jpg)}
 
-        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2035_05_bg.jpg) no-repeat center top}       
+        .evt05 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_05_bg.jpg) no-repeat center top}       
 
         .evt06 {background:#eee7d5;}
         .evt06 > div {width:768px; margin:0 auto; position:relative;}
@@ -123,45 +123,45 @@
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
-            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky01.png" alt=""></a> 
-            <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2035_sky02.png" alt=""></a>                           
+            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2035_sky01.png" alt=""></a> 
+            <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/02/2035_sky02.png" alt=""></a>                           
         </div>
 
 		<div class="evtCtnsBox evtTop">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_top.jpg" alt="창업&마케팅" >   
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_top.jpg" alt="창업&마케팅" >   
                 <a href="#gostart" title="" style="position: absolute; left: 16.28%; top: 74.15%; width: 67.19%; height: 9.27%; z-index: 2;"></a>
             </div>        
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_01.jpg" alt="1% 전문가만 살아남는 쇼핑몰" >                       
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_01.jpg" alt="1% 전문가만 살아남는 쇼핑몰" >                       
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_01.jpg" alt="마케팅 1% 전문가 권혁중" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_02_01.jpg" alt="마케팅 1% 전문가 권혁중" >
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/W2nDOfP913A?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>   
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_02_02.jpg" alt="" >         
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_02_02.jpg" alt="" >         
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_03.jpg" alt="권혁중은 다르다 1" >                
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_03.jpg" alt="권혁중은 다르다 1" >                
         </div>   
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_04.jpg" alt="권혁중은 다르다 2" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_04.jpg" alt="권혁중은 다르다 2" >
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_05.jpg" alt="권혁중은 다르다" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_05.jpg" alt="권혁중은 다르다" >
         </div>
 
         <div class="evtCtnsBox evt06" id="evt06">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2035_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank" title="" style="position: absolute; left: 11.98%; top: 83.28%; width: 75.13%; height: 7.1%; z-index:2;" id="gostart"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank" title="" style="position: absolute; left: 12.37%; top: 86.74%; width: 74.87%; height: 6.07%; z-index:2;" id="gostart"></a>
             </div>
         </div>
 

@@ -33,7 +33,7 @@
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_01_bg.jpg) no-repeat center top}         
 
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2035_02_bg.jpg) no-repeat center top;}
+        .evt02 {background:#253d66}
         .evt02 .youtube { width:100%; max-width:768px; margin:0 auto; } 
         .evt02 .youtube iframe {width:768px; height:432px}
 

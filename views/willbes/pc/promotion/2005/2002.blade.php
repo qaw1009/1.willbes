@@ -158,7 +158,9 @@
                     <li>이벤트 내용 (각 홈페이지 이벤트 페이지 <span class="tx-light-blue">2021년 설맞이 이벤트!</span>에서 신청시 적용)</li>
                     <li><span class="tx16">[5급행정, 국립외교원, PSAT, 5급헌법]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">10%할인</span><br>
-                        2강좌 동시 결제 :  약 <span class="tx-red">20%할인</span></li>
+                        2강좌 동시 결제 :  약 <span class="tx-red">20%할인</span><br>
+                        3강좌 이상 동시 결제 : 약 <span class="tx-red">30%할인</span>
+                    </li>
                     <li><span class="tx16">[법원행시, 변호사]</span> <br>
                         1과목 결제시  : 등록된 강의 <span class="tx-red">15%할인</span><br>
                         2강좌 동시 결제 :  약 <span class="tx-red">30%할인</span></li>

@@ -3,11 +3,7 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -73,29 +69,29 @@
             <div class="tabs">
                 <ul>
                     <li><a href="#tab01">서울(노량진)</a></li>
-                    <li><a href="#tab02">인천</a></li>
-                    <li><a href="#tab03">전북</a></li>
-                    <li><a href="#tab04">광주</a></li>
-                    <li><a href="#tab05">대구</a></li>
-                    <li><a href="#tab06">부산</a></li>
+                    <li><a href="#tab02">인천</a></li>                
+                    <li><a href="#tab03">광주</a></li>
+                    <li><a href="#tab04">대구</a></li>
+                    <li><a href="#tab05">부산</a></li>
+                    <li><a href="#tab06">전북</a></li>
                 </ul>
                 <div id="tab01">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab01.jpg" alt="서울(노량진)" />
                 </div>
                 <div id="tab02">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab02.jpg" alt="인천" />
-                </div>     
+                </div>    
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab03.jpg" alt="전북" />
-                </div>         
-                <div id="tab04">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab04.jpg" alt="광주" />
                 </div>
-                <div id="tab05">
+                <div id="tab04">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab05.jpg" alt="대구" />
                 </div>
-                <div id="tab06">
+                <div id="tab05">
                     <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab06.jpg" alt="부산" />
+                </div>
+                <div id="tab06">
+                    <img src="https://static.willbes.net/public/images/promotion/2019/09/1414_01_tab03.jpg" alt="전북" />
                 </div>
             </div>	       
         </div>

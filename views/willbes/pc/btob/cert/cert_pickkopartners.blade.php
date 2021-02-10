@@ -213,7 +213,7 @@ select option:before {height:20px}
                         return false;
                     }
 
-                    return confirm('작심회원 인증을 ' + method_name + '하시겠습니까?');
+                    return confirm('픽코회원 인증을 ' + method_name + '하시겠습니까?');
                 }
             });
         });

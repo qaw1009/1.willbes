@@ -284,7 +284,7 @@
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178535" target="_blank" title="김원욱 형법 무료특강" class="link01"></a>
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178782" target="_blank" title="경찰학 숫자특강" class="link02"></a>
                 <a href="#none" title="신광은 김원욱" class="link03"></a>
-                <a href="#none" title="빅매치2 신청하기" class="link04"></a>
+                <a href="https://police.willbes.net/promotion/index/cate/3010/code/2065" target="_blank" title="빅매치2 신청하기" class="link04"></a>
             </div>
         </div>
 

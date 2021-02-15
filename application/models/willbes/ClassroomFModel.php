@@ -1460,6 +1460,22 @@ class ClassroomFModel extends WB_Model
                 throw new \Exception('이미 등록된 좌석입니다. 다른 좌석을 선택해 주세요.');
             }
 
+            $arr_condition = [
+                'EQ' => [
+                    'lrsr.MemIdx' => $this->session->userdata('mem_idx')
+                    ,'lrsr.OrderIdx' => element('order_idx', $form_data)
+                    ,'lrsr.OrderProdIdx' => element('order_prod_idx', $form_data)
+                    ,'lrsr.ProdCode' => element('prod_code', $form_data)
+                    ,'lrsr.ProdCodeSub' => element('prod_code_sub', $form_data)
+                    ,'lrsr.LrCode' => element('lr_code', $form_data)
+                    ,'lrsr.LrUnitCode' => element('lr_unit_code', $form_data)
+                ]
+            ];
+            $chk_register_data2 = $this->getLectureRoomSeatRegister('lrsr.LrsrIdx', $arr_condition);
+            if (empty($chk_register_data2) === false) {
+                throw new \Exception('이미 등록된 내역이 있습니다.');
+            }
+
             $lecture_room_unit_data = $this->_getLectureRoomUnit(element('lr_code', $form_data), element('lr_unit_code', $form_data));
             $chk_lecture_room_unit = $this->_getLectureRoomUnitForValidate($lecture_room_unit_data);
             if ($chk_lecture_room_unit !== true) {
@@ -1792,7 +1808,6 @@ class ClassroomFModel extends WB_Model
             }
 
             $_arr_prod_code_sub = explode(',',$arr_prod_code_sub);
-
             $input_data = [];
             $order_num = 1;
             foreach ($_arr_prod_code_sub as $key => $val) {

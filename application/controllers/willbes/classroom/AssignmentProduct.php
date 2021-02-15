@@ -15,14 +15,21 @@ class AssignmentProduct extends \app\controllers\FrontController
 
     public function index()
     {
-        $rules = [
-            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return $this->json_error("정보가 올바르지 않습니다.");
+        if ($this->_is_mobile === true) {
+            $prod_code = $this->_reqG('prod_code',true);
+            if (empty($prod_code) === true) {
+                show_alert('정보가 올바르지 않습니다.','back');
+            }
+            $form_data = $this->_reqG(null);
+        } else {
+            $rules = [
+                ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ];
+            if ($this->validate($rules) === false) {
+                return $this->json_error("정보가 올바르지 않습니다.");
+            }
+            $form_data = $this->_reqP(null);
         }
-        $form_data = $this->_reqP(null);
 
         $cond_arr = [
             'EQ' => [
@@ -78,9 +85,9 @@ class AssignmentProduct extends \app\controllers\FrontController
      */
     public function createModal()
     {
-        $prod_code = $this->_reqP('prod_code');
-        $correct_idx = $this->_reqP('correct_idx');
-        $cua_idx = $this->_reqP('cua_idx');
+        $prod_code = $this->_req('prod_code');
+        $correct_idx = $this->_req('correct_idx');
+        $cua_idx = $this->_req('cua_idx');
         $method = 'POST';
         $join_type = 'left';
 
@@ -145,9 +152,9 @@ class AssignmentProduct extends \app\controllers\FrontController
      */
     public function showModal()
     {
-        $prod_code = $this->_reqP('prod_code');
-        $correct_idx = $this->_reqP('correct_idx');
-        $edit_id = $this->_reqP('edit_id');
+        $prod_code = $this->_req('prod_code');
+        $correct_idx = $this->_req('correct_idx');
+        $edit_id = $this->_req('edit_id');
         $join_type = 'inner';
 
         $column = '

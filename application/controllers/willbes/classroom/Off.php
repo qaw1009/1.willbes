@@ -447,29 +447,53 @@ class Off extends \app\controllers\FrontController
      */
     public function AssignSeat()
     {
-        $rules = [
-            ['field' => 'orderidx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'orderprodidx', 'label' => '주문상품식별자', 'rules' => 'trim|required|integer'],
-            ['field' => 'pkg_yn', 'label' => '상품타입', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
-            ['field' => 'prod_code_sub', 'label' => '상품코드서브', 'rules' => 'trim|required|integer'],
-            ['field' => 'lr_code', 'label' => '강의실코드', 'rules' => 'trim|required|integer'],
-            ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
-        ];
+        if ($this->_is_mobile === true) {
+            $orderidx = $this->_reqG('orderidx',true);
+            $orderprodidx = $this->_reqG('orderprodidx');
+            $pkg_yn = $this->_reqG('pkg_yn');
+            $prod_code = $this->_reqG('prod_code');
+            $prod_code_sub = $this->_reqG('prod_code_sub');
+            $lr_code = $this->_reqG('lr_code');
+            $lr_unit_code = $this->_reqG('lr_unit_code');
 
-        if ($this->validate($rules) === false) {
-            return $this->json_error("정보가 올바르지 않습니다.");
+            if (empty($orderidx) === true || empty($orderprodidx) === true || empty($pkg_yn) === true
+                || empty($prod_code) === true || empty($prod_code_sub) === true || empty($lr_code) === true || empty($lr_unit_code) === true) {
+                show_alert('정보가 올바르지 않습니다.','back');
+            }
+            $form_data = $this->_reqG(null);
+        } else {
+            $rules = [
+                ['field' => 'orderidx', 'label' => '주문식별자', 'rules' => 'trim|required|integer'],
+                ['field' => 'orderprodidx', 'label' => '주문상품식별자', 'rules' => 'trim|required|integer'],
+                ['field' => 'pkg_yn', 'label' => '상품타입', 'rules' => 'trim|required|in_list[Y,N]'],
+                ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+                ['field' => 'prod_code_sub', 'label' => '상품코드서브', 'rules' => 'trim|required|integer'],
+                ['field' => 'lr_code', 'label' => '강의실코드', 'rules' => 'trim|required|integer'],
+                ['field' => 'lr_unit_code', 'label' => '강의실회차코드', 'rules' => 'trim|required|integer'],
+            ];
+
+            if ($this->validate($rules) === false) {
+                return $this->json_error("정보가 올바르지 않습니다.");
+            }
+            $form_data = $this->_reqP(null);
         }
 
-        $form_data = $this->_reqP(null);
         $lec_data = $this->classroomFModel->getLectureRoomForProduct($form_data);
         if (empty($lec_data) === true) {
-            return $this->json_error('조회된 강의실 정보가 없습니다.', _HTTP_NOT_FOUND);
+            if ($this->_is_mobile === true) {
+                show_alert('조회된 강의실 정보가 없습니다.','back');
+            } else {
+                return $this->json_error('조회된 강의실 정보가 없습니다.', _HTTP_NOT_FOUND);
+            }
         }
 
         $seat_data = $this->classroomFModel->getLectureRoomSeat($form_data);
         if (empty($seat_data) === true) {
-            return $this->json_error('조회된 강의실 좌석 정보가 없습니다.', _HTTP_NOT_FOUND);
+            if ($this->_is_mobile === true) {
+                show_alert('조회된 강의실 좌석 정보가 없습니다.','back');
+            } else {
+                return $this->json_error('조회된 강의실 좌석 정보가 없습니다.', _HTTP_NOT_FOUND);
+            }
         }
 
         return $this->load->view('/classroom/off/layer/assign_seat',[

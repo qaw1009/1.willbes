@@ -44,6 +44,8 @@
         .evt05 .btn {clear:both; width:500px; margin:0 auto;}
         .evt05 .btn a {display:block; text-align:center; font-size:25px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt05 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
+        
+        .evt06 {background:#fff;padding-bottom:100px;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
     </style>
@@ -59,6 +61,7 @@
           
             <div class="skyBanner">               
                 <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/12/1997_sky.jpg" alt="상담신청"></a>
+                <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/02/1997_sky1.jpg" alt="수강신청"></a>
             </div>
           
             <div class="evtCtnsBox evt00">
@@ -93,9 +96,9 @@
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt05">
+            <div class="evtCtnsBox evt05" id="request">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/1997_05.jpg" alt="경찰공무원 채용 인원 발표">        
-                <div class="request" id="request">
+                <div class="request">
                     <div class="requestL">
                         <h3 class="NSK-Black">* 외사경채 상담신청</h3>
                         <table width="0" cellspacing="0" cellpadding="0" class="table_type">
@@ -162,6 +165,12 @@
                 <div class="btn NGEB">
                     <a href="#none" onclick="javascript:fn_submit();">외사경채 상담 신청하기 ></a>
                 </div>        
+            </div>
+
+            <div class="evtCtnsBox evt06" id="apply">
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3142/prod-code/179172" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/02/1997_06.jpg" alt="수강신청 바로가기">   
+                </a>                  
             </div>
 
         </form>

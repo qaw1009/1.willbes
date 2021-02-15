@@ -61,7 +61,7 @@
         .onLecFreeBox .evtMenu .choiceLec span:nth-child(1) {display:inline-block; width:80px; color:#1a8ccc}
         .onLecFreeBox .evtMenu .choiceLec span:nth-child(2) {display:inline-block; width:80px;}
 
-        .onLecFreeBox .tabCts {padding-top:180px}
+        .onLecFreeBox .tabCts {padding-top:180px; position:relative}
         .onLecFreeBox #tab01 {padding-top:20px;}
 
         .evt_table{margin-bottom:30px;}
@@ -324,30 +324,9 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-
-                                                    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:0; left:-70px; ">
-                                                        <div class="tx-center">
-                                                            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
-                                                                <span>장바구니</span>
-                                                            </button>
-                                                        </div>
-                                                        <div>
-                                                            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-                                                                <span>바로결제</span>
-                                                            </button>
-                                                        </div>
-                                                        <div id="pocketBox" class="pocketBox" style="display:block">
-                                                            해당 상품이 장바구니에 담겼습니다.<br>
-                                                            장바구니로 이동하시겠습니까?
-                                                            <ul class="NSK mt20">
-                                                                <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                                                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
                                                 </span>
                                                 <span class="priceWrap">
                                                     <span class="price tx-blue">30,000원</span>
@@ -364,8 +343,7 @@
                                                 <span class="priceWrap">
                                                     <span class="price tx-blue">20,000원</span>
                                                     <span class="discount">(↓10%)</span>
-                                                </span>                                                
-                                                
+                                                </span>                                             
                                             </div>
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">부교재</span> 
@@ -381,12 +359,14 @@
                                             <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                            </div>
+                                            </div>                                            
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <!-- lecInfoTable -->
+
+
 
                             {{--상세정보팝업--}}
                             <div id="InfoForm" class="willbes-Layer-Box">
@@ -565,7 +545,8 @@
                                 </div>
                             </div>                                                        
                         </div>
-                        <!-- willbes-Lec-Table -->           
+                        <!-- willbes-Lec-Table -->                         
+
 
                         <div class="willbes-Lec-Table">        
                             <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -621,7 +602,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -665,7 +646,7 @@
                         </div>
                         <!-- willbes-Lec-Table -->                         
                     </div>
-                    <!-- willbes-Lec -->                    
+                    <!-- willbes-Lec -->     
                 </div>    
                 
                 <div id="tab02" class="tabCts">
@@ -748,7 +729,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -862,7 +843,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -990,7 +971,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1104,7 +1085,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1232,7 +1213,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1360,7 +1341,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1488,7 +1469,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1616,7 +1597,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1744,7 +1725,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -1872,7 +1853,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -2000,7 +1981,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -2128,7 +2109,7 @@
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                                <span class="chk buybtn p_re">
+                                                <span class="chk buybtn">
                                                     <label>[판매중]</label>
                                                     <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
                                                 </span>
@@ -2199,6 +2180,28 @@
             </div>
         </div>
     </div>
+    {{--장바구니 버튼--}}
+    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:350px; left:50%; margin-left:80px;">
+        <div class="tx-center">
+            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
+                <span>장바구니</span>
+            </button>
+        </div>
+        <div>
+            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
+                <span>바로결제</span>
+            </button>
+        </div>
+        <div id="pocketBox" class="pocketBox" style="display:block">
+            해당 상품이 장바구니에 담겼습니다.<br>
+            장바구니로 이동하시겠습니까?
+            <ul class="NSK mt20">
+                <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- End Container -->
 
     <script type="text/javascript">

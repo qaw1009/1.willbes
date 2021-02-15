@@ -15,14 +15,18 @@
 
 		/************************************************************/
 		
-		.skybanner {position:fixed;top:160px;right:50px;width:122px;z-index:10;}
-        .wb_top {background:#E8E8E8 url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
+		.skybanner {position:fixed;top:120px;right:10px;width:139px;z-index:10; text-align:center}
 
-		.wb_00 {background:#fff url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
-		.wb_01{background:#fff;}      
+		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top;}
 
-		.wb_01s {background:#fff url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
+		.wb_01{background:#fff;}    
+		
+		.wb_01_01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1068_01_01_bg.jpg) no-repeat center top;}
+		.wb_01_01 div {width:1120px; margin:0 auto; position:relative;}
+
+		.wb_01s {background:url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
 
 		.wb_02{background:#f4f4f4;}  
 		
@@ -53,9 +57,7 @@
 		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#2f6c64; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
-        .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}		
-
-		
+        .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}			
 
         .slide_con {position:absolute;left:50%;bottom:175px;width:920px;margin-left:-460px;}
         .slide_con p {position:absolute; top:45%; width:56px; height:56px; z-index:100}
@@ -81,11 +83,11 @@
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
 				<map name="EV181030_c8" id="EV181030_c8">
-				<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
-				<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
-				<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
-				<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
-				<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
+					<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
+					<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
+					<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
+					<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
+					<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>	
 			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank"> 
@@ -114,6 +116,13 @@
 
 		<div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
+        </div>
+
+		<div class="evtCtnsBox wb_01_01">	
+			<div>	
+				<img src="https://static.willbes.net/public/images/promotion/2021/02/1068_01_01.jpg" alt="농업직 패키지">
+				<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" title="바로가기" target="_blank" style="position: absolute; left: 31.52%; top: 78.98%; width: 36.88%; height: 7.6%; z-index: 2;"></a>
+			</div>
         </div>		
 
 		<div class="evtCtnsBox wb_01s">

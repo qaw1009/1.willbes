@@ -32,18 +32,18 @@
                                 @endif
 
                                 @if($row['PackTypeCcd'] == '648003')
-                                    {{-- todo : local, DEV 환경에서만 노출 --}}
-                                    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
                                         <div class="mt10">
                                             <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')" class="btnSt01 mr10">강사선택</a>
-                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
-                                                <a href="javascript:;" class="btnSt02 mr10 onoffSeatBox" data-seat-box-id="{{$key}}">좌석선택</a>
-                                            @endif
-                                            @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
-                                                <a href="javascript:;" class="btnSt03 onoffCorrectAssignmentBox" data-correct-assignment-box-id="{{$key}}">온라인첨삭</a>
+                                            {{-- todo : local, DEV 환경에서만 노출 --}}
+                                            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                                @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                    <a href="javascript:;" class="btnSt02 mr10 onoffSeatBox" data-seat-box-id="{{$key}}">좌석선택</a>
+                                                @endif
+                                                @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
+                                                    <a href="javascript:;" class="btnSt03 onoffCorrectAssignmentBox" data-correct-assignment-box-id="{{$key}}">온라인첨삭</a>
+                                                @endif
                                             @endif
                                         </div>
-                                    @endif
                                 @else
                                     {{-- todo : local, DEV 환경에서만 노출 --}}
                                     @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')

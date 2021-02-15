@@ -50,8 +50,7 @@
         .onLecFreeBox .tabs li a {display:block; border:1px solid #49569e; background:#49569e; color:#fff; font-size:14px; height:40px; line-height:40px; text-align:center; margin-right:1px}
         .onLecFreeBox .tabs li a:hover,
         .onLecFreeBox .tabs li a.active {border-bottom:1px solid #fff; color:#49569e; background:#fff}
-        .onLecFreeBox .tabs:after {content:''; display:block; clear:both}
-        
+        .onLecFreeBox .tabs:after {content:''; display:block; clear:both}        
 
         .onLecFreeBox .evtMenu .infotxt {font-size:14px; margin:30px 0 10px; height:30px; line-height:30px;}
         .onLecFreeBox .evtMenu .infotxt a {float:right; display:inline-block; background:#1a8ccc; color:#fff;  padding:0 30px}
@@ -320,7 +319,7 @@
                                 <tbody>
                                     <tr>
                                         <td>&nbsp;</td>
-                                        <td>
+                                        <td class="p_re">
                                             <div class="w-sub">
                                                 <span class="w-obj tx-blue tx11">수강생 교재</span> 
                                                 <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
@@ -356,16 +355,27 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                            </div>                                            
+                                            </div>  
+                                            <div class="w-bookbtn">
+                                                <div>
+                                                    <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
+                                                        <span>장바구니</span>
+                                                    </button>
+                                                </div>
+                                                <div>
+                                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
+                                                        <span>바로결제</span>
+                                                    </button>
+                                                </div>
+                                            </div>                                          
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <!-- lecInfoTable -->
-
 
 
                             {{--상세정보팝업--}}
@@ -634,10 +644,12 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
+
+                                            
                                         </td>
                                     </tr>
                                 </tbody>
@@ -761,7 +773,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -875,7 +887,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1003,7 +1015,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1117,7 +1129,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1245,7 +1257,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1373,7 +1385,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1501,7 +1513,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1629,7 +1641,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1757,7 +1769,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -1885,7 +1897,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -2013,7 +2025,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -2141,7 +2153,7 @@
                                                     <span class="price tx-blue">0원</span>
                                                 </span>
                                             </div>
-                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
                                             <div class="w-sub">
                                                 <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                                             </div>
@@ -2155,29 +2167,7 @@
                        
                     </div>
                     <!-- willbes-Lec -->
-                </div>
-
-                {{--장바구니 버튼--}}
-                <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:1670px; left:50%; margin-left:80px;">
-                    <div class="tx-center">
-                        <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
-                            <span>장바구니</span>
-                        </button>
-                    </div>
-                    <div>
-                        <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-                            <span>바로결제</span>
-                        </button>
-                    </div>
-                    <div id="pocketBox" class="pocketBox" style="display:block">
-                        해당 상품이 장바구니에 담겼습니다.<br>
-                        장바구니로 이동하시겠습니까?
-                        <ul class="NSK mt20">
-                            <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                        </ul>
-                    </div>
-                </div>
+                </div>                
             </div>            
         </div>
 

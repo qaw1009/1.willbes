@@ -187,7 +187,7 @@
                     <li><span class="NSK">WILLBES</span>학습자료실</li>
                     <li><a href="{{ front_url('/support/examQuestion/index') }}">#기출문제 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon01.png" title="기출문제"></a></li>
                     <li><a href="{{ front_url('/support/program/index') }}">#학습프로그램 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon02.png" title="학습프로그램"></a></li>
-                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/early_childhood_secondary_guidebook.pdf" target="_blank">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon03.png" title="임용가이드북"></a></li>
+                    <li><a href="https://static.willbes.net/public/images/promotion/main/2018/2021년 윌비스임용가이드북.pdf" target="_blank">#임용가이드북 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon03.png" title="임용가이드북"></a></li>
                     <li><a href="{{ front_url('/support/mobile/index') }}">#모바일수강안내 <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_main_icon04.png" title="모바일수강가이드"></a></li>
                 </ul>
             </div>

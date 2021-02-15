@@ -7,6 +7,7 @@ class Register extends BaseMocktest
 {
     protected $temp_models = array('mocktestNew/regGoods', 'mocktestNew/regGrade');
     protected $helpers = array();
+    protected $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -221,7 +222,10 @@ class Register extends BaseMocktest
      */
     public function excel()
     {
-        $headers = ['모의고사명 [코드]', '회원아이디', '회원명', '응시번호', '과목명', '과목코드', '문항번호', '답변', '정답여부'];
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
+
+        $headers = ['모의고사명', '모의고사코드', '회원아이디', '회원명', '응시번호', '과목명', '과목코드', '문항번호', '답변', '정답여부'];
         $arr_condition = [
             'EQ' => [
                 'MR.IsStatus' => 'Y',
@@ -237,9 +241,12 @@ class Register extends BaseMocktest
         if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
             show_alert('로그 저장 중 오류가 발생하였습니다.','back');
         }
+
         // export excel
         $this->load->library('excel');
-        $this->excel->exportExcel($file_name, $list, $headers);
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
+        }
     }
 
     /**

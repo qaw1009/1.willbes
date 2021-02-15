@@ -2180,8 +2180,9 @@
             </div>
         </div>
     </div>
+
     {{--장바구니 버튼--}}
-    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:350px; left:50%; margin-left:80px;">
+    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:7320px; left:50%; margin-left:80px;">
         <div class="tx-center">
             <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
                 <span>장바구니</span>

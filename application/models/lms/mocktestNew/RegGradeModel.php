@@ -563,7 +563,7 @@ class RegGradeModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             if ($is_count == 'excel') {
-                $column = "CONCAT(PD.ProdName,' [',PM.ProdCode,']'), MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, MP.MpIdx, QuestionNO, Answer, IsWrong";
+                $column = "PD.ProdName, PM.ProdCode, MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, MP.MpIdx, QuestionNO, Answer, IsWrong";
                 $order_by_offset_limit = '';
             } else {
                 $column = 'MB.MemId, MB.MemName, TakeNumber, PS.SubjectName, QuestionNO, Answer, IsWrong, MP.MpIdx, MP.MockType, MA.MqIdx';

@@ -64,7 +64,7 @@
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1086&" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky03.png" alt="이석준 T" />
             </a>
-            <a href="javascript:alert('준비중입니다.');">
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3048/prod-code/179128" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1781_sky04.png" alt="면접집중" />
             </a>
         </div>       

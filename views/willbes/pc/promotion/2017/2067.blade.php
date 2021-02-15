@@ -366,28 +366,7 @@
                             </table>
                             <!-- lecInfoTable -->
 
-                            {{--장바구니 버튼--}}
-                            <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:350px; left:50%; margin-left:80px;">
-                                <div class="tx-center">
-                                    <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
-                                        <span>장바구니</span>
-                                    </button>
-                                </div>
-                                <div>
-                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-                                        <span>바로결제</span>
-                                    </button>
-                                </div>
-                                <div id="pocketBox" class="pocketBox" style="display:block">
-                                    해당 상품이 장바구니에 담겼습니다.<br>
-                                    장바구니로 이동하시겠습니까?
-                                    <ul class="NSK mt20">
-                                        <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                        <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                                    </ul>
-                                </div>
-                            </div>
- 
+
 
                             {{--상세정보팝업--}}
                             <div id="InfoForm" class="willbes-Layer-Box">
@@ -2201,6 +2180,28 @@
             </div>
         </div>
     </div>
+    {{--장바구니 버튼--}}
+    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:350px; left:50%; margin-left:80px;">
+        <div class="tx-center">
+            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
+                <span>장바구니</span>
+            </button>
+        </div>
+        <div>
+            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
+                <span>바로결제</span>
+            </button>
+        </div>
+        <div id="pocketBox" class="pocketBox" style="display:block">
+            해당 상품이 장바구니에 담겼습니다.<br>
+            장바구니로 이동하시겠습니까?
+            <ul class="NSK mt20">
+                <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- End Container -->
 
     <script type="text/javascript">

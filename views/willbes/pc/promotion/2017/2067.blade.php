@@ -2156,6 +2156,28 @@
                     </div>
                     <!-- willbes-Lec -->
                 </div>
+
+                {{--장바구니 버튼--}}
+                <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:1670px; left:50%; margin-left:80px;">
+                    <div class="tx-center">
+                        <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
+                            <span>장바구니</span>
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
+                            <span>바로결제</span>
+                        </button>
+                    </div>
+                    <div id="pocketBox" class="pocketBox" style="display:block">
+                        해당 상품이 장바구니에 담겼습니다.<br>
+                        장바구니로 이동하시겠습니까?
+                        <ul class="NSK mt20">
+                            <li class="aBox answerBox_block"><a href="#none">예</a></li>
+                            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>            
         </div>
 
@@ -2178,28 +2200,6 @@
                     <li>무료체험강의는 양도 및 매매가 불가능하며, 위반시 처벌받을 수 있습니다. </li>
                 </ul>
             </div>
-        </div>
-    </div>
-
-    {{--장바구니 버튼--}}
-    <div id="buy_layer" class="willbes-Lec-buyBtn-sm NG active" style="position:absolute; top:7320px; left:50%; margin-left:80px;">
-        <div class="tx-center">
-            <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">
-                <span>장바구니</span>
-            </button>
-        </div>
-        <div>
-            <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="bg-dark-blue">
-                <span>바로결제</span>
-            </button>
-        </div>
-        <div id="pocketBox" class="pocketBox" style="display:block">
-            해당 상품이 장바구니에 담겼습니다.<br>
-            장바구니로 이동하시겠습니까?
-            <ul class="NSK mt20">
-                <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-            </ul>
         </div>
     </div>
 

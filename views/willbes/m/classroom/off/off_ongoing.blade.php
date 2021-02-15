@@ -18,12 +18,10 @@
             <div id="leclist1" class="tabContent">
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
                     <tbody>
-                    @forelse( $pkglist as $row )
+                    @forelse( $pkglist as $key => $row )
                         <tr>
                             <td class="w-data tx-left">
-                                <div class="w-tit">
-                                    <a href="#none">{{$row['ProdName']}}</a>
-                                </div>
+                                <div class="w-tit">{{$row['ProdName']}}</div>
                                 @if(in_array($row['SiteCode'], ['2010','2011','2013']))
                                     <ul class="w-info acad tx-gray">
                                         <li>(수강증번호 : {{$row['CertNo']}})</li>
@@ -34,40 +32,30 @@
                                 @endif
 
                                 @if($row['PackTypeCcd'] == '648003')
-                                    <div class="mt10">
-                                        <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')" class="btnSt01 mr10">강사선택</a>
-                                        {{--
-                                        <a href="#none" class="btnSt02 mr10">좌석선택</a>
-                                        <a href="#none" class="btnSt03">온라인첨삭</a>
-                                        --}}
-                                    </div>
-                                @endif
-                                {{-- 좌석선택/온라인첨
-                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
-                                    <div>1기스터디  <span class="row-line">|</span>  감정평가실무  <span class="row-line">|</span>  여지훈 교수님</div>
-                                    <div class="w-tit mb10">1기스터디 감정평가실무 여지훈</div>
-                                    <ul>
-                                        <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
-                                        <li>[좌석번호] <span class="tx-light-blue">41</span><li>
-                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>
-                                    </ul>
-                                    <div class="mt10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
-                                    <div class="mt10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>
-                                </div>
-                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
-                                    <div>1기스터디  <span class="row-line">|</span>  감정평가 및 보상법규  <span class="row-line">|</span>  이현진 교수님</div>
-                                    <div class="w-tit">1기스터디 감정평가 및 보상법규 이현진</div>
-                                    <ul class="mb10">
-                                        <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
-                                        <li>[좌석번호] <span class="tx-light-blue">41</span><li>
-                                        <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>
-                                    </ul>
-                                    <div class="mb10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>
-                                    <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>
-                                </div>
-                                 좌석선택 / 온라인 첨삭 --}}
-
-                                @if($row['PackTypeCcd'] != '648003')
+                                    {{-- todo : local, DEV 환경에서만 노출 --}}
+                                    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                        <div class="mt10">
+                                            <a href="javascript:;" onclick="AssignProf('{{$row['OrderIdx']}}','{{$row['OrderProdIdx']}}')" class="btnSt01 mr10">강사선택</a>
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                <a href="javascript:;" class="btnSt02 mr10 onoffSeatBox" data-seat-box-id="{{$key}}">좌석선택</a>
+                                            @endif
+                                            @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
+                                                <a href="javascript:;" class="btnSt03 onoffCorrectAssignmentBox" data-correct-assignment-box-id="{{$key}}">온라인첨삭</a>
+                                            @endif
+                                        </div>
+                                    @endif
+                                @else
+                                    {{-- todo : local, DEV 환경에서만 노출 --}}
+                                    @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                        <div class="mt10">
+                                            @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
+                                                <a href="javascript:;" class="btnSt02 mr10 onoffSeatBox" data-seat-box-id="{{$key}}">좌석선택</a>
+                                            @endif
+                                            @if (empty($isPkgCorrectAssignment[$key]) === false && $isPkgCorrectAssignment[$key]['isCorrectAssignment'] === true)
+                                                <a href="javascript:;" class="btnSt03 onoffCorrectAssignmentBox" data-correct-assignment-box-id="{{$key}}">온라인첨삭</a>
+                                            @endif
+                                        </div>
+                                    @endif
                                     <div class="w-lecList mt10">
                                         <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
                                         <ul>
@@ -81,6 +69,66 @@
                                         </ul>
                                     </div>
                                 @endif
+
+                                {{-- 좌석box --}}
+                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray seat-box" id="seat_box_{{$key}}" style="display: none;">
+                                    @if (empty($row['subleclist']) === false)
+                                        @foreach($row['subleclist'] as $sub_key => $sub_row)
+                                            @if (empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]) === false)
+                                                <input type="hidden" id="order_idx_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderIdx'] }}">
+                                                <input type="hidden" id="order_prod_idx_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['OrderProdIdx'] }}">
+                                                <input type="hidden" id="lr_code_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrCode'] }}">
+                                                <input type="hidden" id="lr_unit_code_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrUnitCode'] }}">
+                                                <input type="hidden" id="prod_code_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeMaster'] }}">
+                                                <input type="hidden" id="prod_code_sub_Y_{{ $key }}_{{ $sub_key }}" value="{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['ProdCodeSub'] }}">
+
+                                                @if($loop->first === false) <div class="mt20"></div> @endif
+                                                <div>{{$sub_row['CourseName']}} <span class="row-line">|</span>{{$sub_row['SubjectName']}}<span class="row-line">|</span>{{$sub_row['wProfName']}}</div>
+                                                <div class="w-tit mb10">{{$sub_row['subProdName']}}</div>
+                                                <ul>
+                                                    <li>[강의실명] <span class="tx-light-blue">{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LectureRoomName'] }}</span>
+                                                        <span class="row-line">|</span>
+                                                        <span class="tx-light-blue">{{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['UnitName'] }}</span><li>
+                                                    <li>[좌석번호]
+                                                        <span class="tx-light-blue">
+                                                        {!! ((empty($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['LrrursIdx']) === true) ?
+                                                                    "<span class='tx-red'>미선택</span>" : "<span>{$pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatNo']}</span>") !!}
+                                                            {!! ($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
+                                                    </span>
+                                                    <li>
+                                                    <li>[좌석선택기간]
+                                                        {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] }}
+                                                        ~ {{ $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate'] }}
+                                                    <li>
+                                                </ul>
+                                                <div class="mt10">
+                                                    <a href="javascript:;" class="btnStfull01" onclick="AssignSeat('Y','{{ $key }}','{{ $sub_key }}','{{
+                                                    (($pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceStartDate'] <= date('Y-m-d')
+                                                    && date('Y-m-d') <= $pkgLectureRoom[$sub_row['ProdCode']][$sub_row['ProdCodeSub']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 >
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
+
+                                {{-- 온라인첨삭box --}}
+                                <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray seat-box" id="correct_assignment_box_{{$key}}" style="display: none;">
+                                    @if (empty($row['subleclist']) === false)
+                                        @foreach($row['subleclist'] as $sub_key => $sub_row)
+                                            @if (in_array('731001',explode(',',$sub_row['OptionCcds'])) === true)
+                                                @if($loop->first === false) <div class="mt20"></div> @endif
+                                                <div>
+                                                    {{$sub_row['CourseName']}} <span class="row-line">|</span>
+                                                    {{$sub_row['SubjectName']}}<span class="row-line">|</span>
+                                                    {{$sub_row['wProfName']}}<span class="row-line">|</span>
+                                                    {{$sub_row['subProdName']}}
+                                                </div>
+                                                <div class="mt10"><a href="javascript:;" class="btnStfull02 btn-assignment" data-prod-code="{{ $sub_row['ProdCodeSub'] }}">온라인첨삭 ></a></div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @empty
@@ -120,7 +168,7 @@
                 </form>
                 <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                     <tbody>
-                    @forelse( $list as $row )
+                    @forelse( $list as $key => $row )
                         <tr>
                             <td class="w-data tx-left">
                                 <dl class="w-info">
@@ -151,6 +199,49 @@
                                         @endif
                                     </dt>
                                 </dl>
+
+                                {{-- todo : local, DEV 환경에서만 노출 --}}
+                                @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                                    {{-- 단강좌 좌석선택 --}}
+                                    @if (empty($listLectureRoom[$row['ProdCode']]) === false)
+                                        <input type="hidden" id="order_idx_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderIdx'] }}">
+                                        <input type="hidden" id="order_prod_idx_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['OrderProdIdx'] }}">
+                                        <input type="hidden" id="lr_code_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrCode'] }}">
+                                        <input type="hidden" id="lr_unit_code_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['LrUnitCode'] }}">
+                                        <input type="hidden" id="prod_code_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeMaster'] }}">
+                                        <input type="hidden" id="prod_code_sub_N_0_{{ $key }}" value="{{ $listLectureRoom[$row['ProdCode']]['ProdCodeSub'] }}">
+
+                                        <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                                            <ul class="mb10">
+                                                <li>[강의실명]
+                                                    <span class="tx-light-blue">{{ $listLectureRoom[$row['ProdCode']]['LectureRoomName'] }}</span>
+                                                    <span class="row-line">|</span>
+                                                    <span class="tx-light-blue">{{ $listLectureRoom[$row['ProdCode']]['UnitName'] }}</span>
+                                                <li>
+                                                <li>[좌석번호]
+                                                    <span class="tx-light-blue">
+                                                        {!! ((empty($listLectureRoom[$row['ProdCode']]['LrrursIdx']) === true) ?
+                                                            "<span class='tx-red'>미선택</span>" : "<span>{$listLectureRoom[$row['ProdCode']]['MemSeatNo']}</span>") !!}
+                                                        {!! ($listLectureRoom[$row['ProdCode']]['MemSeatStatusCcd'] == '728003') ? "<span class='tx-red'>[퇴실]</span>" : "" !!}
+                                                    </span>
+                                                <li>
+                                                <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}<li>
+                                            </ul>
+                                            <div class="mb10">
+                                                <a href="javascript:;" class="btnStfull01" onclick="AssignSeat('N','0','{{ $key }}','{{
+                                                    (($listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] <= date('Y-m-d')
+                                                    && date('Y-m-d') <= $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate']) ? 'Y' : 'N')}}')">좌석선택 ></a>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    {{-- 단강좌 온라인 첨삭 --}}
+                                    @if (in_array('731001',explode(',',$row['OptionCcds'])) === true)
+                                        <div class="pd10 mt10">
+                                            <a href="javascript:;" class="btnStfull02 btn-assignment" data-prod-code="{{ $row['ProdCode'] }}">온라인첨삭 ></a>
+                                        </div>
+                                    @endif
+                                @endif
                             </td>
                         </tr>
                     @empty
@@ -176,16 +267,8 @@
     <form name="postForm" id="postForm" method="post">
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-        <input type="hidden" name="choice_box_p_no" id="choice_box_p_no" value="" />
-        <input type="hidden" name="choice_box_no" id="choice_box_no" value="" />
         <input type="hidden" name="orderidx" id="orderidx" value="" />
         <input type="hidden" name="orderprodidx" id="orderprodidx" value="" />
-
-        <input type="hidden" name="pkg_yn" id="pkg_yn" value="" />
-        <input type="hidden" name="prod_code" id="prod_code" value="" />
-        <input type="hidden" name="prod_code_sub" id="prod_code_sub" value="" />
-        <input type="hidden" name="lr_code" id="lr_code" value="" />
-        <input type="hidden" name="lr_unit_code" id="lr_unit_code" value="" />
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -197,6 +280,21 @@
             $('#search_text').on('keyup', function() {
                 if (window.event.keyCode === 13) {
                 }
+            });
+
+            //좌석선택Box on/off
+            $('.onoffSeatBox').on('click', function () {
+                $('#seat_box_'+$(this).data('seat-box-id')).toggle();
+            });
+
+            //온라인첨삭Box on/off
+            $('.onoffCorrectAssignmentBox').on('click', function () {
+                $('#correct_assignment_box_'+$(this).data('correct-assignment-box-id')).toggle();
+            });
+
+            //온라인첨삭
+            $('.btn-assignment').on('click', function () {
+                location.href = "{{ front_url("/classroom/assignmentProduct?prod_code=") }}" + $(this).data("prod-code");
             });
         });
 
@@ -211,6 +309,22 @@
             $('#orderidx').val(o);
             $('#orderprodidx').val(op);
             $("#postForm").attr("action", "{{ front_url("/classroom/off/AssignProf/") }}").submit();
+        }
+
+        function AssignSeat(pkg_yn, p_no, no, flag)
+        {
+            if (flag != 'Y') {
+                alert('좌석 선택 기간이 아닙니다.');
+                return;
+            }
+            var params = '?orderidx='+$("#order_idx_"+pkg_yn+'_'+p_no+'_'+no).val();
+            params += '&orderprodidx='+$("#order_prod_idx_"+pkg_yn+'_'+p_no+'_'+no).val();
+            params += '&pkg_yn='+pkg_yn;
+            params += '&prod_code='+$("#prod_code_"+pkg_yn+'_'+p_no+'_'+no).val();
+            params += '&prod_code_sub='+$("#prod_code_sub_"+pkg_yn+'_'+p_no+'_'+no).val();
+            params += '&lr_code='+$("#lr_code_"+pkg_yn+'_'+p_no+'_'+no).val();
+            params += '&lr_unit_code='+$("#lr_unit_code_"+pkg_yn+'_'+p_no+'_'+no).val();
+            location.href = "{{ front_url("/classroom/off/assignSeat") }}" + params;
         }
     </script>
 @stop

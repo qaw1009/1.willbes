@@ -415,6 +415,12 @@ class Notice extends BaseBoard
                 'site_category' => element('cate_code', $input)
             ]
         ];
+
+        // hot 미사용 적용시 Best 정렬 초기화
+        if($input_data['board']['IsBest'] == 0 || $input['is_use'] != 'Y'){
+            $input_data['board']['BestOrderNum'] = 0;
+        }
+
         return $input_data;
     }
 

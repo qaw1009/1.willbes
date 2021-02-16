@@ -227,40 +227,16 @@
             </div>
         </div>
         
-        <div class="evtCtnsBox evt06" id="evt06">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2024_06.jpg" alt="소문내기 이벤트" >
-                <a href="https://section.blog.naver.com/BlogHome.nhn" target="_blank" title="블로그"></a>
-                <a href="https://www.instagram.com/" target="_blank" title="인스타그램"></a>
-                <a href="https://www.facebook.com/" target="_blank" title="페이스북"></a>
-                <a href="https://accounts.kakao.com/login/kakaostory" target="_blank" title="카카오스토리"></a>
-                <a href="https://band.us" target="_blank" title="밴드"></a>
-                <a href="https://twitter.com/" target="_blank" title="트위터"></a>
-            </div>
-        </div>
-
-        {{--홍보url --}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true &&   array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N')){{--기존SNS예외처리시--}}
-        @endif 
-
-
         <div class="evtCtnsBox evt07">
             <div class="evtFooter" id="infoText">
                 <h3 class="NSK-Black">[이용안내]</h3>
 
                 <p># 사전예약 혜택</p>
                 <ul>
-                    <li>사전예약 혜택은 2월 8일까지 결제완료자에 한해서만 적용됩니다.</li>
-                    <li>사전예약 혜택은 강의료 40% 할인입니다.<br>
-                        수강기간 추가 혜택은 강의 시작 2월 15일 일괄적으로 적용 예정입니다.</li> 
-                </ul>
-
-                <p># 소문내기 이벤트</p>
-                <ul>
-                    <li>발표시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
-                    <li>당첨자 발표는 2월 10일 공지사항을 참고하시면 됩니다.</li> 
-                </ul>
+                    <li>사전예약 혜택은 3월 2일까지 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 강의료 40% 할인, 수강기간 30일 추가입니다.<br>
+                        수강기간 추가 혜택은 1차 2월 16일, 2차 3월 4일 일괄 적용 예정이니 참고 부탁 드립니다.</li> 
+                </ul>                      
 
                 <p># 기타유의사항</p>
                 <ul>

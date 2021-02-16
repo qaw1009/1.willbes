@@ -255,24 +255,7 @@
                 </ul>
             </div>
         </div>
-        --}}
-
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2006_06.jpg" alt="소문내기 이벤트" usemap="#Map2006B" border="0" >
-            <map name="Map2006B" id="Map2006B">
-                <area shape="rect" coords="255,770,330,845" href="#" alt="블로그" />
-                <area shape="rect" coords="362,770,439,845" href="#" alt="인스타그램" />
-                <area shape="rect" coords="469,770,547,845" href="#" alt="페이스북" />
-                <area shape="rect" coords="575,770,653,845" href="#" alt="카카오스토리" />
-                <area shape="rect" coords="684,770,761,845" href="#" alt="밴드" />
-                <area shape="rect" coords="790,770,867,845" href="#" alt="트위터" />
-            </map>
-        </div>
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N')){{--기존SNS예외처리시--}}
-        @endif 
+        --}}  
         
         <div class="evtCtnsBox evt07">
             <div class="evtFooter" id="infoText">
@@ -280,18 +263,12 @@
 
                 <p># 사전예약 혜택</p>
                 <ul>
-                    <li>사전예약 혜택은 2021년 2월 15일 결제완료자에 한해서만 적용됩니다.</li>
-                    <li>사전예약 혜택은 수강기간 1개월이 무료 제공됩니다.<br>
-                        수강기간 추가 혜택은 3월 3일 일괄 적용예정
+                    <li>사전예약 혜택은 2021년 3월 2일 결제완료자에 한해서만 적용됩니다.</li>
+                    <li>사전예약 혜택은 수강기간 30일 추가입니다.<br>
+                        수강기간 추가 혜택은 1차 2월 16일, 2차 3월 4일 일괄 적용 예정이니 참고 부탁 드립니다.
                     </li>  
                 </ul>
-
-                <p># 소문내기 이벤트</p>
-                <ul>
-                    <li>발표 시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
-                    <li>당첨자 발표는 2021년 3월 3일(수) 공지사항 참조</li>
-                </ul>
-
+                
                 <p>※ 문의안내 : 1544-5006</p>
             </div>
         </div>

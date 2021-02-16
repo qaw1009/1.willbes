@@ -122,7 +122,7 @@
                 ajaxSubmit($regi_form_modal, _url, function(ret) {
                     if(ret.ret_cd) {
                         alert(ret.ret_msg);
-                        location.href = "{{ front_url("/classroom/assignmentProduct?prod_code=") }}" + '';
+                        location.href = "{{ front_url("/classroom/assignmentProduct?prod_code=") }}" + $regi_form_modal.find('input[name="prod_code"]').val();
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });

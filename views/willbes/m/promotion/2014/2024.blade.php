@@ -100,12 +100,7 @@
 
     <div class="evtCtnsBox evt05">
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2024m_05.jpg" alt="권혁중은 다르다" >
-    </div>   
-    
-    <div class="evtCtnsBox evt06" id="evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2024m_06.jpg" alt="온라인 쇼핑몰이 지금 대세" >
-        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2024" title="소문내기 이벤트" target="_blank" style="position: absolute; left: 6.9%; top: 76.79%; width: 85.16%; height: 9.23%; z-index: 2;"></a>
-    </div> 
+    </div>     
 
     <div class="evtCtnsBox evtCurri">
         <h5 class="NSK-Black">
@@ -210,16 +205,10 @@
 
             <p># 사전예약 혜택</p>
             <ul>
-                <li>사전예약 혜택은 2월 8일까지 결제완료자에 한해서만 적용됩니다.</li>
-                <li>사전예약 혜택은 강의료 40% 할인입니다.<br>
-                    수강기간 추가 혜택은 강의 시작 2월 15일 일괄적으로 적용 예정입니다.</li> 
-            </ul>
-
-            <p># 소문내기 이벤트</p>
-            <ul>
-                <li>발표시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
-                <li>당첨자 발표는 2월 10일 공지사항을 참고하시면 됩니다.</li> 
-            </ul>
+                <li>사전예약 혜택은 3월 2일까지 결제완료자에 한해서만 적용됩니다.</li>
+                <li>사전예약 혜택은 강의료 40% 할인, 수강기간 30일 추가입니다.<br>
+                    수강기간 추가 혜택은 1차 2월 16일, 2차 3월 4일 일괄 적용 예정이니 참고 부탁 드립니다.</li> 
+            </ul>                    
 
             <p># 기타유의사항</p>
             <ul>

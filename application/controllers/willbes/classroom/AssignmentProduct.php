@@ -106,6 +106,7 @@ class AssignmentProduct extends \app\controllers\FrontController
         ';
         $arr_condition = [
             'EQ' => [
+                'lcu.ProdCode' => $prod_code,
                 'lcu.CorrectIdx' => $correct_idx,
                 'lcu.IsStatus' => 'Y',
                 'lcu.IsUse' => 'Y'

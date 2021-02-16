@@ -37,7 +37,7 @@
 
     .evtCurri .evtCurriTxt02 {font-size:14px; line-height:1.4; letter-spacing:-1px; color:#333; margin:20px auto 0; text-align:left}
 
-    .evtFooter {margin:80px auto 0; padding:30px 20px; text-align:left; color:#3a3a3a; background:#E1E1E1; font-size:0.875rem; line-height:1.4 }
+    .evtFooter {margin:0 auto; padding:30px 20px; text-align:left; color:#3a3a3a; background:#E1E1E1; font-size:0.875rem; line-height:1.4 }
     .evtFooter h3 {font-size:1.5rem; margin-bottom:30px; color:#000}
     .evtFooter p {margin-bottom:10px; color:#333; font-size:1.2rem;}
     .evtFooter div,
@@ -210,28 +210,17 @@
     </div>
     --}}
     
-    <div class="evtCtnsBox evt06">
-        <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_06.jpg" alt="소문내기" >
-        <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2006#evt02" title="이벤트참여"></a>
-    </div>  
-
     <div class="evtCtnsBox" id="infoText">
         <div class="evtFooter">
             <h3 class="NSK-Black">[이용안내]</h3>
 
             <p># 사전예약 혜택</p>
             <ul>
-                <li>사전예약 혜택은 2021년 2월 15일 결제완료자에 한해서만 적용됩니다.</li>
-                <li>사전예약 혜택은 수강기간 1개월이 무료 제공됩니다.<br>
-                    수강기간 추가 혜택은 3월 3일 일괄 적용예정
+                <li>사전예약 혜택은 2021년 3월 2일 결제완료자에 한해서만 적용됩니다.</li>
+                <li>사전예약 혜택은 수강기간 30일 추가입니다.<br>
+                    수강기간 추가 혜택은 1차 2월 16일, 2차 3월 4일 일괄 적용 예정이니 참고 부탁 드립니다.
                 </li>  
-            </ul>
-
-            <p># 소문내기 이벤트</p>
-            <ul>
-                <li>발표 시 동일인으로 확인 될 경우 강의 제공은 한 개의 아이디만 당첨으로 인정합니다.</li>
-                <li>당첨자 발표는 2021년 3월 3일(수) 공지사항 참조</li>
-            </ul>
+            </ul>                   
 
             <p>※ 문의안내 : 1544-5006</p>
         </div>    

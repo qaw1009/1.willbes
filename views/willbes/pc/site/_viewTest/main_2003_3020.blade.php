@@ -297,7 +297,7 @@
 
         <div class="Section gosi-profWrap">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">합격을 책임질 <span>9급 대표 교수진</span></div>
+                <div class="will-nTit NSK-Black">합격을 책임질 <span>7급 대표 교수진</span></div>
                 <div class="gosi-tabs-contents-wrap">
                     <div class="gosi-tabs-content">
                         <ul class="gosi-gate-prof">

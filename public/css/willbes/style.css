@@ -5911,14 +5911,14 @@ span.calendar_btn {
 	height: 10px;
 	margin: 9px 0;
 }
-.LeclistTable .listTable.cartTable a.btnstA {
+a.btnstA {
 	display: inline-block;
 	background: #1a8ccb;
 	color: #fff;
 	padding: 5px 20px;
 	border-radius: 20px;
 }
-.LeclistTable .listTable.cartTable a.btnstA:hover {
+a.btnstA:hover {
 	background: #333;
 }
 

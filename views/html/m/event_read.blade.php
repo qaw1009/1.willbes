@@ -22,8 +22,9 @@
                             <dt class="tx-red">진행중<span class="row-line">|</span></dt>  
                             <dt>기간 : 2020-09-18 ~ 2020-10-20</dt><br>
                             <dt>2020-09-17<span class="row-line">|</span></dt>
-                            <dt>조회수 : <span class="tx-blue">10</span></dt>
+                            <dt>조회수 : <span class="tx-blue">10</span></dt>                            
                         </dl>
+                        <div><a href="#none" class="btnblue">바로가기 ></a></div>
                     </td>
                 </tr>                
                 <tr class="txt">

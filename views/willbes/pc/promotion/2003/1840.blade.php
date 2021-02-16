@@ -87,19 +87,20 @@
 </style>
 
     <div class="evtContent NGR" id="evtContainer"> 
-
+        {{--        
         <div class="sky">
             <a href="#start"><img src="https://static.willbes.net/public/images/promotion/2021/01/1840_sky.png" alt="전격판매" ></a>
             <a href="#start"><img src="https://static.willbes.net/public/images/promotion/2021/01/1840_sky2.png" alt="50%할인" ></a>
         </div>
-
+        --}}
+        {{--
         <div class="evtCtnsBox evt_tops">  
             <img src="https://static.willbes.net/public/images/promotion/2021/01/1840_tops.jpg" alt="막판 스퍼트 올리기" usemap="#Map1840_start" border="0">
             <map name="Map1840_start" id="Map1840_start">
                 <area shape="rect" coords="223,616,897,679" href="#start" />
             </map>  
         </div>
-
+        --}}
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1840_top.jpg" alt="이종오 티패스">  
         </div>
@@ -170,17 +171,17 @@
                                         </div>
                                     </a>
                                 </li>
-                                {{--
+                             
                                 <li class="">
                                     <a href="#tab6">
                                         <span class="num_box" data-num="6">6</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/02/1840_thumbnail06.png" alt="명예 소방관 마지막"></div>
                                         <div class="text_box">
-                                            <p>『전기회로 기본용어』 10분 핵심정리 확인하기!!</p>
+                                            <p>[소방관계법규 빈출테마 마지막] 종사명령/강제처분/피난명령/긴급조치 빈칸 채우기 특강!</p>
                                         </div>
                                     </a>
                                 </li>
-
+                                {{--
                                 <li class="">
                                     <a href="#tab7">
                                         <span class="num_box" data-num="7">7</span>
@@ -274,7 +275,7 @@
                 </ul>
             </div>
         </div>
-
+        {{--                                
         <div class="evtCtnsBox evt05" id="start"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/01/1840_evt01.jpg" alt="이벤트01 수강신청" usemap="#Map1840_class" border="0">
             <map name="Map1840_class" id="Map1840_class">
@@ -308,11 +309,7 @@
                 <area shape="rect" coords="776,925,959,1022" href="https://cafe.naver.com/willbes" target="_blank" />
             </map>
         </div> 
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
-        @endif
-
+        --}}        
         <div class="evtCtnsBox evtInfo NGR" id="careful">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">이용안내 및 유의사항</h4>
@@ -387,7 +384,7 @@
       var tab3_url = "https://www.youtube.com/embed/wb5Mc43sHSs?rel=0";   
       var tab4_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
       var tab5_url = "https://www.youtube.com/embed/nGvEN8pbthc?rel=0"; 
-      var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
+      var tab6_url = "https://www.youtube.com/embed/kkfisLsAzV0?rel=0";  
       var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
       var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
       var tab9_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        

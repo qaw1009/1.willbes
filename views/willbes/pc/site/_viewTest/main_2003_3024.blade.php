@@ -301,15 +301,15 @@
                 <div class="gosi-tabs-contents-wrap">
                     <div class="gosi-tabs-content">
                         <ul class="gosi-gate-prof">
-                            <li>
-                                @for($i=1; $i<=5; $i++)
-                                    @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                            @for($i=1; $i<=5; $i++)
+                                @if(isset($data['arr_main_banner']['메인_교수진'.$i]) === true)
+                                    <li>
                                         <div class="nSlider">
                                             {!! banner_html(element('메인_교수진'.$i, $data['arr_main_banner']), 'sliderProf') !!}
                                         </div>
-                                    @endif
-                                @endfor
-                            </li>
+                                    </li>
+                                @endif
+                            @endfor
                         </ul>
                     </div>
                 </div>

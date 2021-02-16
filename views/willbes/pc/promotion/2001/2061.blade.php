@@ -102,7 +102,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/2061_01.jpg"  alt="그룹 개설하기"/>
                 <a href="javascript:go_popup()" title="그룹개설하기" style="position: absolute; left: 22.68%; top: 53.42%; width: 53.57%; height: 12.58%; z-index: 2;"></a>
                 <a href="http://cafe.daum.net/policeacademy" target="_blank" title="경사모" style="position: absolute; left: 18.84%; top: 72.41%; width: 21.52%; height: 13.36%; z-index: 2;"></a>
-                <a href="https://cafe.naver.com/polstudyc" target="_blank" title="경꿈사" style="position: absolute; left: 43.04%; top: 72.41%; width: 21.52%; height: 13.36%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/polstudy" target="_blank" title="경꿈사" style="position: absolute; left: 43.04%; top: 72.41%; width: 21.52%; height: 13.36%; z-index: 2;"></a>
                 <a href="https://cafe.naver.com/kts9719" target="_blank" title="닥공사" style="position: absolute; left: 67.14%; top: 72.41%; width: 21.52%; height: 13.36%; z-index: 2;"></a>
             </div>
         </div>

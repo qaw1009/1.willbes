@@ -410,6 +410,11 @@ class Notice extends BaseBoard
             ]
         ];
 
+        // hot 미사용 적용시 Best 정렬 초기화
+        if($input_data['board']['IsBest'] == 0 || $input['is_use'] != 'Y'){
+            $input_data['board']['BestOrderNum'] = 0;
+        }
+
         return $input_data;
     }
 

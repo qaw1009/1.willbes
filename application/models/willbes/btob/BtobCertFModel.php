@@ -6,6 +6,7 @@ class BtobCertFModel extends WB_Model
     private $_table = [
         'btob' => 'lms_btob',
         'btob_cert_apply' => 'lms_btob_cert_apply',
+        'btob_admin' => 'lms_btob_admin',
         'product' => 'lms_product',
         'product_r_btob' => 'lms_product_r_btob'
     ];
@@ -68,6 +69,7 @@ class BtobCertFModel extends WB_Model
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원식별자
             $btob_id = element('btob_id', $input);
+            $branch_ccd = element('branch_ccd', $input);
 
             // 제휴사 정보 조회
             $row = $this->findBtobByBtobId($btob_id);
@@ -76,8 +78,9 @@ class BtobCertFModel extends WB_Model
             }
 
             // 인증신청 가능여부 확인
-            if ($this->_checkCertApply($row['BtobIdx'], $sess_mem_idx) === false) {
-                throw new \Exception('이미 인증신청 하셨습니다.', _HTTP_BAD_REQUEST);
+            $is_check = $this->_checkCertApply($row['BtobIdx'], $sess_mem_idx, $branch_ccd);
+            if ($is_check !== true) {
+                throw new \Exception($is_check, _HTTP_BAD_REQUEST);
             }
 
             // 인증신청 등록
@@ -88,7 +91,7 @@ class BtobCertFModel extends WB_Model
                 'SiteCode' => element('site_code', $input),
                 'ProdCode' => element('prod_code', $input),
                 'AreaCcd' => element('area_ccd', $input),
-                'BranchCcd' => element('branch_ccd', $input),
+                'BranchCcd' => $branch_ccd,
                 'TakeKindCcd' => element('take_kind_ccd', $input),
                 'ApprovalStatus' => 'N',
                 'RegIp' => $this->input->ip_address()
@@ -168,10 +171,33 @@ class BtobCertFModel extends WB_Model
      * 제휴사 인증신청 가능 여부
      * @param int $btob_idx
      * @param int $mem_idx
-     * @return bool
+     * @param string $branch_ccd
+     * @return bool|string
      */
-    private function _checkCertApply($btob_idx, $mem_idx)
+    private function _checkCertApply($btob_idx, $mem_idx, $branch_ccd)
     {
+        // 1. 하우스터디 지점 승인완료 횟수제한 체크
+        // 하우스터디 지점여부 확인
+        $arr_branch_condition = [
+            'EQ' => ['BtobIdx' => $btob_idx, 'AdminBranchCcd' => $branch_ccd],
+            'LKR' => ['AdminId' => 'haustudy']
+        ];
+        $branch_rows = $this->_conn->getListResult($this->_table['btob_admin'], 'AdminIdx', $arr_branch_condition);
+
+        if (empty($branch_rows) === false) {
+            // 승인완료 횟수 조회
+            $arr_cnt_condition = [
+                'EQ' => ['BtobIdx' => $btob_idx, 'MemIdx' => $mem_idx, 'BranchCcd' => $branch_ccd, 'ApprovalStatus' => 'Y']
+            ];
+            $complete_cnt = $this->_conn->getFindResult($this->_table['btob_cert_apply'], true, $arr_cnt_condition);
+
+            // 승인완료 기준 6회까지만 신청가능
+            if ($complete_cnt >= 6) {
+                return '해당 지점은 6회까지만 인증 신청이 가능합니다.';
+            }
+        }
+
+        // 2. 기신청여부 체크
         $query = /** @lang text */ '
             select ApplyIdx 
             from ' . $this->_table['btob_cert_apply'] . '
@@ -180,9 +206,12 @@ class BtobCertFModel extends WB_Model
             limit 1                
         ';
 
-        $result = $this->_conn->query($query, [$btob_idx, $mem_idx])->result_array();
+        $apply_rows = $this->_conn->query($query, [$btob_idx, $mem_idx])->result_array();
+        if (empty($apply_rows) === false) {
+            return '이미 인증신청 하셨습니다.';
+        }
 
-        return empty($result);
+        return true;
     }
 
     /**

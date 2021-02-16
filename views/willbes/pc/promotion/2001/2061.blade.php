@@ -214,8 +214,6 @@
                 <br>
                 <br>
                 <br>
-                <br>
-                <br>
 
                 <div class="group">
                     <div class="title NSK-Black">그룹 참여하기</div>
@@ -230,16 +228,12 @@
                 <br>
                 <br>
                 <br>
-                <br>
-                <br>
 
                 <div class="group">
                     이미 참여한 회원입니다.
                     <div class="check"><a href="#none">확인</a></div>
                 </div>
 
-                <br>
-                <br>
                 <br>
                 <br>
                 <br>
@@ -252,16 +246,12 @@
                 <br>
                 <br>
                 <br>
-                <br>
-                <br>
 
                 <div class="group">
                     해당 쿠폰은 자동 지급될 예정입니다.
                     <div class="check"><a href="#none">확인</a></div>
                 </div>
 
-                <br>
-                <br>
                 <br>
                 <br>
                 <br>

@@ -3442,6 +3442,9 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 	display: inline-block;
 	margin-top: 3px;
 }
+.lecInfoTable .w-bookbtn {position:absolute; bottom:10px; right:10px; }
+.lecInfoTable .w-bookbtn div {display: inline-block}
+.lecInfoTable .w-bookbtn div span {font-size:11px !important}
 
 /* subContainer : Content : willbes-Layer-Box */
 .willbes-Layer-Black {

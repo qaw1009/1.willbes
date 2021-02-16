@@ -85,7 +85,7 @@
 
 <div id="Container" class="Container NSK c_both"> 
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/02/2061m_top.jpg" alt="친구 추천 이벤트">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2061m_top.gif" alt="친구 추천 이벤트">
     </div> 
     
     <div class="evtCtnsBox">

@@ -94,7 +94,7 @@
 		</div>     
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2061_top.jpg"  alt="친구추천 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2061_top.gif"  alt="친구추천 이벤트"/>
 		</div>
 
         <div class="evtCtnsBox wb_01">

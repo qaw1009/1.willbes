@@ -17,11 +17,12 @@
                             <colgroup>
                                 <col>
                                 <col style="width: 150px;">
-                                <col style="width: 150px;">
+                                <col style="width: 120px;">
+                                <col style="width: 120px;">
                             </colgroup>
                             <thead>
                             <tr>
-                                <th colspan="3" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
+                                <th colspan="4" class="w-list tx-left pl20"><span class="w-select tx-blue">[{{$data['RequestTypeName']}}]</span> <strong>{{$data['EventName']}}</strong></th></tr>
                             <tr>
                                 <td class="w-type tx-left pl20">
                                     @if($data['IsRegister'] == 'Y' && $data['RegisterEndDate'] > date('Y-m-d H:i:s'))
@@ -33,6 +34,11 @@
                                     <span class="mr10">[접수기간] {{$data['RegisterStartDay']}} ~ {{$data['RegisterEndDay']}}</span>
                                     <span class="row-line">|</span>
                                 </td>
+                                <td>
+                                    @if(empty($data['Link']) === false)
+                                        <a href="//{{$data['Link']}}" class="btnstA" target="_blank">바로가기 ></a><span class="row-line">|</span>
+                                    @endif
+                                </td>
                                 <td class="w-date">{{$data['RegDay']}}<span class="row-line">|</span></td>
                                 <td class="w-click"><strong>조회수</strong> {{$data['ReadCnt']}}</td>
                             </tr>
@@ -40,7 +46,7 @@
                             <tbody>
                             @if(empty($arr_base['file_F']) === false)
                                 <tr>
-                                    <td class="w-file tx-left pl20" colspan="3">
+                                    <td class="w-file tx-left pl20" colspan="4">
                                         <a href="{{front_url('/event/download?file_idx=').$arr_base['file_F']['EfIdx'].'&event_idx='.element('event_idx', $arr_input) }}" target="_blank">
                                             <img src="{{ img_url('prof/icon_file.gif') }}"> {{$arr_base['file_F']['FileRealName']}}
                                         </a>
@@ -48,7 +54,7 @@
                                 </tr>
                             @endif
                             <tr>
-                                <td class="w-txt tx-left" colspan="3">
+                                <td class="w-txt tx-left" colspan="4">
                                     @if($data['ContentType'] == $arr_base['content_type']['image'])
                                         <img src="{{$arr_base['file_C']['FileFullPath'] . $arr_base['file_C']['FileName']}}">
                                     @else

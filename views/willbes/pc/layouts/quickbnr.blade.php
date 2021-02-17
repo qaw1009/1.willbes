@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ site_url('/support/qna/create?') }}">
+                    <a href="{{ site_url('/support/qna/index') }}">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick03.png" title="1:1상담" class="off">
                         <img src="https://static.willbes.net/public/images/promotion/main/2018/ssam_quick03_on.png" title="1:1상담" class="on">
                         <p>1:1상담</p>

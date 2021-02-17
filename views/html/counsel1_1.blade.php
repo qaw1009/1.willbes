@@ -5,71 +5,80 @@
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu NSK c_both">
         <h3>
-            <ul class="menu-Tit">
-                <li class="Tit">경찰<span class="row-line">|</span></li>
-                <li class="subTit">일반경찰</li>
-            </ul>
-            <ul class="menu-List">
+            <ul class="menu-List menu-List-Center">
                 <li>
-                    <a href="{{ site_url('/home/html/prof') }}">교수진소개</a>
+                    <a href="{{ site_url('/home/html/mypage_pass_index') }}">내강의실 HOME</a>
                 </li>
                 <li>
-                    <a href="#none">PASS</a>
+                    <a href="{{ site_url('/home/html/mypage_pass1') }}">무한PASS존</a>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ site_url('/home/html/package1') }}">패키지</a>
+                    <a href="{{ site_url('/home/html/mypage_online1') }}">온라인강좌</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
-                        <li class="Tit">패키지</li>
-                            <li><a href="{{ site_url('/home/html/package1') }}">추천 패키지</a></li>
-                            <li><a href="{{ site_url('/home/html/package2') }}">선택 패키지</a></li>
-                            <li><a href="{{ site_url('/home/html/diypackage') }}">DIY 패키지</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="{{ site_url('/home/html/list') }}">단강좌</a>
-                </li>
-                <li>
-                    <a href="#none">무료강좌</a>
-                </li>
-                <li class="dropdown">
-                    <a href="{{ site_url('/home/html/mocktest1') }}">수험정보</a>
-                    <div class="drop-Box list-drop-Box">
-                        <ul>
-                            <li class="Tit">수험정보</li>
-                            <li><a href="{{ site_url('/home/html/mocktest1') }}">시험공고</a></li>
-                            <li><a href="{{ site_url('/home/html/mocktest2') }}">수험뉴스</a></li>
-                            <li><a href="{{ site_url('/home/html/mocktest3') }}">기출문제</a></li>
-                            <li><a href="#none">공무원가이드</a></li>
-                            <li><a href="#none">초보합격전략</a></li>
-                            <li><a href="{{ site_url('/home/html/mocktest6_1') }}">모의고사</a></li>
+                            <li class="Tit">온라인강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_online1') }}">수강대기강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online2') }}">수강중강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online3') }}">일시정지강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_online4') }}">수강종료강좌</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ site_url('/home/html/counsel1') }}">상담실</a>
+                    <a href="{{ site_url('/home/html/mypage_acad1') }}">학원강좌</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
-                            <li class="Tit">상담실</li>
-                            <li><a href="{{ site_url('/home/html/counsel1') }}">일반상담</a></li>
-                            <li><a href="{{ site_url('/home/html/counsel2') }}">인적성/면접상담</a></li>
-                            <li><a href="{{ site_url('/home/html/counsel3_1') }}">심층상담예약</a></li>
+                            <li class="Tit">학원강좌</li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad1') }}">수강신청강좌</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_acad2') }}">수강종료강좌</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="{{ site_url('/home/html/mypage_event') }}">특강&이벤트 신청현황</a>
+                </li>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_test1') }}">모의고사관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">모의고사관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_test1') }}">접수현황</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test2') }}">온라인모의고사 응시</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_test3') }}">성적결과</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="{{ site_url('/home/html/event_ing') }}">이벤트</a>
+                    <a href="{{ site_url('/home/html/mypage_payment1') }}">결제관리</a>
                     <div class="drop-Box list-drop-Box">
                         <ul>
-                            <li class="Tit">이벤트</li>
-                            <li><a href="{{ site_url('/home/html/event_ing') }}">진행중인 이벤트</a></li>
-                            <li><a href="{{ site_url('/home/html/event_end') }}">마감된 이벤트</a></li>
+                            <li class="Tit">결제관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment1') }}">주문/배송조회</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment3') }}">포인트관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_payment4') }}">쿠폰/수강권관리</a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="Acad">
-                    <a href="#none">경찰학원 <span class="arrow-Btn">></span></a>
+                <li class="dropdown">
+                    <a href="{{ site_url('/home/html/mypage_support1') }}">학습지원관리</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">학습지원관리</li>
+                            <li><a href="{{ site_url('/home/html/mypage_support1') }}">쪽지관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support2') }}">알림관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_support3') }}">상담내역</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#none">회원정보</a>
+                    <div class="drop-Box list-drop-Box">
+                        <ul>
+                            <li class="Tit">회원정보</li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo1') }}">개인정보관리</a></li>
+                            <li><a href="{{ site_url('/home/html/mypage_userinfo2') }}">비밀번호변경</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </h3>

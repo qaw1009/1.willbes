@@ -128,7 +128,9 @@
                                     </div>
                                     <div class="onAirBtn">
                                         <ul>
-                                            <li><a href="javascript:void(0);" class="sample btn-video" data-oa-idx="{{$row['OaIdx']}}" data-login-type="{{$row['LoginType']}}" data-play-count="{{$row['VideoPlayCount']}}">{{$row['VideoPlayTime']}}초맛보기</a></li>
+                                            @if($__cfg['SiteCode'] != '2004')
+                                                <li><a href="javascript:void(0);" class="sample btn-video" data-oa-idx="{{$row['OaIdx']}}" data-login-type="{{$row['LoginType']}}" data-play-count="{{$row['VideoPlayCount']}}">{{$row['VideoPlayTime']}}초맛보기</a></li>
+                                            @endif
                                             <li><a href="{{ $schedule_url }}" target="_blank"><img src="{{ img_url('onair/onair_btn1.gif') }}" alt="강의시간표"></a></li>
                                             <li><a href="{{ $lecture_url }}" target="_blank"><img src="{{ img_url('onair/onair_btn2.gif') }}" alt="학원수강"></a></li>
                                         </ul>

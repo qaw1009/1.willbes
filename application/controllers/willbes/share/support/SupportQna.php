@@ -42,6 +42,14 @@ class SupportQna extends BaseSupport
      */
     public function index($params = [])
     {
+        // 임용 로그인시에만 접근 가능
+        if(config_app('SiteGroupCode') == '1011') {
+            if($this->session->userdata('is_login') !== true) {
+                $login_url = app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www');
+                show_alert('로그인 후 이용하여 주십시오.', $login_url);
+            }
+        }
+
         $list = [];
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $get_params = http_build_query($arr_input);
@@ -309,6 +317,14 @@ class SupportQna extends BaseSupport
 
     public function show()
     {
+        // 임용 로그인시에만 접근 가능
+        if(config_app('SiteGroupCode') == '1011') {
+            if($this->session->userdata('is_login') !== true) {
+                $login_url = app_url('/member/login/?rtnUrl='.rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www');
+                show_alert('로그인 후 이용하여 주십시오.', $login_url);
+            }
+        }
+
         $arr_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $board_idx = element('board_idx',$arr_input);
         $s_site_code = element('s_site_code',$arr_input);

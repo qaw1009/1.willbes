@@ -26,6 +26,9 @@
                             <dt>{{$data['RegDay']}}<span class="row-line">|</span></dt>
                             <dt>조회수 : <span class="tx-blue">{{$data['ReadCnt']}}</span></dt>
                         </dl>
+                        @if(empty($data['Link']) === false)
+                            <div><a href="//{{$data['Link']}}" class="btnblue" target="_blank">바로가기 ></a></div>
+                        @endif
                     </td>
                 </tr>
 

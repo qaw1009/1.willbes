@@ -81,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="imgBox">
-                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지" style="width: 100%; " onclick="showPopup('{{ $row['EmIdx'] }}')"/>
+                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지" style="width: 100%; cursor: pointer" onclick="showPopup('{{ $row['EmIdx'] }}')"/>
                             </div>
                         </div>
                     </li>

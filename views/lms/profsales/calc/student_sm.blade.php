@@ -82,9 +82,7 @@
             </div>
             <div class="row mt-10">
                 <div class="col-xs-12">
-                    <h2 class="bold">
-                        <span class="green">주의사항</span>
-                    </h2>
+                    <h2 class="bold"><span class="green">주의사항</span></h2>
                     <div>* 본 화면의 수강내역은 미정산 집계 현황이므로 실제와 다를 수 있습니다.</div>
                     <div>* 강좌명 클릭 시, 수강생 정보 확인이 가능합니다.</div>
                 </div>

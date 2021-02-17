@@ -6803,7 +6803,6 @@ body.memBody #Footer {
 .mapArea .mapTitle {
 	font-size: 16px;
 	margin-top: 30px;
-	margin-bottom: 20px;
 }
 .mapArea .mapTitle p {
 	font-size: 12px;
@@ -6818,6 +6817,7 @@ body.memBody #Footer {
 	min-height: 30px;
 	padding-top: 12px;
 }
+
 .mapArea li:nth-child(1) {
 	background: url("https://static.willbes.net/public/images/promotion/m/icon_add.png")
 		no-repeat left top;
@@ -6827,7 +6827,7 @@ body.memBody #Footer {
 		no-repeat left top;
 }
 
-.ssamMapArea li {padding:20px 0}
+.ssamMapArea li {padding:20px 0; margin:0}
 .ssamMapArea li:nth-child(1) {
 	background: url("https://static.willbes.net/public/images/promotion/m/2017/mapIcon01.png") no-repeat left center; background-size: 30px; padding-left:40px;
 	border-bottom:1px solid #ececec;

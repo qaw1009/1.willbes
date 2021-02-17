@@ -26,7 +26,7 @@
                             <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                         </div>
                         <div class="download">
-                            <a href="#none">자료</a>
+                            <a href="#none">다운하기</a>
                         </div>
                     </td>
                 </tr>
@@ -39,7 +39,7 @@
                             <a href="#none">2018 한덕현 제니스 영어 실전 동형 모의고사(4~5월) 영어제니스</a>
                         </div>
                         <div class="download">
-                            <a href="#none">자료</a>
+                            <a href="#none">다운하기</a>
                         </div>
                     </td>
                 </tr>
@@ -52,7 +52,7 @@
                             <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                         </div>
                         <div class="download">
-                            <a href="#none">자료</a>
+                            <a href="#none">다운하기</a>
                         </div>
                     </td>
                 </tr>
@@ -65,7 +65,7 @@
                             <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
                         </div>
                         <div class="download">
-                            <a href="#none">자료</a>
+                            <a href="#none">다운하기</a>
                         </div>
                     </td>
                 </tr>

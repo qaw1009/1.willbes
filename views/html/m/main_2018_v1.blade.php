@@ -30,6 +30,27 @@
     <!-- Custom Script -->
     <script src="/public/js/willbes/mobile.js?ver=1594952526"></script>  
     <style>
+.ssam .mainTit {
+	font-size: 20px;
+	position: relative;
+	height: 30px;
+	margin: 0 10px;
+}
+.ssam .mainTit .morebtn {color:#fff; background:#000; display:inline-block; padding:5px 10px; font-size:12px;}
+
+.ssam .mainTit .goBtns {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.ssam .mainTit .goBtns a {
+	display: block;
+	padding: 8px 10px;
+	color: #fff;
+	background: #0c5dc0;
+	font-size: 12px;
+}
+
 .ssam .bestLecBox2 {
 	margin-top: 10px;
 	border-top: 1px solid #ccc;
@@ -75,16 +96,14 @@
     position:absolute;
     top:0;
     left:0;
-	width: 24px;
-	height: 24px;
-	line-height: 24px;
-	border-radius: 0;
-    border-radius:0 12px 12px 12px;
-	background: #0c5dc0;
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	background: url('https://static.willbes.net/public/images/promotion/m/2017/2017_best_icon.png');
 	text-align: center;
 	font-size: 1.8vh;
     color: #fff;
-    z-index:3;
+    z-index:1;
 }
 .ssam .bestLecBox2 .lecinfo {
     position:absolute;
@@ -121,6 +140,30 @@
 	display: block;
 	clear: both;
 }
+
+.ssam .csCenter {
+	margin: 0 10px;
+}
+.ssam .csCenter .tel {background:#fff; padding:10px 0;}
+
+.ssam .csCenter li {
+	width: 50%;
+	padding:10px 5%;
+}
+.csCenter li div.goTel div {
+	font-size: 15px;
+    margin-right:15px;
+}
+.csCenter li div.goTel strong {font-size:15px}
+.ssam .csCenter li span {
+	display: block;
+	color: #333;
+	font-weight: bold;
+	font-size: 3.5vh;
+    float:left;
+}
+
+
 @@media only screen and (max-width: 374px) {
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 12px;
@@ -244,12 +287,11 @@
         <div class="swiper-pagination"></div>
     </div>
         
-    <div class="mainTit mt30 NSK-Black p_re">윌비스 임용 <span class="tx-main">수강후기</span>
+    <div class="mainTit mt30 p_re">
+        <span class="NSK-Black mr15">임용 <span class="tx-main">생생 수강후기</span></span>
+        <a href="#none" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
         <div class="goBtns NSK">
-            <ul>
-                <li><a href="#none">합격수기 ></a></li>
-                <li><a href="#none" onclick="openWin('LayerReply'),openWin('Reply')">수강후기 ></a></li>
-            </ul>
+            <a href="#none">합격수기 바로가기 ></a></li>
         </div>
     </div>
     <div class="replyBox mt10">       
@@ -391,7 +433,7 @@
         </div>
     </div>
 
-    <div class="mainTit NSK-Black tx-center">          
+    <div class="mainTit NSK-Black tx-center mt30">          
         윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>           
     </div>
     <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
@@ -429,6 +471,7 @@
             <div class="best NSK-Black">3</div>
         </li>
     </ul>
+
     {{--
     <ul class="bestLecBoxV2">
         <li class="bestLec">                    
@@ -524,110 +567,7 @@
         </div>
     </div>
     
-    {{--
-    <div class="sampleView">
-        <div class="overhidden">
-            <div class="swiper-container-view">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                                유아<span></span><strong>민정선 민정선 민정선</strong>
-                                <p>2020년 1~2월 유아교육개론</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50837/lec_list_50837.png" alt="강사명">
-                            <div>
-                                행정법<span></span><strong>김정일 2</strong>
-                                <p>행정법 원론강의 </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50838/lec_list_50838.png" alt="강사명">
-                            <div>
-                                행정법<span></span><strong>박도원 3</strong>
-                                <p>행정법 GS3순환 </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50836/lec_list_50836.png" alt="강사명">
-                            <div>
-                                행정학<span></span><strong>백승준 4</strong>
-                                <p>2020 행정학 예비순환 오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 5</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 6</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 7</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 8</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 7</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#none">
-                            <img src="https://gosi.willbes.net/public/uploads/willbes/professor/50769/lec_list_50769.png" alt="강사명">
-                            <div>
-                            경제학<span></span><strong>황종휴 8</strong>
-                            <p>오리엔테이션, 무역모형기초 1회 1강</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-    --}}    
-
-    <div class="mainTit NSK-Black  tx-center mt50" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
+    <div class="mainTit NSK-Black tx-center mt50">윌비스 임용 <span class="tx-main">시험 정보</span></div>
     <div class="w-Guide-Ssam mt20">
         <div class="NG ssamInfoMenu">
             <ul class="tabShow tabinfo">
@@ -651,32 +591,39 @@
         </div>
     </div>
 
-    <div class="ssamEtc mt50 c_both">
-        <a href="#none">대학특강문의</a>
-        <a href="#none">교수채용</a>
-        <a href="#none">오시는길</a>
+    <div class="ssamEtc c_both">
+        <a href="#none">
+            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon01.png">
+            대학특강문의
+        </a>
+        <a href="#none">
+            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon02.png">
+            교수채용
+        </a>
+        <a href="#none">
+            <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon03.png">
+            오시는길
+        </a>
     </div>
 
     <div class="csCenter">
         <ul class="tel">
             <li>
                 <div class="goTel">
-                    <img src="{{ img_url('m/main/icon_tel.png') }}">
                     <div>
                         <strong>강의 문의</strong>
-                        <span><a href="tel:1544-3169">1544-3169</a></span>
-                        09시~ 22시
+                        월~토 09시~ 22시
                     </div>
+                    <span><a href="tel:1544-3169">1544-3169</a></span>                       
                 </div>
             </li>
             <li>
                 <div class="goTel">
-                    <img src="{{ img_url('m/main/icon_tel.png') }}">
                     <div>
                         <strong>교재배송문의</strong>
-                        <span><a href="tel:1544-4944">1544-4944</a></span>
                         평일 09시~ 17시
                     </div>
+                    <span><a href="tel:1544-4944">1544-4944</a></span>                      
                 </div>
             </li>
         </ul>
@@ -684,41 +631,41 @@
 
 </div>
 <!-- End Container -->
-    <script>
-        $(function() {
-            //수강후기
-            var swiper_review = new Swiper ('.swiper-container-reply', {
-                slidesPerView: 'auto',
-                spaceBetween: 0,
-                slidesPerGroup: 1,
-                loop: true,
-                loopFillGroupWithBlank: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
-
-            //맛보기강의
-            var swiper = new Swiper('.swiper-container-view', {
-                slidesPerView: 1,
-                slidesPerColumn: 5,
-                spaceBetween: 5,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });  
+<script>
+    $(function() {
+        //수강후기
+        var swiper_review = new Swiper ('.swiper-container-reply', {
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            slidesPerGroup: 1,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
-    </script>
+
+        //맛보기강의
+        var swiper = new Swiper('.swiper-container-view', {
+            slidesPerView: 1,
+            slidesPerColumn: 5,
+            spaceBetween: 5,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });  
+    });
+</script>
 
 <!-- footer -->
 <div id="Footer" class="widthAutoFull NGR c_both pb30">

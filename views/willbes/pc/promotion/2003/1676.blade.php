@@ -14,7 +14,7 @@
         .skybanner a {display:block; margin-bottom:10px}
 
 
-        .evttop_banners {background:#12104f; padding-top:50px;} 
+        .evttop_banners {background:#060606;} 
 
         /* 탭 */
         .tabContaier{width:1120px; margin:20px auto 0}
@@ -28,7 +28,7 @@
         .tabContaier ul:after {content:''; display:block; clear:both;}
         .tabContents {margin-top:20px}
 
-        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/01/1676_top_bg.jpg) no-repeat center top; }
+        .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/02/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
 
@@ -92,15 +92,15 @@
         --}}  
 
         <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top_banner.png" usemap="#Map1676_banner"  title="신청 베너" border="0">
-            <map name="Map1676_banner" id="Map1676_banner">
-                <area shape="rect" coords="604,22,802,92" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
-                <area shape="rect" coords="814,23,1012,92" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
-            </map>             
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
+            <map name="Map1676_top_banner" id="Map1676_top_banner">
+                <area shape="rect" coords="598,64,778,100" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
+                <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
+            </map>           
         </div>
  
         <div class="evtCtnsBox evttop">                 
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_top.jpg"  title="더켠의 반반한 밤">                        
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
 
         <div class="evtCtnsBox evt01">

@@ -14,13 +14,13 @@
                         <label class="control-label col-md-1">교수검색</label>
                         <div class="col-md-11 form-inline">
                             {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx" title="교수선택">
                                 <option value="">교수선택</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 25%;">
+                            <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" title="상품검색어" style="width: 25%;">
                             <span class="pl-20"># 강좌명 검색 가능</span>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="row mt-10">
                 <div class="col-md-1">
-                    <select class="form-control" id="search_year" name="search_year">
+                    <select class="form-control" id="search_year" name="search_year" title="조회년도">
                         @for($y = date('Y'); $y >= 2021; $y--)
                             <option value="{{ $y }}">{{ $y }}</option>
                         @endfor
@@ -87,6 +87,8 @@
                         </div>
                     @endif
                     <div>* 정산 이후 환불 건 등으로 인해 금액이 100% 일치하지 않을 수도 있습니다.</div>
+                    <div>* 현재 프로그램 상 연간패키지의 배당 구성도 단과 기준으로 적용되어 있습니다. (패키지의 종류가 과목별로 다양하여 1/n 프로그램 적용이 다소 어려움)</div>
+                    <div>* 정산과 배당에 관하여 궁금하신 점은 각 부서별 회계담당자에게 문의해주시기 바랍니다.</div>
                 </div>
             </div>
             <div class="row mt-20">
@@ -375,7 +377,7 @@
             $search_form.on('click', '.btn-view', function() {
                 $('.btn-view').setLayer({
                     'url' : '{{ site_url('/profsales/calc/' . $calc_type . '/show') }}',
-                    'width' : 1200,
+                    'width' : 1400,
                     'add_param_type' : 'param',
                     'add_param' : [
                         { 'id' : 'search_type', 'name' : '조회구분', 'value' : $(this).data('search-type'), 'required' : true },

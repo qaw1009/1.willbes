@@ -14,13 +14,13 @@
                         <label class="control-label col-md-1">교수검색</label>
                         <div class="col-md-11 form-inline">
                             {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx" title="교수선택">
                                 <option value="">교수선택</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 25%;">
+                            <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" title="상품검색어" style="width: 25%;">
                             <span class="pl-20"># 강좌명 검색 가능</span>
                         </div>
                     </div>
@@ -61,12 +61,12 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일자">
                         <div class="input-group-addon no-border no-bgcolor">~</div>
                         <div class="input-group-addon no-border-right">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                        <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일자">
                     </div>
                     <div class="btn-group mr-5" role="group">
                         <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
@@ -82,9 +82,7 @@
             </div>
             <div class="row mt-10">
                 <div class="col-xs-12">
-                    <h2 class="bold">
-                        <span class="green">주의사항</span>
-                    </h2>
+                    <h2 class="bold"><span class="green">주의사항</span></h2>
                     <div>* 본 화면의 수강내역은 미정산 집계 현황이므로 실제와 다를 수 있습니다.</div>
                     <div>* 강좌명 클릭 시, 수강생 정보 확인이 가능합니다.</div>
                 </div>
@@ -95,7 +93,7 @@
                         <thead>
                         <tr class="bg-white-gray">
                             <th class="valign-middle">강의명</th>
-                            <th class="valign-middle">수강생 수</th>
+                            <th class="valign-middle">수강생 수 (패키지)</th>
                             <th class="valign-middle">수강금액</th>
                         </tr>
                         </thead>
@@ -179,7 +177,7 @@
                             + '<br/><a href="#none" data-prof-idx="' + row.ProfIdx + '" data-prod-code-sub="' + row.ProdCodeSub + '" data-prod-name-sub="' + Base64.encode(row.ProdNameSub) + '" class="blue btn-view">[수강생 보기]</a>';
                     }},
                     {'data' : 'tPayCnt', 'render' : function(data, type, row, meta) {
-                        return addComma(data);
+                        return addComma(data) + '명 (' + addComma(row.tPayPackCnt) + '명)';
                     }},
                     {'data' : 'tRemainPrice', 'render' : function(data, type, row, meta) {
                         return addComma(data);
@@ -203,7 +201,7 @@
             $search_form.on('click', '.btn-view', function() {
                 $('.btn-view').setLayer({
                     'url' : '{{ site_url('/profsales/calc/' . $calc_type . '/show') }}',
-                    'width' : 1200,
+                    'width' : 1400,
                     'add_param_type' : 'param',
                     'add_param' : [
                         { 'id' : 'search_type', 'name' : '조회구분', 'value' : 'paid', 'required' : true },

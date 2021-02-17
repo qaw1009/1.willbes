@@ -133,6 +133,7 @@ class SsamCalcModel extends BaseOrderModel
                 , max(RD.ProfIdx) as ProfIdx                
                 , if(RD.ProdCodeSub is not null, max(RD.ProdNameSub), "") as ProdNameSub                
                 , count(0) as tPayCnt
+                , sum(if(RD.ProdCode = RD.ProdCodeSub, 0, 1)) as tPayPackCnt
                 , sum(RD.RemainPrice) as tRemainPrice
             ';
 
@@ -198,8 +199,9 @@ class SsamCalcModel extends BaseOrderModel
                 , TA.CompleteDatm, TA.RealPayPrice, TA.RefundDatm, TA.RefundPrice				
                 , TA.SalePatternCcd
                 , SP.ProdName as ProdNameSub
+                , if(TA.ProdCode = TA.ProdCodeSub, "단과", "패키지") as LecPackTypeName
                 , if(TA.RefundDatm is not null, "환불완료", "결제완료") as PayStatusName
-                , M.MemName, M.MemId
+                , M.MemName, M.MemId, fn_dec(M.PhoneEnc) as MemPhone
                 , CPC.CcdName as PayChannelCcdName
                 , CPR.CcdName as PayRouteCcdName
                 , CPM.CcdName as PayMethodCcdName

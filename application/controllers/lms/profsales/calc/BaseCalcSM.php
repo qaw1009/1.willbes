@@ -281,6 +281,7 @@ class BaseCalcSM extends \app\controllers\BaseController
         // 목록/상세 페이지별 조회조건
         if ($is_show === true) {
             $arr_condition['EQ']['TA.ProdCodeSub'] = $this->_reqP('search_prod_code_sub');  // 상품코드서브
+
             // 회원
             $arr_condition['ORG1'] = [
                 'EQ' => [
@@ -290,9 +291,18 @@ class BaseCalcSM extends \app\controllers\BaseController
                 ]
             ];
 
+            // 강좌구분 (단과/패키지)
+            if (empty($this->_reqP('search_lec_pack_type')) === false) {
+                if ($this->_reqP('search_lec_pack_type') == 'lecture') {
+                    $arr_condition['RAW']['TA.ProdCode ='] = ' TA.ProdCodeSub';
+                } else {
+                    $arr_condition['RAW']['TA.ProdCode !='] = ' TA.ProdCodeSub';
+                }
+            }
+
             // 결제상태 (전체/결제완료/환불완료)
             if (empty($this->_reqP('search_pay_status')) === false) {
-                if ($this->_reqP('search_pay_status') === 'refund') {
+                if ($this->_reqP('search_pay_status') == 'refund') {
                     $arr_condition['RAW']['TA.RefundDatm is'] = ' not null';
                 } else {
                     $arr_condition['RAW']['TA.RefundDatm is'] = ' null';
@@ -416,7 +426,7 @@ class BaseCalcSM extends \app\controllers\BaseController
         $arr_search_date = $this->_getSearchDate($search_date_param1, $search_date_param2, 1);
         $arr_condition = $this->_getListConditions($search_type, true);
         $order_by = $this->_getOrderListOrderBy();
-        $column = 'OrderNo, MemName, MemId, SalePatternCcdName, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
+        $column = 'OrderNo, MemName, MemId, MemPhone, LecPackTypeName, SalePatternCcdName, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, RealPayPrice, CompleteDatm, RefundPrice, RefundDatm, PayStatusName';
 
         // 임용통합 이후의 조회일자일 경우만 조회
         if ($arr_search_date[0] < $this->_limit_start_date) {
@@ -429,7 +439,7 @@ class BaseCalcSM extends \app\controllers\BaseController
         // 엑셀파일설정
         $file_name = $this->_calc_name . ($this->_is_student == 'Y' ? '수강생현황' : '배당현황');
         $file_name .= '_' . ($search_type == 'refund' ? '환불현황' : '수강생현황') . '_' . $this->session->userdata('admin_idx') . '_' . date('Y-m-d');
-        $headers = ['주문번호', '회원명', '회원아이디', '상품구분', '결제채널', '결제루트', '결제수단', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
+        $headers = ['주문번호', '회원명', '회원아이디', '휴대폰번호', '강좌구분', '상품구분', '결제채널', '결제루트', '결제수단', '결제금액', '결제완료일', '환불금액', '환불완료일', '결제상태'];
         $numerics = ['RealPayPrice', 'RefundPrice'];    // 숫자형 변환 대상 컬럼
 
         // download log

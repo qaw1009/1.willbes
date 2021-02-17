@@ -84,11 +84,11 @@
         </h3>
     </div>
     <div class="Depth">
-        <a href="#none"><img src="/public/img/willbes/sub/icon_home.gif"></a>
-        <span class="depth">
-            <span class="depth-Arrow">></span>
-            <strong>내강의실</strong>
-        </span>
+        <a href="#none">
+            <img src="/public/img/willbes/sub/icon_home.gif">
+            <strong> 내강의실</strong>
+        </a>
+        
         <span class="depth">
             <span class="depth-Arrow">></span>
             <strong>무한PASS존</strong>

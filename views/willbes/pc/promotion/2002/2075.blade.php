@@ -38,8 +38,8 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2075_top.jpg"  alt="3월 추천강좌" usemap="#Map2075_top" border="0" />
             <map name="Map2075_top" id="Map2075_top">
-                <area shape="rect" coords="194,746,538,935" href="#Map2075_02" />
-                <area shape="rect" coords="575,748,916,939" href="#Map2075_03" />
+                <area shape="rect" coords="194,746,538,935" href="#apply1" />
+                <area shape="rect" coords="575,748,916,939" href="#apply2" />
             </map>
         </div>
 
@@ -50,7 +50,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox evt02" >
+        <div class="evtCtnsBox evt02" id="apply1">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2075_02.jpg" alt="6개월 슈퍼패스" usemap="#Map2075_02" border="0" />
             <map name="Map2075_02" id="Map2075_02">
                 <area shape="rect" coords="151,465,303,519" href="https://police.willbes.net/pass/offPackage/show/prod-code/178693" target="_blank" />
@@ -59,7 +59,7 @@
             </map>
         </div> 
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03" id="apply2">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2075_03.jpg"  alt="과목개편 시험 대비" usemap="#Map2075_03" border="0" />
             <map name="Map2075_03" id="Map2075_03">
                 <area shape="rect" coords="135,1985,999,2142" href="https://police.willbes.net/pass/offPackage/show/prod-code/176433" target="_blank" />

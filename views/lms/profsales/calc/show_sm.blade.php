@@ -24,14 +24,19 @@
             ※ 해당 결제 금액은 회원이 결제한 실결제 금액입니다. 배분율이 적용되기전 상품 기준 결제금액이므로 정산금과 차이가 있을 수 있습니다.
         </div>
         <div class="col-md-5 form-inline text-right pt-10 pr-0">
+            <select class="form-control mr-10" id="search_lec_pack_type" name="search_lec_pack_type" title="강좌구분">
+                <option value="">강좌구분</option>
+                <option value="lecture">단과</option>
+                <option value="package">패키지</option>
+            </select>
             @if($search_type == 'all')
-                <select class="form-control mr-10" id="search_pay_status" name="search_pay_status">
+                <select class="form-control mr-10" id="search_pay_status" name="search_pay_status" title="결제상태">
                     <option value="">전체</option>
                     <option value="paid">결제완료</option>
                     <option value="refund">환불완료</option>
                 </select>
             @endif
-            <input type="text" class="form-control" id="search_value" name="search_value" placeholder="회원명, 아이디 검색" style="width: 40%;">
+            <input type="text" class="form-control" id="search_value" name="search_value" placeholder="회원명, 아이디 검색" title="회원검색어" style="width: 40%;">
             <button type="submit" class="btn btn-primary btn-sm mr-0" id="_btn_search">검 색</button>
             <button type="button" class="btn btn-success btn-sm mr-0" id="_btn_excel">엑셀다운로드</button>
         </div>
@@ -44,6 +49,8 @@
                     <th>NO</th>
                     <th>주문번호</th>
                     <th>회원정보</th>
+                    <th>휴대폰번호</th>
+                    <th>강좌구분</th>
                     <th>상품구분</th>
                     <th>결제채널</th>
                     <th>결제루트</th>
@@ -91,6 +98,8 @@
                     {'data' : 'MemName', 'render' : function(data, type, row, meta) {
                         return data + '(' + row.MemId + ')';
                     }},
+                    {'data' : 'MemPhone'},
+                    {'data' : 'LecPackTypeName'},
                     {'data' : 'SalePatternCcdName'},
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},

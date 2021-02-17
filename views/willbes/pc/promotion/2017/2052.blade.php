@@ -118,7 +118,7 @@
                                     <select name="register_data1" id="register_data1" class="seleDiv" style="width:100%;">
                                         <option value="">선택</option>
                                         @foreach($arr_base['subject'] as $key => $val)
-                                            @if($key <= $arr_base['max_subject_idx'])
+                                            @if($key <= $arr_base['max_subject_idx'] && $val != '교육학')
                                                 <option value="{{ $val }}">{{ $val }}</option>
                                             @endif
                                         @endforeach

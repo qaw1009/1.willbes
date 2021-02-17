@@ -2875,25 +2875,30 @@ body.memBody #Footer {
 	border-top: 1px solid #cfcfcf;
 	text-align: center;
 	padding: 20px 0;
+	margin-top:50px;
 }
 .ssam .ssamEtc a {
 	display: inline-block;
-	border-right: 2px solid #414141;
-	font-size: 16px;
-	padding: 0 15px;
+	font-size: 15px;
+	text-align: center;
 	letter-spacing: -1px;
+	width:26%;
 }
 .ssam .ssamEtc a:last-child {
 	border: 0;
 }
+.ssam .ssamEtc a img {display: block; margin:0 auto 10px; max-width:50px}
 
 .ssam .csCenter {
-	margin-top: 0;
+	margin: 0 10px;
 }
+.ssam .csCenter:after {content:''; display:block; clear:both}
 .ssam .csCenter li {
-	width: 50%;
+	width: calc(50% - 10%);
+	padding:0 5%;
+	
 }
-.csCenter li div.goTel div {
+.ssam .csCenter li div.goTel div {
 	font-size: 13px;
 }
 .ssam .csCenter li span {
@@ -3131,7 +3136,7 @@ body.memBody #Footer {
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	white-space: nowrap;	
 }
 .lecProfBox ul li .w-name {
 	font-size: 12px;
@@ -3663,7 +3668,7 @@ body.memBody #Footer {
 .lecTable .w-tit {
 	font-size: 14px;
 	color: #323232;
-	line-height: 1.5;
+	line-height: 1.5;	
 }
 .lecTable .pkg-tit span {
 	border: 1px solid #1a8ccc;
@@ -6798,7 +6803,6 @@ body.memBody #Footer {
 .mapArea .mapTitle {
 	font-size: 16px;
 	margin-top: 30px;
-	margin-bottom: 20px;
 }
 .mapArea .mapTitle p {
 	font-size: 12px;
@@ -6813,6 +6817,7 @@ body.memBody #Footer {
 	min-height: 30px;
 	padding-top: 12px;
 }
+
 .mapArea li:nth-child(1) {
 	background: url("https://static.willbes.net/public/images/promotion/m/icon_add.png")
 		no-repeat left top;
@@ -6821,6 +6826,17 @@ body.memBody #Footer {
 	background: url("https://static.willbes.net/public/images/promotion/m/icon_tel2.png")
 		no-repeat left top;
 }
+
+.ssamMapArea li {padding:20px 0; margin:0}
+.ssamMapArea li:nth-child(1) {
+	background: url("https://static.willbes.net/public/images/promotion/m/2017/mapIcon01.png") no-repeat left center; background-size: 30px; padding-left:40px;
+	border-bottom:1px solid #ececec;
+}
+.ssamMapArea li:nth-child(2) {
+	background: url("https://static.willbes.net/public/images/promotion/m/2017/mapIcon02.png") no-repeat left center; background-size: 30px; padding-left:40px;
+	font-size:30px
+}
+
 .location_map {
 	width: 100%;
 	height: 500px;
@@ -6940,8 +6956,7 @@ body.memBody #Footer {
 	height: 28px;
 	font-size: 0;
 	text-indent: -9999px;
-	background: url("../../../img/willbes/m/main/icon_search.png") no-repeat
-		center center;
+	background: url("../../../img/willbes/m/main/icon_search.png") no-repeat center center;
 	background-size: 18px;
 	display: block;
 	z-index: 1;
@@ -7238,21 +7253,24 @@ span.calendar_btn {
 	clear: both;
 }
 .w-Guide-Ssam .tabSsam {
-	border: 0;
+	border-top:1px solid #ccc;	
 }
 .w-Guide-Ssam .tabSsam li {
-	width: auto;
-	margin-bottom: 5px;
+	/*width: auto;
+	margin-bottom: 5px;*/
+	margin:0; border:0; padding:0;
+	display: inline; float:left; width:25%;
 }
 .w-Guide-Ssam .tabSsam li a {
-	padding: 5px 10px;
-	border: 0;
+	display:block;
+	padding: 10px 0;
+	border:0;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 .w-Guide-Ssam .tabSsam li a.on {
-	background: #06b7b1;
-	color: #fff;
-	border-radius: 5px;
-}
+	background: #f6f6f6;
+	color: #000;}
 .w-Guide-Ssam .tabBox .guideBtn {
 	position: absolute;
 	top: 0;
@@ -7322,15 +7340,25 @@ span.calendar_btn {
 }
 .w-Guide-Ssam .guidebox td a.btn01 {
 	display: inline-block;
-	padding: 5px 10px;
-	font-size: 11px;
+	padding: 5px 25px 5px 0;
 	border-radius: 4px;
-	background-color: #2b4ab8;
-	color: #fff;
+	background: url("https://static.willbes.net/public/images/promotion/m/2017/icon_down.png") no-repeat right center;
 }
 .w-Guide-Ssam .listTable select {
 	padding: 5px;
 }
+.w-Guide-Ssam .lecTable .w-tit {margin-right:40px;}
+.w-Guide-Ssam .lecTable tr td.w-data div.download {width:50px;}
+.w-Guide-Ssam .lecTable tr td.w-data div.download a {
+	display: block;
+	width:100%;
+	background:url("https://static.willbes.net/public/images/promotion/m/2017/icon_down.png") no-repeat center top !important;
+	font-size: 12px;
+	text-indent: 0;
+	padding-top:20px;
+	text-align: center;
+}
+
 .trendData {
 	margin-top: 20px;
 }
@@ -7359,9 +7387,12 @@ span.calendar_btn {
 /*임용 대학특강, 교수채용 */
 .w-Guide-Ssam .request_con {
 	text-align: center;
-	margin-top: 90px;
+	padding-top: 90px;
 	word-break: keep-all;
+	line-height: 1.3;	
 }
+.w-Guide-Ssam .request_con.bg01 {background-color: #f9f0e4;}
+.w-Guide-Ssam .request_con.bg02 {background-color: #e3f5fb;}
 .w-Guide-Ssam .request_con > .txt01 {
 	font-size: 12px;
 	color: #b5caf2;
@@ -7394,7 +7425,7 @@ span.calendar_btn {
 .w-Guide-Ssam .request_con .request_txtWrap {
 	padding: 45px 0;
 	background: #fff;
-	margin-top: 25px;
+	margin-top: 90px;
 	text-align: center;
 }
 .w-Guide-Ssam .request_con .request_txtWrap .txt01 {

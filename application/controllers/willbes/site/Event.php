@@ -965,4 +965,28 @@ class Event extends \app\controllers\FrontController
         $this->json_result($result, '삭제 되었습니다.', $result);
     }
 
+    /**
+    * 프로모션 신청리스트 팝업
+    * @param array $param
+    */
+    public function showThumbnailPopup($param = [])
+    {
+        if (empty($param) === true) {
+            return $this->json_error('잘못된 접근 입니다.');
+        }
+
+        $arr_condition = [
+            'EQ' => [
+                'A.EmIdx' => $param[0],
+                'A.IsStatus' => 'Y',
+                'B.IsStatus' => 'Y',
+            ],
+        ];
+        $data = $this->eventFModel->listRegisterMember(false, $arr_condition);
+
+        return $this->load->view('/promotion/register_thumbnail_popup',[
+            'data' => $data
+        ]);
+    }
+
 }

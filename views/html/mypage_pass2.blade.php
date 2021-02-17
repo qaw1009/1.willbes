@@ -84,10 +84,14 @@
         </h3>
     </div>
     <div class="Depth">
-        <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth">
-            <span class="depth-Arrow">></span><strong>내강의실</strong>
-            <span class="depth-Arrow">></span><strong>무한PASS존</strong>
+        <a href="#none"><img src="/public/img/willbes/sub/icon_home.gif"></a>
+        <span class="depth">
+            <span class="depth-Arrow">></span>
+            <strong>내강의실</strong>
+        </span>
+        <span class="depth">
+            <span class="depth-Arrow">></span>
+            <strong>무한PASS존</strong>
         </span>
     </div>
 
@@ -387,6 +391,8 @@
             샘플파일로 프린터 연결상태, 설정(용지크기)등을 확인 후 출력하시기 바랍니다.</p>
             <a href="#none">샘플 인쇄</a>
         </div>
+
+        <div class="c_both mt40 tx-right"><a href="#none" class="bdb-dark-gray pb5">다른 수강강좌 보기 →</a></div>
 
         <div class="willbes-Leclist c_both mt40">
             <div class="LeclistTable">

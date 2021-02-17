@@ -81,7 +81,7 @@
                                 @endif
                             </div>
                             <div class="imgBox">
-                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지" style="width: 100%; "/>
+                                <img src="{{ $row['FileFullPath'] }}" alt="인증이미지" style="width: 100%; cursor: pointer" onclick="showPopup('{{ $row['EmIdx'] }}')"/>
                             </div>
                         </div>
                     </li>
@@ -127,4 +127,8 @@
 
         return false;
     });
+
+    function showPopup(em_idx) {
+        popupOpen('{{front_url('/event/showThumbnailPopup/')}}' + em_idx, 'thumbnail', 1000, 800, null, null, 'yes', 'no');
+    }
 </script>

@@ -1,9 +1,9 @@
         <div class="tabBox NG">
             <ul class="tabShow">
-                <li><a href="#ssam_guide1" class="on">임용시험이란?</a></li>
-                <li><a href="#ssam_guide2">한국사 능력 검정시험 안내</a></li>
-                <li><a href="#ssam_guide3">유아·초등임용시험개요</a></li>
-                <li><a href="#ssam_guide4">중등임용시험개요</a></li>
+                <li><a href="#ssam_guide1" class="on">교원 임용시험 안내</a></li>
+                <li><a href="#ssam_guide2">한국사 능력 검정 시험 안내</a></li>
+                <li><a href="#ssam_guide3">유아·초등 임용 시험 개요</a></li>
+                <li><a href="#ssam_guide4">중등 임용 시험 개요</a></li>
             </ul>                
         </div>
         <div class="tabContent GM">

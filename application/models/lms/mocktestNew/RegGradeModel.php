@@ -101,6 +101,12 @@ class RegGradeModel extends WB_Model
             fn_ccd_name(MP.AcceptStatusCcd) AS AcceptStatusCcd,
             C1.CateName, C1.IsUse AS IsUseCate, SC1.CcdName As AcceptStatusCcd_Name,
             MGL.LastGradesUpdAdminId, MGL.LastGradesUpdAdminName, MGL.LastGradesUpdDatm, ST.SiteName
+            ,(
+                SELECT COUNT(*) AS mp_cnt
+                FROM {$this->_table['product_mock_r_paper']} AS a
+                INNER JOIN {$this->_table['mock_questions']} AS b ON a.MpIdx = b.MpIdx AND b.IsStatus = 'Y'
+                WHERE a.ProdCode = '{$prod_code}' AND a.IsStatus = 'Y'
+            ) AS TotalCountQuestion
         ";
 
         $from = "
@@ -123,6 +129,105 @@ class RegGradeModel extends WB_Model
         ";
         $query = $this->_conn->query('select ' . $column . $from . $where);
         return $query->row_array();
+    }
+
+    /**
+     * 중복된 OFF답안정보 조회
+     * @param $prod_code
+     * @param $answer_count
+     * @return mixed
+     */
+    public function OverAnswerpaperForOffMember($prod_code, $answer_count)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'MR.ProdCode' => $prod_code,
+                'MR.IsStatus' => 'Y'
+            ]
+        ];
+
+        $where = $this->_conn->makewhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $column = 'MB.MemId, MB.MemName, MR.MrIdx, COUNT(*) AS AnswerCnt';
+        $from = "
+            FROM {$this->_table['mock_product']} AS PM
+            JOIN {$this->_table['mock_register']} AS MR ON PM.ProdCode = MR.ProdCode AND MR.IsStatus = 'Y' AND MR.TakeForm = '{$this->_take_form_ccd}'
+            JOIN {$this->_table['mock_answerpaper']} AS MA ON MR.MrIdx = MA.MrIdx AND MR.ProdCode = MA.Prodcode
+            JOIN {$this->_table['lms_member']} AS MB ON MR.MemIdx = MB.MemIdx
+        ";
+        $etc_query = "
+            GROUP BY MR.MrIdx
+            HAVING AnswerCnt > {$answer_count}
+        ";
+        $order_by = $this->_conn->makeOrderBy(['MR.MrIdx' => 'ASC'])->getMakeOrderBy();
+
+        return $this->_conn->query('select ' . $column . $from . $where . $etc_query . $order_by)->result_array();
+    }
+
+    /**
+     * 중복문항 삭제
+     * @param array $form_data
+     * @return array|bool
+     */
+    public function deleteAnswerPaper($form_data = [])
+    {
+        $this->_conn->trans_begin();
+        try {
+            $arr_mr_idx = json_decode($form_data['params'], true);
+            $arr_condition = [
+                'EQ' => [
+                    'a.ProdCode' => element('prod_code', $form_data),
+                    'a.TakeForm' => $this->_take_form_ccd
+                ],
+                'IN' => [
+                    'a.MrIdx' => $arr_mr_idx
+                ]
+            ];
+            $where = $this->_conn->makewhere($arr_condition);
+            $where = $where->getMakeWhere(false);
+
+            $from = "
+                FROM {$this->_table['mock_register']} as a
+            ";
+            $data = $this->_conn->query('select MrIdx' . $from . $where)->result_array();
+            if (empty($data) === true) {
+                throw new Exception('조회된 데이터가 없습니다.');
+            }
+
+            //log 저장
+            $log_query_string = "
+                lms_mock_answerpaper_delete_log (
+                    MapIdx,MemIdx,MrIdx,ProdCode,MpIdx,MqIdx,LogIdx,Answer,IsWrong,TakeForm,RegDatm,LogDatm,RegAdminIdx,RegIp
+                )
+                SELECT
+                    b.MapIdx,b.MemIdx,b.MrIdx,b.ProdCode,b.MpIdx,b.MqIdx,b.LogIdx,b.Answer,b.IsWrong,b.TakeForm,b.RegDatm
+                    ,'".date('Y-m-d H:i:s')."' as LogDatm
+                    ,'".$this->session->userdata('admin_idx')."' AS RegAdminIdx
+                    ,'".$this->input->ip_address()."' AS RegIp
+                FROM {$this->_table['mock_register']} AS a
+                INNER JOIN {$this->_table['mock_answerpaper']} AS b ON a.ProdCode = b.ProdCode AND a.MrIdx = b.MrIdx
+            ";
+            $result = $this->_conn->query('INSERT INTO' . $log_query_string . $where . ' ORDER BY b.MapIdx ASC');
+            if ($result !== true) {
+                throw new Exception('로그저장 실패입니다.');
+            }
+            
+            //삭제
+            $is_del_my_answerpaper = $this->_conn->where('ProdCode', element('prod_code', $form_data))
+                ->where('TakeForm', $this->_take_form_ccd)
+                ->where_in('MrIdx', $arr_mr_idx)
+                ->delete($this->_table['mock_answerpaper']);
+            if ($is_del_my_answerpaper === false) {
+                throw new \Exception('등록된 응시자 성적 삭제 실패했습니다.');
+            }
+            
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+        return true;
     }
 
     /**

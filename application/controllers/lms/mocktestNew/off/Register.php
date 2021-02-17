@@ -174,9 +174,13 @@ class Register extends BaseMocktest
         $product_info['TakePart_on'] = (in_array($applyType_on, $takeFormsCcds)) ? 'Y' : 'N';
         $product_info['TakePart_off'] = (in_array($applyType_off, $takeFormsCcds)) ? 'Y' : 'N';
 
+        //중복데이터 조회
+        $over_answerpaper_member_list = $this->regGradeModel->OverAnswerpaperForOffMember($prod_code, $product_info['TotalCountQuestion']);
+
         $this->load->view('mocktestNew/off/register/create_score', [
             'product_info' => $product_info,
             'prod_code' => $prod_code,
+            'over_answerpaper_member_list' => $over_answerpaper_member_list
         ]);
     }
 
@@ -200,6 +204,23 @@ class Register extends BaseMocktest
             'recordsFiltered' => $count,
             'data' => $data,
         ]);
+    }
+
+    /**
+     * 중복과목삭제
+     * @return CI_Output
+     */
+    public function deleteAnswerPaper()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'prod_code', 'label' => '모의고사코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'params', 'label' => '모의고사접수식별자', 'rules' => 'trim|required'],
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->regGradeModel->deleteAnswerPaper($this->_reqP(null));
+        return $this->json_result($result, '정상 삭제 되었습니다', $result);
     }
 
     /**

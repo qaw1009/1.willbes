@@ -4,58 +4,54 @@
     <h5 class="mt-20">- 모의고사 기준으로 오프라인 응시자 성적을 등록하는 메뉴입니다.</h5>
     <div class="x_panel">
         <div class="form-group">
-            <div class="pull-left mb-5"><h2>모의고사 정보</h2></div>
+            <div class="pull-left mb-5"><h5>모의고사 정보</h5></div>
             <div id='btnarea' class="pull-right text-right form-inline mb-5">
                 <button class="btn btn-sm btn-success" id="btn_list">목록</button>
             </div>
         </div>
         <div class="form-group">
-            <div class="x_content">
-                <div class="form-group">
-                    <table class="table table-bordered">
-                        <thead class="bg-white-gray">
-                        <tr>
-                            <th rowspan="2" class="valign-middle">운영사이트</th>
-                            <th rowspan="2" class="valign-middle">카테고리</th>
-                            <th rowspan="2" class="valign-middle">직렬</th>
-                            <th rowspan="2" class="valign-middle">연도</th>
-                            <th rowspan="2" class="valign-middle">회차</th>
-                            <th rowspan="2" class="valign-middle">모의고사명</th>
-                            <th rowspan="2" class="valign-middle">응시가능기간</th>
-                            <th rowspan="2" class="valign-middle">시험시간</th>
-                            <th colspan="2" class="valign-middle">응시형태</th>
-                            <th rowspan="2" class="valign-middle">성적오픈일</th>
-                            {{--<th rowspan="2" class="valign-middle">등록자<<br>(최종수정자)</th>
-                            <th rowspan="2" class="valign-middle">등록일<<br>(최종수정일)</th>--}}
-                        </tr>
-                        <tr>
-                            <th class="valign-middle">Online</th>
-                            <th class="valign-middle">Off</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{{ $product_info['SiteName'] }}</td>
-                            <td>{{ $product_info['CateName'] }}</td>
-                            <td>
-                                @foreach($product_info['MockPartName'] as $key => $row)
-                                    {{ $row }}<br>
-                                @endforeach
-                            </td>
-                            <td>{{$product_info['MockYear']}}</td>
-                            <td>{{$product_info['MockRotationNo']}}</td>
-                            <td>{{$product_info['ProdName']}}</td>
-                            <td>{{$product_info['SETIME'] }}</td>
-                            <td>{{$product_info['TakeStr'] }}</td>
-                            <td>{{$product_info['TakePart_on']}}</td>
-                            <td>{{$product_info['TakePart_off']}}</td>
-                            {{--<td>{{$product_info['USERCNT']}}</td>--}}
-                            <td>{{$product_info['GradeOpenDatm']}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <table class="table table-bordered">
+                <thead class="bg-white-gray">
+                <tr>
+                    <th rowspan="2" class="valign-middle">운영사이트</th>
+                    <th rowspan="2" class="valign-middle">카테고리</th>
+                    <th rowspan="2" class="valign-middle">직렬</th>
+                    <th rowspan="2" class="valign-middle">연도</th>
+                    <th rowspan="2" class="valign-middle">회차</th>
+                    <th rowspan="2" class="valign-middle">모의고사명</th>
+                    <th rowspan="2" class="valign-middle">응시가능기간</th>
+                    <th rowspan="2" class="valign-middle">시험시간</th>
+                    <th colspan="2" class="valign-middle">응시형태</th>
+                    <th rowspan="2" class="valign-middle">성적오픈일</th>
+                    {{--<th rowspan="2" class="valign-middle">등록자<<br>(최종수정자)</th>
+                    <th rowspan="2" class="valign-middle">등록일<<br>(최종수정일)</th>--}}
+                </tr>
+                <tr>
+                    <th class="valign-middle">Online</th>
+                    <th class="valign-middle">Off</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ $product_info['SiteName'] }}</td>
+                    <td>{{ $product_info['CateName'] }}</td>
+                    <td>
+                        @foreach($product_info['MockPartName'] as $key => $row)
+                            {{ $row }}<br>
+                        @endforeach
+                    </td>
+                    <td>{{$product_info['MockYear']}}</td>
+                    <td>{{$product_info['MockRotationNo']}}</td>
+                    <td>{{$product_info['ProdName']}}</td>
+                    <td>{{$product_info['SETIME'] }}</td>
+                    <td>{{$product_info['TakeStr'] }}</td>
+                    <td>{{$product_info['TakePart_on']}}</td>
+                    <td>{{$product_info['TakePart_off']}}</td>
+                    {{--<td>{{$product_info['USERCNT']}}</td>--}}
+                    <td>{{$product_info['GradeOpenDatm']}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -107,11 +103,56 @@
         </div>
     </div>
 
+    <div class="x_panel">
+        <div class="form-group">
+            <div class="pull-left mb-5">
+                <h5><span class="red">OFF성적 중복리스트</span></h5>
+                <li>삭제된 성적은 '엑셀업로드'기능으로 다시 재등록하시기 바랍니다.</li>
+                <li>재등록 후 반드시 조정점수 반영을 해야 성적처리가 정상처리됩니다.</li>
+            </div>
+        </div>
+        <div class="form-group">
+            <form class="form-horizontal" id="delete_form" name="delete_form" method="POST" onsubmit="return false;">
+                {!! csrf_field() !!}
+                <input type="hidden" name="prod_code" value="{{ $product_info['ProdCode'] }}">
+
+                <table id="member_list_table" class="table table-bordered table-striped">
+                    <thead class="bg-white-gray">
+                    <tr>
+                        <th>선택</th>
+                        <th>응시코드</th>
+                        <th>회원아이디</th>
+                        <th>회원명</th>
+                        <th>답안수</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($over_answerpaper_member_list as $row)
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="is_delete" value="1" class="flat" data-mr-idx="{{ $row['MrIdx'] }}">
+                            </td>
+                            <td>{{ $row['MrIdx'] }}</td>
+                            <td>{{ $row['MemId'] }}</td>
+                            <td>{{ $row['MemName'] }}</td>
+                            <td>{{ $row['AnswerCnt'] }}</td>
+                        </tr>
+                    @empty
+                    @endforelse
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
     <script type="text/javascript">
-        var $datatable;
+        var $datatable, $member_datatable;
         var $search_form = $('#search_form');
         var $list_table = $('#list_table');
         var $invoice_form = $('#invoice_form');
+
+        var $delete_form = $('#delete_form');
+        var $member_list_table = $('#member_list_table');
 
         $(document).ready(function() {
             // DataTables
@@ -142,6 +183,18 @@
                 ]
             });
 
+            // DataTables
+            $member_datatable = $('#member_list_table').DataTable({
+                serverSide: false,
+                buttons: [
+                    { text: '<i class="fa fa-pencil mr-5"></i> 삭제', className: 'btn-sm btn-danger border-radius-reset mr-15 btn-delete' }
+                ],
+                ajax: false,
+                paging: true,
+                pageLength: 10,
+                searching: false
+            });
+
             // 목록 이동
             $('#btn_list').on('click', function() {
                 location.replace('{{ site_url('/mocktestNew/off/register/') }}' + getQueryString());
@@ -156,6 +209,42 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 formCreateSubmit('{{ site_url('mocktestNew/off/register/excel') }}', $search_form.serializeArray(), 'POST');
+            });
+
+            //중복성적데이터 삭제
+            $('.btn-delete').on('click', function() {
+                if (!confirm('삭제하시겠습니까?')) {
+                    return;
+                }
+
+                var $is_delete = $member_list_table.find('input[name="is_delete"]');
+                var $params = [];
+                var _url = '{{ site_url("/mocktestNew/off/register/deleteAnswerPaper") }}';
+
+                $is_delete.each(function(idx) {
+                    if (typeof $(this).filter(':checked').val() !== 'undefined') {
+                        $params.push($(this).data('mr-idx'));
+                    }
+                });
+
+                if (Object.keys($params).length < 1) {
+                    alert('삭제할 데이터를 선택해주세요.');
+                    return;
+                }
+
+                var data = {
+                    '{{ csrf_token_name() }}' : $delete_form.find('input[name="{{ csrf_token_name() }}"]').val(),
+                    '_method' : 'DELETE',
+                    'prod_code' : $delete_form.find('input[name="prod_code"]').val(),
+                    'params' : JSON.stringify($params)
+                };
+
+                sendAjax(_url, data, function(ret) {
+                    if (ret.ret_cd) {
+                        alert(ret.ret_msg);
+                        location.reload();
+                    }
+                }, showError, false, 'POST');
             });
         });
 

@@ -373,19 +373,18 @@
                                             <div class="w-sp"><a href="#none">맛보기</a></div>
                                             <ul class="priceWrap">
                                                 <li>
-                                                    <span class="select">[PC]</span>
-                                                    <span class="price tx-blue">7,000원</span>
-                                                    <span class="discount">(↓20%)</span>
+                                                    <span class="select">PC</span>
+                                                    <span class="dcprice">80,000원</span>
                                                 </li>
                                                 <li> 
-                                                    <span class="select">[모바일]</span>
-                                                    <span class="price tx-blue">80,000원</span>
-                                                    <span class="discount">(↓10%)</span>
+                                                    <span class="select">모바일</span>
+                                                    <span class="dcprice">80,000원</span>
                                                 </li>
                                                 <li> 
-                                                    <span class="select">[PC+모바일]</span>
-                                                    <span class="price tx-blue">121,000원</span>
-                                                    <span class="discount">(↓15%)</span>
+                                                    <span class="select">PC+모바일</span>
+                                                    <span class="price">121,000원</span>
+                                                    <span class="discount">15% ↓</span>
+                                                    <span class="dcprice">121,000원</span>
                                                 </li>
                                             </ul>
                                             <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -665,19 +664,18 @@
                                             <div class="w-sp"><a href="#none">맛보기</a></div>
                                             <ul class="priceWrap">
                                                 <li>
-                                                    <span class="select">[PC]</span>
-                                                    <span class="price tx-blue">7,000원</span>
-                                                    <span class="discount">(↓20%)</span>
+                                                    <span class="select">PC</span>
+                                                    <span class="dcprice">80,000원</span>
                                                 </li>
                                                 <li> 
-                                                    <span class="select">[모바일]</span>
-                                                    <span class="price tx-blue">80,000원</span>
-                                                    <span class="discount">(↓10%)</span>
+                                                    <span class="select">모바일</span>
+                                                    <span class="dcprice">80,000원</span>
                                                 </li>
                                                 <li> 
-                                                    <span class="select">[PC+모바일]</span>
-                                                    <span class="price tx-blue">121,000원</span>
-                                                    <span class="discount">(↓15%)</span>
+                                                    <span class="select">PC+모바일</span>
+                                                    <span class="price">121,000원</span>
+                                                    <span class="discount">15% ↓</span>
+                                                    <span class="dcprice">121,000원</span>
                                                 </li>
                                             </ul>
                                             <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -746,8 +744,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">156,000원</span>
-                                                <span class="discount">(↓40%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -789,8 +788,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">156,000원</span>
-                                                <span class="discount">(↓40%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -830,8 +830,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">72,000원</span>
-                                                <span class="discount">(↓60%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -885,8 +886,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">156,000원</span>
-                                                <span class="discount">(↓40%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -928,8 +930,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">156,000원</span>
-                                                <span class="discount">(↓40%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -969,8 +972,9 @@
                                         </td>
                                         <td class="w-notice">
                                             <div class="priceWrap">
-                                                <span class="price tx-blue">72,000원</span>
-                                                <span class="discount">(↓60%)</span>
+                                                <span class="price">156,000원</span>
+                                                <span class="discount">15% ↓</span>
+                                                <span class="dcprice">121,000원</span>
                                             </div>
                                         </td>
                                     </tr>

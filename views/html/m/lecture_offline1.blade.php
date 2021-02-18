@@ -108,9 +108,13 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                                                              
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -128,9 +132,11 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>                        
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -159,9 +165,13 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                          
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -179,9 +189,13 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                                                              
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -209,9 +223,13 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                           
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -229,9 +247,13 @@
                                 </div>
                                 <dl class="w-info tx-gray">                                
                                     <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                    <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                    <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                           
                                 </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="three">
                                         <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>

@@ -106,9 +106,12 @@
                                 <dl class="w-info tx-gray">
                                     <dt>학원실강의 : 2020년 1월</dt><br>
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="two">
                                         <li class="btn_blue"><a href="#none">바로결제</a></li>
@@ -125,9 +128,12 @@
                                 <dl class="w-info tx-gray">
                                     <dt>학원실강의 : 2020년 1월</dt><br>
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="w-buy">       
                                     <ul class="two">
                                         <li class="btn_blue"><a href="#none">바로결제</a></li>
@@ -153,9 +159,12 @@
                             <dl class="w-info tx-gray">
                                 <dt>학원실강의 : 2020년 1월</dt><br>
                                 <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt><br>
-                                <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                PC+모바일 :
+                                <span class="dcprice">0원</span>                                          
+                            </div>
                             <div class="w-buy">       
                                 <ul class="two">
                                     <li class="btn_blue"><a href="#none">바로결제</a></li>
@@ -182,6 +191,10 @@
                                 <dt>강의수 : <span class="tx-blue">8강</span><span class="row-line">|</span></dt>
                                 <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                PC+모바일 :
+                                <span class="dcprice">0원</span>                                          
+                            </div>
                             <div class="w-buy">       
                                 <ul class="two">
                                     <li class="btn_blue"><a href="#none">바로결제</a></li>

@@ -63,9 +63,12 @@
                                         <dt>강의수 : <span class="tx-blue">39강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">완강</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <div class="OTclass mr10"><span>직장인/재학생반</span></div>
@@ -80,9 +83,12 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -96,9 +102,12 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -112,9 +121,12 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                             </td>
                         </tr>                   
@@ -152,9 +164,12 @@
                                         <dt>강의수 : <span class="tx-blue">39강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span> <span class="NSK nBox n2">완강</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <div class="OTclass mr10"><span>직장인/재학생반</span></div>
@@ -188,9 +203,12 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -204,9 +222,12 @@
                                         <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        PC+모바일 : 
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                             </td>
                         </tr>                   
@@ -238,9 +259,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -253,9 +276,9 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -268,9 +291,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -283,9 +308,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                             </td>
                         </tr>                  
@@ -317,9 +344,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -332,9 +361,9 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -347,9 +376,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                                 <div class="oneBox">
                                     <dl class="w-info">
@@ -362,9 +393,11 @@
                                         <dt>개강일 : <span class="tx-blue">2020년 3월</span><span class="row-line">|</span></dt>
                                         <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>                                
                                     </dl>
-                                    <ul>
-                                        <li class="mb10"><span class="tx-blue">90,000원</span>(↓0%)</li>
-                                    </ul>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </div>
                             </td>
                         </tr>                  

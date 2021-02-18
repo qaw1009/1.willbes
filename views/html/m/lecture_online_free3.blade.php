@@ -105,9 +105,12 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">    
                                     <a href="#none" class="view">보강동영상 보기</a>                                
                                 </div>
@@ -121,9 +124,12 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">       
                                     <p>보강동영상 비밀번호 입력</p>
                                     <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
@@ -139,9 +145,12 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">    
                                     <a href="#none" class="view bg-gray-purple">무료강의 보기</a>                                
                                 </div>
@@ -165,9 +174,12 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">       
                                     <p>보강동영상 비밀번호 입력</p>
                                     <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
@@ -183,9 +195,12 @@
                                 </div>
                                 <dl class="w-info tx-gray">
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt><br>
-                                    <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">완강</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">       
                                     <p>보강동영상 비밀번호 입력</p>
                                     <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
@@ -213,6 +228,10 @@
                                     <dt>강의수 : <span class="tx-blue">8강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">       
                                     <p>보강동영상 비밀번호 입력</p>
                                     <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">
@@ -230,6 +249,10 @@
                                     <dt>강의수 : <span class="tx-blue">8강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                 </dl>
+                                <div class="priceWrap">
+                                    PC+모바일 :
+                                    <span class="dcprice">0원</span>                                          
+                                </div>
                                 <div class="freeLecPass">       
                                     <p>보강동영상 비밀번호 입력</p>
                                     <input type="password" id="" name="" placeholder="비밀번호" maxlength="30">

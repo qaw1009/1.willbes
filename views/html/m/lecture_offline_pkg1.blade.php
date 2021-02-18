@@ -78,9 +78,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                <dt><span class="tx-blue">350,000원</span>(↓50%)</dt>
+                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -93,9 +97,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -108,9 +116,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>                    
                 </tbody>

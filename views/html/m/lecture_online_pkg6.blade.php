@@ -65,9 +65,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강일 <span class="tx-blue">2020년 3월</span> <span class="row-line">|</span></dt>
-                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                <dt><span class="tx-blue">190,000원</span>(↓ 230,000원)</dt>
+                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -77,9 +81,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강일 <span class="tx-blue">2020년 3월</span> <span class="row-line">|</span></dt>
-                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                <dt><span class="tx-blue">190,000원</span>(↓ 230,000원)</dt>
+                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -89,9 +97,13 @@
                             </div>
                             <dl class="w-info tx-gray">
                                 <dt>개강일 <span class="tx-blue">2020년 3월</span> <span class="row-line">|</span></dt>
-                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                <dt><span class="tx-blue">190,000원</span>(↓ 230,000원)</dt>
+                                <dt>수강기간 <span class="tx-blue">120일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                             </dl>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>                    
                 </tbody>

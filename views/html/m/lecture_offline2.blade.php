@@ -56,8 +56,10 @@
                         <label>[판매]</label>
                         <input type="checkbox" id="" name="">
                     </span>
-                    <div class="priceWrap NG">
-                        456,000원 (↓0%) ▶<span class="tx-blue">456,000원</span>                        
+                    <div class="priceWrap">
+                        <span class="price">80,000원</span>
+                        <span class="discount">20% ↓</span>
+                        <span class="dcprice">64,000원</span>                                          
                     </div>
                 </li>
             </ul>

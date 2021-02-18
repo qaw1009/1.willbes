@@ -26,7 +26,7 @@
 
     <div class="Section Section2">
         <div class="widthAuto">
-            <iframe src="https://www.youtube.com/embed/Oqc0yoIIIsw?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            <iframe src="https://www.youtube.com/embed/sYw3MWvWhwM?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
 
@@ -48,6 +48,7 @@
         </div>     
     </div>
 
+    {{--
     <div class="Section Section5">
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/3093_visual05.jpg" alt="" usemap="#Map3093B" border="0">
@@ -56,6 +57,7 @@
             </map>
         </div>
     </div>
+    --}}
 
     <div class="Section Section6">
         <div class="widthAuto">

@@ -16,7 +16,8 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed; top:230px;right:10px; width:200px; z-index:10;}
+        .sky {position:fixed; top:250px;right:10px; width:200px; z-index:10;}
+        .sky a {display:block;margin-bottom:15px;}
 
         .evtContent .intro {background:url("https://static.willbes.net/public/images/promotion/2020/11/1895_intro_bg.jpg") center top no-repeat; height:870px; position:relative}
         .evtContent .intro .number {width:1120px; margin:0 auto; position:relative}
@@ -37,15 +38,22 @@
         .wb_01s {background:#fff url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
 
         .wb_04  {background:#E1D3CA;}
+
+        .wb_05  {background:#E1D3CA;}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
-        <div class="sky">         
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1899_sky.png" alt="고급영어 & 이론패키지" usemap="#Map1899_sky" border="0" >
-            <map name="Map1899_sky" id="Map1899_sky">
-                <area shape="rect" coords="0,0,163,217" href="#lecbuy" />
-                <area shape="rect" coords="0,229,180,465" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank"> 
-            </map>                        
+        <div class="sky">           
+            <a href="#to_go">
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky01.png" alt="" >     
+            </a>      
+            <a href="#apply">
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky02.png" alt="" >     
+            </a>    
+            <a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky03.png" alt="" >     
+            </a>              
         </div>     
 
         <div class="evtCtnsBox intro">
@@ -87,13 +95,21 @@
 			</map>
         </div>	
 
-        <div class="evtCtnsBox wb_04" id="lecbuy">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_04.jpg" alt="수강신청" usemap="#Map1899a" border="0" />
-            <map name="Map1899a" id="Map1899a">
-                <area shape="rect" coords="218,843,432,909" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174277" target="_blank" alt="기초영어"/>
-                <area shape="rect" coords="689,841,903,907" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/174276" target="_blank" alt="고급영어"/>
-                <area shape="rect" coords="214,1503,439,1571" href="javascript:alert('Comimg Soon :)')" alt="기출문제"/>
-                <area shape="rect" coords="687,1505,907,1571" href="javascript:alert('Comimg Soon :)')" alt="예상문제"/>
+        <div class="evtCtnsBox wb_04" id="to_go">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_04.jpg" alt="패키지 바로 구매하기" usemap="#Map1899_buy" border="0"/>
+            <map name="Map1899_buy" id="Map1899_buy">
+                <area shape="rect" coords="226,898,496,958" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/179260" target="_blank" />
+            </map>
+        </div>  
+
+        <div class="evtCtnsBox wb_05" id="apply">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_05.jpg" alt="수강신청" usemap="#Map1899_apply" border="0"/>
+            <map name="Map1899_apply" id="Map1899_apply">
+                <area shape="rect" coords="266,594,474,655" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178820" target="_blank" />
+                <area shape="rect" coords="671,596,878,653" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178819" target="_blank" />
+                <area shape="rect" coords="88,1262,295,1319" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178490" target="_blank" />
+                <area shape="rect" coords="471,1261,680,1321" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179257" target="_blank" />
+                <area shape="rect" coords="843,1260,1052,1321" href="javascript:alert('Coming Soon!')" />
             </map>
         </div>  
 

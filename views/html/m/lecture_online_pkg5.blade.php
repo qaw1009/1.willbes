@@ -62,8 +62,12 @@
                                             수강기간 <span class="tx-blue">50일</span> 
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
-                                        <dt>
+                                        <dt class="priceWrap">
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </dt>
+                                        <dt class="c_both">
                                             <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
@@ -110,8 +114,12 @@
                                             수강기간 <span class="tx-blue">50일</span> 
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
-                                        <dt>
+                                        <dt class="priceWrap">
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </dt>
+                                        <dt class="c_both">
                                             <a href="#none" class="lecView" onclick="openWin('LecDetailPop')">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
@@ -152,8 +160,12 @@
                                             수강기간 <span class="tx-blue">50일</span> 
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
-                                        <dt>
+                                        <dt class="priceWrap">
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </dt>
+                                        <dt class="c_both">
                                             <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
@@ -200,8 +212,12 @@
                                             수강기간 <span class="tx-blue">50일</span> 
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
-                                        <dt>
+                                        <dt class="priceWrap">
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </dt>
+                                        <dt class="c_both">
                                             <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
@@ -307,8 +323,12 @@
                                             수강기간 <span class="tx-blue">50일</span> 
                                             <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span>
                                         </dt>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
-                                        <dt>
+                                        <dt class="priceWrap">
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </dt>
+                                        <dt class="c_both">
                                             <a href="#none" class="lecView">강좌상세정보</a> <span class="row-line ml10 mr10">|</span>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>

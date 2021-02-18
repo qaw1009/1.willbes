@@ -48,6 +48,7 @@
         </div>     
     </div>
 
+    {{--
     <div class="Section Section5">
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/3093_visual05.jpg" alt="" usemap="#Map3093B" border="0">
@@ -56,6 +57,7 @@
             </map>
         </div>
     </div>
+    --}}
 
     <div class="Section Section6">
         <div class="widthAuto">

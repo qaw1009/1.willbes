@@ -83,13 +83,11 @@
                                 <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
                                 <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                             </dl>
-                            <ul class="priceWrap">
-                                <li>
-                                    <span class="price">90,000원</span>
-                                    <span class="discount">10% ↓</span>
-                                    <span class="dcprice">81,000원</span>
-                                </li>
-                            </ul>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -104,13 +102,11 @@
                                 <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
                                 <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                             </dl>
-                            <ul class="priceWrap">
-                                <li>
-                                    <span class="price">90,000원</span>
-                                    <span class="discount">10% ↓</span>
-                                    <span class="dcprice">81,000원</span>
-                                </li>
-                            </ul>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -125,13 +121,11 @@
                                 <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
                                 <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                             </dl>
-                            <ul class="priceWrap">
-                                <li>
-                                    <span class="price">90,000원</span>
-                                    <span class="discount">10% ↓</span>
-                                    <span class="dcprice">81,000원</span>
-                                </li>
-                            </ul>
+                            <div class="priceWrap">
+                                <span class="price">80,000원</span>
+                                <span class="discount">20% ↓</span>
+                                <span class="dcprice">64,000원</span>                                          
+                            </div>
                         </td>
                     </tr>                    
                 </tbody>

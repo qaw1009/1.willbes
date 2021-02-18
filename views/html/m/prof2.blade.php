@@ -71,9 +71,13 @@
                                             <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                             <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                         </dl>
-                                        <ul>
-                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                        </ul>
+                                        <div class="priceWrap">
+                                            <input type="checkbox" id="checkA" name="checkA">
+                                            PC+모바일 : 
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="two">
                                                 <li><a href="#none" class="btn_gray">장바구니</a></li>
@@ -94,9 +98,13 @@
                                             <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                             <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                         </dl>
-                                        <ul>
-                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                        </ul>
+                                        <div class="priceWrap">
+                                            <input type="checkbox" id="checkA" name="checkA">
+                                            PC+모바일 : 
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="two">
                                                 <li><a href="#none" class="btn_gray">장바구니</a></li>
@@ -117,9 +125,13 @@
                                             <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                             <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                         </dl>
-                                        <ul>
-                                            <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                        </ul>
+                                        <div class="priceWrap">
+                                            <input type="checkbox" id="checkA" name="checkA">
+                                            PC+모바일 : 
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="two">
                                                 <li><a href="#none" class="btn_gray">장바구니</a></li>
@@ -151,9 +163,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -166,9 +182,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -181,9 +201,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">1.5배수</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>                    
                         </tbody>
@@ -208,9 +232,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -223,9 +251,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -238,9 +270,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt><br>
-                                        <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>
+                                        <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>                    
                         </tbody>
@@ -272,9 +308,13 @@
                                         </div>
                                         <dl class="w-info tx-gray">                                
                                             <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                      
                                         </dl>
+                                        <div class="priceWrap">                                        
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="three">
                                                 <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -292,9 +332,13 @@
                                         </div>
                                         <dl class="w-info tx-gray">                                
                                             <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
-                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>    
-                                            <dt><span class="tx-blue">90,000원</span>(↓0%)</dt>                            
+                                            <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>                          
                                         </dl>
+                                        <div class="priceWrap">                                        
+                                            <span class="price">80,000원</span>
+                                            <span class="discount">20% ↓</span>
+                                            <span class="dcprice">64,000원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="three">
                                                 <li><a href="#none" class="btn_white" onclick="openWin('LecBuyMessagePop')">방문결제</a></li>
@@ -323,9 +367,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓50%)</dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -338,9 +386,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -353,9 +405,13 @@
                                     </div>
                                     <dl class="w-info tx-gray">
                                         <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
-                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt><br>
-                                        <dt><span class="tx-blue">350,000원</span>(↓0%)</dt>
+                                        <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
                                     </dl>
+                                    <div class="priceWrap">                                        
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
                                 </td>
                             </tr>                    
                         </tbody>
@@ -380,9 +436,12 @@
                                         <dl class="w-info tx-gray">
                                             <dt>학원실강의 : 2020년 1월</dt><br>
                                             <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                         </dl>
+                                        <div class="priceWrap">
+                                            PC+모바일 : 
+                                            <span class="dcprice">0원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="two">
                                                 <li class="btn_blue"><a href="#none">바로결제</a></li>
@@ -399,9 +458,12 @@
                                         <dl class="w-info tx-gray">
                                             <dt>학원실강의 : 2020년 1월</dt><br>
                                             <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                            <dt>PC+모바일 : <span class="tx-blue">0원</span>(↓100%)</dt>
+                                            <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">배수</span> <span class="NSK nBox n2">진행중</span></dt>
                                         </dl>
+                                        <div class="priceWrap">
+                                            PC+모바일 : 
+                                            <span class="dcprice">0원</span>                                          
+                                        </div>
                                         <div class="w-buy">       
                                             <ul class="two">
                                                 <li class="btn_blue"><a href="#none">바로결제</a></li>

@@ -3022,55 +3022,47 @@ table.lecTable tr td .pkg-tit span {
 	font-size: 12px !important;
 }
 table.lecTable tr td .priceWrap {
-	/* clear: both;
-    float: right;
-    position: relative;
-    top: 10px;
-    right: 0;
-    width: 240px;
-    margin-right: 0;
-    height: 18px;*/
-	margin-top: 10px;
+	letter-spacing: -1px;
 }
 table.lecTable tr td .priceWrap li {
-	text-align: left;
 	margin-bottom: 5px;
 }
 table.lecTable tr td .priceWrap .chkBox {
 	display: inline-block;
-	line-height: 8px;
-	float: left;
 }
 table.lecTable tr td .priceWrap .chkBox input[type="checkbox"] {
 	width: 14px;
 	height: 14px;
 	cursor: pointer;
 	vertical-align: middle;
+	margin-right: 5px;
 }
 table.lecTable tr td .priceWrap .select {
-	display: inline-block;
-	width: 80px;
+	display: inline-block;	
 	font-size: 11px;
-	color: #464646;
-	text-align: right;
+	color: #000;
+	margin-right: 5px;
 }
 table.lecTable tr td .priceWrap .bookselect {
-	/*position: absolute;
-    right:0;
-    top:-35px;*/
 	width: 50px;
 	height: 24px;
 	border: 1px solid #d4d4d4;
 }
 table.lecTable tr td .priceWrap .price {
-	/*position: absolute;
-    top: 0;
-    right: 72px;*/
+	text-decoration: line-through;
+	color:#999;
 }
 table.lecTable tr td .priceWrap .discount {
-	/*float: right;
-    width: 70px;
-    color: #464646;*/
+	margin:0 5px;
+	color:#ed1c24;
+}
+table.lecTable tr td .priceWrap .dcprice {
+	display: block;
+	color:#0d74ae;
+}
+table.lecTable tr td .priceWrap2 {text-align: left;}
+table.lecTable tr td .priceWrap2 .dcprice {
+	display: inline-block;
 }
 
 table.lecTable tr td .visitBuy {
@@ -4196,6 +4188,7 @@ table.classTable tr td img {
 	letter-spacing: 0;
 	border-top: 1px solid #e1e1e1;
 	border-right: 1px solid #e1e1e1;
+	padding:0 10px;
 }
 .tabWrap li:first-child a {
 	border-left: 1px solid #e1e1e1;

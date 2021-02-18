@@ -3856,8 +3856,7 @@ body.memBody #Footer {
 	display: block;
 	width: 30px;
 	height: 30px;
-	background: url("/public/img/willbes/prof/icon_file.gif") no-repeat center
-		center !important;
+	background: url("/public/img/willbes/prof/icon_file.gif") no-repeat center center !important;
 	font-size: 0;
 	text-indent: -9999px;
 }
@@ -7253,21 +7252,34 @@ span.calendar_btn {
 	clear: both;
 }
 .w-Guide-Ssam .tabSsam {
-	border-top:1px solid #ccc;	
+	border-top:0;	
+	border-bottom: 1px solid #ccc;
 }
 .w-Guide-Ssam .tabSsam li {
 	/*width: auto;
 	margin-bottom: 5px;*/
 	margin:0; border:0; padding:0;
 	display: inline; float:left; width:25%;
+	border-top:1px solid #ccc;
 }
 .w-Guide-Ssam .tabSsam li a {
 	display:block;
 	padding: 10px 0;
 	border:0;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;	
 }
+.w-Guide-Ssam .tabSsam li:nth-child(3),
+.w-Guide-Ssam .tabSsam li:nth-child(4) {
+	border-top:3px solid #fff;
+}
+.w-Guide-Ssam .tabSsam li:nth-child(3) span,
+.w-Guide-Ssam .tabSsam li:nth-child(4) span{
+	display:block;
+	padding: 10px 0;
+	border:0;
+	border-right: 1px solid #fff;	
+}
+
 .w-Guide-Ssam .tabSsam li a.on {
 	background: #f6f6f6;
 	color: #000;}
@@ -7341,22 +7353,20 @@ span.calendar_btn {
 .w-Guide-Ssam .guidebox td a.btn01 {
 	display: inline-block;
 	padding: 5px 25px 5px 0;
-	border-radius: 4px;
 	background: url("https://static.willbes.net/public/images/promotion/m/2017/icon_down.png") no-repeat right center;
 }
 .w-Guide-Ssam .listTable select {
 	padding: 5px;
 }
-.w-Guide-Ssam .lecTable .w-tit {margin-right:40px;}
-.w-Guide-Ssam .lecTable tr td.w-data div.download {width:50px;}
+.w-Guide-Ssam .lecTable .w-tit {margin-right:80px;}
+.w-Guide-Ssam .lecTable tr td.w-data div.download {width:70px;}
 .w-Guide-Ssam .lecTable tr td.w-data div.download a {
 	display: block;
 	width:100%;
-	background:url("https://static.willbes.net/public/images/promotion/m/2017/icon_down.png") no-repeat center top !important;
-	font-size: 12px;
+	background:url("https://static.willbes.net/public/images/promotion/m/2017/icon_down.png") no-repeat right center !important;
+	font-size: 13px;
 	text-indent: 0;
-	padding-top:20px;
-	text-align: center;
+	padding: 5px 0;
 }
 
 .trendData {
@@ -7396,7 +7406,6 @@ span.calendar_btn {
 .w-Guide-Ssam .request_con > .txt01 {
 	font-size: 12px;
 	color: #b5caf2;
-	font-weight: 300;
 	letter-spacing: 31px;
 	text-indent: 31px;
 }
@@ -7404,23 +7413,21 @@ span.calendar_btn {
 	font-size: 40px;
 	color: #2b4ab8;
 	font-weight: bold;
-	letter-spacing: -5.5px;
+	letter-spacing: -1px;
 	margin: 28px 0 11px;
 }
 .w-Guide-Ssam .request_con > .txt03 {
 	font-size: 24px;
 	color: #2b4ab8;
-	font-weight: 500;
-	letter-spacing: -2px;
+	letter-spacing: -1px;
 }
 .w-Guide-Ssam .request_con > img {
 	margin: 65px 0 25px;
 }
 .w-Guide-Ssam .request_con .txt04 {
-	font-size: 16px;
-	color: #2c303e;
-	font-weight: 300;
-	line-height: 25px;
+	font-size: 28px;
+	color: #2b4ab8;
+	margin-top:40px
 }
 .w-Guide-Ssam .request_con .request_txtWrap {
 	padding: 45px 0;

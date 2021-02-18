@@ -130,7 +130,7 @@
                     <th>배수</th>
                     <th>판매여부</th>
                     <th>사용여부</th>
-                    <th>수강생현황</th>
+                    <th>수강생현황(종합반)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -186,7 +186,7 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
                     {'data' : 'Count', 'render' : function(data, type, row, meta) {
-                            return data + '명';
+                            return data + '명 (' + row.CountPkg + '명)';
                         }}
                 ]
             });

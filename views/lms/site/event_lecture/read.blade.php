@@ -60,12 +60,11 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1-1">추가 파라미터(GET방식) </label>
-                    <div class="form-control-static col-md-10">{{ $data['PromotionParams'] }}</div>
+                    <div class="form-control-static col-md-10" style="word-break: break-all;">{{ $data['PromotionParams'] }}</div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1">프로모션 경로</label>
-                    {{--<div class="form-control-static col-md-10">{{$data['Link']}}</div>--}}
                     <div class="form-control-static col-md-10">
                         @if ($data['SiteCode'] == config_item('app_intg_site_code'))
                             <p>

@@ -115,6 +115,7 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <span style="color: red;">※ 패키지 인원수는 운영자패키지,사용자패키지 수강생만 해당됩니다.</span>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -130,7 +131,7 @@
                     <th>배수</th>
                     <th>판매여부</th>
                     <th>사용여부</th>
-                    <th>수강생현황</th>
+                    <th>수강생현황(종합반)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -186,7 +187,7 @@
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},//사용여부
                     {'data' : 'Count', 'render' : function(data, type, row, meta) {
-                            return data + '명';
+                            return data + '명 (' + row.CountPkg + '명)';
                         }}
                 ]
             });

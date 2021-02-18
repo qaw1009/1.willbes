@@ -136,6 +136,7 @@
                     <th>No.</th>
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
+                    <th>종합반여부</th>
                     <th>상품구분</th>
                     <th>주문번호</th>
                     <th>결제루트</th>
@@ -186,6 +187,7 @@
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/member/manage/detail/')}}'+data+'" target="_blank"><u>'+row.MemId + '(' + row.MemName + ')'+'</u></a>';
                         }}, //회원명(아이디)
+                    {'data' : 'IsPkg'}, // 종합반 여부
                     {'data' : 'SalePatternCcd_Name'},//상품구분
                     {'data' : 'OrderIdx', 'render' : function(data, type, row, meta) {
                             return '<a href="{{site_url('/pay/order/show/')}}'+data+'" target="_blank"><u>'+data+'</u></a>';

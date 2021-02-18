@@ -116,8 +116,8 @@
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
                     <div class="col-md-3 form-inline">
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
-                            <option value="lec">단강좌</option>
-                            <option value="wlec">마스터강의</option>
+                            <option value="lec">강의명</option>
+                            <option value="prof">강사명</option>
                         </select>
                         <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
                     </div>
@@ -159,7 +159,7 @@
                         <th>수강형태</th>
                         <th>수강신청구분</th>
                         <th>개강 년/월</th>
-                        <th>단과반명</th>
+                        <th>강의명</th>
                         <th>판매가</th>
                         <th>정원</th>
                         <th>개설여부</th>

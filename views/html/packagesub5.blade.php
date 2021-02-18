@@ -185,10 +185,11 @@
                             <td class="w-data tx-left">
                                 <div class="w-tit">2017 이현나 국어 문제풀이 패키지</div>
                             </td>
-                            <td class="w-notice p_re">
-                                <div class="priceWrap">
-                                    <span class="price tx-blue">80,000원</span>
-                                    <span class="discount">(↓20%)</span>
+                            <td class="w-notice">
+                                <div class="priceWrap priceWrap2">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>
                                 </div>
                             </td>
                         </tr>

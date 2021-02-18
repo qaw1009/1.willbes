@@ -211,7 +211,7 @@
                     <colgroup>
                         <col style="width: 140px;">
                         <col>
-                        <col style="width: 180px;">
+                        <col style="width: 220px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -233,8 +233,9 @@
                             </td>
                             <td class="w-notice">
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">190,000원</span>
-                                    <span class="discount">(↓70%)</span>
+                                    <span class="price">70,000원</span>
+                                    <span class="discount">10% ↓</span>
+                                    <span class="dcprice">63,000원</span>
                                 </div>
                             </td>
                         </tr>                        
@@ -249,7 +250,7 @@
                     <colgroup>
                         <col style="width: 140px;">
                         <col>
-                        <col style="width: 180px;">
+                        <col style="width: 220px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -269,8 +270,7 @@
                             </td>
                             <td class="w-notice">
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">280,000원</span>
-                                    <span class="discount">(↓60%)</span>
+                                    <span class="dcprice">280,000원</span>
                                 </div>
                             </td>
                         </tr>
@@ -285,7 +285,7 @@
                     <colgroup>
                         <col style="width: 140px;">
                         <col>
-                        <col style="width: 180px;">
+                        <col style="width:220px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -305,8 +305,7 @@
                             </td>
                             <td class="w-notice">
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">280,000원</span>
-                                    <span class="discount">(↓60%)</span>
+                                    <span class="dcprice">280,000원</span>
                                 </div>
                             </td>
                         </tr>
@@ -321,7 +320,7 @@
                     <colgroup>
                         <col style="width: 140px;">
                         <col>
-                        <col style="width: 180px;">
+                        <col style="width: 220px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -341,8 +340,9 @@
                             </td>
                             <td class="w-notice">
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">280,000원</span>
-                                    <span class="discount">(↓60%)</span>
+                                    <span class="price">156,000원</span>
+                                    <span class="discount">30,000원 ↓</span>
+                                    <span class="dcprice">126,000원</span>
                                 </div>
                             </td>
                         </tr>

@@ -29,7 +29,7 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        <!-- <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                        {{-- <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
                                 <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
@@ -49,14 +49,13 @@
                                 @endforeach
                             </select>
                         @endif
-                        -->
+                        --}}
                         <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
                             <option value="">판매여부</option>
                             @foreach($Sales_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                        </select>
-                        &nbsp;
+                        </select>                        &nbsp;
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
@@ -66,7 +65,11 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
-                    <div class="col-md-6 form-inline">
+                    <div class="col-md-3 form-inline">
+                        <select class="form-control" id="search_type" name="search_type" style="width:120px;">
+                            <option value="lec">강의명</option>
+                            <option value="prof">강사명</option>
+                        </select>
                         <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
                     </div>
                     <div class="col-md-5">

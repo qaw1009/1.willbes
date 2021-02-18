@@ -9,87 +9,87 @@
                         <th>중등</th>
                     </tr>
                     <tr>
-                        <td>서울특별시</td>
+                        <td>서울</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>인천광역시</td>
+                        <td>인천</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>대전광역시</td>
+                        <td>대전</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>세종시</td>
+                        <td>세종</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>광주광역시</td>
+                        <td>광주</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>대구광역시</td>
+                        <td>대구</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>울산광역시</td>
+                        <td>울산</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>부산광역시</td>
+                        <td>부산</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>경기도</td>
+                      <td>경기</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>충청북도</td>
+                      <td>충북</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>충청남도</td>
+                      <td>충남</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>전라북도</td>
+                      <td>전북</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>전라남도</td>
+                      <td>전남</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>강원도</td>
+                      <td>강원</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>경상북도</td>
+                      <td>경북</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                      <td>경상남도</td>
+                      <td>경남</td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                       <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>
                     <tr>
-                        <td>제주도</td>
+                        <td>제주</td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                         <td><a href="#none" class="btn01">다운하기</a></td>
                     </tr>

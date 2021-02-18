@@ -111,6 +111,8 @@
             </div>
             @endif
 
+            <div class="c_both mt40 tx-right"><a href="javascript:history.go(-1);" class="bdb-dark-gray pb5">다른 수강강좌 보기 →</a></div>
+
             <div class="willbes-Leclist c_both mt40">
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">

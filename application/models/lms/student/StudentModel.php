@@ -51,12 +51,13 @@ class StudentModel extends WB_Model
                     ,(
                         SELECT COUNT(*) FROM
                             lms_order_product as OP
+                            join lms_product_lecture as pl_sub ON OP.ProdCode = pl_sub.ProdCode
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
                             join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
                                                         AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCodeSub
                             left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx                                                        
-                        WHERE
-                            OP.PayStatusCcd IN ('676001', '676007')
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007')
+                            AND OP.PayStatusCcd IN ('676001', '676007')
                             AND ( ouh.OrderIdx is null OR ouh.UnPaidUnitNum = 1)
                             AND rs.ProdCodeSub = A.ProdCode
                             AND rs.ProdCodeSub <> rs.ProdCode
@@ -116,7 +117,7 @@ class StudentModel extends WB_Model
         $where = $where->getMakeWhere(true);
 
         // 쿼리 실행
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -144,7 +145,7 @@ class StudentModel extends WB_Model
                 ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
                 ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData
                 ,P.ProdName, P.ProdCode, IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
-                
+                ,IF(PL.LearnPatternCcd = '615002' OR PL.LearnPatternCcd = '615003' OR PL.LearnPatternCcd = '615004', 'Y', 'N') AS IsPkg                
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -161,7 +162,15 @@ class StudentModel extends WB_Model
                             left outer join lms_sys_code Ob on O.PayMethodCcd = Ob.Ccd and Ob.IsStatus='Y'
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
-                        join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx       
+                        join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
+                        join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode       
+
+                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 
+                            AND ML.OrderProdIdx = OP.OrderProdIdx 
+                            AND ML.ProdCode = OP.ProdCode
+                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode
+                        
                         left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx                 
@@ -198,6 +207,7 @@ class StudentModel extends WB_Model
             ,(SELECT GROUP_CONCAT(OrderMemo) FROM lms_order_memo AS om WHERE om.OrderIdx = OP.OrderIdx GROUP BY om.OrderIdx) AS OrderMemo    
             ,IFNULL(OI.CertNo, '') AS CertNo , OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
             ,MI.ZipCode, MI.Addr1, fn_dec(MI.Addr2Enc) AS Addr2
+            ,IF(PL.LearnPatternCcd = '615002' OR PL.LearnPatternCcd = '615003' OR PL.LearnPatternCcd = '615004', 'Y', 'N') AS IsPkg
         ";
         $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
         $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -214,6 +224,14 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo as MI ON MI.MemIdx = M.MemIdx
+                        
+                        join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode
+                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 
+                            AND ML.OrderProdIdx = OP.OrderProdIdx 
+                            AND ML.ProdCode = OP.ProdCode
+                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode
+                        
                         left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
@@ -361,14 +379,18 @@ class StudentModel extends WB_Model
         if(is_array($ProdCode) == true){
             $where = $this->_conn->makeWhere([
                 'IN' => [
-                    'ProdCodeSub' => $ProdCode
+                    'r.ProdCodeSub' => $ProdCode
                 ]
             ]);
             $where = $where->getMakeWhere(true);
-            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' ".$where;
+            $query = " SELECT DISTINCT r.ProdCode FROM lms_product_r_sublecture as r
+                        JOIN lms_product_lecture as pl_sub on r.ProdCode = pl_sub.ProdCode
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007') AND r.IsStatus = 'Y' ".$where;
 
         } else {
-            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' AND ProdCodeSub = {$ProdCode}";
+            $query = " SELECT DISTINCT r.ProdCode FROM lms_product_r_sublecture as r
+                        JOIN lms_product_lecture as pl_sub on r.ProdCode = pl_sub.ProdCode
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007') AND r.IsStatus = 'Y' AND r.ProdCodeSub = {$ProdCode}";
         }
 
         return $this->_conn->query($query)->result_array();

@@ -361,13 +361,12 @@
                                                         <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')"><strong class="detail">교재상세정보</strong></a>
                                                     </div>
 
-                                                    <ul class="priceWrap">
-                                                        <li class="mg0 ">
-                                                            <span>[판매중]</span>
-                                                            <span class="price tx-blue">41,000원</span>
-                                                            <span class="discount">(↓10%)</span>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="priceWrap priceWrap2 mb10">
+                                                        <span>[판매중]</span>
+                                                        <span class="price">40,000원</span>
+                                                        <span class="discount">10% ↓</span>
+                                                        <span class="dcprice">36,000원</span>
+                                                    </div>
 
                                                     <ul class="lecBuyBtns lecBuyBtns2">
                                                         <li class="btnCart"><a onclick="openWin('pocketBox')">장바구니</a> 
@@ -422,13 +421,12 @@
                                                         <a href="#none"><strong class="detail">교재상세정보</strong></a>
                                                     </div>
 
-                                                    <ul class="priceWrap">
-                                                        <li class="mg0 ">
-                                                            <span>[판매중]</span>
-                                                            <span class="price tx-blue">41,000원</span>
-                                                            <span class="discount">(↓10%)</span>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="priceWrap priceWrap2 mb10">
+                                                        <span>[판매중]</span>
+                                                        <span class="price">40,000원</span>
+                                                        <span class="discount">10% ↓</span>
+                                                        <span class="dcprice">36,000원</span>
+                                                    </div>
 
                                                     <ul class="lecBuyBtns lecBuyBtns2">
                                                         <li class="btnCart"><a href="#none">장바구니</a>                                  
@@ -459,13 +457,12 @@
                                                         <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')"><strong class="detail">교재상세정보</strong></a>
                                                     </div>
 
-                                                    <ul class="priceWrap">
-                                                        <li class="mg0 ">
-                                                            <span>[판매중]</span>
-                                                            <span class="price tx-blue">41,000원</span>
-                                                            <span class="discount">(↓10%)</span>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="priceWrap priceWrap2 mb10">
+                                                        <span>[판매중]</span>
+                                                        <span class="price">40,000원</span>
+                                                        <span class="discount">10% ↓</span>
+                                                        <span class="dcprice">36,000원</span>
+                                                    </div>
 
                                                     <ul class="lecBuyBtns lecBuyBtns2">
                                                         <li class="btnCart"><a onclick="openWin('pocketBox')">장바구니</a> 
@@ -520,13 +517,12 @@
                                                         <a href="#none"><strong class="detail">교재상세정보</strong></a>
                                                     </div>
 
-                                                    <ul class="priceWrap">
-                                                        <li class="mg0 ">
-                                                            <span>[판매중]</span>
-                                                            <span class="price tx-blue">41,000원</span>
-                                                            <span class="discount">(↓10%)</span>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="priceWrap priceWrap2 mb10">
+                                                        <span>[판매중]</span>
+                                                        <span class="price">40,000원</span>
+                                                        <span class="discount">10% ↓</span>
+                                                        <span class="dcprice">36,000원</span>
+                                                    </div>
 
                                                     <ul class="lecBuyBtns lecBuyBtns2">
                                                         <li class="btnCart"><a href="#none">장바구니</a>                                  
@@ -1198,8 +1194,8 @@
                                                         <colgroup>
                                                             <col style="width: 75px;">
                                                             <col style="width: 85px;">
-                                                            <col style="width: 490px;">
-                                                            <col style="width: 290px;">
+                                                            <col>
+                                                            <col style="width: 260px;">
                                                         </colgroup>
                                                         <tbody>
                                                             <tr>
@@ -1219,10 +1215,6 @@
                                                                         <dt class="NSK ml15">
                                                                             <span class="nBox n1">2배수</span>
                                                                             <span class="nBox n2">진행중</span>
-                                                                            {{--
-                                                                            <span class="nBox n3">예정</span>
-                                                                            <span class="nBox n4">완강</span>
-                                                                            --}}
                                                                         </dt><br>                                                                        
                                                                         <dt class="mr20">
                                                                             <a href="#ch1" onclick="openLink('ch1','hover1'); openWin('InfoForm')">
@@ -1271,23 +1263,22 @@
                                                                             <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                                                         </dl>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[PC]</span>
-                                                                        <span class="price tx-blue">7,000원</span>
-                                                                        <span class="discount">(↓20%)</span>
+                                                                        <span class="select">PC</span>
+                                                                        <span class="dcprice">6,000원</span>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[모바일]</span>
-                                                                        <span class="price tx-blue">80,000원</span>
-                                                                        <span class="discount">(↓10%)</span>
+                                                                        <span class="select">모바일</span>
+                                                                        <span class="dcprice">90,000원</span>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[PC+모바일]</span>
-                                                                        <span class="price tx-blue">123,000원</span>
-                                                                        <span class="discount">(↓15%)</span>
+                                                                        <span class="select">PC+모바일</span>
+                                                                        <span class="price">154,000원</span>
+                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                                                 </td>
@@ -1396,8 +1387,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">156,000원</span>
-                                                                        <span class="discount">(↓40%)</span>
+                                                                        <span class="price">80,000원</span>
+                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1418,8 +1410,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">72,000원</span>
-                                                                        <span class="discount">(↓60%)</span>
+                                                                        <span class="price">80,000원</span>
+                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1471,8 +1464,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">190,000원</span>
-                                                                        <span class="discount">(↓70%)</span>
+                                                                        <span class="price">80,000원</span>
+                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1529,7 +1523,7 @@
                                                             <col style="width: 75px;">
                                                             <col style="width: 85px;">
                                                             <col style="width: 75px;">
-                                                            <col style="width: 355px;">
+                                                            <col>
                                                             <col style="width: 165px;">
                                                             <col style="width: 185px;">
                                                         </colgroup>
@@ -1551,7 +1545,7 @@
                                                                         <dt class="NSK">
                                                                             <span class="acadBox n1">방문+온라인</span>
                                                                         </dt>
-                                                                    </dl><br/>
+                                                                    </dl>
                                                                 </td>
                                                                 <td class="w-schedule">
                                                                     <span class="tx-blue">5/1 ~ 6/30</span> (16회차)<br/>
@@ -1559,11 +1553,11 @@
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="acadInfo NSK n1">접수중</div>
-                                                                    <div class="priceWrap chk buybtn p_re">
-                                                                        <span class="price tx-blue">
-                                                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                            80,000원</span>
-                                                                        <span class="discount">(↓20%)</span>
+                                                                    <div class="priceWrap priceWrap2">
+                                                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                        <span class="price">154,000원</span>
+                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1621,7 +1615,7 @@
                                                                         <dt class="NSK">
                                                                             <span class="acadBox n2">방문접수</span>
                                                                         </dt>
-                                                                    </dl><br/>
+                                                                    </dl>
                                                                 </td>
                                                                 <td class="w-schedule">
                                                                     <span class="tx-blue">5/3 ~ 6/30</span> (16회차)<br/>
@@ -1629,11 +1623,11 @@
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="acadInfo NSK n2">접수예정</div>
-                                                                    <div class="priceWrap chk buybtn p_re">
-                                                                        <span class="price tx-blue">
-                                                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                            120,000원</span>
-                                                                        <span class="discount">(↓10%)</span>
+                                                                    <div class="priceWrap priceWrap2">
+                                                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                        <span class="price">154,000원</span>
+                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1705,11 +1699,9 @@
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="acadInfo NSK n3">마감</div>
-                                                                    <div class="priceWrap chk buybtn p_re">
-                                                                        <span class="price tx-blue">
-                                                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                            120,000원</span>
-                                                                        <span class="discount">(↓10%)</span>
+                                                                    <div class="priceWrap priceWrap2">
+                                                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1795,11 +1787,9 @@
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="acadInfo NSK n1">접수중</div>
-                                                                    <div class="priceWrap chk buybtn p_re">
-                                                                        <span class="price tx-blue">
-                                                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                            80,000원</span>
-                                                                        <span class="discount">(↓20%)</span>
+                                                                    <div class="priceWrap priceWrap2">
+                                                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -2024,11 +2014,11 @@
                                                                 </td>
                                                                 <td class="w-notice p_re">
                                                                     <div class="acadInfo NSK n2">접수예정</div>
-                                                                    <div class="priceWrap chk buybtn p_re">
-                                                                        <span class="price tx-blue">
-                                                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                            120,000원</span>
-                                                                        <span class="discount">(↓20%)</span>
+                                                                    <div class="priceWrap priceWrap2">
+                                                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                                                        <span class="price">154,000원</span>
+                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -2115,8 +2105,8 @@
                                     <colgroup>
                                         <col style="width: 75px;">
                                         <col style="width: 85px;">
-                                        <col style="width: 490px;">
-                                        <col style="width: 290px;">
+                                        <col>
+                                        <col style="width: 260px;">
                                     </colgroup>
                                     <tbody>
                                         <tr>
@@ -2137,9 +2127,9 @@
                                             </td>
                                             <td class="w-notice p_re">
                                                 <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                                <div class="priceWrap chk buybtn p_re">
+                                                <div class="priceWrap priceWrap2 tx-center">
                                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                    <span class="price tx-blue">0원</span>
+                                                    <span class="dcprice">0원</span>
                                                 </div>
                                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                             </td>
@@ -2181,8 +2171,8 @@
                                     <colgroup>
                                         <col style="width: 75px;">
                                         <col style="width: 85px;">
-                                        <col style="width: 490px;">
-                                        <col style="width: 290px;">
+                                        <col>
+                                        <col style="width: 260px;">
                                     </colgroup>
                                     <tbody>
                                         <tr>
@@ -2203,9 +2193,9 @@
                                             </td>
                                             <td class="w-notice p_re">
                                                 <div class="w-sp one"><a href="#none">맛보기</a></div>
-                                                <div class="priceWrap chk buybtn p_re">
+                                                <div class="priceWrap priceWrap2 tx-center">
                                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                    <span class="price tx-blue">0원</span>
+                                                    <span class="dcprice">0원</span>
                                                 </div>
                                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                             </td>

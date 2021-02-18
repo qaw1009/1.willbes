@@ -11,7 +11,10 @@
 @endif
 
 @if(empty($_url_route_names) === false)
+    {{--
     <a href="{{ front_url('/home/index/cate/' . $__cfg['CateCode']) }}"><img src="{{ img_url('sub/icon_home.gif') }}"></a>
+    --}}
+    <img src="{{ img_url('sub/icon_home.gif') }}">
     @foreach($_url_route_names as $idx => $route_name)
         <span class="depth"><span class="depth-Arrow">></span><strong>{{ $route_name }}</strong></span>
     @endforeach

@@ -2,8 +2,8 @@
             <ul class="tabShow">
                 <li><a href="#ssam_guide1" class="on">교원 임용시험 안내</a></li>
                 <li><a href="#ssam_guide2">한국사 능력 검정 시험 안내</a></li>
-                <li><a href="#ssam_guide3">유아·초등 임용 시험 개요</a></li>
-                <li><a href="#ssam_guide4">중등 임용 시험 개요</a></li>
+                <li><a href="#ssam_guide3">유아·초등 임용 시험 상세</a></li>
+                <li><a href="#ssam_guide4">중등 임용 시험 상세</a></li>
             </ul>                
         </div>
         <div class="tabContent GM">

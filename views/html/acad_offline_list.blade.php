@@ -285,12 +285,12 @@
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="acadInfo NSK n1">접수중</div>
-                                    <div class="priceWrap chk buybtn p_re">
-                                        <span class="price tx-blue">
-                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                            80,000원</span>
-                                        <span class="discount">(↓20%)</span>
-                                    </div>
+                                    <div class="priceWrap priceWrap2">
+                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>
+                                    </div> 
                                 </td>
                             </tr>
                         </tbody>
@@ -349,12 +349,10 @@
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="acadInfo NSK n2">접수예정</div>
-                                    <div class="priceWrap chk buybtn p_re">
-                                        <span class="price tx-blue">
-                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                            120,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </div>
+                                    <div class="priceWrap priceWrap2">
+                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                        <span class="dcprice">64,000원</span>
+                                    </div> 
                                 </td>
                             </tr>
                         </tbody>
@@ -428,12 +426,12 @@
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="acadInfo NSK n3">마감</div>
-                                    <div class="priceWrap chk buybtn p_re">
-                                        <span class="price tx-blue">
-                                            <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                            120,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </div>
+                                    <div class="priceWrap priceWrap2">
+                                        <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>
+                                    </div> 
                                 </td>
                             </tr>
                         </tbody>

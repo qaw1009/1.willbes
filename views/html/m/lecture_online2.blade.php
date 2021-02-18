@@ -53,24 +53,24 @@
 
         <div class="lec-info">
             <h4 class="NGEB">강좌신청</h4>
-            <ul>
+            <ul class="priceWrap f_none">
                 <li>
-                    <span class="chk">
-                        <label>[판매]</label>
-                        <input type="checkbox" id="" name="">
-                    </span>
-                    <div class="priceWrap NG">
-                        [PC+모바일] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span>
-                    </div>
+                    <input type="checkbox" id="checkA" name="checkA">
+                    <label for="checkA">
+                        PC+모바일 
+                        <span class="price">90,000원</span>
+                        <span class="discount">10% ↓</span>
+                        <span class="dcprice">81,000원</span>
+                    </label>
                 </li>
                 <li>
-                    <span class="chk">
-                        <label>[판매]</label>
-                        <input type="checkbox" id="" name="">
-                    </span>
-                    <div class="priceWrap NG">
-                        [PC] 90,000원 (↓0%) ▶<span class="tx-blue">90,000원</span>
-                    </div>
+                    <input type="checkbox" id="checkB" name="checkB">
+                    <label for="checkB">
+                        PC 
+                        <span class="price">90,000원</span>
+                        <span class="discount">10% ↓</span>
+                        <span class="dcprice">81,000원</span>
+                    </label>
                 </li>
             </ul>
             <div class="automatic">

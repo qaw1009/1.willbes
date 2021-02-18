@@ -108,10 +108,11 @@
                                     <div class="w-tit">[지방-아특] 기미진 기특한 국어 전범위 문풀 [4~5월]</div>
                                 </td>
                                 <td class="w-notice p_re">
-                                    <div class="priceWrap">
-                                        <span class="price tx-blue">180,000원</span>
-                                        <span class="discount">(↓20%)</span>
-                                    </div>
+                                    <div class="priceWrap priceWrap2">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">20% ↓</span>
+                                        <span class="dcprice">64,000원</span>
+                                    </div> 
                                 </td>
                             </tr>
                         </tbody>

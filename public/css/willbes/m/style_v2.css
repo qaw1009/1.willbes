@@ -5024,7 +5024,7 @@ body.memBody #Footer {
 .priceWrap li {margin-bottom:5px}
 .priceWrap li label {padding-left:5px}
 .priceWrap li span {margin-right:5px}
-.priceWrap .price {text-decoration: line-through; color:#999;}
+.priceWrap .price {/*text-decoration: line-through;*/ color:#999;}
 .priceWrap .discount {color:#ed1c24;}
 .priceWrap .dcprice {color:#0d74ae;}
 

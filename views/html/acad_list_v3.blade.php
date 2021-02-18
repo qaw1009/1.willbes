@@ -116,28 +116,7 @@
                         </tr>
                         <tr>
                             <th class="tx-gray">교수선택</th>
-                            <td colspan="9" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td>
-                            <!-- 과목선택 시 해당 과목 교수 출력
-                            <td colspan="9">
-                                <ul class="curriSelect">
-                                    <li><a class="on" href="#none">정채영</a></li>
-                                    <li><a href="#none">기미진</a></li>
-                                    <li><a href="#none">김세령</a></li>
-                                    <li><a href="#none">오대혁</a></li>
-                                    <li><a href="#none">이현나</a></li>
-                                    <li><a href="#none">정채영</a></li>
-                                    <li><a href="#none">기미진</a></li>
-                                    <li><a href="#none">김세령</a></li>
-                                    <li><a href="#none">오대혁</a></li>
-                                    <li><a href="#none">이현나</a></li>
-                                    <li><a href="#none">정채영</a></li>
-                                    <li><a href="#none">기미진</a></li>
-                                    <li><a href="#none">김세령</a></li>
-                                    <li><a href="#none">오대혁</a></li>
-                                    <li><a href="#none">이현나</a></li>
-                                </ul>
-                            </td>
-                            -->
+                            <td colspan="9" class="tx-blue tx-left">* 과목 선택시 과목별 교수진을 확인하실 수 있습니다. 과목을 먼저 선택해 주세요!</td> 
                         </tr>
                     </tbody>
                 </table>
@@ -358,8 +337,9 @@
                             <td class="w-notice">
                                 <div class="acadInfo n2">접수중</div>
                                 <div class="priceWrap">
-                                    <span class="price tx-blue">80,000원</span>
-                                    <span class="discount">(↓20%)</span>                                    
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>
                                 </div> 
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>                         
                             </td>
@@ -470,10 +450,11 @@
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo n1">접수예정</div>
-                                <div class="priceWrap p_re">
-                                    <span class="price tx-blue">120,000원</span>
-                                    <span class="discount">(↓10%)</span>
-                                </div>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>
@@ -536,61 +517,6 @@
                         <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
                     </div>
                 </div>
-
-                {{--
-                <table cellspacing="0" cellpadding="0" class="lecInfoTable">
-                    <colgroup>
-                        <col style="width: 75px;">
-                        <col style="width: 865px;">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">수강생 교재</span> 
-                                    <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
-                                    <span class="chk buybtn p_re">
-                                        <label>[판매중]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk">
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">30,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">주교재</span> 
-                                    <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
-                                    <span class="chk">
-                                        <label class="soldout">[품절]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">20,000원</span>
-                                        <span class="discount">(↓10%)</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub">
-                                    <span class="w-obj tx-blue tx11">부교재</span> 
-                                    <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
-                                    <span class="chk">
-                                        <label class="press">[출간예정]</label>
-                                        <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk" disabled>
-                                    </span>
-                                    <span class="priceWrap">
-                                        <span class="price tx-blue">0원</span>
-                                    </span>
-                                </div>
-                                <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
-                                <div class="w-sub">
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                --}}
                 <!-- lecInfoTable -->
             </div>
             <!-- willbes-Lec-Table -->
@@ -646,10 +572,9 @@
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo n3">마감</div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="price tx-blue">120,000원</span>
-                                    <span class="discount">(↓10%)</span>
-                                </div>
+                                <div class="priceWrap">
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                             </td>
                         </tr>

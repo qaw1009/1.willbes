@@ -226,10 +226,11 @@
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n2">접수중</div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="price tx-blue">80,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
                             </td>
                         </tr>
                     </tbody>
@@ -269,10 +270,11 @@
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n1">접수예정</div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="price tx-blue">120,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">20% ↓</span>
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
                             </td>
                         </tr>
                     </tbody>
@@ -312,10 +314,9 @@
                             </td>
                             <td class="w-notice p_re">
                                 <div class="acadInfo NSK n3">마감</div>
-                                <div class="priceWrap chk buybtn p_re">
-                                    <span class="price tx-blue">120,000원</span>
-                                    <span class="discount">(↓20%)</span>
-                                </div>
+                                <div class="priceWrap">
+                                    <span class="dcprice">64,000원</span>
+                                </div> 
                             </td>
                         </tr>
                     </tbody>

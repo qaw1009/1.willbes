@@ -110,9 +110,25 @@
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                 </dl>
-                                <ul>
-                                    <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <ul class="priceWrap">
+                                    <li>
+                                        <input type="checkbox" id="checkA" name="checkA">
+                                        <label for="checkA">
+                                            PC+모바일 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="checkB" name="checkB">
+                                        <label for="checkB">
+                                            PC 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
                                 </ul>
                                 <div class="w-buy">       
                                     <ul class="two">
@@ -134,9 +150,25 @@
                                     <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
                                     <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
                                 </dl>
-                                <ul>
-                                    <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                    <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
+                                <ul class="priceWrap">
+                                    <li>
+                                        <input type="checkbox" id="checkA" name="checkA">
+                                        <label for="checkA">
+                                            PC+모바일 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="checkB" name="checkB">
+                                        <label for="checkB">
+                                            PC 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
                                 </ul>
                                 <div class="w-buy">       
                                     <ul class="two">
@@ -155,22 +187,40 @@
                     </tr>
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
-                            <dl class="w-info">
-                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
-                            </dl>
-                            <div class="w-tit tx-blue">
-                                2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                            <div class="oneBox">
+                                <dl class="w-info">
+                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                </dl>
+                                <div class="w-tit tx-blue">
+                                    2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>학원실강의 : 2020년 1월</dt><br>
+                                    <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                </dl>
+                                <ul class="priceWrap">
+                                    <li>
+                                        <input type="checkbox" id="checkA" name="checkA">
+                                        <label for="checkA">
+                                            PC+모바일 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="checkB" name="checkB">
+                                        <label for="checkB">
+                                            PC 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
+                                </ul>
                             </div>
-                            <dl class="w-info tx-gray">
-                                <dt>학원실강의 : 2020년 1월</dt><br>
-                                <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
-                            </dl>
-                            <ul>
-                                <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
-                            </ul>
                         </td>
                     </tr>
                     <tr class="replyList willbes-Open-Table">
@@ -181,26 +231,45 @@
                     </tr>
                     <tr class="willbes-Open-List">
                         <td class="w-data tx-left" colspan="2">
-                            <dl class="w-info">
-                                <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
-                            </dl>
-                            <div class="w-tit tx-blue">
-                                2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
-                            </div>
-                            <dl class="w-info tx-gray">
-                                <dt>학원실강의 : 2020년 1월</dt><br>
-                                <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
-                                <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
-                            </dl>
-                            <ul>
-                                <li class="mb10"><input type="checkbox" id="checkA" name="checkA"><label for="checkA" class="pl10">PC+모바일 : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                                <li class="mb10"><input type="checkbox" id="checkB" name="checkB"><label for="checkB" class="pl10">PC : <span class="tx-blue">90,000원</span>(↓0%)</label></li>
-                            </ul>
-                            <div class="w-buy">       
-                                <ul class="two">
-                                    <li><a href="#none" class="btn_gray">장바구니</a></li>
-                                    <li><a href="#none" class="btn_blue">바로결제</a></li>
-                                </ul> 
+                            <div class="oneBox">
+                                <dl class="w-info">
+                                    <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현 </dt>
+                                </dl>
+                                <div class="w-tit tx-blue">
+                                    2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>학원실강의 : 2020년 1월</dt><br>
+                                    <dt>강의수 : <span class="tx-blue">12강/56강</span><span class="row-line">|</span></dt>
+                                    <dt>수강기간 : <span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>                                
+                                </dl>
+                                <ul class="priceWrap">
+                                    <li>
+                                        <input type="checkbox" id="checkA" name="checkA">
+                                        <label for="checkA">
+                                            PC+모바일 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="checkB" name="checkB">
+                                        <label for="checkB">
+                                            PC 
+                                            <span class="price">90,000원</span>
+                                            <span class="discount">10% ↓</span>
+                                            <span class="dcprice">81,000원</span>
+                                        </label>
+                                    </li>
+                                    <li class="tx-red">※ 바로결제만 가능한 상품입니다. 상세 페이지에서 결제해주세요.</li>
+                                </ul>
+                                <div class="w-buy">       
+                                    <ul class="two">
+                                        <li><a href="#none" class="btn_gray">장바구니</a></li>
+                                        <li><a href="#none" class="btn_blue">바로결제</a></li>
+                                    </ul> 
+                                </div>
                             </div>
                         </td>
                     </tr>                    

@@ -51,12 +51,13 @@ class StudentModel extends WB_Model
                     ,(
                         SELECT COUNT(*) FROM
                             lms_order_product as OP
+                            join lms_product_lecture as pl_sub ON OP.ProdCode = pl_sub.ProdCode
                             join lms_product_r_sublecture as rs on rs.ProdCode = OP.ProdCode and rs.IsStatus = 'Y'
                             join lms_my_lecture as ML on ML.OrderIdx = OP.OrderIdx AND ML.OrderProdIdx = OP.OrderProdIdx
                                                         AND ML.ProdCode = OP.ProdCode AND ML.ProdCodeSub = rs.ProdCodeSub
                             left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx                                                        
-                        WHERE
-                            OP.PayStatusCcd IN ('676001', '676007')
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007')
+                            AND OP.PayStatusCcd IN ('676001', '676007')
                             AND ( ouh.OrderIdx is null OR ouh.UnPaidUnitNum = 1)
                             AND rs.ProdCodeSub = A.ProdCode
                             AND rs.ProdCodeSub <> rs.ProdCode
@@ -378,14 +379,18 @@ class StudentModel extends WB_Model
         if(is_array($ProdCode) == true){
             $where = $this->_conn->makeWhere([
                 'IN' => [
-                    'ProdCodeSub' => $ProdCode
+                    'r.ProdCodeSub' => $ProdCode
                 ]
             ]);
             $where = $where->getMakeWhere(true);
-            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' ".$where;
+            $query = " SELECT DISTINCT r.ProdCode FROM lms_product_r_sublecture as r
+                        JOIN lms_product_lecture as pl_sub on r.ProdCode = pl_sub.ProdCode
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007') AND r.IsStatus = 'Y' ".$where;
 
         } else {
-            $query = "SELECT DISTINCT ProdCode FROM lms_product_r_sublecture WHERE IsStatus = 'Y' AND ProdCodeSub = {$ProdCode}";
+            $query = " SELECT DISTINCT r.ProdCode FROM lms_product_r_sublecture as r
+                        JOIN lms_product_lecture as pl_sub on r.ProdCode = pl_sub.ProdCode
+                        WHERE pl_sub.LearnPatternCcd IN ('615002', '615003', '615007') AND r.IsStatus = 'Y' AND r.ProdCodeSub = {$ProdCode}";
         }
 
         return $this->_conn->query($query)->result_array();

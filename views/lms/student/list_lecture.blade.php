@@ -115,6 +115,7 @@
     </form>
     <div class="x_panel mt-10">
         <div class="x_content">
+            <span style="color: red;">※ 패키지 인원수는 운영자패키지,사용자패키지 수강생만 해당됩니다.</span>
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>

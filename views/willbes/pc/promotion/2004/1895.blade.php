@@ -65,7 +65,7 @@
         </div>     
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1895_03.jpg" alt="" usemap="#Map1895a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1895_03.jpg" alt="" usemap="#Map1895a" border="0" />
             <map name="Map1895a" id="Map1895a">
                 <area shape="rect" coords="228,1669,887,1775" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3043&campus_ccd=605006" target="_blank" />
             </map>   

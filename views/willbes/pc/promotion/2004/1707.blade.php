@@ -44,7 +44,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_top.jpg" alt="소방합격 패스" />            
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1707_top.jpg" alt="소방합격 패스" />            
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -52,7 +52,7 @@
         </div>
         
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/06/1707_02.jpg" alt="시간표"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1707_02.jpg" alt="시간표"/>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >

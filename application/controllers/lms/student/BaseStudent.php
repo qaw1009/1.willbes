@@ -400,11 +400,11 @@ class BaseStudent extends \app\controllers\BaseController
         // 강좌 수강중인 회원 읽어오기
         $list = [];
         $count = $this->studentModel->getStudentList(true, $arr_condition,
-            $this->_req('length'), $this->_req('start'), [], !empty($ProdCode_arr));
+            $this->_req('length'), $this->_req('start'), [], ($this->LearnPattern == 'lecture'));
 
         if($count > 0){
             $list = $this->studentModel->getStudentList(false, $arr_condition,
-                $this->_req('length'), $this->_req('start'), [], !empty($ProdCode_arr));
+                $this->_req('length'), $this->_req('start'), [], ($this->LearnPattern == 'lecture'));
 
             foreach($list as $key => $row){
                 if(empty($list[$key]['OrderSubProdData']) == false) {
@@ -712,7 +712,7 @@ class BaseStudent extends \app\controllers\BaseController
         $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
-        $list = $this->studentModel->getStudentExcelList($column, $arr_condition, null, null, [], !empty($ProdCode_arr));
+        $list = $this->studentModel->getStudentExcelList($column, $arr_condition, null, null, [], ($this->LearnPattern == 'lecture'));
 
         foreach($list as $key => $row){
             if(empty($list[$key]['OrderSubProdData']) == false) {

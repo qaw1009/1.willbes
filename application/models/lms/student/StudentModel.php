@@ -124,6 +124,7 @@ class StudentModel extends WB_Model
 
     /**
      * 수강중인 회원 리스트
+     * 계속 되는 로직 수정요청으로 모델이 똥이 되어가고 있음 차후 다른분이 수정하실때 정책을 새로 잡아서 새로 만드시는것을 권장함
      * @param $is_count
      * @param array $arr_condition
      * @param null $limit
@@ -131,7 +132,7 @@ class StudentModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function getStudentList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function getStudentList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $isdan = false)
     {
         if ($is_count === true) {
             $column = '  count(*) AS numrows';
@@ -163,15 +164,14 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo AS MI ON MI.MemIdx = M.MemIdx
-                        join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode       
-
-                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode
+                        ".
+                        ($isdan == true ? "join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
                         join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 
                             AND ML.OrderProdIdx = OP.OrderProdIdx 
                             AND ML.ProdCode = OP.ProdCode
-                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode
-                        
-                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
+                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode " : "" )
+                        ."left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx                 
                     WHERE (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)       
@@ -188,6 +188,7 @@ class StudentModel extends WB_Model
 
     /**
      * 엑셀용 리스트 뽑기
+     * 계속 되는 로직 수정요청으로 모델이 똥이 되어가고 있음 차후 다른분이 수정하실때 정책을 새로 잡아서 새로 만드시는것을 권장함
      * @param $column
      * @param array $arr_condition
      * @param null $limit
@@ -195,9 +196,8 @@ class StudentModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    public function getStudentExcelList($column, $arr_condition = [], $limit = null, $offset = null, $order_by = [], $isdan = false)
     {
-
         $in_column = " P.ProdName, M.MemIdx, M.MemName, M.MemId, fn_dec(M.PhoneEnc) as Phone, fn_dec(M.MailEnc) as Mail
             ,OP.SalePatternCcd, OPa.CcdName as SalePatternCcd_Name, OP.RealPayPrice as Price
             ,O.OrderIdx, O.payRouteCcd, Oa.CcdName as PayRouteCcd_Name, O.PayMethodCcd, Ob.CcdName as PayMethodCcd_Name
@@ -224,15 +224,14 @@ class StudentModel extends WB_Model
                             left outer join wbs_sys_admin A on A.wAdminIdx = O.RegAdminIdx
                         join lms_member as M on M.MemIdx = O.MemIdx
                         join lms_member_otherinfo as MI ON MI.MemIdx = M.MemIdx
-                        
                         join lms_product_lecture AS PL ON PL.ProdCode = P.ProdCode
-                        join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
+                        ".
+                        ($isdan == true ? "join lms_product AS P1 ON P1.ProdCode = OP.ProdCode
                         join lms_my_lecture AS ML ON ML.OrderIdx = OP.OrderIdx 
                             AND ML.OrderProdIdx = OP.OrderProdIdx 
                             AND ML.ProdCode = OP.ProdCode
-                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode
-                        
-                        left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
+                        join lms_product AS P2 ON ML.ProdCodeSub = P2.ProdCode " : "" )
+                        ."left join lms_order_other_info AS OI ON OI.OrderIdx = OP.OrderIdx
                         left join lms_order_unpaid_hist AS ouh ON ouh.OrderIdx = OP.OrderIdx
                         left join lms_order_product_refund AS opr ON op.OrderIdx = opr.OrderIdx AND op.OrderProdIdx = opr.OrderProdIdx
                     WHERE (ouh.OrderIdx is null or ouh.UnPaidUnitNum = 1)       

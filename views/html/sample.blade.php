@@ -113,6 +113,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_05') }}" target="_blank">대학 특강문의</li>
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_06') }}" target="_blank">교수채용</li>
                 <li class="w50"><a href="{{ site_url('/home/html/guide_3134_07') }}" target="_blank">런닝메이트 <span>*</span></li>
+                <li class="w50"><a href="{{ site_url('/home/html/ssam_lecTable') }}" target="_blank">월별 강의안내 <span>*</span></li>
                 {{--
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200622') }}" target="_blank">임용 문제풀이 <span>*</span></a></li> 
                 <li class="w50"><a href="{{ site_url('/home/html/promotion/ssam_200716') }}" target="_blank">임용 모의고사 <span>*</span></a></li>

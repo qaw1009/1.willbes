@@ -181,7 +181,7 @@
         <ul class="skyBanner"> 
             {{--
             <li>
-                <a href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">
+                <a href="javascript:;" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">
                 <a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=276073&" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky02.png" title="라이브">
                 </a>
@@ -230,14 +230,14 @@
             </div>
             @if ($onoff_3 != 'null')
                 <div class="btnJoin NGEB">
-                    <a href="#none" onclick="doEvent(); return false;" target="_blank">
-                        경찰 1차시험<br> <span>인증이벤트 참여하기  ></span>
+                    <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
+                        경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
                     </a>
                 </div>
             @else
                 <div class="btnJoin NGEB">
-                    <a href="#none" onclick="doEvent(); return false;" target="_blank">
-                        경찰 2차 시험 인증 이벤트<br> <span>참여하기  ></span>
+                    <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
+                        경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
                     </a>
                 </div>
             @endif
@@ -406,7 +406,7 @@
                 //사전예약 마감
                 @if($onoff_1 != 'on')
                     var openNewWindow = window.open("about:blank");
-                    openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/1776') }}';
+                    openNewWindow.location.href = '{{ front_url('/promotion/index/cate/3001/code/2081') }}';
                 @else
                     var url = "{{ front_url('/predict/index/' . $arr_promotion_params['PredictIdx']) }}";
                     window.open(url,'event', 'scrollbars=yes,toolbar=no,resizable=yes,width=660,height=700,top=50,left=100');

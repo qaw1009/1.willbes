@@ -7,9 +7,9 @@
     <div id="Container" class="Container NG c_both">
         <!-- PageTitle -->
         @include('willbes.m.layouts.page_title')
-        <div class="mapArea">
+        <div class="mapArea ssamMapArea">
             <div id="location1" class="tabContent">
-                <div class="mapTitle">윌비스임용고시학원 노량진 임용 본관</div>
+                <div class="mapTitle bdb-Black2 pb10">윌비스임용고시학원</div>
                 <ul>
                     <li>[도로명] 서울시 동작구 노량진로 202 5층 <br>
                         [지번] 서울시 동작구 노량진동 197 남강타워 5층</li>

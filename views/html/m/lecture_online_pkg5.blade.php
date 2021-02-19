@@ -64,7 +64,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">
@@ -116,7 +116,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">
@@ -162,7 +162,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">
@@ -214,7 +214,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">
@@ -277,7 +277,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">
@@ -329,7 +329,7 @@
                                         </dt>
                                         <dt class="priceWrap">
                                             <span class="price">80,000원</span>
-                                            <span class="discount">20% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">64,000원</span>                                          
                                         </dt>
                                         <dt class="c_both">

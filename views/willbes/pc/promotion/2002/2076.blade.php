@@ -24,7 +24,7 @@
      
         .evt02 {background:#e1e1e1}
         .evt03 {background:#f3f3f3}
-        .evt04 {background:#fff}        
+        .evt04 div {width:1120px; margin:0 auto; position:relative}        
 
         .evt05 {background:#58489b; padding-bottom:100px}
         .evt05_txt {color:#fff; margin-bottom:50px}
@@ -163,16 +163,16 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="event">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_04.jpg" usemap="#Map1644a" title="6월 심화기출 개강 이벤트" border="0">
-            <map name="Map1644a" id="Map1644a">
-                <area shape="rect" coords="621,510,871,625" href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042" target="_blank" />
-                <area shape="rect" coords="205,1036,431,1101" href="#careful" />
-                <area shape="rect" coords="698,1035,917,1101" href="#careful" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_04.jpg" title="심화기출 개강 이벤트">
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" title="일반경찰" style="position: absolute; left: 22.77%; top: 32.45%; width: 16.43%; height: 2.47%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank" title="경행경채" style="position: absolute; left: 60.27%; top: 32.45%; width: 16.43%; height: 2.47%; z-index: 2;"></a>
+                <a href="#all_lec" title="심화종합반" style="position: absolute; left: 34.38%; top: 74.81%; width: 30.98%; height: 3.32%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_05.jpg" title="심화기출 단과반">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_05.jpg" title="프리미엄 심화과정">
             <div class="evt05_txt">
                 <div>*행정법 영상반 – 최신개정부분 실강진행 예정(일정 추후공지)</div>
                 <span>일반경찰</span> <span>경행경채</span>
@@ -212,7 +212,7 @@
                                 <td>한국사 오태진</td>
                                 <td>2021년 2차대비 오태진 심화 한국사</td>
                                 <td>4/5(월)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1042&subject_idx=1059" target="_blank">수강신청</a></td>
+                                <td><a href="ttps://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178771" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 원유철</td>
@@ -230,13 +230,13 @@
                                 <td>수사 신광은</td>
                                 <td>2021년 2차대비 신광은 심화 수사</td>
                                 <td>4/14(수)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1042&subject_idx=1060" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/178774" target="_blank">수강신청</a></td>
                             </tr>            
                             <tr>
                                 <td>형법 김원욱</td>
                                 <td>2021년 2차대비 김원욱 심화 형법</td>
                                 <td>4/26(월)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1042&subject_idx=1058" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178772" target="_blank">수강신청</a></td>
                             </tr>          
                             <tr>
                                 <td>경찰학 장정훈</td>
@@ -249,7 +249,7 @@
                 </div>                                  
             </div>       
        
-            <div class="evt05_table">           
+            <div class="evt05_table" id="all_lec">           
                 <div class="title NSK-Black">              
                     <span>NEW</span> 2021년 2차 합격대비 심화과정 종합반
                 </div>     
@@ -294,8 +294,8 @@
                 <dd>
                     <dt>[사전접수 10%할인이벤트]</dt>
                     <dl>일반경찰 : <span class="original">750,000원</span> > 675,000원</dl>
-                    <dl>일경행경채 : <span class="original">680,000원</span> > 612,000원</dl>
-                    <dl>일사전접수 이벤트는 조기 마감될수 있습니다.</dl>                    
+                    <dl>경행경채 : <span class="original">680,000원</span> > 612,000원</dl>
+                    <dl>사전접수 이벤트는 조기 마감될수 있습니다.</dl>                    
                 </dd>     
                 <dd>
                     <dt>[재등록 이벤트]</dt>

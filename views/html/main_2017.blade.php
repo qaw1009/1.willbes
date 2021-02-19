@@ -76,6 +76,8 @@
 .MainQuickMenuSSam .gobtn li a:hover {color:#2b3277}
 .MainQuickMenuSSam .gobtn li a:hover img.off {display: none;}
 .MainQuickMenuSSam .gobtn li a:hover img.on {display: block;}
+
+.curriSelect li a {font-size:14px !important; font-weight:normal !important}
 </style>
 
 <!-- Container -->
@@ -971,7 +973,7 @@
                             <tr>
                                 <th class="tx-gray">과목선택</th>
                                 <td colspan="8">
-                                    <ul class="curriSelect tx14">
+                                    <ul class="curriSelect">
                                         <li><a href="#none">사회복지학</a></li>
                                         <li><a href="#none">국어</a></li>
                                         <li><a href="#none">영어</a></li>

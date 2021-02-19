@@ -255,6 +255,7 @@ class BaseStudent extends \app\controllers\BaseController
 
     /**
      * 수강생보기 리스트
+     * 계속 되는 로직 수정요청으로 똥이 되어가고 있음 차후 다른분이 수정하실때 정책을 새로 잡아서 새로 만드시는것을 권장함
      * @return CI_Output
      */
     public function viewAjax()
@@ -289,7 +290,7 @@ class BaseStudent extends \app\controllers\BaseController
                 $arr_condition = [
                     'IN' => [
                         'OP.ProdCode' => $ProdCode, // 강좌코드
-                        'ML.ProdCodeSub' => $ProdCode, // 강좌코드
+                        'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
                         'OP.PayStatusCcd' => $payStatus_arr
                     ],
                     'EQ' => [
@@ -312,7 +313,7 @@ class BaseStudent extends \app\controllers\BaseController
                 $arr_condition = [
                     'EQ' => [
                         'OP.ProdCode' => $ProdCode, // 강좌코드
-                        'ML.ProdCodeSub' => $ProdCode, // 강좌코드
+                        'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
                         'OP.SalePatternCcd' => $this->_req('search_pay_type_ccd'), // 상품구분
                         'O.PayRouteCcd' => $this->_req('search_pay_route_ccd'), // 결제루트
                         'O.PayMethodCcd' => $this->_req('search_pay_method_ccd'), // 결제수단
@@ -399,11 +400,11 @@ class BaseStudent extends \app\controllers\BaseController
         // 강좌 수강중인 회원 읽어오기
         $list = [];
         $count = $this->studentModel->getStudentList(true, $arr_condition,
-            $this->_req('length'), $this->_req('start'));
+            $this->_req('length'), $this->_req('start'), [], !empty($ProdCode_arr));
 
         if($count > 0){
             $list = $this->studentModel->getStudentList(false, $arr_condition,
-                $this->_req('length'), $this->_req('start'));
+                $this->_req('length'), $this->_req('start'), [], !empty($ProdCode_arr));
 
             foreach($list as $key => $row){
                 if(empty($list[$key]['OrderSubProdData']) == false) {
@@ -422,6 +423,7 @@ class BaseStudent extends \app\controllers\BaseController
 
     /**
      * 엑셀 읽어오기
+     * 계속 되는 로직 수정요청으로 똥이 되어가고 있음 차후 다른분이 수정하실때 정책을 새로 잡아서 새로 만드시는것을 권장함
      */
     public function excel()
     {
@@ -542,7 +544,7 @@ class BaseStudent extends \app\controllers\BaseController
                         $arr_condition = [
                             'IN' => [
                                 'OP.ProdCode' => $ProdCode, // 강좌코드
-                                'ML.ProdCodeSub' => $ProdCode, // 강좌코드
+                                'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
                                 'OP.PayStatusCcd' => $payStatus_arr
                             ],
                             'EQ' => [
@@ -570,7 +572,7 @@ class BaseStudent extends \app\controllers\BaseController
                 $arr_condition = [
                     'EQ' => [
                         'OP.ProdCode' => $ProdCode, // 강좌코드
-                        'ML.ProdCodeSub' => $ProdCode, // 강좌코드
+                        'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
                         'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
                         'O.PayRouteCcd' => $this->_reqP('search_pay_route_ccd'), // 결제루트
                         'O.PayMethodCcd' => $this->_reqP('search_pay_method_ccd'), // 결제수단
@@ -655,7 +657,7 @@ class BaseStudent extends \app\controllers\BaseController
                         $arr_condition = [
                             'IN' => [
                                 'OP.ProdCode' => $ProdCode_tmp, // 강좌코드
-                                'ML.ProdCodeSub' => $ProdCode, // 강좌코드
+                                'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
                                 'OP.PayStatusCcd' => $payStatus_arr
                             ],
                             'EQ' => [
@@ -710,7 +712,7 @@ class BaseStudent extends \app\controllers\BaseController
         $search_end_date = $this->_reqP('search_end_date');
         $arr_condition['BDT'] = ['O.CompleteDatm' => [$search_start_date, $search_end_date]];
 
-        $list = $this->studentModel->getStudentExcelList($column, $arr_condition);
+        $list = $this->studentModel->getStudentExcelList($column, $arr_condition, null, null, [], !empty($ProdCode_arr));
 
         foreach($list as $key => $row){
             if(empty($list[$key]['OrderSubProdData']) == false) {

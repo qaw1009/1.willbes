@@ -2911,6 +2911,22 @@ body.memBody #Footer {
 	width: 24px;
 }
 
+/*임용 공지사항 강의 일정 테이블*/
+.ssamLecTable {width:100%; margin:0 auto 50px; font-size:12px}
+.ssamLecTable h5 {font-size:30px; text-align:center; padding:20px 0}
+.ssamLecTable h5 span {color:#002060; vertical-align:top}
+.ssamLecTable table {border:2px solid #999}
+.ssamLecTable thead {border-bottom:2px solid #999}
+.ssamLecTable th,
+.ssamLecTable td {text-align:center; padding:10px 5px !important; line-height:1.4; border:0; border-right:1px solid #ccc; border-bottom:1px solid #ccc}
+.ssamLecTable thead th {color:#333; background:#e9ecf5 !important; font-size:14px; font-weight:bold; }
+.ssamLecTable td a {display:block; padding:3px; border-radius:3px; font-size:11px !important;}
+.ssamLecTable td a.btnSt01 {background:#ff6600; color:#fff;}
+.ssamLecTable td a.btnSt02 {background:#2e898e; color:#fff}
+.ssamLecTable td:nth-last-child(3) {font-size:11px !important;} 
+.ssamLecTable td strong {color:#000; font-size:12px !important;}
+.ssamLecTable td em {color:#ed1c24}
+
 
 /****************윌비스 임용 : 메인 end******************/
 

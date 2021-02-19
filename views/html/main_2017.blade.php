@@ -2,80 +2,7 @@
 @extends('html.layouts.master')
 @section('content')
 <style type="text/css">
-/* Main Container : QuickMenu*/ 
-.MainQuickMenuSSam {
-    position: fixed;
-    top: 220px;
-    left: 50%;
-    margin-left:620px;
-    width: 100px;
-    height: auto;
-    z-index: 100;        
-}
-.MainQuickMenuSSam ul li {
-    margin-bottom: 8px;        
-}
-.MainQuickMenuSSam .dday {
-    border:1px solid #dbdbdb; background-color: #fff; 
-    width: 100px;
-    height: 100px;    
-    overflow: hidden;
-}
-.MainQuickMenuSSam .sliderNum {}
-.MainQuickMenuSSam .QuickDdayBox {border:0 !important; }
-.MainQuickMenuSSam .bx-wrapper .bx-prev {
-    background: url("../../img/willbes/cop/btn_quick_prev.jpg") no-repeat 0 0;
-    left: 0;
-}
-.MainQuickMenuSSam .bx-wrapper .bx-next {
-    background: url("../../img/willbes/cop/btn_quick_next.jpg") no-repeat 0 0;
-    right: 0;
-    left: auto;
-}
-.MainQuickMenuSSam .bx-wrapper .bx-controls-direction {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    width: 54px;
-    height: 14px;
-    margin: 0 auto;
-}
-.MainQuickMenuSSam .bx-wrapper .bx-controls-direction a {
-    width: 12px;
-    height: 13px;
-}
-.MainQuickMenuSSam .bx-wrapper .bx-pager {
-    width: auto;
-    position: absolute;
-    bottom: 7px;
-    left: 0;
-    right: 0;
-    font-size: 10px;
-    font-weight: 300;
-    color: #000;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 0;
-}
 
-.MainQuickMenuSSam .gobtn {
-    width:100%;
-}
-.MainQuickMenuSSam .gobtn li {margin:0; margin-bottom:10px; line-height:1.2; font-size:13px}
-.MainQuickMenuSSam .gobtn li a {
-    display:block;
-    text-align: center;    
-    color:#5f6281;
-}
-.MainQuickMenuSSam .gobtn li:last-child a {color:#0c5dc0; font-family: Arial, Helvetica, sans-serif; border:0; font-weight: bold; padding-top:10px}
-.MainQuickMenuSSam .gobtn li a p {margin-top:5px;}
-.MainQuickMenuSSam .gobtn li a img {width:70px; margin:0 auto}
-.MainQuickMenuSSam .gobtn li a img.off {display: block;}
-.MainQuickMenuSSam .gobtn li a img.on {display: none;}
-.MainQuickMenuSSam .gobtn li a:hover {color:#2b3277}
-.MainQuickMenuSSam .gobtn li a:hover img.off {display: none;}
-.MainQuickMenuSSam .gobtn li a:hover img.on {display: block;}
 </style>
 
 <!-- Container -->
@@ -942,7 +869,6 @@
                     <p>재학생<br>러닝메이트</p>
                 </a>
             </li>
-            <li><a href="#">TOP ▲</a></li>
         </ul>
     </div>
     
@@ -971,7 +897,7 @@
                             <tr>
                                 <th class="tx-gray">과목선택</th>
                                 <td colspan="8">
-                                    <ul class="curriSelect tx14">
+                                    <ul class="curriSelect">
                                         <li><a href="#none">사회복지학</a></li>
                                         <li><a href="#none">국어</a></li>
                                         <li><a href="#none">영어</a></li>

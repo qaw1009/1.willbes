@@ -26,7 +26,7 @@
         .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/02/2085_04_bg.jpg) no-repeat center top;}
 
         .evt05 {padding-bottom:100px;}
-                
+
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -35,7 +35,7 @@
         </div>     
 
         <div class="sky">
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2075#apply2" target="_blank" > 
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2075" target="_blank" > 
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/2085_sky.png" alt="3월 추천강좌" >
             </a>             
         </div>   

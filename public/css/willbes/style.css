@@ -14191,4 +14191,4 @@ table.acadlecInfoPackageTable tr.Top td {
 .ssamLecTable td a.btnSt02 {background:#2e898e; color:#fff}
 .ssamLecTable td:nth-last-child(3) {font-size:11px !important;} 
 .ssamLecTable td strong {color:#000; font-size:12px !important;}
-.ssamLecTable td em {color:#ed1c24}
+.ssamLecTable td span {color:#ed1c24}

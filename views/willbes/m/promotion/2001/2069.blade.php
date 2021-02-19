@@ -6,10 +6,17 @@
         $step1 = 'off'; $step2 = 'off';
 
         if (empty($arr_base['predict_data']) === false) {
+            //사전예약
             if ($arr_base['predict_data']['PreServiceIsUse'] == 'Y' && $arr_base['predict_data']['PreServiceSDatm'] <= $now && $arr_base['predict_data']['PreServiceEDatm'] >= $now) {
                 $step1 = 'on';
             }
 
+            //답안입력서비스
+            if ($arr_base['predict_data']['AnswerServiceIsUse'] == 'Y' && $arr_base['predict_data']['AnswerServiceSDatm'] <= $now && $arr_base['predict_data']['AnswerServiceEDatm'] >= $now) {
+                $step2 = 'on';
+            }
+
+            //본서비스
             if ($arr_base['predict_data']['ServiceIsUse'] == 'Y' && $arr_base['predict_data']['ServiceSDatm'] <= $now && $arr_base['predict_data']['ServiceEDatm'] >= $now) {
                 $step2 = 'on';
             }

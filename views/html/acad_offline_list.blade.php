@@ -288,7 +288,7 @@
                                     <div class="priceWrap priceWrap2">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                         <span class="price">80,000원</span>
-                                        <span class="discount">20% ↓</span>
+                                        <span class="discount">(10%↓)</span> ▶
                                         <span class="dcprice">64,000원</span>
                                     </div> 
                                 </td>
@@ -429,7 +429,7 @@
                                     <div class="priceWrap priceWrap2">
                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                         <span class="price">80,000원</span>
-                                        <span class="discount">20% ↓</span>
+                                        <span class="discount">(10%↓)</span> ▶
                                         <span class="dcprice">64,000원</span>
                                     </div> 
                                 </td>

@@ -287,7 +287,7 @@
                                     <div class="acadInfo n2">접수중</div>
                                     <div class="priceWrap">
                                         <span class="price">80,000원</span>
-                                        <span class="discount">20% ↓</span>
+                                        <span class="discount">(10%↓)</span> ▶
                                         <span class="dcprice">64,000원</span>
                                     </div> 
                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>                         
@@ -521,7 +521,7 @@
                                     <div class="acadInfo n3">마감</div>
                                     <div class="priceWrap">
                                         <span class="price">80,000원</span>
-                                        <span class="discount">20% ↓</span>
+                                        <span class="discount">(10%↓)</span> ▶
                                         <span class="dcprice">64,000원</span>
                                     </div> 
                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>

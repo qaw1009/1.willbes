@@ -212,7 +212,7 @@
                                 <td>한국사 오태진</td>
                                 <td>2021년 2차대비 오태진 심화 한국사</td>
                                 <td>4/5(월)</td>                      
-                                <td><a href="ttps://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178771" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178771" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>한국사 원유철</td>

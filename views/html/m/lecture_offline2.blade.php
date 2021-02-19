@@ -58,7 +58,7 @@
                     </span>
                     <div class="priceWrap">
                         <span class="price">80,000원</span>
-                        <span class="discount">20% ↓</span>
+                        <span class="discount">(10%↓)</span> ▶
                         <span class="dcprice">64,000원</span>                                          
                     </div>
                 </li>

@@ -421,6 +421,7 @@
             location.href = '{{ front_url('/predict/popwin2m/?PredictIdx=') }}' + PredictIdx + '&pridx='+$('#PrIdx').val() + '&type=answer';
         }
 
+        // 지역+직렬 범위
         function takeNumChk(take_mock_part, take_area, takenum, check_type) {
             takenum = (isNaN(takenum)) ? 0 : takenum;
             var take_mock_position = (check_type == 'm') ? take_mock_part : take_area + take_mock_part;

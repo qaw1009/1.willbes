@@ -149,7 +149,7 @@
             ajaxSubmit($all_regi_form, _url, function (ret) {
                 if (ret.ret_cd) {
                     alert(ret.ret_msg);
-                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/1555') }}');
+                    parent.location.replace('{{ front_url('/promotion/index/cate/3001/code/2069') }}');
                 }
             }, showValidateError, null, false, 'alert');
         }

@@ -635,9 +635,10 @@ class BasePromotion extends \app\controllers\FrontController
      */
     private function _predictData($predict_idx)
     {
-        $column = 'PredictIdx, MockPart, PreServiceIsUse, ServiceIsUse';
+        $column = 'PredictIdx, MockPart, PreServiceIsUse, ServiceIsUse, AnswerServiceIsUse';
         $column .= ',DATE_FORMAT(PreServiceSDatm, \'%Y%m%d%H%i\') AS PreServiceSDatm, DATE_FORMAT(PreServiceEDatm, \'%Y%m%d%H%i\') AS PreServiceEDatm';
         $column .= ',DATE_FORMAT(ServiceSDatm, \'%Y%m%d%H%i\') AS ServiceSDatm, DATE_FORMAT(ServiceEDatm, \'%Y%m%d%H%i\') AS ServiceEDatm';
+        $column .= ',DATE_FORMAT(AnswerServiceSDatm, \'%Y%m%d%H%i\') AS AnswerServiceSDatm, DATE_FORMAT(AnswerServiceEDatm, \'%Y%m%d%H%i\') AS AnswerServiceEDatm';
         $arr_condition = ['EQ' => ['PredictIdx' => $predict_idx,'IsUse' => 'Y']];
         return $this->predictFModel->findPredictData($arr_condition, $column);
     }

@@ -228,7 +228,7 @@
                                 <div class="acadInfo NSK n2">접수중</div>
                                 <div class="priceWrap">
                                     <span class="price">80,000원</span>
-                                    <span class="discount">20% ↓</span>
+                                    <span class="discount">(10%↓)</span> ▶
                                     <span class="dcprice">64,000원</span>
                                 </div> 
                             </td>
@@ -272,7 +272,7 @@
                                 <div class="acadInfo NSK n1">접수예정</div>
                                 <div class="priceWrap">
                                     <span class="price">80,000원</span>
-                                    <span class="discount">20% ↓</span>
+                                    <span class="discount">(10%↓)</span> ▶
                                     <span class="dcprice">64,000원</span>
                                 </div> 
                             </td>

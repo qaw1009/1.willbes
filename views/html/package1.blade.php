@@ -240,7 +240,7 @@
                             <td class="w-notice">
                                 <div class="priceWrap">
                                     <span class="price">156,000원</span>
-                                    <span class="discount">30,000원 ↓</span>
+                                    <span class="discount">(30,000원↓)</span> ▶
                                     <span class="dcprice">126,000원</span>
                                 </div>
                             </td>
@@ -322,7 +322,7 @@
                             <td class="w-notice">
                                 <div class="priceWrap">
                                     <span class="price">70,000원</span>
-                                    <span class="discount">10% ↓</span>
+                                    <span class="discount">(10%↓)</span> ▶
                                     <span class="dcprice">63,000원</span>
                                 </div>
                             </td>

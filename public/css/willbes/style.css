@@ -3041,7 +3041,7 @@ table.lecTable tr td .priceWrap .select {
 	display: inline-block;	
 	font-size: 11px;
 	color: #000;
-	margin-right: 5px;
+	margin-right: 3px;
 }
 table.lecTable tr td .priceWrap .bookselect {
 	width: 50px;
@@ -3053,7 +3053,7 @@ table.lecTable tr td .priceWrap .price {
 	color:#999;
 }
 table.lecTable tr td .priceWrap .discount {
-	margin:0 5px;
+	margin:0 3px;
 	color:#ed1c24;
 }
 table.lecTable tr td .priceWrap .dcprice {

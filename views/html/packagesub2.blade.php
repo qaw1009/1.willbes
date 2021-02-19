@@ -192,8 +192,8 @@
             <div class="willbes-Buy-List willbes-Buy-PackageList bd-none">
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width: 760px;">
-                        <col style="width: 180px;">
+                        <col style="width: 740px;">
+                        <col style="width: 200px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -209,7 +209,7 @@
                             <td class="w-notice">
                                 <div class="priceWrap priceWrap2">
                                     <span class="price">80,000원</span>
-                                    <span class="discount">20% ↓</span>
+                                    <span class="discount">(20%↓)</span>  ▶
                                     <span class="dcprice">64,000원</span>
                                 </div>
                             </td>

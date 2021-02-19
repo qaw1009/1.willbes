@@ -116,7 +116,7 @@
                                         <label for="checkA">
                                             PC+모바일 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -125,7 +125,7 @@
                                         <label for="checkB">
                                             PC 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -156,7 +156,7 @@
                                         <label for="checkA">
                                             PC+모바일 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -165,7 +165,7 @@
                                         <label for="checkB">
                                             PC 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -205,7 +205,7 @@
                                         <label for="checkA">
                                             PC+모바일 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -214,7 +214,7 @@
                                         <label for="checkB">
                                             PC 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -249,7 +249,7 @@
                                         <label for="checkA">
                                             PC+모바일 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>
@@ -258,7 +258,7 @@
                                         <label for="checkB">
                                             PC 
                                             <span class="price">90,000원</span>
-                                            <span class="discount">10% ↓</span>
+                                            <span class="discount">(10%↓)</span> ▶
                                             <span class="dcprice">81,000원</span>
                                         </label>
                                     </li>

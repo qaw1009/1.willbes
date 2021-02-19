@@ -14179,7 +14179,7 @@ table.acadlecInfoPackageTable tr.Top td {
 
 /*임용 공지사항 강의 일정 테이블*/
 .ssamLecTable {max-width:940px; margin:0 auto 50px; font-size:12px}
-.ssamLecTable h5 {font-size:30px; text-align:center; padding:20px 0}
+.ssamLecTable h5 {font-size:30px; text-align:center; padding:20px 0; line-height: 1.2}
 .ssamLecTable h5 span {color:#002060; vertical-align:top}
 .ssamLecTable table {border:2px solid #999}
 .ssamLecTable thead {border-bottom:2px solid #999}

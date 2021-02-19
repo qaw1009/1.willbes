@@ -168,8 +168,7 @@
 .ssam .Section2 .goBtns li {display:inline; float:left; margin-left:5px}
 .ssam .Section2 .goBtns li a {display:block; padding:5px 15px; color:#fff; background:#0c5dc0}
 .ssam .Section2 .goBtns li:last-child a {background:#464646}
-.ssam .Section2 .reviewBox {border:1px solid #e3e3e3; padding:15px; background:url(https://static.willbes.net/public/images/promotion/main/2018/2018_main_img01.jpg) no-repeat 15px 15px;
-min-height: 260px;}
+.ssam .Section2 .reviewBox {border:1px solid #e3e3e3; padding:15px; background:url(https://static.willbes.net/public/images/promotion/main/2018/2018_main_img01.jpg) no-repeat 15px 15px; min-height: 260px; overflow: hidden}
 .ssam .Section2 .reviewBox .review {position:relative; height:230px; width:745px; margin-left:340px; padding-bottom:15px; border-bottom:1px solid #ececec; color:#3a3a3a; line-height:1.5; }
 .ssam .Section2 .reviewBox .review li {height:215px; overflow:hidden;}
 .ssam .Section2 .reviewBox .reviewInfo {font-size:16px; margin-bottom:20px; border-bottom:1px solid #ececec; padding-bottom:20px; font-weight: bold;}

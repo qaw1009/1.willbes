@@ -258,7 +258,7 @@
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">PC+모바일</span>
                                     <span class="price">123,000원</span>
-                                    <span class="discount">15% ↓</span>
+                                    <span class="discount">(15%↓)</span> ▶
                                     <span class="dcprice">123,000원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -367,7 +367,7 @@
                                     <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                     <span class="select">PC+모바일</span>
                                     <span class="price">154,000원</span>
-                                    <span class="discount">5% ↓</span>
+                                    <span class="discount">(5%↓)</span>  ▶
                                     <span class="dcprice">123,000원</span>
                                 </div>
                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>

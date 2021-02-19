@@ -364,7 +364,7 @@
                                                     <div class="priceWrap priceWrap2 mb10">
                                                         <span>[판매중]</span>
                                                         <span class="price">40,000원</span>
-                                                        <span class="discount">10% ↓</span>
+                                                        <span class="discount">(10%↓)</span>  ▶
                                                         <span class="dcprice">36,000원</span>
                                                     </div>
 
@@ -424,7 +424,7 @@
                                                     <div class="priceWrap priceWrap2 mb10">
                                                         <span>[판매중]</span>
                                                         <span class="price">40,000원</span>
-                                                        <span class="discount">10% ↓</span>
+                                                        <span class="discount">(10%↓)</span>  ▶
                                                         <span class="dcprice">36,000원</span>
                                                     </div>
 
@@ -460,7 +460,7 @@
                                                     <div class="priceWrap priceWrap2 mb10">
                                                         <span>[판매중]</span>
                                                         <span class="price">40,000원</span>
-                                                        <span class="discount">10% ↓</span>
+                                                        <span class="discount">(10%↓)</span>  ▶
                                                         <span class="dcprice">36,000원</span>
                                                     </div>
 
@@ -520,7 +520,7 @@
                                                     <div class="priceWrap priceWrap2 mb10">
                                                         <span>[판매중]</span>
                                                         <span class="price">40,000원</span>
-                                                        <span class="discount">10% ↓</span>
+                                                        <span class="discount">(10%↓)</span>  ▶
                                                         <span class="dcprice">36,000원</span>
                                                     </div>
 
@@ -1277,7 +1277,7 @@
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                                                         <span class="select">PC+모바일</span>
                                                                         <span class="price">154,000원</span>
-                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
@@ -1388,7 +1388,7 @@
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
                                                                         <span class="price">80,000원</span>
-                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
@@ -1411,7 +1411,7 @@
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
                                                                         <span class="price">80,000원</span>
-                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
@@ -1465,7 +1465,7 @@
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
                                                                         <span class="price">80,000원</span>
-                                                                        <span class="discount">20% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
@@ -1556,7 +1556,7 @@
                                                                     <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                                                         <span class="price">154,000원</span>
-                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
@@ -1626,7 +1626,7 @@
                                                                     <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                                                         <span class="price">154,000원</span>
-                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>
@@ -2017,7 +2017,7 @@
                                                                     <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
                                                                         <span class="price">154,000원</span>
-                                                                        <span class="discount">5% ↓</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
                                                                         <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                 </td>

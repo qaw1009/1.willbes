@@ -876,23 +876,22 @@
                                                                             <dt class="tBox t2 gray"><a href="">LOW</a></dt>
                                                                         </dl>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[PC]</span>
-                                                                        <span class="price tx-blue">7,000원</span>
-                                                                        <span class="discount">(↓20%)</span>
+                                                                        <span class="select">PC</span>
+                                                                        <span class="dcprice">6,000원</span>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[모바일]</span>
-                                                                        <span class="price tx-blue">80,000원</span>
-                                                                        <span class="discount">(↓10%)</span>
+                                                                        <span class="select">모바일</span>
+                                                                        <span class="dcprice">90,000원</span>
                                                                     </div>
-                                                                    <div class="priceWrap chk buybtn p_re">
+                                                                    <div class="priceWrap priceWrap2">
                                                                         <span class="chkBox"><input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk"></span>
-                                                                        <span class="select">[PC+모바일]</span>
-                                                                        <span class="price tx-blue">123,000원</span>
-                                                                        <span class="discount">(↓15%)</span>
+                                                                        <span class="select">PC+모바일</span>
+                                                                        <span class="price">154,000원</span>
+                                                                        <span class="discount">(10%↓)</span>  ▶
+                                                                        <span class="dcprice">123,000원</span>
                                                                     </div>
                                                                     <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                                                 </td>
@@ -1000,8 +999,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">156,000원</span>
-                                                                        <span class="discount">(↓40%)</span>
+                                                                        <span class="price">156,000원</span>
+                                                                        <span class="discount">(40%↓)</span> ▶
+                                                                        <span class="dcprice">64,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1022,8 +1022,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">72,000원</span>
-                                                                        <span class="discount">(↓60%)</span>
+                                                                        <span class="price">72,000원</span>
+                                                                        <span class="discount">(60%↓)</span> ▶
+                                                                        <span class="dcprice">72,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -1075,8 +1076,9 @@
                                                                 </td>
                                                                 <td class="w-notice">
                                                                     <div class="priceWrap">
-                                                                        <span class="price tx-blue">190,000원</span>
-                                                                        <span class="discount">(↓70%)</span>
+                                                                        <span class="price">72,000원</span>
+                                                                        <span class="discount">(60%↓)</span> ▶
+                                                                        <span class="dcprice">72,000원</span>
                                                                     </div>
                                                                 </td>
                                                             </tr>

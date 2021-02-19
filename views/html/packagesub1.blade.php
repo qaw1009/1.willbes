@@ -154,7 +154,7 @@
                                     <span class="tx-red">(필독)</span>
                                 </td>
                                 <td class="w-data tx-left pl25">
-                                    <img src="http://file1.willbes.net//data/upload/popup/hanlim/POPUPVALUE3515.JPG">
+                                    <img src="https://static.willbes.net/public/images/promotion/sub/POPUPVALUE3515.jpg" class="mb10">
                                     LMS > 상품관리> [온라인]상품관리> 운영자패키지메뉴의‘패키지유의사항(필독)’ 항목에입력된정보가<br/>
                                     자동출력됩니다. (온라인상품기준)
                                 </td>
@@ -189,8 +189,8 @@
             <div class="willbes-Buy-List willbes-Buy-PackageList">
                 <table cellspacing="0" cellpadding="0" class="lecTable">
                     <colgroup>
-                        <col style="width: 760px;">
-                        <col style="width: 180px;">
+                        <col style="width: 740px;">
+                        <col style="width: 200px;">
                     </colgroup>
                     <tbody>
                         <tr>
@@ -206,7 +206,7 @@
                             <td class="w-notice">
                                 <div class="priceWrap priceWrap2">
                                     <span class="price">80,000원</span>
-                                    <span class="discount">20% ↓</span>
+                                    <span class="discount">(20%↓)</span> ▶
                                     <span class="dcprice">64,000원</span>
                                 </div>
                             </td>

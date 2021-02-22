@@ -161,7 +161,17 @@
                                                         $realsaleprice = 0;
                                                     }
                                                 @endphp
-                                                <dt><span class="tx-blue">{{ number_format($realsaleprice, 0) }}원</span>(↓{{ $salerate . $salerateunit }})</dt>
+                                                <dt>
+{{--                                                    <span class="tx-blue">{{ number_format($realsaleprice, 0) }}원</span>(↓{{ $salerate . $salerateunit }})--}}
+
+                                                    <div class="priceWrap">
+                                                        @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
+                                                            <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                            <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span>  ▶
+                                                        @endif
+                                                        <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                    </div>
+                                                </dt>
                                             </dl>
                                             <div class="w-buy">
                                                 <span class="chkBox d_none"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $saletypeccd. ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/></span>

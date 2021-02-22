@@ -77,8 +77,14 @@
                                                 @foreach($row['ProdPriceData'] as $price_row)
                                                     @if($loop -> index === 1)
                                                         <div class="priceWrap">
-                                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
-                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+{{--                                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>--}}
+{{--                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+
+                                                            @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                            @endif
+                                                            <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -139,8 +145,14 @@
                                                 @foreach($row['ProdPriceData'] as $price_row)
                                                     @if($loop -> index === 1)
                                                         <div class="priceWrap">
-                                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>
-                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+{{--                                                            <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>--}}
+{{--                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+
+                                                            @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                            @endif
+                                                            <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -206,9 +218,9 @@
                                             <col style="width: 85px;">
                                             <col style="width: 85px;">
                                             <col width="*">
-                                            <col style="width: 120px;">
-                                            <col style="width: 70px;">
-                                            <col style="width: 130px;">
+                                            <col style="width: 140px;">
+                                            <col style="width: 100px;">
+                                            <col style="width: 140px;">
                                         </colgroup>
                                         <tbody>
                                         <tr>
@@ -266,11 +278,19 @@
                                             <td class="w-notice p_re">
                                                 <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                                                 <div class="priceWrap chk buybtn p_re">
-                                                <span class="price tx-blue">
+                                                <span class="price @if($row['ProdPriceData'][0]['SalePrice'] == $realsaleprice) tx-blue @endif">
                                                     <span class="chkBox d_none"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $saletypeccd. ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/></span>
-                                                    {{ number_format($realsaleprice, 0) }}원
+                                                    @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
+                                                        {{ number_format($row['ProdPriceData'][0]['SalePrice'], 0) }}원
+                                                    @else
+                                                        {{ number_format($realsaleprice, 0) }}원
+                                                    @endif
                                                 </span>
-                                                    <span class="discount">(↓{{ $salerate . $salerateunit }})</span>
+
+                                                @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
+                                                    <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span>
+                                                    <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                @endif
                                                 </div>
                                                 <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                                             </td>

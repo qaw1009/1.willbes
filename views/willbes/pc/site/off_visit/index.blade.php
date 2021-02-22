@@ -318,11 +318,19 @@
                                                 @if(empty($row['ProdPriceData']) === false)
                                                     @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                         <div class="priceWrap chk buybtn p_re">
-                                                            <span class="price tx-blue">
+                                                            <span class="price @if($price_row['SalePrice'] == $price_row['RealSalePrice']) tx-blue @endif">
                                                                 <span class="chkBox"><input type="checkbox" name="prod_code[]" id="{{$row['ProdCode']}}" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
-                                                                {{ number_format($price_row['RealSalePrice'], 0) }}원
+                                                                @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                    {{ number_format($price_row['SalePrice'], 0) }}원
+                                                                @else
+                                                                    {{ number_format($price_row['RealSalePrice'], 0) }}원
+                                                                @endif
                                                             </span>
-                                                            <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+
+                                                            @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                                <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                            @endif
                                                         </div>
                                                     @endforeach
                                                 @endif

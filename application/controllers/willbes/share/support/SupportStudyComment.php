@@ -139,7 +139,7 @@ class SupportStudyComment extends BaseSupport
 
         // 임용 메인 수강후기 레이어 추가 class
         if (config_app('SiteGroupCode') == '1011') {
-            if(strpos($_SERVER['HTTP_REFERER'], '/home/index') !== false){
+            if(strpos($_SERVER['HTTP_REFERER'], '/professor/show') === false){
                 $arr_base['layer_class_1120'] = 'willbes-Layer-ReplyBox-1120';
             }
         }

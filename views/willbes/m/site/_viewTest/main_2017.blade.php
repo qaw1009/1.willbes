@@ -176,7 +176,7 @@
                 윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>
             </div>
             <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-            <ul class="bestLecBox">
+            <ul class="bestLecBox2">
                 @foreach($data['top_order_lecture'] as $key => $row)
                     <li class="bestLec">
                         <a href="{{ site_url('/m/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode']) }}">
@@ -191,41 +191,6 @@
                 @endforeach
             </ul>
         @endif
-
-{{--        @if(empty($data['new_product']) === false)--}}
-{{--            <div class="mainTit NSK-Black tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>--}}
-{{--            <div class="sampleView">--}}
-{{--                <div class="overhidden">--}}
-{{--                    <div class="swiper-container-view">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            @foreach($data['new_product'] as $row)--}}
-{{--                                @php--}}
-{{--                                    $sample_info = [];--}}
-{{--                                    if($row['LectureSamplewUnit'] !== 'N') {--}}
-{{--                                        $sample_info = json_decode($row['LectureSamplewUnit'], true);--}}
-{{--                                    }--}}
-{{--                                @endphp--}}
-{{--                                <div class="swiper-slide">--}}
-{{--                                    @if(!empty($sample_info[0]['wUnitIdx']))--}}
-{{--                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row["ProdCode"]}}&u={{$sample_info[0]["wUnitIdx"]}}&q={{$sample_info[0]["wHD"] != '' ? 'HD' : 'SD'}}", "{{config_item('starplayer_license')}}");'>--}}
-{{--                                            @else--}}
-{{--                                                <a href="javascript:alert('샘플영상 준비중입니다.')">--}}
-{{--                                                    @endif--}}
-{{--                                                    <img src="{{$row['ProfLecListImg'] or ''}}" alt="{{$row['ProfNickName']}}">--}}
-{{--                                                    <div>--}}
-{{--                                                        {{$row['SubjectName']}}<span></span><strong>{{$row['ProfNickName']}}</strong>--}}
-{{--                                                        <p>{{$row['ProdName']}}</p>--}}
-{{--                                                    </div>--}}
-{{--                                                </a>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <!-- Add Pagination -->--}}
-{{--                        <div class="swiper-pagination"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
 
         <div class="mainTit NSK-Black tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
         <div class="sampleViewImg">

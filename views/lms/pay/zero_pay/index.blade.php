@@ -41,6 +41,11 @@
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
+                        <select class="form-control mr-10" id="search_is_lec_unit" name="search_is_lec_unit">
+                            <option value="">회차등록여부</option>
+                            <option value="Y">회차등록</option>
+                            <option value="N">일반등록</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

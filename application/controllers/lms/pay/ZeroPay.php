@@ -56,7 +56,7 @@ class ZeroPay extends BaseOrder
                 $arr_my_lec_data = json_decode($row['MyLecData'], true);
                 $row['LecStartDate'] = $arr_my_lec_data[0]['LecStartDate'];
                 $row['LecExpireDay'] = $arr_my_lec_data[0]['LecExpireDay'];
-                $row['wUnitCnt'] = empty($arr_my_lec_data[0]['wUnitIdxs']) === false ? count(explode(',', $arr_my_lec_data[0]['wUnitIdxs'])) : '';
+                $row['wUnitCnt'] = empty($arr_my_lec_data[0]['wUnitIdxs']) === false ? count(explode(',', rtrim($arr_my_lec_data[0]['wUnitIdxs'], ','))) : '';
 
                 return $row;
             }, $list);
@@ -118,6 +118,15 @@ class ZeroPay extends BaseOrder
         // 조건 병합
         $arr_condition = array_replace_recursive($arr_condition, $arr_mem_condition, $arr_prod_condition);
 
+        // 회차등록여부
+        if (empty($this->_reqP('search_is_lec_unit')) === false) {
+            if ($this->_reqP('search_is_lec_unit') == 'Y') {
+                $arr_condition['EQ']['OP.SalePatternCcd'] = $this->orderListModel->_sale_pattern_ccd['unit'];
+            } else {
+                $arr_condition['NOT']['OP.SalePatternCcd'] = $this->orderListModel->_sale_pattern_ccd['unit'];
+            }
+        }
+
         // 날짜 검색
         $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-01'));
         $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-t'));
@@ -145,7 +154,7 @@ class ZeroPay extends BaseOrder
         $headers = ['주문번호', '운영사이트', '회원명', '회원아이디', '회원휴대폰번호', '결제완료일', '상품구분', '상품명', '회차수', '결제상태', '환불완료일', '환불완료자'
             , '수강시작일', '수강기간', '부여사유유형', '기타사유'];
         $column = 'OrderNo, SiteName, MemName, MemId, MemPhone, CompleteDatm, ProdTypeCcdName, ProdName
-            , if(json_value(MyLecData, "$[0].wUnitIdxs") != "", fn_str_count(concat(json_value(MyLecData, "$[0].wUnitIdxs"), ","), ","), "") as wUnitCnt
+            , if(json_value(MyLecData, "$[0].wUnitIdxs") != "", fn_str_count(concat(trim(trailing "," from json_value(MyLecData, "$[0].wUnitIdxs")), ","), ","), "") as wUnitCnt
             , PayStatusCcdName, RefundDatm, RefundAdminName
             , json_value(MyLecData, "$[0].LecStartDate") as LecStartDate, json_value(MyLecData, "$[0].LecExpireDay") as LecExpireDay, AdminReasonCcdName, AdminEtcReason';
 

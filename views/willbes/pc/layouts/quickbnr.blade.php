@@ -45,7 +45,7 @@
                         <p>재학생<br>러닝메이트</p>
                     </a>
                 </li>
-                <li><a href="#">TOP ▲</a></li>
+                {{--<li><a href="#">TOP ▲</a></li>--}}
             </ul>
         </div>
 

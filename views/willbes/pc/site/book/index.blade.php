@@ -200,8 +200,14 @@
                                                     <span class="select @if($row['wSaleCcd'] == '112002' || $row['wSaleCcd'] == '112003') tx-pink @elseif($row['wSaleCcd'] == '112004') tx-gray @endif">
                                                         [{{ $row['wSaleCcdName'] }}]
                                                     </span>
-                                                    <span class="price tx-blue">{{ number_format($row['RealSalePrice']) }}원</span>
-                                                    <span class="discount">(↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})</span>
+{{--                                                    <span class="price tx-blue">{{ number_format($row['RealSalePrice']) }}원</span>--}}
+{{--                                                    <span class="discount">(↓{{ $row['SaleRate'] . $row['SaleRateUnit'] }})</span>--}}
+
+                                                    @if($row['SalePrice'] > $row['RealSalePrice'])
+                                                        <span class="price">{{ number_format($row['SalePrice'], 0) }}원</span>
+                                                        <span class="discount">({{ ($row['SaleRateUnit'] == '%' ? $row['SaleRate'] : number_format($row['SaleRate'], 0)) . $row['SaleRateUnit'] }}↓)</span>
+                                                    @endif
+                                                    <span class="dcprice">{{ number_format($row['RealSalePrice'], 0) }}원</span>
                                                 </li>
                                             </ul>
                                         </div>

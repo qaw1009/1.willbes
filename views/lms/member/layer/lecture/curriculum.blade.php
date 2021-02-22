@@ -120,21 +120,23 @@
                     <td>
                         {{floor(intval($row['StudyTime'])/60)}}분<br>
                         ( {{floor(intval($row['RealStudyTime'])/60)}}분 / {{$row['remaintime']}} )
-                        @if(
-                            empty($lec['MultipleApply']) == false && // 배수적용 빈칸 아니고
-                            $lec['MultipleApply'] != 1 && // 1은 무제한
-                            $lec['MultipleTypeCcd'] == '612001' &&
-                            $row['RealStudyTime'] > 0
-                        )
-                            <br/><button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger btn_change"
-                                         data-m="{{$row['MemIdx']}}"
-                                         data-o="{{$row['OrderIdx']}}"
-                                         data-op="{{$row['OrderProdIdx']}}"
-                                         data-p="{{$row['ProdCode']}}"
-                                         data-ps="{{$row['ProdCodeSub']}}"
-                                         data-l="{{$row['wLecIdx']}}"
-                                         data-u="{{$row['wUnitIdx']}}"
-                                         onclick="fnTime();">배수시간조정</button>
+                        @if($lec['PayStatusCcd'] == '676001' || $lec['PayStatusCcd'] == '676007')
+                            @if(
+                                empty($lec['MultipleApply']) == false && // 배수적용 빈칸 아니고
+                                $lec['MultipleApply'] != 1 && // 1은 무제한
+                                $lec['MultipleTypeCcd'] == '612001' &&
+                                $row['RealStudyTime'] > 0
+                            )
+                                <br/><button class="btn btn-sm btn-primary border-radius-reset mr-15 btn-danger btn_change"
+                                             data-m="{{$row['MemIdx']}}"
+                                             data-o="{{$row['OrderIdx']}}"
+                                             data-op="{{$row['OrderProdIdx']}}"
+                                             data-p="{{$row['ProdCode']}}"
+                                             data-ps="{{$row['ProdCodeSub']}}"
+                                             data-l="{{$row['wLecIdx']}}"
+                                             data-u="{{$row['wUnitIdx']}}"
+                                             onclick="fnTime();">배수시간조정</button>
+                            @endif
                         @endif
                     </td>
                     <td>

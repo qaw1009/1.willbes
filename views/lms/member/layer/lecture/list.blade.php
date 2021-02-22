@@ -90,7 +90,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <b>[결제상태]</b> {{$row['PayStatusCcdName']}}
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -134,7 +134,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <b>[결제상태]</b> {{$row['PayStatusCcdName']}}
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -240,7 +240,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <b>[결제상태]</b> {{$row['PayStatusCcdName']}}
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -328,7 +328,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <b>[결제상태]</b> {{$row['PayStatusCcdName']}}
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
                     </td>
                 </tr>
                 <tr>
@@ -430,7 +430,7 @@
                         &nbsp; &nbsp; &nbsp; &nbsp;
                         <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
                         &nbsp; &nbsp; &nbsp; &nbsp;
-                        <b>[결제상태]</b> {{$row['PayStatusCcdName']}}
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
                     </td>
                 </tr>
                 <tr>

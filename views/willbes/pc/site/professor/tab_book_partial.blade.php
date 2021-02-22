@@ -57,7 +57,7 @@
                                     <ul class="priceWrap">
                                         <li class="mg0 ">
                                             <span>[{{ $row['wSaleCcdName'] }}]</span>
-                                            <span class="price tx-blue">{{ number_format(array_get($row['ProdPriceData'], 'RealSalePrice')) }}원</span>
+                                            <span class="tx-blue">{{ number_format(array_get($row['ProdPriceData'], 'RealSalePrice')) }}원</span>
                                             <span class="discount">(↓{{ array_get($row['ProdPriceData'], 'SaleRate') . array_get($row['ProdPriceData'], 'SaleRateUnit') }})</span>
                                         </li>
                                     </ul>

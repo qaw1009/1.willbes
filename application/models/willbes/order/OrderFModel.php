@@ -1762,19 +1762,22 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 자동주문 데이터 등록
-     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입웰컴팩: join, 인증 : cert, 합격예측 : predict)]
-     * @param string|array $req_code [요청구분별식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입웰컴팩: 상품코드, 인증: 인증식별자, 합격예측 : 상품코드)]
+     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입웰컴팩: join, 인증 : cert, 합격예측 : predict, 강좌인증지급 : agive)]
+     * @param string|array $req_code [요청구분별식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입웰컴팩: 상품코드, 인증: 인증식별자, 합격예측 : 상품코드, 강좌인증지급 : 인증지급식별자:인증지급신청식별자)]
      * @param string|array $req_prod_code [지급요청 상품코드 (요청구분별식별자와 지급상품코드가 모두 필요할 경우 사용)]
+     * @param string $req_pay_route_ccd [지급요청 결제루트공통코드]
      * @return bool|string
      */
-    public function procAutoOrder($req_type, $req_code = '', $req_prod_code = '')
+    public function procAutoOrder($req_type, $req_code = '', $req_prod_code = '', $req_pay_route_ccd = '')
     {
         $this->_conn->trans_begin();
 
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
             $order_no = $this->makeOrderNo();   // 주문번호 생성
-            $pay_status_ccd = $this->_pay_status_ccd['paid'];    // 주문완료 결제상태공통코드 (결제완료)
+            $pay_status_ccd = $this->_pay_status_ccd['paid'];    // 결제상태공통코드 (결제완료)
+            $pay_route_ccd = $this->_pay_route_ccd['zero'];     // 결제루트공통코드 (0원결제)
+            $pay_method_ccd = '';                               // 결제방법공통코드 (0원결제일 경우 결제방법공통코드 없음)
             // 자동주문 가능 학습형태 (단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원단과, 학원종합반)
             $target_learn_pattern_ccd = [
                 $this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture'],
@@ -1784,8 +1787,22 @@ class OrderFModel extends BaseOrderFModel
             $admin_etc_reason = null;   // 상세부여사유 (연관식별자가 있을 경우 추가)
             $total_prod_order_price = 0;    // 전체상품주문금액
             $order_prod_data = [];  // 주문상품 데이터
-            $arr_prod_code = [];    // 주문상품 상품코드
             $is_cert_no_add = false;    // 수강증번호 등록 여부
+
+            // 지급요청 결제루트공통코드가 있을 경우
+            if (empty($req_pay_route_ccd) === false) {
+                $pay_route_ccd = $req_pay_route_ccd;
+                
+                $target_pay_route_ccd = [$this->_pay_route_ccd['zero'], $this->_pay_route_ccd['admin_pay']];    // 0원결제, 관리자유료결제만 등록가능
+                if (in_array($pay_route_ccd, $target_pay_route_ccd) === false) {
+                    return '허용된 결제루트공통코드가 아닙니다.';
+                }
+
+                // 관리자유료결제일 경우 결제방법공통코드 설정
+                if ($pay_route_ccd == $this->_pay_route_ccd['admin_pay']) {
+                    $pay_method_ccd = $this->_pay_method_ccd['admin_pay'];
+                }
+            }
 
             // 상품코드 추출
             switch ($req_type) {
@@ -1815,6 +1832,12 @@ class OrderFModel extends BaseOrderFModel
                     // 합격예측
                     $admin_reason_ccd = '705010';   // 합격예측 이벤트 부여 (신청자 자동 부여)
                     $arr_prod_code = (array) $req_code;
+                    break;
+                case 'agive' :
+                    // 강좌인증지급
+                    $admin_reason_ccd = '705011';   // 부여사유공통코드 (강좌인증자동지급부여)
+                    $admin_etc_reason = '강좌인증지급코드=>' . $req_code;
+                    $arr_prod_code = (array) $req_prod_code;
                     break;
                 default :
                     $arr_prod_code = (array) $req_code;
@@ -1899,8 +1922,8 @@ class OrderFModel extends BaseOrderFModel
                 'SiteCode' => $site_code,
                 'ReprProdName' => $repr_prod_name,
                 'PayChannelCcd' => element(APP_DEVICE, $this->_pay_channel_ccd),
-                'PayRouteCcd' => element('zero', $this->_pay_route_ccd),
-                'PayMethodCcd' => '',
+                'PayRouteCcd' => $pay_route_ccd,
+                'PayMethodCcd' => $pay_method_ccd,
                 'PgCcd' => '',
                 'PgMid' => '',
                 'PgTid' => '',

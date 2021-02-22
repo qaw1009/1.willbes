@@ -79,14 +79,14 @@ class BaseOrderFModel extends WB_Model
     // 포인트적용 공통코드 (전체, 강좌, 교재)
     public $_point_apply_ccd = ['all' => '635001', 'lecture' => '635002', 'book' => '635003'];
 
-    // 결제방법 공통코드
-    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004'];
-
     // 결제채널 공통코드
     public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];
 
-    // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원)
-    public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006'];
+    // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원, 관리자유료결제)
+    public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006', 'admin_pay' => '670007'];
+
+    // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 관리자유료결제)
+    public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'admin_pay' => '604010'];
 
     // 결제상태 공통코드 (결제완료, 입금대기, 입금대기취소, 입금대기만료, 접수대기, 환불완료, 신청완료, 취소완료)
     public $_pay_status_ccd = ['paid' => '676001', 'vbank_wait' => '676002', 'vbank_wait_cancel' => '676003', 'vbank_wait_expire' => '676004', 'receipt_wait' => '676005', 'refund' => '676006', 'apply' => '676007', 'cancel' => '676008'];

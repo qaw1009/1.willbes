@@ -318,7 +318,7 @@
                                                 @if(empty($row['ProdPriceData']) === false)
                                                     @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                         <div class="priceWrap chk buybtn p_re">
-                                                            <span class="price @if($price_row['SalePrice'] == $price_row['RealSalePrice']) tx-blue @endif">
+                                                            <span class="@if($price_row['SalePrice'] > $price_row['RealSalePrice']) price @else dcprice @endif @if($price_row['SalePrice'] == $price_row['RealSalePrice']) tx-blue @endif">
                                                                 <span class="chkBox"><input type="checkbox" name="prod_code[]" id="{{$row['ProdCode']}}" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/></span>
                                                                 @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                                     {{ number_format($price_row['SalePrice'], 0) }}원

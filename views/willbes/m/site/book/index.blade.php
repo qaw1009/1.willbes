@@ -110,7 +110,14 @@
                     <li><span class="writer">{{ $row['wAuthorNames'] }} 저</span><br><span class="row-line">|</span> {{ $row['wPublDate'] }}</li>
                     <li><a href="#none" class="bookView" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ front_url('/book') }}')">교재상세정보</a></li>
                     <li>[{{ $row['wSaleCcdName'] }}] 
-                        <span class="tx-blue">{{ number_format($row['RealSalePrice'], 0) }}원</span> (↓{{ number_format($row['SaleRate'], 0) . $row['SaleRateUnit'] }})
+{{--                        <span class="tx-blue">{{ number_format($row['RealSalePrice'], 0) }}원</span> (↓{{ number_format($row['SaleRate'], 0) . $row['SaleRateUnit'] }})--}}
+                        <div class="priceWrap">
+                            @if($row['SalePrice'] > $row['RealSalePrice'])
+                                <span class="price">{{ number_format($row['SalePrice'], 0) }}원</span>
+                                <span class="discount">({{ ($row['SaleRateUnit'] == '%' ? $row['SaleRate'] : number_format($row['SaleRate'], 0)) . $row['SaleRateUnit'] }}↓)</span> ▶
+                            @endif
+                            <span class="dcprice">{{ number_format($row['RealSalePrice'], 0) }}원</span>
+                        </div>
                     </li>
                     <li>
                         <span class="d_none">

@@ -177,7 +177,7 @@
                 윌비스 임용 <span class="tx-main">실시간 인기강의 TOP3</span>
             </div>
             <div class="reference">* 접속 시간 기준, 24시간 내 홈페이지 강의 결제 순</div>
-            <ul class="bestLecBox">
+            <ul class="bestLecBox2">
                 @foreach($data['top_order_lecture'] as $key => $row)
                     <li class="bestLec">
                         <a href="{{ site_url('/m/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode']) }}">

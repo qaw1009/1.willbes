@@ -137,6 +137,13 @@ class SupportStudyComment extends BaseSupport
             $arr_base['subject'] = $this->baseProductFModel->listSubjectCategoryMapping($site_code, $cate_code);
         }
 
+        // 임용 메인 수강후기 레이어 추가 class
+        if (config_app('SiteGroupCode') == '1011') {
+            if(strpos($_SERVER['HTTP_REFERER'], '/home/index') !== false){
+                $arr_base['layer_class_1120'] = 'willbes-Layer-ReplyBox-1120';
+            }
+        }
+
         // 교수 목록 조회
         $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($site_code, ['ProfReferData', 'ProfEventData', 'IsNew'], $cate_code);
 

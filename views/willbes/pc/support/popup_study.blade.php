@@ -1,4 +1,4 @@
-<div id="Reply" class="willbes-Layer-ReplyBox" style="display: block">
+<div id="Reply" class="willbes-Layer-ReplyBox {{ $arr_base['layer_class_1120'] or '' }}" style="display: block">
     <a class="closeBtn" href="#none" onclick="closeWin('{{ $arr_input['ele_id'] }}');"><img src="{{ img_url('prof/close.png') }}"></a>
     <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 

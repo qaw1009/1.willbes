@@ -119,9 +119,10 @@
                     <div id="lec_table_{{ $row['ProdCode'] }}" class="willbes-Lec-Table">
                         <table cellspacing="0" cellpadding="0" class="lecTable">
                             <colgroup>
-                                <col style="width: 140px;">
+                                <col style="width: 75px;">
+                                <col style="width: 85px;">
                                 <col>
-                                <col style="width: 220px;">
+                                <col style="width: 290px;">
                             </colgroup>
                             <tbody>
                             <tr>

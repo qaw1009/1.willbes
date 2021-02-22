@@ -24,9 +24,9 @@
                         <col style="width: 85px;">
                         <col style="width: 85px;">
                         <col width="*">
-                        <col style="width: 140px;">
+                        <col style="width: 130px;">
                         <col style="width: 100px;">
-                        <col style="width: 140px;">
+                        <col style="width: 150px;">
                     </colgroup>
                     <tbody>
                     <tr>

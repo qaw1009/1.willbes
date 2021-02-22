@@ -79,6 +79,7 @@
                     @endif
                 </td>
             </tr>
+                @if($lec['PayStatusCcd'] == '676001' || $lec['PayStatusCcd'] == '676007')
             <tr>
                 <th class="w-tit bg-light-white strong">일시중지 설정</th>
                 <td class="w-data tx-left pl15">
@@ -117,6 +118,7 @@
                     </form>
                 </td>
             </tr>
+                @endif
         </table>
 
         ● 변경이력

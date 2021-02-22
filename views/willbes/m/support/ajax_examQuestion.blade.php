@@ -39,7 +39,7 @@
                             @if(empty($row['AttachData']) === false)
                                 @foreach($row['AttachData'] as $val)
                                     <div class="download">
-                                        <a href="{{front_url($default_path.'/examQuestion/download?file_idx='.$val['FileIdx'].'&board_idx='.$row['BoardIdx']) }}" target="_blank">자료</a>
+                                        <a href="{{front_url($default_path.'/examQuestion/download?file_idx='.$val['FileIdx'].'&board_idx='.$row['BoardIdx']) }}" target="_blank">다운하기</a>
                                     </div>
                                 @endforeach
                             @endif
@@ -97,7 +97,7 @@
                     if(item.AttachData){
                         $.each(item.AttachData, function (k, v) {
                             add_table += '<div class="download">';
-                            add_table += '<a href="{{front_url($default_path.'/examQuestion/download?file_idx=')}}' + v.FileIdx + '&board_idx=' + item.BoardIdx + '" target="_blank">자료';
+                            add_table += '<a href="{{front_url($default_path.'/examQuestion/download?file_idx=')}}' + v.FileIdx + '&board_idx=' + item.BoardIdx + '" target="_blank">다운하기';
                             add_table += '</a>';
                             add_table += '</div>';
                         });

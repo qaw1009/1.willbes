@@ -166,7 +166,7 @@
 
                                                     <div class="priceWrap">
                                                         @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
-                                                            <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                            <span class="price">{{ number_format($row['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
                                                             <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span>  ▶
                                                         @endif
                                                         <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>

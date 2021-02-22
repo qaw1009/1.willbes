@@ -37,7 +37,8 @@
         .evt04 li {display:inline; float:left; width:50%; margin-bottom:10px}
         .evt04 li a {margin-right:10px}
         .evt04 ul:after {content:''; display:block; clear:both}
-        .evt05 {width:1120px; margin:0 auto; padding:100px 0}
+
+        .evt05 {width:1120px; margin:0 auto; padding:100px 0; display:none}
         .evt05 table{width:100%;border-top:1px solid #c1c1c1}
         .evt05 table tr{border-bottom:1px solid #c1c1c1}
         .evt05 table th {color:#fff; background:#49569e; font-size:16px; font-weight:300; padding:15px 0; text-align:center;}
@@ -60,16 +61,18 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
+        {{--
         <div class="skyBanner">
             <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky2.png" alt="영상 바로가기"/></a>
             <a href="#evt05"><img src="https://static.willbes.net/public/images/promotion/2021/01/2038_sky.png" alt="이벤트 참여"/></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_top.jpg" alt="윌비스 임용 유튜브 이벤트"/>
         </div>
 
+        {{--
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_01.jpg" alt="구독, 좋아요, 알림설정"/>
         </div>
@@ -78,9 +81,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_02.jpg" alt="이벤트 상품"/>
         </div>
 
+
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_03.jpg" alt="참여방법"/>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt04" id="evt04">
             <div class="evt04top">
@@ -168,6 +173,7 @@
             </div>
         </div>
 
+        {{--
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">유의사항</h4>
@@ -181,7 +187,8 @@
                     <li>상품은 문화상품권 1만원권 10명/ 스타벅스 기프티콘 30명 추첨/바나나우유 전원 증정(중복 불가) </li>
                 </ul>
             </div>
-        </div>        
+        </div> 
+        --}}       
     </div>
     <!-- End Container -->
 

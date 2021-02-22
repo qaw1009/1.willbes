@@ -374,7 +374,7 @@
                                         <td class="w-notice p_re">
                                             <div class="acadInfo NGR n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                                             <div class="priceWrap chk buybtn p_re">
-                                                <span class="price @if($row['ProdPriceData'][0]['SalePrice'] == $realsaleprice) tx-blue @endif">
+                                                <span class="@if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice) price @else dcprice @endif @if($row['ProdPriceData'][0]['SalePrice'] == $realsaleprice) tx-blue @endif">
                                                     <span class="chkBox d_none"><input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $saletypeccd. ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/></span>
                                                     @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
                                                         {{ number_format($row['ProdPriceData'][0]['SalePrice']) }}원

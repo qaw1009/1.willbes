@@ -182,7 +182,7 @@
                     <li class="bestLec">
                         <a href="{{ site_url('/m/lecture/show/cate/'.$row['CateCode'].'/pattern/only/prod-code/'.$row['ProdCode']) }}">
                             <ul class="lecinfo">
-                                <li class="NSK-Black"><span class="NSK">{{ $row['SubjectName'] }}</span>{{ $row['ProfNickNameAppellation'] }}</li>
+                                <li>{{ $row['SubjectName'] }}<br><span class="NSK-Black"">{{ $row['ProfNickNameAppellation'] }}</span></li>
                                 <li><strong>{{ $row['CourseName'] }}</strong></li>
                             </ul>
                             <div class="profImg"><img src="{{ $row['ProfImgPathM'] }}" title="{{ $row['ProfNickNameAppellation'] }}"></div> 

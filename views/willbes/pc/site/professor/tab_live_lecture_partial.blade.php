@@ -24,9 +24,9 @@
                         <col style="width: 85px;">
                         <col style="width: 85px;">
                         <col width="*">
-                        <col style="width: 140px;">
+                        <col style="width: 130px;">
                         <col style="width: 100px;">
-                        <col style="width: 140px;">
+                        <col style="width: 150px;">
                     </colgroup>
                     <tbody>
                     <tr>
@@ -84,13 +84,20 @@
                         <td class="w-notice">
                             <div class="acadInfo n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
                             <div class="priceWrap">
-                                <span class="price tx-blue">
+                                <span class="price @if($row['ProdPriceData'][0]['SalePrice'] == $realsaleprice) tx-blue @endif">
                                     <span class="d_none">
                                         <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $saletypeccd. ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-study-apply-ccd="{{ $row['StudyApplyCcd'] }}" class="chk_products" @if($row['IsSalesAble'] == 'N' || $row['StudyApplyCcd'] == '654001' ) disabled="disabled" @endif/>
                                     </span>
-                                    {{ number_format($realsaleprice, 0) }}원
+                                    @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
+                                        {{ number_format($row['ProdPriceData'][0]['SalePrice']) }}원
+                                    @else
+                                        {{ number_format($realsaleprice, 0) }}원
+                                    @endif
                                 </span>
-                                <span class="discount">(↓{{ $salerate . $salerateunit }})</span>
+                                @if($row['ProdPriceData'][0]['SalePrice'] > $realsaleprice)
+                                    <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span>
+                                    <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                @endif
                             </div>
                             <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
                         </td>

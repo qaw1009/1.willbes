@@ -413,7 +413,7 @@ class OrderModel extends BaseOrderModel
 
     /**
      * 관리자 주문 등록 실행
-     * @param string $pay_route [결제루트구분]
+     * @param string $pay_route [결제루트구분 (zero : 0원결제, admin_pay : 관리자유료결제)]
      * @param array $input
      * @return bool|string
      */
@@ -494,6 +494,11 @@ class OrderModel extends BaseOrderModel
                 if (element('is_lec_unit', $input, 'N') == 'Y') {
                     $row['SalePatternCcd'] = $this->_sale_pattern_ccd['unit'];
                     $row['wUnitIdxs'] = implode(',', element('wUnitCode', $input));
+
+                    // 회차식별자 길이 체크
+                    if (strlen($row['wUnitIdxs']) > 200) {
+                        throw new \Exception('등록 가능한 회차건수 초과입니다.', _HTTP_BAD_REQUEST);
+                    }
                 } else {
                     $row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
                     $row['wUnitIdxs'] = null;

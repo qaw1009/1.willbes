@@ -1,6 +1,164 @@
 @extends('willbes.m.layouts.master')
 
 @section('content')
+<style>
+.ssam .mainTit {
+	font-size: 20px;
+	position: relative;
+	height: 30px;
+	margin: 0 10px;
+}
+.ssam .mainTit .morebtn {color:#fff; background:#000; display:inline-block; padding:5px 10px; font-size:12px;}
+
+.ssam .mainTit .goBtns {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.ssam .mainTit .goBtns a {
+	display: block;
+	padding: 8px 10px;
+	color: #fff;
+	background: #0c5dc0;
+	font-size: 12px;
+}
+
+.ssam .bestLecBox2 {
+	margin-top: 10px;
+	border-top: 1px solid #ccc;
+}
+.ssam .bestLecBox2 .bestLec {
+	position: relative;
+	display: block;
+	float: left;
+	width: 33.33333%;     
+    min-height:100px;
+    max-height:160px;
+    height: 20vw;
+}
+.ssam .bestLecBox2 .bestLec a {
+    position:absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index:2;
+}
+.ssam .bestLecBox2 .bestLec:first-child a {
+	border-left: 1px solid #ccc;
+}
+.ssam .bestLecBox2 .bestLec .profImg img {
+	position: absolute;
+	bottom: 0;
+	right: -15%;
+	width: 65%;
+	z-index: 1;
+	-webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-moz-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-ms-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	-o-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+	transform: scale(1);
+	transition: all ease-in-out 0.2s;
+}
+.ssam .bestLecBox2 .best {
+    position:absolute;
+    top:0;
+    left:0;
+	width: 46px;
+	height: 46px;
+	line-height: 46px;
+	background: url('https://static.willbes.net/public/images/promotion/m/2017/2017_best_icon.png');
+	text-align: center;
+	font-size: 1.8vh;
+    color: #fff;
+    z-index:1;
+}
+.ssam .bestLecBox2 .lecinfo {
+    position:absolute;
+    bottom:8%;
+    left:4%;
+    width: 90%;
+    line-height: 1.3;
+    z-index:4
+}
+.ssam .bestLecBox2 .lecinfo li {
+    margin-bottom: 2%;
+}
+.ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
+	font-weight: bold;    
+    font-size: 14px;
+}
+.ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
+    font-size: 18px;
+}
+.ssam .bestLecBox2 .lecinfo li strong {
+	color: #0c5dc0;
+	font-weight: bold;
+	font-size: 15px;
+}
+.ssam .bestLecBox2 .lecinfo li:last-child {
+	display: block;
+	word-break: keep-all;
+}
+.ssam .bestLecBox2 .lecinfo li:last-child span {
+	background: rgba(255, 255, 255, 0.5);
+}
+.ssam .bestLecBox2:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.ssam .csCenter {
+	margin: 0 10px;
+}
+.ssam .csCenter .tel {background:#fff; padding:10px 0;}
+
+.ssam .csCenter li {
+	width: 50%;
+	padding:10px 5%;
+}
+.csCenter li div.goTel div {
+	font-size: 15px;
+    margin-right:15px;
+}
+.csCenter li div.goTel strong {font-size:15px}
+.ssam .csCenter li span {
+	display: block;
+	color: #333;
+	font-weight: bold;
+	font-size: 3.5vh;
+    float:left;
+}
+
+
+@@media only screen and (max-width: 374px) {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
+        font-size: 12px;
+    }
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
+        font-size: 15px;
+    }
+    .ssam .bestLecBox2 .lecinfo li strong {
+        font-size: 13px;
+    }
+}
+@@media only screen and (min-width: 375px) and (max-width: 640px) {
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
+        font-size: 13px;
+    }
+    .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
+        font-size: 16px;
+    }
+    .ssam .bestLecBox2 .lecinfo li strong {
+        font-size: 14px;
+    }
+}
+    </style>
     <!-- Container -->
     <div id="Container" class="Container NSK ssam mb40">
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], '0') !!}
@@ -83,9 +241,6 @@
     </div>
     <!-- End Container -->
 
-    <style>
-        /*.sampleLecSlide .swiper-slide { height:72px;}*/
-    </style>
 
     <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
     <script>

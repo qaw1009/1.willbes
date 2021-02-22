@@ -5,10 +5,10 @@ class ManageLectureModel extends WB_Model
 {
     protected $_table = [
         'mylec' => 'lms_my_lecture',
-        'lec_unit' => 'vw_unit_mylecture',
-        'mylecture' => 'vw_on_mylecture',
+        'lec_unit' => 'vw_unit_mylecture_lms',
+        'mylecture' => 'vw_on_mylecture_lms',
         'myofflecture' => 'vw_off_mylecture',
-        'mylecture_pkg' => 'vw_pkg_mylecture',
+        'mylecture_pkg' => 'vw_pkg_mylecture_lms',
         'start_log' => 'lms_my_lecture_history',
         'admin' => 'wbs_sys_admin',
         'pause_log' => 'lms_lecture_pause_history',

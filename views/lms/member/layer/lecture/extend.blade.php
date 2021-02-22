@@ -89,6 +89,7 @@
                         @endif
                     </td>
                 </tr>
+                    @if($lec['PayStatusCcd'] == '676001' || $lec['PayStatusCcd'] == '676007')
                 <tr>
                     <th class="w-tit bg-light-white strong">기간연장</th>
                     <td class="w-data tx-left pl15">
@@ -109,9 +110,9 @@
                             </div>
                             <button type="button" class="btn btn-primary btn-search" onclick="fnExtend();">강의연장</button>
                         </div>
-
                     </td>
                 </tr>
+                    @endif
             </table>
         </form>
         ● 연장이력

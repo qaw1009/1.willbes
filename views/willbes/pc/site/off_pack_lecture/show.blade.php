@@ -140,8 +140,14 @@
                                 </td>
                                 <td class="w-notice p_re">
                                     <div class="priceWrap">
-                                        <span class="price tx-blue">{{ number_format($real_sale_price,0)}}</span>
-                                        <span class="discount">(↓{{$sale_info}})</span>
+{{--                                        <span class="price tx-blue">{{ number_format($real_sale_price,0)}}</span>--}}
+{{--                                        <span class="discount">(↓{{$sale_info}})</span>--}}
+
+                                        @if($data['ProdPriceData'][0]['SalePrice'] > $real_sale_price)
+                                            <span class="price">{{ number_format($data['ProdPriceData'][0]['SalePrice'], 0) }}원</span>
+                                            <span class="discount">({{ ($data['ProdPriceData'][0]['SaleRateUnit'] == '%' ? $data['ProdPriceData'][0]['SaleRate'] : number_format($data['ProdPriceData'][0]['SaleRate'], 0)) . $data['ProdPriceData'][0]['SaleRateUnit'] }}↓)</span>
+                                        @endif
+                                        <span class="dcprice">{{ number_format($real_sale_price, 0) }}원</span>
                                     </div>
                                 </td>
                             </tr>

@@ -165,11 +165,19 @@
                                                             @endif
                                                         </div>
                                                     @else
-                                                        <ul>
+                                                        <ul class="priceWrap">
                                                             @if(empty($row['ProdPriceData']) === false)
                                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                                     <li class="mb10">
-                                                                        <label>{{ $price_row['SaleTypeCcdName'] }} : <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</label>
+                                                                        <label>{{ $price_row['SaleTypeCcdName'] }} :
+{{--                                                                            <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
+
+                                                                            @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                                <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                                <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                                            @endif
+                                                                            <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                                        </label>
                                                                     </li>
                                                                 @endforeach
                                                             @endif

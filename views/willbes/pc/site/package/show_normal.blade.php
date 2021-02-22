@@ -152,9 +152,15 @@
                                 <div class="w-tit">{{$data['ProdName']}}</div>
                             </td>
                             <td class="w-notice p_re">
-                                <div class="priceWrap">
-                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0) }}원</span>
-                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+                                <div class="priceWrap priceWrap2">
+{{--                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'],0) }}원</span>--}}
+{{--                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+
+                                    @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                        <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                        <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                    @endif
+                                    <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                 </div>
                             </td>
                         </tr>

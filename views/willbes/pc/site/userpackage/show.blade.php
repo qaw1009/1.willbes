@@ -121,7 +121,7 @@
                             <colgroup>
                                 <col style="width: 75px;">
                                 <col style="width: 85px;">
-                                <col style="width: 490px;">
+                                <col>
                                 <col style="width: 290px;">
                             </colgroup>
                             <tbody>
@@ -178,8 +178,14 @@
                                                                             data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}"
                                                                             class="chk_products chk_only_{{ $row['ProdCode'] }}" onclick="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);"/></span>
                                                 <!--span class="select">[{{ $price_row['SaleTypeCcdName'] }}]</span//-->
-                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>
+{{--                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
+{{--                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+
+                                                @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                    <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                    <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                @endif
+                                                <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                             </div>
                                             @endif
                                         @endforeach

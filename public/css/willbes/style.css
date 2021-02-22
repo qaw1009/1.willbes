@@ -3122,7 +3122,7 @@ table.lecTable tr td .priceWrap .bookselect {
 	border: 1px solid #d4d4d4;
 }
 table.lecTable tr td .priceWrap .price {
-	/*text-decoration: line-through;*/
+	text-decoration: line-through;
 	color:#999;
 }
 table.lecTable tr td .priceWrap .discount {

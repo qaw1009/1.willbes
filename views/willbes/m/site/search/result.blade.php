@@ -81,11 +81,21 @@
                                                             <span class="NSK ml10 nBox n1" data-info="{{ $row['MultipleApply'] }}">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span>
                                                             <span class="NSK nBox n{{ substr($row['wLectureProgressCcd'], -1)+1 }}" data-info="{{ substr($row['wLectureProgressCcd'], -1)+1 }}{{ $row['wLectureProgressCcdName'] }}">{{ $row['wLectureProgressCcdName'] }}</span></dt>
                                                     </dl>
-                                                    <ul>
+                                                    <ul class="priceWrap">
                                                         @if(empty($row['ProdPriceData']) === false)
                                                             @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                                 <li class="mb10">
-                                                                    <label>{{ $price_row['SaleTypeCcdName'] }} : <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</label>
+                                                                    <label>
+                                                                        {{ $price_row['SaleTypeCcdName'] }} :
+{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
+{{--                                                                        (↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
+
+                                                                        @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                            <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                                        @endif
+                                                                        <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                                    </label>
                                                                 </li>
                                                             @endforeach
                                                         @endif
@@ -203,11 +213,19 @@
                                                         <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span><span class="row-line">|</span></dt>
                                                         <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span> <span class="NSK ml10 nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span></dt>
                                                     </dl>
-                                                    <ul>
+                                                    <ul class="priceWrap">
                                                         @if(empty($row['ProdPriceData'] ) === false)
                                                             @foreach($row['ProdPriceData'] as $price_row)
                                                                 @if($loop -> index === 1)
-                                                                    <li class="mb10"><span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</li>
+                                                                    <li class="mb10">
+{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
+
+                                                                        @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                            <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                                        @endif
+                                                                        <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                                    </li>
                                                                 @endif
                                                             @endforeach
                                                         @endif
@@ -247,11 +265,19 @@
                                                         <dt>개강일 : <span class="tx-blue">{{$row['StudyStartDateYM']}}</span><span class="row-line">|</span></dt>
                                                         <dt>수강기간 : <span class="tx-blue">{{$row['StudyPeriod']}}일</span> <span class="NSK ml10 nBox n1">{{ $row['MultipleApply'] === "1" ? '무제한' : $row['MultipleApply'].'배수'}}</span></dt>
                                                     </dl>
-                                                    <ul>
+                                                    <ul class="priceWrap">
                                                         @if(empty($row['ProdPriceData'] ) === false)
                                                             @foreach($row['ProdPriceData'] as $price_row)
                                                                 @if($loop -> index === 1)
-                                                                    <li class="mb10"><span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</li>
+                                                                    <li class="mb10">
+{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
+
+                                                                        @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                            <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                                        @endif
+                                                                        <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                                    </li>
                                                                 @endif
                                                             @endforeach
                                                         @endif

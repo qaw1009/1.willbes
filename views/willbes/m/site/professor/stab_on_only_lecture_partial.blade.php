@@ -32,7 +32,7 @@
                         </dt>
                     </dl>
                 @if(empty($row['ProdPriceData']) === false)
-                    <ul>
+                    <ul class="priceWrap">
                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                             <li>
                                 <label>
@@ -40,7 +40,13 @@
                                     <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $row['ProdCode'] }}" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_products chk_only_{{ $row['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $row['ProdCode'] }}', this.value);" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif />
                                 @endif
                                     <span class="pl5">{{ $price_row['SaleTypeCcdName'] }} :</span>
-                                    <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})
+{{--                                    <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})--}}
+
+                                    @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                        <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                        <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                    @endif
+                                    <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                 </label>
                             </li>
                         @endforeach

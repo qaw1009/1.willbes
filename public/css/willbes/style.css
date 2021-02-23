@@ -7725,6 +7725,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 	width: 50%;
 	height: 45px;
 }
+.tabWrap.tabDepthAcad.four li {width: 25%;}
 .tabWrap.tabDepthAcad li a {
 	display: block;
 	width: 100%;

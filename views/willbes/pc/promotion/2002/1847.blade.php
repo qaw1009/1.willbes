@@ -21,13 +21,13 @@
         .evt00 {background:#0a0a0a}
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#ebebeb}
+        .time {width:100%; text-align:center; background:#f5f5f5;}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        
         .time table td img {width:65%}
         .time .time_txt {font-size:30px; color:#000; text-align:right}        
-        .time span {color:#000; font-size:30px; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        .time span {color:#000; font-size:30px;}
         .time .time_txt span{padding-left:25px;}
         .time table td:last-child,
         .time table td:last-child span {font-size:36px}

@@ -3,8 +3,7 @@
 @section('content')
 <!-- Container -->
 <style type="text/css">
-.popWrap {width:782px; margin:20px auto; border:1px solid #000; box-shadow:5px 5px 5px rgba(0,0,0,.1)}
-.popWrap * {font-family:'Noto Sans KR', Arial, Sans-serif}
+.popWrap {width:100%; margin:0 auto; }
 
 .popWrap span {vertical-align:auto}
 .popWrap .logo {padding-top:10px; position:relative;}
@@ -47,7 +46,7 @@ select option:before {height:20px}
 .popCts .file li {padding:4px 0;line-height:1.5;}
 </style>
 
-<div class="popWrap NGR">
+<div class="popWrap NSK">
     <div class="logo">
         <img src="https://police.stage.willbes.net/public/img/willbes/gnb/logo.gif" alt="윌비스" />
     </div>
@@ -59,8 +58,9 @@ select option:before {height:20px}
         </div>
     </div>
     <div class="popCts">
-        <h3>◎ 혜택 안내</h4>
-        <h4>※ 온라인 : 1개월 인강PASS 구매가능</h3>
+        <h3>◎ 혜택 안내</h3>
+        <h4>① 온라인 1개월 인강 PASS 구매가능 </h4>
+        <h4>② 온라인 단과 강좌 50% 할인쿠폰 발급 </h4>
     </div>    
     <div class="popCts">
         <h3>◎ 이용 안내</h3>

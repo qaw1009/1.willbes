@@ -1056,8 +1056,8 @@ class Predict2Model extends WB_Model
     public function countExamQuestions($pp_idx)
     {
         $query_string = "
-            (SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 1) AS QuestionType1
-            ,(SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 2) AS QuestionType2
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 1 AND IsStatus = 'Y') AS QuestionType1
+            ,(SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 2 AND IsStatus = 'Y') AS QuestionType2
         ";
         return $this->_conn->query('select ' . $query_string)->row_array();
     }

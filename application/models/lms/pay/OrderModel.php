@@ -499,6 +499,8 @@ class OrderModel extends BaseOrderModel
                     if (strlen($row['wUnitIdxs']) > 200) {
                         throw new \Exception('등록 가능한 회차건수 초과입니다.', _HTTP_BAD_REQUEST);
                     }
+
+                    $is_auto_add = false;   // 회차등록일 경우 자동지급상품 부여안함
                 } else {
                     $row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
                     $row['wUnitIdxs'] = null;

@@ -20,12 +20,12 @@
         .boardTypeB caption {display:none}
         .boardTypeB thead th,
         .boardTypeB tbody th {color:#464646; font-weight:bold; border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; text-align:center; padding:15px 8px}
-        .boardTypeB tbody td {letter-spacing:normal; padding:10px 8px}
+        .boardTypeB tbody td {letter-spacing:normal; padding:10px 8px;}
         .boardTypeB thead th {background:#e9e8e8;}
         .boardTypeB tbody th {background:#f3f3f3;}
         .boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
         .boardTypeB tbody tr.bg01 th {background:#e5f2fe}
-        .boardTypeB tbody td input {vertical-align:middle}
+        .boardTypeB tbody td input {vertical-align:middle; margin:0 auto}
         .boardTypeB tbody td label {margin-right:10px}
         .boardTypeB tbody td li {display: inline;}
         .boardTypeB tbody td span {vertical-align: top}
@@ -171,10 +171,11 @@
                                 <div class="qMarking">
                                     <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
                                     <table class="boardTypeB">
+                                        <col width="70px">
                                         <tr>
                                             <th scope="col">번호</th>
                                             @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                <th scope="col">{{ $val2 }}</th>
+                                            <th scope="col">{{ $val2 }}</th>
                                             @endforeach
                                         </tr>
                                         <tr>

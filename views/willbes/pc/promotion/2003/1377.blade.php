@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -19,8 +15,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;bottom:10px;right:10px; z-index:100;}
-        .skybanner a {margin-bottom:10px}
+        .skybanner {position:fixed; top:120px; right:10px; z-index:10;}
+        .skybanner a {margin-bottom:5px; display:block}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg.jpg) no-repeat center top;}
         .wb_top2 {background:url(https://static.willbes.net/public/images/promotion/2019/08/1377_top_bg2.jpg) no-repeat center top;}
@@ -28,12 +24,13 @@
         .wb_cts02 {background:#f8e8e5;}	      
         .wb_cts03 {background:#f4f5f6;}  
         .wb_cts04{background:#5da26c;}
+        .wb_cts04 div {width:1120px; margin:0 auto; position:relative}
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="skybanner">
-            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky.png" alt="기미진 국어 개강일정 알아보기"/></a><br>
+            <a href="#event"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky.png" alt="기미진 국어 개강일정 알아보기"/></a>
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2019/08/1377_sky2.png" alt="기미진 국어 개강일정 알아보기"/></a>
         </div>    
         <!--skybanner//-->
@@ -55,20 +52,19 @@
         <!--wb_cts02//-->
 
         <div class="evtCtnsBox wb_cts04" id="event">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377_apply" border="0" />
-            <map name="Map1377_apply" id="Map1377_apply">
-                <area shape="rect" coords="393,497,504,539" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175550" target="_blank" />
-                <area shape="rect" coords="393,568,501,610" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177127" target="_blank" />
-                <area shape="rect" coords="390,643,504,683" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175918" target="_blank" />
-                <area shape="rect" coords="847,494,958,541" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
-                <area shape="rect" coords="847,569,958,611" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
-                <area shape="rect" coords="847,641,958,683" href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" />
-            </map>      
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/01/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377_apply" border="0" />
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178539" target="_blank" title="실강" style="position: absolute; left: 35.36%; top: 57.79%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177859" target="_blank" title="온라인" style="position: absolute; left: 35.36%; top: 66.05%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178724" target="_blank" title="라이브" style="position: absolute; left: 35.36%; top: 74.53%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
+
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" title="티패스 아특포함" style="position: absolute; left: 75.98%; top: 57.91%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" title="티패스 아특제외" style="position: absolute; left: 75.98%; top: 66.16%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1623" target="_blank" title="티패스 아침특강" style="position: absolute; left: 75.98%; top: 74.65%; width: 9.38%; height: 4.88%; z-index: 2;"></a> 
+            </div>    
         </div>
         <!--wb_cts04//-->
     </div>
     <!-- End Container -->
-    <script type="text/javascript">
-    
-    </script>
+
 @stop

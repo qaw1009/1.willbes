@@ -272,7 +272,7 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2020/12/1976_01_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/02/1976_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
@@ -289,12 +289,12 @@
                                 <input type="radio" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">15개월 PASS</label>
                             </div>
                         </li>
-                        <li>
+                        <!--li>
                             <div>
                                 <strong>85</strong>만원<br>
                                 <input type="radio" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">2021년대비 PASS</label>
                             </div>
-                         </li>
+                         </li-->
                     </ul>
                 </div>
                 

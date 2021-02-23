@@ -178,6 +178,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1" for="ExplanFile">문항등록</label>
+                    <div class="col-md-4 form-inline">
+                        @if($method == 'PUT')
+                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="1">가형 ({{$arr_question_type_count['QuestionType1']}})</button>
+                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="2">나형 ({{$arr_question_type_count['QuestionType2']}})</button>
+                        @else
+                            <span class="form-control-static">기본정보 등록 후 문항등록 가능합니다.</span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">등록자</label>
                     <div class="col-md-4">
                         <p class="form-control-static">{{$data['RegAdminName']}}</p>
@@ -206,7 +218,7 @@
             </form>
         </div>
 
-        @if($method == 'PUT')
+        {{--@if($method == 'PUT')
             <div class="x_content mt-50" style="overflow-x: auto; overflow-y: hidden;">
                 <h5 class="mb-20">
                     <span class="required">*</span>
@@ -251,7 +263,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{-- [S] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
+                        <!--[S] 필드추가을 위한 기본HTML, 로딩후 제거-->
                         <tr data-chapter-idx="">
                             <td class="text-center form-inline">
                                 <input type="hidden" name="regKind[]" value="">
@@ -307,7 +319,7 @@
                             <td class="text-center"></td>
                             <td class="text-center"><span class="addRow-del link-cursor"><i class="fa fa-times fa-lg red"></i></span></td>
                         </tr>
-                        {{-- [E] 필드추가을 위한 기본HTML, 로딩후 제거 --}}
+                        <!--[E] 필드추가을 위한 기본HTML, 로딩후 제거-->
 
                         @foreach($question_data as $row)
                             <tr data-chapter-idx="{{ $row['PqIdx'] }}">
@@ -385,7 +397,7 @@
                     </div>
                 </form>
             </div>
-        @endif
+        @endif--}}
     </div>
 
     <style>
@@ -461,6 +473,21 @@
                     }
                 }, showValidateError, null, false, 'alert');
             });
+
+
+            //가형,나형 호출
+            $('.btn-question-modal').on('click', function() {
+                var params = '?pp_idx=' + '{{ $data['PpIdx'] }}';
+                params += '&pa_idx=' + '{{ $data['PaIdx'] }}';
+                params += '&question_type=' + $(this).data("question-type");
+                params += '&total_score=' + '{{ $data['TotalScore'] }}';
+
+                $('.btn-question-modal').setLayer({
+                    'url': '{{ site_url('/predict2/base/exam/questionListModal') }}' + params,
+                    'width': 1400
+                });
+            });
+
 
             /*********************************************************************************/
             // 문항정보필드 정답보기 갯수
@@ -566,11 +593,10 @@
                 ajaxSubmit($regi_sub_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url('/predict2/base/exam/create/') }}' + ret.ret_data.dt.idx + getQueryString());
+                        /*location.replace('{{ site_url('/predict2/base/exam/create/') }}' + ret.ret_data.dt.idx + getQueryString());*/
                     }
                 }, showValidateError, null, false, 'alert');
             });
-
 
             // 정렬변경 허용여부(변경된 내역이 있는 경우 불허)
             $regi_sub_form.on('change ifChanged', 'input:not([name="QuestionNO[]"]), select', function () {

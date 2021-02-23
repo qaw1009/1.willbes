@@ -4,16 +4,11 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
-            padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
@@ -21,15 +16,15 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px; z-index:1;}
-        .sky ul li {padding-bottom:15px;}
+        .sky {position:fixed; top:250px; right:10px; z-index:10;}
+        .sky a {padding-bottom:15px; display:block}
 
         .wb_top_banner {background:#0A0A0A;}    
         .wb_top {background:#63553B url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
 
         .wb_branch {background:#fef51e;color:#000;position:relative;height:50px;} 
         .wb_branch .benefitBox {position:absolute; top:0; left:0; width:100%; z-index:1;line-height:50px;}
-        .wb_branch .benefitBox .bx-wrapper{max-width:100% !important;}
+        .wb_branch .benefitBox .bx-wrapper{max-width:100% !important; z-index:1;}
         .wb_branch .benefitBox li {display:inline; float:left;font-size:15px;font-weight:bold;}
 
         .wb_03 {background:#fff;padding-bottom:150px;}
@@ -44,7 +39,7 @@
         .wb_04 {background:#66563f;} 
 
         /*유의사항*/
-        .wb_ctsInfo {background:#fff; width:1120px; margin:100px auto; display:block; 
+        .wb_ctsInfo {background:#fff; width:1000px; margin:100px auto; display:block; 
             border:17px solid #555; padding:80px; line-height:1.5;}  
         .wb_ctsInfo h3 {font-size:36px !important; letter-spacing:-1px; margin-bottom:40px; color:#000;}        
         .wb_ctsInfo .big {font-size:18px; font-weight:bold; color:#000; margin-bottom:10px} 
@@ -56,9 +51,7 @@
     <div class="evtContent NGR" id="evtContainer">
             
         <div class="sky">
-            <ul>          
-                <li><a href="#none" onclick="javascript:certOpen()"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_sky.png" title="집중소 인증하기" /></a></li>
-            </ul>
+            <a href="#none" onclick="javascript:certOpen()"><img src="https://static.willbes.net/public/images/promotion/2020/09/1805_sky.png" title="집중소 인증하기" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top_banner">

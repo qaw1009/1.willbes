@@ -15,7 +15,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-        .skyBanner {position:fixed; top:250px; right:25px;z-index:10;}
+        .skyBanner {position:fixed; top:200px; width:140px; right:10px;z-index:10;}
         .skyBanner li{margin-top:15px;}
 
         .evt_counter {height:100px; background:#000; font-size:18px; color:#fff}
@@ -26,7 +26,7 @@
         .evt_counter .counter p {font-size:11px; margin-top:10px; color:#ccc}
 
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2069_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_top_bg.jpg") no-repeat center top;}
         .evtTopInmg {position:relative; width:1120px; margin:0 auto}
         .evt01 {background:#fff; border-bottom:7px solid #fff}
         .evt01 .d-day {
@@ -121,19 +121,8 @@
         }
         .evt04 {background:#f6f6f6;}
         .evt05 {background:#fff;}
-        .comingsoon {background:url(https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg) no-repeat center top; text-align:center}
-        .evt06 {background:url(https://static.willbes.net/public/images/promotion/2019/10/1424_top_bg.jpg) no-repeat center top;}	
-        .evt06 .wb_popWrap {width:1120px; margin:0 auto; position:relative}
-        .evt06 .illust {position:absolute; width:1120px; margin:0 auto; animation:only 2s ease-in 0s infinite; z-index:11}
-        @@keyframes only{
-            0%{top:360px}
-            50%{top:380px; opacity:1}
-            100%{top:360px}
-        }
-        .evt06 a {position:absolute; width:600px; top:770px; left:50%; margin-left:-300px; padding:20px 0;
-            color:#fff; font-size:20px; font-weight:600; border:2px solid #fff; border-radius:40px;
-        }
-        .evt06 a:hover {background:#fff; color:#102b3e}
+        .comingsoon {background:url("https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg") no-repeat center top; text-align:center}
+
     </style>
     @php
         $now = date('YmdHi');
@@ -319,10 +308,10 @@
             </div>           
 
             <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" usemap="#Map1747a" title="사전예약 이벤트" border="0">
-                <map name="Map1747a" id="Map1747a">
-                    <area shape="rect" coords="271,1783,597,1835"  href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="합격풀케어서비스 이미지 다운받기">
-                </map>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" title="사전예약 이벤트">
+                    <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="합격풀케어서비스 이미지 다운받기" style="position: absolute; left: 23.39%; top: 80.82%; width: 30.45%; height: 2.95%; z-index: 2;"></a>
+                </div>
             </div>
 
             {{--홍보url댓글--}}
@@ -337,7 +326,7 @@
             </div>
         @else
             <div id="tab02">
-                @include('willbes.pc.promotion.2001.1747_cts02')
+                @include('willbes.pc.promotion.2001.2069_cts02')
             </div>
         @endif
 
@@ -347,7 +336,7 @@
             </div>
         @else
             <div id="tab03">
-                @include('willbes.pc.promotion.2001.1747_cts03')
+                @include('willbes.pc.promotion.2001.2069_cts03')
             </div>
         @endif
 
@@ -357,7 +346,7 @@
             </div>
         @else
             <div id="tab04">
-                @include('willbes.pc.promotion.2001.1747_cts04')
+                @include('willbes.pc.promotion.2001.2069_cts04')
             </div>
         @endif
 
@@ -367,7 +356,7 @@
             </div>
         @else
             <div id="tab05">
-                @include('willbes.pc.promotion.2001.1747_cts05')
+                @include('willbes.pc.promotion.2001.2069_cts05')
             </div>
         @endif
 

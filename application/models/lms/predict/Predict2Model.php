@@ -918,39 +918,12 @@ class Predict2Model extends WB_Model
             $column = 'count(*) AS cnt';
             $order_by_offset_limit = '';
         } else {
-            /**
-             * TODO : 컬럼 미비
-             */
-            /*$column = "
-                MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor, SJ.SubjectName,
-                (SELECT COUNT(MemIdx) 
-                    FROM {$this->_table['mock_register']} AS MR
-                    JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx
-                WHERE IsStatus = 'Y' AND IsTake = 'Y' AND PpIdx = MP.PpIdx AND TakeForm = (SELECT Ccd FROM {$this->_table['lms_sys_code']} WHERE CcdName = 'online')) AS OnlineCnt,
-                (SELECT COUNT(MemIdx) 
-                    FROM {$this->_table['mock_register']} AS MR
-                    JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx 
-                WHERE IsStatus = 'Y' AND IsTake = 'Y' AND PpIdx = MP.PpIdx AND TakeForm = (SELECT Ccd FROM {$this->_table['lms_sys_code']} WHERE CcdName = 'off(학원)')) AS OfflineCnt,
-                (SELECT COUNT(*) FROM {$this->_table['predict2_questions']} AS EQ WHERE MP.PpIdx = EQ.PpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
-                (
-                    SELECT GROUP_CONCAT(CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']')) AS CateRouteName
-                    FROM {$this->_table['predict2_paper_r_category']} AS MPRC
-                    INNER JOIN {$this->_table['mock_r_category']} AS MC ON MPRC.PrcIdx = MC.PrcIdx AND MC.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['predict2_r_subject']} AS MS ON MC.PrsIdx = MS.PrsIdx AND MS.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['mock_base']} AS MB ON MS.PcIdx = MB.PcIdx AND MB.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_sys_category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-                    WHERE MP.PpIdx = MPRC.PpIdx AND MPRC.IsStatus = 'Y'
-                    GROUP BY MPRC.PpIdx
-                ) AS CateRouteName
-            ";*/
             $column = "
                 MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor, SJ.SubjectName,
                 '0' AS OnlineCnt,
                 '0' AS OfflineCnt,
-                (SELECT COUNT(*) FROM {$this->_table['predict2_questions']} AS EQ WHERE MP.PpIdx = EQ.PpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
+                (SELECT COUNT(*) FROM {$this->_table['predict2_questions']} AS EQ WHERE MP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 1 AND EQ.IsStatus = 'Y') AS QuestionCnt1,
+                (SELECT COUNT(*) FROM {$this->_table['predict2_questions']} AS EQ WHERE MP.PpIdx = EQ.PpIdx AND EQ.QuestionType = 2 AND EQ.IsStatus = 'Y') AS QuestionCnt2,
                 (
                     SELECT GROUP_CONCAT(CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']')) AS CateRouteName
                     FROM {$this->_table['predict2_paper_r_category']} AS MPRC
@@ -1076,6 +1049,20 @@ class Predict2Model extends WB_Model
     }
 
     /**
+     * 문제유형 수
+     * @param $pp_idx
+     * @return mixed
+     */
+    public function countExamQuestions($pp_idx)
+    {
+        $query_string = "
+            (SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 1) AS QuestionType1
+            ,(SELECT COUNT(*) AS cnt FROM {$this->_table['predict2_questions']} WHERE PpIdx = '{$pp_idx}' AND QuestionType = 2) AS QuestionType2
+        ";
+        return $this->_conn->query('select ' . $query_string)->row_array();
+    }
+
+    /**
      * 문제영역 조회
      * @param $arr_condition
      * @return mixed
@@ -1127,6 +1114,7 @@ class Predict2Model extends WB_Model
                     if (empty(element('chapterExist', $form_data)) || !in_array($v, element('chapterExist', $form_data))) { // 신규등록
                         $dataReg[$k] = [
                             'PpIdx' => element('idx', $form_data),
+                            'QuestionType' => element('question_type', $form_data),
                             'PalIdx' => element('PalIdx', $form_data)[$k],
                             'QuestionNO' => element('QuestionNO', $form_data)[$k],
                             'QuestionOption' => element('QuestionOption', $form_data)[$k],
@@ -1663,6 +1651,44 @@ class Predict2Model extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    public function sort($sort_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $sorting = @json_decode($sort_data, true);
+            if(!is_array($sorting)) {
+                throw new Exception('입력오류');
+            }
+
+            if( count($sorting) != count(array_unique(array_values($sorting))) ) {
+                throw new Exception('문항번호가 중복되어 있습니다.');
+            }
+
+            $data = [];
+            foreach ($sorting as $k => $v) {
+                $data[] = [
+                    'PqIdx' => $k,
+                    'QuestionNO' => $v,
+                    'UpdDatm' => date("Y-m-d H:i:s"),
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+            }
+
+            if($data) $this->_conn->update_batch($this->_table['predict2_questions'], $data, 'PqIdx');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('정렬변경에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 
     /**
      * 상품 과목 저장/수정
@@ -1930,9 +1956,9 @@ class Predict2Model extends WB_Model
 
             $query = "
                 {$this->_table['predict2_questions']}
-                    (PpIdx, PalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                    (PpIdx, QuestionType, PalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                      RightAnswer, Scoring, Difficulty, RegIp, RegAdminIdx, RegDatm)
-                SELECT ?, PalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
+                SELECT ?, QuestionType, PalIdx, QuestionNO, QuestionOption, QuestionFile, RealQuestionFile, ExplanFile, RealExplanFile,
                        RightAnswer, Scoring, Difficulty, ?, ?, ?
                 FROM {$this->_table['predict2_questions']}
                 WHERE PpIdx = ? AND IsStatus = 'Y'";

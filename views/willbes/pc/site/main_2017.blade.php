@@ -1,6 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style>
+.ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
+</style>
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
         <!-- site nav -->

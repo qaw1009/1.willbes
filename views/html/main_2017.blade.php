@@ -2,7 +2,7 @@
 @extends('html.layouts.master')
 @section('content')
 <style type="text/css">
-
+.ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
 </style>
 
 <!-- Container -->
@@ -878,7 +878,7 @@
         <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
         <!-- List -->
-        <div id="replyListLayer" class="Layer-Cont tx14">
+        <div id="replyListLayer" class="Layer-Cont">
             <div class="curriWrap c_both">
                 <div class="CurriBox">
                     <table cellspacing="0" cellpadding="0" class="curriTable curriTableLayer">

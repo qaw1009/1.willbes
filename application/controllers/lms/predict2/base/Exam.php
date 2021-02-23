@@ -82,7 +82,7 @@ class Exam extends \app\controllers\BaseController
     public function create($params = [])
     {
         $def_site_code = '';
-        $data = $arr_question_type_count = $question_data = $professor = $areaList = null;
+        $data = $arr_question_type_count = $professor = null;
         $cate_data = [];
 
         if (empty($params[0]) === true) {
@@ -96,8 +96,7 @@ class Exam extends \app\controllers\BaseController
             }
             $def_site_code = $data['SiteCode'];
 
-            //문항정보
-            $question_data = $this->predict2Model->listExamQuestions(['EQ' => ['MQ.PpIdx' => $params[0],'MQ.IsStatus' => 'Y']]);
+            //문항정보 카운트수
             $arr_question_type_count = $this->predict2Model->countExamQuestions($params[0]);
 
             //등록된 카테고리정보
@@ -120,21 +119,19 @@ class Exam extends \app\controllers\BaseController
                     'txt' => $it['wProfName'] .' | '. $it['ProfIdx'] .' | '. $it['wProfId'] .' | '. (($it['BaseIsUse'] == 'Y') ? '사용' : '<span class="red">미사용</span>')
                 );
             }
-            $areaList = $this->predict2Model->getAreaList(['EQ' => ['MA.PaIdx' => $data['PaIdx'], 'MA.IsStatus' => 'Y']]);
         }
 
         $this->load->view('predict2/base/exam/create', [
             'def_site_code' => $def_site_code,
             'method' => $method,
             'data' => $data,
-            'question_data' => $question_data,
-            'arr_question_type_count' => $arr_question_type_count,
             'cate_data' => $cate_data,
             'professor' => $professor,
-            'areaList' => $areaList,
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock') . $data['PpIdx'] .'/',
             'upImgUrlQ' => $this->config->item('upload_url_mock', 'mock') . $data['PpIdx'] . $this->config->item('upload_path_mockQ', 'mock'),
-            'isDeny' => empty($question_data) === false ? true : false,  // 개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
+            'arr_question_type_count' => $arr_question_type_count,
+            //개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
+            'isDeny' => (empty($arr_question_type_count['QuestionType1']) === true && empty($arr_question_type_count['QuestionType2']) === true) ? false : true
         ]);
     }
 
@@ -186,6 +183,11 @@ class Exam extends \app\controllers\BaseController
      */
     public function questionListModal()
     {
+        if (empty($this->_reqG('pp_idx')) === true || empty($this->_reqG('pa_idx')) === true
+            || empty($this->_reqG('question_type')) === true || empty($this->_reqG('total_score')) === true) {
+            show_error('잘못된 접근입니다.');
+        }
+
         $method = 'PUT';
         $pp_idx = $this->_reqG('pp_idx');
         $pa_idx = $this->_reqG('pa_idx');

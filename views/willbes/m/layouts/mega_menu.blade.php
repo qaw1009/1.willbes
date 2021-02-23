@@ -20,13 +20,10 @@
                     <span>영어</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50499?subject_idx=1108') }}">한덕현</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51070?subject_idx=1108') }}">선석</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50383?subject_idx=1108') }}">김영</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50651?subject_idx=1108') }}">박초롱</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50309?subject_idx=1108') }}">이아림</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50071?subject_idx=1108') }}">양익</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50991?subject_idx=1108') }}">안성호</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51011?subject_idx=1108') }}">이섬가</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51199?subject_idx=1108') }}">김현정</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>                    
                 </li>
                 <li>
                     <span>한국사</span>
@@ -208,7 +205,6 @@
                     <span>영어</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50499?subject_idx=1108') }}">한덕현</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50345?subject_idx=1108') }}">성기건</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50383?subject_idx=1108') }}">김영</a>
                 </li>
                 <li>
                     <span>한국사</span>

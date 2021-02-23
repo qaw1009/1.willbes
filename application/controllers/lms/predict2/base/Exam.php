@@ -125,11 +125,11 @@ class Exam extends \app\controllers\BaseController
             'def_site_code' => $def_site_code,
             'method' => $method,
             'data' => $data,
-            'arr_question_type_count' => $arr_question_type_count,
             'cate_data' => $cate_data,
             'professor' => $professor,
             'upImgUrl' => $this->config->item('upload_url_mock', 'mock') . $data['PpIdx'] .'/',
             'upImgUrlQ' => $this->config->item('upload_url_mock', 'mock') . $data['PpIdx'] . $this->config->item('upload_path_mockQ', 'mock'),
+            'arr_question_type_count' => $arr_question_type_count,
             //개별 문제가 등록된 경우 카테고리, 문제등록옵션, 총점 변경 불가
             'isDeny' => (empty($arr_question_type_count['QuestionType1']) === true && empty($arr_question_type_count['QuestionType2']) === true) ? false : true
         ]);

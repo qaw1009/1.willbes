@@ -186,6 +186,11 @@ class Exam extends \app\controllers\BaseController
      */
     public function questionListModal()
     {
+        if (empty($this->_reqG('pp_idx')) === true || empty($this->_reqG('pa_idx')) === true
+            || empty($this->_reqG('question_type')) === true || empty($this->_reqG('total_score')) === true) {
+            show_error('잘못된 접근입니다.');
+        }
+
         $method = 'PUT';
         $pp_idx = $this->_reqG('pp_idx');
         $pa_idx = $this->_reqG('pa_idx');

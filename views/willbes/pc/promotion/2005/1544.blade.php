@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -22,23 +18,33 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_top_bg.jpg) no-repeat center top;}	
         .evt_top span {position:absolute; top:790px; width:217px; z-index:10; left:50%;}
-        .evt_top span.img01 {margin-left:-390px; animation: sp01 1.5s linear infinite;}
+        .evt_top span.img01 {margin-left:-584px; animation: sp01 1.5s linear infinite;}
         @@keyframes sp01{
 		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
         }
-        .evt_top span.img02 {margin-left:-105px; animation: sp02 1.5s linear infinite;} 
+        .evt_top span.img02 {margin-left:-347px; animation: sp02 1.5s linear infinite;} 
         @@keyframes sp02{
 		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
         }
-        .evt_top span.img03 {margin-left:167px; animation: sp03 1.5s linear infinite;}
+        .evt_top span.img03 {margin-left:-110px; animation: sp03 1.5s linear infinite;}
         @@keyframes sp03{
 		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
         }
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_01_bg.jpg) no-repeat center top;}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_02_bg.jpg) no-repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2020/02/1544_03_bg.jpg) no-repeat center top;}
+        .evt_top span.img04 {margin-left:127px; animation: sp04 1.5s linear infinite;} 
+        @@keyframes sp04{
+		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
+        }
+        .evt_top span.img05 {margin-left:364px; animation: sp05 1.5s linear infinite;}
+        @@keyframes sp05{
+		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
+        }
+
+		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_01_bg.jpg) no-repeat center top;}
+        .evt_01 div {width:1120px; margin:0 auto; position:relative}
+        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_02_bg.jpg) no-repeat center top;}
+        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_03_bg.jpg) no-repeat center top;}
         .evt_04 {}
         .evt_05 {}
         .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
@@ -70,52 +76,60 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top.jpg" alt="황종휴 경제학" />
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img1.png" alt="혜택1" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img2.png" alt="혜택2" /></span>
-            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2020/02/1544_top_img3.png" alt="혜택3" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top.jpg" alt="황종휴 경제학" />
+            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img1.png" alt="혜택1" /></span>
+            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img2.png" alt="혜택2" /></span>
+            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img3.png" alt="혜택3" /></span>
+            <span class="img04"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img4.png" alt="혜택4" /></span>
+            <span class="img05"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img5.png" alt="혜택5" /></span>
 		</div>
 
 		<div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" usemap="#Map1544" border="0" />
-            <map name="Map1544" id="Map1544">
-                <area shape="rect" coords="264,796,861,967" href="#evt_04" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" />
+                <a href="#evt_04" title="" style="position: absolute; left: 23.13%; top: 66.61%; width: 52.86%; height: 15.14%; z-index: 2;"></a>
+            </div>
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_02.jpg" alt="3단계 기본기 완성" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_02.jpg" alt="3단계 기본기 완성" />
 		</div>
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_03.jpg" alt="경제학 예비순환" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_03.jpg" alt="경제학 예비순환" />
         </div>
 
         <div class="evtCtnsBox evt_04" id="evt_04">
-        @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
+            <!--
+            @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
             <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
-        @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
+            @elseif(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3095')
             <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161963') }}" target="_blank">
-        @else
+            @else
             <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
-        @endif
-                <img src="https://static.willbes.net/public/images/promotion/2020/02/1544_04.jpg" alt="특별 이벤트" />
+            @endif
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_04.jpg" alt="특별 이벤트" />
             </a>
-        </div>     
+            -->
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_04.jpg" alt="특별 이벤트" />
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif
+        </div> 
+        
+        
 
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">상품 이용안내</h4>
 				<div class="infoTit NG"><strong>상품구성</strong></div>
 				<ul>
-					<li>
-                        2019년 진행된 경제학 예비순환(미시+거시/19년 4월진행) 강의신청시 <br>
-                        - 수강료 30%할인된 금액인 445,900원으로 자동 결제됩니다.<br>
-                        - 무료로 제공되는 교재는 강의신청시 무료로 주문 가능합니다.<br>
-                        - 2019년 최종합격자자 전하는 합격이야기(합격수기 모음집)는 2월 25일 일괄 발송예정입니다.<br>
-                        - 경제학 10% 동영상 할인쿠폰은 경제학, 재정학, 국제경제학 강의 신청시 이용하실 수 있으며 강의신청시 자동발급됩니다.(쿠폰 유효기간 2020년 7월 31일까지)
-                    </li>
-                    <li>이벤트 기간은 ~ 2020년 2월 23일(일) 24:00까지 입니다.</li>
+					<li>2020년 진행된 경제학 예비순환(미시+거시/20년 4월진행) 강의신청시<br>
+                    - 수강료 30%할인된 금액인 455,000원으로 자동 결제됩니다.<br>
+                    - 무료로 제공되는 교재는 주문하여야 택배발송이 됩니다.<br>
+                    - 경제학 11개년 기출해설 특강 및 미시, 거시 교수님 교과서 강제 1회독 특강 동영상 50 할인쿠폰은 강의신청시 자동발급됩니다.(쿠폰 유효기간 2021년 7월 31일까지)</li>
+                    <li>해당 강의는 쿠폰 및 다른 이벤트와 중복 적용되지 않습니다.</li>
+                    <li>이벤트 기간은 ~ 2021년 2월 28일(일) 24:00까지 입니다.</li>
 				</ul>
 				<div class="infoTit NG"><strong>수강관련</strong></div>
 				<ul>
@@ -141,12 +155,6 @@
 				<ul>
 					<li>본 이벤트는 복지할인 등 다른 쿠폰과 중복 적용되지 않습니다.</li>
                     <li>아이디 공유 및 불법공유 행위 적발 시 회원자격 박탈 및 고발 조치가 진행될 수 있습니다.</li>
-				</ul>
-				<div class="infoTit NG"><strong>상담 및 문의</strong></div>
-				<ul>
-					<li>[상담시간] 평일 오전 10시 ~ 오후 5시</li>
-					<li>[상담전화] 1544-5006 or 070-4006-7137</li>
-					<li>[상담내용] 공부방법론 및 합격을 위한 수험전략 수립</li>
 				</ul>
 			</div>
 		</div>

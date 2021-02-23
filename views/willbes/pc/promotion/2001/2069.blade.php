@@ -308,10 +308,10 @@
             </div>           
 
             <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" usemap="#Map1747a" title="사전예약 이벤트" border="0">
-                <map name="Map1747a" id="Map1747a">
-                    <area shape="rect" coords="271,1783,597,1835"  href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="합격풀케어서비스 이미지 다운받기">
-                </map>
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" title="사전예약 이벤트">
+                    <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="합격풀케어서비스 이미지 다운받기" style="position: absolute; left: 23.39%; top: 80.82%; width: 30.45%; height: 2.95%; z-index: 2;"></a>
+                </div>
             </div>
 
             {{--홍보url댓글--}}
@@ -326,7 +326,7 @@
             </div>
         @else
             <div id="tab02">
-                @include('willbes.pc.promotion.2001.1747_cts02')
+                @include('willbes.pc.promotion.2001.2069_cts02')
             </div>
         @endif
 
@@ -336,7 +336,7 @@
             </div>
         @else
             <div id="tab03">
-                @include('willbes.pc.promotion.2001.1747_cts03')
+                @include('willbes.pc.promotion.2001.2069_cts03')
             </div>
         @endif
 
@@ -346,7 +346,7 @@
             </div>
         @else
             <div id="tab04">
-                @include('willbes.pc.promotion.2001.1747_cts04')
+                @include('willbes.pc.promotion.2001.2069_cts04')
             </div>
         @endif
 
@@ -356,7 +356,7 @@
             </div>
         @else
             <div id="tab05">
-                @include('willbes.pc.promotion.2001.1747_cts05')
+                @include('willbes.pc.promotion.2001.2069_cts05')
             </div>
         @endif
 

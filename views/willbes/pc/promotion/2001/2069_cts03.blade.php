@@ -1,8 +1,8 @@
 <style type="text/css">
     .cts03_comingsoon {background:url("https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg") no-repeat center top;}
-    .cts03_top {background:url("https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_top_bg.jpg") no-repeat center top;}
+    .cts03_top {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_top_bg.jpg") no-repeat center top;}
     .cts03_01 {background:#363636}
-    .cts03_02 {background:url("https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_02_bg.jpg") no-repeat center top;}
+    .cts03_02 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_02_bg.jpg") no-repeat center top;}
     .cts03_03 {background:#e7e7e7}
     .cts03_03 .tabWrapEvt {width:1210px; margin:0 auto}
     .cts03_03 .tabWrapEvt li {display:inline; float:left; width:20%}
@@ -18,7 +18,7 @@
     .cts03_03 .tabWrapEvt li:last-child a {margin-right:0}
     .cts03_03 .tabWrapEvt:after {content:""; display:block; clear:both}
     .cts03_03 .tabcts {background:#fff}
-    .cts03_04 {background:url("https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_04_bg.jpg") no-repeat center top;}
+    .cts03_04 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_04_bg.jpg") no-repeat center top;}
     .cts03_05 {background:#7a7a7a}
 </style>
 
@@ -31,74 +31,74 @@
 @else
     <div>
         <div class="evtCtnsBox cts03_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_top.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_top.jpg" alt="" />
         </div>
         <div class="evtCtnsBox cts03_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_01.jpg" alt="" />
         </div>
         <div class="evtCtnsBox cts03_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_02.jpg" alt="" usemap="#Map1361ct03A" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_02.jpg" alt="" usemap="#Map1361ct03A" border="0" />
             <map name="Map1361ct03A" id="Map1361ct03A">
                 <area shape="rect" coords="427,442,789,515" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=882&" target="_blank" alt="체력qna바로가기" />
                 {{--<area shape="rect" coords="427,442,789,515" href="javascript:void(0);" onclick="javascript:alert('Coming soon!');" alt="체력qna바로가기" />--}}
             </map>
         </div>
         <div class="evtCtnsBox cts03_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03.jpg" alt="" />
             <ul class="tabWrapEvt">
                 <li>
                     <a href="#ct03tab01">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab01_off.jpg" alt="" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab01_on.jpg" alt="" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab01_off.jpg" alt="" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab01_on.jpg" alt="" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#ct03tab02">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab02_off.jpg" alt="" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab02_on.jpg" alt="" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab02_off.jpg" alt="" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab02_on.jpg" alt="" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#ct03tab03">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab03_off.jpg" alt="" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab03_on.jpg" alt="" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab03_off.jpg" alt="" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab03_on.jpg" alt="" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#ct03tab04">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab04_off.jpg" alt="" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab04_on.jpg" alt="" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab04_off.jpg" alt="" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab04_on.jpg" alt="" class="on"/>
                     </a>
                 </li>
                 <li>
                     <a href="#ct03tab05">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab05_off.jpg" alt="" class="off"/>
-                        <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab05_on.jpg" alt="" class="on"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab05_off.jpg" alt="" class="off"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab05_on.jpg" alt="" class="on"/>
                     </a>
                 </li>
             </ul>
 
             <div id="ct03tab01" class="tabcts">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab01.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab01.jpg" alt=""/>
             </div>
             <div id="ct03tab02" class="tabcts">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab02.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab02.jpg" alt=""/>
             </div>
             <div id="ct03tab03" class="tabcts">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab03.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab03.jpg" alt=""/>
             </div>
             <div id="ct03tab04" class="tabcts">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab04.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab04.jpg" alt=""/>
             </div>
             <div id="ct03tab05" class="tabcts">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_03_tab05.jpg" alt=""/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03_tab05.jpg" alt=""/>
             </div>
         </div>
         <div class="evtCtnsBox cts03_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_04.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_04.jpg" alt="" />
         </div>
         <div class="evtCtnsBox cts03_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1747_cts03_05.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_05.jpg" alt="" />
         </div>
 	</div>
 

@@ -5,9 +5,9 @@
 
 <div>
     <div class="evtCtnsBox cts04_01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/11/1747_cts04_top.jpg" alt="" />
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts04_top.jpg" alt="" />
     </div>  
     <div class="evtCtnsBox cts04_02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/11/1747_cts04_01.jpg" alt="" />
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts04_01.jpg" alt="" />
     </div>  
 </div>

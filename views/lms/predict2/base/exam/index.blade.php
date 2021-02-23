@@ -81,7 +81,7 @@
                     <th rowspan="2" class="text-center">회차</th>
                     <th rowspan="2" class="text-center">과목별문제지명</th>
                     <th rowspan="2" class="text-center">지문수</th>
-                    <th rowspan="2" class="text-center">문항수</th>
+                    <th colspan="2" class="text-center">문항수</th>
                     <th colspan="2" class="text-center">응시현황</th>
                     <th rowspan="2" class="text-center">사용여부</th>
                     <th rowspan="2" class="text-center">문제보기</th>
@@ -89,6 +89,8 @@
                     <th rowspan="2" class="text-center" style="width:130px">등록일</th>
                 </tr>
                 <tr>
+                    <th class="text-center">가형</th>
+                    <th class="text-center">나형</th>
                     <th class="text-center">ON</th>
                     <th class="text-center">OFF</th>
                 </tr>
@@ -156,7 +158,8 @@
                         return '<span class="blue underline-link btn-modify" data-idx="' + row.PpIdx + '">[' + row.PpIdx + '] ' + row.PapaerName + '</span>';
                     }},
                     {'data' : 'AnswerNum', 'class': 'text-center'},
-                    {'data' : 'ListCnt', 'class': 'text-center'},
+                    {'data' : 'QuestionCnt1', 'class': 'text-center'},
+                    {'data' : 'QuestionCnt2', 'class': 'text-center'},
                     {'data' : 'OnlineCnt', 'class': 'text-center'},
                     {'data' : 'OfflineCnt', 'class': 'text-center'},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {

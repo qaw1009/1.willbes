@@ -82,7 +82,7 @@ class Exam extends \app\controllers\BaseController
     public function create($params = [])
     {
         $def_site_code = '';
-        $data = $question_data = $professor = $areaList = null;
+        $data = $arr_question_type_count = $question_data = $professor = $areaList = null;
         $cate_data = [];
 
         if (empty($params[0]) === true) {
@@ -98,6 +98,7 @@ class Exam extends \app\controllers\BaseController
 
             //문항정보
             $question_data = $this->predict2Model->listExamQuestions(['EQ' => ['MQ.PpIdx' => $params[0],'MQ.IsStatus' => 'Y']]);
+            $arr_question_type_count = $this->predict2Model->countExamQuestions($params[0]);
 
             //등록된 카테고리정보
             $column = "
@@ -127,6 +128,7 @@ class Exam extends \app\controllers\BaseController
             'method' => $method,
             'data' => $data,
             'question_data' => $question_data,
+            'arr_question_type_count' => $arr_question_type_count,
             'cate_data' => $cate_data,
             'professor' => $professor,
             'areaList' => $areaList,
@@ -180,6 +182,35 @@ class Exam extends \app\controllers\BaseController
     }
 
     /**
+     * 문제문항리스트 모달팝업
+     */
+    public function questionListModal()
+    {
+        $method = 'PUT';
+        $pp_idx = $this->_reqG('pp_idx');
+        $pa_idx = $this->_reqG('pa_idx');
+        $question_type = $this->_reqG('question_type');
+        $total_score = $this->_reqG('total_score');
+
+        //문제영역정보
+        $areaList = $this->predict2Model->getAreaList(['EQ' => ['MA.PaIdx' => $pa_idx, 'MA.IsStatus' => 'Y']]);
+
+        //문항정보
+        $question_data = $this->predict2Model->listExamQuestions(['EQ' => ['MQ.PpIdx' => $pp_idx,'MQ.QuestionType' => $question_type,'MQ.IsStatus' => 'Y']]);
+
+        $this->load->view('predict2/base/exam/question_modal', [
+            'method' => $method
+            ,'pp_idx' => $pp_idx
+            ,'pa_idx' => $pa_idx
+            ,'question_type' => $question_type
+            ,'total_score' => $total_score
+            ,'areaList' => $areaList
+            ,'question_data' => $question_data
+        ]);
+    }
+
+
+    /**
      * 문제항목 저장/수정
      */
     public function storeQuestion()
@@ -195,6 +226,7 @@ class Exam extends \app\controllers\BaseController
         }
 
         $rules = [
+            ['field' => 'question_type', 'label' => '문제유형', 'rules' => 'trim|required'],
             ['field' => 'QuestionNO[]', 'label' => '문항번호', 'rules' => 'trim|required|is_natural_no_zero'],
             /*['field' => 'PalIdx[]', 'label' => '문제영역', 'rules' => 'trim|required|is_natural_no_zero'],*/
             ['field' => 'QuestionOption[]', 'label' => '문제등록옵션', 'rules' => 'trim|required|in_list[S,M,J]'],
@@ -221,33 +253,6 @@ class Exam extends \app\controllers\BaseController
             $this->json_error('문항별 배점의 합과 총점이 일치하지 않습니다.');
             return;
         }
-
-        /*foreach ($this->_reqP('QuestionOption') as $k => $v) {
-            if( $v != 'J' && !preg_match('/^[1-9,]+$/', $this->_reqP('RightAnswer')[$k]) ) {
-                $this->json_error('정답을 선택하세요');
-                return;
-            }
-        }
-
-        $error = false;
-        foreach ($this->_reqP('QuestionOption') as $k => $v) {
-            $count = empty($this->_reqP("RightAnswer")[$k]) ? 0 : count(explode(',', $this->_reqP("RightAnswer")[$k]));
-            switch ($v) {
-                case 'S': // 객관식 단일
-                    if($count !== 1) $error = true;
-                    break;
-                case 'M': // 객관식 복수
-                    if($count < 2) $error = true;
-                    break;
-                case 'J': // 주관식
-                    if($count !== 0) $error = true;
-                    break;
-            }
-            if($error === true) {
-                $this->json_error("정답갯수가 맞지 않습니다.\n\n객관식(단일): 정답 1개\n객관식(복수): 정답 2개 이상\n주관식:입력X");
-                return;
-            }
-        }*/
 
         $result = $this->predict2Model->storeQuestion($this->_reqP(null));
         $this->json_result($result['ret_cd'], '저장되었습니다.', $result, $result);

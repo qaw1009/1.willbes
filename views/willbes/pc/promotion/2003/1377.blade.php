@@ -53,7 +53,7 @@
 
         <div class="evtCtnsBox wb_cts04" id="event">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377_apply" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1377_04.jpg" alt="수강신청 안내" usemap="#Map1377_apply" border="0" />
                 <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178539" target="_blank" title="실강" style="position: absolute; left: 35.36%; top: 57.79%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177859" target="_blank" title="온라인" style="position: absolute; left: 35.36%; top: 66.05%; width: 9.38%; height: 4.88%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178724" target="_blank" title="라이브" style="position: absolute; left: 35.36%; top: 74.53%; width: 9.38%; height: 4.88%; z-index: 2;"></a>

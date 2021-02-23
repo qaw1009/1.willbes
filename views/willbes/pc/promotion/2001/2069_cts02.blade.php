@@ -1,5 +1,5 @@
 <style type="text/css">  
-        .cts02_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1747_cts02_top_bg.jpg) repeat-x center top; position:relative; padding-bottom:100px;} 
+        .cts02_top {background:url("https://static.willbes.net/public/images/promotion/2020/09/1747_cts02_top_bg.jpg") repeat-x center top; position:relative; padding-bottom:100px;} 
         .cts02_02 {background:#eaeaea}
         .cts02_03 {background:#fff} 
 </style>

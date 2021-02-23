@@ -26,13 +26,11 @@
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51070/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">선석</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a><br>                 
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}" class="ml40">이아림</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">안성호</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51011/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이섬가</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51199/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김현정</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
+                        
                     </li>
                     <li>
                         <span>[한국사]</span>
@@ -206,7 +204,6 @@
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50499/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">한덕현</a>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50345/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">성기건</a>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50383/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김영</a>
                     </li>
                     <li>
                         <span>[한국사]</span>

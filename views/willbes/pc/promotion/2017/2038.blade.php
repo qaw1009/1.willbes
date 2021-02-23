@@ -69,14 +69,14 @@
         --}}
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_top.jpg" alt="윌비스 임용 유튜브 이벤트"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2038_top.jpg" alt="윌비스 임용 유튜브 이벤트"/>
+        </div>
+        
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2038_01.jpg" alt="구독, 좋아요, 알림설정"/>
         </div>
 
         {{--
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_01.jpg" alt="구독, 좋아요, 알림설정"/>
-        </div>
-
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2038_02.jpg" alt="이벤트 상품"/>
         </div>

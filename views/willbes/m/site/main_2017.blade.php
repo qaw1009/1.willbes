@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
 
-    <style>
+<style>
 .ssam .mainTit {
 	font-size: 20px;
 	position: relative;

@@ -330,14 +330,9 @@
                         sendAjax(_url, data, function(ret) {
                             if (ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
-                                location.reload();
+                                _replaceModal('{{ $question_type }}');
                             }
                         }, showValidateError, false, 'POST');
-                    });
-
-                    $('.file-download').click(function() {
-                        var _url = '{{ site_url("/predict2/base/exam/download") }}/' + getQueryString() + '&path=' + $(this).data('file-path') + '&fname=' + $(this).data('file-name');
-                        window.open(_url, '_blank');
                     });
                 });
 

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Exam extends \app\controllers\BaseController
 {
     protected $models = array('sys/category', 'product/base/subject', 'common/searchProfessor', 'predict/predict2');
-    protected $helpers = array();
+    protected $helpers = array('download');
 
     public function __construct()
     {
@@ -209,7 +209,6 @@ class Exam extends \app\controllers\BaseController
         ]);
     }
 
-
     /**
      * 문제항목 저장/수정
      */
@@ -308,6 +307,28 @@ class Exam extends \app\controllers\BaseController
             'arr_base' => $arr_base,
             'professor' => $this->searchProfessorModel->professorList('', '', '', false),
         ]);
+    }
+
+    public function download()
+    {
+        $file_path = $this->_reqG('path');
+        $file_name = $this->_reqG('fname');
+
+        public_download($file_path, $file_name);
+    }
+
+    // 정렬변경
+    public function sort()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'idx', 'label' => 'IDX', 'rules' => 'trim|required|is_natural_no_zero'],
+            ['field' => 'sorting', 'label' => '문항번호', 'rules' => 'trim|required']
+        ];
+        if ($this->validate($rules) === false) return;
+
+        $result = $this->predict2Model->sort($this->input->post('sorting'));
+        $this->json_result($result, '정렬되었습니다.', $result, $result);
     }
 
     /**

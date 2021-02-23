@@ -1651,6 +1651,44 @@ class Predict2Model extends WB_Model
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
+    public function sort($sort_data)
+    {
+        $this->_conn->trans_begin();
+        try {
+            $sorting = @json_decode($sort_data, true);
+            if(!is_array($sorting)) {
+                throw new Exception('입력오류');
+            }
+
+            if( count($sorting) != count(array_unique(array_values($sorting))) ) {
+                throw new Exception('문항번호가 중복되어 있습니다.');
+            }
+
+            $data = [];
+            foreach ($sorting as $k => $v) {
+                $data[] = [
+                    'PqIdx' => $k,
+                    'QuestionNO' => $v,
+                    'UpdDatm' => date("Y-m-d H:i:s"),
+                    'UpdAdminIdx' => $this->session->userdata('admin_idx')
+                ];
+            }
+
+            if($data) $this->_conn->update_batch($this->_table['predict2_questions'], $data, 'PqIdx');
+            if ($this->_conn->trans_status() === false) {
+                throw new Exception('정렬변경에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        }
+        catch (Exception $e) {
+            $this->_conn->trans_rollback();
+            return error_result($e);
+        }
+
+        return true;
+    }
+
 
     /**
      * 상품 과목 저장/수정

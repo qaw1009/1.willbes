@@ -2827,50 +2827,6 @@ body.memBody #Footer {
 	.ssam .sampleViewImg {height: 90vw;}
 }
 
-/*
-.ssam .sampleView {
-	height: 440px;
-	width: 100% !important;	
-	max-width: 680px;
-	margin: 0 auto;
-	padding-bottom: 60px;
-}
-.ssam .sampleView .swiper-container-view {
-	width: 100%;	
-	height: 100%;
-	position: relative;
-}
-.ssam .sampleView .swiper-slide {
-	text-align: center;
-	height: calc((100% - 10px) / 4);
-	background: none;
-}
-@media only screen and (max-width: 374px) {
-	.ssam .sampleView {height: 240px;}
-	.ssam .sampleView .swiper-slide {height: calc((100% - 0) / 4);}
-}
-@media only screen and (min-width: 375px) and (max-width: 640px) {
-	.ssam .sampleView {height: 340px;}
-	.ssam .sampleView .swiper-slide {height: calc((100% - 0) / 4);}
-}
-.ssam .sampleView .swiper-container-View .swiper-pagination {
-	bottom: -55px !important;
-}
-.ssam .sampleView
-	.swiper-container-View
-	.swiper-pagination
-	.swiper-pagination-bullet {
-	width: 12px !important;
-	height: 12px !important;
-}
-.ssam .sampleView .swiper-slide a { padding:0 !important; margin:0 !important;}
-.ssam .sampleView .swiper-slide a img {
-	width: 100% !important;	
-	max-width: 680px;
-	padding:0 !important; margin:0 !important;
-}
-*/
-
 .ssam .ssamEtc {
 	border-top: 1px solid #cfcfcf;
 	text-align: center;
@@ -2889,26 +2845,30 @@ body.memBody #Footer {
 }
 .ssam .ssamEtc a img {display: block; margin:0 auto 10px; max-width:50px}
 
-.ssam .csCenter {
+.ssam .ssamCsCenter {
 	margin: 0 10px;
+	border-top:1px solid #ccc; border-bottom:1px solid #ccc
 }
-.ssam .csCenter:after {content:''; display:block; clear:both}
-.ssam .csCenter li {
-	width: calc(50% - 10%);
-	padding:0 5%;
-	
+.ssam .ssamCsCenter .tel {padding:15px 0; background:#fff;}
+.ssam .ssamCsCenter .tel:after {content:''; display:block; clear:both}
+.ssam .ssamCsCenter li {	
+    display:inline;
+    float:left;
+    width:50%;
 }
-.ssam .csCenter li div.goTel div {
-	font-size: 13px;
+
+.ssam .ssamCsCenter li .goTel {padding:0 15px; font-size:14px; line-height:1.2}
+.ssam .ssamCsCenter li:nth-child(1) .goTel {border-right:1px solid #ccc}
+.ssam .ssamCsCenter li .goTel div {	
+    margin-right:10px;
+    display:inline-block;
 }
-.ssam .csCenter li span {
-	display: block;
-	color: #006cff;
+.ssam .ssamCsCenter li .goTel div strong {/*display:block*/}
+.ssam .ssamCsCenter li span {
+	display: inline-block;
+	color: #333;
 	font-weight: bold;
-	font-size: 18px;
-}
-.ssam .csCenter li div.goTel img {
-	width: 24px;
+    font-size:22px;
 }
 
 /*임용 공지사항 강의 일정 테이블*/

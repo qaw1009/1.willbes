@@ -181,8 +181,8 @@
                     <label class="control-label col-md-1-1" for="ExplanFile">문항등록</label>
                     <div class="col-md-4 form-inline">
                         @if($method == 'PUT')
-                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="1">가형 ({{$arr_question_type_count['QuestionType1']}})</button>
-                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="2">나형 ({{$arr_question_type_count['QuestionType2']}})</button>
+                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="1">문제유형1 ({{$arr_question_type_count['QuestionType1']}})</button>
+                            <button type="button" class="btn btn-sm btn-success btn-question-modal" data-question-type="2">문제유형2 ({{$arr_question_type_count['QuestionType2']}})</button>
                         @else
                             <span class="form-control-static">기본정보 등록 후 문항등록 가능합니다.</span>
                         @endif
@@ -288,7 +288,7 @@
                 }, showValidateError, null, false, 'alert');
             });
 
-            //가형,나형 호출
+            //문제유형1,문제유형2 호출
             $('.btn-question-modal').on('click', function() {
                 var params = '?pp_idx=' + '{{ $data['PpIdx'] }}';
                 params += '&pa_idx=' + '{{ $data['PaIdx'] }}';

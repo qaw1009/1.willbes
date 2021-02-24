@@ -124,7 +124,7 @@
     <div class="evtCtnsBox evt04" id="evt04">
         <div class="ImgBox">
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2078m_04.jpg" alt="신청하기"/>
-            <a href="javascript:go_PassLecture('178370');" title="경찰 개편 pass 수강신청하기" style="position: absolute; left: 10.56%; top: 84.41%; width: 78.19%; height: 16.34%; z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('179433');" title="경찰 개편 pass 수강신청하기" style="position: absolute; left: 10.56%; top: 84.41%; width: 78.19%; height: 16.34%; z-index: 2;"></a>
         </div>
         <div class="check">
             <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 2022 신광은경찰 개편 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

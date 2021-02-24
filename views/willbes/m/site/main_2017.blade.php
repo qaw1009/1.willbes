@@ -3,7 +3,7 @@
 @section('content')
     <!-- Container -->
 
-<style>
+    <style>
 .ssam .mainTit {
 	font-size: 20px;
 	position: relative;
@@ -81,7 +81,7 @@
 }
 .ssam .bestLecBox2 .lecinfo {
     position:absolute;
-    bottom:8%;
+    bottom:4%;
     left:4%;
     width: 90%;
     line-height: 1.3;
@@ -95,7 +95,7 @@
     font-size: 14px;
 }
 .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-    font-size: 18px;
+    font-size: 16px;
 }
 .ssam .bestLecBox2 .lecinfo li strong {
 	color: #0c5dc0;
@@ -115,13 +115,15 @@
 	clear: both;
 }
 
-
 @@media only screen and (max-width: 374px) {
+    .ssam .bestLecBox2 .lecinfo li {
+        margin-bottom: 1%;
+    }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 12px;
     }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-        font-size: 15px;
+        font-size: 14px;
     }
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 13px;
@@ -132,7 +134,7 @@
         font-size: 13px;
     }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-        font-size: 16px;
+        font-size: 15px;
     }
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 14px;

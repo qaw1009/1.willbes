@@ -107,7 +107,7 @@
 }
 .ssam .bestLecBox2 .lecinfo {
     position:absolute;
-    bottom:8%;
+    bottom:4%;
     left:4%;
     width: 90%;
     line-height: 1.3;
@@ -121,7 +121,7 @@
     font-size: 14px;
 }
 .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-    font-size: 18px;
+    font-size: 16px;
 }
 .ssam .bestLecBox2 .lecinfo li strong {
 	color: #0c5dc0;
@@ -142,11 +142,14 @@
 }
 
 @@media only screen and (max-width: 374px) {
+    .ssam .bestLecBox2 .lecinfo li {
+        margin-bottom: 1%;
+    }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 12px;
     }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-        font-size: 15px;
+        font-size: 14px;
     }
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 13px;
@@ -157,7 +160,7 @@
         font-size: 13px;
     }
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) span {
-        font-size: 16px;
+        font-size: 15px;
     }
     .ssam .bestLecBox2 .lecinfo li strong {
         font-size: 14px;
@@ -268,7 +271,7 @@
         <span class="NSK-Black mr15">임용 <span class="tx-main">생생 수강후기</span></span>
         <a href="#none" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
         <div class="goBtns NSK">
-            <a href="#none">합격수기 바로가기 ></a></li>
+            <a href="#none">합격수기 ></a></li>
         </div>
     </div>
     <div class="replyBox mt10">       
@@ -588,7 +591,7 @@
             <li>
                 <div class="goTel">
                     <div>
-                        <strong>강의 문의</strong>
+                        <strong>강의 문의</strong><br>
                         월~토 09시~ 22시
                     </div>
                     <span><a href="tel:1544-3169">1544-3169</a></span>                       
@@ -597,7 +600,7 @@
             <li>
                 <div class="goTel">
                     <div>
-                        <strong>교재배송문의</strong>
+                        <strong>교재배송문의</strong><br>
                         평일 09시~ 17시
                     </div>
                     <span><a href="tel:1544-4944">1544-4944</a></span>                      

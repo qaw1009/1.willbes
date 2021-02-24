@@ -1,27 +1,20 @@
-@extends('willbes.pc.layouts.master')
+@extends('willbes.m.layouts.master')
 
 @section('content')
-    @include('willbes.pc.layouts.partial.site_menu')
+<!-- Container -->
 <style type="text/css">
-    .evtContent {
-        width:100% !important;
-        min-width:1120px !important;
-        margin-top:20px !important;
-        padding:0 !important;
-        background:#fff;
-        font-size:14px;
-    }
-
-    .evtCtnsBox {width:100%; text-align:center; min-width:1120px; line-height: 1.5}
+    .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
+    .evtCtnsBox img {width:100%; max-width:720px;}
+    .evtCtnsBox ul:after {content:""; display:block; clear:both}    
 
     /************************************************************/
 
-    .evt_top {background:url("https://static.willbes.net/public/images/promotion/2021/02/2089_top_bg.jpg") no-repeat center top;}
+    .evt_top {}
 
     .evt01 {background:#eee}
     
-    .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px;}
-    .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.5}
+    .evtInfo {padding:80px 20px; background:#333; color:#fff; font-size:16px;}
+    .evtInfoBox {text-align:left; line-height:1.5}
     .evtInfoBox li {list-style: decimal; margin-left:20px; font-size:14px; margin-bottom:10px; color:#ccc}
     .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
     .evtInfoBox .infoTit {font-size:20px; margin-bottom:10px}
@@ -29,16 +22,14 @@
     .evtInfoBox .only {color:#E80000;vertical-align:top;}
 </style>
 
-    <!-- Container -->
-    <div class="evtContent NSK" id="evtContainer">
+    <div id="Container" class="Container NSK c_both">            
         <div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2089_top.jpg" alt="psat 합격을 예측하다">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2089m_top.jpg" alt="psat 합격을 예측하다">
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2089_01.jpg" alt="이벤트">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2089m_01.jpg" alt="이벤트">
         </div>
-
 
         <!--evt_top//-->
         @include('willbes.pc.predict2.2089_promotion_partial')
@@ -62,18 +53,19 @@
                 <div>※ 유의사항을 읽지 않고 발생한 모든 상황에 대해서 한림법학원은 책임지지 않습니다.</div>
 			</div>
 		</div> 
+
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
-        });
 
-        {{-- 초기 로그인 얼럿 --}}
-        function loginAlert() {
-            {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','Y') !!}
-        }
-    </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        loginAlert();   {{-- 비로그인시 로그인 메세지 --}}
+    });
 
+    {{-- 초기 로그인 얼럿 --}}
+    function loginAlert() {
+        {!! login_check_inner_script('로그인 후 이벤트에 참여해주세요.','Y') !!}
+    }
+</script>
 @stop

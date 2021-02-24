@@ -246,6 +246,7 @@
             </div>
         </div>
 
+        {{--
         <div class="Section gosi-bn02">
             <div class="widthAuto">
                 <ul>
@@ -261,6 +262,7 @@
                 </ul>
             </div>
         </div>
+        --}}
 
         <div class="Section gosi-bn03">
             <div class="widthAuto">

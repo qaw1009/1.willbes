@@ -2,8 +2,8 @@
             <ul class="tabShow tabSsam">
                 <li><a href="#trend_guide1" class="on">유아</a></li>
                 <li><a href="#trend_guide2">초등</a></li>
-                <li><span>&nbsp;</span></li>
-                <li><span>&nbsp;</span></li>
+                <li><a href="#none">temp</a></li>
+                <li><a href="#none">temp</a></li>
                 <li><a href="#trend_guide3">중등전체</a></li>
                 <li><a href="#trend_guide4">국어</a></li>
                 <li><a href="#trend_guide4">영어</a></li>

@@ -392,12 +392,12 @@
             </div>
             <div id="notice2" class="tabContent pd20">
                 <div class="moreBtn"><a href="#none">+ 더보기</a></div>
-                <ul class="List-Table">
-                    <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>3월 31일(금) 새벽시스템점검안내222</a><span class="date">2018-04-01</span></li>
-                    <li><a href="#none"><span>HOT</span>설연휴학원고객센터운영안내22</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none"><span>HOT</span>추석교재배송및고객센터휴무안내22</a><span class="date">2018-03-06</span></li>
-                    <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2018-03-06</span></li>
+                <ul class="List-Table List-Table2">
+                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
+                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                    <li><a href="#none"><strong class="tx-blue">[전공수학 박태영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
+                    <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
+                    <li><a href="#none"><strong class="tx-blue">[도덕윤리 김병찬]</strong> <strong class="tx-red">총 2강 업로드</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
                 </ul>
             </div>
             <div id="notice3" class="tabContent pd20">
@@ -591,7 +591,7 @@
             <li>
                 <div class="goTel">
                     <div>
-                        <strong>강의 문의</strong><br>
+                        <strong>강의 문의</strong>
                         월~토 09시~ 22시
                     </div>
                     <span><a href="tel:1544-3169">1544-3169</a></span>                       
@@ -600,7 +600,7 @@
             <li>
                 <div class="goTel">
                     <div>
-                        <strong>교재배송문의</strong><br>
+                        <strong>교재배송문의</strong>
                         평일 09시~ 17시
                     </div>
                     <span><a href="tel:1544-4944">1544-4944</a></span>                      

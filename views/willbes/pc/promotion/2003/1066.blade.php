@@ -16,7 +16,7 @@
         /************************************************************/
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_top_bg.jpg) center top no-repeat}
-        .wb_cts01_01 {background:#e58062;}
+        .wb_cts01_01 {background:#e58062; padding-top:100px}
         .wb_cts01_01 div {width:1120px; margin:0 auto; position:relative}
 
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_01_bg.jpg) center top no-repeat}
@@ -32,6 +32,26 @@
 
         .skybanner {position:fixed;top:50px;right:10px;width:259px; text-align:center; z-index:11;}   
         .skybanner a {display:block;}   
+
+        /*타이머*/
+        .time {text-align:center; padding:20px 0; background:#fff; border-radius:20px; width:1000px !important}
+        .time ul {width:100%;}
+        .time ul:after {content:''; display:block; clear:both}
+        .time li {display:inline; line-height:61px; font-size:28px; margin-right:10px}
+        .time li:first-child {}
+        .time li img {width:44px}
+        .time .time_txt {color:#000; letter-spacing:-1px}
+        .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+        @@keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }
+        @@-webkit-keyframes upDown{
+        from{color:#d63e4d}
+        50%{color:#ff6600}
+        to{color:#d63e4d}
+        }   
     </style>
 
 
@@ -43,7 +63,7 @@
             <a href="#live">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky2.png" title="라이브로 소통하기" >
             </a>    
-            <a href="#Map1066_apply">
+            <a href="#package">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky3.png" title="고득점 실전패키지" >
             </a>    
         </div>
@@ -52,7 +72,26 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_top.jpg" title="제니스 영어 한덕현" />       
         </div>   
 
+        
+
         <div class="evtCtnsBox wb_cts01_01" id="wb_cts01_01">
+            <div class="time NGEB" id="newTopDday">
+                <ul>
+                    <li class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</li>
+                    <li class="time_txt"><span>남은 시간은</span></li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">일</li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li class="time_txt">:</li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
+                </ul>
+            </div>
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_01_01.jpg" title="고득점 실전 패키지" />  
                 <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/179261" title="수강신청" style="position: absolute; left: 52.5%; top: 72.35%; width: 27.77%; height: 10.97%; z-index: 2;"></a> 
@@ -75,7 +114,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" id="package"/>
             <map name="Map1066_apply" id="Map1066_apply">
                 <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blnak" alt="국가직대비" />
                 <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blnak" alt="서울지방직 대비" />
@@ -124,5 +163,15 @@
         </div>
     </div>
     <!-- End Container -->
+
+    <script>  
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });       
+    </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop
  

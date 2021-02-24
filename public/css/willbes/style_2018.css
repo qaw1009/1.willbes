@@ -427,6 +427,9 @@
     overflow: hidden;
     letter-spacing: 0;
 }
+.ssam .tabBox.noticeBox .List-Table2 li a {
+    width:98%;
+}
 .ssam .tabBox.noticeBox .List-Table li a span {
     background: #0c5dc0;
     color:#fff;

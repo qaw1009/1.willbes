@@ -2511,6 +2511,7 @@ body.memBody #Footer {
 .ssam .noticeBox .List-Table li a span {
 	background-color: #0c5dc0;
 }
+.ssam .noticeBox .List-Table2 li a {width: 95%;}
 
 .ssam .reference {
 	text-align: right;
@@ -2857,18 +2858,18 @@ body.memBody #Footer {
     width:50%;
 }
 
-.ssam .ssamCsCenter li .goTel {padding:0 15px; font-size:14px; line-height:1.2}
-.ssam .ssamCsCenter li:nth-child(1) .goTel {border-right:1px solid #ccc}
+.ssam .ssamCsCenter li .goTel {padding:0 15px; font-size:14px;}
+.ssam .ssamCsCenter li:nth-child(1) .goTel {border-right:1px solid #ccc; }
 .ssam .ssamCsCenter li .goTel div {	
-    margin-right:10px;
-    display:inline-block;
+    display:inline-block; width:110px; line-height:1.2;
 }
-.ssam .ssamCsCenter li .goTel div strong {/*display:block*/}
-.ssam .ssamCsCenter li span {
+.ssam .ssamCsCenter li .goTel div strong {display:block}
+.ssam .ssamCsCenter li .goTel span {
 	display: inline-block;
 	color: #333;
 	font-weight: bold;
-    font-size:22px;
+    font-size:26px;
+	vertical-align: top;
 }
 
 /*임용 공지사항 강의 일정 테이블*/
@@ -3136,6 +3137,7 @@ body.memBody #Footer {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
 .noticeBox .List-Table li .date {
 	float: right;
 	width: 30%;
@@ -7234,23 +7236,19 @@ span.calendar_btn {
 	display: block;
 	clear: both;
 }
-.w-Guide-Ssam .tabSsam {
-	border-top:0;	
-	border-bottom: 1px solid #ccc;
-}
+.w-Guide-Ssam .tabSsam {border-top:1px solid #ccc; border-left:1px solid #ccc}
 .w-Guide-Ssam .tabSsam li {
-	/*width: auto;
-	margin-bottom: 5px;*/
 	margin:0; border:0; padding:0;
 	display: inline; float:left; width:25%;
-	border-top:1px solid #ccc;
 }
 .w-Guide-Ssam .tabSsam li a {
 	display:block;
 	padding: 10px 0;
 	border:0;
 	border-right: 1px solid #ccc;	
+	border-bottom: 1px solid #ccc;
 }
+/*
 .w-Guide-Ssam .tabSsam li:nth-child(3),
 .w-Guide-Ssam .tabSsam li:nth-child(4) {
 	border-top:3px solid #fff;
@@ -7262,7 +7260,7 @@ span.calendar_btn {
 	border:0;
 	border-right: 1px solid #fff;	
 }
-
+*/
 .w-Guide-Ssam .tabSsam li a.on {
 	background: #f6f6f6;
 	color: #000;}
@@ -7733,6 +7731,10 @@ span.calendar_btn {
 		color: #fff;
 	}
 
+	.ssam .ssamCsCenter li .goTel span {
+		font-size:20px;
+	}
+
 	.ssam .sampleLec {
 		margin: 0 10px;
 	}
@@ -7889,6 +7891,10 @@ span.calendar_btn {
 		padding: 0;
 		background: none;
 		color: #fff;
+	}
+
+	.ssam .ssamCsCenter li .goTel span {
+		font-size:22px;
 	}
 	
 	.ssam .sampleLec {

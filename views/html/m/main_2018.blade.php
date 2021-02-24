@@ -400,35 +400,7 @@
     </div>
 
     <div class="mainTit NSK-Black tx-center mt30" >윌비스 임용 <span class="tx-main">시험 정보</span></div>
-    <!--
-    <div class="examInfo mt10">
-        <ul>
-            <li>
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam01.png">
-                    임용가이드
-                </a>
-            </li>
-            <li>
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam02.png">
-                    최근10년동향
-                </a>
-            </li>
-            <li>
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam03.png">
-                    지역별공고
-                </a>
-            </li>
-            <li>
-                <a href="#none">
-                    <img src="https://static.willbes.net/public/images/promotion/m/2018/icon_ssam04.png">
-                    자료실
-                </a>
-            </li>
-        </ul>
-    </div>-->
+
     <div class="w-Guide-Ssam mt20">
         <div class="NG ssamInfoMenu">
             <ul class="tabShow tabinfo">
@@ -482,14 +454,6 @@
             </li>
         </ul>
     </div> 
-
-    {{--
-    <div class="appPlayer c_both">
-        <a href="#none">
-            <img src="{{ img_url('m/main/icon_app_player.gif') }}">
-        </a>
-    </div>
-    --}}
 
 </div>
 <!-- End Container -->

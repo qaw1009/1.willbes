@@ -24,7 +24,7 @@
     </div>
     <div id="notice2" class="tabContent pd20">
         <div class="moreBtn"><a href="#none" onclick="location.href='{{front_url('/updateLectureInfo'.(empty($__cfg['CateCode']) === false ? '/cate/'.$__cfg['CateCode'] : ''))}}';">+ 더보기</a></div>
-        <ul class="List-Table">
+        <ul class="List-Table List-Table2">
             @if(empty($data['lecture_update_info']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
             @else

@@ -173,41 +173,6 @@
             </ul>
         @endif
 
-{{--        @if(empty($data['new_product']) === false)--}}
-{{--            <div class="mainTit NSK-Black tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>--}}
-{{--            <div class="sampleView">--}}
-{{--                <div class="overhidden">--}}
-{{--                    <div class="swiper-container-view">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            @foreach($data['new_product'] as $row)--}}
-{{--                                @php--}}
-{{--                                    $sample_info = [];--}}
-{{--                                    if($row['LectureSamplewUnit'] !== 'N') {--}}
-{{--                                        $sample_info = json_decode($row['LectureSamplewUnit'], true);--}}
-{{--                                    }--}}
-{{--                                @endphp--}}
-{{--                                <div class="swiper-slide">--}}
-{{--                                    @if(!empty($sample_info[0]['wUnitIdx']))--}}
-{{--                                        <a href='javascript:fnMobile("https:{{front_app_url('/Player/getMobileSample/', 'www')}}?m={{sess_data('mem_idx')}}&id={{sess_data('mem_id')}}&p={{$row["ProdCode"]}}&u={{$sample_info[0]["wUnitIdx"]}}&q={{$sample_info[0]["wHD"] != '' ? 'HD' : 'SD'}}", "{{config_item('starplayer_license')}}");'>--}}
-{{--                                    @else--}}
-{{--                                        <a href="javascript:alert('샘플영상 준비중입니다.')">--}}
-{{--                                    @endif--}}
-{{--                                            <img src="{{$row['ProfLecListImg'] or ''}}" alt="{{$row['ProfNickName']}}">--}}
-{{--                                            <div>--}}
-{{--                                                {{$row['SubjectName']}}<span></span><strong>{{$row['ProfNickName']}}</strong>--}}
-{{--                                                <p>{{$row['ProdName']}}</p>--}}
-{{--                                            </div>--}}
-{{--                                        </a>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                        <!-- Add Pagination -->--}}
-{{--                        <div class="swiper-pagination"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
-
         <div class="mainTit NSK-Black  tx-center mt60" >윌비스 임용 <span class="tx-main">대표 강의 맛보기</span></div>
         <div class="sampleViewImg">
             {!! banner('M_메인_맛보기1', 'swiper-container-view', $__cfg['SiteCode'], '0') !!}
@@ -216,8 +181,43 @@
         {{-- 시험정보 --}}
         @include('willbes.m.site.main_partial.examinfo_'.$__cfg['SiteCode'])
 
-        {{-- 고객센터 --}}
-        @include('willbes.m.site.main_partial.cscenter_'.$__cfg['SiteCode'])
+        <div class="ssamEtc mt50 c_both">
+            <a href="{{ front_url('/landing/show/lcode/1038/cate/3134/preview/Y') }}">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon01.png">
+                대학특강문의
+            </a>
+                <a href="{{ front_url('/landing/show/lcode/1039/cate/3134/preview/Y') }}">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon02.png">
+                교수채용
+            </a>
+            <a href="{{front_url('/location/map')}}">
+                <img src="https://static.willbes.net/public/images/promotion/m/2017/mainIcon03.png">
+                오시는길
+            </a>
+        </div>
+
+        <div class="ssamCsCenter">
+            <ul class="tel">
+                <li>
+                    <div class="goTel">
+                        <div>
+                            <strong>강의 문의</strong>
+                            월~토 09시~ 22시
+                        </div>
+                        <span><a href="tel:1544-3169">1544-3169</a></span>                       
+                    </div>
+                </li>
+                <li>
+                    <div class="goTel">
+                        <div>
+                            <strong>교재배송문의</strong>
+                            평일 09시~ 17시
+                        </div>
+                        <span><a href="tel:1544-4944">1544-4944</a></span>                      
+                    </div>
+                </li>
+            </ul>
+        </div>  
     </div>
     <!-- End Container -->
 

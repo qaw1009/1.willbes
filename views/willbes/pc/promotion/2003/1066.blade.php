@@ -16,6 +16,8 @@
         /************************************************************/
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_top_bg.jpg) center top no-repeat}
+        .wb_cts01_01 {background:#e58062;}
+        .wb_cts01_01 div {width:1120px; margin:0 auto; position:relative}
 
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1066_01_bg.jpg) center top no-repeat}
 
@@ -28,8 +30,8 @@
 
         .wb_cts05 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
 
-        .skybanner {position:fixed;top:250px;right:10px;width:259px; text-align:center; z-index:11;}   
-        .skybanner a {display:block; margin-bottom:10px}   
+        .skybanner {position:fixed;top:50px;right:10px;width:259px; text-align:center; z-index:11;}   
+        .skybanner a {display:block;}   
     </style>
 
 
@@ -39,13 +41,23 @@
                 <img src="https://static.willbes.net/public/images/promotion/2019/05/1067_skybanner.png" title="첨삭지도반" >
             </a>  
             <a href="#live">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_sky2.png" title="라이브로 소통하기" >
-            </a>       
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky2.png" title="라이브로 소통하기" >
+            </a>    
+            <a href="#live">
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky3.png" title="고득점 실전패키지" >
+            </a>    
         </div>
       
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_top.jpg" title="제니스 영어 한덕현" />       
-        </div>    
+        </div>   
+
+        <div class="evtCtnsBox wb_cts01_01" id="wb_cts01_01">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_01_01.jpg" title="고득점 실전 패키지" />  
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/179261" title="수강신청" style="position: absolute; left: 52.5%; top: 72.35%; width: 27.77%; height: 10.97%; z-index: 2;"></a> 
+            </div>    
+        </div>  
 
         <div class="evtCtnsBox wb_cts02">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_01.jpg" usemap="#Map1066a" title="반반한 모의고사 무료방송" border="0" />
@@ -63,12 +75,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" />
             <map name="Map1066_apply" id="Map1066_apply">
-                <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/175919" target="_blnak" />
-                <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177216" target="_blnak" />
-                <area shape="rect" coords="600,655,781,714" href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/177213" target="_blnak" />
-                <area shape="rect" coords="861,657,1041,713" href="https://pass.willbes.net/pass/offLecture/show/cate/3046/prod-code/175732" target="_blnak" />
+                <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blnak" alt="국가직대비" />
+                <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blnak" alt="서울지방직 대비" />
+                <area shape="rect" coords="600,655,781,714" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179627" target="_blnak" alt="국가직 대비 아작내기 특강" />
+                <area shape="rect" coords="861,657,1041,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blnak" alt="제니스영어" />
             </map>
         </div>
 
@@ -85,7 +97,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1066_04.gif" usemap="#Map1066b" border="0" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_04.gif" usemap="#Map1066b" border="0" alt="커리큘럼"/>
             <map name="Map1066b" id="Map1066b">
                 <area shape="rect" coords="230,694,277,711" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/145823" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="230,752,278,769" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/173562" target="_blank" onfocus='this.blur()' />
@@ -103,10 +115,10 @@
                 <area shape="rect" coords="230,493,278,511" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169567" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="230,534,279,551" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169816" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="424,512,472,531" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169820" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="829,559,879,577" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/175744" target="_blank" alt="새벽모의고사" onfocus='this.blur()' />
+                <area shape="rect" coords="829,559,879,577" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blank" alt="새벽모의고사" onfocus='this.blur()' />
                 <area shape="rect" coords="230,635,278,653" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/169815" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="831,677,877,695" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170173" target="_blank" onfocus='this.blur()' />
-                <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/170281" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="831,677,877,695" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179627" target="_blank" onfocus='this.blur()' />
+                <area shape="rect" coords="832,711,877,729" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177860" target="_blank" onfocus='this.blur()' />
                 <area shape="rect" coords="832,868,878,886" href="https://pass.willbes.net/lecture/show/cate/3020/pattern/only/prod-code/169814" target="_blank" onfocus='this.blur()' />
             </map >        
         </div>

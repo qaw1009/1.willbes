@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -21,7 +17,9 @@
         /************************************************************/
         .sky {position:fixed;top:100px;right:10px; width:144px; z-index:200;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/01/2040_top_bg.jpg) no-repeat center top;}
+        .evt00 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2040_00_bg.jpg") no-repeat center top;}
+
+        .evtTop {background:url("https://static.willbes.net/public/images/promotion/2021/02/2040_top_bg.jpg") no-repeat center top;}
 
         .evt01 {background:#fff;}
 
@@ -75,7 +73,8 @@
         .evt02 li {display:inline;margin-left:25px;}
         .evt02 ul:after {content:""; display:block; clear:both}
 
-        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2040_03_bg.jpg) no-repeat center top;}
+        .evt03 {background:url("https://static.willbes.net/public/images/promotion/2021/01/2040_03_bg.jpg") no-repeat center top;}
+        .evt03 div {width:1120px; margin:0 auto; position:relative}
 
         .evt04 {background:#0160E0;padding-bottom:100px;}
         .evt04 > div {width:700px; margin:0 auto}
@@ -154,12 +153,14 @@
         .stats-confirm {background:rgba(0,0,0,.8); width:1120px; height:100%; position:absolute; top:0;left:50%;margin-left:-560px;z-index:100}
         .stats-confirm div {margin-top:32%}
 
-        .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:17px}
-        .evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
-        .evtInfoBox h4 {font-size:40px; margin-bottom:20px}
-        .evtInfoBox .infoTit {font-size:20px;}
+        .evt05 div {width:1120px; margin:0 auto; position:relative}
+
+        .evtInfo {padding:80px 0; background:#e9e9e9; color:#555; font-size:14px; line-height:1.4}
+        .evtInfoBox { width:1000px; margin:0 auto; text-align:left;}
+        .evtInfoBox h4 {font-size:40px; margin-bottom:40px}
+        .evtInfoBox .infoTit {font-size:20px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
-        .evtInfoBox ul li {list-style:disc;}
+        .evtInfoBox ul li {list-style:disc; margin-left:20px; margin-bottom:10px}
 
     </style>
 
@@ -168,15 +169,19 @@
         <div class="sky">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_sky.png" alt="스카이베너" usemap="#Map2040_sky" border="0" >
             <map name="Map2040_sky" id="Map2040_sky">
-                <area shape="rect" coords="1,80,148,225" href="#evt_01" />
-                <area shape="rect" coords="1,228,144,374" href="#evt_02" />
-                <area shape="rect" coords="1,378,155,526" href="#evt_03" />
+                <area shape="rect" coords="1,80,148,225" href="#evt02" />
+                <area shape="rect" coords="1,228,144,374" href="#evt03" />
+                <area shape="rect" coords="1,378,155,526" href="#evt04" />
                 <area shape="rect" coords="1,530,160,697" href="#evt_coupon" />
             </map>
         </div>
 
+        <div class="evtCtnsBox evt00">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2040_00.jpg" title="더켠의 시크릿 무료배포 이벤트">
+        </div>
+
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_top.jpg" title="더켠의 시크릿 무료배포 이벤트">
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2040_top.jpg" title="더켠의 시크릿 무료배포 이벤트">
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -184,7 +189,7 @@
         </div>
 
         <form id="add_apply_form2" name="add_apply_form2">
-            <div class="evtCtnsBox evt02" id="evt_01">
+            <div class="evtCtnsBox evt02" id="evt02">
 
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_02.jpg" title="신규회원 30명 10일간 300권">
                 <div>
@@ -224,16 +229,16 @@
             </div>
         </form>
 
-        <div class="evtCtnsBox evt03" id="evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_03.jpg" usemap="#Map2040_apply" title="수강신청" border="0" />
-            <map name="Map2040_apply" id="Map2040_apply">
-                <area shape="rect" coords="188,1252,542,1317" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177129" target="_blank" />
-                <area shape="rect" coords="580,1252,934,1318" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blank" />
-            </map>
+        <div class="evtCtnsBox evt03" id="evt03">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2040_03.jpg" title="수강신청"/>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177129" target="_blank" title="고득점 실전팩" style="position: absolute; left: 16.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blank" title="새벽모의고사" style="position: absolute; left: 51.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
+            </div>
         </div>
 
         <form id="add_apply_form" name="add_apply_form">
-            <div class="evtCtnsBox evt04" id="evt_03">
+            <div class="evtCtnsBox evt04" id="evt04">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
@@ -332,13 +337,13 @@
         </form>
 
         <div class="evtCtnsBox evt05" id="evt_coupon">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2040_05.jpg" usemap="#Map2040_sns" title="소문내고,단과 할인 받자!" border="0">
-            <map name="Map2040_sns" id="Map2040_sns">
-                <area shape="rect" coords="576,610,741,673" href="https://gall.dcinside.com/board/lists?id=government" target="_blank" />
-                <area shape="rect" coords="755,608,915,674" href="http://cafe.daum.net/9glade" target="_blank" />
-                <area shape="rect" coords="574,692,742,760" href="https://cafe.naver.com/gugrade" target="_blank" />
-                <area shape="rect" coords="754,692,916,762" href="https://cafe.naver.com/willbes" target="_blank" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2040_05.jpg" title="소문내고,단과 할인 받자!">
+                <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="공무원갤러리" style="position: absolute; left: 50.98%; top: 73.09%; width: 15.89%; height: 9.21%; z-index: 2;"></a>
+                <a href="http://cafe.daum.net/9glade" target="_blank" title="구꿈사" style="position: absolute; left: 67.23%; top: 73.09%; width: 15.89%; height: 9.21%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute; left: 50.98%; top: 83.64%; width: 15.89%; height: 9.21%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/willbes" target="_blank" title="윌비스카페" style="position: absolute; left: 67.23%; top: 83.64%; width: 15.89%; height: 9.21%; z-index: 2;"></a>
+            </div>
         </div>
 
         {{--홍보url--}}
@@ -386,9 +391,7 @@
                     <li>이벤트 종료일을 기준으로 삭제/수정된 글 및 비공개 처리된 글은 정상 참여로 인정되지 않습니다.</li>
                     <li>소문내기 글 제목에 “윌비스”, “한덕현” 키워드가 반드시 포함되어야 정상 참여로 인정됩니다.</li>
                 </ul>
-                <ul>
-                    <li><strong>※ 이용문의 : 고객만족센터 1544-5006</strong></li>
-                </ul>
+                <div>※ 이용문의 : 고객만족센터 1544-5006</div>
             </div>
         </div>
 

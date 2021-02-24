@@ -27,7 +27,7 @@
     <div class="tabBox noticeBox">
         <div class="tabContent p_re">
             <a href="{{front_url('/updateLectureInfo')}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-            <ul class="List-Table">
+            <ul class="List-Table List-Table2">
                 @if(empty($data['lecture_update_info']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
                 @else

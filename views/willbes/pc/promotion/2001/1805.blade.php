@@ -20,7 +20,7 @@
         .sky a {padding-bottom:15px; display:block}
 
         .wb_top_banner {background:#0A0A0A;}    
-        .wb_top {background:#63553B url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1805_top_bg.jpg) no-repeat center top;}  
 
         .wb_branch {background:#fef51e;color:#000;position:relative;height:50px;} 
         .wb_branch .benefitBox {position:absolute; top:0; left:0; width:100%; z-index:1;line-height:50px;}
@@ -115,12 +115,12 @@
         </div> 
 
         <div class="evtCtnsBox wb_04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1805_04.jpg"  alt="" usemap="#Map1805b" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1805_04.jpg"  alt="" usemap="#Map1805b" border="0"  />
             <map name="Map1805b" id="Map1805b">
-                <area shape="rect" coords="831,425,1017,498" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/172259" target="_blank" />
-                <area shape="rect" coords="832,536,1017,611" href="https://police.willbes.net/periodPackage/show/cate/3002/pack/648001/prod-code/172264" target="_blank" />
-                <area shape="rect" coords="830,649,1018,723" href="https://police.willbes.net/periodPackage/show/cate/3004/pack/648001/prod-code/172266" target="_blank" />
-                <area shape="rect" coords="830,761,1018,835" href="https://police.willbes.net/periodPackage/show/cate/3003/pack/648001/prod-code/172265" target="_blank" />
+                <area shape="rect" coords="829,454,1018,527" href="https://police.willbes.net/periodPackage/show/cate/3001/pack/648001/prod-code/172259" target="_blank" />
+                <area shape="rect" coords="830,564,1018,639" href="https://police.willbes.net/periodPackage/show/cate/3002/pack/648001/prod-code/172264" target="_blank" />
+                <area shape="rect" coords="830,678,1018,752" href="https://police.willbes.net/periodPackage/show/cate/3004/pack/648001/prod-code/172266" target="_blank" />
+                <area shape="rect" coords="830,789,1018,863" href="https://police.willbes.net/periodPackage/show/cate/3003/pack/648001/prod-code/172265" target="_blank" />
             </map>
         </div> 
 

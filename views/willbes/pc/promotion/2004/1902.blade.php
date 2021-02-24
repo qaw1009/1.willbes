@@ -136,7 +136,7 @@
                             <td>[라이브]김세령 소방국어 실전 동형모의고사</td>
                             <td>03-08 ~ 03-22</td>
                             <td>월</td>
-                            <td>48,000원</td>
+                            <td>27,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178417" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -172,7 +172,7 @@
                             <td>[라이브]이종오 소방학개론 실전 동형모의고사</td>
                             <td>03-10 ~ 03-24</td>
                             <td>수</td>
-                            <td>48,000원</td>
+                            <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178422" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
@@ -181,7 +181,7 @@
                             <td>[라이브]이종오 소방관계법규 실전 동형모의고사</td>
                             <td>03-11 ~ 03-25</td>
                             <td>목</td>
-                            <td>27,000원</td>
+                            <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178423" target="_blank">수강신청</a></td>
                         </tr>
                     </tbody>

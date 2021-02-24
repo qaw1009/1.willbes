@@ -179,7 +179,7 @@
                 <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             @endif   
             --}}     
-            <li><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky.png" title="적중 이벤트"></a></li>
+            <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2070" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky.png" title="적중 이벤트"></a></li>
             <li><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky2.png" title="라이브"></a></li>           
             {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   

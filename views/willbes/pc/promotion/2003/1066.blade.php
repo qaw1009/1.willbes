@@ -63,7 +63,7 @@
             <a href="#live">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky2.png" title="라이브로 소통하기" >
             </a>    
-            <a href="#Map1066_apply">
+            <a href="#package">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky3.png" title="고득점 실전패키지" >
             </a>    
         </div>
@@ -114,7 +114,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" id="package"/>
             <map name="Map1066_apply" id="Map1066_apply">
                 <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blnak" alt="국가직대비" />
                 <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blnak" alt="서울지방직 대비" />

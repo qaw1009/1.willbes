@@ -13,12 +13,12 @@
     </a>
 </div>
 
-<div class="csCenter">
+<div class="ssamCsCenter">
     <ul class="tel">
         <li>
             <div class="goTel">
                 <div>
-                    <strong>강의 문의</strong>
+                    <strong>강의 문의</strong><br>
                     월~토 09시~ 22시
                 </div>
                 <span><a href="tel:1544-3169">1544-3169</a></span>                       
@@ -27,7 +27,7 @@
         <li>
             <div class="goTel">
                 <div>
-                    <strong>교재배송문의</strong>
+                    <strong>교재배송문의</strong><br>
                     평일 09시~ 17시
                 </div>
                 <span><a href="tel:1544-4944">1544-4944</a></span>                      

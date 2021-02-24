@@ -1,11 +1,10 @@
 @extends('lcms.layouts.master_modal')
 
 @section('layer_title')
-    문제유형
     @if($question_type == 1)
-        [가형] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('2')">나형</button>
+        [문제유형1] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('2')">문제유형2</button>
     @else
-        [나형] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('1')">가형</button>
+        [문제유형2] <button type="button" class="btn btn-sm btn-dark" onclick="javascript:_replaceModal('1')">문제유형1</button>
     @endif
 @stop
 

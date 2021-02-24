@@ -141,29 +141,6 @@
 	clear: both;
 }
 
-.ssam .csCenter {
-	margin: 0 10px;
-}
-.ssam .csCenter .tel {background:#fff; padding:10px 0;}
-
-.ssam .csCenter li {
-	width: 50%;
-	padding:10px 5%;
-}
-.csCenter li div.goTel div {
-	font-size: 15px;
-    margin-right:15px;
-}
-.csCenter li div.goTel strong {font-size:15px}
-.ssam .csCenter li span {
-	display: block;
-	color: #333;
-	font-weight: bold;
-	font-size: 3.5vh;
-    float:left;
-}
-
-
 @@media only screen and (max-width: 374px) {
     .ssam .bestLecBox2 .lecinfo li:nth-of-type(1) {
         font-size: 12px;
@@ -606,7 +583,7 @@
         </a>
     </div>
 
-    <div class="csCenter">
+    <div class="ssamCsCenter">
         <ul class="tel">
             <li>
                 <div class="goTel">

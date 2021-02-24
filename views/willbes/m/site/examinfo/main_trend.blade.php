@@ -1,12 +1,12 @@
 <div class="tabBox NG">
     <ul class="tabShow tabSsam">
         @foreach($arr_base['subject_list'] as $key => $val)
-            {{--
+
             @if($loop->index == 3)
-                <li><span>&nbsp;</span></li>
-                <li><span>&nbsp;</span></li>
+                <li><a href="#none">temp</a></li>
+                <li><a href="#none">temp</a></li>
             @endif
-            --}}
+
             <li><a href="#none" data-subject-id="{{$key}}" class="btn-subject {{($loop->first === true) ? 'on' : ''}}">{{$val['subject_name']}}</a></li>
         @endforeach
     </ul>

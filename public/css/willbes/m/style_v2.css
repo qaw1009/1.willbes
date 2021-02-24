@@ -7236,7 +7236,7 @@ span.calendar_btn {
 	display: block;
 	clear: both;
 }
-.w-Guide-Ssam .tabSsam {border-top:1px solid #ccc; border-left:1px solid #ccc}
+.w-Guide-Ssam .tabSsam {border-top:0; border-left:1px solid #ccc; border-bottom:1px solid #ccc}
 .w-Guide-Ssam .tabSsam li {
 	margin:0; border:0; padding:0;
 	display: inline; float:left; width:25%;
@@ -7246,24 +7246,24 @@ span.calendar_btn {
 	padding: 10px 0;
 	border:0;
 	border-right: 1px solid #ccc;	
-	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
 }
-/*
-.w-Guide-Ssam .tabSsam li:nth-child(3),
-.w-Guide-Ssam .tabSsam li:nth-child(4) {
-	border-top:3px solid #fff;
-}
-.w-Guide-Ssam .tabSsam li:nth-child(3) span,
-.w-Guide-Ssam .tabSsam li:nth-child(4) span{
+
+.w-Guide-Ssam .tabSsam li a.on {
+	background: #f6f6f6;
+	color: #000;}
+
+.w-Guide-Ssam .tabSsam li:nth-child(3) a,
+.w-Guide-Ssam .tabSsam li:nth-child(4) a{
 	display:block;
 	padding: 10px 0;
 	border:0;
 	border-right: 1px solid #fff;	
+	border-top: 1px solid #fff;	
+	color:#fff;
+	text-indent: -9999px;
+	background-color: #fff !important;
 }
-*/
-.w-Guide-Ssam .tabSsam li a.on {
-	background: #f6f6f6;
-	color: #000;}
 .w-Guide-Ssam .tabBox .guideBtn {
 	position: absolute;
 	top: 0;

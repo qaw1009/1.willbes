@@ -232,8 +232,8 @@
         <div class="evtCtnsBox evt03" id="evt03">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/2040_03.jpg" title="수강신청"/>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177129" target="_blank" title="고득점 실전팩" style="position: absolute; left: 16.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blank" title="새벽모의고사" style="position: absolute; left: 51.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/179261" target="_blank" title="고득점 실전팩" style="position: absolute; left: 16.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179637" target="_blank" title="새벽모의고사" style="position: absolute; left: 51.43%; top: 84.63%; width: 32.5%; height: 5.38%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -357,7 +357,7 @@
                 <div class="infoTit NG"><strong>[공통 유의사항]</strong></div>
                 <ul>
                     <li>이벤트에 제공되는 [한덕현 영어 ONEDAY 문법요약서] 교재는 비매품으로, 유상 가치를 가진 상품/현금과의 교환/판매는 불법입니다.</li>
-                    <li>본 이벤트 진행 기간은 2021.01.25.(월)~02.03.(수), 총 10일간입니다.</li>
+                    <li>본 이벤트 진행 기간은 2021.3.1.(월)~3.10.(수) ,총 10일간입니다.</li>
                 </ul>
                 <div class="infoTit NG"><strong>[EVENT 01. 신규회원 대상]</strong></div>
                 <ul>
@@ -374,9 +374,9 @@
                 <ul>
                     <li>본 이벤트는 이벤트 시작일 0시 기준으로 유료 구매한 선착순 100명을 대상으로 합니다.</li>
                     <li>신규 수강생 신청방법 : 해당 강좌 수강신청 시 입력한 주소로 배송 처리<br>
-                        기존 수강생 신청방법 : 문자를 통해 별도 공지 예정
-                    </li>
+                        기존 수강생 신청방법 : 문자를 통해 별도 공지 예정</li>
                     <li>수량 마감 시 추가 공지 없이 사은품 지급 대상에서 제외됩니다.</li>
+                    <li>해당 이벤트는 페이지 내 기재된 온라인 강좌를 수강신청 하시는 경우에만 적용됩니다.</li>
                 </ul>
                 <div class="infoTit NG"><strong>[EVENT 03. 기존회원 대상]</strong></div>
                 <ul>

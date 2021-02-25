@@ -1233,6 +1233,7 @@
         <!-- willbes-Prof-Profile -->
         
         <div class="willbes-Prof-Tabs">
+            <div class="mb10">* 수강신청 시, “온라인강좌”와＂학원강좌”를 먼저 선택하신 후, 강의형태(패키지, 단과 등)를 선택하시면 됩니다. </div>
             <div class="ProfDetailWrap">
                 <ul class="tabWrap tabDepthProf tabDepthProf_3">
                     <li><a href="#Proftab1" class="on">온라인강좌</a></li>

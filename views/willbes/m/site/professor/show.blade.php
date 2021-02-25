@@ -49,15 +49,18 @@
     {{-- 강좌 탭 --}}
     <div class="lineTabs lecListTabs c_both">
         @php $arr_tab_width_class = ['1' => 'one', '2' => 'two', '3' => 'three', '4' => 'four', '5' => 'five']; @endphp
-        <ul class="tabWrap lineWrap rowlineWrap lecListWrap mt-zero {{ array_get($arr_tab_width_class, count($tab_list), 'four') }}">
-            @foreach($tab_list as $tab_id => $tab_name)
-                <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ $arr_input['tab'] == $tab_id ? 'on' : '' }}">{{ $tab_name }}</a><span class="row-line">|</span></li>
-            @endforeach
-        </ul>
+        <div class="profLecTab">
+            <ul class="tabWrap {{ array_get($arr_tab_width_class, count($tab_list), 'three') }}">
+                @foreach($tab_list as $tab_id => $tab_name)
+                    <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ substr($arr_input['tab'], 0, 2) == substr($tab_id, 0, 2) ? 'on' : '' }}">{{ $tab_name }}</a><span class="row-line">|</span></li>
+                @endforeach
+            </ul>
+        </div>
+
         <div class="tabBox lineBox lecListBox">
             <div id="{{ $arr_input['tab'] }}" class="tabContent">
                 {{-- 탭 내용 --}}
-                @include('willbes.m.site.professor.tab_' . $arr_input['tab'] . '_partial')
+                @include('willbes.m.site.professor.tab_' . $tab_method . '_partial')
             </div>
         </div>
     </div>

@@ -1,9 +1,7 @@
-<div class="profLecTab">
-    <ul class="tabWrap two">
-        <li><a href="#off_only_lecture" class="on">단과</a></li>
-        <li><a href="#off_pack_lecture">종합반</a></li>
-    </ul>
-</div>
+<ul class="tabWrap lineWrap rowlineWrap lecListWrap two mt-zero">
+    <li><a href="#off_only_lecture" class="on">단과</a><span class="row-line">|</span></li>
+    <li><a href="#off_pack_lecture">종합반</a></li>
+</ul>
 
 {{--단과--}}
 <div class="lineTabs lecListTabs c_both pd-zero" id="off_only_lecture">

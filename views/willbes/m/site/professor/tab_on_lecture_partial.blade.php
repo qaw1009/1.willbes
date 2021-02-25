@@ -1,10 +1,8 @@
-<div class="profLecTab">
-    <ul class="tabWrap">
-        <li><a href="#on_only_lecture" class="on">단과강좌</a></li>
-        <li><a href="#on_pack_normal">추천패키지</a></li>
-        <li><a href="#on_pack_choice">선택패키지</a></li>
-    </ul>
-</div>
+<ul class="tabWrap lineWrap rowlineWrap lecListWrap three mt-zero">
+    <li><a href="#on_only_lecture" class="on">단과강좌</a><span class="row-line">|</span></li>
+    <li><a href="#on_pack_normal">추천패키지</a><span class="row-line">|</span></li>
+    <li><a href="#on_pack_choice">선택패키지</a></li>
+</ul>
 
 {{--단과강좌--}}
 <div class="lineTabs lecListTabs c_both pd-zero" id="on_only_lecture">

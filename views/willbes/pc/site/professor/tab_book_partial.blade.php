@@ -7,7 +7,7 @@
 
     <div class="willbes-Lec NG c_both p_re">
         <div class="willbes-Lec-Subject tx-dark-black bdb-dark-gray">
-            · 교재
+            교재
             <a class="f_right" href="{{ site_url('/book/index/cate/'.$def_cate_code.'?cate_code='.$def_cate_code.'&subject_idx='.element('subject_idx', $arr_input).'&prof_idx='.$prof_idx) }}">
                 <img src="{{ img_url('prof/icon_add.png') }}" alt="더보기">
             </a>

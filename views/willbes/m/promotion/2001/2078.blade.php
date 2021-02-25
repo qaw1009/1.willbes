@@ -228,7 +228,7 @@
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }
-            var url = '{{ site_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
+            var url = '{{ front_url('/periodPackage/show/cate/3001/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
 

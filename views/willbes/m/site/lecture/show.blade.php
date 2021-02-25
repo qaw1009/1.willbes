@@ -316,10 +316,13 @@
     function listStudyBoard() {
         var data = {
             'cate_code': '{{$__cfg['CateCode']}}',
-            'prod_code': '{{$data['ProdCode']}}',
             'subject_idx': '{{$data['SubjectIdx']}}',
             'subject_name': encodeURIComponent('{{$data['ProdName']}}'),
-            'prof_idx': '{{$data['ProfIdx']}}'
+            @if($__cfg['SiteGroupCode'] == '1011')
+            'prof_idx' : '{{$data['ProfIdx']}}'
+            @else
+            'prod_code' : '{{$data['ProdCode']}}',
+            @endif
         };
         sendAjax('{{ front_url('/support/studyComment/listMobile/') }}', data, function (ret) {
             $('.tab04-content').html(ret).show().css('display', 'block').trigger('create');

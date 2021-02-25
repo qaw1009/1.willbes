@@ -25,7 +25,7 @@
    
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_02.jpg" alt="한덕현 모의고사">
-        <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3043/prod-code/178151" title="한덕현 모의고사" target="_blank"></a>        
+        <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3043/prod-code/178467" title="한덕현 모의고사" target="_blank"></a>        
     </div>
 
     <div class="evtCtnsBox evt03">

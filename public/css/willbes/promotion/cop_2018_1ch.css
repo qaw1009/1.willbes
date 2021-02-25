@@ -7,7 +7,7 @@
     min-width:1120px !important;
     margin-top:20px !important;
     padding:0 !important;
-    background:#2F1D2A url(https://static.willbes.net/public/images/promotion/2020/09/1775_top_bg.jpg) no-repeat center top;
+    background:#2F1D2A url(https://static.willbes.net/public/images/promotion/2021/02/2080_top_bg.jpg) no-repeat center top;
     font-size:14px;
 }
 .evtContent * {font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
@@ -46,7 +46,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 /*지도테이블*/
 .tmap .map_visual .tmapR {float:right; text-align:left; width:230px; height: 220px; margin-top:50px; overflow:hidden}
 .tmap .map_visual .bx-wrapper p {margin-top:34px; font-size:120%; font-weight:bold; color:#fff; position:relative; margin-bottom:20px}
-.tmap .map_visual .bx-wrapper p span {height:34px; line-height:1; padding:5px 10px;  background:#ffce00; color:#000; font-size:90%; margin:0; border-radius:17px; letter-spacing:-1px}
+.tmap .map_visual .bx-wrapper p span {height:34px; line-height:1; padding:5px 10px;  background:#fff200; color:#000; font-size:90%; margin:0; border-radius:17px; letter-spacing:-1px}
 /*지역*/		
 .tmap .map_visual #MapRollingDiv {width:200px; float:left; position:relative}
 .tmap .map_visual #MapRollingDiv li {position:absolute; display:block; width:14px; height:14px; font-size:0; text-indent:-9999px;}
@@ -68,7 +68,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .tmap .map_visual #MapRollingDiv li.a15 {left:61px; top:301px}
 .tmap .map_visual #MapRollingDiv li.a16 {left:43px; top:270px}
 .tmap .map_visual #MapRollingDiv li.a17 {left:35px; top:368px}
-.tmap .map_visual #MapRollingDiv a.active {display:block; background:#ffce00; }    
+.tmap .map_visual #MapRollingDiv a.active {display:block; background:#ff00ae; }    
 .tmap .map_visual #MapRollingDiv:after {content:""; display:block; clear:both}
 .tmap .tmapUpdate {position:absolute; top:0; left:210px; text-align:left; z-index:10}
 .tmap .tmapUpdate strong {background:#000; color:#fff; padding:4px 10px; font-size:110%; font-weight:normal}

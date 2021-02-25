@@ -30,6 +30,7 @@ class SupportStudyComment extends BaseSupport
         $prod_code = element('prod_code',$arr_input);
         $page = element('page',$arr_input);
         $s_list_type = element('search_list_type',$arr_input, '0');
+        $prof_idx = element('prof_idx', $arr_input);
 
         $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code.'&search_list_type='.$s_list_type;
         $get_params .= '&page='.$page;
@@ -40,6 +41,7 @@ class SupportStudyComment extends BaseSupport
                 'b.IsUse' => 'Y',
                 'b.IsBest' => '1',
                 'b.ProdCode' => $prod_code,
+                'b.ProfIdx' => $prof_idx,
                 /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
@@ -52,6 +54,7 @@ class SupportStudyComment extends BaseSupport
                 'b.BmIdx' => $this->_bm_idx,
                 'b.IsUse' => 'Y',
                 'b.ProdCode' => $prod_code,
+                'b.ProfIdx' => $prof_idx,
                 /*'b.ProfSiteCode' => $this->_site_code*/
             ],
             'RAW' => [
@@ -75,7 +78,7 @@ class SupportStudyComment extends BaseSupport
         $column .= ',b.SubjectName, b.ProdName, f.wProfName as ProfName';
         $column .= ',ProdApplyTypeCcd, LecScore';
         //$order_by = ['b.IsBest'=>'Desc','b.BoardIdx'=>'Desc'];
-        $order_by = ['b.IsBest'=>'Desc','b.RegDatm'=>'Desc'];
+        $order_by = ['b.IsBest'=>'Desc','b.RegDatm'=>'Desc','b.BoardIdx'=>'Desc'];
 
         $list = [];
         $total_rows = $this->supportBoardTwoWayFModel->listBoard(true, $arr_condition,$cate_code);

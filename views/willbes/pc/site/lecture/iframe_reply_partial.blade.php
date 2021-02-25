@@ -7,7 +7,7 @@
     </div>
     <div id="WrapReply"></div>
 
-    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{front_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&prod_code=".$data['ProdCode'])}}"></iframe>
+    <iframe frameborder="0" scrolling="no" width="940px" onload="resizeIframe(this)" src="{{front_url("/support/studyComment/listFrame?cate=".$__cfg['CateCode']."&".($__cfg['SiteGroupCode'] == '1011' ? 'prof_idx='.$data['ProfIdx'] : 'prod_code='.$data['ProdCode']))}}"></iframe>
     <script type="text/javascript">
         $(document).ready(function() {
             $('.btn-study').click(function () {
@@ -17,11 +17,12 @@
                     'ele_id' : ele_id,
                     'show_onoff' : $(this).data('write-type'),
                     'cate_code' : '{{$__cfg['CateCode']}}',
-                    'prod_code' : '{{$data['ProdCode']}}',
                     'subject_idx' : '{{$data['SubjectIdx']}}',
                     'subject_name' : encodeURIComponent('{{$data['ProdName']}}'),
                     @if($__cfg['SiteGroupCode'] == '1011')
                     'prof_idx' : '{{$data['ProfIdx']}}'
+                    @else
+                    'prod_code' : '{{$data['ProdCode']}}',
                     @endif
                 };
 

@@ -20,7 +20,9 @@
                     'prod_code' : '{{$data['ProdCode']}}',
                     'subject_idx' : '{{$data['SubjectIdx']}}',
                     'subject_name' : encodeURIComponent('{{$data['ProdName']}}'),
+                    @if($__cfg['SiteGroupCode'] == '1011')
                     'prof_idx' : '{{$data['ProfIdx']}}'
+                    @endif
                 };
 
                 if ($(this).data('write-type') == 'on' && is_login != true) {

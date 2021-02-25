@@ -68,6 +68,10 @@ class Professor extends \app\controllers\BaseController
         $codes = $this->codeModel->getCcdInArray(['719', '724', '732']);    // 단강좌노출형태, 호칭, 교수진소개디폴트탭
         $arr_intro_def_tab_use_site = ['2017', '2018'];  // 교수진소개 디폴트탭 사용 사이트 코드 (임용)
 
+        // 교수진소개 탭 설정 공통코드 설정
+        $arr_intro_on_disp_tab_ccd = array_unset($codes['732'], '732003');  // 전국라이브영상반 제외
+        $arr_intro_off_disp_tab_ccd = array_unset($codes['732'], '732005'); // 수강생전용 제외
+
         if (empty($params[0]) === false) {
             $method = 'PUT';
             $idx = $params[0];
@@ -100,9 +104,14 @@ class Professor extends \app\controllers\BaseController
             // 교수 게시판 데이터 조회
             $data['BoardInfo'] = $this->professorModel->listProfessorBoardInfo($idx);
 
-            // 교수진소개 디폴트탭 사용 사이트 이외에는 공통코드 초기화
             if (in_array($data['SiteCode'], $arr_intro_def_tab_use_site) === false) {
-                $codes['732'] = null;
+                // 교수진소개 디폴트탭 사용 사이트 이외에는 공통코드 초기화
+                $arr_intro_on_disp_tab_ccd = null;
+                $arr_intro_off_disp_tab_ccd = null;
+            } else {
+                // 교수진소개 탭 설정
+                $data['IntroDefTabCcd'] = json_decode($data['IntroDefTabCcd'], true);
+                $data['IntroDispTabCcds'] = json_decode($data['IntroDispTabCcds'], true);
             }
         }
 
@@ -116,7 +125,8 @@ class Professor extends \app\controllers\BaseController
             'arr_send_callback_ccd' => $this->codeModel->getCcd(706, 'CcdValue'),
             'arr_onlec_view_ccd' => $codes['719'],
             'arr_appellation_ccd' => $codes['724'],
-            'arr_intro_def_tab_ccd' => $codes['732'],
+            'arr_intro_on_disp_tab_ccd' => $arr_intro_on_disp_tab_ccd,
+            'arr_intro_off_disp_tab_ccd' => $arr_intro_off_disp_tab_ccd,
             'arr_intro_def_tab_use_site' => $arr_intro_def_tab_use_site
         ]);
     }

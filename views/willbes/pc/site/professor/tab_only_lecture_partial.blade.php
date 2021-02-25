@@ -1,10 +1,8 @@
-<div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 단과강의</div>
 <div class="acadBoxWrap">
-    <ul class="tabWrap tabDepthAcad">
-        <li><a href="#on_only_lecture" class="on">온라인강좌</a></li>
-        <li><a href="#off_only_lecture">학원강좌</a></li>
-    </ul>
-    <div class="AcadtabBox">
+    {{-- 하위탭 리스트 --}}
+    @include('willbes.pc.site.professor.stab_partial')
+    <div class="AcadtabBox mt30">
+    @if($arr_input['tab'] == 'on_only_lecture')
         <div id="on_only_lecture" class="tabContent">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -15,7 +13,7 @@
 
                 <div class="willbes-Lec NG c_both">
                     <div class="willbes-Lec-Subject tx-dark-black">
-                        · 온라인 단과
+                        온라인 단과
                         <div class="selectBoxForm">
                             <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                         </div>
@@ -110,7 +108,7 @@
                                                     @else
                                                         <span class="chkBox" style="width: 14px;"></span>
                                                     @endif
-{{--                                                    <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
+                                                    {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
 
                                                     @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                         <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
@@ -176,7 +174,9 @@
             @include('willbes.pc.site.lecture.only_footer_partial')
         </div>
         <!-- on_only_lecture -->
+    @endif
 
+    @if($arr_input['tab'] == 'off_only_lecture')
         <div id="off_only_lecture" class="tabContent">
             <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -187,7 +187,7 @@
 
                 <div class="willbes-Lec NG c_both">
                     <div class="willbes-Lec-Subject tx-dark-black">
-                        · 학원 단과
+                        학원 단과
                         <span class="MoreBtn">
                             <a href="#none">교재정보 <span>전체보기 ▼</span></a>
                         </span>
@@ -339,6 +339,7 @@
             @include('willbes.pc.site.off_lecture.only_footer_partial')
         </div>
         <!-- off_only_lecture -->
+    @endif
     </div>
 </div>
 <div id="InfoForm" class="willbes-Layer-Box"></div>

@@ -592,7 +592,7 @@
                 <div class="goTel">
                     <div>
                         <strong>강의 문의</strong>
-                        월~토 09시~ 22시
+                        09시~ 22시
                     </div>
                     <span><a href="tel:1544-3169">1544-3169</a></span>                       
                 </div>

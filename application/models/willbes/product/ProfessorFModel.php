@@ -60,7 +60,6 @@ class ProfessorFModel extends WB_Model
                 , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['tcc'] . '"), "N") as IsTccBoard
                 , ifnull(json_value(PF.UseBoardJson, "$[*].' . $this->_bm_idx['anonymous'] . '"), "N") as IsAnonymousBoard
                 , (select SCA.CcdName from '. $this->_table['code'].' as SCA where SCA.Ccd = PF.AppellationCcd and SCA.IsStatus = "Y" and SCA.IsUse = "Y") as AppellationCcdName
-                , if(PF.IntroDefTabCcd is null, "", (select SCI.CcdValue from '. $this->_table['code'].' as SCI where SCI.Ccd = PF.IntroDefTabCcd and SCI.IsStatus = "Y" and SCI.IsUse = "Y")) as IntroDefTabId
                 ' . $add_column;
         }
 

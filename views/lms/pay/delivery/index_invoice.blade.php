@@ -392,10 +392,10 @@
             // 모아시스, CN플러스 엑셀다운로드 버튼 클릭
             $('.btn-target-excel, .btn-cnplus-excel').on('click', function(event) {
                 event.preventDefault();
-                if ($search_form.find('input[name="search_site_code"]').val().length < 1) {
+                /*if ($search_form.find('input[name="search_site_code"]').val().length < 1) {
                     alert('운영사이트를 먼저 선택해 주십시오. (사이트탭 선택)');
                     return;
-                }
+                }*/
 
                 var msg = '사이트와 결제일자 조건 (회원/상품검색 조건 무시)에만 해당하는\n'
                     + '송장번호 미등록 상태의 결제완료 주문건만 다운로드 됩니다.\n'

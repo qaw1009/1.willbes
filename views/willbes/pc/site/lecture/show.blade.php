@@ -113,13 +113,13 @@
                             <td class="tx-left">
                                 @if(empty($data['ProdPriceData']) === false)
                                     @foreach($data['ProdPriceData'] as $price_idx => $price_row)
-                                        <div class="pl10">
+                                        <div class="pl10 priceWrap">
                                             <input type="checkbox" name="prod_code[]" value="{{ $data['ProdCode'] . ':' . $price_row['SaleTypeCcd'] . ':' . $data['ProdCode'] }}" data-prod-code="{{ $data['ProdCode'] }}" data-parent-prod-code="{{ $data['ProdCode'] }}" data-group-prod-code="{{ $data['ProdCode'] }}" data-sale-price="{{ $price_row['RealSalePrice'] }}" class="chk_products chk_only_{{ $data['ProdCode'] }}" onchange="checkOnly('.chk_only_{{ $data['ProdCode'] }}', this.value);" @if($data['IsSalesAble'] == 'N') disabled="disabled" @endif>
                                             <label for="goods_chk" class="pl10 d_inblock">
                                                 [{{ $price_row['SaleTypeCcdName'] }}]
-                                                @if($pattern == 'only')
-                                                    <br><span>{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                                    <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }}) ▶ </span>
+                                                @if($pattern == 'only' && $price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                    <br><span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                    <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
                                                 @endif
                                                 <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                             </label>

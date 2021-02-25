@@ -17,8 +17,12 @@ class AuthGive extends \app\controllers\BaseController
 
     public function index()
     {
+        $arr_site_code = get_auth_site_codes(true);
+        $def_site_code = key($arr_site_code);
+
         $this->load->view('site/auth_give/auth/index', [
-            'pay_route_ccd' => $this->pay_route_ccd
+            'def_site_code' => $def_site_code,
+            'arr_site_code' => $arr_site_code
         ]);
     }
 

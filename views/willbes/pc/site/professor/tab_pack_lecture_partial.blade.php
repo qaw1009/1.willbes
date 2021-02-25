@@ -1,13 +1,11 @@
-<div class="willbes-Prof-Subject pl-zero NG tx-dark-black">· 패키지강의</div>
 <div class="acadBoxWrap">
-    <ul class="tabWrap tabDepthAcad">
-        <li><a href="#on_pack_lecture" class="on">온라인강좌</a></li>
-        <li><a href="#off_pack_lecture">학원강좌</a></li>
-    </ul>
-    <div class="AcadtabBox">
+    {{-- 하위탭 리스트 --}}
+    @include('willbes.pc.site.professor.stab_partial')
+    <div class="AcadtabBox mt30">
+    @if($arr_input['tab'] == 'on_pack_lecture')
         <div id="on_pack_lecture" class="tabContent">
             <div class="willbes-Lec NG c_both">
-                <div class="willbes-Lec-Subject tx-dark-black">온라인 패키지</div>
+                <div class="willbes-Lec-Subject tx-dark-black">패키지</div>
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line">-</div>
@@ -49,8 +47,8 @@
                                             @foreach($row['ProdPriceData'] as $price_row)
                                                 @if($loop -> index === 1)
                                                     <div class="priceWrap">
-{{--                                                        <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0)}}원</span>--}}
-{{--                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+                                                        {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0)}}원</span>
+                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
 
                                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
@@ -73,7 +71,9 @@
             <!-- willbes-Lec -->
         </div>
         <!-- on_pack_lecture -->
+    @endif
 
+    @if($arr_input['tab'] == 'off_pack_lecture')
         <div id="off_pack_lecture" class="tabContent">
             <div class="willbes-Lec NG c_both">
                 <div class="willbes-Lec-Subject tx-dark-black">학원 종합반(패키지)</div>
@@ -121,8 +121,8 @@
                                     @if(empty($row['ProdPriceData']) === false)
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">
-{{--                                                <span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
-{{--                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
+                                                {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
 
                                                 @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                     <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
@@ -144,6 +144,7 @@
             <!-- willbes-Lec -->
         </div>
         <!-- off_pack_lecture -->
+    @endif
     </div>
 </div>
 <div id="InfoForm" class="willbes-Layer-Box d2"></div>

@@ -121,7 +121,7 @@ class AuthGiveModel extends WB_Model
         ];
 
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
-        $order_by = $this->_conn->makeOrderBy()->getMakeOrderBy();
+        $order_by = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
 
         return $this->_conn->query('select ' . $column . $from . $where . $order_by)->result_array();
     }
@@ -301,5 +301,4 @@ class AuthGiveModel extends WB_Model
         }
         return true;
     }
-
 }

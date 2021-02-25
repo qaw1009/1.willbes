@@ -14,8 +14,9 @@
     .evt03 .boxYoutube {margin:40px auto}
     .evt03 .tabMenu {margin-right:-10px; margin-bottom:20px}
     .evt03 .tabMenu li {display:inline; float:left; width:33.33333%; }
-    .evt03 .tabMenu a {display:inline-block; opacity: 0.3; margin-right:10px; background:#000;}
+    .evt03 .tabMenu a {display:block; opacity: 0.5; margin-right:10px; background:#000;}
     .evt03 .tabMenu a.active {box-shadow:0 10px 10px rgba(0,0,0,.2); opacity: 1;}
+    .evt03 .tabMenu a img {width:100%}
     .evt03 .tabMenu:after {content:''; display:block; clear:both}
 
     .video-container {position:relative; padding-bottom:56.25%; padding-top:30px; height:0; overflow: hidden;}
@@ -102,17 +103,17 @@
             <ul class="tabMenu">
                 <li>
                     <a href="#tab1" class="active">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_02_y01.jpg" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2078_03_t01.jpg" alt="" />
                     </a>
                 </li>
                 <li>
                     <a href="#tab2">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_02_y02.jpg" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2078_03_t02.jpg" alt="" />
                     </a>
                 </li>                    
                 <li>
                     <a href="#tab3">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/01/2047_02_y03.jpg" alt="" />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/02/2078_03_t03.jpg" alt="" />
                     </a>
                 </li>
             </ul>

@@ -107,10 +107,9 @@
                         <div class="item inline-block">
                             <input type="radio" name="StudyPeriodType" class="flat" value="P" title="수강제공기간" @if($method == 'POST' || $data['StudyPeriodType']=='P')checked="checked"@endif/>
                             &nbsp;상품 수강기간
-                            &nbsp;&nbsp;
-                            <input type="radio" name="StudyPeriodType" class="flat" value="E" title="수강제공기간"  @if($data['StudyPeriodType']=='E')checked="checked"@endif/>
-                            &nbsp;별도 수강기간
-                            <input type="number" class="form-control" name="StudyPeriod" id="StudyPeriod" style="width: 50px" value="{{ $data['StudyPeriod'] }}"> 일
+{{--                            <input type="radio" name="StudyPeriodType" class="flat" value="E" title="수강제공기간"  @if($data['StudyPeriodType']=='E')checked="checked"@endif/>--}}
+{{--                            &nbsp;별도 수강기간--}}
+{{--                            <input type="number" class="form-control" name="StudyPeriod" id="StudyPeriod" style="width: 50px" value="{{ $data['StudyPeriod'] }}"> 일--}}
                         </div>
                     </div>
                 </div>
@@ -341,8 +340,5 @@
                 location.replace('{{ site_url('/site/authgive/authGive/') }}' + getQueryString());
             });
         });
-
-
-
     </script>
 @stop

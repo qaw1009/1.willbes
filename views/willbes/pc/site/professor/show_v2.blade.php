@@ -168,12 +168,12 @@
                 <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProf tabDepthProf_{{ count($tab_list) }}">
                     @foreach($tab_list as $tab_id => $tab_name)
-                        <li><a href="#none" id="hover_{{ $tab_id }}" onclick="goTabUrl('tab', '{{ $tab_id }}');">{{ $tab_name }}</a></li>
+                        <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ substr($arr_input['tab'], 0, 2) == substr($tab_id, 0, 2) ? 'on' : '' }}">{{ $tab_name }}</a></li>
                     @endforeach
                 </ul>
-                <div class="tabBox">
+                <div class="tabBox mt30">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">
-                        @include('willbes.pc.site.professor.tab_' . $arr_input['tab'] . '_partial')
+                        @include('willbes.pc.site.professor.tab_' . $tab_method . '_partial')
                     </div>
                 </div>
             </div>
@@ -188,13 +188,6 @@
             // 선택된 탭이 있을 경우 자동 스크롤
             $("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
         @endif
-
-        $(function() {
-            $('.willbes-Prof-Tabs .tabDepthProf li a').removeClass('on');
-            $('.willbes-Prof-Tabs .tabDepthProf #hover_{{ $arr_input['tab'] }}').addClass('on');
-            $('.willbes-Prof-Tabs .tabBox .tabLink').css('display', 'block');
-        });
-
     });
 
     // 메인 탭 클릭

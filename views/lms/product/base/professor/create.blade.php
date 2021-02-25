@@ -267,26 +267,54 @@
                         </div>
                     </div>
                 </div>
-                @if(empty($arr_intro_def_tab_ccd) === false)
+                @if(empty($arr_intro_on_disp_tab_ccd) === false)
                     <div class="form-group">
-                        <label class="control-label col-md-2">교수진소개 디폴트탭 선택 (임용)
+                        <label class="control-label col-md-2">임용 교수홈 상위 탭 설정 (임용)
                         </label>
-                        <div class="col-md-10">
-                            <div class="radio">
-                                @foreach($arr_intro_def_tab_ccd as $key => $val)
-                                    <input type="radio" id="intro_def_tab_ccd_{{$key}}" name="intro_def_tab_ccd" value="{{$key}}" class="flat" @if($data['IntroDefTabCcd'] == $key) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_def_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
-                                @endforeach
-                            </div>
+                        <div class="col-md-1-1">
+                            <select name="intro_grp_def_tab_ccd" class="form-control sel-ssam" title="상위디폴트탭" @if($method == 'POST') disabled="disabled" @endif>
+                                <option value="">디폴트탭 선택</option>
+                                <option value="on" @if(array_get($data['IntroDefTabCcd'], 'grp') == 'on') selected="selected" @endif>온라인강좌</option>
+                                <option value="off" @if(array_get($data['IntroDefTabCcd'], 'grp') == 'off') selected="selected" @endif>학원강좌</option>
+                                <option value="book" @if(array_get($data['IntroDefTabCcd'], 'grp') == 'book') selected="selected" @endif>교재</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-md-2">교수진소개 노출탭 선택 (임용)
+                        <label class="control-label col-md-2">임용 교수홈 하위 탭 설정 (임용)
                         </label>
                         <div class="col-md-10">
-                            <div class="checkbox">
-                                @foreach($arr_intro_def_tab_ccd as $key => $val)
-                                    <input type="checkbox" id="intro_disp_tab_ccd_{{$key}}" name="intro_disp_tab_ccd[]" value="{{$key}}" class="flat" @if(strpos($data['IntroDispTabCcds'], strval($key)) !== false) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_disp_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
-                                @endforeach
+                            <div class="row">
+                                <div class="control-label col-md-1">온라인강좌</div>
+                                <div class="col-md-9 form-inline">
+                                    <div class="checkbox">
+                                        @foreach($arr_intro_on_disp_tab_ccd as $key => $val)
+                                            <input type="checkbox" id="intro_on_disp_tab_ccd_{{$key}}" name="intro_on_disp_tab_ccd[]" value="{{$key}}" class="flat chk-ssam" @if(in_array($key, array_get($data['IntroDispTabCcds'], 'on', [])) === true) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_on_disp_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                        @endforeach
+                                    </div>
+                                    <select name="intro_on_def_tab_ccd" class="form-control ml-30 sel-ssam" title="온라인강좌디폴트탭" @if($method == 'POST') disabled="disabled" @endif>
+                                        <option value="">디폴트탭 선택</option>
+                                        @foreach($arr_intro_on_disp_tab_ccd as $key => $val)
+                                            <option value="{{ $key }}" @if(array_get($data['IntroDefTabCcd'], 'on') == $key) selected="selected" @endif>{{ $val }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="control-label col-md-1">학원강좌</div>
+                                <div class="col-md-9 form-inline">
+                                    <div class="checkbox">
+                                        @foreach($arr_intro_off_disp_tab_ccd as $key => $val)
+                                            <input type="checkbox" id="intro_off_disp_tab_ccd_{{$key}}" name="intro_off_disp_tab_ccd[]" value="{{$key}}" class="flat chk-ssam" @if(in_array($key, array_get($data['IntroDispTabCcds'], 'off', [])) === true) checked="checked" @endif @if($method == 'POST') disabled="disabled" @endif /> <label for="intro_off_disp_tab_ccd_{{$key}}" class="input-label">{{$val}}</label>
+                                        @endforeach
+                                    </div>
+                                    <select name="intro_off_def_tab_ccd" class="form-control ml-30 sel-ssam" title="학원강좌디폴트탭" @if($method == 'POST') disabled="disabled" @endif>
+                                        <option value="">디폴트탭 선택</option>
+                                        @foreach($arr_intro_off_disp_tab_ccd as $key => $val)
+                                            <option value="{{ $key }}" @if(array_get($data['IntroDefTabCcd'], 'off') == $key) selected="selected" @endif>{{ $val }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -296,19 +324,19 @@
                     </label>
                     <div class="col-md-10">
                         <div class="row">
-                            <div class="control-label col-md-1-1">[홈페이지 URL]</div>
+                            <div class="control-label col-md-1">홈페이지 URL</div>
                             <div class="col-md-6 item">
                                 <input type="text" id="homep_url" name="homep_url" class="form-control" pattern="url" title="홈페이지 URL" value="{{ $data['homep_url'] or '' }}">
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-1-1">[카페 URL]</div>
+                            <div class="control-label col-md-1">카페 URL</div>
                             <div class="col-md-6 item">
                                 <input type="text" id="cafe_url" name="cafe_url" class="form-control" pattern="url" title="카페 URL" value="{{ $data['cafe_url'] or '' }}">
                             </div>
                         </div>
                         <div class="row mt-5">
-                            <div class="control-label col-md-1-1">[블로그 URL]</div>
+                            <div class="control-label col-md-1">블로그 URL</div>
                             <div class="col-md-6 item">
                                 <input type="text" id="blog_url" name="blog_url" class="form-control" pattern="url" title="블로그 URL" value="{{ $data['blog_url'] or '' }}">
                             </div>
@@ -752,11 +780,11 @@
 
                 // 교수진소개 디폴트탭/노출탭 선택 초기화
                 if ($(this).val().length > 0 && '{{ implode(',', $arr_intro_def_tab_use_site) }}'.indexOf($(this).val()) > -1) {
-                    $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('enable');
-                    $regi_form.find('input[name="intro_disp_tab_ccd[]"]').iCheck('enable');
+                    $regi_form.find('.sel-ssam').prop('disabled', false);
+                    $regi_form.find('.chk-ssam').iCheck('enable');
                 } else {
-                    $regi_form.find('input[name="intro_def_tab_ccd"]').iCheck('disable');
-                    $regi_form.find('input[name="intro_disp_tab_ccd[]"]').iCheck('disable');
+                    $regi_form.find('.sel-ssam').prop('disabled', true);
+                    $regi_form.find('.chk-ssam').iCheck('disable');
                 }
             });
 

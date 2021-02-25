@@ -1792,7 +1792,6 @@ class OrderFModel extends BaseOrderFModel
             // 지급요청 결제루트공통코드가 있을 경우
             if (empty($req_pay_route_ccd) === false) {
                 $pay_route_ccd = $req_pay_route_ccd;
-                
                 $target_pay_route_ccd = [$this->_pay_route_ccd['zero'], $this->_pay_route_ccd['admin_pay']];    // 0원결제, 관리자유료결제만 등록가능
                 if (in_array($pay_route_ccd, $target_pay_route_ccd) === false) {
                     return '허용된 결제루트공통코드가 아닙니다.';
@@ -1836,7 +1835,7 @@ class OrderFModel extends BaseOrderFModel
                 case 'agive' :
                     // 강좌인증지급
                     $admin_reason_ccd = '705011';   // 부여사유공통코드 (강좌인증자동지급부여)
-                    $admin_etc_reason = '강좌인증지급코드=>' . $req_code;
+                    $admin_etc_reason = '강좌인증식별자=>' . $req_code;
                     $arr_prod_code = (array) $req_prod_code;
                     break;
                 default :

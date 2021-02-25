@@ -497,10 +497,7 @@ class ProfessorModel extends WB_Model
             $site_code = element('site_code', $input);
 
             // 임용 교수진소개 노출탭
-            $intro_disp_tab_ccds = element('intro_disp_tab_ccd', $input);
-            if (empty($intro_disp_tab_ccds) === false) {
-                $intro_disp_tab_ccds = implode(',', $intro_disp_tab_ccds);
-            }
+            $arr_intro_tab = $this->_getIntroTabJson($input);
 
             // 운영사이트+WBS교수정보 중복체크
             $duplicate_cnt = $this->findProfessor(true, ['EQ' => ['wProfIdx' => $wprof_idx, 'SiteCode' => $site_code, 'IsStatus' => 'Y']]);
@@ -520,8 +517,8 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
-                'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
-                'IntroDispTabCcds' => $intro_disp_tab_ccds,
+                'IntroDefTabCcd' => $arr_intro_tab['def_tab'],
+                'IntroDispTabCcds' => $arr_intro_tab['disp_tab'],
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'RegAdminIdx' => $this->session->userdata('admin_idx'),
@@ -615,10 +612,7 @@ class ProfessorModel extends WB_Model
             $prof_idx = element('idx', $input);
 
             // 임용 교수진소개 노출탭
-            $intro_disp_tab_ccds = element('intro_disp_tab_ccd', $input);
-            if (empty($intro_disp_tab_ccds) === false) {
-                $intro_disp_tab_ccds = implode(',', $intro_disp_tab_ccds);
-            }
+            $arr_intro_tab = $this->_getIntroTabJson($input);
 
             // 기존 교수 기본정보 조회
             $row = $this->findProfessor('ProfIdx', ['EQ' => ['ProfIdx' => $prof_idx]]);
@@ -636,8 +630,8 @@ class ProfessorModel extends WB_Model
                 'OnLecViewCcd' => element('onlec_view_ccd', $input, '719001'),
                 'IsOpenStudyComment' => element('is_open_studycomment', $input),
                 'AppellationCcd' => element('appellation_ccd', $input, '724001'),
-                'IntroDefTabCcd' => element('intro_def_tab_ccd', $input),
-                'IntroDispTabCcds' => $intro_disp_tab_ccds,
+                'IntroDefTabCcd' => $arr_intro_tab['def_tab'],
+                'IntroDispTabCcds' => $arr_intro_tab['disp_tab'],
                 'IsDispIntro' => element('is_disp_intro', $input, 'Y'),
                 'IsUse' => element('is_use', $input),
                 'UpdAdminIdx' => $this->session->userdata('admin_idx')
@@ -719,6 +713,36 @@ class ProfessorModel extends WB_Model
         }
 
         return true;
+    }
+
+    /**
+     * 임용 탭 설정 JSON 데이터 리턴
+     * @param array $input [입력데이터]
+     * @return array
+     */
+    private function _getIntroTabJson($input)
+    {
+        $json_def_tab = null;
+        $json_disp_tab = null;
+
+        // 디폴트 탭
+        $intro_grp_def_tab_ccd = element('intro_grp_def_tab_ccd', $input);
+        $intro_on_def_tab_ccd = element('intro_on_def_tab_ccd', $input);
+        $intro_off_def_tab_ccd = element('intro_off_def_tab_ccd', $input);
+
+        if (empty($intro_grp_def_tab_ccd) === false && empty($intro_on_def_tab_ccd) === false && empty($intro_off_def_tab_ccd) === false) {
+            $json_def_tab = json_encode(['grp' => $intro_grp_def_tab_ccd, 'on' => $intro_on_def_tab_ccd, 'off' => $intro_off_def_tab_ccd]);
+        }
+
+        // 노출 탭
+        $arr_intro_on_disp_tab_ccd = element('intro_on_disp_tab_ccd', $input);
+        $arr_intro_off_disp_tab_ccd = element('intro_off_disp_tab_ccd', $input);
+
+        if (empty($arr_intro_on_disp_tab_ccd) === false && empty($arr_intro_off_disp_tab_ccd) === false) {
+            $json_disp_tab = json_encode(['on' => $arr_intro_on_disp_tab_ccd, 'off' => $arr_intro_off_disp_tab_ccd]);
+        }
+
+        return ['def_tab' => $json_def_tab, 'disp_tab' => $json_disp_tab];
     }
 
     /**

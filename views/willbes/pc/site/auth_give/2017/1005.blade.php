@@ -122,9 +122,9 @@
             {!! method_field('POST') !!}
             <input type="hidden" name="ag_idx" id="ag_idx" value="{{$data['AgIdx']}}">
 {{--            <input type="hidden" name="ag_code" id="ag_code" value="{{$data['AgCode']}}">--}}
-{{--            <input type="hidden" name="learn_pattern" value="book"/>   학습형태 --}}
-{{--            <input type="hidden" name="cart_type" value="book"/>   --}}{{-- 장바구니 탭 아이디 --}}
-{{--            <input type="hidden" name="is_direct_pay" value=""/>    --}}{{-- 바로결제 여부 --}}
+            <input type="hidden" name="learn_pattern" value="book"/>   학습형태
+            <input type="hidden" name="cart_type" value="book"/>    장바구니 탭 아이디
+            <input type="hidden" name="is_direct_pay" value=""/>     바로결제 여부
             <div class="evtCtnsBox onLecFree">
                 <div class="onLecFreeBox">
                 <h4>인강 무료체험 신청하기</h4>
@@ -535,6 +535,7 @@
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
                 var $result = addCartNDirectPay($regi_form, $is_direct_pay, $is_redirect, 'on');
+                console.log($result);
                 if ($is_redirect === 'N' && $result === true) {
                     alert("장바구니에 담겼습니다.");
                 }

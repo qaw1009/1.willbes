@@ -13,10 +13,6 @@ class Register extends \app\controllers\BaseController
 
     public function index()
     {
-        /*------*/
-        $this->predict2Model->aaaaaaaa(); //마이그레이션 로직
-        exit;
-        /*------*/
         $def_site_code = '2005';
         $arr_base = [];
 

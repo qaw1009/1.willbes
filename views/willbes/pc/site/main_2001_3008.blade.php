@@ -52,31 +52,51 @@
                     <div class="small NSK-Thin">여러분의 꿈과 목표를 위해,</div>
                     <div class="big NSK-Thin">오늘도 최선을 다하는 <span class="cop-color NSK-Black">윌비스 KCG 해양경찰학원</span></div>
                 </div>
-                <ul class="ProfCopBox mt60 mb100">
+                <ul class="ProfCopBox mt60 mb100" style="margin-left:125px;">
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi.jpg" title="공득인">
+                        <img src="https://static.willbes.net/public/images/promotion/main/profs_pth.jpg" title="박태하 해사법규">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50301', 'OT');">▶</a></li>
-                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50301/?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C" target="_blank">교수소개</a></li>
+                            <li><a href="javascript:alert('Coming Soon!')">▶</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51201?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_gdi2.jpg" title="공득인">
+                        <img src="https://static.willbes.net/public/images/promotion/main/profs_pth2.jpg" title="박태하 해양경찰학">
                         <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('50742', 'S1');">▶</a></li>
-                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50742/?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank">교수소개</a></li>
+                            <li><a href="javascript:alert('Coming Soon!')">▶</a></li>
+                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51200?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
-                    <li>                       
-                        <img src="https://static.willbes.net/public/images/promotion/main/prof_lds01.jpg" title="이동섭">
-                        <ul class="ProfBtns">
-                            <li><a href="#none" onclick="fnPlayerProf('51034', 'OT');">▶</a></li>
-                            <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51034/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4" target="_blank">교수소개</a></li>
-                        </ul>                       
-                    </li>  
                     <li>
                         <div class="bSlider">
                             <div class="slider">
+                                <div>
+                                    <img src="https://static.willbes.net/public/images/promotion/main/profs_pth3.jpg" title="박태하 해사영어">
+                                    <ul class="ProfBtns">
+                                        <li><a href="javascript:alert('Coming Soon!')">▶</a></li>
+                                        <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51204?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4" target="_blank">교수소개</a></li>
+                                    </ul>      
+                                </div>   
+                                <div>
+                                    <img src="https://static.willbes.net/public/images/promotion/main/prof_lds01.jpg" title="이동섭">
+                                    <ul class="ProfBtns">
+                                        <li><a href="#none" onclick="fnPlayerProf('51034', 'OT');">▶</a></li>
+                                        <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51034/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4" target="_blank">교수소개</a></li>
+                                    </ul>      
+                                </div>                    
+                            </div>
+                        </div>
+                    </li>                 
+                    <li>
+                        <div class="bSlider">
+                            <div class="slider">
+                                <div>
+                                    <img src="https://static.willbes.net/public/images/promotion/main/profs_pth4.jpg" title="박태하 항해술">
+                                    <ul class="ProfBtns">
+                                        <li><a href="javascript:alert('Coming Soon!')">▶</a></li>
+                                        <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51205?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0" target="_blank">교수소개</a></li>
+                                    </ul>
+                                </div>   
                                 <div>
                                     <img src="https://static.willbes.net/public/images/promotion/main/prof_lds02.jpg" title="이동섭">
                                     <ul class="ProfBtns">
@@ -94,6 +114,7 @@
                             </div>
                         </div>
                     </li>                   
+                    {{--
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/prof_hys.jpg" title="황영신">
                         <ul class="ProfBtns">
@@ -101,6 +122,7 @@
                             <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50755/?subject_idx=1034&subject_name=%EA%B8%B0%EA%B4%80%EC%88%A0" target="_blank">교수소개</a></li>
                         </ul>
                     </li>
+                    --}}
                 </ul>
             </div>
         </div> 

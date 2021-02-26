@@ -1242,9 +1242,9 @@
             <div class="mb10">* 수강신청 시, “온라인강좌”와＂학원강좌”를 먼저 선택하신 후, 강의형태(패키지, 단과 등)를 선택하시면 됩니다. </div>
             <div class="ProfDetailWrap">
                 <ul class="tabWrap tabDepthProf tabDepthProf_3">
-                    <li><a href="#Proftab1" class="on">온라인강좌</a></li>
-                    <li><a href="#Proftab2">학원강좌</a></li>
-                    <li><a href="#Proftab3">교재</a></li>
+                    <li><a href="#Proftab1" class="on">온라인 강좌</a></li>
+                    <li><a href="#Proftab2">학원 직강</a></li>
+                    <li><a href="#Proftab3">교재 안내</a></li>
                 </ul>
                 <div class="tabBox mt30">               
                     <div id="Proftab1" class="tabLink">                        
@@ -1259,7 +1259,7 @@
                                 <div id="acad1" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">
-                                            패키지
+                                            ㆍ온라인 - 패키지 강의
                                         </div>
                                         <div class="willbes-Lec-Line">-</div>
                                         <!-- willbes-Lec-Line -->
@@ -1337,7 +1337,7 @@
                                 <div id="acad2" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">
-                                            단과
+                                            ㆍ온라인 - 단과 강의
                                             <div class="selectBoxForm">
                                                 <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                                             </div>
@@ -1518,7 +1518,7 @@
                                 <div id="acad3" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">
-                                            특강
+                                            ㆍ온라인 - 특강
                                             <div class="selectBoxForm">
                                                 <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                                             </div>
@@ -1699,7 +1699,7 @@
                                 <div id="acad4" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">
-                                            수강생전용
+                                            ㆍ온라인 - 수강생전용
                                             <div class="selectBoxForm">
                                                 <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                                             </div>
@@ -1892,7 +1892,7 @@
                             <div class="AcadtabBox">
                                 <div id="acad5" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
-                                        <div class="willbes-Lec-Subject tx-dark-black">학원 종합반(패키지)</div>
+                                        <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원직강 - 패키지 강의</div>
                                         <!-- willbes-Lec-Subject -->
 
                                         <div class="willbes-Lec-Line">-</div>
@@ -2034,7 +2034,7 @@
 
                                 <div id="acad6" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
-                                        <div class="willbes-Lec-Subject tx-dark-black">학원 단과<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                                        <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원직강 - 단과 강의<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                                         <!-- willbes-Lec-Subject -->
 
                                         <div class="willbes-Lec-Line">-</div>
@@ -2287,7 +2287,7 @@
 
                                 <div id="acad7" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
-                                        <div class="willbes-Lec-Subject tx-dark-black">특강<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                                        <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원직강 - 특강<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                                         <!-- willbes-Lec-Subject -->
 
                                         <div class="willbes-Lec-Line">-</div>
@@ -2540,7 +2540,7 @@
 
                                 <div id="acad8" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
-                                        <div class="willbes-Lec-Subject tx-dark-black">전국 라이브 영상반<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
+                                        <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원직강 - 전국 라이브 영상반<span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span></div>
                                         <!-- willbes-Lec-Subject -->
 
                                         <div class="willbes-Lec-Line">-</div>

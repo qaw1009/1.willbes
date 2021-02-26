@@ -1,6 +1,12 @@
-{{--@extends('willbes.pc.layouts.master')--}}
 @extends('html.layouts.master')
 @section('content')
+<style>
+    .tabDepthProf_3 li:nth-child(1) {width:40%}
+    .tabDepthProf_3 li:nth-child(2) {width:40%}
+    .tabDepthProf_3 li:nth-child(3) {width:20%}
+    .tabDepthProf li:nth-child(1) a.on {background:#376fce; color:#fff}
+    .tabDepthProf li:nth-child(2) a.on {background:#4bb22b; color:#fff}
+</style>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
     <div class="Menu widthAuto NGR c_both">

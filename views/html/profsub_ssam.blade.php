@@ -1,11 +1,37 @@
 @extends('html.layouts.master')
 @section('content')
 <style>
+    .tabWrap.tabDepthProf li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 50px;
+        background: #f5f5f5;
+        font-size: 13px;
+        font-weight: 600;
+        color: #4d4e57;
+        text-align: center;
+        letter-spacing: 0;
+        border: 1px solid #959595;
+        border-left: none;
+        border-bottom: 1px solid #376fce;
+    }
     .tabDepthProf_3 li:nth-child(1) {width:40%}
     .tabDepthProf_3 li:nth-child(2) {width:40%}
     .tabDepthProf_3 li:nth-child(3) {width:20%}
-    .tabDepthProf li:nth-child(1) a.on {background:#376fce; color:#fff}
-    .tabDepthProf li:nth-child(2) a.on {background:#4bb22b; color:#fff}
+    .tabDepthProf_3 li a.on {background:#376fce !important; color:#fff; border: 1px solid #376fce;}
+
+    .AcadtabBox .tabContent .ssamTabGrid {
+        float: left;
+        width: 100%;
+        padding: 20px 20px 0;
+        /*border-left: 1px solid #376fce;
+        border-right: 1px solid #376fce;*/
+        background:#376fce;
+    }
+    .ssamTabGrid .tabWrap.tabDepthAcad li {border-bottom: 1px solid #376fce;}
+    .ssamTabGrid .tabWrap.tabDepthAcad li a {border:0; border-right: 1px solid #376fce; background:#4980dc; color:#fff}
+    .ssamTabGrid .tabWrap.tabDepthAcad li a.on {border-right: 1px solid #376fce;  background: #fff; color:#376fce}
 </style>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
@@ -1246,16 +1272,21 @@
                     <li><a href="#Proftab2">학원 직강</a></li>
                     <li><a href="#Proftab3">교재 안내</a></li>
                 </ul>
-                <div class="tabBox mt30">               
+                <div class="tabBox">               
                     <div id="Proftab1" class="tabLink">                        
-                        <div class="acadBoxWrap">
-                            <ul class="tabWrap tabDepthAcad four">
-                                <li><a href="#acad1" class="on">패키지강의</a></li>
-                                <li><a href="#acad2">단과강의</a></li>
-                                <li><a href="#acad3">특강</a></li>
-                                <li><a href="#acad4">수강생전용</a></li>
-                            </ul>
+                        <div class="acadBoxWrap">                            
                             <div class="AcadtabBox">
+                                <div class="tabContent">
+                                    <div class="ssamTabGrid">
+                                        <ul class="tabWrap tabDepthAcad four">
+                                            <li><a href="#acad1" class="on">패키지강의</a></li>
+                                            <li><a href="#acad2">단과강의</a></li>
+                                            <li><a href="#acad3">특강</a></li>
+                                            <li><a href="#acad4">수강생전용</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
                                 <div id="acad1" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">
@@ -1882,14 +1913,19 @@
                     <!-- Proftab1// -->                    
 
                     <div id="Proftab2" class="tabLink">
-                        <div class="acadBoxWrap">
-                            <ul class="tabWrap tabDepthAcad four">
-                                <li><a href="#acad5" class="on">패키지강의</a></li>
-                                <li><a href="#acad6">단과강의</a></li>
-                                <li><a href="#acad7">특강</a></li>
-                                <li><a href="#acad8">전국 라이브 영상반</a></li>
-                            </ul>
+                        <div class="acadBoxWrap">                            
                             <div class="AcadtabBox">
+                                <div class="tabContent">
+                                    <div class="ssamTabGrid">
+                                        <ul class="tabWrap tabDepthAcad four">
+                                            <li><a href="#acad5" class="on">패키지강의</a></li>
+                                            <li><a href="#acad6">단과강의</a></li>
+                                            <li><a href="#acad7">특강</a></li>
+                                            <li><a href="#acad8">수강생전용</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
                                 <div id="acad5" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원직강 - 패키지 강의</div>

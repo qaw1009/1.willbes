@@ -15,15 +15,15 @@
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
-            background:#000 url("https://static.willbes.net/public/images/promotion/2019/06/1282_bg.jpg") no-repeat center top
+            background:#fff;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
+        .wb_top {background:url("https://static.willbes.net/public/images/promotion/2021/02/1282_top_bg.jpg") center top no-repeat}
 
-        .wb_cts01 {}
-        .wb_cts02 {padding-bottom:80px}
+        .wb_cts02 {padding-bottom:150px}
         .wb_cts02 .memo {width:1020px; margin:0 auto; background:#fff; padding:40px; text-align:left; line-height:1.5; font-size:14px; position:relative; color:#666}
         .memoTab {position:absolute; right:40px; top:40px; z-index:10}
         .memoTab li {margin-bottom:10px}
@@ -45,14 +45,23 @@
         .memo .info .st02 {color:#0f3cae}
         .memo .info .st03 {color:#fc6c37}
         .memoTabFixed {position:fixed; top: 40px; left:50%; margin-left:430px}
-        
+
+        .wb_cts03 {background:url("https://static.willbes.net/public/images/promotion/2021/02/1282_03_bg.jpg") center top no-repeat}
 
   </style>
 
   <div class="p_re evtContent NGR" id="evtContainer">
   
-	<div class="evtCtnsBox wb_cts01">
-        <img src="https://static.willbes.net/public/images/promotion/2019/06/1282_top.jpg" title="프로필"/>
+	<div class="evtCtnsBox wb_top">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1282_top.jpg" title="소방 합격 스토리"/>
+	</div>
+
+    <div class="evtCtnsBox wb_tops">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1282_01.jpg" title="공통점은 합격"/>
+	</div>
+
+    <div class="evtCtnsBox wb_cts01">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1282_02.jpg" title="불꽃 소방과 함께"/>
 	</div>
   
     <div class="evtCtnsBox wb_cts02">
@@ -743,7 +752,7 @@
     </div>
 
     <div class="evtCtnsBox wb_cts03">
-        <img src="https://static.willbes.net/public/images/promotion/2019/06/1282_bottom.png" title="교수진"/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/1282_03.jpg" title="합격이라는 결과로 보답"/>
 	</div>  
 </div>
 <!-- End Container -->

@@ -1255,7 +1255,7 @@
                                 <li><a href="#acad3">특강</a></li>
                                 <li><a href="#acad4">수강생전용</a></li>
                             </ul>
-                            <div class="AcadtabBox mt30">
+                            <div class="AcadtabBox">
                                 <div id="acad1" class="tabContent">
                                     <div class="willbes-Lec NG c_both">
                                         <div class="willbes-Lec-Subject tx-dark-black">

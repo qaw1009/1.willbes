@@ -742,7 +742,7 @@
                 <li>
                     <span>패키지</span>
                     <a href="{{ front_url('/package/index/cate/' . $menu_cate_code . '/pack/648001') }}">순환별패키지</a>
-                    <a href="{{ front_url('/periodPackage/show/cate/' . $menu_cate_code . '/pack/648001/prod-code/163827') }}">법원직PASS</a>
+                    <a href="{{ front_url('/periodPackage/show/cate/' . $menu_cate_code . '/pack/648001/prod-code/179624') }}">법원직PASS</a>
                 </li>
             </ul>
         @endif

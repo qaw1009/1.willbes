@@ -80,7 +80,7 @@ class SupportProfNotice extends BaseSupport
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
-                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+                $list[$idx]['AttachData'] = $this->_getAttachData(json_decode($row['AttachData'],true));
             }
         }
 
@@ -137,9 +137,9 @@ class SupportProfNotice extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
-        // 첨부파일 이미지일 경우 해당 배열에 담기
+        // 첨부파일 배열에 담기
         $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        $data['AttachData'] = $this->_getAttachData(json_decode($data['AttachData'],true));
         #-------------------------------- 게시글 조회
 
         #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
@@ -245,7 +245,7 @@ class SupportProfNotice extends BaseSupport
         if ($total_rows > 0) {
             $list = $this->supportBoardFModel->listBoardForProf(false, $this->_site_code, $prof_idx, $arr_condition, '', $column, $paging['limit'], $paging['offset'], $order_by);
             foreach ($list as $idx => $row) {
-                $list[$idx]['AttachData'] = json_decode($row['AttachData'],true);       //첨부파일
+                $list[$idx]['AttachData'] = $this->_getAttachData(json_decode($row['AttachData'],true));
             }
         }
 
@@ -291,9 +291,9 @@ class SupportProfNotice extends BaseSupport
             show_alert('게시글 조회시 오류가 발생되었습니다.', 'back');
         }
 
-        // 첨부파일 이미지일 경우 해당 배열에 담기
+        // 첨부파일 배열에 담기
         $data['Content'] = $this->_getBoardForContent($data['Content'], $data['AttachData']);
-        $data['AttachData'] = json_decode($data['AttachData'],true);       //첨부파일
+        $data['AttachData'] = $this->_getAttachData(json_decode($data['AttachData'],true));
         #-------------------------------- 게시글 조회
 
         #--------------------------------  이전글, 다음글 조회 : 리스트에서 핫/베스트 글을 찍고 들어왔을경우 이전글/다음글 미노출
@@ -343,6 +343,28 @@ class SupportProfNotice extends BaseSupport
                 'get_params' => $get_params,
             ]
         );
+    }
+
+    /**
+     * 첨부파일 가공 이미지일 경우 제외
+     * @param array $attach_data
+     * @return mixed
+     */
+    private function _getAttachData($attach_data = [])
+    {
+        $data = [];
+        if(empty($attach_data) === false){
+            foreach ($attach_data as $row){
+                $arr_file_name = explode('.', $row['FileName']);
+                $file_extension = end($arr_file_name);
+
+                if(in_array($file_extension, $this->_file_type) !== true){
+                    array_push($data, $row);
+                }
+            }
+        }
+
+        return $data;
     }
 
 }

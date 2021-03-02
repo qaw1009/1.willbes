@@ -5,6 +5,8 @@ class BaseSupport extends \app\controllers\FrontController
 {
     protected $helpers = array();
 
+    public $_file_type = ['gif','jpg','jpeg','png','bmp'];
+
     public function __construct()
     {
         parent::__construct();

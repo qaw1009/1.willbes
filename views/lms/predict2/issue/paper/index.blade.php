@@ -30,31 +30,6 @@
                             @endforeach
                         </select>
                         <input type="hidden" name="search_paper_name" value="">
-
-                        {{--<select class="form-control mr-5" id="search_PredictIdx" name="search_PredictIdx">
-                            @foreach($predictList as $row)
-                                <option value="{{$row['PredictIdx']}}" class="{{$row['SiteCode']}}">[{{$row['PredictIdx']}}] {{$row['ProdName']}}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-5" id="search_ApplyType" name="search_ApplyType">
-                            <option value="">구분</option>
-                            <option value="합격예측">합격예측</option>
-                            <option value="사전특강">사전특강</option>
-                        </select>
-                        <select class="form-control mr-5" id="search_TakeMockPart" name="search_TakeMockPart">
-                            <option value="">응시직렬</option>
-                            @foreach($arr_base['take_mock_part'] as $k => $v)
-                                <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-control mr-5" id="search_TakeArea" name="search_TakeArea">
-                            <option value="">응시지역</option>
-                            @foreach($area as $k => $v)
-                                @if($v['Ccd'] != '712018')
-                                    <option value="{{$v['Ccd']}}">{{$v['CcdName']}}</option>
-                                @endif
-                            @endforeach
-                        </select>--}}
                     </div>
                 </div>
                 <div class="form-group">
@@ -92,7 +67,7 @@
                         <th class="text-center">응시번호</th>
                         <th class="text-center">응시횟수</th>
                         <th class="text-center">성적정보[Research2]</th>
-                        <th class="text-center">과목별 체감난이도</th>
+                        {{--<th class="text-center">과목별 체감난이도</th>--}}
                         <th class="text-center">커트라인 평균점수</th>
                         <th class="text-center">등록일</th>
                     </tr>
@@ -138,10 +113,26 @@
                     {'data' : 'Phone', 'class': 'text-center'},
                     {'data' : 'Mail', 'class': 'text-center'},
                     {'data' : 'TakeMockPart', 'class': 'text-center'},
-                    {'data' : 'TaKeNumber', 'class': 'text-center'},
+                    {'data' : 'TakeNumber', 'class': 'text-center'},
                     {'data' : 'TakeCount', 'class': 'text-center'},
-                    {'data' : 'OPOINT', 'class': 'text-center'},
-                    {'data' : 'TakeLevel', 'class': 'text-center'},
+
+                    {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
+                            var str = '', type_name = '', level_name = '', point = '';
+                            var name = row.PapaerName.split(',');
+                            var type = row.QuestionType.split(',');
+                            var org_point = row.OrgPoint.split(',');
+                            var level = row.TakeLevel.split(',');
+                            for (key in name) {
+                                type_name = (type[key] == '1') ? ' : 유형1' : ' : 유형2';
+                                level_name = (level[key] == 'H') ? '(상)' : (level[key] == 'M') ? '(중)' : '(하)';
+                                str += name[key] + type_name + ' [' + org_point[key] + '점] ' + level_name + "<br>";
+                            }
+                            return str;
+                        }},
+
+                    /*{'data' : 'OPOINT', 'class': 'text-center'},
+                    {'data' : 'TakeLevel', 'class': 'text-center'},*/
+
                     {'data' : 'CutPoint', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]

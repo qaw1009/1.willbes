@@ -106,20 +106,18 @@
                     {'data' : 'TakeMockPart', 'class': 'text-center'},
                     {'data' : 'TaKeNumber', 'class': 'text-center'},
                     {'data' : 'TakeCount', 'class': 'text-center'},
-
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             var str = '', type_name = '', level_name = '';
                             var name = row.PapaerName.split(',');
                             var type = row.QuestionType.split(',');
                             var level = row.TakeLevel.split(',');
                             for (key in name) {
-                                type_name = (type[key] == '1') ? ' : 문제유형1' : ' : 문제유형2';
+                                type_name = (type[key] == '1') ? ' : 유형1 ' : ' : 유형2 ';
                                 level_name = (level[key] == 'H') ? '(상)' : (level[key] == 'M') ? '(중)' : '(하)';
                                 str += name[key] + type_name + level_name + "<br>";
                             }
                             return str;
                         }},
-
                     {'data' : 'CutPoint', 'class': 'text-center'},
                     {'data' : 'RegDatm', 'class': 'text-center'}
                 ]

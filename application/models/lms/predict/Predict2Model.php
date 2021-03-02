@@ -1498,46 +1498,47 @@ class Predict2Model extends WB_Model
      * 과목별문제 데이터 리스트
      * @param bool $is_count
      * @param array $add_condition
-     * @param array $arr_condition_sub
      * @param null $limit
      * @param null $offset
      * @return mixed
      */
-    public function mainOriginList($is_count = false, $add_condition = [], $arr_condition_sub = [], $limit = null, $offset = null)
+    public function mainOriginList($is_count = false, $add_condition = [], $limit = null, $offset = null)
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
             $column = 'M.*';
-            $arr_order_by = ['p.PrIdx' => 'DESC'];
+            $arr_order_by = ['a.PrIdx' => 'DESC'];
             $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $condition = [ 'IN' => ['PR.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = [ 'IN' => ['a.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         $condition = array_merge_recursive($condition, $add_condition);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
-        $where_sub = $this->_conn->makeWhere($arr_condition_sub)->getMakeWhere(false);
 
         $from = "
             FROM (
-                SELECT p.*, GROUP_CONCAT(po.PpIdx ORDER BY po.PpIdx ASC) AS PpIdx, GROUP_CONCAT(po.OrgPoint ORDER BY po.PpIdx ASC) AS OrgPoint
-                FROM (
-                    SELECT
-                        PR.PrIdx, pr.MemIdx, m.MemName, m.MemId, fn_dec(PR.UserTelEnc) AS Phone, fn_dec(PR.UserMailEnc) AS Mail
-                        ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, PR.TaKeNumber, PR.TakeCount, PR.CutPoint, PR.TakeLevel, PR.RegDatm
-                    FROM lms_predict2_register AS PR
-                    INNER JOIN lms_member AS m ON PR.MemIdx = m.MemIdx
-                    {$where}
-                ) AS P
-                INNER JOIN lms_predict2_grades_origin AS po ON p.PrIdx = po.PrIdx
-                {$where_sub}
-                GROUP BY po.PrIdx
+                SELECT
+                    a.PrIdx, a.MemIdx, m.MemName, m.MemId, fn_dec(a.UserTelEnc) AS Phone, fn_dec(a.UserMailEnc) AS Mail
+                    ,fn_ccd_name(a.TakeMockPart) AS TakeMockPart, a.TakeNumber, a.TakeCount, a.CutPoint, a.RegDatm
+                    ,GROUP_CONCAT(c.PapaerName ORDER BY b.PpIdx ASC) AS PapaerName
+                    ,GROUP_CONCAT(b.QuestionType ORDER BY b.PpIdx ASC) AS QuestionType
+                    ,GROUP_CONCAT(b.TakeLevel ORDER BY b.PpIdx ASC) AS TakeLevel
+                    ,GROUP_CONCAT(d.OrgPoint ORDER BY b.PpIdx ASC) AS OrgPoint
+                FROM lms_predict2_register AS a
+                INNER JOIN lms_predict2_register_r_paper AS b ON a.PrIdx = b.PrIdx
+                INNER JOIN lms_predict2_paper AS c ON b.PpIdx = c.PpIdx
+                INNER JOIN lms_predict2_grades_origin AS d ON a.PrIdx = d.PrIdx AND b.PpIdx = d.PpIdx
+                INNER JOIN lms_member AS m ON a.MemIdx = m.MemIdx
+                {$where}
+                GROUP BY a.PrIdx
                 $order_by_offset_limit
             ) AS M
         ";
         $query_string = 'SELECT '. $column . $from;
+
         $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -1558,6 +1559,7 @@ class Predict2Model extends WB_Model
         $column = "
             M.MemId, M.MemName, M.BirthDay, fn_dec(PR.UserTelEnc) AS Phone,fn_dec(PR.UserMailEnc) AS Mail
 	        ,fn_ccd_name(PR.TakeMockPart) AS TakeMockPart, TaKeNumber, PA.RegDatm, PA.PpIdx, PA.PqIdxs, PA.Answers
+	        ,IF(PRP.QuestionType=1,'유형1','유형2') AS QuestionType
         ";
         $from = "
             FROM (
@@ -1577,7 +1579,9 @@ class Predict2Model extends WB_Model
             ) AS PA
             INNER JOIN {$this->_table['predict2_register']} AS PR ON PA.PrIdx = PR.PrIdx
             INNER JOIN {$this->_table['lms_member']} AS M ON PA.MemIdx = M.MemIdx
+            INNER JOIN {$this->_table['predict2_register_r_paper']} AS PRP ON PA.PrIdx = PRP.PrIdx AND PA.PpIdx = PRP.PpIdx
         ";
+
         return $this->_conn->query('select '.$column .$from. $where)->result_array();
     }
 

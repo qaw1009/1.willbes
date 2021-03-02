@@ -159,8 +159,16 @@ class BasePredict2 extends \app\controllers\FrontController
             return;
         }
 
+        $error_result = [];
         $result = $this->predict2FModel->{$method . 'Predict2'}($this->_reqP(null, false));
-        $this->json_result($result, '저장 되었습니다.', $result);
+        if ($result !== true) {
+            $error_result = [
+                'ret_cd' => false,
+                'ret_msg' => $result,
+                'ret_status' => _HTTP_ERROR
+            ];
+        }
+        $this->json_result($result, '저장 되었습니다.', $error_result);
     }
 
     /**

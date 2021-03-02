@@ -228,31 +228,22 @@
                         <div class="markingBox">
                             <h3 class="mt30">본인 점수 입력</h3>
                             <div class="omrWarp">
-                                @php $_id=1; @endphp
-                                @foreach($subject_list as $key => $val)
-                                    <div class="qMarking">
+                                <div class="qMarking">
+                                    @php $_id=1; @endphp
+                                    @foreach($subject_list as $key => $val)
                                         <h4>{{ $val['SubjectName'] }}<span> | 원점수: {{ $val['TotalScore'] }}</span></h4>
-                                        <table class="boardTypeB">
-                                            <col width="70px">
-                                            <tr>
-                                                <th scope="col">번호</th>
-                                                @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                    <th scope="col">{{ $val2 }}</th>
-                                                @endforeach
-                                            </tr>
-                                            <tr>
-                                                <td>답안입력 </td>
-                                                @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
-                                                    <td>
-                                                        <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
-                                                               oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
-                                                    </td>
-                                                    @php $_id++; @endphp
-                                                @endforeach
-                                            </tr>
-                                        </table>
-                                    </div>
-                                @endforeach
+                                        <ul {{ ($val['qCnt'] <= 25) ? '' : 'class=w25' }}>
+                                            @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
+                                                <li>
+                                                    <div>{{ $val2 }}</div>
+                                                    <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                           oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
+                                                </li>
+                                                @php $_id++; @endphp
+                                            @endforeach
+                                        </ul>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                         <div class="btns">

@@ -186,6 +186,7 @@ class Statistics extends \app\controllers\BaseController
     private function _setSurveyInfo($survey_info=[],$ss_idx=null,$total_count=null)
     {
         $data = [
+            'site_code' => $survey_info['SiteCode'],
             'ss_idx' => $ss_idx,
             'survey_title' => $survey_info['SurveyTitle'],
             'StartDate' => $survey_info['StartDate'],

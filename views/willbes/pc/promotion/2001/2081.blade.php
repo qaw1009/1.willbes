@@ -5,7 +5,7 @@
     <link href="/public/css/willbes/promotion/cop_2018_1ch.css?ver={{time()}}" rel="stylesheet">
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
-        @include('willbes.pc.promotion.2001.1775_top')
+        @include('willbes.pc.promotion.2001.2080_top')
         <div class="evtCtnsBox">
             <div class="s_section2">
                 <div class="s_section2_wrap">
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            @include('willbes.pc.predict.1776_promotion_partial')
+            @include('willbes.pc.predict.2081_promotion_partial')
 
         </div>
         <!--evtCtnsBox//-->

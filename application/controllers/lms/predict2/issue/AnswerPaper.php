@@ -30,32 +30,25 @@ class AnswerPaper extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'PR.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
-                'PR.SiteCode' => $this->_reqP('search_site_code'),
-                'PR.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'PR.IsStatus' => 'Y',
+                'a.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
+                'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
+                'a.IsStatus' => 'Y',
+                'b.PpIdx' => $this->_reqP('search_paper')
             ],
             'ORG' => [
                 'LKB' => [
                     'M.MemName' => $this->_reqP('search_fi', true),
                     'M.MemId' => $this->_reqP('search_fi', true),
-                    'PR.TakeNumber' => $this->_reqP('search_fi', true)
+                    'a.TakeNumber' => $this->_reqP('search_fi', true)
                 ]
             ],
         ];
-        $arr_condition_sub = [
-            'EQ' => [
-                'po.PpIdx' => $this->_reqP('search_paper')
-            ]
-        ];
 
         $data = [];
-        $count = $this->predict2Model->mainOriginList(true, $arr_condition, $arr_condition_sub);
+        $count = $this->predict2Model->mainOriginList(true, $arr_condition);
         if ($count > 0) {
-            $get_paper = $this->predict2Model->getRegPaper(['EQ' => ['PRP.PredictIdx2' => $this->_reqP('search_PredictIdx2')]]);
-            $data_paper = array_pluck($get_paper, 'PapaerName', 'PpIdx');
-            $list = $this->predict2Model->mainOriginList(false, $arr_condition, $arr_condition_sub, $this->_reqP('length'), $this->_reqP('start'));
-            $data = $this->_setOriginList($data_paper, $list);
+            $data = $this->predict2Model->mainOriginList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -72,41 +65,80 @@ class AnswerPaper extends \app\controllers\BaseController
     {
         $arr_condition = [
             'EQ' => [
-                'PR.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
-                'PR.SiteCode' => $this->_reqP('search_site_code'),
-                'PR.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'PR.IsStatus' => 'Y',
+                'a.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
+                'a.SiteCode' => $this->_reqP('search_site_code'),
+                'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
+                'a.IsStatus' => 'Y',
+                'b.PpIdx' => $this->_reqP('search_paper')
             ],
             'ORG' => [
                 'LKB' => [
                     'M.MemName' => $this->_reqP('search_fi', true),
                     'M.MemId' => $this->_reqP('search_fi', true),
-                    'PR.TakeNumber' => $this->_reqP('search_fi', true)
+                    'a.TakeNumber' => $this->_reqP('search_fi', true)
                 ]
             ],
         ];
-        $arr_condition_sub = [
-            'EQ' => [
-                'po.PpIdx' => $this->_reqP('search_paper')
-            ]
-        ];
-        $results = $this->predict2Model->mainOriginList('excel', $arr_condition, $arr_condition_sub);
-        $get_paper = $this->predict2Model->getRegPaper(['EQ' => ['PRP.PredictIdx2' => $this->_reqP('search_PredictIdx2')]]);
-        $data_paper = array_pluck($get_paper, 'PapaerName', 'PpIdx');
-
-        $data = $this->_setOriginListExcel($data_paper, $results);
+        $results = $this->predict2Model->mainOriginList('excel', $arr_condition);
         $file_name = '채점서비스참여현황_('.date("Y-m-d").')';
         $headers = ['접수식별자', '회원식별자', '이름', '아이디', '연락처', '이메일', '직렬', '응시번호', '응시횟수', '커트라인평균점수','등록일'];
-        $temp_header_1 = [];
-        $temp_header_2 = [];
-        if (empty($data) === false) {
-            foreach ($data_paper as $key => $val) {
-                $temp_header_1[] = $val;
-                $temp_header_2[] = $val;
+
+        $data = [];
+        if (empty($results) === false) {
+            foreach ($results as $key => $row) {
+                $data[$key]['PrIdx'] = $row['PrIdx'];
+                $data[$key]['MemIdx'] = $row['MemIdx'];
+                $data[$key]['MemName'] = $row['MemName'];
+                $data[$key]['MemId'] = $row['MemId'];
+                $data[$key]['Phone'] = $row['Phone'];
+                $data[$key]['Mail'] = $row['Mail'];
+                $data[$key]['TakeMockPart'] = $row['TakeMockPart'];
+                $data[$key]['TakeNumber'] = $row['TakeNumber'];
+                $data[$key]['TakeCount'] = $row['TakeCount'];
+                $data[$key]['CutPoint'] = $row['CutPoint'];
+                $data[$key]['RegDatm'] = $row['RegDatm'];
+
+                $tmp_papaer_name = explode(',',$row['PapaerName']);
+                foreach ($tmp_papaer_name as $p_key => $p_val) {
+                    $data2[$key]['papaer_name_'.$p_key] = $p_val;
+                }
+
+                $tmp_question_type = explode(',',$row['QuestionType']);
+                foreach ($tmp_question_type as $q_key => $q_val) {
+                    $data[$key]['question_type_'.$q_key] = (($q_val == 1) ? '유형1' : '유형2');
+                }
+
+                $tmp_take_level = explode(',',$row['TakeLevel']);
+                foreach ($tmp_take_level as $l_key => $l_val) {
+                    $data[$key]['take_level_'.$l_key] = (($l_val == 'H') ? '상' : ($l_val == 'M') ? '중' : '하');
+                }
+
+                $tmp_org_point = explode(',',$row['OrgPoint']);
+                foreach ($tmp_org_point as $o_key => $o_val) {
+                    $data[$key]['org_point_'.$o_key] = $o_val;
+                }
+            }
+
+            if (empty($data2[0]['papaer_name_0']) === false) {
+                $add_headers = [$data2[0]['papaer_name_0']];
+                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
+            }
+
+            if (empty($data2[0]['papaer_name_1']) === false) {
+                $add_headers = [$data2[0]['papaer_name_1']];
+                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
+            }
+
+            if (empty($data2[0]['papaer_name_2']) === false) {
+                $add_headers = [$data2[0]['papaer_name_2']];
+                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
+            }
+
+            if (empty($data2[0]['papaer_name_3']) === false) {
+                $add_headers = [$data2[0]['papaer_name_3']];
+                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
             }
         }
-        $headers = array_merge($headers, $temp_header_1);
-        $headers = array_merge($headers, $temp_header_2);
 
         $last_query = $this->predict2Model->getLastQuery();
         // download log
@@ -162,11 +194,11 @@ class AnswerPaper extends \app\controllers\BaseController
                 $arr_excel_data[$key]['TakeMockPart'] = $row['TakeMockPart'];
                 $arr_excel_data[$key]['TaKeNumber'] = $row['TaKeNumber'];
                 $arr_excel_data[$key]['RegDatm'] = $row['RegDatm'];
+                $arr_excel_data[$key]['QuestionType'] = $row['QuestionType'];
                 $tmp_answers = explode(',',$row['Answers']);
                 foreach ($tmp_answers as $answer_key => $answer_val) {
                     $arr_excel_data[$key]['answers_'.$answer_key] = $answer_val;
                 }
-
                 $temp_ppidx_cnt[$row['PpIdx']] = count($tmp_answers);
             }
             $cnt = max(array_values($temp_ppidx_cnt));
@@ -178,7 +210,7 @@ class AnswerPaper extends \app\controllers\BaseController
         }
         $file_name = '답안서비스참여현황_'.$this->_reqP('search_paper_name').'_'.'('.date("Y-m-d").')';
         $headers = [
-            '아이디', '이름', '생년월일', '연락처', '이메일', '직렬', '응시번호', '등록일'
+            '아이디', '이름', '생년월일', '연락처', '이메일', '직렬', '응시번호', '등록일', '과목유형'
         ];
         $headers = array_merge($headers, $num);
 
@@ -196,136 +228,4 @@ class AnswerPaper extends \app\controllers\BaseController
         }
     }
 
-    /**
-     * 채점서비스현황 데이터 가공처리
-     * @param $data_paper
-     * @param $list
-     * @return array
-     */
-    private function _setOriginList($data_paper, $list)
-    {
-        $data = [];
-        foreach ($list as $key => $row) {
-            $data[$key]['PrIdx'] = $row['PrIdx'];
-            $data[$key]['MemIdx'] = $row['MemIdx'];
-            $data[$key]['MemName'] = $row['MemName'];
-            $data[$key]['MemId'] = $row['MemId'];
-            $data[$key]['Phone'] = $row['Phone'];
-            $data[$key]['Mail'] = $row['Mail'];
-            $data[$key]['TakeMockPart'] = $row['TakeMockPart'];
-            $data[$key]['TaKeNumber'] = $row['TaKeNumber'];
-            $data[$key]['TakeCount'] = $row['TakeCount'];
-            $data[$key]['CutPoint'] = $row['CutPoint'];
-            $data[$key]['RegDatm'] = $row['RegDatm'];
-
-            //과목데이터가공
-            $arr_ppidx = explode(',', $row['PpIdx']);
-            $arr_orgpoint = explode(',', $row['OrgPoint']);
-            $data[$key]['OPOINT'] = '';
-            foreach ($arr_ppidx as $p_key => $p_val) {
-                $data[$key]['OPOINT'] .= (empty($data_paper[$p_val]) === true ? '' : $data_paper[$p_val].':'.$arr_orgpoint[$p_key].',');
-            }
-            $data[$key]['OPOINT'] = substr($data[$key]['OPOINT'], 0, -1);
-
-            //과목별난이도가공
-            $data[$key]['TakeLevel'] = '';
-            $arr_level = explode(',', $row['TakeLevel']);
-            foreach ($arr_level as $l_key => $l_val) {
-                $arr_val = explode('|', $l_val);
-                if (empty($data_paper[$arr_val[0]]) === false) {
-                    if ($arr_val[1] == 'H') {
-                        $temp_string = '상';
-                    } else if ($arr_val[1] == 'M') {
-                        $temp_string = '중';
-                    } else {
-                        $temp_string = '하';
-                    }
-                    $data[$key]['TakeLevel'] .= $data_paper[$arr_val[0]].':'.$temp_string.',';
-                }
-            }
-            $data[$key]['TakeLevel'] = substr($data[$key]['TakeLevel'], 0, -1);
-        }
-        return $data;
-    }
-
-    /**
-     * 채점서비스현황 엑셀데이터 가공
-     * @param $data_paper
-     * @param $list
-     * @return array
-     */
-    private function _setOriginListExcel($data_paper, $list)
-    {
-        $data = [];
-        foreach ($list as $key => $row) {
-            $data[$key]['PrIdx'] = $row['PrIdx'];
-            $data[$key]['MemIdx'] = $row['MemIdx'];
-            $data[$key]['MemName'] = $row['MemName'];
-            $data[$key]['MemId'] = $row['MemId'];
-            $data[$key]['Phone'] = $row['Phone'];
-            $data[$key]['Mail'] = $row['Mail'];
-            $data[$key]['TakeMockPart'] = $row['TakeMockPart'];
-            $data[$key]['TaKeNumber'] = $row['TaKeNumber'];
-            $data[$key]['TakeCount'] = $row['TakeCount'];
-            $data[$key]['CutPoint'] = $row['CutPoint'];
-            $data[$key]['RegDatm'] = $row['RegDatm'];
-
-            //과목별난이도가공
-            $arr_level = explode(',', $row['TakeLevel']);
-            if (empty($arr_level) === false) {
-                foreach ($arr_level as $l_key => $l_val) {
-                    $arr_val = explode('|', $l_val);
-                    if (empty($data_paper[$arr_val[0]]) === false) {
-                        if ($arr_val[1] == 'H') {
-                            $temp_string = '상';
-                        } else if ($arr_val[1] == 'M') {
-                            $temp_string = '중';
-                        } else {
-                            $temp_string = '하';
-                        }
-                        $data[$key]['TakeLevel_' . $arr_val[0]] = $temp_string;
-                    }
-                }
-            }
-
-            //과목데이터가공
-            /*$data[$key]['OPOINT'] = [];*/
-            $arr_ppidx = explode(',', $row['PpIdx']);
-            $arr_orgpoint = explode(',', $row['OrgPoint']);
-            if (empty($arr_ppidx) === false) {
-                foreach ($arr_ppidx as $p_key => $p_val) {
-                    $data[$key]['OPOINT_' . $p_val] = (empty($data_paper[$p_val]) === true ? 'null' : $arr_orgpoint[$p_key]);
-                }
-            }
-
-
-            /*//과목데이터가공
-            $arr_ppidx = explode(',', $row['PpIdx']);
-            $arr_orgpoint = explode(',', $row['OrgPoint']);
-            $data[$key]['OPOINT'] = '';
-            foreach ($arr_ppidx as $p_key => $p_val) {
-                $data[$key]['OPOINT'] .= (empty($data_paper[$p_val]) === true ? '' : $data_paper[$p_val].':'.$arr_orgpoint[$p_key].',');
-            }
-            $data[$key]['OPOINT'] = substr($data[$key]['OPOINT'], 0, -1);
-
-            //과목별난이도가공
-            $data[$key]['TakeLevel'] = '';
-            $arr_level = explode(',', $row['TakeLevel']);
-            foreach ($arr_level as $l_key => $l_val) {
-                $arr_val = explode('|', $l_val);
-                if (empty($data_paper[$arr_val[0]]) === false) {
-                    if ($arr_val[1] == 'H') {
-                        $temp_string = '상';
-                    } else if ($arr_val[1] == 'M') {
-                        $temp_string = '중';
-                    } else {
-                        $temp_string = '하';
-                    }
-                    $data[$key]['TakeLevel'] .= $data_paper[$arr_val[0]].':'.$temp_string.',';
-                }
-            }
-            $data[$key]['TakeLevel'] = substr($data[$key]['TakeLevel'], 0, -1);*/
-        }
-        return $data;
-    }
 }

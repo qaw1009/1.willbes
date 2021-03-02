@@ -947,10 +947,20 @@ class Home extends \app\controllers\FrontController
             ],
         ];
 
-        $data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
-        foreach ($data as $key => $row){
-            if(empty($row['ProdPriceData']) === false){
-                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
+//        $data = $this->bookFModel->listBookStoreProduct(false, $arr_condition, $limit_cnt, 0, $order_by);
+//        foreach ($data as $key => $row){
+//            if(empty($row['ProdPriceData']) === false){
+//                $data[$key]['ProdPriceData'] = json_decode($row['ProdPriceData'],true);
+//            }
+//        }
+
+        $data = $this->bookFModel->listSalesProductBook(false, $arr_condition, $limit_cnt, 0, $order_by);
+
+        foreach ($data as  $idx => $row) {
+            $arr_price_data = $row['ProdPriceData'] != 'N' ? element('0', json_decode($row['ProdPriceData'], true)) : [];
+
+            if (empty($arr_price_data) === false && $arr_price_data['RealSalePrice'] > 0) {
+                $data[$idx]['ProdPriceData'] = $arr_price_data;
             }
         }
 

@@ -20,7 +20,7 @@
                                 <img src="{{ $row['wAttachImgPath'] . $row['wAttachImgOgName'] }}" title="{{ $row['ProdName'] }}">
                             </a>
                             <span class="chkBox d_none">
-                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $row['ProdPriceData'][0]['SaleTypeCcd']  . ':' . $row['ProdCode'] }}:book" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_books" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
+                                <input type="checkbox" name="prod_code[]" value="{{ $row['ProdCode'] . ':' . $row['ProdPriceData']['SaleTypeCcd']  . ':' . $row['ProdCode'] }}:book" data-prod-code="{{ $row['ProdCode'] }}" data-parent-prod-code="{{ $row['ProdCode'] }}" data-group-prod-code="{{ $row['ProdCode'] }}" class="chk_books" @if($row['IsSalesAble'] == 'N') disabled="disabled" @endif/>
                             </span>
                         </div>
                         <div>

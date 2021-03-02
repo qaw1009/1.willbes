@@ -131,7 +131,7 @@ class Predict2FModel extends WB_Model
         $from = "
             FROM {$this->_table['product_predict2']} AS PP
             INNER JOIN {$this->_table['product_predict2_r_paper']} AS PPRP ON PP.PredictIdx2 = PPRP.PredictIdx2
-            INNER JOIN {$this->_table['predict2_register_r_paper']} AS RP ON PPRP.PpIdx = RP.PpIdx
+            INNER JOIN {$this->_table['predict2_register_r_paper']} AS RP ON PPRP.PpIdx = RP.PpIdx AND RP.PredictIdx2 = '{$idx}' AND RP.PrIdx = '{$prIdx}'
             INNER JOIN {$this->_table['predict2_questions']} AS q ON PPRP.PpIdx = q.PpIdx AND RP.QuestionType = q.QuestionType AND q.IsStatus = 'Y'
             LEFT JOIN {$this->_table['predict2_answerpaper']} AS pa ON q.PqIdx = pa.PqIdx AND pa.MemIdx = '{$member_idx}' AND PPRP.PredictIdx2 = '{$idx}' AND pa.PrIdx = '{$prIdx}'
         ";

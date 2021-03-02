@@ -1571,9 +1571,40 @@ class Manage extends \app\controllers\BaseController
             ]
         ]);;
 
-        $offdan = [];
+        $offdan = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx,
+                'LearnPatternCcd' => '615006'
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ], true);
 
-        $offpkg = [];
+        $offpkg = $this->manageLectureModel->getPackage(false, [
+            'EQ' => [
+                'MemIdx' => $memIdx
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $search_value,
+                    'subProdName' => $search_value
+                ]
+            ]
+        ], true);
+        foreach($offpkg as $idx => $row){
+            $pkgsublist =  $this->manageLectureModel->getLecture(false, [
+                'EQ' => [
+                    'MemIdx' => $row['MemIdx'],
+                    'OrderIdx' => $row['OrderIdx'],
+                    'ProdCode' => $row['ProdCode']
+                ]
+            ], true);
+            $offpkg[$idx]['subleclist'] = $pkgsublist;
+        }
 
         $this->load->view('member/layer/lecture/list', [
             'memIdx' => $memIdx,

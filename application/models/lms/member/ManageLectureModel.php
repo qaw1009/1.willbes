@@ -7,7 +7,8 @@ class ManageLectureModel extends WB_Model
         'mylec' => 'lms_my_lecture',
         'lec_unit' => 'vw_unit_mylecture_lms',
         'mylecture' => 'vw_on_mylecture_lms',
-        'myofflecture' => 'vw_off_mylecture',
+        'myofflecture' => 'vw_off_mylecture_lms',
+        'myofflecture_pkg' => 'vw_offpkg_mylecture_lms',
         'mylecture_pkg' => 'vw_pkg_mylecture_lms',
         'start_log' => 'lms_my_lecture_history',
         'admin' => 'wbs_sys_admin',
@@ -61,16 +62,23 @@ class ManageLectureModel extends WB_Model
      * @param bool $isCount
      * @return array
      */
-    public function getPackage($isCount, $cond)
+    public function getPackage($isCount, $cond, $is_off = false)
     {
         if($isCount == true){
             $query = "SELECT STRAIGHT_JOIN COUNT(*) ";
         } else {
-            $query = "SELECT STRAIGHT_JOIN *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays
-            ";
+            if ($is_off == true) {
+                $query = "SELECT STRAIGHT_JOIN * ";
+            } else {
+                $query = "SELECT STRAIGHT_JOIN *, TO_DAYS(RealLecEndDate) - TO_DAYS(NOW()) +1 AS remainDays ";
+            }
         }
 
-        $query .= " FROM {$this->_table['mylecture_pkg']} ";
+        if($is_off == true){
+            $query .= " FROM {$this->_table['myofflecture_pkg']} ";
+        } else {
+            $query .= " FROM {$this->_table['mylecture_pkg']} ";
+        }
 
         $where = $this->_conn->makeWhere($cond);
         $query .= $where->getMakeWhere(false);

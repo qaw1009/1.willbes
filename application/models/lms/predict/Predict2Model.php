@@ -1496,49 +1496,66 @@ class Predict2Model extends WB_Model
 
     /**
      * 과목별문제 데이터 리스트
-     * @param bool $is_count
+     * @param false $is_count
      * @param array $add_condition
+     * @param array $add_condition2
      * @param null $limit
      * @param null $offset
      * @return mixed
      */
-    public function mainOriginList($is_count = false, $add_condition = [], $limit = null, $offset = null)
+    public function mainOriginList($is_count = false, $add_condition = [], $add_condition2 = [], $limit = null, $offset = null)
     {
-        if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $order_by_offset_limit = '';
-        } else {
-            $column = 'M.*';
-            $arr_order_by = ['a.PrIdx' => 'DESC'];
-            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
-
         $condition = [ 'IN' => ['a.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
         $condition = array_merge_recursive($condition, $add_condition);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
+        $where2 = $this->_conn->makeWhere($add_condition2)->getMakeWhere(false);
 
-        $from = "
-            FROM (
-                SELECT
+        if ($is_count === true) {
+            $query_string = /** @lang text */ "
+                SELECT COUNT(*) AS numrows
+                FROM (
+                    SELECT COUNT(*) AS cnt
+                    FROM (
+                        SELECT a.PrIdx
+                        FROM {$this->_table['predict2_register']} AS a
+                        INNER JOIN {$this->_table['lms_member']} AS m ON a.MemIdx = m.MemIdx
+                        {$where}
+                    ) AS M
+                    INNER JOIN {$this->_table['predict2_register_r_paper']} AS b ON M.PrIdx = b.PrIdx
+                    INNER JOIN {$this->_table['predict2_paper']} AS c ON b.PpIdx = c.PpIdx
+                    INNER JOIN {$this->_table['predict2_grades_origin']} AS d ON M.PrIdx = d.PrIdx AND b.PpIdx = d.PpIdx
+                    {$where2}
+                    GROUP BY M.PrIdx
+                ) AS C
+            ";
+        } else {
+            $arr_order_by = ['a.PrIdx' => 'DESC'];
+            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $query_string = /** @lang text */ "
+                SELECT M.*
+                ,GROUP_CONCAT(c.PapaerName ORDER BY b.PpIdx ASC) AS PapaerName
+                ,GROUP_CONCAT(b.QuestionType ORDER BY b.PpIdx ASC) AS QuestionType
+                ,GROUP_CONCAT(b.TakeLevel ORDER BY b.PpIdx ASC) AS TakeLevel
+                ,GROUP_CONCAT(d.OrgPoint ORDER BY b.PpIdx ASC) AS OrgPoint
+                FROM (
+                    SELECT
                     a.PrIdx, a.MemIdx, m.MemName, m.MemId, fn_dec(a.UserTelEnc) AS Phone, fn_dec(a.UserMailEnc) AS Mail
                     ,fn_ccd_name(a.TakeMockPart) AS TakeMockPart, a.TakeNumber, a.TakeCount, a.CutPoint, a.RegDatm
-                    ,GROUP_CONCAT(c.PapaerName ORDER BY b.PpIdx ASC) AS PapaerName
-                    ,GROUP_CONCAT(b.QuestionType ORDER BY b.PpIdx ASC) AS QuestionType
-                    ,GROUP_CONCAT(b.TakeLevel ORDER BY b.PpIdx ASC) AS TakeLevel
-                    ,GROUP_CONCAT(d.OrgPoint ORDER BY b.PpIdx ASC) AS OrgPoint
-                FROM lms_predict2_register AS a
-                INNER JOIN lms_predict2_register_r_paper AS b ON a.PrIdx = b.PrIdx
-                INNER JOIN lms_predict2_paper AS c ON b.PpIdx = c.PpIdx
-                INNER JOIN lms_predict2_grades_origin AS d ON a.PrIdx = d.PrIdx AND b.PpIdx = d.PpIdx
-                INNER JOIN lms_member AS m ON a.MemIdx = m.MemIdx
-                {$where}
-                GROUP BY a.PrIdx
-                $order_by_offset_limit
-            ) AS M
-        ";
-        $query_string = 'SELECT '. $column . $from;
-
+                    FROM {$this->_table['predict2_register']} AS a
+                    INNER JOIN {$this->_table['lms_member']} AS m ON a.MemIdx = m.MemIdx
+                    {$where}
+                    {$order_by_offset_limit}
+                ) AS M
+                INNER JOIN {$this->_table['predict2_register_r_paper']} AS b ON M.PrIdx = b.PrIdx
+                INNER JOIN {$this->_table['predict2_paper']} AS c ON b.PpIdx = c.PpIdx
+                INNER JOIN {$this->_table['predict2_grades_origin']} AS d ON M.PrIdx = d.PrIdx AND b.PpIdx = d.PpIdx
+                {$where2}
+                GROUP BY M.PrIdx
+                ORDER BY M.PrIdx DESC
+            ";
+        }
         $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }

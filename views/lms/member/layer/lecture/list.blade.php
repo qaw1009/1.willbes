@@ -447,11 +447,155 @@
 </div>
 
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture6">
-    666
+    <div class="x_content">
+        <table id="list_table" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>운영사이트</th>
+                <th>강좌정보</th>
+                <th>수강상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            @forelse($offdan as $row)
+                <tr>
+                    <td>{{$row['SiteName']}}</td>
+                    <td>
+                        {{$row['PayRouteCcdName']}} |
+                        {{$row['CateName']}} |
+                        {{$row['StudyPatternCcdName']}} |
+                        {{$row['StudyApplyCcdName']}} |
+                        {{$row['SchoolStartYear']}}년 {{$row['SchoolStartMonth']}}월 |
+                        {{$row['CourseName']}}  |
+                        {{$row['SubjectName']}} |
+                        {{$row['wProfName']}} |
+                        <b>{{$row['subProdName']}}</b>
+                    </td>
+                    <td>[
+                        @if($row['LecStartDate'] > date('Y-m-d'))
+                            수강대기
+                        @elseif($row['RealLecEndDate'] < date('Y-m-d'))
+                            수강종료
+                        @else
+                            수강중
+                        @endif
+                        ]</td>
+                </tr>
+                <tr>
+                    <td colspan="6">결제정보 :
+                        <b>[주문번호]</b> {{$row['OrderNo']}} ({{$row['OrderIdx']}})
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제채널]</b> {{$row['PayChannelCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제루트]</b> {{$row['PayRouteCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제수단]</b> {{$row['PayMethodCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제일]</b> {{$row['OrderDate']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[상품구분]</b> 학원단과
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[캠퍼스]</b> {{$row['CampusCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[수강형태]</b> {{$row['StudyPatternCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">수강중인 학원단과반이 없습니다.</td>
+                </tr>
+            @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture7">
-    777
+    <div class="x_content">
+        <table id="list_table" class="table table-striped table-bordered">
+            <tbody>
+            @forelse($offpkg as $row)
+                <tr>
+                    <td colspan="3">
+                        {{$row['SiteName']}} |
+                        {{$row['CateName']}} |
+                        {{$row['StudyPatternCcdName']}} |
+                        {{$row['StudyApplyCcdName']}} |
+                        {{$row['PackTypeCcdName']}} |
+                        {{$row['SchoolStartYear']}}년 {{$row['SchoolStartMonth']}}월 |
+                        <b>{{$row['ProdName']}}</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        결제정보 :
+                        <b>[주문번호]</b> {{$row['OrderNo']}} ({{$row['OrderIdx']}})
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제채널]</b> {{$row['PayChannelCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제루트]</b> {{$row['PayRouteCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제수단]</b> {{$row['PayMethodCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제일]</b> {{$row['OrderDate']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[상품구분]</b> 학원종합반
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[캠퍼스]</b> {{$row['CampusCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[수강형태]</b> {{$row['StudyPatternCcdName']}}
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제금액]</b> {{number_format($row['RealPayPrice'],0)}}원
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <b>[결제상태]</b> {!! $row['PayStatusCcd'] == '676006' ? '<span style="color:red">':'<span style="color:blue">' !!}{{$row['PayStatusCcdName']}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>운영사이트</th>
+                    <th>강좌정보</th>
+                    <th>수강상태</th>
+                </tr>
+                @foreach($row['subleclist'] as $row_sub)
+                    <tr>
+                        <td>{{$row_sub['SiteName']}}</td>
+                        <td>
+                            {{$row_sub['CateName']}} |
+                            {{$row_sub['SchoolStartYear']}}년 {{$row['SchoolStartMonth']}}월 |
+                            {{$row_sub['CourseName']}}  |
+                            {{$row_sub['SubjectName']}} |
+                            {{$row_sub['StudyPatternCcdName']}} |
+                            {{$row_sub['wProfName']}} |
+                            <b>{{$row_sub['subProdName']}}</b>
+                        </td>
+                        <td>[
+                            @if($row_sub['LecStartDate'] > date('Y-m-d'))
+                                수강대기
+                            @elseif($row_sub['RealLecEndDate'] < date('Y-m-d'))
+                                수강종료
+                            @else
+                                수강중
+                            @endif
+                            ]</td>
+                    </tr>
+                @endforeach
+                <tr>
+                    <td colspan="3"></td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="3">수강중인 학원종합반이 없습니다.</td>
+                </tr>
+            @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

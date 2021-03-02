@@ -254,7 +254,7 @@ class SurveyModel extends WB_Model
     public function findSurveyByTitle($ss_idx=null)
     {
         $arr_condition = ['EQ' => ['SsIdx' => $ss_idx,'IsStatus' => 'Y']];
-        $column = "SurveyTitle,StartDate,EndDate";
+        $column = "SiteCode, SurveyTitle,StartDate,EndDate";
         $from = "
             FROM {$this->_table['survey_set']}
         ";
@@ -483,6 +483,7 @@ class SurveyModel extends WB_Model
 
                     foreach ($answer_val as $item => $answer){
                         $data = [
+                            'SiteCode' => $survey_info['site_code'],
                             'SubIdx' => $survey_info['ss_idx'],
                             'SurveyTitle' => $survey_info['survey_title'],
                             'SurveyType' => $SurveyType,

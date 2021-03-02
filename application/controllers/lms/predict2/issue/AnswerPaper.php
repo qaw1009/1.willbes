@@ -33,22 +33,27 @@ class AnswerPaper extends \app\controllers\BaseController
                 'a.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
                 'a.SiteCode' => $this->_reqP('search_site_code'),
                 'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'a.IsStatus' => 'Y',
-                'b.PpIdx' => $this->_reqP('search_paper')
+                'a.ResearchType' => 'Research2',
+                'a.IsStatus' => 'Y'
             ],
             'ORG' => [
                 'LKB' => [
-                    'M.MemName' => $this->_reqP('search_fi', true),
-                    'M.MemId' => $this->_reqP('search_fi', true),
+                    'm.MemName' => $this->_reqP('search_fi', true),
+                    'm.MemId' => $this->_reqP('search_fi', true),
                     'a.TakeNumber' => $this->_reqP('search_fi', true)
                 ]
             ],
         ];
+        $arr_condition2 = [
+            'EQ' => [
+                'b.PpIdx' => $this->_reqP('search_paper')
+            ]
+        ];
 
         $data = [];
-        $count = $this->predict2Model->mainOriginList(true, $arr_condition);
+        $count = $this->predict2Model->mainOriginList(true, $arr_condition, $arr_condition2);
         if ($count > 0) {
-            $data = $this->predict2Model->mainOriginList(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'));
+            $data = $this->predict2Model->mainOriginList(false, $arr_condition, $arr_condition2, $this->_reqP('length'), $this->_reqP('start'));
         }
 
         return $this->response([
@@ -68,18 +73,23 @@ class AnswerPaper extends \app\controllers\BaseController
                 'a.PredictIdx2' => $this->_reqP('search_PredictIdx2'),
                 'a.SiteCode' => $this->_reqP('search_site_code'),
                 'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
-                'a.IsStatus' => 'Y',
-                'b.PpIdx' => $this->_reqP('search_paper')
+                'a.ResearchType' => 'Research2',
+                'a.IsStatus' => 'Y'
             ],
             'ORG' => [
                 'LKB' => [
-                    'M.MemName' => $this->_reqP('search_fi', true),
-                    'M.MemId' => $this->_reqP('search_fi', true),
+                    'm.MemName' => $this->_reqP('search_fi', true),
+                    'm.MemId' => $this->_reqP('search_fi', true),
                     'a.TakeNumber' => $this->_reqP('search_fi', true)
                 ]
             ],
         ];
-        $results = $this->predict2Model->mainOriginList('excel', $arr_condition);
+        $arr_condition2 = [
+            'EQ' => [
+                'b.PpIdx' => $this->_reqP('search_paper')
+            ]
+        ];
+        $results = $this->predict2Model->mainOriginList('excel', $arr_condition, $arr_condition2);
         $file_name = '채점서비스참여현황_('.date("Y-m-d").')';
         $headers = ['접수식별자', '회원식별자', '이름', '아이디', '연락처', '이메일', '직렬', '응시번호', '응시횟수', '커트라인평균점수','등록일'];
 

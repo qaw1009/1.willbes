@@ -43,6 +43,7 @@ class UpdateLectureInfoFModel extends WB_Model
                     where 
                         p.IsStatus=\'Y\' 
 	                    and p.IsUse=\'Y\'
+	                    and p.SaleStatusCcd != \'618003\'
         ';
 
         $group_by = ' group by 

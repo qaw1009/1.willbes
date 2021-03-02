@@ -27,7 +27,8 @@ class BookFModel extends ProductFModel
             $column = $is_count;
         } else {
             $column = 'P.ProdCode, P.ProdName, P.SiteCode, P.CateCode, P.IsSalesAble, P.ProdPriceData 
-                , P.wSaleCcd, P.wSaleCcdName, P.wAuthorNames, P.wPublName, P.wPublDate, P.wAttachImgPath, P.wAttachImgOgName';
+                , P.wSaleCcd, P.wSaleCcdName, P.wAuthorNames, P.wPublName, P.wPublDate, P.wAttachImgPath, P.wAttachImgOgName
+                , P.ProdCateName, P.rwSalePrice, P.rwRealSalePrice, P.rwSaleRate, P.rwSaleRateUnit';
         }
 
         // 수강생교재 제외 조건

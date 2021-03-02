@@ -91,7 +91,7 @@
                     var num_html = '';
                     var bg_class = '';
 
-                    if(item.AttachData){
+                    if(item.AttachData.length > 0){
                         file_icon = '<img src="{{ img_url('prof/icon_file.gif') }}">';
                     }
 

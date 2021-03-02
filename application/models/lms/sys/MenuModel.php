@@ -144,6 +144,30 @@ class MenuModel extends WB_Model
     }
 
     /**
+     * 부모 메뉴식별자의 자식 메뉴식별자 조회
+     * @param int $parent_menu_idx [부모카테고리코드]
+     * @return array
+     */
+    public function getChildMenuIdxs($parent_menu_idx)
+    {
+        $query = /** @lang text */ '
+            select MenuIdx, @r := concat(@r, ",", MenuIdx) as TreeMenuIdxs
+            from (
+                select MenuIdx, ParentMenuIdx
+                from ' . $this->_table['menu'] . '
+                order by ParentMenuIdx, MenuIdx
+            ) as C, (select @r := ?) as vars
+            where find_in_set(ParentMenuIdx, @r) > 0
+            order by 2 desc
+            limit 1       
+        ';
+
+        $row = $this->_conn->query($query, [$parent_menu_idx])->row_array();
+
+        return array_slice(explode(',', $row['TreeMenuIdxs']), 1);
+    }
+
+    /**
      * 메뉴 등록
      * @param array $input
      * @return array|bool
@@ -226,12 +250,13 @@ class MenuModel extends WB_Model
             $menu_idx = element('idx', $input);
             $group_menu_idx = element('group_menu_idx', $input, 0);
             $parent_menu_idx = get_var(element('parent_menu_idx', $input), $group_menu_idx);
+            $is_use = element('is_use', $input,'Y');
             $admin_idx = $this->session->userdata('admin_idx');
 
             $data = [
                 'MenuName' => element('menu_name', $input),
                 'IsTzone' => element('is_tzone', $input,'N'),
-                'IsUse' => element('is_use', $input,'Y'),
+                'IsUse' => $is_use,
                 'IsOpen' => element('is_open', $input,'Y'),
                 'UpdAdminIdx' => $admin_idx
             ];
@@ -258,6 +283,17 @@ class MenuModel extends WB_Model
             $this->_conn->set($data)->where('MenuIdx', $menu_idx);
             if ($this->_conn->update($this->_table['menu']) === false) {
                 throw new \Exception('데이터 수정에 실패했습니다.');
+            }
+
+            if ($is_use == 'N') {
+                // 자식 메뉴가 있다면 동일하게 미사용 처리
+                $child_menu_idxs = $this->getChildMenuIdxs($menu_idx);
+                if (empty($child_menu_idxs) === false) {
+                    $this->_conn->set('IsUse', 'N')->set('UpdAdminIdx', $admin_idx)->where_in('MenuIdx', $child_menu_idxs);
+                    if ($this->_conn->update($this->_table['menu']) === false) {
+                        throw new \Exception('자식메뉴 미사용 처리에 실패했습니다.');
+                    }
+                }
             }
 
             $this->_conn->trans_commit();

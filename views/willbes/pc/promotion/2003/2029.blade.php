@@ -18,36 +18,46 @@
         /************************************************************/
 
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
+        .sky a {display:block;margin-bottom:25px;} 
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2029_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2029_top_bg.jpg) no-repeat center top;}
+        
+        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2029_01_bg.jpg) no-repeat center top;}
 
-        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/01/2029_01_bg.jpg) no-repeat center top;}
+        .wb_04 {background:#027475}
 
-        .wb_02 {background:#037576;}
-  
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="sky">
             <a href="#apply"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2029_sky.png" alt="산림자원직 패스 신청하기" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_sky.png" alt="농업직" >
             </a>             
         </div>  
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2029_top.jpg" alt="농업직 합격 패키지"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_top.jpg" alt="농업직 5과목 패키지"  />
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2029_01.jpg" alt="교수진 라인업"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_01.jpg" alt="교수진 라인업"  />
         </div>
 
-        <div class="evtCtnsBox wb_02" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2029_02.jpg" alt="수강 신청하기" usemap="#2029_apply" border="0" />
-            <map name="2029_apply" id="2029_apply">
-                <area shape="rect" coords="174,771,477,843" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177824" target="_blank" />
-                <area shape="rect" coords="635,773,941,839" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177825" target="_blank" />
+        <div class="evtCtnsBox wb_02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_02.jpg" alt="고민할 필요없이" />
+        </div>
+
+        <div class="evtCtnsBox wb_03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_03.jpg" alt="문제풀이까지"  />
+        </div>
+
+        <div class="evtCtnsBox wb_04" id="apply">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_04.jpg" alt="농업직 수강신청하기" usemap="#Map2029a" border="0"  />
+            <map name="Map2029a" id="Map2029a">
+                <area shape="rect" coords="87,791,325,841" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177824" target="_blank" />
+                <area shape="rect" coords="437,791,675,840" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177825" target="_blank" />
+                <area shape="rect" coords="793,791,1031,840" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179684" target="_blank" />
             </map>
         </div>
 

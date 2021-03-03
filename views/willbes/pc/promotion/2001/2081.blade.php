@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            @include('willbes.pc.predict.2081_promotion_partial')
+            @include('willbes.pc.predict.iframe_predict_indexv2')
 
         </div>
         <!--evtCtnsBox//-->

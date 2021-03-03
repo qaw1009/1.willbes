@@ -15,7 +15,8 @@
 
 		/************************************************************/
 		
-		.skybanner {position:fixed;top:120px;right:10px;width:139px;z-index:10; text-align:center}
+		.skybanner {position:fixed; top:120px; right:10px; z-index:10; text-align:center}
+		.skybanner a {display:block; margin-top:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
@@ -90,7 +91,7 @@
 					<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>	
-			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank"> 
+			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2028_sky.png" alt="이론패키지 신청하기" >
             </a>   
         </div>
@@ -176,8 +177,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
+						<td>2021 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -216,8 +217,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159043">수강신청</a></td>
+						<td>2021 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -260,8 +261,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
+						<td>2021 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -300,8 +301,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159043">수강신청</a></td>
+						<td>2021 장사원 식용작물 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -387,8 +388,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159041">수강신청</a></td>
+						<td>2021 장사원 재배학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>

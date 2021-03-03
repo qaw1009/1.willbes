@@ -8,10 +8,6 @@
     .evtTop {position:relative}
 
     .evt05 {background:#fff}
-    .evt05 a,
-    .evt05 span {display:inline; float:left; width:33.33333%;padding-left:13px;padding-bottom:25px;}
-    .evt05 a img,
-    .evt05 span img {max-width:240px}
 
     .evt02 {text-align:center;}
     .evt02 .dday {font-size:22px;padding:20px 0; background:#fff}
@@ -110,17 +106,18 @@
     </div>  
 
     <div class="evtCtnsBox evt05" >
-        <img src="https://static.willbes.net/public/images/promotion/2021/02/2057_01m.jpg" alt="요리연구가" >   
-        <div id="evt05">
-            <a href="javascript:go_PassLecture('177450');"><img src="https://static.willbes.net/public/images/promotion/2021/02/2057_01_btn01.png" alt="수강권" ></a>
-            <span class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2057_01_btn02.png" alt="강의+베이직" >
-                <a href="javascript:go_PassLecture('177452');" title="강의+베이직A키트" style="position: absolute; left: 2.08%; top: 80%; width: 48.75%; height: 18.77%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('177573');" title="강의+베이직B키트" style="position: absolute; left: 51.25%; top: 80.31%; width: 45.83%; height: 18.77%; z-index: 2;"></a>
-            </span>
-            <a href="javascript:go_PassLecture('177453');"><img src="https://static.willbes.net/public/images/promotion/2021/02/2057_01_btn03.png" alt="강의+프리미엄" ></a>
-        </div>
-        <img src="https://static.willbes.net/public/images/promotion/2021/02/2057_bottom.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01m.jpg" alt="요리연구가" >   
+        <a href="javascript:go_PassLecture('177450');">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01_btn01.jpg" alt="강의 수강권 only" >   
+        </a>   
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01_btn02.jpg" alt="강의+베이직" usemap="#Map2057m_apply" border="0" >
+        <map name="Map2057m_apply" id="Map2057m_apply">
+            <area shape="rect" coords="414,229,538,292" href="javascript:go_PassLecture('177452');" />
+            <area shape="rect" coords="546,229,669,294" href="javascript:go_PassLecture('177573');" />
+        </map>         
+        <a href="javascript:go_PassLecture('177453');">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01_btn03.jpg" alt="강의+프리미엄" >   
+        </a>          
     </div> 
 
     <div class="evtCtnsBox evt02">           

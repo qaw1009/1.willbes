@@ -15,8 +15,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:100px;right:10px;z-index:10; text-align:center}
-        .skybanner a {display:block; margin-top:10px}
+        .skybanner {position:fixed;top:80px;right:10px;z-index:10; text-align:center}
+        .skybanner a {display:block; margin-bottom:5px}
 
         .wb_top_gif {background:#221823;}
 
@@ -32,7 +32,7 @@
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         .time p {text-align:center}
 
-        .wb_top {background:#e6e6e6 url(https://static.willbes.net/public/images/promotion/2020/09/1071_top_bg.jpg) no-repeat center top;position:relative;}
+        .wb_top {background:url("https://static.willbes.net/public/images/promotion/2020/09/1071_top_bg.jpg") no-repeat center top;position:relative;}
 
         .pass_package {position:absolute;left:50%;margin-left:-525px;top:100px;}
 
@@ -53,11 +53,13 @@
         .tabContaier ul:after {content:''; display:block; clear:both}
         .tabContentsEvt iframe {width:876px; height:480px;}
 
-        .wb_cts01_1 {background:#9E97FF url(https://static.willbes.net/public/images/promotion/2020/01/1071_01_bg.jpg) no-repeat center top;}
-
+        .wb_cts01_1 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2020/01/1071_01_bg.jpg") no-repeat center top;}
         .wb_cts01_2 {background:#E4E4E4;}
+        .wb_cts01_3 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2021/03/1071_01_3_bg.jpg") no-repeat center top;}
+        .wb_cts01_3 div {width:1120px; margin:0 auto; position:relative}    
 
-        .wb_cts02 {background:#ffd84f;}      
+        .wb_cts02 {background:#ffd84f;}  
+        .wb_cts02 div {width:1120px; margin:0 auto; position:relative}    
 
         .wb_cts03 {background:#ffd84f; padding-bottom:100px}
         .wb_cts03 ul {width:960px; margin:0 auto}
@@ -114,8 +116,17 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728" target="_blank" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky02.png" alt="">
+            </a> 
+            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" target="_blank" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky03.png" alt="">
+            </a>
+            <a href="#pkg" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky04.png" alt="">
+            </a>     
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
                 <map name="Map1071A" id="Map1071A" >
                     <area shape="rect" coords="5,137,116,189" href="#" class="r_btn_tab" data-tab-id="1" />
                     <area shape="rect" coords="5,196,116,258" href="#" class="r_btn_tab" data-tab-id="2"/>
@@ -124,10 +135,8 @@
                     <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
                     <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
                 </map>
-            </div>           
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="">
-            </a>            
+            </div>          
+                      
         </div>  
 
         <div class="evtCtnsBox wb_top_gif" >            
@@ -172,17 +181,26 @@
 
         <div class="evtCtnsBox wb_cts01_2">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_2.jpg" alt="커리큘럼"  > 
-        </div>    
+        </div>   
+
+        <div class="evtCtnsBox wb_cts01_3">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_01_3.jpg" alt="전기직/통신직 5과목"  > 
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" title="시작하기" style="position: absolute; left: 33.66%; top: 81.51%; width: 32.41%; height: 7.13%; z-index: 2;" target="_blank"></a>
+            </div>
+        </div>   
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
-            <map name="Map1071C" id="Map1071C">
-                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직"/>
-                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직"/>
-                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직" />                
-                <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" target="_blank" alt="실전동형모고" />
-                <area shape="rect" coords="711,1446,919,1489" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" target="_blank" alt="실전동형모고" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"/>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.54%; top: 40.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 40.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" style="position: absolute; left: 66.34%; top: 40.63%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 문풀" style="position: absolute; left: 63.3%; top: 58.61%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 기출문풀" style="position: absolute; left: 63.3%; top: 68.85%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 실전동형모고" style="position: absolute; left: 63.04%; top: 81.73%; width: 19.02%; height: 2.31%; z-index: 2;" id="pkg" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직 실전동형모고" style="position: absolute; left: 63.3%; top: 91.88%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+            </div>
         </div>       
 
         <div class="evtCtnsBox wb_cts03">

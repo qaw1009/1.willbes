@@ -67,7 +67,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2072_top.jpg" alt="이종오 소방 동형 모의고사 무료배포" />
             <div class="time NGEB" id="newTopDday">
                 <ul>
-                    <li class="time_txt"><span>1주차 배포</span> 마감까지</li>
+                    <li class="time_txt"><span>{{$arr_promotion_params['turn']}}주차 배포</span> 마감까지</li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li class="time_txt">일</li>
@@ -138,7 +138,7 @@
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });        
-        
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

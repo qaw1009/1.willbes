@@ -80,13 +80,14 @@
                                 echo '<ul class="liveTab03 slide01">';
                                     foreach($arr_input['data'][$row['PstIdx']] as $arr_content) {
                                         echo "<li>";
-                                        echo "<div><span class='st01'>{$arr_content[0]}</span><span class='st01'>{$arr_content[1]}</span></div>";
-                                        echo "<span>{$arr_content[2]}</span>";
-                                        echo "<span class='st01'>{$arr_content[3]}</span>";
-                                        echo "<span>{$arr_content[4]}</span>";
-                                        echo "<span class='st01'>{$arr_content[5]}</span>";
-                                        echo "<span>{$arr_content[6]}</span>";
-                                        echo "<span class='st01'>{$arr_content[7]}</span>";
+                                        echo '<div><span class="st01">'.(empty($arr_content[0]) === true ? '' : $arr_content[0]).'</span>';
+                                        echo '<span class="st01">'.(empty($arr_content[1]) === true ? '' : $arr_content[1]).'</span></div>';
+                                        echo '<span>'.(empty($arr_content[2]) === true ? '' : $arr_content[2]).'</span>';
+                                        echo '<span class="st01">'.(empty($arr_content[3]) === true ? '' : $arr_content[3]).'</span>';
+                                        echo '<span>'.(empty($arr_content[4]) === true ? '' : $arr_content[4]).'</span>';
+                                        echo '<span class="st01">'.(empty($arr_content[5]) === true ? '' : $arr_content[5]).'</span>';
+                                        echo '<span>'.(empty($arr_content[6]) === true ? '' : $arr_content[6]).'</span>';
+                                        echo '<span class="st01">'.(empty($arr_content[7]) === true ? '' : $arr_content[7]).'</span>';
                                         echo "</li>";
                                     }
                                 echo '</ul>';

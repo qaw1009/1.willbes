@@ -23,7 +23,7 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2057_top_bg.jpg) no-repeat center top}
         
         .evt01 {background:#fff}
-        .evt01 .check{position:absolute;width: 800px;left:43%;top:1200px;margin-left:-250px;z-index:1;font-size:16px; text-align:center;line-height:1.5;
+        .evt01 .check{position:absolute;width: 800px;left:43%;bottom:50px;margin-left:-250px;z-index:1;font-size:16px; text-align:center;line-height:1.5;
                      letter-spacing:-1px;font-weight:bold;}
         .evt01 .check label{color:#000}
         .evt01 .check input {border: 2px solid #000;margin-right: 8px;height: 20px; width: 20px;} 
@@ -102,12 +102,12 @@
         </div>  
         
         <div class="evtCtnsBox evt01" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2057_01.jpg" alt="수강 신청하기" usemap="#Map2057_apply" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01.jpg" alt="수강 신청하기" usemap="#Map2057_apply" border="0" >
             <map name="Map2057_apply" id="Map2057_apply">
-                <area shape="rect" coords="24,1071,252,1136"  href="javascript:go_PassLecture('177450');" />
-                <area shape="rect" coords="270,1071,385,1135"  href="javascript:go_PassLecture('177452');" />
-                <area shape="rect" coords="387,1071,498,1135"  href="javascript:go_PassLecture('177573');" />
-                <area shape="rect" coords="516,1071,745,1136"  href="javascript:go_PassLecture('177453');" />
+                <area shape="rect" coords="427,1048,655,1112" href="javascript:go_PassLecture('177450');" />
+                <area shape="rect" coords="413,1388,538,1452" href="javascript:go_PassLecture('177452');" />
+                <area shape="rect" coords="544,1386,669,1453" href="javascript:go_PassLecture('177573');" />
+                <area shape="rect" coords="427,1728,655,1793" href="javascript:go_PassLecture('177453');" />
             </map>
             <div class="check">
                 <label>

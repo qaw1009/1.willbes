@@ -66,7 +66,7 @@
         .omrWarp td {text-align:center; padding:4px !important}
         .omrWarp tr.check {background:#eefafd}
 
-        .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
+        .omrWarp input[type=text] {width:80%; letter-spacing:5px; text-align:center}
         .omrWarp h4 {margin-bottom:0.5em; color:#000; font-size: 14px}
         .qMarking {margin-bottom:1em;}
         .qMarking h4 span {color:#666; vertical-align:bottom}
@@ -216,6 +216,91 @@
                     <a href="javascript:;" onclick="javascript:regi_submit(); return false;">{{ ($mode == 'MOD') ? '수정' : '등록' }}</a>
                 </div>
             </form>
+
+            {{--참고용 오픈시 주석처리--}}
+            <div class="markingBox">
+                <h3 class="mt30">본인 점수 입력</h3>
+                <div class="omrWarp">
+                    <div class="qMarking">
+                        <h4>헌법<span> | 원점수: 100</span></h4>
+                        <table class="boardTypeB">
+                            <col width="70px">
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th>1~5</th>
+                                <th>6~10</th>
+                                <th>11~15</th>
+                                <th>16~20</th>
+                                <th>21~25</th>
+                            </tr>
+                            <tr>
+                                <td>답안입력</td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="qMarking">
+                        <h4>상황판단<span> | 원점수: 100</span></h4>
+                        <table class="boardTypeB">
+                            <col width="70px">
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th>1~5</th>
+                                <th>6~10</th>
+                                <th>11~15</th>
+                                <th>16~20</th>
+                                <th>21~25</th>
+                                <th>26~30</th>
+                                <th>31~35</th>
+                                <th>36~40</th>
+                            </tr>
+                            <tr>
+                                <td>답안입력</td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                                <td>
+                                    <input class="txt-answer" id="" type="text" name="" maxlength="5" data-input-id="" value="">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
 
             <form class="form-table" id="regi_research_form" name="regi_research_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}

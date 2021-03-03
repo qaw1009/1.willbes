@@ -15,7 +15,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:100px;right:100px;width:122px;z-index:10;}
+        .skybanner {position:fixed;top:100px;right:10px;z-index:10; text-align:center}
+        .skybanner a {display:block; margin-top:10px}
 
         .wb_top_gif {background:#221823;}
 
@@ -114,18 +115,18 @@
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0" style="padding-left:50px";>
+                <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_05.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
                 <map name="Map1071A" id="Map1071A" >
-                    <area shape="rect" coords="5,137,116,189" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="1" />
-                    <area shape="rect" coords="5,196,116,258" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="2"/>
-                    <area shape="rect" coords="5,266,116,326" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="3"/>
-                    <area shape="rect" coords="5,334,116,384" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="4"/>
-                    <area shape="rect" coords="5,390,116,457" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="5"/>
-                    <area shape="rect" coords="5,462,116,511" href="#" onfocus="this.blur();" class="r_btn_tab" data-tab-id="6"/>
+                    <area shape="rect" coords="5,137,116,189" href="#" class="r_btn_tab" data-tab-id="1" />
+                    <area shape="rect" coords="5,196,116,258" href="#" class="r_btn_tab" data-tab-id="2"/>
+                    <area shape="rect" coords="5,266,116,326" href="#" class="r_btn_tab" data-tab-id="3"/>
+                    <area shape="rect" coords="5,334,116,384" href="#" class="r_btn_tab" data-tab-id="4"/>
+                    <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
+                    <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
                 </map>
             </div>           
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728#apply" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="" style="padding-top:15px;">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728" target="_blank" >
+                <img src="https://static.willbes.net/public/images/promotion/2020/08/1728_sky.png" alt="">
             </a>            
         </div>  
 
@@ -176,11 +177,11 @@
         <div class="evtCtnsBox wb_cts02" id="pkglec">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"  usemap="#Map1071C" border="0" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/155797"  />
             <map name="Map1071C" id="Map1071C">
-                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직" onfocus="this.blur();"/>
-                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직" onfocus="this.blur();"/>
-                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직" onfocus="this.blur();" />                
-                <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" target="_blank" alt="문풀패키지" />
-                <area shape="rect" coords="711,1447,919,1490" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" target="_blank" alt="기출문풀패키지" />
+                <area shape="rect" coords="117,808,383,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" target="_blank" alt="통신기술직"/>
+                <area shape="rect" coords="423,809,686,912" href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" target="_blank" alt="전송기술직"/>
+                <area shape="rect" coords="742,806,994,912" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" target="_blank" alt="전기직" />                
+                <area shape="rect" coords="711,1228,918,1275" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" target="_blank" alt="실전동형모고" />
+                <area shape="rect" coords="711,1446,919,1489" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" target="_blank" alt="실전동형모고" />
             </map>
         </div>       
 
@@ -242,8 +243,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -286,8 +287,8 @@
                     <tr>
                         <td>무선공학</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 무선공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166306" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 무선공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179655" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
             </div>
@@ -339,8 +340,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
                     </tr>
                 </table>
 
@@ -500,8 +501,8 @@
                     <tr>
                         <td>전기이론</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기이론 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162035" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전기이론 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179652" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기이론</td>
@@ -537,8 +538,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기기기 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162031" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179653" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -577,8 +578,8 @@
                     <tr>
                         <td>전기기기</td>
                         <td>문제풀이</td>
-                        <td>2020 최우영 전기기기 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162031" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전기기기 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179653" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기기기</td>
@@ -627,8 +628,8 @@
                     <tr>
                         <td>회로이론</td>
                         <td>이론</td>
-                        <td>2020 최우영 회로이론</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159133" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 회로이론</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179040" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>회로이론</td>
@@ -687,8 +688,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>
@@ -775,8 +776,8 @@
                     <tr>
                         <td>전자공학</td>
                         <td>문제풀이</td>
-                        <td>2020 [국가직/지방직] 최우영 전자공학 실전동형모의고사</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/166307" target="_blank">수강신청</a></td>
+                        <td>2021 [국가직] 최우영 전자공학 실전동형모의고사</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179654" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전자공학</td>

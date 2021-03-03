@@ -6,7 +6,7 @@
     <!-- Container -->
     <div class="p_re evtContent NSK-Thin" id="evtContainer">
         @include('willbes.pc.promotion.2001.2080_top')
-        @include('willbes.pc.predict.2082_promotion_partial')
+        @include('willbes.pc.predict.iframe_predict_private')
     </div>
     <!-- End Container -->
     <script type="text/javascript">

@@ -24,9 +24,15 @@
         .boardTypeB tbody td {border-bottom:#cdcdcd 1px solid; border-right:#cdcdcd 1px solid; vertical-align:middle; color:#464646; text-align:center}
         .boardTypeB tbody tr.bg01 th {background:#e5f2fe}
         .boardTypeB tbody td input {vertical-align:middle}
+        .boardTypeB tbody td select {width:100px}
         .boardTypeB tbody td label {margin-right:10px}
         .boardTypeB tbody td li {display: inline;}
         .boardTypeB tbody td span {vertical-align: top}
+
+        .q_type {margin-bottom:10px}
+        .q_type li {margin:5px 0}
+        .q_type li span {display:block; background:#f3f3f3; padding:5px}
+
 
         .btns {text-align:center; margin:30px 0}
         .btns span,
@@ -62,14 +68,14 @@
         .omrWarp td {text-align:center; padding:4px !important}
         .omrWarp tr.check {background:#eefafd}
 
-        .omrWarp input[type=number] {width:80%; letter-spacing:5px; text-align:center}
+        .omrWarp input[type=number] {width:80%; text-align:center}
         .qMarking h4 {margin-bottom:10px; color:#000; font-size: 14px; font-weight:bold}
         .qMarking {padding-bottom:10px; border:0}
         .qMarking h4 span {color:#666; vertical-align:bottom; font-weight:normal}
         .qMarking ul {border:0; line-height: 1.5; border-right:1px solid #cdcdcd; border-top:1px solid #464646; border-bottom:1px solid #cdcdcd; margin-bottom:20px}            
         .qMarking li {display:inline; float:left; width:20%; text-align:center; border:0; padding-bottom:10px; border-left:#cdcdcd 1px solid;}        
         .qMarking li div {background:#f3f3f3; height:30px; line-height:30px; margin-bottom:10px}
-        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd; letter-spacing:1 ;}
+        .qMarking li input {width:80%; margin:0 auto; color:#cdcdcd; }
         .qMarking li input:active,
         .qMarking li input:focus {color:#000}
         .qMarking ul.w25 li {width:25%}
@@ -114,7 +120,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>과목별 책형 / 체감난이도</th>
+                        <th>과목별 책형 /<br> 체감난이도</th>
                         <td class="tx-left">
                             @foreach($subject_list as $key => $val)
                                 <ul class="q_type">
@@ -131,8 +137,8 @@
                                                 {{ (empty($reg_paper_data[$val['PpIdx']]) === false && $reg_paper_data[$val['PpIdx']]['QuestionType'] == 2) ? 'checked=checked' : '' }}
                                                 {{ ($data['research1_cnt'] > 0 || $data['research2_cnt'] > 0) ? 'disabled=disabled' : '' }}>
                                         <label for="question_type_2_{{ $val['PpIdx'] }}">다형</label>
-
-                                        <input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level ml20" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}"
+                                        <br>
+                                        <input type="radio" name="take_level_{{ $val['PpIdx'] }}" class="take-level" id="top_{{ $val['PpIdx'] }}" data-take-level-ppidx="{{ $val['PpIdx'] }}"
                                                value="H" {{ (empty($reg_paper_data[$val['PpIdx']]) === false && $reg_paper_data[$val['PpIdx']]['TakeLevel'] == 'H') ? 'checked=checked' : '' }}
                                                 {{ ($data['research1_cnt'] > 0 || $data['research2_cnt'] > 0) ? 'disabled=disabled' : '' }}>
                                         <label for="top_{{ $val['PpIdx'] }}">상</label>
@@ -236,7 +242,7 @@
                                             @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
                                                 <li>
                                                     <div>{{ $val2 }}</div>
-                                                    <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                    <input class="txt-answer" id="target_{{$_id}}" type="text" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
                                                            oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
                                                 </li>
                                                 @php $_id++; @endphp
@@ -267,7 +273,7 @@
                                     <tr>
                                         <th>{{ $val['SubjectName'] }}</th>
                                         <td class="mypoint">
-                                            <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
+                                            <input type="text" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
                                                    value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                     {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                             @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)

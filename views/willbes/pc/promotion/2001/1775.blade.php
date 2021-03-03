@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="m_section3">
-                    @include('willbes.pc.predict.1775_promotion_partial')
+                    @include('willbes.pc.predict.iframe_predict_main')
 
                     {{--<div class="sectionEvt00 NSK-Black">--}}
                     {{--<a href="#none">빠른 채점하기<span class="NSK-Thin">(답만 입력)</span></a>--}}

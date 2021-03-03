@@ -15,8 +15,8 @@
 
 		/************************************************************/
 		
-		.skybanner {position:fixed; top:120px; right:10px; z-index:10; text-align:center}
-		.skybanner a {display:block; margin-top:10px}
+		.skybanner {position:fixed; top:100px; right:10px; z-index:10;}
+		.skybanner a {display:block; margin-bottom:5px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
@@ -80,20 +80,26 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<div class="skybanner">           
+		<div class="skybanner">   
+			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky02.png" alt="이론패키지" >
+            </a> 
+			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky03.png" alt="5과목 패키지" >
+            </a>   
+			<a href="#to_go"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky04.png" alt="실전동형모고 패키지" >
+            </a> 
 			<a href="#to_go">
-				<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_skybanner.png" title="첨삭지도반" title="환승이벤트"  usemap="#EV181030_c8" border="0" />
-				<map name="EV181030_c8" id="EV181030_c8">
+				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky01.png" usemap="#map1068_sky" border="0" />
+				<map name="map1068_sky" id="map1068_sky">
 					<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
 					<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
 					<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
 					<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
 					<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
-			</a>	
-			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2028_sky.png" alt="이론패키지 신청하기" >
-            </a>   
+			</a>			  
         </div>
 		
         <div class="evtCtnsBox wb_top">
@@ -134,12 +140,13 @@
         </div>	
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2020/09/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
 			<map name="Map1068abc" id="Map1068abc">
-				<area shape="rect" coords="51,910,250,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
-				<area shape="rect" coords="317,912,513,947" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
-				<area shape="rect" coords="587,911,784,950" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
-				<area shape="rect" coords="854,913,1051,946" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
+				<area shape="rect" coords="44,1143,255,1188" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
+				<area shape="rect" coords="312,1144,520,1192" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
+				<area shape="rect" coords="580,1140,789,1194" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
+				<area shape="rect" coords="846,1140,1058,1192" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
+		      	<area shape="rect" coords="863,451,1011,526" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" alt="동형모고패키지" />
 			</map>
 		</div>
 		       

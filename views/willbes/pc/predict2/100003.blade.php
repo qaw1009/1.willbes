@@ -247,7 +247,7 @@
                                                 <td>답안입력 </td>
                                                 @foreach($question_list['numset'][$val['PpIdx']] as $key2 => $val2)
                                                     <td>
-                                                        <input class="txt-answer" id="target_{{$_id}}" type="number" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
+                                                        <input class="txt-answer" id="target_{{$_id}}" type="text" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
                                                                oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}">
                                                     </td>
                                                 @php $_id++; @endphp
@@ -279,7 +279,7 @@
                                     <tr>
                                         <th>{{ $val['SubjectName'] }}</th>
                                         <td class="mypoint">
-                                            <input type="number" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
+                                            <input type="text" class="txt-answer2" name="Score[]" maxlength="4" oninput="maxLengthCheck(this)" data-max-num="100"
                                                    value="{{ (empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === true ? '' : $arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) }}"
                                                     {{ ($is_finish == 'Y') ? 'readonly=readonly' : '' }}> 점
                                             @if ($loop->first === true && empty($arr_reg_answerpaper['subjectSum'][$val['PpIdx']]) === false)

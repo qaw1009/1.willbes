@@ -145,8 +145,8 @@
         <div class="evtCtnsBox evt02" id="evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2006_02.jpg" alt="역대급 세일즈 마케팅 강의" usemap="#Map2006A" border="0" >
             <map name="Map2006A" id="Map2006A">
-                <area shape="rect" coords="675,912,997,972" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank" alt="사전예약신청" />
-            </map>            
+                <area shape="rect" coords="256,378,872,595" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank" alt="사전예약신청" />
+            </map>          
         </div>
 
         <div class="evtCtnsBox evt03">

@@ -182,8 +182,7 @@
 
         <div class="evtCtnsBox evt08" id="evt08">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_08.jpg" alt="최효진 대표의 이커머스 전략" > 
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" title="신청하기" style="position: absolute; left: 17.71%; top: 85.1%; width: 63.8%; height: 6.84%; z-index:2;" id="gostart"></a>               
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_08.jpg" alt="최효진 대표의 이커머스 전략" >               
             </div>            
         </div>
 

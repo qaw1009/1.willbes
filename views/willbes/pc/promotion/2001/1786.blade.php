@@ -90,9 +90,11 @@
 
         <div class="evtCtnsBox evt06">           
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_06.jpg" />
+            {{--
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/hFgv1FgRe3I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            --}}
         </div>  
 
         <div class="evtCtnsBox evt07">

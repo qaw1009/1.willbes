@@ -726,6 +726,7 @@ class BasePromotion extends \app\controllers\FrontController
         $today_now = time();
         $data = [];
         $data['promotion_live_data'] = [];
+        $data['file_download_list'] = [];
         $data['promotion_live_file_link'] = 'javascript:alert(\'준비중입니다.\')';
         $data['promotion_live_file_yn'] = 'N';
 

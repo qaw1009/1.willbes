@@ -242,7 +242,7 @@
     @if (date('YmdHi') <= '202103060900')
         {{--//유튜브 모달팝업--}}
         <style type="text/css">
-            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px;}
         </style>
         <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont" id="youtube_box">
@@ -306,7 +306,7 @@
             });
 
             // 팝업 오늘하루안보기 하드코딩
-            if($.cookie('_wb_client_popup_860') != 'done') {
+            if($.cookie('_wb_client_popup_860') !== 'done') {
                 $('#Popup').show();
                 $('.PopupWrap').fadeIn();
                 $('#PopupBackWrap').fadeIn();

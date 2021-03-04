@@ -5,7 +5,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtTop {position:relative}
+    .evtTop {position:relative;}
 
     .evt01 {position:relative;}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:0; height:0; overflow: hidden;}
@@ -102,6 +102,7 @@
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/2053m_top.jpg" alt="리빙&인테리어" >
+        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178874" title="알아보기" target="_blank" style="position: absolute; left: 10.02%; top: 82.69%; width: 77.54%; height: 10.79%; z-index: 2;"></a>
     </div> 
     
     <div class="evtCtnsBox evt01">

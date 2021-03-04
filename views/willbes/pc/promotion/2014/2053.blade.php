@@ -137,8 +137,10 @@
 
 		<div class="evtCtnsBox evtTop">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_top.jpg" alt="리빙&인테리어" >   
-                <a href="#gostart" title="" style="position: absolute; left: 14.71%; top: 84.52%; width: 70.57%; height: 6.63%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_top.jpg" alt="리빙&인테리어" usemap="#Map2053a" border="0" >
+                <map name="Map2053a" id="Map2053a">
+                    <area shape="rect" coords="59,1191,688,1353" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" />
+                </map>  
             </div>        
         </div>
 
@@ -182,8 +184,7 @@
 
         <div class="evtCtnsBox evt08" id="evt08">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_08.jpg" alt="최효진 대표의 이커머스 전략" > 
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" title="신청하기" style="position: absolute; left: 17.71%; top: 85.1%; width: 63.8%; height: 6.84%; z-index:2;" id="gostart"></a>               
+                <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_08.jpg" alt="최효진 대표의 이커머스 전략" >               
             </div>            
         </div>
 

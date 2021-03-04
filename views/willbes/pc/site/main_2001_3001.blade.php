@@ -306,7 +306,7 @@
             });
 
             // 팝업 오늘하루안보기 하드코딩
-            if($.cookie('_wb_client_popup_860') !== 'done') {
+            if($.cookie('_wb_client_popup_860') != 'done') {
                 $('#Popup').show();
                 $('.PopupWrap').fadeIn();
                 $('#PopupBackWrap').fadeIn();

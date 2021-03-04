@@ -243,7 +243,7 @@
     @if (date('YmdHi') <= '202009191159')
         {{--//유튜브 모달팝업--}}
         <style type="text/css">
-            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block; z-index: 106}
         </style>
         <div id="Popup200916" class="PopupWrap2 modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont" id="youtube_box">

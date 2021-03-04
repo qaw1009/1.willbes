@@ -109,9 +109,9 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2072_03.jpg" alt="쿠폰 다운로드" usemap="#Map2072b" border="0"/>
             <map name="Map2072b" id="Map2072b">
-                <area shape="rect" coords="149,692,311,734" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
-                <area shape="rect" coords="479,692,640,733" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
-                <area shape="rect" coords="809,692,970,734" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
+                <area shape="rect" coords="149,692,311,734" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
+                <area shape="rect" coords="479,692,640,733" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
+                <area shape="rect" coords="809,692,970,734" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
             </map>
         </div> 
 
@@ -131,9 +131,9 @@
                     <dd>
                         <ol>
                             <li>본 이벤트는 2021.3.4.(목)~4.1.(목) 진행됩니다.</li>
-                            <li>이벤트에 무료배포 진행되는 문제/해설 파일은 [이종오 소방학개론/소방관계법규 실전동형모의고사] 학원실강 및 동영상강의에서 유료 제공되고 있는 파일이므로, 이벤트 기간 외 타인과의 공유나 유상 가치를 가진 판매 및 추가 자료 요청은 불가합니다.</li>
+                            <li>이벤트에 무료배포 진행되는 문제/정답 파일은 [이종오 소방학개론/소방관계법규 실전동형모의고사] 학원실강 및 동영상강의에서 유료 제공되고 있는 파일이므로, 이벤트 기간 외 타인과의 공유나 유상 가치를 가진 판매 및 추가 자료 요청은 불가합니다.</li>
                             <li>파일은 PDF 형태로 다운로드 받으실 수 있으며, 각 회차의 배포시작일 오후 2시부터 다음 회차 배포 시작일 0시 이전까지 다운로드하실 수 있습니다.</li>
-                            <li>제공된 문제/해설 자료 이외에 추가 해설이 필요하신 경우, [이종오 소방학개론 실전동형모의고사]/[이종오 소방관계법규 실전동형모의고사] 동영상 강좌를 유료 결제하시어 수강해주시면 됩니다.</li>
+                            <li>제공된 문제/정답 자료 이외에 추가 해설이 필요하신 경우, [이종오 소방학개론 실전동형모의고사]/[이종오 소방관계법규 실전동형모의고사] 동영상 강좌를 유료 결제하시어 수강해주시면 됩니다.</li>
                             <li>이벤트 페이지 내 제공되는 [2021 이종오 소방학개론 실전동형모의고사 단과 30% 할인쿠폰], [2021 이종오 소방관계법규 실전동형모의고사 단과 30% 할인쿠폰], [2021 이종오 소방학/관계법규 실전동형모의고사 패키지 30% 할인쿠폰]의 경우 ID당 각 쿠폰 1회씩만 다운로드 후 이벤트 기간 내에만 사용 가능하며, 지정된 단강좌 이외에는 사용하실 수 없습니다.</li>
                         </ol>
                     </dd>

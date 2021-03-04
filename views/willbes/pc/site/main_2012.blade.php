@@ -33,7 +33,7 @@
                     <ul class="tabWrap wsbookTab NGR">
                         <li><a href="#tab01" class="on">신간 안내</a></li>
                         <li><a href="#tab02">화제의 책</a></li>
-                        <li><a href="#tab03">예약 판매</a></li>
+                        <li><a href="#tab03">출간 예정</a></li>
                     </ul>
                     <div class="more"><a href="{{ front_url('/bookStore/index/pattern/new') }}">+ 신간안내 더보기</a></div>
                 </div>
@@ -88,12 +88,12 @@
                 <div id="tab03" class="bookContent">
                     <div class="booktitle">
                         <span><img src="{{ img_static_url('promotion/main/2012_main_img03.png') }}" alt="예약판매"></span>
-                        <div class="NGEB">예약 판매</div>
-                        <p>곧 나올 책들을 윌스토리에서<br>먼저 만나보고 예약하세요!</p>
+                        <div class="NGEB">출간 예정</div>
+                        <p>곧 나올 책들을 윌스토리에서<br>먼저 만나보세요!</p>
                     </div>
                     <div class="bookList">
                         <ul>
-                            {{-- 예약판매 --}}
+                            {{-- 출간 예정 --}}
                             @foreach($data['resv_product'] as $row)
                                 <li>
                                     <div class="bookImg">

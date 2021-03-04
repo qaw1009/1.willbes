@@ -66,9 +66,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_top.jpg" title="추천강좌" />
         </div>
 
+        {{--
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_01.jpg" />
         </div>         
+        --}}
         
         <div class="evtCtnsBox evt02">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_02.jpg"/>

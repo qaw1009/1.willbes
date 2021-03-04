@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\BaseController
 {
-    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board', '_lms/sys/admin');
+    protected $models = array('sys/wCode', 'sys/loginLog', 'pay/orderList', 'board/board', '_lms/sys/admin', '_lms/sys/cron');
     protected $helpers = array();
 
     public function __construct()
@@ -98,5 +98,37 @@ class Home extends \app\controllers\BaseController
             'enc_data' => $enc_data,
             'param' => '201223'
         ]);
+    }
+
+    /**
+     * 작업스케줄러 실행
+     * @return mixed
+     */
+    public function runScheduler()
+    {
+        $role_idx = array_get($this->session->userdata('admin_auth_data'), 'Role.RoleIdx');
+        $today_his = date('His');
+        $result = true;
+
+        // 작업스케줄러 실행 (시스템관리자 and 8 ~ 10시 사이)
+        if ($role_idx == '1030') {
+            if ($today_his > '080000' && $today_his < '100000') {
+                $run_result = $this->cronModel->runScheduler();
+                if ($run_result === null) {
+                    $succ_msg = '모든 작업이 이미 실행되었습니다.';
+                } else {
+                    $result = $run_result;
+                    $succ_msg = '정상적으로 작업이 실행되었습니다.';
+                }
+            } else {
+                $succ_msg = '작업 실행시간이 아닙니다.';
+            }
+
+            $log_data = $this->cronModel->listTodayRunSchedulerLog();
+
+            return $this->json_result($result, $succ_msg, $result, $log_data);
+        }
+
+        return $this->json_result(true, '권한이 없습니다.');
     }
 }

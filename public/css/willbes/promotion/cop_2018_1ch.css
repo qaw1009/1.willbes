@@ -7,7 +7,7 @@
     min-width:1120px !important;
     margin-top:20px !important;
     padding:0 !important;
-    background:#2F1D2A url(https://static.willbes.net/public/images/promotion/2021/02/2080_top_bg.jpg) no-repeat center top;
+    background: url(https://static.willbes.net/public/images/promotion/2021/02/2080_top_bg.jpg) no-repeat center top;
     font-size:14px;
 }
 .evtContent * {font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;}
@@ -101,6 +101,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .wNotice li a span.st01 {background:#f57d20;}
 .wNotice li a,
 .wNotice div:after {content:""; display:block; clear:both}
+.wNotice .solution {padding-left:45px;}
 
 .m_lnb {}
 .lnbMenu {width:980px; margin:0 auto}

@@ -60,6 +60,11 @@
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}               
         
     </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
     
     <div class="p_re evtContent NSK" id="evtContainer">
 
@@ -90,14 +95,14 @@
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2072_02.jpg" alt="동형모의고사 자료 무료배포" usemap="#Map2072a" border="0"/>
             <map name="Map2072a" id="Map2072a">
-                <area shape="rect" coords="354,562,516,604" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="849,563,1010,603" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="355,642,516,684" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="849,643,1010,684"href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="356,721,517,763" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="850,722,1010,762" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="355,803,516,844" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
-                <area shape="rect" coords="850,803,1010,843" href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" />
+                <area shape="rect" coords="354,562,516,604" href="javascript:void(0);" onclick="fnFileDownload(0);"/>
+                <area shape="rect" coords="849,563,1010,603" href="javascript:void(0);" onclick="fnFileDownload(1);"/>
+                <area shape="rect" coords="355,642,516,684" href="javascript:void(0);" onclick="fnFileDownload(2);"/>
+                <area shape="rect" coords="849,643,1010,684"href="javascript:void(0);" onclick="fnFileDownload(3);"/>
+                <area shape="rect" coords="356,721,517,763" href="javascript:void(0);" onclick="fnFileDownload(4);"/>
+                <area shape="rect" coords="850,722,1010,762" href="javascript:void(0);" onclick="fnFileDownload(5);"/>
+                <area shape="rect" coords="355,803,516,844" href="javascript:void(0);" onclick="fnFileDownload(6);"/>
+                <area shape="rect" coords="850,803,1010,843" href="javascript:void(0);" onclick="fnFileDownload(7);"/>
             </map>
         </div> 
 
@@ -139,12 +144,50 @@
     </div>
     <!-- End Container -->
 
-    <script>  
+    <script>
+        $regi_form = $('#regi_form');
 
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
-        });        
+        });
+
+        function fnFileDownload(idx){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_base['promotion_live_file_list']) === false)
+                var json_data = {!! json_encode($arr_base['promotion_live_file_list']) !!};
+                    json_data = json_data[idx];
+
+                if (typeof json_data.file_idx !== 'undefined') {
+                    var _url = "{{front_url('/promotion/downloadLiveVideo')}}?file_idx=" + json_data.file_idx + "&event_idx={{$arr_base['promotion_code']}}";
+                    location.href = _url;
+                }else{
+                    alert('다운로드 가능한 기간이 아닙니다.');
+                    return;
+                }
+            @endif
+        }
+
+        {{--쿠폰발급--}}
+        function giveCheck(give_idx) {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+            alert('쿠폰발급 기간이 아닙니다.');
+            return;
+            @endif
+
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&give_idx=' + give_idx;
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                }
+            }, showValidateError, null, false, 'alert');
+            @endif
+        }
 
     </script>
 

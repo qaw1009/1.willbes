@@ -102,6 +102,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['promotion_live_data'] = $promotion_live_data['promotion_live_data'];
         $arr_base['promotion_live_file_link'] = $promotion_live_data['promotion_live_file_link'];
         $arr_base['promotion_live_file_yn'] = $promotion_live_data['promotion_live_file_yn'];
+        $arr_base['promotion_live_file_list'] = $promotion_live_data['file_download_list'];
 
         // 프로모션 추가 파라미터 배열처리
         $arr_promotion_params = $this->_getPromotionParams($data['PromotionParams']);
@@ -732,13 +733,23 @@ class BasePromotion extends \app\controllers\FrontController
             $data['promotion_live_data'] = $this->eventFModel->listEventPromotionForLiveVideo($PromotionCode);
 
             if (empty($data['promotion_live_data']) === false) {
-                foreach ($data['promotion_live_data'] as $row) {
+                foreach ($data['promotion_live_data'] as $key => $row) {
+                    $down_yn = 'N';
+
                     if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
                         if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
                             $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
                             $data['promotion_live_file_yn'] = 'Y';
+
+                            $down_yn = 'Y';
                         }
                     }
+
+                    if($down_yn == 'Y'){
+                        $data['file_download_list'][$key]['file_idx'] = $row['EplvIdx'];
+                    }
+                    $data['file_download_list'][$key]['download_yn'] = $down_yn;
+
                 }
             }
         }

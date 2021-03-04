@@ -109,9 +109,9 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2072_03.jpg" alt="쿠폰 다운로드" usemap="#Map2072b" border="0"/>
             <map name="Map2072b" id="Map2072b">
-                <area shape="rect" coords="149,692,311,734" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
-                <area shape="rect" coords="479,692,640,733" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
-                <area shape="rect" coords="809,692,970,734" href="#none" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
+                <area shape="rect" coords="149,692,311,734" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx1'] or ''}}');" />
+                <area shape="rect" coords="479,692,640,733" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx2'] or ''}}');" />
+                <area shape="rect" coords="809,692,970,734" href="javascript:void(0);" alt="쿠폰" onclick="giveCheck('{{$arr_promotion_params['give_idx3'] or ''}}');" />
             </map>
         </div> 
 

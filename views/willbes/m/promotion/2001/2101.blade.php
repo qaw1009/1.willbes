@@ -167,7 +167,7 @@
 
     <div class="evtCtnsBox evt_coupon">
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_02.jpg" alt="쿠폰받기" >
-        <a href="javascript:;" onclick="giveCheck()" title="응시쿠폰 받기" style="position: absolute; left: 11.39%; top: 81.24%; width: 75.69%; height: 8.5%; z-index: 2;"></a>      
+        <a href="javascript:;" onclick="giveCheck()" title="응시쿠폰 받기" style="position: absolute; left: 22.78%; top: 88.32%; width: 54.17%; height: 6.11%; z-index: 2;"></a>      
     </div> 
 
 

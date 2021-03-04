@@ -120,6 +120,8 @@
         .evt01 .slide_con li {display:inline; float:left}
         .evt01 .slide_con li img {width:100%}
         .evt01 .slide_con ul:after {content::""; display:block; clear:both}
+        .evt01_04 {background:#f7f1bf}
+        .evt01_04 div {width:1120px; margin:0 auto; position:relative}
 
         .evt02 {background:#ececec;}
         .evt02 .passLecBuy {position:relative; width:1120px; margin:0 auto;  }
@@ -347,10 +349,17 @@
                         <area shape="rect" coords="845,123,978,156" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
                     </map>
                 </div>
-
             </div>
         </div>
-        <!-- evt02//-->  
+        <!-- evt02//--> 
+        
+        <div class="evtCtnsBox evt01_04">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_04.jpg" alt="열공지원" />
+                <a href="#none" title="쿠폰받기" style="position: absolute; left: 32.59%; top: 84.87%; width: 34.82%; height: 5.8%; z-index: 2;"></a>
+            </div>
+        </div>              
+
 
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_02.jpg"  alt=""/>

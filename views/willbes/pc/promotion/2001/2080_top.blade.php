@@ -55,23 +55,23 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 
             <div id="MapRollingDiv">
                 <ul>
-                    <li class="a01"><a id="area_712001" data-slide-index="" href="#none" class="active">서울</a></li>
-                    <li class="a02"><a id="area_712004" data-slide-index="" href="#none">인천</a></li>
-                    <li class="a03"><a id="area_712009" data-slide-index="" href="#none">경기북부</a></li>
-                    <li class="a04"><a id="area_712008" data-slide-index="" href="#none">경기남부</a></li>
-                    <li class="a05"><a id="area_712010" data-slide-index="" href="#none">강원</a></li>
-                    <li class="a06"><a id="area_712011" data-slide-index="" href="#none">충북</a></li>
-                    <li class="a07"><a id="area_712012" data-slide-index="" href="#none">충남</a></li>
-                    <li class="a08"><a id="area_712006" data-slide-index="" href="#none">대전</a></li>
-                    <li class="a09"><a id="area_712015" data-slide-index="" href="#none">경북</a></li>
-                    <li class="a10"><a id="area_712016" data-slide-index="" href="#none">경남</a></li>
-                    <li class="a11"><a id="area_712003" data-slide-index="" href="#none">대구</a></li>
-                    <li class="a12"><a id="area_712002" data-slide-index="" href="#none">부산</a></li>
-                    <li class="a13"><a id="area_712007" data-slide-index="" href="#none">울산</a></li>
-                    <li class="a14"><a id="area_712013" data-slide-index="" href="#none">전북</a></li>
-                    <li class="a15"><a id="area_712014" data-slide-index="" href="#none">전남</a></li>
-                    <li class="a16"><a id="area_712005" data-slide-index="" href="#none">광주</a></li>
-                    <li class="a17"><a id="area_712017" data-slide-index="" href="#none">제주</a></li>
+                    <li class="a01"><a id="area_712001" data-slide-index="" href="javascript:;"  class="active">서울</a></li>
+                    <li class="a02"><a id="area_712004" data-slide-index="" href="javascript:;">인천</a></li>
+                    <li class="a03"><a id="area_712009" data-slide-index="" href="javascript:;">경기북부</a></li>
+                    <li class="a04"><a id="area_712008" data-slide-index="" href="javascript:;">경기남부</a></li>
+                    <li class="a05"><a id="area_712010" data-slide-index="" href="javascript:;">강원</a></li>
+                    <li class="a06"><a id="area_712011" data-slide-index="" href="javascript:;">충북</a></li>
+                    <li class="a07"><a id="area_712012" data-slide-index="" href="javascript:;">충남</a></li>
+                    <li class="a08"><a id="area_712006" data-slide-index="" href="javascript:;">대전</a></li>
+                    <li class="a09"><a id="area_712015" data-slide-index="" href="javascript:;">경북</a></li>
+                    <li class="a10"><a id="area_712016" data-slide-index="" href="javascript:;">경남</a></li>
+                    <li class="a11"><a id="area_712003" data-slide-index="" href="javascript:;">대구</a></li>
+                    <li class="a12"><a id="area_712002" data-slide-index="" href="javascript:;">부산</a></li>
+                    <li class="a13"><a id="area_712007" data-slide-index="" href="javascript:;">울산</a></li>
+                    <li class="a14"><a id="area_712013" data-slide-index="" href="javascript:;">전북</a></li>
+                    <li class="a15"><a id="area_712014" data-slide-index="" href="javascript:;">전남</a></li>
+                    <li class="a16"><a id="area_712005" data-slide-index="" href="javascript:;">광주</a></li>
+                    <li class="a17"><a id="area_712017" data-slide-index="" href="javascript:;">제주</a></li>
                 </ul>
             </div>
         </div>
@@ -85,7 +85,7 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
     </div>
 
     <div class="wNotice">
-        <img src="https://static.willbes.net/public/images/promotion/2021/02/2080_top_text.png" alt="최종 합격 솔루션">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2080_top_text.png" alt="최종 합격 솔루션" class="solution">
         <div>
             <h3>
                 <a href="javascript:go_popup()">

@@ -165,8 +165,23 @@
             if ($now < $arr_promotion_params['start_active_tab6']) { $onoff_6 = 'null'; } elseif ($now >= $arr_promotion_params['start_active_tab6'] && $now < $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'on'; }
             elseif ($now >= $arr_promotion_params['end_active_tab6']) { $onoff_6 = 'off'; }
         } else { $onoff_6 = 'null'; }
+
+        //live동영상
+        if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion_params['live_end']) === false && empty($arr_promotion_params['live_url']) === false) {
+            if ($now < $arr_promotion_params['live_start']) {
+                $live_url = 'href="javascript:;" onclick="javascript:alert(\'Coming Soon :)\');"';
+            } elseif ($now >= $arr_promotion_params['live_start'] && $now < $arr_promotion_params['live_end']) {
+                $live_url = 'href="'.$arr_promotion_params['live_url'].'" target="_blank"';
+            } elseif ($now >= $arr_promotion_params['live_end']) {
+                $live_url = 'href="javascript:;" onclick="javascript:alert(\'라이브 토크쇼가 종료되었습니다.\');"';
+            } else {
+                $live_url = 'href="javascript:;"';
+            }
+        } else {
+            $live_url = 'href="javascript:;"';
+        }
     @endphp
-    <div class="evtContent NGR" id="evtContainer">        
+    <div class="evtContent NGR" id="evtContainer">
         <ul class="skyBanner"> 
             {{--
             <li>
@@ -180,7 +195,7 @@
             @endif   
             --}}     
             <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2070" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky.png" title="적중 이벤트"></a></li>
-            <li><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky2.png" title="라이브"></a></li>           
+            <li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky2.png" title="라이브"></a></li>
             {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   
 

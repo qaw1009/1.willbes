@@ -1,9 +1,25 @@
+@php
+//live동영상
+$now = date('YmdHi');
+if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion_params['live_end']) === false && empty($arr_promotion_params['live_url']) === false) {
+    if ($now < $arr_promotion_params['live_start']) {
+        $live_url = 'href="javascript:;" onclick="javascript:alert(\'Coming Soon :)\');"';
+    } elseif ($now >= $arr_promotion_params['live_start'] && $now < $arr_promotion_params['live_end']) {
+        $live_url = 'href="'.$arr_promotion_params['live_url'].'" target="_blank"';
+    } elseif ($now >= $arr_promotion_params['live_end']) {
+        $live_url = 'href="javascript:;" onclick="javascript:alert(\'라이브 토크쇼가 종료되었습니다.\');"';
+    } else {
+        $live_url = 'href="javascript:;"';
+    }
+} else {
+    $live_url = 'href="javascript:;"';
+}
+@endphp
 <ul class="skyBanner">
     <li><a href="#event">합격예측 참여하고, <Br />푸짐한 혜택 받자!</a></li>
     <li><a href="javascript:tabMove(2);">빠른채점</a></li>
-    {{--<li><a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">라이브 토크쇼</a></li>--}}
-    <li><a href="#none" onclick="javascript:alert('라이브 토크쇼가 종료되었습니다');">시험 해설</a></li>
-    <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2070" target="_blank">합격 예측</a></li>
+    <li><a {!! $live_url !!}>라이브 토크쇼</a></li>
+    <li><a href="{{front_url('/promotion/index/cate/3001/code/2070')}}" target="_blank">적중이벤트</a></li>
     <li><a href="#evtContainer">top</a></li>
 </ul>
 

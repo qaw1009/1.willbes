@@ -133,9 +133,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01.jpg" alt="" >
         <div class="price"> 
             <ul>
-                <li><input type="radio" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
-                <li><input type="radio" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">85만원<br>15개월 PASS</label></li>
-                <li><input type="radio" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">72만원<br>21년 대비 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">85만원<br>15개월 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">72만원<br>21년 대비 PASS</label></li>
             </ul>
         </div>
 

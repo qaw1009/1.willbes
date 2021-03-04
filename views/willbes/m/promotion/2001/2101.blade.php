@@ -142,7 +142,7 @@
         <div class="liveBox p_re">
             <input type="checkbox" id="live" name="live" value="" />
             <label for="live">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_03.jpg"  alt="라이브"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01_03.jpg"  alt="라이브"/>
             </label>
         </div>
 

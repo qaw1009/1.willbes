@@ -85,7 +85,7 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
     </div>
 
     <div class="wNotice">
-        <img src="https://static.willbes.net/public/images/promotion/2021/02/2080_top_text.png" alt="최종 합격 솔루션" style="padding-left:45px;">
+        <img src="https://static.willbes.net/public/images/promotion/2021/02/2080_top_text.png" alt="최종 합격 솔루션" class="solution">
         <div>
             <h3>
                 <a href="javascript:go_popup()">

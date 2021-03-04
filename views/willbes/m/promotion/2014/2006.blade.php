@@ -93,7 +93,7 @@
     
     <div class="evtCtnsBox evt02">
         <img src="https://static.willbes.net/public/images/promotion/2021/01/2006m_02.jpg" alt="역대급 세일즈마케팅 강의" > 
-        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank" title="사전예약"></a>
+        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178634" target="_blank" title="사전예약" style="position: absolute; left: 10.02%; top: 64.69%; width: 79.54%; height: 19.79%; z-index: 2;"></a>
     </div>    
 
     <div class="evtCtnsBox evt03">

@@ -11,7 +11,7 @@
             padding:0 !important;
             background:#fff;            
         }
-        .evtContent span {vertical-align:auto}
+        .evtContent span {vertical-align:top}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
@@ -268,7 +268,10 @@
         </div>
 
         <div class="evtCtnsBox evtTop" id="main">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top.jpg"  alt="PASS" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top.jpg" alt="PASS" usemap="#Map2101A" border="0" />
+            <map name="Map2101A" id="Map2101A">
+                <area shape="rect" coords="257,1059,867,1143" href="#none" alt="할인쿠폰받고신청하기" />
+            </map>
             <div class="topimg">                
                 <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top_img02.png" title="" /></span>      
                 <span class="img2"><img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top_img01.png" title="" /></span> 
@@ -318,11 +321,13 @@
                     </a>
                 </div>
                 
-                <!--div>
+                {{--
+                <div>
                     <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
                         <img src="https://static.willbes.net/public/images/promotion/2020/12/1976_01_02.jpg"  alt="체력"/>
                     </a>
-                </div-->
+                </div>
+                --}}
 
                 <div class="check">
                     <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>

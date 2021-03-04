@@ -106,7 +106,7 @@
         <div class="evtCtnsBox evt01" id="evt01">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2024_01.jpg" alt="godsr 마케팅" >
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank" title="사전예약 신청하기" style="position: absolute; left: 27.41%; top: 85.84%; width: 44.64%; height: 5.6%; z-index: 2;"></a>   
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank" title="사전예약 신청하기" style="position: absolute; left: 25%; top: 77.84%; width: 50.64%; height: 9.6%; z-index: 2;"></a>   
             </div>                             
         </div>
 

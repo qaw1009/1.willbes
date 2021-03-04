@@ -1,306 +1,4 @@
 @extends('willbes.pc.layouts.master')
-<style type="text/css">
-    /*Main Container : 상단 배너*/
-    .cop .MainVisual {
-        width: 100%;
-        min-width: 1120px;
-        max-width: 2000px;
-        height: 440px;
-        overflow: hidden;
-        position: relative;
-        margin:0 auto;
-        text-align: center;
-    }
-
-    .cop .MaintabBox {
-        position: absolute;
-        top:0;
-        left:50%;
-        margin-left:-1000px;
-        width: 2000px;
-        min-width: 1120px;
-        max-width: 2000px;
-        height: 440px;
-        overflow: hidden;
-    }
-    .cop .MaintabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer;
-        background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.2; filter:alpha(opacity=20);}
-    .cop .MaintabBox p a {display:none;}
-    .cop .MaintabBox p.leftBtn {margin-left:-620px;}
-    .cop .MaintabBox p.rightBtn {margin-left:588px; background-position: right center;}
-    .cop .MaintabBox p:hover {opacity:100; filter:alpha(opacity=100);}
-
-    .cop .MaintabList {
-        position: absolute;
-        top:390px;
-        width:100%;
-        height: 50px;
-        z-index: 99;
-        background-color: rgba(0,0,0,0.5);
-    }
-    .cop .VisualBox .Maintab {width: 100%; margin:0 auto; text-align:center}
-    .cop .VisualBox .Maintab span {
-        display: inline-block;
-        height: 50px;
-        font-size: 15px;
-        line-height: 50px;
-        width: 200px;
-        color:#fff
-    }
-    .cop .VisualBox .Maintab span a.active,
-    .cop .VisualBox .Maintab span a:hover {color:#f9dd74; font-weight:600}
-    .cop .VisualBox .Maintab:after {content:""; display:block; clear:both}
-    .cop .VisualBox .MaintabList.three span {
-        width: 209px;
-    }
-    .cop .VisualBox .MaintabList.four span {
-        width: 156px;
-    }
-    .cop .VisualBox .MaintabList.five span {
-        width: 188px;
-    }
-    .cop .VisualBox .MaintabList span a {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-    .cop .VisualBox .MaintabSlider li img {
-        width: 100%;
-        height: 100%;
-    }
-    .cop .VisualBox .Maintab li a:hover,
-    .cop .VisualBox .Maintab li a.active { color:#fff;  font-weight: bold; background:rgba(0,0,0,0.5);}
-
-    /*Main Container : 배너 4칸*/
-    .cop .SecBanner02 {
-        width:265px;
-        height:350px;
-        margin-right:20px;
-        display: inline;
-        float: left;
-    }
-    .cop .SecBanner02:last-child {margin:0}
-    .cop .SecBanner02 .tag {height:30px; line-height: 30px; font-size: 15px;}
-    .cop .SecBanner02 .slider {width: 265px; height: 320px; overflow: hidden;}
-    .cop .SecBanner02 .bx-wrapper .bx-pager.bx-default-pager a {
-        background: #fff;
-        border:1px solid #b9b9b9;
-        border-radius:10px;
-    }
-    .cop .SecBanner02 .bx-wrapper .bx-pager.bx-default-pager a:hover,
-    .cop .SecBanner02 .bx-wrapper .bx-pager.bx-default-pager a.active,
-    .cop .SecBanner02 .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #000;
-        border:1px solid #000;
-    }
-
-    /*Main Container : 최근 업로드 강의*/
-    .cop .will-nTit {font-size:35px !important; border:0 !important; }
-    .cop .uploadLec {
-        box-shadow:0 10px 25px rgba(0,0,0,.2);
-        border-radius:10px;
-        padding:20px;
-    }
-    .cop .uploadLec .vSlider {position:relative; width:100%; height:74px;}
-    .cop .uploadLec .vSlider:after {content:''; display: block; clear:both}
-    .cop .uploadLec .vSlider .sliderNumV {
-        height:74px;
-        overflow: hidden;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:after {content:''; display: block; clear:both}
-    .cop .uploadLec .vSlider .sliderNumV .lecReview {
-        float:left;
-        display: inline;
-        width:50%;
-        height:74px;
-        line-height: 1.3;
-    }
-    .cop .uploadLec .vSlider .sliderNumV .lecReview a {display:block;}
-    .cop .uploadLec .vSlider .sliderNumV .lecReview a:after {content:''; display: block; clear:both}
-    .cop .uploadLec .imgBox {
-        position:relative;
-        float: left;
-        width: 74px;
-        height: 74px;
-        border-radius:6px;
-        overflow:hidden
-    }
-    .cop .uploadLec .imgBox img {
-        position: absolute; left:50%; top:50%; width:100%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%) scale(1);
-        transition: all ease-in-out .2s;
-    }
-    .cop .uploadLec .vSlider .sliderNumV .lecReview a:hover img {
-        -ms-transform: translate(-50%, -50%) scale(1.1);
-        -webkit-transform: translate(-50%, -50%) scale(1.1);
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(1n) .imgBox {
-        background:#34b696;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(1n) .lecReview:nth-child(2n) .imgBox {
-        background:#e583b9;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(1n) .imgBox {
-        background:#3490b6;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(2n) .lecReview:nth-child(2n) .imgBox {
-        background:#b1b634;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(1n) .imgBox {
-        background:#b67734;
-    }
-    .cop .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
-        background:#d3b9ef;
-    }
-    .cop .uploadLec .lecinfo {float:left; margin-left:10px}
-    .cop .uploadLec .lecinfo p {margin-bottom: 5px; color:#848484; font-size:15px}
-    .cop .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 10px;}
-    .cop .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px}
-    .cop .uploadLec .bx-wrapper .bx-controls-direction {
-        position: absolute;
-        top: 0;
-        right: 10px;
-        width: 40px;
-        height: 20px;
-    }
-    .cop .uploadLec .bx-wrapper .bx-controls-direction a {
-        width: 20px;
-        height: 20px;
-    }
-    .cop .uploadLec .bx-wrapper .bx-pager {
-        float: none;
-        width: 100%;
-        right: 8px;
-        bottom: -50px;
-        text-align: center;
-    }
-    .cop .uploadLec .bx-wrapper .bx-pager.bx-default-pager a {
-        width: 12px;
-        height: 12px;
-        margin: 0 2px;
-        background: #fff;
-        border:1px solid #b9b9b9;
-        border-radius:10px;
-    }
-    .cop .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:hover,
-    .cop .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active,
-    .cop .uploadLec .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #000;
-        border:1px solid #000;
-    }
-    .cop .uploadLec .bx-wrapper .bx-pager.bx-default-pager a.active {
-        width: 40px;
-    }
-
-    /*개편 과목 전문교수진*/
-    .cop .SecBanner03 {
-        margin-right:-5px;
-    }
-    .cop .SecBanner03 li {
-        display:inline; float:left;  margin-right:5px;
-    }
-    .cop .SecBanner03:after {content:''; display: block; clear:both}
-
-    /*개편 과목 전문교수진*/
-    .cop .SecBanner04 .bSlider .slider {
-        height: 100px;
-        overflow:hidden;
-    }
-    .cop .SecBanner04 .bx-wrapper .bx-pager {
-        float: none;
-        width: 100%;
-        right: 8px;
-        bottom: -30px;
-        text-align: center;
-    }
-    .cop .SecBanner04 .bx-wrapper .bx-pager.bx-default-pager a {
-        background: #ccc;
-        width: 12px;
-        height: 12px;
-        margin: 0 2px;
-        background: #fff;
-        border:1px solid #b9b9b9;
-        border-radius:10px;
-    }
-    .cop .SecBanner04 .bx-wrapper .bx-pager.bx-default-pager a:hover,
-    .cop .SecBanner04 .bx-wrapper .bx-pager.bx-default-pager a.active,
-    .cop .SecBanner04 .bx-wrapper .bx-pager.bx-default-pager a:focus {
-        background: #000;
-        border:1px solid #000;
-    }
-    .cop .SecBanner04 .bx-wrapper .bx-pager.bx-default-pager a.active {
-        width: 40px;
-    }
-
-    /*전문교수진 */
-    .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
-    .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
-    .cop .SecBanner05 {margin-right:-20px; margin-top:20px}
-    .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
-    .cop .SecBanner05:after {content:''; display: block; clear:both}
-
-    .cop .SectionBg02 {background:#f8f0dd; padding:100px 0}
-    .cop .SectionBg02 .will-nTit {color:#000}
-    .cop .SecBanner06 {margin-right:-20px; margin-top:20px}
-    .cop .SecBanner06 li {display:inline; float:left; margin:0 20px 20px 0;}
-    .cop .SecBanner06:after {content:''; display: block; clear:both}
-    .cop .tabTv {margin-top:40px}
-    .cop .tabTv .tabTvBtns {float:left; width:285px}
-    .cop .tabTv .tabTvBtns li a {display:block; margin:0 0 18px}
-    .cop .tabTv .tabTvBtns li a span {padding-bottom:3px; border-bottom:2px solid #f8f0dd; color:#c0b381; font-size:22px;}
-    .cop .tabTv .tabTvBtns li a:hover span,
-    .cop .tabTv .tabTvBtns li a.on span {color:#000; border-bottom:2px solid #000}
-    .cop .tabTv .moreBtn {margin-top:40px}
-    .cop .tabTv .moreBtn a {display:inline-block; color:#fff; background:#000; border-radius:30px; height:24px; line-height:24px; padding:0 20px}
-    .cop .tabTv .TvctsBox:after {content:''; display: block; clear:both}
-    .cop .tabTv .Tvcts {width:265px; display:inline-block; float:left; margin-right:20px}
-    .cop .tabTv .Tvcts:last-child {margin:0}
-    .cop .tabTv .TVcts p {text-align:center; margin-top:10px; font-size:15px; color:#000}
-
-    .cop .SecBanner07 ul {margin-right:-20px}
-    .cop .SecBanner07 li {display:inline; float:left; width:265px; margin-right:20px}
-    .cop .SecBanner07 li a {display:block}
-    .cop .SecBanner07 li:last-child a:last-child {margin-top:-1px}
-
-    .cop .SectionBg03 {background:#f3f0ed; padding:100px 0}
-    .cop .bookContent {position:relative; width:1120px; margin:50px auto;}
-    .cop .bookList:after {content:""; display:block; clear:both}
-    .cop .bookList li {display:inline; float:left; width:186px; height:300px; text-align:center; margin-bottom:30px; padding-bottom:10px;
-        word-break: keep-all; color:#43484f;}
-    .cop .bookList span {background: url(https://static.willbes.net/public/images/promotion/main/2001/book_cover.png) no-repeat center top;
-        width:167; height:196px; position: absolute; left:10px; top:0; z-index:10}
-    .cop .bookList .bookImg {position:relative;  width:142px; margin:0 auto; min-height:196px; overflow: hidden;}
-
-    .cop .bookList li img {
-        position: absolute; left:50%; top:50%; max-width:150px;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%) scale(1);
-        transition: all ease-in-out .2s;
-    }
-    .cop .bookList li:hover img {
-        -ms-transform: translate(-50%, -50%) scale(1.1);
-        -webkit-transform: translate(-50%, -50%) scale(1.1);
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    .cop .bookList p {width:90%; margin:auto;}
-    .cop .bookList p:nth-of-type(1) {font-weight:bold; line-height: 1.2; font-size:17px; margin-top:10px}
-    .cop .bookList p:nth-of-type(2) {font-size:13px; color:#363636; margin-top:10px}
-
-    .cop .bookContent > p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer;
-        background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
-    .cop .bookContent > p a {display:none;}
-    .cop .bookContent > p.leftBtn {margin-left:-600px;}
-    .cop .bookContent > p.rightBtn {margin-left:600px; background-position: right center;}
-    .cop .willbes-Layer-Box {left:50%; top:4550px !important; margin-left:-490px !important; z-index: 110;}
-</style>
 @section('content')
     <!-- Container -->
     <div id="Container" class="Container cop NGR c_both">
@@ -332,27 +30,17 @@
                     @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_상품배너'.$i]) === true)
                             <li class="SecBanner02">
-                                <div class="tag">{{ $data['arr_main_banner']['메인_상품배너'.$i][0]['BannerName'] or "" }}</div>
-                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner'])) !!}
+                                {!! banner_html(element('메인_상품배너'.$i, $data['arr_main_banner']),'','','','','','',true) !!}
                             </li>
                         @endif
                     @endfor
-                    <li class="SecBanner02">
-                        <div class="bSlider">
-                            <div class="slider">
-                                @if(isset($data['arr_main_banner']['메인_상품배너4']) === true)
-                                    @foreach($data['arr_main_banner']['메인_상품배너4'] as $row)
-                                        <div>
-                                            <div class="tag">{{ $row['BannerName'] }}</div>
-                                            <a href="{{ empty($row['LinkUrl']) === false ? $row['LinkUrl'] : '#none' }}" target="_{{ $row['LinkType'] }}">
-                                                <img src="{{ $row['BannerFullPath'] . $row['BannerImgName'] }}" title="{{ $row['BannerName'] }}">
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                @endif
+                    @if(isset($data['arr_main_banner']['메인_상품배너4']) === true)
+                        <li class="SecBanner02">
+                            <div class="bSlider">
+                                {!! banner_html(element('메인_상품배너4', $data['arr_main_banner']),'slider','','','','','',true) !!}
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -411,11 +99,11 @@
         </div>
 
         @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
-        <div class="Section mt70">
-            <div class="widthAuto SecBanner04">
-                {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'slider') !!}
+            <div class="Section mt70">
+                <div class="widthAuto SecBanner04">
+                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'slider') !!}
+                </div>
             </div>
-        </div>
         @endif
 
         <div class="Section SectionBg01">
@@ -467,8 +155,7 @@
                         @for($i=1; $i<=3; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor
@@ -477,8 +164,7 @@
                         @for($i=4; $i<=6; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor
@@ -487,8 +173,7 @@
                         @for($i=7; $i<=9; $i++)
                             @if(isset($data['arr_main_banner']['메인_cast'.$i]) === true)
                                 <div class="Tvcts">
-                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner'])) !!}
-                                    <p>{{ $data['arr_main_banner']['메인_cast'.$i][0]['BannerName'] or "" }}</p>
+                                    {!! banner_html(element('메인_cast'.$i, $data['arr_main_banner']),'','','','','','','',true) !!}
                                 </div>
                             @endif
                         @endfor
@@ -541,7 +226,7 @@
             </div>
         </div>
 
-        <div class="Section Section7 mt50 mb50">
+        <div class="Section mt50 mb50">
             <div class="widthAuto">
                 @include('willbes.pc.site.main_partial.onCollaborate_2001')
             </div>
@@ -554,14 +239,14 @@
     </div>
     <!-- End Container -->
 
-    @if (date('YmdHi') <= '202009191159')
+    @if (date('YmdHi') <= '202103060900')
         {{--//유튜브 모달팝업--}}
         <style type="text/css">
-            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px;}
         </style>
         <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
             <div class="Layer-Cont" id="youtube_box">
-                <iframe width="850" height="482" src="https://www.youtube.com/embed/_t7QIFe_Rh0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="850" height="482" src="https://www.youtube.com/embed/146yrfkqJgM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <ul class="btnWrapbt popbtn mt10">
                 <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
@@ -621,7 +306,7 @@
             });
 
             // 팝업 오늘하루안보기 하드코딩
-            if($.cookie('_wb_client_popup_860') !== 'done') {
+            if($.cookie('_wb_client_popup_860') != 'done') {
                 $('#Popup').show();
                 $('.PopupWrap').fadeIn();
                 $('#PopupBackWrap').fadeIn();
@@ -677,7 +362,7 @@
             });
         });
 
-        //최근 업로드 강좌 
+        //최근 업로드 강좌
         $(function() {
             $('.sliderNumV').bxSlider({
                 mode: 'fade',

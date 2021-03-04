@@ -761,7 +761,11 @@ class BasePromotion extends \app\controllers\FrontController
                 foreach ($temp_params as $key => $val) {
                     $arr_temp_params = explode('=', $val);
                     if (empty($arr_temp_params) === false && count($arr_temp_params) > 1) {
-                        $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                        if (empty($arr_temp_params[2]) === false) {
+                            $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1] . '=' . $arr_temp_params[2];
+                        } else {
+                            $arr_promotion_params[$arr_temp_params[0]] = $arr_temp_params[1];
+                        }
                     }
                 }
             }

@@ -289,19 +289,19 @@
                         <li>
                             <div>
                             <strong>99</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">0원 무제한 PASS</label>
+                            <input type="checkbox" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">0원 무제한 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>85</strong>만원<br>
-                                <input type="radio" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">12개월 PASS</label>
+                                <input type="checkbox" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">12개월 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>72</strong>만원<br>
-                                <input type="radio" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">2021년대비 PASS</label>
+                                <input type="checkbox" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">2021년대비 PASS</label>
                             </div>
                          </li>
                     </ul>

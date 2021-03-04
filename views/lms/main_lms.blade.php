@@ -23,6 +23,37 @@
                     </div>
                 </div>
             </div>
+            @if(SUB_DOMAIN == 'lms' && $__auth['Role']['RoleIdx'] == '1030' && in_array(sess_data('admin_id'), ['bsshin']) === true)
+                {{-- 특정아이디의 시스템관리자만 노출 --}}
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>스케줄러 실행 결과 > <span id="run_sch_msg" class="red">작업이 실행 중 입니다.</span></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <ul id="run_sch_hist" class="list-unstyled">
+                        </ul>
+                        <script type="text/javascript">
+                            $(function() {
+                                sendAjax('{{ site_url('/home/runScheduler') }}', {}, function(ret) {
+                                    if (ret.ret_cd) {
+                                        $('#run_sch_msg').html(ret.ret_msg);    // 실행결과
+
+                                        // 실행로그
+                                        if (Object.keys(ret.ret_data).length > 0) {
+                                            var html = '';
+                                            $.each(ret.ret_data, function(idx, item) {
+                                                html += '<li><span class="blue">[' + item.TaskTypeName + ']</span> ' + item.ResultMsg + ' [' + item.RunTime + 's]</li>\n';
+                                            });
+                                            $('#run_sch_hist').html(html);
+                                        }
+                                    }
+                                }, showError, false, 'GET');
+                            });
+                        </script>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="col-md-3">
             <div class="x_panel">

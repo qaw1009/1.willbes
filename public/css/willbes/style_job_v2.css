@@ -60,13 +60,14 @@
 .job .VisualBox .bx-wrapper .bx-pager {
     width: auto;
     left:60px;
-    bottom: 22px;
+    bottom: 18px;
     text-align: left;
     z-index: 90;
 }
 .job .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
+    background: #cecece; width:14px; height:14px; border-radius: 7px;
   }
+.job .VisualBox .bx-wrapper .bx-pager.bx-default-pager a.active {width:30px}
 
 .job .VisualsubBox {
     width: 380px;

@@ -425,7 +425,7 @@
             });
 
             // 무료여부 값에 따른 교재비, 쿠폰, 북포인트 설정
-            $regi_form.on('ifChanged ifCreated', 'input[name="is_free"]:checked', function(evt) {
+            $regi_form.on('ifChanged', 'input[name="is_free"]:checked', function(evt) {
                 var $dc_amt = $regi_form.find('input[name="dc_amt"]');
                 var $dc_type = $regi_form.find('select[name="dc_type"]');
                 var $is_coupon = $regi_form.find('input[name="is_coupon"]');
@@ -455,9 +455,10 @@
                     }
                 }
             });
+            $regi_form.find('input[name="is_free"]:checked').trigger('ifChanged');
 
             // 북포인트적용 disabled 처리
-            $regi_form.on('ifChanged ifCreated', 'input[name="is_point_saving"]:checked', function() {
+            $regi_form.on('ifChanged', 'input[name="is_point_saving"]:checked', function() {
                 var $point_saving_amt = $regi_form.find('input[name="point_saving_amt"]');
                 var $point_saving_type = $regi_form.find('select[name="point_saving_type"]');
                 if($(this).val() === 'Y') {
@@ -468,6 +469,7 @@
                     $point_saving_type.prop('disabled', true);
                 }
             });
+            $regi_form.find('input[name="is_point_saving"]:checked').trigger('ifChanged');
 
             // 판매가 계산
             $regi_form.on('keyup change', 'input[name="org_price"], input[name="dc_amt"], select[name="dc_type"]', function() {

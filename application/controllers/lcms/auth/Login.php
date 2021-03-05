@@ -16,6 +16,11 @@ class Login extends \app\controllers\BaseController
      */
     public function index()
     {
+        // 이미 로그인되어 있을 경우 메인 페이지 이동
+        if ($this->session->userdata('is_admin_login') === true) {
+            show_alert('이미 로그인 상태입니다.', config_app('home_url'), false);
+        }
+        
         // 저장된 운영자 아이디
         $saved_admin_id = get_cookie('saved_admin_id');
         if (empty($saved_admin_id) === false) {

@@ -611,9 +611,6 @@
                     <a href="#none">신간안내</a>
                 </li>
                 <li>
-                    <a href="#none">이벤트/기획전</a>
-                </li>
-                <li>
                     <a href="#none">윌비스출판사</a>
                 </li>
             </ul>

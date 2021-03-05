@@ -58,9 +58,15 @@
     text-align: left;
     z-index: 90;
 }
-.value .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-  }
+.value .VisualBox .bx-wrapper .bx-pager {
+    width: auto;
+    left:60px;
+    bottom: 18px;
+    text-align: left;
+    z-index: 90;
+}
+.value .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {background: #cecece; width:14px; height:14px; border-radius: 7px;}
+.value .VisualBox .bx-wrapper .bx-pager.bx-default-pager a.active {width:30px}
 
 .value .VisualsubBox {
     width: 384px;

@@ -243,7 +243,7 @@
                 <li><a href="{{ site_url('/home/html/promotion/event_zaksim_190702') }}" target="_blank">작심독서실 인증 <span>*</span></a></li>
                 <li><a href="{{ site_url('/home/html/promotion/event_onCopReboundPop') }}" target="_blank">타 학원 수강생 인증 팝업 size 740x700 <span>*</span></a></li>
                 <li class="c_both"></li>
-                <li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>
+                {{--<li><a href="{{ site_url('/home/html/searchList') }}" target="_blank">검색 결과 화면</a></li>--}}
                 <li><a href="{{ site_url('/home/html/searchList2') }}" target="_blank">검색 결과 화면 2</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/promotion/1015_leclist') }}" target="_blank">프로모션 강좌 DP</a></li>

@@ -278,7 +278,7 @@
                     <ol>
                         <li>노량진 실시간 LIVE는 0원 무제한 PASS, 12개월 PASS 결제 시 추가 결제 가능합니다.</li>
                         <li>노량진 실시간 LIVE는 21년 2차 대비 심화과정(3/15~5/29), 22년 대비 기본완성반(3/29~6/18) 두 과정 해당 기간 동안 제공됩니다. (실강으로 진행되는 과정에 한함)</li>
-                        <li><a href="https://police.willbes.net/pass/support/notice/show?board_idx=307555&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
+                        <li><a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=323705&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
                     </ol>
                 </dd>
 
@@ -411,7 +411,7 @@
                     <ol>
                         <li>노량진 실시간 LIVE는 0원 무제한 PASS, 12개월 PASS 결제 시 추가 결제 가능합니다.</li>
                         <li>노량진 실시간 LIVE는 21년 2차 대비 심화과정(3/15~5/29), 22년 대비 기본완성반(3/29~6/18) 두 과정 해당 기간 동안 제공됩니다. (실강으로 진행되는 과정에 한함)</li>
-                        <li><a href="1. https://police.willbes.net/pass/support/notice/show?board_idx=307555&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
+                        <li><a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=323705&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
                     </ol>
                 </dd>                     
 

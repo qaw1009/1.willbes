@@ -77,13 +77,15 @@
                                         <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51204?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4" target="_blank">교수소개</a></li>
                                     </ul>      
                                 </div>   
+                                {{--
                                 <div>
                                     <img src="https://static.willbes.net/public/images/promotion/main/prof_lds01.jpg" title="이동섭">
                                     <ul class="ProfBtns">
                                         <li><a href="#none" onclick="fnPlayerProf('51034', 'OT');">▶</a></li>
                                         <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51034/?subject_idx=1032&subject_name=%ED%95%B4%EC%82%AC%EC%98%81%EC%96%B4" target="_blank">교수소개</a></li>
                                     </ul>      
-                                </div>                    
+                                </div>      
+                                --}}              
                             </div>
                         </div>
                     </li>                 
@@ -97,6 +99,7 @@
                                         <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/51205?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0" target="_blank">교수소개</a></li>
                                     </ul>
                                 </div>   
+                                {{--
                                 <div>
                                     <img src="https://static.willbes.net/public/images/promotion/main/prof_lds02.jpg" title="이동섭">
                                     <ul class="ProfBtns">
@@ -110,7 +113,8 @@
                                         <li><a href="#none" onclick="fnPlayerProf('50485', 'OT');">▶</a></li>
                                         <li><a href="https://police.willbes.net/professor/show/cate/3008/prof-idx/50745/?subject_idx=1033&subject_name=%ED%95%AD%ED%95%B4%EC%88%A0" target="_blank">교수소개</a></li>
                                     </ul>
-                                </div>                    
+                                </div>    
+                                --}}                 
                             </div>
                         </div>
                     </li>                   

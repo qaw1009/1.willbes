@@ -204,40 +204,6 @@ class BasePredict2 extends \app\controllers\FrontController
     }
 
 
-    /*public function storeResearchAjax()
-    {
-        $method = 'add';
-        $idx = $this->_reqP('predict_idx');
-        $prIdx = $this->_reqP('PrIdx');
-        if (empty($prIdx) === false) {
-            $method = 'modify';
-        }
-        $arr_condition = ['EQ' => ['PredictIdx2' => $idx,'IsStatus' => 'Y','IsUse' => 'Y']];
-        $data = $this->predict2FModel->findPredictData($arr_condition, 'PredictIdx2');
-        if (empty($data) === true) {
-            return $this->json_error('잘못된 접근 입니다.');
-        }
-
-        if (empty($this->_reqP('research_type')) === true) {
-            return $this->json_error('잘못된 접근 입니다.');
-        }
-        $research_type = $this->_reqP('research_type');
-
-        $error_result = [];
-        $result = $this->predict2FModel->{$method . 'Predict2' . $research_type}($this->_reqP(null, false));
-        if ($result !== true) {
-            $error_result = [
-                'ret_cd' => false,
-                'ret_msg' => $result,
-                'ret_status' => _HTTP_ERROR
-            ];
-        }
-        $this->json_result($result, '저장되었습니다.', $error_result);
-    }*/
-
-
-
-
     /**
      * 성적서비스 데이터 [합격예측성격]
      * @param $predict_idx2

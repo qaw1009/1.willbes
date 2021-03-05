@@ -54,7 +54,7 @@
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/10/1013_03.jpg" usemap="#Map1013c" title="자세히 보기" border="0" />
             <map name="Map1013c" id="Map1013c">
-                <area shape="rect" coords="116,388,222,432" href="https://police.willbes.net/promotion/index/cate/3001/code/1976" target="_blank" />
+                <area shape="rect" coords="116,388,222,432" href="https://police.willbes.net/promotion/index/cate/3001/code/2101" target="_blank" />
                 <area shape="rect" coords="376,388,481,432" href="https://police.willbes.net/home/index/cate/3002" target="_blank" />
                 <area shape="rect" coords="634,390,742,432" href="https://police.willbes.net/home/index/cate/3006" target="_blank" />
                 <area shape="rect" coords="891,389,1003,433" href="https://police.willbes.net/home/index/cate/3007" target="_blank" />

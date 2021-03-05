@@ -140,7 +140,7 @@
         <div class="evtCtnsBox wb_08">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_08.jpg"  alt="지텔프, 한국사능력검정 시험"  />
         </div>
-
+        {{--
         <div class="evtCtnsBox wb_09">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_09.jpg"  alt="2022년 과목개편대비 준비" usemap="#Map1839E" border="0"  />
             <map name="Map1839E">
@@ -148,6 +148,7 @@
               <area shape="rect" coords="736,797,902,866" href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1984" target="_blank" alt="기본이론종합반">
             </map>
         </div>
+        --}}
     </div>
     <!-- End Container -->
 

@@ -61,10 +61,11 @@ class BasePredict2 extends \app\controllers\FrontController
             //과목조회
             $subject_list = $this->predict2FModel->getSubjectList($idx, $reg_data['PrIdx']);
 
-            $reg_paper_result = $this->predict2FModel->findPredictForRegisterPaper(['EQ' => ['PrIdx' => $reg_data['PrIdx']]]);
+            $reg_paper_result = $this->predict2FModel->findPredictForRegisterPaper(['EQ' => ['a.PrIdx' => $reg_data['PrIdx']]]);
             foreach ($reg_paper_result as $row) {
                 $reg_paper_data[$row['PpIdx']]['QuestionType'] = $row['QuestionType'];
                 $reg_paper_data[$row['PpIdx']]['TakeLevel'] = $row['TakeLevel'];
+                $reg_paper_data[$row['PpIdx']]['AnswerNum'] = $row['AnswerNum'];
             }
 
             //총점, 평균점수조회

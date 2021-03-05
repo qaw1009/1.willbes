@@ -159,8 +159,11 @@ class Predict2FModel extends WB_Model
 
     public function findPredictForRegisterPaper($arr_condition)
     {
-        $column = 'PrrpIdx, PpIdx, SubjectIdx, QuestionType, TakeLevel';
-        $from = " FROM {$this->_table['predict2_register_r_paper']} ";
+        $column = 'a.PrrpIdx, a.PpIdx, a.SubjectIdx, a.QuestionType, a.TakeLevel, b.AnswerNum';
+        $from = "
+            FROM {$this->_table['predict2_register_r_paper']} as a
+            INNER JOIN {$this->_table['predict2_paper']} AS b ON a.PpIdx = b.PpIdx AND b.IsUse = 'Y' AND b.IsStatus = 'Y'
+        ";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         return $this->_conn->query('select ' . $column . $from . $where)->result_array();

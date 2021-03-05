@@ -249,6 +249,13 @@ class BasePredict2 extends \app\controllers\FrontController
         $column .= ',DATE_FORMAT(Research1StartDatm, \'%Y%m%d%H%i\') AS Research1StartDatm, DATE_FORMAT(Research1EndDatm, \'%Y%m%d%H%i\') AS Research1EndDatm';
         $column .= ',DATE_FORMAT(Research2StartDatm, \'%Y%m%d%H%i\') AS Research2StartDatm, DATE_FORMAT(Research2EndDatm, \'%Y%m%d%H%i\') AS Research2EndDatm';
         $column .= ',IsResearch1, IsResearch2';
+        $column .= "
+            ,CONCAT(
+                DATE_FORMAT(Research1StartDatm, '%m.%d')
+                ,'(',SUBSTR( _UTF8'일월화수목금토', DAYOFWEEK(Research1StartDatm), 1),')'
+                ,' ',DATE_FORMAT(Research1StartDatm, '%H:%i')
+            ) AS startDayText
+        ";
         $arr_condition = ['EQ' => ['PredictIdx2' => $predict_idx2,'IsStatus' => 'Y','IsUse' => 'Y']];
         return $this->predict2FModel->findPredictData($arr_condition, $column);
     }

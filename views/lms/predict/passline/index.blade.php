@@ -85,7 +85,9 @@
                     <tbody>
                         @foreach($dataSet as $key => $val)
                             @foreach($val as $key2 => $val2)
-                                <tr class="@if(empty($val2['display']) === false && $val2['display'] == 'N') display-none @endif">
+                                @if(empty($val2['display']) === false && $val2['display'] == 'N') @else
+                                <tr>
+                                {{--<tr class="@if(empty($val2['display']) === false && $val2['display'] == 'N') display-none @endif">--}}
                                     <td>
                                         <select name="IsUse[]" class="form-control mr-5">
                                             <option value="Y" @if($val2['IsUse'] == 'Y') selected @endif>사용</option>
@@ -140,6 +142,7 @@
                                         <input type="button" value="계산" class="btn btn-xs btn-primary mr-0" onClick="calculate('{{ $val2['TakeMockPart'] }}','{{ $val2['TakeArea'] }}','{{ $PredictIdx }}')" />
                                     </td>
                                 </tr>
+                                @endif
                             @endforeach
                         @endforeach
                     </tbody>

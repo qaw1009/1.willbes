@@ -330,6 +330,10 @@
         function regi_submit()
         {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            if ($('#regi_research_type').val() == '' || $('#regi_research_type').val() != 'Research1' || $('#regi_research_type').val() != 'Research2') {
+                alert('{{$base_data['startDayText']}}'+'에 오픈됩니다.');
+                return false;
+            }
 
             if ($('#take_mock_part').val() == '') {
                 $('#take_mock_part').focus();

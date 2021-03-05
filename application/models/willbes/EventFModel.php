@@ -1836,7 +1836,8 @@ class EventFModel extends WB_Model
         $default_arr_condition = [
             'EQ' => [
                 'A.ProdCode' => $prod_code,
-                'B.MemIdx' => $mem_idx
+                'B.MemIdx' => $mem_idx,
+                'A.PayStatusCcd' => 676001 // 결제완료
             ]
         ];
         $arr_condition = array_merge_recursive($arr_condition, $default_arr_condition);

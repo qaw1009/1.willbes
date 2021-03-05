@@ -229,6 +229,8 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+
+        <input type="hidden" id="chk_price" name="chk_price" value="0"/>
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -272,7 +274,7 @@
         <div class="evtCtnsBox evtTop" id="main">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top.jpg" alt="PASS" usemap="#Map2101A" border="0" />
             <map name="Map2101A" id="Map2101A">
-                <area shape="rect" coords="257,1059,867,1143" href="#none" alt="할인쿠폰받고신청하기" />
+                <area shape="rect" coords="257,1059,867,1143" href="#coupon_box" alt="할인쿠폰받고신청하기" />
             </map>
             <div class="topimg">                
                 <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2021/03/2101_top_img02.png" title="" /></span>      
@@ -291,41 +293,42 @@
                         <li>
                             <div>
                             <strong>99</strong>만원<br>
-                            <input type="checkbox" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">0원 무제한 PASS</label>
+                            <input type="checkbox" id="y_pkg1" name="y_pkg" value="179853" data-sale-price="990000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg1">0원 무제한 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>85</strong>만원<br>
-                                <input type="checkbox" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">12개월 PASS</label>
+                                <input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">12개월 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>72</strong>만원<br>
-                                <input type="checkbox" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">2021년대비 PASS</label>
+                                <input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="720000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">2021년대비 PASS</label>
                             </div>
                          </li>
                     </ul>
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_02.jpg"  alt="신광은경찰PASS">
                 </div>
 
-                <div class="liveBox p_re">
-                    <input type="checkbox" id="live" name="live" value="" /> <label for="live">
+                <div class="liveBox p_re" id="add_prod_wrap">
+                    <input type="checkbox" id="y_pkg4" name="y_pkg" value="179872" data-sale-price="112000" onclick="fnChkPrice(this,3);"/>
+                    <label for="y_pkg4">
                         <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_03.jpg"  alt="라이브"/>
                     </label>
                 </div>
 
                 <div class="totalPrice">
-                    총 결제금액 : <strong class="NSK-Black">3,456,789</strong>원
-                    <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
+                    총 결제금액 : <strong class="NSK-Black" id="total_price">0</strong>원
+                    <a href="javascript:void(0);" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
                         신청하기 >
                     </a>
                 </div>
                 
                 {{--
                 <div>
-                    <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
+                    <a href="javascript:void(0);" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
                         <img src="https://static.willbes.net/public/images/promotion/2020/12/1976_01_02.jpg"  alt="체력"/>
                     </a>
                 </div>
@@ -353,10 +356,10 @@
         </div>
         <!-- evt02//--> 
         
-        <div class="evtCtnsBox evt01_04">
+        <div class="evtCtnsBox evt01_04" id="coupon_box">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_04.jpg" alt="열공지원" />
-                <a href="#none" title="쿠폰받기" style="position: absolute; left: 32.59%; top: 84.87%; width: 34.82%; height: 5.8%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();" style="position: absolute; left: 32.59%; top: 84.87%; width: 34.82%; height: 5.8%; z-index: 2;"></a>
             </div>
         </div>              
 
@@ -731,6 +734,61 @@
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
+
+        {{-- 패스, 총 결제금액 --}}
+        function fnChkPrice(obj,depth){
+            var add_price = 0;
+            var total_price;
+            var order_cnt = {{ $arr_base['order_count'] or 0 }};
+            var order_yn = 'Y';
+
+            switch (depth){
+                case 1: // 무제한 pass, 12개월 pass
+                    if($(obj).is(':checked') === true){
+                        $("input[name='y_pkg']").prop("checked", false);
+                        $(obj).prop("checked", true);
+                        $('#chk_price').val($(obj).data('sale-price'));
+
+                        $("#add_prod_wrap").removeClass('d_none');
+                    }else{
+                        $('#chk_price').val(0);
+                        $("input[name='y_pkg']").prop("checked", false);
+                    }
+                    break;
+
+                case 2: // 2021년대비 pass
+                    if($(obj).is(':checked') === true){
+                        $("input[name='y_pkg']").prop("checked", false);
+                        $(obj).prop("checked", true);
+                        $('#chk_price').val($(obj).data('sale-price'));
+
+                        $("#add_prod_wrap").addClass('d_none');
+                    }else{
+                        $('#chk_price').val(0);
+                    }
+                    break;
+
+                case 3: // 한정판매
+                    if($(obj).is(':checked') === true){
+                        if(order_cnt === 0 && $("#y_pkg1").is(':checked') === false && $("#y_pkg2").is(':checked') === false){
+                            order_yn = 'N';
+                        }else{
+                            add_price = $(obj).data('sale-price');
+                        }
+                    }
+                    break;
+
+                default: break;
+            }
+
+            if(order_yn === 'N'){
+                $("#y_pkg4").prop("checked", false);
+                alert('0원 무제한 PASS 또는 12개월 PASS 상품을 구매하셔야 합니다.');
+            }else{
+                total_price = parseInt($('#chk_price').val()) + parseInt(add_price);
+                $("#total_price").html(addComma(total_price));
+            }
+        }
 
         {{--쿠폰발급--}}
         function giveCheck() {

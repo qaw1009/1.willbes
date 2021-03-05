@@ -113,6 +113,8 @@
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
+
+    <input type="hidden" id="chk_price" name="chk_price" value="0"/>
 </form>
 
 <div id="Container" class="Container NSK c_both"> 
@@ -133,22 +135,22 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01.jpg" alt="" >
         <div class="price"> 
             <ul>
-                <li><input type="checkbox" id="y_pkg1" name="y_pkg" value="176497" onClick=""/> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
-                <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="176494" onClick=""/> <label for="y_pkg2">85만원<br>15개월 PASS</label></li>
-                <li><input type="checkbox" id="y_pkg3" name="y_pkg" value="176486" onClick=""/> <label for="y_pkg3">72만원<br>21년 대비 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg1" name="y_pkg" value="179853" data-sale-price="990000" onclick="fnChkPrice(this,1);"> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">85만원<br>15개월 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="720000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">72만원<br>21년 대비 PASS</label></li>
             </ul>
         </div>
 
-        <div class="liveBox p_re">
-            <input type="checkbox" id="live" name="live" value="" />
+        <div class="liveBox p_re" id="add_prod_wrap">
+            <input type="checkbox" id="y_pkg4" name="y_pkg" value="179872" data-sale-price="112000" onclick="fnChkPrice(this,3);"/>
             <label for="live">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01_03.jpg"  alt="라이브"/>
             </label>
         </div>
 
         <div class="totalPrice">
-            총 결제금액 : <strong class="NSK-Black">3,456,789</strong>원
-            <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
+            총 결제금액 : <strong class="NSK-Black" id="total_price">0</strong>원
+            <a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
                 신청하기 >
             </a>
         </div>
@@ -161,7 +163,7 @@
                 <li>※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강생관리]에서 확인 가능합니다. </li>
             </ul>
         </div> 
-        {{--<div><a href="#none" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>--}}
+        {{--<div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>--}}
     </div>
 
 
@@ -199,18 +201,18 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1976m_06.jpg" alt="" >
         <div class="slide_con">
             <ul id="slidesImg2">
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_01.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_02.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_03.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_04.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_05.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_06.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_07.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_08.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_09.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_10.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_11.jpg" alt="후기"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_12.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_01.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_02.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_03.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_04.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_05.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_06.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_07.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_08.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_09.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_10.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_11.jpg" alt="후기"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_06_12.jpg" alt="후기"/></a></li>
             </ul>
         </div>
     </div>
@@ -222,9 +224,9 @@
     <div class="evtCtnsBox evt08">
         <div class="slide_con">
             <ul id="slidesImg3">
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_01.jpg" alt="영어"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_02.jpg" alt="실용글쓰기 박우찬"/></a></li>
-                <li><a href=""><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_03.jpg" alt="실전모의고사"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_01.jpg" alt="영어"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_02.jpg" alt="실용글쓰기 박우찬"/></a></li>
+                <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_08_03.jpg" alt="실전모의고사"/></a></li>
             </ul>
         </div> 
     </div>
@@ -545,6 +547,61 @@
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
 <script type="text/javascript">
     var $regi_form = $('#regi_form');
+
+    {{-- 패스, 총 결제금액 --}}
+    function fnChkPrice(obj,depth){
+        var add_price = 0;
+        var total_price;
+        var order_cnt = {{ $arr_base['order_count'] or 0 }};
+        var order_yn = 'Y';
+
+        switch (depth){
+            case 1: // 무제한 pass, 12개월 pass
+                if($(obj).is(':checked') === true){
+                    $("input[name='y_pkg']").prop("checked", false);
+                    $(obj).prop("checked", true);
+                    $('#chk_price').val($(obj).data('sale-price'));
+
+                    $("#add_prod_wrap").removeClass('d_none');
+                }else{
+                    $('#chk_price').val(0);
+                    $("input[name='y_pkg']").prop("checked", false);
+                }
+                break;
+
+            case 2: // 2021년대비 pass
+                if($(obj).is(':checked') === true){
+                    $("input[name='y_pkg']").prop("checked", false);
+                    $(obj).prop("checked", true);
+                    $('#chk_price').val($(obj).data('sale-price'));
+
+                    $("#add_prod_wrap").addClass('d_none');
+                }else{
+                    $('#chk_price').val(0);
+                }
+                break;
+
+            case 3: // 한정판매
+                if($(obj).is(':checked') === true){
+                    if(order_cnt === 0 && $("#y_pkg1").is(':checked') === false && $("#y_pkg2").is(':checked') === false){
+                        order_yn = 'N';
+                    }else{
+                        add_price = $(obj).data('sale-price');
+                    }
+                }
+                break;
+
+            default: break;
+        }
+
+        if(order_yn === 'N'){
+            $("#y_pkg4").prop("checked", false);
+            alert('0원 무제한 PASS 또는 12개월 PASS 상품을 구매하셔야 합니다.');
+        }else{
+            total_price = parseInt($('#chk_price').val()) + parseInt(add_price);
+            $("#total_price").html(addComma(total_price));
+        }
+    }
 
     {{--쿠폰발급--}}
     function giveCheck() {

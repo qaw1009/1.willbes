@@ -203,6 +203,19 @@ class BasePromotion extends \app\controllers\FrontController
             $add_frame_params = '&survey_chk_yn=Y&survey_count=' . $survey_count;
         }
 
+        // 지정 상품 구매여부 체크
+        if(empty($arr_promotion_params['prod_chk_yn']) === false && $arr_promotion_params['prod_chk_yn'] == 'Y'){
+            $arr_base['order_count'] = 0;
+
+           if(empty($arr_promotion_params['arr_prod_code']) === false){
+               $arr_prod_code = explode(',', $arr_promotion_params['arr_prod_code']);
+               foreach ($arr_prod_code as $prod_code){
+                   $order_count = $this->eventFModel->getOrderForEventMemberCount($prod_code, $this->session->userdata('mem_idx'));
+                   $arr_base['order_count'] += $order_count;
+               }
+           }
+        }
+
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'] . $add_frame_params;
         $arr_base['option_ccd'] = $this->eventFModel->_ccd['option'];
         $arr_base['comment_use_area'] = $this->eventFModel->_comment_use_area_type;

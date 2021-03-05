@@ -243,7 +243,9 @@
                                                 <li>
                                                     <div>{{ $val2 }}</div>
                                                     <input class="txt-answer" id="target_{{$_id}}" type="text" name="Answer_{{ $val['PpIdx'] }}[]" maxlength="5"
-                                                           oninput="maxLengthCheck(this)" data-input-id="{{$_id}}" value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
+                                                    oninput="maxLengthCheck(this)" data-input-id="{{$_id}}"
+                                                    data-answer-maxnum="{{ (empty($reg_paper_data[$val['PpIdx']]['AnswerNum']) === true ? '' : $reg_paper_data[$val['PpIdx']]['AnswerNum']) }}"
+                                                    value="{{ $question_list['answerset'][$val['PpIdx']][$key2] }}" placeholder="답안입력">
                                                 </li>
                                                 @php $_id++; @endphp
                                             @endforeach
@@ -420,7 +422,9 @@
         function research_submit() {
             var confirm_msg = '정답을 제출하시겠습니까?';
             var vali_msg = '';
-            var chk = /^[1-5]+$/i;
+            var chk = /^[1-4]+$/i;
+            var chk2 = /^[1-5]+$/i;
+            var chk_num = '';
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
             if ($('#research_type').val() == 'Research1') {
                 $('.txt-answer').each(function () {
@@ -429,7 +433,8 @@
                         vali_msg = '답안을 모두 입력해 주세요.';
                         return false;
                     }
-                    if (!chk.test(val)) {
+                    chk_num = ($(this).data("answer-maxnum") < 5) ? chk : chk2;
+                    if (!chk_num.test(val)) {
                         vali_msg = '허용되지 않은 답안입니다.';
                         return false;
                     }

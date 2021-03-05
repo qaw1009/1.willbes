@@ -54,13 +54,12 @@
 .cus .VisualBox .bx-wrapper .bx-pager {
     width: auto;
     left:60px;
-    bottom: 22px;
+    bottom: 18px;
     text-align: left;
     z-index: 90;
 }
-.cus .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #cecece;
-  }
+.cus .VisualBox .bx-wrapper .bx-pager.bx-default-pager a {background: #cecece; width:14px; height:14px; border-radius: 7px;}
+.cus .VisualBox .bx-wrapper .bx-pager.bx-default-pager a.active {width:30px}
 
 .cus .VisualsubBox {
     width: 384px;

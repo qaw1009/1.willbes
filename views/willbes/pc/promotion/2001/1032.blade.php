@@ -534,7 +534,7 @@
         <div class="wb_05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
             <map name="Map" id="Map">
-                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/1976') }}" target="_blank" alt="신광은경찰PASS"/>
+                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/2101') }}" target="_blank" alt="신광은경찰PASS"/>
                 <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
                 <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/home/index/cate/3006') }}" target="_blank" alt="경찰승진PASS"/>
                 <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>

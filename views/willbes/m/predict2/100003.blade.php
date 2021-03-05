@@ -230,7 +230,7 @@
                 @if ($mode == 'MOD')
                     @if ($research_type == 'Research1')
                         <input type="hidden" id="mode" name="mode" value="{{ ($data['research1_cnt'] > 0) ? 'modify' : 'add' }}" />
-                        <div class="markingtitle mt50"> Research 1<br>(2021.03.06[토] 17: 10 ~ 2021.03.06[토] 19 : 45까지)<br>※ 2시간만 제공 - 빠른 채점 제공</div>
+                        <div class="markingtitle mt50"> Research 1<br>(2021.03.06[토] 17: 10 ~ 2021.03.06[토] 19 : 45까지)<br>※ 빠른 채점 제공</div>
                         <div class="markingBox">
                             <h3 class="mt30">본인 점수 입력</h3>
                             <div class="omrWarp">

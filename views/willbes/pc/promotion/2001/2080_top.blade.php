@@ -144,8 +144,8 @@ if (empty($arr_promotion_params['live_start']) === false && empty($arr_promotion
 
     /*서비스이용현황 */
     $(document).ready(function() {
-        @if(date('YmdHi') >= '202009241800' && ENVIRONMENT == 'production')
-            alert('2020년 2차 합격예측 풀서비스는 종료 되었습니다.');
+        @if(date('YmdHi') >= '202209241800' && ENVIRONMENT == 'production')
+            alert('2021년 1차 합격예측 풀서비스는 종료 되었습니다.');
             location.href = '{{ front_url('/') }}';
         @endif
 

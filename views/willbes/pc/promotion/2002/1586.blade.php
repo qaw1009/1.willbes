@@ -79,13 +79,14 @@
                     <li><a href="#tab4">채용현황</a></li>              
                 </ul>
             </div> 
-            <div id="tab1" class="tabContents">       
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1586_01_content.jpg" usemap="#Map" title="" border="0" />
-                <map name="Map" id="Map">
-                    <area shape="rect" coords="361,545,757,644" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605001" target="_blank" />
-                </map>    
+            
+            <div id="tab1" class="tabContents">     
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1586_01_content.jpg" usemap="#Map1586_apply" title="스파르타 신청하기" border="0" />
+                <map name="Map1586_apply" id="Map1586_apply">
+                    <area shape="rect" coords="365,701,754,760" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605001" target="_blank" />
+                </map> 
             </div>
-
+            
             <div id="tab2" class="tabContents">       
                 <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_02_content.jpg"  title="" />      
             </div>

@@ -34,6 +34,7 @@ class AnswerPaper extends \app\controllers\BaseController
                 'a.SiteCode' => $this->_reqP('search_site_code'),
                 'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
                 'a.ResearchType' => 'Research2',
+                'a.IsOrigin' => 'Y',
                 'a.IsStatus' => 'Y'
             ],
             'ORG' => [
@@ -74,6 +75,7 @@ class AnswerPaper extends \app\controllers\BaseController
                 'a.SiteCode' => $this->_reqP('search_site_code'),
                 'a.TakeMockPart' => $this->_reqP('search_TakeMockPart'),
                 'a.ResearchType' => 'Research2',
+                'a.IsOrigin' => 'Y',
                 'a.IsStatus' => 'Y'
             ],
             'ORG' => [

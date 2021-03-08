@@ -587,6 +587,13 @@ class Predict2FModel extends WB_Model
                 }
             }
 
+            //isOrigin 업데이트
+            $upd_reg_data = ['IsOrigin' => 'Y'];
+            $this->_conn->set($upd_reg_data)->where('PrIdx', element('pr_idx', $form_data));
+            if ($this->_conn->update($this->_table['predict2_register']) === false) {
+                throw new \Exception('수정에 실패했습니다.');
+            }
+
             $this->_conn->trans_commit();
         } catch (Exception $e) {
             $this->_conn->trans_rollback();

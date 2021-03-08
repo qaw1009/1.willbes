@@ -17,6 +17,11 @@ class Login extends \app\controllers\BaseController
      */
     public function index($params = [])
     {
+        // 이미 로그인되어 있을 경우 메인 페이지 이동
+        if ($this->session->userdata('btob.is_admin_login') === true) {
+            show_alert('이미 로그인 상태입니다.', config_app('home_url'), false);
+        }
+
         // 제휴사 아이디
         $btob_id = element('0', $params);
 

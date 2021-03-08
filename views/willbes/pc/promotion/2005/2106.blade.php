@@ -103,7 +103,7 @@
             <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
             <p class="NSK-Black">수강기간 450일 적용</p>
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif   
 		</div>  
         

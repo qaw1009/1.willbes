@@ -1013,7 +1013,6 @@
                                     <col style="width: 85px;">
                                     <col width="*">
                                     <col style="width: 140px;">
-                                    <col style="width: 100px;">
                                     <col style="width: 140px;">
                                 </colgroup>
                                 <tbody>
@@ -1041,27 +1040,6 @@
                                         <td class="w-schedule">
                                             <span class="tx-blue">2018-05-20 <br>~ 2018-06-25</span><br/>
                                             월화수목 (10회차)
-                                        </td>
-                                        <td>
-                                            <ul class="lecBuyBtns">
-                                                <li class="btnVisit"><a href="#none">방문결제</a></li>
-                                                <li class="btnCart">
-                                                    <a onclick="openWin('pocketBox')" >장바구니</a>
-                                                    <div id="pocketBox" class="pocketBox">
-                                                        <a class="closeBtn" href="#none" onclick="closeWin('pocketBox')">
-                                                            <img src="{{ img_url('cart/close.png') }}">
-                                                        </a>
-                                                        해당 상품이 장바구니에 담겼습니다.<br/>
-                                                        장바구니로 이동하시겠습니까?
-                                                        <ul class="NSK mt20">
-                                                            <li class="aBox answerBox_block"><a href="#none">예</a></li>
-                                                            <li class="aBox waitBox_block"><a href="#none">계속구매</a></li>
-                                                            <li class="aBox closeBox_block"><a href="#none" onclick="closeWin('pocketBox')">닫기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </li>                                    
-                                                <li class="btnBuy"><a href="#none">바로결제</a></li>
-                                            </ul>
                                         </td>
                                         <td class="w-notice">
                                             <div class="acadInfo n2">접수중</div>
@@ -1143,7 +1121,6 @@
                                     <col style="width: 85px;">
                                     <col width="*">
                                     <col style="width: 140px;">
-                                    <col style="width: 100px;">
                                     <col style="width: 140px;">
                                 </colgroup>
                                 <tbody>
@@ -1169,13 +1146,6 @@
                                         <td class="w-schedule">
                                             <span class="tx-blue mb5">2018-05-20 <br/>~ 2018-06-30</span><br/>
                                             월화수 (10회차)
-                                        </td>
-                                        <td>
-                                            <ul class="lecBuyBtns">
-                                                <li class="btnVisit"><a href="#none">방문결제</a></li>
-                                                <li class="btnCart"><a href="#none">장바구니</a></li>                                    
-                                                <li class="btnBuy"><a href="#none">바로결제</a></li>
-                                            </ul>
                                         </td>
                                         <td class="w-notice p_re">
                                             <div class="acadInfo n1">접수예정</div>

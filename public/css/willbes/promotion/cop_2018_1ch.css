@@ -44,7 +44,7 @@ box-shadow: 5px 5px 20px 0px rgba(0,0,0,0.3);}
 .tmap {position:absolute; top:180px; left:600px; width:440px; height:430px; background:url(https://static.willbes.net/public/images/promotion/2019/04/1211_03map.png) no-repeat}
 .tmap .map_visual {position:relative}
 /*지도테이블*/
-.tmap .map_visual .tmapR {float:right; text-align:left; width:230px; height: 220px; margin-top:50px; overflow:hidden}
+.tmap .map_visual .tmapR {float:right; text-align:left; width:230px; height: 246px; margin-top:50px; overflow:hidden}
 .tmap .map_visual .bx-wrapper p {margin-top:34px; font-size:120%; font-weight:bold; color:#fff; position:relative; margin-bottom:20px}
 .tmap .map_visual .bx-wrapper p span {height:34px; line-height:1; padding:5px 10px;  background:#fff200; color:#000; font-size:90%; margin:0; border-radius:17px; letter-spacing:-1px}
 /*지역*/		

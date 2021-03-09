@@ -17,6 +17,9 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:225px;right:25px;z-index:10;}
+        .sky a {display:block;padding-top:15px;}
+
         /*타이머*/
         .time {position:absolute; top:1273px; left:50%; width:920px; margin-left:-460px; text-align:center;}
         .time {text-align:center; padding:20px 0}
@@ -64,6 +67,14 @@
     
     <div class="p_re evtContent NSK" id="evtContainer">
 
+        <div class="sky">
+            <a href="#apply"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2064_sky.png" alt="문제풀이" >
+            </a>     
+            <a href="https://pass.willbes.net/promotion/index/cate/3024/code/2099" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2064_sky2.png" alt="전략" >
+            </a>                     
+        </div>
 
         <div class="evtCtnsBox wb_top" >
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2064_top.jpg" alt="군무원 문제풀이 PASS" usemap="#Map2064_apply" border="0"/>

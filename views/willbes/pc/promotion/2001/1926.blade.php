@@ -13,7 +13,7 @@
         background:#fff;
     }	
     .evtContent span {vertical-align:auto}
-    .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+    .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
     /*****************************************************************/ 
     .skybanner {position:fixed; top:225px; width:150px; right:10px;z-index:1;}
     .skybanner a {display:block; margin-bottom:10px}

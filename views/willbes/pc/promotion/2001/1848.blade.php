@@ -17,7 +17,7 @@
             background:#dcdcdc;
         }
         .evtContent span {vertical-align:top;}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .sky {position:fixed; top:200px;right:10px;z-index:10;}

@@ -354,26 +354,32 @@
                     <li>
                         <span>[국어]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50729/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">오훈</a>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50157/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50621/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">임재진</a>
                     </li>
                     <li>
                         <span>[행정법]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50615/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50407/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">임병주</a>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50107/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김헌</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                     </li>
                     <li>
-                        <span>[공중보건]</span>
-                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50395/?subject_idx=1130&subject_name=%EA%B3%B5%EC%A4%91%EB%B3%B4%EA%B1%B4')}}">하재남</a>
-                        <span>[G-TELP]</span>
-                        <a href="https://lang.willbes.net/professor/show/cate/3093/prof-idx/50764/?subject_idx=1478&subject_name=G-TELP&search_order=course&tab=home&series=">서민지</a>
-                    </li>
-                    <li>
                         <span>[경영학]</span>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50609/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99')}}">황선호</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50763/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99')}}">고강유</a>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50549/?subject_idx=1185&subject_name=%EA%B2%BD%EC%98%81%ED%95%99')}}">전수환</a>
+                    </li>
+                    <li>
+                        <span>[국가정보학]</span>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50563/?subject_idx=1236&subject_name=%EA%B5%AD%EA%B0%80%EC%A0%95%EB%B3%B4%ED%95%99')}}">민진규</a>
+                        <span>[정보사회론]</span>
+                        <a href="{{front_url('/professor/show/cate/3024/prof-idx/50609/?subject_idx=2151&subject_name=%EC%A0%95%EB%B3%B4%EC%82%AC%ED%9A%8C%EB%A1%A0')}}">황선호</a>
+                    </li>
+                    <li>
+                        <span>[G-TELP]</span>
+                        <a href="https://lang.willbes.net/professor/show/cate/3093/prof-idx/50764/?subject_idx=1478&subject_name=G-TELP&search_order=course&tab=home&series=">서민지</a>
                         <span>[전자회로]</span>
                         <a href="{{front_url('/professor/show/cate/3024/prof-idx/50163/?subject_idx=1196&subject_name=%EC%A0%84%EC%9E%90%ED%9A%8C%EB%A1%9C')}}">최우영</a>
                     </li>

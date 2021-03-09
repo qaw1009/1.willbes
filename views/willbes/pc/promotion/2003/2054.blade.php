@@ -12,7 +12,7 @@
         background:#fff;
     }	
     .evtContent span {vertical-align:auto}
-    .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+    .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
     /*****************************************************************/ 
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2054_top_bg.jpg) no-repeat center top;margin-top:20px;}   
     

@@ -106,4 +106,42 @@
         var _nasa={};
         _nasa["cnv"] = wcs.cnv("2","10");
     </script>
+
+    @if(sess_data('mem_interest') == '718001')
+        {{-- 회원가입 경찰일때만   W.A 실장 윤지훈 요청 20210309 --}}
+        <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+        <script type="text/javascript">
+            kakaoPixel('2420477028898879027').pageView();
+            kakaoPixel('2420477028898879027').completeRegistration();
+        </script>
+        <!-- Event snippet for 가입 conversion page -->
+        <script>
+            gtag('event', 'conversion', {'send_to': 'AW-710035840/jdiVCNT1l9cBEICTydIC'});
+        </script>
+        <!-- ADN Tracker[회원가입] start -->
+        <script type="text/javascript" async src="//fin.rainbownine.net/js/adn_tags_1.0.0.js"></script>
+        <script type="text/javascript">
+            var adn_param = adn_param || [];
+            adn_param.push([{
+                ui:'102299',
+                ut:'Complete',
+                uo:'types1'
+            }]);
+        </script>
+        <!-- Enliple Tracker v3.6 [회원가입] start -->
+        <script type="text/javascript">
+            function mobConv() {
+                var cn = new EN();
+                cn.setData("uid", "willpolice");
+                cn.setData("ordcode", "");
+                cn.setData("qty", "1");
+                cn.setData("price", "1");
+                cn.setData("pnm", encodeURIComponent(encodeURIComponent("회원가입")));
+                cn.setSSL(true);
+                cn.sendConv();
+            }
+        </script>
+        <script src="https://cdn.megadata.co.kr/js/en_script/3.6/enliple_min3.6.js" defer="defer" onload="mobConv()"></script>
+        <!-- Enliple Tracker v3.6 [회원가입] end -->
+    @endif
 @stop

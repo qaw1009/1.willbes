@@ -16,7 +16,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; }
 
         /************************************************************/ 
 
@@ -46,8 +46,7 @@
 
         .evt_01 {background:#c4ebfd;}
 
-        .evt_02 div.NSK-Black {font-size:50px; color:#000; margin-top:100px}
-        .evt_02 p.NSK-Black {font-size:40px; color:#003dcc; margin:15px 0 50px}
+        .evt_02 {padding:100px 0}
         
         .evtInfo {padding:80px 0; background:#666; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -94,44 +93,25 @@
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
+        </div>
 
-            @if($__cfg['CateCode'] == '3094')  
-                <div class="NSK-Black">PASS 1. 예비순환 + GS1순환</div>
-                <p class="NSK-Black">수강기간 210일 적용</p>
+        @if($__cfg['CateCode'] == '3094')
+            <div class="evtCtnsBox evt_02">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                @endif 
-                <div class="NSK-Black">PASS 2. 예비순환 + GS1순환 + GS2순환</div>
-                <p class="NSK-Black">수강기간 365일 적용</p>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif
-                <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
-                <p class="NSK-Black">수강기간 450일 적용</p>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
-                @endif  
-            @endif 
+            </div>
+        @endif
 
-            @if($__cfg['CateCode'] == '3095')  
-                <div class="NSK-Black">PASS 1. 예비순환 + GS1순환</div>
-                <p class="NSK-Black">수강기간 210일 적용</p>
+
+        @if($__cfg['CateCode'] == '3095')
+            <div class="evtCtnsBox evt_02">
                 @if(empty($arr_base['display_product_data']) === false)
                     @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
-                @endif 
-                <div class="NSK-Black">PASS 2. 예비순환 + GS1순환 + GS2순환</div>
-                <p class="NSK-Black">수강기간 365일 적용</p>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>6))
                 @endif
-                <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
-                <p class="NSK-Black">수강기간 450일 적용</p>
-                @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>7))
-                @endif  
-            @endif 
-		</div>  
-        
+            </div>
+        @endif
+
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">윌비스 한림법학원 동영상 T-PASS반 상품이용안내</h4>

@@ -13,7 +13,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; }
         /************************************************************/
         .evt00 {background:#0a0a0a}
 

@@ -265,6 +265,7 @@
             $dp_prod_form{{$group_num}}.on('change', '.chk_products, .chk_books', function() {
                 showBuyLayer('promotion', $(this), 'buy_layer{{$group_num}}');
                 setCheckLectureProduct($dp_prod_form{{$group_num}}, $(this), '', '', '', '');
+                $("#buy_layer{{$group_num}}").removeClass('active');
             });
 
             // 장바구니 이동 버튼 클릭

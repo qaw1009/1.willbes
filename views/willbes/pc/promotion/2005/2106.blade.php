@@ -46,8 +46,8 @@
 
         .evt_01 {background:#c4ebfd;}
 
-        .evt_02 div {font-size:50px; color:#000; margin-top:100px}
-        .evt_02 p {font-size:40px; color:#003dcc; margin:15px 0 50px}
+        .evt_02 div.NSK-Black {font-size:50px; color:#000; margin-top:100px}
+        .evt_02 p.NSK-Black {font-size:40px; color:#003dcc; margin:15px 0 50px}
         
         .evtInfo {padding:80px 0; background:#666; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}

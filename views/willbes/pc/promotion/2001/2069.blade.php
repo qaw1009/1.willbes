@@ -460,7 +460,7 @@
 
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
+                    $('.evt01 ul').find('a').removeClass('active');
                     $content.hide();
                     $active = $(this);
                     $content = $(this.hash);

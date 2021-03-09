@@ -22,7 +22,7 @@ class OffPackageAdminModel extends CommonLectureModel
             $order_by_offset_limit = '';
         } else {
 
-            $column = ' STRAIGHT_JOIN
+            $column = ' 
                      A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,DATE_FORMAT(SaleStartDatm,\'%Y-%m-%d\') as SaleStartDatm
                     ,DATE_FORMAT(SaleEndDatm,\'%Y-%m-%d\') as SaleEndDatm
@@ -82,7 +82,6 @@ class OffPackageAdminModel extends CommonLectureModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

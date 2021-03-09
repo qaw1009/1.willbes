@@ -108,11 +108,13 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">종합반검색</label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_opt" name="search_opt">
+                            <option value="prod">종합반</option>
+                            <option value="prof">교수명</option>
+                        </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
-                    </div>
-                    <div class="col-md-2">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        명칭, 코드 검색 가능
                     </div>
                     <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
                     <div class="col-md-5 form-inline">

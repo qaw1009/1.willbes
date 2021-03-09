@@ -207,7 +207,7 @@
                 <li class="pl25">
                     <a href="{{ front_url('/professor/index/cate/' . $menu_cate_code) }}">교수진 전체보기</a>
                 </li>
-                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50065?subject_idx=1107') }}">이현나</a></li>
+                <li><span>국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51220?subject_idx=1107') }}">박재현</a></li>
                 <li><span>영어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50651?subject_idx=1108') }}">박초롱</a></li>
                 <li><span>한국사</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50571?subject_idx=1109') }}">임진석</a></li>
                 <li><span>헌법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50591?subject_idx=1114') }}">이국령</a></li>

@@ -16,7 +16,10 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
- 
+
+        .sky {position:fixed; top:225px;right:25px;z-index:10;}
+        .sky a {display:block;padding-top:15px;}
+
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2099_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2099_01_bg.jpg) no-repeat center top;}
@@ -59,6 +62,16 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky">
+            <a href="https://pass.willbes.net/promotion/index/cate/3024/code/2064" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_sky.png" alt="문제풀이" >
+            </a>     
+            <a href="#apply"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_sky2.png" alt="전략" >
+            </a>                     
+        </div>
+
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday NG">        
             <div>
@@ -97,7 +110,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_02.jpg" alt="커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox wb_cts03">
+        <div class="evtCtnsBox wb_cts03" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2099_03.jpg" alt="수강신청" usemap="#Map2099_apply" border="0" />
             <map name="Map2099_apply" id="Map2099_apply">
                 <area shape="rect" coords="237,698,437,740" href="javascript:go_PassLecture('179756');" alt="윌비스 행정직" />

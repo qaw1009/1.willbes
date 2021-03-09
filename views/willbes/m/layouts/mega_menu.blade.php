@@ -156,23 +156,45 @@
                 <li>
                     <span>국어</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50241?subject_idx=1107') }}">기미진</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50729?subject_idx=1107') }}">오훈</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50157?subject_idx=1107') }}">오대혁</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50621?subject_idx=1107') }}">임재진</a>
                 </li>
                 <li>
                     <span>행정법</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50615?subject_idx=1111') }}">이석준</a>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99') }}">김덕관</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50407/?subject_idx=1111') }}">임병주</a>
+                </li>
+                <li>
+                    <span>행정학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50559?subject_idx=1112') }}">김덕관</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50107?subject_idx=1112') }}">김헌</a>
                 </li>
-                <li><span>공중보건</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50395?subject_idx=1130') }}">하재남</a></li>
-                <li><span>G-TELP</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a></li>
                 <li>
                     <span>경영학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50609?subject_idx=1185') }}">황선호</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50763?subject_idx=1185') }}">고강유</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50549?subject_idx=1185') }}">전수환</a>
                 </li>
-                <li><span>전자회로</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163/?subject_idx=1196&subject_name=%EC%A0%84%EC%9E%90%ED%9A%8C%EB%A1%9C') }}">최우영</a></li>
+                <li>
+                    <span>국가정보학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50563?subject_idx=1236') }}">민진규</a>
+                </li>
+                <li>
+                    <span>정보사회론</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50609?subject_idx=2151') }}">황선호</a>
+                </li>
+                <li>
+                    <span>G-TELP</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a>
+                </li>                
+                <li>
+                    <span>전자회로</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50163/?subject_idx=1196') }}">최우영</a>
+                </li>
+                <li>
+                    <span>예비전력관리담당자</span>
+                    <a href="https://pass.willbes.net/promotion/index/cate/3024/code/1767" target="_blank">김도형</a>
+                </li>
                 <li>
                     <span>한국사검정능력시험</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50619?subject_idx=1237') }}">김상범</a>

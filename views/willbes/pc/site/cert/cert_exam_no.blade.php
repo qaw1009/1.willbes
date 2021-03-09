@@ -54,8 +54,8 @@
                             <strong>* 직렬(직류구분)</strong>
                             <select  name="TakeKind" id="TakeKind" style="width:120px" >
                                 @foreach($data['kind_ccd'] as $key => $val)
-                                    @if($cert_idx=='30')
-                                        @if($key != '711005')
+                                    @if($cert_idx=='37'||$cert_idx=='38')
+                                        @if($key == '711001' || $key == '711002' || $key == '711004' || $key == '711005')
                                             <option value="{{$key}}">{{$val}}</option>
                                         @endif
                                     @else

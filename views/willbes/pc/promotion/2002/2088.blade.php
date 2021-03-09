@@ -352,23 +352,23 @@
                         <area shape="rect" coords="393,1873,729,1975" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
                     </map> 
                 </div>
-                <div id="tab04">
+                <div id="tab04" style="padding-top:50px;">
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_03_04.jpg" usemap="#Map2088_03_04" title="" border="0" />
                     <div class="youtube">
                         <iframe src="https://www.youtube.com/embed/nNSYvreT6rw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <map name="Map2088_03_04" id="Map2088_03_04">
-                        <area shape="rect" coords="179,1473,261,1499" href="javascript:go_popup18()" />
-                        <area shape="rect" coords="349,1473,431,1499" href="javascript:go_popup19()" />
-                        <area shape="rect" coords="520,1473,600,1500" href="javascript:go_popup20()" />
-                        <area shape="rect" coords="689,1474,771,1500" href="javascript:go_popup21()" />
-                        <area shape="rect" coords="860,1474,941,1499" href="javascript:go_popup22()" />
-                        <area shape="rect" coords="261,1794,342,1821" href="javascript:go_popup23()" />
-                        <area shape="rect" coords="432,1794,512,1820" href="javascript:go_popup24()" />
-                        <area shape="rect" coords="602,1795,682,1820" href="javascript:go_popup25()" />
-                        <area shape="rect" coords="772,1794,853,1820" href="javascript:go_popup26()" />
-                        <area shape="rect" coords="413,1076,712,1132" href="https://police.willbes.net/pass/offinfo/boardInfo/show/109?board_idx=323853&" target="_blank" /> 
-                        <area shape="rect" coords="392,2189,733,2285" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
+                        <area shape="rect" coords="179,1427,260,1453" href="javascript:go_popup18()" />
+                        <area shape="rect" coords="350,1426,430,1452" href="javascript:go_popup19()" />
+                        <area shape="rect" coords="520,1426,601,1452" href="javascript:go_popup20()" />
+                        <area shape="rect" coords="690,1427,771,1453" href="javascript:go_popup21()" />
+                        <area shape="rect" coords="859,1427,941,1452" href="javascript:go_popup22()" />
+                        <area shape="rect" coords="261,1748,342,1774" href="javascript:go_popup23()" />
+                        <area shape="rect" coords="432,1748,513,1774" href="javascript:go_popup24()" />
+                        <area shape="rect" coords="602,1748,683,1774" href="javascript:go_popup25()" />
+                        <area shape="rect" coords="772,1748,852,1774" href="javascript:go_popup26()" />
+                        <area shape="rect" coords="412,1028,709,1085" href="https://police.willbes.net/pass/offinfo/boardInfo/show/109?board_idx=323853&" target="_blank" /> 
+                        <area shape="rect" coords="394,2144,728,2236" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />                        
                     </map>                                   
                 </div> 
             </div>

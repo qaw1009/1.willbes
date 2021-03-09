@@ -191,6 +191,7 @@ class AdminPay extends BaseOrder
 
     /**
      * 유료결제 주문 등록
+     * @return CI_Output|void
      */
     public function store()
     {
@@ -201,10 +202,9 @@ class AdminPay extends BaseOrder
             ['field' => 'is_lec_unit', 'label' => '온라인강좌 등록구분', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'wUnitCode[]', 'label' => '회차식별자', 'rules' => 'callback_validateRequiredIf[is_lec_unit,Y]'],
             ['field' => 'prod_code[]', 'label' => '상품식별자', 'rules' => 'trim|required'],
+            ['field' => 'real_pay_price[]', 'label' => '결제금액', 'rules' => 'trim|required'],
             ['field' => 'lec_start_date', 'label' => '수강시작일', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
             ['field' => 'lec_expire_day', 'label' => '수강제공기간', 'rules' => 'callback_validateRequiredIf[prod_type,on_lecture]'],
-            /*['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer|greater_than[0]'],*/
-            ['field' => 'real_pay_price', 'label' => '결제금액', 'rules' => 'trim|required|integer'],
             ['field' => 'admin_reason_ccd', 'label' => '부여사유유형', 'rules' => 'trim|required'],
             ['field' => 'admin_etc_reason', 'label' => '상세부여사유', 'rules' => 'trim|required'],
             ['field' => 'mem_idx[]', 'label' => '회원 선택', 'rules' => 'trim|required'],
@@ -222,9 +222,22 @@ class AdminPay extends BaseOrder
             return;
         }
 
+        // 총결제금액과 상품별 결제금액 합계 일치여부 체크
+        if ($this->_reqP('total_real_pay_price') != array_sum($this->_reqP('real_pay_price'))) {
+            return $this->json_error('총 결제금액과 상품별 결제금액의 합계가 일치하지 않습니다.', _HTTP_BAD_REQUEST);
+        }
+        // 교재일 경우 회원 1명만 등록 가능
+        if ($this->_reqP('prod_type') == 'book' && count($this->_reqP('mem_idx')) > 1) {
+            return $this->json_error('해당 상품구분은 1명의 회원만 등록 가능합니다.', _HTTP_BAD_REQUEST);
+        }
+        // 회차등록일 경우 상품 1건만 등록 가능
+        if ($this->_reqP('is_lec_unit') == 'Y' && count($this->_reqP('prod_code')) > 1) {
+            return $this->json_error('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.', _HTTP_BAD_REQUEST);
+        }
+
         $result = $this->orderModel->procAdminOrder('admin_pay', $this->_reqP(null, false));
 
-        $this->json_result($result, '등록 되었습니다.', $result);
+        return $this->json_result($result, '등록 되었습니다.', $result);
     }
 
     /**

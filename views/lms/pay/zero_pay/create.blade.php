@@ -275,6 +275,10 @@
             });
 
             var addValidate = function() {
+                if ($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                    alert('등록할 상품을 선택해 주세요.');
+                    return false;
+                }
                 if ($regi_form.find('input[name="mem_idx[]"]').length < 1) {
                     alert('등록할 회원을 선택해 주세요.');
                     return false;
@@ -283,13 +287,15 @@
                     alert('해당 상품구분은 1명의 회원만 등록 가능합니다.');
                     return false;
                 }
-                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $regi_form.find('input[name="prod_code[]"]').length > 1) {
-                    alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
-                    return false;
-                }
-                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $regi_form.find('input[name="wUnitCode[]"]').length < 1) {
-                    alert('등록할 회차를 선택해 주세요.');
-                    return false;
+                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y') {
+                    if ($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                        alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
+                        return false;
+                    }
+                    if ($regi_form.find('input[name="wUnitCode[]"]').length < 1) {
+                        alert('등록할 회차를 선택해 주세요.');
+                        return false;
+                    }
                 }
 
                 return confirm('해당 상품을 0원 결제로 등록하시겠습니까?');
@@ -298,6 +304,7 @@
             // 운영사이트 선택
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 $('#selected_product').html('');    // 기 선택 상품 초기화
+                $('#sampleList').html('');          // 기 선택 회차 초기화
             });
 
             // 상품구분 선택
@@ -335,6 +342,7 @@
                 }
 
                 $('#selected_product').html('');    // 기 선택 상품 초기화
+                $('#sampleList').html('');          // 기 선택 회차 초기화
             });
 
             // 온라인강좌 강좌/회차 등록 선택
@@ -375,15 +383,14 @@
                         'width' : 1200
                     });
                 }
-
-                //$('#selected_product').html('');    // 기 선택 상품 초기화 => 다중선택 가능
             });
 
             // 상품선택 결과 이벤트 (1건만 선택 가능 ==> 회차등록 제외하고 다중선택 가능)
             $regi_form.on('change', '#selected_product', function() {
                 if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $(this).find('input[name="prod_code[]"]').length > 1) {
                     alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
-                    $(this).html('');
+                    $(this).html('');           // 기 선택 상품 초기화
+                    $('#sampleList').html('');  // 기 선택 회차 초기화
                 }
             });
 
@@ -392,6 +399,11 @@
                 var w_lec_idx = $regi_form.find('input[name="prod_code[]"]:eq(0)').data('w-lec-idx') || '';
                 if (w_lec_idx === '') {
                     alert('온라인 단강좌 상품을 선택 후 회차 검색을 해 주세요.');
+                    return false;
+                }
+
+                if ($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                    alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
                     return false;
                 }
 

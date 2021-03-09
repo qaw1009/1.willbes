@@ -23,7 +23,7 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/02/2092_top_bg.jpg) no-repeat center;}
 
-        .wb_01 {background:#fff;}	
+        .wb_01 {background:#fff;  position:relative}	
         .wb_01 .youtube iframe {width:640px; height:360px} 
         .wb_01 .youtube {position:absolute; top:403px; left:49.45%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
         .wb_01 .youtube.yu02 {top:851px; margin-left:-139px;}
@@ -97,7 +97,7 @@
 	</div>
      <!-- End Container -->
 
-     <script type="text/javascript">        
+     <script type="text/javascript">       
 
             /*탭(텍스터버전)*/
         $(document).ready(function(){

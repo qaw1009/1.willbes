@@ -46,7 +46,7 @@
 
         .evt_01 {background:#c4ebfd;}
 
-        .evt_02 {padding:100px 0}
+        .evt_02 {padding-top:50px}
         
         .evtInfo {padding:80px 0; background:#666; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -127,7 +127,7 @@
                     [할인율 및 신청방법 : 등록된 PASS 상품 중에서 자유선택]<br>
                     - 2개 PASS 과정 신청 : 10%할인 + 동영상강의 15%할인쿠폰<br>
                     - 3개 PASS 과정 신청 : 20%할인 + 동영상강의 15%할인쿠폰<br>
-                    - 4개 PASS 과정 신청 : 30%할인 + 동영상강의 15%할인쿠폰<br>
+                    - 4개 PASS 과정 신청 : 40%할인 + 동영상강의 15%할인쿠폰<br>
                     <br>
                     <span>[수강기간-과정별 수강기간 자동 적용] : 강의신청시 다음날부터 바로 수강시작이 되며 일시정지, 강의연장이 적용되지 않습니다.</span></li>
                     <li>강의배수 제한 : 동영상강의는 1.5배수제한 규정이 적용됩니다.</li>

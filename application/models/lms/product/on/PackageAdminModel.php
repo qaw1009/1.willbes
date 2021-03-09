@@ -22,7 +22,7 @@ class PackageAdminModel extends CommonLectureModel
             $order_by_offset_limit = '';
         } else {
 
-            $column = ' STRAIGHT_JOIN
+            $column = ' 
                     A.ProdCode,A.ProdName,A.IsNew,A.IsBest,A.IsUse,A.RegDatm
                     ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
                     ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply,B.OrderNum
@@ -74,9 +74,7 @@ class PackageAdminModel extends CommonLectureModel
             $where .= ' and '.$arr_condition_add;
         }
 
-        // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

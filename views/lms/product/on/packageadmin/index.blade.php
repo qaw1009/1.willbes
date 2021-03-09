@@ -61,11 +61,13 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">패키지검색</label>
-                    <div class="col-md-3 form-inline">
+                    <div class="col-md-5 form-inline">
+                        <select class="form-control" id="search_opt" name="search_opt">
+                            <option value="prod">패키지</option>
+                            <option value="prof">교수명</option>
+                        </select>
                         <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
-                    </div>
-                    <div class="col-md-5">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        명칭, 코드 검색 가능
                     </div>
                 </div>
 

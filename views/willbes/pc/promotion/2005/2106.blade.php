@@ -91,21 +91,45 @@
 		</div>
 
 		<div class="evtCtnsBox evt_02">
-            <div class="NSK-Black">PASS 1. 예비순환 + GS1순환</div>
-            <p class="NSK-Black">수강기간 210일 적용</p>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif 
-            <div class="NSK-Black">PASS 2. 예비순환 + GS1순환 + GS2순환</div>
-            <p class="NSK-Black">수강기간 365일 적용</p>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif
-            <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
-            <p class="NSK-Black">수강기간 450일 적용</p>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
-            @endif   
+
+            @if($__cfg['CateCode'] == '3094')  
+                <div class="NSK-Black">PASS 1. 예비순환 + GS1순환</div>
+                <p class="NSK-Black">수강기간 210일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                @endif 
+                <div class="NSK-Black">PASS 2. 예비순환 + GS1순환 + GS2순환</div>
+                <p class="NSK-Black">수강기간 365일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
+                @endif
+                <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
+                <p class="NSK-Black">수강기간 450일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
+                @endif  
+            @endif 
+
+            @if($__cfg['CateCode'] == '3095')  
+                <div class="NSK-Black">PASS 1. 예비순환 + GS1순환</div>
+                <p class="NSK-Black">수강기간 210일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
+                @endif 
+                <div class="NSK-Black">PASS 2. 예비순환 + GS1순환 + GS2순환</div>
+                <p class="NSK-Black">수강기간 365일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>6))
+                @endif
+                <div class="NSK-Black">PASS 3. 예비순환 + GS1순환 + GS3순환</div>
+                <p class="NSK-Black">수강기간 450일 적용</p>
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>7))
+                @endif  
+            @endif 
 		</div>  
         
         <div class="evtCtnsBox evtInfo">

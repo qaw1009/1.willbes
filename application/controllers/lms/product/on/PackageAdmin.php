@@ -68,14 +68,32 @@ Class PackageAdmin extends CommonLecture
             ],
         ];
 
-        $arr_condition = array_merge($arr_condition,[
-            'ORG1' => [
-                'LKB' => [
-                    'A.ProdCode' => $this->_reqP('search_value'),
-                    'A.ProdName' => $this->_reqP('search_value')
-                ]
-            ],
-        ]);
+        if($this->_reqP('search_opt') === 'prod') {
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'LKB' => [
+                        'A.ProdCode' => $this->_reqP('search_value'),
+                        'A.ProdName' => $this->_reqP('search_value')
+                    ]
+                ],
+            ]);
+        } else if($this->_reqP('search_opt') === 'prof' && $this->_reqP('search_value') !== '') {
+            $arr_condition = array_merge($arr_condition,[
+                'ORG1' => [
+                    'RAW' => [
+                        'A.ProdCode IN ' => '(
+                            select aa.ProdCode from
+                                lms_product_r_sublecture aa
+							    join lms_product_division bb on aa.ProdCodeSub = bb.ProdCode and bb.IsReprProf=\'Y\' and bb.IsStatus=\'Y\'
+							    join lms_professor cc on bb.ProfIdx = cc.ProfIdx and cc.IsStatus =\'Y\'
+							    join wbs_pms_professor dd on cc.wProfIdx = dd.wProfIdx and dd.wIsStatus=\'Y\'
+							where aa.IsStatus=\'Y\'
+							and dd.wProfName like \'%'. $this->_reqP('search_value') .'%\'  
+                        )'
+                    ]
+                ],
+            ]);
+        }
 
         if (!empty($this->_reqP('search_sdate')) && !empty($this->_reqP('search_edate'))) {
             $arr_condition = array_merge($arr_condition, [
@@ -96,8 +114,6 @@ Class PackageAdmin extends CommonLecture
         } else if( $this->_req('search_calc') == 'N') {
             $arr_condition_add = ' F.DivisionCount is null ';
         }
-
-        //var_dump($arr_condition);
 
         $list = [];
         $count = $this->packageAdminModel->listLecture(true, $arr_condition,null,null,[],$arr_condition_add);

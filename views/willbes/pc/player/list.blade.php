@@ -98,10 +98,8 @@
                 $('.vodtableBox ul.table').css('height', $(window).height() - 230);
             });
 
-            try{
-                var offset = $('#pos{{$input['u']}}').offset();
-                $('#curr_list').animate({scrollTop:offset.top - 135}, 0);
-            } catch {}
+            var offset = $('#pos{{$input['u']}}').offset();
+            $('#curr_list').animate({scrollTop:offset.top - 135}, 0);
         });
 
         function ezPrint(param)

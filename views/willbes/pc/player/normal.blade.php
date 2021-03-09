@@ -32,7 +32,7 @@
                 watermarkInterval: "1800",
                 watermarkShowInterval: "1",
                 blockMessenger: false,
-                blockVirtualMachine: {{$data['memid'] == 'hereisme' ? 'false' : 'true'}}
+                blockVirtualMachine: {{$data['memid'] == 'hereisme' || $data['memid'] == 'test' ? 'false' : 'true'}}
             };
 
             var media = {

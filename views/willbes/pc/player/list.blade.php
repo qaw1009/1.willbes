@@ -97,9 +97,10 @@
                 $('.vodlecBox ul.lec').css('height', $(window).height() - 135);
                 $('.vodtableBox ul.table').css('height', $(window).height() - 230);
             });
-
+            {{--
             var offset = $('#pos{{$input['u']}}').offset();
             $('#curr_list').animate({scrollTop:offset.top - 135}, 0);
+            --}}
         });
 
         function ezPrint(param)

@@ -223,7 +223,7 @@
                 2021년 경찰1차 러닝메이트 최종합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
                     @if($onoff_1 == 'on')
-                        <p class="NSK-Black">필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                        <p class="NSK-Black">1차 최종합격까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                     @endif
                 @endif
                 <!--

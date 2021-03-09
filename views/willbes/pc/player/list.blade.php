@@ -25,9 +25,9 @@
                             <div class="tt3">자료</div>
                         </li>
                     </ul>
-                    <ul class="list lec">
+                    <ul class="list lec" id="curr_list">
                         @forelse($curriculum as $row)
-                            <li>
+                            <li id="pos{{$row['wUnitIdx']}}">
                                 <div class="tt1">
                                     @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002')
                                         @if($lec['IsOpenwUnitNum'] == 'Y')
@@ -97,6 +97,10 @@
                 $('.vodlecBox ul.lec').css('height', $(window).height() - 135);
                 $('.vodtableBox ul.table').css('height', $(window).height() - 230);
             });
+            {{--
+            var offset = $('#pos{{$input['u']}}').offset();
+            $('#curr_list').animate({scrollTop:offset.top - 135}, 0);
+            --}}
         });
 
         function ezPrint(param)

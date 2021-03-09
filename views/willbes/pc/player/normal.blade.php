@@ -11,7 +11,7 @@
             screenResize();
             fnDefense();
 
-            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&op={{$data['orderprodidx']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}');
+            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&op={{$data['orderprodidx']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}#pos{{$data['unitidx']}}');
 
             var config = {
                 userId: "{{$data['memid']}}",
@@ -32,7 +32,7 @@
                 watermarkInterval: "1800",
                 watermarkShowInterval: "1",
                 blockMessenger: false,
-                blockVirtualMachine: {{$data['memid'] == 'hereisme' ? 'false' : 'true'}}
+                blockVirtualMachine: {{$data['memid'] == 'hereisme' || $data['memid'] == 'test' ? 'false' : 'true'}}
             };
 
             var media = {

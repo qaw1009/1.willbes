@@ -4,7 +4,7 @@
 <!-- Container -->
 <div id="Container" class="Container NG c_both">
     <div class="onSearch">
-        <input type="search" id="onsearch" name="" value="" placeholder="온라인강의 검색" title="온라인강의 검색" />
+        <input type="search" id="onsearch" name="" value="" placeholder="강의 검색" title="강의 검색" />
         <label for="onsearch"><button title="검색">검색</button>
     </div>
 
@@ -24,12 +24,16 @@
         </p>
     </div>
 
-    <div class="lineTabs pd-zero c_both">
-        <ul class="tabWrap lineWrap rowlineWrap four mt-zero">
-            <li><a href="#leclist1" class="on">단과강좌 [<span>3</span>]</a><span class="row-line">|</span></li>
-            <li><a href="#leclist2">무료강좌 [<span>6</span>]</a><span class="row-line">|</span></li>
-            <li><a href="#leclist3">추천패키지 [<span>6</span>]</a><span class="row-line">|</span></li>
-            <li><a href="#leclist4">선택패키지 [<span>6</span>]</a></li>
+    <div class="c_both">
+        <ul class="tabWrap searchTab">
+            <li><strong>온라인 <span>></span></strong></li>
+            <li><a href="#leclist1" class="on">단과강좌 <span>3</span></a></li>
+            <li><a href="#leclist2">무료강좌 <span>6</span></a></li>
+            <li><a href="#leclist3">추천패키지 <span>6</span></a></li>
+            <li><a href="#leclist4">선택패키지 <span>6</span></a></li>
+            <li><strong>학원 <span>></span></strong></li>
+            <li><a href="#leclist5">학원단과 <span>3</span></a></li>
+            <li><a href="#leclist6">학원종합반 <span>6</span></a></li>
         </ul>
     </div>
     
@@ -401,6 +405,135 @@
                                 </div>
                             </td>
                         </tr>                  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="leclist5" class="searchContent">
+            <h5>
+                · 학원단과 
+                <select id="process" name="process" title="process" class="seleProcess width30p">
+                    <option value="최근등록순" selected="selected">최근등록순</option>    
+                    <option value="과정순" >과정순</option>                    
+                </select>
+            </h5>
+            <div class="lineTabs lecListTabs c_both">
+                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                    <colgroup>
+                        <col style="width: 87%;">
+                        <col style="width: 13%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="w-data tx-left" colspan="2">
+                                <div class="oneBox">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                    </dl>
+                                    <div class="w-tit tx-blue">
+                                        <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">                                
+                                        <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                        <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>                                                              
+                                    </dl>
+                                    <div class="priceWrap">
+                                        <span class="price">80,000원</span>
+                                        <span class="discount">(10%↓)</span> ▶
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
+                                </div>
+                                <div class="oneBox">
+                                    <dl class="w-info">
+                                        <dt>신림(본원)<span class="row-line">|</span>GS3순환<span class="row-line">|</span>경제학<span class="row-line">|</span>황종휴</dt>
+                                    </dl>
+                                    <div class="w-tit tx-blue">
+                                        <a href="lecture_offline2">20_GS3순환 경제학 황종휴</a>
+                                    </div>
+                                    <dl class="w-info tx-gray">                                
+                                        <dt>개강일~종강일 : <span class="tx-blue">05/19 ~ 06/08</span> 월화수목금토 (19회차)</dt><br>       
+                                        <dt>수강형태 : <span class="tx-blue">오전영상</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>                        
+                                    </dl>
+                                    <div class="priceWrap">
+                                        <span class="dcprice">64,000원</span>                                          
+                                    </div>
+                                </div>
+                            </td>                        
+                        </tr>           
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="leclist6" class="searchContent">
+            <h5>
+                · 학원종합반 
+            </h5>
+            <div class="lineTabs lecListTabs c_both">
+                <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                    <colgroup>
+                        <col style="width: 87%;">
+                        <col style="width: 13%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="w-data tx-left" colspan="2">
+                                <dl class="w-info">
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                    <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n1">방문+온라인</span> <span class="NSK nBox n2">접수중</span></dt>
+                                </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">(10%↓)</span> ▶
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-data tx-left" colspan="2">
+                                <dl class="w-info">
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                    <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
+                                </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">(10%↓)</span> ▶
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="w-data tx-left" colspan="2">
+                                <dl class="w-info">
+                                    <dt>신림(본원)<span class="row-line">|</span>GS3순환
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="lecture_offline_pkg2">20_PSAT종합반_3월반</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>개강월 <span class="tx-blue">2020년 5월</span> <span class="row-line">|</span></dt>
+                                    <dt>수강형태 <span class="tx-blue">실강</span> <span class="NSK ml10 nBox n4">방문접수</span> <span class="NSK nBox n2">접수중</span></dt>
+                                </dl>
+                                <div class="priceWrap">
+                                    <span class="price">80,000원</span>
+                                    <span class="discount">(10%↓)</span> ▶
+                                    <span class="dcprice">64,000원</span>                                          
+                                </div>
+                            </td>
+                        </tr>                    
                     </tbody>
                 </table>
             </div>

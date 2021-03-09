@@ -46,7 +46,7 @@
 
         .evt_01 {background:#c4ebfd;}
 
-        .evt_02 {padding:100px 0}
+        .evt_02 {padding-top:50px}
         
         .evtInfo {padding:80px 0; background:#666; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}

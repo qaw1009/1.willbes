@@ -3,7 +3,7 @@
 @section('content')
     <div id="vodTabs" class="vodTabs p_re">
         <ul class="vodWrap four NGEB">
-            <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}#pos{{$input['u']}}" class="on">강의목록</a></li>
+            <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}" class="on">강의목록</a></li>
             <li><a href="/player/listBookmark/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">북마크</a></li>
             @if($lec['IsQnaBoard'] == 'Y')
                 <li><a href="/player/qna/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">학습Q&A</a></li>
@@ -25,7 +25,7 @@
                             <div class="tt3">자료</div>
                         </li>
                     </ul>
-                    <ul class="list lec">
+                    <ul class="list lec" id="curr_list">
                         @forelse($curriculum as $row)
                             <li id="pos{{$row['wUnitIdx']}}">
                                 <div class="tt1">
@@ -97,6 +97,11 @@
                 $('.vodlecBox ul.lec').css('height', $(window).height() - 135);
                 $('.vodtableBox ul.table').css('height', $(window).height() - 230);
             });
+
+            try{
+                var offset = $('#pos{{$input['u']}}').offset();
+                $('#curr_list').animate({scrollTop:offset.top - 135}, 0);
+            } catch {}
         });
 
         function ezPrint(param)

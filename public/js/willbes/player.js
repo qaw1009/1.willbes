@@ -150,6 +150,12 @@ function setScreenReSizeVal()
     playerWidth = conW + borderW;
     playerHeight = conH + borderH;
 
+    if(SubFrameTag_width != 0 && screen.availWidth < playerWidth){
+        playerWidth = playerWidth - SubFrameTag_width;
+        SubFrameTag_width = 0;
+        $("#subframe").hide();
+    }
+
     moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
     moveTop = parseInt((( screen.availHeight - 30 ) - playerHeight) / 2);
 }

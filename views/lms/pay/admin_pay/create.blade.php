@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="bdt-line mb-10"></div>
-                        <p><i class="fa fa-check ml-10"></i> 상품 등록은 1건만 가능합니다. (다중 선택 불가능)</p>
+                        <p><i class="fa fa-check ml-10"></i> 상품 등록은 상품구분별로만 선택 가능합니다. (회차등록은 다중 선택 불가능)</p>
                         <p><i class="fa fa-check ml-10"></i> 상품구분이 ‘교재’인 경우는 회원 등록이 1명만 가능합니다.</p>
                     </div>
                     <div class="col-md-12">
@@ -57,6 +57,30 @@
                                 <button type="button" id="btn_product_search" class="btn btn-sm btn-primary">상품검색</button>
                                 <span id="selected_product" class="pl-10"></span>
                             </div>
+                            <div class="col-md-8 mt-15">
+                                <table id="list_product_table" class="table table-striped table-bordered mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>상품명</th>
+                                        <th style="width: 220px;">결제금액</th>
+                                        <th style="width: 80px;">삭제</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="form-inline bg-info bold">
+                                        <td>합계</td>
+                                        <td>
+                                            <input type="hidden" name="total_real_sale_price" value="0"/>
+                                            <input type="number" name="total_real_pay_price" class="form-control input-sm mt-0 mb-0" title="총 실결제금액" value="0" readonly="readonly"> 원
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="bold red mt-10 mb-5"># 결제금액은 상품 판매금액 이하의 금액으로 입력 가능합니다.</div>
+                            </div>
                         </div>
                         <div id="lec_unit_search" class="form-group hide">
                             <label class="control-label col-md-1">회차검색 <span class="required">*</span>
@@ -78,14 +102,6 @@
                                 <div class="col-md-2 item">
                                     <input type="number" id="lec_expire_day" name="lec_expire_day" class="form-control" required="required_if:prod_type,on_lecture" title="수강제공기간" value="30" style="width: 100px;"> 일
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">결제금액 <span class="required">*</span>
-                            </label>
-                            <div class="col-md-9 form-inline item">
-                                <input type="number" id="real_pay_price" name="real_pay_price" class="form-control" required="required" {{--data-validate-minmax="1"--}} title="결제금액" value=""> 원
-                                <div class="inline-block bold red ml-20"># {{--0원 이상, --}}상품 판매금액 이하의 금액으로 입력 가능합니다.</div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -269,11 +285,6 @@
         $(document).ready(function() {
             // 유료결제 등록
             $regi_form.submit(function() {
-                // 상품코드에 상품타입과 학습형태 추가
-                $regi_form.find('input[name="prod_code[]"]').each(function(idx) {
-                    $(this).val($(this).val() + ':' + $(this).data('prod-type') + ':' + $(this).data('learn-pattern-ccd'));
-                });
-
                 var _url = '{{ site_url('/pay/adminPay/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -284,8 +295,12 @@
             });
 
             var addValidate = function() {
-                if ($regi_form.find('input[name="real_pay_price"]').val() > $regi_form.find('input[name="real_pay_price"]').data('real-sale-price')) {
+                if (parseInt($regi_form.find('input[name="total_real_pay_price"]').val(), 10) > parseInt($regi_form.find('input[name="total_real_sale_price"]').val(), 10)) {
                     alert('결제금액은 판매금액을 초과하여 입력하실 수 없습니다.');
+                    return false;
+                }
+                if ($regi_form.find('input[name="prod_code[]"]').length < 1) {
+                    alert('등록할 상품을 선택해 주세요.');
                     return false;
                 }
                 if ($regi_form.find('input[name="mem_idx[]"]').length < 1) {
@@ -296,13 +311,15 @@
                     alert('해당 상품구분은 1명의 회원만 등록 가능합니다.');
                     return false;
                 }
-                if ($regi_form.find('input[name="prod_code[]"]').length !== 1) {
-                    alert('등록할 상품을 1건만 선택해 주세요.');
-                    return false;
-                }
-                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y' && $regi_form.find('input[name="wUnitCode[]"]').length < 1) {
-                    alert('등록할 회차를 선택해 주세요.');
-                    return false;
+                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y') {
+                    if ($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                        alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
+                        return false;
+                    }
+                    if ($regi_form.find('input[name="wUnitCode[]"]').length < 1) {
+                        alert('등록할 회차를 선택해 주세요.');
+                        return false;
+                    }
                 }
 
                 return confirm('해당 상품을 유료 결제로 등록하시겠습니까?');
@@ -310,7 +327,9 @@
 
             // 운영사이트 선택
             $regi_form.on('change', 'select[name="site_code"]', function() {
-                $('#selected_product').html('');    // 기 선택 상품 초기화
+                $('#selected_product').html('');            // 기 선택 상품 초기화
+                $('#list_product_table tbody').html('');    // 기 선택 상품 초기화
+                $('#sampleList').html('');                  // 기 선택 회차 초기화
             });
 
             // 상품구분 선택
@@ -347,7 +366,9 @@
                     delivery_address.addClass('hide');
                 }
 
-                $('#selected_product').html('');    // 기 선택 상품 초기화
+                $('#selected_product').html('');            // 기 선택 상품 초기화
+                $('#list_product_table tbody').html('');    // 기 선택 상품 초기화
+                $('#sampleList').html('');                  // 기 선택 회차 초기화
             });
 
             // 온라인강좌 강좌/회차 등록 선택
@@ -388,28 +409,92 @@
                         'width' : 1200
                     });
                 }
-
-                $('#selected_product').html('');    // 기 선택 상품 초기화
             });
 
-            // 상품선택 결과 이벤트 (1건만 선택 가능)
+            // 상품선택 결과 이벤트 (회차등록 제외하고 다중선택 가능)
             $regi_form.on('change', '#selected_product', function() {
-                if ($(this).find('input[name="prod_code[]"]').length > 1) {
-                    alert('등록할 상품을 1건만 선택해 주세요.');
-                    $(this).html('');
+                var $tbody = $('#list_product_table tbody');
+                var code, data, html = '';
+                var $selected_prod_code = {};
+
+                // 회차등록일 경우 기 선택 상품/회차 초기화
+                if ($regi_form.find('input[name="is_lec_unit"]:checked').val() === 'Y') {
+                    $tbody.html('');            // 기 선택 상품 초기화
+                    $('#sampleList').html('');  // 기 선택 회차 초기화
                 }
 
-                // 해당 상품의 판매금액을 결제금액으로 설정
-                var real_sale_price = $(this).find('input[name="prod_code[]"]:eq(0)').data('real-sale-price');
-                $regi_form.find('input[name="real_pay_price"]').val(real_sale_price);
-                $regi_form.find('input[name="real_pay_price"]').data('real-sale-price', real_sale_price);
+                // 기 선택된 상품코드 저장
+                $tbody.find('input[name="prod_code[]"]').each(function() {
+                    code = $(this).val().split(':')[0];
+                    $selected_prod_code[code] = code;
+                });
+
+                // 선택상품 입력폼 추가
+                $(this).find('input[name="prod_code[]"]').each(function() {
+                    code = $(this).val();
+                    data = $(this).data();
+
+                    if ($selected_prod_code.hasOwnProperty(code) === false) {
+                        html += '<tr>' +
+                            '   <td>' +
+                            '       [' + code + '] ' + Base64.decode(data.prodName) +
+                            '   </td>' +
+                            '   <td class="form-inline">' +
+                            '       <input type="hidden" name="prod_code[]" value="' + code + ':' + data.prodType + ':' + data.learnPatternCcd + '" data-w-lec-idx="' + data.wLecIdx + '" />' +
+                            '       <input type="hidden" name="real_sale_price[]" value="' + data.realSalePrice + '"/>' +
+                            '       <input type="number" name="real_pay_price[]" class="form-control input-sm" title="결제금액" value="' + data.realSalePrice + '"/> 원' +
+                            '   </td>' +
+                            '   <td>' +
+                            '       <a href="javascript:void(0);" class="selected-product-delete"><i class="fa fa-times red"></i></a>' +
+                            '   </td>' +
+                            '</tr>';
+                    }
+                });
 
                 // 단강좌일 경우 수강제공시간을 해당 상품의 수강기간으로 설정
                 var study_period = $(this).find('input[name="prod_code[]"]:eq(0)').data('study-period');
                 if (typeof study_period !== 'undefined' && study_period !== '') {
                     $regi_form.find('input[name="lec_expire_day"]').val(study_period);
                 }
+
+                $(this).html('');    // 기 선택 상품 초기화
+                $tbody.append(html);
+                setTotalPrice();    // 결제금액 재계산
             });
+
+            // 상품 삭제
+            $regi_form.on('click', '.selected-product-delete', function() {
+                var that = $(this);
+                that.parent().parent().remove();
+                setTotalPrice();    // 결제금액 재계산
+            });
+
+            // 상품별 결제금액 체크
+            $regi_form.on('change', 'input[name="real_pay_price[]"]', function() {
+                var index = $regi_form.find('input[name="real_pay_price[]"]').index(this);
+                var real_sale_price = parseInt($regi_form.find('input[name="real_sale_price[]"]').eq(index).val(), 10);
+                var real_pay_price = parseInt($(this).val(), 10);
+
+                if (real_sale_price < real_pay_price) {
+                    alert('결제금액은 상품 판매금액 이하의 금액으로 입력 가능합니다.');
+                    $(this).val(real_sale_price);
+                }
+
+                setTotalPrice();    // 결제금액 재계산
+            });
+
+            // 총 결제금액 계산
+            var setTotalPrice = function() {
+                var total_sale_price = 0, total_pay_price = 0;
+
+                $regi_form.find('input[name="real_pay_price[]"]').each(function(index) {
+                    total_sale_price += parseInt($regi_form.find('input[name="real_sale_price[]"]').eq(index).val(), 10) || 0;
+                    total_pay_price += parseInt($(this).val(), 10) || 0;
+                });
+
+                $regi_form.find('input[name="total_real_sale_price"]').val(total_sale_price);
+                $regi_form.find('input[name="total_real_pay_price"]').val(total_pay_price);
+            };
 
             // 회차 검색
             $('#btn_lecture_unit_search').on('click', function () {
@@ -419,16 +504,15 @@
                     return false;
                 }
 
+                if ($regi_form.find('input[name="prod_code[]"]').length > 1) {
+                    alert('회차등록일 경우 등록할 상품을 1건만 선택해 주세요.');
+                    return false;
+                }
+
                 $('#btn_lecture_unit_search').setLayer({
                     'url': '{{ site_url('common/searchWMasterLecture/unit/') }}' + w_lec_idx
                     , 'width': 1200
                 });
-            });
-
-            // 상품 삭제
-            $regi_form.on('click', '.selected-product-delete', function() {
-                var that = $(this);
-                that.parent().remove();
             });
 
             // 교재상품일 경우 배송정보 셋팅

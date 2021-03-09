@@ -1055,61 +1055,41 @@
                             </table>
                             <!-- lecTable -->
 
-                            <div class="lecInfoTable bookInfoTable">
-                                <ul>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>수강생 교재</span> 
-                                            2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">
-                                            <label>[판매중]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none">
-                                            <span class="tx-blue">30,000원</span>
-                                            <span class="tx-dark-gray">(↓10%)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>주교재</span> 
-                                            정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">                                
-                                            <label class="tx-red">[품절]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none" disabled>
-                                            <span class="tx-blue">20,000원</span>
-                                            <span class="tx-dark-gray">(↓10%)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>부교재</span> 
-                                            2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">
-                                            <label class="tx-purple-gray ">[출간예정]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none" disabled>
-                                            <span class="tx-blue">0원</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>                                
-                                <div>
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </div>
+                            <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl100">
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">수강생 교재</span> 
+                                                <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">30,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">주교재</span> 
+                                                <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">20,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">부교재</span> 
+                                                <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">0원</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub">
+                                                <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <!-- willbes-Lec-Table -->
 
@@ -1159,62 +1139,41 @@
                             </table>
                             <!-- lecTable -->
 
-                            <div class="lecInfoTable bookInfoTable">
-                                <ul>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>수강생 교재</span> 
-                                            2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">
-                                            <label>[판매중]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none">
-                                            <span class="tx-blue">30,000원</span>
-                                            <span class="tx-dark-gray">(↓10%)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>주교재</span> 
-                                            정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">                                
-                                            <label class="tx-red">[품절]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none" disabled>
-                                            <span class="tx-blue">20,000원</span>
-                                            <span class="tx-dark-gray">(↓10%)</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="b-obj">
-                                            <span>부교재</span> 
-                                            2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)
-                                        </div>
-                                        <div class="bookBuyBtns">
-                                            <a href="#none" class="btnCart">장바구니</a>
-                                            <a href="#none" class="btnBuy">바로결제</a>
-                                        </div>
-                                        <div class="bookbuyInfo">
-                                            <label class="tx-purple-gray ">[출간예정]</label>
-                                            <input type="checkbox" id="goods_chk" name="goods_chk" class="goods_chk d_none" disabled>
-                                            <span class="tx-blue">0원</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>                                
-                                <div>
-                                    <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
-                                </div>
-                            </div>
-
+                            <table cellspacing="0" cellpadding="0" class="lecInfoTable">
+                                <tbody>
+                                    <tr>
+                                        <td class="pl100">
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">수강생 교재</span> 
+                                                <span class="w-subtit">2018 정채영국어마무리시리즈[문학편]_137작품을알려주마(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">30,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">주교재</span> 
+                                                <span class="w-subtit">정채영 국어 마무리 시리즈(핵심정리편) 70테마로 끝내주마!(제2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">20,000원</span>
+                                                    <span class="discount">(↓10%)</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub">
+                                                <span class="w-obj tx-blue tx11">부교재</span> 
+                                                <span class="w-subtit">2018 정채영 국어 마무리 시리즈(a적중문제편) 19문제만 찍어주마!(전정2판)</span>
+                                                <span class="priceWrap">
+                                                    <span class="price tx-blue">0원</span>
+                                                </span>
+                                            </div>
+                                            <div class="w-sub  tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                            <div class="w-sub">
+                                                <a href="#ch2" onclick="openLink('ch2','hover2'); openWin('InfoForm')"><strong>교재상세정보</strong></a> 
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <!-- lecInfoTable -->
                         </div>
                         <!-- willbes-Lec-Table -->

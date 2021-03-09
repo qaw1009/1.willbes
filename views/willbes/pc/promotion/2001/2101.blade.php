@@ -305,7 +305,7 @@
                         <li>
                             <div>
                                 <strong>62</strong>만원<br>
-                                <input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="720000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">2021년대비 PASS</label>
+                                <input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="620000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">2021년대비 PASS</label>
                             </div>
                          </li>
                     </ul>

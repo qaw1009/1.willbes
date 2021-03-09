@@ -432,7 +432,7 @@ class OrderModel extends BaseOrderModel
             $total_order_prod_price = 0;    // 전체상품주문금액
             $total_disc_price = 0;  // 전체할인금액
             $total_real_pay_price = 0;  // 전체실결제금액
-            $real_pay_price = element('real_pay_price', $input, 0);     // 관리자유료결제 실결제금액
+            $arr_real_pay_price = get_arr_var(element('real_pay_price', $input), 0);    // 관리자유료결제 실결제금액
             $delivery_price = element('delivery_price', $input, 0);     // 배송료
             $is_delivery_info = false;  // 배송정보 등록 여부
             $is_cert_no_add = false;    // 수강증번호 등록 여부
@@ -440,7 +440,7 @@ class OrderModel extends BaseOrderModel
             $arr_prod_row = [];    // 상품조회 결과 배열
 
             // 상품코드 기준으로 주문상품 데이터 생성
-            foreach ($arr_prod_info as $prod_info) {
+            foreach ($arr_prod_info as $idx => $prod_info) {
                 // 상품정보 변수 할당
                 list($prod_code, $prod_type, $learn_pattern_ccd) = explode(':', $prod_info);
 
@@ -529,6 +529,9 @@ class OrderModel extends BaseOrderModel
                     $row['DiscRate'] = 100;
                     $row['DiscType'] = 'R';                    
                 } else {
+                    // 상품별 결제금액
+                    $real_pay_price = array_get($arr_real_pay_price, $idx, 0);
+
                     // 판매금액보다 실결제금액이 크다면
                     if ($row['RealSalePrice'] < $real_pay_price) {
                         throw new \Exception('결제금액은 판매금액을 초과하여 입력하실 수 없습니다.', _HTTP_BAD_REQUEST);

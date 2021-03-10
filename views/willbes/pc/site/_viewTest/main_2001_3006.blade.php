@@ -1,26 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <style type="text/css">
-        .pro .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
-
-
-        .pro .ProfProBox {margin-left:-5px}
-        .pro .ProfProBox > li {
-            position: relative;
-            display: inline;
-            float: left;
-            width: 220px;
-            height: 327px;
-            margin-left: 5px;
-            margin-bottom:5px
-        }
-        .pro .mouBox span {display:inline-block; margin:0 10px 10px 0}
-
-        .pro .Sec01 {background:#0a0a0a; margin-top:20px}
-        .pro .Sec02 {position:relative; height:390px}
-        .pro .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
-    </style>
+    <link href="/public/css/willbes/style_cop_pro.css?ver={{time()}}" rel="stylesheet">
 
     <!-- Container -->
     <div id="Container" class="Container pro NGR c_both">
@@ -56,8 +37,9 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
                 <div>
-                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span','mr25') !!}
-                    {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'span') !!}
+                    {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'span', 'mr25 f_left') !!}
+                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span', 'mr25 f_left') !!}
+                    {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'span', 'f_left') !!}
                 </div>
             </div>
         </div>
@@ -76,11 +58,15 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
                 <ul class="ProfProBox">
-                    @for($i=1; $i<=10; $i++)
+                    @for($i=1; $i<=9; $i++)
                         <li>
                             {!! banner_html(element('메인_승진교수'.$i, $data['arr_main_banner'])) !!}
                         </li>
                     @endfor
+
+                    <li class="bSlider">
+                        {!! banner_html(element('메인_승진교수10', $data['arr_main_banner']), 'slider') !!}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -98,12 +84,12 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">협력기관<span class="tx-color">(MOU)</span> <span class="tx16 ml10 NSK">문의: 070-4006-8926</span></div>
                 <div class="mouBox">
-                    <span><a href="https://www.police.go.kr/index.do" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_01.jpg" alt=""></a></span>
-                    <span><a href="https://www.police.ac.kr/police/index.do" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_02.jpg" alt=""></a></span>
-                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=kidonghq" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_03.jpg" alt=""></a></span>
-                    <span><a href="https://www.cnpolice.go.kr" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_04.jpg" alt=""></a></span>
-                    <span><a href="https://www.jjpolice.go.kr/jjpolice" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_05.jpg" alt=""></a></span>
-                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=dj" target="_blank" class="mr5"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_200x50_06.jpg" alt=""></a></span>
+                    <span><a href="https://www.police.go.kr/index.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_01.jpg" alt=""></a></span>
+                    <span><a href="https://www.police.ac.kr/police/index.do" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_02.jpg" alt=""></a></span>
+                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=kidonghq" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_03.jpg" alt=""></a></span>
+                    <span><a href="https://www.cnpolice.go.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_04.jpg" alt=""></a></span>
+                    <span><a href="https://www.jjpolice.go.kr/jjpolice" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_05.jpg" alt=""></a></span>
+                    <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=dj" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_06.jpg" alt=""></a></span>
                 </div>
             </div>
         </div>

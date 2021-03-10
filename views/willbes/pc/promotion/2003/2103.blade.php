@@ -26,26 +26,23 @@
         .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2103_02_bg.jpg) no-repeat center top;}
                 
         /*수강신청 체크*/
-        .check {border-bottom:5px solid #BE9869;padding-bottom:100px;}
-        .check p {margin-bottom:50px;padding-top:50px;}
+        .check {padding-bottom:100px;}
+        .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
-        .check label {cursor:pointer;color:#000;font-weight:bold;font-size:17px;}
+        .check label {cursor:pointer;color:#585858;font-weight:bold;font-size:15px;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px;font-size:15px;}
-        .check a.infotxt:hover {background:#265e23}   
-
-
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#504f4f; background:#ededed; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
+        
         /* 이용안내 */
-        .wb_info {padding:100px 0;}
+        .wb_info {padding:100px 0;background:#ededed}
         .guide_box{width:1000px; margin:0 auto; text-align:left; word-break:keep-all; line-height:1.5; font-size:13px;}
-        .guide_box h2 {font-size:30px; margin-bottom:30px}
-        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; 
-        padding:5px 20px; font-weight:bold; font-size:17px; border-radius:30px}        
+        .guide_box h2 {font-size:30px; margin-bottom:30px;color:#3a3a3a;}
+        .guide_box dt{margin-bottom:10px; display:inline-block;font-weight:bold; font-size:17px; border-radius:30px;color:#3a3a3a;font-size:25px;}        
         .guide_box dd{color:#777; margin:0 0 20px 5px;}
         .guide_box dd strong {color:#555}
-        .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;}
-        .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px; font-size:12px}
+        .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;color:#3a3a3a;font-size:15px}
+        .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px;}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
 
     </style>
@@ -72,14 +69,17 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2103_02.jpg" alt="영양사전문 교수진" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2103_02.jpg" alt="영양사전문 교수진" usemap="#Map2103_cafe" border="0" />
+            <map name="Map2103_cafe" id="Map2103_cafe">
+                <area shape="rect" coords="200,1252,407,1299" href="https://cafe.naver.com/nutrition01" target="_blnak"/>
+            </map>
         </div>
     
         <div class="evtCtnsBox wb_cts03" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2103_03.jpg" alt="올패스 신청하기" usemap="#Map2103_apply" border="0" />
             <map name="Map2103_apply" id="Map2103_apply">
-                <area shape="rect" coords="211,849,457,897" href="javascript:go_PassLecture('179729');" alt="수강신청" />
-                <area shape="rect" coords="661,848,907,896" href="javascript:go_PassLecture('179708');" alt="수강신청" />
+                <area shape="rect" coords="213,1012,457,1060" href="javascript:go_PassLecture('179729');" alt="수강신청" />
+                <area shape="rect" coords="662,1013,906,1061" href="javascript:go_PassLecture('179708');" alt="수강신청" />
             </map>
             <div class="check" id="chkInfo">               
                 <label>

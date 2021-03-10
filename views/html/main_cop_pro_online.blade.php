@@ -84,8 +84,9 @@
         <div class="widthAuto"> 
             <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
             <div>
-                <span class="mr25"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_515x190_01.jpg" alt="배너명"></a></span>
-                <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_515x190_02.jpg" alt="배너명"></a></span>
+                <span class="mr20 f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_01.jpg" alt="배너명"></a></span>
+                <span class="mr20 f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_02.jpg" alt="배너명"></a></span>
+                <span class="f_left"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_03.jpg" alt="배너명"></a></span>
             </div>  
         </div>
     </div>
@@ -149,10 +150,12 @@
                         <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_220x237_09.jpg" alt="배너명">
                     </a>
                 </li>
-                <li>
-                    <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/3006_220x237_10.jpg" alt="배너명">
-                    </a>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_220x237_09.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_220x237_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_220x237_02.jpg" alt="배너명"></a></div>
+                    </div>
                 </li>
             </ul>
         </div>

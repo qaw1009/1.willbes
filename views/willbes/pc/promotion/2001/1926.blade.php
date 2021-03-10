@@ -19,17 +19,17 @@
     .skybanner a {display:block; margin-bottom:10px}
 
     .evt00 {background:#0a0a0a}
-    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1926_top_bg.jpg) no-repeat center top;}  
+    .evt_top {background:url(https://static.willbes.net/public/images/promotion/2020/11/1926_top_bg.jpg) no-repeat center top;position:relative}  
     .evt_top .youtube {width:726px; position:absolute; top:1566px; left:50%; margin-left:-363px; z-index:5}
     .evt_top .youtube iframe {width:726px; height:380px;} 
 
-    .evt01 {background:#2c2c2c url(https://static.willbes.net/public/images/promotion/2020/11/1926_01_bg.jpg) no-repeat center bottom;}   
+    .evt01 {background:#2c2c2c url(https://static.willbes.net/public/images/promotion/2020/11/1926_01_bg.jpg) no-repeat center bottom;position:relative}   
     /**/
     .evt01 .roll_starwars {position:relative;overflow:hidden;width:1120px;margin:-100px auto 0;text-align:left;
         transform-origin: 50% 100%;transform:perspective(45px) rotateX(4deg)}
 	.evt01 .wr_starwars .slide {padding:15px 0; text-align:center; font-size:30px; color:#fff; line-height:1.5}
 
-    .evt02 {background:#454545;}
+    .evt02 {background:#454545;position:relative}
     .slide_con {position:absolute; width:911px; left:50%; top:544px; margin-left:-455px; z-index:10}
     .slideBox {position:relative}
     .slide_con p {position:absolute; top:50%; width:56px; height:56px; margin-top:-28px; z-index:20}
@@ -38,13 +38,13 @@
     .slide_con p.rightBtn {right:-100px}
     .evt02 .reply {position:absolute; top:1156px; left:50%; margin-left:-441px; width:882px; z-index:1}
 
-    .evt03 {background:#262626} 
+    .evt03 {background:#262626;position:relative} 
     .evt03 .youtube {width:622px; position:absolute; top:644px; left:50%; margin-left:-494px; z-index:5}
     .evt03 .youtube.youtube2 {top:1227px; margin-left:-130px}
     .evt03 .youtube.youtube3 {top:1810px;}
     .evt03 .youtube iframe {width:622px; height:348px;}     
 
-    .evt04 {background:#323232 url(https://static.willbes.net/public/images/promotion/2020/11/1926_04_bg.jpg) no-repeat center bottom;}     
+    .evt04 {background:#323232 url(https://static.willbes.net/public/images/promotion/2020/11/1926_04_bg.jpg) no-repeat center bottom;position:relative}     
     .evt04 .youtube {width:695px; position:absolute; top:463px; left:50%; margin-left:-347px; z-index:5}
     .evt04 .youtube iframe {width:695px; height:380px;} 
 

@@ -37,6 +37,7 @@
         }
         .wb_top div a:hover,
         .wb_05 div a:hover {background:#00A723;}
+        .wb_01 {position:relative}
 
         .youtube {position:absolute; top:320px; left:50%; width:607px; z-index:1;margin-left:-485px}
         .youtube iframe {width:970px; height:480px}

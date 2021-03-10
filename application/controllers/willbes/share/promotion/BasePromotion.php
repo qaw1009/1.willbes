@@ -98,7 +98,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 프로모션 라이브송출 조회
-        $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);
+        $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType'],$data['ElIdx']);
         $arr_base['promotion_live_data'] = $promotion_live_data['promotion_live_data'];
         $arr_base['promotion_live_file_link'] = $promotion_live_data['promotion_live_file_link'];
         $arr_base['promotion_live_file_yn'] = $promotion_live_data['promotion_live_file_yn'];
@@ -732,9 +732,10 @@ class BasePromotion extends \app\controllers\FrontController
      * 이벤트 라이브송출 조회
      * @param integer $PromotionCode
      * @param string $PromotionLiveType
+     * @param string $el_idx
      * @return mixed
      */
-    private function _getPromotionLiveData($PromotionCode = null,$PromotionLiveType = 'N')
+    private function _getPromotionLiveData($PromotionCode = null,$PromotionLiveType = 'N',$el_idx = null)
     {
         $today_now = time();
         $data = [];
@@ -752,7 +753,7 @@ class BasePromotion extends \app\controllers\FrontController
 
                     if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
                         if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
-                            $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
+                            $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$el_idx;
                             $data['promotion_live_file_yn'] = 'Y';
 
                             $down_yn = 'Y';

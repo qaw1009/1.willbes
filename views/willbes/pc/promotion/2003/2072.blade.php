@@ -160,7 +160,7 @@
                     json_data = json_data[idx];
 
                 if (typeof json_data.file_idx !== 'undefined') {
-                    var _url = "{{front_url('/promotion/downloadLiveVideo')}}?file_idx=" + json_data.file_idx + "&event_idx={{$data['ElIdx']}}";
+                    var _url = "{{front_url('/promotion/downloadLiveVideo')}}?file_idx=" + json_data.file_idx + "&event_idx={{$arr_base['promotion_code']}}";
                     location.href = _url;
                 }else{
                     alert('다운로드 가능한 기간이 아닙니다.');

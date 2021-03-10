@@ -13,19 +13,27 @@
     }	
     .evtContent span {vertical-align:auto}
     .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
-    /*****************************************************************/     
+    /*****************************************************************/
 
     /*타이머*/
-    .time {width:100%; text-align:center; background:#F5F5F5;}
+    .time {width:100%; text-align:center; background:#e1e1e1}
     .time {text-align:center; padding:20px 0}
     .time table {width:1120px; margin:0 auto}
-    .time table td {line-height:1.2}        
-    .time table td img {width:65%}
-    .time .time_txt {font-size:20px; color:#000; letter-spacing: -1px; text-align:left}
-    .time span {color:#000; font-size:28px;}
-    .time table td:last-child,
-    .time table td:last-child span {font-size:40px}
-
+    .time table td:first-child {font-size:40px}
+    .time table td img {width:80%}
+    .time .time_txt {font-size:28px; color:#000; letter-spacing: -1px}
+    .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
+    @@keyframes upDown{
+    from{color:#d63e4d}
+    50%{color:#ff6600}
+    to{color:#d63e4d}
+    }
+    @@-webkit-keyframes upDown{
+    from{color:#d63e4d}
+    50%{color:#ff6600}
+    to{color:#d63e4d}
+    }         
+    
     .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2110_top_bg.jpg) no-repeat center top;} 
 
     .evt_03 {background:#fff;}
@@ -43,12 +51,12 @@
 
     <div class="evtContent NSK">
 
-        <!-- 타이머 -->
-        <div class="evtCtnsBox time NGEB" id="newTopDday">
+        <div class="evtCtnsBox time NSK-Black" id="newTopDday">
             <div>
                 <table>
-                    <tr>                    
-                    <td class="time_txt"><span>마감까지<br>남은시간</span></td>
+                    <tr>
+                    <td class="time_txt"><span>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}</span> 마감!</td>
+                    <td class="time_txt">마감까지<br><span>남은 시간은</span></td>
                     <td><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td class="time_txt">일 </td>
@@ -60,12 +68,11 @@
                     <td class="time_txt">:</td>
                     <td><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
                     <td><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></td>
-                    <td>{{ kw_date('n/j(%)', $arr_promotion_params['edate']) }}마감!</td>
                     </tr>
                 </table>                
             </div>
         </div>
-        <!-- 타이머 //-->    
+        <!-- 타이머 //-->
 
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2110_top.jpg" alt="공린이를 위한 단과" />
@@ -88,7 +95,7 @@
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
                     @endif   
-                <div class="title NSK-Black" style="padding:50px 0 25px;"> <span class="evt">소방원</span></div>     
+                <div class="title NSK-Black" style="padding:50px 0 25px;"> <span class="evt">소방</span></div>     
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                     @endif      
@@ -109,7 +116,7 @@
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
                     @endif   
-                <div class="title NSK-Black" style="padding:50px 0 25px;"> <span class="evt">소방원</span></div>     
+                <div class="title NSK-Black" style="padding:50px 0 25px;"> <span class="evt">소방</span></div>     
                     @if(empty($arr_base['display_product_data']) === false)
                         @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
                     @endif      

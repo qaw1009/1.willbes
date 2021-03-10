@@ -225,11 +225,11 @@
                                         <div class="Layer-Cont">
                                             <div class="Layer-SubTit tx-gray">
                                                 <ul>
-                                                    <li>형소법 기본(단과)[1/6-1/24]</li>
-                                                    <li>경찰학 기본(단과)[1/6~2/18]</li>
-                                                    <li>형법 기본(단과)[1/28~2/14]</li>
-                                                    <li>영어 기본(단과) [1/8~2/21]</li>
-                                                    <li>원유철한국사 기본(단과)[2/17~3/6]</li>
+                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a></li>
+                                                    <li>경찰학 기본(단과)[1/6~2/18] <a href="#none">교재구매</a></li>
+                                                    <li>형법 기본(단과)[1/28~2/14] <a href="#none">교재구매</a></li>
+                                                    <li>영어 기본(단과) [1/8~2/21] <a href="#none">교재구매</a></li>
+                                                    <li>원유철한국사 기본(단과)[2/17~3/6] <a href="#none">교재구매</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -318,7 +318,10 @@
                                         <li>[좌석번호] <span class="tx-red">미선택</span></li>
                                         <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00</li>
                                     </ul>
-                                    <div class="lookover"><a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a></div>
+                                    <div class="lookover">
+                                        <a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a>
+                                        <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
+                                    </div>
                                 </td>
                                 <td class="w-period">2018.10.20 <br>
                                     ~ 2018.11.20</td>
@@ -651,9 +654,9 @@
                                             <td>교수명1 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
@@ -663,7 +666,7 @@
                                             <td>2020-00-00~<br>
                                                 2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="2">민법 </td>
@@ -671,18 +674,18 @@
                                             <td>교수명3 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>수목금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명4 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>행정법 </td>
@@ -690,9 +693,9 @@
                                             <td>교수명5 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -733,18 +736,18 @@
                                             <td>교수명1 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td><input type="radio" name="radio" id="radio" value="radio" /></td>
                                             <td>교수명2 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td rowspan="2">민법 </td>
@@ -752,18 +755,18 @@
                                             <td>교수명3 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>수목금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>○</td>
                                             <td>교수명4 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>월수금(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                         <tr>
                                             <td>행정법 </td>
@@ -771,9 +774,9 @@
                                             <td>교수명5 </td>
                                             <td>형태</td>
                                             <td class="tx-left">단과반명이 출력됩니다. </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                             <td>화목(13회차) </td>
-                                            <td>2020-00-00~2020-00-00 </td>
+                                            <td>2020-00-00~<br>2020-00-00 </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1165,182 +1168,219 @@
                     <a class="closeBtn" href="#none" onclick="closeWin('profLook')">
                         <img src="{{ img_url('sub/close.png') }}">
                     </a>
-                    <div class="Layer-Tit tx-dark-black NG">강사선택현황</div> 
-                    <div class="lecMoreWrap of-hidden h700">                    
-                        <div class="PASSZONE-List widthAutoFull">
-                            <div class="lecTitle NG">
-                                21_노무_2차유예[20/09~21/08]_10%할인
-                            </div>
-                            
-                            <div class="PASSZONE-Lec-Section">
-                                <div class="strong mt25 tx-gray h22 mb10">
-                                    · 최종 선택한 과목 및 강사에 대한 현황을 확인하실 수 있습니다.
+                    {{--강사선택현황--}}
+                    <div>
+                        <div class="Layer-Tit tx-dark-black NG">강사선택현황</div> 
+                        <div class="lecMoreWrap of-hidden h700">                    
+                            <div class="PASSZONE-List widthAutoFull">
+                                <div class="lecTitle NG">
+                                    21_노무_2차유예[20/09~21/08]_10%할인
                                 </div>
+                                
+                                <div class="PASSZONE-Lec-Section">
+                                    <div class="strong mt25 tx-gray h22 mb10">
+                                        · 최종 선택한 과목 및 강사에 대한 현황을 확인하실 수 있습니다.
+                                    </div>
 
-                                <div class="c_both mb20">
-                                    <ul class="tabWrap tabDepthPass">
-                                        <li><a href="#subjecttab3" class="on">필수과목</a></li>
-                                        <li><a href="#subjecttab4">선택과목</a></li>
-                                    </ul>                                
-                                </div>
+                                    <div class="c_both mb20">
+                                        <ul class="tabWrap tabDepthPass">
+                                            <li><a href="#subjecttab3" class="on">필수과목</a></li>
+                                            <li><a href="#subjecttab4">선택과목</a></li>
+                                        </ul>                                
+                                    </div>
 
-                                <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab3">                                
-                                    <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 10%;">
-                                            <col style="width: 10%;">
-                                            <col style="width: 8%;">
-                                            <col style="width: 8%;">
-                                            <col>
-                                            <col style="width: 20%;">
-                                            <col style="width: 10%;">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>과정</th>
-                                                <th>과목</th>
-                                                <th>교수</th>
-                                                <th>수강형태</th>
-                                                <th>단과반명</th>
-                                                <th>개강일~종강일 </th>
-                                                <th>요일(회차)</th>
-                                            </tr>
-                                        </thead>
-                                        </tbody>
-                                            <tr>
-                                                <td rowspan="7">예비순환 </td>
-                                                <td rowspan="2">형법 </td>
-                                                <td>교수명1 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명2 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>화목(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="4">민법 </td>
-                                                <td>교수명3 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>수목금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명4 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명5 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명6 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>행정법 </td>
-                                                <td>교수명7 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>화목(13회차) </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
-                                </div>
+                                    <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab3">                                
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                                <col style="width: 8%;">
+                                                <col style="width: 8%;">
+                                                <col>
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정</th>
+                                                    <th>과목</th>
+                                                    <th>교수</th>
+                                                    <th>수강형태</th>
+                                                    <th>단과반명</th>
+                                                    <th>개강일~종강일 </th>
+                                                    <th>요일(회차)</th>
+                                                    <th>교재구매</th>
+                                                </tr>
+                                            </thead>
+                                            </tbody>
+                                                <tr>
+                                                    <td>GS1순환</td>
+                                                    <td>형법 </td>
+                                                    <td>교수명1 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>월수금(13회차)</td>
+                                                    <td><a href="#" class="buyBook">교재구매</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>GS1순환</td>
+                                                  <td>민법 </td>
+                                                    <td>교수명3 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>수목금(13회차) </td>
+                                                    <td><a href="#">교재구매</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>GS1순환</td>
+                                                  <td>행정법 </td>
+                                                    <td>교수명7 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>화목(13회차) </td>
+                                                    <td><a href="#">교재구매</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
+                                    </div>
 
-                                <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab4">
-                                    <table cellspacing="0" cellpadding="0" class="listTable passTable-Select under-gray tx-gray">
-                                        <colgroup>
-                                            <col style="width: 10%;">
-                                            <col style="width: 10%;">
-                                            <col style="width: 8%;">
-                                            <col style="width: 8%;">
-                                            <col>
-                                            <col style="width: 20%;">
-                                            <col style="width: 10%;">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th>과정</th>
-                                                <th>과목</th>
-                                                <th>교수</th>
-                                                <th>수강형태</th>
-                                                <th>단과반명</th>
-                                                <th>개강일~종강일 </th>
-                                                <th>요일(회차)</th>
-                                            </tr>
-                                        </thead>
-                                        </tbody>
-                                            <tr>
-                                                <td rowspan="6">기본이론</td>
-                                                <td rowspan="2">형법 </td>
-                                                <td>교수명1 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명2 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>화목(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td rowspan="3">민법 </td>
-                                                <td>교수명3 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>수목금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명4 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>교수명5 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>월수금(13회차) </td>
-                                            </tr>
-                                            <tr>
-                                                <td>행정법 </td>
-                                                <td>교수명6 </td>
-                                                <td>형태</td>
-                                                <td class="tx-left">단과반명이 출력됩니다. </td>
-                                                <td>2020-00-00~2020-00-00 </td>
-                                                <td>화목(13회차) </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
+                                    <div class="LeclistTable bdt-gray mt25 mb30 c_both" id="subjecttab4">
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                                <col style="width: 8%;">
+                                                <col style="width: 8%;">
+                                                <col>
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                                <col style="width: 10%;">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>과정</th>
+                                                    <th>과목</th>
+                                                    <th>교수</th>
+                                                    <th>수강형태</th>
+                                                    <th>단과반명</th>
+                                                    <th>개강일~종강일 </th>
+                                                    <th>요일(회차)</th>
+                                                    <th>교재구매</th>
+                                                </tr>
+                                            </thead>
+                                            </tbody>
+                                                <tr>
+                                                    <td>GS1순환</td>
+                                                    <td>형법 </td>
+                                                    <td>교수명1 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>월수금(13회차)</td>
+                                                    <td><a href="#">교재구매</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>GS1순환</td>
+                                                  <td>민법 </td>
+                                                    <td>교수명3 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>수목금(13회차) </td>
+                                                    <td><a href="#">교재구매</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>GS1순환</td>
+                                                  <td>행정법 </td>
+                                                    <td>교수명7 </td>
+                                                    <td>형태</td>
+                                                    <td class="tx-left">단과반명이 출력됩니다. </td>
+                                                    <td>2020-00-00~<br>2020-00-00 </td>
+                                                    <td>화목(13회차) </td>
+                                                    <td><a href="#">교재구매</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="btnAuto130 mt20 tx-white tx14 strong"><a href="#" class="bBox blueBox">적용</a></div>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- PASSZONE-List -->
                         </div>
-                        <!-- PASSZONE-List -->
+                    </div>
+
+                    {{--교재구매--}}
+                    <div>
+                        <div class="Layer-Tit tx-dark-black NG">교재구매</div> 
+                        <div class="lecMoreWrap of-hidden h700">                    
+                            <div class="PASSZONE-List widthAutoFull">
+                                <div class="strong mt25 tx-gray h22 mb10">
+                                    · 수강중인 강좌에 관련된 교재를 주문하실수 있습니다.
+                                </div>
+                                
+                                <div class="PASSZONE-Book-Section">
+                                    <div class="LeclistTable bdt-gray mt25 mb30 c_both">                                
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 5%;">
+                                                <col style="width: 10%;">
+                                                <col>
+                                                <col style="width: 12%;">
+                                                <col style="width: 12%;">
+                                            </colgroup>
+											<tbody>
+                                                <tr>
+                                                    <td><input name="" type="checkbox" value="" /></td>
+                                                    <td class="tx-blue">주교재</td>
+                                                    <td class="tx-left">2020 김원욱 형법 3.0(2쇄)</td>
+                                                    <td><span class="tx-red">품절</span></td>
+                                                    <td>47,700원<span class="tx-blue">(↓10%)</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input name="" type="checkbox" value="" /></td>
+                                                    <td class="tx-blue">부교재</td>
+                                                    <td class="tx-left">2020 김원욱 형법 3.0(2쇄)</td>
+                                                    <td><span class="tx-blue">판매중</span></td>
+                                                    <td>30,000원<span class="tx-blue">(↓10%)</span></td>
+                                                </tr>
+                                                <tr>
+                                                  	<td><input name="" type="checkbox" value="" /></td>
+                                                  	<td class="tx-blue">수험생교재</td>
+                                                    <td class="tx-left">2020 김원욱 형법 3.0(2쇄)</td>
+                                                    <td><span class="tx-blue">판매중</span></td>
+                                                    <td>0원</td>
+                                                </tr>
+                                                <tr>
+                                                  <td colspan="3">
+                                                    상품주문금액
+                                                    <div class="tx14 tx-blue strong">0원</div>
+                                                  </td>
+                                                  <td colspan="2" class="bg-light-white">
+                                                    최종결제금액
+                                                    <div class="tx18 tx-blue strong">0원</div>
+                                                  </td>
+                                                </tr>
+                                        	</tbody>
+                                        </table>
+                                        <div class="mt10 tx-red">* 30,000원 이상 교재 구매 시 배송료는 무료입니다.</div>
+                                        <div class="mt10 tx-right">
+                                            <span class="btnAuto130 tx-white tx14 strong">
+                                                <a href="#" class="bBox bg-heavy-gray">장바구니</a>
+                                            </span>
+                                            <span class="btnAuto130 tx-white tx14 strong">
+                                                <a href="#" class="bBox blueBox">바로결제</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PASSZONE-List -->
+                        </div>
                     </div>
                 </div>
             </div>

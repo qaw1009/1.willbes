@@ -78,8 +78,8 @@
         <div class="evtCtnsBox wb_cts03" id="apply">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2103_03.jpg" alt="올패스 신청하기" usemap="#Map2103_apply" border="0" />
             <map name="Map2103_apply" id="Map2103_apply">
-                <area shape="rect" coords="213,1012,457,1060" href="javascript:go_PassLecture('179729');" alt="수강신청" />
-                <area shape="rect" coords="662,1013,906,1061" href="javascript:go_PassLecture('179708');" alt="수강신청" />
+                <area shape="rect" coords="211,982,456,1030" href="javascript:go_PassLecture('179729');" alt="수강신청" />
+                <area shape="rect" coords="661,983,907,1031" href="javascript:go_PassLecture('179708');" alt="수강신청" />
             </map>
             <div class="check" id="chkInfo">               
                 <label>

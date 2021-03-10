@@ -130,6 +130,11 @@ function setScreenReSizeVal()
         $('#subframe').hide();
     }
 
+    /* 모니터 화면이 작을 경우 wide 화면의 경우 사이즈 조정 */
+    if(screen.availWidth < 1980 && video_container_width >= 1280){
+        video_container_width = video_container_width - (1750 - screen.availWidth);
+    }
+
     video_container_height = parseInt(video_container_width * 9 / ratio);
 
     playerWidth = video_container_width + SubFrameTag_width + playerPaddingWidth;
@@ -150,11 +155,13 @@ function setScreenReSizeVal()
     playerWidth = conW + borderW;
     playerHeight = conH + borderH;
 
+    /*
     if(SubFrameTag_width != 0 && screen.availWidth < playerWidth){
         playerWidth = playerWidth - SubFrameTag_width;
         SubFrameTag_width = 0;
         $("#subframe").hide();
     }
+    */
 
     moveLeft = parseInt((( screen.availWidth - 10 ) - playerWidth) / 2);
     moveTop = parseInt((( screen.availHeight - 30 ) - playerHeight) / 2);

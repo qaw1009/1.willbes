@@ -9612,6 +9612,8 @@ table.PassZoneTable .w-data {
 	line-height: 1.5;
 	padding: 7px auto;
 }
+
+.PASSZONE-List .passTable-Select tbody td a.buyBook {background-color: #333; color:#fff; display:inline-block; padding:5px 10px}
 .PASSZONE-List .passTable-Select .w-data input {
 	width: 80px;
 }
@@ -10078,6 +10080,7 @@ table.acadTable tr td {
 	line-height: 1.5;
 	padding: 15px 0;
 }
+table.acadTable tr td .Layer-SubTit a {padding:1px 4px; font-size:11px; color:#fff; background-color: #333; border:1px solid #000}
 .seatsection {
 	background: #f6f6f6;
 	border-radius: 20px;
@@ -14152,10 +14155,21 @@ table.acadlecInfoPackageTable tr.Top td {
 	border-radius: 20px;
 	padding: 0 12px;
 }
+.lookover a.buyBook {
+	border:1px solid #000;
+	background-color: #333;
+	color:#fff
+}
+.lookover a.buyBook:hover {
+	border:1px solid #000;
+	background-color: #fff;
+	color:#333;
+}
 .lookover a:hover {
 	background: #ff0033;
 	color: #fff;
 }
+
 
 .lookoverInfo {
 	background: #f8f8f8;

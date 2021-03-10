@@ -21,8 +21,8 @@
 
         .wb_police {background:#0A0A0A}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_top_bg.jpg) no-repeat center;}        
-        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_01_bg.jpg) no-repeat center;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_top_bg.jpg) no-repeat center;position:relative}        
+        .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2020/12/1985_01_bg.jpg) no-repeat center;position:relative}
         .wb_01 .youtube {position:absolute; top:546px; left:50%; width:608px; z-index:1;margin-left:-127px; border:1px solid #000; box-shadow:0 10px 20px rgba(0,0,0,.3)}
         .wb_01 .youtube iframe {width:606px; height:317px}
 

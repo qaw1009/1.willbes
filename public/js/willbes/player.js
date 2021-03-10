@@ -130,9 +130,11 @@ function setScreenReSizeVal()
         $('#subframe').hide();
     }
 
-    /* 모니터 화면이 작을 경우 wide 화면의 경우 사이즈 조정 */
-    if(screen.availWidth < 1980 && video_container_width >= 1280){
-        video_container_width = video_container_width - (1750 - screen.availWidth);
+    /* 모니터 화면이 작을 경우 사이즈 조정 */
+    if(screen.availWidth <= 1700 && video_container_width >= 1280){
+        video_container_width = video_container_width - (1700 - screen.availWidth);
+    } else if(screen.availWidth <= 1400 && video_container_width >= 960){
+        video_container_width = video_container_width - (1400 - screen.availWidth);
     }
 
     video_container_height = parseInt(video_container_width * 9 / ratio);

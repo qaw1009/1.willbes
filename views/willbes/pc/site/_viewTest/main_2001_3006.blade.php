@@ -37,8 +37,8 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
                 <div>
-                    {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'span', 'mr25 f_left') !!}
-                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span', 'mr25 f_left') !!}
+                    {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'span', 'mr20 f_left') !!}
+                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span', 'mr20 f_left') !!}
                     {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'span', 'f_left') !!}
                 </div>
             </div>

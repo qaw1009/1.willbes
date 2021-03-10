@@ -2255,11 +2255,11 @@ class PredictModel extends WB_Model
                 AND CASE WHEN pp.MockPart = '400' THEN ar.TakeArea = '712001' ELSE TRUE END #400인경우 서울만 조인
                 ORDER BY pp.RowNum, pp.MockPart, ar.TakeArea
             ) AS A
-            LEFT JOIN {$this->_table['predictGradesLine']} AS L ON A.PredictIdx = L.PredictIdx AND A.TakeMockPart = L.TakeMockPart AND A.TakeArea = L.TakeArea
+            LEFT JOIN {$this->_table['predictGradesLine']} AS L ON L.PredictIdx = ? AND A.TakeMockPart = L.TakeMockPart AND A.TakeArea = L.TakeArea
             {$where}
             ORDER BY A.RowNum, A.TakeMockPart, A.TakeArea ASC
         ";
-        return $this->_conn->query('SELECT '.$query_string, [$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix])->result_array();
+        return $this->_conn->query('SELECT '.$query_string, [$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix])->result_array();
     }
 
     /**

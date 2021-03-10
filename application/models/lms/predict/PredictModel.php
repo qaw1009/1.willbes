@@ -2175,6 +2175,7 @@ class PredictModel extends WB_Model
 
     /**
      * 직렬별예상합격선 리스트
+     * 메인쿼리 : 직렬별 지역(전국제외) 테이블 [직렬이 101단(400)인경우 서울만 조인]
      * @param string $predict_dix
      * @param array $arr_condition
      * @return mixed
@@ -2183,8 +2184,7 @@ class PredictModel extends WB_Model
     {
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
 
-        $query_string = /** @lang text */ "
-            SELECT A.*, L.PickNum, L.TakeNum, L.CompetitionRateNow, L.CompetitionRateAgo, L.PassLineAgo, L.AvrPointAgo, L.StabilityAvrPoint, L.StabilityAvrPercent
+        $query_string = "A.*, L.PickNum, L.TakeNum, L.CompetitionRateNow, L.CompetitionRateAgo, L.PassLineAgo, L.AvrPointAgo, L.StabilityAvrPoint, L.StabilityAvrPercent
             ,L.StrongAvrPoint1, L.StrongAvrPoint2, L.StrongAvrPercent, L.ExpectAvrPoint1, L.ExpectAvrPoint2, L.ExpectAvrPercent, L.IsUse
             ,L.StrongAvrPoint1Ref, L.StrongAvrPoint2Ref, L.ExpectAvrPoint1Ref, L.ExpectAvrPoint2Ref, L.StabilityAvrPointRef
             ,(
@@ -2193,45 +2193,44 @@ class PredictModel extends WB_Model
                     SELECT *,PERCENT_RANK() OVER (PARTITION BY A.TakeMockPart, A.TakeArea ORDER BY A.SumAdjustPoint DESC) AS PointRank
                     FROM (
                         SELECT PredictIdx, PrIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
-                        FROM lms_predict_grades
+                        FROM {$this->_table['predictGrades']}
                         WHERE PredictIdx = ?
                         GROUP BY PrIdx
                     ) AS A
                 ) AS B
                 WHERE B.PointRank BETWEEN 0 AND ROUND((L.PickNum / L.TakeNum),2)
-                AND B.PredictIdx = L.PredictIdx AND B.TakeArea = L.TakeArea AND B.TakeMockPart = L.TakeMockPart
+                AND B.PredictIdx = L.PredictIdx AND B.TakeMockPart = L.TakeMockPart AND B.TakeArea = L.TakeArea
                 ORDER BY B.SumAdjustPoint ASC
                 LIMIT 1
             ) AS SetOnePerCut
             ,(
-                SELECT COUNT(*)
-                FROM (
-                    SELECT * FROM lms_predict_grades WHERE PredictIdx = ? AND MemIdx != 1000000 GROUP BY PrIdx
-                ) AS A
-                WHERE PredictIdx = L.PredictIdx AND TakeArea = L.TakeArea AND TakeMockPart = L.TakeMockPart
-            ) AS SetTakeOrigin
-            ,(
                 SELECT A.AvgAdjustPoint
                 FROM (
-                    SELECT
-                    PredictIdx, TakeMockPart, TakeArea, ROUND(AVG(t.SumAdjustPoint),2) AS AvgAdjustPoint
+                    SELECT PredictIdx, TakeMockPart, TakeArea, ROUND(AVG(t.SumAdjustPoint),2) AS AvgAdjustPoint
                     FROM (
                         SELECT PredictIdx, TakeMockPart, TakeArea, ROUND(SUM(AdjustPoint),2) AS SumAdjustPoint
-                        FROM lms_predict_grades
+                        FROM {$this->_table['predictGrades']}
                         WHERE PredictIdx = ?
                         GROUP BY PrIdx
                     ) AS t
                     GROUP BY TakeMockPart, TakeArea
                 ) AS A
-                WHERE PredictIdx = L.PredictIdx AND TakeArea = L.TakeArea AND TakeMockPart = L.TakeMockPart
+                WHERE PredictIdx = L.PredictIdx AND TakeMockPart = L.TakeMockPart AND TakeArea = L.TakeArea
             ) AS SetAvrPoint
             ,(
                 SELECT COUNT(*)
                 FROM (
-                    SELECT * FROM lms_predict_grades
+                    SELECT PredictIdx,TakeMockPart,TakeArea FROM {$this->_table['predictGrades']} WHERE PredictIdx = ? AND MemIdx != 1000000 GROUP BY PrIdx
+                ) AS A
+                WHERE PredictIdx = L.PredictIdx AND TakeMockPart = L.TakeMockPart AND TakeArea = L.TakeArea
+            ) AS SetTakeOrigin
+            ,(
+                SELECT COUNT(*)
+                FROM (
+                    SELECT PredictIdx,TakeMockPart,TakeArea FROM {$this->_table['predictGrades']}
                     WHERE PredictIdx = ? GROUP BY PrIdx
                 ) AS A
-                WHERE PredictIdx = L.PredictIdx AND TakeArea = L.TakeArea AND TakeMockPart = L.TakeMockPart
+                WHERE PredictIdx = L.PredictIdx AND TakeMockPart = L.TakeMockPart AND TakeArea = L.TakeArea
             ) AS SetTotalRegist
             
             FROM (
@@ -2239,28 +2238,28 @@ class PredictModel extends WB_Model
                 FROM (
                     SELECT
                     Ccd AS TakeArea, GroupCcd, CcdName AS TakeAreaName
-                    FROM lms_sys_code
-                    WHERE GroupCcd = '712' AND Ccd != '712018'
+                    FROM {$this->_table['sysCode']}
+                    WHERE GroupCcd = '712' AND Ccd != '712018' #전국제외
                 ) AS ar
                 INNER JOIN (
                     SELECT p.PredictIdx, p.MockPart, pc.CcdName AS TakeMockPartName, '712' AS AreaGroupCode,(@rownum1 := @rownum1 + 1) AS RowNum
                     FROM (
                         SELECT PredictIdx, SUBSTRING_INDEX(SUBSTRING_INDEX(a.MockPart, ',', TN.num), ',', -1) AS MockPart
-                        FROM tmp_numbers AS TN, lms_product_predict AS a
+                        FROM tmp_numbers AS TN, {$this->_table['predictProduct']} AS a
                         WHERE a.PredictIdx = ?
                         AND CHAR_LENGTH(a.MockPart) - CHAR_LENGTH(REPLACE(a.MockPart, ',', '')) >= TN.num - 1
                     ) AS p
-                    INNER JOIN lms_predict_code AS pc ON p.MockPart = pc.Ccd AND pc.IsUse = 'Y' AND pc.GroupCcd = 0
+                    INNER JOIN {$this->_table['predictCode']} AS pc ON p.MockPart = pc.Ccd AND pc.IsUse = 'Y' AND pc.GroupCcd = 0
                     ,(SELECT @rownum1 := 0) AS tmp
                 ) AS pp ON ar.GroupCcd = pp.AreaGroupCode
-                AND CASE WHEN pp.MockPart = '400' THEN ar.TakeArea = '712001' ELSE TRUE END
+                AND CASE WHEN pp.MockPart = '400' THEN ar.TakeArea = '712001' ELSE TRUE END #400인경우 서울만 조인
                 ORDER BY pp.RowNum, pp.MockPart, ar.TakeArea
             ) AS A
-            LEFT JOIN lms_predict_grades_line AS L ON A.PredictIdx = L.PredictIdx AND A.TakeMockPart = L.TakeMockPart AND A.TakeArea = L.TakeArea
+            LEFT JOIN {$this->_table['predictGradesLine']} AS L ON L.PredictIdx = ? AND A.TakeMockPart = L.TakeMockPart AND A.TakeArea = L.TakeArea
             {$where}
             ORDER BY A.RowNum, A.TakeMockPart, A.TakeArea ASC
         ";
-        return $this->_conn->query($query_string,[$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix])->result_array();
+        return $this->_conn->query('SELECT '.$query_string, [$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix,$predict_dix])->result_array();
     }
 
     /**

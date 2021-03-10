@@ -308,7 +308,7 @@
                 <div id="tab01">    
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_03_01.jpg" usemap="#Map2088_03_01" title="" border="0" />
                     <div class="youtube">
-                        <iframe src="https://www.youtube.com/embed/wWr99H_olHc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/1X6TBN6ywIg?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <map name="Map2088_03_01" id="Map2088_03_01">
                         <area shape="rect" coords="179,1555,261,1581" href="javascript:go_popup1()" />

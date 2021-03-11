@@ -8,6 +8,16 @@
         <div class="x_panel">
             <div class="x_content">
                 <div class="form-group">
+                    <label class="control-label col-md-1 min-width120" for="search_value">회원통합검색</label>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="search_value" name="search_value">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="form-control-static">• 이름, 아이디, 휴대폰번호(끝 4자리) 검색 기능</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-4 form-inline">
                         {!! html_site_select($offLineSite_def_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', false, $offLineSite_list) !!}

@@ -100,6 +100,19 @@ class Off extends \app\controllers\FrontController
 
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
+        foreach ($leclist as $idx => $row){
+            $booklist = $this->classroomFModel->getBooklist([
+                'EQ' => [
+                    'ProdCode' => $row['ProdCodeSub']
+                ]
+            ]);
+            if(empty($booklist) == true){
+                $leclist[$idx]['isbook'] = 'N';
+            } else {
+                $leclist[$idx]['isbook'] = 'Y';
+            }
+        }
+
         //강의실좌석정보[단과]
         $listLectureRoom = $this->_getLectureRoom($leclist, 'List');
 
@@ -122,6 +135,19 @@ class Off extends \app\controllers\FrontController
                     'ProdCode' => $row['ProdCode']
                 ]
             ], $orderby, false, true);
+
+            foreach ($pkgsublist as $idx2 => $row2){
+                $booklist = $this->classroomFModel->getBooklist([
+                    'EQ' => [
+                        'ProdCode' => $row2['ProdCodeSub']
+                    ]
+                ]);
+                if(empty($booklist) == true){
+                    $pkgsublist[$idx2]['isbook'] = 'N';
+                } else {
+                    $pkgsublist[$idx2]['isbook'] = 'Y';
+                }
+            }
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
 
@@ -399,6 +425,19 @@ class Off extends \app\controllers\FrontController
                 'PS.ProdCodeSub' => $pkginfo['OrderSubProdCodes']
             ]
         ]);
+
+        foreach($sub_prod_rows as $idx => $row){
+            $booklist = $this->classroomFModel->getBooklist([
+                'EQ' => [
+                    'ProdCode' => $row['ProdCodeSub']
+                ]
+            ]);
+            if(empty($booklist) == true){
+                $sub_prod_rows[$idx]['isbook'] = 'N';
+            } else {
+                $sub_prod_rows[$idx]['isbook'] = 'Y';
+            }
+        }
 
         foreach ($sub_prod_rows as $row) {
             $arr_key = $row['IsEssential'] == 'Y' ? 'ess' : 'choice';

@@ -55,7 +55,11 @@
                                     <td>{{ $row['ProdNameSub'] }}</td>
                                     <td>{{ $row['StudyStartDate'] }}<br/>~{{ $row['StudyEndDate'] }}</td>
                                     <td>{{ $row['WeekArrayName'] }}({{ $row['Amount'] }})</td>
-                                    <td><a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매</a></td>
+                                    <td>
+                                        @if($row['isbook'] == 'Y')
+                                            <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -21,11 +21,12 @@
 
         /************************************************************/
 
+        .sky {position:fixed; top:250px;right:25px;z-index:10;}
+        .sky a { display:block; padding-bottom:15px;}
+
         .wb_top {background:#f5efe1;}
 
-
         .wb_01 {background:#f5efe1;}
-
 
         .wb_02 {position:relative;background:#414141}
         .wb_02 .circle01{position:absolute;left:39%;top:35%;margin-left:-100px;}
@@ -41,15 +42,25 @@
         .wb_02 div a:hover img.off {display:none}
         .wb_02 div:after {content:""; display:block; clear:both}
 
-
         .wb_03 {background:#439900;} 
-
 
         .wb_04 {background:#439900;} 
 
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
+
+        <div class="sky">
+             <a href="#evt_01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky.jpg" title="웰컴 키드 받기">
+            </a>       
+            <a href="#evt_02">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky2.jpg" title="추가 이벤트">
+            </a>        
+            <a href="#evt_03">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky3.jpg" title="보너스 선물">
+            </a>              
+        </div>
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_top.jpg" usemap="#Map2102a" title="3월 첼린지" border="0" />
@@ -66,7 +77,7 @@
             </map>
         </div>  
 
-        <div class="evtCtnsBox wb_02">
+        <div class="evtCtnsBox wb_02" id="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_02.jpg" title="월컴키트" />
             <div class="circle01">
                 <a href="#none;">
@@ -94,7 +105,7 @@
             </div>  
         </div>  
 
-        <div class="evtCtnsBox wb_03">
+        <div class="evtCtnsBox wb_03" id="evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_03.jpg" usemap="#Map2102c" title="추가 이벤트" border="0" />
             <map name="Map2102c" id="Map2102c">
                 <area shape="rect" coords="210,852,512,903" href="javascript:void(0)" />
@@ -103,7 +114,7 @@
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_04">
+        <div class="evtCtnsBox wb_04" id="evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_04.jpg" usemap="#Map2102d" title="스마트폰 배경화면 다운받기" border="0" />
             <map name="Map2102d" id="Map2102d">
                 <area shape="rect" coords="269,1017,369,1047" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />

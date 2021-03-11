@@ -29,7 +29,7 @@
     .PeMenu li a:hover img.on {display:block}
 
     .skyBanner {position:fixed; top:350px;right:0;z-index:10;}
-    .skyBanner a { dispaly:block; padding-bottom:10px;}
+    .skyBanner a { display:block; padding-bottom:10px;}
 </style>
 
 <div class="evtContent NGR" id="evtContainer">

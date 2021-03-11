@@ -64,7 +64,7 @@
                     <tbody>
                         <tr>
                             <td class="w-data tx-left pb-zero">
-                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                <div class="OTclass mr10"><span>직장인/재학생반</span> <span class="red">직강전환</span></div>
                                 <dl class="w-info">
                                     <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n2">진행중</span></dt>
                                 </dl>
@@ -177,7 +177,7 @@
                     <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
                         <tbody>
                             <tr class="bg-light-blue">
-                                <td class="w-data tx-left pb-zero">
+                                <td class="w-data tx-left pb-zero">                                    
                                     <div class="w-tit">
                                         <a href="#none">2018 한덕현 제니스 영어실전 동형 모의고사 Pack 강좌명 최대 2줄 노출</a>
                                         <div class="MoreBtn f_right tx-right">
@@ -203,8 +203,11 @@
                         <tbody>
                             <tr>
                                 <td class="w-data tx-left pb-zero">
+                                    <div class="OTclass mr10"><span class="red">직강전환</span></div>
                                     <dl class="w-info">
-                                        <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span></dt>
+                                        <dt>
+                                            영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n4">완강</span>
+                                        </dt>
                                     </dl>
                                     <div class="w-tit">
                                         <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>

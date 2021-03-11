@@ -225,7 +225,7 @@
                                         <div class="Layer-Cont">
                                             <div class="Layer-SubTit tx-gray">
                                                 <ul>
-                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a> <span class="oBox changeBox ml5 NG">직강전환</span></li>
+                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a> <span class="oBox changeBox ml5 NG">인강전환</span></li>
                                                     <li>경찰학 기본(단과)[1/6~2/18] <a href="#none">교재구매</a></li>
                                                     <li>형법 기본(단과)[1/28~2/14] <a href="#none">교재구매</a></li>
                                                     <li>영어 기본(단과) [1/8~2/21] <a href="#none">교재구매</a></li>
@@ -309,7 +309,7 @@
                                         <dt>
                                             기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
                                             한덕현 교수님 <span class="oBox bfBox ml10 NSK">선접수</span>
-                                            <span class="oBox changeBox ml10 NSK">직강전환</span>
+                                            <span class="oBox changeBox ml10 NSK">인강전환</span>
                                         </dt>                                        
                                     </dl>
                                     <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>

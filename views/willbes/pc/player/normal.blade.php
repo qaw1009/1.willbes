@@ -11,7 +11,7 @@
             screenResize();
             fnDefense();
 
-            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&op={{$data['orderprodidx']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}#pos{{$data['unitidx']}}');
+            $("#subframe").prop('src', '/player/Curriculum/?o={{$data['orderidx']}}&p={{$data['prodcode']}}&sp={{$data['prodcodesub']}}&op={{$data['orderprodidx']}}&l={{$data['lecidx']}}&u={{$data['unitidx']}}&q={{$data['quility']}}');
 
             var config = {
                 userId: "{{$data['memid']}}",

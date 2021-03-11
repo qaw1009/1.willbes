@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Off extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF', 'order/orderListF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -100,6 +100,19 @@ class Off extends \app\controllers\FrontController
 
         $leclist = $this->classroomFModel->getLecture($cond_arr, $orderby,false, true);
 
+        foreach ($leclist as $idx => $row){
+            $booklist = $this->classroomFModel->getBooklist([
+                'EQ' => [
+                    'ProdCode' => $row['ProdCodeSub']
+                ]
+            ]);
+            if(empty($booklist) == true){
+                $leclist[$idx]['isbook'] = 'N';
+            } else {
+                $leclist[$idx]['isbook'] = 'Y';
+            }
+        }
+
         //강의실좌석정보[단과]
         $listLectureRoom = $this->_getLectureRoom($leclist, 'List');
 
@@ -122,6 +135,19 @@ class Off extends \app\controllers\FrontController
                     'ProdCode' => $row['ProdCode']
                 ]
             ], $orderby, false, true);
+
+            foreach ($pkgsublist as $idx2 => $row2){
+                $booklist = $this->classroomFModel->getBooklist([
+                    'EQ' => [
+                        'ProdCode' => $row2['ProdCodeSub']
+                    ]
+                ]);
+                if(empty($booklist) == true){
+                    $pkgsublist[$idx2]['isbook'] = 'N';
+                } else {
+                    $pkgsublist[$idx2]['isbook'] = 'Y';
+                }
+            }
             $pkglist[$idx]['subleclist'] = $pkgsublist;
         }
 
@@ -400,6 +426,19 @@ class Off extends \app\controllers\FrontController
             ]
         ]);
 
+        foreach($sub_prod_rows as $idx => $row){
+            $booklist = $this->classroomFModel->getBooklist([
+                'EQ' => [
+                    'ProdCode' => $row['ProdCodeSub']
+                ]
+            ]);
+            if(empty($booklist) == true){
+                $sub_prod_rows[$idx]['isbook'] = 'N';
+            } else {
+                $sub_prod_rows[$idx]['isbook'] = 'Y';
+            }
+        }
+
         foreach ($sub_prod_rows as $row) {
             $arr_key = $row['IsEssential'] == 'Y' ? 'ess' : 'choice';
             if($row['ProfChoiceStartDate'] <= $today && $today <= $row['ProfChoiceEndDate']){
@@ -578,6 +617,55 @@ class Off extends \app\controllers\FrontController
         public_download($file_path, $file_name);
 
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
+    }
+
+    public function layerBooklist()
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $ProdCode = $this->_req("ProdCode");
+        $ProdCodeSub = $this->_req("ProdCodeSub");
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $sess_mem_idx,
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub
+            ]
+        ], null, false, true);
+
+        if(empty($lec) == true){
+            return $this->json_error('수강중인 강의가 없습니다.');
+        } else {
+            $lec = $lec[0];
+        }
+
+        $booklist = $this->classroomFModel->getBooklist([
+            'EQ' => [
+                'ProdCode' => $ProdCodeSub
+            ]
+        ]);
+
+        foreach($booklist as $idx => $row){
+            if($row['BookProvisionCcd'] == '610003'){
+                $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                    'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $row['ProdBookCode'], 'OP.PayStatusCcd' => '676001']
+                ]);
+
+                if($book_paid_cnt > 0){
+                    $booklist[$idx]['Paid'] = true;
+                } else {
+                    $booklist[$idx]['Paid'] = false;
+                }
+            } else {
+                $booklist[$idx]['Paid'] = false;
+            }
+        }
+
+        return $this->load->view('/classroom/off/layer/booklist', [
+            'booklist' => $booklist,
+            'SiteUrl' => app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'))
+        ]);
     }
 
     /**

@@ -646,6 +646,33 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
+     * 라이브 파일 다운로드 현황
+     * @param array $params
+     * @return CI_Output
+     */
+    public function listLiveDownloadAjax($params = [])
+    {
+        $count = 0;
+        $list = [];
+        $el_idx = $params[0];
+
+        if (empty($el_idx) === false) {
+            $arr_condition = $this->_getMemberDownloadListConditions($el_idx);
+
+            $count = $this->eventLectureModel->listAllEventMemberDownload(true, $arr_condition);
+            if ($count > 0) {
+                $list = $this->eventLectureModel->listAllEventMemberDownload(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['a.EdlIdx' => 'DESC']);
+            }
+        }
+
+        return $this->response([
+            'recordsTotal' => count($list),
+            'recordsFiltered' => count($list),
+            'data' => $list,
+        ]);
+    }
+
+    /**
      * 댓글등록
      */
     public function storeComment()
@@ -1001,6 +1028,32 @@ class EventLecture extends \app\controllers\BaseController
         $this->excel->exportExcel($file_name, $list, $headers);
     }
 
+    /**
+     * 라이브 파일 다운로드현황 엑셀다운로드
+     * @param array $params
+     */
+    public function liveDownloadExcel($params = [])
+    {
+        $file_name = '이벤트_다운로드_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
+        $headers = ['회원ID', '회원명', '연락처', '첨부파일명', '자료 다운로드 횟수'];
+
+        $el_idx = $params[0];
+        $arr_condition = $this->_getMemberDownloadListConditions($el_idx);
+        $list = $this->eventLectureModel->listAllEventMemberDownload('excel', $arr_condition, null, null, ['a.EdlIdx' => 'DESC']);
+
+        /*----  다운로드 정보 저장  ----*/
+        $download_query = $this->eventLectureModel->getLastQuery();
+        $this->load->library('approval');
+        if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {
+            show_alert('로그 저장 중 오류가 발생하였습니다.','back');
+        }
+        /*----  다운로드 정보 저장  ----*/
+
+        // export excel
+        $this->load->library('excel');
+        $this->excel->exportExcel($file_name, $list, $headers);
+    }
+
     public function download()
     {
         $file_path = $this->_reqG('path');
@@ -1166,6 +1219,29 @@ class EventLecture extends \app\controllers\BaseController
                 'LB.ElIdx' => $el_idx,
                 'LB.IsStatus' => 'Y',
                 'LB.RegType' => '1'
+            ]
+        ];
+
+        return $arr_condition;
+    }
+
+    /**
+     * 라이브 파일 다운로드현황 검색 조건
+     * @param $el_idx
+     * @return array
+     */
+    private function _getMemberDownloadListConditions($el_idx)
+    {
+        $arr_condition = [
+            'EQ' => [
+                'a.ElIdx' => $el_idx,
+            ],
+            'ORG1' => [
+                'LKB' => [
+                    'b.MemName' => $this->_reqP('search_live_value'),
+                    'b.MemId' => $this->_reqP('search_live_value'),
+                    'c.FileRealName' => $this->_reqP('search_live_value'),
+                ]
             ]
         ];
 

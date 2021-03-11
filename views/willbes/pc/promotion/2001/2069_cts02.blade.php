@@ -11,7 +11,7 @@
     <div class="evtCtnsBox cts02_top">    
         <div>         
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts02_top.jpg" alt="합격예측 풀서비스">
-            <a href="{{front_url('/promotion/index/cate/3001/code/2080')}}" target="_blank" style="position: absolute; left: 25.89%; top: 84.07%; width: 48.13%; height: 6.3%; z-index: 2;"></a>
+            <a href="javascript:alert('서비스가 종료 되었습니다.')" style="position: absolute; left: 25.89%; top: 84.07%; width: 48.13%; height: 6.3%; z-index: 2;"></a>
         </div>
     </div>
     <div class="evtCtnsBox cts02_02" id="cts02_02">

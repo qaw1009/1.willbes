@@ -77,13 +77,13 @@
                         </a>
                     </li>                   
                     <li>
-                        <a href="#none" onclick="javascript:alert('Coming Soon!');">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/2117" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_4.png" class="off" alt="하승민 경찰영어"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_4on.png" class="on" alt="하승민 경찰영어"  />
                         </a>
                     </li>                  
                     <li>
-                        <a href="#none" onclick="javascript:alert('Coming Soon!');">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/2117" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_7.png" class="off" alt="김현정 경찰영어"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_7on.png" class="on" alt="김현정 경찰영어"  />
                         </a>

@@ -1,8 +1,8 @@
 <style type="text/css">
     .cts03_comingsoon {background:url("https://static.willbes.net/public/images/promotion/2020/03/1555_comingsoon_bg.jpg") no-repeat center top;}
-    .cts03_top {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_top_bg.jpg") no-repeat center top;}
-    .cts03_01 {background:#363636}
-    .cts03_02 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_02_bg.jpg") no-repeat center top;}
+    .cts03_top {background:url("https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_top_bg.jpg") no-repeat center top;}
+    .cts03_01 {background:#1E3344}
+    .cts03_02 {background:url("https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_02_bg.jpg") no-repeat center top;}
     .cts03_03 {background:#e7e7e7}
     .cts03_03 .tabWrapEvt {width:1210px; margin:0 auto}
     .cts03_03 .tabWrapEvt li {display:inline; float:left; width:20%}
@@ -18,8 +18,8 @@
     .cts03_03 .tabWrapEvt li:last-child a {margin-right:0}
     .cts03_03 .tabWrapEvt:after {content:""; display:block; clear:both}
     .cts03_03 .tabcts {background:#fff}
-    .cts03_04 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_04_bg.jpg") no-repeat center top;}
-    .cts03_05 {background:#7a7a7a} 
+    .cts03_04 {background:url("https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_04_bg.jpg") no-repeat center top;}
+    .cts03_05 {background:#1E3344} 
 </style>
 
 @if(time() < strtotime('202009251630'))
@@ -31,20 +31,23 @@
 @else
     <div>
         <div class="evtCtnsBox cts03_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_top.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_top.jpg" alt="아이언 폴리스" />
         </div>
         <div class="evtCtnsBox cts03_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_01.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_01.jpg" alt="경찰체력특전" usemap="#Map2069_coupon" border="0" />
+            <map name="Map2069_coupon" id="Map2069_coupon">
+                <area shape="rect" coords="266,1118,854,1173" href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();"/>
+            </map>
         </div>
         <div class="evtCtnsBox cts03_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_02.jpg" alt="" usemap="#Map1361ct03A" border="0" />
-            <map name="Map1361ct03A" id="Map1361ct03A">
-                <area shape="rect" coords="427,442,789,515" href="https://police.willbes.net/pass/event/show/ongoing?event_idx=882&" target="_blank" alt="체력qna바로가기" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_02.jpg" alt="체력 q&a" usemap="#Map2069ct03A" border="0" />
+            <map name="Map2069ct03A" id="Map2069ct03A">
+                <area shape="rect" coords="427,442,789,515" href="https://irongym.modoo.at/" target="_blank" alt="체력qna바로가기" />
                 {{--<area shape="rect" coords="427,442,789,515" href="javascript:void(0);" onclick="javascript:alert('Coming soon!');" alt="체력qna바로가기" />--}}
             </map>
         </div>
         <div class="evtCtnsBox cts03_03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_03.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_03.jpg" alt="경찰공무원 체력 검정 시험" />
             <ul class="tabWrapEvt">
                 <li>
                     <a href="#ct03tab01">
@@ -95,10 +98,10 @@
             </div>
         </div>
         <div class="evtCtnsBox cts03_04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_04.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_04.jpg" alt="왜,체력시험을 미리 준비 해야 할까요?" />
         </div>
         <div class="evtCtnsBox cts03_05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_05.jpg" alt="" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_05.jpg" alt="서류준비 꿀팁" />
         </div>
 	</div>
 

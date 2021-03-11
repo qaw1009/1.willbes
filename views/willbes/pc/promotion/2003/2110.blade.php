@@ -47,7 +47,12 @@
     .evt_05 .evt03_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	   
     .evt_05 .evt05_box .evt{color:#fff;vertical-align:baseline;border-radius:30px;background:#f35a61;padding:0 25px;}
 
-    </style> 
+    </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NSK">
 
@@ -85,7 +90,7 @@
         <div class="evtCtnsBox evt_02">  
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2110_02.jpg" alt="쿠폰 다운로드" usemap="#Map2110_coupon" border="0" />
             <map name="Map2110_coupon" id="Map2110_coupon">
-                <area shape="rect" coords="570,279,967,368" href="javascript:void(0);" title="쿠폰받기" />
+                <area shape="rect" coords="570,279,967,368" href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();"/>
             </map>
         </div>   
 
@@ -130,12 +135,35 @@
     </div>
    <!-- End Container -->
 
-   <script language="javascript">
+<script language="javascript">
+    var $regi_form = $('#regi_form');
 
-/*디데이카운트다운*/
-$(document).ready(function() {
-     dDayCountDown('{{$arr_promotion_params['edate']}}');
- });
+    /*디데이카운트다운*/
+    $(document).ready(function() {
+         dDayCountDown('{{$arr_promotion_params['edate']}}');
+     });
+
+    {{--쿠폰발급--}}
+    function giveCheck() {
+        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+
+        @if(empty($arr_promotion_params) === false)
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+                alert('쿠폰발급 기간이 아닙니다.');
+                return;
+            @endif
+
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&event_code={{$data['ElIdx']}}&limit_count={{$arr_promotion_params["limit_count"]}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+        @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+        @endif
+    }
 </script>
 
 {{-- 프로모션용 스크립트 include --}}

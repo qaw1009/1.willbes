@@ -560,7 +560,7 @@ class BasePromotion extends \app\controllers\FrontController
         $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
         $regist_chk_yn = $this->_req('regist_chk_yn');    //프로모션 참여 확인 여부
         $el_idx = (int)$this->_req('event_code');   //이벤트식별자
-        $limit_count = 1;   //발급 제한 갯수
+        $limit_count = (empty($this->_req('limit_count')) === false) ? $this->_req('limit_count') : 1;   //발급 제한 갯수
         $result = null;
 
         if(empty($give_type) === true) {

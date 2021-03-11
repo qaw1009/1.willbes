@@ -87,7 +87,7 @@
                                                                 <li>강의가 없습니다.</li>
                                                             @else
                                                                 @foreach($row['subleclist'] as $subrow)
-                                                                    <li>{{$subrow['subProdName']}}</li>
+                                                                    <li>{{$subrow['subProdName']}} <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}',{{$subrow['ProdCodeSub']}}')">교재구매</a></li>
                                                                 @endforeach
                                                             @endif
                                                         </ul>
@@ -267,10 +267,12 @@
                                                 <li>[좌석선택기간] {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceStartDate'] }} ~ {{ $listLectureRoom[$row['ProdCode']]['SeatChoiceEndDate'] }}</li>
                                             </ul>
                                         @endif
-
-                                        @if (in_array('731001',explode(',',$row['OptionCcds'])) === true)
-                                            <div class="lookover"><a href="#none" onclick="assignmentBoardModal('{{ $row['ProdCode'] }}')">온라인첨삭 &gt;</a></div>
-                                        @endif
+                                            <div class="lookover">
+                                            @if (in_array('731001',explode(',',$row['OptionCcds'])) === true)
+                                                <a href="#none" onclick="assignmentBoardModal('{{ $row['ProdCode'] }}')">온라인첨삭 &gt;</a>
+                                            @endif
+                                                <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
+                                            </div>
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
                                         ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
@@ -306,6 +308,8 @@
             <div id="assignmentListChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
             <div id="assignmentCreateChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
+            </div>
+            <div id="MoreBook" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100 abs" style="height:600px !important;">
             </div>
 
             <!-- willbes-Leclist -->
@@ -453,6 +457,22 @@
                 function(ret, status){
                     alert(ret.ret_msg);
                 }, false, 'POST', 'html');
+        }
+
+        function fnBookLayer(ProdCode, ProdCodeSub)
+        {
+            url = "{{ site_url("/classroom/off/layerBooklist/") }}";
+            data = "ProdCode="+ProdCode+"&ProdCodeSub="+ProdCodeSub;
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#MoreBook").html(d).end();
+                    openWin('MoreBook');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
         }
     </script>
 @stop

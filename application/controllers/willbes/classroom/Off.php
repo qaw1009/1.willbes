@@ -580,6 +580,55 @@ class Off extends \app\controllers\FrontController
         show_alert('등록된 파일을 찾지 못했습니다.','close','');
     }
 
+    public function layerBooklist()
+    {
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $ProdCode = $this->_req("ProdCode");
+        $ProdCodeSub = $this->_req("ProdCodeSub");
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $sess_mem_idx,
+                'ProdCode' => $ProdCode,
+                'ProdCodeSub' => $ProdCodeSub
+            ]
+        ], null, false, true);
+
+        if(empty($lec) == true){
+            return $this->json_error('수강중인 강의가 없습니다.');
+        } else {
+            $lec = $lec[0];
+        }
+
+        $booklist = $this->classroomFModel->getBooklist([
+            'EQ' => [
+                'ProdCode' => $ProdCodeSub
+            ]
+        ]);
+
+        foreach($booklist as $idx => $row){
+            if($row['BookProvisionCcd'] == '610003'){
+                $book_paid_cnt = $this->orderListFModel->listOrderProduct(true, [
+                    'EQ' => ['OP.MemIdx' => $sess_mem_idx, 'OP.ProdCode' => $row['ProdBookCode'], 'OP.PayStatusCcd' => '676001']
+                ]);
+
+                if($book_paid_cnt > 0){
+                    $booklist[$idx]['Paid'] = true;
+                } else {
+                    $booklist[$idx]['Paid'] = false;
+                }
+            } else {
+                $booklist[$idx]['Paid'] = false;
+            }
+        }
+
+        return $this->load->view('/classroom/off/layer/booklist', [
+            'booklist' => $booklist,
+            'SiteUrl' => app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'))
+        ]);
+    }
+
     /**
      * 강의실좌석정보조회
      * @param array $data

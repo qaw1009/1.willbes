@@ -28,6 +28,7 @@ class EventLectureModel extends WB_Model
         'event_add_apply_member' => 'lms_event_add_apply_member',
         'event_display_product' => 'lms_event_display_product',
         'product_lecture' => 'lms_product_lecture',
+        'event_download_log' => 'lms_event_download_log'
     ];
 
     public $_groupCcd = [
@@ -1229,6 +1230,57 @@ class EventLectureModel extends WB_Model
 
         // 쿼리 실행
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $order_by_offset_limit);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
+
+    /**
+     * 다운로드 목록
+     * @param $is_count
+     * @param array $arr_condition
+     * @param null $limit
+     * @param null $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function listAllEventMemberDownload($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+            $group_by = '';
+        } else {
+            $column = "
+                a.EdlIdx, a.ElIdx, a.EplvIdx, a.MemIdx, a.RegDatm,
+                b.MemId, b.MemName, fn_dec(b.PhoneEnc) AS MemPhone,
+                c.FileFullPath, c.FileRealName,
+                (select count(*) from {$this->_table['event_download_log']} where a.EplvIdx = EplvIdx and a.MemIdx = MemIdx) as DownloadCnt 
+            ";
+
+            if ($is_count == 'excel') {
+                $column = "
+                    b.MemId, b.MemName, fn_dec(b.PhoneEnc) AS MemPhone, 
+                    c.FileRealName, 
+                    (select count(*) from {$this->_table['event_download_log']} where a.EplvIdx = EplvIdx and a.MemIdx = MemIdx) as DownloadCnt
+                ";
+            }
+
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $group_by = ' Group by a.EplvIdx,a.MemIdx ';
+        }
+
+        $from = "
+            FROM {$this->_table['event_download_log']} AS a
+            INNER JOIN {$this->_table['member']} AS b ON a.MemIdx = b.MemIdx
+            INNER JOIN {$this->_table['event_promotion_live_video']} AS c ON a.EplvIdx = c.EplvIdx and c.IsStatus = 'Y'
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $group_by . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

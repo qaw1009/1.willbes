@@ -87,7 +87,11 @@
                                                                 <li>강의가 없습니다.</li>
                                                             @else
                                                                 @foreach($row['subleclist'] as $subrow)
-                                                                    <li>{{$subrow['subProdName']}} <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}',{{$subrow['ProdCodeSub']}}')">교재구매</a></li>
+                                                                    <li>{{$subrow['subProdName']}}
+                                                                        @if($subrow['isbook'] == 'Y')
+                                                                            <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}');">교재구매</a>
+                                                                        @endif
+                                                                    </li>
                                                                 @endforeach
                                                             @endif
                                                         </ul>
@@ -271,7 +275,9 @@
                                             @if (in_array('731001',explode(',',$row['OptionCcds'])) === true)
                                                 <a href="#none" onclick="assignmentBoardModal('{{ $row['ProdCode'] }}')">온라인첨삭 &gt;</a>
                                             @endif
+                                            @if($row['isbook'] == 'Y')
                                                 <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
+                                            @endif
                                             </div>
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>

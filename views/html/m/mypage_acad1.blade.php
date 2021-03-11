@@ -84,7 +84,7 @@
                             <div class="w-lecList mt10">
                                 <div class="NG">강좌구성보기 <a href="#none">▼</a></div>
                                 <ul>
-                                    <li>1기스터디_감정평가실무_여지훈</li>
+                                    <li>1기스터디_감정평가실무_여지훈 <span>인강전환</span></li>
                                     <li>1기스터디_감정평가및보상법규_이현진</li>
                                     <li>1기스터디_감정평가이론_어정민</li>                                    
                                 </ul>                               
@@ -150,35 +150,12 @@
 
         <div id="leclist2" class="tabContent">
             <div class="tx-center mt20">수강신청한 강좌가 없습니다.</div>
-            {{--
-            <div class="willbes-Lec-Selected NG c_both tx-gray">
-                <select id="process" name="process" title="process" class="seleProcess width21p">
-                    <option selected="selected">과정</option>
-                    <option value="헌법">헌법</option>
-                    <option value="스파르타반">스파르타반</option>
-                    <option value="공직선거법">공직선거법</option>
-                </select>
-                <select id="lecture" name="lecture" title="lecture" class="seleLec width21p ml1p">
-                    <option selected="selected">과목</option>
-                    <option value="헌법">헌법</option>
-                    <option value="스파르타반">스파르타반</option>
-                    <option value="공직선거법">공직선거법</option>
-                </select>
-                <select id="prof" name="prof" title="prof" class="seleProf width45p ml1p">
-                    <option selected="selected">교수님</option>
-                    <option value="교수님1">교수님1</option>
-                    <option value="교수님2">교수님2</option>
-                    <option value="교수님3">교수님3</option>
-                </select>
-                <div class="resetBtn width10p ml1p">
-                    <a href="#none"><img src="{{ img_url('m/mypage/icon_reset.png') }}"></a>
-                </div>
-            </div>
-            --}}
+
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable mt20">
                 <tbody>
                     <tr>
                         <td class="w-data tx-left">
+                            <div class="OTclass mr10"><span class="red">인강전환</span></div>
                             <dl class="w-info">
                                 <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n5">접수중</span></dt>
                             </dl>
@@ -202,7 +179,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="w-data tx-left">
+                        <td class="w-data tx-left">                            
                             <dl class="w-info">
                                 <dt>영어<span class="row-line">|</span>한덕현교수님 <span class="NSK ml10 nBox n5">접수중</span></dt>
                             </dl>

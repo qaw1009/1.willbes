@@ -2990,6 +2990,11 @@ table.auTable tr td {
 .w-info dt .nBox.n4 {
 	background: #333;
 }
+.w-info dt .nBox.n5 {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
+}
 .w-info a strong.detail,
 .w-info dt.strong a,
 .w-info dt strong {
@@ -3003,6 +3008,7 @@ table.auTable tr td {
 .w-info span {
 	vertical-align: baseline;
 }
+
 .w-info .row-line {
 	background: #b5b5b5;
 	width: 1px;
@@ -3055,6 +3061,7 @@ table.lecTable tr td.w-data {
 .OTclass {
 	display: inline-block;
 	position: relative;
+	margin-right: 10px; margin-bottom:10px;
 }
 .OTclass span {
 	background: #000;
@@ -3065,6 +3072,12 @@ table.lecTable tr td.w-data {
 	font-size: 12px;
 	border-radius: 20px;
 	display: inline-block;
+	margin-right:5px;
+}
+.OTclass span.red {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
 }
 .OTclass a {
 	border: 1px solid #ed1c24;
@@ -4490,7 +4503,7 @@ table.classTable tr td img {
 }
 .willbes-Layer-lecList .Layer-SubTit li {
 	list-style: disc;
-	line-height: 1.4;
+	line-height: 1.8;
 	margin-bottom: 10px;
 	margin-left: 15px;
 }
@@ -7836,8 +7849,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 
 /* subContainer : Prof : 공지사항 */
 .oBox {
-	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica",
-		"Apple SD Gothic Neo", "sans-serif";
+	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica","Apple SD Gothic Neo", "sans-serif";
 	display: inline-block;
 	min-width: 40px;
 	height: 18px;
@@ -7861,10 +7873,15 @@ ul li.profList .willbes-Layer-ProfileBox {
 	background: #703eb4;
 }
 .smBox {
-	background: #4b9e2b;
+	background: #474747;
 }
 .bfBox {
 	background: #f78484;
+}
+.changeBox {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
 }
 
 .campus_605001 {

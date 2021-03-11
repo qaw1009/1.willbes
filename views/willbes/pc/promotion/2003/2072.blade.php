@@ -159,7 +159,7 @@
                 var json_data = {!! json_encode($arr_base['promotion_live_file_list']) !!};
                     json_data = json_data[idx];
 
-                if (typeof json_data.file_link !== 'undefined') {
+                if (json_data.download_yn === 'Y') {
                     var _url = json_data.file_link;
                     location.href = _url;
                 }else{

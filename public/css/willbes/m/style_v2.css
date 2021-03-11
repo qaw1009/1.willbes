@@ -3867,6 +3867,13 @@ body.memBody #Footer {
 .lecTable .w-lecList li {
 	margin-left: 15px;
 	list-style: disc;
+	margin-bottom:5px;
+}
+.lecTable .w-lecList li span {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
+	padding:2px 4px;
 }
 .lecTable .oneBox {
 	border-bottom: 1px solid #e4e4e4;
@@ -4508,7 +4515,7 @@ body.memBody #Footer {
 	display: none;
 }
 .OTclass {
-	display: inline-block;
+	display: block;
 	margin-bottom: 5px;
 }
 .OTclass span {
@@ -4518,8 +4525,13 @@ body.memBody #Footer {
 	height: 24px;
 	line-height: 24px;
 	font-size: 12px;
-	border-radius: 0 15px 15px;
-	display: block;
+	border-radius: 15px;
+	display: inline-block;
+}
+.OTclass span.red {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
 }
 
 /* 동영상 상담실 */

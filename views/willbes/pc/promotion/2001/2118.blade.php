@@ -56,7 +56,7 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2118_03.jpg"  alt="적중사례" />
             <div class="NSK-Black mb50">
-                <a href="https://police.willbes.net/pass/support/notice/show?board_idx=324116" target="_blank" class="btnst01">더 많은 적중사례 보러가기 ></a>
+                <a href="https://police.willbes.net/pass/support/notice/show?board_idx=324115" target="_blank" class="btnst01">더 많은 적중사례 보러가기 ></a>
             </div>
             <img  src="https://static.willbes.net/public/images/promotion/2021/03/2118_03_01.jpg" alt="">
         </div>

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Off extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF');
+    protected $models = array('classroomF', 'order/orderListF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();

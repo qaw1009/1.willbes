@@ -13,7 +13,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -61,7 +61,7 @@
             <map name="Map2027a" id="Map2027a">
                 <area shape="rect" coords="84,714,324,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177871" target="_blank" />
                 <area shape="rect" coords="455,714,696,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177866" target="_blank" />
-                <area shape="rect" coords="823,714,1064,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" target="_blank" />
+                <area shape="rect" coords="823,714,1064,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179689" target="_blank" />
             </map>
         </div>
 

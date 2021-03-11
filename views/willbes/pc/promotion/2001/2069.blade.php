@@ -194,8 +194,8 @@
                 <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/1628" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_sky01.png" title="적중이벤트"></a></li>
             @endif   
             --}}     
-            <li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2070" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky.png" title="적중 이벤트"></a></li>
-            <li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky2.png" title="라이브"></a></li>
+            {{--<li><a href="https://police.willbes.net/promotion/index/cate/3001/code/2070" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky.png" title="적중 이벤트"></a></li>--}}
+                {{--<li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_sky2.png" title="라이브"></a></li>--}}
             {{--<li><a href="javascript:alert('Comimg Soon :)')"><img src="https://static.willbes.net/public/images/promotion/2020/07/1555_sky02.png" title="면접캠프"></a></li>--}}
         </ul>   
 
@@ -235,7 +235,7 @@
             @if ($onoff_3 != 'null')
                 <div class="btnJoin NGEB">
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
-                        <span>필기합격생 인증하기 ></span>
+                        경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
                     </a>
                 </div>
             @else
@@ -249,7 +249,7 @@
             <ul>
                 <li>
                     @if($onoff_1 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_ing.png" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2021/03/2069_01_end.gif" alt="진행중"></span>
                     @elseif($onoff_1 == 'off')
                         <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_end.png" alt="종료"></span>
                     @else @endif
@@ -263,7 +263,7 @@
                         <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing02.jpg" alt="가압안발표후진행"></span>
                     @else
                         @if($onoff_2 == 'on')
-                            <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_ing.png" alt="진행중"></span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/2021/03/2069_01_end.gif" alt="진행중"></span>
                         @elseif($onoff_2 == 'off')
                             <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_end.png" alt="종료"></span>
                         @else @endif
@@ -326,7 +326,7 @@
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" title="사전예약 이벤트">
                     <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="합격풀케어서비스 이미지 다운받기" style="position: absolute; left: 23.39%; top: 80.82%; width: 30.45%; height: 2.95%; z-index: 2;"></a>
-                </div>
+                </div> 
             </div>
 
             {{--홍보url댓글--}}

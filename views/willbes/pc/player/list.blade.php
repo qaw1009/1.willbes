@@ -3,7 +3,7 @@
 @section('content')
     <div id="vodTabs" class="vodTabs p_re">
         <ul class="vodWrap four NGEB">
-            <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}#pos{{$input['u']}}" class="on">강의목록</a></li>
+            <li><a href="/player/Curriculum/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}" class="on">강의목록</a></li>
             <li><a href="/player/listBookmark/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">북마크</a></li>
             @if($lec['IsQnaBoard'] == 'Y')
                 <li><a href="/player/qna/?o={{$input['o']}}&p={{$input['p']}}&sp={{$input['sp']}}&l={{$input['l']}}&u={{$input['u']}}&q={{$input['q']}}">학습Q&A</a></li>
@@ -27,7 +27,7 @@
                     </ul>
                     <ul class="list lec" id="curr_list">
                         @forelse($curriculum as $row)
-                            <li id="pos{{$row['wUnitIdx']}}">
+                            <li>
                                 <div class="tt1">
                                     @if($lec['SiteCode'] != '2001' && $lec['SiteCode'] != '2002')
                                         @if($lec['IsOpenwUnitNum'] == 'Y')

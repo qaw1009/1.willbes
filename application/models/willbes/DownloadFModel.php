@@ -93,7 +93,7 @@ class DownloadFModel extends WB_Model
                 $arr_condition = [
                     'RAW' => [
                         'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
-                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
+                        //'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsStatus' => 'Y']
                 ];
@@ -104,7 +104,7 @@ class DownloadFModel extends WB_Model
                 $arr_condition = [
                     'RAW' => [
                         'EpoIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
-                        'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
+                        //'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
                     'EQ' => ['IsStatus' => 'Y']
                 ];
@@ -156,17 +156,19 @@ class DownloadFModel extends WB_Model
 
     /**
      * 이벤트 첨부 파일 다운로드 로그
-     * @param null $idx
+     * @param integer $event_idx
+     * @param integer $eplv_idx
      * @return array|bool
      */
-    public function saveLogEvent($idx=null)
+    public function saveLogEvent($event_idx=null,$eplv_idx=null)
     {
         $refer_info = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null ;
         $refer_domain = parse_url($refer_info, PHP_URL_HOST);
         $this->__userAgent($agent_short, $agent, $platform);
 
         $input_data = [
-            'ElIdx' => $idx,
+            'ElIdx' => $event_idx,
+            'EplvIdx' => $eplv_idx,
             'MemIdx' => (empty($this->session->userdata('mem_idx')) ? null : $this->session->userdata('mem_idx')),
             'ReferDomain' => (empty($refer_domain) ? null : $refer_domain ),
             'ReferPath' => (empty($refer_info) ? null : $refer_info ),

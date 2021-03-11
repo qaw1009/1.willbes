@@ -249,7 +249,7 @@
             <ul>
                 <li>
                     @if($onoff_1 == 'on')
-                        <span><img src="https://static.willbes.net/public/images/promotion/2021/03/2069_01_end.gif" alt="진행중"></span>
+                        <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_ing.png" alt="진행중"></span>
                     @elseif($onoff_1 == 'off')
                         <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_end.png" alt="종료"></span>
                     @else @endif
@@ -263,7 +263,7 @@
                         <span><img src="https://static.willbes.net/public/images/promotion/2020/03/1555_01_ing02.jpg" alt="가압안발표후진행"></span>
                     @else
                         @if($onoff_2 == 'on')
-                            <span><img src="https://static.willbes.net/public/images/promotion/2021/03/2069_01_end.gif" alt="진행중"></span>
+                            <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_ing.png" alt="진행중"></span>
                         @elseif($onoff_2 == 'off')
                             <span><img src="https://static.willbes.net/public/images/promotion/2021/02/2069_end.png" alt="종료"></span>
                         @else @endif

@@ -85,8 +85,8 @@ class BasePromotion extends \app\controllers\FrontController
 
         // 임용 추가처리
         if(config_app('SiteGroupCode') == '1011'){
-            $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group');
-            $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor');
+            $arr_base['promotion_otherinfo_group'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'group',$data['ElIdx']);
+            $arr_base['promotion_otherinfo_professor'] = $this->_getPromotionOtherinfoData($arr_base['promotion_otherinfo_data'],'professor',$data['ElIdx']);
 
             //과목조회
             $arr_base['subject'] = $this->subjectModel->getSubjectArray($this->_site_code);
@@ -98,7 +98,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 프로모션 라이브송출 조회
-        $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType']);
+        $promotion_live_data = $this->_getPromotionLiveData($data['PromotionCode'],$data['PromotionLiveType'],$data['ElIdx']);
         $arr_base['promotion_live_data'] = $promotion_live_data['promotion_live_data'];
         $arr_base['promotion_live_file_link'] = $promotion_live_data['promotion_live_file_link'];
         $arr_base['promotion_live_file_yn'] = $promotion_live_data['promotion_live_file_yn'];
@@ -421,7 +421,7 @@ class BasePromotion extends \app\controllers\FrontController
     {
         $file_idx = $this->_reqG('file_idx');
         $event_idx = $this->_reqG('event_idx');
-        $this->downloadFModel->saveLogEvent($event_idx);
+        $this->downloadFModel->saveLogEvent($event_idx,$file_idx);
 
         $file_data = $this->downloadFModel->getFileData($event_idx, $file_idx, 'event_promotion_live_video');
         if (empty($file_data) === true) {
@@ -697,16 +697,17 @@ class BasePromotion extends \app\controllers\FrontController
      * 이벤트 상세설정 조회
      * @param array $otherinfo_data
      * @param null $option (group: 그룹핑, professor: 교수정보)
+     * @param integer $el_idx
      * @return mixed
      */
-    private function _getPromotionOtherinfoData($otherinfo_data = [], $option = null)
+    private function _getPromotionOtherinfoData($otherinfo_data = [], $option = null, $el_idx = null)
     {
         $data = [];
 
         foreach ($otherinfo_data as $key => $val){
             if($option == 'professor'){
                 if(empty($val['FileFullPath']) === false){
-                    $data[$val['EpoIdx']]['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$val['PromotionCode']);
+                    $data[$val['EpoIdx']]['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$el_idx);
                 }else{
                     $data[$val['EpoIdx']]['download_url'] = "javascript:alert('준비중입니다.')";
                 }
@@ -732,9 +733,10 @@ class BasePromotion extends \app\controllers\FrontController
      * 이벤트 라이브송출 조회
      * @param integer $PromotionCode
      * @param string $PromotionLiveType
+     * @param integer $el_idx
      * @return mixed
      */
-    private function _getPromotionLiveData($PromotionCode = null,$PromotionLiveType = 'N')
+    private function _getPromotionLiveData($PromotionCode = null, $PromotionLiveType = 'N', $el_idx = null)
     {
         $today_now = time();
         $data = [];
@@ -748,21 +750,17 @@ class BasePromotion extends \app\controllers\FrontController
 
             if (empty($data['promotion_live_data']) === false) {
                 foreach ($data['promotion_live_data'] as $key => $row) {
-                    $down_yn = 'N';
+                    $data['file_download_list'][$key]['download_yn'] = 'N';
 
                     if(empty($row['FileStartDatm']) === false && empty($row['FileEndDatm']) === false) {
                         if($today_now >= strtotime($row['FileStartDatm']) && $today_now < strtotime($row['FileEndDatm'])) {
-                            $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$row['PromotionCode'];
+                            $data['promotion_live_file_link'] = '/promotion/downloadLiveVideo?file_idx='.$row['EplvIdx'].'&event_idx='.$el_idx;
                             $data['promotion_live_file_yn'] = 'Y';
 
-                            $down_yn = 'Y';
+                            $data['file_download_list'][$key]['file_link'] = $data['promotion_live_file_link'];
+                            $data['file_download_list'][$key]['download_yn'] = $data['promotion_live_file_yn'];
                         }
                     }
-
-                    if($down_yn == 'Y'){
-                        $data['file_download_list'][$key]['file_idx'] = $row['EplvIdx'];
-                    }
-                    $data['file_download_list'][$key]['download_yn'] = $down_yn;
 
                 }
             }

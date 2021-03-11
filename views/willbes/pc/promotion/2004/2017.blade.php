@@ -11,7 +11,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/01/2017_top_bg.jpg) no-repeat center;}    
@@ -25,7 +25,7 @@
         .wb_06{background:#373737}  
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">  
+    <div class="evtContent NSK" id="evtContainer">  
 
         <div class="evtCtnsBox wb_top">             
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2017_top.jpg" alt="선접수 이벤트" />  

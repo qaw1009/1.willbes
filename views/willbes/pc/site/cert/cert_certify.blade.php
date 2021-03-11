@@ -35,7 +35,7 @@
 
     </style>
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
-        <div><h3 class="NSK">타학원 수강이력 인증</h3></div>
+        <div><h3 class="NSK">2021년 경찰 1차 시험 응시번호 인증하기</h3></div>
         <div class="laj_sec">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -88,7 +88,7 @@
 
                 <div class="laj_btns">
                     <a href="#none" class="btnA"  id="btn_cert_check">
-                        등록
+                        확인
                     </a>
                     <a href="#none">
                         취소

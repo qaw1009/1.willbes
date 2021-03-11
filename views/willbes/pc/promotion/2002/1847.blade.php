@@ -117,6 +117,7 @@
                 <span><img src="https://static.willbes.net/public/images/promotion/2021/02/1847_sky02.png" title="올공반 2기"></span>
             </div>
 
+            {{--    
             <div class="evtCtnsBox evt_info">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1847_info.jpg" title="설명회 스케줄">
                 <div class="request" id="request">
@@ -216,7 +217,8 @@
                     <a href="#none" onclick="javascript:fn_submit();">올공반 설명회 학원 신청하기 ></a>
                 </div>
             </div>
-
+            --}}
+            
             <div class="evtCtnsBox evt_tops">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1847_tops.jpg" title="올케어 시스템">
             </div>

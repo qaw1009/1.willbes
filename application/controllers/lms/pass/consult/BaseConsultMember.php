@@ -65,6 +65,13 @@ class BaseConsultMember extends \app\controllers\BaseController
                 'A.IsConsult' => $this->_reqP('search_is_consult'),
                 'A.CateCode' => $this->_reqP('search_category'),
                 'C.ConsultType' => $this->_consult_type
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'D.MemId' => $this->_reqP('search_value'),
+                    'D.MemName' => $this->_reqP('search_value'),
+                    'D.Phone3' => $this->_reqP('search_value'),
+                ]
             ]
         ];
 

@@ -19,7 +19,7 @@
     .cts03_03 .tabWrapEvt:after {content:""; display:block; clear:both}
     .cts03_03 .tabcts {background:#fff}
     .cts03_04 {background:url("https://static.willbes.net/public/images/promotion/2021/02/2069_cts03_04_bg.jpg") no-repeat center top;}
-    .cts03_05 {background:#7a7a7a}
+    .cts03_05 {background:#7a7a7a} 
 </style>
 
 @if(time() < strtotime('202009251630'))

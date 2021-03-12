@@ -16,7 +16,7 @@
 
         /************************************************************/ 
 
-        .sky {position:fixed; width:160px; top:75px;right:50px;z-index:1;}
+        .sky {position:fixed;top:250px;right:25px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
         .evtTop {background:#e1dddc url(https://static.willbes.net/public/images/promotion/2020/12/1971_top_bg.jpg) no-repeat center top;}	      
@@ -35,18 +35,16 @@
 	<div class="evtContent NGR">
 
         <div class="sky">
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2013_sky.png" alt="">
-            </a>            
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2014_sky.png" alt="">
-            </a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_sky.png" alt="">
-            </a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1983" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="">
-            </a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2003_sky.png" alt="자격증" usemap="#Map2003_sky" border="0" />
+            <map name="Map2003_sky" id="Map2003_sky">
+                <area shape="rect" coords="0,-1,108,90" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" />
+                <area shape="rect" coords="-1,94,114,179" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" />
+                <area shape="rect" coords="2,182,118,257" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" />
+                <area shape="rect" coords="2,259,106,343" href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" />
+                <area shape="rect" coords="0,349,109,435" href="https://pass.willbes.net/promotion/index/cate/3028/code/2103" target="_blank" />
+                <area shape="rect" coords="1,440,105,512" href="https://pass.willbes.net/promotion/index/cate/3028/code/2104" target="_blank" />
+                <area shape="rect" coords="1,517,106,597" href="https://pass.willbes.net/promotion/index/cate/3028/code/2105" target="_blank" />
+            </map>
         </div>
 
 		<div class="evtCtnsBox evtTop">
@@ -63,7 +61,12 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab03_01.jpg" alt="자격증" />
             </div>
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1971_tab03_02.jpg" alt="자격증" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1971_tab03_02.jpg" alt="자격증" usemap="#Map2003_apply" border="0" />
+                <map name="Map2003_apply" id="Map2003_apply">
+                    <area shape="rect" coords="115,655,296,704" href="https://pass.willbes.net/promotion/index/cate/3028/code/2103" target="_blank" />
+                    <area shape="rect" coords="468,656,650,704" href="https://pass.willbes.net/promotion/index/cate/3028/code/2104" target="_blank" />
+                    <area shape="rect" coords="822,656,1003,703" href="https://pass.willbes.net/promotion/index/cate/3028/code/2105" target="_blank" />
+                </map>
             </div>
         </div>
 	</div>

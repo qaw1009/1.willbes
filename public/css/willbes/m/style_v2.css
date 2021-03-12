@@ -7018,7 +7018,7 @@ body.memBody #Footer {
 .searchTab li {display: inline; float:left; font-size:12px; width:20%; text-align: center; line-height: 1.5}
 .searchTab li strong {display:block; padding:10px 0; background-color: #f4f4f4; border-bottom: 1px solid #c9c9c9;border-right: 1px solid #c9c9c9;}
 .searchTab li a {display: block; padding:10px 0; border-bottom: 1px solid #c9c9c9;border-right: 1px solid #c9c9c9;}
-.searchTab li span {display:block; background-color: #d9fcfc; padding:0 3px; width:16px; margin:0 auto}
+.searchTab li span {display:block; background-color: #d9fcfc; padding:0 3px; width:40px; margin:0 auto}
 .searchTab li strong span {background:none}
 @media only screen and (max-width: 374px) {
 	.searchTab li {width:25%;}

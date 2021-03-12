@@ -40,7 +40,8 @@
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2120_top_bg.jpg) no-repeat center top;}	
 
-         
+        .evt_02 {margin-bottom:100px}
+        
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:30px; margin-bottom:40px}

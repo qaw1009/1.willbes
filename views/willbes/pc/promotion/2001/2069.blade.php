@@ -30,15 +30,19 @@
         .evtTopInmg {position:relative; width:1120px; margin:0 auto}
         .evt01 {background:#fff; border-bottom:7px solid #fff}
         .evt01 .d-day {
-            position:absolute;
-            width:500px;
+            /*position:absolute;           
             left:50%;
             top:115px;
             margin-left:-250px;
+            z-index:5;*/
+            width:500px;
+            margin:0 auto;
             font-size:24px;
             color:#000;
             line-height:1.5;
-            z-index:5;
+            text-align:center;
+            padding:100px 0 50px;
+            
         }
         .evt01 .d-day p {font-size:45px}
         .evt01 .d-day span {color:#8e5e32}
@@ -50,7 +54,7 @@
             z-index:5;*/
             width:440px;
             line-height:1.5;
-            margin:0 auto;            
+            margin:50px auto 0;            
         }
         .evt01 .btnJoin a {
             display:block;
@@ -233,7 +237,7 @@
                 <p>최종합격발표까지 <span>D-00</span></p>
                 -->
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_01.jpg" alt="이 모든 혜택을 드립니다.">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_01.jpg" alt="이 모든 혜택을 드립니다.">
 
             @if ($onoff_3 != 'null')                
                 <div class="btnJoin NGEB">

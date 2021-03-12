@@ -27,12 +27,12 @@
     <div class="c_both">
         <ul class="tabWrap searchTab">
             <li><strong>온라인 <span>></span></strong></li>
-            <li><a href="#leclist1" class="on">단과강좌 <span>3</span></a></li>
-            <li><a href="#leclist2">무료강좌 <span>6</span></a></li>
+            <li><a href="#leclist1" class="on">단과강좌 <span>1240</span></a></li>
+            <li><a href="#leclist2">무료강좌 <span>101</span></a></li>
             <li><a href="#leclist3">추천패키지 <span>6</span></a></li>
             <li><a href="#leclist4">선택패키지 <span>6</span></a></li>
             <li><strong>학원 <span>></span></strong></li>
-            <li><a href="#leclist5">학원단과 <span>3</span></a></li>
+            <li><a href="#leclist5">학원단과 <span>10</span></a></li>
             <li><a href="#leclist6">학원종합반 <span>6</span></a></li>
         </ul>
     </div>

@@ -4,13 +4,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class CronModel extends WB_Model
 {
     private $_table = [
-        'cron_exec_log' => 'lms_cron_exec_log'
+        'cron_exec_log' => 'lms_cron_exec_log',
+        'admin' => 'wbs_sys_admin'
     ];
-    private $_task_type = ['MPE', 'VSR'];   // 회원포인트소멸, 방문자통계집계
+    public $_task_type = ['MPE' => '회원포인트소멸', 'VSR' => '방문자통계집계'];
 
     public function __construct()
     {
         parent::__construct('lms');
+    }
+
+    /**
+     * 작업스케줄러 실행로그 조회
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return array|int
+     */
+    public function listRunSchedulerLog($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        $column = $is_count;
+
+        if ($is_count === false) {
+            $column = 'CL.ExecIdx, CL.TaskType, CL.ExecDate, CL.RunTime, CL.ResultCode, CL.ResultMsg, CL.RegDatm, CL.RegAdminIdx
+                , (case CL.TaskType 
+                    when "MPE" then "' . $this->_task_type['MPE'] . '"
+                    when "VSR" then "' . $this->_task_type['VSR'] . '"
+                    else "기타"
+                  end) as TaskTypeName  
+                , A.wAdminName as RegAdminName';
+        }
+
+        return $this->_conn->getJoinListResult($this->_table['cron_exec_log'] . ' as CL', 'left', $this->_table['admin'] . ' as A'
+            , 'CL.RegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"'
+            , $column, $arr_condition, $limit, $offset, $order_by);
     }
 
     /**
@@ -21,8 +50,8 @@ class CronModel extends WB_Model
     {
         $column = 'TaskType, RunTime, ResultMsg
             , (case TaskType 
-                when "MPE" then "회원포인트소멸"
-                when "VSR" then "방문자통계집계"
+                when "MPE" then "' . $this->_task_type['MPE'] . '"
+                when "VSR" then "' . $this->_task_type['VSR'] . '"
                 else "기타"
               end) as TaskTypeName            
         ';
@@ -39,16 +68,17 @@ class CronModel extends WB_Model
     {
         try {
             $today = date('Ymd');
+            $task_types = array_keys($this->_task_type);
 
             // 이미 실행된 작업 조회
             $arr_condition = [
                 'EQ' => ['ExecDate' => $today],
-                'IN' => ['TaskType' => $this->_task_type]
+                'IN' => ['TaskType' => $task_types]
             ];
             $chk_tasks = array_pluck($this->_conn->getListResult($this->_table['cron_exec_log'], 'TaskType', $arr_condition), 'TaskType');
 
             // 실행할 작업
-            $exec_tasks = array_diff($this->_task_type, $chk_tasks);
+            $exec_tasks = array_diff($task_types, $chk_tasks);
             if (empty($exec_tasks) === true) {
                 return null;    // 실행할 작업없음
             }

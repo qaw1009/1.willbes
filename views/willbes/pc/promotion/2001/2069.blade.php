@@ -235,7 +235,7 @@
             @if ($onoff_3 != 'null')
                 <div class="btnJoin NGEB">
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
-                        경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
+                        <span>필기합격생 인증하기 ></span>
                     </a>
                 </div>
             @else

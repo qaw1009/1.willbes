@@ -29,7 +29,7 @@
         <div class="evtCtnsBox cts03_01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2069_cts03_01.jpg" alt="경찰체력특전" usemap="#Map2069_coupon" border="0" />
             <map name="Map2069_coupon" id="Map2069_coupon">
-                <area shape="rect" coords="266,1118,854,1173" href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();"/>
+                <area shape="rect" coords="266,1118,854,1173" href="javascript:void(0);" title="쿠폰받기" onclick="giveCheckImg();"/>
             </map>
         </div>
         <div class="evtCtnsBox cts03_02">
@@ -124,5 +124,17 @@
 
                     e.preventDefault()})})}
         );
+
+        function giveCheckImg(){
+            @if(empty($cert_apply) === false)
+                @if($file_yn[1] == 'Y')
+                    location.href = {{ front_url($file_link[1]) }};
+                @else
+                    alert('준비중입니다.');
+                @endif
+            @else
+                alert('필시합격 인증 후 다운로드 가능합니다.');
+            @endif
+        }
     </script>
 

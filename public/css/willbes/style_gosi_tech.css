@@ -55,7 +55,7 @@
 .tech .pkgWrap {margin:100px 0}
 .tech .pkgWrap:after {content:''; display:block; clear:both}
 .tech .pkgWrap .pkgLeft {position:relative; width:445px; float:left}
-.tech .pkgWrap .pkgLeft .slider {width:445px; height:350px; overflow: hidden;}
+.tech .pkgWrap .pkgLeft .slider {width:445px; height:315px; overflow: hidden;}
 .tech .pkgWrap .bSlider .bx-wrapper .bx-pager {
     width: auto;
     left: 0;

@@ -245,7 +245,7 @@
             @else
                 
                 <div class="btnJoin NGEB">
-                    <div class="mb30 tx-blue tx20">경찰 1차 원서 접수한 수험생이면 누구나!</div>
+                    <div class="mb30 tx-blue tx22">경찰 1차 원서 접수한 수험생이면 누구나!</div>
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
                         경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
                     </a>

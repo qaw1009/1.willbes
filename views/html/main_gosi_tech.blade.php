@@ -608,26 +608,26 @@
             <div class="pkgRight">
                 <ul>
                     <li class="bSlider">
-                        <div class="slider">
+                        <div class="pkgslider">
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
                         </div>
                     </li>
                     <li class="bSlider">
-                        <div class="slider">
+                        <div class="pkgslider">
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
                         </div>
                     </li>
                     <li class="bSlider">
-                        <div class="slider">
+                        <div class="pkgslider">
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
                         </div>
                     </li>
                     <li class="bSlider">
-                        <div class="slider">
+                        <div class="pkgslider">
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_04.jpg" alt="배너명"></a></div>
                             <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
                         </div>
@@ -901,6 +901,20 @@
         $("#imgBannerLeft").click(function (){
             slidesImg.goToNextSlide();
         });			
-    });        
+    });  
+    
+    $(function() {
+        $('.pkgslider').bxSlider({
+            mode:'fade',
+            auto: true,
+            touchEnabled: false,
+            controls: false,
+            pause: 3000,
+            autoHover: true,
+            onSliderLoad: function(){
+                $(".bSlider").css("visibility", "visible").animate({opacity:1});
+            }
+        });
+    });
 </script>
 @stop

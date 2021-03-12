@@ -51,6 +51,47 @@
             </div>
         </div>
 
+        <div class="Section pkgWrap">
+            <div class="widthAuto">
+                <div class="will-nTit NSK tx22">지금 이 시기에 딱 맞는 <span>PACKAGE</span></div>
+                <div class="pkgLeft bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_02.jpg" alt="배너명"></a></div>
+                    </div>
+                </div>
+                <div class="pkgRight">
+                    <ul>
+                        <li class="bSlider">
+                            <div class="pkgslider">
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            </div>
+                        </li>
+                        <li class="bSlider">
+                            <div class="pkgslider">
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                            </div>
+                        </li>
+                        <li class="bSlider">
+                            <div class="pkgslider">
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                            </div>
+                        </li>
+                        <li class="bSlider">
+                            <div class="pkgslider">
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_04.jpg" alt="배너명"></a></div>
+                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            </div>
+                        </li>
+                    </ul>                
+                </div>
+            </div>
+        </div> 
+
         <div class="Section tech-bnfull">
             <div class="widthAuto ">
                 <img src="https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286.jpg" alt="윌비스 기술직 라인업" usemap="#Map3028A" border="0">
@@ -177,6 +218,20 @@
             $("#imgBannerLeft").click(function (){
                 slidesImg.goToNextSlide();
             });	
+        });
+
+        $(function() {
+            $('.pkgslider').bxSlider({
+                mode:'fade',
+                auto: true,
+                touchEnabled: false,
+                controls: false,
+                pause: 3000,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
         });
     </script>
 @stop

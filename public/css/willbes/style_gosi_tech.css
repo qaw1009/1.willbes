@@ -74,7 +74,7 @@
 .tech .pkgWrap .pkgRight {position:relative; width:647px; float:right}
 .tech .pkgWrap .pkgRight ul {margin-right: -11px;}
 .tech .pkgWrap .pkgRight li {display:inline-block; float:left; width:calc(50% - 11px); margin-right: 11px; margin-bottom:13px}
-.tech .pkgWrap .pkgRight li .slider {width:318px; height:151px; overflow: hidden;}
+.tech .pkgWrap .pkgRight li .pkgslider {width:318px; height:151px; overflow: hidden;}
 .tech .pkgWrap .pkgRight ul:after {content:''; display:block; clear:both}
 
 .tech .pkgWrap .pkgRight .bSlider .bx-wrapper .bx-pager {

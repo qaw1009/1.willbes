@@ -178,5 +178,19 @@
                 slidesImg.goToNextSlide();
             });
         });
+
+        $(function() {
+            $('.pkgslider').bxSlider({
+                mode:'fade',
+                auto: true,
+                touchEnabled: false,
+                controls: false,
+                pause: 3000,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".bSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+        });
     </script>
 @stop

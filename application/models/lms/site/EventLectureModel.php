@@ -1247,7 +1247,6 @@ class EventLectureModel extends WB_Model
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
-            $group_by = '';
         } else {
             $column = "
                 a.EdlIdx, a.ElIdx, a.EplvIdx, a.MemIdx, a.RegDatm,
@@ -1266,8 +1265,6 @@ class EventLectureModel extends WB_Model
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-
-            $group_by = ' Group by a.EplvIdx,a.MemIdx ';
         }
 
         $from = "
@@ -1278,6 +1275,8 @@ class EventLectureModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+
+        $group_by = ' Group by a.EplvIdx,a.MemIdx ';
 
         // 쿼리 실행
         $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $group_by . $order_by_offset_limit);

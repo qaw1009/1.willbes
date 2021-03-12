@@ -1,188 +1,10 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-{{--<link href="/public/css/willbes/style_gosi_tech.css??ver={{time()}}" rel="stylesheet">--}}
+<link href="/public/css/willbes/style_gosi_tech.css??ver={{time()}}" rel="stylesheet">
 <style>
 /*********************************************     Main Container : tech     *********************************************/
-.tech .tx-color {color: #6faf4e;}
-.tech .Depth .depth:last-child strong {color: #ba560e;}
-.tech .will-nTit {border:0; font-size:46px}
-.tech .will-nTit span {color:#6faf4e}
 
-.tech .Menu h3 {border:0}  
-
-.tech .sortMenu {border-top:1px solid #e9e9e9; background:#fbfbfb; padding:8px 0}
-.tech .sortMenu li {display:inline; float:left; width:12.5%}
-.tech .sortMenu a {display:block; padding:8px 0 8px 5px; font-size:14px; color:#606060}
-.tech .sortMenu a:hover {color: #6faf4e;}
-
-/*상단 메인 배너*//
-.tech .gosi-tech-Sec {
-    width: 100%;
-    max-width: 2000px;        
-}
-.tech .gosi-tech-bntop {position:relative; margin:0; height: 460px !important;}
-.tech .gosi-tech-bntop .TechtabBox {
-    position: absolute;
-    top:0;
-    left:50%;
-    margin-left:-1000px;
-    width: 2000px;
-    min-width: 1120px;
-    max-width: 2000px;
-    height: 460px; 
-    overflow: hidden;
-}
-
-.tech .gosi-tech-bntop .TechtabBox p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; 
-    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.2; filter:alpha(opacity=20);}
-.tech .gosi-tech-bntop .TechtabBox p a {display:none;}
-.tech .gosi-tech-bntop .TechtabBox p.leftBtn {margin-left:-620px;}
-.tech .gosi-tech-bntop .TechtabBox p.rightBtn {margin-left:588px; background-position: right center;}	
-.tech .gosi-tech-bntop .TechtabBox p:hover {opacity:100; filter:alpha(opacity=100);}
-
-.tech .gosi-tech-bntop .TechtabList {
-    position: absolute;
-    top:404px;
-    width:100%;
-    z-index: 50;
-    background-color: rgba(0,0,0,0.5);
-    padding:10px 0;
-}
-
-.tech .gosi-tech-bntop .Techtab {width:1120px; margin:0 auto; text-align:center}
-.tech .gosi-tech-bntop .Techtab:after {content:""; display:block; clear:both}
-.tech .gosi-tech-bntop .Techtab li {display:inline-block;  width: calc(11.11111% - 2px);}   
-.tech .gosi-tech-bntop .Techtab li a {display:block; text-align:center; line-height:1.2; font-size: 15px; color:#b4b4b4;}
-.tech .gosi-tech-bntop .Techtab li a:hover,
-.tech .gosi-tech-bntop .Techtab li a.active {color:#fff; font-weight: bold;}
-
-/**/ 
-.tech .tech-bnfull {background:url("https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286_bg.jpg") repeat-x;}
-
-/**/
-.gosi-tech-bn01 {margin-top:130px;} 
-.gosi-tech-bn01 .bnTitle {float:left; width:280px;}
-.gosi-tech-bn01 .will-nTit {font-size:33px}  
-.gosi-tech-bn01 .bnTitle div:nth-child(2) {line-height:1.4; color:#a6a6a6; font-size:20px; margin:30px 0 20px}
-.gosi-tech-bn01 .bnTitle a {display:inline-block; color:#fff; background:#000; font-size:14px; height:24px; line-height:24px; border-radius:13px; padding:0 20px }
-.gosi-tech-bn01 ul {float:right;}
-.gosi-tech-bn01 li {display:inline-block; float:left; width:266px; margin-right:20px;}
-.gosi-tech-bn01 li:last-child {margin:0}
-.gosi-tech-bn01 ul:after {content: ""; display: block; clear:both}
-.gosi-tech-bn01 .nSlider .sliderNum {height:250px; background:#ccc; overflow:hidden}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-controls-direction {
-    position: absolute;
-    top: 250px;
-    left:0;
-    right: 0;
-    width: 100%;
-    height: 20px;
-    text-align:center;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-controls-direction a {
-    width: 20px;
-    height: 20px;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper a.bx-prev {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;
-    left:150px !important;
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper a.bx-next {
-    background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat left top;   
-    left:95px !important;     
-}
-.gosi-tech-bn01 .nSlider .bx-wrapper .bx-pager {
-    width: auto;
-    position: absolute;
-    top: 255px;
-    left:0;
-    right: 0;
-    bottom: 0;
-    font-size: 11px;
-    font-weight: 300;
-    color: #000;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 0;
-}
-
-/**/
-.tech .tech-bnfull02 {background:#fbfbfd; margin-top:130px} 
-
-/**/
-.tech .ProfBoxB {margin-left:-8px; margin-top:50px}
-.tech .ProfBoxB li {float: left; width: 274px; height: 234px; margin-left: 8px;margin-bottom: 8px;}
-.tech .ProfBoxB:after {content: ""; display: block; clear: both;}
-
-
-/* Main Container : Notice : noticeTabs */
-.tech .tabWrap.noticeWrap {
-    height: 16px;
-    border: none;
-}
-.tech .tabWrap.noticeWrap li {
-    float: left;
-    width: auto;
-    height: 16px;
-    margin-right: 10px;
-}
-.tech .tabWrap.noticeWrap li a {
-    display: block;
-    width: 100%;
-    height: 19px;
-    line-height: 19px;
-    font-size: 17px;
-    color: #c5c5c5;
-    text-align: center;
-    letter-spacing: 0;
-    border:none !important;
-    border-right:1px solid #999 !important;
-    padding-right: 10px;
-}
-.tech .tabWrap.noticeWrap li a.on {
-    height: 19px;
-    line-height: 19px;
-    font-weight: 600;
-    color: #6faf4e;
-    border:none !important;
-    border-right:1px solid #999 !important;
-}
-.tech .tabWrap.noticeWrap li:last-child a.on,
-.tech .tabWrap.noticeWrap li:last-child a {
-    border-right:none !important;
-}
-.tech .tabBox.noticeBox a.btn-add {
-    position: absolute;
-    top: -16px;
-    right: 0;
-}
-.tech .tabBox.noticeBox .List-Table {
-    width: 520px;
-}
-.tech .tabBox.noticeBox .List-Table li {
-    position: relative;
-    font-size: 13px;
-    color: #3a3a3a;
-    height: 37px;
-    line-height: 37px;
-    border-bottom: 1px solid #e3e3e3;
-}
-.tech .tabBox.noticeBox .List-Table li a {
-    display: inline-block;
-    width: 80%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    letter-spacing: 0;
-}
-.tech .tabBox.noticeBox .List-Table li a span {
-    background: #6faf4e;
-    color:#fff;
-    padding: 0 10px;
-    border-radius: 10px;
-    margin-right: 5px;
-}
 </style>
 <!-- Container -->
 <div id="Container" class="Container tech NGR c_both">
@@ -774,6 +596,47 @@
         </div>        
     </div>
 
+    <div class="Section pkgWrap">
+        <div class="widthAuto">
+            <div class="will-nTit NSK tx22">지금 이 시기에 딱 맞는 <span>PACKAGE</span></div>
+            <div class="pkgLeft bSlider">
+                <div class="slider">
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_02.jpg" alt="배너명"></a></div>
+                </div>
+            </div>
+            <div class="pkgRight">
+                <ul>
+                    <li class="bSlider">
+                        <div class="pkgslider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="pkgslider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="pkgslider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="pkgslider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_04.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                </ul>                
+            </div>
+        </div>
+    </div> 
+
     <div class="Section tech-bnfull">
         <div class="widthAuto">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_1120x286.jpg" alt="배너명"></a>
@@ -1038,6 +901,20 @@
         $("#imgBannerLeft").click(function (){
             slidesImg.goToNextSlide();
         });			
-    });        
+    });  
+    
+    $(function() {
+        $('.pkgslider').bxSlider({
+            mode:'fade',
+            auto: true,
+            touchEnabled: false,
+            controls: false,
+            pause: 3000,
+            autoHover: true,
+            onSliderLoad: function(){
+                $(".bSlider").css("visibility", "visible").animate({opacity:1});
+            }
+        });
+    });
 </script>
 @stop

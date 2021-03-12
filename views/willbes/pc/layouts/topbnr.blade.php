@@ -92,12 +92,12 @@
     </div>
 @endif
 @if($__cfg['CateCode'] == '3028')
-    {{-- 공무원 기술직 사이트일 경우만 적용 --}}
+    {{-- 공무원 기술직 사이트일 경우만 적용 
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3028_top_bn.gif" alt="기술직"></a>
         </div>
-    </div>
+    </div>--}}
 @endif
 @if($__cfg['CateCode'] == '3030')
     {{-- 공무원 부사관 사이트일 경우만 적용 --}}

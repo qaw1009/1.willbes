@@ -1245,7 +1245,7 @@ class EventLectureModel extends WB_Model
     public function listAllEventMemberDownload($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
-            $column = 'count(*) AS numrows';
+            $column = " count(*) AS cnt";
             $order_by_offset_limit = '';
         } else {
             $column = "
@@ -1277,9 +1277,14 @@ class EventLectureModel extends WB_Model
         $where = $where->getMakeWhere(false);
 
         $group_by = ' Group by a.EplvIdx,a.MemIdx ';
+        $query_string = "select STRAIGHT_JOIN " . $column . $from . $where . $group_by . $order_by_offset_limit;
+
+        if ($is_count === true) {
+            $query_string = "select count(M.cnt) as numrows from (". $query_string .") as M";
+        }
 
         // 쿼리 실행
-        $query = $this->_conn->query('select STRAIGHT_JOIN ' . $column . $from . $where . $group_by . $order_by_offset_limit);
+        $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

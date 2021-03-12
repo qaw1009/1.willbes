@@ -666,8 +666,8 @@ class EventLecture extends \app\controllers\BaseController
         }
 
         return $this->response([
-            'recordsTotal' => count($list),
-            'recordsFiltered' => count($list),
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
             'data' => $list,
         ]);
     }

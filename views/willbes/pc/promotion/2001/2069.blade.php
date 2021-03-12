@@ -43,13 +43,14 @@
         .evt01 .d-day p {font-size:45px}
         .evt01 .d-day span {color:#8e5e32}
         .evt01 .btnJoin {
-            position:absolute;
-            width:440px;
+            /*position:absolute;            
             left:50%;
-            top:890px;
+            top:890px;            
             margin-left:-220px;
+            z-index:5;*/
+            width:440px;
             line-height:1.5;
-            z-index:5;
+            margin:0 auto;            
         }
         .evt01 .btnJoin a {
             display:block;
@@ -66,7 +67,7 @@
         .evt01 .btnJoin a span {
             font-size:30px;
         }
-        .evt01 ul {width:870px; margin:280px auto 0;}
+        .evt01 ul {width:870px; margin:150px auto 0;}
         .evt01 li {display:inline; float:left; width:20%; position:relative;}
         .evt01 li span {position:absolute; width:100%; text-align:center; left:0; top:-40px}
         .evt01 li a img.on {display:none}
@@ -232,20 +233,25 @@
                 <p>최종합격발표까지 <span>D-00</span></p>
                 -->
             </div>
-            @if ($onoff_3 != 'null')
+            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_01.jpg" alt="이 모든 혜택을 드립니다.">
+
+            @if ($onoff_3 != 'null')                
                 <div class="btnJoin NGEB">
+                    <div class="mb30 tx-blue tx22">경찰 1차 필기합격생이면 누구나!</div>
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
                         <span>필기합격생 인증하기 ></span>
                     </a>
                 </div>
             @else
+                
                 <div class="btnJoin NGEB">
+                    <div class="mb30 tx-blue tx20">경찰 1차 원서 접수한 수험생이면 누구나!</div>
                     <a href="javascript:;" onclick="doEvent(); return false;" target="_blank">
                         경찰 1차시험<br> <span>인증이벤트 참여하기 ></span>
                     </a>
                 </div>
             @endif
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_01.jpg" alt="이 모든 혜택을 드립니다.">
+            
             <ul>
                 <li>
                     @if($onoff_1 == 'on')

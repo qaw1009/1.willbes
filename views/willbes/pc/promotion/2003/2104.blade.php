@@ -20,10 +20,10 @@
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2104_top_bg.jpg) no-repeat center top;}
-        .youtube {position:absolute; top:690px; left:50%;z-index:1;margin-left:-250px}
+        .youtube {position:absolute; top:720px; left:50%;z-index:1;margin-left:-250px}
         .youtube iframe {width:460px; height:290px;}
         
-        .wb_cts01 {padding-top:125px;}
+        .wb_cts01 {padding-top:150px;}
 
         .wb_cts02 {background:#DADCDB}
                 

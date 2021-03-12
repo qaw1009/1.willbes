@@ -20,8 +20,8 @@
         .sky {position:fixed; top:225px;right:10px;z-index:10;}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2104_top_bg.jpg) no-repeat center top;}
-
-        .wb_top .tImg img {margin:0 5px 10px;width:460px;height:290px;margin-top:-155px;}
+        .youtube {position:absolute; top:670px; left:50%;z-index:1;margin-left:-250px}
+        .youtube iframe {width:460px; height:225px;}
 
         .wb_cts02 {background:#DADCDB}
                 
@@ -58,9 +58,8 @@
 
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2104_top.jpg" alt="위생사 올패스"  />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2104_top01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2104_top02.gif" alt="강의2" />
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/Am6F6tIXTTI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 

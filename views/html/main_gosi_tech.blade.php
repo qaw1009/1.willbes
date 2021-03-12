@@ -601,15 +601,38 @@
             <div class="will-nTit NSK tx22">지금 이 시기에 딱 맞는 <span>PACKAGE</span></div>
             <div class="pkgLeft bSlider">
                 <div class="slider">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x350_01.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x350_02.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_01.jpg" alt="배너명"></a></div>
+                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_02.jpg" alt="배너명"></a></div>
                 </div>
             </div>
-            <div class="pkgRight bSlider">
-                <div class="slider">
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x123_01.jpg" alt="배너명"></a></div>
-                    <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x123_02.jpg" alt="배너명"></a></div>
-                </div>
+            <div class="pkgRight">
+                <ul>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_04.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
+                        </div>
+                    </li>
+                </ul>                
             </div>
         </div>
     </div> 

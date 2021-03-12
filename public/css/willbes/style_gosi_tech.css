@@ -56,7 +56,6 @@
 .tech .pkgWrap:after {content:''; display:block; clear:both}
 .tech .pkgWrap .pkgLeft {position:relative; width:445px; float:left}
 .tech .pkgWrap .pkgLeft .slider {width:445px; height:350px; overflow: hidden;}
-.tech .pkgWrap .pkgRight {position:relative; width:624px; float:right}
 .tech .pkgWrap .bSlider .bx-wrapper .bx-pager {
     width: auto;
     left: 0;
@@ -70,6 +69,17 @@
 .tech .pkgWrap .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
 .tech .pkgWrap .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #898989 !important;
+}
+
+.tech .pkgWrap .pkgRight {position:relative; width:647px; float:right}
+.tech .pkgWrap .pkgRight ul {margin-right: -11px;}
+.tech .pkgWrap .pkgRight li {display:inline-block; float:left; width:calc(50% - 11px); margin-right: 11px; margin-bottom:13px}
+.tech .pkgWrap .pkgRight li .slider {width:318px; height:151px; overflow: hidden;}
+.tech .pkgWrap .pkgRight ul:after {content:''; display:block; clear:both}
+
+.tech .pkgWrap .pkgRight .bSlider .bx-wrapper .bx-pager {
+    bottom: 10px;
+    text-align: right;
 }
 
 /**/ 

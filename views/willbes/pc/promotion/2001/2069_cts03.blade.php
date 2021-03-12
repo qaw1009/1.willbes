@@ -127,8 +127,9 @@
 
         function giveCheckImg(){
             @if(empty($cert_apply) === false)
-                @if($file_yn[1] == 'Y')
-                    location.href = "{{ front_url($file_link[1]) }}";
+                @if($file_yn[2] == 'Y')
+                    var _url = "{{ front_url($file_link[2]) }}"
+                    location.href = _url;
                 @else
                     alert('준비중입니다.');
                 @endif

@@ -39,12 +39,9 @@
     .evt03 div a.link13 {left: 50.54%;}
     .evt03 div a.link14 {left: 75.36%;}
 
-    .evtinfo {background:#fff; padding:100px 0}
-    .evtinfo .evtinfoBox {width:900px; margin:0 auto; color:#3a3a3a; text-align:left; font-size:14px; line-height:1.5}
-    .evtinfo h3 {font-size:28px; margin-bottom:30px}
-    .evtinfo div {font-size:16px; margin-bottom:10px}
-    .evtinfo .evtinfoBox li {list-style: decimal; margin-left:15px}
-    .evtinfo .evtinfoBox ul {margin-bottom:30px}
+    .evt04 {background:#e2dae3; padding-bottom:150px}
+    .evt04 a {font-size:30px; line-height:1.5; border:3px solid #48537d; border-radius:90px; padding:20px 100px; display:inline-block}
+    .evt04 a:hover {color:#48537d; background:#fff}
     </style>
 
     <div class="evtContent NSK">        
@@ -79,8 +76,16 @@
                 <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1849" title="김윤태" class="link12" target="_blank"></a>
                 <a href="https://njob.willbes.net/promotion/index/cate/3114/code/1968" title="임서현" class="link13" target="_blank"></a>
                 <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2057" title="이난우" class="link14" target="_blank"></a>
-            </div>
+            </div>        
         </div>
+
+        <div class="evtCtnsBox evt04 NSK-Black"> 
+            <a href="https://njob.willbes.net/home/index/cate/3114">
+                모두 30% 파격 할인!<br>
+                1억뷰N잡만의 특별한 강의 더 확인하기 >
+            </a>
+        </div>
+
     </div>
     <!-- End Container -->
 @stop

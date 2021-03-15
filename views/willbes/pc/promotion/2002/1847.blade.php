@@ -81,9 +81,11 @@
             <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
             <input type="hidden" name="register_chk_val[]" value=""/>-->
 
+            {{--
             <div class="skyBanner">               
                 <a href="#to_go"><img src="https://static.willbes.net/public/images/promotion/2021/02/1847_sky.png" title="올공반 베너"></a>
             </div>
+            --}}
 
             <div class="evtCtnsBox evt00">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
@@ -232,10 +234,7 @@
             </div>    
             
             <div class="evtCtnsBox evt04" id="to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1847_04.jpg" usemap="#Map1847a" title="올공반 올케어 지금 바로 신청하기" border="0">
-                <map name="Map1847a">
-                    <area shape="rect" coords="370,1185,743,1302" href="https://police.willbes.net/pass/offPackage/index/type/agong?cate_code=3010&campus_ccd=605001&course_idx=1094" target="_blank" alt="지금 바로 신청하기" />
-                </map>                              
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1847_04.jpg"  title="최종마감">                             
             </div>
         </form>
 	</div>

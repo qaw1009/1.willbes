@@ -82,11 +82,18 @@ class BaseStats extends \app\controllers\BaseController
             $arr_code['arr_' . $key] = $codes[$group_ccd];
         }
 
+        // 조회 시작시간/종료시간 사용여부
+        $is_search_hour = false;
+        if (in_array($this->_stats_type, ['book']) === true) {
+            $is_search_hour = true;
+        }
+
         $this->load->view('sales/stats_index', array_merge([
             'stats_type' => $this->_stats_type,
             'stats_name' => $this->_stats_name,
             'search_column' => $this->_search_column,
-            'def_site_code' => $def_site_code
+            'def_site_code' => $def_site_code,
+            'is_search_hour' => $is_search_hour
         ], $arr_code));
     }
 
@@ -96,8 +103,9 @@ class BaseStats extends \app\controllers\BaseController
      */
     protected function listAjax()
     {
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
+        $arr_search_date = $this->_getSearchStartEndDate();
+        $search_start_date = $arr_search_date[0];
+        $search_end_date = $arr_search_date[1];
         $count = 0;
         $list = [];
         $sum_data = null;
@@ -121,6 +129,27 @@ class BaseStats extends \app\controllers\BaseController
             'data' => $list,
             'sum_data' => $sum_data
         ]);
+    }
+
+    /**
+     * 매출통계 조회 시작일/종료일 리턴
+     * @param array $params
+     * @return array
+     */
+    private function _getSearchStartEndDate($params = [])
+    {
+        $search_start_date = get_var($this->_reqP('search_start_date'), element('2', $params));
+        $search_end_date = get_var($this->_reqP('search_end_date'), element('3', $params));
+        $search_start_hour = get_var($this->_reqP('search_start_hour'), element('4', $params, ''));
+        $search_end_hour = get_var($this->_reqP('search_end_hour'), element('5', $params, ''));
+
+        // 조회 시작시간/종료시간이 있을 경우
+        if (empty($search_start_hour) === false && strlen($search_start_hour) == 2 && empty($search_end_hour) === false && strlen($search_end_hour) == 2) {
+            $search_start_date .= ' ' . $search_start_hour . ':00:00';
+            $search_end_date .= ' ' . $search_end_hour . ':59:59';
+        }
+
+        return [$search_start_date, $search_end_date];
     }
 
     /**
@@ -205,8 +234,9 @@ class BaseStats extends \app\controllers\BaseController
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
 
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
+        $arr_search_date = $this->_getSearchStartEndDate();
+        $search_start_date = $arr_search_date[0];
+        $search_end_date = $arr_search_date[1];
 
         if (empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
@@ -233,24 +263,24 @@ class BaseStats extends \app\controllers\BaseController
     {
         $prod_code = $params[0];
         $site_code = $params[1];
-        $start_date = $params[2];
-        $end_date = $params[3];
+        $arr_search_date = $this->_getSearchStartEndDate($params);
+        $search_start_date = $arr_search_date[0];
+        $search_end_date = $arr_search_date[1];
 
-        if (empty($prod_code) === true || empty($site_code) === true || empty($start_date) === true || empty($end_date) === true) {
+        if (empty($prod_code) === true || empty($site_code) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');
         }
 
         // 상품코드별 매출현황 파라미터 셋팅
         $arr_input = [
-            'prod_code' => $prod_code,
-            'site_code' => $site_code,
-            'start_date' => $start_date,
-            'end_date' => $end_date
+            'prod_code' => $prod_code, 'site_code' => $site_code,
+            'start_date' => $params[2], 'end_date' => $params[3],
+            'start_hour' => element('4', $params), 'end_hour' => element('5', $params)
         ];
 
         // 상품코드별 매출통계 조회
         $arr_condition = ['EQ' => ['SU.SiteCode' => $site_code, 'SU.ProdCode' => $prod_code]];
-        $data = element('0', $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $start_date, $end_date, 'all', false, $arr_condition));
+        $data = element('0', $this->orderSalesModel->listStatsOrder($this->_learn_pattern, $search_start_date, $search_end_date, 'all', false, $arr_condition));
         if (empty($data) === true) {
             show_alert('데이터가 없습니다.', 'back');
         }
@@ -289,8 +319,10 @@ class BaseStats extends \app\controllers\BaseController
     {
         $site_code = $this->_reqP('site_code');
         $prod_code = $this->_reqP('prod_code');
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
+        $arr_search_date = $this->_getSearchStartEndDate();
+        $search_start_date = $arr_search_date[0];
+        $search_end_date = $arr_search_date[1];
+
         $count = 0;
         $list = [];
         $sum_data = null;
@@ -388,8 +420,9 @@ class BaseStats extends \app\controllers\BaseController
 
         $site_code = $this->_reqP('site_code');
         $prod_code = $this->_reqP('prod_code');
-        $search_start_date = $this->_reqP('search_start_date');
-        $search_end_date = $this->_reqP('search_end_date');
+        $arr_search_date = $this->_getSearchStartEndDate();
+        $search_start_date = $arr_search_date[0];
+        $search_end_date = $arr_search_date[1];
 
         if (empty($site_code) === true || empty($prod_code) === true || empty($search_start_date) === true || empty($search_end_date) === true) {
             show_alert('필수 파라미터 오류입니다.', 'back');

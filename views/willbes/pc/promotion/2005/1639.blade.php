@@ -42,7 +42,7 @@
 
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/1639_top_bg.jpg) no-repeat center top;}	
 		.evt_01 {background:#b9966e;}
-        .evt_02 {background:#fff;}   
+        .evt_02 {background:#fff; padding-bottom:100px}   
     </style> 
 	<div class="evtContent NSK">
         <div class="evtCtnsBox timeBox">
@@ -82,7 +82,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02.jpg" alt="경제학 gs3순환" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-            @endif  
+            @endif 
+            <br>
+            <br>
+            <br>
+            <br> 
+            <br> 
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02_01.jpg" alt="경제학 패키지" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
@@ -96,6 +101,11 @@
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
             @endif  
+            <br>
+            <br>
+            <br>
+            <br> 
+            <br> 
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02_01.jpg" alt="경제학 패키지" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))

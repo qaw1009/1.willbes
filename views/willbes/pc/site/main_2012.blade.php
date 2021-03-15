@@ -354,8 +354,8 @@
             var slidesImg = $('.MaintabSlider').bxSlider({
                 mode:'horizontal',
                 touchEnabled: false,
-                speed:800,
-                pause:3000,
+                speed:400,
+                pause:5000,
                 sliderWidth:1120,
                 auto : true,
                 autoHover: true,

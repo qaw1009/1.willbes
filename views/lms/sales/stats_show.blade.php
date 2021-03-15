@@ -158,25 +158,25 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제조건</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
+                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
                             <option value="">결제채널</option>
                             @foreach($arr_pay_channel_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
+                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
                             <option value="">결제루트</option>
                             @foreach($arr_pay_route_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
+                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                             <option value="">결제수단</option>
                             @foreach($arr_pay_method_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                             <option value="">결제상태</option>
                             @foreach($arr_pay_status_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
@@ -205,18 +205,34 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제일/환불일</label>
                     <div class="col-md-11 form-inline">
-                        <div class="input-group mb-0 mr-20">
+                        <div class="input-group mb-0">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{ $arr_input['start_date'] }}">
-                            <div class="input-group-addon no-border no-bgcolor">~</div>
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="{{ $arr_input['start_date'] }}" title="조회시작일자" autocomplete="off">
+                        </div>
+                        @if(empty($arr_input['start_hour']) === false)
+                            <select class="form-control" id="search_start_hour" name="search_start_hour" title="조회시작시간" style="width: 60px;">
+                                @for($i = 0; $i <= 23; $i++)
+                                    <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" @if($arr_input['start_hour'] == str_pad($i, 2, '0', STR_PAD_LEFT)) selected="selected" @endif>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                                @endfor
+                            </select> 시 00분 00초
+                        @endif
+                        <span class="pl-5 pr-5">~</span>
+                        <div class="input-group mb-0">
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{ $arr_input['end_date'] }}">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="{{ $arr_input['end_date'] }}" title="조회종료일자" autocomplete="off">
                         </div>
-                        <div class="btn-group" role="group">
+                        @if(empty($arr_input['end_hour']) === false)
+                            <select class="form-control" id="search_end_hour" name="search_end_hour" title="조회종료시간" style="width: 60px;">
+                                @for($i = 0; $i <= 23; $i++)
+                                    <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}" @if($arr_input['end_hour'] == str_pad($i, 2, '0', STR_PAD_LEFT)) selected="selected" @endif>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                                @endfor
+                            </select> 시 59분 59초
+                        @endif
+                        <div class="btn-group ml-20" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="1-weeks">1주일</button>
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="15-days">15일</button>
@@ -240,7 +256,7 @@
             <table id="list_ajax_table" class="table table-bordered">
                 <thead>
                 <tr class="bg-odd">
-                    <th width="60">선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                    <th style="width: 60px;"><label class="mb-0">선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></label></th>
                     <th>No</th>
                     <th>주문번호</th>
                     <th>회원정보</th>

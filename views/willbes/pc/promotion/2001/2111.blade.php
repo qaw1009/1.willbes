@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none" onclick="javascript:alert('Coming Soon!');">   
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/2121" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1.png" class="off" alt="신광은 형소법"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_1on.png" class="on" alt="신광은 형소법"  />
                         </a>

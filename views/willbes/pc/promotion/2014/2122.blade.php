@@ -17,7 +17,7 @@
 
     .evt01 {background:#e7ddd3; }
     .evt01 div {width:1120px; margin:0 auto; position:relative}
-    .evt01 div a {position: absolute; top: 37.45%; width: 23.66%; height: 37.41%; z-index: 2;}
+    .evt01 div a {position: absolute; top: 27.39%; width: 23.66%; height: 56.89%; z-index: 2; /*border:1px solid #000*/}
     .evt01 div a.link01 {left: 0.71%;}
     .evt01 div a.link02 {left: 25.8%;;}
     .evt01 div a.link03 {left: 50.54%;}
@@ -25,7 +25,7 @@
 
     .evt02 {background:#d3e5e7;}
     .evt02 div {width:1120px; margin:0 auto; position:relative}
-    .evt02 div a {position: absolute; top: 37.45%; width: 23.66%; height: 37.41%; z-index: 2;}
+    .evt02 div a {position: absolute; top: 27.39%; width: 23.66%; height: 56.89%; z-index: 2;}
     .evt02 div a.link06 {left: 0.71%;}
     .evt02 div a.link07 {left: 25.8%;;}
     .evt02 div a.link08 {left: 50.54%;}
@@ -33,7 +33,7 @@
 
     .evt03 {background:#e2dae3;}
     .evt03 div {width:1120px; margin:0 auto; position:relative}
-    .evt03 div a {position: absolute; top: 37.45%; width: 23.66%; height: 37.41%; z-index: 2;}
+    .evt03 div a {position: absolute; top: 27.39%; width: 23.66%; height: 56.89%; z-index: 2;}
     .evt03 div a.link11 {left: 0.71%;}
     .evt03 div a.link12 {left: 25.8%;;}
     .evt03 div a.link13 {left: 50.54%;}

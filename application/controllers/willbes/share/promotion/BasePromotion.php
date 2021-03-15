@@ -217,7 +217,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 회원정보 조회
-        if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y'){
+        if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y' && $this->session->userdata('is_login') === true){
             $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
         }
 

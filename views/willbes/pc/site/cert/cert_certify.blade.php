@@ -99,7 +99,7 @@
                     <a href="#none" class="btnA"  id="btn_cert_check">
                         확인
                     </a>
-                    <a href="#none">
+                    <a href="#none" onclick="self.close();">
                         취소
                     </a>
                 </div>
@@ -128,15 +128,8 @@
                 alert("이미 '승인'된 인증입니다.");return;
                 @endif
 
-                if ($('#EtcContent').val() == '') {
-                    alert('수강사이트를 입력해 주세요.');
-                    $('#EtcContent').focus();
-                    return;
-                }
-
-                if ($('#attachfile').val() == '') {
-                    alert('첨부파일을 등록해 주세요.');
-                    return;
+                if ($('#TakeNo').val() == '') {
+                    alert('응시번호를 입력해주십시오.');
                 }
 
                 if($('input:radio[name=ACCEPT_YN]').is(':checked') == false || $('input:radio[name=ACCEPT_YN]:checked').val() == "N" ) {

@@ -1673,16 +1673,18 @@ class EventFModel extends WB_Model
             if(empty($arr_promotion_params['cart_limit']) === false && empty($arr_promotion_params['cart_prod_code']) === false) {
 
                 // 이벤트 접수 체크
-                $arr_condition = [
-                    'EQ'=>[
-                        'A.MemIdx' => $this->session->userdata('mem_idx'),
-                        'B.ElIdx' => element('event_idx', $inputData),
-                        'B.IsStatus' => 'Y'
-                    ],
-                ];
-                $reg_member_result = $this->getRegisterMember($arr_condition);
-                if(empty($reg_member_result) === true) {
-                    throw new \Exception('이벤트 신청후 이용 가능합니다.');
+                if(empty($arr_promotion_params['event_chk_yn']) === true){
+                    $arr_condition = [
+                        'EQ'=>[
+                            'A.MemIdx' => $this->session->userdata('mem_idx'),
+                            'B.ElIdx' => element('event_idx', $inputData),
+                            'B.IsStatus' => 'Y'
+                        ],
+                    ];
+                    $reg_member_result = $this->getRegisterMember($arr_condition);
+                    if(empty($reg_member_result) === true) {
+                        throw new \Exception('이벤트 신청후 이용 가능합니다.');
+                    }
                 }
 
                 $cart_limit = $arr_promotion_params['cart_limit'];

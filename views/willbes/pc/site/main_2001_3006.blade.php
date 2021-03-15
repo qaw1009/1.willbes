@@ -37,8 +37,9 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">경찰승진 <span class="tx-color">주관식</span> <span class="tx16 NSK ml20">형사소송법, 행정법</span></div>
                 <div>
-                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span','mr25') !!}
-                    {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'span') !!}
+                    {!! banner_html(element('메인_교수진1', $data['arr_main_banner']), null, null, null, 'span', 'mr20 f_left') !!}
+                    {!! banner_html(element('메인_교수진2', $data['arr_main_banner']), null, null, null, 'span', 'mr20 f_left') !!}
+                    {!! banner_html(element('메인_교수진3', $data['arr_main_banner']), null, null, null, 'span', 'f_left') !!}
                 </div>
             </div>
         </div>
@@ -57,11 +58,15 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black">승진합격을 위한 윌비스 <span class="tx-color">경찰승진</span> 교수님</div>
                 <ul class="ProfProBox">
-                    @for($i=1; $i<=10; $i++)
+                    @for($i=1; $i<=9; $i++)
                         <li>
                             {!! banner_html(element('메인_승진교수'.$i, $data['arr_main_banner'])) !!}
                         </li>
                     @endfor
+
+                    <li class="bSlider">
+                        {!! banner_html(element('메인_승진교수10', $data['arr_main_banner']), 'slider') !!}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -85,7 +90,7 @@
                     <span><a href="https://www.cnpolice.go.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_04.jpg" alt=""></a></span>
                     <span><a href="https://www.jjpolice.go.kr/jjpolice" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_05.jpg" alt=""></a></span>
                     <span><a href="https://www.smpa.go.kr/home/homeIndex.do?menuCode=dj" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3006_180x50_06.jpg" alt=""></a></span>
-                </div> 
+                </div>
             </div>
         </div>
 

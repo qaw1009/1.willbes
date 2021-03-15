@@ -66,7 +66,7 @@ class MemberFModel extends WB_Model
             $column = " Mem.MemIdx, Mem.MemName, Mem.MemId, Mem.BirthDay, Mem.Sex, 
             fn_dec(Mem.PhoneEnc) AS Phone, Mem.Phone1, fn_dec(Mem.Phone2Enc) AS Phone2, Mem.Phone3, 
             fn_dec(Info.TelEnc) AS Tel, Info.Tel1, fn_dec(Info.Tel2Enc) AS Tel2, Info.Tel3,
-            Info.SmsRcvStatus,
+            Info.SmsRcvStatus, Info.InterestCode,
             fn_dec(Mem.MailEnc) AS Mail, Mem.MailId, Mem.MailDomain, Info.MailRcvStatus,
             Info.ZipCode, Info.Addr1, fn_dec(Info.Addr2Enc) as Addr2,
             IFNULL(Mem.IsStatus, '') AS IsStatus,

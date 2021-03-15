@@ -199,7 +199,7 @@ class CertApplyFModel extends WB_Model
                 throw new \Exception('인증 신청에 실패했습니다.');
             }
 
-            if($cert_data['IsAutoApproval'] === 'Y' && empty($cert_data['CsTel']) === false ) { // 문자발송
+            if($cert_data['IsAutoSms'] === 'Y' && empty($cert_data['CsTel']) === false ) { // 문자발송
                 if (empty($this->session->userdata('mem_phone')) === false) {
                     // 알림톡
                     if(empty($certtypeccd) === false) {

@@ -335,7 +335,7 @@
             <div class="evtCtnsBox evt05">
                 <div>
                     <img src="https://static.willbes.net/public/images/promotion/2021/02/2069_05.jpg" title="사전예약 이벤트">
-                    <a href="@if($file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" alt="합격풀케어서비스 이미지 다운받기" style="position: absolute; left: 23.39%; top: 80.82%; width: 30.45%; height: 2.95%; z-index: 2;"></a>
+                    <a href="@if($file_yn[1] == 'Y'){{ front_url($file_link[1]) }}@else{{ $file_link[1] }}@endif" alt="합격풀케어서비스 이미지 다운받기" style="position: absolute; left: 23.39%; top: 80.82%; width: 30.45%; height: 2.95%; z-index: 2;" @if($file_yn[1] == 'Y') target="_blank" @endif></a>
                 </div> 
             </div>
 

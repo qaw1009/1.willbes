@@ -383,7 +383,7 @@
                 @elseif($stats_type == 'book')
                     {{-- 교재 --}}
                     {'data' : 'ProfSubjectNames', 'render' : function(data, type, row, meta) {
-                        return data.replace(/,/g, '<br/>');
+                        return data !== null ? data.replace(/,/g, '<br/>') : '';
                     }},
                     {'data' : 'wPublName'},
                     {'data' : 'wAuthorNames'},

@@ -73,16 +73,35 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_01.jpg" alt="경제학 gs3순환" />
 		</div>
 
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif  
+
+        @if($__cfg['CateCode'] == '3094') 
         <div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02.jpg" alt="경제학 gs3순환" />
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif  
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02_01.jpg" alt="경제학 패키지" />
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif  
-        </div>       
+        </div>  
+        @endif  
+
+        @if($__cfg['CateCode'] == '3095') 
+        <div class="evtCtnsBox evt_02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02.jpg" alt="경제학 gs3순환" />
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
+            @endif  
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1639_02_01.jpg" alt="경제학 패키지" />
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
+            @endif  
+        </div>  
+        @endif  
 
 	</div>
     <!-- End Container -->

@@ -59,7 +59,16 @@
                         </tr>                      
                         </tbody>
                     </table>
-                                       
+
+                    <h4 class="mt40">유의사항</h4>
+                    <div style="line-height:1.3;">                    
+                    1. 제공되는 무료 강좌는 [내강의실>수강중인 강의>관리자부여강좌>패키지]에서 확인 가능합니다.<br>
+
+                    2. 무료강좌 수강 가능한 유효기간은 30일 입니다.<br>
+
+                    3. 배송비 무료쿠폰, 단과 20% 쿠폰, 단과 10% 쿠폰 유효기간은 7일 입니다.
+                    </div>
+
                     <h4 class="mt40">개인정보 수집 및 이용에 대한 안내</h4>
                     <div>
                     <textarea name="" rows="6" cols="">
@@ -90,7 +99,7 @@
                     <a href="#none" class="btnA"  id="btn_cert_check">
                         확인
                     </a>
-                    <a href="#none" onclick="self.close();">
+                    <a href="#none">
                         취소
                     </a>
                 </div>
@@ -119,8 +128,14 @@
                 alert("이미 '승인'된 인증입니다.");return;
                 @endif
 
-                if ($('#TakeNo').val() == '') {
-                    alert('응시번호를 입력해주십시오.');
+                if ($('#EtcContent').val() == '') {
+                    alert('수강사이트를 입력해 주세요.');
+                    $('#EtcContent').focus();
+                    return;
+                }
+
+                if ($('#attachfile').val() == '') {
+                    alert('첨부파일을 등록해 주세요.');
                     return;
                 }
 

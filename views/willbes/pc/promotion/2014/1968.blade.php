@@ -5,7 +5,6 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -14,7 +13,7 @@
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
@@ -27,7 +26,7 @@
         }
         .skybanner a {display:block; margin-bottom:5px; text-align:center}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/12/1968_top_bg.jpg) no-repeat center top}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/1968_top_bg.jpg) no-repeat center top}
         .evtMenu {background:#fff; height:80px; width:100%; border-bottom:1px solid #edeff0}
 
         .tabs {width:1120px; margin:0 auto;}
@@ -125,15 +124,15 @@
         .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >            
-            <a href="#lecBuy"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_sky.png" alt=""></a>                         
+            <a href="#lecBuy"><img src="https://static.willbes.net/public/images/promotion/2021/03/1968_sky.png" alt=""></a>                         
         </div>                  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
             <map name="Map1968B">
-                <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">
+                <area shape="rect" coords="92,625,630,759" href="#lecBuy" alt="수강신청">
             </map>              
         </div>
 
@@ -145,10 +144,10 @@
             <div>
                 <iframe src="https://www.youtube.com/embed/WC-VzT66KnY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_01.jpg" alt="" >
-            <div>
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_03.jpg" alt="강의 사전예약"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_01.jpg" alt="" >
+            <div id="lecBuy">
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_03.jpg" alt="강의 사전예약"></a>
             </div>
         </div>
         <div class="evtCtnsBox evt03">

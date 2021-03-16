@@ -49,10 +49,10 @@
         </div>  
         
         <div class="evtCtnsBox evt_02">
-            <a href="javascript:go_PassLecture('179735');" >
+            <a href="javascript:go_PassLecture('180148');" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2094_02.jpg" alt="기초 온라인"/>
             </a>
-            <a href="javascript:go_PassLecture('179735');" >
+            <a href="javascript:go_PassLecture('180149');" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2094_03.jpg" alt="심화 온라인"/>
             </a>
             <div class="check">
@@ -114,7 +114,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/userPackage/show/cate/309002/prod-code/') }}' + code;
+            var url = '{{ site_url('/periodPackage/show/cate/309004/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }    
     </script>

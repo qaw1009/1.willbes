@@ -112,9 +112,9 @@
         </a>   
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01_btn02.jpg" alt="강의+베이직" usemap="#Map2057m_apply" border="0" >
         <map name="Map2057m_apply" id="Map2057m_apply">
-            <area shape="rect" coords="414,229,538,292" href="javascript:go_PassLecture('177452');" />
-            <area shape="rect" coords="546,229,669,294" href="javascript:go_PassLecture('177573');" />
-        </map>         
+            <area shape="rect" coords="414,238,538,301" href="javascript:go_PassLecture('177452');" />
+            <area shape="rect" coords="546,239,669,304" href="javascript:go_PassLecture('177573');" />
+        </map>          
         <a href="javascript:go_PassLecture('177453');">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2057_01_btn03.jpg" alt="강의+프리미엄" >   
         </a>          

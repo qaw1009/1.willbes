@@ -161,7 +161,7 @@
 
                 if (json_data.download_yn === 'Y') {
                     var _url = json_data.file_link;
-                    location.href = _url;
+                    window.open(_url);
                 }else{
                     alert('다운로드 가능한 기간이 아닙니다.');
                     return;

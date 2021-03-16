@@ -139,7 +139,7 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/2053_top.jpg" alt="리빙&인테리어" usemap="#Map2053a" border="0" >
                 <map name="Map2053a" id="Map2053a">
-                    <area shape="rect" coords="59,1191,688,1353" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" />
+                    <area shape="rect" coords="59,1191,709,1410" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" />
                 </map>  
             </div>        
         </div>

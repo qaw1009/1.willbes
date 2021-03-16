@@ -7,7 +7,6 @@
 
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             padding:0 !important;
@@ -15,7 +14,7 @@
             color:#3a3a3a;
             margin-top:20px
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
@@ -88,7 +87,7 @@
     </style>
 
 
-    <div class="p_re evtContent NSK c_both" id="evtContainer">
+    <div class="evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
             <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_02.png" alt=""></a>                           
@@ -106,7 +105,7 @@
         <div class="evtCtnsBox evt01" id="evt01">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2024_01.jpg" alt="godsr 마케팅" >
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank" title="사전예약 신청하기" style="position: absolute; left: 25%; top: 77.84%; width: 50.64%; height: 9.6%; z-index: 2;"></a>   
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank" title="사전예약 신청하기" style="position: absolute; left: 25%; top: 77.84%; width: 50.64%; height: 11%; z-index: 2;"></a>   
             </div>                             
         </div>
 

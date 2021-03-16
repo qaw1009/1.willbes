@@ -130,8 +130,8 @@
 
     <div id="tab01">
         <div class="evtCtnsBox">
-            <a href="https://njob.willbes.net/m/support/notice/show/cate/?board_idx=268597" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_02.jpg" alt="창업 다마고치" >
+            <a href="https://njob.willbes.net/m/support/notice/show/cate/?board_idx=323129" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1564_02.jpg" alt="창업 다마고치" >
             </a>
         </div>
     </div>

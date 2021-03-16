@@ -126,8 +126,8 @@
     </div>
 
     <div id="tab01" class="evtCtnsBox">
-        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1567_02.jpg" alt="정문진" >
+        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=323127" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1567_02.jpg" alt="정문진" >
         </a>
     </div>
 

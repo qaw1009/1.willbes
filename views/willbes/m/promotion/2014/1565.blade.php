@@ -125,8 +125,8 @@
     </div>
 
     <div id="tab01"  class="evtCtnsBox">
-        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=268601" target="_blank">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1565_02.jpg" alt="" >
+        <a href="https://njob.stage.willbes.net/m/support/notice/show/cate/?board_idx=323127" target="_blank">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1565_02.jpg" alt="" >
         </a>
     </div>
 

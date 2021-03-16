@@ -5,7 +5,6 @@
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -14,7 +13,7 @@
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
@@ -240,7 +239,7 @@
                     <strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong>
                 </div>
                 --}}
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1712_02.jpg">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1712_02.jpg">
                 <div class="btnbuy NSK-Black">
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
                 </div>

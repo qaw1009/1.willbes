@@ -4,12 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -18,7 +13,7 @@
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
@@ -199,7 +194,7 @@
         .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >            
             <a href="#tab01"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_sky01.png" alt="신청하기"></a>
             <a href="https://njob.willbes.net/book/index/cate/3114?cate_code=3114&subject_idx=1952&prof_idx=51029" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/07/1713_sky03.png" alt="교재구매하기"></a>
@@ -232,7 +227,7 @@
                     <strong class="NSK-Black"><span id="ddayCountText"></span> 남았습니다.</strong>
                 </div>
                 --}}
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1713_02.jpg">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1713_02.jpg">
                 <div class="btnbuy NSK-Black">
                     <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a>
                 </div>

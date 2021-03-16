@@ -142,7 +142,7 @@
                                             <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -155,7 +155,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -168,7 +168,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -181,7 +181,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -227,7 +227,7 @@
                                             <td class="w-list tx-left pl20">222로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 2222로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -240,7 +240,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -253,7 +253,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -264,10 +264,9 @@
                                             <td class="w-no">1</td>
                                             <td class="w-select">222회원탈퇴</td>
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
-                                            <td class="w-click">466</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -313,7 +312,7 @@
                                             <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -326,7 +325,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -339,7 +338,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -352,7 +351,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -398,7 +397,7 @@
                                             <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -411,7 +410,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -424,7 +423,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -437,7 +436,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -483,7 +482,7 @@
                                             <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -496,7 +495,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -509,7 +508,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -522,7 +521,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="3">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -571,7 +570,7 @@
                                             <td class="w-list tx-left pl20">로그인이되지않는데어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -585,7 +584,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -599,7 +598,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -613,7 +612,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -627,7 +626,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -641,7 +640,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -655,7 +654,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -669,7 +668,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -683,7 +682,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -732,7 +731,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -746,7 +745,7 @@
                                             <td class="w-list tx-left pl20">회원탈퇴는어떻게하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -760,7 +759,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -774,14 +773,14 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
                                             </td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -795,7 +794,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.
@@ -809,7 +808,7 @@
                                             <td class="w-list tx-left pl20">만14세미만회원은어떻게가입하나요?</td>
                                         </tr>
                                         <tr class="replyTxt cscenterTxt bg-light-gray tx-gray">
-                                            <td colspan="5">
+                                            <td colspan="4">
                                                 로그인이 되지 않는 경우는 대부분 아이디(ID)와 비밀번호(PW)가 일치하지 않는 경우입니다.<br/>
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.<br/> 
                                                 소문자/대문자 여부(키보드Caps Lock 체크)와, 숫자 입력시 키보드의 Num Lock이 커져 있는지 확인해 보시고 다시 한번 로그인 하시기 바랍니다.

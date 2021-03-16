@@ -72,9 +72,9 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/1968_top.jpg" alt="라탄공예" usemap="#Map1968B" border="0" >
         <map name="Map1968B">
-            <area shape="rect" coords="93,640,631,774" href="#lecBuy" alt="수강신청">
+            <area shape="rect" coords="92,625,630,759" href="#lecBuy" alt="수강신청">
         </map>
     </div> 
     
@@ -90,10 +90,10 @@
             </div>
         </div>
         <div>
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_01.jpg" alt="" >
-            <div>
-                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
-                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/12/1968_02_03.jpg" alt="강의 사전예약"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_01.jpg" alt="" >
+            <div id="lecBuy">
+                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175175" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_02.jpg" alt="강의+키트 사전예약"></a>
+                <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/175310" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/1968_02_03.jpg" alt="강의 사전예약"></a>
             </div>
         </div>
     </div> 

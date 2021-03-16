@@ -89,24 +89,32 @@ class DownloadFModel extends WB_Model
                 break;
             case "event_promotion_live_video":
                 $column = 'FileFullPath AS FilePath, FileRealName AS RealFileName';
-                $table = $this->_table['event_promotion_live_video'];
+                $table = $this->_table['event_promotion_live_video'] . " AS a 
+                        INNER JOIN lms_event_lecture AS b ON a.PromotionCode = b.PromotionCode ";
                 $arr_condition = [
                     'RAW' => [
-                        'EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
-                        //'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
+                        'a.EplvIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'b.ElIdx = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
-                    'EQ' => ['IsStatus' => 'Y']
+                    'EQ' => [
+                        'a.IsStatus' => 'Y', 'a.IsUse' => 'Y',
+                        'b.IsStatus' => 'Y', 'b.IsUse' => 'Y'
+                    ]
                 ];
                 break;
             case "event_promotion_otherinfo":
                 $column = 'FileFullPath AS FilePath, FileRealName AS RealFileName';
-                $table = $this->_table['event_promotion_otherinfo'];
+                $table = $this->_table['event_promotion_otherinfo']  . " AS a
+                        INNER JOIN lms_event_lecture AS b ON a.PromotionCode = b.PromotionCode AND b.IsStatus = 'Y' AND b.IsUse = 'Y'";
                 $arr_condition = [
                     'RAW' => [
-                        'EpoIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
-                        //'PromotionCode = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
+                        'a.EpoIdx = ' => (empty($file_idx) === true) ? '\'\'' : $this->_conn->escape($file_idx),
+                        'b.ElIdx = ' => (empty($content_idx) === true) ? '\'\'' : $this->_conn->escape($content_idx)
                     ],
-                    'EQ' => ['IsStatus' => 'Y']
+                    'EQ' => [
+                        'a.IsStatus' => 'Y',
+                        'b.IsStatus' => 'Y', 'b.IsUse' => 'Y'
+                    ]
                 ];
                 break;
             default:

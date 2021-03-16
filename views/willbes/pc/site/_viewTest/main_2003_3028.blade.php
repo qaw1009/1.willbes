@@ -35,9 +35,8 @@
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="TechRollingSlider" class="TechtabBox">
                         {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'TechtabSlider') !!}
-
-                        <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
-                        <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
+                        <p class="leftBtn" id="imgBannerLeft"><a href="javascript:;">이전</a></p>
+                        <p class="rightBtn" id="imgBannerRight"><a href="javascript:;">다음</a></p>
 
                         <div id="TechRollingDiv" class="TechtabList">
                             <div class="Techtab">
@@ -55,38 +54,17 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK tx22">지금 이 시기에 딱 맞는 <span>PACKAGE</span></div>
                 <div class="pkgLeft bSlider">
-                    <div class="slider">
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_01.jpg" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_445x315_02.jpg" alt="배너명"></a></div>
-                    </div>
+                    {!! banner_html(element('메인_패키지', $data['arr_main_banner'])) !!}
                 </div>
                 <div class="pkgRight">
                     <ul>
-                        <li class="bSlider">
-                            <div class="pkgslider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
-                            </div>
-                        </li>
-                        <li class="bSlider">
-                            <div class="pkgslider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
-                            </div>
-                        </li>
-                        <li class="bSlider">
-                            <div class="pkgslider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_01.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_03.jpg" alt="배너명"></a></div>
-                            </div>
-                        </li>
-                        <li class="bSlider">
-                            <div class="pkgslider">
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_04.jpg" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_318x151_02.jpg" alt="배너명"></a></div>
-                            </div>
-                        </li>
+                        @for($i=1; $i<=4; $i++)
+                            @if(isset($data['arr_main_banner']['메인_패키지_서브'.$i]) === true)
+                                <li class="bSlider">
+                                    {!! banner_html(element('메인_패키지_서브'.$i, $data['arr_main_banner']),'pkgslider') !!}
+                                </li>
+                            @endif
+                        @endfor
                     </ul>                
                 </div>
             </div>

@@ -122,7 +122,7 @@ class AnswerPaper extends \app\controllers\BaseController
 
                 $tmp_take_level = explode(',',$row['TakeLevel']);
                 foreach ($tmp_take_level as $l_key => $l_val) {
-                    $data[$key]['take_level_'.$l_key] = (($l_val == 'H') ? '상' : ($l_val == 'M') ? '중' : '하');
+                    $data[$key]['take_level_'.$l_key] = ($l_val == 'H') ? '상' : (($l_val == 'M') ? '중' : '하');
                 }
 
                 $tmp_org_point = explode(',',$row['OrgPoint']);
@@ -131,25 +131,10 @@ class AnswerPaper extends \app\controllers\BaseController
                 }
             }
 
-            if (empty($data2[0]['papaer_name_0']) === false) {
-                $add_headers = [$data2[0]['papaer_name_0']];
-                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
-            }
-
-            if (empty($data2[0]['papaer_name_1']) === false) {
-                $add_headers = [$data2[0]['papaer_name_1']];
-                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
-            }
-
-            if (empty($data2[0]['papaer_name_2']) === false) {
-                $add_headers = [$data2[0]['papaer_name_2']];
-                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
-            }
-
-            if (empty($data2[0]['papaer_name_3']) === false) {
-                $add_headers = [$data2[0]['papaer_name_3']];
-                $headers = array_merge($headers, $add_headers, $add_headers, $add_headers);
-            }
+            //과목정보 header추가
+            $headers = array_merge($headers, array_values($data2[0]));
+            $headers = array_merge($headers, array_values($data2[0]));
+            $headers = array_merge($headers, array_values($data2[0]));
         }
 
         $last_query = $this->predict2Model->getLastQuery();

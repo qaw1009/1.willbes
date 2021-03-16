@@ -65,7 +65,7 @@
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_top.jpg" usemap="#Map2102a" title="3월 첼린지" border="0" />
             <map name="Map2102a" id="Map2102a">
-                <area shape="rect" coords="2,509,252,898" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" />
+                <area shape="rect" coords="2,509,252,898" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif/>
                 <area shape="rect" coords="867,508,1120,906" href="javascript:certOpen();" alt="응시반허 인증하기">
             </map>
         </div>  
@@ -73,7 +73,7 @@
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_01.jpg" usemap="#Map2102b" title="3월 월컴키트" border="0" />
             <map name="Map2102b" id="Map2102b">
-                <area shape="rect" coords="317,817,803,906" href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" />
+                <area shape="rect" coords="317,817,803,906" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif/>
             </map>
         </div>  
 

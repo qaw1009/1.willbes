@@ -623,7 +623,7 @@
                 return;
             }
 
-            var url = '{{ site_url('/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605005&course_idx=&subject_idx=') }}' + code;
+            var url = '{{ site_url('/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605005&course_idx=&subject_idx=/') }}' + code;
             location.href = url;
         }    
 

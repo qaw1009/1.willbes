@@ -32,11 +32,9 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_top_bg.jpg) no-repeat center top;} 
         .evtTop > div {width:768px; margin:0 auto; position:relative;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_01_bg.jpg) no-repeat center top; padding-bottom:200px}  
-        .evt03 {background:#f5f2ef}
-        .evt05 {background:#eff5f1}       
-        .evt07 {background:#303d5f}
-        .evt08 {background:#eee7d5;}
-        .evt08 > div {width:768px; margin:0 auto; position:relative;}
+        .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_03_bg.jpg) no-repeat center top;}
+        .evt04 {background:#398062}  
+        .evt04 div {width:720px; margin:0 auto; position:relative}     
 
         .evtCurriBox {padding:100px 0; text-align:left; background:#F5F5F5}
         .evtCurriBox .copy {width:720px; margin:0 auto;}
@@ -130,180 +128,46 @@
 
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
-        <div class="skybanner" >            
-            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky01.png" alt=""></a> 
-            <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky02.png" alt=""></a>                           
-        </div>
-
 		<div class="evtCtnsBox evtTop">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="리빙&인테리어" usemap="#Map2053a" border="0" >
-                <map name="Map2053a" id="Map2053a">
-                    <area shape="rect" coords="59,1191,688,1353" href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178874" target="_blank" />
-                </map>  
-            </div>        
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="귀농창업" >      
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_01.jpg" alt="이커머스 전문 MD 최효진" >   
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_01.jpg" alt="전략원가연구소 소장 강용수" >   
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/cAcybcQaN4U?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/vjPtDvb1Bng?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>                  
         </div>
 
         <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="4가지 포인트" >                    
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="귀농귀촌 창업" >                    
         </div>
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_03.jpg" alt="20년 사업경력의 전문MD" >                
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_03.jpg" alt="4차 산업혁명" >                
         </div>   
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04_01.jpg" alt="남대문 사입 실전투어" >
-            <div class="slide_con">
-                <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04_02_01.jpg" alt="상품"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04_02_02.jpg" alt="상품"/></li>
-                </ul>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.jpg" alt="사전예약 신청하기" >            
+                <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2126" title="" style="position: absolute; left: 14.84%; top: 62.23%; width: 35.55%; height: 14.88%; z-index: 2;"></a>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04_03.jpg" alt="사입강의 실제 후기" >
         </div>
 
         <div class="evtCtnsBox evt05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_05.jpg" alt="1:1 개별 컨설팅" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_05.jpg" alt="이 강의가 필요하신 분" >
         </div>
 
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_06.jpg" alt="데이터 분석" >
-        </div>
-
-        <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_07.jpg" alt="이 강의가 필요하신 분" >            
-        </div>
-
-        <div class="evtCtnsBox evt08" id="evt08">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_08.jpg" alt="최효진 대표의 이커머스 전략" >               
-            </div>            
-        </div>
-
-        <div class="evtCtnsBox evtCurriBox" id="evtCurriBoxSec">
-            <div class="copy">
-                <h5 class="NSK-Black">
-                    <div>
-                        지금 바로 시작할 수 있는<br>
-                        리빙&인테리어 전문MD 커리큘럼
-                    </div>
-                </h5>
-                <div class="evtCurriBoxTxt01 NSK-Thin">우리가 배울 수 있는 과정은?</div>
-            </div>
-
-            <ul class="sample">
-                @if(empty($arr_base['promotion_otherinfo_data']) === false)
-                    @php $i = 1; @endphp
-                    @foreach($arr_base['promotion_otherinfo_data'] as $row)                            
-                        <li>
-                            <p>{{$i}}강 맛보기 수강 ▼</p>
-                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','HD');">고해상도 ></a>
-                            <a href="javascript:fnPlayerSample('{{$row['OtherData1']}}','{{$row['wUnitIdx']}}','SD');">저해상도 ></a>
-                        </li>
-                        @php $i += 1; @endphp
-                    @endforeach
-                @else
-                    <li><a href="#none">1강 맛보기 준비중 ></a></li>
-                    <li><a href="#none">2강 맛보기 준비중 ></a></li>
-                @endif
-            </ul>           
-
-            <div class="evtCurriBoxTxt02">
-                * 동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.<br>
-                스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.<br>
-                팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.
-            </div>
-
-            <div class="evtCurri">
-                <ul>
-                    <li class="cTitle">1. 인테리어/리빙 아이템을 팔아야 하는 이유</li>
-                    <li>- 데이터 분석방법</li>
-                    <li>- 라이프스타일 분석</li>
-
-                    <li class="cTitle">2. 오프라인 시장조사</li>
-                    <li>- 남대문을 기반으로 </li>
-
-                    <li class="cTitle">3. 온라인 시장조사 - 위탁, 사입</li>
-
-                    <li class="cTitle">4. 구매대행 타오바오, 1688 시장조사</li>
-
-                    <li class="cTitle">5. 스마트스토어를 기반으로 판매방법</li>
-                    <li>- 스마트스토어 기본 세팅</li>
-                    <li>- 사업자등록증, 통신판매업 신고</li>
-                    <li>- 구매대행 기본 세팅</li>
-
-                    <li class="cTitle">6. 어떤방식으로 팔것인가?</li>
-                    <li>- 국내사입</li>
-                    <li>- 국내위탁</li>
-                    <li>- 해외구매대행</li>
-                    <li>- 매장과 같이 운영(리빙윈도)</li>
-
-                    <li class="cTitle">7. 스마트스토어 상품등록</li>
-                    <li>- seo에 맞는 방법</li>
-                    <li>- 상품사진찍기)</li>
-
-                    <li class="cTitle">8. 주문처리 방법</li>
-                    <li>- 국내사입
-                    <li>- 국내위탁
-                    <li>- 해외구매대행</li>
-
-                    <li class="cTitle">9. 운영방법</li>
-                    <li>- 교환,반품관리</li>
-                    <li>- 배송관리</li>
-                    <li>- kc인증 / 전안법)</li>
-
-                    <li class="cTitle">10. 마케팅</li>
-                    <li>- 럭키투데이</li>
-                    <li>- 기획전</li>
-                    <li>- 블로그</li>
-                    <li>- 인스타그램</li>
-                    <li>- 리빙윈도 입점전략</li>
-                </ul>
-            </div>
-        </div>
-        
+       
         <div class="evtCtnsBox evtInfo">
             <div class="evtFooter" id="infoText">
                 <h3 class="NSK-Black">[이용안내]</h3>
 
-                <p># 수강안내</p>
+                <p># 사전예약 및 강의 안내</p>
                 <ul>
-                    <li>최효진 대표의 본 강의는 일정상의 이유로 4월 초 강의 오픈 예정이오니 일정 참고 부탁 드립니다.</li>
-                    <li>강좌의 표기된 수강기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다. (내강의실 > '수강 중 강좌'에서 확인 가능)</li>
-                    <li>PC/휴대폰/태블릿에서 언제든 수강가능합니다.</li>
-                    <li>커리큘럼은 사정에 따라 일부 변동될 수 있으며, 강의 콘텐츠는 순차적으로 제공될 수 있습니다.</li>
-                    <li>동영상 수강을 위해서는 스타플레이어 설치 후 재생하셔야 합니다.</li>
-                    <li>스타플레이어 미설치 경우 맛보기 수강버튼 클릭시 설치 메시지가 팝업으로 뜹니다.</li>
-                    <li>팝업 확인이 안 될 경우 팝업 해제 후 다시 진행하시면 됩니다.</li>
-                    <li>결제 완료 시 강의는 즉시 수강 시작되오니, 이 점 참고 부탁 드립니다.</li>
-                    <li>수강상품 이용기간 일시정지, 재수강은 불가능합니다.</li>  
-                </ul>
-
-                <p># 환불안내</p>
-                <ul>
-                    <li>이용안내 및 환불 특약으로 안내된 별도 환불 기준이 있는 경우 우선 적용합니다.
-                    <li>강의재생시간에 관계없이 강의를 재생한 경우, 학습 자료 및 모바일 다운로드 이용한 경우 수강한 것으로 간주합니다.(맛보기 강의 제외)
-                    <li>강좌비*에서 기수강 강의수에 대한 금액* 및 위약금을 차감 후 부분 환불이 진행됩니다.
-                    <li>강좌비: 결제금액에서 서비스프로그램 등 추가 혜택에 해당하는 금액을 차감한 순수강좌비
-                    <li>기수강강의 금액: 결제금액 - (전체 강좌 수 대비 강좌 정상가의 1회 이용대금×이용강의수)
-                    <li>수강시작일로부터 7일 이내 위약금 없음
-                    <li>수강시작일로부터 7일 이후 위약금 적용 (잔여이용대금의 10% 공제)
-                    <li>지급된 솔루션, 사은품이 있는 경우 공급자의 교환, 환불 정책에 따릅니다.
-                    <li>환불이 진행 된 후에는 자동 수강 종료됩니다.
-                    <li>총 강의수 전체 기수강 시에는 환불이 불가합니다.</li>  
-                </ul>
-
-                <p># 기타유의사항</p>
-                <ul>
-                    <li>아이디 공유, 타인양도 등 부정사용 적발 시 회원 자격 박탈 및 환불 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 있을 수 있습니다.</li>  
+                    <li>사전예약 혜택은 00월 00일까지 결제완료자에 한해서만 적용됩니다.
+                    <li>사전예약 혜택은 강의료 40% 할인입니다.
+                    <li>강의 시작일은 00월 00일 예정이오나, 일정에 따라 변경 될 수 있으니 참고 부탁 드립니다.</li>  
                 </ul>
 
                 <p>※ 이용문의 : 고객만족센터 1544-5006</p>
@@ -313,17 +177,6 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            var slidesImg1 = $("#slidesImg1").bxSlider({
-                auto: true, 
-                speed: 500, 
-                pause: 4000, 
-                mode:'fade', 
-                autoControls: false, 
-                controls:false,
-                pager:true,
-            });
-        });
         /* 수강신청 동의 */ 
         function go_PassLecture(code){
             if($("input[name='ischk']:checked").size() < 1){

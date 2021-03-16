@@ -1,3 +1,6 @@
+@php
+    header('Access-Control-Allow-Origin:https://'.app_to_env_url('www.willbes.net'));
+@endphp
 <a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}')">
     <img src="{{ img_url('sub/close.png') }}">
 </a>

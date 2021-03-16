@@ -105,6 +105,9 @@ class ProductFModel extends WB_Model
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, ProfIdx, wProfIdx, wProfName, ProfNickName, ProfSlogan, LecSaleType, ProdPriceData
                             , fn_product_content(ProdCode, "633002") as Content,ProfReferData, ProdBookData, ProdBookMemo, AppellationCcdName
                             , ProfNickNameAppellation, DiscIdx, BlIdx, LecType, ConditionType, ValidPeriodStartDate, ValidPeriodEndDate, IsDup, IsBeforeLectureAble, OrderNum';
+                        if($learn_pattern == 'off_lecture') {
+                            $column .= ', SiteUrl';
+                        }
                     break;
 
                 // 학원 종합반
@@ -113,7 +116,7 @@ class ProductFModel extends WB_Model
                             , CampusCcd, CampusCcdName, FixNumber, StudyPatternCcd, StudyPatternCcdName
                             , AcceptStatusCcd, AcceptStatusCcdName, StudyApplyCcd, StudyApplyCcdName, LecSaleType, ProdPriceData
                             , SchoolStartYear,SchoolStartMonth,PackSelCount,
-                            , fn_product_content(ProdCode, "633002") as Content, PackTypeCcd';
+                            , fn_product_content(ProdCode, "633002") as Content, PackTypeCcd, SiteUrl';
                     break;
 
                 //추천-선택 패키지

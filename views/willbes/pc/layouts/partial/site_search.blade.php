@@ -44,7 +44,7 @@
                         <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
                         <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
                         <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
-                        <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                        <input type="text" class='unifiedSearch' data-form="unifiedSearch_form" id="unifiedSearch_text" name="searchfull_text" value="" placeholder="온라인/학원강의 검색" title="온라인/학원강의 검색" maxlength="100"/>
                         <label for="onsearch"><button title="검색" type="button" id="btn_unifiedSearch" class='btn_unifiedSearch' data-form="unifiedSearch_form">검색</button></label>
                     </div>
                     @if(empty($__cfg['SearchWordSetup']) === false)

@@ -130,7 +130,7 @@
 
     <div id="tab01" class="evtCtnsBox">
         <div class="evtCtnsBox">
-            <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_03.jpg" alt="김경은" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1566_03.jpg" alt="김경은" >
         </div>        
     </div>
 

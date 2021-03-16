@@ -4,12 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')  
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -18,12 +13,12 @@
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
             position:fixed;
-            bottom:20px;
+            top:200px;
             right:10px;
             z-index:1;
             width:120px;
@@ -117,7 +112,7 @@
         .evtReply {width:940px; margin:0 auto; position:relative}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_01.png" alt="김정환대표"></a> 
             <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
@@ -143,8 +138,8 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt02" id="evt02">
-                <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/07/1564_02.jpg" alt="수강료" >
+                <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=323129" target="_blank">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/03/1564_02.jpg" alt="수강료" >
                 </a>               
   
                 <div class="btnbuy NSK-Black">

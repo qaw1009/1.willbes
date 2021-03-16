@@ -406,7 +406,6 @@
     </div>
     <!-- Topbtn -->
     @include('willbes.m.layouts.topbtn')
-
     <!-- End Container -->
     <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">

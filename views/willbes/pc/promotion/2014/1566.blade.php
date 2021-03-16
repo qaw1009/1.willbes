@@ -4,12 +4,7 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
@@ -18,7 +13,7 @@
             color:#3a3a3a;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -122,7 +117,7 @@
         .evtReply { width:940px; margin:0 auto; position:relative}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#evt03"><img src="https://static.willbes.net/public/images/promotion/2020/05/1566_sky_01.png" alt="김경은대표"></a>
         </div>                  
@@ -150,7 +145,7 @@
 
         <div id="tab01">
             <div class="evtCtnsBox evt03" id="evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/07/1566_03.jpg">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1566_03.jpg">
                 <div class="btnbuy NSK-Black"><a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">[온라인강의] 신청하기 ></a></div>
                 <div id="pass" class="infoCheck">
                     <input type="checkbox" name="y_pkg" value="162745" style="display: none;" checked/>

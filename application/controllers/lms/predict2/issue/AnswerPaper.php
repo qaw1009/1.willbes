@@ -130,12 +130,12 @@ class AnswerPaper extends \app\controllers\BaseController
                     $data[$key]['org_point_'.$o_key] = $o_val;
                 }
             }
-        }
 
-        //과목정보 header추가
-        $headers = array_merge($headers, array_values($data2[0]));
-        $headers = array_merge($headers, array_values($data2[0]));
-        $headers = array_merge($headers, array_values($data2[0]));
+            //과목정보 header추가
+            $headers = array_merge($headers, array_values($data2[0]));
+            $headers = array_merge($headers, array_values($data2[0]));
+            $headers = array_merge($headers, array_values($data2[0]));
+        }
 
         $last_query = $this->predict2Model->getLastQuery();
         // download log

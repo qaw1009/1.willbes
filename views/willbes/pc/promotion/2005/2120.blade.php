@@ -75,7 +75,7 @@
         </div>
 
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_top.jpg" alt="변호사 시험 대비" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_top.jpg" alt="gs3순환 이벤트" />
 		</div>
 
         @if(empty($arr_base['display_product_data']) === false)
@@ -84,34 +84,36 @@
 
         @if($__cfg['CateCode'] == '3094') 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_01.jpg" alt="수강특전" />                         
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_01.jpg" alt="gs3순환 이벤트" />                         
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif        
        </div>
-
+        {{--
 		<div class="evtCtnsBox evt_02">       
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_02.jpg" alt="선택형 기출정리 특강" />   
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_02.jpg" alt="40% 할인" />   
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
             @endif              
 		</div>  
+        --}}
         @endif 
 
         @if($__cfg['CateCode'] == '3095') 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_01.jpg" alt="수강특전" />                         
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_01.jpg" alt="gs3순환 이벤트" />                         
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif        
        </div>
-
+        {{--
 		<div class="evtCtnsBox evt_02">       
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_02.jpg" alt="선택형 기출정리 특강" />   
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2120_02.jpg" alt="40% 할인" />   
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>5))
             @endif              
-		</div>  
+		</div> 
+        --}} 
         @endif 
         
         <div class="evtCtnsBox evtInfo">
@@ -123,7 +125,7 @@
                     - 2개 과목 신청 : 10%할인<br>
                     - 3개 과목 신청 : 15%할인<br>
                     - 4개 과목 신청 : 25%할인</li>
-                    <li>GS2순환 이벤트 기간 등록된 단과강의 40%할인</li>
+                    {{--<li>GS2순환 이벤트 기간 등록된 단과강의 40%할인</li>--}}
                     <li>이벤트 기간 : 3월 25일(목) 24:00까지</li>
                     <li>수강시작일은 30일 범위내에서 설정하실 수 있으며 2과목 이상 신청하시고 수강시작일 변경을 원하실 경우 동영상게시판에 글을 남겨주시면 수정하여 드리겠습니다.(신청일로부터 90일 범위내)</li>
                 </ul>

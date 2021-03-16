@@ -35,8 +35,8 @@
                 @if(empty($data['arr_main_banner']['메인_빅배너']) === false)
                     <div id="TechRollingSlider" class="TechtabBox">
                         {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'TechtabSlider') !!}
-                        <p class="leftBtn" id="imgBannerLeft"><a href="javascript:;">이전</a></p>
-                        <p class="rightBtn" id="imgBannerRight"><a href="javascript:;">다음</a></p>
+                        <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                        <p class="rightBtn" id="imgBannerRight"><a href="#none">다음</a></p>
 
                         <div id="TechRollingDiv" class="TechtabList">
                             <div class="Techtab">

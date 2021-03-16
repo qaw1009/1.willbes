@@ -6,7 +6,6 @@
 
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
             min-width:1120px !important;
             padding:0 !important;
@@ -14,7 +13,7 @@
             color:#3a3a3a;
             margin-top:20px
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
         .skybanner {
@@ -120,7 +119,7 @@
     </style>
 
 
-    <div class="p_re evtContent NSK c_both" id="evtContainer">
+    <div class="evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >            
             <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178676" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/02/2035_sky01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/02/2035_sky02.png" alt=""></a>                           
@@ -129,7 +128,7 @@
 		<div class="evtCtnsBox evtTop">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/2035_top.jpg" alt="창업&마케팅" >   
-                <a href="#gostart" title="" style="position: absolute; left: 16.28%; top: 74.15%; width: 67.19%; height: 9.27%; z-index: 2;"></a>
+                <a href="#gostart" title="" style="position: absolute; left: 9.77%; top: 71.71%; width: 80.6%; height: 23.8%; z-index: 2;"></a>
             </div>        
         </div>
 

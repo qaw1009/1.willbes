@@ -102,7 +102,7 @@
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
         <img src="https://static.willbes.net/public/images/promotion/2021/02/2053m_top.jpg" alt="리빙&인테리어" >
-        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178874" title="알아보기" target="_blank" style="position: absolute; left: 10.02%; top: 82.69%; width: 77.54%; height: 10.79%; z-index: 2;"></a>
+        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178874" title="알아보기" target="_blank" style="position: absolute; left: 11.2%; top: 81.82%; width: 77.21%; height: 15.62%; z-index: 2;"></a>
     </div> 
     
     <div class="evtCtnsBox evt01">

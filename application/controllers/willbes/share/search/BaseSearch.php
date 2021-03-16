@@ -34,12 +34,35 @@ class BaseSearch extends \app\controllers\FrontController
     {
         $arr_search_input = array_merge($this->_reqG(null), $this->_reqP(null));
         $arr_search_input = array_unset($arr_search_input,'page');
+        
+        if($this->_site_code === '2000') {  //www에서 검색시 등록된 사이트별 기준으로 검색결과 추출 -> 온라인사이트 : 온라인강좌, 학원사이트 : 학원강좌
+            $site = $this->searchFModel->listSite(['EQ' => ['IsFrontUse'=>'Y', 'IsStatus'=>'Y', 'IsUse'=>'Y']]);
+            foreach ($site as $row) {
+                if($row['IsCampus'] === 'Y' ) {
+                    $site_list['off'][] = $row['SiteCode'];
+                } else {
+                    $site_list['on'][] = $row['SiteCode'];
+                }
+            }
+            $on_condition = ['IN' => ['SiteCode' => $site_list['on']]];
+            $off_condition = ['IN' => ['SiteCode' => $site_list['off']]];
 
-        $common_condition = [
-            'EQ' => [
-                'SiteCode' => ($this->_site_code === '2000' ? null : $this->_site_code)
-            ]
-        ];
+        } else {
+
+            if(config_app('IsPassSite') === false) {    // 개별온라인사이트의 경우 해당 학원사이트 코드 추출 : 학원강좌 추출용
+                $site_list = $this->searchFModel->listSite(['EQ' => ['IsFrontUse'=>'Y', 'IsStatus'=>'Y', 'IsUse'=>'Y', 'IsCampus' => 'Y', 'SiteGroupCode' => config_app('SiteGroupCode')]]);
+                $on_condition = [
+                    'EQ' => [
+                        'SiteCode' => $this->_site_code
+                    ]
+                ];
+                $off_condition = [
+                    'EQ' => [
+                        'SiteCode' => empty($site_list) ? null : $site_list[0]['SiteCode']
+                    ]
+                ];
+            }
+        }
 
         if(element('search_class',$arr_search_input) == '') {
             $type_condition = [
@@ -71,15 +94,17 @@ class BaseSearch extends \app\controllers\FrontController
             ];
         }
 
-        $common_condition = array_merge_recursive($common_condition,$type_condition);
+        $common_condition = array_merge_recursive($on_condition, $type_condition);
+        $common_off_condition = array_merge_recursive($off_condition, $type_condition);
+
         $result = [];
         if(empty($arr_search_input) === false && empty(element('searchfull_text',$arr_search_input)) === false ) {
 
             if (element('search_target', $arr_search_input) == '') {
 
-                $result = $this->_Search($arr_search_input, $common_condition);
+                $result = $this->_Search($arr_search_input, $common_condition, $common_off_condition);
 
-            } elseif (element('search_target', $arr_search_input) == 'book') {
+            } elseif (element('search_target', $arr_search_input) == 'book') {      //교재검색일경우
 
                 $this->_learn_pattern = 'book';
                 $result = $this->_SearchBook($arr_search_input, $common_condition);
@@ -101,18 +126,22 @@ class BaseSearch extends \app\controllers\FrontController
     /**
      * 일반검색 - 강의
      * @param array $arr_search_input
-     * @param array $common_condition
+     * @param array $common_condition         온라인강의
+     * @param array $common_off_condition   학원강의
      * @return array
      */
-    private function _Search($arr_search_input=[], $common_condition=[])
+    private function _Search($arr_search_input = [], $common_condition = [], $common_off_condition = [])
     {
         $data = [];
         $data['on_lecture'] = [];
         $data['on_free_lecture'] = [];
         $data['adminpack_lecture_648001'] = [];
         $data['adminpack_lecture_648002'] = [];
+        $data['off_lecture'] = [];
+        $data['off_pack_lecture'] = [];
 
         $order_by = empty(element('searchfull_order',$arr_search_input)) ? ['ProdCode'=>'DESC'] : [element('searchfull_order',$arr_search_input)=>'DESC'];
+
         $order_by_pack = ['ProdCode'=>'DESC'];
 
         $limit = ($this->_site_code === '2000' ? '200' : null);
@@ -125,17 +154,25 @@ class BaseSearch extends \app\controllers\FrontController
         $data_adminpack_lecture_648001 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648001']]), $order_by_pack, $limit);
         //선택패키지
         $data_adminpack_lecture_648002 = $this->searchFModel->findSearchProduct('adminpack_lecture', false, array_merge_recursive($common_condition, ['EQ' => ['PackTypeCcd' => '648002']]), $order_by_pack, $limit);
+        //학원단과
+        $data_off_lecture = $this->searchFModel->findSearchProduct('off_lecture', false, array_merge_recursive($common_off_condition, ['ORG1' => ['LKB' => ['ProfNickName' => element('searchfull_text', $arr_search_input)]]]), $order_by, $limit);
+        //학원종합반
+        $data_off_pack_lecture = $this->searchFModel->findSearchProduct('off_pack_lecture', false, $common_off_condition, $order_by_pack, $limit);
 
         $result_info = '단강좌:'.count($data_lecture).
             ', 무료강좌:' .count($data_free_lecture).
             ', 추천패키지:' .count($data_adminpack_lecture_648001).
-            ', 선택패키지:' .count($data_adminpack_lecture_648002)
+            ', 선택패키지:' .count($data_adminpack_lecture_648002).
+            ', 단과반:' .count($data_off_lecture).
+            ', 종합반:' .count($data_off_pack_lecture)
         ; // 검색 항목이 추가될때마다 해당 내용 기재
 
         $total_cnt = count($data_lecture)
             + count($data_free_lecture)
             + count($data_adminpack_lecture_648001)
             + count($data_adminpack_lecture_648002)
+            + count($data_off_lecture)
+            + count($data_off_pack_lecture)
         ;
 
         if(!empty($data_lecture)) {
@@ -167,6 +204,21 @@ class BaseSearch extends \app\controllers\FrontController
             foreach ($data_adminpack_lecture_648002 as $idx => $row) {
                 $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
                 $data['adminpack_lecture_648002'][] = $row;
+            }
+        }
+
+        if(!empty($data_off_lecture)) {
+            foreach ($data_off_lecture as $idx => $row) {
+                $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $row['ProdBookData'] = json_decode($row['ProdBookData'], true);
+                $data['off_lecture'][] = $row;
+            }
+        }
+
+        if(!empty($data_off_pack_lecture)) {
+            foreach ($data_off_pack_lecture as $idx => $row) {
+                $row['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
+                $data['off_pack_lecture'][] = $row;
             }
         }
 

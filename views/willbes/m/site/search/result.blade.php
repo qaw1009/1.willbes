@@ -7,7 +7,7 @@
             <input type="hidden" name="cate" id="areaSearch_cate" value="{{empty($arr_search_input) ? $__cfg['CateCode'] : element('cate',$arr_search_input)}}">
             <input type="text" name="" class="d_none">
             <div class="onSearch">
-                <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                <input type="search" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인/학원강의 검색" title="온라인/학원강의 검색" maxlength="100"/>
                 <input type="hidden" name="searchfull_order" id="searchfull_order" value="">
                 <label for="btn_areaSearch"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button>
             </div>
@@ -33,12 +33,17 @@
                     </p>
                 </div>
             @else
-                <div class="lineTabs pd-zero c_both">
-                    <ul class="tabWrap lineWrap rowlineWrap four mt-zero">
-                        <li><a href="#leclist1" class="on">단과강좌 [<span>{{count($data['on_lecture'])}}</span>]</a><span class="row-line">|</span></li>
-                        <li><a href="#leclist2">무료강좌 [<span>{{count($data['on_free_lecture'])}}</span>]</a><span class="row-line">|</span></li>
-                        <li><a href="#leclist3">추천패키지 [<span>{{count($data['adminpack_lecture_648001'])}}</span>]</a><span class="row-line">|</span></li>
-                        <li><a href="#leclist4">선택패키지 [<span>{{count($data['adminpack_lecture_648002'])}}</span>]</a></li>
+
+                <div class="c_both">
+                    <ul class="tabWrap searchTab">
+                        <li><strong>온라인 <span>></span></strong></li>
+                        <li><a href="#leclist1" class="on">단과강좌 <span>{{count($data['on_lecture'])}}</span></a></li>
+                        <li><a href="#leclist2">무료강좌 <span>{{count($data['on_free_lecture'])}}</span></a></li>
+                        <li><a href="#leclist3">추천패키지 <span>{{count($data['adminpack_lecture_648001'])}}</span></a></li>
+                        <li><a href="#leclist4">선택패키지 <span>{{count($data['adminpack_lecture_648002'])}}</span></a></li>
+                        <li><strong>학원 <span>></span></strong></li>
+                        <li><a href="#leclist5">학원단과 <span>{{count($data['off_lecture'])}}</span></a></li>
+                        <li><a href="#leclist6">학원종합반 <span>{{count($data['off_pack_lecture'])}}</span></a></li>
                     </ul>
                 </div>
 
@@ -87,9 +92,6 @@
                                                                 <li class="mb10">
                                                                     <label>
                                                                         {{ $price_row['SaleTypeCcdName'] }} :
-{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>--}}
-{{--                                                                        (↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
-
                                                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                                                             <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
@@ -170,8 +172,6 @@
                                                                 @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                                                     <li class="mb10">
                                                                         <label>{{ $price_row['SaleTypeCcdName'] }} :
-{{--                                                                            <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
-
                                                                             @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                                                 <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                                                                 <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
@@ -226,8 +226,6 @@
                                                             @foreach($row['ProdPriceData'] as $price_row)
                                                                 @if($loop -> index === 1)
                                                                     <li class="mb10">
-{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
-
                                                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                                                             <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
@@ -278,8 +276,6 @@
                                                             @foreach($row['ProdPriceData'] as $price_row)
                                                                 @if($loop -> index === 1)
                                                                     <li class="mb10">
-{{--                                                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'],0)}}원</span>(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})--}}
-
                                                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
                                                                             <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
@@ -299,6 +295,111 @@
                             </table>
                         </div>
                     </div>
+
+                    <div id="leclist5" class="searchContent">
+                        <h5>
+                            · 학원단과
+                            <select name="searchfull_order_off"  title="정렬" class="seleProcess width30p searchfull_order_by">
+                                <option value="ProdCode" {{element('searchfull_order',$arr_search_input) === 'ProdCode' ? 'selected' :''}}>최근등록순</option>
+                                <option value="StudyStartDate" {{element('searchfull_order',$arr_search_input) === 'StudyStartDate' ? 'selected' :''}}>최근개강순</option>
+                            </select>
+                        </h5>
+                        <div class="lineTabs lecListTabs c_both">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                                <colgroup>
+                                    <col style="width: 87%;">
+                                    <col style="width: 13%;">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <td class="w-data tx-left" colspan="2">
+                                        @if(empty($data['off_lecture']) === false)
+                                            @foreach($data['off_lecture'] as $row)
+                                                <div class="oneBox">
+                                                    <dl class="w-info">
+                                                        <dt>{{ $row['CampusCcdName'] }}<span class="row-line">|</span>
+                                                            {{ $row['CourseName'] }}<span class="row-line">|</span>
+                                                            {{ $row['SubjectName'] }}<span class="row-line">|</span>
+                                                            {{ $row['ProfNickName'] }}</dt>
+                                                    </dl>
+                                                    <div class="w-tit tx-blue">
+                                                        <a href="{{'//'.app_to_env_url(str_replace('/pass', '/m/pass',$row['SiteUrl'])).'/offLecture/show/cate/'.substr($row['CateCode'], 0, 6).'/prod-code/'.$row['ProdCode']}}"  target="_blank">{{ $row['ProdName'] }}</a>
+                                                    </div>
+                                                    <dl class="w-info tx-gray">
+                                                        <dt>개강일~종강일 : <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span> {{ $row['WeekArrayName'] }} ({{ $row['Amount'] }}회차)</dt><br>
+                                                        <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span>
+                                                            <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                                            <span class="NSK nBox n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span></dt>
+                                                    </dl>
+                                                    <div class="priceWrap">
+                                                        @php
+                                                            $saletypeccd = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleTypeCcd']);
+                                                            $salerate = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleRate']);
+                                                            $salerateunit = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleRateUnit']);
+                                                            $realsaleprice = (empty($row['ProdPriceData']) ? 0 : $row['ProdPriceData'][0]['RealSalePrice']);
+                                                            $saleprice = (empty($row['ProdPriceData']) ? 0 : $row['ProdPriceData'][0]['SalePrice']);
+                                                        @endphp
+                                                        @if($saleprice> $realsaleprice)
+                                                            <span class="price">{{ number_format($saleprice, 0) }}원</span>
+                                                            <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span> ▶
+                                                        @endif
+                                                        <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="leclist6" class="searchContent">
+                        <h5>
+                            · 학원종합반
+                        </h5>
+                        <div class="lineTabs lecListTabs c_both">
+                            <table cellspacing="0" cellpadding="0" width="100%" class="lecTable bdt-m-gray">
+                                <colgroup>
+                                    <col style="width: 87%;">
+                                    <col style="width: 13%;">
+                                </colgroup>
+                                <tbody>
+                                @if(empty($data['off_pack_lecture']) === false)
+                                    @foreach($data['off_pack_lecture'] as $row)
+                                        <tr>
+                                            <td class="w-data tx-left" colspan="2">
+                                                <dl class="w-info">
+                                                    <dt>{{$row['CampusCcdName']}}<span class="row-line">|</span>{{$row['CourseName']}}
+                                                </dl>
+                                                <div class="w-tit">
+                                                    <a href="{{ '//'.app_to_env_url(str_replace('/pass', '/m/pass',$row['SiteUrl'])).'/offPackage/show/prod-code/'.$row['ProdCode'] }}" target="_blank">{{$row['ProdName']}}</a>
+                                                </div>
+                                                <dl class="w-info tx-gray">
+                                                    <dt>개강월 <span class="tx-blue">{{$row['SchoolStartYear']}}년{{$row['SchoolStartMonth']}}월</span> <span class="row-line">|</span></dt>
+                                                    <dt>수강형태 <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span>
+                                                        <span class="NSK ml10 nBox n{{ substr($row['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                                        <span class="NSK nBox n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</span></dt>
+                                                </dl>
+                                                <div class="priceWrap">
+                                                    @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                        @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                            <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                        @endif
+                                                            <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                    @endforeach
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             @endif
         </form>

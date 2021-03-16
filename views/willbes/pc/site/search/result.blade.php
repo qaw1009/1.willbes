@@ -15,7 +15,7 @@
                     <input type="hidden" name="search_class" id="unifiedSearch_class" value="">
                     <input type="hidden" name="search_target" id="unifiedSearch_target" value="">
                     <input type="hidden" name="etc_info" id="unifiedEtc_info" value="">
-                    <input type="text" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인강의 검색" title="온라인강의 검색" maxlength="100"/>
+                    <input type="text" class='areaSearch' data-form="areaSearch_form" id="areaSearch_text" name="searchfull_text" value="{{empty($arr_search_input) ? '' : element('searchfull_text',$arr_search_input)}}" placeholder="온라인/학원강의 검색" title="온라인/학원강의 검색" maxlength="100"/>
                     <input type="hidden" name="searchfull_order" id="searchfull_order" value="">
                     <label for="areaSearch_text"><button title="검색" type="button" id="btn_areaSearch" class='btn_areaSearch' data-form="areaSearch_form">검색</button></label>
                 </form>
@@ -41,10 +41,14 @@
                     {{-- 검색 결과 있을 경우--}}
                     <div class="searchList">
                         <ul class="searchListTap NG">
+                            <li><span class="tx-red">온라인</span>
                             <li><a href="#tab01" class="on">단과강좌 [<span>{{count($data['on_lecture'])}}</span>]</a></li>
                             <li><a href="#tab02">무료강좌 [<span>{{count($data['on_free_lecture'])}}</span>]</a></li>
                             <li><a href="#tab03">추천패키지 [<span>{{count($data['adminpack_lecture_648001'])}}</span>]</a></li>
                             <li><a href="#tab04">선택패키지 [<span>{{count($data['adminpack_lecture_648002'])}}</span>]</a></li>
+                            <li class="ml50"><span class="tx-red">학원</span>
+                            <li><a href="#tab05">학원단과 [<span>{{count($data['off_lecture'])}}</span>]</a></li>
+                            <li><a href="#tab06">학원종합반 [<span>{{count($data['off_pack_lecture'])}}</span>]</a></li>
                         </ul>
                         <div class="p_re">
                             <div id="tab01">
@@ -212,6 +216,7 @@
                                             </span>
                                         </div>
                                     </div>
+
                                     @if(empty($data['on_free_lecture']) === false)
                                         @foreach($data['on_free_lecture'] as $row)
                                             <div class="willbes-Lec-Table">
@@ -503,6 +508,180 @@
                                 <!-- willbes-Lec -->
                             </div>
 
+                            <div id="tab05">
+                                <div class="willbes-Lec NG c_both">
+                                    <div class="willbes-Lec-Subject tx-dark-black bdb-light-gray">
+                                        · 학원단과
+                                        <div class="selectBoxForm">
+                                            <span class="selectBox ml10">
+                                                <select name="searchfull_order_off" title="정렬" class="searchfull_order_by">
+                                                    <option value="ProdCode" {{element('searchfull_order',$arr_search_input) === 'ProdCode' ? 'selected' :''}}>최근등록순</option>
+                                                    <option value="StudyStartDate" {{element('searchfull_order',$arr_search_input) === 'StudyStartDate' ? 'selected' :''}}>최근개강순</option>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    @if(empty($data['off_lecture']) === false)
+                                        @foreach($data['off_lecture'] as $row)
+                                            <div class="willbes-Lec-Table">
+                                                <table cellspacing="0" cellpadding="0" class="lecTable">
+                                                    <colgroup>
+                                                        <col style="width: 65px;">
+                                                        <col style="width: 85px;">
+                                                        <col style="width: 85px;">
+                                                        <col width="*">
+                                                        <col style="width: 140px;">
+                                                        <col style="width: 140px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="w-place">{{ $row['CampusCcdName'] }}</td>
+                                                        <td class="w-name">{{ $row['SubjectName'] }}<br/><span class="tx-blue">{{ $row['ProfNickName'] }}</span></td>
+                                                        <td class="w-list">{{ $row['CourseName'] }}</td>
+                                                        <td class="w-data tx-left">
+                                                            <div class="w-tit w-acad-tit">
+                                                                <a href="{{'//'.app_to_env_url($row['SiteUrl']).'/offLecture/show/cate/'.substr($row['CateCode'], 0, 6).'/prod-code/'.$row['ProdCode']}}"  class="prod-name" target="_blank">{{ $row['ProdName'] }}</a>
+                                                            </div>
+                                                            <dl class="w-info">
+                                                                <dt>
+                                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover1', '{{'//'.app_to_env_url($row['SiteUrl']).'/'}}offLecture', '', 'InfoForm')">
+                                                                        <strong>강좌상세정보</strong>
+                                                                    </a>
+                                                                </dt>
+                                                                <dt><span class="row-line">|</span></dt>
+                                                                <dt>수강형태 : <span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span></dt>
+                                                                <dt class="ml15">
+                                                                    <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{ $row['StudyApplyCcdName'] }}</span>
+                                                                </dt>
+                                                            </dl>
+                                                        </td>
+                                                        <td class="w-schedule">
+                                                            <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span><br/>
+                                                            {{ $row['WeekArrayName'] }}<br/>({{ $row['Amount'] }}회차)
+                                                        </td>
+                                                        <td class="w-notice">
+                                                            <div class="acadInfo n{{ substr($row['AcceptStatusCcd'], -1) }}">{{ $row['AcceptStatusCcdName'] }}</div>
+                                                            <div class="priceWrap">
+                                                                @php
+                                                                    $saletypeccd = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleTypeCcd']);
+                                                                    $salerate = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleRate']);
+                                                                    $salerateunit = (empty($row['ProdPriceData']) ? '' : $row['ProdPriceData'][0]['SaleRateUnit']);
+                                                                    $realsaleprice = (empty($row['ProdPriceData']) ? 0 : $row['ProdPriceData'][0]['RealSalePrice']);
+                                                                    $saleprice = (empty($row['ProdPriceData']) ? 0 : $row['ProdPriceData'][0]['SalePrice']);
+                                                                @endphp
+                                                                @if($saleprice> $realsaleprice)
+                                                                    <span class="price">{{ number_format($saleprice, 0) }}원</span>
+                                                                    <span class="discount">({{ ($salerateunit == '%' ? $salerate : number_format($salerate, 0)) . $salerateunit }}↓)</span>
+                                                                @endif
+                                                                <span class="dcprice">{{ number_format($realsaleprice, 0) }}원</span>
+                                                            </div>
+                                                            <div class="MoreBtn"><a href="#none">교재정보 보기 ▼</a></div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                        <!-- lecTable -->
+                                                <div class="lecInfoTable bookInfoTable">
+                                                    @if(empty($row['ProdBookData']) === false)
+                                                        <ul>
+                                                            @foreach($row['ProdBookData'] as $book_idx => $book_row)
+                                                                <li>
+                                                                    <div class="b-obj">
+                                                                        <span>{{ $book_row['BookProvisionCcdName'] }}</span>
+                                                                        {{ $book_row['ProdBookName'] }}
+                                                                    </div>
+                                                                    <div class="bookbuyInfo">
+                                                                        <label>[{{ $book_row['wSaleCcdName'] }}]</label>
+                                                                        <span class="tx-blue">{{ number_format($book_row['RealSalePrice'], 0) }}원</span>
+                                                                        <span class="tx-dark-gray">(↓{{ $book_row['SaleRate'] . $book_row['SaleRateUnit'] }})</span>
+                                                                    </div>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                        <div class="tx-red">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능한점 양해 부탁드립니다.</div>
+                                                        <div>
+                                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{'//'.app_to_env_url($row['SiteUrl']).'/'}}offLecture','','InfoForm')">
+                                                            <strong>교재상세정보</strong></a>
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                            <span class="w-subtit none">
+                                                                {{ empty($row['ProdBookMemo']) === true ? '※ 별도 구매 가능한 교재가 없습니다.' : $row['ProdBookMemo'] }}
+                                                            </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+                                <!-- willbes-Lec -->
+                            </div>
+
+                            <div id="tab06">
+                                <div class="willbes-Lec NG c_both">
+                                    <div class="willbes-Lec-Subject tx-dark-black bdb-light-gray">
+                                        · 학원종합반
+                                    </div>
+                                    <!-- willbes-Lec-Subject -->
+                                    @if(empty($data['off_pack_lecture']) === false)
+                                        @foreach($data['off_pack_lecture'] as $row)
+                                            <div class="willbes-Lec-Table p_re">
+                                                <table cellspacing="0" cellpadding="0" class="lecTable acadlecTable">
+                                                    <colgroup>
+                                                        <col style="width: 75px;">
+                                                        <col style="width: 90px;">
+                                                        <col style="width: 590px;">
+                                                        <col style="width: 185px;">
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="w-place bg-light-white">{{$row['CampusCcdName']}}</td>
+                                                        <td class="w-list">{{$row['CourseName']}}</td>
+                                                        <td class="w-data tx-left pl15">
+                                                            <div class="w-tit w-acad-tit">
+                                                                <a href="{{ '//'.app_to_env_url($row['SiteUrl']).'/offPackage/show/prod-code/'.$row['ProdCode'] }}" target="_blank">{{$row['ProdName']}}</a>
+                                                            </div>
+                                                            <dl class="w-info acad">
+                                                                <dt>
+                                                                    <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', '', '{{ '//'.app_to_env_url($row['SiteUrl']).'/offPackage' }}')">
+                                                                        <strong>종합반 상세정보</strong>
+                                                                    </a>
+                                                                </dt>
+                                                                <dt><span class="row-line">|</span></dt>
+                                                                <dt>개강월 : <span class="tx-blue">{{$row['SchoolStartYear']}}-{{$row['SchoolStartMonth']}}</span></dt>
+                                                                <dt><span class="row-line">|</span></dt>
+                                                                <dt>수강형태 : <span class="tx-blue">{{$row['StudyPatternCcdName']}}</span></dt>
+                                                                <dt class="NSK ml15">
+                                                                    <span class="acadBox n{{ substr($row['StudyApplyCcd'], -1) }}">{{$row['StudyApplyCcdName']}}</span>
+                                                                </dt>
+                                                            </dl>
+                                                        </td>
+                                                        <td class="w-notice p_re">
+                                                            <div class="acadInfo NSK n{{ substr($row['AcceptStatusCcd'], -1) }}">{{$row['AcceptStatusCcdName']}}</div>
+                                                            @foreach($row['ProdPriceData'] as $price_idx => $price_row)
+                                                                <div class="priceWrap">
+                                                                    @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                                        <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                                        <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                                    @endif
+                                                                    <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                                </div>
+                                                            @endforeach
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- lecTable -->
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                    <!-- willbes-Lec-Table -->
+
+                                </div>
+                                <!-- willbes-Lec -->
+                            </div>
+
                             <div id="InfoForm" class="willbes-Layer-Box"></div>
 
                             {{--직장인/재학생 반 안내 팝업--}}
@@ -530,7 +709,7 @@
                             </div>
                             @if($__cfg['SiteCode'] === '2000' && count($data['on_lecture']) === 200)
                                 <div class="searchTxt">
-                                    <div class="mb10 tx-origin-red">통합사이트 검색결과는 200개까지만 노출됩니다. 더 자세한 검색을 원하시면 아래 과정별 사이트에서 검색해주세요.</div>
+                                    <div class="mb10 tx-origin-red">통합사이트 검색결과는 200개까지만 노출됩니다. 더 자세한 검색을 원하시면 아래 과정별 사이트에서 검색해 주세요.</div>
                                     <a href="//{{app_to_env_url('police.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">신광은경찰</a>
                                     <a href="//{{app_to_env_url('pass.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">공무원</a>
                                     <a href="//{{app_to_env_url('gosi.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">고등고시</a>
@@ -539,6 +718,7 @@
                                     <a href="//{{app_to_env_url('work.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">취업</a>
                                     <a href="//{{app_to_env_url('lang.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">어학</a>
                                     <a href="//{{app_to_env_url('njob.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">N잡</a>
+                                    <a href="//{{app_to_env_url('ssam.willbes.net')}}/search/result/?searchfull_text={{urlencode(element('searchfull_text',$arr_search_input))}}" target="_new">임용</a>
                                 </div>
                             @endif
                             <div class="TopBtn">

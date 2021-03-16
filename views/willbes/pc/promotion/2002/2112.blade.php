@@ -49,8 +49,8 @@
         .evt03 .passLecBuy .totalPrice:after {content:''; display:block; clear:both}
 
         .evt03 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; text-align:left; letter-spacing:-1px;}
-        .evt03 .check a {display:inline-block; padding:10px; color:#fff; background:#000; margin-left:40px; border-radius:20px; font-size:12px}
-        .evt03 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
+        .evt03 .check a {display:inline-block; padding:15px; color:#fff; background:#000; margin-left:300px; border-radius:20px; font-size:15px}
+        .evt03 .check p {font-size:14px; padding:25px 0 0 165px; line-height:1.4}
 
         .evt03 .passLecbtn {width:980px; margin:0 auto; padding:40px 20px 80px; background:#898989}
         .evt03 .passLecbtn ul {border:1px solid #000; background:#fff; box-shadow: 0 5px 10px rgba(0,0,0,.5);}
@@ -171,21 +171,17 @@
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_03_03.jpg"  alt="온라인 PASS 바로가기" usemap="#Map2112_pass" border="0">
                     <map name="Map2112_pass" id="Map2112_pass">
-                        <area shape="rect" coords="301,367,817,474" href="javascript:go_PassLecture('1074');" alt="온라인 pass 바로가기" />
+                        <area shape="rect" coords="301,367,817,474" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605005&course_idx=&subject_idx=1074" target="_blank" alt="온라인 pass 바로가기" />
                     </map>
                 </div>           
 
-                <div class="check">
-                    <label>
-                        <input name="ischk"  type="checkbox" value="Y" />
-                        페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
-                    </label>
+                <div class="check">                    
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
                         ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br/>
                         ※ 쿠폰은 PASS 결제 후 [내강의실>결제관리>쿠폰/수강권관리] 에서 확인 가능합니다.<br />
-                        ※ 재수강 & 환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
+                        ※ 재수강 & 환승쿠폰은 0원 무제한 패스에는 적용되지 않습니다.
                     </p>
                 </div>
 

@@ -11,6 +11,15 @@ class SearchFModel extends ProductFModel
     }
 
     /**
+     * 검색을 위한 사이트 목록 추출
+     * @param $arr_condition
+     */
+    public function listSite($arr_condition) {
+        $arr_condition = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+        return $this->_conn->query('select SiteCode, SiteGroupCode, IsCampus '.' From lms_site where 1=1 '. $arr_condition . ' Order by SiteCode')->result_array();
+    }
+
+    /**
      * 검색 실행 및 결과 리턴 : 데이터, 쿼리
      * @param $learn_pattern
      * @param $column

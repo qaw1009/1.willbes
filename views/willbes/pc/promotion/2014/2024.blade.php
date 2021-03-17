@@ -88,7 +88,7 @@
 
 
     <div class="evtContent NSK c_both" id="evtContainer">
-        <div class="skybanner" >            
+        <div class="skybanner">            
             <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/178677" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_01.png" alt=""></a> 
             <a href="#evtCurriBoxSec"><img src="https://static.willbes.net/public/images/promotion/2021/01/2024_sky_02.png" alt=""></a>                           
         </div>
@@ -96,10 +96,10 @@
 		<div class="evtCtnsBox evtTop">
             <div class="topImg">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2024_top.jpg" alt="9천만원 매출의 사업가 되기까지" >
-            </div>  
-            <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/7znMVhk8p9g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>       
+                <div class="youtube">
+                    <iframe src="https://www.youtube.com/embed/7znMVhk8p9g?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>                     
         </div>
 
         <div class="evtCtnsBox evt01" id="evt01">

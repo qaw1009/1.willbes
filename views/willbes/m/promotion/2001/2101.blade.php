@@ -136,7 +136,7 @@
         <div class="price"> 
             <ul>
                 <li><input type="checkbox" id="y_pkg1" name="y_pkg" value="179853" data-sale-price="990000" onclick="fnChkPrice(this,1);"> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
-                <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">85만원<br>15개월 PASS</label></li>
+                <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">85만원<br>12개월 PASS</label></li>
                 <li><input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="620000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">62만원<br>21년 대비 PASS</label></li>
             </ul>
         </div>

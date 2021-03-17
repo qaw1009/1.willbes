@@ -150,7 +150,7 @@
         <div class="evtCtnsBox evt04">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.jpg" alt="사전예약 신청하기" >            
-                <a href="https://njob.willbes.net/promotion/index/cate/3114/code/2126" title="" style="position: absolute; left: 14.84%; top: 62.23%; width: 35.55%; height: 14.88%; z-index: 2;"></a>
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/180404" title="" style="position: absolute; left: 14.84%; top: 62.23%; width: 35.55%; height: 14.88%; z-index: 2;"></a>
             </div>
         </div>
 

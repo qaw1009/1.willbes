@@ -3061,7 +3061,7 @@ table.lecTable tr td.w-data {
 .OTclass {
 	display: inline-block;
 	position: relative;
-	margin-right: 10px; margin-bottom:10px;
+	margin-right: 5px; margin-bottom:10px;
 }
 .OTclass span {
 	background: #000;
@@ -3072,7 +3072,6 @@ table.lecTable tr td.w-data {
 	font-size: 12px;
 	border-radius: 20px;
 	display: inline-block;
-	margin-right:5px;
 }
 .OTclass span.red {
 	border: 1px solid #ed1c24;

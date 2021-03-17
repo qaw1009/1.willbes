@@ -209,40 +209,40 @@
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178811" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
-                                <td>한국사 오태진</td>
-                                <td>2021년 2차대비 오태진 심화 한국사</td>
+                                <td>형법 김원욱</td>
+                                <td>2021년 2차대비 김원욱 심화형법</td>
                                 <td>4/5(월)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178771" target="_blank">수강신청</a></td>
-                            </tr>
-                            <tr>
-                                <td>한국사 원유철</td>
-                                <td>2021년 2차대비 원유철 심화 한국사</td>
-                                <td>4/5(월)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178770" target="_blank">수강신청</a></td>
-                            </tr>
-                            <tr>
-                                <td>행정법 장정훈</td>
-                                <td>2021년 2차대비 장정훈 심화 행정법 (영상반 20.6)</td>
-                                <td>4/5(월)</td>                        
-                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/178775" target="_blank">수강신청</a></td>
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178772" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>
                                 <td>수사 신광은</td>
                                 <td>2021년 2차대비 신광은 심화 수사</td>
                                 <td>4/14(수)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/178774" target="_blank">수강신청</a></td>
-                            </tr>            
-                            <tr>
-                                <td>형법 김원욱</td>
-                                <td>2021년 2차대비 김원욱 심화 형법</td>
-                                <td>4/26(월)</td>                      
-                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178772" target="_blank">수강신청</a></td>
-                            </tr>          
+                            </tr>
                             <tr>
                                 <td>경찰학 장정훈</td>
                                 <td>2021년 2차대비 장정훈 심화 경찰학</td>
-                                <td>5/10(월)</td>                      
+                                <td>4/26(월)</td>                        
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178773" target="_blank">수강신청</a></td>
+                            </tr>
+                            <tr>
+                                <td>한국사 오태진</td>
+                                <td>2021년 2차대비 오태진 심화 한국사</td>
+                                <td>5/11(화)</td>                      
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178771" target="_blank">수강신청</a></td>
+                            </tr>            
+                            <tr>
+                                <td>한국사 원유철</td>
+                                <td>2021년 2차대비 원유철 심화 한국사</td>
+                                <td>5/10(월)</td>                      
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/178770" target="_blank">수강신청</a></td>
+                            </tr>          
+                            <tr>
+                                <td>행정법 장정훈</td>
+                                <td>2021년 2차대비 장정훈 심화 행정법(영상반 20.6)</td>
+                                <td>5/10(월)</td>                      
+                                <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/178775" target="_blank">수강신청</a></td>
                             </tr>               
                         </tbody>
                     </table>        

@@ -232,7 +232,8 @@
                                                     <span class="NSK ml15 nBox n2">진행중</span>
                                                 </dt>
                                             </dl><br/>
-                                            <div class="OTclass"><span>직장인/재학생반</span><span class="red">직강전환</span></div>
+                                            <div class="OTclass"><span>직장인/재학생반</span></div>
+                                            <div class="OTclass"><span class="red">직강전환</span></div>
                                             <div class="w-tit pkg-tit">
                                                 <a href="#none"><span>패키지</span> 2020 9급 이론종합 [행정/세무/출관직] 선택형 내맘대로 패키지</a>
                                             </div>
@@ -352,7 +353,8 @@
                                                     <span class="NSK ml15 nBox n4">완강</span>
                                                 </dt>
                                             </dl><br/>
-                                            <div class="OTclass"><span>직장인/재학생반</span><span class="red">직강전환</span></div>
+                                            <div class="OTclass"><span>직장인/재학생반</span></div>
+                                            <div class="OTclass"><span class="red">직강전환</span></div>
                                             <div class="w-tit">
                                                 <a href="{{ site_url('/home/html/mypage_pass2') }}">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지222</a>
                                             </div>

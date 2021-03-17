@@ -181,10 +181,13 @@
     var $regi_form = $('#regi_form');
 
     $(document).ready(function() {
-        @if(empty(element('s_cate_code_disabled', $arr_input)) === true || element('s_cate_code_disabled', $arr_input) != 'Y')
-            $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
-            $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
-        @endif
+{{--        @if(empty(element('s_cate_code_disabled', $arr_input)) === true || element('s_cate_code_disabled', $arr_input) != 'Y')--}}
+{{--            $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");--}}
+{{--            $regi_form.find('select[name="s_campus"]').chained("#s_site_code");--}}
+{{--        @endif--}}
+
+        $regi_form.find('select[name="s_cate_code"]').chained("#s_site_code");
+        $regi_form.find('select[name="s_campus"]').chained("#s_site_code");
         $regi_form.find('select[name="s_subject_idx"]').chained("#s_cate_code");
 
         $('#s_site_code').on('change', function () {

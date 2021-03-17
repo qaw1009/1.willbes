@@ -504,6 +504,7 @@ class OrderModel extends BaseOrderModel
                 } else {
                     $row['SalePatternCcd'] = $this->_sale_pattern_ccd['normal'];
                     $row['wUnitIdxs'] = null;
+                    $row['IsAutoAddCoupon'] = element('is_auto_add_coupon', $input);   // 자동지급쿠폰 발급여부
                 }
 
                 // 수강정보 설정
@@ -762,7 +763,13 @@ class OrderModel extends BaseOrderModel
                     }
 
                     // 자동지급 쿠폰 데이터 등록 (결제상태가 결제완료 and 결제금액이 0원 초과일 경우)
-                    if ($pay_status_ccd == $this->_pay_status_ccd['paid'] && $real_pay_price > 0) {
+                    // => 자동지급쿠폰 발급여부 설정값이 있을 경우 설정값에 따라 발급, 없을 경우 결제금액이 0원 초과일 경우만 지급 (2021.03.17)
+                    $is_set_auto_coupon = element('IsAutoAddCoupon', $input);  // 자동지급쿠폰 발급여부
+                    if (empty($is_set_auto_coupon) === true) {
+                        $is_set_auto_coupon = $real_pay_price > 0 ? 'Y' : 'N';
+                    }
+
+                    if ($pay_status_ccd == $this->_pay_status_ccd['paid'] && $is_set_auto_coupon == 'Y') {
                         $is_add_auto_coupon = $this->addAutoMemberCoupon($order_prod_idx, $prod_code, $mem_idx);
                         if ($is_add_auto_coupon !== true) {
                             throw new \Exception($is_add_auto_coupon);

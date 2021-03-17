@@ -5,6 +5,7 @@ class Book extends \app\controllers\BaseController
 {
     protected $models = array('sys/code', 'bms/book', 'bms/publisher');
     protected $helpers = array();
+    private $_memory_limit_size = '512M';     // 엑셀파일 다운로드 메모리 제한 설정값
 
     public function __construct()
     {
@@ -30,7 +31,37 @@ class Book extends \app\controllers\BaseController
      */
     public function listAjax()
     {
-        $arr_condition = [
+        $arr_condition = $this->_getListConditions();
+
+        $list = [];
+        $count = $this->bookModel->listBook(true, $arr_condition);
+
+        if ($count > 0) {
+            $list = $this->bookModel->listBook(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), $this->_getListOrderBy());
+
+            // 교재 이미지 경로 추가
+            $list = array_map(function ($arr) {
+                $arr['wAttachImgSmName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['S'], $arr['wAttachImgName']);
+                $arr['wAttachImgMdName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['M'], $arr['wAttachImgName']);
+                $arr['wAttachImgLgName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['L'], $arr['wAttachImgName']);
+                return $arr;
+            }, $list);
+        }
+
+        return $this->response([
+            'recordsTotal' => $count,
+            'recordsFiltered' => $count,
+            'data' => $list
+        ]);
+    }
+
+    /**
+     * 교재 관리 목록 조회조건 리턴
+     * @return array
+     */
+    private function _getListConditions()
+    {
+        return [
             'EQ' => [
                 'wSaleCcd' => $this->_reqP('search_sale_ccd')
             ],
@@ -48,31 +79,38 @@ class Book extends \app\controllers\BaseController
                 ]
             ],
         ];
+    }
 
-        $list = [];
-        $count = $this->bookModel->listBook(true, $arr_condition);
+    /**
+     * 교재 관리 목록 정렬조건 리턴
+     * @return array
+     */
+    private function _getListOrderBy()
+    {
+        return ['wBookIdx' => 'desc'];
+    }
 
-        if ($count > 0) {
-            $list = $this->bookModel->listBook(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['wBookIdx' => 'desc']);
+    /**
+     * 교재 관리 목록 엑셀다운로드
+     */
+    public function excel()
+    {
+        set_time_limit(0);
+        ini_set('memory_limit', $this->_memory_limit_size);
 
-            // 사용하는 코드값 조회
-            $codes = $this->codeModel->getCcd('112');
+        $arr_condition = $this->_getListConditions();
+        $column = 'wBookIdx, wBookName, wPublName, wAuthorNames, wIsbn, wOrgPrice, wStockCnt, wSaleCcdName, wIsUse, wRegAdminName, wRegDatm';
+        $list = $this->bookModel->listBook($column, $arr_condition, null, null, $this->_getListOrderBy());
 
-            // 출판사명, 교재 이미지 경로 추가
-            $list = array_map(function ($arr) use ($codes) {
-                $arr['wSaleCcdName'] = $codes[$arr['wSaleCcd']];
-                $arr['wAttachImgSmName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['S'], $arr['wAttachImgName']);
-                $arr['wAttachImgMdName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['M'], $arr['wAttachImgName']);
-                $arr['wAttachImgLgName'] = str_replace($this->bookModel->_img_postfix, $this->bookModel->_thumb_postfixs['L'], $arr['wAttachImgName']);
-                return $arr;
-            }, $list);
+        $headers = ['교재코드', '교재명', '출판사', '저자', 'ISBN', '가격', '재고', '판매여부', '사용여부', '등록자', '등록일'];
+        $numerics = ['wOrgPrice', 'wStockCnt'];    // 숫자형 변환 대상 컬럼
+        $file_name = '교재목록(WBS)_' . $this->session->userdata('admin_idx') . '_' . date('YmdHis');
+
+        // export excel
+        $this->load->library('excel');
+        if ($this->excel->exportHugeExcel($file_name, $list, $headers, $numerics) !== true) {
+            show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
-
-        return $this->response([
-            'recordsTotal' => $count,
-            'recordsFiltered' => $count,
-            'data' => $list
-        ]);
     }
 
     /**

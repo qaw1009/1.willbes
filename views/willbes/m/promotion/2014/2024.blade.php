@@ -6,10 +6,10 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5}
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtTop {position:relative}
-
-    .evt01 {position:relative;}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:0; height:0; overflow: hidden;}
     .video-container iframe {position:absolute; top:0; left:0; width:100%; height:100%;}
+
+    .evt01 {position:relative;}    
 
     .evt02 a {position: absolute; left: 22.36%; top: 86.23%; width: 55.83%; height: 3.61%; z-index: 2;}
 

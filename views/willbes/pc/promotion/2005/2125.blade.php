@@ -85,7 +85,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2125_04.jpg" alt="강의일정" /><br>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2125_05.jpg" alt="강의일정" />                       
             @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif        
         </div>
         

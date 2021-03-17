@@ -38,7 +38,7 @@
         to{color:#d63e4d}
         }          
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2124_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/212_top_bg.jpg) no-repeat center top;}	
 
         .evt_01 {margin-bottom:100px}
         
@@ -75,15 +75,15 @@
         </div>
 
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_top.jpg" alt="온라인 첨삭반" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_top.jpg" alt="온라인 첨삭반" />
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_01.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_02.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_03.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_04.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_05.jpg" alt="강의일정" />                       
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_01.jpg" alt="강의일정" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_02.jpg" alt="강의일정" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_03.jpg" alt="강의일정" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_04.jpg" alt="강의일정" /><br>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/212_05.jpg" alt="강의일정" />                       
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif        

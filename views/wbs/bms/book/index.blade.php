@@ -72,6 +72,7 @@
             $datatable = $list_table.DataTable({
                 serverSide: true,
                 buttons: [
+                    { text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset mr-15 btn-excel' },
                     { text: '<i class="fa fa-pencil mr-5"></i> 교재 등록', className: 'btn-sm btn-primary border-radius-reset', action: function(e, dt, node, config) {
                         location.href = '{{ site_url('/bms/book/create') }}' + dtParamsToQueryString($datatable);
                     }}
@@ -121,6 +122,14 @@
                     {'data' : 'wRegAdminName'},
                     {'data' : 'wRegDatm'}
                 ]
+            });
+
+            // 엑셀다운로드 버튼 클릭
+            $('.btn-excel').on('click', function(event) {
+                event.preventDefault();
+                if (confirm('정말로 엑셀다운로드 하시겠습니까?')) {
+                    formCreateSubmit('{{ site_url('/bms/book/excel') }}', $search_form.serializeArray(), 'POST');
+                }
             });
 
             // 데이터 수정 폼

@@ -66,6 +66,17 @@
                                 <span id="sampleList" class="pl-10"></span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1" for="search_mem_type_1">자동지급쿠폰 여부 <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 form-inline item">
+                                <div class="radio">
+                                    <input type="radio" id="is_auto_add_coupon_y" name="is_auto_add_coupon" class="flat" value="Y" title="자동지급쿠폰여부" required="required"/> <label for="is_auto_add_coupon_y" class="input-label">지급</label>
+                                    <input type="radio" id="is_auto_add_coupon_n" name="is_auto_add_coupon" class="flat" value="N" checked="checked"/> <label for="is_auto_add_coupon_n" class="input-label">미지급</label>
+                                </div>
+                                <div class="inline-block ml-30"># 상품정보에 등록된 자동지급쿠폰의 지급 여부를 선택해 주세요. (온라인강좌 강좌등록, 학원강좌만 적용)</div>
+                            </div>
+                        </div>
                         <div id="lecture_info" class="form-group">
                             <label class="control-label col-md-1">수강정보 <span class="required">*</span>
                             </label>

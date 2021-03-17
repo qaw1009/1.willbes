@@ -8,6 +8,7 @@ class BookModel extends WB_Model
         'book_r_author' => 'wbs_bms_book_r_author',
         'publisher' => 'wbs_bms_publisher',
         'author' => 'wbs_bms_author',
+        'code' => 'wbs_sys_code',
         'admin' => 'wbs_sys_admin'
     ];
 
@@ -46,14 +47,18 @@ class BookModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = '*';
+            if (is_bool($is_count) === false && empty($is_count) === false) {
+                $column = $is_count;
+            } else {
+                $column = '*';
+            }
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
         $in_column = 'B.wBookIdx, B.wPublIdx, B.wBookName, B.wIsbn, B.wAttachImgPath, B.wAttachImgName, B.wOrgPrice, B.wStockCnt, B.wSaleCcd, B.wIsUse, B.wRegDatm, B.wRegAdminIdx
-            , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, A.wAdminName as wRegAdminName';
+            , ifnull(A.wAuthorNames, "") as wAuthorNames, P.wPublName, CS.wCcdName as wSaleCcdName, A.wAdminName as wRegAdminName';
 
         $from = '
             from ' . $this->_table['book'] . ' as B 
@@ -69,6 +74,8 @@ class BookModel extends WB_Model
                     on B.wBookIdx = A.wBookIdx
                 left join ' . $this->_table['publisher'] . ' as P
                     on B.wPublIdx = P.wPublIdx and P.wIsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CS
+                    on B.wSaleCcd = CS.wCcd and CS.wIsStatus = "Y"                    
                 left join ' . $this->_table['admin'] . ' as A 
                     on B.wRegAdminIdx = A.wAdminIdx and A.wIsStatus = "Y"
             where B.wIsStatus = "Y"';

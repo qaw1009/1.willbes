@@ -197,7 +197,7 @@ class MemberPrivate extends BaseMocktest
         $gradeInfo = $this->memberPrivateModel->gradeInfo($prod_code, $mr_idx);
 
         //평균점수 분포
-        $selectivityInfo = $this->memberPrivateModel->selectivity($prod_code);
+        $selectivityInfo = $this->memberPrivateModel->selectivity($prod_code, $mr_idx);
 
         //과목별 점수
         $subject_result = $this->memberPrivateModel->registerForSubjectDetail($prod_code, $mr_idx);

@@ -107,7 +107,7 @@ class Result extends \app\controllers\FrontController
         $gradeInfo = $this->mockResultFModel->gradeInfo($prod_code, $mr_idx);
 
         //평균점수 분포
-        $selectivityInfo = $this->mockResultFModel->selectivity($prod_code);
+        $selectivityInfo = $this->mockResultFModel->selectivity($prod_code, $mr_idx);
 
         //과목별 점수
         $subject_result = $this->mockResultFModel->registerForSubjectDetail($prod_code, $mr_idx);

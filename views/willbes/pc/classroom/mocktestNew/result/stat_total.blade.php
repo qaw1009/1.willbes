@@ -245,59 +245,13 @@
         }
 
         function drawVisualization2() {
-            var my_avg = parseInt("{{ (empty($gradeInfo['AvgAdjustPoint']) === false ? $gradeInfo['AvgAdjustPoint'] : 0) }}");
-            var g_my_val5,g_my_val10,g_my_val15,g_my_val20,g_my_val25,g_my_val30,g_my_val35,g_my_val40,g_my_val45,g_my_val50
-                ,g_my_val55,g_my_val60,g_my_val65,g_my_val70,g_my_val75,g_my_val80,g_my_val85,g_my_val90,g_my_val95,g_my_val100 = 0;
+            var arr_point = {!! json_encode($selectivityInfo) !!};
+            var arr_data = [["Score","분포도","내 평균"]];
+            $.each(arr_point, function (index, item) {
+                arr_data.push([item['p_type'],parseInt(item['cnt']),parseInt(item['MemAvgAdjustPoint'])]);
+            });
 
-            var val2_5 = parseInt("{{ (empty($selectivityInfo['cnt_5']) === false ? $selectivityInfo['cnt_5'] : 0) }}");
-            var val2_10 = parseInt("{{ (empty($selectivityInfo['cnt_10']) === false ? $selectivityInfo['cnt_10'] : 0) }}");
-            var val2_15 = parseInt("{{ (empty($selectivityInfo['cnt_15']) === false ? $selectivityInfo['cnt_15'] : 0) }}");
-            var val2_20 = parseInt("{{ (empty($selectivityInfo['cnt_20']) === false ? $selectivityInfo['cnt_20'] : 0) }}");
-            var val2_25 = parseInt("{{ (empty($selectivityInfo['cnt_25']) === false ? $selectivityInfo['cnt_25'] : 0) }}");
-            var val2_30 = parseInt("{{ (empty($selectivityInfo['cnt_30']) === false ? $selectivityInfo['cnt_30'] : 0) }}");
-            var val2_35 = parseInt("{{ (empty($selectivityInfo['cnt_35']) === false ? $selectivityInfo['cnt_35'] : 0) }}");
-            var val2_40 = parseInt("{{ (empty($selectivityInfo['cnt_40']) === false ? $selectivityInfo['cnt_40'] : 0) }}");
-            var val2_45 = parseInt("{{ (empty($selectivityInfo['cnt_45']) === false ? $selectivityInfo['cnt_45'] : 0) }}");
-            var val2_50 = parseInt("{{ (empty($selectivityInfo['cnt_50']) === false ? $selectivityInfo['cnt_50'] : 0) }}");
-            var val2_55 = parseInt("{{ (empty($selectivityInfo['cnt_55']) === false ? $selectivityInfo['cnt_55'] : 0) }}");
-            var val2_60 = parseInt("{{ (empty($selectivityInfo['cnt_60']) === false ? $selectivityInfo['cnt_60'] : 0) }}");
-            var val2_65 = parseInt("{{ (empty($selectivityInfo['cnt_65']) === false ? $selectivityInfo['cnt_65'] : 0) }}");
-            var val2_70 = parseInt("{{ (empty($selectivityInfo['cnt_70']) === false ? $selectivityInfo['cnt_70'] : 0) }}");
-            var val2_75 = parseInt("{{ (empty($selectivityInfo['cnt_75']) === false ? $selectivityInfo['cnt_75'] : 0) }}");
-            var val2_80 = parseInt("{{ (empty($selectivityInfo['cnt_80']) === false ? $selectivityInfo['cnt_80'] : 0) }}");
-            var val2_85 = parseInt("{{ (empty($selectivityInfo['cnt_85']) === false ? $selectivityInfo['cnt_85'] : 0) }}");
-            var val2_90 = parseInt("{{ (empty($selectivityInfo['cnt_90']) === false ? $selectivityInfo['cnt_90'] : 0) }}");
-            var val2_95 = parseInt("{{ (empty($selectivityInfo['cnt_95']) === false ? $selectivityInfo['cnt_95'] : 0) }}");
-            var val2_100 = parseInt("{{ (empty($selectivityInfo['cnt_100']) === false ? $selectivityInfo['cnt_100'] : 0) }}");
-
-            if(0 <= my_avg && my_avg <= 5) g_my_val5 = my_avg;
-            if(5 < my_avg && my_avg <= 10) g_my_val10 = my_avg;
-            if(10 < my_avg && my_avg <= 15) g_my_val15 = my_avg;
-            if(15 < my_avg && my_avg <= 20) g_my_val20 = my_avg;
-            if(20 < my_avg && my_avg <= 25) g_my_val25 = my_avg;
-            if(25 < my_avg && my_avg <= 30) g_my_val30 = my_avg;
-            if(30 < my_avg && my_avg <= 35) g_my_val35 = my_avg;
-            if(35 < my_avg && my_avg <= 40) g_my_val40 = my_avg;
-            if(40 < my_avg && my_avg <= 45) g_my_val45 = my_avg;
-            if(45 < my_avg && my_avg <= 50) g_my_val50 = my_avg;
-            if(50 < my_avg && my_avg <= 55) g_my_val55 = my_avg;
-            if(55 < my_avg && my_avg <= 60) g_my_val60 = my_avg;
-            if(60 < my_avg && my_avg <= 65) g_my_val65 = my_avg;
-            if(65 < my_avg && my_avg <= 70) g_my_val70 = my_avg;
-            if(70 < my_avg && my_avg <= 75) g_my_val75 = my_avg;
-            if(75 < my_avg && my_avg <= 80) g_my_val80 = my_avg;
-            if(80 < my_avg && my_avg <= 85) g_my_val85 = my_avg;
-            if(85 < my_avg && my_avg <= 90) g_my_val90 = my_avg;
-            if(90 < my_avg && my_avg <= 95) g_my_val95 = my_avg;
-            if(95 < my_avg && my_avg <= 100) g_my_val100 = my_avg;
-
-            var data = google.visualization.arrayToDataTable([
-                ["Score","분포도","내 평균"],
-                ['5',val2_5, g_my_val5], ['10',val2_10, g_my_val10], ['15',val2_15, g_my_val15], ['20',val2_20, g_my_val20], ['25',val2_25, g_my_val25], ['30',val2_30, g_my_val30],
-                ['35',val2_35, g_my_val35], ['40',val2_40, g_my_val40], ['45',val2_45, g_my_val45], ['50',val2_50, g_my_val50], ['55',val2_55, g_my_val55], ['60',val2_60, g_my_val60],
-                ['65',val2_65, g_my_val65], ['70',val2_70, g_my_val70], ['75',val2_75, g_my_val75], ['80',val2_80, g_my_val80], ['85',val2_85, g_my_val85], ['90',val2_90, g_my_val90],
-                ['95',val2_95, g_my_val95], ['100',val2_100, g_my_val100]
-            ]);
+            var data = google.visualization.arrayToDataTable(arr_data);
             var options = {
                 title : '조정점수 기준',
                 vAxis: {minValue:0 },

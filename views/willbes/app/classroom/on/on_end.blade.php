@@ -67,7 +67,10 @@
                             <tr>
                                 <td class="w-data tx-left pb-zero">
                                     @if($row['LecTypeCcd'] == '607003')
-                                        <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                        <div class="OTclass"><span>직장인/재학생반</span></div>
+                                    @endif
+                                    @if($row['IsDisp'] == 'N')
+                                        <div class="OTclass"><span class="red">직강전환</span></div>
                                     @endif
                                     <dl class="w-info">
                                         <dt>
@@ -141,7 +144,10 @@
                                     <tr>
                                         <td class="w-data tx-left pb-zero">
                                             @if($subrow['LecTypeCcd'] == '607003')
-                                                <div class="OTclass mr10"><span>직장인/재학생반</span></div>
+                                                <div class="OTclass"><span>직장인/재학생반</span></div>
+                                            @endif
+                                            @if($subrow['IsDisp'] == 'N')
+                                                <div class="OTclass"><span class="red">직강전환</span></div>
                                             @endif
                                             <dl class="w-info">
                                                 <dt>

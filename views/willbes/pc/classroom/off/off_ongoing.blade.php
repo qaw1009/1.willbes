@@ -89,7 +89,14 @@
                                                                 @foreach($row['subleclist'] as $subrow)
                                                                     <li>{{$subrow['subProdName']}}
                                                                         @if($subrow['isbook'] == 'Y')
-                                                                            <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}');">교재구매</a>
+                                                                            @if($subrow['IsDisp'] == 'N')
+                                                                                <a href="#none" onclick="alert('인강으로 전환된 강좌로 교재구매가 불가능합니다');">교재구매</a>
+                                                                            @else
+                                                                                <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}');">교재구매</a>
+                                                                            @endif
+                                                                        @endif
+                                                                        @if($subrow['IsDisp'] == 'N')
+                                                                            <span class="oBox changeBox ml5 NG">인강전환</span>
                                                                         @endif
                                                                     </li>
                                                                 @endforeach
@@ -237,6 +244,9 @@
                                                 {{--
                                                 <span class="NSK ml15 nBox n{{ substr($row['AcceptStatusCcd'], -1)+1 }}">{{$row['AcceptStatusCcdName']}}</span>
                                                 --}}
+                                                @if($row['IsDisp'] == 'N')
+                                                    <span class="oBox changeBox ml10 NSK">인강전환</span>
+                                                @endif
                                             </dt>
                                         </dl>
                                         <div class="w-tit"><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span> {{$row['subProdName']}}</div>
@@ -276,7 +286,11 @@
                                                 <a href="#none" onclick="assignmentBoardModal('{{ $row['ProdCode'] }}')">온라인첨삭 &gt;</a>
                                             @endif
                                             @if($row['isbook'] == 'Y')
-                                                <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
+                                                @if($row['IsDisp'] == 'N')
+                                                    <a href="#none" onclick="alert('인강으로 전환된 강좌로 교재구매가 불가능합니다');" class="buyBook">교재구매</a>
+                                                @else
+                                                    <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
+                                                @endif
                                             @endif
                                             </div>
                                     </td>

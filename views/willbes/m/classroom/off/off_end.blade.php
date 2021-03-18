@@ -47,6 +47,9 @@
                     @forelse( $list as $row )
                         <tr>
                             <td class="w-data tx-left">
+                                @if($row['IsDisp'] == 'N')
+                                    <div class="OTclass mr10"><span class="red">인강전환</span></div>
+                                @endif
                                 <dl class="w-info">
                                     <dt>
                                         {{$row['SubjectName']}}<span class="row-line">|</span>{{$row['wProfName']}}교수님
@@ -110,7 +113,11 @@
                                             <li>강의가 없습니다.</li>
                                         @else
                                             @foreach($row['subleclist'] as $subrow)
-                                                <li>{{$subrow['subProdName']}}</li>
+                                                <li>{{$subrow['subProdName']}}
+                                                    @if($subrow['IsDisp'] == 'N')
+                                                        <span>인강전환</span>
+                                                    @endif
+                                                </li>
                                             @endforeach
                                         @endif
                                     </ul>

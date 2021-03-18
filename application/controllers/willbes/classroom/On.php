@@ -651,6 +651,10 @@ class On extends \app\controllers\FrontController
 
         $lec = $lec[0];
 
+        if($lec['IsDisp'] == 'N'){
+            show_alert('직강전환 강의는 수강이 불가능합니다.', 'back');
+        }
+
         // 강좌가 직장인 반이면 수강 가능한 시간인지 체크
         $lec['canWeekView'] = true;
         if($lec['LecTypeCcd'] == '607003'){ // 직장인반이고

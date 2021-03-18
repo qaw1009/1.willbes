@@ -127,6 +127,9 @@
                                                 {{--
                                                 <span class="NSK ml15 nBox n{{ substr($row['AcceptStatusCcd'], -1)+1 }}">{{$row['AcceptStatusCcdName']}}</span>
                                                 --}}
+                                                @if($row['IsDisp'] == 'N')
+                                                    <span class="oBox changeBox ml10 NSK">인강전환</span>
+                                                @endif
                                             </dt>
                                         </dl>
                                         <div class="w-tit"><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span> {{$row['subProdName']}}</div>

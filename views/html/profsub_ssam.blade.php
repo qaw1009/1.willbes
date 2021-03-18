@@ -2835,7 +2835,7 @@
                     <div id="Proftab3" class="tabLink">
                         <div class="willbes-Lec NG c_both p_re">
                             <div class="willbes-Lec-Subject tx-dark-black bdb-dark-gray">
-                                교재
+                                ㆍ교재
                                 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a>
                             </div>
 

@@ -122,7 +122,11 @@
                                                 </dl>
                                             </td>
                                             <td class="w-answer">
-                                                <a href="javascript:;" onclick="fnRestart('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                                @if($row['IsDisp'] == 'N')
+                                                    <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                                @else
+                                                    <a href="javascript:;" onclick="fnRestart('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox whiteBox NSK">일시정지해제</span></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @empty

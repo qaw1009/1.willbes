@@ -1462,6 +1462,78 @@ class Manage extends \app\controllers\BaseController
         }
     }
 
+    public function TransForm()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $memidx = $this->_req('memidx');
+        $prodtype = $this->_req('prodtype');
+
+        $cond_arr = [
+            'EQ' => [
+                'MemIdx' => $memidx, // 사용자
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ];
+
+        $leclist = $this->manageLectureModel->getLecture(false, $cond_arr, ($prodtype == 'on' ? false : true));
+
+        if(count($leclist) == 1){
+            $lec = $leclist[0];
+        } else {
+            show_alert('신청강좌정보를 찾을수 없습니다.', 'close');
+        }
+
+        $log = $this->manageLectureModel->getTransformLog([
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'OrderProdIdx' => $lec['OrderProdIdx']
+            ]
+        ]);
+
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        return $this->load->view('member/layer/lecture/transform', [
+            'member' => $member,
+            'lec' => $lec,
+            'log' => $log
+        ]);
+
+    }
+
+    public function setTransForm()
+    {
+        $orderidx = $this->_req('orderidx');
+        $orderprodidx = $this->_req('orderprodidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $memidx = $this->_req('memidx');
+        $isdisp = $this->_req('isdisp');
+        $memo = $this->_req('memo');
+
+        $data = [
+            'MemIdx' => $memidx,
+            'OrderIdx' => $orderidx,
+            'OrderProdIdx' => $orderprodidx,
+            'ProdCode' => $prodcode,
+            'ProdCodeSub' => $prodcodesub,
+            'IsDisp' => $isdisp,
+            'Memo' => $memo
+        ];
+
+        if($this->manageLectureModel->setTransform($data) == false){
+            return $this->json_error('처리도중 오류가 발생하였습니다.');
+        }
+
+        return $this->json_result(true, '처리되었습니다.');
+    }
+
     /**
      * 수강한 강좌 리스트
      */

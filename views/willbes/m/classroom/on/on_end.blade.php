@@ -93,7 +93,10 @@
                             <tr>
                                 <td class="w-data tx-left pb-zero">
                                     @if($row['LecTypeCcd'] == '607003')
-                                        <div class="OTclass mr10"><span>직장인반</span></div>
+                                        <div class="OTclass"><span>직장인반</span></div>
+                                    @endif
+                                    @if($row['IsDisp'] == 'N')
+                                        <div class="OTclass"><span class="red">직강전환</span></div>
                                     @endif
                                     <dl class="w-info">
                                         <dt>
@@ -118,6 +121,8 @@
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
                                             @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackRetakeType'] == 'P')
                                                 <li class="btn_white"><a href="javascript:;">재수강불가</a></li>
+                                            @elseif($row['IsDisp'] == 'N')
+                                                <li class="btn_blue"><a href="javascript:alert('직강으로 전환된 강좌로 신청이 불가능합니다.');">재수강신청</a></li>
                                             @else
                                                 <li class="btn_blue"><a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');">재수강신청</a></li>
                                             @endif
@@ -197,7 +202,10 @@
                                     <tr>
                                         <td class="w-data tx-left pb-zero">
                                             @if($subrow['LecTypeCcd'] == '607003')
-                                                <div class="OTclass mr10"><span>직장인반</span></div>
+                                                <div class="OTclass"><span>직장인반</span></div>
+                                            @endif
+                                            @if($subrow['IsDisp'] == 'N')
+                                                <div class="OTclass"><span class="red">직강전환</span></div>
                                             @endif
                                             <dl class="w-info">
                                                 <dt>

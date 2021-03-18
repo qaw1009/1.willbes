@@ -35,6 +35,7 @@
             <tr>
                 <th>운영사이트</th>
                 <th>강좌정보</th>
+                <th>전환상태</th>
                 <th>수강상태</th>
                 <th>학습이력현황</th>
                 <th>수강정책관리</th>
@@ -57,6 +58,13 @@
                         <b>[진행상태]</b> {{$row['wLectureProgressCcdName']}}
                         <b>[배수]</b> {{$row['MultipleApply'] == '1' ? '무제한' : $row['MultipleApply'].'배수' }}
                         <b>[진도율]</b> {{$row['StudyRate']}}%
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnTransForm('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'on')">전환처리</button>
+                        <br>
+                        @if($row['TransformCnt'] > 0)
+                            {{$row['IsDisp'] == 'N'? '직강전환' : '해제'}}
+                        @endif
                     </td>
                     <td>[
                         @if($row['LecStartDate'] > date('Y-m-d'))
@@ -106,6 +114,7 @@
     </div>
 </div>
 
+<!-- 사용자패키지 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture2">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
@@ -140,6 +149,7 @@
                 <tr>
                     <th>운영사이트</th>
                     <th>강좌정보</th>
+                    <th>전환상태</th>
                     <th>수강상태</th>
                     <th>학습이력현황</th>
                     <th>수강정책관리</th>
@@ -159,6 +169,13 @@
                             <b>[진행상태]</b> {{$subrow['wLectureProgressCcdName']}}
                             <b>[배수]</b> {{$subrow['MultipleApply'] == '1' ? '무제한' : $subrow['MultipleApply'].'배수' }}
                             <b>[진도율]</b> {{$subrow['StudyRate']}}%
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnTransForm('{{$subrow['OrderIdx']}}','{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}', 'on')">전환처리</button>
+                            <br>
+                            @if($subrow['TransformCnt'] > 0)
+                                {{$subrow['IsDisp'] == 'N'? '직강전환' : '해제'}}
+                            @endif
                         </td>
                         <td>[
                             @if($subrow['LecStartDate'] > date('Y-m-d'))
@@ -197,6 +214,7 @@
     </div>
 </div>
 
+<!-- 운영자패키지 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture3">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
@@ -246,6 +264,7 @@
                 <tr>
                     <th>운영사이트</th>
                     <th>강좌정보</th>
+                    <th>전환상태</th>
                     <th>학습이력현황</th>
                 </tr>
                 @forelse($row['subleclist'] as $subrow)
@@ -263,6 +282,13 @@
                             <b>[진행상태]</b> {{$subrow['wLectureProgressCcdName']}}
                             <b>[배수]</b> {{$subrow['MultipleApply'] == '1' ? '무제한' : $subrow['MultipleApply'].'배수' }}
                             <b>[진도율]</b> {{$subrow['StudyRate']}}%
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnTransForm('{{$subrow['OrderIdx']}}','{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}', 'on')">전환처리</button>
+                            <br>
+                            @if($subrow['TransformCnt'] > 0)
+                                {{$subrow['IsDisp'] == 'N'? '직강전환' : '해제'}}
+                            @endif
                         </td>
                         <td><button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnCurriculum('{{$subrow['OrderIdx']}}','{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}')">학습수강이력</button></td>
                     </tr>
@@ -285,6 +311,7 @@
     </div>
 </div>
 
+<!-- 기간제패키지 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture4">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
@@ -373,6 +400,7 @@
     </div>
 </div>
 
+<!-- 무료강좌 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture5">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
@@ -446,6 +474,7 @@
     </div>
 </div>
 
+<!-- 학원단과 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture6">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
@@ -453,6 +482,7 @@
             <tr>
                 <th>운영사이트</th>
                 <th>강좌정보</th>
+                <th>전환상태</th>
                 <th>수강상태</th>
             </tr>
             </thead>
@@ -470,6 +500,13 @@
                         {{$row['SubjectName']}} |
                         {{$row['wProfName']}} |
                         <b>{{$row['subProdName']}}</b>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnTransForm('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}', 'off')">전환처리</button>
+                        <br>
+                        @if($row['TransformCnt'] > 0)
+                            {{$row['IsDisp'] == 'N' ? '인강전환' : '해제'}}
+                        @endif
                     </td>
                     <td>[
                         @if($row['LecStartDate'] > date('Y-m-d'))
@@ -517,13 +554,14 @@
     </div>
 </div>
 
+<!-- 학원종합반 -->
 <div class="x_panel mt-10 leclist" style="display:none;" id="tab_lecture7">
     <div class="x_content">
         <table id="list_table" class="table table-striped table-bordered">
             <tbody>
             @forelse($offpkg as $row)
                 <tr>
-                    <td colspan="3">
+                    <td colspan="4">
                         {{$row['SiteName']}} |
                         {{$row['CateName']}} |
                         {{$row['StudyPatternCcdName']}} |
@@ -534,7 +572,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="4">
                         결제정보 :
                         <b>[주문번호]</b> {{$row['OrderNo']}} ({{$row['OrderIdx']}})
                         &nbsp; &nbsp; &nbsp; &nbsp;
@@ -560,6 +598,7 @@
                 <tr>
                     <th>운영사이트</th>
                     <th>강좌정보</th>
+                    <th>전환상태</th>
                     <th>수강상태</th>
                 </tr>
                 @foreach($row['subleclist'] as $row_sub)
@@ -574,6 +613,13 @@
                             {{$row_sub['wProfName']}} |
                             <b>{{$row_sub['subProdName']}}</b>
                         </td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-search" id="btn_history" onclick="fnTransForm('{{$row_sub['OrderIdx']}}','{{$row_sub['ProdCode']}}','{{$row_sub['ProdCodeSub']}}', 'off')">전환처리</button>
+                            <br>
+                            @if($row_sub['TransformCnt'] > 0)
+                                {{$row_sub['IsDisp'] == 'N'? '인강전환' : '해제'}}
+                            @endif
+                        </td>
                         <td>[
                             @if($row_sub['LecStartDate'] > date('Y-m-d'))
                                 수강대기
@@ -586,11 +632,11 @@
                     </tr>
                 @endforeach
                 <tr>
-                    <td colspan="3"></td>
+                    <td colspan="4"></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="3">수강중인 학원종합반이 없습니다.</td>
+                    <td colspan="4">수강중인 학원종합반이 없습니다.</td>
                 </tr>
             @endforelse
             </tbody>
@@ -643,5 +689,11 @@
     {
         popupOpen('/member/manage/pause/?memidx={{$memIdx}}&orderidx='+orderidx+'&prodcode='+prodcode+'&prodcodesub='+prodcodesub+'&prodtype='+prodtype,
             'Pause', 1200, 900, null, null, 'yes','no');
+    }
+
+    function fnTransForm(orderidx, prodcode, prodcodesub, prodtype)
+    {
+        popupOpen('/member/manage/TransForm/?memidx={{$memIdx}}&orderidx='+orderidx+'&prodcode='+prodcode+'&prodcodesub='+prodcodesub+'&prodtype='+prodtype,
+            'TransForm', 1200, 900, null, null, 'yes','no');
     }
 </script>

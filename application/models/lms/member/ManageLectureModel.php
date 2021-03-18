@@ -18,7 +18,8 @@ class ManageLectureModel extends WB_Model
         'order_product' => 'lms_order_product',
         'device' => 'lms_member_device',
         'time_log' => 'lms_lecture_studyinfo_time_log',
-        'study_info' => 'lms_lecture_studyinfo'
+        'study_info' => 'lms_lecture_studyinfo',
+        'transform_log' => 'lms_my_lecture_transform_log'
     ];
 
     public function __construct()
@@ -625,6 +626,65 @@ class ManageLectureModel extends WB_Model
                     'AddIp' => $this->input->ip_address()
                 ])->insert($this->_table['time_log']) == false){
                 throw new \Exception('배수시간추가 로그기록에 실패했습니다.');
+            }
+
+            $this->_conn->trans_commit();
+        } catch (\Exception $e) {
+            $this->_conn->trans_rollback();
+            return false;
+        }
+        return true;
+    }
+
+    public function getTransformLog($cond, $isCount = false)
+    {
+        if($isCount === true){
+            $query = "SELECT COUNT(*) AS rownums ";
+        } else {
+            $query = "SELECT L.* , IFNULL(A.wAdminName, '') AS adminName 
+              ";
+        }
+
+        $query .= " FROM {$this->_table['transform_log']} AS L
+            LEFT JOIN {$this->_table['admin']} AS A ON A.wAdminIdx = L.RegAdminIdx
+         ";
+
+        $where = $this->_conn->makeWhere($cond);
+        $query .= $where->getMakeWhere(false);
+
+        $query .= " ORDER BY L.MltlIdx DESC ";
+
+        $result = $this->_conn->query($query);
+
+        return ($isCount === true) ? $result->row(0)->rownums : $result->result_array();
+    }
+
+    public function setTransform($data)
+    {
+        $this->_conn->trans_begin();
+        try{
+            if($this->_conn->
+                set('IsDisp', element('IsDisp', $data))->
+                where('OrderIdx', element('OrderIdx', $data))->
+                where('OrderProdIdx', element('OrderProdIdx', $data))->
+                where('ProdCode', element('ProdCode', $data))->
+                where('ProdCodeSub', element('ProdCodeSub', $data))->
+                update($this->_table['mylec']) == false){
+                throw new \Exception('상태변경에 실패했습니다.');
+            }
+
+            if($this->_conn->set([
+                    'MemIdx' => element('MemIdx', $data),
+                    'OrderIdx' => element('OrderIdx', $data),
+                    'OrderProdIdx' => element('OrderProdIdx', $data),
+                    'ProdCode' => element('ProdCode', $data),
+                    'ProdCodeSub' => element('ProdCodeSub', $data),
+                    'IsDisp' => element('IsDisp', $data),
+                    'Memo' => element('Memo', $data),
+                    'RegAdminIdx' => $this->session->userdata('admin_idx'),
+                    'RegIp' => $this->input->ip_address()
+                ])->insert($this->_table['transform_log']) == false){
+                throw new \Exception('상태변경 로그기록에 실패했습니다.');
             }
 
             $this->_conn->trans_commit();

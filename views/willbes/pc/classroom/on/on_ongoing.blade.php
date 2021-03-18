@@ -163,7 +163,10 @@
                                                     </dt>
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
-                                                    <div class="OTclass mr10"><span>직장인반</span></div>
+                                                    <div class="OTclass"><span>직장인반</span></div>
+                                                @endif
+                                                @if($row['IsDisp'] == 'N')
+                                                    <div class="OTclass"><span class="red">직강전환</span></div>
                                                 @endif
                                                 @if($row['LearnPatternCcd'] == '615002')
                                                     <div class="w-tit pkg-tit">
@@ -171,7 +174,11 @@
                                                     </div>
                                                 @endif
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
+                                                    @if($row['IsDisp'] == 'N')
+                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
+                                                    @else
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
+                                                    @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -188,6 +195,8 @@
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
                                                 @elseif($row['RebuyCount'] >= $row['ExtenNum'])
                                                     <a><span class="bBox blueBox NSK">연장횟수초과({{$row['RebuyCount']}})</span></a>
+                                                @elseif($row['IsDisp'] == 'N')
+                                                    <a href="javascript:alert('직강으로 전환된 강좌로 변경이 불가능합니다.');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @else
                                                     <a href="javascript:;" onclick="fnExtend('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox blueBox NSK">수강연장({{$row['RebuyCount']}})</span></a>
                                                 @endif
@@ -201,6 +210,8 @@
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])
                                                     <a><span class="bBox whiteBox NSK">정지횟수초과(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
+                                                @elseif($row['IsDisp'] == 'N')
+                                                    <a href="javascript:alert('직강으로 전환된 강좌로 변경이 불가능합니다.');"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                                 @else
                                                     <a href="javascript:;" onclick="fnPause('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');"><span class="bBox whiteBox NSK">일시정지(<span class="tx-light-blue">{{$row['PauseCount']}}</span>)</span></a>
                                                 @endif
@@ -238,7 +249,7 @@
                                             </td>
                                             <td class="w-answer">
                                                 @if(true)
-                                                    <!-- 패키지강좌 재수강 불가 -->
+                                                    {{-- 패키지강좌 재수강 불가 --}}
                                                 @elseif($row['IsExten'] == 'N')
                                                     <a><span class="bBox blueBox NSK">수강연장불가</span></a>
                                                 @elseif($row['RebuyCount'] >= $row['ExtenNum'])
@@ -248,7 +259,7 @@
                                                 @endif
 
                                                 @if(true)
-                                                    <!-- 패키지강의 일시중지 불가 -->
+                                                    {{-- 패키지강의 일시중지 불가 --}}
                                                 @elseif($row['IsPause'] == 'N')
                                                     <a><span class="bBox whiteBox NSK">일시정지불가</span></a>
                                                 @elseif($row['PauseCount'] >= $row['PauseNum'])
@@ -280,10 +291,17 @@
                                                         </dt>
                                                     </dl><br/>
                                                     @if($subrow['LecTypeCcd'] == '607003')
-                                                        <div class="OTclass mr10"><span>직장인반</span></div>
+                                                        <div class="OTclass"><span>직장인반</span></div>
+                                                    @endif
+                                                    @if($subrow['IsDisp'] == 'N')
+                                                        <div class="OTclass"><span class="red">직강전환</span></div>
                                                     @endif
                                                     <div class="w-tit">
-                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                        @if($subrow['IsDisp'] == 'N')
+                                                            <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$subrow['subProdName']}}</a>
+                                                        @else
+                                                            <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                        @endif
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>
@@ -337,10 +355,18 @@
                                                     </dt>
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
-                                                    <div class="OTclass mr10"><span>직장인반</span></div>
+                                                    <div class="OTclass"><span>직장인반</span></div>
                                                 @endif
+                                                @if($row['IsDisp'] == 'N')
+                                                    <div class="OTclass"><span class="red">직강전환</span></div>
+                                                @endif
+                                                </div>
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    @if($row['IsDisp'] == 'N')
+                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$row['subProdName']}}</a>
+                                                    @else
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                    @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -389,10 +415,17 @@
                                                     </dt>
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
-                                                    <div class="OTclass mr10"><span>직장인반</span></div>
+                                                    <div class="OTclass"><span>직장인반</span></div>
+                                                @endif
+                                                @if($row['IsDisp'] == 'N')
+                                                    <div class="OTclass"><span class="red">직강전환</span></div>
                                                 @endif
                                                 <div class="w-tit">
-                                                    <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
+                                                    @if($row['IsDisp'] == 'N')
+                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$row['subProdName']}}</a>
+                                                    @else
+                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}"><span class="tx-red">[{{$row['PayRouteCcdName']}}]</span> {{$row['subProdName']}}</a>
+                                                    @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">
                                                     <dt>강의수 : <span class="tx-black">{{$row['wUnitLectureCnt']}}강</span></dt>
@@ -455,10 +488,17 @@
                                                         </dt>
                                                     </dl><br/>
                                                     @if($subrow['LecTypeCcd'] == '607003')
-                                                        <div class="OTclass mr10"><span>직장인반</span></div>
+                                                        <div class="OTclass"><span>직장인반</span></div>
+                                                    @endif
+                                                    @if($subrow['IsDisp'] == 'N')
+                                                        <div class="OTclass"><span class="red">직강전환</span></div>
                                                     @endif
                                                     <div class="w-tit">
-                                                        <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                        @if($subrow['IsDisp'] == 'N')
+                                                            <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$subrow['subProdName']}}</a>
+                                                        @else
+                                                            <a href="{{ site_url('/classroom/on/view/ongoing/') }}?o={{$subrow['OrderIdx']}}&p={{$subrow['ProdCode']}}&ps={{$subrow['ProdCodeSub']}}">{{$subrow['subProdName']}}</a>
+                                                        @endif
                                                     </div>
                                                     <dl class="w-info tx-gray">
                                                         <dt>강의수 : <span class="tx-black">{{$subrow['wUnitLectureCnt']}}강</span></dt>

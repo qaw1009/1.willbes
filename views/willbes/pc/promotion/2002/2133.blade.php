@@ -21,7 +21,10 @@
         .evt00 {background:#0a0a0a}  
         
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2133_top_bg.jpg) no-repeat center top;}
-     
+
+        .evt01 .check {width:800px; margin:0 auto; padding:20px; font-size:16px; color:#000; text-align:left; letter-spacing:-1px;}
+        .evt01 .check a {display:inline-block; padding:25px; color:#fff; background:#000; margin-left:250px; border-radius:50px; font-size:17px}
+
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2133_03_bg.jpg) no-repeat center top;} 
         
     </style>
@@ -45,6 +48,9 @@
 
         <div class="evtCtnsBox evt01" id="apply1">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2133_01.jpg"  alt="심화이론.기출 패키지" />
+            <div class="check">                    
+                <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2076" target="_blank">심화이론 · 기출 자세히 보기 ▶</a>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt02">

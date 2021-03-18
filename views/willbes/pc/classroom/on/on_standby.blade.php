@@ -109,9 +109,9 @@
                                                 @endif
                                                 <div class="w-tit">
                                                     @if($row['IsDisp'] == 'N')
-                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$row['subProdName']}}</a>
+                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                     @else
-                                                        <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                        <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                     @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">
@@ -326,9 +326,9 @@
                                                 @endif
                                                 <div class="w-tit">
                                                     @if($row['IsDisp'] == 'N')
-                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{{$row['subProdName']}}</a>
+                                                        <a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                     @else
-                                                        <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{{$row['subProdName']}}</a>
+                                                        <a href="{{ site_url('/classroom/on/view/standby/') }}?o={{$row['OrderIdx']}}&p={{$row['ProdCode']}}&ps={{$row['ProdCodeSub']}}">{!! ($row['SalePatternCcd'] == '694003') ? '<span class="tx-red">[수강연장]</span> ':'' !!}{{$row['subProdName']}}</a>
                                                     @endif
                                                 </div>
                                                 <dl class="w-info tx-gray">

@@ -375,7 +375,7 @@
                                             @if($subrow['LecTypeCcd'] == '607003')
                                                 <div class="OTclass"><span>직장인반</span></div>
                                             @endif
-                                            @if($row['IsDisp'] == 'N')
+                                            @if($subrow['IsDisp'] == 'N')
                                                 <div class="OTclass"><span class="red">직강전환</span></div>
                                             @endif
                                             <dl class="w-info">

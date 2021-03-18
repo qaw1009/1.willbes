@@ -4515,7 +4515,7 @@ body.memBody #Footer {
 	display: none;
 }
 .OTclass {
-	display: block;
+	display: inline-block;
 	margin-bottom: 5px;
 }
 .OTclass span {

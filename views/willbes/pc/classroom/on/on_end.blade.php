@@ -94,7 +94,10 @@
                                                     </dt>
                                                 </dl><br/>
                                                 @if($row['LecTypeCcd'] == '607003')
-                                                    <div class="OTclass mr10"><span>직장인반</span></div>
+                                                    <div class="OTclass"><span>직장인반</span></div>
+                                                @endif
+                                                @if($row['IsDisp'] == 'N')
+                                                    <div class="OTclass"><span class="red">직강전환</span></div>
                                                 @endif
                                                 @if($row['LearnPatternCcd'] == '615002')
                                                     <div class="w-tit pkg-tit">
@@ -117,6 +120,8 @@
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
                                                 @elseif($row['LearnPatternCcd'] == '615002' && $row['IsPackRetakeType'] == 'P')
                                                     <span class="bBox whiteBox NSK">재수강불가</span>
+                                                @elseif($row['IsDisp'] == 'N')
+                                                    <a href="javascript:alert('직강으로 전환된 강좌로 신청이 불가능합니다.');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @else
                                                     <a href="javascript:;" onclick="fnRetake('{{app_to_env_url($row['SiteUrl'])}}','{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}');"><span class="bBox blueBox NSK">재수강신청</span></a>
                                                 @endif
@@ -187,7 +192,10 @@
                                                         </dt>
                                                     </dl><br/>
                                                     @if($subrow['LecTypeCcd'] == '607003')
-                                                        <div class="OTclass mr10"><span>직장인반</span></div>
+                                                        <div class="OTclass"><span>직장인반</span></div>
+                                                    @endif
+                                                    @if($subrow['IsDisp'] == 'N')
+                                                        <div class="OTclass"><span class="red">직강전환</span></div>
                                                     @endif
                                                     <div class="w-tit">
                                                         {{$subrow['subProdName']}}

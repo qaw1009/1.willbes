@@ -1,26 +1,25 @@
 @extends('html.layouts.master')
 @section('content')
 <style>
-    .tabWrap.tabDepthProfSsam {height: 73px;}
-    .tabWrap.tabDepthProfSsam li {display:inline-block; height: 73px; float:left; width:33%; position:relative}
+    .tabWrap.tabDepthProfSsam {height:73px; border:0;}
+    .tabWrap.tabDepthProfSsam li {display:block; float:left; width:33%; position:relative}
     .tabWrap.tabDepthProfSsam li:nth-child(2) {width:34%;}
     .tabWrap.tabDepthProfSsam li a {
-        position:absolute;
         display: block;
         width: 100%;
-        height: 73px;
-        line-height: 73px;
         background: #bedaf4;
         font-size: 20px;
         font-weight: 600;
+        height:73px;
+        line-height:67px;
         color: #368adc !important;
         text-align: center;
+        border:3px solid #bedaf4;
+        border-bottom:3px solid #2784da;
         letter-spacing: 0;
-        border: 3px solid #bedaf4;
-        border-bottom: 3px solid #2784da;
         border-radius:8px 8px 0 0;
     }
-    .tabWrap.tabDepthProfSsam li a.on {background:#fff !important; border: 3px solid #2784da; border-bottom:0}
+    .tabWrap.tabDepthProfSsam li a.on {background:#fff !important; border: 3px solid #2784da; border-bottom:3px solid #fff;}
     .tabWrap.tabDepthProfSsam:after {content:''; display:block; clear:both}
 
     .AcadtabBox .tabContent .ssamTabGrid {

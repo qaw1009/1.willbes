@@ -55,9 +55,9 @@
                 <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
             @endforeach--}}
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
-            <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+{{--            <input type="hidden" name="target_param_names[]" value="직렬"/> --}}{{-- 체크 항목 전송 --}}
             <input type="hidden" name="register_type" value="promotion"/>
             <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
             <input type="hidden" name="register_chk_val[]" value=""/>-->
@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class="btn NGEB">
-                <a href="#none" onclick="javascript:fn_submit();">[학원] 첫날 무료 공개강의 신청하기 ></a> 
+                <a href="javascript:void(0);" onclick="fn_submit();">[학원] 첫날 무료 공개강의 신청하기 ></a>
             </div>
 		</div>
 
@@ -225,10 +225,6 @@
             }
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
                 alert('참여일을 선택하셔야 합니다.');
-                return;
-            }
-            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
-                alert('직렬을 선택하셔야 합니다.');
                 return;
             }
 

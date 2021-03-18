@@ -50,7 +50,11 @@
                                                             <li>강의가 없습니다.</li>
                                                         @else
                                                             @foreach($row['subleclist'] as $subrow)
-                                                                <li>{{$subrow['subProdName']}}</li>
+                                                                <li>{{$subrow['subProdName']}}
+                                                                    @if($subrow['IsDisp'] == 'N')
+                                                                        <span class="oBox changeBox ml5 NG">인강전환</span>
+                                                                    @endif
+                                                                </li>
                                                             @endforeach
                                                         @endif
                                                     </ul>

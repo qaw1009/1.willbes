@@ -489,31 +489,70 @@ class MemberPrivateModel extends WB_Model
         return $this->_conn->query('select ' . $column . $from . $where)->row_array();
     }
 
-    public function selectivity($prod_code)
+    /**
+     * 전체 성적 분석 > 전체 응시자 평균점수 분포표
+     * @param $prod_code
+     * @param $mr_idx
+     * @return mixed
+     */
+    public function selectivity($prod_code, $mr_idx)
     {
-        $query_string = "
-            (SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint <= 4) AS cnt_5
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 5 AND 9) AS cnt_10
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 10 AND 14) AS cnt_15
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 15 AND 19) AS cnt_20
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 20 AND 24) AS cnt_25
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 25 AND 29) AS cnt_30
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 30 AND 34) AS cnt_35
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 35 AND 39) AS cnt_40
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 40 AND 44) AS cnt_45
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 45 AND 49) AS cnt_50
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 50 AND 54) AS cnt_55
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 55 AND 59) AS cnt_60
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 60 AND 64) AS cnt_65
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 65 AND 69) AS cnt_70
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 70 AND 74) AS cnt_75
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 75 AND 79) AS cnt_80
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 80 AND 84) AS cnt_85
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 85 AND 89) AS cnt_90
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 90 AND 94) AS cnt_95
-            ,(SELECT COUNT(*) AS cnt FROM (SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A WHERE A.SumAdjustPoint BETWEEN 95 AND 100) AS cnt_100
+        $query_string = /** @lang text */ "
+            SELECT
+            DT.p_type, DT.cnt, IFNULL(MP.AvgAdjustPoint,0) AS MemAvgAdjustPoint
+            FROM (
+                SELECT a.p_type, IFNULL(b.cnt,0) AS cnt
+                FROM (
+                    SELECT num AS p_type FROM tmp_numbers WHERE (num%5)=0
+                ) AS a
+                LEFT JOIN (
+                    SELECT m.p_type, COUNT(*) AS cnt
+                    FROM (
+                        SELECT
+                            p.SumAdjustPoint
+                            ,CASE
+                            WHEN p.SumAdjustPoint < 5 THEN '5' WHEN p.SumAdjustPoint BETWEEN 5 AND 9 THEN '10'
+                            WHEN p.SumAdjustPoint BETWEEN 10 AND 14 THEN '15' WHEN p.SumAdjustPoint BETWEEN 15 AND 19 THEN '20'
+                            WHEN p.SumAdjustPoint BETWEEN 20 AND 24 THEN '25' WHEN p.SumAdjustPoint BETWEEN 25 AND 29 THEN '30'
+                            WHEN p.SumAdjustPoint BETWEEN 30 AND 34 THEN '35' WHEN p.SumAdjustPoint BETWEEN 35 AND 39 THEN '40'
+                            WHEN p.SumAdjustPoint BETWEEN 40 AND 44 THEN '45' WHEN p.SumAdjustPoint BETWEEN 45 AND 49 THEN '50'
+                            WHEN p.SumAdjustPoint BETWEEN 50 AND 54 THEN '55' WHEN p.SumAdjustPoint BETWEEN 55 AND 59 THEN '60'
+                            WHEN p.SumAdjustPoint BETWEEN 60 AND 64 THEN '65' WHEN p.SumAdjustPoint BETWEEN 65 AND 69 THEN '70'
+                            WHEN p.SumAdjustPoint BETWEEN 70 AND 74 THEN '75' WHEN p.SumAdjustPoint BETWEEN 75 AND 79 THEN '80'
+                            WHEN p.SumAdjustPoint BETWEEN 80 AND 84 THEN '85' WHEN p.SumAdjustPoint BETWEEN 85 AND 89 THEN '90'
+                            WHEN p.SumAdjustPoint BETWEEN 90 AND 94 THEN '95' WHEN p.SumAdjustPoint BETWEEN 95 AND 100 THEN '100'
+                            ELSE 'null'
+                            END AS p_type
+                        FROM (
+                            SELECT MrIdx, AVG(AdjustPoint) AS SumAdjustPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = ? GROUP BY MrIdx
+                        ) AS p
+                    ) AS m
+                    GROUP BY p_type
+                ) AS b ON a.p_type = b.p_type
+            ) AS DT            
+            LEFT JOIN (
+                SELECT
+                    p.AvgAdjustPoint
+                    ,CASE
+                    WHEN p.AvgAdjustPoint < 5 THEN '5' WHEN p.AvgAdjustPoint BETWEEN 5 AND 9 THEN '10'
+                    WHEN p.AvgAdjustPoint BETWEEN 10 AND 14 THEN '15' WHEN p.AvgAdjustPoint BETWEEN 15 AND 19 THEN '20'
+                    WHEN p.AvgAdjustPoint BETWEEN 20 AND 24 THEN '25' WHEN p.AvgAdjustPoint BETWEEN 25 AND 29 THEN '30'
+                    WHEN p.AvgAdjustPoint BETWEEN 30 AND 34 THEN '35' WHEN p.AvgAdjustPoint BETWEEN 35 AND 39 THEN '40'
+                    WHEN p.AvgAdjustPoint BETWEEN 40 AND 44 THEN '45' WHEN p.AvgAdjustPoint BETWEEN 45 AND 49 THEN '50'
+                    WHEN p.AvgAdjustPoint BETWEEN 50 AND 54 THEN '55' WHEN p.AvgAdjustPoint BETWEEN 55 AND 59 THEN '60'
+                    WHEN p.AvgAdjustPoint BETWEEN 60 AND 64 THEN '65' WHEN p.AvgAdjustPoint BETWEEN 65 AND 69 THEN '70'
+                    WHEN p.AvgAdjustPoint BETWEEN 70 AND 74 THEN '75' WHEN p.AvgAdjustPoint BETWEEN 75 AND 79 THEN '80'
+                    WHEN p.AvgAdjustPoint BETWEEN 80 AND 84 THEN '85' WHEN p.AvgAdjustPoint BETWEEN 85 AND 89 THEN '90'
+                    WHEN p.AvgAdjustPoint BETWEEN 90 AND 94 THEN '95' WHEN p.AvgAdjustPoint BETWEEN 95 AND 100 THEN '100'
+                    ELSE 'null'
+                    END AS p_type
+                FROM (
+                    SELECT IFNULL(AVG(AdjustPoint),0) AS AvgAdjustPoint FROM {$this->_table['mock_grades']} WHERE MrIdx = ?
+                ) AS p
+            ) AS MP ON DT.p_type = MP.p_type
+            ORDER BY DT.p_type
         ";
-        return $this->_conn->query('select ' . $query_string)->row_array();
+        return $this->_conn->query($query_string,[$prod_code, $mr_idx])->result_array();
     }
 
     /**

@@ -98,7 +98,7 @@
                                         <span class="w-subtxt">휴학 : {{$row['lastPauseStartDate']}} ~ {{$row['lastPauseEndDate']}}</span>
                                         <ul class="f_right one">
                                             @if($row['IsDisp'] == 'N')
-                                                <li class="btn_white f_right"><a href="javascript:alert('직강으로 전환된 강좌로 수강이 불가능합니다.');">일시정지해제</a></li>
+                                                <li class="btn_white f_right"><a href="javascript:alert('직강으로 전환된 강좌로 변경이 불가능합니다.');">일시정지해제</a></li>
                                             @else
                                                 <li class="btn_white f_right"><a href="javascript:;" onclick="fnRestart('{{$row['OrderIdx']}}','{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}','S');">일시정지해제</a></li>
                                             @endif

@@ -130,8 +130,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">                   
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1676_02_february.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/01/1676_02_march.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_march.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_april.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_may.jpg" /></li>
                 </ul>     
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>

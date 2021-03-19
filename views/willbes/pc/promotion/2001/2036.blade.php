@@ -110,7 +110,7 @@
             <div id="tab3">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2036_tab03_apply.png" usemap="#Map2036_tab03" title="경정" border="0" />
                 <map name="Map2036_tab03" id="Map2036_tab03">
-                    <area shape="rect" coords="798,102,955,156" href="javascript:alert('21년 2월중 오픈예정')" />
+                    <area shape="rect" coords="798,102,955,156" href="javascript:alert('21년 4월중 오픈예정')" />
                     <area shape="rect" coords="796,200,955,251" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178595" target="_blank" />
                 </map>
             </div>            
@@ -123,7 +123,7 @@
                 <area shape="rect" coords="830,527,987,578" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178597" target="_blank" />
                 <area shape="rect" coords="831,626,987,678" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178605" target="_blank" />
                 <area shape="rect" coords="831,727,988,777" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178604" target="_blank" />
-                <area shape="rect" coords="831,827,987,877" href="javascript:alert('21년 2월중 오픈예정')" />
+                <area shape="rect" coords="831,827,987,877" href="javascript:alert('21년 4월중 오픈예정')" />
                 <area shape="rect" coords="831,927,988,977" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178607" target="_blank" />
                 <area shape="rect" coords="831,1027,987,1079" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178608" target="_blank" />
                 <area shape="rect" coords="831,1127,987,1177" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178624" target="_blank" />

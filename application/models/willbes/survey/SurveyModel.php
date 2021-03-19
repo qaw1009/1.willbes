@@ -1283,7 +1283,9 @@ class SurveyModel extends WB_Model
             pg.TakeMockPart, pg.TakeArea, 
             (
             SELECT COUNT(*) FROM (
-                    SELECT * FROM {$this->_table['predictGradesOrigin']} GROUP BY MemIdx
+                    SELECT TakeArea,TakeMockPart,PredictIdx FROM {$this->_table['predictGradesOrigin']}
+                    WHERE PredictIdx = '{$PredictIdx}'
+                    GROUP BY MemIdx
                 ) AS A
                 WHERE TakeArea = pg.TakeArea AND TakeMockPart = pg.TakeMockPart AND PredictIdx = pg.PredictIdx 
             ) AS TakeOrigin,  

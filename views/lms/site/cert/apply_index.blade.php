@@ -49,7 +49,7 @@
 
                         <select class="form-control" id="search_no" name="search_no">
                             <option value="">회차</option>
-                            @for($i=1;$i<=10;$i++)
+                            @for($i=1;$i<=50;$i++)
                                 <option value="{{$i}}" @if($i == $arr_search['search_no']) selected @endif>{{$i}}</option>
                             @endfor
                         </select>

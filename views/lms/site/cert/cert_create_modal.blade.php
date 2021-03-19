@@ -12,7 +12,7 @@
 
 
 @section('layer_header')
-    <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+    <form class="form-horizontal form-label-left" id="regi_modal_form" name="regi_modal_form" method="POST" onsubmit="return false;" novalidate>
 
         {!! csrf_field() !!}
         {!! method_field($method) !!}
@@ -68,7 +68,7 @@
                     <label class="control-label col-md-2" for="No">인증회차 <span class="required">*</span></label>
                     <div class="col-md-4 form-inline item" >
                         <select class="form-control" id="No" name="No" title="인증회차" style="width:60px;">
-                            @for($i=1;$i<=20;$i++)
+                            @for($i=1;$i<=50;$i++)
                                 <option value="{{ $i }}" @if($data['No'] == $i) selected="selected"@endif>{{ $i }}</option>
                             @endfor
                         </select> 회
@@ -80,26 +80,32 @@
                         <input type="text" name="CertEndDate" id="CertEndDate" value="@if($method==='PUT'){{date("Y-m-d",strtotime($data['CertEndDate']))}}@endif" class="form-control datepicker" title="인증기간" style="width:100px;" required="required" >
                     </div>
                 </div>
-                <div class="form-group form-group-sm item addProduct">
-                    <label class="control-label col-md-2" for="No">선택 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                <div class="form-group form-group-sm item select_div" id="div_685001">
+                    <label class="control-label col-md-2" >선택 <span class="required">*</span></label>
+                    <div class="col-md-2">
                         <button type="button" id="searchPackage" class="btn btn-sm btn-primary btn-search-pass">무한패스검색</button>
-                        <span id="selected_lecture">
-                            @if(empty($data['productData_json']) === false)
+                    </div>
+                    <div class="col-md-8">
+                        <span id="selected_lecture" class="selected_content">
+                            @if($data['CertConditionCcd'] === '685001' && empty($data['productData_json']) === false)
                                 @foreach(json_decode($data['productData_json'], true) as $idx => $row)
-                                    <span id='prodcode_{{$row['ProdCode']}}'><input type='hidden'  name='ProdCode[]' value='{{$row['ProdCode']}}'>
-                                    [{{$row['ProdCode']}}] {{$row['ProdName']}}
-                                    <a href='javascript:;' onclick="rowDelete('prodcode_{{$row['ProdCode']}}')"><i class="fa fa-times red"></i></a>&nbsp;&nbsp;&nbsp;</span>
+                                    <span class="pr-10">
+                                        [{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                        <a href="#none" data-prod-code="{{$row['ProdCode']}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="ProdCode[]" value="{{$row['ProdCode']}}"/>
+                                    </span>
                                 @endforeach
                             @endif
                         </span>
                     </div>
                 </div>
-                <div class="form-group form-group-sm item addCoupon hide">
-                    <label class="control-label col-md-2" for="No">쿠폰선택 <span class="required">*</span></label>
-                    <div class="col-md-10">
+                <div class="form-group form-group-sm item select_div" id="div_685002">
+                    <label class="control-label col-md-2" >쿠폰선택 <span class="required">*</span></label>
+                    <div class="col-md-2">
                         <button type="button" id="searchCoupon" class="btn btn-sm btn-primary">쿠폰검색</button>
-                        <span id="selected_coupon">
+                    </div>
+                    <div class="col-md-8">
+                        <span id="selected_coupon" class="selected_content">
                             @if(empty($data['couponData_json']) === false)
                                 @foreach(json_decode($data['couponData_json'], true) as $idx => $row)
                                     <span id='coupon_{{$row['CouponIdx']}}'><input type='hidden'  name='CouponIdx[]' id='CouponIdx{{$row['CouponIdx']}}' value='{{$row['CouponIdx']}}'>
@@ -110,6 +116,26 @@
                         </span>
                     </div>
                 </div>
+                <div class="form-group form-group-sm item select_div" id="div_685004">
+                    <label class="control-label col-md-2" >상품선택 <span class="required">*</span></label>
+                    <div class="col-md-2">
+                        <button type="button" id="searchProduct" class="btn btn-sm btn-primary btn-search-product">온라인강좌검색</button>
+                    </div>
+                    <div class="col-md-8">
+                        <span id="selected_product" class="selected_content">
+                            @if($data['CertConditionCcd'] === '685004' && empty($data['productData_json']) === false)
+                                @foreach(json_decode($data['productData_json'], true) as $idx => $row)
+                                    <span class="pr-10">
+                                        [{{$row['ProdCode']}}] {{$row['ProdName']}}
+                                        <a href="#none" data-prod-code="{{$row['ProdCode']}}" class="selected-product-delete"><i class="fa fa-times red"></i></a>
+                                        <input type="hidden" name="prod_code[]" value="{{$row['ProdCode']}}"/>
+                                    </span>
+                                @endforeach
+                            @endif
+                        </span>
+                    </div>
+                </div>
+
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="IsAutoApproval">자동승인여부 <span class="required">*</span></label>
                     <div class="col-md-4">
@@ -135,7 +161,6 @@
                         </div>
                     </div>
                 </div>
-
             @if($method==="PUT")
                 <div class="form-group form-group-sm item">
                     <label class="control-label col-md-2" for="">등록자 </label>
@@ -159,41 +184,29 @@
                 </div>
             @endif
             <script type="text/javascript">
-                var $regi_form = $('#regi_form');
+                var $regi_modal_form = $('#regi_modal_form');
 
                 $(document).ready(function() {
 
-                    $regi_form.find('select[name="CateCode"]').chained("#site_code");
+                    $regi_modal_form.find('select[name="CateCode"]').chained("#site_code");
 
-                    $regi_form.on('ifChanged', 'input[name="CertConditionCcd"]:checked', function() {
+                    $regi_modal_form.on('ifChanged', 'input[name="CertConditionCcd"]:checked', function() {
                         elementHideShow($(this).val());
                     });
 
                     elementHideShow('{{$data['CertConditionCcd']}}');
 
                     function elementHideShow(strVal) {
-                        if(strVal == '685001' || strVal == '685004') {
-                            $('.addProduct').removeClass('hide');
-                            $('.addCoupon').addClass('hide');
-                            if(strVal == '685004') {
-                                $('.btn-search-pass').addClass('hide');
-                            } else {
-                                $('.btn-search-pass').removeClass('hide');
-                            }
-                        } else if(strVal == '685002') {
-                            $('.addProduct').addClass('hide');
-                            $('.addCoupon').removeClass('hide');
-                        } else {
-                            $('.addProduct').addClass('hide');
-                            $('.addCoupon').addClass('hide');
-                        }
+                        $div = $('.select_div');
+                        $div.addClass('hide');
+                        $div.each(function() {
+                            $('#div_'+strVal).removeClass('hide');
+                        });
                     }
-
                     //무한패스검색
                     $('#searchPackage').on('click', function(e) {
                         var id = 'selected_lecture';
                         if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
-
                         $('#searchPackage').setLayer({
                             'url' : '{{ site_url('common/searchPeriodPackage/')}}'+'?site_code='+$("#site_code").val()+'&locationid='+id
                             ,'width' : 1200
@@ -210,11 +223,19 @@
                         })
                     });
 
-                    // ajax submit
-                    $regi_form.submit(function() {
-                        var _url = '{{ site_url('/site/cert/cert/store') }}';
+                    //강좌상품검색
+                    $('#searchProduct').on('click', function(e) {
+                        if($("#site_code").val() == "") {alert("운영사이트를 선택해 주세요.");$("#site_code").focus();return;}
+                        $('#searchProduct').setLayer({
+                            'url' : '{{ site_url('/common/searchLectureAll/') }}?site_code=' + $("#site_code").val() + '&prod_type=on&return_type=inline&target_id=selected_product&target_field=prod_code&is_event=Y',
+                            'width' : 1200
+                        })
+                    });
 
-                        ajaxSubmit($regi_form, _url, function(ret) {
+                    // ajax submit
+                    $regi_modal_form.submit(function() {
+                        var _url = '{{ site_url('/site/cert/cert/store') }}';
+                        ajaxSubmit($regi_modal_form, _url, function(ret) {
                             if(ret.ret_cd) {
                                 notifyAlert('success', '알림', ret.ret_msg);
                                 $("#cert_create").modal('toggle');
@@ -225,24 +246,39 @@
 
                     function addValidate()
                     {
-                        if($('input:radio[name="CertConditionCcd"]:checked').val() == '685001') {
-                            if($("input[name='ProdCode[]']").length == 0) {
+                        $checked_type = $('input:radio[name="CertConditionCcd"]:checked').val();
+
+                        if($checked_type === '685001') {
+                            if($('#selected_lecture').find($("input[name='ProdCode[]']")).length == 0){
                                 alert('무한패스를 선택하여 주십시오.');$('#searchLecture').focus();return;
                             }
-                        } else if($('input:radio[name="CertConditionCcd"]:checked').val() == '685002') {
+                        } else if($checked_type === '685002') {
                             if( $("input[name='CouponIdx[]']").length == 0) {
                                 alert('쿠폰을 선택하여 주십시오.');$('#searchCoupon').focus();return;
                             }
-
+                        } else if($checked_type === '685004') {
+                            if($('#selected_product').find($("input[name='prod_code[]']")).length == 0){
+                                alert('온라인강좌를 선택하여 주십시오.');$('#searchProduct').focus();return;
+                            }
                         }
+
+                        $('.select_div').each(function(idx){
+                            if(this.id !== 'div_'+$checked_type) {
+                                $('#'+this.id).find('span.selected_content').children().remove();
+                            }
+                        });
+
                         return true;
                     }
+                });
+
+                $regi_modal_form.on('click', '.selected-product-delete', function() {
+                    $(this).parent().remove();
                 });
 
                 function rowDelete(strRow) {
                     $('#'+strRow).remove();
                 }
-
             </script>
         @stop
 

@@ -73,8 +73,9 @@
                     <th>인증조건</th>
                     <th>인증회차</th>
                     <th>인증기간</th>
-                    <th>무한패스선택명</th>
+                    <th>무한패스명</th>
                     <th>쿠폰선택명</th>
+                    <th>온라인강좌명</th>
                     <th>사용여부</th>
                     <th>등록자</th>
                     <th>등록일</th>
@@ -111,7 +112,6 @@
                 columns: [
                     {'data' : 'SiteName'},
                     {'data' : 'CateName'},
-                    //{'data' : 'CertIdx'},
                     {'data' : null, 'render' : function(data,type,row,meta){
                             return '<a href="/site/cert/apply/?search_type='+data.CertTypeCcd+'&search_no='+data.No+'" target="_new">'+data.CertIdx+'</a>';
                         }},
@@ -123,8 +123,13 @@
                     {'data' : null, 'render' : function(data,type,row,meta) {
                             return data.CertStartDate + ' ~ ' +data.CertEndDate;
                         }},
-                    {'data' : 'productData'},
+                    {'data' : null, 'render' : function(data,type,row,meta) {
+                            return data.CertConditionCcd === '685001' ? data.productData : '';
+                        }},
                     {'data' : 'couponData'},
+                    {'data' : null, 'render' : function(data,type,row,meta) {
+                            return data.CertConditionCcd === '685004' ? data.productData: '';
+                        }},
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                         }},

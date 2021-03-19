@@ -41,17 +41,16 @@ class CertModel extends WB_Model
             ]);
 
             if($this->_conn->set($input_data)->insert('lms_cert') === false) {
-                //echo var_dump($this->_conn->last_query());
                 throw new \Exception('인증 등록에 실패했습니다.');
             }
 
             $CertIdx = $this->_conn->insert_id();
 
-            if($this->_setProduct($input,$CertIdx) !== true) {
+            if($this->_setProduct($input, $CertIdx) !== true) {
                 throw new \Exception('무한패스 등록에 실패했습니다.');
             }
 
-            if($this->_setCoupon($input,$CertIdx) !== true) {
+            if($this->_setCoupon($input, $CertIdx) !== true) {
                 throw new \Exception('쿠폰 등록에 실패했습니다.');
             }
 
@@ -87,7 +86,7 @@ class CertModel extends WB_Model
             }
 
             if($this->_setProduct($input,$CertIdx) !== true) {
-                throw new \Exception('무한패스 등록에 실패했습니다.');
+                throw new \Exception('무한패스 또는 상품 등록에 실패했습니다.');
             }
 
             if($this->_setCoupon($input,$CertIdx) !== true) {
@@ -125,7 +124,7 @@ class CertModel extends WB_Model
     }
 
     /**
-     * 무한패스 상품 등록
+     * 무한패스/온라인 강좌 상품 등록
      * @param array $input
      * @param $CertIdx
      * @return bool|string
@@ -133,12 +132,22 @@ class CertModel extends WB_Model
     public function _setProduct($input=[],$CertIdx)
     {
         try {
-            /*  무한패스 상품 정보 상태값 변경 */
-            if($this->_setDataDelete($CertIdx,'lms_cert_r_product','무한패스') !== true) {
-                throw new \Exception('무한패스 수정에 실패했습니다.');
+            $CertConditionCcd = element('CertConditionCcd', $input);
+            $msg = '';
+
+            if($CertConditionCcd === '685001') {
+                $msg = '무한패스';
+                $ProdCode = element('ProdCode',$input);
+            } else if($CertConditionCcd === '685004') {
+                $msg = '상품';
+                $ProdCode = element('prod_code',$input);
+            } else {
+                $ProdCode = null;
             }
 
-            $ProdCode = element('ProdCode',$input);
+            if($this->_setDataDelete($CertIdx,'lms_cert_r_product') !== true) {
+                throw new \Exception($msg.' 수정에 실패했습니다.');
+            }
             if(empty($ProdCode) === false) {
                 for($i=0;$i<count($ProdCode);$i++) {
                     $data = [
@@ -148,8 +157,7 @@ class CertModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert('lms_cert_r_product') === false) {
-                        //echo $this->_conn->last_query();
-                        throw new \Exception('무한패스 등록에 실패했습니다.');
+                        throw new \Exception($msg.' 등록에 실패했습니다.');
                     }
 
                 }
@@ -167,15 +175,22 @@ class CertModel extends WB_Model
      * @param $CertIdx
      * @return bool|string
      */
-    public function _setCoupon($input=[],$CertIdx)
+    public function _setCoupon($input = [],$CertIdx)
     {
+
         try {
             /*  기존 쿠폰 정보 상태값 변경 */
-            if($this->_setDataDelete($CertIdx,'lms_cert_r_coupon','쿠폰') !== true) {
+            if($this->_setDataDelete($CertIdx,'lms_cert_r_coupon') !== true) {
                 throw new \Exception('쿠폰 수정에 실패했습니다.');
             }
 
-            $CouponIdx = element('CouponIdx',$input);
+            $CertConditionCcd = element('CertConditionCcd', $input);
+            if($CertConditionCcd === '685002') {
+                $CouponIdx = element('CouponIdx', $input);
+            } else {
+                $CouponIdx = null;
+            }
+
             if(empty($CouponIdx) === false) {
                 for($i=0;$i<count($CouponIdx);$i++) {
                     $data = [
@@ -185,7 +200,6 @@ class CertModel extends WB_Model
                     ];
 
                     if($this->_conn->set($data)->insert('lms_cert_r_coupon') === false) {
-                        //echo $this->_conn->last_query();
                         throw new \Exception('쿠폰 등록에 실패했습니다.');
                     }
 
@@ -209,7 +223,7 @@ class CertModel extends WB_Model
      * @param null $whereVal
      * @return bool|string
      */
-    public function _setDataDelete($CertIdx,$tablename,$msg,$whereType=null,$whereKey=null,$whereVal=null)
+    public function _setDataDelete($CertIdx, $tablename , $whereType=null, $whereKey=null, $whereVal=null)
     {
         try {
             /*  기존 정보 상태값 변경 */
@@ -225,8 +239,8 @@ class CertModel extends WB_Model
             }
 
             if ($this->_conn->update($tablename) === false) {
-                //echo $this->_conn->last_query();
-                throw new \Exception('이전 ' . $msg . ' 정보 수정에 실패했습니다.');
+                echo $this->_conn->last_query();
+                throw new \Exception('이전 정보 수정에 실패했습니다.');
             }
 
             /*  기존 정보 상태값 변경 */

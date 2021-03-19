@@ -26,11 +26,12 @@
         .evt01 {background:#fff}
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/03/1786_02_bg.jpg) no-repeat center}
         .evt03 {background:#e3e3e3}
-
-        .youtube {position:absolute; top:469px; left:50%; z-index:1;margin-left:-89px}
-        .youtube iframe {width:585px; height:345px}
-
+       
         .evt05 {background:#f4f4f4;}
+
+        .evt06 {position:relative;}
+        .youtube {position:absolute; top:468px; left:50%; z-index:1;margin-left:-93px}
+        .youtube iframe {width:585px; height:345px}
 
         .evt07 {background:#555; padding-bottom:100px}
 
@@ -90,11 +91,11 @@
 
         <div class="evtCtnsBox evt06">           
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1786_06.jpg" />
-            {{--
+            
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/hFgv1FgRe3I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}
+      
         </div>  
 
         <div class="evtCtnsBox evt07">

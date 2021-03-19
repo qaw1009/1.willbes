@@ -15,7 +15,7 @@
         @section('layer_content')
 
             <div class="form-group form-group-sm mb-0">
-                <p class="form-control-static"><span class="required">*</span> 검색한 무한패스를 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 불가합니다.)</p>
+                <p class="form-control-static"><span class="required">*</span> 검색한 무한패스를 선택 후 적용 버튼을 클릭해 주세요.</p>
             </div>
 
             <div class="form-group form-group-bordered pt-10 pb-5">
@@ -124,8 +124,6 @@
                         ]
                     });
 
-
-
                     // 전체선택
                     $datatable_modal.on('ifChanged', '#_is_all', function() {
                         if ($(this).prop('checked') === true) {
@@ -135,28 +133,26 @@
                         }
                     });
 
-
                     function sendContent() {
                         var addCnt = $("input[name='checkIdx']:checked").length;		//적용할 갯수
                         var allCnt = $("input[name='checkIdx']").length;		//노출된 전체 갯수
                         if(addCnt == 0) {alert("적용할 패키지가 없습니다. 선택 후 적용하여 주십시오.");return;}
                         if (!confirm('해당 기간제패키지를 적용하시겠습니까?')) {return;}
+                        var html = '';
 
                         for (i=0;i<allCnt;i++)	 {	//노출된 갯수에서 선택한 것만 적용되게끔...
-                            //##
-                            //if ( $("input:checkbox[id='checkIdx"+i+"']").is(":checked") == true  ) {
                             if ( $("input:checkbox[name='checkIdx']:eq("+i+")").is(":checked") == true  ) {
-                                //temp_data = $("#checkIdx"+i).val();
                                 temp_data = $("input:checkbox[name='checkIdx']:eq("+i+")").val();
                                 temp_data_arr = temp_data.split("@$");
-                                $(document).find("#" + $parent_location).append(
-                                    "<span id='prodcode_"+temp_data_arr[0]+"'><input type=\"hidden\" name=\"ProdCode[]\" value=\"" + temp_data_arr[0] + "\">" +
-                                    "["+temp_data_arr[0]+"]" + temp_data_arr[1]+"" +
-                                    "&nbsp;<a onclick='rowDelete(\"prodcode_"+temp_data_arr[0]+"\")' href=\"javascript:;\"><i class=\"fa fa-times red\"></i></a>" +
-                                    "&nbsp;&nbsp;&nbsp;</span>"
-                                );
+                                html += '<span class="pr-10">[' + temp_data_arr[0] + '] ' + temp_data_arr[1];
+                                html += '   <a href="#none" data-prod-code="' + temp_data_arr[0] + '" class="selected-product-delete"><i class="fa fa-times red"></i></a>';
+                                html += '   <input type="hidden" name="ProdCode[]" value="' + temp_data_arr[0] + '"/>';
+                                html += '</span>';
                             }
                         }
+
+                        $(document).find("#" + $parent_location).append(html);
+
                         $("#pop_modal").modal('toggle');
                     }
 

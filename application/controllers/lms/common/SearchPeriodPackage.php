@@ -46,9 +46,6 @@ class SearchPeriodPackage extends \app\controllers\BaseController
             ],
         ]);
 
-
-        //var_dump($arr_condition);
-
         $list = [];
         $count = $this->packagePeriodModel->listLecture(true, $arr_condition);
 

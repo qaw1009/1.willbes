@@ -9,7 +9,7 @@
         display: block;
         width: 100%;
         background: #bedaf4;
-        font-size: 17px;
+        font-size: 18px;
         height:70px;
         line-height:67px;
         color: #368adc !important;

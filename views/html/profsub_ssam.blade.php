@@ -1,37 +1,38 @@
 @extends('html.layouts.master')
 @section('content')
 <style>
-    .tabWrap.tabDepthProf li a {
+    .tabWrap.tabDepthProfSsam {height:73px; border:0;}
+    .tabWrap.tabDepthProfSsam li {display:block; float:left; width:33%; position:relative}
+    .tabWrap.tabDepthProfSsam li:nth-child(2) {width:34%;}
+    .tabWrap.tabDepthProfSsam li a {
         display: block;
         width: 100%;
-        height: 100%;
-        line-height: 50px;
-        background: #f5f5f5;
-        font-size: 13px;
+        background: #bedaf4;
+        font-size: 20px;
         font-weight: 600;
-        color: #4d4e57;
+        height:73px;
+        line-height:67px;
+        color: #368adc !important;
         text-align: center;
+        border:3px solid #bedaf4;
+        border-bottom:3px solid #2784da;
         letter-spacing: 0;
-        border: 1px solid #959595;
-        border-left: none;
-        border-bottom: 1px solid #376fce;
+        border-radius:8px 8px 0 0;
     }
-    .tabDepthProf_3 li:nth-child(1) {width:40%}
-    .tabDepthProf_3 li:nth-child(2) {width:40%}
-    .tabDepthProf_3 li:nth-child(3) {width:20%}
-    .tabDepthProf_3 li a.on {background:#376fce !important; color:#fff; border: 1px solid #376fce;}
+    .tabWrap.tabDepthProfSsam li a.on {background:#fff !important; border: 3px solid #2784da; border-bottom:3px solid #fff;}
+    .tabWrap.tabDepthProfSsam:after {content:''; display:block; clear:both}
 
     .AcadtabBox .tabContent .ssamTabGrid {
-        float: left;
         width: 100%;
-        padding: 20px 20px 0;
-        /*border-left: 1px solid #376fce;
-        border-right: 1px solid #376fce;*/
-        background:#376fce;
+        height:auto;
+        padding:20px 0;
+        background:#f4f4f4;        
     }
-    .ssamTabGrid .tabWrap.tabDepthAcad li {border-bottom: 1px solid #376fce;}
-    .ssamTabGrid .tabWrap.tabDepthAcad li a {border:0; border-right: 1px solid #376fce; background:#4980dc; color:#fff}
-    .ssamTabGrid .tabWrap.tabDepthAcad li a.on {border-right: 1px solid #376fce;  background: #fff; color:#376fce}
+    .ssamTabGrid .tabWrap.tabDepthAcad {border:0;height:22px;}
+    .ssamTabGrid .tabWrap.tabDepthAcad li {border:0}
+    .ssamTabGrid .tabWrap.tabDepthAcad li a {color:#666; border:0; border-right:1px solid #666; background:#f4f4f4; font-size:18px; height:22px; line-height:22px}
+    .ssamTabGrid .tabWrap.tabDepthAcad li a.on {background:#f4f4f4; font-weight:bold; color:#000}
+    .ssamTabGrid .tabWrap.tabDepthAcad li:last-child a {border:0}
 </style>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">
@@ -1267,7 +1268,7 @@
         <div class="willbes-Prof-Tabs">
             <div class="mb10">* 수강신청 시, “온라인강좌”와＂학원강좌”를 먼저 선택하신 후, 강의형태(패키지, 단과 등)를 선택하시면 됩니다. </div>
             <div class="ProfDetailWrap">
-                <ul class="tabWrap tabDepthProf tabDepthProf_3">
+                <ul class="tabWrap tabDepthProfSsam">
                     <li><a href="#Proftab1" class="on">온라인 강좌</a></li>
                     <li><a href="#Proftab2">학원 직강</a></li>
                     <li><a href="#Proftab3">교재 안내</a></li>
@@ -2834,7 +2835,7 @@
                     <div id="Proftab3" class="tabLink">
                         <div class="willbes-Lec NG c_both p_re">
                             <div class="willbes-Lec-Subject tx-dark-black bdb-dark-gray">
-                                교재
+                                ㆍ교재
                                 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}" alt="더보기"></a>
                             </div>
 

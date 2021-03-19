@@ -26,6 +26,8 @@
             <li role="presentation"><a role="tab" href="javascript:;" data-toggle="tab" onclick="tabShow(7);">학원종합반({{count($offpkg)}})</a></li>
         </ul>
     </div>
+    <div class="text-right"><b style="color:red">※ 전환처리 기능은 임용사이트만 사용하는 기능입니다.</b></div>
+
 </div>
 <!-- 단강좌 --->
 <div class="x_panel mt-10 leclist" style="" id="tab_lecture1">

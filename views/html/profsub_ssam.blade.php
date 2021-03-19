@@ -1,6 +1,7 @@
 @extends('html.layouts.master')
 @section('content')
 <style>
+    /*
     .tabWrap.tabDepthProfSsam {height:73px; border:0;}
     .tabWrap.tabDepthProfSsam li {display:block; float:left; width:33%; height:73px; border-bottom:3px solid #2784da; position:relative}
     .tabWrap.tabDepthProfSsam li:nth-child(2) {width:34%;}
@@ -32,7 +33,7 @@
     .ssamTabGrid .tabWrap.tabDepthAcad li {border:0}
     .ssamTabGrid .tabWrap.tabDepthAcad li a {color:#666; border:0; border-right:1px solid #666; background:#f4f4f4; font-size:16px; height:22px; line-height:22px}
     .ssamTabGrid .tabWrap.tabDepthAcad li a.on {background:#f4f4f4; font-weight:bold; color:#000}
-    .ssamTabGrid .tabWrap.tabDepthAcad li:last-child a {border:0}
+    .ssamTabGrid .tabWrap.tabDepthAcad li:last-child a {border:0}*/
 </style>
 <!-- Container -->
 <div id="Container" class="subContainer widthAuto c_both">

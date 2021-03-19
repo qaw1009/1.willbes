@@ -31,7 +31,7 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="sky" >
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2085" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/2133_sky.png" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2135" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/2133_sky.png" alt="스카이베너" ></a>
         </div>               
 
 		<div class="evtCtnsBox evt00">

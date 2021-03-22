@@ -131,9 +131,9 @@
 				</ul>
 				<div class="infoTit NG"><strong>종합반 구성</strong></div>
 				<ul>
-                    <li>1. 2022년 대비 기본완성 종합반[3/29~6/18](인강포함)<br/>
+                    <li>1. 2022년 대비 기본완성 종합반[3/29~6/23](인강포함)<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;- 수강기간동안 기본완성 인강제공</li>
-                    <li>2. 2022년 대비 기본완성 종합반[3/29~6/18](인강 미포함) </li>
+                    <li>2. 2022년 대비 기본완성 종합반[3/29~6/23](인강 미포함)</li>
 				</ul>
 				<div class="infoTit NG"><strong>유의사항</strong></div>
 				<ul>

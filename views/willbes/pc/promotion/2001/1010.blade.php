@@ -62,22 +62,10 @@
 
         .wb_cts03  {background:#274a35; margin-bottom:80px}
 
-        .skybanner {
-            position:fixed;
-            top:250px;
-            right:0;
-            width:280px;
-            z-index:1;
-            display:none;
-        }
- 
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="skybanner">
-            <div><a href="{{ site_url('/promotion/index/cate/3006/code/1012') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2017/11/EV171129_p_sky.png" alt="0원 입문특강" /></a></div>
-        </div>
-
         <div class="evtCtnsBox wb_cts01" >
             <div class="wb_popWrap">
                 <img src="https://static.willbes.net/public/images/promotion/2020/06/1010_top.jpg" alt="" />
@@ -90,7 +78,7 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1010_01.jpg" alt="" />
-            <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_04.gif" alt="" usemap="#Map181127_c" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1010_02.gif" alt="" usemap="#Map181127_c" border="0" />
             <map name="Map181127_c" >
                 <area shape="rect" coords="307,344,420,480" href="#tab01" alt="최근 5개년 기출문제"/>
                 <area shape="rect" coords="571,314,728,474" href="{{ site_url('/lecture/index/cate/3001/pattern/free?course_idx=1075') }}"  target="_blank" alt="무료기출해설 특강"/>
@@ -108,6 +96,11 @@
                         <col width="15%"  />
                         <col width=""  />
                         <col width="15%"  />
+                        <tr>
+                            <td>2021년 1차</td>
+                            <td>경찰공무원(일반/101단/전의경) 채용시험 기출</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3001?board_idx=323889" target="_blank">바로가기</a></td>
+                        </tr>
                         <tr>
                             <td>2020년 2차</td>
                             <td>경찰공무원(일반/101단/경행) 채용시험 기출</td>
@@ -201,6 +194,11 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
+                            <td>2020년 3차</td>
+                            <td>해양경찰(순경) 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3007?board_idx=326965" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
                             <td>2020년 1차</td>
                             <td>해양경찰(순경) 채용시험 기출문제</td>
                             <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3007?board_idx=283615&" target="_blank">바로가기</a></td>
@@ -261,7 +259,7 @@
                             <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162345&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=1') }}" target="_blank">바로가기</a></td>
                         </tr>
                     </table>
-                    <p class="mt30"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank"><img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_02_btn02.jpg" alt="" /></a></p>
+                    <p class="mt30"><a href="{{ site_url('/lecture/index/cate/3008/pattern/free?course_idx=1075') }}" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/1010_tab2_btn.jpg" alt="" /></a></p>
                 </div>
 
                 <div id="tab03" class="evtTabCts">
@@ -270,13 +268,18 @@
                         <col width=""  />
                         <col width="15%"  />
                         <tr>
-                            <td width="117">2020년 69기</td>
-                            <td width="374">경찰간부후보생 채용시험 기출문제</td>
+                            <td>2021년 70기</td>
+                            <td>경찰간부후보생 채용시험 기출문제</td>
+                            <td><a href="https://police.willbes.net/support/examQuestion/show/cate/3001?board_idx=326960" target="_blank">바로가기</a></td>
+                        </tr>
+                        <tr>
+                            <td>2020년 69기</td>
+                            <td>경찰간부후보생 채용시험 기출문제</td>
                             <td><a href="https://police.willbes.net/support/examQuestion/show/cate/?board_idx=258409&s_keyword=&view_type=&page=1" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
-                            <td width="117">2019년 68기</td>
-                            <td width="374">경찰간부후보생 채용시험 기출문제</td>
+                            <td>2019년 68기</td>
+                            <td>경찰간부후보생 채용시험 기출문제</td>
                             <td><a href="{{ site_url('/support/examQuestion/show/cate/?board_idx=162321&s_keyword=&view_type=&s_area=&s_year=&s_subject=&page=2') }}" target="_blank">바로가기</a></td>
                         </tr>
                         <tr>
@@ -298,12 +301,6 @@
                 </div>
             </div>
         </div>
-
-        {{--
-        <div class="evtCtnsBox wb_cts03">
-            <img src="http://file3.willbes.net/new_cop/2018/11/EV1811226Y_03.jpg"  alt="" />
-        </div>
-        --}}
 
         <!--  이모티콘 댓글 -->
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

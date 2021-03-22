@@ -631,7 +631,7 @@
                 var ele_id = 'MockExam';
                 var data = { 'ele_id' : ele_id };
 
-                sendAjax('{{ front_url('/mocktestNew/apply_cart_modal/') }}' + cart_idx, data, function(ret) {
+                sendAjax('{{ front_url('/mockTestNew/apply_cart_modal/') }}' + cart_idx, data, function(ret) {
                     $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
                 }, showAlertError, false, 'GET', 'html');
             });

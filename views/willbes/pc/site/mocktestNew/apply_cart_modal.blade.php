@@ -27,7 +27,7 @@
                 <tr>
                     <th class="w-tit">응시지역</th>
                     <td class="w-list">
-                        @if($mock_data['TakeFormsCcd'] == '690001')
+                        @if($cart_info['take_form'] == '690001')
                             전국
                         @else
                                 @if(empty($mock_area) == false)

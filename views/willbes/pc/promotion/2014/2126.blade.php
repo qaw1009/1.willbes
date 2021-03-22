@@ -129,7 +129,7 @@
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
         <div class="skybanner" >
-            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky01.png" alt="사전예약"></a>
+            <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/180404" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky01.png" alt="사전예약"></a>
             {{--<a href="#special"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky02.png" alt="맛보기"></a>--}}
         </div>  
 

@@ -7,7 +7,7 @@
     .evtCtnsBox img {width:100%; max-width:720px;}
     .evtTop {position:relative;}
 
-    .evt01 {position:relative;}
+    .evt01 {position:relative; background:#252525}
     .video-container {position:relative; padding-bottom:56.25%; padding-top:0; height:0; overflow: hidden;}
     .video-container iframe {position:absolute; top:0; left:0; width:100%; height:100%;}
 
@@ -107,14 +107,16 @@
     
     <div class="evtCtnsBox evt01">
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_01.jpg" alt="이커머스 전문 MD 최효진" >  
+        <br>
+        <br>
+        <br>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/vjPtDvb1Bng?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="4가지 포인트" >
-         
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="4가지 포인트" >         
     </div>    
 
     <div class="evtCtnsBox evt03">

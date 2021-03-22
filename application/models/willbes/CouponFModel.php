@@ -179,7 +179,7 @@ class CouponFModel extends WB_Model
                 and (                
                     case C.ApplyRangeType   # 적용범위
                         when "A" then "Y"
-                        when "I" then fn_coupon_item_validate(C.ApplySchoolYear, C.ApplyCourseIdx, C.ApplySubjectIdx, C.ApplyProfIdx, ?, ?, ?, ?)
+                        when "I" then fn_coupon_item_validate_v2(C.ApplySchoolYear, C.ApplyCourseIdx, C.ApplySubjectIdx, C.ApplyProfIdx, C.ApplyTakeFormCcd, ?, ?, ?, ?, ?)
                         when "P" then if(CP.ProdCodes like ?, "Y", "N")
                         else "N"
                     end			
@@ -195,6 +195,7 @@ class CouponFModel extends WB_Model
             element('CourseIdx', $arr_param),
             element('SubjectIdx', $arr_param),
             element('ProfIdx', $arr_param),
+            element('MockTakeFormCcd', $arr_param),
             '%' . element('ProdCode', $arr_param) . '%',    // ApplyRangeType : 특정상품 (P)
         ];
 

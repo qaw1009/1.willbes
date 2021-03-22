@@ -261,6 +261,7 @@
 </div>
 <!-- End Container -->
 
+{{--
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
         <a href="#evt05">
@@ -274,6 +275,7 @@
         <a href="#guide" class="infotxt">이용안내확인하기 ↓</a>
     </div>
 </div>
+--}}
 
 <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
 <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>

@@ -107,14 +107,13 @@ class CertApplyFModel extends WB_Model
                         join lms_cert_r_product B on A.CertIdx = B.CertIdx
                         join lms_product C on B.ProdCode = C.ProdCode
                         join lms_product_lecture D on C.ProdCode = D.ProdCode
-                        join lms_sys_code D1 on D.LearnPatternCcd = D1.Ccd
-                        join lms_sys_code D2 on D.PackTypeCcd = D2.Ccd
+                        left join lms_sys_code D1 on D.LearnPatternCcd = D1.Ccd and D1.IsStatus=\'Y\' 
+                        left join lms_sys_code D2 on D.PackTypeCcd = D2.Ccd and D2.IsStatus=\'Y\'
                         left outer join lms_product_r_category E on C.ProdCode = E.ProdCode and E.IsStatus=\'Y\'
                         left outer join lms_sys_category F on E.CateCode = F.CateCode and F.IsStatus=\'Y\'
-                    where  A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\' and D1.IsStatus=\'Y\' and D2.IsStatus=\'Y\' ';
+                    where  A.IsStatus=\'Y\' and B.IsStatus=\'Y\' and C.IsStatus=\'Y\'  ';
         $where  = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
         $query = $this->_conn->query('select '. $column .$from .$where)->result_array();
-        //echo 'select '. $column .$from .$where;
         return $query;
     }
 

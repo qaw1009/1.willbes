@@ -37,12 +37,11 @@
         .evt01 div a.active img.off,
         .evt01 div a:hover img.off {display:none}
         .evt01 div:after {content:""; display:block; clear:both}
-
         
         .evt02 {background:#F6AF47;}
 
         .evt03_tab {background:#fff}
-        .evt03_tab ul {width:920px; margin:0 auto}
+        .evt03_tab ul {width:1120px; margin:0 auto}
         .evt03_tab li { display:inline; float:left; width:25%}
         .evt03_tab li a {display:block; height:70px; line-height:70px; text-align:center; color:#232323; border:2px solid #0336c5; font-size:24px; border-right:0}
         .evt03_tab li:last-child {border-right:2px solid #0336c5;}

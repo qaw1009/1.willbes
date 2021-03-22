@@ -33,8 +33,8 @@
         .evtTop > div {width:768px; margin:0 auto; position:relative;}
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_01_bg.jpg) no-repeat center top; padding-bottom:200px}  
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_03_bg.jpg) no-repeat center top;}
-        .evt04 {background:#398062}  
-        .evt04 div {width:768px; margin:0 auto; position:relative}     
+        .evt04 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_04_bg.jpg) no-repeat center top;}  
+        .evt04 > div {width:768px; margin:0 auto; position:relative}     
 
         .evtCurriBox {padding:100px 0; text-align:left; background:#F5F5F5}
         .evtCurriBox .copy {width:720px; margin:0 auto;}
@@ -134,7 +134,10 @@
         </div>  
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="귀농창업" >      
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="귀농창업" >
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/180404" target="_blank" title="" style="position: absolute; left: 21.35%; top: 80.81%; width: 56.64%; height: 10.54%; z-index: 2;"></a>  
+            </div>  
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -154,8 +157,8 @@
 
         <div class="evtCtnsBox evt04">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.jpg" alt="사전예약 신청하기" >   
-                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/180404" title="" style="position: absolute; left: 14.84%; top: 62.23%; width: 35.55%; height: 14.88%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.gif" alt="사전예약 신청하기" >   
+                <a href="https://njob.willbes.net/lecture/show/cate/3114/pattern/only/prod-code/180404" title="" target="_blank" style="position: absolute; left: 53.78%; top: 66.78%; width: 39.84%; height: 16.53%; z-index: 2;"></a>
             </div>
         </div>
 

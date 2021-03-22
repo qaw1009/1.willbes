@@ -101,12 +101,12 @@
 
 <div id="Container" class="Container NSK c_both">            
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="리빙&인테리어" >
-        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/178874" title="알아보기" target="_blank" style="position: absolute; left: 10.02%; top: 82.69%; width: 77.54%; height: 10.79%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="귀농창업" >
+        <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/180404" target="_blank" title="" style="position: absolute; left: 21.35%; top: 80.81%; width: 56.64%; height: 10.54%; z-index: 2;"></a>  
     </div> 
     
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_01.jpg" alt="이커머스 전문 MD 최효진" >  
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_01.jpg" alt="전략원가연구소 소장 강용수" >  
         <br>
         <br>
         <br>
@@ -116,22 +116,22 @@
     </div> 
     
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="4가지 포인트" >         
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_02.jpg" alt="귀농귀촌 창업" >         
     </div>    
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_03.jpg" alt="20년 사업경력의 전문MD" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_03.jpg" alt="4차 산업혁명" >
     </div> 
 
     <div class="evtCtnsBox evt04">
         <div class="p_re">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.jpg" alt="사전예약 신청하기" >           
-            <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/180404" title="" style="position: absolute; left: 14.84%; top: 62.23%; width: 35.55%; height: 14.88%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_04.gif" alt="사전예약 신청하기" >           
+            <a href="https://njob.willbes.net/m/lecture/show/cate/3114/pattern/only/prod-code/180404" title="" target="_blank" style="position: absolute; left: 53.78%; top: 66.78%; width: 39.84%; height: 16.53%; z-index: 2;"></a>
         </div>
     </div>
 
     <div class="evtCtnsBox evt05">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_05.jpg" alt="1:1 개별 컨설팅" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_05.jpg" alt="이 강의가 필요하신 분" >
     </div> 
 
     <div class="evtCtnsBox" id="guide">
@@ -151,21 +151,20 @@
 </div> 
 <!-- End Container -->
 
-{{--
+
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
-        <a href="#evt05">
+        <a href="javascript:goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'on_lecture', 'Y');" onMouseDown="javascript:_PL('{{'https:'.front_url('/promotion/index/cate/3114/code/'.$data['PromotionCode'].'/order/Y')}}');">
         [온라인강의] 신청하기 >
         </a>
     </div>
-    <div class="infoCheck" id="chkInfo">   
-        <label>
-            <input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
-        </label>
-        <a href="#guide" class="infotxt">이용안내확인하기 ↓</a>
+    <div id="pass" class="infoCheck">
+        <input type="checkbox" name="y_pkg" value="180404" style="display: none;" checked/>
+        <input type="checkbox" id="is_chk" name="is_chk"><label for="is_chk">페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+        <a href="#infoText">이용안내 확인하기 ↓</a>
     </div>
 </div>
---}}
+
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">

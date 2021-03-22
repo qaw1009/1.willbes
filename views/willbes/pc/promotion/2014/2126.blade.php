@@ -34,7 +34,7 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_01_bg.jpg) no-repeat center top; padding-bottom:200px}  
         .evt03 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2126_03_bg.jpg) no-repeat center top;}
         .evt04 {background:#398062}  
-        .evt04 div {width:720px; margin:0 auto; position:relative}     
+        .evt04 div {width:768px; margin:0 auto; position:relative}     
 
         .evtCurriBox {padding:100px 0; text-align:left; background:#F5F5F5}
         .evtCurriBox .copy {width:720px; margin:0 auto;}
@@ -128,6 +128,11 @@
 
 
     <div class="p_re evtContent NSK c_both" id="evtContainer">
+        <div class="skybanner" >
+            <a href="#apply"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky01.png" alt="사전예약"></a>
+            {{--<a href="#special"><img src="https://static.willbes.net/public/images/promotion/2021/03/2126_sky02.png" alt="맛보기"></a>--}}
+        </div>  
+
 		<div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_top.jpg" alt="귀농창업" >      
         </div>

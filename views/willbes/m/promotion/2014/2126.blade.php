@@ -132,7 +132,7 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2126_05.jpg" alt="1:1 개별 컨설팅" >
     </div> 
 
-    <div class="evtCtnsBox" id="infoText">
+    <div class="evtCtnsBox" id="guide">
         <div class="evtFooter">
             <h3 class="NSK-Black">[이용안내]</h3>
             <p># 사전예약 및 강의 안내</p>
@@ -148,6 +148,22 @@
     </div> 
 </div> 
 <!-- End Container -->
+
+{{--
+<div class="btnbuyBox">
+    <div class="btnbuy NSK-Black">     
+        <a href="#evt05">
+        [온라인강의] 신청하기 >
+        </a>
+    </div>
+    <div class="infoCheck" id="chkInfo">   
+        <label>
+            <input name="ischk" type="checkbox" value="Y" />페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+        </label>
+        <a href="#guide" class="infotxt">이용안내확인하기 ↓</a>
+    </div>
+</div>
+--}}
 
 <script src="/public/vendor/starplayer/js/starplayer_app.js"></script>
 <script type="text/javascript">

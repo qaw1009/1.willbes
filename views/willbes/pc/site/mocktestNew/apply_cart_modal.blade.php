@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th class="w-tit">응시형태</th>
-                    <td class="w-list"> {{$mock_data['TakeFormsCcd_Name']}}</td>
+                    <td class="w-list"> {{$arr_take_forms[$cart_info['take_form']]}}</td>
                     <th class="w-tit">응시분야</th>
                     <td class="w-list">{{$mock_data['CateName']}}</td>
                 </tr>

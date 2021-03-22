@@ -6,7 +6,7 @@ require_once APPPATH . 'controllers/willbes/share/support/SupportMockTest.php';
 class MockTestNew extends SupportMockTest
 /*class MockTestNew extends \app\controllers\FrontController*/
 {
-    protected $models = array('mocktestNew/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
+    protected $models = array('order/cartF','mocktestNew/mockInfoF', 'categoryF', '_lms/sys/code', 'support/supportBoardTwoWayF', 'support/supportBoardF', 'downloadF');
     protected $helpers = array('download');
     protected $auth_controller = false;
     protected $auth_methods = array('apply_modal','apply_cart_modal','apply_order', 'createQna');
@@ -164,10 +164,13 @@ class MockTestNew extends SupportMockTest
     {
         $cart_idx = $params[0];
 
-        $cart_info = $this->mockInfoFModel->findCartByCartIdx($cart_idx);
+        // 장바구니 조회
+        $cart_info = $this->cartFModel->findCartByCartIdx($cart_idx, $this->session->userdata('mem_idx'));
+        if (empty($cart_info) === true) {
+            return $this->json_error('장바구니 조회에 실패했습니다.', _HTTP_BAD_REQUEST);
+        }
 
         $cart_info['PostData'] = json_decode($cart_info['PostData'], true);
-
         $cart_info['take_form'] =$cart_info['PostData']['mock_exam']['take_form'];          //응시형태
         $cart_info['take_area'] =$cart_info['PostData']['mock_exam']['take_area'];          //지역
         $cart_info['take_part'] =$cart_info['PostData']['mock_exam']['take_part'];          //직렬
@@ -175,10 +178,7 @@ class MockTestNew extends SupportMockTest
         $cart_info['subject_sub'] =$cart_info['PostData']['mock_exam']['subject_sub'];  //선택과목
         $cart_info['add_point'] =$cart_info['PostData']['mock_exam']['add_point'];      //가산점
 
-        //dd($cart_info);
-
         $prod_code = $cart_info['ProdCode'];
-
         if (empty($prod_code) === true) {
             return $this->json_error('모의고사 코드가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
         }
@@ -191,23 +191,20 @@ class MockTestNew extends SupportMockTest
         ];
 
         $mock_data = $this->mockInfoFModel->listMockTest(false, $arr_condition,null,null,null, null)[0];
-
         if (empty($mock_data) === true) {
             return $this->json_error('모의고사 정보가 존재하지 않습니다.', _HTTP_BAD_REQUEST);
         }
 
+        //응시형태 공통코드
+        $arr_take_forms = $this->codeModel->getCcd('690');
         //직렬 추출
         $mock_part = $this->mockInfoFModel->listMockTestMockPart($prod_code);
-
         //응시지역 추출
         $mock_area = $this->mockInfoFModel->listMockTestArea($prod_code);
-
         //필수 과목정보 추출
         $subject_ess = $this->mockInfoFModel->listMockTestSubject($prod_code, 'E');
-
         //선택 과목정보 추출
         $subject_sub = $this->mockInfoFModel->listMockTestSubject($prod_code, 'S');
-
         //가산점 추출
         $mock_addpoint = $this->mockInfoFModel->listMockTestAddPoint($prod_code);
 
@@ -220,7 +217,8 @@ class MockTestNew extends SupportMockTest
             'subject_ess' => $subject_ess,
             'subject_sub' => $subject_sub,
             'mock_addpoint' => $mock_addpoint,
-            'cart_info' => $cart_info
+            'cart_info' => $cart_info,
+            'arr_take_forms' => $arr_take_forms
         ]);
     }
 

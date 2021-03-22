@@ -15,7 +15,7 @@ class MyCoupon extends \app\controllers\FrontController
 
     /**
      * 쿠폰적용 목록 페이지
-     * @return CI_Output
+     * @return mixed
      */
     public function index()
     {
@@ -61,6 +61,9 @@ class MyCoupon extends \app\controllers\FrontController
             $coupon_apply_type_ccd = element($cart_data['SalePatternCcd'], $this->couponFModel->_coupon_apply_type_ccd);
         }
 
+        // 모의고사 응시형태
+        $mock_take_form_ccd = array_get(json_decode($cart_data['PostData'], true), 'mock_exam.take_form');
+
         // 적용가능한 쿠폰조회
         $arr_param = [
             'SiteCode' => $cart_data['SiteCode'],
@@ -73,12 +76,13 @@ class MyCoupon extends \app\controllers\FrontController
             'CourseIdx' => $cart_data['CourseIdx'],
             'SubjectIdx' => $cart_data['SubjectIdx'],
             'ProfIdx' => $cart_data['ProfIdx'],
+            'MockTakeFormCcd' => $mock_take_form_ccd,
             'ProdCode' => $cart_data['ProdCode'],
         ];
 
         $results['usable'] = $this->couponFModel->listMemberProductCoupon(false, $arr_param, null, null, ['CD.CdIdx' => 'desc']);
 
-        $this->load->view('site/order/my_coupon_list', [
+        return $this->load->view('site/order/my_coupon_list', [
             'ele_id' => $this->_req('ele_id'),
             'arr_coupon_detail_idx' => $arr_coupon_detail_idx,
             'cart_data' => $cart_data,

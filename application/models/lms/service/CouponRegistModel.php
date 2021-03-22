@@ -18,7 +18,8 @@ class CouponRegistModel extends WB_Model
         'CouponType' => '644',
         'ApplyType' => '645',
         'LecType' => '646',
-        'IssueType' => '647'
+        'IssueType' => '647',
+        'MockTakeForm' => '690'
     ];
     public $_coupon_type_ccd = ['coupon' => '644001', 'voucher' => '644002'];   // 쿠폰유형 (할인권, 수강권)
     public $_apply_type_to_lec_ccds = ['645001', '645002', '645003', '645004']; // 온라인강좌, 수강연장, 배수, 학원강좌
@@ -228,7 +229,7 @@ class CouponRegistModel extends WB_Model
     {
         $column = '
             C.CouponIdx, C.SiteCode, C.CouponName, C.CouponTypeCcd, C.PinType, C.PinIssueCnt, C.DeployType, C.ApplyTypeCcd, C.LecTypeCcds, C.ApplyRangeType
-                , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.DiscType, C.DiscRate, C.DiscAllowPrice
+                , C.ApplySchoolYear, C.ApplySubjectIdx, C.ApplyCourseIdx, C.ApplyProfIdx, C.ApplyTakeFormCcd, C.DiscType, C.DiscRate, C.DiscAllowPrice
                 , C.IssueStartDate, C.IssueEndDate, C.ValidDay, C.ValidEndDatm
                 , left(ValidEndDatm, 10) as ValidEndDate, substring(ValidEndDatm, 12, 2) as ValidEndHour, substring(ValidEndDatm, 15, 2) as ValidEndMin
                 , C.CouponDesc, C.IsIssue, C.RegDatm, C.RegAdminIdx, C.UpdDatm, C.UpdAdminIdx
@@ -259,10 +260,11 @@ class CouponRegistModel extends WB_Model
             $apply_type_ccd = element('apply_type_ccd', $input);
             $lec_type_ccd = (in_array($apply_type_ccd, $this->_apply_type_to_lec_ccds) === true) ? implode(',', element('lec_type_ccd', $input)) : '';
             $apply_range_type = (in_array($apply_type_ccd, $this->_apply_type_to_range_ccds) === true) ? element('apply_range_type', $input, 'A') : 'A';
-            $apply_school_year = ($apply_range_type == 'I') ? element('apply_school_year', $input) : '';
-            $apply_subject_idx = ($apply_range_type == 'I') ? element('apply_subject_idx', $input) : '';
-            $apply_course_idx = ($apply_range_type == 'I') ? element('apply_course_idx', $input) : '';
-            $apply_prof_idx = ($apply_range_type == 'I') ? element('apply_prof_idx', $input) : '';
+            $apply_school_year = ($apply_range_type == 'I' && $apply_type_ccd != $this->_apply_type_to_mock_ccd) ? element('apply_school_year', $input) : '';
+            $apply_subject_idx = ($apply_range_type == 'I' && $apply_type_ccd != $this->_apply_type_to_mock_ccd) ? element('apply_subject_idx', $input) : '';
+            $apply_course_idx = ($apply_range_type == 'I' && $apply_type_ccd != $this->_apply_type_to_mock_ccd) ? element('apply_course_idx', $input) : '';
+            $apply_prof_idx = ($apply_range_type == 'I' && $apply_type_ccd != $this->_apply_type_to_mock_ccd) ? element('apply_prof_idx', $input) : '';
+            $apply_mock_take_form_ccd = ($apply_range_type == 'I' && $apply_type_ccd == $this->_apply_type_to_mock_ccd) ? element('apply_mock_take_form_ccd', $input) : null;
 
             // 쿠폰유형이 수강권일 경우 할인율 100%로 고정
             if ($coupon_type_ccd == $this->_coupon_type_ccd['voucher']) {
@@ -296,6 +298,7 @@ class CouponRegistModel extends WB_Model
                 'ApplySubjectIdx' => $apply_subject_idx,
                 'ApplyCourseIdx' => $apply_course_idx,
                 'ApplyProfIdx' => $apply_prof_idx,
+                'ApplyTakeFormCcd' => $apply_mock_take_form_ccd,
                 'DiscType' => $disc_type,
                 'DiscRate' => $disc_rate,
                 'DiscAllowPrice' => element('disc_allow_price', $input),

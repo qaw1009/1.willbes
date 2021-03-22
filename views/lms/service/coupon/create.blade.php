@@ -148,7 +148,7 @@
                     <label class="control-label col-md-2" for="school_year">항목별 적용
                     </label>
                     <div class="col-md-9 form-inline">
-                        <div class="inline-block mr-5 item">
+                        <div class="form-item-nm-input mr-5 item" style="display: inline-block;">
                             <select class="form-control" id="apply_school_year" name="apply_school_year" title="대비학년도">
                                 <option value="">대비학년도</option>
                                 @for($i = (date('Y')+1); $i >= 2010; $i--)
@@ -156,7 +156,7 @@
                                 @endfor
                             </select>
                         </div>
-                        <div class="inline-block mr-5 item">
+                        <div class="form-item-nm-input mr-5 item" style="display: inline-block;">
                             <select class="form-control" id="apply_course_idx" name="apply_course_idx" title="과정">
                                 <option value="">과정</option>
                                 @foreach($arr_course as $row)
@@ -164,7 +164,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="inline-block mr-5 item">
+                        <div class="form-item-nm-input mr-5 item" style="display: inline-block;">
                             <select class="form-control" id="apply_subject_idx" name="apply_subject_idx" title="과목">
                                 <option value="">과목</option>
                                 @foreach($arr_subject as $row)
@@ -172,11 +172,19 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="inline-block mr-5 item">
+                        <div class="form-item-nm-input mr-5 item" style="display: inline-block;">
                             <select class="form-control" id="apply_prof_idx" name="apply_prof_idx" title="교수">
                                 <option value="">교수</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($row['ProfIdx'] == $data['ApplyProfIdx']) selected="selected" @endif>{{ $row['wProfName'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-item-mock-input mr-5 item" style="display: none;">
+                            <select class="form-control" id="apply_mock_take_form_ccd" name="apply_mock_take_form_ccd" title="모의고사응시형태" disabled="disabled">
+                                <option value="">응시형태</option>
+                                @foreach($arr_mock_take_form_ccd as $key => $val)
+                                    <option value="{{ $key }}" @if($key == $data['ApplyTakeFormCcd']) selected="selected" @endif>{{ $val }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -361,6 +369,7 @@
                 $regi_form.find('select[name="apply_course_idx"]').prop('disabled', true);
                 $regi_form.find('select[name="apply_subject_idx"]').prop('disabled', true);
                 $regi_form.find('select[name="apply_prof_idx"]').prop('disabled', true);
+                $regi_form.find('select[name="apply_mock_take_form_ccd"]').prop('disabled', true);
                 $regi_form.find('input[name="disc_rate"]').prop('disabled', true);
                 $regi_form.find('select[name="disc_type"]').prop('disabled', true);
                 $regi_form.find('input[name="disc_allow_price"]').prop('disabled', true);
@@ -476,6 +485,8 @@
             // 쿠폰적용구분 선택
             $regi_form.on('ifChanged ifCreated', 'input[name="apply_type_ccd"]:checked', function(evt) {
                 var arr_set = $(this).data('input').split(':');
+                var $form_item_nm_input = $('.form-item-nm-input');     // 온라인/학원강좌상품, 교재 항목별 입력폼
+                var $form_item_mock_input = $('.form-item-mock-input'); // 모의고사 항목별 입력폼
 
                 // input 초기화
                 $('#category').removeClass('hide');
@@ -513,18 +524,25 @@
 
                 if (arr_set[1] === 'range') {
                     $('#apply_range').removeClass('hide').addClass('show');
+                    $form_item_nm_input.css('display', 'inline-block');
+                    $form_item_mock_input.css('display', 'none');
 
-                    if (evt.type === 'ifChanged') {
-                        // 이전 선택사항 유지
-                        $regi_form.find('input[name="apply_range_type"]:checked').iCheck('uncheck').iCheck('check');
+                    // 모의고사
+                    if (arr_set[2] === 'mock_exam') {
+                        $form_item_nm_input.css('display', 'none');
+                        $form_item_mock_input.css('display', 'inline-block');
                     }
-                }
 
-                // 모의고사
-                if (arr_set[2] === 'mock_exam') {
                     if (evt.type === 'ifChanged') {
-                        // 특정상품 선택
-                        $regi_form.find('input[name="apply_range_type"][value="I"]').prop('disabled', true).iCheck('update');
+                        $regi_form.find('input[name="apply_range_type"]:checked').iCheck('uncheck').iCheck('check');    // 이전 선택사항 유지
+                        $form_item_nm_input.find('select').prop('disabled', false);
+                        $form_item_mock_input.find('select').prop('disabled', true);
+
+                        // 모의고사
+                        if (arr_set[2] === 'mock_exam') {
+                            $form_item_nm_input.find('select').prop('disabled', true);
+                            $form_item_mock_input.find('select').prop('disabled', false);
+                        }
                     }
                 }
             });

@@ -346,6 +346,9 @@ class OrderFModel extends BaseOrderFModel
             $coupon_apply_type_ccd = element($cart_row['SalePatternCcd'], $this->couponFModel->_coupon_apply_type_ccd);
         }
 
+        // 모의고사 응시형태
+        $mock_take_form_ccd = array_get(json_decode($cart_row['PostData'], true), 'mock_exam.take_form');
+
         $arr_param = [
             'SiteCode' => $cart_row['SiteCode'],
             'CateCode' => $cart_row['CateCode'],
@@ -357,6 +360,7 @@ class OrderFModel extends BaseOrderFModel
             'CourseIdx' => $cart_row['CourseIdx'],
             'SubjectIdx' => $cart_row['SubjectIdx'],
             'ProfIdx' => $cart_row['ProfIdx'],
+            'MockTakeFormCcd' => $mock_take_form_ccd,
             'ProdCode' => $cart_row['ProdCode'],
             'CdIdx' => $coupon_detail_idx
         ];
@@ -1955,9 +1959,9 @@ class OrderFModel extends BaseOrderFModel
             // 주문 식별자
             $order_idx = $this->_conn->insert_id();
 
-            // 주문상품 데이터 등록
+            // 주문상품 데이터 등록 => 자동지급상품, 자동지급쿠폰 부여여부 (정책변경 : 미지급 -> 지급 (2021.03.22))
             foreach ($order_prod_data as $order_prod_row) {
-                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row, false);
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }

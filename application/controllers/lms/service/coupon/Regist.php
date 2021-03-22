@@ -205,8 +205,8 @@ class Regist extends \app\controllers\BaseController
             $available_pin_cnt = $this->couponPinModel->getAvailableCouponPinCnt();
         }
 
-        // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분 코드 조회
-        $codes = $this->_getCodes([$this->_ccd['CouponType'], $this->_ccd['ApplyType'], $this->_ccd['LecType']]);
+        // 쿠폰유형, 쿠폰적용구분, 쿠폰상세적용구분, 모의고사응시형태 코드 조회
+        $codes = $this->_getCodes([$this->_ccd['CouponType'], $this->_ccd['ApplyType'], $this->_ccd['LecType'], $this->_ccd['MockTakeForm']]);
 
         // 과정, 과목, 교수 조회
         $arr_course = $this->courseModel->getCourseArray();
@@ -221,6 +221,7 @@ class Regist extends \app\controllers\BaseController
             'arr_coupon_type_ccd' => $codes[$this->_ccd['CouponType']],
             'arr_apply_type_ccd' => $codes[$this->_ccd['ApplyType']],
             'arr_lec_type_ccd' => $codes[$this->_ccd['LecType']],
+            'arr_mock_take_form_ccd' => $codes[$this->_ccd['MockTakeForm']],
             'arr_course' => $arr_course,
             'arr_subject' => $arr_subject,
             'arr_professor' => $arr_professor,
@@ -248,7 +249,7 @@ class Regist extends \app\controllers\BaseController
             $method = 'add';
             $rules = array_merge($rules, [
                 ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'cate_code[]', 'label' => '카테고리 선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_range_ccds) . ',' . $this->couponRegistModel->_apply_type_to_mock_ccd . ']'],
+                ['field' => 'cate_code[]', 'label' => '카테고리 선택', 'rules' => 'callback_validateRequiredIf[apply_type_ccd,' . implode(',', $this->couponRegistModel->_apply_type_to_range_ccds) . ']'],
                 ['field' => 'deploy_type', 'label' => '쿠폰배포루트', 'rules' => 'trim|required|in_list[N,F]'],
                 ['field' => 'coupon_type_ccd', 'label' => '쿠폰유형', 'rules' => 'trim|required'],
                 ['field' => 'pin_type', 'label' => '쿠폰핀번호유형', 'rules' => 'trim|required|callback_validateRequiredIf[deploy_type,F]|in_list[S,R]'],
@@ -272,10 +273,20 @@ class Regist extends \app\controllers\BaseController
             return null;
         }
         
-        // 적용범위가 항목별일 경우 대비학년도, 과정, 과목, 교수 중 하나 이상 등록 필수
-        if ($this->_reqP('apply_range_type') == 'I' && empty($this->_reqP('apply_school_year')) === true && empty($this->_reqP('apply_course_idx')) === true
-            && empty($this->_reqP('apply_subject_idx')) === true && empty($this->_reqP('apply_prof_idx')) === true) {
-            return $this->json_error('대비학년도, 과정, 과목, 교수 중 하나 이상의 필드를 입력해 주십시오.');
+        // 적용범위가 항목별일 경우
+        if ($this->_reqP('apply_range_type') == 'I') {
+            if ($this->_reqP('apply_type_ccd') == $this->couponRegistModel->_apply_type_to_mock_ccd) {
+                // 모의고사 응시형태 등록 필수
+                if (empty($this->_reqP('apply_mock_take_form_ccd')) === true) {
+                    return $this->json_error('응시형태를 선택해 주십시오.');
+                }
+            } else {
+                // 대비학년도, 과정, 과목, 교수 중 하나 이상 등록 필수
+                if (empty($this->_reqP('apply_school_year')) === true && empty($this->_reqP('apply_course_idx')) === true
+                    && empty($this->_reqP('apply_subject_idx')) === true && empty($this->_reqP('apply_prof_idx')) === true) {
+                    return $this->json_error('대비학년도, 과정, 과목, 교수 중 하나 이상의 필드를 선택해 주십시오.');
+                }
+            }
         }
 
         // 수강권일 경우 1개의 상품만 등록 가능

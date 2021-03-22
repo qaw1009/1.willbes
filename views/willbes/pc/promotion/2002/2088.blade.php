@@ -3,15 +3,10 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">       
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
-            background:#ccc;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
@@ -20,7 +15,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .sky {position:fixed; top:200px; right:0; z-index:1;}
+        .sky {position:fixed; top:200px; right:10px; width:130px; z-index:1;}
         .sky ul li {padding-bottom:25px;}
 
         .evt_top_banner {background: url(https://static.willbes.net/public/images/promotion/2021/03/2088_top_banner_bg.jpg) no-repeat center top;}   
@@ -49,22 +44,14 @@
         .evt03_tab {background:#fff}
         .evt03_tab ul {width:920px; margin:0 auto}
         .evt03_tab li { display:inline; float:left; width:25%}
-        .evt03_tab li a {display:block; height:70px; line-height:70px; text-align:center; color:#232323; border:2px solid #0336c5;font-size:24px}
+        .evt03_tab li a {display:block; height:70px; line-height:70px; text-align:center; color:#232323; border:2px solid #0336c5; font-size:24px; border-right:0}
+        .evt03_tab li:last-child {border-right:2px solid #0336c5;}
         .evt03_tab li a.active {background:#0336c5; color:#fff}
         .evt03_tab:after {content:""; display:block; clear:both}
 
         .evt03 {background:#fff;position:relative;}
         .youtube {position:absolute; top:330px; left:50%;z-index:1;margin-left:-161px}
         .youtube iframe {width:622px; height:365px}
-
-        /*
-        .evt01 {position:relative;padding-bottom:100px;}
-        .youtubeGod iframe{width:500px;height:300px;position:absolute;left:50%;top:45%;margin-left:-250px;margin-top:65px;}
-
-        .evt01 .btn {clear:both; width:450px; margin:0 auto;}
-        .evt01 .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
-        .evt01 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
-        */
 
        .evt04 {background:#29019F}
 
@@ -181,10 +168,10 @@
             <div class="evtCtnsBox evt03_tab">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_03.jpg" title="교수진 자세히 보기">                                          
                 <ul class="tabs NGEB">
-                    <li><a href="#tab01" class="active">송무빈 DREAM반</a></li>
+                    <li><a href="#tab01">송무빈 DREAM반</a></li>
                     <li><a href="#tab02">무궁화반</a></li>
                     <li><a href="#tab03">스파르타반</a></li>
-                    <li><a href="#tab04">POL IN 참수리반</a></li>
+                    <li><a href="#tab04" class="active">POL IN 참수리반</a></li>
                 </ul>
             </div>
 
@@ -236,7 +223,7 @@
                         <area shape="rect" coords="393,1873,729,1975" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
                     </map> 
                 </div>
-                <div id="tab04" style="padding-top:50px;">
+                <div id="tab04" class="pt50">
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_03_04.jpg" usemap="#Map2088_03_04" title="" border="0" />
                     <div class="youtube">
                         <iframe src="https://www.youtube.com/embed/nNSYvreT6rw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -436,12 +423,11 @@
 
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
-
           /*tab*/
           $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active = $($links.filter('[href="'+location.hash+'"]')[3] || $links[3]);
                 //$active.addClass('active');
                 $content = $($active[0].hash);
 

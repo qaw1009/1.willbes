@@ -109,11 +109,11 @@
                     </map>                 
                 </div>
                 <div id="tab2" class="tabContents">       
-                    <img src="https://static.willbes.net/public/images/promotion/2021/02/2079_06_02.jpg" usemap="#Map2079_06_02" title="학원 단과" border="0" />
+                    <img src="https://static.willbes.net/public/images/promotion/2021/03/2079_06_02.jpg" usemap="#Map2079_06_02" title="학원 단과" border="0" />
                     <map name="Map2079_06_02" id="Map2079_06_02">
-                        <area shape="rect" coords="104,464,345,507" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179118" target="_blank" />
+                        <area shape="rect" coords="104,464,345,507" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179129" target="_blank" />
                         <area shape="rect" coords="440,464,681,507" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179120" target="_blank" />
-                        <area shape="rect" coords="774,464,1015,507" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179129" target="_blank" />
+                        <area shape="rect" coords="774,464,1015,507" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179118" target="_blank" />
                     </map>             
                 </div> 
             </div>     

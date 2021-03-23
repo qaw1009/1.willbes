@@ -154,7 +154,7 @@
         function fn_promotion_etc_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-            @if(ENVIRONMENT == 'production')
+            @if(ENVIRONMENT == 'production' && sess_data('is_login') === true)
                 @if($arr_base['member_info']['JoinDate'] < '202103160000' || $arr_base['member_info']['InterestSite'] != '718001') {{-- 관심직렬 => 경찰 --}}
                     alert('신규회원만 참여 가능합니다.');
                     return;

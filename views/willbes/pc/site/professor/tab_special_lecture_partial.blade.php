@@ -1,7 +1,7 @@
 <div class="acadBoxWrap">
+    <div class="AcadtabBox">
     {{-- 하위탭 리스트 --}}
     @include('willbes.pc.site.professor.stab_partial')
-    <div class="AcadtabBox mt30">
     @if($arr_input['tab'] == 'on_special_lecture')
         <div id="on_special_lecture" class="tabContent">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
@@ -13,7 +13,7 @@
 
                 <div class="willbes-Lec NG c_both">
                     <div class="willbes-Lec-Subject tx-dark-black">
-                        온라인 특강
+                        ㆍ온라인강좌 - 특강
                         <div class="selectBoxForm">
                             <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                         </div>
@@ -187,7 +187,7 @@
 
                 <div class="willbes-Lec NG c_both">
                     <div class="willbes-Lec-Subject tx-dark-black">
-                        학원 특강
+                        ㆍ학원강좌 - 특강
                         <span class="MoreBtn">
                             <a href="#none">교재정보 <span>전체보기 ▼</span></a>
                         </span>

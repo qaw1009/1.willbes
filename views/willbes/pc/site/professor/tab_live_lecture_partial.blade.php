@@ -1,7 +1,7 @@
 <div class="acadBoxWrap">
-    {{-- 하위탭 리스트 --}}
-    @include('willbes.pc.site.professor.stab_partial')
-    <div class="AcadtabBox mt30">
+    <div class="AcadtabBox">
+        {{-- 하위탭 리스트 --}}
+        @include('willbes.pc.site.professor.stab_partial')
         <div id="off_live_lecture" class="tabContent">
             <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -11,7 +11,7 @@
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
                 <div class="willbes-Lec NG c_both">
-                    <div class="willbes-Lec-Subject tx-dark-black">전국 라이브 영상반
+                    <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원강좌 - 전국 라이브 영상반
                         <span class="MoreBtn">
                             <a href="#none">교재정보 <span>전체보기 ▼</span></a>
                         </span>

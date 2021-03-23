@@ -123,7 +123,7 @@
         <div class="evtCtnsBox wb_07" >        
             <div>    
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2000_07.jpg" alt="환승 이벤트"/>
-                <a href="#none" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.73%; top: 75.72%; width: 39.91%; height: 6.41%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="타 사이트 수강 인증하기" onclick="certOpen();" style="position: absolute; left: 29.73%; top: 75.72%; width: 39.91%; height: 6.41%; z-index: 2;"></a>
                 <a href="javascript:go_popup3()"  title="유의사항 확인하기" style="position: absolute; left: 41.34%; top: 83.3%; width: 14.46%; height: 3.88%; z-index: 2;"></a>
             </div>
         </div>
@@ -275,6 +275,18 @@
         }
         function go_popup3() {
             $('#popup3').bPopup();
+        }
+
+        /* 팝업창 */
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
         }
 
 	    /*디데이카운트다운*/

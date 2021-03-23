@@ -42,6 +42,8 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="CertIdx" id="CertIdx" value="{{$cert_idx}}">
                 <input type="hidden" name="CertTypeCcd" id="CertTypeCcd" value="{{$data['CertTypeCcd']}}">
+                <input type="hidden" name="file_chk" value="Y"/>
+
                 <h4>수강생 정보</h4>
                 <div class="LeclistTable">
                     <table cellspacing="0" cellpadding="0" class="listTable upper-gray upper-black bdb-gray tx-gray">
@@ -119,7 +121,7 @@
                     <a href="#none" class="btnA"  id="btn_cert_check">
                         등록
                     </a>
-                    <a href="#none">
+                    <a href="#none" onclick="javascript:self.close();">
                         취소
                     </a>
                 </div>
@@ -148,11 +150,11 @@
                 alert("이미 '승인'된 인증입니다.");return;
                 @endif
 
-                if ($('#EtcContent').val() == '') {
-                    alert('수강사이트를 입력해 주세요.');
-                    $('#EtcContent').focus();
-                    return;
-                }
+                // if ($('#EtcContent').val() == '') {
+                //     alert('수강사이트를 입력해 주세요.');
+                //     $('#EtcContent').focus();
+                //     return;
+                // }
 
                 if ($('#attachfile').val() == '') {
                     alert('첨부파일을 등록해 주세요.');

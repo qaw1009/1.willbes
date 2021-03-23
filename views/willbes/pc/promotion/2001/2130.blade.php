@@ -85,7 +85,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>윌비스 신광은 경찰 2021~22대비</span>
+                        <span>윌비스 신광은 경찰 2021년 대비</span>
                         <div class="NSK-Black">2021 T-PASS</div>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -197,7 +197,7 @@
                     <dt>▶ T-PASS 패스</dt>
                     <dd>
                         <ol>
-                            <li>구매일 기준 5개월 동안 수강 가능합니다. (153일)</li>
+                            <li>구매일 기준 5개월 동안 수강 가능합니다. (150일)</li>
                             <li>T-PASS 강좌는 결제가 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                             <li>선택한 T-PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                             <li>상품기간 종료 시 수강 중이던 강좌가 모두 종료됩니다.</li>

@@ -123,7 +123,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2130_02.jpg" alt="가이드" />
         </div>
 
-        <div class="evtTab evtCtnsBox evt03">
+        <div class="evtTab evtCtnsBox evt03" id="pass">
             <ul>
                 <li><a href="#tab1" class="active">신광은</a></li>
                 <li><a href="#tab2">장정훈</a></li>
@@ -159,13 +159,13 @@
             <div class="evtTabCts" id="tab5">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2130_03_05.jpg" usemap="#Map2130_05" title="원유철" border="0"/>
                 <map name="Map2130_05" id="Map2130_05">
-                    <area shape="rect" coords="557,334,921,404" href="javascript:go_PassLecture('180435');" alt="2021 오태진 한국사 T-PASS" />
+                    <area shape="rect" coords="557,334,921,404" href="javascript:go_PassLecture('180436');" alt="2021 오태진 한국사 T-PASS" />
                 </map>
             </div>
             <div class="evtTabCts" id="tab6">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2130_03_06.jpg" usemap="#Map2130_06" title="오태진" border="0"/>
                 <map name="Map2130_06" id="Map2130_06">
-                    <area shape="rect" coords="556,331,922,406" href="javascript:go_PassLecture('180436');" alt="2021 원유철 한국사 T-PASS" />
+                    <area shape="rect" coords="556,331,922,406" href="javascript:go_PassLecture('180435');" alt="2021 원유철 한국사 T-PASS" />
                 </map>
             </div>
 

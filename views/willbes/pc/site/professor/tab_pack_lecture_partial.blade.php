@@ -1,11 +1,11 @@
 <div class="acadBoxWrap">
+    <div class="AcadtabBox">
     {{-- 하위탭 리스트 --}}
     @include('willbes.pc.site.professor.stab_partial')
-    <div class="AcadtabBox mt30">
     @if($arr_input['tab'] == 'on_pack_lecture')
         <div id="on_pack_lecture" class="tabContent">
             <div class="willbes-Lec NG c_both">
-                <div class="willbes-Lec-Subject tx-dark-black">패키지</div>
+                <div class="willbes-Lec-Subject tx-dark-black">ㆍ온라인강좌 - 패키지 강의</div>
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line">-</div>
@@ -76,7 +76,7 @@
     @if($arr_input['tab'] == 'off_pack_lecture')
         <div id="off_pack_lecture" class="tabContent">
             <div class="willbes-Lec NG c_both">
-                <div class="willbes-Lec-Subject tx-dark-black">학원 종합반(패키지)</div>
+                <div class="willbes-Lec-Subject tx-dark-black">ㆍ학원강좌 - 패키지 강의</div>
                 <!-- willbes-Lec-Subject -->
 
                 <div class="willbes-Lec-Line">-</div>

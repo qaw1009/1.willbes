@@ -52,9 +52,7 @@
     .evt02 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
     .evt02 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
     .evt02 .ext02txt ul {margin:10px 0 0 25px}
-    .evt02 a {/*display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center*/}
 
-    .evt02 .liveBox input {position:absolute; left: 15.98%; top: 52.94%; width: 4.73%; height: 13.55%;}
     .evt02 .totalPrice {margin:50px 10px; font-size:30px; color:#fff; background:#000; border-radius:10px; text-align:center; padding-top:15px}
     .evt02 .totalPrice strong {color:#ffe500}
     .evt02 .totalPrice a {background:#c00d0d; display:block; padding:10px 0; border-radius:10px; margin-top:15px }
@@ -141,13 +139,6 @@
             </ul>
         </div>
 
-        <div class="liveBox p_re" id="add_prod_wrap">
-            <input type="checkbox" id="y_pkg4" name="y_pkg" value="179872" data-sale-price="112000" onclick="fnChkPrice(this,3);"/>
-            <label for="live">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01_03.jpg"  alt="라이브"/>
-            </label>
-        </div>
-
         <div class="totalPrice">
             총 결제금액 : <strong class="NSK-Black" id="total_price">0</strong>원
             <a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
@@ -165,12 +156,6 @@
         </div> 
         {{--<div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>--}}
     </div>
-
-
-    <div class="evtCtnsBox evt_coupon">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_02.jpg" alt="쿠폰받기" >
-        <a href="javascript:;" onclick="giveCheck()" title="응시쿠폰 받기" style="position: absolute; left: 22.78%; top: 88.32%; width: 54.17%; height: 6.11%; z-index: 2;"></a>      
-    </div> 
 
 
     <div class="evtCtnsBox evt01">
@@ -268,17 +253,6 @@
                         <li>신광은경찰PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>
                         <li>교재 포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
                         <li class="tx-red">교재 포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
-                    </ol>
-                </dd>
-
-                <dt>
-                    <h3>노량진 실시간 LIVE</h3>
-                </dt>
-                <dd>
-                    <ol>
-                        <li>노량진 실시간 LIVE는 0원 무제한 PASS, 12개월 PASS 결제 시 추가 결제 가능합니다.</li>
-                        <li>노량진 실시간 LIVE는 21년 2차 대비 심화과정(3/15~5/29), 22년 대비 기본완성반(3/29~6/18) 두 과정 해당 기간 동안 제공됩니다. (실강으로 진행되는 과정에 한함)</li>
-                        <li><a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=323705&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
                     </ol>
                 </dd>
 
@@ -402,18 +376,7 @@
                     <ol>
                         <li>신광은경찰PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>
                     </ol>
-                </dd> 
-
-                <dt>
-                    <h3>노량진 실시간 LIVE</h3>
-                </dt>
-                <dd>
-                    <ol>
-                        <li>노량진 실시간 LIVE는 0원 무제한 PASS, 12개월 PASS 결제 시 추가 결제 가능합니다.</li>
-                        <li>노량진 실시간 LIVE는 21년 2차 대비 심화과정(3/15~5/29), 22년 대비 기본완성반(3/29~6/18) 두 과정 해당 기간 동안 제공됩니다. (실강으로 진행되는 과정에 한함)</li>
-                        <li><a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=323705&" target="_blank">노량진 실시간 LIVE 수강 방법 ></a></li>
-                    </ol>
-                </dd>                     
+                </dd>                    
 
                 <dt>
                     <h3>환불</h3>

@@ -77,6 +77,16 @@
                         @endif
                     </select>
                 </li>
+                @if(isset($arr_base['study_pattern']) === true)
+                <li>
+                    <select id="study_pattern_ccd" name="study_pattern_ccd" title="수강형태" onchange="goUrl('study_pattern_ccd', this.value);">
+                        <option value="">수강형태</option>
+                        @foreach($arr_base['study_pattern'] as $key => $val)
+                            <option value="{{ $key}}" @if(element('study_pattern_ccd', $arr_input) == $key) selected="selected" @endif>{{ $val }}</option>
+                        @endforeach
+                    </select>
+                </li>
+                @endif
                 <li class="resetBtn2">
                     <a href="#none" onclick="location.href=location.pathname">초기화</a>
                 </li>

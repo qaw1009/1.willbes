@@ -3,16 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * TODO : 주의 요망
- * 방문신청 컨트롤러(VisitOffLecture)에서 확장 사용함. 수정시 주의 요망
+ * 방문신청 컨트롤러(OffVisitLecture)에서 확장 사용함. 수정시 주의 요망
   */
 class OffLecture extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF', 'order/cartF');
+    protected $models = array('categoryF', 'product/baseProductF', 'product/lectureF', 'order/cartF', '_lms/sys/code');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
 
     protected $_learn_pattern = 'off_lecture';     // 학습형태 (학원단과 - 일반강좌)
+
+    protected $_group_ccd = ['study_pattern' => '653'];
 
     public function __construct()
     {
@@ -78,6 +80,9 @@ class OffLecture extends \app\controllers\FrontController
             $arr_base['professor'] = $this->baseProductFModel->listProfessorSubjectMapping($this->_site_code, null, $cate_code, element('subject_idx', $arr_input));
         }
 
+        // 수강형태 공통코드 조회 : TODO 현재 모바일 페이지만 적용 -> 최진영차장 요청 21.03.23
+        $arr_base['study_pattern'] = $this->codeModel->getCcd('653');
+
         // 상품 조회
         $arr_search_text = explode(':', base64_decode(element('search_text', $arr_input)), 2);  // 검색어
 
@@ -87,7 +92,8 @@ class OffLecture extends \app\controllers\FrontController
                 'CampusCcd' => element('campus_ccd', $arr_input),
                 'CourseIdx' => element('course_idx', $arr_input),
                 'SubjectIdx' => element('subject_idx', $arr_input),
-                'ProfIdx' => element('prof_idx', $arr_input)
+                'ProfIdx' => element('prof_idx', $arr_input),
+                'StudyPatternCcd' => element('study_pattern_ccd', $arr_input),
             ],
             'LKR' => [
                 'CateCode' => $cate_code,

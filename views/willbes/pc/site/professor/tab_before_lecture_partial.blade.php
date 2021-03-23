@@ -1,7 +1,7 @@
 <div class="acadBoxWrap">
-    {{-- 하위탭 리스트 --}}
-    @include('willbes.pc.site.professor.stab_partial')
-    <div class="AcadtabBox mt30">
+    <div class="AcadtabBox">
+        {{-- 하위탭 리스트 --}}
+        @include('willbes.pc.site.professor.stab_partial')
         <div id="on_before_lecture" class="tabContent">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -12,7 +12,7 @@
 
                 <div class="willbes-Lec NG c_both">
                     <div class="willbes-Lec-Subject tx-dark-black">
-                        수강생 전용
+                        ㆍ온라인강좌 - 수강생전용
                         <div class="selectBoxForm">
                             <span class="MoreBtn"><a href="#none">교재정보 <span>전체보기 ▼</span></a></span>
                         </div>

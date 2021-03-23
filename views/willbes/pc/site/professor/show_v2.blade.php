@@ -167,12 +167,12 @@
             <div class="mb10">* 수강신청 시, “온라인강좌”와＂학원강좌”를 먼저 선택하신 후, 강의형태(패키지, 단과 등)를 선택하시면 됩니다. </div>
             <div class="ProfDetailWrap">
                 <a name="tabLink"></a>
-                <ul class="tabWrap tabDepthProf tabDepthProf_{{ count($tab_list) }}">
+                <ul class="tabWrap tabDepthProfSsam">
                     @foreach($tab_list as $tab_id => $tab_name)
                         <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ substr($arr_input['tab'], 0, 2) == substr($tab_id, 0, 2) ? 'on' : '' }}">{{ $tab_name }}</a></li>
                     @endforeach
                 </ul>
-                <div class="tabBox mt30">
+                <div class="tabBox">
                     <div id="{{ $arr_input['tab'] }}" class="tabLink">
                         @include('willbes.pc.site.professor.tab_' . $tab_method . '_partial')
                     </div>

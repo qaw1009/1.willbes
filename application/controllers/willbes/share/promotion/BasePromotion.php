@@ -119,24 +119,10 @@ class BasePromotion extends \app\controllers\FrontController
             //$arr_base['register_prof_group_data'] = $this->_getProfGroupData($arr_base['register_list_prod_data']);
         //}
 
-        // 신청리스트 참여 여부 체크
-        $register_count = '';
-        if(empty($arr_promotion_params['register_chk_yn']) === false && $arr_promotion_params['register_chk_yn'] == 'Y'){
-            $arr_condition = ['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]];
-            $register_count = $this->eventFModel->getRegisterMember($arr_condition);
-        }
-
         //인원 제한 체크를 위한 특강별 회원 수
         $arr_base['register_member_list'] = [];
         if (empty($arr_base['register_list']) === false) {
             $arr_base['register_member_list'] = $this->_getRegisterMemberList($arr_base['register_list']);
-        }
-
-        // 인증여부 추출
-        $apply_result = null;
-        //인증 파람값이 존재한다면
-        if (empty($arr_promotion_params['cert']) === false && empty($this->session->userdata('mem_idx')) === false) {
-            $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
         }
 
         // 등록파일 데이터 조회
@@ -175,10 +161,6 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['stats_data'] = $this->eventFModel->getStatsEventMemberForEtcValue($data['ElIdx']);
         }
 
-        // 이벤트 추가신청정보 조회
-        $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
-        $arr_base['add_apply_member_login_count'] = sess_data('is_login') !== true ? '0' : $this->eventFModel->getApplyMember(['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.MemIdx' => $this->session->userdata('mem_idx')]], true);
-
         // 상품 수강후기
         if(empty($arr_promotion_params['reply_prod_code']) === false) {
             $reply_prod_data = $this->lectureFModel->findProductByProdCode('on_lecture', $arr_promotion_params['reply_prod_code'], '', ['EQ' => ['IsUse' => 'Y']]);
@@ -195,30 +177,55 @@ class BasePromotion extends \app\controllers\FrontController
             $arr_base['display_product_data'] = $this->_getDpGroupdata($data['ElIdx']);
         }
 
-        // 설문조사 참여 여부 체크
+        // 이벤트 추가신청정보 조회
+        $arr_base['add_apply_data'] = $this->eventFModel->listEventPromotionForAddApply($data['ElIdx']);
+
+        $arr_base['add_apply_member_login_count'] = 0;
+        $register_count = '';
+        $apply_result = null;
         $add_frame_params = '';
-        $survey_count = '';
-        if(empty($arr_promotion_params['survey_chk_yn']) === false && $arr_promotion_params['survey_chk_yn'] == 'Y' && empty($arr_promotion_params['SsIdx']) === false){
-            $survey_count = $this->surveyModel->findSurveyForAnswer($arr_promotion_params['SsIdx']);
-            $add_frame_params = '&survey_chk_yn=Y&survey_count=' . $survey_count;
-        }
+        $survey_count = 0;
 
-        // 지정 상품 구매여부 체크
-        if(empty($arr_promotion_params['prod_chk_yn']) === false && $arr_promotion_params['prod_chk_yn'] == 'Y'){
-            $arr_base['order_count'] = 0;
+        // 로그인 후 실행
+        if(sess_data('is_login') === true){
+            // 이벤트 신청횟수
+            $arr_condition = ['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.IsStatus' => 'Y', 'A.MemIdx' => $this->session->userdata('mem_idx')]];
+            $arr_base['add_apply_member_login_count'] = $this->eventFModel->getApplyMember($arr_condition, true);
 
-           if(empty($arr_promotion_params['arr_prod_code']) === false){
-               $arr_prod_code = explode(',', $arr_promotion_params['arr_prod_code']);
-               foreach ($arr_prod_code as $prod_code){
-                   $order_count = $this->eventFModel->getOrderForEventMemberCount($prod_code, $this->session->userdata('mem_idx'));
-                   $arr_base['order_count'] += $order_count;
-               }
-           }
-        }
+            // 신청리스트 참여 여부 체크
+            if(empty($arr_promotion_params['register_chk_yn']) === false && $arr_promotion_params['register_chk_yn'] == 'Y'){
+                $arr_condition = ['EQ' => ['B.ElIdx' => $data['ElIdx'], 'A.MemIdx' => $this->session->userdata('mem_idx')]];
+                $register_count = $this->eventFModel->getRegisterMember($arr_condition);
+            }
 
-        // 회원정보 조회
-        if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y' && $this->session->userdata('is_login') === true){
-            $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
+            // 인증여부 추출
+            if (empty($arr_promotion_params['cert']) === false) {
+                $apply_result = $this->certApplyFModel->findApplyByCertIdx($arr_promotion_params['cert'])['CaIdx'];
+            }
+
+            // 설문조사 참여 여부 체크
+            if(empty($arr_promotion_params['survey_chk_yn']) === false && $arr_promotion_params['survey_chk_yn'] == 'Y' && empty($arr_promotion_params['SsIdx']) === false){
+                $survey_count = $this->surveyModel->findSurveyForAnswer($arr_promotion_params['SsIdx']);
+                $add_frame_params = '&survey_chk_yn=Y&survey_count=' . $survey_count;
+            }
+
+            // 상품 구매여부 체크
+            if(empty($arr_promotion_params['prod_chk_yn']) === false && $arr_promotion_params['prod_chk_yn'] == 'Y'){
+                $arr_base['order_count'] = 0;
+
+                if(empty($arr_promotion_params['arr_prod_code']) === false){
+                    $arr_prod_code = explode(',', $arr_promotion_params['arr_prod_code']);
+                    foreach ($arr_prod_code as $prod_code){
+                        $order_count = $this->eventFModel->getOrderForEventMemberCount($prod_code, $this->session->userdata('mem_idx'));
+                        $arr_base['order_count'] += $order_count;
+                    }
+                }
+            }
+
+            // 회원정보 조회
+            if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y'){
+                $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
+            }
         }
 
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'] . $add_frame_params;

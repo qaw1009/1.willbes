@@ -209,7 +209,7 @@
         <div class="evtCtnsBox tab01s_05" id="apply">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_05.jpg" alt="신청하기" />
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178353" title="수강신청" target="_blank" style="position: absolute; left: 40.89%; top: 71.22%; width: 43.57%; height: 12.2%; z-index: 2;"></a>   
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178351" title="수강신청" target="_blank" style="position: absolute; left: 40.89%; top: 71.22%; width: 43.57%; height: 12.2%; z-index: 2;"></a>   
             </div>                      
         </div> 
 

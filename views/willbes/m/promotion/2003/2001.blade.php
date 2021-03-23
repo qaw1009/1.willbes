@@ -76,7 +76,7 @@
 
     <div class="evtCtnsBox evt05" >
         <img src="https://static.willbes.net/public/images/promotion/2021/03/2001m_05.jpg" alt="수강신청"  >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/178352" target="_blank" alt="온라인 수강신청" class="a01">
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/178351" target="_blank" alt="온라인 수강신청" class="a01">
     </div>
 
     <div class="evtCtnsBox pt30 pb30">

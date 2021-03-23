@@ -56,7 +56,7 @@
         .tab01s_05 > div {width:1120px; margin:0 auto; position:relative}
 
         .tab01s_06 {padding:100px 0; width:1120px; margin:0 auto;} 
-        .tab01s_06 .title {text-align:left}
+        .tab01s_06 .title {text-align:left;padding-bottom:50px;}
         .tab01s_06 .title span {padding:5px 20px; color:#fff; background:#333; font-size:30px;}
 
         .check { position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}

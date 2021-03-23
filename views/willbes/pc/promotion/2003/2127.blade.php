@@ -38,18 +38,20 @@
 
         .tab_cts {background:#e82e21;padding:100px 0;}
 
+        /*수강신청 체크*/
+        .check {padding-bottom:100px;}
+        .check p {margin-bottom:50px;padding-top:75px;}
+        .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
+        .check p a:hover {color:#8d0033; background:#eee53b;}
+        .check label {cursor:pointer;color:#585858;font-weight:bold;font-size:15px;}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#504f4f; background:#ededed; margin-left:50px; border-radius:20px;font-size:15px;font-weight:bold;}
+
         .wb_cts05 {background:#FFC40E}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/03/2127_06_bg.jpg) no-repeat center top;}  
 
         .wb_cts07 {background:#f2f0f1}
-      
-
-        .check {position:absolute; bottom:100px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
-        .check label {cursor:pointer; font-size:15px;color:#FFF;font-weight:bold;}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
-
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -230,9 +232,16 @@
         <div class="evtCtnsBox wb_cts08" id="apply1">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_08.jpg" alt="수강신청" usemap="#2127b" border="0" />
             <map name="2127b" id="2127b">
-                <area shape="rect" coords="316,1006,501,1083" href="https://pass.willbes.net/package/show/cate/3023/pack/648001/prod-code/180408" target="_blank" />
-                <area shape="rect" coords="806,1007,991,1083" href="https://pass.willbes.net/package/show/cate/3023/pack/648001/prod-code/180413" target="_blank" />
-            </map>         
+                <area shape="rect" coords="316,1006,501,1083" href="javascript:go_PassLecture('180408');" alt="수강신청" />
+                <area shape="rect" coords="806,1007,991,1083" href="javascript:go_PassLecture('180413');" alt="수강신청" />
+            </map>      
+            <div class="check" id="chkInfo">               
+                <label>
+                    <input name="ischk" type="checkbox" value="Y" />
+                    페이지 하단 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#careful" class="infotxt" > 유의사항 자세히보기 ↓</a>
+            </div>         
         </div>
     
 

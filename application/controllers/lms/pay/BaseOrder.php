@@ -142,8 +142,18 @@ class BaseOrder extends \app\controllers\BaseController
 
             // 주문상품서브 데이터 셋팅
             if (empty($row['OrderSubProdData']) === false) {
-                $data[$idx]['OrderSubProdList'] = array_data_pluck(json_decode($row['OrderSubProdData'], true), ['ProdCode', 'ProdName']);
-                $data[$idx]['OrderSubProdList'] = '[' . str_replace('::', '] ', implode('<br/>[', $data[$idx]['OrderSubProdList']));
+                $arr_order_sub_prod_data = json_decode($row['OrderSubProdData'], true);
+                $data[$idx]['OrderSubProdList'] = '';
+
+                if (empty($arr_order_sub_prod_data) === false) {
+                    foreach ($arr_order_sub_prod_data as $sub_prod_row) {
+                        $data[$idx]['OrderSubProdList'] .= '[' . $sub_prod_row['ProdCode'] . '] ' . $sub_prod_row['ProdName'];  // 상품코드, 상품명
+                        if (empty($sub_prod_row['StudyPatternCcdName']) === false) {
+                            $data[$idx]['OrderSubProdList'] .= ' <span class=\'blue no-line-height\'>(' . $sub_prod_row['StudyPatternCcdName'] . ')</span>';    // 단과반 수강형태
+                        }
+                        $data[$idx]['OrderSubProdList'] .= '<br/>';
+                    }
+                }
             }
         }
 

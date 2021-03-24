@@ -376,7 +376,7 @@ class OrderListModel extends BaseOrderModel
             // 주문상품서브 정보 추가
             if (in_array('subproduct', $arr_add_join) === true) {
                 $from .= '';
-                $column .= ', fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData';
+                $column .= ', fn_order_sub_product_add_data(OP.OrderProdIdx) as OrderSubProdData';
                 $excel_column .= '';
             }
 

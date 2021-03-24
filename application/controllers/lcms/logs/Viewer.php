@@ -25,6 +25,7 @@ class Viewer extends \app\controllers\BaseController
         $log_date = get_var($this->_reqG('log_date'), date('Y-m-d'));
         $sort_idx = get_var($this->_reqG('sort_idx'), 0);
         $sort_dir = get_var($this->_reqG('sort_dir'), 'asc');
+        $is_404_except = get_var($this->_reqG('is_404_except'), '');
 
         $log_data = $this->logviewer->getLogData($log_date, $log_level, $log_pattern, $log_type);
 
@@ -36,6 +37,7 @@ class Viewer extends \app\controllers\BaseController
             'log_data' => $log_data,
             'sort_idx' => $sort_idx,
             'sort_dir' => $sort_dir,
+            'is_404_except' => $is_404_except,
             'css_classes' => $this->_css_classes
         ], false);
     }

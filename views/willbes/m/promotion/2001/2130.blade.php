@@ -43,12 +43,14 @@
         .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
         .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
+        .btnbuy a {width:31%;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .dday {font-size:18px !important;} 
         .dday a {padding:5px 10px;}
+        .btnbuy a {width:31%;}
     }
 
     /* 태블릿 가로, PC */
@@ -119,7 +121,7 @@
                 <dt>▶ T-PASS 패스</dt>
                 <dd>
                     <ol>
-                        <li>구매일 기준 5개월 동안 수강 가능합니다. (153일)</li>
+                        <li>구매일 기준 5개월 동안 수강 가능합니다. (150일)</li>
                         <li>T-PASS 강좌는 결제가 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                         <li>선택한 T-PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강 할 수 있습니다.</li>
                         <li>상품기간 종료 시 수강 중이던 강좌가 모두 종료됩니다.</li>
@@ -196,22 +198,22 @@
 <div class="btnbuyBox">
     <div class="btnbuy NSK-Black">     
         <a href="javascript:goLecture('180431');">
-        신광은 T-PASS 신청하기
+        신광은 T-PASS 신청
         </a>    
         <a href="javascript:goLecture('180432');">
-        장정훈 T-PASS 신청하기
+        장정훈 T-PASS 신청
         </a>    
         <a href="javascript:goLecture('180433');">
-        김원욱 T-PASS 신청하기
+        김원욱 T-PASS 신청
         </a>    
         <a href="javascript:goLecture('180434');">
-        하승민/김현정 T-PASS 신청하기
+        하승민/김현정 T-PASS 신청
         </a>    
         <a href="javascript:goLecture('180436');">
-        원유철 T-PASS 신청하기
-        </a>    
+        원유철 T-PASS 신청
+        </a>   
         <a href="javascript:goLecture('180435');">
-        오태진 T-PASS 신청하기
+        오태진 T-PASS 신청
         </a>    
     </div>
     <div id="pass" class="infoCheck">

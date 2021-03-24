@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#none" onclick="javascript:alert('Coming Soon!');">
+                        <a href="https://police.willbes.net/promotion/index/cate/3001/code/2142" target="_blank">
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_2.png" class="off" alt="장정훈 경찰학"  />
                             <img src="https://static.willbes.net/public/images/promotion/2020/09/1853_01_2on.png" class="on" alt="장정훈 경찰학"  />
                         </a>

@@ -11,61 +11,57 @@
                     <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-black bdt-gray tx-gray GM">
                         <colgroup>
                             <col style="width: 20%;"/>
-                            <col style="width: 30%;"/>
-                            <col style="width: 20%;"/>
+                            <col style="width: 35%;"/>
+                            <col style="width: 15%;"/>
                             <col style="width: 30%;"/>
                         </colgroup>
                         <tbody>
                         <tr>
                             <th class="w-tit">이름(아이디)</th>
-                            <td class="w-list" colspan="3"><strong>{{sess_data('mem_name')}}({{sess_data('mem_id')}})</strong></td>
+                            <td class="w-list" colspan="3">{{sess_data('mem_name')}}({{sess_data('mem_id')}})</td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시형태</th>
-                            <td class="w-list"><strong>{{$order_info['TakeForm_Name']}}</strong></td>
+                            <td class="w-list strong tx14">{{$order_info['TakeForm_Name']}}</td>
                             <th class="w-tit">응시분야</th>
-                            <td class="w-list"><strong>{{$order_info['CateName']}}</strong></td>
+                            <td class="w-list">{{$order_info['CateName']}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시지역</th>
-                            <td class="w-list"><strong>{{$order_info['TakeArea_Name']}}</strong></td>
+                            <td class="w-list">{{$order_info['TakeArea_Name']}}</td>
                             <th class="w-tit">응시번호</th>
-                            <td class="w-list"><strong>{{$order_info['TakeNumber']}}</strong></td>
+                            <td class="w-list">{{$order_info['TakeNumber']}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">시험응시일</th>
-                            <td class="w-list" colspan="3"><strong>{{$order_info['TakeStartDatm']}} ~ {{$order_info['TakeEndDatm']}}</strong></td>
+                            <td class="w-list" colspan="3">{{$order_info['TakeStartDatm']}} ~ {{$order_info['TakeEndDatm']}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시직렬</th>
-                            <td class="w-list" colspan="3"><strong>{{$order_info['TakeMockPart_Name']}}</strong></td>
+                            <td class="w-list" colspan="3">{{$order_info['TakeMockPart_Name']}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시필수과목</th>
-                            <td class="w-list" colspan="3"><strong>{{$subject_ess}}</strong></td>
+                            <td class="w-list" colspan="3">{{$subject_ess}}</td>
                         </tr>
                         <tr>
                             <th class="w-tit">응시선택과목</th>
                             <td class="w-list" colspan="3">
-                                <strong>
                                 @if(empty($subject_sub))
                                     선택과목 없음
                                 @else
                                     [선택과목1] {{$subject_sub[0]}} [선택과목2] {{$subject_sub[1]}}
                                 @endif
-                                </strong>
                             </td>
                         </tr>
                         <tr>
                             <th class="w-tit">가산점</th>
-                            <td class="w-list" colspan="3">
-                                <strong>    
+                            <td class="w-list" colspan="3">   
                                 @if($order_info['AddPoint'] == 0)
                                     해당없음
                                 @else
                                     {{$order_info['AddPoint']}}%
                                 @endif
-                                </strong>
                            </td>
                         </tr>
                         <tr>

@@ -11,8 +11,8 @@
             <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
                 <colgroup>
                     <col style="width: 20%;"/>
-                    <col style="width: 30%;"/>
-                    <col style="width: 20%;"/>
+                    <col style="width: 35%;"/>
+                    <col style="width: 15%;"/>
                     <col style="width: 30%;"/>
                 </colgroup>
                 <tbody>
@@ -22,7 +22,7 @@
                 </tr>
                 <tr>
                     <th class="w-tit">응시형태</th>
-                    <td class="w-list">{{$order_info['TakeForm_Name']}}</td>
+                    <td class="w-list strong tx14">{{$order_info['TakeForm_Name']}}</td>
                     <th class="w-tit">응시분야</th>
                     <td class="w-list">{{$order_info['CateName']}}</td>
                 </tr>

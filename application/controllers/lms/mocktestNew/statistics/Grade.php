@@ -322,7 +322,6 @@ class Grade extends BaseMocktest
         if (empty($arr_totalStatistics['base_statistisc']) === true) {
             show_alert('통계에 필요한 사용자 기본정보가 없습니다.', 'back');
         }
-
         $arr_pointForStatistics = $this->_pointForStatistics2($prod_code,$arr_totalStatistics['base_statistisc']['BaseScoring']);
 
         $avg_score_10 = $this->_pointAvgForRankStatistics($prod_code,'10','group');
@@ -490,19 +489,18 @@ class Grade extends BaseMocktest
         foreach ($arr_base_scoring as $mock_key => $val) {
             switch ($val) {
                 case "2.5":
-                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics_2_5($prod_code,$mock_key));
+                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics($prod_code,$mock_key,['decimal','2.5']));
                     break;
                 case "4":
-                    $temp_data_4 = array_merge($temp_data_4, $this->regGradeModel->pointForStatistics_4($prod_code,$mock_key));
+                    $temp_data_4 = array_merge($temp_data_4, $this->regGradeModel->pointForStatistics($prod_code,$mock_key,['integer','4']));
                     break;
                 case "5":
-                    $temp_data_5 = array_merge($temp_data_5, $this->regGradeModel->pointForStatistics_5($prod_code,$mock_key));
+                    $temp_data_5 = array_merge($temp_data_5, $this->regGradeModel->pointForStatistics($prod_code,$mock_key,['integer','5']));
                     break;
                 default;
-                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics_2_5($prod_code,$mock_key));
+                    $temp_data_2_5 = array_merge($temp_data_2_5, $this->regGradeModel->pointForStatistics($prod_code,$mock_key,['decimal','2.5']));
             }
         }
-
         $result_2_5 = $this->_get_total_point_chart_2_5($temp_data_2_5);
         $result_4 = $this->_get_total_point_chart_4($temp_data_4);
         $result_5 = $this->_get_total_point_chart_5($temp_data_5);

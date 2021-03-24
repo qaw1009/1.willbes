@@ -9,8 +9,8 @@
             <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
                 <colgroup>
                     <col style="width: 20%;"/>
-                    <col style="width: 30%;"/>
-                    <col style="width: 20%;"/>
+                    <col style="width: 35%;"/>
+                    <col style="width: 15%;"/>
                     <col style="width: 30%;"/>
                 </colgroup>
                 <tbody>
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <th class="w-tit">응시형태</th>
-                    <td class="w-list"> {{$arr_take_forms[$cart_info['take_form']]}}</td>
+                    <td class="w-list strong tx14">{{$arr_take_forms[$cart_info['take_form']]}}</td>
                     <th class="w-tit">응시분야</th>
                     <td class="w-list">{{$mock_data['CateName']}}</td>
                 </tr>

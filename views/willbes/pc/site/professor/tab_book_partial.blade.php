@@ -16,7 +16,7 @@
 
         <div class="willbes-listTable">
             <div class="willbes-Lec-Table bdb-none d_block">
-                <table cellspacing="0" cellpadding="0" class="lecTable">
+                <table cellspacing="0" cellpadding="0" class="lecTable" >
                     <colgroup>
                         <col style="width:150px;">
                         <col style="width:320px;">
@@ -26,13 +26,14 @@
                     <tbody>
                     @if(empty($tab_data['book']) === true)
                         <tr>
-                            <td colspan="4" class="w-list">등록된 교재정보가 없습니다.</td>
+                            <td colspan="4" width="940px">등록된 교재정보가 없습니다.</td>
                         </tr>
                     @else
                         <tr>
                             @foreach($tab_data['book'] as $idx => $row)
                                 @if($idx != 0 && $idx % 2 == 0)
-                                    </tr><tr>
+                        </tr>
+                        <tr>
                                 @endif
                                 <td class="w-list">
                                     <div class="bookImg">

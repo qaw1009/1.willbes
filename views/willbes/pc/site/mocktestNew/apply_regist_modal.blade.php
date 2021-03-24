@@ -18,8 +18,8 @@
                 <table cellspacing="0" cellpadding="0" class="listTable userMemoTable mockpopupTable under-gray bdt-gray tx-gray GM">
                     <colgroup>
                         <col style="width: 20%;"/>
-                        <col style="width: 30%;"/>
-                        <col style="width: 20%;"/>
+                        <col style="width: 35%;"/>
+                        <col style="width: 15%;"/>
                         <col style="width: 30%;"/>
                     </colgroup>
                     <tbody>
@@ -29,7 +29,7 @@
                     </tr>
                     <tr>
                         <th class="w-tit">응시형태</th>
-                        <td class="w-list">
+                        <td class="w-list strong tx14">
                             <ul>
                                 <li>
                                 @foreach($mock_data['arrTakeFormsCcd'] as $key => $val)

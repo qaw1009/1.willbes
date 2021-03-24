@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-xs-2">
                             <div class="checkbox">
-                                <label><input type="checkbox" id="is_404_except" name="is_404_except" value="Y" style="width: 16px; height: 16px;"/> 404 Page Not Found 제외</label>
+                                <label><input type="checkbox" id="is_404_except" name="is_404_except" value="Y" style="width: 16px; height: 16px;" {!! $is_404_except == 'Y' ? 'checked="checked"' : '' !!}/> 404 Page Not Found 제외</label>
                             </div>
                         </div>
                         <div class="col-xs-5 text-right" style="padding-right: 0;">
@@ -161,6 +161,7 @@
 <!-- Datatables -->
 <script src="/public/vendor/datatables/v.1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="/public/vendor/datatables/v.1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="/public/vendor/datatables/pagination/full_numbers_no_ellipses.js"></script>
 <!-- Custom Util -->
 <script src="/public/js/util.js"></script>
 <script type="text/javascript">
@@ -193,7 +194,7 @@
             order: [_arr_order],
             pageLength: 100,
             lengthMenu: [[20, 50, 100, 1000, 2000], [20, 50, 100, 1000, 2000]],
-            paginationType : 'full_numbers'
+            paginationType : 'full_numbers_no_ellipses'
         });
 
         $datatable.on('order.dt', function() {
@@ -217,6 +218,7 @@
                 $datatable.api().columns(3).search('').draw();
             }
         });
+        $search_form.find('input[name="is_404_except"]').trigger('change');
 
         // 다운로드 버튼 클릭
         $search_form.on('click', '#btn_download', function(event) {

@@ -2,82 +2,13 @@
 
 @section('content')
 <!-- Container -->
-<style type="text/css">
-        .Container {
-            width:100% !important;
-            min-width:1120px !important;
-            padding:0 !important;
-            background:#fff;
-            text-align:center;
-        }
-        .evt_00 {margin-top:20px}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/main/2003/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
-        .evtTop > div {width:1120px; margin: 0 auto; position:relative;}
-
-        .youtube {background:#090909; padding:100px 0}
-        .youtube iframe {width:980px; margin:0 auto; height:550px;}      
-
-        .evt_01 {background:#fff;padding-bottom:100px;}
-        .evt_01 ul {width:1120px; margin:0 auto;}
-        .evt_01 li {display:inline; float:left; width:25%; text-align:center;font-size:14px;}
-        .evt_01 li .gif_area img{width:250px; height:140px; margin:0 auto}
-        .evt_01 li iframe {width:348px; height:220px; margin:0 auto}        
-        .evt_01 li div {height:348px; line-height:25px;color:#222;}
-        /*.evt_01 li div:first-child {font-size:16px; line-height:40px; height:40px;}*/
-        .evt_01 ul:after {content:""; display:block; clear:both}
-        .btn_area {display:inline-block;margin:20px 0 80px 0;}
-        .btn_area .btn{background:#a8aaa7;color:#fff;font-size:18px;width:170px;}
-        .btn_area a{display:inline-block;height:38px;line-height:38px;border-radius:25px;letter-spacing:-0.5px;transition:all 0.5s linear;}
-
-        .evt_02 {background:#F3F3F3;}
-
-        .evt_03 {background:#fff;position:relative;}
-        .check {color:#000; font-size:15px;font-weight:bold;position:absolute;left:50%;top:50%;margin-left:-400px;margin-top:300px;}
-        .check label {cursor:pointer}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-
-        .evt_03_info {padding-top:100px;}
-
-        .evt_04 {background:#F3F3F3;padding-bottom:150px;}
-        .evt_04 .tabBox {position:relative; width:1120px; margin:0 auto 40px;}
-        .evt_04 .tab li {display:inline; float:left; width:33.333333%;}
-        .evt_04 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; border:1px solid #1a1a1a; margin-right:1px}
-        .evt_04 .tab li a:hover,
-        .evt_04 .tab li a.active {background:#9b1f29; color:#fff;}
-        .evt_04 .tab li:last-child a {margin:0}
-        .evt_04 .tab:after {content:""; display:block; clear:both}
-
-        .evt_05 {background:#fdfdfd;}
-
-        .evt_06 {background:#F6F6F6;padding-bottom:125px;}
-        .evt_06 .tabBox {position:relative; width:1120px; margin:0 auto;}
-        .evt_06 .tab li {display:inline; float:left; width:50%;}
-        .evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px; border:1px solid #1a1a1a;}
-        .evt_06 .tab li a:hover,
-        .evt_06 .tab li a.active {background:#9b1f29; color:#fff;}
-        .evt_06 .tab li:last-child a {margin:0}
-        .evt_06 .tab:after {content:""; display:block; clear:both}
-
-         /* 이용안내 */
-        .wb_info {padding:100px 0;}
-        .guide_box{width:1120px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
-        .guide_box h2 {font-size:30px; margin-bottom:30px}
-        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
-        .guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
-        .guide_box dd strong {color:#555}
-        .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:13px;}
-        .guide_box dd:after {content:""; display:block; clear:both}
-        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}   
-        .guide_box .infoTit {font-size:20px;}  
-    </style>
-
+<link href="/public/css/willbes/style_gosi_3103.css?ver={{time()}}" rel="stylesheet">
 
 <div id="Container" class="Container gosi NGR c_both">
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">온라인공무원<span class="row-line">|</span></li>
+                <li class="Tit">공무원<span class="row-line">|</span></li>
                 <li class="subTit">7급 PSAT</li>
             </ul>
             <ul class="menu-List">
@@ -604,17 +535,87 @@
             </ul>
         </h3>
     </div>
-    
-    <div class="evt_00">
-        <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>
+
+    <div class="gosi-bnfull-Sec">
+        <div class="gosi-bnfull">
+            <div class="sliderBar">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_fullx90_01.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_fullx90_02.jpg" alt="배너명"></a></div>
+            </div>
+        </div>
+    </div>   
+
+    <div class="Section gosi-Sec NSK">
+        <div class="gosi-bntop">                        
+            <div id="TechRollingSlider" class="GositabBox">
+                <ul class="GositabSlider">
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_01.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_04.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_01.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_04.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3028_2000x460_02.jpg" alt="배너명"></a></li>
+                </ul>                  
+                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
+            </div> 
+            
+            <div id="TechRollingDiv" class="GositabList">
+                <div class="Gositab">
+                    <li><a data-slide-index="0" href="javascript:void(0);" class="active">농업전공X영어<br>PACKAGE</a></li>
+                    <li><a data-slide-index="1" href="javascript:void(0);">전기/통신 5과목<br>PACKAGE</a></li>
+                    <li><a data-slide-index="2" href="javascript:void(0);">농업직 5과목<br>PACKAGE</a></li>
+                    <li><a data-slide-index="3" href="javascript:void(0);">축산/기계/조경<br>NEW 라인업</a></li>
+                    <li><a data-slide-index="4" href="javascript:void(0);">환경직<br>PACKAGE</a></li>
+                    <li><a data-slide-index="5" href="javascript:void(0);">전산직<br>PACKAGE</a></li>
+                    <li><a data-slide-index="6" href="javascript:void(0);">임업직<br>PACKAGE</a></li>
+                    <li><a data-slide-index="7" href="javascript:void(0);">전기/통신<br>최우영</a></li>
+                    <li><a data-slide-index="8" href="javascript:void(0);">농업직렬<br>장사원</a></li>
+                </div>
+            </div>           
+        </div>        
     </div>
 
-    <div class="evtTop">
-        <div>
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_top.jpg" />
-            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2136" title="" target="_blank" style="position: absolute; left: 37.5%; top: 91.51%; width: 24.38%; height: 5.88%; z-index: 2;"></a>  
-        </div>                      
+    <div class="Section gosi-bn03">
+        <div class="widthAuto">   
+            <div class="tx16 mb20">교수님 추천강좌 / 이벤트 / 최신소식</div>
+            <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>HOT PICK</span></div>  
+            <ul>
+                <li class="nSlider">
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_550x303_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_550x303_01.jpg" alt="배너명"></a></div>
+                    </div>
+                </li>
+                <li class="nSlider">
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x303_01.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x303_02.jpg" alt="배너명"></a></div>
+                    </div>
+                </li>
+                <li class="nSlider">
+                    <div class="sliderNum">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x303_02.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_265x303_01.jpg" alt="배너명"></a></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
+
+    <div class="gosi-bnfull-Sec02">
+        <div class="gosi-bnfull02">
+            <div class="sliderBar02">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_1120x190_01.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3019_1120x190_02.jpg" alt="배너명"></a></div>
+            </div>
+            <p class="leftBtn" id="imgBannerLeft02"><a href="#none">이전</a></p>
+            <p class="rightBtn" id="imgBannerRight02"><a href="none">다음</a></p> 
+        </div>
+    </div> 
 
     <div class="youtube">
         <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -861,42 +862,101 @@
 <!-- End Container -->
 <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
 <script type="text/javascript">
-        $(document).ready(function(){
-            $('.tab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+    $(document).ready(function(){
+        $('.tab').each(function(){
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+            $active.addClass('active');
+
+            $content = $($active[0].hash);
+
+            $links.not($active).each(function () {
+                $(this.hash).hide()});
+
+            // Bind the click event handler
+            $(this).on('click', 'a', function(e){
+                $active.removeClass('active');
+                $content.hide();
+
+                $active = $(this);
+                $content = $(this.hash);
+
                 $active.addClass('active');
+                $content.show();
 
-                $content = $($active[0].hash);
+                e.preventDefault()})})}
+    );
 
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()})})}
-        );
-
-        function go_popup() {
-            $('#popup').bPopup();
-        };
-        function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
-                alert("이용안내에 동의하셔야 합니다.");
-                return;
-            }
-
-            var url = '{{ site_url('/periodPackage/show/cate/3103/pack/648001/prod-code/') }}' + code;
-            location.href = url;
+    function go_popup() {
+        $('#popup').bPopup();
+    };
+    function go_PassLecture(code){
+        if($("input[name='ischk']:checked").size() < 1){
+            alert("이용안내에 동의하셔야 합니다.");
+            return;
         }
-    </script>
+
+        var url = '{{ site_url('/periodPackage/show/cate/3103/pack/648001/prod-code/') }}' + code;
+        location.href = url;
+    }
+
+    $(function() {
+        $('.sliderBar').bxSlider({
+            mode:'fade',
+            auto: true,
+            touchEnabled: false,
+            controls: false,
+            sliderWidth:2000,
+            pause: 3000,
+            autoHover: true,
+            pager: false,
+        });
+    });
+
+    //상단 메인 배너
+    $(function(){ 
+        var slidesImg = $(".GositabSlider").bxSlider({
+            mode:'horizontal',
+            touchEnabled: false,
+            speed:400,
+            pause:5000,
+            sliderWidth:2000,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#TechRollingDiv',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	
+        $("#imgBannerRight").click(function (){
+            slidesImg.goToPrevSlide();
+        });
+    
+        $("#imgBannerLeft").click(function (){
+            slidesImg.goToNextSlide();
+        });			
+    }); 
+
+    /*bar 배너 롤링 */
+    $(function() {
+        var slidesImg02 = $(".sliderBar02").bxSlider({
+            mode:'fade',
+            auto: true,
+            touchEnabled: false,
+            controls: false,
+            sliderWidth:2000,
+            pause: 3000,
+            autoHover: true,
+            pager: false,
+        });
+        $("#imgBannerRight02").click(function (){
+            slidesImg02.goToPrevSlide();
+        });
+    
+        $("#imgBannerLeft02").click(function (){
+            slidesImg02.goToNextSlide();
+        });	
+    });
+</script>
 @stop

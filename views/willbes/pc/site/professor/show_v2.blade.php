@@ -166,7 +166,7 @@
         <div class="willbes-Prof-Tabs">
             <div class="mb10">* 수강신청 시, “온라인강좌”와＂학원강좌”를 먼저 선택하신 후, 강의형태(패키지, 단과 등)를 선택하시면 됩니다. </div>
             <div class="ProfDetailWrap">
-                {{--<a name="tabLink"></a>--}}
+                <a name="tabLink"></a>
                 <ul class="tabWrap tabDepthProfSsam">
                     @foreach($tab_list as $tab_id => $tab_name)
                         <li><a href="#none" onclick="goTabUrl('tab', '{{ $tab_id }}');" class="{{ substr($arr_input['tab'], 0, 2) == substr($tab_id, 0, 2) ? 'on' : '' }}">{{ $tab_name }}</a></li>
@@ -187,7 +187,7 @@
     $(document).ready(function() {
         @if($is_tab_select === true)
             // 선택된 탭이 있을 경우 자동 스크롤
-            //$("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
+            $("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
         @endif
     });
 

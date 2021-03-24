@@ -32,7 +32,11 @@
                 @if($__cfg['SiteGroupCode'] == '1003')
                     {{-- 고등고시 온라인 사이트일 경우만 적용 --}}
                     <img src="https://static.willbes.net/public/images/promotion/sub/3096_201006.jpg" alt="모의고사">
-                @endif   
+                @endif  
+                @if($__cfg['SiteCode'] == '2011')
+                    {{-- 자격증 사이트일 경우만 적용 --}}
+                    <img src="https://static.willbes.net/public/images/promotion/sub/2006_mocktest.jpg" alt="자격증 모의고사">
+                @endif  
                 </div>
 
             </div>

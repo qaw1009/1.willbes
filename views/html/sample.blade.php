@@ -44,7 +44,7 @@
                 <li class="c_both"></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_gate') }}" target="_blank">공무원 게이트</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_online') }}" target="_blank">공무원 온라인 메인</a></li>
-                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_3102') }}" target="_blank">공무원 7급 PSAT 온라인 메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_gosi_3103') }}" target="_blank">공무원 7급 PSAT 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_seven') }}" target="_blank">공무원 7급 온라인 메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_tex') }}" target="_blank">공무원 세무직 온라인 메인</a></li>                
                 <li class="w50"><a href="{{ site_url('/home/html/main_gosi_law') }}" target="_blank">공무원 법원직 온라인 메인</a></li>

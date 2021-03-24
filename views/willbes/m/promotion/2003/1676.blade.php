@@ -134,9 +134,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/179167" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/180535" target="_blank">
                     <span>반반&똑똑</span>
-                    <span>2월 방송<br>다시보기</span>
+                    <span>4월 방송<br>다시보기</span>
                     <span><strong>6</strong>만원</span>
                     <span>신청하기 ></span>
                 </a>
@@ -205,7 +205,7 @@
 
     {{-- 출석체크 --}}
     <div class="evtCtnsBox evt06">
-        <div>매일 출석하면 <span>100%선물!</span></div>
+        <div>개근 시 출석 <span>선물 증정!</span></div>
         <ul>
             <li><img src="https://static.willbes.net/public/images/promotion/2020/06/1676m_05_txt.png" alt="" ></li>
             <li><span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>회</li>
@@ -237,16 +237,22 @@
     </div>
 
     <div class="evtCtnsBox evtFooter" id="tab04">
-        <h3 class="NSK-Black">반반한밤 유의사항 꼭! 확인하기</h3>
+        <h3 class="NSK-Black">반반&똑똑 유의사항 꼭! 확인하기</h3>
         <div class="infoBox">
-            <p class="NSK-Black"><span>●</span> 더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)</p>
+            <p class="NSK-Black"><span>●</span> 더켠의 반반&똑똑영어 과정 진행 안내 (총 18회)</p>
             <ul>
-                <li>매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분</li>
-                <li>매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분</li>
-                <li>1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
-                    <span>(*금요일 오후 6시 신청 접수 마감)</span></li>
-                <li>1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간</li>
-                <li>2주차/4주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분</li>
+                <li>
+                매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 8회분<br>
+                매주 화/목 21:00~21:40 똑똑영어 (어휘), 7회분<br>
+                1주차 월~금 : 무료 온라인 모의고사 접수 진행 <br>
+                    (*금요일 오후 6시 신청 접수 마감) <br>
+                1주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
+                2주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분<br>
+                3주차 월 오후 7~10시 : 국가직 대비 영어 적중 50선 LIVE<br>
+                4주차 월 오후 7~10시 : 국가직 영어 기출해설특강 LIVE<br>
+                <br>
+                * 4월 방송의 경우, 2021 국가직 특강 LIVE 진행으로 인하여 방송 횟수 및 모의고사 등 일정이 다소 조정됩니다.
+                </li>
             </ul>
 
             <p class="NSK-Black"><span>●</span> 강의 자료 제공 일정 안내</p>
@@ -258,9 +264,8 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 2/22(월)~3/19(금)까지 총 20회 진행됩니다. <span>(*공휴일 제외)</span></li>
-                <li>출석체크 가능 월/수/금(반반) 오후 21시~22시 사이, 화/목(똑똑) 21시~21시40분 사이, 모의고사 LIVE (3/1(월), 3/15(월))의 경우 
-                    오후 7-8시만 인정되며 방송이 종료되지 않더라도 해당 시간 이외 출석체크는 출석으로 인정되지 않습니다.</li>
+                <li>본 이벤트는 로그인 후 참여 가능하며, 3/29(월)~4/23(금)까지 총 18회 진행됩니다. <span>(*공휴일 제외)</span></li>
+                <li>출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (4/5(월)) 19:00~20:00, 적중 50선 및 기출분석 LIVE 특강 19:00~22:00로, 시간 내에 페이지 새로고침 (F5) 후에 출석체크 버튼 클릭 시  정상 인정되며 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
             </ul>
         </div>
     </div>

@@ -187,7 +187,7 @@
     $(document).ready(function() {
         @if($is_tab_select === true)
             // 선택된 탭이 있을 경우 자동 스크롤
-            $("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
+            //$("html, body").animate({ scrollTop: $('a[name="tabLink"]').offset().top }, 0);
         @endif
     });
 

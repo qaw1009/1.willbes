@@ -11,9 +11,11 @@
             text-align:center;
         }
         .evt_00 {margin-top:20px}
-        .evtTop {background:#090909 url(https://static.willbes.net/public/images/promotion/main/2004/3103_top_bg_0113.jpg) no-repeat center top;  position:relative; padding-bottom:100px; margin-top:20px}
-        .youtube {width:980px; margin:100px auto 0}
-        .youtube iframe {width:980px; height:550px;}      
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/main/2003/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
+        .evtTop > div {width:1120px; margin: 0 auto; position:relative;}
+
+        .youtube {background:#090909; padding:100px 0}
+        .youtube iframe {width:980px; margin:0 auto; height:550px;}      
 
         .evt_01 {background:#fff;padding-bottom:100px;}
         .evt_01 ul {width:1120px; margin:0 auto;}
@@ -81,14 +83,15 @@
         </div>
 
         <div class="evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_top_0113.jpg" usemap="#Map3103" border="0" />
-            <map name="Map3103">
-                <area shape="rect" coords="191,1340,930,1480" href="/promotion/index/cate/3103/code/2030" alt="강의신청">
-            </map>    
-            <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>           
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_top.jpg" />
+                <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2136" title="" target="_blank" style="position: absolute; left: 37.5%; top: 91.51%; width: 24.38%; height: 5.88%; z-index: 2;"></a>  
+            </div>                      
         </div>
+
+        <div class="youtube">
+            <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>  
 
         <div class="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01.jpg" alt="">

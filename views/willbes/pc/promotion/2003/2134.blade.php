@@ -20,7 +20,7 @@
         
         /*****************************************************************/
 
-        .sky {position:fixed; top:250px; right:10px; z-index:11;}
+        .sky {position:fixed; top:310px; right:0; z-index:11;}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2134_top_bg.jpg) no-repeat center top; }
     
@@ -36,7 +36,6 @@
         .evtMenu li a div {margin-top:8px;color:#7d7d7d}
         .evtMenu li:hover a,
         .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #b12f6f;}
-        .evtMenu li:hover:after {content:"▼"; display:block; clear:both;color:#b12f6f;font-size:25px;}
 
         .evtMenu li:hover a span,
         .evtMenu li a.active span {color:#363636;font-weight:bold;}

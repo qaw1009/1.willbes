@@ -168,7 +168,7 @@
 
         <div id="content_1" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_01.jpg">
-                <a href="javascript:alert('준비중입니다.')" title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 31.73%; width: 27.86%; height: 4.93%; z-index: 2;"></a>
+            <a href="@if($file_yn[0] == 'Y'){{ front_url($file_link[0]) }}@else{{ $file_link[0] }}@endif" @if($file_yn[0] == 'Y') target="_blank" @endif title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 31.73%; width: 27.86%; height: 4.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_02.jpg" title="유의사항" />        
         </div>
 

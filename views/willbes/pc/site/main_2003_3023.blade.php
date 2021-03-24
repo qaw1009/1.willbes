@@ -220,6 +220,14 @@
         @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="gosi-bnfull-Sec">
+            <div class="gosi-bntop">
+                <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2127">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003_top_bn.png" alt="소방 패스">
+                </a>    
+            </div>    
+        </div>
+
+        <div class="gosi-bnfull-Sec">
             <div class="gosi-bnfull">
                 {!! banner_html(element('메인_상단띠배너', $data['arr_main_banner']), 'sliderBar') !!}
             </div>

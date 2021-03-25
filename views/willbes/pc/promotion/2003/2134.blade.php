@@ -23,9 +23,11 @@
         .sky {position:fixed; top:310px; right:0; z-index:11;}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2134_top_bg.jpg) no-repeat center top; }
+        .youtube {position:absolute; top:1050px; left:50%;z-index:1;margin-left:-450px}
+        .youtube iframe {width:900px; height:525px;}
     
 
-        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10}
+        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10;padding-top:550px;}
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
@@ -58,8 +60,10 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}	
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
-        #content_1 {padding-bottom:100px;}
-        #content_2_01 {padding-bottom:50px;}
+        #content_1 {padding-bottom:100px;padding-top:500px;}
+        #content_2_01 {padding-bottom:50px;padding-top:500px;}
+        #content_3 {padding-top:600px;}
+        #content_4 {padding-top:600px;}
         .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#b12f6f}
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#f1e0e7; background:#b12f6f; font-size:90%; margin-left:20px}
@@ -137,6 +141,9 @@
 
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_top.jpg" title="소방직 풀케어 서비스" />
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/--iyzvZDf2M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             <div class="evtMenu" id="evtMenu">                
                 <ul>
                     <li>
@@ -169,7 +176,7 @@
 
         <div id="content_1" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_01.jpg">
-            <a href="@if($file_yn[0] == 'Y'){{ front_url($file_link[0]) }}@else{{ $file_link[0] }}@endif" @if($file_yn[0] == 'Y') target="_blank" @endif title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 34.73%; width: 27.86%; height: 4.93%; z-index: 2;"></a>
+            <a href="@if($file_yn[0] == 'Y'){{ front_url($file_link[0]) }}@else{{ $file_link[0] }}@endif" @if($file_yn[0] == 'Y') target="_blank" @endif title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 45.73%; width: 27.86%; height: 3.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_02.jpg" title="유의사항" />        
         </div>
 

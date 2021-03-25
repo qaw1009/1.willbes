@@ -25,7 +25,7 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2134_top_bg.jpg) no-repeat center top; }
     
 
-        .evtMenu { position:absolute; left:50%; margin-left:-560px; bottom:0; z-index:10}
+        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10}
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
@@ -36,6 +36,7 @@
         .evtMenu li a div {margin-top:8px;color:#7d7d7d}
         .evtMenu li:hover a,
         .evtMenu li a.active {background:#fff; color:#363636; border:2px solid #b12f6f;}
+        .evtMenu li:hover:after {content:"▼"; display:block; clear:both;color:#b12f6f;font-size:25px;}
 
         .evtMenu li:hover a span,
         .evtMenu li a.active span {color:#363636;font-weight:bold;}
@@ -168,7 +169,7 @@
 
         <div id="content_1" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_01.jpg">
-            <a href="@if($file_yn[0] == 'Y'){{ front_url($file_link[0]) }}@else{{ $file_link[0] }}@endif" @if($file_yn[0] == 'Y') target="_blank" @endif title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 31.73%; width: 27.86%; height: 4.93%; z-index: 2;"></a>
+            <a href="@if($file_yn[0] == 'Y'){{ front_url($file_link[0]) }}@else{{ $file_link[0] }}@endif" @if($file_yn[0] == 'Y') target="_blank" @endif title="문제&해설 다운로드" style="position: absolute; left: 35.98%; top: 34.73%; width: 27.86%; height: 4.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2134_01_02.jpg" title="유의사항" />        
         </div>
 

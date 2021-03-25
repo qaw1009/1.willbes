@@ -200,7 +200,7 @@
                 return;
             }
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
-                alert('특강을 선택하셔야 합니다.');
+                alert('접수하려는 시험을 선택하세요.');
                 return;
             }
             // if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {

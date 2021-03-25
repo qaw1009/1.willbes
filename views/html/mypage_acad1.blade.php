@@ -225,7 +225,7 @@
                                         <div class="Layer-Cont">
                                             <div class="Layer-SubTit tx-gray">
                                                 <ul>
-                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a> <span class="oBox changeBox ml5 NG">인강전환</span></li>
+                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a> <span class="oBox changeBox NG">인강전환</span> <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a> </li>
                                                     <li>경찰학 기본(단과)[1/6~2/18] <a href="#none">교재구매</a></li>
                                                     <li>형법 기본(단과)[1/28~2/14] <a href="#none">교재구매</a></li>
                                                     <li>영어 기본(단과) [1/8~2/21] <a href="#none">교재구매</a></li>
@@ -322,6 +322,7 @@
                                     <div class="lookover">
                                         <a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a>
                                         <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
+                                        <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
                                     </div>
                                 </td>
                                 <td class="w-period">2018.10.20 <br>
@@ -1377,6 +1378,156 @@
                                                 <a href="#" class="bBox blueBox">바로결제</a>
                                             </span>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PASSZONE-List -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--보강동영상 신청 팝업-->
+            <div id="supplementLec" class="willbes-Layer-Black">
+                <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix abs">
+                    <a class="closeBtn" href="#none" onclick="closeWin('supplementLec')">
+                        <img src="{{ img_url('sub/close.png') }}">
+                    </a>
+                    <div>
+                        <div class="Layer-Tit tx-dark-black NG">보강동영상 신청</div> 
+                        <div class="lecMoreWrap of-hidden h700">                    
+                            <div class="PASSZONE-List widthAutoFull">                               
+                                <div class="PASSZONE-Lec-Section">
+                                    <div class="strong mt25 h22">
+                                        · 회원정보
+                                    </div>
+
+                                    <div class="LeclistTable bdt-gray mt10 mb30 c_both">                                
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 30%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 30%;">
+                                            </colgroup>
+                                            </tbody>
+                                                <tr>
+                                                    <th>회원명</th>
+                                                    <td>홍길동</td>
+                                                    <th>아이디</th>
+                                                    <td>ABC***</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="strong h22">
+                                        · 강좌정보
+                                    </div>
+
+                                    <div class="LeclistTable bdt-gray mt10 mb30 c_both">
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col style="width: 30%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 30%;">
+                                            </colgroup>
+                                            </tbody>
+                                                <tr>
+                                                    <th>종합반명</th>
+                                                    <td colspan="3"> [2020학년도]민쌤의 유아임용 합격생 간담회</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>과목</th>
+                                                    <td>유아</td>
+                                                    <th>강사명</th>
+                                                    <td>민정선</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>강좌명</th>
+                                                    <td colspan="3" class="tx-blue">2020 (9~10월) 실전 모의고사반 (7주)</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="strong h22 tx-blue">
+                                        · 보강동영상 신청하기
+                                    </div>
+
+                                    <div class="LeclistTable bdt-gray mt10 mb30 c_both">
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 20%;">
+                                                <col>
+                                            </colgroup>
+                                            </tbody>
+                                                <tr>
+                                                    <th>신청현황</th>
+                                                    <td class="w-info tx-left">[총 신청 가능 개수] 2개  <span class="row-line">|</span>  [사용개수] 2개   <span class="row-line">|</span>  [남은개수] 1개</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>수업불참강의</th>
+                                                    <td class="w-info tx-left">
+                                                        <select id="" name="" title="" class="seleProcess">
+                                                            <option>강의선택</option>
+                                                            <option>강의1</option>
+                                                            <option>강의2</option>
+                                                            <option>강의3</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>불참사유</th>
+                                                    <td class="w-info tx-left"><textarea class="h55"></textarea></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="mt10 mb10 lh1_5">
+                                        ⓘ 주의사항<br>
+                                            - 강동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
+                                            - 보강동영상은 2일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
+                                            - 신청한 보강동영상은 내강의실 > 학원강좌 > 보강동영상 메뉴에서 확인 가능합니다.<br>
+                                        </div>
+                                        <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="#">보강동영상 신청 ></a></div>
+                                    </div>
+
+                                    <div class="strong h22">
+                                        [보강동영상 신청이력]
+                                    </div>
+
+                                    <div class="LeclistTable bdt-gray mt10 mb30 c_both">
+                                        <table class="listTable passTable-Select under-gray tx-gray">
+                                            <colgroup>
+                                                <col style="width: 10%;">
+                                                <col style="width: 20%;">
+                                                <col style="width: 15%;">
+                                                <col>
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th>NO</th>
+                                                    <th>신청일</th>
+                                                    <th>신청자</th>
+                                                    <th>불참사유</th>
+                                                </tr>
+                                            </thead>
+                                            </tbody>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>2021-00-00 15:35</td>
+                                                    <td>홍길동</td>
+                                                    <td>병가로 결석</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>2021-00-00 15:35</td>
+                                                    <td>홍길동</td>
+                                                    <td>병가로 결석</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

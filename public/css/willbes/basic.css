@@ -654,7 +654,7 @@ select[disabled] {
 }
 .btnAuto250 {
 	width: 250px !important;
-	margin: 0 auto;
+	margin: 0 auto !important;
 }
 
 .h22 {

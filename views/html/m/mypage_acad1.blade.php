@@ -84,55 +84,22 @@
                             <div class="w-lecList mt10">
                                 <div class="NG">강좌구성보기 <a href="#none">▼</a></div>
                                 <ul>
-                                    <li>1기스터디_감정평가실무_여지훈 <span>인강전환</span></li>
-                                    <li>1기스터디_감정평가및보상법규_이현진</li>
-                                    <li>1기스터디_감정평가이론_어정민</li>                                    
+                                    <li>
+                                        1기스터디_감정평가실무_여지훈 <span>인강전환</span>
+                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                    </li>
+                                    <li>
+                                        1기스터디_감정평가및보상법규_이현진
+                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                    </li>
+                                    <li>
+                                        1기스터디_감정평가이론_어정민
+                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                    </li>                                    
                                 </ul>                               
                             </div> 
                         </td>
                     </tr>
-                    {{--
-                    <tr>
-                        <td class="w-data tx-left">
-                            <div class="w-tit">
-                                <a href="#none">기본종합(오)[1/6~3/6]-강사배정</a>
-                            </div>
-                            <dl class="w-info acad tx-gray">
-                                <dt>수강기간 : 2018-00-00 ~ 2018-00-00</dt>
-                                <dt class="tx-red">※ 강사 선택하기는 PC버전에서만 가능합니다.</dt>
-                            </dl>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="w-data tx-left">
-                            <div class="w-tit">
-                                <a href="#none">[인천] 사전접수 할인 이벤트(11월29일까지) 20년 1차대비 문풀 1+2+3단계 3법 종합</a>
-                            </div>
-                            <dl class="w-info acad tx-gray">
-                                <dt>수강기간 : 2018-00-00~2018-00-00</dt>
-                            </dl>
-                            <div class="w-lecList">
-                                <div class="NG">강좌구성보기 <a href="#none">▼</a></div>
-                                <ul>
-                                    <li>[인천] 1+2+3단계 경찰학 문제풀이(장정훈)</li>
-                                    <li>[인천] 1+2+3단계 형소법 문제풀이(신광은)</li>
-                                    <li>[인천] 1+2+3단계 형법 문제풀이(김원욱)</li>                                    
-                                </ul>                               
-                            </div>                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="w-data tx-left">
-                            <div class="w-tit">
-                                <a href="#none">2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
-                            </div>
-                            <dl class="w-info acad tx-gray">
-                                <dt>수강기간 : 2018-00-00~2018-00-00</dt>
-                                <dt class="tx-red">※ 강사 선택하기는 PC버전에서만 가능합니다.</dt>
-                            </dl>
-                        </td>
-                    </tr>
-                    --}}
                 </tbody>
             </table>
             <div class="Paging">
@@ -167,14 +134,14 @@
                                 <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                             </dl>
 
-                            <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">
+                            <div class="w-info bg-light-gray pd10 pb0 mt10 bdb-bright-gray">
                                 <ul class="mb10">
                                     <li>[강의실명] <span class="tx-light-blue">404호</span> <span class="row-line">|</span> <span class="tx-light-blue">404호</span><li>
                                     <li>[좌석번호] <span class="tx-light-blue">41</span><li>
                                     <li>[좌석선택기간] 2020-00-00 ~ 2020-00-00<li>   
                                 </ul>
                                 <div class="mb10"><a href="#none" class="btnStfull01">좌석선택 ></a></div>    
-                                <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
+                                <div class="mb10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
                             </div>
                         </td>
                     </tr>
@@ -191,8 +158,9 @@
                                 <dt>요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강</dt>
                             </dl>
 
-                            <div class="w-info bg-light-gray pd10 mt10 bdb-bright-gray">  
-                                <div><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>                              
+                            <div class="w-info bg-light-gray pd10 pb0 mt10 bdb-bright-gray">  
+                                <div class="mb10"><a href="#none" class="btnStfull02">온라인첨삭 ></a></div>    
+                                <div class="mb10"><a href="#none" class="btnStfull03">보강동영상 신청 ></a></div>                           
                             </div>
                         </td>
                     </tr>

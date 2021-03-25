@@ -3533,7 +3533,7 @@ table.lecWrapTable .lecInfoTable .w-sub .w-subtit {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	z-index: 105;
+	z-index: 115;
 	width: 100%;
 	height: 100%;
 }
@@ -7263,8 +7263,7 @@ ul li.profList .willbes-Layer-ProfileBox {
 .willbes-Layer-CurriBox .Layer-Cont li a {
 	display: block;
 	padding: 5px 0 5px 20px;
-	background: url("/public/img/willbes/prof/icon_file.gif") no-repeat left
-		center;
+	background: url("/public/img/willbes/prof/icon_file.gif") no-repeat left center;
 }
 
 /* subContainer : Prof : willbes-Layer-Board */
@@ -10097,6 +10096,7 @@ table.acadTable tr td {
 	padding: 15px 0;
 }
 table.acadTable tr td .Layer-SubTit a {padding:1px 4px; font-size:11px; color:#fff; background-color: #333; border:1px solid #000}
+table.acadTable tr td .Layer-SubTit a.blue {background-color: #1a8ccb; border:1px solid #0d74ae}
 .seatsection {
 	background: #f6f6f6;
 	border-radius: 20px;
@@ -14171,6 +14171,10 @@ table.acadlecInfoPackageTable tr.Top td {
 	border-radius: 20px;
 	padding: 0 12px;
 }
+.lookover a:hover {
+	background: #ff0033;
+	color: #fff;
+}
 .lookover a.buyBook {
 	border:1px solid #000;
 	background-color: #333;
@@ -14181,9 +14185,14 @@ table.acadlecInfoPackageTable tr.Top td {
 	background-color: #fff;
 	color:#333;
 }
-.lookover a:hover {
-	background: #ff0033;
-	color: #fff;
+.lookover a.supplement {
+	border:1px solid #0d74ae;
+	background-color: #1a8ccb;
+	color:#fff
+}
+.lookover a.supplement:hover {
+	background-color: #fff;
+	color:#0d74ae;
 }
 
 
@@ -14264,12 +14273,13 @@ table.acadlecInfoPackageTable tr.Top td {
 .lookover-cont .lookoverTable td .up-file li {
 	line-height: 2;
 }
-.lookover-cont textarea {
+.willbes-Layer-PassBox textarea {
 	width: 100%;
 	border: 1px solid #d4d4d4;
 	resize: none;
 	height: 120px;
 	line-height: 1.5;
+	overflow-y: auto
 }
 
 /***************************내강의실 > 학원강좌 > 수강신청강좌 : 종합반 > 강사선택현황보기***********************************************/

@@ -218,6 +218,16 @@
     <div id="Container" class="Container gosi NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
+
+        <div class="Section gosi-Sec NSK">
+            <div class="gosi-bnfp"> 
+                <div style="width:2000px !important;margin:0 auto;">
+                    <a href="https://pass.willbes.net/promotion/index/cate/3023/code/2127" target="_blank">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2003_top_bn.png" alt="소방직 공무원 시험">
+                    </a>
+                </div>    
+            </div>
+        </div>
         
         <div class="gosi-bnfull-Sec">
             <div class="gosi-bnfull">

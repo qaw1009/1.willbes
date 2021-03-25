@@ -86,11 +86,11 @@
             <ul>
                 <li>
                     <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#탐정사시험안내</div>
+                    <div>#한국탐정KPD소개</div>
                 </li>
                 <li>                    
                     <iframe src="https://www.youtube.com/embed/FQjASiTrgJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#한국탐정KPD소개</div>
+                    <div>#탐정사시험안내</div>
                 </li>
             </ul>            
         </div>

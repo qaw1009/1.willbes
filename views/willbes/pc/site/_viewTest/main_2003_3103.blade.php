@@ -4,9 +4,8 @@
     <link href="/public/css/willbes/style_gosi_3103.css?ver={{time()}}" rel="stylesheet">
 
     <div id="Container" class="Container gosi NGR c_both">
-        <div class="Menu widthAuto NGR c_both">
-            @include('willbes.pc.layouts.partial.site_menu')
-        </div>
+        <!-- site nav -->
+        @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="evt_00">
             <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>

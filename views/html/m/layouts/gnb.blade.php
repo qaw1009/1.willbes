@@ -31,6 +31,7 @@
                 <ul>
                     <li><a href="#none">· 수강신청 강좌</a></li>
                     <li><a href="#none">· 수강종료 강좌</a></li>
+                    <li><a href="#none">· 보강동영상</a></li>
                 </ul>
             </div>
         </li>

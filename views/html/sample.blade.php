@@ -175,6 +175,8 @@
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/mypage_acad1') }}" target="_blank">내강의실 > 학원강좌 > 수강신청강좌</a></li>
                 <li><a href="{{ site_url('/home/html/mypage_acad2') }}" target="_blank">내강의실 > 학원강좌 > 수강종료강좌</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_acad3') }}" target="_blank">내강의실 > 학원강좌 > 보강동영상</a></li>
+                <li><a href="{{ site_url('/home/html/mypage_acad4') }}" target="_blank">내강의실 > 학원강좌 > 보강동영상 > 상세화면</a></li>
                 <li class="c_both"></li>
                 <li><a href="{{ site_url('/home/html/mypage_event') }}" target="_blank">내강의실 > 특강&이벤트 신청현황</a></li>
                 <li class="c_both"></li>

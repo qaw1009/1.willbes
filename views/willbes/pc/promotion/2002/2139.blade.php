@@ -22,11 +22,11 @@
         .evt01  .tag {font-size:40px; color:#5b4ffb; text-align:center}
         .evt01 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt01 .request h3 {font-size:17px;}
-        .evt01 .request td {padding:10px}
+        .evt01 .request td {padding:10px; font-size:14px}
         .evt01 .request input {height:26px;}
         .evt01 .requestL {width:48%; float:left}
         .evt01 .requestR {width:48%; float:right; }
-        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:241px; overflow-y:scroll }
+        .evt01 .requestR ul {margin-top:10px; line-height:1.5; padding:10px; border:1px solid #ccc; height:196px; overflow-y:scroll }
         .evt01 .requestL li {display:inline-block; margin-right:10px}
         .evt01 .requestR li {margin-bottom:5px}
         .evt01 .request:after {content:""; display:block; clear:both}
@@ -34,9 +34,19 @@
         .evt01 .btn a {display:block; text-align:center; font-size:25px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt01 .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
 
-        input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
+        .evt01 input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 
-        .evt03 {background:#f6f0e0}        
+        .evt03 {background:#f6f0e0}  
+        
+        .youtube {background:#36041f; padding:150px 0}
+        .youtube .NSK-Black {color:#fff; font-size:50px; margin-bottom:50px}
+        .youtube ul {width:1120px; margin:0 auto}
+        .youtube li {display:inline; float:left;}
+        .youtube li:last-child {margin-left:20px}        
+        .youtube li div {margin-top:30px; font-size:30px; font-weight:bold; color:#fedf9c}
+        .youtube li div span {color:#fff;}
+        .youtube li iframe {width:550px; height:310px}
+        .youtube ul:after {content:''; display:block; clear:both}
 
         .loadmapBox .loadmap {position: relative; padding-bottom:56.25%; height: 0; overflow: hidden; max-width:100%; height:auto; }
         .loadmapBox .loadmap iframe {position:absolute; top: 0; left: 0; width:100%; height:100%;}
@@ -70,6 +80,20 @@
         <div class="evtCtnsBox evtTop">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_top.jpg"  alt="사립탐정사"/>
         </div> 
+
+        <div class="evtCtnsBox youtube">
+            <div class="NSK-Black">사립탐정사를 영상으로 먼저 만나보세요~!!</div>
+            <ul>
+                <li>
+                    <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div>#탐정사시험안내</div>
+                </li>
+                <li>                    
+                    <iframe src="https://www.youtube.com/embed/FQjASiTrgJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div>#한국탐정KPD소개</div>
+                </li>
+            </ul>            
+        </div>
 
         <div class="evtCtnsBox evt01">
             <div class="tag NSK-Black">#사립탐정 #한국탐정 #3/27 #누구나빠르게</div>

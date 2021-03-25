@@ -148,7 +148,7 @@
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
 
         @if(empty($arr_promotion_params) === false)
-            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+            @if(strtotime(date('Ymd')) > strtotime($arr_promotion_params['edate']))
                 alert('쿠폰발급 기간이 아닙니다.');
                 return;
             @endif

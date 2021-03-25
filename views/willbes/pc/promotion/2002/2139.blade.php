@@ -58,9 +58,9 @@
         <input type="hidden" name="register_chk[]" value="{{$val['ErIdx']}}"/>
     @endforeach--}}
 {{--            <input type="hidden" name="target_params[]" value="register_data1"/> --}}{{-- 체크 항목 전송 --}}
-    <input type="hidden" name="target_params[]" value="register_data2"/> {{-- 체크 항목 전송 --}}
+{{--    <input type="hidden" name="target_params[]" value="register_data2"/> --}}{{-- 체크 항목 전송 --}}
 {{--            <input type="hidden" name="target_param_names[]" value="참여캠퍼스"/> --}}{{-- 체크 항목 전송 --}}
-    <input type="hidden" name="target_param_names[]" value="직렬"/> {{-- 체크 항목 전송 --}}
+{{--    <input type="hidden" name="target_param_names[]" value="직렬"/> --}}{{-- 체크 항목 전송 --}}
     <input type="hidden" name="register_type" value="promotion"/>
     <!--<input type="hidden" name="register_chk_col[]" value="EtcValue"/>
     <input type="hidden" name="register_chk_val[]" value=""/>-->
@@ -97,26 +97,7 @@
                                 <ul>
                                     @foreach($arr_base['register_list'] as $key => $val)
                                         @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                            @php
-                                                // 강의 기간 지나면 자동 disabled 처리
-                                                // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
-                                                //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
-                                                $reg_year = date('Y');
-                                                $temp_date = explode(' ', $val['Name'])[0];
-                                                if(strpos($temp_date, '(') !== false) {
-                                                    $temp_date = substr($temp_date, 0, strpos($temp_date, '('));
-                                                }
-                                                $reg_month_day = explode('.', $temp_date);
-                                                $reg_month = mb_strlen($reg_month_day[0], 'utf-8') == 1 ? '0'.$reg_month_day[0] : $reg_month_day[0] ;
-                                                $reg_day = mb_strlen($reg_month_day[1], 'utf-8') == 1 ? '0'.$reg_month_day[1] : $reg_month_day[1] ;
-                                                $reg_date = $reg_year.$reg_month.$reg_day.'0000';
-                                                //echo date('YmdHi', strtotime($reg_date. '+1 days'));
-                                            @endphp
-                                            @if(time() >= strtotime($reg_date. '+1 days'))
-                                                <li><input type="checkbox" name="register_disable[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" disabled="disabled"/> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                            @else
-                                                <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li>
-                                            @endif
+                                            <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li><br/>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -151,7 +132,7 @@
                 </div>
             </div>
             <div class="btn NGEB">
-                <a href="#none" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>
+                <a href="javascript:void(0);" onclick="javascript:fn_submit();">사립탐정 자격시험 예약하기 ></a>
             </div>
             <div class="mt30 tx16">* 결제는 신광은경찰학원(본원) 현장결제만 가능합니다.</div>
         </div>
@@ -219,13 +200,13 @@
                 return;
             }
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
-                alert('참여일을 선택하셔야 합니다.');
+                alert('특강을 선택하셔야 합니다.');
                 return;
             }
-            if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
-                alert('직렬을 선택하셔야 합니다.');
-                return;
-            }
+            // if ($regi_form_register.find('input[name="register_data2"]').is(':checked') === false) {
+            //     alert('직렬을 선택하셔야 합니다.');
+            //     return;
+            // }
 
             if (!confirm('저장하시겠습니까?')) { return true; }
 

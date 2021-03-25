@@ -4474,7 +4474,7 @@ table.classTable tr td img {
 	position: absolute;
 	top: 20px;
 	right: 125px;
-	z-index: 110;
+	z-index: 101;
 	width: 400px;
 	height: auto;
 	border: 1px solid #2f2f2f;

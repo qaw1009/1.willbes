@@ -3726,7 +3726,9 @@ body.memBody #Footer {
 	text-align: center;
 	line-height: 32px;
 	letter-spacing: -1px;
+	vertical-align: middle;
 }
+.lecTable .w-start ul li span {line-height: 32px;}
 .lecTable .w-start ul.one {
 	width: 25%;
 }

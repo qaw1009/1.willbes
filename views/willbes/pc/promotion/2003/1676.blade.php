@@ -10,9 +10,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:150px;right:0; width:160px; text-align:center; z-index:1;}
-        .skybanner a {display:block; margin-bottom:10px}
-
+        .skybanner {position:fixed;top:150px;right:10px; width:160px; text-align:center; z-index:1;}
+        .skybanner a {display:block; margin-bottom:15px;}
 
         .evttop_banners {background:#060606;} 
 
@@ -71,7 +70,12 @@
                 <area shape="rect" coords="4,199,150,272" href="#detail" />
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
-            </map>           
+            </map>              
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1676_sky3.png" usemap="#Map1676_sky3" title="아작내기,적중50선" border="0">
+            <map name="Map1676_sky3" id="Map1676_sky3">
+                <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1108&search_text=UHJvZE5hbWU67JWE7J6R64K06riw" target="_blank" onfocus="this.blur()" />
+                <area shape="rect" coords="85,2,167,151" href="javascript:alert('엄청난 선물과 함께 곧 찾아올게요!')" onfocus="this.blur()" />
+            </map>               
         </div>         
         
         {{--

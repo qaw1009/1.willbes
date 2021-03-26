@@ -76,7 +76,7 @@
                                 <div class="w-start tx-gray">
                                     <ul class="two">
                                         <li class="btn_white"><a href="#none">수강시작</a></li>
-                                        <li class="btn_white"><a href="#none">수강대기</a></li>                                        
+                                        <li><span class="tx-red">수강대기</span></li>                                        
                                     </ul> 
                                 </div>
                                 <div class="w-line">-</div>

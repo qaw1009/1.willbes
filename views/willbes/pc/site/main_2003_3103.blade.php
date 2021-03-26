@@ -1,97 +1,63 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <!-- Container -->
-    <style type="text/css">
-        .Container {
-            width:100% !important;
-            min-width:1120px !important;
-            padding:0 !important;
-            background:#fff;
-            text-align:center;
-        }
-        .evt_00 {margin-top:20px}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/main/2003/3103_top_bg.jpg) no-repeat center top; margin-top:20px}
-        .evtTop > div {width:1120px; margin: 0 auto; position:relative;}
-
-        .youtube {background:#090909; padding:100px 0}
-        .youtube iframe {width:980px; margin:0 auto; height:550px;}      
-
-        .evt_01 {background:#fff;padding-bottom:100px;}
-        .evt_01 ul {width:1120px; margin:0 auto;}
-        .evt_01 li {display:inline; float:left; width:25%; text-align:center;font-size:14px;}
-        .evt_01 li .gif_area img{width:250px; height:140px; margin:0 auto}
-        .evt_01 li iframe {width:348px; height:220px; margin:0 auto}        
-        .evt_01 li div {height:348px; line-height:25px;color:#222;}
-        /*.evt_01 li div:first-child {font-size:16px; line-height:40px; height:40px;}*/
-        .evt_01 ul:after {content:""; display:block; clear:both}
-        .btn_area {display:inline-block;margin:20px 0 80px 0;}
-        .btn_area .btn{background:#a8aaa7;color:#fff;font-size:18px;width:170px;}
-        .btn_area a{display:inline-block;height:38px;line-height:38px;border-radius:25px;letter-spacing:-0.5px;transition:all 0.5s linear;}
-
-        .evt_02 {background:#F3F3F3;}
-
-        .evt_03 {background:#fff;position:relative;}
-        .check {color:#000; font-size:15px;font-weight:bold;position:absolute;left:50%;top:50%;margin-left:-400px;margin-top:300px;}
-        .check label {cursor:pointer}
-        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
-        .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}
-
-        .evt_03_info {padding-top:100px;}
-
-        .evt_04 {background:#F3F3F3;padding-bottom:150px;}
-        .evt_04 .tabBox {position:relative; width:1120px; margin:0 auto;}
-        .evt_04 .tab li {display:inline; float:left; width:33.333333%;}
-        .evt_04 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; border:1px solid #1a1a1a; margin-right:1px}
-        .evt_04 .tab li a:hover,
-        .evt_04 .tab li a.active {background:#9b1f29; color:#fff;}
-        .evt_04 .tab li:last-child a {margin:0}
-        .evt_04 .tab:after {content:""; display:block; clear:both}
-
-        .evt_05 {background:#fdfdfd;}
-
-        .evt_06 {background:#F6F6F6;padding-bottom:125px;}
-        .evt_06 .tabBox {position:relative; width:1120px; margin:0 auto;}
-        .evt_06 .tab li {display:inline; float:left; width:50%;}
-        .evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px; border:1px solid #1a1a1a;}
-        .evt_06 .tab li a:hover,
-        .evt_06 .tab li a.active {background:#9b1f29; color:#fff;}
-        .evt_06 .tab li:last-child a {margin:0}
-        .evt_06 .tab:after {content:""; display:block; clear:both}
-
-         /* 이용안내 */
-        .wb_info {padding:100px 0;}
-        .guide_box{width:1120px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
-        .guide_box h2 {font-size:30px; margin-bottom:30px}
-        .guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
-        .guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
-        .guide_box dd strong {color:#555}
-        .guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:13px;}
-        .guide_box dd:after {content:""; display:block; clear:both}
-        .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}   
-        .guide_box .infoTit {font-size:20px;}  
-    </style>
-
+    <link href="/public/css/willbes/style_gosi_3103.css?ver={{time()}}" rel="stylesheet">
 
     <div id="Container" class="Container gosi NGR c_both">
-        <div class="Menu widthAuto NGR c_both">
-            @include('willbes.pc.layouts.partial.site_menu')
-        </div>
+        <!-- site nav -->
+        @include('willbes.pc.layouts.partial.site_menu')
 
         <div class="evt_00">
             <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>
         </div>
 
-        <div class="evtTop">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_top.jpg" />
-                <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2136" title="" target="_blank" style="position: absolute; left: 37.5%; top: 91.51%; width: 24.38%; height: 5.88%; z-index: 2;"></a>  
-            </div>                      
+        <div class="Section gosi-Sec NSK">
+            <div class="gosi-bntop">
+                <div id="TechRollingSlider" class="GositabBox">
+                    {!! banner_html($data['arr_main_banner']['메인_빅배너'], 'GositabSlider') !!}
+                    <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
+                    <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
+                </div>
+
+                <div id="TechRollingDiv" class="GositabList">
+                    <div class="Gositab">
+                        @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
+                            <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{!! $row['BannerName'] !!}</a></li>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="Section gosi-bn03">
+            <div class="widthAuto">
+                <div class="tx16 mb20">교수님 추천강좌 / 이벤트 / 최신소식</div>
+                <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>HOT PICK</span></div>
+                <ul>
+                    @for($i=1; $i<=3; $i++)
+                        @if(isset($data['arr_main_banner']['메인_핫픽'.$i]) === true)
+                            <li class="nSlider">
+                                {!! banner_html(element('메인_핫픽'.$i, $data['arr_main_banner']), 'sliderNum') !!}
+                            </li>
+                        @endif
+                    @endfor
+                </ul>
+            </div>
+        </div>
+
+        @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
+            <div class="gosi-bnfull-Sec02">
+                <div class="gosi-bnfull02">
+                    {!! banner_html($data['arr_main_banner']['메인_중간띠배너'], 'sliderBar02') !!}
+                    <p class="leftBtn" id="imgBannerLeft02"><a href="#none">이전</a></p>
+                    <p class="rightBtn" id="imgBannerRight02"><a href="none">다음</a></p>
+                </div>
+            </div>
+        @endif
 
         <div class="youtube">
             <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>  
+        </div>
 
         <div class="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01.jpg" alt="">
@@ -111,7 +77,7 @@
         </div>
 
         <div class="evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_02.jpg" />         
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_02.jpg" />
         </div>
 
         <div class="evt_03" id="evt03">
@@ -119,19 +85,19 @@
             <map name="Map3103b" id="Map3103b">
                 <area shape="rect" coords="129,346,548,522" href="javascript:go_PassLecture('173664');" alt="수강신청" />
                 <area shape="rect" coords="578,347,1000,523" href="javascript:go_PassLecture('173904');" alt="수강신청" />
-            </map>         
-            <div class="check" id="chkInfo">   
+            </map>
+            <div class="check" id="chkInfo">
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />
-                        페이지 하단 Perfect PSAT Program 온라인 PASS반 이용안내를 모두 확인하였고, 이에 동의합니다.
+                    페이지 하단 Perfect PSAT Program 온라인 PASS반 이용안내를 모두 확인하였고, 이에 동의합니다.
                 </label>
                 <a href="#notice" class="infotxt">이용안내확인하기 ↓</a>
-            </div>               
+            </div>
         </div>
 
         <div class="evt_03_info">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03_info.jpg" />       
-        </div>        
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03_info.jpg" />
+        </div>
 
         <div class="evt_04">
             <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_04.jpg" alt="">
@@ -141,33 +107,33 @@
                     <li><a href="#tab02">상황판단</a></li>
                     <li><a href="#tab03">언어논리</a></li>
                 </ul>
-                <div id="tab01" style="padding-top:40px;">
+                <div id="tab01">
                     <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c1.png" alt="">
                 </div>
-                <div id="tab02" style="padding-top:40px;">
+                <div id="tab02">
                     <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c2.png" alt="">
                 </div>
-                <div id="tab03" style="padding-top:40px;">                    
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c3.png" alt="">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c4.png" alt="" style="padding-top:40px;">
+                <div id="tab03">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c3.png" alt=""><br><br>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c4.png" alt="">
                 </div>
             </div>
         </div>
 
         <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05.jpg" />       
-        </div> 
-
-         <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_mid.gif" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05.jpg" />
         </div>
 
-         <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_bt.jpg" />       
-        </div> 
+        <div class="evt_05">
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_mid.gif" />
+        </div>
+
+        <div class="evt_05">
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_bt.jpg" />
+        </div>
 
         <div class="evt_06" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_06.jpg" />       
+            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_06.jpg" />
             <div class="tabBox">
                 <ul class="tab">
                     <li><a href="#tab04" class="active">모의평가 전(2020년 10월~11월)</a></li>
@@ -195,12 +161,12 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <div class="evtCtnsBox wb_info" id="notice">
             <div class="guide_box">
                 <h2 class="NSK-Black">윌비스 한림법학원 Perfect PSAT Program 온라인 PASS반 이용안내</h2>
-                <dl>    
+                <dl>
 
                     <dt>이용안내</dt>
                     <dd>
@@ -239,15 +205,15 @@
                     <dd>
                         <ol>
                             <li>로그인 후 [내강의실] 에서 [무한PASS존]으로 접속합니다.</li>
-                            <li>구매한 PASS 상품 선택 후 [강좌추가] 를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>   
-                            <li>Perfect PSAT Program 온라인 PASS반은 일시 정지, 수강 연장, 재수강 불가합니다.</li>   
+                            <li>구매한 PASS 상품 선택 후 [강좌추가] 를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
+                            <li>Perfect PSAT Program 온라인 PASS반은 일시 정지, 수강 연장, 재수강 불가합니다.</li>
                             <li>Perfect PSAT Program 온라인 PASS반 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
                                 - 총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대
-                            </li>   
+                            </li>
                             <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 내용확인 후 진행이 가능하오니 고객센터로 문의 부탁드립니다.<br>
-                                (수강기간동안 3회 신청가능)                          
-                            </li>     
-                            <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용될 수 있습니다.</li>                       
+                                (수강기간동안 3회 신청가능)
+                            </li>
+                            <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용될 수 있습니다.</li>
                         </ol>
                     </dd>
 
@@ -311,6 +277,65 @@
             var url = '{{ site_url('/periodPackage/show/cate/3103/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+
+        $(function() {
+            $('.sliderBar').bxSlider({
+                mode:'fade',
+                auto: true,
+                touchEnabled: false,
+                controls: false,
+                sliderWidth:2000,
+                pause: 3000,
+                autoHover: true,
+                pager: false,
+            });
+        });
+
+        //상단 메인 배너
+        $(function(){
+            var slidesImg = $(".GositabSlider").bxSlider({
+                mode:'horizontal',
+                touchEnabled: false,
+                speed:400,
+                pause:5000,
+                sliderWidth:2000,
+                auto : true,
+                autoHover: true,
+                pagerCustom: '#TechRollingDiv',
+                controls:false,
+                onSliderLoad: function(){
+                    $("#TechRollingSlider").css("visibility", "visible").animate({opacity:1});
+                }
+            });
+            $("#imgBannerRight").click(function (){
+                slidesImg.goToPrevSlide();
+            });
+
+            $("#imgBannerLeft").click(function (){
+                slidesImg.goToNextSlide();
+            });
+        });
+
+        /*bar 배너 롤링 */
+        $(function() {
+            var slidesImg02 = $(".sliderBar02").bxSlider({
+                mode:'fade',
+                auto: true,
+                touchEnabled: false,
+                controls: false,
+                sliderWidth:2000,
+                pause: 3000,
+                autoHover: true,
+                pager: false,
+            });
+            $("#imgBannerRight02").click(function (){
+                slidesImg02.goToPrevSlide();
+            });
+
+            $("#imgBannerLeft02").click(function (){
+                slidesImg02.goToNextSlide();
+            });
+        });
     </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

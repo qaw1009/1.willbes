@@ -79,18 +79,22 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2148_top.jpg" alt="봄맞이 특별이벤트" />
 		</div>
 
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif 
+
         <div class="evtCtnsBox evt_01">  
             @if($__cfg['CateCode'] == '3099')      
                 <div class="title NSK-Black">변호사</div>                 
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif
             @endif 
 
             @if($__cfg['CateCode'] == '3098')      
                 <div class="title NSK-Black">법원 행시</div>                 
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif  
             @endif      
         </div>

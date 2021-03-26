@@ -320,13 +320,13 @@
             });
 
             // 수강후기 마우스 오버
-            $('#SubRollingDiv .Subtab li').on('mouseover', function(){
-                var _index = $('#SubRollingDiv .Subtab li').index(this);
-                subslidesImg.stopAuto();
-                subslidesImg.goToSlide(_index);
-            }).mouseleave(function (){
-                subslidesImg.startAuto();
-            });
+            // $('#SubRollingDiv .Subtab li').on('mouseover', function(){
+            //     var _index = $('#SubRollingDiv .Subtab li').index(this);
+            //     subslidesImg.stopAuto();
+            //     subslidesImg.goToSlide(_index);
+            // }).mouseleave(function (){
+            //     subslidesImg.startAuto();
+            // });
         });
     </script>
 @stop

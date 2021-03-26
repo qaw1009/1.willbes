@@ -86,15 +86,15 @@
                                 <ul>
                                     <li>
                                         1기스터디_감정평가실무_여지훈 <span>인강전환</span>
-                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
                                     </li>
                                     <li>
                                         1기스터디_감정평가및보상법규_이현진
-                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
                                     </li>
                                     <li>
                                         1기스터디_감정평가이론_어정민
-                                        <div class="supplementBtn"><a href="#none">보강동영상 신청</a></div>
+                                        <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
                                     </li>                                    
                                 </ul>                               
                             </div> 

@@ -179,7 +179,8 @@
                                 </dl>
                             </td>
                             <td class="w-answer">
-                                <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>
+                                <span class="tx-red">수강대기</span>
+                                <a href="#none"><span class="bBox blueBox NSK">수강시작 ></span></a>                                
                             </td>
                         </tr>
                         <tr>

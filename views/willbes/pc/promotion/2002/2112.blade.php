@@ -171,7 +171,7 @@
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_03_03.jpg"  alt="온라인 PASS 바로가기" usemap="#Map2112_pass" border="0">
                     <map name="Map2112_pass" id="Map2112_pass">
-                        <area shape="rect" coords="301,367,817,474" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605005&course_idx=&subject_idx=1074" target="_blank" alt="온라인 pass 바로가기" />
+                        <area shape="rect" coords="301,367,817,474" href="https://willbesedu.willbes.net/pass/offLecture/index?cate_code=3125&course_idx=1404&subject_idx=2159" target="_blank" alt="온라인 pass 바로가기" />
                     </map>
                 </div>           
 
@@ -187,13 +187,15 @@
 
             </div>
         </div>  
-        
+
+        {{--
         <div class="evtCtnsBox evt01_04" id="coupon_box">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_04.jpg" alt="쿠폰 받기" />
                 <a href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();" style="position: absolute; left: 39.59%; top: 78.87%; width: 20.82%; height: 5.8%; z-index: 2;"></a>
             </div>
-        </div>       
+        </div>     
+        --}}  
 
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_05.jpg"  alt="최정예 교수진" />

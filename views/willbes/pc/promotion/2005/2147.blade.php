@@ -39,18 +39,9 @@
         }          
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2147_top_bg.jpg) no-repeat center top;}	
+        .evtCtnsBox .title {text-align:left; color:#464646; font-size:40px; margin:100px 0 50px}
 
-        .evt_01 {margin-bottom:100px}
-        .evt_01 .title {width:1120px; font-size:25px;  margin:0 auto 20px; text-align:left; color:#464646;padding:25px;}
-        .evt_01 .evt01_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	
-
-        .evt_02 {margin-bottom:100px}
-        .evt_02 .title {width:1120px; font-size:25px;  margin:0 auto 20px; text-align:left; color:#464646;padding:25px;}
-        .evt_02 .evt02_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	
-
-        .evt_03 {margin-bottom:100px}
-        .evt_03 .title {width:1120px; font-size:25px;  margin:0 auto 20px; text-align:left; color:#464646;padding:25px;}
-        .evt_03 .evt03_box {width:1120px; padding:20px 0; margin:0 auto 50px; background:#fff;} 	
+        .evt_01 {width:1120px; margin:0 auto}	
         
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -88,32 +79,29 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2147_top.jpg" alt="새봄맞이 특별이벤트" />
 		</div>
 
-        <div class="evtCtnsBox evt_01">                  
-            <div class="evt01_box">       
-                <div class="title NSK-Black">1. 5급 행정</div>                 
-                    @if(empty($arr_base['display_product_data']) === false)
-                        @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-                    @endif                                   
-            </div>
+        <div class="evtCtnsBox evt_01">  
+            @if($__cfg['CateCode'] == '3094')      
+                <div class="title NSK-Black">5급 행정</div>                 
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                @endif
+            @endif 
+
+            @if($__cfg['CateCode'] == '3095')      
+                <div class="title NSK-Black">국립 외교원</div>                 
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                @endif  
+            @endif
+
+            @if($__cfg['CateCode'] == '3096')      
+                <div class="title NSK-Black">PSAT</div>                 
+                @if(empty($arr_base['display_product_data']) === false)
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
+                @endif   
+            @endif        
         </div>
 
-        <div class="evtCtnsBox evt_02">                  
-            <div class="evt02_box">       
-                <div class="title NSK-Black">2. 국립 외교원</div>                 
-                    @if(empty($arr_base['display_product_data']) === false)
-                        @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
-                    @endif                                   
-            </div>
-        </div>
-
-        <div class="evtCtnsBox evt_03">                  
-            <div class="evt03_box">       
-                <div class="title NSK-Black">3. PSAT</div>                 
-                    @if(empty($arr_base['display_product_data']) === false)
-                        @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
-                    @endif                                   
-            </div>      
-        </div>
         
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">

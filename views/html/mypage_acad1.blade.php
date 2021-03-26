@@ -1465,11 +1465,11 @@
                                             </tbody>
                                                 <tr>
                                                     <th>신청현황</th>
-                                                    <td class="w-info tx-left">[총 신청 가능 개수] 2개  <span class="row-line">|</span>  [사용개수] 2개   <span class="row-line">|</span>  [남은개수] 1개</td>
+                                                    <td class="w-info tx-left pl10">[총 신청 가능 개수] 2개  <span class="row-line">|</span>  [사용개수] 2개   <span class="row-line">|</span>  [남은개수] 1개</td>
                                                 </tr>
                                                 <tr>
                                                     <th>수업불참강의</th>
-                                                    <td class="w-info tx-left">
+                                                    <td class="w-info tx-left pl10">
                                                         <select id="" name="" title="" class="seleProcess">
                                                             <option>강의선택</option>
                                                             <option>강의1</option>
@@ -1480,7 +1480,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>불참사유</th>
-                                                    <td class="w-info tx-left"><textarea class="h55"></textarea></td>
+                                                    <td class="w-info tx-left pl10"><textarea class="h55"></textarea></td>
                                                 </tr>
                                             </tbody>
                                         </table>

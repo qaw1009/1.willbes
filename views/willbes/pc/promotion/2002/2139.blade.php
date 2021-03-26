@@ -37,6 +37,7 @@
         .evt01 input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 
         .evt03 {background:#f6f0e0}  
+        .evt04 {background:#978674} 
         
         .youtube {background:#36041f; padding:150px 0}
         .youtube .NSK-Black {color:#fff; font-size:50px; margin-bottom:50px}
@@ -86,11 +87,11 @@
             <ul>
                 <li>
                     <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#탐정사시험안내</div>
+                    <div>#한국탐정KPD소개</div>
                 </li>
                 <li>                    
                     <iframe src="https://www.youtube.com/embed/FQjASiTrgJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#한국탐정KPD소개</div>
+                    <div>#탐정사시험안내</div>
                 </li>
             </ul>            
         </div>
@@ -167,6 +168,10 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_02.jpg"  alt="간단히 알고가는 사립탐정사">
+        </div>
+
+        <div class="evtCtnsBox evt04">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_03.jpg"  alt="간단히 알고가는 사립탐정사">
         </div>
 
         <div class="evtCtnsBox loadmapBox">

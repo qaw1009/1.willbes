@@ -79,25 +79,29 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2147_top.jpg" alt="새봄맞이 특별이벤트" />
 		</div>
 
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif 
+
         <div class="evtCtnsBox evt_01">  
             @if($__cfg['CateCode'] == '3094')      
                 <div class="title NSK-Black">5급 행정</div>                 
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
                 @endif
             @endif 
 
             @if($__cfg['CateCode'] == '3095')      
                 <div class="title NSK-Black">국립 외교원</div>                 
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
                 @endif  
             @endif
 
             @if($__cfg['CateCode'] == '3096')      
                 <div class="title NSK-Black">PSAT</div>                 
                 @if(empty($arr_base['display_product_data']) === false)
-                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
+                    @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))
                 @endif   
             @endif        
         </div>

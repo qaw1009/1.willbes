@@ -30,8 +30,8 @@
 
         .wb_cts05 {background:#f8f8f8;padding-bottom:100px;padding-top:188px;}      
 
-        .skybanner {position:fixed;top:50px;right:10px;width:259px; text-align:center; z-index:11;}   
-        .skybanner a {display:block;}   
+        .skybanner {position:fixed;top:150px;right:10px;width:259px; text-align:center; z-index:11;}   
+        .skybanner a {display:block;margin-bottom:10px;}   
 
         /*타이머*/
         .time {text-align:center; padding:20px 0; background:#fff; border-radius:20px; width:1000px !important}
@@ -62,10 +62,12 @@
             </a>  
             <a href="#live">
                 <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky2.png" title="라이브로 소통하기" >
-            </a>    
-            <a href="#package">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_sky3.png" title="고득점 실전패키지" >
-            </a>    
+            </a>     
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1066_sky3.png" usemap="#1066_sky3" title="아작내기,적중50선" border="0" >
+            <map name="1066_sky3" id="1066_sky3">
+                <area shape="rect" coords="1,-1,125,205" href="https://pass.willbes.net/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1108&search_text=UHJvZE5hbWU67JWE7J6R64K06riw" target="_blank" onfocus="this.blur()" />
+                <area shape="rect" coords="128,0,265,212" href="javascript:alert('엄청난 선물과 함께 곧 찾아올게요!')" onfocus="this.blur()" />
+            </map>                
         </div>
       
         <div class="evtCtnsBox wb_cts01">

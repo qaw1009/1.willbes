@@ -2,39 +2,39 @@
 
 @section('content')
 <!-- Container -->
-<div id="Container" class="subContainer widthAuto c_both">
+<div id="Container" class="subContainer widthAuto">
     <div class="mt40">
-
         <div>iFrame버젼</div>
         <!-- iFrame Ver -->
         <div id="videoPopup" class="videoPopup">
-            <div class="view p_re">
+            <div class="view p_re">                
                 <div class="viewList">
                     <span class="Tit NGR"><span class="NG">1회 10강 </span>1월 18일 : Unit 05. 5형식 문형: S + V + O + O·C [불완전타동사] p100~102</span>
                     <ul class="btnList">
                         <!--li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
                         <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li-->
+                        <li class="lecCtr"><a href="#none" class="pre noLec">이전 강의</a><a href="#none" class="next">다음 강의</a></li>
                         <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
                         <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
                     </ul>
                 </div>
-                <div id="settingPOP" class="settingPOP settingPOP2">
+                <div id="settingPOP" class="settingPOP">
                     <img src="{{ img_url('player/player_keyH.png') }}" usemap="#player_key" style="border: 0;"> 
                     <map name="player_key">
                         <area shape="rect" coords="930,10,960,36" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
                     </map>
-                </div>
-                video Player
+                </div>   
+                <span class="tx-white">video Player</span>             
             </div>
             <iframe frameborder="0" scrolling="no" width="400px" height="100%" onload="resizeIframe(this)" src="{{ site_url('/home/html/test_video_iframe') }}"></iframe>
         </div>
 
 
-        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-
-        <div>무료버젼</div>
         <!-- 무료 Ver -->
+        <div class="c_both">무료버젼</div>      
+        <br/><br/>  
         <div id="videoPopup" class="videoPopup">
             <div class="view p_re">
                 <div class="viewList">
@@ -42,17 +42,11 @@
                     <ul class="btnList">
                         <li><a class="iconBtn btnUP" href="#none">버튼 위로</a></li>
                         <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
-                        <li><a class="iconBtn btnSetting" href="#none" onclick="openWin('settingPOP')">버튼 설정</a></li>
+                        <li><a class="iconBtn btnSetting" href="#none">버튼 설정</a></li>
                         <li><span class="btnFAQ"><a href="#none">동영상 FAQ</a></span></li>
                     </ul>
                 </div>
-                <div id="settingPOP" class="settingPOP settingPOP2">
-                    <img src="{{ img_url('player/player_key.png') }}" usemap="#player_key" style="border: 0;"> 
-                    <map name="player_key">
-                        <area shape="rect" coords="234,1,262,32" href="#none" onclick="closeWin('settingPOP')" target="" alt="" onfocus="blur();" />
-                    </map>
-                </div>
-                video Player
+                <span class="tx-white">video Player</span>
             </div>
             <div class="vodTabs p_re">
                 <ul class="tabWrap vodWrap two NGEB">
@@ -89,7 +83,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="buttonBtn cartBtn">
+                        <div class="buttonBtn cartBtn mb10">
                             <ul>
                                 <li>
                                     <button type="submit" onclick="" class="btnGray"><span>장바구니</span></button>
@@ -100,6 +94,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div id="Sbj" class="tabContent sbjGrid" style="display: none;">
                         <div class="w-data tx-left">
                             <div class="w-subtit NG">국어<span class="row-line">|</span>기미진교수님</div>
@@ -121,7 +116,7 @@
                             <ul class="list sbj">
                                 <li>                                    
                                     <div class="tt1">1강</div>
-                                    <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
+                                    <div class="tt2">2018 기미진 기특한 국어 이론요약 2018 기미진 기특한 국어 이론요약<</div>
                                     <div class="tt3">50분</div>
                                 </li>
                                 <li>                                    
@@ -177,20 +172,25 @@
         </div>
 
 
-        <br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
-
-        <div>유료버젼</div>
         <!-- 유료 Ver -->
-        <div id="videoPopup" class="videoPopup">
-            <div class="view">video Player</div>
+        <div class="c_both">유료버젼</div>    
+        <br/><br/>      
+        <div id="videoPopup" class="videoPopup">      
+            <div class="view p_re">
+                <span class="tx-white">video Player</span>
+            </div>    
             <div class="vodTabs p_re">
-                <ul class="tabWrap vodWrap four NGEB">
+                <ul class="tabWrap vodWrap NGEB">
                     <li><a href="#Lec" class="on">강의목록</a></li>
                     <li><a href="#Bookmark">북마크</a></li>
-                    <li><a href="#Faq">학습Q&A</a></li>
+                    {{--<li><a href="#Faq">학습Q&A</a></li>--}}
+                    <li><a href="#review">수강후기</a></li>
                 </ul>
-                <div class="linkTabs NGEB"><a href="{{ site_url('/home/html/profsub') }}" target="_blank">수강후기</a></div>
+
+                {{--<div class="linkTabs NGEB"><a href="{{ site_url('/home/html/profsub') }}" target="_blank">수강후기</a></div>--}}
+
                 <div class="tabBox vodBox">
                     <div id="Lec" class="tabContent lecGrid">
                         <div class="w-data w-box tx-left">
@@ -207,7 +207,7 @@
                             <ul class="list lec">
                                 <li>                                    
                                     <div class="tt1">1강</div>
-                                    <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
+                                    <div class="tt2">2018 기미진 기특한 국어 이론요약 2018 기미진 기특한 국어 이론요약</div>
                                     <div class="tt3"><img src="{{ img_url('prof/icon_file.gif') }}"></div>
                                 </li>
                                 <li>                                    
@@ -255,9 +255,20 @@
                                     <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
                                     <div class="tt3"><img src="{{ img_url('prof/icon_file.gif') }}"></div>
                                 </li>
+                                <li>                                    
+                                    <div class="tt1">11강</div>
+                                    <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
+                                    <div class="tt3"><img src="{{ img_url('prof/icon_file.gif') }}"></div>
+                                </li>
+                                <li>                                    
+                                    <div class="tt1">12강</div>
+                                    <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
+                                    <div class="tt3"><img src="{{ img_url('prof/icon_file.gif') }}"></div>
+                                </li>
                             </ul>
                         </div>
                     </div>
+
                     <div id="Bookmark" class="tabContent bookmarkGrid" style="display: none;">
                         <div class="w-data w-box tx-left">
                             <div class="w-tit NGR">
@@ -324,6 +335,8 @@
                             </ul>
                         </div>
                     </div>
+
+                    {{--
                     <div id="Faq" class="tabContent faqGrid" style="display: none;">
                         <div class="w-data w-box tx-left">
                             <div class="w-tit tx-center NGR">
@@ -332,24 +345,21 @@
                             </div>
                             <div class="faqBox">
                                 <ul>
+                                    <li class="tx-white">
+                                        2018 정채영 기특한 국어 이론요약 + 기출문제(1월-3월)
+                                    </li>
                                     <li>
-                                        <div class="w-faqtit">질문유형</div>
                                         <select id="question" name="question" title="question" class="seleQuestion">
                                             <option selected="selected">질문유형을 선택하세요</option>
                                             <option value="유형1">유형1</option>
                                             <option value="유형2">유형2</option>
                                         </select>
-                                    </li>
+                                    </li>                                    
                                     <li>
-                                        <div class="w-faqtit">강좌명</div>
-                                        <input type="text" id="S-Sbj" name="S-Sbj" class="iptSbj" placeholder="강좌명이 노출됩니다." maxlength="30">
-                                    </li>
-                                    <li>
-                                        <div class="w-faqtit">제목</div>
-                                        <input type="text" id="S-Tit" name="S-Tit" class="iptTit" placeholder="제목이 노출됩니다." maxlength="30">
+                                        <input type="text" id="S-Tit" name="S-Tit" class="iptTit" placeholder="제목을 작성해주세요." maxlength="30">
                                     </li>
                                 </ul>
-                                <textarea placeholder="내용을 입력하세요"></textarea>
+                                <textarea placeholder="질문을 입력해주세요"></textarea>
                                 <ul class="chkBtn">
                                     <li>
                                         <div class="w-faqtit">공개여부</div>
@@ -378,10 +388,45 @@
                             </div>
                         </div>
                     </div>
+                    --}}
+
+                    <div id="review" class="tabContent bookmarkGrid" style="display: none;">
+                        <div class="w-data tx-left">
+                            <div class="w-tit NGR">2018 기미진 기특한 국어 이론요약 + 기출문제(1월-3월)</div>
+                            
+                            <div class="faqBox">
+                                <ul>
+                                    <li>
+                                        <select id="" name="" title="" style="width:100%">
+                                            <option selected="selected">평점 선택</option>
+                                            <option value="">★★★★★ 5/5</option>
+                                            <option value="">★★★★☆ 4/5</option>
+                                            <option value="">★★★☆☆ 3/5</option>
+                                            <option value="">★★☆☆☆ 4/5</option>
+                                            <option value="">★☆☆☆☆ 1/5</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <input type="text" id="S-Tit" name="S-Tit" class="iptTit" placeholder="제목을 작성해주세요." maxlength="30"  style="width:100%">
+                                    </li>
+                                </ul>
+                                <textarea placeholder="내용을 입력해주세요"></textarea>                                
+                            </div>                                                     
+                        </div>  
+                        <div class="buttonBtn cartBtn mb10">
+                            <ul>
+                                <li>
+                                    <button type="submit" onclick="" class="btnGray"><span>후기목록</span></button>
+                                </li>
+                                <li>
+                                    <button type="submit" onclick="" class="btnBlue"><span>저장</span></button>
+                                </li>                                    
+                            </ul>
+                        </div>                        
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!-- End Container -->

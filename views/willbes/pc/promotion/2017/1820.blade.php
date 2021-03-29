@@ -54,11 +54,11 @@
             <ul>
                 <li>
                     <div><span>문법 기초반</span> 1회 1강 보기</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_01.jpg" alt="국어 권보민 문법 기초반" /></a>
+                    <a href="#none" onclick="javascript:alert('준비중입니다.');" ><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_01.jpg" alt="국어 권보민 문법 기초반" /></a>
                 </li>
                 <li>
                     <div><span>문법 심화반</span> 1회 1강 보기</div>
-                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_02.jpg" alt="국어 권보민 문법 심화반" /></a>
+                    <a href="#none" onclick="javascript:alert('준비중입니다.');" ><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_02.jpg" alt="국어 권보민 문법 심화반" /></a>
                 </li>
             </ul>            
         </div>

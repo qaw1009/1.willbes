@@ -5,55 +5,62 @@
     <!-- content -->
     <style type="text/css">
         .evtContent {
-            position:relative;
             width:100% !important;
-            min-width:1278px !important;
+            min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
             color:#3a3a3a;
         }
-        .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1278px; position:relative;}
+        .evtContent span {vertical-align:top}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09//200130_wsamkbc_top_bg.jpg) no-repeat center top;}
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/09//200130_wsamcwy_top_bg.jpg) no-repeat center top;}
-        .evt01 {background:url(https://static.willbes.net/public/images/promotion/2020/09//191212_wsamcwy_01_bg.jpg) no-repeat center top;}
-        .evt02 {background:url(https://static.willbes.net/public/images/promotion/2020/09//200130_wsamcwy_02_bg.jpg) no-repeat center top; height:1069px}
-        .evt02 iframe {margin-top:300px}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/1830_top_bg.jpg) no-repeat center top;}
+        .evt01 {background:#f7f6fa; padding-bottom:150px}
 
-        .willbes-Layer-ReplyBox { top: 2100px}
+        .btnSt {width:470px; margin:50px auto 0; position:relative}
+        .btnSt a {display:block; border-radius:18px; color:#fff; background:#ce3c3f; padding:20px 0; font-size:24px}
+        .btnSt a:hover {background:#000}
+        .btnSt img {position:absolute; left:70%; top:35px}
+
+        .youtube {background:#141621 url(https://static.willbes.net/public/images/promotion/2021/03/2017_prof_bg.jpg) no-repeat center top; padding:150px 0}
+        .youtube ul {width:1120px; margin:0 auto}
+        .youtube li {display:inline; float:left;}
+        .youtube li:last-child {margin-left:20px}
+        .youtube li div {margin-bottom:70px; font-size:30px; font-weight:bold; color:#fec345}
+        .youtube li div span {color:#fff;}
+        .youtube li iframe {width:550px; height:310px}
+        .youtube ul:after {content:''; display:block; clear:both}
+
+        .willbes-Layer-ReplyBox { top:2000px}
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">
-        <div class="evtCtnsBox ev01">
-            @include('willbes.pc.promotion.2017.ssam_200130_skybanner')
-            <div class="evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09//200130_wsamcwy_top.jpg" alt="전기전자통신 최우영" usemap="#Mapmjs01" border="0" />
-                <map name="Mapmjs01" id="Mapmjs01">
-                    @if(empty($arr_base['promotion_otherinfo_professor']) === false)
-                        @foreach($arr_base['promotion_otherinfo_professor'] as $key => $row)
-                            @if($loop->index == 1)
-                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="140,820,527,916" href="#none" alt="설명회보기" />
-                            @else
-                                <area shape="rect" onclick="{{ $row['player_sample'] }}" coords="769,817,1151,919" href="#none" alt="발표회보기" />
-                            @endif
-                        @endforeach
-                    @endif
-                </map>
-            </div>
+    <div class="evtContent NSK" id="evtContainer">
+        @include('willbes.pc.promotion.2017.ssam_200130_skybanner')
+        <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1830_top.jpg" alt="전기전자통신 최우영" />
+        </div> 
 
-            <div class="evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09//191212_wsamcwy_01.jpg" usemap="#Mapmjs02" border="0">
-                <map name="Mapmjs02" class="review_btn" id="wsamcwy">
-                    <area shape="rect" coords="384,1234,900,1323" href="#none" onclick="go_study_comment_popup();" alt="합격수기확인" />
-                </map>
-            </div>
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/1830_01.jpg" alt="전기전자통신 최우영"> 
+            <div class="btnSt NSK-Black">
+                <a href="#none" onclick="go_study_comment_popup();" id="wsamcwy">교수님의 더 많은 수강후기 확인하기 ></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2017_prof_icon.png" alt="">
+            </div>                        
+        </div>
 
-            <div class="evt02">
-                <iframe width="853" height="480" src="https://www.youtube.com/embed/bY0XEGZM6Dw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       	    </div>
+        <div class="evtCtnsBox youtube">
+            <ul>
+                <li>
+                    <div><span>2021 1~2월 </span> 기초전기전자 실강 </div>
+                    <iframe src="https://www.youtube.com/embed/c97_bJ87Ruk?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </li>
+                <li>
+                    <div><span>2022학년도 대비 </span> 설명회 </div>
+                    <iframe src="https://www.youtube.com/embed/mZDUnozVMB8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </li>
+            </ul>            
         </div>
     </div>
     <!-- End Container -->

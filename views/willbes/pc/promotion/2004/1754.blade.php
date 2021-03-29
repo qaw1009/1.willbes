@@ -124,7 +124,7 @@
                                                     // 강의 기간 지나면 자동 disabled 처리
                                                     // 신청강의 날짜 형식. ex) 12.14 프리미엄올공반2차 설명회
                                                     //                         2.8(토) 초시생을 위한 합격커리큘럼 설명회
-                                                    $reg_year = '2020';
+                                                    $reg_year = '2021';
                                                     $temp_date = explode(' ', $val['Name'])[0];
                                                     if(strpos($temp_date, '(') !== false) {
                                                         $temp_date = substr($temp_date, 0, strpos($temp_date, '('));

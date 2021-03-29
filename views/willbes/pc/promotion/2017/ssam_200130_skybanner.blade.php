@@ -1,7 +1,7 @@
 <style>
     .skybanner {
             position:fixed;
-            bottom:20px;
+            bottom:60px;
             right:10px;
             width:120px;
 			background:#333;
@@ -10,7 +10,7 @@
         }
 	.skybanner li {line-height:1.4;}
 	.skybanner a {display:block; color:#fff; padding:7px 0; border-bottom:1px solid #666; text-align:center;font-size:12px; letter-spacing:normal}
-	.skybanner li:last-child a {background:#000; border-bottom:0;}
+	.skybanner li:last-child a {border-bottom:0;}
 	.skybanner a:hover {background:#2b4ab8}
 </style>
 <ul class="skybanner NG">
@@ -35,5 +35,4 @@
     <li><a href='1831'>정보컴퓨터 <strong>송광진</strong></a></li>
     <li><a href='1832'>정컴교육론 <strong>장순선</strong></a></li>
     <li><a href='1833'>전공중국어 <strong>정경미</strong></a></li>
-    <li><a href="#evtContainer">TOP ↑</a></li>
 </ul>

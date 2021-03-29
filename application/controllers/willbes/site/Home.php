@@ -126,7 +126,7 @@ class Home extends \app\controllers\FrontController
             $data['new_product'] = $this->_product('on_lecture', 4, $s_cate_code, 'New');
             $data['arr_main_banner'] = array_merge($this->_banner($s_cate_code), $this->_banner('0'));
             $data['lecture_update_info'] = $this->_getlectureUpdateInfo(10, $s_cate_code);
-            $data['new_product_book'] = $this->_getlistSalesProductBook(7, $s_cate_code);
+            $data['new_product_book'] = $this->_getlistSalesProductBook(10, $s_cate_code);
         }
 
         $data['best_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? '4' : '8'), $s_cate_code, 'Best');
@@ -934,7 +934,9 @@ class Home extends \app\controllers\FrontController
      */
     private function _getlistSalesProductBook($limit_cnt = 5, $cate_code = '')
     {
-        $order_by = ['wPublDate' => 'desc'];
+        //$order_by = ['wPublDate' => 'desc'];
+        // 출판일 순 => 최근 등록순으로 수정
+        $order_by = ['P.ProdCode' => 'desc'];
         $arr_condition = [
             'EQ' => [
                 'SiteCode' => $this->_site_code,

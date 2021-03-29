@@ -182,7 +182,7 @@
                 <span class="tx-white">video Player</span>
             </div>    
             <div class="vodTabs p_re">
-                <ul class="tabWrap vodWrap NGEB">
+                <ul class="tabWrap vodWrap three NGEB">
                     <li><a href="#Lec" class="on">강의목록</a></li>
                     <li><a href="#Bookmark">북마크</a></li>
                     {{--<li><a href="#Faq">학습Q&A</a></li>--}}

@@ -31,6 +31,8 @@
         .youtube li div {margin-bottom:70px; font-size:30px; font-weight:bold; color:#fec345}
         .youtube li div span {color:#fff;}
         .youtube li iframe {width:550px; height:310px}
+        .youtube li.w100 {width:100%; margin:0}
+        .youtube li.w100 iframe {width:887px; height:500px}
         .youtube ul:after {content:''; display:block; clear:both}
 
         .willbes-Layer-ReplyBox { top:2000px}
@@ -52,11 +54,13 @@
 
         <div class="evtCtnsBox youtube">
             <ul>
+            {{--
                 <li>
                     <div><span>2021 2~4월 </span> 기본 이론반 실강</div>
                     <iframe src="https://www.youtube.com/embed/hPXBthC1xmU?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>
-                <li>
+                --}}
+                <li class="w100">
                     <div><span>2020 </span> 기출 분석반 실강</div>
                     <iframe src="https://www.youtube.com/embed/i2Th6pnvBa4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </li>

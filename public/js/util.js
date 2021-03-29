@@ -861,6 +861,17 @@ function computeDate(i_period, s_period_type, s_default_date) {
 }
 
 /**
+ * 날짜 차이 계산
+ * @param start_date
+ * @param end_date
+ * @param diff_type (ex. days, weeks, months ...)
+ * @returns {*}
+ */
+function getDiffDate(start_date, end_date, diff_type) {
+    return moment(end_date, 'YYYY-MM-DD').diff(moment(start_date, 'YYYY-MM-DD'), diff_type);
+}
+
+/**
  * 바이트 수 리턴 함수
  * @param val
  * @returns {number}

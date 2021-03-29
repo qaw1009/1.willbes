@@ -787,6 +787,7 @@
 
             $search_form.on('click', '.btn-search', function() {
                 pageLoading('show');
+                checkSearchDateType();
                 setTimeout(function() {
                     chartExe();
                     datatableReset();
@@ -800,6 +801,28 @@
                 datatableExe();
                 pageLoading('hide');
             }, 0);
+
+            // 날짜 차이에 따라 검색기간 구분값 자동 변경
+            var checkSearchDateType = function() {
+                var dt_type = $search_form.find('input[name="search_date_type"]:checked').val();
+                var start_date = $search_form.find('input[name="search_start_date"]').val();
+                var end_date = $search_form.find('input[name="search_end_date"]').val();
+                var diff_date;
+
+                if (dt_type !== 'year') {
+                    diff_date = getDiffDate(start_date, end_date, dt_type + 's');
+
+                    if (dt_type === 'month') {
+                        if (diff_date > 24) {
+                            $search_form.find('input[name="search_date_type"][value="year"]').iCheck('check');
+                        }
+                    } else {
+                        if (diff_date > 90) {
+                            $search_form.find('input[name="search_date_type"][value="month"]').iCheck('check');
+                        }
+                    }
+                }
+            }
         });
     </script>
 @stop

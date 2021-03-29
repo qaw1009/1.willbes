@@ -68,7 +68,7 @@
                 <ul class="list sbj">
                     <li>                                    
                         <div class="tt1">1강</div>
-                        <div class="tt2">2018 기미진 기특한 국어 이론요약</div>
+                        <div class="tt2">2018 기미진 기특한 국어 이론요약 2018 기미진 기특한 국어 이론요약</div>
                         <div class="tt3">50분</div>
                     </li>
                     <li>                                    

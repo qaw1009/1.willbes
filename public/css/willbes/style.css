@@ -11736,12 +11736,15 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /* Video Player */
+.videoPopup {background: #000; max-width: 1040px;}
 .videoPopup .view {
-	float: left;
-	background: #000;
+	float: left;	
 	height: 100%;
+	width: auto;
+	position: relative;
 }
 .videoPopup .view .viewList {
+	position: absolute; top:0; left:0;
 	height: 45px;
 	padding: 0 15px;
 	min-width: 640px;
@@ -11764,9 +11767,11 @@ table.acadlecInfoPackageTable tr.Top td {
 	position: absolute;
 	right: 0;
 	top: 0;
+	background: url("../../img/willbes/player/gr_bg.png") no-repeat left top; padding-left:20px;
 }
 .videoPopup .view .viewList .btnList li {
 	display: inline-block;
+	background:#000;
 }
 .videoPopup .view .viewList .btnList a.iconBtn {
 	display: inline-block;
@@ -11775,6 +11780,14 @@ table.acadlecInfoPackageTable tr.Top td {
 	text-indent: -9999px;
 	margin: 9px 3px;
 }
+.videoPopup .view .viewList .btnList .lecCtr a {display: inline-block; height: 27px; line-height: 27px; color:#fff;}
+.videoPopup .view .viewList .btnList .lecCtr a.pre {	
+	background: url("../../img/willbes/player/arrowL.png") no-repeat left center; padding-left: 18px; margin-right:15px;
+}
+.videoPopup .view .viewList .btnList .lecCtr a.next {
+	background: url("../../img/willbes/player/arrowR.png") no-repeat right center; padding-right: 18px;
+}
+.videoPopup .view .viewList .btnList .lecCtr a.noLec {opacity: 0.4; filter: alpha(opacity=0.4);}
 .videoPopup .view .viewList .btnList .btnUP {
 	background: url("../../img/willbes/player/icon_up.png") no-repeat 0 0;
 }
@@ -11812,7 +11825,7 @@ table.acadlecInfoPackageTable tr.Top td {
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin-right: -264px;
+	margin-right: 0;
 	z-index: 9999;
 }
 .videoPopup .view .settingPOP2 {
@@ -11823,10 +11836,11 @@ table.acadlecInfoPackageTable tr.Top td {
 	margin-right: 0;
 	z-index: 9999;
 }
-
+.videoPopup iframe {float: right;}
+.videoPopup:after {content:''; display:block; clear:both}
 /* Video Player : vodTabs */
 .vodTabs {
-	float: left;
+	float: right;
 	background: #1c1c1c;
 	width: 400px;
 	height: 100%;
@@ -11838,6 +11852,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .vodTabs .vodWrap li {
 	float: left;
 	height: 40px;
+	width:33.33333%
 }
 .vodTabs .vodWrap.two li {
 	width: 50%;
@@ -11986,13 +12001,13 @@ table.acadlecInfoPackageTable tr.Top td {
 	float: right;
 	margin: 0 20px;
 }
-.cartBtn ul li {
+.cartBtn li {
 	float: left;
-	min-width: 64px;
 	height: 25px;
 	border: 1px solid #121212;
 	margin-left: 5px;
 }
+.cartBtn:after {content:''; display: block; clear:both}
 
 /* Video Player : vodTabs : bookmarkBox */
 .bookmarkBox {
@@ -12049,6 +12064,10 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 .vodlistBox ul.top li .tt3 {
 	padding-left: 17px;
+}
+.vodlistBox ul.list {
+	max-height:260px;
+	overflow-y: auto;
 }
 .vodlistBox ul.list li {
 	background: #1c1c1c;
@@ -12168,7 +12187,7 @@ table.acadlecInfoPackageTable tr.Top td {
 .faqBox ul li input {
 	float: right;
 	min-width: 180px;
-	width: 70%;
+	width: 100%;
 	height: 25px;
 }
 .faqBox ul li button {

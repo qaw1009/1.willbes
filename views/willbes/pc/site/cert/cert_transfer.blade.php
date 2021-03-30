@@ -23,21 +23,19 @@
             width: 80px;
             text-align:center;
         }
-        .laj_sec .lecTxt {
+        .laj_sec textarea {
             text-align:left;
             font-size:12px;
             border:1px solid #e2e2e2;
             padding:10px;
-            width: 100%;
+            width: 95%;
             resize: none;
             line-height: 1.3;
-            height:150px;
-            overflow-y:auto;
         }
 
     </style>
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
-        <div><h3 class="NSK">갓스물 인증</h3></div>
+        <div><h3 class="NSK">타학원 수강이력 인증</h3></div>
         <div class="laj_sec">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}
@@ -68,7 +66,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <h4 class="mt40">인증파일 등록</h4>
+                    <h4 class="mt40">학습이력</h4>
                     <ul class="attach">
                         {{--
                         <li>
@@ -79,47 +77,43 @@
                         --}}
                         <li>
                             <strong>첨부 파일</strong>
-                            <input type="file" class="input-file" size="3" id="attachfile" name="attachfile" style="width:70%;" >                            
+                            <!--div class="filetype">
+                                <input type="text" class="file-text" />
+                                <span class="file-btn bg-heavy-gray NSK">찾아보기</span>
+                                <span class="file-select"-->
+                                    <input type="file" class="input-file" size="3" id="attachfile" name="attachfile" >
+                                <!--/span>
+                                <input class="file-reset NSK" type="button" value="X" />
+                            </div-->
                         </li>
-                        <li>
-                            * 인증파일 2MB까지 업로드 가능하며, 이미지파일 (jpg, png, gif 등) 또는 PDF 파일 형태로 첨부<br>
-                            * 인증파일 : 주민등록증 또는 운전면허증 사본 등 (주민등록번호 뒤 7자리 가린 후 업로드 요망)<br>
-                            * 관리자 인증 시, SMS로 개별 알림
-                        </li>
+                        <li>* 파일의 크기는 2MB까지 업로드 가능</li>
+                        <li>* 이미지파일 (jpg, png등) 또는 PDF 파일 첨부</li>
+                        <li>* 관리자 인증 시, SMS로 개별 알림</li>
                     </ul>
 
-                    <h4 class="mt40">유의사항</h4>
-                    <div class="lecTxt">
-                        * 이벤트 대상자 : 주민등록 상 2001.1.1 ~ 2004.12.31 출생자<br>
-                        * 쿠폰은 ID당 1번 발급됩니다. (재발급 불가)<br>
-                        * 발급되는 쿠폰은 개편PASS 3기에만 사용 가능한 쿠폰으로, 3기 판매기간에만 사용 가능합니다. <br>
-                        (판매기간 : ~2021.4.13(화) 18시)<br>
-                        * 인증시간 : 오후 4시 이전 요청 시, 당일 승인 | 오후 4시 이후 요청 시 익일 승인<br>
-                        ※ 쿠폰 발급기간 : 2021.4.13(화) 16시까지<br>
-                        ※ 단, 주말 및 공휴일 인증 요청건의 경우, 휴일 다음날 22시 이전에 일괄 처리<br>
-                        <span class="tx-red">* 상기 인증 내용이 다를 경우, 구매한 상품은 취소 및 환불 처리 됩니다.</span>                   
-                    </div>
-
                     <h4 class="mt40">개인정보 수집 및 이용에 대한 안내</h4>
-                    <div class="lecTxt">
-                        1. 개인정보 수집 이용 목적<br>
-                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
-                        - 이벤트 참여에 따른 경품 지급<br>
-                        <br>
-                        2. 개인정보 수집 항목<br>
-                        - 신청인의 이름, 아이디, 휴대폰번호<br>
-                        <br>
-                        3. 개인정보 이용기간 및 보유기간<br>
-                        - 본 수집, 활용목적 달성 후 바로 파기<br>
-                        <br>
-                        4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,<br>
-                        - 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.                       
-                    </div>
-                    <div class="mt20">
-                        위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
-                        <label for="ACCEPT_YN1"><input type="radio" name="ACCEPT_YN" value="Y" id="ACCEPT_YN1"> 동의합니다. </label>
-                        <label for="ACCEPT_YN2"><input type="radio" name="ACCEPT_YN" value="N" id="ACCEPT_YN2"> 동의하지 않습니다.</label>
+                    <div>
+                    <textarea name="" rows="6" cols="">
+1. 개인정보 수집 이용 목적
+- 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대
+- 이벤트 참여에 따른 경품 지급
+
+2. 개인정보 수집 항목
+- 신청인의 이름, 아이디, 휴대폰번호
+
+
+3. 개인정보 이용기간 및 보유기간
+- 본 수집, 활용목적 달성 후 바로 파기
+
+4. 개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익
+- 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
+- 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                    </textarea>
+                        <div class="mt20">
+                            위의 내용을 이해하였으며 위와 같은 개인정보 수집 이용에
+                            <label for="ACCEPT_YN1"><input type="radio" name="ACCEPT_YN" value="Y" id="ACCEPT_YN1"> 동의합니다. </label>
+                            <label for="ACCEPT_YN2"><input type="radio" name="ACCEPT_YN" value="N" id="ACCEPT_YN2"> 동의하지 않습니다.</label>
+                        </div>
                     </div>
                 </div>
 

@@ -22,9 +22,9 @@
         .skyBanner {position:fixed; top:200px;right:0; z-index:10;}
         .skyBanner a{ display:block; padding-bottom:10px;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2020/08/1754_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/1754_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#111;}      
+        .evt01 {background:#111;position:relative;}      
 
         .evt02 {background:#fff; padding-bottom:150px}
         .evt02 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
@@ -52,15 +52,15 @@
         .evt04 li:hover img.on {display:block}
         .evt04 li:hover img.off {display:none}
         .evt04 ul:after {content:""; display:block; clear:both}
-        .evt05 {background:#fbfbfb; padding-bottom:150px}
+        .evt05 {background:#fbfbfb; padding-bottom:100px}
         .evt06 {background:#fff; padding-bottom:150px}
 
-        .evt07 {background:url(https://static.willbes.net/public/images/promotion/2020/08/1754_07_bg.jpg) no-repeat center top;}
+        .evt07 {background:url(https://static.willbes.net/public/images/promotion/2021/03/1754_07_bg.jpg) no-repeat center top;}
 
         input:checked + label {color:#1087ef; border-bottom:1px dashed #1087ef !important}
 
         .tabsWrap {border:1px solid #e9e9e9; width:955px; margin:0 auto}
-        .tabMenu li {display:inline; float:left; width:33.3333333%}	
+        .tabMenu li {display:inline; float:left; width:50%;}	
         .tabMenu a {display:block; font-size:18px; background:#e9e9e9; color:#949494; padding:20px 0}
         .tabMenu a:hover,
         .tabMenu a.active {background:#fff; color:#3a3a3a}
@@ -79,23 +79,21 @@
             -->
 
             <div class="skyBanner">
-                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky01.jpg" title="소방등불 면접캠프 설명회"></a>   
-                <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2020/08/1754_sky02.jpg" title="소방등불 면접캠프 개강"></a>      
+                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2021/03/1754_sky.png" title="소방불꽃 면접캠프 설명회"></a>   
+                <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2021/03/1754_sky2.png" title="소방불꽃 면접캠프 개강"></a>      
             </div>
 
             <div class="evtCtnsBox evtTop">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_top.jpg" title="소방 면접 캠프">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_top.jpg" title="불꽃 면접 캠프">
             </div>
 
             <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_01.jpg" usemap="#Map1754" title="소방등불 설명회" border="0" >
-                <map name="Map1754">
-                  <area shape="rect" coords="414,873,704,941" href="#map" alt="학원위치보기">
-                </map>            
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_01.jpg" title="소방불꽃 설명회">   
+                <a href="#map" title="학원 위치보기" style="position: absolute; left: 42%; top: 80%; width: 16%; height: 6%; z-index: 2;"></a>
             </div>    
 
             <div class="evtCtnsBox evt02" id="apply">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_02.jpg" title="소방등불 설명회 신청">
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_02.jpg" title="소방불꽃 설명회 신청">
                 <div class="request" id="request">
                     <div class="requestL">
                         <h3 class="NSK-Black"> * 소방등불 설명회 신청접수</h3>
@@ -171,16 +169,16 @@
                     </div>
                 </div>
                 <div class="btn NSK-Black">
-                    <a href="#none" onclick="javascript:fn_submit();">소방등불 설명회 신청하기 ></a>
+                    <a href="#none" onclick="javascript:fn_submit();">소방불꽃 설명회 신청하기 ></a>
                 </div>
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_03.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_03.jpg" title="소방불꽃 면접캠프 커리큘럼"/>
             </div>   
 
             <div class="evtCtnsBox evt04">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_tit.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_04_tit.jpg" title="소방불꽃 면접캠프의 강점"/>
                 <ul>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_04_01.jpg" class="off">
@@ -206,34 +204,30 @@
             </div>   
 
             <div class="evtCtnsBox evt05">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_05.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_05.jpg" title="소방불꽃 면접캠프 교수진"/>
                 <div class="tabsWrap">
                     <ul class="tabMenu NSK-Black">
                         <li><a href="#tab01s">신승철 교수님</a></li>
                         <li><a href="#tab02s">김병찬 교수님</a></li>
-                        <li><a href="#tab03s">이승아 아나운서</a></li>
                     </ul>
                     <div id="tab01s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_05_01.jpg" title="소방등불 면접캠프"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_05_01.png" title="신승철 교수님"/>
                     </div>
                     <div id="tab02s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_05_02.jpg" title="소방등불 면접캠프"/>
-                    </div>
-                    <div id="tab03s">
-                        <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_05_03.jpg" title="소방등불 면접캠프"/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_05_02.png" title="김병찬 교수님"/>
                     </div>
                 </div>
             </div>   
 
             <div class="evtCtnsBox evt06" id="evt06">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_06.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_06.jpg" title="소방불꽃 면접캠프"/>
                 <div class="btn NGEB mt80">
-                    <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank">소방등불 면접캠프 신청하기 ></a>
+                    <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank">소방불꽃 면접캠프 신청하기 ></a>
                 </div>
             </div> 
 
             <div class="evtCtnsBox evt07" id="map">
-                <img src="https://static.willbes.net/public/images/promotion/2020/08/1754_07.jpg" title="소방등불 면접캠프"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_07.jpg" title="주소 및 시간"/>
             </div>            
 
         </form>

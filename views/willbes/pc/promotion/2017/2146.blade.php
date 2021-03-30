@@ -368,7 +368,7 @@
                                         <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) [통합] 최우영 기초전기전자/회로이론반</label></td>
                                         <td>120일</td>
                                         <td>400,000원 → <span><strong>320,000원</strong>(20%↓)</span></td>
-                                        <td><a href="javascript:fnPlayerSample('[176676','1271941','HD');" class="btn01">미리보기</a></td>
+                                        <td><a href="javascript:fnPlayerSample('176676','1271941','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176676" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>

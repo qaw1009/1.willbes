@@ -11,36 +11,36 @@
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
+                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                             <option value="">결제수단</option>
                             @foreach($arr_pay_method_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                             <option value="">결제상태</option>
                             @foreach($arr_pay_status_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_unpaid" name="search_is_unpaid">
+                        <select class="form-control mr-10" id="search_is_unpaid" name="search_is_unpaid" title="미수금여부">
                             <option value="">미수금여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>
                         </select>
-                        <select class="form-control mr-10" id="search_is_prof_assign" name="search_is_prof_assign">
+                        <select class="form-control mr-10" id="search_is_prof_assign" name="search_is_prof_assign" title="강사배정여부">
                             <option value="">강사배정여부</option>
                             <option value="Y">Y</option>
                             <option value="N">N</option>
@@ -50,13 +50,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;">
+                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
                             <option value="MemName">회원명</option>
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="Phone3">휴대폰번호</option>
                         </select>
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;" title="회원검색어">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -65,14 +65,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
+                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="CertNo">수강증번호</option>
                             <option value="ProdCode">상품코드</option>
                             <option value="ProdName">상품명</option>
                         </select>
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;" title="상품검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control mr-10" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="paid">결제완료일</option>
                             <option value="refund">환불완료일</option>
                         </select>
@@ -89,12 +89,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>

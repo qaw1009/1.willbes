@@ -142,4 +142,6 @@
         });
     });
 </script>
+{{-- 광고 스크립트 추가 --}}
+@include('willbes.pc.site.order.ad_script_partial')
 @stop

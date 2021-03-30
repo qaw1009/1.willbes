@@ -132,9 +132,31 @@ class Order extends \app\controllers\FrontController
         // 회원정보 조회
         $results['member'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $sess_mem_idx]]);
 
+        // 결제완료 광고스크립트 데이터 생성 (경찰온라인/학원만)
+        $ad_data = [];
+        if (in_array($results['order']['SiteCode'], ['2001', '2002']) === true) {
+            $ad_data = [
+                'OrderNo' => $results['order']['OrderNo'],
+                'ReprProdName' => $results['order']['ReprProdName'],
+                'tRealPayPrice' => $results['order']['RealPayPrice'],
+                'tOrderQty' => count($results['order_product'])
+            ];
+
+            // 카카오 주문상품정보 가공
+            foreach ($results['order_product'] as $order_prod_row) {
+                $ad_data['KakaoProducts'][] = [
+                    'name' => $order_prod_row['ProdName'],
+                    'quantity' => '1',
+                    'price' => $order_prod_row['RealPayPrice']
+                ];
+            }
+            $ad_data['KakaoProducts'] = json_encode($ad_data['KakaoProducts'], JSON_UNESCAPED_UNICODE);
+        }
+
         $this->load->view('site/order/complete', [
             'arr_prod_type_name' => $this->orderListFModel->_cart_prod_type_name,
             'arr_prod_type_idx' => $this->orderListFModel->_cart_prod_type_idx,
+            'ad_data' => $ad_data,
             'results' => $results
         ]);
     }

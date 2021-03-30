@@ -73,7 +73,8 @@
 
 <div id="Container" class="Container NSK c_both"> 
     <div class="evtCtnsBox dday NSK-Thin">
-        <strong class="NSK-Black">2022 개편 PASS {{$arr_promotion_params['turn']}}기 판매종료까지 <span id="ddayCountText"></span> </strong>
+        <strong class="NSK-Black">2022 개편 PASS {{$arr_promotion_params['turn']}}기 판매종료까지<br>
+        <span id="ddayCountText"></span> </strong>
         <a href="#apply1">수강신청 ></a>
     </div>
 
@@ -82,9 +83,8 @@
     </div>
 
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2145m_top.jpg"  alt="개편패스"/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/03/2145m_top.jpg" alt="개편패스"/>
     </div>
-
 
     <div class="evtCtnsBox evt01">
         <div class="ImgBox">

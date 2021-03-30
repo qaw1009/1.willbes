@@ -249,7 +249,6 @@
             <!-- willbes-Delivery-Info-Fin -->
         </div>
         {!! banner('결제_우측퀵', 'Quick-Bnr ml20 mt85', $__cfg['SiteCode'], '0') !!}
-
     </div>
     <!-- End Container -->
     <script type="text/javascript">
@@ -287,4 +286,6 @@
             });
         });
     </script>
+    {{-- 광고 스크립트 추가 --}}
+    @include('willbes.pc.site.order.ad_script_partial')
 @stop

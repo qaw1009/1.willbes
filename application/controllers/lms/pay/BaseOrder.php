@@ -131,9 +131,9 @@ class BaseOrder extends \app\controllers\BaseController
                 $row['CalcCardRefundPrice'] < 0 && $data[$idx]['CalcCardRefundPrice'] = 0;
             }
 
-            // 관리자결제 상품 데이터 셋팅
+            // 관리자결제 상품 데이터 셋팅 (보강0원결제 추가)
             if (empty($admin_pay_data) === true) {
-                if (in_array(array_search($order_data['PayRouteCcd'], $this->orderListModel->_pay_route_ccd), ['zero', 'alliance', 'admin_pay']) === true
+                if (in_array(array_search($order_data['PayRouteCcd'], $this->orderListModel->_pay_route_ccd), ['zero', 'alliance', 'admin_pay', 'bogang_zero']) === true
                         && $row['ProdTypeCcd'] != $this->orderListModel->_prod_type_ccd['delivery_price']) {
                     $admin_pay_data = $row;
                     $admin_pay_data['ProdAddInfo'] = $data[$idx]['ProdAddInfo'];    // 상품 부가정보 컬럼 추가
@@ -238,9 +238,15 @@ class BaseOrder extends \app\controllers\BaseController
     protected function _getListMemConditions($search_keyword, $search_value = '')
     {
         $arr_condition = [];
-        $arr_alias = ['MemIdx' => 'M', 'MemId' => 'M', 'MemName' => 'M', 'Phone3' => 'M', 'wAdminId' => 'A', 'wAdminName' => 'A', 'Receiver' => 'ODA'];
+        $arr_alias = ['MemIdx' => 'M', 'MemId' => 'M', 'MemName' => 'M', 'Phone3' => 'M', 'PhoneEnc' => 'M', 'wAdminId' => 'A', 'wAdminName' => 'A', 'Receiver' => 'ODA'];
 
         if (strlen($search_value) > 0 && array_key_exists($search_keyword, $arr_alias) === true) {
+            // 휴대폰번호 길이 체크 (10자리 이상일 경우 전체 휴대폰번호 조회)
+            if ($search_keyword == 'Phone3' && strlen($search_value) > 9) {
+                $search_keyword = 'PhoneEnc';
+                $search_value = $this->orderListModel->getEncString($search_value);
+            }
+
             $column = $arr_alias[$search_keyword] . '.' . $search_keyword;
             $arr_condition['LKR'][$column] = $search_value;
         }

@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2141_top_bg.jpg) no-repeat center top;}   
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/2157_top_bg.jpg) no-repeat center top;}   
 
         .evt_01 {padding-bottom:100px; background:#f0f0f0}
         .evt_01 > a {display:block; color:#fff; background:#412717; font-size:36px; width:1120px; margin:0 auto; padding:20px; margin-bottom:40px; border-radius:30px}
@@ -41,11 +41,11 @@
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2141_top.jpg" alt="노무 문제풀이 특별이벤트"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2157_top.jpg" alt="노무 문제풀이 특별이벤트"/>           
 		</div>
 
         <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2141_01.jpg" alt="이벤트 안내" /> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2157_01.jpg" alt="이벤트 안내" /> 
             <a href="javascript:go_PassLecture('180568');" class="NSK-Black" >수강신청 바로가기 ></a>
             <div class="check">
                 <label>

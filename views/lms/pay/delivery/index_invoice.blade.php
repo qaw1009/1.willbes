@@ -21,14 +21,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;">
+                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
                             <option value="Phone3">휴대폰번호</option>
                             <option value="Receiver">수령인명</option>
                         </select>
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;" title="회원검색어">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호, 수령인명 검색 가능</p>
@@ -37,21 +37,21 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
+                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="ProdCode">상품코드</option>
                             <option value="ProdName">상품명</option>
                             <option value="InvoiceNo">운송장번호</option>
                         </select>
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;" title="상품검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문/송장번호 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="">조건검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_delivery_price_type" name="search_delivery_price_type">
+                        <select class="form-control mr-10" id="search_delivery_price_type" name="search_delivery_price_type" title="배송료구분">
                             <option value="">배송료구분</option>
                             <option value="normal">일반배송료</option>
                             <option value="add">추가배송료</option>

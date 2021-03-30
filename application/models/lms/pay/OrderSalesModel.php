@@ -563,7 +563,7 @@ class OrderSalesModel extends BaseOrderModel
                     on O.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
             where O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")               
-                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '", "' . $this->_pay_route_ccd['bogang_zero'] . '")
             ' . $where . '                
             union all
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
@@ -584,7 +584,7 @@ class OrderSalesModel extends BaseOrderModel
             where OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
                 and O.CompleteDatm < ' . $this->_conn->escape($start_date) . '
-                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '") 
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '", "' . $this->_pay_route_ccd['bogang_zero'] . '") 
             ' . $where
         ;
 
@@ -620,7 +620,7 @@ class OrderSalesModel extends BaseOrderModel
                     on O.OrderIdx = OP.OrderIdx
             where O.CompleteDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")              
-                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '") 
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '", "' . $this->_pay_route_ccd['bogang_zero'] . '") 
             union all    
             select O.OrderIdx, O.OrderNo, O.SiteCode, O.MemIdx, OP.OrderProdIdx, OP.ProdCode
                 , O.PayChannelCcd, O.PayRouteCcd, O.PgCcd, O.PayMethodCcd, OP.SalePatternCcd
@@ -636,7 +636,7 @@ class OrderSalesModel extends BaseOrderModel
                     on OP.OrderIdx = OPR.OrderIdx and OP.OrderProdIdx = OPR.OrderProdIdx
             where OPR.RefundDatm between ' . $this->_conn->escape($start_date) . ' and ' . $this->_conn->escape($end_date) . '
                 and OP.PayStatusCcd = "' . $this->_pay_status_ccd['refund'] . '"
-                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '")        
+                and O.PayRouteCcd not in ("' . $this->_pay_route_ccd['zero'] . '", "' . $this->_pay_route_ccd['free'] . '", "' . $this->_pay_route_ccd['bogang_zero'] . '")        
         ';
 
         return $query;

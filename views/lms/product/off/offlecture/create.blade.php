@@ -14,7 +14,6 @@
     }
     foreach ($data_memo as $row) {
         ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
-        //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
     }
 
     if($method == 'POST') {
@@ -23,7 +22,6 @@
     elseif($method == 'PUT') {
       $week_arr = explode(",",$data['WeekArray']);
     }
-
 @endphp
 
     <h5>- 학원 단과반 상품 정보를 관리하는 메뉴입니다.</h5>
@@ -813,6 +811,80 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2">보강동영상강좌
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <p>
+                            <select name="SiteCodeOther" id="SiteCodeOther" class="form-control">
+                                <option value="" class="">온라인사이트선택</option>
+                                @foreach($arr_site_code_on as $row)
+                                    <option value="{{$row['SiteCodeOther']}}" class="{{$row['SiteCode']}}" {{$data_supplecture['SiteCode'] == $row['SiteCodeOther'] ? 'selected="selected"' : '' }}>{{$row['SiteNameOther']}}</option>
+                                @endforeach
+                            </select>
+                            <button type="button" class="btn btn-sm btn-primary ml-5" id="lecAddSupp">단강좌검색</button>
+                        </p>
+                        <table class="table table-striped table-bordered" id="LecListSupp" width="100%">
+                            <tr>
+                                <th>분류</th>
+                                <th>과정</th>
+                                <th>과목</th>
+                                <th>교수</th>
+                                <th>단강좌명</th>
+                                <th>진행상태</th>
+                                <th>판매가</th>
+                                <th>판매여부</th>
+                                <th>삭제</th>
+                            </tr>
+                            @if(empty($data_supplecture) === false)
+                                <tr class="prod_supp_tr">
+                                    <td>{{$data_supplecture['CateName']}}</td>
+                                    <td>{{$data_supplecture['CourseName']}}</td>
+                                    <td>{{$data_supplecture['SubjectName']}}</td>
+                                    <td>{{$data_supplecture['wProfName_String']}}</td>
+                                    <td>[{{$data_supplecture['ProdCode']}}] {{$data_supplecture['ProdName']}}
+                                        <input type="hidden" name="SuppProdCode" value="{{$data_supplecture['ProdCode']}}"/>
+                                    </td>
+                                    <td>{{$data_supplecture['wProgressCcd_Name']}} ({{$data_supplecture['wUnitCnt']}}/{{$data_supplecture['wUnitLectureCnt']}})</td>
+                                    <td>{{number_format($data_supplecture['RealSalePrice'])}}원</td>
+                                    <td>{!!  $data_supplecture['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$data_supplecture['SaleStatusCcd_Name'] !!}</td>
+                                    <td><a href="#none" class="selected-product-delete"><i class="fa fa-times red"></i></a></td>
+                                </tr>
+                            @endif
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" >보강동영상신청여부
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        <div class="item inline-block">
+                            <input type="radio" name="SuppIsUse" class="flat" value="Y" title="보강동영상신청여부" @if( $data['SuppIsUse']=='Y')checked="checked"@endif/> 가능
+                            [총
+                                <select name="SuppAbleCnt" id="SuppAbleCnt" class="form-control">
+                                    @for($i=1; $i<=5 ;$i++)
+                                    <option value="{{$i}}" {{ $data['SuppAbleCnt'] == $i ? 'selected = "selected"' :  ($i == 3 ? 'selected = "selected"' : '') }}>{{$i}}</option>
+                                    @endfor
+                                </select> 개
+                            ]
+                            &nbsp;&nbsp;
+                            <input type="radio" name="SuppIsUse" class="flat" value="N" title="보강동영상신청여부" @if($method == 'POST' || $data['SuppIsUse']=='N')checked="checked"@endif/> 불가능
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2" >보강동영상제공기간
+                    </label>
+                    <div class="col-md-10 form-inline">
+                        <div class="item inline-block">
+                            <select name="SuppPeriod" id="SuppPeriod" class="form-control">
+                                @for($i=1; $i<=10 ;$i++)
+                                    <option value="{{$i}}" {{ $data['SuppPeriod'] == $i ? 'selected = "selected"' :  ($i == 2 ? 'selected = "selected"' : '') }}>{{$i}}</option>
+                                @endfor
+                            </select> 일
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-md-2" for="Keyword">사은품/무료교재<BR>배송료부과여부
                     </label>
                     <div class="col-md-10 form-inline">
@@ -997,15 +1069,7 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
-                    /*
-                    $("#selected_category").html("");
-                    $("#teacherDivision tbody").remove();
-                    $("#lecList tbody").remove();
-                    sitecode_chained($(this).val());    //과정.과목 재조정
-                    */
                     location.reload();
-
                 } else {
                     $(this).val(prev_val);
                     return false;
@@ -1037,6 +1101,8 @@
             $("#CampusCcd").chained("#site_code");
             $("#lr_code").chained("#site_code");
             $("#lr_unit_code").chained("#lr_code");
+            $("#SiteCodeOther").chained("#site_code");
+
 
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){
@@ -1126,6 +1192,19 @@
                     ,'width' : 1300
                 })
             });
+
+            //보강동영상 검색
+            $('#lecAddSupp').on('click', function(e) {
+                if($("#SiteCodeOther").val() == "") {alert("보강동영상을 검색할 사이트를 선택해 주세요.");$("#SiteCodeOther").focus();return;}
+                $("#lecAddSupp").setLayer({
+                    'url' : '{{ site_url('common/searchLectureVariable/')}}'+'?site_code='+$("#SiteCodeOther").val()+'&learn_pattern=615001&parent_id=LecListSupp&input_name=SuppProdCode&choice_type=radio&prod_code='+$('#ProdCode').val()
+                    ,'width' : 1300
+                })
+            });
+            $regi_form.on('click', '#LecListSupp .selected-product-delete', function() {
+                $(this).parent().parent().remove();
+            });
+
 
             //동일한 마스터강의 등록 강좌 검색 (학원 단과)
             $('#sameLecture').on('click', function() {
@@ -1552,9 +1631,9 @@
         }
         function Calendar_modify( Year, Month ) {
             var data_lecturedate = new Array(
-            @foreach($data_lecturedate as $row)
-                        "{{$row["LecDate"]}}"@if($loop->last == false),@endif
-            @endforeach
+                @foreach($data_lecturedate as $row)
+                            "{{$row["LecDate"]}}"@if($loop->last == false),@endif
+                @endforeach
             );
 
             var days = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
@@ -1628,7 +1707,6 @@
 
             output_string += "</tr>";
             output_string += "</table>";
-
             return output_string;
         }
 

@@ -49,7 +49,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2017_prof_icon.png" alt="">
             </div>                        
         </div>
-
+        {{--
         <div class="evtCtnsBox youtube">
             <ul>
                 <li>
@@ -62,6 +62,7 @@
                 </li>
             </ul>            
         </div>
+        --}}
     </div>
     <!-- End Container -->
 

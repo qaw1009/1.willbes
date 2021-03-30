@@ -5,11 +5,6 @@ require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
 
 Class OffLecture extends CommonLecture
 {
-    /*
-   * CommonLecture 로 이관
-    protected $models = array( 'sys/wCode','sys/site','sys/code','sys/category','product/base/course','product/base/subject','product/base/professor','product/off/offLecture');
-    protected $helpers = array('download');
-    */
     protected $prodtypeccd = '636002';      //학원강좌
     protected $learnpatternccd = '615006'; //단과반 [학원]
 
@@ -146,6 +141,7 @@ Class OffLecture extends CommonLecture
     {
         $arr_site_code = get_auth_on_off_site_codes('Y', true);
         $def_site_code = key($arr_site_code);
+        $arr_site_code_on = $this->siteModel->getGroupOtherSite(array_keys($arr_site_code));
 
         $method = 'POST';
 
@@ -175,6 +171,7 @@ Class OffLecture extends CommonLecture
         $data_sublecture = [];
         $data_lecturedate = [];
         $data_product_lecture_room = null;    //강의실좌석 상품데이타
+        $data_supplecture = null;
 
         if(empty($params[0]) === false) {
             $method='PUT';
@@ -196,6 +193,11 @@ Class OffLecture extends CommonLecture
             $data_lecturedate = $this->offLectureModel->findLectureDateListForModify($prodcode);
 
             $data_product_lecture_room = $this->lectureRoomRegistModel->findProductLectureRoom($prodcode);
+
+            /* 보강동영상 온라인 강좌 정보 추출*/
+            if(empty($data['SuppProdCode']) !== true) {
+                $data_supplecture = $this->lectureModel->listLecture(false, ['EQ' => ['A.ProdCode' => $data['SuppProdCode']]])[0];
+            }
         }
 
         $this->load->view('product/off/offlecture/create',[
@@ -229,6 +231,8 @@ Class OffLecture extends CommonLecture
             ,'data_product_lecture_room' => $data_product_lecture_room
             ,'def_site_code' => $def_site_code
             ,'arr_site_code' => $arr_site_code
+            ,'arr_site_code_on' => $arr_site_code_on
+            ,'data_supplecture' => $data_supplecture
         ]);
     }
 

@@ -464,7 +464,6 @@ class OffLectureModel extends CommonLectureModel
                 ,'StudyEndDate'=>element('StudyEndDate',$input)
                 ,'Amount'=>element('Amount',$input)
                 ,'AmountDisp'=> element('AmountDisp',$input) !== '' ? element('AmountDisp',$input) : null
-
                 ,'IsLecStart'=>element('IsLecStart',$input,'N')
                 ,'IsPause'=>element('IsPause',$input,'N')
                 ,'PauseNum'=>element('PauseNum',$input,0)
@@ -473,7 +472,6 @@ class OffLectureModel extends CommonLectureModel
                 ,'IsRetake'=>element('IsRetake',$input,'N')
                 ,'RetakeSaleRate'=>element('RetakeSaleRate',$input,0)
                 ,'RetakePeriod'=>get_var(element('RetakePeriod',$input),0)
-
                 ,'WeekArray' => element('week_str', $input)
                 ,'LecPlace'=>element('LecPlace',$input)
                 ,'LecCalcType'=>element('LecCalcType',$input)
@@ -484,6 +482,10 @@ class OffLectureModel extends CommonLectureModel
                 ,'OrderNum' =>element('OrderNum',$input,'0')
                 ,'ProfChoiceStartDate' => $ProfChoiceStartDate
                 ,'ProfChoiceEndDate' => $ProfChoiceEndDate
+                ,'SuppProdCode' => element('SuppProdCode',$input,'0')
+                ,'SuppIsUse' => element('SuppIsUse',$input,'N')
+                ,'SuppAbleCnt' => element('SuppAbleCnt',$input,'0')
+                ,'SuppPeriod' => element('SuppPeriod',$input,'0')
             ];
    }
 

@@ -116,6 +116,37 @@ class SiteModel extends WB_Model
         return array_pluck($data, 'SiteName', 'SiteCode');
     }
 
+
+    /**
+     * 사이트코드 기준 그룹핑 된 다른 사이트 정보 추출
+     * @param array $site_code
+     * @return bool|mixed|string
+     */
+    public function getGroupOtherSite($site_code=[])
+    {
+        $column = 'A.SiteGroupCode, A.SiteCode, A.SiteName, tmp.SiteCode as SiteCodeOther, tmp.SiteName as SiteNameOther';
+
+        $from = '
+            from
+                '. $this->_table['site'] .' A
+                left join
+                    (
+                        select B.SiteCode, B.SiteGroupCode, B.SiteName
+                        from
+                            '. $this->_table['site'] .' B 
+                        where B.IsStatus=\'Y\'
+                        group by B.SiteCode, B.SiteGroupCode, B.SiteName
+                    ) tmp on A.SiteGroupCode = tmp.SiteGroupCode and A.SiteCode != tmp.SiteCode
+            where A.IsStatus = \'Y\'
+        ';
+
+        $arr_condition = ['IN' => ['A.SiteCode' => $site_code]];
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
+
+        return $this->_conn->query('select ' . $column . $from . $where . ' Order by A.SiteCode ASC')->result_array();
+    }
+
+
     /**
      * 사이트 코드별 캠퍼스 코드 목록 조회
      * @param string $site_code

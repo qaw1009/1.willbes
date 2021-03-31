@@ -35,7 +35,7 @@
         .evt03 .btnSt {width:500px; margin:0 auto 100px}
         .evt03 .btnSt a {display:block; height:100px; line-height:100px; border-radius:50px; color:#fff; background:#000; font-size:30px}
         .evt03 .btnSt a:hover {color:#fff; background:#057f52;}
-        .evt05 {width:1120px; margin:0 auto; padding-bottom:150px; position:relative}
+        .evt05 {width:1120px; margin:0 auto 150px; position:relative}
 
  
     </style> 

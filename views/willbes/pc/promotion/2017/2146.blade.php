@@ -290,7 +290,7 @@
                                                 {{ $arr_base['register_list'][8]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td></td>
+                                        <td>90일</td>
                                         <td>380,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176932','1270570','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176932" class="btn02" target="_blank">수강신청</a></td>
@@ -302,7 +302,7 @@
                                                 {{ $arr_base['register_list'][9]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>　</td>
+                                        <td>90일</td>
                                         <td>340,000원 → <span><strong>240,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176933','1281983','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176933" class="btn02" target="_blank">수강신청</a></td>
@@ -315,7 +315,7 @@
                                                 {{ $arr_base['register_list'][10]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>　</td>
+                                        <td>90일</td>
                                         <td>300,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176880','1271149','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176880" class="btn02" target="_blank">수강신청</a></td>
@@ -327,7 +327,7 @@
                                                 {{ $arr_base['register_list'][11]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>　</td>
+                                        <td>90일</td>
                                         <td>300,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176881','1281477','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176881" class="btn02" target="_blank">수강신청</a></td>
@@ -355,7 +355,7 @@
                                                 {{ $arr_base['register_list'][13]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td></td>
+                                        <td>90일</td>
                                         <td>280,000원 → <span><strong>168,000원</strong>(40%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176159','1268664','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176159" class="btn02" target="_blank">수강신청</a></td>
@@ -367,7 +367,7 @@
                                                 {{ $arr_base['register_list'][14]['Name'] or ''}}
                                             </label>
                                         </td>
-                                        <td>　</td>
+                                        <td>90일</td>
                                         <td>280,000원 → <span><strong>168,000원</strong>(40%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176160','1282566','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176160" class="btn02" target="_blank">수강신청</a></td>
@@ -555,7 +555,7 @@
                                             </label>
                                         </td>
                                         <td>80일</td>
-                                        <td>400,000원 → <span><strong>320,000원</strong>(50%↓)</span></td>
+                                        <td>400,000원 → <span><strong>320,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('175978','1281806','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/175978" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>

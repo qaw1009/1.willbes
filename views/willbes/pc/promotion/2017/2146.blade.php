@@ -120,7 +120,7 @@
                             <li>입력하신 개인정보는 수집목적 외 신청자의 동의 없이 절대 제3자에게 제공되지 않으며 개인정보 처리방침에 따라 보호되고 있습니다.</li>
                             <li>이벤트 진행에 따른 저작물에 대한 저작권은 ㈜윌비스에 귀속됩니다.</li>
                         </ul>
-                        <input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
+                        <input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 이벤트참여에 따른 개인정보 및 마케팅활용 동의하기(필수)</label>
 
                         <h5 class="mt100">타학원 <strong>수강이력</strong> 인증 <span>* 타학원 수강이력 인증 파일은 수강기간이 명시되어 있는 <strong>수강증과 수강확인증</strong>만 가능합니다.</span></h5>
                         <div class="evt_table">
@@ -623,7 +623,7 @@
         var $regi_form_register = $('#regi_form_register');
 
         function fn_submit() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(empty($register_count) === false)
                 alert('등록된 신청자 정보가 있습니다.');
@@ -688,6 +688,12 @@
                 $("#attach_file").val("");
                 return;
             }
+        }
+
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+                return true;
         }
     </script>
 @stop

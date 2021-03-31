@@ -82,8 +82,8 @@ class BaseOrderFModel extends WB_Model
     // 결제채널 공통코드
     public $_pay_channel_ccd = ['pc' => '669001', 'm' => '669002', 'app' => '669003'];
 
-    // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원, 관리자유료결제)
-    public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006', 'admin_pay' => '670007'];
+    // 결제루트 공통코드 (온라인PG, 방문결제, 0원결제, 무료결제, 제휴사결제, 온라인0원, 관리자유료결제, 보강0원)
+    public $_pay_route_ccd = ['pg' => '670001', 'visit' => '670002', 'zero' => '670003', 'free' => '670004', 'alliance' => '670005', 'on_zero' => '670006', 'admin_pay' => '670007', 'bogang_zero' => '670008'];
 
     // 결제방법 공통코드 (신용카드, 실시간계좌이체, 가상계좌, 휴대폰, 관리자유료결제)
     public $_pay_method_ccd = ['card' => '604001', 'direct_bank' => '604002', 'vbank' => '604003', 'phone' => '604004', 'admin_pay' => '604010'];

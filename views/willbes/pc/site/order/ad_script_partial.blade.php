@@ -1,7 +1,6 @@
 {{-- 결제완료 광고 스크립트 (구글, ADN, 모비온, 카카오) --}}
-<!-- ad script -->
 @if(empty($ad_data) === false)
-    <!-- ad script inner -->
+    <!-- AD script start -->
     <!-- Google Event snippet for 구매 conversion page start -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-710035840"></script>
     <script type="text/javascript">
@@ -52,6 +51,5 @@
         });
     </script>
     <!--// Kakao 구매완료 end -->
-    <!-- End ad script inner -->
+    <!--// AD script end -->
 @endif
-<!-- End ad script -->

@@ -1253,37 +1253,54 @@ class OrderFModel extends BaseOrderFModel
             }
 
             $learn_pattern = array_search($row['LearnPatternCcd'], $this->_learn_pattern_ccd);  // 학습형태
-            $sale_pattern_ccd = element('SalePatternCcd', $input, $this->_sale_pattern_ccd['normal']);      // 판매형태 공통코드
-            $user_study_start_date = element('UserStudyStartDate', $input, '');     // 사용자 지정 강좌시작일
+            $sale_pattern_ccd = element('SalePatternCcd', $input, $this->_sale_pattern_ccd['normal']);  // 판매형태공통코드
+            $user_study_start_date = element('UserStudyStartDate', $input, '');     // 사용자지정 강좌시작일
+            $user_study_period = element('UserStudyPeriod', $input, 0);             // 사용자지정 수강일수
+            $wunit_idxs = $learn_pattern == 'on_lecture' ? element('wUnitIdxs', $input) : null;     // 회차식별자
 
             if ($learn_pattern == 'on_lecture' || $learn_pattern == 'adminpack_lecture' || $learn_pattern == 'periodpack_lecture' || $learn_pattern == 'on_free_lecture'
                 || $learn_pattern == 'off_lecture') {
                 // 단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원 단과
-                // 단강좌 수강연장일 경우
-                if ($learn_pattern == 'on_lecture' && $sale_pattern_ccd == $this->_sale_pattern_ccd['extend']) {
-                    $row['StudyPeriod'] = element('ExtenDay', $input);
 
-                    if (empty($row['StudyPeriod']) === true) {
-                        throw new \Exception('수강연장 신청일수가 없습니다.');
+                if ($learn_pattern == 'on_lecture') {
+                    // 단강좌 수강연장일 경우
+                    if ($sale_pattern_ccd == $this->_sale_pattern_ccd['extend']) {
+                        $row['StudyPeriod'] = element('ExtenDay', $input);
+
+                        if (empty($row['StudyPeriod']) === true) {
+                            throw new \Exception('수강연장 신청일수가 없습니다.');
+                        }
+
+                        // 타겟주문상품 중에서 가장 큰 실제강좌종료일자 + 1 day 조회
+                        $target_order_idx = element('TargetOrderIdx', $input);
+                        $row['StudyStartDate'] = element('NextStudyStartDate',
+                            $this->_conn->getJoinFindResult($this->_table['my_lecture'] . ' as ML', 'inner', $this->_table['order_product'] . ' as OP', 'ML.OrderProdIdx = OP.OrderProdIdx'
+                                , 'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate', [
+                                    'EQ' => [
+                                        'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
+                                        'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
+                                    ],
+                                    'RAW' => [
+                                        'ML.OrderIdx in ' => '(select OrderIdx from ' . $this->_table['order_product'] . ' where OrderIdx = "' . $target_order_idx . '" or TargetOrderIdx = "' . $target_order_idx . '")'
+                                    ]
+                                ])
+                        );
+
+                        if (empty($row['StudyStartDate']) === true) {
+                            throw new \Exception('수강연장 수강시작일자 조회에 실패했습니다.');
+                        }
                     }
 
-                    // 타겟주문상품 중에서 가장 큰 실제강좌종료일자 + 1 day 조회
-                    $target_order_idx = element('TargetOrderIdx', $input);
-                    $row['StudyStartDate'] = element('NextStudyStartDate',
-                        $this->_conn->getJoinFindResult($this->_table['my_lecture'] . ' as ML', 'inner', $this->_table['order_product'] . ' as OP', 'ML.OrderProdIdx = OP.OrderProdIdx'
-                            ,'date_add(max(ML.RealLecEndDate), interval 1 day) as NextStudyStartDate', [
-                            'EQ' => [
-                                'ML.ProdCode' => element('TargetProdCode', $input), 'ML.ProdCodeSub' => element('TargetProdCodeSub', $input),
-                                'OP.MemIdx' => $this->session->userdata('mem_idx'), 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']
-                            ],
-                            'RAW' => [
-                                'ML.OrderIdx in ' => '(select OrderIdx from ' . $this->_table['order_product'] . ' where OrderIdx = "' . $target_order_idx . '" or TargetOrderIdx = "' . $target_order_idx . '")'
-                            ]
-                        ])
-                    );
+                    // 단강좌 회차등록일 경우
+                    if ($sale_pattern_ccd == $this->_sale_pattern_ccd['unit']) {
+                        if (empty($wunit_idxs) === true) {
+                            throw new \Exception('회차정보가 없습니다.');
+                        }
 
-                    if (empty($row['StudyStartDate']) === true) {
-                        throw new \Exception('수강연장 수강시작일자 조회에 실패했습니다.');
+                        $row['StudyPeriod'] = $user_study_period;   // 수강기간
+                        if (empty($row['StudyPeriod']) === true) {
+                            throw new \Exception('수강기간이 없습니다.');
+                        }
                     }
                 }
 
@@ -1294,6 +1311,7 @@ class OrderFModel extends BaseOrderFModel
                     'OrderIdx' => $order_idx,
                     'OrderProdIdx' => $order_prod_idx,
                     'ProdCode' => $prod_code,
+                    'wUnitIdxs' => $wunit_idxs,
                     'LecStartDate' => $arr_lec_date['lec_start_date'],
                     'LecEndDate' => $arr_lec_date['lec_end_date'],
                     'RealLecEndDate' => $arr_lec_date['lec_end_date'],
@@ -1766,32 +1784,39 @@ class OrderFModel extends BaseOrderFModel
 
     /**
      * 자동주문 데이터 등록
-     * @param string $req_type [요청구분 (수동: manual, 이벤트: event, 회원가입웰컴팩: join, 인증 : cert, 합격예측 : predict, 강좌인증지급 : agive)]
-     * @param string|array $req_code [요청구분별식별자 (수동: 상품코드, 이벤트: 이벤트식별자, 회원가입웰컴팩: 상품코드, 인증: 인증식별자, 합격예측 : 상품코드, 강좌인증지급 : 인증지급식별자:인증지급신청식별자)]
-     * @param string|array $req_prod_code [지급요청 상품코드 (요청구분별식별자와 지급상품코드가 모두 필요할 경우 사용)]
+     * @param string $req_type [요청구분 (수동: manual / 이벤트: event / 회원가입웰컴팩: join / 인증 : cert / 합격예측 : predict / 강좌인증지급 : agive / 보강신청 : bogang)]
+     * @param string|array $req_code [요청구분별식별자 (수동: 상품코드 / 이벤트: 이벤트식별자 / 회원가입웰컴팩: 상품코드 / 인증: 인증식별자 / 합격예측 : 상품코드 / 강좌인증지급 : 인증식별자:인증신청식별자 / 보강신청 : 상품코드)]
+     * @param string|array $req_params [지급요청 추가 파라미터 (요청구분별식별자와 지급상품코드가 모두 필요할 경우 사용, 보강신청 : [회차식별자, 수강기간, 등록사유])]
      * @param string $req_pay_route_ccd [지급요청 결제루트공통코드]
      * @return bool|string
      */
-    public function procAutoOrder($req_type, $req_code = '', $req_prod_code = '', $req_pay_route_ccd = '')
+    public function procAutoOrder($req_type, $req_code = '', $req_params = '', $req_pay_route_ccd = '')
     {
         $this->_conn->trans_begin();
 
         try {
             $sess_mem_idx = $this->session->userdata('mem_idx');    // 회원 식별자 세션
-            $order_no = $this->makeOrderNo();   // 주문번호 생성
-            $pay_status_ccd = $this->_pay_status_ccd['paid'];    // 결제상태공통코드 (결제완료)
+            $order_no = $this->makeOrderNo();                   // 주문번호 생성
+            $pay_status_ccd = $this->_pay_status_ccd['paid'];   // 결제상태공통코드 (결제완료)
             $pay_route_ccd = $this->_pay_route_ccd['zero'];     // 결제루트공통코드 (0원결제)
-            $pay_method_ccd = '';                               // 결제방법공통코드 (0원결제일 경우 결제방법공통코드 없음)
+            $pay_method_ccd = '';                               // 결제방법공통코드 (0원결제, 보강결제0원일 경우 결제방법공통코드 없음)
             // 자동주문 가능 학습형태 (단강좌, 운영자패키지, 기간제패키지, 무료강좌, 학원단과, 학원종합반)
             $target_learn_pattern_ccd = [
                 $this->_learn_pattern_ccd['on_lecture'], $this->_learn_pattern_ccd['adminpack_lecture'], $this->_learn_pattern_ccd['periodpack_lecture'],
                 $this->_learn_pattern_ccd['on_free_lecture'], $this->_learn_pattern_ccd['off_lecture'], $this->_learn_pattern_ccd['off_pack_lecture']
             ];
             $admin_reason_ccd = '705008';   // 부여사유공통코드 (디폴트 : 이벤트자동부여)
-            $admin_etc_reason = null;   // 상세부여사유 (연관식별자가 있을 경우 추가)
+            $admin_etc_reason = null;       // 상세부여사유 (연관식별자가 있을 경우 추가)
+            $target_order_idx = null;       // 타겟주문식별자
+            $target_prod_code = null;       // 타겟상품코드
+            $target_prod_code_sub = null;   // 타겟상품코드서브
+            $wunit_idxs = null;             // 회차식별자
+            $user_study_start_date = null;  // 사용자지정 수강시작일
+            $user_study_period = null;      // 사용자지정 수강일수
             $total_prod_order_price = 0;    // 전체상품주문금액
-            $order_prod_data = [];  // 주문상품 데이터
-            $is_cert_no_add = false;    // 수강증번호 등록 여부
+            $order_prod_data = [];          // 주문상품 데이터
+            $is_cert_no_add = false;        // 수강증번호 등록 여부
+            $is_auto_add = true;            // 자동지급상품, 자동지급쿠폰 부여여부 (정책변경 : 미지급 -> 지급 (2021.03.22)) => 보강결제0원 제외
 
             // 지급요청 결제루트공통코드가 있을 경우
             if (empty($req_pay_route_ccd) === false) {
@@ -1813,7 +1838,7 @@ class OrderFModel extends BaseOrderFModel
                     // 이벤트 (프로모션) => 지급요청 상품코드 파라미터 사용
                     $admin_reason_ccd = '705008';   // 부여사유공통코드 (이벤트자동부여)
                     $admin_etc_reason = '이벤트코드=>' . $req_code;
-                    $arr_prod_code = (array) $req_prod_code;
+                    $arr_prod_code = (array) $req_params;
                     break;
                 case 'join' :
                     // 회원가입 웰컴팩
@@ -1840,7 +1865,32 @@ class OrderFModel extends BaseOrderFModel
                     // 강좌인증지급
                     $admin_reason_ccd = '705011';   // 부여사유공통코드 (강좌인증자동지급부여)
                     $admin_etc_reason = '강좌인증식별자=>' . $req_code;
-                    $arr_prod_code = (array) $req_prod_code;
+                    $arr_prod_code = (array) $req_params;
+                    break;
+                case 'bogang' :
+                    // 학원 동영상 보강신청
+                    $target_order_idx = array_get($req_params, 'target_order_idx');         // 타겟주문식별자
+                    $target_prod_code = array_get($req_params, 'target_prod_code');         // 타겟상품코드
+                    $target_prod_code_sub = array_get($req_params, 'target_prod_code_sub'); // 타겟상품코드서브
+                    $wunit_idxs = array_get($req_params, 'wunit_idx');                      // 회차식별자
+                    $user_study_period = array_get($req_params, 'study_period');            // 사용자지정 수강일수
+
+                    if (empty($target_order_idx) === true || empty($target_prod_code) === true || empty($target_prod_code_sub) === true) {
+                        return '타겟주문정보가 없습니다.';
+                    }
+                    if (empty($wunit_idxs) === true) {
+                        return '회차정보가 없습니다.';
+                    }
+                    if (empty($user_study_period) === true) {
+                        return '수강기간이 없습니다.';
+                    }
+
+                    $user_study_start_date = date('Y-m-d', strtotime(date('Y-m-d') . ' +7 day'));   // 사용자지정 수강시작일 (결제일 익일 + 7일)
+                    $pay_route_ccd = $this->_pay_route_ccd['bogang_zero'];  // 결제루트공통코드 (보강결제0원)
+                    $admin_reason_ccd = '705001';   // 부여사유공통코드 (학원 보강(복습)동영상 부여)
+                    $admin_etc_reason = array_get($req_params, 'etc_reason');
+                    $arr_prod_code = (array) $req_code;
+                    $is_auto_add = false;   // 자동지급상품, 자동지급쿠폰 지급안함
                     break;
                 default :
                     $arr_prod_code = (array) $req_code;
@@ -1903,12 +1953,18 @@ class OrderFModel extends BaseOrderFModel
                     'LearnPatternCcd' => $prod_row['LearnPatternCcd'],
                     'PackTypeCcd' => $prod_row['PackTypeCcd'],
                     'SaleTypeCcd' => $prod_price_data['SaleTypeCcd'],
-                    'SalePatternCcd' => $this->_sale_pattern_ccd['normal'],
+                    'SalePatternCcd' => (empty($wunit_idxs) === false ? $this->_sale_pattern_ccd['unit'] : $this->_sale_pattern_ccd['normal']),
                     'RealSalePrice' => $prod_price_data['RealSalePrice'],
                     'RealPayPrice' => 0,
                     'CouponDiscPrice' => $prod_price_data['RealSalePrice'],
                     'CouponDiscRate' => '100',
-                    'CouponDiscType' => 'R'
+                    'CouponDiscType' => 'R',
+                    'TargetOrderIdx' => $target_order_idx,
+                    'TargetProdCode' => $target_prod_code,
+                    'TargetProdCodeSub' => $target_prod_code_sub,
+                    'wUnitIdxs' => $wunit_idxs,
+                    'UserStudyStartDate' => $user_study_start_date,
+                    'UserStudyPeriod' => $user_study_period
                 ];
 
                 $tmp_site_code = $prod_row['SiteCode'];
@@ -1959,9 +2015,9 @@ class OrderFModel extends BaseOrderFModel
             // 주문 식별자
             $order_idx = $this->_conn->insert_id();
 
-            // 주문상품 데이터 등록 => 자동지급상품, 자동지급쿠폰 부여여부 (정책변경 : 미지급 -> 지급 (2021.03.22))
+            // 주문상품 데이터 등록
             foreach ($order_prod_data as $order_prod_row) {
-                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row);
+                $is_order_product = $this->addOrderProduct($order_idx, $pay_status_ccd, 'N', $order_prod_row, $is_auto_add);
                 if ($is_order_product !== true) {
                     throw new \Exception($is_order_product);
                 }
@@ -2329,8 +2385,8 @@ class OrderFModel extends BaseOrderFModel
             $data = $this->orderListFModel->findOrderByOrderNo($order_no, $sess_mem_idx);
 
             if (empty($data) === false) {
-
                 $tmpl_cd = $tmpl_val = null;
+
                 if ($data['IsVBank'] == 'Y') {
                     //$sms_msg = '[윌비스] 가상계좌 ' . config_item('vbank_account_name') . ' ' . str_replace('은행', '', $data['VBankName']);
                     //$sms_msg .= ' ' . $data['VBankAccountNo'] . ' (' . date('n/j', strtotime($data['VBankExpireDatm'])) . '까지 유효)';

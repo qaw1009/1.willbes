@@ -695,7 +695,7 @@ class OrderListModel extends BaseOrderModel
                 inner join ' . $this->_table['order'] . ' as O
                     on OUH.OrderIdx = O.OrderIdx
                 inner join ' . $this->_table['order_product'] . ' as OP
-                    on O.OrderIdx = OP.OrderIdx
+                    on O.OrderIdx = OP.OrderIdx and OUI.ProdCode = OP.ProdCode
                 left join ' . $this->_table['product'] . ' as P
                     on OUI.ProdCode = P.ProdCode and P.IsStatus = "Y"
                 left join ' . $this->_table['product_lecture'] . ' as PL

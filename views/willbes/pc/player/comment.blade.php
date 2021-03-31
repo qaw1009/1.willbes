@@ -48,9 +48,11 @@
                 </div>
                 <div class="buttonBtn cartBtn mb10">
                     <ul>
+                        {{--
                         <li>
                             <button type="button" onclick="commentList();" class="btnGray"><span>후기목록</span></button>
                         </li>
+                        --}}
                         <li>
                             <button type="button" onclick="commentPost();" class="btnBlue"><span>저장</span></button>
                         </li>

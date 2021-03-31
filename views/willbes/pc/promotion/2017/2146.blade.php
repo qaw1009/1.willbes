@@ -181,14 +181,24 @@
                                     <tr>
                                         <td rowspan="2">교육학</td>
                                         <td rowspan="2">이인재</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 이인재 교육학 기초이론반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][0]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>350,000원 → <span><strong>175,000원</strong>(50%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('174903','1270724','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/174903" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 이인재 교육학 기초심화반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][1]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][1]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>350,000원 → <span><strong>175,000원</strong>(50%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176772','1282107','HD');" class="btn01">미리보기</a></td>
@@ -197,14 +207,24 @@
                                     <tr>
                                         <td rowspan="4">국어</td>
                                         <td rowspan="2">송원영</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 송원영 국어/문학교육론 이론정리반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][2]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][2]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>380,000원 → <span><strong>323,000원</strong>(15%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176552','1271311','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176552" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 송원영 국어/문학교육론 교육과정 정리 및 문학작품 분석반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][3]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][3]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>380,000원 → <span><strong>323,000원</strong>(15%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176563','1281640','HD');" class="btn01">미리보기</a></td>
@@ -212,14 +232,24 @@
                                     </tr>
                                     <tr>
                                         <td rowspan="2">권보민</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 현대 국어 문법 기초다지기</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][4]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][4]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>200,000원 → <span><strong>160,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176218','1271693','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176218" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 중세 국어 문법 기초다지기</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][5]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][5]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>200,000원 → <span><strong>160,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176214','1281940','HD');" class="btn01">미리보기</a></td>
@@ -228,14 +258,24 @@
                                     <tr>
                                         <td rowspan="2">영어</td>
                                         <td rowspan="2">김영문</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 김영문 영어학 기본이론반(통사론)</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][6]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][6]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>60일</td>
                                         <td>140,000원 → <span><strong>98,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176448','1271513','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176448" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월 김영문 영어학 기본이론반(학교문법, ..)</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][7]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][7]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>60일</td>
                                         <td>140,000원 → <span><strong>98,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176453','1281485','HD');" class="btn01">미리보기</a></td>
@@ -244,30 +284,50 @@
                                     <tr>
                                         <td rowspan="4">수학</td>
                                         <td rowspan="2">김철홍</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 대수학과 정수론 완전학습반 (이론 및 문제풀이 통합반)</label></td>
-                                        <td></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][8]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][8]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>380,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176932','1270570','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176932" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 해석학 완전학습반 (이론 및 문제풀이 통합반)</label></td>
-                                        <td>　</td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][9]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][9]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>340,000원 → <span><strong>240,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176933','1281983','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176933" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">박태영</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 수학교육론 - 신기한(신론1,2와 기출을    결합한) 이론반</label></td>
-                                        <td>　</td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][10]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][10]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>300,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176880','1271149','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176880" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 수학교육과정과 교재연구</label></td>
-                                        <td>　</td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][11]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][11]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>300,000원 → <span><strong>226,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176881','1281477','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176881" class="btn02" target="_blank">수강신청</a></td>
@@ -275,7 +335,12 @@
                                     <tr>
                                         <td>생물</td>
                                         <td>양혜정</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~5월) 생물교육론 [심화이론]</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][12]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][12]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>480,000원 → <span><strong>384,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('177761','1281481','HD');" class="btn01">미리보기</a></td>
@@ -284,15 +349,25 @@
                                     <tr>
                                         <td rowspan="2">역사</td>
                                         <td rowspan="2">최용림</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 임용역사 이론반(8주 과정)</label></td>
-                                        <td></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][13]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][13]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>280,000원 → <span><strong>168,000원</strong>(40%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176159','1268664','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176159" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월) 임용역사 심화이론(8주 과정)</label></td>
-                                        <td>　</td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][14]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][14]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>90일</td>
                                         <td>280,000원 → <span><strong>168,000원</strong>(40%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176160','1282566','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176160" class="btn02" target="_blank">수강신청</a></td>
@@ -300,63 +375,108 @@
                                     <tr>
                                         <td rowspan="9">음악</td>
                                         <td rowspan="9">다이애나</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 전공음악 기본이론반(한끝맵)</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][15]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][15]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>90일</td>
                                         <td>360,000원 → <span><strong>252,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176838','1270599','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176838" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) 전공음악 화성학반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][16]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][16]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>80일</td>
                                         <td>360,000원 → <span><strong>252,000원</strong>(30%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176839','1271664','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176839" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3월) 전공음악 개론서반 음악교육론 (인강전용)</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][17]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][17]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176847','1278474','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176847" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3월) 전공음악 개론서반 국악/서양음악 (인강전용)</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][18]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][18]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>290,000원 → <span><strong>232,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176846','1278614','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176846" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) 전공음악 한줄정리 서양음악반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][19]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][19]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="#none" onclick="javascript:alert('준비중입니다.');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176845" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) 전공음악 한줄정리 국악반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][20]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][20]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('[176844','1283265','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176844" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) 전공음악 종음셋 음악교육론반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][21]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][21]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176842','1283264','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176842" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) 전공음악 종음셋 서양음악반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][22]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][22]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="#none" onclick="javascript:alert('준비중입니다.');"  class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176841" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) 전공음악 종음셋 국악반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][23]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][23]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>190,000원 → <span><strong>152,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176840','1283032','HD');" class="btn01">미리보기</a></td>
@@ -365,28 +485,48 @@
                                     <tr>
                                         <td rowspan="4">전기전자</td>
                                         <td rowspan="4">최우영</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~2월) [통합] 최우영 기초전기전자/회로이론반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][24]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][24]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>120일</td>
                                         <td>400,000원 → <span><strong>320,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176676','1271941','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176676" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) [전자/통신] 최우영 전자회로반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][25]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][25]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>160일</td>
                                         <td>400,000원 → <span><strong>320,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176677','1284998','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176677" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~6월) [전기] 최우영 전자회로반 </label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][26]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][26]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>300,000원 → <span><strong>240,000원</strong>(20%↓)</span></td>
                                         <td><a href="#none" onclick="javascript:alert('준비중입니다.');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176678" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~5월) [통합] 최우영 전기자기학반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][27]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][27]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>110일</td>
                                         <td>250,000원 → <span><strong>200,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176679','1284705','HD');" class="btn01">미리보기</a></td>
@@ -396,30 +536,50 @@
                                         <td rowspan="2">정보<br />
                                         컴퓨터</td>
                                         <td rowspan="2">송광진</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~3월) 정보컴퓨터 내용학 일반과정</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][28]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][28]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>600,000원 → <span><strong>480,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('175976','1270566','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/175976" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (3~4월 정보컴퓨터 내용학 기출문제분석</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][29]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][29]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>80일</td>
-                                        <td>400,000원 → <span><strong>320,000원</strong>(50%↓)</span></td>
+                                        <td>400,000원 → <span><strong>320,000원</strong>(20%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('175978','1281806','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/175978" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
                                         <td rowspan="2">중국어</td>
                                         <td rowspan="2">정경미</td>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~4월) 전공중국어 기본이론반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][30]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][30]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>600,000원 → <span><strong>300,000원</strong>(50%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('177140','1270530','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/177140" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
-                                        <td><label><input type="checkbox" name="" id="" />2021년 (1~4월) 전공중국어 기본독해반</label></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" value="{{ $arr_base['register_list'][31]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][31]['Name'] or ''}}
+                                            </label>
+                                        </td>
                                         <td>150일</td>
                                         <td>600,000원 → <span><strong>300,000원</strong>(50%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('177141','1270545','HD');" class="btn01">미리보기</a></td>
@@ -471,6 +631,8 @@
             @endif
 
             var _url = '{!! front_url('/event/registerStore') !!}';
+            var subject_count = 0;
+            var subject_name = '';
 
             if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
                 alert('이벤트참여에 따른 개인정보 및 마케팅 활용에 동의하셔야 합니다.');
@@ -497,6 +659,18 @@
 
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length > 3) {
                 alert('강좌를 3개까지 선택해 주세요.');
+                return;
+            }
+
+            $regi_form_register.find("input[name^='register_chk']:checked").each(function(k,v) {
+                subject_name = $(this).data('subject-group');
+                if(subject_name === 'edu'){
+                    subject_count++;
+                }
+            });
+
+            if(subject_count !== 1){
+                alert('강좌는 교육학 1개, 전공강좌 2개 총 3개까지 선택 가능합니다.');
                 return;
             }
 

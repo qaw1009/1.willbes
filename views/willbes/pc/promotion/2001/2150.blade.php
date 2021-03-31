@@ -61,7 +61,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2150_top.jpg"  alt="신광은 형법"/>
         </div>
 
-        <div class="evtCtnsBox evt01" id="evt01">
+        <div class="evtCtnsBox evt01 NSK-Black" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2150_01.jpg"  alt="무료특강 활용하기"/>
             <ul>
                 <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/170566" target="_blank">원자행&불능미수</a></li>

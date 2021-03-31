@@ -15,10 +15,38 @@
         <div class="viewList" id="viewList">
             <span class="Tit NGR"><span class="NG" id="title">{{$data['pretitle']}}</span> : {{$data['title']}}</span>
             <ul class="btnList">
-                <!--
-                <li><a class="iconBtn btnUP" href="javascript:;" onclick="fnSetTop(this);">버튼 위로</a></li>
-                <li><a class="iconBtn btnBookMark" href="#none">버튼 즐겨찾기</a></li>
-                -->
+                <li class="lecCtr">
+                    @if(empty($data['pre']) == true)
+                        <a href="javascript:;" class="pre noLec" style="cursor: default">이전 강의</a>
+                    @else
+                        @if($data['pre']['isstart'] == 'Y' && $data['pre']['ispause'] == 'N')
+                            @if($data['pre']['timeover'] == 'N')
+                                <a href="javascript:;" onclick='fnPlayer("{{$data['pre']['OrderIdx']}}","{{$data['pre']['ProdCode']}}","{{$data['pre']['ProdCodeSub']}}","{{$data['pre']['wLecIdx']}}","{{$data['pre']['wUnitIdx']}}","{{$data['quility']}}");' class="pre">이전 강의</a>
+                            @else
+                                <a href="javascript:;" onclick='' class="pre noLec" style="cursor: default">이전 강의</a>
+                            @endif
+                        @elseif($data['pre']['ispause'] == 'Y')
+                            <a href="javascript:;" onclick='' class="pre noLec" style="cursor: default">이전 강의</a>
+                        @else
+                            <a href="javascript:;" onclick='' class="pre noLec" style="cursor: default">이전 강의</a>
+                        @endif
+                    @endif
+                    @if(empty($data['next']) == true)
+                        <a href="javascript:;" class="next noLec" style="cursor: default">다음 강의</a>
+                    @else
+                        @if($data['next']['isstart'] == 'Y' && $data['next']['ispause'] == 'N')
+                            @if($data['next']['timeover'] == 'N')
+                                <a href="javascript:;" onclick='fnPlayer("{{$data['next']['OrderIdx']}}","{{$data['next']['ProdCode']}}","{{$data['next']['ProdCodeSub']}}","{{$data['next']['wLecIdx']}}","{{$data['next']['wUnitIdx']}}","{{$data['quility']}}");' class="next">다음 강의</a>
+                            @else
+                                <a href="javascript:;" onclick='' class="next noLec" style="cursor: default">다음 강의</a>
+                            @endif
+                        @elseif($data['next']['ispause'] == 'Y')
+                            <a href="javascript:;" onclick='' class="next noLec" style="cursor: default">다음 강의</a>
+                        @else
+                            <a href="javascript:;" onclick='' class="next noLec" style="cursor: default">다음 강의</a>
+                        @endif
+                    @endif
+                </li>
                 <li><a class="iconBtn btnSetting" href="javascript:;" onclick="fnSettingPOP();">버튼 단축키</a></li>
                 <li><span class="btnFAQ"><a href="{{front_url('/support/faq/index')}}" target="_blank">동영상 FAQ</a></span></li>
             </ul>

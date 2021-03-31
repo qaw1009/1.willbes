@@ -313,6 +313,104 @@ class Player extends \app\controllers\FrontController
             $player = '/player/normal';
         }
 
+
+        // 이전 다음 강좌 정보
+        $pre_curr = null;
+        $next_curr = null;
+
+        // 커리큘럼 읽어오기
+        $curriculum = $this->classroomFModel->getCurriculum([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub,
+                'wLecIdx' => $lec['wLecIdx']
+            ],
+            'IN' => [
+                'wUnitIdx' => $wUnitIdxs
+            ]
+        ]);
+
+        // 회차별 수강시간 체크
+        foreach($curriculum AS $idx => $row){
+            $curriculum[$idx]['isstart'] = $isstart;
+            $curriculum[$idx]['ispause'] = $ispause;
+
+            if(empty($lec['MultipleApply']) == true){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+            }
+            else if($lec['MultipleApply'] == '1'){
+                // 무제한
+                $curriculum[$idx]['timeover'] = 'N';
+                $curriculum[$idx]['limittime'] = '무제한';
+                $curriculum[$idx]['remaintime'] = '무제한';
+
+            } elseif($lec['MultipleTypeCcd'] == '612001') {
+                // 회차별 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($row['RealStudyTime']);
+
+                // 제한시간 분 -> 초
+                if($row['RealExpireTime'] == 0){
+                    $limittime = ceil(doubleval($row['wRuntime']) * doubleval($lec['MultipleApply']) * 60);
+                } else {
+                    $limittime = intval($row['RealExpireTime']) * 60;
+                }
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+
+            } elseif($lec['MultipleTypeCcd'] == '612002') {
+                // 패키치 수강시간 체크
+
+                // 수강시간은 초
+                $studytime = intval($lec['StudyTimeSum']);
+
+                // 제한시간 분 -> 초
+                $limittime = intval($lec['AllLecTime']) * 60;
+
+                if($studytime > $limittime){
+                    // 제한시간 초과
+                    $curriculum[$idx]['timeover'] = 'Y';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = '0분';
+
+                } else {
+                    $curriculum[$idx]['timeover'] = 'N';
+                    $curriculum[$idx]['limittime'] = round(intval($limittime) / 60).'분';
+                    $curriculum[$idx]['remaintime'] = round(($limittime - $studytime)/60).'분';
+                }
+            }
+
+            // 다음 처리회차가 현재 수강중회차이면 지금 처리하는 회차는 이전 강의
+            if (empty($curriculum[$idx + 1]) === false) {
+                if($curriculum[$idx + 1]['wUnitIdx'] == $unitidx) {
+                    $pre_curr = $curriculum[$idx];
+                }
+            }
+
+            // 지금 처리한 회차의 어전 회차가 수강중 회차이면 다음 회차는 현재처리회사
+            if (empty($curriculum[$idx - 1]) === false) {
+                if($curriculum[$idx - 1]['wUnitIdx'] == $unitidx) {
+                    $next_curr = $curriculum[$idx];
+                }
+            }
+        }
+
         return $this->load->view($player, [
             'data' => [
                 'orderidx' => $orderidx,
@@ -331,7 +429,9 @@ class Player extends \app\controllers\FrontController
                 'memid' => $MemId,
                 'memidx' => $this->session->userdata('mem_idx'),
                 'logidx' => $logidx,
-                'ip' => $this->input->ip_address()
+                'ip' => $this->input->ip_address(),
+                'pre' => $pre_curr,
+                'next' => $next_curr
             ]
         ]);
     }
@@ -899,6 +999,45 @@ class Player extends \app\controllers\FrontController
             'input' => $input,
             'lec' => $lec,
             'arr_base' => $arr_base
+        ]);
+    }
+
+    public function comment()
+    {
+        $input = $this->_reqG(null);
+
+        $today = date("Y-m-d", time());
+
+        // 강좌정보 읽어오기
+        $orderidx = $this->_req('o');
+        $prodcode = $this->_req('p');
+        $prodcodesub = $this->_req('sp');
+
+        if(empty($orderidx) === true || empty($prodcode) === true || empty($prodcodesub) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx'),
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ],
+            'GTE' => [
+                'RealLecEndDate' => $today
+            ]
+        ]);
+
+        if(empty($lec) === true){
+            show_alert('강좌정보가 없습니다.', 'back');
+        }
+
+        $lec = $lec[0];
+
+        $this->load->view('/player/comment',[
+            'input' => $input,
+            'lec' => $lec
         ]);
     }
 

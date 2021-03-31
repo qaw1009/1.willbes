@@ -143,7 +143,5 @@
     });
 </script>
 {{-- 광고 스크립트 추가 --}}
-<!-- ad script inc -->
 @include('willbes.pc.site.order.ad_script_partial')
-<!-- End ad script inc -->
 @stop

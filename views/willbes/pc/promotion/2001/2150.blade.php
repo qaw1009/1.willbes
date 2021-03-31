@@ -65,7 +65,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2150_01.jpg"  alt="무료특강 활용하기"/>
             <ul>
                 <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/170566" target="_blank">원자행&불능미수</a></li>
-                <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/169145" target="_blank">회령죄</a></li>
+                <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/169145" target="_blank">횡령죄</a></li>
                 <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/168198" target="_blank">배임죄</a></li>
                 <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/168022" target="_blank">공범과신분</a></li>
                 <li><a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/167489" target="_blank">구성요건 착오 및 위.전.착</a></li>

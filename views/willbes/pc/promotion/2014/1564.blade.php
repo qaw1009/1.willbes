@@ -115,8 +115,8 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
             <a href="#evt02"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_01.png" alt="김정환대표"></a> 
-            <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
-            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=268597" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_04.png" alt="이용안내"></a>
+            <a href="https://domemedb.domeggook.com/index/item/itemDamagochi.php" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_03.png" alt="위탁.사입상품 추천받기"></a>
+            <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=323129" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2020/05/1564_sky_04.png" alt="이용안내"></a>
         </div>                       
 
 		<div class="evtCtnsBox evtTop">

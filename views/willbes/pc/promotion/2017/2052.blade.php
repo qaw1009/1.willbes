@@ -94,12 +94,10 @@
         <div class="evtCtnsBox event01">
         	{{--<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>--}}
             <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_01.jpg"/></div>
-        </div>
-        
+        </div>        
 
         <div class="evtCtnsBox event01_1" id="reviewListWrap">
         </div>
-
 
         <div class="evtCtnsBox event01">
             <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_02.jpg"/></div>
@@ -163,8 +161,7 @@
             </div>
             -->
             <div id="imgSliderWrap"></div>
-        </div>
-        
+        </div>        
 
         <div class="evtCtnsBox event03">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_03.jpg" alt="합격을 진심으로 축하합니다."/>

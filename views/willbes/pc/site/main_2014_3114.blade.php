@@ -18,7 +18,7 @@
 
         <div class="Section4">
             <div class="widthAuto">
-                <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=304791"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx110.gif" alt="헤드라인 뉴스"></a>
+                <a href="https://njob.willbes.net/support/notice/show/cate/3114?board_idx=329278&"><img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx01.gif" alt="헤드라인 뉴스"></a>
             </div>
         </div>
 
@@ -158,7 +158,7 @@
 
         <div class="Section2 mt70">
             <div class="widthAuto">
-                <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_fullx1190.gif" alt="전강좌 10% 할인">
+                <img src="https://static.willbes.net/public/images/promotion/main/2014/3114_full_02.gif" alt="1억뷰 엔잡">
             </div>
         </div>
 

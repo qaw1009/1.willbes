@@ -41,8 +41,12 @@
         </div> 
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2149_03.jpg" title="자료 다운로드">    
-            <a href="@if(!sess_data('is_login')) {{'javascript:alert(\'로그인 후 서비스 이용이 가능합니다\')'}} @else @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif @endif" title="다운로드" style="position: absolute; left: 50%; top: 52%; width: 9%; height: 15%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2149_03.jpg" title="자료 다운로드">
+            @if(sess_data('is_login') === true)
+                <a href="@if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') {{ front_url($arr_base['promotion_live_file_link']) }} @else {{ $arr_base['promotion_live_file_link'] }} @endif" @if(empty($arr_base['promotion_live_file_yn']) === false && $arr_base['promotion_live_file_yn'] == 'Y') target="_blank" @endif title="다운로드" style="position: absolute; left: 50%; top: 52%; width: 9%; height: 15%; z-index: 2;"></a>
+            @else
+                <a href="javascript:loginCheck();" title="다운로드" style="position: absolute; left: 50%; top: 52%; width: 9%; height: 15%; z-index: 2;"></a>
+            @endif
             <div class="liveWrap" >
                 @if(empty($data['PromotionLivePlayer']) === false && $data['PromotionLivePlayer'] == 'youtube')
                     @include('willbes.pc.promotion.live_video_youtube_partial')
@@ -82,8 +86,10 @@
 	</div>
     <!-- End Container -->
 
-    <script type="text/javascript">      
-
+    <script type="text/javascript">
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
     </script>
     
 @stop

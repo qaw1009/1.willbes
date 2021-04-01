@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            @if(SUB_DOMAIN == 'lms' && $__auth['Role']['RoleIdx'] == '1030' && in_array(sess_data('admin_id'), ['bsshin']) === true)
+            @if(SUB_DOMAIN == 'lms' && $__auth['Role']['RoleIdx'] == '1030' && in_array(sess_data('admin_id'), ['bsshin', 'dlumjjang']) === true)
                 {{-- 특정아이디의 시스템관리자만 노출 --}}
                 <div class="x_panel">
                     <div class="x_title">

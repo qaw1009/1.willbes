@@ -120,19 +120,20 @@
 
             @if(empty($arr_promotion_params) === false)
 
-            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
-            alert('이벤트가 종료되었습니다.');
-            return;
-            @endif
+                @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+                    alert('이벤트가 종료되었습니다.');
+                    return;
+                @endif
 
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                }
-            }, showValidateError, null, false, 'alert');
+                var msg = '신쌤에게 전하고 싶은 말을 적어주세요.';
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&msg=' + msg;
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
             @else
-            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
     </script>

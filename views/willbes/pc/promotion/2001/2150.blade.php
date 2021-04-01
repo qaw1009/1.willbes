@@ -38,7 +38,12 @@
         .evt05 {width:1120px; margin:0 auto 150px; position:relative}
 
  
-    </style> 
+    </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evt00">
@@ -85,7 +90,7 @@
 
         <div class="evtCtnsBox evt03" id="evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2150_03.jpg"  alt="형법 심화이론 100% 무료쿠폰"/>
-            <div class="btnSt NSK-Black"><a href="#none">100% 무료쿠폰 받기</a></div>
+            <div class="btnSt NSK-Black"><a href="javascript:void(0);" onclick="giveCheck();">100% 무료쿠폰 받기</a></div>
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true &&   array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_normal_partial')
         @endif
@@ -105,4 +110,30 @@
 
     </div>
     <!-- End Container -->
+
+    <script type="text/javascript">
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용해주세요.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+            alert('이벤트가 종료되었습니다.');
+            return;
+            @endif
+
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                }
+            }, showValidateError, null, false, 'alert');
+            @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+    </script>
 @stop

@@ -17,16 +17,17 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
 
         /************************************************************/
-   
+  
         .eventTop {background:#67c0c1}
 
-        .event01 {background:#429697;}
+        .event01 {background:#429697; padding:50px 0; color:#fff}
+        .event01 .title {font-size:50px;}
 
         .event01_1 {background:#fff; width:1120px; margin:0 auto; padding:100px 0; font-size:14px}
         .event01_1 .title { font-size:40px; color:#67c0c1; margin-bottom:50px}
         .event01_1 span {vertical-align:top}
 
-        .event02 {background:#65bebf; position:relative; padding-bottom:100px}
+        .event02 {background:#65bebf; position:relative; padding:50px 0 100px}
         .evt_table{position:absolute; top:1170px; width:800px; left:50%; margin-left:-400px}
         .evt_table table{width:100%;}
         .evt_table table th,
@@ -89,18 +90,22 @@
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
-        {{--
+
         <div class="evtCtnsBox event01">
-        	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>
-        </div>
-        --}}
+        	{{--<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>--}}
+            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_01.jpg"/></div>
+        </div>        
 
         <div class="evtCtnsBox event01_1" id="reviewListWrap">
         </div>
 
-        <!--
+        <div class="evtCtnsBox event01">
+            <div class="title NSK-Black"><img src="https://static.willbes.net/public/images/promotion/2021/04/2052_title_02.jpg"/></div>
+        </div>
+        
         <div class="evtCtnsBox event02" id="event02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>
+            <!--<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>-
+            
             <div class="evt_table">
                 <form name="regi_form_register" id="regi_form_register">
                     {!! csrf_field() !!}
@@ -154,10 +159,9 @@
                     </div>
                 </form>
             </div>
-
+            -->
             <div id="imgSliderWrap"></div>
-        </div>
-        -->
+        </div>        
 
         <div class="evtCtnsBox event03">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_03.jpg" alt="합격을 진심으로 축하합니다."/>

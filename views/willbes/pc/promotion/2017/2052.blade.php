@@ -78,21 +78,27 @@
     </style>
 
     <div class="p_re evtContent NSK">
+        {{--
         <div class="skyBanner">
             <a href="#reviewListWrap"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky01.png" alt="합격수기 작성"/></a>
             <a href="#event02"><img src="https://static.willbes.net/public/images/promotion/2021/01/2052_sky02.png" alt="합격 인증하기"/></a>
         </div>
+        --}}
+
         <div class="evtCtnsBox eventTop">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_top.jpg" alt="합격축하 이벤트"/>
         </div>
 
+        {{--
         <div class="evtCtnsBox event01">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_01.jpg" alt="이벤트 하나"/>
         </div>
+        --}}
 
         <div class="evtCtnsBox event01_1" id="reviewListWrap">
         </div>
 
+        <!--
         <div class="evtCtnsBox event02" id="event02">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2052_02_01.jpg" alt="이벤트 둘"/>
             <div class="evt_table">
@@ -151,11 +157,13 @@
 
             <div id="imgSliderWrap"></div>
         </div>
+        -->
 
         <div class="evtCtnsBox event03">
         	<img src="https://static.willbes.net/public/images/promotion/2021/01/2052_03.jpg" alt="합격을 진심으로 축하합니다."/>
         </div>
 
+        {{--
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
                 <h4 class="NSK-Black">유의사항</h4>
@@ -170,6 +178,7 @@
                 </ul>
             </div>
         </div>  
+        --}}
     </div>
     <!-- End Container -->
 

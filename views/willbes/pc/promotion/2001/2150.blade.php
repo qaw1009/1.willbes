@@ -43,6 +43,8 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+
+        <input type="hidden" name="msg" value="신쌤에게 전하고 싶은 말을 적어주세요.">
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -125,8 +127,7 @@
                     return;
                 @endif
 
-                var msg = '신쌤에게 전하고 싶은 말을 적어주세요.';
-                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}&msg=' + msg;
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
                 ajaxSubmit($regi_form, _check_url, function (ret) {
                     if (ret.ret_cd) {
                         alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');

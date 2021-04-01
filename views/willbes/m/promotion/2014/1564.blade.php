@@ -333,7 +333,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://njob.domeggook.com/mh/njob_guide" target="_blank">
+                    <a href="https://domemedb.domeggook.com/mobile/item/itemDamagochi.php" target="_blank">
                     <span class="NSK-Black">이미 신청했다면,</span>
                     위탁/사입상품 추천 받기! → 
                     </a>

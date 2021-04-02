@@ -383,7 +383,7 @@
                                         </td>
                                         <td>90일</td>
                                         <td>360,000원 → <span><strong>252,000원</strong>(30%↓)</span></td>
-                                        <td><a href="javascript:fnPlayerSample('176838','1270599','HD');" class="btn01">미리보기</a></td>
+                                        <td><a href="javascript:fnPlayerSample('176838','1270522','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176838" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>
@@ -647,16 +647,17 @@
             }
 
             if (!$regi_form_register.find('input[name="attach_file"]').val()) {
-                alert('재학생 인증 파일을 첨부해 주세요.');
+                alert('타학원 수강이력 인증 파일을 첨부해 주세요.');
                 $regi_form_register.find('input[name="attach_file"]').focus();
                 return;
             }
 
-            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length == 0) {
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length === 0) {
                 alert('강좌를 선택해 주세요.');
                 return;
             }
 
+            // 강좌 총 3개까지 선택 가능
             if ($regi_form_register.find('input[name="register_chk[]"]:checked').length > 3) {
                 alert('강좌를 3개까지 선택해 주세요.');
                 return;
@@ -669,9 +670,18 @@
                 }
             });
 
-            if(subject_count !== 1){
+            // 교육학은 한번만 선택 가능
+            if (subject_count > 1) {
                 alert('강좌는 교육학 1개, 전공강좌 2개 총 3개까지 선택 가능합니다.');
                 return;
+            }
+
+            // 강좌 3개 선택시 추가 검증
+            if ($regi_form_register.find('input[name="register_chk[]"]:checked').length === 3) {
+                if (subject_count !== 1) {
+                    alert('강좌는 교육학 1개, 전공강좌 2개 총 3개까지 선택 가능합니다.');
+                    return;
+                }
             }
 
             if (!confirm('신청하시겠습니까?')) { return; }

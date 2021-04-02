@@ -587,7 +587,8 @@ class StudyComment extends BaseBoard
 
         $column = "
             LS.SiteName, IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),'N') AS CateCode,
-            PS.SubjectName, PROFESSOR.ProfNickName, LB.Title, lms_product.ProdName, LB.LecScore, LB.RegMemName,
+            PS.SubjectName, PROFESSOR.ProfNickName, LB.Title, lms_product.ProdName, LB.LecScore, 
+            IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
             LB.RegDatm, IF(LB.IsBest = 1, 'HOT', '') AS IsBest, LB.IsUse, LB.ReadCnt
         ";
 

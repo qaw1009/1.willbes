@@ -517,7 +517,7 @@
                                         </td>
                                         <td>150일</td>
                                         <td>300,000원 → <span><strong>240,000원</strong>(20%↓)</span></td>
-                                        <td><a href="#none" onclick="javascript:alert('준비중입니다.');" class="btn01">미리보기</a></td>
+                                        <td><a href="javascript:fnPlayerSample('176678','1285058','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/176678" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <tr>

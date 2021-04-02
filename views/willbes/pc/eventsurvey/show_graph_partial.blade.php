@@ -1,5 +1,5 @@
 @if(empty($arr_promotion_params['SsIdx']) === false)
-    <iframe id="frm" frameborder="0" scrolling="no" width="100%" onload="resizeIframeSurvey(this)" src="{{front_url('/eventSurvey/graph/'.$arr_promotion_params['SsIdx'])}}"></iframe>
+    <iframe id="frm" frameborder="0" scrolling="no" width="100%" onload="resizeIframeSurvey(this)" src="{{front_url('/eventSurvey/graph?ss_idx=' . $arr_promotion_params['SsIdx'] . '&is_series=' . (empty($is_series) === false ? $is_series : 'N'))}}"></iframe>
 @endif
 <script>
     function resizeIframeSurvey(iframe) {

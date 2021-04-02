@@ -30,7 +30,7 @@
                     <div class="graphbox">
                         @if(empty($survey_levels) === false)
                             @foreach($survey_levels as $title => $val)
-                                @if($loop->index == 1)
+                                @if(($is_series === 'Y' && $loop->index === 2) || ($is_series === 'N' && $loop->index === 1))
                                     @foreach($val as $item => $spread)
                                         <div class="graph">
                                             <p> {{ $spread }} %</p>

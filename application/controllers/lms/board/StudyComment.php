@@ -578,9 +578,10 @@ class StudyComment extends BaseBoard
         $this->bm_idx = $board_params['bm_idx'];
         set_time_limit(0);
         ini_set('memory_limit', $this->_memory_limit_size);
+        $site_code = empty($this->_reqP('search_site_code')) === false ? $this->_reqP('search_site_code') : '';
 
         $file_name = '수강후기_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-        $headers = ['운영사이트', '카테고리', '과목', '교수명', '제목', '강좌명', '평점', '등록자', '등록일', 'HOT', '사용', '조회수'];
+        $headers = ['운영사이트', '카테고리', '과목', '교수명', '제목', '강좌명', '평점', '등록자이름', '등록자아이디', '등록일', 'HOT', '사용', '조회수'];
 
         $arr_condition = $this->_getListConditions();
         $sub_query_condition = $this->_getListSubConditions();
@@ -589,10 +590,11 @@ class StudyComment extends BaseBoard
             LS.SiteName, IFNULL(FN_BOARD_CATECODE_DATA_LMS(LB.BoardIdx),'N') AS CateCode,
             PS.SubjectName, PROFESSOR.ProfNickName, LB.Title, lms_product.ProdName, LB.LecScore, 
             IF(LB.RegType = 1, LB.RegMemName, MEM.MemName) AS RegMemName,
+            IF(LB.RegType = 1, LB.RegMemId, MEM.MemId) AS RegMemId,
             LB.RegDatm, IF(LB.IsBest = 1, 'HOT', '') AS IsBest, LB.IsUse, LB.ReadCnt
         ";
 
-        $list = $this->boardModel->listAllBoard($this->board_name, false, $arr_condition, $sub_query_condition, $this->site_code, null, null, ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column, false);
+        $list = $this->boardModel->listAllBoard($this->board_name, false, $arr_condition, $sub_query_condition, $site_code, null, null, ['LB.IsBest' => 'desc', 'LB.BoardIdx' => 'desc'], $column, false);
 
         $download_query = $this->boardModel->getLastQuery();
         $this->load->library('approval');

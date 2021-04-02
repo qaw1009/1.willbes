@@ -33,8 +33,7 @@
         .c_table .txtinfo { margin:20px 0; border:1px solid #e4e4e4; padding:20px; height:150px; overflow-y:auto}
 
         .evt_02 {background:#ececec}
-        .evt_03_box {width:980px; margin:0 auto}
-        .evt_03_box ul {margin:0 40px}
+        .evt_03_box {width:1030px; margin:0 auto}
         .evt_03_box li {display:inline; float:left; width:33.33333%}
         .evt_03_box li a {display:block; background:#1b1b1b; color:#fff; font-size:20px; margin-right:10px; border-radius:10px; padding:15px 0}
         .evt_03_box li a:hover,

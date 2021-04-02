@@ -61,9 +61,10 @@ class BaseEventSurvey extends \app\controllers\FrontController
         ], false);
     }
 
-    public function graph($params = [])
+    public function graph()
     {
-        $ss_idx = $params[0];
+        $ss_idx = $this->_reqG('ss_idx');
+        $is_series = $this->_reqG('is_series');
 
         // 설문응답
         $answer_info = $this->surveyModel->listSurveyForAnswer($ss_idx);
@@ -78,7 +79,8 @@ class BaseEventSurvey extends \app\controllers\FrontController
         $this->load->view($view_file, [
             'SsIdx' => $ss_idx,
             'survey_levels' => $survey_levels,
-            'survey_data' => $survey_data
+            'survey_data' => $survey_data,
+            'is_series' => $is_series
         ],false);
     }
 

@@ -66,7 +66,7 @@
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/180909" title="지방직 통신기술직" target="_blank" class="b09"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/180908" title="지방직 전기직" target="_blank" class="b10"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직" target="_blank" class="b04"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직" target="_blank" class="b05"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직" target="_blank" class="b05"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직" target="_blank" class="b06"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직" target="_blank" class="b07"></a>
         <a href="https://pass.willbes.net/m/search/result/?=&cate=&searchfull_text=%EC%B5%9C%EC%9A%B0%EC%98%81" target="_blank" title="단가 수강신청" class="b08"></a>

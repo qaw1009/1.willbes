@@ -37,7 +37,7 @@
 
         <div class="evtCtnsBox wb_cts02">            
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1297_02.jpg" alt="한덕현영어"/>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178467" target="_blank" title="신청하기" style="position: absolute; left: 25.27%; top: 86.08%; width: 49.11%; height: 9.56%; z-index: 2;"></a>
+            <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="신청하기" style="position: absolute; left: 25.27%; top: 86.08%; width: 49.11%; height: 9.56%; z-index: 2;"></a>
         </div>
 
 

@@ -92,7 +92,7 @@
                             <td>04-29 ~ 05-27</td>
                             <td>목</td>
                             <td>48,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178570" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180761" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
@@ -101,7 +101,7 @@
                             <td>04-26 ~ 05-17</td>
                             <td>월</td>
                             <td>36,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180763" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
@@ -110,7 +110,7 @@
                             <td>05-21 ~ 05-22</td>
                             <td>금,토</td>
                             <td>15,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180772" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
@@ -119,7 +119,7 @@
                             <td>04-26 ~ 05-18</td>
                             <td>월,화</td>
                             <td>56,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178455" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180764" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정학</td>
@@ -128,7 +128,7 @@
                             <td>04-28 ~ 05-19</td>
                             <td>수</td>
                             <td>36,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178436" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180773" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정법</td>
@@ -137,7 +137,7 @@
                             <td>04-27 ~ 05-18</td>
                             <td>화</td>
                             <td>36,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180765" target="_blank">수강신청</a></td>
                         </tr>     
                         <tr>
                             <td>행정법</td>
@@ -146,7 +146,7 @@
                             <td>04-29 ~ 05-20</td>
                             <td>목</td>
                             <td>36,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180766" target="_blank">수강신청</a></td>
                         </tr>                        
                         <tr>
                             <td>소방행정법</td>
@@ -155,7 +155,7 @@
                             <td>05-13 ~ 06-17</td>
                             <td>목</td>
                             <td>49,500원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178417" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180771" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>공채영어</td>
@@ -164,7 +164,7 @@
                             <td>05-14 ~ 06-18</td>
                             <td>금</td>
                             <td>49,500원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178418" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180767" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방한국사</td>
@@ -173,7 +173,7 @@
                             <td>05-11 ~ 06-15</td>
                             <td>화</td>
                             <td>49,500원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178419" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180768" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방학개론</td>
@@ -182,7 +182,7 @@
                             <td>05-12 ~ 06-16</td>
                             <td>수</td>
                             <td>49,500원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178420" target="_blank">수강신청</a></td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180769" target="_blank">수강신청</a></td>
                         </tr>                     
                         <tr>
                             <td>소방관계법규</td>
@@ -191,8 +191,8 @@
                             <td>05-12 ~ 06-16</td>
                             <td>수</td>
                             <td>49,500원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178423" target="_blank">수강신청</a></td>
-                        </tr>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/180770" target="_blank">수강신청</a></td>
+                        </tr> 
                     </tbody>
                 </table>
             </div>

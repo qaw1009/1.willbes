@@ -57,20 +57,22 @@
         </div>
 
         <div class="evtCtnsBox wb_04" id="apply01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2027_04.jpg" alt="전기직 수강신청하기" usemap="#Map2027a" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2027_04.jpg" alt="전기직 수강신청하기" usemap="#Map2027a" border="0"  />
             <map name="Map2027a" id="Map2027a">
-                <area shape="rect" coords="84,714,324,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177871" target="_blank" />
-                <area shape="rect" coords="455,714,696,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177866" target="_blank" />
-                <area shape="rect" coords="823,714,1064,763" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179689" target="_blank" />
+                <area shape="rect" coords="254,721,504,779" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180880" target="_blank" />
+                <area shape="rect" coords="606,721,857,780" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180876" target="_blank" />
             </map>
         </div>
 
-        <div class="evtCtnsBox wb_05" id="apply02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2027_05.jpg" alt="통신직 수강신청하기" usemap="#Map2027b" border="0"  />
+        <div class="evtCtnsBox wb_05" id="apply02"> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2027_05.jpg" alt="통신직 수강신청하기" usemap="#Map2027b" border="0"  />
             <map name="Map2027b" id="Map2027b">
-                <area shape="rect" coords="83,338,325,388" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178076" target="_blank" />
-                <area shape="rect" coords="455,346,697,395" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178074" target="_blank" />
-                <area shape="rect" coords="822,345,1065,395" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179685" target="_blank" />
+                <area shape="rect" coords="88,281,332,347" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177871" target="_blank" />
+                <area shape="rect" coords="437,281,689,342" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177866" target="_blank" />
+                <area shape="rect" coords="783,281,1038,342" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179689" target="_blank" />
+                <area shape="rect" coords="88,734,330,784" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178076" target="_blank" />
+                <area shape="rect" coords="440,744,682,793" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/178074" target="_blank" />
+                <area shape="rect" coords="789,743,1032,793" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179685" target="_blank" />               
             </map>
         </div>        
 

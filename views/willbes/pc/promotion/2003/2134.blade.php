@@ -116,7 +116,7 @@
         }
         .Cts04 .lecture li:hover {background:#fff url(https://static.willbes.net/public/images/promotion/common/patternB.png) repeat}
         .Cts04 .lecture li img.prof {
-            width:200px !important; border:1px solid #ccc;
+            width:199px !important; border:1px solid #ccc;
         }
         .Cts04 .t_tilte {
            line-height:1.5; padding:10px 0; color:#666; width:200px; margin:0 auto

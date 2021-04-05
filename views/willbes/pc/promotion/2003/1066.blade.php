@@ -116,12 +116,14 @@
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_04.gif" alt="" />
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1066_02s_05.gif" alt="" />
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" id="package"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1066_02ss.jpg" alt="수강신청" usemap="#Map1066_apply" border="0" id="package"/>
             <map name="Map1066_apply" id="Map1066_apply">
-                <area shape="rect" coords="81,654,261,713" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&amp;subject_idx=1254&amp;subject_name=영어&amp;tab=open_lecture" target="_blnak" alt="국가직대비" />
-                <area shape="rect" coords="340,656,521,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blnak" alt="서울지방직 대비" />
-                <area shape="rect" coords="600,655,781,714" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179627" target="_blnak" alt="국가직 대비 아작내기 특강" />
-                <area shape="rect" coords="861,657,1041,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/177803" target="_blnak" alt="제니스영어" />
+                <area shape="rect" coords="71,656,169,713" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blnak" alt="모의고사 라이브" />
+                <area shape="rect" coords="174,655,272,714" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blnak" alt="모의고사 온라인" />
+                <area shape="rect" coords="330,656,429,714" href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blnak" alt="아작내기 라이브" />
+                <area shape="rect" coords="434,655,532,714" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/180888" target="_blnak" alt="아작내기 온라닌" />
+                <area shape="rect" coords="600,655,781,714" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179637" target="_blnak" alt="새벽모의고사" />
+                <area shape="rect" coords="861,657,1041,713" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179167" target="_blnak" alt="반반/똑똑영어" />              
             </map>
         </div>
 

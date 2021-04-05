@@ -156,11 +156,9 @@
             </div>
 
             <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_02.jpg" usemap="#Map2088a" title="면접캠프 스캐줄" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_02.jpg" usemap="#Map2088a" title="면접캠프 스캐줄" border="0">
                 <map name="Map2088a" id="Map2088a">
-                    <area shape="rect" coords="814,448,1037,564" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1069" target="_blank" />
-                    <area shape="rect" coords="816,988,1033,1101" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1070" target="_blank" />
-                    <area shape="rect" coords="812,1509,1037,1625" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
+                    <area shape="rect" coords="810,481,1030,594" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
                 </map>
             </div>
 

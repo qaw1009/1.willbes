@@ -87,8 +87,9 @@
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/1068m_04.jpg" alt="패키지 수강신청" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/179668" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.28%; top: 66.43%; width: 79.31%; height: 27.74%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/1068m_04.jpg" alt="패키지 수강신청" >
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/180881" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.28%; top: 50.43%; width: 79.31%; height: 20.74%; z-index: 2;"></a>
+        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/179668" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.28%; top: 73.43%; width: 79.31%; height: 20.74%; z-index: 2;"></a>
     </div> 
 
     <div class="evtCtnsBox evt05">

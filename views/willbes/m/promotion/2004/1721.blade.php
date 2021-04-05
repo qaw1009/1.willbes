@@ -56,7 +56,7 @@
 
 <div id="Container" class="Container NSK c_both">  
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_01.jpg" alt="전기전자통신 최우영">
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_01.png" alt="전기전자통신 최우영">
         <a href="#evt03" title="티패스 신청" class="a01"></a>
         <a href="http://cafe.daum.net/sharkchoi" title="카페" target="_blank" class="a02"></a>
     </div> 
@@ -69,14 +69,14 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1721m_03_top.jpg" alt="전기전자통신 최우영 신규강좌">
         <div class="slide_con">
             <div id="slidesImg1">
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_01.jpg" alt="전기직9급"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_02.jpg" alt="전기직7급"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_03.jpg" alt="통신직"/></div>
-                <div><img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03_04.jpg" alt="전자직"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03_01.jpg" alt="전기직9급"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03_02.jpg" alt="전기직7급"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03_03.jpg" alt="통신직"/></div>
+                <div><img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03_04.jpg" alt="전자직"/></div>
             </div>
         </div> 
         <div class="p_re mt30">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1721m_03.jpg" alt="전기전자통신 최우영 신규강좌" id="evt03">        
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03.jpg" alt="전기전자통신 최우영 신규강좌" id="evt03">        
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="공무원" target="_blank" class="b01"></a>
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="군무원" target="_blank" class="b02"></a>
         </div>

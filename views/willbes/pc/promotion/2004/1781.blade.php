@@ -56,17 +56,14 @@
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="skybanner">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78"  target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1779_sky_1.png" alt="개강안내" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1779_sky_1.png" alt="개강안내" />
             </a>    
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1170&" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1781_sky02.png" alt="이석준 T" />
+            </a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky02.png" alt="최우영 T" />
-            </a>
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1086&" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1781_sky03.png" alt="이석준 T" />
-            </a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=320766&" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1781_sky04.png" alt="면접집중" />
-            </a>
+            </a>          
         </div>       
 
         
@@ -75,23 +72,23 @@
         </div> 
 
         <div class="evtCtnsBox evtLive">            
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1781_live.jpg" alt="라이브" usemap="#Map1781_live" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1781_live.jpg" alt="라이브" usemap="#Map1781_live" border="0" />
             <map name="Map1781_live">
               <area shape="rect" coords="221,1099,912,1224" href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" alt="라이브모드 구매하기">
             </map>               
         </div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1781_01.gif" alt="군무원 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1781_01.gif" alt="군무원 커리큘럼" />
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1781_02.jpg" alt="수강신청" usemap="#Map1781a" border="0" />
             <map name="Map1781a" id="Map1781a">
                 <area shape="rect" coords="258,2620,850,2775" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
                 <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
                 <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU66riw66%2B47KeE" target="_blank" alt="기미진 특강">
-                <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1086&" target="_blank" alt="이석준 특강">        
+                <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1170&" target="_blank" alt="이석준 특강">        
             </map>
         </div>
 

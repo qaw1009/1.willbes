@@ -32,12 +32,11 @@
         --}}
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/07/1297_top.jpg" alt="아침실전모고" />
-        </div>
-
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1297_top.jpg" alt="아침실전모고" />
+        </div> 
 
         <div class="evtCtnsBox wb_cts02">            
-            <img src="https://static.willbes.net/public/images/promotion/2019/08/1297_02.jpg" alt="한덕현영어"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1297_02.jpg" alt="한덕현영어"/>
             <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178467" target="_blank" title="신청하기" style="position: absolute; left: 25.27%; top: 86.08%; width: 49.11%; height: 9.56%; z-index: 2;"></a>
         </div>
 

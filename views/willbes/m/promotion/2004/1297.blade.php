@@ -20,11 +20,11 @@
 
 <div id="Container" class="Container NSK c_both">  
     <div class="evtCtnsBox evt01">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_01.jpg" alt="새벽 실전 모의고사" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/1297m_01.jpg" alt="새벽 실전 모의고사" >
     </div>  
    
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2020/12/1297m_02.jpg" alt="한덕현 모의고사">
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/1297m_02.jpg" alt="한덕현 모의고사">
         <a href="https://pass.willbes.net/m/pass/offLecture/show/cate/3043/prod-code/178467" title="한덕현 모의고사" target="_blank"></a>        
     </div>
 

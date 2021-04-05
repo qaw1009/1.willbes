@@ -50,11 +50,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">    
 
         <div class="evtCtnsBox evtTop01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_top01.gif" alt="" />        
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_top01.gif" alt="" />        
         </div>   
 
         <div class="evtCtnsBox evtTop02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_top02.jpg" alt="" usemap="#Map1902_buy" border="0" />
             <map name="Map1902_buy" id="Map1902_buy">
                 <area shape="rect" coords="259,931,846,1023" href="#evt02" />
             </map>                 
@@ -65,7 +65,7 @@
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="행정직">
                 <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="소방직">
@@ -88,35 +88,44 @@
                         <tr>
                             <td>국어</td>
                             <td>기미진</td>
-                            <td>[라이브][국가직 대비] 기특한 국어 실전 동형모의고사</td>
-                            <td>03-18 ~ 04-08</td>
-                            <td>수,목</td>
+                            <td>[지방직 대비] 기특한 국어 실전 동형모의고사</td>
+                            <td>04-29 ~ 05-27</td>
+                            <td>목</td>
                             <td>48,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178570" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
                             <td>한덕현</td>
-                            <td>[라이브][국가직 대비] 제니스영어 실전 동형모의고사</td>
-                            <td>03-15 ~ 04-05</td>
-                            <td>목</td>
+                            <td>[지방직 대비] 제니스영어 실전 동형모의고사</td>
+                            <td>04-26 ~ 05-17</td>
+                            <td>월</td>
                             <td>36,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td>[지방직 대비] 아작내기 *문법X어휘X숙어* 특강</td>
+                            <td>05-21 ~ 05-22</td>
+                            <td>금,토</td>
+                            <td>15,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178473" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>
                             <td>조민주</td>
-                            <td>[라이브][국가직 대비] 한국사 실전 동형모의고사</td>
-                            <td>03-15 ~ 04-06</td>
+                            <td>[지방직 대비] 한국사 실전 동형모의고사</td>
+                            <td>04-26 ~ 05-18</td>
                             <td>월,화</td>
-                            <td>64,000원</td>
+                            <td>56,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178455" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>행정학</td>
                             <td>김덕관</td>
-                            <td>[라이브][국가직 대비] 강한행정학 실전 동형모의고사</td>
-                            <td>03-17 ~ 04-07</td>
+                            <td>[지방직 대비] 강한행정학 실전 동형모의고사</td>
+                            <td>04-28 ~ 05-19</td>
                             <td>수</td>
                             <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178436" target="_blank">수강신청</a></td>
@@ -124,64 +133,64 @@
                         <tr>
                             <td>행정법</td>
                             <td>이석준</td>
-                            <td>[라이브][국가직 대비] 행정법 실전 동형모의고사</td>
-                            <td>03-16 ~ 04-08</td>
-                            <td>화,목</td>
-                            <td>64,000원</td>
+                            <td>[지방직 대비] 행정법 실전 동형모의고사</td>
+                            <td>04-27 ~ 05-18</td>
+                            <td>화</td>
+                            <td>36,000원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
+                        </tr>     
+                        <tr>
+                            <td>행정법</td>
+                            <td>이석준</td>
+                            <td>[군무원 대비] 행정법각론 최종 정리</td>
+                            <td>04-29 ~ 05-20</td>
+                            <td>목</td>
+                            <td>36,000원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178431" target="_blank">수강신청</a></td>
                         </tr>                        
                         <tr>
-                            <td>소방국어</td>
-                            <td>김세령</td>
-                            <td>[라이브]김세령 소방국어 실전 동형모의고사</td>
-                            <td>03-08 ~ 03-22</td>
-                            <td>월</td>
-                            <td>27,000원</td>
+                            <td>소방행정법</td>
+                            <td>이석준</td>
+                            <td>2022 이석준 소방행정법 기초 입문</td>
+                            <td>05-13 ~ 06-17</td>
+                            <td>목</td>
+                            <td>49,500원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178417" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>공채영어</td>
                             <td>이아림</td>
-                            <td>[라이브]이아림 공채영어 실전 동형모의고사</td>
-                            <td>03-12 ~ 03-26</td>
+                            <td>2022 이아림 소방영어 기초 입문</td>
+                            <td>05-14 ~ 06-18</td>
                             <td>금</td>
-                            <td>48,000원</td>
+                            <td>49,500원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178418" target="_blank">수강신청</a></td>
-                        </tr>
-                        <tr>
-                            <td>공채영어</td>
-                            <td>양익</td>
-                            <td>[라이브]양익 경채영어 실전 동형모의고사</td>
-                            <td>03-09 ~ 03-23</td>
-                            <td>화</td>
-                            <td>27,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178419" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방한국사</td>
                             <td>한경준</td>
-                            <td>[라이브]한경준 소방한국사 실전 동형모의고사</td>
-                            <td>03-09 ~ 03-24</td>
+                            <td>2022 한경준 소방한국사 기초 입문</td>
+                            <td>05-11 ~ 06-15</td>
                             <td>화</td>
-                            <td>48,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178420" target="_blank">수강신청</a></td>
+                            <td>49,500원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178419" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>소방학개론</td>
                             <td>이종오</td>
-                            <td>[라이브]이종오 소방학개론 실전 동형모의고사</td>
-                            <td>03-10 ~ 03-24</td>
+                            <td>2022 이종오 소방학개론 기초 입문</td>
+                            <td>05-12 ~ 06-16</td>
                             <td>수</td>
-                            <td>36,000원</td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178422" target="_blank">수강신청</a></td>
-                        </tr>
+                            <td>49,500원</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178420" target="_blank">수강신청</a></td>
+                        </tr>                     
                         <tr>
                             <td>소방관계법규</td>
                             <td>이종오</td>
-                            <td>[라이브]이종오 소방관계법규 실전 동형모의고사</td>
-                            <td>03-11 ~ 03-25</td>
-                            <td>목</td>
-                            <td>36,000원</td>
+                            <td>2022 이종오 소방관계법규 기초 입문</td>
+                            <td>05-12 ~ 06-16</td>
+                            <td>수</td>
+                            <td>49,500원</td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/178423" target="_blank">수강신청</a></td>
                         </tr>
                     </tbody>
@@ -200,7 +209,7 @@
                                 실시간으로 수강 가능한 상품입니다.</li>
                             <li>직렬 및 과목별 수강 가능 교수진<br>
                             - 9급 종합반 : 국어 기미진, 영어 한덕현, 한국사 조민주, 행정법 이석준, 행정학 김덕관<br>
-                            - 소방 종합반 : 국어 김세령, 영어 [공채] 이아림, 영어 [특채] 양익, 소방학개론/소방관계법규 이종오<br>
+                            - 소방 종합반 : 소방행정법 이석준, 영어 [공채] 이아림, 한국사 한경준, 소방학개론/소방관계법규 이종오<br>
                             - 군무원 종합반 : 국어 기미진, 행정법 이석준, 행정학 김덕관</li>
                         </ol>
                     </dd>

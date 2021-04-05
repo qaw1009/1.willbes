@@ -28,7 +28,8 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .sky {position:fixed;top:200px;right:10px;z-index:2;}
+        .sky {position:fixed;top:150px;right:10px;z-index:2;}
+        .sky a {display:block;margin-top:15px;}
 
         .wb_06 {background:#1a1a1a;}
         .wb_07 {background:#ddd6c4;}
@@ -114,6 +115,12 @@
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_sky.png" alt="스카이베너" >
             </a>     
+            <a href="#none;">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-01.png" alt="무료특강" >
+            </a>
+            <a href="#none;">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-02.png" alt="문제풀이" >
+            </a> 
         </div>   
 
         <div class="evtCtnsBox wb_06" >            

@@ -66,19 +66,20 @@
 
         <div class="skybanner">
             <ul>          
-                <li>     
-                    <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_sky.png" usemap="#Map1721sky" title="10월 개강" border="0"/>
+                <li>  
+                    <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_sky.png" usemap="#Map1721sky" title="신규강의 개강" border="0"/>
                     <map name="Map1721sky">
-                        <area shape="rect" coords="12,110,110,248" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67ZqM66Gc&subject_idx=" target="_blank" alt="전기기기">
-                        <area shape="rect" coords="14,263,110,413" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU666y07ISg&subject_idx=" target="_blank" alt="무선공학">
-                        <area shape="rect" coords="13,423,108,555" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU665SU7KeA7YS4&subject_idx=" target="_blank" alt="전자공학">
+                        <area shape="rect" coords="12,110,110,248" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug#none" target="_blank" alt="통신공학">
+                        <area shape="rect" coords="14,263,110,413" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank" alt="전기기기">
+                        <area shape="rect" coords="14,449,101,496" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE7J6Q" target="_blank" alt="전자공학">
+                        <area shape="rect" coords="11,504,103,547" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug" target="_blank" alt="통신이론">
                     </map>
                 </li>
             </ul>
         </div> 
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1721_top.gif" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_top.gif" alt="최우영 커리큘럼" usemap="#Map1721a" border="0" />
             <map name="Map1721a" id="Map1721a">
                 <area shape="rect" coords="144,1112,546,1208" href="#t_pass_go" />
                 <area shape="rect" coords="573,1112,980,1210" href="http://cafe.daum.net/sharkchoi" target="_blank" />
@@ -224,24 +225,24 @@
             </div>
             <p class="change">*시험일정에 따른 개강/종강일 변동 가능</p>
             <div id="tab01" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab01.jpg" alt="전기직 9급"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_04_tab01.jpg" alt="전기직 9급"/>
             </div>
             <div id="tab02" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab02.jpg" alt="전기직 7급"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_04_tab02.jpg" alt="전기직 7급"/>
             </div>
             <div id="tab03" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab03.jpg" alt="통신직"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_04_tab03.jpg" alt="통신직"/>
             </div>
             <div id="tab04" class="tabContents">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_04_tab04.jpg" alt="전자직"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_04_tab04.jpg" alt="전자직"/>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_cts05" id="t_pass_go" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_05.jpg" alt="수강신청" usemap="#Map1721b" border="0"/>
             <map name="Map1721b" id="Map1721b">
-                <area shape="rect" coords="109,907,516,997" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
-                <area shape="rect" coords="611,906,1013,1001" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
+                <area shape="rect" coords="105,1043,520,1140" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
+                <area shape="rect" coords="611,1042,1013,1143" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
             </map>
         </div>
 

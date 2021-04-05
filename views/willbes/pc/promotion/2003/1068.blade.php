@@ -140,14 +140,14 @@
         </div>	
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/04/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
 			<map name="Map1068abc" id="Map1068abc">
-				<area shape="rect" coords="44,1143,255,1188" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
-				<area shape="rect" coords="312,1144,520,1192" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
-				<area shape="rect" coords="580,1140,789,1194" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
-				<area shape="rect" coords="846,1140,1058,1192" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
-		      	<area shape="rect" coords="863,451,1011,526" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" alt="동형모고패키지" />
-			</map>
+				<area shape="rect" coords="45,1331,256,1376" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
+				<area shape="rect" coords="314,1329,522,1377" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
+				<area shape="rect" coords="584,1327,793,1381" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
+				<area shape="rect" coords="848,1330,1060,1382" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
+				<area shape="rect" coords="863,450,1011,525" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180881" target="_blank" />
+				<area shape="rect" coords="864,636,1008,712" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" />
 		</div>
 		       
 		<div class="content_guide_wrap NSK" id="tab">
@@ -341,8 +341,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
+						<td>2021 장사원 컨셉 생물학 기출</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -457,8 +457,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
+						<td>2021 장사원 컨셉 생물학 기출</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -533,8 +533,8 @@
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 컨셉 생물학 기출문제풀이 (4월)</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162051">수강신청</a></td>
+						<td>2021 장사원 컨셉 생물학 기출</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
 					</tr>
 				</table>
             </div>

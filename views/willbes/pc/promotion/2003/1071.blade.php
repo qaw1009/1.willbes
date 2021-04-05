@@ -192,14 +192,16 @@
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"/>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.54%; top: 40.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 40.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" style="position: absolute; left: 66.34%; top: 40.63%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 문풀" style="position: absolute; left: 63.3%; top: 58.61%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 기출문풀" style="position: absolute; left: 63.3%; top: 68.85%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 실전동형모고" style="position: absolute; left: 63.04%; top: 81.73%; width: 19.02%; height: 2.31%; z-index: 2;" id="pkg" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직 실전동형모고" style="position: absolute; left: 63.3%; top: 91.88%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"/>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.54%; top: 32.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 32.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" style="position: absolute; left: 66.34%; top: 32.67%; width: 22.77%; height: 2.6%; z-index: 2;" target="_blank"></a>
+                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180909" title="지방직 통신기술직" style="position: absolute; left: 63.3%; top: 46.61%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180908" title="지방직 전기직" style="position: absolute; left: 63.3%; top: 54.61%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 문풀" style="position: absolute; left: 63.3%; top: 65.61%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 기출문풀" style="position: absolute; left: 63.3%; top: 73.85%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 실전동형모고" style="position: absolute; left: 63.04%; top: 83.73%; width: 19.02%; height: 2.31%; z-index: 2;" id="pkg" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 실전동형모고" style="position: absolute; left: 63.3%; top: 91.88%; width: 19.02%; height: 2.31%; z-index: 2;" target="_blank"></a>
             </div>
         </div>       
 

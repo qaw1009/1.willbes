@@ -53,11 +53,12 @@
         </div>
 
         <div class="evtCtnsBox wb_04" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2029_04.jpg" alt="농업직 수강신청하기" usemap="#Map2029a" border="0"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2029_04.jpg" alt="농업직 수강신청하기" usemap="#Map2029a" border="0"  />
             <map name="Map2029a" id="Map2029a">
-                <area shape="rect" coords="87,791,325,841" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177824" target="_blank" />
-                <area shape="rect" coords="437,791,675,840" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177825" target="_blank" />
-                <area shape="rect" coords="793,791,1031,840" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179684" target="_blank" />
+                <area shape="rect" coords="245,767,491,826" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180962" target="_blank" />
+                <area shape="rect" coords="626,767,872,826" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179684" target="_blank" />
+                <area shape="rect" coords="244,1218,489,1274" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177824" target="_blank" />
+                <area shape="rect" coords="624,1217,870,1277" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177825" target="_blank" />
             </map>
         </div>
 

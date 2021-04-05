@@ -86,78 +86,83 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_top.jpg"  alt="기초 입문서 무료배포 " />
         </div>
 
-        <div class="evtCtnsBox evt_01" id="evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_01_01.jpg"  alt="선착순 100명 " />
-            <div class="c_table NSK-Black">
-                <table>
-                    <col />
-                    <thead>
-                        <tr>
-                            <th>월</th>
-                            <th>화</th>
-                            <th>수</th>
-                            <th>목</th>
-                            <th>금</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>4/5<span class="end"></span></td>
-                            <td>4/6</td>
-                            <td>4/7</td>
-                            <td>4/8</td>
-                            <td>4/9</td>
-                        </tr>
-                        <tr>
-                            <td>4/12</td>
-                            <td>4/13</td>
-                            <td>4/14</td>
-                            <td>4/15</td>
-                            <td>4/16</td>
-                        </tr>
-                        <tr>
-                            <td>4/19</td>
-                            <td>4/20</td>
-                            <td>4/21</td>
-                            <td>4/22</td>
-                            <td>4/23</td>
-                        </tr>
-                        <tr>
-                            <td>4/26</td>
-                            <td>4/27</td>
-                            <td>4/28</td>
-                            <td>4/29</td>
-                            <td>4/30</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_01_02.jpg"  alt="선착순 100명 " />
-            <div class="c_table tx-left">
-                <div>
-                    <input type="text" placeholder="이름">
-                    <input type="text" placeholder="연락처 '-'없이 숫자만 입력">
+        <form id="add_apply_form" name="add_apply_form">
+            {!! csrf_field() !!}
+            {!! method_field('POST') !!}
+            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="register_type" value="promotion"/>
+            <input type="hidden" name="apply_chk_el_idx" value="{{ $data['ElIdx'] }}"/>
+            <input type="hidden" name="event_register_chk" value="N"/>
+
+            @foreach($arr_base['add_apply_data'] as $row)
+                @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))
+                    <input type="hidden" name="add_apply_chk[]" value="{{$row['EaaIdx']}}" />
+                    @break;
+                @endif
+            @endforeach
+
+            <div class="evtCtnsBox evt_01" id="evt01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_01_01.jpg"  alt="선착순 100명 " />
+                <div class="c_table NSK-Black">
+                    <table>
+                        <col />
+                        <thead>
+                            <tr>
+                                <th>월</th>
+                                <th>화</th>
+                                <th>수</th>
+                                <th>목</th>
+                                <th>금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @if(empty($arr_base['add_apply_data']) === false)
+                            @foreach($arr_base['add_apply_data'] as $key => $row)
+                                @php $col_cnt = 5; @endphp
+                                @if($loop->index % $col_cnt === 1)
+                                    <tr>
+                                @endif
+                                        <td>
+                                            {{$row['Name']}}
+                                            @if(time() >= strtotime($row['ApplyEndDatm']) || $row['PersonLimit'] <= $row['MemberCnt'])
+                                                <span class="end"></span>
+                                            @endif
+                                        </td>
+                                @if($loop->index % $col_cnt === 0)
+                                    </tr>
+                                @endif
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table>
                 </div>
-                <div class="txtinfo">
-                    ▶ 개인정보 수집 및 이용에 대한 안내<br>
-                    <br>
-                    개인정보 수집 이용 목적 <br>
-                    - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
-                    - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
-                    <br>
-                    개인정보 수집 항목 <br>
-                    - 신청인의 이름,연락처<br>
-                    <br>
-                    개인정보 이용기간 및 보유기간<br>
-                    - 본 수집, 활용목적 달성 후 바로 파기<br>
-                    <br>
-                    개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 <br>
-                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_01_02.jpg"  alt="선착순 100명 " />
+                <div class="c_table tx-left">
+                    <div>
+                        <input type="text" value="{{ sess_data('mem_name') }}" placeholder="이름" readonly onclick="loginCheck();">
+                        <input type="text" value="{{ sess_data('mem_phone') }}" placeholder="연락처 '-'없이 숫자만 입력" readonly onclick="loginCheck();">>
+                    </div>
+                    <div class="txtinfo">
+                        ▶ 개인정보 수집 및 이용에 대한 안내<br>
+                        <br>
+                        개인정보 수집 이용 목적 <br>
+                        - 이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
+                        - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
+                        <br>
+                        개인정보 수집 항목 <br>
+                        - 신청인의 이름,연락처<br>
+                        <br>
+                        개인정보 이용기간 및 보유기간<br>
+                        - 본 수집, 활용목적 달성 후 바로 파기<br>
+                        <br>
+                        개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 <br>
+                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                    </div>
+                    <div><input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
                 </div>
-                <div><input name="is_chk" type="checkbox" value="Y" id="is_chk" /> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
+                <div class="btnRequest NSK-Black"><a href="javascript:void(0);" onclick="fn_add_apply_submit();">하루 100명 선착순! 신청하기 ></a></div>
             </div>
-            <div class="btnRequest NSK-Black"><a href="#none">하루 100명 선착순! 신청하기 ></a></div>
-        </div>
+        </form>
 
         <div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2161_02.jpg"  alt="강력 추천 합니다." />            
@@ -329,6 +334,57 @@
             });
             
         });
+
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
+
+        // 무료 당첨
+        function fn_add_apply_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var $add_apply_form = $('#add_apply_form');
+            var _url = '{!! front_url('/event/addApplyStore') !!}';
+
+            if ($("input:checkbox[name='is_chk']:checked").val() !== 'Y') {
+                alert('윌비스 개인정보 제공에 동의하셔야 합니다.');
+                return;
+            }
+
+            if (typeof $add_apply_form.find('input[name="add_apply_chk[]"]').val() === 'undefined') {
+                alert('이벤트 기간이 아닙니다.');
+                return;
+            }
+
+            if (!confirm('신청하시겠습니까?')) { return true; }
+            ajaxSubmit($add_apply_form, _url, function(ret) {
+                if(ret.ret_cd) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                    location.reload();
+                }
+            }, function(ret, status, error_view) {
+                alert( getApplyMsg(ret.ret_msg || '') );
+            }, null, false, 'alert');
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['이미 신청하셨습니다.','이미 참여하셨습니다.'],
+                ['신청 되었습니다.','당첨을 축하합니다. 장바구니를 확인해 주세요.'],
+                //['이벤트 신청후 이용 가능합니다.','봉투모의고사 신청후 이용 가능합니다.'],
+                ['마감되었습니다.','내일 14시에 다시 도전해 주세요.']
+            ];
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
+        }
     </script>
 
 @stop

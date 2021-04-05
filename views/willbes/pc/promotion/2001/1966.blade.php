@@ -86,10 +86,7 @@
         </div>
 
         <div class="evtCtnsBox evt03" id="evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1966_03.jpg"  alt="" usemap="#Map1966C" border="0"/>
-            <map name="Map1966C">
-              <area shape="rect" coords="769,1621,928,1725" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171375" target="_blank" alt="수강하기">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1966_03.jpg"  alt="단기간에 취득할수 있는 방법이 있나요?"/>           
         </div>
 
         <!--레이어팝업-->

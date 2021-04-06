@@ -293,7 +293,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <a href="{{ front_url('/promotion/index/cate/3114/code/1923') }}"><img src="https://static.willbes.net/public/images/promotion/m/2014/2014_bn_w720_01.jpg" title="크리에이터 모집"></a>
+            <a href="https://www.njobler.net/promotion/index/cate/3001/code/1003" target="_blnak"><img src="https://static.willbes.net/public/images/promotion/m/2014/2014_bn_w720_01.jpg" title="크리에이터 모집"></a>
         </div>
 
         <div class="evtCtnsBox evt06">
@@ -361,10 +361,10 @@
         <div class="btnbuy NSK">
             <div>
                 [수강신청]
-                <a href="{{ front_url('/promotion/index/cate/3114/code/1564') }}" >김정환</a><span>|</span>
-                <a href="{{ front_url('/promotion/index/cate/3114/code/1566') }}" >김경은</a><span>|</span>
-                <a href="{{ front_url('/promotion/index/cate/3114/code/1565') }}" >황채영</a><span>|</span>
-                <a href="{{ front_url('/promotion/index/cate/3114/code/1567') }}" >정문진</a>
+                <a href="https://www.njobler.net/product/lecture/show/cate/3001/prod/10001" target="_blank" >김정환</a><span>|</span>
+                <a href="https://www.njobler.net/product/lecture/show/cate/3001/prod/10006" target="_blank" >김경은</a><span>|</span>
+                <a href="https://www.njobler.net/product/lecture/show/cate/3001/prod/10005" target="_blank" >황채영</a><span>|</span>
+                <a href="https://www.njobler.net/product/lecture/show/cate/3001/prod/10004" target="_blank" >정문진</a>
                 <a href="{{ front_url('/support/notice/index/cate/') }}" class="btnNotice" ><img src="https://static.willbes.net/public/images/promotion/m/icon_notice.png"></a>
             </div>
         </div>

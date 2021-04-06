@@ -65,24 +65,15 @@
             <div id="tab01">
                 <div class="evt_04_01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_A01.jpg" alt="" /></div>
                 <div class="evt_04_02"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_A02.jpg" alt="" /></div>
-                <div class="evt_04_03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_A03.jpg" alt="" usemap="#Map1607A" border="0" />
-                    <map name="Map1607A" id="Map1607A">
-                        <area shape="rect" coords="313,375,803,516" href="https://gosi.willbes.net/pass/OffVisitPackage/show/prod-code/164063" target="_blank" />
-                    </map>
-                    </div>
+                <div class="evt_04_03"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_A03.jpg" alt="" /></div>           
                 <div class="evt_04_04"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_A04.jpg" alt="" /></div>                
             </div>
             <div id="tab02">
                 <div class="evt_04_01"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_B01.jpg" alt="" /></div>
                 <div class="evt_04_02"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_B02.jpg" alt="" /></div>
-                <div class="evt_04_03">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_B03.jpg" usemap="#Map1607B" border="0" />
-                    <map name="Map1607B" id="Map1607B">
-                        <area shape="rect" coords="313,375,803,516" href="https://gosi.willbes.net/pass/OffVisitPackage/show/prod-code/164070" target="_blank" />
-                    </map>></div>
+                <div class="evt_04_03"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_B03.jpg" alt="" /></div>
                 <div class="evt_04_04"><img src="https://static.willbes.net/public/images/promotion/2020/04/1607_04_B04.jpg" alt="" /></div>
-            </div>
+            </div> 
         </div>
 	</div>
     <!-- End Container -->

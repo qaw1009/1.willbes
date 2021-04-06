@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLectureAll extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','sys/site','sys/category','product/base/course','product/base/subject','product/on/lecture','product/on/packageAdmin','product/on/packagePeriod','product/off/offLecture','product/off/offPackageAdmin');
+    protected $models = array('sys/code','sys/site','sys/category','product/base/course','product/base/subject','product/on/lecture','product/on/packageAdmin','product/on/packagePeriod','product/off/offLecture','product/off/offPackageAdmin','product/on/lectureFree');
     protected $helpers = array();
 
     public function __construct()
@@ -36,8 +36,8 @@ class SearchLectureAll extends \app\controllers\BaseController
             $is_off_site = true;
         }
 
-        // 패키지 여부 (단강좌/단과반이 아닌 경우)
-        if (in_array($LearnPatternCcd, ['615001', '615006']) === false) {
+        // 패키지 여부 (단강좌/단과반, 무료특강이 아닌 경우)
+        if (in_array($LearnPatternCcd, ['615001', '615006', '615005']) === false) {
             $is_package = true;
         }
         
@@ -131,6 +131,9 @@ class SearchLectureAll extends \app\controllers\BaseController
             $modelname = "offLectureModel";
         } elseif ($LearnPatternCcd == '615007') {
             $modelname = "offPackageAdminModel";
+        } elseif ($LearnPatternCcd == '615005') {
+            $modelname = "lectureFreeModel";
+            $arr_condition = array_merge_recursive($arr_condition, ['EQ' => ['A.ProdTypeCcd' => '636001',],]);  //온라인강좌
         }
 
         $list = [];

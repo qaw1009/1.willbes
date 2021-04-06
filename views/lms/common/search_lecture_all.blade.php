@@ -37,6 +37,7 @@
                 <li class="{{$LearnPatternCcd == '615001' ? 'active':''}} {{ in_array('on_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615001');"><strong>단강좌</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615003' ? 'active':''}} {{ in_array('adminpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615003');"><strong>운영자패키지</strong></a></li>
                 <li class="{{$LearnPatternCcd == '615004' ? 'active':''}} {{ in_array('periodpack_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615004');"><strong>기간제패키지</strong></a></li>
+                <li class="{{$LearnPatternCcd == '615005' ? 'active':''}} {{ in_array('on_free_lecture', $hide_tabs) === true ? 'hide' : '' }}"><a href="#none" onclick="prodListChange('on', '615005');"><strong>무료특강</strong></a></li>
             @endif
 
             @if($prod_type === 'off' || in_array('off', $prod_tabs) === true)
@@ -181,6 +182,14 @@
                         <th>개설여부</th>
                         <th>접수기간</th>
                         <th>접수상태</th>
+                    @elseif($LearnPatternCcd === "615005")
+                        <th width="6%">강좌유형</th>
+                        <th width="6%">과정</th>
+                        <th width="6%">과목</th>
+                        <th width="6%">교수</th>
+                        <th>무료강좌명</th>
+                        <th width="8%">진행상태</th>
+                        <th width="7%">판매여부</th>
                     @endif
                     <th width="6%">사용여부</th>
                     <th width="5%">등록자</th>
@@ -316,6 +325,20 @@
                     {'data' : 'AcceptStatusCcd_Name', 'render' : function(data, type, row, meta) {
                         return  ((data === '접수마감') ? ' <span class="red">'+data+'</span>' :data);
                     }},
+                @elseif($LearnPatternCcd === "615005")
+                    {'data' : 'FreeLecTypeCcd_Name'},//강좌유형
+                    {'data' : 'CourseName'},//과정명
+                    {'data' : 'SubjectName'},//과목명
+                    {'data' : 'wProfName_String'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return '['+row.ProdCode+ '] ' + row.ProdName + '';
+                        }},//단강좌명
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                            return row.wProgressCcd_Name+'<BR>('+row.wUnitCnt+'/'+row.wUnitLectureCnt+')';
+                        }},//진행상태
+                    {'data' : 'SaleStatusCcd_Name', 'render' : function(data, type, row, meta) {
+                            return (data !== '판매불가') ? data : '<span class="red">'+data+'</span>';
+                        }},//판매여부
                 @endif
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';

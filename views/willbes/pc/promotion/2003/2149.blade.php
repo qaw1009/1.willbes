@@ -73,10 +73,10 @@
 
         <div class="evtCtnsBox evt06">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2149_06.jpg" title="국가직 라이브 여기저기 소문내주세요!">    
-            <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="" style="position: absolute; left: 44.1%; bottom:5.5%; width: 8.5%; height:1%; z-index: 2;"></a>
-            <a href="https://cafe.daum.net/9glade" target="_blank" title="" style="position: absolute; left: 53%; bottom:5.5%; width: 8.5%; height: 1%; z-index: 2;"></a>
-            <a href="https://cafe.naver.com/gugrade" target="_blank" title="" style="position: absolute; left: 62%; bottom:5.5%; width: 8.5%; height: 1%; z-index: 2;"></a>
-            <a href="https://cafe.naver.com/willbes" target="_blank" title="" style="position: absolute; left: 70.9%; bottom:5.5%; width: 8.5%; height: 1%; z-index: 2;"></a>
+            <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="" style="position: absolute; left: 43%; bottom:5.25%; width: 9%; height:1%; z-index: 2;"></a>
+            <a href="https://cafe.daum.net/9glade" target="_blank" title="" style="position: absolute; left: 52.5%; bottom:5.25%; width: 9%; height:1%; z-index: 2;"></a>
+            <a href="https://cafe.naver.com/gugrade" target="_blank" title="" style="position: absolute; left: 62%; bottom:5.25%; width: 8.5%; height:1%; z-index: 2;"></a>
+            <a href="https://cafe.naver.com/willbes" target="_blank" title="" style="position: absolute; left: 71.1%; bottom:5.25%; width: 9%; height:1%; z-index: 2;"></a>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))

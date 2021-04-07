@@ -628,7 +628,7 @@
                 }else if(activeTab == "#tab9"){
                     video_tab_url = tab9_url;
                 }else if(activeTab == "#tab10"){
-                    video_tab_url = tab10url;
+                    video_tab_url = tab10_url;
                 }else if(activeTab == "#tab11"){
                     video_tab_url = tab11_url;
                 }else if(activeTab == "#tab12"){

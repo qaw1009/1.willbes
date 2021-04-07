@@ -133,6 +133,22 @@
         }
     </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+
+        <input type="hidden" name="event_idx"  id ="event_idx" value="{{ $data['ElIdx'] }}" readonly="readonly"/>
+        <input type="hidden" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" title="성명" {{(sess_data('is_login') === true) ? 'readonly="readonly"' : ''}}/>
+        <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" maxlength="11" readonly="readonly">
+        <input type="hidden" name="register_type" value="promotion" readonly="readonly"/>
+
+        @foreach($arr_base['register_list'] as $key => $val)
+            @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
+                <input type="hidden" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" readonly="readonly"/>
+            @endif
+        @endforeach
+    </form>
+
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky">
@@ -180,7 +196,7 @@
 
         <div id="content_1" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_01.jpg" title="" />  
-            <a href="javascript:void(0);" title="적중 경험하기" style="position: absolute; left: 26.98%; top: 30.73%; width: 46.86%; height: 2.93%; z-index: 2;"></a>
+            <a href="javascript:void(0);" title="적중 경험하기" onclick="fn_submit();" style="position: absolute; left: 26.98%; top: 30.73%; width: 46.86%; height: 2.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_02.jpg" title="" />        
             <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="응시하기" style="position: absolute; left: 20.98%; top: 56.73%; width: 57.86%; height: 3.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_01_03.jpg" title="" />      
@@ -1246,5 +1262,19 @@
                 window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
             @endif
         }
+
+         {{--무료 강좌발급--}}
+         $regi_form = $('#regi_form');
+         function fn_submit() {
+             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+             var _url = '{!! front_url('/event/registerStore') !!}?event_code={{$data["ElIdx"]}}';
+
+             ajaxSubmit($regi_form, _url, function(ret) {
+                 if(ret.ret_cd) {
+                     alert('강좌가 지급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                     location.reload();
+                 }
+             }, showValidateError, null, false, 'alert');
+         }
     </script>
 @stop

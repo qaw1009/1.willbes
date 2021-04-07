@@ -25,7 +25,7 @@
         .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_03_bg.jpg) no-repeat center top;position:relative;}
 
         .wb_cts04 {padding-bottom:50px;}
-        .wb_cts04 .slide_con {width:915px; margin:0 auto; position:relative}
+        .wb_cts04 .slide_con {width:954px; margin:0 auto; position:relative}
         .wb_cts04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
         .wb_cts04 .slide_con p a {cursor:pointer}
         .wb_cts04 .slide_con p.leftBtn {left:-100px; top:50%; width:62px; height:62px; margin-top:-30px;}

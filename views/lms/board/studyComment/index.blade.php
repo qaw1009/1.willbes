@@ -54,7 +54,8 @@
                         </select>
 
                         <div class="checkbox ml-30">
-                            <input type="checkbox" name="search_chk_create_by_admin" value="1" class="flat create-by-admin" id="create_by_admin"/> <label for="create_by_admin">관리자 등록글 보기</label>
+                            <input type="checkbox" name="search_chk_create_by_admin" value="1" class="flat create-by-admin" id="create_by_admin"/> <label for="create_by_admin" class="mr-20">관리자 등록글 보기</label>
+                            <input type="checkbox" name="search_chk_hot_display" value="1" class="flat hot-display" id="hot_display"/> <label for="hot_display">BEST 숨기기</label>
                         </div>
                     </div>
                 </div>
@@ -326,6 +327,11 @@
 
             // 관리자등록글 보기
             $search_form.on('ifChanged', '.create-by-admin', function() {
+                $datatable.draw();
+            });
+
+            // hot 숨기기
+            $search_form.on('ifChanged', '.hot-display', function() {
                 $datatable.draw();
             });
 

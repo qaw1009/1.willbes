@@ -28,8 +28,8 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .sky {position:fixed;top:150px;right:10px;z-index:2;}
-        .sky a {display:block;margin-top:15px;}
+        .sky {position:fixed;top:120px;right:10px;z-index:2;}
+        .sky a {display:block;margin-top:10px;}
 
         .wb_06 {background:#1a1a1a;}
         .wb_07 {background:#ddd6c4;}
@@ -115,10 +115,10 @@
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_sky.png" alt="스카이베너" >
             </a>     
-            <a href="#none;">
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1178&" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-01.png" alt="무료특강" >
             </a>
-            <a href="#none;">
+            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67J207Jyk7KO8" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-02.png" alt="문제풀이" >
             </a> 
         </div>   
@@ -215,8 +215,10 @@
         
         <div class="evtCtnsBox tab01s_05" id="apply">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_05.jpg" alt="신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2001_05.jpg" alt="신청하기" />
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178351" title="수강신청" target="_blank" style="position: absolute; left: 40.89%; top: 71.22%; width: 43.57%; height: 12.2%; z-index: 2;"></a>   
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1178&" target="_blank" title="핵심이론 요약 무료특강" style="position: absolute; left: 40.54%; top: 79.7%; width: 11.96%; height: 9%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67J207Jyk7KO8" target="_blank" title="실전동형문풀" style="position: absolute; left: 77.14%; top: 79.8%; width: 11.96%; height: 9%; z-index: 2;"></a>
             </div>                      
         </div> 
 

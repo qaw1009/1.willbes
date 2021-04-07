@@ -563,13 +563,15 @@ class BoardModel extends WB_Model
             IF ((CASE MST.BmTypeCcd WHEN '601002' THEN INSTR(MST.TwoWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsQna,
         ";
 
+        $board_idx = (array_key_exists('LB.BoardIdx',$arr_condition['EQ']) == true) ? $arr_condition['EQ']['LB.BoardIdx'] : '';
+        $where = $this->_conn->makeWhere(['EQ' => ['BoardIdx' => $board_idx,'IsStatus' => 'Y']])->getMakeWhere(false);
         $from = "
             FROM {$this->_table} as LB
             INNER JOIN {$this->_table_master} as MST ON LB.BmIdx = MST.BmIdx AND MST.IsUse = 'Y' AND MST.IsStatus = 'Y'
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
-                from {$this->_table_attach}
-                where IsStatus = 'Y' ";
+                from {$this->_table_attach} {$where}
+        ";
         if (isset($arr_condition_file['reg_type']) === true) {
             $from .= "and RegType = {$arr_condition_file['reg_type']} ";
         }

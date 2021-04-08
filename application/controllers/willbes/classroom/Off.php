@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Off extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'order/orderListF');
+    protected $models = array('classroomF', 'order/orderListF', 'product/lectureF', 'order/orderF');
     protected $helpers = array('download');
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -666,6 +666,223 @@ class Off extends \app\controllers\FrontController
             'booklist' => $booklist,
             'SiteUrl' => app_to_env_url($this->getSiteCacheItem($lec['SiteCode'], 'SiteUrl'))
         ]);
+    }
+
+
+    /**
+     * 학원수강강의 보강 신청 레이어
+     * @return CI_Output|object|string
+     */
+    public function layerBogang()
+    {
+        $OrderIdx = $this->_req('o');
+        $OrderProdIdx = $this->_req('op');
+        $ProdCode = $this->_req('p');
+        $ProdCodeSub = $this->_req('ps');
+        $Type = $this->_req('t');
+
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        if($Type == 'P'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode
+                ],
+                'GTE' => [
+                    'StudyEndDate' => $today // 종료일 >= 오늘
+                ]
+            ], false, true, true);
+            if(empty($pkg) == true){
+                return $this->json_error('수강중인 강의가 없습니다.');
+            }
+
+            $lec = $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub
+                ]
+            ], [],false, true);
+
+        } else {
+            $lec = $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub
+                ],
+                'GTE' => [
+                    'StudyEndDate' => $today // 종료일 >= 오늘
+                ]
+            ], [],false, true);
+        }
+
+        if(empty($lec) == true){
+            return $this->json_error('수강중인 강의가 없습니다.');
+        } else {
+            $lec = $lec[0];
+        }
+
+        // 보강 설정 확인
+        if(empty($lec['SuppProdCode']) == true || $lec['SuppIsUse'] == 'N'){
+            return $this->json_error('보강신청이 불가능한 강의입니다.');
+        }
+
+        // 보강 강좌 정보 가져오기
+        $bogang_lec = $this->lectureFModel->findProductByProdCode('on_lecture', $lec['SuppProdCode'], '', ['EQ' => ['IsUse' => 'Y']]);
+        if(empty($bogang_lec) == true){
+            return $this->json_error('보강신청이 불가능합니다.');
+        }
+
+        // 강좌 커리큘럼
+        $curr = $this->lectureFModel->findProductLectureUnits($lec['SuppProdCode']);
+
+        foreach ($curr as $key => $row){
+            if($row['wUnitLectureNum'] == 1){
+                $bogang_curr[$row['wUnitNum'] -1]['UnitArr'] = $row['wUnitIdx'];
+                $result = preg_match('/^\d{1,2}월[\s]*\d{1,2}일/', $row['wUnitName'], $unitname);
+                if($result > 0){
+                    $bogang_curr[$row['wUnitNum'] -1]['UnitName'] = $row['wUnitNum'].'회차 - '.$unitname[0];
+                } else {
+                    $bogang_curr[$row['wUnitNum'] -1]['UnitName'] = $row['wUnitNum'].'회차 - '.$row['wUnitName'];
+                }
+
+            } else {
+                $bogang_curr[$row['wUnitNum'] -1]['UnitArr'] = $bogang_curr[$row['wUnitNum'] -1]['UnitArr'].','.$row['wUnitIdx'];
+            }
+        }
+        // 보강 주문 갯수 가져오기
+        $bogang_list = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $sess_mem_idx,
+                'TargetOrderIdx' => $OrderIdx,
+                'TargetProdCode' => $ProdCode,
+                'TargetProdCodeSub' => $ProdCodeSub
+            ]
+        ], ['OrderDate'=>'DESC'],false, false);
+
+        return $this->load->view('/classroom/off/layer/bogang', [
+            'lec' => $lec,
+            'bogang_lec' => $bogang_lec,
+            'bogang_curr' => $bogang_curr,
+            'bogang_list'=> $bogang_list
+        ]);
+    }
+
+    /**
+     * 보강 신청 처리
+     * @return CI_Output
+     */
+    public function takeBogang()
+    {
+        $OrderIdx = $this->_req('o');
+        $OrderProdIdx = $this->_req('op');
+        $ProdCode = $this->_req('p');
+        $ProdCodeSub = $this->_req('ps');
+        $Type = $this->_req('t');
+        $UnitIdxs = $this->_req('u');
+        $reason = $this->_req('reason');
+
+        $sess_mem_idx = $this->session->userdata('mem_idx');
+
+        $today = date("Y-m-d", time());
+
+        if($Type == 'P'){
+            $pkg = $this->classroomFModel->getPackage([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode
+                ],
+                'GTE' => [
+                    'StudyEndDate' => $today // 종료일 >= 오늘
+                ]
+            ], false, false, true);
+            if(empty($pkg) == true){
+                return $this->json_error('수강중인 강의가 없습니다.');
+            }
+
+            $lec = $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub
+                ]
+            ], [],false, true);
+
+        } else {
+            $lec = $this->classroomFModel->getLecture([
+                'EQ' => [
+                    'MemIdx' => $sess_mem_idx,
+                    'OrderIdx' => $OrderIdx,
+                    'OrderProdIdx' => $OrderProdIdx,
+                    'ProdCode' => $ProdCode,
+                    'ProdCodeSub' => $ProdCodeSub
+                ],
+                'GTE' => [
+                    'StudyEndDate' => $today // 종료일 >= 오늘
+                ]
+            ], [],false, true);
+        }
+
+        if(empty($lec) == true){
+            return $this->json_error('수강중인 강의가 없습니다.');
+        } else {
+            $lec = $lec[0];
+        }
+
+        // 보강 설정 확인
+        if(empty($lec['SuppProdCode']) == true || $lec['SuppIsUse'] == 'N'){
+            return $this->json_error('보강신청이 불가능한 강의입니다.');
+        }
+
+        // 보강 강좌 정보 가져오기
+        $bogang_lec = $this->lectureFModel->findProductByProdCode('on_lecture', $lec['SuppProdCode'], '', ['EQ' => ['IsUse' => 'Y']]);
+        if(empty($bogang_lec) == true){
+            return $this->json_error('보강신청이 불가능합니다.');
+        }
+
+        // 강좌 커리큘럼
+        $curr = $this->lectureFModel->findProductLectureUnits($lec['SuppProdCode']);
+
+        // 보강 주문 갯수 가져오기
+        $bogang_cnt = $this->classroomFModel->getLecture([
+            'EQ' => [
+                'MemIdx' => $sess_mem_idx,
+                'TargetOrderIdx' => $OrderIdx,
+                'TargetProdCode' => $ProdCode,
+                'TargetProdCodeSub' => $ProdCodeSub
+            ]
+        ], [],true, false);
+
+        if($bogang_cnt >= $lec['SuppAbleCnt']) {
+            return $this->json_error('보강신청횟수를 초과하였습니다.');
+        }
+
+        if($this->orderFModel->procAutoOrder('bogang', $bogang_lec['ProdCode'], [
+            'wunit_idx' => $UnitIdxs,
+            'study_period' => $lec['SuppPeriod'],
+            'etc_reason' => $reason,
+            'target_order_idx' => $lec['OrderIdx'],
+            'target_prod_code' => $lec['ProdCode'],
+            'target_prod_code_sub' => $lec['ProdCodeSub']
+        ]) !== true){
+            return $this->json_error('보강신청중 오류가 발생하였습니다.');
+        }
+
+        return $this->json_result(true, '신청되었습니다. 내강의실 > 학원강좌 > 보강동영상 메뉴에서 수강해 주세요.');
     }
 
     /**

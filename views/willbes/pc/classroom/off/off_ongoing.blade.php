@@ -98,6 +98,9 @@
                                                                         @if($subrow['IsDisp'] == 'N')
                                                                             <span class="oBox changeBox ml5 NG">인강전환</span>
                                                                         @endif
+                                                                        @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' and $subrow['IsDisp'] != 'N')
+                                                                            <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강동영상신청 ></a>
+                                                                        @endif
                                                                     </li>
                                                                 @endforeach
                                                             @endif
@@ -292,6 +295,9 @@
                                                     <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
                                                 @endif
                                             @endif
+                                            @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' and $row['IsDisp'] != 'N')
+                                                <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
+                                            @endif
                                             </div>
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} <br>
@@ -330,6 +336,8 @@
             <div id="assignmentCreateChoice" class="willbes-Layer-PassBox willbes-Layer-PassBox1100 abs">
             </div>
             <div id="MoreBook" class="willbes-Layer-PassBox willbes-Layer-PassBox800 h1100 abs" style="height:600px !important;">
+            </div>
+            <div id="supplementLec" class="willbes-Layer-Black">
             </div>
 
             <!-- willbes-Leclist -->
@@ -489,6 +497,22 @@
                 function(d){
                     $("#MoreBook").html(d).end();
                     openWin('MoreBook');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
+
+        function fnBogang(o, op, p, ps, t)
+        {
+            url = "{{ site_url("/classroom/off/layerBogang/") }}";
+            data = "o="+o+"&op="+op+"&p="+p+"&ps="+ps+"&t="+t;
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#supplementLec").html(d).end();
+                    openWin('supplementLec');
                 },
                 function(ret, status){
                     alert(ret.ret_msg);

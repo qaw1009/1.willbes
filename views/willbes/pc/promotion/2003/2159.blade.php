@@ -1141,7 +1141,7 @@
         <!--시험총평 및 시험후기-->
         <div id="content_3" class="tabCts Cts03">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_03_01.jpg" title="시험 체감난이도&이벤트" />
-            @include('willbes.pc.eventsurvey.show_graph_partial',array('is_series' => 'Y'))
+            @include('willbes.pc.eventsurvey.show_graph_partial',array('is_series' => 'N')) {{-- is_series(직렬: Y, 직렬아님: N) --}}
 
             <div class="tx-center">
                 <a href="javascript:pullOpen();">

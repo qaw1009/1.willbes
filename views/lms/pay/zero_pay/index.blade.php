@@ -131,8 +131,8 @@
                     <th class="rowspan">선택</th>
                     <th class="">No</th>
                     <th class="rowspan">주문번호</th>
-                    <th class="rowspan">결제루트</th>
                     <th class="rowspan">회원정보</th>
+                    <th class="rowspan">결제루트</th>
                     <th class="rowspan">결제완료일</th>
                     <th class="">상품구분</th>
                     <th class="">상품명</th>

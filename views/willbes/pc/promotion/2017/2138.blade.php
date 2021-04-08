@@ -452,12 +452,12 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/1EGLurcjYLk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
+                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
                                 </li>
                                 <li>
                                     <p>2021 1~3월 이론반 샘플 강의</p>
                                     <a href="https://youtu.be/LMdBFMmmfUE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
+                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
                                 </li>
                             </ul>
                         </td>

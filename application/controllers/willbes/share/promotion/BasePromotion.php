@@ -732,6 +732,12 @@ class BasePromotion extends \app\controllers\FrontController
             }
 
             if($option == 'group'){
+                if(empty($val['FileFullPath']) === false){
+                    $val['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$el_idx);
+                }else{
+                    $val['download_url'] = "javascript:alert('준비중입니다.')";
+                }
+
                 if(empty($val['OrderNum']) === false){
                     $data[$val['OrderNum']][] = $val;
                 }

@@ -556,6 +556,10 @@ class BoardModel extends WB_Model
      */
     public function findBoardForModify($board_type, $column, $arr_condition, $arr_condition_file)
     {
+        //file where
+        $board_idx = (array_key_exists('LB.BoardIdx',$arr_condition['EQ']) == true) ? $arr_condition['EQ']['LB.BoardIdx'] : '';
+        $file_where = $this->_conn->makeWhere(['EQ' => ['BoardIdx' => $board_idx,'IsStatus' => 'Y']])->getMakeWhere(false);
+
         $master_column = "
             MST.BmTypeCcd, MST.OneWayOption, MST.TwoWayOption,
             IF ((CASE MST.BmTypeCcd WHEN '601001' THEN INSTR(MST.OneWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsLogin,
@@ -563,22 +567,20 @@ class BoardModel extends WB_Model
             IF ((CASE MST.BmTypeCcd WHEN '601002' THEN INSTR(MST.TwoWayOption, 1) ELSE '0' END) > 0, 'Y', 'N') AS BoardIsQna,
         ";
 
-        $board_idx = (array_key_exists('LB.BoardIdx',$arr_condition['EQ']) == true) ? $arr_condition['EQ']['LB.BoardIdx'] : '';
-        $where = $this->_conn->makeWhere(['EQ' => ['BoardIdx' => $board_idx,'IsStatus' => 'Y']])->getMakeWhere(false);
         $from = "
             FROM {$this->_table} as LB
             INNER JOIN {$this->_table_master} as MST ON LB.BmIdx = MST.BmIdx AND MST.IsUse = 'Y' AND MST.IsStatus = 'Y'
             LEFT OUTER JOIN (
                 select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
-                from {$this->_table_attach} {$where}
-        ";
-        if (isset($arr_condition_file['reg_type']) === true) {
-            $from .= "and RegType = {$arr_condition_file['reg_type']} ";
-        }
-        if (isset($arr_condition_file['attach_file_type']) === true) {
-            $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
-        }
-        $from .= "GROUP BY BoardIdx
+                from {$this->_table_attach} {$file_where}
+                ";
+                if (isset($arr_condition_file['reg_type']) === true) {
+                    $from .= "and RegType = {$arr_condition_file['reg_type']} ";
+                }
+                if (isset($arr_condition_file['attach_file_type']) === true) {
+                    $from .= "and AttachFileType = {$arr_condition_file['attach_file_type']} ";
+                }
+                $from .= "GROUP BY BoardIdx
                 ) as LBA ON LB.BoardIdx = LBA.BoardIdx
             LEFT OUTER JOIN {$this->_table_sys_site} as LS ON LB.SiteCode = LS.SiteCode
             LEFT OUTER JOIN {$this->_table_sys_admin} as ADMIN ON LB.RegAdminIdx = ADMIN.wAdminIdx and ADMIN.wIsStatus='Y'
@@ -610,8 +612,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_sys_code} as LSC2 ON LB.TypeCcd = LSC2.Ccd
                     LEFT OUTER JOIN (
                         select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
-                        from {$this->_table_attach}
-                        where IsStatus = 'Y' and RegType = 1
+                        from {$this->_table_attach} {$file_where} AND RegType = 1
                         GROUP BY BoardIdx
                     ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                     LEFT OUTER JOIN {$this->_table_sys_admin} as counselAdmin ON LB.ReplyAdminIdx = counselAdmin.wAdminIdx and counselAdmin.wIsStatus='Y'
@@ -655,8 +656,7 @@ class BoardModel extends WB_Model
                     LEFT OUTER JOIN {$this->_table_member} AS MEM ON LB.RegMemIdx = MEM.MemIdx
                     LEFT OUTER JOIN (
                         select BoardIdx, AttachFileType, GROUP_CONCAT(BoardFileIdx) AS AttachFileIdx, GROUP_CONCAT(AttachFilePath) AS AttachFilePath, GROUP_CONCAT(AttachFileName) AS AttachFileName, GROUP_CONCAT(AttachRealFileName) AS AttachRealFileName
-                        from {$this->_table_attach}
-                        where IsStatus = 'Y' and RegType = 1
+                        from {$this->_table_attach} {$file_where} AND RegType = 1
                         GROUP BY BoardIdx
                     ) as LBA_1 ON LB.BoardIdx = LBA_1.BoardIdx
                     LEFT OUTER JOIN {$this->_table_sys_admin} as qnaAdmin ON LB.ReplyAdminIdx = qnaAdmin.wAdminIdx and qnaAdmin.wIsStatus='Y'

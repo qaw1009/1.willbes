@@ -1192,6 +1192,47 @@ class Manage extends \app\controllers\BaseController
         ]);
     }
 
+    /**
+     * 학원 보강 신청 로그기록
+     * @return object|string
+     */
+    public function bogang()
+    {
+        $orderidx = $this->_req('orderidx');
+        $prodcode = $this->_req('prodcode');
+        $prodcodesub = $this->_req('prodcodesub');
+        $prodtype = $this->_req('prodtype');
+        $memidx =  $this->_req('memidx');
+
+        $lec = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'OrderIdx' => $orderidx,
+                'ProdCode' => $prodcode,
+                'ProdCodeSub' => $prodcodesub
+            ]
+        ], true);
+        $lec = $lec[0];
+
+        // 보강 주문 갯수 가져오기
+        $log = $this->manageLectureModel->getLecture(false, [
+            'EQ' => [
+                'MemIdx' => $memidx,
+                'TargetOrderIdx' => $orderidx,
+                'TargetProdCode' => $prodcode,
+                'TargetProdCodeSub' => $prodcodesub
+            ]
+        ]);
+
+        $member = $this->manageMemberModel->getMember($memidx);
+
+        return $this->load->view('member/layer/lecture/bogang', [
+            'member' => $member,
+            'lec' => $lec,
+            'log' => $log
+        ]);
+    }
+
 
     /**
      *  사용자 기간 연장처리
@@ -1655,16 +1696,27 @@ class Manage extends \app\controllers\BaseController
                 ]
             ]
         ], true);
+        foreach ($offdan as $key => $row){
+            if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y'){
+                $bogang = $this->manageLectureModel->getLecture(false, [
+                    'EQ' => [
+                        'MemIdx' => $memIdx,
+                        'TargetOrderIdx' => $row['OrderIdx'],
+                        'TargetProdCode' => $row['ProdCode'],
+                        'TargetProdCodeSub' => $row['ProdCodeSub']
+                    ]
+                ]);
+
+                $offdan[$key]['bogang'] = $bogang;
+            }
+        }
 
         $offpkg = $this->manageLectureModel->getPackage(false, [
             'EQ' => [
                 'MemIdx' => $memIdx
             ],
-            'ORG' => [
-                'LKB' => [
-                    'ProdName' => $search_value,
-                    'subProdName' => $search_value
-                ]
+            'LKB' => [
+                    'ProdName' => $search_value
             ]
         ], true);
         foreach($offpkg as $idx => $row){
@@ -1675,6 +1727,22 @@ class Manage extends \app\controllers\BaseController
                     'ProdCode' => $row['ProdCode']
                 ]
             ], true);
+
+            foreach ($pkgsublist as $key => $row2){
+                if(empty($row2['SuppProdCode']) == false && $row2['SuppIsUse'] == 'Y') {
+                    $bogang = $this->manageLectureModel->getLecture(false, [
+                        'EQ' => [
+                            'MemIdx' => $memIdx,
+                            'TargetOrderIdx' => $row2['OrderIdx'],
+                            'TargetProdCode' => $row2['ProdCode'],
+                            'TargetProdCodeSub' => $row2['ProdCodeSub']
+                        ]
+                    ]);
+
+                    $pkgsublist[$key]['bogang'] = $bogang;
+                }
+            }
+
             $offpkg[$idx]['subleclist'] = $pkgsublist;
         }
 

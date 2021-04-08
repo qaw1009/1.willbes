@@ -10,6 +10,7 @@ class On extends \app\controllers\FrontController
 
     protected $_payroute_normal_ccd = ['670001','670002','670006','670007']; // 온라인, 학원방문, 온라인0원, 관리자유료
     protected $_payroute_admin_ccd = ['670003','670004','670005']; // 0원결제, 무료결제, 제휴사결제
+    protected $_payroute_bogang_ccd = ['670008']; // 보강결제
 
     // 강의형태 단과/사용자패키지/운영자패키지/무료
     protected $_LearnPatternCcd_dan = ['615001','615002'];
@@ -613,6 +614,84 @@ class On extends \app\controllers\FrontController
         ]);
     }
 
+    /**
+     * 보강동영상리스트
+     * @return object|string
+     */
+    public function bogang()
+    {
+        // 검색
+        $input_arr = $this->_reqG(null);
+        $today = date("Y-m-d", time());
+
+        // 셀렉트박스 수해오기
+        $cond_arr = [
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'EQ' => [
+                'MemIdx' => $this->session->userdata('mem_idx') // 사용자 아이디
+            ],
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_dan,
+                'PayRouteCcd' => $this->_payroute_bogang_ccd // 결제루트 : 온, 방
+            ]
+        ];
+
+        // 셀렉트박스용 데이타
+        $sitegroup_arr = $this->classroomFModel->getSiteGroupList($cond_arr);
+        $course_arr = $this->classroomFModel->getCourseList($cond_arr);
+        $subject_arr = $this->classroomFModel->getSubjectList( $cond_arr);
+        $prof_arr = $this->classroomFModel->getProfList($cond_arr);
+
+        // 실제 리스트용
+        $cond_arr = [
+            'GTE' => [
+                'RealLecEndDate' => $today // 종료일 >= 오늘
+            ],
+            'ORG' => [
+                'LKB' => [
+                    'ProdName' => $this->_req('search_text'), // 강의명 검색 (패키지명)
+                    'subProdName' => $this->_req('search_text') // 강의명 검색 (실제 강좌명)
+                ]
+            ]
+        ];
+
+        $orderby = element('orderby', $input_arr);
+        $orderby = (empty($orderby) == true) ? 'OrderDate^DESC' : $orderby;
+        // 최신순으로
+        @list($orderby, $asc_desc) = @explode("^", $orderby);
+        if(empty($asc_desc) == false){
+            $orderby = [
+                $orderby => $asc_desc
+            ];
+        }
+
+        // 학습형태 : 단광좌, 사용자패키지
+        // 결제방식 : 보강동영상
+        $leclist = $this->classroomFModel->getLecture(array_merge($cond_arr, [
+            'IN' => [
+                'LearnPatternCcd' => $this->_LearnPatternCcd_dan,
+                'PayRouteCcd' => $this->_payroute_bogang_ccd
+            ],
+            'EQ' => [
+                'SiteGroupCode' => $this->_req('sitegroup_ccd'),
+                'MemIdx' => $this->session->userdata('mem_idx'), // 사용자번호
+                'SubjectIdx' => $this->_req('subject_ccd'), // 검색 : 과목
+                'wProfIdx' => $this->_req('prof_ccd'), // 검색 : 강사
+                'CourseIdx' => $this->_req('course_ccd') // 검색 : 과정
+            ]
+        ]), $orderby);
+
+        return $this->load->view('/classroom/on/on_bogang', [
+            'sitegroup_arr' => $sitegroup_arr,
+            'course_arr' => $course_arr,
+            'subject_arr' => $subject_arr,
+            'prof_arr' => $prof_arr,
+            'input_arr' => $input_arr,
+            'lecList' => $leclist
+        ]);
+    }
 
     /**
      * 강의 상세페이지
@@ -825,6 +904,14 @@ class On extends \app\controllers\FrontController
         } else {
             $lec['isBtob'] = 'N';
             $lec['enableIp'] = 'Y';
+        }
+
+        // 보강 동영상일경우 뷰가 다름
+        if($lec['PayRouteCcd'] == '670008'){
+            return $this->load->view('/classroom/on/on_bogang_view', [
+                'lec' => $lec,
+                'curriculum' => $curriculum
+            ]);
         }
 
         return $this->load->view('/classroom/on/on_view', [

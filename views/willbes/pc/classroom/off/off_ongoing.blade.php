@@ -98,7 +98,7 @@
                                                                         @if($subrow['IsDisp'] == 'N')
                                                                             <span class="oBox changeBox ml5 NG">인강전환</span>
                                                                         @endif
-                                                                        @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' and $subrow['IsDisp'] != 'N')
+                                                                        @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
                                                                             <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강동영상신청 ></a>
                                                                         @endif
                                                                     </li>
@@ -295,7 +295,7 @@
                                                     <a href="#none" onclick="fnBookLayer('{{$row['ProdCode']}}','{{$row['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
                                                 @endif
                                             @endif
-                                            @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' and $row['IsDisp'] != 'N')
+                                            @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
                                                 <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
                                             @endif
                                             </div>

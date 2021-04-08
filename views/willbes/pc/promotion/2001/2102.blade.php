@@ -44,7 +44,7 @@
 
         .wb_03 {background:#439900;} 
 
-        .wb_04 {background:#439900;} 
+        .wb_04 {background:#439900; padding-top:100px} 
 
     </style>
 
@@ -53,10 +53,7 @@
         <div class="sky">
              <a href="#evt_01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky.jpg" title="웰컴 키드 받기">
-            </a>       
-            <a href="#evt_02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky2.jpg" title="추가 이벤트">
-            </a>        
+            </a>     
             <a href="#evt_03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky3.jpg" title="보너스 선물">
             </a>              
@@ -104,21 +101,6 @@
                 </a>
             </div>  
         </div>
-
-        <form id="add_apply_form" name="add_apply_form">
-            {!! csrf_field() !!}
-            {!! method_field('POST') !!}
-            <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
-
-            <div class="evtCtnsBox wb_03" id="evt_02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_03.jpg" usemap="#Map2102c" title="추가 이벤트" border="0" />
-                <map name="Map2102c" id="Map2102c">
-                    <area shape="rect" coords="210,852,512,903" href="javascript:void(0)" onclick="fn_promotion_etc_submit();"/>
-                    <area shape="rect" coords="617,862,750,904" href="https://www.willbes.net/classroom/qna/index" target="_blank" />
-                    <area shape="rect" coords="764,861,897,904" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" />
-                </map>
-            </div>
-        </form>
 
         <div class="evtCtnsBox wb_04" id="evt_03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_04.jpg" usemap="#Map2102d" title="스마트폰 배경화면 다운받기" border="0" />

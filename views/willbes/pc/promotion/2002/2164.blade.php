@@ -458,7 +458,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;* 최근 1년 이내 신광은 경찰학원 정규과정 수강이력이 없는 수강생<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;- 타학원 수강이력 증빙 필수          
                     </li>
-                    <li>③ 다시 챌린지 이벤트(최불자)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 20년 2차 필기합격 인증이 가능한 수강생<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 수험표 또는 성적증빙자료 필수</li>  
+                    <li>③ 다시 챌린지 이벤트(최불자)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 21년 1차 필기합격 인증이 가능한 수강생<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 수험표 또는 성적증빙자료 필수</li>  
 				</ul>                
 				<div class="infoTit NG"><strong>학원 문의 : 1544-0336</strong></div>			
 			</div>

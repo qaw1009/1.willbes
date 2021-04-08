@@ -251,10 +251,10 @@
                                             <a href="javascript:;" class="btnStfull02 btn-assignment" data-prod-code="{{ $row['ProdCode'] }}">온라인첨삭 ></a>
                                         </div>
                                     @endif
-                                        @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
-                                            <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강동영상 신청 ></a></div>
-                                        @endif
+                                @endif
 
+                                @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
+                                    <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강동영상 신청 ></a></div>
                                 @endif
                             </td>
                         </tr>

@@ -18,52 +18,14 @@
 
 		.skybanner{position: fixed; top: 280px;right:2px;z-index: 1;}	  
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_top_bg.jpg) no-repeat center top;}	
-        .evt_top span {position:absolute; top:790px; width:217px; z-index:10; left:50%;}
-        .evt_top span.img01 {margin-left:-584px; animation: sp01 1.5s linear infinite;}
-        @@keyframes sp01{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-        .evt_top span.img02 {margin-left:-347px; animation: sp02 1.5s linear infinite;} 
-        @@keyframes sp02{
-		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
-        }
-        .evt_top span.img03 {margin-left:-110px; animation: sp03 1.5s linear infinite;}
-        @@keyframes sp03{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
-        .evt_top span.img04 {margin-left:127px; animation: sp04 1.5s linear infinite;} 
-        @@keyframes sp04{
-		from{transform:scale(0.9)}50%{transform:scale(1)}to{transform:scale(0.9)}
-        }
-        .evt_top span.img05 {margin-left:364px; animation: sp05 1.5s linear infinite;}
-        @@keyframes sp05{
-		from{transform:scale(1)}50%{transform:scale(0.9)}to{transform:scale(1)}
-        }
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/1544_top_bg.jpg) no-repeat center top;}	
 
-		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_01_bg.jpg) no-repeat center top;}
+		.evt_01 {background:url(https://static.willbes.net/public/images/promotion/2021/04/1544_01_bg.jpg) no-repeat center top;}
         .evt_01 div {width:1120px; margin:0 auto; position:relative}
-        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_02_bg.jpg) no-repeat center top;}
-        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2021/02/1544_03_bg.jpg) no-repeat center top;}
-        .evt_04 {}
-        .evt_05 {}
-        .total {text-align:center; font-size:18px; font-weight:bold; padding:20px 0; border:1px solid #ccc; 
-        background:rgba(255,255,255,0.8); margin-bottom:30px}
-        .total span {padding:0 10px;}
-        .total strong {padding:0 10px; font-size:120%; color:#de3349}
-        .fixed {position:fixed; top:0; left:0; width:100%; border:0; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}/*총합스크롤고정*/
+        .evt_02 {background:url(https://static.willbes.net/public/images/promotion/2021/04/1544_02_bg.jpg) no-repeat center top;}
+        .evt_03 {background:url(https://static.willbes.net/public/images/promotion/2021/04/1544_03_bg.jpg) no-repeat center top;}
+        .evt_04 {background:#2a2726}
         
-        .lecTable { width:1000px; margin:0 auto; padding-bottom:100px}
-        .evtCtnsBox table {border-top:1px solid #edeeef; border-left:1px solid #edeeef; table-layout:auto;}
-		.evtCtnsBox table th,
-		.evtCtnsBox table td {padding:15px 5px; border-bottom:1px solid #edeeef; border-right:1px solid #edeeef; text-align: center; font-size:14px; line-height:1.5}
-		.evtCtnsBox table th {background: #2e3044; color:#fff; font-weight: bold;}
-		.evtCtnsBox table tbody th {background: #9697a1; color:#fff;} 
-        .evtCtnsBox table tbody td:last-child {color:#e83e3e; font-weight:bold}
-		.evtCtnsBox .buyLec {margin-top:30px}
-		.evtCtnsBox .buyLec a { display:block; text-align:cetner; font-size:30px; font-weight:600; background:#886224; color:#fff; padding:20px 0; border-radius:50px}
-		.evtCtnsBox .buyLec a:hover {background:#624310; box-shadow: 10px 10px 10px rgba(0,0,0,.2);}
-
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:20px; margin-bottom:20px}
@@ -76,30 +38,25 @@
     </style> 
 	<div class="evtContent NGR">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top.jpg" alt="황종휴 경제학" />
-            <span class="img01"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img1.png" alt="혜택1" /></span>
-            <span class="img02"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img2.png" alt="혜택2" /></span>
-            <span class="img03"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img3.png" alt="혜택3" /></span>
-            <span class="img04"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img4.png" alt="혜택4" /></span>
-            <span class="img05"><img src="https://static.willbes.net/public/images/promotion/2021/02/1544_top_img5.png" alt="혜택5" /></span>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_top.jpg" alt="황종휴 경제학" />
 		</div>
 
 		<div class="evtCtnsBox evt_01">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_01.jpg" alt="경제학, 어떻게 준비하시겠습니까?" />
                 <a href="#evt_04" title="" style="position: absolute; left: 23.13%; top: 66.61%; width: 52.86%; height: 15.14%; z-index: 2;"></a>
             </div>
 		</div>
 
         <div class="evtCtnsBox evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_02.jpg" alt="3단계 기본기 완성" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_02.jpg" alt="3단계 기본기 완성" />
 		</div>
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_03.jpg" alt="경제학 예비순환" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_03.jpg" alt="경제학 예비순환" />
         </div>
 
-        <div class="evtCtnsBox evt_04" id="evt_04">
+        <div class="evtCtnsBox evt_04">
             <!--
             @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '3094')
             <a href="{{ site_url('/lecture/show/cate/' . $__cfg['CateCode'] . '/pattern/only/prod-code/161962') }}" target="_blank">
@@ -108,17 +65,16 @@
             @else
             <a href="{{ site_url('/package/show/cate/' . $__cfg['CateCode'] . '/pack/648001/prod-code/161969') }}" target="_blank">
             @endif
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_04.jpg" alt="특별 이벤트" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_04.jpg" alt="특별 이벤트" />
             </a>
             -->
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1544_04.jpg" alt="특별 이벤트" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1544_04.jpg" alt="특별 이벤트" />
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
-        </div> 
+        </div>       
         
-        
-
+{{--
 		<div class="evtCtnsBox evtInfo NGR">
 			<div class="evtInfoBox">
 				<h4 class="NGEB">상품 이용안내</h4>
@@ -157,7 +113,7 @@
                     <li>아이디 공유 및 불법공유 행위 적발 시 회원자격 박탈 및 고발 조치가 진행될 수 있습니다.</li>
 				</ul>
 			</div>
-		</div>
+		</div>--}}
 	</div>
     <!-- End Container -->
 @stop

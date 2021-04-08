@@ -78,12 +78,12 @@
                                 <li>
                                     <p>2021 대비 합격 전략 설명회</p>
                                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2020 합격생 간담회</p>
                                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -96,12 +96,12 @@
                                 <li>
                                     <p>2020 1~2월 샘플 강의</p>
                                     <a href="https://youtu.be/866he0f9RlE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3월 샘플 강의</p>
                                     <a href="https://youtu.be/8hEtQruyIv4" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -114,17 +114,17 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/sLuznU9Rmd0" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 샘플 강의</p>
                                     <a href="https://youtu.be/VJkL-JYnpwk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 샘플 강의</p>
                                     <a href="https://youtu.be/_S04E5FBzFQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li></li>
                             </ul>
@@ -138,27 +138,27 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/nmqJSQbE0v4" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 국교 샘플 강의</p>
                                     <a href="https://youtu.be/8Pd2FV9vVXg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 문교 샘플 강의</p>
                                     <a href="https://youtu.be/y8vRHR1V5SA" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 국교 샘플 강의</p>
                                     <a href="https://youtu.be/trakw0CHdnQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 문교 샘플 강의</p>
                                     <a href="https://youtu.be/l9ggfjlX-_s" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li></li>
                             </ul>
@@ -172,22 +172,22 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/1arYo1DapLU" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 영미시 샘플 강의</p>
                                     <a href="https://youtu.be/cQrUoe1fJR0" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 PRS 샘플 강의</p>
                                     <a href="https://youtu.be/Rv2YHU-fE8I" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 일영/문학 샘플 강의</p>
                                     <a href="https://youtu.be/lOManlfRPKk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -200,17 +200,17 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/eG64tzalqvg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 영어학 샘플 강의</p>
                                     <a href="https://youtu.be/um-CgAv_seE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 기본반 샘플 강의</p>
                                     <a href="https://youtu.be/dkqpCB-P-Gw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                 </li>
@@ -225,17 +225,17 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/2ElZCe1dnCw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 대수학 샘플 강의</p>
                                     <a href="https://youtu.be/oNMVhXIrodA" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 해석학 샘플 강의</p>
                                     <a href="https://youtu.be/Uhzo0Hb3sXY" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                 </li>
@@ -250,22 +250,22 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/ZinD4SnjwYg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 샘플 강의</p>
                                     <a href="https://youtu.be/beHIn0F_2lI" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 교재반 샘플 강의</p>
                                     <a href="https://youtu.be/SH9y4Xv9tiA" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 위상 샘플 강의</p>
                                     <a href="https://youtu.be/PYq02VWD1t8" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -278,12 +278,12 @@
                                 <li>
                                     <p>2021 1~2월 생물학 샘플 강의</p>
                                     <a href="https://youtu.be/hPXBthC1xmU" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2020 5~8월 문풀반 샘플 강의</p>
                                     <a href="https://youtu.be/VnthgNFeeLA" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -296,12 +296,12 @@
                                 <li>
                                     <p>2021 3~5월 심화반 샘플 강의</p>
                                     <a href="https://youtu.be/RVq9P6sWtbY" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2020 4월 기출분석 샘플 강의</p>
                                     <a href="https://youtu.be/i2Th6pnvBa4" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -314,12 +314,12 @@
                                 <li>
                                     <p>2021 1~2월 내용학 샘플 강의</p>
                                     <a href="https://youtu.be/9XNWbFy2PWk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 내용학 샘플 강의</p>
                                     <a href="https://youtu.be/N8jt_SFqKys" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -332,22 +332,22 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/zUVRtp-fiw0" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2022 대비 입문강좌 샘플 강의</p>
                                     <a href="https://youtu.be/Jed0DiKyYhw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 기본반 샘플 강의</p>
                                     <a href="https://youtu.be/y_KMnPkf9qk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 심화반 샘플 강의</p>
                                     <a href="https://youtu.be/6b9NjluBHHs" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -360,32 +360,32 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/9zke9kFEhNw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2022 대비 설명회 Q&A</p>
                                     <a href="https://youtu.be/6Rr5gScQ548" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 화성학 샘플 강의</p>
                                     <a href="https://youtu.be/7oIMgXAPvHw" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 한끝맵 샘플 강의</p>
                                     <a href="https://youtu.be/R7LnG-QRCHo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 종음셋 샘플 강의</p>
                                     <a href="https://youtu.be/94JoPJl5zxU" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 정리반 샘플 강의</p>
                                     <a href="https://youtu.be/D30usWe-dFs" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -398,19 +398,22 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/mZDUnozVMB8" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 기초 샘플 강의</p>
                                     <a href="https://youtu.be/c97_bJ87Ruk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
-                                    <p>2021 3~4월 일영 샘플 강의</p>
-                                    <a href="https://youtu.be/lOManlfRPKk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    <p>2021 3~5월 자기학 샘플 강의</p>
+                                    <a href="https://youtu.be/GZFxSD6956E" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
+                                    <p>2021 3~6월 회로반 샘플 강의</p>
+                                    <a href="https://youtu.be/1DdQTRA-2Ug" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -423,17 +426,17 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/1EGLurcjYLk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~3월 이론반 샘플 강의</p>
                                     <a href="https://youtu.be/LMdBFMmmfUE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 3~4월 기출반 샘플 강의</p>
                                     <a href="https://youtu.be/36hh8BfK5TU" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                 </li>
@@ -449,12 +452,12 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/1EGLurcjYLk" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~3월 이론반 샘플 강의</p>
                                     <a href="https://youtu.be/LMdBFMmmfUE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>
@@ -468,24 +471,22 @@
                                 <li>
                                     <p>2022 대비 합격 전략 설명회</p>
                                     <a href="https://youtu.be/JQ4KMa11Q-o" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~4월 독해반 샘플 강의</p>
                                     <a href="https://youtu.be/7OUWpWgVm9Q" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
                                     <p>2021 1~2월 이론반 샘플 강의</p>
                                     <a href="https://youtu.be/m5BSlrAy2sU" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                                 <li>
-                                    {{--
                                     <p>2021 3~4월 문풀반 샘플 강의</p>
-                                    <a href="https://youtu.be/LMdBFMmmfUE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
-                                    <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>
-                                    --}}
+                                    <a href="https://youtu.be/2pp4XDlYJNM" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn01.png" alt="바로보기"/></a>
+                                    {{--<a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_btn02.png" alt="자료다운"/></a>--}}
                                 </li>
                             </ul>
                         </td>

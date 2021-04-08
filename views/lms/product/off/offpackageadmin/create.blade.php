@@ -7,7 +7,6 @@
         if($method == 'PUT') {
             $disabled = "disabled";
         }
-
         //메모코드 초기화
         for($i=634001; $i<634006; $i++){
             ${"MemoTypeCcd_".$i} = ''; //초기화
@@ -267,7 +266,7 @@
                     </label>
                     <div class="col-md-10 form-inline">
                         <p><button type="button" class="btn btn-sm btn-primary ml-5" id="essLecAdd">단과반검색</button>
-                            <!--button type="button" class="btn btn-sm btn-primary ml-5" id="">정렬변경</button//-->
+                            <b><span class="red">※ 일반형 등록 시 각 단과반의 그룹 번호가 달라야 합니다.</span></b>
                         </p>
                         <table class="table table-striped table-bordered" id="essLecList" width="100%">
                             <colgroup>
@@ -1083,6 +1082,29 @@
                     if ($("input[name='selLecAddCheck[]']").length == 0) {
                         alert('선택과목강좌구성을 선택하여 주십시오.');
                         $('#selLecAdd').focus();
+                        return;
+                    }
+                }
+                //일반형일경우 필수과목강좌구성의 그룹핑이 개별로 돼있는지 체크
+                if($('input:radio[name="PackTypeCcd"]:checked').val() === '648001') {
+                    var $do_break = false;
+                    var $ess_selector = $('#essLecList').find("select[name='SubGroupName[]']");
+                    $ess_selector.each(function() {
+                        pre_id = $(this).attr('id');
+                        pre_val = $(this).val();
+                        $ess_selector.each(function() {
+                           if(pre_id !== $(this).attr('id') && pre_val === $(this).val()) {
+                               alert("그룹 번호를 다르게 지정해 주세요. 중복되는 그룹번호는 '" + $(this).val() + "' 입니다.");
+                               $do_break = true;
+                               $ess_selector.focus();
+                               return false;
+                           }
+                        })
+                        if($do_break) {
+                            return false;
+                        }
+                    });
+                    if($do_break) {
                         return;
                     }
                 }

@@ -42,7 +42,7 @@
 
             <table class="table table-striped table-bordered">
                     <tr>
-                        <th>종합반명</th>
+                        <th>강좌기본정보</th>
                         <td>
                             @if($lec['LearnPatternCcd'] == '615007')
                                 [종합반명] {{$lec['ProdName']}} <br>

@@ -32,7 +32,15 @@
                             <th>수강기간</th>
                             <td>{{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}}</td>
                             <th>잔여일</th>
-                            <td>{{$lec['remainDays']}}일</td>
+                            <td>@if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
+                                @elseif(empty($lec['lastPauseEndDate']) == true)
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
+                                @else
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                @endif</td>
                         </tr>
                         </tbody>
                     </table>

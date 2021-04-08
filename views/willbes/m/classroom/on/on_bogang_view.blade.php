@@ -25,8 +25,17 @@
                         {{$lec['subProdName']}}
                     </div>
                     <dl class="w-info tx-gray">
-                        <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}}</span><span class="row-line">|</span></dt>
-                        <dt>보강동영상 신청일 : <span class="tx-black">{{$lec['OrderDate']}}</span>일</dt>
+                        <dt>수강기간 : <span class="tx-black">{{str_replace('-', '.', $lec['LecStartDate'])}}~{{str_replace('-', '.', $lec['RealLecEndDate'])}}
+                            (@if(strtotime($lec['LecStartDate']) > strtotime(date("Y-m-d", time())))
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['LecStartDate']))/86400 +1 }}일
+                                @elseif(empty($lec['lastPauseEndDate']) == true)
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                @elseif(strtotime($lec['lastPauseEndDate']) >= strtotime(date("Y-m-d", time())))
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime($lec['lastPauseEndDate']))/86400 }}일
+                                @else
+                                    {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
+                                @endif)</span>{{-- <span class="row-line">|</span> --}}</dt>
+                        {{-- <dt>보강동영상 신청일 : <span class="tx-black">{{$lec['OrderDate']}}</span>일</dt> --}}
                     </dl>
                 </td>
             </tr>

@@ -230,8 +230,9 @@ class Study extends \app\controllers\BaseController
                 $limit_time = round(intval($limit_time) / 60) . '분';
                 $remain_time = '0분';
             } else {
-                $limit_time = round(intval($limit_time) / 60) . '분';
+                $limit_time = round(intval($limit_time) / 60);
                 $remain_time = round(($limit_time - $study_time) / 60) .'분';
+                $limit_time .= '분';
             }
         }
 

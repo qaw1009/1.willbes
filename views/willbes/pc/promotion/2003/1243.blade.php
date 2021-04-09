@@ -23,9 +23,9 @@
         .wb_top {background:#2a2a2d url(https://static.willbes.net/public/images/promotion/2020/05/1243_bg01.jpg) no-repeat center top; position:relative; height:1468px;}
         .ev_winner {width:980px; margin:0 auto; height:515px; padding:100px 0 20px; margin:0 auto; overflow:hidden}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
-        .wb_cts02 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
-        .wb_cts03 {background:#353439 url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c2_bg.jpg) repeat-y}
-        .wb_cts04 {background:#ffffff url(http://file3.willbes.net/new_gosi/2018/05/EV180528_c9_bg.jpg) no-repeat center top}
+        .wb_cts02 {background:#353439 url(https://static.willbes.net/public/images/promotion/2021/04/1243_01_bg.jpg) repeat-y}
+        .wb_cts03 {background:#353439 url(https://static.willbes.net/public/images/promotion/2021/04/1243_01_bg.jpg) repeat-y}
+        .wb_cts04 {background:#ffffff url(https://static.willbes.net/public/images/promotion/2021/04/1243_c9_bg.jpg) no-repeat center top}
 
         /* 탭 */
         .BnRTab {width:100%; max-width:980px; text-align:center; margin:0 auto}
@@ -67,32 +67,32 @@
 
         <div class="evtCtnsBox wb_cts02" >
 			<img src="https://static.willbes.net/public/images/promotion/2019/05/1243_02.png"/>
-            <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c3.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c3.jpg" />
             <ul class="BnRTab">
                 <li>
                     <a href="#tab1">
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap01.jpg" class="off" alt=""/>
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap01on.jpg" class="on"  />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap01.jpg" class="off" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap01on.jpg" class="on"  />
                     </a>
                 </li>
                 <li>
                     <a href="#tab2">
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap02.jpg" class="off"  />
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap02on.jpg" class="on"  alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap02.jpg" class="off"  />
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap02on.jpg" class="on"  alt=""/>
                     </a>
                 </li>
                 <li>
                     <a href="#tab3">
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03.jpg" class="off" alt=""/>
-                        <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_tap03on.jpg" class="on"  alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap03.jpg" class="off" alt=""/>
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_tap03on.jpg" class="on"  alt=""/>
                     </a>
                 </li>
             </ul>
             <div id="tab1">
                 <div class="slide_con" class="offWrap">
                     <ul class="offSlider">
-                        <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c4_1.jpg" /></li>
-                        <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c4_2.jpg" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c4_1.jpg" /></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c4_2.jpg" /></li>
                     </ul>
                 </div>
             </div>
@@ -100,15 +100,15 @@
             <div id="tab2">
                 <div class="slide_con" class="offWrap">
                     <ul class="offSlider">
-                        <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_1.jpg"/></li>
-                        <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_2.jpg"/></li>
-                        <li><img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c5_3.jpg"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c5_1.jpg"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c5_2.jpg"/></li>
+                        <li><img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c5_3.jpg"/></li>
                     </ul>
                 </div>
             </div>
 
             <div id="tab3">
-                <img src="http://file3.willbes.net/new_gosi/2018/05/EV180528_c6.jpg" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1243_c6.jpg" />
             </div>
         </div><!--wb_cts02//-->
 

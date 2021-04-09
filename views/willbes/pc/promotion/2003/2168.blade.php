@@ -53,7 +53,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2168_01.jpg" alt="법원팀 139명 최종합격"/>
             <div class="ev_winner">
                 <ul id="slider1" class="bxslider">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2168_01_txt.png"/></li>					
+                    <li class="mb10"><img src="https://static.willbes.net/public/images/promotion/2021/04/2168_01_txt.png"/></li>					
                 </ul>
             </div>
         </div>

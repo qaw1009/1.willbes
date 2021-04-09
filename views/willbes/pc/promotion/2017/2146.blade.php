@@ -212,7 +212,7 @@
                                             </label>
                                         </td>
                                         <td>365일</td>
-                                        <td>1,750,000원 → <span><strong>700,000원</strong>(60%↓)</span></td>
+                                        <td>1,400,000원 → <span><strong>700,000원</strong>(60%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('179270','1282624','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/178325" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
@@ -224,7 +224,7 @@
                                             </label>
                                         </td>
                                         <td>300일</td>
-                                        <td>1,400,000원 → <span><strong>630,000원</strong>(55%↓)</span></td>
+                                        <td>1,750,000원 → <span><strong>630,000원</strong>(55%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176772','1282107','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/178322" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>

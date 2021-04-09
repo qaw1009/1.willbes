@@ -72,6 +72,7 @@
                     <col />
                     @if(empty($arr_base['promotion_otherinfo_group']) === false)
                         @foreach($arr_base['promotion_otherinfo_group'] as $order_num => $prof_data)
+                            @if($order_num !== 16) {{-- 교육론 장순선교수 숨김처리 --}}
                             <tr>
                                 <th><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_t{{ $order_num < 10 ? '0'.$order_num : $order_num }}_01.png" alt="{{$prof_data[0]['SubjectName'] or '과목'}}"/></th>
                                 <td><img src="https://static.willbes.net/public/images/promotion/2021/04/2138_03_t{{ $order_num < 10 ? '0'.$order_num : $order_num }}_02.png" alt="{{$prof_data[0]['ProfNickName'] or '교수'}}"/></td>
@@ -103,6 +104,7 @@
                                     </ul>
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                     @endif
                 </table>

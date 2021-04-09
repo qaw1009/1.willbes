@@ -114,7 +114,7 @@
             <a href="#apply2">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_sky2.png" alt="문제풀이 단원별 패키지" >
             </a>
-            <a href="javascript:alert('Coming Soon!')">
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2169" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_sky3.png" alt="5개월 필합 패스" >
             </a>
         </div>       

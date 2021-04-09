@@ -735,7 +735,7 @@ class BasePromotion extends \app\controllers\FrontController
                 if(empty($val['FileFullPath']) === false){
                     $val['download_url'] = site_url('/promotion/downloadOtherFile?file_idx='.$val['EpoIdx'].'&event_idx='.$el_idx);
                 }else{
-                    $val['download_url'] = "javascript:alert('준비중입니다.')";
+                    $val['download_url'] = "javascript:alert('자료 없이 수강 가능한 샘플 강의입니다.')";
                 }
 
                 if(empty($val['OrderNum']) === false){

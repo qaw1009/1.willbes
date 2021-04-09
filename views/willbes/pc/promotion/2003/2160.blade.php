@@ -48,7 +48,7 @@
         .time li img {width:44px}
         .time .time_txt {color:#000; letter-spacing:-1px}
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
-        .d_day {color:#fff;font-size:32px;} 
+        .d_day {color:#fff;font-size:30px;} 
 
         /* 이용안내 */
         .wb_info {padding:100px 0;}

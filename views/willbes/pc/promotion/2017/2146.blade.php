@@ -179,8 +179,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td rowspan="2">교육학</td>
-                                        <td rowspan="2">이인재</td>
+                                        <td rowspan="4">교육학</td>
+                                        <td rowspan="4">이인재</td>
                                         <td>
                                             <label>
                                                 <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][0]['ErIdx'] or ''}}"/>
@@ -203,6 +203,30 @@
                                         <td>350,000원 → <span><strong>175,000원</strong>(50%↓)</span></td>
                                         <td><a href="javascript:fnPlayerSample('176772','1282107','HD');" class="btn01">미리보기</a></td>
                                         <td><a href="https://ssam.willbes.net/lecture/show/cate/3134/pattern/only/prod-code/176772" class="btn02" target="_blank">수강신청</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][32]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][32]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>365일</td>
+                                        <td>1,400,000원 → <span><strong>700,000원</strong>(60%↓)</span></td>
+                                        <td><a href="javascript:fnPlayerSample('179270','1282624','HD');" class="btn01">미리보기</a></td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/178325" class="btn02" target="_blank">수강신청</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="register_chk[]" data-subject-group="edu" value="{{ $arr_base['register_list'][33]['ErIdx'] or ''}}"/>
+                                                {{ $arr_base['register_list'][33]['Name'] or ''}}
+                                            </label>
+                                        </td>
+                                        <td>365일</td>
+                                        <td>1,750,000원 → <span><strong>630,000원</strong>(55%↓)</span></td>
+                                        <td><a href="javascript:fnPlayerSample('176772','1282107','HD');" class="btn01">미리보기</a></td>
+                                        <td><a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/178322" class="btn02" target="_blank">수강신청</a></td>
                                     </tr>
                                     <!--
                                     <tr>

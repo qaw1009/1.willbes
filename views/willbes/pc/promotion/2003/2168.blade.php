@@ -24,7 +24,10 @@
         .evt_01 {background:#353439 url(https://static.willbes.net/public/images/promotion/2021/04/2168_01_bg.jpg) no-repeat center top; position:relative}
         .ev_winner {position:absolute; width:693px; height:380px; top:1040px; left:50%; margin-left:-347px; z-index:10; overflow:hidden;}
         .ev_winner .bx-wrapper .bx-viewport {height:405px;}
-        .evt_02 {background:#dbdbdb}
+        .evt_02 {background:#dbdbdb;padding-bottom:150px}
+        .evt_02 > div {width:1120px; margin:0 auto;}
+        .evt_02 > div a {display:inline-block; text-align:center; font-size:30px; background:#720017; color:#fff; margin:0 20px; height:85px; line-height:85px; padding:0 30px}
+        .evt_02 > div a:last-child {background:#251e54;}
 
         /* 슬라이드배너*/
         .slide_con {position:relative; width:980px; margin:0 auto;  overflow:hidden}
@@ -40,7 +43,7 @@
         .slide_cons p {position:absolute; top:50%; width:56px; height:56px; z-index:100}
         .slide_cons p a {cursor:pointer}
         .slide_cons p.leftBtn {left:-40px; top:37%; width:80px; height:80px;}
-        .slide_cons p.rightBtn {right:-40px;top:37%; width:80px; height:80px;}        
+        .slide_cons p.rightBtn {right:-40px;top:37%; width:80px; height:80px;}       
 
     </style>
     
@@ -60,6 +63,10 @@
 
         <div class="evtCtnsBox evt_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2168_02.jpg" />
+            <div class="NSK-Black">
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/2096" target="_blank">학원 종합반 바로가기 ></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3035/code/2087" target="_blank">온라인 패스 바로가기 ></a>
+            </div>
         </div>
     </div>
     <!-- End Container -->

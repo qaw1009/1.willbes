@@ -23,10 +23,13 @@
 
         .sky {position:fixed; top:250px;right:25px;z-index:10;}
         .sky a { display:block; padding-bottom:15px;}
-
-        .wb_top {background:#f5efe1;}
-
+        
+        .wb_top,
         .wb_01 {background:#f5efe1;}
+
+        .wb_top > div,
+        .wb_01 > div,
+        .wb_04 > div {width:1120px; margin:0 auto; position:relative}
 
         .wb_02 {position:relative;background:#414141}
         .wb_02 .circle01{position:absolute;left:39%;top:35%;margin-left:-100px;}
@@ -51,7 +54,7 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="sky">
-             <a href="#evt_01">
+            <a href="#evt_01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_sky.jpg" title="웰컴 키드 받기">
             </a>     
             <a href="#evt_03">
@@ -60,18 +63,17 @@
         </div>
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_top.jpg" usemap="#Map2102a" title="3월 첼린지" border="0" />
-            <map name="Map2102a" id="Map2102a">
-                <area shape="rect" coords="2,509,252,898" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif/>
-                <area shape="rect" coords="867,508,1120,906" href="javascript:certOpen();" alt="응시반허 인증하기">
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2102_top.jpg" title="4월 신규가입" />
+                <a title="4월 신규가입" style="position: absolute; left: 38.48%; top: 57%; width: 22.5%; height: 42.89%; z-index: 2;" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif></a>
+            </div>
         </div>  
 
         <div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_01.jpg" usemap="#Map2102b" title="3월 월컴키트" border="0" />
-            <map name="Map2102b" id="Map2102b">
-                <area shape="rect" coords="317,817,803,906" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif/>
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2102_01.jpg" title="4월 월컴키트" />
+                <a title="4월 월컴키트" style="position: absolute; left: 27.86%; top: 70.35%; width: 44.11%; height: 8.04%; z-index: 2;" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif></a>
+            </div>
         </div>  
 
         <div class="evtCtnsBox wb_02" id="evt_01">
@@ -103,14 +105,14 @@
         </div>
 
         <div class="evtCtnsBox wb_04" id="evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_04.jpg" usemap="#Map2102d" title="스마트폰 배경화면 다운받기" border="0" />
-            <map name="Map2102d" id="Map2102d">
-                <area shape="rect" coords="269,1017,369,1047" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" />
-                <area shape="rect" coords="509,1017,609,1048" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif" />
-                <area shape="rect" coords="749,1016,849,1047" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif" />
-                <area shape="rect" coords="388,1500,489,1530" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif" />
-                <area shape="rect" coords="629,1500,728,1530" href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif" />
-            </map>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_04.jpg" usemap="#Map2102d" title="스마트폰 배경화면 다운받기" border="0" />
+                <a title="그레이" style="position: absolute; left: 23.66%; top: 56.33%; width: 9.82%; height: 2.06%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"></a>
+                <a title="네이비" style="position: absolute; left: 44.82%; top: 56.33%; width: 9.82%; height: 2.06%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif"></a>
+                <a title="그린" style="position: absolute; left: 66.52%; top: 56.33%; width: 9.82%; height: 2.06%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif"></a>
+                <a title="퍼플" style="position: absolute; left: 34.2%; top: 83.11%; width: 9.82%; height: 2.06%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif"></a>
+                <a title="핑크" style="position: absolute; left: 55.63%; top: 83.17%; width: 9.82%; height: 2.06%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[4] == 'Y') {{ front_url($file_link[4]) }} @else {{ $file_link[4] }} @endif"></a>
+            </div>
         </div>
 
     </div>

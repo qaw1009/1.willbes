@@ -217,7 +217,7 @@
                             <tr>
                                 <td>수사 신광은</td>
                                 <td>2021년 2차대비 신광은 심화 수사</td>
-                                <td>4/14(수)</td>                      
+                                <td>4/21(수)</td>                      
                                 <td><a href="https://police.willbes.net/pass/offLecture/show/cate/3011/prod-code/178774" target="_blank">수강신청</a></td>
                             </tr>
                             <tr>

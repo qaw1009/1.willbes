@@ -28,7 +28,7 @@
         .newTopDday ul li:last-child {text-align:left; padding-left:20px; width:24%; line-height:60px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 
-        .sky {position:fixed;top:120px;right:10px;z-index:2;}
+        .sky {position:fixed;top:250px;right:10px;z-index:2;}
         .sky a {display:block;margin-top:10px;}
 
         .wb_06 {background:#1a1a1a;}
@@ -115,9 +115,6 @@
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_sky.png" alt="스카이베너" >
             </a>     
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1178&" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-01.png" alt="무료특강" >
-            </a>
             <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67J207Jyk7KO8" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-02.png" alt="문제풀이" >
             </a> 

@@ -43,7 +43,7 @@
         .slide_con1 p.rightBtn1 {right:-31px;top:50%; width:62px; height:62px;  margin-top:-31px;opacity:0.9; filter:alpha(opacity=90);}
 
         /*탭(텍스트)*/
-        .tabContaier{width:100%;background:#0e275f;}
+        .tabContaier{width:100%;background:#0e275f;position:relative;}
         .tabContaier ul{width:1120px;margin:0 auto;height:70px;} 
         .tabContaier li{display:inline-block;width:280px;height:65px;line-height:65px;background:#0b2661;color:#9096aa;float:left;font-size:19px;font-weight:bold;}
         .tabContaier:after {content:""; display:block; clear:both}
@@ -81,14 +81,12 @@
             </div> 
             
             <div id="tab1" class="tabContents">     
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1586_01_content.jpg" usemap="#Map1586_apply" title="스파르타 신청하기" border="0" />
-                <map name="Map1586_apply" id="Map1586_apply">
-                    <area shape="rect" coords="365,701,754,760" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605001" target="_blank" />
-                </map> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1586_01_content.jpg" title="스파르타 신청하기" />
+                <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&subject_idx=1074&course_idx=&campus_ccd=605001" target="_blank" title="스파르타 신청하기" style="position: absolute; left: 39.21%; top: 52.21%; width: 20.93%; height: 3.26%; z-index: 2;"></a>      
             </div>
             
             <div id="tab2" class="tabContents">       
-                <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_02_content.jpg"  title="" />      
+                <img src="https://static.willbes.net/public/images/promotion/2020/03/1586_02_content.jpg"  title="스파르타 안내" />      
             </div>
 
             <div id="tab3" class="tabContents tabs3">       

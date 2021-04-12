@@ -202,13 +202,13 @@
                                         <td>2021년 2차대비  1단계종합반 (한국사 원유철)</td>
                                         <td><span style="text-decoration: line-through;">750,000원</span><br />
                                         <span style="color:#f72739">525,000원</span></td>              
-                                        <td><a href="javascript:alert('Coming Soon!')">신청하기 ></a></td>
+                                        <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/181486" target="_blank">신청하기 ></a></td>
                                     </tr>     
                                     <tr>
                                         <td>2021년 2차대비  1단계종합반 (한국사 오태진)</td>
                                         <td><span style="text-decoration: line-through;">690,000원</span><br />
                                         <span style="color:#f72739">483,000원</span></td>                         
-                                        <td><a href="javascript:alert('Coming Soon!')" >신청하기 ></a></td>
+                                        <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/181487" target="_blank">신청하기 ></a></td>
                                     </tr>                          
                                 </tbody>
                             </table>        

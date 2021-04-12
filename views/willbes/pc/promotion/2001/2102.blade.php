@@ -69,14 +69,14 @@
             </div>
         </div>  
 
-        <div class="evtCtnsBox wb_01">
+        <div class="evtCtnsBox wb_01" id="evt_01">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2102_01.jpg" title="4월 월컴키트" />
                 <a title="4월 월컴키트" style="position: absolute; left: 27.86%; top: 70.35%; width: 44.11%; height: 8.04%; z-index: 2;" href="{{ sess_data('is_login') === true ? 'javascript:alert("이미 로그인 상태입니다.");' : 'https://www.willbes.net/member/join/?ismobile=0&sitecode=2001' }}" @if(sess_data('is_login') !== true) target="_blank" @endif></a>
             </div>
         </div>  
 
-        <div class="evtCtnsBox wb_02" id="evt_01">
+        <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2102_02.jpg" title="월컴키트" />
             <div class="circle01">
                 <a href="#none;">

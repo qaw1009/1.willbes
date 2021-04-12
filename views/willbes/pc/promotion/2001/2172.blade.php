@@ -25,9 +25,9 @@
         
         .wb_01 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2172_01_bg.jpg) repeat-y center top;}   
 
-        .wb_02 {background:#003427;position:relative;}   
+        .wb_02 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2172_02_bg.jpg) repeat-y center top;position:relative;} 
 
-        .wb_03 {background:#f1bd77}  
+        .wb_03 {background:#f1bd77} 
         
     </style>
 

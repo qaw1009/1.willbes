@@ -21,6 +21,8 @@
 
         .evt04 {padding-top:575px;} 
 
+        .evt05 {padding-top:100px;}
+
     </style>
 
     <div class="p_re evtContent NGR" id="evtContainer">  

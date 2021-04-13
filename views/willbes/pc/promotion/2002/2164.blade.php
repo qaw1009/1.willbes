@@ -161,7 +161,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_02.jpg" title="문제풀이 단계" />
             <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="1단계 신청하기" style="position: absolute; left: 40.21%; top: 30.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
             <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" title="2단계 신청하기" style="position: absolute; left: 40.21%; top: 62.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" title="3단계 신청하기" style="position: absolute; left: 40.21%; top: 92.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" title="3단계 신청하기" style="position: absolute; left: 40.21%; top: 92.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
         </div>    
 
         <div class="evtCtnsBox evt03" id="apply1">

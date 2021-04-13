@@ -146,10 +146,9 @@
     {{-- 임용 --}}
     <div id="topBannerLayer" class="ssam">
         <div class="topBanner">
-            <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_top_bn.jpg" alt="합격전략 설명회" usemap="#Map2017" border="0">
-            <map name="Map2017">
-              <area shape="rect" coords="829,11,1020,62" href="{{ front_url('/promotion/index/cate/3140/code/2138') }}" target="_blank" alt="2022대비실전모의고사다시보기">
-            </map>
+            <a href="{{ front_url('/promotion/index/cate/3140/code/2138') }}" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/main/2018/2018_top_bn.jpg" alt="합격전략 설명회">
+            </a>
         </div>
     </div>
 @endif

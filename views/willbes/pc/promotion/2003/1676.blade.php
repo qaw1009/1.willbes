@@ -10,8 +10,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:150px;right:10px; width:160px; text-align:center; z-index:1;}
-        .skybanner a {display:block; margin-bottom:15px;}
+        .skybanner {position:fixed;top:60px;right:10px; width:168px; text-align:center; z-index:1;}
+        .skybanner a {display:block; margin-bottom:5px;}
 
         .evttop_banners {background:#060606;} 
 
@@ -59,7 +59,7 @@
         .guide_box dd:last-child {margin:0}    	
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">  
+    <div class="evtContent NGR" id="evtContainer">  
         <div class="skybanner">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
@@ -73,8 +73,8 @@
             </map>              
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1676_sky3.png" usemap="#Map1676_sky3" title="아작내기,적중50선" border="0" style="padding-top:15px;">
             <map name="Map1676_sky3" id="Map1676_sky3">
-                <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/index/cate/3019/pattern/only?search_order=regist&subject_idx=1108&search_text=UHJvZE5hbWU67JWE7J6R64K06riw" target="_blank" onfocus="this.blur()" />
-                <area shape="rect" coords="85,2,167,151" href="javascript:alert('엄청난 선물과 함께 곧 찾아올게요!')" onfocus="this.blur()" />
+                <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/180888" target="_blank" />
+                <area shape="rect" coords="85,2,167,151" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blank"/>
             </map>               
         </div>         
         
@@ -133,8 +133,7 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">                   
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_march.jpg" /></li>
+                <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_april.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_may.jpg" /></li>
                 </ul>     

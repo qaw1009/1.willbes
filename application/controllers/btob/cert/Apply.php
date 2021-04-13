@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Apply extends \app\controllers\BaseController
 {
-    protected $models = array('_lms/sys/btobCode', 'cert/btobCert');
+    protected $models = array('_lms/sys/btobCode', 'sys/btobApprovalPolicy', 'cert/btobCert');
     protected $helpers = array();
     private $_sess_btob_idx = null;
     private $_sess_btob_branch_ccd = null;

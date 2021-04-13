@@ -31,26 +31,23 @@
 
     <div class="evtContent NSK">
         <div class="evtCtnsBox evt_top">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_top.jpg" alt="공린이를 위한 단과" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_top.jpg" alt="7급 PSAT advanced" />
         </div>
 
         <div class="evtCtnsBox evt_01">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_01.jpg" alt="합리적인 가격" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_01.jpg" alt="7급 PSAT 강사진" />
         </div>
 
         <div class="evtCtnsBox evt_02">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_02.jpg" alt="쿠폰 다운로드" usemap="#Map2110_coupon" border="0" />
-            <map name="Map2110_coupon" id="Map2110_coupon">
-                <area shape="rect" coords="570,279,967,368" href="javascript:void(0);" title="쿠폰받기" onclick="giveCheck();"/>
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_02.jpg" alt="" />
         </div>   
 
         <div class="evtCtnsBox evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_03.jpg" alt="수강신청" />           
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_03.jpg" alt="강의/수강특전" />           
         </div> 
 
         <div class="evtCtnsBox evt_04">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_04.jpg" alt="수강신청" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/03/2136_04.jpg" alt="" />
         </div>   
         
         <div class="evtCtnsBox evt_05"> 
@@ -66,8 +63,7 @@
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif 
-        </div>
-        
+        </div>       
          
     </div>
    <!-- End Container -->

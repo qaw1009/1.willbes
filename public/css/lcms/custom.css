@@ -782,7 +782,8 @@ button#act-excelDown {
 .form-inline button.btn-info,
 .form-inline button.btn-warning,
 .form-inline button.btn-danger,
-.form-inline button.btn-auto-login {
+.form-inline button.btn-auto-login,
+.form-inline button.btn-dark {
     font-size: 12px;
     padding: 4px 7px;
 }

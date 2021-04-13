@@ -48,41 +48,7 @@ class RegExamModel extends WB_Model
      */
     public function mainList($is_count = false, $add_condition = [], $limit = null, $offset = null)
     {
-        if ($is_count === true) {
-            $column = 'count(*) AS cnt';
-            $order_by_offset_limit = '';
-        } else {
-            $column = "
-                MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor, SJ.SubjectName,
-                (SELECT COUNT(MemIdx) 
-                    FROM {$this->_table['mock_register']} AS MR
-                    JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx
-                WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = MP.MpIdx AND TakeForm = (SELECT Ccd FROM {$this->_table['lms_sys_code']} WHERE CcdName = 'online')) AS OnlineCnt,
-                (SELECT COUNT(MemIdx) 
-                    FROM {$this->_table['mock_register']} AS MR
-                    JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx 
-                WHERE IsStatus = 'Y' AND IsTake = 'Y' AND MpIdx = MP.MpIdx AND TakeForm = (SELECT Ccd FROM {$this->_table['lms_sys_code']} WHERE CcdName = 'off(학원)')) AS OfflineCnt,
-                (SELECT COUNT(*) FROM {$this->_table['mock_questions']} AS EQ WHERE MP.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt,
-                (
-                    SELECT GROUP_CONCAT(CONCAT(S.SiteName, ' > ', C1.CateName, ' > ', SC.CcdName, ' > ', SJ.SubjectName, ' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']')) AS CateRouteName
-                    FROM {$this->_table['mock_paper_r_category']} AS MPRC
-                    INNER JOIN {$this->_table['mock_r_category']} AS MC ON MPRC.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['mock_r_subject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['mock_base']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_sys_category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
-                    INNER JOIN {$this->_table['lms_sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
-                    WHERE MP.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
-                    GROUP BY MPRC.MpIdx
-                ) AS CateRouteName
-            ";
-            $arr_order_by = ['MP.MpIdx' => 'DESC'];
-            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
-
-        $condition = [ 'IN' => ['MP.SiteCode' => get_auth_site_codes()] ];    //사이트 권한 추가
+        $condition = ['IN' => ['MP.SiteCode' => get_auth_site_codes()]];    //사이트 권한 추가
         $condition = array_merge_recursive($condition, $add_condition);
         $where = $this->_conn->makeWhere($condition)->getMakeWhere(false);
 
@@ -97,8 +63,50 @@ class RegExamModel extends WB_Model
             JOIN {$this->_table['pms_professor']} AS PMS ON P.wProfIdx = PMS.wProfIdx AND PMS.wIsStatus = 'Y'
             LEFT JOIN {$this->_table['admin']} AS A ON MP.RegAdminIdx = A.wAdminIdx
         ";
-        $group_by = ' GROUP BY MP.MpIdx';
-        $query_string = 'SELECT '. (($is_count === true) ? 'COUNT(M.cnt) AS numrows ' : 'M.* ') . 'FROM (SELECT ' . $column . $from . $where . $group_by . $order_by_offset_limit . ') AS M';
+
+        if ($is_count === true) {
+            $query_string = /** @lang text */ "
+                SELECT COUNT(M.cnt) AS numrows
+                FROM (SELECT COUNT(*) AS cnt {$from} {$where} GROUP BY MP.MpIdx) AS M
+            ";
+        } else {
+            $arr_order_by = ['MP.MpIdx' => 'DESC'];
+            $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+
+            $query_string = /** @lang text */ "
+                SELECT M.*
+                    ,(SELECT COUNT(MemIdx)
+                        FROM {$this->_table['mock_register']} AS MR
+                        JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx
+                        WHERE MR.TakeForm = 690001 AND MR.IsStatus = 'Y' AND MR.IsTake = 'Y' AND RR.MpIdx = M.MpIdx
+                    ) AS OnlineCnt
+                    ,(SELECT COUNT(MemIdx)
+                        FROM {$this->_table['mock_register']} AS MR
+                        JOIN {$this->_table['mock_register_r_paper']} AS RR ON MR.MrIdx = RR.MrIdx 
+                        WHERE MR.TakeForm = 690002 AND MR.IsStatus = 'Y' AND MR.IsTake = 'Y' AND RR.MpIdx = M.MpIdx
+                    ) AS OfflineCnt
+                    ,(SELECT COUNT(*) FROM {$this->_table['mock_questions']} AS EQ WHERE M.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y') AS ListCnt
+                    ,(SELECT GROUP_CONCAT(CONCAT(S.SiteName,' > ',C1.CateName,' > ',SC.CcdName,' > ',SJ.SubjectName,' [', IF(MS.SubjectType = 'E', '필수', '선택'), ']')) AS CateRouteName
+                        FROM {$this->_table['mock_paper_r_category']} AS MPRC
+                        INNER JOIN {$this->_table['mock_r_category']} AS MC ON MPRC.MrcIdx = MC.MrcIdx AND MC.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['mock_r_subject']} AS MS ON MC.MrsIdx = MS.MrsIdx AND MS.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['product_subject']} AS SJ ON MS.SubjectIdx = SJ.SubjectIdx AND SJ.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['mock_base']} AS MB ON MS.MmIdx = MB.MmIdx AND MB.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['lms_site']} AS S ON MB.SiteCode = S.SiteCode AND S.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['lms_sys_category']} AS C1 ON MB.CateCode = C1.CateCode AND C1.CateDepth = 1 AND C1.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['lms_sys_code']} AS SC ON MB.Ccd = SC.Ccd AND SC.IsStatus = 'Y'
+                        WHERE M.MpIdx = MPRC.MpIdx AND MPRC.IsStatus = 'Y'
+                        GROUP BY MPRC.MpIdx
+                    ) AS CateRouteName
+                FROM (
+                    SELECT MP.*, A.wAdminName, PMS.wProfName, IF(P.Isuse = 'N' OR PMS.wIsUse = 'N', 'N', 'Y') AS IsUseProfessor, SJ.SubjectName
+                    {$from} {$where}
+                    GROUP BY MP.MpIdx
+                    {$order_by_offset_limit}
+                ) AS M
+            ";
+        }
         $query = $this->_conn->query($query_string);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
@@ -550,36 +558,6 @@ class RegExamModel extends WB_Model
 
     public function callData($form_data)
     {
-        /*$condition = [
-            'EQ' => [
-                'EB.siteCode' => $this->input->post('siteCode'),
-                'EB.MaIdx' => $this->input->post('area_code'),
-                'EB.ProfIdx' => $this->input->post('ProfIdx'),
-                'EB.Year' => $this->input->post('qu_year'),
-                'EB.RotationNo' => $this->input->post('qu_round'),
-                'EQ.QuestionNO' => $this->input->post('qu_no'),
-            ],
-            'NOT' => [
-                'EB.MpIdx' => $this->input->post('nowIdx')
-            ],
-        ];
-
-        $sql = "
-            SELECT EQ.*, MA.AreaName, EB.QuestionOption AS EB_QuestionOption, EB.AnswerNum AS EB_AnswerNum, A.wAdminName
-            FROM {$this->_table['mockExamBase']} AS EB
-            JOIN {$this->_table['mock_questions']} AS EQ ON EB.MpIdx = EQ.MpIdx AND EQ.IsStatus = 'Y'
-            JOIN {$this->_table['mock_area_list']} AS MA ON EQ.MalIdx = MA.MalIdx AND MA.IsStatus = 'Y' AND MA.IsUse = 'Y'
-            LEFT JOIN {$this->_table['admin']} AS A ON EQ.RegAdminIdx = A.wAdminIdx
-            WHERE EB.IsStatus = 'Y'
-        ";
-        $sql .= $this->_conn->makeWhere($condition)->getMakeWhere(true);
-
-        $data = $this->_conn->query($sql)->row();
-        if($data) {
-            $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
-            $data->optSame = ($data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
-        }*/
-
         $arr_condition = [
             'EQ' => [
                 'EB.siteCode' => element('siteCode', $form_data),
@@ -605,11 +583,6 @@ class RegExamModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $data = $this->_conn->query('select ' . $column . $from . $where)->row_array();
-
-        /*if($data) {
-            $data->upImgUrlQ = $this->config->item('upload_url_mock', 'mock') . $data->MpIdx . $this->config->item('upload_path_mockQ', 'mock');
-            $data->optSame = ($data->EB_AnswerNum == $this->input->post('AnswerNum')) ? 1 : 0;
-        }*/
 
         if($data) {
             $data['upImgUrlQ'] = $this->config->item('upload_url_mock', 'mock') . $data['MpIdx'] . $this->config->item('upload_path_mockQ', 'mock');

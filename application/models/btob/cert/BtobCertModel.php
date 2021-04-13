@@ -33,7 +33,7 @@ class BtobCertModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'CA.ApplyIdx, CA.BtobIdx, CA.MemIdx, CA.ApplySeq, CA.SiteCode, CA.ProdCode, CA.OrderIdx, CA.LecStartDate, CA.LecEndDate
+            $column = 'CA.ApplyIdx, CA.BtobIdx, CA.MemIdx, CA.ApplySeq, CA.SiteCode, CA.ProdCode, CA.OrderIdx, CA.BranchCcd, CA.LecStartDate, CA.LecEndDate
                 , CA.ApprovalDatm, CA.ApprovalExpireDatm, CA.RegDatm
                 , M.MemId, M.MemName, M.JoinDate, fn_dec(M.PhoneEnc) as MemPhone, M.BirthDay, M.Sex, if(M.Sex = "M", "남", "여") as SexKr, P.ProdName
                 , AC.CcdName as AreaCcdName, BC.CcdName as BranchCcdName, TKC.CcdName as TakeKindCcdName
@@ -164,6 +164,12 @@ class BtobCertModel extends WB_Model
 
             // 변경 진행상태별 프로세스 진행
             if ($approval_status == 'Y') {
+                // 지점별 당월 승인완료 제한건수 체크
+                $limit_check = $this->_checkApprovalLimitCnt($sess_btob_idx, $apply_row['BranchCcd']);
+                if ($limit_check !== true) {
+                    throw new \Exception($limit_check);
+                }
+
                 // 승인완료 (주문등록)
                 $result = $this->_addOrder($sess_btob_idx, $apply_idx, array_merge($input, $apply_row));
                 if ($result['ret_cd'] === false) {
@@ -199,6 +205,33 @@ class BtobCertModel extends WB_Model
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
+        }
+
+        return true;
+    }
+
+    /**
+     * 지점별 당월 승인완료 제한건수 체크
+     * @param int $btob_idx
+     * @param string $branch_ccd
+     * @return bool|string
+     */
+    private function _checkApprovalLimitCnt($btob_idx, $branch_ccd)
+    {
+        // 당월 해당 지점 수강부여 제한건수 조회
+        $limit_cnt = $this->btobApprovalPolicyModel->getCurrentApprovalLimitCnt($btob_idx, $branch_ccd);
+
+        if ($limit_cnt > -1) {
+            // 해당 지점 승인완료 건수 조회
+            $arr_condition = [
+                'EQ' => ['BtobIdx' => $btob_idx, 'BranchCcd' => $branch_ccd, 'ApprovalStatus' => 'Y'],
+                'BDT' => ['ApprovalDatm' => [date('Y-m-d'), date('Y-m-t')]]
+            ];
+            $complete_cnt = $this->_conn->getFindResult($this->_table['btob_cert_apply'], true, $arr_condition);
+
+            if ($limit_cnt <= $complete_cnt) {
+                return '해당 지점 수강부여(승인완료) 가능한 개수가 초과되어 수강부여(승인완료) 처리가 불가능합니다.';
+            }
         }
 
         return true;

@@ -10095,7 +10095,8 @@ table.acadTable tr td {
 	line-height: 1.5;
 	padding: 15px 0;
 }
-table.acadTable tr td .Layer-SubTit a {padding:1px 4px; font-size:11px; color:#fff; background-color: #333; border:1px solid #000}
+table.acadTable tr td .Layer-SubTit span {display:inline-block; padding:0 4px; height:24px; line-height: 24px; vertical-align: top}
+table.acadTable tr td .Layer-SubTit a {display:inline-block; padding:0 4px; font-size:11px; color:#fff; background-color: #333; border:1px solid #000;  height:24px; line-height: 24px}
 table.acadTable tr td .Layer-SubTit a.blue {background-color: #1a8ccb; border:1px solid #0d74ae}
 .seatsection {
 	background: #f6f6f6;

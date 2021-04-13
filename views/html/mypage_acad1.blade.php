@@ -225,11 +225,41 @@
                                         <div class="Layer-Cont">
                                             <div class="Layer-SubTit tx-gray">
                                                 <ul>
-                                                    <li>[노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28] <a href="#none">교재구매</a> <span class="oBox changeBox NG">인강전환</span> <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a> </li>
-                                                    <li>경찰학 기본(단과)[1/6~2/18] <a href="#none">교재구매</a></li>
-                                                    <li>형법 기본(단과)[1/28~2/14] <a href="#none">교재구매</a></li>
-                                                    <li>영어 기본(단과) [1/8~2/21] <a href="#none">교재구매</a></li>
-                                                    <li>원유철한국사 기본(단과)[2/17~3/6] <a href="#none">교재구매</a></li>
+                                                    <li>
+                                                        [노량진경찰] 2020년 대비 11개월 형소법 기본(단과) [2020.01.06~2022.02.28]
+                                                        <div>
+                                                            <a href="#none">교재구매</a>
+                                                            <span class="oBox changeBox NG">인강전환</span>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        경찰학 기본(단과)[1/6~2/18]
+                                                        <div>
+                                                            <a href="#none">교재구매</a>
+                                                            <span class="oBox changeBox NG">인강전환</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        형법 기본(단과)[1/28~2/14]
+                                                        <div>
+                                                            <a href="#none">교재구매</a>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        영어 기본(단과) [1/8~2/21]
+                                                        <div>
+                                                            <span class="oBox changeBox NG">인강전환</span>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        원유철한국사 기본(단과)[2/17~3/6]
+                                                        <div>
+                                                            <a href="#none">교재구매</a>
+                                                        </div>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

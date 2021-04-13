@@ -88,6 +88,7 @@
                                                             @else
                                                                 @foreach($row['subleclist'] as $subrow)
                                                                     <li>{{$subrow['subProdName']}}
+                                                                        <div>
                                                                         @if($subrow['isbook'] == 'Y')
                                                                             @if($subrow['IsDisp'] == 'N')
                                                                                 <a href="#none" onclick="alert('인강으로 전환된 강좌로 교재구매가 불가능합니다');">교재구매</a>
@@ -101,6 +102,7 @@
                                                                         @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
                                                                             <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강동영상신청 ></a>
                                                                         @endif
+                                                                        </div>
                                                                     </li>
                                                                 @endforeach
                                                             @endif

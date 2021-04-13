@@ -43,7 +43,10 @@
         </div>
 
         <div class="evtCtnsBox wb_03">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1058_02.jpg"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1058_02_01.jpg"/><br>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1058_02_02.jpg"/><br>
+            <div class="pt80"><img src="https://static.willbes.net/public/images/promotion/2021/04/1058_02_04.jpg"/></div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1058_02_03.jpg"/>
         </div>
 
         <div class="evtCtnsBox wb_04">
@@ -100,10 +103,4 @@
         );
     </script>
 
-    <script>
-        $(function(e){
-            var targetOffset= $("#evtContainer").offset().top;
-            $('html, body').animate({scrollTop: targetOffset}, 1000);
-        });
-    </script>
 @stop

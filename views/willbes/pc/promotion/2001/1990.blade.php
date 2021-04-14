@@ -45,7 +45,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">      
         <div class="skybanner">
-            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2020/12/1990_sky01.jpg" alt="" ></a>
+            <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/04/1990_sky01.png" alt="헌법 고" ></a>
         </div>  
 
         <div class="evtCtnsBox wb_police" >

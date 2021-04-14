@@ -18,9 +18,9 @@
         .sky {position:fixed; top:200px; right:10px; width:130px; z-index:1;}
         .sky ul li {padding-bottom:25px;}
 
-        .evt_top_banner {background: url(https://static.willbes.net/public/images/promotion/2021/03/2088_top_banner_bg.jpg) no-repeat center top;}   
+        .evt_top_banner {background: url(https://static.willbes.net/public/images/promotion/2021/04/2088_top_banner_bg.jpg) no-repeat center top;}   
 
-        .evt_top {background: url(https://static.willbes.net/public/images/promotion/2021/03/2088_top_bg.jpg) no-repeat center top;}
+        .evt_top {background: url(https://static.willbes.net/public/images/promotion/2021/04/2088_top_bg.jpg) no-repeat center top;}
 
         .evt01 {position:relative;padding-bottom:100px;background:#F3F3F3}
         .evt01 .circle01{position:absolute;left:50%;top:22%;margin-left:-100px;}
@@ -102,17 +102,17 @@
 
             <div class="sky">
                 <ul>
-                    <li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2021/03/2088_sky.png"  title="면접캠프 신청하기" /></a></li>
+                    <li><a href="#sky01"><img src="https://static.willbes.net/public/images/promotion/2021/04/2088_sky.png"  title="면접캠프 신청하기" /></a></li>
                     <li><a href="#sky02"><img src="https://static.willbes.net/public/images/promotion/2021/03/2088_sky2.png"  title="무료특강 신청하기" /></a></li>                                             
                 </ul>
             </div>
 
             <div class="evtCtnsBox evt_top_banner">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_top_banner.jpg" title="신광은 면접캠프">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_top_banner.jpg" title="신광은 면접캠프">
             </div>
 
             <div class="evtCtnsBox evt_top">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_top.jpg" title="면접캠프">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_top.jpg" title="면접캠프">
             </div>
 
             <div class="evtCtnsBox evt01">
@@ -155,13 +155,21 @@
                 </div>               
             </div>
 
-            <div class="evtCtnsBox evt02">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_02.jpg" usemap="#Map2088a" title="면접캠프 스캐줄" border="0">
-                <map name="Map2088a" id="Map2088a">
-                    <area shape="rect" coords="810,481,1030,594" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
+            <div class="evtCtnsBox evt_camp" id="sky01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_camp.jpg" usemap="#Map2088_camp" title="면접캠프 신청하기" border="0">
+                <map name="Map2088_camp" id="Map2088_camp">
+                    <area shape="rect" coords="364,1339,758,1408" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181436" target="_blank" />
                 </map>
             </div>
 
+            <div class="evtCtnsBox evt02">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_02.jpg" usemap="#Map2088a" title="면접캠프 스캐줄" border="0">
+                <map name="Map2088a" id="Map2088a">
+                    <area shape="rect" coords="810,481,1030,594" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179948" target="_blank" />
+                </map>
+            </div>
+
+            {{--
             <div class="evtCtnsBox evt03_tab">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_03.jpg" title="교수진 자세히 보기">                                          
                 <ul class="tabs NGEB">
@@ -241,12 +249,13 @@
                 </div> 
             </div>
 
-            <div class="evtCtnsBox evt04" id="sky01">
+            <div class="evtCtnsBox evt04">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_04.jpg" usemap="#Map2088b" title="접수안내" border="0">
                 <map name="Map2088b" id="Map2088b">
                     <area shape="rect" coords="336,979,788,1086" href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1047&subject_idx=1064" target="_blank" />
                 </map>
             </div>
+            --}}
 
             <div class="evtCtnsBox evt05" id="sky02">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2088_05.jpg" usemap="#Map2088c" title="무료특강" border="0">

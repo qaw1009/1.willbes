@@ -38,7 +38,7 @@ class BaseSales extends \app\controllers\BaseController
         } else {
             $arr_code['arr_site_code'] = get_auth_site_codes(true);
             
-            $category_data = $this->categoryModel->getCategoryArray();
+            $category_data = $this->categoryModel->getCategoryRouteArray();
             foreach ($category_data as $row) {
                 if ($row['CateDepth'] == 1) {
                     $arr_code['arr_lg_category'][] = $row;

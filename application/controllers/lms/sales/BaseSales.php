@@ -37,7 +37,18 @@ class BaseSales extends \app\controllers\BaseController
             $arr_ccd_filter_key = ['PayChannel', 'PayRoute', 'PayMethod', 'PayStatus', 'MockTakeForm', 'MockTakeArea'];
         } else {
             $arr_code['arr_site_code'] = get_auth_site_codes(true);
-            $arr_code['arr_category'] = $this->categoryModel->getCategoryArray('', '', '', 1);  // 1차 카테고리 조회
+            
+            $category_data = $this->categoryModel->getCategoryArray();
+            foreach ($category_data as $row) {
+                if ($row['CateDepth'] == 1) {
+                    $arr_code['arr_lg_category'][] = $row;
+                } else {
+                    // 자격증온라인 사이트만 중분류 카테고리 추가
+                    if ($row['SiteCode'] == '2006') {
+                        $arr_code['arr_md_category'][] = $row;
+                    }
+                }
+            }
 
             if ($this->_sales_type == 'book') {
                 /* 교재 */
@@ -146,7 +157,8 @@ class BaseSales extends \app\controllers\BaseController
             ],
             'IN' => [
                 'BO.SiteCode' => get_auth_site_codes(),  // 사이트 권한 추가
-                'SC.GroupCateCode' => array_filter(explode(',', $this->_reqP('search_chk_cate_code'))),
+                'SC.GroupCateCode' => array_filter(explode(',', $this->_reqP('search_chk_lg_cate_code'))),
+                'SC.CateCode' => array_filter(explode(',', $this->_reqP('search_chk_md_cate_code'))),
                 'P.ProdTypeCcd' => $arr_search_prod_type_ccd,
                 'PL.LearnPatternCcd' => array_filter(explode(',', $this->_reqP('search_chk_learn_pattern_ccd'))),
                 'BO.SalePatternCcd' => array_filter(explode(',', $this->_reqP('search_chk_sale_pattern_ccd')))

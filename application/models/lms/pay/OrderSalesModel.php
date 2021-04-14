@@ -102,7 +102,7 @@ class OrderSalesModel extends BaseOrderModel
             if (starts_with($stats_type, 'off') === true) {
                 $excel_column .= ', CertNo';
             }
-            $excel_column .= ', MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, LgCateName';
+            $excel_column .= ', MemName, MemId, MemPhone, PayChannelCcdName, PayRouteCcdName, PayMethodCcdName, CateName';
             $excel_column .= $this->_getListSalesQuery('excel_column', $arr_add_join);
             $excel_column .= ', concat(ProdTypeCcdName, if(SalePatternCcdName != "", concat(" (", SalePatternCcdName, ")"), "")) as ProdTypeCcdName
                 , CampusCcdName, LearnPatternCcdName, ProdName, RealPayPrice, PgFee

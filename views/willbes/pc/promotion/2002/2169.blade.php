@@ -3,11 +3,8 @@
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
-    <style type="text/css">        
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }        
+    <style type="text/css">       
+     
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -54,16 +51,16 @@
         .tabContaier li a:hover,
         .tabContaier li a.active {color:#fff;font-size:25px;background:#3f2626}              
 
-        .evtInfo {padding:100px 0; background:#555; color:#fff; font-size:17px}
-		.evtInfoBox { width:1120px; margin:0 auto; text-align:left; line-height:1.4}
-		.evtInfoBox h4 {font-size:35px; margin-bottom:20px}
-		.evtInfoBox .infoTit {font-size:20px;}
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:10px; color:#c4feff}
 		.evtInfoBox ul {margin-bottom:30px}
       
 
     </style>
 
-    <div class="p_re evtContent NGR" id="evtContainer">
+    <div class="evtContent NSK" id="evtContainer">
         <div class="sky">
             <a href="#apply1">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2169_sky1.png" alt="사전접수 할인 이벤트" >
@@ -139,50 +136,50 @@
             </div>     
         </div>
 
-        <div class="evtCtnsBox evtInfo NGR">
+        <div class="evtCtnsBox evtInfo">
 			<div class="evtInfoBox">
-				<h4 class="NGEB">5개월 필합패스 이용안내</h4>
-				<div class="infoTit NG"><strong>유의사항</strong></div><br/>
+				<h4 class="NSK-Black">5개월 필합패스 이용안내</h4>
+				<div class="infoTit"><strong>◇ 5개월 필합패스 경찰 전문 교수진</strong></div>
 				<ul>
-					<li>
-                        ◇ 5개월 필합패스 경찰 전문 교수진<br/>
-                        형사소송법/수사 – 신광은 교수님<br/>
-                        경찰학개론/행정법 – 장정훈 교수님<br/>
-                        형법 – 김원욱 교수님<br/>
-                        영어 – 하승민 교수님<br/>
-                        한국사(택1) – 원유철 교수님, 오태진 교수님
-                    </li><br/><br/>       
-                    <li>
-                        ◇ 5개월 필합패스<br/>
-                        - 포함과정 : 문제풀이(실강) + 마무리특강(실강) + 빅매치 모의고사(학원시행) + 사물함 + 인강패스<br/>
-                        *인강패스 제공 강좌 (접수일 ~ 8/21(토) 제공)<br/>
-                        - 2021년 대비 기본이론<br/>
-                        - 2021년 2차 대비 심화과정<br/>
-                        - 2021년 2차 대비 문제풀이<br/>
-                        - 2021년 2차 대비 마무리 특강
-                    </li><br/><br/>     
-                    <li>
-                    ◇ 5개월 필합패스 유의사항<br/>
-                        ① 5개월 필합패스는 5/30(일)까지 인강패스, 5/31(월)~8/21(토) 실강+인강패스로 구성된 상품입니다.<br/>
-                        ② 5개월 필합패스는 2021년 9월 21일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
+					<li>형사소송법/수사 – 신광은 교수님</li> 
+                    <li>경찰학개론/행정법 – 장정훈 교수님</li> 
+                    <li>형법 – 김원욱 교수님</li> 
+                    <li>영어 – 하승민 교수님<</li> 
+                    <li>한국사(택1) – 원유철 교수님, 오태진 교수님</li>                      
+                </ul>
+                <div class="infoTit"><strong>◇ 5개월 필합패스</strong></div>
+                <ul>
+                    <li>- 포함과정 : 문제풀이(실강) + 마무리특강(실강) + 빅매치 모의고사(학원시행) + 사물함 + 인강패스<br/>
+                        *인강패스 제공 강좌 (접수일 ~ 8/21(토) 제공)</li>
+                    <li>- 2021년 대비 기본이론</li>
+                    <li>- 2021년 2차 대비 심화과정</li>
+                    <li>- 2021년 2차 대비 문제풀이</li>
+                    <li>- 2021년 2차 대비 마무리 특강</li>                       
+                </ul>
+                <div class="infoTit"><strong>◇ 5개월 필합패스 유의사항</strong></div>
+                <ul>
+                    <li>① 5개월 필합패스는 5/30(일)까지 인강패스, 5/31(월)~8/21(토) 실강+인강패스로 구성된 상품입니다.</li>
+                    <li>② 5개월 필합패스는 2021년 9월 21일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
                         (1개월 연장 시 – 실강 10만원, 인강 5만원)<br/>
-                        *정규과정 : 기본이론, 심화이론, 심화기출, 문제풀이 1+2+3단계, 마무리특강<br/>
-                        ③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.<br/>
-                        ③ 해당 필합패스는 2022년 대비로 진행되는 과정은 수강 불가합니다.<br/>
-                        ④ 영어 아침특강, G-TELP 특강, 한능검 특강은 필합패스에 포함 되어있지 않아 별도의 수강등록이 필요합니다.<br/>
-                        ⑤ 특강의 경우 별도 신청이 필요합니다.<br/>
-                        ⑥ 일부특강은 유료로 결제할 수 있습니다.<br/>
-                        ⑦ 중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.<br/>
-                        ⑧ 환승/다시 챌린지 할인은 타학원 환승 또는 필기합격 증빙 시 신청 가능합니다.<br/>
-                            [환승 대상자]<br/>
-                            - 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생<br/>
-                            - 2020년 1월 이후 자사 실강 수강이력이 없는 수험생<br/>
-                            [다시 챌린지 대상자]<br/>
-                            - 2021년 1차 경찰시험 필기합격 인증이 가능한 수험생
-                    </li>
+                        *정규과정 : 기본이론, 심화이론, 심화기출, 문제풀이 1+2+3단계, 마무리특강</li>
+                    <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>
+                    <li>③ 해당 필합패스는 2022년 대비로 진행되는 과정은 수강 불가합니다.</li>
+                    <li>④ 영어 아침특강, G-TELP 특강, 한능검 특강은 필합패스에 포함 되어있지 않아 별도의 수강등록이 필요합니다.</li>
+                    <li>⑤ 특강의 경우 별도 신청이 필요합니다.</li>
+                    <li>⑥ 일부특강은 유료로 결제할 수 있습니다.</li>
+                    <li>⑦ 중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>
+                    <li>⑧ 환승/다시 챌린지 할인은 타학원 환승 또는 필기합격 증빙 시 신청 가능합니다.</li>
+                    <li>⑨ 장소제공과 인강제공으로 교습시간은 시작되므로, 환불시 개강일 시작으로 해서 환불규정에 맞게 적용됩니다.<br/>
+                    <br/>
+                    [환승 대상자]<br/>
+                    - 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생<br/>
+                    - 2020년 1월 이후 자사 실강 수강이력이 없는 수험생<br/>
+                    <br/>
+                    [다시 챌린지 대상자]<br/>
+                    - 2021년 1차 경찰시험 필기합격 인증이 가능한 수험생</li>
 				</ul>         
-				<div class="infoTit NG"><strong>*학원 사정으로 이벤트 기간 및 금액변동이 있을 수 있습니다.</strong></div>	
-                <div class="infoTit NG"><strong>*학원 접수 문의 : 1544-0336</strong></div>			
+				<div class="infoTit"><strong>*학원 사정으로 이벤트 기간 및 금액변동이 있을 수 있습니다.<br>
+                *학원 접수 문의 : 1544-0336</strong></div>			
 			</div>
 		</div>
         

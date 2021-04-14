@@ -11,25 +11,25 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제조건</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
+                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
                             <option value="">결제채널</option>
                             @foreach($arr_pay_channel_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
+                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
                             <option value="">결제루트</option>
                         @foreach($arr_pay_route_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
+                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                             <option value="">결제수단</option>
                         @foreach($arr_pay_method_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                             <option value="">결제상태</option>
                         @foreach($arr_pay_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
@@ -42,13 +42,13 @@
                     <div class="form-group">
                         <label class="control-label col-md-1">응시조건</label>
                         <div class="col-md-11 form-inline">
-                            <select class="form-control mr-10" id="search_take_form_ccd" name="search_take_form_ccd">
+                            <select class="form-control mr-10" id="search_take_form_ccd" name="search_take_form_ccd" title="응시형태">
                                 <option value="">응시형태</option>
                                 @foreach($arr_mock_take_form_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
                                 @endforeach
                             </select>
-                            <select class="form-control mr-10" id="search_take_area_ccd" name="search_take_area_ccd">
+                            <select class="form-control mr-10" id="search_take_area_ccd" name="search_take_area_ccd" title="응시지역">
                                 <option value="">응시지역</option>
                                 @foreach($arr_mock_take_area_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -60,30 +60,41 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" title="회원검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" title="상품검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>
                     </div>
                 </div>
-                @if(isset($arr_category) === true)
+                @if(isset($arr_lg_category) === true)
                 <div class="form-group">
                     <label class="control-label col-md-1">직종구분</label>
                     <div class="col-md-11 form-inline">
                         <div id="layer_cate_code">
-                            @foreach($arr_category as $idx => $row)
-                                <div class="checkbox mr-10 search_chk_cate_code {{ $row['SiteCode'] }}">
-                                    <input type="checkbox" id="search_chk_cate_code_{{ $loop->index }}" name="search_chk_cate_code" class="flat {{ $row['SiteCode'] }}" value="{{ $row['CateCode'] }}"/>
-                                    <label for="search_chk_cate_code_{{ $loop->index }}" class="input-label">{{ $row['CateName'] }}</label>
+                            @foreach($arr_lg_category as $idx => $row)
+                                <div class="checkbox mr-10 wrap_cate_code {{ $row['SiteCode'] }}">
+                                    <input type="checkbox" id="search_chk_lg_cate_code_{{ $loop->index }}" name="search_chk_lg_cate_code" class="flat search_chk_cate_code {{ $row['SiteCode'] }}" value="{{ $row['CateCode'] }}"/>
+                                    <label for="search_chk_lg_cate_code_{{ $loop->index }}" class="input-label">{{ $row['CateName'] }}</label>
                                 </div>
                             @endforeach
+                            {{-- 중분류 카테고리 --}}
+                            @if(empty($arr_md_category) === false)
+                                <div class="">
+                                @foreach($arr_md_category as $idx => $row)
+                                    <div class="checkbox mr-10 wrap_cate_code {{ $row['SiteCode'] }}">
+                                        <input type="checkbox" id="search_chk_md_cate_code_{{ $loop->index }}" name="search_chk_md_cate_code" class="flat search_chk_cate_code {{ $row['SiteCode'] }}" value="{{ $row['CateCode'] }}"/>
+                                        <label for="search_chk_md_cate_code_{{ $loop->index }}" class="input-label">{{ $row['CateName'] }}</label>
+                                    </div>
+                                @endforeach
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -134,12 +145,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>
@@ -251,7 +262,7 @@
                     {'data' : 'PayChannelCcdName'},
                     {'data' : 'PayRouteCcdName'},
                     {'data' : 'PayMethodCcdName'},
-                    {'data' : 'LgCateName'},
+                    {'data' : 'CateName'},
                 @if($sales_type == 'mockTest')
                     {{-- 모의고사 전용 --}}
                     {'data' : 'TakeFormCcdName'},
@@ -301,12 +312,12 @@
 
                 if (site_code !== '') {
                     // display
-                    $layer.find('.search_chk_cate_code').css('display', 'none');
-                    $layer.find('.search_chk_cate_code').filter('.' + site_code).css('display', '');
+                    $layer.find('.wrap_cate_code').css('display', 'none');
+                    $layer.find('.wrap_cate_code').filter('.' + site_code).css('display', '');
 
                     // checkbox disabled
-                    $layer.find('input[name="search_chk_cate_code"]').iCheck('disable');
-                    $layer.find('input[name="search_chk_cate_code"]').filter('.' + site_code).iCheck('enable');
+                    $layer.find('.search_chk_cate_code').iCheck('uncheck').iCheck('disable');
+                    $layer.find('.search_chk_cate_code').filter('.' + site_code).iCheck('enable');
                 }
             };
 

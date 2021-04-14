@@ -35,10 +35,10 @@
         .wb_cts04 div a:hover {background:#4740d6}
         .wb_cts05 {background:#ECEBF0}
 
-        .evtInfo {padding:80px 0; background:#333333; color:#fff; font-size:17px}
-		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
+        .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:16px}
+		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
-		.evtInfoBox .infoTit {font-size:20px;}
+		.evtInfoBox .infoTit {font-size:20px; margin-bottom:10px; color:#c4feff}
 		.evtInfoBox ul {margin-bottom:30px}
         
         /*타이머*/
@@ -62,15 +62,6 @@
         to{color:#000}
         } 
 
-        
-        /*탭(텍스트)*/
-        .tabContaier{width:100%;background:#fff;padding-bottom:35px;}
-        .tabContaier ul{width:1050px;margin:0 auto;height:70px;} 
-        .tabContaier li{display:inline-block;width:525px;height:65px;line-height:65px;background:#e1e1e1;color:#acacac;float:left;font-size:26px;font-weight:bold;border-bottom:5px solid #0eb9e3;}
-        .tabContaier:after {content:""; display:block; clear:both}
-        .tabContaier li a{display:block;}
-        .tabContaier li a:hover,
-        .tabContaier li a.active {color:#fff;font-size:32px;background:#0eb9e3}
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -174,6 +165,25 @@
                     <li>⑤ 일부특강은 유료로 결제할 수 있습니다.</li>
                     <li>⑥ 중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>			
 				</ul>
+                <div class="infoTit"><strong>10개월 슈퍼패스[2022년 과정]</strong></div>
+                <ul>
+                    <li>포함과정 : 입문기초(영상)+한능검(영상)+G-TELP+기본이론+심화이론+심화기출+문제풀이+마무리특강+모의고사+사물함</li>			
+				</ul>
+
+                <div class="infoTit"><strong>8개월 슈퍼패스[2022년 과정]</strong></div>
+                <ul>
+                    <li>포함과정 : 기본이론+심화이론+심화기출+문제풀이+마무리특강+모의고사+사물함</li>			
+				</ul>
+
+                <div class="infoTit"><strong>10개월 & 8개월 슈퍼패스 환승/ 재등록 이벤트</strong></div>
+                <ul>
+                    <li>환승 <br>
+                    - 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생<br>
+                    - 2020년 이후 자사 실강 수강이력이 없는 수험생</li>	
+                    <li>재등록<br>
+                    - 신광은경찰팀 슈퍼패스를 1년 이내 재등록 하는 수강생</li>		
+				</ul>
+
 				<ul>
 					<li><strong>* 학원사정으로 이벤트 기간 및 금액변동이 있을 수 있습니다.</strong></li>
 					<li><strong>* 학원사정으로 강의 추가 및 변경이 있을수 있습니다.</strong></li>
@@ -185,27 +195,11 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        
-          /*디데이카운트다운*/
+    <script type="text/javascript">        
+        /*디데이카운트다운*/
           $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
-
-            /*탭(텍스터버전)*/
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-            var activeTab = $(this).attr("href");
-            $(".tabContaier ul li a").removeClass("active");
-            $(this).addClass("active");
-            $(".tabContents").hide();
-            $(activeTab).fadeIn();
-            return false;
-            });
-        });
-
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

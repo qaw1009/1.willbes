@@ -25,9 +25,9 @@
 
         .wb_01 {background:#fff;}	
         .wb_01 .youtube iframe {width:640px; height:360px} 
-        .wb_01 .youtube {position:absolute; top:403px; left:49.45%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
-        .wb_01 .youtube.yu02 {top:851px; margin-left:-139px;}
-        .wb_01 .youtube.yu03 {top:1302px;}   
+        .wb_01 .youtube {position:absolute; top:457px; left:49.45%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
+        .wb_01 .youtube.yu02 {top:905px; margin-left:-139px;}
+        .wb_01 .youtube.yu03 {top:1356px;}   
 
         .wb_02 {background:#019282} 
         .wb_03 {background:#1a4041} 

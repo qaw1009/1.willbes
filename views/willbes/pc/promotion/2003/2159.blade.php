@@ -23,11 +23,11 @@
         .sky {position:fixed; top:310px; right:0; z-index:11;}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2159_top_bg.jpg) no-repeat center top; }
-        .youtube {position:absolute; top:1050px; left:50%;z-index:12;margin-left:-450px}
+        .youtube {position:absolute; top:1140px; left:50%;z-index:12;margin-left:-450px}
         .youtube iframe {width:900px; height:525px;}
 
 
-        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10;}
+        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10;padding-top:550px;}
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
@@ -60,10 +60,10 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
-        #content_1 {padding-top:150px;}
-        #content_2_01 {padding-top:150px;padding-bottom:50px;}
-        #content_3 {padding-top:150px;}
-        #content_4 {padding-top:150px;}
+        #content_1 {padding-top:600px;padding-bottom:50px;}
+        #content_2_01 {padding-top:600px;padding-bottom:50px;}
+        #content_3 {padding-top:625px;}
+        #content_4 {padding-top:600px;}
         .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#219164}
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#219164; font-size:90%; margin-left:20px}
@@ -160,11 +160,9 @@
 
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2159_top.jpg" title="국가직 9급 풀케어 서비스" />
-            {{--
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/--iyzvZDf2M?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/85P7aoE5tew?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}
             <div class="evtMenu" id="evtMenu">
                 <ul>
                     <li>

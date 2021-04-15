@@ -107,6 +107,8 @@ class SupportQna extends BaseSupport
                 'b.ProfIdx' => $prof_idx,
                 'b.SubjectIdx' => $subject_idx,
                 'b.CampusCcd' => $s_campus,
+                'b.SiteCode' => ($this->_site_code == config_item('app_intg_site_code')) ? $s_site_code : $this->_site_code, // 통합사이트일 경우 전체 사이트 조회
+                'b.IsBest' => ($s_is_display === 1) ? 0 : '',
                 'd.OnOffLinkCateCode' => $on_off_link_cate_code
             ],
             'ORG' => [
@@ -114,47 +116,23 @@ class SupportQna extends BaseSupport
                     'b.Title' => $s_keyword,
                     'b.Content' => $s_keyword
                 ]
+            ],
+            'RAW' => [
+                ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
             ]
         ];
 
-        // 통합사이트일 경우 전체 사이트 조회
-        if ($this->_site_code == config_item('app_intg_site_code')) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'b.SiteCode' => $s_site_code
-            ]);
-        } else {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'b.SiteCode' => $this->_site_code
-            ]);
-        }
-
-        // 공지숨기기
-        if ($s_is_display == 1) {
-            $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                'b.IsBest' => '0'
-            ]);
-        }
-
-        // 임용은 본인 작성글만 보여주기
+        // 임용 내질문 & 공지 조회
         if(config_app('SiteGroupCode') == '1011'){
-            if($this->session->userdata('is_login') === true){
+            $arr_condition['RAW'] = [
+                ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' 
+                    WHEN b.IsBest = '0' THEN b.RegMemIdx = '{$this->session->userdata('mem_idx')}' ELSE TRUE END)"
+            ];
+        }else{
+            // 내질문 조회(공지 미노출)
+            if ($s_is_my_contents == 1) {
                 $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                    'b.RegMemIdx' => $this->session->userdata('mem_idx'),
-                    'b.RegType' => '0'
-                ]);
-            }
-        }
-
-        // 내질문보기
-        if ($s_is_my_contents == 1) {
-            if (empty($this->session->userdata('mem_idx')) === false) {
-                $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                    'b.RegMemIdx' => $this->session->userdata('mem_idx'),
-                    'b.RegType' => '0'
-                ]);
-            } else {
-                $arr_condition['EQ'] = array_merge($arr_condition['EQ'], [
-                    'b.RegMemIdx' => '0',
+                    'b.RegMemIdx' => ($this->session->userdata('is_login') === true) ? $this->session->userdata('mem_idx') : 0,
                     'b.RegType' => '0'
                 ]);
             }
@@ -175,11 +153,6 @@ class SupportQna extends BaseSupport
         } else {
             $paging_count = $this->_paging_count_m;
         }
-
-        // 통합사이트인 공지만 나오도록
-        $arr_condition['RAW'] = [
-            ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
-        ];
 
         $total_rows = $this->supportBoardTwoWayFModel->listBoardForQna(true, $arr_condition, $s_cate_code);
         $paging = $this->pagination($this->_default_path . '/index/?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);

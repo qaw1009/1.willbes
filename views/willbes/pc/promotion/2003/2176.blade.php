@@ -27,14 +27,14 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/2176_top_bg.jpg) no-repeat center;}        
 
-        .evtMenu {background:#6a299d; width:100%;}
+        .evtMenu {background:#210b33; width:100%;}
         .tabs {width:1120px; margin:0 auto;}
         .tabs li {display:inline; float:left; width:25%}
         .tabs li a {display:block; text-align:center; font-size:16px; color:#fff; padding:20px 0; line-height:1.5; border-right:1px solid #fff}
         .tabs li:last-child a {border:0}
         .tabs li a span {font-size:20px; font-weight:bold}
         .tabs li a:hover,
-        .tabs li a.active {background:#fff; color:#6a299d;}
+        .tabs li a.active {background:#fff; color:#210b33;}
         .tabs:after {content:""; display:block; clear:both}
 
         .evt01 {background:#f2f2f2; padding-bottom:150px}
@@ -52,7 +52,7 @@
 
         .evtCtnsBox iframe {width:940px; height:528px; margin:0 auto; display:block}
 
-        .fixed {position:fixed; width:100%; background:#6a299d; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
+        .fixed {position:fixed; width:100%; background:#210b33; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10;
         }
 
         /* 슬라이드배너 */

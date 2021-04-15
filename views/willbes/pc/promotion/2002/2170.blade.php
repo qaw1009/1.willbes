@@ -109,9 +109,9 @@
         <div class="evtCtnsBox wb_06" id="wb_06">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_06.jpg"  alt="학원 단과 기본완성기출반"/> 
-                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1004&subject_idx=2127" target="_blank" title="형사법 신광은" style="position: absolute; left: 11.43%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a> 
-                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1004&subject_idx=2128" target="_blank" title="경찰학 장정훈" style="position: absolute; left: 39.64%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1004&subject_idx=1049" target="_blank" title="헌법 김원욱" style="position: absolute; left: 67.86%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181339" target="_blank" title="형사법 신광은" style="position: absolute; left: 11.43%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a> 
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181340" target="_blank" title="경찰학 장정훈" style="position: absolute; left: 39.64%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181341" target="_blank" title="헌법 김원욱" style="position: absolute; left: 67.86%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
             </div>   
         </div>         
 

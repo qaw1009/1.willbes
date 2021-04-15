@@ -56,7 +56,7 @@
         <div class="skybanner">
             <a href="#wb_04"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky01.jpg" alt="자격증 선행" ></a>
             <a href="#wb_05"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky02.jpg" alt="배이직" ></a>
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky03.jpg" alt="종합반 추가할인받기" ></a>
+            <a href="https://police.willbes.net/pass/support/notice/show?board_idx=331746&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky03.jpg" alt="종합반 추가할인받기" ></a>
         </div>      
         
         <div class="evtCtnsBox wb_police" >
@@ -93,16 +93,16 @@
         <div class="evtCtnsBox wb_04" id="wb_04">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_04.jpg"  alt="Special 패키지 하나"/>   
-                <a href="#none" title="인강포함" style="position: absolute; left: 17.32%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
-                <a href="#none" title="인강미포함" style="position: absolute; left: 55.09%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
+                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181417" target="_blank" title="인강포함" style="position: absolute; left: 17.32%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
+                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181412" target="_blank" title="인강미포함" style="position: absolute; left: 55.09%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
             </div>
 		</div>
             
         <div class="evtCtnsBox wb_05" id="wb_05">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_05.jpg"  alt="Special 패키지 둘"/>
-                <a href="#none" title="인강포함" style="position: absolute; left: 17.14%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
-                <a href="#none" title="인강미포함" style="position: absolute; left: 55.27%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
+                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181343" target="_blank" title="인강포함" style="position: absolute; left: 17.14%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
+                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181342" target="_blank" title="인강미포함" style="position: absolute; left: 55.27%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
             </div>       
 		</div>         
 

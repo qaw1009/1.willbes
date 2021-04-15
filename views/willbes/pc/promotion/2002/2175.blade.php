@@ -56,7 +56,7 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2175_03.jpg"  alt="과목개편 시험 대비" />
-            <a href="javascript:alert('Coming Soon!')" title="10개월 슈퍼패스 자세히 보기" style="position: absolute; left: 57.32%; top: 68.24%; width: 16.05%; height: 2.54%; z-index: 2;"></a>  
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2171" target="_blank" title="10개월 슈퍼패스 자세히 보기" style="position: absolute; left: 57.32%; top: 68.24%; width: 16.05%; height: 2.54%; z-index: 2;"></a>  
             <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181444" target="_blank" title="10개월 슈퍼패스 신청하기" style="position: absolute; left: 30.32%; top: 89.24%; width: 12.05%; height: 2.54%; z-index: 2;"></a>  
             <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181445" target="_blank" title="환승/재등록 신청하기" style="position: absolute; left: 57.32%; top: 89.24%; width: 12.05%; height: 2.54%; z-index: 2;"></a>  
         </div>

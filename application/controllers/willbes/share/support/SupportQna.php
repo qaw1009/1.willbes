@@ -118,16 +118,15 @@ class SupportQna extends BaseSupport
                 ]
             ],
             'RAW' => [
-                ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END)"
+                'CASE WHEN b.IsBest = 1' => " THEN b.SiteCode = '{$this->_site_code}' ELSE TRUE END"
             ]
         ];
 
         // 임용 내질문 & 공지 조회
         if(config_app('SiteGroupCode') == '1011'){
-            $arr_condition['RAW'] = [
-                ' (CASE WHEN b.IsBest = ' => " '1' THEN b.SiteCode = '{$this->_site_code}' 
-                    WHEN b.IsBest = '0' THEN b.RegMemIdx = '{$this->session->userdata('mem_idx')}' ELSE TRUE END)"
-            ];
+            $arr_condition['RAW'] = array_merge($arr_condition['RAW'], [
+                'CASE WHEN b.IsBest = 0' => " THEN b.RegMemIdx = '{$this->session->userdata('mem_idx')}' ELSE TRUE END"
+            ]);
         }else{
             // 내질문 조회(공지 미노출)
             if ($s_is_my_contents == 1) {

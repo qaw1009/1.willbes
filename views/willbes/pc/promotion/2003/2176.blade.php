@@ -73,7 +73,7 @@
         </div>                       
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_top.jpg" alt="창업 다마고치" >             
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_top.jpg" alt="이아림 소방공채영어 적중" >             
         </div>  
 
         <div class="evtMenu">
@@ -106,24 +106,24 @@
         </div> 
 
         <div class="evtCtnsBox evt01"  id="tab01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_01.jpg" alt="창업 다마고치" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_01.jpg" alt="해설강의" >
             <iframe src="https://www.youtube.com/embed/M1uD2dcW8pI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
 
         <div class="evtCtnsBox evt02" id="tab02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_02.jpg" alt="창업 다마고치" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_02.jpg" alt="생생한 후기" >
         </div>
 
         <div class="evtCtnsBox evt03" id="tab03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03.jpg" alt="창업 다마고치">
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03.jpg" alt="적중사례">
             <div class="downbtn">
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="다운로드">더 많은 적중사례 확인하기 →</a>
             </div>
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_01.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_02.jpg" alt="" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_03.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_01.jpg" alt="적중사례" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_02.jpg" alt="적중사례" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_03.jpg" alt="적중사례" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_next.png"></a></p>
@@ -131,7 +131,7 @@
         </div>
 
         <div class="evtCtnsBox evt04" id="tab04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_04.jpg" alt="BEST 수강후기" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_04.jpg" alt="강의신청" >
             <div>
                 <a href="https://pass.willbes.net/promotion/index/cate/3023/code/1724" target="_blank">온라인 강의 신청 ></a>
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank">학원 실강 신청 ></a>

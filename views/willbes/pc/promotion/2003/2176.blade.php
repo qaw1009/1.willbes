@@ -107,7 +107,7 @@
 
         <div class="evtCtnsBox evt01"  id="tab01">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2176_01.jpg" alt="창업 다마고치" >
-            <iframe src="https://www.youtube.com/embed/pgfPkHvbVJs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/M1uD2dcW8pI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
 
         <div class="evtCtnsBox evt02" id="tab02">

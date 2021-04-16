@@ -15,16 +15,12 @@
 
         /************************************************************/
 
-        .sky {position:fixed; top:200px; right:10px; width:120px; z-index:10;}
-        .sky a {margin-bottom:10px; display:block}
-
         .evt00 {background:#0a0a0a}  
 
-        .evtTop {background:#00323b url(https://static.willbes.net/public/images/promotion/2021/02/2076_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/02/2076_top_bg.jpg) no-repeat center top;}
      
         .evt02 {background:#e1e1e1}
         .evt03 {background:#f3f3f3}
-        .evt04 div {width:1120px; margin:0 auto; position:relative}        
 
         .evt05 {background:#58489b; padding-bottom:100px}
         .evt05_txt {color:#fff; margin-bottom:50px}
@@ -107,17 +103,8 @@
         
     </style>
 
-    <div class="p_re evtContent NSK" id="evtContainer">   
-
-        <div class="sky">
-            <a href="#event">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_sky01.png" alt="사전접수 재등록 환승" >
-            </a> 
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/1975" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_sky02.png" alt="6개월 패스" >
-            </a>                  
-        </div>       
-        
+    <div class="p_re evtContent NSK" id="evtContainer">  
+            
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1009_first.jpg"  alt="경찰학원부분 1위"/>
         </div>
@@ -162,13 +149,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_03.jpg" title="지금부터 준비">
         </div>
 
-        <div class="evtCtnsBox evt04" id="event">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/2076_04.jpg" title="심화기출 개강 이벤트">
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" title="일반경찰" style="position: absolute; left: 22.77%; top: 32.45%; width: 16.43%; height: 2.47%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1041" target="_blank" title="경행경채" style="position: absolute; left: 60.27%; top: 32.45%; width: 16.43%; height: 2.47%; z-index: 2;"></a>
-                <a href="#all_lec" title="심화종합반" style="position: absolute; left: 34.38%; top: 74.81%; width: 30.98%; height: 3.32%; z-index: 2;"></a>
-            </div>
+        <div class="evtCtnsBox evt04">           
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2076_04.jpg" title="샤르드골 명언">        
         </div>
 
         <div class="evtCtnsBox evt05">
@@ -296,21 +278,7 @@
                     <dl>일반경찰 : <span class="original">750,000원</span> > 675,000원</dl>
                     <dl>경행경채 : <span class="original">680,000원</span> > 612,000원</dl>
                     <dl>사전접수 이벤트는 조기 마감될수 있습니다.</dl>                    
-                </dd>     
-                <dd>
-                    <dt>[재등록 이벤트]</dt>
-                    <dl>대상자 : 2020년 1월 이후 심화종합반 실강 수강이력이 있는 수강생</dl>
-                    <dl>수강이력이 있는 수강생에게 50,000원 할인쿠폰 발급됩니다.(중복할인 불가)</dl>
-                    <dl>쿠폰 사용방법 : 심화종합반 바로 결제 > 쿠폰적용 > 50,000원 할인쿠폰 사용<br>
-                        (할인쿠폰이 발급되지 않은 경우 학원으로 문의 바랍니다.)</dl>
-                    <dl>발급된 할인쿠폰은 본인만 사용 가능하며, 유효기간 내에 심화과정종합반에 한하여 사용 가능합니다.</dl>
-                </dd>
-                <dd>
-                    <dt>[환승이벤트]</dt>
-                    <dl>대상자 : 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상있는 수험생 </dl>
-                    <dl>2020년 이후 자사 실강 수강이력이 없는 수험생</dl>
-                    <dl>타학원 수강이력을 반드시 증명할 수 있어야 합니다.</dl>
-                </dd>
+                </dd>               
                 <dd>
                     <dt>* 학원 심화과정 수강문의 1544-0336</dt>
                 </dd>

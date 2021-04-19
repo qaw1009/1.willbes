@@ -170,187 +170,184 @@
 
         <div class="evtCtnsBox evt04" id="apply2">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2177_04.jpg" title="단계별 종합반" >
-            <div class="evtCtnsBox wb_tab">
-                <div class="tabContaier" id="apply">    
-                    <ul class="NSK-Black">    
-                        <li><a href="#tab1" class="active">일반공채</a></li>                            
-                        <li><a href="#tab2">경행경채</a></li>          
-                    </ul>
-                </div> 
+            <div class="tabContaier" id="apply">    
+                <ul class="NSK-Black">    
+                    <li><a href="#tab1" class="active">일반공채</a></li>                            
+                    <li><a href="#tab2">경행경채</a></li>          
+                </ul>
+            </div> 
 
-                <div id="tab1" class="tabContents">   
-                    <div class="evt04_table">     
-                        <div class="title NSK-Black">              
-                            문제풀이 1단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년 2차대비 1단계종합반 (한국사 원유철)</td>
-                                        <td>
-                                            <span class="tx-red">420,000원</span></td>              
-                                        <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/181810">신청하기 ></a></td>
-                                    </tr>     
-                                    <tr>
-                                        <td>2021년 2차대비 1단계종합반 (한국사 오태진)</td>
-                                        <td>
-                                            <span class="tx-red">390,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/181811" target="_blank">신청하기 ></a></td>
-                                    </tr>                          
-                                </tbody>
-                            </table>        
-                        </div> 
-                        <div class="title NSK-Black">              
-                            문제풀이 2단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년 2차대비 2단계 동형모의고사 종합반 (한국사 원/오 택1)</td>
-                                        <td>
-                                            <span class="tx-red">360,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank">신청하기 ></a></td>
-                                    </tr>                                   
-                                </tbody>
-                            </table>        
-                        </div>
-                        <div class="title NSK-Black">              
-                            문제풀이 3단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년2차대비 3단계 파이널 모의고사 종합반 (한국사 원/오 택1)</td>
-                                        <td>
-                                            <span class="tx-red">70,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1009" target="_blank">신청하기 ></a></td>
-                                    </tr>                                                          
-                                </tbody>
-                            </table>        
-                        </div>                                                                        
-                    </div>    
-                </div>
+            <div id="tab1" class="tabContents">   
+                <div class="evt04_table">     
+                    <div class="title NSK-Black">              
+                        문제풀이 1단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년 2차대비 1단계종합반 (한국사 원유철)</td>
+                                    <td>
+                                        <span class="tx-red">420,000원</span></td>              
+                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/181810">신청하기 ></a></td>
+                                </tr>     
+                                <tr>
+                                    <td>2021년 2차대비 1단계종합반 (한국사 오태진)</td>
+                                    <td>
+                                        <span class="tx-red">390,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/show/cate/3001/pack/648001/prod-code/181811" target="_blank">신청하기 ></a></td>
+                                </tr>                          
+                            </tbody>
+                        </table>        
+                    </div> 
+                    <div class="title NSK-Black">              
+                        문제풀이 2단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년 2차대비 2단계 동형모의고사 종합반 (한국사 원/오 택1)</td>
+                                    <td>
+                                        <span class="tx-red">360,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1008" target="_blank">신청하기 ></a></td>
+                                </tr>                                   
+                            </tbody>
+                        </table>        
+                    </div>
+                    <div class="title NSK-Black">              
+                        문제풀이 3단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년2차대비 3단계 파이널 모의고사 종합반 (한국사 원/오 택1)</td>
+                                    <td>
+                                        <span class="tx-red">70,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/index/cate/3001/pack/648001?course_idx=1009" target="_blank">신청하기 ></a></td>
+                                </tr>                                                          
+                            </tbody>
+                        </table>        
+                    </div>                                                                        
+                </div>    
+            </div>
 
-                <div id="tab2" class="tabContents">    
-                    <div class="evt04_table">     
-                        <div class="title NSK-Black">              
-                            문제풀이 1단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년 2차대비 1단계 패키지</td>
-                                        <td>
-                                            <span class="tx-red">360,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181812" target="_blank">신청하기 ></a></td>
-                                    </tr>                                   
-                                </tbody>
-                            </table>        
-                        </div> 
-                        <div class="title NSK-Black">              
-                            문제풀이 2단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년2차대비 2단계 동형모의고사 패키지</td>
-                                        <td>
-                                            <span class="tx-red">360,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181816" target="_blank">신청하기 ></a></td>
-                                    </tr>                                                          
-                                </tbody>
-                            </table>        
-                        </div>
-                        <div class="title NSK-Black">              
-                            문제풀이 3단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>온라인수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년2차대비 3단계 파이널 모의고사 패키지</td>
-                                        <td>
-                                            <span class="tx-red">70,000원</span>
-                                        </td>                         
-                                        <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181820" target="_blank">신청하기 ></a></td>
-                                    </tr>                        
-                                </tbody>
-                            </table>        
-                        </div>                                                                          
-                    </div>               
-                </div>     
-
-            </div>     
+            <div id="tab2" class="tabContents">    
+                <div class="evt04_table">     
+                    <div class="title NSK-Black">              
+                        문제풀이 1단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년 2차대비 1단계 패키지</td>
+                                    <td>
+                                        <span class="tx-red">360,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181812" target="_blank">신청하기 ></a></td>
+                                </tr>                                   
+                            </tbody>
+                        </table>        
+                    </div> 
+                    <div class="title NSK-Black">              
+                        문제풀이 2단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년2차대비 2단계 동형모의고사 패키지</td>
+                                    <td>
+                                        <span class="tx-red">360,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181816" target="_blank">신청하기 ></a></td>
+                                </tr>                                                          
+                            </tbody>
+                        </table>        
+                    </div>
+                    <div class="title NSK-Black">              
+                        문제풀이 3단계
+                    </div>   
+                    <div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <col width="60%" />
+                            <col width="25%" />
+                            <col width="15%" />
+                            <thead>
+                                <tr>
+                                    <th>강의명</th>
+                                    <th>수강료</th>                        
+                                    <th>온라인수강</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2021년2차대비 3단계 파이널 모의고사 패키지</td>
+                                    <td>
+                                        <span class="tx-red">70,000원</span>
+                                    </td>                         
+                                    <td><a href="https://police.willbes.net/package/show/cate/3002/pack/648001/prod-code/181820" target="_blank">신청하기 ></a></td>
+                                </tr>                        
+                            </tbody>
+                        </table>        
+                    </div>                                                                          
+                </div>               
+            </div>   
         </div>
 
         <div class="evtCtnsBox evtInfo" id="careful">
@@ -389,8 +386,7 @@
 				</ul>              
 				<div class="infoTit"><strong>학원 문의 : 1544-0336</strong></div>			
 			</div>
-		</div>
-        
+		</div>        
 	</div>
     <!-- End Container -->
 
@@ -410,7 +406,7 @@
     });     
 
     /*탭(텍스터버전)*/
-        $(document).ready(function(){
+    $(document).ready(function(){
         $(".tabContents").hide();
         $(".tabContents:first").show();
         $(".tabContaier ul li a").click(function(){

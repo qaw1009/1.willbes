@@ -111,7 +111,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <div class="NSK-Black">2021 몰입 PASS</div>
+                        <div class="NSK-Black">2022 몰입 PASS</div>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

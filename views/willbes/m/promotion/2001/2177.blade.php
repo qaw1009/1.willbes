@@ -7,9 +7,6 @@
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
 
-    .evt01 {background:#FFD162; padding-bottom:50px}
-    .evt01 .ImgBox {position:relative;}
-
     .evt03 {background:#f1f1f1; padding-bottom:50px}
     .evt03 .check {font-size:16px; text-align:center; line-height:1.5;; margin:40px 20px 0;font-weight:bold;}
     .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
@@ -78,27 +75,23 @@
     </div>
 
     <div class="evtCtnsBox evtTop">
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_top.jpg" alt="개편패스"/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_top.jpg" alt="문제풀이 풀패키지"/>
     </div>
 
     <div class="evtCtnsBox evt01">
-        <div class="ImgBox">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_01.jpg" alt="신청하기"/>
-            <a href="javascript:go_PassLecture('180683');" title="경찰 개편 pass 수강신청하기" style="position: absolute; left: 28.56%; top: 94.41%; width: 43.19%; height: 6.34%; z-index: 2;"></a>
-        </div>
-        
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_01.jpg" alt="커리큘럼"/>
     </div>
 
     <div class="evtCtnsBox evt02">
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_01.jpg"  alt=""/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_01.jpg"  alt="문제풀이 1단계"/>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_02.jpg"  alt=""/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_02.jpg"  alt="문제풀이 2단계"/>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
         @endif
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_03.jpg"  alt=""/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_02_03.jpg"  alt="문제풀이 3단계"/>
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>3))
         @endif
@@ -106,10 +99,10 @@
 
     <div class="evtCtnsBox evt03">
         <div class="p_re">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_03_01.jpg"  alt=""/>
-            <a href="" title="문풀 오태진" style="position: absolute; left: 38.19%; top: 50.11%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
-            <a href="" title="문풀 원유철" style="position: absolute; left: 38.19%; top: 70.05%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
-            <a href="" title="문풀 경행경채" style="position: absolute; left: 38.19%; top: 90.47%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_03_01.jpg"  alt="문제풀이 풀패키지"/>
+            <a href="javascript:go_PassLecture('181822');" title="문풀 오태진" style="position: absolute; left: 38.19%; top: 50.11%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('181821');" title="문풀 원유철" style="position: absolute; left: 38.19%; top: 70.05%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
+            <a href="javascript:go_PassLecture('181823');" title="문풀 경행경채" style="position: absolute; left: 38.19%; top: 90.47%; width: 23.75%; height: 3.75%; z-index: 2;"></a>
         </div>
         <div class="check">
             <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 신광은경찰풀패키지 이용안내를 모두 확인하였고,이에 동의합니다.</label>
@@ -118,11 +111,11 @@
         <div class="info">
             ※ 강의공유,콘텐츠 부정 사용적발시,회원 자격 박탈 및 환불이 불가하며,불법공유 시안에 따라 민형사상 조치가 있을수 있습니다.
         </div>
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_03_02.jpg"  alt="교수진"/>
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_03_02.jpg"  alt=""/>
     </div>
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_04.jpg" alt="신광은 영상" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2177m_04.jpg" alt="단계별 패키지" >
         <div class="tabContaier" id="apply">    
             <ul class="NSK-Black">    
                 <li><a href="#tab1" class="active">일반공채</a></li>                            

@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed;top:250px; right:25px; z-index:10;}
+        .sky {position:fixed;top:400px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
        
         .evt00 {background:#0a0a0a}
@@ -365,7 +365,7 @@
 
          /*수강신청 동의*/ 
          function go_PassLecture(code){
-            if($("input[name='ischk']:checked").size() < 1){
+            if($("input[name='is_chk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
             }

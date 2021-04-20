@@ -40,12 +40,23 @@
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
     .infoCheck a:hover {background:#0099ff;}
 
-    .evtInfo {padding:80px 20px; background:#333; color:#fff; font-size:16px;}
-    .guide_box {text-align:left; line-height:1.5}
+    .urlReply {font-size:14px; padding:0 20px; line-height:1.5;margin-top:20px}
+    .urlReply input {width:100%; padding:10px;}
+    .urlReply .urlReplyW {border-top:2px solid #333; border-bottom:1px solid #e4e4e4; padding:20px 0}
+    .urlReply .urlReplyW .title {font-size:16px; margin-bottom:10px}
+    .urlReply .btn {margin-top:10px}
+    .urlReply .btn a {display:block; border-radius:5px; background:#333; color:#fff; padding:15px; font-size:16px; text-align:center}
+    .urlReplyList li {padding:10px 0; border-bottom:1px solid #e4e4e4; position:relative; color:#666}
+    .urlReplyList li span {position:absolute; right:0; top:10px; z-index: 1;}
+    .urlReplyList li span a {display:block; width:22px; height:22px; line-height:22px; border:1px solid #ccc; border-radius:2px; text-align:center}
+
+    .evtInfo {padding:40px 20px; background:#333; color:#fff; font-size:16px;}
+    .guide_box {text-align:left; line-height:1.4}
     .guide_box li {list-style: decimal; margin-left:20px; font-size:14px; margin-bottom:10px; color:#ccc}
-    .guide_box h4 {font-size:35px; margin-bottom:50px}
-    .guide_box .infoTit {font-size:20px; margin-bottom:10px}
-    .guide_box ul {margin-bottom:30px}
+    .guide_box h2 {font-size:24px; margin-bottom:30px}
+    .guide_box dt {margin:20px 0 10px}
+    .guide_box dd {margin-bottom:5px}
+    
     .guide_box .only {color:#E80000;vertical-align:top;}
 
     /* 폰 가로, 태블릿 세로*/
@@ -167,9 +178,53 @@
         <a href="https://cafe.naver.com/kts9719" target="_blank" title="네이버 닥공사" style="position: absolute;left: 64.19%;top: 94.11%;width: 20.75%;height: 4.75%; z-index: 2;"></a>
     </div>
 
+    <div class="urlReply">
+        <div class="urlReplyW">
+            <div class="title">홍보 URL 남기기</div>
+            <div><input type="text" name="event_comment" id="event_comment" placeholder="홍보 URL 남기기"></div>
+            <div class="btn"><a href="#none" class="btnrwt" id="btn_submit_comment">이벤트 참여하기 ></a></div>
+        </div>
+        <div class="urlReplyList">
+            <ul>
+                <li>
+                    <div>Ej*****</div>
+                    https://po****************************
+                    <span class="NSK-Black"><a href="#none">X</a></span>
+                </li>
+                <li>
+                    <div>Ej*****</div>
+                    https://po****************************
+                </li>
+                <li>
+                    <div>Ej*****</div>
+                    https://po****************************
+                </li>
+                <li>
+                    <div>Ej*****</div>
+                    https://po****************************
+                </li>
+                <li>
+                    <div>Ej*****</div>
+                    https://po****************************
+                </li>
+            </ul>            
+        </div>
+        <div class="Paging">
+            <ul>
+                <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
+                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                <li><a href="#none">2</a><span class="row-line">|</span></li>
+                <li><a href="#none">3</a><span class="row-line">|</span></li>
+                <li><a href="#none">4</a><span class="row-line">|</span></li>
+                <li><a href="#none">5</a></li>
+                <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="evtCtnsBox evtInfo NGR" id="infoText"> 
         <div class="guide_box" >
-            <h2 class="NSK-Black" >몰입 T패스 이용안내</h2>
+            <h2 class="NSK-Black">몰입 T패스 이용안내</h2>
             <dl>
                 <dt>▶ 몰입 T패스</dt>
                 <dd>

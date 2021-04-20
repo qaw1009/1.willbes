@@ -13,7 +13,7 @@ class Offlecture extends BaseStudent
 
     /**
      * 수강생보기 레이어 팝업
-     */
+
     public function viewLayer()
     {
         $ProdCode = $this->_req("ProdCode");
@@ -22,7 +22,7 @@ class Offlecture extends BaseStudent
             'ProdCode' => $ProdCode
         ]);
     }
-
+*/
 
     /**
      * 수강생보기 리스트

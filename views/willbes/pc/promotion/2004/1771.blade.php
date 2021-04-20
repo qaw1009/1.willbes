@@ -22,7 +22,7 @@
         .skybanner {position:fixed; top:250px; right:10px; z-index:1;}
         .skybanner a { display:block; padding-bottom:10px;}
 
-        .evtTop {background:#0A0702 url(https://static.willbes.net/public/images/promotion/2021/02/1771_top_bg.jpg) center top no-repeat}        
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/04/1771_top_bg.jpg) center top no-repeat}        
 
         .evt01 {background:#fff}
         .tabMenu {width:920px; margin:0 auto 0}        
@@ -41,7 +41,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="evtCtnsBox evtTop" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1771_top_bg.gif" alt="광주 윌비스 공무원 필합반" />           
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1771_top.gif " alt="광주 윌비스 공무원 필합반" />           
         </div>    
 
         <div class="evtCtnsBox evt01">

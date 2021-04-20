@@ -422,19 +422,32 @@ class BaseStudent extends \app\controllers\BaseController
     }
 
     /**
+     * 수강생보기 레이어 팝업
+     */
+    public function viewLayer()
+    {
+        $ProdCode = $this->_req("ProdCode");
+
+        return $this->load->view('/student/layer/layer_'.$this->LearnPattern, [
+            'ProdCode' => $ProdCode
+        ]);
+    }
+
+    /**
      * 엑셀 읽어오기
      * 계속 되는 로직 수정요청으로 똥이 되어가고 있음 차후 다른분이 수정하실때 정책을 새로 잡아서 새로 만드시는것을 권장함
      */
     public function excel()
     {
         $ProdCode  = $this->_reqP('ProdCode');
+        $OrderProdIdx = $this->_reqP('selectOrderProdIdx');
+
         if(empty($ProdCode) == true){
             show_alert('강좌코드를 선택해 주십시요.', 'back');
         }
 
         if( $this->LearnPattern == 'freelecture' ||
             $this->LearnPattern == 'periodpkg' ) {
-
             $headers = ['회원번호', '회원명', '아이디', '상품구분', '주문번호', '결제루트', '결제수단', '결제금액',
                 '결제자', '결제일', '종료일', '휴대폰', '이메일'];
             $column = 'MemIdx, MemName, MemId, SalePatternCcd_Name, OrderIdx, PayRouteCcd_Name, PayMethodCcd_Name, Price
@@ -501,7 +514,8 @@ class BaseStudent extends \app\controllers\BaseController
                     $arr_condition = [
                         'IN' => [
                             'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                            'OP.PayStatusCcd' => $payStatus_arr
+                            'OP.PayStatusCcd' => $payStatus_arr,
+                            'OP.OrderProdIdx' => $OrderProdIdx
                         ],
                         'EQ' => [
                             'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -523,7 +537,8 @@ class BaseStudent extends \app\controllers\BaseController
                         $arr_condition = [
                             'IN' => [
                                 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                                'OP.PayStatusCcd' => $payStatus_arr
+                                'OP.PayStatusCcd' => $payStatus_arr,
+                                'OP.OrderProdIdx' => $OrderProdIdx
                             ],
                             'EQ' => [
                                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -545,7 +560,8 @@ class BaseStudent extends \app\controllers\BaseController
                             'IN' => [
                                 'OP.ProdCode' => $ProdCode, // 강좌코드
                                 'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
-                                'OP.PayStatusCcd' => $payStatus_arr
+                                'OP.PayStatusCcd' => $payStatus_arr,
+                                'OP.OrderProdIdx' => $OrderProdIdx
                             ],
                             'EQ' => [
                                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -580,7 +596,8 @@ class BaseStudent extends \app\controllers\BaseController
                         'MI.SmsRcvStatus' => $this->_reqP('SmsRcv') // Sms 수신
                     ],
                     'IN' => [
-                        'OP.PayStatusCcd' => $payStatus_arr
+                        'OP.PayStatusCcd' => $payStatus_arr,
+                        'OP.OrderProdIdx' => $OrderProdIdx
                     ],
                     'ORG' => [
                         'EQ' => [
@@ -614,7 +631,8 @@ class BaseStudent extends \app\controllers\BaseController
                     $arr_condition = [
                         'IN' => [
                             'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                            'OP.PayStatusCcd' => $payStatus_arr
+                            'OP.PayStatusCcd' => $payStatus_arr,
+                            'OP.OrderProdIdx' => $OrderProdIdx
                         ],
                         'EQ' => [
                             'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -636,7 +654,8 @@ class BaseStudent extends \app\controllers\BaseController
                         $arr_condition = [
                             'IN' => [
                                 'OP.ProdCode' => $this->_reqP('ProdCode'), // 강좌코드
-                                'OP.PayStatusCcd' => $payStatus_arr
+                                'OP.PayStatusCcd' => $payStatus_arr,
+                                'OP.OrderProdIdx' => $OrderProdIdx
                             ],
                             'EQ' => [
                                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -658,7 +677,8 @@ class BaseStudent extends \app\controllers\BaseController
                             'IN' => [
                                 'OP.ProdCode' => $ProdCode_tmp, // 강좌코드
                                 'ML.ProdCodeSub' => ($this->LearnPattern == 'lecture' ? $ProdCode : ''), // 강좌코드
-                                'OP.PayStatusCcd' => $payStatus_arr
+                                'OP.PayStatusCcd' => $payStatus_arr,
+                                'OP.OrderProdIdx' => $OrderProdIdx
                             ],
                             'EQ' => [
                                 'OP.SalePatternCcd' => $this->_reqP('search_pay_type_ccd'), // 상품구분
@@ -693,7 +713,8 @@ class BaseStudent extends \app\controllers\BaseController
                     ],
                     'IN' => [
                         'OP.ProdCode' => $ProdCode_tmp,
-                        'OP.PayStatusCcd' => $payStatus_arr
+                        'OP.PayStatusCcd' => $payStatus_arr,
+                        'OP.OrderProdIdx' => $OrderProdIdx
                     ],
                     'ORG' => [
                         'EQ' => [

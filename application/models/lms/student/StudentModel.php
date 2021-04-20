@@ -146,7 +146,8 @@ class StudentModel extends WB_Model
                 ,(SELECT RealLecEndDate FROM lms_my_lecture AS ML WHERE ML.OrderProdIdx = OP.OrderProdIdx LIMIT 1) AS EndDate
                 ,fn_order_sub_product_data(OP.OrderProdIdx) as OrderSubProdData
                 ,P.ProdName, P.ProdCode, IFNULL(OI.CertNo, '') AS CertNo, OP.PayStatusCcd, Oc.CcdName as PayStatusName, opr.RefundDatm
-                ,IF(PL.LearnPatternCcd = '615002' OR PL.LearnPatternCcd = '615003' OR PL.LearnPatternCcd = '615004', 'Y', 'N') AS IsPkg                
+                ,IF(PL.LearnPatternCcd = '615002' OR PL.LearnPatternCcd = '615003' OR PL.LearnPatternCcd = '615004', 'Y', 'N') AS IsPkg,
+                OP.OrderProdIdx                
             ";
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

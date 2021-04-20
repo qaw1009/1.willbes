@@ -40,9 +40,9 @@
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
     .infoCheck a:hover {background:#0099ff;}
 
-    .urlReply {font-size:14px; padding:0 20px; line-height:1.5}
+    .urlReply {font-size:14px; padding:0 20px; line-height:1.5;margin-top:20px}
     .urlReply input {width:100%; padding:10px;}
-    .urlReply .urlReplyW {border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; padding:20px 0}
+    .urlReply .urlReplyW {border-top:2px solid #333; border-bottom:1px solid #e4e4e4; padding:20px 0}
     .urlReply .urlReplyW .title {font-size:16px; margin-bottom:10px}
     .urlReply .btn {margin-top:10px}
     .urlReply .btn a {display:block; border-radius:5px; background:#333; color:#fff; padding:15px; font-size:16px; text-align:center}

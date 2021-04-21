@@ -50,153 +50,65 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
         formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
     }
 
-    // 날짜차이 계산
-    var dDayDateDiff = {
-        inDays: function(dd1, dd2) {
-            var tt2 = dd2.getTime();
-            var tt1 = dd1.getTime();
-
-            return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-        },
-        inWeeks: function(dd1, dd2) {
-            var tt2 = dd2.getTime();
-            var tt1 = dd1.getTime();
-
-            return parseInt((tt2-tt1)/(24*3600*1000*7));
-        },
-        inMonths: function(dd1, dd2) {
-            var dd1Y = dd1.getFullYear();
-            var dd2Y = dd2.getFullYear();
-            var dd1M = dd1.getMonth();
-            var dd2M = dd2.getMonth();
-
-            return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-        },
-        inYears: function(dd1, dd2) {
-            return dd2.getFullYear()-dd1.getFullYear();
-        }
-    };
-
     {{--
      * 프로모션용 디데이카운터
      * @@param end_date [마감일 (YYYY-MM-DD)]
      * @@param end_time [마감시간 (HH:MM)]
+     * @@param dis_type [txt, img]
+     * @@param ele_id [element id]
     --}}
-    function dDayCountDown(end_date,end_time) {
-        // 마감일 1개월전 날짜 (사용안함)
-        //var arr_start_date = moment(end_date).add(-1, 'months').format('YYYY-M-D').split('-');
-        var arr_end_date = end_date.split('-');
-        // 시간 설정 기능 추가
-        var arr_end_time = [23,59,59];
-        if(end_time){
-            arr_end_time = end_time.split(':');
-            arr_end_time[2] = 0;
+    function dDayCountDown(end_date, end_time, dis_type, ele_id) {
+        if(!dis_type) dis_type = 'img';
+        if(!ele_id){
+            if(dis_type === 'img'){
+                ele_id = 'newTopDday';
+            }else{
+                ele_id = 'ddayCountText';
+            }
         }
-        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], arr_end_time[0], arr_end_time[1], arr_end_time[2]);
-        var now = new Date();
-        var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-
-        var Monthleft = event_day.getMonth() - now.getMonth();
-        var Dateleft = dDayDateDiff.inDays(now, event_day);
-        var Hourleft = timeGap.getHours();
-        var Minuteleft = timeGap.getMinutes();
-        var Secondleft = timeGap.getSeconds();
-
-        if ((event_day.getTime() - now.getTime()) > 0) {
-            $('#dd1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Dateleft/10) + '.png');
-            $('#dd2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Dateleft%10) + '.png');
-
-            $('#hh1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Hourleft/10) + '.png');
-            $('#hh2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Hourleft%10) + '.png');
-
-            $('#mm1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Minuteleft/10) + '.png');
-            $('#mm2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Minuteleft%10) + '.png');
-
-            $('#ss1').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Secondleft/10) + '.png');
-            $('#ss2').attr('src', '{{ img_static_url('promotion/common/') }}' + parseInt(Secondleft%10) + '.png');
-
-            setTimeout(function() {
-                dDayCountDown(end_date,end_time);
-            }, 1000);
-        } else {
-            $('#newTopDday').hide();
-        }
-    }
-
-    {{--
-     * 디데이 남은 일수 구하기
-     * @@param end_date [마감일 (YYYY-MM-DD)]
-    --}}
-    function dDayCountLeft(end_date) {
-        var arr_end_date = end_date.split('-');
-        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
-        var now = new Date();
-        var date_left = dDayDateDiff.inDays(now, event_day);
-        return date_left;
-    }
-
-    {{--
-     * 프로모션용 디데이카운터 텍스트
-     * @@param end_date [마감일 (YYYY-MM-DD)]
-     * @@param end_time [마감시간 (HH:MM)]
-     * @@param ele_id [설정 id]
-    --}}
-    function dDayCountDownText(end_date, end_time, ele_id) {
-        if(!ele_id) ele_id = 'ddayCountText';
 
         var dday = moment(end_date + ' ' + end_time + ':00', 'YYYY-MM-DD HH:mm:ss');
         var now, distance;
         var d, h, m, s;
 
-        setInterval(function(){
+        var dDayCountRepeat = setInterval(function(){
             now = moment().format('YYYY-MM-DD HH:mm:ss');
             distance = dday.diff(now, 'milliseconds');
 
             if (distance <= 0) {
                 d=0;h=0;m=0;s=0;
+                $('#' + ele_id).hide();
+                clearInterval(dDayCountRepeat);
             } else {
                 d = Math.floor(distance / (1000 * 60 * 60 * 24));
                 h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 s = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (m < 10) {
+                    m = '0' + m;
+                }
                 if (s < 10) {
                     s = '0' + s;
                 }
-            }
 
-            $('#'+ele_id).html(d + '일 ' + h + ':' + m + ':' + s);
+                if(dis_type === 'img') {
+                    $('#dd1').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(d / 10) + '.png');
+                    $('#dd2').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(d % 10) + '.png');
+
+                    $('#hh1').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(h / 10) + '.png');
+                    $('#hh2').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(h % 10) + '.png');
+
+                    $('#mm1').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(m / 10) + '.png');
+                    $('#mm2').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(m % 10) + '.png');
+
+                    $('#ss1').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(s / 10) + '.png');
+                    $('#ss2').attr('src', '{{ img_static_url('/promotion/common/') }}' + parseInt(s % 10) + '.png');
+                }else {
+                    $('#' + ele_id).html(d + '일 ' + h + ':' + m + ':' + s);
+                }
+            }
 
         }, 1000);
     }
-
-    {{--
-     * 프로모션용 디데이카운터 텍스트
-     * @@param end_date [마감일 (YYYY-MM-DD)]
-    --}}
-    // function dDayCountDownText(end_date, ele_id) {
-    //     if(!ele_id) ele_id = 'ddayCountText';
-    //     var arr_end_date = end_date.split('-');
-    //     var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
-    //     var now = new Date();
-    //     var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-    //     var date_left = String( dDayDateDiff.inDays(now, event_day) );
-    //     var hour_left = String( timeGap.getHours() );
-    //     var minute_left = String( timeGap.getMinutes() );
-    //     var second_left = String(  timeGap.getSeconds() );
-    //
-    //     if(date_left.length == 1) date_left = '0' + date_left;
-    //     if(hour_left.length == 1) hour_left = '0' + hour_left;
-    //     if(minute_left.length == 1) minute_left = '0' + minute_left;
-    //     if(second_left.length == 1) second_left = '0' + second_left;
-    //
-    //     if ((event_day.getTime() - now.getTime()) > 0) {
-    //         $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
-    //
-    //         setTimeout(function() {
-    //             dDayCountDownText(end_date, ele_id);
-    //         }, 1000);
-    //     } else {
-    //         $('#'+ele_id).hide();
-    //     }
-    // }
 </script>

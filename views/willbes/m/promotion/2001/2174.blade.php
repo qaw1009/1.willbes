@@ -304,7 +304,7 @@
 
     /*디데이카운트다운*/
     $(document).ready(function() {
-        dDayCountDownText('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}');
+        dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
     });
 
     function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)

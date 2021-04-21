@@ -58,6 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
      * @@param ele_id [element id]
     --}}
     function dDayCountDown(end_date, end_time, dis_type, ele_id) {
+        if(!end_time) end_time = '00:00';
         if(!dis_type) dis_type = 'img';
         if(!ele_id){
             if(dis_type === 'img'){

@@ -86,6 +86,9 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
                 m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 s = Math.floor((distance % (1000 * 60)) / 1000);
 
+                if (h < 10) {
+                    h = '0' + h;
+                }
                 if (m < 10) {
                     m = '0' + m;
                 }

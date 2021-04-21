@@ -41,7 +41,7 @@
         .evt05 .youtube.you02 {top:611px; margin-left:-85px;}
         .evt05 .youtube.you03 {top:940px;}   
 
-        .evt06 div {width:1120px; margin:0 auto; position:relative}
+        .evt06 > div {width:1120px; margin:0 auto; position:relative}
 
         .evt07 {background:#343434}    
         /*탭(이미지)*/
@@ -58,7 +58,8 @@
         .evt07 .check p {font-size:14px; padding:10px 0 0 20px; line-height:1.4}
         .evt07 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
 
-        .evt08 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2174_08_bg.jpg) no-repeat center top;}              
+        .evt08 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2174_08_bg.jpg) no-repeat center top;}        
+        .evt08 > div {width:1120px; margin:0 auto; position:relative}
 
         /*타이머*/
         .newTopDday {background:#f5f5f5; width:100%; padding:20px 0; font-size:24px; color:#000;}
@@ -237,12 +238,16 @@
         </div>  
 
         <div class="evtCtnsBox evt08">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2174_08.jpg" alt="할인쿠폰 받기&이미지 다운" />
-            <a href="javascript:void(0);" title="할인쿠폰 받기" onclick="giveCheck();" style="position: absolute; left: 39.34%; top: 45%; width: 21.23%; height: 4.37%; z-index: 2;"></a>
-            <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"  title="몰입 티패스 이미지 다운받기" style="position: absolute; left: 34.34%; top: 63%; width: 18.23%; height: 3.37%; z-index: 2;"></a>
-            <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페 경시모" style="position: absolute; left: 35.34%; top: 74%; width: 9.23%; height: 4.37%; z-index: 2;"></a>
-            <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버 경꿈사" style="position: absolute; left: 47.34%; top: 74%; width: 9.23%; height: 4.37%; z-index: 2;"></a>
-            <a href="https://cafe.naver.com/kts9719" target="_blank" title="네이버 닥공사" style="position: absolute; left: 59.34%; top: 74%; width: 9.23%; height: 4.37%; z-index: 2;"></a>
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2174_08.jpg" alt="할인쿠폰 받기&이미지 다운" />
+                <a href="javascript:void(0);" title="할인쿠폰 받기" onclick="giveCheck();" style="position: absolute; left: 32.86%; top: 56.36%; width: 34.2%; height: 4.55%; z-index: 2;"></a>
+
+                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"  title="몰입 티패스 이미지 다운받기" style="position: absolute; left: 23.48%; top: 78.48%; width: 30.09%; height: 3.76%; z-index: 2;"></a>
+                
+                <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페 경시모" style="position: absolute; left: 26.43%; top: 91.64%; width: 14.02%; height: 5.52%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버 경꿈사" style="position: absolute; left: 45.8%; top: 91.7%; width: 15.18%; height: 5.52%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/kts9719" target="_blank" title="네이버 닥공사" style="position: absolute; left: 66.16%; top: 91.64%; width: 15.18%; height: 5.52%; z-index: 2;"></a>
+            </div>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))

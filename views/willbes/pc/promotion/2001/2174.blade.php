@@ -59,8 +59,7 @@
         .evt07 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
 
         .evt08 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2174_08_bg.jpg) no-repeat center top;}        
-        .evt08 > div {width:1120px; margin:0 auto; position:relative}      
-        .evt08 a {border:1px solid #000}
+        .evt08 > div {width:1120px; margin:0 auto; position:relative}
 
         /*타이머*/
         .newTopDday {background:#f5f5f5; width:100%; padding:20px 0; font-size:24px; color:#000;}

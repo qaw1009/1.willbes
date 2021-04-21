@@ -68,6 +68,7 @@
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .dday {font-size:18px !important;} 
+        .btnbuy a {width:31%;}
     }
 
     /* 태블릿 가로, PC */
@@ -288,7 +289,6 @@
             </dl>
         </div>
     </div>
-
 </div>
 
 <!-- End Container -->

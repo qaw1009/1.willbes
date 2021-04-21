@@ -67,7 +67,7 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/04/2178_t01_02.jpg"  alt=""/>
                     <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1004&school_year=2021" title="기본이론" target="_blank" style="position: absolute; left: 13.13%; top: 58.87%; width: 21.79%; height: 13.17%; z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1005&school_year=2021" title="심화이론" target="_blank" style="position: absolute; left: 38.93%; top: 58.87%; width: 21.79%; height: 13.17%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1006&school_year=2021" title="기출문제" target="_blank" style="position: absolute; left: 13.13%; top: 64.91%; width: 21.79%; height: 13.17%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/index/cate/3001/pattern/only?search_order=course&course_idx=1006&school_year=2021" title="기출문제" target="_blank" style="position: absolute; left: 64.91%; top: 64.91%; width: 21.79%; height: 13.17%; z-index: 2;"></a>
                 </div>
             </div>
         </div>

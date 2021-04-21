@@ -86,8 +86,6 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-
-        <input type="hidden" id="chk_price" name="chk_price" value="0"/>
     </form>
 
     <div class="evtContent NSK" id="evtContainer">      
@@ -240,7 +238,7 @@
 
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2174_08.jpg" alt="할인쿠폰 받기&이미지 다운" />
-            <a href="javascript:void(0);" title="할인쿠폰 받기" style="position: absolute; left: 39.34%; top: 45%; width: 21.23%; height: 4.37%; z-index: 2;"></a> 
+            <a href="javascript:void(0);" title="할인쿠폰 받기" onclick="giveCheck();" style="position: absolute; left: 39.34%; top: 45%; width: 21.23%; height: 4.37%; z-index: 2;"></a>
             <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"  title="몰입 티패스 이미지 다운받기" style="position: absolute; left: 34.34%; top: 63%; width: 18.23%; height: 3.37%; z-index: 2;"></a>
             <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페 경시모" style="position: absolute; left: 35.34%; top: 74%; width: 9.23%; height: 4.37%; z-index: 2;"></a>
             <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버 경꿈사" style="position: absolute; left: 47.34%; top: 74%; width: 9.23%; height: 4.37%; z-index: 2;"></a>
@@ -403,6 +401,25 @@
                 slidesImg3.goToNextSlide();
             });
         });
+
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('몰입T패스 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+            @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
 {{-- 프로모션용 스크립트 include --}}

@@ -40,16 +40,6 @@
     .infoCheck a {display:inline-block; background:#333; color:#fff; height:30px; line-height:30px; text-align:center; padding:0 20px; border-radius:20px}
     .infoCheck a:hover {background:#0099ff;}
 
-    .urlReply {font-size:14px; padding:0 20px; line-height:1.5;margin-top:20px}
-    .urlReply input {width:100%; padding:10px;}
-    .urlReply .urlReplyW {border-top:2px solid #333; border-bottom:1px solid #e4e4e4; padding:20px 0}
-    .urlReply .urlReplyW .title {font-size:16px; margin-bottom:10px}
-    .urlReply .btn {margin-top:10px}
-    .urlReply .btn a {display:block; border-radius:5px; background:#333; color:#fff; padding:15px; font-size:16px; text-align:center}
-    .urlReplyList li {padding:10px 0; border-bottom:1px solid #e4e4e4; position:relative; color:#666}
-    .urlReplyList li span {position:absolute; right:0; top:10px; z-index: 1;}
-    .urlReplyList li span a {display:block; width:22px; height:22px; line-height:22px; border:1px solid #ccc; border-radius:2px; text-align:center}
-
     .evtInfo {padding:40px 20px; background:#333; color:#fff; font-size:16px;}
     .guide_box {text-align:left; line-height:1.4}
     .guide_box li {list-style: decimal; margin-left:20px; font-size:14px; margin-bottom:10px; color:#ccc}
@@ -85,8 +75,6 @@
 <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-
-    <input type="hidden" id="chk_price" name="chk_price" value="0"/>
 </form>
 
 <div id="Container" class="Container NSK c_both"> 
@@ -171,56 +159,17 @@
 
     <div class="evtCtnsBox evt09">        
         <img src="https://static.willbes.net/public/images/promotion/2021/04/2174m_09.jpg" alt="이벤트" >
-        <a href="javascript:void(0);" title="할인쿠폰 받기" style="position: absolute; left: 24.19%; top: 55.11%; width: 51.75%; height: 4.75%; z-index: 2;"></a>
+        <a href="javascript:void(0);" title="할인쿠폰 받기" onclick="giveCheck();" style="position: absolute; left: 24.19%; top: 55.11%; width: 51.75%; height: 4.75%; z-index: 2;"></a>
         <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"  title="몰입 티패스 이미지 다운받기" style="position: absolute;left: 8.19%;top: 82.11%;width: 47.75%;height: 3.75%; z-index: 2;"></a>
         <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페 경시모" style="position: absolute;left: 16.19%;top: 94.11%;width: 20.75%;height: 4.75%; z-index: 2;"></a>
         <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버 경꿈사" style="position: absolute;left: 40.19%;top: 94.11%;width: 20.75%;height: 4.75%; z-index: 2;"></a>
         <a href="https://cafe.naver.com/kts9719" target="_blank" title="네이버 닥공사" style="position: absolute;left: 64.19%;top: 94.11%;width: 20.75%;height: 4.75%; z-index: 2;"></a>
     </div>
 
-    <div class="urlReply">
-        <div class="urlReplyW">
-            <div class="title">홍보 URL 남기기</div>
-            <div><input type="text" name="event_comment" id="event_comment" placeholder="홍보 URL 남기기"></div>
-            <div class="btn"><a href="#none" class="btnrwt" id="btn_submit_comment">이벤트 참여하기 ></a></div>
-        </div>
-        <div class="urlReplyList">
-            <ul>
-                <li>
-                    <div>Ej*****</div>
-                    https://po****************************
-                    <span class="NSK-Black"><a href="#none">X</a></span>
-                </li>
-                <li>
-                    <div>Ej*****</div>
-                    https://po****************************
-                </li>
-                <li>
-                    <div>Ej*****</div>
-                    https://po****************************
-                </li>
-                <li>
-                    <div>Ej*****</div>
-                    https://po****************************
-                </li>
-                <li>
-                    <div>Ej*****</div>
-                    https://po****************************
-                </li>
-            </ul>            
-        </div>
-        <div class="Paging">
-            <ul>
-                <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                <li><a href="#none">2</a><span class="row-line">|</span></li>
-                <li><a href="#none">3</a><span class="row-line">|</span></li>
-                <li><a href="#none">4</a><span class="row-line">|</span></li>
-                <li><a href="#none">5</a></li>
-                <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-            </ul>
-        </div>
-    </div>
+    {{--홍보url--}}
+    @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+        @include('willbes.m.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+    @endif
 
     <div class="evtCtnsBox evtInfo NGR" id="infoText"> 
         <div class="guide_box" >
@@ -355,35 +304,8 @@
 
     /*디데이카운트다운*/
     $(document).ready(function() {
-        dDayCountDownText('{{$arr_promotion_params['edate']}}');
+        dDayCountDown('{{$arr_promotion_params['edate']}}', '{{$arr_promotion_params['etime'] or "00:00"}}', 'txt');
     });
-
-    // 날짜차이 계산
-    var dDayDateDiff = {
-        inDays: function(dd1, dd2) {
-            var tt2 = dd2.getTime();
-            var tt1 = dd1.getTime();
-
-            return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-        },
-        inWeeks: function(dd1, dd2) {
-            var tt2 = dd2.getTime();
-            var tt1 = dd1.getTime();
-
-            return parseInt((tt2-tt1)/(24*3600*1000*7));
-        },
-        inMonths: function(dd1, dd2) {
-            var dd1Y = dd1.getFullYear();
-            var dd2Y = dd2.getFullYear();
-            var dd1M = dd1.getMonth();
-            var dd2M = dd2.getMonth();
-
-            return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-        },
-        inYears: function(dd1, dd2) {
-            return dd2.getFullYear()-dd1.getFullYear();
-        }
-    };
 
     function goCartNDirectPay(ele_id, field_name, cart_type, learn_pattern, is_direct_pay)
     {
@@ -424,37 +346,6 @@
         formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
     }
 
-    {{--
-        * 프로모션용 디데이카운터 텍스트
-        * @@param end_date [마감일 (YYYY-MM-DD)]
-    --}}
-    function dDayCountDownText(end_date, ele_id) {
-        if(!ele_id) ele_id = 'ddayCountText';
-        var arr_end_date = end_date.split('-');
-        var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
-        var now = new Date();
-        var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-        var date_left = String( dDayDateDiff.inDays(now, event_day) );
-        var hour_left = String( timeGap.getHours() );
-        var minute_left = String( timeGap.getMinutes() );
-        var second_left = String(  timeGap.getSeconds() );
-
-        if(date_left.length == 1) date_left = '0' + date_left;
-        if(hour_left.length == 1) hour_left = '0' + hour_left;
-        if(minute_left.length == 1) minute_left = '0' + minute_left;
-        if(second_left.length == 1) second_left = '0' + second_left;
-
-        if ((event_day.getTime() - now.getTime()) > 0) {
-            $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
-
-            setTimeout(function() {
-                dDayCountDownText(end_date, ele_id);
-            }, 1000);
-        } else {
-            $('#'+ele_id).hide();
-        }
-    }  
-
     /* 수강신청*/
 
     {{-- 수강신청 이동 --}}
@@ -472,6 +363,25 @@
         }
             var url = '{{ site_url('/package/show/cate/3035/pack/648001/prod-code/') }}' + code;
             location.href = url;
+        }
+
+        $regi_form = $('#regi_form');
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params) === false)
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+            ajaxSubmit($regi_form, _check_url, function (ret) {
+                if (ret.ret_cd) {
+                    alert('몰입T패스 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
+                }
+            }, showValidateError, null, false, 'alert');
+            @else
+            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
         }
 
     </script>

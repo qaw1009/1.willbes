@@ -8,6 +8,7 @@ class BasePromotion extends \app\controllers\FrontController
     protected $helpers = array('download');
     protected $_paging_limit = 5;
     protected $_paging_count = 10;
+    protected $_paging_count_m = 5;
 
     // 이벤트 상품 그룹별 호출
     private $_event_learn_ccd = [
@@ -307,8 +308,14 @@ class BasePromotion extends \app\controllers\FrontController
             ]
         ];
 
+        if (APP_DEVICE == 'pc') {
+            $paging_count = $this->_paging_count;
+        } else {
+            $paging_count = $this->_paging_count_m;
+        }
+
         $total_rows = $this->eventFModel->listEventForCommentPromotion(true, $arr_condition, [], [], [], element('cate_code', $arr_input));
-        $paging = $this->pagination($arr_base['page_url'] . '?' . $get_page_params, $total_rows, $this->_paging_limit, $this->_paging_count, true);
+        $paging = $this->pagination($arr_base['page_url'] . '?' . $get_page_params, $total_rows, $this->_paging_limit, $paging_count, true);
 
         if ($total_rows > 0) {
             $list = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, $paging['limit'], $paging['offset'], ['a.CIdx' => 'DESC'], element('cate_code', $arr_input));
@@ -317,7 +324,8 @@ class BasePromotion extends \app\controllers\FrontController
         // 공지사항 조회 (페이징 처리 없음)
         $arr_base['notice_data'] = $this->eventFModel->getEventForNotice(element('event_idx', $arr_input)
             , 'BoardIdx, ElIdx, Title, Content, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') AS RegDate');
-        $view_file = 'willbes/pc/promotion/frame_comment_list_' . $comment_type;
+
+        $view_file = 'willbes/' . APP_DEVICE . '/promotion/frame_comment_list_' . $comment_type;
 
         $this->load->view($view_file, [
             'arr_input' => $arr_input,

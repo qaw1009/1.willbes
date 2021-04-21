@@ -9,7 +9,6 @@
 
     .dday {font-size:24px !important; padding:10px; background:#f5f5f5; color:#000; text-align:left; letter-spacing:-1px}
     .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
-    .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
     .evt04 .boxYoutube {margin:40px auto}
     .evt04 .tabMenu {margin-right:-10px; margin-bottom:20px}
@@ -62,23 +61,17 @@
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
         .dday {font-size:18px !important;} 
-        .dday a {padding:5px 10px;}
-        .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
-        .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
-        .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
+        .evt06 .slide_con {margin:0 10px; padding-bottom:40px} 
         .btnbuy a {width:31%;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .dday {font-size:18px !important;} 
-        .dday a {padding:5px 10px;}
-        .btnbuy a {width:31%;}
     }
 
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
-        .content_guide_wrap .tabs li a br {display:none}
     }
     </style>
 
@@ -91,7 +84,7 @@
 
 <div id="Container" class="Container NSK c_both"> 
     <div class="evtCtnsBox dday NSK-Thin">
-        <strong class="NSK-Black">2022 몰입 PASS 마감 <span id="ddayCountText"></span> </strong>
+       2022 몰입 PASS 마감 <span id="ddayCountText" class="NSK-Black"></span>
     </div>
 
     <div class="evtCtnsBox evt00">

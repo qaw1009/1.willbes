@@ -48,9 +48,9 @@
         <div class="evtCtnsBox evt_02">
             <div>
 			    <img src="https://static.willbes.net/public/images/promotion/2021/04/2187_02.jpg" alt="합격의 기준" />
-                <a href="https://job.willbes.net/pass/offPackage/index" title="학원참석 모의고사" target="_blank" style="position: absolute; left: 0.18%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
-                <a href="https://job.willbes.net/book/index/cate/309002" title="모의고사 문제지주문" target="_blank" style="position: absolute; left: 34.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
-                <a href="https://job.willbes.net/pass/mockTestNew/apply/cate" title="온라인 모의고사" target="_blank" style="position: absolute; left: 69.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/pass/offPackage/index" onclick="go_PassLecture(this)" title="학원참석 모의고사" style="position: absolute; left: 0.18%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/book/index/cate/309002" onclick="go_PassLecture(this)" title="모의고사 문제지주문" style="position: absolute; left: 34.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
+                <a href="javascript:void(0);" data-url="https://job.willbes.net/pass/mockTestNew/apply/cate" onclick="go_PassLecture(this)" title="온라인 모의고사" style="position: absolute; left: 69.29%; top: 42.43%; width: 30.71%; height: 48.85%; z-index: 2;"></a>
             </div>
             <div class="check mb100">
                 <label>
@@ -99,14 +99,14 @@
 
     <script type="text/javascript">
         /*수강신청 동의*/ 
-        function go_PassLecture(code){
+        function go_PassLecture(obj){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
                 return;
+            }else{
+                var _url = $(obj).data('url');
+                window.open(_url);
             }
-
-            var url = '{{ site_url('/package/show/cate/309003/pack/648002/prod-code/') }}' + code;
-            location.href = url;
         }    
     </script>
 @stop

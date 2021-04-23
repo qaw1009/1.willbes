@@ -19,7 +19,7 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2139_top_bg.jpg) no-repeat center top;}
 
         .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto}
-        .evt01  .tag {font-size:40px; color:#5b4ffb; text-align:center}
+        .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}
         .evt01 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt01 .request h3 {font-size:17px;}
         .evt01 .request td {padding:10px; font-size:14px}
@@ -97,7 +97,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <div class="tag NSK-Black">#사립탐정 #한국탐정 #3/27 #누구나빠르게</div>
+            <div class="tag NSK-Black">#사립탐정 #한국탐정 #5/22 #누구나빠르게</div>
             <div class="request" id="request">
                 <div class="requestL">
                     <h3 class="NSK-Black">* 사립탐정사 시험  학원예약접수</h3>
@@ -122,7 +122,7 @@
                                 <ul>
                                     @foreach($arr_base['register_list'] as $key => $val)
                                         @if(empty($val['RegisterExpireStatus']) === false && $val['RegisterExpireStatus'] == 'Y')
-                                            <li><input type="checkbox" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li><br/>
+                                            <li><input type="radio" name="register_chk[]" id="campus{{$key}}" value="{{$val['ErIdx']}}" /> <label for="campus{{$key}}">{{$val['Name']}}</label></li><br/>
                                         @endif
                                     @endforeach
                                 </ul>

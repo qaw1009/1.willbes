@@ -48,6 +48,11 @@ class ApplyUserModel extends WB_Model
                         WHERE MR.MrIdx = MAS.MrIdx
                     ) AS SubjectNameList
                     ,CASE MR.IsTake WHEN 'Y' THEN '응시' WHEN 'E' THEN '시험종료(미응시)' ELSE '미응시' END AS IsTake
+                    ,(
+                        SELECT count(*) 
+                        FROM {$this->_table['mock_register_print_log']} mrpl
+                        WHERE mrpl.MrIdx = Mr.MrIdx
+                    ) as PrintCnt
                 ";
             } else {
                 $order_by_offset_limit = $this->_conn->makeOrderBy($arr_order_by)->getMakeOrderBy();

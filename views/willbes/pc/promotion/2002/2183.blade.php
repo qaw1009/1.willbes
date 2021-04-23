@@ -59,7 +59,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_01" >
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2183_01.jpg"  alt="모집안/>
+			<img src="https://static.willbes.net/public/images/promotion/2021/04/2183_01.jpg"  alt="모집안"/>
 		</div>
 
 		<div class="evtCtnsBox wb_02" id="wb_02">

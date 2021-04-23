@@ -36,7 +36,7 @@
             <td><table width="970" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td><img src="https://static.willbes.net/public/images/company/sub_04_img_01_01.jpg" width="260" height="434" /></td>
-                        <td width="693"><img src="http://file1.willbes.net/data/img/intro/sub_04_img_map.jpg" name="my" /></td>
+                        <td width="693"><img src="https://static.willbes.net/public/images/company/sub_04_img_map.jpg" name="my" /></td>
                     </tr>
                 </table></td>
         </tr>
@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_01.jpg" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_01.jpg" /></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_01_2.jpg" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_01_2.jpg" /></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_02.jpg"/></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_02.jpg"/></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_02_2_jpg.png" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_02_2_jpg.png" /></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -81,7 +81,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_03.jpg" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_03.jpg" /></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -89,7 +89,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_04.jpg" alt="" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_04.jpg" alt="" /></td>
                     </tr>
                     <tr>
                         <td height="30">&nbsp;</td>
@@ -97,7 +97,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><img src="http://file1.willbes.net/data/img/intro/map_05.jpg" /></td>
+                        <td><img src="https://static.willbes.net/public/images/company/map_05.jpg" /></td>
                     </tr>
                 </table></td>
         </tr>

@@ -129,7 +129,8 @@ class User extends BaseMocktest
         }
         $results = $this->applyUserModel->mainList('excel', $arr_condition);
         $file_name = '모의고사_개별접수현황_'.$this->session->userdata('admin_idx').'_'.date('Y-m-d');
-        $headers = ['접수식별자','주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '결제수단', '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부'];
+        $headers = ['접수식별자','주문번호', '회원명', '회원아이디', '전화번호', '결제완료일', '결제금액', '결제상태', '결제수단'
+            , '상품명', '연도', '회차', '응시형태', '응시번호', '카테고리', '직렬', '과목', '응시지역', '응시여부', '출력횟수'];
 
         $last_query = $this->applyUserModel->getLastQuery();
         // download log

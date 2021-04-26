@@ -508,7 +508,7 @@
 .ssam .mapWrap .will-nTit {border-bottom:2px solid #000; padding-bottom:10px}
 .ssam .mapWrap .mapL {width:709px; height:398px; float:left; background:#f9f9f9}
 .ssam .mapWrap .mapR {float:right; width:380px; line-height: 1.5}
-.ssam .mapWrap .mapR .traffic {border:1px solid #e1e1e1; padding:20px; margin-top:20px; height:324px; overflow-y: auto}
+.ssam .mapWrap .mapR .traffic {margin-top:20px; height:324px; overflow-y: auto}
 .ssam .mapWrap .mapR img {vertical-align: middle; margin-right: 10px}
 .ssam .mapWrap .mapR p {font-size:20px; font-weight:bold}
 .ssam .mapWrap .mapR .line {margin:20px 0; border-top:1px solid #c6c6c6}

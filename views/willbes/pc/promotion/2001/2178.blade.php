@@ -37,9 +37,9 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky">
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2131 " target="_blank" > 
+            {{--<a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2131 " target="_blank" > 
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2178_sky01.png" alt="4월 추천강좌" >
-            </a>  
+            </a>  --}}
             <a href="#evt06"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2178_sky02.png" alt="5월 BEST 강좌" >
             </a>            

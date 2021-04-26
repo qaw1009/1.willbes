@@ -16,8 +16,7 @@
 
         /************************************************************/     
 
-        .skybanner {position:fixed; top:150px; right:10px; z-index:1;}
-        .skybanner ul li {padding-bottom:10px;}
+        .skybanner {position:fixed; top:150px; width:120px; right:10px; z-index:1;}
 
         .wb_top {background:#FE8A8D url(https://static.willbes.net/public/images/promotion/2020/07/1721_top_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#FE8A8D;}
@@ -65,17 +64,11 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="skybanner">
-            <ul>          
-                <li>  
-                    <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_sky.png" usemap="#Map1721sky" title="신규강의 개강" border="0"/>
-                    <map name="Map1721sky">
-                        <area shape="rect" coords="12,110,110,248" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug#none" target="_blank" alt="통신공학">
-                        <area shape="rect" coords="14,263,110,413" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank" alt="전기기기">
-                        <area shape="rect" coords="14,449,101,496" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE7J6Q" target="_blank" alt="전자공학">
-                        <area shape="rect" coords="11,504,103,547" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug" target="_blank" alt="통신이론">
-                    </map>
-                </li>
-            </ul>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_sky.png" usemap="#Map1721sky" title="신규강의 개강" border="0"/>
+            <map name="Map1721sky">
+                <area shape="rect" coords="13,117,108,261" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank" alt="전기기기">
+                <area shape="rect" coords="12,281,111,436" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Ya17Iug" target="_blank" alt="통신이론">
+            </map>
         </div> 
 
         <div class="evtCtnsBox wb_top" >            

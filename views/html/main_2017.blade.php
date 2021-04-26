@@ -834,10 +834,10 @@
                         </li>
                     <ul>
                     <div class="line"></div>
-                    <p><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map02.png">버스을 이용할 경우</p>
+                    <p><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map02.png">버스를 이용할 경우</p>
                     <ul>
                         <li>
-                            <div>사육신공원(노들역방면) 정류장</div>
+                            <div>사육신공원(노들섬방면) 정류장</div>
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map03.png"> 152, 500, 504, 654, 742<br>
                             <img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map04.png"> 5516, 5517, 5535, 5536
                         </li>

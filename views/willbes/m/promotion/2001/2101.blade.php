@@ -41,9 +41,9 @@
     }
 
     .evt02 {background:#ececec; padding-bottom:80px; text-align:left}  
-    .evt02 .price {margin:20px 40px}
+    .evt02 .price {margin:20px 10px}
     .evt02 .price ul{margin-right:-10px}
-    .evt02 .price li {display:inline-block; float:left; width:calc(33.3333% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#151426; border-radius:10px;
+    .evt02 .price li {display:inline-block; float:left; width:calc(50% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#151426; border-radius:10px;
     padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
     .evt02 .price li label {display:block}
     .evt02 .price:after {content:''; display:block; clear:both}
@@ -73,7 +73,7 @@
     /* 이용안내 */
     .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
     .content_guide_wrap .guide_tit{text-align:center; font-size:26px; margin-bottom:30px}
-    .content_guide_wrap .tabs li {display:inline; float:left; width:33.3333%}
+    .content_guide_wrap .tabs li {display:inline; float:left; width:50%}
     .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
     .content_guide_wrap .tabs li a:hover,
     .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -130,12 +130,12 @@
     </div> 
 
     <div class="evtCtnsBox evt02" id="evt02">        
-        <img src="https://static.willbes.net/public/images/promotion/2021/03/2101m_01.jpg" alt="" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/04/2101m_01.jpg" alt="" >
         <div class="price"> 
             <ul>
                 <li><input type="checkbox" id="y_pkg1" name="y_pkg" value="179853" data-sale-price="990000" onclick="fnChkPrice(this,1);"> <label for="y_pkg1">99만원<br>0원 무제한 PASS</label></li>
                 <li><input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">85만원<br>12개월 PASS</label></li>
-                <li><input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="620000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">62만원<br>21년 대비 PASS</label></li>
+                {{--<li><input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="620000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">62만원<br>21년 대비 PASS</label></li>--}}
             </ul>
         </div>
 
@@ -225,7 +225,7 @@
         <ul class="tabs">            
             <li><a href="#tab1">0원 무제한<br>PASS</a></li>
             <li><a href="#tab2">12개월<br> PASS</a></li>
-            <li><a href="#tab3">2021년 대비<br> PASS</a></li>
+            {{--<li><a href="#tab3">2021년 대비<br> PASS</a></li>--}}
         </ul>        
 
         <div class="content_guide_box" id="tab1">
@@ -427,7 +427,7 @@
                 </dd>
             </dl>
         </div>
-
+        {{--
         <div class="content_guide_box" id="tab3">
             <dl>
                 <dt>
@@ -501,6 +501,7 @@
                 </dd>
             </dl>
         </div>
+        --}}
     </div>
 </div>
 

@@ -124,10 +124,10 @@
 
         .evt02 {background:#ececec;}
         .evt02 .passLecBuy {position:relative; width:1120px; margin:0 auto;  }
-        .evt02 .passLecBuy .price {background:url(https://static.willbes.net/public/images/promotion/2020/12/1976_01_bg.jpg) repeat-y center;} 
-        .evt02 .passLecBuy ul {width:100%;margin-left:90px;}
-        .evt02 .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000;width:28%;}
-        .evt02 .passLecBuy li div {font-size:14px; font-weight:bold; background:#151426; color:#fff; text-align:left; padding:15px 30px; 
+        .evt02 .passLecBuy .price {background:url(https://static.willbes.net/public/images/promotion/2021/04/2101_01_bg.jpg) repeat-y center;} 
+        .evt02 .passLecBuy ul {width:619px; margin:0 auto;}
+        .evt02 .passLecBuy li {display:inline; float:left; text-align:center; line-height:30px; font-size:14px; color:#000; width:calc(50% - 10px); margin-right:10px}
+        .evt02 .passLecBuy li div {font-size:14px; font-weight:bold; background:#151426; color:#fff; padding:15px 30px; text-align:left;
             border-radius:10px; margin:0 20px}
         .evt02 .passLecBuy li:last-child {margin-right:0}
         .evt02 .passLecBuy li:last-child p {font-size:16px}
@@ -186,7 +186,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1000px; margin:0 auto;} 
-        .content_guide_wrap .tabs li {display:inline; float:left; width:33.3333%}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:50%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -280,7 +280,7 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2101_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
@@ -297,14 +297,16 @@
                                 <input type="checkbox" id="y_pkg2" name="y_pkg" value="179867" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">12개월 PASS</label>
                             </div>
                         </li>
+                        {{--
                         <li>
                             <div>
                                 <strong>62</strong>만원<br>
                                 <input type="checkbox" id="y_pkg3" name="y_pkg" value="179871" data-sale-price="620000" onclick="fnChkPrice(this,2);"/> <label for="y_pkg3">2021년대비 PASS</label>
                             </div>
                          </li>
+                         --}}
                     </ul>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/03/2101_01_02.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2101_01_02.jpg"  alt="">
                 </div>
 
                 <div class="totalPrice">
@@ -395,11 +397,11 @@
         </div>
 
         <div class="content_guide_wrap" id="tab">
-            <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS [일반경찰+경행경채]</span> 이용안내 </p>
+            <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
                 <li><a href="#tab1">0원 무제한 PASS</a></li>
                 <li><a href="#tab2">12개월 PASS</a></li>
-                <li><a href="#tab3">2021년 대비 PASS</a></li>
+                {{--<li><a href="#tab3">2021년 대비 PASS</a></li>--}}
             </ul>
 
             <div class="content_guide_box" id="tab1">
@@ -602,6 +604,7 @@
                 </dl>
             </div>
 
+            {{--
             <div class="content_guide_box" id="tab3">
                 <dl>
                     <dt>
@@ -675,6 +678,7 @@
                     </dd>
                 </dl>
             </div>
+            --}}
 
         </div>
         <!-- content_guide_wrap //-->

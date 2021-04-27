@@ -31,7 +31,9 @@
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
         .evt_table table th {background:#f9f9f9; color:#000;}
         .evt_table table td{text-align:left; padding:15px}
-        .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:top}
+        .evt_table label {margin-right:10px; line-height:28px;}
+        .evt_table input {vertical-align:middle}
+        .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}
         .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:top;}
         .evt_table select {height:28px; padding:0 10px}
         .evt_table .btns {margin-top:40px}
@@ -82,14 +84,13 @@
                                     TO
                                 </th>
                                 <td>
-                                    <select name="" id="">
-                                        <option value="">선택</option>
-                                        <option value="">선생님</option>
-                                        <option value="">어머니</option>
-                                        <option value="">아버지</option>
-                                        <option value="">직접입력</option>
-                                    </select>
-                                   <input type="text" style="width:50%"> 
+                                    <label><input type="radio"> 선생님</label>
+                                    <label><input type="radio"> 어머니</label>
+                                    <label><input type="radio"> 아버지</label>
+                                    <label>
+                                        <input type="radio"> 직접입력
+                                        <input type="text" style="width:30%"> 
+                                    </label>
                                 </td>
                             </tr>
                             <tr>

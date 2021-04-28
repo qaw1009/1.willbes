@@ -67,9 +67,9 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="skybanner" >
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=328086&s_campus=605001" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_sky01.png" alt="소방학/법규 암기노트 전원증정"></a> 
+        <div class="skybanner" >            
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2156" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_sky02.png" alt="선착순 20명 무려 88% 할인!"></a>
+            <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU67Jew6rCE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky04.png" alt="연간 종합반"></a> 
         </div>                       
 
 		<div class="evtCtnsBox evtTop">

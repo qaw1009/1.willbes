@@ -94,16 +94,14 @@
             </div>
         </div>  
         --}}  
-
-        {{--
+    
         <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
             <map name="Map1676_top_banner" id="Map1676_top_banner">
                 <area shape="rect" coords="598,64,778,100" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
                 <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>           
-        </div>
-        --}}  
+        </div>     
          
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
@@ -134,7 +132,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_april.jpg" /></li>
+                {{--<li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_april.jpg" /></li>--}}
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_may.jpg" /></li>
                 </ul>     
 
@@ -148,16 +146,16 @@
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
                 <map name="Map1676b">
                     <area shape="rect" coords="342,1259,778,1342" href="#to_go" />
                 </map>
             </div>
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
                 <map name="Map1676ss">
-                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179167" target="_blank" alt="2월 방송" />
-                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/periodPackage/show/cate/3019/pack/648001/prod-code/163829" target="_blank" alt="지방직 방송" />
+                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182089" target="_blank" alt="2월 방송" />
+                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="지방직 방송" />
                     <area shape="rect" coords="618,782,825,882" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
                 </map> 
             </div>
@@ -236,17 +234,12 @@
                             (*2주에 1회 진행하는 온라인 모의고사에 대한 해설 방송은 실시간 LIVE로 진행됩니다.)</li>
                             <li>윌비스 통합사이트에 로그인한 회원이라면 누구나 온라인 무료수강 가능합니다.</li>
 
-                            <li>더켠의 반반&똑똑영어 과정 진행 안내 (총 18회)<br>
-                            - 매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 8회분<br>
-                            - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 7회분<br>
-                            - 1주차 월~금 : 무료 온라인 모의고사 접수 진행 <br>
-                              (*금요일 오후 6시 신청 접수 마감) <br>
-                            - 1주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
-                            - 2주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분<br>
-                            - 3주차 월 오후 7~10시 : 국가직 대비 영어 적중 50선 LIVE<br>
-                            - 4주차 월 오후 7~10시 : 국가직 영어 기출해설특강 LIVE<br>
-                            <br>
-                            * 4월 방송의 경우, 2021 국가직 특강 LIVE 진행으로 인하여 방송 횟수 및 모의고사 등 일정이 다소 조정됩니다.
+                            <li>더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)<br>
+                            - 매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분<br>
+                            - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
+                            - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 신청 접수 마감) <br>
+                            - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
+                            - 2주차/4주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분
                             </li>
 
                             <li>본 방송은 방송 종료 후 유료 동영상 강의로 전환됩니다.<br>
@@ -259,9 +252,10 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 3/29(월)~4/23(금)까지 총 18회 진행됩니다. (*공휴일 제외)<br>
-                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (4/5(월)) 19:00~20:00, 적중 50선 및 기출분석 LIVE 특강 19:00~22:00로, 시간 내에 페이지 새로고침 (F5) 후에 출석체크 버튼 클릭 시  정상 인정되며 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.<br>
-                            - 당첨자 안내 공지는 4/27(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 본 이벤트는 로그인 후 참여 가능하며, 5/3(월)~5/28(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (5/10(월), 5/24(월)) 19:00~20:00로, 시간 내에
+                              페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다. <br>
+                            - 당첨자 안내 공지는 6/1(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                             <li>돌발퀴즈 이벤트 관련<br>
                             - 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
                             - 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>

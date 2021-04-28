@@ -35,7 +35,7 @@
 
     </style>
     <div class="willbes-Layer-PassBox willbes-Layer-PassBox740 leaveArmyJoin NGR">
-        <div><h3 class="NSK">타학원 수강이력 인증</h3></div>
+        <div><h3 class="NSK">재도전&amp;환승 인증</h3></div>
         <div class="laj_sec">
             <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
                 {!! csrf_field() !!}

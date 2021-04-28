@@ -156,7 +156,7 @@
                 <map name="Map1676ss">
                     <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182089" target="_blank" alt="2월 방송" />
                     <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="지방직 방송" />
-                </map> 
+                </map>
             </div>
         </div>
 

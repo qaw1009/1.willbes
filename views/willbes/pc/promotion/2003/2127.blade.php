@@ -108,8 +108,8 @@
         </div>
 
         <div class="sky">
-            <a href="#apply1"><img src="https://static.willbes.net/public/images/promotion/2021/03/2127_sky.png"  title="특별할인" /></a>
-            <a href="#apply2"><img src="https://static.willbes.net/public/images/promotion/2021/03/2127_sky2.png"  title="갈아타자" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky01.png"  title="인증하고 할인받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2127_sky02.png"  title="갈아타고 할일받기" /></a>
         </div>
 
         <div class="evtCtnsBox wb_top">
@@ -221,16 +221,16 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_06.jpg" alt="q&a" />          
         </div>
 
-        <div class="evtCtnsBox wb_cts07" id="apply2">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_07.jpg" alt="환승 이벤트" usemap="#2127a" border="0" />
+        <div class="evtCtnsBox wb_cts07" id="transfer">
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2127_07.jpg" alt="환승 이벤트" usemap="#2127a" border="0" />
             <map name="2127a" id="2127a">
                 <area shape="rect" coords="342,1064,776,1120" href="javascript:certOpen();"/>
                 <area shape="rect" coords="470,1144,622,1177" href="#careful" />
             </map>     
         </div>
 
-        <div class="evtCtnsBox wb_cts08" id="apply1">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2127_08.jpg" alt="수강신청" usemap="#2127b" border="0" />
+        <div class="evtCtnsBox wb_cts08">
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2127_08.jpg" alt="수강신청" usemap="#2127b" border="0" />
             <map name="2127b" id="2127b">
                 <area shape="rect" coords="316,1006,501,1083" href="javascript:go_PassLecture('180408');" alt="수강신청" />
                 <area shape="rect" coords="806,1007,991,1083" href="javascript:go_PassLecture('180413');" alt="수강신청" />
@@ -310,7 +310,24 @@
                             <li>선택한 교수의 강의가 학원 사정에 의해 부득이하게 진행되지 않을 경우 대체 강의가 제공되며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유 적발 시 회원 자격 박탈 및 환불 불가하며, 추가적인 불법 공유 행위 적발 시 형사 고발 조치가 단행될 수 있습니다.</li>
                         </ol>
-                    </dd>                       
+                    </dd>   
+
+                    <dt>재도전&amp;환승 인증 이벤트 유의사항</dt>
+                    <dd>
+                        <ol>
+                            <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
+                            <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>
+                            <li>1) 재도전 인증<br>
+                                - 본인의 이름이 명시된 수험표 또는 윌비스 PASS 수강생의 경우 [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
+                                2) 환승 인증<br>
+                                - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
+                                (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)
+                            </li>
+                            <li>본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.</li>
+                            <li>등록 인증 정보는 이벤트 목적 외 용도로 사용되지 않습니다.</li>
+                            <li>발급된 쿠폰의 사용 기간은 3일로, 본 페이지 내에서 판매 중인 PASS 상품에만 적용 가능합니다.</li>
+                        </ol>
+                    </dd>                        
 
                     <dt>라이브모드 수강관련</dt>
                     <dd>

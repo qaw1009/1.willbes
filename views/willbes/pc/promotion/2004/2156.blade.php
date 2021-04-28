@@ -12,7 +12,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
 
         /************************************************************/   
         
@@ -133,6 +133,7 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank" title="적중사례 자세히 보기" style="position: absolute; left: 52.29%; top: 83.39%; width: 16.07%; height: 6.4%; z-index: 2;"></a>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >

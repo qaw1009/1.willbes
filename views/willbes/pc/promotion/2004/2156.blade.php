@@ -29,7 +29,7 @@
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_01_bg.jpg) no-repeat center top;}
 
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_02_bg.jpg) no-repeat center top;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_02s_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_03_bg.jpg) no-repeat center top;position:relative;}
 
@@ -44,7 +44,9 @@
 
         .wb_cts06 {padding-bottom:150px;}
 
-        .wb_cts07 {background:#ECECEC;padding-bottom:150px;}
+        .wb_cts07 {background:#ECECEC;padding-bottom:50px;}
+
+        .wb_cts08 {background:#ECECEC;}
  
         /* TAB */
         .tab {width:980px; margin:0 auto}		
@@ -116,13 +118,13 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="소방학/법규 암기노트 전원증정"></a> 
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1179&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky02.png" alt="선착순 20명 무려 88% 할인!"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="소방학/법규 암기노트 전원증정"></a>            
             <a href="#buyLec"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky03.png" alt="선착순 20명 무려 88% 할인!"></a>
+            <a href="#buyLec"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky04.png" alt="연간 종합반"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_top.jpg" alt="결정된다" />     
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_top.jpg" alt="새로운 출발" />     
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -130,7 +132,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02.jpg" alt="합격전략 설명회"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
@@ -389,17 +391,25 @@
             <div id="tab01s">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts.png" usemap="#Map2156a" border="0" />
                 <map name="Map2156a" id="Map2156a">
-                    <area shape="rect" coords="247,243,645,320" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"/>
+                    <area shape="rect" coords="247,243,645,320" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCAyMOuqhSDtlZzsoJUg6riI7JWh4piFIOu2iOq9gw%3D%3D" target="_blank"/>
                 </map>
             </div> 
 
             <div id="tab02s">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" usemap="#Map2156b" border="0" />
                 <map name="Map2156b" id="Map2156b">
-                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001" target="_blank"/>
+                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCAyMOuqhSDtlZzsoJUg6riI7JWh4piFIOu2iOq9gw%3D%3D" target="_blank"/>
                 </map>
             </div>
         </div>  
+
+        <div class="evtCtnsBox wb_cts08" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스" usemap="#Map2156c" border="0"/>
+            <map name="Map2156c" id="Map2156c">
+                <area shape="rect" coords="215,446,453,507" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA1LTIyLjAzXVvrtojqvYPshozrsKldIOqzteyxhCDsl7DqsIQg7KKF7ZWp" target="_blank"/>
+                <area shape="rect" coords="668,446,908,509" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA1LTIyLjAzXVvrtojqvYPshozrsKldIOqyveyxhCDsl7DqsIQg7KKF7ZWp" target="_blank"/>
+            </map>
+        </div>
 
          <div class="evtCtnsBox wb_cts09">
             <div class="wb_tipBox">

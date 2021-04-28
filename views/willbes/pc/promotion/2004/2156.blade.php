@@ -399,7 +399,7 @@
             <div id="tab02s">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" usemap="#Map2156b" border="0" />
                 <map name="Map2156b" id="Map2156b">
-                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCAyMOuqhSDtlZzsoJUg6riI7JWh4piFIOu2iOq9gw%3D%3D" target="_blank"/>
+                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCA1MOuqhSDtlZzsoJUg6riI7JWh4piFW0xJVkU%3D" target="_blank"/>
                 </map>
             </div>
         </div>  

@@ -97,29 +97,6 @@
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1831') }}"'><a data-slide-index='19' href="javascript:void(0);">정보컴퓨터 송광진</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1832') }}"'><a data-slide-index='20' href="javascript:void(0);">정컴교육론 장순선</a></li>
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1833') }}"'><a data-slide-index='21' href="javascript:void(0);">전공중국어 정경미</a></li>
-                        {{--
-                        <li><a data-slide-index='0' href="javascript:void(0);" class="active">유아 민정선</a></li>
-                        <li><a data-slide-index='1' href="javascript:void(0);">초등 배재민</a></li>
-                        <li><a data-slide-index='2' href="javascript:void(0);">교육학 김차웅</a></li>
-                        <li><a data-slide-index='3' href="javascript:void(0);">교육학 이인재</a></li>
-                        <li><a data-slide-index='4' href="javascript:void(0);">교육학 홍의일</a></li>
-                        <li><a data-slide-index='5' href="javascript:void(0);">전공국어 송원영</a></li>
-                        <li><a data-slide-index='6' href="javascript:void(0);">전공국어 이원근</a></li>
-                        <li><a data-slide-index='7' href="javascript:void(0);">전공국어 권보민</a></li>
-                        <li><a data-slide-index='8' href="javascript:void(0);">전공영어 김유석</a></li>
-                        <li><a data-slide-index='9' href="javascript:void(0);">전공영어 김영문</a></li>
-                        <li><a data-slide-index='10' href="javascript:void(0);">전공영어 공훈</a></li>
-                        <li><a data-slide-index='11' href="javascript:void(0);">전공수학 김철홍</a></li>
-                        <li><a data-slide-index='12' href="javascript:void(0);">수학교육론 박태영</a></li>
-                        <li><a data-slide-index='13' href="javascript:void(0);">전공생물 강치욱</a></li>
-                        <li><a data-slide-index='14' href="javascript:void(0);">생물교육론 양혜정</a></li>
-                        <li><a data-slide-index='15' href="javascript:void(0);">도덕윤리 김병찬</a></li>
-                        <li><a data-slide-index='16' href="javascript:void(0);">전공음악 다이애나</a></li>
-                        <li><a data-slide-index='17' href="javascript:void(0);">전기전자통신 최우영</a></li>
-                        <li><a data-slide-index='18' href="javascript:void(0);">정보컴퓨터 송광진</a></li>
-                        <li><a data-slide-index='19' href="javascript:void(0);">정컴교육론 장순선</a></li>
-                        <li><a data-slide-index='20' href="javascript:void(0);">전공중국어 정경미</a></li>
-                        --}}
                     </ul>
                 </div>
             </div>
@@ -268,9 +245,10 @@
                 </div>
             </div>
         </div>
+
+        @include('willbes.pc.site.main_partial.map_' . $__cfg['SiteCode'])
     </div>
     <!-- End Container -->
-
 
     <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
     <script type="text/javascript">

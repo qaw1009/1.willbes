@@ -152,12 +152,11 @@
                 </map>
             </div>
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_02.jpg" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_02.png" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
                 <map name="Map1676ss">
                     <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182089" target="_blank" alt="2월 방송" />
                     <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="지방직 방송" />
-                    <area shape="rect" coords="618,782,825,882" href="https://pass.willbes.net/promotion/index/cate/3019/code/1614" target="blank" alt="티패스" />
-                </map> 
+                </map>
             </div>
         </div>
 

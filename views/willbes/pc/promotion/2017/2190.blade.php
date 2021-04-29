@@ -133,9 +133,9 @@
 
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">이벤트 주의사항</h4>
+                <h4 class="NSK-Black">이벤트 유의사항</h4>
                 <ul>
-                    <li>이벤트 기간: 5월 4일~5월 28일</li>
+                    <li>이벤트 기간: 4월 29일 ~ 5월 28일</li>
                     <li>당첨자 발표: 5월 31일</li>
                     <li>상품 증정: 6월 3일</li>
                     <li>이벤트 선물의 중복 제공은 되지 않습니다.</li>

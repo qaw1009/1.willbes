@@ -250,6 +250,8 @@
     </div>
     <!-- End Container -->
 
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
     <script src="/public/js/willbes/product_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
         //상단배너

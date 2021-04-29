@@ -42,7 +42,7 @@
         .evtCtnsBox .link {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .link a:hover {background-color:rgba(0,0,0,0.2)}          
 
-        .evtEnd {position:absolute; left:50%; width:1001px; margin-left:-501px; top:50%; margin-top:-280px; z-index: 5;}
+        .evtEnd {position:absolute; left:50%; width:1001px; margin-left:-501px; top:96px; z-index: 5;}
 
         .evtInfo {padding:100px 0; background:#d3d3d3; color:#333; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -78,36 +78,33 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_02.jpg"  alt="5월 이벤트 일정"/>
         </div>
 
-        <div id="entry">
+        <div id="entry" class="p_re">
             <div class="evtCtnsBox evt03" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_03.jpg"  alt="준비중"/>
             </div>
 
-            <div class="evtCtnsBox evt04">
-                <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+            <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+
+            <div class="evtCtnsBox evt04">                
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_04.jpg"  alt="월린이날"/>
             </div>
 
-            <div class="evtCtnsBox evt05">
-                {{--<div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>--}}
+            <div class="evtCtnsBox evt05">                
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_05.jpg"  alt="어버이날"/>
             </div>
 
-            <div class="evtCtnsBox evt06">
-                {{--<div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>--}}
+            <div class="evtCtnsBox evt06">                
                 <div class="link">
                     <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_06.jpg" alt="스승의날"/>
                     <a href="https://police.willbes.net/promotion/index/cate/3001/code/2172" target="_blank" title="이벤트 바로가기" style="position: absolute; left: 78.3%; top: 82.13%; width: 12.41%; height: 5.6%; z-index: 2;"></a>
                 </div>
             </div>
 
-            <div class="evtCtnsBox evt07">
-                {{--<div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>--}}
+            <div class="evtCtnsBox evt07">                
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_07.jpg" alt="응원해 널"/>
             </div>
 
-            <div class="evtCtnsBox evt08">
-                {{--<div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>--}}
+            <div class="evtCtnsBox evt08">                
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_08.jpg" alt="힘내봄날"/>
             </div>
         </div>

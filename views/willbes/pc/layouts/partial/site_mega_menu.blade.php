@@ -100,9 +100,18 @@
                 <h5>소방직</h5>
                 <ul>
                     <li>
-                        <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50661/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">김세령</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50241/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">기미진</a>
+                        <span>[소방학개론]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">김종상</a>
+                    </li>
+                    <li>
+                        <span>[소방관계법규]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
+                    </li>
+                    <li>
+                        <span>[행정법]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50615?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>
                     </li>
                     <li>
                         <span>[영어]</span>
@@ -116,18 +125,8 @@
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50003/?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">원유철</a>
                     </li>
                     <li>
-                        <span>[소방학개론]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0')}}">김종상</a>
-                    </li>
-                    <li>
-                        <span>[소방관계법규]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51068/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50465/?subject_idx=1138&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">김종상</a>
-                    </li>
-                    <li>
-                        <span>[사회]</span>
-                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50181/?subject_idx=1133&subject_name=%EC%82%AC%ED%9A%8C')}}">문병일</a>
+                        <span>[국어]</span>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/50661/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">김세령</a>
                     </li>
                 </ul>                   
             </div>

@@ -41,9 +41,9 @@
         .btnLink a strong {color:#d40000}
         .btnLink a:hover {background:#000; color:#fff}
 
-        .evt02 {width:1120px; margin:0 auto 150px; }
-        .evt02 .tabBig {margin-right:-10px;}
+        .evt02 {width:1120px; margin:0 auto 150px;}
         .evt02 .tabBig li {display:inline; float:left; width:calc(20% - 10px); margin-right:10px}
+        .evt02 .tabSm li:last-child {margin-right:0}
         .evt02 .tabBig a {display:block; font-size:18px; border:5px solid #bcbcbc; color:#bcbcbc; padding:15px 0; text-align:center; line-height:1.4}
         .evt02 .tabBig a.active,
         .evt02 .tabBig a:hover {border-color:#4b67d7; color:#fff; background:#4b67d7}

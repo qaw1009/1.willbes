@@ -152,7 +152,6 @@
         var $regi_form_register = $('#regi_form_register');
 
         $(function(){
-            console.log({{date('YmdHi')}});
             fnRegisterList();
 
             $("input[name='register_data1']").on("change",function (){

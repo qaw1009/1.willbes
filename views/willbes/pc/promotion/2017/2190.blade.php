@@ -182,7 +182,7 @@
 
         function fn_submit() {
             @if(ENVIRONMENT == 'production')
-                @if(date('YmdHi') < '202105040000' || date('YmdHi') > '202105290000')
+                @if(date('YmdHi') < '202104290000' || date('YmdHi') > '202105290000')
                     alert('종료된 이벤트 입니다.');
                     return;
                 @endif

@@ -73,8 +73,18 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_02.jpg"/>
             <div class="title NSK-Black">감사 인증 게시판</div>
             <div class="s-title">감사 인사 인증하기</div>
-            <form name="" id="">
-                <div class="evt_table">                
+            <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or "" }}"/>
+                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+                <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+
+                <div class="evt_table">
                     <table border="0" cellspacing="2" cellpadding="2">
                         <col width="25%" />
                         <col  />
@@ -84,25 +94,25 @@
                                     TO
                                 </th>
                                 <td>
-                                    <label><input type="radio"> 선생님</label>
-                                    <label><input type="radio"> 어머니</label>
-                                    <label><input type="radio"> 아버지</label>
+                                    <label><input type="radio" name="register_data1" value="선생님"> 선생님</label>
+                                    <label><input type="radio" name="register_data1" value="어머니"> 어머니</label>
+                                    <label><input type="radio" name="register_data1" value="아버지"> 아버지</label>
                                     <label>
-                                        <input type="radio"> 직접입력
-                                        <input type="text" style="width:30%"> 
+                                        <input type="radio" name="register_data1" id="direct" data-id="direct" value="직접입력"> 직접입력
+                                        <input type="text" style="width:30%" name="register_data2" id="register_data2" disabled maxlength="10">
                                     </label>
                                 </td>
                             </tr>
                             <tr>
                                 <th>FROM</th>
-                                <td>홍길동</td>
+                                <td>{{ sess_data('mem_name') }}</td>
                             </tr>
                             <tr>
-                                <th>합격 인증 파일 첨부</th>
+                                <th>감사 인증 파일 첨부</th>
                                 <td colspan="3">
                                     <div>
-                                        <input type="file" id="attach_file" name="attach_file" onChange="chkUploadFile(this)" style="width:60%"/>&nbsp;&nbsp;
-                                        <a href="#none" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
+                                        <input type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this);" style="width:60%"/>&nbsp;&nbsp;
+                                        <a href="javascript:void(0);" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
 
                                         <p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>
                                     </div>
@@ -111,255 +121,12 @@
                         </tbody>
                     </table>
                     <div class="btns">
-                        <a href="#none" onclick="fn_submit();">확인</a>
-                        <a href="#none" onclick="reset_form(this);">취소</a>
-                    </div>                
+                        <a href="javascript:void(0);" onclick="fn_submit();">확인</a>
+                        <a href="javascript:void(0);" onclick="reset_form(this);">취소</a>
+                    </div>
                 </div>
 
-                <div class="evt_List">
-                    <ul>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>                            
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample02.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                        <li>
-                            <div class="imgBox">
-                                <div></div>
-                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2190_sms_sample.jpg"/>
-                            </div>
-                            <div class="smsTxt">
-                                TO <strong>선생님</strong><br>
-                                FROM <strong>홍길동</strong><br>
-                                2021.04.27
-                            </div>
-                        </li>
-                    </ul>                    
-                </div>
-
-                <div class="Paging">
-                    <ul>
-                        <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                        <li><a href="#none">5</a><span class="row-line">|</span></li>
-                        <li><a href="#none">6</a><span class="row-line">|</span></li>
-                        <li><a href="#none">7</a><span class="row-line">|</span></li>
-                        <li><a href="#none">8</a><span class="row-line">|</span></li>
-                        <li><a href="#none">9</a><span class="row-line">|</span></li>
-                        <li><a href="#none">10</a></li>
-                        <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                    </ul>
+                <div id="kakaoCertWrap">
                 </div>
             </form>
         </div> 
@@ -381,5 +148,112 @@
     </div>
     <!-- End Container -->
 
+    <script>
+        var $regi_form_register = $('#regi_form_register');
+
+        $(function(){
+            console.log({{date('YmdHi')}});
+            fnRegisterList();
+
+            $("input[name='register_data1']").on("change",function (){
+                if($(this).data("id") === 'direct'){
+                    $("#register_data2").prop("disabled", false);
+                }else{
+                    $("#register_data2").prop("disabled", true);
+                }
+            });
+
+        });
+
+        function fnRegisterList(page){
+            var _url = '{{ site_url('/event/listRegisterAjax') }}';
+            var data = {
+                'el_idx' : '{{ $data['ElIdx'] }}',
+                'file_type': '_kakao_cert',
+                'limit' : 20,
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#kakaoCertWrap").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fn_submit() {
+            @if(ENVIRONMENT == 'production')
+                @if(date('YmdHi') < '202105040000' || date('YmdHi') > '202105290000')
+                    alert('종료된 이벤트 입니다.');
+                    return;
+                @endif
+            @endif
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($register_count) === false)
+                alert('등록된 신청자 정보가 있습니다.');
+                return;
+            @endif
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if (!$regi_form_register.find('input[name="register_data1"]:checked').val()) {
+                alert('감사 인증 상대를 선택해 주세요.');
+                return;
+            }
+
+            if($regi_form_register.find('#direct').is(":checked") === true){
+                var direct_inp = $regi_form_register.find('input[name="register_data2"]').val();
+                if(!direct_inp){
+                    alert("감사 인증 상대를 입력해 주세요.");
+                    $regi_form_register.find('input[name="register_data2"]').focus();
+                    return;
+                }else{
+                    $regi_form_register.find('input[name="register_data1"]').val(direct_inp);
+                }
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('감사 인증 이미지를 등록해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if (confirm('저장하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('등록되었습니다.');
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
+
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp']) === -1) {
+                    $(elem).val("");
+                    alert('이미지 파일만 업로드 가능합니다.');
+                }
+            }
+        }
+
+        function reset_form(elem){
+            $(elem).closest('form').get(0).reset();
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+            }
+        }
+
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+        }
+    </script>
 
 @stop

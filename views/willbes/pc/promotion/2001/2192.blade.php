@@ -43,26 +43,25 @@
 
         .evt02 {width:1120px; margin:0 auto 150px;}
         .evt02 .tabBig li {display:inline; float:left; width:calc(20% - 10px); margin-right:10px}
-        .evt02 .tabSm li:last-child {margin-right:0}
+        .evt02 .tabBig li:last-child {width:20%; margin-right:0}
         .evt02 .tabBig a {display:block; font-size:18px; border:5px solid #bcbcbc; color:#bcbcbc; padding:15px 0; text-align:center; line-height:1.4}
         .evt02 .tabBig a.active,
         .evt02 .tabBig a:hover {border-color:#4b67d7; color:#fff; background:#4b67d7}
         .evt02 .tabBig:after {content:""; display:block; clear:both}
 
         .evt02 .tabSm {margin-top:20px}
-        .evt02 .tabSm li {display:inline; float:left; width:calc(33.33333% - 10px); margin-right:10px}
-        .evt02 .tabSm li:last-child {margin-right:0}
-        .evt02 .tabSm li.w100 {display:block; float:left; width:100%; margin-right:0}
+        .evt02 .tabSm li {display:inline; float:left; width:calc(33.33333% - 10px); margin-right:10px}        
+        .evt02 .tabSm li.w100 {display:block; width:100%; margin-right:0}
+        .evt02 .tabSm li:last-child {width:33.33333%; margin-right:0}        
         .evt02 .tabSm a {display:block; font-size:16px; border:3px solid #bcbcbc; color:#bcbcbc; padding:15px 0; text-align:center; line-height:1.4}
         .evt02 .tabSm a.active,
         .evt02 .tabSm a:hover {border-color:#4b67d7; color:#4b67d7;}
         .evt02 .tabSm:after {content:""; display:block; clear:both}
+        .evt02 p {margin-top:20px; display:block; font-size:16px; border:3px solid #4b67d7; color:#4b67d7; padding:15px 0; text-align:center; line-height:1.4}
 
-        .evt02 .slide_con {width:1081px; margin:30px auto 0; position:relative;}
-        .evt02 .slide_con ul {width:1081px; height:429px; overflow:hidden;}
-        .evt02 .slide_con p {position:absolute; top:45%; margin-top:-22px; width:44px !important; height:45px !important; z-index:10}
-        .evt02 .slide_con p.leftBtn {left:-60px}
-        .evt02 .slide_con p.rightBtn {right:-60px}        
+        .evt02 .slide_con {width:1081px; margin:30px auto 0;}
+        .evt02 .slide_con li {margin-bottom:20px}
+    
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
@@ -154,8 +153,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_04.jpg" alt="4" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_05.jpg" alt="4" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm02">
@@ -163,8 +160,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_06.jpg" alt="6" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_07.jpg" alt="7" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft2"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight2"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm03">
@@ -172,8 +167,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_08.jpg" alt="8" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t1_09.jpg" alt="9" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
             </div>
 
@@ -191,8 +184,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_03.jpg" alt="3" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_04.jpg" alt="4" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm05">
@@ -201,8 +192,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_06.jpg" alt="6" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_07.jpg" alt="7" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft5"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight5"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm06">
@@ -211,8 +200,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_09.jpg" alt="9" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t2_10.jpg" alt="10" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft6"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
             </div>
 
@@ -229,8 +216,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_02.jpg" alt="2" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_03.jpg" alt="3" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft7"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight7"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm08">
@@ -238,8 +223,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_04.jpg" alt="4" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_05.jpg" alt="5" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft8"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight8"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
 
                 <div class="slide_con" id="tabSm09">
@@ -247,15 +230,11 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_06.jpg" alt="6" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t3_07.jpg" alt="7" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft9"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight9"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
             </div>
 
             <div id="tabBig04">
-                <ul class="tabSm">
-                    <li class="w100"><a href="#tabSm10">문제풀이 1,2,3 단계 덕분에</a></li>
-                </ul>
+                <p>문제풀이 1,2,3 단계 덕분에</p>
 
                 <div class="slide_con" id="tabSm10">
                     <ul id="slidesImg10">
@@ -264,15 +243,11 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t4_03.jpg" alt="3" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t4_04.jpg" alt="4" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft10"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight10"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
             </div>
 
             <div id="tabBig05">
-                <ul class="tabSm">
-                    <li class="w100"><a href="#tabSm11">문제풀이 1,2,3 단계 덕분에</a></li>
-                </ul>
+                <p>문제풀이 1,2,3 단계 덕분에</p>
 
                 <div class="slide_con" id="tabSm11">
                     <ul id="slidesImg11">
@@ -281,8 +256,6 @@
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t5_03.jpg" alt="3" /></li>
                         <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_02_t5_04.jpg" alt="4" /></li>
                     </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft11"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_left.png"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight11"><img src="https://static.willbes.net/public/images/promotion/2021/04/2174_right.png"></a></p>
                 </div>
             </div>
         </div> 
@@ -291,282 +264,6 @@
 
 
     <script type="text/javascript">  
-        /* 슬라이드 */
-        $(document).ready(function() {
-            var slidesImg1 = $("#slidesImg1").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft1").click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-
-            $("#imgBannerRight1").click(function (){
-                slidesImg1.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg2 = $("#slidesImg2").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft2").click(function (){
-                slidesImg2.goToPrevSlide();
-            });
-
-            $("#imgBannerRight2").click(function (){
-                slidesImg2.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg3 = $("#slidesImg3").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft3").click(function (){
-                slidesImg3.goToPrevSlide();
-            });
-
-            $("#imgBannerRight3").click(function (){
-                slidesImg3.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg5 = $("#slidesImg5").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft5").click(function (){
-                slidesImg5.goToPrevSlide();
-            });
-
-            $("#imgBannerRight5").click(function (){
-                slidesImg5.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg6 = $("#slidesImg6").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft6").click(function (){
-                slidesImg6.goToPrevSlide();
-            });
-
-            $("#imgBannerRight6").click(function (){
-                slidesImg6.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg7 = $("#slidesImg7").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft7").click(function (){
-                slidesImg7.goToPrevSlide();
-            });
-
-            $("#imgBannerRight7").click(function (){
-                slidesImg7.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg8 = $("#slidesImg8").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft8").click(function (){
-                slidesImg8.goToPrevSlide();
-            });
-
-            $("#imgBannerRight8").click(function (){
-                slidesImg8.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg9 = $("#slidesImg9").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft9").click(function (){
-                slidesImg9.goToPrevSlide();
-            });
-
-            $("#imgBannerRight9").click(function (){
-                slidesImg9.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg10 = $("#slidesImg10").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft10").click(function (){
-                slidesImg9.goToPrevSlide();
-            });
-
-            $("#imgBannerRight10").click(function (){
-                slidesImg9.goToNextSlide();
-            });
-        });
-
-        $(document).ready(function() {
-            var slidesImg11 = $("#slidesImg11").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft11").click(function (){
-                slidesImg11.goToPrevSlide();
-            });
-
-            $("#imgBannerRight11").click(function (){
-                slidesImg11.goToNextSlide();
-            });
-        });
-
         $(document).ready(function(){
             $('.tabs').each(function(){
                 var $active, $content, $links = $(this).find('a');

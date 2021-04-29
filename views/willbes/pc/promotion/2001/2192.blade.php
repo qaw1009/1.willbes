@@ -534,11 +534,11 @@
             });
 
             $("#imgBannerLeft10").click(function (){
-                slidesImg9.goToPrevSlide();
+                slidesImg10.goToPrevSlide();
             });
 
             $("#imgBannerRight10").click(function (){
-                slidesImg9.goToNextSlide();
+                slidesImg10.goToNextSlide();
             });
         });
 

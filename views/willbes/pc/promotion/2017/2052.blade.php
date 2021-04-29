@@ -237,7 +237,7 @@
             var _url = '{{ site_url('/event/listRegisterAjax') }}';
             var data = {
                 'el_idx' : '{{ $data['ElIdx'] }}',
-                'file_type': '_thumbnail',
+                'file_type': '_pass_cert',
                 'limit' : 25,
                 'page' : page,
             };

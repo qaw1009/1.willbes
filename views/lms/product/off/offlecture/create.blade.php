@@ -862,7 +862,7 @@
                             [총
                                 <select name="SuppAbleCnt" id="SuppAbleCnt" class="form-control">
                                     @for($i=1; $i<=5 ;$i++)
-                                    <option value="{{$i}}" {{ $data['SuppAbleCnt'] == $i ? 'selected = "selected"' :  ($i == 3 ? 'selected = "selected"' : '') }}>{{$i}}</option>
+                                    <option value="{{$i}}" @if($method == 'POST' && $i === 3) selected="selected" @elseif ($data['SuppAbleCnt'] == $i) selected = "selected" @endif>{{$i}}</option>
                                     @endfor
                                 </select> 개
                             ]
@@ -878,7 +878,7 @@
                         <div class="item inline-block">
                             <select name="SuppPeriod" id="SuppPeriod" class="form-control">
                                 @for($i=1; $i<=10 ;$i++)
-                                    <option value="{{$i}}" {{ $data['SuppPeriod'] == $i ? 'selected = "selected"' :  ($i == 2 ? 'selected = "selected"' : '') }}>{{$i}}</option>
+                                    <option value="{{$i}}" {{ $data['SuppPeriod'] == $i ? 'selected = "selected"' :  ((empty($data['SuppPeriod']) && $i == 2) ? 'selected = "selected"' : '') }}>{{$i}}</option>
                                 @endfor
                             </select> 일
                         </div>

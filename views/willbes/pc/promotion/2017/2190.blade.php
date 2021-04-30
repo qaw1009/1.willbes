@@ -85,6 +85,7 @@
                 <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or "" }}"/>
                 <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
                 <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+                <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
 
                 <div class="evt_table">
                     <table border="0" cellspacing="2" cellpadding="2">
@@ -190,11 +191,6 @@
             @endif
 
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            @if(empty($register_count) === false)
-                alert('등록된 신청자 정보가 있습니다.');
-                return;
-            @endif
 
             var _url = '{!! front_url('/event/registerStore') !!}';
 

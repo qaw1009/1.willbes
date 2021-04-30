@@ -162,12 +162,14 @@
                 </map>
             </div>
 
+            {{--
             <div class="evtCtnsBox evt02">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2088_02.jpg" usemap="#Map2088a" title="면접캠프 스캐줄" border="0">
                 <map name="Map2088a" id="Map2088a">
                     <area shape="rect" coords="810,481,1030,594" href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/179948" target="_blank" />
                 </map>
             </div>
+            --}}
 
             {{--
             <div class="evtCtnsBox evt03_tab">

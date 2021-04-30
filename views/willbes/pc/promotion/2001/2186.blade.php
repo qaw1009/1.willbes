@@ -33,11 +33,16 @@
         .evt09 {background:#f6f6f6}
 
         .evt10 .entry {width:757px; margin:0 auto;}
-        .evt10 .entry input {height:60px; border:5px solid #000; padding:0 10px; width:200px; font-size:16px; font-weight:bold; float:left; margin-right:7px; display:inline}
-        .evt10 .entry input:nth-child(2) {width:550px; margin:0}
-        .evt10 .entry input:focus {border:5px solid #7902d2 !important; outline:none}
+        .evt10 .entry input[type=text] {height:60px; border:5px solid #000; padding:0 10px; width:200px; font-size:16px; font-weight:bold; float:left; margin-right:7px; display:inline}
+        .evt10 .entry input[type=text]:nth-child(2) {width:550px; margin:0}
+        .evt10 .entry input[type=text]:focus {border:5px solid #7902d2 !important; outline:none}
         .evt10 .entry .tx-left:after {content:''; display:block; clear:both}
         .evt10 .entry .entryTxt {border:1px solid #ccc; padding:20px; text-align:left; margin-top:20px; line-height:1.4;}
+        .evt10 .entry input[type=checkbox] {width:20px; height:20px} 
+        .evt10 .entryCheck {margin-top:10px; font-size:14px; text-align:left}
+        .evt10 .btnRequest {width:600px; margin:40px auto}
+        .evt10 .btnRequest a {display:block; border-radius:50px; padding:20px; text-align:center; color:#fff; background:#000; font-size:30px}
+        .evt10 .btnRequest a:hover {background:#7502bc; color:#fff}
 
         .evtCtnsBox .link {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .link a:hover {background-color:rgba(0,0,0,0.2)}          
@@ -135,6 +140,8 @@
                     - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
                     위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
                 </diV>
+                <div class="entryCheck"><input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
+                <div class="btnRequest NSK-Black"><a href="javascript:void(0);">이벤트 응모하기 ></a></div>
             </div>
             <div class="link" id="evtlink">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_10_02.jpg" alt="소문내기 이벤트"/>

@@ -130,6 +130,11 @@
                     return $.extend(arrToJson($search_register_form.serializeArray()), { 'start' : data.start, 'length' : data.length});
                 }
             },
+            "createdRow" : function( row, data, index ) {
+                if (data.IsStatus == 'N') {
+                    $(row).addClass('bg-gray-custom');
+                }
+            },
             columns: [
                 {'data' : null, 'render' : function(data, type, row, meta) {
                         return '<input type="checkbox" name="is_checked" class="flat target-crm-member" data-mem-idx="' + row.MemIdx + '">';

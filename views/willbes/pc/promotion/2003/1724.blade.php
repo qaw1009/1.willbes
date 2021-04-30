@@ -84,8 +84,8 @@
     <div class="evtCtnsBox wb_cts03">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1724_03.jpg" usemap="#Map1724a"  title="수강신청" border="0" />
         <map name="Map1724a" id="Map1724a">
-            <area shape="rect" coords="113,429,261,471" href="https://pass.willbes.net/promotion/index/cate/3019/code/1840" target="_blank" />
-            <area shape="rect" coords="604,429,752,471" href="https://pass.willbes.net/promotion/index/cate/3019/code/1840" target="_blank" />
+            <area shape="rect" coords="113,429,261,471" href="https://pass.willbes.net/promotion/index/cate/3023/code/2196" target="_blank" />
+            <area shape="rect" coords="604,429,752,471" href="https://pass.willbes.net/promotion/index/cate/3023/code/2196" target="_blank" />
             <area shape="rect" coords="112,921,263,962" href="https://pass.willbes.net/promotion/index/cate/3023/code/1081" target="_blank" />
             <area shape="rect" coords="605,920,755,962" href="https://pass.willbes.net/promotion/index/cate/3023/code/1081" target="_blank" />
             <area shape="rect" coords="113,1412,262,1453" href="https://pass.willbes.net/periodPackage/show/cate/3023/pack/648001/prod-code/168182" target="_blank" />

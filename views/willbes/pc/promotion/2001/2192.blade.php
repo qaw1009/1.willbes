@@ -9,12 +9,15 @@
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#fff;            
+            background:#fff;    
+            position:relative;        
         }
         .evtContent span {vertical-align:top}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
+
+        .skyBanner {position:fixed; width:150px; top:200px; right:10px; z-index:10;}
        
         .evt00 {background:#0a0a0a}
 
@@ -65,6 +68,11 @@
     </style>
 
     <div class="evtContent NSK" id="evtContainer">  
+        <div class="skyBanner">
+            <a href="https://police.willbes.net/promotion/index/cate/3010/code/2177" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_sky01.jpg" alt="문제풀이 풀패키지"></a>
+            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2164" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2192_sky02.jpg" alt="문제풀이 풀패키지"></a>
+        </div> 
+
         <div class="evtCtnsBox evt00">
             <img src="https://static.willbes.net/public/images/promotion/2020/09/1864_first.jpg"  alt="경찰학원부분 1위" />
         </div>

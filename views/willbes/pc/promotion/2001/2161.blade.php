@@ -140,7 +140,7 @@
                 <div class="c_table tx-left">
                     <div>
                         <input type="text" value="{{ sess_data('mem_name') }}" placeholder="이름" readonly onclick="loginCheck();">
-                        <input type="text" value="{{ sess_data('mem_phone') }}" placeholder="연락처 '-'없이 숫자만 입력" readonly onclick="loginCheck();">>
+                        <input type="text" value="{{ sess_data('mem_phone') }}" placeholder="연락처 '-'없이 숫자만 입력" readonly onclick="loginCheck();">
                     </div>
                     <div class="txtinfo">
                         ▶ 개인정보 수집 및 이용에 대한 안내<br>

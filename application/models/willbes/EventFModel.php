@@ -290,7 +290,7 @@ class EventFModel extends WB_Model
         $from = " 
             FROM (
                 SELECT SUB.*, SUB.EtcValue AS 'EtcValue2', SUB.EtcValue AS 'EtcValue3', SUB.EtcValue AS 'EtcValue4', SUB.EtcValue AS 'EtcValue5'
-                FROM {$this->_table['event_member']} AS SUB
+                FROM {$this->_table['event_member']} AS SUB WHERE SUB.IsStatus = 'Y' 
             ) AS A
             LEFT OUTER JOIN {$this->_table['event_register']} AS B ON A.ErIdx = B.ErIdx AND B.IsStatus = 'Y'
         ";
@@ -499,7 +499,7 @@ class EventFModel extends WB_Model
 
                 if(empty($inputData['register_overlap_chk']) === true){
                     $register_member_info = $this->getRegisterMember($arr_condition);
-                    if (count($register_member_info) > 0) {
+                    if (empty($register_member_info) === false) {
                         throw new \Exception('등록된 신청자 정보가 있습니다.');
                     }
                 }

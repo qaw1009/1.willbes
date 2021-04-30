@@ -58,6 +58,8 @@
 		.evtInfoBox h4 {font-size:40px; margin-bottom:20px}
         .evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type: decimal;margin-left:20px; margin-bottom:10px}
+
+        #del_btn { display: inline-block; background: #333; color: #ffffff; font-size: 14px; width: 20px; line-height: 20px; border-radius: 4px; float: right; text-align: center}
     </style>
 
     <div class="p_re evtContent NSK">

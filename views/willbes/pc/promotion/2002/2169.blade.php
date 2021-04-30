@@ -101,7 +101,7 @@
         </div>
 
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2169_top.jpg" title="필합 5개월 pass">                    
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2169_top.jpg" title="필합 pass">                    
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -113,7 +113,7 @@
         </div>                
 
         <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2169_03.jpg" title="5개월 패스 프로그램" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2169_03.jpg" title="패스 프로그램" />
         </div>
 
         <div class="evtCtnsBox evt04" id="apply1">
@@ -138,8 +138,8 @@
 
         <div class="evtCtnsBox evtInfo">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">5개월 필합패스 이용안내</h4>
-				<div class="infoTit"><strong>◇ 5개월 필합패스 경찰 전문 교수진</strong></div>
+				<h4 class="NSK-Black">필합패스 이용안내</h4>
+				<div class="infoTit"><strong>◇ 필합패스 경찰 전문 교수진</strong></div>
 				<ul>
 					<li>형사소송법/수사 – 신광은 교수님</li> 
                     <li>경찰학개론/행정법 – 장정훈 교수님</li> 
@@ -147,7 +147,7 @@
                     <li>영어 – 하승민 교수님<</li> 
                     <li>한국사(택1) – 원유철 교수님, 오태진 교수님</li>                      
                 </ul>
-                <div class="infoTit"><strong>◇ 5개월 필합패스</strong></div>
+                <div class="infoTit"><strong>◇ 필합패스</strong></div>
                 <ul>
                     <li>- 포함과정 : 문제풀이(실강) + 마무리특강(실강) + 빅매치 모의고사(학원시행) + 사물함 + 인강패스<br/>
                         *인강패스 제공 강좌 (접수일 ~ 8/21(토) 제공)</li>
@@ -156,10 +156,10 @@
                     <li>- 2021년 2차 대비 문제풀이</li>
                     <li>- 2021년 2차 대비 마무리 특강</li>                       
                 </ul>
-                <div class="infoTit"><strong>◇ 5개월 필합패스 유의사항</strong></div>
+                <div class="infoTit"><strong>◇ 필합패스 유의사항</strong></div>
                 <ul>
-                    <li>① 5개월 필합패스는 5/30(일)까지 인강패스, 5/31(월)~8/21(토) 실강+인강패스로 구성된 상품입니다.</li>
-                    <li>② 5개월 필합패스는 2021년 9월 21일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
+                    <li>① 필합패스는 5/30(일)까지 인강패스, 5/31(월)~8/21(토) 실강+인강패스로 구성된 상품입니다.</li>
+                    <li>② 필합패스는 2021년 9월 21일까지 책정된 수강료로 시험일정에 따라 정규과정 이외에 강의가 진행될 경우 추가 수강료가 부과될 수 있습니다.<br/>
                         (1개월 연장 시 – 실강 10만원, 인강 5만원)<br/>
                         *정규과정 : 기본이론, 심화이론, 심화기출, 문제풀이 1+2+3단계, 마무리특강</li>
                     <li>③ 국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</li>

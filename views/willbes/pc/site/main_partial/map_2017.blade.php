@@ -9,7 +9,7 @@
         <div class="mapR">
             <div>
                 <p>윌비스 <span class="tx-color">교원임용고시</span>학원 오시는 길</p>
-                <div class="tx16">서울 동작구 노량진로 197 남강타워 5층</div>
+                <div class="tx16">서울 동작구 노량진로 202 남강타워 5층</div>
             </div>
             <div class="traffic">
                 <p><img src="https://static.willbes.net/public/images/promotion/main/2018/icon_map01.png">지하철을 이용할 경우</p>

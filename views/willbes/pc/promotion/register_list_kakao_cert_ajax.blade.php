@@ -13,6 +13,7 @@
                         <strong>
                             @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                 {{ $row['UserName'] }}
+                                <a href="javascript:void(0);" id="del_btn" onclick="delRegister('{{ $row['EmIdx'] }}')">X</a>
                             @else
                                 {{ str_replace(mb_substr($row['UserName'],1,1,'UTF-8'), "*", mb_substr($row['UserName'],0,4,'UTF-8')) }}
                             @endif

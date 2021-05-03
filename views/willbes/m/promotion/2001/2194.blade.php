@@ -18,7 +18,7 @@
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {        
         width: auto;
-        bottom: 15px;
+        bottom: 10px;
         left:0;
         right:0;
         text-align: center;
@@ -231,7 +231,7 @@
             <li><a href="#tab1">무제한<br> PASS</a></li>
             <li><a href="#tab2">15개월 개편<br> PASS</a></li>
             <li><a href="#tab3">11개월 개편<br> PASS</a></li>
-            <li><a href="#tab4">20211<br> PASS</a></li>
+            <li><a href="#tab4">2021<br> PASS</a></li>
         </ul>        
 
         <!--합격보장-->

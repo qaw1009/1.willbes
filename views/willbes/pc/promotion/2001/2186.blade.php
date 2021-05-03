@@ -136,7 +136,7 @@
                                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg"  alt="{{ $row['Name'] }}"/>
                             @endif
                         </div>
-                        <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+                        <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감{{ $num }}"/></div>
                         @break;
                     @endif
                 @endif

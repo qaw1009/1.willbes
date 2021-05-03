@@ -286,12 +286,9 @@
                 </div>
 
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map2194C" id="event">
-                    <map name="Map2194C" id="Map2194C">
-                        <area shape="rect" coords="474,115,610,149" href="https://www.willbes.net/classroom/qna/index" target="_blank" alt="재수강 쿠폰받기" />
-                        <area shape="rect" coords="847,114,983,148" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
-                        <area shape="rect" coords="246,219,874,313" href="javascript:alert('Coming Soon!')"/>
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_03.jpg"  alt="재수강, 환승">
+                    <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 41.8%; top: 87.41%; width: 12.45%; height: 2.43%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 75.52%; top: 87.41%; width: 12.45%; height: 2.43%; z-index: 2;"></a>
                 </div>
             </div>
 
@@ -453,12 +450,9 @@
                 </div>
 
                 <div>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_03.jpg"  alt="신광은경찰PASS 수강료" usemap="#Map2194C" id="event">
-                    <map name="Map2194C" id="Map2194C">
-                        <area shape="rect" coords="474,115,610,149" href="https://www.willbes.net/classroom/qna/index" target="_blank" alt="재수강 쿠폰받기" />
-                        <area shape="rect" coords="847,114,983,148" href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" alt="환승이벤트 참여방법" />
-                        <area shape="rect" coords="246,219,874,313" href="javascript:alert('Coming Soon!')"/>
-                    </map>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_03.jpg"  alt="재수강, 환승">
+                    <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 41.8%; top: 87.41%; width: 12.45%; height: 2.43%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 75.52%; top: 87.41%; width: 12.45%; height: 2.43%; z-index: 2;"></a>
                 </div>
             </div>
         </div>

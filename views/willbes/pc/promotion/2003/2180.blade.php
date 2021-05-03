@@ -39,6 +39,16 @@
         .evt03 .check input {border:2px solid #000; margin-right:10px; height:20px; width:20px}
         .evt03 .check a {display:inline-block; padding:5px 20px; color:#fff; background:#000; margin-left:20px; border-radius:20px}
         .evt03 .check a:hover {color:#333; background:#35fffa;}
+
+        /*타이머*/
+        .newTopDday {clear:both;background:#f5f5f5; width:100%; padding:20px 0; font-size:26px;}
+        .newTopDday ul {width:1120px; margin:0 auto}
+        .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
+        .newTopDday ul li strong {line-height:70px}
+        .newTopDday ul li img {width:50px}
+        .newTopDday ul li:first-child {text-align:right; padding-right:10px; padding-top:5px; width:28%; line-height:60px}
+        .newTopDday ul li:last-child {text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:60px}
+        .newTopDday ul:after {content:""; display:block; clear:both}
 		
 		/* tab */
         .tabContaier{width:100%;}
@@ -112,6 +122,31 @@
 			<img src="https://static.willbes.net/public/images/promotion/2021/04/2180_02.jpg"  title="갓덕현이 모두 해결해드립니다." />			
 		</div>
 
+        <!-- 타이머 -->
+        <div id="newTopDday" class="newTopDday">
+            <div>
+                <ul>
+                    <li>
+                        마감까지
+                    </li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>일</strong></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li>
+                        남았습니다.
+                    </li>
+                </ul>
+            </div>
+        </div>   
+
         <div class="evtCtnsBox evt03" id="event">
             <div class="p_re">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2180_03.jpg" title="수험생들이 선택하고 인정한 영어정복 노하우!" />
@@ -175,6 +210,11 @@
 
 
 	<script type="text/javascript">
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('{{$arr_promotion_params['edate']}}');
+        });
+
 		/*tab*/
 		$(document).ready(function(){
 			$(".tabContents").hide(); 
@@ -199,7 +239,7 @@
             }
             var url = '{{ front_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
-        }		
+        }	        
 	</script>
 
 	{{-- 프로모션용 스크립트 include --}}

@@ -345,7 +345,7 @@ class EventFModel extends WB_Model
             // 신청리스트 시간 체크 필요할 경우
             if(empty($inputData['time_check']) === false && $inputData['time_check'] === 'Y'){
                 $arr_condition = [
-                    'EQ' => ['A.IsStatus' => 'Y'],
+                    'EQ' => ['A.IsStatus' => 'Y', 'A.ElIdx' => element('event_idx', $inputData)],
                     'RAW' => ['NOW() between ' => 'A.RegisterStartDatm and A.RegisterEndDatm']
                 ];
             }else{

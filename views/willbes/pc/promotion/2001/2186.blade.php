@@ -136,7 +136,7 @@
                                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg"  alt="{{ $row['Name'] }}"/>
                             @endif
                         </div>
-                        <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감{{ $num }}"/></div>
+                        <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
                         @break;
                     @endif
                 @endif
@@ -160,8 +160,8 @@
                     {!! method_field('POST') !!}
                     <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}" readonly/>
                     <input type="hidden" name="register_type" value="promotion" readonly/>
-        {{--                    <input type="hidden" name="time_check" value="Y" readonly/> --}}{{-- 이벤트 날짜 체크 여부 --}}
                     <input type="hidden" name="register_chk[]" value="{{ $el_idx or '' }}">
+                    <input type="hidden" name="time_check" value="Y" readonly/>  {{-- 이벤트 날짜 체크 여부 --}}
 
                     <div class="tx-left">
                         <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" onclick="loginCheck();" placeholder="홍길동" readonly>

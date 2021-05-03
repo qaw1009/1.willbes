@@ -227,7 +227,7 @@ class EventFModel extends WB_Model
     public function listEventForRegister($arr_condition=[])
     {
         $column = '
-            A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, 
+            A.ErIdx, A.PersonLimitType, A.PersonLimit, A.Name, A.RegisterExpireStatus, A.RegisterStartDatm, A.RegisterEndDatm,
             IFNULL(B.MemCount, \'0\') AS MemCount,
             C.ProdCode,
             D.LearnPatternCcd,
@@ -341,11 +341,19 @@ class EventFModel extends WB_Model
             if (empty($event_data) === true) {
                 throw new \Exception('조회된 이벤트 정보가 없습니다.');
             }
-
-            $arr_condition = [
-                'EQ' => ['A.IsStatus' => 'Y'],
-                'IN' => ['A.ErIdx' => $inputData['register_chk']]
-            ];
+            
+            // 신청리스트 시간 체크 필요할 경우
+            if(empty($inputData['time_check']) === false && $inputData['time_check'] === 'Y'){
+                $arr_condition = [
+                    'EQ' => ['A.IsStatus' => 'Y'],
+                    'RAW' => ['NOW() between ' => 'A.RegisterStartDatm and A.RegisterEndDatm']
+                ];
+            }else{
+                $arr_condition = [
+                    'EQ' => ['A.IsStatus' => 'Y'],
+                    'IN' => ['A.ErIdx' => $inputData['register_chk']]
+                ];
+            }
             $result_register = $this->listEventForRegister($arr_condition);
             if (empty($result_register) === true) {
                 throw new \Exception('조회된 특강 정보가 없습니다.');

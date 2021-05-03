@@ -231,7 +231,7 @@
             <li><a href="#tab1">무제한<br> PASS</a></li>
             <li><a href="#tab2">15개월 개편<br> PASS</a></li>
             <li><a href="#tab3">11개월 개편<br> PASS</a></li>
-            <li><a href="#tab4">20211<br> PASS</a></li>
+            <li><a href="#tab4">2021<br> PASS</a></li>
         </ul>        
 
         <!--합격보장-->

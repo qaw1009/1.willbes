@@ -18,7 +18,7 @@
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {        
         width: auto;
-        bottom: 15px;
+        bottom: 10px;
         left:0;
         right:0;
         text-align: center;

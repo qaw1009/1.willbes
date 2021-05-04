@@ -18,7 +18,7 @@
     .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
     .slide_con .bx-wrapper .bx-pager {        
         width: auto;
-        bottom: 10px;
+        bottom: 15px;
         left:0;
         right:0;
         text-align: center;
@@ -81,6 +81,8 @@
     .content_guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px}
     .content_guide_box dd:after {content:""; display:block; clear:both}
 
+    br { font-family:dotum;}
+
     /* 폰 가로, 태블릿 세로*/
     @@media only screen and (max-width: 374px)  {   
         .dday {font-size:18px !important;} 
@@ -88,17 +90,35 @@
         .evt06 .slide_con {margin:0 10px; padding-bottom:40px}  
         .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
         .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
+        .evt02 .price li {font-size:14px;}
+        .slide_con .bx-wrapper .bx-pager {bottom:6px;}
+        .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:10px;height:10px;}
+        .evt01 {padding-bottom:25px;}
+        .evt03 {padding-bottom:25px;}
     }
 
     /* 태블릿 세로 */
     @@media only screen and (min-width: 375px) and (max-width: 640px) {       
         .dday {font-size:18px !important;} 
         .dday a {padding:5px 10px;}
+        .evt02 .price li {font-size:16px;}
+        .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
+        .slide_con .bx-wrapper .bx-pager {bottom:6px;}
+        .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:12px;height:12px;}
+        .evt01 {padding-bottom:50px;}
+        .evt03 {padding-bottom:50px;}
+        
     }
 
     /* 태블릿 가로, PC */
     @@media only screen and (min-width: 641px) {
         .content_guide_wrap .tabs li a br {display:none}
+        .evt02 .price li {font-size:17px;}
+        .content_guide_wrap .tabs li a {font-size:16px !important; letter-spacing:-1px}
+        .slide_con .bx-wrapper .bx-pager {bottom:6px;}
+        .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:14px;height:14px;}
+        .evt01 {padding-bottom:75px;}
+        .evt03 {padding-bottom:75px;}
     }
 </style>
 

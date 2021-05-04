@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 <style>
-.law-bn01 {margin:20px 0 100px;}    
+.law-bn01 {margin:20px auto 0;}    
 .law-bn01 ul {margin-right:-15px}
 .law-bn01 li {display:inline; float:left; width:260px; margin-right:15px}
 .law-bn01 li:first-child {width:570px;}
@@ -38,9 +38,9 @@
     background: #353535 !important;
 }
 
-.law-bn02 {width:1120px; height:260px; overflow:hidden; margin:80px auto 0}
+.law-bn02 {width:1120px; height:260px; overflow:hidden; margin:40px auto 0}
 
-.law .willbesNews {width:1120px; margin:0 auto}
+.law .willbesNews {width:1120px; margin:40px auto 0}
 .law .willbesNews .noticeTabs {width:340px; margin:0; float:left; margin-right:50px}
 .law .willbesNews .noticeTabs:last-child {margin-right:0}
 .law .willbesNews .List-Table {padding:0; width:100% !important;}
@@ -662,7 +662,7 @@
         </div>
     </div> 
 
-    <div class="Section NSK mt90"> 
+    <div class="Section NSK"> 
         <div class="willbesNews">
             <div class="noticeTabs">
                 <div class="will-listTit">

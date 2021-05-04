@@ -3,7 +3,7 @@
 @section('content')
 <!-- Container -->
 <style>
-.law-bn01 {margin:120px 0;}    
+.law-bn01 {margin:20px 0 100px;}    
 .law-bn01 ul {margin-right:-15px}
 .law-bn01 li {display:inline; float:left; width:260px; margin-right:15px}
 .law-bn01 li:first-child {width:570px;}
@@ -29,14 +29,17 @@
     padding: 0;
     letter-spacing: 0;
 }
-.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
     background: #d9d9d9;
 }
-.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
-.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
-.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.law .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
     background: #353535 !important;
 }
+
+.law-bn02 {width:1120px; height:260px; overflow:hidden; margin:80px auto 0}
+
 .law .willbesNews {width:1120px; margin:0 auto}
 .law .willbesNews .noticeTabs {width:340px; margin:0; float:left; margin-right:50px}
 .law .willbesNews .noticeTabs:last-child {margin-right:0}
@@ -71,11 +74,15 @@
     background: #000; color:#fff
 }
 .law .Section5 {background:url("https://static.willbes.net/public/images/promotion/main/2003/3035_sec05_bg.jpg") repeat-x left top;}
-.law .Section6 {margin-top:50px}
-.law .Section6 .will-nTit {border:0; font-size:46px; text-align:center}
-.law .Section6 .will-sTit {font-size:28px; text-align:center; margin-bottom:20px}
 
-.law .Section7 {margin:40px 0}
+.law .Section6 {background:#f7f7f7}
+
+.law .Section7 {}
+.law .will-nTit {border:0; font-size:46px; text-align:center}
+.law .will-nTit span {vertical-align:baseline}
+.law .will-sTit {font-size:28px; text-align:center; margin-bottom:20px}
+
+.law .Section8 {margin:40px 0}
 .law .will-acadTit {
     font-size: 19px;
     font-weight: 600;
@@ -84,7 +91,7 @@
     border-bottom:2px solid #000;
     margin-bottom:20px
 }
-.law.will-acadTit span {
+.law .will-acadTit span {
     vertical-align: baseline;
 }
 
@@ -620,13 +627,7 @@
                 </li>
             </ul>
         </h3>
-    </div>
-
-    <div class="Section1">
-        <div class="widthAuto">
-            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3035_banner_top.jpg" alt="동행,새로운 시작이자 출발"></a>
-        </div>
-    </div>  
+    </div> 
 
     <div class="law-bn01">
         <div class="widthAuto"> 
@@ -697,9 +698,18 @@
                 <div class="will-listTit">
                     합격수기 <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                 </div>
-                <div class="tx-center pt10">                      
-                    <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_350x200.jpg" alt="배너명"></a>
+                <div class="tx-center">                      
+                    <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_340x210.jpg" alt="배너명"></a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="law-bn02">
+        <div class="bSlider">
+            <div class="slider">
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_1120x260_01.jpg" alt="배너명"></a></div>
+                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_1120x260_02.jpg" alt="배너명"></a></div>
             </div>
         </div>
     </div>
@@ -719,17 +729,21 @@
         </div>
     </div>
 
+    <div class="Section6">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec06.jpg" alt="김동진 법원팀의 학습 Tip">
+        </div>
+    </div>
+
     <div class="Section5">
         <div class="widthAuto">
             <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec05.jpg" alt="김동진 법원팀의 학습 Tip">
         </div>
     </div>    
 
-    <div class="Section6">
-        <div class="widthAuto">            
-            <div class="will-sTit">오직 법원사무직만을 위한 </div>
-            <div class="will-nTit NSK-Black">김동진법원팀의 <span class="tx-color">최강 라인업</span></div>  
-            <ul class="ProfBoxB mt100">
+    <div class="Section7">
+        <div class="widthAuto">           
+            <ul class="ProfBoxB">
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_01.jpg" alt="배너명"></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_02.jpg" alt="배너명"></a></li>
                 <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_03.jpg" alt="배너명"></a></li>
@@ -742,7 +756,7 @@
         </div>
     </div>
 
-    <div class="Section Section7">
+    <div class="Section Section8">
         <div class="widthAuto">
             <div class="will-acadTit">윌비스 한림법학원 <span class="tx-color">김동진 법원팀</span></div>
             <div class="noticeTabs campus c_both">

@@ -30,7 +30,7 @@ class FreebieModel extends WB_Model
             $column = 'count(*) AS numrows';
             $order_by_offset_limit = '';
         } else {
-            $column = 'A.ProdCode,A.SiteCode,A.ProdName,A.IsUse, A.RegDatm,B.RefundSetPrice,B.Content,B.`Desc`,B.Stock ,C.SiteName,D.wAdminName as RegAdminName';
+            $column = 'A.ProdCode,A.SiteCode,A.ProdName,A.IsUse, A.RegDatm,B.RefundSetPrice,B.Content,B.`Desc`,B.Stock,B.wBookIdx,C.SiteName,D.wAdminName as RegAdminName';
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -205,6 +205,7 @@ class FreebieModel extends WB_Model
             ,'Stock' => element('Stock',$input)
             ,'Content' => element('Content',$input)
             ,'Desc' => element('Desc',$input)
+            ,'wBookIdx' => element('wbook_idx',$input)
         ];
 
     }

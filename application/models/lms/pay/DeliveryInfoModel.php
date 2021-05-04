@@ -267,19 +267,21 @@ class DeliveryInfoModel extends BaseOrderModel
 
         $from = '
             from (
-                select O.OrderIdx, PB.wBookIdx, max(OP.OrderProdIdx) as OrderProdIdx, count(0) as OrderProdQty
+                select O.OrderIdx, IFNULL(PB.wBookIdx, PF.wBookIdx) AS wBookIdx, max(OP.OrderProdIdx) as OrderProdIdx, count(0) as OrderProdQty
                 from ' . $this->_table['order'] . ' as O
                     inner join ' . $this->_table['order_product'] . ' as OP
                         on O.OrderIdx = OP.OrderIdx	
                     inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
                         on OP.OrderProdIdx = OPD.OrderProdIdx		
-                    inner join ' . $this->_table['product_book'] . ' as PB
+                    left join ' . $this->_table['product_book'] . ' as PB
                         on OP.ProdCode = PB.ProdCode
+                    left join ' . $this->_table['product_freebie'] . ' as PF
+                        on OP.ProdCode = PF.ProdCode and PF.wBookIdx IS NOT NULL
                 where O.CompleteDatm between ? and ?
                     and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                     and OPD.DeliveryStatusCcd is null
                     ' . $where . '
-                group by O.OrderIdx, PB.wBookIdx
+                group by O.OrderIdx, IFNULL(PB.wBookIdx, PF.wBookIdx)
             ) as TA
                 inner join ' . $this->_table['order'] . ' as O
                     on TA.OrderIdx = O.OrderIdx
@@ -310,29 +312,33 @@ class DeliveryInfoModel extends BaseOrderModel
     {
         $where = $this->_conn->makeWhere(['EQ' => ['O.SiteCode' => $site_code]])->getMakeWhere(true);
 
-        $column = 'ODA.Receiver, fn_dec(ODA.ReceiverTelEnc) as ReceiverTel, fn_dec(ODA.ReceiverPhoneEnc) as ReceiverPhone
-            , ODA.ZipCode, concat(trim(ODA.Addr1), " ", trim(fn_dec(ODA.Addr2Enc))) as Addr, ODA.DeliveryMemo
-            , PB.wBookIdx, VBB.wPublName, VBB.wIsbn, VBB.wOrgPrice
-            , OP.OrderPrice, "1" as OrderQty, OP.RealPayPrice, VBB.wBookName, O.OrderNo
+        $column = 'TA.Receiver, TA.ReceiverTel, TA.ReceiverPhone
+            , TA.ZipCode, TA.Addr, TA.DeliveryMemo
+            , TA.wBookIdx
+            , VBB.wPublName, VBB.wIsbn, VBB.wOrgPrice
+            , TA.OrderPrice, TA.OrderQty, TA.RealPayPrice, VBB.wBookName, TA.OrderNo
         ';
 
         $from = '
-            from ' . $this->_table['order'] . ' as O
-                inner join ' . $this->_table['order_product'] . ' as OP
-                    on O.OrderIdx = OP.OrderIdx
-                inner join ' . $this->_table['order_product_delivery_info'] . ' as OPD
-                    on OP.OrderProdIdx = OPD.OrderProdIdx
-                inner join ' . $this->_table['order_delivery_address'] . ' as ODA
-                    on O.OrderIdx = ODA.OrderIdx		
-                inner join ' . $this->_table['product_book'] . ' as PB
-                    on OP.ProdCode = PB.ProdCode
-                inner join ' . $this->_table['bms_book_combine'] . ' as VBB
-                    on PB.wBookIdx = VBB.wBookIdx
-            where O.CompleteDatm between ? and ?
-                and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
-                and OPD.DeliveryStatusCcd is null
+            FROM (
+                SELECT
+                O.OrderIdx, OP.OrderProdIdx, ODA.Receiver, fn_dec(ODA.ReceiverTelEnc) AS ReceiverTel, fn_dec(ODA.ReceiverPhoneEnc) AS ReceiverPhone
+                , ODA.ZipCode, CONCAT(TRIM(ODA.Addr1), " ", TRIM(fn_dec(ODA.Addr2Enc))) AS Addr, ODA.DeliveryMemo
+                , IFNULL(PB.wBookIdx,PF.wBookIdx) AS wBookIdx
+                , OP.OrderPrice, "1" AS OrderQty, OP.RealPayPrice, O.OrderNo
+                FROM ' . $this->_table['order'] . ' AS O
+                INNER JOIN ' . $this->_table['order_product'] . ' AS OP ON O.OrderIdx = OP.OrderIdx
+                INNER JOIN ' . $this->_table['order_product_delivery_info'] . ' AS OPD ON OP.OrderProdIdx = OPD.OrderProdIdx
+                INNER JOIN ' . $this->_table['order_delivery_address'] . ' AS ODA ON O.OrderIdx = ODA.OrderIdx
+                LEFT JOIN ' . $this->_table['product_book'] . ' AS PB ON OP.ProdCode = PB.ProdCode
+                LEFT JOIN ' . $this->_table['product_freebie'] . ' AS PF ON OP.ProdCode = PF.ProdCode AND PF.wBookIdx IS NOT NULL
+                WHERE O.CompleteDatm BETWEEN ? AND ?
+                AND OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
+                AND OPD.DeliveryStatusCcd IS NULL
                 ' . $where . '
-            order by O.OrderIdx desc, OP.OrderProdIdx asc
+            ) AS TA
+            INNER JOIN ' . $this->_table['bms_book_combine'] . ' AS VBB ON TA.wBookIdx = VBB.wBookIdx
+            ORDER BY TA.OrderIdx DESC, TA.OrderProdIdx ASC
         ';
 
         // 쿼리 실행

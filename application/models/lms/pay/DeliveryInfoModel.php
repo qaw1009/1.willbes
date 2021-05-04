@@ -281,7 +281,7 @@ class DeliveryInfoModel extends BaseOrderModel
                     and OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                     and OPD.DeliveryStatusCcd is null
                     ' . $where . '
-                group by O.OrderIdx, PB.wBookIdx
+                group by O.OrderIdx, IFNULL(PB.wBookIdx, PF.wBookIdx)
             ) as TA
                 inner join ' . $this->_table['order'] . ' as O
                     on TA.OrderIdx = O.OrderIdx
@@ -314,7 +314,7 @@ class DeliveryInfoModel extends BaseOrderModel
 
         $column = 'TA.Receiver, TA.ReceiverTel, TA.ReceiverPhone
             , TA.ZipCode, TA.Addr, TA.DeliveryMemo
-            , TA.wBookIdxdlu
+            , TA.wBookIdx
             , VBB.wPublName, VBB.wIsbn, VBB.wOrgPrice
             , TA.OrderPrice, TA.OrderQty, TA.RealPayPrice, VBB.wBookName, TA.OrderNo
         ';

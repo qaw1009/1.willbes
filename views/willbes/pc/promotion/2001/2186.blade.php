@@ -190,9 +190,9 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_10_02.jpg" alt="소문내기 이벤트"/>
                 <a href="javascript:void(0);" onclick="giveCheck();" title="할인쿠폰" style="position: absolute; left: 33.48%; top: 52.96%; width: 32.77%; height: 4.26%; z-index: 2;"></a>
                 <a  href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 홍보 이미지 다운" style="position: absolute; left: 24.02%; top: 78.83%; width: 29.91%; height: 3.89%; z-index: 2;"></a>
-                <a href="http://cafe.daum.net/policeacademy" title="다음카페" style="position: absolute; left: 26.61%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
-                <a href="https://cafe.naver.com/polstudy" title="네이버카페" style="position: absolute; left: 45.8%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
-                <a href="http://cafe.daum.net/policeacademy" title="닥공사" style="position: absolute; left: 66.52%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
+                <a href="http://cafe.daum.net/policeacademy" target="_blank" title="다음카페" style="position: absolute; left: 26.61%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/polstudy" target="_blank" title="네이버카페" style="position: absolute; left: 45.8%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
+                <a href="https://cafe.naver.com/kts9719" target="_blank" title="닥공사" style="position: absolute; left: 66.52%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
             </div>
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

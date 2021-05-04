@@ -333,7 +333,7 @@ class DeliveryInfoModel extends BaseOrderModel
                 LEFT JOIN ' . $this->_table['product_book'] . ' AS PB ON OP.ProdCode = PB.ProdCode
                 LEFT JOIN ' . $this->_table['product_freebie'] . ' AS PF ON OP.ProdCode = PF.ProdCode AND PF.wBookIdx IS NOT NULL
                 WHERE O.CompleteDatm BETWEEN ? AND ?
-                AND OP.PayStatusCcd = "676001"
+                AND OP.PayStatusCcd = "' . $this->_pay_status_ccd['paid'] . '"
                 AND OPD.DeliveryStatusCcd IS NULL
                 ' . $where . '
             ) AS TA

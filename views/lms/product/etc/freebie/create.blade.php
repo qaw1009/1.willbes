@@ -47,6 +47,16 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
+                <label class="control-label col-md-2" for="wbook_idx">교재코드
+                </label>
+                <div class="col-md-2 form-inline">
+                    <input type="number" id="wbook_idx" name="wbook_idx" class="form-control" style='width:120px;' title="교재코드" value="{{ $data['wBookIdx'] }}">
+                </div>
+                <div class="col-md-8 form-control-static">
+                    • 사은품이 교재일 경우 WBS에 등록된 교재코드를 정확하게 입력해 주세요.
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-2" for="RefundSetPrice">환불책정가 <span class="required">*</span>
                 </label>
                 <div class="col-md-4 form-inline">

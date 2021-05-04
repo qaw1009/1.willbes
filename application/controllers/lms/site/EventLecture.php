@@ -388,7 +388,7 @@ class EventLecture extends \app\controllers\BaseController
     }
 
     /**
-     * 이벤트 접수 관리 : 만료상태 수정
+     * 이벤트 접수 관리 : 다중리스트 수정
      */
     public function expireRegister()
     {

@@ -2,6 +2,93 @@
 
 @section('content')
 <!-- Container -->
+<style>
+.law-bn01 {margin:120px 0;}    
+.law-bn01 ul {margin-right:-15px}
+.law-bn01 li {display:inline; float:left; width:260px; margin-right:15px}
+.law-bn01 li:first-child {width:570px;}
+.law-bn01 li .slider {height:380px; overflow:hidden;}
+.law-bn01 li:last-child .slider {height:185px; overflow:hidden;}
+.law-bn01 ul:after {content: ""; display: block; clear:both}
+
+.law-bn01 .bSlider .bx-wrapper .bx-controls-direction a {
+    width: 20px; height: 20px;
+}
+
+.law-bn01 .bSlider .bx-wrapper .bx-pager {
+    width: auto;
+    position: absolute;
+    top: 10px;
+    left:0;
+    right: 10px;
+    bottom: 0;
+    font-size: 11px;
+    font-weight: 300;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0;
+}
+.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #d9d9d9;
+}
+.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:hover, 
+.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a.active,
+.law-bn01 .bSlider .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #353535 !important;
+}
+.law .willbesNews {width:1120px; margin:0 auto}
+.law .willbesNews .noticeTabs {width:340px; margin:0; float:left; margin-right:50px}
+.law .willbesNews .noticeTabs:last-child {margin-right:0}
+.law .willbesNews .List-Table {padding:0; width:100% !important;}
+
+.law .Section3 {background:url("https://static.willbes.net/public/images/promotion/main/2003/3035_sec04_bg.jpg") no-repeat center top; margin-top:100px}
+.law .Section3 .tipGo {
+    position: absolute;
+    width: 994px;
+    top:700px;
+    left:50%;
+    margin-left:-497px;
+}
+.law .Section3 .tipGo li {
+    display: inline;
+    float: left;
+    width: 142px;
+}
+.law .Section3 .tipGo li a {
+    display: block;
+    text-align: center;
+    color:#333;
+    background: #f4f4f4;
+    height: 26px;
+    line-height: 26px;
+    width: 90px;
+    margin: 0 auto;
+    border-radius:4px;
+    font-weight:bold;
+}
+.law .Section3 .tipGo li a:hover {
+    background: #000; color:#fff
+}
+.law .Section5 {background:url("https://static.willbes.net/public/images/promotion/main/2003/3035_sec05_bg.jpg") repeat-x left top;}
+.law .Section6 {margin-top:50px}
+.law .Section6 .will-nTit {border:0; font-size:46px; text-align:center}
+.law .Section6 .will-sTit {font-size:28px; text-align:center; margin-bottom:20px}
+
+.law .Section7 {margin:40px 0}
+.law .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+    border-bottom:2px solid #000;
+    margin-bottom:20px
+}
+.law.will-acadTit span {
+    vertical-align: baseline;
+}
+
+</style>
 
 <div id="Container" class="Container law NGR c_both">
     <div class="Menu widthAuto NGR c_both">
@@ -533,168 +620,160 @@
                 </li>
             </ul>
         </h3>
-    </div>   
-        
-    <div class="Section MainVisual">        
-        <div class="widthAuto NSK mt30">
-            <div class="VisualsubBox">
-                <div class="bSlider">
-                    <div class="sliderStopAutoPager">
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_01.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_02.jpg') }}" alt="배너명"></a></div>
-                        <div><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_1120x380_03.jpg') }}" alt="배너명"></a></div>
+    </div>
+
+    <div class="Section1">
+        <div class="widthAuto">
+            <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/3035_banner_top.jpg" alt="동행,새로운 시작이자 출발"></a>
+        </div>
+    </div>  
+
+    <div class="law-bn01">
+        <div class="widthAuto"> 
+            <ul>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_570x380.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_570x380.jpg" alt="배너명"></a></div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="Section Section2">
-        <div class="widthAuto">
-            <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_top.jpg') }}" alt="최적의 합격솔루션 김동진 법원팀"></a>
-        </div>
-    </div>
-    
-    <div class="Section ProfBox">
-        <div class="widthAuto">
-            <ul class="PBtab NSK">
-                <li><a href="#tab01">현재 준비중인 수험생이라면</a></li>
-                <li><a href="#tab02">지금 시작하는 초시생이라면</a></li>
-            </ul>  
-            <div id="tab01">  
-                <img src="{{ img_url('gosi_law/visual/visual_tit01_01.jpg') }}" alt="지금은 전범위 모의고사로 마무리 할 때!">            
-                <ul class="PBcts">
-                    <li>
-                        <a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof01.jpg') }}" alt="배너명"></a>
-                    </li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof02.jpg') }}" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof03.jpg') }}" alt="배너명"></a></li>
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof04.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof04.jpg') }}" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="tab02">  
-                <img src="{{ img_url('gosi_law/visual/visual_tit01_02.jpg') }}" alt="빠르게 기본이론 강좌로 개념정립!">            
-                <ul class="PBcts">
-                    <li>
-                        <div class="bSlider">
-                            <div class="slider">
-                                <div><a href="#none"><img src="{{ img_url('gosgosi_lawi_tech/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
-                                <div><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof01.jpg') }}" alt="배너명"></a></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof06.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof07.jpg') }}" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="{{ img_url('gosi_law/visual/visual_prof08.jpg') }}" alt="배너명"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="Section Section3 mt100">
-        <div class="widthAuto p_re">
-            <div><img src="{{ img_url('gosi_law/visual/visual_tip.jpg') }}" alt="김동진 법원팀의 학습 Tip"></div>
-            <ul class="tipGo NSK">
-                <li><a href="#none">강좌 바로가기</a></li>
-                <li><a href="#none">강좌 바로가기</a></li>
-                <li><a href="#none">강좌 바로가기</a></li>
-                <li><a href="#none">강좌 바로가기</a></li>
-                <li><a href="#none">강좌 바로가기</a></li>
-                <li><a href="#none">강좌 바로가기</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section">
-        <div class="widthAuto p_re">
-            <img src="{{ img_url('gosi_law/visual/visual_tit02.jpg') }}" alt="오직 법원직을 위한 최강 라인업 윌비스 김동진 법원팀">
-            <ul class="ProfBoxB">
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-                <li><a href="#none"><img src="{{ img_url('gosi_law/banner/bnr_prof_01.jpg') }}" alt="배너명"></a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="Section NSK mt90">
-        <div class="widthAuto">  
-            <div class="willbesNews">
-                <div class="noticeTabs f_left">
-                <div class="will-listTit">공지사항</div>
-                    <div class="tabBox noticeBox" style="margin-top:-30px">
-                        <div class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            </ul>
+                </li>
+                <li class="bSlider">
+                    <div class="slider">
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x380.jpg" alt="배너명"></a></div>
+                        <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x380.jpg" alt="배너명"></a></div>
+                    </div>
+                </li>
+                <li class="bSlider">
+                    <div>
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x185_01.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x185_02.jpg" alt="배너명"></a></div>
                         </div>
                     </div>
-                </div>
+                    <div class="mt10">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x185_02.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_360x185_01.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> 
 
-                <div class="noticeTabs f_right">
-                    <ul class="tabWrap noticeWrap three">
-                        <li><a href="#notice1" class="on">시험공고</a></li>
-                        <li><a href="#notice2" class="">수험뉴스</a></li>
-                        <li><a href="#notice3" class="">합격수기</a></li>
+    <div class="Section NSK mt90"> 
+        <div class="willbesNews">
+            <div class="noticeTabs">
+                <div class="will-listTit">
+                    공지사항 <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                </div>
+                <div class="tabBox noticeBox">                      
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
                     </ul>
-                    <div class="tabBox noticeBox">
-                        <div id="notice1" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>국가직 | 2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none"><span>HOT</span>서울시 | 2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">제주도 | 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">광주광역시 | 2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">부산광역시 | 2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                        <div id="notice2" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내222</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내22</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내22</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                        <div id="notice3" class="tabContent p_re">
-                            <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                            <ul class="List-Table">
-                                <li><a href="#none"><span>HOT</span>공지사항 제목이 출력됩니다.333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">3월 31일(금) 새벽시스템점검안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">설연휴학원고객센터운영안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내333</a><span class="date">2019-01-25 </span></li>
-                                <li><a href="#none">추석교재배송및고객센터휴무안내333</a><span class="date">2019-01-25 </span></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <!--willbesNews //-->
+
+            <div class="noticeTabs">
+                <div class="will-listTit">
+                    시간표 <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                </div>
+                <div class="tabBox noticeBox">                      
+                    <ul class="List-Table">
+                        <li><a href="#none"><span>EVENT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none"><span>EVENT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">[공지]2019년도 광주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                        <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="noticeTabs">
+                <div class="will-listTit">
+                    합격수기 <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
+                </div>
+                <div class="tx-center pt10">                      
+                    <a href="https://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_350x200.jpg" alt="배너명"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="Section3 NSK">
+        <div class="widthAuto p_re">
+            <div><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec04.gif" alt="김동진 법원팀의 학습 Tip"></div>
+            <ul class="tipGo">
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1379" target="_blank">맛보기 강의</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1409" target="_blank">맛보기 강의</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1410" target="_blank">맛보기 강의</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1411" target="_blank">맛보기 강의</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1412" target="_blank">맛보기 강의</a></li>
+                <li><a href="https://pass.willbes.net/lecture/index/cate/3035/pattern/only?search_order=regist&subject_idx=&course_idx=1413" target="_blank">맛보기 강의</a></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section5">
+        <div class="widthAuto">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec05.jpg" alt="김동진 법원팀의 학습 Tip">
+        </div>
+    </div>    
+
+    <div class="Section6">
+        <div class="widthAuto">            
+            <div class="will-sTit">오직 법원사무직만을 위한 </div>
+            <div class="will-nTit NSK-Black">김동진법원팀의 <span class="tx-color">최강 라인업</span></div>  
+            <ul class="ProfBoxB mt100">
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_01.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_02.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_03.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_04.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_05.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_06.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_07.jpg" alt="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_270x190_08.jpg" alt="배너명"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="Section Section7">
+        <div class="widthAuto">
+            <div class="will-acadTit">윌비스 한림법학원 <span class="tx-color">김동진 법원팀</span></div>
+            <div class="noticeTabs campus c_both">
+                <div class="tabBox noticeBox_campus">
+                    <div id="campus1" class="tabContent">
+                        <div class="map_img">
+                            <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_map.jpg" alt="김동진 법원팀">
+                        </div>
+                        <div class="campus_info">
+                            <dl>
+                                <dt>
+                                    <div class="c-tit"><span class="tx-color">학원</span> 오시는 길</div>
+                                    <div class="c-info">
+                                        <div class="address">
+                                            <span class="a-tit">주소</span>
+                                            <span>
+                                                서울시 동작구 노량진로 196 노량빌딩 7층
+                                            </span>
+                                        </div>
+                                        <div class="tel">
+                                            <span class="a-tit">연락처</span>
+                                            <span class="tx-color">1544-0330 > 2번</span>
+                                        </div>
+                                    </div>
+                                </dt>
+                            </dl>
+                        </div>
+                    </div>
+                    <!-- 노량진 //-->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -711,7 +790,7 @@
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 18시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
@@ -720,15 +799,16 @@
                                 <div class="nTxt">
                                     [운영시간]<br/>
                                     평일: 09시~ 17시 (점심시간12시~13시)<br/>
-                                    공휴일/일요일휴무<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                             <li>
                                 <div class="nTit">학원 고객센터</div>
-                                <div class="nNumber tx-color">1544-0336</div>
+                                <div class="nNumber tx-color">1544-0330</div>
                                 <div class="nTxt">
                                     [전화/방문상담 운영시간]<br/>
-                                    평일/주말: 09시~ 22시<br/>
+                                    평일 : 09시~18시<br/>
+                                    주말/공휴일 휴무<br/>
                                 </div>
                             </li>
                         </ul>

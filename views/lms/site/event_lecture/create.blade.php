@@ -204,7 +204,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-11 form-limit-type hide" id="table_limit_type_M">
+                                    <div class="col-md-12 form-limit-type hide" id="table_limit_type_M">
                                         <div class="form-group form-inline" style="border-bottom:none;">
                                             <div class="col-md-3">
                                                 <select class="form-control" id="select_type" name="select_type">
@@ -229,7 +229,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group" style="border-bottom:none;">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 form-inline">
                                             <table class="table table-striped table-bordered" id="table_lecture">
                                                 <thead>
                                                 <tr>
@@ -239,6 +239,8 @@
                                                     <th>만료</th>
                                                     <th>사용</th>
                                                     <th>지급상품 <br> {!! html_site_select('', 'register_product_site_code', '', '', '운영 사이트', '') !!}</th>
+                                                    <th>신청가능 시작일시</th>
+                                                    <th>신청가능 종료일시</th>
                                                     <th>수정</th>
                                                     <th>삭제</th>
                                                 </tr>
@@ -297,6 +299,58 @@
                                                                     @endforeach
                                                                 @endif
                                                                 </span>
+                                                            </td>
+                                                            <td>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                    <input type="text" class="form-control datepicker" name="event_register_start_date[]" id="event_register_start_date_{{$i}}" value="{{ $row['RegisterStartDay'] }}" style="min-width: 70px; max-width: 70px;">
+                                                                </div>
+                                                                <select class="form-control" name="event_register_start_hour[]" id="event_register_start_hour_{{$i}}">
+                                                                    @php
+                                                                        $start_hour = $row['RegisterStartHour'];
+                                                                        for($j=0; $j<=23; $j++) {
+                                                                            $str = (strlen($j) <= 1) ? '0' : '';
+                                                                            $selected = ($str.$j == $start_hour) ? "selected='selected'" : "";
+                                                                            echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                        }
+                                                                    @endphp
+                                                                </select>
+                                                                <select class="form-control" name="event_register_start_min[]" id="event_register_start_min_{{$i}}">
+                                                                    @php
+                                                                        $start_min = $row['RegisterStartMin'];
+                                                                        for($j=0; $j<=59; $j++) {
+                                                                            $str = (strlen($j) <= 1) ? '0' : '';
+                                                                            $selected = ($str.$j == $start_min) ? "selected='selected'" : "";
+                                                                            echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                        }
+                                                                    @endphp
+                                                                </select>
+                                                            </td>
+                                                            <td>
+                                                                <div class="input-group mb-0">
+                                                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                    <input type="text" class="form-control datepicker" name="event_register_end_date[]" id="event_register_end_date_{{$i}}" value="{{ $row['RegisterEndDay'] }}" style="min-width: 70px; max-width: 70px;">
+                                                                </div>
+                                                                <select class="form-control" name="event_register_end_hour[]" id="event_register_end_hour_{{$i}}">
+                                                                    @php
+                                                                        $end_hour = $row['RegisterEndHour'];
+                                                                        for($j=0; $j<=23; $j++) {
+                                                                            $str = (strlen($j) <= 1) ? '0' : '';
+                                                                            $selected = ($str.$j == $end_hour) ? "selected='selected'" : "";
+                                                                            echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                        }
+                                                                    @endphp
+                                                                </select>
+                                                                <select class="form-control" name="event_register_end_min[]" id="event_register_end_min_{{$i}}">>
+                                                                    @php
+                                                                        $end_min = $row['RegisterEndMin'];
+                                                                        for($j=0; $j<=59; $j++) {
+                                                                            $str = (strlen($j) <= 1) ? '0' : '';
+                                                                            $selected = ($str.$j == $end_min) ? "selected='selected'" : "";
+                                                                            echo "<option value='{$str}{$j}' {$selected}>{$str}{$j}</option>";
+                                                                        }
+                                                                    @endphp
+                                                                </select>
                                                             </td>
                                                             <td>
                                                                 <button type="button" class="btn btn-success mr-10 btn-lecture-expire-submit" data-register-idx="{{$row['ErIdx']}}" data-modify-number="{{$i}}">수정</button>
@@ -888,6 +942,30 @@
                 add_lists += '<td><input type="hidden" name="register_is_use[]" value="Y"></td>';
                 add_lists += '<td></td>';
                 add_lists += '<td></td>';
+                add_lists += '<td>';
+                add_lists += '		<div class="input-group mb-0">';
+                add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+                add_lists += '			<input type="text" class="form-control datepicker" name="event_register_start_date[]" value="" style="min-width: 70px; max-width: 70px;">';
+                add_lists += '		</div>';
+                add_lists += '		<select class="form-control" name="event_register_start_hour[]">';
+                add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
+                add_lists += '		</select>';
+                add_lists += '		<select class="form-control" name="event_register_start_min[]">';
+                add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>';
+                add_lists += '		</select>';
+                add_lists += '	</td>';
+                add_lists += '	<td>';
+                add_lists += '		<div class="input-group mb-0">';
+                add_lists += '			<div class="input-group-addon"><i class="fa fa-calendar"></i></div>';
+                add_lists += '			<input type="text" class="form-control datepicker" name="event_register_end_date[]" value="" style="min-width: 70px; max-width: 70px;">';
+                add_lists += '		</div>';
+                add_lists += '		<select class="form-control" name="event_register_end_hour[]">';
+                add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option>';
+                add_lists += '		</select>';
+                add_lists += '		<select class="form-control" name="event_register_end_min[]">';
+                add_lists += '			<option value="00">00</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option>';
+                add_lists += '		</select>';
+                add_lists += '	</td>';
                 add_lists += '<td><a href="#none" class="btn-lecture-delete" data-lecture-temp-idx="'+temp_idx+'"><i class="fa fa-times fa-lg red"></i></a></td>';
                 add_lists += '</tr>';
                 $('#table_lecture > tbody:last').append(add_lists);
@@ -923,7 +1001,7 @@
                 }, showError, false, 'POST');
             });
 
-            // 만료,복구 상태 수정
+            // 신청리스트 수정
             $regi_form.on('click', '.btn-lecture-expire-submit', function() {
                 var modify_number = $(this).data('modify-number');
                 var _url = '{{ site_url("/site/eventLecture/expireRegister") }}';
@@ -932,6 +1010,9 @@
                 $(this).parent().parent().children().find('input[name="prod_code[]"]').each(function(i){
                     arr_p_prod_code.push($(this).val());
                 });
+
+                var register_start_datm = $('#event_register_start_date_' + modify_number).val() + ' ' + $('#event_register_start_hour_' + modify_number).val() + ':' + $('#event_register_start_min_' + modify_number).val() + ':00';
+                var register_end_datm = $('#event_register_end_date_' + modify_number).val() + ' ' + $('#event_register_end_hour_' + modify_number).val() + ':' + $('#event_register_end_min_' + modify_number).val() + ':00';
 
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
@@ -942,7 +1023,9 @@
                     'register_name' : $("#event_register_name_"+modify_number).val(),
                     'expire_status' : $("#expire_status_"+modify_number).val(),
                     'is_use' : $("#register_is_use_"+modify_number).val(),
-                    'prod_code[]' : arr_p_prod_code
+                    'prod_code[]' : arr_p_prod_code,
+                    'register_start_datm' : register_start_datm,
+                    'register_end_datm' : register_end_datm,
                 };
 
                 if (!confirm('상태를 변경 하시겠습니까?')) {

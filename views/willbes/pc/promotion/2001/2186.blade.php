@@ -55,7 +55,12 @@
 		.evtInfoBox .infoTit {font-size:20px;margin-bottom:15px; color:#000}
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {list-style-type:decimal; margin-left:20px; margin-bottom:5px}
-    </style> 
+    </style>
+
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky">
@@ -84,34 +89,63 @@
         </div>
 
         <div id="entry" class="p_re">
-            <div class="evtCtnsBox evt03" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_03.jpg"  alt="준비중"/>
-            </div>
+            @php $num = 3; $end_date = ''; @endphp
+            @foreach($arr_base['register_list'] as $row)
 
-            <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+                @if(time() < strtotime(min($arr_base['register_date_list']['register_start_date'])))
+                    {{-- coming soon --}}
+                    <div class="evtCtnsBox evt03" >
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_03.jpg"  alt="준비중"/>
+                    </div>
+                    @break;
+                @elseif(time() > strtotime(max($arr_base['register_date_list']['register_end_date'])))
+                    {{-- 전체 이벤트 종료 --}}
+                    <div class="evtCtnsBox evt08">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_08.jpg"  alt="힘내봄날"/>
+                    </div>
+                    <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+                    @break;
+                @endif
 
-            <div class="evtCtnsBox evt04">                
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_04.jpg"  alt="월린이날"/>
-            </div>
+                @php $num++; @endphp
+                @if(time() >= strtotime($row['RegisterStartDatm']) && time() < strtotime($row['RegisterEndDatm']))
+                    @php $el_idx = $row['ErIdx']; @endphp
+                    <div class="evtCtnsBox evt0{{ $num }}">
+                        @if($num === 6)
+                            <div class="link">
+                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg" alt="{{ $row['Name'] }}"/>
+                                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2172" target="_blank" title="이벤트 바로가기" style="position: absolute; left: 78.3%; top: 82.13%; width: 12.41%; height: 5.6%; z-index: 2;"></a>
+                            </div>
+                        @else
+                            <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg"  alt="{{ $row['Name'] }}"/>
+                        @endif
+                    </div>
+                    @break;
+                @endif
 
-            <div class="evtCtnsBox evt05">                
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_05.jpg"  alt="어버이날"/>
-            </div>
+                @if(empty($end_date) === false)
+                    @if(time() > strtotime($end_date) && time() < strtotime($row['RegisterStartDatm']))
+                        @php $num--; @endphp
+                        <div class="evtCtnsBox evt0{{ $num }}">
+                            @if($num === 6)
+                                <div class="link">
+                                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg" alt="{{ $row['Name'] }}"/>
+                                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2172" target="_blank" title="이벤트 바로가기" style="position: absolute; left: 78.3%; top: 82.13%; width: 12.41%; height: 5.6%; z-index: 2;"></a>
+                                </div>
+                            @else
+                                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_0{{ $num }}.jpg"  alt="{{ $row['Name'] }}"/>
+                            @endif
+                        </div>
+                        <div class="evtEnd"><img src="https://static.willbes.net/public/images/promotion/2021/04/2186_end.png" alt="마감"/></div>
+                        @break;
+                    @endif
+                @endif
 
-            <div class="evtCtnsBox evt06">                
-                <div class="link">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_06.jpg" alt="스승의날"/>
-                    <a href="https://police.willbes.net/promotion/index/cate/3001/code/2172" target="_blank" title="이벤트 바로가기" style="position: absolute; left: 78.3%; top: 82.13%; width: 12.41%; height: 5.6%; z-index: 2;"></a>
-                </div>
-            </div>
+                @if(time() > strtotime($row['RegisterEndDatm']))
+                    @php $end_date = $row['RegisterEndDatm']; @endphp
+                @endif
 
-            <div class="evtCtnsBox evt07">                
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_07.jpg" alt="응원해 널"/>
-            </div>
-
-            <div class="evtCtnsBox evt08">                
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_08.jpg" alt="힘내봄날"/>
-            </div>
+            @endforeach
         </div>
 
         <div class="evtCtnsBox evt09">
@@ -121,31 +155,40 @@
         <div class="evtCtnsBox evt10">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_10_01.jpg" alt="달력"/>
             <div class="entry">
-                <div class="tx-left">
-                    <input type="text" placeholder="홍길동" disabled>
-                    <input type="text" placeholder="연락처'-'없이 숫자만 입력">
-                </div>
-                <div class="entryTxt">
-                    ▶ 개인정보 수집 및 이용에 대한 안내<br>
-                    개인정보 수집 이용 목적이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
-                    - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
-                    <br>
-                    개인정보 수집 항목<br>
-                    - 신청인의 이름,연락처<br>
-                    <br>
-                    개인정보 이용기간 및 보유기간<br>
-                    - 본 수집, 활용목적 달성 후 바로 파기<br>
-                    <br>
-                    개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
-                    - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나, 
-                    위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
-                </diV>
-                <div class="entryCheck"><input name="is_chk" type="checkbox" value="Y" id="is_chk"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
-                <div class="btnRequest NSK-Black"><a href="javascript:void(0);">이벤트 응모하기 ></a></div>
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}" readonly/>
+                    <input type="hidden" name="register_type" value="promotion" readonly/>
+                    <input type="hidden" name="register_chk[]" value="{{ $el_idx or '' }}">
+                    <input type="hidden" name="time_check" value="Y" readonly/>  {{-- 이벤트 날짜 체크 여부 --}}
+
+                    <div class="tx-left">
+                        <input type="text" id="register_name" name="register_name" value="{{sess_data('mem_name')}}" onclick="loginCheck();" placeholder="홍길동" readonly>
+                        <input type="text" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}" onclick="loginCheck();" placeholder="연락처'-'없이 숫자만 입력" maxlength="11">
+                    </div>
+                    <div class="entryTxt">
+                        ▶ 개인정보 수집 및 이용에 대한 안내<br>
+                        개인정보 수집 이용 목적이벤트 신청 접수에 따른 본인 확인 절차 진행 및 문의사항 응대<br>
+                        - 이벤트 참여에 따른 강의 수강자 목록에 활용<br>
+                        <br>
+                        개인정보 수집 항목<br>
+                        - 신청인의 이름,연락처<br>
+                        <br>
+                        개인정보 이용기간 및 보유기간<br>
+                        - 본 수집, 활용목적 달성 후 바로 파기<br>
+                        <br>
+                        개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익<br>
+                        - 귀하는 개인 정보 제공 동의를 거부할 권리가 있으며 동의 거부에 따른 불이익은 없으나,
+                        위 제공사항은 이벤트 참여를 위해 반드시 필요한 사항으로 거부하실 경우 이벤트 신청이 불가능함을 알려드립니다.
+                    </diV>
+                    <div class="entryCheck"><input name="is_chk" type="checkbox" value="Y" id="is_chk" onclick="loginCheck();"/> <label for="is_chk"> 윌비스에 개인정보 제공 동의하기(필수)</label></div>
+                    <div class="btnRequest NSK-Black"><a href="javascript:void(0);" onclick="fn_register_submit();">이벤트 응모하기 ></a></div>
+                </form>
             </div>
             <div class="link" id="evtlink">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2186_10_02.jpg" alt="소문내기 이벤트"/>
-                <a href="" title="할인쿠폰" style="position: absolute; left: 33.48%; top: 52.96%; width: 32.77%; height: 4.26%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck();" title="할인쿠폰" style="position: absolute; left: 33.48%; top: 52.96%; width: 32.77%; height: 4.26%; z-index: 2;"></a>
                 <a  href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이벤트 홍보 이미지 다운" style="position: absolute; left: 24.02%; top: 78.83%; width: 29.91%; height: 3.89%; z-index: 2;"></a>
                 <a href="http://cafe.daum.net/policeacademy" title="다음카페" style="position: absolute; left: 26.61%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
                 <a href="https://cafe.naver.com/polstudy" title="네이버카페" style="position: absolute; left: 45.8%; top: 92.41%; width: 15.45%; height: 5.43%; z-index: 2;"></a>
@@ -158,11 +201,11 @@
         </div>
 
         <div class="evtCtnsBox evtInfo" id="careful">
-			<div class="evtInfoBox">
-				<h4 class="NSK-Black">윌비스 릴레이 이벤트 이용안내</h4>
-				<div class="infoTit"><strong>5월 릴레이 이벤트 유의사항</strong></div>
-				<ul>
-					<li>이벤트 대상 : 윌비스신광은경찰 온라인 회원 누구나</li>
+            <div class="evtInfoBox">
+                <h4 class="NSK-Black">윌비스 릴레이 이벤트 이용안내</h4>
+                <div class="infoTit"><strong>5월 릴레이 이벤트 유의사항</strong></div>
+                <ul>
+                    <li>이벤트 대상 : 윌비스신광은경찰 온라인 회원 누구나</li>
                     <li>로그인/회원가입 해야만 이벤트에 참여 가능합니다.</li>
                     <li>회원탈퇴 후 재가입하여 참여하시는 분은 이벤트 당첨에서 제외됩니다.</li>
                     <li>회원정보 오류로 인해 상품 미발송된 경우 재발송 불가하오니, 이벤트 참여 전 정확한 확인 부탁드립니다.</li>
@@ -181,22 +224,74 @@
                     <li>본 이벤트로 당첨된 패스 할인쿠폰 사용기간은 7일 입니다.</li>
                     <li>본 이벤트는 당사의 사정으로 인하여 당첨자 공지가 지연될 수 있습니다.</li>
                     <li>본 이벤트는 당사의 사정으로 인하여 상품 변경 또는 상품 지급일이 변경될 수 있습니다.</li>
-                    <li>유의사항을 읽지 않고 발생한 모든 사항에 대해서 윌비스신광은경찰은 책임지지 않습니다.</li>                
-				</ul>
-				<div class="infoTit"><strong>소문내기 이벤트 유의사항</strong></div>
-				<ul>
-					<li>이벤트 대상 윌비스신광은경찰 온라인 회원 누구나</li>
+                    <li>유의사항을 읽지 않고 발생한 모든 사항에 대해서 윌비스신광은경찰은 책임지지 않습니다.</li>
+                </ul>
+                <div class="infoTit"><strong>소문내기 이벤트 유의사항</strong></div>
+                <ul>
+                    <li>이벤트 대상 윌비스신광은경찰 온라인 회원 누구나</li>
                     <li>해당 이벤트는 로그인 후 참여 가능합니다.</li>
                     <li>동일한 URL은 한 번 참여한 것으로 인정됩니다.</li>
                     <li>동일 게시판에 1일 1게시글 이상 작성 시 1회만 참여 인정됩니다. (참여 카페, 커뮤니티/게시판/날짜를 다르게 한 다중참여는 가능)</li>
                     <li>동일한 게시글은 한 번만 인정됩니다. (최초 작성글)</li>
                     <li>각 커뮤니티의 정책에 의해 게시글이 삭제되어 확인할 수 없는 경우는 인증에 포함되지 않습니다.</li>
-                    <li>유의사항을 읽지 않고 발생한 모든 사항에 대해서 윌비스신광은경찰은 책임지지 않습니다.</li>  
-				</ul>
-           
-				<div class="infoTit"><strong>※ 이용문의 : 고객만족센터 1544-5006</strong></div>			
-			</div>
-		</div> 
+                    <li>유의사항을 읽지 않고 발생한 모든 사항에 대해서 윌비스신광은경찰은 책임지지 않습니다.</li>
+                </ul>
+
+                <div class="infoTit"><strong>※ 이용문의 : 고객만족센터 1544-5006</strong></div>
+            </div>
+        </div>
     </div>
-    <!-- End Container -->
+<!-- End Container -->
+
+<script>
+var $regi_form = $('#regi_form');
+var $regi_form_register = $('#regi_form_register');
+
+function fn_register_submit() {
+    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+    if (!$regi_form_register.find('input[name="register_chk[]"]').val()) {
+        alert('이벤트 기간이 아닙니다.'); return;
+    }
+
+    if ($regi_form_register.find('input[name="is_chk"]').is(':checked') === false) {
+        alert('개인정보 수집/이용 동의 안내에 동의하셔야 합니다.');
+        return;
+    }
+
+    if (!$regi_form_register.find('input[name="register_tel"]').val()) {
+        alert('전화번호를 입력해주세요.');
+        return;
+    }
+
+    var _url = '{!! front_url('/event/registerStore') !!}';
+    if (!confirm('신청하시겠습니까?')) { return; }
+    ajaxSubmit($regi_form_register, _url, function(ret) {
+        if(ret.ret_cd) {
+            alert(ret.ret_msg);
+            location.reload();
+        }
+    }, showValidateError, null, false, 'alert');
+}
+
+{{--쿠폰발급--}}
+function giveCheck() {
+    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+    @if(empty($arr_promotion_params) === false)
+        var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+    ajaxSubmit($regi_form, _check_url, function (ret) {
+        if (ret.ret_cd) {
+            alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+        }
+    }, showValidateError, null, false, 'alert');
+    @else
+        alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+    @endif
+}
+
+function loginCheck(){
+    {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+}
+</script>
 @stop

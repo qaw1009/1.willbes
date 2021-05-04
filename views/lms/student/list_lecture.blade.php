@@ -97,6 +97,7 @@
                         <select class="form-control" id="search_type" name="search_type" style="width:120px;">
                             <option value="lec">강좌명</option>
                             <option value="wlec">마스터강의</option>
+                            <option value="prof">강사명</option>
                         </select>
                         <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
                     </div>

@@ -635,8 +635,8 @@
                     <tr>
                         <td>전기자기학</td>
                         <td>이론</td>
-                        <td>2020 최우영 전기자기학 이론강의</td>
-                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/162313" target="_blank">수강신청</a></td>
+                        <td>2021 최우영 전기자기학 이론강의</td>
+                        <td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180544" target="_blank">수강신청</a></td>
                     </tr>
                     <tr>
                         <td>전기자기학</td>

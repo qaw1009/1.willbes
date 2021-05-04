@@ -26,6 +26,7 @@ class BaseOrderModel extends WB_Model
         'product_lecture_date' => 'lms_product_lecture_date',
         'product_book' => 'lms_product_book',
         'product_book_professor_subject_concat' => 'vw_product_book_r_professor_subject_concat',
+        'product_freebie' => 'lms_product_freebie',
         'product_r_category' => 'lms_product_r_category',
         'product_sale' => 'lms_product_sale',
         'product_division' => 'lms_product_division',

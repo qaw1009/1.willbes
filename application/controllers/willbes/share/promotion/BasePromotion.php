@@ -124,6 +124,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['register_member_list'] = [];
         if (empty($arr_base['register_list']) === false) {
             $arr_base['register_member_list'] = $this->_getRegisterMemberList($arr_base['register_list']);
+            $arr_base['register_date_list'] = $this->_getRegisterDateList($arr_base['register_list']);
         }
 
         // 등록파일 데이터 조회
@@ -844,6 +845,24 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         return $data['register_member_list'];
+    }
+
+    /**
+     * 신청 리스트 전체 날짜 조회
+     * @param array $register_list
+     * @return mixed
+     */
+    private function _getRegisterDateList($register_list = [])
+    {
+        $data['register_start_date'] = [];
+        $data['register_end_date'] = [];
+
+        foreach ($register_list as $row) {
+            array_push($data['register_start_date'], $row['RegisterStartDatm']);
+            array_push($data['register_end_date'], $row['RegisterEndDatm']);
+        }
+
+        return $data;
     }
 
     /**

@@ -730,7 +730,10 @@ class EventLectureModel extends WB_Model
      */
     public function listEventForRegister($el_idx, $prod_list = false, $rtn_col = '')
     {
-        $column = 'ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus, IsUse';
+        $column = "ErIdx, PersonLimitType, PersonLimit, Name, RegisterExpireStatus, IsUse,
+                DATE_FORMAT(RegisterStartDatm, '%Y-%m-%d') AS RegisterStartDay, DATE_FORMAT(RegisterStartDatm, '%H') AS RegisterStartHour, DATE_FORMAT(RegisterStartDatm, '%i') AS RegisterStartMin,
+                DATE_FORMAT(RegisterEndDatm, '%Y-%m-%d') AS RegisterEndDay, DATE_FORMAT(RegisterEndDatm, '%H') AS RegisterEndHour, DATE_FORMAT(RegisterEndDatm, '%i') AS RegisterEndMin
+                ";
         $from = "
             FROM {$this->_table['event_register']}
         ";
@@ -901,6 +904,8 @@ class EventLectureModel extends WB_Model
                 'Name' => $input['register_name'],
                 'RegisterExpireStatus' => $input['expire_status'],
                 'IsUse' => $input['is_use'],
+                'RegisterStartDatm' => $input['register_start_datm'],
+                'RegisterEndDatm' => $input['register_end_datm'],
                 'UpdAdminIdx' => $this->session->userdata('admin_idx'),
                 'UpdDatm' => date('Y-m-d H:i:s')
             ];

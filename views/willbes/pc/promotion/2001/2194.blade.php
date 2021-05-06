@@ -237,45 +237,47 @@
                         <li>
                             <div>
                             <strong>110</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="182147" onClick=""/> <label for="y_pkg1">무제한 PASS</label>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="182147" data-sale-price="1100000"/> <label for="y_pkg1">무제한 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>77</strong>만원<br>
-                                <input type="radio" id="y_pkg2" name="y_pkg" value="182149" onClick=""/> <label for="y_pkg2">15개월 개편 PASS</label>
+                                <input type="radio" id="y_pkg2" name="y_pkg" value="182149" data-sale-price="770000"/> <label for="y_pkg2">15개월 개편 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>69</strong>만원<br>
-                                <input type="radio" id="y_pkg3" name="y_pkg" value="182150" onClick=""/> <label for="y_pkg3">11개월 개편 PASS</label>
+                                <input type="radio" id="y_pkg3" name="y_pkg" value="182150" data-sale-price="690000"/> <label for="y_pkg3">11개월 개편 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>55</strong>만원<br>
-                                <input type="radio" id="y_pkg4" name="y_pkg" value="182148" onClick=""/> <label for="y_pkg4">2021 PASS</label>
+                                <input type="radio" id="y_pkg4" name="y_pkg" value="182148" data-sale-price="550000"/> <label for="y_pkg4">2021 PASS</label>
                             </div>
                         </li>
                     </ul>
+
+                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_02.jpg"  alt=""/>
                 </div>
                 
-                <div>
-                    <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_02.jpg"  alt="체력"/>
-                    </a>
-                </div>
+{{--                <div>--}}
+{{--                    <a href="#none" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">--}}
+{{--                        <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_01_02.jpg"  alt="체력"/>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
 
                 <div class="totalPrice">
-                    총 결제금액 : <strong class="NSK-Black" id="total_price">0</strong>원
-                    <a href="javascript:void(0);" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
+                    총 결제금액 : <strong class="NSK-Black total_price">0</strong>원
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1');">
                         신청하기 >
                     </a>
                 </div>    
 
                 <div class="check">
-                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br />
@@ -392,7 +394,7 @@
 
         <div class="evtCtnsBox evt11" id="coupon">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08.jpg"  alt="쿠폰 다운로드" />
-            <a href="javascript:void(0);" title="쿠폰 다운로드" style="position: absolute; left: 54.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
+            <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 54.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
         </div>
 
         <div class="evtCtnsBox evt02" id="pass2">
@@ -406,25 +408,25 @@
                         <li>
                             <div>
                             <strong>110</strong>만원<br>
-                            <input type="checkbox" id="y_pkg1" name="y_pkg" value="182147" data-sale-price="990000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg1">무제한 PASS</label>
+                            <input type="radio" id="y_pkg5" name="y_pkg" value="182147" data-sale-price="1100000"/> <label for="y_pkg5">무제한 PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>77</strong>만원<br>
-                                <input type="checkbox" id="y_pkg2" name="y_pkg" value="182149" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">15개월 개편PASS</label>
+                                <input type="radio" id="y_pkg6" name="y_pkg" value="182149" data-sale-price="770000"/> <label for="y_pkg6">15개월 개편PASS</label>
                             </div>
                         </li>       
                         <li>
                             <div>
                             <strong>69</strong>만원<br>
-                            <input type="checkbox" id="y_pkg3" name="y_pkg" value="182150" data-sale-price="990000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg1">11개월 개편PASS</label>
+                            <input type="radio" id="y_pkg7" name="y_pkg" value="182150" data-sale-price="690000"/> <label for="y_pkg7">11개월 개편PASS</label>
                             </div>
                         </li>
                         <li>
                             <div>
                                 <strong>55</strong>만원<br>
-                                <input type="checkbox" id="y_pkg4" name="y_pkg" value="182148" data-sale-price="850000" onclick="fnChkPrice(this,1);"/> <label for="y_pkg2">2021 PASS</label>
+                                <input type="radio" id="y_pkg8" name="y_pkg" value="182148" data-sale-price="550000"/> <label for="y_pkg8">2021 PASS</label>
                             </div>
                         </li>                                  
                     </ul>
@@ -432,14 +434,14 @@
                 </div>
                 
                 <div class="totalPrice">
-                    총 결제금액 : <strong class="NSK-Black" id="total_price">0</strong>원
-                    <a href="javascript:void(0);" onclick="goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">
+                    총 결제금액 : <strong class="NSK-Black total_price">0</strong>원
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
                         신청하기 >
                     </a>
                 </div>    
 
                 <div class="check">
-                    <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 0원 패스의 수강기간 갱신 및 환급이 불가합니다.<br>
@@ -843,78 +845,14 @@
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 
-        {{-- 패스, 총 결제금액 --}}
-        function fnChkPrice(obj,depth){
-            var add_price = 0;
-            var total_price;
-            var order_cnt = {{ $arr_base['order_count'] or 0 }};
-            var order_yn = 'Y';
-
-            switch (depth){
-                case 1: // 무제한 pass, 12개월 pass
-                    if($(obj).is(':checked') === true){
-                        $("input[name='y_pkg']").prop("checked", false);
-                        $(obj).prop("checked", true);
-                        $('#chk_price').val($(obj).data('sale-price'));
-
-                        $("#add_prod_wrap").removeClass('d_none');
-                    }else{
-                        $('#chk_price').val(0);
-                        $("input[name='y_pkg']").prop("checked", false);
-                    }
-                    break;
-
-                case 2: // 2021년대비 pass
-                    if($(obj).is(':checked') === true){
-                        $("input[name='y_pkg']").prop("checked", false);
-                        $(obj).prop("checked", true);
-                        $('#chk_price').val($(obj).data('sale-price'));
-
-                        $("#add_prod_wrap").addClass('d_none');
-                    }else{
-                        $('#chk_price').val(0);
-                    }
-                    break;
-
-                case 3: // 한정판매
-                    if($(obj).is(':checked') === true){
-                        if(order_cnt === 0 && $("#y_pkg1").is(':checked') === false && $("#y_pkg2").is(':checked') === false){
-                            order_yn = 'N';
-                        }else{
-                            add_price = $(obj).data('sale-price');
-                        }
-                    }
-                    break;
-
-                default: break;
-            }
-
-            if(order_yn === 'N'){
-                $("#y_pkg4").prop("checked", false);
-                alert('0원 무제한 PASS 또는 12개월 PASS 상품을 구매하셔야 합니다.');
-            }else{
-                total_price = parseInt($('#chk_price').val()) + parseInt(add_price);
-                $("#total_price").html(addComma(total_price));
-            }
-        }
-
-        {{--쿠폰발급--}}
-        function giveCheck() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-
-            @if(empty($arr_promotion_params) === false)
-
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
-
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                }
-            }, showValidateError, null, false, 'alert');
-            @endif
-        }
-
         $(document).ready(function() {
+            {{-- PASS 결제금액 --}}
+            $("input[name='y_pkg']").on("change",function (){
+                var sale_price = $(this).data('sale-price');
+                $(".total_price").html(0);
+                $(this).parents(".passLecBuy").find('.total_price').html(addComma(sale_price));
+            });
+
             var slidesImg3 = $("#slidesImg3").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
                 auto:true,
@@ -1027,6 +965,32 @@
             @else
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
+        }
+
+        {{-- 쿠폰발급 --}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
+        {{-- 약관동의 --}}
+        function termsCheck(obj_id){
+            if($("#" + obj_id).is(":checked") === false){
+                $("#" + obj_id).focus();
+                alert('이용안내에 동의하셔야 합니다.');
+                return;
+            }
+            goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
         }
     </script>
 

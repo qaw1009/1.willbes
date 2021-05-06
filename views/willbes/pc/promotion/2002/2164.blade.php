@@ -454,8 +454,8 @@
 					<li>① 사전접수 이벤트<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 이벤트 기간 : 조기마감 유의!</li>
                     <li>② 타학원 환승 이벤트<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;- 환승 대상자 (아래 두 가지 모두 해당할 시 가능)<br/> 
-                    &nbsp;&nbsp;&nbsp;&nbsp;* 타 경찰학원 정규과정 실강 또는 인강 수강이력 증빙이 가능한 수강생<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;* 2020년 1월 이후 자사 실강 수강이력이 없는 수험생<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;* 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;* 2020년 1월 이후 신광은경찰학원 정규과정 수강이력이 없는 수강생<br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;- 타학원 수강이력 증빙 필수          
                     </li>
                     <li>③ 다시 챌린지 이벤트(최불자)<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 21년 1차 필기합격 인증이 가능한 수강생<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 수험표 또는 성적증빙자료 필수</li>  

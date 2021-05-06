@@ -13,15 +13,15 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
 
         /************************************************************/
 
-        .wb_top {width:100%; text-align:center; background:#292522 url(https://static.willbes.net/public/images/promotion/2021/01/1032_top_bg.jpg) no-repeat center; margin-top:20px; min-width:1210px}
-        .wb_top div {width:1210px; margin:0 auto; position:relative}
-        .wb_top span {position:absolute; display:block; top:588px; left:425px; width:340px; z-index:10; color:#fff6c8; font-size:80px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:15px}
+        .wb_top {width:100%; text-align:center; background:#292522 url(https://static.willbes.net/public/images/promotion/2021/01/1032_top_bg.jpg) no-repeat center; margin-top:20px; min-width:1120px}
+        .wb_top div {width:1120px; margin:0 auto; position:relative}
+        .wb_top span {position:absolute; display:block; top:588px; left:380px; width:340px; z-index:10; color:#fff6c8; font-size:80px; font-weight:bold; font-family:Verdana, Geneva, sans-serif; letter-spacing:15px}
 
-        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:20px;}
+        .wb_01 {width:100%; text-align:center; background:#dedede; min-width:1120px; position:relative; padding-bottom:20px;}
         
         /* 슬라이드배너 */
         .slide_con {position:relative; width:900px; margin:0 auto}
@@ -44,14 +44,13 @@
 
         .Pstyle {opacity:0; display:none; position:absolute; background-color:#fff;z-index:9;top:0;}
 
-
-        .wb_02 {width:100%; text-align:center; background:#444645; min-width:1210px; padding:30px 0}
+        .wb_02 {width:100%; text-align:center; background:#444645; min-width:1120px; padding:30px 0}
         
 
         #slidesCts3 li {display:inline; float:left; width:900px; position:static; left:0}
         #slidesCts3:after {content:""; display:block; clear:both}
 
-        .wb_07 {width:100%; text-align:center; background:#faf8f5; min-width:1210px; padding:150px 0}
+        .wb_07 {width:100%; text-align:center; background:#faf8f5; min-width:1120px; padding:150px 0}
         .wb_07 .evTabs {width:833px; margin:30px auto 0; text-align: center;}
         .wb_07 .evTabs li {display:inline; float:left; text-align: center; margin-right:10px;margin-bottom:10px;width:267px;}
         .wb_07 .evTabs li:last-child {margin:0}
@@ -64,7 +63,7 @@
         .wb_07 .tabCts {clear:both; width:833px; margin:10px auto 0; position:relative !important}
         .wb_07 .tabCts a {position:absolute; right:20px; top:40px; z-index:10}
 
-        .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1210px; padding:150px 0}
+        .wb_03 {width:100%; text-align:center; background:#dedede; min-width:1120px; padding:150px 0}
         .wb_03 .evTabs {width:864px; margin:30px auto 0; text-align: center;}
         .wb_03 .evTabs li {display:inline; float:left; text-align: center; margin-right:10px}
         .wb_03 .evTabs li:last-child {margin:0}
@@ -78,7 +77,7 @@
         .wb_03 .tabCts a {position:absolute; right:20px; top:40px; z-index:10}
 
 
-        .wb_04 {width:100%; text-align:center; background:#fff; min-width:1210px; padding:150px 0}
+        .wb_04 {width:100%; text-align:center; background:#fff; min-width:1120px; padding:150px 0}
         .slide_con2 {width:854px; margin:100px auto 0; position:relative !important}
         .slide_con2 .bx-pager{position:absolute;top:12px;right:10px; z-index:1000}
         .slide_con2 .bx-pager .bx-pager-item{display:inline-block;margin:0 2px}
@@ -89,92 +88,24 @@
         .Pstyle .fpcontent {height:auto; width:auto; border:1px solid #000}
         .Pstyle .b-close {position:absolute; right:10px; top:10px; display:inline-block; cursor:pointer; font-size:12px !important}
 
-        .wb_05 {width:100%; text-align:center; font-size:120%; background:#f5f5f5; padding-bottom:120px; min-width:1210px}
+        .wb_05 {width:100%; text-align:center; font-size:120%; background:#f5f5f5; min-width:1120px}
         .wb_05 .wb_05_c {width:880px; margin:0 auto; border:1px solid #d6d6d6; background:#fff; padding:48px 58px; text-align:left; margin-bottom:80px}
         .wb_05 .wb_05_c span {display:inline-block; font-size:140%; font-weight:500; background:#2360bb; color:#fff; height:36px; line-height:36px; padding:0 20px}
         .wb_05 .wb_05_c p {border-top:1px solid #c2c2c2; margin-bottom:20px}
+        
+        .wb_06 {width:1120px; margin:0 auto; position:relative}
+        .wb_06 a:hover {background:rgba(0,0,0,0.3)}
 
-        .wb_06 {width:100%; text-align:center; background:#dedede; min-width:1210px; position:relative; padding-bottom:120px; }
-        /* 슬라이드배너 */
-        .slide_con6 {position:relative; width:900px; margin:0 auto}
-        .slide_con6 p {position:absolute; top:50%; width:67px; height:67px; margin-top:-33px; z-index:100}
-        .slide_con6 p a {cursor:pointer}
-        .slide_con6 p.leftBtn {left:-100px}
-        .slide_con6 p.rightBtn {right:-100px}
-        #slidesImg6 li {display:inline; float:left; position:static; left:0}
-        #slidesImg6:after {content:""; display:block; clear:both}
 
     </style>
 
     <div class="evtContent NSK" id="evtContainer">
-
         <div class="wb_top">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_top.jpg" alt="신광은경찰 합격스토리 대공개" />
                 <span id="counter">9,629</span>
             </div>
         </div>
-        {{--
-        <div class="wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV02_.jpg" alt="합격자가 말하는 REAL 합격 STORY"><br />
-            <div class="slide_con">
-                <ul id="slidesImg5">
-                    <li><a href="#interview20"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_20.jpg" alt=""/></a></li>
-					<li><a href="#interview19"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_19.jpg" alt=""/></a></li>
-					<li><a href="#interview18"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_18.jpg" alt=""/></a></li>
-                    <li><a href="#interview17"><img src="https://static.willbes.net/public/images/promotion/2019/09/1032_itv_17.jpg" alt=""/></a></li>
-                    <li><a href="#interview16"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_16.jpg" alt=""/></a></li>
-					<li><a href="#interview15"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_15.jpg" alt=""/></a></li>
-					<li><a href="#interview14"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_14.jpg" alt=""/></a></li>
-                    <li><a href="#interview13"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_13.jpg" alt=""/></a></li>
-                    <li><a href="#interview12"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_12.jpg" alt=""/></a></li>
-					<li><a href="#interview11"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_11.jpg" alt=""/></a></li>
-					<li><a href="#interview10"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_10.jpg" alt=""/></a></li>
-                    <li><a href="#interview09"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_09.jpg" alt=""/></a></li>
-                    <li><a href="#interview08"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_08.jpg" alt=""/></a></li>
-					<li><a href="#interview07"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_07.jpg" alt=""/></a></li>
-					<li><a href="#interview06"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_06.jpg" alt=""/></a></li>
-                    <li><a href="#interview05"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_05.jpg" alt=""/></a></li>
-                    <li><a href="#interview04"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_04.jpg" alt=""/></a></li>
-					<li><a href="#interview03"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_03.jpg" alt=""/></a></li>
-					<li><a href="#interview02"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_02.jpg" alt=""/></a></li>
-                    <li><a href="#interview01"><img src="https://static.willbes.net/public/images/promotion/2019/07/1032_itv_01.jpg" alt=""/></a></li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft5"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight5"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
-            </div>          
-
-
-            <div class="evttabWrap">
-                <div class="tabContents" id="interview20" >
-                    <iframe src="https://www.youtube.com/embed/9T5xBJAsvxg?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8"  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-                </div>           
-                <div class="tabContents" id="interview19"></div>
-                <div class="tabContents" id="interview18"></div>
-                <div class="tabContents" id="interview17"></div>
-                <div class="tabContents" id="interview16"></div>              
-                <div class="tabContents" id="interview15"></div>
-                <div class="tabContents" id="interview14"></div>
-                <div class="tabContents" id="interview13"></div>
-                <div class="tabContents" id="interview12"></div>
-                <div class="tabContents" id="interview11"></div>
-                <div class="tabContents" id="interview10"></div>
-                <div class="tabContents" id="interview09"></div>          
-                <div class="tabContents" id="interview08"></div>
-                <div class="tabContents" id="interview07"></div>
-                <div class="tabContents" id="interview06"></div>
-                <div class="tabContents" id="interview05"></div>
-                <div class="tabContents" id="interview04"></div>
-                <div class="tabContents" id="interview03"></div>
-                <div class="tabContents" id="interview02"></div>
-                <div class="tabContents" id="interview01"></div>  
-            </div>
-
-            <div>
-                <a href="https://www.youtube.com/playlist?list=PLl65lsiDN8NOR78sIh792GSrnfV_Zl_f8" target="_blank" class="moreBtn">더 많은 고득점자 인터뷰 보기 ></a>
-            </div>
-        </div>        
-        --}}
 
         <div class="wb_07">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07.png"  alt="시크릿 노트" />
@@ -360,7 +291,7 @@
                 <a onclick="go_popup7()"><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_btn.png"  alt="학습전략 자세히 보기"></a>
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV04_8.jpg"  alt="합격비법 김원*"/>
             </div>
-        </div><!--wb_03//-->
+        </div>
 
         <div class="wb_02">
             <div class="slide_con">
@@ -377,9 +308,7 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
             </div>
-        </div><!--wb_02//-->
-
-
+        </div>
 
         <div class="wb_04" >
             <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV05_top.jpg"  alt="나는 이렇게 합격했다." />
@@ -502,44 +431,18 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/01/1032_07_tab09_pop.png" alt="시크릿노트 박제*"/>
                 </div>
             </div>
-        </div><!--wb_04//-->
-
-        {{--
-        <div class="wb_06" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07.jpg"  alt="3법도 공통과목도" />
-            <div class="slide_con">
-                <ul id="slidesImg6">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_6.jpg" alt="6" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_7.jpg" alt="7" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_8.jpg" alt="8" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_9.jpg" alt="9" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_10.jpg" alt="10" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_11.jpg" alt="11" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_12.jpg" alt="12" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_13.jpg" alt="13" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_14.jpg" alt="14" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_1.jpg" alt="1" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_2.jpg" alt="2" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_3.jpg" alt="3" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_4.jpg" alt="4" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_5.jpg" alt="5" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV07_15.jpg" alt="5" /></li>
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft6"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_prev.png" alt="이전" /></a></p>
-                <p class="rightBtn"><a id="imgBannerRight6"><img src="https://static.willbes.net/public/images/promotion/2020/11/EV170306_p_next.png" alt="다음" /></a></p>
-            </div>
         </div>
-        --}}
 
         <div class="wb_05">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/180713_EV06_1.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." usemap="#Map" />
-            <map name="Map" id="Map">
-                <area shape="rect" coords="305,968,408,1014" href="{{ site_url('/promotion/index/cate/3001/code/2101') }}" target="_blank" alt="신광은경찰PASS"/>
-                <area shape="rect" coords="494,968,595,1014" href="{{ site_url('/home/index/cate/3002') }}" target="_blank" alt="경행경채"/>
-                <area shape="rect" coords="678,968,779,1014" href="{{ site_url('/home/index/cate/3006') }}" target="_blank" alt="경찰승진PASS"/>
-                <area shape="rect" coords="861,968,965,1014" href="{{ site_url('/promotion/index/cate/3008/code/1020') }}" target="_blank" alt="해양특채PASS"/>
-            </map>
-        </div><!--wb_05//-->
+            <img src="https://static.willbes.net/public/images/promotion/2021/05/1032_05_01.jpg" alt="대한민국의 자랑스러원 경찰이 될 당신의 이야기를 기다립니다." />
+        </div>
+
+        <div class="evtCtnsBox wb_06">        
+            <img src="https://static.willbes.net/public/images/promotion/2021/05/1032_05_02.jpg" alt="신청하기"/>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2194" title="신광은경찰PASS" target="_blank" style="position: absolute; left: 27.5%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/home/index/cate/3002" title="경행경채" target="_blank" style="position: absolute; left: 45%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/home/index/cate/3006" title="경찰승진PASS" target="_blank" style="position: absolute; left: 62.5%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
+        </div>
 
     </div>
     <!-- End Container -->

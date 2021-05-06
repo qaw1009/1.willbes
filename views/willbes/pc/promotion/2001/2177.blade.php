@@ -159,7 +159,7 @@
                 <a href="javascript:go_PassLecture('181823');" title="문풀 경행경채" style="position: absolute; left: 72.32%; top: 85.28%; width: 15.27%; height: 5.8%; z-index: 2;"></a>
             </div>
             <div class="check">
-                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 2022 신광은경찰 개편 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
+                <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 2021 2차대비 문풀풀패키지(PASS) 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <a href="#careful">이용안내확인하기 ↓</a>               
             </div>
             <div class="info">

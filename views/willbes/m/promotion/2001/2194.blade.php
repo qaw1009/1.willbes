@@ -250,6 +250,7 @@
         <div class="evtCtnsBox evt12">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2194m_09.jpg" alt="스폐셜 혜택" >
             <a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 24.19%; top: 50.11%; width: 51.75%; height: 3.75%; z-index: 2;"></a>
+            <a href="javascript:void(0);" title="교재 신청하기" style="position: absolute; left: 14.19%; top: 84.05%; width: 29.75%; height: 2.75%; z-index: 2;"></a>
             <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.19%; top: 84.05%; width: 28.75%; height: 2.75%; z-index: 2;"></a>
         </div>
 

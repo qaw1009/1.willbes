@@ -248,10 +248,16 @@
         </div>
 
         <div class="evtCtnsBox evt12">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2194m_09.jpg" alt="스폐셜 혜택" >
-            <a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 24.19%; top: 50.11%; width: 51.75%; height: 3.75%; z-index: 2;"></a>
-            <a href="javascript:void(0);" title="교재 신청하기" style="position: absolute; left: 14.19%; top: 84.05%; width: 29.75%; height: 2.75%; z-index: 2;"></a>
-            <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.19%; top: 84.05%; width: 28.75%; height: 2.75%; z-index: 2;"></a>
+            <form id="add_apply_form" name="add_apply_form">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194m_09.jpg" alt="스폐셜 혜택" >
+                <a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 24.19%; top: 50.11%; width: 51.75%; height: 3.75%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 14.19%; top: 84.05%; width: 29.75%; height: 2.75%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.19%; top: 84.05%; width: 28.75%; height: 2.75%; z-index: 2;"></a>
+            </form>
         </div>
 
         <div class="content_guide_wrap" id="tab">
@@ -732,6 +738,51 @@
             @else
             alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
+        }
+
+        {{-- 무료 교재지급 --}}
+        function fn_promotion_etc_submit() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var order_cnt = {{ $arr_base['order_count'] or 0 }};
+            if(order_cnt === 0){
+                alert('구매자가 아닙니다.');
+                return;
+            }
+
+            @if(empty($arr_promotion_params['arr_prod_code']) === false && empty($arr_promotion_params['cart_prod_code']) === false)
+                var $add_apply_form = $('#add_apply_form');
+                var _url = '{!! front_url('/event/promotionEtcStore') !!}';
+
+                if (!confirm('장바구니에 담으시겠습니까?')) { return true; }
+                ajaxSubmit($add_apply_form, _url, function(ret) {
+                    if(ret.ret_cd) {
+                        alert( getApplyMsg(ret.ret_msg) );
+                        location.href = '{!! front_url('/cart/index?tab=book') !!}';
+                    }
+                }, function(ret, status, error_view) {
+                    alert( getApplyMsg(ret.ret_msg) );
+                }, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
+
+        // 이벤트 추가 신청 메세지
+        function getApplyMsg(ret_msg) {
+            {{-- 해당 프로모션 종속 결과 메세지 --}}
+            var apply_msg = '';
+            var arr_apply_msg = [
+                ['처리 되었습니다.','장바구니에 담겼습니다.'],
+            ];
+
+            for (var i = 0; i < arr_apply_msg.length; i++) {
+                if(arr_apply_msg[i][0] == ret_msg) {
+                    apply_msg = arr_apply_msg[i][1];
+                }
+            }
+            if(apply_msg == '') apply_msg = ret_msg;
+            return apply_msg;
         }
 
         $(document).ready(function() {

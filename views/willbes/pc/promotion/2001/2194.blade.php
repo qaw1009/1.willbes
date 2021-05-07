@@ -394,6 +394,7 @@
 
         <div class="evtCtnsBox evt11" id="coupon">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08.jpg"  alt="쿠폰 다운로드" />
+            <a href="javascript:void(0);" title="교재 신청하기" style="position: absolute; left: 28.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
             <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 54.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
         </div>
 

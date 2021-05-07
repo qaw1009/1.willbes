@@ -1699,11 +1699,11 @@ class EventFModel extends WB_Model
                 $cart_limit_count = $arr_promotion_params['cart_limit_count'];
                 $cart_prod_code = $arr_promotion_params['cart_prod_code'];
 
-                // 장바구니 이미 담겼는지 체크
-                $cart_event_member_count = $this->getCartForEventMemberCount($cart_prod_code, $this->session->userdata('mem_idx'), ['RAW' => ['A.ConnOrderIdx IS' => ' NULL']]);
-                if($cart_event_member_count > 0) {
-                    throw new \Exception('이미 장바구니에 담긴 상품입니다.');
-                }
+                // 장바구니 이미 담겼는지 체크 
+//                $cart_event_member_count = $this->getCartForEventMemberCount($cart_prod_code, $this->session->userdata('mem_idx'), ['RAW' => ['A.ConnOrderIdx IS' => ' NULL']]);
+//                if($cart_event_member_count > 0) {
+//                    throw new \Exception('이미 장바구니에 담긴 상품입니다.');
+//                }
 
                 // 상품 구매여부 체크
                 $order_event_member_count = $this->getOrderForEventMemberCount($cart_prod_code, $this->session->userdata('mem_idx'));

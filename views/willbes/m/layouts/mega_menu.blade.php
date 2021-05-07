@@ -48,6 +48,7 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50133?subject_idx=1116') }}">김원욱</a>
                 </li>
                 <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50035?subject_idx=1117') }}">신광은</a></li>
+                <li><span>사회복지학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51238?subject_idx=1134') }}">정현윤</a></li>
                 <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50187?subject_idx=1123') }}">고선미</a></li>
                 <li>
                     <span>회계학</span>

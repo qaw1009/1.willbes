@@ -165,9 +165,9 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/kkfisLsAzV0?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
                         </div>
-                        <h2 class="avi_title">[소방관계법규 빈출테마 마지막] 종사명령·강제처분·피난명령·긴급조치 빈칸 채우기 특강!</h2>
+                        <h2 class="avi_title">2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -176,6 +176,26 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab2">
+                                        <span class="num_box" data-num="2">2</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>2022년 소방직 공무원 이석준 [행정법] 공개 설명회</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방관계법규 빈출테마 마지막] 종사명령·강제처분·피난명령·긴급조치 빈칸 채우기 특강!</p>
@@ -184,8 +204,8 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="#tab2">
-                                        <span class="num_box" data-num="2">2</span>
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방관계법규 빈출테마 2탄] 화재경계지구 빈칸 채우기 특강!</p>
@@ -194,8 +214,8 @@
                                 </li>
                                 
                                 <li class="">
-                                    <a href="#tab3">
-                                        <span class="num_box" data-num="3">3</span>
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
@@ -204,8 +224,8 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="#tab4">
-                                        <span class="num_box" data-num="4">4</span>
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail04.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방학개론 빈출테마 3탄] 화재정의 중요 키워드 빈칸 채우기 & O/X</p>
@@ -214,8 +234,8 @@
                                 </li> 
                               
                                 <li class="">
-                                    <a href="#tab5">
-                                        <span class="num_box" data-num="5">5</span>
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail05.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방학개론 빈출테마 2탄] 연소의 분류 빈칸 채우기 및 O/X 특강!</p>                                   
@@ -224,8 +244,8 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="#tab6">
-                                        <span class="num_box" data-num="6">6</span>
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail06.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방학개론 빈출테마 1탄] 열량 및 비열 빈칸 채우기 및 O/X 특강!</p>
@@ -234,8 +254,8 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="#tab7">
-                                        <span class="num_box" data-num="7">7</span>
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail07.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방학개론] 연소의 3요소 vs. 4요소의 차이를 알려주마~</p>
@@ -244,8 +264,8 @@
                                 </li>                                
                              
                                 <li class="">
-                                    <a href="#tab8">
-                                        <span class="num_box" data-num="8">8</span>
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail08.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[행정법] 행정심판에서 가장 중요한 ‘의무이행심판‘ O / X로 쉽게 정리하기!</p>
@@ -254,8 +274,8 @@
                                 </li>  
                                
                                 <li class="">
-                                    <a href="#tab9">
-                                        <span class="num_box" data-num="9">9</span>
+                                    <a href="#tab11">
+                                        <span class="num_box" data-num="11">11</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail09.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[행정법] 취소소송의 소송요건 - 『변경처분』에는 공식이 있다?!</p>
@@ -264,8 +284,8 @@
                                 </li>              
 
                                 <li class="">
-                                    <a href="#tab10">
-                                        <span class="num_box" data-num="10">10</span>
+                                    <a href="#tab12">
+                                        <span class="num_box" data-num="12">12</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail10.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[행정법] 인생을 반영하는 드라마틱한😲❗ ‘기·승·전·결’ - 『취소소송의 구조』</p>
@@ -274,8 +294,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab11">
-                                        <span class="num_box" data-num="11">11</span>
+                                    <a href="#tab13">
+                                        <span class="num_box" data-num="13">13</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail11.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>행정법] 개인정보보호법 개정법령에 대한 출제 포인트 Pick!!😉</p>
@@ -284,8 +304,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab12">
-                                        <span class="num_box" data-num="12">12</span>
+                                    <a href="#tab14">
+                                        <span class="num_box" data-num="14">14</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail12.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방한국사] 중앙집권국가를 위한 4가지 요건은 뭘까?</p>
@@ -294,8 +314,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab13">
-                                        <span class="num_box" data-num="13">13</span>
+                                    <a href="#tab15">
+                                        <span class="num_box" data-num="15">15</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail13.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방경채영어] 빈출 『전화 관련 주요 표현』 암기하기!</p>
@@ -304,8 +324,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab14">
-                                        <span class="num_box" data-num="14">14</span>
+                                    <a href="#tab16">
+                                        <span class="num_box" data-num="16">16</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail14.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사 vs. 관계부사』 편!</p>
@@ -314,8 +334,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab15">
-                                        <span class="num_box" data-num="15">15</span>
+                                    <a href="#tab17">
+                                        <span class="num_box" data-num="17">17</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail15.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계부사』 편!</p>
@@ -324,8 +344,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab16">
-                                        <span class="num_box" data-num="16">16</span>
+                                    <a href="#tab18">
+                                        <span class="num_box" data-num="18">18</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail16.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사』 편!</p>
@@ -334,8 +354,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab17">
-                                        <span class="num_box" data-num="17">17</span>
+                                    <a href="#tab19">
+                                        <span class="num_box" data-num="19">19</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail17.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방 영어] 『5형식』 바로 이거야! 이해하기 쉽지?</p>
@@ -344,8 +364,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab18">
-                                        <span class="num_box" data-num="18">18</span>
+                                    <a href="#tab20">
+                                        <span class="num_box" data-num="20">20</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail18.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[소방영어] 『수·시제·태』 단 5분 만에 이해하기!</p>
@@ -354,8 +374,8 @@
                                 </li>   
 
                                 <li class="">
-                                    <a href="#tab19">
-                                        <span class="num_box" data-num="19">19</span>
+                                    <a href="#tab21">
+                                        <span class="num_box" data-num="21">21</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail19.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>소방 영어] 『1~5형식』 바로 이게 포인트야!</p>
@@ -609,25 +629,27 @@
         ); 
         
         //유툽
-        var tab1_url = "https://www.youtube.com/embed/kkfisLsAzV0?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/nGvEN8pbthc?rel=0";  
-        var tab3_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
-        var tab4_url = "https://www.youtube.com/embed/wb5Mc43sHSs?rel=0";   
-        var tab5_url = "https://www.youtube.com/embed/DL0LRv6jync?rel=0"; 
-        var tab6_url = "https://www.youtube.com/embed/2_x_ICBX4ao?rel=0";  
-        var tab7_url = "https://www.youtube.com/embed/cUdpxUQGH2A?rel=0";  
-        var tab8_url = "https://www.youtube.com/embed/-ZFVtnziStg?rel=0";   
-        var tab9_url = "https://www.youtube.com/embed/fdGNM5rpknk?rel=0";     
-        var tab10_url = "https://www.youtube.com/embed/pp7P8SxQgWk?rel=0";
-        var tab11_url = "https://www.youtube.com/embed/s61SCJ1Hfhc?rel=0";  
-        var tab12_url = "https://www.youtube.com/embed/Jx9cdA-EDmU?rel=0";   
-        var tab13_url = "https://www.youtube.com/embed/NxPMaQ7k-wI?rel=0";   
-        var tab14_url = "https://www.youtube.com/embed/fGLUOlZhdb8?rel=0"; 
-        var tab15_url = "https://www.youtube.com/embed/Pup9zbe1yCw?rel=0";  
-        var tab16_url = "https://www.youtube.com/embed/dD29o0WJhQ8?rel=0";  
-        var tab17_url = "https://www.youtube.com/embed/MZBW_AccOb8?rel=0";   
-        var tab18_url = "https://www.youtube.com/embed/1DIYl_bfjb8?rel=0";   
-        var tab19_url = "https://www.youtube.com/embed/XWF7OymHBbQ?rel=0"; 
+        var tab1_url = "https://www.youtube.com/embed/myYzKGCImy4?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/ZqMMVLxxFqw?rel=0";  
+        var tab3_url = "https://www.youtube.com/embed/kkfisLsAzV0?rel=0";
+        var tab4_url = "https://www.youtube.com/embed/nGvEN8pbthc?rel=0";  
+        var tab5_url = "https://www.youtube.com/embed/z7YwNxte5Nk?rel=0";   
+        var tab6_url = "https://www.youtube.com/embed/wb5Mc43sHSs?rel=0";   
+        var tab7_url = "https://www.youtube.com/embed/DL0LRv6jync?rel=0"; 
+        var tab8_url = "https://www.youtube.com/embed/2_x_ICBX4ao?rel=0";  
+        var tab9_url = "https://www.youtube.com/embed/cUdpxUQGH2A?rel=0";  
+        var tab10_url = "https://www.youtube.com/embed/-ZFVtnziStg?rel=0";   
+        var tab11_url = "https://www.youtube.com/embed/fdGNM5rpknk?rel=0";     
+        var tab12_url = "https://www.youtube.com/embed/pp7P8SxQgWk?rel=0";
+        var tab13_url = "https://www.youtube.com/embed/s61SCJ1Hfhc?rel=0";  
+        var tab14_url = "https://www.youtube.com/embed/Jx9cdA-EDmU?rel=0";   
+        var tab15_url = "https://www.youtube.com/embed/NxPMaQ7k-wI?rel=0";   
+        var tab16_url = "https://www.youtube.com/embed/fGLUOlZhdb8?rel=0"; 
+        var tab17_url = "https://www.youtube.com/embed/Pup9zbe1yCw?rel=0";  
+        var tab18_url = "https://www.youtube.com/embed/dD29o0WJhQ8?rel=0";  
+        var tab19_url = "https://www.youtube.com/embed/MZBW_AccOb8?rel=0";   
+        var tab20_url = "https://www.youtube.com/embed/1DIYl_bfjb8?rel=0";   
+        var tab21_url = "https://www.youtube.com/embed/XWF7OymHBbQ?rel=0"; 
         
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -672,6 +694,10 @@
                     video_tab_url = tab18_url;
                 }else if(activeTab == "#tab19"){
                     video_tab_url = tab19_url;
+                }else if(activeTab == "#tab20"){
+                    video_tab_url = tab20_url;
+                }else if(activeTab == "#tab21"){
+                    video_tab_url = tab21_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

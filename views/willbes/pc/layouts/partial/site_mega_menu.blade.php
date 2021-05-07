@@ -43,11 +43,7 @@
                         <span>[행정법]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50109/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">황남기</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50615/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>                     
-                    </li>
-                    <li>
-                        <span>[사회복지학]</span>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51238?subject_idx=1134')}}">정형윤</a>                    
-                    </li>
+                    </li>                    
                     <li>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
@@ -55,6 +51,10 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50133/?subject_idx=1116')}}">김원욱</a>
                         <span>[형사소송법]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50035/?subject_idx=1117&subject_name=%ED%98%95%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">신광은</a>
+                    </li>
+                    <li>
+                        <span>[사회복지학]</span>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51238?subject_idx=1134')}}">정형윤</a>                    
                     </li>
                     <li>
                         <span>[세법]</span>

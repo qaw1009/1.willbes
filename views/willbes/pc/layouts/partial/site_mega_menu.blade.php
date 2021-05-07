@@ -45,6 +45,10 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50615/?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>                     
                     </li>
                     <li>
+                        <span>[사회복지학]</span>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51238?subject_idx=1134')}}">정형윤</a>                    
+                    </li>
+                    <li>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50559/?subject_idx=1112&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                         <span>[형법]</span>

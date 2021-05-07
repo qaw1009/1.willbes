@@ -163,11 +163,7 @@
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_03_01.jpg"  alt="신광은경찰PASS">
                 </div>   
-
-                <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_03_02.jpg"  alt="신광은경찰PASS">
-                </div>    
-
+                
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_03_03.jpg"  alt="온라인 PASS 바로가기" usemap="#Map2112_pass" border="0">
                     <map name="Map2112_pass" id="Map2112_pass">

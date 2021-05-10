@@ -56,8 +56,8 @@
         <div class="evtCtnsBox wb_cts02">
             <div class="link">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2195_02.jpg" alt="할인쿠폰 받기" />
-                <a href="javascript:void(0);" title="할인 쿠폰받기" onclick="giveCheck(0,713002);" style="position: absolute; left: 52.55%; top: 23.14%; width: 20.54%; height: 5.86%; z-index: 2;"></a>
-                <a href="https://www.instagram.com" target="_blank" title="인스타그램" style="position: absolute; left: 47.55%; top: 57.14%; width: 8.54%; height: 5.86%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="할인 쿠폰받기" onclick="giveCheck(0,713002);" style="position: absolute; left: 52.55%; top: 19.14%; width: 20.54%; height: 5.86%; z-index: 2;"></a>
+                <a href="https://www.instagram.com" target="_blank" title="인스타그램" style="position: absolute; left: 47.55%; top: 48.14%; width: 8.54%; height: 5.86%; z-index: 2;"></a>
                 {{--홍보url--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
@@ -68,7 +68,7 @@
         <div class="evtCtnsBox wb_cts03">
             <div class="link">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2195_03.jpg" alt="100% 무료쿠폰 받기" />
-                <a href="javascript:void(0);" title="100% 무료쿠폰 받기" onclick="giveCheck(1,713001);" style="position: absolute; left: 50.55%; top: 55.14%; width: 20.54%; height: 4.86%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="100% 무료쿠폰 받기" onclick="giveCheck(1,713001);" style="position: absolute; left: 50.55%; top: 44.14%; width: 20.54%; height: 4.86%; z-index: 2;"></a>
                 {{--기본댓글--}}
                 @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                     @include('willbes.pc.promotion.show_comment_list_normal_partial')

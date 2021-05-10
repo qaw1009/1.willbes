@@ -16,7 +16,7 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
 
         /************************************************************/
 
@@ -39,8 +39,7 @@
         {!! method_field('POST') !!}
     </form>
 
-    <div class="evtContent NSK" id="evtContainer">
-
+    <div class="evtContent NSK p_re" id="evtContainer">
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2195_top.jpg" alt="승진 응원 이벤트" />
         </div>

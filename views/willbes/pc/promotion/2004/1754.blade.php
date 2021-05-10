@@ -79,19 +79,14 @@
             -->
 
             <div class="skyBanner">
-                <a href="#request"><img src="https://static.willbes.net/public/images/promotion/2021/03/1754_sky.png" title="소방불꽃 면접캠프 설명회"></a>   
                 <a href="#evt06"><img src="https://static.willbes.net/public/images/promotion/2021/03/1754_sky2.png" title="소방불꽃 면접캠프 개강"></a>      
             </div>
 
             <div class="evtCtnsBox evtTop">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_top.jpg" title="불꽃 면접 캠프">
             </div>
-
-            <div class="evtCtnsBox evt01">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_01.jpg" title="소방불꽃 설명회">   
-                <a href="#map" title="학원 위치보기" style="position: absolute; left: 42%; top: 80%; width: 16%; height: 6%; z-index: 2;"></a>
-            </div>    
-
+            
+            {{--
             <div class="evtCtnsBox evt02" id="apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_02.jpg" title="소방불꽃 설명회 신청">
                 <div class="request" id="request">
@@ -172,6 +167,7 @@
                     <a href="#none" onclick="javascript:fn_submit();">소방불꽃 설명회 신청하기 ></a>
                 </div>
             </div>
+            --}}
 
             <div class="evtCtnsBox evt03">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1754_03.jpg" title="소방불꽃 면접캠프 커리큘럼"/>

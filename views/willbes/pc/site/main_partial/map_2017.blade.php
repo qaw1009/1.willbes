@@ -1,4 +1,3 @@
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
 <div class="Section">
     <div class="mapWrap">
         <div class="will-nTit">
@@ -6,6 +5,7 @@
         </div>
 
         <div class="mapL" id="map">지도영역</div>
+        <div class="mapL" id="alterMap1" style="display: none;"><img src="https://static.willbes.net/public/images/promotion/main/2018/2017_map.jpg"></div>
         <div class="mapR">
             <div>
                 <p>윌비스 <span class="tx-color">교원임용고시</span>학원 오시는 길</p>
@@ -58,38 +58,11 @@
     </div>
 </div>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
+<script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        var x = 37.512873;
-        var y = 126.948245;
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-            mapOption = {
-                center: new kakao.maps.LatLng(x, y), // 지도의 중심좌표
-                level: 4, // 지도의 확대 레벨
-                mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-            };
-        // 지도를 생성한다
-        var map = new kakao.maps.Map(mapContainer, mapOption);
-
-        // 지도 타입 변경 컨트롤을 생성한다
-        var mapTypeControl = new kakao.maps.MapTypeControl();
-
-        // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-        // 지도에 마커를 생성하고 표시한다
-        var marker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(x, y), // 마커의 좌표
-            map: map // 마커를 표시할 지도 객체
-        });
-
-        // 커스텀 오버레이를 생성하고 지도에 표시한다
-        var customOverlay = new kakao.maps.CustomOverlay({
-            map: map,
-            content: '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">교원임용고시학원</strong> (남강타워 5층)</div>',
-            position: new kakao.maps.LatLng(x, y), // 커스텀 오버레이를 표시할 좌표
-            xAnchor: 0.5, // 컨텐츠의 x 위치
-            yAnchor: 2.7 // 컨텐츠의 y 위치
-        });
+        var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">교원임용고시학원</strong> (남강타워 5층)</div>';
+        kakaoMap('map', 'alterMap1', '4', '서울 동작구 노량진로 202', info_txt, '0.5', '2.7');
     });
 </script>

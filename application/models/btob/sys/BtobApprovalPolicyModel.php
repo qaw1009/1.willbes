@@ -226,8 +226,8 @@ class BtobApprovalPolicyModel extends WB_Model
                 throw new \Exception('당월 이후의 수강부여제한정보만 수정 가능합니다.', _HTTP_BAD_REQUEST);
             } elseif ($start_date == $now_date) {
                 if ($chk_row['LimitCnt'] == -1 || ($limit_cnt > -1 && $limit_cnt <= $chk_row['LimitCnt'])) {
-                    // 당월은 제한없음은 수정 불가, 제한있음일 경우 수량 증가만 가능
-                    throw new \Exception('당월의 수강부여제한정보는 제한있음 정책의 부여건수 증가만 가능합니다.', _HTTP_BAD_REQUEST);
+                    // 당월은 제한없음은 수정 불가, 제한있음일 경우 수량 증가만 가능 => 수량변경 정책 해지 (2021.05.10)
+                    //throw new \Exception('당월의 수강부여제한정보는 제한있음 정책의 부여건수 증가만 가능합니다.', _HTTP_BAD_REQUEST);
                 }
             } else {
                 if ($limit_cnt == $chk_row['LimitCnt']) {

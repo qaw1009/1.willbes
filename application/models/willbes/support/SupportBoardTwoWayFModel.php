@@ -83,9 +83,11 @@ class SupportBoardTwoWayFModel extends BaseSupportFModel
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
         $where .= $this->addDefWhereOfCampus();
-        
+
+        $group_by = ' GROUP BY b.BoardIdx ';
+
         $set_query = ' FROM ( select ' . $column;
-        $set_query .= $from . $where . $order_by_offset_limit;
+        $set_query .= $from . $where . $group_by . $order_by_offset_limit;
         $set_query .= ') AS m ' . $main_query_order_by;
 
         $query = $this->_conn->query('select ' . $def_column . $set_query);

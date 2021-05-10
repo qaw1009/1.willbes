@@ -18,7 +18,7 @@
         /************************************************************/
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/1820_top_bg.jpg) no-repeat center top;}
         .evt01 {background:#f7f6fa; padding-bottom:150px}
-
+        .evt02 {padding-bottom:150px}
         .btnSt {width:470px; margin:50px auto 0; position:relative}
         .btnSt a {display:block; border-radius:18px; color:#fff; background:#ce3c3f; padding:20px 0; font-size:24px}
         .btnSt a:hover {background:#000}
@@ -42,6 +42,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1820_top.jpg" alt="국어 권보민" />
         </div> 
 
+        <div class="evtCtnsBox evt02">
+            <img src="https://static.willbes.net/public/images/promotion/2021/05/1820_02.jpg" alt="국어 권보민"> 
+            <div class="btnSt NSK-Black">
+                <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="자료확인">더 많은 적중자료 확인하기 ></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/03/2017_prof_icon.png" alt="">
+            </div>
+        </div>
+
         <div class="evtCtnsBox evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1820_01.jpg" alt="국어 권보민"> 
             <div class="btnSt NSK-Black">
@@ -49,20 +57,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2017_prof_icon.png" alt="">
             </div>                        
         </div>
-        {{--
-        <div class="evtCtnsBox youtube">
-            <ul>
-                <li>
-                    <div><span>문법 기초반</span> 1회 1강 보기</div>
-                    <a href="#none" onclick="javascript:alert('준비중입니다.');" ><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_01.jpg" alt="국어 권보민 문법 기초반" /></a>
-                </li>
-                <li>
-                    <div><span>문법 심화반</span> 1회 1강 보기</div>
-                    <a href="#none" onclick="javascript:alert('준비중입니다.');" ><img src="https://static.willbes.net/public/images/promotion/2021/03/1820_02_02.jpg" alt="국어 권보민 문법 심화반" /></a>
-                </li>
-            </ul>            
-        </div>
-        --}}
+
     </div>
     <!-- End Container -->
 

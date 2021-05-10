@@ -138,9 +138,7 @@
                                                 @if($row['IsDisp'] == 'N')
                                                     <span class="oBox changeBox ml10 NSK">인강전환</span>
                                                 @endif
-                                                @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
-                                                    <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
-                                                @endif
+
                                             </dt>
                                         </dl>
                                         <div class="w-tit"><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span> {{$row['subProdName']}}</div>
@@ -150,6 +148,11 @@
                                                     (수강증번호 : {{$row['CertNo']}})
                                                 </dt>
                                             </dl>
+                                        @endif
+                                        @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
+                                            <div class="lookover">
+                                                <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
+                                            </div>
                                         @endif
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>

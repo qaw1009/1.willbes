@@ -54,6 +54,10 @@
                                                                     @if($subrow['IsDisp'] == 'N')
                                                                         <span class="oBox changeBox ml5 NG">인강전환</span>
                                                                     @endif
+
+                                                                    @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
+                                                                        <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강동영상신청 ></a>
+                                                                    @endif
                                                                 </li>
                                                             @endforeach
                                                         @endif
@@ -134,6 +138,7 @@
                                                 @if($row['IsDisp'] == 'N')
                                                     <span class="oBox changeBox ml10 NSK">인강전환</span>
                                                 @endif
+
                                             </dt>
                                         </dl>
                                         <div class="w-tit"><span class="tx-blue">{{ $row['StudyPatternCcdName'] }}</span> {{$row['subProdName']}}</div>
@@ -143,6 +148,11 @@
                                                     (수강증번호 : {{$row['CertNo']}})
                                                 </dt>
                                             </dl>
+                                        @endif
+                                        @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
+                                            <div class="lookover">
+                                                <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
+                                            </div>
                                         @endif
                                     </td>
                                     <td class="w-period">{{str_replace('-', '.', $row['StudyStartDate'])}} ~ {{str_replace('-', '.', $row['StudyEndDate'])}}</td>
@@ -174,6 +184,7 @@
         </div>
         {!! banner('내강의실_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
+    <div id="supplementLec" class="willbes-Layer-Black"></div>
     <!-- End Container -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -188,5 +199,21 @@
                 }
             });
         });
+
+        function fnBogang(o, op, p, ps, t)
+        {
+            url = "{{ site_url("/classroom/off/layerBogang/") }}";
+            data = "o="+o+"&op="+op+"&p="+p+"&ps="+ps+"&t="+t;
+
+            sendAjax(url,
+                data,
+                function(d){
+                    $("#supplementLec").html(d).end();
+                    openWin('supplementLec');
+                },
+                function(ret, status){
+                    alert(ret.ret_msg);
+                }, false, 'GET', 'html');
+        }
     </script>
 @stop

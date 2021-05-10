@@ -683,7 +683,7 @@ class Off extends \app\controllers\FrontController
 
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
-        $today = date("Y-m-d", time());
+        $today = date("Y-m-d", strtotime('-14 days',time()));
 
         if($Type == 'P'){
             $pkg = $this->classroomFModel->getPackage([
@@ -794,7 +794,7 @@ class Off extends \app\controllers\FrontController
 
         $sess_mem_idx = $this->session->userdata('mem_idx');
 
-        $today = date("Y-m-d", time());
+        $today = date("Y-m-d", strtotime('-14 days',time()));
 
         if($Type == 'P'){
             $pkg = $this->classroomFModel->getPackage([

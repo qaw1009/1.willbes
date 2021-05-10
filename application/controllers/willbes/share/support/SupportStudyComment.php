@@ -32,7 +32,7 @@ class SupportStudyComment extends BaseSupport
         $s_list_type = element('search_list_type',$arr_input, '0');
         $prof_idx = element('prof_idx', $arr_input);
 
-        $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code.'&search_list_type='.$s_list_type;
+        $get_params = 'cate='.$cate_code.'&prod_code='.$prod_code.'&search_list_type='.$s_list_type.'&prof_idx='.$prof_idx;
         $get_params .= '&page='.$page;
 
         $arr_best_condition = [

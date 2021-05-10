@@ -579,6 +579,7 @@ class BasePromotion extends \app\controllers\FrontController
         $give_idx = $this->_req('give_idx');    //제공식별자 : 쿠폰식별자
         $give_overlap_chk = $this->_req('give_overlap_chk');    //다건 쿠폰 중복체크 여부
         $comment_chk_yn = $this->_req('comment_chk_yn');    //댓글참여 확인 여부
+        $comment_ccd = $this->_req('comment_ccd');    //댓글 유형 확인;
         $regist_chk_yn = $this->_req('regist_chk_yn');    //프로모션 참여 확인 여부
         $el_idx = (int)$this->_req('event_code');   //이벤트식별자
         $limit_count = (empty($this->_req('limit_count')) === false) ? $this->_req('limit_count') : 1;   //발급 제한 갯수
@@ -595,7 +596,8 @@ class BasePromotion extends \app\controllers\FrontController
                     'a.MemIdx' => $this->session->userdata('mem_idx'),
                     'a.ElIdx' => $el_idx,
                     'a.IsStatus' => 'Y',
-                    'a.IsUse' => 'Y'
+                    'a.IsUse' => 'Y',
+                    'a.CommentUiCcd' => $comment_ccd
                 ]
             ];
             $comment_result = $this->eventFModel->listEventForCommentPromotion(false, $arr_condition, 1, 0, ['a.CIdx' => 'DESC']);

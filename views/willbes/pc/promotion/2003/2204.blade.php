@@ -35,6 +35,10 @@
 
 </style>
 
+    <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+    </form>
 
     <div class="evtContent NSK" id="evtContainer"> 
 
@@ -76,7 +80,7 @@
                     </div>
                 </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_03.jpg" alt="동영상 강의 80% 할인">       
-            <a href="javascript:void(0);" title="쿠폰 다운로드" style="position: absolute; left: 35.55%; top: 81.14%; width: 14.54%; height: 6.86%; z-index: 2;"></a>   
+            <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 35.55%; top: 81.14%; width: 14.54%; height: 6.86%; z-index: 2;"></a>
             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182220" target="_blank" title="동영상 강의 수강신청" style="position: absolute; left: 50.55%; top: 81.14%; width: 14.54%; height: 6.86%; z-index: 2;"></a>    
         </div>  
 
@@ -90,13 +94,34 @@
     </div>
      <!-- End Container -->
 
-     <script>    
+     <script>
+         var $regi_form = $('#regi_form');
 
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}');
         });
-        
+
+        {{--쿠폰발급--}}
+        function giveCheck() {
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate']))
+                alert('이벤트가 종료되었습니다.');
+                return;
+            @endif
+
+            @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다.');
+                    }
+                }, showValidateError, null, false, 'alert');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

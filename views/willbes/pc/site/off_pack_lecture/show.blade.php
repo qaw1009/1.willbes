@@ -85,27 +85,31 @@
                     <input type="checkbox" name="prod_code[]" class="chk_products d_none" checked="checked" value="{{ $data['ProdCode'] . ':' . $sale_type_ccd . ':' . $data['ProdCode'] }}" data-prod-code="{{$data['ProdCode']}}" data-parent-prod-code="{{$data['ProdCode']}}" data-group-prod-code="{{$data['ProdCode']}}" data-sale-price="{{$real_sale_price}}"/>
                     <input type="hidden" name="sale_status_ccd" id="sale_status_ccd" value="{{$data['SaleStatusCcd']}}">
                     <div class="willbes-Lec-buyBtn">
-                        <ul>
-                            @if($data['StudyApplyCcd'] != '654002')
-                                <li class="btnAuto130 h36">
-                                    <button type="button" name="btn_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
-                                        <span class="tx-light-blue">방문결제</span>
-                                    </button>
-                                </li>
-                            @endif
-                            @if($data['StudyApplyCcd'] != '654001')
-                                <li class="btnAuto130 h36">
-                                    <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-heavy-gray bd-dark-gray">
-                                        <span>장바구니</span>
-                                    </button>
-                                </li>
-                                <li class="btnAuto130 h36">
-                                    <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                                        <span class="tx-white">바로결제</span>
-                                    </button>
-                                </li>
-                            @endif
-                        </ul>
+                        @if($data['IsSalesAble'] == 'Y')
+                            <ul>
+                                @if($data['StudyApplyCcd'] != '654002')
+                                    <li class="btnAuto130 h36">
+                                        <button type="button" name="btn_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-white bd-dark-blue">
+                                            <span class="tx-light-blue">방문결제</span>
+                                        </button>
+                                    </li>
+                                @endif
+                                @if($data['StudyApplyCcd'] != '654001')
+                                    <li class="btnAuto130 h36">
+                                        <button type="submit" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" class="mem-Btn bg-heavy-gray bd-dark-gray">
+                                            <span>장바구니</span>
+                                        </button>
+                                    </li>
+                                    <li class="btnAuto130 h36">
+                                        <button type="submit" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                            <span class="tx-white">바로결제</span>
+                                        </button>
+                                    </li>
+                                @endif
+                            </ul>
+                        @else
+                            <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
+                        @endif
                     </div>
                 </div>
                 <!-- willbes-Lec-Package-Price -->

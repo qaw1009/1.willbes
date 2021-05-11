@@ -52,8 +52,8 @@ class ProductFModel extends WB_Model
     // 상품 판매상태 > 판매가능, 판매예정
     public $_sale_status_ccds = ['available' => '618001', 'expected' => '618002'];
 
-    // 학원 단과,종합반 접수상태 > 접수예정, 접수중
-    public $_accept_status_ccds = ['expected' => '675001', 'available' => '675002'];
+    // 학원 단과,종합반 접수상태 > 접수예정, 접수중, 접수마감(추가-21.05.10 : 한주연대리)
+    public $_accept_status_ccds = ['expected' => '675001', 'available' => '675002', 'end' => '675003'];
 
     // 판매가능 공통코드 (판매가능, 판매중)
     public $_available_sale_status_ccd = ['product' => '618001', 'book' => '112001'];
@@ -255,6 +255,11 @@ class ProductFModel extends WB_Model
             $arr_condition['EQ']['wSaleCcd'] = $this->_available_sale_status_ccd['book'];
         }
 
+        // 학원강좌일 경우 접수중 상태 추가
+        if (starts_with($learn_pattern, 'off_')) {
+            $arr_condition['EQ']['AcceptStatusCcd'] = $this->_accept_status_ccds['available'];
+        }
+
         $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
 
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);
@@ -301,14 +306,14 @@ class ProductFModel extends WB_Model
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => [$as . 'LecSaleType' => $lec_sale_type, $as . 'wIsUse' => 'Y'
                                 , $as . 'IsLecOpen' => 'Y', $as . 'IsBeforeLectureAble' => $is_before_lecture_able],   // 강의판매구분, 마스터강의 사용여부, 강의개설여부, 선수강좌신청가능여부
-                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중
+                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중, 접수마감
                 ]);
                 break;
             // 학원 종합반
             case 'off_pack_lecture' :
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'EQ' => [$as . 'LecSaleType' => 'N', $as . 'IsLecOpen' => 'Y'],   // 일반강의, 강의개설여부
-                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중
+                    'IN' => [$as . 'AcceptStatusCcd' => array_values($this->_accept_status_ccds)]   // 접수예정, 접수중, 접수마감
                 ]);
                 break;
             // 교재

@@ -93,14 +93,18 @@
                         @endif
                         <ul>
                             <li class="btnAuto180 h36">
-                                @if($data['PackTypeCcd'] === '648003')
-                                    <button type="button" name="btn_each_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
-                                        <span class="">방문결제 접수</span>
-                                    </button>
+                                @if($data['IsSalesAble'] == 'Y')
+                                    @if($data['PackTypeCcd'] === '648003')
+                                        <button type="button" name="btn_each_visit_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue bd-dark-blue">
+                                            <span class="">방문결제 접수</span>
+                                        </button>
+                                    @else
+                                        <button type="submit" name="btn_basket"  class="mem-Btn bg-white bd-dark-blue">
+                                            <span class="tx-light-blue">장바구니</span>
+                                        </button>
+                                    @endif
                                 @else
-                                    <button type="submit" name="btn_basket"  class="mem-Btn bg-white bd-dark-blue">
-                                        <span class="tx-light-blue">장바구니</span>
-                                    </button>
+                                    <span class="tx-red f_right">판매 중인 상품만 주문 가능합니다.</span>
                                 @endif
                             </li>
                         </ul>

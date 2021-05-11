@@ -255,6 +255,11 @@ class ProductFModel extends WB_Model
             $arr_condition['EQ']['wSaleCcd'] = $this->_available_sale_status_ccd['book'];
         }
 
+        // 학원강좌일 경우 접수중 상태 추가
+        if (starts_with($learn_pattern, 'off_')) {
+            $arr_condition['EQ']['AcceptStatusCcd'] = $this->_accept_status_ccds['available'];
+        }
+
         $arr_condition = array_merge_recursive($arr_condition, $this->getSalesProductCondition($learn_pattern));
 
         $data = $this->listProduct($learn_pattern, false, $arr_condition, null, null, [], $add_column);

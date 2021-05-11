@@ -30,6 +30,7 @@
                                 <a href="http://zipzoongso.cafe24.com/wp/" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_20.jpg" alt="집중소"></a>
                                 <a href="https://www.osan.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_23.png" alt="오산대"></a>
                                 <a href="https://www.woosuk.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_24.jpg" alt="우석대"></a>
+                                <a href="http://www.jwu.ac.kr" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/3001_collaborate_25.jpg" alt="중앙대"></a>
                             </li>
                         </ul>
                     </div>

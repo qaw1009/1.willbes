@@ -35,6 +35,7 @@
         
 		.tabs {border-bottom:2px solid #b59073; width:1120px; margin:0 auto 30px}
 		.tabs li {display:inline; float:left; width:20%;}
+        .tabs.four li {width:25%;}
 		.tabs li a {display:block; color:#fff; background:#000; height:50px; line-height:50px; text-align:center; margin-right:1px; font-size:18px;font-weight:bold;}
 		.tabs li a:hover,
 		.tabs li a.active {background:#b59073;color:#fff;}
@@ -77,33 +78,28 @@
                 <a href="#careful">이용안내확인하기 ↓</a>
             </div> 
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_01.jpg" alt="학습 커리큘럼" /> 
-            <ul class="tabs">
+            <ul class="tabs four">
 				<li><a href="#tab01">민법</a></li>
 				<li><a href="#tab02">노동법</a></li>
 				<li><a href="#tab03">사회보험법</a></li>
-                <li><a href="#tab04">경제학원론</a></li>
-                <li><a href="#tab05">경영학개론</a></li>
+                <li><a href="#tab04">경영학개론</a></li>
 			</ul>
 			<div id="tab01" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t01.jpg" alt="민법"/>
-                <a href="javascript:fnPlayerSample('163237', '1269894', 'HD');" title="" style="position: absolute; left: 78.11%; top: 39.74%; width: 17.69%; height: 7.21%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('163240', '1269961', 'HD');" title="" style="position: absolute; left: 78.02%; top: 89.9%; width: 17.69%; height: 7.21%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('163237', '1269894', 'HD');" title="" style="position: absolute; left: 77.95%; top: 26.35%; width: 17.86%; height: 5.4%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('163240', '1269961', 'HD');" title="" style="position: absolute; left: 77.95%; top: 59.54%; width: 17.86%; height: 5.4%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('181221', '1287534', 'HD');" title="" style="position: absolute; left: 77.95%; top: 93.05%; width: 17.86%; height: 5.4%; z-index: 2;"></a> 
 			</div>
 			<div id="tab02" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t02.jpg" alt="노동법"/>
-                <a href="javascript:fnPlayerSample('181221', '1287534', 'HD');" title="" style="position: absolute; left: 77.77%; top: 26.38%; width: 18.21%; height: 5.74%; z-index: 2;"></a>       
-                <a href="javascript:fnPlayerSample('163228', '1269567', 'HD');" title="" style="position: absolute; left: 77.77%; top: 59.6%; width: 18.21%; height: 5.74%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('177111', '1276060', 'HD');" title="" style="position: absolute; left: 77.77%; top: 92.72%; width: 18.21%; height: 5.74%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t02.jpg" alt="노동법"/>                      
+                <a href="javascript:fnPlayerSample('163228', '1269567', 'HD');" title="" style="position: absolute; left: 77.77%; top: 39.14%; width: 17.86%; height: 8.13%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('177111', '1276060', 'HD');" title="" style="position: absolute; left: 77.77%; top: 89.05%; width: 17.86%; height: 8.13%; z-index: 2;"></a>
 			</div>
 			<div id="tab03" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t03.jpg" alt="사회보험법"/>
                 <a href="javascript:fnPlayerSample('163234', '1280425', 'HD');" title="" style="position: absolute; left: 77.75%; top: 77.81%; width: 18.23%; height: 17.22%; z-index: 2;"></a>            
 			</div>
             <div id="tab04" class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t04.jpg" alt="경제학원론"/>
-                <a href="javascript:fnPlayerSample('163223', '1273263', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>                
-			</div>
-            <div id="tab05" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t04.jpg" alt="경영학개론"/>
                 <a href="javascript:fnPlayerSample('163223', '1273263', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>               
 			</div>

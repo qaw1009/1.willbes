@@ -114,10 +114,7 @@
         <div class="sky">
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_sky.png" alt="스카이베너" >
-            </a>     
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67J207Jyk7KO8" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2001-02.png" alt="문제풀이" >
-            </a> 
+            </a>
         </div>   
 
         <div class="evtCtnsBox wb_06" >            

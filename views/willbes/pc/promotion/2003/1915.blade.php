@@ -115,9 +115,6 @@
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1915_sky.png" alt="바로가기" >
             </a>
-            <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Jyk7Jqp67KU" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/1915-02.png" alt="문제풀이" >
-            </a>
         </div>   
 
         <div class="evtCtnsBox wb_06" >            

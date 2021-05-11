@@ -11,12 +11,14 @@
     padding:0 !important;
     background:#fff;
 }	
-.evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+.evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 /*****************************************************************/  
 
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2204_top_bg.jpg) no-repeat center top;}
 
 .evt03 {background:#edd6c0;}
+.evt03 .p_re {width:1120px; margin:0 auto}
+.evt03 .p_re a:hover {background:rgba(0,0,0,.3)}
 
 /*타이머*/
 .newTopDday * {font-size:24px}
@@ -57,31 +59,33 @@
         <div class="evtCtnsBox evt03">            
             <!-- 타이머 -->
             <div id="newTopDday" class="newTopDday NG">        
-                    <div>
-                        <ul>
-                            <li>    
-                                <span class="NGEB">마감까지</span>
-                            </li>
-                            <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><strong>일</strong></li>
-                            <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><strong>:</strong></li>
-                            <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><strong>:</strong></li>
-                            <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                            <li>
-                                남았습니다.
-                            </li>
-                        </ul>
-                    </div>
+                <div>
+                    <ul>
+                        <li>    
+                            <span class="NGEB">마감까지</span>
+                        </li>
+                        <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>일</strong></li>
+                        <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>:</strong></li>
+                        <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><strong>:</strong></li>
+                        <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                        <li>
+                            남았습니다.
+                        </li>
+                    </ul>
                 </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_03.jpg" alt="동영상 강의 80% 할인">       
-            <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 35.55%; top: 81.14%; width: 14.54%; height: 6.86%; z-index: 2;"></a>
-            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182220" target="_blank" title="동영상 강의 수강신청" style="position: absolute; left: 50.55%; top: 81.14%; width: 14.54%; height: 6.86%; z-index: 2;"></a>    
+            </div>
+            <div class="p_re"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_03.jpg" alt="동영상 강의 80% 할인">       
+                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 25.55%; top: 80.14%; width: 23.54%; height: 6.86%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182220" target="_blank" title="동영상 강의 수강신청" style="position: absolute; left: 50.55%; top: 80.14%; width: 23.54%; height: 6.86%; z-index: 2;"></a> 
+            </div>   
         </div>  
 
         <div class="evtCtnsBox evt04">            

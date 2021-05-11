@@ -24,11 +24,11 @@
         .event01 .tabs li {display:inline; float:left; width:33.3333%}
         .event01 .tabs a {display:block; text-align:center; background:#9f9f9f; color:#fff; height:80px; line-height:80px; margin-right:10px; font-size:28px}
         .event01 .tabs a.active,
-        .event01 .tabs a:hover {background:#102179;}
+        .event01 .tabs a:hover {background:#292929;}
         .event01 .tabs li:last-child a {margin:0}
         .event01 .tabs:after {content:''; display:block; clear:both}
         .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
-        .event01 .evt_table {width:1030px; margin:50px auto; border:1px solid #333; padding:50px}
+        .event01 .evt_table {width:1030px; margin:50px auto 0; border:1px solid #333; padding:50px}
         .evt_table table{width:100%;border-top:1px solid #e9e9e9}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
@@ -48,7 +48,7 @@
 
         .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
 
-        .event02 {background:url(https://static.willbes.net/public/images/promotion/2021/05/2202_02_bg.jpg) no-repeat center top;}
+        .event02 {background:#ffe400}
 
         .event03 {background:#42425b; padding-bottom:100px}
         .event03 .urlWrap {width:1030px; margin:0 auto}
@@ -62,7 +62,7 @@
         .urlWrap .txtinfo h4 {font-size:30px; margin-bottom:20px; font-weight:bold}
         .urlWrap .txtinfo li {list-style-type: disc; margin-left:20px; margin-bottom:5px}
 
-        .event04 {background:url(https://static.willbes.net/public/images/promotion/2021/05/2202_04_bg.jpg) no-repeat center top;}
+        .event04 {background:#e1e1e1}
 
         .evtBox {width:1120px; margin:0 auto; position:relative}
         .evtBox a:hover {background:rgba(0,0,0,.2)}
@@ -176,13 +176,13 @@
             </div>
             <div class="urlWrap">
                 <div class="urladd">홍보 URL 남기기 <input type="text"><a href="#none">주소입력</a></div>
-                <div class="evt_table">
+                <div class="evt_table pd20">
                     <table>
                         <col width="8%" />
                         <col  />
-                        <col width="8%" />
-                        <col width="8%" />
                         <col width="10%" />
+                        <col width="8%" />
+                        <col width="14%" />
                         <tbody>
                             <tr>
                                 <td>5</td>

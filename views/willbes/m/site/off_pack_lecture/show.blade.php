@@ -336,8 +336,8 @@
                             <li><a href="#none"  class="btn_gray" name="btn_off_visit_pay" data-direct-pay="N" >방문결제</a></li>
                         @endif
                         @if($data['StudyApplyCcd'] != '654001')
-                            <li><a href="#none" @if($data['IsSalesAble'] != 'Y')onclick="javascript:alert('구매할 수 없는 상품입니다.');" @endif  name="btn_cart" data-direct-pay="N" class="btn-purple">장바구니</a></li>
-                            <li><a href="#none" @if($data['IsSalesAble'] != 'Y')onclick="javascript:alert('구매할 수 없는 상품입니다.');" @endif name="btn_direct_pay" data-direct-pay="Y" class="btn-purple-line">바로결제</a></li>
+                            <li><a href="#none" name="btn_cart" data-direct-pay="N" class="btn-purple">장바구니</a></li>
+                            <li><a href="#none" name="btn_direct_pay" data-direct-pay="Y" class="btn-purple-line">바로결제</a></li>
                         @endif
                     </ul>
                 </div>
@@ -377,7 +377,7 @@
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
                 @if($data["IsSalesAble"] !== 'Y')
-                alert("신청 할 수 없는 강좌입니다.");return;
+                    alert("신청 할 수 없는 강좌입니다.");return;
                 @endif
 
                 // 필수강좌 체크 여부

@@ -44,7 +44,7 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/1893_03.jpg" alt="강의신청"/>
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/171830" target="_blank" title="한능검 벼락치기" style="position: absolute; left: 31.16%; top: 26.4%; width: 57.41%; height: 9.64%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/1893" target="_blank" title="한능검 기본과정" style="position: absolute; left: 31.16%; top: 37.31%; width: 57.41%; height: 9.64%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/182396" target="_blank" title="한능검 기본과정" style="position: absolute; left: 31.16%; top: 37.31%; width: 57.41%; height: 9.64%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/179962" target="_blank" title="G텔프" style="position: absolute; left: 31.16%; top: 77.79%; width: 57.41%; height: 9.64%; z-index: 2;"></a>  
             </div>       
         </div>  

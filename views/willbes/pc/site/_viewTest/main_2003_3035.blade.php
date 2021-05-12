@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <!-- Container -->
     <style>
         .law-bn01 {margin:20px auto 0;}
         .law-bn01 ul {margin-right:-15px}
@@ -76,7 +75,7 @@
                                 @foreach($data['notice'] as $row)
                                     <li>
                                         <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
-                                            @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                            @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                             @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
                                         </a>
                                         <span class="date">{{$row['RegDatm']}}</span>
@@ -100,7 +99,7 @@
                                 @foreach($data['timetable_notice'] as $row)
                                     <li>
                                         <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}&s_cate_code={{$__cfg['CateCode']}}&s_keyword=시간표">
-                                            @if($row['IsBest'] == '1')<span>EVENT</span>@endif {{$row['Title']}}
+                                            @if($row['IsBest'] == '1')<span>HOT</span>@endif {{$row['Title']}}
                                             @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
                                         </a>
                                         <span class="date">{{$row['RegDatm']}}</span>
@@ -194,7 +193,6 @@
                                 </dl>
                             </div>
                         </div>
-                        <!-- 노량진 //-->
                     </div>
                 </div>
             </div>
@@ -204,9 +202,12 @@
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>
         </div>
-        <!-- CS센터 //-->
+
+        <div id="QuickMenu" class="MainQuickMenu">
+            {{-- quick menu --}}
+            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+        </div>
     </div>
-    <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
     {{--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>--}}

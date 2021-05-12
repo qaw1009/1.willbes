@@ -107,7 +107,7 @@
                         <td style="color:#f72739">20%</td>
                         <td width="137"><span style="text-decoration: line-through;">454,000원</span><br />
                         <span style="color:#f72739">363,200원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180933';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182157';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>문제풀이 패키지</td>
@@ -115,7 +115,7 @@
                         <td style="color:#f72739">25%</td>
                         <td width="137"><span style="text-decoration: line-through;">583,000원</span><br />
                         <span style="color:#f72739">437,250원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180938';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182158';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>기본+문풀 패키지</td>
@@ -123,7 +123,7 @@
                         <td style="color:#f72739">30%</td>
                         <td width="137"><span style="text-decoration: line-through;">1,037,000원</span><br />
                         <span style="color:#f72739">725,900원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180942';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182159';" style="cursor:pointer;">신청하기</td>
                     </tr>
                 </table>
 			</div>
@@ -153,7 +153,7 @@
                         <td style="color:#f72739">20%</td>
                         <td width="137"><span style="text-decoration: line-through;">454,000원</span><br />
                         <span style="color:#f72739">363,200원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180946';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182160';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>문제풀이 패키지</td>
@@ -161,7 +161,7 @@
                         <td style="color:#f72739">25%</td>
                         <td width="137"><span style="text-decoration: line-through;">389,000원</span><br />
                         <span style="color:#f72739">291,750원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180947';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182164';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>기본+문풀 패키지</td>
@@ -169,13 +169,13 @@
                         <td style="color:#f72739">30%</td>
                         <td width="137"><span style="text-decoration: line-through;">843,000원</span><br />
                         <span style="color:#f72739">590,100원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180948';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182165';" style="cursor:pointer;">신청하기</td>
                     </tr>
                 </table>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2163_03_03.png" alt="감정평가이론" usemap="#2163_03_03" border="0" class="pb30" />
                 <map name="2163_03_03" id="2163_03_03">
                     <area shape="rect" coords="2,257,301,316" href="javascript:fnPlayerSample('161460', '1226467', 'HD');">
-                    <area shape="rect" coords="307,259,606,317" href="https://job.willbes.net/pass/offinfo/boardInfo/index/109?on_off_link_cate_code=309003&s_cate_code_disabled=Y&s_cate_code=3112&s_campus=&s_keyword=어정민" target="_blank" />
+                    <area shape="rect" coords="307,259,606,317" href="https://job.willbes.net/support/gosiNotice/show/cate/309003?board_idx=335392&s_cate_code=309003&s_cate_code_disabled=Y" target="_blank" />
                 </map>
                 <table cellspacing="0" cellpadding="0" class="boardD">
                     <col width="114" />
@@ -192,28 +192,28 @@
                         <td width="111">신청</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
-                        <td>기본강의</td>
-                        <td>90일</td>
-                        <td style="color:#f72739">0%</td>
-                        <td width="137"><span style="text-decoration: line-through;">146,000원</span><br />
-                        <span style="color:#f72739">146,000원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180949';" style="cursor:pointer;">신청하기</td>
+                        <td>기본 패키지</td>
+                        <td>180일</td>
+                        <td style="color:#f72739">20%</td>
+                        <td width="137"><span style="text-decoration: line-through;">486,000원</span><br />
+                        <span style="color:#f72739">388,800원</span></td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182166';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>문제풀이 패키지</td>
-                        <td>150일</td>
+                        <td>240일</td>
                         <td style="color:#f72739">20%</td>
-                        <td width="137"><span style="text-decoration: line-through;">389,000원</span><br />
-                        <span style="color:#f72739">311,200원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180951';" style="cursor:pointer;">신청하기</td>
+                        <td width="137"><span style="text-decoration: line-through;">551,000원</span><br />
+                        <span style="color:#f72739">440,800원</span></td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182192';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>기본+문풀 패키지</td>
-                        <td>240일</td>
-                        <td style="color:#f72739">25%</td>
-                        <td width="137"><span style="text-decoration: line-through;">535,000원</span><br />
-                        <span style="color:#f72739">401,250원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180952';" style="cursor:pointer;">신청하기</td>
+                        <td>300일</td>
+                        <td style="color:#f72739">30%</td>
+                        <td width="137"><span style="text-decoration: line-through;">1,037,000원</span><br />
+                        <span style="color:#f72739">725,900원</span></td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182199';" style="cursor:pointer;">신청하기</td>
                     </tr>
                 </table>
 			</div>
@@ -243,7 +243,7 @@
                         <td style="color:#f72739">20%</td>
                         <td width="137"><span style="text-decoration: line-through;">454,000원</span><br />
                         <span style="color:#f72739">363,200원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180954';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182208';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>문제풀이</td>
@@ -251,7 +251,7 @@
                         <td style="color:#f72739">0%</td>
                         <td width="137"><span style="text-decoration: line-through;">162,000원</span><br />
                         <span style="color:#f72739">162,000원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180955';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182209';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>기본+문풀 패키지</td>
@@ -259,7 +259,7 @@
                         <td style="color:#f72739">25%</td>
                         <td width="137"><span style="text-decoration: line-through;">616,000원</span><br />
                         <span style="color:#f72739">462,000원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180956';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182210';" style="cursor:pointer;">신청하기</td>
                     </tr>
                 </table>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2163_03_05.png" alt="감평행정법 및 보상법규" usemap="#2163_03_05" border="0" class="pb30"/>
@@ -287,7 +287,7 @@
                         <td style="color:#f72739">20%</td>
                         <td width="137"><span style="text-decoration: line-through;">487,000원</span><br />
                         <span style="color:#f72739">389,600원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180957';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182211';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>문제풀이 패키지</td>
@@ -295,7 +295,7 @@
                         <td style="color:#f72739">0%</td>
                         <td width="137"><span style="text-decoration: line-through;">150,000원</span><br />
                         <span style="color:#f72739">150,000원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180958';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182212';" style="cursor:pointer;">신청하기</td>
                     </tr>
                     <tr style="background:#e3e3e3;color:#696969">
                         <td>기본+문풀 패키지</td>
@@ -303,7 +303,7 @@
                         <td style="color:#f72739">25%</td>
                         <td width="137"><span style="text-decoration: line-through;">617,000원</span><br />
                         <span style="color:#f72739">462,750원</span></td>
-                        <td style="color:#2766f7" onclick="location.href='http://job.willbes.net/periodPackage/show/cate/309003/pack/648001/prod-code/180959';" style="cursor:pointer;">신청하기</td>
+                        <td style="color:#2766f7" onclick="location.href='https://job.willbes.net/package/show/cate/309003/pack/648001/prod-code/182218';" style="cursor:pointer;">신청하기</td>
                     </tr>
                 </table>               
 			</div>
@@ -331,7 +331,6 @@
 					<li>본 티패스 상품 강의의 경우 2배수 제한이 되어 있습니다.</li>
 					<li>본 티패스 상품 수강기간은 각 패스 상품별로 상이하오니 꼭 확인하시기 바랍니다.</li>
 					<li>본 티패스상품은 수강신청후 바로 수강이 진행되며(일부강의 제외), 수강시작일 변경, 일시정지, 연장신청이 불가합니다.</li>
-                    <li>본 티패스상품은 재수강신청이 가능합니다.</li>
                     <li>본 티패스 상품의 강의별 수강기간 및 수강시작일은 해당 상품의 유의사항을 확인하세요.</li>
 				</ul>
 				<div class="infoTit NG"><strong>교재관련</strong></div>

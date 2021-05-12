@@ -30,8 +30,8 @@
                 <div class="form-control-static col-md-4">
                     {{$data['SiteName']}}
                 </div>
-                <label class="control-label col-md-1-1 d-line" for="">카테고리</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
+                <label class="control-label col-md-1-1" for="">카테고리</label>
+                <div class="form-control-static col-md-4">
                     @if(empty($data['arr_cate_code']) === false)
                         @foreach($data['arr_cate_code'] as $key => $val)
                             {{$val}} @if ($loop->last === false) | @endif
@@ -49,8 +49,12 @@
 
             <div class="form-group">
                 <label class="control-label col-md-1-1" for="">사용</label>
-                <div class="form-control-static col-md-10">
+                <div class="form-control-static col-md-4">
                     {{ ($data['IsUse'] == 'Y') ? '사용' : '미사용' }}
+                </div>
+                <label class="control-label col-md-1-1" for="">노출필터</label>
+                <div class="form-control-static col-md-4">
+                    {{ $data['FilterCcdName'] }}
                 </div>
             </div>
 
@@ -67,8 +71,8 @@
                         @endif
                     @endfor
                 </div>
-                <label class="control-label col-md-1-1 d-line" for="">조회수(생성)</label>
-                <div class="form-control-static col-md-4 ml-12-dot">
+                <label class="control-label col-md-1-1" for="">조회수(생성)</label>
+                <div class="form-control-static col-md-4">
                     {{$data['ReadCnt']}} ({{$data['SettingReadCnt']}})
                 </div>
             </div>
@@ -84,9 +88,9 @@
                 <div class="col-md-4">
                     <p class="form-control-static">{{ $data['wAdminName'] }}</p>
                 </div>
-                <label class="control-label col-md-1-1 d-line">등록일
+                <label class="control-label col-md-1-1">등록일
                 </label>
-                <div class="col-md-4 ml-12-dot">
+                <div class="col-md-4">
                     <p class="form-control-static">{{ $data['RegDatm'] }}</p>
                 </div>
             </div>
@@ -97,9 +101,9 @@
                 <div class="col-md-4">
                     <p class="form-control-static">{{ $data['UpdAdminName'] }}</p>
                 </div>
-                <label class="control-label col-md-1-1 d-line">최종 수정일
+                <label class="control-label col-md-1-1">최종 수정일
                 </label>
-                <div class="col-md-4 ml-12-dot">
+                <div class="col-md-4">
                     <p class="form-control-static">{{ $data['UpdDatm'] }}</p>
                 </div>
             </div>

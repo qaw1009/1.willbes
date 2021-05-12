@@ -29,8 +29,8 @@
                     <div class="col-md-4 form-inline item">
                         {!! html_site_select($data['SiteCode'], 'site_code', 'site_code', '', '운영 사이트', 'required', '', true) !!}
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="campus_ccd">캠퍼스<span class="required">*</span></label>
-                    <div class="col-md-4 form-inline item ml-12-dot">
+                    <label class="control-label col-md-1-1" for="campus_ccd">캠퍼스<span class="required">*</span></label>
+                    <div class="col-md-4 form-inline item">
                         <select class="form-control" id="campus_ccd" name="campus_ccd" required="required" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @php $temp='0'; @endphp
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="title">제목<span class="required">*</span></label>
                     <div class="col-md-10 item">
-                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="500" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다.">
+                        <input type="text" id="title" name="title" required="required" class="form-control" maxlength="500" title="제목" value="{{ $data['Title'] }}" placeholder="제목 입니다." style="width: 60%;">
                     </div>
                 </div>
 
@@ -84,12 +84,27 @@
                             <input type="checkbox" id="is_best" name="is_best" value="1" class="flat" @if($data['IsBest']=='1')checked="checked"@endif/> <label class="inline-block mr-5 red" for="is_best">HOT</label>
                         </div>
                     </div>
-                    <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline ml-12-dot">
+                    <label class="control-label col-md-1-1" for="is_use_y">사용여부<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($method == 'POST' || $data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-1-1" for="filter_ccd">노출필터</label>
+                    <div class="col-md-10 form-inline">
+                        <select class="form-control" id="filter_ccd" name="filter_ccd">
+                            <option value="">노출필터</option>
+                            @foreach($arr_filter_ccd as $key => $val)
+                                <option value="{{ $key }}" @if($data['FilterCcd'] == $key)selected="selected"@endif>{{ $val }}</option>
+                            @endforeach
+                        </select>
+                        <a class="red cs-pointer btn-print-log ml-10" data-toggle="popover" data-html="true" data-placement="right" data-content="특정 검색 키워드로 노출할 수 있는 기능.<br>프론트페이지 별도 개발필요. (리스트페이지 사용불가)">
+                            <i class="glyphicon glyphicon-comment" id="popover"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -106,14 +121,7 @@
                         <a id="btn_attach_toggle" href="#none">첨부펼침 <span id="attach_toggle_img" class="fa fa-chevron-up"></span></a>
                         @for($i = 0; $i < $attach_file_cnt; $i++)
                             <div class="title attach-file-div @if($i!==0) hide @endif">
-                                <!--div class="filetype">
-                                    <input type="text" class="form-control file-text" disabled="">
-                                    <button class="btn btn-primary mb-0" type="button">파일 선택</button>
-                                    <span class="file-select file-btn"-->
-                                        <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
-                                    <!--/span>
-                                    <input class="file-reset btn-danger btn" type="button" value="X" />
-                                </div-->
+                                <input type="file" id="attach_file{{ $i }}" name="attach_file[]" class="form-control input-file" title="첨부{{ $i }}"/>
                                 @if(empty($data['arr_attach_file_path'][$i]) === false)
                                     <p class="form-control-static ml-10 mr-10">[ <a href="{{ $data['arr_attach_file_path'][$i] . $data['arr_attach_file_name'][$i] }}" rel="popup-image">{{ $data['arr_attach_file_real_name'][$i] }}</a> ]
                                         <a href="#none" class="file-delete" data-attach-idx="{{ $data['arr_attach_file_idx'][$i]  }}"><i class="fa fa-times red"></i></a>

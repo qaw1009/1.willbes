@@ -47,6 +47,9 @@ class Notice extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //노출필터 공통코드
+        $arr_filter_ccd = $this->_getCcdArray('742');
+
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
             'arr_search_data' => $arr_search_data['arr_search_data'],
@@ -54,6 +57,7 @@ class Notice extends BaseBoard
             'arr_campus' => $arr_campus,
             'arr_category' => $arr_category,
             'arr_m_category' => $arr_m_category,
+            'arr_filter_ccd' => $arr_filter_ccd,
             'boardName' => $this->board_name,
             'boardDefaultQueryString' => "&bm_idx={$this->bm_idx}"
         ]);
@@ -76,6 +80,7 @@ class Notice extends BaseBoard
                 'LB.IsStatus' => 'Y',
                 'LB.CampusCcd' => $this->_reqP('search_campus_ccd'),
                 'LB.IsUse' => $this->_reqP('search_is_use'),
+                'LB.FilterCcd' => $this->_reqP('search_filter_ccd'),
             ],
             'ORG' => [
                 'LKB' => [
@@ -177,6 +182,9 @@ class Notice extends BaseBoard
         //캠퍼스 조회
         $arr_campus = $this->_getCampusArray('');
 
+        //노출필터 공통코드
+        $arr_filter_ccd = $this->_getCcdArray('742');
+
         $method = 'POST';
         $data = null;
         $board_idx = null;
@@ -184,7 +192,7 @@ class Notice extends BaseBoard
         if (empty($params[0]) === false) {
             $column = '
             LB.BoardIdx, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
+            LB.ReadCnt, LB.SettingReadCnt, LB.FilterCcd, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName
             ';
             $method = 'PUT';
             $board_idx = $params[0];
@@ -219,6 +227,7 @@ class Notice extends BaseBoard
             'bmIdx' => $this->bm_idx,
             'arr_campus' => $arr_campus,
             'campus_all_ccd' => $this->codeModel->campusAllCcd,
+            'arr_filter_ccd' => $arr_filter_ccd,
             'method' => $method,
             'data' => $data,
             'board_idx' => $board_idx,
@@ -295,7 +304,9 @@ class Notice extends BaseBoard
 
         $column = '
             LB.BoardIdx, LB.RegType, LB.SiteCode, LB.CampusCcd, LSC.CcdName AS CampusName, LS.SiteName, LB.Title, LB.Content, LB.RegAdminIdx, LB.RegDatm, LB.IsBest, LB.IsUse,
-            LB.ReadCnt, LB.SettingReadCnt, LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
+            LB.ReadCnt, LB.SettingReadCnt,
+            fn_ccd_name(LB.FilterCcd) AS FilterCcdName,
+            LBA.AttachFileIdx, LBA.AttachFilePath, LBA.AttachFileName, LBA.AttachRealFileName, ADMIN.wAdminName, ADMIN2.wAdminName AS UpdAdminName, LB.UpdDatm
             ';
         $board_idx = $params[0];
         $arr_condition = ([
@@ -404,6 +415,7 @@ class Notice extends BaseBoard
                 'IsUse' => element('is_use', $input),
                 'ReadCnt' => (empty(element('read_count', $input))) ? '0' : element('read_count', $input),
                 'SettingReadCnt' => element('setting_readCnt', $input),
+                'FilterCcd' => element('filter_ccd', $input),
             ],
             'board_r_category' => [
                 'site_category' => element('cate_code', $input)

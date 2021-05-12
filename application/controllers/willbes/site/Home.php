@@ -186,6 +186,11 @@ class Home extends \app\controllers\FrontController
                 $data['Interval_time'] = number_format(floor((strtotime(date('Y-m-d H:i:s')) - strtotime($target_time)) / 3600));
                 $data['study_comment'] = $this->_boardStudyComment(6, $s_cate_code);
             }
+
+            if (in_array($s_cate_code, ['3035']) === true) {
+                $add_condition = ['EQ' => ['b.FilterCcd' => '742001']]; //검색키워드에 해당되는 공통코드
+                $data['timetable_notice'] = $this->_boardNotice(5, $s_cate_code, '', '45', $add_condition);
+            }
         } else {
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;
@@ -641,7 +646,7 @@ class Home extends \app\controllers\FrontController
      * @param int $bm_idx
      * @return array|int
      */
-    private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [], $bm_idx = 45)
+    private function _boardNotice($limit_cnt = 5, $cate_code = '', $arr_campus = [], $bm_idx = 45, $add_condition = [])
     {
         $column = 'b.BoardIdx, b.Title, b.IsBest, b.BestOrderNum, DATE_FORMAT(b.RegDatm, \'%Y-%m-%d\') as RegDatm';
         $order_by = ['IsBest' => 'Desc', 'BestOrderNum' => 'Desc', 'BoardIdx' => 'Desc'];
@@ -655,7 +660,7 @@ class Home extends \app\controllers\FrontController
                 'b.CampusCcd' => $arr_campus
             ]
         ];
-
+        $arr_condition = array_merge_recursive($arr_condition, $add_condition);
         return $this->supportBoardFModel->listBoard(false, $arr_condition, $cate_code, $column, $limit_cnt,0, $order_by);
     }
 

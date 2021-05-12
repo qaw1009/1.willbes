@@ -341,7 +341,7 @@
     <script type="text/javascript">
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDownText('{{$arr_promotion_params['edate']}}');
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}','txt');
         });
 
         /*스크롤고정*/
@@ -419,63 +419,8 @@
             formCreateSubmit('{{ front_url('/cart/store') }}', params, 'POST');
         }
 
-        // 날짜차이 계산
-        var dDayDateDiff = {
-            inDays: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return Math.floor((tt2-tt1) / (1000 * 60 * 60 * 24));
-            },
-            inWeeks: function(dd1, dd2) {
-                var tt2 = dd2.getTime();
-                var tt1 = dd1.getTime();
-
-                return parseInt((tt2-tt1)/(24*3600*1000*7));
-            },
-            inMonths: function(dd1, dd2) {
-                var dd1Y = dd1.getFullYear();
-                var dd2Y = dd2.getFullYear();
-                var dd1M = dd1.getMonth();
-                var dd2M = dd2.getMonth();
-
-                return (dd2M+12*dd2Y)-(dd1M+12*dd1Y);
-            },
-            inYears: function(dd1, dd2) {
-                return dd2.getFullYear()-dd1.getFullYear();
-            }
-        };
-
-        {{--
-         * 프로모션용 디데이카운터 텍스트
-         * @@param end_date [마감일 (YYYY-MM-DD)]
-        --}}
-        function dDayCountDownText(end_date, ele_id) {
-            if(!ele_id) ele_id = 'ddayCountText';
-            var arr_end_date = end_date.split('-');
-            var event_day = new Date(arr_end_date[0], parseInt(arr_end_date[1]) - 1, arr_end_date[2], 23, 59, 59);
-            var now = new Date();
-            var timeGap = new Date(0, 0, 0, 0, 0, 0, (event_day - now));
-            var date_left = String( dDayDateDiff.inDays(now, event_day) );
-            var hour_left = String( timeGap.getHours() );
-            var minute_left = String( timeGap.getMinutes() );
-            var second_left = String(  timeGap.getSeconds() );
-
-            if(date_left.length == 1) date_left = '0' + date_left;
-            if(hour_left.length == 1) hour_left = '0' + hour_left;
-            if(minute_left.length == 1) minute_left = '0' + minute_left;
-            if(second_left.length == 1) second_left = '0' + second_left;
-
-            if ((event_day.getTime() - now.getTime()) > 0) {
-                $('#'+ele_id).html(date_left + '일 ' + hour_left + ':' + minute_left + ':' + second_left);
-
-                setTimeout(function() {
-                    dDayCountDownText(end_date, ele_id);
-                }, 1000);
-            } else {
-                $('#'+ele_id).hide();
-            }
-        }
-
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

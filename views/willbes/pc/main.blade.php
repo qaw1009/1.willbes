@@ -102,7 +102,7 @@
                         <div>
                             <h5>ㆍ N잡/e창업</h5>
                             <ul>
-                                <li><a href="#none" class="favor-cate-each" data-key="2014_3114" data-url={{ front_app_url('/home/index/cate/3114', 'njob') }}>e-커머스</a></li>
+                                <li><a href="#none" class="favor-cate-each" data-key="2014_3114" data-url="https://www.njobler.net">e-커머스</a></li>
                             </ul>
                         </div>
                         <div>
@@ -236,7 +236,7 @@
                         </tr>
                         <tr>
                             <th scope="row">N잡/e창업</th>
-                            <td><a href="{{ front_app_url('/home/index/cate/3114', 'njob') }}" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a></td>
+                            <td><a href="https://www.njobler.net" target="_blank">e-커머스 <img src="https://static.willbes.net/public/images/promotion/main/gate_icon03.png"></a></td>
                             <th>취업</th>
                             <td><a href="{{ front_app_url('/home/index/cate/3102', 'work') }}" target="_blank">공기업</a></td>
                             <th>학점은행</th>

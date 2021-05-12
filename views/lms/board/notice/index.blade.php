@@ -39,6 +39,13 @@
                             @endforeach
                         </select>
 
+                        <select class="form-control" id="search_filter_ccd" name="search_filter_ccd">
+                            <option value="">노출필터</option>
+                            @foreach($arr_filter_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
+
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>

@@ -420,18 +420,15 @@ class BoardModel extends WB_Model
             $insert_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode, SupportersIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
-                Title, Content, ReadCnt, SettingReadCnt, OrderNum,
-                IsUse,
-                IsStatus, RegMemIdx, 
-                RegAdminIdx,
-                RegIp,
+                Title, Content, ReadCnt, SettingReadCnt, OrderNum, FilterCcd,
+                IsUse, IsStatus, RegMemIdx, RegAdminIdx, RegIp,
                 UpdDatm, UpdAdminIdx, ReplyStatusCcd, ReplyContent, ReplyRegDatm, ReplyAdminIdx, ReplyRegIp, ReplyUpdDatm, ReplyUpdAdminIdx
             ';
             $select_column = '
                 BmIdx, SiteCode, MdCateCode, CampusCcd, RegType, FaqGroupTypeCcd, FaqTypeCcd, TypeCcd, IsBest, IsPublic, PredictIdx, PromotionCode, SupportersIdx,
                 VocCcd, AreaCcd, DivisionCcd, ExamProblemYear, ProfIdx, SubjectIdx, CourseIdx, ProdApplyTypeCcd, ProdCode,
                 CONCAT("복사본-", IF(LEFT(Title,4)="복사본-", REPLACE(Title, LEFT(Title,4), ""), Title)) AS Title,
-                Content, ReadCnt, SettingReadCnt, OrderNum, 
+                Content, ReadCnt, SettingReadCnt, OrderNum, FilterCcd,
                 CASE IsUse WHEN "Y" THEN "N" ELSE "N" END AS IsUse,
                 IsStatus, RegMemIdx,
                 REPLACE(RegAdminIdx, RegAdminIdx, "'.$admin_idx.'") AS RegAdminIdx,

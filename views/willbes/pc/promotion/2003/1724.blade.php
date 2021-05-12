@@ -104,7 +104,7 @@
 <script type="text/javascript">
  /*디데이카운트다운*/
  $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}');
+            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
 </script>
 {{-- 프로모션용 스크립트 include --}}

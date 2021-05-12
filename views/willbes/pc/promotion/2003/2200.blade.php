@@ -66,9 +66,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2200_03.jpg" alt="적중을 직접 경험해 보세요">
             <div class="slide_con">
                 <ul id="slidesImg3">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_01.jpg" alt="적중사례" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_02.jpg" alt="적중사례" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2176_03_03.jpg" alt="적중사례" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2200_03_01.jpg" alt="적중사례" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2200_03_02.jpg" alt="적중사례" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/05/2200_03_03.jpg" alt="적중사례" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_next.png"></a></p>

@@ -58,7 +58,7 @@
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78"  target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/1779_sky_1.png" alt="개강안내" />
             </a>    
-            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1170&" target="_blank">
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3048/code/1909" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/1781_sky02.png" alt="이석준 T" />
             </a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank">
@@ -88,7 +88,7 @@
                 <area shape="rect" coords="258,2620,850,2775" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" alt="군무원 행정직 수강신청">
                 <area shape="rect" coords="144,3018,375,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" alt="최우영 티패스">
                 <area shape="rect" coords="441,3018,690,3094" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU66riw66%2B47KeE" target="_blank" alt="기미진 특강">
-                <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1170&" target="_blank" alt="이석준 특강">        
+                <area shape="rect" coords="777,3018,1003,3094" href="https://pass.willbes.net/pass/promotion/index/cate/3048/code/1909" target="_blank" alt="이석준 특강">        
             </map>
         </div>
 

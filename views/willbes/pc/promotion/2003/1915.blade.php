@@ -218,9 +218,7 @@
         <div class="evtCtnsBox tab01s_05" id="apply">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/1915_05.jpg" alt="신청하기" />
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178352" title="수강신청" target="_blank" style="position: absolute; left: 67.86%; top: 58.4%; width: 16.88%; height: 10%; z-index: 2;"></a>   
-                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1177&" title="무료특강" target="_blank" style="position: absolute; left: 40.8%; top: 80%; width: 11.61%; height: 8.6%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67Jyk7Jqp67KU" title="실전동형문풀" target="_blank" style="position: absolute; left: 77.41%; top: 80%; width: 11.61%; height: 8.6%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/178352" title="수강신청" target="_blank" style="position: absolute; left: 67.86%; top: 62.4%; width: 16.88%; height: 10%; z-index: 2;"></a>
             </div>                      
         </div> 
 

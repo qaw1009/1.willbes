@@ -1138,6 +1138,13 @@ class Player extends \app\controllers\FrontController
         $position = $this->_req('pos');
         $deviceinfo = $this->_req('di');
 
+        // 시간 오류로 데이터 검증 추가
+        if(is_numeric($studytime) == false){ $studytime = 0; }
+        if($studytime < 0){ $studytime = 0; }
+        // 시간 오류로 데이터 검증 추가
+        if(is_numeric($realstudytime) == false){ $realstudytime = 0; }
+        if($realstudytime < 0){ $realstudytime = 0; }
+
         if( empty($orderidx) == true
             || empty($prodcode) == true
             || empty($orderprodidx) == true

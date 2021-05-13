@@ -64,7 +64,7 @@
                 {{--@include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_wide')--}}
                 <div class="noticeTabs">
                     <div class="will-listTit">
-                        공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" class="f_right btn-add">
+                        공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}?s_cate_code={{$__cfg['CateCode']}}" class="f_right btn-add">
                             <img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                     </div>
                     <div class="tabBox noticeBox">

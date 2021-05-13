@@ -14,6 +14,8 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 /*****************************************************************/  
 
+.sky {position:fixed; top:250px; right:25px; z-index:11;}
+
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2204_top_bg.jpg) no-repeat center top;}
 
 .evt03 {background:#edd6c0;}
@@ -43,6 +45,12 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer"> 
+
+        <div class="sky">
+            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2207" target="_blank">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_sky.png" alt="선석 티패스" />
+            </a>
+        </div>        
 
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_top.jpg" alt="밑바닥 기초영어 선석">  

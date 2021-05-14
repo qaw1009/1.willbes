@@ -150,7 +150,7 @@
 
         <div class="evtCtnsBox evtInfo" id="careful">
 			<div class="evtInfoBox">
-				<h4 class="NSK-Black">【윌비스 X 등불쌤】  2021-10기+11기 합격PASS 이용안내</h4>
+				<h4 class="NSK-Black">[윌비스 X 등불쌤] 2021-10기+11기 합격PASS 이용안내</h4>
 				<div class="infoTit NSK-Black">▶ 2021-10기+11기 합격PASS </div>
 				<ul>
                     <li>구매일 기준 6개월 동안 수강 가능합니다. (180일)</li>

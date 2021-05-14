@@ -43,10 +43,11 @@
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
         .evt_table td a {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; margin-left:5px}
         .evt_table .btns {margin-top:40px}
-        .evt_table .btns a {display:inline-block; width:260px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px}
+        .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns a:hover {background:#fe544a}
 
         .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
+        .txtinfo .addbtn { display:inline-block; padding:0 20px; background:#ffe401; color:#42425b; border-radius:10px }
 
         .event02 {background:#ffe400}
 
@@ -118,17 +119,6 @@
                                 <td colspan="3"><input type="text" placeholder="- 없이 숫자만 입력"></td>
                             </tr>
                             <tr>
-                                <th>주소</th>
-                                <td colspan="3">
-                                    <div>
-                                        <input type="text" style="width:20%"/><a href="#none">주소검색</a><br>
-                                        <input type="text"><br>
-                                        <input type="text" placeholder="나머지 주소">
-                                    </div>
-                                    <div class="tx12 mt10">* 주소를 잘못 입력하신 경우, 오배송 사고가 있을 수 있으며, 이런 경우 책임을 지지 않습니다.</div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>과목</th>
                                 <td colspan="3">
                                     <ul>
@@ -147,8 +137,7 @@
                         </tbody>
                     </table>
                     <div class="btns">
-                        <a href="javascript:void(0);" onclick="fn_submit();">확인</a>
-                        <a href="javascript:void(0);" onclick="reset_form(this);">취소</a>
+                        <a href="javascript:void(0);" onclick="fn_submit();">실전 모의고사 바로결제하기 ></a>
                     </div>
                 </div>
             </form>
@@ -160,6 +149,8 @@
                 - 교육학, 전공 관계 없이 응시하고자 하는 과목을 신청하시면 됩니다.<br>
                 - ’문제지/답지(발송)+해설지(등록)’가 기본으로 제공됩니다. 해설 강의 및 채점 등의 서비스는 과목별로 차이가 있으니 아래 상세 내용을 반드시 확인하시기 바랍니다. <br>
                 - 결제 비용은 ‘문제 출제+인쇄+답안지+배송료‘를 포함하며, 채점 및 첨삭은 서비스가 가능한 과목의 경우에만 진행됩니다. <br>
+                - 모의고사 배송 주소는 결제 시 입력 가능합니다.<br>
+                - 결제 후 배송지 수정은 배송 전까지 [내강의실>결제관리>주문/배송조회]에서 가능합니다. <a href="https://www.willbes.net/classroom/order/index" target="_blank" class="addbtn">배송지 수정></a><br>
                 <br>
                 ※ 과목 별 채점 및 해설 강의 촬영<br>
                 - 교육학 이인재 (채점x, 해설강의 o), 교육학 홍의일 (전원 채점 o, 해설강의 x) <br>

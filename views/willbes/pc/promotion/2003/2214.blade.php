@@ -30,7 +30,7 @@
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2214_top.jpg"  title="한덕현 영어 라이브"> 
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/m2cCBWjSp90?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/H4H3Sd2nhOs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>                       
         </div>
 

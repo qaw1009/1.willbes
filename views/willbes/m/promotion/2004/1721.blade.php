@@ -39,7 +39,7 @@
     .evt03 .slide_con .bx-wrapper .bx-pager {     
         bottom: 0px;
     }   
-    .evt03 .p_re a {position: absolute; top: 83.5%; width: 40.14%; height: 8.25%; z-index: 2;}
+    .evt03 .p_re a {position: absolute; top: 83.5%; width: 40.14%; height: 10.25%; z-index: 2;}
     .evt03 .p_re a.b01 {left: 5.42%;}
     .evt03 .p_re a.b02 {left: 54.86%;}
 
@@ -75,7 +75,7 @@
                 <div><img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03_04.jpg" alt="전자직"/></div>
             </div>
         </div> 
-        <div class="p_re mt30">
+        <div class="p_re mt30 mb100">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1721m_03.jpg" alt="전기전자통신 최우영 신규강좌" id="evt03">        
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="공무원" target="_blank" class="b01"></a>
             <a href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" title="군무원" target="_blank" class="b02"></a>

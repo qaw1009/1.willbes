@@ -75,7 +75,7 @@
             <div>
                 <ul>
                     <li>
-                        기본완성 기출반<br>접수 마감까지
+                        기본완성 기출반<br>사전접수 마감까지
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

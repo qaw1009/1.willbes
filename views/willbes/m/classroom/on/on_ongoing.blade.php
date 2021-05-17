@@ -153,7 +153,7 @@
                 <div id="leclist2" class="tabContent" style="display: none;">
                     <div class="willbes-Txt NGR c_both mt20 @if(get_cookie('moreInfo') == 'off') on @endif">
                         <div class="willbes-Txt-Tit NG">· 패키지강좌수강 유의사항 <div class="MoreBtn underline"><a href="#none">@if(get_cookie('moreInfo') == 'off')열기 ▼@else닫기 ▲@endif</a></div></div>
-                        - 패키지 강좌는 수강일변경, 일시정지, 수강연장기능이 제공되지 않습니다.<br/>
+                        - 패키지 강좌는 수강일변경, 일시정지, 수강연장, 재수강 기능이 제공되지 않습니다.<br/>
                     </div>
                     @forelse( $pkgList as $row )
                         <div class="willbes-Open-Table">

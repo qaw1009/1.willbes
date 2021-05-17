@@ -17,7 +17,7 @@
         .evt_table td input[type=text]:last-child {margin-bottom:0}
         .evt_table input[type=checkbox] {height:20px; width:20px}
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
-        .evt_table td a {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; margin-left:5px}
+        .evt_table td a.delBtn {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; border-radius:8px}
         .evt_table .btns {margin-top:40px}
         .evt_table .btns a {display:inline-block; width:260px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px}
         .evt_table .btns a:hover {background:#fe544a}
@@ -61,7 +61,7 @@
                             <td><a href="{!! 'https://' . $promotion_url !!}" target="_blank">{!! $row['Content'] !!}</a></td>
                             <td>
                                 @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
-                                    <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="javascript:void(0);">삭제</a>
+                                    <a class="btn-comment-del delBtn" data-comment-idx="{{$row['Idx']}}" href="javascript:void(0);">삭제</a>
                                 @endif
                             </td>
                             <td>{{ str_replace(mb_substr($row['MemName'],1,1,'UTF-8'), "*", mb_substr($row['MemName'],0,4,'UTF-8')) }}</td>

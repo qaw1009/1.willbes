@@ -29,7 +29,7 @@
         .event01 .tabs:after {content:''; display:block; clear:both}
         .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
         .event01 .evt_table {width:1030px; margin:50px auto 0; border:1px solid #333; padding:50px}
-        .evt_table table{width:100%;border-top:1px solid #e9e9e9}
+        /*.evt_table table{width:100%;border-top:1px solid #e9e9e9}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
@@ -41,10 +41,10 @@
         .evt_table td input[type=text]:last-child {margin-bottom:0}
         .evt_table input[type=checkbox] {height:20px; width:20px}
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
-        .evt_table td a {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; margin-left:5px}
+        .evt_table td:nth-child(3) a {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; margin-left:5px}
         .evt_table .btns {margin-top:40px}
         .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
-        .evt_table .btns a:hover {background:#fe544a}
+        .evt_table .btns a:hover {background:#fe544a}*/
 
         .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
         .txtinfo .addbtn { display:inline-block; padding:0 20px; background:#ffe401; color:#42425b; border-radius:10px }

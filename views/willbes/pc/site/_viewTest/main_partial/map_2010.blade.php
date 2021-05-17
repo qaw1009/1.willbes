@@ -128,13 +128,15 @@
     const map_info = [[],[]];
     map_info[0] = {
         'addr' : '서울 관악구 신림로 23길 16'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">신림(본원)</strong> (일성트루엘 4층)</div>'
+        ,'level' : '3'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">고등고시</strong>학원 [신림(본원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };
     map_info[1] = {
         'addr':'서울 강남구 테헤란로19길 18'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">강남(분원)</strong></div>'
+        ,'level' : '3'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">고등고시</strong>학원 [강남(분원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };
@@ -161,9 +163,8 @@
                 e.preventDefault();
 
                 var map_id = $(this).data('map-id');
-                var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">신림(본원)</strong> (일성트루엘 4층)</div>';
-                /*kakaoMap('map_'+map_id, 'alterMap_'+map_id, '4', '서울 관악구 신림로 23길 16', info_txt, '0.5', '2.7');*/
-                kakaoMap('map_'+map_id, 'alterMap_'+map_id, '4', map_info[map_id]['addr']);
+                kakaoMap('map_'+map_id, 'alterMap_'+map_id, map_info[map_id]['level'], map_info[map_id]['addr']
+                    , map_info[map_id]['info_txt'], map_info[map_id]['x_anchor'], map_info[map_id]['y_anchor']);
             });
         });
         @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099'))

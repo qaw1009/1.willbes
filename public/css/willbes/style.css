@@ -13523,6 +13523,15 @@ table.acadlecInfoPackageTable tr.Top td {
 	height: 8px;
 	margin: 15px 5px 0;
 }
+.hanlim .will-acadTit {
+    font-size: 19px;
+    font-weight: 600;
+    color: #363636;
+    line-height: 60px;
+}
+.hanlim .will-acadTit span {
+    vertical-align: baseline;
+}
 
 /* 경찰간부 */
 .Menu .menu-List li.spo > a {
@@ -14048,7 +14057,8 @@ table.acadlecInfoPackageTable tr.Top td {
 	height: 328px;
 	overflow: hidden;
 }
-.Section4_hl .map_img img {
+
+.Section4_hl .map_img2 img {
 	position: absolute;
 	left: 50%;
 	margin-left: -349px;

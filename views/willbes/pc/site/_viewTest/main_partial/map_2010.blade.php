@@ -47,7 +47,7 @@
 </style>
 <div class="Section Section4_hl mt50">
     <div class="widthAuto">
-        <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>
+        <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>        
         <div class="noticeTabs campus c_both">
             <ul class="tabWrapCustom noticeWrap_campus">
                 <li><a id="campus1_btn" href="#campus1" data-map-id="0" class="on">신림(본원)</a><span class="row-line">|</span></li>
@@ -56,7 +56,7 @@
             <div class="tabBox noticeBox_campus">
                 <div id="campus1" class="tabContent">
                     <div class="map_img" id="map_0"></div>
-                    <div class="map_img" id="alterMap_0" style="display: none;">
+                    <div class="map_img map_img2" id="alterMap_0" style="display: none;">
                         <img src="https://static.willbes.net/public/images/promotion/main/2010_map01.jpg" alt="신림(본원)">
                         <span class="origin">신림(본원)</span>
                     </div>

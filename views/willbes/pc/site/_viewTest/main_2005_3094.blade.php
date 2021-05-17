@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 

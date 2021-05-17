@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container nomu NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -23,6 +23,7 @@
                 </div>
             </div>
         </div>
+
         <div class="Section barBnr">
             <div class="widthAuto">
                 {!! banner_html(element('메인_띠배너', $data['arr_main_banner'])) !!}
@@ -32,13 +33,13 @@
         <div class="Section mt50">
             <div class="widthAuto">
                 {{-- board include --}}
-                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
+                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'] . '_off')
             </div>
         </div>
 
         <div class="Section mt30">
             <div class="widthAuto">
-                {{-- 학원수강신청, 학원보강, 강의실배정표, 신규동영상안내, 무료특강, 강의자료실 버튼 --}}
+                {{-- 학원수강신청, 학원보강, 강의실배정표, 강의시간표, 무료특강, 강의자료실 버튼 --}}
                 @include('willbes.pc.site.main_partial.content_menu_' . $__cfg['SiteCode'] . '_' . $__cfg['CateCode'])
             </div>
         </div>
@@ -124,11 +125,12 @@
         </div>
 
         {{--학원 오시는 길--}}
-        @include('willbes.pc.site._viewTest.main_partial.map_2010')
+        @include('willbes.pc.site._viewTest.main_partial.map_2011')
 
         <div class="Section NSK mt90 mb90">
             <div class="widthAuto">
-                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+                {{-- cscenter --}}
+                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'] .'_off')
             </div>
         </div>
         <!-- CS센터 //-->
@@ -137,6 +139,7 @@
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
+
     </div>
     <!-- End Container -->
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}

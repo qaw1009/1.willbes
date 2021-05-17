@@ -1134,6 +1134,38 @@ class OrderListModel extends BaseOrderModel
             // 주문정보 추출
             $data = element('0', $data);
             $data['ViewType'] = 'H';
+        } elseif ($site_code == '2018') {
+            // 임용학원
+            // 주문상품 조회
+            $arr_condition = ['EQ' => ['O.OrderIdx' => $order_idx, 'OP.OrderProdIdx' => $order_prod_idx, 'OP.PayStatusCcd' => $this->_pay_status_ccd['paid']]];
+            $data = $this->listAllOrder(false, $arr_condition, null, null, [], ['subproduct']);
+            if (empty($data) === true) {
+                return '데이터 조회에 실패했습니다.';
+            }
+            $data = element('0', $data);
+
+            // 상품명 추출
+            if ($data['LearnPatternCcd'] == $this->_learn_pattern_ccd['off_pack_lecture']) {
+                $arr_prod_name = array_pluck(json_decode($data['OrderSubProdData'], true), 'ProdName'); // 종합반일 경우 서브강좌명 추출
+            } else {
+                $arr_prod_name[0] = $data['ProdName'];
+            }
+
+            $cut_str = 16;  // 라인당 출력되는 상품명 길이
+            $arr_line = [];
+
+            // 상품명별 1장씩 출력
+            foreach ($arr_prod_name as $arr_idx => $_prod_name) {
+                for ($i = 0; $i < ceil(mb_strlen($_prod_name) / $cut_str); $i++) {
+                    $is_bold = $i == 0 ? 'true' : 'false';
+                    $arr_line[$arr_idx][] = ['Name' => trim(mb_substr($_prod_name, $i * $cut_str, $cut_str)), 'Bold' => $is_bold];
+                }
+            }
+
+            $add_data['OrderProdNameData'] = $arr_line;
+            $add_data['LineCnt'] = 8;
+            $add_data['StartLine'] = 8;
+            $data['ViewType'] = 'S';
         } elseif ($site_code == '2015') {
             // 인천학원
             // 주문상품 조회

@@ -41,7 +41,6 @@
         .evt_table td input[type=text]:last-child {margin-bottom:0}
         .evt_table input[type=checkbox] {height:20px; width:20px}
         .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
-        .evt_table td a {height:28px; line-height:28px; display:inline-block; background:#42425b; color:#fff; padding:0 10px; margin-left:5px}
         .evt_table .btns {margin-top:40px}
         .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
         .evt_table .btns a:hover {background:#fe544a}
@@ -91,7 +90,13 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2202_01_03.jpg" alt="취약점 파악 및 보완"/>
             </div>
 
-            <form name="regi_form_register" id="regi_form_register">
+            <form name="regi_form_register" id="regi_form_register" method="POST" onsubmit="return false;" novalidate="">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
+                <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
+                <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
+
                 <div class="evt_table">
                     <div class="title NSK-Black">실전 모의고사 신청하기</div>
                     <table border="0" cellspacing="2" cellpadding="2">
@@ -105,39 +110,40 @@
                                     ID
                                 </th>
                                 <td>
-                                    * 로그인 후 자동 노출
+                                    {{sess_data('mem_id')}}
                                 </td>
                                 <th>
                                     이름
                                 </th>
                                 <td>
-                                    * 로그인 후 자동 노출
+                                    {{sess_data('mem_name')}}
                                 </td>
                             </tr>
                             <tr>
                                 <th>연락처</th>
-                                <td colspan="3"><input type="text" placeholder="- 없이 숫자만 입력"></td>
+                                <td colspan="3"><input type="text" placeholder="{{sess_data('mem_phone')}}" readonly></td>
                             </tr>
                             <tr>
                                 <th>과목</th>
                                 <td colspan="3">
                                     <ul>
-                                        <li><label><input type="checkbox"/> 교육학 - 이인재 교수</label></li>
-                                        <li><label><input type="checkbox"/> 교육학 - 홍의일 교수</label></li>
-                                        <li><label><input type="checkbox"/> 국어 - 송원영/권보민 교수</label></li>
-                                        <li><label><input type="checkbox"/> 수학 - 김철홍/박태영 교수</label></li>
-                                        <li><label><input type="checkbox"/> 도덕윤리 - 김병찬 교수</label></li>
-                                        <li><label><input type="checkbox"/> 전기 - 최우영 교수</label></li>
-                                        <li><label><input type="checkbox"/> 전자 - 최우영 교수</label></li>
-                                        <li><label><input type="checkbox"/> 역사 - 최용림 교수</label></li>
-                                        <li><label><input type="checkbox"/> 정보컴퓨터 - 송광진/장순선 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182427:613001:182427' : '159613:613001:159613'}}"/> 교육학 - 이인재 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182440:613001:182440' : '159618:613001:159618'}}"/> 교육학 - 홍의일 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182433:613001:182433' : '159550:613001:159550'}}"/> 국어 - 송원영/권보민 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182434:613001:182434' : '159533:613001:159533'}}"/> 수학 - 김철홍/박태영 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182441:613001:182441' : '159525:613001:159525'}}"/> 도덕윤리 - 김병찬 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182442:613001:182442' : '159518:613001:159518'}}"/> 전기 - 최우영 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182443:613001:182443' : '159519:613001:159519'}}"/> 전자 - 최우영 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182437:613001:182437' : '159524:613001:159524'}}"/> 역사 - 최용림 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182436:613001:182436' : '159516:613001:159516'}}"/> 정보컴퓨터 - 송광진/장순선 교수</label></li>
                                     </ul>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="btns">
-                        <a href="javascript:void(0);" onclick="fn_submit();">실전 모의고사 바로결제하기 ></a>
+                        <input type="checkbox" name="is_chk" id="is_chk" style="display: none;" checked/>
+                        <a href="javascript:void(0);" onclick="directPayment();">실전 모의고사 바로결제하기 ></a>
                     </div>
                 </div>
             </form>
@@ -179,85 +185,25 @@
             <div class="evtBox">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2202_03.jpg" alt="이벤트 참여방법"/>
                 <a href="@if($file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지 다운" style="position: absolute; left: 60.63%; top: 82.92%; width: 16.79%; height: 8.39%; z-index: 2;"></a>
-                <a href="#none" title="주소복사하기" style="position: absolute; left: 77.68%; top: 82.92%; width: 16.79%; height: 8.39%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="주소복사하기" onclick="copyTxt();" style="position: absolute; left: 77.68%; top: 82.92%; width: 16.79%; height: 8.39%; z-index: 2;"></a>
             </div>
             <div class="urlWrap">
-                <div class="urladd">홍보 URL 남기기 <input type="text"><a href="#none">주소입력</a></div>
-                <div class="evt_table pd20">
-                    <table>
-                        <col width="8%" />
-                        <col  />
-                        <col width="10%" />
-                        <col width="8%" />
-                        <col width="14%" />
-                        <tbody>
-                            <tr>
-                                <td>5</td>
-                                <td>https://ssam.local.willbes.net/promotion/index/cate/3140/code/2202</td>
-                                <td></td>
-                                <td>작*자</td>
-                                <td>2021-05-07</td>                            
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>https://ssam.local.willbes.net/promotion/index/cate/3140/code/2202</td>
-                                <td></td>
-                                <td>작*자</td>
-                                <td>2021-05-07</td>                            
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>https://ssam.local.willbes.net/promotion/index/cate/3140/code/2202</td>
-                                <td><a href="#none">삭제</a></td>
-                                <td>홍길동</td>
-                                <td>2021-05-07</td>                            
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>https://ssam.local.willbes.net/promotion/index/cate/3140/code/2202</td>
-                                <td></td>
-                                <td>작*자</td>
-                                <td>2021-05-07</td>                            
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>https://ssam.local.willbes.net/promotion/index/cate/3140/code/2202</td>
-                                <td></td>
-                                <td>작*자</td>
-                                <td>2021-05-07</td>                            
-                            </tr>
-                        </tbody>
-                    </table>
+                @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                    @include('willbes.pc.promotion.show_comment_list_url_partial',array('login_url'=>app_url('/member/login/?rtnUrl=' . rawurlencode('//' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']), 'www')))
+                @endif
 
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                        </ul>
-                    </div>
-                </div>  
                 <div class="txtinfo">
                     <h4>유의사항</h4>
                     <ul>
                         <li>Sns는 페이스북, 인스타그램, 카카오스토리, 트위터가 해당되며, 카페의 경우 정상적으로 운영 및 활동이 진행되는 곳이어야 합니다. <br>
-                        (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)</li>
+                            (검색 창에 ‘교원 임용’ 검색 시, 상단에 노출되는 카페)</li>
                         <li>모의고사 이벤트 안내 링크 또는 캡처된 이미지가 포함되어 있을 경우에만 이벤트 참여로 인정됩니다.</li>
                         <li>윌비스 모의고사와 관계가 없는 글이 등록되거나, 삭제 및 비공개로 설정 되어 있는 경우에는 당첨에서 제외될 수 있습니다.</li>
                         <li>당첨자는 6월 1일 게시판을 통해 공지합니다.</li>
                         <li>이벤트 상품은 6월 10일 기프티콘으로 지급될 예정이며, 회원 가입시 등록한 휴대폰 번호로 발송됩니다.<br>
-                        (번호가 변경된 경우, 6월 9일까지 수정해 주셔야 합니다.)</li>
-                    </ul>                    
-                </div>              
+                            (번호가 변경된 경우, 6월 9일까지 수정해 주셔야 합니다.)</li>
+                    </ul>
+                </div>
             </div>            
         </div>
 
@@ -267,6 +213,7 @@
     </div>
     <!-- End Container -->
 
+    <script src="/public/js/willbes/product_util.js"></script>
     <script type="text/javascript">  
         $(document).ready(function(){
             $('.tabs').each(function(){
@@ -294,6 +241,15 @@
                 )}
             )}
         );
+
+        function directPayment(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var $regi_form_register = $('#regi_form_register');
+            addCartNDirectPay($regi_form_register, 'Y', 'Y', 'on');
+        }
     </script>
 
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

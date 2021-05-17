@@ -44,7 +44,7 @@ function kakaoMap(ele_id, alter_id, level, addr, info_txt, info_txt_x_anchor, in
                 map: map // 마커를 표시할 지도 객체
             });
 
-            if (info_txt.length > 0) {
+            if (typeof info_txt !== 'undefined' && info_txt.length > 0) {
                 // 커스텀 오버레이를 생성하고 지도에 표시한다
                 var customOverlay = new kakao.maps.CustomOverlay({
                     map: map,

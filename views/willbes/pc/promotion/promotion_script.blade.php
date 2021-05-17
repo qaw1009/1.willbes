@@ -115,4 +115,32 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
         }, 1000);
     }
+
+    {{--
+        * 프로모션용 텍스트 복사
+        * @@param copy_txt [텍스트]
+    --}}
+    function copyTxt(copy_txt){
+        if(!copy_txt) copy_txt = location.protocol + '//' + location.host + location.pathname;
+
+        if (typeof window.clipboardData == 'object') {
+            var check = window.clipboardData.setData('Text', copy_txt);
+            if (check !== false) {
+                alert("복사되었습니다. Ctrl+v 를 눌러 붙여넣기해 주세요.");
+            }
+        } else {
+            var copy = function (e) {
+                e.preventDefault();
+                alert("복사되었습니다. Ctrl+v 를 눌러 붙여넣기해 주세요.");
+
+                if (e.clipboardData) {
+                    e.clipboardData.setData('text/plain', copy_txt);
+                }
+            };
+
+            window.addEventListener('copy', copy);
+            document.execCommand('copy');
+            window.removeEventListener('copy', copy);
+        }
+    }
 </script>

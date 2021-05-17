@@ -49,7 +49,6 @@
     <div class="widthAuto">
         <div class="will-acadTit">윌비스 <span class="tx-color">자격증</span> 학원</div>
         <div class="noticeTabs campus c_both">
-            {{-- <ul class="tabWrap noticeWrap_campus"> --}}
             <ul class="tabWrapCustom noticeWrap_campus">
                 <li><a id="campus1_btn" href="#campus1" data-map-id="0" class="on">신림(본원)</a><span class="row-line">|</span></li>
                 <li><a id="campus2_btn" href="#campus2" data-map-id="1" class="">강남(분원)</a></li>

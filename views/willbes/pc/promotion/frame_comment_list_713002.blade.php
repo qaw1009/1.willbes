@@ -55,9 +55,10 @@
                     </tr>
                 @else
                     @foreach($list as $row)
+                        @php $promotion_url = str_replace(['https://','http://'], '', $row['Content']); @endphp
                         <tr>
                             <td>{{ $paging['rownum'] }}</td>
-                            <td>{!! $row['Content'] !!}</td>
+                            <td><a href="{!! 'https://' . $promotion_url !!}" target="_blank">{!! $row['Content'] !!}</a></td>
                             <td>
                                 @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                     <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="javascript:void(0);">삭제</a>

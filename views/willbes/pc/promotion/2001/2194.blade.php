@@ -183,9 +183,11 @@
             <a href="#pass2">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_sky02.png" alt="개편 패스">
             </a>  
+            {{--
             <a href="#twenty">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_sky03.png" alt="갓스물 할인쿠폰">
             </a>  
+            --}}
             <a href="#coupon">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_sky04.png" alt="가정의 달 할인쿠폰">
             </a>  
@@ -387,10 +389,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_06.jpg"  alt="reason3" />
         </div>
 
+        {{--
         <div class="evtCtnsBox evt10" id="twenty">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_07.jpg"  alt="스폐셜 혜택" />
             <a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 33.55%; top: 88.14%; width: 31.54%; height: 6.86%; z-index: 2;"></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox evt11" id="coupon">
             <form id="add_apply_form" name="add_apply_form">
@@ -399,9 +403,9 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
 
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08.jpg"  alt="쿠폰 다운로드" />
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 28.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
-                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 54.55%; top: 62.14%; width: 18.54%; height: 4.86%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08_re.jpg"  alt="쿠폰 다운로드" />
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 14.38%; top: 65.48%; width: 29.11%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.29%; top: 65.57%; width: 29.11%; height: 4.43%; z-index: 2;"></a>
             </form>
         </div>
 

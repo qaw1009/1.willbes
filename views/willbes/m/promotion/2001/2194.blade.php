@@ -253,10 +253,10 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194m_09.jpg" alt="스폐셜 혜택" >
-                <a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 24.19%; top: 50.11%; width: 51.75%; height: 3.75%; z-index: 2;"></a>
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 14.19%; top: 84.05%; width: 29.75%; height: 2.75%; z-index: 2;"></a>
-                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.19%; top: 84.05%; width: 28.75%; height: 2.75%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194m_09_re.jpg" alt="스폐셜 혜택" >
+                {{--<a href="javascript:void(0);" title="갓스물 인증하기" onclick="certOpen();" style="position: absolute; left: 24.19%; top: 50.11%; width: 51.75%; height: 3.75%; z-index: 2;"></a>--}}
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 14.44%; top: 63.66%; width: 29.58%; height: 5.55%; z-index: 2;"></a>
+                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.03%; top: 62.83%; width: 29.58%; height: 5.55%; z-index: 2;"></a>
             </form>
         </div>
 

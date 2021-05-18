@@ -183,18 +183,16 @@
     <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $(document).ready(function() {
-                var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 한림법학원<br><strong class="tx-color">김동진법원팀(7~9층)</strong></div>';
-                var $kakaomap = new kakaoMap();
-                $kakaomap.config.ele_id = 'map';
-                $kakaomap.config.alter_id = 'alterMap1';
-                $kakaomap.config.level = 4;
-                $kakaomap.config.addr = '서울 동작구 노량진로 196';
-                $kakaomap.config.info_txt = info_txt;
-                $kakaomap.config.info_txt_x_anchor = 0.5;
-                $kakaomap.config.info_txt_y_anchor = 2.7;
-                $kakaomap.run();
-            });
+            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 한림법학원<br><strong class="tx-color">김동진법원팀(7~9층)</strong></div>';
+            var $kakaomap = new kakaoMap();
+            $kakaomap.config.ele_id = 'map';
+            $kakaomap.config.alter_id = 'alterMap1';
+            $kakaomap.config.level = 4;
+            $kakaomap.config.addr = '서울 동작구 노량진로 196';
+            $kakaomap.config.info_txt = info_txt;
+            $kakaomap.config.info_txt_x_anchor = 0.5;
+            $kakaomap.config.info_txt_y_anchor = 2.7;
+            $kakaomap.run();
         });
     </script>
 @stop

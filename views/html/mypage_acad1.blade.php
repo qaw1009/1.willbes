@@ -121,6 +121,9 @@
                         </colgroup>
                         <tbody>
                             <tr>
+                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                            </tr>
+                            <tr>
                                 <td class="w-data tx-left pl10">
                                     <div class="w-tit">[영어강화형_분납] 8개월 슈퍼PASS(원) [1/13~8/31]</div>
                                 </td>
@@ -133,7 +136,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                <td colspan="3" class="w-data tx-left pl10 bg-light-gray">
                                     <dl class="w-info">
                                         <dt>
                                             기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
@@ -162,7 +165,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">
+                                <td colspan="3" class="w-data tx-left pl10 bg-light-gray">
                                     <div class="mb10">
                                         <dl class="w-info">
                                             <dt>
@@ -214,10 +217,10 @@
                                 <td class="w-data tx-left pl10">
                                     <div class="w-tit">[9급 일행] 2개월 진도별 문제풀이반 4과목 (20.1-2)</div>
                                 </td>
-                                <td class="w-period">2018.10.20<br>
-                                 ~ 2018.11.20</td>
-                                <td class="w-answer p_re">
-                                    <a href="#none" onclick="openWin('lecList')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                <td class="w-period"></td>
+                                <td class="w-answer">                                    
+                                    <div class="MoreBtn mt0"><a href="#none" class="bBox grayBox">강좌구성 ▼</a></div>
+                                    {{--
                                     <div id="lecList" class="willbes-Layer-lecList">
                                         <a class="closeBtn" href="#none" onclick="closeWin('lecList')">
                                             <img src="{{ img_url('prof/close.png') }}">
@@ -264,13 +267,73 @@
                                             </div>
                                         </div>
                                     </div>
+                                    --}}                                    
                                 </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="tx-center">수강신청 강좌 정보가 없습니다.</td>
+                            </tr>                                                        
+                        </tbody>
+                    </table>
+
+                    <table cellspacing="0" cellpadding="0" class="packInfoTable lecTable">
+                        <tbody>
+                             <tr>
+                                <td class="all-list-box">
+                                    <div class="all-list">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님
+                                            </dt>                                        
+                                        </dl>
+                                        <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                        <div class="lookover">
+                                            <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                        </div>
+                                        <div class="all-schedule">
+                                            2018.10.20 ~ 2018.11.20<br/>
+                                            월 ~ 금 10회차
+                                        </div>
+                                    </div>
+                                    <div class="all-list">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님
+                                            </dt>                                        
+                                        </dl>
+                                        <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                        <div class="lookover">
+                                            <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                        </div>
+                                        <div class="all-schedule">
+                                            2018.10.20 ~ 2018.11.20<br/>
+                                            월 ~ 금 10회차
+                                        </div>
+                                    </div>
+                                    <div class="all-list">
+                                        <dl class="w-info">
+                                            <dt>
+                                                기본이론<span class="row-line">|</span>영어<span class="row-line">|</span>
+                                                한덕현 교수님
+                                            </dt>                                        
+                                        </dl>
+                                        <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
+                                        <div class="lookover">
+                                            <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                        </div>
+                                        <div class="all-schedule">
+                                            2018.10.20 ~ 2018.11.20<br/>
+                                            월 ~ 금 10회차
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
+                        
+                    {{--
                     <div class="Paging">
                         <ul>
                             <li class="Prev"><a href="#none"><img src="{{ img_url('paging/paging_prev.png') }}"> </a></li>
@@ -287,6 +350,7 @@
                             <li class="Next"><a href="#none"><img src="{{ img_url('paging/paging_next.png') }}"> </a></li>
                         </ul>
                     </div>
+                    --}}
                 </div>
             </div>
 

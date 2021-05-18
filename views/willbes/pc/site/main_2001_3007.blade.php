@@ -117,14 +117,14 @@
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/prof_pth.jpg" title="박태하 해사법규">
                         <ul class="ProfBtns">
-                            <li><a href="javascript:alert('Coming Soon!')"  >▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('51201', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51201?subject_idx=1030&subject_name=%ED%95%B4%EC%82%AC%EB%B2%95%EA%B7%9C') }}">교수소개</a></li>
                         </ul>
                     </li>
                     <li>
                         <img src="https://static.willbes.net/public/images/promotion/main/prof_pth2.jpg" title="박태하 해양경찰학">
                         <ul class="ProfBtns">
-                            <li><a href="javascript:alert('Coming Soon!')"  >▶</a></li>
+                            <li><a href="#none" onclick="fnPlayerProf('51200', 'OT');">▶</a></li>
                             <li><a href="{{ front_url('/professor/show/cate/' . $__cfg['CateCode'] . '/prof-idx/51200?subject_idx=1031&subject_name=%ED%95%B4%EC%96%91%EA%B2%BD%EC%B0%B0%ED%95%99%EA%B0%9C%EB%A1%A0') }}">교수소개</a></li>
                         </ul>
                     </li>

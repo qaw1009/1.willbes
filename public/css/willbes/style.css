@@ -3257,6 +3257,16 @@ table.lecTable tr td .lecBuyBtns .pocketBox .aBox a {
 table.lecTable tr td.w-schedule {
 	line-height: 1.5;
 }
+table.lecTable .all-list-box {width:940px} 
+table.lecTable .all-list {
+	position:relative; display:block; border-bottom:1px solid #f0f0f0; width:100% !important; padding-bottom:15px; margin-bottom:15px; 
+	text-align: left;
+}
+table.lecTable .all-list:last-child {border:0; margin:0; padding:0}
+table.lecTable .all-list:after {content:''; display:block; clear:both}
+table.lecTable .all-schedule {
+	position: absolute; top:0; right:20px; text-align: center;
+}
 /* subContainer : Content : lecWrapTable */
 table.lecWrapTable {
 	width: 100%;

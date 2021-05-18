@@ -82,20 +82,41 @@
                                 <a href="#none" class="btnSt01 mr10">강사선택</a>
                             </div>
                             <div class="w-lecList mt10">
-                                <div class="NG">강좌구성보기 <a href="#none">▼</a></div>
+                                <div class="NG tx14">강좌구성보기 <a href="#none" class="moreBtn">▼</a></div>
                                 <ul>
                                     <li>
-                                        1기스터디_감정평가실무_여지훈 <span>인강전환</span>
+                                        <div>영어<span class="row-line">|</span>한덕현교수님</div>
+                                        <div class="w-tit">
+                                            <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                        </div>
+                                        <div class="w-info acad tx-gray">
+                                            수강기간 : 2018-00-00~2018-00-00<br>
+                                            요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
+                                        </div>
                                         <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
                                     </li>
                                     <li>
-                                        1기스터디_감정평가및보상법규_이현진
+                                        <div>영어<span class="row-line">|</span>한덕현교수님</div>
+                                        <div class="w-tit">
+                                            <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                        </div>
+                                        <div class="w-info acad tx-gray">
+                                            수강기간 : 2018-00-00~2018-00-00<br>
+                                            요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
+                                        </div>
                                         <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
                                     </li>
                                     <li>
-                                        1기스터디_감정평가이론_어정민
+                                        <div>영어<span class="row-line">|</span>한덕현교수님</div>
+                                        <div class="w-tit">
+                                            <a href="#none"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</a>
+                                        </div>
+                                        <div class="w-info acad tx-gray">
+                                            수강기간 : 2018-00-00~2018-00-00<br>
+                                            요일/회차 : 월화수목금 10회차<span class="row-line">|</span>2018-00-00 개강
+                                        </div>
                                         <div class="supplementBtn"><a href="mypage_acad1_7">보강동영상 신청</a></div>
-                                    </li>                                    
+                                    </li>                                   
                                 </ul>                               
                             </div> 
                         </td>

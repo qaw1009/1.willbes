@@ -129,14 +129,14 @@
     map_info[0] = {
         'addr' : '서울 관악구 신림로 23길 16'
         ,'level' : '3'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong>학원 [신림(본원)]</div>'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong> [신림(본원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };
     map_info[1] = {
         'addr':'서울 강남구 테헤란로19길 18'
         ,'level' : '3'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong>학원 [강남(분원)]</div>'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong> [강남(분원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };

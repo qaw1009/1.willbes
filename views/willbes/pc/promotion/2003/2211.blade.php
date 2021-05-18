@@ -45,18 +45,6 @@
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif 
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2211_03_02.jpg" alt="박준범" class="mt100"/>         
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))            
-            @endif  
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2211_03_03.jpg" alt="이나우" class="mt100"/>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))            
-            @endif  
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2211_03_04.jpg" alt="한승아" class="mt100"/>
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))            
-            @endif  
         </div>        
 	</div>
      <!-- End Container -->

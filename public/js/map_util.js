@@ -73,7 +73,6 @@ kakaoMap.prototype = {
                         map: map // 마커를 표시할 지도 객체
                     });
 
-                    console.log(info_txt);
                     if (info_txt != null) {
                         var customOverlay = new kakao.maps.CustomOverlay({
                             map: map,

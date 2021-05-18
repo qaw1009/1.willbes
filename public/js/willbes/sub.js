@@ -165,6 +165,21 @@ $(function () {
     });
 });
 
+// 내강의실 학원강좌 > 종합반 버튼 Script
+$(function () {
+    $('.willbes-Lec-Table .MoreBtn a').click(function () {
+        var $lec_info_table = $(this).parents('.willbes-Lec-Table').find('.packInfoTable');
+
+        if ($lec_info_table.is(':hidden')) {
+            $lec_info_table.show().css('display', 'block');
+            $(this).text('강좌구성 ▲');
+        } else {
+            $lec_info_table.hide().css('display', 'none');
+            $(this).text('강좌구성 ▼');
+        }
+    });
+});
+
 // 즐겨찾는 고객센터 버튼 Script
 $(function () {
     $('.ActIndex1 .center-Btn a').click(function () {

@@ -3862,7 +3862,7 @@ body.memBody #Footer {
 	padding: 10px;
 	position: relative;
 }
-.lecTable .w-lecList > div a {
+.lecTable .w-lecList > div .moreBtn {
 	position: absolute;
 	top: 10px;
 	right: 5px;
@@ -3872,19 +3872,19 @@ body.memBody #Footer {
 }
 .lecTable .w-lecList ul {
 	display: none;
+	margin-top:10px;
 }
 .lecTable .w-lecList li {
-	margin-left: 15px;
-	list-style: disc;
-	margin-bottom:5px;
+	padding:10px 0;
+	border-top:1px solid #ccc;
 }
 .lecTable .w-lecList li .supplementBtn a {padding:2px 6px; background-color: #1a8ccc; color:#fff; display: inline-block}
-.lecTable .w-lecList li span {
+/*.lecTable .w-lecList li span {
 	border: 1px solid #ed1c24;
 	color: #ed1c24;
 	background: #fff;
 	padding:2px 4px;
-}
+}*/
 .lecTable .oneBox {
 	border-bottom: 1px solid #e4e4e4;
 	margin-bottom: 20px;

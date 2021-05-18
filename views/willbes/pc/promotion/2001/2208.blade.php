@@ -120,16 +120,16 @@
         <div class="evtCtnsBox evt_03" id="evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2208_03.jpg"  alt="스폐셜 혜택" />
-                <a href="#none" title="수험표 인증하기" style="position: absolute; left: 54.11%; top: 62.27%; width: 33.13%; height: 5.91%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="certOpen();" title="수험표 인증하기" style="position: absolute; left: 54.11%; top: 62.27%; width: 33.13%; height: 5.91%; z-index: 2;"></a>
             </div>          
         </div>
 
         <div class="evtCtnsBox evt_04" id="evt04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2208_04.jpg"  alt="합격패스" />
-                <a href="#none" title="항해술 패스" style="position: absolute; left: 5.27%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
-                <a href="#none" title="필수과목 패스" style="position: absolute; left: 35.8%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
-                <a href="#none" title="해양공채 패스" style="position: absolute; left: 66.34%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 182386);" title="항해술 패스" style="position: absolute; left: 5.27%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 182388);" title="필수과목 패스" style="position: absolute; left: 35.8%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 182391);" title="해양공채 패스" style="position: absolute; left: 66.34%; top: 91.36%; width: 28.04%; height: 8.83%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -264,6 +264,37 @@
             });
             
         });
+
+        function go_PassLecture(cate, code){
+            if($("input[name='ischk']:checked").size() < 1){
+                alert("이용안내에 동의하셔야 합니다.");
+                return;
+            }
+
+            var _url = '{{ site_url('/periodPackage/show/cate/')}}' + cate + '/pack/648001/prod-code/' + code;
+            location.href = _url;
+        }
+
+        function certOpen(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate'] . ' ' . $arr_promotion_params['etime']))
+                alert('이벤트가 종료되었습니다.');
+                return;
+            @endif
+
+            @if(empty($cert_apply) === false)
+                alert("이미 인증이 완료된 상태입니다.");
+                return;
+            @endif
+
+            @if(empty($arr_promotion_params["page"]) === false && empty($arr_promotion_params["cert"]) === false)
+                var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
+            @else
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+            @endif
+        }
     </script>
 
 @stop

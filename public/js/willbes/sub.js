@@ -165,6 +165,7 @@ $(function () {
     });
 });
 
+/*
 // 내강의실 학원강좌 > 종합반 버튼 Script
 $(function () {
     $('.willbes-Lec-Table .MoreBtn a').click(function () {
@@ -179,6 +180,7 @@ $(function () {
         }
     });
 });
+ */
 
 // 즐겨찾는 고객센터 버튼 Script
 $(function () {

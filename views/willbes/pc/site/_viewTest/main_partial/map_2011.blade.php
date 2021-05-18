@@ -129,14 +129,14 @@
     map_info[0] = {
         'addr' : '서울 관악구 신림로 23길 16'
         ,'level' : '3'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">자격증</strong>학원 [신림(본원)]</div>'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong> [신림(본원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };
     map_info[1] = {
         'addr':'서울 강남구 테헤란로19길 18'
         ,'level' : '3'
-        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">자격증</strong>학원 [강남(분원)]</div>'
+        ,'info_txt' : '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">욀비스<strong class="tx-color">한림법학원</strong> [강남(분원)]</div>'
         ,'x_anchor' : '0.5'
         ,'y_anchor' : '2.7'
     };
@@ -145,7 +145,9 @@
         카테고리별로 디폴트 탭이 달라지는데 공통스크립트 작동순서를 제어할수 없음.
         그래서 tabWrap 클래스 이벤트 바인딩이 아닌 tabWrapCustom 추가해서 사용.
     --}}
-    $(function() {
+    $(document).ready(function() {
+        var $kakaomap = new kakaoMap();
+
         $('ul.tabWrapCustom').each(function () {
             var $active, $content, $links = $(this).find('a');
             $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
@@ -163,11 +165,17 @@
                 e.preventDefault();
 
                 var map_id = $(this).data('map-id');
-                kakaoMap('map_'+map_id, 'alterMap_'+map_id, map_info[map_id]['level'], map_info[map_id]['addr']
-                    , map_info[map_id]['info_txt'], map_info[map_id]['x_anchor'], map_info[map_id]['y_anchor']);
+                $kakaomap.config.ele_id = 'map_'+map_id;
+                $kakaomap.config.alter_id = 'alterMap_'+map_id;
+                $kakaomap.config.level = map_info[map_id]['level'];
+                $kakaomap.config.addr = map_info[map_id]['addr'];
+                $kakaomap.config.info_txt = map_info[map_id]['info_txt'];
+                $kakaomap.config.info_txt_x_anchor = map_info[map_id]['x_anchor'];
+                $kakaomap.config.info_txt_y_anchor = map_info[map_id]['y_anchor'];
+                $kakaomap.run();
             });
         });
-        @if(empty($__cfg['CateCode']) === false && $__cfg['CateCode'] == '309004')
+        @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099'))
             $('#campus2_btn').click();
         @else
             $('#campus1_btn').click();

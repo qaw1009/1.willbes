@@ -63,6 +63,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue"><strong class="tx-color">교원임용고시학원</strong> (남강타워 5층)</div>';
-        kakaoMap('map', 'alterMap1', '4', '서울 동작구 노량진로 202', info_txt, '0.5', '2.7');
+        var $kakaomap = new kakaoMap();
+        $kakaomap.config.ele_id = 'map';
+        $kakaomap.config.alter_id = 'alterMap1';
+        $kakaomap.config.level = 4;
+        $kakaomap.config.addr = '서울 동작구 노량진로 202';
+        $kakaomap.config.info_txt = info_txt;
+        $kakaomap.config.info_txt_x_anchor = 0.5;
+        $kakaomap.config.info_txt_y_anchor = 2.7;
+        $kakaomap.run();
     });
 </script>

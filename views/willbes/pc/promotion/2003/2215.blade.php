@@ -15,10 +15,11 @@
 /*****************************************************************/  
 
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2215_top_bg.jpg) no-repeat center top;}
+
 .evt01 {background:#fff100;}
 
-.evtCtnsBox .wrap {width:1120px; margin:0 auto; position: relative;}
-.evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
+.evtwrap {width:1120px; margin:0 auto; position: relative;}
+.evtwrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
 
 .evt03 ul {width:912px; margin:0 auto 50px}
 .evt03 ul:after {content:''; display:block; clear:both}
@@ -44,7 +45,7 @@
         </div>  
 
         <div class="evtCtnsBox evt03">  
-            <div class="wrap">
+            <div class="evtwrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2215_03.jpg" alt="전담 교수진">
                 <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/51068/?subject_idx=1113&subject_name=%EC%86%8C%EB%B0%A9%ED%95%99%EA%B0%9C%EB%A1%A0" target="_blank" title="이종오 교수" style="position: absolute; left: 12.23%; top: 87.13%; width: 8.66%; height: 3.27%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/professor/show/cate/3023/prof-idx/50615?subject_idx=1111&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" title="이석준 교수" style="position: absolute; left: 34.38%; top: 87.13%; width: 8.66%; height: 3.27%; z-index: 2;"></a>
@@ -69,20 +70,26 @@
                     </a>
                 </li>
             </ul>
+
             <div class="youtubeBox" id="tab1">
                 <iframe src="https://www.youtube.com/embed/myYzKGCImy4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
+
             <div class="youtubeBox" id="tab2">
                 <iframe src="https://www.youtube.com/embed/ZqMMVLxxFqw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div> 
-            <div class="wrap">
+
+            <div class="evtwrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2215_04_02.jpg" alt="수강신청">
                 <a href="https://pass.willbes.net/package/show/cate/3023/pack/648001/prod-code/182446" target="_blank" title="수강신청" style="position: absolute; left: 78.66%; top: 68.43%; width: 14.2%; height: 12.75%; z-index: 2;"></a>
-            </div>
+            </div>            
+        </div> 
+
+        <div class="evtCtnsBox pb100">
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif 
-        </div>                  
+            @endif   
+        </div>   
     </div>
     <!-- End Container --> 
 

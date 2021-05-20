@@ -59,7 +59,7 @@
         .wb_cts01_3 div {width:1120px; margin:0 auto; position:relative}    
 
         .wb_cts02 {background:#ffd84f;}  
-        .wb_cts02 div {width:1120px; margin:0 auto; position:relative}    
+        .wb_cts02 div {width:1120px; margin:0 auto; position:relative} 
 
         .wb_cts03 {background:#ffd84f; padding-bottom:100px}
         .wb_cts03 ul {width:960px; margin:0 auto}
@@ -116,9 +116,6 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">        
         <div class="skybanner">
-            <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1728" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky02.png" alt="">
-            </a> 
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" target="_blank" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky03.png" alt="">
             </a>

@@ -201,7 +201,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2216_02_02.jpg" title="" />
             <div class="mt20 mb100">
                 <p class="download">
-                    2021 국가직 시험문제&가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기 ></a>
+                    2021 지방직 시험문제&가답안 다운로드 <a href="https://www.gosi.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000000138" target="_blank">바로가기 ></a>
                 </p>
                 <div class="mt20" id="tabs1">
                     <table cellspacing="0" cellpadding="0" class="boardD">

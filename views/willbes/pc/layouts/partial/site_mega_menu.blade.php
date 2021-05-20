@@ -80,7 +80,7 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50065/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">이현나</a>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/51220?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4')}}">박재현</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3035/prof-idx/50651/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
                         <span>[한국사]</span>
@@ -508,7 +508,7 @@
                 <ul>
                     <li>
                         <span>[국어]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50066/?cate_code=3059&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">이현나</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51254?cate_code=3059&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">박재현</a>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50652/?cate_code=3059&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">박초롱</a>
                         <span>[한국사]</span>

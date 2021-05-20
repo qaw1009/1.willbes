@@ -65,7 +65,6 @@
     <div class="evtContent NSK" id="evtContainer">
 
         <div class="skybanner">
-            <a href="#wb_04"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky01.jpg" alt="자격증 선행" ></a>
             <a href="#wb_05"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky02.jpg" alt="배이직" ></a>
             <a href="https://police.willbes.net/pass/support/notice/show?board_idx=331746&" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2170_sky03.jpg" alt="종합반 추가할인받기" ></a>
         </div>      
@@ -118,22 +117,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_01_03.jpg"  alt="과목비중 및 출제비율" />
 		</div>
 
-		<div class="evtCtnsBox wb_02" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_02.jpg"  alt="자격증.기초입문 선행 스케줄"/>       
-        </div>
-
         <div class="evtCtnsBox wb_03" >
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_03.jpg"  alt="기본완성기출반 스케줄"/>       
         </div>
-        
-        <div class="evtCtnsBox wb_04" id="wb_04">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_04.jpg"  alt="Special 패키지 하나"/>   
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181417" target="_blank" title="인강포함" style="position: absolute; left: 17.32%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181412" target="_blank" title="인강미포함" style="position: absolute; left: 55.09%; top: 78.24%; width: 27.05%; height: 4.54%; z-index: 2;"></a>  
-            </div>
-		</div>
-            
+
         <div class="evtCtnsBox wb_05" id="wb_05">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_05.jpg"  alt="Special 패키지 둘"/>
@@ -158,21 +145,10 @@
 				<div>
 				    형사법 - 신광은 교수님<br>
                     경찰학 - 장정훈 교수님<br>
-                    헌 법 – 김원욱 교수님<br>
-                    G-TELP – 김준기 교수님<br>
-                    한능검 – 오태진 교수님<br>                      
+                    헌 법 – 김원욱 교수님<br>            
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>
-                    <li>[자격증 선행] 기본완성+기출반(5/10~9/3)(인강 포함)<br>
-                    ① 학원 강의 : 5월 한능검 개념완성(영상) + 5월 한능검 실전 모의고사 + 5월 3법 기초입문(영상) + 6월 G-TELP 문법완성/실전모의고사 + 기본완성기출반<br>
-                    ② 기본완성기출반 복습 동영상<br>
-                    ③ 기초입문서 교재 </li>
-
-                    <li>[자격증 선행] 기본완성+ 기출반(5/10~9/3)(인강 미포함)<br>
-                    ① 학원 강의 : 5월 한능검 개념완성(영상) + 5월 한능검 실전 모의고사 + 5월 3법 기초입문(영상) + 6월 G-TELP 문법완성/실전모의고사 + 기본완성기출반<br>
-                    ② 기초입문서 교재 </li>
-
                     <li>기본완성+기출반(6/28~9/3)(인강 포함)<br>
                     ① 학원 강의 : 기본완성기출반<br>
                     ② 기본완성기출반 복습 동영상</li>

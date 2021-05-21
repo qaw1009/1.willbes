@@ -72,7 +72,7 @@
                         <ul>
                             <li><a href="{{ front_app_url('/classroom/off/list/ongoing', 'www', false, true) }}">· 수강신청 강좌</a></li>
                             <li><a href="{{ front_app_url('/classroom/off/list/end', 'www', false, true) }}">· 수강종료 강좌</a></li>
-                            <li><a href="{{ front_app_url('/classroom/on/bogang', 'www', false, true) }}">· 보강동영상</a></li>
+                            <li><a href="{{ front_app_url('/classroom/on/bogang', 'www', false, true) }}">· 보강/복습동영상</a></li>
                         </ul>
                     </div>
                 </li>

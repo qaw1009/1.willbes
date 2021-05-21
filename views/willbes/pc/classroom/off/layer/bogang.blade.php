@@ -3,7 +3,7 @@
         <img src="{{ img_url('sub/close.png') }}">
     </a>
     <div>
-        <div class="Layer-Tit tx-dark-black NG">보강동영상 신청</div>
+        <div class="Layer-Tit tx-dark-black NG">보강/복습동영상 신청</div>
         <div class="lecMoreWrap of-hidden h700">
             <div class="PASSZONE-List widthAutoFull">
                 <div class="PASSZONE-Lec-Section">
@@ -69,7 +69,7 @@
 
 
                     <div class="strong h22 tx-blue">
-                        · 보강동영상 신청하기
+                        · 보강/복습동영상 신청하기
                     </div>
 
                     <div class="LeclistTable bdt-gray mt10 mb30 c_both">
@@ -115,18 +115,18 @@
                         </table>
                         <div class="mt10 mb10 lh1_5">
                             ⓘ 주의사항<br>
-                            - 보강동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
-                            - 보강동영상은 {{$lec['SuppPeriod']}}일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
-                            - 신청한 보강동영상은 내강의실 > 학원강좌 > 보강동영상 메뉴에서 확인 가능합니다.<br>
+                            - 보강/복습동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
+                            - 보강/복습동영상은 {{$lec['SuppPeriod']}}일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
+                            - 신청한 보강/복습동영상은 내강의실 > 학원강좌 > 보강/복습동영상 메뉴에서 확인 가능합니다.<br>
                         </div>
                         @if($lec['SuppAbleCnt'] > count($bogang_list))
-                            <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="javascript:;" onclick="fnTake();">보강동영상 신청 ></a></div>
+                            <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="javascript:;" onclick="fnTake();">보강/복습동영상 신청 ></a></div>
                         @endif
                         </form>
                     </div>
 
                     <div class="strong h22">
-                        [보강동영상 신청이력]
+                        [보강/복습동영상 신청이력]
                     </div>
 
                     <div class="LeclistTable bdt-gray mt10 mb30 c_both">

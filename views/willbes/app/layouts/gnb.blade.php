@@ -18,7 +18,7 @@
                     <li><a href="{{front_app_url('/classroom/on/list/ongoing','www')}}">· 수강중인 강좌</a></li>
                     <li><a href="{{front_app_url('/classroom/on/list/pause','www')}}">· 일시정지 강좌</a></li>
                     <li><a href="{{front_app_url('/classroom/on/list/end','www')}}">· 수강종료 강좌</a></li>
-                    <li><a href="{{front_app_url('/classroom/on/bogang','www')}}">· 보강동영상</a></li>
+                    <li><a href="{{front_app_url('/classroom/on/bogang','www')}}">· 보강/복습동영상</a></li>
                 </ul>
             </div>
         </li>

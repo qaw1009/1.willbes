@@ -144,8 +144,8 @@
                                                     @endif
                                                 </div>
                                                 <div class="all-schedule">
-                                                    {{str_replace('-', '.', $row['StudyStartDate'])}} <br>
-                                                    ~ {{str_replace('-', '.', $row['StudyEndDate'])}}
+                                                    {{str_replace('-', '.', $subrow['StudyStartDate'])}} ~ {{str_replace('-', '.', $subrow['StudyEndDate'])}}<br>
+                                                    {{$subrow['WeekArrayName']}} {{$subrow['Amount']}}회차
                                                 </div>
                                             </div>
                                                 @endforeach

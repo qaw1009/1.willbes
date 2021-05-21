@@ -118,6 +118,7 @@
                             - 보강/복습동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
                             - 보강/복습동영상은 {{$lec['SuppPeriod']}}일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
                             - 신청한 보강/복습동영상은 내강의실 > 학원강좌 > 보강/복습동영상 메뉴에서 확인 가능합니다.<br>
+                            - 보강/복습동영상 신청은 종강 후 14일 이내까지 신청 가능합니다.
                         </div>
                         @if($lec['SuppAbleCnt'] > count($bogang_list))
                             <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="javascript:;" onclick="fnTake();">보강/복습동영상 신청 ></a></div>

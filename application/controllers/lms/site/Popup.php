@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Popup extends \app\controllers\BaseController
 {
-    protected $models = array('site/popup', 'sys/code', 'sys/site', 'sys/category');
+    protected $models = array('site/popup', 'sys/code', 'sys/site', 'sys/category', 'product/base/professor');
     protected $helpers = array();
 
     // 노출섹션 그룹공통코드
@@ -105,13 +105,17 @@ class Popup extends \app\controllers\BaseController
         // 캠퍼스 공통코드 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
+        //교수조회
+        $arr_professor = $this->professorModel->getProfessorArray('','',['WP.wProfName' => 'asc']);
+
         $this->load->view("site/popup/create", [
             'method' => $method,
             'data' => $data,
             'p_idx' => $p_idx,
             'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
             'popup_type' => $popup_info[$this->_groupCcd['popup_type']],
-            'arr_campus' => $arr_campus
+            'arr_campus' => $arr_campus,
+            'arr_professor' => $arr_professor,
         ]);
     }
 

@@ -20,9 +20,10 @@ class PopupFModel extends WB_Model
      * @param int $site_code [사이트코드]
      * @param string $cate_code [대분류 카테고리코드]
      * @param string $campus_ccd [캠퍼스코드]
+     * @param int $prof_idx [교수식별자]
      * @return array
      */
-    public function findPopups($disp_code, $site_code, $cate_code = null, $campus_ccd = '')
+    public function findPopups($disp_code, $site_code, $cate_code = null, $campus_ccd = '', $prof_idx = '')
     {
         if (empty($disp_code) === true || empty($site_code) === true) {
             return [];
@@ -38,6 +39,7 @@ class PopupFModel extends WB_Model
             'EQ' => [
                 'P.SiteCode' => $site_code,
                 'P.DispCcd' => $disp_code,
+                'P.ProfIdx' => $prof_idx,
                 //'P.CampusCcd' => $campus_ccd,
                 'P.IsUse' => 'Y',
                 'P.IsStatus' => 'Y',

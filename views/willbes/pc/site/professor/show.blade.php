@@ -215,6 +215,9 @@
         <!-- // willbes-Prof-Tabs -->
     </div>
 </div>
+
+{!! popup('657006', $__cfg['SiteCode'], $__cfg['CateCode'], '', $prof_idx) !!}
+
 <!-- End Container -->
 <script type="text/javascript">
     $(document).ready(function() {

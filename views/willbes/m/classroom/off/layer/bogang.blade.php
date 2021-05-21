@@ -9,7 +9,7 @@
                     <button type="button" class="goback" onclick="history.back(-1); return false;">
                         <span class="hidden">뒤로가기</span>
                     </button>
-                    상동영상 신청
+                    보강/복습동영상 신청
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
 
                 <div class="mb30 lh1_5 tx14">
                     ⓘ 주의사항<br>
-                    - 강동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
+                    - 보강/복습동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
                     - 보강/복습동영상은 {{$lec['SuppPeriod']}}일 기간으로 제공되며, <span class="tx-red">수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.</span><br>
                     - 신청한 보강/복습동영상은 <span class="tx-blue">내강의실 > 학원강좌 > 보강/복습동영상</span> 메뉴에서 확인 가능합니다.<br>
                 </div>

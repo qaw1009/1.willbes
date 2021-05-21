@@ -121,6 +121,7 @@
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50309/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
                         <a href="{{front_url('/professor/show/cate/3023/prof-idx/50071/?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
+                        <a href="{{front_url('/professor/show/cate/3023/prof-idx/51199?subject_idx=1108&subject_name=%EC%98%81%EC%96%B4')}}">김현정</a>
                     </li>
                     <li>
                         <span>[한국사]</span>

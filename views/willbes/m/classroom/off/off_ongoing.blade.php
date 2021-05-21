@@ -57,16 +57,29 @@
                                         </div>
                                     @endif
                                     <div class="w-lecList mt10">
-                                        <div class="NG">강좌구성보기 <a href="javascript:;">▼</a></div>
+                                        <div class="NG tx14">강좌구성보기 <a href="javascript:;" class="moreBtn">▼</a></div>
                                         <ul>
                                             @if(empty($row['subleclist']) == true)
                                                 <li>강의가 없습니다.</li>
                                             @else
                                                 @foreach($row['subleclist'] as $subrow)
-                                                    <li>{{$subrow['subProdName']}}
-                                                        @if($subrow['IsDisp'] == 'N')
-                                                            <span>인강전환</span>
-                                                        @endif
+                                                    <li>
+                                                        <div>{{$subrow['SubjectName']}}<span class="row-line">|</span>{{$subrow['wProfName']}} 교수님</div>
+                                                        <div class="w-tit">
+                                                            <span class="tx-blue">{{ $subrow['StudyPatternCcdName'] }}</span> {{$subrow['subProdName']}}
+                                                            @if($subrow['IsDisp'] == 'N')
+                                                                <span>인강전환</span>
+                                                            @endif
+                                                        </div>
+                                                        <div class="w-info acad tx-gray">
+                                                            수강기간 : {{str_replace('-', '.', $subrow['StudyStartDate'])}} ~ {{str_replace('-', '.', $subrow['StudyEndDate'])}}<br>
+                                                            요일/회차 : {{$subrow['WeekArrayName']}} {{$subrow['Amount']}}회차 <span class="row-line">|</span>
+                                                            @if($subrow['StudyStartDate'] > date('Y-m-d', time()))
+                                                                {{str_replace('-', '.', $subrow['StudyStartDate'])}} 개강
+                                                            @else
+                                                                진행중
+                                                            @endif
+                                                        </div>
                                                         @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
                                                             <div class="supplementBtn"><a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" >보강동영상 신청</a></div>
                                                         @endif

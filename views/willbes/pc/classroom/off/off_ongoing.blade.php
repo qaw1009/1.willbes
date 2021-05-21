@@ -17,19 +17,6 @@
                 </div>
                 <div id="_top"></div>
                 <div id="Mypagetab1">
-                    {{--
-                    <div class="willbes-Lec-Selected willbes-Mypage-Selected tx-gray">
-                        <div class="willbes-Lec-Search GM f_right">
-                            <div class="inputBox p_re">
-                                <input type="text" id="SEARCH" name="SEARCH" class="labelSearch" placeholder="강좌명을 검색해 주세요" maxlength="30">
-                                <button type="submit" onclick="" class="search-Btn">
-                                    <span>검색</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    --}}
-
                     <div class="willbes-Lec-Table NG d_block c_both">
                         <table cellspacing="0" cellpadding="0" class="lecTable acadTable bdt-dark-gray">
                             <colgroup>
@@ -68,7 +55,8 @@
                                         </td>
                                     @else
                                         <td class="w-answer p_re">
-                                            <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a>
+                                            {{-- <a href="#none" onclick="$('willbes-Layer-lecList').hide();openWin('lecList{{$row['OrderProdIdx']}}')"><span class="bBox grayBox">강좌구성보기</span></a> --}}
+                                            <div class="MoreBtn mt0"><a href="#none" onclick="$('#more_lec_{{$key}}').toggle()" class="bBox grayBox">강좌구성 보기</a></div>
                                             @if (empty($pkgLectureRoom[$row['ProdCode']]) === false)
                                                 <a href="javascript:;" class="onoffSeatBox" data-seat-box-id="{{$key}}"><span class="bBox blackBox">좌석선택하기</span></a>
                                             @endif
@@ -113,6 +101,59 @@
                                         </td>
                                     @endif
                                 </tr>
+                                @if($row['PackTypeCcd'] == '648003')
+                                @else
+                                <tr style="display: none;" id="more_lec_{{$key}}">
+                                    <td colspan="3">
+                                        <div class="all-list-box">
+                                            @if(empty($row['subleclist']) == true)
+                                            <div class="all-list">
+                                                <dl class="w-info">
+                                                    <dt></dt>
+                                                </dl>
+                                                <div class="w-tit"></div>
+                                                <div class="lookover">
+                                                </div>
+                                                <div class="all-schedule">
+                                                </div>
+                                            </div>
+                                            @else
+                                                @foreach($row['subleclist'] as $subrow)
+                                            <div class="all-list">
+                                                <dl class="w-info">
+                                                    <dt>
+                                                        {{$subrow['CourseName']}}<span class="row-line">|</span>
+                                                        {{$subrow['SubjectName']}}<span class="row-line">|</span>
+                                                        {{$subrow['wProfName']}} 교수님
+                                                        @if($subrow['IsDisp'] == 'N')
+                                                            <span class="oBox changeBox ml10 NSK">인강전환</span>
+                                                        @endif
+                                                    </dt>
+                                                </dl>
+                                                <div class="w-tit"><span class="tx-blue">{{ $subrow['StudyPatternCcdName'] }}</span> {{$subrow['subProdName']}}</div>
+                                                <div class="lookover">
+                                                    @if($subrow['isbook'] == 'Y')
+                                                        @if($subrow['IsDisp'] == 'N')
+                                                            <a href="#none" onclick="alert('인강으로 전환된 강좌로 교재구매가 불가능합니다');" class="buyBook">교재구매</a>
+                                                        @else
+                                                            <a href="#none" onclick="fnBookLayer('{{$subrow['ProdCode']}}','{{$subrow['ProdCodeSub']}}')" class="buyBook">교재구매 ></a>
+                                                        @endif
+                                                    @endif
+                                                    @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
+                                                        <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="supplement">보강동영상신청 ></a>
+                                                    @endif
+                                                </div>
+                                                <div class="all-schedule">
+                                                    {{str_replace('-', '.', $row['StudyStartDate'])}} <br>
+                                                    ~ {{str_replace('-', '.', $row['StudyEndDate'])}}
+                                                </div>
+                                            </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endif
 
                                 <tr class="seat-box" id="seat_box_{{$key}}" style="display: none;">
                                     <td colspan="3"class="w-data tx-left pl10 bg-light-gray ">

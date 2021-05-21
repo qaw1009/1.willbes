@@ -106,7 +106,7 @@ class PopupModel extends WB_Model
         $column = "
             A.PIdx, A.SiteCode, G.SiteName, A.PopUpName, A.PopUpTypeCcd, I.CcdName as PopUpTypeName, A.DispCcd, H.CcdName AS DispName, A.TopPixel, A.LeftPixel, A.Width, A.Height,
             A.DispStartDatm, A.DispEndDatm, DATE_FORMAT(A.DispStartDatm, '%Y-%m-%d') AS DispStartDay, DATE_FORMAT(A.DispStartDatm, '%H') AS DispStartHour,
-            A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
+            A.PopUpFullPath, A.PopUpImgName, A.PopUpImgRealName, A.LinkType, A.LinkUrl, A.OrderNum, A.Desc, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm, A.ProfIdx,
             E.wAdminName AS RegAdminName, F.wAdminName AS UpdAdminName, A.CampusCcd
             ";
 
@@ -214,6 +214,7 @@ class PopupModel extends WB_Model
             $data = [
                 'SiteCode' => $site_code,
                 'DispCcd' => element('popup_disp', $input),
+                'ProfIdx' => element('prof_idx', $input),
                 'PopUpTypeCcd' => element('popup_type', $input),
                 'CampusCcd' => element('campus_ccd', $input),
                 'PopUpName' => element('popup_name', $input),
@@ -335,6 +336,7 @@ class PopupModel extends WB_Model
 
             $data = [
                 'DispCcd' => element('popup_disp', $input),
+                'ProfIdx' => element('prof_idx', $input),
                 'PopUpTypeCcd' => element('popup_type', $input),
                 'CampusCcd' => element('campus_ccd', $input),
                 'PopUpName' => element('popup_name', $input),

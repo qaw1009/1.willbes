@@ -80,7 +80,7 @@
 			</div>
             <div id="tab04">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t04.jpg" alt="경제학원론"/>
-                <a href="javascript:fnPlayerSample('161396', '1239244', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>                
+                <a href="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>                
 			</div>
             <div id="tab05">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t05.jpg" alt="회계학"/>

@@ -111,7 +111,7 @@
                             <strong>합격 인증 파일</strong>
                             <input type="radio" id="AddContent11" name="AddContent1" value="1차 최종합격" {{($addcontent1 == '1차 최종합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent11"  class="mr10">1차 최종합격</label>
                             {{--<input type="radio" id="AddContent12" name="AddContent1" value="2차 최종합격" {{($addcontent1 == '2차 최종합격' ? 'checked' : '')}} {{empty($addcontent1) === false ? 'disabled="disabled"' : ''}}> <label for="AddContent12"  class="mr10">2차 최종합격</label>--}}
-                            <input type="file" name="attachfile" id="attachfile" style="width:300px">
+                            <input type="file" name="attachfile" id="attachfile" onchange="chkUploadFile(this, 'pass')" style="width:300px">
                             <div class="mt10">
                                 - 합격생을 증빙할 수 있는 합격생 지원청별 합격자 발표 공고를 응시표와 함께 캡쳐하거나,
                                 핸드폰으로 응시표와 함께 사진을 찍어서 등록해 주세요.<br>
@@ -122,9 +122,9 @@
 
                     <h3  class="tit">[합격수기 공모]</h3>
                     <a href="{{ (empty($arr_base['arr_file']) === true) ? '' : front_url('/promotion/download?file_idx='.$arr_base['arr_file']['EfIdx'].'&event_idx='.$arr_base['data']['ElIdx']) }}"  class="file">합격수기 양식 파일 다운로드 ↓</a><br>
-                    <input type="file" name="attach_file" id="attach_file" style="width:250px; margin-top:5px">
+                    <input type="file" name="attach_file" id="attach_file" onchange="chkUploadFile(this, 'review')" style="width:250px; margin-top:5px">
                     @if(empty($arr_base['regist_member']['FileFullPath']) === false)
-                    <input type="button" onclick="javascript:modifyFile();" value="파일수정">
+                    <input type="button" onclick="javascript:modifyFile();" onchange="chkUploadFile(this, 'review')" value="파일수정">
                     @endif
                     <div class="mt10">
                         - 반드시 위의 합격수기 양식 파일을 다운로드 받아서 작성해 주세요.<Br>
@@ -216,10 +216,6 @@
             alert('합격수기 파일을 등록해 주세요.');
             $('#attach_file').focus();
             return;
-        } else {
-            if(fileExtCheck($('#attach_file').val()) == false) {
-                return;
-            }
         }
 
         if ($("input:radio[name='is_chk']:checked").val() != 'Y') {
@@ -251,12 +247,25 @@
         @endif
     }
 
-    function fileExtCheck(strfile) {
-        if( strfile != "" ){
-            var ext = strfile.split('.').pop().toLowerCase();
-            if($.inArray(ext, ['hwp','doc','docx','pdf']) == -1) {
-                alert('hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.');
-                return false;
+    function chkUploadFile(elem, type){
+        if($(elem).val()){
+            var msg = '';
+            var filename =  $(elem).prop("files")[0].name;
+            var ext = filename.split('.').pop().toLowerCase();
+
+            if(type === 'review'){
+                if($.inArray(ext, ['hwp','doc','docx','pdf']) === -1) {
+                    msg = 'hwp,doc,docx,pdf 파일만 업로드 할수 있습니다.';
+                }
+            }else{
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp','pdf']) === -1) {
+                    msg = '이미지 파일 또는 PDF 파일만 업로드 할수 있습니다.';
+                }
+            }
+
+            if(msg){
+                $(elem).val("");
+                alert(msg);
             }
         }
     }

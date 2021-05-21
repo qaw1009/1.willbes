@@ -9,7 +9,7 @@
                     <button type="button" class="goback" onclick="history.back(-1); return false;">
                         <span class="hidden">뒤로가기</span>
                     </button>
-                    보강동영상 수강하기
+                    보강/복습동영상 수강하기
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                                 @else
                                     {{ intval(strtotime($lec['RealLecEndDate']) - strtotime(date("Y-m-d", time())))/86400 +1 }}일
                                 @endif)</span>{{-- <span class="row-line">|</span> --}}</dt>
-                        {{-- <dt>보강동영상 신청일 : <span class="tx-black">{{$lec['OrderDate']}}</span>일</dt> --}}
+                        {{-- <dt>보강/복습동영상 신청일 : <span class="tx-black">{{$lec['OrderDate']}}</span>일</dt> --}}
                     </dl>
                 </td>
             </tr>

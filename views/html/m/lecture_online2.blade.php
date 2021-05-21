@@ -24,7 +24,7 @@
                                 <img src="{{ img_url('m/sample/prof2.jpg') }}">
                                 <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                             </div>
-                            <div class="w-data tx-left pl15">
+                            <div class="w-data tx-left">
                                 <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                                 <dl class="w-info pt-zero">
                                     <dt>심화이론<span class="row-line">|</span>영어<span class="row-line">|</span>한덕현</dt>
@@ -34,12 +34,12 @@
                                 </div>
                                 <div class="w-info tx-gray">
                                     <dl>
-                                        <dt class="h27"><strong>학원실강의</strong>2020년 1월</dt><br/>
-                                        <dt class="h27"><strong>강의수</strong>32강 / 55강</dt><br/>
-                                        <dt class="h27"><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt><br>
-                                        <dt class="h27"><strong>강의계획서</strong>황종휴 원론강의.pdf</dt><br/>
-                                        <dt class="h27"><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt><br/>
-                                        <dt class="h27">
+                                        <dt><strong>학원실강의</strong>2020년 1월</dt>
+                                        <dt><strong>강의수</strong>32강 / 55강</dt>
+                                        <dt><strong>수강기간</strong><span class="tx-blue">50일</span> <span class="NSK ml10 nBox n1">무제한</span> <span class="NSK nBox n2">진행중</span></dt>
+                                        <dt><strong>강의계획서</strong>황종휴 원론강의.pdf</dt>
+                                        <dt><strong>수강가능기간</strong>2020.01.01~2020.01.31</dt>
+                                        <dt>
                                             <strong>맛보기</strong><a href="#none" class="tBox black NSK">HIGH</a> <a href="#none" class="tBox gray NSK">LOW</a>
                                         </dt>
                                     </dl>

@@ -39,16 +39,22 @@
 
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2218_03.jpg" alt="합격수기 참여이벤트">
-            <a href="#none" onclick="javascript:popup();">내 합격수기 등록하기  ></a>
+            <a href="javascript:void(0);" onclick="popup();">내 합격수기 등록하기  ></a>
         </div>               
     </div>
     <!-- End Container --> 
 
     <script>
         function popup(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
-            window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(empty($arr_promotion_params['cert']) === false)
+                var url = "{{ site_url('/pass/promotion/popup/' . $arr_base['promotion_code']) .'?cert='. $arr_promotion_params['cert'] }}";
+                window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=868,height=630');
+            @else
+                alert('인증 정보를 찾을 수 없습니다.');
+                return;
+            @endif
         }
     </script>
 @stop

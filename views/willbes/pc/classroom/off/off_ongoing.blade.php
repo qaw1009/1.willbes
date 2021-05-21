@@ -88,7 +88,7 @@
                                                                             <span class="oBox changeBox ml5 NG">인강전환</span>
                                                                         @endif
                                                                         @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
-                                                                            <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강동영상신청 ></a>
+                                                                            <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="blue">보강/복습동영상신청 ></a>
                                                                         @endif
                                                                         </div>
                                                                     </li>
@@ -140,7 +140,7 @@
                                                         @endif
                                                     @endif
                                                     @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
-                                                        <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="supplement">보강동영상신청 ></a>
+                                                        <a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" class="supplement">보강/복습동영상신청 ></a>
                                                     @endif
                                                 </div>
                                                 <div class="all-schedule">
@@ -339,7 +339,7 @@
                                                 @endif
                                             @endif
                                             @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
-                                                <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강동영상신청 ></a>
+                                                <a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="supplement">보강/복습동영상신청 ></a>
                                             @endif
                                             </div>
                                     </td>

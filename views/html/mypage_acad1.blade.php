@@ -85,11 +85,9 @@
     </div>
     <div class="Depth">
         <img src="{{ img_url('sub/icon_home.gif') }}"> 
-        <span class="1depth">
-            <span class="depth-Arrow">></span><strong>내강의실</strong>
-            <span class="depth-Arrow">></span><strong>학원강좌</strong>
-            <span class="depth-Arrow">></span><strong>수강신청강좌</strong>
-        </span>
+        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>내강의실</strong></span>
+        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>학원강좌</strong></span>
+        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>수강신청강좌</strong></span>
     </div>
     <div class="Content p_re">
         <div class="willbes-Leclist c_both">
@@ -233,7 +231,7 @@
                                                         <div>
                                                             <a href="#none">교재구매</a>
                                                             <span class="oBox changeBox NG">인강전환</span>
-                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강/복습동영상 신청</a>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -247,14 +245,14 @@
                                                         형법 기본(단과)[1/28~2/14]
                                                         <div>
                                                             <a href="#none">교재구매</a>
-                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강/복습동영상 신청</a>
                                                         </div>
                                                     </li>
                                                     <li>
                                                         영어 기본(단과) [1/8~2/21]
                                                         <div>
                                                             <span class="oBox changeBox NG">인강전환</span>
-                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강동영상신청</a>
+                                                            <a href="#none" onclick="openWin('supplementLec')" class="blue">보강/복습동영상 신청</a>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -283,7 +281,7 @@
                                             <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <div class="lookover">
                                                 <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                             </div>
                                             <div class="all-schedule">
                                                 2018.10.20 ~ 2018.11.20<br/>
@@ -300,7 +298,7 @@
                                             <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <div class="lookover">
                                                 <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                             </div>
                                             <div class="all-schedule">
                                                 2018.10.20 ~ 2018.11.20<br/>
@@ -317,7 +315,7 @@
                                             <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                             <div class="lookover">
                                                 <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                                <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                             </div>
                                             <div class="all-schedule">
                                                 2018.10.20 ~ 2018.11.20<br/>
@@ -345,7 +343,7 @@
                                         <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                         <div class="lookover">
                                             <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                         </div>
                                         <div class="all-schedule">
                                             2018.10.20 ~ 2018.11.20<br/>
@@ -362,7 +360,7 @@
                                         <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                         <div class="lookover">
                                             <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                         </div>
                                         <div class="all-schedule">
                                             2018.10.20 ~ 2018.11.20<br/>
@@ -379,7 +377,7 @@
                                         <div class="w-tit"><span class="tx-blue">실강</span> 2018 [지방직/서울시] 정채영 국어 필살모고 Ⅲ-Ⅳ 및 국문학 종결자 패키지</div>
                                         <div class="lookover">
                                             <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                            <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                         </div>
                                         <div class="all-schedule">
                                             2018.10.20 ~ 2018.11.20<br/>
@@ -475,7 +473,7 @@
                                     <div class="lookover">
                                         <a href="#none" onclick="openWin('lookOver')">온라인첨삭 ></a>
                                         <a href="#none" onclick="openWin('profLook')" class="buyBook">교재구매 ></a>
-                                        <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강동영상신청 ></a>
+                                        <a href="#none" onclick="openWin('supplementLec')" class="supplement">보강/복습동영상 신청 ></a>
                                     </div>
                                 </td>
                                 <td class="w-period">2018.10.20 <br>
@@ -1540,14 +1538,14 @@
                 </div>
             </div>
 
-            <!--보강동영상 신청 팝업-->
+            <!--보강/복습동영상  신청 팝업-->
             <div id="supplementLec" class="willbes-Layer-Black">
                 <div class="willbes-Layer-PassBox willbes-Layer-PassBox1100 h800 fix abs">
                     <a class="closeBtn" href="#none" onclick="closeWin('supplementLec')">
                         <img src="{{ img_url('sub/close.png') }}">
                     </a>
                     <div>
-                        <div class="Layer-Tit tx-dark-black NG">보강동영상 신청</div> 
+                        <div class="Layer-Tit tx-dark-black NG">보강/복습동영상 신청</div> 
                         <div class="lecMoreWrap of-hidden h700">                    
                             <div class="PASSZONE-List widthAutoFull">                               
                                 <div class="PASSZONE-Lec-Section">
@@ -1606,7 +1604,7 @@
                                     </div>
 
                                     <div class="strong h22 tx-blue">
-                                        · 보강동영상 신청하기
+                                        · 보강/복습동영상 신청하기
                                     </div>
 
                                     <div class="LeclistTable bdt-gray mt10 mb30 c_both">
@@ -1639,15 +1637,16 @@
                                         </table>
                                         <div class="mt10 mb10 lh1_5">
                                         ⓘ 주의사항<br>
-                                            - 보강동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
-                                            - 보강동영상은 2일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
-                                            - 신청한 보강동영상은 내강의실 > 학원강좌 > 보강동영상 메뉴에서 확인 가능합니다.<br>
+                                            - 보강/복습동영상 1회 신청 시 1회차 신청만 가능합니다.<br>
+                                            - 보강/복습동영상은 2일 기간으로 제공되며, 수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.<br>
+                                            - 신청한 보강/복습동영상은 내강의실 > 학원강좌 > 보강/복습동영상 메뉴에서 확인 가능합니다.<br>
+                                            - 보강/복습동영상 신청은 종강 후 14일 이내까지 신청 가능합니다.
                                         </div>
-                                        <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="#">보강동영상 신청 ></a></div>
+                                        <div class="bBox d_block btnAuto250 mt20 tx-white tx14 strong blueBox"><a href="#">보강/복습동영상 신청 ></a></div>
                                     </div>
 
                                     <div class="strong h22">
-                                        [보강동영상 신청이력]
+                                        [보강/복습동영상 신청이력]
                                     </div>
 
                                     <div class="LeclistTable bdt-gray mt10 mb30 c_both">

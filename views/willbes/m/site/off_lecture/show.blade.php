@@ -28,7 +28,7 @@
                                     <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">
                                     <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                                 </div>
-                                <div class="w-data tx-left pl15">
+                                <div class="w-data tx-left">
                                     <dl class="w-info pt-zero">
                                         <dt>{{ $data['CampusCcdName'] }}<span class="row-line">|</span>{{ $data['CourseName'] }}<span class="row-line">|</span>
                                             {{ $data['SubjectName'] }}<span class="row-line">|</span>{{ $data['ProfNickName'] }}</dt>
@@ -38,11 +38,13 @@
                                     </div>
                                     <div class="w-info tx-gray">
                                         <dl>
-                                            <dt class="h22"><strong>개강일~종강일</strong><span class="tx-blue">{{ date('m/d', strtotime($data['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($data['StudyEndDate'])) }}</span></dt><br/>
-                                            <dt class="h22">{{ $data['WeekArrayName'] }} ({{ $data['Amount'] }}회차)</dt><br/>
-                                            <dt class="h22"><strong>수강형태</strong><span class="tx-blue">{{ $data['StudyPatternCcdName'] }}</span> </dt><br>
-                                            <dt class="h22"><span class="NSK nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
-                                                <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span></dt>
+                                            <dt><strong>개강일~종강일</strong><span class="tx-blue">{{ date('m/d', strtotime($data['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($data['StudyEndDate'])) }}</span></dt>
+                                            <dt>{{ $data['WeekArrayName'] }} ({{ $data['Amount'] }}회차)</dt>
+                                            <dt><strong>수강형태</strong><span class="tx-blue">{{ $data['StudyPatternCcdName'] }}</span> </dt>
+                                            <dt>
+                                                <span class="NSK nBox n{{ substr($data['StudyApplyCcd'], -1) == '1' ? '4' : '1' }}">{{ $data['StudyApplyCcdName'] }}</span>
+                                                <span class="NSK nBox n{{ substr($data['AcceptStatusCcd'], -1) }}">{{ $data['AcceptStatusCcdName'] }}</span>
+                                            </dt>
                                         </dl>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@
                             <img src="{{ $data['ProfReferData']['lec_detail_img'] or '' }}">
                             <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                         </div>
-                        <div class="w-data tx-left pl15">
+                        <div class="w-data tx-left">
                             @if($data['LecTypeCcd'] === '607003')
                                 <div class="OTclass mr10"><span>직장인반</span></div>
                             @endif
@@ -29,22 +29,22 @@
                             </div>
                             <div class="w-info tx-gray">
                                 <dl>
-                                    <dt class="h27"><strong>강의촬영(실강)</strong>{{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</dt><br/>
-                                    <dt class="h27"><strong>강의수</strong>{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false) / {{$data['wScheduleCount']}}강@endif</dt><br/>
-                                    <dt class="h27"><strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriod'] }}일</span>
+                                    <dt><strong>강의촬영(실강)</strong>{{ empty($data['StudyStartDate']) ? '' : substr($data['StudyStartDate'],0,4).'년 '. substr($data['StudyStartDate'],5,2).'월' }}</dt>
+                                    <dt><strong>강의수</strong>{{ $data['wUnitLectureCnt'] }}강@if($data['wLectureProgressCcd'] != '105002' && empty($data['wScheduleCount'])==false) / {{$data['wScheduleCount']}}강@endif</dt>
+                                    <dt><strong>수강기간</strong><span class="tx-blue">{{ $data['StudyPeriod'] }}일</span>
                                         <span class="NSK ml10 nBox n1">{{ $data['MultipleApply'] === "1" ? '무제한' : $data['MultipleApply'].'배수'}}</span>
                                         <span class="NSK nBox n{{ substr($data['wLectureProgressCcd'], -1)+1 }}">{{ $data['wLectureProgressCcdName'] }}</span>
-                                    </dt><br>
+                                    </dt>
                                     @if(empty($data['wAttachFileReal']) === false)
-                                    <dt class="h27"><strong>강의계획서</strong><a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$data['wAttachFile'])).'&filename_ori='.urlencode($data['wAttachFileReal'])}}" >{{$data['wAttachFileReal']}}</a></dt><br/>
+                                    <dt><strong>강의계획서</strong><a href="{{front_url('/lecture/download/').'?filename='.urlencode(str_replace( '//', '/', $data['wAttachPath'].'/'.$data['wAttachFile'])).'&filename_ori='.urlencode($data['wAttachFileReal'])}}" >{{$data['wAttachFileReal']}}</a></dt>
                                     @endif
                                     @if($pattern == 'free' && ($data['FreeLecTypeCcd'] == '652002' || $data['FreeLecTypeCcd'] == '652003'))
                                         @if(empty($data['SaleStartDatm']) === false && empty($data['SaleEndDatm'] === false))
-                                            <dt class="h27"><strong>수강가능기간</strong>{{date('Y.m.d',strtotime($data['SaleStartDatm']))}} ~ {{date('Y.m.d', strtotime($data['SaleEndDatm']))}}</dt><br/>
+                                            <dt><strong>수강가능기간</strong>{{date('Y.m.d',strtotime($data['SaleStartDatm']))}} ~ {{date('Y.m.d', strtotime($data['SaleEndDatm']))}}</dt>
                                         @endif
                                     @endif
                                     @if($pattern == 'only')
-                                        <dt class="h27">
+                                        <dt>
                                             @if( empty($data['LectureSampleData']) === false)
                                             <strong>맛보기</strong>
                                                 @foreach($data['LectureSampleData'] as $sample_idx => $sample_row)

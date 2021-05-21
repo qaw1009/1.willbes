@@ -87,7 +87,7 @@
         <img src="/public/img/willbes/sub/icon_home.gif">
         <span class="depth"><span class="depth-Arrow">&gt;</span><strong>내강의실</strong></span>
         <span class="depth"><span class="depth-Arrow">&gt;</span><strong>내강의실</strong></span>
-        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>보강동영상</strong></span>
+        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>보강/복습동영상</strong></span>
     </div>
     <div class="Content p_re">   
 
@@ -98,10 +98,10 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="Tit">보강동영상 안내</div>
+                                <div class="Tit">보강/복습동영상 안내</div>
                                 <div class="Txt">
-                                    - 보강동영상은 내강의실 > 학원강좌 > 수강신청강좌 메뉴에서 보강 신청한 강좌를 수강하실 수 있습니다.<br>
-                                    - 보강동영상은 기본 2일 기간으로 제공되며, <span class="tx-red">수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.</span>
+                                    - 보강/복습동영상은 내강의실 > 학원강좌 > 수강신청강좌 메뉴에서 보강/복습 신청한 강좌를 수강하실 수 있습니다.<br>
+                                    - 보강/복습동영상은 기본 2일 기간으로 제공되며, <span class="tx-red">수강시작을 하지 않으면 7일 이후에 자동으로 수강시작됩니다.</span>
                                 </div>
                             </td>
                         </tr>
@@ -155,7 +155,7 @@
                                 <dl class="w-info tx-gray">
                                     <dt>수강기간 : <span class="tx-black">2021.00.00 ~ 2021.00.00</span></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt>보강동영상 신청일 : <span class="tx-black">2021.00.00 00:00</span></dt>
+                                    <dt>보강/복습동영상 신청일 : <span class="tx-black">2021.00.00 00:00</span></dt>
                                 </dl>
                             </td>
                             <td class="w-answer">                                
@@ -175,7 +175,7 @@
                                 <dl class="w-info tx-gray">
                                     <dt>수강기간 : <span class="tx-black">2021.00.00 ~ 2021.00.00</span></dt>
                                     <dt><span class="row-line">|</span></dt>
-                                    <dt>보강동영상 신청일 : <span class="tx-black">2021.00.00 00:00</span></dt>
+                                    <dt>보강/복습동영상 신청일 : <span class="tx-black">2021.00.00 00:00</span></dt>
                                 </dl>
                             </td>
                             <td class="w-answer">

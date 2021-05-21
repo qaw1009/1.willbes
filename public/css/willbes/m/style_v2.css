@@ -4238,34 +4238,49 @@ body.memBody #Footer {
 .passProfTabs tr td {
 	border-bottom: none;
 }
-.passProfTabs .w-prof {
-	float: left;
-	width: 35%;
-	max-width: 85px;
-	max-height: 85px;
-	margin-bottom: 10px;
-	overflow: hidden;
+@media only screen and (max-width: 320px){
+	.passProfTabs .w-prof,
+	.passProfTabs .w-data {
+		float: none;
+		width: 100%;
+	}
 }
+@media only screen and (min-width: 321px) {
+	.passProfTabs .w-prof {
+		float: left;
+		width: 35%;
+		max-width: 85px;
+		max-height: 85px;
+		margin-bottom: 10px;
+		overflow: hidden;
+	}
+	.passProfTabs .w-data {
+		float: left;
+		width: calc(100% - 95px);
+		margin-left:10px;
+	}
+}
+.passProfTabs .w-prof {margin-bottom: 10px}
 .passProfTabs .w-prof img {
 	width: 100%;
+	max-width: 85px;
+	max-height: 85px;
 }
 .passProfTabs .w-prof .cover {
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.passProfTabs .w-data {
-	float: left;
-	width: calc(100% - 85px);
-}
+
 .passProfTabs .w-info {
 	clear: both;
 	padding-top: 10px;
 	margin-top: 5px;
 }
+.passProfTabs .w-info dt {line-height: 1.5; margin-bottom:5px; display: block}
 .passProfTabs .w-info strong {
 	display: inline-block;
-	width: 100px;
+	width: 85px;
 }
 .passProfTabs .lecReview {
 	margin-top: 10px;

@@ -87,7 +87,7 @@
         <img src="/public/img/willbes/sub/icon_home.gif">
         <span class="depth"><span class="depth-Arrow">&gt;</span><strong>내강의실</strong></span>
         <span class="depth"><span class="depth-Arrow">&gt;</span><strong>내강의실</strong></span>
-        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>보강동영상</strong></span>
+        <span class="depth"><span class="depth-Arrow">&gt;</span><strong>보강/복습동영상</strong></span>
     </div>
     <div class="Content p_re">  
         <div class="willbes-Mypage-Tabs">

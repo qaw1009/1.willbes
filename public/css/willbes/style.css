@@ -2049,6 +2049,7 @@ table.auTable tr td {
     display:block;
     text-align: center;    
     color:#5f6281 !important;
+	text-shadow:1px 1px 1px rgba(255, 255, 255, 0.5)
 }
 .MainQuickMenuSSam .gobtn li a p {margin-top:5px;}
 .MainQuickMenuSSam .gobtn li a img {width:70px; margin:0 auto}

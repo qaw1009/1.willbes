@@ -73,6 +73,16 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <label class="control-label col-md-1" for="prof_idx">교수명 </label>
+                    <div class="col-md-2 item">
+                        <select class="form-control" id="prof_idx" name="prof_idx" title="교수명" disabled>
+                            <option value="">교수명</option>
+                            @foreach($arr_professor as $row)
+                                <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}" @if($method == 'PUT' && ($row['ProfIdx'] == $data['ProfIdx'])) selected="selected" @endif>{{ $row['wProfName'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -359,6 +369,7 @@
         $(document).ready(function() {
             // 학원사이트 캠퍼스 자동 변경
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
+            $regi_form.find('select[name="prof_idx"]').chained("#site_code");
 
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
@@ -378,6 +389,13 @@
                     $('#btn_category_search').hide();
                 } else {
                     $('#btn_category_search').show();
+                }
+
+                // 노출섹션 교수홈 섹션 선택시만 교수명 활성화
+                if($regi_form.find('select[name="popup_disp"] option:selected').val() === '657006'){
+                    $regi_form.find('select[name="prof_idx"]').prop('disabled', false);
+                }else{
+                    $regi_form.find('select[name="prof_idx"]').prop('disabled', true);
                 }
             });
 
@@ -399,6 +417,14 @@
                     $('#selected_category').html('');
                     $('#btn_category_search').show();
                 }
+
+                // 교수홈 섹션 선택시 교수명 활성화
+                if($(this).val() === '657006'){
+                    $regi_form.find('select[name="prof_idx"]').attr('disabled', false);
+                }else{
+                    $regi_form.find('select[name="prof_idx"]').attr('disabled', true);
+                }
+
             });
 
             // 카테고리 검색

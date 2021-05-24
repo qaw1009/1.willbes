@@ -76,8 +76,7 @@
                 <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/180888" target="_blank" />
                 <area shape="rect" coords="85,2,167,151" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blank"/>
             </map>               
-        </div>         
-        
+        </div>    
         {{--
         <div class="evtCtnsBox wb_top_tab" >
             <div class="tabContaier">
@@ -93,8 +92,8 @@
                 </ul>
             </div>
         </div>  
-        --}}  
-  
+        --}}
+        {{--
         <div class="evtCtnsBox evttop_banners" >     
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
             <map name="Map1676_top_banner" id="Map1676_top_banner">
@@ -102,7 +101,7 @@
                 <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>           
         </div>    
-         
+        --}}         
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>

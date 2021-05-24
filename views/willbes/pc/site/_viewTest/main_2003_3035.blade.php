@@ -126,40 +126,10 @@
                 </ul>
             </div>
         </div>
-        <div class="Section Section8">
-            <div class="widthAuto">
-                <div class="will-acadTit">윌비스 한림법학원 <span class="tx-color">김동진 법원팀</span></div>
-                <div class="noticeTabs campus c_both">
-                    <div class="tabBox noticeBox_campus">
-                        <div id="campus1" class="tabContent">
-                            <div class="map_img" id="map">지도영역</div>
-                            <div class="map_img" id="alterMap1" style="display: none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_map.jpg" alt="김동진 법원팀">
-                            </div>
-                            <div class="campus_info">
-                                <dl>
-                                    <dt>
-                                        <div class="c-tit"><span class="tx-color">학원</span> 오시는 길</div>
-                                        <div class="c-info">
-                                            <div class="address">
-                                                <span class="a-tit">주소</span>
-                                                <span>
-                                                서울시 동작구 노량진로 196 노량빌딩 7층
-                                            </span>
-                                            </div>
-                                            <div class="tel">
-                                                <span class="a-tit">연락처</span>
-                                                <span class="tx-color">1544-0330 > 2번</span>
-                                            </div>
-                                        </div>
-                                    </dt>
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        {{--학원 오시는 길--}}
+        @include('willbes.pc.site._viewTest.main_partial.map_2003')
+
         <div class="Section NSK mt70 mb90">
             <div class="widthAuto">
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])

@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
-<link href="/public/css/willbes/style_gosi_law.css?ver={{time()}}" rel="stylesheet">
-
+    <link href="/public/css/willbes/style_gosi_law.css?ver={{time()}}" rel="stylesheet">
     <div id="Container" class="Container law NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
@@ -83,7 +82,6 @@
                 </div>
             </div>
         </div>
-
         @if(isset($data['arr_main_banner']['메인_중간띠배너']) === true)
             <div class="law-bn02">
                 <div class="bSlider">
@@ -91,7 +89,6 @@
                 </div>
             </div>
         @endif
-        
         <div class="Section3 NSK">
             <div class="widthAuto p_re">
                 <div><img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec04.gif" alt="김동진 법원팀의 학습 Tip"></div>
@@ -106,19 +103,16 @@
                 </ul>
             </div>
         </div>
-
         <div class="Section6">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec06.jpg" alt="김동진 법원팀의 학습 Tip">
             </div>
         </div>
-
         <div class="Section5">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/2003/3035_sec05.jpg" alt="김동진 법원팀의 학습 Tip">
             </div>
         </div>
-
         <div class="Section7">
             <div class="widthAuto">
                 <ul class="ProfBoxB">
@@ -179,11 +173,11 @@
     </div>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
-    {{--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>--}}
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
     <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 한림법학원<br><strong class="tx-color">김동진법원팀(7~9층)</strong></div>';
+            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 <strong class="tx-color">한림법학원</strong><br>김동진법원팀(7~9층)</div>';
             var $kakaomap = new kakaoMap();
             $kakaomap.config.ele_id = 'map';
             $kakaomap.config.alter_id = 'alterMap1';
@@ -193,6 +187,27 @@
             $kakaomap.config.info_txt_x_anchor = 0.5;
             $kakaomap.config.info_txt_y_anchor = 2.7;
             $kakaomap.run();
+
+            $('.PBtab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+                $links.not($active).each(function () {
+                    $(this.hash).hide()
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault()
+                })
+            });
         });
     </script>
 @stop

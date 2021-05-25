@@ -11,9 +11,10 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            position:relative
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 

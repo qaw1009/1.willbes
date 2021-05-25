@@ -371,6 +371,10 @@
             $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
             $regi_form.find('select[name="prof_idx"]').chained("#site_code");
 
+            @if($method == 'POST' || empty($data['ProfIdx']) === true)
+                $regi_form.find('select[name="prof_idx"]').prop('disabled', true);
+            @endif
+
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 // 카테고리 검색 초기화

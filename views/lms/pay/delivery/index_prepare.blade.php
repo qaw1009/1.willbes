@@ -51,6 +51,12 @@
                     </div>
                     <label class="control-label col-md-1" for="">조건검색</label>
                     <div class="col-md-5 form-inline">
+                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
+                            <option value="">상품구분</option>
+                            @foreach($arr_prod_type_ccd as $key => $val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control mr-10" id="search_delivery_price_type" name="search_delivery_price_type" title="배송료구분">
                             <option value="">배송료구분</option>
                             <option value="normal">일반배송료</option>

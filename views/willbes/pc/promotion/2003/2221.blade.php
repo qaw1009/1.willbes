@@ -34,7 +34,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2221_top.jpg" alt="환승 이벤트" />
-            <a href="javascript:certOpen();" class="bigBtn NSK-Black">재도전&환승 인증하기 →</a>
+            <a href="javascript:certOpen();" class="bigBtn NSK-Black">환승 인증하기 →</a>
             <a href="#careful" class="sBtn">유의사항 확인하기 →</a>            
         </div>
 

@@ -403,9 +403,8 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
 
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08_re.jpg"  alt="쿠폰 다운로드" />
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 14.38%; top: 65.48%; width: 29.11%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 59.29%; top: 65.57%; width: 29.11%; height: 4.43%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2194_08_apply.jpg"  alt="교재 신청하기" />
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute;left: 42.38%;top: 62.48%;width: 18.11%;height: 5.43%;z-index: 2;"></a>
             </form>
         </div>
 

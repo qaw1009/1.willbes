@@ -1,7 +1,6 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
-<link href="/public/css/willbes/style_gosi_law.css?ver={{time()}}" rel="stylesheet">
-
+    <link href="/public/css/willbes/style_gosi_law.css?ver={{time()}}" rel="stylesheet">
     <div id="Container" class="Container law NGR c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
@@ -127,7 +126,9 @@
                 </ul>
             </div>
         </div>
-        <div class="Section Section8">
+
+        {{--학원 오시는 길--}}
+        <div class="Section Section4_hl mb50">
             <div class="widthAuto">
                 <div class="will-acadTit">윌비스 한림법학원 <span class="tx-color">김동진 법원팀</span></div>
                 <div class="noticeTabs campus c_both">
@@ -145,8 +146,8 @@
                                             <div class="address">
                                                 <span class="a-tit">주소</span>
                                                 <span>
-                                                서울시 동작구 노량진로 196 노량빌딩 7층
-                                            </span>
+                                        서울시 동작구 노량진로 196 노량빌딩 7층
+                                    </span>
                                             </div>
                                             <div class="tel">
                                                 <span class="a-tit">연락처</span>
@@ -161,6 +162,7 @@
                 </div>
             </div>
         </div>
+
         <div class="Section NSK mt70 mb90">
             <div class="widthAuto">
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
@@ -174,11 +176,11 @@
     </div>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 
-    {{--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>--}}
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ config_item('kakao_js_app_key') }}&libraries=services"></script>
     <script type="text/javascript" src="/public/js/map_util.js?ver={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 한림법학원<br><strong class="tx-color">김동진법원팀(7~9층)</strong></div>';
+            var info_txt = '<div style="padding:5px; 5px; background:#fff; border: 1px solid midnightblue">윌비스 <strong class="tx-color">한림법학원</strong><br>김동진법원팀(7~9층)</div>';
             var $kakaomap = new kakaoMap();
             $kakaomap.config.ele_id = 'map';
             $kakaomap.config.alter_id = 'alterMap1';
@@ -186,29 +188,8 @@
             $kakaomap.config.addr = '서울 동작구 노량진로 196';
             $kakaomap.config.info_txt = info_txt;
             $kakaomap.config.info_txt_x_anchor = 0.5;
-            $kakaomap.config.info_txt_y_anchor = 2.7;
+            $kakaomap.config.info_txt_y_anchor = 2.2;
             $kakaomap.run();
-
-            $('.PBtab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-                $content = $($active[0].hash);
-                $links.not($active).each(function () {
-                    $(this.hash).hide()
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-                    $active = $(this);
-                    $content = $(this.hash);
-                    $active.addClass('active');
-                    $content.show();
-                    e.preventDefault()
-                })
-            });
         });
     </script>
 @stop

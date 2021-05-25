@@ -175,10 +175,10 @@
                 $kakaomap.run();
             });
         });
-        @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099'))
-            $('#campus2_btn').click();
+        @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099' || $__cfg['CateCode'] == '309004'))
+        $('#campus2_btn').click();
         @else
-            $('#campus1_btn').click();
+        $('#campus1_btn').click();
         @endif
     });
 </script>

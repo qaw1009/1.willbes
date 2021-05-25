@@ -18,8 +18,8 @@
 
         /************************************************************/
  
-        .wb_top {background:#e5effb; padding-bottom:150px}
-        .wb_top .bigBtn {display:block; font-size:24px; color:#fff; background:#1f2059; width:700px; margin:50px auto 30px; padding:20px 0; border-radius:40px}
+        .wb_top {background:#e5effb url(https://static.willbes.net/public/images/promotion/2021/05/2221_top_bg.jpg) no-repeat center top; padding-bottom:100px}
+        .wb_top .bigBtn {display:block; font-size:24px; color:#fff; background:#1f2059; width:700px; margin:20px auto 30px; padding:20px 0; border-radius:40px}
         .wb_top .sBtn {display:block; font-size:16px; color:#fff; background:#222; width:200px; margin:0 auto; padding:10px 0;}
 
         /* 이용안내 */
@@ -40,15 +40,11 @@
 
         <div class="evtCtnsBox wb_info" id="careful">
             <div class="guide_box">
-                <h2 class="NSK-Black">재도전&환승 인증 이벤트 유의사항</h2>
+                <h2 class="NSK-Black">환승 인증 이벤트 유의사항</h2>
                 <ol>
                     <li>본 이벤트는 1아이디당 1회만 참여 가능합니다.</li>
                     <li>인증 완료 처리는 신청 후, 24시간 이내에 처리됩니다. 단, 주말 및 공휴일 인증 건의 경우 평일 오전 중으로 처리됩니다.</li>
-                    <li>1) 재도전 인증<br>
-                        - 김동진법원팀PASS 수강생의 경우 <br>
-                        [내강의실] 페이지 내 이름과 PASS명이 명시된 이미지 캡쳐 후 업로드 시 인증 가능합니다.<br>
-                        <br>
-                        2) 환승 인증<br>
+                    <li>환승 인증<br>
                         - 본인의 이름, 수강내역, 결제내역 등이 명확하게 기재된 수강증 등의 캡쳐를 통해서만 인증이 가능합니다.<br>
                         (결제내역을 통한 인증 시, 수강자 이름과 결제 금액, 강좌명이 필수로 기재되어 있어야 합니다.)<br>
                         본 이벤트는 이벤트 참여자가 본인의 명의로 구매/응시한 내용에 한합니다.<br>

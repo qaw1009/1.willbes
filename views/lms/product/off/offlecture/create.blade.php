@@ -861,7 +861,7 @@
                             <input type="radio" name="SuppIsUse" class="flat" value="Y" title="보강동영상신청여부" @if( $data['SuppIsUse']=='Y')checked="checked"@endif/> 가능
                             [총
                                 <select name="SuppAbleCnt" id="SuppAbleCnt" class="form-control">
-                                    @for($i=1; $i<=5 ;$i++)
+                                    @for($i=1; $i<=20 ;$i++)
                                     <option value="{{$i}}" @if($method == 'POST' && $i === 3) selected="selected" @elseif ($data['SuppAbleCnt'] == $i) selected = "selected" @endif>{{$i}}</option>
                                     @endfor
                                 </select> 개

@@ -38,7 +38,7 @@
 
         .evtTop .main_img {
             position:absolute;
-            top:600px;
+            top:700px;
             left:50%;
             margin-left:-419px;
             z-index:10;

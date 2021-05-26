@@ -13,7 +13,7 @@
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/
 
@@ -37,7 +37,7 @@
         .newTopDday ul:after {content:""; display:block; clear:both}  
 
         /*수강신청 체크*/
-        .check {padding-bottom:100px;}
+        .check {padding-bottom:75px;}
         .check p {margin-bottom:50px;padding-top:75px;}
         .check p a {display:block; width:525px; height:90px; line-height:90px; margin:0 auto; font-size:30px; color:#fff; background:#163C57; text-align:center; border-radius:90px;}
         .check p a:hover {color:#8d0033; background:#eee53b;}
@@ -55,6 +55,9 @@
         .guide_box dd li {margin-bottom:3px; list-style:decimal; margin-left:20px;color:#3a3a3a;font-size:15px}
         .guide_box dd li a {display:inline-block; margin-left:20px; background:#032E5B; color:#fff; padding:3px 10px; border-radius:15px;}
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
+
+        .evt_wrap {width:1120px; margin:0 auto; position: relative;}
+        .evt_wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.25);}
 
     </style>
 
@@ -107,17 +110,12 @@
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2116_04.jpg" alt="합격이 앞당겨집니다" />
         </div>
-    
-        <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2116_05.jpg" alt="기계직 패스 수강신청" />           
-        </div>
 
         <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2116_06.jpg" alt="수강신청 하기" usemap="#Map2116_apply" border="0" />
-            <map name="Map2116_apply" id="Map2116_apply">
-                <area shape="rect" coords="324,507,476,584" href="javascript:go_PassLecture('179746');" alt="수강신청" />
-                <area shape="rect" coords="823,507,975,584" href="javascript:go_PassLecture('179745');" alt="수강신청" />
-            </map>
+            <div class="evt_wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/2116_06.jpg" alt="수강신청 하기"/>
+                <a href="javascript:go_PassLecture('179745');" title="" style="position: absolute;left: 58.77%;top: 80%;width: 26.27%;height: 4.8%;z-index: 2;"></a>
+            </div>    
             <div class="check" id="chkInfo">               
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />

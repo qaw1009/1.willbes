@@ -57,7 +57,6 @@
         .guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;} 
 
         .evt_wrap {width:1120px; margin:0 auto; position: relative;}
-        .evt_wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.25);}
 
     </style>
 

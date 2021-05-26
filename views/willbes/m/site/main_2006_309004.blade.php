@@ -2,7 +2,11 @@
 
 @section('content')
     <div id="Container" class="Container NSK mb40">
+        {{-- top menu --}}
+        @include('willbes.m.site.main_partial.topmenu_'.$__cfg['SiteCode'])
+
         {!! banner('M_메인', 'MainSlider', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
         <div class="bnSec02">
             <ul>
                 <li>{!! banner('M_메인서브1', '', $__cfg['SiteCode'], $__cfg['CateCode']) !!}</li>

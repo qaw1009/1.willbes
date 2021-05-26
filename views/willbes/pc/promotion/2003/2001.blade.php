@@ -8,7 +8,6 @@
             width:100% !important;
             min-width:1120px !important;
             margin-top:20px !important;
-            padding:0 !important;
             background:#fff;
         }
         .evtContent span {vertical-align:auto}
@@ -111,16 +110,19 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
+        {{--
         <div class="sky">
             <a href="#apply">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_sky.png" alt="스카이베너" >
             </a>
-        </div>   
+        </div> 
+        --}}  
 
         <div class="evtCtnsBox wb_06" >            
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_06.jpg" alt="수강생 14배 증가"/>
         </div>
 
+        {{--
         <div class="evtCtnsBox wb_07" >        
             <div>    
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_07.jpg" alt="환승 이벤트"/>
@@ -128,6 +130,7 @@
                 <a href="javascript:go_popup3()"  title="유의사항 확인하기" style="position: absolute; left: 41.34%; top: 83.3%; width: 14.46%; height: 3.88%; z-index: 2;"></a>
             </div>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_tops" >            
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2001_top.jpg" alt=""/>

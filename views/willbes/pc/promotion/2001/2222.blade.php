@@ -29,25 +29,11 @@
         .evt01 .slide_con li img {width:100%}
         .evt01 .slide_con ul:after {content::""; display:block; clear:both}
 
-        .evt02 {position:relative;background:#1c57b3;height:400px;}
-        .evt02 .circle01{position:absolute;left:30%;top:5%;margin-left:-70px;}
-        .evt02 .circle02{position:absolute;left:38%;top:5%;margin-left:-70px;}
-        .evt02 .circle03{position:absolute;left:46%;top:5%;margin-left:-70px;}
-        .evt02 .circle04{position:absolute;left:54%;top:5%;margin-left:-70px;}
-        .evt02 .circle05{position:absolute;left:62%;top:5%;margin-left:-70px;}
-        .evt02 .circle06{position:absolute;left:70%;top:5%;margin-left:-70px;}
-
-        .evtCtnsBox .btnRequest {width:600px; margin:0 auto;position:absolute;left:38%;bottom:25%;margin-left:-70px;}
+        .evt02 {background:#1c57b3;height:400px;}
+        .evtCtnsBox .btnRequest {width:600px; margin:0 auto;padding-top:100px;}
         .evtCtnsBox .btnRequest a {display:block;padding:20px; text-align:center; color:#fff; background:#000; font-size:30px}
         .evtCtnsBox .btnRequest a:hover {background:#ffff00; color:#11153a}
 
-        .evt02 div a img.on {display:none;position:absolute;z-index:1;text-align:center;}
-        .evt02 div a img.off {display:block}
-        .evt02 div a.active img.on,
-        .evt02 div a:hover img.on {display:block;text-align:center;}
-        .evt02 div a.active img.off,
-        .evt02 div a:hover img.off {display:none}
-        .evt02 div:after {content:""; display:block; clear:both}
 
         .evt03 {background:#1c57b3}
 
@@ -79,42 +65,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <div class="circle01">
-                <a href="#none;">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab01.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab01_on.png" alt="" class="on">
-                </a>    
-            </div> 
-            <div class="circle02">
-                <a href="#none;">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab02.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab02_on.png" alt="" class="on">
-                </a>    
-            </div>  
-            <div class="circle03">
-                <a href="#none;">                                 
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab03.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab03_on.png" alt="" class="on">
-                </a>    
-            </div>  
-            <div class="circle04">
-                <a href="#none;">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab04.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab04_on.png" alt="" class="on">
-                </a>
-            </div>
-            <div class="circle05">
-                <a href="#none;">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab05.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab05_on.png" alt="" class="on">
-                </a>
-            </div>
-            <div class="circle06">
-                <a href="#none;">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab06.png" alt="" class="off">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_tab06_on.png" alt="" class="on">
-                </a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/05/2222_02.jpg" alt="혜택" />
             <div class="btnRequest NSK-Black"><a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2001" target="_blank" alt="회원가입go">회원가입 GO ></a></div>
         </div>
 

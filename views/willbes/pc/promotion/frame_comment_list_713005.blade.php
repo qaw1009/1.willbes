@@ -130,6 +130,22 @@
     .replyNotice .ry_cont a {
         color:#3366ff;
     }
+
+    a.delBtn {
+        float: right;
+        font-size: 12px;
+        border: 1px solid #eee;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        text-align: center;
+        color: #ccc;
+    }
+
+    a.delBtn:hover {
+        border: 1px solid #000;
+        color: #000;
+    }
 </style>
 
 <div class="replyEvaluate">
@@ -229,7 +245,13 @@
                         <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
                     @endif
                     <div>
-                        <p>{!! hpSubString($row['MemName'],0,2,'*') !!} <span>{{$row['RegDatm']}}</span></p>
+                        <p>
+                            {!! hpSubString($row['MemName'],0,2,'*') !!}
+                            <span>{{$row['RegDatm']}}</span>
+                            @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
+                                <a class="btn-comment-del delBtn" data-comment-idx="{{$row['Idx']}}" href="javascript:void(0);">X</a>
+                            @endif
+                        </p>
                         {!!nl2br($row['Content'])!!}
                     </div>
                 </li>

@@ -13,6 +13,7 @@
             background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        br { font-family:dotum;} 
 
         /************************************************************/
 

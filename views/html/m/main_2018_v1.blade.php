@@ -220,7 +220,7 @@
                     <span class="hidden">내강의실</span>
                 </button>
                 <div class="logo">
-                    <a href="#none" class="siteTitle NSK-Black">임용</span></a>
+                    <a href="#none" class="siteTitle NSK-Black">윌비스 임용</span></a>
                 </div>   
                 <button type="button" class="classroom">
                     <span>강의실배정표</span>
@@ -238,16 +238,16 @@
         <div class="subMenuBox c_both">
             <ul class="subMenu">
                 <li class="sMenuList">
-                    <a href="#none" class="moreMenu">나의<br>강의실</a>
+                    <a href="#none" class="moreMenu">내강의실</a>
                 </li>
                 <li class="sMenuList">
-                    <a href="#none" class="moreMenu">강의/<br>교재신청</a>
+                    <a href="#none" class="moreMenu">강의/교재신청</a>
                 </li>
                 <li class="sMenuList">
-                    <a href="#none" class="moreMenu">학원<br>정보</a>
+                    <a href="#none" class="moreMenu">학원정보</a>
                 </li>
                 <li class="sMenuList">
-                    <a href="#none" class="moreMenu">고객<br>센터</a>                     
+                    <a href="#none" class="moreMenu">고객센터</a>                     
                 </li>
             </ul>                
         </div> 
@@ -268,7 +268,7 @@
     </div>
         
     <div class="mainTit mt30 p_re">
-        <span class="NSK-Black mr15">임용 <span class="tx-main">생생 수강후기</span></span>
+        <span class="NSK-Black">임용 <span class="tx-main">생생 수강후기</span></span>
         <a href="#none" onclick="openWin('LayerReply'),openWin('Reply')" class="morebtn">more ></a>
         <div class="goBtns NSK">
             <a href="#none">합격수기 ></a></li>

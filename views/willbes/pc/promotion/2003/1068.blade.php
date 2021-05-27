@@ -11,16 +11,18 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
 		/************************************************************/
+		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
 		
 		.skybanner {position:fixed; top:100px; right:10px; z-index:10;}
 		.skybanner a {display:block; margin-bottom:5px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
-		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top;}
+		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative}
 
 		.wb_01{background:#fff;}    
 		
@@ -126,17 +128,17 @@
         </div>
 
 		<div class="evtCtnsBox wb_01_01">	
-			<div>	
+			<div class="wrap">	
 				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_01_01.jpg" alt="농업직 패키지">
-				<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" title="바로가기" target="_blank" style="position: absolute; left: 31.34%; top: 80.77%; width: 36.7%; height: 7.77%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" title="바로가기" target="_blank" style="position: absolute; left: 31.43%; top: 81.34%; width: 36.43%; height: 6.96%; z-index: 2;"></a>
 			</div>
         </div>		
 
 		<div class="evtCtnsBox wb_01s">
-			<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기" usemap="#Map0119_add" border="0">
-			<map name="Map0119_add" id="Map0119_add">
-				<area shape="rect" coords="362,943,760,1017" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" />
-			</map>
+			<div class="wrap">
+				<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기">
+				<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" title="" style="position: absolute; left: 32.05%; top: 77.5%; width: 36.43%; height: 7.03%; z-index: 2;"></a>
+			</div>
         </div>	
 
 		<div class="evtCtnsBox wb_02" id="to_go">
@@ -148,6 +150,7 @@
 				<area shape="rect" coords="848,1330,1060,1382" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
 				<area shape="rect" coords="863,450,1011,525" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180881" target="_blank" />
 				<area shape="rect" coords="864,636,1008,712" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" />
+			</map>
 		</div>
 		       
 		<div class="content_guide_wrap NSK" id="tab">
@@ -173,31 +176,31 @@
 						<td>재배학</td>
 						<td>이론</td>
 						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
 						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -213,31 +216,31 @@
 						<td>식용작물</td>
 						<td>이론</td>
 						<td>2021 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 [지방직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>유료특강</td>
 						<td>2021 장사원 식용작물 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -257,31 +260,31 @@
 						<td>재배학</td>
 						<td>이론</td>
 						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
 						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -297,31 +300,31 @@
 						<td>식용작물</td>
 						<td>이론</td>
 						<td>2021 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 식용작물 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177261" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179644" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>문제풀이</td>
 						<td>2021 [지방직] 장사원 식용작물 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180352" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
 						<td>유료특강</td>
 						<td>2021 장사원 식용작물 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180350" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 				<p>● 생물학개론</p>
@@ -336,13 +339,13 @@
 						<td>생물학개론</td>
 						<td>이론</td>
 						<td>2021 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 컨셉 생물학 기출</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -358,13 +361,13 @@
 						<td>토양학</td>
 						<td>이론</td>
 						<td>2021 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 토양학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -384,31 +387,31 @@
 						<td>재배학</td>
 						<td>이론</td>
 						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177260" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/179643" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>문제풀이</td>
 						<td>2021 [지방직] 장사원 재배학 실전동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180351" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
 						<td>유료특강</td>
 						<td>2021 장사원 재배학 FINAL 마무리 특강</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180349" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -424,19 +427,19 @@
 						<td>작물생리학</td>
 						<td>이론</td>
 						<td>2021 장사원 작물생리학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171771">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171771" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>작물생리학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 작물생리학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159044">수강신청</a></td>
+						<td>2021 장사원 작물생리학 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178552" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>작물생리학</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 작물생리학 실전 동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165490">수강신청</a></td>
+						<td>2021 장사원 작물생리학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182723" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -452,13 +455,19 @@
 						<td>생물학개론</td>
 						<td>이론</td>
 						<td>2021 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 컨셉 생물학 기출</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354" target="_blank">수강신청</a></td>
+					</tr>
+					<tr>
+						<td>생물학개론</td>
+						<td>문제풀이</td>
+						<td>2021 장사원 생물학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182722" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -474,19 +483,19 @@
 						<td>농촌지도론</td>
 						<td>이론</td>
 						<td>2021 장사원 농촌지도론 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171773">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171773" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>농촌지도론</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 농촌지도론 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/159045">수강신청</a></td>
+						<td>2021 장사원 농촌지도론 기출문제풀이</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/178553" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>농촌지도론</td>
 						<td>문제풀이</td>
-						<td>2020 장사원 농촌지도론 실전 동형모의고사</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/165489">수강신청</a></td>
+						<td>2021 장사원 농촌지도론 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182724" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
 
@@ -502,13 +511,13 @@
 						<td>토양학</td>
 						<td>이론</td>
 						<td>2021 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 토양학 기출문제풀이</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/174434" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -528,13 +537,19 @@
 						<td>생물학개론</td>
 						<td>이론</td>
 						<td>2021 장사원 생물학 이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/177262" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>생물학개론</td>
 						<td>문제풀이</td>
 						<td>2021 장사원 컨셉 생물학 기출</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/180354" target="_blank">수강신청</a></td>
+					</tr>
+					<tr>
+						<td>생물학개론</td>
+						<td>문제풀이</td>
+						<td>2021 장사원 생물학 실전동형모의고사</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/182722" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>
@@ -554,7 +569,7 @@
 						<td>유기농업기능사</td>
 						<td>이론</td>
 						<td>2020 장사원 유기농업기능사(필기)</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/158455">수강신청</a></td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/158455" target="_blank">수강신청</a></td>
 					</tr>
 				</table>
             </div>

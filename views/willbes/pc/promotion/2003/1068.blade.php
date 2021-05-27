@@ -142,15 +142,15 @@
         </div>	
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/1068_02.jpg" alt="수강신청" usemap="#Map1068abc" border="0" />
-			<map name="Map1068abc" id="Map1068abc">
-				<area shape="rect" coords="45,1331,256,1376" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" />
-				<area shape="rect" coords="314,1329,522,1377" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" />
-				<area shape="rect" coords="584,1327,793,1381" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" />
-				<area shape="rect" coords="848,1330,1060,1382" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" />
-				<area shape="rect" coords="863,450,1011,525" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180881" target="_blank" />
-				<area shape="rect" coords="864,636,1008,712" href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" />
-			</map>
+			<div class="wrap">
+				<img src="https://static.willbes.net/public/images/promotion/2021/04/1068_02.jpg" alt="수강신청"/>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" title="" style="position: absolute; left: 76.88%; top: 28.28%; width: 13.21%; height: 4.99%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" title="" style="position: absolute; left: 76.88%; top: 40.03%; width: 13.21%; height: 4.99%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" title="" style="position: absolute; left: 4.11%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" title="" style="position: absolute; left: 27.86%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180881" target="_blank" title="" style="position: absolute; left: 51.96%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" title="" style="position: absolute; left: 75.63%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
+			</div>
 		</div>
 		       
 		<div class="content_guide_wrap NSK" id="tab">

@@ -4,20 +4,16 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
-            min-width:1210px !important;
+            min-width:1120px !important;
             background:#ccc;
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1210px;}
-        br { font-family:dotum;}   
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        br { font-family:dotum;} 
 
         /************************************************************/
 
@@ -25,7 +21,10 @@
         .wb_cts01 {background:#eee}
         .wb_cts02 {background:#fff}
         .wb_cts03 {background:#d17f5a}
-        .wb_cts04 {position:relative; background:#222 url(http://file3.willbes.net/new_gosi/2018/08/180817_5_bg.png) no-repeat center top}
+        .wb_cts04 {position:relative; background:#222}
+
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:6px}
 
         /* 이용안내 */
         .wb_info {padding:100px 0;}
@@ -44,12 +43,12 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_top.png" usemap="#Map1077a" border="0" >
-            <map name="Map1077a" id="Map1077a">
-                <area shape="rect" coords="96,1073,336,1135" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank" alt="헌법"  />
-                <area shape="rect" coords="369,1075,602,1137" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank" alt="행정법"  />
-                <area shape="rect" coords="645,1073,878,1134" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank" alt="헌법,행정법" />
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1077_top.png" >
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank" title="헌법" style="position: absolute; left: 3.93%; top: 84.76%; width: 22.5%; height: 5.63%; z-index: 2;"></a>
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank" title="행정법" style="position: absolute; left: 28.48%; top: 84.76%; width: 21.88%; height: 5.63%; z-index: 2;"></a>
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank" title="헌법,행정법" style="position: absolute; left: 53.04%; top: 84.76%; width: 21.88%; height: 5.63%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts01">
@@ -65,12 +64,12 @@
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/1077_04.png" usemap="#Map1077b" border="0">
-            <map name="Map1077b" id="Map1077b">
-                <area shape="rect" coords="843,725,1042,785" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank">
-                <area shape="rect" coords="842,800,1043,859" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank">
-                <area shape="rect" coords="843,872,1042,933" href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank">
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1077_04.jpg">
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168368') }}" target="_blank" title="헌법"  style="position: absolute; left: 70.45%; top: 68.8%; width: 19.02%; height: 6.39%; z-index: 2;"></a>
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168367') }}" target="_blank" title="행정법"style="position: absolute; left: 70.45%; top: 75.86%; width: 19.02%; height: 6.39%; z-index: 2;"></a>
+                <a href="{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/168366') }}" target="_blank" title="헌법,행정법" style="position: absolute; left: 70.45%; top: 83.02%; width: 19.02%; height: 6.39%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_info" id="tip">

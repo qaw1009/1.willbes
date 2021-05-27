@@ -28,7 +28,7 @@
     <div class="evtContent NSK" id="evtContainer"> 
 
         <div class="sky" >
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2178" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/05/2219_sky.png" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2213" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/05/2219_sky.png" alt="스카이베너" ></a>
         </div>  
 
         <div class="evtCtnsBox evt_top">  

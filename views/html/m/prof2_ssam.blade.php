@@ -48,7 +48,7 @@
         <div class="tabBox lineBox lecListBox">
             {{--온라인강좌--}}
             <div id="onOffList1" class="tabContent">
-                <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
+                <ul class="tabWrap lineWrap rowlineWrap lecListWrap tabWrapSsam four mt-zero">
                     <li><a href="#leclist1" class="on">패키지</a><span class="row-line">|</span></li>
                     <li><a href="#leclist2">단과</a><span class="row-line">|</span></li>
                     <li><a href="#leclist3">특강</a><span class="row-line">|</span></li>
@@ -339,11 +339,12 @@
 
             {{--학원강좌--}}
             <div id="onOffList2" class="tabContent">
-                <ul class="tabWrap lineWrap rowlineWrap lecListWrap four mt-zero">
+                <ul class="tabWrap lineWrap rowlineWrap lecListWrap tabWrapSsam five mt-zero">
                     <li><a href="#leclist5" class="on">패키지</a><span class="row-line">|</span></li>
                     <li><a href="#leclist6">단과</a><span class="row-line">|</span></li>
+                    <li><a href="#leclist8">전국라이브</a><span class="row-line">|</span></li>
                     <li><a href="#leclist7">특강</a><span class="row-line">|</span></li>
-                    <li><a href="#leclist8">전국라이브</a></li>
+                    <li><a href="#leclist9">수강생전용</a></li>
                 </ul> 
 
                 {{--패키지 --}} 

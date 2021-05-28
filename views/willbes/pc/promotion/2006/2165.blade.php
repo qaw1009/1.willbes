@@ -15,6 +15,9 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
 		/************************************************************/ 
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); background:rgba(255,255,255,.1); border-radius:6px}
+
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/2165_top_bg.jpg) no-repeat center top;}	
         .evt_02 {background:#ececec}
 
@@ -65,26 +68,25 @@
                 <li><a href="#tab04">경제학원론</a></li>
                 <li><a href="#tab05">회계학</a></li>
 			</ul>
-			<div id="tab01">
+			<div id="tab01" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t01.jpg" alt="민법"/>
-                <a href="javascript:fnPlayerSample('161390', '1239343', 'HD');" title="" style="position: absolute; left: 78.11%; top: 39.74%; width: 17.69%; height: 7.21%; z-index: 2;"></a>
-                <a href="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 78.02%; top: 89.9%; width: 17.69%; height: 7.21%; z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('161390', '1239343', 'HD');" title="" style="position: absolute; left: 78.02%; top: 80.32%; width: 17.96%; height: 14.19%; z-index: 2;"></a>
 			</div>
-			<div id="tab02">
+			<div id="tab02" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t02.jpg" alt="감정평가관계법규"/>
-                <a href="javascript:fnPlayerSample('161410', '1240103', 'HD');" title="" style="position: absolute; left: 78.02%; top: 79.47%; width: 17.69%; height: 14.9%; z-index: 2;"></a>               
+                <a href="javascript:fnPlayerSample('161410', '1240103', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.8%; width: 17.96%; height: 14.57%; z-index: 2;"></a>               
 			</div>
-			<div id="tab03">
+			<div id="tab03" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t03.jpg" alt="부동산학원론"/>
-                <a href="javascript:fnPlayerSample('161415', '1238926', 'HD');" title="" style="position: absolute; left: 78.02%; top: 81.37%; width: 17.69%; height: 13.98%; z-index: 2;"></a>            
+                <a href="javascript:fnPlayerSample('161415', '1238926', 'HD');" title="" style="position: absolute; left: 77.93%; top: 81.06%; width: 17.96%; height: 13.66%;  z-index: 2;"></a>            
 			</div>
-            <div id="tab04">
+            <div id="tab04" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t04.jpg" alt="경제학원론"/>
-                <a href="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>                
+                <a href="javascript:alert('준비중입니다.');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.96%; height: 15.07%; z-index: 2;"></a>                
 			</div>
-            <div id="tab05">
+            <div id="tab05" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t05.jpg" alt="회계학"/>
-                <a href="javascript:fnPlayerSample('180699', '1284894', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>               
+                <a href="javascript:fnPlayerSample('180699', '1284894', 'HD');" title="" style="position: absolute; left: 77.68%; top: 81.87%; width: 17.95%; height: 12.87%; z-index: 2;"></a>               
 			</div>
 
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_01.jpg" alt="수험전략 수립 2차" />
@@ -94,15 +96,16 @@
 				<li><a href="#tab07">감정평가이론</a></li>
 				<li><a href="#tab08">감평행정법 및 보상법규</a></li>
 			</ul>
-            <div id="tab06">
+            <div id="tab06" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t06.jpg" alt="감정평가실무"/>
-                <a href="javascript:fnPlayerSample('161446', '1228538', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>                
+                <a href="javascript:fnPlayerSample('161446', '1228538', 'HD');" title="" style="position: absolute; left: 77.77%; top: 80.07%; width: 17.95%; height: 14.38%; z-index: 2;"></a>                
 			</div>
-            <div id="tab07">
+            <div id="tab07" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t07.jpg" alt="감정평가이론"/>
-                <a href="javascript:fnPlayerSample('159575', '1206886', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>               
+                <a href="javascript:fnPlayerSample('159575', '1206886', 'HD');" title="" style="position: absolute; left: 77.68%; top: 39.07%; width: 17.95%; height: 7.28%; z-index: 2;"></a>     
+                <a href="javascript:fnPlayerSample('182402', '1293229', 'HD');" title="" style="position: absolute; left: 77.68%; top: 89.57%; width: 17.95%; height: 7.28%; z-index: 2;"></a>            
 			</div>
-            <div id="tab08">
+            <div id="tab08" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_02_t08.jpg" alt="감정행정법 및 보상법규"/>
                 <a href="javascript:fnPlayerSample('165632', '1237919', 'HD');" title="" style="position: absolute; left: 77.84%; top: 79.11%; width: 17.69%; height: 13.98%; z-index: 2;"></a>              
 			</div>            
@@ -110,12 +113,12 @@
 		</div>
 
         <div class="evtCtnsBox evt_03">
-            <div>
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2165_03.jpg" alt="감평패스 신청하기" />
-                <a href="javascript:go_PassLecture('181405');" title="감평패스1차" style="position: absolute; left: 0%; top: 87.27%; width: 23.75%; height: 8.92%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('181410');" title="감평패스2차" style="position: absolute; left: 25.27%; top: 87.27%; width: 23.75%; height: 8.92%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('181411');" title="감평패스 동차 베이직" style="position: absolute; left: 50.8%; top: 87.27%; width: 23.75%; height: 8.92%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('181413');" title="감평패스 동차 프리미엄" style="position: absolute; left: 76.25%; top: 87.27%; width: 23.75%; height: 8.92%; z-index: 2;"></a>                
+                <a href="javascript:go_PassLecture('181405');" title="감평패스1차" style="position: absolute; left: 0%; top: 83.19%; width: 23.84%; height: 8.69%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('181410');" title="감평패스2차" style="position: absolute; left: 25.27%; top: 83.19%; width: 23.84%; height: 8.69%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('181411');" title="감평패스 동차 베이직" style="position: absolute; left: 50.8%; top: 83.19%; width: 23.84%; height: 8.69%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('181413');" title="감평패스 동차 프리미엄" style="position: absolute; left: 76.25%; top: 83.19%; width: 23.84%; height: 8.69%; z-index: 2;"></a>                
             </div>
             <div class="check mb100">
                 <label>
@@ -134,12 +137,12 @@
 				<ul>				
                     <li>1차 상품구성은 2021년 6월부터 2022년 3월까지 진행될 2022년 대비 감정평가사 1차 대비 강좌로 구성됩니다.</li>
                     <li>2차 상품구성은 2021년 5월부터 2022년 5월까지 진행될 2022년 대비 감정평가사 2차 대비 강좌로 구성됩니다.<br>
-                    ∙ 이론강의 – 2021년 5월 ~ 2021년 9월<br>
-                    ∙ GS0~4기 스터디 - 2021년 8월 ~ 2022년 6월<br>
+                    ∙ 이론강의 – 2021년 5월 ~ 2021년 10월<br>
+                    ∙ GS0~GS4기 스터디 - 2021년 8월 ~ 2022년 6월<br>
                     ∙ 문제풀이(단과) - 2021년 8월 ~ 2021년 12월<br>
-                    동영상 강의는 실강 진행 후 다음날 동영상 업로드(공휴일/주말 제외) 됩니다.</li>
+                    동영상 강의는 실강 진행 후 다음날 동영상 업로드(공휴일/주말 제외) 됩니다. </li>
                     <li>강사 및 학원사정에 따라 강의가 진행이 되지 않을 경우 다른 강사님의 강의로 변경될 수 있습니다.<br>
-                    강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다.</li>
+                    강의는 순차적으로 업로드 예정이며, 강의 일시와 횟수는 변경될 수 있습니다. </li>
 				</ul>
 				<div class="infoTit"><strong>수강관련</strong></div>
 				<ul>

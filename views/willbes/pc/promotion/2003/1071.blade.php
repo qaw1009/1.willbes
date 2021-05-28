@@ -24,7 +24,7 @@
         .wb_top_gif {background:#221823;}
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#000}
+        .time {width:100%; text-align:center; background:#000; display:none}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td:first-child {/*font-size:40px*/}
@@ -192,20 +192,24 @@
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_1.jpg" alt="윌비스 최우영 교수의 전기/통신직 패키지"/>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.63%; top: 26.5%; width: 22.68%; height: 1.5%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 37.95%; top: 26.5%; width: 22.68%; height: 1.5%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182688" title="전기직" style="position: absolute; left: 66.52%; top: 26.5%; width: 22.68%; height: 1.5%; z-index: 2;" target="_blank"></a>
-
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182687" title="통신직" style="position: absolute; left: 65.63%; top: 37.87%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전자직" style="position: absolute; left: 65.63%; top: 44.88%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180909" title="지방직 통신기술직" style="position: absolute; left: 63.21%; top: 57.22%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180908" title="지방직 전기직" style="position: absolute; left: 63.21%; top: 63.91%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 문풀" style="position: absolute; left: 63.21%; top: 72.34%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직 기출문풀" style="position: absolute; left: 63.21%; top: 79.06%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 실전동형모고" style="position: absolute; left: 63.21%; top: 87.5%; width: 18.84%; height: 1.28%; z-index: 2;" id="pkg" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 실전동형모고" style="position: absolute; left: 63.21%; top: 94.22%; width: 18.84%; height: 1.28%; z-index: 2;" target="_blank"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_01.jpg" alt="이론 패키지"/>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.8%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182688" title="전기직" style="position: absolute; left: 66.52%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
+            </div>
+            <div class="wrap" id="pkg">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_02.jpg" alt="군무원 패키지"/>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182687" title="통신직" style="position: absolute; left: 65.8%; top: 37.12%; width: 18.39%; height: 6.81%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전자직" style="position: absolute; left: 65.8%; top: 73.58%; width: 18.39%; height: 6.81%; z-index: 2;" target="_blank"></a>
+            </div>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_03.jpg" alt="전기/통신직 패키지"/>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180909" title="지방직 통신기술직" style="position: absolute; left: 63.3%; top: 14.38%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180908" title="지방직 전기직" style="position: absolute; left: 63.3%; top: 27.81%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 문풀" style="position: absolute; left: 63.3%; top: 44.69%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직 기출문풀" style="position: absolute; left: 63.3%; top: 58.06%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 실전동형모고" style="position: absolute; left: 63.3%; top: 75%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 실전동형모고" style="position: absolute; left: 63.3%; top: 88.31%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
             </div>
         </div>       
 

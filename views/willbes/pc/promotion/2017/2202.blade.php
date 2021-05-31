@@ -100,10 +100,10 @@
                 <div class="evt_table">
                     <div class="title NSK-Black">실전 모의고사 신청하기</div>
                     <table border="0" cellspacing="2" cellpadding="2">
+                        <col width="10%" />
+                        <col/>
                         <col width="15%" />
-                        <col width="35%" />
                         <col width="15%" />
-                        <col  />
                         <tbody>
                             <tr>
                                 <th>
@@ -129,7 +129,7 @@
                                     <ul>
                                         <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182427:613001:182427' : '159613:613001:159613'}}"/> 교육학 - 이인재 교수</label></li>
                                         <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182440:613001:182440' : '159618:613001:159618'}}"/> 교육학 - 홍의일 교수</label></li>
-                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182433:613001:182433' : '159550:613001:159550'}}"/> 국어 - 송원영/권보민 교수</label></li>
+                                        <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182433:613001:182433' : '159550:613001:159550'}}"/> 국어 - 송원영/권보민 교수 </label><span class="tx12 tx-red">채점은 선착순 100명 마감됨</span></li>
                                         <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182434:613001:182434' : '159533:613001:159533'}}"/> 수학 - 김철홍/박태영 교수</label></li>
                                         <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182441:613001:182441' : '159525:613001:159525'}}"/> 도덕윤리 - 김병찬 교수</label></li>
                                         <li><label><input type="checkbox" name="prod_code[]" value="{{ ENVIRONMENT == 'production' ? '182442:613001:182442' : '159518:613001:159518'}}"/> 전기 - 최우영 교수</label></li>
@@ -162,8 +162,8 @@
                 ※ 과목 별 채점 및 해설 강의 촬영<br>
                 - 교육학 이인재 (채점 x, 해설강의 o),  <br>
                 - 교육학 홍의일 (전원 채점 o, 해설강의 o) <br>
-                - 국어 송원영, 권보민 (부분 채점 o, 국어/문학 교육론 파트만 ‘결제 기준‘ 선착순 100명 채점 진행됨, 문법은 채점 x /100명 마감 시, 마감 안내 예정, 해설강의 o) <br>
-                - 수학 김철홍, 박태영 (‘결제 기준’ 선착순 100명 채점 진행/100명 마감 시, 마감 안내 예정, 해설강의 o)<br>
+                - 국어 송원영, 권보민 (부분 채점 o, 국어/문학 교육론 파트만 ‘결제 기준‘ 선착순 100명 채점 진행됨, 문법은 채점 x / 채점은 선착순 100명 마감됨, 해설강의 o) <br>
+                - 수학 김철홍, 박태영 (‘결제 기준’ 선착순 100명 채점 진행 / 100명 마감 시, 마감 안내 예정, 해설강의 o)<br>
                 - 도덕윤리 (채점 x, 해설강의 x, 해설 답안 제공)<br>
                 - 전기/전자 최우영 (채점 x, 해설강의 o, 해설 답안 제공)<br>
                 - 역사 (제출자 전원 채점 진행, 해설강의 o)<br>

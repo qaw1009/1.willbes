@@ -25,7 +25,7 @@
         .youtube iframe {width:900px; height:525px;}
 
 
-        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10;}
+        .evtMenu { position:absolute; left:50%; margin-left:-560px; z-index:10;padding-top:550px;}
         .evtMenu ul {width:1120px; margin:0 auto;}
         .evtMenu li {display:inline; float:left; width:25%}
         .evtMenu li a {
@@ -58,10 +58,10 @@
         .tabCts .youtube {width:100%; text-align:center; margin:3em 0}
         .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
 
-        #content_1 {padding-top:100px;padding-bottom:50px;}
-        #content_2_01 {padding-top:100px;}
-        #content_3 {padding-top:100px;}
-        #content_4 {padding-top:100px;}
+        #content_1 {padding-top:650px;padding-bottom:50px;}
+        #content_2_01 {padding-top:600px;}
+        #content_3 {padding-top:600px;}
+        #content_4 {padding-top:600px;}
         .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#806ae9}
 
         .Cts02 a {display:inline-block; padding:5px 10px; color:#fff; background:#806ae9; font-size:90%; margin-left:20px}
@@ -154,11 +154,9 @@
 
         <div class="evtCtnsBox evtTop" >
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2216_top.jpg" title="지방직 9급 풀케어 서비스" />
-            {{--
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/85P7aoE5tew?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/YF3kJtHAf_o?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            --}}
             <div class="evtMenu" id="evtMenu">
                 <ul>
                     <li>

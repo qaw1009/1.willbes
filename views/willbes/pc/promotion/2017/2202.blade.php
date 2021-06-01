@@ -29,7 +29,7 @@
         .event01 .tabs:after {content:''; display:block; clear:both}
         .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
         .event01 .evt_table {width:1030px; margin:50px auto 0; border:1px solid #333; padding:50px}
-        .evt_table table{width:100%;border-top:1px solid #e9e9e9}
+        .evt_table table{width:100%;border-top:1px solid #e9e9e9;}
         .evt_table table tr {border-bottom:1px solid #e9e9e9}
         .evt_table table th,
         .evt_table table td {margin:10px 0; font-size:16px; color:#666}
@@ -47,6 +47,9 @@
 
         .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
         .txtinfo .addbtn { display:inline-block; padding:0 20px; background:#ffe401; color:#42425b; border-radius:10px }
+
+        .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7);}
+        .evt_table .popup span {display:block; margin-top:280px; font-size:48px; color:#fff; text-shadow: 0 5px 5px rgba(0,0,0,.5);}
 
         .event02 {background:#ffe400}
 
@@ -97,7 +100,7 @@
                 <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
                 <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
-                <div class="evt_table">
+                <div class="evt_table p_re">
                     <div class="title NSK-Black">실전 모의고사 신청하기</div>
                     <table border="0" cellspacing="2" cellpadding="2">
                         <col width="10%" />
@@ -143,8 +146,10 @@
                     </table>
                     <div class="btns">
                         <input type="checkbox" name="is_chk" id="is_chk" style="display: none;" checked/>
-                        <a href="javascript:void(0);" onclick="directPayment();">실전 모의고사 바로결제하기 ></a>
+                        {{--<a href="javascript:void(0);" onclick="directPayment();">실전 모의고사 바로결제하기 ></a>--}}
+                        <a href="#none">실전 모의고사 마감</a>
                     </div>
+                    <div class="popup"><span class="NSK-Black">마감되었습니다.</span></div>
                 </div>
             </form>
 

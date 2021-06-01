@@ -56,7 +56,7 @@ class StudyComment extends BaseBoard
         $arr_subject = $this->_getSubjectArray();
 
         //교수조회
-        $arr_professor = $this->_getProfessorArray();
+        $arr_professor = $this->professorModel->getProfessorArray('','',['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']);
 
         $this->load->view("board/{$this->board_name}/index", [
             'bm_idx' => $this->bm_idx,
@@ -153,7 +153,7 @@ class StudyComment extends BaseBoard
 
         //교수조회
         //$arr_professor = $this->_getProfessorArray();
-        $arr_professor = $this->professorModel->getProfessorArray('','',['WP.wProfName' => 'asc']);
+        $arr_professor = $this->professorModel->getProfessorArray(null,null,['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']);
 
         //상품타입
         $arr_prodType_ccds = [];

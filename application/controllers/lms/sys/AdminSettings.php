@@ -31,9 +31,12 @@ class AdminSettings extends \app\controllers\BaseController
             $data = null;
         }
 
+        $data_site = $this->adminSettingsModel->listSiteCode();
+
         $this->load->view('sys/admin_settings/create', [
             'method' => $method,
             'data' => $data,
+            'data_site' => $data_site
         ]);
     }
 

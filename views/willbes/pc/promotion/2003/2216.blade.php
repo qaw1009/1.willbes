@@ -189,7 +189,7 @@
 
         <div id="content_1" class="tabCts">
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2216_01_01.jpg" title="" />
-            <a href="javascript:void(0);" title="적중 경험하기" onclick="javascript:fn_submit();" style="position: absolute; left: 26.98%; top: 38.73%; width: 46.86%; height: 3.93%; z-index: 2;"></a>
+            <a href="javascript:void(0);" title="적중 경험하기" onclick="javascript:fn_submit();" style="position: absolute; left: 26.98%; top: 49.73%; width: 46.86%; height: 3.93%; z-index: 2;"></a>
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2216_01_03.jpg" title="" />
         </div>
 

@@ -7,7 +7,8 @@ $.extend(true, $.fn.dataTable.defaults, {
     //"dom": 'T<"clear">lfBrtip',
     // searcing input box display
     //"dom": 'T<"clear"><<"pull-left mr-30"l><"pull-left"f><"pull-right"B>><"clear">rtip',
-    "dom": 'T<"clear"><<"pull-left"l><"pull-right"B>><"clear">rtip',
+    //"dom": 'T<"clear"><<"pull-left"l><"pull-right"B>><"clear">rtip',
+    "dom": 'T<"clear"><<"pull-right mb-5"B><"clear">lp><"clear">rtip',
     "aLengthMenu": [[10, 20, 50], [10, 20, 50]],
     "iDisplayLength": 20,
     "oLanguage": {

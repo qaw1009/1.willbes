@@ -94,6 +94,7 @@ class OrderAdvanceModel extends BaseOrderModel
                     when U.LecStartDate <= U.BaseDate and U.LastPauseEndDate >= U.BaseDate then "일시정지"
                   end) as StudyStatusName	
                 , M.MemId, M.MemName
+                , PC.CateCode, SC.CateName
                 , WPF.wProfName
                 , CPR.CcdName as PayRouteCcdName
                 , CPM.CcdName as PayMethodCcdName
@@ -178,6 +179,10 @@ class OrderAdvanceModel extends BaseOrderModel
                 ) as U
                     left join ' . $this->_table['member'] . ' as M
                         on U.MemIdx = M.MemIdx
+                    left join ' . $this->_table['product_r_category'] . ' as PC
+                        on U.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SC
+                        on SC.CateCode = PC.CateCode and SC.IsStatus = "Y"                        
                     left join ' . $this->_table['professor'] . ' as PF		
                         on U.ProfIdx = PF.ProfIdx and PF.IsStatus = "Y"	
                     left join ' . $this->_table['pms_professor'] . ' as WPF
@@ -204,7 +209,7 @@ class OrderAdvanceModel extends BaseOrderModel
         // 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, LearnPatternCcdName, ifnull(PackTypeCcdName, SalePatternCcdName) as ProdDetailTypeName
-                , ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , CateName, ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PayStatusName, RemainPrice, ProdDivisionRate, DivisionPayPrice, ProdCalcPerc, DivisionCalcPrice, LecStartDate, LecEndDate, RealLecEndDate, tExtenDays, tPauseDays
                 , LecPausePeriod1, LecPausePeriod2, LecPausePeriod3, StudyStatusName, LecExpireDay, LecRemainDay, LecUseDay, DivisionRemainPrice, DivisionUsePrice, BaseDate';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';
@@ -538,6 +543,7 @@ class OrderAdvanceModel extends BaseOrderModel
                       end) as DivisionUsePrice	        	      
                     , round((U.DivisionPayPrice / U.LecAmount) * U.LecRemainAmount) as DivisionRemainPrice
                     , M.MemId, M.MemName
+                    , PC.CateCode, SC.CateName
                     , PSU.SubjectName
                     , WPF.wProfName
                     , CPR.CcdName as PayRouteCcdName
@@ -550,6 +556,10 @@ class OrderAdvanceModel extends BaseOrderModel
                 ) as U
                     left join ' . $this->_table['member'] . ' as M
                         on U.MemIdx = M.MemIdx
+                    left join ' . $this->_table['product_r_category'] . ' as PC
+                        on U.ProdCode = PC.ProdCode and PC.IsStatus = "Y"
+                    left join ' . $this->_table['category'] . ' as SC
+                        on SC.CateCode = PC.CateCode and SC.IsStatus = "Y"                        
                     left join ' . $this->_table['subject'] . ' as PSU		
                         on U.SubjectIdx = PSU.SubjectIdx and PSU.IsStatus = "Y"		
                     left join ' . $this->_table['professor'] . ' as PF		
@@ -579,7 +589,7 @@ class OrderAdvanceModel extends BaseOrderModel
         // 엑셀다운로드
         if ($is_count === 'excel') {
             $excel_column = 'OrderNo, MemName, MemId, PayRouteCcdName, PayMethodCcdName, LearnPatternCcdName, ifnull(PackTypeCcdName, "") as ProdDetailTypeName, CampusCcdName
-                , ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, SubjectName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
+                , CateName, ProdCode, ProdName, ProdCodeSub, ProdNameSub, wProfName, SubjectName, RealPayPrice, left(CompleteDatm, 10) as CompleteDate, RefundPrice, left(RefundDatm, 10) as RefundDate
                 , PayStatusName, RemainPrice, ProdDivisionRate, DivisionPayPrice, ProdCalcPerc, DivisionCalcPrice, LecStartDate, LecEndDate, LecAmount, LecRemainAmount, LecUseAmount
                 , DivisionRemainPrice, DivisionUsePrice, BaseDate';
             $query = 'select ' . $excel_column . ' from (' . $query . ') as ED order by OrderIdx desc';

@@ -709,8 +709,16 @@ table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
 .dataTables_info {
     width: 30% !important;
 }
+.dataTables_length {
+    width: 30%;
+}
+.dataTables_length label {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
 .dataTables_paginate {
     width: 70% !important;
+    height: 36px;
 }
 
 /* bootstrap3 alert */

@@ -146,7 +146,7 @@ class LmsAuthService extends AdminAuthService
                 join lms_site_group SG on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus="Y" and SG.IsUse="Y"            
         ';
         $where = ' where S.IsUse = "Y" and S.IsStatus = "Y" and ASC1.wAdminIdx = ? and ASC2.wAdminIdx = ?';
-        $order_by = ' group by S.SiteCode order by SG.SiteGroupCode, S.SiteCode';
+        $order_by = ' group by S.SiteCode order by ASC1.OrderNum, S.SiteCode';
 
         // 쿼리 실행
         $query = $this->_db->query('select ' . $column . $from . $where . $order_by, ['605', $admin_idx, $admin_idx]);

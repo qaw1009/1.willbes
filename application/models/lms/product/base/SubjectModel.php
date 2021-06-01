@@ -50,7 +50,7 @@ class SubjectModel extends WB_Model
         }
 
         $data = $this->_conn->getListResult($this->_table['subject'], 'SiteCode, SubjectIdx, SubjectName', $arr_condition, null, null, [
-            'SiteCode' => 'asc', 'OrderNum' => 'asc'
+            'SiteCode' => 'asc', 'SubjectName' => 'asc'
         ]);
 
         return (empty($site_code) === false) ? array_pluck($data, 'SubjectName', 'SubjectIdx') : $data;

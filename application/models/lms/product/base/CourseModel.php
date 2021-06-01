@@ -50,7 +50,7 @@ class CourseModel extends WB_Model
         }
 
         $data = $this->_conn->getListResult($this->_table['course'], 'SiteCode, CourseIdx, CourseName', $arr_condition, null, null, [
-            'SiteCode' => 'asc', 'OrderNum' => 'asc'
+            'SiteCode' => 'asc', 'CourseName' => 'asc'
         ]);
 
         return (empty($site_code) === false) ? array_pluck($data, 'CourseName', 'CourseIdx') : $data;

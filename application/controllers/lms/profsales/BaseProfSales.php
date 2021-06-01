@@ -69,7 +69,7 @@ class BaseProfSales extends \app\controllers\BaseController
         }
         // 교수
         if (in_array('prof_idx', $this->_search_column) === true && $this->_is_tzone === false) {
-            $arr_code['arr_professor'] = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
+            $arr_code['arr_professor'] = $this->professorModel->getProfessorArray('', '', ['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']);
         }
 
         // 사용하는 코드값 조회

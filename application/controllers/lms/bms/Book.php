@@ -26,7 +26,7 @@ class Book extends \app\controllers\BaseController
         $this->load->view('bms/book/index', [
             'arr_category' => $arr_category,
             'arr_subject' => $this->subjectModel->getSubjectArray(),
-            'arr_professor' => $this->professorModel->getProfessorArray(),
+            'arr_professor' => $this->professorModel->getProfessorArray('','',['wProfName_order_by' => 'asc', 'WP.wProfName' => 'asc']),
             'arr_sale_ccd' => $this->wCodeModel->getCcd($this->_ccd['wSale']),
             'arr_disp_type_ccd' => $this->codeModel->getCcd($this->_ccd['DispType']),
         ]);

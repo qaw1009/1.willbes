@@ -878,6 +878,11 @@ class Professor extends \app\controllers\FrontController
             $data['on_lecture_before'] = $this->_getOnLectureData('on_lecture_before', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
+        // 학원 선수강좌 조회
+        if (empty($arr_prof_idx['off']) === false && $tab_id_prefix == 'off') {
+            $data['off_lecture_before'] = $this->_getOffLectureData('off_lecture_before', $arr_site_code['off'], $arr_prof_idx['off'], $arr_input);
+        }        
+
         // 온라인 사이트일 경우만 수강후기 조회
         if (APP_DEVICE == 'pc' && $this->_is_pass_site === false && $tab_id_prefix == 'on') {
             $data['study_comment'] = $this->professorFModel->findProfessorStudyCommentData($prof_idx, $this->_site_code, $this->_def_cate_code, element('subject_idx', $arr_input), 3);
@@ -886,6 +891,7 @@ class Professor extends \app\controllers\FrontController
 
         return [
             'on_lecture_before' => element('on_lecture_before', $data, []),
+            'off_lecture_before' => element('off_lecture_before', $data, []),
             'study_comment' => element('study_comment', $data, [])
         ];
     }
@@ -1094,7 +1100,7 @@ class Professor extends \app\controllers\FrontController
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;
         }
 
-        if ($learn_pattern === 'off_lecture') {
+        if ($learn_pattern === 'off_lecture' || $learn_pattern === 'off_lecture_before') {
             $arr_condition = array_replace_recursive($arr_condition, ['EQ' => ['ProfIdx' => $prof_idx]]);
         } else {
             $arr_condition = array_replace_recursive($arr_condition, ['LKB' => ['ProfIdx_String' => $prof_idx]]);

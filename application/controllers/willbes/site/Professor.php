@@ -399,7 +399,7 @@ class Professor extends \app\controllers\FrontController
                     if ($tab_id_prefix == 'on') {
                         $stab_list = array_unset($stab_list, 'on_live_lecture');    // 온라인강좌 전국라이브영상반 제외
                     } else {
-                        $stab_list = array_unset($stab_list, 'off_before_lecture'); // 학원강좌 수강생전용 제외
+                        //$stab_list = array_unset($stab_list, 'off_before_lecture');   // 학원강좌 수강생전용 제외 => 학원수강생전용 추가
                     }
                 }
 

@@ -1,7 +1,7 @@
 <form id="regi_off_form" name="regi_off_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <input type="hidden" name="learn_pattern" value="off_lecture"/>  {{-- 학습형태 --}}
+    <input type="hidden" name="learn_pattern" value="{{ get_var($tab_data_key, 'off_lecture') }}"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
@@ -19,7 +19,7 @@
                             </dt>
                         </dl>
                         <div class="w-tit tx-blue">
-                            <a href="#none" onclick="goOffLectureShow('{{ $row['ProdCode'] }}');" class="prod-name">{{ $row['ProdName'] }}</a>
+                            <a href="#none" onclick="goOffLectureShow('{{ $row['ProdCode'] }}', '{{ $tab_data_key }}');" class="prod-name">{{ $row['ProdName'] }}</a>
                         </div>
                         <dl class="w-info tx-gray">
                             <dt>개강일~종강일 : <span class="tx-blue">{{ date('m/d', strtotime($row['StudyStartDate'])) }} ~ {{ date('m/d', strtotime($row['StudyEndDate'])) }}</span>
@@ -32,8 +32,7 @@
                             @if(empty($row['ProdPriceData'] ) === false)
                                 @foreach($row['ProdPriceData'] as $price_row)
                                     @if($loop -> index === 1)
-{{--                                        <span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})--}}
-
+                                        {{--<span class="tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>(↓{{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }})--}}
                                         <div class="priceWrap">
                                             @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                 <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
@@ -91,7 +90,7 @@
 <form id="regi_visit_form" name="regi_visit_form" method="POST" onsubmit="return false;" novalidate>
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <input type="hidden" name="learn_pattern" value="off_lecture"/>  {{-- 학습형태 --}}
+    <input type="hidden" name="learn_pattern" value="{{ get_var($tab_data_key, 'off_lecture') }}"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value="off_lecture"/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value="N"/>    {{-- 바로결제 여부 --}}
     <input type="hidden" name="is_visit_pay" value="Y"/>    {{-- 방문결제 여부 --}}

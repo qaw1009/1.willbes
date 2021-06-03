@@ -228,8 +228,8 @@
     }
 
     // 학원단과반 상세보기
-    function goOffLectureShow(prod_code) {
-        location.href = '{{ front_url('/offLecture/show/prod-code/', true) }}' + prod_code;
+    function goOffLectureShow(prod_code, learn_pattern) {
+        location.href = '{{ front_url('/offLecture/show/prod-code/', true) }}' + prod_code + (learn_pattern.indexOf('_before') > -1 ? '/pattern/before' : '');
     }
 
     // 학원종합반 상세보기

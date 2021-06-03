@@ -70,7 +70,7 @@ class Professor extends \app\controllers\BaseController
 
         // 교수진소개 탭 설정 공통코드 설정
         $arr_intro_on_disp_tab_ccd = array_unset($codes['732'], '732003');  // 전국라이브영상반 제외
-        $arr_intro_off_disp_tab_ccd = array_unset($codes['732'], '732005'); // 수강생전용 제외
+        $arr_intro_off_disp_tab_ccd = $codes['732'];    // 수강생전용 제외 => 학원수강생전용 추가
 
         if (empty($params[0]) === false) {
             $method = 'PUT';

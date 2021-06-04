@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .sky {position:fixed;  top:200px; right:25px; z-index:10;}
+        .sky {position:fixed;  top:200px; right:10px; z-index:10;}
         .sky a {display:block; margin-bottom:15px}
         
         .wb_police {background:#0A0A0A}

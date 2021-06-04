@@ -17,8 +17,8 @@
         .evt_wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.25);}
 
         /************************************************************/
-        .sky {position:fixed;  top:200px; right:25px; z-index:10;}
-        .sky a {display:block; margin-bottom:15px}
+        .sky {position:fixed;  top:150px; right:25px; z-index:10;}
+        .sky a {display:block; margin-bottom:10px}
 
         .evt00 {background:#0A0A0A}
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2230_top_bg.jpg) no-repeat center top;}   
@@ -76,6 +76,7 @@
                 <a href="https://www.youtube.com/channel/UCrlOg3NtsZmwRizjmM3ASWQ" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2230_sky01.png" title="신광은 경찰팀 tv"></a>
                 <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2230_sky02.png" title="참석 go"></a>
                 <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/06/2230_sky03.png" title="소문 go"></a>
+                <a href="#evt_03"><img src="https://static.willbes.net/public/images/promotion/2021/06/2230_sky04.png" title="스벅받자"></a>
             </div>
 
             <div class="evtCtnsBox evt00">
@@ -204,6 +205,15 @@
             {{--홍보url--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_url_partial')
+            @endif 
+
+            <div class="evtCtnsBox evt04_reply" id="evt_03">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2230_04_reply.jpg" title="무엇이든 물어보세요">
+            </div>
+
+            {{--기본댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
             @endif 
 
             <div class="evtCtnsBox evt05">

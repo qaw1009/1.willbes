@@ -118,8 +118,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" >
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="소방학/법규 암기노트 전원증정"></a>            
-            <a href="#buyLec"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky03.png" alt="선착순 20명 무려 88% 할인!"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="소방학/법규 암기노트 전원증정"></a>
             <a href="#buyLec"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky04.png" alt="연간 종합반"></a>
         </div>
 
@@ -156,7 +155,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_05.jpg" alt="커리큘럼"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_05.gif" alt="커리큘럼"/>
         </div>  
         
         <div class="evtCtnsBox wb_cts06" >

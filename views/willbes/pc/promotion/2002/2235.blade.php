@@ -121,7 +121,7 @@
         .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
         .newTopDday ul li strong {line-height:70px}
         .newTopDday ul li img {width:50px}
-        .newTopDday ul li:first-child {line-height:none;padding-right:10px; padding-top:10px;}
+        .newTopDday ul li:first-child {line-height:none;padding-right:10px; padding-top:10px;width:30%;}
         .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
         .newTopDday ul:after {content:""; display:block; clear:both}
 

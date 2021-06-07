@@ -30,7 +30,6 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .evt_wrap {width:1120px; margin:0 auto; position: relative;}
-        .evt_wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.25);}
 
         .evtTop00 {background:#0a0a0a}
 
@@ -38,7 +37,7 @@
 
         .evtTop .main_img {
             position:absolute;
-            top:700px;
+            top:725px;
             left:50%;
             margin-left:-419px;
             z-index:10;
@@ -178,7 +177,7 @@
         <div class="evtCtnsBox evt03" id="mission03">
             <div class="evt_wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2220_03.jpg" title="미션3">
-                <a href="https://police.willbes.net/pass/consult/visitConsult/index" target="_blank" title="" style="position: absolute;left: 17.77%;top: 41.28%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/consult/visitConsult/index" target="_blank" title="" style="position: absolute;left: 17.77%;top: 40.5%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
             </div>
         </div>
 
@@ -201,13 +200,19 @@
                         미션2<br>
                         * 유튜브 구독, 인스타 팔로우 확인(페이지에 나와 있는 계정 전부 구독, 팔로우 하여야 합니다.)<br>
                         미션3<br>
-                        * 방문상담 예약을 반드시 하여야 하고 10:00시~12:00시 예약자만 할인 적용됩니다.<br>
+                        * 방문상담 예약을 반드시 하여야 하고 예약자만 할인 적용됩니다.<br>
                         보너스 이벤트<br>
                         * 기본완성+기출 종합반 결제 등록자에게만 적용되는 이벤트입니다.
                     </li>
                     <li>인강패스 할인쿠폰은 21년에 과정에 할인적용 되지 않습니다.(2022년 패스상품 전용)</li>  
                     <li>인강패스 할인쿠폰은 T패스 상품에 할인적용 되지 않습니다.</li>     
-                    <li>인강패스 할인쿠폰은 무제한패스, 15개월패스에만 적용됩니다.</li>         
+                    <li>인강패스 할인쿠폰은 무제한패스, 15개월패스에만 적용됩니다.</li>    
+                    <li>모든 미션 클리어시 추첨을 통하여 총 5명에게 기본완성+기출종합반(실강) 무료수강 혜택을 드립니다.<br>
+                        * 추첨 이벤트 참여방법<br> 
+                        학원 방문상담 예약하고 모든 미션에 진행여부 확인후 명단작성!!<br>
+                        최종 발표는 6/27일 개별문자 발송예정!!<br>
+                        (미션에 대한 궁금사항은 학원으로 문의주세요. 1544-0336)
+                    </li>     
 				</ul>
 			</div>
 		</div>        

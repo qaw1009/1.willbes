@@ -117,9 +117,10 @@
         </div>
 
         <div class="evtCtnsBox wb_01">
-            <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank">
+            <div class="evt_wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_01.gif" alt="룰렛 참여방법"/>
-            </a>
+                <a href="https://www.willbes.net/member/join/?ismobile=0&sitecode=2003" target="_blank" title="신규 가입하기" style="position: absolute;left: 23%;top: 63%;width: 9%;height: 3%;z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_02">

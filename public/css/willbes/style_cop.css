@@ -165,7 +165,7 @@
 	width: 74px;
 	height: 74px;
 	border-radius:6px;
-	overflow:hidden
+	overflow:hidden;
 }
 .cop .uploadLec .imgBox img {
 	position: absolute; left:50%; top:50%; width:100%;
@@ -199,10 +199,10 @@
 .cop .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
 	background:#d3b9ef;
 }
-.cop .uploadLec .lecinfo {float:left; margin-left:10px}
-.cop .uploadLec .lecinfo p {margin-bottom: 5px; color:#848484; font-size:15px}
-.cop .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 10px;}
-.cop .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px}
+.cop .uploadLec .lecinfo {float:left; margin-left:10px; width:calc(100% - 100px); position:relative; height:74px}
+.cop .uploadLec .lecinfo p {color:#848484; font-size:14px; margin-bottom:0}
+.cop .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 3px;}
+.cop .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px; position: absolute; bottom:0}
 .cop .uploadLec .bx-wrapper .bx-controls-direction {
 	position: absolute;
 	top: 0;

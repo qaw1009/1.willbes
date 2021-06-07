@@ -164,10 +164,10 @@
     .adm .uploadLec .vSlider .sliderNumV > div:nth-child(3n) .lecReview:nth-child(2n) .imgBox {
         background:#d3b9ef;
     }
-    .adm .uploadLec .lecinfo {float:left; margin-left:10px}
-    .adm .uploadLec .lecinfo p {margin-bottom: 5px; color:#848484; font-size:15px}
-    .adm .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 10px;}
-    .adm .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px}
+    .adm .uploadLec .lecinfo {float:left; margin-left:10px; width:calc(100% - 100px); position:relative; height:74px}
+    .adm .uploadLec .lecinfo p {color:#848484; font-size:14px; margin-bottom:0}
+    .adm .uploadLec .lecinfo p:nth-child(2) {color:#363636; font-size:16px; font-weight:600; margin-bottom: 3px;}
+    .adm .uploadLec .lecinfo p:nth-child(3) {color:#0c5dc0; font-size:12px; position: absolute; bottom:0}
     .adm .uploadLec .bx-wrapper .bx-controls-direction {
         position: absolute;
         top: 0;

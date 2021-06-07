@@ -1,6 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
 <!-- Container -->
+<link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
 <div id="Container" class="Container cop NGR c_both">
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto">
@@ -171,7 +172,7 @@
                                     </div>
                                     <div class="lecinfo">
                                         <p>형법 신광은</p>
-                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월)</p>
+                                        <p>2021년 1차대비 신광은 형법 기본이론(20년 11월) 2021년 1차대비 신광은 1111)</p>
                                         <p>12월 16일 총 4강 업로드</p>
                                     </div>
                                 </a>
@@ -183,7 +184,7 @@
                                     </div>
                                     <div class="lecinfo">
                                         <p>영어 하승민</p>
-                                        <p>2021년 1차대비 하승민 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>2021년 1차대비 하승민 영어 형법 기본이론(20년 11,12월) 하승민 영어 형법 기본이론(20년 11,12월)</p>
                                         <p>12월 16일 총 3강 업로드</p>
                                     </div>
                                 </a>
@@ -198,7 +199,7 @@
                                     </div>
                                     <div class="lecinfo">
                                         <p>형법 김원욱</p>
-                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월)</p>
+                                        <p>2021년 1차대비 김원욱 형법 기본이론(20년 11월) 김원욱 형법 기본이론(20년 11월)</p>
                                         <p>12월 16일 총 4강 업로드</p>
                                     </div>
                                 </a>
@@ -210,7 +211,7 @@
                                     </div>
                                     <div class="lecinfo">
                                         <p>영어 김현정</p>
-                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월)</p>
+                                        <p>2021년 1차대비 김현정 영어 형법 기본이론(20년 11,12월) 김현정 영어 형법 기본이론(20년 11,12월)</p>
                                         <p>12월 16일 총 3강 업로드</p>
                                     </div>
                                 </a>

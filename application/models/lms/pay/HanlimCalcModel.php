@@ -43,7 +43,7 @@ class HanlimCalcModel extends BaseOrderModel
                 , ifnull(PCH.PrePrice, TA.PrevPrePrice) as PrePrice, ifnull(PCH.RemainPrice, TA.PrevRemainPrice) as RemainPrice
                 , PCH.PgFeePrice, PCH.LecRemainPrice, PCH.PackRemainPrice, PCH.DeductPrice, PCH.TargetPrice
                 , PCH.LecCalcRate, PCH.LecCalcType, PCH.PackCalcRate, PCH.PackCalcType                    
-                , PCH.CalcPrice, PCH.LecCalcPrice, PCH.PackCalcPrice, PCH.TaxRate, PCH.TaxPrice, PCH.EtcDeductPrice, PCH.FinalCalcPrice, PCH.RegDatm
+                , PCH.CalcPrice, PCH.LecCalcPrice, PCH.PackCalcPrice, PCH.TaxRate, (PCH.TaxPrice * -1) as TaxPrice, PCH.EtcDeductPrice, PCH.FinalCalcPrice, PCH.RegDatm
                 , if(TA.ProdType = "OL", (select count(0) 
                     from ' . $this->_table['order_product'] . ' 
                     where ProdCode = TA.ProdCode 

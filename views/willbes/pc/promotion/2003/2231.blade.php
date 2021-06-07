@@ -41,7 +41,7 @@
 
         .wb_02 {position:relative;background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_02_bg.jpg) no-repeat center top;}
         
-        .rulletBox {position:absolute; top:360px; width:810px; left:50%; margin-left:-405px; z-index:5}
+        .rulletBox {position:absolute; top:350px; width:810px; left:50%; margin-left:-405px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:265px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127.5px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 

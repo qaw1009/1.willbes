@@ -8,7 +8,7 @@
     .evtTop {position:relative}
 </style> 
 
-<div id="Container" class="Container NSK c_both">     
+<div id="Container" class="Container NSK c_both">    
     
     <div class="evtCtnsBox">
         <img src="https://static.willbes.net/public/images/promotion/2021/04/1902m_top.gif" alt="" >
@@ -23,6 +23,7 @@
     </div> 
 
     <div class="evtCtnsBox">
+        {{--
         <img src="https://static.willbes.net/public/images/promotion/2021/04/1902m_03.jpg" alt="" usemap="#Map1902m_apply" border="0" >
         <map name="Map1902m_apply" id="Map1902m_apply">
             <area shape="rect" coords="240,782,456,844" href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="blank" />
@@ -30,6 +31,7 @@
             <area shape="rect" coords="240,1538,456,1600" href="https://pass.willbes.net/m/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="blank" />
             <area shape="rect" coords="458,1706,675,1768" href="https://pass.willbes.net/m/pass/offLecture/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="blank" />
         </map>
+        --}}
     </div> 
 
 </div>

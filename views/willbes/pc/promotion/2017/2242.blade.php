@@ -18,37 +18,7 @@
         /************************************************************/
   
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_top_bg.jpg) no-repeat center top;}
-        .event01 {background:#f0f0f0}
-        .event01 .tabs {width:1030px; margin:0 auto 10px}
-        .event01 .tabs li {display:inline; float:left; width:33.3333%}
-        .event01 .tabs a {display:block; text-align:center; background:#9f9f9f; color:#fff; height:80px; line-height:80px; margin-right:10px; font-size:28px}
-        .event01 .tabs a.active,
-        .event01 .tabs a:hover {background:#292929;}
-        .event01 .tabs li:last-child a {margin:0}
-        .event01 .tabs:after {content:''; display:block; clear:both}
-        .event01 .title {color:#383838; font-size:30px; margin-bottom:40px}
-        .event01 .evt_table {width:1030px; margin:50px auto 0; border:1px solid #333; padding:50px}
-        .evt_table table{width:100%;border-top:1px solid #e9e9e9;}
-        .evt_table table tr {border-bottom:1px solid #e9e9e9}
-        .evt_table table th,
-        .evt_table table td {margin:10px 0; font-size:16px; color:#666}
-        .evt_table table th {background:#f9f9f9; color:#000;}
-        .evt_table table td{text-align:left; padding:15px}
-        .evt_table label {margin-right:10px; line-height:28px;}
-        .evt_table input {vertical-align:middle}
-        .evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:80%; margin-bottom:5px}
-        .evt_table td input[type=text]:last-child {margin-bottom:0}
-        .evt_table input[type=checkbox] {height:20px; width:20px}
-        .evt_table td li {display:inline-block; float:left; width:50%; margin-bottom:10px}
-        .evt_table .btns {margin-top:40px}
-        .evt_table .btns a {display:inline-block; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#42425b; margin:0 10px; border-radius:40px; padding:0 50px}
-        .evt_table .btns a:hover {background:#fe544a}
-
-        .event01 .txtinfo {width:1030px; margin:0 auto; color:#fff; background:#42425b; line-height:1.5; padding:50px; text-align:left; font-size:14px}
-        .txtinfo .addbtn { display:inline-block; padding:0 20px; background:#ffe401; color:#42425b; border-radius:10px }
-
-        .evt_table .popup {position:absolute; top:0; left:0; width:100%; height: 100%; background-color:rgba(0,0,0,.7);}
-        .evt_table .popup span {display:block; margin-top:280px; font-size:48px; color:#fff; text-shadow: 0 5px 5px rgba(0,0,0,.5);}   
+        .event01 {background:#f0f0f0} 
 
         .event02 {padding-bottom:150px}
         .event02 .btn {margin-top:50px}
@@ -65,8 +35,12 @@
         .event03 .tabs a.active {background:#2b2a25; color:#fff} 
         .event03 .tabCts {float:right; position:relative}
         .event03 .tabCts a {position:absolute; z-index: 2;}
+        .event03 .tabCts a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
         .event03 .tabCts span {position:absolute; left:70px; bottom:35px; z-index: 2;}
-        .event03 .tabCts span a {border:1px solid #2f2f2f; color:#2f2f2f; height:40px; line-height:40px; display:inline-block; position:relative; margin-right:10px; padding:0 15px; font-size:15px}
+        .event03 .tabCts span a {border:1px solid #2f2f2f; color:#2f2f2f; height:40px; line-height:40px; display:inline-block; position:relative; margin-right:10px; padding:0 15px 0 40px; font-size:15px}
+        .event03 .tabCts span a.view,
+        .event03 .tabCts span a.sample {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon01.png) no-repeat 15px center;}
+        .event03 .tabCts span a.home {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
 
         .event03 .urlWrap {width:1030px; margin:0 auto}

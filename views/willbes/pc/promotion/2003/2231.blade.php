@@ -17,7 +17,7 @@
         /************************************************************/
 
         /*타이머*/
-        .time {width:100%; text-align:center; background:#ffd4d3}
+        .time {width:100%; text-align:center; background:#ffd4d3;margin-top:40px;}
         .time {text-align:center; padding:20px 0}
         .time table {width:1120px; margin:0 auto}
         .time table td {line-height:1.2}        
@@ -43,7 +43,7 @@
         
         .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:0; width:255px; 
-            height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
+            height:255px; left:50%; padding:0; margin:0; margin-left:-127.5px; background:none; z-index:6}
         .rulletBox a {position:absolute; top:350px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}

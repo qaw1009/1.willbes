@@ -40,7 +40,7 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_top_bg.jpg) no-repeat center top;}      
 
         .wb_02 {position:relative; overflow:hidden;background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_02_bg.jpg) no-repeat center top;}
-        .topimg01 {position:absolute;top:888px; width:1105px; margin-left:-507px;left:888px;z-index:1;}
+        .topimg01 {position:absolute;top:915px; width:1111px; margin-left:-556px;left:50%;z-index:1;}
 
         .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:0; width:255px; 
@@ -125,12 +125,12 @@
 
         <div class="evtCtnsBox wb_02">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_02.jpg" alt="100% 당첨"/>
+            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_img01.png" alt="야자수"/></div> 
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
-            </div>
-            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_img01.png" alt="야자수"/></div> 
+            </div>            
         </div>
 
         <div class="evtCtnsBox wb_03">

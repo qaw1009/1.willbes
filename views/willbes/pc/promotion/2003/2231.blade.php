@@ -124,13 +124,13 @@
         </div>
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_02.jpg" alt="100% 당첨"/>
-            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_img01.png" alt="야자수"/></div> 
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_02.jpg" alt="100% 당첨"/>            
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>            
+            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_img01.png" alt="야자수"/></div> 
         </div>
 
         <div class="evtCtnsBox wb_03">

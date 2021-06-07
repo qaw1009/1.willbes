@@ -337,12 +337,13 @@
 
         {{--쿠폰발급--}}
         function giveCheck() {
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
             @if(empty($arr_promotion_params) === false)
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}';
+            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params['give_type']}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params['comment_chk_yn']}}&arr_give_idx_chk={{$arr_promotion_params['arr_give_idx_chk']}}';
             ajaxSubmit($regi_form, _check_url, function (ret) {
                 if (ret.ret_cd) {
-                    alert('전국 모의고사 50% 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    alert('전국 모의고사 할인쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
                     {{--location.href = '{{ app_url('/classroom/coupon/index', 'www') }}';--}}
                 }
             }, showValidateError, null, false, 'alert');
@@ -396,9 +397,9 @@
 			.fromTo('.main_box .txt7', .6, { opacity:0,x:500,delay:-.3},{ opacity:1,x:0, transformOrigin: "center center", ease: Circ.easeOut,delay:-.3})
 			.fromTo('.main_box .txt8', .6, { opacity:0,x:-500,delay:-.3},{ opacity:1,x:0, transformOrigin: "center center", ease: Circ.easeOut,delay:-.3})
 
-		fnSetExam(0,0);
-		fnSetExam(1,2);
-		fSchViewChg(2);
+		//fnSetExam(0,0);
+		//fnSetExam(1,2);
+		//fSchViewChg(2);
 
 	});
     </script>

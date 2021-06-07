@@ -39,9 +39,8 @@
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_top_bg.jpg) no-repeat center top;}      
 
-        .wb_02 {position:relative; overflow:hidden;background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_02_bg.jpg) no-repeat center top;}
-        .topimg01 {position:absolute;top:915px; width:1111px; margin-left:-556px;left:50%;z-index:1;}
-
+        .wb_02 {position:relative;background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_02_bg.jpg) no-repeat center top;}
+        
         .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
         .rulletBox .btn-roulette {position:absolute; top:0; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127px; background:none; z-index:6}
@@ -130,7 +129,6 @@
                 <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>            
-            <div class="topimg01"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_img01.png" alt="야자수"/></div> 
         </div>
 
         <div class="evtCtnsBox wb_03">

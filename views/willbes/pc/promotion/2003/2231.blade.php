@@ -127,7 +127,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_02.jpg" alt="100% 당첨"/>            
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="rouletteStart(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
+                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>            
         </div>
@@ -209,19 +209,6 @@
           $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
-
-        function rouletteStart(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
-
-            @if(sess_data('is_login') === true)
-                @if(strtotime($arr_base['member_info']['JoinDate']) < strtotime('202106070000') || $arr_base['member_info']['interest'] != '718002') {{-- 관심직렬 => 공무원 --}}
-                    alert('신규 회원가입 시 관심직렬을 [공무원]으로 체크한 회원만 참여 가능합니다.');
-                    return;
-                @endif
-            @endif
-
-            startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png');
-        }
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

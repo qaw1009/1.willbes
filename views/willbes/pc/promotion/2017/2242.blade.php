@@ -27,35 +27,21 @@
 
         .event03 {background:#f7c8b8; padding:150px 0}
         .event03 .wrap {width:1030px; margin:0 auto;}
-        .event03 .tabs {width:200px; float:left}
-        .event03 .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:40px; line-height:40px; padding:0 15px}
-        .event03 .tabs a:last-child {border-bottom:1px solid #2b2a25}
-        .event03 .tabs a span {float:right}
-        .event03 .tabs a:hover,
-        .event03 .tabs a.active {background:#2b2a25; color:#fff} 
-        .event03 .tabCts {float:right; position:relative}
-        .event03 .tabCts a {position:absolute; z-index: 2;}
-        .event03 .tabCts a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
-        .event03 .tabCts span {position:absolute; left:70px; bottom:35px; z-index: 2;}
-        .event03 .tabCts span a {border:1px solid #2f2f2f; color:#2f2f2f; height:40px; line-height:40px; display:inline-block; position:relative; margin-right:10px; padding:0 15px 0 40px; font-size:15px}
-        .event03 .tabCts span a.view,
-        .event03 .tabCts span a.sample {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon01.png) no-repeat 15px center;}
-        .event03 .tabCts span a.home {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
+        .event03 .wrap .tabs {width:200px; float:left}
+        .event03 .wrap .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:40px; line-height:40px; padding:0 15px}
+        .event03 .wrap .tabs a:last-child {border-bottom:1px solid #2b2a25}
+        .event03 .wrap .tabs a span {float:right}
+        .event03 .wrap .tabs a:hover,
+        .event03 .wrap .tabs a.active {background:#2b2a25; color:#fff} 
+        .event03 .wrap .tabCts {float:right; position:relative}
+        .event03 .wrap .tabCts div > a {position:absolute; z-index: 2;}
+        .event03 .wrap .tabCts div > a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
+        .event03 .wrap .tabCts span {position:absolute; left:70px; bottom:35px; z-index: 2;}
+        .event03 .wrap .tabCts span a {border:1px solid #2f2f2f; color:#2f2f2f; height:40px; line-height:40px; display:inline-block; position:relative; margin-right:10px; padding:0 15px 0 40px; font-size:15px}
+        .event03 .wrap .tabCts span a.view,
+        .event03 .wrap .tabCts span a.sample {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon01.png) no-repeat 15px center;}
+        .event03 .wrap .tabCts span a:last-child {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
-
-        .event03 .urlWrap {width:1030px; margin:0 auto}
-        .urlWrap .urladd {padding:20px; background:#2e2e3c; color:#fff; margin:40px auto 20px; font-size:14px}
-        .urlWrap .urladd input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; background:#f5f5f5; vertical-align:middle; width:70%; margin:0 10px; color:#000}
-        .urlWrap .urladd a {display:inline-block; height:28px; line-height:28px; color:#2e2e3c; background:#ffc943; padding:0 20px; vertical-align:middle}
-        .urlWrap .evt_table {width:100%; background-color:#fff !important; padding:20px 0}
-        .urlWrap .evt_table table td {font-size:14px; text-align:center}
-        .urlWrap .evt_table table td:nth-child(2) {text-align:left}
-        .urlWrap .txtinfo {line-height:1.4; text-align:left; font-size:16px; margin-top:50px; color:#fff}
-        .urlWrap .txtinfo h4 {font-size:30px; margin-bottom:20px; font-weight:bold}
-        .urlWrap .txtinfo li {list-style-type: disc; margin-left:20px; margin-bottom:5px}
-
-        .evtBox {width:1120px; margin:0 auto; position:relative}
-        .evtBox a:hover {background:rgba(0,0,0,.2)}
 
         .evtInfo {padding:80px 0; background:#494949; font-size:16px; color:#fff}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -122,7 +108,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('178011','1272380','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('180506','1284408','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -133,7 +119,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('174863','1256181','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('180505','1284406','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -146,7 +132,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177278','1268655','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('180507','1284409','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -159,7 +145,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('178013','1272383','HD');" class="view" target="_blank">샘플강의(1)보기</a>
                             <a href="javascript:fnPlayerSample('180509','1284429','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -170,7 +156,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177269','1267102','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('179276','1278897','HD');" class="sample" target="_blank">합격사례발표보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -181,7 +167,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('174875','1256221','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('180511','1284412','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -192,7 +178,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('178018','1272389','HD');" class="view" target="_blank">샘플강의(1)보기</a>
                             <a href="javascript:fnPlayerSample('180513','1284419','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -203,7 +189,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('178019','1272395','HD');" class="view" target="_blank">샘플강의(1)보기</a>
                             <a href="javascript:fnPlayerSample('180515','1284421','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -214,7 +200,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177113','1267652','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178020','1272398','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -225,7 +211,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -236,7 +222,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177588','1270307','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178021','1272402','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -247,7 +233,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('174887','1256241','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178022','1272405','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -258,7 +244,7 @@
                         <span>
                             <a href="javascript:fnPlayerSample('177264','1268646','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178024','1272411','HD');" class="sample" target="_blank">샘플강의보기</a>
-                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" class="home" target="_blank">교수페이지</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지</a>
                         </span>
                     </div>
 
@@ -298,7 +284,7 @@
                 controls:false,
                 minSlides:1,
                 maxSlides:1,
-                adaptiveHeight: true,
+                /*adaptiveHeight: true,*/
                 slideWidth:980,
                 slideMargin:0,
                 autoHover: true,

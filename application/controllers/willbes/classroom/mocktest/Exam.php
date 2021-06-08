@@ -281,6 +281,17 @@ class Exam extends \app\controllers\FrontController
      */
     public function examEndAjax()
     {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[PUT]'],
+            ['field' => 'mr_idx', 'label' => '모의고사식별자', 'rules' => 'trim|required|integer'],
+            ['field' => 'prod_code', 'label' => '상품코드', 'rules' => 'trim|required|integer'],
+            ['field' => 'log_idx', 'label' => '로그식별자', 'rules' => 'trim|required|integer'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
         $result = $this->mockExamFModel->examEnd($this->_reqP(null, false));
         $this->json_result($result, '저장되었습니다.', $result);
     }

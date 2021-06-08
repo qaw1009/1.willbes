@@ -305,6 +305,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-1-1">조정점수 반영 여부 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 item">
+                        <div class="radio">
+                            <input type="radio" id="is_adjust_n" name="is_adjust" class="flat" value="N" required="required" title="조정점수반영여부" @if($method == 'POST' || $data['IsAdjust'] == 'N')checked="checked"@endif/> <label for="is_adjust_n" class="input-label">미반영</label>
+                            <input type="radio" id="is_adjust_y" name="is_adjust" class="flat" value="Y" title="조정점수반영여부" @if($data['IsAdjust'] == 'Y')checked="checked"@endif/> <label for="is_adjust_y" class="input-label">반영</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-1-1">필수과목 <span class="required">*</span>
                         <br><button type="button" class="btn btn-sm btn-primary act-su-search" data-su-type="E">검색</button>
                     </label>

@@ -41,10 +41,10 @@
 
         .wb_02 {position:relative;background:url(https://static.willbes.net/public/images/promotion/2021/06/2231_02_bg.jpg) no-repeat center top;}
         
-        .rulletBox {position:absolute; top:649px; width:810px; left:50%; margin-left:-410px; z-index:5}
-        .rulletBox .btn-roulette {position:absolute; top:0; width:255px; 
+        .rulletBox {position:absolute; top:350px; width:810px; left:50%; margin-left:-405px; z-index:5}
+        .rulletBox .btn-roulette {position:absolute; top:265px; width:255px; 
             height:255px; left:50%; padding:0; margin:0; margin-left:-127.5px; background:none; z-index:6}
-        .rulletBox a {position:absolute; top:350px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
+        .rulletBox a {position:absolute; top:650px; left:650px; width:80px; height:80px; line-height:60px; color:#000; background:#fff; 
             border-radius:40px;
             border:10px solid #000; z-index:6}
         .rulletBox a:hover {background:#F84671; color:#fff}
@@ -127,7 +127,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2231_02.jpg" alt="100% 당첨"/>            
             <div class="rulletBox">
                 <canvas id="box_roulette" class="tutCanvas" width="810" height="810">Canvas not supported</canvas>
-                <button id="btn_roulette" class="btn-roulette" onclick="startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png'); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
+                <button id="btn_roulette" class="btn-roulette" onclick="rouletteStart(); this.disabled=true;"><img src="https://static.willbes.net/public/images/promotion/2021/06/2231_rull_start.png" alt="start" /></button>
                 <a id="reset_roulette" href="javascript:;" onclick="resetRoulette();" >Reset</a>
             </div>            
         </div>
@@ -209,6 +209,18 @@
           $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
+
+        function rouletteStart(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            @if(sess_data('is_login') === true && $arr_base['member_info']['interest'] != '718002') {{-- 관심직렬 => 공무원 --}}
+                alert('이벤트 기간 내 윌비스 통합사이트 신규회원가입 및 [관심직렬]→[공무원] 체크 시에만 참여 가능합니다.');
+                return;
+            @endif
+
+            startRoulette('https://static.willbes.net/public/images/promotion/2020/12/1950_rull_gift0','png');
+        }
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

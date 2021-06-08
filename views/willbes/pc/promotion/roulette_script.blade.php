@@ -16,7 +16,7 @@
 
     //룰렛 상품 조회
     function rouletteData() {
-        var param = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
+        var param = {{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }};
         var _url = '{{ front_url('/roulette/info/') }}' + param;
         var _data = {};
         sendAjax(_url, _data, function (ret) {
@@ -50,7 +50,7 @@
     }
 
     function startRoulette(img_url,img_extension) {
-        var roulette_code = '{{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }}';
+        var roulette_code = {{ (empty($arr_promotion_params['roulette_code']) === true) ? '' : $arr_promotion_params['roulette_code'] }};
         var _url = '{{ front_url('/roulette/store/') }}' + roulette_code;
         var _data = {};
         $('.btn-roulette > img').css('-webkit-filter','invert(0.4)');

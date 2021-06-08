@@ -17,7 +17,7 @@
         .evtTop01 {background:#241B20 url("https://static.willbes.net/public/images/promotion/2020/11/1902_top01_bg.jpg") center top no-repeat}
         .evtTop02 {background:#15161A url("https://static.willbes.net/public/images/promotion/2020/11/1902_top02_bg.jpg") center top no-repeat}
 
-        .evt02 {background:#866038; padding:150px 0}
+        .evt02 {background:#866038;}
         .evt02 div {width:1000px; margin:0 auto; padding:20px; background:#fff; font-size:14px}
         .evt02 th,
         .evt02 td {padding:20px 10px;}
@@ -64,15 +64,14 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1902_01.jpg" alt="이벤트 안내" />
         </div>  
 
-        <div class="evtCtnsBox evt02" id="evt02">
-            {{--
+        <div class="evtCtnsBox evt02" id="evt02"> 
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="행정직">
                 <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="소방직">
                 <area shape="rect" coords="816,1117,1008,1180" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" alt="군무원">
-            </map>
-            --}}
+            </map>   
+            {{--
             <div>
                 <table>
                     <thead>
@@ -198,6 +197,7 @@
                     </tbody>
                 </table>
             </div>
+            --}}
         </div>
 
         <div class="evtCtnsBox wb_info" id="info">

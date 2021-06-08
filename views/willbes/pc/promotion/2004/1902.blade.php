@@ -65,12 +65,14 @@
         </div>  
 
         <div class="evtCtnsBox evt02" id="evt02"> 
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1902_02.jpg" alt="이벤트 안내" usemap="#Map1902_02" border="0" />
             <map name="Map1902_02">
                 <area shape="rect" coords="112,1118,309,1182" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="행정직">
                 <area shape="rect" coords="461,1118,659,1181" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D " target="_blank" alt="소방직">
                 <area shape="rect" coords="816,1117,1008,1180" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" alt="군무원">
             </map>   
+            --}}
             {{--
             <div>
                 <table>

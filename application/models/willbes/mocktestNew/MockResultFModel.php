@@ -307,7 +307,8 @@ class MockResultFModel extends WB_Model
                     WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}'
                 ) AS a
                 INNER JOIN (
-                    SELECT MrIdx, MpIdx, RANK() OVER (PARTITION BY MpIdx ORDER BY RANK) MyRank
+                    #SELECT MrIdx, MpIdx, RANK() OVER (PARTITION BY MpIdx ORDER BY RANK) MyRank
+                    SELECT MrIdx, MpIdx, OrgPoint, RANK() OVER (PARTITION BY MpIdx ORDER BY OrgPoint DESC) MyRank
                     FROM {$this->_table['mock_grades']}
                     WHERE ProdCode = '{$prod_code}'
                 ) AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
@@ -322,7 +323,7 @@ class MockResultFModel extends WB_Model
                 ,COUNT(A.MpIdx) AS MemCount                     #응시인원
                 ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
-                    SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
+                    SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
                     FROM {$this->_table['mock_register']} AS a
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx

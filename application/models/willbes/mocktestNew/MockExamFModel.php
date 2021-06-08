@@ -20,6 +20,7 @@ class MockExamFModel extends WB_Model
         'product_sale' => 'lms_product_sale',
         'category' => 'lms_sys_category',
         'mock_log' => 'lms_mock_log',
+        'mock_grades' => 'lms_mock_grades',
         'lms_member' => 'lms_member'
     ];
 
@@ -77,7 +78,7 @@ class MockExamFModel extends WB_Model
 
         $column = "
             MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
-            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.IsOpen,
+            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.IsOpen, A.TotalScore,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
             IFNULL((SELECT RemainSec FROM {$this->_table['mock_log']} WHERE MrIdx = A.MrIdx ORDER BY RemainSec LIMIT 1), (MP.TakeTime*60)) AS RemainSec
@@ -88,6 +89,7 @@ class MockExamFModel extends WB_Model
                 SELECT 
                 mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
+                SUM(mp.TotalScore) AS TotalScore,
                 GROUP_CONCAT(pmp.MpIdx ORDER BY pmp.OrderNum ASC) AS MpIdx,
                 GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName) ORDER BY pmp.OrderNum ASC) AS subject_names,
                 GROUP_CONCAT(CONCAT(pmp.MpIdx,'|',pmp.IsOpen) ORDER BY pmp.OrderNum ASC) AS IsOpen
@@ -96,6 +98,7 @@ class MockExamFModel extends WB_Model
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
                 JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
+                JOIN {$this->_table['mock_paper']} AS mp ON pmp.MpIdx = mp.MpIdx AND mp.IsStatus = 'Y' AND mp.IsUse = 'Y'
                 {$where}
                 GROUP BY mr.ProdCode
             ) AS A
@@ -388,6 +391,8 @@ class MockExamFModel extends WB_Model
 
     /**
      * 정답제출
+     * @param array $formData
+     * @return array|bool
      */
     public function answerSave($formData = [])
     {
@@ -409,7 +414,7 @@ class MockExamFModel extends WB_Model
             $select_column = "
                 '".$MemIdx."', '".$MrIdx."', '".$ProdCode."', MA.MpIdx, MQ.MqIdx, LogIdx, Answer, if(LOCATE(Answer , RightAnswer), 'Y', 'N') AS IsWrong, MA.RegDatm
             ";
-            $query = "
+            $query = /** @lang text */ "
                 INSERT INTO {$this->_table['mock_answerpaper']} ({$insert_column})
                 SELECT {$select_column}
                 FROM {$this->_table['mock_answertemp']} AS MA
@@ -419,7 +424,6 @@ class MockExamFModel extends WB_Model
             if($this->_conn->query($query) === false) {
                 throw new \Exception('정답 제출에 실패했습니다.');
             };
-
             $this->_conn->trans_commit();
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
@@ -495,13 +499,26 @@ class MockExamFModel extends WB_Model
             $ProdCode = element('prod_code', $formData);
             $LogIdx = element('log_idx', $formData);
             $MrIdx = element('mr_idx', $formData);
+            $mem_idx = $this->session->userdata('mem_idx');
+
+            $arr_condition = [
+                'EQ' => [
+                    'mr.ProdCode' => $ProdCode,
+                    'mr.MrIdx' => $MrIdx,
+                    'mr.MemIdx' => $mem_idx
+                ]
+            ];
+            $register_info = $this->mockExamFModel->registerInfo($arr_condition);
+            if(empty($register_info) === true){
+                throw new \Exception('조회된 시험정보가 없습니다.');
+            }
 
             // 데이터 수정
             $data = [
                 'IsTake' => 'Y',
                 'RegDatm' => date('Y-m-d H:i:s')
             ];
-            $this->_conn->set($data)->where(['MemIdx' => $this->session->userdata('mem_idx'), 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
+            $this->_conn->set($data)->where(['MemIdx' => $mem_idx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx]);
             if ($this->_conn->update($this->_table['mock_register']) === false) {
                 throw new \Exception('상태수정에 실패했습니다.');
             }
@@ -511,6 +528,33 @@ class MockExamFModel extends WB_Model
             $this->_conn->set($data)->set('RegDatm', 'NOW()', false)->where(['LogIdx' => $LogIdx]);
             if ($this->_conn->update($this->_table['mock_log']) === false) {
                 throw new \Exception('상태수정에 실패했습니다.');
+            }
+
+            //IsAdjust 'N'인 경우
+            if ($register_info['IsAdjust'] == 'N') {
+                //grades 삭제 후 입력
+                $where = ['MemIdx' => $mem_idx, 'ProdCode' => $ProdCode, 'MrIdx' => $MrIdx];
+                if ($this->_conn->delete($this->_table['mock_grades'], $where) === false) {
+                    throw new \Exception('총점 데이터 삭제에 실패했습니다.');
+                }
+
+                $insert_column = "MemIdx, MrIdx, ProdCode, MpIdx, UseTime, OrgPoint, AdjustPoint, Rank, StandardDeviation";
+                $select_column = "'{$mem_idx}', '{$MrIdx}', '{$ProdCode}', MpIdx, RemainSec, SUM(Scoring) AS OrgPoint, SUM(Scoring) AS AdjustPoint, 0, 0";
+                $query = /** @lang text */ "
+                    INSERT INTO {$this->_table['mock_grades']} ({$insert_column})
+                    SELECT {$select_column}
+                    FROM (
+                        SELECT MA.MpIdx, MQ.MqIdx, LogIdx, Answer, IF(LOCATE(Answer , RightAnswer), 'Y', 'N') AS IsWrong, MQ.Scoring
+                        ,(SELECT RemainSec FROM {$this->_table['mock_log']} WHERE LogIdx = '{$LogIdx}' ) AS RemainSec
+                        FROM {$this->_table['mock_answertemp']} AS MA
+                        JOIN {$this->_table['mock_questions']} AS MQ ON MA.MqIdx = MQ.MqIdx AND MQ.IsStatus = 'Y' AND MQ.IsStatus = 'Y'
+                        WHERE MemIdx = {$mem_idx} AND ProdCode = {$ProdCode} AND MrIdx = {$MrIdx} ORDER BY MpIdx
+                    ) AS a
+                    WHERE a.IsWrong = 'Y'
+                    GROUP BY MpIdx";
+                if ($this->_conn->query($query) === false) {
+                    throw new \Exception('총점 저장에 실패했습니다.');
+                };
             }
 
             $this->_conn->trans_commit();

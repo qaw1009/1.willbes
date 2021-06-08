@@ -111,9 +111,10 @@ class Result extends \app\controllers\FrontController
 
         //과목별 점수
         $subject_result = $this->mockResultFModel->registerForSubjectDetail($prod_code, $mr_idx);
-        $subject_data = $this->_setSubjectData($subject_result);
+        $subject_data = $this->_setSubjectData($subject_result,$productInfo['IsAdjust']);
 
-        $this->load->view('/classroom/mocktestNew/result/stat_total', [
+        $view_path = ($productInfo['IsAdjust'] == 'Y') ? 'stat_total' : 'stat_total_n';
+        $this->load->view('/classroom/mocktestNew/result/'.$view_path, [
             'page_type' => 'total',
             'productInfo' => $productInfo,
             'gradeInfo' => $gradeInfo,
@@ -293,9 +294,10 @@ class Result extends \app\controllers\FrontController
     /**
      * 과목별 점수 데이터 가공
      * @param $subject_result
-     * @return array
+     * @param $is_adjust //조정점수반영여부
+     * @return array[]
      */
-    private function _setSubjectData($subject_result)
+    private function _setSubjectData($subject_result,$is_adjust)
     {
         $arr_subject_e = $arr_subject_s = [];
         foreach ($subject_result as $key => $row) {
@@ -310,12 +312,12 @@ class Result extends \app\controllers\FrontController
         foreach ($subject_result as $key => $val) {
             if ($val['MockType'] == 'E') {
                 $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
-                $data_e['전체'][$val['MpIdx']] = $val['AvgOrgPoint'];
+                $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
                 $data_e['상위10%'][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
                 $data_e['상위30%'][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
-                /*$data_default_e['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];*/
+                if ($is_adjust == 'Y') $data_default_e['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];
             }
 
             if ($val['MockType'] == 'S') {
@@ -331,7 +333,7 @@ class Result extends \app\controllers\FrontController
                 $data_s['상위10%'][$val['MpIdx']]['adjust'] = $val['Top10AvgAdjustPoint'];
                 $data_s['상위30%'][$val['MpIdx']]['org'] = $val['Top30AvgOrgPoint'];
                 $data_s['상위30%'][$val['MpIdx']]['adjust'] = $val['Top30AvgAdjustPoint'];
-                /*$data_default_s['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];*/
+                if ($is_adjust == 'Y') $data_default_s['표준편차'][$val['MpIdx']] = $val['StandardDeviation'];
             }
         }
 

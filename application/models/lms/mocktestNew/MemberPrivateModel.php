@@ -147,7 +147,7 @@ class MemberPrivateModel extends WB_Model
 
         $column = "
             M.ProdCode, MB.MemIdx, MB.MemName, CONCAT(MB.Phone1,'-',fn_dec(MB.Phone2Enc),'-',MB.phone3) AS Phone
-            ,M.TakeNumber, M.TakeMockPart, M.TakeForm, M.TakeArea, M.IsTake, PM.MockYear, PM.MockRotationNo
+            ,M.TakeNumber, M.TakeMockPart, M.TakeForm, M.TakeArea, M.IsTake, PM.MockYear, PM.MockRotationNo, PM.IsAdjust
             ,PD.ProdName, C1.CateName, M.SubjectIdxs, M.SubjectNames, M.RegDatm AS ExamRegDatm
             ,fn_ccd_name(M.TakeMockPart) AS TakeMockPartName
             ,fn_ccd_name(M.TakeForm) AS TakeFormName
@@ -278,7 +278,8 @@ class MemberPrivateModel extends WB_Model
                     WHERE ProdCode = '{$prod_code}' AND MrIdx = '{$mr_idx}'
                 ) AS a
                 INNER JOIN (
-                    SELECT MrIdx, MpIdx, RANK() OVER (PARTITION BY MpIdx ORDER BY RANK) MyRank
+                    #SELECT MrIdx, MpIdx, RANK() OVER (PARTITION BY MpIdx ORDER BY RANK) MyRank
+                    SELECT MrIdx, MpIdx, OrgPoint, RANK() OVER (PARTITION BY MpIdx ORDER BY OrgPoint DESC) MyRank
                     FROM {$this->_table['mock_grades']}
                     WHERE ProdCode = '{$prod_code}'
                 ) AS b ON a.MrIdx = b.MrIdx AND a.MpIdx = b.MpIdx
@@ -293,7 +294,7 @@ class MemberPrivateModel extends WB_Model
                 ,COUNT(A.MpIdx) AS MemCount                     #응시인원
                 ,fn_ccd_name(A.TakeMockPart) AS TakeMockPartName
                 FROM (
-                    SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, b.Rank, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
+                    SELECT a.ProdCode, a.TakeMockPart, b.MpIdx, e.MockType, b.OrgPoint, b.AdjustPoint, b.StandardDeviation, c.SubjectIdx, d.SubjectName
                     FROM {$this->_table['mock_register']} AS a
                     INNER JOIN {$this->_table['mock_grades']} AS b ON a.MrIdx = b.MrIdx
                     INNER JOIN {$this->_table['mock_register_r_paper']} AS c ON a.MrIdx = c.MrIdx AND c.MpIdx = b.MpIdx
@@ -393,7 +394,7 @@ class MemberPrivateModel extends WB_Model
 
         $column = "
             MP.*, MB.MemName, A.OrderProdIdx, A.MrIdx, A.TakeNumber, A.TakeMockPartName,
-            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names,
+            IFNULL(A.IsDate, MP.TakeStartDatm) AS IsDate, A.MpIdx, A.subject_names, A.TotalScore,
             PD.ProdName, PD.SaleStartDatm, PD.SaleEndDatm, PS.SalePrice, PS.RealSalePrice,
             C1.CateName, C1.IsUse AS IsUseCate, Temp.LogIdx,
             IFNULL((SELECT RemainSec FROM {$this->_table['mock_log']} WHERE MrIdx = A.MrIdx ORDER BY RemainSec LIMIT 1), (MP.TakeTime*60)) AS RemainSec
@@ -404,13 +405,15 @@ class MemberPrivateModel extends WB_Model
                 SELECT 
                 mr.ProdCode, mr.OrderProdIdx, mr.MrIdx, mr.MemIdx, mr.TakeNumber, fn_ccd_name(mr.TakeMockPart) AS TakeMockPartName,
                 mr.IsTake AS MrIsStatus, mr.RegDatm AS IsDate,
+                SUM(mp.TotalScore) AS TotalScore,
                 GROUP_CONCAT(pmp.MpIdx) AS MpIdx,
-                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName)) AS subject_names
+                GROUP_CONCAT(CONCAT(pmp.MockType,'|',pmp.MpIdx,'@',ps.SubjectName) ORDER BY pmp.OrderNum ASC) AS subject_names
                 FROM {$this->_table['mock_register']} AS mr
                 JOIN {$this->_table['order_product']} AS OP ON mr.ProdCode = OP.ProdCode AND mr.OrderProdIdx = OP.OrderProdIdx AND OP.PayStatusCcd = '676001'
                 JOIN {$this->_table['mock_register_r_paper']} AS mrp ON mr.MrIdx = mrp.MrIdx
                 JOIN {$this->_table['product_mock_r_paper']} AS pmp ON mrp.ProdCode = pmp.ProdCode AND mrp.MpIdx = pmp.MpIdx AND pmp.IsStatus = 'Y'
                 JOIN {$this->_table['product_subject']} AS ps ON mrp.SubjectIdx = ps.SubjectIdx
+                JOIN {$this->_table['mock_paper']} AS mp ON pmp.MpIdx = mp.MpIdx AND mp.IsStatus = 'Y' AND mp.IsUse = 'Y'
                 {$where}
                 GROUP BY mr.ProdCode
             ) AS A

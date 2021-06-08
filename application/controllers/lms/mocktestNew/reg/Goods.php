@@ -238,6 +238,7 @@ class Goods extends BaseMocktest
             ['field' => 'TakeTime', 'label' => '응시시간', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'PaperType', 'label' => '시험지제공형태', 'rules' => 'trim|required|in_list[I,P]'],
             ['field' => 'is_paper_download', 'label' => '시험지다운로드여부', 'rules' => 'trim|required|in_list[Y,N]'],
+            ['field' => 'is_adjust', 'label' => '조정점수반영여부', 'rules' => 'trim|required|in_list[Y,N]'],
 
             ['field' => 'MpIdx[]', 'label' => '과목선택', 'rules' => 'trim|required|is_natural_no_zero'],
             ['field' => 'MockType[]', 'label' => '과목선택', 'rules' => 'trim|required|in_list[E,S]'],

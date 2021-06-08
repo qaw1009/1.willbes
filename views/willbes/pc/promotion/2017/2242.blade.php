@@ -221,8 +221,12 @@
 
                     <div id="tab11">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t11.png" alt="최우영" />
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182654" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182650" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182654" title="학원강의" target="_blank" style="left: 8.4%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182655" title="학원강의" target="_blank" style="left: 18.89%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182656" title="학원강의" target="_blank" style="left: 29.38%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182650" title="온라인강의" target="_blank" style="left: 40.74%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182651" title="온라인강의" target="_blank" style="left: 51.11%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182652" title="온라인강의" target="_blank" style="left: 61.73%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177588','1270307','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178021','1272402','HD');" class="sample" target="_blank">샘플강의보기</a>

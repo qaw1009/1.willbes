@@ -23,7 +23,7 @@
         .event02 {padding-bottom:150px}
         .event02 .btn {margin-top:50px}
         .event02 .btn a {display:block; width:400px; margin:0 auto; background:#2b2a25; color:#fff; padding:15px 0; font-size:26px}
-        .event02 .btn a:hover {background:#000; color:#f7c8b8}
+        .event02 .btn a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .event03 {background:#f7c8b8; padding:150px 0}
         .event03 .wrap {width:1030px; margin:0 auto;}
@@ -42,6 +42,10 @@
         .event03 .wrap .tabCts span a.sample {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon01.png) no-repeat 15px center;}
         .event03 .wrap .tabCts span a:last-child {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
+
+        .event04 {padding:150px 0; background:#45e6d7; font-size:40px; color:#2b2a25}
+        .event04 a {display:block; width:300px; margin:20px auto 0; font-size:20px; background:#2b2a25; color:#fff; padding:15px 0}
+        .event04 a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .evtInfo {padding:80px 0; background:#494949; font-size:16px; color:#fff}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -217,8 +221,12 @@
 
                     <div id="tab11">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t11.png" alt="최우영" />
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182654" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182650" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182654" title="학원강의" target="_blank" style="left: 8.4%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182655" title="학원강의" target="_blank" style="left: 18.89%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182656" title="학원강의" target="_blank" style="left: 29.38%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182650" title="온라인강의" target="_blank" style="left: 40.74%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182651" title="온라인강의" target="_blank" style="left: 51.11%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182652" title="온라인강의" target="_blank" style="left: 61.73%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177588','1270307','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178021','1272402','HD');" class="sample" target="_blank">샘플강의보기</a>
@@ -251,6 +259,11 @@
                 </div>
             </div>            
         </div> 
+
+        <div class="evtCtnsBox event04 NSK-Black">
+            2021년 패키지 강의 및  07~08월 단과 일정 확인하기 
+            <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank" class="NSK">강의목록 확인하기</a>
+        </div>
 
         <div class="eventWrap evtInfo">
             <div class="evtInfoBox">

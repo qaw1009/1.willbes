@@ -214,7 +214,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(sess_data('is_login') === true && $arr_base['member_info']['interest'] != '718002') {{-- 관심직렬 => 공무원 --}}
-                alert('신규 회원가입 시 관심직렬을 [공무원]으로 체크한 회원만 참여 가능합니다.');
+                alert('이벤트 기간 내 윌비스 통합사이트 신규회원가입 및 [관심직렬]→[공무원] 체크 시에만 참여 가능합니다.');
                 return;
             @endif
 

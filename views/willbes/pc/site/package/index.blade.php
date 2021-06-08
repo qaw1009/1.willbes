@@ -44,7 +44,7 @@
                                 <input type="radio" id="school_year" name="school_year" value="" onclick="goUrl('school_year', '');" @if(empty(element('school_year', $arr_input)) === true) checked="checked" @endif/>
                                 <label for="school_year">전체</label>
                             </span>
-                                @for($i=2017; $i<=date('Y')+2; $i++)
+                                @for($i=date('Y')-2; $i<=date('Y')+2; $i++)
                                     <span>
                                     <input type="radio" id="school_year" name="school_year" value="{{ $i }}" onclick="goUrl('school_year', '{{ $i }}');" @if(element('school_year', $arr_input) == $i) checked="checked" @endif/>
                                     <label for="school_year">{{ $i }}년</label>

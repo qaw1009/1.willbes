@@ -65,10 +65,9 @@
 
         <div class="skybanner">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/1721_sky.png" usemap="#Map1721sky" title="신규강의 개강" border="0"/>
-            <map name="Map1721sky">
-                <area shape="rect" coords="13,117,108,261" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67KCE6riw" target="_blank" alt="전기">
-                <area shape="rect" coords="12,280,111,355" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&amp;campus_ccd=605001&amp;search_text=UHJvZE5hbWU67KCE7J6Q" target="_blank" alt="전자">
-              <area shape="rect" coords="12,368,111,440" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&amp;campus_ccd=605001&amp;search_text=UHJvZE5hbWU67Ya17Iug" target="_blank" alt="통신" />
+            <map name="Map1721sky" id="Map1721sky">
+                <area shape="rect" coords="1,129,120,266" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
+                <area shape="rect" coords="4,291,121,435" href="https://pass.willbes.net/pass/offLecture/index?cate_code=3048&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" />
             </map>
         </div> 
 

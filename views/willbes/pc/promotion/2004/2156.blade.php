@@ -411,14 +411,14 @@
             <div id="tab01s">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts.png" usemap="#Map2156a" border="0" />
                 <map name="Map2156a" id="Map2156a">
-                    <area shape="rect" coords="247,243,645,320" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCAyMOuqhSDtlZzsoJUg6riI7JWh4piFIOu2iOq9gw%3D%3D" target="_blank"/>
+                    <area shape="rect" coords="247,243,645,320" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XSDrtojqvYPshozrsKk%3D" target="_blank"/>
                 </map>
             </div> 
 
             <div id="tab02s">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" usemap="#Map2156b" border="0" />
                 <map name="Map2156b" id="Map2156b">
-                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU64piF67aIL%2Bq9gy%2FsnbQv67KkL%2B2KuOKYheyEoOywqeyInCA1MOuqhSDtlZzsoJUg6riI7JWh4piFW0xJVkU%3D" target="_blank"/>
+                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XVtMSVZFXSDrtojqvYPshozrsKk%3D" target="_blank"/>
                 </map>
             </div>
         </div>  
@@ -426,8 +426,8 @@
         <div class="evtCtnsBox wb_cts08" >
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스" usemap="#Map2156c" border="0"/>
             <map name="Map2156c" id="Map2156c">
-                <area shape="rect" coords="215,446,453,507" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA1LTIyLjAzXVvrtojqvYPshozrsKldIOqzteyxhCDsl7DqsIQg7KKF7ZWp" target="_blank"/>
-                <area shape="rect" coords="668,446,908,509" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA1LTIyLjAzXVvrtojqvYPshozrsKldIOqyveyxhCDsl7DqsIQg7KKF7ZWp" target="_blank"/>
+                <area shape="rect" coords="215,446,453,507" href="https://pass.willbes.net/pass/offPackage/show/prod-code/182771" target="_blank"/>
+                <area shape="rect" coords="668,446,908,509" href="https://pass.willbes.net/pass/offPackage/show/prod-code/182775" target="_blank"/>
             </map>
         </div>
 

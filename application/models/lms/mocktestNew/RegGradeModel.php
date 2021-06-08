@@ -1529,7 +1529,7 @@ class RegGradeModel extends WB_Model
     {
         $arr_user_point = $this->_getUserPoint($prod_code);         //유저별, 과목별 점수 (가산점포함)
         $arr_user_avg_data = $this->_getUserAvgPoint($prod_code);   //유저별, 과목별 평균점수 (가산점포함)
-        $arr_set_rank = $this->_arrSetRank($arr_user_point);
+        /*$arr_set_rank = $this->_arrSetRank($arr_user_point);*/
 
         //과목별 표준편차
         $arr_sum = null;
@@ -1567,9 +1567,9 @@ class RegGradeModel extends WB_Model
                 }
             }
 
-            if (empty($arr_set_rank[$val['MpIdx']]) === false) {
+            /*if (empty($arr_set_rank[$val['MpIdx']]) === false) {
                 $arr_user_point[$key]['Rank'] = $arr_set_rank[$val['MpIdx']][$val['SumOrgPoint']] + 1;
-            }
+            }*/
         }
         return $arr_user_point;
     }
@@ -1590,7 +1590,8 @@ class RegGradeModel extends WB_Model
             $return_data[$key]['UseTime'] = $val['Rsec'];
             $return_data[$key]['OrgPoint'] = $val['SumOrgPoint'];
             $return_data[$key]['AdjustPoint'] = $val['AdjustPoint'];
-            $return_data[$key]['Rank'] = $val['Rank'];
+            /*$return_data[$key]['Rank'] = $val['Rank'];*/
+            $return_data[$key]['Rank'] = 0;
             $return_data[$key]['StandardDeviation'] = $val['StandardDeviation'];
         }
         return $return_data;

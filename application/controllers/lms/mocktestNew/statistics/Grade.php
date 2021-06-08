@@ -127,7 +127,7 @@ class Grade extends BaseMocktest
             $arr_total_avg[$row['TakeMockPart']]['최고점'] = $row['AvgMaxOrgPoint'];
             $arr_total_avg[$row['TakeMockPart']]['상위10%'] = $row['AvgTop10AvgOrgPoint'];
             $arr_total_avg[$row['TakeMockPart']]['상위30%'] = $row['AvgTop30AvgOrgPoint'];
-            $arr_total_avg[$row['TakeMockPart']]['표준편차'] = $row['AvgStandardDeviation'];
+            if ($product_info['IsAdjust'] == 'Y') $arr_total_avg[$row['TakeMockPart']]['표준편차'] = $row['AvgStandardDeviation'];
             $arr_total_avg[$row['TakeMockPart']]['응시인원'] = $row['AvgMemCount'];
         }
 
@@ -152,7 +152,7 @@ class Grade extends BaseMocktest
                 $data_e['최고점'][$val['TakeMockPart']][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['상위10%'][$val['TakeMockPart']][$val['MpIdx']] = $val['Top10AvgOrgPoint'];
                 $data_e['상위30%'][$val['TakeMockPart']][$val['MpIdx']] = $val['Top30AvgOrgPoint'];
-                $data_default_e['표준편차'][$val['TakeMockPart']][$val['MpIdx']] = $val['StandardDeviation'];
+                if ($product_info['IsAdjust'] == 'Y') $data_default_e['표준편차'][$val['TakeMockPart']][$val['MpIdx']] = $val['StandardDeviation'];
                 $data_default_e['응시인원'][$val['TakeMockPart']][$val['MpIdx']] = $val['MemCount'];
             }
 

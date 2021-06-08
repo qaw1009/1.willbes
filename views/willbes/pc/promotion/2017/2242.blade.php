@@ -23,7 +23,7 @@
         .event02 {padding-bottom:150px}
         .event02 .btn {margin-top:50px}
         .event02 .btn a {display:block; width:400px; margin:0 auto; background:#2b2a25; color:#fff; padding:15px 0; font-size:26px}
-        .event02 .btn a:hover {background:#000; color:#f7c8b8}
+        .event02 .btn a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .event03 {background:#f7c8b8; padding:150px 0}
         .event03 .wrap {width:1030px; margin:0 auto;}
@@ -42,6 +42,10 @@
         .event03 .wrap .tabCts span a.sample {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon01.png) no-repeat 15px center;}
         .event03 .wrap .tabCts span a:last-child {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
+
+        .event04 {padding:150px 0; background:#45e6d7; font-size:40px; color:#2b2a25}
+        .event04 a {display:block; width:300px; margin:20px auto 0; font-size:20px; background:#2b2a25; color:#fff; padding:15px 0}
+        .event04 a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .evtInfo {padding:80px 0; background:#494949; font-size:16px; color:#fff}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -251,6 +255,11 @@
                 </div>
             </div>            
         </div> 
+
+        <div class="evtCtnsBox event04 NSK-Black">
+            2021년 패키지 강의 및  07~08월 단과 일정 확인하기 
+            <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank" class="NSK">강의목록 확인하기</a>
+        </div>
 
         <div class="eventWrap evtInfo">
             <div class="evtInfoBox">

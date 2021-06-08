@@ -35,7 +35,7 @@
         .event03 .wrap .tabs a.active {background:#2b2a25; color:#fff} 
         .event03 .wrap .tabCts {float:right; position:relative}
         .event03 .wrap .tabCts div > a {position:absolute; z-index: 2;}
-        .event03 .wrap .tabCts div > a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
+        .event03 .wrap .tabCts a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
         .event03 .wrap .tabCts span {position:absolute; left:70px; bottom:35px; z-index: 2;}
         .event03 .wrap .tabCts span a {border:1px solid #2f2f2f; color:#2f2f2f; height:40px; line-height:40px; display:inline-block; position:relative; margin-right:10px; padding:0 15px 0 40px; font-size:15px}
         .event03 .wrap .tabCts span a.view,

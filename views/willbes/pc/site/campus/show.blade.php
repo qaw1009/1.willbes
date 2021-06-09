@@ -97,6 +97,25 @@
         </div>
     </div>
 
+    {{-- 경찰학원 경기광주 캠퍼스 --}}
+    @if(($__cfg['SiteCode'] == '2002') && ($campus_code == '605010'))
+        {{--//유튜브 모달팝업--}}
+        <style type="text/css">
+            #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
+        </style>
+        <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox">
+            <div class="Layer-Cont" id="youtube_box">
+                <iframe width="850" height="482" src="https://www.youtube.com/embed/oG2U5f2IuWQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <ul class="btnWrapbt popbtn mt10">
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
+                <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+            </ul>
+        </div>
+        <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+    @endif
+    
+
     {!! popup('657001', $__cfg['SiteCode'], '0', $campus_code) !!}
 
     <script type="text/javascript">
@@ -111,6 +130,53 @@
             $('.noticeTabs .tabWrap li a').removeClass('on');
             $('.noticeTabs .tabWrap #hover_{{ $arr_input['tab'] }}').addClass('on');
             $('.noticeTabs .tabBox .tabContent').css('display', 'block');
+        });
+
+        //유튜브 모달팝업 close 버튼 클릭
+        var youtube_html;
+        $(document).ready(function() {                
+            $('.PopupWrap').on('click', '.btn-popup-close', function() {
+                youtube_html = $('#youtube_box');
+                $('#youtube_box').html('');
+
+                var popup_idx = $(this).data('popup-idx');
+                var hide_days = $(this).data('popup-hide-days');
+
+                // 팝업 close
+                $(this).parents('.PopupWrap').fadeOut();
+
+                //하루 보지않기
+                if (hide_days !== '') {
+                    var domains = location.hostname.split('.');
+                    var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
+
+                    $.cookie('_wb_client_popup_' + popup_idx, 'done', {
+                        domain: domain,
+                        path: '/',
+                        expires: hide_days
+                    });
+                }
+
+                // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리
+                if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
+                    $('#PopupBackWrap').fadeOut();
+                }
+            });
+
+            // 백그라운드 클릭 --}}
+            $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
+                youtube_html = $('#youtube_box');
+                $('#youtube_box').html('');
+                $('.PopupWrap.modal').fadeOut();
+                $(this).fadeOut();
+            });
+
+            // 팝업 오늘하루안보기 하드코딩
+            if($.cookie('_wb_client_popup_860') !== 'done') {
+                $('#Popup').show();
+                $('.PopupWrap').fadeIn();
+                $('#PopupBackWrap').fadeIn();
+            }
         });
     </script>
 @stop

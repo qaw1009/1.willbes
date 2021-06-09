@@ -15,8 +15,8 @@
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1068#tab5">유기농업기능사</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전송기술직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">통신기술직</a></li>
-                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전기직</a></li>
-                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1728#apply">전자직</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전기직</a></li>
+                    <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1071">전자직</a></li>
                     <li><a href="https://pass.willbes.net/lecture/index/cate/3028/pattern/only?search_order=regist&series_ccd=614021">토목직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/1915">축산직</a></li>
                     <li><a href="https://pass.willbes.net/promotion/index/cate/3028/code/2000">기계직</a></li>

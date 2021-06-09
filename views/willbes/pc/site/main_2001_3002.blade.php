@@ -57,7 +57,7 @@
                             @foreach($data['lecture_update_info'] as $row)
                                 @if($loop->index % 2 == 1)
                                     <div>
-                                        @endif
+                                @endif
                                         <div class="lecReview">
                                             <a href="{{ front_url('/lecture/show/cate/' . $row['CateCode'] . '/pattern/only/prod-code/' . $row['ProdCode']) }}">
                                                 <div class="imgBox">
@@ -65,12 +65,12 @@
                                                 </div>
                                                 <div class="lecinfo">
                                                     <p>{{$row['SubjectName']}} {{$row['ProfNickName']}}</p>
-                                                    <p>{{ $row['ProdName'] }}</p>
+                                                    <p>{{ (mb_strlen($row['ProdName'], 'UTF-8') > 75 ? mb_substr($row['ProdName'],'0','75','UTF-8').'...' : $row['ProdName']) }}</p>
                                                     <p>{{ date("m", strtotime($row['unit_regdate'])) }}월 {{ date("d", strtotime($row['unit_regdate'])) }}일 총 {{ $row['unit_cnt'] }}강 업로드</p>
                                                 </div>
                                             </a>
                                         </div>
-                                        @if($loop->index % 2 == 0)
+                                @if($loop->index % 2 == 0)
                                     </div>
                                 @endif
                             @endforeach

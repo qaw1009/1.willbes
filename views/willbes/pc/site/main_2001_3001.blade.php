@@ -87,7 +87,7 @@
                     <span class="tx16 NSK-Thin pt10 ml20">2022년 경찰 합격을 위한 선택! 과목개편 대비 강좌을 경험해보세요.</span>
                 </div>
                 <ul class="SecBanner03">
-                    @for($i=1; $i<=4; $i++)
+                    @for($i=1; $i<=3; $i++)
                         @if(isset($data['arr_main_banner']['메인_전문교수진'.$i]) === true)
                             <li>
                                 {!! banner_html($data['arr_main_banner']['메인_전문교수진'.$i]) !!}

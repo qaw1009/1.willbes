@@ -37,6 +37,7 @@
         <ul>
             <li class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>
             <li class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>
+            <li class="mb10"><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>
             <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/m//2001_720x127_01.jpg" alt="배너명"></a></li>
         </ul>
     </div>

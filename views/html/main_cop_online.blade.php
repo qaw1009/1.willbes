@@ -313,17 +313,22 @@
             <ul class="SecBanner03">
                 <li>
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_01.jpg" title="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_274x415_01.jpg" title="배너명">
                     </a>
                 </li>
                 <li>
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_02.jpg" title="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_274x415_02.jpg" title="배너명">
                     </a>
                 </li>
                 <li>
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_370x415_03.jpg" title="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_274x415_03.jpg" title="배너명">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="https://static.willbes.net/public/images/promotion/main/2001/2001_274x415_03.jpg" title="배너명">
                     </a>
                 </li>
             </ul>

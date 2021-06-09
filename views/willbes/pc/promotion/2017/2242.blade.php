@@ -28,8 +28,9 @@
         .event03 {background:#f7c8b8; padding:150px 0}
         .event03 .wrap {width:1030px; margin:0 auto;}
         .event03 .wrap .tabs {width:200px; float:left}
-        .event03 .wrap .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:40px; line-height:40px; padding:0 15px}
-        .event03 .wrap .tabs a:last-child {border-bottom:1px solid #2b2a25}
+        .event03 .wrap .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:47px; line-height:47px; padding:0 15px}
+        .event03 .wrap .tabs a:first-child {height:51px; line-height:51px;}
+        .event03 .wrap .tabs a:last-child {border-bottom:1px solid #2b2a25; height:51px; line-height:51px;}
         .event03 .wrap .tabs a span {float:right}
         .event03 .wrap .tabs a:hover,
         .event03 .wrap .tabs a.active {background:#2b2a25; color:#fff} 

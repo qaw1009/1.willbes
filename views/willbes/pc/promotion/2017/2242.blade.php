@@ -20,17 +20,17 @@
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_top_bg.jpg) no-repeat center top;}
         .event01 {background:#f0f0f0} 
 
-        .event02 {padding-bottom:150px}
+        .event02 {padding-bottom:80px}
         .event02 .btn {margin-top:50px}
         .event02 .btn a {display:block; width:400px; margin:0 auto; background:#2b2a25; color:#fff; padding:15px 0; font-size:26px}
         .event02 .btn a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
-        .event03 {background:#f7c8b8; padding:150px 0}
+        .event03 {background:#e8e8e8; padding:80px 0}
         .event03 .wrap {width:1030px; margin:0 auto;}
         .event03 .wrap .tabs {width:200px; float:left}
-        .event03 .wrap .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:47px; line-height:47px; padding:0 15px}
-        .event03 .wrap .tabs a:first-child {height:51px; line-height:51px;}
-        .event03 .wrap .tabs a:last-child {border-bottom:1px solid #2b2a25; height:51px; line-height:51px;}
+        .event03 .wrap .tabs a {display:block; text-align:left; font-size:16px; border:1px solid #2b2a25; border-bottom:0; height:44px; line-height:44px; padding:0 15px}
+        .event03 .wrap .tabs a:first-child {height:45px; line-height:45px;}
+        .event03 .wrap .tabs a:last-child {border-bottom:1px solid #2b2a25; height:45px; line-height:45px;}
         .event03 .wrap .tabs a span {float:right}
         .event03 .wrap .tabs a:hover,
         .event03 .wrap .tabs a.active {background:#2b2a25; color:#fff} 
@@ -44,8 +44,8 @@
         .event03 .wrap .tabCts span a:last-child {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
 
-        .event04 {padding:150px 0; background:#45e6d7; font-size:40px; color:#2b2a25}
-        .event04 a {display:block; width:300px; margin:20px auto 0; font-size:20px; background:#2b2a25; color:#fff; padding:15px 0}
+        .event04 {padding:60px 0; background:#fec8a6 url(https://static.willbes.net/public/images/promotion/2021/06/2242_04_bg.jpg) no-repeat center top; font-size:44px; color:#333}
+        .event04 a {display:block; background:#2b2a25; font-size:22px; color:#fff; padding:0 30px; height:50px; line-height:50px; width:300px; margin:20px auto 0}
         .event04 a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .evtInfo {padding:80px 0; background:#494949; font-size:16px; color:#fff}
@@ -97,6 +97,7 @@
                     <a href="#tab04">전공국어 <span>권보민</span></a>
                     <a href="#tab05">전공영어 <span>김유석</span></a>
                     <a href="#tab06">전공영어 <span>김영문</span></a>
+                    <a href="#tab14">전공수학 <span>김철홍</span></a>
                     <a href="#tab07">수학교육론 <span>박태영</span></a>
                     <a href="#tab08">도덕윤리 <span>김병찬</span></a>
                     <a href="#tab09">전공역사 <span>최용림</span></a>
@@ -130,10 +131,10 @@
 
                     <div id="tab03">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t03.png" alt="송원영" />
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182465" title="송원영+권보민 학원" target="_blank" style="left: 8.02%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182466" title="송원영+권보민 온라인" target="_blank" style="left: 30.15%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182460" title="학원강의" target="_blank" style="left: 53.95%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182463" title="온라인강의" target="_blank" style="left: 75.93%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182465" title="송원영+권보민 학원" target="_blank" style="left: 8.02%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182466" title="송원영+권보민 온라인" target="_blank" style="left: 30.15%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182460" title="학원강의" target="_blank" style="left: 53.95%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182463" title="온라인강의" target="_blank" style="left: 75.93%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177278','1268655','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('180507','1284409','HD');" class="sample" target="_blank">샘플강의보기</a>
@@ -143,10 +144,10 @@
 
                     <div id="tab04">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t04.png" alt="권보민" />
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182465" title="송원영+권보민 학원" target="_blank" style="left: 8.02%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182466" title="송원영+권보민 온라인" target="_blank" style="left: 30.15%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182469" title="학원강의" target="_blank" style="left: 53.95%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
-                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182470" title="온라인강의" target="_blank" style="left: 75.93%; top: 75.12%; width: 21.85%; height: 10.47%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182465" title="송원영+권보민 학원" target="_blank" style="left: 8.02%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182466" title="송원영+권보민 온라인" target="_blank" style="left: 30.15%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182469" title="학원강의" target="_blank" style="left: 53.95%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182470" title="온라인강의" target="_blank" style="left: 75.93%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('178013','1272383','HD');" class="view" target="_blank">샘플강의(1)보기</a>
                             <a href="javascript:fnPlayerSample('180509','1284429','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
@@ -211,8 +212,12 @@
 
                     <div id="tab10">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t10.png" alt="다이애나" />
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 8.15%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 18.77%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 29.14%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 40.49%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 51.36%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 61.36%; top: 76.14%; width: 10.74%; height: 9.57%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view" target="_blank">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample" target="_blank">샘플강의보기</a>
@@ -257,13 +262,23 @@
                         </span>
                     </div>
 
+                    <div id="tab14">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t14.png" alt="김철홍" />
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176977" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176965" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <span>
+                            <a href="javascript:fnPlayerSample('177738','1271110','HD');" class="view" target="_blank">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178017','1272387','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985" target="_blank">교수페이지</a>
+                        </span>
+                    </div>
+
                 </div>
             </div>            
         </div> 
 
         <div class="evtCtnsBox event04 NSK-Black">
-            2021년 패키지 강의 및  07~08월 단과 일정 확인하기 
-            <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank" class="NSK">강의목록 확인하기</a>
+            2021년 패키지 강의 및  07~08월 단과 일정 <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank">확인하기 </a>
         </div>
 
         <div class="eventWrap evtInfo">

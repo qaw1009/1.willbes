@@ -195,7 +195,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_01.jpg" alt="이론 패키지"/>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.8%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
                 <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182688" title="전기직" style="position: absolute; left: 66.52%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" style="position: absolute; left: 66.52%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
             </div>
             <div class="wrap" id="pkg">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_02.jpg" alt="군무원 패키지"/>

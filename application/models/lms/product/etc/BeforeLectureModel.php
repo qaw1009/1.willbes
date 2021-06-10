@@ -41,7 +41,6 @@ class BeforeLectureModel extends WB_Model
                             ,\'0\' as applyCnt
                             ,IF( (NOW() BETWEEN ValidPeriodStartDate AND ValidPeriodEndDate) = 0, \'만료\', \'\') as dateStatus
                             ,Z.wAdminName
-                            
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -52,12 +51,14 @@ class BeforeLectureModel extends WB_Model
                         lms_before_lecture A
                         join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_tar
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', ee.wShootingCcd_Name) separator \'<BR>\') as prodname_tar
                             ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
+                                join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
+                                join wbs_cms_lecture_basics ee on dd.wLecIdx = ee.wLecIdx
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'T\'
                             group by aa.BlIdx,aa.BeforeLectureGroup
@@ -65,12 +66,14 @@ class BeforeLectureModel extends WB_Model
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_ess
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', ee.wShootingCcd_Name) separator \'<BR>\') as prodname_ess
                             ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
+                                join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
+                                join wbs_cms_lecture_basics ee on dd.wLecIdx = ee.wLecIdx
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'E\'
                             group by aa.BlIdx,aa.BeforeLectureGroup
@@ -95,12 +98,9 @@ class BeforeLectureModel extends WB_Model
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(true);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
-        // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

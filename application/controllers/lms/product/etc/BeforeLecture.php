@@ -31,7 +31,6 @@ Class BeforeLecture extends \app\controllers\BaseController
         ];
 
         if( !empty($this->_reqP('search_type')) && !empty($this->_reqP('search_value')) ) {
-
                 $arr_condition = array_merge($arr_condition, [
                     'ORG1' => [
                         'LKB' => [
@@ -40,7 +39,6 @@ Class BeforeLecture extends \app\controllers\BaseController
                         ]
                     ],
                 ]);
-
             if( $this->_reqP('search_type') === 'ess' ) {   //선택까지 검색
                 $arr_condition = array_merge_recursive($arr_condition, [
                     'ORG1' => [

@@ -83,7 +83,7 @@
   </div>   
   
   <div class="evtCtnsBox youtube">
-    <iframe width="1120" height="720" src="https://www.youtube.com/embed/mvr3PvyMmZ4?autoplay=1&mute=1;playlist=mvr3PvyMmZ4&amp=loop=1" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    <iframe width="1120" height="720" src="https://www.youtube.com/embed/mvr3PvyMmZ4?rel=0&autoplay=1&mute=1;playlist=mvr3PvyMmZ4&amp=loop=1" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
   </div>
   
   <div class="evtCtnsBox wb_ctstop">

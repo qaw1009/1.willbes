@@ -51,14 +51,14 @@ class BeforeLectureModel extends WB_Model
                         lms_before_lecture A
                         join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.wShootingCcd_Name,\'</span>\') separator \'<BR>\') as prodname_tar
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_tar
                             ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join wbs_cms_lecture_basics ee on dd.wLecIdx = ee.wLecIdx
+                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'T\'
                             group by aa.BlIdx,aa.BeforeLectureGroup
@@ -66,14 +66,14 @@ class BeforeLectureModel extends WB_Model
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.wShootingCcd_Name,\'</span>\') separator \'<BR>\') as prodname_ess
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_ess
                             ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join wbs_cms_lecture_basics ee on dd.wLecIdx = ee.wLecIdx
+                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'E\'
                             group by aa.BlIdx,aa.BeforeLectureGroup

@@ -44,8 +44,9 @@
         .event03 .wrap .tabCts span a:last-child {background:url(https://static.willbes.net/public/images/promotion/2021/06/2242_icon02.png) no-repeat 15px center;}
         .event03 .wrap:after {content:''; display:block; clear:both}
 
-        .event04 {padding:60px 0; background:#fec8a6 url(https://static.willbes.net/public/images/promotion/2021/06/2242_04_bg.jpg) no-repeat center top; font-size:44px; color:#333}
-        .event04 a {display:block; background:#2b2a25; font-size:22px; color:#fff; padding:0 30px; height:50px; line-height:50px; width:300px; margin:20px auto 0}
+        .event04 {padding:60px 0; background:#fec8a6 url(https://static.willbes.net/public/images/promotion/2021/06/2242_04_bg.jpg) no-repeat center top; font-size:40px; color:#333}
+        .event04 strong {color:#064c75;}
+        .event04 a {display:inline-block; background:#2b2a25; font-size:20px; color:#fff; padding:0 30px; height:50px; line-height:50px; width:280px; margin:0 auto; vertical-align:middle}
         .event04 a:hover {background:#000; box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .evtInfo {padding:80px 0; background:#494949; font-size:16px; color:#fff}
@@ -278,7 +279,7 @@
         </div> 
 
         <div class="evtCtnsBox event04 NSK-Black">
-            2021년 패키지 강의 및  07~08월 단과 일정 <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank">확인하기 </a>
+            2021년 <strong>패키지 강의</strong> 및  07~08월 <strong>단과 일정</strong> <a href="https://ssam.willbes.net/support/notice/show?board_idx=338714&s_cate_code_disabled=Y" target="_blank">확인하기 </a>
         </div>
 
         <div class="eventWrap evtInfo">

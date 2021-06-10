@@ -23,6 +23,9 @@
 
         .sky {position:fixed; top:225px;right:25px;z-index:10;}
 
+        .youtube {background:#000;}
+        .youtube iframe {width:1120px; height:720px}
+
         .wb_ctstop {position:relative; overflow:hidden; background:url("https://static.willbes.net/public/images/promotion/2020/08/1767_top_bg.jpg") center top  no-repeat;}
         .wb_cts01 > div {width:1120px; margin:0 auto; position:relative;}
         .wb_ctstop span{position:absolute;top:702px;left:50%;margin-left:-271px;opacity:0;opacity:1 \0/IE9;animation: zoomAni .1s 1s ease-in-out both;} 
@@ -78,6 +81,10 @@
           <img src="https://static.willbes.net/public/images/promotion/2020/12/1767_sky.png" alt="" >
       </a>             
   </div>   
+  
+  <div class="evtCtnsBox youtube">
+    <iframe width="1120" height="720" src="https://www.youtube.com/embed/mvr3PvyMmZ4?rel=0&autoplay=1&mute=1;playlist=mvr3PvyMmZ4&amp=loop=1" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+  </div>
   
   <div class="evtCtnsBox wb_ctstop">
     <div class>

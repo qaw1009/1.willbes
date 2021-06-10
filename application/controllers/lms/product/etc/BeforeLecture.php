@@ -5,7 +5,6 @@ Class BeforeLecture extends \app\controllers\BaseController
 {
     protected $models = array( 'sys/wCode','sys/site','sys/code','product/on/lecture','product/off/offLecture','product/etc/beforeLecture');
 
-
     public function __construct()
     {
         parent::__construct();
@@ -53,8 +52,6 @@ Class BeforeLecture extends \app\controllers\BaseController
                 ]);
             }
         }
-
-        //var_dump($arr_condition);
 
         $list = [];
         $count = $this->beforeLectureModel->listLecture(true, $arr_condition);
@@ -137,7 +134,6 @@ Class BeforeLecture extends \app\controllers\BaseController
         }
 
         $result = $this->beforeLectureModel->{$method.'BeforeLecture'}($this->_reqP(null));
-        //var_dump($result);exit;
         $this->json_result($result, '저장 되었습니다.', $result);
     }
 

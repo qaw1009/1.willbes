@@ -51,7 +51,7 @@ class BeforeLectureModel extends WB_Model
                         lms_before_lecture A
                         join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', ee.wShootingCcd_Name) separator \'<BR>\') as prodname_tar
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.wShootingCcd_Name,\'</span>\') separator \'<BR>\') as prodname_tar
                             ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
@@ -66,7 +66,7 @@ class BeforeLectureModel extends WB_Model
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', ee.wShootingCcd_Name) separator \'<BR>\') as prodname_ess
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.wShootingCcd_Name,\'</span>\') separator \'<BR>\') as prodname_ess
                             ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa

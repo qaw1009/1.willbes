@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchLectureBlend extends \app\controllers\BaseController
 {
-    protected $models = array('sys/code','product/on/lecture','product/on/lectureFree','product/off/offLecture','sys/site');
+    protected $models = array('sys/code','product/on/lecture','product/on/lectureFree','product/off/offLecture','sys/site','sys/category','product/base/course','product/base/subject');
     protected $helpers = array();
 
     public function __construct()
@@ -25,6 +25,10 @@ class SearchLectureBlend extends \app\controllers\BaseController
             'site_code' => $this->_req('site_code')
             ,'LearnPatternCcd' => $learn_pattern_ccd
             ,'locationid' => $this->_req('locationid')
+            ,'arr_lg_category' => $this->categoryModel->getCategoryArray('', '', '', 1)
+            ,'arr_subject' => $this->subjectModel->getSubjectArray()
+            ,'arr_course' => $this->courseModel->getCourseArray()
+            ,'studypattern_ccd' => $this->codeModel->getCcd('653')
         ]);
     }
 
@@ -40,8 +44,16 @@ class SearchLectureBlend extends \app\controllers\BaseController
             'EQ' => [
                 'B.LearnPatternCcd' => $LearnPatternCcd,
                 'A.SiteCode' => $this->_reqP('site_code'),
+                'C.CateCode' => $this->_reqP('search_md_cate_code'),    //현재 미사용
+                'B.CampusCcd' => $this->_reqP('CampusCcd'),
+                'B.SubjectIdx' => $this->_reqP('search_subject_idx'),
+                'B.CourseIdx' => $this->_reqP('search_course_idx'),
+                'B.StudyPatternCcd' =>$this->_reqP('search_studypattern_ccd'),
                 'B.SchoolYear' => $this->_reqP('search_schoolyear'),
-            ]
+            ],
+            'LKR' => [
+                'C.CateCode' => $this->_reqP('search_lg_cate_code'),
+            ],
         ];
 
         if($this->_reqP('locationid') === 'tar') {      //대상강좌일경우 ... 선수강으로 설정 된 놈만
@@ -60,7 +72,6 @@ class SearchLectureBlend extends \app\controllers\BaseController
                 ]
             ],
         ]);
-
 
         if($LearnPatternCcd === '615001') {
             $modelname = "lectureModel";

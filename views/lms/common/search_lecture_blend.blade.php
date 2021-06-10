@@ -9,11 +9,12 @@
         {!! csrf_field() !!}
         <input type="hidden" name="site_code" id="site_code" value="{{ $site_code }}"/>
         <input type="hidden" name="locationid" id="locationid" value="{{$locationid}}"/>
+        <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd === '615006' ? $LearnPatternCcd : '615001'}}">
         @endsection
 
         @section('layer_content')
 
-            <div class="form-group form-group-sm no-border-bottom">
+           <div class="form-group form-group-sm no-border-bottom">
                 <p class="form-control-static"><span class="required">*</span> 검색한 강좌 선택 후 적용 버튼을 클릭해 주세요. (다중 선택 가능합니다.)</p>
             </div>
 
@@ -25,25 +26,70 @@
             </div>
             @if(empty($wLecIdx) === true)
                 <div class="form-group pt-10 pb-5">
-                    <label class="control-label col-md-2" for="search_value">@if($LearnPatternCcd === '615006')단과반@else강좌@endif검색
+                    <label class="control-label col-md-2" for="search_value">{{$LearnPatternCcd === '615006' ? '단과반' : '강좌'}}검색
                     </label>
-                    <div class="col-md-6 form-inline" >
-                        <input type="hidden" name="LearnPatternCcd" value="{{$LearnPatternCcd === '615006' ? $LearnPatternCcd : '615001'}}">
-                        <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
-                            <option value="">대비학년도</option>
-                            @for($i=(date('Y')+2); $i>=2005; $i--)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                        </select>
-                        <input type="text" class="form-control" style="width: 50%;" id="search_value" name="search_value">
-                        명칭, 코드 검색 가능
-                    </div>
+                    @if($LearnPatternCcd === '615006')
+                        <div class="col-md-10 form-inline">
+                            <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
+                                <option value="">대비학년도</option>
+                                @for($i=(date('Y')+2); $i>=2005; $i--)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select class="form-control mr-2" id="search_lg_cate_code" name="search_lg_cate_code">
+                                <option value="">대분류</option>
+                                @foreach($arr_lg_category as $row)
+                                    <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-control mr-2" id="search_course_idx" name="search_course_idx">
+                                <option value="">과정</option>
+                                @foreach($arr_course as $row)
+                                    <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-control mr-2" id="search_subject_idx" name="search_subject_idx">
+                                <option value="">과목</option>
+                                @foreach($arr_subject as $row)
+                                    <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
+                                @endforeach
+                            </select>
+                            <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd">
+                                <option value="">수강형태</option>
+                                @foreach($studypattern_ccd as $key => $val)
+                                    @if($key != '653003')
+                                        <option value="{{ $key }}">{{ $val }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                        <br><br>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control input-sm" id="search_value" name="search_value">
+                        </div>
+                        <div class="col-md-4">
+                            <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        </div>
+                    @else
+                        <div class="col-md-6 form-inline" >
+                            <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
+                                <option value="">대비학년도</option>
+                                @for($i=(date('Y')+2); $i>=2005; $i--)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                            <input type="text" class="form-control" style="width: 50%;" id="search_value" name="search_value">
+                            명칭, 코드 검색 가능
+                        </div>
+                    @endif
 
                     <div class="col-md-1 text-right">
                         <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
                     </div>
                 </div>
             @endif
+
             <div class="row mt-20 mb-20">
                 <div class="col-md-12 clearfix">
                     <table id="_list_ajax_table" class="table table-striped table-bordered">
@@ -260,6 +306,9 @@
                         $("#pop_modal").modal('toggle');
                     }
 
+                    $search_form_modal.find('select[name="search_lg_cate_code"]').chained("#site_code");
+                    $search_form_modal.find('select[name="search_course_idx"]').chained("#site_code");
+                    $search_form_modal.find('select[name="search_subject_idx"]').chained("#site_code");
 
                 });
 

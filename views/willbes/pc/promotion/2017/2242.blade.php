@@ -86,7 +86,7 @@
                 <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/06/2242_arrow_prev.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/06/2242_arrow_next.png"></a></p>
             </div> 
-            <div class="btn"><a href="#none">합격수기 자세히 보기 ></a></div>        
+            <div class="btn"><a href="https://ssam.willbes.net/support/review/index" target="_blank">합격수기 자세히 보기 ></a></div>        
         </div> 
 
         <div class="evtCtnsBox event03">
@@ -213,12 +213,12 @@
 
                     <div id="tab10">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t10.png" alt="다이애나" />
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 8.27%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 18.77%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 29.38%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 40.86%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 51.48%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 61.85%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/183058" target="_blank" title="학원강의" style="left: 8.27%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/183057" target="_blank" title="학원강의" style="left: 18.77%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/183056" target="_blank" title="학원강의" style="left: 29.38%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/183050" target="_blank" title="온라인강의" style="left: 40.86%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/183049" target="_blank" title="온라인강의" style="left: 51.48%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/183048" target="_blank" title="온라인강의" style="left: 61.85%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample">샘플강의보기</a>

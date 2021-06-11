@@ -29,7 +29,6 @@
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50991/?subject_idx=1108')}}">안성호</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51011/?subject_idx=1108')}}">이섬가</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51199/?subject_idx=1108')}}">김현정</a>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50345/?subject_idx=1108')}}">성기건</a>
                         
                     </li>
                     <li>
@@ -58,9 +57,9 @@
                     </li>
                     <li>
                         <span>[세법]</span>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51167?subject_idx=1123')}}">박창한</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167?subject_idx=1123')}}">박창한</a>
                         <span>[회계학]</span>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51166?subject_idx=1124')}}">이윤호</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51166?subject_idx=1124')}}">이윤호</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50057?subject_idx=1124')}}">김현식</a>
                     </li>
                     <li>                        
@@ -880,8 +879,8 @@
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1115')}}">경제학</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1117')}}">형사소송법</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1116')}}">형법</a>
-                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
-                        <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
+                        <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1123')}}">세법</a>
+                        <a href="{{front_url('/lecture/index/cate/3022/pattern/only?search_order=regist&subject_idx=1124')}}">회계학</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1127')}}">국제법</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1128')}}">국제정치학</a>
                         <a href="{{front_url('/lecture/index/cate/3020/pattern/only?search_order=regist&subject_idx=1185')}}">경영학</a>

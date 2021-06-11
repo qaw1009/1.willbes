@@ -53,9 +53,6 @@
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50057?subject_idx=1124') }}">김현식</a>
                 </li>
                 <li><span>국제법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1127') }}">이상구</a></li>
-                <li><span>사회</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50181?subject_idx=1133') }}">문병일</a></li>
-                <li><span>수학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50201?subject_idx=1135') }}">곽윤근</a></li>
-                <li><span>공직선거법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1137') }}">황남기</a></li>
             </ul>
         @elseif($menu_cate_code == '3020')
             {{-- 7급 --}}
@@ -90,7 +87,7 @@
                 <li><span>국제법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1127') }}">이상구</a></li>
                 <li><span>국제정치학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50393?subject_idx=1128') }}">이상구</a></li>
                 <li><span>공직선거법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50109?subject_idx=1137') }}">황남기</a></li>
-                <li><span>G-TELP</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50764?subject_idx=1478') }}">서민지</a></li>
+                <li><span>G-TELP</span><a href="https://lang.willbes.net/m/professor/show/cate/3093/prof-idx/50764?subject_idx=1478&subject_name=G-TELP">서민지</a></li>
                 <li><span>프랑스어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50001?subject_idx=1178') }}">박훈</a></li>
                 <li><span>중국어</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50061?subject_idx=1162') }}">조소현</a></li>
             </ul>

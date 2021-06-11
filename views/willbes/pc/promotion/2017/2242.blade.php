@@ -113,8 +113,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182497" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3136/pack/648001/prod-code/182495" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('178011','1272380','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('180506','1284408','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('178011','1272380','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('180506','1284408','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -124,8 +124,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/178331" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3134/pack/648001/prod-code/178327" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('174863','1256181','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('180505','1284406','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('174863','1256181','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('180505','1284406','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -137,8 +137,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182460" title="학원강의" target="_blank" style="left: 53.95%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182463" title="온라인강의" target="_blank" style="left: 75.93%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177278','1268655','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('180507','1284409','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177278','1268655','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('180507','1284409','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -150,8 +150,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182469" title="학원강의" target="_blank" style="left: 53.95%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182470" title="온라인강의" target="_blank" style="left: 75.93%; top: 73.21%; width: 21.73%; height: 11.79%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('178013','1272383','HD');" class="view" target="_blank">샘플강의(1)보기</a>
-                            <a href="javascript:fnPlayerSample('180509','1284429','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
+                            <a href="javascript:fnPlayerSample('178013','1272383','HD');" class="view">샘플강의(1)보기</a>
+                            <a href="javascript:fnPlayerSample('180509','1284429','HD');" class="sample">샘플강의(2)보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51080?cate_code=3137&subject_idx=1983" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -161,8 +161,8 @@
                         <a href="javascript:alert('6월 18일부터 접수');" title="학원강의" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="javascript:alert('6월 18일부터 접수');" title="온라인강의" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177269','1267102','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('179276','1278897','HD');" class="sample" target="_blank">합격사례발표보기</a>
+                            <a href="javascript:fnPlayerSample('177269','1267102','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('179276','1278897','HD');" class="sample">합격사례발표보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -172,8 +172,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182455" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182456" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('174875','1256221','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('180511','1284412','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('174875','1256221','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('180511','1284412','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -183,8 +183,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176975" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176963" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('178018','1272389','HD');" class="view" target="_blank">샘플강의(1)보기</a>
-                            <a href="javascript:fnPlayerSample('180513','1284419','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
+                            <a href="javascript:fnPlayerSample('178018','1272389','HD');" class="view">샘플강의(1)보기</a>
+                            <a href="javascript:fnPlayerSample('180513','1284419','HD');" class="sample">샘플강의(2)보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -194,8 +194,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176759" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176753" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('178019','1272395','HD');" class="view" target="_blank">샘플강의(1)보기</a>
-                            <a href="javascript:fnPlayerSample('180515','1284421','HD');" class="sample" target="_blank">샘플강의(2)보기</a>
+                            <a href="javascript:fnPlayerSample('178019','1272395','HD');" class="view">샘플강의(1)보기</a>
+                            <a href="javascript:fnPlayerSample('180515','1284421','HD');" class="sample">샘플강의(2)보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51088?cate_code=3137&subject_idx=1989" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -205,8 +205,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182498" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182496" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177113','1267652','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178020','1272398','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177113','1267652','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178020','1272398','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -220,8 +220,8 @@
                         <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 51.36%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
                         <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 61.36%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -235,8 +235,8 @@
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182651" title="온라인강의" target="_blank" style="left: 51.11%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182652" title="온라인강의" target="_blank" style="left: 61.73%; top: 73.23%; width: 10.37%; height: 11.13%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177588','1270307','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178021','1272402','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177588','1270307','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178021','1272402','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -246,8 +246,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182500" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182499" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('174887','1256241','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178022','1272405','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('174887','1256241','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178022','1272405','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -257,8 +257,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182653" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/182649" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177264','1268646','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178024','1272411','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177264','1268646','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178024','1272411','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995" target="_blank">교수페이지</a>
                         </span>
                     </div>
@@ -268,8 +268,8 @@
                         <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/176977" title="학원강의" target="_blank" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/176965" title="온라인강의" target="_blank" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
-                            <a href="javascript:fnPlayerSample('177738','1271110','HD');" class="view" target="_blank">설명회보기</a>
-                            <a href="javascript:fnPlayerSample('178017','1272387','HD');" class="sample" target="_blank">샘플강의보기</a>
+                            <a href="javascript:fnPlayerSample('177738','1271110','HD');" class="view">설명회보기</a>
+                            <a href="javascript:fnPlayerSample('178017','1272387','HD');" class="sample">샘플강의보기</a>
                             <a href="https://ssam.willbes.net/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985" target="_blank">교수페이지</a>
                         </span>
                     </div>

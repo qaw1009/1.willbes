@@ -53,11 +53,13 @@
 
 @if($__cfg['CateCode'] == '3019')
     {{-- 공무원 9급 사이트일 경우만 적용 --}}
+    {{--
     <div id="topBannerLayer" class="gosi">
         <div class="topBanner">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2020_top_bn.gif" alt="9급"></a>
         </div>
     </div>
+    --}}
 @endif
 @if($__cfg['CateCode'] == '3020')
     {{-- 공무원 7급 사이트일 경우만 적용 --}}

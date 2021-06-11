@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <div class="Section tpassWrap">
+        <div class="Section tpassWrap" id="tpassWrap">
             <div class="widthAuto">
                 <div class="f_left"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
                 <div class="f_right">

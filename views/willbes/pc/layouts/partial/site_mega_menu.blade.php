@@ -79,7 +79,7 @@
                     </li>
                     <li>
                         <span>[헌법]</span>
-                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50591/?subject_idx=1114&subject_name=%ED%97%8C%EB%B2%95')}}">이국령</a>
+                        <a href="{{front_url('/professor/show/cate/3035/prof-idx/50591/?subject_idx=1114')}}">이국령</a>
                         <span>[형법]</span>
                         <a href="{{front_url('/professor/show/cate/3035/prof-idx/50073/?subject_idx=1116&subject_name=%ED%98%95%EB%B2%95')}}">문형석</a>
                         <span>[형사소송법]</span>
@@ -141,7 +141,7 @@
                         <span>[헌법]</span>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50109/?subject_idx=1114')}}">황남기</a>
                         <span>[경제학]</span>
-                        <a href="{{front_url('/professor/show/cate/3020/prof-idx/50487/?subject_idx=1115&subject_name=%EA%B2%BD%EC%A0%9C%ED%95%99')}}">황정빈</a>
+                        <a href="{{front_url('/professor/show/cate/3020/prof-idx/50487/?subject_idx=1115')}}">황정빈</a>
                         <span>[형법]</span>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50133/?subject_idx=1116')}}">김원욱</a><br>
                         <span>[형사소송법]</span>
@@ -149,9 +149,9 @@
                     </li>
                     <li>
                         <span>[세법]</span>
-                        <a href="{{front_url('/professor/show/cate/3020/prof-idx/50187/?subject_idx=1123')}}">고선미</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167?subject_idx=1123')}}">박창한</a>
                         <span>[회계학]</span>
-                        <a href="{{front_url('/professor/show/cate/3020/prof-idx/50227/?subject_idx=1124')}}">김영훈</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51166?subject_idx=1124')}}">이윤호</a>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50057/?subject_idx=1124')}}">김현식</a>
                         <span>[국제법]</span>
                         <a href="{{front_url('/professor/show/cate/3020/prof-idx/50393/?subject_idx=1127&subject_name=%EA%B5%AD%EC%A0%9C%EB%B2%95')}}">이상구</a>
@@ -375,7 +375,7 @@
                         <a href="{{front_url('/professor/show/prof-idx/50648/?cate_code=3043&subject_idx=1255')}}">조민주</a>
                         <a href="{{front_url('/professor/show/prof-idx/50306/?cate_code=3043&subject_idx=1255')}}">한경준</a>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3043&subject_idx=1257&subject_name=행정법')}}">이석준</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3043&subject_idx=1257')}}">이석준</a>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50560/?cate_code=3043&subject_idx=1258')}}">김덕관</a>
                     </li>
@@ -399,19 +399,19 @@
                     </li>
                     <li>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3044&subject_idx=1257&subject_name=행정법')}}">이석준</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616/?cate_code=3044&subject_idx=1257')}}">이석준</a>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50560/?cate_code=3044&subject_idx=1258')}}">김덕관</a>
                         <span>[헌법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50140/?cate_code=3044&subject_idx=1260&subject_name=%ED%97%8C%EB%B2%95')}}">유시완</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50140/?cate_code=3044&subject_idx=1260')}}">유시완</a>
                     </li>
                     <li>
                         <span>[경제학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50488/?cate_code=3044&subject_idx=1261&subject_name=%EA%B2%BD%EC%A0%9C%ED%95%99')}}">황정빈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50488/?cate_code=3044&subject_idx=1261')}}">황정빈</a>
                         <span>[세법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50188/?cate_code=3044&subject_idx=1269')}}">고선미</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51167?subject_idx=1123')}}">박창한</a>
                         <span>[회계학]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50228/?cate_code=3044&subject_idx=1270')}}">김영훈</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/51166?subject_idx=1124')}}">이윤호</a>
                     </li>
                     <li>
                         <span>[국제법]</span>
@@ -474,7 +474,7 @@
                     </li>
                     <li>
                         <span>[헌법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50592/?cate_code=3059&subject_idx=1260&subject_name=%ED%97%8C%EB%B2%95')}}">이국령</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50592/?cate_code=3059&subject_idx=1260')}}">이국령</a>
                         <span>[민법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50520/?cate_code=3059&subject_idx=1264&subject_name=%EB%AF%BC%EB%B2%95')}}">김동진</a>
                         <span>[민사소송법]</span>

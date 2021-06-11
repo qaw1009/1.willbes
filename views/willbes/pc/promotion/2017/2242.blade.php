@@ -213,12 +213,12 @@
 
                     <div id="tab10">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t10.png" alt="다이애나" />
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 8.15%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 18.77%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 29.14%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 40.49%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 51.36%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
-                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 61.36%; top: 77.09%; width: 10.74%; height: 7.91%;"></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 8.27%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 18.77%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="javascript:alert('준비중입니다.');" title="학원강의" style="left: 29.38%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 40.86%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 51.48%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
+                        <a href="javascript:alert('준비중입니다.');" title="온라인강의" style="left: 61.85%; top: 73.75%; width: 10.12%; height: 8.38%; "></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177403','1269590','HD');" class="view">설명회보기</a>
                             <a href="javascript:fnPlayerSample('178069','1272637','HD');" class="sample">샘플강의보기</a>

@@ -978,8 +978,8 @@
 
             var order_cnt = {{ $arr_base['order_count'] or 0 }};
             if(order_cnt === 0){
-                //alert('구매자가 아닙니다.');
-                //return;
+                alert('구매자가 아닙니다.');
+                return;
             }
 
             @if(empty($arr_promotion_params['arr_prod_code']) === false && empty($arr_promotion_params['cart_prod_code']) === false)

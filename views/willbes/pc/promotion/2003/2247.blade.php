@@ -19,13 +19,13 @@
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2247_top_bg.jpg) no-repeat center top;}
 
-        .evt01 {background:#e7f1fa;}
-
-        .evt02 {background:#e7f1fa;padding-bottom:50px;}
+        .evt01 {background:#e7f1fa;padding-bottom:50px;}
         .check {margin-top:20px; color:#333; font-size:15px;font-weight:bold;}
         .check label {cursor:pointer}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px;}
         .check a.infotxt {display:inline-block; padding:12px 20px 10px 20px;color:#fff; background:#000; margin-left:50px; border-radius:20px}   
+
+        .evt02 {background:#e7f1fa;}    
 
         .evt03 {background:#f0f0f0;}      
 
@@ -47,17 +47,17 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2247_top.jpg" alt="여름방학 기초 패키지" />
 		</div>
 
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2247_01.jpg" alt="상담 제공" />
-		</div>
-
         <div class="evtCtnsBox evt02">
             <div class="evt_wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2247_02.jpg" alt="수강 신청하기" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2247_02.jpg" alt="상담 제공" />
                 <a href="javascript:go_PassLecture('183084')" title="all 패키지" style="position: absolute;left: 13%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('183087')" title="5법 패키지" style="position: absolute;left: 40.5%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('183092')" title="민법+영어 패키지" style="position: absolute;left: 68.25%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
-            </div>                                  
+            </div>    
+		</div>
+
+        <div class="evtCtnsBox evt01">
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2247_01.jpg" alt="수강 신청하기" />                                      
             <div class="check" id="chkInfo">   
                 <label>
                     <input name="ischk" type="checkbox" value="Y" />

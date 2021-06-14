@@ -440,6 +440,65 @@
             </form>
         </div>
 
+        <div class="evtCtnsBox evt02">
+            <div class="passLecBuy">
+                <div>               
+                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_01.jpg"  alt="신광은경찰PASS">
+                </div>
+
+                <div class="price">
+                    <ul>
+                        <li>
+                            <div>
+                            <strong>125</strong>만원<br>
+                            <input type="radio" id="y_pkg5" name="y_pkg" value="183128" data-sale-price="1250000"/> <label for="y_pkg5">0원 무제한 PASS</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>89</strong>만원<br>
+                                <input type="radio" id="y_pkg6" name="y_pkg" value="183118" data-sale-price="890000"/> <label for="y_pkg6">15개월 개편 PASS</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>69.9</strong>만원<br>
+                                <input type="radio" id="y_pkg7" name="y_pkg" value="183117" data-sale-price="699000"/> <label for="y_pkg7">9개월 개편 PASS</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <strong>55</strong>만원<br>
+                                <input type="radio" id="y_pkg8" name="y_pkg" value="182148" data-sale-price="550000"/> <label for="y_pkg8">2021 PASS</label>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_02.jpg"  alt=""/>
+                </div>                
+
+
+                <div class="totalPrice">
+                    총 결제금액 : <strong class="NSK-Black total_price">0</strong>원
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
+                        신청하기 >
+                    </a>
+                </div>     
+
+                <div class="check">
+                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
+                    <p>
+                        ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
+                        ※ 강좌 및 교수진은 학원 사정에 따라 변경될 수 있습니다.<br>
+                        ※ 쿠폰은 PASS 결제 후 [내 강의실>결제관리>쿠폰/수강권 관리] 에서 확인 가능합니다.<br>
+                        ※ 재수강&환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- evt02//-->  
+
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">

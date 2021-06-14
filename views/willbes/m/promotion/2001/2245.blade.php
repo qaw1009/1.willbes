@@ -257,7 +257,7 @@
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 54.31%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 66.81%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
                 <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법" style="position: absolute; left: 79.31%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
-                <a href="#none" title="쿠폰다운로드" style="position: absolute; left: 23.47%; top: 81.42%; width: 49.17%; height: 5%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰다운로드" style="position: absolute; left: 23.47%; top: 81.42%; width: 49.17%; height: 5%; z-index: 2;"></a>
             </form>
         </div>
 
@@ -711,14 +711,14 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             @if(empty($arr_promotion_params['give_type']) === false && empty($arr_promotion_params['give_idx']) === false)
-            var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
-            ajaxSubmit($regi_form, _check_url, function (ret) {
-                if (ret.ret_cd) {
-                    alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
-                }
-            }, showValidateError, null, false, 'alert');
+                var _check_url = '{!! front_url('/promotion/promotionEventCheck/') !!}?give_type={{$arr_promotion_params["give_type"]}}&give_idx={{$arr_promotion_params["give_idx"]}}&event_code={{$data['ElIdx']}}&comment_chk_yn={{$arr_promotion_params["comment_chk_yn"]}}';
+                ajaxSubmit($regi_form, _check_url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('쿠폰이 발급되었습니다. \n\n내강의실에서 확인해 주세요.');
+                    }
+                }, showValidateError, null, false, 'alert');
             @else
-            alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
+                alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
 
@@ -740,8 +740,8 @@
 
             var order_cnt = {{ $arr_base['order_count'] or 0 }};
             if(order_cnt === 0){
-                alert('구매자가 아닙니다.');
-                return;
+                //alert('구매자가 아닙니다.');
+                //return;
             }
 
             @if(empty($arr_promotion_params['arr_prod_code']) === false && empty($arr_promotion_params['cart_prod_code']) === false)

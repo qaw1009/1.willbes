@@ -56,7 +56,7 @@
         .tabs li a.active {color:#636363; background:#fff}
         .tabs li:last-child a {margin:0}
 
-        .wb_07 {background:url(https://static.willbes.net/public/images/promotion/2020/11/1839_07_bg.jpg) no-repeat center top;}
+        .wb_07 {background:url(https://static.willbes.net/public/images/promotion/2021/06/1839_07_bg.png) no-repeat center top;}
         .wb_09 {background:#333351}
     </style>
 
@@ -119,22 +119,19 @@
             <div id="tab02">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_02.jpg"  alt="헌법 김원욱" usemap="#Map1839B" border="0"  />
                 <map name="Map1839B">
-                    <area shape="rect" coords="766,429,1022,671" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                    <area shape="rect" coords="766,429,1022,671" href="https://police.willbes.net/promotion/index/cate/3001/code/1990" target="_blank" alt="교수홈">
                 </map>
             </div>
             <div id="tab03">
                 <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_06_03.jpg"  alt="경찰학 장정훈" usemap="#Map1839C" border="0"  />
                 <map name="Map1839C">
-                    <area shape="rect" coords="766,429,1020,670" href="#none" onclick="javascript:alert('곧 공개됩니다.');" alt="교수홈">
+                    <area shape="rect" coords="766,429,1020,670" href="https://police.willbes.net/promotion/index/cate/3001/code/1985" target="_blank" alt="교수홈">
                 </map>
             </div>
         </div>
 
         <div class="evtCtnsBox wb_07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1839_07.jpg"  alt="한국사, 영어 검정제 변경" usemap="#Map1839D" border="0"  />
-            <map name="Map1839D">
-              <area shape="rect" coords="303,997,818,1088" href="https://police.willbes.net/lecture/show/cate/3001/pattern/only/prod-code/177509" target="_blank" alt="지텔프 영어 자격증 바로가기">
-            </map>
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/1839_07.jpg"  alt="한국사, 영어 검정제 변경" />
         </div>
 
         <div class="evtCtnsBox wb_08">

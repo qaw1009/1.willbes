@@ -435,7 +435,7 @@
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="신광은 형법" style="position: absolute; left: 70%; top: 39.21%; width: 13.21%; height: 2.68%; z-index: 2;"></a>
                     <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="김원욱 헌법" style="position: absolute; left: 83.3%; top: 39.21%; width: 13.21%; height: 2.68%; z-index: 2;"></a>
                     <a title="" style="position: absolute; left: 12.86%; top: 55.91%; width: 1.79%; height: 1.05%; z-index: 2; cursor: default; box-shadow:0" id="coupon"></a>
-                    <a href="#none" title="쿠폰 다운로드" style="position: absolute; left: 23.93%; top: 81.42%; width: 52.14%; height: 4.99%; z-index: 2;"></a>
+                    <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰 다운로드" style="position: absolute; left: 23.93%; top: 81.42%; width: 52.14%; height: 4.99%; z-index: 2;"></a>
                 </div>
             </form>
         </div>

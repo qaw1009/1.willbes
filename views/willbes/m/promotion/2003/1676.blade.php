@@ -134,9 +134,9 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/12/1676m_02.jpg" alt="" >
         <ul>
             <li>
-                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/182089" target="_blank">
+                <a href="https://pass.willbes.net/m/lecture/show/cate/3019/pattern/only/prod-code/183200" target="_blank">
                     <span>반반&똑똑</span>
-                    <span>5월 방송<br>다시보기</span>
+                    <span>7월 방송<br>다시보기</span>
                     <span><strong>6</strong>만원으로</span>
                     <span>방송 다시보기 ></span>
                 </a>
@@ -146,7 +146,7 @@
                     <span>2022 국가직 대비</span>
                     <span>한덕현 영어<br>T-PASS</span>
                     <span><strong>더켠쌤과</strong>함께</span>
-                    <span>2022 대비 열공하기 ></span>
+                    <span>열공하고 합격하기 ></span>
                 </a>
             </li>
         </ul>
@@ -251,9 +251,9 @@
 
             <p class="NSK-Black"><span>●</span> 열공 출첵 이벤트 관련</p>
             <ul>
-                <li>본 이벤트는 로그인 후 참여 가능하며, 5/3(월)~5/28(금)까지 총 20회 진행됩니다. <span>(*공휴일 제외)</span></li>
-                <li>출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (5/10(월), 5/24(월)) 19:00~20:00로, 시간 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
-            </ul>
+                <li>본 이벤트는 로그인 후 참여 가능하며, 7/12(월)~8/6(금)까지 총 20회 진행됩니다. <span>(*공휴일 제외)</span></li>
+                <li>출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (7/19(월), 8/2(월)) 19:00~20:00로, 시간 내에 페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다.</li>
+            </ul> 
         </div>
     </div>
 </div>

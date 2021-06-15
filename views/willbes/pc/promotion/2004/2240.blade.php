@@ -74,7 +74,7 @@
         /*탭(이미지)*/
         .tabs{width:100%; text-align:center; padding-top:30px}
         .tabs ul {width:980px;margin:0 auto;}		
-        .tabs li {display:inline; float:left;margin-bottom:15px;}	
+        .tabs li {display:inline; float:left;}	
         .tabs a img.off {display:block}
         .tabs a img.on {display:none}
         .tabs a.active img.off {display:none}

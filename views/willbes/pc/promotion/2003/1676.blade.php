@@ -70,12 +70,14 @@
                 <area shape="rect" coords="4,199,150,272" href="#detail" />
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
-            </map>              
+            </map>         
+            {{--    
             <img src="https://static.willbes.net/public/images/promotion/2021/03/1676_sky3.png" usemap="#Map1676_sky3" title="아작내기,적중50선" border="0" style="padding-top:15px;">
             <map name="Map1676_sky3" id="Map1676_sky3">
                 <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/180888" target="_blank" />
                 <area shape="rect" coords="85,2,167,151" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blank"/>
-            </map>               
+            </map>          
+            --}}     
         </div>    
         {{--
         <div class="evtCtnsBox wb_top_tab" >
@@ -93,15 +95,15 @@
             </div>
         </div>  
         --}}
-        {{--
+      
         <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
             <map name="Map1676_top_banner" id="Map1676_top_banner">
                 <area shape="rect" coords="598,64,778,100" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
                 <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>           
         </div>    
-        --}}         
+
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
         </div>
@@ -131,8 +133,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
                 <ul id="slidesImg4">
-                {{--<li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_april.jpg" /></li>--}}
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/03/1676_02_may.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/1676_02_july.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/1676_02_august.jpg" /></li>
                 </ul>     
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
@@ -153,8 +155,8 @@
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_02.png" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
                 <map name="Map1676ss">
-                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182089" target="_blank" alt="2월 방송" />
-                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="지방직 방송" />
+                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183200" target="_blank" alt="7월 방송" />
+                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="한덕현 t-pass" />
                 </map>
             </div>
         </div>
@@ -250,10 +252,10 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며, 5/3(월)~5/28(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
-                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (5/10(월), 5/24(월)) 19:00~20:00로, 시간 내에
+                            - 본 이벤트는 로그인 후 참여 가능하며,7/12(월)~8/6(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (7/19(월), 8/2(월)) 19:00~20:00로, 시간 내에
                               페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다. <br>
-                            - 당첨자 안내 공지는 6/1(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
+                            - 당첨자 안내 공지는 8/10(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                             <li>돌발퀴즈 이벤트 관련<br>
                             - 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
                             - 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>

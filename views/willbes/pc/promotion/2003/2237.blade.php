@@ -58,7 +58,7 @@
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183061" target="_blank" title="군무원 전자직 7급" style="position: absolute; left: 40.71%; top: 38.65%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183062" target="_blank" title="군무원 전자직 7급 경채" style="position: absolute; left: 69.11%; top: 38.65%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
 
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183022" target="_blank" title="군무원 통신직 9급" style="position: absolute; left: 12.86%; top: 63.26%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183002" target="_blank" title="군무원 통신직 9급" style="position: absolute; left: 12.86%; top: 63.26%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183003" target="_blank" title="군무원 통신직 7급" style="position: absolute; left: 40.71%; top: 63.26%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/183004" target="_blank" title="군무원 통신직 7급 경채" style="position: absolute; left: 69.11%; top: 63.26%; width: 18.75%; height: 2.48%; z-index: 2;"></a>
 

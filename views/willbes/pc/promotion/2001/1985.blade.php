@@ -16,7 +16,7 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:200px; width:140px; right:10px;z-index:1;}        
+        .skybanner {position:fixed;top:200px; width:150px; right:10px;z-index:1;}        
         .skybanner a {display:block; margin-bottom:5px}
 
         .wb_police {background:#0A0A0A}
@@ -106,7 +106,11 @@
 			<img src="https://static.willbes.net/public/images/promotion/2020/12/1985_07.jpg" alt="경찰학 입문강의"/>	
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif    		
+            @endif   
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/1985_07_02.jpg" alt="경찰학 입문강의"/>	
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif   		
 		</div> 
         
     </div>

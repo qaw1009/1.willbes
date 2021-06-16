@@ -17,7 +17,9 @@
 		/************************************************************/ 
 		.evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2250_top_bg.jpg) no-repeat center top;}	
 
-        .evt_01 {background:#fed02b}        
+        .evt_01 {background:#fed02b} 
+        .evt_02 .btnlec {display:block; background:#fed02b; color:#000; padding:20px 0; text-align:center; font-size:36px; width:1100px; margin:0 auto 30px}       
+        .evt_02 .btnlec:hover {background:#000; color:#fff; }
 
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}        
         .evtCtnsBox .wrap a:hover {background:rgba(255,255,255,.2);}   
@@ -29,7 +31,13 @@
 		.tabs li a:hover,
 		.tabs li a.active {background:#fed02b;color:#fff;}
 		.tabs li:last-child a {margin:0}
-		.tabs:after {content:""; display:block; clear:both}        
+		.tabs:after {content:""; display:block; clear:both}     
+        
+        .check {letter-spacing:3; color:#fff; margin-bottom:100px;}
+        .check label {cursor:pointer; font-size:15px;color:#000;font-weight:bold;}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#b59075; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
+        .check a:hover {background:#000}
 
 		.evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -76,6 +84,15 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2250_02_t05.jpg" alt="감정평가관계법규"/>              
 			</div>
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2250_02_bottom.jpg" alt="수험생을 위한 save 혜택" />
+            <a href="javascript:go_PassLecture('183202');" title="신청하기" class="btnlec NSK-Black">신청하기</a>
+            <div class="check">
+                <label>
+                    <input name="ischk"  type="checkbox" value="Y" />
+                    페이지 하단 이용안내를 모두 확인하였고, 이에 동의합니다.
+                </label>
+                <a href="#careful">이용안내확인하기 ↓</a>
+            </div> 
+            
 		</div>         
 
 		<div class="evtCtnsBox evtInfo" id="careful">

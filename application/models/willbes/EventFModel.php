@@ -45,6 +45,7 @@ class EventFModel extends WB_Model
         'product_on_lecture' => 'vw_product_on_lecture',
         'product_adminpack_lecture' => 'vw_product_adminpack_lecture',
         'product_periodpack_lecture' => 'vw_product_periodpack_lecture',
+        'product_on_free_lecture' => 'vw_product_on_free_lecture',
         'product_lecture' => 'lms_product_lecture',
     ];
 
@@ -1995,6 +1996,37 @@ class EventFModel extends WB_Model
             'GTE' => [
                 'SaleEndDatm' => date('Y-m-d H:i:s')
             ],
+            'IN' => [
+                'ProdCode' => $arr_prod_idx
+            ]
+        ];
+
+        $prod_ids = implode(',', $arr_prod_idx);
+        $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(false);
+        $order_by_offset_limit = ' ORDER BY FIELD(ProdCode,' . $prod_ids . ')';
+        $query = $this->_conn->query('SELECT '. $column. $from. $where. $order_by_offset_limit);
+        return $query->result_array();
+    }
+
+    /**
+     * 무료강좌 조회
+     * @param array $arr_prod_idx
+     * @return array
+     */
+    public function getProductFreeLecture($arr_prod_idx){
+        $column = "
+            ProdCode, SiteCode, ProdName, SaleStatusCcd, IsSalesAble, CateCode, StudyPeriod, MultipleApply,StudyStartDate, CourseName, ProdPriceData, 
+            IsCart, ProfNickName, SubjectName, wLectureProgressCcd, wLectureProgressCcdName, wUnitLectureCnt, wScheduleCount, ProdBookData, LectureSampleData, ProfReferData, LecTypeCcd
+        ";
+
+        $from = " FROM {$this->_table['product_on_free_lecture']} ";
+
+        $arr_condition = [
+            'EQ' => [
+                'IsUse' => 'Y',
+                'IsSaleEnd' => 'N',
+            ],
+            'RAW' => ['NOW() between ' => 'SaleStartDatm and SaleEndDatm'],
             'IN' => [
                 'ProdCode' => $arr_prod_idx
             ]

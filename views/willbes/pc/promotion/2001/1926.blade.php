@@ -215,37 +215,16 @@
 
         <div class="evtCtnsBox evt05" id="evt05">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_05_01.jpg" alt="형사법 미리 예습이 필요하다면!"> 
-            {{--프로모션 동영상 강의 불러오기--}}
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
             @endif
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/1926_05_02.jpg" alt="형사법 무료특강"> 
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif
         </div>
 
-        {{--
-        <div class="evtCtnsBox evt06" id="evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_06_01.jpg" alt="형사법 런칭 소문내기" usemap="#Map1926_03" border="0">
-            <map name="Map1926_03">
-                <area shape="rect" coords="331,505,785,581" href="@if($file_yn[1] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" alt="이미지다운로드">
-                <area shape="rect" coords="317,734,474,823" href="http://cafe.daum.net/policeacademy" target="_blank" alt="경시모">
-                <area shape="rect" coords="532,733,702,823" href="https://cafe.naver.com/polstudy" target="_blank" alt="경꿈사">
-                <area shape="rect" coords="748,736,916,821" href="https://cafe.naver.com/kts9719" target="_blank" alt="닥공사">
-            </map> 
-        </div>
-        --}}
-        {{--홍보url
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
-        @endif--}}
-
-        {{--
-        <div class="evtCtnsBox evt07" id="evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1926_06_02.jpg" alt="신광은 이름이 곧 실력">
-        </div>
-        --}}
-        {{--기본댓글
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif --}}                     
+                   
     </div>
     <!-- End Container --> 
     <link rel="stylesheet" type="text/css" href="/public/vendor/jquery/slick/slick.css">

@@ -89,10 +89,14 @@
 		</div>        
 
         <div class="evtCtnsBox wb_04" id="evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_04.jpg"  alt="김원욱 헌법"/>
+            <img src="https://static.willbes.net/public/images/promotion/2020/12/1990_04.jpg"  alt="김원욱 헌법 최신강의"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif  			
+            @endif  
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/1990_04_02.jpg"  alt="김원욱 헌법 무료강의"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif 			
 		</div>        
              
     </div>

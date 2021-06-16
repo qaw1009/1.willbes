@@ -2,18 +2,17 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- content -->
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
+        width:100% !important;
+        min-width:1120px !important;
+        margin-top:20px !important;
+        padding:0 !important;
+        background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
@@ -69,8 +68,6 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-
-        <input type="hidden" name="msg" value="신쌤에게 전하고 싶은 말을 적어주세요.">
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -157,12 +154,12 @@
                 <a href="https://cafe.naver.com/kts9719" target="_blank" title="닥공사" style="position: absolute;left: 66%;top: 92.15%;width: 16.25%;height: 7%;z-index: 2;"></a>
             </div>    
         </div>
-        
+
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif 
-
+            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+        @endif
+        
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_08.jpg"  alt="신규 개설 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)

@@ -14,7 +14,8 @@ class BasePromotion extends \app\controllers\FrontController
     private $_event_learn_ccd = [
         '615001' => 'OnLecture',        // 단강좌
         '615003' => 'AdminpackLecture', // 운영자패키지
-        '615004' => 'PeriodpackLecture' // 기간제패키지
+        '615004' => 'PeriodpackLecture', // 기간제패키지
+        '615005' => 'FreeLecture'       // 무료강좌
     ];
 
     // 강좌유형
@@ -28,7 +29,8 @@ class BasePromotion extends \app\controllers\FrontController
     private $_pattern_ccd = [
         '615001' => 'only',     // 단강좌
         '615003' => 'package',  // 운영자패키지
-        '615004' => 'period'    // 기간제패키지
+        '615004' => 'period',    // 기간제패키지
+        '615005' => 'free'      // 무료강좌
     ];
 
     public function __construct()
@@ -915,7 +917,7 @@ class BasePromotion extends \app\controllers\FrontController
                 if (empty($display_group_data[$group][$ccd]) === false) {
                     foreach ($display_group_data[$group][$ccd] as $idx => $row) {
                         $display_group_data[$group][$ccd][$idx]['ProdPriceData'] = json_decode($row['ProdPriceData'], true);
-                        if ($this->_pattern_ccd[$ccd] == 'only') {
+                        if (in_array($this->_pattern_ccd[$ccd], ['only','free']) === true) {
                             $display_group_data[$group][$ccd][$idx]['ProdBookData'] = json_decode($row['ProdBookData'], true);
                             $display_group_data[$group][$ccd][$idx]['LectureSampleData'] = json_decode($row['LectureSampleData'], true);
                             $display_group_data[$group][$ccd][$idx]['ProfReferData'] = json_decode($row['ProfReferData'], true);

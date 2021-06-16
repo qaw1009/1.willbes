@@ -24,20 +24,15 @@
         .sky a{display:block; margin-bottom:10px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_top_bg.jpg) no-repeat center top;position:relative;}
-        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-80px;animation: circle 6s linear infinite;}
+        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-80px;animation: circle 5s linear infinite;}
         @@keyframes circle{
-            0%{
-                transform:rotate(0deg)
-                        translate(-165px)
-                        rotate(0deg);
-            
-            }
-            100%{
-                transform:rotate(360deg)
-                        translate(-165px)
-                        rotate(-360deg);
-            }
+            0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            25%{-webkit-transform:rotate3d(0,0,1,25deg);transform:rotate3d(0,0,1,25deg)}
+            50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
+            75%{-webkit-transform:rotate3d(0,0,1,-25deg);transform:rotate3d(0,0,1,-25deg)}
+            100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
         }
+
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_01_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#383838;}

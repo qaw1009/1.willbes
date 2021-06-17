@@ -55,11 +55,13 @@
         }
         .b-close {
             position: absolute;
-            right: 10px;
+            right: 25px;
             top: 50px;
             padding: 5px;
             display: inline-block;
             cursor: pointer;
+            color:#fff;
+            font-size:50px;
         }
         .Pstyle .content {height:auto; width:auto;}
 
@@ -115,7 +117,7 @@
         <div id="popup2" class="Pstyle">
             <span class="b-close">X</span>   
             <div class="content2">         
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_no.png" class="off" alt="" /> 
+                {{--<img src="https://static.willbes.net/public/images/promotion/2021/06/2236_no.png" class="off" alt="" />--}}
             </div> 
         </div>
 

@@ -3,10 +3,10 @@
 @endif
 
 @if(empty($arr_base['display_product_data'][$group_num]) === false)
+@php $learn_pattern = 'on_lecture'; @endphp
 <form id="dp_prod_form{{$group_num}}" method="POST" onsubmit="return false;" novalidate="">
     {!! csrf_field() !!}
     {!! method_field('POST') !!}
-    <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
@@ -61,10 +61,10 @@
                                         <td>
                                             <ul class="lecBuyBtns tx-rgiht @if($row['IsCart'] == 'N') visi-hidden @endif">
                                                 <li class="btnCart">
-                                                    <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">장바구니</button>
+                                                    <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" data-is-free="N" class="bg-deep-gray">장바구니</button>
                                                 </li>
                                                 <li class="btnBuy">
-                                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue">바로결제</button>
+                                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-is-free="N" class="mem-Btn bg-blue">바로결제</button>
                                                 </li>
                                             </ul>
                                         </td>
@@ -227,6 +227,7 @@
                     </div>
                 </div>
             @elseif($pattern_ccd[$ccd] == 'free') {{-- 무료강좌 --}}
+                @php $learn_pattern = 'on_free_lecture'; @endphp
                 <div class="proLecList">
                     {{--<h1 class="group_h1">단과 강좌</h1>--}}
                     <div class="tx-red tx-left tx14">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
@@ -274,11 +275,8 @@
                                         </td>
                                         <td>
                                             <ul class="lecBuyBtns tx-rgiht @if($row['IsCart'] == 'N') visi-hidden @endif">
-                                                <li class="btnCart">
-                                                    <button type="button" name="btn_cart" data-direct-pay="N" data-is-redirect="N" class="bg-deep-gray">장바구니</button>
-                                                </li>
                                                 <li class="btnBuy">
-                                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" class="mem-Btn bg-blue">바로결제</button>
+                                                    <button type="button" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="N" data-is-free="Y" class="mem-Btn bg-blue">바로결제</button>
                                                 </li>
                                             </ul>
                                         </td>
@@ -368,6 +366,8 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
 </form>
 @endif
 
@@ -409,18 +409,59 @@
 
             // 장바구니, 바로결제 버튼 클릭
             $dp_prod_form{{$group_num}}.on('click', 'button[name="btn_cart"], button[name="btn_direct_pay"]', function() {
-                        {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+                {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
                 var $is_direct_pay = $(this).data('direct-pay');
                 var $is_redirect = $(this).data('is-redirect');
+                var $apply_free_lecture = $(this).data('is-free');
 
-                        {{--var $result = cartNDirectPay($dp_prod_form, $is_direct_pay, $is_redirect);--}}
-                var $result = addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect, 'on');
+                if($apply_free_lecture === 'Y'){ // 무료강좌 지급
+                    if (applyFreeLecture($dp_prod_form{{$group_num}}) === true) {
+                        if(confirm('해당 상품이 신청되었습니다.\n내 강의실로 이동 하시겠습니까?')){
+                            location.href = '{{ app_url('/classroom/on/list/ongoing', 'www') }}';
+                        }
+                    }
+                }else{
+                    var $result = addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect, 'on');
 
-                if ($is_redirect === 'N' && $result === true) {
-                    $buy_layer{{$group_num}}.find('.pocketBox').css('display','none').show();
-                    $buy_layer{{$group_num}}.addClass('active');
+                    if ($is_redirect === 'N' && $result === true) {
+                        $buy_layer{{$group_num}}.find('.pocketBox').css('display','none').show();
+                        $buy_layer{{$group_num}}.addClass('active');
+                    }
                 }
+
             });
+
+            {{-- 무료강좌 신청 --}}
+            function applyFreeLecture($regi_form) {
+                var $result = false;
+                var $confirm_msg = $regi_form.find('.chk_books:checked').length < 1 ? '해당 강좌를 신청하시겠습니까?' : '해당 강좌 및 교재를 신청하시겠습니까?';
+
+                if($regi_form.find('.chk_products:checked').length < 1) {
+                    alert('강좌를 선택해 주세요.');
+                    return false;
+                }
+
+                if (confirm($confirm_msg)) {
+                    var $input_prod_code = {};
+                    $regi_form.find('.chk_products:checked').each(function (idx) {
+                        $input_prod_code[idx] = $(this).val();
+                    });
+
+                    var url = '{{ site_url('/order/free') }}';
+                    var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+                        'prod_code': JSON.stringify($input_prod_code)
+                    });
+                    sendAjax(url, data, function (ret) {
+                        if (ret.ret_cd) {
+                            $result = true;
+                        }
+                    }, showAlertError, false, 'POST');
+                }
+
+                return $result;
+            }
+
         }
     });
 </script>

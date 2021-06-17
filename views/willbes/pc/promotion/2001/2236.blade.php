@@ -68,6 +68,8 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
+
+        <input type="hidden" name="comment_ccd" value="713002">
     </form>
 
     <div class="evtContent NSK" id="evtContainer">

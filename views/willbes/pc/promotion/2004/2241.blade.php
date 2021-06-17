@@ -124,10 +124,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
         </div>  
 
+        {{--
         <div class="evtCtnsBox wb_cts05s" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
-        </div>  
-
+        </div>
+        --}}  
+        
         <div class="evtCtnsBox wb_cts06" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_06.jpg" alt="필수 기본이론 정복"/>
         </div>  

@@ -31,6 +31,7 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
+        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_06_bg.jpg) no-repeat center top;}
 
@@ -121,6 +122,10 @@
 
         <div class="evtCtnsBox wb_cts05" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
+        </div>  
+
+        <div class="evtCtnsBox wb_cts05s" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
         </div>  
 
         <div class="evtCtnsBox wb_cts06" >

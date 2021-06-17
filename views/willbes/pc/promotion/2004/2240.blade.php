@@ -31,6 +31,7 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
+        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_06_bg.jpg) no-repeat center top;}
 
@@ -138,9 +139,13 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" >            
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
+        </div>  
+
+        <div class="evtCtnsBox wb_cts05s" >            
             <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="수강신청하기" style="position: absolute;left: 43.32%;top: 91.22%;width: 13.79%;height: 4.07%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="수강신청하기" style="position: absolute;left: 43.32%;top: 73.22%;width: 13.79%;height: 11.07%;z-index: 2;"></a>
             </div>
         </div>  
 

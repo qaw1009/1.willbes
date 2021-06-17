@@ -154,7 +154,7 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/YitlBdAbtxU?rel=0"></iframe>
                         </div>
                         <h2 class="avi_title">영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</h2>
                     </div>
@@ -165,7 +165,7 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</p>
                                         </div>
@@ -175,7 +175,7 @@
                                 <li class="">
                                     <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail02.png" alt=""></div>
                                         <div class="text_box">
                                             <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
                                         </div>
@@ -185,7 +185,7 @@
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
@@ -195,7 +195,7 @@
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail04.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>한국사 오태진 - 공무원 최적의 합격방법 여기 다있다!</p>
                                         </div>
@@ -205,7 +205,7 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail05.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>2019 국가직 7급 한국사 해설특강｜대각국사 오태진</p>
                                         </div>

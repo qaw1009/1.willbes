@@ -676,7 +676,7 @@
                                     <div class="sliderGuide cSliderTM">
                                         <div class="sliderControlsTM">
                                             <div class="guide_slider">
-                                                <h4 class="hTy4 hTy">9급 시험과목 (2022년도부터 채용 제도 변경에 따라 선택과목/조정점수 제도 폐지 예정)</h4>
+                                                <h4 class="hTy4 hTy">9급 시험과목 (2022년도 채용 기준)</h4>
                                                 <div class="mgB3">
                                                     <table class="basicTb basicWd">
                                                         <colgroup>

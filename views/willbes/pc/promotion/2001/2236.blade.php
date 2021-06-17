@@ -55,7 +55,7 @@
         }
         .b-close {
             position: absolute;
-            right: 25px;
+            right: 0;
             top: 50px;
             padding: 5px;
             display: inline-block;

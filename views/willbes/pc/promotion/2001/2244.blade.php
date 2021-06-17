@@ -47,7 +47,7 @@
 
     <div class="evtContent NSK" id="evtContainer">
         <div class="skyBanner">
-            <a href="#evt03" onclick="certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/06/2244_sky01.jpg" alt="이벤트 하나"/></a>
+            <a href="javascript:void(0);" onclick="certOpen();"><img src="https://static.willbes.net/public/images/promotion/2021/06/2244_sky01.jpg" alt="이벤트 하나"/></a>
             <a href="#evt04"><img src="https://static.willbes.net/public/images/promotion/2021/06/2244_sky02.jpg" alt="이벤트 둘"/></a>
         </div>
 
@@ -67,11 +67,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_02.jpg"  alt="해양경찰 승진시험대비" />      
         </div>
 
-        <div class="evtCtnsBox evt_03" id="evt03">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_03.jpg"  alt="이벤트" />
-                <!--<a href="javascript:void(0);" onclick="certOpen();" title="수험표 인증하기" style="position: absolute; left: 54.11%; top: 62.27%; width: 33.13%; height: 5.91%; z-index: 2;"></a>-->
-            </div>          
+        <div class="evtCtnsBox evt_03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_03.jpg"  alt="이벤트" />         
         </div>
 
         <div class="evtCtnsBox evt_04" id="evt04">

@@ -31,6 +31,7 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
+        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_06_bg.jpg) no-repeat center top;}
 
@@ -138,9 +139,13 @@
         </div>
 
         <div class="evtCtnsBox wb_cts05" >            
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
+        </div>  
+
+        <div class="evtCtnsBox wb_cts05s" >            
             <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="수강신청하기" style="position: absolute;left: 43.32%;top: 91.22%;width: 13.79%;height: 4.07%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="수강신청하기" style="position: absolute;left: 43.32%;top: 73.22%;width: 13.79%;height: 11.07%;z-index: 2;"></a>
             </div>
         </div>  
 
@@ -154,7 +159,7 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/YitlBdAbtxU?rel=0"></iframe>
                         </div>
                         <h2 class="avi_title">영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</h2>
                     </div>
@@ -165,7 +170,7 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</p>
                                         </div>
@@ -175,7 +180,7 @@
                                 <li class="">
                                     <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail02.png" alt=""></div>
                                         <div class="text_box">
                                             <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
                                         </div>
@@ -185,7 +190,7 @@
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
@@ -195,7 +200,7 @@
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail04.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>한국사 오태진 - 공무원 최적의 합격방법 여기 다있다!</p>
                                         </div>
@@ -205,7 +210,7 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail05.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>2019 국가직 7급 한국사 해설특강｜대각국사 오태진</p>
                                         </div>

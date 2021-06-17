@@ -31,6 +31,7 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
+        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_06_bg.jpg) no-repeat center top;}
 
@@ -123,6 +124,12 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
         </div>  
 
+        {{--
+        <div class="evtCtnsBox wb_cts05s" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
+        </div>
+        --}}  
+        
         <div class="evtCtnsBox wb_cts06" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_06.jpg" alt="필수 기본이론 정복"/>
         </div>  
@@ -133,9 +140,9 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/eiAKjkFjwtE?rel=0"></iframe>
                         </div>
-                        <h2 class="avi_title">영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</h2>
+                        <h2 class="avi_title">빈출개념 콕 찝기! 연산증폭기(Op-Amp) 기출 포인트야~</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -144,9 +151,9 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</p>
+                                            <p>빈출개념 콕 찝기! 연산증폭기(Op-Amp) 기출 포인트야~</p>
                                         </div>
                                     </a>
                                 </li>
@@ -154,9 +161,9 @@
                                 <li class="">
                                     <a href="#tab2">
                                         <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
+                                            <p>우영쌤의 [무선/통신 공통이론 강의] 10분만에 정리하기</p>
                                         </div>
                                     </a>
                                 </li>
@@ -164,9 +171,9 @@
                                 <li class="">
                                     <a href="#tab3">
                                         <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
+                                            <p>우영쌤의 [전기이론 기초강의] 10분만에 정리하기</p>
                                         </div>
                                     </a>
                                 </li>
@@ -174,9 +181,9 @@
                                 <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail04.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>한국사 오태진 - 공무원 최적의 합격방법 여기 다있다!</p>
+                                            <p>최우영 전자공학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
                                     </a>
                                 </li>
@@ -184,12 +191,42 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail05.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>2019 국가직 7급 한국사 해설특강｜대각국사 오태진</p>
+                                            <p>최우영 무선공학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
                                     </a>
-                                </li>                             
+                                </li>   
+
+                                <li class="">
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail06.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>최우영 전기기기 2021.04.17 국가직 9급 기출 해설</p>
+                                        </div>
+                                    </a>
+                                </li>       
+
+                                <li class="">
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail07.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>최우영 전기이론 2021.04.17 국가직 9급 기출 해설</p>
+                                        </div>
+                                    </a>
+                                </li>       
+
+                                <li class="">
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_thumbnail08.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
+                                        </div>
+                                    </a>
+                                </li>                                 
 
                             </ul>
                         </div>
@@ -211,7 +248,7 @@
 
         <div class="evtCtnsBox wb_cts10" >
             <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_10.jpg" alt="전기/통신 수강신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 40.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 72.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
             </div>
@@ -414,11 +451,14 @@
         ); 
         
         //유툽
-        var tab1_url = "https://www.youtube.com/embed/YitlBdAbtxU?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/swRWKKnOk8c?rel=0";  
-        var tab3_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/mTD8xSVV0zs?rel=0";  
-        var tab5_url = "https://www.youtube.com/embed/HGybJR9Rvpg?rel=0";    
+        var tab1_url = "https://www.youtube.com/embed/eiAKjkFjwtE?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";  
+        var tab3_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";
+        var tab4_url = "https://www.youtube.com/embed/VYjIxsjvi1w?rel=0";  
+        var tab5_url = "https://www.youtube.com/embed/YkBKsq5cr3I?rel=0";    
+        var tab6_url = "https://www.youtube.com/embed/tf6wcBMkBwQ?rel=0";
+        var tab7_url = "https://www.youtube.com/embed/WB_TNvasmJw?rel=0";  
+        var tab8_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";    
         
         $(function() {
             $(".preview_list ul li a").click(function(){
@@ -435,7 +475,14 @@
                     video_tab_url = tab4_url;
                 }else if(activeTab == "#tab5"){
                     video_tab_url = tab5_url;
+                }else if(activeTab == "#tab6"){
+                    video_tab_url = tab6_url;
+                }else if(activeTab == "#tab7"){
+                    video_tab_url = tab7_url;
+                }else if(activeTab == "#tab8"){
+                    video_tab_url = tab8_url;
                 }
+                
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");
                 $('.avi_box').html(html_str);

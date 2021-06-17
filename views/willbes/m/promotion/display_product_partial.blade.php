@@ -3,10 +3,10 @@
 @endif
 
 @if(empty($arr_base['display_product_data'][$group_num]) === false)
+@php $learn_pattern = 'on_lecture'; @endphp
 <form id="dp_prod_form{{$group_num}}" method="POST" onsubmit="return false;" novalidate="">
     {!! csrf_field() !!}
     {!! method_field('POST' ) !!}
-    <input type="hidden" name="learn_pattern" value="on_lecture"/>  {{-- 학습형태 --}}
     <input type="hidden" name="cart_type" value=""/>   {{-- 장바구니 탭 아이디 --}}
     <input type="hidden" name="is_direct_pay" value=""/>    {{-- 바로결제 여부 --}}
 
@@ -81,8 +81,8 @@
                                             </div>
                                             <div class="w-buy">
                                                 <ul class="two">
-                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
-                                                    <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                                    <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y" data-is-free="N">장바구니</a></li>
+                                                    <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y" data-is-free="N">바로결제</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -206,6 +206,7 @@
                 </div>
             </div>
         @elseif($pattern_ccd[$ccd] == 'free') {{-- 무료강좌 --}}
+            @php $learn_pattern = 'on_free_lecture'; @endphp
             <div class="mb100">
                 <div class="pd20">
                     <div class="tx-red tx14 pb10 bdb-light-gray">※ 정부지침에 의해 강좌와 교재는 동시 결제가 불가능합니다.</div>
@@ -274,8 +275,7 @@
                                         </div>
                                         <div class="w-buy">
                                             <ul class="two">
-                                                <li><a href="#none" class="btn_gray" name="btn_cart" data-direct-pay="N" data-is-redirect="Y">장바구니</a></li>
-                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="Y">바로결제</a></li>
+                                                <li><a href="#none" class="btn_blue" name="btn_direct_pay" data-direct-pay="Y" data-is-redirect="N" data-is-free="Y">바로결제</a></li>
                                             </ul>
                                         </div>
                                     </td>
@@ -310,6 +310,7 @@
         @endif
     @endforeach
 
+    <input type="hidden" name="learn_pattern" value="{{ $learn_pattern }}"/>  {{-- 학습형태 --}}
 </form>
 @endif
 
@@ -326,8 +327,49 @@
     {{--장바구니, 바로결제 버튼 클릭--}}
     $dp_prod_form{{$group_num}}.on('click', 'a[name="btn_cart"], a[name="btn_direct_pay"]', function() {
         {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
         var $is_direct_pay = $(this).data('direct-pay');
         var $is_redirect = $(this).data('is-redirect');
-        addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect,'{{front_url('')}}');
+        var $apply_free_lecture = $(this).data('is-free');
+
+        if($apply_free_lecture === 'Y'){ // 무료강좌 지급
+            if (applyFreeLecture($dp_prod_form{{$group_num}}) === true) {
+                if(confirm('해당 상품이 신청되었습니다.\n내 강의실로 이동 하시겠습니까?')){
+                    location.href = '{{ app_url('/classroom/on/list/ongoing', 'www') }}';
+                }
+            }
+        }else {
+            addCartNDirectPay($dp_prod_form{{$group_num}}, $is_direct_pay, $is_redirect, '{{front_url('')}}');
+        }
+
+        {{-- 무료강좌 신청 --}}
+        function applyFreeLecture($regi_form) {
+            var $result = false;
+            var $confirm_msg = $regi_form.find('.chk_books:checked').length < 1 ? '해당 강좌를 신청하시겠습니까?' : '해당 강좌 및 교재를 신청하시겠습니까?';
+
+            if($regi_form.find('.chk_products:checked').length < 1) {
+                alert('강좌를 선택해 주세요.');
+                return false;
+            }
+
+            if (confirm($confirm_msg)) {
+                var $input_prod_code = {};
+                $regi_form.find('.chk_products:checked').each(function (idx) {
+                    $input_prod_code[idx] = $(this).val();
+                });
+
+                var url = '{{ site_url('/order/free') }}';
+                var data = $.extend(arrToJson($regi_form.find('input[type="hidden"]').serializeArray()), {
+                    'prod_code': JSON.stringify($input_prod_code)
+                });
+                sendAjax(url, data, function (ret) {
+                    if (ret.ret_cd) {
+                        $result = true;
+                    }
+                }, showAlertError, false, 'POST');
+            }
+
+            return $result;
+        }
     });
 </script>

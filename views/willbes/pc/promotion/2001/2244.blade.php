@@ -77,9 +77,10 @@
         <div class="evtCtnsBox evt_04" id="evt04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2244_04.jpg"  alt="12개월 패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 182386);" title="형소법,형법,해사법규" style="position: absolute; left: 5.09%; top: 85.06%; width: 28.66%; height: 8.91%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 182388);" title="형법,해사법규" style="position: absolute; left: 35.8%; top: 85.06%; width: 28.66%; height: 8.91%; z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 182391);" title="형소법,해사법규" style="position: absolute; left: 66.34%; top: 85.06%; width: 28.66%; height: 8.91%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183042);" title="형소법,형법,해사법규" style="position: absolute; left: 4.64%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183091);" title="형소법,형법" style="position: absolute; left: 27.59%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183063);" title="형법,해사법규" style="position: absolute; left: 50.18%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183065);" title="형소법,해사법규" style="position: absolute; left: 72.68%; top: 85.24%; width: 22.14%; height: 8.82%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>

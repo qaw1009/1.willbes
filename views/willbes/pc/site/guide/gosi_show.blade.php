@@ -16,7 +16,7 @@
                             <li class="w-gosi-guide2"><a class="qBox two" href="#gosi_guide2"><span>직렬별<br/>채용제도</span></a></li>
                             <li class="w-gosi-guide3"><a class="qBox two" href="#gosi_guide3"><span>국가직vs지방직<br/>vs서울시</span></a></li>
                             <li class="w-gosi-guide4"><a class="qBox" href="#gosi_guide4"><span>공무원이 하는일</span></a></li>
-                            <li class="w-gosi-guide5"><a class="qBox" href="#gosi_guide5"><span>조정점수제도</span></a></li>
+                            {{--<li class="w-gosi-guide5"><a class="qBox" href="#gosi_guide5"><span>조정점수제도</span></a></li>--}}
                             <li class="w-gosi-guide6"><a class="qBox" href="#gosi_guide6"><span>시험자격요건</span></a></li>
                             <li class="w-gosi-guide7"><a class="qBox" href="#gosi_guide7"><span>가산점제도</span></a></li>
                             <li class="w-gosi-guide8"><a class="qBox" href="#gosi_guide8"><span>시험과목</span></a></li>
@@ -356,6 +356,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{--
                             <div id="gosi_guide5" class="tabContent">
                                 <div class="examInfoGu3">
                                     <h4 class="hTy4 hTy">조정점수 제도 (2022년도부터 채용 제도 변경에 따라 선택과목/조정점수 제도 폐지 예정)</h4>
@@ -364,6 +365,7 @@
                                     </div>
                                 </div>
                             </div>
+                            --}}
                             <div id="gosi_guide6" class="tabContent">
                                 <div class="examInfoGu3">
                                     <div class="sliderGuide cSliderTM">
@@ -686,8 +688,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th>직렬(직류)</th>
-                                                            <th>필수과목(3)</th>
-                                                            <th>선택과목(택2)</th>
+                                                            <th colspan="2">필수과목(5)</th>
                                                             <th>주요근무 예정기관(예시)</th>
                                                         </tr>
                                                         </thead>
@@ -699,17 +700,17 @@
                                                                 영어<br/>
                                                                 한국사
                                                             </th>
-                                                            <th>행정법총론, 행정학개론, 사회, 과학, 수학</th>
+                                                            <th>행정법총론, 행정학개론</th>
                                                             <th>전부처</th>
                                                         </tr>
                                                         <tr>
                                                             <th>행정직 (고용노동)</th>
-                                                            <th>노동법개론, 행정법총론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>노동법개론, 행정법총론</th>
                                                             <th>고용노동부</th>
                                                         </tr>
                                                         <tr>
                                                             <th>행정직 (교육행정)</th>
-                                                            <th>교육학개론, 행정법총론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>교육학개론, 행정법총론</th>
                                                             <th>교육부</th>
                                                         </tr>
                                                         <tr>
@@ -724,52 +725,52 @@
                                                                 영어<br/>
                                                                 한국사
                                                             </th>
-                                                            <th>노동법개론, 직업상담, 심리학개론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>노동법개론, 직업상담/심리학개론</th>
                                                             <th>고용노동부</th>
                                                         </tr>
                                                         <tr>
                                                             <th>세무직 (세무)</th>
-                                                            <th>세법개론, 회계학, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>세법개론, 회계학</th>
                                                             <th>국세청</th>
                                                         </tr>
                                                         <tr>
                                                             <th>관세직 (관세)</th>
-                                                            <th>관세법개론, 회계원리, 사회,과학, 수학, 행정학개론</th>
+                                                            <th>관세법개론, 회계원리</th>
                                                             <th>관세청</th>
                                                         </tr>
                                                         <tr>
                                                             <th>통계직 (통계)</th>
-                                                            <th>통계학개론, 경제학개론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>통계학개론, 경제학개론</th>
                                                             <th>통계청, 그밖의 수요부처</th>
                                                         </tr>
                                                         <tr>
                                                             <th>교정직 (교정)</th>
-                                                            <th>교정학개론, 형사소송법개론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>교정학개론, 형사소송법개론</th>
                                                             <th>법무부</th>
                                                         </tr>
                                                         <tr>
                                                             <th>보호직 (보호)</th>
-                                                            <th>형사소송법개론, 사회복지학개론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>형사소송법개론, 사회복지학개론</th>
                                                             <th>법무부</th>
                                                         </tr>
                                                         <tr>
                                                             <th>검찰직 (검찰)</th>
-                                                            <th>형법, 형사소송법, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>형법, 형사소송법</th>
                                                             <th>검찰청</th>
                                                         </tr>
                                                         <tr>
                                                             <th>마약수사직 (마약수사)</th>
-                                                            <th>형법, 형사소송법, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>형법, 형사소송법</th>
                                                             <th>검찰청</th>
                                                         </tr>
                                                         <tr>
                                                             <th>출입국관리직(출입국 관리)</th>
-                                                            <th>행정법총론, 국제법개론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>행정법총론, 국제법개론</th>
                                                             <th>법무부</th>
                                                         </tr>
                                                         <tr>
                                                             <th>철도경찰직 (철도경찰)</th>
-                                                            <th>형사소송법개론, 형법총론, 사회, 과학, 수학, 행정학개론</th>
+                                                            <th>형사소송법개론, 형법총론</th>
                                                             <th>국토교통부</th>
                                                         </tr>
                                                         </tbody>

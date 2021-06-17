@@ -2,18 +2,17 @@
 
 @section('content')
     @include('willbes.pc.layouts.partial.site_menu')
-    <!-- content -->
     <!-- Container -->
     <style type="text/css">
         .evtContent {
-            position:relative;
-            width:100% !important;
-            min-width:1120px !important;
-            margin-top:20px !important;
-            padding:0 !important;
-            background:#fff;
+        width:100% !important;
+        min-width:1120px !important;
+        margin-top:20px !important;
+        padding:0 !important;
+        background:#fff;
         }
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtContent span {vertical-align:auto}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
@@ -25,12 +24,12 @@
         .sky a{display:block; margin-bottom:10px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_top_bg.jpg) no-repeat center top;position:relative;}
-        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-80px;animation: circle 6s linear infinite;}
+        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-80px;animation: circle 5s linear infinite;}
         @@keyframes circle{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
-            25%{-webkit-transform:rotate3d(0,0,1,10deg);transform:rotate3d(0,0,1,10deg)}
+            25%{-webkit-transform:rotate3d(0,0,1,25deg);transform:rotate3d(0,0,1,25deg)}
             50%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
-            75%{-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}
+            75%{-webkit-transform:rotate3d(0,0,1,-25deg);transform:rotate3d(0,0,1,-25deg)}
             100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
         }
 
@@ -70,7 +69,7 @@
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
 
-        <input type="hidden" name="msg" value="신쌤에게 전하고 싶은 말을 적어주세요.">
+        <input type="hidden" name="comment_ccd" value="713002">
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -134,7 +133,7 @@
                 <a href="javascript:go_popup2()" style="position: absolute;left: 45%;top: 60.15%;width: 10%;height: 3%;z-index: 2;"></a>
             </div>    
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/hFgv1FgRe3I?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/w6iy2OJTXVM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -157,11 +156,11 @@
                 <a href="https://cafe.naver.com/kts9719" target="_blank" title="닥공사" style="position: absolute;left: 66%;top: 92.15%;width: 16.25%;height: 7%;z-index: 2;"></a>
             </div>    
         </div>
-        
+
         {{--홍보url--}}
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial')
-        @endif 
+            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+        @endif
 
         <div class="evtCtnsBox evt08">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_08.jpg"  alt="신규 개설 강좌"/>

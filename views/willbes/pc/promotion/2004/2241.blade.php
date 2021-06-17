@@ -241,7 +241,7 @@
 
         <div class="evtCtnsBox wb_cts10" >
             <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_10.jpg" alt="전기/통신 수강신청하기"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 40.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 72.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
             </div>

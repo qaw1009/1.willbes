@@ -28,6 +28,7 @@
         .wb_01 .youtube {position:absolute; top:457px; left:49.45%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
         .wb_01 .youtube.yu02 {top:905px; margin-left:-139px;}
         .wb_01 .youtube.yu03 {top:1356px;}   
+        .wb_01 .youtube.yu04 {top:1805px; margin-left:-139px;}
 
         .wb_02 {background:#015275} 
         .wb_03 {padding-bottom:150px} 
@@ -92,7 +93,12 @@
             </div>
             <div class="youtube yu03">
                 <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            {{--
+            <div class="youtube yu04">
+                <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>	
+            --}}
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2188_01_02.jpg"  alt="3번과목 중요성" /><br>
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2188_01_03.jpg"  alt="과목비중 및 출제비율" />
 		</div>

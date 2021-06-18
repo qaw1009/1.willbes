@@ -103,7 +103,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_01" >
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2170_01_01.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
+			<img src="https://static.willbes.net/public/images/promotion/2021/06/2170_01_01.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -123,18 +123,18 @@
 
         <div class="evtCtnsBox wb_05" id="wb_05">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_05.jpg"  alt="Special 패키지 둘"/>
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181343" target="_blank" title="인강포함" style="position: absolute; left: 17.14%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
-                <a href="https://police.willbes.net/pass/offPackage/show/prod-code/181342" target="_blank" title="인강미포함" style="position: absolute; left: 55.27%; top: 74.69%; width: 27.05%; height: 5%; z-index: 2;"></a>  
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2170_05.jpg"  alt="Special 패키지"/>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" title="신청하기" style="position: absolute;left: 34.5%;top: 75.69%;width: 30.5%;height: 5.5%;z-index: 2;"></a>
             </div>       
 		</div>         
 
         <div class="evtCtnsBox wb_06" id="wb_06">
             <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2170_06.jpg"  alt="학원 단과 기본완성기출반"/> 
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181339" target="_blank" title="형사법 신광은" style="position: absolute; left: 11.43%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a> 
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181340" target="_blank" title="경찰학 장정훈" style="position: absolute; left: 39.64%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181341" target="_blank" title="헌법 김원욱" style="position: absolute; left: 67.86%; top: 78.55%; width: 20.09%; height: 4.19%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2170_06.jpg"  alt="학원 단과 기본완성기출반"/> 
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181339" target="_blank" title="형사법 신광은" style="position: absolute;left: 3.43%;top: 78.55%;width: 20.09%;height: 4.19%;z-index: 2;"></a> 
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181340" target="_blank" title="경찰학 장정훈" style="position: absolute;left: 27.64%;top: 78.55%;width: 20.09%;height: 4.19%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181341" target="_blank" title="헌법 김원욱" style="position: absolute;left: 51.86%;top: 78.55%;width: 20.09%;height: 4.19%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/183267" target="_blank" title="헌법 이국령" style="position: absolute;left: 76.36%;top: 78.55%;width: 20.09%;height: 4.19%;z-index: 2;"></a>
             </div>   
         </div>         
 
@@ -145,7 +145,8 @@
 				<div>
 				    형사법 - 신광은 교수님<br>
                     경찰학 - 장정훈 교수님<br>
-                    헌 법 – 김원욱 교수님<br>            
+                    헌 법 - 김원욱 교수님<br>            
+                    헌 법 - 이국령 교수님 
 				</div>
 				<div class="infoTit">종합반 안내</div>
 				<ul>

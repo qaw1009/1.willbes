@@ -24,7 +24,7 @@
         .sky a{display:block; margin-bottom:10px}
 
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_top_bg.jpg) no-repeat center top;position:relative;}
-        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-80px;animation: circle 5s linear infinite;}
+        .circle {position:absolute;left:50%;top:50%;margin-left:-188px;margin-top:-100px;animation: circle 5s linear infinite;}
         @@keyframes circle{
             0%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
             25%{-webkit-transform:rotate3d(0,0,1,25deg);transform:rotate3d(0,0,1,25deg)}
@@ -32,12 +32,23 @@
             75%{-webkit-transform:rotate3d(0,0,1,-25deg);transform:rotate3d(0,0,1,-25deg)}
             100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}
         }
+        .constitution {position: absolute;left:50%;top: 50%;margin-left: -77px;margin-top: 35px;}
 
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_01_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#383838;}
 
-        .evt04 {background:#4c4c4c;}
+        .evt04 {background:#4c4c4c;padding:150px 0;}
+        .evt04 .area {width:1120px;margin:0 auto;}
+        .evt04 .area::after {content:"";display:table;clear:both;}
+        .evt04 .left_area {float:left;}
+        .evt04 .right_area {float:right;}
+
+        .evt04 .slide_con {width:487px; margin:0 auto; position:relative}
+        .evt04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
+        .evt04 .slide_con p a {cursor:pointer}
+        .evt04 .slide_con p.leftBtn {left:-100px; top:50%; width:62px; height:62px; margin-top:-30px;}
+        .evt04 .slide_con p.rightBtn {right:-100px; top:50%; width:62px; height:62px; margin-top:-30px;} 
 
         .evt05 {background:#383838;position:relative;}
         .youtube {position:absolute; top:432px; left:50%;z-index:1;margin-left:-465px}
@@ -94,6 +105,9 @@
             <div class="circle">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_circle.png"  alt=""/>
             </div>
+            <div class="constitution">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_constitution.png"  alt=""/>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01">
@@ -126,7 +140,28 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04.jpg"  alt="걍약조절"/>
+            <div class="area">
+                <div class="left_area">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_left.png"  alt="걍약조절"/>
+                </div>
+                <div class="right_area">
+                    <div class="slide_con">
+                        <ul id="slidesImg4">
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_01.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_02.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_03.png" /></li>     
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_04.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_05.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_06.png" /></li>     
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_07.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_08.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_09.png" /></li>     
+                        </ul>
+                        <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_left_arrow.png"></a></p>
+                        <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_right_arrow.png"></a></p>
+                    </div>
+                </div>       
+            </div>    
         </div>
 
         <div class="evtCtnsBox evt05">           
@@ -135,7 +170,7 @@
                 <a href="javascript:go_popup2()" style="position: absolute;left: 45%;top: 60.15%;width: 10%;height: 3%;z-index: 2;"></a>
             </div>    
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/w6iy2OJTXVM?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_BX3eP_CAtc?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -209,6 +244,33 @@
         function go_popup2() {
             $('#popup2').bPopup();
         }        
+
+         /*슬라이드*/
+
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:false,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+        });     
       </script> 
       
 {{-- 프로모션용 스크립트 include --}}

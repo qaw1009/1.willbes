@@ -158,8 +158,8 @@
 
                     <div id="tab05">
                         <img src="https://static.willbes.net/public/images/promotion/2021/06/2242_03_t05.png" alt="김유석" />
-                        <a href="javascript:alert('6월 18일부터 접수');" title="학원강의" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
-                        <a href="javascript:alert('6월 18일부터 접수');" title="온라인강의" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="https://ssam.willbes.net/pass/offPackage/show/prod-code/182866" target="_blank"title="학원강의" style="left: 8.15%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
+                        <a href="https://ssam.willbes.net/package/show/cate/3137/pack/648001/prod-code/183044" target="_blank" title="온라인강의" style="left: 36.79%; top: 68.06%; width: 28.02%; height: 12.26%;"></a>
                         <span>
                             <a href="javascript:fnPlayerSample('177269','1267102','HD');" class="view">설명회보기</a>
                             <a href="javascript:fnPlayerSample('179276','1278897','HD');" class="sample">합격사례발표보기</a>

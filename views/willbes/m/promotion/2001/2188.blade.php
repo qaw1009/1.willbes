@@ -67,6 +67,16 @@
         <div class="youtubeCts video-container">
             <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
+    </div> 
+
+    <div class="evtCtnsBox">        
+        <img src="https://static.willbes.net/public/images/promotion/2021/06/2188m_04_01.jpg" alt="이국령" ><br>
+        <img src="https://static.willbes.net/public/images/promotion/2021/06/2188m_04_02.jpg" alt="" >
+        {{--
+        <div class="youtubeCts video-container">
+            <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+        --}}
     </div>   
     
     <div class="evtCtnsBox">        

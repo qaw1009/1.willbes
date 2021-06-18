@@ -83,7 +83,7 @@
 		</div>
 
         <div class="evtCtnsBox wb_01">
-			<img src="https://static.willbes.net/public/images/promotion/2021/04/2188_01_01.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
+			<img src="https://static.willbes.net/public/images/promotion/2021/06/2188_01_01.jpg"  alt="빠르게 준비 및 유튜브 영상"/><br>	
             <div class="youtube">
                 <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -98,7 +98,7 @@
 		</div>
 
 		<div class="evtCtnsBox wb_02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2188_02.jpg"  alt="자격증.기초입문 선행 스케줄"/>       
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2188_02.jpg"  alt="자격증.기초입문 선행 스케줄"/>       
         </div>
 
         <div class="evtCtnsBox wb_03" id="evt03">

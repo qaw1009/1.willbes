@@ -38,8 +38,13 @@
 
         .evt03 {background:#383838;}
 
-        .evt04 {background:#4c4c4c;}
-        .evt04 .slide_con {width:954px; margin:0 auto; position:relative}
+        .evt04 {background:#4c4c4c;padding:150px 0;}
+        .evt04 .area {width:1120px;margin:0 auto;}
+        .evt04 .area::after {content:"";display:table;clear:both;}
+        .evt04 .left_area {float:left;}
+        .evt04 .right_area {float:right;}
+
+        .evt04 .slide_con {width:487px; margin:0 auto; position:relative}
         .evt04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
         .evt04 .slide_con p a {cursor:pointer}
         .evt04 .slide_con p.leftBtn {left:-100px; top:50%; width:62px; height:62px; margin-top:-30px;}
@@ -135,16 +140,28 @@
         </div>
 
         <div class="evtCtnsBox evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04.jpg"  alt="걍약조절"/>
-            <div class="slide_con">
-                <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_02.png" /></li>  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_03.png" /></li>     
-                </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>
-            </div>
+            <div class="area">
+                <div class="left_area">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_left.png"  alt="걍약조절"/>
+                </div>
+                <div class="right_area">
+                    <div class="slide_con">
+                        <ul id="slidesImg4">
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_01.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_02.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_03.png" /></li>     
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_04.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_05.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_06.png" /></li>     
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_07.png" /></li>
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_08.png" /></li>  
+                            <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_09.png" /></li>     
+                        </ul>
+                        <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_left_arrow.png"></a></p>
+                        <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/06/2236_04_right_arrow.png"></a></p>
+                    </div>
+                </div>       
+            </div>    
         </div>
 
         <div class="evtCtnsBox evt05">           
@@ -233,7 +250,7 @@
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
                 mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
+                auto:false,
                 speed:350,
                 pause:4000,
                 pager:true,

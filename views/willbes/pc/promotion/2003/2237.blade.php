@@ -39,12 +39,7 @@
 		</div>
 
         <div class="evtCtnsBox evt02">
-            <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2237_02.jpg" alt="기술직 군무원 맞춤 커리큘럼" />
-                <a href="javascript:go_PassLecture('183084')" title="all 패키지" style="position: absolute;left: 13%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183087')" title="5법 패키지" style="position: absolute;left: 40.5%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183092')" title="민법+영어 패키지" style="position: absolute;left: 68.25%;top: 83.42%;width: 19%;height: 8.55%;z-index: 2;"></a>
-            </div>    
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2237_02.jpg" alt="기술직 군무원 맞춤 커리큘럼" />          
 		</div>
 
         <div class="evtCtnsBox evt03">

@@ -43,7 +43,7 @@
                 <a href="https://cafe.daum.net/9glade/O6Qh" target="_blank" title="9꿈사" style="position: absolute;left: 44.86%;bottom: 2.95%;width: 9.75%;height: 6.48%;z-index: 2;"></a>
                 <a href="https://gall.dcinside.com/board/lists/?id=government" target="_blank" title="공무원갤러리" style="position: absolute;left: 54.86%;bottom: 2.95%;width: 9.75%;height: 6.48%;z-index: 2;"></a>
                 <a href="https://section.blog.naver.com/BlogHome.naver" target="_blank" title="네이버블로그" style="position: absolute;left: 64.86%;bottom: 2.95%;width: 9.75%;height: 6.48%;z-index: 2;"></a>
-                <a href="#none;" title="링크복사하기" style="position: absolute;left: 74.86%;bottom: 2.95%;width: 9.75%;height: 6.48%;z-index: 2;"></a>
+                <a href="javascript:void(0);" title="링크복사하기" onclick="copyTxt();" style="position: absolute;left: 74.86%;bottom: 2.95%;width: 9.75%;height: 6.48%;z-index: 2;"></a>
             </div>                  
 		</div>
 
@@ -55,4 +55,6 @@
 	</div>
     <!-- End Container -->
 
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

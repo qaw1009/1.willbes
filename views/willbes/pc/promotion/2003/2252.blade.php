@@ -9,7 +9,7 @@
             min-width:1120px !important;
             margin-top:20px !important;
             padding:0 !important;
-            background:#e9e9e9;
+            background:#fff;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -20,7 +20,7 @@
         
         .evt01 {background:#fff;}    
 
-        .evt02 {background:#e9e9e9;}    
+        .evt02 {background:#e9e9e9;padding-bottom:50px;}    
         /************************************************************/      
     </style> 
 

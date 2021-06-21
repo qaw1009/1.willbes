@@ -62,7 +62,7 @@
         .video-container object,
         .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-        .evt09 {padding-bottom:25px;}
+        .evt09 {}
 
         /* 이용안내 */
         .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
@@ -238,6 +238,11 @@
             </div>
         </div>
 
+        <div class="evtCtnsBox evt09">
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_07.jpg" alt="이국령" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_08.jpg" alt="" >
+        </div>
+
         <div class="evtCtnsBox evt10">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_05.jpg" alt="커리큘럼" >
         </div>
@@ -282,7 +287,7 @@
                                 * 수강가능 교수진 ><br>
                                 형사소송법/형사법/수사 : 신광은 교수님<br>
                                 경찰학개론/경찰학(개편)/행정법 : 장정훈 교수님<br>
-                                형법/헌법 : 김원욱 교수님<br>
+                                형법/헌법 : 김원욱 교수님 / 이국령 교수님<br>
                                 영어/G-TELP : 하승민/김현정/김준기 교수님<br>
                                 한국사/한능검 : 원유철/오태진 교수님<br>
                                 실용글쓰기 : 박우찬 교수님<br>
@@ -400,10 +405,10 @@
                                 - 2022년 대비 형사법, 경찰학, 헌법 전 강좌<br>
                                 - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>
                                 - 해당 상품은 일반공채 대비 상품으로 범죄학은 수강 불가합니다.<br>
-                                *수강가능 교수진 ><br>
+                                * 수강가능 교수진 ><br>
                                 형사법/형사소송법 : 신광은 교수님<br>
                                 경찰학(개편)/경찰학개론 : 장정훈 교수님<br>
-                                헌법/형법 : 김원욱 교수님
+                                형법/헌법 : 김원욱 교수님 / 이국령 교수님<br>
                             </li>
                             <li>선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                             <li>신광은 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
@@ -492,7 +497,7 @@
                                 <div class="tx-blue">
                                     * 형사법 : 신광은 교수님<br>
                                     * 경찰학(개편) : 장정훈 교수님<br>
-                                    * 헌법 : 김원욱 교수님
+                                    * 헌법 : 김원욱 교수님 / 이국령 교수님<br>
                                 </div>
                             </li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강 할 수 있습니다.</li>

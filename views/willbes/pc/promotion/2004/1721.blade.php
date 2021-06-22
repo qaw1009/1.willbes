@@ -89,43 +89,57 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/_RDnE7u4k8U?rel=0 "></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/wSaPEaVIbbo?rel=0 "></iframe>
                         </div>
-                        <h2 class="avi_title">[전기직] 듣기만 해도 합격! 최우영 전기직 커리큘럼</h2>
+                        <h2 class="avi_title">합격하고자 하면~ 기출을 풀어라! 직접FM 기출 문풀 정리하기~ </h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
                             <ul>
+
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/1721_thumbnail01s.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>합격하고자 하면~ 기출을 풀어라! 직접FM 기출 문풀 정리하기~ </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                
+                                <li class=>
+                                    <a href="#tab2" class="active">
+                                        <span class="num_box" data-num="2">2</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>기초전기전자 직렬별 출제유형 전격 공개</p>
                                         </div>
                                     </a>
                                 </li>
+
                                 <li class="">
-                                    <a href="#tab2">
-                                        <span class="num_box" data-num="2">2</span>
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>전기이론 10분만에 정리하기</p>
                                         </div>
                                     </a>
                                 </li>
+
                                 <li class="">
-                                    <a href="#tab3">
-                                        <span class="num_box" data-num="3">3</span>
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>우영쌤의 &lt;무선/통신 공통 기초강의&gt; 10분만에 정리하기</p>
                                         </div>
                                     </a>
                                 </li>
+
                                 <li class="">
-                                    <a href="#tab4">
-                                        <span class="num_box" data-num="4">4</span>
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>[전자] 기초 전기/전자 이론 『전기의 본질』 빠르게 확인하기!</p>
@@ -134,21 +148,11 @@
                                 </li> 
                               
                                 <li class="">
-                                    <a href="#tab5">
-                                        <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
                                     <a href="#tab6">
                                         <span class="num_box" data-num="6">6</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>『전기회로 기본용어』 10분 핵심정리 확인하기!!</p>
+                                            <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆</p>                                   
                                         </div>
                                     </a>
                                 </li>
@@ -158,14 +162,24 @@
                                         <span class="num_box" data-num="7">7</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
+                                            <p>『전기회로 기본용어』 10분 핵심정리 확인하기!!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
                                             <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!?😆 2탄</p>
                                         </div>
                                     </a>
                                 </li>                                
                              
                                 <li class="">
-                                    <a href="#tab8">
-                                        <span class="num_box" data-num="8">8</span>
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>무선/통신 공통이론에서 『변조이론』 제일 중요한 거 알지!? 피날레!</p>
@@ -174,27 +188,15 @@
                                 </li>  
                                
                                 <li class="">
-                                    <a href="#tab9">
-                                        <span class="num_box" data-num="9">9</span>
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2020/07/1721_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>『RLC회로의 특성』 바로 이거야!!</p>
                                         </div>
                                     </a>
                                 </li>
-
-                                {{--
-                                <li class="">
-                                    <a href="#tab10">
-                                        <span class="num_box" data-num="10">10</span>
-                                        <div class="thum_box"><img src="https://img.modoogong.com/upload/bnr/20200605/20200605182708_3872.png" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[리라클영어] 이리라 교수님의 역대급 강의력 겁나 빠르게 확인하기!</p>
-                                            <span>영어 / 이리라</span>
-                                        </div>
-                                    </a>
-                                </li>    
-                                --}}                                     
+                                                                                                 
                             </ul>
                         </div>
                     </div>          
@@ -256,16 +258,17 @@
             });
         });
 
-        //유툽
-        var tab1_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
-        var tab3_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
-        var tab4_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
-        var tab5_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
-        var tab6_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
-        var tab7_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
-        var tab8_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
-        var tab9_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        
+        //유툽      
+        var tab1_url = "https://www.youtube.com/embed/wSaPEaVIbbo?rel=0";
+        var tab2_url = "https://www.youtube.com/embed/_RDnE7u4k8U?rel=0";
+        var tab3_url = "https://www.youtube.com/embed/sC9TJfUNkyc?rel=0";  
+        var tab4_url = "https://www.youtube.com/embed/K_q0zcAGM3U?rel=0";   
+        var tab5_url = "https://www.youtube.com/embed/FYzC6MElEzw?rel=0";   
+        var tab6_url = "https://www.youtube.com/embed/rc-ZBbEhU_A?rel=0"; 
+        var tab7_url = "https://www.youtube.com/embed/_crgLD0rmN8?rel=0";  
+        var tab8_url = "https://www.youtube.com/embed/9dxrpJ6TOZg?rel=0";  
+        var tab9_url = "https://www.youtube.com/embed/1zATq2Kydwg?rel=0";   
+        var tab10_url = "https://www.youtube.com/embed/37yjw2mC8wY?rel=0";                        
     
 
         $(function() {
@@ -291,6 +294,8 @@
                     video_tab_url = tab8_url;
                 }else if(activeTab == "#tab9"){
                     video_tab_url = tab9_url;
+                }else if(activeTab == "#tab10"){
+                    video_tab_url = tab10_url;
                 }
                 html_str = '<iframe src="' + video_tab_url + '" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no"></iframe>'
                 $(this).addClass("active");

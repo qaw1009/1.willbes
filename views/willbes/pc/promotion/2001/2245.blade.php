@@ -169,6 +169,7 @@
         .evt07 .youtube {position:absolute; top:241px; left:52.3%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
         .evt07 .youtube.yu02 {top:670px; margin-left:-168px;}
         .evt07 .youtube.yu03 {top:1101px;}   
+        .evt07 .youtube.yu04 {top:1539px; margin-left:-168px;}  
 
         .evt08 {background:#5b68ea;}
 
@@ -411,7 +412,10 @@
             </div>
             <div class="youtube yu03">
                 <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>		
+            </div>	
+            <div class="youtube yu04">
+                <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>	
         </div>
 
         <div class="evtCtnsBox evt08">  

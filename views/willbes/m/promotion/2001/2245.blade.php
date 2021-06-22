@@ -236,11 +236,13 @@
             <div class="youtubeCts video-container">
                 <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
-        </div>
+        </div>        
 
-        <div class="evtCtnsBox evt09">
+        <div class="evtCtnsBox evt09 mb100">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_07.jpg" alt="이국령" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_08.jpg" alt="" >
+            <div class="youtubeCts video-container">
+                <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt10">

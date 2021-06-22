@@ -225,8 +225,12 @@
                         <tr>
                             <td>{!! hpSubString($row['MemId'],0,2,'*') !!}</td>
                             <td>
-                                {{--{!! nl2br($row['Content']) !!}--}}
-                                {!! hpSubString($row['Content'], 0, 10, '*********************') !!}
+                                @if(empty($arr_base['is_public']) === false)
+                                    {!! nl2br($row['Content']) !!}
+                                @else
+                                    {!! hpSubString($row['Content'], 0, 10, '*********************') !!}
+                                @endif
+
                                 @if(sess_data('is_login') === true && sess_data('mem_idx') === $row['MemIdx'])
                                     <a class="btn-comment-del" data-comment-idx="{{$row['Idx']}}" href="#none">X</a>
                                 @endif

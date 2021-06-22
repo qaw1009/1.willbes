@@ -16,7 +16,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/ 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2252_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/06/2257_top_bg.jpg) no-repeat center top;}
 
         .evt02 {background:#e9e9e9;padding-bottom:50px;}    
         /************************************************************/      
@@ -25,16 +25,16 @@
 	<div class="evtContent NGR">
 
 		<div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2252_top.jpg" alt="석치수 자료해석" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2257_top.jpg" alt="박준범 상황판단" />
 		</div>
 
         <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2252_01.jpg" alt="6월 전격출간" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2257_01.jpg" alt="5월 전격출간" />
 		</div>
 
         <div class="evtCtnsBox evt02">
             <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2252_02.jpg" alt="합격 이벤트" />       
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2257_02.jpg" alt="합격 이벤트" />       
                 <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute;left: 4.86%;top: 50.5%;width: 9.75%;height: 7%;z-index: 2;"></a>
                 <a href="https://cafe.naver.com/kkaebangjeong" target="_blank" title="7공9공" style="position: absolute;left: 14.86%;top: 50.5%;width: 9.75%;height: 7%;z-index: 2;"></a>
                 <a href="https://bit.ly/3gzszmB" target="_blank" title="독공사" style="position: absolute;left: 24.86%;top: 50.5%;width: 9.75%;height: 7%;z-index: 2;"></a>

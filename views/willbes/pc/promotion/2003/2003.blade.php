@@ -37,7 +37,7 @@
         <div class="sky">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2003_sky.png" alt="자격증" usemap="#Map2003_sky" border="0" />
             <map name="Map2003_sky" id="Map2003_sky">
-                <area shape="rect" coords="0,-1,108,90" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" />
+                <area shape="rect" coords="0,-1,108,90" href="javascript:alert('2022 대비 Coming soon!')" />
                 <area shape="rect" coords="-1,94,114,179" href="https://pass.willbes.net/promotion/index/cate/3028/code/2013" target="_blank" />
                 <area shape="rect" coords="2,182,118,257" href="https://pass.willbes.net/promotion/index/cate/3028/code/2014" target="_blank" />
                 <area shape="rect" coords="2,259,106,343" href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank" />

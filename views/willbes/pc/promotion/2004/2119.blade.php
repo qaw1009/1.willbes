@@ -21,6 +21,9 @@
 
         .wb_01 div,
         .wb_02 div {width:1120px; margin:0 auto}
+
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
       
     </style>
 
@@ -31,16 +34,16 @@
 
         <div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2119_01_01.jpg" alt="온라인관리반 소개" />
-            <div class="p_re">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/2119_01_02.jpg" alt="만족 후기" />
                 <a href="http://cafe.daum.net/LAW-KDJTEAM/I7Bo" target="_blank" title="더 많은 합격수기 확인하기" style="position: absolute; left: 34.29%; top: 79.39%; width: 31.07%; height: 5.4%; z-index: 2;"></a>
             </div>
         </div>  
 
         <div class="evtCtnsBox wb_02">
-            <div class="p_re">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/2119_02.jpg" alt="수강신청" />  
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기" style="position: absolute; left: 39.02%; top: 74.87%; width: 21.79%; height: 6.78%; z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2119_02.jpg" alt="수강신청" />  
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3059" target="_blank" title="수강신청하기" style="position: absolute; left: 28.84%; top: 82.52%; width: 42.86%; height: 8.96%; z-index: 2;"></a>
             </div>
         </div>
     </div>

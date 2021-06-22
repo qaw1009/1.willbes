@@ -44,7 +44,7 @@
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2015" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_sky.png" alt="">
             </a>
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1983" target="_blank">
+            <a href="javascript:alert('2022 대비 Coming soon!')" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/01/1983_sky.png" alt="">
             </a>
         </div>
@@ -69,7 +69,7 @@
                   <area shape="rect" coords="852,650,985,696" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/176001" target="_blank" alt="회계학 심화">
                   <area shape="rect" coords="848,851,984,897" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175992" target="_blank" alt="세법 기본">
                   <area shape="rect" coords="852,910,985,953" href="https://pass.willbes.net/lecture/show/cate/3022/pattern/only/prod-code/175998" target="_blank" alt="세법 심화">
-                  <area shape="rect" coords="739,1308,932,1368" href="https://pass.willbes.net/promotion/index/cate/3022/code/1983" target="_blank" alt="세무직 패스">
+                  <area shape="rect" coords="739,1308,932,1368" href="javascript:alert('2022 대비 Coming soon!')" alt="세무직 패스">
                 </map>
             </div>
         </div>

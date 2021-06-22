@@ -295,6 +295,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['survey_count'] = element('survey_count', $arr_input);
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;
+        $arr_base['is_public'] = element('is_public', $arr_input);
 
         $arr_base['set_params '] = [
             'event_idx' => element('event_idx', $arr_input),

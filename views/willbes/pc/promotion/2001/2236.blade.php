@@ -37,6 +37,8 @@
         .evt01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2236_01_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#383838;}
+        .evt03 .youtube {position:absolute; top:440px; left:50%; width:658px; z-index:1; margin-left:-329px; box-shadow:0 10px 20px rgba(0,0,0,.3);}  
+        .evt03 .youtube iframe {width:658px; height:356px} 
 
         .evt04 {background:#4c4c4c;padding:150px 0;}
         .evt04 .area {width:1120px;margin:0 auto;}
@@ -51,8 +53,8 @@
         .evt04 .slide_con p.rightBtn {right:-100px; top:50%; width:62px; height:62px; margin-top:-30px;} 
 
         .evt05 {background:#383838;position:relative;}
-        .youtube {position:absolute; top:432px; left:50%;z-index:1;margin-left:-465px}
-        .youtube iframe {width:493px; height:291px}
+        .evt05 .youtube {position:absolute; top:432px; left:50%;z-index:1;margin-left:-465px}
+        .evt05 .youtube iframe {width:493px; height:291px}
 
         .evt08 {background:#1a8884;padding-bottom:150px;}
         .tx-red {color:#f5f012 !important;}
@@ -75,6 +77,9 @@
             font-size:50px;
         }
         .Pstyle .content {height:auto; width:auto;}
+
+        
+        
 
     </style>
 
@@ -135,8 +140,11 @@
             </div> 
         </div>
 
-        <div class="evtCtnsBox evt03">
+        <div class="evtCtnsBox evt03 p_re">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_03.jpg"  alt="학습가이드"/>
+            <div class="youtube">
+                <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
 
         <div class="evtCtnsBox evt04">
@@ -164,7 +172,7 @@
             </div>    
         </div>
 
-        <div class="evtCtnsBox evt05">           
+        <div class="evtCtnsBox evt05 p_re">           
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_05.jpg"  alt="해결능력"/>
                 <a href="javascript:go_popup2()" style="position: absolute;left: 45%;top: 60.15%;width: 10%;height: 3%;z-index: 2;"></a>

@@ -14,24 +14,31 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         /************************************************************/        
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2205_top_bg.jpg) no-repeat center top;}
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2260_top_bg.jpg) no-repeat center top;}
         .evt_01 {width:1120px; margin:0 auto;}
  
         /************************************************************/      
     </style> 
 	<div class="evtContent NSK">
 		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2205_top.jpg" alt="빈출쟁점정리" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2260_top.jpg" alt="썸머 이벤트" />
 		</div>       
 
         <div class="evtCtnsBox evt_01">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2205_01.jpg" alt="강사진" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2260_01_01.jpg" alt="" />     
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif
+            @endif 
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2260_01_02.jpg" alt="" />  
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
+            @endif 
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2260_01_03.jpg" alt="" />  
         </div>        
 	</div>
      <!-- End Container -->

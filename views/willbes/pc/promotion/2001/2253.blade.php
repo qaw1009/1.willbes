@@ -62,8 +62,8 @@
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_01.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_01.jpg" /></li>  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_01.jpg" /></li>     
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_02.jpg" /></li>  
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_03.jpg" /></li>     
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_04.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_05.jpg" /></li>  
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2253_01_06.jpg" /></li>     

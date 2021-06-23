@@ -108,14 +108,8 @@
 
     <div class="p_re evtContent NGR" id="evtContainer">
         <div class="sky">
-            <a href="#apply1">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_sky1.png" alt="사전접수 할인 이벤트" >
-            </a>
             <a href="#apply2">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_sky2.png" alt="문제풀이 단원별 패키지" >
-            </a>
-            <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2169" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_sky3.png" alt="5개월 필합 패스" >
             </a>
         </div>       
      
@@ -162,14 +156,8 @@
             <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="1단계 신청하기" style="position: absolute; left: 40.21%; top: 30.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
             <a href="https://police.willbes.net/pass/offLecture/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1044" target="_blank" title="2단계 신청하기" style="position: absolute; left: 40.21%; top: 62.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
             <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1045" target="_blank" title="3단계 신청하기" style="position: absolute; left: 40.21%; top: 92.21%; width: 19.93%; height: 3.26%; z-index: 2;"></a>
-        </div>    
-
-        <div class="evtCtnsBox evt03" id="apply1">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_03.jpg" title="문풀 풀패키지" />
-            <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1043" target="_blank" title="일반공채 신청하기" style="position: absolute; left: 30.21%; top: 78.21%; width: 17.93%; height: 10.26%; z-index: 2;"></a>
-            <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank" title="경행경채 신청하기" style="position: absolute; left: 51.21%; top: 78.21%; width: 18.93%; height: 10.26%; z-index: 2;"></a>
-        </div>
-
+        </div>   
+        
         <div class="evtCtnsBox evt04" id="apply2">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2164_04.jpg" title="단계별 종합반" >
             <div class="evtCtnsBox wb_tab">
@@ -182,37 +170,6 @@
 
                 <div id="tab1" class="tabContents">   
                     <div class="evt04_table">     
-                        <div class="title NSK-Black">              
-                            문제풀이 1단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>학원수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년 2차대비  1단계종합반 (한국사 원유철)</td>
-                                        <td><span style="text-decoration: line-through;">750,000원</span><br />
-                                        <span style="color:#f72739">525,000원</span></td>              
-                                        <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/181486" target="_blank">신청하기 ></a></td>
-                                    </tr>     
-                                    <tr>
-                                        <td>2021년 2차대비  1단계종합반 (한국사 오태진)</td>
-                                        <td><span style="text-decoration: line-through;">690,000원</span><br />
-                                        <span style="color:#f72739">483,000원</span></td>                         
-                                        <td><a href="https://police.willbes.net/pass/offPackage/show/prod-code/181487" target="_blank">신청하기 ></a></td>
-                                    </tr>                          
-                                </tbody>
-                            </table>        
-                        </div> 
                         <div class="title NSK-Black">              
                             문제풀이 2단계
                         </div>   
@@ -293,31 +250,6 @@
 
                 <div id="tab2" class="tabContents">    
                     <div class="evt04_table">     
-                        <div class="title NSK-Black">              
-                            문제풀이 1단계
-                        </div>   
-                        <div> 
-                            <table border="0" cellspacing="0" cellpadding="0">
-                                <col width="60%" />
-                                <col width="25%" />
-                                <col width="15%" />
-                                <thead>
-                                    <tr>
-                                        <th>강의명</th>
-                                        <th>수강료</th>                        
-                                        <th>학원수강</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>2021년 2차대비 1단계 종합반</td>
-                                        <td><span style="text-decoration: line-through;">630,000원</span><br />
-                                        <span style="color:#f72739">441,000원</span></td>                        
-                                        <td><a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3011&campus_ccd=605001&course_idx=1043" target="_blank">신청하기 ></a></td>
-                                    </tr>                                   
-                                </tbody>
-                            </table>        
-                        </div> 
                         <div class="title NSK-Black">              
                             문제풀이 2단계
                         </div>   
@@ -438,7 +370,8 @@
                     </li> 
                     <li>
                         ② 문제풀이 2단계<br/>
-                        - 7월 5일(월) 시작되며 , 일정은 추후공지 됩니다.                    
+                        - 7월 5일(월) 시작됩니다.<br/>
+                        - 형소법>경찰학>형법>영어,행정법>한국사(오),한국사(원),수사                 
                     </li>
                     <li>
                         ③ 문제풀이 3단계<br/>

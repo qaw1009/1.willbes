@@ -15,6 +15,8 @@
     <link href="/public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
     <link href="/public/vendor/bootstrap/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- bootstrap-select -->
+    <link href="/public/vendor/bootstrap/selectpicker/css/bootstrap-select.min.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <!--<link href="/public/vendor/bootstrap/progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">-->
     <!-- NProgress -->
@@ -48,7 +50,6 @@
     <!-- show loading indicator -->
     <link href="/public/vendor/loading-indicator/css/showLoading.css" rel="stylesheet" type="text/css">
     <!--/ CSS -->
-
     <!-- JAVASCRIPT -->
     <!-- jQuery -->
     <script src="/public/vendor/jquery/v.2.2.3/jquery.min.js"></script>
@@ -66,6 +67,8 @@
     <script src="/public/vendor/moment/moment-with-locales.js"></script>
     <!-- bootstrap-datetimepicker -->
     <script src="/public/vendor/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- bootstrap-select -->
+    <script src="/public/vendor/bootstrap/selectpicker/js/bootstrap-select.min.js"></script>
     <!-- bootstrap-progressbar -->
     <!--<script src="/public/vendor/bootstrap/progressbar/bootstrap-progressbar.min.js"></script>-->
     <!-- jquery.inputmask -->

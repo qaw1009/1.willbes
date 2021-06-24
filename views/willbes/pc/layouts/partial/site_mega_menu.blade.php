@@ -395,7 +395,7 @@
                         <span>[헌법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50592/?cate_code=3059&subject_idx=1260')}}">이국령</a>
                         <span>[민법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50520/?cate_code=3059&subject_idx=1264&subject_name=%EB%AF%BC%EB%B2%95')}}">김동진</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50520/?cate_code=3059&subject_idx=1264&subject_name=%EB%AF%BC%EB%B2%95')}}">김동진</a><br>
                         <span>[민사소송법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50146/?cate_code=3059&subject_idx=1265&subject_name=%EB%AF%BC%EC%82%AC%EC%86%8C%EC%86%A1%EB%B2%95')}}">이덕훈</a>
                     </li>
@@ -414,10 +414,10 @@
                         <span>[소방관계법규]</span>
                         <a href="{{front_url('/professor/show/prof-idx/51055?cate_code=3050&subject_idx=1284&subject_name=%EC%86%8C%EB%B0%A9%EA%B4%80%EA%B3%84%EB%B2%95%EA%B7%9C')}}">이종오</a>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50616?cate_code=3050&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50616?cate_code=3050&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">이석준</a><br>
                         <span>[영어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50310?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">이아림</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50072?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50072?cate_code=3050&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4')}}">양익</a><br>
                         <span>[한국사]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50306?cate_code=3050&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">한경준</a>
                         <span>[국어]</span>
@@ -474,7 +474,7 @@
                         <span>[생물]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1327&subject_name=%EC%83%9D%EB%AC%BC')}}">장사원</a>
                         <span>[농촌지도론]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1376&subject_name=%EB%86%8D%EC%B4%8C%EC%A7%80%EB%8F%84%EB%A1%A0')}}">장사원</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1376&subject_name=%EB%86%8D%EC%B4%8C%EC%A7%80%EB%8F%84%EB%A1%A0')}}">장사원</a><br>
                         <span>[토양학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50430/?cate_code=3052&subject_idx=1389&subject_name=%ED%86%A0%EC%96%91%ED%95%99')}}">장사원</a>
                     </li>
@@ -508,7 +508,7 @@
                         <span>[국어]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50158?cate_code=3048&subject_idx=1253&subject_name=%EA%B5%AD%EC%96%B4')}}">오대혁</a>
                         <span>[행정법]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a>
+                        <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3048&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a><br>
                         <span>[행정학]</span>
                         <a href="{{front_url('/professor/show/prof-idx/50560?cate_code=3048&subject_idx=1258&subject_name=%ED%96%89%EC%A0%95%ED%95%99')}}">김덕관</a>
                     </li>

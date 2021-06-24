@@ -20,13 +20,13 @@
                     <label class="control-label col-md-1">교수검색</label>
                     <div class="col-md-5 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                        <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                        <select class="form-control selectpicker" id="search_prof_idx" name="search_prof_idx" title="교수선택" data-size="10" data-live-search="true">
                             <option value="">교수선택</option>
                             @foreach($arr_professor as $row)
                                 <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
@@ -35,7 +35,7 @@
                     </div>
                     <label class="control-label col-md-1">캠퍼스</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd" title="캠퍼스">
                             <option value="">선택</option>
                             @foreach($arr_campus as $row)
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">검색일</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="StudyStartDate">개강일</option>
                             <option value="StudyEndDate">종강일</option>
                             <option value="CalcDate">정산일</option>
@@ -55,17 +55,17 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일자">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일자">
                         </div>
                     </div>
                     <label class="control-label col-md-1">상품검색</label>
                     <div class="col-md-3">
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" title="상품검색어">
                     </div>
                 </div>
             </div>

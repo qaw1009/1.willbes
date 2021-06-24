@@ -14,6 +14,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }
 
         /************************************************************/   
         
@@ -23,8 +24,6 @@
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_top_bg.jpg) no-repeat center top;}
 
         .wb_cts01 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_01_bg.jpg) no-repeat center top;}
-
-        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/04/2156_02s_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#169adb}
 
@@ -38,6 +37,7 @@
         .wb_cts07 {padding-bottom:150px;}
 
         .wb_cts08 {background:#ECECEC;padding-bottom:50px;}
+        .wb_cts08 .wrap {width:980px; margin:0 auto; position:relative}
 
         .wb_cts10 {background:#ECECEC;}
  
@@ -123,14 +123,10 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_01.jpg" alt="9급 일반행정"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
-
-        </div>
-
         <div class="evtCtnsBox wb_cts03" >
-            <div class="evt_wrap">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_03.jpg" alt="라이브 모드 구매하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="9급 구매하기" style="position: absolute;left: 33.32%;top: 75.22%;width: 32.79%;height: 8.07%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="9급 구매하기" style="position: absolute; left: 22.32%; top: 76.06%; width: 55.36%; height: 7.33%;  z-index: 2;"></a>                
             </div>
         </div>
 
@@ -140,12 +136,10 @@
 
         <div class="evtCtnsBox wb_cts05" >            
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
-        </div>  
-
-        <div class="evtCtnsBox wb_cts05s" >            
-            <div class="evt_wrap">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500/?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4&tab=open_lecture" target="_blank" title="수강신청하기" style="position: absolute;left: 43.32%;top: 73.22%;width: 13.79%;height: 11.07%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50500?cate_code=3043&subject_idx=1254&subject_name=%EC%98%81%EC%96%B4" title="한덕현" target="_blank" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" title="신기훈" target="_blank" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </div>  
 
@@ -243,26 +237,22 @@
                 </ul>
             </div>
 
-            <div id="tab01s">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts1.png" usemap="#Map2240a" border="0" />
-                <map name="Map2240a" id="Map2240a">
-                    <area shape="rect" coords="218,632,763,719" href="javascript:alert('Coming Soon!')" />
-                </map>
+            <div id="tab01s" class="wrap">            
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts1.png" />
+                <a href="javascript:alert('Coming Soon!')" title="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
             </div> 
 
-            <div id="tab02s">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts2.png" usemap="#Map2240b" border="0" />
-                <map name="Map2240b" id="Map2240b">
-                    <area shape="rect" coords="220,368,760,463" href="javascript:alert('Coming Soon!')" />
-                </map>
+            <div id="tab02s" class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts2.png" />
+                <a href="javascript:alert('Coming Soon!')" title="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
             </div>
         </div>  
 
-        <div class="evtCtnsBox wb_cts10" >
-            <div class="evt_wrap">
+        <div class="evtCtnsBox wb_cts10">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 40.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 72.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 40.13%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 71.92%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
             </div>
         </div>
 

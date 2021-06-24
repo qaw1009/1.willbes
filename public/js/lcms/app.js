@@ -427,6 +427,9 @@ function init_datatable() {
             $search_site_code.val($(this).data('site-code'));
             if ($search_site_code.prop('tagName') === 'SELECT') {
                 $search_form.find('[name="search_site_code"]').change();
+                if (typeof ($.fn.selectpicker) !== 'undefined' && $search_form.find('select.selectpicker').length > 0) {
+                    $search_form.find('select.selectpicker').selectpicker('refresh');
+                }
             }
 
             $search_form.submit();
@@ -436,6 +439,9 @@ function init_datatable() {
         $search_form.off('click', '#btn_reset, #_btn_reset');
         $search_form.on('click', '#btn_reset, #_btn_reset', function() {
             $search_form[0].reset();
+            if (typeof ($.fn.selectpicker) !== 'undefined' && $search_form.find('select.selectpicker').length > 0) {
+                $search_form.find('select.selectpicker').selectpicker('refresh');
+            }
             // 기본화면셋팅 정보가 있을 경우
             if (typeof arr_search_data != 'undefined' && arr_search_data != null && typeof $search_form != 'undefined' && $search_form != null) {
                 $.each(arr_search_data, function(key,value) {
@@ -451,6 +457,9 @@ function init_datatable() {
         $search_form.off('click', '#btn_reset_in_set_search_date, #_btn_reset_in_set_search_date');
         $search_form.on('click', '#btn_reset_in_set_search_date, #_btn_reset_in_set_search_date', function() {
             $search_form[0].reset();
+            if (typeof ($.fn.selectpicker) !== 'undefined' && $search_form.find('select.selectpicker').length > 0) {
+                $search_form.find('select.selectpicker').selectpicker('refresh');
+            }
             $search_form.find('.btn-set-search-date:eq(0)').trigger('click');
             $datatable.draw();
         });

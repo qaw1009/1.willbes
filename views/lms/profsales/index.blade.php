@@ -20,7 +20,7 @@
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
                         @if(in_array('campus_ccd', $search_column) === true)
-                            <select class="form-control mr-10" id="search_campus_ccd" name="search_campus_ccd">
+                            <select class="form-control" id="search_campus_ccd" name="search_campus_ccd" title="캠퍼스">
                                 <option value="">캠퍼스</option>
                                 @foreach($arr_campus as $row)
                                     <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
@@ -28,14 +28,14 @@
                             </select>
                         @endif
                         @if(in_array('cate_code', $search_column) === true)
-                            <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                            <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                                 <option value="">대분류</option>
                                 @foreach($arr_lg_category as $row)
                                     <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                                 @endforeach
                             </select>
                             @if(empty($arr_md_category) === false)
-                                <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                                <select class="form-control" id="search_md_cate_code" name="search_md_cate_code" title="중분류">
                                     <option value="">중분류</option>
                                     @foreach($arr_md_category as $row)
                                         <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -44,7 +44,7 @@
                             @endif
                         @endif
                         @if(in_array('pack_type_ccd', $search_column) === true)
-                            <select class="form-control mr-10" id="search_pack_type_ccd" name="search_pack_type_ccd">
+                            <select class="form-control" id="search_pack_type_ccd" name="search_pack_type_ccd" title="패키지유형">
                                 <option value="">패키지유형</option>
                                 @foreach($arr_pack_type_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
@@ -52,7 +52,7 @@
                             </select>
                         @endif
                         @if(in_array('course_idx', $search_column) === true)
-                            <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                            <select class="form-control selectpicker" id="search_course_idx" name="search_course_idx" title="과정" data-size="10" data-live-search="true">
                                 <option value="">과정</option>
                                 @foreach($arr_course as $row)
                                     <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
@@ -60,7 +60,7 @@
                             </select>
                         @endif
                         @if(in_array('subject_idx', $search_column) === true)
-                            <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                            <select class="form-control selectpicker" id="search_subject_idx" name="search_subject_idx" title="과목" data-size="10" data-live-search="true">
                                 <option value="">과목</option>
                                 @foreach($arr_subject as $row)
                                     <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
@@ -68,7 +68,7 @@
                             </select>
                         @endif
                         @if(in_array('prof_idx', $search_column) === true && $is_tzone === false)
-                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                            <select class="form-control selectpicker" id="search_prof_idx" name="search_prof_idx" title="교수" data-size="10" data-live-search="true">
                                 <option value="">교수</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
@@ -81,7 +81,7 @@
                     <label class="control-label col-md-1">{{ $is_off_site == 'Y' ? '날짜' : '결제일/환불일' }}</label>
                     <div class="col-md-11 form-inline">
                         @if($is_off_site == 'Y')
-                            <select class="form-control mr-10" id="search_study_date_type" name="search_study_date_type">
+                            <select class="form-control" id="search_study_date_type" name="search_study_date_type" title="날짜구분">
                                 <option value="StudyStartDate">개강일</option>
                                 <option value="StudyEndDate">종강일</option>
                             </select>
@@ -90,12 +90,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" autocomplete="off" title="조회시작일자">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" autocomplete="off" title="조회종료일자">
                         </div>
                         @if($is_off_site == 'N')
                             <div class="btn-group" role="group">

@@ -14,7 +14,7 @@
                         <label class="control-label col-md-1">교수검색</label>
                         <div class="col-md-11 form-inline">
                             {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx" title="교수선택">
+                            <select class="form-control selectpicker" id="search_prof_idx" name="search_prof_idx" title="교수선택" data-size="10" data-live-search="true">
                                 <option value="">교수선택</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>

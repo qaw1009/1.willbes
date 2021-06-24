@@ -10,10 +10,12 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            position:relative;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         /************************************************************/   
         
@@ -31,7 +33,6 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
-        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_06_bg.jpg) no-repeat center top;}
 
@@ -105,32 +106,26 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_01.jpg" alt="군무원 모집"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
-
-        </div>
-
-        <div class="evtCtnsBox wb_cts03" >
-            <div class="evt_wrap">
+        <div class="evtCtnsBox wb_cts03">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_03.jpg" alt="라이브 모드 구매하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 구매하기" style="position: absolute;left: 33.32%;top: 75.22%;width: 32.79%;height: 8.07%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 구매하기" style="position: absolute; left: 22.32%; top: 76.33%; width: 55.27%; height: 6.52%; z-index: 2;"></a>
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
+        <div class="evtCtnsBox wb_cts04">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_04.jpg" alt="감사의 글"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts05" >
+        <div class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
+            </div>
         </div>  
-
-        {{--
-        <div class="evtCtnsBox wb_cts05s" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
-        </div>
-        --}}  
         
-        <div class="evtCtnsBox wb_cts06" >
+        <div class="evtCtnsBox wb_cts06">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_06.jpg" alt="필수 기본이론 정복"/>
         </div>  
         
@@ -240,17 +235,17 @@
         </div>  
 
         <div class="evtCtnsBox wb_cts09" >           
-            <div class="evt_wrap">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_09.jpg" alt="수강 신청하기"/>
-                <a href="javascript:alert('Coming Soon!')" title="수강신청하기" style="position: absolute;left: 35.32%;top: 68.5%;width: 28.79%;height: 10.07%;z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!')" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
             </div>
         </div>  
 
         <div class="evtCtnsBox wb_cts10" >
-            <div class="evt_wrap">
+            <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 40.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute;left: 47.32%;top: 72.22%;width: 16.79%;height: 8.07%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
             </div>
         </div>
 

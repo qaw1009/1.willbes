@@ -105,8 +105,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2256_05.jpg" alt="바로 신청하기" />
                 <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute;left: 16.86%;top: 43.85%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
                 <a href="javascript:go_PassLecture('181423');" title="" style="position: absolute;left: 61.86%;top: 43.85%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="" style="position: absolute;left: 16.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!')" title="" style="position: absolute;left: 61.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183366')" title="" style="position: absolute;left: 16.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183367')" title="" style="position: absolute;left: 61.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
                 <div class="check">
                     <label>
                         <input name="ischk"  type="checkbox" value="Y" />

@@ -10,9 +10,12 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
+            position:relative;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         /************************************************************/   
         
@@ -21,7 +24,7 @@
             top:200px;
             right:10px;
             z-index:1;
-            width:200px;
+            width:182px;
         }
         .skybanner a {display:block; margin-bottom:10px}
 
@@ -45,6 +48,7 @@
         .wb_cts06 {padding-bottom:150px;}
 
         .wb_cts07 {background:#ECECEC;padding-bottom:50px;}
+        .wb_cts07 .wrap {width:896px; margin:0 auto; position:relative}
 
         .wb_cts08 {background:#ECECEC;}
  
@@ -131,13 +135,17 @@
         </div>
 
         <div class="evtCtnsBox wb_cts02" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank" title="적중사례 자세히 보기" style="position: absolute; left: 52.29%; top: 83.39%; width: 16.07%; height: 6.4%; z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank" title="적중사례 자세히 보기" style="position: absolute; left: 54.02%; top: 83.61%; width: 27.5%; height: 6.56%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_03.jpg" alt="구매하기"/>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="불꽃소방 라이브 모드 구매하기" style="position: absolute; left: 32.29%; top: 79.39%; width: 36.07%; height: 7.4%; z-index: 2;"></a>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_03.jpg" alt="구매하기"/>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="불꽃소방 라이브 모드 구매하기" style="position: absolute; left: 23.13%; top: 79.16%; width: 55%; height: 7.92%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts04" >
@@ -408,27 +416,23 @@
                 </ul>
             </div>
 
-            <div id="tab01s">            
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts.png" usemap="#Map2156a" border="0" />
-                <map name="Map2156a" id="Map2156a">
-                    <area shape="rect" coords="247,243,645,320" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XSDrtojqvYPshozrsKk%3D" target="_blank"/>
-                </map>
+            <div id="tab01s" class="wrap">            
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts.png" />
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XSDrtojqvYPshozrsKk%3D" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
             </div> 
 
-            <div id="tab02s">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" usemap="#Map2156b" border="0" />
-                <map name="Map2156b" id="Map2156b">
-                    <area shape="rect" coords="239,243,654,318" href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XVtMSVZFXSDrtojqvYPshozrsKk%3D" target="_blank"/>
-                </map>
+            <div id="tab02s" class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" />
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6WzIxLjA3LTA4XVtMSVZFXSDrtojqvYPshozrsKk%3D" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
             </div>
         </div>  
 
         <div class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스" usemap="#Map2156c" border="0"/>
-            <map name="Map2156c" id="Map2156c">
-                <area shape="rect" coords="215,446,453,507" href="https://pass.willbes.net/pass/offPackage/show/prod-code/182771" target="_blank"/>
-                <area shape="rect" coords="668,446,908,509" href="https://pass.willbes.net/pass/offPackage/show/prod-code/182775" target="_blank"/>
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
+                <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/182771" target="_blank" title="공채" style="position: absolute; left: 18.66%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/182775" target="_blank" title="경채" style="position: absolute; left: 59.38%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
+            </div>
         </div>
 
          <div class="evtCtnsBox wb_cts09">

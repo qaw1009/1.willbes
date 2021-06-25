@@ -112,7 +112,6 @@
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
                 <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 6.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 38.04%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
                 <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 69.29%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
             </div>
         </div>
@@ -248,7 +247,7 @@
         <div class="evtCtnsBox wb_cts09" >           
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_09.jpg" alt="수강 신청하기"/>
-                <a href="javascript:alert('Coming Soon!')" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
             </div>
         </div>  
 

@@ -111,8 +111,8 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 6.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 69.29%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 19.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 58.79%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
             </div>
         </div>
 

@@ -501,7 +501,7 @@
                 </ul>
             </div>
 
-            <div class="prof-drop-Box">
+            <div class="prof-drop-Box" style="margin-top:-175px;">
                 <h5>군무원</h5>
                 <ul>
                     <li>

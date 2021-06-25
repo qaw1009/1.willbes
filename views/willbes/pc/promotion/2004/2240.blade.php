@@ -250,12 +250,12 @@
 
             <div id="tab01s" class="wrap">            
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts1.png" />
-                <a href="javascript:alert('Coming Soon!')" title="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6" target="_blank" style="position: absolute; left: 22.86%; top: 81.15%; width: 54.29%; height: 10.38%; z-index: 2;"></a>
             </div> 
 
             <div id="tab02s" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_09_cts2.png" />
-                <a href="javascript:alert('Coming Soon!')" title="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3043&campus_ccd=605001&search_text=UHJvZE5hbWU6bGl2ZQ%3D%3D" target="_blank" style="position: absolute; left: 18.37%; top: 71.73%; width: 61.22%; height: 15.58%; z-index: 2;"></a>
             </div>
         </div>  
 

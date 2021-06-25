@@ -44,6 +44,8 @@
 
         .wb_cts10 {background:#ECECEC;}
 
+        .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_11_bg.jpg) no-repeat center top;}
+
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
         .youtube_divide {margin:30px -15px 0;padding: 40px 0 0 30px;background:#fff;border-radius: 5px;box-shadow: -10px 10px 30px rgba(0,0,0,.1);}
@@ -104,6 +106,15 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_01.jpg" alt="군무원 모집"/>
+        </div>
+
+        <div class="evtCtnsBox wb_cts11" >
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 6.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 38.04%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 69.29%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03">

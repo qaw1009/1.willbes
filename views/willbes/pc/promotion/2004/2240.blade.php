@@ -40,6 +40,8 @@
         .wb_cts08 .wrap {width:980px; margin:0 auto; position:relative}
 
         .wb_cts10 {background:#ECECEC;}
+
+        .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_11_bg.jpg) no-repeat center top;}
  
         /* TAB */
         .tab {width:980px; margin:0 auto}		
@@ -121,6 +123,15 @@
 
         <div class="evtCtnsBox wb_cts01" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_01.jpg" alt="9급 일반행정"/>
+        </div>
+
+        <div class="evtCtnsBox wb_cts11" >
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_11.jpg" alt="교수진"/>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 6.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 38.04%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 69.29%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts03" >

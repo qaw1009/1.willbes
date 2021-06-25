@@ -14,7 +14,6 @@
         }
         foreach ($data_memo as $row) {
             ${"MemoTypeCcd_".$row['MemoTypeCcd']} = $row['Memo'];
-            //echo  ${"MemoTypeCcd_".$row['MemoTypeCcd']};
         }
     @endphp
 
@@ -206,6 +205,7 @@
                                 <th>진행상태</th>
                                 <th>판매가</th>
                                 <th>판매여부</th>
+                                <th>사용여부</th>
                                 <th>삭제</th>
                             </tr>
                             @foreach($data_sublecture as $row)
@@ -229,6 +229,7 @@
                                         <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
+                                        <td>{!!  $row['IsUse'] === 'Y' ? '사용'  : '<font color=red>미사용</font>' !!}</td>
                                         <td><a href='javascript:;' onclick="rowDelete('essLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                     </tr>
                                 @endif
@@ -256,6 +257,7 @@
                                 <th>진행상태</th>
                                 <th>판매가</th>
                                 <th>판매여부</th>
+                                <th>사용여부</th>
                                 <th>삭제</th>
                             </tr>
                             @foreach($data_sublecture as $row)
@@ -279,6 +281,7 @@
                                         <td>{{$row['wProgressCcd_Name']}} ({{$row['wUnitLectureCnt']}}@if(empty($row['wScheduleCount']) == false)/{{$row['wScheduleCount']}}@endif)</td>
                                         <td>{{number_format($row['RealSalePrice'])}}원</td>
                                         <td>{!!  $row['SaleStatusCcd_Name'] === '판매불가' ? '<font color=red>'.$row['SaleStatusCcd_Name'].'</font>' :$row['SaleStatusCcd_Name'] !!}</td>
+                                        <td>{!!  $row['IsUse'] === 'Y' ? '사용'  : '<font color=red>미사용</font>' !!}</td>
                                         <td><a href='javascript:;' onclick="rowDelete('selLecTrId{{$loop->index}}')"><i class="fa fa-times red"></i></a></td>
                                     </tr>
                                 @endif

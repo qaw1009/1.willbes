@@ -307,6 +307,9 @@
                                             + "		<td>" + temp_data_arr[6] + "</td>"
                                             + "		<td><div class='{{$locationid === 'essLecAdd' ? 'essLecPrice' : ''}}' data-price='" + temp_data_arr[9] + "'>" + addComma(temp_data_arr[7]) + "원</div></td>"
                                             + "		<td>" + temp_data_arr[8] + "</td>"
+                                            @if($locationid === 'essLecAdd' || $locationid === 'selLecAdd' )
+                                        + "		<td>" + (temp_data_arr[10] == '사용' ? '사용' : '<font color="red">미사용</font>')+ "</td>"
+                                            @endif
                                             + "		<td><a href='javascript:;' onclick=\"rowDelete('" + $parent_location_tr + seq + "')\"><i class=\"fa fa-times red\"></i></a></td>"
                                             + "	</tr>"
 

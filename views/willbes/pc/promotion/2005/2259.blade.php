@@ -74,8 +74,8 @@
         <div class="evtCtnsBox evt_01">  
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2259_01.jpg" alt="강사진" />     
-                <a href="https://gosi.willbes.net/lecture/index/cate/3099/pattern/only" target="_blank" title="pc수강" style="position: absolute; left: 14.55%; top: 68.12%; width: 34.91%; height: 5.67%; z-index: 2;"></a>
-                <a href="https://gosi.willbes.net/m/lecture/index/cate/3099/pattern/only" target="_blank" title="모바일수강" style="position: absolute; left: 50.27%; top: 68.12%; width: 34.91%; height: 5.67%; z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/userPackage/show/cate/3099/prod-code/183461" target="_blank" title="pc수강" style="position: absolute; left: 14.55%; top: 68.12%; width: 34.91%; height: 5.67%; z-index: 2;"></a>
+                <a href="https://gosi.willbes.net/m/userPackage/show/cate/3099/prod-code/183461" target="_blank" title="모바일수강" style="position: absolute; left: 50.27%; top: 68.12%; width: 34.91%; height: 5.67%; z-index: 2;"></a>
             </div>
         </div>        
 	</div>

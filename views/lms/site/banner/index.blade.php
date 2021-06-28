@@ -32,7 +32,7 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-10" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션">
+                        <select class="form-control mr-10 selectpicker" id="search_banner_disp_idx" name="search_banner_disp_idx" title="노출섹션" data-size="10" data-live-search="true">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
                                 <option value="{{$row['BdIdx']}}" class="{{$row['SiteCode']}}_{{$row['CateCode']}}">{{$row['DispName']}}</option>

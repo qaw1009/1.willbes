@@ -11,13 +11,13 @@
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                        <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code" title="중분류">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -29,20 +29,20 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        {{-- <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                        {{--<select class="form-control" id="search_course_idx" name="search_course_idx" title="과정" data-size="10" data-live-search="true">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
                                 <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                        <select class="form-control" id="search_subject_idx" name="search_subject_idx" title="과목" data-size="10" data-live-search="true">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
                         @if(sess_data('is_prof') == 'N')
-                            <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                            <select class="form-control" id="search_prof_idx" name="search_prof_idx" title="교수" data-size="10" data-live-search="true">
                                 <option value="">교수</option>
                                 @foreach($arr_professor as $row)
                                     <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
@@ -50,13 +50,13 @@
                             </select>
                         @endif
                         --}}
-                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd" title="판매여부">
                             <option value="">판매여부</option>
                             @foreach($Sales_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
-                        </select>                        &nbsp;
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        </select>
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -66,11 +66,11 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control" id="search_type" name="search_type" style="width:120px;">
+                        <select class="form-control" id="search_type" name="search_type" title="강좌검색구분" style="width:120px;">
                             <option value="lec">강의명</option>
                             <option value="prof">강사명</option>
                         </select>
-                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
+                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" title="강좌검색어" style="width:250px;">
                     </div>
                     <div class="col-md-5">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>
@@ -89,7 +89,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th><input type="checkbox" id="all_check" /> 선택</th>
+                    <th><label><input type="checkbox" id="all_check" class="flat"/> 선택</label></th>
                     <th>No.</th>
                     <th>운영사이트</th>
                     <th>대분류</th>
@@ -131,7 +131,7 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(date, type, row,meta){
-                            return '<input type="checkbox" id="ProdCode" name="ProdCode[]" value="'+row.ProdCode+'" class="ProdCode" />';
+                            return '<input type="checkbox" id="ProdCode" name="ProdCode[]" value="'+row.ProdCode+'" class="ProdCode flat" />';
                         }}, // 선택
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);
@@ -203,8 +203,8 @@
 
             });
 
-            $("#all_check").on('change', function(event) {
-                $(".ProdCode").prop('checked', $("#all_check").prop("checked"));
+            $list_table.on('ifChanged', '#all_check', function(event) {
+                iCheckAll($list_table.find('.ProdCode'), $(this));
             });
 
         });

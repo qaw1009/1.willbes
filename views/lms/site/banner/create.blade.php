@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1-1">노출섹션<span class="required">*</span></label>
                     <div class="col-md-4 form-inline item">
-                        <select class="form-control mr-10" id="banner_disp_idx" name="banner_disp_idx" required="required" title="노출섹션">
+                        <select class="form-control mr-10 selectpicker" id="banner_disp_idx" name="banner_disp_idx" required="required" title="노출섹션" data-size="10" data-live-search="true">
                             <option value="">노출섹션</option>
                             @foreach($arr_disp_data as $row)
                                 <option value="{{$row['BdIdx']}}" class="{{ $row['SiteCode'] }}_{{ $row['CateCode'] }}" @if($row['BdIdx'] == $data['BdIdx'])selected="selected"@endif>{{$row['DispName']}}</option>

@@ -23,7 +23,7 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-5" id="sc_subject" name="sc_subject">
+                        <select class="form-control mr-5 selectpicker" id="sc_subject" name="sc_subject" data-size="10" data-live-search="true">
                             <option value="">과목</option>
                             @foreach($arr_base['subject'] as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>

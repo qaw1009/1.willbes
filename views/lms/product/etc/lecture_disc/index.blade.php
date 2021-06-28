@@ -11,19 +11,19 @@
                     <label class="control-label col-md-1">기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                        <select class="form-control" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                        <select class="form-control selectpicker" id="search_course_idx" name="search_course_idx" title="과정" data-size="10" data-live-search="true">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
                                 <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>

@@ -58,7 +58,7 @@
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-5" id="search_subject" name="search_subject">
+                        <select class="form-control mr-5 selectpicker" id="search_subject" name="search_subject" data-size="10" data-live-search="true">
                             <option value="">과목</option>
                             @foreach($arr_base['subject'] as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>

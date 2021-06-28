@@ -501,7 +501,7 @@
                                         <tbody>
                                         @foreach($data['admin_prod']['MyLecData']['wUnitData'] as $unit_row)
                                         <tr>
-                                            <td>{{ $unit_row['wUnitLectureNum'] }}회차 {{ $unit_row['wUnitNum'] }}강</td>
+                                            <td>{{ $unit_row['wUnitNum'] }}회차 {{ $unit_row['wUnitLectureNum'] }}강</td>
                                             <td>{{ $unit_row['wUnitName'] }}</td>
                                             <td>{{ $unit_row['wShootingDate'] }}</td>
                                             <td>{{ $unit_row['wRuntime'] }}분</td>

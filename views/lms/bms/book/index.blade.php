@@ -11,41 +11,41 @@
                     <label class="control-label col-md-1">교재기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code">
+                        <select class="form-control" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                        <select class="form-control selectpicker" id="search_subject_idx" name="search_subject_idx" title="과목" data-size="10" data-live-search="true">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                        <select class="form-control selectpicker" id="search_prof_idx" name="search_prof_idx" title="교수" data-size="10" data-live-search="true">
                             <option value="">교수</option>
                             @foreach($arr_professor as $row)
                                 <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        <select class="form-control mr-10" id="search_w_is_use" name="search_w_is_use">
+                        <select class="form-control" id="search_w_is_use" name="search_w_is_use" title="사용여부(W)">
                             <option value="">사용여부(W)</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        <select class="form-control" id="search_sale_ccd" name="search_sale_ccd">
+                        <select class="form-control" id="search_sale_ccd" name="search_sale_ccd" title="판매여부">
                             <option value="">판매여부</option>
                             @foreach($arr_sale_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control" id="search_disp_type_ccd" name="search_disp_type_ccd">
+                        <select class="form-control" id="search_disp_type_ccd" name="search_disp_type_ccd" title="노출위치">
                             <option value="">노출위치</option>
                             @foreach($arr_disp_type_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
@@ -70,11 +70,11 @@
                     <label class="control-label col-md-1">신규/추천</label>
                     <div class="col-md-5 form-inline">
                         <div class="checkbox">
-                            <input type="checkbox" name="search_chk_is_new" id="search_chk_is_new" class="flat" value="Y"> 신규
+                            <label><input type="checkbox" name="search_chk_is_new" id="search_chk_is_new" class="flat" value="Y"> 신규</label>
                         </div>
                         &nbsp;
                         <div class="checkbox">
-                            <input type="checkbox" name="search_chk_is_best" id="search_chk_is_best" class="flat" value="Y"> 추천
+                            <label><input type="checkbox" name="search_chk_is_best" id="search_chk_is_best" class="flat" value="Y"> 추천</label>
                         </div>
                     </div>
                 </div>

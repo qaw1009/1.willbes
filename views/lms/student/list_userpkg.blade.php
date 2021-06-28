@@ -11,13 +11,13 @@
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '') !!}
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                        <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control" id="search_md_cate_code" name="search_md_cate_code" title="중분류">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -29,14 +29,13 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd" title="판매여부">
                             <option value="">판매여부</option>
                             @foreach($Sales_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -45,10 +44,10 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">강좌검색</label>
-                    <div class="col-md-6 form-inline">
-                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" style="width:250px;">
+                    <div class="col-md-3 form-inline">
+                        <input type="text" class="form-control" id="search_value_list" name="search_value_list" title="강좌검색어" style="width:250px;">
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-8">
                         <p class="form-control-static">명칭, 코드 검색 가능</p>
                     </div>
                 </div>

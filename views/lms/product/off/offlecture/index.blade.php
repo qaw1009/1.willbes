@@ -12,19 +12,19 @@
                     <label class="control-label col-md-1" for="search_value">강좌기본정보</label>
                     <div class="col-md-11 form-inline">
                         {!! html_site_select($def_site_code, 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', false, $arr_site_code) !!}
-                        <select class="form-control mr-10" id="search_campus_code" name="search_campus_code">
+                        <select class="form-control" id="search_campus_code" name="search_campus_code" title="캠퍼스">
                             <option value="">캠퍼스</option>
                             @foreach($campusList as $row)
                                 <option value="{{$row['CampusCcd']}}" class="{{$row['SiteCode']}}" >{{$row['CampusName']}}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_lg_cate_code" name="search_lg_cate_code">
+                        <select class="form-control" id="search_lg_cate_code" name="search_lg_cate_code" title="대분류">
                             <option value="">대분류</option>
                             @foreach($arr_lg_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10 hide" id="search_md_cate_code" name="search_md_cate_code">
+                        <select class="form-control hide" id="search_md_cate_code" name="search_md_cate_code" title="중분류">
                             <option value="">중분류</option>
                             @foreach($arr_md_category as $row)
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
@@ -36,20 +36,19 @@
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
-                        <select class="form-control mr-10" id="search_course_idx" name="search_course_idx">
+                        <select class="form-control selectpicker" id="search_course_idx" name="search_course_idx" title="과정" data-size="10" data-live-search="true">
                             <option value="">과정</option>
                             @foreach($arr_course as $row)
                                 <option value="{{ $row['CourseIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['CourseName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_subject_idx" name="search_subject_idx">
+                        <select class="form-control selectpicker" id="search_subject_idx" name="search_subject_idx" title="과목" data-size="10" data-live-search="true">
                             <option value="">과목</option>
                             @foreach($arr_subject as $row)
                                 <option value="{{ $row['SubjectIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['SubjectName'] }}</option>
                             @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_prof_idx" name="search_prof_idx">
+                        <select class="form-control selectpicker" id="search_prof_idx" name="search_prof_idx" title="교수" data-size="10" data-live-search="true">
                             <option value="">교수</option>
                             @foreach($arr_professor as $row)
                                 <option value="{{ $row['ProfIdx'] }}" class="{{ $row['SiteCode'] }}">{{ $row['wProfName'] }}</option>
@@ -61,7 +60,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">제공정보</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd">
+                        <select class="form-control" id="search_studypattern_ccd" name="search_studypattern_ccd" title="수강형태">
                             <option value="">수강형태</option>
                             @foreach($studypattern_ccd as $key => $val)
                                 @if($key != '653003')
@@ -69,21 +68,18 @@
                                 @endif
                             @endforeach
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_studyapply_ccd" name="search_studyapply_ccd">
+                        <select class="form-control" id="search_studyapply_ccd" name="search_studyapply_ccd" title="수강신청구분">
                             <option value="">수강신청구분</option>
                             @foreach($studyapply_ccd as $key => $val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
                         <select name="search_schoolstartyear" id="search_schoolstartyear"  class="form-control" title="개강년도">
                             <option value="">개강년도</option>
                             @for($i=(date('Y')+1); $i>=2014; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
                         <select name="search_schoolstartmonth" id="search_schoolstartmonth"  class="form-control" title="개강월">
                             <option value="">개강월</option>
                             @for($i=1;$i<=12;$i++)
@@ -91,33 +87,28 @@
                                 <option value="{{$ii}}">{{$ii}}</option>
                             @endfor
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_islecopen" name="search_islecopen">
+                        <select class="form-control" id="search_islecopen" name="search_islecopen" title="개설여부">
                             <option value="">개설여부</option>
                             <option value="Y">개설</option>
                             <option value="N">폐강</option>
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_acceptccd" name="search_acceptccd">
+                        <select class="form-control" id="search_acceptccd" name="search_acceptccd" title="접수상태">
                             <option value="">접수상태</option>
                             @foreach($accept_ccd as $key => $val)
                                     <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_is_use" name="search_is_use" title="사용여부">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_calc" name="search_calc">
+                        <select class="form-control" id="search_calc" name="search_calc" title="정산입력여부">
                             <option value="">정산입력여부</option>
                             <option value="Y">입력</option>
                             <option value="N">미입력</option>
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_lec_sale_type" name="search_lec_sale_type">
+                        <select class="form-control" id="search_lec_sale_type" name="search_lec_sale_type" title="선수강좌구분">
                             <option value="">선수강좌구분</option>
                             <option value="N">일반강좌</option>
                             <option value="B">선수강좌</option>
@@ -128,26 +119,26 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">단과반검색</label>
                     <div class="col-md-5 form-inline">
-                        <input type="text" class="form-control" id="search_value" name="search_value" style="width:250px;">
-                        <p class="form-control-static">명칭, 코드 검색 가능</p>
+                        <input type="text" class="form-control" id="search_value" name="search_value" title="상품검색어" style="width:250px;">
+                        <p class="form-control-static pl-10">명칭, 코드 검색 가능</p>
                     </div>
                     <label class="control-label col-md-1" for="search_value">교수검색</label>
                     <div class="col-md-5 form-inline">
-                        <input type="text" class="form-control" id="search_prof_value" name="search_prof_value" style="width:100px;">
+                        <input type="text" class="form-control" id="search_prof_value" name="search_prof_value" title="교수검색어" style="width:100px;">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_sdate">날짜검색</label>
                     <div class="col-md-5 form-inline">
-                        <select class="form-control" id="search_date_type" name="search_date_type" style="width:120px;">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분" style="width:120px;">
                             <option value="B.StudyStartDate">개강일</option>
                             <option value="B.StudyEndDate">종강일</option>
                             <option value="B.SaleStartDat">접수시작일</option>
                             <option value="B.SaleEndDat">접수종료일</option>
                             <option value="A.RegDatm">등록일</option>
                         </select>
-                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="">
-                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="">
+                        <input name="search_sdate"  class="form-control datepicker" id="search_sdate" style="width: 100px;"  type="text"  value="" title="조회시작일">
+                        ~ <input name="search_edate"  class="form-control datepicker" id="search_edate" style="width: 100px;"  type="text"  value="" title="조회종료일">
                     </div>
                 </div>
             </div>

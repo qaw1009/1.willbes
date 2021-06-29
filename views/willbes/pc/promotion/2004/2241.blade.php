@@ -131,7 +131,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming soon!');" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
             </div>
         </div>  
         

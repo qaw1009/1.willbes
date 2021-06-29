@@ -23,6 +23,10 @@
         .evt02 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2266_02_bg.jpg) no-repeat center top;}
 
         .evt03 {background:#fff;padding-bottom:50px;}
+        .check {padding-bottom:50px;letter-spacing:3; color:#fff; margin-top:30px}
+        .check label {cursor:pointer; font-size:17px;color:#000;font-weight:bold;}
+        .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
+        .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#FE02E1; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
 
         .evtInfo {padding:80px 0; background:#535353; color:#fff; font-size:14px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.7;}
@@ -56,8 +60,15 @@
         <div class="evtCtnsBox evt03">      
             <div class="wrap">      
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2266_03.jpg" alt="강의 및 연간일정" /> 
-                <a href="https://job.willbes.net/package/show/cate/309002/pack/648001/prod-code/182735" title="티패스" target="_blank" style="position: absolute;left: 57.52%;top: 92%;width: 33.73%;height: 4%;z-index: 2;"></a>  
-            </div>           
+                <a href="javascript:go_PassLecture('182735');" alt="수강신청하기" style="position: absolute;left: 57.52%;top: 90%;width: 33.73%;height: 4%;z-index: 2;"></a>  
+            </div>     
+            <div class="check">
+                <label>
+                    <input name="ischk"  type="checkbox" value="Y" />
+                    김동진 민법 T-PASS 상품 이용안내 및 환불관련 내용을 모두 확인하였고 이에 동의합니다.
+                </label>
+                <a href="#careful">이용안내확인하기 ↓</a>
+            </div>       
         </div>
 
         <div class="evtCtnsBox evtInfo NGR">
@@ -117,6 +128,17 @@
     <!-- End evtContainer -->
 
     <script type="text/javascript">    
+
+        /*수강신청 동의*/ 
+        function go_PassLecture(code){
+                    if($("input[name='ischk']:checked").size() < 1){
+                        alert("이용안내에 동의하셔야 합니다.");
+                        return;
+                    }
+
+            var url = '{{ site_url('/package/show/cate/309002/pack/648001/prod-code/') }}' + code;
+            location.href = url;
+        }    
 
     </script>
 

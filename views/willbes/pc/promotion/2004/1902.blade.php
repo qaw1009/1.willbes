@@ -99,7 +99,7 @@
                             <td>국어</td>
                             <td>오대혁</td>
                             <td> [21.07-08][LIVE] 2022 오대혁 고갱이국어 기본이론</td>
-                            <td>7/5~8/26</td>
+                            <td>7/12~9/2</td>
                             <td>월,목 9:00~13:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183464" target="_blank">수강신청</a></td>
@@ -108,7 +108,7 @@
                             <td>영어</td>
                             <td>한덕현</td>
                             <td> [21.07-08][LIVE] 2022 한덕현 제니스영어 기본 문법</td>
-                            <td>7/9~8/28</td>
+                            <td>7/16~9/4</td>
                             <td>금,토 9:00~13:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183466" target="_blank">수강신청</a></td>
@@ -117,7 +117,7 @@
                             <td>영어</td>
                             <td>한덕현</td>
                             <td> [21.07-08][LIVE] 2022 한덕현 제니스영어 실전문법 464</td>
-                            <td>7/8~8/23</td>
+                            <td>7/12~8/30</td>
                             <td>월 14:00~18:00</td>
                             <td>    72,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183465" target="_blank">수강신청</a></td>
@@ -126,7 +126,7 @@
                             <td>한국사</td>
                             <td>오태진</td>
                             <td>[21.07-08][LIVE] 2022 오태진 대각국사 한국사 기본이론</td>
-                            <td>7/6~8/26</td>
+                            <td>7/13~9/2</td>
                             <td>화,목 14:00~18:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183469" target="_blank">수강신청</a></td>
@@ -135,7 +135,7 @@
                             <td>한국사</td>
                             <td>김상범</td>
                             <td>[21.07-08][LIVE] 2022 김상범 한국사 기본이론</td>
-                            <td>7/5~8/28</td>
+                            <td>7/12~9/4</td>
                             <td>월,토 14:00~18:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183471" target="_blank">수강신청</a></td>
@@ -144,7 +144,7 @@
                             <td>행정학</td>
                             <td>김덕관</td>
                             <td>[21.07-08][LIVE] 2022    김덕관 강한행정학 기본이론</td>
-                            <td>7/7~9/8</td>
+                            <td>7/14~9/15</td>
                             <td>수,금 14:00~18:00</td>
                             <td>   133,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183472" target="_blank">수강신청</a></td>
@@ -153,7 +153,7 @@
                             <td>행정법</td>
                             <td>신기훈</td>
                             <td>[21.07-08][LIVE] 2022    신기훈 행정법총론 기본이론</td>
-                            <td>7/6~8/25</td>
+                            <td>7/13~9/1</td>
                             <td>화,수 9:00~13:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183473" target="_blank">수강신청</a></td>
@@ -162,7 +162,7 @@
                             <td>소방행정법</td>
                             <td>이석준</td>
                             <td>[21.07-08][LIVE] 2022    이석준 소방행정법 기본이론</td>
-                            <td>7/5~8/23</td>
+                            <td>7/12~8/30</td>
                             <td>월 9:00~18:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182917" target="_blank">수강신청</a></td>
@@ -171,7 +171,7 @@
                             <td>경채영어</td>
                             <td>양익</td>
                             <td>[21.07-08][LIVE] 2022    양익 소방경채영어 기본이론</td>
-                            <td>7/6~8/24</td>
+                            <td>7/13~8/31</td>
                             <td>화 9:00~13:00</td>
                             <td>    64,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182918" target="_blank">수강신청</a></td>
@@ -180,7 +180,7 @@
                             <td>소방한국사</td>
                             <td>한경준</td>
                             <td> [21.07-08][LIVE] 2022 한경준 소방한국사 기본이론</td>
-                            <td>7/6~8/24</td>
+                            <td>7/13~8/31</td>
                             <td>화 9:00~18:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182913" target="_blank">수강신청</a></td>
@@ -189,7 +189,7 @@
                             <td>소방학개론</td>
                             <td>이종오</td>
                             <td>[21.07-08][LIVE] 2022    이종오 소방학개론 기본이론</td>
-                            <td>7/7~8/25</td>
+                            <td>7/14~9/1</td>
                             <td>수 10:00~17:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182915" target="_blank">수강신청</a></td>
@@ -198,7 +198,7 @@
                             <td>소방관계법규</td>
                             <td>이종오</td>
                             <td>[21.07-08][LIVE] 2022    이종오 소방관계법규 기본이론</td>
-                            <td>7/8~8/26</td>
+                            <td>7/15~9/2</td>
                             <td>목 9:00~13:00</td>
                             <td>    64,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182916" target="_blank">수강신청</a></td>
@@ -207,7 +207,7 @@
                             <td>공채영어</td>
                             <td>이아림</td>
                             <td>[21.07-08][LIVE] 2022    이아림 소방공채영어 기본이론</td>
-                            <td>7/9~8/27</td>
+                            <td>7/16~9/3</td>
                             <td>금 9:00~18:00</td>
                             <td>   128,000 </td>
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/182914" target="_blank">수강신청</a></td>

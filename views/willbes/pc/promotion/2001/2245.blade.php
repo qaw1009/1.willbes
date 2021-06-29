@@ -255,8 +255,8 @@
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_sky01.jpg" alt="무제한 패스">
             </a>     
-            <a href="#coupon">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_sky02.jpg" alt="20% 할인쿠폰">
+            <a href="#evt11">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_sky03.jpg" alt="20% 할인쿠폰">
             </a> 
         </div>
 
@@ -426,20 +426,22 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_07.jpg"  alt="reason3" />
         </div>
 
-        <div class="evtCtnsBox evt11" >
+        <div class="evtCtnsBox evt11" id="evt11">
             <form id="add_apply_form" name="add_apply_form">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_08.jpg"  alt="교재 신청하기" />
-                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 12.77%; top: 39.16%; width: 29.29%; height: 2.68%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="장정훈 경찰학" style="position: absolute; left: 56.52%; top: 39.21%; width: 13.21%; height: 2.68%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="신광은 형법" style="position: absolute; left: 70%; top: 39.21%; width: 13.21%; height: 2.68%; z-index: 2;"></a>
-                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="김원욱 헌법" style="position: absolute; left: 83.3%; top: 39.21%; width: 13.21%; height: 2.68%; z-index: 2;"></a>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_08_01.jpg"  alt="교재 신청하기" />
+                    <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 12.77%; top: 71.37%; width: 29.64%; height: 5.38%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180566" title="장정훈 경찰학" style="position: absolute; left: 56.52%; top: 71.37%; width: 13.39%; height: 5.38%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180748" title="신광은 형법" style="position: absolute; left: 70%; top: 71.37%; width: 13.39%; height: 5.38%; z-index: 2;"></a>
+                    <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/180567" title="김원욱 헌법" style="position: absolute; left: 83.3%; top: 71.37%; width: 13.39%; height: 5.38%; z-index: 2;"></a>
+                    {{--
                     <a title="" style="position: absolute; left: 12.86%; top: 55.91%; width: 1.79%; height: 1.05%; z-index: 2; cursor: default; box-shadow:0" id="coupon"></a>
                     <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰 다운로드" style="position: absolute; left: 23.93%; top: 81.42%; width: 52.14%; height: 4.99%; z-index: 2;"></a>
+                    --}}
                 </div>
             </form>
         </div>

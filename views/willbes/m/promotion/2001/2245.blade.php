@@ -259,12 +259,14 @@
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_07.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.33%; top: 38.91%; width: 27.36%; height: 2.89%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 54.31%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 66.81%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법" style="position: absolute; left: 79.31%; top: 39%; width: 12.5%; height: 2.89%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_07_01.jpg" alt="교재 신청하기" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.06%; top: 70.14%; width: 27.78%; height: 5.53%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 54.31%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 66.81%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법" style="position: absolute; left: 79.31%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
+                {{--
                 <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰다운로드" style="position: absolute; left: 23.47%; top: 81.42%; width: 49.17%; height: 5%; z-index: 2;"></a>
+                --}}
             </form>
         </div>
 

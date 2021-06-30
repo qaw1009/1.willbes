@@ -120,7 +120,7 @@
             </form>
         </div>
         @if(empty($pattern_banner_section) === false)
-        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'], ($__cfg['SiteGroupCode'] == '1003' && empty(element('on_off_link_cate_code', $arr_input)) === false) ? $cate_code_matching[element('on_off_link_cate_code', $arr_input)] : $__cfg['CateCode']) !!}
         @endif
     </div>
     <!-- End Container -->

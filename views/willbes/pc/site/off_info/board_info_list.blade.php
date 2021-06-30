@@ -126,7 +126,9 @@
             <!-- willbes-AcadInfo -->
             </form>
         </div>
-        {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+        @if(empty($pattern_banner_section) === false)
+        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'], ($__cfg['SiteGroupCode'] == '1003' ? $cate_code_matching[element('on_off_link_cate_code', $arr_input)] : $__cfg['CateCode'])) !!}
+        @endif
     </div>
     <!-- End Container -->
 @stop

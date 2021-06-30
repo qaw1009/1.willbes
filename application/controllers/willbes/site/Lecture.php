@@ -10,7 +10,8 @@ class Lecture extends \app\controllers\FrontController
 
     private $_learn_pattern = 'on_lecture';     // 학습형태 (단강좌, 무료강좌 구분값)
     private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
-    private $_pattern_banner_section = ['only' => '수강신청_우측퀵', 'free' => '수강신청_우측퀵'];
+    private $_pattern_banner_section = ['1003' => ['only' => '동영상수강신청_퀵배너', 'free' => '동영상수강신청_퀵배너'],
+                                        'default' => ['only' => '수강신청_우측퀵', 'free' => '수강신청_우측퀵']];
 
     private $_order_by_regist_default = ['2003', '2005', '2006'];  //등록순 디폴트 정렬 사이트 코드
 
@@ -193,13 +194,16 @@ class Lecture extends \app\controllers\FrontController
             }
         }
 
+        // 우측 퀵 배너 섹션
+        $pattern_banner_section = element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']);
+
         $this->load->view('site/lecture/index', [
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'learn_pattern' => $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
-            'pattern_banner_section' => element(element('pattern', $params), $this->_pattern_banner_section),
+            'pattern_banner_section' => element(element('pattern', $params), $pattern_banner_section),
             'data' => [
                 'subjects' => $selected_subjects,
                 'professor_names' => $selected_professor_names,
@@ -287,11 +291,14 @@ class Lecture extends \app\controllers\FrontController
         // 자동지급 강좌상품
         $data['ProdAutoLectures'] = $this->lectureFModel->findProductToProduct($prod_code, 'on_lecture');
 
+        // 우측 퀵 배너 섹션
+        $pattern_banner_section = element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']);
+
         $this->load->view('site/lecture/show', [
             'learn_pattern' => $data['LecSaleType'] === 'B' ? 'on_lecture_before' : $this->_learn_pattern,
             'pattern' => element('pattern', $params, 'only'),
             'pattern_name' => element(element('pattern', $params, 'only'), $this->_pattern_name, '단강좌'),
-            'pattern_banner_section' => element(element('pattern', $params), $this->_pattern_banner_section),
+            'pattern_banner_section' => element(element('pattern', $params), $pattern_banner_section),
             'data' => $data
         ]);
     }

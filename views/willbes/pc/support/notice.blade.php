@@ -116,7 +116,7 @@
             <!-- willbes-CScenter -->
         </div>
         @if(empty($pattern_banner_section) === false)
-        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'],  '0') !!}
+        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'],  $__cfg['CateCode']) !!}
         @endif
     </div>
     <!-- End Container -->

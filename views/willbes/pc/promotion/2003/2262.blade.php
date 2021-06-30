@@ -14,6 +14,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1); border-radius:8px}
 
         /************************************************************/
         .sky {position:fixed;top:250px;right:15px;z-index:200;}
@@ -66,8 +67,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2262_03.jpg" title="소문내고,단과 할인 받자!">
                 <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="공무원 갤러리" style="position: absolute;left: 51.86%;top: 75.5%;width: 14.75%;height: 7%;z-index: 2;"></a>
                 <a href="http://cafe.daum.net/9glade" target="_blank" title="구꿈사" style="position: absolute;left: 67.86%;top: 75.5%;width: 14.75%;height: 7%;z-index: 2;"></a>
-                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute;left: 51.86%;top: 85.5%;width: 14.75%;height: 7%;z-index: 2;"></a>
-                <a href="https://cafe.naver.com/willbes" target="_blank" title="윌비스" style="position: absolute;left: 67.86%;top: 85.5%;width: 14.75%;height: 7%;z-index: 2;"></a>
+                <a href="https://cafe.naver.com/gugrade" target="_blank" title="공드림" style="position: absolute;left: 51.86%;top: 85.2%;width: 14.75%;height: 7%;z-index: 2;"></a>
+                <a href="https://cafe.naver.com/willbes" target="_blank" title="윌비스" style="position: absolute;left: 67.86%;top: 85.2%;width: 14.75%;height: 7%;z-index: 2;"></a>
             </div>    
         </div>
 

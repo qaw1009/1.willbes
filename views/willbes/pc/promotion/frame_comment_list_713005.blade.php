@@ -28,6 +28,8 @@
     .character .characterImg2 li.active {background:#cde7f5}
     .character .characterImg2:after {content:""; display:block; clear:both}
 
+    .character .characterImg3 li img {width:73px}
+
 
     .replyEvaluate .reply_inbox {
         position:relative; border:1px solid #ababab; padding:20px 0;
@@ -185,7 +187,44 @@
                         </li>
                     @endfor
                 </ul>
-            @endif
+
+                {{--공무원 신기훈 행정법 이모티콘
+                <ul class="characterImg2 characterImg3">
+                    <li class="sel_icon" id="character_1">
+                        <div class="off" onclick="javascript:choice(1)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character01.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(1)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character01.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_2">
+                        <div class="off" onclick="javascript:choice(2)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character02.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(2)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character02.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_3">
+                        <div class="off" onclick="javascript:choice(3)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character03.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(3)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character03.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_4">
+                        <div class="off" onclick="javascript:choice(4)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character04.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(4)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character04.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_5">
+                        <div class="off" onclick="javascript:choice(5)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character05.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(5)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character05.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_6">
+                        <div class="off" onclick="javascript:choice(6)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character06.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(6)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character06.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_7">
+                        <div class="off" onclick="javascript:choice(7)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character07.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(7)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character07.png" alt="" /></div>
+                    </li>
+                    <li class="sel_icon" id="character_8">
+                        <div class="off" onclick="javascript:choice(8)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character08.png" alt="" /></div>
+                        <div class="on" onclick="javascript:choice(8)"><img src="https://static.willbes.net/public/images/promotion/common/500697_character08.png" alt="" /></div>
+                    </li>
+                </ul>  
+                --}}
+            @endif                      
         </div>
 
         <div class="reply_inbox">

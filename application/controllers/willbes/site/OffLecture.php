@@ -16,6 +16,9 @@ class OffLecture extends \app\controllers\FrontController
 
     protected $_group_ccd = ['study_pattern' => '653'];
 
+    private $_pattern_banner_section = ['1003' => '단과반수강신청_퀵배너', 'default' => '수강신청_우측퀵']; // 퀵배너 섹션
+
+
     public function __construct()
     {
         parent::__construct();
@@ -146,6 +149,7 @@ class OffLecture extends \app\controllers\FrontController
             'arr_input' => $arr_input,
             'arr_base' => $arr_base,
             'learn_pattern' => $this->_learn_pattern,
+            'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
             'data' => [
                 'subjects' => $selected_subjects,
                 'list' => $selected_list
@@ -243,7 +247,8 @@ class OffLecture extends \app\controllers\FrontController
         $this->load->view('site/off_lecture/show', [
             'arr_input' => $arr_input,
             'learn_pattern' => $this->_learn_pattern,
-            'data' => $data
+            'data' => $data,
+            'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
         ]);
     }
 }

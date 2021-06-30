@@ -15,6 +15,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:4px}
 
         /************************************************************/
 
@@ -103,10 +104,10 @@
         <div class="evtCtnsBox wb_cts05">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2256_05.jpg" alt="바로 신청하기" />
-                <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute;left: 16.86%;top: 43.85%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('181423');" title="" style="position: absolute;left: 61.86%;top: 43.85%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183366')" title="" style="position: absolute;left: 16.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('183367')" title="" style="position: absolute;left: 61.86%;top: 81.35%;width: 19.75%;height: 3.48%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('181424');" title="" style="position: absolute;left: 16.86%;top: 43.85%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('181423');" title="" style="position: absolute;left: 61.86%;top: 43.85%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183366')" title="" style="position: absolute;left: 16.86%;top: 81.35%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('183367')" title="" style="position: absolute;left: 61.86%;top: 81.35%;width: 19.75%;height: 3.5%;z-index: 2;"></a>
                 <div class="check">
                     <label>
                         <input name="ischk"  type="checkbox" value="Y" />

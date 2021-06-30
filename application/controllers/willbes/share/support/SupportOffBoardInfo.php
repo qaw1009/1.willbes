@@ -16,6 +16,8 @@ class SupportOffBoardInfo extends BaseSupport
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
+    private $_pattern_banner_section = ['1003' => '강의계획서_퀵배너', 'default' => '고객센터_우측퀵']; // 퀵배너 섹션
+
     public function __construct()
     {
         parent::__construct();
@@ -115,7 +117,8 @@ class SupportOffBoardInfo extends BaseSupport
             'paging' => $paging,
             'bm_idx' => $bm_idx,
             'bm_title'=> $bm_title,
-            'tab_menu' => $tab_menu
+            'tab_menu' => $tab_menu,
+            'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
         ]);
     }
 
@@ -245,7 +248,8 @@ class SupportOffBoardInfo extends BaseSupport
                 'next_data' =>  $next_data,
                 'bm_idx' => $bm_idx,
                 'bm_title'=> $bm_title,
-                'tab_menu' => $tab_menu
+                'tab_menu' => $tab_menu,
+                'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
             ]
         );
     }

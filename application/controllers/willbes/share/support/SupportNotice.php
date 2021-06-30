@@ -17,6 +17,8 @@ class SupportNotice extends BaseSupport
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
+    private $_pattern_banner_section = ['1003' => '학원공지사항_퀵배너', 'default' => '고객센터_우측퀵']; // 퀵배너 섹션
+
     public function __construct()
     {
         parent::__construct();
@@ -99,6 +101,7 @@ class SupportNotice extends BaseSupport
             'get_params' => $get_params,
             'list'=>$list,
             'paging' => $paging,
+            'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
         ]);
     }
 
@@ -210,6 +213,7 @@ class SupportNotice extends BaseSupport
                 'data' => $data,
                 'pre_data' => $pre_data,
                 'next_data' =>  $next_data,
+                'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
             ]
         );
     }

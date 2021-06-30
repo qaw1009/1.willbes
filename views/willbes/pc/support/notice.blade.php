@@ -115,7 +115,9 @@
             </div>
             <!-- willbes-CScenter -->
         </div>
-        {!! banner('고객센터_우측퀵', 'Quick-Bnr ml20', $__cfg['SiteCode'],  '0') !!}
+        @if(empty($pattern_banner_section) === false)
+        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'],  '0') !!}
+        @endif
     </div>
     <!-- End Container -->
 @stop

@@ -238,8 +238,8 @@
                                         이달의 개강 강좌 공지입니다.<br/>
                                         이달의 개강 강좌 공지입니다.
 
-                                        <div class="borardBtnRed"><a href="#none" target="_blank">바로가기 ></a></div>
-                                        <div class="borardBtnBlue"><a href="#none" target="_blank">원하는 문구 넣으세요.</a></div>
+                                        <div class="btn-Board Red"><a href="#none" target="_blank">바로가기 ></a></div>
+                                        <div class="btn-Board Blue"><a href="#none" target="_blank">원하는 문구 넣으세요.</a></div>
                                     </td>
                                 </tr>
                                 <tr>

@@ -41,7 +41,7 @@
 
         .wb_cts10 {background:#ECECEC;}
 
-        .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_11_bg.jpg) no-repeat center top;}
+        .wb_cts11 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2240_11_bg.jpg) no-repeat center top;}
  
         /* TAB */
         .tab {width:980px; margin:0 auto}		
@@ -114,7 +114,8 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" >
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky2.png" alt="최우영 t"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
+            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183205" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="한덕현 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -127,10 +128,11 @@
 
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 6.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 38.04%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 69.29%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 5.71%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 28.13%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 51.16%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 74.02%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
             </div>
         </div>
 

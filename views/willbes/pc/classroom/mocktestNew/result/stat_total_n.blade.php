@@ -63,12 +63,12 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>총점</td>
+                            <td>내 총점</td>
                             <td>{{ round($gradeInfo['SumOrgPoint'], 1) }}</td>
                         </tr>
                         <tr>
                             <td>전체평균</td>
-                            <td>{{ $gradeInfo['TotalAvgOrgPoint'] }}</td>
+                            <td>{{ $gradeInfo['MemberAvgOrgPoint'] }}</td>
                         </tr>
                         <tr>
                             <td>석차</td>
@@ -220,7 +220,7 @@
             data.addColumn('string', 'Topping');
             data.addColumn('number', '점수');
             data.addRows([
-                ['전체평균', tot_avg],
+                ['전체 총점 평균', tot_avg],
                 ['최고', top_avg],
                 ['본인', my_sum]
             ]);

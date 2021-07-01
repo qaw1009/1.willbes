@@ -51,14 +51,12 @@ class MockResultFModel extends WB_Model
                 (SELECT IFNULL(SUM(IF(MA.IsWrong = 'Y', Scoring, '0')),'0') AS Res
                     FROM {$this->_table['mock_paper']} AS MP
                     JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y'
-                    JOIN {$this->_table['mock_answerpaper']} AS MA ON MQ.MqIdx = MA.MqIdx 
+                    JOIN {$this->_table['mock_answerpaper']} AS MA ON MQ.MqIdx = MA.MqIdx
                     JOIN {$this->_table['mock_register']} AS MMR ON MMR.MrIdx = MA.MrIdx
                     WHERE MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
-                (SELECT ROUND(AVG(a.AdjustPoint),2)
-                    FROM {$this->_table['mock_grades']} AS a
-                    WHERE a.ProdCode = MR.ProdCode
-                ) AS TotalAvgAdjustPoint,
+                (SELECT ROUND(AVG(a.AdjustPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode) AS TotalAvgAdjustPoint,
+                (SELECT ROUND(AVG(a.OrgPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode AND a.MemIdx = ?) AS MemberAvgOrgPoint,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 
@@ -80,7 +78,7 @@ class MockResultFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx')]);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -150,6 +148,7 @@ class MockResultFModel extends WB_Model
             ,(SELECT MAX(A.sumAPoint) AS MaxPoint FROM (SELECT SUM(AdjustPoint) AS sumAPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A) AS MaxPoint  #최고점수
             ,(SELECT ROUND(AVG(a.sumP),2) FROM (SELECT SUM(AdjustPoint) AS sumP FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS a) AS MrTotalAvgAdjustPoint  #전체 MrIdx기준 조정점수평균
             ,(SELECT COUNT(TC.MrIdx) AS TotalCount FROM (SELECT MrIdx FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS TC) AS TotalCount    #전체석차
+            ,(SELECT ROUND(AVG(OrgPoint),2) AS MemberAvgOrgPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} AND MrIdx = {$mr_idx}) AS MemberAvgOrgPoint  #내 평균
         ";
 
         $from = "

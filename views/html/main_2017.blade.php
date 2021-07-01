@@ -4,6 +4,23 @@
 
 <style type="text/css">
 .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
+.ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; }
+.ssam .VisualBox .MaintabFlex span {   
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    width:100%;
+}
+.ssam .VisualBox .MaintabFlex span a {color:#fff}
+.ssam .VisualBox .MaintabFlex span a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.ssam .VisualBox .MaintabFlex span a.active,
+.ssam .VisualBox .MaintabFlex span a:hover {
+    background:#000
+}
 </style>
 
 <!-- Container -->
@@ -195,20 +212,22 @@
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_02.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_05.jpg" alt="배너명"></a></li>
+                    {{--<li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_05.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
+                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>--}}
                 </ul>                  
                 <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
                 <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
             </div> 
             <div id="MainRollingDiv" class="MaintabList">
-                <div class="Maintab">
+                <div class="MaintabFlex">
                     <span><a data-slide-index="0" href="javascript:void(0);" class="active">퀵서머리</a></span>
                     <span><a data-slide-index="1" href="javascript:void(0);" class="">문제풀이패키지</a></span>
                     <span><a data-slide-index="2" href="javascript:void(0);" class="">인강무료체험&환승할인</a></span>
                     <span><a data-slide-index="3" href="javascript:void(0);" class="">2021학년도 연간패키지</a></span>
-                    <span><a data-slide-index="4" href="javascript:void(0);" class="">2021대비 합격전략설명회</a></span>
+                    {{--<span><a data-slide-index="4" href="javascript:void(0);" class="">2021대비 합격전략설명회</a></span>
                     <span><a data-slide-index="5" href="javascript:void(0);" class="">환승할인</a></span>
+                    <span><a data-slide-index="6" href="javascript:void(0);" class="">인강무료체험&환승할인</a></span>--}}
                 </div>
             </div>           
         </div>        

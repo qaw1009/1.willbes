@@ -4,6 +4,23 @@
     <style>
         .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px !important}
         .ssam .willbes-Layer-ReplyBox-1120 .subject-list {/*font-size:14px*/}
+
+        .ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; }
+        .ssam .VisualBox .MaintabFlex span {   
+            height: 50px;
+            font-size: 14px;
+            line-height: 50px;
+            width:100%;
+        }
+        .ssam .VisualBox .MaintabFlex span a {color:#fff}
+        .ssam .VisualBox .MaintabFlex span a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .ssam .VisualBox .MaintabFlex span a:hover {
+            background:#000
+        }
     </style>
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
@@ -20,7 +37,7 @@
                         <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
 
                         <div id="MainRollingDiv" class="MaintabList">
-                            <div class="Maintab">
+                            <div class="MaintabFlex">
                                 @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
                                     <span><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></span>
                                 @endforeach

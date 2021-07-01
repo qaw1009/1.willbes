@@ -173,7 +173,7 @@
 
             @if(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
                 {{-- 공무원 (한덕현 교수) --}}
-                <ul class="characterImg2 @if(empty($arr_base['change_emoticon_img']) === false) characterImg3 @endif">
+                <ul class="characterImg2 @if(empty($arr_input['change_emoticon_img']) === false) characterImg3 @endif">
                     @php
                         $emoticon_img = '1588_character';
                         if(empty($arr_input['promotion_code']) === false && $arr_input['promotion_code'] == '1675' && ($i == 1 || $i == 2 || $i == 3)) {
@@ -181,7 +181,7 @@
                         }
 
                         // 공무원 신기훈 행정법 이모티콘
-                        if(empty($arr_base['change_emoticon_img']) === false){
+                        if(empty($arr_input['change_emoticon_img']) === false){
                             $emoticon_img = '500697_character';
                         }
                     @endphp
@@ -189,7 +189,7 @@
                     @for ($i=1; $i<=8; $i++)
                         <li class="sel_icon" id="character_{{$i}}">
                             <div class="off" onclick="javascript:choice({{ $i }})">
-                                @if(empty($arr_base['change_emoticon_img']) === false)
+                                @if(empty($arr_input['change_emoticon_img']) === false)
                                     <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}.png" alt="" />
                                 @else
                                     <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}_1.png" alt="" />
@@ -255,7 +255,7 @@
                         }
 
                         // 공무원 신기훈 행정법 이모티콘
-                        if(empty($arr_base['change_emoticon_img']) === false){
+                        if(empty($arr_input['change_emoticon_img']) === false){
                             $emoticon_img = '500697_character';
                         }
                     @endphp

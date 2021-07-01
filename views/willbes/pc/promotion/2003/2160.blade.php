@@ -14,33 +14,32 @@
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1); border-radius:8px}
 
         /************************************************************/
 
         .sky {position:fixed; top:250px; right:100px; width:163px; z-index:1;}
         .sky a {display:block; margin-bottom:10px;}
  
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/04/2160_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/2160_top_bg.jpg) no-repeat center top;}
         .wb_top .tImg {position:absolute;left:50%;top:71.5%;margin-left:-220px;}
         .wb_top .tImg img {width:440px;height:240px;}
 
-        .wb_cts01 {background:#c01734;}  
+        .wb_cts01 {background:#f7f6fa;padding-bottom:150px;}  
+        .wb_cts01 .tImg img {margin:0 5px 10px}
 
-        .wb_cts02 {background:#f7f6fa;padding-bottom:150px;}
-        .wb_cts02 .tImg img {margin:0 5px 10px}
+        .wb_cts02 {background:#f2f0f1;padding-bottom:150px;}      
+        .wb_cts02 .txtBtn {background:#444; color:#fff; padding:10px 20px; display:inline-block} 
 
-        .wb_cts03 {background:#f2f0f1;}
-
-        .wb_cts04 {background:#c01734;}
-
-        .check {position:absolute; bottom:50px; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
+        .wb_cts03 {background:#854797;padding-bottom:100px;}
+        .check {width:980px; margin:0 auto; padding:20px 0px 20px 10px; letter-spacing:3; color:#fff; z-index:5}
         .check label {cursor:pointer; font-size:15px;color:#FFF;font-weight:bold;}
         .check input {border:2px solid #000; margin-right:10px; height:24px; width:24px; }
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#2d2d2d; margin-left:50px; border-radius:20px;font-size:14px;font-weight:bold;}
 
         /*타이머*/
-        .time {position:absolute; top:640px; left:50%; width:920px; margin-left:-375px; text-align:center;}
-        .time {text-align:center; padding:20px 0}
+        .time {width:800px; margin:0 auto; text-align:center; padding:20px 0}
         .time ul {width:100%;}
         .time ul:after {content:''; display:block; clear:both}
         .time li {display:inline; float:left; line-height:61px; font-size:24px; margin-right:10px}
@@ -66,43 +65,39 @@
 
 
     <div class="p_re evtContent NSK" id="evtContainer">
-    
+        {{--
         <div class="sky">
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2160_sky01.png"  title="인증하고 할인받기" /></a>
-            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/04/2160_sky02.png"  title="갈아타고 할인받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/07/2160_sky01.png"  title="인증하고 할인받기" /></a>
+            <a href="#transfer"><img src="https://static.willbes.net/public/images/promotion/2021/07/2160_sky02.png"  title="갈아타고 할인받기" /></a>
         </div>
+        --}}
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_top.jpg" alt="9급 패스"  />
-            <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_top.gif" alt="한덕현 영어" />
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_top.jpg" alt="9급 패스"  />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_01.jpg" alt="년도별 출원인원" />
-        </div>
-
-        <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_02.jpg" alt="교수진 및 커리큘럼" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_01.jpg" alt="년도별 출원인원" />
             <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t01.gif" alt="국어 기미진" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t02.gif" alt="영어 한덕현" /><br>
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t03.gif" alt="한국사 조민주" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t04.gif" alt="행정법 이석준" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/1717_01_t05.gif" alt="행정학 김덕관" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="국어 기미진" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="영어 한덕현" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t03.gif" alt="한국사 조민주" /><br>
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="한국사 조민주" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t05.gif" alt="행정법 이석준" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t06.gif" alt="행정학 김덕관" />
             </div>
         </div>
 
-        <div class="evtCtnsBox wb_cts03" id="transfer">
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_03.jpg" alt="환승 이벤트" />
-            <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 38.21%; top: 76.21%; width: 23.93%; height: 5.26%; z-index: 2;"></a>
-            <a href="#careful" title="유의사항 확인하기" style="position: absolute; left: 45.21%; top: 83.21%; width: 7.93%; height: 3.50%; z-index: 2;"></a>            
+        <div class="evtCtnsBox wb_cts02">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_02.jpg" alt="교수진 및 커리큘럼" />    
+                <a href="javascript:certOpen();" title="타 사이트 수강 인증하기" style="position: absolute; left: 29.82%; top: 85.51%; width: 39.91%; height: 7.35%; z-index: 2;"></a>                  
+            </div>   
+            <a href="#careful" class="txtBtn">유의사항 확인하기 →</a>   
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2160_04.jpg" alt="신청하기" />
-            <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute; left: 46.21%; top: 79.21%; width: 24.93%; height: 5.5%; z-index: 2;"></a>
+        <div class="evtCtnsBox wb_cts03" id="transfer">            
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_03.jpg" alt="환승 이벤트" />        
             <div class="time NGEB" id="newTopDday">
                 <ul>
                     <li><span class=d_day>D-DAY</li>
@@ -118,6 +113,10 @@
                     <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>             
                 </ul>
+            </div>         
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_03_01.jpg" alt="환승 이벤트" />
+                <a href="javascript:go_PassLecture('180927');" title="수강 신청하기" style="position: absolute; left: 43.93%; top: 69.11%; width: 41.7%; height: 21.68%; z-index: 2;"></a>                
             </div>
             <div class="check">
                 <label>
@@ -137,7 +136,8 @@
                         <ol>
                             <li>본 PASS는 9급 일반행정직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
                                 *국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공. </li>
-                            <li>수강 가능 교수진 : 국어 기미진, 영어 한덕현, 한국사 조민주, 행정법 이석준/황남기, 행정학 김덕관</li>
+                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 오태진/김상범/조민주, 행정법 신기훈/황남기/이석준, 행정학 김덕관<br>
+                                *국어 기미진, 한국사 조민주, 행정법 이석준 교수의 경우 9급 일반행정직 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.</li>
                             <li>2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
                             (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
                             <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
@@ -208,7 +208,7 @@
                     <dd>
                         <ol>
                             <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 기미진, 영어 한덕현, 한국사 조민주, 행정법 이석준, 행정학 김덕관</li>
+                            - 국어 오대혁, 영어 한덕현, 한국사 오태진/김상범, 행정법 신기훈, 행정학 김덕관</li>
                             <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
                             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
                             <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>

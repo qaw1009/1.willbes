@@ -30,7 +30,7 @@
         to{margin-left:-470px; opacity: 1;}
         }
        
-        .evt02 {background:#EDEDED;}    
+        .evt02 {background:#f0f0f0;}    
 
         .evt03 {}    
 
@@ -47,6 +47,10 @@
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/51206/?subject_idx=1111" title="교수홈" target="_blank" style="position: absolute; left: 84.11%; top: 82.62%; width: 9.29%; height: 8.12%; z-index: 2;"></a>
                 <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2021/06/2264_top_txt.png" alt=" "></span>
             </div>
+        </div>
+
+        <div class="evtCtnsBox pt100">
+            <iframe width="800" height="400" src="https://www.youtube.com/embed/nQFyta6T3SM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="evtCtnsBox evt01">

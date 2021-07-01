@@ -56,7 +56,8 @@ class MockResultFModel extends WB_Model
                     WHERE MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
                 (SELECT ROUND(AVG(a.AdjustPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode) AS TotalAvgAdjustPoint,
-                (SELECT ROUND(AVG(a.OrgPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode AND a.MemIdx = ?) AS MemberAvgOrgPoint,
+                ifnull((select sum(OrgPoint) from {$this->_table['mock_grades']} as a WHERE a.ProdCode = MR.ProdCode),0) as TotalOrgPoint,
+                ifnull((select count(*) from {$this->_table['mock_register']} as a WHERE a.ProdCode = MR.ProdCode and IsStatus = 'Y' and IsTake = 'Y' group by a.ProdCode),0) as MemberCount,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 
@@ -148,7 +149,6 @@ class MockResultFModel extends WB_Model
             ,(SELECT MAX(A.sumAPoint) AS MaxPoint FROM (SELECT SUM(AdjustPoint) AS sumAPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A) AS MaxPoint  #최고점수
             ,(SELECT ROUND(AVG(a.sumP),2) FROM (SELECT SUM(AdjustPoint) AS sumP FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS a) AS MrTotalAvgAdjustPoint  #전체 MrIdx기준 조정점수평균
             ,(SELECT COUNT(TC.MrIdx) AS TotalCount FROM (SELECT MrIdx FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS TC) AS TotalCount    #전체석차
-            ,(SELECT ROUND(AVG(OrgPoint),2) AS MemberAvgOrgPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} AND MrIdx = {$mr_idx}) AS MemberAvgOrgPoint  #내 평균
         ";
 
         $from = "

@@ -17,6 +17,7 @@
     width: 100%;
     height: 100%;
 }
+.ssam .VisualBox .MaintabFlex span a.active,
 .ssam .VisualBox .MaintabFlex span a:hover {
     background:#000
 }

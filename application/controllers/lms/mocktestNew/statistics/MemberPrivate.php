@@ -272,7 +272,7 @@ class MemberPrivate extends BaseMocktest
         $arr_total_avg = [];    //원점수기준 전체평균
         $arr_sum_rank = explode("/",$sum_rank);
         foreach ($data_total_avg as $key => $row) {
-            $arr_total_avg['본인'] = $row['AvgMyOrgPoint'];
+            $arr_total_avg['내 총점'] = $row['AvgMyOrgPoint'];
             $arr_total_avg['전체평균'] = $row['AvgAvgAdjustPoint'];
             $arr_total_avg['과목석차'] = $sum_rank;
             $arr_total_avg['백분위'] = (empty($sum_rank) === false) ? round(($arr_sum_rank[0] / $arr_sum_rank[1]) * 100,2).'%' : '';
@@ -294,7 +294,7 @@ class MemberPrivate extends BaseMocktest
         $data_default_e = $data_default_s = $data_e = $data_s = [];
         foreach ($list_register_subject as $key => $val) {
             if ($val['MockType'] == 'E') {
-                $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
+                $data_e['내 총점'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
                 $data_e['백분위'][$val['MpIdx']] = $val['tpct'].'%';
@@ -305,8 +305,8 @@ class MemberPrivate extends BaseMocktest
             }
 
             if ($val['MockType'] == 'S') {
-                $data_s['본인'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
-                $data_s['본인'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
                 $data_s['전체평균'][$val['MpIdx']]['org'] = $val['AvgOrgPoint'];
                 $data_s['전체평균'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
                 $data_s['과목석차'][$val['MpIdx']]['org'] = $val['MyRank'].'/'.$val['MemCount'];
@@ -354,7 +354,7 @@ class MemberPrivate extends BaseMocktest
         $data_default_e = $data_default_s = $data_e = $data_s = [];
         foreach ($subject_result as $key => $val) {
             if ($val['MockType'] == 'E') {
-                $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
+                $data_e['내 총점'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
@@ -364,8 +364,8 @@ class MemberPrivate extends BaseMocktest
             }
 
             if ($val['MockType'] == 'S') {
-                $data_s['본인'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
-                $data_s['본인'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
                 $data_s['전체'][$val['MpIdx']]['org'] = $val['AvgOrgPoint'];
                 $data_s['전체'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
                 $data_s['최고점'][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];

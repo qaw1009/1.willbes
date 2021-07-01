@@ -51,14 +51,13 @@ class MockResultFModel extends WB_Model
                 (SELECT IFNULL(SUM(IF(MA.IsWrong = 'Y', Scoring, '0')),'0') AS Res
                     FROM {$this->_table['mock_paper']} AS MP
                     JOIN {$this->_table['mock_questions']} AS MQ ON MQ.MpIdx = MP.MpIdx AND MP.IsUse = 'Y'
-                    JOIN {$this->_table['mock_answerpaper']} AS MA ON MQ.MqIdx = MA.MqIdx 
+                    JOIN {$this->_table['mock_answerpaper']} AS MA ON MQ.MqIdx = MA.MqIdx
                     JOIN {$this->_table['mock_register']} AS MMR ON MMR.MrIdx = MA.MrIdx
                     WHERE MA.MemIdx = MR.MemIdx AND MMR.ProdCode = MR.ProdCode
                 ) AS TCNT,
-                (SELECT ROUND(AVG(a.AdjustPoint),2)
-                    FROM {$this->_table['mock_grades']} AS a
-                    WHERE a.ProdCode = MR.ProdCode
-                ) AS TotalAvgAdjustPoint,
+                (SELECT ROUND(AVG(a.AdjustPoint),2) FROM {$this->_table['mock_grades']} AS a WHERE a.ProdCode = MR.ProdCode) AS TotalAvgAdjustPoint,
+                ifnull((select sum(OrgPoint) from {$this->_table['mock_grades']} as a WHERE a.ProdCode = MR.ProdCode),0) as TotalOrgPoint,
+                ifnull((select count(*) from {$this->_table['mock_register']} as a WHERE a.ProdCode = MR.ProdCode and IsStatus = 'Y' and IsTake = 'Y' group by a.ProdCode),0) as MemberCount,
                 (SELECT RegDatm FROM {$this->_table['mock_answerpaper']} WHERE MemIdx = MR.MemIdx AND ProdCode = MR.ProdCode ORDER BY RegDatm DESC LIMIT 1) Wdate
             ";
 
@@ -80,7 +79,7 @@ class MockResultFModel extends WB_Model
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
-        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit, [$this->session->userdata('mem_idx')]);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

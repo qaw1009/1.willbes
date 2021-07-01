@@ -311,7 +311,7 @@ class Result extends \app\controllers\FrontController
         $data_default_e = $data_default_s = $data_e = $data_s = [];
         foreach ($subject_result as $key => $val) {
             if ($val['MockType'] == 'E') {
-                $data_e['본인'][$val['MpIdx']] = $val['MyOrgPoint'];
+                $data_e['내 총점'][$val['MpIdx']] = $val['MyOrgPoint'];
                 $data_e['전체평균'][$val['MpIdx']] = $val['AvgOrgPoint'];
                 $data_e['최고점'][$val['MpIdx']] = $val['MaxOrgPoint'];
                 $data_e['과목석차'][$val['MpIdx']] = $val['MyRank'].'/'.$val['MemCount'];
@@ -321,8 +321,8 @@ class Result extends \app\controllers\FrontController
             }
 
             if ($val['MockType'] == 'S') {
-                $data_s['본인'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
-                $data_s['본인'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['org'] = $val['MyOrgPoint'];
+                $data_s['내 총점'][$val['MpIdx']]['adjust'] = $val['MyAdjustPoint'];
                 $data_s['전체'][$val['MpIdx']]['org'] = $val['AvgOrgPoint'];
                 $data_s['전체'][$val['MpIdx']]['adjust'] = $val['AvgAdjustPoint'];
                 $data_s['최고점'][$val['MpIdx']]['org'] = $val['MaxOrgPoint'];

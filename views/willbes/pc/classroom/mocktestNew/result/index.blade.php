@@ -94,7 +94,7 @@
                                         </td>
                                         <td class="w-t-grade">{{ $row['TCNT'] }}</td>
                                         <td class="w-average">
-                                            {{ $row['TotalAvgAdjustPoint'] }}
+                                            {{ ($row['IsAdjust'] == 'Y') ? $row['TotalAvgAdjustPoint'] : (empty($row['MemberCount']) ? 0 : round($row['TotalOrgPoint'] / $row['MemberCount'],2)) }}
                                         </td>
                                         @if(substr($row['GradeOpenDatm'],0,10) <= date('Y-m-d') && $row['GradeOpenIsUse'] == 'Y')
                                             <td class="w-report tx-red"><a href="javascript:popwin('{{ $row['ProdCode'] }}', '1', '{{ $row['MrIdx'] }}', '{{ $row['TCNT'] }}', '{{ $row['IsOldData'] }}')">[성적확인]</a></td>

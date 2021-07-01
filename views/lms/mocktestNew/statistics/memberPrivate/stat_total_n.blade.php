@@ -75,16 +75,16 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>총점</td>
+                        <td>내 총점</td>
                         <td>{{ $gradeInfo['SumOrgPoint'] }}</td>
                     </tr>
                     <tr>
-                        <td>평균</td>
+                        <td>내 평균</td>
                         <td>{{ $gradeInfo['AvgOrgPoint'] }}</td>
                     </tr>
                     <tr>
                         <td>전체평균</td>
-                        <td>{{ $gradeInfo['TotalAvgOrgPoint'] }}</td>
+                        <td>{{ (empty($gradeInfo['MrTotalAvgAdjustPoint']) === false ? $gradeInfo['MrTotalAvgAdjustPoint'] : 0) }}</td>
                     </tr>
                     <tr>
                         <td>석차</td>
@@ -105,7 +105,7 @@
             <div class="col-md-12">
                 <p class="h5 border-dark-blue">
                     <strong>{{ $gradeInfo['MemName'] }}</strong>님의 점수는
-                    총점 <strong>{{ $productInfo['TotalScore'] }}점</strong>으로,
+                    총점 <strong>{{ round($gradeInfo['SumOrgPoint'], 1) }}점</strong>으로,
                     전체 <strong>{{ $gradeInfo['TotalCount'] }}명</strong>에서 <strong>{{ $gradeInfo['AdjustRankNum'] }}위</strong>이며
                     상위 수준 <strong>{!! (empty($gradeInfo['TotalCount']) === false ? round(($gradeInfo['AdjustRankNum'] / $gradeInfo['TotalCount']) * 100, 2) : '0') !!} %</strong>입니다.
                 </p>
@@ -237,7 +237,7 @@
             data.addColumn('string', 'Topping');
             data.addColumn('number', '점수');
             data.addRows([
-                ['전체평균', tot_avg],
+                ['전체 총점 평균', tot_avg],
                 ['최고', top_avg],
                 ['본인', my_sum]
             ]);

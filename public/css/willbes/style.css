@@ -14326,6 +14326,8 @@ table.acadlecInfoPackageTable tr.Top td {
 }
 
 /***************************내강의실 > 학원강좌 > 수강신청강좌 : 종합반 > 강사선택현황보기***********************************************/
+
+
 .profLook a {
 	color: #1a8ccb;
 	border: 1px solid #1a8ccb;
@@ -14384,3 +14386,11 @@ table.acadlecInfoPackageTable tr.Top td {
 .ssamTabGrid .tabWrap.tabDepthAcad li a {color:#666; border:0; border-right:1px solid #666; background:#f4f4f4; font-size:16px; height:22px; line-height:22px}
 .ssamTabGrid .tabWrap.tabDepthAcad li a.on {background:#f4f4f4; font-weight:bold; color:#000}
 .ssamTabGrid .tabWrap.tabDepthAcad li:last-child a {border:0}
+
+
+/*게시판 링크 연결 버튼*/
+.borardBtnRed {margin-top:30px; text-align:center}
+.borardBtnRed a {font-size:16px; color:#fff; background:crimson; padding:10px 30px; border-radius:20px}
+
+.borardBtnBlue {margin-top:30px; text-align:center}
+.borardBtnBlue a {font-size:16px; color:#fff; background-color: darkcyan; padding:10px 30px; border-radius:20px}

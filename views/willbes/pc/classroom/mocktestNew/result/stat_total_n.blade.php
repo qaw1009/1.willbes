@@ -88,7 +88,7 @@
                 <div class="gBx mgB4">
                     <p class="anlyTx">
                         <strong>{{ $gradeInfo['MemName'] }}</strong>님의 점수는
-                        총점 <strong>{{ $productInfo['TotalScore'] }}점</strong>으로,
+                        총점 <strong>{{ round($gradeInfo['SumOrgPoint'], 1) }}점</strong>으로,
                         전체 <strong>{{ $gradeInfo['TotalCount'] }}명</strong>에서 <strong>{{ $gradeInfo['AdjustRankNum'] }}위</strong>이며
                         상위 수준 <strong>{!! (empty($gradeInfo['TotalCount']) === false ? round(($gradeInfo['AdjustRankNum'] / $gradeInfo['TotalCount']) * 100, 2) : '0') !!} %</strong>입니다.
                     </p>

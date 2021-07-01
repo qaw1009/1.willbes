@@ -108,10 +108,9 @@
                 </map>
             </div>   
             <div id="tab3">
-                <img src="https://static.willbes.net/public/images/promotion/2021/01/2036_tab03_apply.png" usemap="#Map2036_tab03" title="경정" border="0" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2036_tab03_apply.png" usemap="#Map2036_tab03" title="경정" border="0" />
                 <map name="Map2036_tab03" id="Map2036_tab03">
-                    <area shape="rect" coords="798,102,955,156" href="javascript:alert('21년 4월중 오픈예정')" />
-                    <area shape="rect" coords="796,200,955,251" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178595" target="_blank" />
+                    <area shape="rect" coords="792,96,962,156" href="https://police.willbes.net/periodPackage/show/cate/3006/pack/648001/prod-code/178595" target="_blank" />
                 </map>
             </div>            
         </div>

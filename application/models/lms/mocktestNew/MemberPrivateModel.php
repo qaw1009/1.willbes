@@ -461,7 +461,6 @@ class MemberPrivateModel extends WB_Model
             ,(SELECT MAX(A.sumAPoint) AS MaxPoint FROM (SELECT SUM(AdjustPoint) AS sumAPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS A) AS MaxPoint  #최고점수
             ,(SELECT ROUND(AVG(a.sumP),2) FROM (SELECT SUM(AdjustPoint) AS sumP FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS a) AS MrTotalAvgAdjustPoint  #전체 MrIdx기준 조정점수평균
             ,(SELECT COUNT(TC.MrIdx) AS TotalCount FROM (SELECT MrIdx FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} GROUP BY MrIdx) AS TC) AS TotalCount    #전체석차
-            ,(SELECT ROUND(AVG(OrgPoint),2) AS MemberAvgOrgPoint FROM {$this->_table['mock_grades']} WHERE ProdCode = {$prod_code} AND MrIdx = {$mr_idx}) AS MemberAvgOrgPoint  #내 평균
         ";
 
         $from = "

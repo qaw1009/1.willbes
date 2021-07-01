@@ -68,7 +68,7 @@
                         </tr>
                         <tr>
                             <td>전체평균</td>
-                            <td>{{ $gradeInfo['MemberAvgOrgPoint'] }}</td>
+                            <td>{{ (empty($gradeInfo['MrTotalAvgAdjustPoint']) === false ? $gradeInfo['MrTotalAvgAdjustPoint'] : 0) }}</td>
                         </tr>
                         <tr>
                             <td>석차</td>

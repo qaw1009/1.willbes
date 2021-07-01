@@ -272,7 +272,7 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null));
 
         //하단 카페 링크 사용여부
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y');
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y') . '&change_emoticon_img=' . element('change_emoticon_img', $arr_input);
         $onoff_type = element('pattern', $arr_input);
 
         $comment_create_type = '1';
@@ -296,7 +296,6 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['page_url'] = '/promotion/frameCommentList/' . $comment_type;
         $arr_base['comment_create_type'] = $comment_create_type;
         $arr_base['is_public'] = element('is_public', $arr_input);
-        $arr_base['change_emoticon_img'] = element('change_emoticon_img', $arr_input);
 
         $arr_base['set_params '] = [
             'event_idx' => element('event_idx', $arr_input),

@@ -182,7 +182,11 @@
 
                         // 공무원 신기훈 행정법 이모티콘
                         if(empty($arr_input['change_emoticon_img']) === false){
-                            $emoticon_img = '500697_character';
+                            if ($arr_input['promotion_code'] == '2267') {
+                                $emoticon_img = '50027_character'; //오태진강사
+                            } else {
+                                $emoticon_img = '500697_character';
+                            }
                         }
                     @endphp
 
@@ -256,7 +260,11 @@
 
                         // 공무원 신기훈 행정법 이모티콘
                         if(empty($arr_input['change_emoticon_img']) === false){
-                            $emoticon_img = '500697_character';
+                            if ($arr_input['promotion_code'] == '2267') {
+                                $emoticon_img = '50027_character'; //오태진강사
+                            } else {
+                                $emoticon_img = '500697_character';
+                            }
                         }
                     @endphp
 

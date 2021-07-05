@@ -291,10 +291,6 @@ class BasePromotion extends \app\controllers\FrontController
         // 강사 이모티콘 이미지
         $arr_comment_ui_type_ccd = explode(',', $promotion_data['CommentUiTypeCcds']);
         if(in_array('713003', $arr_comment_ui_type_ccd) === true){
-            if(empty($promotion_data['CommentEmoticonImages']) === true){
-                show_alert('이모티콘 조회에 실패했습니다.', 'back');
-            }
-
             $arr_base['comment_emoticon_image'] =  explode(',', $promotion_data['CommentEmoticonImages']);
         }
 

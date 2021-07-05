@@ -401,7 +401,7 @@
                                             • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
                                         </p>
                                     </div>
-                                    <div class="col-md-10 col-lg-offset-2">
+                                    <div class="col-md-10 col-lg-offset-2 hide" id="comment_emoticon_wrap">
                                         <label class="control-label col-md-2">강사이모티콘 이미지명</label>
                                         <div class="col-md-8">
                                             <input type="text" class="form-control" value="{{ $data['CommentEmoticonImages'] }}" name="comment_emoticon_images" placeholder="여러개 입력시 콤마(,)로 구분">
@@ -824,6 +824,16 @@
                     $('.promotion').hide();
                     $('.event').show();
                 }
+            });
+
+            // 강사이모티콘 선택여부 체크
+            $regi_form.on('ifChanged ifCreated', 'input[name^="comment_ui_type_ccds"]', function() {
+                $("#comment_emoticon_wrap").addClass("hide");
+                $.each($regi_form.find('input[name^="comment_ui_type_ccds"]:checked'), function() {
+                    if($(this).data('type') == '713003'){
+                        $("#comment_emoticon_wrap").removeClass("hide");
+                    }
+                });
             });
 
             //배너검색

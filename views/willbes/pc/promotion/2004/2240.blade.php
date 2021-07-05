@@ -129,10 +129,10 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 5.71%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 28.13%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 51.16%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 74.02%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343714" target="_blank" title="국어 오대혁" style="position: absolute; left: 5.71%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343710" target="_blank" title="한국사 오태진" style="position: absolute; left: 28.13%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" title="행정법 신기훈" target="_blank" style="position: absolute; left: 51.16%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183471" title="한국사 김상범" target="_blank" style="position: absolute; left: 74.02%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -151,8 +151,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
-                <a href="javascript:alert('Coming soon!');" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming soon!');" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343711" target="_blank" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" target="_blank" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </div>  
 
@@ -264,8 +264,8 @@
         <div class="evtCtnsBox wb_cts10">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 40.13%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 71.92%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 40.13%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 71.92%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
             </div>
         </div>
 

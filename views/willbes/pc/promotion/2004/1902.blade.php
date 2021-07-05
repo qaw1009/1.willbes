@@ -110,8 +110,8 @@
                             <td> [21.07-08][LIVE] 2022 한덕현 제니스영어 기본 문법</td>
                             <td>7/16~9/4</td>
                             <td>금,토 9:00~13:00</td>
-                            <td>   128,000 </td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183466" target="_blank">수강신청</a></td>
+                            <td>128,000 </td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183465" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>영어</td>
@@ -119,8 +119,8 @@
                             <td> [21.07-08][LIVE] 2022 한덕현 제니스영어 실전문법 464</td>
                             <td>7/12~8/30</td>
                             <td>월 14:00~18:00</td>
-                            <td>    72,000 </td>
-                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183465" target="_blank">수강신청</a></td>
+                            <td>72,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183466" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
                             <td>한국사</td>

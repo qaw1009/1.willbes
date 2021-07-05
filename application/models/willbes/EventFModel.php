@@ -1024,7 +1024,8 @@ class EventFModel extends WB_Model
     public function findEventForPromotion($promotion_code, $test_type = '')
     {
         $column = '
-            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, PromotionLivePlayer, RegisterEndDate, CommentUseArea, LimitType, PromotionCnt
+            ElIdx, Content, OptionCcds, EventName, PromotionCode, PromotionParams, PromotionLiveType, PromotionLivePlayer, 
+            RegisterEndDate, CommentUseArea, LimitType, PromotionCnt, CommentUiTypeCcds, CommentEmoticonImages
         ';
         $from = "
             FROM {$this->_table['event_lecture']}

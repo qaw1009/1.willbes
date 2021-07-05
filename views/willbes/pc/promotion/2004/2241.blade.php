@@ -97,7 +97,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" >
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
+            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -111,8 +111,8 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 19.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
-                <a href="javascript:alert('Coming Soon!');" title="" style="position: absolute; left: 58.79%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343714" target="_blank" title="국어 오태진" style="position: absolute; left: 19.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" target="_blank" title="행정법 신기훈" style="position: absolute; left: 58.79%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -131,7 +131,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
-                <a href="javascript:alert('Coming soon!');" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
             </div>
         </div>  
         
@@ -254,8 +254,8 @@
         <div class="evtCtnsBox wb_cts10" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
             </div>
         </div>
 

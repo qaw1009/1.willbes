@@ -162,48 +162,31 @@
             @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
                 {{-- 경찰 사이트일 경우만 적용 --}}
                 <ul class="characterImg">
-                    @for ($i=1; $i<=26; $i++)
-                        <li class="sel_icon" id="character_{{$i}}">
-                            <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}_1.png" alt="" class="off" onclick="javascript:choice({{ $i }})"/>
-                            <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($i) == 1 ? '0' : '') }}{{ $i }}.png" alt="" class="on" onclick="javascript:choice({{ $i }})"/>
-                        </li>
-                    @endfor
+                    @if(empty($arr_base['comment_emoticon_image']) === false)
+                        @foreach($arr_base['comment_emoticon_image'] as $key => $val)
+                            <li class="sel_icon" id="character_{{$key + 1}}">
+                                <img src="https://static.willbes.net/public/images/promotion/common/{{ $val }}" alt="" class="off" onclick="javascript:choice({{ $key + 1 }})"/>
+                                <img src="https://static.willbes.net/public/images/promotion/common/{{ $val }}" alt="" class="on" onclick="javascript:choice({{ $key + 1 }})"/>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             @endif
 
             @if(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
-                {{-- 공무원 (한덕현 교수) --}}
-                <ul class="characterImg2 @if(empty($arr_input['change_emoticon_img']) === false) characterImg3 @endif">
-                    @php
-                        $emoticon_img = '1588_character';
-                        if(empty($arr_input['promotion_code']) === false && $arr_input['promotion_code'] == '1675' && ($i == 1 || $i == 2 || $i == 3)) {
-                            $emoticon_img = '1675_character';     // 한덕현 교수 아침 1~3 이모티콘
-                        }
-
-                        // 공무원 신기훈 행정법 이모티콘
-                        if(empty($arr_input['change_emoticon_img']) === false){
-                            if ($arr_input['promotion_code'] == '2267') {
-                                $emoticon_img = '50027_character'; //오태진강사
-                            } else {
-                                $emoticon_img = '500697_character';
-                            }
-                        }
-                    @endphp
-
-                    @for ($i=1; $i<=8; $i++)
-                        <li class="sel_icon" id="character_{{$i}}">
-                            <div class="off" onclick="javascript:choice({{ $i }})">
-                                @if(empty($arr_input['change_emoticon_img']) === false)
-                                    <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}.png" alt="" />
-                                @else
-                                    <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}_1.png" alt="" />
-                                @endif
-                            </div>
-                            <div class="on" onclick="javascript:choice({{ $i }})"><img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($i) == 1 ? '0' : '') . $i }}.png" alt="" /></div>
-                        </li>
-                    @endfor
+                {{-- 공무원 --}}
+                <ul class="characterImg2 characterImg3">
+                    @if(empty($arr_base['comment_emoticon_image']) === false)
+                        @foreach($arr_base['comment_emoticon_image'] as $key => $val)
+                            <li class="sel_icon" id="character_{{$key + 1}}">
+                                <div class="off" onclick="javascript:choice({{ $key + 1}})">
+                                    <img src="https://static.willbes.net/public/images/promotion/common/{{ $val }}" alt="" />
+                                </div>
+                                <div class="on" onclick="javascript:choice({{ $key + 1 }})"><img src="https://static.willbes.net/public/images/promotion/common/{{ $val }}" alt="" /></div>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
-
             @endif                      
         </div>
 
@@ -252,27 +235,7 @@
         <ul>
             @foreach($list as $row)
                 <li>
-                    @php
-                        $emoticon_img = '1588_character';
-                        if(empty($arr_input['promotion_code']) === false && $arr_input['promotion_code'] == '1675' && ($row['EmoticonNo'] == 1 || $row['EmoticonNo'] == 2 || $row['EmoticonNo'] == 3)) {
-                            $emoticon_img = '1675_character';     // 한덕현 교수 아침 1~3 이모티콘
-                        }
-
-                        // 공무원 신기훈 행정법 이모티콘
-                        if(empty($arr_input['change_emoticon_img']) === false){
-                            if ($arr_input['promotion_code'] == '2267') {
-                                $emoticon_img = '50027_character'; //오태진강사
-                            } else {
-                                $emoticon_img = '500697_character';
-                            }
-                        }
-                    @endphp
-
-                    @if(config_app('SiteCode') == '2001' || config_app('SiteCode') == '2002')
-                        <img src="https://static.willbes.net/public/images/promotion/common/character{{ (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
-                    @elseif(config_app('SiteCode') == '2003' || config_app('SiteCode') == '2004')
-                        <img src="https://static.willbes.net/public/images/promotion/common/{{ $emoticon_img . (strlen($row['EmoticonNo']) == 1 ? '0' : '') }}{{ $row['EmoticonNo'] }}.png" title="{{ $row['EmoticonNo'] }}">
-                    @endif
+                    <img src="https://static.willbes.net/public/images/promotion/common/{{ $arr_base['comment_emoticon_image'][$row['EmoticonNo'] - 1] }}" title="{{ $row['EmoticonNo'] }}">
                     <div>
                         <p>
                             {!! hpSubString($row['MemName'],0,2,'*') !!}

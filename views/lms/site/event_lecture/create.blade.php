@@ -402,7 +402,7 @@
                                         </p>
                                     </div>
                                     <div class="col-md-10 col-lg-offset-2 hide" id="comment_emoticon_wrap">
-                                        <label class="control-label col-md-2">강사이모티콘 이미지명</label>
+                                        <label class="control-label col-md-2"><span class="required">*</span>강사이모티콘 이미지명</label>
                                         <div class="col-md-8">
                                             <input type="text" class="form-control" value="{{ $data['CommentEmoticonImages'] }}" name="comment_emoticon_images" placeholder="여러개 입력시 콤마(,)로 구분">
                                         </div>
@@ -1151,6 +1151,13 @@
                         alert('같은 상품종류로만 그룹 셋팅 가능합니다.');
                         return false;
                     }
+                }
+
+                // 강사이모티콘 입력 체크
+                if($("#comment_emoticon_wrap").hasClass("hide") !== true){
+                    alert('강사이모티콘 이미지명을 입력해주세요.');
+                    $("input[name='comment_emoticon_images']").focus();
+                    return false;
                 }
 
                 getEditorBodyContent($editor_profile);

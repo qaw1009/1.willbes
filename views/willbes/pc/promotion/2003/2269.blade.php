@@ -73,7 +73,7 @@
         <div class="evtCtnsBox evt_04">
             <div class="wrap"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2269_04.jpg"  alt="오대혁 국어 기본이론" />
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183420" title="수강신청" target="_blank" style="position: absolute;  left: 9.29%; top: 76.59%; width: 33.93%; height: 8.49%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183421" title="수강신청" target="_blank" style="position: absolute;  left: 9.29%; top: 76.59%; width: 33.93%; height: 8.49%; z-index: 2;"></a>
             </div>
         </div>
 

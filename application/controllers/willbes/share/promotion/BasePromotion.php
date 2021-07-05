@@ -272,8 +272,31 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_input = array_merge($this->_reqG(null));
 
         //하단 카페 링크 사용여부
-        $get_page_params = 'cate_code=' . element('cate_code', $arr_input) . '&event_idx=' . element('event_idx', $arr_input) . '&pattern=' . element('pattern', $arr_input) . '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y') . '&change_emoticon_img=' . element('change_emoticon_img', $arr_input) . '&promotion_code=' . element('promotion_code', $arr_input);
+        $get_page_params = 'cate_code=' . element('cate_code', $arr_input);
+        $get_page_params .= '&event_idx=' . element('event_idx', $arr_input);
+        $get_page_params .= '&pattern=' . element('pattern', $arr_input);
+        $get_page_params .= '&bottom_cafe_type=' . element('bottom_cafe_type', $arr_input, 'Y');
+        $get_page_params .= '&promotion_code=' . element('promotion_code', $arr_input);
+
         $onoff_type = element('pattern', $arr_input);
+        $event_idx = element('event_idx', $arr_input);
+        $promotion_code = element('promotion_code', $arr_input);
+
+        //프로모션데이터 조회
+        $promotion_data = $this->eventFModel->findEventForPromotion($promotion_code);
+        if (empty($promotion_data) === true) {
+            show_alert('조회에 실패했습니다.', 'back');
+        }
+
+        // 강사 이모티콘 이미지
+        $arr_comment_ui_type_ccd = explode(',', $promotion_data['CommentUiTypeCcds']);
+        if(in_array('713003', $arr_comment_ui_type_ccd) === true){
+            if(empty($promotion_data['CommentEmoticonImages']) === true){
+                show_alert('이모티콘 조회에 실패했습니다.', 'back');
+            }
+
+            $arr_base['comment_emoticon_image'] =  explode(',', $promotion_data['CommentEmoticonImages']);
+        }
 
         $comment_create_type = '1';
         if ($onoff_type == 'ongoing') {
@@ -298,13 +321,13 @@ class BasePromotion extends \app\controllers\FrontController
         $arr_base['is_public'] = element('is_public', $arr_input);
 
         $arr_base['set_params '] = [
-            'event_idx' => element('event_idx', $arr_input),
+            'event_idx' => $event_idx,
             'comment_ui_ccd' => $comment_type
         ];
 
         $arr_condition = [
             'EQ' => [
-                'a.ElIdx' => element('event_idx', $arr_input),
+                'a.ElIdx' => $event_idx,
                 'a.CommentUiCcd' => $comment_type,
                 'a.IsStatus' => 'Y',
                 'b.SiteCode' => $this->_site_code,
@@ -326,7 +349,7 @@ class BasePromotion extends \app\controllers\FrontController
         }
 
         // 공지사항 조회 (페이징 처리 없음)
-        $arr_base['notice_data'] = $this->eventFModel->getEventForNotice(element('event_idx', $arr_input)
+        $arr_base['notice_data'] = $this->eventFModel->getEventForNotice($event_idx
             , 'BoardIdx, ElIdx, Title, Content, DATE_FORMAT(RegDatm, \'%Y-%m-%d\') AS RegDate');
 
         $view_file = 'willbes/' . APP_DEVICE . '/promotion/frame_comment_list_' . $comment_type;

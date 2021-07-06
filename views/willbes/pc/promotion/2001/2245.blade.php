@@ -432,50 +432,37 @@
         <div class="evtCtnsBox evt02">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2245_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
-                    <ul>
-                        <li>
-                            <div>
+                    <div class="priceBox">
+                        <div>
                             <strong>125</strong>만원<br>
-                            <input type="radio" id="y_pkg5" name="y_pkg" value="183128" data-sale-price="1250000"/> <label for="y_pkg5">0원 무제한 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>89</strong>만원<br>
-                                <input type="radio" id="y_pkg6" name="y_pkg" value="183118" data-sale-price="890000"/> <label for="y_pkg6">15개월 무제한 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>69.9</strong>만원<br>
-                                <input type="radio" id="y_pkg7" name="y_pkg" value="183117" data-sale-price="699000"/> <label for="y_pkg7">9개월 개편 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>55</strong>만원<br>
-                                <input type="radio" id="y_pkg8" name="y_pkg" value="182148" data-sale-price="550000"/> <label for="y_pkg8">2021 PASS</label>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_02.jpg"  alt=""/>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="183128" data-sale-price="1250000"/> <label for="y_pkg1">0원 무제한 PASS</label>
+                        </div>
+                        <div>
+                            <strong>89</strong>만원<br>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="183118" data-sale-price="890000"/> <label for="y_pkg2">15개월 무제한 PASS</label>
+                        </div>
+                        <div>
+                            <strong>69.9</strong>만원<br>
+                            <input type="radio" id="y_pkg3" name="y_pkg" value="183117" data-sale-price="699000"/> <label for="y_pkg3">9개월 개편 PASS</label>
+                        </div>
+                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2245_01_02.jpg"  alt=""/>
                 </div>                
 
 
                 <div class="totalPrice">
                     총 결제금액 : <strong class="NSK-Black total_price">0</strong>원
-                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1');">
                         신청하기 >
                     </a>
-                </div>     
+                </div>    
 
                 <div class="check">
-                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>

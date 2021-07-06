@@ -50,7 +50,7 @@
         <div class="evtCtnsBox evtTop">          
             <div class="wrap">       
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2269_top.jpg" title="오대혁 고갱이 국어">
-                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50027/?subject_idx=1109" title="교수홈" target="_blank" style="position: absolute; left: 84.2%; top: 84.47%; width: 9.29%; height: 10.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157?subject_idx=1107" title="교수홈" target="_blank" style="position: absolute; left: 84.2%; top: 84.47%; width: 9.29%; height: 10.19%; z-index: 2;"></a>
                 <span class="img1"><img src="https://static.willbes.net/public/images/promotion/2021/07/2269_top_txt.png" alt=" "></span>
             </div>
         </div>

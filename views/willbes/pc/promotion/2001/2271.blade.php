@@ -274,7 +274,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div class="mt50">
                     <a onclick="javascript:fn_add_apply_submit();" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2271_03_btn.png"  alt="이벤트신청"/></a>
                 </div>
             </div>

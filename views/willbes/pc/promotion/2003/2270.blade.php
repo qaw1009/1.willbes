@@ -74,7 +74,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2270_05.jpg" title="댓글 이벤트"> 
             {{-- 이모티콘 댓글 --}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial', array('change_emoticon_img' => true))
+                @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif
         </div>
     </div>

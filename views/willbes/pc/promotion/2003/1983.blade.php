@@ -81,8 +81,8 @@
             <div>
                 <ul>
                     <li>
-                        세무직 PASS - {{$arr_promotion_params['turn']}}기<br />
-                        <span class="NGEB">{{ kw_date('n.j(%)', $arr_promotion_params['edate']) }} 마감!</span>
+                        세무직 PASS - 1기<br />
+                        <span class="NGEB">7.7(수) 마감!</span>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
                     <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
@@ -253,24 +253,19 @@
                     return;
                 }
             }
-            location.href = "{{ site_url('/periodPackage/show/cate/3022/pack/648001/prod-code/') }}" + code;
+            location.href = "//pass.willbes.net/periodPackage/show/cate/3022/pack/648001/prod-code/" + code;
         }
 
         /* 팝업창 */ 
         function certOpen(){
-            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','') !!}
-            @if(empty($arr_promotion_params) === false)
-            var url = '/certApply/index/page/{{$arr_promotion_params["page"]}}/cert/{{$arr_promotion_params["cert"]}}' ;
+            
+                        var url = '/certApply/index/page/transfer/cert/15' ;
             window.open(url,'arm_event', 'top=100,scrollbars=yes,toolbar=no,resizable=yes,width=740,height=700');
-            @endif
-        }
+                    }
         /*디데이카운트다운*/
         $(document).ready(function() {
-            dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
+            dDayCountDown('2021-07-07','24:00');
         });
     </script>
-
-    {{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
 
 @stop

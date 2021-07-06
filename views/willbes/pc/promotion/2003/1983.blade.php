@@ -140,7 +140,7 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_01.gif" alt="강의1" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_02.gif" alt="강의2" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_03.gif" alt="강의3" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_03.gif" alt="강의3" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/1982_02_04.gif" alt="강의4" />
             </div>
         </div>
 

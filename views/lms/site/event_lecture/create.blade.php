@@ -401,8 +401,8 @@
                                             • <b>일반 이벤트의 댓글</b>은 기본형으로만 가능.
                                         </p>
                                     </div>
-                                    <div class="col-md-10 col-lg-offset-2">
-                                        <label class="control-label col-md-2">강사이모티콘 이미지명</label>
+                                    <div class="col-md-10 col-lg-offset-2 hide" id="comment_emoticon_wrap">
+                                        <label class="control-label col-md-2"><span class="required">*</span>강사이모티콘 이미지명</label>
                                         <div class="col-md-8">
                                             <input type="text" class="form-control" value="{{ $data['CommentEmoticonImages'] }}" name="comment_emoticon_images" placeholder="여러개 입력시 콤마(,)로 구분">
                                         </div>
@@ -826,6 +826,16 @@
                 }
             });
 
+            // 강사이모티콘 선택여부 체크
+            $regi_form.on('ifChanged ifCreated', 'input[name^="comment_ui_type_ccds"]', function() {
+                $("#comment_emoticon_wrap").addClass("hide");
+                $.each($regi_form.find('input[name^="comment_ui_type_ccds"]:checked'), function() {
+                    if($(this).data('type') == '713003'){
+                        $("#comment_emoticon_wrap").removeClass("hide");
+                    }
+                });
+            });
+
             //배너검색
             $('#btn_banner_search').on('click', function(event) {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
@@ -1141,6 +1151,13 @@
                         alert('같은 상품종류로만 그룹 셋팅 가능합니다.');
                         return false;
                     }
+                }
+
+                // 강사이모티콘 입력 체크
+                if($("#comment_emoticon_wrap").hasClass("hide") !== true){
+                    alert('강사이모티콘 이미지명을 입력해주세요.');
+                    $("input[name='comment_emoticon_images']").focus();
+                    return false;
                 }
 
                 getEditorBodyContent($editor_profile);

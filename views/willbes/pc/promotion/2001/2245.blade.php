@@ -108,15 +108,11 @@
 
         .evt02 {background:#ececec; padding-bottom:100px;}
         .evt02 .passLecBuy {position:relative; width:1120px; margin:0 auto;  }
-        .evt02 .passLecBuy .price {background:url(https://static.willbes.net/public/images/promotion/2021/06/2245_01_bg.jpg) repeat-y center;} 
-        .evt02 .passLecBuy ul {margin-left:27px;}
-        .evt02 .passLecBuy li {display:inline; float:left; text-align:left; line-height:30px; font-size:14px; color:#000; width:calc(25% - 21px); margin-right:21px}
-        .evt02 .passLecBuy li div {font-size:14px; font-weight:bold; background:#006bbe; color:#fff; text-align:left; padding:15px 30px; 
-            border-radius:10px; margin:0 20px}
-        .evt02 .passLecBuy li:last-child {margin-right:0}
-        .evt02 .passLecBuy li:last-child p {font-size:16px}
-        .evt02 strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}
-        .evt02 .passLecBuy ul:after {content:""; display:block; clear:both}        
+        .evt02 .passLecBuy .price {background:url(https://static.willbes.net/public/images/promotion/2021/07/2245_01_bg.jpg) repeat-y center; } 
+        .evt02 .passLecBuy .priceBox {width:790px; margin:0 auto; justify-content: space-around;}
+        .evt02 .passLecBuy .priceBox div {display:inline-block; text-align:center; line-height:30px; font-size:14px; font-weight:bold; background:#006bbe; color:#fff; padding:15px 0; border-radius:10px; margin-right:39px; width:220px}
+        .evt02 .passLecBuy .priceBox div:last-child {margin-right:0}
+        .evt02 .passLecBuy .priceBox div strong {font-family:Verdana, Geneva, sans-serif; font-size:30px}        
         .evt02 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
         .evt02 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle}
         .evt02 input:checked + label {border-bottom:1px dashed #0d3692} /*컬러변경*/
@@ -183,7 +179,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1000px; margin:0 auto;} 
-        .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:33.333333%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -298,38 +294,25 @@
         <div class="evtCtnsBox evt02" id="pass">
             <div class="passLecBuy">
                 <div>               
-                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_01.jpg"  alt="신광은경찰PASS">
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2245_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
 
                 <div class="price">
-                    <ul>
-                        <li>
-                            <div>
+                    <div class="priceBox">
+                        <div>
                             <strong>125</strong>만원<br>
                             <input type="radio" id="y_pkg1" name="y_pkg" value="183128" data-sale-price="1250000"/> <label for="y_pkg1">0원 무제한 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>89</strong>만원<br>
-                                <input type="radio" id="y_pkg2" name="y_pkg" value="183118" data-sale-price="890000"/> <label for="y_pkg2">15개월 무제한 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>69.9</strong>만원<br>
-                                <input type="radio" id="y_pkg3" name="y_pkg" value="183117" data-sale-price="699000"/> <label for="y_pkg3">9개월 개편 PASS</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <strong>55</strong>만원<br>
-                                <input type="radio" id="y_pkg4" name="y_pkg" value="182148" data-sale-price="550000"/> <label for="y_pkg4">2021 PASS</label>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <img src="https://static.willbes.net/public/images/promotion/2021/06/2245_01_02.jpg"  alt=""/>
+                        </div>
+                        <div>
+                            <strong>89</strong>만원<br>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="183118" data-sale-price="890000"/> <label for="y_pkg2">15개월 무제한 PASS</label>
+                        </div>
+                        <div>
+                            <strong>69.9</strong>만원<br>
+                            <input type="radio" id="y_pkg3" name="y_pkg" value="183117" data-sale-price="699000"/> <label for="y_pkg3">9개월 개편 PASS</label>
+                        </div>
+                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2245_01_02.jpg"  alt=""/>
                 </div>                
 
 
@@ -511,7 +494,7 @@
                 <li><a href="#tab1">0원 무제한 PASS</a></li>
                 <li><a href="#tab2">15개월 무제한 PASS
                 <li><a href="#tab3">9개월 개편 PASS</a></li>
-                <li><a href="#tab4">2021 PASS</a></li>
+                {{--<li><a href="#tab4">2021 PASS</a></li>--}}
             </ul>
 
             <div class="content_guide_box" id="tab1">
@@ -806,7 +789,7 @@
                     </dd>
                 </dl>
             </div>
-
+            {{--
             <div class="content_guide_box" id="tab4">
                 <dl>
                     <dt>
@@ -889,7 +872,7 @@
                     </dd>
                 </dl>
             </div>
-
+            --}}
         </div>
         <!-- content_guide_wrap //-->
     </div>

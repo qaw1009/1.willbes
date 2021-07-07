@@ -2236,18 +2236,22 @@ class OrderFModel extends BaseOrderFModel
                     }
                 }
 
-                // 온라인강좌 운영자/기간제패키지/수강연장일 경우 주문일 당일 입금완료가 아닐 경우 수강 시작/종료일을 결제일자 기준으로 업데이트
-                if ($order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture'] || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture']
-                    || $order_prod_row['SalePatternCcd'] == $this->_sale_pattern_ccd['extend']
+                // 온라인강좌 단강좌/사용자/운영자/기간제패키지일 경우 주문일 당일 입금완료가 아닐 경우 수강시작/종료일을 결제일자 기준으로 업데이트
+                if ($order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['on_lecture']
+                    || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']
+                    || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['adminpack_lecture']
+                    || $order_prod_row['LearnPatternCcd'] == $this->_learn_pattern_ccd['periodpack_lecture']
                 ) {
                     // 결제일자 - 주문일자
-                    $diff_days = diff_days(date('Y-m-d'), $order_date);
+                    $today = date('Y-m-d');
+                    $diff_days = diff_days($today, $order_date);
 
                     if ($diff_days > 0) {
                         $is_lec_date_update = $this->_conn->set('LecStartDate', 'date_add(LecStartDate, interval ' . $diff_days . ' day)', false)
                             ->set('LecEndDate', 'date_add(LecEndDate, interval ' . $diff_days . ' day)', false)
                             ->set('RealLecEndDate', 'date_add(RealLecEndDate, interval ' . $diff_days . ' day)', false)
                             ->where('OrderIdx', $order_idx)->where('OrderProdIdx', $order_prod_row['OrderProdIdx'])->where('ProdCode', $order_prod_row['ProdCode'])
+                            ->where('LecStartDate <', $today)
                             ->update($this->_table['my_lecture']);
 
                         if ($is_lec_date_update !== true) {

@@ -105,7 +105,7 @@
             <div class="tImg">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="강의1" />
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t03.gif" alt="강의3" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="강의3" />
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2116_04.jpg" alt="합격이 앞당겨집니다" />
         </div>

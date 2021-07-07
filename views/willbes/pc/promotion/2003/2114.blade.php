@@ -103,9 +103,9 @@
         <div class="evtCtnsBox wb_cts03">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_03.jpg" alt="라이브로 만나다" />
             <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_03.gif" alt="강의3" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="강의1" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="강의2" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t03.gif" alt="강의3" />
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2114_04.jpg" alt="합격이 앞당겨집니다" />
         </div>
@@ -131,14 +131,14 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>본 PASS는 조경직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
-                            (국어 : 기미진, 영어 : 한덕현, 한국사 : 조민주, 조경학/조경계획 및 설계/생태계관리 : 이윤주)<br>
-                            (*국어 기미진, 영어 한덕현 일부과정 제외)
-                            </li>
-                            <li>2021~2022년 대비로 진행된 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.</li>
-                            <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 각 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
-                            (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)                
-                            </li>
+                            <li>본 PASS는 9급 조경직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
+                            * 국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.</li>
+                            <li>수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 김상범/조민주, 조경학/조경계획 및 설계/생태계관리 이윤주<br>
+                            * 국어 기미진, 한국사 조민주 교수의 경우 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.</li>
+                            <li>2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
+                            (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)</li>
+                            <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
+                            (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)</li>
                         </ol>
                     </dd>
 

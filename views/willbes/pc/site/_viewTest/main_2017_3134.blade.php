@@ -2,26 +2,27 @@
 
 @section('content')
     <style>
-        .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px !important}
-        .ssam .willbes-Layer-ReplyBox-1120 .subject-list {/*font-size:14px*/}
-
-        .ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; }
-        .ssam .VisualBox .MaintabFlex span {   
-            height: 50px;
-            font-size: 14px;
-            line-height: 50px;
-            width:100%;
-        }
-        .ssam .VisualBox .MaintabFlex span a {color:#fff}
-        .ssam .VisualBox .MaintabFlex span a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .ssam .VisualBox .MaintabFlex span a.active,
-        .ssam .VisualBox .MaintabFlex span a:hover {
-            background:#000
-        }
+.ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
+.ssam .MaintabList {background-color:rgba(0,0,0,0)}
+.ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; }
+.ssam .VisualBox .MaintabFlex span {   
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    width:calc(100% - 1px);
+    margin-right:1px;    
+}
+.ssam .VisualBox .MaintabFlex span a {color:#fff}
+.ssam .VisualBox .MaintabFlex span a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,.5); 
+}
+.ssam .VisualBox .MaintabFlex span a.active,
+.ssam .VisualBox .MaintabFlex span a:hover {
+    background-color:rgba(255,255,255,.5); font-weight:bold
+}
     </style>
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">

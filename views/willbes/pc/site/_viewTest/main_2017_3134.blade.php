@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <style>
+<style>
 .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
 .ssam .MaintabList {background-color:rgba(0,0,0,0)}
 .ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; }
@@ -19,11 +19,10 @@
     height: 100%;
     background-color:rgba(0,0,0,.5); 
 }
-.ssam .VisualBox .MaintabFlex span a.active,
 .ssam .VisualBox .MaintabFlex span a:hover {
     background-color:rgba(255,255,255,.5); font-weight:bold
 }
-    </style>
+</style>
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
         <!-- site nav -->

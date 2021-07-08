@@ -31,11 +31,20 @@
 
         .wb_cts04 {background:#3F3F3F}
 
-        .wb_cts05 {background:#fff}
-        .radio_apply {position:relative;}
-        .radio_apply li.one{position:absolute;left:50%;margin-left:-220px;margin-top:-75px}
-        .radio_apply li.two {position:absolute;left:50%;margin-left:140px;margin-top:-75px}
-        .radio_apply  li input {height:30px; width:30px;}
+        .wb_cts06 {padding-bottom:100px}
+        .wb_cts06 table {width:860px; margin:0 auto 50px; border-top:1px solid #828282}
+        .wb_cts06 table th,
+        .wb_cts06 table td {font-size:14px; padding:20px; text-align:center; line-height:1.5; border-right:1px solid #828282}
+        .wb_cts06 table th:last-child,
+        .wb_cts06 table td:last-child {border-right:0}
+        .wb_cts06 table tr {border-bottom:1px solid #828282}
+        .wb_cts06 table thead th { font-size:18px; font-weight:bold; background:#ececf3}
+        .wb_cts06 table thead th strong {color:#225060}
+        .wb_cts06 table tbody th {font-weight:bold;}
+        .wb_cts06 table td.bg {background:#ececf3}
+        .wb_cts06 table td span {color:#fff; padding:2px 6px; background:red; font-size:11px; border-radius:4px; margin-left:5px}
+        .wb_cts06 table td input {height:24px; width:24px;}
+        .wb_cts06 table td label {font-size:30px; color:#225060; font-weight:bold;}
 
          /*타이머*/
         .newTopDday * {font-size:24px}
@@ -119,9 +128,9 @@
         <div class="evtCtnsBox wb_cts01">
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_02.jpg" alt="라이브로 만나다" />
             <div class="tImg">
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_01.gif" alt="강의1" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_02.gif" alt="강의2" />
-                <img src="https://static.willbes.net/public/images/promotion/2020/12/1982_02_03.gif" alt="강의3" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t01.gif" alt="강의1" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t02.gif" alt="강의2" />
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2160_t04.gif" alt="강의3" />
             </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_03.jpg" alt="합격이 앞당겨집니다" />
         </div>
@@ -130,15 +139,52 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_04.jpg" alt="커리큘럼" />
         </div>
 
-        <div class="evtCtnsBox wb_cts05">
-            <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_05.jpg" id="apply" alt="수강신청" />              
-                <div id="tab1s">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_05_01.jpg" title="신청하기" />
-                    <ul class="radio_apply">
-                        <li class="one"><input type="radio" id="y_pkg" name="y_pkg" value="176402" onClick=""/><label for="y_pkg"></label></li>   
-                        <li class="two"><input type="radio" id="y_pkg" name="y_pkg" value="176397" onClick=""/><label for="y_pkg"></label></li>
-                    </ul>
-                </div>
+        <div class="evtCtnsBox wb_cts06" id="apply">   
+            <img src="https://static.willbes.net/public/images/promotion/2021/01/2015_05.jpg" title="신청하기" />
+            <table>
+                <col />
+                <col width="40%" />
+                <col width="40%" />
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>윌비스 산림자원직 <strong>PASS</strong></th>
+                        <th>윌비스 산림자원직 <strong>전공PASS</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>과목/교수진</th>
+                        <td>국어 <strong>오대혁</strong>, 영어 <strong>한덕현</strong>, 한국사 <strong>김상범</strong><br />
+                            임업경영/조림학 <strong>장재영</strong></td>
+                        <td>임업경영/조림학 <strong>장재영</strong></td>
+                    </tr>
+                    <tr>
+                        <th>수강기간</th>
+                        <td>결제완료일로부터 <strong>1년</strong><br />
+                        배수 제한 없는 <strong>무제한 수강</strong></td>
+                        <td>결제완료일로부터 <strong>1년</strong><br />
+                        배수 제한 없는 <strong>무제한 수강</strong></td>
+                    </tr>
+                    <tr>
+                        <th>기기대수</th>
+                        <td>PC or 모바일 <strong>총 2대지원</strong></td>
+                        <td>PC or 모바일 <strong>총 2대지원</strong></td>
+                    </tr>
+                    <tr>
+                        <th>혜택</th>
+                        <td colspan="2" class="bg">
+                        ① 윌비스 공무원학원 <strong>국어 / 영어 / 한국사 무편집 LIVE 강의 제공</strong><span>LIVE</span><br />
+                        ② 2022 대비 신규 진행<strong> 전 과정 업데이트</strong><br />
+                        ③ 직렬별 온라인 모의고사 진행 시 <strong>무료 제공</strong></td>
+                    </tr>
+                    <tr>
+                        <th>가격</th>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg1" name="y_pkg" value="176402" onClick=""/><label for="y_pkg1"> 693,000원</label></td>
+                        <td class="NSK-Black"><input type="radio" id="y_pkg2" name="y_pkg" value="176397" onClick=""/><label for="y_pkg2"> 590,000원</label></td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="check" id="chkInfo">               
                 <label>
@@ -157,14 +203,21 @@
                     <dt>상품구성</dt>
                     <dd>
                         <ol>
-                            <li>본 PASS는 산림자원직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한없이 무제한으로 수강 가능합니다.<br>
-                            * 국어 기미진, 영어 한덕현 일부과정 제외
+                            <li>
+                                본 PASS는 9급 산림자원직 대비 과정으로, 참여 교수진의 전 강좌를 배수 제한 없이 무제한으로 수강 가능합니다.<br>
+                                * 국어 기미진 [새벽실전모의고사] 제외, 영어 한덕현 [기본문법>제니스문법>기출리뷰>스나이퍼32>실전동형모의고사] 과정만 제공.
                             </li>
-                            <li>2021~2022년 대비로 진행된 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
-                            (해당 과정은 대방고시학원 제휴 과정으로, 국/영/한 교수진과 전공과목 교수진의 커리큘럼이 약간 상이합니다.)
+                            <li>
+                                수강 가능 교수진 : 국어 오대혁/기미진, 영어 한덕현, 한국사 김상범/조민주, 임업경영/조림학 장재영<br>
+                                * 국어 기미진, 한국사 조민주 교수의 경우 신규 과정 진행하지 않으므로 기존 과정만 제공됩니다.
                             </li>
-                            <li>참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 각 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
-                            (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)                     
+                            <li>
+                                2020년 7월부터 진행된 2021년 대비 전 과정 및 2022년 대비로 진행되는 신규 개강 강좌를 커리큘럼 진행에 따라 순차적으로 제공해드리는 상품입니다.<br>
+                                (일부 교수진의 경우, 신규 과정이 업데이트 되지 않을 수 있으며 해당 경우에는 이전 연도 과정을 제공해드립니다.)                     
+                            </li>
+                            <li>
+                                참여 교수진의 일정 및 진행 방식은 상이하게 진행될 수 있으며, 학원 사정에 따라 부득이하게 커리큘럼 및 교수진이 추가/변경될 수 있다는 점 숙지 부탁드립니다.<br>
+                                (과목별 교수진의 제공 과정은 수강신청 상세안내 화면을 참고해주시기 바랍니다.)
                             </li>
                         </ol>
                     </dd>
@@ -220,11 +273,11 @@
                     <dd>
                         <ol>
                             <li>공무원학원 실강 내 LIVE로 진행되는 강좌만 제공됩니다. (* 일부 특강 제외)<br>
-                            - 국어 기미진, 영어 한덕현, 한국사 조민주</li>
+                            - 국어 오대혁, 영어 한덕현, 한국사 김상범</li>
                             <li>제공되는 강좌 및 진행일정은 우측 버튼 클릭 후 페이지 하단에서 확인 가능합니다.
                             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank">자세히보기 ></a></li>
                             <li>본 상품은 실시간 진행되므로 일시정지/연장/재수강은 제공되지 않습니다. 촬영 및 편집된 강의는 익일 오후 2시 이전까지 업로드됩니다.</li>
-                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다. (* 이전 구매자 소급 적용) </li>
+                            <li>해당 혜택은 PASS 수강기간 내에만 이용 가능합니다.</li>
                         </ol>
                     </dd>                
                 </dl>

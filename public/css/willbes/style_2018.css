@@ -83,7 +83,7 @@
     background-color: rgba(0,0,0,0.5);
 }
 
-.ssam .VisualBox .Maintab {width: 100%; margin:0 auto; text-align:center}
+.ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; border-left:1px solid #fff}
 .ssam .VisualBox .MaintabFlex span {   
     height: 50px;
     font-size: 14px;

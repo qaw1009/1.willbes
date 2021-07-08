@@ -17,7 +17,10 @@ class SupportNotice extends BaseSupport
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
-    private $_pattern_banner_section = ['1003' => '학원공지사항_퀵배너', 'default' => '고객센터_우측퀵']; // 퀵배너 섹션
+    private $_pattern_banner_section = ['1003' => '학원공지사항_퀵배너', // 고등고시
+                                        '1004' => '학원공지사항_퀵배너', // 자격증
+                                        '1006' => '학원공지사항_퀵배너', // 경찰간부
+                                        'default' => '고객센터_우측퀵'];
 
     public function __construct()
     {

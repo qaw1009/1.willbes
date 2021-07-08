@@ -266,7 +266,7 @@
                                     <col style="width: 75px;">
                                     <col style="width: 85px;">
                                     <col>
-                                    <col style="width: 290px;">
+                                    <col style="width: 270px;">
                                 </colgroup>
                                 <tbody>
                                 <tr>

@@ -8,7 +8,7 @@
             width:100% !important;
             min-width:1120px !important;
             background:#ccc;
-            margin-top:20px !important;
+            margin-top:20px !important;ㄴ
             padding:0 !important;
             background:#fff;
         }

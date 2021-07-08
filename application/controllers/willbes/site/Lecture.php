@@ -10,7 +10,9 @@ class Lecture extends \app\controllers\FrontController
 
     private $_learn_pattern = 'on_lecture';     // 학습형태 (단강좌, 무료강좌 구분값)
     private $_pattern_name = ['only' => '단강좌', 'free' => '무료강좌'];
-    private $_pattern_banner_section = ['1003' => ['only' => '동영상수강신청_퀵배너', 'free' => '동영상수강신청_퀵배너'],
+    private $_pattern_banner_section = ['1003' => ['only' => '동영상수강신청_퀵배너', 'free' => '동영상수강신청_퀵배너'],   // 고등고시 
+                                        '1004' => ['only' => '동영상수강신청_퀵배너', 'free' => '동영상수강신청_퀵배너'],   // 자격증
+                                        '1006' => ['only' => '동영상수강신청_퀵배너', 'free' => '동영상수강신청_퀵배너'],   // 경찰간부
                                         'default' => ['only' => '수강신청_우측퀵', 'free' => '수강신청_우측퀵']];
 
     private $_order_by_regist_default = ['2003', '2005', '2006'];  //등록순 디폴트 정렬 사이트 코드

@@ -16,7 +16,10 @@ class OffLecture extends \app\controllers\FrontController
 
     protected $_group_ccd = ['study_pattern' => '653'];
 
-    private $_pattern_banner_section = ['1003' => '단과반수강신청_퀵배너', 'default' => '수강신청_우측퀵']; // 퀵배너 섹션
+    private $_pattern_banner_section = ['1003' => '단과반수강신청_퀵배너',    // 고등고시
+                                        '1004' => '단과반수강신청_퀵배너',    // 자격증
+                                        '1006' => '단과반수강신청_퀵배너',    // 경찰간부
+                                        'default' => '수강신청_우측퀵'];
 
 
     public function __construct()

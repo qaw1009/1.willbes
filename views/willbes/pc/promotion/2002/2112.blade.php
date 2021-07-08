@@ -67,7 +67,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1000px; margin:0 auto;} 
-        .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:33.333333%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -214,14 +214,14 @@
         <div class="evtCtnsBox evt05">
             <img src="https://static.willbes.net/public/images/promotion/2021/03/2112_05.jpg"  alt="최정예 교수진" />
         </div>
-
+ 
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit">윌비스 <span class="NSK-Black tx-blue">신광은 경찰 PASS </span> 이용안내 </p>
             <ul class="tabs">
                 <li><a href="#tab1">0원 무제한 PASS</a></li>
                 <li><a href="#tab2">15개월 무제한 PASS
                 <li><a href="#tab3">9개월 개편 PASS</a></li>
-                <li><a href="#tab4">2021 PASS</a></li>
+                {{--<li><a href="#tab4">2021 PASS</a></li>--}}
             </ul>
 
             <div class="content_guide_box" id="tab1">
@@ -236,7 +236,7 @@
                                 <div class="tx-blue">
                                     * 형사소송법/형사법/수사 : 신광은 교수님<br>
                                     * 경찰학개론/경찰학(개편)/행정법 : 장정훈 교수님<br>
-                                    * 형법/헌법 : 김원욱 교수님<br>
+                                    * 형법 : 김원욱 교수님 / 이국령 교수님<br>
                                     * 영어/G-TELP : 하승민/김현정/김준기 교수님<br>
                                     * 한국사/한능검 : 원유철/오태진 교수님<br>
                                     * 실용글쓰기 : 박우찬 교수님
@@ -359,7 +359,7 @@
                                 <div class="tx-blue">
                                     * 형사법/형사소송법 : 신광은 교수님<br>
                                     * 경찰학(개편)/경찰학개론 : 장정훈 교수님<br>
-                                    * 헌법/형법 : 김원욱 교수님
+                                    * 형법/헌법 : 김원욱 교수님 / 이국령 교수님
                                 </div>
                             </li>
                             <li>선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
@@ -447,7 +447,7 @@
                                 <div class="tx-blue">
                                     * 형사법 : 신광은 교수님<br>
                                     * 경찰학(개편) : 장정훈 교수님<br>
-                                    * 헌법 : 김원욱 교수님
+                                    * 헌법 : 김원욱 교수님 / 이국령 교수님
                                 </div>
                             </li>
                             <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강 할 수 있습니다.</li>
@@ -516,7 +516,7 @@
                     </dd>
                 </dl>
             </div>
-
+            {{--
             <div class="content_guide_box" id="tab4">
                 <dl>
                     <dt>
@@ -599,7 +599,7 @@
                     </dd>
                 </dl>
             </div>
-
+            --}}
         </div>
         <!-- content_guide_wrap //-->
 

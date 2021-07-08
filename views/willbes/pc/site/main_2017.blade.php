@@ -20,7 +20,7 @@
                         <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
 
                         <div id="MainRollingDiv" class="MaintabList">
-                            <div class="Maintab">
+                            <div class="MaintabFlex">
                                 @foreach($data['arr_main_banner']['메인_빅배너'] as $row)
                                     <span><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{{ $row['BannerName'] }}</a></span>
                                 @endforeach

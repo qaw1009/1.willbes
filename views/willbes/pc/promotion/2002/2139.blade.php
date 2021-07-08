@@ -16,7 +16,7 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/      
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/03/2139_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/07/2139_top_bg.jpg) no-repeat center top;}
 
         .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto}
         .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}
@@ -79,7 +79,7 @@
     <div class="evtContent NSK" id="evtContainer">
         
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_top.jpg"  alt="사립탐정사"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_top.jpg"  alt="사립탐정사"/>
         </div> 
 
         <div class="evtCtnsBox youtube">
@@ -97,7 +97,7 @@
         </div>
 
         <div class="evtCtnsBox evt01">
-            <div class="tag NSK-Black">#사립탐정 #한국탐정 #5/22 #누구나빠르게</div>
+            <div class="tag NSK-Black">#사립탐정 #한국탐정 #7/24 #누구나빠르게</div>
             <div class="request" id="request">
                 <div class="requestL">
                     <h3 class="NSK-Black">* 사립탐정사 시험  학원예약접수</h3>
@@ -163,7 +163,7 @@
         </div>
 
         <div class="evtCtnsBox evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2139_01.jpg"  alt="사립탐정사 자격시험" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_01.jpg"  alt="사립탐정사 자격시험" />
         </div>
 
         <div class="evtCtnsBox evt03">

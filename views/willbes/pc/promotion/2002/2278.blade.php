@@ -8,8 +8,8 @@
             width:100% !important;
             min-width:1120px !important;
             background:#ccc;
-            margin-top:20px !important;ㄴ
-            padding:0 !important;
+            margin-top:20px !important;
+            padding:0 !important; 
             background:#fff;
         }
         .evtContent span {vertical-align:auto}

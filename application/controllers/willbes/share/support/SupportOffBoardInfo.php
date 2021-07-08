@@ -16,8 +16,15 @@ class SupportOffBoardInfo extends BaseSupport
     protected $_paging_count = 10;
     protected $_paging_count_m = 5;
 
-    private $_pattern_banner_section = ['1003' => '강의계획서_퀵배너', 'default' => '고객센터_우측퀵']; // 퀵배너 섹션
-    private $_cate_code_matching = ['3094' => '3104', '3095' => '3105', '3096' => '3106', '3097' => '3107', '3098' => '3108', '3099' => '3109']; // 온라인 => 학원
+    private $_pattern_banner_section = ['1003' => '강의계획서_퀵배너',  // 고등고시
+                                        '1004' => '강의계획서_퀵배너',  // 자격증
+                                        '1006' => '강의계획서_퀵배너',  // 경찰간부
+                                        'default' => '고객센터_우측퀵'];
+    // 온라인 => 학원 매칭
+    private $_cate_code_matching = ['3094' => '3104', '3095' => '3105', '3096' => '3106', '3097' => '3107', '3098' => '3108', '3099' => '3109',  // 고등고시
+                                    '309002' => '3111', '309003' => '3112', '309004' => '3113', // 자격증
+                                    '3100' => '3110'    // 경찰간부
+                                    ];
 
     public function __construct()
     {
@@ -120,7 +127,8 @@ class SupportOffBoardInfo extends BaseSupport
             'bm_title'=> $bm_title,
             'tab_menu' => $tab_menu,
             'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
-            'cate_code_matching' => $this->_cate_code_matching
+            'cate_code_matching' => $this->_cate_code_matching,
+            'on_off_link_cate_code' => $on_off_link_cate_code
         ]);
     }
 
@@ -252,7 +260,8 @@ class SupportOffBoardInfo extends BaseSupport
                 'bm_title'=> $bm_title,
                 'tab_menu' => $tab_menu,
                 'pattern_banner_section' => element(config_app('SiteGroupCode'), $this->_pattern_banner_section, $this->_pattern_banner_section['default']),
-                'cate_code_matching' => $this->_cate_code_matching
+                'cate_code_matching' => $this->_cate_code_matching,
+                'on_off_link_cate_code' => $on_off_link_cate_code
             ]
         );
     }

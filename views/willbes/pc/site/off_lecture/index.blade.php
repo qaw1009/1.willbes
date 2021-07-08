@@ -447,7 +447,7 @@
             @include('willbes.pc.site.off_lecture.only_footer_partial')
         </div>
         @if(empty($pattern_banner_section) === false)
-        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'], ($__cfg['SiteGroupCode'] == '1003' ? element('cate_code', $arr_input) : $__cfg['CateCode'])) !!}
+        {!! banner($pattern_banner_section, 'Quick-Bnr ml20', $__cfg['SiteCode'], $arr_base['category_default']) !!}
         @endif
     </div>
     {!! popup('657002') !!}

@@ -2,7 +2,7 @@
 .job .topBanner {display:block; background:#ececec; width:100%; text-align:center}
 .job .topBanner p {width:100%; max-width:1120px; margin:0 auto}
 .job .topBanner p img {width:100%}
-
+br { font-family:dotum;}
 /*********************************************     Main Container : cert     *********************************************/
 /* Main Container : MainVisual */
 .job .Section .bnrSec01 li {
@@ -175,3 +175,14 @@
 .job .tx-color {
     color: #643fb5;
 }
+
+/* 빅데이터분석기사 */
+.job .article1 {background:#0253c4;}
+.job .article2 {background:url(https://static.willbes.net/public/images/promotion/main/308906_02_bg.jpg) repeat-x left top;} 
+.job .article3 {background:#eee;}
+.job .article4 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article5 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article6 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article6 {position:relative;}
+.youtube {position:absolute; top:50px; left:50%;z-index:1;margin-left:-400px}
+.youtube iframe {width:860px; height:450px} 

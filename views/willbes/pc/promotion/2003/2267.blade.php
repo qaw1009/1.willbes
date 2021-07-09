@@ -82,7 +82,7 @@
         <div class="evtCtnsBox evt_02">
             <div class="wrap"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2267_02.jpg"  alt="오태진 한국사 커리큘럼" />
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183420" title="수강신청" target="_blank" style="position: absolute; left: 29.2%; top: 83.41%; width: 30.71%; height: 3.7%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50027/?subject_idx=1109" title="수강신청" target="_blank" style="position: absolute; left: 29.2%; top: 83.41%; width: 30.71%; height: 3.7%; z-index: 2;"></a>
             </div>
         </div>
 

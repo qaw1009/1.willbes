@@ -129,10 +129,9 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343714" target="_blank" title="국어 오대혁" style="position: absolute; left: 5.71%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343710" target="_blank" title="한국사 오태진" style="position: absolute; left: 28.13%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" title="행정법 신기훈" target="_blank" style="position: absolute; left: 51.16%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183471" title="한국사 김상범" target="_blank" style="position: absolute; left: 74.02%; top: 88.4%; width: 19.82%; height: 5.76%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343714" target="_blank" title="국어 오대혁" style="position: absolute; left: 16.88%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" title="행정법 신기훈" target="_blank" style="position: absolute; left:  39.11%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183471" title="한국사 김상범" target="_blank" style="position: absolute; left: 62.32%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
             </div>
         </div>
 

@@ -47,10 +47,7 @@
         <div class="sky">
             <a href="https://police.willbes.net/promotion/index/cate/3001/code/2236" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2253_sky01.jpg" alt="이국령 헌법" >
-            </a>  
-            <a href="#evt04"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2253_sky02.jpg" alt="신규강좌" >                
-            </a> 
+            </a>
         </div>   
 
         <div class="evtCtnsBox evtTop">
@@ -90,10 +87,7 @@
         <div class="evtCtnsBox evt03">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2253_03.jpg"  alt="학습가이드"/>
         </div>
-
-        <div class="evtCtnsBox evt04" id="evt04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2253_04.jpg"  alt="학습가이드"/>
-        </div>
+        
     </div>
     <!-- End Container -->
 

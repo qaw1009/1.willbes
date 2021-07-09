@@ -6,6 +6,31 @@
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
+        <!-- 타이머 -->
+        <div id="newTopDday" class="newTopDday">
+            <div>
+                <ul>
+                    <li>
+                       21년 제3회 필기 시험<br>마감까지
+                    </li>
+                    <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>일</strong></li>
+                    <li><img id="hh1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="hh2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="mm1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="mm2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><strong>:</strong></li>
+                    <li><img id="ss1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li><img id="ss2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
+                    <li>
+                        남았습니다. 
+                    </li>
+                </ul>
+            </div>
+        </div>       
+
         <div class="Section mt30 article1">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/308906_01.jpg" title="빅데이터 분석기사">
@@ -73,40 +98,18 @@
         </div>
         <!-- CS센터 //-->
     </div>
-    <!-- End Container -->
+     <!-- End Container -->
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#stoggleBtn").click(function(){
-                $("#textZone").slideToggle("fast");
-            });
+     <script type="text/javascript">
 
-            $('.PBtab, .curritab').each(function () {
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide();
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function (e) {
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault();
-                });
-            });
+        /*디데이카운트다운*/
+        $(document).ready(function() {
+            dDayCountDown('@if(empty($arr_promotion_params['edate'])===false) {{$arr_promotion_params['edate']}} @endif');
         });
     </script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
 @stop

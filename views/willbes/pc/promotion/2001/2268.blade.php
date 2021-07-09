@@ -127,10 +127,9 @@
         <div class="evtCtnsBox evt_04" id="evt04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2268_04.jpg"  alt="합격패스" />
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183573);" title="항해술 패스" style="position: absolute;left: 2.4%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183574);" title="필수과목 패스" style="position: absolute;left: 26.65%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183575);" title="해양공채 패스" style="position: absolute;left: 50.8%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
-                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183576);" title="해양공채 패스" style="position: absolute;left: 75%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183573);" title="항해술 패스" style="position: absolute;left: 14.4%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3008, 183575);" title="해양공채 패스" style="position: absolute;left: 38.8%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="go_PassLecture(3007, 183576);" title="해양공채 패스" style="position: absolute;left: 63%;top: 91.36%;width: 22.5%;height: 8.83%;z-index: 2;"></a>
             </div>
             <div class="check">
                 <label><input name="ischk" type="checkbox" value="Y" />페이지 하단 합격PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
@@ -171,14 +170,12 @@
                     <li>등불쌤 해양경찰학 (10기 + 11기+12기) : 등불쌤 교수님의 해양경찰학 10기+11+12기 전 강좌를 3배수제한으로 수강할 수 있습니다.</li>
                     <li>등불쌤 해사영어 (10기 + 11기+12기) : 등불쌤 교수님의 해사영어 10기+11+12기 전 강좌를 3배수제한으로 수강할 수 있습니다.</li>
                     <li>등불쌤 항해술 (10기 + 11기+12기) : 등불쌤 교수님의 항해술 10기+11+12기 전 강좌를 3배수제한으로 수강할 수 있습니다.</li>
-                    <li>기관술 강의는 11기 + 12기 전강좌를 3배수제한으로 수강할수 있습니다.</li>
 				</ul>
 
                 <div class="infoTit NSK-Black">▶ 교재</div>
 				<ul>
                     <li>합격PASS 수강에 필요한 교재는 별도로 구매 하셔야 하며, 각 강좌 별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다. <br>
                     (해사법규 -3권세트 , 해양경찰학 – 2권세트 , 해사영어 – 2권세트 , 항해술 – 2권세트)</li>
-                    <li>기관술 교재는 출간예정입니다.</li>
 				</ul>
 
                 <div class="infoTit NSK-Black">▶ 수강 안내</div>

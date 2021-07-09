@@ -34,8 +34,8 @@
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50027/?subject_idx=1109')}}">오태진</a>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50619/?subject_idx=1109')}}">김상범</a>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50027/?subject_idx=1109')}}">오태진</a>                        
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50647/?subject_idx=1109')}}">조민주</a>                     
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/50003/?subject_idx=1109')}}">원유철</a>                       
                     </li>
@@ -185,8 +185,8 @@
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50027/?subject_idx=1109')}}">오태진</a>
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50619/?subject_idx=1109')}}">김상범</a>
+                        <a href="{{front_url('/professor/show/cate/3028/prof-idx/50027/?subject_idx=1109')}}">오태진</a>                        
                         <a href="{{front_url('/professor/show/cate/3028/prof-idx/50647/?subject_idx=1109')}}">조민주</a>                       
                     </li>
                     <li>                        
@@ -288,8 +288,8 @@
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50027/?subject_idx=1109')}}">오태진</a>
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50619/?subject_idx=1109')}}">김상범</a>
+                        <a href="{{front_url('/professor/show/cate/3022/prof-idx/50027/?subject_idx=1109')}}">오태진</a>                        
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50647/?subject_idx=1109')}}">조민주</a>                        
                         <a href="{{front_url('/professor/show/cate/3022/prof-idx/50003/?subject_idx=1109')}}">원유철</a>
                     </li>
@@ -374,8 +374,7 @@
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50028?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
                         <span>[행정법]</span>
                         <a href="{{front_url('/professor/show/prof-idx/51215?cate_code=3043&subject_idx=1257&subject_name=%ED%96%89%EC%A0%95%EB%B2%95')}}">신기훈</a>
                         <span>[행정학]</span>
@@ -441,8 +440,7 @@
                     </li>
                     <li>
                         <span>[한국사]</span>
-                        <a href="{{front_url('/professor/show/prof-idx/50028?cate_code=3052&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">오태진</a>
-                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>
+                        <a href="{{front_url('/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC')}}">김상범</a>                       
                     </li>
                     <li>
                         <span>[전기기기]</span>

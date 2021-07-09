@@ -131,7 +131,8 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
                 <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343714" target="_blank" title="국어 오대혁" style="position: absolute; left: 16.88%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" title="행정법 신기훈" target="_blank" style="position: absolute; left:  39.11%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183471" title="한국사 김상범" target="_blank" style="position: absolute; left: 62.32%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/professor/show/prof-idx/50620?cate_code=3043&subject_idx=1255&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture
+" title="한국사 김상범" target="_blank" style="position: absolute; left: 62.32%; top: 88.89%; width: 19.38%; height: 5.79%; z-index: 2;"></a>
             </div>
         </div>
 

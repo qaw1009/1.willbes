@@ -921,8 +921,8 @@ class OrderFModel extends BaseOrderFModel
                     throw new \Exception($is_add_my_lecture);
                 }
 
-                if ($is_auto_add === true) {
-                    // 자동지급 주문상품 데이터 등록
+                if ($is_auto_add === true && element('SalePatternCcd', $input) == $this->_sale_pattern_ccd['normal']) {
+                    // 자동지급 주문상품 데이터 등록 (판매형태가 일반일 경우만 지급)
                     $is_add_auto_product = $this->addOrderProductForAutoProduct($order_idx, $prod_code, $pay_status_ccd, $input);
                     if ($is_add_auto_product !== true) {
                         throw new \Exception($is_add_auto_product);

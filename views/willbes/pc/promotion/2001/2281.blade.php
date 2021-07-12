@@ -197,8 +197,8 @@
                 </div>  
                 
                 <div class="final" id="finalPass">
-                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
-                    <label for="y_pkg_all">
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="183767" />
+                    <label for="y_pkg4">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 
@@ -302,28 +302,28 @@
                     <div class="priceBox">
                         <div>
                             <strong>125</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1250000"/> <label for="y_pkg1">0원 무제한 PASS</label>
+                            <input type="radio" id="y_pkg5" name="y_pkg" value="183758" data-sale-price="1250000"/> <label for="y_pkg5">0원 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>89</strong>만원<br>
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="890000"/> <label for="y_pkg2">15개월 무제한 PASS</label>
+                            <input type="radio" id="y_pkg6" name="y_pkg" value="183760" data-sale-price="890000"/> <label for="y_pkg6">15개월 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>69.9</strong>만원<br>
-                            <input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg3">9개월 개편 PASS</label>
+                            <input type="radio" id="y_pkg7" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg7">9개월 개편 PASS</label>
                         </div>                        
                     </div>       
                 </div>  
                 
                 <div class="final">
-                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
-                    <label for="y_pkg_all">
+                    <input type="radio" id="y_pkg8" name="y_pkg" value="183767" />
+                    <label for="y_pkg8">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 
 
                 <div class="check">
-                    <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -340,7 +340,7 @@
                 </div>
 
                 <div class="totalPrice NSK-Black">
-                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1');">
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
                         신청하기 >
                     </a>
                 </div>  

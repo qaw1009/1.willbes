@@ -102,8 +102,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1100000" onClick=""/> <label for="y_pkg1">110 만원<br>0원 무제한 PASS</label></li>
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="899000" onClick=""/> <label for="y_pkg2">89.9 만원<br> 14개월 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1250000" onClick=""/> <label for="y_pkg1">125 만원<br>0원 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="890000" onClick=""/> <label for="y_pkg2">89 만원<br> 14개월 무제한 PASS</label></li>
                     <li><input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br> 9개월 개편 PASS</label></li>
                     <li class="last"><input type="radio" id="y_pkg4" name="y_pkg" value="183767" data-sale-price="550000" onClick=""/> <label for="y_pkg4">34.9 만원<br> 2021 FINAL PASS</label></li>
                 </ul>

@@ -1214,6 +1214,7 @@
                 }
             });
 
+            
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){
 

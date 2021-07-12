@@ -14,13 +14,14 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         /************************************************************/     
 
         .sky {position:fixed;top:200px;right:25px;z-index:1;}
         .sky a {display:block; margin-bottom:10px}
 
-        .wb_top {background:#FE8A8D url(https://static.willbes.net/public/images/promotion/2021/07/1721_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/1721_top_bg.jpg) no-repeat center top;}
         .wb_cts01 {background:#343b6f;}
         .wb_cts01s {background:#fff8f2;}
         .wb_cts03 {padding-top:50px;}
@@ -30,11 +31,11 @@
         /*탭(텍스트)*/
         .tabContaier{width:100%;background:#f4f4f4;margin-top:50px;}
         .tabContaier ul{width:980px;margin:0 auto;height:75px;} 
-        .tabContaier li{display:inline-block;width:326px;line-height:75px;background:#f4f4f4;color:#021f44;float:left;font-size:25px;font-weight:bold;border:3px solid #021f44;border-top-left-radius:13px;border-top-right-radius:13px;}
+        .tabContaier li{display:inline-block;width:326px;line-height:75px;background:#f4f4f4;color:#021f44;float:left;font-size:25px;font-weight:bold;}
         .tabContaier:after {content:""; display:block; clear:both}
-        .tabContaier li a{display:block;}
+        .tabContaier li a{display:block; color:#fff; background:#021f44; border-radius:13px 13px 0 0; border:3px solid #021f44; border-bottom:0}
         .tabContaier li a:hover,
-        .tabContaier li a.active {color:#f4f4f4;font-size:35px;background:#021f44;}
+        .tabContaier li a.active {color:#021f44;font-size:35px;background:#fff;}
 
         /*탭(이미지)*/
         .tabs{width:100%; text-align:center; padding-top:30px}

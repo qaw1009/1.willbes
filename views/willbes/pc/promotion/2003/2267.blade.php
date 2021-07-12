@@ -85,7 +85,7 @@
                 <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50027/?subject_idx=1109" title="수강신청" target="_blank" style="position: absolute; left: 29.2%; top: 83.41%; width: 30.71%; height: 3.7%; z-index: 2;"></a>
             </div>
         </div>
-
+        <!--
         <div class="evtCtnsBox evt_03 pb100">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2267_03.jpg" title="댓글 이벤트"> 
             {{-- 이모티콘 댓글 --}}
@@ -93,6 +93,7 @@
                 @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif
         </div>
+        -->
     </div>
     <!-- End Container -->
 

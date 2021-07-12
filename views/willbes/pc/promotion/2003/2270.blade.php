@@ -69,7 +69,7 @@
                 <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183501" title="수강신청" target="_blank" style="position: absolute;  left: 9.29%; top: 76.59%; width: 33.93%; height: 8.49%; z-index: 2;"></a>
             </div>
         </div>
-
+        <!--
         <div class="evtCtnsBox evt_05 pb100">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2270_05.jpg" title="댓글 이벤트"> 
             {{-- 이모티콘 댓글 --}}
@@ -77,6 +77,7 @@
                 @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif
         </div>
+        -->
     </div>
     <!-- End Container -->
 

@@ -11,63 +11,34 @@
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
-        .evtTop {}
-        .evtTop a {display:block; width:90%; margin:0 auto; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold}
-
-        .evt01 .slide_con {}
-        .slide_con .bx-wrapper {box-shadow:none; border:0; margin:0; padding:0}
-        .slide_con .bx-wrapper .bx-pager {
-            width: auto;
-            bottom: 15px;
-            left:0;
-            right:0;
-            text-align: center;
-            z-index:90;
-        }
-        .slide_con .bx-wrapper .bx-pager.bx-default-pager a {
-            background: #ccc;
-            width: 14px;
-            height: 14px;
-            margin: 0 4px;
-            border-radius:10px;
-        }
-        .slide_con .bx-wrapper .bx-pager.bx-default-pager a:hover,
-        .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active,
-        .slide_con .bx-wrapper .bx-pager.bx-default-pager a:focus {
-            background: #d5c15e;
-        }
-        .slide_con .bx-wrapper .bx-pager.bx-default-pager a.active {
-            width: 30px;
-        }
-
-        .evt02 {background:#ececec; padding-bottom:80px; text-align:left}
-        .evt02 .price {margin:0 40px 20px}
-        .evt02 .price ul{margin-right:-10px}
-        .evt02 .price li {display:inline-block; float:left; width:calc(33.33333% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px;
-            padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
-        .evt02 .price li label {display:block}
-        .evt02 .price:after {content:''; display:block; clear:both}
-        .evt02 .ext02txt {padding:0 20px;}
-        .evt02 .ext02txt label {font-size:18px; font-weight:bold}
-        .evt02 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
-        .evt02 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
-        .evt02 input:checked + label {color:#000}
-        .evt02 .ext02txt ul {margin:10px 0 0 25px}
-        .evt02 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
-
-        .evt03 {background:#1a1a1a; padding-bottom:100px;}
+        .evt01 {background:#f5f5f7; padding-bottom:50px; text-align:left}
+        .evt01 .price {margin:0 40px 20px}
+        .evt01 .price ul{margin-right:-10px}
+        .evt01 .price li {display:inline-block; float:left; width:calc(50% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px; padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
+        .evt01 .price li.last {background:#3d0962}
+        .evt01 .price li label {display:block}
+        .evt01 .price:after {content:''; display:block; clear:both}
+        .evt01 .ext01txt {padding:0 20px;}
+        .evt01 .ext01txt label {font-size:18px; font-weight:bold}
+        .evt01 input[type="radio"] {height:18px; width:18px; vertical-align:middle}
+        .evt01 input[type="checkbox"] {height:20px; width:20px; vertical-align:middle; margin-right:5px}
+        .evt01 input:checked + label {color:#ffef7e}
+        .evt01 .ext01txt ul {margin:10px 0 0 25px}
+        .evt01 a {display:block; width:90%; margin:20px auto 0; background:#000; color:#fff; border-radius:30px; padding:10px 0; font-size:20px; font-weight:bold; text-align:center}
+        
+      
 
         .video-container {position:relative; padding-top:30px; padding-bottom:56.25%; margin:0 20px; height:0; overflow: hidden;}
         .video-container iframe,
         .video-container object,
         .video-container embed {position:absolute; top:0; left:50%; width:100%; margin-left:-50%; height:100%;}
 
-        .evt09 {}
+
 
         /* 이용안내 */
         .content_guide_wrap{background:#fff; margin:0 10; padding:30px 0 100px}
         .content_guide_wrap .guide_tit{text-align:center; font-size:26px; margin-bottom:30px}
-        .content_guide_wrap .tabs li {display:inline; float:left; width:33.333333%}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; padding:15px 0; font-size:16px; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}
@@ -85,41 +56,25 @@
         @@media only screen and (max-width: 374px)  {
             .dday {font-size:18px !important;}
             .dday a {padding:5px 10px;}
-            .evt06 .slide_con {margin:0 10px; padding-bottom:40px}
             .content_guide_wrap .guide_tit{font-size:20px; margin-bottom:30px}
             .content_guide_wrap .tabs li a {font-size:14px !important; letter-spacing:-1px}
-            .evt02 .price li {font-size:14px;}
-            .slide_con .bx-wrapper .bx-pager {bottom:6px;}
-            .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:10px;height:10px;}
-            .evt01 {padding-bottom:25px;}
-            .evt03 {padding-bottom:25px;}
-
+            .evt01 .price li {font-size:14px;}
         }
 
         /* 태블릿 세로 */
         @@media only screen and (min-width: 375px) and (max-width: 640px) {
             .dday {font-size:18px !important;}
             .dday a {padding:5px 10px;}
-            .evt02 .price li {font-size:16px;}
+            .evt01 .price li {font-size:16px;}
             .content_guide_wrap .guide_tit{font-size:24px;}
             .content_guide_wrap .tabs li a {font-size:15px !important; letter-spacing:-1px}
-            .slide_con .bx-wrapper .bx-pager {bottom:6px;}
-            .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:12px;height:12px;}
-            .evt01 {padding-bottom:50px;}
-            .evt03 {padding-bottom:50px;}
-
         }
 
         /* 태블릿 가로, PC */
         @@media only screen and (min-width: 641px) {
             .content_guide_wrap .tabs li a br {display:none}
-            .evt02 .price li {font-size:17px;}
-            .content_guide_wrap .tabs li a {font-size:16px !important; letter-spacing:-1px}
-            .slide_con .bx-wrapper .bx-pager {bottom:6px;}
-            .slide_con .bx-wrapper .bx-pager.bx-default-pager a {width:14px;height:14px;}
-            .evt01 {padding-bottom:75px;}
-            .evt03 {padding-bottom:75px;}
-        }
+            .evt01 .price li {font-size:17px;}
+            .content_guide_wrap .tabs li a {font-size:16px !important; letter-spacing:-1px}        }
 
         .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
     </style>
@@ -132,28 +87,28 @@
     <div id="Container" class="Container NSK c_both">
         <div class="evtCtnsBox dday NSK-Thin">
             <strong class="NSK-Black">{{$arr_promotion_params['turn']}}기 마감 <span id="ddayCountText"></span> </strong>
-            <a href="#evt02">수강신청 ></a>
+            <a href="#evt01">수강신청 ></a>
         </div>
 
-        <div class="evtCtnsBox evt00">
+        <div class="evtCtnsBox evt00" data-aos="fade-left">
             <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >
         </div>
 
-        <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_top.jpg" alt="신광은경찰 PASS" >
+        <div class="evtCtnsBox evtTop" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_top.jpg" alt="신광은경찰 PASS" >
         </div>
 
-        <div class="evtCtnsBox evt02" id="evt02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2245m_01.jpg" alt="" >
+        <div class="evtCtnsBox evt01" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="183128" data-sale-price="1250000" onClick=""/> <label for="y_pkg1">125 만원<br>0원 무제한 PASS</label></li>
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="183118" data-sale-price="890000" onClick=""/> <label for="y_pkg2">89 만원<br> 15개월 무제한 PASS</label></li>
-                    <li><input type="radio" id="y_pkg3" name="y_pkg" value="183117" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br> 9개월 개편 PASS</label></li>
-                    {{--<li><input type="radio" id="y_pkg4" name="y_pkg" value="182148" data-sale-price="550000" onClick=""/> <label for="y_pkg4">55 만원<br> 2021 PASS</label></li>--}}
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1100000" onClick=""/> <label for="y_pkg1">110 만원<br>0원 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="899000" onClick=""/> <label for="y_pkg2">89.9 만원<br> 14개월 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br> 9개월 개편 PASS</label></li>
+                    <li class="last"><input type="radio" id="y_pkg4" name="y_pkg" value="183767" data-sale-price="550000" onClick=""/> <label for="y_pkg4">34.9 만원<br> 2021 FINAL PASS</label></li>
                 </ul>
             </div>
-            <div class="ext02txt">
+            <div class="ext01txt">
                 <input type="checkbox" id="is_chk" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다.</label>
                 <ul>
                     <li>※ 강의공유, 콘텐츠 부정사용 적발 시,패스의 수강기간 갱신 및 환급이 불가합니다. </li>
@@ -162,140 +117,107 @@
                     <li>※ 재수강 & 환승쿠폰은 기간 갱신 가능 패스에는 적용되지 않습니다.</li>
                 </ul>
             </div>
-            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt02', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>
+            <div><a href="javascript:void(0);" onclick="goCartNDirectPay('evt01', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');">신광은경찰 PASS 신청하기 ></a></div>
         </div>
 
-        <div class="evtCtnsBox evt04">
-            <a href="https://police.willbes.net/support/qna/index" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_01_01.jpg" alt="재수강 쿠폰받기" ></a>
+        <div class="evtCtnsBox" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_02_01.jpg" alt="" >
+            <a href="https://police.willbes.net/m/support/qna/index/cate/3001?s_cate_code=3001&s_is_my_contents=1" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_02_02.jpg" alt="재수강 쿠폰받기" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_02_03.jpg" alt="환승 쿠폰받기" ></a>
         </div>
 
-        <div class="evtCtnsBox evt05">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_01_02.jpg" alt="환승 쿠폰받기" ></a>
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_03.jpg" alt="" >
         </div>
 
-        <div class="evtCtnsBox evt06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_02.jpg" alt="최정예 교수진" >
+        <div class="evtCtnsBox" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_04.jpg" alt="" >
         </div>
 
-        <div class="evtCtnsBox evt01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_02_00.jpg" alt="신광은경찰 PASS" >
-            <div class="slide_con">
-                <ul id="slidesImg1">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_02_01.jpg" alt="95점 쾌거"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_02_02.jpg" alt="상위 10% 성적달성"/></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_02_03.jpg" alt="꾸준한 고득점"/></li>
-                </ul>
-            </div>
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_05.jpg" alt="" >
         </div>
 
-        <div class="evtCtnsBox evt03">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03.jpg" alt="합격을 통한 검증한 기간" >
-            <div class="slide_con">
-                <ul id="slidesImg2">
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_01.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_02.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_03.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_04.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_05.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_06.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_07.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_08.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_09.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_10.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_11.jpg" alt="후기"/></a></li>
-                    <li><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_03_12.jpg" alt="후기"/></a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox evt07">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_01.jpg" alt="" >
-        </div>
-
-        <div class="evtCtnsBox evt08">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_02.jpg" alt="3법" >
-        </div>
-
-        <div class="evtCtnsBox">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_03.jpg" alt="3법 전문" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_04.jpg" alt="" >
+        <div class="evtCtnsBox" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_06_01.jpg" alt="" >
             <div class="youtubeCts video-container">
                 <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>
 
-        <div class="evtCtnsBox">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_05.jpg" alt="교수진" >
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_06_02.jpg" alt="" >
             <div class="youtubeCts video-container">
                 <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt09">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_06.jpg" alt="무제한 수강" >
+        <div class="evtCtnsBox" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_06_03.jpg" alt="" >
             <div class="youtubeCts video-container">
                 <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>        
 
-        <div class="evtCtnsBox evt09 mb100">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_04_07.jpg" alt="이국령" >
+        <div class="evtCtnsBox mb100" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_06_04.jpg" alt="" >
             <div class="youtubeCts video-container">
                 <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
         </div>
 
-        <div class="evtCtnsBox evt10">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_05.jpg" alt="커리큘럼" >
+        <div class="evtCtnsBox" data-aos="fade-right">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_07.jpg" alt="커리큘럼" >
         </div>
 
-        <div class="evtCtnsBox evt11">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_06.jpg" alt="한능검 특강" >
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_08.jpg" alt="한능검 특강" >
         </div>
 
-        <div class="evtCtnsBox evt12 wrap">
+        <div class="evtCtnsBox wrap" data-aos="fade-right">
             <form id="add_apply_form" name="add_apply_form">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2245m_07_01.jpg" alt="교재 신청하기" >
-                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 13.06%; top: 70.14%; width: 27.78%; height: 5.53%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 54.31%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 66.81%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법" style="position: absolute; left: 79.31%; top: 70.14%; width: 13.06%; height: 5.53%; z-index: 2;"></a>
-                {{--
-                <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰다운로드" style="position: absolute; left: 23.47%; top: 81.42%; width: 49.17%; height: 5%; z-index: 2;"></a>
-                --}}
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_09.jpg" alt="교재 신청하기" >
+                <a href="javascript:void(0);" title="교재 신청하기" onclick="fn_promotion_etc_submit();" style="position: absolute; left: 24.72%; top: 38.32%; width: 58.06%; height: 5.88%;  z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180566" title="경찰학" style="position: absolute; left: 9.44%; top: 61.85%; width: 22.78%; height: 5.71%;  z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180748" title="형사법" style="position: absolute; left: 9.44%; top: 67.65%; width: 22.78%; height: 5.71%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/m/lecture/show/cate/3001/pattern/free/prod-code/180567" title="헌법" style="position: absolute; left: 9.44%; top: 73.11%; width: 22.78%; height: 5.71%;  z-index: 2;"></a>
             </form>
         </div>
 
         <div class="content_guide_wrap" id="tab">
             <p class="guide_tit NSK-Thin">윌비스 <span class="NSK-Black">신광은 경찰 PASS</span> 이용안내 </p>
             <ul class="tabs">
-                <li><a href="#tab1">0원 무제한<br> PASS</a></li>
-                <li><a href="#tab2">15개월 무제한<br> PASS</a></li>
+                <li><a href="#tab1">2022 0원 <br> 무제한 PASS</a></li>
+                <li><a href="#tab2">14개월 무제한<br> PASS</a></li>
                 <li><a href="#tab3">9개월 개편<br> PASS</a></li>
-                {{--<li><a href="#tab4">2021 대비<br> PASS</a></li>--}}
+                <li><a href="#tab4">2021 FINAL<br> PASS</a></li>
             </ul>
 
             <div class="content_guide_box" id="tab1">
                 <dl>
                     <dt>
-                        <h3>0원 무제한 PASS </h3>
+                        <h3>2022 0원 무제한 PASS </h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>본 상품은 수강기간(12개월) 내 경찰 순경 시험 최종합격 시 수강료 전액 환급되는 상품입니다.</li>
-                            <li>본 상품은 일반경찰/경행경채, 기존과목/개편과목(일반경찰) 구분 없이 전 과정 수강 가능합니다.<br>
-                                * 수강가능 교수진 ><br>
-                                형사소송법/형사법/수사 : 신광은 교수님<br>
-                                경찰학개론/경찰학(개편)/행정법 : 장정훈 교수님<br>
-                                형법/헌법 : 김원욱 교수님 / 이국령 교수님<br>
-                                영어/G-TELP : 하승민/김현정/김준기 교수님<br>
-                                한국사/한능검 : 원유철/오태진 교수님<br>
-                                실용글쓰기 : 박우찬 교수님<br>
-                                *2022년 경행경채 대비 범죄학은 수강 불가합니다.
+                            <li>본 상품 강좌 구성은 다음과 같습니다.<br>
+                                - 2022년 대비 형사법, 경찰학, 헌법 전 강좌<br>
+                                - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>
+                                - 해당 상품은 일반공채 대비 상품으로 범죄학은 수강 불가합니다.<br>
+                                <div class="tx-blue">
+                                    * 형사소송법/형사법 : 신광은 교수님<br>
+                                    * 경찰학개론/경찰학(개편) : 장정훈 교수님<br>
+                                    * 형법 : 김원욱 교수님 / 신광은 교수님<br>
+                                    * 헌법 : 김원욱 교수님 / 이국령 교수님<br>
+                                    * G-TELP : 김준기 교수님<br>
+                                    * 한능검 : 오태진 교수님<br>
+                                    * 실용글쓰기 : 박우찬 교수님
+                                </div>
                             </li>
                             <li>신광은 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
@@ -304,14 +226,14 @@
                     </dd>
 
                     <dt>
-                        <h3>교재 및 교재포인트</h3>
+                        <h3>교재 및 포인트</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>신광은 경찰 PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌 별 교재는 강좌 소개 및 교재 구매 메뉴에서 별도 구매 가능합니다. </li>
                             <li>중도 환불 시 제공받은 입문서는 판매가 기준으로 차감 후 환불됩니다.</li>
-                            <li>교재 포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
-                            <li>교재 포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
+                            <li>포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
+                            <li>포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
                         </ol>
                     </dd>
 
@@ -386,7 +308,6 @@
                             <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다.
                                 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                            <li>온라인 모의고사는 무료로 제공되며, 학원에서 진행되는 일부 모의고사는 제공되지 않습니다.</li>
                             <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공 될 수 있습니다.</li>
                             <li>PASS 관련 발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 자동 회수 될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
                         </ol>
@@ -400,19 +321,24 @@
             <div class="content_guide_box" id="tab2">
                 <dl>
                     <dt>
-                        <h3>15개월 무제한 PASS</h3>
+                        <h3>14개월 무제한 PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 15개월간 수강 가능합니다.</li>
+                            <li>본 상품은 구매일로부터 14개월간 수강 가능합니다.</li>
                             <li>본 상품 강좌 구성은 다음과 같습니다.<br>
                                 - 2022년 대비 형사법, 경찰학, 헌법 전 강좌<br>
                                 - 2021년 대비 형사소송법, 경찰학개론, 형법 전 강좌<br>
                                 - 해당 상품은 일반공채 대비 상품으로 범죄학은 수강 불가합니다.<br>
-                                * 수강가능 교수진 ><br>
-                                형사법/형사소송법 : 신광은 교수님<br>
-                                경찰학(개편)/경찰학개론 : 장정훈 교수님<br>
-                                형법/헌법 : 김원욱 교수님 / 이국령 교수님<br>
+                                <div class="tx-blue">
+                                    * 형사소송법/형사법 : 신광은 교수님<br>
+                                    * 경찰학개론/경찰학(개편) : 장정훈 교수님<br>
+                                    * 형법 : 김원욱 교수님 / 신광은 교수님<br>
+                                    * 헌법 : 김원욱 교수님 / 이국령 교수님<br>
+                                    * G-TELP : 김준기 교수님<br>
+                                    * 한능검 : 오태진 교수님<br>
+                                    * 실용글쓰기 : 박우찬 교수님
+                                </div>
                             </li>
                             <li>선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 무제한 수강할 수 있습니다.</li>
                             <li>신광은 경찰 PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
@@ -421,14 +347,14 @@
                     </dd>
 
                     <dt>
-                        <h3>교재 및 교재포인트</h3>
+                        <h3>교재 및 포인트</h3>
                     </dt>
                     <dd>
                         <ol>
                             <li>신광은 경찰 PASS 수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌 별 교재는 강좌 소개 및 교재 구매 메뉴에서 별도 구매 가능합니다. </li>
                             <li>중도 환불 시 제공받은 입문서는 판매가 기준으로 차감 후 환불됩니다.</li>
-                            <li>교재 포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
-                            <li>교재 포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
+                            <li>포인트가 포함된 상품을 구매할 경우 결제 완료되는 즉시 포인트가 지급됩니다.</li>
+                            <li>포인트는 구매일로부터 1년 동안 사용 가능하며, 1년이 지날 경우 자동 소멸됩니다.</li>
                         </ol>
                     </dd>
 
@@ -441,7 +367,7 @@
                             <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
                             <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
                             <li>고객 변심으로 인한 환불은 수강 시작일 (당일 포함)로부터 7일이 경과되면, 신광은 경찰PASS 결제가 기준으로 계산하여 사용일 수만큼 차감 후 환불됩니다. (단, 가산점 특강, 온라인 모의고사 등 이용 시에도 차감)</li>
-                            <li>이벤트로 제공되는 수강기간은 정규 수강기간이 아니며, 정규 수강기간(15개월)이 지나면 환불이 불가합니다.</li>
+                            <li>이벤트로 제공되는 수강기간은 정규 수강기간이 아니며, 정규 수강기간(14개월)이 지나면 환불이 불가합니다.</li>
                             <li>중도 환불 시 제공받은 입문서는 판매가 기준으로 차감 후 환불됩니다.</li>
                         </ol>
                     </dd>
@@ -473,7 +399,6 @@
                             <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다.
                                 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                            <li>온라인 모의고사는 무료로 제공되며, 학원에서 진행되는 일부 모의고사는 제공되지 않습니다.</li>
                             <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공 될 수 있습니다.</li>
                             <li>PASS 관련 발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 자동 회수 될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
                         </ol>
@@ -511,7 +436,7 @@
                     </dd>
 
                     <dt>
-                        <h3>교재 및 교재포인트</h3>
+                        <h3>교재 및 포인트</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -559,7 +484,6 @@
                             <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.(재수강/환승 및 이벤트진행시 제외)</li>
                             <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                            <li>온라인 모의고사는 무료로 제공되며, 학원에서 진행되는 일부 모의고사는 제공되지 않습니다.</li>
                             <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공 될 수 있습니다.</li>
                             <li>PASS 관련 발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 자동 회수 될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
                         </ol>
@@ -570,24 +494,26 @@
                     </dd>
                 </dl>
             </div>
-            {{--
+
             <div class="content_guide_box" id="tab4">
                 <dl>
                     <dt>
-                        <h3>2021년 대비 PASS</h3>
+                        <h3>2021년 FINAL PASS</h3>
                     </dt>
                     <dd>
                         <ol>
-                            <li>본 상품은 구매일로부터 21년 2차 시험일 8/21까지 수강 가능한 상품입니다.</li>
-                            <li>본 상품은 일반경찰/경행경채 구분 없이 전 직렬 수강 가능합니다.<br>
-                                * 수강가능 교수진 ><br>
-                                형사소송법/수시 : 신광은 교수님<br>
-                                경찰학개론 : 장정훈 교수님,<br>
-                                형법 : 김원욱 교수님,<br>
-                                영어 : 하승민/김현정/김준기 교수님,<br>
-                                한국사 : 원유철/오태진 교수님
+                            <li>상품은 구매일로부터 21년 2차 시험일 8/21까지 수강 가능한 상품입니다.</li>
+                            <li>본 상품 강좌 구성은 다음과 같습니다.<br>
+                                - 2021년 2차 대비 기본이론, 심화과정, 문제풀이 1,2,3단계, 마무리특강<br>
+                                <div class="tx-blue">
+                                    * 형사소송법/수사 : 신광은 교수님<br>
+                                    * 경찰학개론/행정법 : 장정훈 교수님<br>
+                                    * 형법 : 김원욱 교수님<br>
+                                    * 영어 : 하승민/김현정 교수님<br>
+                                    * 한국사 : 원유철/오태진 교수님
+                                </div>
                             </li>
-                            <li>선택한 신광은경찰PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강 할 수 있습니다.</li>
+                            <li>선택한 신광은 경찰 PASS 상품의 표기된 기간 동안 동영상 강좌를 2배수 수강할 수 있습니다.</li>
                             <li>각 강좌 별 2배수 수강 후에는 추가 수강이 불가합니다. (<a href="https://police.willbes.net/support/notice/show/cate/3001?board_idx=250648" target="_blank" class="tx-blue">배수제한 공지 자세히 보기 ></a>)</li>
                             <li>신광은 경찰PASS 강좌는 결제 완료되는 즉시 수강이 시작됩니다. (결제완료자에 한함)</li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
@@ -595,7 +521,7 @@
                     </dd>
 
                     <dt>
-                        <h3>교재 및 교재포인트</h3>
+                        <h3>교재 및 포인트</h3>
                     </dt>
                     <dd>
                         <ol>
@@ -641,7 +567,6 @@
                             <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.(재수강/환승 및 이벤트진행시 제외)</li>
                             <li>신광은경찰PASS 강좌 (부가 서비스 등) 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
                             <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 PASS 강좌는 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                            <li>온라인 모의고사는 무료로 제공되며, 학원에서 진행되는 일부 모의고사는 제공되지 않습니다.</li>
                             <li>온,오프라인 동시 시행되는 이벤트, 무료특강 등의 경우 해당 강좌는 PASS에 미지급 되거나, 이벤트 종료 후 제공 될 수 있습니다.</li>
                             <li>PASS 관련 발급 된 쿠폰은 이벤트가 변경되거나 종료 될 경우 자동 회수 될 수 있으며, 동일 혜택이 적용되지 않을 수 있습니다.</li>
                         </ol>
@@ -651,14 +576,20 @@
                     </dd>
                 </dl>
             </div>
-            --}}
+
         </div>
     </div>
 
     <!-- End Container -->
-    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <link rel="stylesheet" href="/public/vendor/jquery/bxslider/jquery.bxslider.min.css">
-    <script src="/public/vendor/jquery/bxslider/jquery.bxslider.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
+
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
 
@@ -778,38 +709,6 @@
             if(apply_msg == '') apply_msg = ret_msg;
             return apply_msg;
         }
-
-        $(document).ready(function() {
-            var slidesImg1 = $("#slidesImg1").bxSlider({
-                auto: true,
-                speed: 500,
-                pause: 4000,
-                mode:'fade',
-                autoControls: false,
-                controls:false,
-                pager:true,
-            });
-
-            var slidesImg1 = $("#slidesImg2").bxSlider({
-                auto: true,
-                speed: 500,
-                pause: 4000,
-                mode:'horizontal',
-                autoControls: false,
-                controls:false,
-                pager:true,
-            });
-
-            var slidesImg1 = $("#slidesImg3").bxSlider({
-                auto: true,
-                speed: 500,
-                pause: 4000,
-                mode:'horizontal',
-                autoControls: false,
-                controls:false,
-                pager:true,
-            });
-        });
 
         /*tab*/
         $(document).ready(function(){

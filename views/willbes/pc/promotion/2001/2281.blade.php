@@ -197,8 +197,8 @@
                 </div>  
                 
                 <div class="final" id="finalPass">
-                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
-                    <label for="y_pkg_all">
+                    <input type="radio" id="y_pkg4" name="y_pkg" value="183767" />
+                    <label for="y_pkg4">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 
@@ -302,22 +302,22 @@
                     <div class="priceBox">
                         <div>
                             <strong>125</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1250000"/> <label for="y_pkg1">0원 무제한 PASS</label>
+                            <input type="radio" id="y_pkg5" name="y_pkg" value="183758" data-sale-price="1250000"/> <label for="y_pkg5">0원 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>89</strong>만원<br>
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="890000"/> <label for="y_pkg2">15개월 무제한 PASS</label>
+                            <input type="radio" id="y_pkg6" name="y_pkg" value="183760" data-sale-price="890000"/> <label for="y_pkg6">15개월 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>69.9</strong>만원<br>
-                            <input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg3">9개월 개편 PASS</label>
+                            <input type="radio" id="y_pkg7" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg7">9개월 개편 PASS</label>
                         </div>                        
                     </div>       
                 </div>  
                 
                 <div class="final">
-                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
-                    <label for="y_pkg_all">
+                    <input type="radio" id="y_pkg8" name="y_pkg" value="183767" />
+                    <label for="y_pkg8">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 

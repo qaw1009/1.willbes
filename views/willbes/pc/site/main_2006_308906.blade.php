@@ -8,17 +8,17 @@
 
         <!-- 타이머 -->
         <div id="newTopDday" class="newTopDday">
-            <div>
+            <div class="d_day NSK">
                 <ul>
                     <li>
-                       21년 제3회 필기 시험<br>2021-10-02(토)
+                        21년 제3회 필기 시험<br>2021-10-02(토)                                      
                     </li>
-                    <li class="timer_d">D-
-                    <li class="first"><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                    <li><img id="dd2" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>
-                </ul>
+                    <li>
+                        <p class="NSK-Black">D-93 <span></span></p>  
+                    </li>
+                </ul>              
             </div>
-        </div>  
+        </div>    
 
         <div class="Section mt30 article1">
             <div class="widthAuto">

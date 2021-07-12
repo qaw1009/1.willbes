@@ -188,13 +188,9 @@ br { font-family:dotum;}
 .job .youtube iframe {width:860px; height:450px} 
 
 /*타이머*/
-.job .newTopDday {clear:both;background:#fff; width:100%; padding:20px 0; font-size:24px;padding-left:460px;line-height:34px;}
+.job .newTopDday {clear:both;background:#fff; width:100%; padding:20px 0;padding-left:700px;}
 .job .newTopDday ul {width:1120px; margin:0 auto}
-.job .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
-.job .newTopDday ul li strong {line-height:70px}
-.job .newTopDday ul li img {width:50px}
-.job .newTopDday ul li:first-child {line-height:none; padding-right:10px; padding-top:10px; width:28%;font-weight:900;}
-.job .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
-.job .newTopDday .timer_d {font-size:72px;line-height:78px;color:#da0000;font-weight:900;}
-.job .newTopDday .first {padding-top:7px;}
+.job .newTopDday ul li {display:inline; float:left; margin-right:50px; text-align:center;line-height:34px;color:#000;}
+.job .newTopDday .d_day {font-size:24px;line-height:1.5;text-align:center;padding-top:30px;}
+.job .newTopDday .d_day p {color:#da0000;font-size:72px;line-height:58px;}
 .job .newTopDday ul:after {content:""; display:block; clear:both}

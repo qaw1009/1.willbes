@@ -161,16 +161,20 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt00" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="경찰학원부분 1위"/>
+        <div class="evtCtnsBox evt00">
+            <div data-aos="fade-left">
+                <img src="https://static.willbes.net/public/images/promotion/2020/10/wb_police.jpg"  alt="경찰학원부분 1위"/>
+            </div>
         </div>
 
-        <div class="evtCtnsBox evtTop" id="main" data-aos="fade-right">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_top.jpg" title="0원 패스" />
+        <div class="evtCtnsBox evtTop" id="main">
+            <div data-aos="fade-right">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_top.jpg" title="0원 패스" />
+            </div>
         </div>
 
-        <div class="evtCtnsBox evt01" id="pass" data-aos="fade-left">
-            <div class="passLecBuy">
+        <div class="evtCtnsBox evt01" id="pass">
+            <div class="passLecBuy" data-aos="fade-left">
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_01.jpg"  alt="신광은경찰PASS">
                 </div>
@@ -224,44 +228,56 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt02" data-aos="fade-right">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_02.jpg"  alt="후기" />
+        <div class="evtCtnsBox evt02">  
+            <div data-aos="fade-right">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_02.jpg"  alt="후기" />
+            </div>
         </div>
          
-        <div class="evtCtnsBox evt03" data-aos="fade-left">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_03.jpg"  alt="합격할수 없는 이유"/>           
+        <div class="evtCtnsBox evt03">
+            <div data-aos="fade-left">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_03.jpg"  alt="합격할수 없는 이유"/>    
+            </div>       
         </div>        
 
-        <div class="evtCtnsBox evt04" data-aos="fade-right">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_04.jpg"  alt="전문교수진" />
-        </div>
-
-        <div class="evtCtnsBox evt05" data-aos="fade-left">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_05.jpg"  alt="믿고 듣는 신광은 경찰팀" />
-            <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="youtube yu02">
-                <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="youtube yu03">
-                <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>	
-            <div class="youtube yu04">
-                <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="evtCtnsBox evt04">  
+            <div data-aos="fade-right">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_04.jpg"  alt="전문교수진" />
             </div>
         </div>
 
-        <div class="evtCtnsBox evt06" data-aos="fade-right">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_06.jpg"  alt="reason2" />
+        <div class="evtCtnsBox evt05">
+            <div data-aos="fade-left">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_05.jpg"  alt="믿고 듣는 신광은 경찰팀" />
+                <div class="youtube">
+                    <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="youtube yu02">
+                    <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="youtube yu03">
+                    <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>	
+                <div class="youtube yu04">
+                    <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>  
         </div>
 
-        <div class="evtCtnsBox evt07" data-aos="fade-left">  
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_07.jpg"  alt="reason3" />
+        <div class="evtCtnsBox evt06">  
+            <div data-aos="fade-right">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_06.jpg"  alt="reason2" />
+            </div>
         </div>
 
-        <div class="evtCtnsBox evt08" id="evt08" data-aos="fade-right">
-            <form id="add_apply_form" name="add_apply_form">
+        <div class="evtCtnsBox evt07"> 
+            <div data-aos="fade-left"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_07.jpg"  alt="reason3" />
+            </div>
+        </div>
+
+        <div class="evtCtnsBox evt08" id="evt08">
+            <form id="add_apply_form" name="add_apply_form"  data-aos="fade-right">
                 {!! csrf_field() !!}
                 {!! method_field('POST') !!}
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
@@ -276,8 +292,8 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-left">
-            <div class="passLecBuy">
+        <div class="evtCtnsBox evt01">
+            <div class="passLecBuy" data-aos="fade-left">
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_01.jpg"  alt="신광은경찰PASS">
                 </div>

@@ -1,5 +1,3 @@
-var bcheckVersion = false;
-
 
 function ezPDFSecData(opt)
 {
@@ -184,14 +182,14 @@ var ezPDFWSPrinter = new function() {
 
 	this._moduleprint = false;
 
-	this._module = "reader";
+	this._module = "ezPDFReaderWillbes";
 	//this._version = "3.1.0.69";
 	//this._key = "0E7F67724DD1BB66A7992D13654DCF0A";
-	this._version = "3.1.0.80";
+	this._version = "3.1.0.79";
 	this._key = "264D4533FD0B86E030C115888647F3A3";
 	this._id = "";
 
-	this._printmodule = "print";
+	this._printmodule = "ezPDFPrintExWillbes";
 	this._printkey = "5B3F9DCC5E6EAF4660C9100A08AEA161";
 	this._printid = "";
 
@@ -363,7 +361,7 @@ ezPDFWFLauncher.prototype.Connect = function(){
 			if(this._debug == 1)
 				alert("_webSocket.onopen");
 
-			setTimeout(CheckVersion, 30);
+			setTimeout(CheckVersion, 5000);
 		};
 
 		this._webSocket.onclose = function(e) {
@@ -409,7 +407,7 @@ ezPDFWFLauncher.prototype.Connect = function(){
 		};
 
 	}else{
-		setTimeout(CheckVersion, 30);
+		setTimeout(CheckVersion, 5000);
 	}
 
 	if(this._debug == 1)
@@ -579,10 +577,6 @@ ezPDFWFLauncher.prototype.Send = function(input){
 };
 
 ezPDFWFLauncher.prototype.Launch = function(print){
-	if (!bcheckVersion) {
-        //alert("업데이트");
-        return;
-    }
 	if(this._debug == 1)
 		alert("ezPDFWFLauncher.Launch called");
 
@@ -751,10 +745,6 @@ function SetCheckVersion(code) {
 		//location.href = ezpdf._ezpdfmodule._installPage;
 		location.href = "https://static.willbes.net/public/uploads/ezpdf/ezPDFReaderInstall.html";
         //location.href = "/html/user/ezPDFSetupNonax.html";
-		
-	}
-	else {
-        bcheckVersion = true;
 	}
 };
 

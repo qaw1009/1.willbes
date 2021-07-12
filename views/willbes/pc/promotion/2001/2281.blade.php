@@ -197,8 +197,8 @@
                 </div>  
                 
                 <div class="final" id="finalPass">
-                    <input type="radio" id="f_pass" name="f_pass" value="183767" />
-                    <label for="f_pass">
+                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
+                    <label for="y_pkg_all">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 
@@ -316,8 +316,8 @@
                 </div>  
                 
                 <div class="final">
-                    <input type="radio" id="f_pass" name="f_pass" value="183767" />
-                    <label for="f_pass">
+                    <input type="radio" id="y_pkg_all" name="y_pkg" value="183767" />
+                    <label for="y_pkg_all">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
                 </div> 
@@ -753,15 +753,6 @@
 
     <script type="text/javascript">
         var $regi_form = $('#regi_form');
-
-        $(document).ready(function() {
-            {{-- PASS 결제금액 --}}
-            $("input[name='y_pkg']").on("change",function (){
-                var sale_price = $(this).data('sale-price');
-                $(".total_price").html(0);
-                $(this).parents(".passLecBuy").find('.total_price').html(addComma(sale_price));
-            });
-        });
 
         /*tab*/
         $(document).ready(function(){

@@ -1203,7 +1203,18 @@
             $("#CourseIdx").chained("#site_code");
             $("#SubjectIdx").chained("#site_code");
 
+            {{-- TODO 임용일경우 디폴트값 변경--}}
+            $("#site_code").change(function() {
+                if($regi_form.find('input[name="_method"]').val() === 'POST' && ($(this).val() === '2017' || $(this).val() === '2018')) {
+                    $regi_form.find('input[name="IsCoupon"]:input[value="N"]').iCheck('check');
+                    $regi_form.find('input[name="IsPoint"]:input[value="N"]').iCheck('check');
+                    $regi_form.find('input[name="IsRetake"]:input[value="N"]').iCheck('check');
+                    $regi_form.find('input[name="PcProvisionCcd"]:input[value="609002"]').iCheck('check');
+                    $regi_form.find('input[name="MobileProvisionCcd"]:input[value="609002"]').iCheck('check');
+                }
+            });
 
+            
             //강사료정산 교수정보 추출
             $("#searchProfessor").on('click', function(){
 

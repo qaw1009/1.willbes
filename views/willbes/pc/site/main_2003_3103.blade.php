@@ -13,10 +13,6 @@
             </div>
         </div>
 
-{{--        <div class="evt_00">--}}
-{{--            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>--}}
-{{--        </div>--}}
-
         <div class="Section gosi-Sec NSK">
             <div class="gosi-bntop">
                 <div id="TechRollingSlider" class="GositabBox">
@@ -61,7 +57,7 @@
             </div>
         @endif
 
-        <div class="youtube">
+        <div class="youtubeBox">
             <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 

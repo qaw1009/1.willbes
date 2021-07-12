@@ -184,15 +184,15 @@ br { font-family:dotum;}
 .job .article5 .wrap {width:1120px; margin:0 auto; position:relative}
 .job .article6 .wrap {width:1120px; margin:0 auto; position:relative}
 .job .article6 {position:relative;}
-.youtube {position:absolute; top:50px; left:50%;z-index:1;margin-left:-400px}
-.youtube iframe {width:860px; height:450px} 
+.job .youtube {position:absolute; top:50px; left:50%;z-index:1;margin-left:-400px}
+.job .youtube iframe {width:860px; height:450px} 
 
 /*타이머*/
-.newTopDday {clear:both;background:#fff; width:100%; padding:20px 0; font-size:26px;}
-.newTopDday ul {width:1120px; margin:0 auto}
-.newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
-.newTopDday ul li strong {line-height:70px}
-.newTopDday ul li img {width:50px}
-.newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
-.newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
-.newTopDday ul:after {content:""; display:block; clear:both}
+.job .newTopDday {clear:both;background:#fff; width:100%; padding:20px 0; font-size:26px;}
+.job .newTopDday ul {width:1120px; margin:0 auto}
+.job .newTopDday ul li {display:inline; float:left; margin-right:5px; text-align:center; font-weight:600; color:#000}
+.job .newTopDday ul li strong {line-height:70px}
+.job .newTopDday ul li img {width:50px}
+.job .newTopDday ul li:first-child {line-height:none; text-align:right; padding-right:10px; padding-top:10px; width:28%}
+.job .newTopDday ul li:last-child {line-height:none; text-align:left; padding-left:10px; padding-top:5px; width:24%; line-height:70px}
+.job .newTopDday ul:after {content:""; display:block; clear:both}

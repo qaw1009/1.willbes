@@ -166,9 +166,9 @@
                 <div class="youtube_divide">             
                     <div class="preview_area">
                         <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/YitlBdAbtxU?rel=0"></iframe>
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://youtube.com/embed/HuXGXkO_mLM"></iframe>
                         </div>
-                        <h2 class="avi_title">영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</h2>
+                        <h2 class="avi_title">한덕현 영어 - 제니스 영어 합격 커리큘럼!</h2>
                     </div>
                     <div class="preview_list_area">
                         <div class="preview_list">
@@ -177,6 +177,26 @@
                                 <li class="on">
                                     <a href="#tab1" class="active">
                                         <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_thumbnail01.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>한덕현 영어 - 제니스 영어 합격 커리큘럼!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab2">
+                                        <span class="num_box" data-num="2">2</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_thumbnail02.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>행정법 마스터! 신기훈 노량진 착륙😆</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
                                         <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail01.jpg" alt=""></div>
                                         <div class="text_box">
                                             <p>영어 한덕현 ONE DAY OX특강 - those가 사람들로 쓰일 때</p>
@@ -185,31 +205,11 @@
                                 </li>
 
                                 <li class="">
-                                    <a href="#tab2">
-                                        <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail02.png" alt=""></div>
-                                        <div class="text_box">
-                                            <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab3">
-                                        <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail03.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
                                     <a href="#tab4">
                                         <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail04.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail02.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>한국사 오태진 - 공무원 최적의 합격방법 여기 다있다!</p>
+                                            <p>한덕현 영어 2020년6월13일 지방직 해설강의</p>
                                         </div>
                                     </a>
                                 </li>
@@ -217,9 +217,9 @@
                                 <li class="">
                                     <a href="#tab5">
                                         <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail05.jpg" alt=""></div>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_thumbnail03.jpg" alt=""></div>
                                         <div class="text_box">
-                                            <p>2019 국가직 7급 한국사 해설특강｜대각국사 오태진</p>
+                                            <p>김덕관 행정학 2021.04.17 국가직 9급 기출 해설</p>
                                         </div>
                                     </a>
                                 </li>                             
@@ -466,11 +466,11 @@
         ); 
         
         //유툽
-        var tab1_url = "https://www.youtube.com/embed/YitlBdAbtxU?rel=0";
-        var tab2_url = "https://www.youtube.com/embed/swRWKKnOk8c?rel=0";  
-        var tab3_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";
-        var tab4_url = "https://www.youtube.com/embed/mTD8xSVV0zs?rel=0";  
-        var tab5_url = "https://www.youtube.com/embed/HGybJR9Rvpg?rel=0";    
+        var tab1_url = "https://youtube.com/embed/HuXGXkO_mLM";
+        var tab2_url = "https://youtube.com/embed/nQFyta6T3SM ";  
+        var tab3_url = "https://www.youtube.com/embed/YitlBdAbtxU?rel=0";
+        var tab4_url = "https://www.youtube.com/embed/swRWKKnOk8c?rel=0";  
+        var tab5_url = "https://www.youtube.com/embed/IIokG25Sssg?rel=0";    
         
         $(function() {
             $(".preview_list ul li a").click(function(){

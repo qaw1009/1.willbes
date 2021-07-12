@@ -129,7 +129,7 @@
             <a href="#finalPass">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_sky02.jpg" alt="파이널 패스">
             </a>
-            <a href="#evt08">
+            <a href="#transfer">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_sky03.jpg" alt="타학원환승 재수강 할인 받기">
             </a>  
         </div>
@@ -210,7 +210,7 @@
                     </p>
                 </div>
 
-                <div class="wrap mt40">               
+                <div class="wrap mt40" id="transfer">               
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_03.jpg"  alt="재수강, 환승">
                     <a href="https://www.willbes.net/classroom/qna/index" target="_blank" title="재수강 쿠폰받기" style="position: absolute; left: 42.32%; top: 54.22%; width: 11.79%; height: 18.07%;  z-index: 2;"></a>
                     <a href="https://police.willbes.net/promotion/index/cate/3001/code/1139" target="_blank" title="환승 쿠폰받기" style="position: absolute; left: 75.8%; top: 54.22%; width: 11.79%; height: 18.07%;  z-index: 2;"></a>

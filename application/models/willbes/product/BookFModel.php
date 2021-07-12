@@ -234,6 +234,7 @@ class BookFModel extends ProductFModel
         ]);
 
         // TODO : 네이버페이 심사 (유아/어린이 카테고리 상품만 노출)
+        // TODO : 네이버카테고리 코드 수정 2021.07.12 : 50006391 ->  50005992
         //$arr_condition['LKR']['A.CateCode'] = '3133';
         $cur_url = config_app('SiteUrl');
         $column = 'A.ProdCode as id, A.ProdName as title, A.rwRealSalePrice as price_pc, A.rwRealSalePrice as price_mobile, A.rwSalePrice as normal_price
@@ -243,7 +244,7 @@ class BookFModel extends ProductFModel
                         ,A.ProdCateName as category_name1
                         ,null as category_name2
                         ,null as category_name3
-                        ,\'50006391\' as naver_category
+                        ,\'50005992\' as naver_category
                         ,\'신상품\' as \'condition\'
                         ,A.wAuthorNames as brand
                         ,A.wPublName as maker

@@ -79,24 +79,7 @@
                 </div>
             </div>  
         </div>
-
-        <div class="Section mt90 NSK">
-            <div class="widthAuto">
-                <div class="willbesNews">
-                    {{-- board include --}}
-                    @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
-                </div>
-                <!--willbesNews //-->
-            </div>
-        </div>
-
-        <div class="Section mt70 mb90 NSK">
-            <div class="widthAuto">
-                {{-- cscenter --}}
-                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
-            </div>
-        </div>
-        <!-- CS센터 //-->
+        
     </div>
      <!-- End Container -->
 

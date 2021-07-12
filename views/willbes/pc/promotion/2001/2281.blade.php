@@ -323,7 +323,7 @@
                 </div> 
 
                 <div class="check">
-                    <input type="checkbox" id="is_chk1" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
+                    <input type="checkbox" id="is_chk2" name="is_chk" value="Y"/> <label for="is_chk">페이지 하단 신광은 경찰 PASS 이용안내를 모두 확인하였고, 이에 동의합니다. </label>
                     <a href="javascript:goDesc('tab1')">이용안내확인하기 ↓</a>
                     <p>
                         ※ 강의공유, 콘텐츠 부정사용 적발 시, 패스의 수강기간 갱신이 불가합니다.<br>
@@ -340,7 +340,7 @@
                 </div>
 
                 <div class="totalPrice NSK-Black">
-                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1');">
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
                         신청하기 >
                     </a>
                 </div>  

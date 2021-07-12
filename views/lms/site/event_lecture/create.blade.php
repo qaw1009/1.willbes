@@ -1154,7 +1154,7 @@
                 }
 
                 // 강사이모티콘 입력 체크
-                if($("#comment_emoticon_wrap").hasClass("hide") !== true){
+                if($("#comment_emoticon_wrap").hasClass("hide") !== true && !$.trim($("input[name='comment_emoticon_images']").val())){
                     alert('강사이모티콘 이미지명을 입력해주세요.');
                     $("input[name='comment_emoticon_images']").focus();
                     return false;

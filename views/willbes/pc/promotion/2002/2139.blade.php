@@ -16,7 +16,10 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
         /************************************************************/      
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/07/2139_top_bg.jpg) no-repeat center top;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/07/2139_top_bg_n1.jpg) no-repeat center top; position: relative;}
+        .evtTop .NSK{font-size:36px; color:#fff8ff; position: absolute; bottom:0; left:50%; margin-left:-560px; letter-spacing:-1px;max-width:1120px; width:100%; text-align:center;}
+        .downWrap{background-color:#45c7e5;}
+        .downWrap .btns{position: relative; width:1120px; margin:0 auto;}
 
         .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto}
         .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}
@@ -79,8 +82,19 @@
     <div class="evtContent NSK" id="evtContainer">
         
         <div class="evtCtnsBox evtTop">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_top.jpg"  alt="사립탐정사"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_top_n1.jpg"  alt="사립탐정사"/>
+            <div class="NSK">사립탐정사 시험 필수 자료</div>
         </div> 
+
+        <div class="evtCtnsBox downWrap">
+            <div class="btns">  
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_down_btns.jpg"  alt="pdf 파일 다운"/>
+                <a title="형사법" style="position: absolute; left: 20.18%; top: 27.41%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"></a>
+                <a title="탐정윤리" style="position: absolute; left: 65.98%; top: 27.1%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif"></a>
+                <a title="헌법" style="position: absolute; left: 20.18%; top: 53.27%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif"></a>
+                <a title="탐정관계법" style="position: absolute; left: 65.98%; top: 53.58%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif"></a>
+            </div>            
+        </div>
 
         <div class="evtCtnsBox youtube">
             <div class="NSK-Black">사립탐정사를 영상으로 먼저 만나보세요~!!</div>

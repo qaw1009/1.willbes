@@ -7,6 +7,7 @@ Class Lecture extends CommonLecture
 {
     protected $prodtypeccd = '636001';  //온라인강좌
     protected $learnpatternccd = '615001'; //단강좌
+    private $_canwe_code = 'SP,SP:j1,SP:j2,SP:j3,SP:j4,P,P:j1,P:j2,P:j3,P:j4,PCR,PCR:j1,PCR:j2,PCR:j3,PCR:j4';
 
     public function __construct()
     {
@@ -304,6 +305,12 @@ Class Lecture extends CommonLecture
                 ['field'=>'ProdCode','label'=>'상품코드', 'rules'=>'trim|required'],
             ]);
             $method='modify';
+        }
+
+        if ($this->_reqP('ExternalCorpCcd') == '696001') {
+            $rules = array_merge($rules,[
+                ['field' => 'ExternalLinkCode', 'label' => '연동코드', 'rules' => 'required|in_list['.$this->_canwe_code.']']
+            ]);
         }
 
         if($this->validate($rules) === false) {

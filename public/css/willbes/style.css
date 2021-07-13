@@ -8778,6 +8778,38 @@ ul li.profList .willbes-Layer-ProfileBox {
 .ActIndex.MyInfo .will-Tit {
 	margin-top: -30px;
 }
+
+.MyInfo .testBtn {
+	position: absolute;
+	top:-50px; right:0;
+}
+.MyInfo .testBtn a {
+	display: inline-block;
+	padding:10px 20px;
+	background-color: #000; color:#fff;
+	font-size:14px;
+	border-radius: 30px;
+}
+.MyInfo .testBtn strong {
+	font-weight: bold; color:#31a9ec
+}
+.MyInfo .testBtn span {
+	vertical-align: top;
+	background-color: #31a9ec; color:#000;
+	margin-left:5px;
+	border-radius: 5px;
+	padding:0 5px
+}
+.MyInfo .testBtn a:hover {
+	box-shadow:0 5px 5px rgba(0,0,0,.3);
+}
+.aptitudeBox {margin-top: 20px; border-top:1px dotted #ccc; padding:20px; text-align: center}
+.aptitudeBox input {width:20px; height:20px}
+.aptitudeBox a {display: block; width:50%; margin:20px auto; font-size:14px; background-color: #000; color:#31a9ec; padding:15px; border-radius: 25px}
+.aptitudeBox a:hover {
+	box-shadow:0 5px 5px rgba(0,0,0,.3);
+}
+
 .oldMypage {
 	position: absolute;
 	left: 50%;

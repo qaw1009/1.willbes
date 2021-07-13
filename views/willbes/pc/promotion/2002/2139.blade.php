@@ -20,6 +20,7 @@
         .evtTop .NSK{font-size:36px; color:#fff8ff; position: absolute; bottom:0; left:50%; margin-left:-560px; letter-spacing:-1px;max-width:1120px; width:100%; text-align:center;}
         .downWrap{background-color:#45c7e5;}
         .downWrap .btns{position: relative; width:1120px; margin:0 auto;}
+        .downWrap .btns a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
         .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto}
         .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}

@@ -98,7 +98,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_top.jpg" alt="신광은경찰 PASS" >
         </div>
 
-        <div class="evtCtnsBox evt01" data-aos="fade-left">
+        <div class="evtCtnsBox evt01" data-aos="fade-left" id="evt01">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2281m_01.jpg" alt="" >
             <div class="price">
                 <ul>

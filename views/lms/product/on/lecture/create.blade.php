@@ -1031,21 +1031,73 @@
                             &nbsp; <input type="radio" name="IsOpenwUnitNum" class="flat" value="N" title="회차노출여부" @if($method == 'POST' || $data['IsOpenwUnitNum']=='N')checked="checked"@endif/> 숨김
                         </div>
                     </div>
-                    <label class="control-label col-md-2">외부수강업체연동
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="ExternalCorpCcd">외부수강업체연동
                     </label>
-                    <div class="col-md-4 form-inline item" >
+                    <div class="col-md-10 form-inline">
                         <div class="item inline-block">
                             <select name="ExternalCorpCcd" id="ExternalCorpCcd"  class="form-control" title="외부수강업체">
-                                    <option value="">외부수강업체</option>
+                                <option value="">외부수강업체</option>
                                 @foreach($extcorp_ccd as $key => $val)
                                     <option value="{{$key}}" @if($data['ExternalCorpCcd'] == $key) selected="selected" @endif>{{$val}}</option>
                                 @endforeach
                             </select>
-                            &nbsp;
-                            [연동코드] <input type="text" name="ExternalLinkCode" id="ExternalLinkCode" class="form-control" title="외부업체 사용 코드" style="width: 150px" value="{{$data['ExternalLinkCode']}}">
+                            [연동코드] <input type="text" name="ExternalLinkCode" id="ExternalLinkCode" class="form-control" title="외부업체 사용 코드" style="width: 150px" value="{{$data['ExternalLinkCode']}}" data-casei="{{ (empty($data['ExternalCorpCcd']) === false && $data['ExternalCorpCcd'] == '696001' ? explode(':',$data['ExternalLinkCode'])[0] : '') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="external_canwe_exam" style="display: none">
+                        <div class="col-md-10 col-lg-offset-2 form-inline">
+                            <span class="btn" id="btn_canwe_code">• [한국인재개발진흥원 연동 코드 선택]</span>
+                        </div>
+                        <div class="col-md-10 col-lg-offset-2 form-inline mt-5" id="canwe_code_table" style="display: none">
+                            <div class="col-md-2 form-inline">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="bg-white-gray">
+                                    <tr>
+                                        <td>인성종류</td>
+                                        <td>코드</td>
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>인성Lite</td>
+                                        <td class="btn-canwe-casei" data-casei="SP" style="cursor: pointer"><u class="blue">SP</u></td>
+                                    </tr>
+                                    <tr>
+                                        <td>인성</td>
+                                        <td class="btn-canwe-casei" data-casei="P" style="cursor: pointer"><u class="blue">P</u></td>
+                                    </tr>
+                                    <tr>
+                                        <td>인성역량검사</td>
+                                        <td class="btn-canwe-casei" data-casei="PCR" style="cursor: pointer"><u class="blue">PCR</u></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-2 form-inline">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="bg-white-gray">
+                                    <tr>
+                                        <td>적성종류</td>
+                                        <td>코드</td>
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>없음</td>
+                                        <td class="btn-canwe-casej" data-casej="" style="cursor: pointer"><u class="blue">없음</u></td>
+                                    </tr>
+                                    @for($i=1; $i<=4; $i++)
+                                        <tr>
+                                            <td>난이도{{$i}}</td>
+                                            <td class="btn-canwe-casej" data-casej="j{{$i}}" style="cursor: pointer"><u class="blue">j{{$i}}</u></td>
+                                        </tr>
+                                    @endfor
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 @if($method === 'PUT')
                     <div class="form-group">
                         <label class="control-label col-md-2">등록자
@@ -1072,8 +1124,9 @@
                         </div>
                     </div>
                 @endif
+
                 <div class="ln_solid"></div>
-                <div class="form-group text-center">
+                <div class="form-group btn-wrap text-center">
                     <button type="submit" class="btn btn-success mr-10">저장</button>
                     <button class="btn btn-primary" type="button" id="btn_list">목록</button>
                 </div>
@@ -1382,6 +1435,46 @@
                 return true;
             }
 
+            //외부수강업체연동 select box 클릭
+            if ($regi_form.find('select[name="ExternalCorpCcd"] option:selected').val() == '696001') {
+                $('#external_canwe_exam').show();
+                $("#ExternalLinkCode").attr("readonly",true);
+            }
+            $('#ExternalCorpCcd').change(function () {
+                $('#ExternalLinkCode').val('');
+                if (this.value == '696001') {
+                    $('#external_canwe_exam').show();
+                    $("#ExternalLinkCode").attr("readonly",true);
+                } else {
+                    $('#external_canwe_exam').hide();
+                    $("#ExternalLinkCode").attr("readonly",false);
+                }
+            });
+
+            //한국인재개발진흥원 연동코드선택 테이블 보기
+            $('#btn_canwe_code').click(function() {
+                $('#canwe_code_table').toggle();
+            });
+
+            //인성
+            $('.btn-canwe-casei').click(function () {
+                $('#ExternalLinkCode').data('casei',$(this).data('casei'));
+                $('#ExternalLinkCode').val($(this).data('casei'));
+            });
+
+            //적성
+            $('.btn-canwe-casej').click(function () {
+                if ($('#ExternalLinkCode').data('casei') == '') {
+                    alert('인성을 선택해주세요.');
+                    return false;
+                }
+                var external_link_code = $('#ExternalLinkCode').data('casei');
+                if ($(this).data('casej') == '') {
+                    $('#ExternalLinkCode').val(external_link_code);
+                } else {
+                    $('#ExternalLinkCode').val(external_link_code+':'+$(this).data('casej'));
+                }
+            });
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/lecture/') }}' + getQueryString());

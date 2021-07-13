@@ -195,7 +195,14 @@
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt05" id="to_go">
             <img src="https://static.willbes.net/public/images/promotion/2020/06/1676_05.jpg" title="출석 횟수">
-            <span class="NSK-Black">{{$arr_base['add_apply_member_login_count']}}</span>
+
+            <span class="NSK-Black">
+                @if(time() < strtotime('202108070000'))
+                    {{$arr_base['add_apply_member_login_count'] + 1}}
+                @else
+                    {{$arr_base['add_apply_member_login_count']}}
+                @endif
+            </span>
             @php $apply_check = false; @endphp
             @foreach($arr_base['add_apply_data'] as $row)
                 @if(time() >= strtotime($row['ApplyStartDatm']) && time() < strtotime($row['ApplyEndDatm']))

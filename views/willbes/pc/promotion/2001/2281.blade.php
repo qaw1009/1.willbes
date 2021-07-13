@@ -221,7 +221,7 @@
                 </div>
 
                 <div class="totalPrice NSK-Black">
-                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1');">
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk1', 'pass');">
                         신청하기 >
                     </a>
                 </div>  
@@ -292,7 +292,7 @@
             </form>
         </div>
 
-        <div class="evtCtnsBox evt01">
+        <div class="evtCtnsBox evt01" id="pass2">
             <div class="passLecBuy" data-aos="fade-left">
                 <div>               
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_01.jpg"  alt="신광은경찰PASS">
@@ -340,7 +340,7 @@
                 </div>
 
                 <div class="totalPrice NSK-Black">
-                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2');">
+                    <a href="javascript:void(0);" onclick="termsCheck('is_chk2', 'pass2');">
                         신청하기 >
                     </a>
                 </div>  
@@ -825,13 +825,13 @@
         }
 
         /*약관동의*/
-        function termsCheck(obj_id){
-            if($("#" + obj_id).is(":checked") === false){
-                $("#" + obj_id).focus();
+        function termsCheck(terms_id,ele_id){
+            if($("#" + terms_id).is(":checked") === false){
+                $("#" + terms_id).focus();
                 alert('이용안내에 동의하셔야 합니다.');
                 return;
             }
-            goCartNDirectPay('pass', 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
+            goCartNDirectPay(ele_id, 'y_pkg', 'on_lecture', 'periodpack_lecture', 'Y');
         }
 
         /*무료 교재지급*/

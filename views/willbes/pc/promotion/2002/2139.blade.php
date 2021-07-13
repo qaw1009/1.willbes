@@ -90,8 +90,8 @@
             <div class="btns">  
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_down_btns.jpg"  alt="pdf 파일 다운"/>
                 <a title="형사법" style="position: absolute; left: 20.18%; top: 27.41%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif"></a>
-                <a title="헌법" style="position: absolute; left: 65.98%; top: 27.1%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif"></a>
-                <a title="탐정윤리" style="position: absolute; left: 20.18%; top: 53.27%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif"></a>
+                <a title="탐정윤리" style="position: absolute; left: 65.98%; top: 27.1%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[1] == 'Y') {{ front_url($file_link[1]) }} @else {{ $file_link[1] }} @endif"></a>
+                <a title="헌법" style="position: absolute; left: 20.18%; top: 53.27%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[2] == 'Y') {{ front_url($file_link[2]) }} @else {{ $file_link[2] }} @endif"></a>
                 <a title="탐정관계법" style="position: absolute; left: 65.98%; top: 53.58%; width: 26.7%; height: 19.63%; z-index: 2;" href="@if(empty($file_yn) === false && $file_yn[3] == 'Y') {{ front_url($file_link[3]) }} @else {{ $file_link[3] }} @endif"></a>
             </div>            
         </div>

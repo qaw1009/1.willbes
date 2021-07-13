@@ -283,6 +283,7 @@ class Home extends \app\controllers\FrontController
             }
         }
 
+        $data['dday'] = $this->_dday();
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);

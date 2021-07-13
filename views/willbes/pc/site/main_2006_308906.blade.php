@@ -11,10 +11,10 @@
             <div class="d_day NSK">
                 <ul>
                     <li>
-                        21년 제3회 필기 시험<br>2021-10-02(토)                                      
+                        {{ $data['dday'][0]['DayTitle'] }}<br>{{ $data['dday'][0]['DayDatm'] }}{{ kw_date('(%)', $data['dday'][0]['DayDatm']) }}
                     </li>
                     <li>
-                        <p class="NSK-Black">D-93 <span></span></p>  
+                        <p class="NSK-Black">{{ $data['dday'][0]['DDay'] == '0' ? 'D-0' : 'D' . $data['dday'][0]['DDay'] }} <span></span></p>
                     </li>
                 </ul>              
             </div>

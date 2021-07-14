@@ -105,7 +105,7 @@
                     <div>#탐정사 시험안내</div>
                 </li>
                 <li>
-                    <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Um-ZonFcEP4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div>#한국탐정 KPD소개</div>
                 </li>
             </ul>            

@@ -28,6 +28,15 @@
             </div>
         </div>
 
+        <div class="Section article5">
+            <div class="widthAuto">
+                <div class="wrap">
+                    <img src="https://static.willbes.net/public/images/promotion/main/308906_05.jpg" title="전격입성">
+                    <a href="javascript:alert('Coming Soon!')" title="전격입성" style="position: absolute;left: 19.06%;top: 72.61%;width: 5.75%;height: 9.08%;z-index: 2;"></a>  
+                </div>    
+            </div>  
+        </div>
+
         <div class="Section article2">
             <div class="widthAuto">
                 <img src="https://static.willbes.net/public/images/promotion/main/308906_02.jpg" title="빅데이터 필요 인력">
@@ -47,23 +56,14 @@
                     <a href="https://job.dev.willbes.net/landing/show/lcode/1043/cate/308906/preview/Y" title="알아보기" target="_blank" style="position: absolute;left: 31.06%;top: 86.61%;width: 45.75%;height: 6.08%;z-index: 2;"></a>     
                 </div>    
             </div>  
-        </div>
-
-        <div class="Section article5">
-            <div class="widthAuto">
-                <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/main/308906_05.jpg" title="전격입성">
-                    <a href="javascript:alert('Coming Soon!')" title="전격입성" style="position: absolute;left: 19.06%;top: 69.61%;width: 5.75%;height: 9.08%;z-index: 2;"></a>  
-                </div>    
-            </div>  
-        </div>
+        </div>      
 
         <div class="Section article6">
             <div class="widthAuto">
                 <div class="wrap">
                     <img src="https://static.willbes.net/public/images/promotion/main/308906_06.jpg" title="유튜브">
-                    <a href="javascript:alert('Coming Soon!')" title="6개월" style="position: absolute;left: 14.06%;top: 65.61%;width: 36.75%;height: 18.08%;z-index: 2;"></a>     
-                    <a href="javascript:alert('Coming Soon!')" title="2개월" style="position: absolute;left: 54.46%;top: 65.61%;width: 36.75%;height: 18.08%;z-index: 2;"></a>     
+                    <a href="javascript:alert('Coming Soon!')" title="6개월" style="position: absolute;left: 14.06%;top: 65.01%;width: 36.75%;height: 18.08%;z-index: 2;"></a>     
+                    <a href="javascript:alert('Coming Soon!')" title="2개월" style="position: absolute;left: 54.46%;top: 65.01%;width: 36.75%;height: 18.08%;z-index: 2;"></a>     
                 </div>    
                 <div class="youtube">
                     <iframe src="https://www.youtube.com/embed/51nqd5LkL-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

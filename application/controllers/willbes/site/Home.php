@@ -273,6 +273,7 @@ class Home extends \app\controllers\FrontController
             $data['best_product'] = $this->_product('on_lecture', 20, $s_cate_code , 'Best');
             $data['new_product'] = $this->_product('on_lecture', (APP_DEVICE == 'pc' ? 18 : 16), $s_cate_code , 'New');
             $data['board_lecture_plan'] = $this->_boardLecturePlan(5, $s_cate_code);
+            $data['dday'] = $this->_dday();
         } else {
             if (in_array($this->_cate_code, $this->_category_mobile[$this->_site_code])) {
                 $s_cate_code = $cate_code;
@@ -283,7 +284,6 @@ class Home extends \app\controllers\FrontController
             }
         }
 
-        $data['dday'] = $this->_dday();
         $data['off_notice'] = $this->_boardNotice(5, $s_cate_code, null, 108);
         $data['notice'] = $this->_boardNotice(5, $s_cate_code);
         $data['exam_announcement'] = $this->_boardExamAnnouncement(5, $s_cate_code);

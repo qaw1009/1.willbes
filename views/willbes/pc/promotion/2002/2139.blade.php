@@ -43,12 +43,12 @@
         .evt03 {background:#f6f0e0}  
         .evt04 {background:#978674} 
         
-        .youtube {background:#36041f; padding:150px 0}
+        .youtube {background:#f4f4f4; padding:0 0 150px 0;}
         .youtube .NSK-Black {color:#fff; font-size:50px; margin-bottom:50px}
         .youtube ul {width:1120px; margin:0 auto}
         .youtube li {display:inline; float:left;}
         .youtube li:last-child {margin-left:20px}        
-        .youtube li div {margin-top:30px; font-size:30px; font-weight:bold; color:#fedf9c}
+        .youtube li div {margin-top:30px; font-size:30px; font-weight:bold; color:#595959}
         .youtube li div span {color:#fff;}
         .youtube li iframe {width:550px; height:310px}
         .youtube ul:after {content:''; display:block; clear:both}
@@ -98,15 +98,15 @@
         </div>
 
         <div class="evtCtnsBox youtube">
-            <div class="NSK-Black">사립탐정사를 영상으로 먼저 만나보세요~!!</div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_04.jpg"  alt="영상으로 만나보세요"/>
             <ul>
-                <li>
-                    <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#한국탐정KPD소개</div>
-                </li>
                 <li>                    
                     <iframe src="https://www.youtube.com/embed/FQjASiTrgJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div>#탐정사시험안내</div>
+                    <div>#탐정사 시험안내</div>
+                </li>
+                <li>
+                    <iframe src="https://www.youtube.com/embed/BtMp7bpCst0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div>#한국탐정 KPD소개</div>
                 </li>
             </ul>            
         </div>

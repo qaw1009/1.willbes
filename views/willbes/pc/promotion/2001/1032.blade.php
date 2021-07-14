@@ -439,7 +439,7 @@
 
         <div class="evtCtnsBox wb_06">        
             <img src="https://static.willbes.net/public/images/promotion/2021/05/1032_05_02.jpg" alt="신청하기"/>
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2194" title="신광은경찰PASS" target="_blank" style="position: absolute; left: 27.5%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2281" title="신광은경찰PASS" target="_blank" style="position: absolute; left: 27.5%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
             <a href="https://police.willbes.net/home/index/cate/3002" title="경행경채" target="_blank" style="position: absolute; left: 45%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
             <a href="https://police.willbes.net/home/index/cate/3006" title="경찰승진PASS" target="_blank" style="position: absolute; left: 62.5%; top: 75.68%; width: 9.38%; height: 6.08%; z-index: 2;"></a>
         </div>

@@ -96,7 +96,7 @@
             @endif  
 
             <div class="mt100">
-                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2245" target="_blank">
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2281" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/06/2255_03.jpg" alt="신광은 경찰 무제한 패스"/>
                 </a>
             </div>

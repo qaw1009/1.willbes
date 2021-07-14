@@ -92,7 +92,8 @@
 
     <div class="ActIndex MyInfo widthAutoFull">
         <div class="widthAuto p_re">
-            <div class="Content p_re">
+            <div class="Content p_re">             
+
                 <div class="oldMypage" id="oldMypage">
                     <img src="https://static.willbes.net/public/images/promotion/sub/mypage_oldmypage_popup.jpg" alt="이전 내강의실 보기" usemap="#oldMypage" border="0"/>
                     <map name="oldMypage" id="oldMypage">
@@ -100,6 +101,7 @@
                         <area shape="rect" coords="257,0,280,24" href="#none" onclick="closeWin('oldMypage')"alt="닫기"/>
                     </map>                    
                 </div>
+
                 <div class="will-Tit NG">나의 <span class="tx-light-blue">학습</span>/혜택 <span class="tx-light-blue">정보</span></div>
                 <div class="MyLecInfoBox NG">
                     <ul>
@@ -140,6 +142,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="MyInfoBox">
                     <div class="willbes-listTable MyInfoBoxList widthAutoFull">
                         <div class="will-Tit NG">최근 받은 쪽지 <a class="f_right" href="#none"><img src="{{ img_url('prof/icon_add.png') }}"></a></div>
@@ -163,11 +166,17 @@
 
                 </div>
             </div>
+
             <div class="Quick-Bnr mt20">
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2019/12/bn_160x242.gif" alt="이전 내강의실 보기"></a>
             </div>
+
+            <div class="testBtn NG">
+                <a href="#none">한국인재개발진흥원 <strong class="NGEB">인적성검사</strong> <span>GO</span></a>
+            </div>
         </div>
     </div>
+
     <div class="widthAuto">
         <div class="Quick-Bnr mt100">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/2020/02/bn_160x180.jpg" alt="학원실강 복습동영상"></a>

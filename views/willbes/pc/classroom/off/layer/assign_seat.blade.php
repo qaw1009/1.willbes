@@ -191,6 +191,6 @@
     });
 
     function show_map(lr_unit_code) {
-        popupOpen('{{front_url('/classroom/off/showSeatMap/')}}' + lr_unit_code, 'seatMap', 1100, 800, null, null, 'no', 'no');
+        popupOpen('{{front_url('/classroom/off/showSeatMap/')}}' + lr_unit_code, 'seatMap', 1100, 800, null, null, 'yes', 'yes');
     }
 </script>

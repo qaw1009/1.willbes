@@ -5112,11 +5112,12 @@ form .LeclistTable .evtTable tr td a.w-del {
 }
 .w-reply {
 	width: 100%;
-	height: 80px;
+	height: auto;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: hidden;
 	border-bottom: 1px solid #edeeef;
 	padding: 30px 15px;
+	line-height: 20px;
 }
 
 /*********************************************     PACKAGE PAGE     *********************************************/

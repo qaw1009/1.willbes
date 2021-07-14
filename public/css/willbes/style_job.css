@@ -180,11 +180,13 @@ br { font-family:dotum;}
 .job .article1 {background:#0253c4;}
 .job .article2 {background:url(https://static.willbes.net/public/images/promotion/main/308906_02_bg.jpg) repeat-x left top;} 
 .job .article3 {background:#eee;}
+.job .article4 {background:#c7ebff;}
 .job .article4 .wrap {width:1120px; margin:0 auto; position:relative}
 .job .article5 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article6 {background:#c7ebff;}
 .job .article6 .wrap {width:1120px; margin:0 auto; position:relative}
 .job .article6 {position:relative;}
-.job .youtube {position:absolute; top:50px; left:50%;z-index:1;margin-left:-400px}
+.job .youtube {position:absolute; top:44px; left:50%;z-index:1;margin-left:-400px}
 .job .youtube iframe {width:860px; height:450px} 
 
 /*타이머*/

@@ -75,7 +75,7 @@
 }
 
 .gosi-gate-Sec p {position:absolute; top:70%; left:50%; margin-top:-28px; width:32px; height:50px; cursor:pointer; 
-    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.5; filter:alpha(opacity=50); z-index:9999}
+    background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;  opacity:0.5; filter:alpha(opacity=50); z-index:99;}
 .gosi-gate-Sec p a {display:none;}
 .gosi-gate-Sec p.leftBtn {margin-left:-632px;}
 .gosi-gate-Sec p.rightBtn {margin-left:600px; background-position: right center;}	

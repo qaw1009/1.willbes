@@ -80,7 +80,7 @@
 
         .wb_cts07 , .wb_cts08 {background:#54a783;}
 
-        .emo_area {padding-bottom:100px;}
+        .emo_area {padding-bottom:100px;} 
 
     </style>
 

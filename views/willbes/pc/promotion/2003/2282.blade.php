@@ -21,6 +21,10 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
 
         /************************************************************/
+
+        .sky {position:fixed;top:225px;right:15px;z-index:200;}
+        .sky a {display:block;margin-top:10px;}
+
         /*상단 애니메이션*/
         .wb_cts_top{position: relative;height: 899px;padding-top: 101px;background:url('https://static.willbes.net/public/images/promotion/2021/07/2282_after.jpg') 50% 0 repeat-x;}
         .wb_cts_top h2{margin-top: 48px;}
@@ -80,13 +84,25 @@
         .wb_cts06 .edit_img li:nth-child(2) {top:881px; margin-left:174px;}
         .wb_cts06 .edit_img li:last-child {top:1096px; margin-left:-271px;}
 
-        .wb_cts07 , .wb_cts08 {background:#54a783;}
+        .wb_preview {background:#54a783;}
+
+        .wb_cts09 {padding-bottom:100px;}
 
         .emo_area {padding-bottom:100px;} 
 
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
+
+        <div class="sky">
+            <a href="#curri01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
+            </a>
+            <a href="#curri03">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky03.png" alt="새벽실저모의고사">
+            </a>
+        </div>
+
         <div class="evtCtnsBox wb_cts_top">
             <div class="top_ani">
                 <div class="left open_ani"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt01.png" alt=""></div>
@@ -96,7 +112,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt03.png" alt="">
             <h2><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt04.png" alt=""></h2>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/H4H3Sd2nhOs?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/nAQUdmuvUuw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>    
 
@@ -167,17 +183,26 @@
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/editing03.gif" alt="문법포인트" />
                 </li>
             </ul>
-        </div>           
+        </div>
+
+        <div class="evtCtnsBox wb_preview" >       
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_preview.jpg" alt="미리 만나보세요"/>
+        </div>              
 
         <div class="evtCtnsBox wb_cts07" >       
-            <div class="wrap"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_07.jpg" alt="퀴즈테스트"/>
-                <a href="javascript:void(0);" title="퀴즈풀기"style="position: absolute;left: 20.79%;top: 90.59%;width: 40.93%;height: 6.5%;z-index: 2;"></a>
-            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_07.jpg" alt="기대평이벤트"/>
+            {{--기본댓글--}}
+            @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+                @include('willbes.pc.promotion.show_comment_list_normal_partial')
+            @endif 
         </div>
 
         <div class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="덕밍아웃하라"/>           
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>           
+        </div>
+
+        <div class="evtCtnsBox wb_cts09" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_09.jpg" alt="덕밍아웃하라"/>           
         </div>
         <!--
         <div class="emo_area">

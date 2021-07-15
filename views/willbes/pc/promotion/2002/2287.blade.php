@@ -36,7 +36,7 @@
         .evt03 th:last-child{border:0;}
         .evt03 td:nth-child(1) {text-align:left; font-weight:normal; border-right:0; text-indent:18px;}
         .evt03 td:nth-child(2){text-align:left;}
-        .evt03 td:nth-child(4) {text-align:right; border-right:0; padding-right:10px;}
+        .evt03 td:nth-child(4) {text-align:right; border-right:0; padding-right:5px;}
         .evt03 td:nth-child(5){text-align:left;} 
         .evt03 td:last-child {text-align:center; border-right:0;}
         .evt03 td.bdr{border-right:1px solid #6e6e6e; font-weight:bold;}
@@ -81,7 +81,7 @@
                     <col width="110px" />
                     <col width="90px" />
                     <col width="450px" />
-                    <col width="100px" />
+                    <col width="105px" />
                     <col width="100px" />
                     <col width="auto" />
                     <thead>

@@ -25,9 +25,6 @@
 		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative}
 
 		.wb_01{background:#fff;}    
-		
-		.wb_01_01 {background:url(https://static.willbes.net/public/images/promotion/2021/03/1068_01_01_bg.jpg) no-repeat center top;}
-		.wb_01_01 div {width:1120px; margin:0 auto; position:relative;}
 
 		.wb_01s {background:url(https://static.willbes.net/public/images/promotion/2021/01/0119_add_bg.jpg) no-repeat center top;}
 
@@ -126,13 +123,6 @@
 		<div class="evtCtnsBox wb_01">
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
         </div>
-
-		<div class="evtCtnsBox wb_01_01">	
-			<div class="wrap">	
-				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_01_01.jpg" alt="농업직 패키지">
-				<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" title="바로가기" target="_blank" style="position: absolute; left: 31.43%; top: 81.34%; width: 36.43%; height: 6.96%; z-index: 2;"></a>
-			</div>
-        </div>		
 
 		<div class="evtCtnsBox wb_01s">
 			<div class="wrap">

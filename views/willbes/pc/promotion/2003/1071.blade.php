@@ -58,8 +58,7 @@
 
         .wb_cts01_1 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2020/01/1071_01_bg.jpg") no-repeat center top;}
         .wb_cts01_2 {background:#E4E4E4;}
-        .wb_cts01_3 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2021/03/1071_01_3_bg.jpg") no-repeat center top;}
-        .wb_cts01_3 div {width:1120px; margin:0 auto; position:relative}    
+
 
         .wb_cts02 {background:#ffd84f;}  
         .wb_cts02 div {width:1120px; margin:0 auto; position:relative} 
@@ -181,13 +180,6 @@
 
         <div class="evtCtnsBox wb_cts01_2">
             <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_2.jpg" alt="커리큘럼"  > 
-        </div>   
-
-        <div class="evtCtnsBox wb_cts01_3">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_01_3.jpg" alt="전기직/통신직 5과목"  > 
-                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" title="시작하기" style="position: absolute; left: 33.66%; top: 81.51%; width: 32.41%; height: 7.13%; z-index: 2;" target="_blank"></a>
-            </div>
         </div>   
 
         <div class="evtCtnsBox wb_cts02" id="pkglec">

@@ -59,17 +59,19 @@
         .wb_cts02 .curri {position:absolute;left:50%;}
         .wb_cts02 .curri a {display:block; font-size:20px; color:#333743; padding:0 25px; background:#55ff9e; border-radius:60px;height:60px;line-height:60px;}
         .wb_cts02 .curri a:hover {background:#d8ff00;}
-        .wb_cts02 .curri li {padding-bottom:22px;}
+        .wb_cts02 .curri li {padding-bottom:20px;}
         .wb_cts02 .curri li:first-child {width:130px;margin-left:-390px;margin-top:-575px;}
         .wb_cts02 .curri li:first-child span{font-size:15px;}
-        .wb_cts02 .curri li:first-child a {line-height:27.5px;}
+        .wb_cts02 .curri li:first-child a {line-height:25px;}
         .wb_cts02 .curri li:nth-child(2) {width:450px;margin-left:-390px;}
         .wb_cts02 .curri li:nth-child(3) {width:780px;margin-left:-390px;}
         .wb_cts02 .curri li:last-child {width:780px;margin-left:-390px;}
 
-        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2282_03_bg.jpg) no-repeat center top;}
+        .wb_cts03 {background:url(https://static.willbes.net/public/images/promotion/2021/07/2282_03_bg.jpg) no-repeat center top;padding-bottom:100px;}
 
-        .wb_cts04 , .wb_cts06 {background:#f5f5f5;}
+        .wb_cts05 {padding-bottom:100px;}
+
+        .wb_cts04 , .wb_cts06 {background:#f5f5f5;padding-bottom:100px;}
 
         .wb_cts06 {position:relative;}     
         .wb_cts06 .edit_img img{width:325px;height:200px;}
@@ -106,42 +108,54 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_02.jpg" alt="커리큘럼"/>
             <ul class="curri NSK-Black">
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="#curri01">
                         실전 464<br><span class="infinite">(무한 회독)</span>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="#curri02">
                         실전! ONEDAY 영역별 테마특강
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="#curri03">
                         새벽실전모의고사
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);">
+                    <a href="#curri04">
                         온라인 첨삭지도반
                     </a>
                 </li>
             </ul>    
         </div>
 
-        <div class="evtCtnsBox wb_cts03" >
+        <div class="evtCtnsBox wb_cts03" id="curri01">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_03.jpg" alt="실전464"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts04" >
+        <div class="evtCtnsBox wb_cts04" id="curri02">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_04.jpg" alt="테마특강"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))            
+            @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts05" >
+        <div class="evtCtnsBox wb_cts05" id="curri03">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_05.jpg" alt="새벽실전모의고사"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))            
+            @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts06" >
+        <div class="evtCtnsBox wb_cts06" id="curri04">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_06.jpg" alt="온라인첨삭지도반"/>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>4))            
+            @endif 
             <ul class="edit_img">
                 <li class="meme">
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/editing01.gif" alt="문제풀기" />
@@ -165,14 +179,14 @@
         <div class="evtCtnsBox wb_cts08" >
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="덕밍아웃하라"/>           
         </div>
-
+        <!--
         <div class="emo_area">
             {{-- 이모티콘 댓글 --}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
                 @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif
-        </div>       
-        
+        </div>   
+        --> 
     </div>
     <!-- End Container -->
 

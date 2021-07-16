@@ -98,11 +98,8 @@
 
         <div class="sky">
             <a href="#evt_01"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_sky.jpg" alt="증정 이벤트" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2236_sky.jpg" alt="go 헌법 시작부터 제대로!" >
             </a>  
-            <a href="#evt_02"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_sky2.jpg" alt="100% 할인쿠폰" >                
-            </a> 
         </div>   
 
         <div class="evtCtnsBox evtTop">
@@ -182,32 +179,7 @@
             </div>
         </div>
 
-        <div class="evtCtnsBox evt06" id="evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_06.jpg"  alt="증정 이벤트"/>
-        </div>
-
-        {{--기본댓글--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_normal_partial')
-        @endif 
-
-        <div class="evtCtnsBox evt07" id="evt_02">            
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_07.jpg"  alt="쿠폰 받기"/>
-                <a href="javascript:;" onclick="giveCheck()" title="쿠폰받기" style="position: absolute;left: 54.5%;top: 42.35%;width: 33.25%;height: 5%;z-index: 2;"></a>
-                <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="이미지다운" style="position: absolute;left: 23%;top: 76.75%;width: 31.25%;height: 4.5%;z-index: 2;"></a>
-                <a href="http://cafe.daum.net/policeacademy" target="_blank" title="경시모" style="position: absolute;left: 26%;top: 92.15%;width: 16.25%;height: 7%;z-index: 2;"></a>
-                <a href="https://cafe.naver.com/polstudy" target="_blank" title="경꿈사" style="position: absolute;left: 46%;top: 92.15%;width: 16.25%;height: 7%;z-index: 2;"></a>
-                <a href="https://cafe.naver.com/kts9719" target="_blank" title="닥공사" style="position: absolute;left: 66%;top: 92.15%;width: 16.25%;height: 7%;z-index: 2;"></a>
-            </div>    
-        </div>
-
-        {{--홍보url--}}
-        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
-            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
-        @endif
-
-        <div class="evtCtnsBox evt08">
+        <div class="evtCtnsBox evt08" id="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2236_08.jpg"  alt="신규 개설 강좌"/>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))

@@ -31,10 +31,10 @@
         .evt_table table th.st02 div {margin-bottom:10px; color:#14a0b7}
         .evt_table table td{text-align:left; padding:15px}
         .evt_table table td.ctsBox .imgBox {max-width:40%; max-height:180px; overflow:hidden; float: left; margin:0 20px 10px 0}
-        .evt_table table td.ctsBox .imgBox img {width:100%}
+        .evt_table table td.ctsBox img {max-width:100%}
+        .evt_table table td.ctsBox .imgBoxFull {width:100%; max-height:180px; overflow:hidden; margin-bottom:10px}
 
         .evt_table input {vertical-align:middle}
-        /*.evt_table input[type=text] {height:28px; padding:0 10px; color:#494a4d; border:1px solid #b8b8b8; vertical-align:middle}*/
         .evt_table input[type=file] {height:30px; color:#494a4d; vertical-align:top; border:1px solid #ccc;}
 
         .evt_table .textarBx textarea {width:100%; padding:20px; border:1px solid #7cdfef; color:#666}
@@ -123,30 +123,29 @@
                         <tbody>
                             <tr>
                                 <th class="st02">
-                                    <div>15</div>
-                                    아이디<br/>
-                                    2021-00-00
-                                </th>
-                                <td class="ctsBox">
-                                    <div class="imgBox">
-                                        <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0327/20210327143819-292.jpg">
-                                    </div>
-                                    다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.
-                                </td>                            
-                            </tr>
-                            <tr>
-                                <th class="st02">
                                     <div>14</div>
                                     아이디<br/>
                                     2021-00-00
                                 </th>
                                 <td class="ctsBox">
-                                    <div class="imgBox">
+                                    <div class="imgBoxFull">
                                         <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0318/20210318042626-564.jpg">
                                     </div>
-                                    다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.
                                 </td>                            
                             </tr>
+                            <tr>
+                                <th class="st02">
+                                    <div>15</div>
+                                    아이디<br/>
+                                    2021-00-00
+                                </th>
+                                <td class="ctsBox">
+                                    <div class="imgBoxFull">
+                                        <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0327/20210327143819-292.jpg">
+                                    </div>
+                                    다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.
+                                </td>                            
+                            </tr>                            
                             <tr>
                                 <th class="st02">
                                     <div>13</div>
@@ -154,7 +153,7 @@
                                     2021-00-00
                                 </th>
                                 <td class="ctsBox">
-                                    <div class="imgBox">
+                                    <div class="imgBoxFull">
                                         <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0306/20210306143307-516.jpg">
                                     </div>
                                     다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.

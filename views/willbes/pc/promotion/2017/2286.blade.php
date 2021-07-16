@@ -22,14 +22,14 @@
 
 
         .event02 {width:1120px; margin:0 auto; padding:100px 64px; background:#fff}
-        .evt_table table{width:100%;border-top:1px solid #01bfdf}
+        .evt_table table{width:100%;border-top:1px solid #01bfdf; border-left:1px solid #01bfdf}
         .evt_table table tr {border-bottom:1px solid #01bfdf}
         .evt_table table th,
-        .evt_table table td {margin:10px 0; font-size:16px; color:#666; line-height:1.5;}
-        .evt_table table th {background:#14a0b7; color:#fff; padding:10px 0}
-        .evt_table table th.st02 {background:#e5f8fc; color:#000; border-right:1px solid #01bfdf; vertical-align:top}
+        .evt_table table td {margin:10px 0; font-size:16px; color:#666; line-height:1.5; padding:10px; border-right:1px solid #01bfdf;}
+        .evt_table table th {background:#14a0b7; color:#fff; }
+        .evt_table table th.st02 {background:#e5f8fc; color:#000;  vertical-align:top}
         .evt_table table th.st02 div {margin-bottom:10px; color:#14a0b7}
-        .evt_table table td{text-align:left; padding:15px}
+        .evt_table table td {text-align:left; padding:15px 40px}
         .evt_table table td.ctsBox .imgBox {max-width:40%; max-height:180px; overflow:hidden; float: left; margin:0 20px 10px 0}
         .evt_table table td.ctsBox img {max-width:100%}
         .evt_table table td.ctsBox .imgBoxFull {width:100%; max-height:180px; overflow:hidden; margin-bottom:10px}

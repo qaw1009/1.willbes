@@ -245,3 +245,6 @@
     margin-right: 5px;
     height: 19px; line-height: 19px;    
 }
+
+/*모달베너 추가*/
+#Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}

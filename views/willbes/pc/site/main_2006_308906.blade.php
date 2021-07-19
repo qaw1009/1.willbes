@@ -31,8 +31,8 @@
         <div class="Section article5">
             <div class="widthAuto">
                 <div class="wrap">
-                    <img src="https://static.willbes.net/public/images/promotion/main/308906_05.jpg" title="전격입성">
-                    <a href="javascript:alert('Coming Soon!')" title="전격입성" style="position: absolute;left: 19.06%;top: 72.61%;width: 5.75%;height: 9.08%;z-index: 2;"></a>  
+                    <img src="https://static.willbes.net/public/images/promotion/main/308906_05.jpg" title="훈쌤 전격입성">
+                    <a href="https://job.willbes.net/professor/show/cate/308906/prof-idx/51268?subject_idx=2171" title="교수홈" style="position: absolute;left: 19.06%;top: 72.61%;width: 5.75%;height: 9.08%;z-index: 2;"></a>  
                 </div>    
             </div>  
         </div>

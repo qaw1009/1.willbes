@@ -58,9 +58,9 @@
         <div class="evtCtnsBox evt04">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2285_04.jpg" alt="" />
-                <a href="https://job.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184027" target="_blank" title="환승인증 후 수강신청" style="position: absolute; left: 55.98%; top: 20.39%; width: 21.43%; height: 4.38%; z-index: 2;"></a>
-                <a href="https://job.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184028" target="_blank" title="환승인증 후 수강신청" style="position: absolute; left: 55.98%; top: 37.65%; width: 21.43%; height: 4.38%; z-index: 2;"></a>
-                <a href="https://job.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184029" target="_blank" title="체험팩 신청하기" style="position: absolute; left: 18.3%; top: 79.8%; width: 63.39%; height: 6.14%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184027" target="_blank" title="환승인증 후 수강신청" style="position: absolute; left: 55.98%; top: 20.39%; width: 21.43%; height: 4.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184028" target="_blank" title="환승인증 후 수강신청" style="position: absolute; left: 55.98%; top: 37.65%; width: 21.43%; height: 4.38%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/periodPackage/show/cate/3035/pack/648001/prod-code/184029" target="_blank" title="체험팩 신청하기" style="position: absolute; left: 18.3%; top: 79.8%; width: 63.39%; height: 6.14%; z-index: 2;"></a>
             </div>
         </div>
     </div>

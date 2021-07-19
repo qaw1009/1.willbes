@@ -284,10 +284,10 @@
         <div class="evtCtnsBox evt05">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2271_04.jpg" title="봉투모의고사">
-                <a href="#none" title="경찰학" style="position: absolute; left: 9.29%; top: 39.74%; width: 17.95%; height: 2.99%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183783" target="_blank" title="경찰학" style="position: absolute; left: 9.29%; top: 39.74%; width: 17.95%; height: 2.99%; z-index: 2;"></a>
                 <a href="#none" title="형법" style="position: absolute; left: 41.16%; top: 39.74%; width: 17.95%; height: 2.99%; z-index: 2;"></a>
                 <a href="#none" title="신광은/김원욱 특강" style="position: absolute; left: 72.86%; top: 39.74%; width: 17.95%; height: 2.99%; z-index: 2;"></a>
-                <a href="#none" title="빅매치2" style="position: absolute; left: 29.73%; top: 87.91%; width: 40.63%; height: 3.95%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/promotion/index/cate/3010/code/2278" target="_blank" title="빅매치2" style="position: absolute; left: 29.73%; top: 87.91%; width: 40.63%; height: 3.95%; z-index: 2;"></a>
             </div>
         </div>
 

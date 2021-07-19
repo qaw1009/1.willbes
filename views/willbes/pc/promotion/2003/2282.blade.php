@@ -95,7 +95,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="sky">
-            <a href="#comment_event" style="border:1px solid #000;"> 
+            <a href="#comment_event"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky02.png" alt="무료수강권">
             </a>
             <a href="#curri01">

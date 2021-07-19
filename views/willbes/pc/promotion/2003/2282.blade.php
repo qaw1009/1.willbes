@@ -95,6 +95,9 @@
     <div class="p_re evtContent NSK" id="evtContainer">
 
         <div class="sky">
+            <a href="#comment_event">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky02.png" alt="무료수강권">
+            </a>
             <a href="#curri01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
             </a>
@@ -189,7 +192,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_preview.jpg" alt="미리 만나보세요"/>
         </div>              
 
-        <div class="evtCtnsBox wb_cts07" >       
+        <div class="evtCtnsBox wb_cts07" id="comment_event">   
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_07.jpg" alt="기대평이벤트"/>
             {{--기본댓글--}}
             @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)

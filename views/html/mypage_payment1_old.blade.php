@@ -89,7 +89,6 @@
         <span class="depth"><span class="depth-Arrow">></span><strong>결제관리</strong></span>
         <span class="depth"><span class="depth-Arrow">></span><strong>주문/배송조회</strong></span>
     </div>
-
     <div class="Content p_re">
 
         <div class="willbes-Mypage-PAYMENTZONE c_both">
@@ -135,7 +134,6 @@
                     <span>검색</span>
                 </button>
             </div>
-
             <div class="willbes-Lec-Search willbes-SelectBox mb20 GM f_left">
                 <select id="process" name="process" title="process" class="seleProcess f_left">
                     <option selected="selected">과정</option>
@@ -149,15 +147,15 @@
                     <option value="학원">학원</option>
                 </select>
             </div>
-
             <div class="LeclistTable orderTable">
                 <table cellspacing="0" cellpadding="0" class="listTable cartTable upper-gray bdt-gray tx-gray">
                     <colgroup>
                         <col style="width: 80px;">
                         <col style="width: 110px;">
-                        <col style="width: 150px;">
-                        <col>
                         <col style="width: 110px;">
+                        <col style="width: 250px;">
+                        <col style="width: 130px;">
+                        <col style="width: 130px;">
                         <col style="width: 130px;">
                     </colgroup>
                     <thead>
@@ -167,80 +165,40 @@
                             <th>주문번호<span class="row-line">|</span></li></th>
                             <th>주문내역<span class="row-line">|</span></li></th>
                             <th>결제금액<span class="row-line">|</span></li></th>
-                            <th>결제수단</th>
+                            <th>결제수단<span class="row-line">|</span></li></th>
+                            <th>주문/배송상태</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bgbule">
+                        <tr>
                             <td class="w-process">임용</td>
                             <td class="w-date">2018-00-00</td>
-                            <td class="w-number"><a href="{{ site_url('/home/html/mypage_payment2_1') }}">20210714000000000000</a></td>
-                            <td class="tx-left"><a href="{{ site_url('/home/html/mypage_payment2_1') }}">김현정 영어 기초 개념문법&김준기 기초 영문법 패키지 외 2건</a></td>
-                            <td class="w-price tx-blue">770,000원</td>
+                            <td class="w-number"><a href="{{ site_url('/home/html/mypage_payment2_1') }}">20180000</a></td>
+                            <td class="w-list"><a href="{{ site_url('/home/html/mypage_payment2_1') }}">2018 정채영(결제완료 페이지로)</a></td>
+                            <td class="w-price">92,000</td>
                             <td class="w-method">신용카드</td>
+                            <td class="w-state tx-light-blue">결제완료</td>
                         </tr>
                         <tr>
-                            <td colspan="6">
-                                <ul class="orderDetail">
-                                    <li>
-                                        <div><span class="aBox waitBox_block">강좌</span></div>
-                                        <div>김현정 영어 기초 개념문법&김준기 기초 영문법 패키지</div>
-                                        <div>100일</div>
-                                        <div class="tx-blue">420,000원</div>
-                                        <div>결제완료</div>
-                                    </li>
-                                    <li>
-                                        <div><span class="aBox answerBox">패키지</span></div>
-                                        <div>원유철 한국사 T-PASS (9개월)★교재무료증정</div>
-                                        <div>270일</div>
-                                        <div class="tx-blue">420,000원</div>
-                                        <div>결제완료</div>
-                                    </li>
-                                    <li>
-                                        <div><span class="aBox finishBox">사은품</span></div>
-                                        <div>김원욱 형법 2.1 (기본서+부록) (자동지급상품)</div>
-                                        <div></div>
-                                        <div class="tx-blue">0원</div>
-                                        <div>결제완료</div>
-                                    </li>
-                                    <li>
-                                        <div><span class="aBox waitBox_block">강좌</span></div>
-                                        <div>2020대비 조용석 실무종합 마무리특강</div>
-                                        <div>7일</div>
-                                        <div class="tx-blue">0원</div>
-                                        <div>결제완료</div>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class="bgbule">
                             <td class="w-process">공무원</td>
                             <td class="w-date">2018-00-00</td>
-                            <td class="w-number"><a href="{{ site_url('/home/html/mypage_payment2_2') }}">20210714000000000000</a></td>
-                            <td class="tx-left"><a href="{{ site_url('/home/html/mypage_payment2_2') }}">2018 정채영(입금대기 페이지로)</a></td>
-                            <td class="w-price tx-blue">92,000</td>
-                            <td class="w-method">보강결제(0원)</td>
+                            <td class="w-number"><a href="{{ site_url('/home/html/mypage_payment2_2') }}">20180000</a></td>
+                            <td class="w-list"><a href="{{ site_url('/home/html/mypage_payment2_2') }}">2018 정채영(입금대기 페이지로)</a></td>
+                            <td class="w-price">92,000</td>
+                            <td class="w-method">무통장입금</td>
+                            <td class="w-state tx-light-blue">입금대기</td>
                         </tr>
                         <tr>
-                            <td colspan="6">
-                                <ul class="orderDetail">
-                                    <li>
-                                        <div><span class="aBox waitBox_block">강좌</span></div>
-                                        <div>2021 이현진 감정평가 및 보상법규 파이널 스터디 (회차등록)</div>
-                                        <div>40일</div>
-                                        <div class="tx-blue">0원</div>
-                                        <div>결제완료</div>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class="bgbule">
                             <td class="w-process">경찰</td>
                             <td class="w-date">2018-00-00</td>
-                            <td class="w-number">20210714000000000000</td>
-                            <td class="tx-left">2018 정채영국엉 문학종결자 외1</td>
-                            <td class="w-price tx-blue">92,000</td>
+                            <td class="w-number">20180000</td>
+                            <td class="w-list">2018 정채영국엉 문학종결자 외1</td>
+                            <td class="w-price">92,000</td>
                             <td class="w-method">실시간 계좌이체</td>
+                            <td class="w-state">
+                                <strong>발송완료</strong><br/>
+                                <div class="tBox NSK light-gray"><a href="">배송조회</a></div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

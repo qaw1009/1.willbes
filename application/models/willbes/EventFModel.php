@@ -445,6 +445,10 @@ class EventFModel extends WB_Model
                     $etc_value = substr($etc_value, 0, -1);
                 }
 
+                if(empty($inputData['etc_data']) === false && empty($inputData['target_params']) === true){
+                    $etc_value = element('etc_data', $inputData);
+                }
+
                 // register_chk_no_member 값이 Y일 경우, 로그인이어도 비로그인과 동일하게 이름/전화번호/이메일로 등록 체크.
                 if(empty($this->session->userdata('mem_idx')) === true || (empty($inputData['register_chk_no_member']) === false && $inputData['register_chk_no_member'] == 'Y')) {
                     $arr_condition = [

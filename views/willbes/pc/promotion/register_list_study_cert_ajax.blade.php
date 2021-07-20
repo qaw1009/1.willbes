@@ -71,7 +71,7 @@
         $('#btn_search').click(function () {
             var search_type = $register_search_form.find('select[name="search_type"]').val();
             var search_value = $register_search_form.find('input[name="search_value"]').val();
-            fnRegisterList(1, search_type, search_value);
+            fnRegisterList(1,search_type,search_value,true);
         });
     });
 
@@ -106,7 +106,7 @@
             num = params[params.length - 1];
         }
 
-        fnRegisterList(num,search_type,search_value);
+        fnRegisterList(num,search_type,search_value,true);
 
         return false;
     });

@@ -115,7 +115,7 @@
         <div class="sky" >
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/183205" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="한덕현 t"></a>
+            <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="한덕현 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            

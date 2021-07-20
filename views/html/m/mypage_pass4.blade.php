@@ -17,8 +17,7 @@
     <div class="passProfTabs c_both">
         <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
             <colgroup>
-                <col style="width: 15%;">
-                <col style="width: 85%;">
+                <col>
             </colgroup>
             <tbody>
                 <tr>

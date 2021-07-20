@@ -57,7 +57,9 @@
 
                 <div class="c_both mt40 tx-right"><a href="javascript:history.go(-1);" class="bdb-dark-gray pb5">다른 수강강좌 보기 →</a></div>
 
-                <div class="willbes-Leclist c_both mt40">
+                <div class="tx-red mt20">※ 강의를 수강하지 않고 자료만 다운로드 받은 경우 수강한 것으로 간주합니다. (환불 시 해당 회차 차감)</div>
+
+                <div class="willbes-Leclist c_both mt20">
                     <div class="LeclistTable">
                         <table cellspacing="0" cellpadding="0" class="listTable upper-black under-gray tx-gray">
                             <colgroup>

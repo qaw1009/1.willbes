@@ -9,7 +9,7 @@
 .predictWrap input[type="text"] {height: 2rem;}
 .predictWrap .willbes-Tit {background: #2e3c52; color:#fff; border:0}
 .predictWrap .willbes-Tit span {color:#f6cc20}
-.predictWrap .predictMain { background:#9bb4c3;padding-bottom:50px}
+.predictWrap .predictMain { background:#d39a7a;padding-bottom:50px}
 .predictWrap .predictMain .mainImg img {width:100%; max-width:720px;} 
 .predictWrap .predictMain .mainBtn {padding-top:50px;}
 .predictWrap .predictMain .mainBtn a { 
@@ -20,26 +20,26 @@
 }
 
 .predictWrap .predictMain .mainBtn a.btn2 {
-    background:#00337e; 
+    background:#db6420; 
     animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;
     margin-top:25px;
 }
 	@keyframes upDown{
-	from{background:#00337e}
-	50%{background:#bf1212}
-	to{background:#00337e}
+	from{background:#db6420}
+	50%{background:#00337e}
+	to{background:#db6420}
 	}
 	@-webkit-keyframes upDown{
-	from{background:#00337e}
-	50%{background:#bf1212}
-	to{background:#00337e}
+	from{background:#db6420}
+	50%{background:#00337e}
+	to{background:#db6420}
     }   
   
 
 .predictWrap .predictMain .sort {margin-top:30px;text-align:center;}
 .predictWrap .predictMain .sort div {
     display: inline-block; width: 100px; height: 100px; line-height: 100px; vertical-align: middle;
-    border:3px solid #00337e; border-radius: 50px; background: #fff; color:#00337e;
+    border:3px solid #db6420; border-radius: 50px; background: #fff; color:#00337e;
     font-size:16px; margin-right:10px;
 }
 .predictWrap .predictMain .sort div:last-child {margin:0}

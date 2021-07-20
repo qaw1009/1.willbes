@@ -3940,6 +3940,16 @@ body.memBody #Footer {
 	font-family: "굴림", "Gulim", "돋움", "Dotum", "Helvetica",
 		"Apple SD Gothic Neo", "sans-serif";
 }
+.answerBox {
+	border: 1px solid #5ab6eb;
+	color: #1a8bcc;
+	background: #fff;
+}
+.finishBox {
+	border: 1px solid #ed1c24;
+	color: #ed1c24;
+	background: #fff;
+}
 .blueBox {background: #1a8ccc;color:#fff;}
 .blueBoxborder {border:1px solid #1a8ccc; color:#1a8ccc;}
 .redBox {background: #ed1c24;color:#fff;}
@@ -6191,6 +6201,7 @@ body.memBody #Footer {
 	border-bottom: 1px solid #898989;
 	padding: 15px 10px;
 }
+.paymentCheck .bgblue {background:#e9f7fd}
 .paymentCheck h4 a {
 	float: right;
 	color: #0d74ae;
@@ -6205,6 +6216,12 @@ body.memBody #Footer {
 	font-size: 12px;
 	color: #999;
 }
+.paymentCheck .orderDetail {padding:0 20px}
+.paymentCheck .orderDetail > div {border-bottom:1px solid #f4f4f4; padding:10px 0}
+.paymentCheck .orderDetail > div div {padding:5px 0}
+.paymentCheck .orderDetail > div div strong {display:inline-block; width:100px; margin-right:10px; color:#999}
+.paymentCheck .orderDetail > div div:last-child {border-bottom:0}
+
 .paymentCheckInfo {
 	margin: 20px;
 	padding: 10px;

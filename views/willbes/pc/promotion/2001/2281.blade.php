@@ -72,7 +72,7 @@
         .content_guide_wrap .guide_tit{margin-bottom:50px; text-align:left; font-size:30px;}
 
         .content_guide_wrap .tabs {width:1000px; margin:0 auto;} 
-        .content_guide_wrap .tabs li {display:inline; float:left; width:25%}
+        .content_guide_wrap .tabs li {display:inline; float:left; width:33.33333%}
         .content_guide_wrap .tabs li a {display:block; text-align:center; height:60px; line-height:60px; font-size:140% !important; border:2px solid #f3f3f3; border-bottom:2px solid #202020; background:#f3f3f3}
         .content_guide_wrap .tabs li a:hover,
         .content_guide_wrap .tabs li a.active {border:2px solid #202020; border-bottom:2px solid #fff; color:#202020; background:#fff; font-weight:600}

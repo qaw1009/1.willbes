@@ -91,9 +91,13 @@
                                 <th>공부 인증 첨부 (필수!)</th>
                                 <td>
                                     <div>
-                                        <input type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this);" style="width:60%"/>&nbsp;&nbsp;
-                                        <a href="javascript:void(0);" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
-                                        {{--<p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>--}}
+                                        @if(sess_data('is_login') === true)
+                                            <input type="file" id="attach_file" name="attach_file" onchange="chkUploadFile(this);" style="width:60%"/>&nbsp;&nbsp;
+                                            <a href="javascript:void(0);" onclick="del_file();"><img src="https://static.willbes.net/public/images/promotion/2021/01/2034_btn_del.png" alt="삭제"></a>
+                                            {{--<p class="tx12 mt10">*파일의 크기는 2MB까지 업로드 가능, 이미지파일 (jpg, png등)만 가능합니다.</p>--}}
+                                        @else
+                                            <span onclick="loginCheck();">로그인 후 이용하여 주십시오.</span>
+                                        @endif
                                     </div>
                                 </td>                           
                             </tr>
@@ -105,7 +109,7 @@
                                 </th>
                                 <td>
                                     <div class="textarBx">
-                                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!"></textarea>
+                                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!" onclick="loginCheck();"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -222,6 +226,10 @@
             if(confirm("첨부파일을 삭제 하시겠습니까?")) {
                 $("#attach_file").val("");
             }
+        }
+
+        function loginCheck(){
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
         }
     </script>
 

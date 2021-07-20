@@ -125,10 +125,7 @@
         <div class="sky">
             <a href="#pass">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_sky01.jpg" alt="무제한 패스">
-            </a>     
-            <a href="#finalPass">
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_sky02.jpg" alt="파이널 패스">
-            </a>
+            </a>  
             <a href="#transfer">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_sky03.jpg" alt="타학원환승 재수강 할인 받기">
             </a>  
@@ -195,12 +192,9 @@
                         </div>                        
                     </div>       
                 </div>  
-                
-                <div class="final" id="finalPass">
-                    <input type="radio" id="y_pkg4" name="y_pkg" value="183767" />
-                    <label for="y_pkg4">
-                        <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
-                    </label>
+
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_bottom.jpg"  alt="파이널패스"/>
                 </div> 
 
                 <div class="check">
@@ -315,11 +309,17 @@
                     </div>       
                 </div>  
                 
+                {{--
                 <div class="final">
                     <input type="radio" id="y_pkg8" name="y_pkg" value="183767" />
                     <label for="y_pkg8">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_02.jpg"  alt="파이널패스"/>
                     </label>
+                </div> 
+                --}}
+
+                <div>
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2281_01_bottom.jpg"  alt="파이널패스"/>
                 </div> 
 
                 <div class="check">

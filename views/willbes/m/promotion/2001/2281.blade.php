@@ -14,7 +14,7 @@
         .evt01 {background:#f5f5f7; padding-bottom:50px; text-align:left}
         .evt01 .price {margin:0 40px 20px}
         .evt01 .price ul{margin-right:-10px}
-        .evt01 .price li {display:inline-block; float:left; width:calc(50% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px; padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
+        .evt01 .price li {display:inline-block; float:left; width:calc(33.33333% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px; padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
         .evt01 .price li.last {background:#3d0962}
         .evt01 .price li label {display:block}
         .evt01 .price:after {content:''; display:block; clear:both}
@@ -105,7 +105,9 @@
                     <li><input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1100000" onClick=""/> <label for="y_pkg1">110 만원<br>0원 무제한 PASS</label></li>
                     <li><input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="899000" onClick=""/> <label for="y_pkg2">89.9 만원<br>14개월 무제한 PASS</label></li>
                     <li><input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br>9개월 개편 PASS</label></li>
+                    {{--
                     <li class="last"><input type="radio" id="y_pkg4" name="y_pkg" value="183767" data-sale-price="349000" onClick=""/> <label for="y_pkg4">34.9 만원<br> 2021 FINAL PASS</label></li>
+                    --}}
                 </ul>
             </div>
             <div class="ext01txt">

@@ -64,6 +64,10 @@
                                 <a href="#none" onclick="goReviewWrite()">수강후기 작성하기</a>
                             </div>
                         @endif
+
+                        <div class="tx-red lh1_5 mt20">
+                            ※ 강의를 수강하지 않고 자료만 다운로드 받은 경우 수강한 것으로 간주합니다. (환불 시 해당 회차 차감)
+                        </div>
                     </td>
                 </tr>
                 </tbody>

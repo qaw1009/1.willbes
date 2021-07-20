@@ -43,16 +43,20 @@
                                 </div>                               
                             </div>  
 
-                            {{--
+
                             <div class="w-info tx-gray bdt-bright-gray lh1_5">
                                 ※ 해당 강좌는 회차별 자료 인쇄 제한이 있습니다.<br/>
                                 자료는 PC에서만 확인 가능합니다.
                             </div> 
-                            --}}
+
                             
                             <div class="lecReview bdt-bright-gray pt10">
                                 <a href="#none">수강후기 작성하기</a>
-                            </div>                            
+                            </div> 
+                            
+                            <div class="tx-red lh1_5 mt20">
+                                ※ 강의를 수강하지 않고 자료만 다운로드 받은 경우 수강한 것으로 간주합니다. (환불 시 해당 회차 차감)
+                            </div> 
                         </td>
                     </tr>
                 </tbody>

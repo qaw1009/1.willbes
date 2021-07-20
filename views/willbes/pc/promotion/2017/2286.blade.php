@@ -32,7 +32,7 @@
         .evt_table table td {text-align:left; padding:15px 40px}
         .evt_table table td.ctsBox .imgBox {max-width:40%; max-height:180px; overflow:hidden; float: left; margin:0 20px 10px 0}
         .evt_table table td.ctsBox img {max-width:100%}
-        .evt_table table td.ctsBox .imgBoxFull {width:100%; max-height:180px; overflow:hidden; margin-bottom:10px}
+        .evt_table table td.ctsBox .imgBoxFull {width:100%; max-height:360px; overflow:hidden; margin-bottom:10px}
         .evt_table table th .btnDel {display:block; background:#000; color:#fff; border-radius:4px; width:50px; padding:4px 0; margin:10px auto 0; font-size:12px}
 
         .evt_table input {vertical-align:middle}

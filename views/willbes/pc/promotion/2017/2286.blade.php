@@ -77,7 +77,6 @@
                 <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
                 <input type="hidden" name="register_type" value="promotion"/>
                 <input type="hidden" name="file_chk" value="Y"/>
-                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
                 <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or "" }}"/>
                 <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
                 <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
@@ -182,12 +181,6 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var _url = '{!! front_url('/event/registerStore') !!}';
-
-            if (!$.trim($("#register_data1").val())) {
-                alert('내용을 입력해 주세요.');
-                $("#register_data1").focus();
-                return;
-            }
 
             if (!$regi_form_register.find('input[name="attach_file"]').val()) {
                 alert('이미지를 등록해 주세요.');

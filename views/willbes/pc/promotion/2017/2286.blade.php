@@ -72,6 +72,17 @@
 
         <div class="evtCtnsBox event02">
             <form name="regi_form_register" id="regi_form_register">
+                {!! csrf_field() !!}
+                {!! method_field('POST') !!}
+                <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                <input type="hidden" name="register_type" value="promotion"/>
+                <input type="hidden" name="file_chk" value="Y"/>
+                <input type="hidden" name="target_params[]" value="register_data1"/> {{-- 체크 항목 전송 --}}
+                <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or "" }}"/>
+                <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+                <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+                <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
+
                 <div class="evt_table">
                     <table border="0" cellspacing="2" cellpadding="2">
                         <col width="20%" />
@@ -95,103 +106,19 @@
                                 </th>
                                 <td>
                                     <div class="textarBx">
-                                        <textarea id="event_comment" name="event_comment" cols="30" rows="5" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!"></textarea>
+                                        <textarea id="register_data1" name="register_data1" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!"></textarea>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="btns NSK-Black">
-                        <a href="#none">등록하기</a>
-                        <a href="#none">초기화</a>
+                        <a href="javascript:void(0);" onclick="fn_submit();">등록하기</a>
+                        <a href="javascript:void(0);" onclick="reset_form(this);">초기화</a>
                     </div>
                 </div>
 
-                <div class="evt_table mt100">
-                    <table border="0" cellspacing="2" cellpadding="2">
-                        <col width="20%" />
-                        <col  />
-                        <thead>
-                            <tr>
-                                <th>
-                                    구분
-                                </th>
-                                <th>
-                                    내용
-                                </th>                            
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="st02">
-                                    <div>14</div>
-                                    아이디<br/>
-                                    2021-00-00<br/>
-                                    <a href="#none" class="btnDel">삭제</a>
-                                </th>
-                                <td class="ctsBox">
-                                    <div class="imgBoxFull">
-                                        <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0318/20210318042626-564.jpg">
-                                    </div>
-                                </td>                            
-                            </tr>
-                            <tr>
-                                <th class="st02">
-                                    <div>15</div>
-                                    아이디<br/>
-                                    2021-00-00
-                                </th>
-                                <td class="ctsBox">
-                                    <div class="imgBoxFull">
-                                        <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0327/20210327143819-292.jpg">
-                                    </div>
-                                    다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다. 다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.
-                                </td>                            
-                            </tr>                            
-                            <tr>
-                                <th class="st02">
-                                    <div>13</div>
-                                    아이디<br/>
-                                    2021-00-00
-                                </th>
-                                <td class="ctsBox">
-                                    <div class="imgBoxFull">
-                                        <img src="https://ssam.willbes.net/public/uploads/willbes/event/member/2021/0306/20210306143307-516.jpg">
-                                    </div>
-                                    다음 카페 비밀댓글, 카카오톡 오픈채팅 등을 이용하여 노량진에서 강의하고 계신 여러 선생님들(교육학, 각 학원별 전공 다수)의 유료 자료(모의고사 자료 등), 교재 스캔 파일 등을 판매하다가 같이 공부하는 수험생 여러분의 신고로 해당 판매자가 붙잡히게 된 경우로 여러분들의 주의를 당부합니다.
-                                </td>                            
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="Paging mt50">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                        </ul>
-                    </div>
-
-                    <div class="evtSearch">
-                        <select id="" name="" title="" >
-                            <option selected="selected" value="내용">내용</option>
-                            <option value="아이디">아이디</option>
-                        </select>
-                        <input type="text" id="SEARCH" name="SEARCH" placeholder="내용 또는 아이디를 입력해 주세요" maxlength="30">
-                        <a onclick="" class="search-Btn">
-                            검색
-                        </a>
-                    </div>
-
+                <div class="evt_table mt100" id="studyCertWrap">
                 </div>
             </form>
         </div> 
@@ -220,9 +147,85 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">       
+    <script type="text/javascript">
+        var $regi_form_register = $('#regi_form_register');
 
-        
+        $(function(){
+            fnRegisterList();
+        });
+
+        function fnRegisterList(page,search_type,search_value){
+            var _url = '{{ site_url('/event/listRegisterAjax') }}';
+            var data = {
+                'el_idx' : '{{ $data['ElIdx'] }}',
+                'search_type' : search_type,
+                'search_value' : search_value,
+                'file_type': '_study_cert',
+                'limit' : 15,
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#studyCertWrap").html(ret);
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fn_submit() {
+            @if(ENVIRONMENT == 'production')
+                @if(date('YmdHi') > '202108160000')
+                alert('종료된 이벤트 입니다.');
+                return;
+                @endif
+            @endif
+
+            {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+
+            if (!$.trim($("#register_data1").val())) {
+                alert('내용을 입력해 주세요.');
+                $("#register_data1").focus();
+                return;
+            }
+
+            if (!$regi_form_register.find('input[name="attach_file"]').val()) {
+                alert('이미지를 등록해 주세요.');
+                $regi_form_register.find('input[name="attach_file"]').focus();
+                return;
+            }
+
+            if (confirm('저장하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('등록되었습니다.');
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function chkUploadFile(elem){
+            if($(elem).val()){
+                var filename =  $(elem).prop("files")[0].name;
+                var ext = filename.split('.').pop().toLowerCase();
+
+                if($.inArray(ext, ['gif','jpg','jpeg','png','bmp']) === -1) {
+                    $(elem).val("");
+                    alert('이미지 파일만 업로드 가능합니다.');
+                }
+            }
+        }
+
+        function reset_form(elem){
+            $(elem).closest('form').get(0).reset();
+        }
+
+        function del_file(){
+            if(confirm("첨부파일을 삭제 하시겠습니까?")) {
+                $("#attach_file").val("");
+            }
+        }
     </script>
 
 @stop

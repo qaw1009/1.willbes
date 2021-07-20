@@ -919,6 +919,11 @@ class Event extends \app\controllers\FrontController
         $el_idx = element('el_idx',$arr_input);
         $file_type = element('file_type',$arr_input);
         $limit = element('limit',$arr_input, $this->_paging_limit);
+        $search_value = element('search_value',$arr_input);
+        $search_type = element('search_type',$arr_input);
+
+        $get_page_params = 'list_keyword='.urlencode($search_value);
+        $get_page_params .= '&search_type='.$search_type;
 
         if(empty($el_idx) === true) {
             return $this->json_error('필수 데이터 누락입니다.');
@@ -926,15 +931,25 @@ class Event extends \app\controllers\FrontController
 
         $arr_condition = [
             'EQ' => [
+                'A.IsStatus' => 'Y',
                 'B.ElIdx' => $el_idx,
                 'B.IsStatus' => 'Y',
-                'A.IsStatus' => 'Y',
             ],
         ];
+
+        if(empty($search_type) === false){
+            $arr_condition['ORG']['LKB'] = [];
+            if($search_type == 'content'){
+                $arr_condition['ORG']['LKB']['A.EtcValue'] = $search_value;
+            }else if($search_type == 'id'){
+                $arr_condition['ORG']['LKB']['C.MemId'] = $search_value;
+            }
+        }
+
         $order_by = ['A.EmIdx' => 'DESC'];
 
         $total_rows = $this->eventFModel->listRegisterMember(true, $arr_condition);
-        $paging = $this->pagination('/event/listRegisterAjax/' . $el_idx, $total_rows, $limit, $this->_paging_count,true);
+        $paging = $this->pagination('/event/listRegisterAjax/' . $el_idx . '?' . $get_page_params, $total_rows, $limit, $this->_paging_count,true);
 
         if ($total_rows > 0) {
             $data = $this->eventFModel->listRegisterMember(false,$arr_condition,$paging['limit'],$paging['offset'],$order_by);
@@ -944,6 +959,7 @@ class Event extends \app\controllers\FrontController
             'data' => $data,
             'paging' => $paging,
             'total_rows' => $total_rows,
+            'arr_input' => $arr_input
         ]);
     }
 

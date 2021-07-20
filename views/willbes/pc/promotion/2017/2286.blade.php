@@ -105,7 +105,7 @@
                                 </th>
                                 <td>
                                     <div class="textarBx">
-                                        <textarea id="register_data1" name="register_data1" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!"></textarea>
+                                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="더위를 이기는 법, 체력 관리 법,&#10;좋은 휴식 추천, 집중력을 높이는 법 등 &#10;추천하고 싶은 나만의 슬럼프 극복법을 남겨 주세요~~!"></textarea>
                                     </div>
                                 </td>
                             </tr>
@@ -153,7 +153,7 @@
             fnRegisterList();
         });
 
-        function fnRegisterList(page,search_type,search_value){
+        function fnRegisterList(page,search_type,search_value,move){
             var _url = '{{ site_url('/event/listRegisterAjax') }}';
             var data = {
                 'el_idx' : '{{ $data['ElIdx'] }}',
@@ -166,6 +166,10 @@
             sendAjax(_url, data, function(ret) {
                 if (ret) {
                     $("#studyCertWrap").html(ret);
+                    if(move){
+                        var offset = $("#studyCertWrap").offset();
+                        $('html, body').animate({scrollTop : offset.top}, 400)
+                    }
                 }
             }, showAlertError, false, 'GET', 'html');
         }

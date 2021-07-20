@@ -52,18 +52,56 @@
         </div>
 
         <div class="paymentCheck">
-            <h4>2019-07-02 <a href="#none">주문상세보기 ></a></h4>
-            <ul>
+            <h4 class="bgblue">2019-07-02 <a href="#none">주문상세보기 ></a></h4>
+            <ul class="bgblue">
                 <li>경찰</li>
                 <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
                 <li>신용카드</li>        
             </ul>
-            <h4>2019-07-01 <a href="#none">주문상세보기 ></a></h4>
-            <ul>
+            <div class="orderDetail">
+                <div>
+                    <div><span class="aBox waitBox_block">강좌</span></div>
+                    <div>김현정 영어 기초 개념문법&김준기 기초 영문법 패키지</div>
+                    <div><strong>수강기간</strong>100일</div>
+                    <div><strong>실 결제금액</strong><span class="tx-blue">420,000원</span></div>
+                    <div><strong>주문/배송상태</strong>결제완료</div>
+                </div>
+                <div>
+                    <div><span class="aBox answerBox">패키지</span></div>
+                    <div>원유철 한국사 T-PASS (9개월)★교재무료증정</div>
+                    <div><strong>수강기간</strong>270일</div>
+                    <div><strong>실 결제금액</strong><span class="tx-blue">420,000원</span></div>
+                    <div><strong>주문/배송상태</strong>결제완료</div>
+                </div>
+                <div>
+                    <div><span class="aBox finishBox">사은품</span></div>
+                    <div>김원욱 형법 2.1 (기본서+부록) (자동지급상품)</div>
+                    <div><strong>실 결제금액</strong><span class="tx-blue">0원</span></div>
+                    <div><strong>주문/배송상태</strong>결제완료</div>
+                </div>
+                <div>
+                    <div><span class="aBox waitBox_block">강좌</span></div>
+                    <div>2020대비 조용석 실무종합 마무리특강</div>
+                    <div><strong>수강기간</strong>7일</div>
+                    <div><strong>실 결제금액</strong><span class="tx-blue">0원</span></div>
+                    <div><strong>주문/배송상태</strong>결제완료</div>
+                </div>
+            </div>
+            <h4 class="bgblue">2019-07-01 <a href="#none">주문상세보기 ></a></h4>
+            <ul class="bgblue">
                 <li>경찰</li>
                 <li>2019 신광은 형사소송법 기본이론 (19년 6월)</li>
                 <li>무통장입금(가상계좌)</li>        
             </ul>
+            <div class="orderDetail">
+                <div>
+                    <div><span class="aBox waitBox_block">강좌</span></div>
+                    <div>2021 이현진 감정평가 및 보상법규 파이널 스터디 (회차등록)</div>
+                    <div><strong>수강기간</strong>40일</div>
+                    <div><strong>실 결제금액</strong><span class="tx-blue">420,000원</span></div>
+                    <div><strong>주문/배송상태</strong>결제완료</div>
+                </div>
+            </div>
         </div>
 
         <div class="paymentCheckInfo">

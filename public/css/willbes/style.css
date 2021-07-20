@@ -10912,11 +10912,21 @@ table.testTable tr td.w-date {
 /* subContainer : Mypage : 결제관리 : orderTable */
 .orderTable.LeclistTable .listTable tr td {
 	line-height: 25px;
-	padding: 20px 0;
+	padding: 20px 5px;
 }
 .orderTable.LeclistTable .listTable .w-price {
 	text-align: center;
 }
+.orderTable tr.bgbule {background:#e9f7fd}
+.orderTable .orderDetail {padding:0 20px}
+.orderTable .orderDetail li {display: flex; align-items: stretch; border-bottom:1px solid #f4f4f4; padding:10px 0}
+.orderTable .orderDetail li div {text-align: center}
+.orderTable .orderDetail li div:nth-child(1) {width:10%}
+.orderTable .orderDetail li div:nth-child(2) {width:60%; text-align: left}
+.orderTable .orderDetail li div:nth-child(3) {width:10%}
+.orderTable .orderDetail li div:nth-child(4) {width:10%}
+.orderTable .orderDetail li div:nth-child(5) {width:10%}
+.orderTable .orderDetail li:last-child {border-bottom:0}
 
 /* subContainer : Mypage : 결제관리 : 포인트관리 */
 .willbes-Mypage-PointBox {

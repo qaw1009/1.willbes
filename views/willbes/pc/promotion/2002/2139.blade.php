@@ -101,11 +101,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2139_04.jpg"  alt="영상으로 만나보세요"/>
             <ul>
                 <li>                    
-                    <iframe src="https://www.youtube.com/embed/FQjASiTrgJo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/PzSNWzOKcs0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div>#탐정사 시험안내</div>
                 </li>
                 <li>
-                    <iframe src="https://www.youtube.com/embed/Um-ZonFcEP4?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/bM29qtP9Fag?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div>#한국탐정 KPD소개</div>
                 </li>
             </ul>            

@@ -59,6 +59,13 @@
 <script>
     var $register_search_form = $("#register_search_form");
 
+    // 엔터 금지
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+        }
+    }, true);
+
     $(function (){
         //검색
         $('#btn_search').click(function () {

@@ -32,8 +32,8 @@ class PredictFModel extends WB_Model
                             GROUP BY PrIdx) AS a
                         ) AS ScoreCnt -- 채점자
                         ,(SELECT COUNT(*) FROM lms_survey_set_answer WHERE SsIdx = pp.SpIdx ) AS SurveyCnt -- 설문
-                        ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView1 ),0) AS PageViewCnt1  -- 페이지뷰1
-                        ,ifnull((SELECT ReadCnt FROM lms_event_lecture WHERE PromotionCode = pc.PageView2 ),0) AS PageViewCnt2  -- 페이지뷰2
+                        ,ifnull((SELECT SUM(ReadCnt) FROM lms_event_lecture WHERE PromotionCode = pc.PageView1 ),0) AS PageViewCnt1  -- 페이지뷰1
+                        ,ifnull((SELECT SUM(ReadCnt) FROM lms_event_lecture WHERE PromotionCode = pc.PageView2 ),0) AS PageViewCnt2  -- 페이지뷰2
                         ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment1) as CommentCnt1 -- 댓글수1
                         ,(SELECT count(*) FROM lms_event_lecture el join lms_event_comment ec on el.ElIdx = ec.ElIdx where ec.IsStatus=\'Y\' and el.PromotionCode=pc.Comment2) as CommentCnt2 -- 댓글수2
                         ,( 

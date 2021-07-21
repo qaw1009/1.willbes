@@ -31,7 +31,7 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">
         <span class="skybanner">
-            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2255" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2254_sky.png" alt="스카이베너" ></a>
+            <a href="https://police.willbes.net/promotion/index/cate/3001/code/2289" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2254_sky.png" alt="스카이베너" ></a>
         </span>    
 
         <div class="evtCtnsBox wb_top" id="main">

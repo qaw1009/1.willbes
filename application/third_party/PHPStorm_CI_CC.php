@@ -287,9 +287,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property UpdateLectureInfoFModel $updateLectureInfoFModel           UpdateLectureInfo Model Class
  * @property ExamTakeInfoFModel $examTakeInfoFModel                     ExamTakeInfoFModel Model Class
  * @property AuthGiveFModel $authGiveFModel                                           Auth Model Class
+ * @property PersonalityAptitudeExamFModel $personalityAptitudeExamFModel   PersonalityAptitudeExam Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  * @property EventAModel $eventAModel                                           API Event Model Class
+ * @property PersonalityAptitudeExamAModel $personalityAptitudeExamAModel       API PersonalityAptitudeExam Model Class
  ***************** BtoB **********************************************************************************
  * @property BtobLoginModel $btobLoginModel                                     Btob Login Model Class
  * @property BtobLoginLogModel $btobLoginLogModel                               Btob Login Log Model Class

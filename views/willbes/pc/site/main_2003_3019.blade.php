@@ -376,7 +376,7 @@
 
     <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox">
         <div class="Layer-Cont" id="youtube_box">
-            <iframe width="850" height="482" src="https://www.youtube.com/embed/nAQUdmuvUuw?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="850" height="482" src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <ul class="btnWrapbt popbtn mt10">
             <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>

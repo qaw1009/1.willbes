@@ -44,26 +44,7 @@
         .tabCts {
             position:relative; width:1120px; margin:0 auto; text-align:center; font-size:14px;
         }
-        .tabCts .download span {position:absolute; top:660px; display:block; width:72px; height:24px; line-height:24px; text-align:center; z-index:1}
-        .tabCts .download span:nth-child(1) {left:160px;}
-        .tabCts .download span:nth-child(2) {left:362px;}
-        .tabCts .download span:nth-child(3) {left:572px;}
-        .tabCts .download span:nth-child(4) {left:760px;}
-        .tabCts .download span:nth-child(5) {left:940px;}
-        .tabCts .download span a {display:block; color:#fff; background:#d18f04; border-radius:14px;}
-        .tabCts .download span a:hover {background:#e50001}
-        .tabCts .youtube {width:100%; text-align:center; margin:3em 0}
-        .tabCts .youtube iframe {width:800px; height:453px; margin:0 auto}
-
-        #content_2_01 {padding-top:600px;}        
-        .download {font-weight:bold;font-size:17px;padding-bottom:35px;color:#806ae9}
-
-        .tabMenu{width:360px;margin:0 auto 100px;}
-        .tabMenu li{display:inline;float:left;width:50%;}
-        .tabMenu li a{display:block;text-align:center;border:3px solid #959595;font-size:140%;
-            font-weight:500;margin-right:2px;padding:20px 0;color:#959595;background:#fff;border-radius:25px;}
-        .tabMenu li a.active{color:#fff;background:#959595;}
-
+      
         .boardD {width:980px; border-spacing:0px; border:1px solid #000; table-layout:auto; color:#666; margin:0 auto 160px auto}
         .boardD caption {display:none}
         .boardD th,
@@ -626,27 +607,6 @@
     <!-- End Container -->
 
     <script type="text/javascript">
-        $('.tabMenu').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-            $content = $($active[0].hash);
-
-            $links.not($active).each(function(){
-                $(this.hash).hide();
-            });
-
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-                $active.removeClass('active');
-                $content.hide();
-                $active = $(this);
-                $content = $(this.hash);
-                $active.addClass('active');
-                $content.show();
-                e.preventDefault();
-            });
-        });
 
         /*tab*/
         $(document).ready(function(){

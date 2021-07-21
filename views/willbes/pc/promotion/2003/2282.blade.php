@@ -115,7 +115,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt03.png" alt="">
             <h2><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_txt04.png" alt=""></h2>
             <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/nAQUdmuvUuw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>    
 

@@ -36,6 +36,8 @@
         .youtubeBox01 iframe{width:420px;height:240px;}
         .wb_01 .inter01{position:absolute;left:50%;margin-left:-450px;top:425px;}
         .wb_01 .inter02{position:absolute;left:50%;margin-left:30px;top:425px;}
+        .wb_01 .inter03{position:absolute;left:50%;margin-left:-450px;bottom:289px;}
+        .wb_01 .inter04{position:absolute;left:50%;margin-left:30px;bottom:289px;}
         
 
        /*탭(이미지)*/
@@ -66,12 +68,18 @@
 		</div>
 
         <div class="evtCtnsBox wb_01">
-			<img src="https://static.willbes.net/public/images/promotion/2020/03/1557_01.jpg" alt="최종합격생 인터뷰"/>	           
+			<img src="https://static.willbes.net/public/images/promotion/2021/07/1557_01.jpg" alt="최종합격생 인터뷰"/>	           
             <div id="tab1" class="youtubeBox01 inter01">
-                <iframe src="https://www.youtube.com/embed/HVvraTegmuY" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/HVvraTegmuY?rel=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
             <div id="tab2" class="youtubeBox01 inter02">
-                <iframe src="https://www.youtube.com/embed/4UiP-Q5VMyw" frameborder="0" allowfullscreen=""></iframe>
+                <iframe src="https://www.youtube.com/embed/4UiP-Q5VMyw?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div> 
+            <div id="tab3" class="youtubeBox01 inter03">
+                <iframe src="https://www.youtube.com/embed/_jJxk-A7Gs0?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            </div> 
+            <div id="tab4" class="youtubeBox01 inter04">
+                <iframe src="https://www.youtube.com/embed/4UiP-Q5VMyw?rel=0" frameborder="0" allowfullscreen=""></iframe>
             </div> 		                  
 		</div>
 

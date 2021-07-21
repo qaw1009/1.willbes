@@ -51,7 +51,6 @@
         .boardD td {font-size:14px}
         .boardD tr:nth-child(1) {background:#D9D9D9;font-weight:bold;}
         .boardD tr:nth-child(2) {background:#D9D9D9;font-weight:bold;}
-        .boardD tr td:last-child{color:#ff0000;font-weight:bold;}
         .boardD th {padding:15px 5px; background:#f5f5f5; border-right:1px solid #000; border-bottom:1px solid #000; color:#333}
         .boardD thead th {background:#eee; color:#333}
         .boardD td {padding:15px 5px; margin:0; border:none; text-align:center; border-right:1px solid #000; border-bottom:1px solid #000;color:#000;}
@@ -125,7 +124,7 @@
                         @if(strtotime(date("Y-m-d H:i", time())) >= strtotime("202107241140"))
                             <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2293/SsIdx/115' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
                         @else
-                            <a id='tab2' href="javascript:alert('7월 24일 11시 40분 OPEN!');">
+                            <a id='tab2' href="javascript:alert('준비중입니다.');">
                         @endif
                             <span>시험 후 체감난이도 투표하고</span>
                             <div class="NSK-Black">기출해설강의 무료로 수강하자!</div>
@@ -151,408 +150,408 @@
                     <th colspan="2" >2020년</th>
                 </tr>
                 <tr>
-                    <th>선발예정인원</th>
-                    <th>접수인원</th>
-                    <th>경쟁률</th>
-                    <th>경쟁률</th>
-                    <th>합격선(최고점)</th>
+                    <th >선발예정인원</th>
+                    <th >접수인원</th>
+                    <th >경쟁률</th>
+                    <th >경쟁률</th>
+                    <th >합격선(최고점)</th>
                 </tr>
                 <tr>
-                    <th rowspan="10">국방부</th>
-                    <td>행정 9급</td>
-                    <td>150</td>
-                    <td>9,847</td>
-                    <td>65.65:1</td>
-                    <td>142.90:1</td>
-                    <td>74.67</td>
+                    <th  rowspan="10">국방부</th>
+                    <td >행정 9급</td>
+                    <td >150</td>
+                    <td >9,847</td>
+                    <td >65.65:1</td>
+                    <td >142.90:1</td>
+                    <td >74.67</td>
                 </tr>
                 <tr>
-                    <td>행정 7급</td>
-                    <td>8</td>
-                    <td>699</td>
-                    <td>87.38:1</td>
-                    <td>117.80:1</td>
-                    <td>78</td>
+                    <td >행정 7급</td>
+                    <td >8</td>
+                    <td >699</td>
+                    <td >87.38:1</td>
+                    <td >117.80:1</td>
+                    <td >78</td>
                 </tr>
                 <tr>
-                    <td>군수 9급</td>
-                    <td>2</td>
-                    <td>392</td>
-                    <td>196.0:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >군수 9급</td>
+                    <td >2</td>
+                    <td >392</td>
+                    <td >196.0:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>군사정보 9급</td>
-                    <td>17</td>
-                    <td>377</td>
-                    <td>22.18:1</td>
-                    <td>47.56:1</td>
-                    <td>69.33</td>
+                    <td >군사정보 9급</td>
+                    <td >17</td>
+                    <td >377</td>
+                    <td >22.18:1</td>
+                    <td >47.56:1</td>
+                    <td >69.33</td>
                 </tr>
                 <tr>
-                    <td>군사정보 7급</td>
-                    <td>39</td>
-                    <td>699</td>
-                    <td>17.92:1</td>
-                    <td>15.56:1</td>
-                    <td>73</td>
+                    <td >군사정보 7급</td>
+                    <td >39</td>
+                    <td >699</td>
+                    <td >17.92:1</td>
+                    <td >15.56:1</td>
+                    <td >73</td>
                 </tr>
                 <tr>
-                    <td>전자 9급</td>
-                    <td>6</td>
-                    <td>43</td>
-                    <td>7.17:1</td>
-                    <td>21.80:1</td>
-                    <td>56.33</td>
+                    <td >전자 9급</td>
+                    <td >6</td>
+                    <td >43</td>
+                    <td >7.17:1</td>
+                    <td >21.80:1</td>
+                    <td >56.33</td>
                 </tr>
                 <tr>
-                    <td>전기 9급</td>
-                    <td>12</td>
-                    <td>287</td>
-                    <td>23.92:1</td>
-                    <td>81.0:1</td>
-                    <td>77</td>
+                    <td >전기 9급</td>
+                    <td >12</td>
+                    <td >287</td>
+                    <td >23.92:1</td>
+                    <td >81.0:1</td>
+                    <td >77</td>
                 </tr>
                 <tr>
-                    <td>전기 7급</td>
-                    <td>6</td>
-                    <td>163</td>
-                    <td>27.17:1</td>
-                    <td>100.0:1</td>
-                    <td>70</td>
+                    <td >전기 7급</td>
+                    <td >6</td>
+                    <td >163</td>
+                    <td >27.17:1</td>
+                    <td >100.0:1</td>
+                    <td >70</td>
                 </tr>
                 <tr>
-                    <td>통신 9급</td>
-                    <td>57</td>
-                    <td>262</td>
-                    <td>4.60:1</td>
-                    <td>19.25:1</td>
-                    <td>59.67</td>
+                    <td >통신 9급</td>
+                    <td >57</td>
+                    <td >262</td>
+                    <td >4.60:1</td>
+                    <td >19.25:1</td>
+                    <td >59.67</td>
                 </tr>
                 <tr>
-                    <td>통신 7급</td>
-                    <td>12</td>
-                    <td>70</td>
-                    <td>5.83:1</td>
-                    <td>22.0:1</td>
-                    <td>57</td>
+                    <td >통신 7급</td>
+                    <td >12</td>
+                    <td >70</td>
+                    <td >5.83:1</td>
+                    <td >22.0:1</td>
+                    <td >57</td>
                 </tr>
                 <tr>
-                    <th rowspan="11">육군</th>
-                    <td>행정 9급</td>
-                    <td>481</td>
-                    <td>13,840</td>
-                    <td>28.77:1</td>
-                    <td>32.80:1</td>
-                    <td>72</td>
+                    <th  rowspan="11">육군</th>
+                    <td >행정 9급</td>
+                    <td >481</td>
+                    <td >13,840</td>
+                    <td >28.77:1</td>
+                    <td >32.80:1</td>
+                    <td >72</td>
                 </tr>
                 <tr>
-                    <td>행정 7급</td>
-                    <td>116</td>
-                    <td>890</td>
-                    <td>7.67:1</td>
-                    <td>7.20:1</td>
-                    <td>62</td>
+                    <td >행정 7급</td>
+                    <td >116</td>
+                    <td >890</td>
+                    <td >7.67:1</td>
+                    <td >7.20:1</td>
+                    <td >62</td>
                 </tr>
                 <tr>
-                    <td>군수 9급</td>
-                    <td>409</td>
-                    <td>6,766</td>
-                    <td>16.54:1</td>
-                    <td>16.80:1</td>
-                    <td>70.67</td>
+                    <td >군수 9급</td>
+                    <td >409</td>
+                    <td >6,766</td>
+                    <td >16.54:1</td>
+                    <td >16.80:1</td>
+                    <td >70.67</td>
                 </tr>
                 <tr>
-                    <td>군수 7급</td>
-                    <td>94</td>
-                    <td>684</td>
-                    <td>7.28:1</td>
-                    <td>5.10:1</td>
-                    <td>60</td>
+                    <td >군수 7급</td>
+                    <td >94</td>
+                    <td >684</td>
+                    <td >7.28:1</td>
+                    <td >5.10:1</td>
+                    <td >60</td>
                 </tr>
                 <tr>
-                    <td>군사정보 9급</td>
-                    <td>103</td>
-                    <td>1,297</td>
-                    <td>12.59:1</td>
-                    <td>22.70:1</td>
-                    <td>69.33</td>
+                    <td >군사정보 9급</td>
+                    <td >103</td>
+                    <td >1,297</td>
+                    <td >12.59:1</td>
+                    <td >22.70:1</td>
+                    <td >69.33</td>
                 </tr>
                 <tr>
-                    <td>군사정보 7급</td>
-                    <td>22</td>
-                    <td>189</td>
-                    <td>8.59:1</td>
-                    <td>6.30:1</td>
-                    <td>65</td>
+                    <td >군사정보 7급</td>
+                    <td >22</td>
+                    <td >189</td>
+                    <td >8.59:1</td>
+                    <td >6.30:1</td>
+                    <td >65</td>
                 </tr>
                 <tr>
-                    <td>전자 9급</td>
-                    <td>120</td>
-                    <td>348</td>
-                    <td>2.90:1</td>
-                    <td>6.80:1</td>
-                    <td>60</td>
+                    <td >전자 9급</td>
+                    <td >120</td>
+                    <td >348</td>
+                    <td >2.90:1</td>
+                    <td >6.80:1</td>
+                    <td >60</td>
                 </tr>
                 <tr>
-                    <td>전자 7급</td>
-                    <td>28</td>
-                    <td>42</td>
-                    <td>1.50:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >전자 7급</td>
+                    <td >28</td>
+                    <td >42</td>
+                    <td >1.50:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>전기 9급</td>
-                    <td>82</td>
-                    <td>793</td>
-                    <td>9.67:1</td>
-                    <td>23.50:1</td>
-                    <td>73.67</td>
+                    <td >전기 9급</td>
+                    <td >82</td>
+                    <td >793</td>
+                    <td >9.67:1</td>
+                    <td >23.50:1</td>
+                    <td >73.67</td>
                 </tr>
                 <tr>
-                    <td>통신 9급</td>
-                    <td>269</td>
-                    <td>726</td>
-                    <td>2.70:1</td>
-                    <td>4.90:1</td>
-                    <td>46.67</td>
+                    <td >통신 9급</td>
+                    <td >269</td>
+                    <td >726</td>
+                    <td >2.70:1</td>
+                    <td >4.90:1</td>
+                    <td >46.67</td>
                 </tr>
                 <tr>
-                    <td>통신 7급</td>
-                    <td>21</td>
-                    <td>336</td>
-                    <td>16.0:1</td>
-                    <td>10.0:1</td>
-                    <td>-</td>
+                    <td >통신 7급</td>
+                    <td >21</td>
+                    <td >336</td>
+                    <td >16.0:1</td>
+                    <td >10.0:1</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <th rowspan="11">해군</th>
-                    <td>행정 9급</td>
-                    <td>47</td>
-                    <td>1,412</td>
-                    <td>30.04:1</td>
-                    <td>226.0:1</td>
-                    <td>73.33</td>
+                    <th  rowspan="11">해군</th>
+                    <td >행정 9급</td>
+                    <td >47</td>
+                    <td >1,412</td>
+                    <td >30.04:1</td>
+                    <td >226.0:1</td>
+                    <td >73.33</td>
                 </tr>
                 <tr>
-                    <td>행정 7급</td>
-                    <td>11</td>
-                    <td>85</td>
-                    <td>7.73:1</td>
-                    <td>9.0:1</td>
-                    <td>74</td>
+                    <td >행정 7급</td>
+                    <td >11</td>
+                    <td >85</td>
+                    <td >7.73:1</td>
+                    <td >9.0:1</td>
+                    <td >74</td>
                 </tr>
                 <tr>
-                    <td>군수 9급</td>
-                    <td>17</td>
-                    <td>559</td>
-                    <td>32.88:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >군수 9급</td>
+                    <td >17</td>
+                    <td >559</td>
+                    <td >32.88:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>군수 7급</td>
-                    <td>2</td>
-                    <td>25</td>
-                    <td>12.50:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >군수 7급</td>
+                    <td >2</td>
+                    <td >25</td>
+                    <td >12.50:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>군사정보 9급</td>
-                    <td>3</td>
-                    <td>58</td>
-                    <td>19.33:1</td>
-                    <td>144.0:1</td>
-                    <td>65.33</td>
+                    <td >군사정보 9급</td>
+                    <td >3</td>
+                    <td >58</td>
+                    <td >19.33:1</td>
+                    <td >144.0:1</td>
+                    <td >65.33</td>
                 </tr>
                 <tr>
-                    <td>전자 9급</td>
-                    <td>17</td>
-                    <td>66</td>
-                    <td>3.88:1</td>
-                    <td>21.0:1</td>
-                    <td>67</td>
+                    <td >전자 9급</td>
+                    <td >17</td>
+                    <td >66</td>
+                    <td >3.88:1</td>
+                    <td >21.0:1</td>
+                    <td >67</td>
                 </tr>
                 <tr>
-                    <td>전자 7급</td>
-                    <td>5</td>
-                    <td>7</td>
-                    <td>1.40:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >전자 7급</td>
+                    <td >5</td>
+                    <td >7</td>
+                    <td >1.40:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>전기 9급</td>
-                    <td>9</td>
-                    <td>52</td>
-                    <td>5.78:1</td>
-                    <td>50.0:1</td>
-                    <td>75.67</td>
+                    <td >전기 9급</td>
+                    <td >9</td>
+                    <td >52</td>
+                    <td >5.78:1</td>
+                    <td >50.0:1</td>
+                    <td >75.67</td>
                 </tr>
                 <tr>
-                    <td>전기 7급</td>
-                    <td>7</td>
-                    <td>62</td>
-                    <td>8.86:1</td>
-                    <td>21.0:1</td>
-                    <td>66</td>
+                    <td >전기 7급</td>
+                    <td >7</td>
+                    <td >62</td>
+                    <td >8.86:1</td>
+                    <td >21.0:1</td>
+                    <td >66</td>
                 </tr>
                 <tr>
-                    <td>통신 9급</td>
-                    <td>8</td>
-                    <td>37</td>
-                    <td>4.63:1</td>
-                    <td>31.0:1</td>
-                    <td>54.33</td>
+                    <td >통신 9급</td>
+                    <td >8</td>
+                    <td >37</td>
+                    <td >4.63:1</td>
+                    <td >31.0:1</td>
+                    <td >54.33</td>
                 </tr>
                 <tr>
-                    <td>통신 7급</td>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>1.0:1</td>
-                    <td>7.0:1</td>
-                    <td>-</td>
+                    <td >통신 7급</td>
+                    <td >2</td>
+                    <td >2</td>
+                    <td >1.0:1</td>
+                    <td >7.0:1</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <th rowspan="7">해병대</th>
-                    <td>행정 9급</td>
-                    <td>6</td>
-                    <td>242</td>
-                    <td>40.33:1</td>
-                    <td>88.0:1</td>
-                    <td>65.33</td>
+                    <th  rowspan="7">해병대</th>
+                    <td >행정 9급</td>
+                    <td >6</td>
+                    <td >242</td>
+                    <td >40.33:1</td>
+                    <td >88.0:1</td>
+                    <td >65.33</td>
                 </tr>
                 <tr>
-                    <td>행정 7급</td>
-                    <td>4</td>
-                    <td>28</td>
-                    <td>7.0:1</td>
-                    <td>4.0:1</td>
-                    <td>62</td>
+                    <td >행정 7급</td>
+                    <td >4</td>
+                    <td >28</td>
+                    <td >7.0:1</td>
+                    <td >4.0:1</td>
+                    <td >62</td>
                 </tr>
                 <tr>
-                    <td>군수 9급</td>
-                    <td>9</td>
-                    <td>139</td>
-                    <td>15.44:1</td>
-                    <td>156.0:1</td>
-                    <td>66.67</td>
+                    <td >군수 9급</td>
+                    <td >9</td>
+                    <td >139</td>
+                    <td >15.44:1</td>
+                    <td >156.0:1</td>
+                    <td >66.67</td>
                 </tr>
                 <tr>
-                    <td>군수 7급</td>
-                    <td>2</td>
-                    <td>15</td>
-                    <td>7.50:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >군수 7급</td>
+                    <td >2</td>
+                    <td >15</td>
+                    <td >7.50:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>군사정보 9급</td>
-                    <td>5</td>
-                    <td>56</td>
-                    <td>11.20:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >군사정보 9급</td>
+                    <td >5</td>
+                    <td >56</td>
+                    <td >11.20:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>전기 9급</td>
-                    <td>2</td>
-                    <td>8</td>
-                    <td>4.0:1</td>
-                    <td>20.0:1</td>
-                    <td>69.67</td>
+                    <td >전기 9급</td>
+                    <td >2</td>
+                    <td >8</td>
+                    <td >4.0:1</td>
+                    <td >20.0:1</td>
+                    <td >69.67</td>
                 </tr>
                 <tr>
-                    <td>통신 9급</td>
-                    <td>9</td>
-                    <td>12</td>
-                    <td>1.33:1</td>
-                    <td>12.0:1</td>
-                    <td>52</td>
+                    <td >통신 9급</td>
+                    <td >9</td>
+                    <td >12</td>
+                    <td >1.33:1</td>
+                    <td >12.0:1</td>
+                    <td >52</td>
                 </tr>
                 <tr>
-                    <th rowspan="10">공군</th>
-                    <td>행정 9급</td>
-                    <td>44</td>
-                    <td>1,894</td>
-                    <td>43.05:1</td>
-                    <td>128.60:1</td>
-                    <td>74.66</td>
+                    <th  rowspan="10">공군</th>
+                    <td >행정 9급</td>
+                    <td >44</td>
+                    <td >1,894</td>
+                    <td >43.05:1</td>
+                    <td >128.60:1</td>
+                    <td >74.66</td>
                 </tr>
                 <tr>
-                    <td>행정 7급</td>
-                    <td>12</td>
-                    <td>205</td>
-                    <td>17.08:1</td>
-                    <td>29.70:1</td>
-                    <td>65</td>
+                    <td >행정 7급</td>
+                    <td >12</td>
+                    <td >205</td>
+                    <td >17.08:1</td>
+                    <td >29.70:1</td>
+                    <td >65</td>
                 </tr>
                 <tr>
-                    <td>군수 9급</td>
-                    <td>29</td>
-                    <td>892</td>
-                    <td>30.76:1</td>
-                    <td>60.10:1</td>
-                    <td>70.66</td>
+                    <td >군수 9급</td>
+                    <td >29</td>
+                    <td >892</td>
+                    <td >30.76:1</td>
+                    <td >60.10:1</td>
+                    <td >70.66</td>
                 </tr>
                 <tr>
-                    <td>군사정보 9급</td>
-                    <td>8</td>
-                    <td>174</td>
-                    <td>21.75:1</td>
-                    <td>52.20:1</td>
-                    <td>66.66</td>
+                    <td >군사정보 9급</td>
+                    <td >8</td>
+                    <td >174</td>
+                    <td >21.75:1</td>
+                    <td >52.20:1</td>
+                    <td >66.66</td>
                 </tr>
                 <tr>
-                    <td>전자 9급</td>
-                    <td>25</td>
-                    <td>106</td>
-                    <td>4.24:1</td>
-                    <td>23.20:1</td>
-                    <td>64</td>
+                    <td >전자 9급</td>
+                    <td >25</td>
+                    <td >106</td>
+                    <td >4.24:1</td>
+                    <td >23.20:1</td>
+                    <td >64</td>
                 </tr>
                 <tr>
-                    <td>전자 7급</td>
-                    <td>7</td>
-                    <td>55</td>
-                    <td>7.86:1</td>
-                    <td>14.80:1</td>
-                    <td>66</td>
+                    <td >전자 7급</td>
+                    <td >7</td>
+                    <td >55</td>
+                    <td >7.86:1</td>
+                    <td >14.80:1</td>
+                    <td >66</td>
                 </tr>
                 <tr>
-                    <td>전기 9급</td>
-                    <td>8</td>
-                    <td>121</td>
-                    <td>15.13:1</td>
-                    <td>51.50:1</td>
-                    <td>75.66</td>
+                    <td >전기 9급</td>
+                    <td >8</td>
+                    <td >121</td>
+                    <td >15.13:1</td>
+                    <td >51.50:1</td>
+                    <td >75.66</td>
                 </tr>
                 <tr>
-                    <td>전기 7급</td>
-                    <td>2</td>
-                    <td>24</td>
-                    <td>12.0:1</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td >전기 7급</td>
+                    <td >2</td>
+                    <td >24</td>
+                    <td >12.0:1</td>
+                    <td >-</td>
+                    <td >-</td>
                 </tr>
                 <tr>
-                    <td>통신 9급</td>
-                    <td>29</td>
-                    <td>120</td>
-                    <td>4.14:1</td>
-                    <td>24.80:1</td>
-                    <td>53.33</td>
+                    <td >통신 9급</td>
+                    <td >29</td>
+                    <td >120</td>
+                    <td >4.14:1</td>
+                    <td >24.80:1</td>
+                    <td >53.33</td>
                 </tr>
                 <tr>
-                    <td>통신 7급</td>
-                    <td>7</td>
-                    <td>17</td>
-                    <td>2.43:1</td>
-                    <td>11.0:1</td>
-                    <td>81</td>
+                    <td >통신 7급</td>
+                    <td >7</td>
+                    <td >17</td>
+                    <td >2.43:1</td>
+                    <td >11.0:1</td>
+                    <td >81</td>
                 </tr>
             </table>                
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2293_01.jpg" title="" />

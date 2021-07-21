@@ -115,14 +115,14 @@
             <div class="evtMenu" id="evtMenu">
                 <ul>
                     <li>
-                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2293/SsIdx/115' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=1#content_1') }}">
+                        <a id='tab1' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2293/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '115') . '?tab=1#content_1') }}">
                             <span>지난 군무원 시험으로</span>
                             <div class="NSK-Black">올해의 군무원 시험을 알아보자!</div>
                         </a>
                     </li>
                     <li>
                         @if(strtotime(date("Y-m-d H:i", time())) >= strtotime("202107241140"))
-                            <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2293/SsIdx/115' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '') . '?tab=2#content_2') }}">
+                            <a id='tab2' href="{{ site_url('/promotion/index/cate/' . $__cfg['CateCode'] . '/code/2293/SsIdx/' . (empty($arr_promotion_params['SsIdx']) === false ? $arr_promotion_params['SsIdx'] : '115') . '?tab=2#content_2') }}">
                         @else
                             <a id='tab2' href="javascript:alert('7.24(토) 11:40 오픈!');">
                         @endif

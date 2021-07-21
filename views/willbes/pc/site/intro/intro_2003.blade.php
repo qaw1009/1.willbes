@@ -60,11 +60,13 @@
             </ul>
         </div>
 
+        {{--
         <div class="gosi-bnfull-Sec">
             <div class="gosi-bnfull">
                 {!! banner_html(element('인트로_상단띠배너', $data['banner']), 'sliderBar') !!}
             </div>
         </div>
+        --}}
 
         <div class="Section gosi-gate-Sec">
             <div class="widthAuto">

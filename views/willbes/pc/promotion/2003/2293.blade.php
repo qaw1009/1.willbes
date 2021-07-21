@@ -51,7 +51,7 @@
         .boardD td {font-size:14px}
         .boardD tr:nth-child(1) {background:#D9D9D9;font-weight:bold;}
         .boardD tr:nth-child(2) {background:#D9D9D9;font-weight:bold;}
-        .boardD tr td:last-child {background:#ff0000;font-weight:bold;}
+        .boardD tr td:last-child {color:#ff0000;font-weight:bold;}
         .boardD th {padding:15px 5px; background:#f5f5f5; border-right:1px solid #000; border-bottom:1px solid #000; color:#333}
         .boardD thead th {background:#eee; color:#333}
         .boardD td {padding:15px 5px; margin:0; border:none; text-align:center; border-right:1px solid #000; border-bottom:1px solid #000;color:#000;}

@@ -558,7 +558,6 @@
         </div>
 
         <!--시험총평 및 시험후기-->
-        @if(strtotime(date("Y-m-d H:i", time())) >= strtotime("202107241140"))
         <div id="content_2" class="tabCts Cts02">
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2293_tit2.jpg" title="" />
             @include('willbes.pc.eventsurvey.show_graph_partial',array('is_series' => 'N')) {{-- is_series(직렬: Y, 직렬아님: N) --}}
@@ -608,7 +607,6 @@
                 </div>
             </div>
         </div>
-        @endif
     </div>
     <!-- End Container -->
 

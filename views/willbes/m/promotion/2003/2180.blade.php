@@ -90,7 +90,7 @@
         <div class="evtCtnsBox evt03">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2180m_03.jpg" alt="수강신청" >
-                <a href="javascript:go_PassLecture('173664');" title="수강신청" style="position: absolute; left: 74.72%; top: 84.58%; width: 16.94%; height: 7.49%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('180928');" title="수강신청" style="position: absolute; left: 74.72%; top: 84.58%; width: 16.94%; height: 7.49%; z-index: 2;"></a>
             </div>
             <div class="check">
                 <label>

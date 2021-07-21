@@ -124,6 +124,30 @@
                         </div>
                     </div>
                 </li>
+                <li>
+                    <div class="bnBig">
+                        <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                        </a>
+                    </div>
+                    <div class="bnSm">
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#none">
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                            </a>
+                        </div>
+                    </div>
+                </li>
             </ul>                    
         </div>   
 

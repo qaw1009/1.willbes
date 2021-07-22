@@ -102,8 +102,6 @@
         </div>
     </div> 
 
-
-
     <div class="Section gosi-gate-Sec">                
         <div class="gosi-gate-bntop-img">
             <div class="gate-bntop-Slider mainSlider01">
@@ -349,10 +347,7 @@
                         </div>
                     </li>
                 </ul> 
-
-            </div>
-
-                     
+            </div>                     
         </div>   
 
         <div class="MaintabList">
@@ -398,15 +393,14 @@
                         <a data-swiper-slide-index="8" href="javascript:void(0);">산림자원직</a>
                         <a data-swiper-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a>
                     </div>
-                </div> 
-                
+                </div>                 
             </div>
         </div> 
     </div>
 
     <div class="Section newsWrap">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">지금 바로 주목해야 할 새로운 소식! </div> 
+            <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>새로운 소식!</span></div> 
             <div class="newsBox">
                 <ul class="newsSlider">
                     <li>
@@ -466,7 +460,7 @@
     
     <div class="Section gosi-bnfull02">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">초보 수험생이라면, 꼭 확인해보세요!</div>
+            <div class="will-nTit NSK-Black"><span>초보 수험생</span>이라면, <span>꼭</span> 확인해보세요!</div>
         </div>
         <div class="slider">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_2000x220.jpg" alt="배너명"></a>
@@ -484,7 +478,7 @@
 
     <div class="Section tpassWrap">        
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, 윌비스 T-PASS!</div>
+            <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
             <div class="tpassLeft">
                 <div class="slider">
                     <a href="#none">
@@ -569,7 +563,7 @@
 
     <div class="Section castWrap">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 윌비스 YOUTUBE 영상을 시청해보세요!</div>  
+            <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 <span>윌비스 YOUTUBE 영상</span>을 시청해보세요!</div>  
             <div class="castBox">
                 <ul class="castslider">
                     <li>
@@ -946,7 +940,7 @@
 
     <div class="Section gosi-gate-bn02">
         <div class="widthAuto pick">  
-            <div class="will-nTit NSK-Black mb40">윌비스공무원학원 노량진캠퍼스에서는 무엇을 개강하나요?</div> 
+            <div class="will-nTit NSK-Black mb40">윌비스 공무원학원 <span>노량진 캠퍼스</span>에서는 무엇을 개강하나요?</div> 
 
             <div class="slider">
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_1120x185.jpg" alt="배너명"></a>
@@ -1072,7 +1066,6 @@
             </div>            
         </div>
     </div>
-    <!-- CS센터 //-->
 
     <div id="QuickMenu" class="MainQuickMenu">
         <ul>

@@ -1204,7 +1204,7 @@
 
         //진행중인 모든 이벤트 닫기, 열기
         $('.MaintabAll a').on('click', function() {
-            $('.MaintabAllView').show();
+            $('.MaintabAllView').slideToggle("fast");
         });
         $('.MaintabAllView span a').on('click', function() {
             $('.MaintabAllView').hide();

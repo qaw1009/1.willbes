@@ -53,10 +53,9 @@
 .gosi-gate-Sec .MaintabControl div.swiper-btn-prev {background: url("https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAL.png") no-repeat center center}
 
 .gosi-gate-Sec .MaintabWrap {float:left; height: 38px; width:950px; position: relative; overflow-x:hidden;}
-.gosi-gate-Sec .Maintab { display: flex; justify-content: space-around; overflow:hidden; float:none; width:1000px;}
+.gosi-gate-Sec .Maintab { display:flex; justify-content: space-around; overflow:hidden; float:none; width:1000px;}
 .gosi-gate-Sec .Maintab:after {content:''; display:block; clear:both}
 .gosi-gate-Sec .Maintab li {
-    float:left;
     display: inline-block;
     font-size: 15px; 
 }

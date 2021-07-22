@@ -349,21 +349,20 @@
                         </div>
                     </li>
                 </ul> 
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>         
+
             </div>
 
-            <div class="swiper-pagination"></div>          
+                     
         </div>   
 
         <div class="MaintabList">
             <div class="widthAuto p_re">
                 <div class="MaintabControl">
-                    <span><strong>2</strong>/8</span>
-                    <span class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></span>
-                    <span class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAL.png" alt="이전"></span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAR.png" alt="다음"></span>
+                    <div class="swiper-pagination-gate"></div>
+                    <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>
+                    <div class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></div>
+                    <div class="swiper-btn-prev"></div>
+                    <div class="swiper-btn-next"></div>                    
                 </div>
                 <div class="MaintabWrap">
                     <ul class="Maintab">
@@ -1121,9 +1120,9 @@
     </div>
 </div>
 <!-- End Container -->
+
+
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
 <script type="text/javascript">
     //swiper 메인 슬라이드
     $(document).ready(function(){
@@ -1134,12 +1133,16 @@
             observeParents: true,
             slidesPerView : 'auto',
             pagination: {
-            el: ".swiper-pagination",
+            el: ".swiper-pagination-gate",
             type: "fraction",
             },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-btn-next",
+                prevEl: ".swiper-btn-prev",
             },
             on: {
                 slideChange: function () {

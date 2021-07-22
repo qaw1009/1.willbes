@@ -176,7 +176,7 @@
 }
 .gosi-gate-prof .nSlider .bx-wrapper .bx-controls-direction a {
     width: 20px;
-    height: 20px;
+    height: 20px; 
 }
 .gosi-gate-prof .nSlider .bx-wrapper a.bx-prev {
     background:url("/public/img/willbes/prof/btn_arrow.png") no-repeat right top;

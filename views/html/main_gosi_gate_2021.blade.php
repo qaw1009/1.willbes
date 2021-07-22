@@ -3,10 +3,6 @@
 @section('content')
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
-<style>
-    .gosi-gate-Sec .MaintabWrap{position: relative; overflow-x:hidden;}
-    .gosi-gate-Sec .Maintab{float: none; width:1000px;}
-</style>
 
 <!-- Container -->
 

@@ -137,7 +137,7 @@
                             <li>무제한수강 : 본 상품은 수강기간 동안 강의배수제한 없이 무제한 수강하실 수 있습니다.</li>
                             <li>CORE 특강 무료제공 : 과목별 4~5회 CORE특강이 무료 업로드되어 수강할 수 있습니다.(언어논리 : 신청과목 교수님 강의제공)</li>
                             <li>진행(업로드) 강좌 순차 업로드 : OPEN CLASS(기본, 21년 9~10월), ADVANCED CLASS(심화, 22년 1~2월),<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MASTER CLASS(실전모강, 22년 4~5월)강의가 수강하실 수 있게 순차적으로 업로드 될 예정입니다.
+                                MASTER CLASS(실전모강, 22년 4~5월)강의가 수강하실 수 있게 순차적으로 업로드 될 예정입니다.
                             </li>
                             <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
                         </ol>

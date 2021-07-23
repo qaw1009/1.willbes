@@ -62,7 +62,7 @@
         </div>
 
         <div class="evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01.jpg" alt="let's psat">
             <ul>
                 @for($i=1; $i<=12; $i++)
                     @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
@@ -72,14 +72,14 @@
                     @endif
                 @endfor
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01_detail.gif" alt="" usemap="#Map3103a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01_detail.gif" alt="자세히보기" usemap="#Map3103a" border="0">
             <map name="Map3103a" id="Map3103a">
                 <area shape="rect" coords="219,18,900,88" href="#to_go" />
             </map>
         </div>
 
         <div class="evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_02.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_02.jpg" alt="최강팀이 함께합니다.">
         </div>
 
         <div class="evt_02s">
@@ -90,24 +90,24 @@
                     <li><a href="#tab03">언어논리</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab01.jpg" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab01.jpg" alt="석치수">
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab02.jpg" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab02.jpg" alt="박준범">
                 </div>
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab03.jpg" alt=""><br><br>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab04.jpg" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab03.jpg" alt="이나우"><br><br>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab04.jpg" alt="힌승아">
                 </div>
             </div>
         </div>
 
         <div class="evt_03">
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_03.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_03.jpg" alt="이론+적용+실전연습">
         </div>
 
         <div class="evtCtnsBox evt_04" >
-            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_04.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_04.jpg" alt="psat to easy" id="to_go">
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts01.png" /></li>
@@ -119,7 +119,7 @@
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_right.png"></a></p>
             </div>  
         </div>
-                
+
         <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])

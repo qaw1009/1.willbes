@@ -153,7 +153,7 @@
                     }},
                     {'data' : 'PopUpRealFullPath', 'render' : function(data, type, row, meta) {
                         var img_url = row.PopUpFullPath + row.PopUpImgName;
-                        return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%' height='30%'>";
+                        return "<img class='img_"+row.PIdx+"' src='"+img_url+"' width='100%'>";
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.DispStartDatm + ' ~ ' + row.DispEndDatm;

@@ -156,7 +156,7 @@
                     }},
                     {'data' : 'BannerRealFullPath', 'render' : function(data, type, row, meta) {
                         var img_url = row.BannerFullPath + row.BannerImgName;
-                        return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' height='30%'>";
+                        return "<img class='img_"+row.BIdx+"' src='"+img_url+"' width='100%' >";
                     }},
                     {'data' : null, 'render' : function(data, type, row, meta) {
                         return row.DispStartDatm + ' ~ ' + row.DispEndDatm;

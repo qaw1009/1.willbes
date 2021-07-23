@@ -1,8 +1,9 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
+
 <!-- Container -->
 
 <div id="Container" class="Container gosi-gate-v2 NSK c_both">
@@ -99,108 +100,303 @@
 
     <div class="Section gosi-gate-Sec">                
         <div class="gosi-gate-bntop-img">
-            <ul class="gate-bntop-Slider">
-                <li>
-                    <div class="bnBig">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
-                        </a>
-                    </div>
-                    <div class="bnSm">
-                        <div>
+            <div class="gate-bntop-Slider mainSlider01">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                        <div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                        <div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bnBig">
-                        <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
-                        </a>
-                    </div>
-                    <div class="bnSm">
-                        <div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                        <div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                        <div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
                             <a href="#none">
-                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
                             </a>
                         </div>
-                    </div>
-                </li>
-            </ul>                    
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="swiper-slide">
+                        <div class="bnBig">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                            </a>
+                        </div>
+                        <div class="bnSm">
+                            <div>
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_01.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_02.jpg" alt="배너명">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopR_265x120_03.jpg" alt="배너명">
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul> 
+            </div>                     
         </div>   
 
         <div class="MaintabList">
             <div class="widthAuto p_re">
                 <div class="MaintabControl">
-                    <span><strong>2</strong>/8</span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></span>
-                    {{--<span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></span>--}}
-                    <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAL.png" alt="이전"></span>
-                    <span><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAR.png" alt="다음"></span>
+                    <div class="swiper-pagination-gate"></div>
+                    <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>
+                    <div class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></div>
+                    <div class="swiper-btn-prev"></div>
+                    <div class="swiper-btn-next"></div>                    
                 </div>
-                <ul class="Maintab">
-                    <li><a data-slide-index="0" href="javascript:void(0);" class="active">9급pass</a></li>
-                    <li><a data-slide-index="1" href="javascript:void(0);">7급pass</a></li>
-                    <li><a data-slide-index="2" href="javascript:void(0);">세무직pass</a></li>
-                    <li><a data-slide-index="3" href="javascript:void(0);">법원직pass</a></li>
-                    <li><a data-slide-index="4" href="javascript:void(0);">농업직pass</a></li>
-                    <li><a data-slide-index="5" href="javascript:void(0);">통신/전기pass</a></li>
-                    <li><a data-slide-index="6" href="javascript:void(0);">전산직pass</a></li>
-                    <li><a data-slide-index="7" href="javascript:void(0);">환경직pass</a></li>
-                    <li><a data-slide-index="8" href="javascript:void(0);">산림자원직</a></li>
-                    <li><a data-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a></li>
-                </ul>
+                <div class="MaintabWrap">
+                    <ul class="Maintab">
+                        <li><a data-swiper-slide-index="0" href="javascript:void(0);" class="active">9급pass</a></li>
+                        <li><a data-swiper-slide-index="1" href="javascript:void(0);">7급pass</a></li>
+                        <li><a data-swiper-slide-index="2" href="javascript:void(0);">세무직pass</a></li>
+                        <li><a data-swiper-slide-index="3" href="javascript:void(0);">법원직pass</a></li>
+                        <li><a data-swiper-slide-index="4" href="javascript:void(0);">농업직pass</a></li>
+                        <li><a data-swiper-slide-index="5" href="javascript:void(0);">통신/전기pass</a></li>
+                        <li><a data-swiper-slide-index="6" href="javascript:void(0);">전산직pass</a></li>
+                        <li><a data-swiper-slide-index="7" href="javascript:void(0);">환경직pass</a></li>
+                        <li><a data-swiper-slide-index="8" href="javascript:void(0);">산림자원직</a></li>
+                        <li><a data-swiper-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a></li>
+                    </ul>
+                </div>
                 <div class="MaintabAll">
                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnAB.png" alt="전체보기"></a>
                 </div>
-                <div class="MaintabAllView">
+                <div class="MaintabAllView" style="display:none;">
                     <div class="title">
                         <span>진행중인 모든 이벤트</span>
-                        <span><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
+                        <span><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
                     </div>
                     <div class="tabCts">
-                        <a data-slide-index="0" class="active">9급pass</a>
-                        <a data-slide-index="1" href="javascript:void(0);">7급pass</a>
-                        <a data-slide-index="2" href="javascript:void(0);">세무직pass</a>
-                        <a data-slide-index="3" href="javascript:void(0);">법원직pass</a>
-                        <a data-slide-index="4" href="javascript:void(0);">농업직pass</a>
-                        <a data-slide-index="5" href="javascript:void(0);">통신/전기pass</a>
-                        <a data-slide-index="6" href="javascript:void(0);">전산직pass</a>
-                        <a data-slide-index="7" href="javascript:void(0);">환경직pass</a>
-                        <a data-slide-index="8" href="javascript:void(0);">산림자원직</a>
-                        <a data-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a>
+                        <a data-swiper-slide-index="0" class="active">9급pass</a>
+                        <a data-swiper-slide-index="1" href="javascript:void(0);">7급pass</a>
+                        <a data-swiper-slide-index="2" href="javascript:void(0);">세무직pass</a>
+                        <a data-swiper-slide-index="3" href="javascript:void(0);">법원직pass</a>
+                        <a data-swiper-slide-index="4" href="javascript:void(0);">농업직pass</a>
+                        <a data-swiper-slide-index="5" href="javascript:void(0);">통신/전기pass</a>
+                        <a data-swiper-slide-index="6" href="javascript:void(0);">전산직pass</a>
+                        <a data-swiper-slide-index="7" href="javascript:void(0);">환경직pass</a>
+                        <a data-swiper-slide-index="8" href="javascript:void(0);">산림자원직</a>
+                        <a data-swiper-slide-index="9" href="javascript:void(0);">조경계획 및 설계</a>
                     </div>
-                </div> 
-                
+                </div>                 
             </div>
         </div> 
     </div>
 
     <div class="Section newsWrap">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">지금 바로 주목해야 할 새로운 소식! </div> 
+            <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>새로운 소식!</span></div> 
             <div class="newsBox">
                 <ul class="newsSlider">
                     <li>
@@ -260,7 +456,7 @@
     
     <div class="Section gosi-bnfull02">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">초보 수험생이라면, 꼭 확인해보세요!</div>
+            <div class="will-nTit NSK-Black"><span>초보 수험생</span>이라면, <span>꼭</span> 확인해보세요!</div>
         </div>
         <div class="slider">
             <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_2000x220.jpg" alt="배너명"></a>
@@ -278,7 +474,7 @@
 
     <div class="Section tpassWrap">        
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, 윌비스 T-PASS!</div>
+            <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
             <div class="tpassLeft">
                 <div class="slider">
                     <a href="#none">
@@ -363,7 +559,7 @@
 
     <div class="Section castWrap">
         <div class="widthAuto">
-            <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 윌비스 YOUTUBE 영상을 시청해보세요!</div>  
+            <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 <span>윌비스 YOUTUBE 영상</span>을 시청해보세요!</div>  
             <div class="castBox">
                 <ul class="castslider">
                     <li>
@@ -740,7 +936,7 @@
 
     <div class="Section gosi-gate-bn02">
         <div class="widthAuto pick">  
-            <div class="will-nTit NSK-Black mb40">윌비스공무원학원 노량진캠퍼스에서는 무엇을 개강하나요?</div> 
+            <div class="will-nTit NSK-Black mb40">윌비스 공무원학원 <span>노량진 캠퍼스</span>에서는 무엇을 개강하나요?</div> 
 
             <div class="slider">
                 <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_1120x185.jpg" alt="배너명"></a>
@@ -866,7 +1062,6 @@
             </div>            
         </div>
     </div>
-    <!-- CS센터 //-->
 
     <div id="QuickMenu" class="MainQuickMenu">
         <ul>
@@ -916,7 +1111,106 @@
 <!-- End Container -->
 
 
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script type="text/javascript">
+    //swiper 메인 슬라이드
+    $(document).ready(function(){
+        var mainslider = new Swiper('.mainSlider01', {
+            direction: 'horizontal',
+            loop: true,
+            observer: true,
+            observeParents: true,
+            slidesPerView : 'auto',
+            pagination: {
+            el: ".swiper-pagination-gate",
+            type: "fraction",
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
+            navigation: {
+                nextEl: ".swiper-btn-next",
+                prevEl: ".swiper-btn-prev",
+            },
+            on: {
+                slideChange: function () {
+                    $('.Maintab li > a').removeClass('active');
+                    $('.Maintab li > a').eq(this.realIndex).addClass('active');
+                    $('.tabCts a').removeClass('active');
+                    $('.tabCts a').eq(this.realIndex).addClass('active');                    
+                }
+            }
+        });
+        
+        //메인 슬라이드 메뉴1
+        $('.Maintab li > a').on('click', function(){
+            $('.Maintab li > a').removeClass('active');
+            $(this).addClass('active');
+            var num = $(this).attr('data-swiper-slide-index');
+            mainslider.slideTo(num);
+
+            var target = $(this).parent();
+            // target.removeClass('on')
+            // target.addClass('on');
+            listCenter(target);
+        });
+
+        //슬라이드 메뉴1 클릭시 위치조정
+        function listCenter(target){
+            var snbwrap = $('.Maintab');
+            var targetPos = target.position();
+            var box = $('.MaintabWrap');
+            var boxHarf = box.width()/2;
+            var pos;
+            var listWidth=0;
+            
+            snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
+            
+            var selectTargetPos = targetPos.left + target.outerWidth()/2;
+            if (selectTargetPos <= boxHarf) { // left
+                pos = 0;
+            }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+                pos = listWidth-box.width();
+            }else {
+                pos = selectTargetPos - boxHarf;
+            }            
+            setTimeout(function(){snbwrap.css({
+                "transform": "translateX("+ (pos*-1) +"px)",
+                "transition-duration": "500ms"
+            })}, 200);
+        } 
+
+        //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
+        $('.tabCts > a').on('click', function(){
+            $('.tabCts > a').removeClass('active');
+            $(this).addClass('active');
+            var num = $(this).attr('data-swiper-slide-index');
+            mainslider.slideTo(num);    
+        });
+        //슬라이드 재생, 스탑 버튼
+        $('.start').on('click', function() {
+            mainslider.autoplay.start();
+            $(this).hide();
+            $('.stop').show();
+            return false;
+        });
+        $('.stop').on('click', function() {
+            mainslider.autoplay.stop();
+            $(this).hide();
+            $('.start').show();
+            return false;
+        });
+
+        //진행중인 모든 이벤트 닫기, 열기
+        $('.MaintabAll a').on('click', function() {
+            $('.MaintabAllView').slideToggle("fast");
+        });
+        $('.MaintabAllView span a').on('click', function() {
+            $('.MaintabAllView').hide();
+        });
+    });
+
     //새로운소식    
     $(function() {
         var newsImg = $(".newsSlider").bxSlider({

@@ -42,11 +42,11 @@
                     <a href="https://gall.dcinside.com/board/lists/?id=government" title="공무원갤러리" target="_blank">공무원<br>갤러리<br>바로가기</a>
                     <a href="https://section.blog.naver.com/BlogHome.naver" title="네이버블로그" target="_blank">네이버<br>블로그<br>바로가기</a>
                     <a href="https://www.instagram.com/" title="인스타그램" target="_blank">인스타그램<br>바로가기</a>
-                   <a href="https://m.facebook.com/" title="페이스북" target="_blank">페이스북<br>바로가기</a>
+                    <a href="https://m.facebook.com/" title="페이스북" target="_blank">페이스북<br>바로가기</a>
                 </div>
                 <a href="javascript:void(0);" title="링크복사" onclick="copyTxt();" style="position: absolute; left: 16.79%; top: 47.59%; width: 32.32%; height: 2.53%; z-index: 2;"></a>
                 <a href="@if(empty($file_yn) === false && $file_yn[0] == 'Y') {{ front_url($file_link[0]) }} @else {{ $file_link[0] }} @endif" title="소문내기 다운" style="position: absolute; left: 50.54%; top: 47.63%; width: 32.32%; height: 2.53%; z-index: 2;"></a>
-                <a href="" title="수강신청" target="_blank" style="position: absolute; left: 17.95%; top: 53.14%; width: 63.39%; height: 8.5%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3103/pattern/free/prod-code/184287" title="수강신청" target="_blank" style="position: absolute; left: 17.95%; top: 53.14%; width: 63.39%; height: 8.5%; z-index: 2;"></a>
             </div>
 		</div>
 

@@ -73,18 +73,18 @@
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">조직</label>
-        <div class="col-md-9 item form-control-static">
+        <div class="col-md-9 item form-control-static form-inline">
+            <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
             <span id="selected_organization" class="pl-10">
                 @if(isset($data['org_data']) === true)
-                    @foreach($data['org_data'] as $key => $val)
-                        <span class="pr-10">{{ $val['wOrgName'] }}
-                            <a href="#none" data-cate-code="{{ $val['wOrgCode'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
-                            <input type="hidden" name="org_code[]" value="{{ $val['wOrgCode'] }}"/>
+                    @foreach($data['org_data'] as $row)
+                        <span class="pr-10">{{ $row['OrgName'] }}
+                            <a href="#none" data-org-idx="{{ $row['OrgIdx'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
+                            <input type="hidden" name="org_idx[]" value="{{ $row['OrgIdx'] }}"/>
                         </span>
                     @endforeach
                 @endif
             </span>
-            <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -113,15 +113,29 @@
         $(document).ready(function() {
             // 메일 도메인 선택
             $('select[name=admin_mail_domain_ccd]').change(function () {
-                setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain');
+                //setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain');
+                if($(this).val() === '') {
+                    $regi_form.find('input[name="admin_mail_domain"]').val('').prop('readonly', false);
+                } else {
+                    $regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                }
             });
 
             // 수정폼 입력값 셋팅
             $regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
-            $regi_form.find('select[name="admin_dept_ccd"]').val('{{ $data['wAdminDeptCcd'] }}');
+            $regi_form.find('select[name="admin_dept_cc cd"]').val('{{ $data['wAdminDeptCcd'] }}');
             $regi_form.find('select[name="admin_position_ccd"]').val('{{ $data['wAdminPositionCcd'] }}');
             $regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
-            setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');
+            {{-- TODO  부모창 운영자정보관리에서 인풋항목 충돌로 인해 미표기 버그 발생 --}}
+            // setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');
+            $regi_form.find('select[name="admin_mail_domain_ccd"] option').each(function() {
+                if($(this).val() === '{{$data['wAdminMailDomain']}}') {
+                    $(this).prop('selected', true);
+                    $regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                } else {
+                    $regi_form.find('input[name="admin_mail_domain"]').val('{{$data['wAdminMailDomain']}}')
+                }
+            });
 
             // 관리자 정보 수정
             $regi_form.submit(function() {
@@ -134,6 +148,7 @@
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
+
 
             function addValidate() {
                 // 메일 유효성 체크

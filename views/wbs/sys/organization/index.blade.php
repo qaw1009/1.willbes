@@ -1,3 +1,4 @@
+{{------------------------ TODO 삭제예정 --}}
 @extends('lcms.layouts.master')
 
 @section('content')

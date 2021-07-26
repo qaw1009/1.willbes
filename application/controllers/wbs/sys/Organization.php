@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Organization extends \app\controllers\BaseController
 {
+    //---------------------- TODO 삭제예정
+
     protected $models = array('sys/organization');
     protected $helpers = array();
 

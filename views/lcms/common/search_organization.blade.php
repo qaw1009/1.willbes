@@ -19,9 +19,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-body" style="max-height: 120px; overflow-y: auto;">
-                    <ul id="_selected_organization" class="list-unstyled mb-0">
-                    </ul>
+                <div class="panel-body" style="height:70px; max-height: 120px; overflow-y: auto;">
+                    <ul id="_selected_organization" class="list-unstyled mb-0"></ul>
                     <div class="clear"></div>
                 </div>
                 <div class="panel-footer text-right pt-5 pb-5">
@@ -37,7 +36,7 @@
             <input type="text" class="form-control input-sm" id="search_value" name="search_value">
         </div>
         <div class="col-md-4">
-            <p class="form-control-static">명칭, 코드 검색 가능</p>
+            <p class="form-control-static">조직명, 식별자 검색 가능</p>
         </div>
         <div class="col-md-2 text-right pr-5">
             <button type="submit" class="btn btn-primary btn-sm btn-search mr-0" id="_btn_search">검 색</button>
@@ -48,11 +47,10 @@
             <table id="_list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>전체선택 <input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
-                    <th>코드</th>
+                    <th width="80px"><input type="checkbox" id="_is_all" name="_is_all" class="flat" value="Y"/></th>
+                    <th>식별자</th>
                     <th>조직명</th>
-                    <th>구조</th>
-                    <th>사용여부</th>
+                    <th width="80px">사용여부</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -83,14 +81,15 @@
                 },
                 columns: [
                     {'data' : null, 'render' : function(data, type, row, meta) {
-                        var code = row.wOrgCode;
+                        var code = row.OrgIdx;
                         var checked = ($ori_selected_data.hasOwnProperty(code) === true) ? 'checked="checked"' : '';
-                        return '<input type="checkbox" id="_org_code_' + code + '" name="_org_code" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '/>';
+                        return '<input type="checkbox" id="_org_idx_' + code + '" name="_org_idx" class="flat" value="' + code + '" data-row-idx="' + meta.row + '" ' + checked + '/>';
                     }},
-                    {'data' : 'wOrgCode'},
-                    {'data' : 'wOrgName'},
-                    {'data' : 'OrgRouteName'},
-                    {'data' : 'wIsUse', 'render' : function(data, type, row, meta) {
+                    {'data' : 'OrgIdx'},
+                    {'data' : null, 'render' : function(data, type, row, meta) {
+                        return (data.step >= 1 ? "&nbsp;&nbsp;&nbsp;".repeat(data.step) + ' └ ': '')  + data.OrgName ;
+                    }},
+                    {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                         return (data === 'Y') ? '사용' : '<span class="red">미사용</span>';
                     }}
                 ]
@@ -98,65 +97,60 @@
 
             // 전체선택
             $datatable_modal.on('ifChanged', '#_is_all', function() {
-                var $_org_code = $('input[name="_org_code"]');
+                var $_org_idx = $('input[name="_org_idx"]');
                 if ($(this).prop('checked') === true) {
-                    $_org_code.iCheck('check');
+                    $_org_idx.iCheck('check');
                 } else {
-                    $_org_code.iCheck('uncheck');
+                    $_org_idx.iCheck('uncheck');
                 }
             });
 
             // 조직 선택
-            $datatable_modal.on('ifChanged', 'input[name="_org_code"]', function() {
+            $datatable_modal.on('ifChanged', 'input[name="_org_idx"]', function() {
                 var that = $(this);
                 var row = $datatable_modal.row(that.data('row-idx')).data();
-                var code = that.val();
+                var idx = that.val();
                 var route_name = '';
 
                 if (that.prop('checked') === true) {
-                    route_name = row.wOrgName;
-                    $selected_organization.append('<li id="_selected_organization_' + code + '" data-org-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-organization-delete"><i class="fa fa-times red"></i></a></li>');
+                    route_name = row.OrgName;
+                    $selected_organization.append('<li id="_selected_organization_' + idx + '" data-org-idx="' + idx + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-organization-delete"><i class="fa fa-times red"></i></a></li>');
                 } else {
-                    $selected_organization.find('#_selected_organization_' + code).remove();
+                    $selected_organization.find('#_selected_organization_' + idx).remove();
                 }
             });
 
             // 선택한 조직 삭제 버튼 클릭
             $selected_organization.on('click', '._selected-organization-delete', function() {
-                var data = $(this).parent().data('org-code');
+                var data = $(this).parent().data('org-idx');
                 $(this).parent().remove();
-                $('input[id="_org_code_' + data + '"]').prop('checked', false).iCheck('update');
+                $('input[id="_org_idx_' + data + '"]').prop('checked', false).iCheck('update');
             });
 
             // 적용 버튼
             $('#_btn_apply').on('click', function() {
-                var code, route_name, html = '';
+                var idx, route_name, html = '';
 
                 if ($selected_organization.html().trim() === '') {
                     alert('선택된 조직 정보가 없습니다.');
                     return;
                 }
 
-                if($('#_selected_organization li').length > 3) {
-                    alert('조직은 3개까지만 선택 가능합니다.');
-                    return;
-                }
-
-                if (!confirm('선택한 조직를 선택하시겠습니까?')) {
+                if (!confirm('선택한 조직을 적용 하시겠습니까?')) {
                     return;
                 }
 
                 $('#_selected_organization li').each(function() {
-                    code = $(this).data('org-code');
+                    idx = $(this).data('org-idx');
                     route_name = $(this).text().trim();
 
                     html += '<span class="pr-10">' + route_name;
-                    html += '   <a href="#none" data-org-code="' + code + '" class="selected-organization-delete"><i class="fa fa-times red"></i></a>';
-                    html += '   <input type="hidden" name="org_code[]" value="' + code + '"/>';
+                    html += '   <a href="#none" data-org-idx="' + idx + '" class="selected-organization-delete"><i class="fa fa-times red"></i></a>';
+                    html += '   <input type="hidden" name="org_idx[]" value="' + idx + '"/>';
                     html += '</span>';
                 });
 
-                $parent_regi_form.find('input[name="org_code[]"]').remove();
+                $parent_regi_form.find('input[name="org_idx[]"]').remove();
                 $parent_selected_organization.html(html);
 
                 $("#modal_search_organization").modal('toggle');
@@ -164,15 +158,15 @@
 
             // 기존 선택된 정보 셋팅
             var setOriSelectedData = function() {
-                var that, code, route_name;
+                var that, idx, route_name;
                 $parent_selected_organization.find('span').each(function() {
                     that = $(this);
-                    code = that.find('input[name="org_code[]"]').val();
+                    idx = that.find('input[name="org_idx[]"]').val();
                     route_name = that.text().trim();
 
-                    $selected_organization.append('<li id="_selected_organization_' + code + '" data-org-code="' + code + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-organization-delete"><i class="fa fa-times red"></i></a></li>');
+                    $selected_organization.append('<li id="_selected_organization_' + idx + '" data-org-idx="' + idx + '" class="pull-left mb-5 mr-20">' + route_name + ' <a href="#none" class="_selected-organization-delete"><i class="fa fa-times red"></i></a></li>');
 
-                    $ori_selected_data[code] = route_name;
+                    $ori_selected_data[idx] = route_name;
                 });
             };
 

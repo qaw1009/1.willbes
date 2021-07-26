@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Regist extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', '_wbs/sys/admin', '_wbs/sys/organization');
+    protected $models = array('_wbs/sys/code', '_wbs/sys/admin', '_lms/task/taskOrganization');
     protected $helpers = array();
 
     public function __construct()
@@ -67,7 +67,7 @@ class Regist extends \app\controllers\BaseController
         }
 
         // 조직 연결 정보 조회
-        $data['org_data'] = $this->organizationModel->listAdminRelationOrganization(false, ['EQ' => ['ARO.wAdminIdx' => $this->session->userdata('admin_idx'), 'ARO.wIsStatus' => 'Y']], null, null, null);
+        $data['org_data'] = $this->taskOrganizationModel->listAdminRelationOrganization(false, ['EQ' => ['A.wAdminIdx' => $this->session->userdata('admin_idx')]], null, null, null);
 
         $data['wAdminMailId'] = substr($data['wAdminMail'], 0, strpos($data['wAdminMail'], '@'));
         $data['wAdminMailDomain'] = substr($data['wAdminMail'], strpos($data['wAdminMail'], '@') + 1);

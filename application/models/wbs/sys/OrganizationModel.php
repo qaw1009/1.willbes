@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class OrganizationModel extends WB_Model
 {
+    //---------------------- TODO 삭제예정
+
     private $_table = [
         'organization' => 'wbs_sys_organization',
         'admin_r_organization' => 'wbs_sys_admin_r_organization'

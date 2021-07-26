@@ -120,6 +120,16 @@
             </div>  
         </div>
 
+        {{--학원 오시는 길--}}
+        @include('willbes.pc.site.main_partial.map_2010')
+
+        <div class="Section NSK mt90 mb90">
+            <div class="widthAuto">
+                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+            </div>
+        </div>
+        <!-- CS센터 //-->
+
         <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])

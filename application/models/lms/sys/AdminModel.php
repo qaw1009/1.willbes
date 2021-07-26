@@ -123,6 +123,7 @@ class AdminModel extends WB_Model
      */
     public function modifyAdmin($input = [])
     {
+
         $this->_conn->trans_begin();
 
         try {
@@ -136,6 +137,12 @@ class AdminModel extends WB_Model
             
             // 운영자 권한 변경
             $is_update = $this->_replaceAdminRole(element('role_idx', $input), $admin_idx);
+            if ($is_update !== true) {
+                throw new \Exception($is_update);
+            }
+
+            // 관리자정보 수정 업데이트 일자 수동 변경 처리
+            $is_update = $this->_replaceAdminUpdateDate($admin_idx);
             if ($is_update !== true) {
                 throw new \Exception($is_update);
             }
@@ -291,6 +298,28 @@ class AdminModel extends WB_Model
                 }
             }
         } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+        return true;
+    }
+
+    /**
+     * 관리자 정보 수정시 수동 업데이트 처리
+     * @param $admin_idx
+     * @return string
+     */
+    private function _replaceAdminUpdateDate($admin_idx)
+    {
+        try {
+            $sess_admin_idx = $this->session->userdata('admin_idx');
+            $is_update = $this->_conn->set('wUpdDatm', 'NOW()', false)->set('wUpdAdminIdx', $sess_admin_idx)
+                ->where('wAdminIdx', $admin_idx)->update($this->_table['admin']);
+            $this->_conn->last_query();
+            if ($is_update === false) {
+                throw new \Exception('관리자 업데이트 일자 수정에 실패했습니다.');
+            }
+        }catch (\Exception $e) {
             return $e->getMessage();
         }
 

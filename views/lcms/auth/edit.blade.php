@@ -60,31 +60,31 @@
             <select name="admin_dept_ccd" id="admin_dept_ccd" class="form-control" title="소속">
                 <option value="">선택</option>
                 @foreach($dept_ccd as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
+                    <option value="{{ $key }}" {{ $data['wAdminDeptCcd'] == $key ? 'selected = "selected"' : ''}} >{{ $val }}</option>
                 @endforeach
             </select>
             <select name="admin_position_ccd" id="admin_position_ccd" class="form-control" title="직급">
                 <option value="">선택</option>
                 @foreach($position_ccd as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
+                    <option value="{{ $key }}" {{ $data['wAdminPositionCcd'] == $key ? 'selected = "selected"' : ''}}>{{ $val }}</option>
                 @endforeach
             </select>
         </div>
     </div>
     <div class="form-group form-group-sm">
         <label class="control-label col-md-2">조직</label>
-        <div class="col-md-9 item form-control-static">
+        <div class="col-md-9 item form-control-static form-inline">
+            <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
             <span id="selected_organization" class="pl-10">
                 @if(isset($data['org_data']) === true)
-                    @foreach($data['org_data'] as $key => $val)
-                        <span class="pr-10">{{ $val['wOrgName'] }}
-                            <a href="#none" data-cate-code="{{ $val['wOrgCode'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
-                            <input type="hidden" name="org_code[]" value="{{ $val['wOrgCode'] }}"/>
+                    @foreach($data['org_data'] as $row)
+                        <span class="pr-10">{{ $row['OrgName'] }}
+                            <a href="#none" data-org-idx="{{ $row['OrgIdx'] }}" class="selected-organization-delete"><i class="fa fa-times red"></i></a>
+                            <input type="hidden" name="org_idx[]" value="{{ $row['OrgIdx'] }}"/>
                         </span>
                     @endforeach
                 @endif
             </span>
-            <button type="button" id="btn_search_organization" class="btn btn-sm btn-primary">검색</button>
         </div>
     </div>
     <div class="form-group form-group-sm">
@@ -108,26 +108,38 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $regi_form = $('#_regi_form');
+        var $modal_regi_form = $('#_regi_form');
 
         $(document).ready(function() {
             // 메일 도메인 선택
             $('select[name=admin_mail_domain_ccd]').change(function () {
-                setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain');
+                //setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain');
+                if($(this).val() === '') {
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val('').prop('readonly', false);
+                } else {
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                }
             });
 
             // 수정폼 입력값 셋팅
-            $regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
-            $regi_form.find('select[name="admin_dept_ccd"]').val('{{ $data['wAdminDeptCcd'] }}');
-            $regi_form.find('select[name="admin_position_ccd"]').val('{{ $data['wAdminPositionCcd'] }}');
-            $regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
-            setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');
+            $modal_regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
+            $modal_regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
+            {{-- TODO  부모창 운영자정보관리에서 인풋항목 충돌로 인해 미표기 버그 발생 --}}
+            // setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');
+            $modal_regi_form.find('select[name="admin_mail_domain_ccd"] option').each(function() {
+                if($(this).val() === '{{$data['wAdminMailDomain']}}') {
+                    $(this).prop('selected', true);
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                } else {
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val('{{$data['wAdminMailDomain']}}')
+                }
+            });
 
             // 관리자 정보 수정
-            $regi_form.submit(function() {
+            $modal_regi_form.submit(function() {
                 var _url = '{{ site_url('/lcms/auth/regist/update') }}';
 
-                ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxSubmit($modal_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $("#pop_modal").modal('toggle');
@@ -135,9 +147,10 @@
                 }, showValidateError, addValidate, false, 'alert');
             });
 
+
             function addValidate() {
                 // 메일 유효성 체크
-                var admin_mail = $regi_form.find('input[name=admin_mail_id]').val() + '@' + $regi_form.find('input[name=admin_mail_domain]').val();
+                var admin_mail = $modal_regi_form.find('input[name=admin_mail_id]').val() + '@' + $modal_regi_form.find('input[name=admin_mail_domain]').val();
                 if ((new FormValidator()).checkRegex(admin_mail, 'email').valid === false) {
                     return false;
                 }
@@ -154,7 +167,7 @@
             });
 
             // 조직 삭제 이벤트
-            $regi_form.on('click', '.selected-organization-delete', function() {
+            $modal_regi_form.on('click', '.selected-organization-delete', function() {
                 $(this).parent().remove();
             });
         });

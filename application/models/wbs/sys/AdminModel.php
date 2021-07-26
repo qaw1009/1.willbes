@@ -253,17 +253,17 @@ class AdminModel extends WB_Model
 
             if(empty($type) === false && $type == 'my'){
                 // 조직 정보 수정 (삭제/인서트)
-                $this->load->loadModels(['_wbs/sys/organization']);
-                $arr_org_code = element('org_code', $input);
+                $this->load->loadModels(['_lms/task/taskOrganization']);
+                $arr_org_idx = element('org_idx', $input);
 
-                $org_result = $this->organizationModel->removeAdminRelationOrganization(['wAdminIdx' => $this->session->userdata('admin_idx')]);
+                $org_result = $this->taskOrganizationModel->removeAdminRelationOrganization(['wAdminIdx' => $this->session->userdata('admin_idx')]);
                 if($org_result !== true) {
                     throw new \Exception('조직 정보 수정에 실패했습니다.');
                 }
 
-                if(empty($arr_org_code) === false){
-                    foreach($arr_org_code as $key => $row) {
-                        $org_result = $this->organizationModel->addAdminRelationOrganization(['wOrgCode' => $row, 'wAdminIdx' => $this->session->userdata('admin_idx')]);
+                if(empty($arr_org_idx) === false){
+                    foreach($arr_org_idx as $key => $row) {
+                        $org_result = $this->taskOrganizationModel->addAdminRelationOrganization(['OrgIdx' => $row, 'wAdminIdx' => $this->session->userdata('admin_idx')]);
                         if($org_result !== true) {
                             throw new \Exception('조직 정보 수정에 실패했습니다.');
                         }
@@ -318,6 +318,7 @@ class AdminModel extends WB_Model
 
             // 수정 운영자 식별자
             $this->_conn->set('wUpdAdminIdx', $this->session->userdata('admin_idx'));
+            $this->_conn->set('wUpdDatm', 'NOW()', false);
 
             // where 조건
             $this->_conn->where('wAdminIdx', $admin_idx);

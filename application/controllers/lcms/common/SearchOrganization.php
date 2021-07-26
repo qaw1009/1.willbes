@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SearchOrganization extends \app\controllers\BaseController
 {
-    protected $models = array('_wbs/sys/code', '_wbs/sys/organization');
+    protected $models = array('_lms/task/taskOrganization');
     protected $helpers = array();
 
     public function __construct()
@@ -33,16 +33,16 @@ class SearchOrganization extends \app\controllers\BaseController
         $arr_condition = [
             'ORG' => [
                 'LKB' => [
-                    'ORG.wOrgCode' => $this->_reqP('search_value'),
-                    'ORG.wOrgName' => $this->_reqP('search_value')
+                    'OrgIdx' => $this->_reqP('search_value'),
+                    'OrgName' => $this->_reqP('search_value')
                 ]
             ]
         ];
 
         $list = [];
-        $count = $this->organizationModel->listOrganization(true, $arr_condition);
+        $count = $this->taskOrganizationModel->listOrganization(true, $arr_condition);
         if ($count > 0) {
-            $list = $this->organizationModel->listOrganization(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), ['ParentOrgCode' => 'ASC', 'ORG.wOrderNum' => 'ASC']);
+            $list = $this->taskOrganizationModel->listOrganization(false, $arr_condition, $this->_reqP('length'), $this->_reqP('start'), []);
         }
 
         return $this->response([

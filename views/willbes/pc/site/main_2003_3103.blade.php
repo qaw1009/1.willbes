@@ -120,6 +120,33 @@
             </div>  
         </div>
 
+        <div class="Section mt100">
+            <div class="widthAuto">
+                <div class="nNoticeBox three">
+                    <div class="noticeList widthAuto530 f_left">
+                        <div class="will-nlistTit p_re">공지사항 <a href="https://cop.dev.willbes.net/support/notice/index" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>HOT</span>경찰3과 과목별 만점자를 소개합니다.</a><img src="{{ img_url('cop/icon_new.png') }}"><span class="date">2018-09-06</span></li>
+                            <li><a href="#none">하승민 영어 2018년 3차 시험 적중!</a><span class="date">2018-09-01</span></li>
+                            <li><a href="#none">[공지] 2018년 제3차 경찰공무원(순경)채용 공고 입니다.</a><span class="date">2018-08-24</span></li>
+                            <li><a href="#none">[신규강의 안내] 해양경찰특채 11~12월 동영상 업데이트 안내</a><span class="date">2018-08-13</span></li>
+                            <li><a href="#none">[신규강의 안내] 해양경찰특채 11~12월 동영상 업데이트 안내</a><span class="date">2018-08-13</span></li>
+                        </ul>
+                    </div>
+                    <div class="noticeList widthAuto530 f_right">
+                        <div class="will-nlistTit p_re">시험공고 <a href="https://cop.dev.willbes.net/support/examAnnouncement/index/cate/3001" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
+                        <ul class="List-Table">
+                            <li><a href="#none"><span>HOT</span>2018년 제3차 경찰공무원(순경)채용 필기시험 문제 및 가답안</a><img src="{{ img_url('cop/icon_new.png') }}"><span class="date">2018-09-06</span></li>
+                            <li><a href="#none">[공지] 2018년 제3차 경찰공무원 채용 필기시험 문제 및 가답안</a><span class="date">2018-09-01</span></li>
+                            <li><a href="#none">2018년 제3차 경찰공무원 채용시험 원서접수일정 안내입니다.</a><span class="date">2018-08-24</span></li>
+                            <li><a href="#none">[공지] 2018년 제2차 경찰공무원 채용시험 일정 안내입니다.</a><span class="date">2018-08-13</span></li>
+                            <li><a href="#none">[공지] 2018년 제2차 경찰공무원 채용시험 일정 안내입니다.</a><span class="date">2018-08-13</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         {{--학원 오시는 길--}}
         @include('willbes.pc.site.main_partial.map_2010')
 

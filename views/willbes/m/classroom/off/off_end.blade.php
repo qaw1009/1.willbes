@@ -78,6 +78,9 @@
                                         @endif
                                     </dt>
                                 </dl>
+                                @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
+                                    <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강/복습동영상 신청 ></a></div>
+                                @endif
                             </td>
                         </tr>
                     @empty
@@ -117,6 +120,10 @@
                                                     @if($subrow['IsDisp'] == 'N')
                                                         <span>인강전환</span>
                                                     @endif
+
+                                                    @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
+                                                        <div class="supplementBtn"><a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" >보강/복습동영상 신청</a></div>
+                                                    @endif
                                                 </li>
                                             @endforeach
                                         @endif
@@ -141,6 +148,15 @@
         <!-- Topbtn -->
     </div>
     <!-- End Container -->
+    <form name="bogangForm" id="bogangForm" method="get">
+        {!! csrf_field() !!}
+        {!! method_field('POST') !!}
+        <input type="hidden" name="o" id="o" value="" />
+        <input type="hidden" name="op" id="op" value="" />
+        <input type="hidden" name="p" id="p" value="" />
+        <input type="hidden" name="ps" id="ps" value="" />
+        <input type="hidden" name="t" id="t" value="" />
+    </form>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#course_ccd,#subject_ccd,#prof_ccd,#sitegroup_ccd').on('change', function (){
@@ -153,5 +169,15 @@
                 }
             });
         });
+
+        function fnBogang(o, op, p, ps, t)
+        {
+            $('#o').val(o);
+            $('#op').val(op);
+            $('#p').val(p);
+            $('#ps').val(ps);
+            $('#t').val(t);
+            $("#bogangForm").attr("action", "{{ front_url("/classroom/off/layerBogang/") }}").submit();
+        }
     </script>
 @stop

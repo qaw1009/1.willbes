@@ -53,16 +53,32 @@ class Order extends \app\controllers\FrontController
         }
 
         $list = [];
-        $count = $this->orderListFModel->listOrder(true, $arr_condition);
+        $count = $this->orderListFModel->getMyPageOrderList(true, $arr_condition);
         $paging = $this->pagination('/classroom/order/index?' . http_build_query($arr_input), $count, 10, 10,true);
 
         if ($count > 0) {
-            $list = $this->orderListFModel->listOrder(false, $arr_condition, $paging['limit'], $paging['offset'], ['O.OrderIdx' => 'desc']);
+            $list = $this->orderListFModel->getMyPageOrderList(false, $arr_condition, $paging['limit'], $paging['offset'], ['O.OrderIdx' => 'desc']);
+
+            foreach ($list as $idx => $row) {
+                $list[$idx]['OrderProdData'] = json_decode($row['OrderProdData'], true);
+            }
         }
+
+        // 주문상품타입명 (그외 상품타입: 기타)
+        $arr_match_prod_type_name = [
+            '615001' => '강좌', '615002' => '패키지', '615003' => '패키지', '615004' => '패키지', '615005' => '강좌', '615006' => '강좌', '615007' => '종합반',
+            '636003' => '교재', '636004' => '사은품', '636005' => '배송', '636006' => '배송', '636010' => '모의고사'
+        ];
+
+        // 주문상품타입클래스 (기본: waitBox_block)
+        $arr_match_prod_type_class = ['패키지' => 'answerBox', '종합반' => 'answerBox', '교재' => 'finishBox', '사은품' => 'finishBox'];
 
         $this->load->view('/classroom/order/index', [
             'arr_input' => $arr_input,
             'arr_site_group' => $arr_site_group,
+            'arr_match_prod_type_name' => $arr_match_prod_type_name,
+            'arr_match_prod_type_class' => $arr_match_prod_type_class,
+            'arr_delivery_status_ccd' => $this->orderListFModel->_delivery_status_ccd,
             'paging' => $paging,
             'data' => $list
         ]);

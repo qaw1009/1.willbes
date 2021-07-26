@@ -227,7 +227,7 @@ class BtobCertFModel extends WB_Model
             // 해당 지점 승인완료 건수 조회
             $arr_cnt_condition = [
                 'EQ' => ['BtobIdx' => $btob_idx, 'BranchCcd' => $branch_ccd, 'ApprovalStatus' => 'Y'],
-                'BDT' => ['ApprovalDatm' => [date('Y-m-d'), date('Y-m-t')]]
+                'BDT' => ['ApprovalDatm' => [date('Y-m-01'), date('Y-m-t')]]
             ];
             $complete_cnt = $this->_conn->getFindResult($this->_table['btob_cert_apply'], true, $arr_cnt_condition);
 

@@ -78,7 +78,7 @@
                                         @endif
                                     </dt>
                                 </dl>
-                                @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N')
+                                @if(empty($row['SuppProdCode']) == false && $row['SuppIsUse'] == 'Y' && $row['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
                                     <div class="mb10"><a href="#none" onclick="fnBogang('{{$row['OrderIdx']}}', '{{$row['OrderProdIdx']}}', '{{$row['ProdCode']}}', '{{$row['ProdCodeSub']}}', '')" class="btnStfull03">보강/복습동영상 신청 ></a></div>
                                 @endif
                             </td>
@@ -121,7 +121,7 @@
                                                         <span>인강전환</span>
                                                     @endif
 
-                                                    @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N')
+                                                    @if(empty($subrow['SuppProdCode']) == false && $subrow['SuppIsUse'] == 'Y' && $subrow['IsDisp'] != 'N' && $row['StudyEndDate'] >= date("Y-m-d", strtotime('-14 days',time())))
                                                         <div class="supplementBtn"><a href="#none" onclick="fnBogang('{{$subrow['OrderIdx']}}', '{{$subrow['OrderProdIdx']}}', '{{$subrow['ProdCode']}}', '{{$subrow['ProdCodeSub']}}', 'P')" >보강/복습동영상 신청</a></div>
                                                     @endif
                                                 </li>

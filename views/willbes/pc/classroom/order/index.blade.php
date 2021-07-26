@@ -74,10 +74,10 @@
                             <colgroup>
                                 <col style="width: 80px;">
                                 <col style="width: 110px;">
-                                <col style="width: 220px;">
-                                <col style="width: 240px;">
-                                <col style="width: 130px;">
-                                <col style="width: 160px;">
+                                <col style="width: 150px;">
+                                <col>
+                                <col style="width: 110px;">
+                                <col style="width: 150px;">
                             </colgroup>
                             <thead>
                             <tr>
@@ -91,13 +91,43 @@
                             </thead>
                             <tbody>
                             @foreach($data as $idx => $row)
-                                <tr>
+                                <tr class="bgbule">
                                     <td class="w-process">{{ $row['SiteGroupName'] }}</td>
                                     <td class="w-date">{{ substr($row['OrderDatm'], 0, 10) }}</td>
                                     <td class="w-number"><a href="{{ site_url('/classroom/order/show?order_no=' . $row['OrderNo'] . '&' . http_build_query($arr_input)) }}">{{ $row['OrderNo'] }}</a></td>
-                                    <td class="w-list">{{ $row['ReprProdName'] }}</td>
-                                    <td class="w-price">{{ number_format($row['RealPayPrice']) }}</td>
-                                    <td class="w-method">{{ empty($row['PayMethodCcd']) === false ? $row['PayMethodCcdName'] : $row['PayRouteCcdName'] }}</td>
+                                    <td class="tx-left"><a href="{{ site_url('/classroom/order/show?order_no=' . $row['OrderNo'] . '&' . http_build_query($arr_input)) }}">{{ $row['ReprProdName'] }}</a></td>
+                                    <td class="w-price tx-blue">{{ number_format($row['tRealPayPrice']) }}</td>
+                                    <td class="w-method">{{ $row['PayMethodCcdName'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <ul class="orderDetail">
+                                            @foreach($row['OrderProdData'] as $sub_idx => $sub_row)
+                                                <li>
+                                                    <div>
+                                                        <span class="aBox {{ array_get($arr_match_prod_type_class, array_get($arr_match_prod_type_name, $sub_row['OrderProdTypeCcd']), 'waitBox_block') }}">
+                                                            {{ array_get($arr_match_prod_type_name, $sub_row['OrderProdTypeCcd'], '기타') }}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        {{ $sub_row['ProdName'] }}
+                                                        @if(empty($sub_row['SalePatternCcdName']) === false)
+                                                            ({{ $sub_row['SalePatternCcdName'] }})
+                                                        @endif
+                                                    </div>
+                                                    <div></div>
+                                                    <div class="tx-blue">{{ number_format($sub_row['RealPayPrice']) }}원</div>
+                                                    <div>
+                                                        @if($sub_row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['prepare'] || $sub_row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['complete'])
+                                                            {{ $sub_row['DeliveryStatusCcdName'] }}
+                                                        @else
+                                                            {{ $sub_row['PayStatusCcdName'] }}
+                                                        @endif
+                                                    </div>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -138,8 +138,6 @@
 .btn_area .btn{background:#a8aaa7;color:#fff;font-size:18px;width:170px;}
 .btn_area a{display:inline-block;height:38px;line-height:38px;border-radius:25px;letter-spacing:-0.5px;transition:all 0.5s linear;}
 
-.evt_02 {background:#F3F3F3;}
-
 .evt_03 {background:#fff;position:relative;}
 .check {color:#000; font-size:15px;font-weight:bold;position:absolute;left:50%;top:50%;margin-left:-400px;margin-top:300px;}
 .check label {cursor:pointer}
@@ -148,34 +146,20 @@
 
 .evt_03_info {padding-top:100px;}
 
-.evt_04 {background:#F3F3F3;padding-bottom:150px;}
-.evt_04 .tabBox {position:relative; width:1120px; margin:0 auto 40px;}
-.evt_04 .tab li {display:inline; float:left; width:33.333333%;}
-.evt_04 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; border:1px solid #1a1a1a; margin-right:1px}
-.evt_04 .tab li a:hover,
-.evt_04 .tab li a.active {background:#9b1f29; color:#fff;}
-.evt_04 .tab li:last-child a {margin:0}
-.evt_04 .tab:after {content:""; display:block; clear:both}
+.evt_02s {background:#;padding-bottom:150px;}
+.evt_02s .tabBox {position:relative; width:1120px; margin:0 auto 40px;}
+.evt_02s .tab li {display:inline; float:left; width:33.333333%;}
+.evt_02s .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#6583ab; color:#fff; height:60px; line-height:60px; border:1px solid #1a1a1a; margin-right:1px}
+.evt_02s .tab li a:hover,
+.evt_02s .tab li a.active {background:#182f4f; color:#fff;}
+.evt_02s .tab li:last-child a {margin:0}
+.evt_02s .tab:after {content:""; display:block; clear:both}
 
-.evt_05 {background:#fdfdfd;}
+.evt_03 {background:#f3f3f3;}
 
-.evt_06 {background:#F6F6F6;padding-bottom:125px;}
-.evt_06 .tabBox {position:relative; width:1120px; margin:0 auto;}
-.evt_06 .tab li {display:inline; float:left; width:50%;}
-.evt_06 .tab li a {display:block; text-align:center; font-size:22px; font-weight:600; background:#fff; color:#000; height:60px; line-height:60px; margin-right:1px; border:1px solid #1a1a1a;}
-.evt_06 .tab li a:hover,
-.evt_06 .tab li a.active {background:#9b1f29; color:#fff;}
-.evt_06 .tab li:last-child a {margin:0}
-.evt_06 .tab:after {content:""; display:block; clear:both}
-
- /* 이용안내 */
-.wb_info {padding:100px 0;}
-.guide_box{width:1120px; margin:0 auto; border:2px solid #202020;padding:50px; text-align:left; word-break:keep-all}
-.guide_box h2 {font-size:30px; margin-bottom:30px}
-.guide_box dt{margin-bottom:10px; color:#fff; background:#333; display:inline-block; padding:5px 10px; font-weight:bold; margin-right:10px; font-size:17px;}        
-.guide_box dd{color:#777; margin:0 0 20px 5px; line-height:17px}
-.guide_box dd strong {color:#555}
-.guide_box dd li{margin-bottom:3px; list-style:decimal; margin-left:20px;font-size:13px;}
-.guide_box dd:after {content:""; display:block; clear:both}
-.guide_box .inquire{padding-top:25px;font-size:20px;font-weight:bold;color:#000;}   
-.guide_box .infoTit {font-size:20px;} 
+.evt_04 {padding-bottom:150px;}
+.evt_04 .slide_con {width:954px; margin:0 auto; position:relative}
+.evt_04 .slide_con p {position:absolute; top:35%; width:30px; z-index:90}
+.evt_04 .slide_con p a {cursor:pointer}
+.evt_04 .slide_con p.leftBtn {left:-115px; top:50%; width:62px; height:62px; margin-top:-30px;}
+.evt_04 .slide_con p.rightBtn {right:-85px; top:50%; width:62px; height:62px; margin-top:-30px;}

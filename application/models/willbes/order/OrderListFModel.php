@@ -454,4 +454,76 @@ class OrderListFModel extends BaseOrderFModel
 
         return $query->result_array();
     }
+
+    /**
+     * 마이페이지 주문배송조회 목록 조회
+     * @param bool $is_count
+     * @param array $arr_condition
+     * @param null|int $limit
+     * @param null|int $offset
+     * @param array $order_by
+     * @return mixed
+     */
+    public function getMyPageOrderList($is_count, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            $column = 'O.OrderIdx, O.OrderNo, O.SiteCode, O.ReprProdName, O.PayRouteCcd, O.PayMethodCcd
+                , O.RealPayPrice as tRealPayPrice, O.CompleteDatm, O.OrderDatm
+                , SG.SiteGroupName
+                , ifnull(CPM.CcdName, CPR.CcdName) as PayMethodCcdName
+                , (select concat("[", 
+                        group_concat(JSON_OBJECT(
+                            "ProdName", P.ProdName,
+                            "OrderProdTypeCcd", ifnull(PL.LearnPatternCcd, P.ProdTypeCcd),
+                            "RealPayPrice", OP.RealPayPrice,	    		
+                            "PayStatusCcd", OP.PayStatusCcd,
+                            "PayStatusCcdName", CPS.CcdName,
+                            "DeliveryStatusCcd", OPD.DeliveryStatusCcd,
+                            "DeliveryStatusCcdName", CDS.CcdName,
+                            "SalePatternCcdName", CSP.CcdName
+                        )), "]") as OrderProdData
+                    from ' . $this->_table['order_product'] . ' as OP
+                        left join ' . $this->_table['product'] . ' as P
+                            on OP.ProdCode = P.ProdCode and P.IsStatus = "Y"
+                        left join ' . $this->_table['product_lecture'] . ' as PL
+                            on OP.ProdCode = PL.ProdCode
+                        left join ' . $this->_table['order_product_delivery_info'] . ' as OPD
+                            on OP.OrderProdIdx = OPD.OrderProdIdx			
+                        left join ' . $this->_table['code'] . ' as CPS
+                            on OP.PayStatusCcd = CPS.Ccd and CPS.IsStatus = "Y"
+                        left join ' . $this->_table['code'] . ' as CDS
+                            on OPD.DeliveryStatusCcd = CDS.Ccd and CDS.IsStatus = "Y"
+                        left join ' . $this->_table['code'] . ' as CSP
+                            on OP.SalePatternCcd = CSP.Ccd and CSP.IsStatus = "Y" and OP.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '"                
+                    where OP.OrderIdx = O.OrderIdx
+                        and OP.MemIdx = O.MemIdx
+                  ) as OrderProdData            
+            ';
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+        }
+
+        $from = '
+            from ' . $this->_table['order'] . ' as O
+                left join ' . $this->_table['site'] . ' as S
+                    on O.SiteCode = S.SiteCode and S.IsStatus = "Y"
+                left join ' . $this->_table['site_group'] . ' as SG
+                    on S.SiteGroupCode = SG.SiteGroupCode and SG.IsStatus = "Y"                    
+                left join ' . $this->_table['code'] . ' as CPR
+                    on O.PayRouteCcd = CPR.Ccd and CPR.IsStatus = "Y"
+                left join ' . $this->_table['code'] . ' as CPM
+                    on O.PayMethodCcd = CPM.Ccd and CPM.IsStatus = "Y"              
+        ';
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        // 쿼리 실행
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
+
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }
 }

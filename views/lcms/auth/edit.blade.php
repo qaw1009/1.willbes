@@ -108,40 +108,38 @@
         </div>
     </div>
     <script type="text/javascript">
-        var $regi_form = $('#_regi_form');
+        var $modal_regi_form = $('#_regi_form');
 
         $(document).ready(function() {
             // 메일 도메인 선택
             $('select[name=admin_mail_domain_ccd]').change(function () {
                 //setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain');
                 if($(this).val() === '') {
-                    $regi_form.find('input[name="admin_mail_domain"]').val('').prop('readonly', false);
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val('').prop('readonly', false);
                 } else {
-                    $regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
                 }
             });
 
             // 수정폼 입력값 셋팅
-            $regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
-            //$regi_form.find('select[name="admin_dept_cc cd"]').val('{{ $data['wAdminDeptCcd'] }}');
-            //$regi_form.find('select[name="admin_position_ccd"]').val('{{ $data['wAdminPositionCcd'] }}');
-            $regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
+            $modal_regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
+            $modal_regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
             {{-- TODO  부모창 운영자정보관리에서 인풋항목 충돌로 인해 미표기 버그 발생 --}}
             // setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');
-            $regi_form.find('select[name="admin_mail_domain_ccd"] option').each(function() {
+            $modal_regi_form.find('select[name="admin_mail_domain_ccd"] option').each(function() {
                 if($(this).val() === '{{$data['wAdminMailDomain']}}') {
                     $(this).prop('selected', true);
-                    $regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val($(this).val()).prop('readonly', true);
                 } else {
-                    $regi_form.find('input[name="admin_mail_domain"]').val('{{$data['wAdminMailDomain']}}')
+                    $modal_regi_form.find('input[name="admin_mail_domain"]').val('{{$data['wAdminMailDomain']}}')
                 }
             });
 
             // 관리자 정보 수정
-            $regi_form.submit(function() {
+            $modal_regi_form.submit(function() {
                 var _url = '{{ site_url('/lcms/auth/regist/update') }}';
 
-                ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxSubmit($modal_regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         $("#pop_modal").modal('toggle');
@@ -152,7 +150,7 @@
 
             function addValidate() {
                 // 메일 유효성 체크
-                var admin_mail = $regi_form.find('input[name=admin_mail_id]').val() + '@' + $regi_form.find('input[name=admin_mail_domain]').val();
+                var admin_mail = $modal_regi_form.find('input[name=admin_mail_id]').val() + '@' + $modal_regi_form.find('input[name=admin_mail_domain]').val();
                 if ((new FormValidator()).checkRegex(admin_mail, 'email').valid === false) {
                     return false;
                 }
@@ -169,7 +167,7 @@
             });
 
             // 조직 삭제 이벤트
-            $regi_form.on('click', '.selected-organization-delete', function() {
+            $modal_regi_form.on('click', '.selected-organization-delete', function() {
                 $(this).parent().remove();
             });
         });

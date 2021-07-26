@@ -57,7 +57,7 @@
             </div>
         @endif
 
-        <div class="youtubeBox mt80">
+        <div class="youtubeBox">
             <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 

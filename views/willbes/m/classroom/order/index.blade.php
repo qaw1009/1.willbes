@@ -48,21 +48,50 @@
             @if(empty($data) === false)
                 <div class="paymentCheck">
                     @foreach($data as $idx => $row)
-                        <h4>
+                        <h4 class="bgblue">
                             {{ substr($row['OrderDatm'], 0, 10) }}
                             <a href="{{ front_url('/classroom/order/show?order_no=' . $row['OrderNo'] . '&' . http_build_query($arr_input)) }}">주문상세보기 ></a>
                         </h4>
-                        <ul>
+                        <ul class="bgblue">
                             <li>{{ $row['SiteGroupName'] }}</li>
                             <li>{{ $row['ReprProdName'] }}</li>
-                            <li>{{ empty($row['PayMethodCcd']) === false ? $row['PayMethodCcdName'] : $row['PayRouteCcdName'] }}</li>
+                            <li>{{ $row['PayMethodCcdName'] }}</li>
                         </ul>
+                        <div class="orderDetail">
+                            @foreach($row['OrderProdData'] as $sub_idx => $sub_row)
+                                <div>
+                                    <div>
+                                        <span class="aBox {{ array_get($arr_match_prod_type_class, array_get($arr_match_prod_type_name, $sub_row['OrderProdTypeCcd']), 'waitBox_block') }}">
+                                            {{ array_get($arr_match_prod_type_name, $sub_row['OrderProdTypeCcd'], '기타') }}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        {{ $sub_row['ProdName'] }}
+                                        @if(empty($sub_row['SalePatternCcdName']) === false)
+                                            ({{ $sub_row['SalePatternCcdName'] }})
+                                        @endif
+                                    </div>
+                                    <div>
+                                        <strong>실 결제금액</strong>
+                                        <span class="tx-blue">{{ number_format($sub_row['RealPayPrice']) }}원</span>
+                                    </div>
+                                    <div>
+                                        <strong>주문/배송상태</strong>
+                                        @if($sub_row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['prepare'] || $sub_row['DeliveryStatusCcd'] == $arr_delivery_status_ccd['complete'])
+                                            {{ $sub_row['DeliveryStatusCcdName'] }}
+                                        @else
+                                            {{ $sub_row['PayStatusCcdName'] }}
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     @endforeach
                 </div>
                 {!! $paging['pagination'] !!}
             @else
                 <div class="paymentCheck bdb-none bdt-gray tx-center pt20">
-                    <img src="{{ img_url('m/mypage/icon_warning.png') }}">
+                    <img src="{{ img_url('m/mypage/icon_warning.png') }}" alt="">
                     <div class="mt10 pb20 bdb-dark-gray">주문 내역이 없습니다.</div>
                 </div>
             @endif

@@ -60,13 +60,13 @@
             <select name="admin_dept_ccd" id="admin_dept_ccd" class="form-control" title="소속">
                 <option value="">선택</option>
                 @foreach($dept_ccd as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
+                    <option value="{{ $key }}" {{ $data['wAdminDeptCcd'] == $key ? 'selected = "selected"' : ''}} >{{ $val }}</option>
                 @endforeach
             </select>
             <select name="admin_position_ccd" id="admin_position_ccd" class="form-control" title="직급">
                 <option value="">선택</option>
                 @foreach($position_ccd as $key => $val)
-                    <option value="{{ $key }}">{{ $val }}</option>
+                    <option value="{{ $key }}" {{ $data['wAdminPositionCcd'] == $key ? 'selected = "selected"' : ''}}>{{ $val }}</option>
                 @endforeach
             </select>
         </div>
@@ -123,8 +123,8 @@
 
             // 수정폼 입력값 셋팅
             $regi_form.find('select[name="admin_phone1"]').val('{{ $data['wAdminPhone1'] }}');
-            $regi_form.find('select[name="admin_dept_cc cd"]').val('{{ $data['wAdminDeptCcd'] }}');
-            $regi_form.find('select[name="admin_position_ccd"]').val('{{ $data['wAdminPositionCcd'] }}');
+            //$regi_form.find('select[name="admin_dept_cc cd"]').val('{{ $data['wAdminDeptCcd'] }}');
+            //$regi_form.find('select[name="admin_position_ccd"]').val('{{ $data['wAdminPositionCcd'] }}');
             $regi_form.find('input[name="admin_mail_id"]').val('{{ $data['wAdminMailId'] }}');
             {{-- TODO  부모창 운영자정보관리에서 인풋항목 충돌로 인해 미표기 버그 발생 --}}
             // setMailDomain('admin_mail_domain_ccd', 'admin_mail_domain', '{{ $data['wAdminMailDomain'] }}');

@@ -105,17 +105,17 @@
 .gosi-bnfull02 .slider img {width:2000px; height:220px;}
 
 .gosi-gate-v2 .tpassWrap {margin-top:100px; letter-spacing: 0}
-    .tpassWrap a {display:block; position: relative;}
+    .tpassWrap .banner-group {display:block; position: relative;}
     .tpassLeft {float:left; width:540px; height:467px; overflow: hidden;}
-    .tpassLeft .bnimg {width:540px; height:410px; overflow: hidden; border-radius: 10px}
+    .tpassLeft .bnimg {width:540px; height:410px; overflow: hidden; border-radius:10px;}
     .tpassRight {float:right; width:540px}
     .tpassRight .tpassRightTop {width:540px; height:217px; overflow: hidden;}        
     .tpassRight .tpassRightTop .bnimg {width:540px; height:160px; overflow: hidden; border-radius: 10px}
     .tpassRight .tpassRightBottom {margin-top:35px; display: flex; justify-content: space-between; height:217px; overflow: hidden;}
     .tpassRight .tpassRightBottom > div {width:260px}
     .tpassRight .tpassRightBottom .bnimg {width:260px; height:160px; overflow: hidden; border-radius: 10px}
-    .tpassWrap .bnTitle { font-size:14px; margin-top:20px; padding-left: 10px; width:99%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}   
-    .tpassWrap .bnTitle p {font-size:18px; font-weight: bold; margin-bottom: 5px; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+    .tpassWrap .banner-group {font-size:14px;}   
+    .tpassWrap .banner-group p {font-size:18px; font-weight: bold; margin-bottom: 5px; width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin-top:20px}
     .tpassWrap .bx-wrapper .bx-pager {
         width: auto;
         position: absolute;

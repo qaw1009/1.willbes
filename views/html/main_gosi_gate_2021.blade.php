@@ -477,80 +477,103 @@
             <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
             <div class="tpassLeft">
                 <div class="slider">
-                    <a href="#none">
-                        <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명"></div>
-                        <div class="bnTitle">
-                            <p>영어 합격 스나이퍼 갓덕현</p>
-                            2022 대비 합격을 위한 전 과정 제공!
+                    <div class="banner-group">
+                        <div class="bnimg">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명">
+                            </a>
                         </div>
-                    </a>
-                    <a href="#none">
-                        <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명"></div>
-                        <div class="bnTitle">
-                            <p>영어 합격 스나이퍼 갓덕현</p>
-                            2022 대비 합격을 위한 전 과정 제공!
+                        <p>영어 합격 스나이퍼 갓덕현</p>
+                        2022 대비 합격을 위한 전 과정 제공!
+                    </div>
+
+                    <div class="banner-group">
+                        <div class="bnimg">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명">
+                            </a>
                         </div>
-                    </a>
-                    <a href="#none">
-                        <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명"></div>
-                        <div class="bnTitle">
-                            <p>영어 합격 스나이퍼 갓덕현</p>
-                            2022 대비 합격을 위한 전 과정 제공!
+                        <p>영어 합격 스나이퍼 갓덕현</p>
+                        2022 대비 합격을 위한 전 과정 제공!
+                    </div>
+
+                    <div class="banner-group">
+                        <div class="bnimg">
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x410.jpg" alt="배너명">
+                            </a>
                         </div>
-                    </a>
+                        <p>영어 합격 스나이퍼 갓덕현</p>
+                        2022 대비 합격을 위한 전 과정 제공!
+                    </div>
                 </div>
             </div>
             <div class="tpassRight">
                 <div class="tpassRightTop">
                     <div class="slider">
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x160.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>불꽃소방 합격의 새로운 신화 이종오</p>
-                                이제, 합격의 관건은 소방학&관계법규입니다.
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x160.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x160.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>불꽃소방 합격의 새로운 신화 이종오</p>
-                                이제, 합격의 관건은 소방학&관계법규입니다.
+                            <p>불꽃소방 합격의 새로운 신화 이종오</p>
+                            이제, 합격의 관건은 소방학&관계법규입니다.
+                        </div>
+
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_540x160.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
+                            <p>불꽃소방 합격의 새로운 신화 이종오</p>
+                            이제, 합격의 관건은 소방학&관계법규입니다.
+                        </div>
                     </div>
                 </div>
                 <div class="tpassRightBottom">
                     <div class="slider">
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_01.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>정통 국어 박사 오대혁</p>
-                                제대로 이해시켜주는 수험 국어의 결정체!
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_01.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_02.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>합격을 관통하는 한국사 김상범 한국사 김상범</p>
-                                지혜롭게 공부하라! 김상범을 따르라! 김상범을 따르라!
+                            <p>정통 국어 박사 오대혁</p>
+                            제대로 이해시켜주는 수험 국어의 결정체!
+                        </div>
+
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_02.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
+                            <p>합격을 관통하는 한국사 김상범 한국사 김상범</p>
+                            지혜롭게 공부하라! 김상범을 따르라! 김상범을 따르라!
+                        </div>
                     </div>
                     <div class="slider">
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_02.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>합격을 관통하는 한국사 김상범 한국사 김상범</p>
-                                지혜롭게 공부하라! 김상범을 따르라! 김상범을 따르라!
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_02.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
-                        <a href="#none">
-                            <div class="bnimg"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_01.jpg" alt="배너명"></div>
-                            <div class="bnTitle">
-                                <p>정통 국어 박사 오대혁</p>
-                                제대로 이해시켜주는 수험 국어의 결정체!
+                            <p>합격을 관통하는 한국사 김상범 한국사 김상범</p>
+                            지혜롭게 공부하라! 김상범을 따르라! 김상범을 따르라!
+                        </div>
+                        
+                        <div class="banner-group">
+                            <div class="bnimg">
+                                <a href="#none">
+                                    <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/tpass_260x160_01.jpg" alt="배너명">
+                                </a>
                             </div>
-                        </a>
+                            <p>정통 국어 박사 오대혁</p>
+                            제대로 이해시켜주는 수험 국어의 결정체!
+                        </div>
                     </div>
                 </div>
             </div>

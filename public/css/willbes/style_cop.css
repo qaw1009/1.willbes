@@ -279,6 +279,36 @@
 	width: 40px;
 }
 
+/*전문교수진*/
+.cop .SecBanner12 .bSlider .slider {
+	height: 100px;	
+}
+.cop .SecBanner12 .bx-wrapper .bx-pager {
+	float: none;
+	width: 100%;
+	right: 8px;
+	bottom: 15px;
+	text-align: center;
+}
+.cop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a {
+	background: #ccc;
+	width: 12px;
+	height: 12px;
+	margin: 0 2px;
+	background: #fff;
+	border:1px solid #b9b9b9;
+	border-radius:10px;
+}
+.cop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.cop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active,
+.cop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #9a9a9a;
+	border:1px solid #9a9a9a;
+}
+.cop .SecBanner12 .bx-wrapper .bx-pager.bx-default-pager a.active {
+	width: 40px;
+}
+
 /*전문교수진 */
 .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
 .cop .SectionBg01 {background:#fbfbfd; padding:100px 0 80px}
@@ -286,7 +316,33 @@
 .cop .SecBanner05 li {display:inline; float:left; margin:0 20px 20px 0;}
 .cop .SecBanner05:after {content:''; display: block; clear:both}
 
-.cop .SectionBg02 {background:#f8f0dd; padding:100px 0}
+.cop .SecBanner12 {margin-right:-20px; margin-top:20px}
+.cop .SecBanner12 li {display:inline; float:left; margin:0 20px 20px 0;}
+.cop .SecBanner12:after {content:''; display: block; clear:both}
+
+.cop .tx-color {
+	color: #0c5dc0;
+}
+.cop .will-nTit {font-size:35px !important; border:0 !important; margin-bottom:30px;}
+
+.cop .pro_box {margin-left:-5px}
+.cop .pro_box > li {
+    position: relative;
+    display: inline;
+    float: left;
+    width: 220px;
+    height: 327px;
+    margin-left: -11px;
+    margin-bottom:5px
+}
+.cop .mouBox span {display:inline; float:left; margin-right:6px}
+.cop .mouBox:after {content:''; display:block; clear:both}
+
+.cop .Sec01 {background:#0a0a0a; margin-top:20px}
+.cop .Sec02 {position:relative; height:390px}
+.cop .Sec02 div {position:absolute; top:0; left:50%; margin-left:-1000px}
+
+.cop .SectionBg02 {background:#f8f0dd; padding:100px 0 0;}
 .cop .SectionBg02 .will-nTit {color:#000}
 .cop .SecBanner06 {margin-right:-20px; margin-top:20px}
 .cop .SecBanner06 li {display:inline; float:left; margin:0 20px 20px 0;}
@@ -342,7 +398,54 @@
 .cop .bookContent > p a {display:none;}
 .cop .bookContent > p.leftBtn {margin-left:-600px;}
 .cop .bookContent > p.rightBtn {margin-left:600px; background-position: right center;}
+
+/*유트브 채널*/
+.cop .tube_content {position:relative; width:1120px; margin:50px auto;}
+.cop .tube_list:after {content:""; display:block; clear:both}
+.cop .tube_list li {display:inline; float:left; width:224px; height:300px; text-align:center; margin-bottom:30px; padding-bottom:10px;
+	word-break: keep-all; color:#43484f;}
+.cop .tube_list span {background: url(https://static.willbes.net/public/images/promotion/main/2001/book_cover.png) no-repeat center top;
+	width:167; height:196px; position: absolute; left:10px; top:0; z-index:10}
+.cop .tube_list .tube_img {position:relative;  width:142px; margin:0 auto; min-height:196px; overflow: hidden;}
+
+.cop .tube_list li img {
+	position: absolute; left:50%; top:70%; max-width:150px;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1);
+	transition: all ease-in-out .2s;
+}
+.cop .tube_list li:hover img {
+	-ms-transform: translate(-50%, -50%) scale(1.1);
+	-webkit-transform: translate(-50%, -50%) scale(1.1);
+	transform: translate(-50%, -50%) scale(1.1);
+}
+.cop .tube_list p {width:90%; margin:auto;}
+.cop .tube_list p:nth-of-type(1) {font-weight:bold;font-size:17px; margin-top:10px}
+.cop .tube_list p:nth-of-type(2) {font-size:13px; color:#363636; margin-top:10px}
+
+.cop .tube_content {position:relative; width:1120px; margin:50px auto;}
+.cop .tube_content > p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer;
+	background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
+.cop .tube_content > p a {display:none;}
+.cop .tube_content > p.leftBtn {margin-left:-600px;}
+.cop .tube_content > p.rightBtn {margin-left:600px; background-position: right center;}
+
 .cop .willbes-Layer-Box {left:50%; top:4550px !important; margin-left:-490px !important; z-index: 110;}
+
+/*검정제 교수진*/
+.cop .SecBanner11 {
+	margin-bottom:170px;
+}
+.cop .SecBanner11 li {
+	display:inline; float:left;  margin-right:20px;
+}
+.cop .SecBanner11 li:last-child {
+	margin-right:0;	
+}
+.cop .SecBanner11:after {content:''; display: block; clear:both}
 
 /* Main Container : SpecialLecBox */
 .Section .SpecialLecBox dl dt {

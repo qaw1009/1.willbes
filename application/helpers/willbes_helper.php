@@ -28,15 +28,17 @@ if (!function_exists('banner_html')) {
      * @param $data
      * @param string $rolling_class
      * @param string $a_class
-     * @param bool $is_desc
+     * @param false $is_desc
      * @param string $view_html
      * @param string $view_html_class
      * @param string $title_class
-     * @param string $top_title 상단 배너명
-     * @param string $bottom_title 하단 배너명
+     * @param false $top_title 상단 배너명
+     * @param false $bottom_title 하단 배너명
+     * @param false $banner_group 배너그룹
      * @return string
      */
-    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false, $view_html = '', $view_html_class = '', $title_class = '', $top_title = false, $bottom_title = false)
+    function banner_html($data, $rolling_class = '', $a_class = '', $is_desc = false
+        , $view_html = '', $view_html_class = '', $title_class = '', $top_title = false, $bottom_title = false, $banner_group = false)
     {
         $html = '';
         $rolling_start = '';
@@ -148,6 +150,9 @@ if (!function_exists('banner_html')) {
                 $a_start .= '<div class="tag">'.$row['BannerName'].'</div>'.$a_start;
             }
 
+            if ($banner_group === true) {
+                $html .= '<div class="banner-group">';
+            }
             if(empty($view_html) === false) {
                 if($view_html == 'none') {
                     $html .= $a_start . $banner_img . $a_end;
@@ -167,6 +172,9 @@ if (!function_exists('banner_html')) {
 
             if ($bottom_title === true) {
                 $html = $html.'<p>'.$row['BannerName'].'</p>';
+            }
+            if ($banner_group === true) {
+                $html .= '</div>';
             }
         }
         return $rolling_start . $html . $rolling_end . $map_data . $rolling_script;

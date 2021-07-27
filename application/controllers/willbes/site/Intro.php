@@ -56,8 +56,13 @@ class Intro extends \app\controllers\FrontController
      */
     private function _banner($cate_code = 0)
     {
+        /** todo:인트로 배너 데이터 제거 (공무원 인트로 오픈 후) */
         $banner_disp_group = 'GRP:인트로';
         $result = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
+
+        $banner_disp_group = 'GRP:게이트';
+        $result2 = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
+        $result = array_merge_recursive($result, $result2);
 
         $data = [];
         foreach ($result as $key => $row) {

@@ -14,6 +14,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
                 
         /************************************************************/
 
@@ -41,8 +42,8 @@
         <div class="evtCtnsBox wb_cts02">       
             <div class="wrap">     
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/1297_02.jpg" alt="100% 온라인 강의"/>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183413" title="신청하기" target="_blank" style="position: absolute;left: 13.89%;top: 70.19%;width: 27.93%;height: 8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183414" title="신청하기" target="_blank" style="position: absolute;left: 58.89%;top: 70.19%;width: 27.93%;height: 8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50157/?subject_idx=1107&subject_name=%EA%B5%AD%EC%96%B4&tab=open_lecture&search_order=regist&series=&campus_ccd=605001&search_text=UHJvZE5hbWU67IOI67K9" title="신청하기" target="_blank" style="position: absolute;left: 13.89%;top: 70.19%;width: 27.93%;height: 8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50619?subject_idx=1109&subject_name=%ED%95%9C%EA%B5%AD%EC%82%AC&tab=open_lecture&search_order=regist&series=&campus_ccd=605001&search_text=UHJvZE5hbWU67IOI67K9" title="신청하기" target="_blank" style="position: absolute;left: 58.89%;top: 70.19%;width: 27.93%;height: 8%;z-index: 2;"></a>
             </div>    
         </div>
 

@@ -13,10 +13,6 @@
             </div>
         </div>
 
-{{--        <div class="evt_00">--}}
-{{--            <a href="https://pass.willbes.net/promotion/index/cate/3103/code/2033"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_1120x100_01.jpg"></a>--}}
-{{--        </div>--}}
-
         <div class="Section gosi-Sec NSK">
             <div class="gosi-bntop">
                 <div id="TechRollingSlider" class="GositabBox">
@@ -61,13 +57,20 @@
             </div>
         @endif
 
-        <div class="youtube">
+        <div class="youtubeBox">
             <iframe src="https://www.youtube.com/embed/dcIflRAmSgE?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
 
         <div class="evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01.jpg" alt="">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01.jpg" alt="let's psat">
             <ul>
+                @for($i=13; $i<=16; $i++)
+                    @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
+                        <li>
+                            {!! banner_html($data['arr_main_banner']['메인_무료강좌'.$i]) !!}
+                        </li>
+                    @endif
+                @endfor
                 @for($i=1; $i<=12; $i++)
                     @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
                         <li>
@@ -76,37 +79,17 @@
                     @endif
                 @endfor
             </ul>
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_01_detail.gif" alt="" usemap="#Map3103a" border="0">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01_detail.gif" alt="자세히보기" usemap="#Map3103a" border="0">
             <map name="Map3103a" id="Map3103a">
                 <area shape="rect" coords="219,18,900,88" href="#to_go" />
             </map>
         </div>
 
         <div class="evt_02">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_02.jpg" />
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_02.jpg" alt="최강팀이 함께합니다.">
         </div>
 
-        <div class="evt_03" id="evt03">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03.jpg" usemap="#Map3103b" border="0" />
-            <map name="Map3103b" id="Map3103b">
-                <area shape="rect" coords="129,346,548,522" href="javascript:go_PassLecture('173664');" alt="수강신청" />
-                <area shape="rect" coords="578,347,1000,523" href="javascript:go_PassLecture('173904');" alt="수강신청" />
-            </map>
-            <div class="check" id="chkInfo">
-                <label>
-                    <input name="ischk" type="checkbox" value="Y" />
-                    페이지 하단 Perfect PSAT Program 온라인 PASS반 이용안내를 모두 확인하였고, 이에 동의합니다.
-                </label>
-                <a href="#notice" class="infotxt">이용안내확인하기 ↓</a>
-            </div>
-        </div>
-
-        <div class="evt_03_info">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_03_info.jpg" />
-        </div>
-
-        <div class="evt_04">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_04.jpg" alt="">
+        <div class="evt_02s">
             <div class="tabBox">
                 <ul class="tab">
                     <li><a href="#tab01" class="active">자료해석</a></li>
@@ -114,126 +97,33 @@
                     <li><a href="#tab03">언어논리</a></li>
                 </ul>
                 <div id="tab01">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c1.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab01.jpg" alt="석치수">
                 </div>
                 <div id="tab02">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c2.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab02.jpg" alt="박준범">
                 </div>
                 <div id="tab03">
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c3.png" alt=""><br><br>
-                    <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab_c4.png" alt="">
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab03.jpg" alt="이나우"><br><br>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_tab04.jpg" alt="힌승아">
                 </div>
             </div>
         </div>
 
-        <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05.jpg" />
+        <div class="evt_03">
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_03.jpg" alt="이론+적용+실전연습">
         </div>
 
-        <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_mid.gif" />
-        </div>
-
-        <div class="evt_05">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_05_bt.jpg" />
-        </div>
-
-        <div class="evt_06" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_06.jpg" />
-            <div class="tabBox">
-                <ul class="tab">
-                    <li><a href="#tab04" class="active">모의평가 전(2020년 10월~11월)</a></li>
-                    <li><a href="#tab05">모의평가 후(2021년 1월~6월)</a></li>
+        <div class="evtCtnsBox evt_04" >
+            <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_04.jpg" alt="psat to easy" id="to_go">
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts02.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts03.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts04.png" /></li>
                 </ul>
-                <div id="tab04">
-                    <div class="mt40">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c1.png" alt="">
-                    </div>
-                    <div class="mt40">
-                        <a href="https://pass.willbes.net/promotion/index/cate/3103/code/1933">
-                            <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c2.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div id="tab05">
-                    <div class="mt40">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c3.png" alt="">
-                    </div>
-                    <div class="mt40">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c4.png" alt="">
-                    </div>
-                    <div class="mt40">
-                        <img src="https://static.willbes.net/public/images/promotion/main/2004/3103_tab2_c5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox wb_info" id="notice">
-            <div class="guide_box">
-                <h2 class="NSK-Black">윌비스 한림법학원 Perfect PSAT Program 온라인 PASS반 이용안내</h2>
-                <dl>
-
-                    <dt>이용안내</dt>
-                    <dd>
-                        <ol>
-                            <li>본 상품은 2021년 7급공무원 1차시험(PSAT)을 준비하시는 분을 위해 준비되었습니다.[과목별 교수님]<br>
-                                자료해석 : 석치수, 상황판단 : 박준범, 언어논리(택1) : 이나우/한승아
-                            </li>
-                            <li>수강기간 : 본 상품에 등록된 강의는 2021년  7급공무원 1차시험(PSAT)일까지 수강하실 수 있습니다.</li>
-                            <li>무제한수강 : 본 상품은 수강기간 동안 강의배수제한 없이 무제한 수강하실 수 있습니다.</li>
-                            <li>CORE 특강 무료제공 : 11월(과목별 4~5회) CORE특강이 무료 업로드 예정입니다.</li>
-                            <li>진행(업로드) 강좌 순차 업로드 : OPEN CLASS(기본, 21년 1~2월), ADVANCED CLASS(심화, 21년 3~4월)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MASTER CLASS(실전모강, 21년 5~6월)강의가 수강하실 수 있게 순차적으로 업로드 될 예정입니다.
-                            </li>
-                            <li>강좌 및 교수는 학원 사정에 따라 변동될 수 있습니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dt>교재</dt>
-                    <dd>
-                        <ol>
-                            <li>각 강의수강에 필요한 교재는 별도로 구매하셔야 하며, 각 강좌별 교재는 강좌소개 및 교재구매 메뉴에서 별도 구매 가능합니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dt>환불</dt>
-                    <dd>
-                        <ol>
-                            <li>결제 후 7일 이내 강좌의 맛보기 강의를 제외하고 2강 이하 수강 시에만 전액 환불 가능합니다.</li>
-                            <li>결제 후 7일 이내 환불 요청 시 수강한 각 강의 정가 기준으로 수강 부분만큼 차감 후 나머지 부분에 대해 환불이 진행됩니다.</li>
-                            <li>강좌 내 학습 자료 및 모바일 다운로드 이용 시에는 수강한 것으로 간주됩니다.</li>
-                            <li>고객 변심으로 인한 환불은 수강시작일 (당일 포함)로부터 7일이 경과되면, Perfect PSAT Program 온라인 PASS반 결제가 기준으로 계산하여 사용일수만큼 차감 후 환불됩니다.<br>(환불시 CORE 특강 수강료도 정가기준 수강부분만큼 차감 후 환불됩니다.)</li>
-                        </ol>
-                    </dd>
-
-                    <dt>PASS 수강</dt>
-                    <dd>
-                        <ol>
-                            <li>로그인 후 [내강의실] 에서 [무한PASS존]으로 접속합니다.</li>
-                            <li>구매한 PASS 상품 선택 후 [강좌추가] 를 클릭, 원하시는 강좌를 등록한 후 수강할 수 있습니다.</li>
-                            <li>Perfect PSAT Program 온라인 PASS반은 일시 정지, 수강 연장, 재수강 불가합니다.</li>
-                            <li>Perfect PSAT Program 온라인 PASS반 수강 시 이용 가능한 기기 대수는 다음과 같이 제한됩니다.<br>
-                                - 총 수강 기기 대수 2대 : PC 2대 또는 PC 1대 모바일 1대 또는 모바일 2대
-                            </li>
-                            <li>PC, 모바일 기기에 대한 초기화가 필요할 경우 내용확인 후 진행이 가능하오니 고객센터로 문의 부탁드립니다.<br>
-                                (수강기간동안 3회 신청가능)
-                            </li>
-                            <li>일부 강좌의 경우 자료 출력 횟수 제한이 적용될 수 있습니다.</li>
-                        </ol>
-                    </dd>
-
-                    <dt>유의사항</dt>
-                    <dd>
-                        <ol>
-                            <li>본 상품은 특별할인기획 상품으로 쿠폰 할인, 다다익선 할인, 포인트 사용 등 혜택이 적용되지 않으니 양해 및 참고 부탁드립니다.</li>
-                            <li>Perfect PSAT Program 온라인 PASS반 중 불가피한 사정에 의해 부득이 진행되지 않을 경우 대체 강좌로 제공 예정이며, 이로 인한 환불은 불가합니다.</li>
-                            <li>아이디 공유, 타인에게 양도 및 판매 등 부정 사용 적발 시 수강 중인 Perfect PSAT Program 온라인 PASS반은 즉시 정지, 회원 자격이 박탈됩니다. 이로 인한 강의 환불은 절대 불가하며, 불법 공유 행위 사안에 따라 민형사상 조치가 발생 할 수 있습니다.</li>
-                        </ol>
-                    </dd>
-                    <div class="infoTit NG"><strong>※ 이용 문의 : 윌비스 고객만족센터 1566-4770 > 3</strong></div>
-
-                </dl>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_right.png"></a></p>
             </div>
         </div>
 
@@ -340,6 +230,32 @@
 
             $("#imgBannerLeft02").click(function (){
                 slidesImg02.goToNextSlide();
+            });
+        });
+
+        /*슬라이드*/
+        $(document).ready(function() {
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
             });
         });
     </script>

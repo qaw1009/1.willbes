@@ -64,6 +64,13 @@
         <div class="evt_01">
             <img src="https://static.willbes.net/public/images/promotion/main/2003/3103_01.jpg" alt="let's psat">
             <ul>
+                @for($i=13; $i<=16; $i++)
+                    @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
+                        <li>
+                            {!! banner_html($data['arr_main_banner']['메인_무료강좌'.$i]) !!}
+                        </li>
+                    @endif
+                @endfor
                 @for($i=1; $i<=12; $i++)
                     @if(isset($data['arr_main_banner']['메인_무료강좌'.$i]) === true)
                         <li>

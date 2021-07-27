@@ -163,17 +163,3 @@
 .evt_04 .slide_con p a {cursor:pointer}
 .evt_04 .slide_con p.leftBtn {left:-115px; top:50%; width:62px; height:62px; margin-top:-30px;}
 .evt_04 .slide_con p.rightBtn {right:-85px; top:50%; width:62px; height:62px; margin-top:-30px;}
-/*공지사항, 시험공고, 수험뉴스*/
-.Section .will-nlistTit {
-	font-size: 16px;
-	font-weight: 600;
-	color: #000;
-	line-height: 45px;
-	border-bottom: 2px solid #000;
-}
-.Section .will-nlistTit a.btn-add {
-	margin-left: 5px;
-}
-.Section .will-nlistTit a.btn-add img {
-	margin-top: -4px;
-}

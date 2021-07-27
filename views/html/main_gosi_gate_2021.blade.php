@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
 <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
 
 <!-- Container -->
@@ -393,6 +393,7 @@
             </div>
         </div> 
     </div>
+    
 
     <div class="Section newsWrap">
         <div class="widthAuto">
@@ -1134,8 +1135,10 @@
 <!-- End Container -->
 
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script type="text/javascript">
+
     //swiper 메인 슬라이드
     $(document).ready(function(){
         var mainslider = new Swiper('.mainSlider01', {
@@ -1233,6 +1236,7 @@
             $('.MaintabAllView').hide();
         });
     });
+
 
     //새로운소식    
     $(function() {

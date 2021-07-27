@@ -23,6 +23,7 @@
 }
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
+.ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
 .ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 2;}
 
 .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
@@ -90,7 +91,7 @@ no-repeat 5px center}
 	top: -1px;
 	right: -1px;
 }
-.ss
+
 
 </style>
 
@@ -752,10 +753,8 @@ no-repeat 5px center}
                             <dt><a href="#none">최신순</a></dt>
                             <dt><a href="#none">평점순</a></dt>
                         </dl>
-                        <div class="search-Btn btnAuto120 h27 f_right">
-                            <button type="submit" onclick="closeWin('replyListLayer'),openWin('replyWrite')" class="mem-Btn bg-blue bd-dark-blue">
-                                <span>수강후기 작성</span>
-                            </button>
+                        <div class="Select-Btn f_right">
+                            <input type="checkbox" name="list_type" class="btn-my-list" value="1" id="myReply"> <label for="myReply">내 수강후기</label>
                         </div>
                     </div>
                     <div class="LeclistTable">
@@ -1804,10 +1803,8 @@ no-repeat 5px center}
                         <dt><a href="#none">최신순</a></dt>
                         <dt><a href="#none">평점순</a></dt>
                     </dl>
-                    <div class="search-Btn btnAuto120 h27 f_right">
-                        <button type="submit" onclick="closeWin('replyListLayer'),openWin('replyWrite')" class="mem-Btn bg-blue bd-dark-blue">
-                            <span>수강후기 작성</span>
-                        </button>
+                    <div class="Select-Btn f_right">
+                        <input type="checkbox" name="list_type" class="btn-my-list" value="1" id="myReply"> <label for="myReply">내 수강후기</label>
                     </div>
                 </div>
                 <div class="LeclistTable">

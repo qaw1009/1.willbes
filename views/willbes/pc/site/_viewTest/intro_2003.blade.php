@@ -1,8 +1,8 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css?ver={{time()}}" />
-    <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
+<link rel="stylesheet" href="/public/vendor/swiper/css/swiper.min.css" />
+<link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
 
     <!-- Container -->
 
@@ -384,7 +384,7 @@
 
     {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/public/vendor/swiper/js/swiper.min.js"></script>
     <script type="text/javascript">
         //swiper 메인 슬라이드
         $(document).ready(function(){

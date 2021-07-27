@@ -539,6 +539,7 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 30px;
+    text-align:left;
 }
 .campus_info .c-tit span {
     vertical-align: baseline;
@@ -551,6 +552,7 @@
 .campus_info .c-info span {
     float: left;
     display: table;
+    text-align:left;
 }
 .campus_info .c-info span.a-tit {
     width: 60px;

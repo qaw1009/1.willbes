@@ -13588,7 +13588,8 @@ table.acadlecInfoPackageTable tr.Top td {
     font-size: 19px;
     font-weight: 600;
     color: #363636;
-    line-height: 60px;
+	line-height: 60px;
+	text-align:left;
 }
 .Section4_hl .will-acadTit span {
     vertical-align: baseline;

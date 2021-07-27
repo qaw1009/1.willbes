@@ -110,24 +110,14 @@
                 </a>
 
                 <div class="NSK-Black mt50">경찰학개론</div>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177660" target="_blank">
-                    <p><span>2021 합격필수</span><br/>
-                    위원회<br/> 총정리 특강</p>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2055_04_02.png" alt=""/>
-                </a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/177365" target="_blank">
-                    <p><span>2021 합격필수</span><br/>
-                    최신 개정법령</p>
-                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2055_04_02.png" alt=""/>
-                </a>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178782" target="_blank">
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183783" target="_blank">
                     <p><span>2021 합격필수</span><br/>
                     경찰학<br/> 숫자 특강</p>
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2055_04_02.png" alt=""/>
-                </a>
+                </a>       
 
                 <div class="NSK-Black mt50">형법</div>
-                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/178535" target="_blank">
+                <a href="https://police.willbes.net/lecture/show/cate/3001/pattern/free/prod-code/183787" target="_blank">
                     <p><span>2021 합격필수</span><br/>
                     최신 기출<br/> 및 판례</p>
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2055_04_03.png" alt=""/>

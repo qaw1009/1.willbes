@@ -194,12 +194,13 @@
                 <a href="javascript:alert('Coming Soon!')" >
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky01.png" title="자세히보기">
                 </a>
-            </li>   
-            <li>             
+            </li>
+            <li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브"></a></li>
+            {{--<li>
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브">
                 </a>
-            </li>         
+            </li>--}}
         </ul>   
 
         <div class="evtCtnsBox evt_counter">

@@ -118,7 +118,7 @@
             <table id="list_ajax_table" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>선택</th>
+                    <th><input type="checkbox" id="all_check" />  선택</th>
                     <th>No.</th>
                     <th>회원번호</th>
                     <th>회원명(아이디)</th>
@@ -194,6 +194,10 @@
                             return '<a href="{{site_url('/member/manage/setMemberLogin/')}}'+data+'/" target="_blank">[자동로그인]</a>';
                         }} //자동로그인
                 ]
+            });
+
+            $("#all_check").on('change', function(event) {
+                $("input[name=selectMember]").prop('checked', $("#all_check").prop("checked"));
             });
 
             // 엑셀다운로드 버튼 클릭

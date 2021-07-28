@@ -172,7 +172,7 @@
                 },
                 columns: [
                     {'data' : 'MemIdx', 'render' : function(data, type, row, meta) {
-                            return '<input type="checkbox" name="selectMember" class="flat target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
+                            return '<input type="checkbox" name="selectMember" class="target-crm-member" value="' + data + '" data-mem-idx="' + data + '">';
                         }}, // 체크박스
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return $datatable.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);

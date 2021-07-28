@@ -194,12 +194,13 @@
                 <a href="javascript:alert('Coming Soon!')" >
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky01.png" title="자세히보기">
                 </a>
-            </li>   
-            <li>             
+            </li>
+            <li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브"></a></li>
+            {{--<li>
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브">
                 </a>
-            </li>         
+            </li>--}}
         </ul>   
 
         <div class="evtCtnsBox evt_counter">
@@ -226,7 +227,7 @@
                 2021년 경찰2차 러닝메이트 최종 합격 프로젝트
                 @if(empty($arr_base['dday_data'][0]['DDay']) === false)
                     @if($onoff_1 == 'on')
-                        <p class="NSK-Black">1차 최종합격까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
+                        <p class="NSK-Black">2차 필기시험까지 <span>D{{$arr_base['dday_data'][0]['DDay']}}</span></p>
                     @endif
                 @endif
                 <!--

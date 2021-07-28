@@ -656,23 +656,11 @@
                             <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </div>
                     </li>
-                    <li>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_03.jpg">
-                            </a>                        
-                            <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
-                        </div>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_03.jpg">
-                            </a>                        
-                            <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
-                        </div>
-                    </li>
                 </ul> 
+                {{--
                 <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>                   
-                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p>                              
+                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p>      
+                --}}                        
             </div>
         </div>
     </div>
@@ -1308,31 +1296,6 @@
             onSliderLoad: function(){
                 $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1}); 
             }  
-        });
-    });
-
-    //캐스트
-    $(function() {
-        var slidesImg1 = $(".castslider").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:350,
-            pause:4000,
-            pager:true,
-            controls:false,
-            minSlides:3,
-            maxSlides:3,
-            slideWidth: 370,
-            slideMargin:5,
-            autoHover: true,
-            moveSlides:1,
-        });
-        $("#imgBannerLeft1").click(function (){
-            slidesImg1.goToPrevSlide();
-        });
-
-        $("#imgBannerRight1").click(function (){
-            slidesImg1.goToNextSlide();
         });
     });
 </script>

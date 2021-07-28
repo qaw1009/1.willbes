@@ -342,6 +342,36 @@
                             <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_05.png" alt="교수명"></a></div>
                         </div>
                     </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_01.png" alt="교수명"></a></div>
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51160?subject_idx=2127&subject_name=%ED%98%95%EC%82%AC%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_01.png" alt="교수명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_02.png" alt="교수명"></a></div>
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51161?subject_idx=2128&subject_name=%EA%B2%BD%EC%B0%B0%ED%95%99%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_02.png" alt="교수명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_03.png" alt="교수명"></a></div>
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51146?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_03.png" alt="교수명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_04.png" alt="교수명"></a></div>
+                            <div><a href="https://police.willbes.net/professor/show/cate/3001/prof-idx/51259?subject_idx=1049&subject_name=%ED%97%8C%EB%B2%95%2822%EB%85%84%EB%8C%80%EB%B9%84%29" target="_blank"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_04.png" alt="교수명"></a></div>
+                        </div>
+                    </li>
+                    <li class="bSlider">
+                        <div class="slider">
+                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_05.png" alt="교수명"></a></div>
+                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_05.png" alt="교수명"></a></div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>    

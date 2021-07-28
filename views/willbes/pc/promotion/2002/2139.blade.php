@@ -22,7 +22,9 @@
         .downWrap .btns{position: relative; width:1120px; margin:0 auto;}
         .downWrap .btns a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
-        .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto}
+        .evt01 {padding:100px 0; border-bottom:1px solid #ccc; width:1120px; margin:0 auto; position:relative;}
+        .evt01 .txtinfo {position:absolute; top:0; left:0; width:100%; z-index: 2; background:rgba(255,255,255,.9); display: flex; justify-content: center; align-items: center; height:650px; font-size:50px; line-height:1.3; text-shadow:0 5px 10px rgba(0,0,0,.2); color:#5b4ffb; }
+        .evt01 .txtinfo span {color:#000; font-size:70px}
         .evt01 .tag {font-size:40px; color:#5b4ffb; text-align:center}
         .evt01 .request {width:1000px; margin:0 auto; background:#fff; padding:50px;text-align:left}
         .evt01 .request h3 {font-size:17px;}
@@ -112,6 +114,12 @@
         </div>
 
         <div class="evtCtnsBox evt01">
+            <div class="txtinfo NSK-Black">
+                <div>코로나19로 인해<br>
+                <span>사립탐정사</span><br>
+                자격 3회시험일정은 <br>
+                추후공지 예정입니다.</div>
+            </div>
             <div class="tag NSK-Black">#사립탐정 #한국탐정 #7/31 #누구나빠르게</div>
             <div class="request" id="request">
                 <div class="requestL">

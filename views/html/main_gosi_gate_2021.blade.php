@@ -1131,105 +1131,103 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script type="text/javascript">
 
-    //swiper 메인 슬라이드
-    $(document).ready(function(){
-        var mainslider = new Swiper('.mainSlider01', {
-            direction: 'horizontal',
-            loop: true,
-            observer: true,
-            observeParents: true,
-            slidesPerView : 'auto',
-            pagination: {
-            el: ".swiper-pagination-gate",
-            type: "fraction",
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            navigation: {
-                nextEl: ".swiper-btn-next",
-                prevEl: ".swiper-btn-prev",
-            },
-            on: {
-                slideChange: function () {
-                    $('.Maintab li > a').removeClass('active');
-                    $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
-                    if($('.Maintab li:eq(0) > a').hasClass('active')){
-                        // mainslider.update();
-                        // location.reload();
-                    }  
-                    $('.tabCts a').removeClass('active');
-                    $('.tabCts a').eq(this.realIndex).addClass('active');                    
+     //swiper 메인 슬라이드
+     $(document).ready(function(){
+            var mainslider = new Swiper('.mainSlider01', {
+                direction: 'horizontal',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView : 'auto',
+                pagination: {
+                    el: ".swiper-pagination-gate",
+                    type: "fraction",
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                navigation: {
+                    nextEl: ".swiper-btn-next",
+                    prevEl: ".swiper-btn-prev",
+                },
+                on: {
+                    slideChange: function () {
+                        $('.Maintab li > a').removeClass('active');
+                        $('.Maintab li > a').eq(this.realIndex).addClass('active');
+                        $('.tabCts a').removeClass('active');
+                        $('.tabCts a').eq(this.realIndex).addClass('active');
+                    }
                 }
+            });
+
+            //메인 슬라이드 메뉴1
+            $('.Maintab li > a').on('click', function(){
+                $('.Maintab li > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+
+                var target = $(this).parent();
+                // target.removeClass('on')
+                // target.addClass('on');
+                listCenter(target);
+            });
+
+            //슬라이드 메뉴1 클릭시 위치조정
+            function listCenter(target){
+                var snbwrap = $('.Maintab');
+                var targetPos = target.position();
+                var box = $('.MaintabWrap');
+                var boxHarf = box.width()/2;
+                var pos;
+                var listWidth=0;
+
+                snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
+
+                var selectTargetPos = targetPos.left + target.outerWidth()/2;
+                if (selectTargetPos <= boxHarf) { // left
+                    pos = 0;
+                }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+                    pos = listWidth-box.width();
+                }else {
+                    pos = selectTargetPos - boxHarf;
+                }
+                setTimeout(function(){snbwrap.css({
+                    "transform": "translateX("+ (pos*-1) +"px)",
+                    "transition-duration": "500ms"
+                })}, 200);
             }
-        });
 
-        //메인 슬라이드 메뉴1
-        $('.Maintab li > a').on('click', function(){
-            $('.Maintab li > a').removeClass('active');
-            $(this).addClass('active');
-            var num = $(this).attr('data-swiper-slide-index');
-            mainslider.slideTo(num);
-            var target = $(this); 
-            muCenter(target);
-        });
+            //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
+            $('.tabCts > a').on('click', function(){
+                $('.tabCts > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+            });
+            //슬라이드 재생, 스탑 버튼
+            $('.start').on('click', function() {
+                mainslider.autoplay.start();
+                $(this).hide();
+                $('.stop').show();
+                return false;
+            });
+            $('.stop').on('click', function() {
+                mainslider.autoplay.stop();
+                $(this).hide();
+                $('.start').show();
+                return false;
+            });
 
-        //슬라이드 메뉴1 클릭시 위치조정
-        function muCenter(target){
-            var snbwrap = $('.Maintab');
-            var targetPos = target.position();
-            var box = $('.MaintabWrap');
-            var boxHarf = box.width()/2;
-            var pos;
-            var listWidth=0;
-            
-            snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
-            
-            var selectTargetPos = targetPos.left + target.outerWidth()/2;
-            if (selectTargetPos <= boxHarf) { // left
-                pos = 0;
-            }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
-                pos = listWidth-box.width();
-            }else {
-                pos = selectTargetPos - boxHarf;
-            }
-            
-            setTimeout(function(){snbwrap.css({
-                "transform": "translateX("+ (pos*-1) +"px)",
-                "transition-duration": "500ms"
-            })}, 200);
-        } 
-
-        //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
-        $('.tabCts > a').on('click', function(){
-            $('.tabCts > a').removeClass('active');
-            $(this).addClass('active');
-            var num = $(this).attr('data-swiper-slide-index');
-            mainslider.slideTo(num);    
+            //진행중인 모든 이벤트 닫기, 열기
+            $('.MaintabAll a').on('click', function() {
+                $('.MaintabAllView').slideToggle("fast");
+            });
+            $('.MaintabAllView span a').on('click', function() {
+                $('.MaintabAllView').hide();
+            });
         });
-        //슬라이드 재생, 스탑 버튼
-        $('.start').on('click', function() {
-            mainslider.autoplay.start();
-            $(this).hide();
-            $('.stop').show();
-            return false;
-        });
-        $('.stop').on('click', function() {
-            mainslider.autoplay.stop();
-            $(this).hide();
-            $('.start').show();
-            return false;
-        });
-
-        //진행중인 모든 이벤트 닫기, 열기
-        $('.MaintabAll a').on('click', function() {
-            $('.MaintabAllView').slideToggle("fast");
-        });
-        $('.MaintabAllView span a').on('click', function() {
-            $('.MaintabAllView').hide();
-        });
-    });
 
 
     //새로운소식    

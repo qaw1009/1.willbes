@@ -99,7 +99,7 @@
     </div> 
 
     <div class="Section gosi-gate-Sec">                
-        <div class="gosi-gate-bntop-img" id="gosiMainSlide">
+        <div class="gosi-gate-bntop-img">
             <div class="gate-bntop-Slider mainSlider01">
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
@@ -1139,10 +1139,10 @@
             el: ".swiper-pagination-gate",
             type: "fraction",
             },
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            // }, //3초에 한번씩 자동 넘김
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, //3초에 한번씩 자동 넘김
             navigation: {
                 nextEl: ".swiper-btn-next",
                 prevEl: ".swiper-btn-prev",
@@ -1152,7 +1152,7 @@
                     $('.Maintab li > a').removeClass('active');
                     $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
                     if($('.Maintab li:eq(0) > a').hasClass('active')){
-                        mainslider.update();
+                        // mainslider.update();
                         // location.reload();
                     }  
                     $('.tabCts a').removeClass('active');

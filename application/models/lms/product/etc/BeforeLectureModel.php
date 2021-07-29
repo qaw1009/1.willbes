@@ -58,7 +58,7 @@ class BeforeLectureModel extends WB_Model
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
+                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'T\'
                             group by aa.BlIdx,aa.BeforeLectureGroup
@@ -73,7 +73,7 @@ class BeforeLectureModel extends WB_Model
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
+                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
                             where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
                                     and aa.BeforeLectureGroup=\'E\'
                             group by aa.BlIdx,aa.BeforeLectureGroup

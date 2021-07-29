@@ -18,7 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }*/
 
-        .skybanner {position:fixed;top:80px;right:10px;z-index:10; text-align:center}
+        .skybanner {position:fixed;top:180px;right:10px;z-index:10; text-align:center}
         .skybanner a {display:block; margin-bottom:5px}
 
         /*타이머*/
@@ -100,13 +100,7 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">  
               
-        <div class="skybanner">
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky03.png" alt="">
-            </a>
-            <a href="#pkg" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky04.png" alt="">
-            </a>     
+        <div class="skybanner">  
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
                 <map name="Map1071A" id="Map1071A" >

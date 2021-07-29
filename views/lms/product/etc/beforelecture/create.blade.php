@@ -263,6 +263,18 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="IsUse">조건강좌<br>패키지단강좌포함 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsPackCheck" class="flat" value="Y" required="required" title="패키지단강좌포함여부" @if($data['IsPackCheck']=='Y')checked="checked"@endif/> 포함
+                            &nbsp; <input type="radio" name="IsPackCheck" class="flat" value="N" @if($method == 'POST' || $data['IsPackCheck']=='N')checked="checked"@endif/> 미포함
+                             &nbsp;* 대상강좌 신청 시 조건강좌를 패키지에 포함된 단강좌까지 체크할 것인지에 대한 여부를 선택합니다.
+                        </div>
+                    </div>
+                </div>
+
                 @if($method === 'PUT')
                     <div class="form-group">
                         <label class="control-label col-md-2">등록자
@@ -307,7 +319,6 @@
         var $regi_form = $('#regi_form');
 
         $(document).ready(function() {
-
             var prev_val;
             $('#site_code').focus(function () {
                 prev_val = $(this).val();
@@ -325,6 +336,13 @@
                 }
             });
 
+            //조건강좌 패키지단강좌포함 디폴트
+            $("#site_code").change(function() {
+                if ($regi_form.find('input[name="_method"]').val() === 'POST' && ($(this).val() === '2017' || $(this).val() === '2018')) {
+                    $regi_form.find('input[name="IsPackCheck"]:input[value="Y"]').iCheck('check');
+                }
+            });
+
             //강좌검색
             $('#tarAdd,#essAdd,#choAdd').on('click', function(e) {
                 var id = e.target.getAttribute('id');
@@ -337,7 +355,6 @@
 
             // ajax submit
             $regi_form.submit(function() {
-
                 var _url = '{{ site_url('/product/etc/beforeLecture/store') }}';
                 ajaxSubmit($regi_form, _url, function(ret) {
                     if(ret.ret_cd) {
@@ -375,9 +392,7 @@
                     $('#view_option2').show();
                 }
             }
-
             lectypechange($('input:radio[name=LecType]:checked').val());
-
         });
 
         function rowDelete(strRow) {
@@ -409,9 +424,7 @@
                 +"      </td>"
                 +"      <td><a href='javascript:;' onclick=\"rowDelete(\'"+strId+"TrId"+seq+"')\"><i class=\"fa fa-times red\"></i></a></td>"
                 +"</tr>"
-
             );
-
         }
     </script>
 

@@ -191,16 +191,20 @@
     <div class="evtContent NGR" id="evtContainer">
         <ul class="sky">           
             <li>             
-                <a href="javascript:alert('Coming Soon!')" >
+                <a href="https://police.willbes.net/promotion/index/cate/3001/code/2277" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky01.png" title="자세히보기">
                 </a>
             </li>
-            <li><a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브"></a></li>
-            {{--<li>
+            {{--
+            <li>
+                <a {!! $live_url !!}><img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브"></a>
+            </li>
+            --}}
+           <li>
                 <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ" target="_blank">
                     <img src="https://static.willbes.net/public/images/promotion/2021/07/2272_sky02.png" title="라이브">
                 </a>
-            </li>--}}
+            </li>
         </ul>   
 
         <div class="evtCtnsBox evt_counter">

@@ -593,20 +593,8 @@
                             </a>                        
                             <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
                         </div>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
-                            </a>                        
-                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
-                        </div>
                     </li>
                     <li>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
-                            </a>                        
-                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
-                        </div>
                         <div>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
@@ -621,6 +609,40 @@
                             </a>                        
                             <div class="castTitle">190504 중앙경찰학교 입교 현장스케치</div>
                         </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
+                            </a>                        
+                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
+                            </a>                        
+                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
+                            </a>                        
+                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="#none">
+                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
+                            </a>                        
+                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
+                        </div>
+                    </li>
+                    <li>
                         <div>
                             <a href="#none">
                                 <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_03.jpg">
@@ -635,12 +657,6 @@
                             </a>                        
                             <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
                         </div>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_01.jpg">
-                            </a>                        
-                            <div class="castTitle">신광은교수님이 칠판을 사고 외워야 했던 이유는?</div>
-                        </div>
                     </li>
                     <li>
                         <div>
@@ -649,18 +665,8 @@
                             </a>                        
                             <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </div>
-                        <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
-                            </a>                        
-                            <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
-                        </div>
                     </li>
-                </ul> 
-                {{--
-                <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>                   
-                <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p>      
-                --}}                        
+                </ul>                        
             </div>
         </div>
     </div>
@@ -1150,28 +1156,29 @@
             on: {
                 slideChange: function () {
                     $('.Maintab li > a').removeClass('active');
-                    $('.Maintab li > a').eq(this.realIndex).addClass('active');
+                    $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
+                    if($('.Maintab li:eq(0) > a').hasClass('active')){
+                        // mainslider.update();
+                        // location.reload();
+                    }  
                     $('.tabCts a').removeClass('active');
                     $('.tabCts a').eq(this.realIndex).addClass('active');                    
                 }
             }
         });
-        
+
         //메인 슬라이드 메뉴1
         $('.Maintab li > a').on('click', function(){
             $('.Maintab li > a').removeClass('active');
             $(this).addClass('active');
             var num = $(this).attr('data-swiper-slide-index');
             mainslider.slideTo(num);
-
-            var target = $(this).parent();
-            // target.removeClass('on')
-            // target.addClass('on');
-            listCenter(target);
+            var target = $(this); 
+            muCenter(target);
         });
 
         //슬라이드 메뉴1 클릭시 위치조정
-        function listCenter(target){
+        function muCenter(target){
             var snbwrap = $('.Maintab');
             var targetPos = target.position();
             var box = $('.MaintabWrap');
@@ -1188,7 +1195,8 @@
                 pos = listWidth-box.width();
             }else {
                 pos = selectTargetPos - boxHarf;
-            }            
+            }
+            
             setTimeout(function(){snbwrap.css({
                 "transform": "translateX("+ (pos*-1) +"px)",
                 "transition-duration": "500ms"

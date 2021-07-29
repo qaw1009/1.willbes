@@ -15,13 +15,11 @@
 
         /************************************************************/
 
-        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }*/
 
         .skybanner {position:fixed;top:80px;right:10px;z-index:10; text-align:center}
         .skybanner a {display:block; margin-bottom:5px}
-
-        .wb_top_gif {background:#221823;}
 
         /*타이머*/
         .time {width:100%; text-align:center; background:#000; display:none}
@@ -35,74 +33,61 @@
         .time .time_txt span {color:#d63e4d; animation:upDown 2s infinite;-webkit-animation:upDown 2s infinite;}
         .time p {text-align:center}
 
-        .wb_top {background:url("https://static.willbes.net/public/images/promotion/2020/09/1071_top_bg.jpg") no-repeat center top;position:relative;}
-
-        .pass_package {position:absolute;left:50%;margin-left:-525px;top:100px;}
-
-        .YouTube {width:920px; margin:0 auto; text-align:center;position:absolute;left:50%;margin-left:-460px;bottom:-65px;}
-        .YouTube li {display:inline; float:left; width:33.3333%;padding-bottom:130px;}
-        .YouTube li span {margin-top:20px; font-size:15px !important; font-weight:500 !important; color:#fff; letter-spacing:-1px;}
-        .YouTube .text{position:absolute;left:50%;top:115px;}
-        .YouTube:after {content:""; display:block; clear:both}
-        
-        /* 탭 */
-        .tabContaier{padding-top:20px; padding-bottom:120px; position:absolute;left:515px;top:730px; z-index:10}
-        .tabContaier ul {text-align:center; margin:0 auto}
-        .tabContaier li {display:inline; float:left;}
-        .tabContaier a img.off {display:block}
-        .tabContaier a img.on {display:none}
-        .tabContaier a.active img.off {display:none}
-        .tabContaier a.active img.on {display:block}
-        .tabContaier ul:after {content:''; display:block; clear:both}
-        .tabContentsEvt iframe {width:876px; height:480px;}
-
-        .wb_cts01_1 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2020/01/1071_01_bg.jpg") no-repeat center top;}
-        .wb_cts01_2 {background:#E4E4E4;}
+        .wb_top {background:#da388a; position:relative; height:1113px}
+        .wb_top span {position:absolute; left:50%}
+        .wb_top span.topimg {width:939px; top:80px; margin-left:-469px; z-index:2} 
+        .wb_top span.toptxt01 {width:405px; top:639px; margin-left:170px; z-index:3} 
+        .wb_top span.toptxt02 {width:350px; top:572px; margin-left:-533px; z-index:3} 
+        .wb_top span.toptxt03 {width:281px; top:266px; margin-left:180px; z-index:1} 
+        .wb_top span.toptxt04 {width:360px; top:137px; margin-left:-533px; z-index:1} 
+        .wb_top span.toptxt05 {width:350px; top:336px; margin-left:-533px; z-index:1} 
 
 
-        .wb_cts02 {background:#ffd84f;}  
-        .wb_cts02 div {width:1120px; margin:0 auto; position:relative} 
+        .wb_cts01 {background:#9E97FF url("https://static.willbes.net/public/images/promotion/2021/07/1071_01_bg.jpg") no-repeat center top;}
 
-        .wb_cts03 {background:#ffd84f; padding-bottom:100px}
-        .wb_cts03 ul {width:960px; margin:0 auto}
-        .wb_cts03 li {display:inline; float:left; width:16.666666%}
-        .wb_cts03 li a {display:block; height:60px; line-height:60px; text-align:center; font-size:16px; position:relative; border:1px solid #1e1e1e; margin-right:5px}
-        .wb_cts03 li a span {position:absolute; display:block; left:50%; top:-10px; width:90px; margin-left:-45px; padding:0 10px; font-size:12px; color:#fff; 
-        background:#1e1e1e; height:24px; line-height:20px; border:2px solid #ffd84f; border-radius:20px;
+        .wb_cts02 {padding-bottom:30px}
+        .wb_cts02 ul {width:1120px !important; margin:0 auto; display:flex; justify-content: space-around; align-content: center; flex-wrap: wrap;}  
+        .wb_cts02 ul li {flex: 1 1 30%; margin-bottom:80px}
+        .wb_cts02 p {margin-top:20px; font-size:17px; font-weight:600; line-height:1.4}
+        .wb_cts02 p span {color:#fd45a4}
+
+        .wb_cts03 {background:#f4f4f4;}
+
+        .wb_cts04 {background:#ead9d9; padding-bottom:50px}
+        .wb_cts04 ul {width:1120px !important; margin:0 auto; display:flex; justify-content: space-around; align-content: center; flex-wrap: wrap;}  
+        .wb_cts04 li a:hover img {box-shadow:10px 10px 20px rgba(0,0,0,.3); border-radius:24px}
+
+
+        .wb_cts05 {background:#ead9d9; padding-bottom:100px}
+        .wb_cts05 ul {width:960px; margin:0 auto}
+        .wb_cts05 li {display:inline; float:left; width:16.666666%}
+        .wb_cts05 li a {display:block; height:80px; line-height:80px; text-align:center; font-size:16px; position:relative; border:3px solid #5f5f5f; margin-right:5px}
+        .wb_cts05 li a span {position:absolute; display:block; left:50%; top:-15px; width:90px; margin-left:-45px; padding:0 10px; font-size:12px; color:#fff; 
+        background:#5f5f5f; height:24px; line-height:20px; border:2px solid #ead9d9; border-radius:20px;
         }
-        .wb_cts03 li a.active,
-        .wb_cts03 li a:hover {background:#1e1e1e; color:#ffd84f}
-        .wb_cts03 li:last-child a {margin:0}
-        .wb_cts03 ul:after {content:''; display:block; clear:both}
-        .wb_cts03 .tabContents {width:960px; margin:16px auto 0; background:#fff; padding:50px 30px; text-align:left}
-        .wb_cts03 .tabContents h3 {font-size:22px; color:#930f0d; margin:20px 0}
-        .wb_cts03 .tabContents p {font-size:18px; margin:20px 0}
-        .wb_cts03 table {background:#fff; width:100%; background:#fff} 
-        .wb_cts03 tr {border-bottom:1px solid #ccc}        
-        .wb_cts03 tr.st01 {background:#ececec}
-        .wb_cts03 tr:hover {background:#f9f9f9}
-        .wb_cts03 th,
-        .wb_cts03 td {padding:10px; font-size:14px; font-weight:500;}
-        .wb_cts03 th {background:#5f5f5f; color:#fff}
-        .wb_cts03 td:nth-child(1) {text-align:center}
-        .wb_cts03 td:nth-child(2) {text-align:center}
-        .wb_cts03 td:nth-child(3) {color:#930f0d}
-        .wb_cts03 td:last-child {border:0}
-        .wb_cts03 td p {font-size:12px}
-		.wb_cts03 table a {padding:10px 15px; color:#202020; background:#ffd84f; font-size:14px; display:block; border-radius:20px; text-align:center}
-        .wb_cts03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
-        .wb_cts03 table a:hover {background:#202020; color:#fff;}
-        .wb_cts03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}
-       
-        /*탭(텍스트)*/
-        .tabContaier2{width:960px;margin:0 auto;}
-        .tabContaier2 li{display:inline-block;width:480px;height:60px;line-height:60px;background:#e8be2d;color:#000;float:left;font-size:18px;font-weight:bold;margin-top:-59.9px;}
-        .tabContaier2:after {content:""; display:block; clear:both}
-        .tabContaier2 li a{display:block;}
-        .tabContaier2 li a:hover,
-        .tabContaier2 li a.active {background:#e4e4e4;color:#000;}
-
-        .wb_cts04 {background:#e4e4e4;position:relative;padding-bottom:150px;}
+        .wb_cts05 li a.active,
+        .wb_cts05 li a:hover {background:#fd41a2; color:#fff; border:3px solid #fd41a2;}
+        .wb_cts05 li a.active span,
+        .wb_cts05 li a:hover span {background:#fd41a2; }
+        .wb_cts05 li:last-child a {margin:0}
+        .wb_cts05 ul:after {content:''; display:block; clear:both}
+        .wb_cts05 .tabContents {width:960px; margin:16px auto 0; background:#fff; padding:50px 30px; text-align:left}
+        .wb_cts05 .tabContents h3 {font-size:22px; color:#930f0d; margin:20px 0}
+        .wb_cts05 .tabContents p {font-size:18px; margin:20px 0}
+        .wb_cts05 table {background:#fff; width:100%; background:#fff} 
+        .wb_cts05 tr {border-bottom:1px solid #ccc}        
+        .wb_cts05 tr.st01 {background:#ececec}
+        .wb_cts05 tr:hover {background:#f9f9f9}
+        .wb_cts05 th,
+        .wb_cts05 td {padding:10px; font-size:14px; font-weight:500;}
+        .wb_cts05 th {background:#5f5f5f; color:#fff}
+        .wb_cts05 td:nth-child(1) {text-align:center}
+        .wb_cts05 td:nth-child(2) {text-align:center}
+        .wb_cts05 td:nth-child(3) {color:#930f0d}
+        .wb_cts05 td:last-child {border:0}
+        .wb_cts05 td p {font-size:12px}
+		.wb_cts05 table a {padding:10px 15px; color:#fff; background:#914a6b; font-size:14px; display:block; border-radius:20px; text-align:center}
+        .wb_cts05 table a:hover {background:#202020; }
 
         .check { position:absolute; bottom:7%; left:50%; margin-left:-490px; width:980px; padding:20px 0px 20px 10px; letter-spacing:3;z-index:5;font-weight:bold;}
         .check label {cursor:pointer; font-size:14px}
@@ -110,13 +95,11 @@
         .check a {display:inline-block; padding:12px 20px 10px 20px; color:#fff; background:#252525; margin-left:50px; border-radius:20px}
         .check a:hover {background:#ffc600; color:#252525}
         
-        input[id="cb1"]:checked + label {background-color: red;}
-
-        .wb_tip{background:#fff; padding:100px 0;}
-        
+        input[id="cb1"]:checked + label {background-color: red;}      
 
     </style>
-    <div class="p_re evtContent NGR" id="evtContainer">        
+    <div class="p_re evtContent NGR" id="evtContainer">  
+              
         <div class="skybanner">
             <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" target="_blank" >
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky03.png" alt="">
@@ -134,79 +117,71 @@
                     <area shape="rect" coords="5,390,116,457" href="#" class="r_btn_tab" data-tab-id="5"/>
                     <area shape="rect" coords="5,462,116,511" href="#" class="r_btn_tab" data-tab-id="6"/>
                 </map>
-            </div>          
-                      
+            </div>        
         </div>  
-
-        <div class="evtCtnsBox wb_top_gif" >            
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_graph.gif" alt="역대급 성적향상"  />        
-        </div>       
         
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_top.jpg" alt="통신/전기 최우영" >
-            <div class="pass_package">
-                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" target="_blank">
-                    <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_sky.png" alt="합격패키지" >
-                </a>
-            </div>
-            <ul class="YouTube">
-                <li>
-                    <a href="https://youtu.be/FYzC6MElEzw?rel=0 " target="_blank">
-                        <span>
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview1.png" alt="전기전자 참쉽죠?">
-                        </span>
-                    </a>    
-                </li>
-                <li>
-                    <a href="https://youtu.be/9dxrpJ6TOZg?rel=0 " target="_blank">
-                        <span>
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview2.png" alt="변조이론">
-                        </span>
-                    </a>    
-                </li>
-                <li>
-                    <a href="https://youtu.be/_RDnE7u4k8U?rel=0 " target="_blank">
-                        <span>
-                            <img src="https://static.willbes.net/public/images/promotion/2020/09/1071_preview3.png" alt="직렬별 출제">
-                        </span>
-                    </a>    
-                </li>   
-            </ul>  
+            <span class="topimg" data-aos="zoom-in"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_top.png" alt="통신/전기 최우영" ></span>
+            <span class="toptxt01" data-aos="zoom-in" data-aos-duration="1000"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_txt01.png" alt="45점" ></span>
+            <span class="toptxt02" data-aos="zoom-in" data-aos-duration="1200"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_txt02.png" alt="240%" ></span>
+            <span class="toptxt03" data-aos="zoom-in" data-aos-duration="1300"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_txt03.png" alt="1위" ></span>
+            <span class="toptxt04" data-aos="zoom-in" data-aos-duration="1500"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_txt04.png" alt="단4개월" ></span>
+            <span class="toptxt05" data-aos="zoom-in" data-aos-duration="1700"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_txt05.png" alt="교재1위" ></span>
         </div>       
 
-        <div class="evtCtnsBox wb_cts01_1">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_1.jpg" alt="이유있는 선택"  > 
+        <div class="evtCtnsBox wb_cts01">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_01.jpg" alt="이유있는 선택"/> 
+                <a href="https://pass.willbes.net/promotion/index/cate/3028/code/1468" title="합격패키지" target="_blank" style="position: absolute; left: 28.13%; top: 30.61%; width: 13.57%; height: 25.27%; z-index: 2;"></a>
+            </div>
         </div>    
 
-        <div class="evtCtnsBox wb_cts01_2">
-            <img src="https://static.willbes.net/public/images/promotion/2020/01/1071_01_2.jpg" alt="커리큘럼"  > 
-        </div>   
+        <div class="evtCtnsBox wb_cts02">            
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02.jpg" alt="핵심포인트"> 
+            <ul>
+                <li>
+                    <a href="https://youtube.com/embed/sC9TJfUNkyc" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_01.jpg" alt=""></a>
+                    <p>우영쌤의 <span>[전기이론 기초강의]</span><br/> 10분만에 정리하기</p>
+                </li>
+                <li>
+                    <a href="https://youtube.com/embed/_crgLD0rmN8" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_02.jpg" alt=""></a>
+                    <p><span>『전기회로 기본용어』</span><br/> 10분 핵심정리 확인하기!!</p>
+                </li>
+                <li>
+                    <a href="https://youtube.com/embed/1zATq2Kydwg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_03.jpg" alt=""></a>
+                    <p>무선/통신 공통이론에서  <span>『변조이론』</span><br/> 제일 중요한 거 알지!?</p>
+                </li>
+                <li>
+                    <a href="https://youtube.com/embed/37yjw2mC8wY" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_04.jpg" alt=""></a>
+                    <p><span>『RLC회로의 특성』</span><br/> 바로 이거야!!</p>
+                </li>
+                <li>
+                    <a href="https://youtube.com/embed/eiAKjkFjwtE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_05.jpg" alt=""></a>
+                    <p>빈출개념 콕 찝기! <br/><span>연산증폭기(Op-Amp)</span> 기출 포인트야~</p>
+                </li>
+                <li>
+                    <a href="https://youtube.com/embed/wSaPEaVIbbo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_06.jpg" alt=""></a>
+                    <p>합격하고자 하면~ 기출을 풀어라!<br/> 직접FM  <span>기출 문풀 정리하기~</span></p>
+                </li>                
+            </ul>
+        </div> 
+        
+        <div class="evtCtnsBox wb_cts03">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_03.jpg" alt=""/> 
+        </div>
 
-        <div class="evtCtnsBox wb_cts02" id="pkglec">
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_01.jpg" alt="이론 패키지"/>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171526" title="통신기술직" style="position: absolute; left: 10.8%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/171527" title="전송기술직" style="position: absolute; left: 38.13%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전기직" style="position: absolute; left: 66.52%; top: 86.37%; width: 22.41%; height: 4.88%; z-index: 2;" target="_blank"></a>
-            </div>
-            <div class="wrap" id="pkg">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_02.jpg" alt="군무원 패키지"/>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182687" title="통신직" style="position: absolute; left: 65.8%; top: 37.12%; width: 18.39%; height: 6.81%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171762" title="전자직" style="position: absolute; left: 65.8%; top: 73.58%; width: 18.39%; height: 6.81%; z-index: 2;" target="_blank"></a>
-            </div>
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/1071_03_03.jpg" alt="전기/통신직 패키지"/>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180909" title="지방직 통신기술직" style="position: absolute; left: 63.3%; top: 14.38%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180908" title="지방직 전기직" style="position: absolute; left: 63.3%; top: 27.81%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179673" title="국가직 문풀" style="position: absolute; left: 63.3%; top: 44.69%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179678" title="전기직 기출문풀" style="position: absolute; left: 63.3%; top: 58.06%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/177169" title="국가직 실전동형모고" style="position: absolute; left: 63.3%; top: 75%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-                <a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/176489" title="전기직 실전동형모고" style="position: absolute; left: 63.3%; top: 88.31%; width: 18.39%; height: 2.63%; z-index: 2;" target="_blank"></a>
-            </div>
+        <div class="evtCtnsBox wb_cts04" id="pkglec">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_01.jpg" alt=""/> 
+            <ul>
+                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184023" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_02.png" alt=""/> </a></li>
+                <li><a href="https://pass.willbes.net/periodPackage/show/cate/3028/pack/648001/prod-code/184024" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_03.png" alt=""/> </a></li>
+                <li><a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/184021" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_04.png" alt=""/> </a></li>
+            </ul>
+
         </div>       
 
-        <div class="evtCtnsBox wb_cts03">
-            <img src="https://static.willbes.net/public/images/promotion/2019/05/1071_04.jpg" alt="윌비스 최우영 교수 단과 수강신청"/><br>
+        <div class="evtCtnsBox wb_cts05">
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_04_05.jpg" alt=""/>
             <ul class="tabs">
                 <li><a href="#tab1" id="menu_tab1">전송기술 9급<span>국가직</span></a></li>
                 <li><a href="#tab2" id="menu_tab2">통신기술 9급<span>서울/지방직</span></a></li>
@@ -941,35 +916,17 @@
     </div>
     <!-- End Container -->
 
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
+
     <script type="text/javascript">
-        var ytb01_url = "https://www.youtube.com/embed/rPN9bxcaiLU";
-        var ytb02_url = "https://www.youtube.com/embed/eRrHTbcFBtY";
-
         $(document).ready(function(){
-            /*영상탭*/
-            $(".tabContentsEvt").hide();
-            $(".tabContentsEvt:first").show();
-            $(".youtubeTab a").click(function(){
-                var activeTab = $(this).attr("href");
-                var html_str = "";
-                if(activeTab == "#ytb01"){
-                    html_str = "<iframe src='"+ytb01_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#ytb02"){
-                    html_str = "<iframe src='"+ytb02_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#ytb03"){
-                    html_str = "<iframe src='"+ytb03_url+"' allowfullscreen></iframe>";
-                }else if(activeTab == "#ytb04"){
-                    html_str = "<iframe src='"+ytb04_url+"' allowfullscreen></iframe>";
-                }
-                $(".youtubeTab a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContentsEvt").hide();
-                $(".tabContentsEvt").html('');
-                $(activeTab).html(html_str);
-                $(activeTab).fadeIn();
-                return false;
-            });
-
             /*강의탭*/
             var $active, $links = $(this).find('.tabs li a');
             $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -999,34 +956,10 @@
                 return false;
             });
 
-            /*탭(텍스터버전)*/
-            $(".tabContents2").hide();
-            $(".tabContents2:first").show();
-            $(".tabContaier2 ul li a").click(function(){
-                tpassTabClick(this);
-            });
-
-            $(".tabContents2 li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabs li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
-                return false;
-            });
-
             /*디데이카운트다운*/
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });
 
-        function tpassTabClick(obj) {
-            var activeTab = $(obj).attr("href");
-            $(".tabContaier2 ul li a").removeClass("active");
-            $(activeTab + '_btn').addClass("active");
-            $(".tabContents2").hide();
-            $(activeTab).fadeIn();
-            return false;
-        }
 
         function go_PassLecture(code) {
             if($("input[name='ischk']:checked").size() < 1){
@@ -1038,10 +971,8 @@
         }
     </script>
 
-{{-- 프로모션용 스크립트 include --}}
-    @include('willbes.pc.promotion.promotion_script')
-
-    
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')   
 
 @stop
 

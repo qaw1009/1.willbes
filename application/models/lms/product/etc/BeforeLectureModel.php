@@ -46,55 +46,59 @@ class BeforeLectureModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = '
+        $from = "
                     from
                         lms_before_lecture A
                         join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_tar
-                            ,group_concat(concat(aa.prodcode)) as prodcode_tar
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName
+                                , if(ee.CcdName is null, '',concat( ' | ', '<span style=\"color:#9c530b\">',ee.CcdName,'</span>'))
+                                 )  separator '<BR>') as prodname_tar
+                                ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'T\'
+                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus='Y'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='T'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as tar on A.BlIdx = tar.blIdx 
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_ess
-                            ,group_concat(concat(aa.prodcode)) as prodcode_ess
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName
+                                , if(ee.CcdName is null, '',concat( ' | ', '<span style=\"color:#9c530b\">',ee.CcdName,'</span>'))
+                                 ) separator '<BR>') as prodname_ess
+                                ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'E\'
+                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus='Y'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='E'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as ess on A.BlIdx = ess.blIdx 
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_cho
-                            ,group_concat(concat(aa.prodcode)) as prodcode_cho
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName) separator '<BR>') as prodname_cho
+                                ,group_concat(concat(aa.prodcode)) as prodcode_cho
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'C\'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='C'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as cho on A.BlIdx = cho.blIdx 
                         
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
-                    where A.IsStatus=\'Y\'
-        ';
+                    where A.IsStatus='Y'
+        ";
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
@@ -112,12 +116,9 @@ class BeforeLectureModel extends WB_Model
      */
     public function addBeforeLecture($input=[])
     {
-
         $this->_conn->trans_begin();
-
         try {
-
-            // 입력항목 구분
+            // 입력항목
             $input_data = $this->inputCommon($input);
 
             /*----------------          선수강좌기본정보        ---------------*/
@@ -129,8 +130,8 @@ class BeforeLectureModel extends WB_Model
 
             if($this->_conn->set($data)->insert($this->_table['before']) === false) {
                 throw new \Exception('선수강좌기본정보 등록에 실패했습니다.');
-            };
-
+            }
+            
             $blidx = $this->_conn->insert_id();
             /*----------------          선수강좌기본정보        ---------------*/
 
@@ -138,7 +139,6 @@ class BeforeLectureModel extends WB_Model
             if($this->_setSale($input,$blidx) !== true) {
                 throw new \Exception('선수강좌 할인율 등록에 실패했습니다.');
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          선수강좌할인율        ---------------*/
 
             /*----------------          연계강좌 등록        ---------------*/
@@ -149,8 +149,6 @@ class BeforeLectureModel extends WB_Model
             /*----------------          연계강좌  등록      ---------------*/
 
             $this->_conn->trans_commit();
-            //$this->_conn->trans_rollback();
-
         } catch(\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
@@ -165,14 +163,11 @@ class BeforeLectureModel extends WB_Model
      */
     public function modifyBeforeLecture($input=[])
     {
-
         $this->_conn->trans_begin();
-
         try{
-
             $blidx = element('BlIdx',$input);
 
-            // 입력항목 구분
+            // 입력항목
             $input_data = $this->inputCommon($input);
 
             /*----------------          선수강좌기본정보        ---------------*/
@@ -189,7 +184,6 @@ class BeforeLectureModel extends WB_Model
             if($this->_setSale($input,$blidx) !== true) {
                 throw new \Exception('선수강좌 할인율 등록에 실패했습니다.');
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          선수강좌할인율        ---------------*/
 
             /*----------------          연계강좌 등록        ---------------*/
@@ -197,17 +191,13 @@ class BeforeLectureModel extends WB_Model
             if($set_product_result !== true) {
                 throw new \Exception($set_product_result);
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
-            /*----------------          선수강좌할인율        ---------------*/
+            /*----------------          연계강좌 등록        ---------------*/
 
             $this->_conn->trans_commit();
-            //$this->_conn->trans_rollback();
-
         } catch (\Exception $e) {
             $this->_conn->trans_rollback();
             return error_result($e);
         }
-
         return true;
     }
 
@@ -220,7 +210,6 @@ class BeforeLectureModel extends WB_Model
      */
     public function _setSale($input=[],$blidx)
     {
-
         try {
 
             /*  기존 정보 상태값 변경 */
@@ -278,9 +267,7 @@ class BeforeLectureModel extends WB_Model
      */
     public function _setProduct($input=[],$blidx)
     {
-
         try {
-
             $ProdCode = element('ProdCode',$input);                                 //상품
             $BeforeLectureGroup = element('BeforeLectureGroup',$input);      //선수강좌그룹
 
@@ -315,7 +302,6 @@ class BeforeLectureModel extends WB_Model
                     ]
                     ,'IN' => ['ProdCode' => $pre_check_product]
                 ]);
-                //echo $this->_conn->last_query();
 
                 if($check_row['checkcnt'] != '0') {
                     throw new \Exception('대상강좌가 이미 등록 되어 있습니다.');
@@ -371,7 +357,6 @@ class BeforeLectureModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $result = $this->_conn->query('select ' .$column .$from .$where)->row_array();
-        //echo $this->_conn->last_query();
         return $result;
     }
 
@@ -397,7 +382,6 @@ class BeforeLectureModel extends WB_Model
         $order_by = " Order by B.OrderNum ASC";
 
         $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
-        //echo $this->_conn->last_query();
         return $result;
     }
 
@@ -421,15 +405,14 @@ class BeforeLectureModel extends WB_Model
         ';
 
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();
-        //$arr_condition = ['EQ' => ['A.BlIdx' => $blidx, 'B.BeforeLectureGroup' => $group]];
         $arr_condition = ['EQ' => ['A.BlIdx' => $blidx]];
         $where = $this->_conn->makeWhere($arr_condition)->getMakeWhere(true);
 
         $order_by = " Order by B.PrbIdx ASC";
         $result = $this->_conn->query('select ' .$column .$from .$where .$order_by)->result_array();
-        //echo $this->_conn->last_query();
         return $result;
     }
+
     /**
      * 인풋항목 공통 처리
      * @param array $input
@@ -438,7 +421,6 @@ class BeforeLectureModel extends WB_Model
      */
     public function inputCommon($input=[])
     {
-
         $ValidPeriodStartDate = element('ValidPeriodStartDate',$input).' '.element('ValidPeriodStartDate_H',$input).':'.element('ValidPeriodStartDate_M',$input).':00';
         $ValidPeriodEndDate = element('ValidPeriodEndDate',$input).' '.element('ValidPeriodEndDate_H',$input).':'.element('ValidPeriodEndDate_M',$input).':59';
         //상품관리 테이블 입력
@@ -449,6 +431,7 @@ class BeforeLectureModel extends WB_Model
             ,'ConditionType'=>element('ConditionType',$input,'AND')
             ,'IsDup'=>element('IsDup',$input,'N')
             ,'IsUse'=>element('IsUse',$input,'N')
+            ,'IsPackCheck'=>element('IsPackCheck',$input,'N')
         ];
 
         return $input_data;

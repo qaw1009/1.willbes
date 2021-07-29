@@ -207,32 +207,13 @@
 
 .gosi-gate-v2 .castWrap {margin-top:100px}
 .gosi-gate-v2 .castBox {position:relative; margin-top:30px}   
-.gosi-gate-v2 .castslider {width:1120px; margin: 0 auto; height:362px; overflow: hidden;}
+.gosi-gate-v2 .castslider {width:1120px; margin: 0 auto;}
 .gosi-gate-v2 .castslider li {display: inline; float: left; width:20%;}
 .gosi-gate-v2 .castslider li a {display:block; width:215px; height:121px; overflow: hidden} 
 .gosi-gate-v2 .castslider li a img {width:215px}
 .gosi-gate-v2 .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:left; width:90%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin-bottom:20px}
 .gosi-gate-v2 .castslider:after {content: ""; display: block; clear:both}
-/*
-.gosi-gate-v2 .castBox p {position:absolute; top:45%; margin-top:-22px; width:22px; height:38px; z-index:10}
-.gosi-gate-v2 .castBox p.leftBtn {left:-40px}
-.gosi-gate-v2 .castBox p.rightBtn {right:-30px}
-.gosi-gate-v2 .castBox .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #e1e1e1;
-    width: 12px;
-    height: 12px;
-    margin: 0 2px;
-    border-radius:6px;
-}
-.gosi-gate-v2 .castBox .bx-wrapper .bx-pager.bx-default-pager a:hover,
-.gosi-gate-v2 .castBox .bx-wrapper .bx-pager.bx-default-pager a.active,
-.gosi-gate-v2 .castBox .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #898989;
-}
-.gosi-gate-v2 .castBox .bx-wrapper .bx-pager.bx-default-pager a.active {
-    width: 48px;
-}
-*/
+
 .gosi-gate-bn02 {margin-top:100px;}    
 .gosi-gate-bn02 .slider {width:1120px; height: 185px; overflow: hidden; background-color: sandybrown}
 .gosi-gate-bn02 ul {margin-top:60px; height:290px;}

@@ -168,26 +168,11 @@
                 <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 <span>윌비스 YOUTUBE 영상</span>을 시청해보세요!</div>
                 <div class="castBox">
                     <ul class="castslider">
-                        <li>
-                            {!! banner_html(element('게이트_유튜브1', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브6', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                        </li>
-                        <li>
-                            {!! banner_html(element('게이트_유튜브2', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브7', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                        </li>
-                        <li>
-                            {!! banner_html(element('게이트_유튜브3', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브8', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                        </li>
-                        <li>
-                            {!! banner_html(element('게이트_유튜브4', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브9', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                        </li>
-                        <li>
-                            {!! banner_html(element('게이트_유튜브5', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브10', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                        </li>
+                        @for($i=1;$i<=10;$i++)
+                            <li>
+                                {!! banner_html(element('게이트_유튜브'.$i, $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            </li>
+                        @endfor
                     </ul>
                     <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>
                     <p class="rightBtn"><a id="imgBannerRight1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowR.png"></a></p>

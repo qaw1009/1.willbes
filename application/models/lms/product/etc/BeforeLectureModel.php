@@ -46,55 +46,59 @@ class BeforeLectureModel extends WB_Model
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
         }
 
-        $from = '
+        $from = "
                     from
                         lms_before_lecture A
                         join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_tar
-                            ,group_concat(concat(aa.prodcode)) as prodcode_tar
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName
+                                , if(ee.CcdName is null, '',concat( ' | ', '<span style=\"color:#9c530b\">',ee.CcdName,'</span>'))
+                                 )  separator '<BR>') as prodname_tar
+                                ,group_concat(concat(aa.prodcode)) as prodcode_tar
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'T\'
+                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus='Y'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='T'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as tar on A.BlIdx = tar.blIdx 
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName, \' | \', \'<span style="color:#9c530b">\',ee.CcdName,\'</span>\') separator \'<BR>\') as prodname_ess
-                            ,group_concat(concat(aa.prodcode)) as prodcode_ess
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName
+                                , if(ee.CcdName is null, '',concat( ' | ', '<span style=\"color:#9c530b\">',ee.CcdName,'</span>'))
+                                 ) separator '<BR>') as prodname_ess
+                                ,group_concat(concat(aa.prodcode)) as prodcode_ess
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
                                 join lms_product_lecture dd on bb.ProdCode = dd.ProdCode
-                                join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus=\'Y\'
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'E\'
+                                left join lms_sys_code ee on dd.StudyPatternCcd = ee.Ccd and ee.IsStatus='Y'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='E'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as ess on A.BlIdx = ess.blIdx 
                         
                         left outer join 
                         (
-                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat(\'[\',cc.CcdName,\']\',\'[\',bb.ProdCode,\']\', bb.ProdName) separator \'<BR>\') as prodname_cho
-                            ,group_concat(concat(aa.prodcode)) as prodcode_cho
+                            select 	aa.blIdx, aa.BeforeLectureGroup, group_concat(concat('[',cc.CcdName,']','[',bb.ProdCode,']', bb.ProdName) separator '<BR>') as prodname_cho
+                                ,group_concat(concat(aa.prodcode)) as prodcode_cho
                             from
                                 lms_product_r_before_lecture aa
                                 join lms_product bb on aa.ProdCode = bb.ProdCode
                                 join lms_sys_code cc on bb.ProdTypeCcd = cc.Ccd
-                            where aa.IsStatus=\'Y\' and bb.IsStatus=\'Y\' and cc.IsStatus=\'Y\' 
-                                    and aa.BeforeLectureGroup=\'C\'
+                            where aa.IsStatus='Y' and bb.IsStatus='Y' and cc.IsStatus='Y' 
+                                    and aa.BeforeLectureGroup='C'
                             group by aa.BlIdx,aa.BeforeLectureGroup
                         ) as cho on A.BlIdx = cho.blIdx 
                         
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
-                    where A.IsStatus=\'Y\'
-        ';
+                    where A.IsStatus='Y'
+        ";
 
         // 사이트 권한 추가
         $arr_condition['IN']['A.SiteCode'] = get_auth_site_codes();

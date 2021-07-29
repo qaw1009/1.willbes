@@ -18,7 +18,7 @@
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
         /*.evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }*/
 
-        .skybanner {position:fixed;top:80px;right:10px;z-index:10; text-align:center}
+        .skybanner {position:fixed;top:180px;right:10px;z-index:10; text-align:center}
         .skybanner a {display:block; margin-bottom:5px}
 
         /*타이머*/
@@ -100,13 +100,7 @@
     </style>
     <div class="p_re evtContent NGR" id="evtContainer">  
               
-        <div class="skybanner">
-            <a href="https://pass.willbes.net/promotion/index/cate/3028/code/2027" target="_blank" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky03.png" alt="">
-            </a>
-            <a href="#pkg" >
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky04.png" alt="">
-            </a>     
+        <div class="skybanner">  
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1071_sky01.png" alt="2019대비 통신직/전기직 이론/문제풀이 패키지" usemap="#Map1071A" border="0">
                 <map name="Map1071A" id="Map1071A" >
@@ -140,27 +134,27 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02.jpg" alt="핵심포인트"> 
             <ul>
                 <li>
-                    <a href="https://youtube.com/embed/sC9TJfUNkyc" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_01.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/sC9TJfUNkyc')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_01.jpg" alt=""></a>
                     <p>우영쌤의 <span>[전기이론 기초강의]</span><br/> 10분만에 정리하기</p>
                 </li>
                 <li>
-                    <a href="https://youtube.com/embed/_crgLD0rmN8" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_02.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/_crgLD0rmN8')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_02.jpg" alt=""></a>
                     <p><span>『전기회로 기본용어』</span><br/> 10분 핵심정리 확인하기!!</p>
                 </li>
                 <li>
-                    <a href="https://youtube.com/embed/1zATq2Kydwg" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_03.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/1zATq2Kydwg')"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_03.jpg" alt=""></a>
                     <p>무선/통신 공통이론에서  <span>『변조이론』</span><br/> 제일 중요한 거 알지!?</p>
                 </li>
                 <li>
-                    <a href="https://youtube.com/embed/37yjw2mC8wY" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_04.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/37yjw2mC8wY')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_04.jpg" alt=""></a>
                     <p><span>『RLC회로의 특성』</span><br/> 바로 이거야!!</p>
                 </li>
                 <li>
-                    <a href="https://youtube.com/embed/eiAKjkFjwtE" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_05.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/eiAKjkFjwtE')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_05.jpg" alt=""></a>
                     <p>빈출개념 콕 찝기! <br/><span>연산증폭기(Op-Amp)</span> 기출 포인트야~</p>
                 </li>
                 <li>
-                    <a href="https://youtube.com/embed/wSaPEaVIbbo" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_06.jpg" alt=""></a>
+                    <a href="javascript:load('https://youtube.com/embed/wSaPEaVIbbo')">><img src="https://static.willbes.net/public/images/promotion/2021/07/1071_02_06.jpg" alt=""></a>
                     <p>합격하고자 하면~ 기출을 풀어라!<br/> 직접FM  <span>기출 문풀 정리하기~</span></p>
                 </li>                
             </ul>
@@ -969,6 +963,22 @@
             var url = '{{ site_url('/periodPackage/show/cate/3019/pack/648001/prod-code/') }}' + code;
             location.href = url;
         }
+
+
+        /*유튜브 새창
+        function load(url){
+            window.open(url,"myWindow","left=100,top=100,width=400,height=300");
+        }*/
+
+        function load(url){
+            var popupW = 1280;
+            var popupH = 720;
+            var left = Math.ceil((window.screen.width - popupW)/2);
+            var top = Math.ceil((window.screen.height - popupH)/2);
+            window.open(url,'myWindow','width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes,resizable=no,toolbar=no,titlebar=no,menubar=no,location=no')			
+        }
+
+
     </script>
 
     {{-- 프로모션용 스크립트 include --}}

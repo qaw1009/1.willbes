@@ -982,9 +982,15 @@ class SmsModel extends WB_Model
                     END
                 ) AS RSLT_SEND
             ";
+            /*
             $from = "
                 FROM {$this->_table_kakao_log}{$yyyymm} AS KL
                 LEFT OUTER JOIN common_result_code AS RC ON KL.RSLT = RC.RSLT AND MsgType = 'kkt'
+            ";
+            */
+            $from = "
+                FROM {$this->_table_kakao_log}{$yyyymm} AS KL
+                LEFT OUTER JOIN common_result_code AS RC ON KL.RSLT = RC.RSLT
             ";
 
             $where = $this->_conn->makeWhere($arr_condition);

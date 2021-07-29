@@ -221,6 +221,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ExamTakeInfoModel $examTakeInfoModel                        Exam TakeInfo Model Class
  * @property AuthGiveModel $authGiveModel                                           Auth Model Class
  * @property AuthGiveApplyModel $authGiveApplyModel                             Auth Apply Model Class
+ * @property ProfessorHotClipModel $professorHotClipModel                Professor Hot Clip Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class

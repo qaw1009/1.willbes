@@ -626,6 +626,7 @@
                             <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </div>
                     </li>
+                    <ul class="castslider">
                     <li>
                         <div>
                             <a href="#none">

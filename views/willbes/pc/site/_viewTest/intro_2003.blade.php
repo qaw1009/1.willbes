@@ -551,31 +551,6 @@
                 }
             });
         });
-
-        //캐스트
-        $(function() {
-            var slidesImg1 = $(".castslider").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:3,
-                maxSlides:3,
-                slideWidth: 370,
-                slideMargin:5,
-                autoHover: true,
-                moveSlides:1,
-            });
-            $("#imgBannerLeft1").click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-
-            $("#imgBannerRight1").click(function (){
-                slidesImg1.goToNextSlide();
-            });
-        });
     </script>
 
 @stop

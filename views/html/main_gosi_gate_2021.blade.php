@@ -596,9 +596,7 @@
                     </li>
                     <li>
                         <div>
-                            <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">
-                            </a>                        
+                            <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_360x202_02.jpg">                                                    
                             <div class="castTitle">신광은 경찰팀이 19년2차 합격생들과 함께한 ★대환장파티★ 기대하셔도 좋습니다 </div>
                         </div>
                     </li>

@@ -99,7 +99,7 @@
     </div> 
 
     <div class="Section gosi-gate-Sec">                
-        <div class="gosi-gate-bntop-img">
+        <div class="gosi-gate-bntop-img" id="gosiMainSlide">
             <div class="gate-bntop-Slider mainSlider01">
                 <ul class="swiper-wrapper">
                     <li class="swiper-slide">
@@ -1139,10 +1139,10 @@
             el: ".swiper-pagination-gate",
             type: "fraction",
             },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
+            // autoplay: {
+            //     delay: 3000,
+            //     disableOnInteraction: false,
+            // }, //3초에 한번씩 자동 넘김
             navigation: {
                 nextEl: ".swiper-btn-next",
                 prevEl: ".swiper-btn-prev",
@@ -1150,28 +1150,29 @@
             on: {
                 slideChange: function () {
                     $('.Maintab li > a').removeClass('active');
-                    $('.Maintab li > a').eq(this.realIndex).addClass('active');
+                    $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
+                    if($('.Maintab li:eq(0) > a').hasClass('active')){
+                        mainslider.update();
+                        // location.reload();
+                    }  
                     $('.tabCts a').removeClass('active');
                     $('.tabCts a').eq(this.realIndex).addClass('active');                    
                 }
             }
         });
-        
+
         //메인 슬라이드 메뉴1
         $('.Maintab li > a').on('click', function(){
             $('.Maintab li > a').removeClass('active');
             $(this).addClass('active');
             var num = $(this).attr('data-swiper-slide-index');
             mainslider.slideTo(num);
-
-            var target = $(this).parent();
-            // target.removeClass('on')
-            // target.addClass('on');
-            listCenter(target);
+            var target = $(this); 
+            muCenter(target);
         });
 
         //슬라이드 메뉴1 클릭시 위치조정
-        function listCenter(target){
+        function muCenter(target){
             var snbwrap = $('.Maintab');
             var targetPos = target.position();
             var box = $('.MaintabWrap');
@@ -1188,7 +1189,8 @@
                 pos = listWidth-box.width();
             }else {
                 pos = selectTargetPos - boxHarf;
-            }            
+            }
+            
             setTimeout(function(){snbwrap.css({
                 "transform": "translateX("+ (pos*-1) +"px)",
                 "transition-duration": "500ms"

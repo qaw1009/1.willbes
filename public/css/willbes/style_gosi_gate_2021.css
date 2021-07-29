@@ -209,7 +209,7 @@
 .gosi-gate-v2 .castBox {position:relative; margin-top:30px}   
 .gosi-gate-v2 .castslider {width:1120px; margin: 0 auto; height:362px; overflow: hidden;}
 .gosi-gate-v2 .castslider li {display: inline; float: left; width:20%;}
-.gosi-gate-v2 .castslider li a {display:block; width:215px; height:121px;} 
+.gosi-gate-v2 .castslider li a {display:block; width:215px; height:121px; overflow: hidden} 
 .gosi-gate-v2 .castslider li a img {width:215px}
 .gosi-gate-v2 .castslider li div.castTitle {height:40px; line-height:40px; font-size:14px; text-align:left; width:90%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin-bottom:20px}
 .gosi-gate-v2 .castslider:after {content: ""; display: block; clear:both}

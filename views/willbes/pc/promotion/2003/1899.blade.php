@@ -13,10 +13,13 @@
             padding:0 !important;
             background:#fff;
         }
+
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); }
 
         /************************************************************/
-        .sky {position:fixed; top:250px;right:10px; width:200px; z-index:10;}
+        .sky {position:fixed; top:200px;right:10px; width:200px; z-index:10;}
         .sky a {display:block;margin-bottom:15px;}
 
         .evtContent .intro {background:url("https://static.willbes.net/public/images/promotion/2020/11/1895_intro_bg.jpg") center top no-repeat; height:870px; position:relative}
@@ -45,15 +48,9 @@
 
     <div class="p_re evtContent NSK" id="evtContainer"> 
         <div class="sky">           
-            <a href="#to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky01.png" alt="" >     
-            </a>      
             <a href="#apply">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky02.png" alt="" >     
-            </a>    
-            <a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028#apply" target="_blank">
-                <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_sky03.png" alt="" >     
-            </a>              
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/1899_sky.png" alt="선석 영어" >     
+            </a>           
         </div>     
 
         <div class="evtCtnsBox intro">
@@ -81,36 +78,26 @@
         </div>     
 
         <div class="evtCtnsBox wb_02">
-            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_02.jpg" alt="가장 고민하는 과목 영어" />  
+            <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_02.jpg" alt="가장 고민하는 과목 영어" /> 
         </div>     
 
         <div class="evtCtnsBox wb_03">
             <img src="https://static.willbes.net/public/images/promotion/2020/11/1899_03.jpg" alt="프로그램 스타트" />  
         </div> 
-
+        {{--
         <div class="evtCtnsBox wb_01s">
 			<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기" usemap="#Map0119_add" border="0">
 			<map name="Map0119_add" id="Map0119_add">
 				<area shape="rect" coords="362,943,760,1017" href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" />
 			</map>
         </div>	
-
-        <div class="evtCtnsBox wb_04" id="to_go">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_04.jpg" alt="패키지 바로 구매하기" usemap="#Map1899_buy" border="0"/>
-            <map name="Map1899_buy" id="Map1899_buy">
-                <area shape="rect" coords="226,898,496,958" href="https://pass.willbes.net/package/show/cate/3019/pack/648001/prod-code/179260" target="_blank" />
-            </map>
-        </div>  
-
+        --}}
         <div class="evtCtnsBox wb_05" id="apply">
-            <img src="https://static.willbes.net/public/images/promotion/2021/02/1899_05.jpg" alt="수강신청" usemap="#Map1899_apply" border="0"/>
-            <map name="Map1899_apply" id="Map1899_apply">
-                <area shape="rect" coords="266,594,474,655" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178820" target="_blank" />
-                <area shape="rect" coords="671,596,878,653" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178819" target="_blank" />
-                <area shape="rect" coords="88,1262,295,1319" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/178490" target="_blank" />
-                <area shape="rect" coords="471,1261,680,1321" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179257" target="_blank" />
-                <area shape="rect" coords="843,1260,1052,1321" href="javascript:alert('Coming Soon!')" />
-            </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/1899_05.jpg" alt="수강신청"/>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184485" target="_blank" title="기초 영어" style="position: absolute;left: 22.79%;top: 79.79%;width: 19.32%;height: 5.53%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184484" target="_blank" title="고급 영어" style="position: absolute;left: 58.79%;top: 79.79%;width: 19.32%;height: 5.53%;z-index: 2;"></a>
+            </div>
         </div>  
 
     </div>

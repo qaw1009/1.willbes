@@ -78,10 +78,12 @@
                     </div>
                     <div class="MaintabWrap">
                         <ul class="Maintab">
+                            @php $j=0; @endphp
                             @for($i=0; $i<=9; $i++)
                                 @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
-                                    <li><a data-swiper-slide-index="{{ $i }}" href="javascript:void(0);" @if($i == 0) class="active" @endif>
+                                    <li><a data-swiper-slide-index="{{ $j }}" data-aaaaaaa="asdf" href="javascript:void(0);" @if($j == 0) class="active" @endif>
                                             {{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a></li>
+                                    @php $j++; @endphp
                                 @endif
                             @endfor
                         </ul>
@@ -95,9 +97,11 @@
                             <span><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
                         </div>
                         <div class="tabCts">
+                            @php $j=0; @endphp
                             @for($i=0; $i<=9; $i++)
                                 @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
-                                    <a data-swiper-slide-index="0" @if($i == 0) class="active" @endif>{{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a>
+                                    <a data-swiper-slide-index="{{ $j }}" @if($j == 0) class="active" @endif>{{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a>
+                                    @php $j++; @endphp
                                 @endif
                             @endfor
                         </div>
@@ -166,15 +170,23 @@
                     <ul class="castslider">
                         <li>
                             {!! banner_html(element('게이트_유튜브1', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브4', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            {!! banner_html(element('게이트_유튜브6', $data['banner']), '', '', false, '', '', 'castTitle') !!}
                         </li>
                         <li>
                             {!! banner_html(element('게이트_유튜브2', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브5', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            {!! banner_html(element('게이트_유튜브7', $data['banner']), '', '', false, '', '', 'castTitle') !!}
                         </li>
                         <li>
                             {!! banner_html(element('게이트_유튜브3', $data['banner']), '', '', false, '', '', 'castTitle') !!}
-                            {!! banner_html(element('게이트_유튜브6', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            {!! banner_html(element('게이트_유튜브8', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                        </li>
+                        <li>
+                            {!! banner_html(element('게이트_유튜브4', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            {!! banner_html(element('게이트_유튜브9', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                        </li>
+                        <li>
+                            {!! banner_html(element('게이트_유튜브5', $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            {!! banner_html(element('게이트_유튜브10', $data['banner']), '', '', false, '', '', 'castTitle') !!}
                         </li>
                     </ul>
                     <p class="leftBtn"><a id="imgBannerLeft1"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/btn_arrowL.png"></a></p>

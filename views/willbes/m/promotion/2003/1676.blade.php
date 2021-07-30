@@ -143,7 +143,7 @@
             </li>
             <li>
                 <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank">
-                    <span>2022 국가직 대비</span>
+                    <span>2022 지방직 대비</span>
                     <span>한덕현 영어<br>T-PASS</span>
                     <span><strong>더켠쌤과</strong>함께</span>
                     <span>열공하고 합격하기 ></span>

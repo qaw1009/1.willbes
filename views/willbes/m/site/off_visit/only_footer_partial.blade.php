@@ -26,7 +26,6 @@
         </div>
     </div>
 </form>
-
 <script type="text/javascript">
     var $regi_off_form = $('#regi_off_form');
     var $regi_visit_form = $('#regi_visit_form');

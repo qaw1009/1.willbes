@@ -13,19 +13,19 @@
 <div id="Container" class="Container NSK c_both">    
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_mtop.jpg" alt="공무원 웰컴팩" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_mtop.jpg" alt="공무원 웰컴팩" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_m01.jpg" alt="아직도 고민만 하고 계세요?" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_m01.jpg" alt="아직도 고민만 하고 계세요?" >
     </div> 
 
     <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_m02.jpg" alt="모든 혜택이 0원" >
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_m02.jpg" alt="모든 혜택이 0원" >
     </div>
 
     <div class="evtCtnsBox evt03">
-        <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_m03.jpg" alt="자세히보기">
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_m03.jpg" alt="자세히보기">
         <a href="https://pass.willbes.net/m/home/index/cate/3019" target="_blank" title="9급" style="position: absolute;left: 18%;top: 35%;width: 17.27%;height: 3.8%;z-index: 2;"></a>
         <a href="https://pass.willbes.net/m/home/index/cate/3020" target="_blank" title="7급" style="position: absolute;left: 65%;top: 35%;width: 17.27%;height: 3.8%;z-index: 2;"></a>
         <a href="https://pass.willbes.net/m/home/index/cate/3023" target="_blank" title="소방" style="position: absolute;left: 18%;top: 59.5%;width: 17.27%;height: 3.8%;z-index: 2;"></a>

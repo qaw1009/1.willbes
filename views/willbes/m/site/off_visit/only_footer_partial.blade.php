@@ -4,8 +4,8 @@
 
     {{-- 장바구니 레이어 --}}
     <div id="basket_box" class="basketBox">
-        <div class="MoreBtn"><a><img src="{{ img_url('m/mypage/icon_arrow_off.png') }}"></a></div>
-        <div class="basketInfo">
+        <div class="MoreBtn"><a><img src="{{ img_url('m/mypage/icon_arrow_on.png') }}"></a></div>
+        <div class="basketInfo" style="display: block;">
             <ul id="basket_list" class="basketList">
             </ul>
             <div class="basketPrice">
@@ -26,7 +26,6 @@
         </div>
     </div>
 </form>
-
 <script type="text/javascript">
     var $regi_off_form = $('#regi_off_form');
     var $regi_visit_form = $('#regi_visit_form');

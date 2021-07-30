@@ -147,6 +147,7 @@
 
         {{--방문결제 이동 버튼 클릭--}}
         $('#buy_off_visit_continue_layer').on('click', '.answerBox_block', function() {
+            alert('유의사항 확인 후 방문결제 버튼을 클릭하셔야 최종 접수가 완료됩니다.');
             location.href = frontPassUrl('/offVisitLecture');
         });
 

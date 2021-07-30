@@ -18,7 +18,7 @@
 
         /************************************************************/
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2225_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2225_top_bg.jpg) no-repeat center top;}
 
         .wb_cts02 {background:#ebebeb}
 
@@ -30,26 +30,26 @@
     <div class="p_re evtContent NSK" id="evtContainer">     
 
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_top.jpg" alt="공무원 웰컴팩" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_top.jpg" alt="공무원 웰컴팩" />
         </div>
 
         <div class="evtCtnsBox wb_cts01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_01.jpg" alt="아직도 고민만 하고 계세요?" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_01.jpg" alt="아직도 고민만 하고 계세요?" />
         </div>
 
         <div class="evtCtnsBox wb_cts02">
-            <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_02.jpg" alt="모든 혜택이 0원" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_02.jpg" alt="모든 혜택이 0원" />
         </div>      
 
         <div class="evtCtnsBox wb_cts03">
             <div class="evt_wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/05/2225_03.jpg" alt="자세히보기"/>
-                <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank" title="9급" style="position: absolute;left: 14.77%;top: 50%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank" title="7급" style="position: absolute;left: 43.77%;top: 50%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank" title="소방" style="position: absolute;left: 72.77%;top: 50%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/home/index/cate/3024" target="_blank" title="군무원" style="position: absolute;left: 14.77%;top: 83%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank" title="기술직" style="position: absolute;left: 43.77%;top: 83%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
-                <a href="https://pass.willbes.net/home/index/cate/3035" target="_blank" title="법원팀" style="position: absolute;left: 72.77%;top: 83%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2225_03.jpg" alt="자세히보기"/>
+                <a href="https://pass.willbes.net/home/index/cate/3019" target="_blank" title="9급" style="position: absolute;left: 14.77%;top: 52%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/home/index/cate/3020" target="_blank" title="7급" style="position: absolute;left: 43.77%;top: 52%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/home/index/cate/3023" target="_blank" title="소방" style="position: absolute;left: 72.77%;top: 52%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/home/index/cate/3024" target="_blank" title="군무원" style="position: absolute;left: 14.77%;top: 85%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/home/index/cate/3028" target="_blank" title="기술직" style="position: absolute;left: 43.77%;top: 85%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
+                <a href="https://pass.willbes.net/home/index/cate/3035" target="_blank" title="법원팀" style="position: absolute;left: 72.77%;top: 85%;width: 12.27%;height: 3.8%;z-index: 2;"></a>
             </div>
         </div> 
 

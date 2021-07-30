@@ -57,8 +57,13 @@
                     <li>
                         <span>[사회복지학]</span>
                         <a href="{{front_url('/professor/show/cate/3019/prof-idx/51238?subject_idx=1134')}}">정형윤</a>  
+                        <span>[교육학]</span>
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51269?subject_idx=1131')}}">손영민</a>                   
+                    </li>
+                    <li>  
                         <span>[교정학]</span>
-                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51264?subject_idx=1120')}}">함다올</a>                   
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/51264?subject_idx=1120')}}">함다올</a>     
+                        <a href="{{front_url('/professor/show/cate/3019/prof-idx/50291?subject_idx=1120')}}">황태진</a>                
                     </li>
                     <li>
                         <span>[세법]</span>

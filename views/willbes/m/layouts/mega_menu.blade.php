@@ -49,15 +49,17 @@
                 </li>
                 <li><span>형사소송법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50035?subject_idx=1117') }}">신광은</a></li>
                 <li><span>사회복지학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51238?subject_idx=1134') }}">정형윤</a></li>
+                <li><span>교육학</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51269?subject_idx=1131') }}">손영민</a></li>
+                <li>
+                    <span>교정학</span>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51264?subject_idx=1120') }}">함다올</a>
+                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50291?subject_idx=1120') }}">손영민</a>
+                </li>
                 <li><span>세법</span><a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51167?subject_idx=1123') }}">박창한</a></li>
                 <li>
                     <span>회계학</span>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51166?subject_idx=1124') }}">이윤호</a>
                     <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/50057?subject_idx=1124') }}">김현식</a>
-                </li>
-                <li>
-                    <span>교정학</span>
-                    <a href="{{ front_url('/professor/show/cate/' . $menu_cate_code . '/prof-idx/51264?subject_idx=1120') }}">함다올</a>
                 </li>
             </ul>
         @elseif($menu_cate_code == '3020')

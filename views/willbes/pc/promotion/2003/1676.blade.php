@@ -15,18 +15,6 @@
 
         .evttop_banners {background:#060606;} 
 
-        /* 탭 */
-        .tabContaier{width:1120px; margin:20px auto 0}
-        .tabContaier ul {width:1120px; text-align:center; margin:0 auto}
-        .tabContaier li {display:inline; float:left; width:50%}
-        .tabContaier a {display:block; padding:20px 0; line-height:1; text-align:center; font-size:30px;color:#7B7F82;} 
-        .tabContaier .time {font-size:25px;}
-        .tabContaier li:last-child {margin:0}
-        .tabContaier a:hover,
-        .tabContaier a.active {background:#433F71; border:1px solid #433F71; color:#fff;}
-        .tabContaier ul:after {content:''; display:block; clear:both;}
-        .tabContents {margin-top:20px}
-
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/02/1676_top_bg.jpg) no-repeat center top; }
 
         .box_book{width:920px; margin:50px auto;border-top:2px solid #22197f;}
@@ -70,32 +58,11 @@
                 <area shape="rect" coords="4,199,150,272" href="#detail" />
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
-            </map>         
-            {{--    
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/1676_sky3.png" usemap="#Map1676_sky3" title="아작내기,적중50선" border="0" style="padding-top:15px;">
-            <map name="Map1676_sky3" id="Map1676_sky3">
-                <area shape="rect" coords="1,1,80,149" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/180888" target="_blank" />
-                <area shape="rect" coords="85,2,167,151" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/179087" target="_blank"/>
-            </map>          
-            --}}     
+            </map>        
+    
         </div>    
-        {{--
-        <div class="evtCtnsBox wb_top_tab" >
-            <div class="tabContaier">
-                <ul class="NGEB">
-                    <li>
-                        <a href="https://pass.willbes.net/promotion/index/cate/3019/code/1675">더켠의 아침 똑똑 영어<br>
-                        <span class="time">매일 아침 07:30AM~08:00AM</span></a>
-                    </li>
-                    <li>
-                        <a href="#none" class="active">더켠의 반반한 밤<br>
-                        <span class="time">매일 밤 21:00PM~22:00PM</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>  
-        --}}
 
+        {{--
         <div class="evtCtnsBox evttop_banners" >     
             <img src="https://static.willbes.net/public/images/promotion/2021/06/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
             <map name="Map1676_top_banner" id="Map1676_top_banner">
@@ -103,6 +70,7 @@
                 <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
             </map>           
         </div>
+        --}}
 
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        

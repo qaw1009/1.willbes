@@ -16,10 +16,6 @@
 
         <div class="passProfTabs c_both">
             <table cellspacing="0" cellpadding="0" width="100%" class="lecTable">
-                <colgroup>
-                    <col style="width: 15%;">
-                    <col style="width: 85%;">
-                </colgroup>
                 <tbody>
                 <tr>
                     <td>
@@ -27,7 +23,7 @@
                             <img src="{{ $lec['ProfReferData']['lec_list_img'] or '' }}">
                             <div class="cover"><img src="{{ img_url('m/mypage/profImg-cover.png') }}"></div>
                         </div>
-                        <div class="w-data tx-left pl15">
+                        <div class="w-data tx-left pl15 pb10">
                             @if($lec['LecTypeCcd'] == '607003')
                                 <div class="OTclass mr10"><span>직장인/재학생반</span></div>
                             @endif

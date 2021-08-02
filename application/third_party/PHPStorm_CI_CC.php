@@ -222,6 +222,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property AuthGiveModel $authGiveModel                                           Auth Model Class
  * @property AuthGiveApplyModel $authGiveApplyModel                             Auth Apply Model Class
  * @property ProfessorHotClipModel $professorHotClipModel                Professor Hot Clip Model Class
+ * @property EventQuizModel $eventQuizModel                                     event quiz Model Class
  ***************** MockTest ****************************************************************************
  * @property MockCommonModel $mockCommonModel                              MockTest MockCommon Model Class
  * @property BaseCodeModel $baseCodeModel                                        MockTest BaseCod Model Class
@@ -291,6 +292,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @property ExamTakeInfoFModel $examTakeInfoFModel                     ExamTakeInfoFModel Model Class
  * @property AuthGiveFModel $authGiveFModel                                           Auth Model Class
  * @property PersonalityAptitudeExamFModel $personalityAptitudeExamFModel   PersonalityAptitudeExam Model Class
+ * @property ProfessorHotClipFModel $professorHotClipFModel                 Professor Hot Clip Model Class
+ * @property EventQuizFModel $eventQuizFModel                               Event QuizF Model Class
  ***************** API ***********************************************************************************
  * @property BookAModel $bookAModel                                             API Delivery Book Model Class
  * @property EventAModel $eventAModel                                           API Event Model Class

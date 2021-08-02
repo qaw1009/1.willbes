@@ -9,13 +9,13 @@
         <table cellspacing="0" cellpadding="0" class="listTable lecPocketTable tx-black p_re">
             <tbody>
             <tr class="AllchkBox"><td><input type="checkbox" id="agree" name="agree" value="Y"/></td></tr>
-            <tr class="replyList w-replyList">
+            <tr class="replyList w-replyList hover">
                 <td class="w-tit">
                     유의사항을 모두 확인했고 동의합니다
                     <span class="arrow-Btn">></span>
                 </td>
             </tr>
-            <tr class="replyTxt w-replyTxt bg-light-gray">
+            <tr class="replyTxt w-replyTxt bg-light-gray" style="display: table-row;">
                 <td class="w-txt">
                     <div class="w-txt-Grid">
                         <div class="info-txt">

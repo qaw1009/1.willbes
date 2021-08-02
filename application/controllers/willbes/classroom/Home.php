@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF', 'supportersF', 'memberF');
+    protected $models = array('classroomF', 'pointF', 'couponF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'crm/messageF', 'supportersF', 'memberF', 'personalityAptitudeExamF');
     protected $helpers = array();
     protected $auth_controller = true;
     protected $auth_methods = array();
@@ -187,6 +187,19 @@ class Home extends \app\controllers\FrontController
             ],
         ];
         $data['off_pkg_list'] = $this->classroomFModel->getPackage($cond_arr, ['OrderDate' => 'ASC'], false, true);
+
+        //인적성검사 상품구매리스트 조회
+        $arr_condition = [
+            'EQ' => [
+                'o.MemIdx' => $memidx
+                ,'mstp.ProdTypeCcd' => $this->personalityAptitudeExamFModel->prodTypeCcd
+                ,'mstpl.ExternalCorpCcd' => $this->personalityAptitudeExamFModel->externalCorpCcd
+            ],
+            'IN' => [
+                'op.PayStatusCcd' => $this->personalityAptitudeExamFModel->payStatusCcd
+            ]
+        ];
+        $data['personalityAptitudeExam_list'] = $this->personalityAptitudeExamFModel->listProduct($arr_condition,null,1);
 
         $this->load->view('/classroom/index', [
             'data' => $data

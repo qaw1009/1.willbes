@@ -159,7 +159,7 @@
             }
 
             .swiper-main-Banner .MaintabControl div {font-size:12px}
-            .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;
+            .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;}
 
             .intro .swiper-sec02 {  
             height: 170px; 

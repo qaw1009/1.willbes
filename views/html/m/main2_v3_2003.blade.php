@@ -158,6 +158,9 @@
             width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0; border-radius:10px; 
             }
 
+            .swiper-main-Banner .MaintabControl div {font-size:12px}
+            .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;
+
             .intro .swiper-sec02 {  
             height: 170px; 
             }

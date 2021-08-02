@@ -53,8 +53,6 @@ class PersonalityAptitudeExam extends \app\controllers\FrontController
      */
     public function index()
     {
-        echo urldecode('https%3A%2F%2Fapi.dev.willbes.net%2Fcanwe%2Fexam%2FvalidateForData');
-
         $base_data['arr_exam_state'] = $this->arr_exam_state;
         //인적성검사 상품구매리스트 조회
         $list = $this->personalityAptitudeExamFModel->listProduct($this->_set_condition(),null,1);

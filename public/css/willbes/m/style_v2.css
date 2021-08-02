@@ -1035,6 +1035,9 @@ body.memBody #Footer {
 	background: #007aff;
 }
 
+
+
+
 /* Main : MainBnrSlider */
 .MainBnrSlider,
 .MainBnrSlider .swiper-wrapper,
@@ -1307,7 +1310,7 @@ body.memBody #Footer {
 .gosi .gosiTip .swiper-container-tip {
 	width: 100%;
 	padding-bottom: 56.25%;
-	margin: 0;
+	margin: 0; 
 }
 .gosi .gosiTip .swiper-wrapper {
 	position: absolute;
@@ -1338,7 +1341,7 @@ body.memBody #Footer {
 .gosi .gosiTip .swiper-container-lec .swiper-pagination {
 	bottom: 0 !important;
 }
-.gosi
+.gosi 
 	.gosiTip
 	.swiper-container-lec
 	.swiper-pagination
@@ -1467,6 +1470,11 @@ body.memBody #Footer {
 	display: inline;
 	float: left;
 	width: 33.33333%;
+}
+.mainTab.two li {
+	display: inline;
+	float: left;
+	width: 50%;
 }
 .mainTab li a {
 	display: block;

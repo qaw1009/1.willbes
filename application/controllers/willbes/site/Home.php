@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends \app\controllers\FrontController
 {
-    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF', 'eventF');
+    protected $models = array('categoryF', 'product/productF', 'product/bookF', 'support/supportBoardF', 'support/supportBoardTwoWayF', 'siteF', 'bannerF', 'dDayF', 'onAirF', 'updatelectureinfo/updateLectureInfoF', 'order/orderListF', 'examTakeInfoF', 'eventF', 'professorHotClipF');
     protected $helpers = array();
     protected $auth_controller = false;
     protected $auth_methods = array();
@@ -517,6 +517,7 @@ class Home extends \app\controllers\FrontController
         $data = [];
         if(APP_DEVICE == 'pc'){
             $data['new_product'] = $this->_getlistSalesProductBook(5, $s_cate_code);
+            $data['prof_hot_clip'] = $this->_getlistProfHotClip();
         }else{
             $data['new_product'] = $this->_product('on_lecture', 16, $s_cate_code, 'New');
             $data['event'] = $this->_getlistEvent(5, $s_cate_code);
@@ -1007,6 +1008,24 @@ class Home extends \app\controllers\FrontController
 
         return $data;
     }
+
+    /**
+     * 강사 핫클립 데이터 리스트
+     * @return mixed
+     */
+    private function _getlistProfHotClip()
+    {
+        $order_by = ['hc.OrderNum' => 'ASC'];
+        $arr_condition = [
+            'EQ' => [
+                'hc.SiteCode' => $this->_site_code,
+                'hc.IsStatus' => 'Y'
+            ]
+        ];
+        $data = $this->professorHotClipFModel->listHotClip($arr_condition, $order_by);
+        return $data;
+    }
+
 
     /**
      * 사이트 메인

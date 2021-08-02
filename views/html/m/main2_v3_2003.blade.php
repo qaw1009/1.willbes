@@ -35,12 +35,12 @@
         .swiper-main-Banner .swiper-slide .small-banner {
             width:calc(100% - 40px); margin:-20px 20px 0; padding:20px 0;
             display: flex; justify-content:space-around; border:1px solid #535353;
-            background:#fff; box-shadow:0 0 10px rgba(0,0,0,.5); 
+            background:#fff; box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:20px; 
         }
         .swiper-main-Banner .small-banner div {flex-basis: auto; flex-grow: 1; border-right:1px solid #e1e1e1;}
         .swiper-main-Banner .small-banner div:last-child {border:0}
 
-        .swiper-main-Banner .MaintabControl {position: absolute; right:2.5%; top: 48.16%; width: 25%; height: 8.59%; z-index: 999;}
+        .swiper-main-Banner .MaintabControl {position: absolute; right:2.5%; top: 48%; width: 25%; height: 8.59%; z-index: 99;}
         .swiper-main-Banner .MaintabControl div {float:left;  display: flex; justify-content: center; align-items: center; height:100%; width:30%; font-size: 16px; color:#666; background:rgba(255,255,255,.8); margin-right:1px}
         .swiper-main-Banner .MaintabControl .swiper-pagination-current {font-weight: 600; color:#000}
         .swiper-main-Banner .MaintabControl div.MaintabAll {margin-left:2%; border-radius:50%}
@@ -155,8 +155,12 @@
         /* iPhone 5/SE */
         @@media only screen and (max-width: 374px) {
             .swiper-main-Banner .swiper-slide .small-banner {
-            width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0;
+            width:calc(100% - 20px); margin:-10px 10px 0; padding:10px 0; border-radius:10px; 
             }
+
+            .swiper-main-Banner .MaintabControl div {font-size:12px}
+            .swiper-main-Banner .MaintabControl div.MaintabAll a {font-size:20px;}
+
             .intro .swiper-sec02 {  
             height: 170px; 
             }
@@ -497,7 +501,7 @@
     
 
     <div class="gosiTitle NSK">
-        지금 바로 주목해야 할 새로운 소식!
+        지금 바로 주목해야 할 <strong class="NSK-Black">새로운 소식!</strong>
     </div>
     <div class="swiper-sec02">
         <div class="swiper-container-sec02">
@@ -550,7 +554,7 @@
 
 
     <div class="gosiTitle NSK">
-        초보 수험생이라면, 꼭 확인!
+        <strong class="NSK-Black">초보 수험생</strong>이라면, 꼭 확인!
     </div>
     <div class="MainSlider swiper-container swiper-sec03 swiper-container-page">
         <div class="swiper-wrapper">
@@ -565,7 +569,7 @@
     
     <div class="swiper-sec04">
         <div class="gosiTitle NSK">
-            합격을 책임지는 윌비스 교수진
+            합격을 책임지는 <strong class="NSK-Black">윌비스 교수진</strong>
         </div>
 
         <div class="swiper-container-sec04">
@@ -601,7 +605,7 @@
 
 
     <div class="gosiTitle NSK">
-        쉬면서도 열공되는 YOUTUBE 영상 시청하기!
+        쉬면서도 열공되는 <strong class="NSK-Black">YOUTUBE 영상</strong> 시청하기!
     </div>
 
     <div class="swiper-sec05">
@@ -833,7 +837,7 @@
     //배너 전체보기
     $(function() {
         var nav = $('.title');
-        var navTop = nav.offset().top+100;
+        var navTop = nav.offset().top+50;
         var navHeight = nav.height()+10;
         var showFlag = false;
         nav.css('top', -navHeight+'px');
@@ -844,7 +848,7 @@
                     showFlag = true;
                     nav
                         .addClass('fixed')
-                        .stop().animate({'top' : '0px'}, 100);
+                        .stop().animate({'top' : '0px'}, 50);
                 }
             } else if (winTop <= navTop) {
                 if (showFlag) {

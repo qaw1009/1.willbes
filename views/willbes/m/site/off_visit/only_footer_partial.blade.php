@@ -17,7 +17,7 @@
             </div>
             <div class="infoBox">
                 <p><input type="checkbox" id="agree" name="agree" value="Y"> <a href="#none">유의사항을 모두 확인했고 동의합니다. ▼</a></p>
-                <ul>
+                <ul style="display: block;">
                     <li>수강증 분실시 재발급/변경/환불되지 않으며, 판매 및 양도되지 않습니다.<br>
                         (절도, 위.변조시 법적 책임이 따릅니다.)</li>
                     <li>수강 총 횟수의 1/2 미경과시에만 변경 및 환불이 가능합니다.</li>

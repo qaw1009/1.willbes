@@ -4,14 +4,14 @@
     <div class="goBtns">
         <ul>
             <li><a href="{{ front_url('support/review/index') }}">합격수기 ></a></li>
-            <li><a href="#none" class="btn-study-comment" onclick="fnStudyComentLayer()">수강후기 전체보기 ></a></li>
+            <li><a href="#none" class="btn-study-comment" onclick="fnStudyComentLayer('', '', '', '', '', 'willbes-Layer-ReplyBox-1120');">수강후기 전체보기 ></a></li>
         </ul>
     </div>
     <div class="reviewBox">
         <div class="review">
             <ul>
                 @foreach($data['study_comment'] as $row)
-                    <li onclick="fnStudyComentLayer('{{ $row['SubjectIdx'] }}', '{{ $row['ProfIdx'] }}', '{{ $row['BoardIdx'] }}')" style="cursor: pointer">
+                    <li onclick="fnStudyComentLayer('{{ $row['SubjectIdx'] }}', '{{ $row['ProfIdx'] }}', '{{ $row['BoardIdx'] }}'); return false;" style="cursor: pointer">
                         <div class="reviewInfo">{{ $row['SubjectName'] }} <span>|</span> {{ $row['ProfName'] }} <span>|</span> {{ $row['ProdName'] }}</div>
                         <div class="title"><img src="{{ img_url("sub/star" . $row['LecScore'] . ".gif") }}"/> {{ $row['Title'] }} <span class="f_right">{{ hpSubString($row['RegName'],0,2,'*') }}</span></div>
                         <div class="reviewTxt">{!! $row['Content'] !!}</div>
@@ -26,15 +26,16 @@
     </style>
 
     <script type="text/javascript">
-        function fnStudyComentLayer(subject_idx, prof_idx, board_idx){
-            var ele_id = 'WrapStudyComment';
+        function fnStudyComentLayer(subject_idx, prof_idx, board_idx, cate_code, div_id, add_class){
+            var ele_id = (typeof div_id === 'undefined' || div_id == '') ? 'WrapStudyComment' : div_id;
             var data = {
                 'ele_id' : ele_id,
                 'show_onoff' : 'off',
-                'cate_code' : '{{$__cfg['CateCode']}}',
+                'cate_code' : (typeof cate_code === 'undefined' || cate_code == '') ? '{{$__cfg['CateCode']}}' : cate_code,
                 'subject_idx' : subject_idx,
                 'prof_idx' : prof_idx,
-                'board_idx' : board_idx
+                'board_idx' : board_idx,
+                'add_class' : (typeof add_class === 'undefined' || add_class == '') ? '' : add_class,
             };
             sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
                 $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');

@@ -52,7 +52,7 @@
         .Container .MaintabAllView .title:after {content:''; display:block; clear:block}
         .Container .MaintabAllView img {max-width:100%;}
 
-        .fixed {position:fixed; top:0; left:50%; width:100%; max-width:720px; margin-left:-360px; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
+        .fixed {position:fixed; top:0; left:0; width:100%; border-bottom:1px solid #ccc; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
 
 
         .intro .gosiTitle {text-align:left; margin-left:24px}
@@ -442,7 +442,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <div class="MainSlider swiper-container swiper-container-page swiper-main-Banner">
+    <div class="MainSlider swiper-container swiper-main-Banner">
         <div class="MaintabControl">
             <div class="swiper-pagination-gate"></div>
             <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>

@@ -504,43 +504,43 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_01.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_01.png" alt="배너명">
                         <div class="bnTit">행정법 신기훈 전격 입성</div>
                     </a>                    
                 </div>            
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_02.png" alt="배너명"> 
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_02.png" alt="배너명"> 
                         <div class="bnTit">행정법 신기훈 전격 입성</div> 
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_03.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_03.png" alt="배너명">
                         <div class="bnTit">행정법 신기훈 전격 입성</div>
                     </a>                   
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_04.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_04.png" alt="배너명">
                         <div class="bnTit">행정법 신기훈 전격 입성</div>
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_05.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_05.png" alt="배너명">
                         <div class="bnTit">행정법 신기훈 전격 입성</div>
                     </a>                    
                 </div>
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_01.png" alt="배너명">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_01.png" alt="배너명">
                         <div class="bnTit">행정법 신기훈 전격 입성</div>
                     </a>                    
                 </div>            
                 <div class="swiper-slide">
                     <a href="#none">
-                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x251_02.png" alt="배너명"> 
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bn_208x208_02.png" alt="배너명"> 
                         <div class="bnTit">행정법 신기훈 전격 입성</div> 
                     </a>                    
                 </div>

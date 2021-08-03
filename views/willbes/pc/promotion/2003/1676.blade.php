@@ -48,7 +48,7 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">  
-        <div class="skybanner">
+        <div class="skybanner" id="QuickMenu">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
             </a> 
@@ -100,16 +100,16 @@
         <div class="evtCtnsBox evt02" id="pairing">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_01.jpg" id="detail" title="편성표">
             <div class="slide_con">
-                <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/1676_02_july.jpg" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/06/1676_02_august.jpg" /></li>
+                <ul id="slidesImg4">                   
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_august.jpg" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_September.jpg" /></li>
                 </ul>     
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>  
                       
             </div> 
-            <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_02_02.jpg">       
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_02.jpg">       
         </div>           
 
         {{-- 출석체크 --}}

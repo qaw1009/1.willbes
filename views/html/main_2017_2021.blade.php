@@ -92,7 +92,6 @@ no-repeat 5px center}
 	right: -1px;
 }
 
-
 </style>
 
 <!-- Container -->
@@ -331,13 +330,13 @@ no-repeat 5px center}
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table List-Table2">
+                            <li><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 박태영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[도덕윤리 김병찬]</strong> <strong class="tx-red">총 2강 업로드</strong> 직강수강생용) 2020 (9~10월) 모의고사반 - (9/17~ 강의) </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공국어 송원영]</strong> <strong class="tx-red">총 2강 업로드</strong> 직강생전용) 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
-                            <li><a href="#none"><strong class="tx-blue">[전공국어 송원영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 9~11송원영 국어 10주 완성 실전 모고를 통한 이론 완성 + 파이널 시험 직전 출제 예상테마 </a></li>
                         </ul>
                     </div>
                 </div>

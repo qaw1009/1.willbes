@@ -43,7 +43,7 @@
         .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png")
         no-repeat 5px center}
         .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn {margin-top:42px}
-        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px}
+        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px; margin-bottom: 5px;}
         .ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
 
         .ssam .willbes-Layer-youtube {

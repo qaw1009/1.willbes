@@ -110,8 +110,8 @@
                                     <td>
                                         <select class="form-control" name="link_type[]" title="링크타입">
                                             <option value="layer">레이어팝업</option>
-                                            {{--<option value="self">페이지이동</option>
-                                            <option value="blank">새창</option>--}}
+                                            <option value="self">페이지이동</option>
+                                            <option value="blank">새창</option>
                                         </select>
                                     </td>
                                     <td>
@@ -129,8 +129,8 @@
                                         <td>
                                             <select class="form-control" name="link_type[]" title="링크타입">
                                                 <option value="layer" @if($row['LinkType'] == 'layer')selected="selected"@endif>레이어팝업</option>
-                                                {{--<option value="self" @if($row['LinkType'] == 'self')selected="selected"@endif>페이지이동</option>
-                                                <option value="blank" @if($row['LinkType'] == 'blank')selected="selected"@endif>새창</option>--}}
+                                                <option value="self" @if($row['LinkType'] == 'self')selected="selected"@endif>페이지이동</option>
+                                                <option value="blank" @if($row['LinkType'] == 'blank')selected="selected"@endif>새창</option>
                                             </select>
                                         </td>
                                         <td>

@@ -19,6 +19,7 @@
                         <th>교수홈버튼 노출여부</th>
                         <th>커리큘럼버튼 노출여부</th>
                         <th>수강후기버튼 노출여부</th>
+                        <th>썸네일등록개수</th>
                         <th>등록자</th>
                         <th style="width: 120px;">등록일</th>
                         <th>수정</th>
@@ -68,6 +69,7 @@
                     {'data' : 'StudyCommentBtnIsUse', 'render' : function(data, type, row, meta) {
                             return (data == 'Y') ? '노출' : '미노출';
                         }},
+                    {'data' : 'ThumbnailCnt'},
                     {'data' : 'RegAdminName'},
                     {'data' : 'RegDatm'},
                     {'data' : 'PhcIdx', 'render' : function(data, type, row, meta) {

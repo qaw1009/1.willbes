@@ -98,7 +98,7 @@
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_recruit') }}" target="_blank" class="w50">└ 저자모집</a></li>   
                 <li class="w50"><a href="{{ site_url('/home/html/wsBook_searchList') }}" target="_blank" class="w50">└ 검색화면</a></li> 
                 <li class="c_both"></li> 
-                <li class="w50"><a href="{{ site_url('/home/html/main_2017') }}" target="_blank">임용메인</a></li>
+                <li class="w50"><a href="{{ site_url('/home/html/main_2017_2021') }}" target="_blank">임용메인</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/mypage_pass_index_2017') }}" target="_blank">임용 > 내강의실</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/cscenter_index_2017') }}" target="_blank">임용 > 고객센터</a></li>
                 <li class="w50"><a href="{{ site_url('/home/html/profsub_ssam') }}" target="_blank">임용 교수홈</a></li>

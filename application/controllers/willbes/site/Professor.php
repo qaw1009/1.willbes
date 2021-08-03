@@ -306,6 +306,36 @@ class Professor extends \app\controllers\FrontController
     }
 
     /**
+     * 교수 커리큘럼 레이어팝업
+     * @param array $params
+     */
+    public function layerCurriculum($params = [])
+    {
+        $arr_input['ele_id'] = $this->_reqG('ele_id');
+        $arr_input['close_id'] = $this->_reqG('close_id');
+        $prof_idx = element('prof-idx', $params);
+        if (empty($prof_idx)) {
+            show_alert('필수 파라미터 오류입니다.', '/');
+        }
+
+        // 교수 정보 조회
+        $data = $this->professorFModel->findProfessorByProfIdx($prof_idx);
+        if (empty($data) === true) {
+            show_alert('해당하는 교수정보가 없습니다.', '/');
+        }
+
+        // 교수 참조 정보
+        $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
+
+        $this->load->view('site/professor/curri_layer_partial', [
+            'arr_input' => $arr_input,
+            'prof_idx' => $prof_idx,
+            'data' => $data,
+        ]);
+    }
+
+
+    /**
      * 교수진소개 상세 데이터 추가 조회
      * @param array $prof_data [교수데이터]
      * @param int $prof_idx [교수식별자]

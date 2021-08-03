@@ -37,8 +37,6 @@
     <form id="regi_form" name="regi_form" method="POST" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field('POST') !!}
-
-        <input type="hidden" name="comment_ccd" value="713002">
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
@@ -103,7 +101,7 @@
         <div class="evtCtnsBox evt10" id="evt_02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2284_10.jpg"  alt="할인쿠폰받기"/>
-                <a href="javascript:void(0);" title="" style="position: absolute;left: 50.32%;top: 63.02%;width: 26.79%;height: 8.07%;z-index: 2;"></a>
+                <a href="javascript:void(0);" onclick="giveCheck();" title="쿠폰받기" style="position: absolute;left: 50.32%;top: 63.02%;width: 26.79%;height: 8.07%;z-index: 2;"></a>
             </div>    
         </div>     
 
@@ -120,8 +118,7 @@
 
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script>
-    
-        $regi_form = $('#regi_form');
+        var $regi_form = $('#regi_form');
 
         {{--쿠폰발급--}}
         function giveCheck() {

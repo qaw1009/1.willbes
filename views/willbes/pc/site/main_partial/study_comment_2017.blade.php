@@ -4,7 +4,7 @@
     <div class="goBtns">
         <ul>
             <li><a href="{{ front_url('support/review/index') }}">합격수기 ></a></li>
-            <li><a href="#none" class="btn-study-comment" onclick="fnStudyComentLayer('', '', '', '', '', 'willbes-Layer-ReplyBox-1120');">수강후기 전체보기 ></a></li>
+            <li><a href="javascript:void(0);" class="btn-study-comment" onclick="fnStudyComentLayer('', '', '', '', '', 'willbes-Layer-ReplyBox-1120');">수강후기 전체보기 ></a></li>
         </ul>
     </div>
     <div class="reviewBox">

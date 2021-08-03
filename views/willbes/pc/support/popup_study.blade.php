@@ -1,5 +1,5 @@
 <div id="Reply" class="willbes-Layer-ReplyBox {{ $arr_input['add_class'] or '' }}" style="display: block">
-    <a class="closeBtn" href="#none" onclick="closeWin('{{ $arr_input['ele_id'] }}');"><img src="{{ img_url('prof/close.png') }}"></a>
+    <a class="closeBtn" href="javascript:void(0);" onclick="closeWin('{{ $arr_input['ele_id'] }}');"><img src="{{ img_url('prof/close.png') }}"></a>
     <div class="Layer-Tit NG tx-dark-black">수강후기</div>
 
     <!-- List -->
@@ -33,9 +33,9 @@
                             <th class="tx-gray">과목선택</th>
                             <td colspan="8">
                                 <ul class="curriSelect">
-                                    <li><a href="#none" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all', true);" class="subject-list">전체</a></li>
+                                    <li><a href="javascript:void(0);" id="subject_all" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', 'all', true);" class="subject-list">전체</a></li>
                                     @foreach($arr_base['subject'] as $idx => $row)
-                                        <li><a href="#none" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}', true);">{{$row['SubjectName']}}</a></li>
+                                        <li><a href="javascript:void(0);" id="subject_{{$row['SubjectIdx']}}" class="subject-list" onclick="ajaxProfInfo('{{element('cate_code', $arr_input)}}', '{{$row['SubjectIdx']}}', true);">{{$row['SubjectName']}}</a></li>
                                     @endforeach
                                 </ul>
                             </td>
@@ -64,9 +64,9 @@
             <div class="willbes-Leclist c_both">
                 <div class="willbes-LecreplyList tx-gray">
                     <dl class="Select-Btn NG">
-                        <dt><a href="#none" id="order_by_best" class="btn-order-by on" data-order-by="best">BEST순</a></dt>
-                        <dt><a href="#none" id="order_by_date" class="btn-order-by" data-order-by="date">최신순</a></dt>
-                        <dt><a href="#none" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
+                        <dt><a href="javascript:void(0);" id="order_by_best" class="btn-order-by on" data-order-by="best">BEST순</a></dt>
+                        <dt><a href="javascript:void(0);" id="order_by_date" class="btn-order-by" data-order-by="date">최신순</a></dt>
+                        <dt><a href="javascript:void(0);" id="order_by_score" class="btn-order-by" data-order-by="score">평점순</a></dt>
                     </dl>
                     <div class="Select-Btn f_right">
                         <input type="checkbox" name="list_type" class="btn-my-list" value="1" id="myReply"> <label for="myReply">내 수강후기</label>
@@ -528,7 +528,7 @@
                     add_data += '<ul class="curriSelect">';
                     $.each(ret.ret_data, function (k, v) {
                         add_data += '<li>';
-                        add_data += '<a href="#none" id="prof_'+k+'" data-prof-idx="'+k+'" class="prof-list">' + v + '</a>';
+                        add_data += '<a href="javascript:void(0);" id="prof_'+k+'" data-prof-idx="'+k+'" class="prof-list">' + v + '</a>';
                         add_data += '</li>';
                     });
                     add_data += '<ul>';

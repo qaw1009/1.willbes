@@ -16,7 +16,7 @@
                             <a href="{{front_url("/professor/show/prof-idx/{$row['ProfIdx']}?cate_code={$row['CateCode']}&subject_idx={$row['SubjectIdx']}")}}">교수님 홈</a>
                         @endif
                         @if($row['CurriculumBtnIsUse'] == 'Y')
-                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="javascript:void(0);" onclick="openWin('sec-prof-layer'); fnOpenProfCurriculum('{{$row['ProfIdx']}}');">커리큘럼</a>
                         @endif
                         @if($row['StudyCommentBtnIsUse'] == 'Y')
                             <a href="javascript:void(0);" onclick="fnStudyComentLayer('{{$row['SubjectIdx']}}', '{{$row['ProfIdx']}}', '', '{{$row['CateCode']}}', 'ProfReply');">수강후기</a>
@@ -29,7 +29,7 @@
                                 foreach ($thumbnail_data as $thumbnail_row) {
                                     $html = '';
                                     if ($thumbnail_row['LinkType'] == 'layer') {
-                                        $html .= '<a onclick="openWin(\'sec-prof-layer\'),open_youtube(\''.$thumbnail_row['LinkUrl'].'\')">';
+                                        $html .= '<a onclick="fnOpenYoutube(\''.$thumbnail_row['LinkUrl'].'\')">';
                                     } elseif ($thumbnail_row['LinkType'] == 'self') {
                                         $html .= '<a href="'.$thumbnail_row['LinkUrl'].'">';
                                     } elseif ($thumbnail_row['LinkType'] == 'blank') {
@@ -53,22 +53,14 @@
 </div>
 
 {{--교수 커리큘럼 팝업 --}}
-<div id="Curriculum" class="willbes-Layer-CurriBox">
-    <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),closeWin('Curriculum')">
-        <img src="{{ img_url('prof/close.png') }}">
-    </a>
-    <div class="Layer-Tit NG tx-dark-black"><span class="tx-blue">민정선</span> 교수님 커리큘럼</div>
-    <div class="Layer-Cont">
-        <img src="https://ssam.willbes.net/public/uploads/willbes/board/92/2020/1127/board_305025_01_20201127150717.jpg"/>
-    </div>
-</div>
+<div id="curriculum_box" class="willbes-Layer-CurriBox"></div>
 
 {{-- layer 수강후기 --}}
 <div id="ProfReply" class="willbes-Layer-ProfReply"></div>
 
 {{--교수 youtube 팝업 --}}
 <div id="youtube" class="willbes-Layer-youtube">
-    <a class="closeBtn" href="#none" onclick="closeWin('sec-prof-layer'),close_youtube()">
+    <a class="closeBtn" href="javascript:void(0);" onclick="fnCloseYoutube()">
         <img src="{{ img_url('prof/close.png') }}">
     </a>
     <iframe src="" id="youtube_frame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -76,13 +68,29 @@
 <div id="sec-prof-layer" class="willbes-Layer-Black"></div>
 
 <script type="text/javascript">
-    function open_youtube(url) {
+    function fnOpenProfCurriculum(prof_idx) {
+        var ele_id = 'curriculum_box';
+        var _url = '{{ front_url('/professor/layerCurriculum/prof-idx/') }}'+prof_idx;
+        var data = {
+            'ele_id' : ele_id,
+            'close_id' : 'sec-prof-layer'
+        }
+        sendAjax(_url, data, function(ret) {
+            console.log(ret);
+            $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
+        }, showAlertError, false, 'GET', 'html');
+    }
+
+    function fnOpenYoutube(url) {
         var youtube_url = url + '?' + 'enablejsapi=1&version=3&playerapiid=ytplayer';
         $("#youtube_frame").attr('src',youtube_url);
+        openWin('sec-prof-layer');
         openWin('youtube');
     }
-    function close_youtube() {
+    function fnCloseYoutube() {
         $('#youtube_frame')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+        $("#youtube_frame").attr('src',"");
+        closeWin('sec-prof-layer')
         closeWin('youtube');
     }
 </script>

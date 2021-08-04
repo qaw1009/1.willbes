@@ -46,19 +46,19 @@
 		</div>
 
 		<div class="evtCtnsBox evt_01" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_01.jpg" alt="" />	  
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_01.jpg" alt="최근 출제 경향" />	  
 		</div>
         
         <div class="evtCtnsBox evt_02" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_02.jpg" alt="수험전략 수립 1차" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_02.jpg" alt="민법 마스터 패스를 선택해야 하는 이유" />
 		</div> 
 
         <div class="evtCtnsBox evt_03" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_03.jpg" alt="수험전략 수립 1차" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_03.jpg" alt="정상급 교수진의 커리큘럼" />
 		</div> 
 
         <div class="evtCtnsBox evt_04" data-aos="fade-right">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_04.jpg" alt="수험전략 수립 1차" />
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/2311_04.jpg" alt="특별 서비스" />
 		</div> 
 
         <div class="evtCtnsBox evt_05">

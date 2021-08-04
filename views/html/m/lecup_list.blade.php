@@ -9,7 +9,8 @@
         </button>    
         강의 업데이트
     </div>
-    <div class="willbes-Lec-Selected NG tx-gray">
+    <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div> 
+    <div class="willbes-Lec-Selected NG tx-gray pt0">
         <select id="" name="" title="" class="width49p">
             <option selected="selected">과목</option>
             <option value="">교육학</option>

@@ -51,14 +51,11 @@
 	font-size: 12px;
 }
 
-.ssam .tabContent .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
-.ssam .tabContent .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
-    overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap; 
-    z-index:2;
+.ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
+.ssam .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;z-index:2;
 }
-.ssam .tabContent .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+.ssam .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
 
 .ssam .bestLecBox2 {
 	margin-top: 10px;

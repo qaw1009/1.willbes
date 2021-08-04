@@ -147,16 +147,16 @@
             <div class="widthAuto">
                 <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
                 <div class="tpassLeft">
-                    {!! banner_html($data['banner']['게이트_티패스1'], 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                    {!! banner_html(element('게이트_티패스1', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
                 </div>
                 <div class="tpassRight">
                     {{-- 티패스2 --}}
                     <div class="tpassRightTop">
-                        {!! banner_html($data['banner']['게이트_티패스2'], 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                        {!! banner_html(element('게이트_티패스2', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
                     </div>
                     <div class="tpassRightBottom">
-                        {!! banner_html($data['banner']['게이트_티패스3'], 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
-                        {!! banner_html($data['banner']['게이트_티패스4'], 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                        {!! banner_html(element('게이트_티패스3', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                        {!! banner_html(element('게이트_티패스4', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
                     </div>
                 </div>
             </div>

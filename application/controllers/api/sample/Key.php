@@ -35,7 +35,7 @@ class Key extends \app\controllers\RestController
             $this->response([
                 'status' => FALSE,
                 'message' => 'Could not save the key'
-            ], parent::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
+            ], parent::HTTP_INTERNAL_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
     }
 
@@ -63,7 +63,7 @@ class Key extends \app\controllers\RestController
         $this->response([
             'status' => TRUE,
             'message' => 'API key was deleted'
-            ], parent::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
+            ], parent::HTTP_OK); // OK (200) being the HTTP response code
     }
 
     /**
@@ -97,7 +97,7 @@ class Key extends \app\controllers\RestController
             $this->response([
                 'status' => FALSE,
                 'message' => 'Could not update the key level'
-            ], parent::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
+            ], parent::HTTP_INTERNAL_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
     }
 
@@ -131,7 +131,7 @@ class Key extends \app\controllers\RestController
             $this->response([
                 'status' => FALSE,
                 'message' => 'Could not suspend the user'
-            ], parent::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
+            ], parent::HTTP_INTERNAL_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
     }
 
@@ -172,7 +172,7 @@ class Key extends \app\controllers\RestController
             $this->response([
                 'status' => FALSE,
                 'message' => 'Could not save the key'
-            ], parent::HTTP_INTERNAL_SERVER_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
+            ], parent::HTTP_INTERNAL_ERROR); // INTERNAL_SERVER_ERROR (500) being the HTTP response code
         }
     }
 

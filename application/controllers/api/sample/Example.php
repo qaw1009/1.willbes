@@ -116,6 +116,6 @@ class Example extends \app\controllers\RestController {
             'message' => 'Deleted the resource'
         ];
 
-        $this->set_response($message, parent::HTTP_NO_CONTENT); // NO_CONTENT (204) being the HTTP response code
+        $this->set_response($message, parent::HTTP_OK); // OK (200) being the HTTP response code
     }
 }

@@ -44,6 +44,6 @@ class Bases extends \app\controllers\RestController
                 break;
         }
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 }

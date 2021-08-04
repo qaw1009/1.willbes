@@ -15,15 +15,15 @@ class Client extends \app\controllers\BaseController
 
     public function get()
     {
-        $data = $this->restclient->get('sample/server/index', ['id' => 'foo'], 'json');
-        $this->restclient->debug();
+        $data = $this->restclient->get('/sample/server/index', ['id' => 'foo']);
         var_dump($data);
+        $this->restclient->debug();
     }
 
     public function post()
     {
-        $data = $this->restclient->post('sample/server/index', ['id' => 'foo'], 'json');
-        $this->restclient->debug();
+        $data = $this->restclient->post('/sample/server/index', ['id' => 'foo']);
         var_dump($data);
+        $this->restclient->debug();
     }
 }

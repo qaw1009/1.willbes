@@ -481,7 +481,7 @@ class Format {
      * @return array A multi-dimensional array with the outer array being the number of rows
      * and the inner arrays the individual fields
      */
-    protected function _from_csv($data, $delimiter = ',', $enclosure = '"')
+    public function _from_csv($data, $delimiter = ',', $enclosure = '"')
     {
         // If NULL, then set as the default delimiter
         if ($delimiter === NULL)
@@ -502,16 +502,16 @@ class Format {
      * @param string $data Encoded json string
      * @return mixed Decoded json string with leading and trailing whitespace removed
      */
-    protected function _from_json($data)
+    public function _from_json($data)
     {
-        return json_decode(trim($data));
+        return json_decode(trim($data), true);
     }
 
     /**
      * @param string $data Data to unserialize
      * @return mixed Unserialized data
      */
-    protected function _from_serialize($data)
+    public function _from_serialize($data)
     {
         return unserialize(trim($data));
     }
@@ -520,7 +520,7 @@ class Format {
      * @param string $data Data to trim leading and trailing whitespace
      * @return string Data with leading and trailing whitespace removed
      */
-    protected function _from_php($data)
+    public function _from_php($data)
     {
         return trim($data);
     }

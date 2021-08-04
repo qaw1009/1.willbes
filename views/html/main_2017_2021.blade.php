@@ -21,6 +21,9 @@
 .ssam .VisualBox .MaintabFlex span a:hover {
     background-color:rgba(255,255,255,.3); font-weight:bold
 }
+
+.ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
+
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}

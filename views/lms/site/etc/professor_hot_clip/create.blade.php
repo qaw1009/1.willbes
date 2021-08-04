@@ -98,7 +98,7 @@
                             <thead>
                             <tr>
                                 <td style="width: 10%;">링크URL타입</td>
-                                <td style="width: 30%;">썸네일</td>
+                                <td style="width: 30%;">썸네일(122X65)</td>
                                 <td style="width: 50%;">링크url</td>
                                 <td>필드삭제</td>
                                 <td class="text-left"><button type="button" class="btn btn-sm btn-success btn-thumbnail-box-add">필드 추가</button></td>

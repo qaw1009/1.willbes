@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Set to force the use of HTTPS for REST API calls
 |
 */
-$config['force_https'] = FALSE;
+$config['force_https'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +74,16 @@ $config['rest_status_field_name'] = 'ret_cd';
 */
 //$config['rest_message_field_name'] = 'error';
 $config['rest_message_field_name'] = 'ret_msg';
-$config['rest_data_field_name'] = 'ret_data';   // return data field name
-$config['rest_http_code_field_name'] = 'ret_status';    // return http code field name
-$config['rest_uri_field_name'] = 'uri';     // return uri field name
+
+/*
+|--------------------------------------------------------------------------
+| REST Data Field Name (Custom)
+|--------------------------------------------------------------------------
+|
+| The field name for the data inside the response
+|
+*/
+$config['rest_data_field_name'] = 'ret_data';
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +93,7 @@ $config['rest_uri_field_name'] = 'uri';     // return uri field name
 | Should we enable emulation of the request (e.g. used in Mootools request)
 |
 */
-$config['enable_emulate_request'] = TRUE;
+$config['enable_emulate_request'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,10 +120,11 @@ $config['rest_realm'] = 'WILL-API';
 | 'digest'  More secured login
 | 'session' Check for a PHP session variable. See 'auth_source' to set the
 |           authorization key
-| 'token' Custom token authentication method
+| 'token'   Custom token authentication method
+|
 */
-$config['rest_auth'] = FALSE;
-//$config['rest_auth'] = 'token';
+//$config['rest_auth'] = false;
+$config['rest_auth'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,8 +152,8 @@ $config['auth_source'] = '';
 | requests etc), set to TRUE;
 |
 */
-$config['allow_auth_and_keys'] = TRUE;
-$config['strict_api_and_auth'] = TRUE; // force the use of both api and auth before a valid api request is made
+$config['allow_auth_and_keys'] = true;
+$config['strict_api_and_auth'] = true; // force the use of both api and auth before a valid api request is made
 
 /*
 |--------------------------------------------------------------------------
@@ -180,7 +188,7 @@ $config['auth_library_function'] = '';
 |           $config['auth_override_class_method']['deals']['view'] = 'none';
 |           $config['auth_override_class_method']['deals']['insert'] = 'digest';
 |           $config['auth_override_class_method']['accounts']['user'] = 'basic';
-|           $config['auth_override_class_method']['dashboard']['*'] = 'none|digest|basic';
+|           $config['auth_override_class_method']['dashboard']['*'] = 'none|digest|basic|session|whitelist';
 |
 | Here 'deals', 'accounts' and 'dashboard' are controller names, 'view', 'insert' and 'user' are methods within. An asterisk may also be used to specify an authentication method for an entire classes methods. Ex: $config['auth_override_class_method']['dashboard']['*'] = 'basic'; (NOTE: leave off the '_get' or '_post' from the end of the method name)
 | Acceptable values are; 'none', 'digest' and 'basic'.
@@ -190,7 +198,6 @@ $config['auth_library_function'] = '';
 // $config['auth_override_class_method']['deals']['insert'] = 'digest';
 // $config['auth_override_class_method']['accounts']['user'] = 'basic';
 // $config['auth_override_class_method']['dashboard']['*'] = 'basic';
-
 
 // ---Uncomment list line for the wildard unit test
 // $config['auth_override_class_method']['wildcard_test_cases']['*'] = 'basic';
@@ -235,7 +242,7 @@ $config['rest_valid_logins'] = ['willbes' => 'api@token.will'];
 |    restrict certain methods to IPs in your white-list
 |
 */
-$config['rest_ip_whitelist_enabled'] = FALSE;
+$config['rest_ip_whitelist_enabled'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -245,7 +252,7 @@ $config['rest_ip_whitelist_enabled'] = FALSE;
 | Handle exceptions caused by the controller
 |
 */
-$config['rest_handle_exceptions'] = TRUE;
+$config['rest_handle_exceptions'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -273,7 +280,7 @@ $config['rest_ip_whitelist'] = '';
 | 1. Set to TRUE and add any IP address to 'rest_ip_blacklist'
 |
 */
-$config['rest_ip_blacklist_enabled'] = FALSE;
+$config['rest_ip_blacklist_enabled'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -333,8 +340,7 @@ $config['rest_keys_table'] = 'wb_api_keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-//$config['rest_enable_keys'] = FALSE;
-$config['rest_enable_keys'] = FALSE;
+$config['rest_enable_keys'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -361,8 +367,7 @@ $config['rest_key_column'] = 'key';
 | $config['rest_limits_method'] = 'ROUTED_URL';  // Put a limit on the routed URL
 |
 */
-//$config['rest_limits_method'] = 'ROUTED_URL';
-$config['rest_limits_method'] = 'API_KEY';
+$config['rest_limits_method'] = 'ROUTED_URL';
 
 /*
 |--------------------------------------------------------------------------
@@ -388,9 +393,6 @@ $config['rest_key_length'] = 40;
 |
 */
 $config['rest_key_name'] = 'X-API-KEY';
-$config['rest_user_name'] = 'X-API-USER';         // Custom user name
-$config['rest_token_name'] = 'X-API-TOKEN';     // Custom token name
-$config['rest_nonce_name'] = 'X-API-NONCE';    // Custom nonce name
 
 /*
 |--------------------------------------------------------------------------
@@ -417,8 +419,7 @@ $config['rest_nonce_name'] = 'X-API-NONCE';    // Custom nonce name
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-//$config['rest_enable_logging'] = FALSE;
-$config['rest_enable_logging'] = FALSE;
+$config['rest_enable_logging'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -452,8 +453,7 @@ $config['rest_logs_table'] = 'wb_api_logs';
 |    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-//$config['rest_enable_access'] = FALSE;
-$config['rest_enable_access'] = FALSE;
+$config['rest_enable_access'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -476,8 +476,8 @@ $config['rest_access_table'] = 'wb_api_access';
 | Set to FALSE to log as serialized PHP
 |
 */
-//$config['rest_logs_json_params'] = FALSE;
-$config['rest_logs_json_params'] = TRUE;
+//$config['rest_logs_json_params'] = false;
+$config['rest_logs_json_params'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -501,12 +501,11 @@ $config['rest_logs_json_params'] = TRUE;
 | To specify the limits within the controller's __construct() method, add per-method
 | limits with:
 |
-|       $this->method['METHOD_NAME']['limit'] = [NUM_REQUESTS_PER_HOUR];
+|       $this->methods['METHOD_NAME']['limit'] = [NUM_REQUESTS_PER_HOUR];
 |
 | See application/controllers/api/example.php for examples
 */
-//$config['rest_enable_limits'] = FALSE;
-$config['rest_enable_limits'] = FALSE;
+$config['rest_enable_limits'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -529,7 +528,7 @@ $config['rest_limits_table'] = 'wb_api_limits';
 | Only do this if you are using the $this->rest_format or /format/xml in URLs
 |
 */
-$config['rest_ignore_http_accept'] = FALSE;
+$config['rest_ignore_http_accept'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -544,7 +543,7 @@ $config['rest_ignore_http_accept'] = FALSE;
 | Hint: This is good for production environments
 |
 */
-$config['rest_ajax_only'] = FALSE;
+$config['rest_ajax_only'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -567,8 +566,8 @@ $config['rest_language'] = 'korean';
 | will access it through a browser
 |
 */
-//$config['check_cors'] = FALSE;
-$config['check_cors'] = TRUE;
+//$config['check_cors'] = false;
+$config['check_cors'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -583,7 +582,7 @@ $config['allowed_cors_headers'] = [
   'X-Requested-With',
   'Content-Type',
   'Accept',
-  'Access-Control-Request-Method'
+  'Access-Control-Request-Method',
 ];
 
 /*
@@ -600,7 +599,7 @@ $config['allowed_cors_methods'] = [
   'OPTIONS',
   'PUT',
   'PATCH',
-  'DELETE'
+  'DELETE',
 ];
 
 /*
@@ -612,7 +611,7 @@ $config['allowed_cors_methods'] = [
 | source domain
 |
 */
-$config['allow_any_cors_domain'] = FALSE;
+$config['allow_any_cors_domain'] = false;
 
 /*
 |--------------------------------------------------------------------------
@@ -633,7 +632,7 @@ $config['allowed_cors_origins'] = ['https://www' . ENV_DOMAIN . '.' . config_ite
 | CORS Forced Headers
 |--------------------------------------------------------------------------
 |
-| If using CORS checks, always include the headers and values specified here 
+| If using CORS checks, always include the headers and values specified here
 | in the OPTIONS client preflight.
 | Example:
 | $config['forced_cors_headers'] = [
@@ -642,7 +641,7 @@ $config['allowed_cors_origins'] = ['https://www' . ENV_DOMAIN . '.' . config_ite
 |
 | Added because of how Sencha Ext JS framework requires the header
 | Access-Control-Allow-Credentials to be set to true to allow the use of
-| credentials in the REST Proxy. 
+| credentials in the REST Proxy.
 | See documentation here:
 | http://docs.sencha.com/extjs/6.5.2/classic/Ext.data.proxy.Rest.html#cfg-withCredentials
 |
@@ -651,22 +650,23 @@ $config['forced_cors_headers'] = [];
 
 /*
 |--------------------------------------------------------------------------
-| Rest token available time (second)
-|--------------------------------------------------------------------------
-*/
-$config['rest_token_limit_time'] = 3600;
-
-/*
-|--------------------------------------------------------------------------
-| Rest server url from rest client
+| Rest server base domain
 |--------------------------------------------------------------------------
 */
 $config['rest_server'] = 'https://api' . ENV_DOMAIN . '.' . config_item('base_domain');
 
 /*
 |--------------------------------------------------------------------------
-| Rest client ssl vertify
+| REST API Token Auth Variable
 |--------------------------------------------------------------------------
 */
-$config['ssl_verify_peer'] = FALSE;
-$config['ssl_cainfo'] = '';
+$config['rest_user_name'] = 'X-API-USER';
+$config['rest_nonce_name'] = 'X-API-NONCE';
+$config['rest_token_name'] = 'X-API-TOKEN';
+
+/*
+|--------------------------------------------------------------------------
+| REST API Token available time (second)
+|--------------------------------------------------------------------------
+*/
+$config['rest_token_limit_time'] = 60;

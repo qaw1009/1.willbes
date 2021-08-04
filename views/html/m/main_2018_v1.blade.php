@@ -51,6 +51,12 @@
 	font-size: 12px;
 }
 
+.ssam .lecup-Notice {position:absolute; top:15px; width:calc(100% - 110px);}
+.ssam .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;z-index:2;
+}
+.ssam .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+
 .ssam .bestLecBox2 {
 	margin-top: 10px;
 	border-top: 1px solid #ccc;
@@ -390,7 +396,8 @@
                     <li><a href="#none">추석교재배송및고객센터휴무안내</a><span class="date">2018-03-06</span></li>
                 </ul>
             </div>
-            <div id="notice2" class="tabContent pd20">
+            <div id="notice2" class="tabContent pd20 p_re">
+                <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>  
                 <div class="moreBtn"><a href="#none">+ 더보기</a></div>
                 <ul class="List-Table List-Table2">
                     <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>

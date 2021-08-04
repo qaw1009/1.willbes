@@ -21,6 +21,11 @@
         .ssam .VisualBox .MaintabFlex span a:hover {
             background-color:rgba(255,255,255,.3); font-weight:bold
         }
+
+        .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
+        .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
+        .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+
         .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
         .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
         .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
@@ -35,6 +40,7 @@
         .ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
         .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto}
         .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn { height:25px;}
         .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
         .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png")
         no-repeat 5px center}

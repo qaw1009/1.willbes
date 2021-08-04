@@ -324,9 +324,7 @@ class EventQuiz extends \app\controllers\BaseController
 
         $where = ['B.EqsIdx' => 'asc', 'C.EqsqIdx' => 'asc', 'D.EqmaIdx' => 'asc'];
         $list = $this->eventQuizModel->listMemberPopupAnswer(false, $arr_condition, $column, null, null, $where);
-        echo '<pre>';
-        print_r($list);
-        exit;
+
         $download_query = $this->eventQuizModel->getLastQuery();
         $this->load->library('approval');
         if($this->approval->SysDownLog($download_query, $file_name, count($list)) !== true) {

@@ -251,7 +251,7 @@ class EventQuizModel extends WB_Model
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $group_by = ' GROUP BY D.MemIdx ';
+        $group_by = ' GROUP BY B.EqsIdx, D.MemIdx ';
 
         $query_string = ($is_count === true) ? "select COUNT(numrows) as numrows" : "select A.*";
         $query_string .= " from ( ";

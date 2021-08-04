@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class eventQuizFModel extends WB_Model
+class EventQuizFModel extends WB_Model
 {
     private $_table = [
         'event_quiz' => 'lms_event_quiz',

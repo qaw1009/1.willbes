@@ -13,19 +13,16 @@ class Server extends \app\controllers\RestController
 
     public function index_get()
     {
-        $rules = [
-            ['field' => 'id', 'label' => '아이디', 'rules' => 'trim|required'],
-        ];
-
-        if ($this->validate($rules) === false) {
-            return;
+        $id = $this->_reqG('id');
+        if (empty($id) === true) {
+            return $this->api_param_error();
         }
 
         $data = [
             'name' => '홍길동'
         ];
 
-        $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 
     public function index_post()
@@ -35,13 +32,13 @@ class Server extends \app\controllers\RestController
         ];
 
         if ($this->validate($rules) === false) {
-            return;
+            return null;
         }
 
         $data = [
             'name' => '홍길동POST'
         ];
 
-        $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 }

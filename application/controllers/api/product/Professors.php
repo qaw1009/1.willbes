@@ -54,6 +54,6 @@ class Professors extends \app\controllers\RestController
             $data = element('0', $data, []);
         }
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 }

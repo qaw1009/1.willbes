@@ -62,7 +62,7 @@ class Products extends \app\controllers\RestController
             $data = element('0', $data, []);
         }
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 
     /**
@@ -80,7 +80,7 @@ class Products extends \app\controllers\RestController
         // 데이터 조회
         $data = $this->productFModel->findProductContents($prod_code);
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 
     /**
@@ -98,7 +98,7 @@ class Products extends \app\controllers\RestController
         // 데이터 조회
         $data = $this->productFModel->findProductSaleBooks($prod_code);
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 
     /**
@@ -116,6 +116,6 @@ class Products extends \app\controllers\RestController
         // 데이터 조회
         $data = $this->productFModel->findProductLectureUnits($prod_code);
 
-        return $this->api_success(null, $data);
+        return $this->api_success($data);
     }
 }

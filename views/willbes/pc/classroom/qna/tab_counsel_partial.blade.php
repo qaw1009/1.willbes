@@ -37,7 +37,10 @@
                     </div>                    
                 </div>
 
-                <div class="subBtn blue f_right"><a href="{{front_url('/support/qna/create')}}">문의하기 ></a></div>
+                <div class="subBtn blue f_right">
+                    {{--관심분야 조건 (임용제외)--}}
+                    @if(sess_data('mem_interest') != '718009')<a href="{{front_url('/support/qna/create')}}">문의하기 ></a>@endif
+                </div>
             </div>
         </div>
         <div class="LeclistTable pointTable">

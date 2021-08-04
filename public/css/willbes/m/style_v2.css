@@ -7619,11 +7619,10 @@ span.calendar_btn {
 	clear: both;
 }
 
-.lecup-Notice { }
-.lecup-Notice a {display:block; font-size:14px; padding:20px; width:100%;
+.lecup-Notice-sub a {display:block; font-size:14px; padding:20px; width:100%;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+.lecup-Notice-sub a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
 
 /* iPhone 5/SE */
 @media only screen and (max-width: 374px) {

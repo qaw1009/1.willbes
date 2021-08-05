@@ -80,6 +80,7 @@
             </div>
             <!-- willbes-AcadInfo -->
         </div>
+        {!! banner('강의업데이트_퀵배너', 'Quick-Bnr ml20', $__cfg['SiteCode'], '0') !!}
     </div>
 
     <!-- End Container -->

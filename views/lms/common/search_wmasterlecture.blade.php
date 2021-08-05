@@ -141,10 +141,6 @@
 
                         $parent_masterTitle.html(' [' + row.wLecIdx + '] '+ row.wLecName);   //강의명, 코드명 삽입
 
-                        /*$parent_cpInfo.html('<input type="hidden" name="wCpIdx" value="'+row.wCpIdx+'">'
-                                                    +'<input type="number" name="CpDistribution" id="CpDistribution" style="width:50px" maxlength="3" class="form-control">% '
-                                                    +'&nbsp;&nbsp;[CP사] '+row.wCpName);     */ //CP정보
-
                         $parent_masterInfo.html($masterInfo);   //강의기본정보 삽입
                         $('#wLecIdx').val(row.wLecIdx); //강의코드 삽입
                         $('#wCpIdx').val(row.wCpIdx);
@@ -160,7 +156,7 @@
                         $('#AllLecTime').val(row.wRuntimeSum); //전체강의시간
                         $("#sampleList span").remove();   //회차 정보 초기화
                         $("#teacherDivision tbody").remove();   //강사 정산 초기화
-
+                        (row.wControlCountUse > 0) ? $(":radio[name='IsMobileDownload'][value='N']").iCheck('check') : $(":radio[name='IsMobileDownload'][value='Y']").iCheck('check');
                         $("#pop_modal").modal('toggle');
                     });
 

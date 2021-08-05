@@ -59,19 +59,26 @@
         .youtube_divide .preview_area .avi_box {width:730px;height:411px;margin-bottom:20px;} 
         .youtube_divide .preview_area h2 {display:block;font-size:24px;font-weight:700;line-height:32px;color:#000;overflow:hidden;text-overflow:ellipsis;word-wrap:normal;margin-bottom:4px;max-width:730px;}
         .youtube_divide .preview_area span {font-size:14px;font-weight:400;color:#555;}
-        .youtube_divide .preview_area span a {display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
-                                              background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;background-size:100% auto;font-size:0;}
+        .youtube_divide .preview_area span a {
+            display:inline-block;vertical-align: middle;width:18px;height:15px;margin:-3px 0 0 4px;
+            background: url(https://static.willbes.net/public/images/promotion/2020/07/i_front_home.png) repeat;
+            background-size:100% auto;font-size:0;
+        }
         .youtube_divide .preview_list_area {display:inline-block;vertical-align:top;padding-left:12px;width:304px;text-align:left;}
         .youtube_divide .preview_list_area .preview_list {margin-top:15px;height:455px;box-sizing:border-box;overflow-y:scroll;}
         .youtube_divide .preview_list_area .preview_list ul li {margin-bottom:12px;}
-        .youtube_divide .preview_list_area .preview_list ul li .num_box {width:26px;display:inline-block;font-size: 12px;font-weight:400;
-                                                                         color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;}
+        .youtube_divide .preview_list_area .preview_list ul li .num_box {
+            width:26px;display:inline-block;font-size: 12px;font-weight:400;
+            color:#666;padding-right:10px;text-indent: 2px;vertical-align:middle;box-sizing:border-box;
+        }
         .youtube_divide .preview_list_area .preview_list ul li .thum_box {display: inline-block;width: 120px;height: 70px;box-sizing: border-box;vertical-align: middle;overflow: hidden;}
         /*.youtube_divide .preview_list_area .preview_list ul li.on .thum_box {border:3px solid #00E752;}*/
         .youtube_divide .preview_list_area .preview_list ul li .thum_box img {width:100%;transition:0.5s;}
         .youtube_divide .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
-        .youtube_divide .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
-                                                                            overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
+        .youtube_divide .preview_list_area .preview_list ul li .text_box p {
+            font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
+            overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;
+        }
         .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}        
 
         /*탭(이미지)*/
@@ -112,7 +119,7 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky" >
+        <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
             <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183412" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="한덕현 t"></a>
@@ -155,11 +162,7 @@
                 <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" target="_blank" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </div>  
-
-        <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_06.jpg" alt="필수 기본이론 정복"/>
-        </div>  
-        
+      
         <div class="evtCtnsBox wb_cts07" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_07.jpg" alt="합격을 이끌어낸 그 과정"/>
             <div class="youtube_contents">

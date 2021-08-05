@@ -131,6 +131,9 @@
 .ssam .smallTit strong {
     color:#0c5dc0;
 }
+.ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
+.ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:14px}
+.ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px; vertical-align: top}
 
 /*Main Container : 적중*/
 .ssam .Section1 .smallTit {border-top:0;}

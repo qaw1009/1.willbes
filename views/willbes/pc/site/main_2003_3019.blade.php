@@ -374,13 +374,13 @@
     </div>
     <!-- End Container -->
 
-    <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox">
+    <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
         <div class="Layer-Cont" id="youtube_box">
             <iframe width="850" height="482" src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <ul class="btnWrapbt popbtn mt10">
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="1">하루 보지않기</a></li>
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="860" data-popup-hide-days="">Close</a></li>
+            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="yt_hdh_210805" data-popup-hide-days="1">하루 보지않기</a></li>
+            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="yt_hdh_210805" data-popup-hide-days="">Close</a></li>
         </ul>
     </div>
     <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
@@ -553,9 +553,8 @@
         });
 
         // 팝업 오늘하루안보기 하드코딩
-        if($.cookie('_wb_client_popup_860') !== 'done') {
-            $('#Popup').show();
-            $('.PopupWrap').fadeIn();
+        if($.cookie('_wb_client_popup_yt_hdh_210805') !== 'done') {
+            $('#Popup200916').fadeIn();
             $('#PopupBackWrap').fadeIn();
         }
     });    

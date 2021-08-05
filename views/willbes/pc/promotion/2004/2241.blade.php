@@ -95,9 +95,9 @@
 
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky" >
+        <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky.png" alt="7월 new"></a>
-            <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
+            <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            

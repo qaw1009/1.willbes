@@ -2,28 +2,6 @@
 @section('content')
 
 <style type="text/css">
-.ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
-.ssam .MaintabList {background-color:rgba(0,0,0,.5)}
-.ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; border-left:1px solid #fff}
-.ssam .VisualBox .MaintabFlex span {   
-    height: 50px;
-    font-size: 14px;
-    line-height: 50px;
-    width:calc(100%);   
-}
-.ssam .VisualBox .MaintabFlex span a {color:#fff}
-.ssam .VisualBox .MaintabFlex span a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-right:1px solid #fff
-}
-.ssam .VisualBox .MaintabFlex span a:hover {
-    background-color:rgba(255,255,255,.3); font-weight:bold
-}
-
-.ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
-
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
@@ -94,7 +72,6 @@ no-repeat 5px center}
 	top: -1px;
 	right: -1px;
 }
-
 </style>
 
 <!-- Container -->
@@ -328,12 +305,12 @@ no-repeat 5px center}
             </div>
 
             <div class="noticeTabs">
-                <div class="will-listTit">강의 업데이트</div>
-                <div class="tabBox noticeBox">
+                <div class="will-listTit">강의 업데이트 </div>    
+                <div class="tabBox noticeBox p_re">   
+                    <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
                     <div class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table List-Table2">
-                            <li><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></li>
+                        <ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>
                             <li><a href="#none"><strong class="tx-blue">[전공수학 박태영]</strong> <strong class="tx-red">총 2강 업로드</strong> 2020 (9~10월) (내용학+수교론) 실전 모의고사반 - 직강 복습용 </a></li>

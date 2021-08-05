@@ -34,7 +34,7 @@
         height: 60px;
         line-height: 60px;
         font-weight: 600;
-        color: #3a3a3a;
+        color:#ba5610;
         border: none;
     }
     .tabWrapCustom.noticeWrap_campus .row-line {
@@ -45,6 +45,7 @@
         margin: -36px 0 0;
     }
 </style>
+
 <div class="Section Section4_hl mt50">
     <div class="widthAuto">
         <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>

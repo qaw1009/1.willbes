@@ -118,15 +118,95 @@
             <div class="slide_con">
                 <ul id="slidesImg4">
                     <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts02.png" /></li>  
-                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts03.png" /></li>    
-                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts04.png" /></li>   
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts02.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts03.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_cts04.png" /></li>
                 </ul>
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/main/2003/3103_right.png"></a></p>
-            </div>  
+            </div>
         </div>
-        
+
+        <div class="Section Section6 mt80">
+            <div class="widthAuto">
+                <div class="nNoticeBox three">
+                    <div class="Section NSK mt90 mb90">
+                        <div class="widthAuto">
+                            <div class="noticeList widthAuto350 f_left">
+                                <div class="will-nlistTit p_re">공지사항 <a href="{{front_url('/support/notice/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
+                                        <img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                </div>
+                                <ul class="List-Table">
+                                    @if(empty($data['notice']) === true)
+                                        <li><span>등록된 내용이 없습니다.</span></li>
+                                    @else
+                                        @foreach($data['notice'] as $row)
+                                            <li>
+                                                <a href="{{front_url('/support/notice/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                                    <span>{{$row['Title']}}</span> @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
+                                                </a>
+                                                <span class="date">{{$row['RegDatm']}}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                            <div class="noticeList widthAuto350 f_left ml35">
+                                <div class="will-nlistTit p_re">시험공고 <a href="{{front_url('/support/examAnnouncement/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
+                                        <img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                </div>
+                                <ul class="List-Table">
+                                    @if(empty($data['exam_announcement']) === true)
+                                        <li><span>등록된 내용이 없습니다.</span></li>
+                                    @else
+                                        @foreach($data['exam_announcement'] as $row)
+                                            <li>
+                                                <a href="{{front_url('/support/examAnnouncement/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                                    <span>{{$row['Title']}}</span> @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
+                                                </a>
+                                                <span class="date">{{$row['RegDatm']}}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                            <div class="noticeList widthAuto350 f_left ml35">
+                                <div class="will-nlistTit p_re">수험뉴스 <a href="{{front_url('/support/examNews/index/cate/'.$__cfg['CateCode'])}}" target="_blank" class="btn-add">
+                                        <img src="{{ img_url('cop/icon_add_big.png') }}"></a>
+                                </div>
+                                <ul class="List-Table">
+                                    @if(empty($data['exam_news']) === true)
+                                        <li><span>등록된 내용이 없습니다.</span></li>
+                                    @else
+                                        @foreach($data['exam_news'] as $row)
+                                            <li>
+                                                <a href="{{front_url('/support/examNews/show/cate/'.$__cfg['CateCode'].'?board_idx='.$row['BoardIdx'])}}">
+                                                    <span>{{$row['Title']}}</span> @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}">@endif
+                                                </a>
+                                                <span class="date">{{$row['RegDatm']}}</span>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--willbesNews //-->
+            </div>
+        </div>
+
+        {{--학원 오시는 길--}}
+        @include('willbes.pc.site._viewTest.main_partial.map_2003')
+
+        <div class="Section mt70 mb90 NSK">
+            <div class="widthAuto">
+                {{-- cscenter --}}
+                @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
+            </div>
+        </div>
+        <!-- CS센터 //-->
+
         <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
             @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
@@ -257,7 +337,7 @@
             $("#imgBannerRight4").click(function (){
                 slidesImg4.goToNextSlide();
             });
-        });     
+        });
     </script>
     {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
 @stop

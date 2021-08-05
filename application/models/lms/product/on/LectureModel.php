@@ -219,7 +219,6 @@ class LectureModel extends CommonLectureModel
             if($this->_conn->set($product_data)->insert($this->_table['product']) === false) {
                 throw new \Exception('상품 등록에 실패했습니다.');
             };
-            //echo $this->_conn->last_query().'; ';
             /*----------------          상품등록        ---------------*/
 
             /*----------------          강좌등록        ---------------*/
@@ -230,7 +229,6 @@ class LectureModel extends CommonLectureModel
             if($this->_conn->set($lecture_data)->insert($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 등록에 실패했습니다.');
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          강좌등록        ---------------*/
 
             /*----------------          카테고리등록        ---------------*/
@@ -343,13 +341,9 @@ class LectureModel extends CommonLectureModel
                 'UpdAdminIdx'=>$this->session->userdata('admin_idx')
             ]);
 
-            // 백업 데이터 등록
-            //$this->addBakData($this->_table['product'], ['ProdCode' => $prodcode]);
-
             if ($this->_conn->set($product_data)->set('UpdDatm', 'NOW()', false)->where('ProdCode', $prodcode)->update($this->_table['product']) === false) {
                 throw new \Exception('상품 정보 수정에 실패했습니다.');
             }
-            //echo $this->_conn->last_query();
             /*----------------          상품수정        ---------------*/
 
             /*----------------          강좌수정        ---------------*/
@@ -357,13 +351,9 @@ class LectureModel extends CommonLectureModel
                 //'LearnPatternCcd'=>element('LearnPatternCcd',$input)
             ]);
 
-            // 백업 데이터 등록
-            //$this->addBakData($this->_table['lecture'], ['ProdCode' => $prodcode]);
-
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }
-           //echo $this->_conn->last_query();
             /*----------------          강좌수정        ---------------*/
 
             /*----------------          카테고리등록        ---------------*/
@@ -438,7 +428,6 @@ class LectureModel extends CommonLectureModel
             }
             /*----------------          Json 데이터 등록        ---------------*/
 
-            //$this->_conn->trans_rollback();
             $this->_conn->trans_commit();
 
         } catch (\Exception $e) {
@@ -554,6 +543,7 @@ class LectureModel extends CommonLectureModel
             ,'ExternalCorpCcd'=>element('ExternalCorpCcd',$input)
             ,'ExternalLinkCode'=>element('ExternalLinkCode',$input)
             ,'IsOpenwUnitNum'=>element('IsOpenwUnitNum',$input,'N')
+            ,'IsMobileDownload'=>element('IsMobileDownload',$input,'Y')
         ];
    }
 }

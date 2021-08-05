@@ -675,11 +675,21 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">선수강좌구분 <span class="required">*</span>
                     </label>
-                    <div class="col-md-6 form-inline item" >
+                    <div class="col-md-4 form-inline item" >
                         <div class="radio">
                             <input type="radio" name="LecSaleType" class="flat" value="N" required="required" title="선수강좌구분" @if($method == 'POST' || $data['LecSaleType']=='N')checked="checked"@endif/> 일반강좌
                             &nbsp;&nbsp;
                             <input type="radio" name="LecSaleType" class="flat" value="B" @if($data['LecSaleType']=='B')checked="checked"@endif/> 선수강좌
+                        </div>
+                    </div>
+                    <label class="control-label col-md-2">모바일 자료다운로드 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-4 form-inline item" >
+                        <div class="radio">
+                            <input type="radio" name="IsMobileDownload" class="flat" value="Y" required="required" title="모바일자료다운로드" @if($method == 'POST' || $data['IsMobileDownload']=='Y')checked="checked"@endif/> 가능
+                            &nbsp;&nbsp;
+                            <input type="radio" name="IsMobileDownload" class="flat" value="N" @if($data['IsMobileDownload']=='N')checked="checked"@endif/> 불가능
+                            &nbsp;&nbsp;&nbsp;&nbsp;• 인쇄 횟수 제한이 있는 회차에만 적용됩니다
                         </div>
                     </div>
                 </div>

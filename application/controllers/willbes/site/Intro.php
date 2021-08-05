@@ -60,7 +60,8 @@ class Intro extends \app\controllers\FrontController
         $banner_disp_group = 'GRP:인트로';
         $result = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
 
-        $banner_disp_group = 'GRP:게이트';
+        $first_name = $this->_is_mobile === true ? 'M_' : '';
+        $banner_disp_group = 'GRP:'.$first_name.'게이트';
         $result2 = $this->bannerFModel->findBanners($banner_disp_group, $this->_site_code, $cate_code);
         $result = array_merge_recursive($result, $result2);
 

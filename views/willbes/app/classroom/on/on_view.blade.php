@@ -129,7 +129,7 @@
                                                 <li class="w-data">
                                                     @if(empty($row['wUnitAttachFile']) == false)
                                                         @if($row['wControlCount'] > 0)
-                                                            @if($row['IsMobileDownload'] == 'Y')
+                                                            @if($lec['IsMobileDownload'] == 'Y')
                                                                 <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
                                                                     @if($row['downcount'] > 0)
                                                                         <img src="{{ img_url('prof/icon_down.png') }}">

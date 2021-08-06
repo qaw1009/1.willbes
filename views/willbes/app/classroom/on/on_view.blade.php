@@ -128,18 +128,29 @@
                                                 @endif
                                                 <li class="w-data">
                                                     @if(empty($row['wUnitAttachFile']) == false)
-                                                        {{--
                                                         @if($row['wControlCount'] > 0)
-                                                            <a href="javascript:;" onclick="alert('해당 강의자료는 PC에서만 확인 가능합니다.');">
-                                                                @if($row['downcount'] > 0)
-                                                                    <img src="{{ img_url('prof/icon_down.png') }}">
-                                                                @else
-                                                                    <img src="{{ img_url('m/mypage/icon_lec.png') }}">
-                                                                @endif
-                                                                <span class="underline">강의자료</span>
-                                                            </a>
+                                                            @if($row['IsMobileDownload'] == 'Y')
+                                                                <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
+                                                                    @if($row['downcount'] > 0)
+                                                                        <img src="{{ img_url('prof/icon_down.png') }}">
+                                                                    @else
+                                                                        <img src="{{ img_url('m/mypage/icon_lec.png') }}">
+                                                                    @endif
+                                                                    <span class="underline">강의자료</span>
+                                                                </a>
+                                                            @else
+                                                                {{--
+                                                                <a href="javascript:;" onclick="alert('해당 강의자료는 PC에서만 확인 가능합니다.');">
+                                                                    @if($row['downcount'] > 0)
+                                                                        <img src="{{ img_url('prof/icon_down.png') }}">
+                                                                    @else
+                                                                        <img src="{{ img_url('m/mypage/icon_lec.png') }}">
+                                                                    @endif
+                                                                    <span class="underline">강의자료</span>
+                                                                </a>
+                                                                --}}
+                                                            @endif
                                                         @else
-                                                        --}}
                                                             <a href="/classroom/on/download/{{$row['OrderIdx']}}/{{$row['ProdCode']}}/{{$row['ProdCodeSub']}}/{{$row['wLecIdx']}}/{{$row['wUnitIdx']}}">
                                                                 @if($row['downcount'] > 0)
                                                                     <img src="{{ img_url('prof/icon_down.png') }}">
@@ -148,9 +159,7 @@
                                                                 @endif
                                                                 <span class="underline">강의자료</span>
                                                             </a>
-                                                        {{--
                                                         @endif
-                                                        --}}
                                                     @endif
                                                 </li>
                                             </ul>

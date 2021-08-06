@@ -282,7 +282,7 @@
 			</div>
 		</div>        
 
-		<div class="evtCtnsBox wb_06">
+		<div class="evtCtnsBox wb_06" id="evt_02">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2313_06.jpg"  alt="전국모의고사 이벤트"/>
                 <a href="javascript:;" onclick="giveCheck()" title="쿠폰받기" style="position: absolute;left: 39.46%;top: 61.11%;width: 21.07%;height: 5.08%;z-index: 2;"></a>
@@ -295,7 +295,7 @@
             @include('willbes.pc.promotion.show_comment_list_url_partial')
         @endif 
 
-        <div class="evtCtnsBox wb_07" id="evt_02">
+        <div class="evtCtnsBox wb_07">
             <div>
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2313_07.jpg"  alt="전국모의고사 신청하기" />
                 <a href="https://police.willbes.net/pass/mockTest/apply/cate" target="_blank" title="신청하기" style="position: absolute; left: 28.21%; top: 78.75%; width: 43.93%; height: 12.26%; z-index: 2;"></a>

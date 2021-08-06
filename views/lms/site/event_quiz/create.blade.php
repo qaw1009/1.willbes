@@ -22,8 +22,8 @@
                         {!! html_site_select(empty($data['SiteCode']) === false ? $data['SiteCode'] : '', 'site_code', 'site_code', '', '운영 사이트', 'required', ($method == 'PUT') ? 'disabled' : '', false, $arr_site_code) !!}
                     </div>
 
-                    <label class="control-label col-md-1-1 d-line" for="promotion_code">코드</label>
-                    <div class="col-md-4 form-inline ml-12-dot">
+                    <label class="control-label col-md-1-1" for="promotion_code">코드</label>
+                    <div class="col-md-4 form-inline">
                         <p class="form-control-static">@if($method == 'PUT') <b>{{ $eq_idx }}</b>@else # 등록 시 자동 생성 @endif</p>
                     </div>
                 </div>
@@ -49,8 +49,8 @@
                         </div>
                     </div>
 
-                    <label class="control-label col-md-1-1 d-line" for="is_use_y">사용여부<span class="required">*</span></label>
-                    <div class="col-md-4 item form-inline ml-12-dot">
+                    <label class="control-label col-md-1-1" for="is_use_n">사용여부<span class="required">*</span></label>
+                    <div class="col-md-4 item form-inline">
                         <div class="radio">
                             <input type="radio" id="is_use_y" name="is_use" class="flat" value="Y" required="required" title="사용여부" @if($data['IsUse']=='Y')checked="checked"@endif/> <label for="is_use_y" class="input-label">사용</label>
                             <input type="radio" id="is_use_n" name="is_use" class="flat" value="N" @if($method == 'POST' || $data['IsUse']=='N')checked="checked"@endif/> <label for="is_use_n" class="input-label">미사용</label>
@@ -64,7 +64,9 @@
                         <div class="col-md-9 mb-5">
                             @if($method == 'PUT')
                                 <div>
-                                    <button type="button" class="btn-sm btn-primary border-radius-reset add_quiz mr-15" data-id="add_quiz" data-eq-idx="{{ $data['EqIdx'] }}" data-eqs-idx="{{ $data['EqsIdx'] or ''}}" onclick="show_create_layer(this)"><i class="fa fa-pencil mr-10"></i>문제등록</button>
+                                    <button type="button" class="btn-sm btn-primary border-radius-reset mr-15 btn_quizset_modal" data-eq-idx="{{ $data['EqIdx'] }}" data-eqs-idx="{{ $data['EqsIdx'] or ''}}" data-mem-answer-cnt="">
+                                        문제등록
+                                    </button>
                                     <button type="button" class="btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>순서/사용 적용</button>
                                 </div>
                             @else
@@ -107,7 +109,7 @@
                                         <td class="text-center">{{ $row['EqsEndDatm'] }}</td>
                                         <td class="text-center"><input type="checkbox" name="eqs_is_use" value="Y" class="flat" data-origin-is-use="{{$row['IsUse']}}" @if($row['IsUse'] == 'Y') checked="checked" @endif></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-success btn-modify mb-10" data-id="btn-modify" data-eqs-idx="{{$row['EqsIdx']}}" data-eq-idx="{{$row['EqIdx']}}" onclick="show_create_layer(this, {{ $row['MemAnswerCnt'] }})">수정</button>
+                                            <button type="button" class="btn btn-success mb-10 btn_quizset_modal" data-eqs-idx="{{$row['EqsIdx']}}" data-eq-idx="{{$row['EqIdx']}}" data-mem-answer-cnt="{{ $row['MemAnswerCnt'] }}">수정</button>
                                             @if($row['MemAnswerCnt'] < 1)
                                                 <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['EqsIdx']}}" onclick="del_quiz_set(this)">삭제</button>
                                             @endif
@@ -126,9 +128,9 @@
                     <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegAdminName'] or "" }}</p>
                     </div>
-                    <label class="control-label col-md-1-1 d-line">등록일
+                    <label class="control-label col-md-1-1">등록일
                     </label>
-                    <div class="col-md-4 ml-12-dot">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['RegDatm'] or "" }}</p>
                     </div>
                 </div>
@@ -139,9 +141,9 @@
                     <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdAdminName'] or "" }}</p>
                     </div>
-                    <label class="control-label col-md-1-1 d-line">최종 수정일
+                    <label class="control-label col-md-1-1">최종 수정일
                     </label>
-                    <div class="col-md-4 ml-12-dot">
+                    <div class="col-md-4">
                         <p class="form-control-static">{{ $data['UpdDatm'] or "" }}</p>
                     </div>
                 </div>
@@ -215,23 +217,21 @@
             $('#btn_list').click(function() {
                 location.href='{{ site_url("/site/eventQuiz/index") }}' + getQueryString();
             });
-        });
 
-        // 등록/수정 레이어창
-        function show_create_layer(obj, mem_answer_cnt){
-            var obj_id = $(obj).data("id");
-
-            $("." + obj_id).setLayer({
-                'url' : '{{ site_url('/site/eventQuiz/quizSetCreateModal') }}',
-                'add_param_type' : 'param',
-                'add_param' : [
-                    { 'id' : 'eq_idx', 'name' : '퀴즈 식별자', 'value' : $(obj).data("eq-idx"), 'required' : true },
-                    { 'id' : 'eqs_idx', 'name' : '퀴즈문항 식별자', 'value' : $(obj).data("eqs-idx"), 'required' : false},
-                    { 'id' : 'mem_answer_cnt', 'name' : '회원 참여 여부', 'value' : mem_answer_cnt, 'required' : false},
-                ],
-                'width' : 1000
+            //퀴즈 문제등록
+            $('.btn_quizset_modal').on('click', function() {
+                $(".btn_quizset_modal").setLayer({
+                    'url' : '{{ site_url('/site/eventQuiz/quizSetCreateModal') }}',
+                    'add_param_type' : 'param',
+                    'add_param' : [
+                        { 'id' : 'eq_idx', 'name' : '퀴즈 식별자', 'value' : $(this).data("eq-idx"), 'required' : true },
+                        { 'id' : 'eqs_idx', 'name' : '퀴즈문항 식별자', 'value' : $(this).data("eqs-idx"), 'required' : false},
+                        { 'id' : 'mem_answer_cnt', 'name' : '회원 참여 여부', 'value' : $(this).data("mem-answer-cnt"), 'required' : false},
+                    ],
+                    'width' : 1000
+                });
             });
-        }
+        });
 
         // 퀴즈 문제 삭제
         function del_quiz_set(obj){

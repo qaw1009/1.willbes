@@ -13,7 +13,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,1);}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:10px}
 
         /************************************************************/
 
@@ -80,7 +80,7 @@
         <div class="evtCtnsBox evt04" data-aos="fade-left">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2315_04.jpg" alt=""/>    
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184227" target="_blank" title="지금바로수강하기" style="position: absolute; left: 9.46%; top: 73.85%; width: 32.90%; height: 8.28%; z-index: 2;"></a>                
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184227" target="_blank" title="지금바로수강하기" style="position: absolute; left: 9.46%; top: 73.85%; width: 33.5%; height: 8.28%; z-index: 2;"></a>                
             </div>            
 
         </div>     

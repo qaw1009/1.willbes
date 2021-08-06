@@ -34,7 +34,7 @@
         height: 60px;
         line-height: 60px;
         font-weight: 600;
-        color: #3a3a3a;
+        color:#ba5610;
         border: none;
     }
     .tabWrapCustom.noticeWrap_campus .row-line {

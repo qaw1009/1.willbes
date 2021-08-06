@@ -33,7 +33,7 @@ class Exam extends \app\controllers\BaseController
         $rules = [
             ['field' => 'pae_idx', 'label' => '식별자', 'rules' => 'trim|required|integer']
             ,['field' => 'order_number', 'label' => '식별자', 'rules' => 'trim|required|integer']
-            ,['field' => 'id', 'label' => '식별자', 'rules' => 'trim|required|integer']
+            ,['field' => 'id', 'label' => '식별자', 'rules' => 'trim|required']
         ];
 
         if ($this->validate($rules) === false) {

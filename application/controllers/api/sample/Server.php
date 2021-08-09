@@ -6,6 +6,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Server extends \app\controllers\RestController
 {
+    // 메소드별 인증방식 설정
+    /*protected $methods = [
+        'index_get' => ['auth' => 'digest'],
+    ];*/
+    // 컨트롤러별 아이피 체크 설정
+    //protected $_check_ip_whitelist = '192.168.56.1';
+
     public function __construct()
     {
         parent::__construct();

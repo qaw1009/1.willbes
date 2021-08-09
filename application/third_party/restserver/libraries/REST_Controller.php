@@ -419,7 +419,13 @@ abstract class REST_Controller extends \CI_Controller
         if ($this->auth_override === false &&
             (!($this->config->item('rest_enable_keys') && $this->_allow === true) ||
                 ($this->config->item('allow_auth_and_keys') === true && $this->_allow === true))) {
-            $rest_auth = strtolower($this->config->item('rest_auth'));
+            $controller_method = $this->router->method.'_'.$this->request->method;  // controller method name
+            if (isset($this->methods[$controller_method]['auth']) === true) {
+                // Authentication method setting by controller method (Custom)
+                $rest_auth = strtolower($this->methods[$controller_method]['auth']);
+            } else {
+                $rest_auth = strtolower($this->config->item('rest_auth'));
+            }
             switch ($rest_auth) {
                 case 'basic':
                     $this->_prepare_basic_auth();
@@ -1668,24 +1674,27 @@ abstract class REST_Controller extends \CI_Controller
 
     /**
      * Check if the user is logged in.
+     * Add $rest_auth parameter (Custom)
      *
+     * @param string      $rest_auth Authentication method
      * @param string      $username The user's name
      * @param bool|string $password The user's password
      *
      * @return bool
      */
-    protected function _check_login($username = null, $password = false)
+    protected function _check_login($rest_auth, $username = null, $password = false)
     {
         if (empty($username)) {
             return false;
         }
 
+        $rest_auth = strtolower($rest_auth);
         $auth_source = strtolower($this->config->item('auth_source'));
-        $rest_auth = strtolower($this->config->item('rest_auth'));
         $valid_logins = $this->config->item('rest_valid_logins');
 
         if (!$this->config->item('auth_source') && $rest_auth === 'digest') {
             // For digest we do not have a password passed as argument
+            // Password encryption (Custom)
             // return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? $valid_logins[$username] : ''));
             return md5($username.':'.$this->config->item('rest_realm').':'.(isset($valid_logins[$username]) ? hash_hmac('sha256', $valid_logins[$username], $username) : ''));
         }
@@ -1710,7 +1719,9 @@ abstract class REST_Controller extends \CI_Controller
             return false;
         }
 
-        if (hash_hmac('sha256', $valid_logins[$username], $username) !== $password) {   // if ($valid_logins[$username] !== $password) {
+        // Password encryption (Custom)
+        // if ($valid_logins[$username] !== $password) {
+        if (hash_hmac('sha256', $valid_logins[$username], $username) !== $password) {
             return false;
         }
 
@@ -1780,7 +1791,7 @@ abstract class REST_Controller extends \CI_Controller
                 ], self::HTTP_UNAUTHORIZED);
             } else {
                 $secret = hash_hmac('sha256', $valid_logins[$username], $username . $nonce);
-                $params_value = implode('', array_values($this->{strtolower($this->request->method)}()));
+                $params_value = md5(implode('', array_values($this->{strtolower($this->request->method)}())));
                 $md5 = md5(strtoupper($this->request->method) . ':' . parse_url($this->input->server('REQUEST_URI'), PHP_URL_PATH) . ':' . $params_value);
                 $valid_response = $username . ':' . $nonce . ':' . $md5;
                 $valid_response = md5(hash_hmac('sha256', $valid_response, $secret));
@@ -1811,6 +1822,7 @@ abstract class REST_Controller extends \CI_Controller
         // Returns NULL if the SERVER variables PHP_AUTH_USER and HTTP_AUTHENTICATION don't exist
         $username = $this->input->server('PHP_AUTH_USER');
         $http_auth = $this->input->server('HTTP_AUTHENTICATION') ?: $this->input->server('HTTP_AUTHORIZATION');
+        $rest_auth = 'basic';
 
         $password = null;
         if ($username !== null) {
@@ -1818,15 +1830,15 @@ abstract class REST_Controller extends \CI_Controller
         } elseif ($http_auth !== null) {
             // If the authentication header is set as basic, then extract the username and password from
             // HTTP_AUTHORIZATION e.g. my_username:my_password. This is passed in the .htaccess file
-            if (strpos(strtolower($http_auth), 'basic') === 0) {
+            if (strpos(strtolower($http_auth), $rest_auth) === 0) {
                 // Search online for HTTP_AUTHORIZATION workaround to explain what this is doing
                 list($username, $password) = explode(':', base64_decode(substr($this->input->server('HTTP_AUTHORIZATION'), 6)));
             }
         }
 
         // Check if the user is logged into the system
-        if ($this->_check_login($username, $password) === false) {
-            $this->_force_login();
+        if ($this->_check_login($rest_auth, $username, $password) === false) {
+            $this->_force_login($rest_auth);
         }
     }
 
@@ -1850,11 +1862,12 @@ abstract class REST_Controller extends \CI_Controller
         }
 
         $unique_id = uniqid();
+        $rest_auth = 'digest';
 
         // The $_SESSION['error_prompted'] variable is used to ask the password
         // again if none given or if the user enters wrong auth information
         if (empty($digest_string)) {
-            $this->_force_login($unique_id);
+            $this->_force_login($rest_auth, $unique_id);
         }
 
         // We need to retrieve authentication data from the $digest_string variable
@@ -1862,10 +1875,15 @@ abstract class REST_Controller extends \CI_Controller
         preg_match_all('@(username|nonce|uri|nc|cnonce|qop|response)=[\'"]?([^\'",]+)@', $digest_string, $matches);
         $digest = (empty($matches[1]) || empty($matches[2])) ? [] : array_combine($matches[1], $matches[2]);
 
+        // again if the user enters wrong auth information (Custom)
+        if (empty($digest) === true) {
+            $this->_force_login($rest_auth, $unique_id);
+        }
+
         // For digest authentication the library function should return already stored md5(username:restrealm:password) for that username see rest.php::auth_library_function config
-        $username = $this->_check_login($digest['username'], true);
+        $username = $this->_check_login($rest_auth, $digest['username'], true);
         if (isset($digest['username']) === false || $username === false) {
-            $this->_force_login($unique_id);
+            $this->_force_login($rest_auth, $unique_id);
         }
 
         $md5 = md5(strtoupper($this->request->method).':'.$digest['uri']);
@@ -1935,14 +1953,15 @@ abstract class REST_Controller extends \CI_Controller
     /**
      * Force logging in by setting the WWW-Authenticate header.
      *
+     * @param string $rest_auth Authentication method (Custom)
      * @param string $nonce A server-specified data string which should be uniquely generated
      *                      each time
      *
      * @return void
      */
-    protected function _force_login($nonce = '')
+    protected function _force_login($rest_auth, $nonce = '')
     {
-        $rest_auth = strtolower($this->config->item('rest_auth'));
+        $rest_auth = strtolower($rest_auth);
         $rest_realm = $this->config->item('rest_realm');
         if ($rest_auth === 'basic') {
             // See http://tools.ietf.org/html/rfc2617#page-5

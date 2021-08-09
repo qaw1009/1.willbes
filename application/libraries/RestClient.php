@@ -352,7 +352,7 @@ class RestClient
         $nonce = substr(uniqid(), -6) . time();
         $secret = hash_hmac('sha256', $password, $username . $nonce);
 
-        $params_value = implode('', array_values($params));
+        $params_value = md5(implode('', array_values($params)));
         $md5 = md5(strtoupper($method) . ':' . parse_url($uri, PHP_URL_PATH) . ':' . $params_value);
 
         $token = $username . ':' . $nonce . ':' . $md5;
@@ -361,6 +361,15 @@ class RestClient
         $this->http_header($this->rest_configs['rest_user_name'], $username);
         $this->http_header($this->rest_configs['rest_nonce_name'], $nonce);
         $this->http_header($this->rest_configs['rest_token_name'], $token);
+    }
+
+    /**
+     * Set http auth method
+     * @param string $http_auth
+     */
+    public function http_auth($http_auth)
+    {
+        $this->http_auth = $http_auth;
     }
 
     /**

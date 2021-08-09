@@ -15,6 +15,7 @@ class Client extends \app\controllers\BaseController
 
     public function get()
     {
+        //$this->restclient->http_auth('digest');   // 개별 인증방식 설정
         $data = $this->restclient->get('/sample/server/index', ['id' => 'foo']);
         var_dump($data);
         $this->restclient->debug();

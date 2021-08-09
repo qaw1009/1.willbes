@@ -19,7 +19,7 @@
 		/************************************************************/ 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2312_top_bg.jpg) no-repeat center top;}	
         .evt_01{background-color: #007072;}        
-        .evtCtnsBox .check{display: flex; justify-content: center; align-items: center; height:120px; font-size:16px; text-align:center;line-height:1.5;
+        .evtCtnsBox .check{display: flex; justify-content: center; align-items: center; padding-bottom: 100px; font-size:16px; text-align:center;line-height:1.5;
 					  letter-spacing:-1px;font-weight:bold;}
 		.evtCtnsBox .check label{color:#2e3044;}
 		.evtCtnsBox .check input {border: 2px solid #cdcdcd;margin-right: 8px;height: 20px; width: 20px;} 
@@ -54,7 +54,7 @@
             <div class="wrap">      
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2312_02.jpg" alt="수강신청" />
                 <a href="javascript:go_PassLecture('184564');" title="수강신청"  style="position: absolute; left: 65.63%; top: 9.50%; width: 26.16%; height: 4.2%; z-index: 2;"></a>
-                <a href="javascript:go_PassLecture('184564');" title="수강신청 바로가기" style="position: absolute; left: 8.48%; top: 87.5%; width: 82.95%; height: 5.19%; z-index: 2;"></a>
+                <a href="javascript:go_PassLecture('184564');" title="수강신청 바로가기" style="position: absolute; left: 8.48%; top: 87%; width: 82.95%; height: 5.19%; z-index: 2;"></a>
                 <div class="check">
                     <label>
                         <input type="checkbox" name="ischk" value="Y">

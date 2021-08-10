@@ -11,43 +11,49 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">결제기본정보</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_pay_channel_ccd" name="search_pay_channel_ccd">
+                        <select class="form-control" id="search_pay_channel_ccd" name="search_pay_channel_ccd" title="결제채널">
                             <option value="">결제채널</option>
                         @foreach($arr_pay_channel_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_route_ccd" name="search_pay_route_ccd">
+                        <select class="form-control" id="search_pay_route_ccd" name="search_pay_route_ccd" title="결제루트">
                             <option value="">결제루트</option>
                         @foreach($arr_pay_route_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_method_ccd" name="search_pay_method_ccd">
+                        <select class="form-control" id="search_pay_method_ccd" name="search_pay_method_ccd" title="결제수단">
                             <option value="">결제수단</option>
                         @foreach($arr_pay_method_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_prod_type_ccd" name="search_prod_type_ccd">
+                        <select class="form-control" id="search_prod_type_ccd" name="search_prod_type_ccd" title="상품구분">
                             <option value="">상품구분</option>
                         @foreach($arr_prod_type_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd">
+                        <select class="form-control" id="search_learn_pattern_ccd" name="search_learn_pattern_ccd" title="상품상세구분">
                             <option value="">상품상세구분</option>
                         @foreach($arr_learn_pattern_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_pay_status_ccd" name="search_pay_status_ccd">
+                        <select class="form-control" id="search_sale_pattern_ccd" name="search_sale_pattern_ccd" title="판매형태">
+                            <option value="">판매형태</option>
+                        @foreach($arr_sale_pattern_ccd as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
+                        @endforeach
+                        </select>
+                        <select class="form-control" id="search_pay_status_ccd" name="search_pay_status_ccd" title="결제상태">
                             <option value="">결제상태</option>
                         @foreach($arr_pay_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
                         @endforeach
                         </select>
-                        <select class="form-control mr-10" id="search_delivery_status_ccd" name="search_delivery_status_ccd">
+                        <select class="form-control" id="search_delivery_status_ccd" name="search_delivery_status_ccd" title="배송상태">
                             <option value="">배송상태</option>
                         @foreach($arr_delivery_status_ccd as $key => $val)
                             <option value="{{ $key }}">{{ $val }}</option>
@@ -58,13 +64,13 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_member_value">회원검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_member_keyword" name="search_member_keyword" style="width: 26%;">
+                        <select class="form-control" id="search_member_keyword" name="search_member_keyword" style="width: 26%;" title="회원검색키워드">
                             <option value="MemId">회원아이디</option>
                             <option value="MemIdx">회원식별자</option>
                             <option value="MemName">회원명</option>
                             <option value="Phone3">휴대폰번호</option>
                         </select>
-                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_member_value" name="search_member_value" style="width: 72%;" title="회원검색어">
                     </div>
                     <div class="col-md-8">
                         <p class="form-control-static">이름, 아이디, 휴대폰번호 검색 가능</p>
@@ -73,14 +79,14 @@
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_prod_value">상품검색</label>
                     <div class="col-md-3 form-inline">
-                        <select class="form-control mr-10" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;">
+                        <select class="form-control" id="search_prod_keyword" name="search_prod_keyword" style="width: 26%;" title="상품검색키워드">
                             <option value="OrderNo">주문번호</option>
                             <option value="OrderIdx">주문식별자</option>
                             <option value="CertNo">수강증번호</option>
                             <option value="ProdCode">상품코드</option>
                             <option value="ProdName">상품명</option>
                         </select>
-                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;">
+                        <input type="text" class="form-control" id="search_prod_value" name="search_prod_value" style="width: 72%;" title="상품검색어">
                     </div>
                     <div class="col-md-2">
                         <p class="form-control-static">명칭, 주문번호 검색 가능</p>
@@ -97,7 +103,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">날짜검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control" id="search_date_type" name="search_date_type" title="날짜구분">
                             <option value="order">주문완료일</option>
                             <option value="paid">결제완료일</option>
                             <option value="vbank">가상계좌신청일</option>
@@ -108,12 +114,12 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_start_date" name="search_start_date" value="" title="조회시작일">
                             <div class="input-group-addon no-border no-bgcolor">~</div>
                             <div class="input-group-addon no-border-right">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="">
+                            <input type="text" class="form-control datepicker" id="search_end_date" name="search_end_date" value="" title="조회종료일">
                         </div>
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default mb-0 btn-set-search-date" data-period="0-mon">당월</button>

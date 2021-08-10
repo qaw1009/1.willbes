@@ -33,9 +33,8 @@
         .newTopDday ul:after {content:""; display:block; clear:both}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/2291_top_bg.jpg) no-repeat center;}
-        .wb_top a{padding:20px 120px 15px 120px; font-size:30px; font-weight:bold; color:#fff; position: absolute; bottom: 100px; left:50%; transform:translateX(-50%); 
-                 background-color:#262422; border-radius:50px; line-height:35px;}
-        .wb_top a div{animation: blink 1.2s step-end infinite;}
+        .wb_top a{padding:20px 120px 15px 120px; font-size:30px; font-weight:bold; color:#fff; position: absolute; bottom: 100px; left:50%; transform:translateX(-50%); background-color:#262422; border-radius:50px; line-height:35px;}
+        .wb_top a div{animation: blink 1s step-end infinite;}
         .wb_top a:hover{ box-shadow:0 10px 20px rgba(0,0,0,.3);}
         .wb_top a span{font-size:16px; font-weight:normal; color:#ffea00;}
 
@@ -127,7 +126,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/07/2291_top.jpg"  alt="기본환성 기출반" />
             <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank">
                 <div>
-                    2021년 8월 기본종합반 신청하기> <br>
+                    2021년 9월 기본종합반 신청하기> <br>
                     <span>사전접수 할인 이벤트중~~ 추가 할인까지!!!</span>
                 </div>
             </a>

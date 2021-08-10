@@ -69,7 +69,7 @@ class Exam extends \app\controllers\BaseController
         if ($this->_reqP('exam_state') == 1) {
             $rules = array_merge($rules, [
                 ['field' => 'bmt_uid', 'label' => '검사번호', 'rules' => 'trim|required']
-                ,['field' => 'exam_startdt', 'label' => '검사시작일시', 'rules' => 'trim|required']
+                ,['field' => 'exam_startdt', 'label' => '검사시작일시', 'rules' => 'trim|required|integer']
             ]);
             $return_data = [
                 'exam_startdt' => $this->_reqP('exam_startdt')
@@ -79,7 +79,7 @@ class Exam extends \app\controllers\BaseController
         //만료,완료
         if ($this->_reqP('exam_state') == 3 || $this->_reqP('exam_state') == 9) {
             $rules = array_merge($rules, [
-                ['field' => 'exam_enddt', 'label' => '검사종료일시', 'rules' => 'trim|required|']
+                ['field' => 'exam_enddt', 'label' => '검사종료일시', 'rules' => 'trim|required|integer']
             ]);
         }
 

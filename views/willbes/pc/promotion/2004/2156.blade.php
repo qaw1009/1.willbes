@@ -137,7 +137,7 @@
         <div class="evtCtnsBox wb_cts02" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank" title="적중사례 자세히 보기" style="position: absolute; left: 54.02%; top: 83.61%; width: 27.5%; height: 6.56%; z-index: 2;"></a>
+                <a href="javascript:alert('준비중입니다.')" title="적중사례 자세히 보기" style="position: absolute; left: 22.59%; top: 79.42%; width: 26.16%; height: 6.47%;z-index: 2;"></a>
             </div>
         </div>
 

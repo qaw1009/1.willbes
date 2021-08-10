@@ -365,7 +365,7 @@
                 </li>
                 <li>                    
                     <div class="youtube">
-                        <div><span>2021년 최종 합격생</span></div>
+                        <div><span>2021년 1차 최종합격생</span></div>
                         <iframe src="https://www.youtube.com/embed/_jJxk-A7Gs0?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </li>

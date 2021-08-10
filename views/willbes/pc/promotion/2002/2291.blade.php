@@ -15,8 +15,11 @@
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
         /************************************************************/
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .wrap a {display:block; color:#fff; font-size:24px; background:#1f2223; padding:20px 0; width:450px; margin:50px auto 30px; border-radius:40px}
+        .wrap a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3); background:#2d6ad1}
 
-        .skybanner {position:fixed;top:200px; width:179px; right:10px; z-index:100;}        
+        .skybanner {position:fixed;top:200px; width:179px; right:0; z-index:100;}        
         .skybanner a {display:block; margin-bottom:10px}
 
         /*타이머*/
@@ -40,24 +43,40 @@
             50% {opacity: 0;}
         }
 
+        .wb_01 > div,
+        .wb_03 > div,
+        .wb_04 > div{position:relative; width:1120px; margin:0 auto}
+
         .wb_01 {background:#dbe8ed} 
-        .wb_01 a:hover{ box-shadow:0 10px 20px rgba(0,0,0,.3);}
+        .wb_01 a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3);}
 
         .wb_02 {background:#fff;}	
+        
         .wb_02 .youtube iframe {width:640px; height:360px} 
         .wb_02 .youtube {position:absolute; top:457px; left:49.45%; width:455px; z-index:1; margin-left:-479px; box-shadow:0 10px 20px rgba(0,0,0,.3);}     
         .wb_02 .youtube.yu02 {top:905px; margin-left:-139px;}
         .wb_02 .youtube.yu03 {top:1356px;}   
         .wb_02 .youtube.yu04 {top:1806px; margin-left:-139px;}
 
-        .wb_03 {background:#e5e5e5} 
-        .wb_03 a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3);}
-        .wb_04 {background:#2d6ad1} 
-        .wb_04 a:hover{box-shadow:0 10px 20px rgba(0,0,0,.3);}
+        .wb_03 {background:#e5e5e5; padding-bottom:100px} 
+        
 
-        .wb_01 > div,
-        .wb_03 > div,
-        .wb_04 > div{position:relative; width:1120px; margin:0 auto}
+        .wb_04,
+        .wb_05 {background:#2d6ad1} 
+
+        .wb_04 .wrap a {position:absolute; bottom:50px; left:50%; margin-left:-225px; z-index: 2;}
+
+        .wb_05 .wrap .btns {position:absolute; top:950px; left:50%; margin-left:-422px; z-index: 2; 
+            display:flex; justify-content: center;
+        }
+        .wb_05 .wrap .btns a {
+            font-size:18px; background:#1f2223; padding:10px; width:150px; margin:0 auto; border-radius:30px;
+        }
+        .wb_05 .wrap .btns a:nth-child(2),
+        .wb_05 .wrap .btns a:nth-child(3),
+        .wb_05 .wrap .btns a:nth-child(4) {margin-left:90px}
+        .wb_05 .wrap .btns a:hover {background:#2d6ad1}
+        
 
         .evtInfo {padding:150px 0; background:#333; color:#fff; font-size:16px}
 		.evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -74,8 +93,9 @@
 
     <div class="evtContent NSK" id="evtContainer">
 
-        <div class="skybanner">
-            <a href="#wb_04"><img src="https://static.willbes.net/public/images/promotion/2021/07/2291_sky01.png" alt="배이직" ></a>
+        <div class="skybanner" id="QuickMenu">
+            <a href="#wb_04"><img src="https://static.willbes.net/public/images/promotion/2021/08/2291_sky01.png" alt="검정제 선행" ></a>
+            <a href="#wb_04_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2291_sky02.png" alt="개편과목" ></a>
         </div>      
 
         <!-- 타이머 -->
@@ -138,22 +158,36 @@
 		</div>
 
         <div class="evtCtnsBox wb_03" >
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2291_03.jpg"  alt="기본완성기출반 스케줄"/>    
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" title="강의시간표 확인하기" target="_blank" style="position: absolute; left: 26.52%; top: 84.63%; width: 46.7%; height: 4.59%; z-index: 2;"></a>
-            </div>
+            <divv class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2291_03.jpg"  alt="기본완성기출반 스케줄"/>    
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" class="NSK-Black">강의시간표 확인하기 ></a>
+                *학원사정으로 지연,연기 될수 있습니다.
+            </divv>
         </div>
 
         <div class="evtCtnsBox wb_04" id="wb_04">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/07/2291_04.jpg"  alt="Special 패키지"/>
-                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" title="기본종합반 신청하기"  target="_blank" style="position: absolute; left: 26.96%; top: 52.22%; width: 46.16%; height: 2.39%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184050" title="형사법 신광은" target="_blank" style="position: absolute; left: 12.86%; top: 88.48%; width: 12.41%; height: 1.25%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/181340" title="경찰학 장정훈" target="_blank" style="position: absolute; left: 34.2%; top: 88.44%; width: 12.41%; height: 1.25%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184064" title="헌법 김원욱" target="_blank" style="position: absolute; left: 55.45%; top: 88.48%; width: 12.41%; height: 1.25%; z-index: 2;"></a>
-                <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184075" title="헌법 이국령" target="_blank" style="position: absolute; left: 76.96%; top: 88.41%; width: 12.41%; height: 1.25%; z-index: 2;"></a>
-            </div>       
-		</div>         
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2291_04_01.jpg"  alt="검정제 선행 기본종합반"/>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" class="NSK-Black">검정제 선행 기본종합반 신청하기 ></a>
+            </div>
+
+            <div class="wrap" id="wb_04_01">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2291_04_02.jpg"  alt="베이직 기본종합반"/>
+                <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1040" target="_blank" class="NSK-Black">BASIC 기본종합반 신청하기 ></a>
+            </div>   
+        </div>   
+
+        <div class="evtCtnsBox wb_05">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2291_04_03.jpg"  alt="단과"/>
+                <div class="btns">
+                    <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184050" title="형사법 신광은" target="_blank">신청하기 ></a>
+                    <a href="#none" title="경찰학 장정훈">준비중...</a>
+                    <a href="#none" title="헌법 김원욱">준비중...</a>
+                    <a href="#none" title="헌법 이국령">준비중...</a>
+                </div>
+            </div>
+        </div>
 
         <div class="evtCtnsBox evtInfo">
 			<div class="evtInfoBox">

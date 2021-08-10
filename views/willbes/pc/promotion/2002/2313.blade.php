@@ -36,6 +36,10 @@
         .main_box .ani.txt7{left:900px;top:870px;}
         .main_box .ani.txt8{left:0;top:870px;}
 
+
+        .wb_01 {position: relative;}
+        .wb_01 iframe {position:absolute; top:389px; left:50%; margin-left:-450px; width:900px; height:569px; z-index: 2;}
+
         .wb_02 {background:#fff;}
 
         /*탭(텍스트)*/
@@ -133,7 +137,7 @@
     </form>
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2313_sky01.png" alt="일정안내" ></a>
             <a href="#evt_02"><img src="https://static.willbes.net/public/images/promotion/2021/08/2313_sky02.png" alt="신청하기" ></a>
         </div>        
@@ -200,7 +204,8 @@
         </div>
 
         <div class="evtCtnsBox wb_01" >
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/2313_01.jpg"  alt="커밍쑨"/>			
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/2313_01.jpg"  alt="커밍쑨"/>
+            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/Ks0XNnezIGQ?rel=0"></iframe>            
 		</div>
 
         <div class="evtCtnsBox wb_02">

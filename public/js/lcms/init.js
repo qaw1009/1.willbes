@@ -66,13 +66,16 @@ $.extend(true, $.fn.dataTable.defaults, {
             }, 300);
         },
         error: function(xmlHttpRequest, textStatus, errorThrown) {
-            if(xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0) {
-                return;
+            if (xmlHttpRequest.readyState === 0 || xmlHttpRequest.status === 0) {
+                notifyAlert('error', '알림', '네트워크 연결 오류입니다.');
             } else {
-                if(xmlHttpRequest.status === 401) {
+                if (xmlHttpRequest.status === 401) {
                     notifyAlert("error", "권한 없음", "리스트 조회 권한이 없습니다. [" + xmlHttpRequest.status + "]");
                 } else {
-                    notifyAlert("error", "알림", "리스트 조회를 실패하였습니다. [" + xmlHttpRequest.status + "]");
+                    var err_msg = (typeof xmlHttpRequest.responseJSON !== 'undefined' && xmlHttpRequest.responseJSON.hasOwnProperty('ret_msg') === true)
+                        ? xmlHttpRequest.responseJSON.ret_msg
+                        : '리스트 조회를 실패하였습니다. [' + xmlHttpRequest.status + ']';
+                    notifyAlert('error', '알림', err_msg);
                 }
             }
         }

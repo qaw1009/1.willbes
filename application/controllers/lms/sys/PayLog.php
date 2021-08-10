@@ -51,9 +51,11 @@ class PayLog extends \app\controllers\BaseController
     {
         $log_type = element('0', $params, 'pay');
         $order_column = 'PL.'.ucfirst($log_type) . 'Idx';
+        $search_start_date = get_var($this->_reqP('search_start_date'), date('Y-m-d'));
+        $search_end_date = get_var($this->_reqP('search_end_date'), date('Y-m-d'));
 
         $arr_condition = [
-            'BDT' => ['PL.RegDatm' => [$this->_reqP('search_start_date'), $this->_reqP('search_end_date')]],
+            'BDT' => ['PL.RegDatm' => [$search_start_date, $search_end_date]],
             'EQ' => ['PL.PgMid' => $this->_reqP('search_pg_mid')]
         ];
 

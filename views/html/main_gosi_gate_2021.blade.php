@@ -468,7 +468,7 @@
 
     <div class="Section mt80">        
         <div class="widthAuto tx-center">
-            <div class="will-nTit NSK-Black mb40">단기 합격자는 <span>지금 이 시기, ‘이론’</span>에 <span>집중</span>했습니다.</div>
+            <div class="will-nTit NSK-Black mb40 tx-left">단기 합격자는 <span>지금 이 시기, ‘이론’</span>에 <span>집중</span>했습니다.</div>
             <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/visual_contents.gif" alt="">
         </div>
     </div>

@@ -172,7 +172,7 @@
             </div>
 
             <div class="testBtn NG">
-                <a href="#none">한국인재개발진흥원 <strong class="NGEB">인적성검사</strong> <span>GO</span></a>
+                <a href="#none">윌비스 <strong class="NGEB">인적성(PCA)검사</strong> <span>GO</span></a>
             </div>
         </div>
     </div>

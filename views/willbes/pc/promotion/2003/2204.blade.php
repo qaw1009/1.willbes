@@ -14,7 +14,7 @@
 .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 /*****************************************************************/  
 
-.sky {position:fixed; top:250px; right:25px; z-index:11;}
+.sky {position:fixed; top:250px; right:10px; z-index:2;}
 
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2204_top_bg.jpg) no-repeat center top;}
 
@@ -46,7 +46,7 @@
 
     <div class="evtContent NSK" id="evtContainer"> 
 
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2207" target="_blank">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_sky.png" alt="선석 티패스" />
             </a>
@@ -92,7 +92,7 @@
             <div class="p_re"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_03.jpg" alt="동영상 강의 80% 할인">       
                 <a href="javascript:void(0);" title="쿠폰 다운로드" onclick="giveCheck();" style="position: absolute; left: 25.55%; top: 80.14%; width: 23.54%; height: 6.86%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/182220" target="_blank" title="동영상 강의 수강신청" style="position: absolute; left: 50.55%; top: 80.14%; width: 23.54%; height: 6.86%; z-index: 2;"></a> 
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/184485" target="_blank" title="동영상 강의 수강신청" style="position: absolute; left: 50.55%; top: 80.14%; width: 23.54%; height: 6.86%; z-index: 2;"></a> 
             </div>   
         </div>  
 

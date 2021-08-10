@@ -1,6 +1,29 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
+<style type="text/css">
+    /* 빅데이터분석기사 */
+.job .article1 {background:#0253c4;}
+.job .article2 {background:url(https://static.willbes.net/public/images/promotion/main/308906_02_bg.jpg) repeat-x left top;} 
+.job .article3 {background:#eee;}
+.job .article4 {background:#c7ebff;}
+.job .article4 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article5 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article6 {background:#c7ebff;}
+.job .article6 .wrap {width:1120px; margin:0 auto; position:relative}
+.job .article6 {position:relative;}
+.job .youtube {position:absolute; top:44px; left:50%;z-index:1;margin-left:-400px}
+.job .youtube iframe {width:860px; height:450px} 
+
+/*타이머*/
+.job .newTopDday {clear:both;background:#fff; width:100%; padding:20px 0;padding-left:700px;}
+.job .newTopDday ul {width:1120px; margin:0 auto}
+.job .newTopDday ul li {display:inline; float:left; margin-right:50px; text-align:center;line-height:34px;color:#000;}
+.job .newTopDday .d_day {font-size:24px;line-height:1.5;text-align:center;padding-top:30px;}
+.job .newTopDday .d_day p {color:#da0000;font-size:72px;line-height:58px;}
+.job .newTopDday ul:after {content:""; display:block; clear:both}
+</style>
+
     <!-- Container -->
     <div id="Container" class="Container job c_both">
         <!-- site nav -->
@@ -66,7 +89,7 @@
                     <a href="javascript:alert('Coming Soon!')" title="2개월" style="position: absolute;left: 54.46%;top: 65.01%;width: 36.75%;height: 18.08%;z-index: 2;"></a>     
                 </div>    
                 <div class="youtube">
-                    <iframe src="https://www.youtube.com/embed/51nqd5LkL-s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/efr9iOZ57gM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>  
         </div>

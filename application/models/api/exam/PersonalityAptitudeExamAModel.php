@@ -41,9 +41,10 @@ class PersonalityAptitudeExamAModel extends WB_Model
     /**
      * 인적성검사 조회
      * @param array $form_data
+     * @param string $type
      * @return mixed
      */
-    public function findPersonalityAptitudeExam($form_data = [])
+    public function findPersonalityAptitudeExam($form_data = [], $type = 'validate')
     {
         $arr_condition = [
             'EQ' => [
@@ -54,9 +55,14 @@ class PersonalityAptitudeExamAModel extends WB_Model
             'RAW' => [
                 'pae.PaeIdx' => (empty(element('pae_idx', $form_data)) === true) ? 'null' : element('pae_idx', $form_data)
                 ,'pae.OrderProdIdx' => (empty(element('order_number', $form_data)) === true) ? 'null' : element('order_number', $form_data)
-                ,'m.MemId' => (empty(element('id', $form_data)) === true) ? 'null' : "'".element('id', $form_data)."'"
             ]
         ];
+
+        if ($type == 'validate') {
+            $arr_condition['RAW'] = array_merge($arr_condition['RAW'], [
+                'm.MemId' => (empty(element('id', $form_data)) === true) ? 'null' : "'" . element('id', $form_data) . "'"
+            ]);
+        }
 
         $column = '
             o.OrderIdx,op.OrderProdIdx,mstpl.ExternalCorpCcd,mstp.ProdName,subp.ProdName AS subProdName,o.CompleteDatm,mstpl.ExternalLinkCode
@@ -89,7 +95,7 @@ class PersonalityAptitudeExamAModel extends WB_Model
     {
         try {
             $result = 'success';
-            $data = $this->findPersonalityAptitudeExam($form_data);
+            $data = $this->findPersonalityAptitudeExam($form_data,'validate');
             if (empty($data) === true) {
                 $result = 'error_data';
             }
@@ -121,7 +127,7 @@ class PersonalityAptitudeExamAModel extends WB_Model
     {
         try {
             $result = 'success';
-            $data = $this->findPersonalityAptitudeExam($form_data);
+            $data = $this->findPersonalityAptitudeExam($form_data, 'state');
             if (empty($data) === true) {
                 $result = 'error_data';
             }

@@ -1118,8 +1118,14 @@ class OrderFModel extends BaseOrderFModel
 
                 // 온라인 강좌일 경우 나의 강좌수정정보 데이터 등록
                 if ($row['ProdTypeCcd'] == $this->_prod_type_ccd['on_lecture']) {
+                    $user_study_start_date = element('UserStudyStartDate', $input, '');     // 사용자지정 강좌시작일
+                    if (is_array($user_study_start_date) === true) {
+                        // 사용자패키지 수강시작일 설정이 단강좌 속성 기준일 경우 자동지급강좌 사용자지정 강좌시작일 설정안함
+                        $user_study_start_date = '';
+                    }
+
                     $is_add_my_lecture = $this->addMyLecture($order_idx, $order_prod_idx, $row['ProdCodeSub'], [], [
-                        'UserStudyStartDate' => element('UserStudyStartDate', $input, '')
+                        'UserStudyStartDate' => $user_study_start_date
                     ]);
                     if ($is_add_my_lecture !== true) {
                         throw new \Exception($is_add_my_lecture);

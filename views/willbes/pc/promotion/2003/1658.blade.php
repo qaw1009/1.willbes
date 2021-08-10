@@ -19,7 +19,7 @@
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative}
 
-        /************************************************************/    \
+        /************************************************************/    
 
        /*타이머*/
         .newTopDday * {font-size:24px}

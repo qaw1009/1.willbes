@@ -32,7 +32,7 @@
 
         .wb_cts01 {background:#fdecda;}
 
-        .wb_cts02 {background:#fae0df;}
+        .wb_cts02 {background:url(https://static.willbes.net/public/images/promotion/2021/08/2156_02s_bg.jpg) no-repeat center top;}
 
         .wb_cts03 {background:#f4bd49;position:relative;}
 
@@ -136,8 +136,8 @@
 
         <div class="evtCtnsBox wb_cts02" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_02s.jpg" alt="적중 또 적중"/>
-                <a href="javascript:alert('준비중입니다.')" title="적중사례 자세히 보기" style="position: absolute; left: 22.59%; top: 79.42%; width: 26.16%; height: 6.47%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2156_02s.jpg" alt="적중 또 적중"/>
+                <a href="javascript:alert('준비중입니다.')" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
             </div>
         </div>
 

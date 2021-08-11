@@ -394,9 +394,9 @@
                     type: "fraction",
                 },
                 autoplay: {
-                    delay: 3000,
+                    delay: 5000,
                     disableOnInteraction: false,
-                }, //3초에 한번씩 자동 넘김
+                }, //5초에 한번씩 자동 넘김
                 navigation: {
                     nextEl: ".swiper-btn-next",
                     prevEl: ".swiper-btn-prev",

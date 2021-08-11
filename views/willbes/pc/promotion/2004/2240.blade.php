@@ -122,7 +122,7 @@
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2240_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1297" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky2.png" alt="새벽모의고사"></a>
-            <a href="javascript:alert('준비중입니다.')" ><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="신기훈 t"></a>
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" ><img src="https://static.willbes.net/public/images/promotion/2021/07/2240_sky3.png" alt="신기훈 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -136,7 +136,7 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2240_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('준비중입니다.')" title="무료특강 신청하기" style="position: absolute; left: 37.86%; top: 84.96%; width: 24.46%; height: 6.17%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.86%; top: 84.96%; width: 24.46%; height: 6.17%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -155,8 +155,8 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05_1.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343711" target="_blank" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
-                <a href="javascript:alert('준비중입니다.')" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=349803" target="_blank" title="한덕현" style="position: absolute; left: 85.27%; top: 24.81%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="신기훈" style="position: absolute; left: 85.27%; top: 48.52%; width: 10.45%; height: 20.19%; z-index: 2;"></a>
             </div>
         </div>  
       

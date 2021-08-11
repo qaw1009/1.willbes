@@ -4,16 +4,25 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">   
-        .evtContent {margin-top:20px}
+        .evtContent {
+            width:100% !important;
+            min-width:1120px !important;
+            margin-top:20px !important;
+            padding:0 !important;            
+        }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
 
+        .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5); border-radius:4px}
+
         /************************************************************/
 
-        .skybanner {position:fixed;top:60px;right:10px; width:168px; text-align:center; z-index:1;}
+        .skybanner {position:fixed;top:60px;right:10px; width:220px; text-align:center; z-index:1;}
         .skybanner a {display:block; margin-bottom:5px;}
 
         .evttop_banners {background:#060606;} 
+        .evttop_banners a:hover {border:1px solid #fef200}
 
         .evttop {background:url(https://static.willbes.net/public/images/promotion/2021/02/1676_top_bg.jpg) no-repeat center top; }
 
@@ -52,6 +61,7 @@
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
             </a> 
+            {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,116,152,194" href="#watch" />
@@ -59,18 +69,23 @@
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
             </map>        
-    
+            --}}
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_sky3.png" usemap="#Map1676_sky03" border="0">
+            <map name="Map1676_sky03" id="Map1676_sky03">
+                <area shape="rect" coords="17,87,100,189" href="#evt4" />
+                <area shape="rect" coords="115,86,206,189" href="#evt1" />
+            </map>
         </div>    
 
-        {{--
-        <div class="evtCtnsBox evttop_banners" >     
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/1676_top_banner.jpg" usemap="#Map1676_top_banner"  title="신청 베너" border="0">
-            <map name="Map1676_top_banner" id="Map1676_top_banner">
-                <area shape="rect" coords="598,64,778,100" href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" />
-                <area shape="rect" coords="830,65,1010,101" href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" />
-            </map>           
+        
+        <div class="evtCtnsBox evttop_banners">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_top_banner.jpg">
+                <a href="https://pass.willbes.net/pass/mockTestNew/apply/cate" target="_blank" title="" style="position: absolute; left: 53.57%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>
+                <a href="https://www.willbes.net/classroom/mocktest/exam/index" target="_blank" title="" style="position: absolute; left: 74.29%; top: 43.57%; width: 16.79%; height: 31.43%; z-index: 2;"></a>  
+            </div>        
         </div>
-        --}}
+        
 
         <div class="evtCtnsBox evttop">                 
             <img src="https://static.willbes.net/public/images/promotion/2021/02/1676_top.jpg"  title="더켠의 반반한 밤">                        
@@ -103,7 +118,7 @@
                 <ul id="slidesImg4">                   
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_august.jpg" /></li>
                     <li><img src="https://static.willbes.net/public/images/promotion/2021/08/1676_02_September.jpg" /></li>
-                </ul>     
+                </ul>    
 
                 <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_left.png"></a></p>
                 <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2020/06/1676_02_right.png"></a></p>  
@@ -114,20 +129,29 @@
 
         {{-- 출석체크 --}}
         <div class="evtCtnsBox evt03">
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_01.jpg" name="evt1" usemap="#Map1676b" id="evt1" title="지금 바로 출석체크하러 가기" border="0" >
-                <map name="Map1676b">
-                    <area shape="rect" coords="342,1259,778,1342" href="#to_go" />
-                </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_03_01.jpg" name="evt1" id="evt1">
+                <a href="#to_go" title="출석체크하러 가기" style="position: absolute; left: 30.89%; top: 89.05%; width: 38.39%; height: 5.44%; z-index: 2;"></a>
             </div>
-            <div>
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/1676_03_02.png" name="evt3" usemap="#Map1676ss" id="evt3" title="다시보기 서비스" border="0">
-                <map name="Map1676ss">
-                    <area shape="rect" coords="287,523,531,601" href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183200" target="_blank" alt="7월 방송" />
-                    <area shape="rect" coords="595,522,837,598" href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" alt="한덕현 t-pass" />
-                </map>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_03_02.png" name="evt3" id="evt3">
+                <a href="https://pass.willbes.net/lecture/show/cate/3019/pattern/only/prod-code/183200" target="_blank" title="8월방송" style="position: absolute; left: 25.8%; top: 75.72%; width: 21.34%; height: 9.91%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/promotion/index/cate/3019/code/2180" target="_blank" title="한덕현 t-pass" style="position: absolute; left: 53.21%; top: 75.72%; width: 21.34%; height: 9.91%; z-index: 2;"></a>
+            </div>
+            <div class="wrap" id="evt4">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_03_03.jpg">
+                <a href="https://www.instagram.com/?hl=ko" target="_blank" title="인스타" style="position: absolute; left: 8.93%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
+                <a href="https://ko-kr.facebook.com" target="_blank" title="페이스북" style="position: absolute; left: 26.43%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
+                <a href="https://top.cafe.daum.net" target="_blank" title="다음카페" style="position: absolute; left: 41.96%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
+                <a href="https://section.cafe.naver.com/ca-fe" target="_blank" title="네이버카페" style="position: absolute; left: 57.86%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
+                <a href="https://gall.dcinside.com/board/lists?id=government" target="_blank" title="공무원갤러리" style="position: absolute; left: 74.91%; top: 79.26%; width: 15.89%; height: 7.87%; z-index: 2;"></a>
             </div>
         </div>
+
+        {{--홍보url--}}
+        @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
+            @include('willbes.pc.promotion.show_comment_list_url_partial',array('bottom_cafe_type'=>'N'))
+        @endif
 
         <div class="evtCtnsBox evt04">
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_03_03.jpg" usemap="#Map1676e" title="라이브 티비" border="0">
@@ -198,6 +222,7 @@
         @if( empty($data['data_option_ccd']) === false && array_key_exists($arr_base['option_ccd']['comment_list'], $data['data_option_ccd']) === true && array_key_exists($arr_base['comment_use_area']['event'], $data['data_comment_use_area']) === true)
             @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
         @endif
+       
 
         <div class="evtCtnsBox evtInfo" id="ctsInfo">
             <div class="guide_box">
@@ -212,7 +237,7 @@
                             <li>더켠의 반반&똑똑영어 과정 진행 안내 (총 20회)<br>
                             - 매주 월/수/금 21:00~22:00 반반한 모의고사 (모의고사 10문항), 10회분<br>
                             - 매주 화/목 21:00~21:40 똑똑영어 (어휘), 8회분<br>
-                            - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행 (*금요일 오후 6시 신청 접수 마감) <br>
+                            - 1주차/3주차 월~금 : 무료 온라인 모의고사 접수 진행<br>
                             - 1주차/3주차 토~일 : 무료 온라인 모의고사 응시 기간<br>
                             - 2주차/4주차 월 오후 7~8시 : 모의고사 해설 방송 진행 (실시간 LIVE), 2회분
                             </li>
@@ -227,14 +252,10 @@
                             - PC의 경우 익스플로러와 크롬 브라우저에서만 시청 가능합니다.<br>
                             - 모바일 기기 접속 시 3G/LTE 데이터 요금이 부과되오니 데이터 사용량을 사전에 확인해주시기 바랍니다.</li>
                             <li>열공 출첵 이벤트 관련<br>
-                            - 본 이벤트는 로그인 후 참여 가능하며,7/12(월)~8/6(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
-                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (7/19(월), 8/2(월)) 19:00~20:00로, 시간 내에
+                            - 본 이벤트는 로그인 후 참여 가능하며,8/16(월)~9/10(금)까지 총 20회 진행됩니다. (*공휴일 제외)<br>
+                            - 출석체크 가능 시간은 반반(월/수/금) 21:00~22:00, 똑똑(화/목) 21:00~21:40, 모의고사 해설 LIVE (8/23(월), 9/6(월))19:00~20:00로, 시간 내에
                               페이지 새로고침 (F5) 후 출석체크 버튼 클릭 시 정상 인정되며, 방송이 종료되지 않더라도 해당 시간 이외에는 출석으로 인정되지 않습니다. <br>
-                            - 당첨자 안내 공지는 8/10(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
-                            <li>돌발퀴즈 이벤트 관련<br>
-                            - 본 이벤트는 수업 진행 도중 진행되며, 본 페이지 댓글로만 정답을 제출하실 수 있습니다.<br>
-                            - 선착순으로 정해진 인원에 맞추어 당첨자가 선정되며, 돌발퀴즈 다음날 오전 당첨자 공지 후 경품 발송됩니다.<br>
-                            - 회원정보에 등록된 전화번호로 경품이 발송되오니, 이벤트 참여 전 올바른 전화번호를 입력해주시기 바랍니다.</li>
+                            - 당첨자 안내 공지는 9/14(화) 윌비스 공무원 공지사항을 통해 확인하실 수 있습니다.</li>
                         </ol>
                     </dd>
                 </dl>

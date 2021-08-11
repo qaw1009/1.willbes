@@ -114,7 +114,7 @@
                 <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>새로운 소식!</span></div>
                 <div class="newsBox">
                     <ul class="newsSlider">
-                        @for($i=1; $i<=5; $i++)
+                        @for($i=1; $i<=10; $i++)
                             @if(isset($data['banner']['게이트_새소식'.$i]) === true)
                                 <li>
                                     <div>{!! banner_html(element('게이트_새소식'.$i, $data['banner'])) !!}</div>

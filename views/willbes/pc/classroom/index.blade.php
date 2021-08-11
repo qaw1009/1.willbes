@@ -123,7 +123,7 @@
                 {{-- 인적성검사상품 구매 조건 버튼 --}}
                 @if (empty($data['personalityAptitudeExam_list']) === false)
                     <div class="testBtn NG">
-                        <a href="{{front_url('/classroom/personalityAptitudeExam/index')}}">한국인재개발진흥원 <strong class="NGEB">인적성검사</strong> <span>GO</span></a>
+                        <a href="{{front_url('/classroom/personalityAptitudeExam/index')}}">윌비스 <strong class="NGEB">인적성(PCA)검사</strong> <span>GO</span></a>
                     </div>
                 @endif
             </div>

@@ -79,10 +79,6 @@
                             <div class="w-tit">
                                 <a href="#none">2019 일반경찰 선택패키지</a>
                             </div>
-                            <dl class="w-info tx-gray">
-                                <dt>개강일 <span class="tx-blue">2019년 5월</span> <span class="row-line">|</span></dt>
-                                <dt>수강기간 <span class="tx-blue">30일</span> <span class="NSK ml10 nBox n1">무제한</span></dt>
-                            </dl>
                             <div class="priceWrap">
                                 <span class="price">80,000원</span>
                                 <span class="discount">20% ↓</span>

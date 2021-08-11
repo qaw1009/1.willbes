@@ -40,7 +40,7 @@
 	<div class="evtContent NSK">
     
 		<div class="evtCtnsBox evt_top" data-aos="fade-right">        	
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/2318_top.jpg" alt="이재휴 회계학" />              
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2318_top.jpg" alt="전수환 경영학" />              
 		</div>
 
 		<div class="evtCtnsBox evt_01" data-aos="fade-right">

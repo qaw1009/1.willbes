@@ -43,12 +43,11 @@
     <div class="evtCtnsBox" data-aos="fade-right">
         <div class="wrap">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2301m_05.jpg"  alt="무료 혜택"/>
-            <a href="#none" title="2020 기초입문서" style="position: absolute; left: 20.5%; top: 27.45%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
-            <a href="#none" title="3법 기초입문강의" style="position: absolute; left: 20.5%; top: 36.36%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
-            <a href="#none" title="G-TELP 문법강의" style="position: absolute; left: 20.5%; top: 45.02%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
-            <a href="#none" title="한능검 기본개념편" style="position: absolute; left: 20.5%; top: 53.68%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
-            <a href="#none" title="PASS 10%할인쿠폰" style="position: absolute; left: 20.5%; top: 62.11%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
-            <a href="#none" title="단과 20%할인쿠폰" style="position: absolute; left: 20.5%; top: 70.69%; width: 58.47%; height: 7.29%; z-index: 2;"></a>
+            <a href="#none" title="2020 기초입문서" style="position: absolute; left: 20.83%; top: 30.23%; width: 57.92%; height: 8.23%; z-index: 2;"></a>
+            <a href="#none" title="3법 기초입문강의" style="position: absolute; left: 20.83%; top: 40.07%; width: 57.92%; height: 8.23%; z-index: 2;"></a>
+            <a href="#none" title="G-TELP 문법강의" style="position: absolute; left: 20.83%; top: 49.55%; width: 57.92%; height: 8.23%; z-index: 2;"></a>
+            <a href="#none" title="한능검 기본개념편" style="position: absolute; left: 20.83%; top: 59.12%; width: 57.92%; height: 8.23%; z-index: 2;"></a>
+            <a href="#none" title="PASS 10%할인쿠폰" style="position: absolute; left: 20.83%; top: 68.6%; width: 57.92%; height: 8.23%; z-index: 2;"></a>
         </div>
     </div>
 

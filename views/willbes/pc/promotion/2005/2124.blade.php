@@ -38,9 +38,9 @@
         to{color:#d63e4d}
         }          
 
-        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/03/2124_top_bg.jpg) no-repeat center top;}	
+        .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2124_top_bg.jpg) no-repeat center top;}	
 
-        .evt_01 {margin-bottom:100px}
+        .evt_02 {margin-top:100px}
         
         .evtInfo {padding:80px 0; background:#333; color:#fff; font-size:14px; margin-top:100px}
 		.evtInfoBox { width:1000px; margin:0 auto; text-align:left; line-height:1.4}
@@ -50,6 +50,16 @@
 		.evtInfoBox ul {margin-bottom:30px}
         .evtInfoBox li {margin-bottom:8px; list-style:disc; margin-left:20px}
         .evtInfoBox span {vertical-align:bottom}  
+
+        /* 슬라이드배너 */
+        .slide_con {position:relative; width:1120px; margin:0 auto}
+        .slide_con p {position:absolute; top:50%; width:56px; height:56px; margin-top:-28px; z-index:100}
+        .slide_con p a {cursor:pointer}
+        .slide_con p.leftBtn {left:-24px}
+        .slide_con p.rightBtn {right:-24px}
+        #slidesImg1 li {display:inline; float:left}
+        #slidesImg1 li img {width:100%}
+        #slidesImg1:after {content::""; display:block; clear:both}
  
         /************************************************************/      
     </style> 
@@ -74,20 +84,38 @@
             </div>
         </div>
 
-		<div class="evtCtnsBox evt_top">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_top.jpg" alt="온라인 첨삭반" />
+		<div class="evtCtnsBox evt_top" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2124_top.jpg" alt="5급공채(행정) GS1순환 온라인 첨삭반" />
 		</div>
 
-        <div class="evtCtnsBox evt_01">
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_01.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_02.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_03.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_04.jpg" alt="강의일정" /><br>
-            <img src="https://static.willbes.net/public/images/promotion/2021/03/2124_05.jpg" alt="강의일정" />               
-            @if(empty($arr_base['display_product_data']) === false)
-                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
-            @endif        
+        <div class="evtCtnsBox evt_01" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2124_01.jpg" alt="5급공채(행정) GS1순환 과정" />
         </div>
+
+        <div class="evtCtnsBox evt_02" data-aos="fade-left">
+            <div class="slide_con">
+                <ul id="slidesImg1">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/2124_02_01.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/2124_02_02.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/2124_02_03.jpg" alt="" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/08/2124_02_04.jpg" alt="" /></li>
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_prev.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight3"><img src="https://static.willbes.net/public/images/promotion/2021/03/2155_p_next.png"></a></p>
+            </div>
+        </div>
+
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2124_03.jpg" alt="채점 및 첨삭" />
+        </div>
+
+        <div class="evtCtnsBox" data-aos="fade-left">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2124_04.jpg" alt="수강료 및 상담문의" />
+        </div>    
+        @if(empty($arr_base['display_product_data']) === false)
+            @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+        @endif        
+
         
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
@@ -98,7 +126,7 @@
                     <li>개강 전 원격 채점 진행방법에 관해 안내드립니다.</li>
                     <li>강의 일정은 실강 진행 상황에 따라 변경될 수 있습니다.</li>
                     <li>이용 중에는 휴강 기능을 이용할 수 없습니다.</li>
-                    <li>복습동영상은 과목별 1회에 한해 30일간 제공되며, 2021년 7월 14일까지 신청 가능합니다.(이후 신청 불가)</li>
+                    <li>복습동영상은 과목별 1회에 한해 30일간 제공되며, 2021년 12월 31일까지 신청 가능합니다.(이후 신청 불가)</li>
                 </ul>
                 <div class="infoTit"><strong>교재</strong></div>
                 <ul>
@@ -130,12 +158,45 @@
 	</div>
      <!-- End Container -->
 
-     <script>  
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+    </script>
+
+     <script type="text/javascript">  
+        $(document).ready(function() {
+            var slidesImg1 = $("#slidesImg1").bxSlider({
+                mode:'horizontal',
+                auto:true,
+                speed:350,
+                pause:4000,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft3").click(function (){
+                slidesImg1.goToPrevSlide();
+            });
+
+            $("#imgBannerRight3").click(function (){
+                slidesImg1.goToNextSlide();
+            });
+        });
+
         /*디데이카운트다운*/
         $(document).ready(function() {
             dDayCountDown('{{$arr_promotion_params['edate']}}','{{$arr_promotion_params['etime'] or "00:00"}}');
         });   
     </script>
+
 
     {{-- 프로모션용 스크립트 include --}}
     @include('willbes.pc.promotion.promotion_script')

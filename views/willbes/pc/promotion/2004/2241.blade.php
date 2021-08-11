@@ -98,7 +98,7 @@
         <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
-            <a href="javascript:alert('준비중입니다.')"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -112,7 +112,7 @@
         <div class="evtCtnsBox wb_cts11" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
-                <a href="javascript:alert('준비중입니다.')" title="무료특강 신청하기" style="position: absolute; left: 19.7%; top: 89.25%; width: 22.41%; height: 4.43%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.5%; top: 84.7%; width: 25%; height: 6.52%; z-index: 2;"></a>
             </div>
         </div>
 
@@ -131,14 +131,11 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343709" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
             </div>
-        </div>  
+        </div> 
         
-        <div class="evtCtnsBox wb_cts06">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_06.jpg" alt="필수 기본이론 정복"/>
-        </div>  
-        
+       
         <div class="evtCtnsBox wb_cts07" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_07.jpg" alt="합격을 이끌어낸 그 과정"/>
             <div class="youtube_contents">

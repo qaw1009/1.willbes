@@ -384,19 +384,21 @@
         //swiper 메인 슬라이드
         $(document).ready(function(){
         var mainslider = new Swiper('.mainSlider01', {
-            direction: 'horizontal',
+            /*direction: 'horizontal',
             loop: true,
             observer: true,
             observeParents: true,
-            slidesPerView : 'auto',
+            slidesPerView : 'auto',*/
+            spaceBetween: 30,
+            effect: "fade",
             pagination: {
             el: ".swiper-pagination-gate",
             type: "fraction",
             },
             autoplay: {
-                delay: 3000,
+                delay: 5000,
                 disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
+            }, //5초에 한번씩 자동 넘김
             navigation: {
                 nextEl: ".swiper-btn-next",
                 prevEl: ".swiper-btn-prev",

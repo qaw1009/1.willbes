@@ -129,7 +129,7 @@
                     <li class="swiper-slide">
                         <div class="bnBig">
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                                <img src="https://pass.stage.willbes.net/public/uploads/willbes/banner/2021/0805/banner_20210805171709.png" alt="배너명">
                             </a>
                         </div>
                         <div class="bnSm">
@@ -153,7 +153,7 @@
                     <li class="swiper-slide">
                         <div class="bnBig">
                             <a href="#none">
-                                <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/bntopL_815x400.jpg" alt="배너명">
+                                <img src="https://pass.stage.willbes.net/public/uploads/willbes/banner/2021/0805/banner_20210805164419.png" alt="배너명">
                             </a>
                         </div>
                         <div class="bnSm">
@@ -1133,180 +1133,180 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script type="text/javascript">
-
-    //swiper 메인 슬라이드
-    $(document).ready(function(){
-        var mainslider = new Swiper('.mainSlider01', {
-            direction: 'horizontal',
-            loop: true,
-            observer: true,
-            observeParents: true,
-            slidesPerView : 'auto',
-            pagination: {
-            el: ".swiper-pagination-gate",
-            type: "fraction",
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            }, //3초에 한번씩 자동 넘김
-            navigation: {
-                nextEl: ".swiper-btn-next",
-                prevEl: ".swiper-btn-prev",
-            },
-            on: {
-                slideChange: function () {
-                    $('.Maintab li > a').removeClass('active');
-                    $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
-                    if($('.Maintab li:eq(0) > a').hasClass('active')){
-                        // mainslider.update();
-                        // location.reload();
-                    }  
-                    $('.tabCts a').removeClass('active');
-                    $('.tabCts a').eq(this.realIndex).addClass('active');                    
+        //swiper 메인 슬라이드
+        $(document).ready(function(){
+            var mainslider = new Swiper('.mainSlider01', {
+                /*direction: 'horizontal',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView : 'auto',*/
+                spaceBetween: 30,
+                effect: "fade",
+                pagination: {
+                    el: ".swiper-pagination-gate",
+                    type: "fraction",
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }, //5초에 한번씩 자동 넘김
+                navigation: {
+                    nextEl: ".swiper-btn-next",
+                    prevEl: ".swiper-btn-prev",
+                },
+                on: {
+                    slideChange: function () {
+                        $('.Maintab li > a').removeClass('active');
+                        $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
+                        if($('.Maintab li:eq(0) > a').hasClass('active')){
+                            // mainslider.update();
+                            // location.reload();
+                        }
+                        $('.tabCts a').removeClass('active');
+                        $('.tabCts a').eq(this.realIndex).addClass('active');
+                    }
                 }
+            });
+
+            //메인 슬라이드 메뉴1
+            $('.Maintab li > a').on('click', function(){
+                $('.Maintab li > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+                var target = $(this);
+                muCenter(target);
+            });
+
+            //슬라이드 메뉴1 클릭시 위치조정
+            function muCenter(target){
+                var snbwrap = $('.Maintab');
+                var targetPos = target.position();
+                var box = $('.MaintabWrap');
+                var boxHarf = box.width()/2;
+                var pos;
+                var listWidth=0;
+
+                snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
+
+                var selectTargetPos = targetPos.left + target.outerWidth()/2;
+                if (selectTargetPos <= boxHarf) { // left
+                    pos = 0;
+                }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+                    pos = listWidth-box.width();
+                }else {
+                    pos = selectTargetPos - boxHarf;
+                }
+
+                setTimeout(function(){snbwrap.css({
+                    "transform": "translateX("+ (pos*-1) +"px)",
+                    "transition-duration": "500ms"
+                })}, 200);
             }
+
+            //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
+            $('.tabCts > a').on('click', function(){
+                $('.tabCts > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+            });
+            //슬라이드 재생, 스탑 버튼
+            $('.start').on('click', function() {
+                mainslider.autoplay.start();
+                $(this).hide();
+                $('.stop').show();
+                return false;
+            });
+            $('.stop').on('click', function() {
+                mainslider.autoplay.stop();
+                $(this).hide();
+                $('.start').show();
+                return false;
+            });
+
+            //진행중인 모든 이벤트 닫기, 열기
+            $('.MaintabAll a').on('click', function() {
+                $('.MaintabAllView').slideToggle("fast");
+            });
+            $('.MaintabAllView span a').on('click', function() {
+                $('.MaintabAllView').hide();
+            });
         });
 
-        //메인 슬라이드 메뉴1
-        $('.Maintab li > a').on('click', function(){
-            $('.Maintab li > a').removeClass('active');
-            $(this).addClass('active');
-            var num = $(this).attr('data-swiper-slide-index');
-            mainslider.slideTo(num);
-            var target = $(this); 
-            muCenter(target);
+        //새로운소식
+        $(function() {
+            var newsImg = $(".newsSlider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:false,
+                controls:false,
+                slideWidth: 224,
+                minSlides:5,
+                maxSlides:5,
+                slideMargin:0,
+                autoHover:true,
+                moveSlides:1,
+            });
+            $("#newsSliderLeft").click(function (){
+                newsImg.goToPrevSlide();
+            });
+
+            $("#newsSliderRight").click(function (){
+                newsImg.goToNextSlide();
+            });
         });
 
-        //슬라이드 메뉴1 클릭시 위치조정
-        function muCenter(target){
-            var snbwrap = $('.Maintab');
-            var targetPos = target.position();
-            var box = $('.MaintabWrap');
-            var boxHarf = box.width()/2;
-            var pos;
-            var listWidth=0;
-            
-            snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
-            
-            var selectTargetPos = targetPos.left + target.outerWidth()/2;
-            if (selectTargetPos <= boxHarf) { // left
-                pos = 0;
-            }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
-                pos = listWidth-box.width();
-            }else {
-                pos = selectTargetPos - boxHarf;
-            }
-            
-            setTimeout(function(){snbwrap.css({
-                "transform": "translateX("+ (pos*-1) +"px)",
-                "transition-duration": "500ms"
-            })}, 200);
-        } 
+        //교수진 배너
+        $(document).ready(function(){
+            $('.gosi-tabs-prof').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
 
-        //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
-        $('.tabCts > a').on('click', function(){
-            $('.tabCts > a').removeClass('active');
-            $(this).addClass('active');
-            var num = $(this).attr('data-swiper-slide-index');
-            mainslider.slideTo(num);    
-        });
-        //슬라이드 재생, 스탑 버튼
-        $('.start').on('click', function() {
-            mainslider.autoplay.start();
-            $(this).hide();
-            $('.stop').show();
-            return false;
-        });
-        $('.stop').on('click', function() {
-            mainslider.autoplay.stop();
-            $(this).hide();
-            $('.start').show();
-            return false;
-        });
+                $content = $($active[0].hash);
 
-        //진행중인 모든 이벤트 닫기, 열기
-        $('.MaintabAll a').on('click', function() {
-            $('.MaintabAllView').slideToggle("fast");
-        });
-        $('.MaintabAllView span a').on('click', function() {
-            $('.MaintabAllView').hide();
-        });
-    });
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
 
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
 
-    //새로운소식    
-    $(function() {
-        var newsImg = $(".newsSlider").bxSlider({
-            mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-            auto:true,
-            speed:350,
-            pause:4000,
-            pager:false,
-            controls:false,
-            slideWidth: 224,
-            minSlides:5,
-            maxSlides:5,
-            slideMargin:0,
-            autoHover:true,
-            moveSlides:1,
-        });
-        $("#newsSliderLeft").click(function (){
-            newsImg.goToPrevSlide();
-        });
+                    $active = $(this);
+                    $content = $(this.hash);
 
-        $("#newsSliderRight").click(function (){
-            newsImg.goToNextSlide();
-        });
-    });
+                    $active.addClass('active');
+                    $content.show();
 
-    //교수진 배너    
-     $(document).ready(function(){
-        $('.gosi-tabs-prof').each(function(){
-            var $active, $content, $links = $(this).find('a');
-            $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-            $active.addClass('active');
-        
-            $content = $($active[0].hash);
-        
-            $links.not($active).each(function () {
-            $(this.hash).hide()});
-        
-            // Bind the click event handler
-            $(this).on('click', 'a', function(e){
-            $active.removeClass('active');
-            $content.hide();
-        
-            $active = $(this);
-            $content = $(this.hash);
-        
-            $active.addClass('active');
-            $content.show();
-        
-            e.preventDefault()})}
-        )}
-    );
+                    e.preventDefault()})}
+            )}
+        );
 
-    $(function() {
-        $('.sliderProf').bxSlider({        
-            auto: true,
-            controls: true,
-            pause: 4000,
-            pager: true,
-            pagerType: 'short',
-            slideWidth: 208,
-            minSlides:1,
-            maxSlides:1,
-            moveSlides:1,
-            adaptiveHeight: true,
-            infiniteLoop: true,
-            touchEnabled: false,
-            autoHover: true,
-            onSliderLoad: function(){
-                $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1}); 
-            }  
+        $(function() {
+            $('.sliderProf').bxSlider({
+                auto: true,
+                controls: true,
+                pause: 4000,
+                pager: true,
+                pagerType: 'short',
+                slideWidth: 208,
+                minSlides:1,
+                maxSlides:1,
+                moveSlides:1,
+                adaptiveHeight: true,
+                infiniteLoop: true,
+                touchEnabled: false,
+                autoHover: true,
+                onSliderLoad: function(){
+                    $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1});
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 @stop

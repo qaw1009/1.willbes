@@ -123,7 +123,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="skybanner" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/2176" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky01.png" alt="소방학/법규 암기노트 전원증정"></a>
-            <a href="#buyLec"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_sky04.png" alt="연간 종합반"></a>
+            <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/08/2156_sky02.png" alt="연간 종합반"></a>
         </div>
 
         <div class="evtCtnsBox wb_top" >            
@@ -137,7 +137,7 @@
         <div class="evtCtnsBox wb_cts02" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2156_02s.jpg" alt="적중 또 적중"/>
-                <a href="javascript:alert('준비중입니다.')" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
             </div>
         </div>
 

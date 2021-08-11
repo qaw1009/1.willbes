@@ -67,12 +67,6 @@
                             · ‘인적성검사 페이지로 이동하기’ 버튼 클릭 시 한국인재개발진흥원에서 제공하는 인적성검사 페이지에서 유의사항 확인 후  ‘검사시작’  버튼 클릭 시 인적성검사가 시작됩니다.<br/>
                             <span class="tx-red">· 인적성검사를 시작한 이후에는 환불이 불가합니다.</span>
                         </div>
-                        <div class="strong mt20 mb10 tx-gray">[개인정보처리 안내]</div>
-                        <div class="mb20 lh1_5">
-                            해당 인적성검사는 한국인재개발진흥원에서 제공하는 검사로써 신청부터 검사 및 검사결과 까지
-                            원활한 서비스 제공 및 고객센터 상담 대응을 위해 이름,아이디,주문번호를 한국인재개발진흥원에
-                            제공합니다. 해당 개인정보는 인적성검사 서비스 이외에 어떠한 목적으로도 활용되지 않습니다.
-                        </div>
                         <div class="aptitudeBox">
                             <label>위 유의사항 및 개인정보처리 사전 안내사항을 모두 확인하였고 이에 동의합니다.  <input type="checkbox" name="is_agree" id="is_agree" value="Y"></label>
                             <a href="javascript:void(0);" id="btn_exam_popup" class="NG">인적성검사 페이지로 이동하기 ></a>

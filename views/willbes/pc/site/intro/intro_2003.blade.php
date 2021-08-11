@@ -1,138 +1,185 @@
 @extends('willbes.pc.layouts.master')
 
 @section('content')
-    <link href="/public/css/willbes/style_gosi_gate.css??ver={{time()}}" rel="stylesheet">
+    <link href="/public/css/willbes/style_gosi_gate_2021.css??ver={{time()}}" rel="stylesheet">
 
-    <div id="Container" class="Container gosi-gate NSK c_both">
-        <div class="widthAuto gosi-gate-top">
-            <div class="gosi-gate-sns">
-                <ul>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCsNPdhwjR37qVtuePB599KQ" target="_blank">
-                            <img src="{{ img_url('gnb/icon_youtube.png') }}" title="유튜브">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ site_url('/pass/promotion/index/cate/3048/code/1104') }}" target="_blank">
-                            <img src="{{ img_url('gnb/icon_kakao.png') }}" title="카카오톡">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://tv.naver.com/willbes79" target="_blank">
-                            <img src="{{ img_url('gnb/icon_navertv.png') }}" title="네이버TV">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://blog.naver.com/willbes79" target="_blank">
-                            <img src="{{ img_url('gnb/icon_blog.png') }}" title="블로그">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/willbes_gong/" target="_blank">
-                            <img src="{{ img_static_url('promotion/2019/10/icon_instagram.png') }}" title="인스타그램">
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Container -->
 
-            <div class="gosi-logo">
-                <img src="{{ img_static_url('promotion/main/gosi_gate/2003_logo.png') }}" alt="윌비스 공무원">
-            </div>
+    <div id="Container" class="Container gosi-gate-v2 NSK c_both">
 
+        <div class="widthAuto gosi-gate-secTop">
             <div class="gosi-gate-search">
                 {{-- 온라인강의 검색 --}}
                 @include('willbes.pc.layouts.partial.site_search')
             </div>
-        </div>
 
-        {{-- 카테고리 메뉴 --}}
-        <div class="gosi-gate-menu">
-            <ul>
-                <li><a href="{{ front_url('/home/index/cate/3092') }}">무료인강</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3103') }}">7급 PSAT</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3023') }}">소방직</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3028') }}">기술직</a></li>
-                <li><a href="{{ front_url('/home/index/cate/3024') }}">군무원</a></li>
-            </ul>
-        </div>
-
-        {{--
-        <div class="gosi-bnfull-Sec">
-            <div class="gosi-bnfull">
-                {!! banner_html(element('인트로_상단띠배너', $data['banner']), 'sliderBar') !!}
+            <div class="Menu widthAuto NSK c_both">
+                <h3>
+                    <div class="menu-Tit">
+                        <img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/2003_logo_2021.png" alt="윌비스공무원">
+                    </div>
+                    <ul class="menu-List">
+                        <div><a href="{{ front_url('/home/index/cate/3019') }}">9급</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3103') }}">7급PSAT</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3020') }}">7급</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3022') }}">세무직</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3035') }}">법원직</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3023') }}">소방직</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3028') }}">기술직</a></div>
+                        <div><a href="{{ front_url('/home/index/cate/3024') }}">군무원</a></div>
+                        <div class="dropdown">
+                            <a href="{{ front_url('/pass/home/index') }}"><span></span>학원</a>
+                            <div class="drop-Box list-drop-Box">
+                                <ul>
+                                    <li><a href="{{ front_url('/pass/home/index') }}">노량진(본원)</a></li>
+                                    <li><a href="{{ front_url('/pass/campus/show/code/605003') }}">부산</a></li>
+                                    <li><a href="{{ front_url('/pass/campus/show/code/605004') }}">대구</a></li>
+                                    <li><a href="{{ front_url('/pass/campus/show/code/605005') }}">인천</a></li>
+                                    <li><a href="{{ front_url('/pass/campus/show/code/605006') }}">광주</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    <div class="menu-banner">{!! banner_html(element('게이트_우측상단배너', $data['banner'])) !!}</div>
+                </h3>
             </div>
         </div>
-        --}}
 
         <div class="Section gosi-gate-Sec">
-            <div class="widthAuto">
-                {!! banner_html(element('인트로_핵심띠배너', $data['banner'])) !!}
-
-                <div class="gosi-gate-bntop p_re">
-                    <div id="MainRollingDiv" class="MaintabList">
+            <div class="gosi-gate-bntop-img">
+                <div class="gate-bntop-Slider mainSlider01">
+                    <ul class="swiper-wrapper">
+                        @for($i=0; $i<=9; $i++)
+                            @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
+                                <li class="swiper-slide">
+                                    {!! banner_html(element('게이트_메인배너'.$i, $data['banner']), '', '' , false, '', 'bnBig') !!}
+                                    @if(empty($data['banner']['게이트_서브배너'.$i.'_1']) === false)
+                                        <div class="bnSm">
+                                            @for($s=1;$s<=3;$s++)
+                                                <div>{!! banner_html(element('게이트_서브배너'.$i.'_'.$s, $data['banner'])) !!}</div>
+                                            @endfor
+                                        </div>
+                                    @endif
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
+                </div>
+            </div>
+            <div class="MaintabList">
+                <div class="widthAuto p_re">
+                    <div class="MaintabControl">
+                        <div class="swiper-pagination-gate"></div>
+                        <div class="start" style="display:none;"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconPlay.png" alt="재생"></div>
+                        <div class="stop"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconStop.png" alt="정지"></div>
+                        <div class="swiper-btn-prev"></div>
+                        <div class="swiper-btn-next"></div>
+                    </div>
+                    <div class="MaintabWrap">
                         <ul class="Maintab">
-                            @foreach($data['banner']['인트로_메인빅배너'] as $row)
-                                <li><a data-slide-index="{{ $loop->index -1 }}" href="javascript:void(0);" class="{{ ($loop->first === true) ? 'active' : '' }}">{!! $row['BannerName'] !!}</a></li>
-                            @endforeach
+                            @php $j=0; @endphp
+                            @for($i=0; $i<=9; $i++)
+                                @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
+                                    <li><a data-swiper-slide-index="{{ $j }}" data-aaaaaaa="asdf" href="javascript:void(0);" @if($j == 0) class="active" @endif>
+                                            {{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a></li>
+                                    @php $j++; @endphp
+                                @endif
+                            @endfor
                         </ul>
                     </div>
-                    <div id="MainRollingSlider" class="MaintabBox">
-                        {!! banner_html($data['banner']['인트로_메인빅배너'], 'MaintabSlider') !!}
+                    <div class="MaintabAll">
+                        <a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnAB.png" alt="전체보기"></a>
+                    </div>
+                    <div class="MaintabAllView" style="display:none;">
+                        <div class="title">
+                            <span>진행중인 모든 이벤트</span>
+                            <span><a href="javascript:void(0);"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/btnClose.png" alt="닫기"></a></span>
+                        </div>
+                        <div class="tabCts">
+                            @php $j=0; @endphp
+                            @for($i=0; $i<=9; $i++)
+                                @if(isset($data['banner']['게이트_메인배너'.$i]) === true)
+                                    <a data-swiper-slide-index="{{ $j }}" @if($j == 0) class="active" @endif>{{ $data['banner']['게이트_메인배너'.$i][0]['BannerName'] }}</a>
+                                    @php $j++; @endphp
+                                @endif
+                            @endfor
+                        </div>
                     </div>
                 </div>
-                <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
-                <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p>
+            </div>
+        </div>
+
+        <div class="Section newsWrap">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">지금 바로 주목해야 할 <span>새로운 소식!</span></div>
+                <div class="newsBox">
+                    <ul class="newsSlider">
+                        @for($i=1; $i<=10; $i++)
+                            @if(isset($data['banner']['게이트_새소식'.$i]) === true)
+                                <li>
+                                    <div>{!! banner_html(element('게이트_새소식'.$i, $data['banner'])) !!}</div>
+                                    <div class="newsTitle">{{ $data['banner']['게이트_새소식'.$i][0]['BannerName'] or "" }}</div>
+                                </li>
+                            @endif
+                        @endfor
+                    </ul>
+                    <p class="leftBtn"><a id="newsSliderLeft"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAL60.png"></a></p>
+                    <p class="rightBtn"><a id="newsSliderRight"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/2021/iconAR60.png"></a></p>
+                </div>
             </div>
         </div>
 
         <div class="Section gosi-bnfull02">
             <div class="widthAuto">
-                {!! banner_html(element('인트로_중간띠배너', $data['banner'])) !!}
+                <div class="will-nTit NSK-Black"><span>초보 수험생</span>이라면, <span>꼭</span> 확인해보세요!</div>
+            </div>
+            {!! banner_html(element('게이트_초보가이드', $data['banner']), 'slider') !!}
+        </div>
+
+        <div class="Section mt80">
+            <div class="widthAuto tx-center">
+                <div class="will-nTit NSK-Black mb40 tx-left">단기 합격자는 <span>지금 이 시기, ‘이론’</span>에 <span>집중</span>했습니다.</div>
+                {!! banner_html(element('게이트_단기합격자', $data['banner'])) !!}
             </div>
         </div>
 
-        <div class="Section">
-            <div class="widthAuto gosi-gate-bn01 nSlider pick">
-                <div class="f_left">
-                    <div class="will-nTit NSK-Black">공무원, 어떻게 준비하나요? </div>
-                    @foreach($data['banner'] as $section_name => $section_banners)
-                        @if(starts_with($section_name, '인트로_서브1') === true)
-                            {!! banner_html($section_banners, 'sliderNum') !!}
-                        @endif
-                    @endforeach
-                </div>
-                <div class="f_right">
-                    <div class="will-nTit NSK-Black">윌비스 신규회원가입 혜택</div>
-                    @foreach($data['banner'] as $section_name => $section_banners)
-                        @if(starts_with($section_name, '인트로_서브2') === true)
-                            {!! banner_html($section_banners, 'sliderNum') !!}
-                        @endif
-                    @endforeach
-                </div>
-                </ul>
-            </div>
-        </div>
-
-        <div class="Section tpassWrap" id="tpassWrap">
+        <div class="Section tpassWrap">
             <div class="widthAuto">
-                <div class="f_left"><img src="https://static.willbes.net/public/images/promotion/main/gosi_gate/intro_tpass_bg.jpg" alt="T-PASS"></div>
-                <div class="f_right">
-                    @for($i=1; $i<=12; $i++)
-                        @if(isset($data['banner']['인트로_티패스'.$i]) === true)
-                            {!! banner_html(element('인트로_티패스'.$i, $data['banner'])) !!}
-                        @endif
-                    @endfor
+                <div class="will-nTit NSK-Black tx-left mb40">자신 있는 주력 과목을 만들고 싶다면, <span>윌비스 T-PASS!</span></div>
+                <div class="tpassLeft">
+                    {!! banner_html(element('게이트_티패스1', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                </div>
+                <div class="tpassRight">
+                    {{-- 티패스2 --}}
+                    <div class="tpassRightTop">
+                        {!! banner_html(element('게이트_티패스2', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                    </div>
+                    <div class="tpassRightBottom">
+                        {!! banner_html(element('게이트_티패스3', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                        {!! banner_html(element('게이트_티패스4', $data['banner']), 'slider', '', true, '', 'bnimg', '', false, false, true) !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="Section castWrap">
+            <div class="widthAuto">
+                <div class="will-nTit NSK-Black">쉬면서도 열공이 되는 <span>윌비스 YOUTUBE 영상</span>을 시청해보세요!</div>
+                <div class="castBox">
+                    <ul class="castslider">
+                        @for($i=1;$i<=10;$i++)
+                            <li>
+                                {!! banner_html(element('게이트_유튜브'.$i, $data['banner']), '', '', false, '', '', 'castTitle') !!}
+                            </li>
+                        @endfor
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="Section gosi-gate-profWrap">
             <div class="widthAuto">
-                <div class="will-nTit NSK-Black">합격을 책임질 윌비스 직렬별 대표 교수진</div>
+                <div class="will-nTit NSK-Black">합격을 끝까지 책임지는 윌비스 교수진을 만나보세요!</div>
                 <ul class="gosi-tabs-prof">
                     <li><a href="#item01" class="on">9/7급</a></li>
                     <li><a href="#item02">세무직</a></li>
@@ -145,10 +192,10 @@
                     <div id="item01" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof">
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_9_7급'.$i]) === true)
+                                @if(isset($data['banner']['게이트_9_7급'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_9_7급'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_9_7급'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -158,10 +205,10 @@
                     <div id="item02" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof" >
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_세무직'.$i]) === true)
+                                @if(isset($data['banner']['게이트_세무직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_세무직'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_세무직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -171,10 +218,10 @@
                     <div id="item03" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof" >
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_법원직'.$i]) === true)
+                                @if(isset($data['banner']['게이트_법원직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_법원직'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_법원직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -184,10 +231,10 @@
                     <div id="item04" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof" >
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_소방직'.$i]) === true)
+                                @if(isset($data['banner']['게이트_소방직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_소방직'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_소방직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -197,10 +244,10 @@
                     <div id="item05" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof" >
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_기술직'.$i]) === true)
+                                @if(isset($data['banner']['게이트_기술직'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_기술직'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_기술직'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -210,10 +257,10 @@
                     <div id="item06" class="gosi-tabs-content">
                         <ul class="gosi-gate-prof" >
                             @for($i=1; $i<=5; $i++)
-                                @if(isset($data['banner']['인트로_군무원'.$i]) === true)
+                                @if(isset($data['banner']['게이트_군무원'.$i]) === true)
                                     <li>
                                         <div class="nSlider">
-                                            {!! banner_html(element('인트로_군무원'.$i, $data['banner']), 'sliderProf') !!}
+                                            {!! banner_html(element('게이트_군무원'.$i, $data['banner']), 'sliderProf') !!}
                                         </div>
                                     </li>
                                 @endif
@@ -224,47 +271,25 @@
             </div>
         </div>
 
-        <div class="Section castWrap">
-            <div class="widthAuto">
-                <div class="tx16 mb20">수험을 가장 잘 아는, 그리고 많은 합격생을 배출한 교수님들이 전합니다.</div>
-                <div class="will-nTit NSK-Black">합격을 앞당기는 <span>수험생활 팁</span></div>
-                <div class="castBox">
-                    <ul class="castslider">
-                        @foreach($data['banner'] as $section_name => $section_banners)
-                            @if(starts_with($section_name, '인트로_cast') === true)
-                                <li>
-                                    {!! banner_html($section_banners, '', '' , false, '', '', 'castTitle') !!}
-                                </li>
-                            @endif
-                        @endforeach
-                    </ul>
-                    <p class="leftBtn"><a id="imgBannerLeft1"><img src="{{ img_static_url('promotion/main/btn_arrowL.png') }}"></a></p>
-                    <p class="rightBtn"><a id="imgBannerRight1"><img src="{{ img_static_url('promotion/main/btn_arrowR.png') }}"></a></p>
-                </div>
-            </div>
-        </div>
-
         <div class="Section gosi-gate-bn02">
             <div class="widthAuto pick">
-                <div class="tx16 mb20">수험을 가장 잘 아는, 그리고 많은 합격생을 배출한 교수님들이 전합니다.</div>
-                <div class="will-nTit NSK-Black">윌비스 공무원 학원 <span>실강 안내</span></div>
+                <div class="will-nTit NSK-Black mb40">윌비스 공무원학원 <span>노량진 캠퍼스</span>에서는 무엇을 개강하나요?</div>
+                {!! banner_html(element('게이트_학원개강정보', $data['banner']), 'slider') !!}
+
                 <ul>
-                    @for($i=1; $i<=3; $i++)
-                        @if(isset($data['banner']['인트로_실강안내'.$i]) === true)
-                            <li class="nSlider">
-                                {!! banner_html(element('인트로_실강안내'.$i, $data['banner']), 'sliderNum') !!}
-                            </li>
-                        @endif
+                    @for($i=1;$i<=3;$i++)
+                        <li class="nSlider">
+                            {!! banner_html(element('게이트_실강안내'.$i, $data['banner']), 'sliderNum'); !!}
+                        </li>
                     @endfor
                 </ul>
             </div>
         </div>
 
-        {{-- 게시판 --}}
-        <div class="Section mt80">
+        <div class="Section mt100">
             <div class="widthAuto">
                 <div class="nNoticeBox three">
-                    <div class="noticeList widthAuto350 f_left">
+                    <div class="noticeList widthAuto530 f_left">
                         <div class="will-nlistTit p_re">공지사항 <a href="{{front_url('/support/notice/index')}}" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
                         <ul class="List-Table">
                             @if(empty($data['notice']) === true)
@@ -283,7 +308,7 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="noticeList widthAuto350 f_left ml35">
+                    <div class="noticeList widthAuto530 f_right">
                         <div class="will-nlistTit p_re">시험공고 <a href="{{front_url('/support/examAnnouncement/index')}}" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
                         <ul class="List-Table">
                             @if(empty($data['exam_announcement']) === true)
@@ -302,25 +327,6 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="noticeList widthAuto350 f_left ml35">
-                        <div class="will-nlistTit p_re">수험뉴스 <a href="{{front_url('/support/examNews/index')}}" target="_blank" class="btn-add"><img src="{{ img_url('cop/icon_add_big.png') }}"></a></div>
-                        <ul class="List-Table">
-                            @if(empty($data['exam_news']) === true)
-                                <li><span>등록된 내용이 없습니다.</span></li>
-                            @else
-                                @foreach($data['exam_news'] as $row)
-                                    <li>
-                                        <a href="{{front_url($row['PassRoute'] . '/support/examNews/show?board_idx=' . $row['BoardIdx'], false, true)}}">
-                                            @if($row['IsBest'] == '1')<span>HOT</span>@endif
-                                            {{$row['Title']}}
-                                        </a>
-                                        @if(date('Y-m-d') == $row['RegDatm'])<img src="{{ img_url('cop/icon_new.png') }}"/>@endif
-                                        <span class="date">{{$row['RegDatm']}}</span>
-                                    </li>
-                                @endforeach
-                            @endif
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -331,7 +337,6 @@
                 @include('willbes.pc.site.main_partial.cscenter_' . $__cfg['SiteCode'])
             </div>
         </div>
-        <!-- CS센터 //-->
 
         <div id="QuickMenu" class="MainQuickMenu">
             <ul>
@@ -353,67 +358,156 @@
                 @endif
                 <li>
                     <div class="QuickSlider">
-                        {!! banner_html(element('인트로_우측퀵_01', $data['banner']), 'sliderNum') !!}
+                        {!! banner_html(element('게이트_우측퀵_01', $data['banner']), 'sliderNum') !!}
                     </div>
                 </li>
                 <li>
                     <div class="QuickSlider">
-                        {!! banner_html(element('인트로_우측퀵_02', $data['banner']), 'sliderNum') !!}
+                        {!! banner_html(element('게이트_우측퀵_02', $data['banner']), 'sliderNum') !!}
                     </div>
                 </li>
                 <li>
                     <div class="QuickSlider">
-                        {!! banner_html(element('인트로_우측퀵_03', $data['banner']), 'sliderNum') !!}
+                        {!! banner_html(element('게이트_우측퀵_03', $data['banner']), 'sliderNum') !!}
                     </div>
                 </li>
             </ul>
         </div>
-        <!-- 퀵메뉴 //-->
     </div>
     <!-- End Container -->
 
-    <div id="Popup200916" class="PopupWrap modal willbes-Layer-popBox" style="display: none;">
-        <div class="Layer-Cont" id="youtube_box">
-            <iframe width="850" height="482" src="https://www.youtube.com/embed/bd1YXMDcw7o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <ul class="btnWrapbt popbtn mt10">
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="yt_hdh_210805" data-popup-hide-days="1">하루 보지않기</a></li>
-            <li class="subBtn black"><a href="#none" class="btn-popup-close" data-popup-idx="yt_hdh_210805" data-popup-hide-days="">Close</a></li>
-        </ul>
-    </div>
-    <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
-    {{--유튜브 모달팝업//--}}
-    
     {!! popup('657005', $__cfg['SiteCode'], '0', '') !!}
 
-    <script src="/public/js/willbes/jquery.counterup.min.js"></script>
-    <script src="/public/js/willbes/waypoints.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
     <script type="text/javascript">
-        //상단 메인 배너
-        $(function(){
-            var slidesImg = $(".MaintabSlider").bxSlider({
-                mode:'horizontal',
-                touchEnabled: false,
-                speed:400,
-                pause:5000,
-                sliderWidth:2000,
-                auto : true,
-                autoHover: true,
-                pagerCustom: '#MainRollingDiv',
-                controls:false,
-                onSliderLoad: function(){
-                    $("#MainRollingSlider").css("visibility", "visible").animate({opacity:1});
+        //swiper 메인 슬라이드
+        $(document).ready(function(){
+            var mainslider = new Swiper('.mainSlider01', {
+                direction: 'horizontal',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView : 'auto',
+                pagination: {
+                    el: ".swiper-pagination-gate",
+                    type: "fraction",
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                }, //3초에 한번씩 자동 넘김
+                navigation: {
+                    nextEl: ".swiper-btn-next",
+                    prevEl: ".swiper-btn-prev",
+                },
+                on: {
+                    slideChange: function () {
+                        $('.Maintab li > a').removeClass('active');
+                        $('.Maintab li > a').eq(this.realIndex).addClass('active').trigger('click');
+                        if($('.Maintab li:eq(0) > a').hasClass('active')){
+                            // mainslider.update();
+                            // location.reload();
+                        }
+                        $('.tabCts a').removeClass('active');
+                        $('.tabCts a').eq(this.realIndex).addClass('active');
+                    }
                 }
             });
-            $("#imgBannerRight").click(function (){
-                slidesImg.goToPrevSlide();
+
+            //메인 슬라이드 메뉴1
+            $('.Maintab li > a').on('click', function(){
+                $('.Maintab li > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+                var target = $(this);
+                muCenter(target);
             });
 
-            $("#imgBannerLeft").click(function (){
-                slidesImg.goToNextSlide();
+            //슬라이드 메뉴1 클릭시 위치조정
+            function muCenter(target){
+                var snbwrap = $('.Maintab');
+                var targetPos = target.position();
+                var box = $('.MaintabWrap');
+                var boxHarf = box.width()/2;
+                var pos;
+                var listWidth=0;
+
+                snbwrap.find('li').each(function(){ listWidth += $(this).outerWidth(); })
+
+                var selectTargetPos = targetPos.left + target.outerWidth()/2;
+                if (selectTargetPos <= boxHarf) { // left
+                    pos = 0;
+                }else if ((listWidth - selectTargetPos) <= boxHarf) { //right
+                    pos = listWidth-box.width();
+                }else {
+                    pos = selectTargetPos - boxHarf;
+                }
+
+                setTimeout(function(){snbwrap.css({
+                    "transform": "translateX("+ (pos*-1) +"px)",
+                    "transition-duration": "500ms"
+                })}, 200);
+            }
+
+            //메인 슬라이드 메뉴2(진행중인 모든 이벤트)
+            $('.tabCts > a').on('click', function(){
+                $('.tabCts > a').removeClass('active');
+                $(this).addClass('active');
+                var num = $(this).attr('data-swiper-slide-index');
+                mainslider.slideTo(num);
+            });
+            //슬라이드 재생, 스탑 버튼
+            $('.start').on('click', function() {
+                mainslider.autoplay.start();
+                $(this).hide();
+                $('.stop').show();
+                return false;
+            });
+            $('.stop').on('click', function() {
+                mainslider.autoplay.stop();
+                $(this).hide();
+                $('.start').show();
+                return false;
             });
 
-            //교수진 배너
+            //진행중인 모든 이벤트 닫기, 열기
+            $('.MaintabAll a').on('click', function() {
+                $('.MaintabAllView').slideToggle("fast");
+            });
+            $('.MaintabAllView span a').on('click', function() {
+                $('.MaintabAllView').hide();
+            });
+        });
+
+        //새로운소식
+        $(function() {
+            var newsImg = $(".newsSlider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:false,
+                controls:false,
+                slideWidth: 224,
+                minSlides:5,
+                maxSlides:5,
+                slideMargin:0,
+                autoHover:true,
+                moveSlides:1,
+            });
+            $("#newsSliderLeft").click(function (){
+                newsImg.goToPrevSlide();
+            });
+
+            $("#newsSliderRight").click(function (){
+                newsImg.goToNextSlide();
+            });
+        });
+
+        //교수진 배너
+        $(document).ready(function(){
             $('.gosi-tabs-prof').each(function(){
                 var $active, $content, $links = $(this).find('a');
                 $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
@@ -435,10 +529,11 @@
                     $active.addClass('active');
                     $content.show();
 
-                    e.preventDefault()})
-            });
+                    e.preventDefault()})}
+            )}
+        );
 
-            //대표 교수진
+        $(function() {
             $('.sliderProf').bxSlider({
                 auto: true,
                 controls: true,
@@ -457,87 +552,7 @@
                     $(".gosi-gate-prof").css("visibility", "visible").animate({opacity:1});
                 }
             });
-
-            // 수험생활 팁 (캐스트)
-            var slidesImg1 = $('.castslider').bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:3,
-                maxSlides:3,
-                slideWidth: 370,
-                slideMargin:5,
-                autoHover: true,
-                moveSlides:1,
-            });
-
-            $('#imgBannerLeft1').click(function (){
-                slidesImg1.goToPrevSlide();
-            });
-
-            $('#imgBannerRight1').click(function (){
-                slidesImg1.goToNextSlide();
-            });
-
-            $('.sliderBar').bxSlider({
-                mode:'fade',
-                auto: true,
-                touchEnabled: false,
-                controls: false,
-                sliderWidth:2000,
-                pause: 3000,
-                autoHover: true,
-                pager: false,
-            });
         });
-
-    //유튜브 모달팝업 close 버튼 클릭
-    var youtube_html;
-    $(document).ready(function() {                
-        $('.PopupWrap').on('click', '.btn-popup-close', function() {
-            youtube_html = $('#youtube_box');
-            $('#youtube_box').html('');
-
-            var popup_idx = $(this).data('popup-idx');
-            var hide_days = $(this).data('popup-hide-days');
-
-            // 팝업 close
-            $(this).parents('.PopupWrap').fadeOut();
-
-            //하루 보지않기
-            if (hide_days !== '') {
-                var domains = location.hostname.split('.');
-                var domain = '.' + domains[domains.length - 2] + '.' + domains[domains.length - 1];
-
-                $.cookie('_wb_client_popup_' + popup_idx, 'done', {
-                    domain: domain,
-                    path: '/',
-                    expires: hide_days
-                });
-            }
-
-            // 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리
-            if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
-                $('#PopupBackWrap').fadeOut();
-            }
-        });
-
-        // 백그라운드 클릭 --}}
-        $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
-            youtube_html = $('#youtube_box');
-            $('#youtube_box').html('');
-            $('.PopupWrap.modal').fadeOut();
-            $(this).fadeOut();
-        });
-
-        // 팝업 오늘하루안보기 하드코딩
-        if($.cookie('_wb_client_popup_yt_hdh_210805') !== 'done') {
-            $('#Popup200916').fadeIn();
-            $('#PopupBackWrap').fadeIn();
-        }
-    });    
     </script>
+
 @stop

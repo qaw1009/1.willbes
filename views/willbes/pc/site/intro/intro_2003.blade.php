@@ -384,11 +384,13 @@
         //swiper 메인 슬라이드
         $(document).ready(function(){
             var mainslider = new Swiper('.mainSlider01', {
-                direction: 'horizontal',
+                /*direction: 'horizontal',
                 loop: true,
                 observer: true,
                 observeParents: true,
-                slidesPerView : 'auto',
+                slidesPerView : 'auto',*/
+                spaceBetween: 30,
+                effect: "fade",
                 pagination: {
                     el: ".swiper-pagination-gate",
                     type: "fraction",

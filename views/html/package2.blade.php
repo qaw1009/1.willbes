@@ -220,16 +220,6 @@
                                 <div class="w-tit">
                                     <a href="{{ site_url('/home/html/packagesub2') }}">2017 9급 공무원 이론 선택형 종합 패키지 - 30일완성</a>
                                 </div>
-                                <dl class="w-info">
-                                    <dt class="mr20">
-                                        <a href="#none" onclick="openWin('InfoForm')">
-                                            <strong>패키지상세정보</strong>
-                                        </a>
-                                    </dt>
-                                    <dt>개강일 : <span class="tx-blue">2017년 02월 14일</span></dt>
-                                    <dt><span class="row-line">|</span></dt>
-                                    <dt>수강기간 : <span class="tx-blue">30일</span></dt>
-                                </dl>
                             </td>
                             <td class="w-notice">
                                 <div class="priceWrap">

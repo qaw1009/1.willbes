@@ -40,7 +40,7 @@
     <div class="evtContent NSK" id="evtContainer">
         <div class="sky" id="QuickMenu">
             <a href="#evt04"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2301_sky.jpg" alt="8월 BEST 강좌" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2301_sky.jpg" alt="1+5 혜택 받기" >
             </a>       
         </div> 
 
@@ -82,14 +82,13 @@
 
         <div class="evtCtnsBox evt04" data-aos="fade-left" id="evt04">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2301_04.jpg" alt="8월 BEST 강좌"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2301_04_01.jpg" alt="8월 BEST 강좌"/>
                 <a href="#none" title="2022 기초입문서" style="position: absolute; left: 16.43%; top: 49.81%; width: 20.54%; height: 7.04%; z-index: 2;"></a>
-                
-                <a href="#none" title="3법 기초입문강의" style="position: absolute; left: 41.43%; top: 27.87%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
-                <a href="#none" title="G-TELP 문법강의" style="position: absolute; left: 62.32%; top: 27.79%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
-                <a href="#none" title="한능검 기본개념편" style="position: absolute; left: 51.96%; top: 40.3%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
-                <a href="#none" title="PASS 10%쿠폰" style="position: absolute; left: 41.52%; top: 52.66%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
-                <a href="#none" title="단과 20%쿠폰" style="position: absolute; left: 62.23%; top: 52.66%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
+
+                <a href="#none" title="3법 기초입문강의" style="position: absolute; left: 41.43%; top: 32.88%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
+                <a href="#none" title="G-TELP 문법강의" style="position: absolute; left: 62.32%; top: 32.88%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
+                <a href="#none" title="한능검 기본개념편" style="position: absolute; left: 41.43%; top: 47.04%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
+                <a href="#none" title="쿠폰" style="position: absolute; left: 62.32%; top: 47.04%; width: 20.54%; height: 4.12%; z-index: 2;"></a>
             </div>
         </div>
     </div>

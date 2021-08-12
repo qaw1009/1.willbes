@@ -166,7 +166,7 @@ class PersonalityAptitudeExam extends \app\controllers\FrontController
     private function _data_validation($data = [])
     {
         $now = date('Ymd');
-        if (empty($data['ExamEndDay']) === false && ($data['ExamEndDay'] <= $now)) {
+        if (empty($data['ExamEndDayForNumber']) === false && ($data['ExamEndDayForNumber'] < $now)) {
             show_alert('검사기간이 만료되었습니다.','close');
         }
     }

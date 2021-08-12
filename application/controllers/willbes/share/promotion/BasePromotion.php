@@ -223,6 +223,8 @@ class BasePromotion extends \app\controllers\FrontController
                         $order_count = $this->eventFModel->getOrderForEventMemberCount($prod_code, $this->session->userdata('mem_idx'));
                         $arr_base['order_count'] += $order_count;
                     }
+                }else{
+                    $arr_base['order_count'] = $this->eventFModel->getOrderForEventMemberCount($arr_promotion_params['prod_code'], $this->session->userdata('mem_idx'));
                 }
             }
 

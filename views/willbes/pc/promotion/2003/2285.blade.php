@@ -97,6 +97,12 @@
         $regi_form.on('click', 'a[name="btn_direct_pay"]', function () {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
+            var order_cnt = {{ $arr_base['order_count'] or 0 }};
+            if(order_cnt > 0){
+                alert('이미 구매한 상품입니다.');
+                return;
+            }
+
             if(certCheck() == false) {return;}
             var $is_direct_pay = $(this).data('direct-pay');
             cartNDirectPay($regi_form, $is_direct_pay, 'Y');

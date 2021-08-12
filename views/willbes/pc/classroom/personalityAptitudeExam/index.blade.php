@@ -109,7 +109,7 @@
             });
 
             //인적성 검사 팝업
-            $("#btn_exam_popup").click(function (){
+            $('#btn_exam_popup').on('click', function() {
                 if($("input:checkbox[name=is_agree]").is(":checked") == false) {
                     alert('유의사항 및 개인정보처리 사전 안내사항에 동의하셔야 합니다.');
                     return false;
@@ -118,7 +118,7 @@
                 exam_popup(op_idx,exam_url);
             });
 
-            $(".btn-report").click(function (){
+            $('.btn-report').on('click', function() {
                 var report_url = '{{front_url('/classroom/personalityAptitudeExam/report/')}}' + $(this).data("pae-idx");
                 window.open(report_url,'report_popup', 'scrollbars=no,toolbar=no,resizable=no,width=1350,height=920,top=50,left=100');
             });

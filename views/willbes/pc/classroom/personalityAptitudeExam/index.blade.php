@@ -94,7 +94,7 @@
                 dayStr = today.getFullYear().toString();
                 dayStr += inZero(today.getMonth()+1,2);
                 dayStr += inZero(today.getDate(),2);
-                if (end_day != null && end_day <= dayStr) {
+                if (end_day != null && end_day < dayStr) {
                     alert('검사기간이 만료되었습니다.');
                     location.reload();
                     return false;

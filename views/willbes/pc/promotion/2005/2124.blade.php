@@ -119,7 +119,7 @@
         
         <div class="evtCtnsBox evtInfo">
             <div class="evtInfoBox">
-                <h4 class="NSK-Black">윌비스 한림법학원 5급행정/국립외교원 대비 3순환 온라인 첨삭반 안내</h4>
+                <h4 class="NSK-Black">윌비스 한림법학원 5급행정/국립외교원 대비 1순환 온라인 첨삭반 안내</h4>
                 <div class="infoTit"><strong>수강관련</strong></div>
                 <ul>
                     <li>강의 일정에 따라 홈페이지 “내강의실”에서 강의 진행됩니다.</li>

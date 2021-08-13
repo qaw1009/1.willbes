@@ -549,7 +549,7 @@
 
     {{--쿠폰적용--}}
     <div id="COUPON_LIST" class="willbes-Layer-Black">
-        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+        <div class="willbes-Layer-PassBox willbes-Layer-PassBox600">
             <a class="closeBtn" href="#none" onclick="closeWin('COUPON_LIST')">
                 <img src="{{ img_url('m/calendar/close.png') }}">
             </a>
@@ -558,8 +558,7 @@
             </h4>
             <div class="couponListBox">
                 <ul class="payLecList">
-                    <li><span>강좌</span></li>
-                    <li>2019년 2차대비 신광은 형사소송법 심화이론 (19년 5월)</li>
+                    <li><span>강좌</span> 2019년 2차대비 신광은 형사소송법 심화이론 (19년 5월)</li>
                 </ul>
 
                 <div class="priceBox">
@@ -578,46 +577,59 @@
                 </ul>
 
                 <div class="couponList" id="coupon01"> 
-                    <p>내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</p>
-                    <ul>
-                        <li><input type="radio" id="cp1" name=""><label for="cp1">[MOU] 신광은 경찰팀 단과 50%할인 쿠폰</label></li>
-                        <li><strong>할인율(금액)</strong> 50%</li>
-                        <li><strong>사용기간</strong> 2019-05-24 14:16 ~ 2019-05-31 14:16 (유효)</li>
-                        <li><strong>과정</strong> 경찰</li>
-                        <li><strong>분류</strong> 온라인강좌</li>
-                    </ul>
-                    {{--
+                    <div class="lecinfo">
+                        <p>내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</p>
+                        <ul>
+                            <li><input type="radio" id="cp1" name=""><label for="cp1">[MOU] 신광은 경찰팀 단과 50%할인 쿠폰</label></li>
+                            <li><strong>할인율(금액)</strong> 50%</li>
+                            <li><strong>사용기간</strong> 2019-05-24 14:16 ~ 2019-05-31 14:16 (유효)</li>
+                            <li><strong>과정</strong> 경찰</li>
+                            <li><strong>분류</strong> 온라인강좌</li>
+                        </ul>
+                    </div>
+
                     <div class="couponNo">
                         <img src="{{ img_url('m/mypage/icon_warning.png') }}"><br>
                         보유한 쿠폰이 없습니다.
                     </div>
-                    --}}
+
+                    <div class="couponInfo">
+                        <p>쿠폰 이용 안내</p>
+                        <ul>
+                            <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                            <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
+                        </ul>
+                    </div>  
+
                 </div>
                 
                 <div class="couponList" id="coupon02"> 
-                    <p>내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</p>
-                    <ul>
-                        <li><input type="radio" id="add1" name=""><label for="add1">[웰컴팩] 신광은경찰 PASS 10,000</label></li>
-                        <li><strong>할인율(금액)</strong> 50%</li>
-                        <li><strong>사용기간</strong> 2019-05-24 14:16 ~ 2019-05-31 14:16 (유효)</li>
-                        <li><strong>과정</strong> 경찰</li>
-                        <li><strong>분류</strong> 온라인강좌</li>
-                    </ul>
-                    {{--
+                    <div class="lecinfo">
+                        <p>내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</p>
+                        <ul>
+                            <li><input type="radio" id="add1" name=""><label for="add1">[웰컴팩] 신광은경찰 PASS 10,000</label></li>
+                            <li><strong>할인율(금액)</strong> 50%</li>
+                            <li><strong>사용기간</strong> 2019-05-24 14:16 ~ 2019-05-31 14:16 (유효)</li>
+                            <li><strong>과정</strong> 경찰</li>
+                            <li><strong>분류</strong> 온라인강좌</li>
+                        </ul>
+                    </div>
+                    
                     <div class="couponNo">
                         <img src="{{ img_url('m/mypage/icon_warning.png') }}"><br>
                         보유한 쿠폰이 없습니다.
                     </div>
-                    --}}
+                    
+                    <div class="couponInfo">
+                        <p>쿠폰 이용 안내</p>
+                        <ul>
+                            <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                            <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
+                        </ul>
+                    </div>  
                 </div>
                 
-                <div class="couponInfo">
-                    <p>쿠폰 이용 안내</p>
-                    <ul>
-                        <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
-                        <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
-                    </ul>
-                </div>                
+                              
             </div>
             <div class="couponBtns">
                 <ul>

@@ -4701,12 +4701,13 @@ body.memBody #Footer {
 }
 .willbes-Layer-PassBox {
 	/*float: left;*/
-	width: 90%;
+	width: 100%;
 	height: auto;
 	background: #fff;
 	padding: 20px 25px;
-	margin: 0 5%;
-	z-index: 105;
+	margin:5% auto auto;
+	position: relative;
+	z-index: 109;
 }
 .willbes-Layer-PassBox .closeBtn {
 	position: absolute;
@@ -4741,7 +4742,7 @@ body.memBody #Footer {
 .willbes-Layer-PassBox.fix {
 	position: fixed;
 	display: block;
-	top: 50%;
+	top: 50%;	
 }
 .willbes-Layer-PassBox600.h470.fix {
 	margin-top: -235px;
@@ -5924,8 +5925,8 @@ body.memBody #Footer {
 
 /*쿠폰 팝업*/
 .couponListBox {
-	overflow-y: auto;
-	height: 390px;
+	/*verflow-y: auto;
+	height: 390px;*/
 	padding: 15px 0;
 	border-top: 1px solid #333;
 }
@@ -5958,6 +5959,7 @@ body.memBody #Footer {
 	padding: 10px 0;
 	border: 1px solid #898989;
 	color: #999;
+	background:#f6f6f6;
 }
 .couponListBox .couponTab li:last-child a {
 	border-left: 0;
@@ -5965,6 +5967,7 @@ body.memBody #Footer {
 .couponListBox .couponTab li a.on {
 	color: #333;
 	border-bottom: 1px solid #fff;
+	background:#fff;
 }
 .couponListBox .couponTab:after {
 	content: "";
@@ -5974,12 +5977,14 @@ body.memBody #Footer {
 .couponListBox .couponList {
 	padding: 10px 0;
 	line-height: 1.5;
+	max-height:300px;
+	overflow-x: auto;
 }
-.couponListBox .couponList p {
+.couponListBox .couponList .lecinfo p {
 	color: #ed1c24;
 	margin-bottom: 10px;
 }
-.couponListBox .couponList ul {
+.couponListBox .couponList .lecinfo ul {
 	border-top: 1px solid #c9c9c9;
 	border-bottom: 1px solid #c9c9c9;
 	padding: 15px 0;
@@ -5993,7 +5998,7 @@ body.memBody #Footer {
 	height: 20px;
 	cursor: pointer;
 }
-.couponListBox .couponList li {
+.couponListBox .couponList .lecinfo li {
 	margin-bottom: 5px;
 	color: #666;
 }
@@ -6027,8 +6032,7 @@ body.memBody #Footer {
 	margin-left: 15px;
 	list-style: disc;
 }
-.couponBtns {
-}
+.couponBtns ul:after {content:""; display:block; clear:both}
 .couponBtns li {
 	display: inline;
 	float: left;

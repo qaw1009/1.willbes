@@ -6192,17 +6192,21 @@ a.btnstA:hover {
 }
 
 /* subContainer : Cart : 결제하기 : 쿠폰적용 */
-.willbes-Layer-CartBox {
-	background: #fff;
-	position: absolute;
+
+.willbes-Layer-CartBox {	
+	/*position: absolute;
 	top: 50%;
 	left: 50%;
 	z-index: 11;
-	width: 760px;
-	height: 560px;
 	margin-top: -280px;
 	margin-left: -380px;
+	*/
+	width: 760px;
+	margin:5% auto auto;
+	height: auto;	
 	border: 1px solid #2f2f2f;
+	background: #fff;
+	position: relative;
 }
 .willbes-Layer-CartBox2 {
 	width: 500px;
@@ -6244,16 +6248,15 @@ a.btnstA:hover {
 }
 .willbes-Pricelist {
 	background: #f9f9f9;
-	height: 135px;
-	margin: 20px 0 30px;
+	margin:20px 0;
 }
 .willbes-Pricelist ul {
 	text-align: center;
 }
 .willbes-Pricelist li {
 	display: inline-block;
-	line-height: 35px;
-	margin: 0 55px;
+	line-height: 1.5;
+	margin:0 55px;
 }
 .willbes-Pricelist li.price-img {
 	position: relative;
@@ -6270,7 +6273,7 @@ a.btnstA:hover {
 .willbes-Pricelist li .row-line {
 	background: #e7e7e7;
 	width: 1px;
-	height: 100px;
+	height: 50px;
 }
 .willbes-Pricelist .PriceBox .price {
 	font-family: "NanumGothic-ExtraBold", "Nanum Gothic", "나눔고딕", "sans-serif";
@@ -6297,7 +6300,7 @@ ul.btnWrap li {
 	margin-left: 5px;
 }
 .couponBox .tabContent {
-	height: 175px;
+	max-height: 350px;
 	overflow-x: auto;
 }
 table.couponTable {

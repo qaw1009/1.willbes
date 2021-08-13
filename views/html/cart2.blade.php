@@ -539,31 +539,6 @@
                         <col width="*">
                     </colgroup>
                     <tbody>
-                        {{--
-                        <tr class="chk">
-                            <td class="w-list bg-light-white">유의사항 안내</td>
-                            <td class="w-txt tx-left">
-                                <div class="txtBox">
-                                    유의사항1<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항내용이출력됩니다.<br/>
-                                    유의사항2<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항1<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.<br/>
-                                    유의사항내용이출력됩니다.<br/>
-                                    유의사항2<br/>
-                                    유의사항내용이출력됩니다.유의사항내용이출력됩니다. 유의사항내용이출력됩니다.
-                                </div>
-                                <div class="chkBox">
-                                    위 유의사항을 읽었으면 동의합니다. <span class="tx-blue">(필수)</span>
-                                    <span class="chkBox-Agree checked">
-                                        <input type="checkbox" id="" name="" class="" maxlength="30">
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                        --}}
                         <tr class="chk">
                             <td class="w-list bg-light-white">개인정보활용안내</td>
                             <td class="w-txt tx-left">
@@ -705,6 +680,42 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>강좌</td>
+                                            <td>12012514511245</td>
+                                            <td>2017년 서울시/지방직 풀케어서비스 참여</td>
+                                            <td>10%</td>
+                                            <td>30일</td>
+                                            <td>365일</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>교재</td>
+                                            <td>2012514511245</td>
+                                            <td>회원가입 축하 쿠폰</td>
+                                            <td>5,000원</td>
+                                            <td>40일</td>
+                                            <td>3일</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>교재</td>
+                                            <td>123456789</td>
+                                            <td>회원가입 축하 쿠폰2</td>
+                                            <td>1,000원</td>
+                                            <td>365일</td>
+                                            <td>300일</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                            <td>강좌</td>
+                                            <td>987654321</td>
+                                            <td>회원가입 축하 쿠폰3</td>
+                                            <td>100,000원</td>
+                                            <td>10일</td>
+                                            <td>1일</td>
+                                        </tr>
                                         <tr>
                                             <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
                                             <td>강좌</td>

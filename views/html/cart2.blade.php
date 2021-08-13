@@ -850,154 +850,152 @@
         <!-- willbes-Layer-CartBox : studyRoom -->
 
         <div id="MyAddress"class="willbes-Layer-Black">
-            <div class="flexBox">
-                <div class="willbes-Layer-CartBox">
-                    <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
-                        <img src="{{ img_url('cart/close_cart.png') }}">
-                    </a>
-                    <div class="Layer-Tit NG bg-blue">나의 배송 주소록</div>
-                    <div id="AddList" class="Layer-Cont p_re">
-                        <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다.</div>
-                        <div class="subBtn address NSK"><a href="#none" onclick="closeWin('AddList'),openWin('AddModify')">신규주소등록 ></a></div>
-                        <div class="couponWrap">
-                            <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 50px;">
-                                    <col style="width: 75px;">
-                                    <col style="width: 70px;">
-                                    <col style="width: 120px;">
-                                    <col style="width: 275px;">
-                                    <col style="width: 100px;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>선택<span class="row-line">|</span></th>
-                                        <th>배송지<span class="row-line">|</span></th>
-                                        <th>이름<span class="row-line">|</span></th>
-                                        <th>연락처<span class="row-line">|</span></th>
-                                        <th>주소<span class="row-line">|</span></th>
-                                        <th>수정/삭제</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>삼성화재</td>
-                                        <td>홍길동</td>
-                                        <td>010-1234-5678</td>
-                                        <td class="address tx-left pl20">
-                                            06924<br/>
-                                            서울특별시 동작구 노량진로 202길<br/>
-                                            4층 WCA(노량진동, 남강빌딩)
-                                        </td>
-                                        <td class="address w-buy">
-                                            <div class="tBox NSK t1 black"><a href="">수정</a></div>
-                                            <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
-                                        <td>친구네집</td>
-                                        <td>홍길동</td>
-                                        <td>010-9876-5432</td>
-                                        <td class="address tx-left pl20">
-                                            08812<br/>
-                                            서울시 관악구 호암로 26길 13 세정빌딩 2층<br/>
-                                            (관악구대학동 1514-6)
-                                        </td>
-                                        <td class="address w-buy">
-                                            <div class="tBox NSK t1 black"><a href="">수정</a></div>
-                                            <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="subBtn f_right mt50 NSK"><a href="#none">적용</a></div>
+            <div class="willbes-Layer-CartBox">
+                <a class="closeBtn" href="#none" onclick="closeWin('MyAddress')">
+                    <img src="{{ img_url('cart/close_cart.png') }}">
+                </a>
+                <div class="Layer-Tit NG bg-blue">나의 배송 주소록</div>
+                <div id="AddList" class="Layer-Cont p_re">
+                    <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다.</div>
+                    <div class="subBtn address NSK"><a href="#none" onclick="closeWin('AddList'),openWin('AddModify')">신규주소등록 ></a></div>
+                    <div class="couponWrap">
+                        <table cellspacing="0" cellpadding="0" class="couponTable upper-black under-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 50px;">
+                                <col style="width: 75px;">
+                                <col style="width: 70px;">
+                                <col style="width: 120px;">
+                                <col style="width: 275px;">
+                                <col style="width: 100px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>선택<span class="row-line">|</span></th>
+                                    <th>배송지<span class="row-line">|</span></th>
+                                    <th>이름<span class="row-line">|</span></th>
+                                    <th>연락처<span class="row-line">|</span></th>
+                                    <th>주소<span class="row-line">|</span></th>
+                                    <th>수정/삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                    <td>삼성화재</td>
+                                    <td>홍길동</td>
+                                    <td>010-1234-5678</td>
+                                    <td class="address tx-left pl20">
+                                        06924<br/>
+                                        서울특별시 동작구 노량진로 202길<br/>
+                                        4층 WCA(노량진동, 남강빌딩)
+                                    </td>
+                                    <td class="address w-buy">
+                                        <div class="tBox NSK t1 black"><a href="">수정</a></div>
+                                        <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" id="goods_chk" name="goods_chk" class="goods_chk"></td>
+                                    <td>친구네집</td>
+                                    <td>홍길동</td>
+                                    <td>010-9876-5432</td>
+                                    <td class="address tx-left pl20">
+                                        08812<br/>
+                                        서울시 관악구 호암로 26길 13 세정빌딩 2층<br/>
+                                        (관악구대학동 1514-6)
+                                    </td>
+                                    <td class="address w-buy">
+                                        <div class="tBox NSK t1 black"><a href="">수정</a></div>
+                                        <div class="tBox NSK t2 gray"><a href="">삭제</a></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- 배송 주소 리스트 -->
-
-                    <div id="AddModify" class="Layer-Cont Modify p_re" style="display: none">
-                        <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다. <span class="tx-light-blue f_right">(* 필수입력항목)</span></div>
-                        <div class="couponWrap">
-                            <table cellspacing="0" cellpadding="0" class="classTable deliveryTable under-gray tx-gray">
-                                <colgroup>
-                                    <col style="width: 140px;">
-                                    <col width="*">
-                                </colgroup>
-                                <tbody>
-                                    <tr class="u-to">
-                                        <td class="w-tit bg-light-white tx-left pl20">배송지<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-info tx-left pl20"><input type="text" id="LOCATION" name="LOCATION" class="iptLocation" maxlength="30"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-info tx-left pl20"><input type="text" id="NAME" name="NAME" class="iptName" maxlength="30"></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-info tx-left pl20">
-                                            <div class="inputBox Add p_re">
-                                                <div class="searchadd">
-                                                    <input type="text" id="ADD1" name="ADD1" class="iptAdd" maxlength="30"> -
-                                                    <input type="text" id="ADD2" name="ADD2" class="iptAdd" maxlength="30">   
-                                                    <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
-                                                        <span>우편번호 찾기</span>
-                                                    </button>
-                                                </div>
-                                                <div class="addbox1 p_re">
-                                                    <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
-                                                </div>
-                                                <div class="addbox2 p_re">
-                                                    <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
-                                        <td class="w-info tx-left pl20">
-                                            <select id="phone" name="phone" title="010" class="selePhone">
-                                                <option selected="selected">010</option>
-                                                <option value="011">011</option>
-                                                <option value="016">016</option>
-                                                <option value="017">017</option>
-                                                <option value="018">018</option>
-                                            </select> -
-                                            <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
-                                            <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
-                                        <td class="w-info tx-left pl20">
-                                            <select id="phone" name="phone" title="02" class="selePhone">
-                                                <option selected="selected">02</option>
-                                                <option value="031">031</option>
-                                                <option value="032">032</option>
-                                                <option value="033">033</option>
-                                                <option value="041">041</option>
-                                            </select> -
-                                            <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
-                                            <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="p-info tx-gray c_both">
-                                • 정확하지 않은 정보 기재 시, 불이익을 받을 수 있으니 유의하시기 바랍니다.<br/>
-                                • 집 외의 공공장소 등 직접 수령이 어려운 장소로의 배송은 분실 위험이 있으니 주의하시기 바랍니다.
-                            </div>  
-                            <ul class="btnWrapbt">
-                                <li class="subBtn NSK"><a href="#none">저장</a></li>
-                                <li class="subBtn white NSK"><a href="#none" onclick="closeWin('AddModify'),openWin('AddList')">목록</a></li>
-                            </ul> 
-                        </div>
-                    </div>
-                    <!-- 배송 주소 수정 -->
-
-                    
+                    <div class="subBtn f_right mt50 NSK"><a href="#none">적용</a></div>
                 </div>
+                <!-- 배송 주소 리스트 -->
+
+                <div id="AddModify" class="Layer-Cont Modify p_re" style="display: none">
+                    <div class="address caution-txt">주소록은 최대 5개까지 등록 가능합니다. <span class="tx-light-blue f_right">(* 필수입력항목)</span></div>
+                    <div class="couponWrap">
+                        <table cellspacing="0" cellpadding="0" class="classTable deliveryTable under-gray tx-gray">
+                            <colgroup>
+                                <col style="width: 140px;">
+                                <col width="*">
+                            </colgroup>
+                            <tbody>
+                                <tr class="u-to">
+                                    <td class="w-tit bg-light-white tx-left pl20">배송지<span class="tx-light-blue">(*)</span></td>
+                                    <td class="w-info tx-left pl20"><input type="text" id="LOCATION" name="LOCATION" class="iptLocation" maxlength="30"></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">이름<span class="tx-light-blue">(*)</span></td>
+                                    <td class="w-info tx-left pl20"><input type="text" id="NAME" name="NAME" class="iptName" maxlength="30"></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">주소<span class="tx-light-blue">(*)</span></td>
+                                    <td class="w-info tx-left pl20">
+                                        <div class="inputBox Add p_re">
+                                            <div class="searchadd">
+                                                <input type="text" id="ADD1" name="ADD1" class="iptAdd" maxlength="30"> -
+                                                <input type="text" id="ADD2" name="ADD2" class="iptAdd" maxlength="30">   
+                                                <button type="submit" onclick="" class="mem-Btn combine-Btn mb10 bg-blue bd-dark-blue" style="margin-left: 5px; margin-right: 5px;">
+                                                    <span>우편번호 찾기</span>
+                                                </button>
+                                            </div>
+                                            <div class="addbox1 p_re">
+                                                <input type="text" id="USER_ADD1" name="USER_ADD1" class="iptAdd1 bg-gray" placeholder="기본주소" maxlength="30">
+                                            </div>
+                                            <div class="addbox2 p_re">
+                                                <input type="text" id="USER_ADD2" name="USER_ADD2" class="iptAdd2" placeholder="상세주소" maxlength="30">
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">휴대폰번호<span class="tx-light-blue">(*)</span></td>
+                                    <td class="w-info tx-left pl20">
+                                        <select id="phone" name="phone" title="010" class="selePhone">
+                                            <option selected="selected">010</option>
+                                            <option value="011">011</option>
+                                            <option value="016">016</option>
+                                            <option value="017">017</option>
+                                            <option value="018">018</option>
+                                        </select> -
+                                        <input type="text" id="USER_CELLPHONE1" name="USER_CELLPHONE1" class="iptCellhone1 phone" maxlength="30"> -
+                                        <input type="text" id="USER_CELLPHONE2" name="USER_CELLPHONE2" class="iptCellhone2 phone" maxlength="30">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-tit bg-light-white tx-left pl20">전화번호</td>
+                                    <td class="w-info tx-left pl20">
+                                        <select id="phone" name="phone" title="02" class="selePhone">
+                                            <option selected="selected">02</option>
+                                            <option value="031">031</option>
+                                            <option value="032">032</option>
+                                            <option value="033">033</option>
+                                            <option value="041">041</option>
+                                        </select> -
+                                        <input type="text" id="USER_PHONE1" name="USER_PHONE1" class="iptPhone1 phone" maxlength="30"> -
+                                        <input type="text" id="USER_PHONE2" name="USER_PHONE2" class="iptPhone2 phone" maxlength="30">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="p-info tx-gray c_both">
+                            • 정확하지 않은 정보 기재 시, 불이익을 받을 수 있으니 유의하시기 바랍니다.<br/>
+                            • 집 외의 공공장소 등 직접 수령이 어려운 장소로의 배송은 분실 위험이 있으니 주의하시기 바랍니다.
+                        </div>  
+                        <ul class="btnWrapbt">
+                            <li class="subBtn NSK"><a href="#none">저장</a></li>
+                            <li class="subBtn white NSK"><a href="#none" onclick="closeWin('AddModify'),openWin('AddList')">목록</a></li>
+                        </ul> 
+                    </div>
+                </div>
+                <!-- 배송 주소 수정 -->
+
+                
             </div>
         </div>
         <!-- willbes-Layer-CartBox : 나의 배송 주소록 -->

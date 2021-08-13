@@ -6211,8 +6211,7 @@ a.btnstA:hover {
 .willbes-Layer-CartBox2 {
 	width: 500px;
 	height: 400px;
-	margin-top: -200px;
-	margin-left: -250px;
+	margin:5% auto auto;
 	border: 1px solid #2f2f2f;
 }
 
@@ -14065,6 +14064,7 @@ table.acadlecInfoPackageTable tr.Top td {
 	float: left;
 	margin-right: 5px;
 }
+.studyRoomCts .btnSet:after {content:""; display: block; clear:both}
 
 /*****************************************고등고시, 자격증 배너***********************************************/
 .studyRoomCts {

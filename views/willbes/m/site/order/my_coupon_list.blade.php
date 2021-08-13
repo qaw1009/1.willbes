@@ -1,4 +1,4 @@
-<div class="willbes-Layer-PassBox willbes-Layer-PassBox600 h510 fix">
+<div class="willbes-Layer-PassBox willbes-Layer-PassBox600">
     <a class="closeBtn" href="#none" onclick="closeWin('{{ $ele_id }}')">
         <img src="{{ img_url('m/calendar/close.png') }}">
     </a>
@@ -7,8 +7,7 @@
     </h4>
     <div class="couponListBox">
         <ul class="payLecList">
-            <li><span>{{ $cart_data['CartProdTypeName'] }}</span></li>
-            <li>{{ $cart_data['ProdName'] }}</li>
+            <li><span>{{ $cart_data['CartProdTypeName'] }}</span> {{ $cart_data['ProdName'] }}</li>
         </ul>
 
         <div class="priceBox">
@@ -36,26 +35,65 @@
         <div class="couponList" id="coupon1">
             <form id="_coupon_form" name="_coupon_form" method="POST" onsubmit="return false;" novalidate>
                 <input type="hidden" name="ele_id" value="{{ $ele_id }}"/>
-                <p>내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</p>
-                @if(empty($results['usable']) === true)
+                <div class="lecinfo">
+                    <p>내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</p>
+                    @if(empty($results['usable']) === true)
+                        <div class="couponNo">
+                            <img src="{{ img_url('m/mypage/icon_warning.png') }}"><br>
+                            적용 가능한 쿠폰이 없습니다.
+                        </div>
+                    @else
+                        @foreach($results['usable'] as $idx => $row)
+                            <ul>
+                                <li>
+                                    <input type="radio" id="_coupon_detail_idx_{{ $row['CdIdx'] }}" name="_coupon_detail_idx" value="{{ $row['CdIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CdIdx'], $arr_coupon_detail_idx) === true) disabled="disabled" @endif/>
+                                    <label for="_coupon_detail_idx_{{ $row['CdIdx'] }}">{{ $row['CouponName'] }}</label>
+                                </li>
+                                <li>
+                                    <strong>할인율(금액)</strong>
+                                    {{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}
+                                </li>
+                                <li>
+                                    <strong>사용기간</strong>
+                                    {{ substr($row['IssueDatm'], 0, 16) }} ~ {{ substr($row['ExpireDatm'], 0, 16) }}
+                                </li>
+                                <li>
+                                    <strong>분류</strong>
+                                    {{ $row['ApplyTypeCcdName'] }}
+                                </li>
+                            </ul>
+                        @endforeach
+                    @endif
+                    <div class="couponInfo">
+                        <p>쿠폰 이용 안내</p>
+                        <ul>
+                            <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                            <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="couponList" id="coupon2">
+            <div class="lecinfo">
+                <p>내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</p>
+                @if(empty($results['all']) === true)
                     <div class="couponNo">
                         <img src="{{ img_url('m/mypage/icon_warning.png') }}"><br>
-                        적용 가능한 쿠폰이 없습니다.
+                        보유한 쿠폰이 없습니다.
                     </div>
                 @else
-                    @foreach($results['usable'] as $idx => $row)
+                    @foreach($results['all'] as $idx => $row)
                         <ul>
-                            <li>
-                                <input type="radio" id="_coupon_detail_idx_{{ $row['CdIdx'] }}" name="_coupon_detail_idx" value="{{ $row['CdIdx'] }}" data-coupon-name="{{ $row['CouponName'] }}" data-disc-rate="{{ $row['DiscRate'] }}" data-disc-type="{{ $row['DiscType'] }}" @if(in_array($row['CdIdx'], $arr_coupon_detail_idx) === true) disabled="disabled" @endif/>
-                                <label for="_coupon_detail_idx_{{ $row['CdIdx'] }}">{{ $row['CouponName'] }}</label>
-                            </li>
+                            <li>{{ $row['CouponName'] }}</li>
                             <li>
                                 <strong>할인율(금액)</strong>
                                 {{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}
                             </li>
                             <li>
                                 <strong>사용기간</strong>
-                                {{ substr($row['IssueDatm'], 0, 16) }} ~ {{ substr($row['ExpireDatm'], 0, 16) }}
+                                {{ substr($row['IssueDatm'], 0, 16) }} ~ {{ substr($row['ExpireDatm'], 0, 16) }} ({{ $row['ValidStatusName'] }})
                             </li>
                             <li>
                                 <strong>분류</strong>
@@ -64,44 +102,15 @@
                         </ul>
                     @endforeach
                 @endif
-            </form>
-        </div>
-
-        <div class="couponList" id="coupon2">
-            <p>내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</p>
-            @if(empty($results['all']) === true)
-                <div class="couponNo">
-                    <img src="{{ img_url('m/mypage/icon_warning.png') }}"><br>
-                    보유한 쿠폰이 없습니다.
-                </div>
-            @else
-                @foreach($results['all'] as $idx => $row)
+                <div class="couponInfo">
+                    <p>쿠폰 이용 안내</p>
                     <ul>
-                        <li>{{ $row['CouponName'] }}</li>
-                        <li>
-                            <strong>할인율(금액)</strong>
-                            {{ number_format($row['DiscRate']) }}{{ $row['DiscRateUnit'] }}
-                        </li>
-                        <li>
-                            <strong>사용기간</strong>
-                            {{ substr($row['IssueDatm'], 0, 16) }} ~ {{ substr($row['ExpireDatm'], 0, 16) }} ({{ $row['ValidStatusName'] }})
-                        </li>
-                        <li>
-                            <strong>분류</strong>
-                            {{ $row['ApplyTypeCcdName'] }}
-                        </li>
+                        <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                        <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
                     </ul>
-                @endforeach
-            @endif
-        </div>
-
-        <div class="couponInfo">
-            <p>쿠폰 이용 안내</p>
-            <ul>
-                <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
-                <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
-            </ul>
-        </div>
+                </div>
+            </div>
+        </div>        
     </div>
     <div class="couponBtns">
         <ul>
@@ -111,6 +120,7 @@
     </div>
 </div>
 <div class="dim" onclick="closeWin('{{ $ele_id }}')"></div>
+
 <script src="/public/js/willbes/tabs.js"></script>
 <script type="text/javascript">
     var $_coupon_form = $('#_coupon_form');

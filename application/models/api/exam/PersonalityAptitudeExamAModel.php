@@ -67,7 +67,7 @@ class PersonalityAptitudeExamAModel extends WB_Model
         $column = '
             o.OrderIdx,op.OrderProdIdx,mstpl.ExternalCorpCcd,mstp.ProdName,subp.ProdName AS subProdName,o.CompleteDatm,mstpl.ExternalLinkCode
             ,m.MemIdx,m.MemId,m.MemName
-            ,pae.IsAgree,pae.BtmUid,pae.ExamState,pae.ExamStartDatm,pae.ExamFinishDatm,pae.ExamEndDatm,DATE_FORMAT(pae.ExamEndDatm,"%Y%m%d") AS ExamEndDay
+            ,pae.IsAgree,pae.BmtUid,pae.ExamState,pae.ExamStartDatm,pae.ExamFinishDatm,pae.ExamEndDatm,DATE_FORMAT(pae.ExamEndDatm,"%Y%m%d") AS ExamEndDay
             ';
 
         $from = "
@@ -171,7 +171,7 @@ class PersonalityAptitudeExamAModel extends WB_Model
             ];
 
             if (element('exam_state',$form_data) == 1) {
-                $update_data['BtmUid'] = element('bmt_uid',$form_data);
+                $update_data['BmtUid'] = element('bmt_uid',$form_data);
                 $update_data['ExamStartDatm'] = date('Y-m-d H:i:s',(int)element('exam_startdt',$form_data));
                 $update_data['ExamEndDatm'] = date("Y-m-d H:i:s", strtotime("+6 day", (int)element('exam_startdt',$form_data)));
             }

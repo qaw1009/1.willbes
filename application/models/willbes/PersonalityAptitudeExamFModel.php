@@ -39,7 +39,7 @@ class PersonalityAptitudeExamFModel extends WB_Model
             ,mstpl.ExternalCorpCcd,mstp.ProdName,subp.ProdName AS subProdName,mstpl.ExternalLinkCode
             ,opr.RefundDatm,DATE_FORMAT(opr.RefundDatm,"%Y-%m-%d") AS RefundDay
             ,m.MemIdx,m.MemId,m.MemName
-            ,pae.IsAgree,pae.BtmUid,pae.ExamState
+            ,pae.IsAgree,pae.BmtUid,pae.ExamState
             ,pae.ExamStartDatm,pae.ExamFinishDatm,pae.ExamEndDatm
             ,DATE_FORMAT(pae.ExamStartDatm,"%Y-%m-%d") AS ExamStartDay
             ,DATE_FORMAT(pae.ExamEndDatm,"%Y-%m-%d") AS ExamEndDay
@@ -67,7 +67,7 @@ class PersonalityAptitudeExamFModel extends WB_Model
 
     public function findPersonalityAptitudeExam($arr_condition = [])
     {
-        $column = 'PaeIdx,OrderProdIdx,OrderIdx,MemIdx,IsAgree,BtmUid,ExamState,ExamStartDatm,ExamFinishDatm,ExamEndDatm';
+        $column = 'PaeIdx,OrderProdIdx,OrderIdx,MemIdx,IsAgree,BmtUid,ExamState,ExamStartDatm,ExamFinishDatm,ExamEndDatm';
         $from = " FROM {$this->_table['personality_aptitude_exam']}";
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);

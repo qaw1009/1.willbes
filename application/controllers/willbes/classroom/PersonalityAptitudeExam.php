@@ -135,7 +135,7 @@ class PersonalityAptitudeExam extends \app\controllers\FrontController
 
         $form_data = [
             'mode' => 'V'
-            ,'bmt_uid' => $data[0]['BtmUid']
+            ,'bmt_uid' => $data[0]['BmtUid']
             ,'user_ids' => $data[0]['OrderProdIdx']
         ];
         //로그저장

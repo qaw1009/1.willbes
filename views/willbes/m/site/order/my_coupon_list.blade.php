@@ -64,14 +64,14 @@
                             </ul>
                         @endforeach
                     @endif
-                    <div class="couponInfo">
-                        <p>쿠폰 이용 안내</p>
-                        <ul>
-                            <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
-                            <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
-                        </ul>
-                    </div>
                 </div>
+                <div class="couponInfo">
+                    <p>쿠폰 이용 안내</p>
+                    <ul>
+                        <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                        <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
+                    </ul>
+                </div>                
             </form>
         </div>
 
@@ -102,14 +102,14 @@
                         </ul>
                     @endforeach
                 @endif
-                <div class="couponInfo">
-                    <p>쿠폰 이용 안내</p>
-                    <ul>
-                        <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
-                        <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
-                    </ul>
-                </div>
             </div>
+            <div class="couponInfo">
+                <p>쿠폰 이용 안내</p>
+                <ul>
+                    <li>쿠폰은 유효기간 내에만 사용이 가능하며, 유효기간이 지난 쿠폰은 소멸됩니다.</li>
+                    <li>쿠폰으로 구매한 상품 취소 시, 사용된 쿠폰은 복원되지 않고 소멸됩니다.</li>
+                </ul>
+            </div>            
         </div>        
     </div>
     <div class="couponBtns">

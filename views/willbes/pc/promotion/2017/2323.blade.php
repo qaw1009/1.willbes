@@ -48,7 +48,7 @@
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var order_cnt = {{ $arr_base['order_count'] or 0 }};
-            if(order_cnt === 0){ alert('구매자가 아닙니다.'); return; }
+            if(order_cnt === 0){ alert('강의 신청후 수강후기 작성이 가능합니다.'); return; }
 
             var ele_id = 'WrapReply';
             var data = {

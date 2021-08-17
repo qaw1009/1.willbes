@@ -256,7 +256,7 @@
             </div>
         </div>
 
-         <div class="evtCtnsBox wb_cts_notice">
+        <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">
             <ul class="tab02">
                 <li><a href="#txt1">수강료 환불규정</a></li>

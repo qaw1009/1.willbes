@@ -83,10 +83,6 @@
 			</div>
 			<div id="tab02">
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/08/2305_02_t03.jpg" alt="행정쟁송법"/>
-                    <a href="javascript:fnPlayerSample('163381', '1249160', 'HD');">샘플강의 보기</a>
-                </div>
-                <div class="p_re">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2305_02_t04.jpg" alt="행정쟁송법"/>
                     <a href="javascript:fnPlayerSample('163351', '1253459', 'HD');">샘플강의 보기</a>
                 </div>

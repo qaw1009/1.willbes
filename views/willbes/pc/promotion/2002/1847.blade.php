@@ -227,7 +227,7 @@
             <div class="evtCtnsBox evt_tops">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/1847_tops.jpg" title="올케어 시스템">
                 <div class="youtube">
-                    <iframe src="https://www.youtube.com/embed/2g2o_TPOmPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/2g2o_TPOmPY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 

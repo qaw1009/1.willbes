@@ -114,6 +114,15 @@
                             <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3050/prod-code/184761" target="_blank">수강신청</a></td>
                         </tr>
                         <tr>
+                            <td>영어</td>
+                            <td>한덕현</td>
+                            <td>[LIVE][21.09-10] 2022 한덕현 제니스영어 필살기출비법</td>
+                            <td>09/11 ~ 10/30</td>
+                            <td>토 9:00~13:00</td>
+                            <td>72,000</td>
+                            <td><a href="https://pass.willbes.net/pass/offLecture/show/cate/3043/prod-code/184999" target="_blank">수강신청</a></td>
+                        </tr>
+                        <tr>
                             <td>한국사</td>
                             <td>김상범</td>
                             <td>[LIVE][21.09-10] 2022 김상범 한국사 심화이론</td>

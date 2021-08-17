@@ -57,7 +57,10 @@
         .evt_info .btn a {display:block; text-align:center; font-size:28px; color:#fff; background:#000; padding:20px 0; margin-top:30px; border-radius:50px}
         .evt_info .btn a:hover {box-shadow:0 10px 10px rgba(0,0,0,.2);}
 
-        .evt_tops {background: url(https://static.willbes.net/public/images/promotion/2021/03/1847_tops_bg.jpg) no-repeat center top;}
+        .evt_tops {background: url(https://static.willbes.net/public/images/promotion/2021/08/1847_tops_bg.jpg) no-repeat center top;position:relative;}
+        .evt_tops .youtube iframe {width:730px; height:421px} 
+        .evt_tops .youtube {position:absolute; top:63px; left:52.3%; width:455px; z-index:1; margin-left:-405px; box-shadow:0 10px 20px rgba(0,0,0,.3);}  
+
 
         .evt02 {background:#fef1e0;}
         .evt03 {background:#d7e3ef;} 
@@ -222,7 +225,10 @@
             --}}
             
             <div class="evtCtnsBox evt_tops">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1847_tops.jpg" title="올케어 시스템">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1847_tops.jpg" title="올케어 시스템">
+                <div class="youtube">
+                    <iframe src="https://www.youtube.com/embed/2g2o_TPOmPY?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
 
             <div class="evtCtnsBox evt02">
@@ -230,11 +236,11 @@
             </div>
 
             <div class="evtCtnsBox evt03">
-                <img src="https://static.willbes.net/public/images/promotion/2020/09/1847_03.jpg" title="프리미엄">                           
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1847_03.jpg" title="프리미엄">                           
             </div>    
             
             <div class="evtCtnsBox evt04" id="to_go">
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1847_04.jpg"  title="최종마감">                             
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1847_04.jpg"  title="최종마감">                             
             </div>
         </form>
 	</div>

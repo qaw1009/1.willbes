@@ -17,6 +17,7 @@
 .sky {position:fixed; top:250px; right:10px; z-index:2;}
 
 .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/05/2204_top_bg.jpg) no-repeat center top;}
+.evt_top .youtube {padding-top:150px;}
 
 .evt03 {background:#edd6c0;}
 .evt03 .p_re {width:1120px; margin:0 auto}
@@ -54,6 +55,9 @@
 
         <div class="evtCtnsBox evt_top">  
             <img src="https://static.willbes.net/public/images/promotion/2021/05/2204_top.jpg" alt="밑바닥 기초영어 선석">  
+            <div class="youtube">
+                <iframe width="850" height="480" src="https://www.youtube.com/embed/zMd06TYCzGo?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+            </div>
         </div>
 
         <div class="evtCtnsBox evt01">            

@@ -36,16 +36,17 @@
         </div>
         <div class="couponWrap p_re">
             <ul class="tabWrap">
-                <li><a href="#coupon1" class="pl10 pr10 on">적용 가능 쿠폰</a></li>
-                <li><a href="#coupon2" class="pl10 pr10">전체 보유 쿠폰</a></li>
+                <li><a href="#coupon1" class="on">적용 가능 쿠폰</a></li>
+                <li><a href="#coupon2" class="">전체 보유 쿠폰</a></li>
             </ul>
             <ul class="btnWrap">
                 <li class="subBtn white NSK"><a href="#none" id="_btn_coupon_cancel">쿠폰 적용 안함 ></a></li>
                 <li class="subBtn NSK"><a href="#none" id="_btn_coupon_apply">쿠폰 적용 ></a></li>
             </ul>
             <div class="tabBox couponBox">
+                <div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>
                 <div id="coupon1" class="tabContent">
-                    <div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>
+                    {{--<div class="coupon caution-txt">내가 보유한 쿠폰 중 해당상품에 사용 가능한 쿠폰만 확인 및 적용 가능합니다.</div>--}}
                     <form id="_coupon_form" name="_coupon_form" method="POST" onsubmit="return false;" novalidate>
                         <input type="hidden" name="ele_id" value="{{ $ele_id }}"/>
                         <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray bdt-gray">
@@ -86,7 +87,7 @@
                     </form>
                 </div>
                 <div id="coupon2" class="tabContent" style="display: none;">
-                    <div class="coupon caution-txt">내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</div>
+                    {{--<div class="coupon caution-txt">내가 보유한 전체 쿠폰을 확인 할 수 있습니다.</div>--}}
                     <table cellspacing="0" cellpadding="0" class="couponTable under-gray tx-gray bdt-gray">
                         <colgroup>
                             <col style="width: 60px;">

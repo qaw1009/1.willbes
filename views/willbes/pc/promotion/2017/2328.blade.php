@@ -26,25 +26,28 @@
         .event01 .wrap a span {color:#31ffce; vertical-align:top}
         .event01 .wrap a:hover {background:#fe4e2c; color:#000}
 
-        .event02 {background:#a2999a; padding:100px 0; line-height:1.4; font-size:14px}
-        .event02 .title {font-size:60px; color:#fff;}
-        .event02 .title p {font-size:40px; color:#430303}
-        .event02 input {padding:10px 20px ; width:100%; border:1px solid #ccc;}
-        .event02 textarea {width:100%; padding:20px; border:1px solid #ccc; color:#666}
-
-        .evt_table table{width:100%;border-top:1px solid #ccc; border-left:1px solid #ccc; background:#fff; margin-top:100px}
-        .evt_table table tr {border-bottom:1px solid #ccc}
-        .evt_table table th,
-        .evt_table table td {padding:5px 10px; font-size:16px; color:#666; line-height:1.5; border-right:1px solid #ccc; text-align:center}
-        .evt_table table th {background:#4c4344; color:#fff; }
-        .evt_table table tbody td:nth-child(2) {text-align:left;}
+        .event02 {background:#a2999a; padding:100px 0; line-height:1.4; font-size:14px; color:#666}
+        .event02 .widthAuto {width:980px !important; margin:0 auto}
+        .event02 .head_title {font-size:56px; color:#fff;}
+        .event02 .head_title p {font-size:38px; color:#430303;}
+        .event02 .head_title span {font-size:20px;}
+        .event02 input {padding:10px 20px ; width:100%; border:1px solid #440203;}
+        .event02 textarea {width:100%; padding:20px; border:1px solid #440203; color:#666}
 
         .event02 .btns {margin-top:40px}
         .event02 .btns a {display:inline-block; width:200px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#440203; margin:0 10px;}
         .event02 .btns a:last-child {background:#5f524c}
         .event02 .btns a:hover {background:#000}
-        .evt_table .Paging li a {color:#fff; font-size:14px}
-        .evt_table .Paging li a.on {color:#440203}
+
+        .evt_table {margin-top:100px; text-align:left}
+        .evt_table .w-list {background:#fff; padding:20px; margin-bottom:5px}
+        .evt_table .w-list .title {border-bottom:1px solid #f0f0f0; padding-bottom:10px; margin-bottom:10px; color:#440203; font-size:16px}
+        .evt_table .w-list .title strong {margin-right:10px }
+        .evt_table .w-list .title div {float:right; font-size:14px}
+        .evt_table .w-list .title .r-line {color:#ccc; padding:0 10px; vertical-align:bottom}
+        .evt_table .w-list .title a {font-size:12px; padding:3px 5px; color:#fff; background:#440203}
+        .event02 .Paging li a {color:#fff; font-size:14px}
+        .event02 .Paging li a.on {color:#440203}
 
 
     </style>
@@ -57,16 +60,16 @@
         <div class="evtCtnsBox event01">
         	<div class="wrap NSK-Black">
                 <a href="https://ssam.willbes.net/lecture/show/cate/3137/pattern/only/prod-code/184440" target="_blank"><span>도장깨기 특강</span> 신청 바로가기 ></a>
-                <a href="javascript:void(0);" class="btn-study"><span>수강후기 작성</span> 바로가기 ></a>
             </div>
         </div>
         <div id="WrapReply"></div>
 
         <div class="evtCtnsBox event02">
             <div class="widthAuto">
-                <div class="title NSK-Black">
+                <div class="head_title NSK-Black">
                     전공음악 다이애나
                     <p>개년 기출문제 풀이 "도장깨기 특강" (2019~2021학년도)</p>
+                    <span class="NSK">📝 수강후기를 지금 바로 남겨주세요.</span>
                 </div>
                 <div class="mt50">
                     <input type="text" id="" name="" maxlength="50" placeholder="제목을 입력하세요."/>
@@ -80,111 +83,94 @@
                 </div>
 
                 <div class="evt_table">
-                    <table border="0" cellspacing="2" cellpadding="2">
-                        <col width="10%" />
-                        <col  />
-                        <col width="15%" />
-                        <col width="15%" />
-                        <col width="10%" />
-                        <thead>
-                            <tr>
-                                <th>번호</th>
-                                <th>제목</th>      
-                                <th>작성자</th>  
-                                <th>등록일</th>  
-                                <th>조회수</th>                       
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>   
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><a href="#none">글제목 노출됩니다.</a></td>    
-                                <td>will***</td> 
-                                <td>2021-08-15</td> 
-                                <td>3</td>                         
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="w-list">
+                        <div class="title">
+                            <strong>5</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                        </div>
+                        <div>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                        </div>
+                    </div>   
+                    
+                    <div class="w-list">
+                        <div class="title">
+                            <strong>4</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3 <span class="r-line">|</span> <a href="#none">삭제</a></div>
+                        </div>
+                        <div>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                        </div>
+                    </div> 
 
-                    <div class="Paging">
-                        <ul>
-                            <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                            <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                            <li><a href="#none">2</a><span class="row-line">|</span></li>
-                            <li><a href="#none">3</a><span class="row-line">|</span></li>
-                            <li><a href="#none">4</a><span class="row-line">|</span></li>
-                            <li><a href="#none">5</a><span class="row-line">|</span></li>
-                            <li><a href="#none">6</a><span class="row-line">|</span></li>
-                            <li><a href="#none">7</a><span class="row-line">|</span></li>
-                            <li><a href="#none">8</a><span class="row-line">|</span></li>
-                            <li><a href="#none">9</a><span class="row-line">|</span></li>
-                            <li><a href="#none">10</a></li>
-                            <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                        </ul>
-                    </div>
+                    <div class="w-list">
+                        <div class="title">
+                            <strong>3</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                        </div>
+                        <div>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                        </div>
+                    </div>   
+                    
+                    <div class="w-list">
+                        <div class="title">
+                            <strong>2</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                        </div>
+                        <div>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                        </div>
+                    </div> 
+
+                    <div class="w-list">
+                        <div class="title">
+                            <strong>1</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                        </div>
+                        <div>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
+                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="Paging">
+                    <ul>
+                        <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
+                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
+                        <li><a href="#none">2</a><span class="row-line">|</span></li>
+                        <li><a href="#none">3</a><span class="row-line">|</span></li>
+                        <li><a href="#none">4</a><span class="row-line">|</span></li>
+                        <li><a href="#none">5</a><span class="row-line">|</span></li>
+                        <li><a href="#none">6</a><span class="row-line">|</span></li>
+                        <li><a href="#none">7</a><span class="row-line">|</span></li>
+                        <li><a href="#none">8</a><span class="row-line">|</span></li>
+                        <li><a href="#none">9</a><span class="row-line">|</span></li>
+                        <li><a href="#none">10</a></li>
+                        <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
+                    </ul>
                 </div>
                 
             </div>

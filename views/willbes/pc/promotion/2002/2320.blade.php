@@ -57,7 +57,7 @@
 
         .wb_ctsInfo {background:#fff; padding:100px 0}  
         .wb_ctsInfo div {
-            width:980px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
+            width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
             font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
         }
         .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#000;font-weight:bold;} 

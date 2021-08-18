@@ -69,7 +69,8 @@
                 <div class="head_title NSK-Black">
                     전공음악 다이애나
                     <p>개년 기출문제 풀이 "도장깨기 특강" (2019~2021학년도)</p>
-                    <span class="NSK">📝 수강후기를 지금 바로 남겨주세요.</span>
+                    <span class="NSK">📝 로그인 하신 후 수강후기를 지금 남겨주세요.
+                    </span>
                 </div>
                 <form name="regi_form_register" id="regi_form_register">
                     {!! csrf_field() !!}

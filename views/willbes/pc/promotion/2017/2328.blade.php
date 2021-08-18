@@ -85,7 +85,7 @@
                 <div class="evt_table">
                     <div class="w-list">
                         <div class="title">
-                            <strong>5</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                            <strong>5</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 <span class="r-line">|</span> 3</div>
                         </div>
                         <div>
                             수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
@@ -97,7 +97,7 @@
                     
                     <div class="w-list">
                         <div class="title">
-                            <strong>4</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3 <span class="r-line">|</span> <a href="#none">삭제</a></div>
+                            <strong>4</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 <span class="r-line">|</span> 3 <span class="r-line">|</span> <a href="#none">삭제</a></div>
                         </div>
                         <div>
                             수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
@@ -113,7 +113,7 @@
 
                     <div class="w-list">
                         <div class="title">
-                            <strong>3</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                            <strong>3</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 <span class="r-line">|</span> 3</div>
                         </div>
                         <div>
                             수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
@@ -125,7 +125,7 @@
                     
                     <div class="w-list">
                         <div class="title">
-                            <strong>2</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                            <strong>2</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 <span class="r-line">|</span> 3</div>
                         </div>
                         <div>
                             수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
@@ -141,7 +141,7 @@
 
                     <div class="w-list">
                         <div class="title">
-                            <strong>1</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021-08-15 <span class="r-line">|</span> 3</div>
+                            <strong>1</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 <span class="r-line">|</span> 3</div>
                         </div>
                         <div>
                             수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  

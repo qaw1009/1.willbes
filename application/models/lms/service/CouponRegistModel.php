@@ -243,6 +243,25 @@ class CouponRegistModel extends WB_Model
     }
 
     /**
+     * 쿠폰 정보 조회 by 사용자쿠폰식별자
+     * @param int $coupon_detail_idx [사용자쿠폰식별자]
+     * @return mixed
+     */
+    public function findCouponByCdIdx($coupon_detail_idx)
+    {
+        $column = 'C.CouponIdx, C.CouponName';
+        $from = '
+            from ' . $this->_table['coupon_detail'] . ' as CD
+                inner join ' . $this->_table['coupon'] . ' as C
+                    on CD.CouponIdx = C.CouponIdx
+            where CD.CdIdx = ?
+                and C.IsStatus = "Y"
+        ';
+
+        return $this->_conn->query('select ' . $column . $from, [$coupon_detail_idx])->row_array();
+    }
+
+    /**
      * 쿠폰 등록
      * @param array $input
      * @return array|bool

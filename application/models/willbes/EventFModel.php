@@ -443,9 +443,7 @@ class EventFModel extends WB_Model
                         }
                     }
                     $etc_value = substr($etc_value, 0, -1);
-                }
-
-                if(empty($inputData['etc_data']) === false && empty($inputData['target_params']) === true){
+                } else {
                     $etc_value = element('etc_data', $inputData);
                 }
 
@@ -563,6 +561,8 @@ class EventFModel extends WB_Model
                 if (element('ssn_type', $inputData) == 'Y') {
                     $input_register_data['UserSsnEnc'] = $reg_ssn;
                 }
+
+                $input_register_data['EtcTitle'] = element('etc_title', $inputData);
 
                 if ($this->_addEventRegisterMember($input_register_data) !== true) {
                     throw new \Exception('특강 신청에 등록 실패했습니다.');
@@ -2163,7 +2163,7 @@ class EventFModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-                A.EmIdx, A.MemIdx, A.EtcValue, DATE_FORMAT(A.RegDatm, \'%Y.%m.%d\') AS RegDatm, A.UserName, A.FileFullPath, A.FileRealName,
+                A.EmIdx, A.MemIdx, A.EtcTitle, A.EtcValue, DATE_FORMAT(A.RegDatm, \'%Y.%m.%d\') AS RegDatm, A.UserName, A.FileFullPath, A.FileRealName,
                 C.MemId
             ';
 

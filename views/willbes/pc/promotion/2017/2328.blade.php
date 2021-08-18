@@ -71,136 +71,92 @@
                     <p>개년 기출문제 풀이 "도장깨기 특강" (2019~2021학년도)</p>
                     <span class="NSK">📝 수강후기를 지금 바로 남겨주세요.</span>
                 </div>
-                <div class="mt50">
-                    <input type="text" id="" name="" maxlength="50" placeholder="제목을 입력하세요."/>
-                </div>
-                <div class="mt10">
-                    <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="수강후기를 남겨 주세요~~!" onclick="loginCheck();"></textarea>
-                </div>
-                <div class="btns">
-                    <a href="#none">후기 등록</a>
-                    <a href="#none">초기화</a>
-                </div>
+                <form name="regi_form_register" id="regi_form_register">
+                    {!! csrf_field() !!}
+                    {!! method_field('POST') !!}
+                    <input type="hidden" name="event_idx" value="{{ $data['ElIdx'] }}"/>
+                    <input type="hidden" name="register_type" value="promotion"/>
+                    <input type="hidden" name="file_chk" value="N"/>
+                    <input type="hidden" name="register_chk[]" value="{{ $arr_base['register_list'][0]['ErIdx'] or "" }}"/>
+                    <input type="hidden" id="register_name" name="register_name" value="{{ sess_data('mem_name') }}" readonly="readonly"/>
+                    <input type="hidden" id="register_tel" name="register_tel" value="{{sess_data('mem_phone')}}">
+                    <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
 
-                <div class="evt_table">
-                    <div class="w-list">
-                        <div class="title">
-                            <strong>5</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 </div>
-                        </div>
-                        <div>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                        </div>
-                    </div>   
-                    
-                    <div class="w-list">
-                        <div class="title">
-                            <strong>4</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15  <span class="r-line">|</span> <a href="#none">삭제</a></div>
-                        </div>
-                        <div>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                        </div>
-                    </div> 
+                    <div class="mt50">
+                        <input type="text" id="etc_title" name="etc_title" maxlength="50" placeholder="제목을 입력하세요."/>
+                    </div>
+                    <div class="mt10">
+                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="수강후기를 남겨 주세요~~!"></textarea>
+                    </div>
+                    <div class="btns">
+                        <a href="javascript:void(0);" onclick="fn_submit();">후기 등록</a>
+                        <a href="javascript:void(0);" onclick="reset_form(this);">초기화</a>
+                    </div>
+                </form>
 
-                    <div class="w-list">
-                        <div class="title">
-                            <strong>3</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 </div>
-                        </div>
-                        <div>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                        </div>
-                    </div>   
-                    
-                    <div class="w-list">
-                        <div class="title">
-                            <strong>2</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 </div>
-                        </div>
-                        <div>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                        </div>
-                    </div> 
-
-                    <div class="w-list">
-                        <div class="title">
-                            <strong>1</strong> 글제목 노출됩니다. <div>will*** <span class="r-line">|</span> 2021.08.15 </div>
-                        </div>
-                        <div>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다. 
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.<br>
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                            수강후기 등록 전체 내용이 출력됩니다. 수강후기 등록 전체  
-                            내용이 출력됩니다. 수강후기 등록 전체 내용이 출력됩니다.
-                        </div>
-                    </div> 
-                </div>
-
-                <div class="Paging">
-                    <ul>
-                        <li class="Prev"><a href="#none"><img src="/public/img/willbes/paging/paging_prev.png"> </a></li>
-                        <li><a class="on" href="#none">1</a><span class="row-line">|</span></li>
-                        <li><a href="#none">2</a><span class="row-line">|</span></li>
-                        <li><a href="#none">3</a><span class="row-line">|</span></li>
-                        <li><a href="#none">4</a><span class="row-line">|</span></li>
-                        <li><a href="#none">5</a><span class="row-line">|</span></li>
-                        <li><a href="#none">6</a><span class="row-line">|</span></li>
-                        <li><a href="#none">7</a><span class="row-line">|</span></li>
-                        <li><a href="#none">8</a><span class="row-line">|</span></li>
-                        <li><a href="#none">9</a><span class="row-line">|</span></li>
-                        <li><a href="#none">10</a></li>
-                        <li class="Next"><a href="#none"><img src="/public/img/willbes/paging/paging_next.png"> </a></li>
-                    </ul>
-                </div>
-                
+                <div class="evt_table mt100" id="studyCertWrap"></div>
             </div>
         </div>
     </div>
     <!-- End Container -->
 
     <script type="text/javascript">
-        $('.btn-study').on('click', function() {
+        var $regi_form_register = $('#regi_form_register');
+
+        $(document).ready(function() {
+            fnRegisterList();
+        });
+
+        function fnRegisterList(page,search_type,search_value,move){
+            var _url = '{{ site_url('/event/listRegisterAjax') }}';
+            var data = {
+                'el_idx' : '{{ $data['ElIdx'] }}',
+                'search_type' : search_type,
+                'search_value' : search_value,
+                'file_type': '_study',
+                'limit' : 15,
+                'page' : page,
+            };
+            sendAjax(_url, data, function(ret) {
+                if (ret) {
+                    $("#studyCertWrap").html(ret);
+                    if(move){
+                        var offset = $("#studyCertWrap").offset();
+                        $('html, body').animate({scrollTop : offset.top}, 400)
+                    }
+                }
+            }, showAlertError, false, 'GET', 'html');
+        }
+
+        function fn_submit() {
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
             var order_cnt = {{ $arr_base['order_count'] or 0 }};
             if(order_cnt === 0){ alert('강의 신청후 수강후기 작성이 가능합니다.'); return; }
 
-            var ele_id = 'WrapReply';
-            var data = {
-                'ele_id' : ele_id,
-                'show_onoff' : 'on',
-                'site_code' : '{{ $__cfg['SiteCode'] }}',
-                'cate_code' : '{{ $__cfg['CateCode'] }}',
-                'prod_code' : '{{ $arr_promotion_params['arr_prod_code'] }}',
-                'subject_idx' : '{{ $arr_promotion_params['subject_idx'] }}',
-                'subject_name' : encodeURIComponent('{{ $arr_promotion_params['subject_name'] }}'),
-                'prof_idx' : '{{ $arr_promotion_params['prof_idx'] }}'
-            };
-            sendAjax('{{ front_url('/support/studyComment/') }}', data, function(ret) {
-                $('#' + ele_id).html(ret).show().css('display', 'block').trigger('create');
-                var targetOffset= $("#evtContainer").offset().top;
-                $('html, body').animate({scrollTop: targetOffset}, 1000);
-            }, showAlertError, false, 'GET', 'html');
-        });
+            if ($regi_form_register.find('input[name="etc_title"]').val() == '') {
+                alert('제목을 입력해주세요.');
+                return false;
+            }
+
+            if ($regi_form_register.find('textarea[name="etc_data"]').val() == '') {
+                alert('내용을 입력해주세요.');
+                return false;
+            }
+
+            var _url = '{!! front_url('/event/registerStore') !!}';
+            if (confirm('등록 후 수정이 불가능합니다. 후기등록 하시겠습니까?')) {
+                ajaxSubmit($regi_form_register, _url, function (ret) {
+                    if (ret.ret_cd) {
+                        alert('등록되었습니다.');
+                        location.reload();
+                    }
+                }, showValidateError, null, false, 'alert');
+            }
+        }
+
+        function reset_form(elem){
+            $(elem).closest('form').get(0).reset();
+        }
     </script>
 @stop

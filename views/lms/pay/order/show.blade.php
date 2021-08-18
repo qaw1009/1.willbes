@@ -179,7 +179,11 @@
                                     <td>{{ number_format($order_prod_row['OrderPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CardPayPrice']) }}</td>
                                     <td>{{ number_format($order_prod_row['CashPayPrice']) }}</td>
-                                    <td>{{ $order_prod_row['IsUseCoupon'] }} {!! $order_prod_row['IsUseCoupon'] == 'Y' ? '<br/>(' . $order_prod_row['UserCouponIdx'] . ')' : '' !!}</td>
+                                    <td>{{ $order_prod_row['IsUseCoupon'] }}
+                                        @if($order_prod_row['IsUseCoupon'] == 'Y')
+                                            <br/><a class="cs-pointer btn-user-coupon-info" data-toggle="popover" data-html="true" data-content="" data-user-coupon-idx="{{ $order_prod_row['UserCouponIdx'] }}">({{ $order_prod_row['UserCouponIdx'] }})</a>
+                                        @endif
+                                    </td>
                                     <td>{{ $order_prod_row['DiscRate'] }}</td>
                                     <td>{{ $order_prod_row['PayStatusCcdName'] }}</td>
                                     <td>{{ $order_prod_row['InvoiceNo'] }}</td>
@@ -581,6 +585,22 @@
             // 매출전표 버튼 클릭
             $('button[name="btn_receipt_print"]').on('click', function() {
                 popupOpen('{!! $data['order']['ReceiptUrl'] or '' !!}', '_receipt_print', 430, 700);
+            });
+
+            // 사용자 쿠폰정보 보기
+            $('#list_order_detail_table').on('mouseover', '.btn-user-coupon-info', function() {
+                if ($(this).data('content').length < 1) {
+                    var html = '';
+                    var data = { 'user_coupon_idx' : $(this).data('user-coupon-idx') };
+                    var url = location.pathname.substr(0, location.pathname.indexOf('/show/')) + '/showUserCouponInfo';
+                    sendAjax(url, data, function(ret) {
+                        if (ret !== null && Object.keys(ret).length > 0) {
+                            html += '<a href="{{ front_url('/service/coupon/regist/create/') }}' + ret.CouponIdx + '" target="_blank">' + ret.CouponName + ' (' + ret.CouponIdx + ')</a>';
+                        }
+                    }, showValidateError, false, 'GET');
+
+                    $(this).data('content', html);
+                }
             });
 
         {{-- 종합반수강접수에서만 사용 --}}

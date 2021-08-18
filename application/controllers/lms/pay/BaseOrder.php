@@ -285,6 +285,7 @@ class BaseOrder extends \app\controllers\BaseController
     }
 
     /**
+     * 엑셀다운로드 실행
      * @param string $file_name [확장자를 제외한 생성파일명]
      * @param array $list [엑셀내용]
      * @param array $headers [엑셀헤더]
@@ -318,5 +319,23 @@ class BaseOrder extends \app\controllers\BaseController
         if ($result !== true) {
             show_alert('엑셀파일 생성 중 오류가 발생하였습니다.', 'back');
         }
+    }
+
+    /**
+     * 사용자쿠폰 정보 조회
+     * @return CI_Output
+     */
+    protected function showUserCouponInfo()
+    {
+        $user_coupon_idx = $this->_reqG('user_coupon_idx');
+
+        if (empty($user_coupon_idx) === true || is_numeric($user_coupon_idx) === false) {
+            return $this->json_error('필수 파라미터 오류입니다.', _HTTP_BAD_REQUEST);
+        }
+
+        $this->load->loadModels(['service/couponRegist']);  // 쿠폰등록 모델 로드
+        $data = $this->couponRegistModel->findCouponByCdIdx($user_coupon_idx);
+
+        return $this->response($data);
     }
 }

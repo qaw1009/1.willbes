@@ -18,7 +18,7 @@
 
         /************************************************************/   
         
-        .sky {position:fixed;top:200px;right:10px;z-index:1;}
+        .sky {position:fixed;top:200px;right:10px;z-index:11;}
         .sky a {display:block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_top_bg.jpg) no-repeat center top;}
@@ -30,7 +30,6 @@
         .wb_cts04 {padding-bottom:50px;}
 
         .wb_cts05 {background:#ECECEC}
-        .wb_cts05s {background:#ECECEC}
 
         .wb_cts06 {background:url(https://static.willbes.net/public/images/promotion/2021/06/2240_06_bg.jpg) no-repeat center top;}
 
@@ -82,20 +81,6 @@
         .tabs a.active img.on {display:block}
         .tabs ul:after {content:""; display:block; clear:both}
 
-        /* tip */
-        .wb_cts_notice {background:#fff; text-align:left; padding:100px 0}
-        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
-        .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
-        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
-        .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
-        .wb_tipBox ul {margin-top:20px}
-        .wb_tipBox ul li {margin-bottom:5px}
-        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
-        .wb_tipBox th,
-        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
-        .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
-        .wb_tip_orange {font-size:12px; color:#c03011;}
-
         /*TAB_tip*/
         .tab02 {margin-bottom:20px}
         .tab02 li {display:inline; float:left; width:33.33333%;}
@@ -110,8 +95,23 @@
         .evtMenu ul li{width:calc( 100% / 6); float:left;}
         .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
         .evtMenu ul li a.on{border-bottom:5px white solid;}
-        .evtMenu ul:after{ content:""; display:block; clear:both; }
+        .evtMenu ul:after{ content:""; display:block; clear:both;}
+
         .fixed {position:fixed; top:0; left:0; width:100%;box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10}
+
+
+        .wb_cts_notice {background:#fff; text-align:left; padding:100px 0}
+        .wb_tipBox {border:1px solid #333; padding:30px; width:980px; margin:0 auto; }
+        .wb_tipBox > strong {font-size:16px !important; font-weight:bold; color:#333; display:block; margin-bottom:20px}
+        .wb_tipBox p {font-size:24px !important; font-weight:bold;  letter-spacing:-3px; margin:30px 0 10px; color:#111}	
+        .wb_tipBox ol li {margin-bottom:10px; line-height:1.3; list-style:decimal; margin-left:15px}
+        .wb_tipBox ul {margin-top:20px}
+        .wb_tipBox ul li {margin-bottom:5px}
+        .wb_tipBox table {width:100%; border-spacing:0px; border:1px solid #c9c7ca; border-top:2px solid #464646; border-bottom:1px solid #464646; table-layout:auto}
+        .wb_tipBox th,
+        .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
+        .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
+        .wb_tip_orange {font-size:12px; color:#c03011;}
 
     </style>
 

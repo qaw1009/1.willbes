@@ -84,10 +84,10 @@
                     <input type="hidden" name="register_overlap_chk" value="Y"> {{-- 중복 신청 가능여부 --}}
 
                     <div class="mt50">
-                        <input type="text" id="etc_title" name="etc_title" maxlength="50" placeholder="제목을 입력하세요."/>
+                        <input type="text" id="etc_title" name="etc_title" maxlength="100" placeholder="{{ (sess_data('is_login') != true) ? '로그인 후 이용해주세요.' : '제목을 입력하세요.' }}"/>
                     </div>
                     <div class="mt10">
-                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" maxlength="250" title="댓글" placeholder="수강후기를 남겨 주세요~~!"></textarea>
+                        <textarea id="etc_data" name="etc_data" cols="30" rows="5" title="댓글" placeholder="{{ (sess_data('is_login') != true) ? '로그인 후 이용해주세요.' : '수강후기를 남겨 주세요~~!' }}"></textarea>
                     </div>
                     <div class="btns">
                         <a href="javascript:void(0);" onclick="fn_submit();">후기 등록</a>

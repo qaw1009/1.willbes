@@ -788,7 +788,7 @@ class EventLectureModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = '
-            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcValue, A.RegDatm,
+            A.EmIdx, A.MemIdx, B.PersonLimitType, B.PersonLimit, B.Name AS RegisterName, A.EtcTitle, A.EtcValue, A.RegDatm,
             A.UserName, C.MemId, fn_dec(A.UserTelEnc) AS Phone, fn_dec(A.UserMailEnc) AS Mail, A.FileFullPath, A.FileRealName, A.IsStatus,
             O.Addr1, fn_dec(O.Addr2Enc) AS Addr2, O.ZipCode,
             fn_dec(A.UserSsnEnc) AS UserSsn

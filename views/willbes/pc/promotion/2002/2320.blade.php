@@ -127,7 +127,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_02.jpg" title="심화이론 포인트">
         </div>
 
-        <div class="evtCtnsBox evt03" data-aos="fade-right">
+        <div class="evtCtnsBox evt03" data-aos="fade-right" id="evt_02">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_03.jpg" title="신청하기">
                 <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" title="신청하기" style="position: absolute;left: 32.71%;top: 79.6%;width: 34.63%;height: 7.13%;z-index: 2;"></a>	
@@ -138,7 +138,7 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_04.jpg" title="심화이론 특별이벤트">
         </div>
 
-        <div class="evtCtnsBox evt05" data-aos="fade-right" id="evt_02">
+        <div class="evtCtnsBox evt05" data-aos="fade-right">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_05.jpg" title="스페셜 단과">
                 <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184615" target="_blank" title="신광은" style="position: absolute;left: 3.99%;top: 80.95%;width: 18.63%;height: 3.75%;z-index: 2;"></a>

@@ -121,9 +121,8 @@
 			</div>
             <div id="tab07" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t06.jpg" alt="행정쟁송법"/>
-                <a href="javascript:fnPlayerSample('163351', '1253459', 'HD');" title="" style="position: absolute; left: 77.75%; top: 26.9%; width: 18.23%; height: 4.06%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('163343', '1253411', 'HD');" title="" style="position: absolute; left: 77.75%; top: 60.3%; width: 18.23%; height: 4.06%; z-index: 2;"></a>
-                <a href="javascript:fnPlayerSample('171325', '1253395', 'HD');" title="" style="position: absolute; left: 77.75%; top: 93.65%; width: 18.23%; height: 4.06%; z-index: 2;"></a>             
+                <a href="javascript:fnPlayerSample('163351', '1253459', 'HD');" title="" style="position: absolute;left: 77.75%;top: 39.9%;width: 18.23%;height: 7.06%;z-index: 2;"></a>
+                <a href="javascript:fnPlayerSample('171325', '1253395', 'HD');" title="" style="position: absolute;left: 77.75%;top: 89.9%;width: 18.23%;height: 7.06%;z-index: 2;"></a>             
 			</div>
             <div id="tab08" class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/05/2203_02_t07.jpg" alt="인사노무관리"/>

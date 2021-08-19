@@ -20,7 +20,7 @@
         .sky {position:fixed;top:200px;right:15px;z-index:200;}
         .sky a {display:block;margin-top:10px;}
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2325_top_bg.jpg) no-repeat center top; height:969px;} 
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2325_top_bg.jpg) no-repeat center top;} 
         .evtTop span {position:absolute; left:50%; width:227px; top:483px; margin-left:-690px; z-index:1}
 
         .evt02 {background:#585858}
@@ -51,8 +51,9 @@
         --}}
 
         <div class="evtCtnsBox evtTop">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2325_top.jpg" alt="인적성검사"/>
             <span data-aos="fade-right">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2325_top_img.png" alt="인적성검사"/>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2325_top_img.png" alt=""/>
             </span>
         </div>
 
@@ -111,6 +112,16 @@
                         - 평가통계 : 인성통합 7항목 , 적성 4항목<br><br>
                     * 난이도순으로 1~4단계 응시 가능하며, 상품 선택 후 신청하여 수강해주시면 됩니다.</li>                     
                 </ul>
+                <div class="infoTit"><strong>응시방법</strong></div>
+				<ul>
+					<li>소개 페이지에서 수강하고자 하는 상품 우측의 가격 옆 체크박스에 체크한 후, [장바구니] 혹은 [바로결제] 버튼을 눌러 결제 화면으로 이동합니다.</li> 
+                    <li>주문상품정보를 확인 후 [개인정보 활용 및 환불정책 안내]에 동의하신 후 [결제하기] 버튼을 눌러 유료 결제를 진행합니다.<br>
+                    (수강시작일 설정은 불가능하며, 최초 검사 후 7일 이내 결과를 확인하셔야 합니다.)</li> 
+                    <li>사이트 우측 상단 [내강의실]에 접속 후 내강의실 세부 메뉴 아래의 [윌비스 인적성(PCA)검사 GO>] 버튼을 눌러 인적성검사 메뉴에 진입합니다.</li> 
+                    <li>응시하고자 하는 검사명을 클릭 후 검사를 진행합니다.<br> 
+                    (마우스커서가 검사화면을 벗어나거나 검사 팝업창이 비활성화되는 경우에는 검사가 중지되거나 리셋될 수 있으므로 유의바랍니다.)</li> 
+                    <li>검사완료 후 검사 팝업창 우측 상단의 X버튼을 눌러 검사창을 종료해주시고 F5 버튼을 눌러 새로고침한 뒤 [결과보기] 버튼을 눌러 응시한 검사의 결과를 확인할 수 있습니다.</li>       
+				</ul>
 				<div class="infoTit"><strong>성향검사 시 유의사항</strong></div>
 				<ul>
 					<li>인성검사는 본인의 생각, 행동에 대해 솔직하고 일관되게 응답해야 합니다. 거짓 응답할 경우 신뢰도가 낮게 나타나 불리한 판정이 나올 수 있습니다.</li>

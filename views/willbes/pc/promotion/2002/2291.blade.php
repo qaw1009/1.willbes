@@ -181,9 +181,9 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2291_04_03.jpg"  alt="단과"/>
                 <div class="btns">
                     <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184050" title="형사법 신광은" target="_blank">신청하기 ></a>
-                    <a href="#none" title="경찰학 장정훈">준비중...</a>
-                    <a href="#none" title="헌법 김원욱">준비중...</a>
-                    <a href="#none" title="헌법 이국령">준비중...</a>
+                    <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184605" title="경찰학 장정훈" target="_blank">신청하기 ></a>
+                    <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184606" title="헌법 김원욱" target="_blank">신청하기 ></a>
+                    <a href="https://police.willbes.net/pass/offLecture/show/cate/3010/prod-code/184072" title="헌법 이국령" target="_blank">신청하기 ></a>
                 </div>
             </div>
         </div>

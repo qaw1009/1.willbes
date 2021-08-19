@@ -389,9 +389,12 @@ class PopupModel extends WB_Model
 
             //이미지 수정
             $this->load->library('upload');
-            $paths = explode('/', $row['PopUpFullPath']);  //날짜 형태의 값만 추출
-            $upload_dir = config_item('upload_prefix_dir') . '/popup/' . $paths[5] . '/' . $paths[6];
-            /*$upload_dir = config_item('upload_prefix_dir') . '/popup/' . date('Ymd');*/
+            if (empty($row['PopUpFullPath']) === false) {
+                $paths = explode('/', $row['PopUpFullPath']);  //날짜 형태의 값만 추출
+                $upload_dir = config_item('upload_prefix_dir') . '/popup/' . $paths[5] . '/' . $paths[6];
+            } else {
+                $upload_dir = config_item('upload_prefix_dir') . '/popup/' . date('Y') . '/' . date('md');
+            }
 
             $uploaded = $this->upload->uploadFile('file', ['attach_img'], $this->_getAttachImgNames(), $upload_dir);
             if (is_array($uploaded) === false) {

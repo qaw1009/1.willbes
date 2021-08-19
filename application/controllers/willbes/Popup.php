@@ -8,8 +8,11 @@ class Popup extends \app\controllers\BaseController
     protected $sess_controller = false;  // 세션 사용안함
     protected $sess_methods = array('click');   // 세션 사용 메소드
 
-    // 팝업구분 공통코드 (레이어팝업, 모달팝업, 하단고정팝업)
-    private $_popup_type_ccd = ['717001' => 'layer', '717002' => 'modal', '717003' => 'bnBottom'];
+    // 팝업구분 공통코드 (레이어팝업, 모달팝업, 하단고정팝업, 유튜브모달팝업)
+    private $_popup_type_ccd = ['717001' => 'layer', '717002' => 'modal', '717003' => 'bnBottom', '717004' => 'youtube'];
+
+    // 모달형태 팝업구분 공통코드 (모달팝업, 유튜브모달팝업)
+    private $_modal_popup_type_ccd = ['717002', '717004'];
 
     public function __construct()
     {
@@ -35,13 +38,14 @@ class Popup extends \app\controllers\BaseController
         }
 
         $data = array_map(function ($row) {
+            $row['PopUpTypeName'] = array_get($this->_popup_type_ccd, $row['PopUpTypeCcd']);
             $row['PopUpImgMapData'] = empty($row['PopUpImgMapData']) === false ? json_decode($row['PopUpImgMapData'], true) : '';
+            $row['IsModal'] = in_array($row['PopUpTypeCcd'], $this->_modal_popup_type_ccd) === true;
             return $row;
         }, $data);
 
         return $this->load->view('common/popup', [
-            'data' => $data,
-            'arr_popup_type_ccd' => $this->_popup_type_ccd
+            'data' => $data
         ]);
     }
 

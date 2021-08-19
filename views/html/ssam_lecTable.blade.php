@@ -36,7 +36,7 @@
     <div class="Content p_re">
     <div class="willbes-AcadInfo c_both">
         <div class="ssamLecTable NGR">
-        <h5 class="NSK-Black">윌비스 임용 <span>2021년 패키지강의 및 7~8월 단과</span>강의 일정</h5>
+        <h5 class="NSK-Black">윌비스 임용 <span>2021년 패키지강의 및 9~10월 단과</span>강의 일정</h5>
         <table cellspacing="0" cellpadding="0"><colgroup><col width="70" /><col width="60" /><col /><col width="140" /><col width="210" /><col width="65" /><col width="65" /></colgroup>
             <thead>
                 <tr>

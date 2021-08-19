@@ -31,7 +31,7 @@
         .evt05 .sTitle {margin:100px 0 30px; font-size:20px; text-align:left; color:#464646}
 
 
-        .evtInfo {padding:80px 0; background:#fff; color:#000; font-size:16px}
+        .evtInfo {padding:80px 0; background:#e1e3e3; color:#000; font-size:16px}
         .evtInfoBox {width:1000px; margin:0 auto; text-align:left; line-height:1.4}
         .evtInfoBox li {list-style:disc; margin-left:20px; font-size:14px}
         .evtInfoBox h4 {font-size:35px; margin-bottom:50px}
@@ -87,6 +87,49 @@
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>3))
             @endif
         </div>
+
+        <div class="evtCtnsBox evtInfo" id="careful">
+			<div class="evtInfoBox">
+				<h4 class="NSK-Black">윌비스 소방공무원 인·적성검사 이용안내</h4>
+				<div class="infoTit"><strong>상품구성</strong></div>
+				<ul>
+					<li>본 상품은 소방공무원 필기 시험 합격 후 진행하는 채용절차 중 [인·적성검사]에 대비할 수 있는 과정입니다.</li> 
+                    <li>1) 윌비스_소방 인적성역량(PCA)검사 [적성 난이도별 1~4단계]<br>
+                        - 검사 구성  : 2문 선택형, 4문 리커트, 4문 선택형, (적성) 4지 선다형<br>
+                        - 문항수 : 인성역량검사  300문제, 적성검사 40문제<br>
+                        - 시험시간 : 인성영량 50분, 적성검사 50분<br>
+                        - 검사 평가통계 : 인성 7항목, 역량 4항목, 회복탄력도 4항목, 적성 4항목<br><br>
+                    2) 윌비스_소방 인적성검사_[적성 난이도별 1~4단계]<br>
+                        - 문항수 : 인성검사 200문제, 적성검사 40문제<br>
+                        - 시험시간 : 인성검사 30분, 적성 50분<br>
+                        - 검사구분 : 2문 선택형, 4문 리커트, (적성)4지 선다형<br>
+                        - 평가통계 : 인성통합 7항목 , 적성 4항목<br><br>
+                    3) 윌비스_인적성Lite검사 [적성 난이도별 1~4단계]<br>
+                        - 문항수 : 인성 120문제, 적성 40문제<br>
+                        - 시험시간 : 인성 15분, 적성 50분<br>
+                        - 검사구분 : 2문 선택형, 4문 리커트, (적성)4지 선다형<br>
+                        - 평가통계 : 인성통합 7항목 , 적성 4항목<br><br>
+                    * 난이도순으로 1~4단계 응시 가능하며, 상품 선택 후 신청하여 수강해주시면 됩니다.</li>                     
+                </ul>
+				<div class="infoTit"><strong>성향검사 시 유의사항</strong></div>
+				<ul>
+					<li>인성검사는 본인의 생각, 행동에 대해 솔직하고 일관되게 응답해야 합니다. 거짓 응답할 경우 신뢰도가 낮게 나타나 불리한 판정이 나올 수 있습니다.</li>
+                    <li>검사 중 뒤로가기 기능은 불가능합니다.</li>
+                    <li>시간 만료로 검사를 완료하지 못하여 강제 종료될 경우, 검사결과는 정상 처리됩니다.</li>
+                    <li>답안 제출 완료 후 재응시는 불가능합니다.</li>       
+				</ul>
+                <div class="infoTit"><strong>시스템 유의사항</strong></div>
+				<ul>
+					<li>무선인터넷(Wi-Fi) 환경에서는 검사가 불안정하오니 유선인터넷을 이용하시기 바랍니다.</li>
+                    <li>본 검사는 Windows, Mac PC에서만 실행 가능합니다. (타 OS 리눅스에서 불가능)</li>
+                    <li>검사 중 마우스가 검사 화면을 벗어날 경우 파란색 경고창이 나타납니다.</li>
+                    <li>로그인 후 "이 웹페이지에서 클립보드에 엑세스 할 수 있도록 허용하시겠습니까?"라는 알림창이 나타나면 엑세스 허용을 클릭하시기 바랍니다("허용 안 함"을 누르면 검사진행불가).<br><br>
+                        ※ 알림창이 나타나지 않고 흰 화면만 보일 경우, 해결방안 매뉴얼 <a href="https://willbes.canwe.co.kr/exam/test_error.pdf" target="_blank" class="tx-red">
+CLICK</a></li>                    				
+				</ul>
+				
+			</div>
+		</div>
     </div>
 
 

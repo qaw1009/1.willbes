@@ -99,6 +99,7 @@
 
     {{-- 경찰학원 경기광주 캠퍼스 --}}
     @if(($__cfg['SiteCode'] == '2002') && ($campus_code == '605010'))
+        <!--
         {{--//유튜브 모달팝업--}}
         <style type="text/css">
             #Popup200916 {position:fixed; top:100px; left:50%; width:850px; height:482px; margin-left:-425px; display: block;}
@@ -113,6 +114,7 @@
             </ul>
         </div>
         <div id="PopupBackWrap" class="willbes-Layer-Black"></div>
+        -->
     @endif
     
 

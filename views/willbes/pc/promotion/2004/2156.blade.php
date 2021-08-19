@@ -10,10 +10,9 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-            position:relative;
         }
         .evtContent span {vertical-align:auto}
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px;position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 0 10px rgba(0,0,0,.5);}
 
@@ -23,7 +22,7 @@
             position:fixed;
             top:200px;
             right:10px;
-            z-index:1;
+            z-index:11;
             width:182px;
         }
         .skybanner a {display:block; margin-bottom:10px}
@@ -53,13 +52,24 @@
         .wb_cts08 {background:#ECECEC;}
  
         /* TAB */
-        .tab {width:980px; margin:0 auto}		
-        .tab li {display:inline; float:left;margin-left:14px;margin-bottom:14px;}	
-        .tab a img.off {display:block}
-        .tab a img.on {display:none}
-        .tab a.active img.off {display:none}
-        .tab a.active img.on {display:block}
-        .tab:after {content:""; display:block; clear:both}
+        .tabs{width:100%; text-align:center; padding-top:30px}
+        .tabs ul {width:896px;margin:0 auto;}		
+        .tabs li {display:inline; float:left; margin-bottom:15px}
+        .tabs li:last-child {margin-left:14px; }
+        .tabs a img.off {display:block}
+        .tabs a img.on {display:none}
+        .tabs a.active img.off {display:none}
+        .tabs a.active img.on {display:block}
+        .tabs ul:after {content:""; display:block; clear:both}
+
+        /*TAB_tip*/
+        .tab02 {margin-bottom:20px}
+        .tab02 li {display:inline; float:left; width:33.33333%;}
+        .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
+        .tab02 li a:hover,
+        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
+        .tab02 li:last-child a {margin:0}
+        .tab02:after {content:""; display:block; clear:both}  
 
         /*분할 유튜브*/
         .youtube_contents {position:relative;width:1050px;margin:auto;z-index:1;}
@@ -81,17 +91,17 @@
         .youtube_divide .preview_list_area .preview_list ul li .text_box {padding-left:10px;display:inline-block;width:123px;box-sizing:border-box;vertical-align: middle;}
         .youtube_divide .preview_list_area .preview_list ul li .text_box p {font-size:13px;font-weight:400;line-height:18px;color:#000;margin-bottom: 2px;
                                                                             overflow:hidden;text-overflow:ellipsis;word-wrap:break-word;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;}
-        .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}        
+        .youtube_divide .preview_list_area .preview_list ul li .text_box span {font-size:12px;font-weight:400;line-height:18px;color:#666;}    
+        
 
-        /*탭(이미지)*/
-        .tabs{width:100%; text-align:center; padding-top:30px}
-        .tabs ul {width:927px;margin:0 auto;}		
-        .tabs li {display:inline; float:left;margin-left:15px;margin-bottom:15px;}	
-        .tabs a img.off {display:block}
-        .tabs a img.on {display:none}
-        .tabs a.active img.off {display:none}
-        .tabs a.active img.on {display:block}
-        .tabs ul:after {content:""; display:block; clear:both}
+        .evtMenu {background:#4f7bf6; }            
+        .evtMenu ul {width:1120px; margin:0 auto; text-align:left}        
+        .evtMenu ul li{width:calc( 100% / 6); float:left;}
+        .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
+        .evtMenu ul li a.on{border-bottom:5px white solid;}
+        .evtMenu ul:after{ content:""; display:block; clear:both;}
+
+        .evtMenu.fixed {position:fixed; top:0; left:0; width:100%; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10} 
 
 
         /* tip */
@@ -106,16 +116,8 @@
         .wb_tipBox th,
         .wb_tipBox td {text-align:center; padding:7px 10px; border-bottom:1px solid #e4e4e4; border-right:1px solid #e4e4e4}
         .wb_tipBox th {font-weight:bold; color:#333; background:#f6f0ec;}	
-        .wb_tip_orange {font-size:12px; color:#c03011;}
+        .wb_tip_orange {font-size:12px; color:#c03011;}    
 
-        /*TAB_tip*/
-        .tab02 {margin-bottom:20px}
-        .tab02 li {display:inline; float:left; width:33.33333%;}
-        .tab02 li a { display:block; text-align:center; font-size:14px; font-weight:bold; background:#323232; color:#fff; padding:14px 0; border:1px solid #323232; margin-right:2px}
-        .tab02 li a:hover,
-        .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
-        .tab02 li:last-child a {margin:0}
-        .tab02:after {content:""; display:block; clear:both}   
 
     </style>
 
@@ -134,270 +136,45 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_01.jpg" alt="윌비스 불꽃소방"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts02" >
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2156_02s.jpg" alt="적중 또 적중"/>
-                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox wb_cts03" >
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_03.jpg" alt="구매하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="불꽃소방 라이브 모드 구매하기" style="position: absolute; left: 23.13%; top: 79.16%; width: 55%; height: 7.92%; z-index: 2;"></a>
-            </div>
-        </div>
-
-        <div class="evtCtnsBox wb_cts04" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04.jpg" alt="소방직 합격"/>
-            <div class="slide_con">
-                <ul id="slidesImg4">
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_01.png" /></li>
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_02.png" /></li>  
-                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_03.png" /></li>     
+        <nav class="evtMenu">
+            <div class="widthAuto">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts07')" class="tab">
+                            수강신청 &<br>시간표 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts08')"  class="tab">
+                            연간&특강<br>합격 커리
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts04')"  class="tab">
+                            수강&합격<br>후기
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts03')"  class="tab">
+                            라이브모드<br>신청
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts06')"  class="tab">
+                            교수진<br>YOUTUBE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts02')"  class="tab">
+                            무료특강<br>신청
+                        </a>
+                    </li>
                 </ul>
-                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
-                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>
             </div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_emo.jpg"  alt="이모티콘"/>
-        </div>
+        </nav>
 
-        <div class="evtCtnsBox wb_cts05" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_05.gif" alt="커리큘럼"/>
-        </div>  
         
-        <div class="evtCtnsBox wb_cts06" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_06.jpg" alt="합격을 이끌어낸 그 과정"/>
-            <div class="youtube_contents">
-                <div class="youtube_divide">             
-                    <div class="preview_area">
-                        <div class="avi_box">
-                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
-                        </div>
-                        <h2 class="avi_title">2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</h2>
-                    </div>
-                    <div class="preview_list_area">
-                        <div class="preview_list">
-                            <ul>
-
-                                <li class="on">
-                                    <a href="#tab1" class="active">
-                                        <span class="num_box" data-num="1">1</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
-                                        <div class="text_box">
-                                            <p>2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab2">
-                                        <span class="num_box" data-num="2">2</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
-                                        <div class="text_box">
-                                            <p>2022년 소방직 공무원 이석준 [행정법] 공개 설명회</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab3">
-                                        <span class="num_box" data-num="3">3</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방관계법규 빈출테마 마지막] 종사명령·강제처분·피난명령·긴급조치 빈칸 채우기 특강!</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab4">
-                                        <span class="num_box" data-num="4">4</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방관계법규 빈출테마 2탄] 화재경계지구 빈칸 채우기 특강!</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                
-                                <li class="">
-                                    <a href="#tab5">
-                                        <span class="num_box" data-num="5">5</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab6">
-                                        <span class="num_box" data-num="6">6</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail04.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방학개론 빈출테마 3탄] 화재정의 중요 키워드 빈칸 채우기 & O/X</p>
-                                        </div>
-                                    </a>
-                                </li> 
-                              
-                                <li class="">
-                                    <a href="#tab7">
-                                        <span class="num_box" data-num="7">7</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail05.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방학개론 빈출테마 2탄] 연소의 분류 빈칸 채우기 및 O/X 특강!</p>                                   
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab8">
-                                        <span class="num_box" data-num="8">8</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail06.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방학개론 빈출테마 1탄] 열량 및 비열 빈칸 채우기 및 O/X 특강!</p>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <li class="">
-                                    <a href="#tab9">
-                                        <span class="num_box" data-num="9">9</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail07.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방학개론] 연소의 3요소 vs. 4요소의 차이를 알려주마~</p>
-                                        </div>
-                                    </a>
-                                </li>                                
-                             
-                                <li class="">
-                                    <a href="#tab10">
-                                        <span class="num_box" data-num="10">10</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail08.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[행정법] 행정심판에서 가장 중요한 ‘의무이행심판‘ O / X로 쉽게 정리하기!</p>
-                                        </div>
-                                    </a>
-                                </li>  
-                               
-                                <li class="">
-                                    <a href="#tab11">
-                                        <span class="num_box" data-num="11">11</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail09.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[행정법] 취소소송의 소송요건 - 『변경처분』에는 공식이 있다?!</p>
-                                        </div>
-                                    </a>
-                                </li>              
-
-                                <li class="">
-                                    <a href="#tab12">
-                                        <span class="num_box" data-num="12">12</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail10.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[행정법] 인생을 반영하는 드라마틱한😲❗ ‘기·승·전·결’ - 『취소소송의 구조』</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab13">
-                                        <span class="num_box" data-num="13">13</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail11.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>행정법] 개인정보보호법 개정법령에 대한 출제 포인트 Pick!!😉</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab14">
-                                        <span class="num_box" data-num="14">14</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail12.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방한국사] 중앙집권국가를 위한 4가지 요건은 뭘까?</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab15">
-                                        <span class="num_box" data-num="15">15</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail13.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방경채영어] 빈출 『전화 관련 주요 표현』 암기하기!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab16">
-                                        <span class="num_box" data-num="16">16</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail14.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사 vs. 관계부사』 편!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab17">
-                                        <span class="num_box" data-num="17">17</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail15.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계부사』 편!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab18">
-                                        <span class="num_box" data-num="18">18</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail16.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사』 편!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab19">
-                                        <span class="num_box" data-num="19">19</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail17.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방 영어] 『5형식』 바로 이거야! 이해하기 쉽지?</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab20">
-                                        <span class="num_box" data-num="20">20</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail18.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>[소방영어] 『수·시제·태』 단 5분 만에 이해하기!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                                <li class="">
-                                    <a href="#tab21">
-                                        <span class="num_box" data-num="21">21</span>
-                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail19.jpg" alt=""></div>
-                                        <div class="text_box">
-                                            <p>소방 영어] 『1~5형식』 바로 이게 포인트야!</p>
-                                        </div>
-                                    </a>
-                                </li>   
-
-                            </ul>
-                        </div>
-                    </div>          
-                </div>
-            </div>
-        </div>  
-        
-        <div class="evtCtnsBox wb_cts07" >
+        <section class="evtCtnsBox wb_cts07">
             <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07.jpg" alt="기초 입문 종합반"/>
             <div class="tabs" id="buyLec">                
                 <ul>
@@ -425,15 +202,276 @@
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_07_cts2.png" />
                 <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3050&campus_ccd=605001&search_text=UHJvZE5hbWU6TElWRQ%3D%3D" target="_blank" title="" style="position: absolute; left: 27.46%; top: 64.99%; width: 44.53%; height: 18.57%; z-index: 2;"></a>
             </div>
-        </div>  
+        </section>  
 
-        <div class="evtCtnsBox wb_cts08" >
+        <section class="evtCtnsBox wb_cts08" >
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_08.jpg" alt="5월 개강 불꽃소방 연간 패스"/>
                 <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/184717" target="_blank" title="공채" style="position: absolute; left: 18.66%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/offPackage/show/prod-code/184718" target="_blank" title="경채" style="position: absolute; left: 59.38%; top: 58.67%; width: 22.14%; height: 9.73%; z-index: 2;"></a>
             </div>
-        </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_05.gif" alt="커리큘럼"/>
+        </section>
+
+
+        <section class="evtCtnsBox wb_cts04" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04.jpg" alt="소방직 합격"/>
+            <div class="slide_con">
+                <ul id="slidesImg4">
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_01.png" /></li>
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_02.png" /></li>  
+                    <li><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_03.png" /></li>     
+                </ul>
+                <p class="leftBtn"><a id="imgBannerLeft4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_left.png"></a></p>
+                <p class="rightBtn"><a id="imgBannerRight4"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_right.png"></a></p>
+            </div>
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_04_emo.jpg"  alt="이모티콘"/>
+        </section>
+
+        <section class="evtCtnsBox wb_cts03" >
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_03.jpg" alt="구매하기"/>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="불꽃소방 라이브 모드 구매하기" style="position: absolute; left: 23.13%; top: 79.16%; width: 55%; height: 7.92%; z-index: 2;"></a>
+            </div>
+        </section>
+        
+        <section class="evtCtnsBox wb_cts06" >
+            <img src="https://static.willbes.net/public/images/promotion/2021/04/2156_06.jpg" alt="합격을 이끌어낸 그 과정"/>
+            <div class="youtube_contents">
+                <div class="youtube_divide">             
+                    <div class="preview_area">
+                        <div class="avi_box">
+                            <iframe webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="730" height="411" frameborder="false" scrolling="no" src="https://www.youtube.com/embed/myYzKGCImy4?rel=0"></iframe>
+                        </div>
+                        <h2 class="avi_title">2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</h2>
+                    </div>
+                    <div class="preview_list_area">
+                        <div class="preview_list">
+                            <ul>
+
+                                <li class="on">
+                                    <a href="#tab1" class="active">
+                                        <span class="num_box" data-num="1">1</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail01s.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>2022년 소방직 공무원 이종오 [소방학 & 소방관계법규] 공개 설명회</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab2">
+                                        <span class="num_box" data-num="2">2</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/05/2156_thumbnail02s.png" alt=""></div>
+                                        <div class="text_box">
+                                            <p>2022년 소방직 공무원 이석준 [행정법] 공개 설명회</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab3">
+                                        <span class="num_box" data-num="3">3</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail01.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방관계법규 빈출테마 마지막] 종사명령·강제처분·피난명령·긴급조치 빈칸 채우기 특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab4">
+                                        <span class="num_box" data-num="4">4</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail02.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방관계법규 빈출테마 2탄] 화재경계지구 빈칸 채우기 특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#tab5">
+                                        <span class="num_box" data-num="5">5</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail03.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방관계법규 빈출테마 1탄] 소방기본법의 목적 빈칸 채우기 특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab6">
+                                        <span class="num_box" data-num="6">6</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail04.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론 빈출테마 3탄] 화재정의 중요 키워드 빈칸 채우기 & O/X</p>
+                                        </div>
+                                    </a>
+                                </li> 
+                              
+                                <li>
+                                    <a href="#tab7">
+                                        <span class="num_box" data-num="7">7</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail05.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론 빈출테마 2탄] 연소의 분류 빈칸 채우기 및 O/X 특강!</p>                                   
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab8">
+                                        <span class="num_box" data-num="8">8</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail06.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론 빈출테마 1탄] 열량 및 비열 빈칸 채우기 및 O/X 특강!</p>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#tab9">
+                                        <span class="num_box" data-num="9">9</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail07.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방학개론] 연소의 3요소 vs. 4요소의 차이를 알려주마~</p>
+                                        </div>
+                                    </a>
+                                </li>                                
+                             
+                                <li>
+                                    <a href="#tab10">
+                                        <span class="num_box" data-num="10">10</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail08.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[행정법] 행정심판에서 가장 중요한 ‘의무이행심판‘ O / X로 쉽게 정리하기!</p>
+                                        </div>
+                                    </a>
+                                </li>  
+                               
+                                <li>
+                                    <a href="#tab11">
+                                        <span class="num_box" data-num="11">11</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail09.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[행정법] 취소소송의 소송요건 - 『변경처분』에는 공식이 있다?!</p>
+                                        </div>
+                                    </a>
+                                </li>              
+
+                                <li>
+                                    <a href="#tab12">
+                                        <span class="num_box" data-num="12">12</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail10.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[행정법] 인생을 반영하는 드라마틱한😲❗ ‘기·승·전·결’ - 『취소소송의 구조』</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab13">
+                                        <span class="num_box" data-num="13">13</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail11.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>행정법] 개인정보보호법 개정법령에 대한 출제 포인트 Pick!!😉</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab14">
+                                        <span class="num_box" data-num="14">14</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail12.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방한국사] 중앙집권국가를 위한 4가지 요건은 뭘까?</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab15">
+                                        <span class="num_box" data-num="15">15</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail13.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방경채영어] 빈출 『전화 관련 주요 표현』 암기하기!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab16">
+                                        <span class="num_box" data-num="16">16</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail14.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사 vs. 관계부사』 편!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab17">
+                                        <span class="num_box" data-num="17">17</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail15.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계부사』 편!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab18">
+                                        <span class="num_box" data-num="18">18</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail16.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방영어] 우리 관계를 깔끔하게 정리해볼까? 『관계대명사』 편!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab19">
+                                        <span class="num_box" data-num="19">19</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail17.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방 영어] 『5형식』 바로 이거야! 이해하기 쉽지?</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab20">
+                                        <span class="num_box" data-num="20">20</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail18.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>[소방영어] 『수·시제·태』 단 5분 만에 이해하기!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                                <li>
+                                    <a href="#tab21">
+                                        <span class="num_box" data-num="21">21</span>
+                                        <div class="thum_box"><img src="https://static.willbes.net/public/images/promotion/2021/04/2156_thumbnail19.jpg" alt=""></div>
+                                        <div class="text_box">
+                                            <p>소방 영어] 『1~5형식』 바로 이게 포인트야!</p>
+                                        </div>
+                                    </a>
+                                </li>   
+
+                            </ul>
+                        </div>
+                    </div>          
+                </div>
+            </div>
+        </section>  
+
+        <section class="evtCtnsBox wb_cts02" >
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2156_02s.jpg" alt="적중 또 적중"/>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1358" target="_blank" title="적중사례 자세히 보기" style="position: absolute;  left: 36.79%; top: 88.43%; width: 26.7%; height: 6.65%; z-index: 2;"></a>
+            </div>
+        </section>
 
          <div class="evtCtnsBox wb_cts09">
             <div class="wb_tipBox">
@@ -564,7 +602,37 @@
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">     
+    <script type="text/javascript">
+        let section02 = document.querySelector('.wb_cts07');
+        let navBar = document.querySelector('nav');
+        window.addEventListener('scroll', function(){
+            // nav 아래로 스크롤시 nav 상단고정
+            if ( window.pageYOffset > section02.offsetTop ) {
+                navBar.classList.add('fixed');
+            } else {
+                navBar.classList.remove('fixed'); 
+            }
+
+            let tabs = $('.tab');
+            let sections = $('section')
+            sections.each( function(i,el){
+                if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
+                    tabs.eq(i).addClass('on')
+                    tabs.eq(i).parent('li').siblings().children().removeClass('on')
+                }
+            })
+        })
+
+        function scrolling(className) {
+            let target = document.querySelector(className);
+            // window.scroll(0,target.offsetTop + 1);
+            $('html, body').stop().animate({
+                scrollTop : target.offsetTop + 1
+            }, 500)
+        }
+    </script>
+
+    <script type="text/javascript">    
     
         $(document).ready(function() {
             var slidesImg4 = $("#slidesImg4").bxSlider({
@@ -590,20 +658,6 @@
                 slidesImg4.goToNextSlide();
             });
         });     
-
-
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabContaier ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
-                return false;
-            });
-        });
 
 
         $(document).ready(function(){
@@ -732,8 +786,7 @@
                     e.preventDefault()
                 });
             });
-        });
-        
+        }); 
 
     </script>
 

@@ -215,7 +215,7 @@
         </div>
 
         <div class="evtCtnsBox wb_cts08" >
-            <a href="javascript:go_popup()"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/></a>
+            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
         </div>
 
         <!--퀴즈팝업-->

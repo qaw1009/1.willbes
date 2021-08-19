@@ -20,7 +20,7 @@
         .skybanner a {display: block; margin-bottom:10px}
 
         .evt00 {background:#0a0a0a}
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/07/2292_top_bg.jpg) no-repeat center top; }   
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2292_top_bg.jpg) no-repeat center top; }   
 
         .wb_cts01 {background:#fff}
 
@@ -91,8 +91,8 @@
         <!-- 타이머 //-->
 
         <div class="skybanner" >
-            <a href="#wb_cts04_a"><img src="https://static.willbes.net/public/images/promotion/2021/07/2292_sky01.png" alt="슈퍼패스 선접수" ></a>
-            <a href="#wb_cts04_b"><img src="https://static.willbes.net/public/images/promotion/2021/07/2292_sky02.png" alt="환승재등록" ></a>
+            <a href="#wb_cts04_a"><img src="https://static.willbes.net/public/images/promotion/2021/08/2292_sky01.png" alt="슈퍼패스 선접수" ></a>
+            <a href="#wb_cts04_b"><img src="https://static.willbes.net/public/images/promotion/2021/08/2292_sky02.png" alt="환승재등록" ></a>
         </div>               
 
 		<div class="evtCtnsBox evt00">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="evtCtnsBox wb_top" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2292_top.jpg" alt="슈퍼pass" />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2292_top.jpg" alt="슈퍼pass" />
         </div>
 
         <div class="evtCtnsBox wb_cts01" >
@@ -118,18 +118,18 @@
         </div>
 
         <div class="evtCtnsBox wb_cts03" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2292_03.jpg" alt="슈퍼pass" />          	      
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2292_03.jpg" alt="슈퍼pass" />          	      
         </div>
 
         <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2292_04_01.jpg" alt="슈퍼pass" id="wb_cts04_a"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2292_04_01.jpg" alt="슈퍼pass" id="wb_cts04_a"/>
             <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">SUPER PASS 신청하기 ></a></div>
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2292_04_02.jpg" alt="슈퍼pass" id="wb_cts04_b"/>
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2292_04_02.jpg" alt="슈퍼pass" id="wb_cts04_b"/>
             <div class="NSK-Black"><a href="https://police.willbes.net/pass/offPackage/index/type/super?cate_code=3010&campus_ccd=605001&course_idx=1085" target="_blank">SUPER PASS 신청하기 ></a></div>
         </div>		
 
         <div class="evtCtnsBox wb_cts05" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2292_05.jpg" alt="슈퍼pass"  />
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/2292_05.jpg" alt="슈퍼pass"  />
         </div>
 
         <div class="evtCtnsBox evtInfo">
@@ -143,25 +143,43 @@
                     <li>G-TELP – 김준기 교수님</li>
                     <li>한능검 – 오태진 교수님</li>                      
 				</ul>
-                <div class="infoTit"><strong>7개월 슈퍼패스 유의사항</strong></div>
+                <div class="infoTit"><strong>6개월 슈퍼패스 (심화형) 유의사항</strong></div>
 				<ul>
 					<li>2022년 대비 슈퍼패스는 개강일부터 2022년 2월까지 책정된 수강료로 시험일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
                     (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
                     *정규과정 : 2022년 과목개편대비 기본이론,심화이론,심화기출,문제풀이,마무리특강</li>
                     <li>국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, <br>
                     이로 인한 해당기간 환불은 불가합니다.</li>
-                    <li>해당 슈퍼패스는 2021년 대비로 진행되는 과정은 수강 불가합니다.</li>
                     <li>G-TELP 특강은 수강기간 내에,  실강 1회에 한하여  50% 할인 적용됩니다. </li>
                     <li>인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료혜택입니다.</li>
                     <li>일부특강은 유료로 결제할 수 있습니다.</li>
                     <li>중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>			
-				</ul>
-                <div class="infoTit"><strong>7개월 슈퍼패스[2022년 과정]</strong></div>
+				</ul> 
+                <div class="infoTit"><strong>6개월 슈퍼패스 (기본형)  유의사항</strong></div>
                 <ul>
-                    <li>포함과정 : 기본이론+심화이론+심화기출+문제풀이+마무리특강+모의고사+사물함</li>			
-				</ul>
-
-                <div class="infoTit"><strong>7개월 슈퍼패스 환승/ 재등록 이벤트</strong></div>
+                    <li>2022년 대비 슈퍼패스는 개강일부터 2022년 2월까지 책정된 수강료로 시험일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
+                    (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
+                    *정규과정 : 2022년 과목개편대비 기본이론,심화이론,심화기출,문제풀이,마무리특강</li>
+                    <li>국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, <br>
+                    이로 인한 해당기간 환불은 불가합니다.</li>
+                    <li>G-TELP 특강은 수강기간 내에,  실강 1회에 한하여  50% 할인 적용됩니다. </li>
+                    <li>인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료혜택입니다.</li>
+                    <li>일부특강은 유료로 결제할 수 있습니다.</li>
+                    <li>중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>		
+                </ul>
+                <div class="infoTit"><strong>12개월 슈퍼패스 유의사항</strong></div>
+                <ul>
+                    <li>2022년 대비 슈퍼패스는 개강일부터 2022년 2월까지 책정된 수강료로 시험일정에 따라 추가 수강료가 부과될 수 있습니다.<br>
+                    (1개월 연장 시 – 실강 10만원, 인강 5만원)<br>
+                    *정규과정 : 2022년 과목개편대비 기본이론,심화이론,심화기출,문제풀이,마무리특강</li>
+                    <li>국가재난, 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의로 대체될 수 있으며, <br>
+                    이로 인한 해당기간 환불은 불가합니다.</li>
+                    <li>G-TELP 특강은 수강기간 내에,  실강 1회에 한하여  50% 할인 적용됩니다. </li>
+                    <li>인강패스와 정규과정 외 특강 및 모의고사는 슈퍼패스 등록생에게 제공되는 무료혜택입니다.</li>
+                    <li>일부특강은 유료로 결제할 수 있습니다.</li>
+                    <li>중도환불 시 수강기간만큼 차감 후, 무료혜택 금액을 차감하여 환불됩니다.</li>		
+                </ul>
+                <div class="infoTit"><strong>6개월 , 12개월 슈퍼패스 환승/ 재등록 이벤트</strong></div>
                 <ul>
                     <li>환승 <br>
                     - 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생<br>
@@ -169,7 +187,6 @@
                     <li>재등록<br>
                     - 신광은경찰팀 슈퍼패스를 1년 이내 재등록 하는 수강생</li>		
 				</ul>
-
 				<div class="strong">
 					* 학원사정으로 이벤트 기간 및 금액변동이 있을 수 있습니다.<br>
 					* 학원사정으로 강의 추가 및 변경이 있을수 있습니다.<br>

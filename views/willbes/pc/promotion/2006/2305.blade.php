@@ -87,10 +87,6 @@
                     <a href="javascript:fnPlayerSample('163351', '1253459', 'HD');">샘플강의 보기</a>
                 </div>
                 <div class="p_re">
-                    <img src="https://static.willbes.net/public/images/promotion/2021/08/2305_02_t05.jpg" alt="행정쟁송법"/>
-                    <a href="javascript:fnPlayerSample('163343', '1253411', 'HD');">샘플강의 보기</a>
-                </div>
-                <div class="p_re">
                     <img src="https://static.willbes.net/public/images/promotion/2021/08/2305_02_t06.jpg" alt="행정쟁송법"/>
                     <a href="javascript:fnPlayerSample('171325', '1253395', 'HD');">샘플강의 보기</a>
                 </div>

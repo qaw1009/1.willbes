@@ -4,10 +4,6 @@
     @include('willbes.pc.layouts.partial.site_menu')
     <!-- Container -->
     <style type="text/css">
-        .subContainer {
-            min-height: auto !important;
-            margin-bottom:0 !important;
-        }
         .evtContent {
             width:100% !important;
             min-width:1120px !important;
@@ -90,10 +86,31 @@
 
         .emo_area {padding-bottom:100px;} 
 
+        /*레이어팝업*/
+        .Pstyle {
+            opacity: 0;
+            display: none;
+            position: relative;
+            width: auto;
+            background-color: #fff;
+            padding:10px;
+        }
+        .b-close {
+            position: absolute;
+            right: -30px;
+            top: 0px;
+            width:30px; height: 30px; line-height:30px;
+            display: inline-block;
+            cursor: pointer;
+            font-weight:bold;
+            text-align:center;
+            background:#000; color:#fff;
+        }
+        .Pstyle .content {height:auto; width:auto; min-width:500px; min-height:600px}
+
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">
-
         <div class="sky" id="QuickMenu">
             <a href="#curri01">
                 <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_sky01.png" alt="실전464">
@@ -198,7 +215,15 @@
         </div>
 
         <div class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>           
+            <a href="javascript:go_popup()"><img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/></a>
+        </div>
+
+        <!--퀴즈팝업-->
+        <div id="popup" class="Pstyle">
+            <span class="b-close">X</span>
+            <div class="content">
+                퀴즈 준비중입니다.
+            </div>
         </div>
 
         <div class="evtCtnsBox wb_cts09" >
@@ -211,12 +236,18 @@
                 @include('willbes.pc.promotion.show_comment_list_emoticon2_partial')
             @endif
         </div>   
-        --> 
+        -->         
     </div>
     <!-- End Container -->
 
+    
+
+    <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
     <script type="text/javascript">
-      
+        /*레이어팝업*/
+        function go_popup() {
+            $('#popup').bPopup();
+        }
     </script>
 
 @stop

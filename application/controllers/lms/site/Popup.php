@@ -11,6 +11,7 @@ class Popup extends \app\controllers\BaseController
         'popup_disp' => '657',   //노출섹션
         'popup_type' => '717'   //팝업구분
     ];
+    private $_no_img_popup_type_ccd = ['717004'];   //팝업이미지 등록 불필요 팝업구분 공통코드 (유튜브모달팝업)
 
     public function __construct()
     {
@@ -100,20 +101,21 @@ class Popup extends \app\controllers\BaseController
         }
 
         // 배너노출섹션 조회
-        $popup_info = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
+        $arr_code = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
 
         // 캠퍼스 공통코드 조회
         $arr_campus = $this->siteModel->getSiteCampusArray('');
 
-        //교수조회
-        $arr_professor = $this->professorModel->getProfessorArray('','',['WP.wProfName' => 'asc']);
+        // 교수조회
+        $arr_professor = $this->professorModel->getProfessorArray('', '', ['WP.wProfName' => 'asc']);
 
         $this->load->view("site/popup/create", [
             'method' => $method,
             'data' => $data,
             'p_idx' => $p_idx,
-            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
-            'popup_type' => $popup_info[$this->_groupCcd['popup_type']],
+            'arr_popup_disp_ccd' => $arr_code[$this->_groupCcd['popup_disp']],
+            'arr_popup_type_ccd' => $arr_code[$this->_groupCcd['popup_type']],
+            'no_img_popup_type_ccd' => implode(',', $this->_no_img_popup_type_ccd),
             'arr_campus' => $arr_campus,
             'arr_professor' => $arr_professor,
         ]);
@@ -138,17 +140,17 @@ class Popup extends \app\controllers\BaseController
 
         if (empty($this->_reqP('p_idx')) === true) {
             $method = 'add';
-            $rules = array_merge($rules, [
-                ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'],
-                ['field' => 'attach_img', 'label' => '팝업이미지', 'rules' => 'callback_validateFileRequired[attach_img]']
-            ]);
+            $rules[] = ['field' => 'site_code', 'label' => '운영 사이트', 'rules' => 'trim|required|integer'];
 
-            //사이트코드 통합코드가 아닐경우 카테고리 체크 ==> 카테고리 없이 등록 가능 (2018.12.24, bsshin)
-            /*if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
-                $rules = array_merge($rules, [
-                    ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required']
-                ]);
-            }*/
+            // 통합 사이트코드가 아닐 경우 카테고리 체크
+            if ($this->_reqP('site_code') != config_item('app_intg_site_code')) {
+                $rules[] = ['field' => 'cate_code[]', 'label' => '카테고리', 'rules' => 'trim|required'];
+            }
+
+            // 팝업구분이 유튜브모달팝업이 아닐 경우 팝업이미지 등록 필수
+            if (in_array($this->_reqP('popup_type'), $this->_no_img_popup_type_ccd) === false) {
+                $rules[] = ['field' => 'attach_img', 'label' => '팝업이미지', 'rules' => 'callback_validateFileRequired[attach_img]'];
+            }
         } else {
             $method = 'modify';
             $rules = array_merge($rules, [

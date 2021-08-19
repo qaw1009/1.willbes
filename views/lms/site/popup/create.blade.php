@@ -6,7 +6,6 @@
     <h5>- 사이트 섹션별 팝업를 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
-        {{--<form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" action="{{ site_url("/site/popup/store") }}?bm_idx=45" novalidate>--}}
         {!! csrf_field() !!}
         {!! method_field($method) !!}
         <input type="hidden" name="p_idx" value="{{ $p_idx }}"/>
@@ -68,13 +67,13 @@
                     <div class="col-md-2 item">
                         <select class="form-control" id="popup_disp" name="popup_disp" required="required" title="노출섹션">
                             <option value="">노출섹션</option>
-                            @foreach($popup_disp as $key => $val)
+                            @foreach($arr_popup_disp_ccd as $key => $val)
                                 <option value="{{$key}}" @if($key == $data['DispCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <label class="control-label col-md-1" for="prof_idx">교수명 </label>
+                    <label class="control-label col-md-1 col-md-offset-2" for="prof_idx">교수명</label>
                     <div class="col-md-2 item">
                         <select class="form-control" id="prof_idx" name="prof_idx" title="교수명" disabled>
                             <option value="">교수명</option>
@@ -90,7 +89,7 @@
                     <div class="col-md-2 item">
                         <select class="form-control" id="popup_type" name="popup_type" required="required" title="팝업구분">
                             <option value="">팝업구분</option>
-                            @foreach($popup_type as $key => $val)
+                            @foreach($arr_popup_type_ccd as $key => $val)
                                 <option value="{{$key}}" @if($key == $data['PopUpTypeCcd'])selected="selected"@endif>{{$val}}</option>
                             @endforeach
                         </select>
@@ -108,35 +107,29 @@
                     <label class="control-label col-md-1-1" for="disp_start_datm">노출시간</label>
                     <div class="col-md-4 form-inline">
                         <div class="input-group mb-0">
-                            <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{$data['DispStartDatm']}}">
+                            <input type="text" class="form-control datepicker" id="disp_start_datm" name="disp_start_datm" value="{{ substr($data['DispStartDatm'], 0, 10) }}">
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="disp_start_time" name="disp_start_time">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == substr($data['DispStartDatm'], 11, 2)) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>";
-                                        }
-                                    @endphp
+                                <select class="form-control ml-5" id="disp_start_time" name="disp_start_time" title="노출시작시간" style="width: 60px;">
+                                    @for($i = 0; $i <= 23; $i++)
+                                        @php $stime = str_pad($i, 2, '0', STR_PAD_LEFT); @endphp
+                                        <option value="{{ $stime }}" @if(substr($data['DispStartDatm'], 11, 2) == $stime) selected="selected" @endif>{{ $stime }}</option>
+                                    @endfor
                                 </select>
                             </div>
                             <div class="input-group-addon no-border no-bgcolor">~</div>
-                            <input type="text" class="form-control datepicker" id="disp_end_datm" name="disp_end_datm" value="{{$data['DispEndDatm']}}">
+                            <input type="text" class="form-control datepicker" id="disp_end_datm" name="disp_end_datm" value="{{ substr($data['DispEndDatm'], 0, 10) }}">
                             <div class="input-group-btn">
-                                <select class="form-control ml-5" id="disp_end_time" name="disp_end_time">
-                                    @php
-                                        for($i=0; $i<=23; $i++) {
-                                            $str = (strlen($i) <= 1) ? '0' : '';
-                                            $selected = ($i == substr($data['DispEndDatm'], 11, 2)) ? "selected='selected'" : "";
-                                            echo "<option value='{$i}' {$selected}>{$str}{$i}</option>" ;
-                                        }
-                                    @endphp
+                                <select class="form-control ml-5" id="disp_end_time" name="disp_end_time" title="노출종료기간" style="width: 60px;">
+                                    @for($i = 0; $i <= 23; $i++)
+                                        @php $etime = str_pad($i, 2, '0', STR_PAD_LEFT); @endphp
+                                        <option value="{{ $etime }}" @if(substr($data['DispEndDatm'], 11, 2) == $etime) selected="selected" @endif>{{ $etime }}</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <p class="form-control-static">• 노출기간 미 입력 시 '진행상태'로 오픈 여부 설정</p>
+                        <p class="form-control-static"># 노출기간 미 입력 시 '진행상태'로 오픈 여부 설정</p>
                     </div>
                 </div>
 
@@ -186,7 +179,8 @@
                     <label class="control-label col-md-1-1" for="link_url">링크주소 <span class="required">*</span></label>
                     <div class="col-md-6 item">
                         <input type="text" id="link_url" name="link_url" required="required" class="form-control" title="링크주소" value="{{ $data['LinkUrl'] }}" placeholder="링크주소 입니다.">
-                        <div class="mt-10">• 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                        <div class="mt-10"># 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                        <div class="mt-10"># 유튜브 모달팝업을 선택한 경우 https 프로토콜을 포함한 유튜브 영상 URL 입력 (예: https://www.youtube.com/embed/xxxxxx)</div>
                     </div>
                 </div>
 
@@ -198,39 +192,42 @@
                                 <input type="text" class="form-control file-text" disabled="">
                                 <button class="btn btn-primary mb-0" type="button">파일 선택</button>
                                 <span class="file-select file-btn"-->
-                            <input type="file" id="attach_img" name="attach_img" @if($method == 'POST')required="required"@endif class="form-control input-file" title="팝업 이미지">
+                            <input type="file" id="attach_img" name="attach_img" class="form-control input-file" title="팝업 이미지">
+                            <span class="pl-30"># 유튜브 모달팝업을 선택한 경우 팝업 이미지 등록 불필요</span>
                             <!--/span>
                         </div-->
                         </div>
+                        @if($method == 'PUT')
+                            @if(empty($data['PopUpImgName']) === false)
+                                <div class="mt-5">
+                                    <img src="{{$data['PopUpFullPath']}}{{$data['PopUpImgName']}}" alt="업로드 팝업 이미지">
+                                </div>
+                                <div class="mt-5 mb-5">
+                                    <strong>{{$data['PopUpImgRealName']}}</strong>
+                                    {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['PIdx']}}"><i class="fa fa-times red"></i></a>--}}
+                                </div>
+                            @endif
+                        @endif
                     </div>
-                    @if($method == 'PUT')
-                        <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                            <img src="{{$data['PopUpFullPath']}}{{$data['PopUpImgName']}}">
-                        </div>
-                        <div class="col-md-9 col-lg-offset-2 item form-inline mt-5">
-                            <b>{{$data['PopUpImgRealName']}}</b>
-                            {{--<a href="#none" class="img-delete" data-attach-idx="{{$data['PIdx']}}"><i class="fa fa-times red"></i></a>--}}
-                        </div>
-                    @endif
                 </div>
 
                 <div class="form-group">
                     <label class="control-label col-md-1-1" for="image_map">이미지맵</label>
                     <div class="col-md-10 item">
-                        <div class="x_panel mb-0">
-                            <div class="x_content pb-0">
-                                <div class="form-group">
+                        <div class="x_panel mb-0 no-padding">
+                            <div class="x_content">
+                                <div class="form-group no-border-bottom">
                                     <div class="col-md-12">
-                                        <table id="image_map_table" class="table table-striped">
+                                        <table id="image_map_table" class="table table-striped table-bordered">
                                             <thead>
                                             <tr>
-                                                <td>이미지맵타입</td>
-                                                <td>링크방식</td>
-                                                <td>외,내부 링크타입</td>
-                                                <td>이미지맵</td>
-                                                <td>링크URL</td>
-                                                <td>필드삭제</td>
-                                                <td class="text-right"><button type="button" class="btn btn-sm btn-success btn-image-map-add">필드 추가</button></td>
+                                                <td class="valign-middle">이미지맵타입</td>
+                                                <td class="valign-middle">링크방식</td>
+                                                <td class="valign-middle">외,내부 링크타입</td>
+                                                <td class="valign-middle">이미지맵</td>
+                                                <td class="valign-middle">링크URL</td>
+                                                <td class="valign-middle">필드삭제</td>
+                                                <td class="valign-middle"><button type="button" class="btn btn-sm btn-success btn-image-map-add mb-0">필드 추가</button></td>
                                             </tr>
                                             </thead>
                                             <tbody class="form-group-sm">
@@ -297,9 +294,9 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="col-md-10 form-inline">
-                                        <div class="mt-10">• 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
-                                        <div class="mt-5">• 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
+                                    <div class="col-md-10">
+                                        <div class="mt-10"># 내부링크 : 프로토콜 (http, https) <span class="red bold">제외하고, 실제 서비스 도메인을 포함하여 입력 (예: police.willbes.net/home/index/cate/3001)</span></div>
+                                        <div class="mt-5"># 외부링크 : 프로토콜 (http, https) <span class="red bold">입력 필수 (예: http://www.hanlimgosi.co.kr)</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -368,8 +365,8 @@
         var $regi_form = $('#regi_form');
         $(document).ready(function() {
             // 학원사이트 캠퍼스 자동 변경
-            $regi_form.find('select[name="campus_ccd"]').chained("#site_code");
-            $regi_form.find('select[name="prof_idx"]').chained("#site_code");
+            $regi_form.find('select[name="campus_ccd"]').chained('#site_code');
+            $regi_form.find('select[name="prof_idx"]').chained('#site_code');
 
             @if($method == 'POST' || empty($data['ProfIdx']) === true)
                 $regi_form.find('select[name="prof_idx"]').prop('disabled', true);
@@ -378,7 +375,6 @@
             // 운영사이트 변경
             $regi_form.on('change', 'select[name="site_code"]', function() {
                 // 카테고리 검색 초기화
-                $regi_form.find('input[name="cate_code"]').val('');
                 $('#selected_category').html('');
 
                 var is_campus = $(this).find(':selected').data('is-campus');
@@ -396,19 +392,16 @@
                 }
 
                 // 노출섹션 교수홈 섹션 선택시만 교수명 활성화
-                if($regi_form.find('select[name="popup_disp"] option:selected').val() === '657006'){
+                if ($regi_form.find('select[name="popup_disp"] option:selected').val() === '657006') {
                     $regi_form.find('select[name="prof_idx"]').prop('disabled', false);
-                }else{
+                } else {
                     $regi_form.find('select[name="prof_idx"]').prop('disabled', true);
                 }
             });
 
             // 노출섹션 변경
             $regi_form.on('change', 'select[name="popup_disp"]', function() {
-
-                var site_is_campus = $('select[name="site_code"]').find(':selected').data('is-campus');
-
-                if ($(this).val() === '657005' || (site_is_campus !== undefined && site_is_campus == 'Y')) {
+                if ($(this).val() === '657005') {
                     // 노출섹션이 인트로 영역일 경우 전체카테고리 값으로 고정 (0)
                     var html = '';
                     html += '<p class="form-control-static">전체카테고리';
@@ -418,17 +411,24 @@
                     $('#selected_category').html(html);
                     $('#btn_category_search').hide();
                 } else {
-                    $('#selected_category').html('');
-                    $('#btn_category_search').show();
+                    var is_campus = $regi_form.find('select[name="site_code"]').find(':selected').data('is-campus');
+                    var $cate_code = $regi_form.find('input[name="cate_code[]"]');
+
+                    if (is_campus !== undefined && is_campus === 'N') {
+                        $('#btn_category_search').show();
+
+                        if ($cate_code.length > 0 && $cate_code.eq(0).val() === '0') {
+                            $('#selected_category').html('');
+                        }
+                    }
                 }
 
                 // 교수홈 섹션 선택시 교수명 활성화
-                if($(this).val() === '657006'){
+                if ($(this).val() === '657006') {
                     $regi_form.find('select[name="prof_idx"]').attr('disabled', false);
-                }else{
+                } else {
                     $regi_form.find('select[name="prof_idx"]').attr('disabled', true);
                 }
-
             });
 
             // 카테고리 검색
@@ -447,8 +447,7 @@
 
             // 카테고리 삭제
             $regi_form.on('click', '.selected-category-delete', function() {
-                var that = $(this);
-                that.parent().remove();
+                $(this).parent().remove();
             });
 
             // 이미지맵 필드 추가
@@ -460,9 +459,7 @@
 
             // 이미지맵 필드 삭제
             $regi_form.on('click', '.btn-image-map-delete', function() {
-                var that = $(this);
-
-                if (that.parents('tbody').children('tr').length > 1) {
+                if ($(this).parents('tbody').children('tr').length > 1) {
                     // 행 삭제
                     $(this).parent().parent('tr').remove();
                 } else {
@@ -470,8 +467,9 @@
                 }
             });
 
+            // 이미지맵 개별삭제 버튼 클릭
             $regi_form.on('click', '.btn-image-map-is-status', function() {
-                var _url = '{{ site_url("/site/popup/delImageMap") }}' + getQueryString();
+                var url = '{{ site_url('/site/popup/delImageMap') }}' + getQueryString();
                 var data = {
                     '{{ csrf_token_name() }}' : $regi_form.find('input[name="{{ csrf_token_name() }}"]').val(),
                     '_method' : 'DELETE',
@@ -480,7 +478,7 @@
                 if (!confirm('삭제하시겠습니까?')) {
                     return;
                 }
-                sendAjax(_url, data, function(ret) {
+                sendAjax(url, data, function(ret) {
                     if (ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
                         location.reload();
@@ -488,37 +486,41 @@
                 }, showError, false, 'POST');
             });
 
-            //목록
+            // 목록
             $('#btn_list').click(function() {
-                location.href='{{ site_url("/site/popup") }}/' + getQueryString();
+                location.href = '{{ site_url('/site/popup') }}/' + getQueryString();
             });
 
             // ajax submit
             $regi_form.submit(function() {
-                var _url = '{{ site_url("/site/popup/store") }}' + getQueryString();
+                var url = '{{ site_url('/site/popup/store') }}' + getQueryString();
 
-                ajaxSubmit($regi_form, _url, function(ret) {
+                ajaxSubmit($regi_form, url, function(ret) {
                     if(ret.ret_cd) {
                         notifyAlert('success', '알림', ret.ret_msg);
-                        location.replace('{{ site_url("/site/popup") }}/' + getQueryString());
+                        location.replace('{{ site_url('/site/popup') }}/' + getQueryString());
                     }
                 }, showValidateError, addValidate, false, 'alert');
             });
 
             function addValidate() {
                 var site_code = $regi_form.find('select[name="site_code"]').val();
-                var site_all_code = "{{config_item('app_intg_site_code')}}";
+                var intg_site_code = '{{ config_item('app_intg_site_code') }}';
+                var no_img_popup_type_ccd = '{{ $no_img_popup_type_ccd }}';
 
                 @if($method == 'POST')
-                if(site_code != site_all_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
+                if (site_code !== intg_site_code && $regi_form.find('input[name="cate_code[]"]').length < 1) {
                     alert('카테고리 선택 필드는 필수입니다.');
+                    return false;
+                }
+                if (no_img_popup_type_ccd.indexOf($regi_form.find('select[name="popup_type"]').val()) < 0 && $regi_form.find('input[name="attach_img"]').val().length < 1) {
+                    alert('팝업이미지 필드는 필수입니다.');
                     return false;
                 }
                 @endif
 
                 return true;
             }
-
         });
     </script>
 @stop

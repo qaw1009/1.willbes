@@ -20,23 +20,23 @@
   
         .eventTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2323_top_bg.jpg) no-repeat center top;}
         
-        .event01 {background:#17a2fd;}
+        .event01 {background:#17a2fd; padding-bottom:100px}        
         .event01 .wrap {width:1120px; margin:0 auto; display:flex; justify-content: space-between;}
         .event01 .wrap a {display:block; background:#050519; color:#fff; font-size:30px; padding:20px 30px; width:500px; margin:0 auto; border-radius:40px}
         .event01 .wrap a span {color:#31ffce; vertical-align:top}
         .event01 .wrap a:hover {background:#fe4e2c; color:#000}
 
-        .event02 {background:#17a2fd; padding:100px 0; line-height:1.4; font-size:14px; color:#666}
+        .event02 {background:#bbdefe url(https://static.willbes.net/public/images/promotion/2021/08/2323_01_bg.jpg) no-repeat center top; padding:100px 0; line-height:1.4; font-size:14px; color:#666}
         .event02 .widthAuto {width:980px !important; margin:0 auto}
-        .event02 .head_title {font-size:56px; color:#fff;}
-        .event02 .head_title p {font-size:38px; color:#ffd21f;}
+        .event02 .head_title {font-size:56px; color:#19115a;}
+        .event02 .head_title p {font-size:38px; color:#ff4e2c;}
         .event02 .head_title span {font-size:20px;}
         .event02 input {padding:10px 20px ; width:100%; border:1px solid #247ab2;}
         .event02 textarea {width:100%; padding:20px; border:1px solid #247ab2; color:#666}
 
         .event02 .btns {margin-top:40px}
         .event02 .btns a {display:inline-block; width:200px; text-align:center; height:50px; line-height:50px; font-size:20px; color:#fff; background:#ff4e2c; margin:0 10px;}
-        .event02 .btns a:last-child {background:#ffd21f}
+        .event02 .btns a:last-child {background:#666}
         .event02 .btns a:hover {background:#000}
 
         .evt_table {margin-top:100px; text-align:left}

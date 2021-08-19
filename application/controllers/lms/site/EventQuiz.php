@@ -144,14 +144,10 @@ class EventQuiz extends \app\controllers\BaseController
     public function quizSetCreateModal()
     {
         $method = 'POST';
-        $eqs_total_cnt = 20; // 문제 총 갯수
-        $eqs_item_cnt = 5; // 문제별 보기 갯수
         $arr_param = $this->_reqG(null);
         $eq_idx = element('eq_idx', $arr_param);
         $eqs_idx = element('eqs_idx', $arr_param);
-        $mem_answer_cnt = element('mem_answer_cnt', $arr_param);
-        $eqs_data = [];
-        $eqs_detail_data = [];
+        $data_quiz = $data_question = $data_detail = [];
 
         if(empty($eq_idx) === true || !is_numeric($eq_idx)){
             show_alert("잘못된 접근 입니다.");
@@ -159,19 +155,14 @@ class EventQuiz extends \app\controllers\BaseController
 
         if(empty($eqs_idx) === false){
             $method = 'PUT';
-            $eqs_data = $this->eventQuizModel->findEventQuizSetForModify($eqs_idx);
-            $temp_eqs_data = [];
-
-            foreach ($eqs_data as $row){
-                $temp_eqs_data[$row['EqsqNum']][] = $row;
-            }
-
-            foreach ($temp_eqs_data as $key => $row){
-                $cnt = 1;
-                for($i=0; $i < $row[0]['EqsqdTotalcnt']; $i++){
-                    $eqs_detail_data[$key][$cnt] = $row[$i];
-                    $cnt++;
-                }
+            $data_quiz = $this->eventQuizModel->findQuizSet(['EQ' => ['s.EqsIdx' => $eqs_idx,'s.IsStatus' => 'Y']]);
+            $data_question = $this->eventQuizModel->findQuizQuestion(['EQ' => ['s.EqsIdx' => $eqs_idx,'s.IsStatus' => 'Y']]);
+            $result_detail = $this->eventQuizModel->findQuizDetail(['EQ' => ['sq.EqsIdx' => $eqs_idx,'sq.IsStatus' => 'Y']]);
+            foreach ($result_detail as $row) {
+                $data_detail[$row['EqsqIdx']][$row['EqsqdIdx']]['EqsqdQuestion'] = $row['EqsqdQuestion'];
+                $data_detail[$row['EqsqIdx']][$row['EqsqdIdx']]['DetailRowNum'] = $row['DetailRowNum'];
+                $data_detail[$row['EqsqIdx']][$row['EqsqdIdx']]['RightAnswer'] = $row['RightAnswer'];
+                $data_detail[$row['EqsqIdx']][$row['EqsqdIdx']]['IsWrong'] = $row['IsWrong'];
             }
         }
 
@@ -179,11 +170,10 @@ class EventQuiz extends \app\controllers\BaseController
             'method' => $method,
             'arr_sel_type' => $this->eventQuizModel->_sel_type,
             'eq_idx' => $eq_idx,
-            'eqs_data' => $eqs_data,
-            'eqs_detail_data' => $eqs_detail_data,
-            'eqs_total_cnt' => $eqs_total_cnt,
-            'eqs_item_cnt' => $eqs_item_cnt,
-            'mem_answer_cnt' => $mem_answer_cnt
+            'eqs_idx' => $eqs_idx,
+            'data_quiz' => $data_quiz,
+            'data_question' => $data_question,
+            'data_detail' => $data_detail,
         ]);
     }
 
@@ -243,14 +233,39 @@ class EventQuiz extends \app\controllers\BaseController
         $method = 'add';
 
         $rules = [
+            ['field' => 'eq_idx', 'label' => '퀴즈식별자', 'rules' => 'trim|required|integer'],
             ['field' => 'eqs_group_title', 'label' => '문제(그룹)명', 'rules' => 'trim|required|max_length[100]'],
             ['field' => 'order_num', 'label' => '정렬순서', 'rules' => 'trim|required|integer'],
             ['field' => 'eqs_is_use', 'label' => '사용여부', 'rules' => 'trim|required|in_list[Y,N]'],
-            ['field' => 'eqs_start_day', 'label' => '접수기간시작일자', 'rules' => 'trim|required'],
-            ['field' => 'eqs_end_day', 'label' => '접수기간종료일자', 'rules' => 'trim|required'],
+            ['field' => 'eqs_start_day', 'label' => '노출기간시작일자', 'rules' => 'trim|required'],
+            ['field' => 'eqs_end_day', 'label' => '노출기간종료일자', 'rules' => 'trim|required'],
             ['field' => 'eqs_type', 'label' => '문제유형', 'rules' => 'trim|required'],
             ['field' => 'eqs_total_cnt', 'label' => '문제갯수', 'rules' => 'trim|required|integer'],
         ];
+
+        $form_data = $this->_reqP(null);
+        $eqs_total_cnt = element('eqs_total_cnt', $form_data); // 퀴즈 문제 갯수
+        $j=1;
+        for($i=0; $i<$eqs_total_cnt; $i++) {
+            if (empty(element('question_title_'.$i, $form_data)) === true) {
+                $rules = array_merge($rules, [['field' => 'question_title_'.$j, 'label' => '['.$j.']답변항목(질문)', 'rules' => 'trim|required']]);
+            }
+            if (empty(element('question_cnt_'.$i, $form_data)) === true) {
+                $rules = array_merge($rules, [['field' => 'question_cnt_'.$j, 'label' => '['.$j.']답변항목(보기갯수)', 'rules' => 'trim|required']]);
+            }
+            foreach (element('question_detail_title_'.$i, $form_data) as $key => $val) {
+                if (empty($val) === true) {
+                    $rules = array_merge($rules, [['field' => 'question_detail_title_'.$j, 'label' => '['.$j.']답변항목(보기)', 'rules' => 'trim|required']]);
+                }
+            }
+            if (empty(element('question_detail_is_answer_'.$i, $form_data)) === true) {
+                $rules = array_merge($rules, [['field' => 'question_detail_is_answer_'.$j, 'label' => '['.$j.']답변항목(정답체크)', 'rules' => 'trim|required']]);
+            }
+            if (empty(element('eqsq_explanation_'.$i, $form_data)) === true) {
+                $rules = array_merge($rules, [['field' => 'eqsq_explanation_'.$j, 'label' => '['.$j.']답변항목(해설)', 'rules' => 'trim|required']]);
+            }
+            $j++;
+        }
 
         if (empty($this->_reqP('eq_idx')) === false && empty($this->_reqP('eqs_idx')) === false) {
             $method = 'modify';
@@ -259,10 +274,50 @@ class EventQuiz extends \app\controllers\BaseController
         if ($this->validate($rules) === false) {
             return;
         }
-
         $result = $this->eventQuizModel->{$method . 'EventQuizSet'}($this->_reqP(null, false));
         $this->json_result($result['ret_cd'], '저장 되었습니다.', $result, $result);
     }
+
+    /**
+     * 개별항목삭제
+     */
+    public function deleteQuestion()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'eqs_idx', 'label' => '식별자', 'rules' => 'trim|required'],
+            ['field' => 'eqsq_idx', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventQuizModel->deleteQuestion($this->_reqP(null, false));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+    /**
+     * 개별보기항목삭제
+     */
+    public function deleteDetail()
+    {
+        $rules = [
+            ['field' => '_method', 'label' => '전송방식', 'rules' => 'trim|required|in_list[DELETE]'],
+            ['field' => 'eqsq_idx', 'label' => '식별자', 'rules' => 'trim|required'],
+            ['field' => 'eqsqd_idx', 'label' => '식별자', 'rules' => 'trim|required'],
+        ];
+
+        if ($this->validate($rules) === false) {
+            return;
+        }
+
+        $result = $this->eventQuizModel->deleteDetail($this->_reqP(null, false));
+        $this->json_result($result, '적용 되었습니다.', $result);
+    }
+
+
+
 
     /**
      * 정렬순서, 사용유무 적용

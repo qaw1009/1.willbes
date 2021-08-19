@@ -2,6 +2,7 @@
 @section('content')
     <h5>- 퀴즈를 등록하고 관리하는 메뉴입니다.</h5>
     {!! form_errors() !!}
+
     <form class="form-horizontal form-label-left" id="regi_form" name="regi_form" method="POST" enctype="multipart/form-data" onsubmit="return false;" novalidate>
         {!! csrf_field() !!}
         {!! method_field($method) !!}
@@ -61,13 +62,13 @@
                 <div class="form-group">
                     <div class="row">
                         <label class="control-label col-md-1-1 ml-10">문제관리 <span class="required">*</span></label>
-                        <div class="col-md-9 mb-5">
+                        <div class="col-md-9 mb-10">
                             @if($method == 'PUT')
                                 <div>
-                                    <button type="button" class="btn-sm btn-primary border-radius-reset mr-15 btn_quizset_modal" data-eq-idx="{{ $data['EqIdx'] }}" data-eqs-idx="{{ $data['EqsIdx'] or ''}}" data-mem-answer-cnt="">
+                                    <button type="button" class="btn btn-sm btn-primary border-radius-reset mr-15 btn_quizset_modal" data-eq-idx="{{ $data['EqIdx'] }}" data-eqs-idx="{{ $data['EqsIdx'] or ''}}">
                                         문제등록
                                     </button>
-                                    <button type="button" class="btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>순서/사용 적용</button>
+                                    <button type="button" class="btn btn-sm btn-danger border-radius-reset mr-5 btn_sort_use"><i class="fa fa-copy mr-10"></i>순서/사용 적용</button>
                                 </div>
                             @else
                                 # 최초 저장 후 <span style="color: red"> [문제등록] </span> 버튼이 생성됩니다.
@@ -109,7 +110,7 @@
                                         <td class="text-center">{{ $row['EqsEndDatm'] }}</td>
                                         <td class="text-center"><input type="checkbox" name="eqs_is_use" value="Y" class="flat" data-origin-is-use="{{$row['IsUse']}}" @if($row['IsUse'] == 'Y') checked="checked" @endif></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-success mb-10 btn_quizset_modal" data-eqs-idx="{{$row['EqsIdx']}}" data-eq-idx="{{$row['EqIdx']}}" data-mem-answer-cnt="{{ $row['MemAnswerCnt'] }}">수정</button>
+                                            <button type="button" class="btn btn-success mb-10 btn_quizset_modal" data-eqs-idx="{{$row['EqsIdx']}}" data-eq-idx="{{$row['EqIdx']}}">수정</button>
                                             @if($row['MemAnswerCnt'] < 1)
                                                 <button type="button" class="btn btn-danger btn-delete mb-10" data-idx="{{$row['EqsIdx']}}" onclick="del_quiz_set(this)">삭제</button>
                                             @endif
@@ -225,8 +226,7 @@
                     'add_param_type' : 'param',
                     'add_param' : [
                         { 'id' : 'eq_idx', 'name' : '퀴즈 식별자', 'value' : $(this).data("eq-idx"), 'required' : true },
-                        { 'id' : 'eqs_idx', 'name' : '퀴즈문항 식별자', 'value' : $(this).data("eqs-idx"), 'required' : false},
-                        { 'id' : 'mem_answer_cnt', 'name' : '회원 참여 여부', 'value' : $(this).data("mem-answer-cnt"), 'required' : false},
+                        { 'id' : 'eqs_idx', 'name' : '퀴즈문항 식별자', 'value' : $(this).data("eqs-idx"), 'required' : false}
                     ],
                     'width' : 1000
                 });

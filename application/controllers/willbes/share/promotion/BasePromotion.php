@@ -232,14 +232,6 @@ class BasePromotion extends \app\controllers\FrontController
             if(empty($arr_promotion_params['member_info_chk_yn']) === false && $arr_promotion_params['member_info_chk_yn'] == 'Y'){
                 $arr_base['member_info'] = $this->memberFModel->getMember(false, ['EQ' => ['Mem.MemIdx' => $this->session->userdata('mem_idx')]]);
             }
-
-            // 퀴즈 정보 조회
-//            if(empty($arr_promotion_params['EqIdx']) === false){
-//                $arr_base['event_quiz'] = $this->eventQuizFModel->listEventQuizSet($arr_promotion_params['EqIdx'], $this->_site_code);
-//
-//                //회원 진행 현황 조회
-//                $arr_base['last_event_quiz'] = $this->eventQuizFModel->findQuizMemberAnswer($arr_promotion_params['EqIdx'], $data['ElIdx']);
-//            }
         }
 
         $arr_base['frame_params'] = 'cate_code=' . $this->_cate_code . '&event_idx=' . $data['ElIdx'] . '&pattern=ongoing&promotion_code=' . $data['PromotionCode'] . $add_frame_params;

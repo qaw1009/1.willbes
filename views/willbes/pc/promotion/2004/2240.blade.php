@@ -199,13 +199,13 @@
             </div>
         </section>  
 
-        <section class="evtCtnsBox wb_cts10">
+        <div class="evtCtnsBox wb_cts10">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_10.jpg" alt="전기/통신 수강신청하기"/>
                 <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 40.13%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
                 <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank" title="수강신청하기" style="position: absolute; left: 45.63%; top: 71.92%; width: 28.57%; height: 8.08%; z-index: 2;"></a>
             </div>
-        </section>
+        </div>
 
         <section class="evtCtnsBox wb_cts05" >            
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2240_05.gif" alt="커리큘럼"/>
@@ -450,18 +450,14 @@
             let sections = $('section')
             sections.each( function(i,el){
                 if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
-                    tabs.eq(i).addClass('on')
-                    tabs.eq(i).parent('li').siblings().children().removeClass('on')
+                    tabs.eq(i).addClass('on');
+                    tabs.eq(i).parent('li').siblings().children().removeClass('on');
                 }
             })
         })
-
-        function scrolling(className) {
-            let target = document.querySelector(className);
-            // window.scroll(0,target.offsetTop + 1);
-            $('html, body').stop().animate({
-                scrollTop : target.offsetTop + 1
-            }, 500)
+        
+        function scrolling(target){
+            $('html, body').stop().animate({scrollTop: $(target).offset().top});
         }
     </script>
 

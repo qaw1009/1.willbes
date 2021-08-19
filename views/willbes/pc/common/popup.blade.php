@@ -3,39 +3,42 @@
         var html = '', is_modal = false;
 
         @foreach($data as $row)
-            {{--// 팝업타입 (layer, modal, bnBottom) --}}
-            @php $popup_type = $arr_popup_type_ccd[$row['PopUpTypeCcd']]; @endphp
-
             {{--// 팝업타입별 style tag --}}
-            @if($popup_type == 'modal')
+            @if($row['IsModal'] === true)
                 @php $pop_style = 'position: fixed; top: ' . $row['TopPixel'] . 'px; margin-left: ' . (($row['Width'] / 2) * -1) . 'px;'; @endphp
-            @elseif($popup_type == 'bnBottom')
-                @php $pop_style = 'position: fixed; top: auto; bottom: 0; left: 0; width: 100%; text-align: center; z-index: 101;'; @endphp
             @else
-                @php $pop_style = 'top: ' . $row['TopPixel'] . 'px; left: ' . $row['LeftPixel'] . 'px; z-index: 101;'; @endphp
+                @if($row['PopUpTypeName'] == 'bnBottom')
+                    @php $pop_style = 'position: fixed; top: auto; bottom: 0; left: 0; width: 100%; text-align: center; z-index: 101;'; @endphp
+                @else
+                    @php $pop_style = 'top: ' . $row['TopPixel'] . 'px; left: ' . $row['LeftPixel'] . 'px; z-index: 101;'; @endphp
+                @endif
             @endif
 
-            if ('{{ $popup_type }}' === 'bnBottom' || $.cookie('_wb_client_popup_{{ $row['PIdx'] }}') !== 'done') {
+            if ('{{ $row['PopUpTypeName'] }}' === 'bnBottom' || $.cookie('_wb_client_popup_{{ $row['PIdx'] }}') !== 'done') {
                 {{--// 모달팝업창 존재 여부 --}}
-                if ('{{ $popup_type }}' === 'modal') {
+                @if($row['IsModal'] === true)
                     is_modal = true;
-                }
+                @endif
 
                 {{--// 팝업 링크URL --}}
                 @php $img_link_url = '#none'; @endphp
                 @if(empty($row['LinkUrl']) === false && $row['LinkUrl'] != '#')
                     @php $img_link_url = front_app_url('/popup/click?popup_idx=' . $row['PIdx'] . '&return_url=' . urlencode($row['LinkUrl']), 'www'); @endphp
-{{--                    @php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp--}}
+                    {{--@php $img_link_url = '//' . (strpos($row['LinkUrl'], config_item('base_domain')) === false ? $row['LinkUrl'] : app_to_env_url($row['LinkUrl'])); @endphp--}}
                 @endif
 
-                html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap {{ $popup_type }} willbes-Layer-popBox" style="{{ $pop_style }}">';
+                html += '<div id="Popup{{ $row['PIdx'] }}" class="PopupWrap willbes-Layer-popBox {{ $row['PopUpTypeName'] }} {{ $row['IsModal'] === true ? 'modal-popup' : '' }}" style="{{ $pop_style }}">';
                 html += '   <div class="Layer-Cont">';
-                html += '       <a href="{!! $img_link_url !!}" target="_{{ $row['LinkType'] }}">';
-                html += '           <img src="{{ $row['PopUpFullPath'] }}{{ $row['PopUpImgName'] }}" usemap="#PopupImgMap{{ $row['PIdx'] }}"/>';
-                html += '       </a>';
+                @if($row['PopUpTypeName'] == 'youtube')
+                    html += '   <iframe width="{{ $row['Width'] }}" height="{{ $row['Height'] }}" src="{!! $row['LinkUrl'] !!}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                @else
+                    html += '   <a href="{!! $img_link_url !!}" target="_{{ $row['LinkType'] }}">';
+                    html += '       <img src="{{ $row['PopUpFullPath'] }}{{ $row['PopUpImgName'] }}" usemap="#PopupImgMap{{ $row['PIdx'] }}"/>';
+                    html += '   </a>';
+                @endif
                 html += '   </div>';
 
-                @if($popup_type == 'bnBottom')
+                @if($row['PopUpTypeName'] == 'bnBottom')
                     html += '<div style="position: absolute; top: -9px; right: 50%; width: 19px; height: 19px; margin-right: -700px;">';
                     html += '   <a href="#none" class="btn-popup-close" data-popup-idx="{{ $row['PIdx'] }}" data-popup-hide-days=""><img src="{{ img_static_url('promotion/common/mainBottom_btnclose.png') }}"/></a>';
                     html += '</div>';
@@ -97,20 +100,21 @@
                 });
             }
 
-            {{--// 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 --}}
-            if ($(this).parents('.PopupWrap').hasClass('modal') === true) {
-                $('#PopupBackWrap').fadeOut();
+            {{--// 유튜브팝업이 닫힐 경우 iframe 삭제 처리 --}}
+            if ($(this).parents('.PopupWrap').hasClass('youtube') === true) {
+                $(this).parents('.PopupWrap').find('.Layer-Cont').html('');
             }
 
-            {{--// 전체 팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리
-            if ($('.PopupWrap').filter(':visible').length < 2) {
+            {{--// 모달팝업창이 닫힐 경우 백그라운드 레이어 숨김 처리 --}}
+            if ($(this).parents('.PopupWrap').hasClass('modal-popup') === true) {
                 $('#PopupBackWrap').fadeOut();
-            }--}}
+            }
         });
 
         {{--// 백그라운드 클릭 --}}
         $('#PopupBackWrap.willbes-Layer-Black').on('click', function() {
-            $('.PopupWrap.modal').fadeOut();
+            $('.PopupWrap.youtube').find('.Layer-Cont').html('');
+            $('.PopupWrap.modal-popup').fadeOut();
             $(this).fadeOut();
         });
     });

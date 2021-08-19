@@ -10,7 +10,6 @@
             margin-top:20px !important;
             padding:0 !important;
             background:#fff;
-            position:relative;
         }
         .evtContent span {vertical-align:auto}
         .evtCtnsBox {width:100%; text-align:center; min-width:1120px;}
@@ -19,7 +18,7 @@
 
         /************************************************************/   
         
-        .sky {position:fixed;top:200px;right:10px;z-index:1;}
+        .sky {position:fixed;top:200px;right:10px;z-index:11;}
         .sky a {display:block; margin-bottom:10px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/06/2241_top_bg.jpg) no-repeat center top;}
@@ -89,13 +88,22 @@
         .tab02 li a:hover,
         .tab02 li a.active {background:#fff; color:#000; border:1px solid #666; border-bottom:1px solid #fff;}
         .tab02 li:last-child a {margin:0}
-        .tab02:after {content:""; display:block; clear:both}   
+        .tab02:after {content:""; display:block; clear:both}  
+        
+        .evtMenu {background:#4f7bf6; }            
+        .evtMenu ul {width:1120px; margin:0 auto; text-align:left}        
+        .evtMenu ul li{width:calc( 100% / 6); float:left;}
+        .evtMenu ul li a{padding:15px 0; color:#fff; line-height:1.4; text-align:center; display:inline-block; width:100%; font-size:14px}
+        .evtMenu ul li a.on{border-bottom:5px white solid;}
+        .evtMenu ul:after{ content:""; display:block; clear:both;}
+
+        .evtMenu.fixed {position:fixed; top:0; left:0; width:100%; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10} 
 
     </style>
 
 
     <div class="evtContent NSK" id="evtContainer">
-        <div class="sky">
+        <div class="sky" id="QuickMenu">
             <a href="https://pass.willbes.net/pass/offinfo/boardInfo/index/78?" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky.png" alt="7월 new"></a>
             <a href="https://pass.willbes.net/pass/promotion/index/cate/3052/code/1721" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/06/2241_sky2.png" alt="최우영 t"></a>
             <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank"><img src="https://static.willbes.net/public/images/promotion/2021/08/2241_sky3.png" alt="신기훈 t"></a>
@@ -109,34 +117,76 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_01.jpg" alt="군무원 모집"/>
         </div>
 
-        <div class="evtCtnsBox wb_cts11" >
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
-                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.5%; top: 84.7%; width: 25%; height: 6.52%; z-index: 2;"></a>
+        <nav class="evtMenu">
+            <div class="widthAuto">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts09')" class="tab">
+                            수강신청 &<br>시간표 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts05')"  class="tab">
+                            연간&특강<br>합격 커리
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts04')"  class="tab">
+                            수강&합격<br>후기
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts03')"  class="tab">
+                            라이브모드<br>신청
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts07')"  class="tab">
+                            교수진<br>YOUTUBE
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick="scrolling('.wb_cts11')"  class="tab">
+                            무료특강<br>신청
+                        </a>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </nav>
 
-        <div class="evtCtnsBox wb_cts03">
+        <section class="evtCtnsBox wb_cts09" >   
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>        
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_03.jpg" alt="라이브 모드 구매하기"/>
-                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 구매하기" style="position: absolute; left: 22.32%; top: 76.33%; width: 55.27%; height: 6.52%; z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_09.jpg" alt="수강 신청하기"/>
+                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
             </div>
-        </div>
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
+                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
+            </div>
+        </section>  
 
-        <div class="evtCtnsBox wb_cts04">
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_04.jpg" alt="감사의 글"/>
-        </div>
-
-        <div class="evtCtnsBox wb_cts05">
+        <section class="evtCtnsBox wb_cts05">
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05.gif" alt="커리큘럼"/>
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_05_1.gif" alt="커리큘럼"/>
                 <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="신기훈" style="position: absolute; left: 86.34%; top: 33.75%; width: 9.82%; height: 25.25%; z-index: 2;"></a>
             </div>
-        </div> 
-        
+        </section> 
+
+        <section class="evtCtnsBox wb_cts04">
+            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_04.jpg" alt="감사의 글"/>
+        </section>
+
+        <section class="evtCtnsBox wb_cts03">
+            <div class="wrap">
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_03.jpg" alt="라이브 모드 구매하기"/>
+                <a href="https://pass.willbes.net/pass/promotion/index/cate/3043/code/1902" target="_blank" title="군무원 구매하기" style="position: absolute; left: 22.32%; top: 76.33%; width: 55.27%; height: 6.52%; z-index: 2;"></a>
+            </div>
+        </section>        
        
-        <div class="evtCtnsBox wb_cts07" >
+        <section class="evtCtnsBox wb_cts07" >
             <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_07.jpg" alt="합격을 이끌어낸 그 과정"/>
             <div class="youtube_contents">
                 <div class="youtube_divide">             
@@ -245,26 +295,14 @@
                     </div>          
                 </div>
             </div>
-        </div>  
-        
-        <div class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_08.jpg" alt="기본 이론 종합반 클라쓰"/>
-        </div>  
+        </section>
 
-        <div class="evtCtnsBox wb_cts09" >           
+        <section class="evtCtnsBox wb_cts11" >
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_09.jpg" alt="수강 신청하기"/>
-                <a href="https://pass.willbes.net/pass/offPackage/index?cate_code=3048&campus_ccd=605001" target="_blank" title="수강신청하기" style="position: absolute; left: 25.54%; top: 67.52%; width: 48.66%; height: 12.08%;z-index: 2;"></a>
+                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_11.jpg" alt="교수진"/>
+                <a href="https://pass.willbes.net/pass/event/show/ongoing?event_idx=1359" target="_blank" title="무료특강 신청하기" style="position: absolute; left: 37.5%; top: 84.7%; width: 25%; height: 6.52%; z-index: 2;"></a>
             </div>
-        </div>  
-
-        <div class="evtCtnsBox wb_cts10" >
-            <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/06/2241_10.jpg" alt="전기/통신 수강신청하기"/>
-                <a href="https://pass.willbes.net/pass/offLecture/index?cate_code=3052&campus_ccd=605001&search_text=UHJvZE5hbWU67LWc7Jqw7JiB" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 37.75%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
-                <a href="https://pass.willbes.net/pass/support/notice/show?board_idx=343725" target="_blank" title="수강신청하기" style="position: absolute; left: 45.89%; top: 69.27%; width: 28.39%; height: 8.61%; z-index: 2;"></a>
-            </div>
-        </div>
+        </section>
 
         <div class="evtCtnsBox wb_cts_notice">
             <div class="wb_tipBox">
@@ -395,48 +433,37 @@
     </div>
     <!-- End Container -->
 
+    <script type="text/javascript">
+        let section02 = document.querySelector('.wb_cts09');
+        let navBar = document.querySelector('nav');
+        window.addEventListener('scroll', function(){
+            // nav 아래로 스크롤시 nav 상단고정
+            if ( window.pageYOffset > section02.offsetTop ) {
+                navBar.classList.add('fixed');
+            } else {
+                navBar.classList.remove('fixed'); 
+            }
+
+            let tabs = $('.tab');
+            let sections = $('section')
+            sections.each( function(i,el){
+                if(window.pageYOffset >= el.offsetTop && window.pageYOffset < el.offsetTop + el.offsetHeight){
+                    tabs.eq(i).addClass('on')
+                    tabs.eq(i).parent('li').siblings().children().removeClass('on')
+                }
+            })
+        })
+
+        function scrolling(className) {
+            let target = document.querySelector(className);
+            // window.scroll(0,target.offsetTop + 1);
+            $('html, body').stop().animate({
+                scrollTop : target.offsetTop + 1
+            }, 500)
+        }
+    </script>
+
     <script type="text/javascript">     
-    
-        $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-        });     
-
-
-        $(document).ready(function(){
-            $(".tabContents").hide();
-            $(".tabContents:first").show();
-            $(".tabContaier ul li a").click(function(){
-                var activeTab = $(this).attr("href");
-                $(".tabContaier ul li a").removeClass("active");
-                $(this).addClass("active");
-                $(".tabContents").hide();
-                $(activeTab).fadeIn();
-                return false;
-            });
-        });
-
-
         $(document).ready(function(){
             $('.tab02').each(function(){
                 var $active, $content, $links = $(this).find('a');
@@ -503,33 +530,7 @@
                 $('.avi_box').html(html_str);
                 $('.avi_title').html($(this).find('p').html());
             });
-        });
-
-         /*탭(이미지버전)*/
-         $(document).ready(function(){
-            $('.tabs ul').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                //$active.addClass('active');
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide();
-                });
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-                    $active = $(this);
-                    $content = $(this.hash);
-                    $active.addClass('active');
-                    $content.show();
-                    e.preventDefault()
-                });
-            });
-        });
-        
+        });       
 
     </script>
 

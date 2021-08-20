@@ -114,7 +114,7 @@
         
         <div class="evtCtnsBox evtTop" data-aos="fade-left">
             <div class="wrap">
-                <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_top.jpg" title="심화 이론반"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2320_top.gif" title="심화 이론반"> 
                 <a href="https://police.willbes.net/pass/offPackage/index/type/all?cate_code=3010&campus_ccd=605001&course_idx=1041" target="_blank" title="신청하기" style="position: absolute;left: 28.71%;top: 80.6%;width: 42.63%;height: 7.13%;z-index: 2;"></a>	       
             </div>    
         </div>

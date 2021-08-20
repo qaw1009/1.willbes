@@ -327,6 +327,9 @@ class Professor extends \app\controllers\FrontController
         // 교수 참조 정보
         $data['ProfReferData'] = $data['ProfReferData'] == 'N' ? [] : json_decode($data['ProfReferData'], true);
 
+        // 커리큘럼 첨부파일 조회
+        $data['ProfReferData']['curri_file'] = $this->professorFModel->listProfessorReferData($prof_idx, ['IN' => ['ReferType' => ['curri1_file', 'curri2_file', 'curri3_file', 'curri4_file', 'curri5_file']]]);
+
         $this->load->view('site/professor/curri_layer_partial', [
             'arr_input' => $arr_input,
             'prof_idx' => $prof_idx,

@@ -18,21 +18,35 @@
                     <label class="control-label col-md-1" for="search_is_use">조건</label>
                     <div class="col-md-5 form-inline">
                         {!! html_site_select('', 'search_site_code', 'search_site_code', 'hide', '운영 사이트', '', '', true) !!}
-                        <select class="form-control mr-10" id="search_cate_code" name="search_cate_code" title="카테고리">
+                        <select class="form-control" id="search_cate_code" name="search_cate_code" title="카테고리">
                             <option value="">카테고리</option>
                             @foreach($arr_cate_code as $row)
                                 <option value="{{$row['CateCode']}}" class="{{ $row['SiteCode'] }}">{{ $row['CateRouteName'] }}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-10" id="search_popup_disp" name="search_popup_disp" title="노출섹션">
+                        <select class="form-control" id="search_campus_ccd" name="search_campus_ccd" title="캠퍼스">
+                            <option value="">캠퍼스</option>
+                            @foreach($arr_campus as $row)
+                                <option value="{{$row['CampusCcd']}}" class="{{ $row['SiteCode'] }}">{{ $row['CampusName'] }}</option>
+                            @endforeach
+                        </select>
+
+                        <select class="form-control" id="search_popup_disp" name="search_popup_disp" title="노출섹션">
                             <option value="">노출섹션</option>
-                            @foreach($popup_disp as $key => $val)
+                            @foreach($arr_popup_disp_ccd as $key => $val)
                                 <option value="{{$key}}">{{$val}}</option>
                             @endforeach
                         </select>
 
-                        <select class="form-control mr-10" id="search_is_use" name="search_is_use">
+                        <select class="form-control" id="search_popup_type" name="search_popup_type" title="팝업구분">
+                            <option value="">팝업구분</option>
+                            @foreach($arr_popup_type_ccd as $key => $val)
+                                <option value="{{$key}}">{{$val}}</option>
+                            @endforeach
+                        </select>                        
+
+                        <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
@@ -42,7 +56,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-1">기간검색</label>
                     <div class="col-md-11 form-inline">
-                        <select class="form-control mr-10" id="search_date_type" name="search_date_type">
+                        <select class="form-control" id="search_date_type" name="search_date_type">
                             <option value="I">노출기간</option>
                             <option value="R">등록일</option>
                         </select>
@@ -115,6 +129,8 @@
 
             // 카테고리 자동변경
             $search_form.find('select[name="search_cate_code"]').chained("#search_site_code");
+            // 학원사이트 캠퍼스 자동 변경
+            $search_form.find('select[name="search_campus_ccd"]').chained('#search_site_code');
 
             // 페이징 번호에 맞게 일부 데이터 조회
             $datatable = $list_table.DataTable({

@@ -258,15 +258,15 @@
                     <div class="priceBox">
                         <div>
                             <strong>129</strong>만원<br>
-                            <input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1100000"/> <label for="y_pkg1">22/23년 0원 무제한 PASS</label>
+                            <input type="radio" id="y_pkg1" name="y_pkg" value="185217" data-sale-price="1100000"/> <label for="y_pkg1">22/23년 0원 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>95</strong>만원<br>
-                            <input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="899000"/> <label for="y_pkg2">12개월 무제한 PASS</label>
+                            <input type="radio" id="y_pkg2" name="y_pkg" value="185224" data-sale-price="899000"/> <label for="y_pkg2">12개월 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>69.9</strong>만원<br>
-                            <input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg3">22년 1차 PASS</label>
+                            <input type="radio" id="y_pkg3" name="y_pkg" value="185225" data-sale-price="699000"/> <label for="y_pkg3">22년 1차 PASS</label>
                         </div>                        
                     </div>       
                 </div>  
@@ -381,15 +381,15 @@
                     <div class="priceBox">
                         <div>
                             <strong>129</strong>만원<br>
-                            <input type="radio" id="y_pkg5" name="y_pkg" value="183758" data-sale-price="1100000"/> <label for="y_pkg5">22/23년 0원 무제한 PASS</label>
+                            <input type="radio" id="y_pkg5" name="y_pkg" value="185217" data-sale-price="1100000"/> <label for="y_pkg5">22/23년 0원 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>95</strong>만원<br>
-                            <input type="radio" id="y_pkg6" name="y_pkg" value="183760" data-sale-price="899000"/> <label for="y_pkg6">12개월 무제한 PASS</label>
+                            <input type="radio" id="y_pkg6" name="y_pkg" value="185224" data-sale-price="899000"/> <label for="y_pkg6">12개월 무제한 PASS</label>
                         </div>
                         <div>
                             <strong>69.9</strong>만원<br>
-                            <input type="radio" id="y_pkg7" name="y_pkg" value="183762" data-sale-price="699000"/> <label for="y_pkg7">22년 1차 PASS</label>
+                            <input type="radio" id="y_pkg7" name="y_pkg" value="185225" data-sale-price="699000"/> <label for="y_pkg7">22년 1차 PASS</label>
                         </div>                        
                     </div>       
                 </div>  

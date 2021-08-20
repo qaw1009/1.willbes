@@ -11,7 +11,7 @@
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
-        .evt01 {background:#f5f5f7; padding-bottom:50px; text-align:left}
+        .evt01 {background:#ececec; padding-bottom:50px; text-align:left}
         .evt01 .price {margin:0 40px 20px}
         .evt01 .price ul{margin-right:-10px}
         .evt01 .price li {display:inline-block; float:left; width:calc(33.33333% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px; padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}

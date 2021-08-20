@@ -40,12 +40,17 @@ class Popup extends \app\controllers\BaseController
         $category_data = $this->categoryModel->getCategoryRouteArray();
         $category_data = array_merge($total_category_data, $category_data);
 
-        // 노출섹션
-        $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
+        // 캠퍼스 공통코드 조회
+        $arr_campus = $this->siteModel->getSiteCampusArray('');
+
+        // 사용하는 코드값 조회 (노출섹션, 팝업구분)
+        $arr_code = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
 
         $this->load->view('site/popup/index',[
             'arr_cate_code' => $category_data,
-            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']]
+            'arr_campus' => $arr_campus,
+            'arr_popup_disp_ccd' => $arr_code[$this->_groupCcd['popup_disp']],
+            'arr_popup_type_ccd' => $arr_code[$this->_groupCcd['popup_type']],
         ]);
     }
 
@@ -100,7 +105,7 @@ class Popup extends \app\controllers\BaseController
             $data['imageMaps'] = $arr_image_map_data;
         }
 
-        // 배너노출섹션 조회
+        // 사용하는 코드값 조회 (노출섹션, 팝업구분)
         $arr_code = $this->codeModel->getCcdInArray(array_values($this->_groupCcd));
 
         // 캠퍼스 공통코드 조회
@@ -257,7 +262,9 @@ class Popup extends \app\controllers\BaseController
             'EQ' => [
                 'A.IsStatus' => 'Y',
                 'A.SiteCode' => $this->_reqP('search_site_code'),
-                'A.DispCcd' => $this->_reqP('search_disp'),
+                'A.CampusCcd' => $this->_reqP('search_campus_ccd'),
+                'A.DispCcd' => $this->_reqP('search_popup_disp'),
+                'A.PopUpTypeCcd' => $this->_reqP('search_popup_type'),
                 'A.IsUse' => $this->_reqP('search_is_use')
             ],
             'ORG1' => [

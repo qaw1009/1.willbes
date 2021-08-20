@@ -1,6 +1,104 @@
 @extends('willbes.pc.layouts.master')
-<link href="/public/css/willbes/style_2018.css?ver={{time()}}" rel="stylesheet">
+
 @section('content')
+    <style type="text/css">
+        .ssam .willbes-Layer-ReplyBox-1120 .Layer-Cont {font-size:14px}
+        .ssam .MaintabList {background-color:rgba(0,0,0,.5)}
+        .ssam .VisualBox .MaintabFlex {width: 1120px; margin:0 auto; display:flex; justify-content: space-around; border-left:1px solid #fff}
+        .ssam .VisualBox .MaintabFlex span {
+            height: 50px;
+            font-size: 14px;
+            line-height: 50px;
+            width:calc(100%);
+        }
+        .ssam .VisualBox .MaintabFlex span a {color:#fff}
+        .ssam .VisualBox .MaintabFlex span a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-right:1px solid #fff
+        }
+        .ssam .VisualBox .MaintabFlex span a:hover {
+            background-color:rgba(255,255,255,.3); font-weight:bold
+        }
+
+        .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
+        .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
+        .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
+
+        .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
+        .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
+        .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
+        .ssam .sec-prof .prof-Tab {position:absolute; top:24px; left:50px; width:300px; z-index: 2;}
+
+        .ssam .sec-prof .prof-Tab li {display:inline; float:left; width:50%}
+        .ssam .sec-prof .prof-Tab li a {display:block; width:130px; border:1px solid #638294; height:35px; line-height:35px; color:#fff; font-size:11px; padding:0 10px; margin-bottom:-1px;}
+        .ssam .sec-prof .prof-Tab li a span {font-size:13px; color:#0a2230; display:inline-block; width:67px; margin-right:2px; vertical-align:bottom; font-weight:bold;  text-align:left;}
+        .ssam .sec-prof .prof-Tab li a.active {width:130px; background:#0a2230; width:140px; border:1px solid #0a2230; border-bottom:1px solid #638294}
+        .ssam .sec-prof .prof-Tab li a.active span {color:#8ca4b2}
+        .ssam .sec-prof .prof-Tab li a,
+        .ssam .sec-prof .prof-Tab:after {content; display:block; clear:both}
+        .ssam .sec-prof .prof-Tab-Cts {position:relative; width:1120px; margin:0 auto}
+        .ssam .sec-prof .prof-Tab-Cts .btnBox {position:absolute; top:195px; left:384px}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn { height:25px;}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a {display:inline-block; color:#fff; padding:4px 10px 4px 22px; margin-right:4px}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(1) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon01.png")
+        no-repeat 5px center}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(2) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon02.png")
+        no-repeat 5px center}
+        .ssam .sec-prof .prof-Tab-Cts .prof-top-btn a:nth-of-type(3) {background:#0a2230 url("https://static.willbes.net/public/images/promotion/main/2018/icon03.png")
+        no-repeat 5px center}
+        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn {margin-top:42px}
+        .ssam .sec-prof .prof-Tab-Cts .prof-clip-btn a {display:inline-block; margin-right:5px; margin-bottom: 5px;}
+        .ssam .sec-prof .prof-Tab-Cts .hotclip {position:absolute; top:225px; left:355px;}
+
+        .ssam .willbes-Layer-youtube {
+            display: none;
+            background:#000;
+            position: absolute;
+            top: 50px;
+            z-index: 110;
+            width: 860px;
+            height: 484px;
+            border: 1px solid #2f2f2f;
+            left: 50%;
+            margin-left: -445px;
+        }
+        .ssam .willbes-Layer-youtube .closeBtn {
+            position: absolute;
+            top: -33px;
+            right: -2px;
+        }
+        .ssam .willbes-Layer-youtube iframe {width:860px; height:484px}
+
+        .ssam .willbes-Layer-ProfReply {
+            display: none;
+            background: #fff;
+            position: absolute;
+            top: 54px;
+            /*right: 0;*/
+            z-index: 110;
+            width: 890px;
+            border: 1px solid #2f2f2f;
+            padding: 20px 25px 30px;
+            left: 50%;
+            margin-left: -445px;
+        }
+        .ssam .willbes-Layer-ProfReply .Layer-Tit {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0;
+            padding: 20px 0 25px;
+            border-bottom: 2px solid #000;
+            margin-bottom:20px
+        }
+        .ssam .willbes-Layer-ProfReply .closeBtn {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+        }
+    </style>
+
     <!-- Container -->
     <div id="Container" class="Container ssam NGR c_both">
         <!-- site nav -->
@@ -27,10 +125,21 @@
             </div>
         </div>
 
-        <div class="Section mt40">
+        <div class="Section mt80">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
+            </div>
+        </div>
+
+        <div class="Section sec-prof mt80">
+            @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
+        </div>
+
+        <div class="Section Section2 mt40">
+            <div class="widthAuto p_re">
+                {{-- study comment include --}}
+                @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])
             </div>
         </div>
 
@@ -95,13 +204,6 @@
                         <li onclick='location.href="{{ front_url('/promotion/index/cate/3140/code/1833') }}"'><a data-slide-index='21' href="javascript:void(0);">전공중국어 정경미</a></li>
                     </ul>
                 </div>
-            </div>
-        </div>
-
-        <div class="Section Section2 mt40">
-            <div class="widthAuto p_re">
-                {{-- study comment include --}}
-                @include('willbes.pc.site.main_partial.study_comment_' . $__cfg['SiteCode'])
             </div>
         </div>
 
@@ -304,6 +406,27 @@
             // }).mouseleave(function (){
             //     subslidesImg.startAuto();
             // });
+
+            $('.prof-Tab').each(function() {
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+                $content = $($active[0].hash);
+                $links.not($active).each(function(){
+                    $(this.hash).hide()
+                });
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+                    $active = $(this);
+                    $content = $(this.hash);
+                    $active.addClass('active');
+                    $content.show();
+                    e.preventDefault();
+                });
+            });
         });
     </script>
 @stop

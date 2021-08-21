@@ -11,7 +11,7 @@
         .dday span {color:#3a99f0; box-shadow:inset 0 -15px 0 rgba(0,0,0,0.1);}
         .dday a {display:inline-block; float:right; border-radius:30px; padding:5px 20px; color:#fff; background:#000; font-size:14px !important;}
 
-        .evt01 {background:#f5f5f7; padding-bottom:50px; text-align:left}
+        .evt01 {background:#ececec; padding-bottom:50px; text-align:left}
         .evt01 .price {margin:0 40px 20px}
         .evt01 .price ul{margin-right:-10px}
         .evt01 .price li {display:inline-block; float:left; width:calc(33.33333% - 10px); text-align:center; font-size:18px; font-weight:bold; color:#fff; background:#016bbf; border-radius:10px; padding:20px 10px; margin-bottom:10px; margin-right:10px; letter-spacing:-1px}
@@ -102,9 +102,9 @@
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2330m_01.jpg" alt="" >
             <div class="price">
                 <ul>
-                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="183758" data-sale-price="1100000" onClick=""/> <label for="y_pkg1">129 만원<br>22/23년 0원 무제한 PASS</label></li>
-                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="183760" data-sale-price="899000" onClick=""/> <label for="y_pkg2">95 만원<br>12개월 무제한 PASS</label></li>
-                    <li><input type="radio" id="y_pkg3" name="y_pkg" value="183762" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br>22년 1차 PASS</label></li>
+                    <li><input type="radio" id="y_pkg1" name="y_pkg" value="185217" data-sale-price="1100000" onClick=""/> <label for="y_pkg1">129 만원<br>22/23년 0원 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg2" name="y_pkg" value="185224" data-sale-price="899000" onClick=""/> <label for="y_pkg2">95 만원<br>12개월 무제한 PASS</label></li>
+                    <li><input type="radio" id="y_pkg3" name="y_pkg" value="185225" data-sale-price="699000" onClick=""/> <label for="y_pkg3">69.9 만원<br>22년 1차 PASS</label></li>
                     {{--
                     <li class="last"><input type="radio" id="y_pkg4" name="y_pkg" value="183767" data-sale-price="349000" onClick=""/> <label for="y_pkg4">34.9 만원<br> 2021 FINAL PASS</label></li>
                     --}}

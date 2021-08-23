@@ -57,6 +57,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="control-label col-md-2" >패키지유형 <span class="required">*</span>
+                    </label>
+                    <div class="col-md-10 form-inline item">
+                        <div class="item inline-block">
+                            @foreach($packtype_ccd as $key => $val)
+                                <input type="radio" name="PackTypeCcd" id="PackTypeCcd{{$loop->index}}" value="{{$key}}" title='패키지유형' class="flat" required="required" @if($loop->index == 1 || $data['PackTypeCcd']==$key) checked="checked"@endif> {{$val}}&nbsp;&nbsp;
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2" for="ProdName">패키지명 <span class="required">*</span>
                     </label>
                     <div class="col-md-4 form-inline">
@@ -80,6 +92,14 @@
                                 @for($i=(date('Y')+2); $i>=2005; $i--)
                                     <option value="{{$i}}" @if($data['SchoolYear'] == $i) selected="selected" @endif>{{$i}}</option>
                                 @endfor
+                            </select>
+                        </div>
+                        <div class="item inline-block">
+                            <select name="CourseIdx" id="CourseIdx"  required="required" class="form-control" title="과정">
+                                <option value="">과정</option>
+                                @foreach($courseList as $row)
+                                    <option value="{{$row['CourseIdx']}}" class="{{$row['SiteCode']}}" @if($data['CourseIdx'] == $row['CourseIdx']) selected="selected" @endif>{{$row['CourseName']}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -123,65 +143,117 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="SchoolYear">패키지할인정보 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-7 form-inline">
-                        <p>패키지 내 강좌 선택 개수에 따른 할인율 및 수강연장을 설정해 주세요. (수강연장 미 입력시 반영 되지 않음)</p>
-                        <table class="table table-striped table-bordered">
-                            <tr>
-                                <th width="10%">선택</th>
-                                <th width="20%">할인개수</th>
-                                <th width="30%">할인율</th>
-                                <th width="">수강연장</th>
-                            </tr>
-                            @for($i=1;$i<8;$i++)
-                                    @php
-                                        $select_OrderNum = '';
-                                        $select_IsApply = '';
-                                        $select_DiscNum = '';
-                                        $select_DiscRate = '';
-                                        $select_LecExten = '';
-                                        foreach($data_packsaleinfo as $row) {
-                                            if($row['OrderNum'] == $i) {
-                                                $select_OrderNum = $row['OrderNum'];
-                                                $select_IsApply = $row['IsApply'];
-                                                $select_DiscNum = $row['DiscNum'];
-                                                $select_DiscRate = $row['DiscRate'];
-                                                $select_LecExten = $row['LecExten'];
-                                            }
-                                        }
-                                    @endphp
+                <div class="_pack_type_group pack_743001">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="SchoolYear">패키지할인정보 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-7 form-inline">
+                            <p>패키지 내 강좌 선택 개수에 따른 할인율 및 수강연장을 설정해 주세요. (수강연장 미 입력시 반영 되지 않음)</p>
+                            <table class="table table-striped table-bordered">
                                 <tr>
-                                    <td>
-                                        <input type="hidden" name="OrderNum[]" value="{{$i}}">
-                                        <input type="checkbox" id="IsApply_{{$i}}" name="IsApply[]" value="{{$i}}" class="flat" @if($select_IsApply == 'Y') checked="checked" @endif></td>
-                                    <td>
-                                        <select name="DiscNum[]" id="DiscNum_{{$i}}" class="form-control">d
-                                            @for($k=2;$k<9;$k++)
-                                                <option value="{{$k}}" @if($select_DiscNum == $k) selected="selected" @endif>{{$k}}</option>
-                                            @endfor
-                                        </select>
-                                    </td>
-                                    <td><input type="number" name="DiscRate[]" id="DiscRate_{{$i}}" value="{{$select_DiscRate}}" style="width: 80px;" maxlength="2" class="form-control" >%</td>
-                                    <td><input type="number" name="LecExten[]" id="LecExten_{{$i}}" value="{{$select_LecExten}}" style="width: 80px;" maxlength="3" class="form-control" >일</td>
+                                    <th width="10%">선택</th>
+                                    <th width="20%">할인개수</th>
+                                    <th width="30%">할인율</th>
+                                    <th width="">수강연장</th>
                                 </tr>
-                            @endfor
-                        </table>
+                                @for($i=1;$i<8;$i++)
+                                        @php
+                                            $select_OrderNum = '';
+                                            $select_IsApply = '';
+                                            $select_DiscNum = '';
+                                            $select_DiscRate = '';
+                                            $select_LecExten = '';
+                                            foreach($data_packsaleinfo as $row) {
+                                                if($row['OrderNum'] == $i) {
+                                                    $select_OrderNum = $row['OrderNum'];
+                                                    $select_IsApply = $row['IsApply'];
+                                                    $select_DiscNum = $row['DiscNum'];
+                                                    $select_DiscRate = $row['DiscRate'];
+                                                    $select_LecExten = $row['LecExten'];
+                                                }
+                                            }
+                                        @endphp
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="OrderNum[]" value="{{$i}}">
+                                            <input type="checkbox" id="IsApply_{{$i}}" name="IsApply[]" value="{{$i}}" class="flat" @if($select_IsApply == 'Y') checked="checked" @endif></td>
+                                        <td>
+                                            <select name="DiscNum[]" id="DiscNum_{{$i}}" class="form-control">
+                                                @for($k=2;$k<9;$k++)
+                                                    <option value="{{$k}}" @if($select_DiscNum == $k) selected="selected" @endif>{{$k}}</option>
+                                                @endfor
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="DiscRate[]" id="DiscRate_{{$i}}" value="{{$select_DiscRate}}" style="width: 80px;" maxlength="2" class="form-control" >%</td>
+                                        <td><input type="number" name="LecExten[]" id="LecExten_{{$i}}" value="{{$select_LecExten}}" style="width: 80px;" maxlength="3" class="form-control" >일</td>
+                                    </tr>
+                                @endfor
+                            </table>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="SchoolYear">강좌선택개수제한 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 form-inline">
+                            <div class="item inline-block">
+                                <input type="radio" name="IsSelLecCount" class="flat" value="Y" required="required" title="강좌선택개수제한" @if($method == 'POST' || $data['IsSelLecCount']=='Y')checked="checked"@endif/> 제한
+                                &nbsp;
+                                <input type="number" name="SelCount" id="SelCount" value="{{$data['SelCount']}}" style="width: 80px;" maxlength="3" class="form-control" >개
+                                &nbsp;
+                                &nbsp;
+                                <input type="radio" name="IsSelLecCount" class="flat" value="N" @if($data['IsSelLecCount']=='N')checked="checked"@endif/> 제한없음
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-md-2" for="SchoolYear">강좌선택개수제한 <span class="required">*</span>
-                    </label>
-                    <div class="col-md-4 form-inline">
-                        <div class="item inline-block">
-                            <input type="radio" name="IsSelLecCount" class="flat" value="Y" required="required" title="강좌선택개수제한" @if($method == 'POST' || $data['IsSelLecCount']=='Y')checked="checked"@endif/> 제한
-                            &nbsp;
-                            <input type="number" name="SelCount" id="SelCount" value="{{$data['SelCount']}}" style="width: 80px;" maxlength="3" class="form-control" >개
-                            &nbsp;
-                            &nbsp;
-                            <input type="radio" name="IsSelLecCount" class="flat" value="N" @if($data['IsSelLecCount']=='N')checked="checked"@endif/> 제한없음
+                <div class="_pack_type_group pack_743002">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="unitNumberCount">수강료 <span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 form-inline item">
+                            <div class="item inline-block">
+                                <div id="price_view">
+                                    @foreach($salestype_ccd as $key=>$val)
+                                        @if($key == '613001')
+                                            @php
+                                                $SalePriceIsUse = '';
+                                                $SalePrice = '';
+                                                $SaleDiscType = '';
+                                                $SaleRate = '';
+                                                $RealSalePrice = '';
+                                            @endphp
+                                            @if($method === 'PUT')
+                                                @foreach($data_sale as $row)
+                                                    @php
+                                                        if(trim($key) == trim($row['SaleTypeCcd'])) {
+                                                            $SalePriceIsUse = $row['SalePriceIsUse'];
+                                                            $SalePrice = $row['SalePrice'];
+                                                            $SaleDiscType = $row['SaleDiscType'];
+                                                            $SaleRate = $row['SaleRate'];
+                                                            $RealSalePrice = $row['RealSalePrice'];
+                                                        }
+                                                    @endphp
+                                                @endforeach
+                                            @endif
+                                            <input type="hidden" name="SaleTypeCcd[]" id="SaleTypeCcd_{{$key}}" value="{{$key}}">
+                                            <input type="hidden" name="SalePriceIsUse[]" id="SalePriceIsUse_{{$key}}" value="Y">
+                                            [정상가] <input type="number" name="SalePrice[]" id="SalePrice_{{$key}}" value="{{$SalePrice}}"  maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="정상가"> 원
+                                            &nbsp;&nbsp;
+                                            [할인율]
+                                            <select name="SaleDiscType[]" id="SaleDiscType_{{$key}}" class="form-control" onchange="priceCheck('{{$key}}')">
+                                                <option value="R" @if($SaleDiscType == 'R') selected="selected"@endif>%</option>
+                                                <option value="P" @if($SaleDiscType == 'P') selected="selected"@endif>-</option>
+                                            </select>&nbsp;
+                                            <input type="number" name="SaleRate[]" id="SaleRate_{{$key}}"  value="@if($method=="POST"){{0}}@else{{$SaleRate}}@endif" maxlength="8" class="form-control" onkeyup="priceCheck('{{$key}}')" @if($key=="613001")required="required"@endif title="할인">
+                                            &nbsp;&nbsp;
+                                            [판매가]
+                                            <input type="number" name="RealSalePrice[]" id="RealSalePrice_{{$key}}"  value="{{$RealSalePrice}}" readonly class="form-control" @if($key=="613001")required="required"@endif title="판매가"> 원
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -221,28 +293,27 @@
 
                         <div class="item inline-block">
                             <p>
-                            <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="S" @if($method == 'POST' || $data['IsPackMultipleType']=='S')checked="checked"@endif/> 단강좌 속성 기준
-                            <div style="display: none">
-                            <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="P" @if($data['IsPackMultipleType']=='P')checked="checked"@endif/> 패키지 속성 기준
-                            </div>
+                                <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="S" @if($method == 'POST' || $data['IsPackMultipleType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             </p>
 
-                            <select name="MultipleApply" id="MultipleApply" required="required" class="form-control" title="">
-                                @foreach($multiplelimit_ccd as $key => $val)
-                                    <option value="{{$key}}" @if($data['MultipleApply'] == $key)selected="selected"@endif>{{$val}}</option>
-                                @endforeach
-                            </select>
-                            &nbsp;&nbsp;
-                            <div class="radio">
-                                @foreach($multipleapply_ccd as $key => $val)
-                                    <input type="radio" name="MultipleTypeCcd" id="MultipleTypeCcd" value="{{$key}}" required="required" class="flat" @if($loop->index == 1 || $data['MultipleTypeCcd'] == $key )checked="checked"@endif> {{$val}}&nbsp;
-                                @endforeach
+                            <div style="display: none">{{-- 제거 요청 --}}
+                                <input type="radio" name="IsPackMultipleType" required="required" class="flat" value="P" @if($data['IsPackMultipleType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                                <select name="MultipleApply" id="MultipleApply" required="required" class="form-control" title="">
+                                    @foreach($multiplelimit_ccd as $key => $val)
+                                        <option value="{{$key}}" @if($data['MultipleApply'] == $key)selected="selected"@endif>{{$val}}</option>
+                                    @endforeach
+                                </select>
                                 &nbsp;&nbsp;
-                                [전체강의시간] &nbsp;<input type="number" name="AllLecTime" id="AllLecTime" value="{{$data['AllLecTime']}}"  class="form-control" title="전체강의시간" style="width:70px;"> 분
-                                <!--input type="hidden" name="AllLecTime_hidden" id="AllLecTime_hidden" value=""//-->
+                                <div class="radio">
+                                    @foreach($multipleapply_ccd as $key => $val)
+                                        <input type="radio" name="MultipleTypeCcd" id="MultipleTypeCcd" value="{{$key}}" required="required" class="flat" @if($loop->index == 1 || $data['MultipleTypeCcd'] == $key )checked="checked"@endif> {{$val}}&nbsp;
+                                    @endforeach
+                                    &nbsp;&nbsp;
+                                    [전체강의시간] &nbsp;<input type="number" name="AllLecTime" id="AllLecTime" value="{{$data['AllLecTime']}}"  class="form-control" title="전체강의시간" style="width:70px;"> 분
+                                </div>
+                                <Br>
+                                • 배수 적용 시 정수 이하 소수점은 반올림 처리되어 수강시간 제공
                             </div>
-                            <Br>
-                            • 배수 적용 시 정수 이하 소수점은 반올림 처리되어 수강시간 제공
                         </div>
                     </div>
                 </div>
@@ -267,7 +338,7 @@
                                 <option value="{{$key}}" @if($data['PointApplyCcd'] == $key) selected="selected" @endif>{{$val}}</option>
                             @endforeach
                         </select>
-                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" size="5"  required="required" >
+                        <input type='number' name='PointSavePrice' value='@if($method==="POST"){{0}}@else{{$data['PointSavePrice']}}@endif' title="결제포인트적립" class="form-control" style="width: 80px" required="required" >
                         <select name="PointSaveType" id="PointSaveType" class="form-control">
                             <option value="R" @if($data['PointSaveType'] == 'R')selected="selected"@endif>%</option>
                             <option value="P" @if($data['PointSaveType'] == 'P')selected="selected"@endif>원</option>
@@ -275,7 +346,6 @@
                         ]
                         &nbsp;&nbsp;
                         <input type="radio" name="IsPoint" class="flat" value="N" @if($method == 'POST' || $data['IsPoint']=='N')checked="checked"@endif/> 불가능
-
                     </div>
                 </div>
 
@@ -284,9 +354,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="item inline-block">
-                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="S" @if($data['IsPackLecStartType']=='S')checked="checked"@endif/> 단강좌 속성 기준
+                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="S" @if($method == 'POST' || $data['IsPackLecStartType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="P" @if($method == 'POST' || $data['IsPackLecStartType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <input type="radio" name="IsPackLecStartType" required="required" class="flat" value="P" @if($data['IsPackLecStartType']=='P')checked="checked"@endif/> 패키지 속성 기준
                             <div style="display: none">
                                 (
                                 <input type="radio" name="IsLecStart" class="flat" value="Y" title="강좌시작일설정" @if($data['IsLecStart']=='Y')checked="checked"@endif /> 가능
@@ -305,9 +375,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="item inline-block">
-                            <input type="radio" name="IsPackPauseType" class="flat" value="S" @if($data['IsPackPauseType']=='S')checked="checked"@endif/> 단강좌 속성 기준
+                            <input type="radio" name="IsPackPauseType" class="flat" value="S" @if($method == 'POST' || $data['IsPackPauseType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackPauseType" class="flat" value="P" @if($method == 'POST' || $data['IsPackPauseType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <input type="radio" name="IsPackPauseType" class="flat" value="P" @if($data['IsPackPauseType']=='P')checked="checked"@endif/> 패키지 속성 기준
                             <div style="display: none">
                                 (
                                 <input type="radio" name="IsPause" class="flat" value="Y"  title="일시정지설정" @if($data['IsPause']=='Y')checked="checked"@endif/> 가능
@@ -334,9 +404,9 @@
                     </label>
                     <div class="col-md-10 form-inline item" >
                         <div class="item inline-block">
-                            <input type="radio" name="IsPackExtenType" class="flat" value="S" @if($data['IsPackExtenType']=='S')checked="checked"@endif/> 단강좌 속성 기준
+                            <input type="radio" name="IsPackExtenType" class="flat" value="S" @if($method == 'POST' || $data['IsPackExtenType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                             &nbsp;&nbsp;
-                            <input type="radio" name="IsPackExtenType" class="flat" value="P" @if($method == 'POST' || $data['IsPackExtenType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                            <input type="radio" name="IsPackExtenType" class="flat" value="P" @if($data['IsPackExtenType']=='P')checked="checked"@endif/> 패키지 속성 기준
                             <div style="display: none">
                                 (
                                 <input type="radio" name="IsExten" class="flat" value="Y" title="수강연장신청" @if($data['IsExten']=='Y')checked="checked"@endif/> 가능
@@ -362,9 +432,9 @@
                     <label class="control-label col-md-2" for="IsRetake">재수강신청 <span class="required">*</span>
                     </label>
                     <div class="col-md-10 form-inline">
-                        <input type="radio" name="IsPackRetakeType" class="flat" value="S" @if($data['IsPackRetakeType']=='S')checked="checked"@endif/> 단강좌 속성 기준
+                        <input type="radio" name="IsPackRetakeType" class="flat" value="S" @if($method == 'POST' || $data['IsPackRetakeType']=='S')checked="checked"@endif/> 단강좌 속성 기준
                         &nbsp;&nbsp;
-                        <input type="radio" name="IsPackRetakeType" class="flat" value="P" @if($method == 'POST' || $data['IsPackRetakeType']=='P')checked="checked"@endif/> 패키지 속성 기준
+                        <input type="radio" name="IsPackRetakeType" class="flat" value="P" @if($data['IsPackRetakeType']=='P')checked="checked"@endif/> 패키지 속성 기준
                         <div style="display: none">
                             (
                             <input type="radio" name="IsRetake" class="flat" value="Y" title="재수강신청" @if($data['IsRetake']=='Y')checked="checked"@endif/> 가능
@@ -696,15 +766,7 @@
                 }
                 $(this).blur();
                 if (confirm("사이트 변경으로 인해 입력된 값이 초기화 됩니다. 변경하시겠습니까?")) {
-
-                    /*
-                    $("#selected_category").html("");
-                    $("#teacherDivision tbody").remove();
-                    $("#lecList tbody").remove();
-                    sitecode_chained($(this).val());    //과정.과목 재조정
-                    */
                     location.reload();
-
                 } else {
                     $(this).val(prev_val);
                     return false;
@@ -719,6 +781,8 @@
                     , 'width': 800
                 })
             });
+
+            $("#CourseIdx").chained("#site_code");
 
             //단강좌검색
             $('#lecAdd,#subLecAdd').on('click', function(e) {
@@ -776,77 +840,69 @@
             });
 
             function addValidate() {
-
                 if( $("input[name='ProdCodeSub[]']").length == 0) {
                   alert('강좌구성을 선택하여 주십시오.');$('#subLecAdd').focus();return;
                 }
 
-                if($('input:checkbox[name="IsApply[]"]').is(":checked") == false) {
-                    alert('패키지할인 정보를 선택하여 주십시오.');$('input[name="IsApply[]"]:eq(0)').focus();return;
-                }
-
-                for($i=1;$i<5;$i++){
-                    if ($('input:checkbox[id="IsApply_'+$i+'"]').is(":checked") == true) {
-                        if($("#DiscRate_"+$i).val() == '') {
-                            alert('할인율을 입력하여 주십시오');$("#DiscRate_"+$i).focus();return;
+                if($regi_form.find('input[name="PackTypeCcd"]:checked').val() === '743001') {
+                    if($('input:checkbox[name="IsApply[]"]').is(":checked") == false) {
+                        alert('패키지할인 정보를 선택하여 주십시오.');$('input[name="IsApply[]"]:eq(0)').focus();return;
+                    }
+                    for($i=1;$i<5;$i++){
+                        if ($('input:checkbox[id="IsApply_'+$i+'"]').is(":checked") == true) {
+                            if($("#DiscRate_"+$i).val() == '') {
+                                alert('할인율을 입력하여 주십시오');$("#DiscRate_"+$i).focus();return;
+                            }
+                        }
+                    }
+                    if($('input:radio[name="IsSelLecCount"]:checked').val() == 'Y') {
+                        if($('#SelCount').val()=='') {
+                            alert('강좌선택개수를 입력하여 주십시오.');$('#SelCount').focus();return;
+                        }
+                    }
+                    if($('input:radio[name="IsPackMultipleType"]:checked').val() == 'P') {
+                        if($('#AllLecTime').val()=='') {
+                            alert('전체강의시간을 입력하여 주십시오.');$('#AllLecTime').focus();return;
                         }
                     }
                 }
 
-                if($('input:radio[name="IsSelLecCount"]:checked').val() == 'Y') {
-                    if($('#SelCount').val()=='') {
-                        alert('강좌선택개수를 입력하여 주십시오.');$('#SelCount').focus();return;
-                    }
-                }
-
-                if($('input:radio[name="IsPackMultipleType"]:checked').val() == 'P') {
-                    if($('#AllLecTime').val()=='') {
-                        alert('전체강의시간을 입력하여 주십시오.');$('#AllLecTime').focus();return;
-                    }
-                }
-
-                /*
-                if($('input:radio[name="IsPackLecStartType"]:checked').val() == 'P') {
-                    if( !($('input:radio[name="IsLecStart"]').is(":checked")) ) {
-                        alert('강좌시작일설정을 선택하여 주십시오.(가능/불가능 선택)');$('input:radio[name="IsLecStart"]:eq(0)').focus();return;
-                    }
-                }
-
-                if($('input:radio[name="IsPackPauseType"]:checked').val() == 'P') {
-                    if( !($('input:radio[name="IsPause"]').is(":checked")) ) {
-                        alert('일시정지설정을 선택하여 주십시오.(가능/불가능 선택)');$('input:radio[name="IsPause"]:eq(0)').focus();return;
-                    }
-                }
-
-                if($('input:radio[name="IsPackExtenType"]:checked').val() == 'P') {
-                    if( !($('input:radio[name="IsExten"]').is(":checked")) ) {
-                        alert('수강연장신청을 선택하여 주십시오.(가능/불가능 선택)');$('input:radio[name="IsExten"]:eq(0)').focus();return;
-                    }
-                }
-
-                if($('input:radio[name="IsPackRetakeType"]:checked').val() == 'P') {
-                    if( !($('input:radio[name="IsRetake"]').is(":checked")) ) {
-                        alert('재수강신청을 선택하여 주십시오.(가능/불가능 선택)');$('input:radio[name="IsRetake"]:eq(0)').focus();return;
-                    }
-                    if( $('input:radio[name="IsRetake"]:checked').val() == 'Y') {
-                        if($('#RetakeSaleRate').val() == '') {
-                            alert('할인율을 입력하여 주십시오.');$('#RetakeSaleRate').focus();return;
-                        }
-                        if($('#RetakePeriod').val() == '') {
-                            alert('신청가능기간을 입력하여 주십시오.');$('#RetakePeriod').focus();return;
-                        }
-                    }
-                }
-                */
                 return true;
             }
 
+            $regi_form.on('ifChecked', 'input[name="PackTypeCcd"]', function () {
+                $('._pack_type_group').hide();
+                $('.pack_'+$(this).val()).show();
+            });
+
+            @if($method === 'PUT')
+                $('._pack_type_group').hide();
+                $('.pack_{{$data['PackTypeCcd']}}').show();
+            @endif
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/packageUser/') }}' + getQueryString());
             });
         });
 
+        //판매가격 산출
+        function priceCheck(strGubun) {
+            var salesprice= 0;
+            if($('#SalePrice_'+strGubun).val() != "") {
+                // % 계산
+                if($('#SaleDiscType_'+strGubun).val() == "R") {
+                    if($("#SaleRate_"+strGubun).val() != "") {
+                        salesprice = parseInt($('#SalePrice_'+strGubun).val()) - (parseInt($('#SalePrice_'+strGubun).val()) * ( parseInt($('#SaleRate_'+strGubun).val()) / 100 ))
+                    }
+                    // - 계산
+                } else {
+                    if($("#lecDiscount_"+strGubun).val() != "") {
+                        salesprice = parseInt($('#SalePrice_'+strGubun).val()) - $('#SaleRate_'+strGubun).val()
+                    }
+                }
+                $('#RealSalePrice_'+strGubun).val(parseInt(salesprice));
+            }
+        }
 
         function rowDelete(strRow) {
             $('#'+strRow).remove();

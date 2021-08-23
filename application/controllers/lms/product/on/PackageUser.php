@@ -5,14 +5,9 @@ require_once APPPATH . 'controllers/lms/product/CommonLecture.php';
 
 Class PackageUser extends CommonLecture
 {
-    /*
-   * CommonLecture 로 이관
-   protected $models = array('sys/wCode', 'sys/site', 'sys/code', 'sys/category', 'product/on/packageUser');
-   protected $helpers = array('download');
-    */
-   protected $prodtypeccd = '636001';  //온라인강좌
-   protected $learnpatternccd = '615002'; //사용자 패키지
-   protected $copy_prodtype = 'packageuser';  //복사 타입
+    protected $prodtypeccd = '636001';  //온라인강좌
+    protected $learnpatternccd = '615002'; //사용자 패키지
+    protected $copy_prodtype = 'packageuser';  //복사 타입
 
    public function __construct()
    {
@@ -24,8 +19,8 @@ Class PackageUser extends CommonLecture
        $arr_site_code = get_auth_on_off_site_codes('N', true);
        $def_site_code = key($arr_site_code);
 
-       //공통코드      - 판매여부
-       $codes = $this->codeModel->getCcdInArray(['618']);
+       //공통코드      - 판매여부, 패키지유형
+       $codes = $this->codeModel->getCcdInArray(['618','743']);
 
        $category_data = $this->categoryModel->getCategoryArray();
        $arr_category = [];
@@ -37,7 +32,8 @@ Class PackageUser extends CommonLecture
        $this->load->view('product/on/packageuser/index',[
            'arr_lg_category' => element('LG', $arr_category, []),
            'arr_md_category' => element('MD', $arr_category, []),
-           'Sales_ccd' => $codes['618'],
+           'sales_ccd' => $codes['618'],
+           'pack_type_ccd' => $codes['743'],
            'def_site_code' => $def_site_code,
            'arr_site_code' => $arr_site_code
        ]);
@@ -58,6 +54,7 @@ Class PackageUser extends CommonLecture
                 'B.SchoolYear' => $this->_reqP('search_schoolyear'),
                 'A.IsUse' =>$this->_reqP('search_is_use'),
                 'A.SaleStatusCcd' =>$this->_reqP('search_sales_ccd'),
+                'B.PackTypeCcd' => $this->_reqP('search_pack_type_ccd'),
             ],
             'LKR' => [
                 'C.CateCode' => $this->_reqP('search_lg_cate_code'),
@@ -107,11 +104,13 @@ Class PackageUser extends CommonLecture
 
         $method = 'POST';
 
-        $codes = $this->codeModel->getCcdInArray(['611','612','618','635']); // 수강배수,수강배수적용구분,판매상태
+        $codes = $this->codeModel->getCcdInArray(['611','612','618','635','613','743']); // 수강배수,수강배수적용구분,판매상태,패키지형태(일반,고정)
         $arr_send_callback_ccd = $this->codeModel->getCcd(706, 'CcdValue');  // 발신번호조회
+        $courseList = $this->courseModel->listCourse([], null, null, ['PC.SiteCode' => 'asc','PC.OrderNum' => 'asc' ]);
 
         $prodcode = null;
         $data = null;
+        $data_sale = [];
         $data_memo = [];
         $data_content = [];
         $data_sms = null;
@@ -126,6 +125,7 @@ Class PackageUser extends CommonLecture
             $prodcode = $params[0];
 
             $data = $this->packageUserModel->_findProductForModify($prodcode);
+            $data_sale = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_sale');
             $data_memo = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_memo');
             $data_content = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_content');
             $data_sms = $this->packageUserModel->_findProductEtcModify($prodcode,'lms_product_sms');
@@ -149,6 +149,7 @@ Class PackageUser extends CommonLecture
             ,'prodcode' => $prodcode
             ,'arr_send_callback_ccd' =>$arr_send_callback_ccd
             ,'data'=>$data
+            ,'data_sale'=>$data_sale
             ,'data_memo'=>$data_memo
             ,'data_content'=>$data_content
             ,'data_sms'=>$data_sms
@@ -159,6 +160,9 @@ Class PackageUser extends CommonLecture
             ,'data_packsaleinfo'=>$data_packsaleinfo
            	,'def_site_code' => $def_site_code
             ,'arr_site_code' => $arr_site_code
+            ,'courseList'=>$courseList      //과정
+            ,'salestype_ccd'=>$codes['613'] //상품판매구분
+            ,'packtype_ccd'=>$codes['743'] //패키지유형
         ]);
     }
 

@@ -875,9 +875,11 @@
                 $('.pack_'+$(this).val()).show();
             });
 
+            $('._pack_type_group').hide();
             @if($method === 'PUT')
-                $('._pack_type_group').hide();
                 $('.pack_{{$data['PackTypeCcd']}}').show();
+            @else
+                $('.pack_743001').show();
             @endif
 
             $('#btn_list').click(function() {

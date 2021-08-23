@@ -213,7 +213,7 @@
             <div id="ddaytime">
                 <ul>
                     <li>
-                        <span>윌비스 신광은 경찰 2021~22대비</span>
+                        <span>윌비스 신광은 경찰 2022~23대비</span>
                         <div class="NSK-Black">0원 PASS {{$arr_promotion_params['turn']}}기</div>
                     </li>
                     <li><img id="dd1" src="https://static.willbes.net/public/images/promotion/common/0.png" /></li>

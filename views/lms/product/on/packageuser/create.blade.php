@@ -876,11 +876,7 @@
             });
 
             $('._pack_type_group').hide();
-            @if($method === 'PUT')
-                $('.pack_{{$data['PackTypeCcd']}}').show();
-            @else
-                $('.pack_743001').show();
-            @endif
+            $('.pack_'+$("input[name='PackTypeCcd']:checked").val()).show();
 
             $('#btn_list').click(function() {
                 location.replace('{{ site_url('/product/on/packageUser/') }}' + getQueryString());

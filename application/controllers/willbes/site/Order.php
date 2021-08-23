@@ -88,7 +88,8 @@ class Order extends \app\controllers\FrontController
             'arr_tel1_ccd' => $codes[$this->_group_ccd['Tel1']],
             'arr_phone1_ccd' => $codes[$this->_group_ccd['Phone1']],
             'arr_pay_method_ccd' => $arr_pay_method_ccd,
-            'results' => $results
+            'results' => $results,
+            'hide_site_menu_sub_title' => true
         ]);
     }
 
@@ -157,7 +158,8 @@ class Order extends \app\controllers\FrontController
             'arr_prod_type_name' => $this->orderListFModel->_cart_prod_type_name,
             'arr_prod_type_idx' => $this->orderListFModel->_cart_prod_type_idx,
             'ad_data' => $ad_data,
-            'results' => $results
+            'results' => $results,
+            'hide_site_menu_sub_title' => true
         ]);
     }
 

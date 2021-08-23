@@ -103,7 +103,8 @@ class Cart extends \app\controllers\FrontController
             'pack_lecture_key' => $pack_lecture_key,
             'is_npay' => $is_npay,
             'npay_enable_yn' => $npay_enable_yn,
-            'results' => $results
+            'results' => $results,
+            'hide_site_menu_sub_title' => true
         ]);
     }
 

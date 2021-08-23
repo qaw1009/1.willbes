@@ -25,18 +25,16 @@ class PackageUserModel extends CommonLectureModel
             $column = ' STRAIGHT_JOIN
                                 A.ProdCode,A.ProdName,A.IsUse,A.RegDatm
                                 ,Aa.CcdName as SaleStatusCcd_Name,A.SiteCode,Ab.SiteName
+                                ,B.CourseIdx, B.PackTypeCcd
                                 ,B.LearnPatternCcd,B.SchoolYear,B.MultipleApply
                                 ,Bc.CcdName as LearnPatternCcd_Name
+                                ,Bd.CcdName as PackTypeCcd_Name
                                 ,C.CateCode
                                 ,Ca.CateName, Cb.CateName as CateName_Parent
-                                #,fn_product_count_cart(A.ProdCode) as CartCnt
-                                #,fn_product_count_order(A.ProdCode,\'676002\') as PayIngCnt
-                                #,fn_product_count_order(A.ProdCode,\'676001\') as PayEndCnt
-                                ,0 as CartCnt       #장바구니테이블 스캔으로 인해 쿼리속도 저하
-                                ,0 as PayIngCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
-                                ,0 as PayEndCnt    #주문테이블 스캔으로 인해 쿼리속도 저하
+                                ,D.CourseName
                                 ,IFNULL(Y.ProdCode_Original,\'\') as ProdCode_Original
                                 ,Z.wAdminName
+                                
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
@@ -49,9 +47,11 @@ class PackageUserModel extends CommonLectureModel
                             left outer join lms_site Ab on A.SiteCode = Ab.SiteCode
                         join lms_product_lecture B on A.ProdCode = B.ProdCode
                             left outer join lms_sys_code Bc on B.LearnPatternCcd = Bc.Ccd and Bc.IsStatus=\'Y\'
+                            left outer join lms_sys_code Bd on B.PackTypeCcd = Bd.Ccd and Bd.IsStatus=\'Y\'
                         join lms_product_r_category C on A.ProdCode = C.ProdCode and C.IsStatus=\'Y\'
                             join lms_sys_category Ca on C.CateCode = Ca.CateCode  and Ca.IsStatus=\'Y\'
                             left outer join lms_sys_category Cb on Ca.ParentCateCode = Cb.CateCode
+                        left outer join lms_product_course D on B.CourseIdx = D.CourseIdx and D.IsStatus = \'Y\'
                         left outer join lms_product_copy_log Y on A.ProdCode = Y.ProdCode
                         left outer join wbs_sys_admin Z on A.RegAdminIdx = Z.wAdminIdx
                      where A.IsStatus=\'Y\'
@@ -64,7 +64,6 @@ class PackageUserModel extends CommonLectureModel
 
         // 쿼리 실행
         $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
-        //echo 'select ' . $column . $from . $where . $order_by_offset_limit;        exit;
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -101,7 +100,6 @@ class PackageUserModel extends CommonLectureModel
             if($this->_conn->set($product_data)->insert($this->_table['product']) === false) {
                 throw new \Exception('상품 등록에 실패했습니다.');
             };
-            //echo $this->_conn->last_query().'; ';
             /*----------------          상품등록        ---------------*/
 
             /*----------------          강좌등록        ---------------*/
@@ -112,7 +110,6 @@ class PackageUserModel extends CommonLectureModel
             if($this->_conn->set($lecture_data)->insert($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 등록에 실패했습니다.');
             }
-            //echo $this->_conn->last_query().'<BR><BR>';
             /*----------------          강좌등록        ---------------*/
 
             /*----------------          카테고리등록        ---------------*/
@@ -120,6 +117,12 @@ class PackageUserModel extends CommonLectureModel
                 throw new \Exception('카테고리 등록에 실패했습니다.');
             }
             /*----------------          카테고리등록        ---------------*/
+
+            /*----------------          가격등록        ---------------*/
+            if($this->_setPrice($input,$prodcode) !== true) {
+                throw new \Exception('가격 등록에 실패했습니다.');
+            }
+            /*----------------          가격등록        ---------------*/
 
             /*----------------          메모등록        ---------------*/
             if($this->_setMemo($input,$prodcode) !== true) {
@@ -176,7 +179,6 @@ class PackageUserModel extends CommonLectureModel
             /*----------------          Json 데이터 등록        ---------------*/
 
             $this->_conn->trans_commit();
-            //$this->_conn->trans_rollback();
 
         } catch(\Exception $e) {
             $this->_conn->trans_rollback();
@@ -219,7 +221,6 @@ class PackageUserModel extends CommonLectureModel
             if ($this->_conn->set($lecture_data)->where('ProdCode', $prodcode)->update($this->_table['lecture']) === false) {
                 throw new \Exception('강좌 정보 수정에 실패했습니다.');
             }
-            //echo $this->_conn->last_query();
             /*----------------          강좌수정        ---------------*/
 
             /*----------------          카테고리등록        ---------------*/
@@ -227,6 +228,12 @@ class PackageUserModel extends CommonLectureModel
                 throw new \Exception('카테고리 등록에 실패했습니다.');
             }
             /*----------------          카테고리등록        ---------------*/
+
+            /*----------------          가격등록        ---------------*/
+            if($this->_setPrice($input,$prodcode) !== true) {
+                throw new \Exception('가격 등록에 실패했습니다.');
+            }
+            /*----------------          가격등록        ---------------*/
 
             /*----------------          메모등록        ---------------*/
             if($this->_setMemo($input,$prodcode) !== true) {
@@ -345,7 +352,9 @@ class PackageUserModel extends CommonLectureModel
         ];
 
         $input_lecture = [
-            'SchoolYear'=>element('SchoolYear',$input)
+            'PackTypeCcd'=>element('PackTypeCcd',$input)
+            ,'CourseIdx'=>element('CourseIdx',$input)
+            ,'SchoolYear'=>element('SchoolYear',$input)
             ,'LecTypeCcd'=>$LecTypeCcd
             ,'StudyStartDate'=>get_var($commonStudyStartDate,null)
             ,'StudyEndDate'=>get_var(element('StudyEndDate',$input,''),null)

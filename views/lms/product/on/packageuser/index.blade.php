@@ -24,31 +24,31 @@
                                 <option value="{{ $row['CateCode'] }}" class="{{ $row['ParentCateCode'] }}">{{ $row['CateName'] }}</option>
                             @endforeach
                         </select>
-
                         <select name="search_schoolyear" id="search_schoolyear" class="form-control" title="대비학년도">
                             <option value="">대비학년도</option>
                             @for($i=(date('Y')+2); $i>=2005; $i--)
                                 <option value="{{$i}}">{{$i}}</option>
                             @endfor
                         </select>
-                        &nbsp;
-                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
-                            <option value="">판매여부</option>
-                            @foreach($Sales_ccd as $key=>$val)
+                        <select name="search_pack_type_ccd" id="search_pack_type_ccd" class="form-control" title="패키지유형">
+                            <option value="">패키지유형</option>
+                            @foreach($pack_type_ccd as $key=>$val)
                                 <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
-                        &nbsp;
+                        <select class="form-control" id="search_sales_ccd" name="search_sales_ccd">
+                            <option value="">판매여부</option>
+                            @foreach($sales_ccd as $key=>$val)
+                                <option value="{{ $key }}">{{ $val }}</option>
+                            @endforeach
+                        </select>
                         <select class="form-control" id="search_is_use" name="search_is_use">
                             <option value="">사용여부</option>
                             <option value="Y">사용</option>
                             <option value="N">미사용</option>
                         </select>
-                        &nbsp;
                     </div>
                 </div>
-
-
                 <div class="form-group">
                     <label class="control-label col-md-1" for="search_value">패키지검색</label>
                     <div class="col-md-3 form-inline">
@@ -82,16 +82,11 @@
                 <tr>
                     <th width="4%">복사<br>선택</th>
                     <th width="10%">대분류</th>
-
                     <th width="8%">대비학년도</th>
+                    <th width="8%">패키지유형</th>
                     <th>사용자패키지명</th>
                     <th width="5%">판매여부</th>
                     <th width="5%">사용여부</th>
-                    <!--
-                    <th width="5%">장바구니</th>
-                    <th width="5%">입금대기</th>
-                    <th width="5%">결제완료</th>
-                    //-->
                     <th width="5%">등록자</th>
                     <th width="8%">등록일</th>
                     <th>복사</th>
@@ -133,11 +128,11 @@
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '<input type="radio" class="flat"  name="copyProdCode" value="'+row.ProdCode+'">';
                         }},
-
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return row.CateName;
                         }},
                     {'data' : 'SchoolYear'},//대비학년도
+                    {'data' : 'PackTypeCcd_Name'},//대비학년도
                     {'data' : null, 'render' : function(data, type, row, meta) {
                             return '['+row.ProdCode+ '] <a href="#" class="btn-modify" data-idx="' + row.ProdCode + '"><u>' + row.ProdName + '</u></a> ';
                         }},//패키지명
@@ -147,11 +142,6 @@
                     {'data' : 'IsUse', 'render' : function(data, type, row, meta) {
                             return '<input type="checkbox" class="flat" name="is_use" value="Y" data-idx="'+ row.ProdCode +'" data-origin-is-use="' + data + '" ' + ((data === 'Y') ? ' checked="checked"' : '') + '>';
                         }},//사용여부
-                    /*
-                    {'data' : 'CartCnt'},//장바구니
-                    {'data' : 'PayIngCnt'},//입금대기
-                    {'data' : 'PayEndCnt'},//결제완료
-                    */
                     {'data' : 'wAdminName'},//등록자
                     {'data' : 'RegDatm'},//등록일
                     {'data' : null, 'render' : function(data, type, row, meta) {
@@ -181,7 +171,6 @@
 
                     sendAjax('{{ site_url('/product/on/packageUser/copy') }}', data, function (ret) {
                         if (ret.ret_cd) {
-                            //notifyAlert('success', '알림', ret.ret_msg);
                             alert(ret.ret_msg);
                             $datatable.draw();
                         }

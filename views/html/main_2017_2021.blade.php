@@ -2,6 +2,17 @@
 @section('content')
 
 <style type="text/css">
+.ssam .noticeBanner {float:left;}
+.ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
+.ssam .noticeBanner li:first-child {margin-right:40px}
+.ssam .noticeBanner:after {content:''; display:block; clear:both}
+.ssam .noticeTabs {height:293px; overflow:hidden;}
+.ssam .noticeWrap li {margin:0}
+.ssam .noticeWrap li a {border:0 !important; height:36px !important; line-height:36px !important;}
+.ssam .noticeWrap li a.on {background:#000; color:#fff}
+.ssam .noticeWrap li:first-child a {border-right:1px solid #ccc}
+.ssam .noticeBox .List-Table {margin-top:20px !important;}
+
 .ssam .sec-prof {background:url("https://static.willbes.net/public/images/promotion/main/2018/sec_prof_bg.jpg") no-repeat center 82px; position: relative;}
 .ssam .sec-prof .sec-prof-title {text-align:center; background-color:#0a2230;}
 .ssam .sec-prof .widthAuto {height:402px; overflow: hidden;}
@@ -286,12 +297,36 @@ no-repeat 5px center}
 
     <div class="Section mt80">
         <div class="widthAuto"> 
+            <ul class="noticeBanner">
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
             <div class="noticeTabs">
-                <div class="will-listTit">공지사항</div>
+                <ul class="tabWrap noticeWrap two">
+                    <li><a href="#notice1" class="on">공지사항</a></li>
+                    <li><a href="#notice2" class="">강의 업데이트</a></li>
+                </ul>
+
                 <div class="tabBox noticeBox">
-                    <div class="tabContent p_re">
+                    <div id="notice1" class="tabContent p_re">
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
-                        <ul class="List-Table">                            
+                        <ul class="List-Table">
                             <li><a href="#none"><span>HOT</span>2019년도 국가공무원 공개경쟁채용시험 등 계획 공고</a><span class="date">2019-01-25 </span></li>
                             <li><a href="#none"><span>HOT</span>2019 제1회 서울시 지방공무원(7,9급 등) 임용시험 시행계획 변경 공고</a><span class="date">2019-01-25 </span></li>
                             <li><a href="#none">[공지] 2019년도 제주교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
@@ -301,14 +336,8 @@ no-repeat 5px center}
                             <li><a href="#none">2019년도 부산교육청 지방공무원 임용시험 일정안내</a><span class="date">2019-01-25 </span></li>
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="noticeTabs">
-                <div class="will-listTit">강의 업데이트 </div>    
-                <div class="tabBox noticeBox p_re">   
-                    <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
-                    <div class="tabContent p_re">
+                    <div id="notice2" class="tabContent p_re">
+                        <div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
                         <a href="#none" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
                         <ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">
                             <li><a href="#none"><strong class="tx-blue">[전공수학 김철홍]</strong> <strong class="tx-red">총 2강 업로드</strong> [인강전용] 2020 확률과 통계 문제풀이 - 수강생용 </a></li>

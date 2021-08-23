@@ -7,8 +7,11 @@
     <div class="Menu widthAuto NGR c_both">
         <h3>
             <ul class="menu-Tit">
-                <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}<span class="row-line">|</span></li>
-                <li class="subTit"><a href="{{ array_get($__cfg['SiteMenu']['ActiveMenu'], 'HomeUrl', '#none') }}">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][1] }}</a></li>
+                <li class="Tit">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][0] }}</li>
+                {{-- 사이트메뉴 서브타이틀 노출안함 (컨트롤러 메소드에서 설정값 전달) --}}
+                @if(isset($hide_site_menu_sub_title) === false || $hide_site_menu_sub_title !== true)
+                <li class="subTit"><span class="row-line">|</span><a href="{{ array_get($__cfg['SiteMenu']['ActiveMenu'], 'HomeUrl', '#none') }}">{{ $__cfg['SiteMenu']['ActiveMenu']['UrlRouteNames'][1] }}</a></li>
+                @endif
             </ul>
             <ul class="menu-List">
                 @foreach($__cfg['SiteMenu']['TreeMenu'] as $menu_idx => $menu_row)

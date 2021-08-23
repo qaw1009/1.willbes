@@ -1690,6 +1690,7 @@ table.auTable tr td {
 	height: 16px;
 	border: none;
 }
+.tabWrap.noticeWrap:after {content: ""; display:block; clear:both}
 .tabWrap.noticeWrap li {
 	float: left;
 	width: auto;

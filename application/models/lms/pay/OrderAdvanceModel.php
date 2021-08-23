@@ -129,7 +129,7 @@ class OrderAdvanceModel extends BaseOrderModel
 				left join ' . $this->_table['product_division'] . ' as SPD
 					on SPD.ProdCode = ML.ProdCodeSub and SPD.ProdCodeSub = ML.ProdCodeSub and SPD.IsStatus = "Y"
 						and PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['userpack_lecture'] . '", "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '") 
-						and (PL.PackTypeCcd is null or PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '")   # 사용자패키지, 운영자패키지선택형
+						and (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" or PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '")   # 사용자패키지, 운영자패키지선택형
 				left join ' . $this->_table['product_sale'] . ' as SPS		
 					on ML.ProdCodeSub = SPS.ProdCode and SPS.SaleTypeCcd = "613001" and SPS.IsStatus = "Y"
 						and PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" 
@@ -139,6 +139,7 @@ class OrderAdvanceModel extends BaseOrderModel
 				and OP.RealPayPrice > 0
 				and OP.PayStatusCcd in ("' . $this->_pay_status_ccd['paid'] . '", "' . $this->_pay_status_ccd['refund'] . '")
 				and P.ProdTypeCcd = "' . $this->_prod_type_ccd['on_lecture'] . '"
+				and (PL.ExternalCorpCcd is null or PL.ExternalCorpCcd not in ("696001"))    # 한국인재개발진흥원 제휴상품 제외
         ';
 
         // where 조건
@@ -163,7 +164,7 @@ class OrderAdvanceModel extends BaseOrderModel
                             , greatest(0, datediff(date_add(RR.BaseDate, interval 1 day), RR.LecStartDate)) as LecUseDay	
                             , ifnull((select case
                                 when RR.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['on_lecture'] . '", "' . $this->_learn_pattern_ccd['userpack_lecture'] . '", "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '") 
-                                        and (RR.PackTypeCcd is null or RR.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '") 
+                                        and (RR.PackTypeCcd is null or RR.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '" or RR.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '") 
                                     then RR.OriProdDivisionRate     # 단강좌, 사용자패키지, 운영자패키지일반형 
                                 when RR.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and RR.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['choice'] . '" 
                                     then (RR.SalePrice * RR.OriProdDivisionRate) / RR.TotalSalePrice    # 운영자패키지선택형

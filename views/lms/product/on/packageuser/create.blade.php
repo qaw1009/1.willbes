@@ -441,7 +441,7 @@
                             &nbsp;&nbsp;
                             [할인율] <input type="number" name="RetakeSaleRate" id="RetakeSaleRate" value="@if($method == 'POST'){{0}}@else{{$data['RetakeSaleRate']}}@endif" class="form-control" style="width: 80px"> %
                             &nbsp;&nbsp;
-                            [신청가능기간] 수강종료 후 <input type='number' id="RetakePeriod" name='RetakePeriod' value='{{$data['RetakePeriod']}} ' class="form-control" size="2" style="width: 80px" > 일까지 ]
+                            [신청가능기간] 수강종료 후 <input type='number' id="RetakePeriod" name='RetakePeriod' value='{{$data['RetakePeriod']}}' class="form-control" size="2" style="width: 80px" > 일까지 ]
                             &nbsp;&nbsp;
                             <input type="radio" name="IsRetake" class="flat" value="N" @if($data['IsRetake']=='N')checked="checked"@endif/> 불가능
                             )

@@ -740,7 +740,6 @@ class CommonLectureModel extends WB_Model
                     $data = [
                         'ProdCode' => $prodcode
                         , 'OrderNum' => $OrderNum[$i]
-                        //, 'IsApply' => empty($IsApply[$i]) === false ? 'Y' : 'N'
                         , 'DiscNum' => empty($DiscNum[$i]) === false ?  $DiscNum[$i] : NULL
                         , 'DiscRate' => empty($DiscRate[$i]) === false ?  $DiscRate[$i] : NULL
                         , 'LecExten' => empty($LecExten[$i]) === false ?  $LecExten[$i] : NULL
@@ -750,22 +749,21 @@ class CommonLectureModel extends WB_Model
 
                     if(empty($IsApply) === false) {
                         for($k=0;$k<count($IsApply);$k++) {
-                            //echo $IsApply[$k];
                             if($OrderNum[$i] == $IsApply[$k]) {
                                 $IsApplySelect = 'Y';
                             }
                         }
                     }
 
-                    $data = array_merge($data,['IsApply' => $IsApplySelect]);
-
-                    if($this->_conn->set($data)->insert($this->_table['packsale']) === false) {
-                        throw new \Exception('패키지할인정보 등록에 실패했습니다.');
+                    if($IsApplySelect === 'Y') {
+                        $data = array_merge($data,['IsApply' => $IsApplySelect]);
+                        if($this->_conn->set($data)->insert($this->_table['packsale']) === false) {
+                            throw new \Exception('패키지할인정보 등록에 실패했습니다.');
+                        }
                     }
 
                 }
             }
-            //echo $this->_conn->last_query();
 
         } catch (\Exception $e) {
             return $e->getMessage();
@@ -1021,8 +1019,8 @@ class CommonLectureModel extends WB_Model
                     , CpDistribution, IsEdit, IsSelLecCount, SelCount
                     , PackTypeCcd, PackCateCcd, PackCateEtcMemo, PackSelCount,PackAutoStudyExtenCcd,PackAutoStudyPeriod, FreeLecTypeCcd, FreeLecPasswd, CampusCcd, SchoolStartYear, SchoolStartMonth, SchoolStartDatm
                     , StudyPatternCcd, StudyApplyCcd, FixNumber, IsLecOpen, AcceptStatusCcd, LecPlace,WeekArray,Amount,AmountDisp,DeviceLimitCount,IsTpass
-                    , ExternalCorpCcd, ExternalLinkCode, OrderNum, ProfChoiceStartDate, ProfChoiceEndDate, IsOpenwUnitNum ';
-
+                    , ExternalCorpCcd, ExternalLinkCode, OrderNum, ProfChoiceStartDate, ProfChoiceEndDate, IsOpenwUnitNum, SuppprodCode, SuppIsUse, SuppAbleCnt, SuppPeriod, IsMobileDownload';
+                    /* TODO SuppprodCode 소문자로 변환 - 아래 replace 처리가 됨*/
             $select_column= str_replace('ProdCode','\''.$prodcode_new.'\' as ProdCode',$insert_column);
 
             $query = 'insert into '.$this->_table['lecture'].'('. $insert_column .')Select '.$select_column.' FROM '.$this->_table['lecture'].' where ProdCode='.$prodcode;
@@ -1030,7 +1028,6 @@ class CommonLectureModel extends WB_Model
             if($this->_conn->query($query) === false) {
                 throw new \Exception('강좌 복사에 실패했습니다.');
             };
-
 
             //카테고리복사
             $insert_column = 'ProdCode, CateCode, RegAdminIdx, RegIp';

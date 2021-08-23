@@ -1,19 +1,12 @@
 <ul class="noticeBanner">
     <li>
         <div class="bSlider">
-            <div class="slider">
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-            </div>
+            {!! banner_html(element('메인_서브배너_01', $data['arr_main_banner'])) !!}
         </div>
     </li>
     <li>
         <div class="bSlider">
-            <div class="slider">
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-            </div>
+            {!! banner_html(element('메인_서브배너_02', $data['arr_main_banner'])) !!}
         </div>
     </li>
 </ul>
@@ -23,8 +16,6 @@
         <li><a href="#notice1" class="on">공지사항</a></li>
         <li><a href="#notice2" class="">강의 업데이트</a></li>
     </ul>
-
-
     <div class="tabBox noticeBox">
         <div id="notice1" class="tabContent p_re">
             <a href="{{front_url('/support/notice/index')}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>
@@ -48,10 +39,10 @@
         <div id="notice2" class="tabBox noticeBox p_re">   
         
         <div class="tabContent p_re">      
-            {{--<div class="lecup-Notice"><a href="#none"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>--}}
+            <div class="lecup-Notice"><a href="https://ssam.willbes.net/support/notice/show?board_idx=351174&s_cate_code_disabled=Y"><span>공지</span>동영상강의 업데이트 일정 공지</a></div>
             <a href="{{front_url('/updateLectureInfo')}}" class="f_right btn-add"><img src="{{ img_url('gosi_acad/icon_add_big.png') }}" alt="더보기"></a>            
-            {{--<ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">--}}
-            <ul class="List-Table List-Table2">
+            <ul class="List-Table List-Table2" style="padding-top:36px; height:260px; overflow:hidden;">
+            {{--<ul class="List-Table List-Table2">--}}
                 @if(empty($data['lecture_update_info']) === true)
                 <li><span>등록된 내용이 없습니다.</span></li>
                 @else

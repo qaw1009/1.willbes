@@ -22,6 +22,17 @@
             background-color:rgba(255,255,255,.3); font-weight:bold
         }
 
+        .ssam .noticeBanner {float:left;}
+        .ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
+        .ssam .noticeBanner li:first-child {margin-right:40px}
+        .ssam .noticeBanner:after {content:''; display:block; clear:both}
+        .ssam .noticeTabs {height:293px; overflow:hidden;}
+        .ssam .noticeWrap li {margin:0}
+        .ssam .noticeWrap li a {border:0 !important; height:36px !important; line-height:36px !important;}
+        .ssam .noticeWrap li a.on {background:#000; color:#fff}
+        .ssam .noticeWrap li:first-child a {border-right:1px solid #ccc}
+        .ssam .noticeBox .List-Table {margin-top:20px !important;}
+
         .ssam .noticeTabs .noticeBox .lecup-Notice {position:absolute; top:0; width:100%; z-index:2; border-bottom:1px solid #e3e3e3;}
         .ssam .noticeTabs .noticeBox .lecup-Notice a {display:block; height:36px; line-height:36px; font-size:13px}
         .ssam .noticeTabs .noticeBox .lecup-Notice a span {background: #0c5dc0; color: #fff; padding: 0 10px; border-radius: 10px; margin-right: 5px;}
@@ -128,7 +139,7 @@
         <div class="Section mt80">
             <div class="widthAuto">
                 {{-- board include --}}
-                @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
+                @include('willbes.pc.site._viewTest.main_partial.board_' . $__cfg['SiteCode'])
             </div>
         </div>
 

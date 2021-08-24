@@ -48,12 +48,12 @@
             position: absolute;
             top:285px;
             left:110px;
-            animation:drone 2.5s infinite;
+            animation:drone 1.5s infinite;
         }
-        @keyframes drone {
+        @@keyframes drone {
             0%, 100% {animation-timing-function: ease-out;}
             from {transform: translate3d(0, 0, 0);}
-            50% {transform: translate3d(0, -5px, 0);}
+            50% {transform: translate3d(0, -10px, 0);}
             to {transform: translate3d(0, 0, 0);}
         }
         .evtTop .txt{
@@ -129,7 +129,7 @@
 
 
         <div class="sky">
-            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2326_sky.png" alt="이벤트 진행중" ></a>
+            <a href="#evt_01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2335_sky.png" alt="이벤트 진행중" ></a>
         </div>        
         
         <div class="evtCtnsBox evtTop" data-aos="fade-left">
@@ -150,7 +150,7 @@
         <div class="evtCtnsBox evt02" data-aos="fade-left">
             <div class="wrap">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2335_02.jpg" title="스케줄">
-                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" title="강의시간표 확인하기" style="position: absolute;left: 20.51%;top: 84.3%;width: 58.63%;height: 7.13%;z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offinfo/boardInfo/index/80" target="_blank" title="강의시간표 확인하기" style="position: absolute;left: 20.51%;top: 84.3%;width:58.63%;height: 11.13%;z-index: 2;"></a>
             </div>
         </div>
 

@@ -761,9 +761,10 @@ class Professor extends \app\controllers\FrontController
         $tab_id_prefix = str_first_pos_before($arr_input['tab'], '_');
         $data = [];
 
-        // 온라인 운영자패키지 조회
+        // 온라인 운영자/사용자패키지 조회
         if (empty($arr_prof_idx['on']) === false && $tab_id_prefix == 'on') {
             $data['on_pack_lecture'] = $this->_getOnPackageData('adminpack_lecture', 'on_pack_normal', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
+            $data['on_userpack_lecture'] = $this->_getOnPackageData('userpack_lecture', 'on_userpack_fixed', $arr_site_code['on'], $arr_prof_idx['on'], $arr_input);
         }
 
         // 학원 종합반 조회
@@ -773,7 +774,8 @@ class Professor extends \app\controllers\FrontController
 
         return [
             'on_pack_lecture' => element('on_pack_lecture', $data, []),
-            'off_pack_lecture' => element('off_pack_lecture', $data, [])
+            'off_pack_lecture' => element('off_pack_lecture', $data, []),
+            'on_userpack_lecture' => element('on_userpack_lecture', $data, []),
         ];
     }
 
@@ -1076,19 +1078,19 @@ class Professor extends \app\controllers\FrontController
     /**
      * 온라인 패키지 데이터 조회
      * @param $learn_pattern
-     * @param $adminpack_lecture_type
+     * @param $pack_type
      * @param $site_code
      * @param $prof_idx
      * @param array $arr_input
      * @return array
      */
-    private function _getOnPackageData($learn_pattern, $adminpack_lecture_type, $site_code, $prof_idx, $arr_input = [])
+    private function _getOnPackageData($learn_pattern, $pack_type, $site_code, $prof_idx, $arr_input = [])
     {
-        // 패키지구분 공통코드 셋팅
-        $arr_adminpack_lecture_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002'];
-        $adminpack_lecture_type_ccd = array_get($arr_adminpack_lecture_type_ccd, $adminpack_lecture_type);
+        // 패키지구분 공통코드 셋팅 (운영자일반형, 운영자선택형, 사용자일반형, 사용자고정형)
+        $arr_pack_type_ccd = ['on_pack_normal' => '648001', 'on_pack_choice' => '648002', 'on_userpack_normal' => '743001', 'on_userpack_fixed' => '743002'];
+        $pack_type_ccd = array_get($arr_pack_type_ccd, $pack_type);
 
-        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $adminpack_lecture_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
+        $arr_condition = ['EQ' => ['SiteCode' => $site_code, 'PackTypeCcd' => $pack_type_ccd], 'LKB' => ['ProfIdx_String' => $prof_idx]];
         if ($this->_is_pass_site === false) {
             // 온라인 사이트일 경우 카테고리 조건 추가
             $arr_condition['LKR']['CateCode'] = $this->_def_cate_code;

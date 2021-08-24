@@ -129,7 +129,9 @@ class ProductFModel extends WB_Model
 
                 //사용자패키지
                 case 'userpack_lecture' :
-                        $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData';
+                        $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData
+                                    ,CourseIdx, CourseName, ProdPriceData, PackTypeCcd
+                            ';
                     break;
 
                 //기간제패키지

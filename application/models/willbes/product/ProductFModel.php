@@ -19,6 +19,7 @@ class ProductFModel extends WB_Model
         'delivery_add_price' => 'vw_product_delivery_add_price',
         'product' => 'lms_product',
         'product_lecture' => 'lms_product_lecture',
+        'product_sale' => 'lms_product_sale',
         'product_division' => 'lms_product_division',
         'product_r_category' => 'lms_product_r_category',
         'product_r_sublecture' => 'lms_product_r_sublecture',
@@ -129,7 +130,9 @@ class ProductFModel extends WB_Model
 
                 //사용자패키지
                 case 'userpack_lecture' :
-                        $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData';
+                        $column .= ', CateCode, SchoolYear, StudyStartDate, StudyStartDateYM, IsSelLecCount,SelCount, PackSaleData
+                                    ,CourseIdx, CourseName, ProdPriceData, PackTypeCcd
+                            ';
                     break;
 
                 //기간제패키지
@@ -394,6 +397,24 @@ class ProductFModel extends WB_Model
         );
 
         return is_array($prod_code) === true ? $data : element('0', $data, []);
+    }
+
+    /**
+     * 상품가격정보 조회
+     * @param array|int $prod_code
+     * @param string $sale_type_ccd
+     * @return array
+     */
+    public function findProductSalePrice($prod_code, $sale_type_ccd = '613001')
+    {
+        $arr_prod_code = get_arr_var($prod_code, '0');
+        $column = 'ProdCode, SaleTypeCcd, SalePrice, RealSalePrice';
+        $arr_condition = [
+            'IN' => ['ProdCode' => $arr_prod_code],
+            'EQ' => ['SaleTypeCcd' => $sale_type_ccd, 'SalePriceIsUse' => 'Y', 'IsStatus' => 'Y'],
+        ];
+
+        return $this->_conn->getListResult($this->_table['product_sale'], $column, $arr_condition);
     }
 
     /**

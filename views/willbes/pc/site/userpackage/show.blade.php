@@ -22,7 +22,7 @@
                 </table>
             </div>
             <!-- willbes-Package-Detail -->
-            @if(empty($data['contents']) == false)
+            @if(!empty($data['contents']))
             <div class="willbes-Cartlist">
                 <div class="willbes-Cart-Txt p_re pt15">
                     <span class="MoreBtn underline NG" style="top: 30px;"><a href="#none">유의사항안내 닫기 ▲</a></span>
@@ -30,7 +30,7 @@
                         <tbody>
                         <tr>
                             <td>
-                                {!! $data['contents'][0]['Content'] !!}
+                                {!! $data['contents']['Content'] !!}
                             </td>
                         </tr>
                         </tbody>
@@ -229,7 +229,7 @@
                                         @endforeach
                                         <div class="w-sub tx-red">※ 정부 지침에 의해 교재는 별도 소득공제가 부과되는 관계로 강좌와 교재는 동시 결제가 불가능합니다.</div>
                                         <div class="w-sub">
-                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ site_url() }}lecture')">
+                                            <a href="#none" onclick="productInfoModal('{{ $row['ProdCode'] }}', 'hover2','{{ front_url('lecture') }}')">
                                                 <strong class="open-info-modal">교재상세정보</strong>
                                             </a>
                                         </div>
@@ -314,12 +314,6 @@
                     tempSaleArray.push({'DiscNum': i, 'DiscRate': num_rate});
                 }
             }
-
-            {{--
-            for(i=0;i<tempSaleArray.length;i++) {
-                console.log(tempSaleArray[i]['DiscNum'] +' - '+tempSaleArray[i]['DiscRate']);
-            }
-            --}}
 
             $(".chk_products,.chk_books").change( function() {
                 var strType = ($(this).attr('class').indexOf('chk_products') == 0) ? 'lecture' : 'book';
@@ -424,8 +418,11 @@
             {{--강좌상품 선택/해제--}}
             $regi_form.on('click', 'input[name="prod_code_sub[]"]', function() {
                 if ($(this).is(':checked') === false) {
-                    {{--연계도서상품 체크 해제--}}
+                    {{--연계도서상품 체크 해제 --}}
                     $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).val() + '"]').prop('checked', false);
+                    $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).val() + '"]').each(function() {
+                        gather_action('remove', $(this).attr('id'));
+                    });
                 }
             });
 

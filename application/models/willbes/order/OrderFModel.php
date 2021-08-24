@@ -72,8 +72,8 @@ class OrderFModel extends BaseOrderFModel
                 }
             }
 
-            // 사용자 패키지 가격 확인
-            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture']) {
+            // 사용자 패키지 가격 확인 (일반형만)
+            if ($row['LearnPatternCcd'] == $this->_learn_pattern_ccd['userpack_lecture'] && (empty($row['PackTypeCcd']) === true || $row['PackTypeCcd'] == $this->_userpack_lecture_type_ccd['normal'])) {
                 if (empty($row['CalcPriceData']) === true || $row['CalcPriceData'] == 'NODATA') {
                     return '사용자 패키지 가격정보가 올바르지 않습니다.';
                 }
@@ -858,11 +858,21 @@ class OrderFModel extends BaseOrderFModel
 
             // 주문상품서브 등록
             if (empty($arr_prod_code_sub) === false) {
+                if ($learn_pattern_ccd == $this->_learn_pattern_ccd['userpack_lecture'] && $pack_type_ccd == $this->_userpack_lecture_type_ccd['fixed']) {
+                    // 사용자패키지 고정형일 경우 서브강좌별 안분결제금액 조회
+                    $arr_sub_real_pay_price = $this->getFixedUserPackSubRealPayPrice($arr_prod_code_sub, $real_pay_price);
+                    if ($arr_sub_real_pay_price === false) {
+                        throw new \Exception('사용자 패키지 서브강좌별 결제금액 조회에 실패했습니다.');
+                    }
+                } else {
+                    $arr_sub_real_pay_price = element('SubRealSalePrice', $input, []);
+                }
+
                 foreach ($arr_prod_code_sub as $idx => $prod_code_sub) {
                     $data = [
                         'OrderProdIdx' => $order_prod_idx,
                         'ProdCodeSub' => $prod_code_sub,
-                        'RealPayPrice' => array_get(element('SubRealSalePrice', $input, []), $prod_code_sub, 0)
+                        'RealPayPrice' => array_get($arr_sub_real_pay_price, $prod_code_sub, 0)
                     ];
 
                     if ($this->_conn->set($data)->insert($this->_table['order_sub_product']) === false) {
@@ -991,6 +1001,45 @@ class OrderFModel extends BaseOrderFModel
         }
 
         return true;
+    }
+
+    /**
+     * 고정형 사용자패키지 서브강좌별 안분결제금액 리턴
+     * @param array $arr_prod_code [서브강좌상품코드]
+     * @param int $real_pay_price [사용자패키지결제금액]
+     * @return array|false
+     */
+    public function getFixedUserPackSubRealPayPrice($arr_prod_code, $real_pay_price)
+    {
+        $results = [];
+
+        if ($real_pay_price > 0) {
+            $price_rows = $this->productFModel->findProductSalePrice($arr_prod_code);
+
+            // 가격정보가 없거나 상품수와 가격정보 조회건수가 다를 경우
+            if (empty($price_rows) === true || count($arr_prod_code) != count($price_rows)) {
+                return false;
+            }
+
+            $total_sale_price = array_sum(array_pluck($price_rows, 'SalePrice'));   // 정상가 합계
+            $total_div_price = 0;   // 상품별 안분금액 합계
+            $last_idx = count($price_rows) - 1; // 마지막 순번
+
+            foreach ($price_rows as $idx => $price_row) {
+                $div_rate = round($price_row['SalePrice'] / $total_sale_price, 7);  // 상품별 안분율
+
+                if ($idx == $last_idx) {
+                    $div_price = $real_pay_price - $total_div_price;    // 마지막 상품일 경우 사용자패키지결제금액 - 상품별 안분금액 합계
+                } else {
+                    $div_price = round($real_pay_price * $div_rate);
+                }
+
+                $results[$price_row['ProdCode']] = (int) $div_price;
+                $total_div_price += $div_price;
+            }
+        }
+
+        return $results;
     }
 
     /**

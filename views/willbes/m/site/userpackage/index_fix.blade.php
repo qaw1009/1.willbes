@@ -14,12 +14,12 @@
                         <input type="hidden" name="{{ $key }}" value="{{ $val }}"/>
                     @endforeach
                 </form>
-
-                @if(isset($arr_base['category']) === true)
-                    <li {{empty($__cfg['CateCode']) === true ? '' : 'class=d_none' }}>
-                        <select id="cate_code" name="cate_code" title="카테고리" class="select_search">
-                            @foreach($arr_base['category'] as $idx => $row)
-                                <option value="{{$row['CateCode']}}" @if(element('cate_code', $arr_input) == $row['CateCode'] || $arr_base['category_default'] == $row['CateCode']){{'selected'}}@endif>{{$row['CateName']}}</option>
+                @if(isset($arr_base['course']) === true)
+                    <li>
+                        <select id="course_idx" name="course_idx" title="과정" class="select_search">
+                            <option value="">과정전체</option>
+                            @foreach($arr_base['course'] as $idx => $row)
+                                <option value="{{$row['CourseIdx']}}" @if(element('course_idx', $arr_input) == $row['CourseIdx']){{'selected'}}@endif>{{$row['CourseName']}}</option>
                             @endforeach
                         </select>
                     </li>
@@ -44,13 +44,33 @@
                     </colgroup>
                     <tbody>
                     @foreach($data['list'] as $row)
-                    <tr>
-                        <td class="w-data tx-left">
-                            <div class="w-tit">
-                                <a href="{{ front_url('/userPackage/show/cate/').$__cfg['CateCode'].'/prod-code/'.$row['ProdCode'] }}"> {{$row['ProdName']}}</a>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="w-data tx-left">
+                                <dl class="w-info">
+                                    <dt>{{$row['CourseName']}}</dt>
+                                </dl>
+                                <div class="w-tit">
+                                    <a href="{{ front_url('/userPackage/show/cate/').$__cfg['CateCode'].'/prod-code/'.$row['ProdCode'] }}"> {{$row['ProdName']}}</a>
+                                </div>
+                                <dl class="w-info tx-gray">
+                                    <dt>
+                                        @if(empty($row['ProdPriceData'] ) === false)
+                                            @foreach($row['ProdPriceData'] as $price_row)
+                                                @if($loop -> index === 1)
+                                                    <div class="priceWrap">
+                                                        @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                            <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span> ▶
+                                                        @endif
+                                                        <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </dt>
+                                </dl>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

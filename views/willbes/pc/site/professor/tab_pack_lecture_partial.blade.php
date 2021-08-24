@@ -11,6 +11,7 @@
                 <div class="willbes-Lec-Line">-</div>
                 <!-- willbes-Lec-Line -->
 
+                {{-- 운영자패키지 --}}
                 @foreach($tab_data['on_pack_lecture'] as $row)
                     <div class="willbes-Lec-Table">
                         <table cellspacing="0" cellpadding="0" class="lecTable">
@@ -47,12 +48,9 @@
                                             @foreach($row['ProdPriceData'] as $price_row)
                                                 @if($loop -> index === 1)
                                                     <div class="priceWrap">
-                                                        {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0)}}원</span>
-                                                        <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
-
                                                         @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                             <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                                            <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                            <span class="discount">({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)</span>
                                                         @endif
                                                         <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                                     </div>
@@ -61,6 +59,47 @@
                                         @endif
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                        <!-- lecTable -->
+                    </div>
+                    <!-- willbes-Lec-Table -->
+                @endforeach
+                {{-- 사용자패키지 --}}
+                @foreach($tab_data['on_userpack_lecture'] as $row)
+                    <div class="willbes-Lec-Table">
+                        <table cellspacing="0" cellpadding="0" class="lecTable">
+                            <colgroup>
+                                <col style="width: 95px;">
+                                <col style="width: 665px;">
+                                <col style="width: 180px;">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td class="w-list bg-light-white">{{ $row['CourseName'] }}</td>
+                                <td class="w-data tx-left pl25">
+                                    <div class="w-tit">
+                                        <a href="{{ site_url('/userPackage/show/cate/') . substr($row['CateCode'], 0, 6) . '/prod-code/' . $row['ProdCode'] }}">
+                                            {{ $row['ProdName'] }}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="w-notice">
+                                    @if(empty($row['ProdPriceData'] ) === false)
+                                        @foreach($row['ProdPriceData'] as $price_row)
+                                            @if($loop -> index === 1)
+                                                <div class="priceWrap">
+                                                    @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
+                                                        <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
+                                                        <span class="discount">({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                    @endif
+                                                    <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                         <!-- lecTable -->
@@ -121,12 +160,9 @@
                                     @if(empty($row['ProdPriceData']) === false)
                                         @foreach($row['ProdPriceData'] as $price_idx => $price_row)
                                             <div class="priceWrap chk buybtn p_re">
-                                                {{--<span class="price tx-blue">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
-                                                <span class="discount">(↓{{ $price_row['SaleRate'] . $price_row['SaleRateUnit'] }})</span>--}}
-
                                                 @if($price_row['SalePrice'] > $price_row['RealSalePrice'])
                                                     <span class="price">{{ number_format($price_row['SalePrice'], 0) }}원</span>
-                                                    <span class="discount">({{ ($price_row['SaleRateUnit'] == '%' ? $price_row['SaleRate'] : number_format($price_row['SaleRate'], 0)) . $price_row['SaleRateUnit'] }}↓)</span>
+                                                    <span class="discount">({{ number_format($price_row['SaleRate'], 0) . $price_row['SaleRateUnit'] }}↓)</span>
                                                 @endif
                                                 <span class="dcprice">{{ number_format($price_row['RealSalePrice'], 0) }}원</span>
                                             </div>

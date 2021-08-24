@@ -36,10 +36,16 @@ class CartFModel extends BaseOrderFModel
                 , ifnull(JSON_VALUE(CalcPriceData, "$.SaleDiscType"), OriSaleDiscType) as SaleDiscType
                 , ifnull(JSON_VALUE(CalcPriceData, "$.RealSalePrice"), OriRealSalePrice) as RealSalePrice
                 , ifnull(JSON_EXTRACT(CalcPriceData, "$.SubRealSalePrice"), "") as SubRealSalePrice
-                , ifnull(JSON_VALUE(CalcPriceData, "$.LecExten"), 0) as AddExtenDay';   // 사용자패키지 추가 수강연장 일수
+                , ifnull(JSON_VALUE(CalcPriceData, "$.LecExten"), 0) as AddExtenDay
+                , if(LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and IsPackLecStartType = "S", fn_product_sublecture_selected_data(ProdCode, ProdCodeSub), "") as SubProdData';
 
             $in_column = 'CA.CartIdx, CA.MemIdx, CA.SiteCode, PC.CateCode, CA.ProdCode
-                , ifnull(if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '", fn_product_sublecture_codes(CA.ProdCode), CA.ProdCodeSub), "") as ProdCodeSub
+                , ifnull(if(
+                    (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['adminpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_adminpack_lecture_type_ccd['normal'] . '")
+                        or (PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_userpack_lecture_type_ccd['fixed'] . '")
+                    , fn_product_sublecture_codes(CA.ProdCode)
+                    , CA.ProdCodeSub
+                  ), "") as ProdCodeSub
                 , CA.ParentProdCode, CA.SaleTypeCcd, CA.SalePatternCcd, CA.ProdQty, CA.IsDirectPay, CA.IsVisitPay, CA.CaIdx, CA.ExtenDay, CA.PostData
                 , CA.TargetOrderIdx, CA.TargetProdCode, CA.TargetProdCodeSub 
                 , concat(P.ProdName, if(CA.SalePatternCcd != "' . $this->_sale_pattern_ccd['normal'] . '", concat(" (", fn_ccd_name(CA.SalePatternCcd), ")"), "")) as ProdName
@@ -52,36 +58,36 @@ class CartFModel extends BaseOrderFModel
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_subject_idxs(CA.ProdCode), PL.SubjectIdx) as SubjectIdx
                 , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '", fn_product_book_prof_idxs(CA.ProdCode), PD.ProfIdx) as ProfIdx                                         
                 , if(CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '" or PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '", "N", PL.IsLecStart) as IsLecStart                
-                , case when PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['adminpack_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '") and PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '" 
-                    then ifnull(datediff(PL.StudyEndDate, date_format(NOW(), "%Y-%m-%d")) + 1, "")
+                , (case when PL.LearnPatternCcd in ("' . $this->_learn_pattern_ccd['adminpack_lecture'] . '", "' . $this->_learn_pattern_ccd['periodpack_lecture'] . '") and PL.StudyPeriodCcd = "' . $this->_study_period_ccd['end_date'] . '" 
+                        then ifnull(datediff(PL.StudyEndDate, date_format(NOW(), "%Y-%m-%d")) + 1, "")
                     else ifnull(PL.StudyPeriod, if(PL.StudyStartDate is not null and PL.StudyEndDate is not null, datediff(PL.StudyEndDate, PL.StudyStartDate) + 1, ""))
-                  end as StudyPeriod        	                                                       
-                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
+                  end) as StudyPeriod
+                , PL.StudyStartDate, PL.StudyEndDate, PL.StudyApplyCcd, PL.IsPackLecStartType, PL.CampusCcd, fn_ccd_name(PL.CampusCcd) as CampusCcdName, fn_ccd_name(PL.StudyPatternCcd) as StudyPatternCcdName
                 , PL.LecSaleType, SC.CateName, WB.wAttachImgPath, WB.wAttachImgName as wAttachImgOgName
                 , PS.SalePrice as OriSalePrice, PS.SaleRate as OriSaleRate, PS.SaleDiscType as OriSaleDiscType, PS.RealSalePrice as OriRealSalePrice
-                , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
+                , (case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.PackTypeCcd = "' . $this->_userpack_lecture_type_ccd['normal'] . '" then fn_product_userpack_price_data(CA.ProdCode, CA.SaleTypeCcd, CA.ProdCodeSub)
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['retake'] . '" then JSON_OBJECT("RealSalePrice", cast(PS.SalePrice * ((100 - PL.RetakeSaleRate) / 100) as int))
                     when CA.SalePatternCcd = "' . $this->_sale_pattern_ccd['extend'] . '" then JSON_OBJECT("RealSalePrice", floor((PS.SalePrice * CA.ExtenDay) / PL.StudyPeriod))
                     else null
-                  end as CalcPriceData                                              
-                , case P.ProdTypeCcd when "' . $this->_prod_type_ccd['book'] . '" then "book" 
+                  end) as CalcPriceData
+                , (case P.ProdTypeCcd
+                    when "' . $this->_prod_type_ccd['book'] . '" then "book" 
                     when "' . $this->_prod_type_ccd['on_lecture'] . '" then "on_lecture"
                     when "' . $this->_prod_type_ccd['off_lecture'] . '" then "off_lecture"
                     when "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
                     else "etc"
-                  end as CartType
-                , case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
-                         when PL.LearnPatternCcd in ("' . implode('","', $this->_on_pack_lecture_pattern_ccd) . '") then "on_pack_lecture"
-                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
-                         when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
-                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
-                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
-                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
-                         when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
-                         else "etc" 
-                  end as CartProdType
-                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(CA.ProdCode, PL.FixNumber), "N") as IsClosing
-                , if(PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['userpack_lecture'] . '" and PL.IsPackLecStartType = "S", fn_product_sublecture_selected_data(CA.ProdCode, CA.ProdCodeSub), "") as SubProdData
+                  end) as CartType
+                , (case when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['on_lecture'] . '" then "on_lecture" 
+                    when PL.LearnPatternCcd in ("' . implode('","', $this->_on_pack_lecture_pattern_ccd) . '") then "on_pack_lecture"
+                    when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_lecture'] . '" then "off_lecture"
+                    when PL.LearnPatternCcd = "' . $this->_learn_pattern_ccd['off_pack_lecture'] . '" then "off_pack_lecture"
+                    when P.ProdTypeCcd = "' . $this->_prod_type_ccd['book'] . '" then "book"
+                    when P.ProdTypeCcd = "' . $this->_prod_type_ccd['mock_exam'] . '" then "mock_exam"
+                    when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_price'] . '" then "delivery_price"
+                    when P.ProdTypeCcd = "' . $this->_prod_type_ccd['delivery_add_price'] . '" then "delivery_add_price"
+                    else "etc" 
+                  end) as CartProdType
+                , if(P.ProdTypeCcd = "' . $this->_prod_type_ccd['off_lecture'] . '", fn_product_closing_yn(CA.ProdCode, PL.FixNumber), "N") as IsClosing                
             ';
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
             $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();

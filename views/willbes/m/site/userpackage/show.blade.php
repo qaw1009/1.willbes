@@ -25,7 +25,7 @@
                 @if(empty($data['contents']) == false)
                 <div class="willbes-Txt NGR c_both">
                     <div class="willbes-Txt-Tit NG">· 유의사항 <div class="MoreBtn underline"><a href="#none">닫기 ▲</a></div></div>
-                    {!! $data['contents'][0]['Content'] !!}
+                    {!! $data['contents']['Content'] !!}
                 </div>
                 @endif
 
@@ -317,28 +317,31 @@
                 $("#lecSale").text( $sale_rate == 0 ? '' : '('+$sale_rate+'% 할인)' );
             };
 
-            // 강좌상품 선택/해제
+            {{-- 강좌상품 선택/해제 --}}
             $regi_form.on('click', 'input[name="prod_code_sub[]"]', function() {
                 if ($(this).is(':checked') === false) {
-                    // 연계도서상품 체크 해제
+                    {{--연계도서상품 체크 해제 --}}
                     $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).val() + '"]').prop('checked', false);
+                    $regi_form.find('input[name="prod_code[]"][data-parent-prod-code="' + $(this).val() + '"]').each(function() {
+                        gather_action('remove', $(this).attr('id'));
+                    });
                 }
             });
 
-            // 교재상품 선택/해제
+            {{-- 교재상품 선택/해제 --}}
             $regi_form.on('click', '.chk_books', function() {
                 if ($(this).is(':checked') === true) {
                     if ($(this).hasClass('chk_books') === true) {
-                        // 수강생 교재 체크
+                        {{-- 수강생 교재 체크 --}}
                         if (checkStudentBook($regi_form, $(this)) === false) {
                             return;
                         }
                     }
                 }
-                price_cal();        //가격 계산
+                price_cal();        {{-- 가격 계산 --}}
             });
 
-            // 장바구니, 바로결제 버튼 클릭
+            {{-- 장바구니, 바로결제 버튼 클릭 --}}
             $regi_form.on('click', 'a[name="btn_direct_pay"]', function () {
                 {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
                 var $is_direct_pay = $(this).data('direct-pay');

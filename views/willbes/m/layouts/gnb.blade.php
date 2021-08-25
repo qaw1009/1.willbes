@@ -90,7 +90,9 @@
                         <ul>
                             <li><a href="{{ front_cate_url('/support/notice/index', 's_cate_code') }}">· 공지사항</a></li>
                             <li><a href="{{ front_cate_url('/support/faq/index') }}">· FAQ</a></li>
-                            <li><a href="{{ front_cate_url('/support/qna/index', 's_cate_code') }}">· {{ $__cfg['SiteGroupCode'] == '1011' ? '동영상 상담실' : '1:1 상담' }}</a></li>
+                            @if($__cfg['SiteCode'] != config_item('app_intg_site_code'))
+                                <li><a href="{{ front_cate_url('/support/qna/index', 's_cate_code') }}">· {{ $__cfg['SiteGroupCode'] == '1011' ? '동영상 상담실' : '1:1 상담' }}</a></li>
+                            @endif
                         </ul>
                     </div>
                 </li>

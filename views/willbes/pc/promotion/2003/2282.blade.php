@@ -214,16 +214,24 @@
             @endif 
         </div>
 
-        <div class="evtCtnsBox wb_cts08" >
-            <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
+        <div class="evtCtnsBox wb_cts08">
+            @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
+                @if(empty($arr_promotion_params['quiz_id']) === false && sess_data('is_login') === true)
+                    <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
+                        <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
+                    </a>
+                @else
+                    <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
+                @endif
+            @else
+                <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
+            @endif
         </div>
 
         <!--퀴즈팝업-->
         <div id="popup" class="Pstyle">
             <span class="b-close">X</span>
-            <div class="content">
-                퀴즈 준비중입니다.
-            </div>
+            <div id="quiz_layer_box"></div>
         </div>
 
         <div class="evtCtnsBox wb_cts09" >
@@ -240,14 +248,8 @@
     </div>
     <!-- End Container -->
 
-    
-
+    {{-- quiz --}}
+    <link rel="stylesheet" href="/public/css/willbes/quiz.css">
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script type="text/javascript">
-        /*레이어팝업*/
-        function go_popup() {
-            $('#popup').bPopup();
-        }
-    </script>
-
+    <script type="text/javascript" src="/public/js/willbes/promotion.js"></script>
 @stop

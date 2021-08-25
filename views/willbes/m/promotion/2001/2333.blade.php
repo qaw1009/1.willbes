@@ -44,56 +44,56 @@
         <img src="https://static.willbes.net/public/images/promotion/2020/07/1556m_00.jpg" alt="경찰학원부분 1위" >        
     </div> 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox" data-aos="fade-left">
         <img src="https://static.willbes.net/public/images/promotion/2021/08/2333m_01.png" alt="기본종합반" >
     </div> 
 
-    <div class="evtCtnsBox">
+    <div class="evtCtnsBox" data-aos="fade-right">
         <img src="https://static.willbes.net/public/images/promotion/2021/08/2333m_01s.png" alt="기본종합반" >
         <a href="https://police.willbes.net/promotion/index/cate/3001/code/1839" target="_blank" title="경찰시험 개편과목 전략" style="position: absolute;left: 17.39%;top: 78.96%;width: 31.25%;height: 11.73%;z-index: 2;"></a> 
         <a href="https://police.willbes.net/promotion/index/cate/3001/code/1966" target="_blank" title="G-TELP 단기간전략!" style="position: absolute;left: 50.39%;top: 78.96%;width: 31.25%;height: 11.73%;z-index: 2;"></a>     
     </div> 
 
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-left">        
         <img src="https://static.willbes.net/public/images/promotion/2021/04/2188m_02.jpg" alt="몰입해야 하는 이유" >
         <div class="youtubeCts video-container">
             <iframe src="https://www.youtube.com/embed/40LDBoOoD_k?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>
     
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-right">        
         <img src="https://static.willbes.net/public/images/promotion/2021/04/2188m_03.jpg" alt="교수진" >
         <div class="youtubeCts video-container">
             <iframe src="https://www.youtube.com/embed/VHTrL5w2IF4?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>        
     </div>
     
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-left">        
         <img src="https://static.willbes.net/public/images/promotion/2021/04/2188m_04.jpg" alt="무제한 수강" >
         <div class="youtubeCts video-container">
             <iframe src="https://www.youtube.com/embed/KkESWQLjtq8?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div> 
 
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-right">        
         <img src="https://static.willbes.net/public/images/promotion/2021/06/2188m_04_01.jpg" alt="이국령" ><br>
         <div class="youtubeCts video-container">
             <iframe src="https://www.youtube.com/embed/_-XbBFVxK2Y?rel=0&modestbranding=1&showinfo=0" frameborder="0" allowfullscreen=""></iframe>
         </div>
     </div>   
     
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-left">        
         <img src="https://static.willbes.net/public/images/promotion/2021/08/2333m_05.png" alt="기본종합반 스케줄" >
     </div>
 
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-right">        
         <img src="https://static.willbes.net/public/images/promotion/2021/08/2333m_06.png" alt="단과 할인 이벤트" >
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>1))
         @endif
     </div>    
 
-    <div class="evtCtnsBox">        
+    <div class="evtCtnsBox" data-aos="fade-left">        
         <img src="https://static.willbes.net/public/images/promotion/2021/08/2333m_07.png" alt="종합반 할인 이벤트" >
         @if(empty($arr_base['display_product_data']) === false)
             @include('willbes.m.promotion.display_product_partial',array('group_num'=>2))
@@ -103,6 +103,15 @@
 </div>
 
 <!-- End Container -->
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
+</script>
+
 <script type="text/javascript"> 
     /*디데이카운트다운*/
     $(document).ready(function() {

@@ -111,7 +111,7 @@
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td rowspan="2" class="w-call">1544-3169</td>
                                                 <td rowspan="2" class="w-time tx-left pl25"> 평일/주말 09:00~22:00 </td>
-                                                <td rowspan="2" class="w-time tx-center"><a href=": https://ssam.willbes.net/support/qna/index">1:1상담 ></a></td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://ssam.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
@@ -189,13 +189,12 @@
                                                 <td class="w-call">신림(본원) 1544-1881 ▶ 1</td>
                                                 <td class="w-time tx-left pl25"> 평일 : 09:00~18:00<br />
                                                 주말/공휴일 휴무</td>
-                                                <td class="w-time tx-center"><a href="https://job.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://job.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-call">강남(분원) 1544-1881 ▶ 1</td>
                                                 <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
                                                 일요일 : 08:00~18:00 </td>
-                                                <td class="w-time tx-center"><a href="#none">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="2">경찰간부/<br>일반경찰</td>

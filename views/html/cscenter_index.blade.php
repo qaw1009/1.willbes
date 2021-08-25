@@ -121,7 +121,7 @@
                                             <td class="w-acad"><span class="oBox allBox NSK">공통</span></td>
                                             <td class="w-call">1544-4944</td>
                                             <td class="w-time tx-left pl25"> 평일 9:00~17:00<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://book.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -129,7 +129,7 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td rowspan="2" class="w-call">1544-3169</td>
                                             <td rowspan="2" class="w-time tx-left pl25"> 평일/주말 09:00~22:00 </td>
-                                            <td rowspan="2" class="w-time tx-center"><a href=": https://ssam.willbes.net/support/qna/index">1:1상담 ></a></td>
+                                            <td rowspan="2" class="w-time tx-center"><a href="https://ssam.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
@@ -141,7 +141,7 @@
                                                 9급/7급/세무직/법원직 등<br>
                                                 1544-5006 </td>
                                             <td rowspan="2" class="w-time tx-left pl25"> 평일 9:00~18:00 <br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td rowspan="2" class="w-time tx-center"><a href="https://pass.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -154,7 +154,7 @@
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-call">1544-0330</td>
                                             <td class="w-time tx-left pl25"> 평일 : 09:00~18:00<br />
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://pass.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -162,14 +162,14 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-call">1544-5006</td>
                                             <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://police.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-call">1544-0336</td>
                                             <td class="w-time tx-left pl25"> 월~토 9:00~22:00<br/>
-                                              일요일 9:00~20:00 </td>
+                                            일요일 9:00~20:00 </td>
                                             <td class="w-time tx-center"><a href="https://police.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -177,14 +177,14 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-call">1566-4770</td>
                                             <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://gosi.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-call">1544-1881 ▶ 1</td>
                                             <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
-                                              일요일 : 08:00~18:00 </td>
+                                            일요일 : 08:00~18:00 </td>
                                             <td class="w-time tx-center"><a href="https://gosi.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -195,7 +195,7 @@
                                                 1566-4770
                                             </td>
                                             <td rowspan="2" class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td rowspan="2" class="w-time tx-center"><a href="https://job.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -206,28 +206,27 @@
                                             <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-call">신림(본원) 1544-1881 ▶ 1</td>
                                             <td class="w-time tx-left pl25"> 평일 : 09:00~18:00<br />
-                                              주말/공휴일 휴무</td>
-                                            <td class="w-time tx-center"><a href="https://job.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
+                                            주말/공휴일 휴무</td>
+                                            <td rowspan="2" class="w-time tx-center"><a href="https://job.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
                                             <td class="w-call">강남(분원) 1544-1881 ▶ 1</td>
                                             <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
-                                              일요일 : 08:00~18:00 </td>
-                                            <td class="w-time tx-center"><a href="#none">1:1상담 ></a></td>
+                                            일요일 : 08:00~18:00 </td>
                                         </tr>
                                         <tr>
                                             <td class="w-site" rowspan="2">경찰간부/<br>일반경찰</td>
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-call">1566-4770</td>
                                             <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://spo.willbes.net/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
                                             <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                             <td class="w-call">1544-1881</td>
                                             <td class="w-time tx-left pl25"> 평일 8:00~18:00<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://spo.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>
@@ -235,7 +234,7 @@
                                             <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                             <td class="w-call">1544-5006 ▶ 2</td>
                                             <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                              주말/공휴일 휴무 </td>
+                                            주말/공휴일 휴무 </td>
                                             <td class="w-time tx-center"><a href="https://www.njobler.net/board/qna/index">1:1상담 ></a></td>
                                         </tr>
                                         <tr>

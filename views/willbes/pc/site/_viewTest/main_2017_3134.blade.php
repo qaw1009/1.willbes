@@ -136,14 +136,14 @@
             </div>
         </div>
 
-        <div class="Section mt80">
+        <div class="Section mt40">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site._viewTest.main_partial.board_' . $__cfg['SiteCode'])
             </div>
         </div>
 
-        <div class="Section sec-prof mt80">
+        <div class="Section sec-prof mt40">
             @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
         </div>
 
@@ -218,7 +218,7 @@
             </div>
         </div>
         
-        {{--
+
         <div class="Section Section3 mt40">
             <div class="widthAuto">
                 <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
@@ -233,7 +233,7 @@
                 </ul>
             </div>
         </div>
-        --}}
+
 
         @if(empty($data['top_order_lecture']) === false)
             <div class="Section Section4 mt80">

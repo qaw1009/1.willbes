@@ -249,58 +249,6 @@ class EventQuizModel extends WB_Model
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
-    /**
-     * todo : 미사용
-     * 퀴즈 답변 팝업 데이타 조회
-     * @param bool $is_count
-     * @param array $arr_condition
-     * @param null $column
-     * @param null $limit
-     * @param null $offset
-     * @param array $order_by
-     * @return mixed
-     */
-    /*public function listMemberPopupAnswer($is_count = true, $arr_condition = [], $column = null, $limit = null, $offset = null, $order_by = [])
-    {
-        if ($is_count === true) {
-            $column = 'count(*) AS numrows';
-            $order_by_offset_limit = '';
-        } else {
-            if (empty($column) === true) {
-                $column = "
-                    A.EqsIdx, A.EqIdx, A.EqsGroupTitle, A.EqsqTotalCnt, A.EqsType, A.EqsStartDatm, A.EqsEndDatm, A.OrderNum,
-                    B.EqsqIdx, B.EqsqTitle, B.EqsqExplanation, B.EqsqNum, 
-                    GROUP_CONCAT(CONCAT('질문',B.EqsqNum,':',C.EqsqdQuestion,'(',C.IsAnswer,')')) AS MemAnswer,
-                    D.MemIdx, D.Answer, D.RegDatm AS AnswerDatm,
-                    M.MemId, M.MemName
-                ";
-            }
-
-            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
-            $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
-        }
-
-        $from = "
-                FROM {$this->_table['event_quiz_set']} AS A
-                INNER JOIN {$this->_table['event_quiz_set_question']} AS B ON A.EqsIdx = B.EqsIdx AND B.IsStatus = 'Y'
-                INNER JOIN {$this->_table['event_quiz_set_question_detail']} AS C ON B.EqsqIdx = C.EqsqIdx
-                INNER JOIN {$this->_table['event_quiz_member_answer']} AS D ON A.EqsIdx = D.EqsIdx AND C.EqsqdIdx = D.EqsqdIdx AND D.IsStatus = 'Y'
-                LEFT JOIN {$this->_table['member']} AS M ON D.MemIdx = M.MemIdx 
-            ";
-
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-
-        $group_by = ' GROUP BY B.EqsIdx, D.MemIdx ';
-
-        $query_string = ($is_count === true) ? "select COUNT(numrows) as numrows" : "select A.*";
-        $query_string .= " from ( ";
-        $query_string .= " select {$column} {$from} {$where} {$group_by} {$order_by_offset_limit}";
-        $query_string .= " ) as A";
-
-        $query = $this->_conn->query($query_string);
-        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
-    }*/
     public function listQuizAnswerMember($is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {

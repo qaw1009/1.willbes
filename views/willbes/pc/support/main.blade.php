@@ -20,27 +20,21 @@
                     <div class="centerList NG">
                         <ul>
                             <li>
-                                <a href="{{front_url('/support/notice/index')}}">
-                                    <div class="nStep">STEP1</div>
-                                    <img src="{{ img_url('cs/icon_center1_n.png') }}">
-                                    <div class="nTxt">고객센터<br/>공지사항</div>
-                                </a>
+                                <div class="nStep">STEP1</div>
+                                <img src="{{ img_url('cs/icon_center1_n.png') }}">
+                                <div class="nTxt">고객센터<br/>공지사항</div>
+                            </li>
+                            <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
+                            <li> 
+                                <div class="nStep">STEP2</div>
+                                <img src="{{ img_url('cs/icon_center2_n.png') }}">
+                                <div class="nTxt">자주하는<br/>질문검색</div>
                             </li>
                             <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
                             <li>
-                                <a href="{{front_url('/support/faq/index')}}">  
-                                    <div class="nStep">STEP2</div>
-                                    <img src="{{ img_url('cs/icon_center2_n.png') }}">
-                                    <div class="nTxt">자주하는<br/>질문검색</div>
-                                </a>
-                            </li>
-                            <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
-                            <li>
-                                <a href="{{front_url('/support/qna/index')}}">
-                                    <div class="nStep">STEP3</div>
-                                    <img src="{{ img_url('cs/icon_center3_n.png') }}">
-                                    <div class="nTxt">1:1 문의하기<br/>서비스</div>
-                                </a>
+                                <div class="nStep">STEP3</div>
+                                <img src="{{ img_url('cs/icon_center3_n.png') }}">
+                                <div class="nTxt">1:1 문의하기<br/>서비스</div>
                             </li>
                             <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
                             <li>
@@ -61,7 +55,7 @@
                 <div class="willbes-CScenter c_both">
                     <div class="ActIndex ActIndex1 mt50">
                         @if($__cfg['SiteGroupCode'] == '1011') {{--임용--}}
-                            <div class="will-Tit NSK">즐겨찾는 <span class="tx-light-blue">고객센터</span></div>
+                            <div class="will-Tit NSK">윌비스 임용 <span class="tx-light-blue">고객센터</span></div>
                             <div class="callBox NG">
                                 <ul>
                                     <li>

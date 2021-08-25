@@ -19,8 +19,18 @@
                     <option value="{{ $row['EqsIdx'] }}" {{(empty($arr_base['eqs_idx']) === false && $arr_base['eqs_idx'] == $row['EqsIdx'] ? 'selected="selected"' : '')}}>{{ $row['EqsGroupTitle'] }}</option>
                 @endforeach
             </select>
+            <button type="button" class="btn btn-sm btn-info btn-show-question ml-10">등록된 질문 보기</button>
         </div>
     </div>
+        <div class="form-group form-group-sm" id="question_box" style="display: none;">
+            <div class="col-md-6 ml-15">
+                @forelse($add_columns as $key => $val)
+                    <li>{{ $val }}</li>
+                @empty
+                    "문제(그룹)명"을 선택해주세요.
+                @endforelse
+            </div>
+        </div>
 
     <div class="form-group form-group-sm">
         <table id="_list_ajax_table" class="table table-bordered table-striped table-head-row2 form-table">
@@ -35,7 +45,10 @@
                 <th style="width: 10%;">참여일</th>
                 <th style="width: 10%">문제(그룹)명</th>
                 @forelse($add_columns as $key => $val)
-                    <th id="add_columns_{{ $key }}" data-detail-idx="{{ $key }}">{{ $val }}</th>
+                    <th id="add_columns_{{ $key }}" data-detail-idx="{{ $key }}">
+                        {{--{{ $val }}--}}
+                        {{ iconv_substr($val, 0, 19, "utf-8") }}{{ (iconv_strlen($val) > 19 ? '...' : '') }}
+                    </th>
                 @empty
                     @for($i=1; $i<=$arr_base['max_question_cnt']; $i++)
                         <th>질문{{ $i }}</th>
@@ -58,7 +71,7 @@
             $datatable_modal = $list_table_modal.DataTable({
                 serverSide: true,
                 buttons: [
-                    {text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel'},
+                    {text: '<i class="fa fa-file-excel-o mr-5"></i> 엑셀다운로드', className: 'btn-sm btn-success border-radius-reset btn-excel mr-10'},
                 ],
                 ajax: {
                     'url' : '{{ site_url('/site/eventQuiz/lisAjaxQuizAnswerModal') }}',
@@ -122,6 +135,10 @@
             $('.btn-excel').on('click', function(event) {
                 event.preventDefault();
                 formCreateSubmit('{{ site_url('/site/eventQuiz/answerExcel/'.$arr_base['eq_idx']) }}', $search_form_modal.serializeArray(), 'POST');
+            });
+
+            $('.btn-show-question').on('click', function(event) {
+                $("#question_box").toggle();
             });
         });
     </script>

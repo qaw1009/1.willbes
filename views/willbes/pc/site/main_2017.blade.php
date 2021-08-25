@@ -125,14 +125,14 @@
             </div>
         </div>
 
-        <div class="Section mt80">
+        <div class="Section mt40">
             <div class="widthAuto">
                 {{-- board include --}}
                 @include('willbes.pc.site.main_partial.board_' . $__cfg['SiteCode'])
             </div>
         </div>
 
-        <div class="Section sec-prof mt80">
+        <div class="Section sec-prof mt40">
             @include('willbes.pc.site._viewTest.main_partial.professor_hot_clip_' . $__cfg['SiteCode'])
         </div>
 

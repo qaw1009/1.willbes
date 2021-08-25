@@ -128,7 +128,7 @@
                             return date;
                         }},
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
-                            var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary act-move" onClick="popAnswer(' + row.EqIdx + ')">' + row.CNT + '</button>' : row.CNT;
+                            var AnswerCnt = row.CNT > 0 ? '<button class="btn btn-sm btn-primary btn-show-answer" data-idx="' + row.EqIdx + '">' + row.CNT + '</button>' : row.CNT;
                             return AnswerCnt;
                         }},
                     {'data' : 'IsUse', 'class': 'text-center', 'render' : function(data, type, row, meta) {
@@ -149,6 +149,12 @@
                 location.href='{{ site_url('/site/eventQuiz/create/') }}' + $(this).data('idx') + dtParamsToQueryString($datatable);
             });
 
+            $list_table.on('click', '.btn-show-answer', function() {
+                $('.btn-show-answer').setLayer({
+                    "url" : "{{ site_url('site/eventQuiz/quizAnswerModal/') }}" + $(this).data('idx'),
+                    width : "1600"
+                });
+            });
         });
 
         function popAnswer(eq_idx){

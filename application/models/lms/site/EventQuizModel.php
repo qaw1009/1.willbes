@@ -15,6 +15,7 @@ class EventQuizModel extends WB_Model
         'event_quiz_set_question' => 'lms_event_quiz_set_question',
         'event_quiz_set_question_detail' => 'lms_event_quiz_set_question_detail',
         'event_quiz_member_answer' => 'lms_event_quiz_member_answer',
+        'event_quiz_member_answer_detail' => 'lms_event_quiz_member_answer_detail',
         'site' => 'lms_site',
         'admin' => 'wbs_sys_admin',
         'member' => 'lms_member',
@@ -45,16 +46,16 @@ class EventQuizModel extends WB_Model
             $order_by_offset_limit = '';
         } else {
             $column = "
-                (SELECT COUNT(*) 
-                    FROM {$this->_table['event_quiz_member_answer']} 
-                    WHERE EqsIdx IN (
-                        SELECT EqsIdx FROM {$this->_table['event_quiz_set']} WHERE EqIdx = A.EqIdx AND IsStatus = 'Y'
-                    ) AND IsStatus = 'Y') AS CNT,
                 A.EqIdx, A.SiteCode, A.Title, A.StartDatm, A.EndDatm, A.IsUse, A.RegAdminIdx, A.RegDatm, A.UpdAdminIdx, A.UpdDatm,
                 DATE_FORMAT(A.StartDatm, '%Y-%m-%d') AS StartDay, DATE_FORMAT(A.EndDatm, '%Y-%m-%d') AS EndDay, 
                 S.SiteName,
                 A1.wAdminName AS RegAdminName, 
                 A2.wAdminName AS UpdAdminName
+                ,(
+                    SELECT COUNT(*) AS cnt
+                    FROM {$this->_table['event_quiz_member_answer']} AS qm
+                    WHERE qm.EqIdx = A.EqIdx
+                ) AS CNT
             ";
 
             $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
@@ -63,21 +64,16 @@ class EventQuizModel extends WB_Model
 
         $from = "
             FROM {$this->_table['event_quiz']} AS A
-                INNER JOIN {$this->_table['site']} AS S ON A.SiteCode = S.SiteCode
-                INNER JOIN {$this->_table['admin']} AS A1 ON A.RegAdminIdx = A1.wAdminIdx AND A1.wIsStatus='Y'
-                LEFT JOIN {$this->_table['admin']} AS A2 ON A.UpdAdminIdx = A2.wAdminIdx AND A2.wIsStatus='Y'
+            INNER JOIN {$this->_table['site']} AS S ON A.SiteCode = S.SiteCode
+            INNER JOIN {$this->_table['admin']} AS A1 ON A.RegAdminIdx = A1.wAdminIdx AND A1.wIsStatus='Y'
+            LEFT JOIN {$this->_table['admin']} AS A2 ON A.UpdAdminIdx = A2.wAdminIdx AND A2.wIsStatus='Y'
         ";
 
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
 
-        $query_string = 'select A.*';
-        $query_string .= ' from ( ';
-        $query_string .= " select {$column} {$from} {$where} {$order_by_offset_limit}";
-        $query_string .= ' ) as A';
-
         // 쿼리 실행
-        $query = $this->_conn->query($query_string);
+        $query = $this->_conn->query('select '.$column .$from .$where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 
@@ -130,48 +126,17 @@ class EventQuizModel extends WB_Model
                 SELECT EqsIdx FROM {$this->_table['event_quiz_set']} WHERE EqIdx = A.EqIdx AND IsStatus = 'Y'
             ) AND IsStatus = 'Y') AS MemAnswerCnt
         ";
-
-        $from = "
-            FROM {$this->_table['event_quiz_set']} AS A
-        ";
-
+        $from = " FROM {$this->_table['event_quiz_set']} AS A";
         $where = ' where A.EqIdx = ? and A.IsStatus = "Y" ';
         $order_by_offset_limit = ' order by A.OrderNum asc, A.EqsIdx asc';
-
         return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit, [$eq_idx])->result_array();
     }
 
     /**
-     * 퀴즈 문제 상세 조회
-     * todo : 미사용
-     * @param integer $eqs_idx
+     * 퀴즈회차 정보 조회
+     * @param array $arr_condition
      * @return mixed
      */
-    public function findEventQuizSetForModify($eqs_idx = null)
-    {
-        $column = "
-            A.EqsIdx, A.EqIdx, A.EqsGroupTitle, A.EqsqTotalCnt, A.EqsType, A.EqsStartDatm, A.EqsEndDatm, A.OrderNum, A.IsUse, A.RegDatm, A.RegAdminIdx, A.UpdDatm, A.UpdAdminIdx,
-            DATE_FORMAT(A.EqsStartDatm, '%Y-%m-%d') AS EqsStartDay, DATE_FORMAT(A.EqsStartDatm, '%H') AS EqsStartHour, DATE_FORMAT(A.EqsStartDatm, '%i') AS EqsStartMin,
-            DATE_FORMAT(A.EqsEndDatm, '%Y-%m-%d') AS EqsEndDay, DATE_FORMAT(A.EqsEndDatm, '%H') AS EqsEndHour, DATE_FORMAT(A.EqsEndDatm, '%i') AS EqsEndMin,
-            B.EqsqIdx, B.EqsqTitle, B.EqsqExplanation, B.EqsqNum, B.EqsqdTotalcnt,
-            C.EqsqdIdx, C.EqsqdQuestion, C.IsAnswer,
-            D.wAdminName AS RegAdminName, E.wAdminName AS UpdAdminName
-        ";
-
-        $from = "
-            FROM {$this->_table['event_quiz_set']} AS A
-            INNER JOIN {$this->_table['event_quiz_set_question']} AS B ON A.EqsIdx = B.EqsIdx
-            INNER JOIN {$this->_table['event_quiz_set_question_detail']} AS C ON B.EqsqIdx = C.EqsqIdx
-            INNER JOIN {$this->_table['admin']} AS D ON A.RegAdminIdx = D.wAdminIdx AND D.wIsStatus='Y'
-            LEFT OUTER JOIN {$this->_table['admin']} AS E ON A.UpdAdminIdx = E.wAdminIdx AND E.wIsStatus='Y'
-        ";
-
-        $where = ' where A.EqsIdx = ? and A.IsStatus = "Y" AND B.IsStatus = "Y" ';
-        $order_by_offset_limit = ' order by B.EqsqIdx asc, C.EqsqdIdx asc';
-
-        return $this->_conn->query('select '.$column .$from .$where .$order_by_offset_limit, [$eqs_idx])->result_array();
-    }
-
     public function findQuizSet($arr_condition = [])
     {
         $column = '
@@ -191,6 +156,11 @@ class EventQuizModel extends WB_Model
         return $this->_conn->query('select '.$column .$from .$where)->row_array();
     }
 
+    /**
+     * 퀴즈회차 항목 조회
+     * @param $arr_condition
+     * @return mixed
+     */
     public function findQuizQuestion($arr_condition)
     {
         $column = 'sq.EqsqIdx, sq.EqsIdx, sq.EqsqTitle, sq.EqsqExplanation, sq.EqsqdTotalcnt, sq.RightAnswer';
@@ -198,24 +168,29 @@ class EventQuizModel extends WB_Model
             FROM {$this->_table['event_quiz_set']} AS s
             INNER JOIN {$this->_table['event_quiz_set_question']} AS sq ON s.EqsIdx = sq.EqsIdx AND sq.IsStatus = 'Y'
         ";
-
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
+        $order_by = ' order by sq.EqsqIdx asc';
         return $this->_conn->query('select '.$column .$from .$where)->result_array();
     }
 
+    /**
+     * 질문갯수 MAX 값 조회
+     * @return mixed
+     */
+    public function findMaxQuestionCnt()
+    {
+        $query_string = /** @lang text */ "SELECT IFNULL(MAX(EqsqTotalCnt),0) AS cnt FROM {$this->_table['event_quiz_set']} WHERE IsStatus = 'Y'";
+        return $this->_conn->query($query_string)->row_array();
+    }
+
+    /**
+     * 퀴즈회차 항목의 보기 조회
+     * @param $arr_condition
+     * @return mixed
+     */
     public function findQuizDetail($arr_condition)
     {
-        /*$column = 'sqd.EqsqdIdx, sqd.EqsqIdx, sqd.EqsqdQuestion';
-        $from = "
-            FROM {$this->_table['event_quiz_set_question']} AS sq
-            INNER JOIN {$this->_table['event_quiz_set_question_detail']} AS sqd ON sq.EqsqIdx = sqd.EqsqIdx AND sqd.IsStatus = 'Y'
-        ";
-        $where = $this->_conn->makeWhere($arr_condition);
-        $where = $where->getMakeWhere(false);
-        return $this->_conn->query('select '.$column .$from .$where)->result_array();*/
-
-
         $column = 'EqsqdIdx, EqsqIdx, EqsqdQuestion, DetailRowNum, RightAnswer, IF(LOCATE(DetailRowNum , RightAnswer), \'Y\', \'N\') AS IsWrong';
         $where = $this->_conn->makeWhere($arr_condition);
         $where = $where->getMakeWhere(false);
@@ -238,6 +213,22 @@ class EventQuizModel extends WB_Model
         return $this->_conn->query('select '. $column . $from)->result_array();
     }
 
+    /**
+     * 정렬순서 셋팅 (MAX + 1)
+     * @param array $arr_condition
+     * @return mixed
+     */
+    public function setOrderNum($arr_condition = [])
+    {
+        $column = "IFNULL(MAX(OrderNum) + 1,1) AS order_num";
+        $from = "
+            FROM {$this->_table['event_quiz_set']}
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+        return $this->_conn->query('select '.$column .$from .$where)->row_array();
+    }
 
     /**
      * 퀴즈 답변 회원 조회
@@ -259,6 +250,7 @@ class EventQuizModel extends WB_Model
     }
 
     /**
+     * todo : 미사용
      * 퀴즈 답변 팝업 데이타 조회
      * @param bool $is_count
      * @param array $arr_condition
@@ -268,7 +260,7 @@ class EventQuizModel extends WB_Model
      * @param array $order_by
      * @return mixed
      */
-    public function listMemberPopupAnswer($is_count = true, $arr_condition = [], $column = null, $limit = null, $offset = null, $order_by = [])
+    /*public function listMemberPopupAnswer($is_count = true, $arr_condition = [], $column = null, $limit = null, $offset = null, $order_by = [])
     {
         if ($is_count === true) {
             $column = 'count(*) AS numrows';
@@ -307,6 +299,49 @@ class EventQuizModel extends WB_Model
         $query_string .= " ) as A";
 
         $query = $this->_conn->query($query_string);
+        return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
+    }*/
+    public function listQuizAnswerMember($is_count = true, $arr_condition = [], $limit = null, $offset = null, $order_by = [])
+    {
+        if ($is_count === true) {
+            $column = 'count(*) AS numrows';
+            $order_by_offset_limit = '';
+        } else {
+            if (empty($column) === true) {
+                $column = "
+                    m.MemName, m.MemId, qm.RegDatm, b.EqsGroupTitle, a.EqIdx, b.EqsIdx, qm.QmIdx
+                    ,(
+                        SELECT
+                        CONCAT('[', GROUP_CONCAT(JSON_OBJECT(
+                            'EqsqIdx', c.EqsqIdx
+                            ,'EqsqdQuestion', CONCAT(d.EqsqdQuestion,' (',IF(LOCATE(b.Answer , c.RightAnswer), 'Y', 'N'),')')
+                        )), ']')
+                        FROM {$this->_table['event_quiz_member_answer']} AS a
+                        INNER JOIN {$this->_table['event_quiz_member_answer_detail']} AS b ON a.QmIdx = b.QmIdx
+                        INNER JOIN {$this->_table['event_quiz_set_question']} AS c ON b.EqsqIdx = c.EqsqIdx AND c.IsStatus = 'Y'
+                        INNER JOIN {$this->_table['event_quiz_set_question_detail']} AS d ON c.EqsqIdx = d.EqsqIdx AND b.EqsqdIdx = d.EqsqdIdx AND d.IsStatus = 'Y'
+                        WHERE a.QmIdx = qm.QmIdx
+                        GROUP BY a.QmIdx
+                    ) AS info_detail
+                ";
+            }
+            $order_by_offset_limit = $this->_conn->makeOrderBy($order_by)->getMakeOrderBy();
+            if ($is_count != 'excel') {
+                $order_by_offset_limit .= $this->_conn->makeLimitOffset($limit, $offset)->getMakeLimitOffset();
+            }
+        }
+
+        $from = "
+            FROM {$this->_table['event_quiz']} AS a
+            INNER JOIN {$this->_table['event_quiz_set']} AS b ON a.EqIdx = b.EqIdx AND b.IsStatus = 'Y'
+            INNER JOIN {$this->_table['event_quiz_member_answer']} AS qm ON a.EqIdx = qm.EqIdx AND b.EqsIdx = qm.EqsIdx AND qm.IsFinish = 'Y'
+            INNER JOIN {$this->_table['member']} AS m ON qm.MemIdx = m.MemIdx
+        ";
+
+        $where = $this->_conn->makeWhere($arr_condition);
+        $where = $where->getMakeWhere(false);
+
+        $query = $this->_conn->query('select ' . $column . $from . $where . $order_by_offset_limit);
         return ($is_count === true) ? $query->row(0)->numrows : $query->result_array();
     }
 

@@ -20,27 +20,21 @@
                     <div class="centerList NG">
                         <ul>
                             <li>
-                                <a href="{{front_url('/support/notice/index')}}">
-                                    <div class="nStep">STEP1</div>
-                                    <img src="{{ img_url('cs/icon_center1_n.png') }}">
-                                    <div class="nTxt">고객센터<br/>공지사항</div>
-                                </a>
+                                <div class="nStep">STEP1</div>
+                                <img src="{{ img_url('cs/icon_center1_n.png') }}">
+                                <div class="nTxt">고객센터<br/>공지사항</div>
+                            </li>
+                            <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
+                            <li> 
+                                <div class="nStep">STEP2</div>
+                                <img src="{{ img_url('cs/icon_center2_n.png') }}">
+                                <div class="nTxt">자주하는<br/>질문검색</div>
                             </li>
                             <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
                             <li>
-                                <a href="{{front_url('/support/faq/index')}}">  
-                                    <div class="nStep">STEP2</div>
-                                    <img src="{{ img_url('cs/icon_center2_n.png') }}">
-                                    <div class="nTxt">자주하는<br/>질문검색</div>
-                                </a>
-                            </li>
-                            <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
-                            <li>
-                                <a href="{{front_url('/support/qna/index')}}">
-                                    <div class="nStep">STEP3</div>
-                                    <img src="{{ img_url('cs/icon_center3_n.png') }}">
-                                    <div class="nTxt">1:1 문의하기<br/>서비스</div>
-                                </a>
+                                <div class="nStep">STEP3</div>
+                                <img src="{{ img_url('cs/icon_center3_n.png') }}">
+                                <div class="nTxt">1:1 문의하기<br/>서비스</div>
                             </li>
                             <li class="arrow"><img src="{{ img_url('cs/icon_cs_arrow_n.png') }}"></li>
                             <li>
@@ -61,7 +55,7 @@
                 <div class="willbes-CScenter c_both">
                     <div class="ActIndex ActIndex1 mt50">
                         @if($__cfg['SiteGroupCode'] == '1011') {{--임용--}}
-                            <div class="will-Tit NSK">즐겨찾는 <span class="tx-light-blue">고객센터</span></div>
+                            <div class="will-Tit NSK">윌비스 임용 <span class="tx-light-blue">고객센터</span></div>
                             <div class="callBox NG">
                                 <ul>
                                     <li>
@@ -90,16 +84,17 @@
                                     <table cellspacing="0" cellpadding="0" class="listTable csTable under-gray upper-black tx-gray">
                                         <colgroup>
                                             <col style="width: 150px;">
-                                            <col style="width: 150px;">
+                                            <col style="width: 100px;">
                                             <col style="width: 240px;">
                                             <col>
+                                            <col style="width: 100px;">
                                         </colgroup>
                                         <thead>
                                             <tr>
                                                 <th>사이트<span class="row-line">|</span></th>
                                                 <th>분류<span class="row-line">|</span></th>
                                                 <th>연락처<span class="row-line">|</span></th>
-                                                <th>운영시간</th>
+                                                <th colspan="2">운영시간</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,18 +102,16 @@
                                                 <td class="w-site">교재문의</td>
                                                 <td class="w-acad"><span class="oBox allBox NSK">공통</span></td>
                                                 <td class="w-call">1544-4944</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~17:00<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 9:00~17:00<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://book.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="2">임용</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td rowspan="2" class="w-call">1544-3169</td>
-                                                <td rowspan="2" class="w-time tx-left pl25">
-                                                    평일/주말 09:00~22:00
-                                                </td>
+                                                <td rowspan="2" class="w-time tx-left pl25"> 평일/주말 09:00~22:00 </td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://ssam.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
@@ -129,10 +122,9 @@
                                                 <td class="w-call">
                                                     9급/7급/세무직/법원직 등<br>
                                                     1544-5006 </td>
-                                                <td rowspan="2" class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 <br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td rowspan="2" class="w-time tx-left pl25"> 평일 9:00~18:00 <br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://pass.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-call">
@@ -143,44 +135,39 @@
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-0330</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 : 09:00~18:00<br />
-                                                    주말/공휴일 휴무
-                                            </td>
+                                                <td class="w-time tx-left pl25"> 평일 : 09:00~18:00<br />
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://pass.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="2">신광은 경찰</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://police.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-0336</td>
-                                                <td class="w-time tx-left pl25">
-                                                    월~토 9:00~22:00<br/>
-                                                    일요일 9:00~20:00
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 월~토 9:00~22:00<br/>
+                                                일요일 9:00~20:00 </td>
+                                                <td class="w-time tx-center"><a href="https://police.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="2">고등고시</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1566-4770</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://gosi.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-1881 ▶ 1</td>
-                                                <td class="w-time tx-left pl25">
-                                                월~토요일 : 08:00~19:00 <br />
-                                                일요일 : 08:00~18:00 
-                                            </td>
+                                                <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
+                                                일요일 : 08:00~18:00 </td>
+                                                <td class="w-time tx-center"><a href="https://gosi.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site" rowspan="4">전문자격증</td>
@@ -189,10 +176,9 @@
                                                     공인노무사/감평/변리사<br>
                                                     1566-4770
                                                 </td>
-                                                <td rowspan="2" class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td rowspan="2" class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://job.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-call">세무사/관세사/국가자격 등<br>
@@ -201,48 +187,44 @@
                                             <tr>
                                                 <td rowspan="2" class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">신림(본원) 1544-1881 ▶ 1</td>
-                                                <td class="w-time tx-left pl25">
-                                                평일 : 09:00~18:00<br />
+                                                <td class="w-time tx-left pl25"> 평일 : 09:00~18:00<br />
                                                 주말/공휴일 휴무</td>
+                                                <td rowspan="2" class="w-time tx-center"><a href="https://job.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-call">강남(분원) 1544-1881 ▶ 1</td>
-                                                <td class="w-time tx-left pl25">
-                                                    월~토요일 : 08:00~19:00 <br /> 
-                                                    일요일 : 08:00~18:00 
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 월~토요일 : 08:00~19:00 <br />
+                                                일요일 : 08:00~18:00 </td>
                                             </tr>
                                             <tr>
-                                                <td class="w-site" rowspan="2">경찰간부 · 일반경찰</td>
+                                                <td class="w-site" rowspan="2">경찰간부/<br>일반경찰</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1566-4770</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://spo.willbes.net/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-1881</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 8:00~18:00<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 8:00~18:00<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://spo.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site">N잡/어학/취업</td>
                                                 <td class="w-acad"><span class="oBox onlineBox NSK">온라인</span></td>
                                                 <td class="w-call">1544-5006 ▶ 2</td>
-                                                <td class="w-time tx-left pl25">
-                                                    평일 9:00~18:00 (점심시간 12시~13시)<br/>
-                                                    주말/공휴일 휴무
-                                                </td>
+                                                <td class="w-time tx-left pl25"> 평일 9:00~18:00 (점심시간 12시~13시)<br/>
+                                                주말/공휴일 휴무 </td>
+                                                <td class="w-time tx-center"><a href="https://www.njobler.net/board/qna/index">1:1상담 ></a></td>
                                             </tr>
                                             <tr>
                                                 <td class="w-site">인천고시학원</td>
                                                 <td class="w-acad"><span class="oBox offlineBox NSK">학원</span></td>
                                                 <td class="w-call">1544-1661</td>
                                                 <td class="w-time tx-left pl25">평일/주말 9:00~18:00</td>
+                                                <td class="w-time tx-center"><a href="https://willbesedu.willbes.net/pass/support/qna/index">1:1상담 ></a></td>
                                             </tr>
                                         </tbody>
                                     </table>

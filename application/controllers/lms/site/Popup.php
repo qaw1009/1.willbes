@@ -197,11 +197,8 @@ class Popup extends \app\controllers\BaseController
     public function listReOrderModal()
     {
         $this->load->helper('file');
+
         $arr_condition = [];
-
-        //배너노출섹션
-        $popup_info = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
-
         $list = $this->popupModel->listAllPopup(false, false, $arr_condition, null, null, ['SiteCode' => 'asc', 'OrderNum' => 'asc', 'PIdx' => 'desc']);
 
         foreach ($list as $key => $val) {
@@ -209,8 +206,11 @@ class Popup extends \app\controllers\BaseController
             $list[$key]['PopUpImgInfo'] = @getimagesize($img_real_path);
         }
 
+        // 사용하는 코드값 조회 (노출섹션)
+        $arr_code = $this->codeModel->getCcdInArray([$this->_groupCcd['popup_disp']]);
+
         $this->load->view("site/popup/list_reorder_modal", [
-            'popup_disp' => $popup_info[$this->_groupCcd['popup_disp']],
+            'arr_popup_disp_ccd' => $arr_code[$this->_groupCcd['popup_disp']],
             'data' => $list
         ]);
     }

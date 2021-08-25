@@ -101,8 +101,8 @@
                     if (json.recordsTotal <= 0) {
                         var arr_string = [];
                         for (var i=1; i<$('#_list_ajax_table > thead > tr > th').length; i++) {
-                            if (typeof $('thead tr > th').eq(i).data('detail-idx') !== 'undefined') {
-                                arr_string.push($('thead tr > th').eq(i).data('detail-idx'));
+                            if (typeof $('#_list_ajax_table > thead > tr > th').eq(i).data('detail-idx') !== 'undefined') {
+                                arr_string.push($('#_list_ajax_table > thead > tr > th').eq(i).data('detail-idx'));
                             }
                         }
                         $.each(arr_string, function (key, val) {

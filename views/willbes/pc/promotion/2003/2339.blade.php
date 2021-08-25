@@ -25,7 +25,8 @@
 
         .evt03 {background:#F2F2F2}
 
-        .evt04 {padding-bottom:100px;}
+        .evt04 {padding:100px 0; width:1120px; margin:0 auto}
+        .evt04 .sTitle {margin:100px 0 30px; font-size:20px; text-align:left; color:#464646}
 
     </style> 
 
@@ -49,8 +50,13 @@
 
         <div class="evtCtnsBox evt04" data-aos="fade-left">
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2339_04.jpg" alt="강좌 신청하기" />   
+            <div class="sTitle NSK-Black">2022년대비 7급 PSAT OPEN CLASS(기본강의) 종합반</div>
             @if(empty($arr_base['display_product_data']) === false)
                 @include('willbes.pc.promotion.display_product_partial',array('group_num'=>1))
+            @endif 
+            <div class="sTitle NSK-Black">2022년대비 7급 PSAT OPEN CLASS(기본강의) 단과반</div>
+            @if(empty($arr_base['display_product_data']) === false)
+                @include('willbes.pc.promotion.display_product_partial',array('group_num'=>2))
             @endif 
 		</div>
 

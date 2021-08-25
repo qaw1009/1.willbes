@@ -36,7 +36,7 @@
                 <li>
                     <select id="school_year" name="school_year" title="대비년도" class="select_search">
                         <option value="">대비년도전체</option>
-                        @for($i=2017; $i<=date('Y')+2; $i++)
+                        @for($i=date('Y')-2; $i<=date('Y')+2; $i++)
                             <option value="{{ $i }}" @if(element('school_year', $arr_input) == $i){{'selected'}}@endif>{{ $i }}년</option>
                         @endfor
                     </select>

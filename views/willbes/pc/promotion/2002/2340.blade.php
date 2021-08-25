@@ -31,7 +31,7 @@
         .evtMenu ul li a.on {background:#ff4e33; color:#fff;}
         .evtMenu ul:after{ content:""; display:block; clear:both;}
 
-        .evtMenu.fixed {position:fixed; top:0; left:50%; width:1120px; margin-left:-560px; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10} 
+        .evtMenu.fixed {position:fixed; top:0; width:1120px; margin:0 auto; box-shadow:0 10px 10px rgba(102,102,102,0.2); z-index:10} 
 
     </style>
 

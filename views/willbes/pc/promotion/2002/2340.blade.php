@@ -46,7 +46,7 @@
             <nav class="evtMenu">
                 <ul>
                     <li>
-                        <a href="javascript:void(0);" onClick="scrolling('#tab01')" class="tab">
+                        <a href="javascript:void(0);" onClick="scrolling('#tab01')" class="tab on">
                         기존 수험생 추천강좌
                         </a>
                     </li>

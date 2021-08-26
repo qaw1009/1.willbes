@@ -46,7 +46,7 @@
                     </div>
                 </form>
                 @if (empty($question_data['QmdIdx']) === true)
-                    <div class="btnSt02 mt20 tx-center"><a href="javascript:void(0);" onclick="storAnswer(); return false;">정답 확인</a></div>
+                    <div class="btnSt02 mt20 tx-center"><a href="javascript:void(0);" onclick="stor_quiz_answer(); return false;">정답 확인</a></div>
                 @endif
 
                 @if (empty($question_data['QmdIdx']) === false)
@@ -64,7 +64,7 @@
                                 <div class="btnSt01 mt40 tx-center"><a href="javascript:void(0);" onclick="finish_quiz('{{ $question_data['QmIdx'] }}');">완료</a></div>
                             @endif
                         @else
-                            <a href="javascript:void(0);" onclick="show_quiz('1', '{{ $quiz_id }}', '{{ $question_data['EqsIdx'] }}' ,'{{ $unit_num }}', 'N' ,'Y', '1', 'Y', '{{ $next_page }}'); return false;">
+                            <a href="javascript:void(0);" onclick="show_quiz('{{ $quiz_id }}', '{{ $question_data['EqsIdx'] }}' ,'{{ $unit_num }}', 'N' ,'Y', '1', 'Y', '{{ $next_page }}'); return false;">
                                 다음 문제 →
                             </a>
                         @endif

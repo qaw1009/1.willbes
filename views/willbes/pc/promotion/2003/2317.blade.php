@@ -25,7 +25,7 @@
         .evtTop .wrap span.img01 {width:394px; top:236px; right:-140px; z-index:2;}
         .evtTop .wrap span.img02 {width:421px; top:502px; right:-140px;z-index:2;}
         .evtTop .wrap span.img03 {width:311px; top:660px; right:147px; z-index:2;}
-        .evtTop .tHomeBtn{position: absolute; top:960px; right:110px; z-index:2;}
+        .evtTop .tHomeBtn{position: absolute; top:902px; right:578px; z-index:2;}
         .evtTop .tHomeBtn a{
             color:#fff;
             font-size:15px;

@@ -2,7 +2,7 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:left;}
+.ssam .noticeBanner {float:right;}
 .ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
 .ssam .noticeBanner li:first-child {margin-right:40px}
 .ssam .noticeBanner:after {content:''; display:block; clear:both}
@@ -290,27 +290,7 @@ no-repeat 5px center}
     </div>
 
     <div class="Section mt40">
-        <div class="widthAuto"> 
-            <ul class="noticeBanner">
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
+        <div class="widthAuto">            
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
                     <li><a href="#notice1" class="on">공지사항</a></li>
@@ -344,6 +324,26 @@ no-repeat 5px center}
                     </div>
                 </div>
             </div>
+
+            <ul class="noticeBanner">
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div> 
 

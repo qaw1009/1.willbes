@@ -369,21 +369,9 @@
                     <li class="bSlider">
                         <div class="slider">
                             <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_11.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_11.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_12.png" alt="교수명"></a></div>
                             <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_12.png" alt="교수명"></a></div>
                         </div>
-                    </li>
-                    <li class="bSlider">
-                        <div class="slider">
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_06.png" alt="교수명"></a></div>
-                            <div><a href="javascript:alert('Coming Soon!')"><img src="https://static.willbes.net/public/images/promotion/main/2001/pro_06.png" alt="교수명"></a></div>
-                        </div>
-                    </li>
+                    </li>                   
                 </ul>
             </div>
         </div>    
@@ -462,7 +450,7 @@
                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_09.jpg" alt="배너명"></a>
                 </li>
             </ul>
-            <div class="will-nTit NSK-Black mt100">
+            <div class="will-nTits NSK-Black mt100">
                 신광은경찰팀 유튜브 채널 모음 
             </div>
             <div class="tube_content NSK">

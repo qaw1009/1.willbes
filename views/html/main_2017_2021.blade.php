@@ -295,7 +295,7 @@ no-repeat 5px center}
         </div>        
     </div>
 
-    <div class="Section mt80">
+    <div class="Section mt40">
         <div class="widthAuto"> 
             <ul class="noticeBanner">
                 <li>
@@ -353,7 +353,7 @@ no-repeat 5px center}
         </div>
     </div> 
 
-    <div class="Section sec-prof mt80">
+    <div class="Section sec-prof mt40">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
             <ul class="prof-Tab">

@@ -77,6 +77,9 @@
     </div>
     <!-- End Container -->
 
+    {{-- popup --}}
+    {!! popup('657001', $__cfg['SiteCode'], $__cfg['CateCode']) !!}
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

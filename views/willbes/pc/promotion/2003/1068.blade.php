@@ -15,10 +15,10 @@
 
 		/************************************************************/
 		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
-        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px; border:1px solid #fff}
 		
-		.skybanner {position:fixed; top:100px; right:10px; z-index:10;}
-		.skybanner a {display:block; margin-bottom:5px}
+		.sky {position:fixed; top:100px; right:10px; z-index:10;}
+		.sky a {display:block; margin-bottom:5px}
 
         .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
 
@@ -79,16 +79,10 @@
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">	
-		<div class="skybanner">   
-			<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky02.png" alt="이론패키지" >
-            </a> 
+		<div class="sky" id="QuickMenu">   
 			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky03.png" alt="5과목 패키지" >
-            </a>   
-			<a href="#to_go"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky04.png" alt="실전동형모고 패키지" >
-            </a> 
+            </a>  
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky01.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
@@ -124,24 +118,23 @@
             <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
         </div>
 
+		{{--
 		<div class="evtCtnsBox wb_01s">
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/01/0119_add.jpg" alt="지금 바로 고민 타파하러 가기">
 				<a href="https://pass.willbes.net/promotion/index/cate/3022/code/2028" target="_blank" title="" style="position: absolute; left: 32.05%; top: 77.5%; width: 36.43%; height: 7.03%; z-index: 2;"></a>
 			</div>
         </div>	
+		--}}
 
 		<div class="evtCtnsBox wb_02" id="to_go">
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_01.jpg" alt=""/>
 			<div class="wrap">
-				<img src="https://static.willbes.net/public/images/promotion/2021/05/1068_02.jpg" alt="수강신청"/>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/182740" target="_blank" title="" style="position: absolute; left: 76.88%; top: 24.94%; width: 13.3%; height: 4.28%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/180881" target="_blank" title="" style="position: absolute; left: 76.88%; top: 35.22%; width: 13.3%; height: 4.28%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/179668" target="_blank" title="" style="position: absolute; left: 76.88%; top: 45.56%; width: 13.3%; height: 4.28%; z-index: 2;"></a>
-
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" title="" style="position: absolute; left: 4.11%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" title="" style="position: absolute; left: 27.86%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" title="" style="position: absolute; left: 51.96%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" title="" style="position: absolute; left: 75.63%; top: 83.84%; width: 18.57%; height: 2.97%; z-index: 2;"></a>
+				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_02.jpg" alt=""/>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" title="" style="position: absolute; left: 4.29%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" title="" style="position: absolute; left: 28.04%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>				
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" title="" style="position: absolute; left: 52.10%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" title="" style="position: absolute; left: 75.84%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
 			</div>
 		</div>
 		       
@@ -167,8 +160,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
+						<td>2022 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185329" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -207,8 +200,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2021 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041" target="_blank">수강신청</a></td>
+						<td>2022 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185330" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -251,8 +244,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
+						<td>2022 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185329" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -291,8 +284,8 @@
 					<tr>
 						<td>식용작물</td>
 						<td>이론</td>
-						<td>2021 장사원 식용작물 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171041" target="_blank">수강신청</a></td>
+						<td>2022 장사원 식용작물 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185330" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>식용작물</td>
@@ -352,8 +345,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2021 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042" target="_blank">수강신청</a></td>
+						<td>2022 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185331" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>
@@ -378,8 +371,8 @@
 					<tr>
 						<td>재배학</td>
 						<td>이론</td>
-						<td>2021 장사원 재배학 기본+심화이론</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171040" target="_blank">수강신청</a></td>
+						<td>2022 장사원 재배학 기본+심화이론</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185329" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>재배학</td>
@@ -418,8 +411,8 @@
 					<tr>
 						<td>작물생리학</td>
 						<td>이론</td>
-						<td>2021 장사원 작물생리학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171771" target="_blank">수강신청</a></td>
+						<td>2022 장사원 작물생리학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185388" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>작물생리학</td>
@@ -474,8 +467,8 @@
 					<tr>
 						<td>농촌지도론</td>
 						<td>이론</td>
-						<td>2021 장사원 농촌지도론 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171773" target="_blank">수강신청</a></td>
+						<td>2022 장사원 농촌지도론 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185389" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>농촌지도론</td>
@@ -502,8 +495,8 @@
 					<tr>
 						<td>토양학</td>
 						<td>이론</td>
-						<td>2021 장사원 토양학 이론강의</td>
-						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/171042" target="_blank">수강신청</a></td>
+						<td>2022 장사원 토양학 이론강의</td>
+						<td><a href="https://pass.willbes.net/lecture/show/cate/3028/pattern/only/prod-code/185331" target="_blank">수강신청</a></td>
 					</tr>
 					<tr>
 						<td>토양학</td>

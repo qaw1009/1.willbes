@@ -6,7 +6,7 @@
 <style type="text/css">
     .evtCtnsBox {width:100%; max-width:720px; margin:0 auto; text-align:center; position:relative; font-size:14px; line-height:1.5; clear:both}
     .evtCtnsBox img {width:100%; max-width:720px;}
-    .evtCtnsBox a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
+    .evtCtnsBox.wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px}
 
     .evt01 {}
     .evt01s .slide_con {}
@@ -88,19 +88,16 @@
     </div> 
 
     <div class="evtCtnsBox evt04">
-        <img src="https://static.willbes.net/public/images/promotion/2021/05/1068m_04.jpg" alt="패키지 수강신청" >
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/182740" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.42%; top: 39.69%; width: 78.89%; height: 14.95%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/180881" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.42%; top: 57.73%; width: 78.89%; height: 14.95%; z-index: 2;"></a>
-        <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/179668" title="패키지 수강신청" target="_blank" style="position: absolute; left: 10.42%; top: 75.46%; width: 78.89%; height: 14.95%; z-index: 2;"></a>
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_04.jpg" alt="패키지 수강신청" >
     </div> 
 
-    <div class="evtCtnsBox evt05">
+    <div class="evtCtnsBox evt05 wrap">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_05.jpg" alt="농업직 이론 패키지">
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171517" title="농업직 기본심화이론" target="_blank" class="a01"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171522" title="7급 농업직" target="_blank" class="a02"></a>
     </div> 
 
-    <div class="evtCtnsBox evt06">
+    <div class="evtCtnsBox evt06 wrap">
         <img src="https://static.willbes.net/public/images/promotion/2020/09/1068m_06.jpg" alt="농촌지도사 이론 패키지" >
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171775" title="농촌지도사 경기인천외" class="b01"></a>
         <a href="https://pass.willbes.net/m/package/show/cate/3028/pack/648001/prod-code/171777" title="농촌지도사 경기인천" class="b02"></a>

@@ -21,7 +21,7 @@
 
         .evt01 {background:#F2F2F2}
 
-        .evt02 {background:#FFC2D7}
+        .evt02 {background:#fed2e1}
 
         .evt03 {background:#F2F2F2}
 

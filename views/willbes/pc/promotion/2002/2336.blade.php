@@ -18,9 +18,9 @@
 
         /************************************************************/
 
-        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2336_top_bg.jpg) no-repeat center; background-size:2000px 900px; height:900px; position: relative;}
+        .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2336_top_bg.jpg) no-repeat center; background-size:2000px 888px; height:888px; position: relative;}
 
-        .evtTop span {position:absolute; top:180px; left:50%; margin-left:-580px;}
+        .evtTop span {position:absolute; top:100px; left:50%; margin-left:-80px;}
 	
         .evt01 {background:#f7f5f7; position: relative;}
         .evt01 iframe {width:740px; height:378px; position:absolute; top:423px; left:50%; margin-left:-370px; z-index: 2;}

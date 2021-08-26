@@ -453,6 +453,45 @@
             <div class="will-nTits NSK-Black mt100">
                 신광은경찰팀 유튜브 채널 모음 
             </div>
+
+            {{-- 배너 함수 이용한 html 소스 --}}
+            {{--<div class="tube_content NSK">
+                <ul class="tube_list">
+                    <div class="slider" id="">
+                        <div class="banner-group">
+                            <div class="tube_img">
+                                <img src="/public/uploads/willbes/banner/2021/0826/banner_20210826165659.png" alt="유튜브1" usemap="#BannerImgMap4029">
+                            </div>
+                            <p>유튜브1</p>
+                        </div>
+                        <div class="banner-group">
+                            <div class="tube_img">
+                                <img src="/public/uploads/willbes/banner/2021/0826/banner_20210826165719.png" alt="유튜브2" usemap="#BannerImgMap4030">
+                            </div>
+                            <p>유튜브2</p>
+                        </div>
+                        <div class="banner-group">
+                            <div class="tube_img">
+                                <img src="/public/uploads/willbes/banner/2021/0826/banner_20210826170320.png" alt="유튜브3" usemap="#BannerImgMap4031">
+                            </div><p>유튜브3</p></div><div class="banner-group">
+                            <div class="tube_img">
+                                <img src="/public/uploads/willbes/banner/2021/0826/banner_20210826170342.png" alt="유튜브4" usemap="#BannerImgMap4032">
+                            </div>
+                            <p>유튜브4</p>
+                        </div>
+                        <div class="banner-group">
+                            <div class="tube_img">
+                                <img src="/public/uploads/willbes/banner/2021/0826/banner_20210826170402.png" alt="유튜브5" usemap="#BannerImgMap4033">
+                            </div>
+                            <p>유튜브5</p>
+                        </div>
+                    </div>
+                </ul>
+                <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
+                <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>
+            </div>--}}
+            {{-- 배너 함수 이용한 html 소스 --}}
+
             <div class="tube_content NSK">
                 <ul class="tube_list">
                     <li>

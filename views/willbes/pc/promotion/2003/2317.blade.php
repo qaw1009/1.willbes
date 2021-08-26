@@ -67,7 +67,7 @@
                 </div>                
                 <span data-aos="zoom-in-down" data-aos-delay="500" data-aos-once="ture" class="img01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img01.png" alt=""/></span>
                 <span data-aos="zoom-in-down" data-aos-delay="1000" data-aos-once="ture" class="img02"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img02.png" alt=""/></span>
-                <span data-aos="zoom-in-down" data-aos-delay="1500" data-aos-once="ture" class="img03"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img03.png" alt=""/></span>
+                <span data-aos="zoom-in-down" data-aos-delay="1300" data-aos-once="ture" class="img03"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img03.png" alt=""/></span>
             </div>
         </div>
 

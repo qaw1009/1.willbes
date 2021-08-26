@@ -40,8 +40,8 @@
             <thead class="bg-white-gray">
             <tr>
                 <th style="width: 3%;">NO</th>
-                <th style="width: 5%;">이름</th>
-                <th style="width: 8%;">ID</th>
+                <th class="rowspan" style="width: 5%;">이름</th>
+                <th class="rowspan" style="width: 8%;">ID</th>
                 <th style="width: 10%;">참여일</th>
                 <th style="width: 10%">문제(그룹)명</th>
                 @forelse($add_columns as $key => $val)
@@ -80,6 +80,7 @@
                         return $.extend(arrToJson($search_form_modal.serializeArray()), { 'start' : data.start, 'length' : data.length});
                     }
                 },
+                rowsGroup: ['.rowspan'],
                 columns: [
                     {'data' : null, 'class': 'text-center', 'render' : function(data, type, row, meta) {
                             return $datatable_modal.page.info().recordsTotal - (meta.row + meta.settings._iDisplayStart);

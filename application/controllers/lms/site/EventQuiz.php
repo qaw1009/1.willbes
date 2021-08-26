@@ -356,9 +356,15 @@ class EventQuiz extends \app\controllers\BaseController
                 ,'b.EqsIdx' => element('search_eqs_idx', $arr_input)
             ],
         ];
+
+        $order_by = ['m.MemIdx' => 'asc', 'b.EqsIdx' => 'asc'];
+        if (empty(element('search_eqs_idx', $arr_input)) === false) {
+            $order_by = ['qm.QmIdx' => 'asc'];
+        }
+
         $count = $this->eventQuizModel->listQuizAnswerMember(true,$arr_condition);
         if ($count > 0) {
-            $list = $this->eventQuizModel->listQuizAnswerMember(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), ['qm.QmIdx' => 'asc']);
+            $list = $this->eventQuizModel->listQuizAnswerMember(false, $arr_condition, $this->input->post('length'), $this->input->post('start'), $order_by);
         }
 
         return $this->response([
@@ -385,7 +391,11 @@ class EventQuiz extends \app\controllers\BaseController
 
         $add_columns = $this->eventQuizModel->findMaxQuestionCnt()['cnt'];
         $search_eqs_idx = $this->_req('search_eqs_idx');
+
+        $order_by = ['m.MemIdx' => 'asc', 'b.EqsIdx' => 'asc'];
         if (empty($search_eqs_idx) === false) {
+            $order_by = ['qm.QmIdx' => 'asc'];
+
             //퀴즈회차 항목 조회
             $question_data = $this->eventQuizModel->findQuizQuestion(['EQ' => ['s.EqIdx' => $params[0], 's.EqsIdx' => $search_eqs_idx, 's.IsStatus' => 'Y']]);
             $add_columns = array_pluck($question_data, 'EqsqTitle', 'EqsqIdx');
@@ -407,7 +417,7 @@ class EventQuiz extends \app\controllers\BaseController
                 ,'b.EqsIdx' => $search_eqs_idx
             ],
         ];
-        $result = $this->eventQuizModel->listQuizAnswerMember('excel', $arr_condition, null, null, ['qm.QmIdx' => 'asc']);
+        $result = $this->eventQuizModel->listQuizAnswerMember('excel', $arr_condition, null, null, $order_by);
         $list = [];
         if (empty($result) === false) {
             foreach ($result as $key => $row) {

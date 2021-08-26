@@ -23,17 +23,17 @@
         .evtTop {background:url(https://static.willbes.net/public/images/promotion/2021/08/2317_top_bg.jpg) no-repeat center top} 
         .evtTop .wrap span {position:absolute; z-index:1}
         .evtTop .wrap span.img01 {width:394px; top:236px; right:-140px; z-index:2;}
-        .evtTop .wrap span.img02 {width:420px; top:545px; right:-140px;z-index:2;}
-        .evtTop .wrap span.img03 {width:311px; top:672px; right:152px; z-index:2;}
-        .evtTop .tHomeBtn{position: absolute; top:960px; right:110px; z-index:2;}
+        .evtTop .wrap span.img02 {width:421px; top:502px; right:-140px;z-index:2;}
+        .evtTop .wrap span.img03 {width:311px; top:660px; right:147px; z-index:2;}
+        .evtTop .tHomeBtn{position: absolute; top:902px; right:578px; z-index:2;}
         .evtTop .tHomeBtn a{
             color:#fff;
             font-size:15px;
             font-weight: bold;
-            width:166px;
+            width:168px;
             height:41px;
             display: block;
-            background-color: #dd7f0d;
+            background-color: #384a5a;
             border-radius: 20px;
             text-align: left;
             line-height: 41px;
@@ -66,7 +66,7 @@
                     <a href="https://pass.willbes.net/professor/show/cate/3019/prof-idx/50291/?subject_idx=1120" target="_blank" title="교수홈">교수님홈 바로가기</a>
                 </div>                
                 <span data-aos="zoom-in-down" data-aos-delay="500" data-aos-once="ture" class="img01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img01.png" alt=""/></span>
-                <span data-aos="zoom-in-down" data-aos-delay="1000" data-aos-once="ture" class="img02"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img02.png" alt=""/></span>
+                <span data-aos="zoom-in-down" data-aos-delay="1000" data-aos-once="ture" class="img02"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img02_n1.png" alt=""/></span>
                 <span data-aos="zoom-in-down" data-aos-delay="1300" data-aos-once="ture" class="img03"><img src="https://static.willbes.net/public/images/promotion/2021/08/2317_top_img03.png" alt=""/></span>
             </div>
         </div>

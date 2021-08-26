@@ -30,7 +30,7 @@
     <div class="p_re evtContent NSK" id="evtContainer">
         <div class="evtCtnsBox evtTop">
             <span data-aos="fade-right">
-			    <img src="https://static.willbes.net/public/images/promotion/2021/08/2336_top.png"  alt="이달의 추천강좌" />
+			    <img src="https://static.willbes.net/public/images/promotion/2021/08/2336_top.png"  alt="신광은 면접캠프" />
             </span>
 		</div>
 
@@ -42,7 +42,7 @@
         <div class="evtCtnsBox">
             <div class="wrap" data-aos="fade-right">
                 <img src="https://static.willbes.net/public/images/promotion/2021/08/2336_02.jpg" alt="인적성 검사"/>
-                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1064&course_idx=1047&campus_ccd=605001" target="_blank" title="인적성 검사" style="position: absolute; left: 71.43%; top: 39.75%; width: 16.07%; height: 17.08%; z-index: 2;"></a>
+                <a href="https://police.willbes.net/pass/offLecture/index/type/interview?cate_code=3010&subject_idx=1069&course_idx=1047&campus_ccd=605001" target="_blank" title="인적성 검사" style="position: absolute; left: 71.43%; top: 39.75%; width: 16.07%; height: 17.08%; z-index: 2;"></a>
             </div>
 
             <div class="wrap" data-aos="fade-left">

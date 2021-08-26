@@ -2,7 +2,7 @@
 @section('content')
 
 <style type="text/css">
-.ssam .noticeBanner {float:left;}
+.ssam .noticeBanner {float:right;}
 .ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
 .ssam .noticeBanner li:first-child {margin-right:40px}
 .ssam .noticeBanner:after {content:''; display:block; clear:both}
@@ -274,9 +274,6 @@ no-repeat 5px center}
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_02.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
                     <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>
-                    {{--<li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_05.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_03.jpg" alt="배너명"></a></li>
-                    <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_bn_2000x500_04.jpg" alt="배너명"></a></li>--}}
                 </ul>                  
                 <p class="leftBtn" id="imgBannerLeft"><a href="#none">이전</a></p>
                 <p class="rightBtn" id="imgBannerRight"><a href="none">다음</a></p> 
@@ -287,36 +284,13 @@ no-repeat 5px center}
                     <span><a data-slide-index="1" href="javascript:void(0);" class="">문제풀이패키지</a></span>
                     <span><a data-slide-index="2" href="javascript:void(0);" class="">인강무료체험&환승할인</a></span>
                     <span><a data-slide-index="3" href="javascript:void(0);" class="">2021학년도 연간패키지</a></span>
-                    {{--<span><a data-slide-index="4" href="javascript:void(0);" class="">2021대비 합격전략설명회</a></span>
-                    <span><a data-slide-index="5" href="javascript:void(0);" class="">환승할인</a></span>
-                    <span><a data-slide-index="6" href="javascript:void(0);" class="">인강무료체험&환승할인</a></span>--}}
                 </div>
             </div>           
         </div>        
     </div>
 
-    <div class="Section mt80">
-        <div class="widthAuto"> 
-            <ul class="noticeBanner">
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="bSlider">
-                        <div class="slider">
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
+    <div class="Section mt40">
+        <div class="widthAuto">            
             <div class="noticeTabs">
                 <ul class="tabWrap noticeWrap two">
                     <li><a href="#notice1" class="on">공지사항</a></li>
@@ -350,333 +324,356 @@ no-repeat 5px center}
                     </div>
                 </div>
             </div>
+
+            <ul class="noticeBanner">
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="bSlider">
+                        <div class="slider">
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                            <div><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/bn_250x293.jpg" alt="배너명"></a></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div> 
 
-    <div class="Section sec-prof mt80">
+    <div class="Section sec-prof mt40">
         <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
         <div class="widthAuto p_re NSK">
-            <ul class="prof-Tab">
-                <li><a href="#tab01" class="active"><span>유아</span>민정선</a></li>
-                <li><a href="#tab02"><span>초등</span>배재민</a></li>
-                <li><a href="#tab03"><span>교육학</span>이인재</a></li>
-                <li><a href="#tab04"><span>교육학</span>홍의일</a></li>
-                <li><a href="#tab05"><span>전공국어</span>송원영</a></li>
-                <li><a href="#tab06"><span>전공국어</span>권보민</a></li>
-                <li><a href="#tab07"><span>전공영어</span>김유석</a></li>
-                <li><a href="#tab08"><span>전공영어</span>김영문</a></li>
-                <li><a href="#tab09"><span>전공수학</span>김철홍</a></li>
-                <li><a href="#tab10"><span>수학교육론</span>박태영</a></li>
-                <li><a href="#tab11"><span>전공생물</span>강치욱</a></li>
-                <li><a href="#tab12"><span>생물교육론</span>양혜정</a></li>
-                <li><a href="#tab13"><span>도덕윤리</span>김병찬</a></li>
-                <li><a href="#tab14"><span>전공역사</span>최용림</a></li>
-                <li><a href="#tab15"><span>전공음악</span>다이애나</a></li>
-                <li><a href="#tab16"><span>전기전자통신</span>최우영</a></li>
-                <li><a href="#tab17"><span>정보컴퓨터</span>송광진</a></li>
-                <li><a href="#tab18"><span>정컴교육론</span>장순선</a></li>
-                <li><a href="#tab19"><span>전공중국어</span>정경미</a></li>
+            <ul class="prof-Tab" id="profRolling">
+                <li><a data-slide-index="0" href="javascript:void(0);" class="active"><span>유아</span>민정선</a></li>
+                <li><a data-slide-index="1" href="javascript:void(0);"><span>초등</span>배재민</a></li>
+                <li><a data-slide-index="2" href="javascript:void(0);"><span>교육학</span>이인재</a></li>
+                <li><a data-slide-index="3" href="javascript:void(0);"><span>교육학</span>홍의일</a></li>
+                <li><a data-slide-index="4" href="javascript:void(0);"><span>전공국어</span>송원영</a></li>
+                <li><a data-slide-index="5" href="javascript:void(0);"><span>전공국어</span>권보민</a></li>
+                <li><a data-slide-index="6" href="javascript:void(0);"><span>전공영어</span>김유석</a></li>
+                <li><a data-slide-index="7" href="javascript:void(0);"><span>전공영어</span>김영문</a></li>
+                <li><a data-slide-index="8" href="javascript:void(0);"><span>전공수학</span>김철홍</a></li>
+                <li><a data-slide-index="9" href="javascript:void(0);"><span>수학교육론</span>박태영</a></li>
+                <li><a data-slide-index="10" href="javascript:void(0);"><span>전공생물</span>강치욱</a></li>
+                <li><a data-slide-index="11" href="javascript:void(0);"><span>생물교육론</span>양혜정</a></li>
+                <li><a data-slide-index="12" href="javascript:void(0);"><span>도덕윤리</span>김병찬</a></li>
+                <li><a data-slide-index="13" href="javascript:void(0);"><span>전공역사</span>최용림</a></li>
+                <li><a data-slide-index="14" href="javascript:void(0);"><span>전공음악</span>다이애나</a></li>
+                <li><a data-slide-index="15" href="javascript:void(0);"><span>전기전자통신</span>최우영</a></li>
+                <li><a data-slide-index="16" href="javascript:void(0);"><span>정보컴퓨터</span>송광진</a></li>
+                <li><a data-slide-index="17" href="javascript:void(0);"><span>정컴교육론</span>장순선</a></li>
+                <li><a data-slide-index="18" href="javascript:void(0);"><span>전공중국어</span>정경미</a></li>
             </ul>
-            <div class="prof-Tab-Cts" id="tab01">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
-                    </div>                    
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                    </div>
-                </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab02">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+            <div class="prof-Tab-Wrap" id="profRollingSlider">
+                <div class="prof-Tab-Cts" id="tab01">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51076?cate_code=3135&subject_idx=1981">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>                    
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>    
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                     
-                    </div>                    
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51076.jpg" title="유아 민정선">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51077.jpg" title="초등 배재민">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab03">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab02">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51077?cate_code=3136&subject_idx=1982">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>    
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                     
+                        </div>                    
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51077.jpg" title="초등 배재민">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51074.jpg" title="교육학 이인재">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab04">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab03">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51074?cate_code=3134&subject_idx=1980">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51074.jpg" title="교육학 이인재">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51075.jpg" title="교육학 홍의일">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab05">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab04">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51075?cate_code=3134&subject_idx=1980">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51075.jpg" title="교육학 홍의일">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51078.jpg" title="국어 송원영">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab06">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab05">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51078.jpg" title="국어 송원영">
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51080.jpg" title="국어 권보민">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab07">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab06">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51078?cate_code=3137&subject_idx=1983">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51080.jpg" title="국어 권보민">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51081.jpg" title="영어 김유석">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab08">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab07">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51081?cate_code=3137&subject_idx=1984">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51081.jpg" title="영어 김유석">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51082.jpg" title="영어 김영문">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab09">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab08">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51082?cate_code=3137&subject_idx=1984">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51082.jpg" title="영어 김영문">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51084.jpg" title="수학 김철홍">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab10">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab09">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51084?cate_code=3137&subject_idx=1985">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51084.jpg" title="수학 김철홍">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51085.jpg" title="수학 박태영">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab11">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab10">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51085?cate_code=3137&subject_idx=1986">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>      
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>  
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                  
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51085.jpg" title="수학 박태영">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51086.jpg" title="생물 강치욱">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab12">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab11">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51086?cate_code=3137&subject_idx=1987">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                  
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                  
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51086.jpg" title="생물 강치욱">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51087.jpg" title="생물 양혜정">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab13">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab12">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                  
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51087.jpg" title="생물 양혜정">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51088.jpg" title="도덕윤리 김병찬">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab14">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab13">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51087?cate_code=3137&subject_idx=1988">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51088.jpg" title="도덕윤리 김병찬">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51089.jpg" title="한국사 최용림">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab15">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab14">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51089?cate_code=3137&subject_idx=1990">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51089.jpg" title="한국사 최용림">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51090.jpg" title="음악 다이애나">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab16">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab15">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51090?cate_code=3137&subject_idx=1991">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51090.jpg" title="음악 다이애나">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51091.jpg" title="전기전자통신 최우영">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab17">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab16">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51091?cate_code=3137&subject_idx=1992">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51091.jpg" title="전기전자통신 최우영">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51092.jpg" title="정보컴퓨터 송광진">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab18">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51093?cate_code=3137&subject_idx=1994">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab17">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51092?cate_code=3137&subject_idx=1993">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
                     </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51092.jpg" title="정보컴퓨터 송광진">
                 </div>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51093.jpg" title="정컴교육론 장순선">
-            </div>
 
-            <div class="prof-Tab-Cts" id="tab19">
-                <div class="btnBox">
-                    <div class="prof-top-btn">
-                        <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995">교수님 홈</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
-                        <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                <div class="prof-Tab-Cts" id="tab18">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51093?cate_code=3137&subject_idx=1994">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
                     </div>
-                    <div class="prof-clip-btn">
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
-                        <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
-                    </div>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51093.jpg" title="정컴교육론 장순선">
                 </div>
-                <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
-                <img src="https://static.willbes.net/public/images/promotion/main/2018/51094.jpg" title="중국어 정경미">
+
+                <div class="prof-Tab-Cts" id="tab19">
+                    <div class="btnBox">
+                        <div class="prof-top-btn">
+                            <a href="https://ssam.willbes.net/professor/show/prof-idx/51094?cate_code=3137&subject_idx=1995">교수님 홈</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('Curriculum')">커리큘럼</a>
+                            <a href="#none" onclick="openWin('sec-prof-layer'),openWin('ProfReply')">수강후기</a>
+                        </div>
+                        <div class="prof-clip-btn">
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>   
+                            <a onclick="openWin('sec-prof-layer'),openWin('youtube')"><img src="https://static.willbes.net/public/images/promotion/main/2018/btn_hotclip.jpg" title="유튜브"></a>                    
+                        </div>
+                    </div>
+                    <span class="hotclip"><img src="https://static.willbes.net/public/images/promotion/main/2018/hotclip.jpg" title="hot clip"></span>
+                    <img src="https://static.willbes.net/public/images/promotion/main/2018/51094.jpg" title="중국어 정경미">
+                </div>
             </div>
         </div>
 
@@ -1225,6 +1222,38 @@ no-repeat 5px center}
                 </ul>
             </div>           
         </div> 
+    </div>
+
+    <div class="Section Section3 mt40">
+        <div class="widthAuto">
+            <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof01.jpg" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof02.jpg" title="배너명"></a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="Section Section4 mt80">
@@ -3208,6 +3237,24 @@ no-repeat 5px center}
         });			
     });
 
+    //교수진
+    $(function(){ 
+        var profslidesImg = $(".prof-Tab-Wrap").bxSlider({
+            mode:'fade',
+            touchEnabled: false,
+            speed:400,
+            pause:3000,
+            sliderWidth:1120,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#profRolling',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#profRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	   		
+    });
+
     //적중배너
     $(function(){ 
         var slidesImg = $(".SubtabSlider").bxSlider({
@@ -3347,6 +3394,7 @@ no-repeat 5px center}
     });
 
     //교수진
+    /*
     $(document).ready(function(){
         $('.prof-Tab').each(function(){
             var $active, $content, $links = $(this).find('a');
@@ -3372,7 +3420,7 @@ no-repeat 5px center}
                 e.preventDefault()}
             )}
         )}
-    ); 
+    ); */
 
     
 </script>

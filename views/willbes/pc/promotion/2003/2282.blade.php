@@ -216,7 +216,7 @@
 
         <div class="evtCtnsBox wb_cts08">
             @if(ENVIRONMENT == 'local' || ENVIRONMENT == 'development')
-                @if(empty($arr_promotion_params['quiz_id']) === false && sess_data('is_login') === true)
+                @if(empty($arr_promotion_params['quiz_id']) === false)
                     <a href="javascript:void(0)" onclick="list_quiz('{{ $arr_promotion_params['quiz_id'] or '' }}'); return false;">
                         <img src="https://static.willbes.net/public/images/promotion/2021/07/2282_08.jpg" alt="퀴즈테스트"/>
                     </a>
@@ -251,5 +251,7 @@
     {{-- quiz --}}
     <link rel="stylesheet" href="/public/css/willbes/quiz.css">
     <script type="text/javascript" src="/public/js/willbes/jquery.bpopup.min.js"></script>
-    <script type="text/javascript" src="/public/js/willbes/promotion.js"></script>
+
+    {{-- 프로모션용 스크립트 include --}}
+    @include('willbes.pc.promotion.promotion_script')
 @stop

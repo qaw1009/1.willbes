@@ -16,7 +16,7 @@
                             <span>{{ $row['EqsStartDate'] }}</span>
                             <span>
                                 <a href="{{front_url('/quiz/show?quiz_id='.$quiz_id.'&quiz_set_id='.$row['EqsIdx'])}}"
-                                   onclick="show_quiz('{{sess_data('is_login')}}', '{{ $quiz_id }}', '{{ $row['EqsIdx'] }}', '{{ $loop->index }}'
+                                   onclick="show_quiz('{{ $quiz_id }}', '{{ $row['EqsIdx'] }}', '{{ $loop->index }}'
                                            , '{{ $row['IsQuizMember'] }}', '{{ $row['ShowType'] }}', '{{ $row['RowNum'] }}', '{{ $member_quiz_today_type }}'); return false;">
                                         {{ $row['EqsGroupTitle'] }}
                                     </a>

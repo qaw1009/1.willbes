@@ -1224,6 +1224,38 @@ no-repeat 5px center}
         </div> 
     </div>
 
+    <div class="Section Section3 mt40">
+        <div class="widthAuto">
+            <div class="will-nTit">윌비스 임용 <span class="tx-color">합격 교수진</span></div>
+            <ul>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof01.jpg" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof_kcw.png" title="배너명"></a></li>
+                <li><a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2018/2018_prof02.jpg" title="배너명"></a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="Section Section4 mt80">
         <div class="widthAuto">  
             <div class="widthAuto smallTit NSK-Black">          

@@ -1,12 +1,14 @@
 <div class="sec-prof-title"><img src="https://static.willbes.net/public/images/promotion/main/2018/title01.jpg" title="교수진"></div>
 <div class="widthAuto p_re NSK">
-    <ul class="prof-Tab">
+    <ul class="prof-Tab" id="profRolling">
         @if(empty($data['prof_hot_clip']) === false)
             @foreach($data['prof_hot_clip'] as $row)
                 <li><a href="#tab{{$loop->index}}" @if($loop->first)class="active"@endif><span>{{ $row['SubjectName'] }}</span>{{ $row['wProfName'] }}</a></li>
             @endforeach
         @endif
     </ul>
+
+    <div class="prof-Tab-Wrap" id="profRollingSlider">
     @if(empty($data['prof_hot_clip']) === false)
         @foreach($data['prof_hot_clip'] as $row)
             <div class="prof-Tab-Cts" id="tab{{$loop->index}}">
@@ -50,6 +52,7 @@
             </div>
         @endforeach
     @endif
+    </div>
 </div>
 
 {{--교수 커리큘럼 팝업 --}}
@@ -93,4 +96,22 @@
         closeWin('sec-prof-layer')
         closeWin('youtube');
     }
+
+    //교수 롤링
+    $(function(){ 
+        var profslidesImg = $(".prof-Tab-Wrap").bxSlider({
+            mode:'fade',
+            touchEnabled: false,
+            speed:400,
+            pause:3000,
+            sliderWidth:1120,
+            auto : true,	
+            autoHover: true,						
+            pagerCustom: '#profRolling',
+            controls:false, 				
+            onSliderLoad: function(){
+                $("#profRollingSlider").css("visibility", "visible").animate({opacity:1}); 
+            }
+        });	   		
+    });
 </script>

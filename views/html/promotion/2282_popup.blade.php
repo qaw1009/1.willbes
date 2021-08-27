@@ -21,8 +21,12 @@
 
     .question {margin-top:20px; padding:10px 10px 10px 30px; border:1px solid #ccc; position:relative}
     .question span {position:absolute; top:10px; left:0; background:#ccc; width:25px; height:25px; text-align:center}
+    .question .exBox {background:#f4f4f4; border:1px dotted #ccc; padding:10px; margin-top:10px}
+    .question .exBox p {font-weight:bold; color:#000}
     .question ul {margin-top:15px; padding-top:15px; border-top:1px dashed #ccc}
-    .question li {list-style-type: decimal; margin-left:20px; vertical-align: text-top; margin-bottom:5px;}
+    .question li {list-style-type: decimal; list-style-position:inside; padding-left:20px; margin-bottom:5px; position:relative}
+    .question li input {position:absolute; left:0; top:3px}
+    .question li label {vertical-align:top}
 
     .explain {padding:10px; border:1px solid #ccc; margin-top:40px}
     .exp-title {color:#2dda77; font-size:16px}
@@ -117,11 +121,24 @@
                 <span>1</span>
                 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다.
 
+                <div class="exBox">
+                    <p>[보기]</p>
+                    시험을 앞둔 아들이 컴퓨터 게임을 하고 있는 상황<br>
+                    엄마 : (화가 난 투로) “잘한다!:<br>
+                    아들 : ___________________________________<br>
+                </div>
+
                 <ul>
-                    <li><input type="radio" name="aa1" id="aa1" value="" > <label for="aa1">보기1</label></li>
-                    <li><input type="radio" name="aa2" id="aa2" value="" > <label for="aa2">보기2</label></li>
-                    <li><input type="radio" name="aa3" id="aa3" value="" > <label for="aa3">보기3</label></li>
-                    <li><input type="radio" name="aa4" id="aa4" value="" > <label for="aa4">보기4</label></li>
+                    <li>
+                        <input type="radio" name="aa1" id="aa1" value="" > 
+                        <label for="aa1">감사합니다. 더 열심히 하겠습니다.감사합니다. 더 열심히 하겠습니다. 감사합니다. 더 열심히 하겠습니다.</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="aa2" id="aa2" value="" >
+                        <label for="aa2">역시 제 마음을 이해해 주시는군요.역시 제 마음을 이해해 주시는군요. 역시 제 마음을 이해해 주시는군요.</label>
+                    </li>
+                    <li><input type="radio" name="aa3" id="aa3" value="" > <label for="aa3">죄송해요. 하지만 정말 지금 막 시작했어요.</label></li>
+                    <li><input type="radio" name="aa4" id="aa4" value="" > <label for="aa4">따뜻한 격려의 말씀에 더욱 힘이 나요.</label></li>
                 </ul>
             </div>
 
@@ -162,7 +179,7 @@
 
             <div class="question">
                 <span>1</span>
-                문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다.
+                문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다. 문제가 출력됩니다.          
 
                 <ul>
                     <li><input type="radio" name="ab1" id="ab1" value="" > <label for="ab1">보기1</label></li>

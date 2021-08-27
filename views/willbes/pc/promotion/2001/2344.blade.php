@@ -12,9 +12,9 @@
             padding:0 !important;
             background:#fff;
         }
-        .evtCtnsBox {width:100%; text-align:center; min-width:1120px}
+        .evtCtnsBox {width:100%; text-align:center; min-width:1120px; position:relative;}
         .evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative;}
-        .evtCtnsBox .wrap a:hover {background-color:rgba(0,0,0,0.2)}
+        .evtCtnsBox .wrap a:hover {box-shadow:0 10px 10px rgba(0,0,0,.5); border-radius:30px}
 
         /************************************************************/
         .sky {position:fixed; width:120px; top:200px; right:10px; z-index:10;}
@@ -23,6 +23,8 @@
         .evt00 {background:#0a0a0a}
 
         .evt_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/2344_top_bg.jpg) no-repeat center top;}
+        .evt_top div {position:absolute; top:200px; width:100%; z-index: 10;}
+
         .evt_01 {background:#010111; position:relative;}
         .evt_01 > div {position:absolute; top:998px; left:50%; margin-left:-335px}
 
@@ -31,11 +33,11 @@
         .evt_02_01 {padding-top:150px}
         .evtTab {width:890px; margin:0 auto}
         .evtTab li {display:inline; float:left; width:50%}
-        .evtTab li a {display:block; color:#898989; font-size:24px; padding:20px 0; border:5px solid #898989; border-bottom-color:#000; font-weight:bold}       
+        .evtTab li a {display:block; color:#898989; font-size:20px; padding:15px 0; border:5px solid #898989; border-bottom-color:#000; font-weight:bold; margin-top:15px}       
         .evtTab li:first-child a {border-right:0}
         .evtTab li:last-child a {border-left:0}
         .evtTab li a:hover,
-        .evtTab li a.active {color:#000; border:5px solid #000; border-bottom-color:#fff}
+        .evtTab li a.active {color:#000; border:5px solid #000; border-bottom-color:#fff; font-size:24px; padding:20px 0;margin-top:0}
         .evtTab:after {content:''; display:block; clear:both}
 
         .evt_03 {background:#0261b5;}  
@@ -80,6 +82,9 @@
         </div>
 
         <div class="evtCtnsBox evt_top">
+            <div>
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/2344_top_txt.png"  alt="해양경찰 등불쌤 합격패스" data-aos="fade-left"/>
+            </div>
             <img src="https://static.willbes.net/public/images/promotion/2021/08/2344_top.jpg"  alt="해양경찰 등불쌤 합격패스" />
         </div>
 
@@ -110,7 +115,7 @@
 
         <div class="evtCtnsBox evt_02_01">
             <ul class="evtTab">
-                <li><a href="#tab01">2021년 해양경찰을 말하다</a></li>
+                <li><a href="#tab01" class="active">2021년 해양경찰을 말하다</a></li>
                 <li><a href="#tab02">2022년 해양경찰을 말하다</a></li>
             </ul>
             <div id="tab01"><img src="https://static.willbes.net/public/images/promotion/2021/08/2344_02_01.jpg"  alt="2021년 해양경찰을 말하다" /></div>
@@ -207,66 +212,11 @@
 				</ul>
                 <div class="infoTit NSK-Black">※ 이용문의 : 고객센터 1544-5006 / 사이트 내 1:1 상담 게시판</div>
 			</div>
-		</div>       
-
-
+		</div> 
     </div>
     <!-- End Container -->
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.evtTab').each(function(){
-                var $active, $content, $links = $(this).find('a');
-                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
-                $active.addClass('active');
-
-                $content = $($active[0].hash);
-
-                $links.not($active).each(function () {
-                    $(this.hash).hide()});
-
-                // Bind the click event handler
-                $(this).on('click', 'a', function(e){
-                    $active.removeClass('active');
-                    $content.hide();
-
-                    $active = $(this);
-                    $content = $(this.hash);
-
-                    $active.addClass('active');
-                    $content.show();
-
-                    e.preventDefault()}
-                )}
-            )}
-        ); 
-
-        $(document).ready(function() {
-            var slidesImg4 = $("#slidesImg4").bxSlider({
-                mode:'horizontal',
-                auto:true,
-                speed:350,
-                pause:4000,
-                pager:true,
-                controls:false,
-                minSlides:1,
-                maxSlides:1,
-                slideMargin:0,
-                autoHover: true,
-                moveSlides:1,
-                pager:false,
-            });
-
-            $("#imgBannerLeft4").click(function (){
-                slidesImg4.goToPrevSlide();
-            });
-
-            $("#imgBannerRight4").click(function (){
-                slidesImg4.goToNextSlide();
-            });
-            
-        });
-
+    <script>
         function go_PassLecture(cate, code){
             if($("input[name='ischk']:checked").size() < 1){
                 alert("이용안내에 동의하셔야 합니다.");
@@ -297,6 +247,65 @@
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         }
+
+        $(document).ready(function(){
+            $('.evtTab').each(function(){
+                var $active, $content, $links = $(this).find('a');
+                $active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+                $active.addClass('active');
+
+                $content = $($active[0].hash);
+
+                $links.not($active).each(function () {
+                    $(this.hash).hide()});
+
+                // Bind the click event handler
+                $(this).on('click', 'a', function(e){
+                    $active.removeClass('active');
+                    $content.hide();
+
+                    $active = $(this);
+                    $content = $(this.hash);
+
+                    $active.addClass('active');
+                    $content.show();
+
+                    e.preventDefault()}
+                )}
+            )}
+
+            var slidesImg4 = $("#slidesImg4").bxSlider({
+                mode:'horizontal',
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:true,
+                controls:false,
+                minSlides:1,
+                maxSlides:1,
+                slideMargin:0,
+                autoHover: true,
+                moveSlides:1,
+                pager:false,
+            });
+
+            $("#imgBannerLeft4").click(function (){
+                slidesImg4.goToPrevSlide();
+            });
+
+            $("#imgBannerRight4").click(function (){
+                slidesImg4.goToNextSlide();
+            });
+            
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      $( document ).ready( function() {
+        AOS.init();
+      } );
     </script>
 
 @stop

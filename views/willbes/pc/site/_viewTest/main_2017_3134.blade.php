@@ -22,7 +22,7 @@
             background-color:rgba(255,255,255,.3); font-weight:bold
         }
 
-        .ssam .noticeBanner {float:left;}
+        .ssam .noticeBanner {float:right;}
         .ssam .noticeBanner li {width:250px; height:293px; overflow:hidden; float:left}
         .ssam .noticeBanner li:first-child {margin-right:40px}
         .ssam .noticeBanner:after {content:''; display:block; clear:both}

@@ -401,40 +401,17 @@
 .cop .bookContent > p.rightBtn {margin-left:600px; background-position: right center;}
 
 /*유트브 채널*/
-.cop .tube_content {position:relative; width:1120px; margin:50px auto;}
-.cop .tube_list:after {content:""; display:block; clear:both}
-.cop .tube_list li {display:inline; float:left; width:224px; height:300px; text-align:center; margin-bottom:30px; padding-bottom:10px;
-	word-break: keep-all; color:#43484f;}
-.cop .tube_list span {background: url(https://static.willbes.net/public/images/promotion/main/2001/book_cover.png) no-repeat center top;
-	width:167; height:196px; position: absolute; left:10px; top:0; z-index:10}
-.cop .tube_list .tube_img {position:relative;  width:142px; margin:0 auto; min-height:196px; overflow: hidden;}
-
-.cop .tube_list li img {
-	position: absolute; left:50%; top:70%; max-width:150px;
-	-webkit-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%) scale(1);
-	transition: all ease-in-out .2s;
-}
-.cop .tube_list li:hover img {
-	-ms-transform: translate(-50%, -50%) scale(1.1);
-	-webkit-transform: translate(-50%, -50%) scale(1.1);
-	transform: translate(-50%, -50%) scale(1.1);
-}
-.cop .tube_list p {width:90%; margin:auto;}
-.cop .tube_list p:nth-of-type(1) {font-weight:bold;font-size:17px; margin-top:10px}
-.cop .tube_list p:nth-of-type(2) {font-size:13px; color:#363636; margin-top:10px}
-
-.cop .tube_content {position:relative; width:1120px; margin:50px auto;}
-.cop .tube_content > p {position:absolute; top:50%; left:50%; margin-top:-28px; width:32px; height:57px; cursor:pointer;
-	background: url(https://static.willbes.net/public/images/promotion/main/2012_arrow_01.png) no-repeat left center;}
-.cop .tube_content > p a {display:none;}
-.cop .tube_content > p.leftBtn {margin-left:-600px;}
-.cop .tube_content > p.rightBtn {margin-left:600px; background-position: right center;}
-
-.cop .willbes-Layer-Box {left:50%; top:4550px !important; margin-left:-490px !important; z-index: 110;}
+.combine .tube_wrap {margin:100px 0;}
+.combine .tube_box {position:relative; margin-top:40px}   
+.combine .tube_slider {width:1120px; margin: 0 auto; height: 250px; overflow:hidden;}
+.combine .tube_slider:after {content:""; display: block; clear:both}
+.combine .tube_slider li {display:inline; float:left; width:20%;}
+.combine .tube_slider li a {display:block; width:224px; text-align: center;  } 
+.combine .tube_slider li a img {margin:0 auto}
+.combine .tube_slider li div.tube_title {height:40px; line-height:40px; font-size:14px; text-align:center; width:80%; overflow:hidden;white-space:nowrap; text-overflow:ellipsis; margin:0 auto}
+.combine .tube_box p {position:absolute; top:50%; margin-top:-40px; width:60px; height:60px; z-index:10}
+.combine .tube_box p.leftBtn {left:-30px}
+.combine .tube_box p.rightBtn {right:-30px}
 
 /*검정제 교수진*/
 .cop .SecBanner11 {

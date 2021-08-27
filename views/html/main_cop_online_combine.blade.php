@@ -2,7 +2,7 @@
 @section('content')
 <!-- Container -->
 <link href="/public/css/willbes/style_cop.css??ver={{time()}}" rel="stylesheet">
-<div id="Container" class="Container cop NGR c_both">
+<div id="Container" class="Container cop NGR c_both combine">
     <form id="unifiedSearch_form" name="unifiedSearch_form" method="GET">
         <div class="Section widthAuto">
             <div class="onSearch NGR">
@@ -450,9 +450,6 @@
                     <a href="#none"><img src="https://static.willbes.net/public/images/promotion/main/2001/2001_360x170_09.jpg" alt="배너명"></a>
                 </li>
             </ul>
-            <div class="will-nTits NSK-Black mt100">
-                신광은경찰팀 유튜브 채널 모음 
-            </div>
 
             {{-- 배너 함수 이용한 html 소스 --}}
             {{--<div class="tube_content NSK">
@@ -492,59 +489,59 @@
             </div>--}}
             {{-- 배너 함수 이용한 html 소스 --}}
 
-            <div class="tube_content NSK">
-                <ul class="tube_list">
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
-                            <span></span>                       
-                            <div class="tube_img">                                
-                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" title="채널명">
-                            </div>
-                            <div>
-                                <p>#신광은경찰팀  #공식채널</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
-                            <span></span> 
-                            <div class="tube_img">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" title="채널명">
-                            </div>
-                            <p>#신광은 #형사법 #1일1제</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
-                            <span></span> 
-                            <div class="tube_img">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" title="채널명">
-                            </div>                        
-                            <p>#장정훈 #경찰학 #1일1제</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
-                            <span></span> 
-                            <div class="tube_img">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" title="채널명">
-                            </div>                        
-                            <p>#김원욱 #헌법 #1일1제</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:alert('Coming Soon!')">
-                            <span></span> 
-                            <div class="tube_img">
-                                <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" title="채널명">
-                            </div>                        
-                            <p>#이국령 #헌법도약</p>
-                        </a>
-                    </li>
-                </ul>  
-                <p class="leftBtn" id="imgBannerLeft3"><a href="#none">이전</a></p>
-                <p class="rightBtn" id="imgBannerRight3"><a href="none">다음</a></p>         
-            </div>
+            <div class="will-nTits NSK-Black mt100">
+                신광은경찰팀 유튜브 채널 모음 
+            </div>            
+            <div class="Section tube_wrap">
+                <div class="widthAuto">              
+                    <div class="tube_box">
+                        <ul class="tube_slider">
+                            <li>
+                                <div>
+                                    <a href="https://www.youtube.com/channel/UCQ-jvqaobw6E9EvnFO88vwQ/featured" target="_blank">
+                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch01.png" alt="#신광은경찰팀  #공식채널">
+                                    </a>
+                                </div>
+                                <div class="tube_title">#신광은경찰팀  #공식채널</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="https://www.youtube.com/channel/UCz_3g63yWTYjg6_Ko5QRK1g?view_as=subscriber" target="_blank">
+                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch02.png" alt="#신광은 #형사법 #1일1제">
+                                    </a>
+                                </div>
+                                <div class="tube_title">#신광은 #형사법 #1일1제</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="https://www.youtube.com/channel/UCjxTXvi1hPxz32wr031U7jw" target="_blank">
+                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch03.png" alt="#장정훈 #경찰학 #1일1제">
+                                    </a>
+                                </div>
+                                <div class="tube_title">#장정훈 #경찰학 #1일1제</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="https://www.youtube.com/channel/UCMVc2RbvQeJ_574VzzpPzpg">
+                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch04.png" alt="#김원욱 #헌법 #1일1제">
+                                    </a>
+                                </div>
+                                <div class="tube_title">#김원욱 #헌법 #1일1제</div>
+                            </li>
+                            <li>
+                                <div>
+                                    <a href="javascript:alert('Coming Soon!')">
+                                        <img src="https://static.willbes.net/public/images/promotion/main/2001/tube_ch05.png" alt="#이국령 #헌법도약">
+                                    </a>
+                                </div>
+                                <div class="tube_title">#이국령 #헌법도약</div>
+                            </li>                          
+                        </ul> 
+                        <p class="leftBtn"><a id="tube_slider_left"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_left.png"></a></p>                   
+                        <p class="rightBtn"><a id="tube_slider_right"><img src="https://static.willbes.net/public/images/promotion/main/2001/combine_right.png"></a></p>                              
+                    </div>
+                </div>
+            </div>                                    
         </div>
     </div>
 
@@ -1075,6 +1072,31 @@
             slidesImg1.goToPrevSlide();
         });        
     });
+
+     //유튜브채널
+     $(function() {
+            var newsImg = $(".tube_slider").bxSlider({
+                mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                auto:true,
+                speed:350,
+                pause:4000,
+                pager:false,
+                controls:false,
+                slideWidth: 224,
+                minSlides:5,
+                maxSlides:5,
+                slideMargin:0,
+                autoHover:true,
+                moveSlides:1,
+            });
+            $("#tube_slider_left").click(function (){
+                newsImg.goToPrevSlide();
+            });
+
+            $("#tube_slider_right").click(function (){
+                newsImg.goToNextSlide();
+            });
+        });
    
 </script>
 @stop

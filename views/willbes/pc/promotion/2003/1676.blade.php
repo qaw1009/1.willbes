@@ -18,8 +18,8 @@
 
         /************************************************************/
 
-        .skybanner {position:fixed;top:60px;right:10px; width:220px; text-align:center; z-index:1;}
-        .skybanner a {display:block; margin-bottom:5px;}
+        .sky {position:fixed;top:150px;right:0; width:220px; text-align:center; z-index:1;}
+        .sky a {display:block; margin-bottom:5px;}
 
         .evttop_banners {background:#060606;} 
         .evttop_banners a:hover {border:1px solid #fef200}
@@ -57,11 +57,10 @@
     </style>
 
     <div class="evtContent NGR" id="evtContainer">  
-        <div class="skybanner" id="QuickMenu">
+        <div class="sky">
             <a href="#evt3">
                 <img src="https://static.willbes.net/public/images/promotion/2020/07/1676_sky2.png" title="한덕현 티패스">
             </a> 
-            {{--
             <img src="https://static.willbes.net/public/images/promotion/2020/12/1676_sky.png" usemap="#Map1676_sky" title="반반한 모의고사" border="0">
             <map name="Map1676_sky">
                 <area shape="rect" coords="6,116,152,194" href="#watch" />
@@ -69,12 +68,6 @@
                 <area shape="rect" coords="4,279,149,355" href="#evt1" />
                 <area shape="rect" coords="3,359,153,437" href="#evt3" />
             </map>        
-            --}}
-            <img src="https://static.willbes.net/public/images/promotion/2021/08/1676_sky3.png" usemap="#Map1676_sky03" border="0">
-            <map name="Map1676_sky03" id="Map1676_sky03">
-                <area shape="rect" coords="17,87,100,189" href="#evt4" />
-                <area shape="rect" coords="115,86,206,189" href="#evt1" />
-            </map>
         </div>    
 
         

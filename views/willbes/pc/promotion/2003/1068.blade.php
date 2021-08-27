@@ -80,9 +80,9 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">   
-			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
+			{{--<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
                 <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky03.png" alt="5과목 패키지" >
-            </a>  
+            </a>--}}
 			<a href="#to_go">
 				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky01.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">

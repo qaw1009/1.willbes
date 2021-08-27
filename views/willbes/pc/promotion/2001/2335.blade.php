@@ -77,26 +77,6 @@
         .evt02 {background:#FCD8B6}  
         .evt03{ padding-bottom: 70px;} 
 
-        .wb_ctsInfo {background:#f4f4f4; padding:100px 0}  
-        .wb_ctsInfo div {
-            width:1000px; margin:0 auto; color:#fff; font-size:14px; line-height:1.5;
-            font-family: "NanumGothic-Regular", "Nanum Gothic", "나눔고딕", "sans-serif" !important;
-        }
-        .wb_ctsInfo div h3 {font-size:30px; margin-bottom:30px; color:#000;font-weight:bold;} 
-        .wb_ctsInfo div dt {font-size:18px; margin-bottom:10px; color:#000;font-weight:bold;font-family: "NotoSansCJKkr-Regular", "Noto Sans KR", "sans-serif" !important;}  
-        .wb_ctsInfo div dl {margin-bottom:30px;}
-        .wb_ctsInfo div dd {
-            position: relative;
-            padding-left:10px;
-            color:#000;
-            font-weight:bold;
-        }
-        .wb_ctsInfo p {margin-top:40px;font-size:18px;}
-        .wb_ctsInfo p span  {border:2px solid #fff; padding:10px 20px}
-
-        .wb_ctsInfo .original {text-decoration:line-through; color:#666} 
-        .wb_ctsInfo .discount {color:#e80000;} 
-
     </style>
 
     <div class="p_re evtContent NSK" id="evtContainer">  
@@ -163,52 +143,7 @@
                 @endif  
             </div>    
         </div>   
-
-        <div class="wb_ctsInfo" id="careful">
-            <div>
-                <h3 class="NSK-Black">9월 합격전략반 학원 실강 이용안내</h3>
-                <dl>
-                    <dt>2022 합격전략반 전문 교수진</dt>
-                    <dd>형사법 - 신광은 교수님</dd>
-                    <dd>경찰학(행정법) - 장정훈 교수님</dd>
-                    <dd>헌 법 - 김원욱 교수님</dd>
-                    <dd>헌 법 - 이국령 교수님</dd>                    
-                </dl>           
-                <dl>
-                    <dt>2022 합격전략반 안내</dt>
-                    <dd>1. 2022 합격전략반 헌법 속성반(9/6~10/29)</dd>
-                    <dd>① 헌법 기본이론(9월)</dd>
-                    <dd>② 헌법 심화이론(10월)</dd><br>                  
-                    <dd>2. 2022 합격전략반 헌법+경찰학(행정법) (9/6~10/29)</dd>
-                    <dd>① 헌법 기본이론(9월)</dd>       
-                    <dd>② 헌법 심화이론(10월)</dd>
-                    <dd>③경찰학(행정법) 심화이론(9월)</dd><br>
-                    <dd>3. 2022 합격전략반 풀패키지 (9/6~10/29)</dd>
-                    <dd>① 헌법 기본이론(9월)</dd>
-                    <dd>② 헌법 심화이론(10월)</dd>
-                    <dd>③경찰학(행정법) 심화이론(9월)</dd>
-                    <dd>④형사법 심화이론(형법 총론) (10월 예정)</dd>
-                </dl>                 
-                <dl>
-                    <dt>합격전략반 특별 이벤트</dt>                
-                    <dd>①헌법 속성반 , 헌법+경찰학 : 타학원 환승 인증시 사전접수가에서  5만원 추가 할인</dd>
-                    <dd>②합격전략 풀패키지 : 타학원 환승 인증시 사전접수가에서 10만원 추가 할인</dd>
-                </dl>
-                <dl>
-                    <dt>환승이벤트 대상자</dt>                
-                    <dd>① 타 경찰학원 정규과정 실강 또는 인강 유료 수강이력이 1개월 이상 있는 수험생</dd>
-                    <dd>② 2020년 이후 자사 실강 수강이력이 없는 수험생</dd>
-                </dl>
-                <dl>
-                    <dt>유의사항</dt>
-                    <dd>1. 2022년 시험대비 합격전략반입니다.</dd>
-                    <dd>2. 국가재난 정부 지침 등으로 인한 학원 휴원으로 실강 진행이 어려울 경우 동영상 강의 또는 라이브 강의로 대체될 수 있으며, 이로 인한 해당기간 환불은 불가합니다.</dd>
-                </dl>
-                <dl>
-                    <dt>* 학원 문의 : 1544-0336</dt>
-                </dl>
-            </div>
-        </div>
+                
 	</div>
     <!-- End Container -->
 

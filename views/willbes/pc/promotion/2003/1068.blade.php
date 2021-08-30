@@ -17,10 +17,13 @@
 		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px; border:1px solid #fff}
 		
-		.sky {position:fixed; top:100px; right:10px; z-index:10;}
+		.sky {position:fixed; top:100px; right:10px; width:142px; z-index:10;}
 		.sky a {display:block; margin-bottom:5px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_top_bg.jpg) no-repeat center top;}
+
+		.wb_00_01 {background:#273238; padding-top:150px}
+		.wb_00_01 iframe {width:945px; height:531px; margin:0 auto}
 
 		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative}
 
@@ -80,25 +83,29 @@
 
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">   
-			{{--<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky03.png" alt="5과목 패키지" >
-            </a>--}}
+			<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky1.png" alt="5과목 패키지" >
+            </a>
 			<a href="#to_go">
-				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky01.png" usemap="#map1068_sky" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
-					<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
-					<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
-					<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
-					<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
-					<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
+					<area shape="rect" coords="11,121,132,195" href="#" class="r_btn_tab" data-tab-id="1"/>
+					<area shape="rect" coords="11,209,131,264" href="#" class="r_btn_tab" data-tab-id="2"/>
+					<area shape="rect" coords="11,279,131,332" href="#" class="r_btn_tab" data-tab-id="3"/>
+					<area shape="rect" coords="12,344,132,400" href="#" class="r_btn_tab" data-tab-id="4"/>
+					<area shape="rect" coords="12,409,131,472" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>			  
         </div>
 		
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
         </div>
-        <!--WB_top//-->
+
+		<div class="evtCtnsBox wb_00_01">
+			<iframe src="https://www.youtube.com/embed/chEceiSyKOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01_01.jpg" alt="2명 중 1명은 장사원 수강생">
+        </div>
 		
         <div class="evtCtnsBox wb_00">
 			<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_01.jpg" alt="">

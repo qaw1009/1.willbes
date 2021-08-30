@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container hanlim hanlim{{$__cfg['CateCode']}} NSK c_both">
+    <div id="Container" class="Container hanlim{{$__cfg['CateCode']}} NSK c_both">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -133,9 +133,9 @@
         </div>
         <!-- CS센터 //-->
 
-        <div id="QuickMenuB" class="MainQuickMenu">
+        <div id="QuickMenu" class="MainQuickMenu">
             {{-- quick menu --}}
-            @include('willbes.pc.site.main_partial.quick_menu_' . $__cfg['SiteCode'])
+            @include('willbes.pc.site._viewTest.main_partial.quick_menu_' . $__cfg['SiteCode'])
         </div>
     </div>
     <!-- End Container -->

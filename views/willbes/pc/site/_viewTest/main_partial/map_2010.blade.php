@@ -47,7 +47,7 @@
 </style>
 <div class="Section Section4_hl mt50">
     <div class="widthAuto">
-        <div class="will-acadTit">윌비스 <span class="tx-color">고등고시</span> 학원</div>        
+        <div class="will-acadTit">윌비스 <span class="tx-color">한림법학원</span></div>
         <div class="noticeTabs campus c_both">
             <ul class="tabWrapCustom noticeWrap_campus">
                 <li><a id="campus1_btn" href="#campus1" data-map-id="0" class="on">신림(본원)</a><span class="row-line">|</span></li>
@@ -95,7 +95,7 @@
                     <div class="campus_info">
                         <dl>
                             <dt>
-                            <div class="c-tit"><span class="tx-color">강남(분원)</span> 학원 오시는 길</div>
+                                <div class="c-tit"><span class="tx-color">강남(분원)</span> 학원 오시는 길</div>
                                 <div class="c-info">
                                     <div class="address">
                                         <span class="a-tit">주소</span>
@@ -176,9 +176,9 @@
             });
         });
         @if(empty($__cfg['CateCode']) === false && ($__cfg['CateCode'] == '3098' || $__cfg['CateCode'] == '3099'))
-            $('#campus2_btn').click();
+        $('#campus2_btn').click();
         @else
-            $('#campus1_btn').click();
+        $('#campus1_btn').click();
         @endif
     });
 </script>

@@ -278,13 +278,15 @@
             location.href = _url;
         }
         
-        /*
+
         function certOpen(){
             {!! login_check_inner_script('로그인 후 이용하여 주십시오.','Y') !!}
 
-            @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate'] . ' ' . $arr_promotion_params['etime']))
-                alert('이벤트가 종료되었습니다.');
-                return;
+            @if(empty($arr_promotion_params['edate']) === false && empty($arr_promotion_params['edate']) === false)
+                @if(strtotime(date('YmdHi')) >= strtotime($arr_promotion_params['edate'] . ' ' . $arr_promotion_params['etime']))
+                    alert('이벤트가 종료되었습니다.');
+                    return;
+                @endif
             @endif
 
             @if(empty($cert_apply) === false)
@@ -299,7 +301,7 @@
                 alert('프로모션 추가 파라미터가 지정되지 않았습니다.');
             @endif
         } 
-        */
+
 
 
     </script>

@@ -41,7 +41,7 @@
                             @if($data['RegType'] == 1)
                                 {!! $data['Content'] !!}
                             @else
-                                {{ nl2br($data['Content']) }}
+                                {!! nl2br($data['Content']) !!}
                             @endif
                         </td>
                     </tr>

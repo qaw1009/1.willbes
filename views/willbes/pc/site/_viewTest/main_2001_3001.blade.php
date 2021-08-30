@@ -1,7 +1,7 @@
 @extends('willbes.pc.layouts.master')
 @section('content')
     <!-- Container -->
-    <div id="Container" class="Container cop NGR c_both">
+    <div id="Container" class="Container cop NGR c_both combine">
         <!-- site nav -->
         @include('willbes.pc.layouts.partial.site_menu')
 
@@ -532,6 +532,31 @@
                 });
             });
         });
+
+        //유튜브채널
+        $(function() {
+                var newsImg = $(".tube_slider").bxSlider({
+                    mode:'horizontal', //option : 'horizontal', 'vertical', 'fade'
+                    auto:true,
+                    speed:350,
+                    pause:4000,
+                    pager:false,
+                    controls:false,
+                    slideWidth: 224,
+                    minSlides:5,
+                    maxSlides:5,
+                    slideMargin:0,
+                    autoHover:true,
+                    moveSlides:1,
+                });
+                $("#tube_slider_left").click(function (){
+                    newsImg.goToPrevSlide();
+                });
+
+                $("#tube_slider_right").click(function (){
+                    newsImg.goToNextSlide();
+                });
+            });
 
         //교재
         /*$(function() {

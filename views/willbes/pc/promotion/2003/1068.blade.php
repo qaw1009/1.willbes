@@ -17,12 +17,15 @@
 		.evtCtnsBox .wrap {width:1120px; margin:0 auto; position:relative}
         .evtCtnsBox .wrap a:hover {box-shadow:0 5px 20px rgba(0,0,0,.5); border-radius:6px; border:1px solid #fff}
 		
-		.sky {position:fixed; top:100px; right:10px; z-index:10;}
+		.sky {position:fixed; top:100px; right:10px; width:142px; z-index:10;}
 		.sky a {display:block; margin-bottom:5px}
 
-        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2020/09/1068_top_bg.jpg) no-repeat center top;}
+        .wb_top {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_top_bg.jpg) no-repeat center top;}
 
-		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2020/01/1068_01_bg.jpg) no-repeat center top; position:relative}
+		.wb_00_01 {background:#273238; padding-top:150px}
+		.wb_00_01 iframe {width:945px; height:531px; margin:0 auto}
+
+		.wb_00 {background:url(https://static.willbes.net/public/images/promotion/2021/08/1068_00_bg.jpg) no-repeat center top; position:relative}
 
 		.wb_01{background:#fff;}    
 
@@ -51,10 +54,10 @@
         .LAeventB03 th {background:#5f5f5f; color:#fff}
         .LAeventB03 td:nth-child(1) {text-align:center}
         .LAeventB03 td:nth-child(2) {text-align:center}
-        .LAeventB03 td:nth-child(3) {color:#2f6c64;text-align:left}
+        .LAeventB03 td:nth-child(3) {color:#e85b4a;text-align:left}
         .LAeventB03 td:last-child {border:0}
         .LAeventB03 td p {font-size:12px}
-		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#2f6c64; font-size:14px; display:block; border-radius:20px 20px 0 20px}
+		.LAeventB03 table a {padding:10px 15px; color:#fff; background:#e85b4a; font-size:14px; display:block; border-radius:20px 20px 0 20px}
         .LAeventB03 table a.btn2 {color:#666; background:#fff; border:1px solid #666; cursor:default}
         .LAeventB03 table a:hover {background:#252525; color:#fff;}
         .LAeventB03 table a.onBtn {margin-top:20px; font-size:20px; font-weight:500; border-radius:40px 40px 0 40px; padding:20px 0}			
@@ -81,27 +84,31 @@
     <div class="p_re evtContent NSK" id="evtContainer">	
 		<div class="sky" id="QuickMenu">   
 			{{--<a href="https://pass.willbes.net/promotion/index/cate/3028/code/2029" target="_blank"> 
-                <img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky03.png" alt="5과목 패키지" >
+                <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky1.png" alt="5과목 패키지" >
             </a>--}}
 			<a href="#to_go">
-				<img src="https://static.willbes.net/public/images/promotion/2021/03/1068_sky01.png" usemap="#map1068_sky" border="0" />
+				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_sky2.png" usemap="#map1068_sky" border="0" />
 				<map name="map1068_sky" id="map1068_sky">
-					<area shape="rect" coords="18,146,106,184" href="#" class="r_btn_tab" data-tab-id="1"/>
-					<area shape="rect" coords="14,198,108,253" href="#" class="r_btn_tab" data-tab-id="2"/>
-					<area shape="rect" coords="8,269,114,324" href="#" class="r_btn_tab" data-tab-id="3"/>
-					<area shape="rect" coords="6,335,114,391" href="#" class="r_btn_tab" data-tab-id="4"/>
-					<area shape="rect" coords="12,397,107,459" href="#" class="r_btn_tab" data-tab-id="5"/>
+					<area shape="rect" coords="11,121,132,195" href="#" class="r_btn_tab" data-tab-id="1"/>
+					<area shape="rect" coords="11,209,131,264" href="#" class="r_btn_tab" data-tab-id="2"/>
+					<area shape="rect" coords="11,279,131,332" href="#" class="r_btn_tab" data-tab-id="3"/>
+					<area shape="rect" coords="12,344,132,400" href="#" class="r_btn_tab" data-tab-id="4"/>
+					<area shape="rect" coords="12,409,131,472" href="#" class="r_btn_tab" data-tab-id="5"/>
 				</map>
 			</a>			  
         </div>
 		
         <div class="evtCtnsBox wb_top">
-            <img src="https://static.willbes.net/public/images/promotion/2020/09/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_top.jpg" alt=" 윌비스 농업직 절대지존 장사원교수 ">
         </div>
-        <!--WB_top//-->
+
+		<div class="evtCtnsBox wb_00_01">
+			<iframe src="https://www.youtube.com/embed/chEceiSyKOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01_01.jpg" alt="2명 중 1명은 장사원 수강생">
+        </div>
 		
         <div class="evtCtnsBox wb_00">
-			<img src="https://static.willbes.net/public/images/promotion/2020/01/1068_01.jpg" alt="">
+			<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_00.jpg" alt="">
 			<div class="slide_con">
                 <ul id="slidesImg3">
                     <li><img src="https://static.willbes.net/public/images/promotion/2019/07/1068_01_Roll1.jpg" alt="" /></li>
@@ -115,7 +122,7 @@
         </div>	
 
 		<div class="evtCtnsBox wb_01">
-            <img src="https://static.willbes.net/public/images/promotion/2019/12/1068_01.jpg" alt="커리큘럼">
+            <img src="https://static.willbes.net/public/images/promotion/2021/08/1068_01.jpg" alt="커리큘럼">
         </div>
 
 		{{--
@@ -128,13 +135,12 @@
 		--}}
 
 		<div class="evtCtnsBox wb_02" id="to_go">
-			<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_01.jpg" alt=""/>
 			<div class="wrap">
 				<img src="https://static.willbes.net/public/images/promotion/2021/08/1068_02_02.jpg" alt=""/>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171517" target="_blank" title="" style="position: absolute; left: 4.29%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171522" target="_blank" title="" style="position: absolute; left: 28.04%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>				
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171775" target="_blank" title="" style="position: absolute; left: 52.10%; top: 66.97%; width: 18.3%; height: 5.31%;  z-index: 2;"></a>
-				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/171777" target="_blank" title="" style="position: absolute; left: 75.84%; top: 66.97%; width: 18.3%; height: 5.31%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185386" target="_blank" title="" style="position: absolute; left: 5.27%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185387" target="_blank" title="" style="position: absolute; left: 29.2%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>				
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185390" target="_blank" title="" style="position: absolute; left: 52.68%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
+				<a href="https://pass.willbes.net/package/show/cate/3028/pack/648001/prod-code/185391" target="_blank" title="" style="position: absolute; left: 76.52%; top: 75.98%; width: 17.5%; height: 4.45%; z-index: 2;"></a>
 			</div>
 		</div>
 		       

@@ -61,10 +61,6 @@
         <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_top.jpg" alt="장사원" > 
     </div> 
     
-    <div class="evtCtnsBox">
-        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_01.jpg" alt="합격 전략의 중심" > 
-    </div> 
-
     <div class="evtCtnsBox evt00">
         <div class="video-container-box">
             <div class="video-container">
@@ -75,6 +71,7 @@
     </div> 
 
     <div class="evtCtnsBox evt01s">
+        <img src="https://static.willbes.net/public/images/promotion/2021/08/1068m_01.jpg" alt="합격 전략의 중심" > 
         <div class="slide_con">
             <ul id="slidesImg1">
                 <li><img src="https://static.willbes.net/public/images/promotion/2020/08/1068m_01_01.png" alt=""/></li>
